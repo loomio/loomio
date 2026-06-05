@@ -101,7 +101,7 @@ v-main
       //  eager)
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
-        router-link(:to="urlFor(group.parent())")
+        router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())")
           plain-text(:model="group.parent()" field="name")
         space
         span.text-medium-emphasis.text--lighten-1 &gt;

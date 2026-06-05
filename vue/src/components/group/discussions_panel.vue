@@ -300,7 +300,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
+          router-link.text-medium-emphasis.text-decoration-none.underline-on-hover.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

@@ -32,11 +32,10 @@ const canPerformAny = computed(() => some(props.actions, action => action.canPer
         common-icon(v-if="icon" :size="size" :name="menuIcon" :color="color")
         span(v-if="!icon") {{name}}
 
-    v-list
+    v-list(density="compact")
       template(v-for="(action, name) in actions")
         template(v-if="action.canPerform()")
           v-list-item(
-            density="compact"
             v-if='!action.to'
             :key="name"
             @click="action.perform()"

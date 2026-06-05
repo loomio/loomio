@@ -54,11 +54,10 @@ v-alert.my-4.poll-common-outcome-panel(
       span(v-t="'poll_common.review_due'")
       space
       time-ago(:date="outcome.reviewOn")
-  .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
-    .text-title-large {{outcome.eventSummary}}
-    span {{exactDate(parseISO(outcome.pollOption().name))}}
+  .poll-common-outcome__event-info.pb-2(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
+    span.text-title-medium {{exactDate(parseISO(outcome.pollOption().name))}}
     p {{outcome.eventLocation}}
-  formatted-text.text-on-surface(:model="outcome" field="statement")
+  formatted-text(:model="outcome" field="statement")
   link-previews(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
   action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")

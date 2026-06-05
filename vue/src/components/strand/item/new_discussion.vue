@@ -48,9 +48,9 @@ onMounted(() => {
   strand-header.pt-3(:topicable="discussion")
   .mb-4.text-body-medium
     user-avatar.mr-2(:user='author')
-    router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}
+    router-link.text-medium-emphasis.text-decoration-none(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.text-medium-emphasis(:to='urlFor(discussion)')
+    router-link.text-medium-emphasis.text-decoration-none(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
 
   template(v-if="!collapsed")

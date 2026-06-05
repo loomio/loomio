@@ -137,7 +137,7 @@ div
             td
               v-layout(align-center)
                 common-icon.mr-2(:name="'mdi-'+ item.icon")
-                a.text-on-surface(:href="item.downloadUrl") {{item.filename}}
+                a.text-medium-emphasis.text-decoration-none(:href="item.downloadUrl") {{item.filename}}
             td
               user-avatar(:user="item.author()")
             td
