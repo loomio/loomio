@@ -80,7 +80,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @poll_created_event.parent_id
   end
 
-  test "repair tolerates another event occupying the root sequence" do
+  test "repair removes duplicate created events occupying the root sequence" do
     poll = PollService.create(params: {
       title: "Standalone Poll",
       poll_type: "proposal",
@@ -98,8 +98,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal 0, created_event.reload.sequence_id
     assert_equal poll.topic_id, created_event.topic_id
     assert_nil created_event.parent_id
-    assert_operator duplicate_event.reload.sequence_id, :>, 0
-    assert_equal created_event.id, duplicate_event.parent_id
+    assert_nil Event.find_by(id: duplicate_event.id)
   end
 
   test "repair clears stale parent from root event" do

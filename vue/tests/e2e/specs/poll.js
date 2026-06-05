@@ -458,8 +458,8 @@ module.exports = {
     // Verify the add voters modal is shown
     page.expectElement('.poll-members-form')
 
-    // Verify the button says "ADD VOTERS" (Vuetify uppercases button text)
-    page.expectText('.poll-members-form__submit', 'ADD VOTERS')
+    // Verify the add voters button label
+    page.expectText('.poll-members-form__submit', 'Add voters')
   },
 
   'can_start_a_standalone_poll': (test) => {
