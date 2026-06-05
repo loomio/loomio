@@ -12,12 +12,11 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     'poll_edited' => Views::EventMailer::Thread::PollEdited
   }.freeze
 
-  def initialize(topic:, recipient:, time_start:, cache:, utm_hash:)
+  def initialize(topic:, recipient:, time_start:, utm_hash:)
     @topic = topic
     @topicable = topic.topicable
     @recipient = recipient
     @time_start = time_start
-    @cache = cache
     @utm_hash = utm_hash
   end
 
@@ -67,8 +66,7 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
   end
 
   def render_activity_feed
-    reader = @cache.fetch(:topic_readers_by_topic_id, @topic.id) ||
-      TopicReader.for(user: @recipient, topic: @topic)
+    reader = TopicReader.for(user: @recipient, topic: @topic)
     since = [reader.last_read_at, @time_start].compact.max
 
     div(class: "activity-feed") do

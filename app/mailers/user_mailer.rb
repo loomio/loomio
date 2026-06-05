@@ -52,8 +52,6 @@ class UserMailer < ApplicationMailer
 
     return if topics.empty?
 
-    groups = user.groups.order(full_name: :asc)
-    cache = RecordCache.for_collection(topics, user_id)
     topics_by_group_id = topics.group_by(&:group_id)
     subject_key = "email.catch_up.#{frequency}_subject"
     subject_params = { site_name: AppConfig.theme[:site_name] }
@@ -61,13 +59,11 @@ class UserMailer < ApplicationMailer
     component = Views::UserMailer::CatchUp.new(
       user: user,
       recipient: user,
-      groups: groups,
       topics_by_group_id: topics_by_group_id,
       subject_key: subject_key,
       subject_params: subject_params,
       time_start: time_start,
       time_finish: time_finish,
-      cache: cache,
       utm_hash: @utm_hash
     )
 

@@ -14,7 +14,8 @@ class Views::UserMailer::CatchUp::Headlines < Views::ApplicationMailer::Componen
     @groups.each do |group|
       next unless @topics_by_group_id.has_key?(group.id)
 
-      h3 { link_to group.full_name, group_url(group, @utm_hash) }
+      h3 { link_to group.full_name, group.id ? group_url(group, @utm_hash) : direct_discussions_url }
+
       ul do
         @topics_by_group_id[group.id].each do |topic|
           li { link_to TranslationService.plain_text(topic.topicable, :title, @recipient), topicable_url(topic) }
