@@ -1,7 +1,3 @@
-import 'vuetify/styles'
-
-process.env
-
 // Composables
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
