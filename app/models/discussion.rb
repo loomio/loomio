@@ -110,6 +110,7 @@ class Discussion < ApplicationRecord
   def update_group_counter_caches
     #TODO can this be a background job or materialized view
     return unless (g = topic.group) && g.id
+    return if g.destroyed? # group teardown cascaded to this discussion — nothing to recount
     g.update_discussions_count
     g.update_closed_polls_count
   end
