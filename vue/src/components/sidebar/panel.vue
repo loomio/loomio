@@ -96,7 +96,7 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction' } })
+  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction', last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
   Records.stances.fetch({ path: 'my_stances' })
 };
 
@@ -105,8 +105,9 @@ const updateGroups = () => {
   organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
   openCounts.value = {};
   openGroups.value = [];
+  const recentCutoff = subWeeks(new Date(), 6);
   Session.user().groups().forEach(g => {
-    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread()).length;
+    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
   });
   Session.user().parentGroups().forEach(g => {
     if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
@@ -144,7 +145,7 @@ watchRecords({
 
 watchRecords({
   collections: ['topics'],
-  query: () => { updateUnreadCounts() }
+  query: () => { updateUnreadCounts(); updateGroups(); }
 });
 
 watchRecords({
