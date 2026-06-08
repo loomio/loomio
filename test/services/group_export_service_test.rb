@@ -31,6 +31,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
 
     poll = PollService.create(params: { title: "export_poll#{SecureRandom.hex(4)}", group_id: group.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree], poll_template_id: poll_template.id }, actor: admin)
     sub_poll = PollService.create(params: { title: "export_sub_poll#{SecureRandom.hex(4)}", group_id: subgroup.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree] }, actor: admin)
+    topic_poll = PollService.create(params: { title: "topic_poll#{SecureRandom.hex(4)}", topic_id: discussion.topic_id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree] }, actor: admin)
 
     # PollService.create already created poll options and stances for group members
     # Cast stances for the main poll
@@ -38,12 +39,18 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     admin_stance.update!(choice: 'Agree', cast_at: Time.current)
     member_stance = poll.stances.find_by(participant_id: member.id, latest: true)
     member_stance.update!(choice: 'Disagree', cast_at: Time.current)
+    admin_topic_stance = topic_poll.stances.find_by(participant_id: admin.id, latest: true)
+    admin_topic_stance.update!(choice: 'Agree', cast_at: Time.current)
+
+    topic_stance_comment = Comment.new(parent: admin_topic_stance, body: 'topic stance comment')
+    CommentService.create(comment: topic_stance_comment, actor: admin)
 
     poll.update_counts!
     sub_poll.update_counts!
 
     PollService.close(poll: poll, actor: admin)
     PollService.close(poll: sub_poll, actor: admin)
+    PollService.close(poll: topic_poll, actor: admin)
 
     # Services already created events and topic readers
     discussion_event = discussion.created_event
@@ -56,7 +63,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       admin: admin, member: member, alien: alien,
       group: group, subgroup: subgroup, another_group: another_group,
       discussion: discussion, sub_discussion: sub_discussion,
-      comment: comment, poll: poll, sub_poll: sub_poll,
+      comment: comment, poll: poll, sub_poll: sub_poll, topic_poll: topic_poll, topic_stance_comment: topic_stance_comment,
       tag: tag, discussion_template: discussion_template, poll_template: poll_template
     }
   end
@@ -152,6 +159,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     # Polls and stances (group_id is on topics, not polls)
     imported_poll = imported_group.polls.find_by!(title: data[:poll].title, author: imported_admin)
     imported_sub_poll = imported_subgroup.polls.find_by!(title: data[:sub_poll].title, author: imported_admin)
+    imported_topic_poll = imported_group.polls.find_by!(title: data[:topic_poll].title, author: imported_admin)
+
+    imported_topic_stance_comment = imported_group.comments.find_by!(body: "topic stance comment")
+    assert_equal imported_topic_stance_comment.parent.poll.id, imported_topic_poll.id
 
     # Poll topics
     assert imported_poll.topic.persisted?

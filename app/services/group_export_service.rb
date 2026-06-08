@@ -36,7 +36,7 @@ class GroupExportService
       events: %w[eventable]
     },
     comments: {
-      comments: %w[parent_id],
+      comments: %w[parent],
       events: %w[eventable],
       reactions: %w[reactable]
     },
@@ -71,6 +71,7 @@ class GroupExportService
       events: %w[eventable]
     },
     stances: {
+      comments: %w[parent],
       stance_choices: %w[stance_id],
       events: %w[eventable],
       reactions: %w[reactable]
@@ -80,6 +81,7 @@ class GroupExportService
       events: %w[eventable]
     },
     polls: {
+      comments: %w[parent],
       topics: %w[topicable],
       stance_receipts: %w[poll_id],
       stances: %w[poll_id],
@@ -304,10 +306,6 @@ class GroupExportService
           end
         end
       end
-
-      # SIDEKIQ_REDIS_POOL.with_client do |client|
-      #   client.set "last_migrate_ids", migrate_ids.to_json
-      # end
 
       # rewrite references to old ids
       (tables - ['attachments']).each do |table|
