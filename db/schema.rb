@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_04_000005) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_09_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -953,6 +953,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_04_000005) do
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
+    t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["last_activity_at"], name: "index_topics_on_last_activity_at", order: :desc
     t.index ["locked_at"], name: "index_topics_on_locked_at"
