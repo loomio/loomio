@@ -115,6 +115,18 @@ class GroupExportService
     }
   }.with_indifferent_access.freeze
 
+  # Invert BACK_REFERENCES so we can translate a record's own foreign keys before
+  # insert: FORWARD_REFERENCES[source_table][column] => target_table.
+  FORWARD_REFERENCES = BACK_REFERENCES.each_with_object({}) do |(target_table, refs), fwd|
+    refs.each_pair do |source_table, columns|
+      columns.each { |column| (fwd[source_table] ||= {})[column] = target_table }
+    end
+  end.with_indifferent_access.freeze
+
+  # Polymorphic association columns: their target table is resolved at runtime from
+  # the record's stored "<column>_type", not from FORWARD_REFERENCES' target_table.
+  POLYMORPHIC_COLUMNS = %w[eventable reactable topicable parent].freeze
+
   def self.export_direct_topics(group_id)
     group = Group.find(group_id)
     group_ids = group.id_and_subgroup_ids
@@ -258,87 +270,43 @@ class GroupExportService
   end
 
   def self.import(filename_or_url, reset_keys: false)
-    group_ids = []
-    migrate_ids = {}
-
     if URI.parse(filename_or_url).class == URI::Generic
       datas = File.open(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
     else
       datas = URI.parse(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
     end
 
-    tables = datas.map{ |data| data['table'] }.uniq
+    datas_by_table = datas.group_by { |data| data['table'] }
+    tables = datas_by_table.keys - ['attachments']
 
     ActiveRecord::Base.transaction do
-      # import the records, remember old with new ids
-      (tables - ['attachments']).each do |table|
-        migrate_ids[table] = {}
+      migrate_ids = build_migrate_ids(datas_by_table, tables)
+      existing_user_ids = User.where(id: migrate_ids['users']&.values || []).pluck(:id)
+
+      tables.each do |table|
         klass = table.classify.constantize
-        datas.each do |data|
-          next unless (data['table'] == table)
-          record = klass.new(data['record'])
+        pk = klass.primary_key
+        datas_by_table[table].each do |data|
+          old_id = data['record'][pk]
+          next if table == 'users' && existing_user_ids.include?(migrate_ids[table][old_id])
 
-          if reset_keys && data['record'].has_key?('key')
-            record.key = nil
-            record.set_key
-          end
-
-          ['secret_token', 'token'].each do |name|
-            record.send("#{name}=", klass.generate_unique_secure_token) if data['record'].has_key? name
-          end
-
-          if table == 'groups'
-            record.handle = GroupService.suggest_handle(name: record.handle, parent_handle: nil)
-          end
-
-          old_id = record.id
-          record.id = nil
-          result = klass.import([record], validate: false, on_duplicate_key_ignore: true)
-          if new_id = result.ids.map(&:to_i).first
-            migrate_ids[table][old_id] = new_id
-          else
-            # duplicate record exists
-            if table == 'users'
-              migrate_ids[table][old_id] = User.find_by(email: record.email).id
-            else
-              raise "failed to import #{table} record - conflict on unique column. handle that here"
-            end
-          end
+          attrs = data['record'].deep_dup
+          attrs[pk] = migrate_ids[table][attrs[pk]]
+          translate_foreign_keys!(attrs, table, migrate_ids)
+          record = klass.new(attrs)
+          prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
+          klass.import([record], validate: false)
         end
       end
 
-      # rewrite references to old ids
-      (tables - ['attachments']).each do |table|
-        migrate_ids[table].each_pair do |old_id, new_id|
-          next unless BACK_REFERENCES.has_key?(table)
-          BACK_REFERENCES[table].each_pair do |ref_table, columns|
-            next unless migrate_ids[ref_table].present?
-            imported_ids = migrate_ids[ref_table].values
-            columns.each do |column|
-              if ['eventable', 'reactable', 'topicable', 'parent'].include? column
-                ref_table.classify.constantize.
-                where(id: imported_ids).
-                where(column+"_type" => table.classify, column+"_id" => old_id).
-                update_all(column+"_id" => new_id)
-              else
-                ref_table.classify.constantize.
-                where(id: imported_ids).
-                where(column => old_id).
-                update_all(column => new_id)
-              end
-            end
-          end
-        end
-      end
-
-      if tables.include?('attachments')
-        datas.each do |data|
-          next unless (data['table'] == 'attachments')
-          table = data['record']['record_type'].tableize
-          new_id = migrate_ids[table][data['record']['record_id']]
-          DownloadAttachmentWorker.perform_async(data['record'], new_id)
-        end
-      end
+      # if tables.include?('attachments')
+      #   datas.each do |data|
+      #     next unless (data['table'] == 'attachments')
+      #     table = data['record']['record_type'].tableize
+      #     new_id = migrate_ids[table][data['record']['record_id']]
+      #     DownloadAttachmentWorker.perform_async(data['record'], new_id)
+      #   end
+      # end
 
       datas.each do |data|
         if data['table'] == 'polls'
@@ -347,6 +315,81 @@ class GroupExportService
           Poll.find(new_id).stances.each(&:update_option_scores!)
         end
       end
+    end
+  end
+
+  # Reserve a block of fresh primary-key ids from the table's sequence without
+  # inserting any rows. nextval advances the sequence past the block it returns,
+  # so subsequent real inserts are safe.
+  def self.reserve_ids(klass, count)
+    return [] if count.zero?
+    conn = klass.connection
+    seq = conn.select_value("SELECT pg_get_serial_sequence(#{conn.quote(klass.table_name)}, #{conn.quote(klass.primary_key)})")
+    raise "no sequence for #{klass.table_name}.#{klass.primary_key}" unless seq
+
+    max_id = klass.unscoped.maximum(klass.primary_key).to_i
+    last_value = conn.select_value("SELECT last_value FROM #{conn.quote_table_name(seq)}").to_i
+    conn.select_value("SELECT setval(#{conn.quote(seq)}, #{[max_id, last_value].max})")
+    conn.select_values("SELECT nextval(#{conn.quote(seq)}) FROM generate_series(1, #{count.to_i})").map(&:to_i)
+  end
+
+  def self.build_migrate_ids(datas_by_table, tables)
+    tables.each_with_object({}.with_indifferent_access) do |table, migrate_ids|
+      klass = table.classify.constantize
+      pk = klass.primary_key
+      records = datas_by_table[table]
+      migrate_ids[table] = {}.with_indifferent_access
+
+      if table == 'users'
+        existing_users_by_email = User.where(email: records.map { |data| data['record']['email'] }.compact)
+                                      .index_by { |user| user.email.to_s.downcase }
+        new_records = records.reject { |data| existing_users_by_email.key?(data['record']['email'].to_s.downcase) }
+        reserved_ids = reserve_ids(klass, new_records.length)
+
+        records.each do |data|
+          old_id = data['record'][pk]
+          existing_user = existing_users_by_email[data['record']['email'].to_s.downcase]
+          migrate_ids[table][old_id] = existing_user ? existing_user.id : reserved_ids.shift
+        end
+      else
+        old_ids = records.map { |data| data['record'][pk] }
+        migrate_ids[table] = old_ids.zip(reserve_ids(klass, old_ids.length)).to_h.with_indifferent_access
+      end
+    end
+  end
+
+  # Translate a record's foreign-key columns from old ids to new ids in place,
+  # using the complete migrate_ids mapping. Polymorphic columns resolve their
+  # target table from the record's stored "<column>_type".
+  def self.translate_foreign_keys!(attrs, table, migrate_ids)
+    (FORWARD_REFERENCES[table] || {}).each_pair do |column, target_table|
+      if POLYMORPHIC_COLUMNS.include?(column)
+        type = attrs["#{column}_type"]
+        old_id = attrs["#{column}_id"]
+        next if type.blank? || old_id.blank?
+        map = migrate_ids[type.tableize]
+        attrs["#{column}_id"] = map[old_id] if map&.has_key?(old_id)
+      else
+        old_id = attrs[column]
+        next if old_id.blank?
+        map = migrate_ids[target_table]
+        attrs[column] = map[old_id] if map&.has_key?(old_id)
+      end
+    end
+  end
+
+  def self.prepare_record_for_import!(record, table, original_attrs, klass, reset_keys)
+    if reset_keys && original_attrs.has_key?('key')
+      record.key = nil
+      record.set_key
+    end
+
+    ['secret_token', 'token'].each do |name|
+      record.send("#{name}=", klass.generate_unique_secure_token) if original_attrs.has_key? name
+    end
+
+    if table == 'groups'
+      record.handle = GroupService.suggest_handle(name: record.handle, parent_handle: nil)
     end
   end
 
