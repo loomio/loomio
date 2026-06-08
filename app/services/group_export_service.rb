@@ -316,6 +316,8 @@ class GroupExportService
         end
       end
     end
+
+    nil
   end
 
   # Reserve a block of fresh primary-key ids from the table's sequence without
