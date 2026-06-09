@@ -157,10 +157,6 @@
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:123#topics_count)"
     },
     {
-      "fingerprint": "3b83cb657974fcacf90b4b5a8d13c12f0fce35f8594cd137e9f99d8f37ae2039",
-      "note": "False positive 2026-06-09 — user.id is an AR integer PK (safe); topic_reader_token is escaped via connection.quote (SQL Injection @ app/queries/topic_query.rb:58)"
-    },
-    {
       "fingerprint": "a81bf8ba1f714b8e15ee523c6ae08ea86658b37e566a646380fd3bfee28e0ddd",
       "note": "False positive 2026-05-27 — user.id is an AR integer PK (safe); topic_reader_token is escaped via connection.quote (SQL Injection @ app/queries/poll_query.rb:35)"
     },

@@ -39,29 +39,41 @@ class TopicQuery
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 
     uid = (user.id || 0).to_i
-    tr_join_cond = +"tr.user_id = #{uid}"
-    tr_join_cond << " OR tr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}" if user.topic_reader_token
+    topic_reader_join = if user.topic_reader_token
+      Topic.sanitize_sql_array(["LEFT JOIN topic_readers tr ON tr.topic_id = topics.id AND (tr.user_id = ? OR tr.token = ?)", uid, user.topic_reader_token])
+    else
+      Topic.sanitize_sql_array(["LEFT JOIN topic_readers tr ON tr.topic_id = topics.id AND tr.user_id = ?", uid])
+    end
+
+    guest_topic_reader_join = if user.topic_reader_token
+      Topic.sanitize_sql_array(["JOIN topic_readers tr ON tr.topic_id = topics.id AND (tr.user_id = ? OR tr.token = ?) AND tr.revoked_at IS NULL AND tr.guest = TRUE", uid, user.topic_reader_token])
+    else
+      Topic.sanitize_sql_array(["JOIN topic_readers tr ON tr.topic_id = topics.id AND tr.user_id = ? AND tr.revoked_at IS NULL AND tr.guest = TRUE", uid])
+    end
 
     # Arm 1: topics visible via group membership (the dominant path).
     # Separated from the guest arm so the planner can use the
     # (group_id, last_activity_at) index without being blocked by the OR.
-    member_visibility = +"#{public_group_ids ? public_visibility_sql(public_group_ids) : '(topics.private = false) OR '}(topics.group_id IN (:user_group_ids))"
-    member_visibility << " OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))" if or_subgroups
+    member_visibility = []
+    member_visibility << "topics.private = false" unless public_group_ids
+    member_visibility << "topics.private = false AND topics.group_id IN (:public_group_ids)" if public_group_ids&.any?
+    member_visibility << "topics.group_id IN (:user_group_ids)"
+    member_visibility << "groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)" if or_subgroups
     member_params = { user_group_ids: user.group_ids }
     member_params[:public_group_ids] = public_group_ids if public_group_ids&.any?
 
     arm1 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
-      .joins("LEFT JOIN topic_readers tr ON tr.topic_id = topics.id AND (#{tr_join_cond})")
+      .joins(topic_reader_join)
       .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
       .where(discarded_at: nil)
-      .where(member_visibility, member_params)
+      .where(member_visibility.join(" OR "), member_params)
 
     # Arm 2: topics the user has been explicitly invited to as a guest (rare).
     # Uses the (user_id, topic_id) WHERE guest = TRUE index for a near-instant lookup.
     arm2 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
-      .joins("JOIN topic_readers tr ON tr.topic_id = topics.id AND (#{tr_join_cond}) AND tr.revoked_at IS NULL AND tr.guest = TRUE")
+      .joins(guest_topic_reader_join)
       .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
       .where(discarded_at: nil)
 
