@@ -25,6 +25,10 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     tags = Array(params[:tags]).reject(&:blank?)
     @topics = @topics.tagged(tags) if tags.any?
 
+    if params[:last_activity_gte].present?
+      @topics = @topics.where('topics.last_activity_at >= ?', Time.zone.parse(params[:last_activity_gte]))
+    end
+
     if params[:q].present? && params[:topicable_type] == 'Discussion'
       @topics = @topics.joins("INNER JOIN discussions ON discussions.id = topics.topicable_id")
                        .where("discussions.title ILIKE ?", "%#{params[:q]}%")

@@ -51,6 +51,22 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_topical_poll_to_add_to_discussion
+    create_another_discussion
+    poll = PollService.create(params: {
+      title: 'Topical proposal to move',
+      details: 'Poll details that should move with the proposal',
+      poll_type: 'proposal',
+      closing_at: 3.days.from_now,
+      poll_option_names: ['agree', 'disagree', 'abstain'],
+      group_id: create_group.id
+    }, actor: patrick)
+    CommentService.create(comment: Comment.new(parent: poll, body: 'A comment on the topical poll'), actor: jennifer)
+    sign_in patrick
+
+    redirect_to poll_path(poll)
+  end
+
   def setup_thread_catch_up
     jennifer.update(email_catch_up_day: 7)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)

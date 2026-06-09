@@ -316,6 +316,7 @@ da:
       save_template: Gem skabelon
       fork_template: Gaffel skabelon
       customize: Tilpas
+      add: Tilføje
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -327,6 +328,7 @@ da:
     templates_admin_hint: Da du er gruppeadministrator, kan du skjule eller slette alle skabeloner, du ikke ønsker, og redigere de resterende, så de passer til dine behov.
     read: Læse
     unread: Ulæst
+    discussion: Diskussion
   merge_accounts:
     modal:
       title: Flet konti
@@ -1049,6 +1051,7 @@ da:
     delete_discussion: Slet diskussion
     lock_thread: Lås tråd
     unlock_thread: Lås tråden op
+    add_to_discussion: Tilføj til diskussion
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -2861,3 +2864,8 @@ da:
   lock_thread_modal:
     body: Lås tråde for at fjerne dem fra listen over åbne tråde og forhindre folk i at kommentere.
     explanation: Lås tråde for at forhindre folk i at kommentere eller foretage yderligere ændringer
+  add_poll_to_discussion_modal:
+    title: Tilføj til diskussion
+    discussion: Diskussion
+    success: Succes, %{pollType} tilføjet til diskussionen!
+    explanation: "%{pollType} og eventuelle stemmer, kommentarer og resultat vil blive tilføjet til den valgte diskussionstråd."

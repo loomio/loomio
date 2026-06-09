@@ -316,6 +316,7 @@ sl:
       save_template: Shrani predlogo
       fork_template: Predloga za vilice
       customize: Prilagodi
+      add: Dodaj
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -327,6 +328,7 @@ sl:
     templates_admin_hint: Ker ste skrbnik skupine, lahko skrijete ali izbrišete vse predloge, ki jih ne želite, preostale pa uredite glede na svoje potrebe.
     read: Preberi
     unread: Neprebrano
+    discussion: Razprava
   merge_accounts:
     modal:
       title: Združite račune
@@ -1049,6 +1051,7 @@ sl:
     delete_discussion: Izbriši razpravo
     lock_thread: Zakleni nit
     unlock_thread: Odkleni nit
+    add_to_discussion: Dodaj v razpravo
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2861,3 +2864,8 @@ sl:
   lock_thread_modal:
     body: Zaklenite niti, da jih odstranite s seznama odprtih niti in preprečite drugim komentiranje.
     explanation: Zaklenite niti, da preprečite komentiranje ali nadaljnje spremembe
+  add_poll_to_discussion_modal:
+    title: Dodaj v razpravo
+    discussion: Razprava
+    success: Uspelo, %{pollType} dodan v razpravo!
+    explanation: "%{pollType} in vsi glasovi, komentarji in izid bodo dodani izbrani niti razprave."

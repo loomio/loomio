@@ -25,6 +25,7 @@ export default
     ChatbotWebhookForm: asyncComponent(() => import('@/components/chatbot/webhook_form')),
     PollCommonOutcomeModal: asyncComponent(() => import('@/components/poll/common/outcome_modal')),
     PollCommonReopenModal: asyncComponent(() => import('@/components/poll/common/reopen_modal')),
+    PollCommonAddToDiscussionModal: asyncComponent(() => import('@/components/poll/common/add_to_discussion_modal')),
     PollOptionForm: asyncComponent(() => import('@/components/poll/common/poll_option_form')),
     PollTemplateForm: asyncComponent(() => import('@/components/poll_template/form')),
     MoveThreadForm: asyncComponent(() => import('@/components/thread/move_thread_form')),

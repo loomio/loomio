@@ -10,7 +10,12 @@
 - Instead, create a new key with the new value and update the code to reference the new key.
 - **Review retranslation PRs against `config/locales/translation_corrections.md`** — that file logs sense-errors Google Translate has made before (polysemous short labels, paired actions drifting, misleading German words, glossary overrides like outcome→conclusion across many locales). If a new translation pass reintroduces one of those patterns, catch it at review.
 - **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
+- **translation keys should closely match their values** So that templates are easy to read. Rather than title, call the key what the title says.
+- **Use concise language and a calm tone** For example: Don't use exclamation marks for success flash messages. Just tell the user what happened. Be aware of translation from english when writing english.. choose words with most correct meaning.
 
+## Frontend / Vue
+
+- Prefer `<script setup>` format for new Vue components.
 
 ## Running Tests
 

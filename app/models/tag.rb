@@ -22,6 +22,7 @@ class Tag < ApplicationRecord
   is_translatable on: :name
   belongs_to :group
 
+  normalizes :name, with: ->(name) { name.strip }
   validates :name, presence: true, uniqueness: { scope: :group }
   # validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
   before_validation :set_defaults

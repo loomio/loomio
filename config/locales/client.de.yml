@@ -322,6 +322,7 @@ de:
       save_template: Vorlage speichern
       fork_template: Gabelvorlage
       customize: Anpassen
+      add: Hinzufügen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -333,6 +334,7 @@ de:
     templates_admin_hint: Da Sie Gruppenadministrator sind, können Sie alle Vorlagen, die Sie nicht benötigen, ausblenden oder löschen und die verbleibenden Vorlagen nach Ihren Bedürfnissen bearbeiten.
     read: Lesen
     unread: Ungelesen
+    discussion: Diskussion
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -1061,6 +1063,7 @@ de:
     delete_discussion: Diskussion löschen
     lock_thread: Thread sperren
     unlock_thread: Thread entsperren
+    add_to_discussion: Zur Diskussion hinzufügen
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -2896,3 +2899,8 @@ de:
   lock_thread_modal:
     body: Durch Sperren von Threads werden diese aus der Liste der offenen Threads entfernt und verhindert, dass Nutzer Kommentare abgeben.
     explanation: Threads sperren, um zu verhindern, dass Nutzer Kommentare abgeben oder weitere Änderungen vornehmen.
+  add_poll_to_discussion_modal:
+    title: Zur Diskussion hinzufügen
+    discussion: Diskussion
+    success: Erfolgreich, %{pollType} wurde zur Diskussion hinzugefügt!
+    explanation: Der %{pollType} sowie alle Stimmen, Kommentare und Ergebnisse werden dem ausgewählten Diskussionsthread angehängt.

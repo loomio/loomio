@@ -17,6 +17,7 @@ import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 import { mdiCog } from '@mdi/js';
 
@@ -40,6 +41,7 @@ const isSignedIn = ref(Session.isSignedIn());
 const canStartGroups = ref(AbilityService.canStartGroups());
 
 const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
 // Computed properties
 const greySidebarLogo = computed(() =>
@@ -84,7 +86,7 @@ EventBus.$on('currentComponent', data => {
 });
 
 const fetchData = () => {
-  Records.users.findOrFetchGroups().then(() => {
+  loadGroups().then(() => {
     if (route.path === "/dashboard") {
       if (Session.user().groups().length === 0 && AbilityService.canStartGroups()) {
         router.replace("/g/new");
@@ -94,7 +96,7 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction' } })
+  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction', last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
   Records.stances.fetch({ path: 'my_stances' })
 };
 
@@ -103,8 +105,9 @@ const updateGroups = () => {
   organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
   openCounts.value = {};
   openGroups.value = [];
+  const recentCutoff = subWeeks(new Date(), 6);
   Session.user().groups().forEach(g => {
-    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread()).length;
+    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
   });
   Session.user().parentGroups().forEach(g => {
     if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
@@ -142,7 +145,7 @@ watchRecords({
 
 watchRecords({
   collections: ['topics'],
-  query: () => { updateUnreadCounts() }
+  query: () => { updateUnreadCounts(); updateGroups(); }
 });
 
 watchRecords({

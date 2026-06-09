@@ -6,10 +6,8 @@ module GroupExportRelations
     has_many :tags
 
     # polls
-    has_many :exportable_polls, -> { where("anonymous = false OR polls.closed_at is not null") }, through: :topics, source: :topicable, source_type: 'Poll'
+    has_many :exportable_polls, -> { where("anonymous = false OR polls.closed_at is not null") }, through: :topics, source: :polls
 
-    has_many :discussion_taggings, through: :discussions, source: :taggings
-    has_many :poll_taggings, through: :exportable_polls, source: :taggings
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances

@@ -316,6 +316,7 @@ nl_NL:
       save_template: Sjabloon opslaan
       fork_template: Vorksjabloon
       customize: Aanpassen
+      add: Toevoegen
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -327,6 +328,7 @@ nl_NL:
     templates_admin_hint: Omdat u groepsbeheerder bent, kunt u sjablonen die u niet wilt verbergen of verwijderen en de overgebleven sjablonen aanpassen aan uw behoeften.
     read: Lezen
     unread: Ongelezen
+    discussion: Discussie
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1055,6 +1057,7 @@ nl_NL:
     delete_discussion: Discussie verwijderen
     lock_thread: Discussie vergrendelen
     unlock_thread: Discussie ontgrendelen
+    add_to_discussion: Voeg toe aan de discussie
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2888,3 +2891,8 @@ nl_NL:
   lock_thread_modal:
     body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.
     explanation: Vergrendel discussies om te voorkomen dat mensen reageren of verdere wijzigingen aanbrengen.
+  add_poll_to_discussion_modal:
+    title: Voeg toe aan discussie
+    discussion: Discussie
+    success: Succes, %{pollType} toegevoegd aan de discussie!
+    explanation: De %{pollType} en alle stemmen, opmerkingen en de uitslag worden toegevoegd aan de geselecteerde discussiedraad.

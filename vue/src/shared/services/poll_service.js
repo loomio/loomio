@@ -86,6 +86,26 @@ export default new class PollService {
         to() { return `/p/${poll.key}/edit`; }
       },
 
+      add_to_discussion: {
+        icon: 'mdi-comment-plus-outline',
+        name: 'action_dock.add_to_discussion',
+        menu: true,
+        canPerform() {
+          const topic = poll.topic();
+          return event &&
+                 poll.isTopicable() &&
+                 topic &&
+                 !topic.lockedAt &&
+                 topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'PollCommonAddToDiscussionModal',
+            props: { poll }
+          });
+        }
+      },
+
       make_a_copy: {
         icon: 'mdi-content-copy',
         name: 'templates.make_a_copy',

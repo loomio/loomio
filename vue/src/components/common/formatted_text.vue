@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { computed } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -20,6 +20,10 @@ const props = defineProps({
 
 const { t } = useI18n();
 
+const RICH_TEXT_IMAGE_MAX_HEIGHT = 600;
+const RICH_TEXT_IMAGE_STYLE_CANDIDATE = /<img\b(?=[^>]*\bwidth\s*=)(?=[^>]*\bheight\s*=)(?![^>]*\baspect-ratio\s*:)/i;
+const htmlContent = ref(null);
+
 const canEdit = computed(() => AbilityService.canEdit(props.model));
 
 const content = computed(() => {
@@ -31,6 +35,38 @@ const content = computed(() => {
 });
 
 const format = computed(() => props.model[props.field + 'Format'] || 'none');
+
+function formatDimension(value) {
+  return value === Math.trunc(value) ? Math.trunc(value) : value.toFixed(2);
+}
+
+function applyImagePlaceholderStyles() {
+  const root = htmlContent.value;
+  if (!root || format.value !== 'html') { return; }
+
+  root.querySelectorAll('img[width][height]').forEach(img => {
+    if (img.style.aspectRatio) { return; }
+
+    const widthAttr = img.getAttribute('width');
+    const heightAttr = img.getAttribute('height');
+    if (!/^\d+(\.\d+)?$/.test(widthAttr) || !/^\d+(\.\d+)?$/.test(heightAttr)) { return; }
+
+    const width = Number(widthAttr);
+    const height = Number(heightAttr);
+    if (!width || !height) { return; }
+
+    const displayWidth = Math.min(width, RICH_TEXT_IMAGE_MAX_HEIGHT * width / height);
+    img.style.width = `min(${formatDimension(displayWidth)}px, 100%)`;
+    img.style.height = 'auto';
+    img.style.aspectRatio = `${widthAttr} / ${heightAttr}`;
+  });
+}
+
+watch([content, format], () => {
+  if (format.value !== 'html' || !content.value?.match?.(RICH_TEXT_IMAGE_STYLE_CANDIDATE)) { return; }
+
+  nextTick(applyImagePlaceholderStyles);
+}, { immediate: true });
 
 function onClick(e) {
   const target = e.target;
@@ -69,7 +105,7 @@ function onClick(e) {
 <template lang="pug">
 div.lmo-markdown-wrapper(@click="onClick")
   div(v-if="format == 'md'" v-marked='content')
-  div(v-if="format == 'html'" v-html='content')
+  div(v-if="format == 'html'" ref="htmlContent" v-html='content')
   span(v-if="format == 'none'") Format none. Use plain-text instead.
 </template>
 

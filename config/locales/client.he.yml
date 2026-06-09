@@ -316,6 +316,7 @@ he:
       save_template: שמור תבנית
       fork_template: תבנית מזלג
       customize: התאמה אישית
+      add: לְהוֹסִיף
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -327,6 +328,7 @@ he:
     templates_admin_hint: מכיוון שאתה מנהל קבוצה, תוכל להסתיר או למחוק כל תבנית שאינך מעוניין בה, ולערוך את הנותרות בהתאם לצרכים שלך.
     read: לִקְרוֹא
     unread: לא נקרא
+    discussion: דִיוּן
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -1053,6 +1055,7 @@ he:
     delete_discussion: מחיקת דיון
     lock_thread: נעילת שרשור
     unlock_thread: ביטול נעילת שרשור
+    add_to_discussion: הוסף לדיון
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2880,3 +2883,8 @@ he:
   lock_thread_modal:
     body: נעל שרשורים כדי להסיר אותם מרשימת השרשורים הפתוחים ולמנוע מאנשים להגיב.
     explanation: נעילת שרשורים כדי למנוע מאנשים להגיב או לבצע שינויים נוספים
+  add_poll_to_discussion_modal:
+    title: הוסף לדיון
+    discussion: דִיוּן
+    success: הצלחה, %{pollType} נוסף לדיון!
+    explanation: ה-%{pollType} וכל הצבעה, תגובה ותוצאה יצורפו לשרשור הדיון שנבחר.

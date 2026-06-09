@@ -316,6 +316,7 @@ hr:
       save_template: Spremi predložak
       fork_template: Predložak vilice
       customize: Prilagodi
+      add: Dodati
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -327,6 +328,7 @@ hr:
     templates_admin_hint: Budući da ste administrator grupe, možete sakriti ili izbrisati sve predloške koje ne želite, a preostale urediti prema svojim potrebama.
     read: Čitaj
     unread: Nepročitano
+    discussion: Rasprava
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -1049,6 +1051,7 @@ hr:
     delete_discussion: Izbriši raspravu
     lock_thread: Zaključaj nit
     unlock_thread: Otključaj nit
+    add_to_discussion: Dodaj u raspravu
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje
@@ -2861,3 +2864,8 @@ hr:
   lock_thread_modal:
     body: Zaključajte teme kako biste ih uklonili s popisa otvorenih tema i spriječili ljude da komentiraju.
     explanation: Zaključajte teme kako biste spriječili ljude da komentiraju ili unose daljnje promjene
+  add_poll_to_discussion_modal:
+    title: Dodaj u raspravu
+    discussion: Rasprava
+    success: Uspjeh, %{pollType} dodan u raspravu!
+    explanation: "%{pollType} i svi glasovi, komentari i ishod bit će dodani odabranoj niti rasprave."

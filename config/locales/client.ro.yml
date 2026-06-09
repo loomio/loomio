@@ -316,6 +316,7 @@ ro:
       save_template: Salvați șablonul
       fork_template: Șablon furcă
       customize: Personalizare
+      add: Adăuga
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -327,6 +328,7 @@ ro:
     templates_admin_hint: Deoarece ești administrator de grup, poți ascunde sau șterge orice șabloane pe care nu le dorești și le poți edita pe cele rămase pentru a le potrivi nevoilor tale.
     read: Citire
     unread: Necitit
+    discussion: Discuţie
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -1049,6 +1051,7 @@ ro:
     delete_discussion: Ștergeți discuția
     lock_thread: Blocați firul de discuție
     unlock_thread: Deblocați firul de discuție
+    add_to_discussion: Adaugă la discuție
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -2861,3 +2864,8 @@ ro:
   lock_thread_modal:
     body: Blochează firele de discuție pentru a le elimina din lista de fire de discuție deschise și pentru a împiedica alte persoane să comenteze.
     explanation: Blocați firele de discuție pentru a împiedica alte persoane să comenteze sau să facă modificări suplimentare
+  add_poll_to_discussion_modal:
+    title: Adaugă la discuție
+    discussion: Discuţie
+    success: Succes, %{pollType} adăugat la discuție!
+    explanation: "%{pollType} și orice voturi, comentarii și rezultate vor fi adăugate firului de discuție selectat."

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_28_014519) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_09_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -304,7 +304,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_28_014519) do
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["position_key"], name: "index_events_on_position_key"
+    t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
     t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_and_sequence_id", unique: true
+    t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
     t.index ["topic_id"], name: "index_events_on_topic_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -953,6 +955,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_28_014519) do
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
+    t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["last_activity_at"], name: "index_topics_on_last_activity_at", order: :desc
     t.index ["locked_at"], name: "index_topics_on_locked_at"
@@ -1085,4 +1088,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_28_014519) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "polls", "topics", deferrable: :deferred
 end

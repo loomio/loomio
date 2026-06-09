@@ -15,6 +15,7 @@ import { mdiCogOutline, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const props = defineProps({
   poll: Object,
@@ -32,6 +33,7 @@ const mergeQuery = (obj) => ({query: pickBy(Object.assign({}, route.query, obj),
 
 // watch_records composable
 const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
 // Template refs
 const form = ref(null);
@@ -241,7 +243,7 @@ const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 
 // Lifecycle
 onMounted(() => {
-  Records.users.findOrFetchGroups();
+  loadGroups();
 
   Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
     pollTemplate.value = template;

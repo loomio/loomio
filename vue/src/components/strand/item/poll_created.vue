@@ -46,9 +46,10 @@ export default {
       if (this.poll.pollType != 'meeting') {
         pollActions = omit(pollActions, "edit_stance");
       }
-      const eventActions = EventService.actions(this.event, this);
+      const topic = this.poll.topic();
+      const eventActions = (topic && topic.topicableType === 'Discussion') ? {} : EventService.actions(this.event, this);
       this.myStance = this.poll.myStance();
-      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) );
+      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
       this.dockActions = pickBy(pollActions, v => v.dock);
     },
 

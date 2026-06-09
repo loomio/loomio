@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if [ "${SKIP_BRAKEMAN:-}" = "1" ]; then
+  echo "Skipping Brakeman because SKIP_BRAKEMAN=1."
+  exit 0
+fi
+
+echo "==> Running Brakeman before push..."
+bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore

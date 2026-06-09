@@ -8,6 +8,7 @@ import EventBus      from '@/shared/services/event_bus';
 import ThreadFilter  from '@/shared/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const threadLimit = 50;
 const filters = [
@@ -23,11 +24,12 @@ const unreadCount = ref(0);
 const loading = ref(false);
 
 const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
 function fetchInbox() {
   if (!Session.isSignedIn()) return;
   loading.value = true;
-  Records.users.findOrFetchGroups();
+  loadGroups();
   Records.topics.fetch({
     params: { unread: 1, per: 50 }
   }).finally(() => { loading.value = false; });

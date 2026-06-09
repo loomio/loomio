@@ -8,7 +8,8 @@ class Topic < ApplicationRecord
   has_many :topic_readers, dependent: :destroy
   has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
   has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
-  has_many :polls
+  has_many :polls, dependent: :destroy
+  has_many :discussions, dependent: :destroy
 
   scope :joins_topicables, -> {
     joins("LEFT OUTER JOIN discussions ON discussions.id = topics.topicable_id AND topics.topicable_type = 'Discussion'")

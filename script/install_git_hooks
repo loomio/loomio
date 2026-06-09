@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+HOOK_DIR="$ROOT/.git/hooks"
+
+install -m 0755 "$ROOT/script/git_hooks/pre-push" "$HOOK_DIR/pre-push"
+
+echo "Installed git hooks:"
+echo "  .git/hooks/pre-push"

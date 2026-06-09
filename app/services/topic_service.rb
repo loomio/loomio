@@ -218,7 +218,7 @@ class TopicService
 
   def self.repair(topic_id)
     topic = Topic.find_by(id: topic_id)
-    return unless topic
+    return if !topic || topic.discarded_at
     topicable = topic.topicable
 
     # ensure topicable.created_event exists

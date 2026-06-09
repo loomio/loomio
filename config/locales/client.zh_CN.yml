@@ -339,6 +339,7 @@ zh_CN:
       save_template: 保存模板
       fork_template: 分支模板
       customize: 定制
+      add: 添加
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
@@ -349,6 +350,7 @@ zh_CN:
     templates_admin_hint: 因为您是群组管理员，您可以隐藏或删除任何您不需要的模板，并编辑剩余的模板以满足您的需求。
     read: 读
     unread: 未读
+    discussion: 讨论
   merge_accounts:
     modal:
       title: 合并账户
@@ -1088,6 +1090,7 @@ zh_CN:
     count_voters: "%{count} 位投票者"
     lock_thread: 锁定主题
     unlock_thread: 解锁主题
+    add_to_discussion: 加入讨论
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -2779,3 +2782,8 @@ zh_CN:
   lock_thread_modal:
     body: 锁定帖子，将其从开放帖子列表中移除，并阻止他人评论。
     explanation: 锁定帖子以防止他人评论或进行进一步修改
+  add_poll_to_discussion_modal:
+    title: 加入讨论
+    discussion: 讨论
+    success: 成功，%{pollType} 已加入讨论！
+    explanation: "%{pollType} 以及任何投票、评论和结果都将附加到选定的讨论主题中。"
