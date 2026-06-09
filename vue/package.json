@@ -110,7 +110,7 @@
   },
   "optionalDependencies": {
     "@emnapi/core": "^1.10.0",
-    "@emnapi/runtime": "^1.10.0",
+    "@emnapi/runtime": "^1.11.0",
     "@esbuild/darwin-arm64": "latest",
     "@rollup/rollup-linux-x64-gnu": "latest"
   }
