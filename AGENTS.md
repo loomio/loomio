@@ -15,7 +15,10 @@
 
 ## Frontend / Vue
 
-- Prefer `<script setup>` format for new Vue components.
+- Write new Vue components in `<script setup>` format — even when sibling files in the same directory still use the Options API (much of the codebase is mid-migration; don't perpetuate the old style by matching neighbours).
+  - Use the `useWatchRecords` composable from `@/composables/useWatchRecords` instead of the `WatchRecords` mixin.
+  - Use `LmoUrlService.route({model})` directly instead of the `UrlFor` mixin.
+  - Destructure `defineProps` and reference bare prop names (not `props.x`).
 
 ## Running Tests
 

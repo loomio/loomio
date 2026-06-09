@@ -298,7 +298,6 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     maxlength='250'
   )
 
-  tags-field(:model="poll")
 
   lmo-textarea.poll-common-form-fields__details(
     :model='poll'

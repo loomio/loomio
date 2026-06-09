@@ -1,6 +1,7 @@
 <script setup lang="js">
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
 import { computed } from 'vue';
 
 const { topicable } = defineProps({
@@ -33,9 +34,17 @@ const breadcrumbs = computed(() => {
 });
 const tags = computed(() => topic.value.tags);
 const isPinned = computed(() => !!topic.value.pinnedAt);
+const canEditTags = computed(() => AbilityService.canEditTags(topic.value));
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
+}
+
+function openTagsModal() {
+  EventBus.$emit('openModal', {
+    component: 'TopicTagsModal',
+    props: {topic: topic.value}
+  });
 }
 </script>
 
@@ -46,6 +55,15 @@ function titleVisible(visible) {
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     tags-display(:tags="tags" :group="group")
+    v-btn.strand-header__edit-tags(
+      v-if="canEditTags"
+      icon
+      size="small"
+      variant="text"
+      :title="$t('loomio_tags.card_title')"
+      @click="openTagsModal"
+    )
+      common-icon.text-medium-emphasis(name="mdi-tag-plus-outline")
   h1.text-headline-large.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
     plain-text(:model='topicable' field='title')
     i.mdi.mdi-pin-outline.context-panel__heading-pin(v-if="isPinned")

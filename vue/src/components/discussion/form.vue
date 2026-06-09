@@ -233,8 +233,6 @@ v-form(ref="form" @submit.prevent="submit")
           v-model='discussion.title' maxlength='255'
         )
 
-        tags-field(:model="discussion")
-
         lmo-textarea(
           :model='discussion'
           field="description"
