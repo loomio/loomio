@@ -17,7 +17,7 @@ const colors = {
 }
 
 export default createVuetify({
-  // blueprint: md3,
+  blueprint: md3,
   icons: {
     defaultSet: 'mdi',
     aliases,
