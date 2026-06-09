@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance discussion discussion_template topic_reader topic comment
-    contact_message webhook chatbot contact_request reaction tag
+    contact_message webhook chatbot contact_request reaction bookmark tag
   )
 
   MODELS.each do |kind|
@@ -257,6 +257,10 @@ class PermittedParams < Struct.new(:params)
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},
       :image_files, {image_files: []}]
+  end
+
+  def bookmark_attributes
+    [:bookmarkable_id, :bookmarkable_type]
   end
 
   def reaction_attributes

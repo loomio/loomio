@@ -85,6 +85,7 @@ class User < ApplicationRecord
   has_many :identities, class_name: "Identity", dependent: :destroy
 
   has_many :reactions, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls

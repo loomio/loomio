@@ -3,6 +3,7 @@ class Discussion < ApplicationRecord
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
+  include Bookmarkable
   include HasTimeframe
   include HasEvents
   include HasMentions

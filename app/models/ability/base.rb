@@ -12,6 +12,7 @@ module Ability
     prepend Ability::Poll
     prepend Ability::PollOption
     prepend Ability::Reaction
+    prepend Ability::Bookmark
     prepend Ability::Stance
     prepend Ability::User
     prepend Ability::Tag

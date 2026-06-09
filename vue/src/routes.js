@@ -12,6 +12,7 @@ const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page')
 const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
 const PollTemplateBrowsePage = wrapAsyncLoader(() => import('./components/poll_template/browse_page'));
 const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
+const BookmarksPage = wrapAsyncLoader(() => import('./components/bookmarks/page'));
 const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
 const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
@@ -65,6 +66,7 @@ const router = createRouter({
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
+    {path: '/bookmarks', component: BookmarksPage},
     {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},

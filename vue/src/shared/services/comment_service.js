@@ -4,11 +4,14 @@ import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import openModal from '@/shared/helpers/open_modal';
 import Flash from '@/shared/services/flash';
+import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class CommentService {
   actions(comment, vm, event) {
     const isOwnComment = comment.authorId === Session.userId;
     return {
+      ...BookmarkService.actions(comment),
+
       react: {
         dock: 1,
         canPerform() {

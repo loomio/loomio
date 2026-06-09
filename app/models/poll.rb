@@ -6,6 +6,7 @@ class Poll < ApplicationRecord
   include HasMentions
   include SelfReferencing
   include Reactable
+  include Bookmarkable
   include HasCreatedEvent
   include HasRichText
   include Discard::Model
