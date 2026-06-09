@@ -4,6 +4,7 @@ class Outcome < ApplicationRecord
   include HasEvents
   include HasMentions
   include Reactable
+  include Bookmarkable
   include Translatable
   include HasCreatedEvent
   include HasEvents

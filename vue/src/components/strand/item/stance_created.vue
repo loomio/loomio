@@ -2,6 +2,7 @@
 import StanceService  from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import UrlFor from '@/mixins/url_for';
+import { pickBy } from 'lodash-es';
 
 export default {
   mixins: [UrlFor],
@@ -18,6 +19,7 @@ export default {
     actorName() { return this.event.actorName(); },
     poll() { return this.eventable.poll(); },
     actions() { return StanceService.actions(this.eventable, this, this.event); },
+    menuActions() { return pickBy(this.actions, v => v.menu); },
     componentType() {
       if (this.actor) {
         return 'router-link';
@@ -56,7 +58,7 @@ section.strand-item__stance-created.stance-created
       formatted-text.poll-common-stance-created__reason(:model="eventable" field="reason")
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
-    action-dock(:model='eventable' :actions='actions' size="small" left)
+    action-dock(:model='eventable' :actions='actions' :menu-actions='menuActions' size="small" left)
   template(v-if="!eventable.castAt && !eventable.revokedAt")
     .d-flex
       component.text-medium-emphasis(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
@@ -65,7 +67,7 @@ section.strand-item__stance-created.stance-created
       mid-dot.text-medium-emphasis
       router-link.text-medium-emphasis(:to='link')
         time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable', :actions='actions' size="small")
+    action-dock(:model='eventable', :actions='actions' :menu-actions='menuActions' size="small")
   template(v-if="eventable.revokedAt")
     .d-flex
       component.text-medium-emphasis(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
@@ -74,5 +76,5 @@ section.strand-item__stance-created.stance-created
       mid-dot.text-medium-emphasis
       router-link.text-medium-emphasis(:to='link')
         time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable' :actions='actions' size="small")
+    action-dock(:model='eventable' :actions='actions' :menu-actions='menuActions' size="small")
 </template>

@@ -2,10 +2,13 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import openModal      from '@/shared/helpers/open_modal';
+import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class DiscussionService {
   actions(discussion, vm) {
     return {
+      ...BookmarkService.actions(discussion),
+
       // make_a_copy: {
       //   icon: 'mdi-content-copy',
       //   name: 'templates.make_a_copy',
