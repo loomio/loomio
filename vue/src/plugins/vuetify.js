@@ -1,5 +1,6 @@
 // Composables
 import { createVuetify } from 'vuetify'
+// import { md3 } from 'vuetify/blueprints'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 const colors = {
   gold: "#DCA034",
@@ -16,6 +17,7 @@ const colors = {
 }
 
 export default createVuetify({
+  // blueprint: md3,
   icons: {
     defaultSet: 'mdi',
     aliases,
@@ -29,7 +31,6 @@ export default createVuetify({
         colors: {
           background: "#fcf6eb",
           primary:  colors.goldDark1,
-          'on-primary': '#ffffff',
           info:  colors.skyDark1,
           anchor:  colors.goldDark1,
         },
@@ -39,7 +40,6 @@ export default createVuetify({
         dark: true,
         colors: {
           primary: colors.gold,
-          'on-primary': '#ffffff',
           info: colors.skyDark1,
           anchor: colors.gold
         },
@@ -50,7 +50,6 @@ export default createVuetify({
         colors: {
           background: "#f0f0f0",
           primary:  colors.skyDark1,
-          'on-primary': '#ffffff',
           info:   colors.skyDark1,
           anchor:  colors.skyDark2,
         },
@@ -60,7 +59,6 @@ export default createVuetify({
         dark: true,
         colors: {
           primary: colors.sky,
-          'on-primary': '#ffffff',
           info: colors.skyDark1,
           anchor: colors.sky
         },
