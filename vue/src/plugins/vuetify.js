@@ -1,6 +1,6 @@
 // Composables
 import { createVuetify } from 'vuetify'
-// import { md3 } from 'vuetify/blueprints'
+import { md3 } from 'vuetify/blueprints'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 const colors = {
   gold: "#DCA034",
