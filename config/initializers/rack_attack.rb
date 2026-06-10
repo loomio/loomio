@@ -3,14 +3,45 @@ require 'ipaddr'
 class Rack::Attack
   class Request < ::Rack::Request
     def remote_ip
-      # Cloudflare stores remote IP in CF_CONNECTING_IP header
-      @remote_ip ||= (env['HTTP_CF_CONNECTING_IP'] ||
-                      env['action_dispatch.remote_ip'] ||
-                      ip).to_s
+      @remote_ip ||= begin
+        addr = IPAddr.new(ip.to_s) rescue nil
+        if env['HTTP_CF_CONNECTING_IP'].present? && addr && Rack::Attack::CLOUDFLARE_NETWORKS.any? { |net| net.include?(addr) }
+          env['HTTP_CF_CONNECTING_IP'].to_s
+        else
+          (env['action_dispatch.remote_ip'] || ip).to_s
+        end
+      end
     end
   end
 
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
+
+  Rails.logger.warn 'RACK_ATTACK_RATE_MULTIPLIER is greater than 1 in production' if Rails.env.production? && RATE_MULTIPLIER > 1
+
+  CLOUDFLARE_NETWORKS = %w[
+    173.245.48.0/20
+    103.21.244.0/22
+    103.22.200.0/22
+    103.31.4.0/22
+    141.101.64.0/18
+    108.162.192.0/18
+    190.93.240.0/20
+    188.114.96.0/20
+    197.234.240.0/22
+    198.41.128.0/17
+    162.158.0.0/15
+    104.16.0.0/13
+    104.24.0.0/14
+    172.64.0.0/13
+    131.0.72.0/22
+    2400:cb00::/32
+    2606:4700::/32
+    2803:f800::/32
+    2405:b500::/32
+    2405:8100::/32
+    2a06:98c0::/29
+    2c0f:f248::/32
+  ].map { |cidr| IPAddr.new(cidr) }.freeze
 
   # Exempt internal service-to-service traffic (Docker bridge, loopback,
   # RFC1918) from rate limits. Container-to-container requests have no
@@ -41,7 +72,7 @@ class Rack::Attack
 
   safelist('trusted-ingress') do |req|
     next false if TRUSTED_INGRESS_IPS.empty?
-    addr = IPAddr.new(req.remote_ip.to_s) rescue nil
+    addr = IPAddr.new(req.ip.to_s) rescue nil
     addr && TRUSTED_INGRESS_IPS.any? { |net| net.include?(addr) }
   end
 
@@ -89,13 +120,13 @@ class Rack::Attack
   end
 
   # Per-email rate limiting on auth endpoints
-  throttle("login_tokens/email", limit: 5 * RATE_MULTIPLIER, period: 1.hour) do |req|
+  throttle("login_tokens/email", limit: 5, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/login_tokens')
       req.params['email'].to_s.downcase.presence
     end
   end
 
-  throttle("sessions/email", limit: 10 * RATE_MULTIPLIER, period: 1.hour) do |req|
+  throttle("sessions/email", limit: 10, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/sessions')
       req.params.dig('user', 'email').to_s.downcase.presence
     end
