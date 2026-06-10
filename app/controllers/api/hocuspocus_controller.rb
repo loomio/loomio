@@ -4,7 +4,7 @@ class Api::HocuspocusController < ActionController::Base
   RECORD_TYPES = %w[comment discussion poll stance outcome pollTemplate discussionTemplate group user]
 
   def create
-    user_id, secret_token = params[:user_secret].split(',')
+    user_id, secret_token = user_secret.split(',')
     record_type, record_id, user_id_if_new = params[:document_name].split('-')
     raise "invalid record type #{record_type}" unless RECORD_TYPES.include?(record_type)
 
@@ -35,5 +35,11 @@ class Api::HocuspocusController < ActionController::Base
   rescue ActiveRecord::RecordNotFound => e
     logger.debug("hocuspocus controller rescued ActiveRecord::RecordNotFound #{e.inspect}")
     head :unauthorized
+  end
+
+  private
+
+  def user_secret
+    request.headers['X-User-Secret'].presence || params[:user_secret].to_s
   end
 end
