@@ -2,7 +2,7 @@ class Api::V1::BookmarksController < Api::V1::RestfulController
   alias :create :update
 
   def index
-    self.collection = current_user.bookmarks.order(created_at: :desc)
+    self.collection = current_user.bookmarks.kept.order(created_at: :desc)
     respond_with_collection
   end
 
