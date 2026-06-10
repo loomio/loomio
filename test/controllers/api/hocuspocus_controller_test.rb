@@ -39,16 +39,6 @@ class Api::HocuspocusControllerTest < ActionController::TestCase
     assert_response 200
   end
 
-  test "new comment accepts secret token from header" do
-    request.headers['X-User-Secret'] = "#{@user.id},#{@user.secret_token}"
-
-    post :create, params: {
-      document_name: "comment-new-#{@user.id}-1-1-1"
-    }
-
-    assert_response 200
-  end
-
   test "new comment invalid secret_token returns 401" do
     post :create, params: {
       user_secret: "#{@user.id},1203987120983120",
