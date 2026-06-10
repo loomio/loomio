@@ -4,10 +4,27 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+# ── Brakeman ────────────────────────────────────────────────────────────
+
 if [ "${SKIP_BRAKEMAN:-}" = "1" ]; then
   echo "Skipping Brakeman because SKIP_BRAKEMAN=1."
-  exit 0
+else
+  echo "==> Running Brakeman before push..."
+  bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
 fi
 
-echo "==> Running Brakeman before push..."
-bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
+# ── Translation checks ──────────────────────────────────────────────────
+
+if [ "${SKIP_TRANSLATIONS:-}" = "1" ]; then
+  echo "Skipping translation checks because SKIP_TRANSLATIONS=1."
+else
+  BASE_REF="$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null || echo 'origin/master')"
+
+  echo ""
+  echo "==> Checking i18n interpolation variables..."
+  bundle exec ruby script/check_i18n_interpolations.rb
+
+  echo ""
+  echo "==> Checking translations against $BASE_REF..."
+  bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
+fi
