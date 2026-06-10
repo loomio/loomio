@@ -1,4 +1,5 @@
 class Bookmark < ApplicationRecord
+  include Discard::Model
   include PrettyUrlHelper
 
   belongs_to :bookmarkable, polymorphic: true

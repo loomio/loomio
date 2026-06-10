@@ -15,7 +15,7 @@ const loading = ref(true);
 
 const findRecords = () => {
   bookmarks.value = orderBy(
-    Records.bookmarks.find({userId: Session.userId}),
+    Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
     ['createdAt'],
     ['desc']
   );

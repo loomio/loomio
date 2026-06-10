@@ -105,7 +105,7 @@ const fetchData = () => {
 };
 
 const updateBookmarks = () => {
-  bookmarksCount.value = Records.bookmarks.find({userId: Session.userId}).length;
+  bookmarksCount.value = Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length;
 };
 
 
