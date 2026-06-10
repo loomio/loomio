@@ -17,7 +17,8 @@ export default new class BookmarkService {
     return Records.bookmarks.find({
       userId: Session.userId,
       bookmarkableType: this.typeFor(model),
-      bookmarkableId: model.id
+      bookmarkableId: model.id,
+      discardedAt: null
     })[0];
   }
 
