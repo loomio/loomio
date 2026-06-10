@@ -126,13 +126,29 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal [I18n.t('auth_form.account_locked')], JSON.parse(response.body).dig('errors', 'password')
   end
 
-  test "returns a generic login failure for invalid pending tokens" do
+  test "returns email not found when password login account does not exist" do
+    post :create, params: { user: { email: "missinglogin@example.com", password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.email_not_found')], JSON.parse(response.body).dig('errors', 'email')
+  end
+
+  test "returns invalid password when password does not match" do
+    user = User.create!(email: "wrongpasswordlogin@example.com", email_verified: true, password: "s3curepassword123")
+
+    post :create, params: { user: { email: user.email, password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.invalid_password')], JSON.parse(response.body).dig('errors', 'password')
+  end
+
+  test "returns invalid token failure for invalid pending tokens" do
     session[:pending_login_token] = 'notatoken'
 
     post :create
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
+    assert_equal [I18n.t('auth_form.invalid_token')], JSON.parse(response.body).dig('errors', 'token')
   end
 
   test "does not sign in a nil password" do

@@ -31,11 +31,19 @@ class Api::V1::SessionsController < Devise::SessionsController
   private
 
   def failure_message
-    if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
+    if resource_params[:password] && login_user&.access_locked?
       { password: [I18n.t('auth_form.account_locked')] }
+    elsif session[:pending_login_token].present?
+      { token: [I18n.t('auth_form.invalid_token')] }
+    elsif resource_params[:password] && login_user.nil?
+      { email: [I18n.t('auth_form.email_not_found')] }
     else
-      { password: [I18n.t('auth_form.invalid_login')] }
+      { password: [I18n.t('auth_form.invalid_password')] }
     end
+  end
+
+  def login_user
+    @login_user ||= User.find_for_authentication(email: resource_params[:email])
   end
 
   def attempt_login
