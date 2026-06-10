@@ -2422,6 +2422,7 @@ it:
     change_your_password: Vuoi impostare una nuova password?
     email_placeholder: tu{'@'}esempio.com
     turnstile_required: Si prega di completare la verifica prima di continuare.
+    invalid_login: Impossibile accedere con queste credenziali
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

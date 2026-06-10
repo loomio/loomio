@@ -2419,6 +2419,7 @@ pl:
     change_your_password: Czy chcesz ustawić nowe hasło?
     email_placeholder: ty{'@'}example.com
     turnstile_required: Aby kontynuować, należy zakończyć weryfikację.
+    invalid_login: Nie można zalogować się przy użyciu tych danych
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe

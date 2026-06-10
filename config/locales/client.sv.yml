@@ -2394,6 +2394,7 @@ sv:
     change_your_password: Vill du ställa in ett nytt lösenord?
     email_placeholder: du{'@'}example.com
     turnstile_required: Slutför verifieringen innan du fortsätter.
+    invalid_login: Det går inte att logga in dig med de uppgifterna
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

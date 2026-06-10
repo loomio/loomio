@@ -2394,6 +2394,7 @@ ro:
     change_your_password: Doriți să setați o nouă parolă?
     email_placeholder: tu{'@'}exemplu.com
     turnstile_required: Vă rugăm să finalizați verificarea înainte de a continua.
+    invalid_login: Nu te pot conecta cu aceste detalii
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

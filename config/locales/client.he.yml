@@ -2413,6 +2413,7 @@ he:
     change_your_password: האם תרצה להגדיר סיסמה חדשה?
     email_placeholder: אתה{'@'}example.com
     turnstile_required: אנא השלם את האימות לפני שתמשיך.
+    invalid_login: לא ניתן להתחבר אותך עם הפרטים האלה
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
