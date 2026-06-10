@@ -52,6 +52,15 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "create rejects reactable types outside the allowlist" do
+    user = users(:admin)
+
+    sign_in user
+    post :create, params: { reaction: { reaction: '+1', reactable_id: user.id, reactable_type: 'User' } }
+
+    assert_response :not_found
+  end
+
   test "index fetches reactions for multiple records at once" do
     user = users(:admin)
     group = groups(:group)
