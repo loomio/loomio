@@ -49,6 +49,12 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "index returns empty collection when logged out" do
+    get :index
+    assert_response :success
+    assert_equal [], JSON.parse(response.body)['bookmarks']
+  end
+
   test "index returns only the current user's bookmarks" do
     user = users(:admin)
     other = users(:user)

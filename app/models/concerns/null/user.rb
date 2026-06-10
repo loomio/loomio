@@ -39,6 +39,7 @@ module Null::User
       group_polls: :poll,
       polls: :poll,
       stances: :stance,
+      bookmarks: :bookmark,
       groups: :group,
       adminable_groups: :group
     }

@@ -17,6 +17,10 @@
 
 - Prefer `<script setup>` format for new Vue components.
 
+## Null objects
+
+- When adding a method to `User` or `Group`, also add the corresponding method to the null object (`LoggedOutUser` or `NullGroup`) so logged-out and nil-group paths do not raise `NoMethodError`.
+
 ## Running Tests
 
 **Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
