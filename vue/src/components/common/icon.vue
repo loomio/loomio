@@ -173,7 +173,12 @@ import {
   mdiWebhook,
   mdiWhiteBalanceSunny,
   mdiWindowClose,
-  mdiYoutube
+  mdiYoutube,
+  mdiBookmark,
+  mdiBookmarkOutline,
+  mdiBookmarkRemoveOutline,
+  mdiCheckboxMarkedCircleOutline,
+  mdiForumOutline
 } from '@mdi/js';
 
 const icons = {
@@ -347,6 +352,11 @@ const icons = {
   mdiWhiteBalanceSunny,
   mdiWindowClose,
   mdiYoutube,
+  mdiBookmark,
+  mdiBookmarkOutline,
+  mdiBookmarkRemoveOutline,
+  mdiCheckboxMarkedCircleOutline,
+  mdiForumOutline,
   webex
 };
 

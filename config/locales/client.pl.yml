@@ -1058,6 +1058,8 @@ pl:
     lock_thread: Zablokuj wątek
     unlock_thread: Odblokuj wątek
     add_to_discussion: Dodaj do dyskusji
+    save_bookmark: Zapisz zakładkę
+    remove_bookmark: Usuń zakładkę
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2897,3 +2899,16 @@ pl:
     discussion: Dyskusja
     success: Sukces, %{pollType} dodano do dyskusji!
     explanation: "%{pollType} oraz wszelkie głosy, komentarze i wyniki zostaną dołączone do wybranego wątku dyskusji."
+  bookmarks:
+    bookmarks: Zakładki
+    saved: Dodano zakładkę
+    removed: Usunięto zakładkę
+    empty: Brak zakładek
+    empty_help: Zakładki pozwalają śledzić rzeczy, do których chcesz wrócić.
+    subtitle: "%{type} przez %{name}"
+    types:
+      Discussion: Dyskusja
+      Poll: Głosowanie
+      Comment: Komentarz
+      Stance: Głos
+      Outcome: Konkluzja

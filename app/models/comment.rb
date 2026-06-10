@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
   include CustomCounterCache::Model
   include Translatable
   include Reactable
+  include Bookmarkable
   include HasMentions
   include HasCreatedEvent
   include HasEvents

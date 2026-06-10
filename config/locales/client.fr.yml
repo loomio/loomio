@@ -1066,6 +1066,8 @@ fr:
     lock_thread: Verrouiller la discussion
     unlock_thread: Déverrouiller le fil de discussion
     add_to_discussion: Ajouter à la discussion
+    save_bookmark: Enregistrer le signet
+    remove_bookmark: Supprimer le signet
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -2914,3 +2916,16 @@ fr:
     discussion: Discussion
     success: Succès, %{pollType} a été ajouté à la discussion !
     explanation: Le %{pollType} ainsi que tous les votes, commentaires et résultats seront ajoutés au fil de discussion sélectionné.
+  bookmarks:
+    bookmarks: Signets
+    saved: Signet enregistré
+    removed: Signet supprimé
+    empty: Aucun signet pour l'instant
+    empty_help: Les signets permettent de garder une trace des choses auxquelles vous souhaitez revenir.
+    subtitle: "%{type} par %{name}"
+    types:
+      Discussion: Discussion
+      Poll: Sondage
+      Comment: Commentaire
+      Stance: Vote
+      Outcome: Conclusion

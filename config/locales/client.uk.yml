@@ -1059,6 +1059,8 @@ uk:
     lock_thread: Заблокувати тему
     unlock_thread: Розблокувати тему
     add_to_discussion: Додати до обговорення
+    save_bookmark: Зберегти закладку
+    remove_bookmark: Видалити закладку
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -2900,3 +2902,16 @@ uk:
     discussion: Обговорення
     success: Успіх, %{pollType} додано до обговорення!
     explanation: "%{pollType} та будь-які голоси, коментарі та результати будуть додані до вибраної теми обговорення."
+  bookmarks:
+    bookmarks: Закладки
+    saved: Закладку збережено
+    removed: Закладку видалено
+    empty: Поки що немає закладок
+    empty_help: Закладки – це спосіб відстежувати речі, до яких ви хочете повернутися.
+    subtitle: "%{type} від %{name}"
+    types:
+      Discussion: Обговорення
+      Poll: Опитування
+      Comment: Коментар
+      Stance: Голос
+      Outcome: Висновок

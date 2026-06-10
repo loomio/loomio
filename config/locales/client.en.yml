@@ -1077,6 +1077,8 @@ en:
   action_dock:
     actions_menu: Actions menu
     more_actions: More actions
+    save_bookmark: Save bookmark
+    remove_bookmark: Remove bookmark
     react: React
     notify: Notify
     add_resource: Add an attachment
@@ -1183,6 +1185,19 @@ en:
     edit_markdown: Edit Markdown
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
     upload_failed: Upload failed
+  bookmarks:
+    bookmarks: Bookmarks
+    saved: Bookmark saved
+    removed: Bookmark removed
+    empty: No bookmarks yet
+    empty_help: Bookmarks are a way to keep track of things you want to return to.
+    subtitle: "%{type} by %{name}"
+    types:
+      Discussion: Discussion
+      Poll: Poll
+      Comment: Comment
+      Stance: Vote
+      Outcome: Outcome
   cover_photo_form:
     heading: New cover photo
     upload_link: Upload new cover photo

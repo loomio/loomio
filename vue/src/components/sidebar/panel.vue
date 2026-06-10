@@ -18,6 +18,7 @@ import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
+import { useBookmarks } from '@/composables/useBookmarks';
 
 import { mdiCog } from '@mdi/js';
 
@@ -37,11 +38,13 @@ const pollsToVoteOnCount = ref(0);
 const openGroups = ref([]);
 const openCounts = ref({});
 const showSettings = ref(false);
+const bookmarksCount = ref(0);
 const isSignedIn = ref(Session.isSignedIn());
 const canStartGroups = ref(AbilityService.canStartGroups());
 
 const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
+const { loadBookmarks } = useBookmarks();
 
 // Computed properties
 const greySidebarLogo = computed(() =>
@@ -98,6 +101,11 @@ const fetchData = () => {
   });
   Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction', last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
   Records.stances.fetch({ path: 'my_stances' })
+  loadBookmarks();
+};
+
+const updateBookmarks = () => {
+  bookmarksCount.value = Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length;
 };
 
 
@@ -151,6 +159,11 @@ watchRecords({
 watchRecords({
   collections: ['stances'],
   query: () => { updatePollsToVoteOnCount() }
+});
+
+watchRecords({
+  collections: ['bookmarks'],
+  query: () => { updateBookmarks() }
 });
 
 let hasFetched = false;
@@ -208,6 +221,12 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           template(v-if="unreadTopicCounts['direct']")
             | &nbsp;
             span ({{unreadTopicCounts['direct']}})
+      v-list-item.sidebar__list-item-button--bookmarks(to="/bookmarks")
+        v-list-item-title(:class="{'text-medium-emphasis': !bookmarksCount}")
+          span(v-t="'bookmarks.bookmarks'")
+          template(v-if="bookmarksCount")
+            | &nbsp;
+            span ({{bookmarksCount}})
       v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
 
     v-divider

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_10_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -149,6 +149,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000000) do
   create_table "blocked_domains", force: :cascade do |t|
     t.string "name"
     t.index ["name"], name: "index_blocked_domains_on_name", unique: true
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "bookmarkable_type", null: false
+    t.bigint "bookmarkable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
+    t.index ["bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_bookmarkable"
+    t.index ["discarded_at"], name: "index_bookmarks_on_discarded_at"
+    t.index ["user_id", "bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_user_and_bookmarkable", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "chatbots", force: :cascade do |t|
@@ -927,6 +940,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000000) do
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
+    t.index ["user_id", "topic_id"], name: "index_topic_readers_guest_user_id", where: "(guest = true)"
   end
 
   create_table "topics", force: :cascade do |t|

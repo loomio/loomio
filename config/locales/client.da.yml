@@ -1052,6 +1052,8 @@ da:
     lock_thread: Lås tråd
     unlock_thread: Lås tråden op
     add_to_discussion: Tilføj til diskussion
+    save_bookmark: Gem bogmærke
+    remove_bookmark: Fjern bogmærke
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -2870,3 +2872,16 @@ da:
     discussion: Diskussion
     success: Succes, %{pollType} tilføjet til diskussionen!
     explanation: "%{pollType} og eventuelle stemmer, kommentarer og resultat vil blive tilføjet til den valgte diskussionstråd."
+  bookmarks:
+    bookmarks: Bogmærker
+    saved: Bogmærke gemt
+    removed: Bogmærke fjernet
+    empty: Ingen bogmærker endnu
+    empty_help: Bogmærker er en måde at holde styr på ting, du gerne vil vende tilbage til.
+    subtitle: "%{type} af %{name}"
+    types:
+      Discussion: Diskussion
+      Poll: Afstemning
+      Comment: Kommentar
+      Stance: Stemme
+      Outcome: Konklusion

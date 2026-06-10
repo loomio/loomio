@@ -1059,6 +1059,8 @@ zh_TW:
     lock_thread: 鎖定主題
     unlock_thread: 解鎖主題
     add_to_discussion: 加入討論
+    save_bookmark: 儲存書籤
+    remove_bookmark: 移除書籤
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -2898,3 +2900,16 @@ zh_TW:
     discussion: 討論
     success: 成功，%{pollType} 已加入討論！
     explanation: "%{pollType} 以及任何投票、評論和結果都將附加到選定的討論主題中。"
+  bookmarks:
+    bookmarks: 書籤
+    saved: 已儲存書籤
+    removed: 書籤已移除
+    empty: 暫無書籤
+    empty_help: 書籤是一種記錄你想稍後查看的內容的方法。
+    subtitle: "%{name} 的%{type}"
+    types:
+      Discussion: 討論
+      Poll: 輪詢
+      Comment: 評論
+      Stance: 投票
+      Outcome: 結論

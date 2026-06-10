@@ -279,6 +279,7 @@ Rails.application.routes.draw do
         post :undiscard, on: :member
       end
       resources :reactions,   only: [:create, :update, :index, :destroy]
+      resources :bookmarks,   only: [:create, :update, :index, :destroy]
 
       resource :translations, only: [] do
         get :inline, to: 'translations#inline'

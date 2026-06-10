@@ -1052,6 +1052,8 @@ tr:
     lock_thread: Konuyu kilitle
     unlock_thread: Konunun kilidini aç
     add_to_discussion: Tartışmaya ekle
+    save_bookmark: Yer işaretini kaydet
+    remove_bookmark: Yer işaretini kaldır
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -2870,3 +2872,16 @@ tr:
     discussion: Tartışma
     success: Başarılı, %{pollType} tartışmaya eklendi!
     explanation: "%{pollType} ve oylar, yorumlar ve sonuçlar seçilen tartışma başlığına eklenecektir."
+  bookmarks:
+    bookmarks: Yer işaretleri
+    saved: Yer imi kaydedildi.
+    removed: Yer işareti kaldırıldı
+    empty: Henüz yer imi yok.
+    empty_help: Yer işaretleri, daha sonra tekrar bakmak istediğiniz şeyleri takip etmenin bir yoludur.
+    subtitle: "%{type} tarafından %{name}"
+    types:
+      Discussion: Tartışma
+      Poll: Anket
+      Comment: Yorum
+      Stance: Oy
+      Outcome: Karar

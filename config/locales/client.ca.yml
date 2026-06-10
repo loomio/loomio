@@ -1058,6 +1058,8 @@ ca:
     lock_thread: Bloqueja el fil
     unlock_thread: Desbloqueja el fil
     add_to_discussion: Afegeix a la discussió
+    save_bookmark: Desa el marcador
+    remove_bookmark: Elimina el marcador
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -2897,3 +2899,16 @@ ca:
     discussion: Discussió
     success: Èxit, %{pollType} afegit a la discussió!
     explanation: El %{pollType} i qualsevol vot, comentari i resultat s'afegiran al fil de discussió seleccionat.
+  bookmarks:
+    bookmarks: Adreces d'interès
+    saved: Adreça d'interès desada
+    removed: S'ha eliminat el marcador
+    empty: Encara no hi ha marcadors
+    empty_help: Els marcadors són una manera de fer un seguiment de les coses a les quals voleu tornar.
+    subtitle: "%{type} per %{name}"
+    types:
+      Discussion: Discussió
+      Poll: Enquesta
+      Comment: Comentari
+      Stance: Vot
+      Outcome: Conclusió

@@ -1052,6 +1052,8 @@ hr:
     lock_thread: Zaključaj nit
     unlock_thread: Otključaj nit
     add_to_discussion: Dodaj u raspravu
+    save_bookmark: Spremi oznaku
+    remove_bookmark: Ukloni oznaku
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje
@@ -2870,3 +2872,16 @@ hr:
     discussion: Rasprava
     success: Uspjeh, %{pollType} dodan u raspravu!
     explanation: "%{pollType} i svi glasovi, komentari i ishod bit će dodani odabranoj niti rasprave."
+  bookmarks:
+    bookmarks: Oznake
+    saved: Oznaka spremljena
+    removed: Oznaka uklonjena
+    empty: Još nema oznaka
+    empty_help: Oznake su način praćenja stvari kojima se želite vratiti.
+    subtitle: "%{type} od %{name}"
+    types:
+      Discussion: Rasprava
+      Poll: Anketa
+      Comment: Komentar
+      Stance: Glas
+      Outcome: Ishod

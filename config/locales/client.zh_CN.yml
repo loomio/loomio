@@ -1091,6 +1091,8 @@ zh_CN:
     lock_thread: 锁定主题
     unlock_thread: 解锁主题
     add_to_discussion: 加入讨论
+    save_bookmark: 保存书签
+    remove_bookmark: 移除书签
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -2788,3 +2790,16 @@ zh_CN:
     discussion: 讨论
     success: 成功，%{pollType} 已加入讨论！
     explanation: "%{pollType} 以及任何投票、评论和结果都将附加到选定的讨论主题中。"
+  bookmarks:
+    bookmarks: 书签
+    saved: 已保存书签
+    removed: 书签已移除
+    empty: 暂无书签
+    empty_help: 书签是一种记录你想稍后查看的内容的方法。
+    subtitle: "%{name} 的%{type}"
+    types:
+      Discussion: 讨论
+      Poll: 轮询
+      Comment: 评论
+      Stance: 投票
+      Outcome: 结论

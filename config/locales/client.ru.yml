@@ -1052,6 +1052,8 @@ ru:
     lock_thread: Заблокировать тему
     unlock_thread: Разблокировать тему
     add_to_discussion: Добавить к обсуждению
+    save_bookmark: Сохранить закладку
+    remove_bookmark: Удалить закладку
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -2870,3 +2872,16 @@ ru:
     discussion: Обсуждение
     success: Успех, %{pollType} добавлен в обсуждение!
     explanation: В выбранную ветку обсуждения будет добавлен %{pollType}, а также все голоса, комментарии и результаты.
+  bookmarks:
+    bookmarks: Закладки
+    saved: Закладка сохранена
+    removed: Закладка удалена
+    empty: Закладок пока нет.
+    empty_help: Закладки — это способ отслеживать то, к чему вы хотите вернуться.
+    subtitle: "%{type} от %{name}"
+    types:
+      Discussion: Обсуждение
+      Poll: Голосование
+      Comment: Комментарий
+      Stance: Голосование
+      Outcome: Исход

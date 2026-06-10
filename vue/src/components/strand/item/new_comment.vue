@@ -55,7 +55,7 @@ export default {
       ,
         pickBy(this.commentActions, v => v.menu)
       );
-      return pick(actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
+      return pick(actions, ['save_bookmark', 'remove_bookmark', 'pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
     }
   }
 };

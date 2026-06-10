@@ -1058,6 +1058,8 @@ nl_NL:
     lock_thread: Discussie vergrendelen
     unlock_thread: Discussie ontgrendelen
     add_to_discussion: Voeg toe aan de discussie
+    save_bookmark: Sla bladwijzer op
+    remove_bookmark: Verwijder bladwijzer
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2897,3 +2899,16 @@ nl_NL:
     discussion: Discussie
     success: Succes, %{pollType} toegevoegd aan de discussie!
     explanation: De %{pollType} en alle stemmen, opmerkingen en de uitslag worden toegevoegd aan de geselecteerde discussiedraad.
+  bookmarks:
+    bookmarks: Bladwijzers
+    saved: Bladwijzer opgeslagen
+    removed: Bladwijzer verwijderd
+    empty: Nog geen bladwijzers
+    empty_help: Met bladwijzers kun je bijhouden waar je later nog eens naar wilt terugkeren.
+    subtitle: "%{type} door %{name}"
+    types:
+      Discussion: Discussie
+      Poll: Peiling
+      Comment: Opmerking
+      Stance: Stem
+      Outcome: Conclusie

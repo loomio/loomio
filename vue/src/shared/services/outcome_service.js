@@ -2,6 +2,7 @@ import openModal from '@/shared/helpers/open_modal';
 import AbilityService from '@/shared/services/ability_service';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
+import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class OutcomeService {
   actions(outcome) {
@@ -9,6 +10,8 @@ export default new class OutcomeService {
     const user = Session.user();
 
     return {
+      ...BookmarkService.actions(outcome),
+
       translate_outcome: {
         name: 'common.action.translate',
         icon: 'mdi-translate',
