@@ -1052,6 +1052,8 @@ fi:
     lock_thread: Lukitse ketju
     unlock_thread: Avaa ketju
     add_to_discussion: Lisää keskusteluun
+    save_bookmark: Tallenna kirjanmerkki
+    remove_bookmark: Poista kirjanmerkki
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
@@ -2870,3 +2872,16 @@ fi:
     discussion: Keskustelu
     success: Onnistui, %{pollType} lisättiin keskusteluun!
     explanation: "%{pollType} ja kaikki äänet, kommentit ja tulokset lisätään valittuun keskusteluketjuun."
+  bookmarks:
+    bookmarks: Kirjanmerkit
+    saved: Kirjanmerkki tallennettu
+    removed: Kirjanmerkki poistettu
+    empty: Ei vielä kirjanmerkkejä
+    empty_help: Kirjanmerkit ovat tapa pitää kirjaa asioista, joihin haluat palata.
+    subtitle: "%{type} käyttäjältä %{name}"
+    types:
+      Discussion: Keskustelu
+      Poll: Kysely
+      Comment: Kommentti
+      Stance: Ääni
+      Outcome: Johtopäätös

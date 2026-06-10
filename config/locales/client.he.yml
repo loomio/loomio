@@ -1056,6 +1056,8 @@ he:
     lock_thread: נעילת שרשור
     unlock_thread: ביטול נעילת שרשור
     add_to_discussion: הוסף לדיון
+    save_bookmark: שמור סימניה
+    remove_bookmark: הסר סימניה
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2889,3 +2891,16 @@ he:
     discussion: דִיוּן
     success: הצלחה, %{pollType} נוסף לדיון!
     explanation: ה-%{pollType} וכל הצבעה, תגובה ותוצאה יצורפו לשרשור הדיון שנבחר.
+  bookmarks:
+    bookmarks: סימניות
+    saved: הסימנייה נשמרה
+    removed: הסימנייה הוסרה
+    empty: אין עדיין סימניות
+    empty_help: סימניות הן דרך לעקוב אחר דברים שתרצו לחזור אליהם.
+    subtitle: "%{type} מאת %{name}"
+    types:
+      Discussion: דִיוּן
+      Poll: מִשׁאָל
+      Comment: הֶעָרָה
+      Stance: הַצבָּעָה
+      Outcome: מסקנה

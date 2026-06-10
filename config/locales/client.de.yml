@@ -1064,6 +1064,8 @@ de:
     lock_thread: Thread sperren
     unlock_thread: Thread entsperren
     add_to_discussion: Zur Diskussion hinzufügen
+    save_bookmark: Lesezeichen speichern
+    remove_bookmark: Lesezeichen entfernen
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -2905,3 +2907,16 @@ de:
     discussion: Diskussion
     success: Erfolgreich, %{pollType} wurde zur Diskussion hinzugefügt!
     explanation: Der %{pollType} sowie alle Stimmen, Kommentare und Ergebnisse werden dem ausgewählten Diskussionsthread angehängt.
+  bookmarks:
+    bookmarks: Lesezeichen
+    saved: Lesezeichen gespeichert
+    removed: Lesezeichen entfernt
+    empty: Noch keine Lesezeichen vorhanden
+    empty_help: Lesezeichen sind eine Möglichkeit, Dinge im Auge zu behalten, zu denen man zurückkehren möchte.
+    subtitle: "%{type} von %{name}"
+    types:
+      Discussion: Diskussion
+      Poll: Umfrage
+      Comment: Kommentar
+      Stance: Abstimmung
+      Outcome: Fazit

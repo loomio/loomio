@@ -1052,6 +1052,8 @@ sl:
     lock_thread: Zakleni nit
     unlock_thread: Odkleni nit
     add_to_discussion: Dodaj v razpravo
+    save_bookmark: Shrani zaznamek
+    remove_bookmark: Odstrani zaznamek
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2870,3 +2872,16 @@ sl:
     discussion: Razprava
     success: Uspelo, %{pollType} dodan v razpravo!
     explanation: "%{pollType} in vsi glasovi, komentarji in izid bodo dodani izbrani niti razprave."
+  bookmarks:
+    bookmarks: Zaznamki
+    saved: Zaznamek shranjen
+    removed: Zaznamek odstranjen
+    empty: Še ni zaznamkov
+    empty_help: Zaznamki so način za sledenje stvari, h katerim se želite vrniti.
+    subtitle: "%{type} od %{name}"
+    types:
+      Discussion: Razprava
+      Poll: Anketa
+      Comment: Komentar
+      Stance: Glas
+      Outcome: Zaključek
