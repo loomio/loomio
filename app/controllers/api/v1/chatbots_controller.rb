@@ -1,5 +1,5 @@
 class Api::V1::ChatbotsController < Api::V1::RestfulController
-  before_action :require_current_user, only: :check
+  before_action :require_current_user
 
   def index
     load_and_authorize(:group, :show_chatbots)
