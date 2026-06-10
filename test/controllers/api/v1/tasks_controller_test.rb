@@ -41,6 +41,18 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     assert_equal 1, tasks.size
   end
 
+  test "does not fetch tasks when record access is revoked" do
+    Membership.where(group_id: @group.id, user_id: @doer.id).update_all(revoked_at: Time.current)
+    @doer.reload
+    sign_in @doer
+
+    get :index
+    assert_response :success
+
+    tasks = JSON.parse(response.body)['tasks']
+    assert_empty tasks
+  end
+
   test "mark_as_done" do
     task = @discussion.tasks.first
     post :mark_as_done, params: { id: task.id }
@@ -55,6 +67,20 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     doc = Nokogiri::HTML::DocumentFragment.parse(@discussion.reload.description)
     li = doc.css("li[data-uid='#{tasks[0]['uid']}']").first
     assert_equal 'true', li['data-checked']
+  end
+
+  test "cannot mark task done when record access is revoked" do
+    task = @discussion.tasks.first
+    Membership.where(group_id: @group.id, user_id: @doer.id).update_all(revoked_at: Time.current)
+    @doer.reload
+    sign_in @doer
+
+    post :mark_as_done, params: { id: task.id }
+    assert_response :forbidden
+
+    doc = Nokogiri::HTML::DocumentFragment.parse(@discussion.reload.description)
+    li = doc.css("li[data-uid='#{task.uid}']").first
+    assert_equal 'false', li['data-checked']
   end
 
   test "update_done true" do

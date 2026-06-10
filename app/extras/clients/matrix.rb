@@ -1,4 +1,6 @@
 class Clients::Matrix
+  REQUEST_TIMEOUT_SECONDS = 5
+
   def initialize(server:, access_token:)
     @server = server.chomp("/")
     @access_token = access_token
@@ -27,6 +29,7 @@ class Clients::Matrix
       "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id_or_alias)}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
       body: "{}",
+      timeout: REQUEST_TIMEOUT_SECONDS
     )
     response.parsed_response["room_id"] || room_id_or_alias
   end
@@ -38,7 +41,8 @@ class Clients::Matrix
     HTTParty.put(
       "#{@server}/_matrix/client/v3/rooms/#{CGI.escape(room_id)}/send/m.room.message/#{txn_id}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
-      body: content.to_json
+      body: content.to_json,
+      timeout: REQUEST_TIMEOUT_SECONDS
     )
   end
 
