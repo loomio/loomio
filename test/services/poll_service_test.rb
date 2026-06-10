@@ -133,6 +133,20 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal "A new description", poll.reload.details
   end
 
+  test "does not transfer poll topic group on update" do
+    poll = create_poll
+    original_group_id = poll.topic.group_id
+    other_group = Group.create!(
+      name: "Other Poll Group",
+      handle: "otherpollgroup-#{SecureRandom.hex(4)}"
+    )
+    other_group.add_admin!(@user)
+
+    PollService.update(poll: poll, params: { group_id: other_group.id }, actor: @user)
+
+    assert_equal original_group_id, poll.reload.topic.group_id
+  end
+
   test "does not allow unauthorized users to update polls" do
     poll = create_poll
     outsider = create_unique_user("pollupdate")

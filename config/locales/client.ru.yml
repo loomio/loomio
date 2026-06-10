@@ -2394,6 +2394,7 @@ ru:
     change_your_password: Хотите установить новый пароль?
     email_placeholder: вы{'@'}example.com
     turnstile_required: Пожалуйста, завершите проверку, прежде чем продолжить.
+    invalid_login: Не удалось выполнить вход в систему с указанными данными.
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

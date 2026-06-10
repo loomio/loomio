@@ -2394,6 +2394,7 @@ sl:
     change_your_password: Ali želite nastaviti novo geslo?
     email_placeholder: vi{'@'}example.com
     turnstile_required: Pred nadaljevanjem opravite preverjanje.
+    invalid_login: S temi podatki vas ni mogoče prijaviti
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

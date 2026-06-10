@@ -2615,6 +2615,7 @@ zh_CN:
     password: 密码
     reactivate: 重新激活帐户
     turnstile_required: 请先完成验证再继续。
+    invalid_login: 无法使用您提供的信息登录。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接

@@ -2393,6 +2393,7 @@ ja:
     change_your_password: 新しいパスワードを設定しますか?
     email_placeholder: あなた{'@'}example.com
     turnstile_required: 続行する前に、確認手続きを完了してください。
+    invalid_login: 入力された情報ではログインできません
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続

@@ -44,6 +44,23 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'dr', m.reload.title
   end
 
+  test 'user_name updates name but not username' do
+    sign_in @admin
+    member_user = User.create!(
+      name: '',
+      email: 'pendingmember@example.com',
+      email_verified: false,
+      username: 'pendingmember'
+    )
+    @test_group.add_member!(member_user)
+
+    post :user_name, params: { id: member_user.id, name: 'Pending Member', username: 'claimedhandle' }
+
+    assert_response :success
+    assert_equal 'Pending Member', member_user.reload.name
+    assert_equal 'pendingmember', member_user.username
+  end
+
   # ===== Set Volume Tests =====
 
   test 'updates volume for single membership' do

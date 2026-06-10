@@ -2394,6 +2394,7 @@ tr:
     change_your_password: Yeni bir şifre belirlemek ister misiniz?
     email_placeholder: sen{'@'}example.com
     turnstile_required: Lütfen devam etmeden önce doğrulama işlemini tamamlayın.
+    invalid_login: Bu bilgilerle giriş yapamıyoruz.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

@@ -40,10 +40,12 @@ export default {
 
     testConnection() {
       this.testing = true;
-      Records.remote.post('chatbots/test', {
+      Records.remote.post('chatbots/check', {
         server: this.chatbot.server,
+        group_id: this.chatbot.groupId,
         access_token: this.chatbot.accessToken,
         channel: this.chatbot.channel,
+        kind: 'matrix',
         group_name: "group name was here"
       }).finally(() => {
         Flash.success('chatbot.check_for_test_message');

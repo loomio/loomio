@@ -2394,6 +2394,7 @@ da:
     change_your_password: Vil du indstille en ny adgangskode?
     email_placeholder: du{'@'}eksempel.com
     turnstile_required: Færdiggør venligst bekræftelsen, før du fortsætter.
+    invalid_login: Kan ikke logge dig ind med disse oplysninger
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

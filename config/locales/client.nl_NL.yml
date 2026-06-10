@@ -2419,6 +2419,7 @@ nl_NL:
     change_your_password: Wilt u een nieuw wachtwoord instellen?
     email_placeholder: jij{'@'}voorbeeld.com
     turnstile_required: Voltooi de verificatie voordat u verdergaat.
+    invalid_login: Het lukt niet om u met deze gegevens in te loggen.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

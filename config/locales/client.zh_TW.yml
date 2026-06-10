@@ -2420,6 +2420,7 @@ zh_TW:
     change_your_password: 您想設定新密碼嗎？
     email_placeholder: 您{'@'}example.com
     turnstile_required: 請先完成驗證再繼續。
+    invalid_login: 無法使用您提供的資訊登入。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

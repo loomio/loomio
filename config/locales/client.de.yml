@@ -2427,6 +2427,7 @@ de:
     change_your_password: Möchten Sie ein neues Passwort festlegen?
     email_placeholder: Sie{'@'}example.com
     turnstile_required: Bitte schließen Sie die Überprüfung ab, bevor Sie fortfahren.
+    invalid_login: Anmeldung mit diesen Daten nicht möglich
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

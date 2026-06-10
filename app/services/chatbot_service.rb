@@ -1,4 +1,6 @@
 class ChatbotService
+  REQUEST_TIMEOUT_SECONDS = 5
+
   def self.create(chatbot:, actor:)
     actor.ability.authorize! :create, chatbot
     return false unless chatbot.valid?
@@ -9,7 +11,7 @@ class ChatbotService
   def self.update(chatbot:, params:, actor:)
     actor.ability.authorize! :update, chatbot
     params.delete(:access_token) unless params[:access_token].present?
-    chatbot.assign_attributes(params)
+    chatbot.assign_attributes(params.except(:group_id))
     return false unless chatbot.valid?
     chatbot.save!
   end
@@ -100,13 +102,23 @@ class ChatbotService
   end
 
   def self.publish_test!(params)
+    validate_public_server!(params[:server])
+
     case params[:kind]
     when 'slack_webhook'
-      Clients::Webhook.new.post(params[:server], params: {text: I18n.t('chatbot.connection_test_successful')})
+      Clients::Webhook.new.post(
+        params[:server],
+        params: {text: I18n.t('chatbot.connection_test_successful')},
+        options: {timeout: REQUEST_TIMEOUT_SECONDS}
+      )
     else
       matrix_client = Clients::Matrix.new(server: params[:server], access_token: params[:access_token])
       message = I18n.t('chatbot.connection_test_successful', group: params[:group_name])
       matrix_client.send_text(params[:channel], message)
     end
+  end
+
+  def self.validate_public_server!(server)
+    raise CanCan::AccessDenied unless LinkPreviewService.safe_to_fetch?(server)
   end
 end
