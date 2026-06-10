@@ -48,6 +48,17 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not admin.can?(:update, poll)
   end
 
+  test "group admin cannot update or destroy discarded poll" do
+    admin = users(:admin)
+    group = groups(:group)
+    poll = PollService.create(params: poll_params(group_id: group.id), actor: admin)
+
+    poll.update!(discarded_at: Time.current)
+
+    assert_not admin.can?(:update, poll)
+    assert_not admin.can?(:destroy, poll)
+  end
+
   test "group admin specified_voters_only true cannot vote" do
     admin = users(:admin)
     group = groups(:group)

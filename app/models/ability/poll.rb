@@ -66,11 +66,13 @@ module Ability::Poll
 
     can [:update], ::Poll do |poll|
       !poll.topic&.locked_at &&
+      !poll.discarded? &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
       !poll.topic&.locked_at &&
+      !poll.discarded? &&
       poll.admins.exists?(user.id)
     end
 
