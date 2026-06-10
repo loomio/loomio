@@ -2422,6 +2422,7 @@ uk:
     change_your_password: Бажаєте встановити новий пароль?
     email_placeholder: you{'@'}example.com
     turnstile_required: Будь ласка, завершіть перевірку, перш ніж продовжити.
+    invalid_login: Не вдається увійти з цими даними
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

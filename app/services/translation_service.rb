@@ -76,6 +76,10 @@ class TranslationService
     locale.split("-")[0]
   end
 
+  def self.supported_locale?(locale)
+    GOOGLE_LOCALES.include?(locale_for_google(locale))
+  end
+
   def self.find_i18n_translation(value, from:, to:)
     return nil if value.blank?
     val = value.to_s.strip
@@ -136,7 +140,7 @@ class TranslationService
   def self.create(model:, to:)
     locale = locale_for_google(to)
 
-    if translation = model.translations.find_by(language: locale)
+    if translation = cached(model: model, to: locale)
       return translation
     end
 
@@ -144,6 +148,10 @@ class TranslationService
     translation.fields = translated_fields_for(model, to: locale)
     translation.save!
     translation
+  end
+
+  def self.cached(model:, to:)
+    model.translations.find_by(language: locale_for_google(to))
   end
 
   def self.update_and_broadcast(translatable_type, translatable_id)

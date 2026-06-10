@@ -2440,6 +2440,7 @@ pt_BR:
     change_your_password: Gostaria de definir uma nova senha?
     email_placeholder: você{'@'}exemplo.com
     turnstile_required: Por favor, conclua a verificação antes de prosseguir.
+    invalid_login: Não foi possível efetuar o seu login com esses dados.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

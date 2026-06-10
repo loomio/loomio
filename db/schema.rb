@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_09_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_10_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -433,6 +433,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_09_000001) do
     t.string "redirect"
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
+    t.integer "failed_attempts", default: 0, null: false
     t.index ["token"], name: "index_login_tokens_on_token"
   end
 

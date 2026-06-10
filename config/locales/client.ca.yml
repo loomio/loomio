@@ -2419,6 +2419,7 @@ ca:
     change_your_password: Voleu establir una contrasenya nova?
     email_placeholder: tu{'@'}example.com
     turnstile_required: Si us plau, completeu la verificació abans de continuar.
+    invalid_login: No es pot iniciar la sessió amb aquestes dades
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

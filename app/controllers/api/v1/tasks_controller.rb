@@ -4,6 +4,8 @@ class Api::V1::TasksController < Api::V1::RestfulController
 
     self.collection = Task.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
         .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+        .distinct
+        .select { |task| current_user.can?(:show, task) }
 
     respond_with_collection
   end

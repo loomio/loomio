@@ -31,13 +31,19 @@ class Api::V1::SessionsController < Devise::SessionsController
   private
 
   def failure_message
-    if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
+    if resource_params[:password] && login_user&.access_locked?
       { password: [I18n.t('auth_form.account_locked')] }
-    elsif pending_login_token
+    elsif session[:pending_login_token].present?
       { token: [I18n.t('auth_form.invalid_token')] }
+    elsif resource_params[:password] && login_user.nil?
+      { email: [I18n.t('auth_form.email_not_found')] }
     else
       { password: [I18n.t('auth_form.invalid_password')] }
     end
+  end
+
+  def login_user
+    @login_user ||= User.find_for_authentication(email: resource_params[:email])
   end
 
   def attempt_login
@@ -68,7 +74,22 @@ class Api::V1::SessionsController < Devise::SessionsController
     return unless resource_params[:code].present?
 
     token = LoginToken.unused.find_by(code: resource_params[:code])
-    token if login_token_matches?(token)
+    if login_token_matches?(token)
+      token
+    else
+      record_failed_login_code_attempt
+      nil
+    end
+  end
+
+  def record_failed_login_code_attempt
+    return if resource_params[:email].blank?
+
+    LoginToken.transaction do
+      user = User.find_by(email: resource_params[:email])
+      token = user&.login_tokens&.unused&.lock&.order(created_at: :desc)&.find(&:useable?)
+      token&.record_failed_code_attempt!
+    end
   end
 
   def configure_permitted_parameters

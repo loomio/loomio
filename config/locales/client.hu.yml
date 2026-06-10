@@ -2401,6 +2401,7 @@ hu:
     change_your_password: Szeretne új jelszót beállítani?
     email_placeholder: te{'@'}example.com
     turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
+    invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

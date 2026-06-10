@@ -2394,6 +2394,7 @@ hr:
     change_your_password: Želite li postaviti novu lozinku?
     email_placeholder: vi{'@'}primjer.com
     turnstile_required: Molimo Vas da dovršite provjeru prije nego što nastavite.
+    invalid_login: Ne mogu vas prijaviti s tim podacima
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu

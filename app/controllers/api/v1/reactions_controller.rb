@@ -1,5 +1,12 @@
 class Api::V1::ReactionsController < Api::V1::RestfulController
   alias :create :update
+  REACTABLE_TYPES = {
+    'Comment' => Comment,
+    'Discussion' => Discussion,
+    'Outcome' => Outcome,
+    'Poll' => Poll,
+    'Stance' => Stance
+  }.freeze
 
   def index
     %w[comment_ids discussion_ids outcome_ids poll_ids stance_ids].each do |key|
@@ -25,7 +32,11 @@ class Api::V1::ReactionsController < Api::V1::RestfulController
   end
 
   def reactable
-    @reactable ||= reactable_params[:reactable_type].classify.constantize.find(reactable_params[:reactable_id])
+    @reactable ||= begin
+      type = reactable_params[:reactable_type].to_s.classify
+      klass = REACTABLE_TYPES.fetch(type) { raise ActiveRecord::RecordNotFound }
+      klass.find(reactable_params[:reactable_id])
+    end
   end
 
   def reactable_params

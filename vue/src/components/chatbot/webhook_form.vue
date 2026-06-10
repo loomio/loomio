@@ -47,6 +47,7 @@ export default {
       this.testing = true;
       Records.remote.post('chatbots/check', {
         server: this.chatbot.server,
+        group_id: this.chatbot.groupId,
         kind: 'slack_webhook'
       }).finally(() => {
         Flash.success('chatbot.check_for_test_message');
