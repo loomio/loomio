@@ -93,6 +93,25 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "returns a generic login failure for locked accounts" do
+    user = User.create!(email: "lockedlogin@example.com", email_verified: true, password: "s3curepassword123")
+    user.update!(locked_at: Time.current)
+
+    post :create, params: { user: { email: user.email, password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
+  end
+
+  test "returns a generic login failure for invalid pending tokens" do
+    session[:pending_login_token] = 'notatoken'
+
+    post :create
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
+  end
+
   test "does not sign in a nil password" do
     User.create!(email: "sessionsuser3@example.com", email_verified: true)
     
