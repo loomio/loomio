@@ -72,6 +72,29 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "invalid login code attempts are counted before turnstile" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "countbadcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+
+    assert_response :forbidden
+    assert_equal 1, token.reload.failed_attempts
+  end
+
+  test "invalid login code attempts burn the token at the limit" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "burnbadcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user, failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+
+    assert_response :forbidden
+    assert token.reload.used
+    assert_not token.useable?
+  end
+
   test "signs in with password" do
     user = User.create!(
       email: "sessionsuser@example.com",

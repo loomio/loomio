@@ -66,7 +66,22 @@ class Api::V1::SessionsController < Devise::SessionsController
     return unless resource_params[:code].present?
 
     token = LoginToken.unused.find_by(code: resource_params[:code])
-    token if login_token_matches?(token)
+    if login_token_matches?(token)
+      token
+    else
+      record_failed_login_code_attempt
+      nil
+    end
+  end
+
+  def record_failed_login_code_attempt
+    return if resource_params[:email].blank?
+
+    LoginToken.transaction do
+      user = User.find_by(email: resource_params[:email])
+      token = user&.login_tokens&.unused&.lock&.order(created_at: :desc)&.find(&:useable?)
+      token&.record_failed_code_attempt!
+    end
   end
 
   def configure_permitted_parameters

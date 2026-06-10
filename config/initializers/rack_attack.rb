@@ -132,6 +132,12 @@ class Rack::Attack
     end
   end
 
+  throttle("sessions/code/email", limit: 5, period: 15.minutes) do |req|
+    if req.post? && req.path.starts_with?('/api/v1/sessions') && req.params.dig('user', 'code').present?
+      req.params.dig('user', 'email').to_s.downcase.presence
+    end
+  end
+
   # /api/v1/profile/email_status is unauthenticated and falls through to
   # User.find_by(email:), so it's the enumeration surface. Throttle it
   # tightly and separately from the rest of /api/v1/profile/*.
