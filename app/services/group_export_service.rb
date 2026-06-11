@@ -23,7 +23,7 @@ class GroupExportService
 
   JSON_PARAMS = {
     groups:      {except: [:token], methods: []},
-    users:       {except: [:encrypted_password,
+    users:       {except: [:password_digest,
                            :reset_password_token,
                            :email_api_key,
                            :reset_password_token,

@@ -2850,6 +2850,7 @@ fr:
   auth:
     oauth_cancelled: La connexion a été annulée.
     switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.
+    signed_in: Connexion réussie
   poll_common_opening_at_field:
     voting_opens_immediately: Le vote est ouvert immédiatement
     opening_date: Date d'ouverture

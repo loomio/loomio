@@ -21,8 +21,12 @@ class User < ApplicationRecord
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
-  devise :pwned_password if Rails.env.production?
+  has_secure_password validations: false
+
+  LOCK_MAX_ATTEMPTS = ENV.fetch('MAX_LOGIN_ATTEMPTS', 10).to_i
+  LOCK_DURATION = 6.hours
+
+  has_many :sessions, dependent: :destroy
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
@@ -52,8 +56,8 @@ class User < ApplicationRecord
   validates_length_of :short_bio, maximum: 5000
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
-
   validates_length_of :password, minimum: 8, allow_nil: true
+  validate :password_not_pwned, if: -> { password.present? && Rails.env.production? }
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -202,10 +206,6 @@ class User < ApplicationRecord
     find_by(email: email)&.email_status || :unused
   end
 
-  def self.find_for_database_authentication(warden_conditions)
-    super(warden_conditions.merge(email_verified: true))
-  end
-
   define_counter_cache(:memberships_count) {|user| user.memberships.count }
 
   def first_name
@@ -216,16 +216,27 @@ class User < ApplicationRecord
     name.split(' ').drop(1).join(' ')
   end
 
-  def remember_me
-    true
-  end
-
   def is_logged_in?
     true
   end
 
   def has_password
-    self.encrypted_password.present?
+    self.password_digest.present?
+  end
+
+  def access_locked?
+    locked_at.present? && locked_at > LOCK_DURATION.ago
+  end
+
+  def increment_failed_attempts!
+    increment!(:failed_attempts)
+    if failed_attempts >= LOCK_MAX_ATTEMPTS
+      update_columns(locked_at: Time.current)
+    end
+  end
+
+  def unlock_access!
+    update_columns(failed_attempts: 0, locked_at: nil, unlock_token: nil)
   end
 
   def email_status
@@ -282,11 +293,6 @@ class User < ApplicationRecord
     self[:name] || self[:username]
   end
 
-  # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
-  def active_for_authentication?
-    super && !deactivated_at
-  end
-
   def locale
     first_supported_locale([selected_locale, detected_locale].compact).to_s
   end
@@ -297,10 +303,6 @@ class User < ApplicationRecord
 
   def generate_username
     self.username ||= ::UsernameGenerator.new(self).generate
-  end
-
-  def send_devise_notification(notification, *args)
-    I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -357,9 +359,16 @@ class User < ApplicationRecord
     "username"]
   end
 
-  protected
+  private
 
   def password_required?
     !password.nil? || !password_confirmation.nil?
+  end
+
+  def password_not_pwned
+    checker = Pwned::Password.new(password, read_timeout: 3, open_timeout: 2)
+    errors.add(:password, :pwned_password) if checker.pwned?
+  rescue Pwned::Error
+    # silently ignore HIBP service unavailability
   end
 end

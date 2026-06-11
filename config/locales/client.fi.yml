@@ -2806,6 +2806,7 @@ fi:
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.
+    signed_in: Kirjautuminen onnistui
   poll_common_opening_at_field:
     voting_opens_immediately: Äänestys alkaa heti
     opening_date: Avajaispäivä

@@ -48,7 +48,7 @@ class Identities::SamlController < ApplicationController
 
     # Handle successful login
     sign_in(identity.user)
-    flash[:notice] = t(:'devise.sessions.signed_in')
+    flash[:notice] = t(:'auth.signed_in')
 
     redirect_to session.delete(:back_to) || dashboard_path
   end

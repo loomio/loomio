@@ -2806,6 +2806,7 @@ da:
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.
+    signed_in: Log ind
   poll_common_opening_at_field:
     voting_opens_immediately: Afstemningen åbner med det samme
     opening_date: Åbningsdato

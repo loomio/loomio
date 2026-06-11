@@ -3,7 +3,6 @@ require 'test_helper'
 class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   setup do
     @user = users(:user)
-    request.env['devise.mapping'] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 

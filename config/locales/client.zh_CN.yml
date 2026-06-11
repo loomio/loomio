@@ -2724,6 +2724,7 @@ zh_CN:
   auth:
     oauth_cancelled: 登录已取消
     switching_accounts: 正在切换账户。请使用新账户信息登录。
+    signed_in: 登录成功
   poll_common_opening_at_field:
     voting_opens_immediately: 投票立即开始
     opening_date: 开业日期

@@ -2834,6 +2834,7 @@ zh_TW:
   auth:
     oauth_cancelled: 登入已取消
     switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。
+    signed_in: 登入成功
   poll_common_opening_at_field:
     voting_opens_immediately: 投票立即開始
     opening_date: 開業日期

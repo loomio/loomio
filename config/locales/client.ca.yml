@@ -2833,6 +2833,7 @@ ca:
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.
+    signed_in: S'ha iniciat la sessió correctament.
   poll_common_opening_at_field:
     voting_opens_immediately: La votació s'obre immediatament
     opening_date: Data d'obertura

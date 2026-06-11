@@ -2833,6 +2833,7 @@ pl:
   auth:
     oauth_cancelled: Logowanie zostało anulowane
     switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.
+    signed_in: Zalogowano pomyślnie
   poll_common_opening_at_field:
     voting_opens_immediately: Głosowanie rozpoczyna się natychmiast
     opening_date: Data otwarcia

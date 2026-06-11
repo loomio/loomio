@@ -2806,6 +2806,7 @@ ro:
   auth:
     oauth_cancelled: Conectarea a fost anulată
     switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.
+    signed_in: Conectat cu succes
   poll_common_opening_at_field:
     voting_opens_immediately: Votarea se deschide imediat
     opening_date: Data deschiderii

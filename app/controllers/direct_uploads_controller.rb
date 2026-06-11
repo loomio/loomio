@@ -21,10 +21,10 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   private
 
   # This controller inherits from ActiveStorage::DirectUploadsController, not our
-  # ApplicationController, so CurrentUserHelper#current_user isn't in the chain.
-  # Uphold the Loomio invariant that current_user is never nil.
+  # ApplicationController, so we resolve the session manually.
   def current_user
-    super || LoggedOutUser.new
+    token = session[:session_token]
+    (token && Session.find_by(token: token)&.user) || LoggedOutUser.new
   end
 
   def enforce_content_type

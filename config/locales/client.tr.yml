@@ -2806,6 +2806,7 @@ tr:
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.
+    signed_in: Başarıyla oturum açıldı
   poll_common_opening_at_field:
     voting_opens_immediately: Oylama hemen başlıyor
     opening_date: Açılış tarihi

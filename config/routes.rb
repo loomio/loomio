@@ -13,7 +13,12 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
 
-  authenticate :user, lambda { |u| u.is_admin? } do
+  sidekiq_constraint = ->(req) {
+    token = req.session[:session_token]
+    s = token && Session.find_by(token: token)
+    s&.user&.is_admin?
+  }
+  constraints(sidekiq_constraint) do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
 
@@ -307,11 +312,9 @@ Rails.application.routes.draw do
       end
 
       namespace(:sessions)        { get :unauthorized }
-      devise_scope :user do
-        resource :sessions, only: [:create, :destroy]
-        resource :registrations, only: :create do
-          post :oauth, on: :collection
-        end
+      resource :sessions, only: [:create, :destroy]
+      resource :registrations, only: :create do
+        post :oauth, on: :collection
       end
       # identities command route removed (dead code)
     end
@@ -322,7 +325,6 @@ Rails.application.routes.draw do
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
-  devise_for :users
 
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection

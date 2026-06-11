@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   include LocalesHelper
   include ProtectedFromForgery
+  include Authentication
   include CurrentUserHelper
   include SentryHelper
   include PrettyUrlHelper
@@ -54,7 +55,7 @@ class ApplicationController < ActionController::Base
       flash[:error] = t("error.access_denied")
       redirect_to dashboard_path
     else
-      authenticate_user!
+      require_authentication
     end
   end
 

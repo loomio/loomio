@@ -2834,6 +2834,7 @@ it:
   auth:
     oauth_cancelled: L'accesso è stato annullato
     switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.
+    signed_in: Accesso riuscito
   poll_common_opening_at_field:
     voting_opens_immediately: Le votazioni si aprono immediatamente
     opening_date: Data di apertura

@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 

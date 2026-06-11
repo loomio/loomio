@@ -97,6 +97,15 @@ end
 # Controller test helpers
 module ActionController
   class TestCase
-    include Devise::Test::ControllerHelpers
+    def sign_in(user)
+      session[:session_token] = user.sessions.create!(
+        ip_address: '127.0.0.1',
+        user_agent: 'TestAgent'
+      ).token
+    end
+
+    def sign_out(_user = nil)
+      session.delete(:session_token)
+    end
   end
 end

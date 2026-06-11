@@ -2836,6 +2836,7 @@ uk:
   auth:
     oauth_cancelled: Вхід скасовано
     switching_accounts: Зміна облікових записів. Будь ласка, увійдіть, використовуючи дані нового облікового запису.
+    signed_in: Ви успішно увійшли в систему
   poll_common_opening_at_field:
     voting_opens_immediately: Голосування відкривається негайно
     opening_date: Дата відкриття

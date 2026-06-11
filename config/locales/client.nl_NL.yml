@@ -2833,6 +2833,7 @@ nl_NL:
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.
+    signed_in: Succesvol ingelogd
   poll_common_opening_at_field:
     voting_opens_immediately: De stemming is direct geopend.
     opening_date: Openingsdatum

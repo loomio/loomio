@@ -411,11 +411,7 @@ en:
   auth:
     oauth_cancelled: Sign in was cancelled
     switching_accounts: Switching accounts. Please sign in with your new account details.
-  devise:
-    sessions:
-      signed_up: Signed up successfully!
-    failure:
-      inactive: There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.
+    signed_in: Signed in successfully.
   error_page:
     forbidden: You do not have permission to do this.
     forbidden_view: You do not have permission to view this.

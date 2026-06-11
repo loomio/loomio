@@ -2806,6 +2806,7 @@ el:
   auth:
     oauth_cancelled: Η σύνδεση ακυρώθηκε
     switching_accounts: Αλλαγή λογαριασμών. Συνδεθείτε με τα στοιχεία του νέου σας λογαριασμού.
+    signed_in: Η σύνδεση έγινε με επιτυχία
   poll_common_opening_at_field:
     voting_opens_immediately: Η ψηφοφορία ανοίγει αμέσως
     opening_date: Ημερομηνία έναρξης

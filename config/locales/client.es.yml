@@ -2842,6 +2842,7 @@ es:
   auth:
     oauth_cancelled: Se canceló el inicio de sesión
     switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.
+    signed_in: Entraste exitosamente
   poll_common_opening_at_field:
     voting_opens_immediately: La votación se abre inmediatamente
     opening_date: Fecha de apertura

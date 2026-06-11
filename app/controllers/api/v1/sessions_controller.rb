@@ -1,6 +1,5 @@
-class Api::V1::SessionsController < Devise::SessionsController
+class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
-  before_action :configure_permitted_parameters
 
   def create
     unless turnstile_ok?
@@ -9,8 +8,8 @@ class Api::V1::SessionsController < Devise::SessionsController
     end
     if user = attempt_login
       sign_in(user)
-      flash[:notice] = t(:'devise.sessions.signed_in')
-      user.update(name: resource_params[:name]) if resource_params[:name]
+      flash[:notice] = t(:'auth.signed_in')
+      user.update(name: auth_params[:name]) if auth_params[:name]
       user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
       render json: Boot::User.new(user, root_url: URI(root_url).origin).payload
       EventBus.broadcast('session_create', user)
@@ -21,21 +20,18 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    current_user.update_columns(secret_token: UUIDTools::UUID.random_create.to_s)
-    sign_out resource_name
-
-    flash[:notice] = t(:'devise.sessions.signed_out')
+    sign_out
     render json: { success: :ok }
   end
 
   private
 
   def failure_message
-    if resource_params[:password] && login_user&.access_locked?
+    if auth_params[:password] && login_user&.access_locked?
       { password: [I18n.t('auth_form.account_locked')] }
     elsif session[:pending_login_token].present?
       { token: [I18n.t('auth_form.invalid_token')] }
-    elsif resource_params[:password] && login_user.nil?
+    elsif auth_params[:password] && login_user.nil?
       { email: [I18n.t('auth_form.email_not_found')] }
     else
       { password: [I18n.t('auth_form.invalid_password')] }
@@ -43,22 +39,35 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def login_user
-    @login_user ||= User.find_for_authentication(email: resource_params[:email])
+    @login_user ||= User.verified.active.find_by(email: auth_params[:email]&.downcase&.strip)
   end
 
   def attempt_login
     if pending_login_token&.useable?
       pending_login_token.user
-    elsif resource_params[:code]
+    elsif auth_params[:code]
       login_token_user
     else
-      warden.authenticate(scope: resource_name)
+      attempt_password_login
+    end
+  end
+
+  def attempt_password_login
+    user = login_user
+    return nil unless user
+    return nil if user.access_locked?
+    if user.authenticate(auth_params[:password])
+      user.update_columns(failed_attempts: 0, locked_at: nil) if user.failed_attempts > 0
+      user
+    else
+      user.increment_failed_attempts!
+      nil
     end
   end
 
   def login_token_user
     LoginToken.transaction do
-      token = LoginToken.unused.lock.find_by(code: resource_params.require(:code))
+      token = LoginToken.unused.lock.find_by(code: auth_params.require(:code))
       next unless login_token_matches?(token)
 
       token.update!(used: true)
@@ -67,13 +76,13 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def login_token_matches?(token)
-    resource_params[:email].present? && token&.useable? && token.user.email == resource_params[:email]
+    auth_params[:email].present? && token&.useable? && token.user.email == auth_params[:email]
   end
 
   def usable_login_token_for_code
-    return unless resource_params[:code].present?
+    return unless auth_params[:code].present?
 
-    token = LoginToken.unused.find_by(code: resource_params[:code])
+    token = LoginToken.unused.find_by(code: auth_params[:code])
     if login_token_matches?(token)
       token
     else
@@ -83,19 +92,17 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def record_failed_login_code_attempt
-    return if resource_params[:email].blank?
+    return if auth_params[:email].blank?
 
     LoginToken.transaction do
-      user = User.find_by(email: resource_params[:email])
+      user = User.find_by(email: auth_params[:email])
       token = user&.login_tokens&.unused&.lock&.order(created_at: :desc)&.find(&:useable?)
       token&.record_failed_code_attempt!
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:code, :email, :password, :remember_me, :turnstile_token)
-    end
+  def auth_params
+    params.fetch(:user, {}).permit(:code, :email, :password, :name, :turnstile_token)
   end
 
   # Users who request a login-token have already solved a CAPTCHA to get the

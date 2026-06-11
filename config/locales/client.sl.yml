@@ -2806,6 +2806,7 @@ sl:
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.
+    signed_in: Uspešno ste se prijavili
   poll_common_opening_at_field:
     voting_opens_immediately: Glasovanje se odpre takoj
     opening_date: Datum odprtja

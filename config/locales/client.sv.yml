@@ -2806,6 +2806,7 @@ sv:
   auth:
     oauth_cancelled: Inloggningen avbröts
     switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.
+    signed_in: Inloggad
   poll_common_opening_at_field:
     voting_opens_immediately: Röstningen öppnar omedelbart
     opening_date: Öppningsdatum

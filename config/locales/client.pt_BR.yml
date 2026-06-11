@@ -2854,6 +2854,7 @@ pt_BR:
   auth:
     oauth_cancelled: O login foi cancelado.
     switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.
+    signed_in: Login efetuado com sucesso
   poll_common_opening_at_field:
     voting_opens_immediately: A votação começa imediatamente.
     opening_date: Data de abertura

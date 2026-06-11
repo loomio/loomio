@@ -1,4 +1,5 @@
 module CurrentUserHelper
+  include Authentication
   include PendingActionsHelper
 
   class SpamUserDeniedError < StandardError
@@ -7,11 +8,14 @@ module CurrentUserHelper
   def sign_in(user)
     @current_user = nil
     user = UserService.verify(user: user)
-    super(user) && handle_pending_actions(user) && associate_user_to_visit
+    Authentication.instance_method(:sign_in).bind(self).call(user)
+    handle_pending_actions(user)
+    user
   end
 
   def current_user
-    @current_user || super || LoggedOutUser.new(locale: logged_out_preferred_locale, params: params, session: session)
+    @current_user ||= resume_session || restricted_user ||
+      LoggedOutUser.new(locale: logged_out_preferred_locale, params: params, session: session)
   end
 
   def deny_spam_users

@@ -2806,6 +2806,7 @@ hr:
   auth:
     oauth_cancelled: Prijava je otkazana
     switching_accounts: Prebacivanje računa. Prijavite se s novim podacima računa.
+    signed_in: Uspješno ste prijavljeni
   poll_common_opening_at_field:
     voting_opens_immediately: Glasanje se otvara odmah
     opening_date: Datum otvaranja

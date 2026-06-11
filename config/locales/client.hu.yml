@@ -2813,6 +2813,7 @@ hu:
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
     switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.
+    signed_in: Sikeres bejelentkezés
   poll_common_opening_at_field:
     voting_opens_immediately: A szavazás azonnal megnyílik
     opening_date: Nyitás dátuma

@@ -2806,6 +2806,7 @@ ru:
   auth:
     oauth_cancelled: Вход был отменен.
     switching_accounts: Переключение между учетными записями. Пожалуйста, войдите в систему, используя данные вашей новой учетной записи.
+    signed_in: Вы успешно вошли в систему
   poll_common_opening_at_field:
     voting_opens_immediately: Голосование открывается немедленно.
     opening_date: Дата открытия

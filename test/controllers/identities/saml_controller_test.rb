@@ -123,7 +123,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     assert_equal identity.user, @controller.current_user
     assert_redirected_to '/dashboard'
-    assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
+    assert_equal I18n.t('auth.signed_in'), flash[:notice]
   end
 
   # Create - verified user with same email exists

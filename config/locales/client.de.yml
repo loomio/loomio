@@ -2841,6 +2841,7 @@ de:
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melden Sie sich mit Ihren neuen Kontodaten an.
+    signed_in: Erfolgreich eingeloggt
   poll_common_opening_at_field:
     voting_opens_immediately: Die Abstimmung beginnt sofort.
     opening_date: Eröffnungsdatum

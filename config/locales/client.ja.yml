@@ -2805,6 +2805,7 @@ ja:
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。
+    signed_in: 正常にサインインしました
   poll_common_opening_at_field:
     voting_opens_immediately: 投票はすぐに開始されます
     opening_date: 開業日

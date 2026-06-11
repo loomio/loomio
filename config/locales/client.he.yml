@@ -2825,6 +2825,7 @@ he:
   auth:
     oauth_cancelled: הכניסה בוטלה
     switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.
+    signed_in: התחברת בהצלחה
   poll_common_opening_at_field:
     voting_opens_immediately: ההצבעה נפתחת מיד
     opening_date: תאריך פתיחה
