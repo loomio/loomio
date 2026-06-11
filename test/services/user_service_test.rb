@@ -54,12 +54,9 @@ class UserServiceTest < ActiveSupport::TestCase
     assert_nil @user.country
     assert_nil @user.region
     assert_nil @user.city
-    assert_nil @user.unlock_token
     assert_nil @user.current_sign_in_ip
     assert_nil @user.last_sign_in_ip
-    assert_nil @user.encrypted_password
-    assert_nil @user.reset_password_token
-    assert_nil @user.reset_password_sent_at
+    assert_nil @user.password_digest
     assert_nil @user.detected_locale
     assert_nil @user.legal_accepted_at
 

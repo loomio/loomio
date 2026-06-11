@@ -2394,6 +2394,7 @@ hu:
     password_link_sent: Küldtünk egy e-mailt a(z) %{email} címre, amely leírja a jelszó beállításának menetét.
     reactivate_link_sent: Küldtünk egy e-mailt az Ön fiókjának újraaktiválására vonatkozó utasításokkal
     signed_in: Sikeres bejelentkezés
+    signed_out: Sikeres kijelentkezés
     email_verified: Az e-mail sikeresen ellenőrizve
     name: Név
     email: E-mail

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_11_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -791,6 +791,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.integer "stance_id"
     t.integer "poll_option_id"
@@ -996,10 +1005,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
 
   create_table "users", id: :serial, force: :cascade do |t|
     t.citext "email"
-    t.string "encrypted_password", limit: 128, default: ""
-    t.string "reset_password_token", limit: 255
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at", precision: nil
     t.datetime "last_sign_in_at", precision: nil
@@ -1016,7 +1021,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.string "avatar_initials", limit: 255
     t.string "username", limit: 255
     t.boolean "email_when_proposal_closing_soon", default: false, null: false
-    t.string "authentication_token", limit: 255
     t.string "unsubscribe_token", limit: 255
     t.integer "memberships_count", default: 0, null: false
     t.string "selected_locale", limit: 255
@@ -1034,7 +1038,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.jsonb "experiences", default: {}, null: false
     t.integer "facebook_community_id"
     t.integer "slack_community_id"
-    t.string "remember_token"
     t.string "short_bio", default: "", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
@@ -1042,7 +1045,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.datetime "legal_accepted_at", precision: nil
     t.boolean "email_newsletter", default: false, null: false
     t.integer "failed_attempts", default: 0, null: false
-    t.string "unlock_token"
     t.datetime "locked_at", precision: nil
     t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
@@ -1061,13 +1063,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
     t.integer "bounces_count", default: 0, null: false
+    t.string "password_digest", limit: 128, default: ""
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
-    t.index ["remember_token"], name: "users_remember_token_idx"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -1105,4 +1105,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "polls", "topics", deferrable: :deferred
+  add_foreign_key "sessions", "users"
 end

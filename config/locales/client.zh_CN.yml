@@ -2611,6 +2611,7 @@ zh_CN:
     password_link_sent: 我们已向 %{email} 发送了一封电子邮件，其中包含有关如何设置密码的说明。
     reactivate_link_sent: 我们已向您发送一封电子邮件，其中包含重新激活帐户的说明。
     signed_in: 登录成功
+    signed_out: 退出登录成功
     email_verified: 邮箱已成功验证
     name: 名称
     email: 电子邮件

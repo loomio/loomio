@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 
@@ -102,11 +101,44 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       password: "s3curepassword123"
     )
     
-    post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    end
     assert_response :success
-    
+
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+  end
+
+  test "bridges a legacy devise session into a session record" do
+    user = User.create!(
+      email: "legacy-session@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+    session['warden.user.user.key'] = [[user.id], nil]
+
+    assert_difference 'Session.count', 1 do
+      assert_equal user.id, @controller.current_user.id
+    end
+    assert_equal user.id, Current.session.user_id
+    assert_nil session['warden.user.user.key']
+  end
+
+  test "sign out destroys the current session" do
+    user = User.create!(
+      email: "destroy-session@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+
+    post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+    assert_response :success
+
+    assert_difference 'Session.count', -1 do
+      delete :destroy
+    end
+    assert_response :success
   end
 
   test "does not sign in a blank password" do

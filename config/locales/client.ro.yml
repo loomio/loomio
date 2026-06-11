@@ -2387,6 +2387,7 @@ ro:
     password_link_sent: Am trimis un e-mail către %{email} cu instrucțiuni despre cum să vă setați parola.
     reactivate_link_sent: V-am trimis un e-mail cu instrucțiuni pentru a vă reactiva contul
     signed_in: Conectat cu succes
+    signed_out: Deconectat cu succes
     email_verified: E-mail verificat cu succes
     name: Nume
     email: E-mail

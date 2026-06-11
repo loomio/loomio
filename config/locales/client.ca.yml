@@ -2412,6 +2412,7 @@ ca:
     password_link_sent: Hem enviat un correu a %{email} amb instruccions per establir la vostra contrasenya.
     reactivate_link_sent: Hem enviat un correu amb instruccions per reactivar el vostre compte.
     signed_in: S'ha iniciat la sessió correctament.
+    signed_out: S'ha tancat la sessió correctament.
     email_verified: S'ha verificat el correu electrònic correctament.
     name: Nom
     email: Correu electrònic

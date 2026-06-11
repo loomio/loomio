@@ -69,4 +69,32 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     get :contactable, params: { user_id: other_user.id }
     assert_response :forbidden
   end
+
+  test "updating password signs out other sessions" do
+    sign_in @user
+    original_api_key = @user.api_key
+    original_email_api_key = @user.email_api_key
+    original_secret_token = @user.secret_token
+    original_unsubscribe_token = @user.unsubscribe_token
+    current_session = Current.session
+    other_session = @user.sessions.create!(user_agent: 'other browser', ip_address: '127.0.0.2')
+    unused_login_token = @user.login_tokens.create!
+
+    post :update_profile, params: {
+      user: {
+        password: 'new_complex_password',
+        password_confirmation: 'new_complex_password'
+      }
+    }, format: :json
+
+    assert_response :success
+    @user.reload
+    assert Session.exists?(current_session.id)
+    refute Session.exists?(other_session.id)
+    refute_equal original_api_key, @user.api_key
+    refute_equal original_email_api_key, @user.email_api_key
+    refute_equal original_secret_token, @user.secret_token
+    refute_equal original_unsubscribe_token, @user.unsubscribe_token
+    refute LoginToken.exists?(unused_login_token.id)
+  end
 end

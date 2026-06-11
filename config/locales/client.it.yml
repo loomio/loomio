@@ -2415,6 +2415,7 @@ it:
     password_link_sent: Abbiamo inviato una email a %{email} con le istruzioni su come impostare la tua password.
     reactivate_link_sent: Ti abbiamo mandato una email con le istruzioni per riattivare il tuo account
     signed_in: Accesso riuscito
+    signed_out: Disconnessione riuscita
     email_verified: Email verificata con successo
     name: Nome
     email: Email

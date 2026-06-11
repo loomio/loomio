@@ -71,9 +71,28 @@ class UserService
     
     user.assign_attributes_and_files(params)
     return false unless user.valid?
+    password_changed = user.password_digest_changed?
     user.save!
+    rotate_credentials_after_password_change(user) if password_changed
     EventBus.broadcast('user_update', user, actor, params)
     GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id) if user.name_previously_changed?
+  end
+
+  def self.rotate_credentials_after_password_change(user)
+    user.update_columns(
+      api_key: User.generate_unique_secure_token,
+      email_api_key: User.generate_unique_secure_token,
+      secret_token: User.generate_unique_secure_token,
+      unsubscribe_token: User.generate_unique_secure_token
+    )
+    user.login_tokens.unused.destroy_all
+    sign_out_other_sessions(user)
+  end
+
+  def self.sign_out_other_sessions(user)
+    sessions = user.sessions
+    sessions = sessions.where.not(id: Current.session.id) if Current.session
+    sessions.destroy_all
   end
 
   def self.save_experience(user:, actor:, params:)

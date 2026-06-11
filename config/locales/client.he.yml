@@ -2406,6 +2406,7 @@ he:
     password_link_sent: שלחנו לך מייל ל%{email} עם הנחיות איך לאפס את סיסמתך.
     reactivate_link_sent: שלחנו לך אימייל עם הוראות להפעלה מחדש של חשבונך
     signed_in: התחברת בהצלחה
+    signed_out: התנתקת בהצלחה
     email_verified: כתובת המייל אומתה בהצלחה
     name: שם
     email: דואר אלקטרוני

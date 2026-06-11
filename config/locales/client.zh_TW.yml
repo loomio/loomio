@@ -2413,6 +2413,7 @@ zh_TW:
     password_link_sent: 我們已經寄送一封包含了如何設定您的密碼的電子郵件到 %{email} 了。
     reactivate_link_sent: 我們將會傳送一封包含重新啟用您帳號簡介的電子郵件給您
     signed_in: 登入成功
+    signed_out: 登出成功
     email_verified: 電子郵件驗證成功
     name: 名稱
     email: 電子郵件
