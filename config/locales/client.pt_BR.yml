@@ -2433,6 +2433,7 @@ pt_BR:
     password_link_sent: Nós enviamos um email para %{email} com instruções sobre como configurar sua senha.
     reactivate_link_sent: Nós mandamos um email com instruções para reativar sua conta.
     signed_in: Entrou com sucesso
+    signed_out: Saiu com sucesso
     email_verified: Email verificado com sucesso
     name: Nome
     email: E-mail

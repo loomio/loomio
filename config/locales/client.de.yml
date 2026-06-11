@@ -2420,6 +2420,7 @@ de:
     password_link_sent: Wir haben eine E-Mail mit der Anleitung zur Passwort-Festlegung an %{email} gesendet.
     reactivate_link_sent: 'Wir haben dir eine E-mail mit Anweisungen zur Reaktivierung deines Kontos geschickt. '
     signed_in: erfolgreich eingeloggt
+    signed_out: Erfolgreich ausgeloggt
     email_verified: E-Mail erfolgreich verifiziert
     name: Name
     email: E-Mail

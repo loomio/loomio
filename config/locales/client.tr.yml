@@ -2387,6 +2387,7 @@ tr:
     password_link_sent: "%{email} adresine, şifrenizi nasıl belirleyeceğinize ilişkin talimatları içeren bir e-posta gönderdik."
     reactivate_link_sent: Hesabınızı yeniden etkinleştirme talimatlarını içeren bir e-posta gönderdik
     signed_in: Başarıyla oturum açıldı
+    signed_out: Başarıyla oturum kapatıldı
     email_verified: E-posta başarıyla doğrulandı
     name: İsim
     email: E-posta

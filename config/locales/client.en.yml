@@ -2757,6 +2757,7 @@ en:
     password_link_sent: We've sent an email to %{email} with instructions on how to set your password.
     reactivate_link_sent: We've sent you an email with instructions to reactivate your account
     signed_in: Signed in successfully
+    signed_out: Signed out successfully
     email_verified: Email verified successfully
     name: Name
     email: Email

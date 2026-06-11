@@ -1,6 +1,5 @@
-class Api::V1::SessionsController < Devise::SessionsController
+class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
-  before_action :configure_permitted_parameters
 
   def create
     unless turnstile_ok?
@@ -9,7 +8,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     end
     if user = attempt_login
       sign_in(user)
-      flash[:notice] = t(:'devise.sessions.signed_in')
+      flash[:notice] = t(:'auth_form.signed_in')
       user.update(name: resource_params[:name]) if resource_params[:name]
       user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
       render json: Boot::User.new(user, root_url: URI(root_url).origin).payload
@@ -21,10 +20,10 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    current_user.update_columns(secret_token: UUIDTools::UUID.random_create.to_s)
-    sign_out resource_name
+    current_user.update_columns(secret_token: UUIDTools::UUID.random_create.to_s) if current_user.is_logged_in?
+    sign_out
 
-    flash[:notice] = t(:'devise.sessions.signed_out')
+    flash[:notice] = t(:'auth_form.signed_out')
     render json: { success: :ok }
   end
 
@@ -52,7 +51,20 @@ class Api::V1::SessionsController < Devise::SessionsController
     elsif resource_params[:code]
       login_token_user
     else
-      warden.authenticate(scope: resource_name)
+      password_user
+    end
+  end
+
+  def password_user
+    return unless resource_params[:password].present?
+    return unless login_user
+    return if login_user.access_locked?
+
+    if login_user.valid_password?(resource_params[:password])
+      login_user
+    else
+      login_user.increment_failed_attempts!
+      nil
     end
   end
 
@@ -92,10 +104,8 @@ class Api::V1::SessionsController < Devise::SessionsController
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:code, :email, :password, :remember_me, :turnstile_token)
-    end
+  def resource_params
+    params.fetch(:user, {}).permit(:code, :email, :name, :password, :remember_me, :turnstile_token)
   end
 
   # Users who request a login-token have already solved a CAPTCHA to get the

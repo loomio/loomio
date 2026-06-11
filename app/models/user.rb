@@ -20,9 +20,10 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
+  MAXIMUM_LOGIN_ATTEMPTS = ENV.fetch('MAX_LOGIN_ATTEMPTS', 10).to_i
+  UNLOCK_IN = 6.hours
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
-  devise :pwned_password if Rails.env.production?
+  has_secure_password validations: false
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
@@ -54,6 +55,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
+  validates :password, pwned_password: true, if: -> { Rails.env.production? && password.present? }
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -102,6 +104,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :sessions, dependent: :destroy
   has_many :events, dependent: :destroy
 
   has_many :tags, through: :groups
@@ -202,8 +205,20 @@ class User < ApplicationRecord
     find_by(email: email)&.email_status || :unused
   end
 
-  def self.find_for_database_authentication(warden_conditions)
-    super(warden_conditions.merge(email_verified: true))
+  def self.find_for_authentication(conditions)
+    verified.find_by(conditions)
+  end
+
+  def self.find_for_database_authentication(conditions)
+    find_for_authentication(conditions)
+  end
+
+  def self.authenticate_by(attributes)
+    user = find_for_database_authentication(email: attributes[:email] || attributes[:email_address])
+    return unless user&.active_for_authentication?
+    return if user.access_locked?
+
+    user if user.valid_password?(attributes[:password])
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.count }
@@ -225,7 +240,45 @@ class User < ApplicationRecord
   end
 
   def has_password
-    self.encrypted_password.present?
+    password_digest.present?
+  end
+
+  def valid_password?(password)
+    return false if password.blank? || !has_password
+
+    authenticate(password).present?
+  end
+
+  def password_required?
+    password.present? || password_confirmation.present?
+  end
+
+  def active_for_authentication?
+    !deactivated_at
+  end
+
+  def access_locked?
+    locked_at.present? && locked_at > UNLOCK_IN.ago
+  end
+
+  def unlock_access!
+    update!(failed_attempts: 0, locked_at: nil)
+  end
+
+  def increment_failed_attempts!
+    with_lock do
+      unlock_access! unless access_locked?
+      increment!(:failed_attempts)
+      lock_access! if failed_attempts >= MAXIMUM_LOGIN_ATTEMPTS
+    end
+  end
+
+  def reset_failed_attempts!
+    update_columns(failed_attempts: 0, locked_at: nil) if failed_attempts.positive? || locked_at.present?
+  end
+
+  def lock_access!
+    update_columns(locked_at: Time.current)
   end
 
   def email_status
@@ -282,11 +335,6 @@ class User < ApplicationRecord
     self[:name] || self[:username]
   end
 
-  # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
-  def active_for_authentication?
-    super && !deactivated_at
-  end
-
   def locale
     first_supported_locale([selected_locale, detected_locale].compact).to_s
   end
@@ -297,10 +345,6 @@ class User < ApplicationRecord
 
   def generate_username
     self.username ||= ::UsernameGenerator.new(self).generate
-  end
-
-  def send_devise_notification(notification, *args)
-    I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
   def self.ransackable_associations(auth_object = nil)

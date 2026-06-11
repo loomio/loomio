@@ -2429,6 +2429,7 @@ fr:
     password_link_sent: Nous avons envoyé un courriel à %{email} avec les instructions pour définir votre mot de passe.
     reactivate_link_sent: Nous vous avons envoyé un mail avec des instructions pour réactiver votre compte
     signed_in: Connexion réussie
+    signed_out: Déconnexion réussie
     email_verified: La vérification par courriel a réussi
     name: Nom
     email: Adresse e-mail

@@ -8,7 +8,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
     super(recordStore);
     this.updateProfile = this.updateProfile.bind(this);
     this.uploadAvatar = this.uploadAvatar.bind(this);
-    this.changePassword = this.changePassword.bind(this);
     this.destroy = this.destroy.bind(this);
     this.saveExperience = this.saveExperience.bind(this);
     this.model = UserModel;
@@ -43,11 +42,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
 
   uploadAvatar(file) {
     return this.remote.upload('upload_avatar', file);
-  }
-
-  changePassword(user) {
-    user.processing = true;
-    return this.remote.post('change_password', user.serialize()).finally(() => user.processing = false);
   }
 
   destroy() { return this.remote.delete('/'); }

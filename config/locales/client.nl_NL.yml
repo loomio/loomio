@@ -2412,6 +2412,7 @@ nl_NL:
     password_link_sent: We hebben je een e-mail gestuurd naar %{email} met instructies om je wachtwoord in te stellen.
     reactivate_link_sent: We hebben je een e-mail gestuurd met instructies om je account weer te activeren
     signed_in: Succesvol ingelogd
+    signed_out: Succesvol uitgelogd
     email_verified: E-mail succesvol bevestigd
     name: Naam
     email: E-mail

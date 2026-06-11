@@ -23,10 +23,8 @@ class GroupExportService
 
   JSON_PARAMS = {
     groups:      {except: [:token], methods: []},
-    users:       {except: [:encrypted_password,
-                           :reset_password_token,
+    users:       {except: [:password_digest,
                            :email_api_key,
-                           :reset_password_token,
                            :secret_token,
                            :unsubscribe_token] }
   }.with_indifferent_access.freeze
