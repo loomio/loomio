@@ -1,6 +1,5 @@
-class Api::V1::RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Api::V1::RestfulController
   include LocalesHelper
-  before_action :configure_permitted_parameters
   before_action :permission_check, only: :create
 
   def create
@@ -29,6 +28,11 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
+  end
+
   def email_can_be_verified?
     (pending_membership&.user  ||
      pending_useable_login_token&.user ||
@@ -51,6 +55,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def pending_useable_login_token
     pending_login_token if pending_login_token&.useable?
   end
+
   def permission_check
     if !(AppConfig.app_features[:create_user] || pending_invitation || pending_group)
       render json: { errors: {email: [I18n.t('auth_form.invitation_required')], name: [I18n.t('auth_form.invitation_required')]}}, status: 422
@@ -64,11 +69,5 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     return true if @email_can_be_verified
     TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
                             remote_ip: request.remote_ip)
-  end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
-    end
   end
 end

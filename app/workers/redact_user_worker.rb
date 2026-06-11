@@ -33,7 +33,7 @@ class RedactUserWorker
         unlock_token: nil,
         current_sign_in_ip: nil,
         last_sign_in_ip: nil,
-        encrypted_password: nil,
+        password_digest: nil,
         reset_password_token: nil,
         reset_password_sent_at: nil,
         unsubscribe_token: nil,
