@@ -2386,6 +2386,7 @@ ja:
     password_link_sent: パスワードの設定方法を記載したメールを %{email} に送信しました。
     reactivate_link_sent: アカウントを再開する手順を記載したメールを送信しました
     signed_in: 正常にサインインしました
+    signed_out: Signed out successfully
     email_verified: メールが正常に認証されました
     name: 名前
     email: Eメール

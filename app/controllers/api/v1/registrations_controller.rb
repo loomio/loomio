@@ -1,6 +1,7 @@
-class Api::V1::RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < ActionController::Base
+  include Authentication
+  include CurrentUserHelper
   include LocalesHelper
-  before_action :configure_permitted_parameters
   before_action :permission_check, only: :create
 
   def create
@@ -9,12 +10,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
       return
     end
-    self.resource = UserService.create(params: sign_up_params)
+    resource = UserService.create(params: sign_up_params)
     if !resource.errors.any?
       save_detected_locale(resource)
       if @email_can_be_verified
-        sign_in resource
-        flash[:notice] = t(:'devise.sessions.signed_in')
+        start_new_session_for(resource)
+        flash[:notice] = t(:'auth_form.signed_in')
         render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
         LoginTokenService.create(actor: resource, uri: referrer_uri)
@@ -66,9 +67,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
                             remote_ip: request.remote_ip)
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
-    end
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
   end
 end

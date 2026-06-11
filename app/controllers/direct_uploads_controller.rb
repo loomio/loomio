@@ -1,4 +1,8 @@
 class DirectUploadsController < ActiveStorage::DirectUploadsController
+  include Authentication
+  include LocalesHelper
+  include CurrentUserHelper
+
   PAID_MAX_UPLOAD_BYTES  = ENV.fetch('PAID_MAX_UPLOAD_BYTES',  1.gigabyte).to_i
   TRIAL_MAX_UPLOAD_BYTES = ENV.fetch('TRIAL_MAX_UPLOAD_BYTES', 25.megabytes).to_i
 
@@ -19,13 +23,6 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   ].freeze
 
   private
-
-  # This controller inherits from ActiveStorage::DirectUploadsController, not our
-  # ApplicationController, so CurrentUserHelper#current_user isn't in the chain.
-  # Uphold the Loomio invariant that current_user is never nil.
-  def current_user
-    super || LoggedOutUser.new
-  end
 
   def enforce_content_type
     content_type = params.dig(:blob, :content_type).to_s.downcase

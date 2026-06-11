@@ -73,7 +73,7 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
       name: "Other User",
       email: "othermentions@example.com",
       username: "othermentions",
-      encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
+      password_digest: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
 

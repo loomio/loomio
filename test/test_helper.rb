@@ -97,6 +97,14 @@ end
 # Controller test helpers
 module ActionController
   class TestCase
-    include Devise::Test::ControllerHelpers
+    def sign_in(user)
+      session = user.sessions.create!(user_agent: 'test', ip_address: '127.0.0.1')
+      cookies.signed[:session_id] = { value: session.id, httponly: true, same_site: :lax }
+    end
+
+    def sign_out(_user = nil)
+      Session.where(id: cookies.signed[:session_id]).destroy_all
+      cookies.delete(:session_id)
+    end
   end
 end

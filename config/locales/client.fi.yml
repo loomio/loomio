@@ -2387,6 +2387,7 @@ fi:
     password_link_sent: Olemme lähettäneet sähköpostin osoitteeseen %{email}, jossa on ohjeet salasanan asettamiseen.
     reactivate_link_sent: Olemme lähettäneet sinulle sähköpostin, jossa on ohjeet tilisi uudelleenaktivointiin
     signed_in: Kirjautuminen onnistui
+    signed_out: Signed out successfully
     email_verified: Sähköposti vahvistettu onnistuneesti
     name: Nimi
     email: Sähköposti

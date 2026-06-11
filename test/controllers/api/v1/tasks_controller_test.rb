@@ -5,14 +5,14 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     @author = User.find_or_create_by!(email: "taskauthor@example.com") do |u|
       u.name = "author"
       u.username = "taskauthor"
-      u.encrypted_password = "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K"
+      u.password_digest = "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K"
       u.email_verified = true
     end
 
     @doer = User.find_or_create_by!(email: "taskdoer@example.com") do |u|
       u.name = "doer"
       u.username = "taskdoer"
-      u.encrypted_password = "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K"
+      u.password_digest = "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K"
       u.email_verified = true
     end
 

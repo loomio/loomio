@@ -2762,6 +2762,8 @@ en:
     email: Email
     password: Password
     reactivate: Reactivate account
+    signed_in: Signed in successfully
+    signed_out: Signed out successfully
   chatbot:
     configure_chatbot: Configure chatbot
     test_connection: Test connection

@@ -2387,6 +2387,7 @@ hr:
     password_link_sent: Poslali smo e-poruku na %{email} s uputama o tome kako postaviti lozinku.
     reactivate_link_sent: Poslali smo vam e-poruku s uputama za ponovno aktiviranje vašeg računa
     signed_in: Uspješno ste prijavljeni
+    signed_out: Signed out successfully
     email_verified: E-pošta je uspješno potvrđena
     name: Ime
     email: E-mail

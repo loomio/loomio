@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 
@@ -107,6 +106,37 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+  end
+
+  test "creates a session record on sign in" do
+    user = User.create!(
+      email: "sessionrecord@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+    
+    post :create, params: { user: { email: "sessionrecord@example.com", password: "s3curepassword123" } }
+    assert_response :success
+    assert_equal 1, user.sessions.count
+    assert_equal user.sessions.first, Session.find_by(id: cookies.signed[:session_id])
+  end
+
+  test "destroys session record on sign out" do
+    user = User.create!(
+      email: "sessiondestroy@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+    
+    post :create, params: { user: { email: "sessiondestroy@example.com", password: "s3curepassword123" } }
+    assert_response :success
+    session_id = cookies.signed[:session_id]
+    assert session_id
+
+    delete :destroy
+    assert_response :success
+    assert_nil Session.find_by(id: session_id)
+    assert_nil cookies.signed[:session_id]
   end
 
   test "does not sign in a blank password" do

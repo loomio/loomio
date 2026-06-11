@@ -2387,6 +2387,7 @@ da:
     password_link_sent: Vi har sendt en e-mail til %{email} med instruktioner om, hvordan du indstiller din adgangskode.
     reactivate_link_sent: Vi har sendt dig en e-mail med instruktioner til at genaktivere din konto
     signed_in: Log ind
+    signed_out: Signed out successfully
     email_verified: E-mail bekræftet
     name: Navn
     email: Email

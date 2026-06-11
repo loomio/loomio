@@ -2387,6 +2387,7 @@ sl:
     password_link_sent: Na naslov %{email} smo poslali e-poštno sporočilo z navodili za nastavitev gesla.
     reactivate_link_sent: Poslali smo vam e-pošto z navodili za ponovno aktivacijo vašega računa
     signed_in: Uspešno vpisan
+    signed_out: Signed out successfully
     email_verified: E-pošta je bila uspešno preverjena
     name: Ime
     email: E-naslov

@@ -2421,6 +2421,7 @@ es:
     password_link_sent: Le hemos enviado un correo electrónico a %{email}, con instrucciones para configurar su contraseña.
     reactivate_link_sent: Te hemos enviado un email con instrucciones para reactivar tu cuenta
     signed_in: Entraste exitosamente
+    signed_out: Signed out successfully
     email_verified: Correo electrónico verificado
     name: Nombre
     email: Correo Electrónico

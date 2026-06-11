@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   layout false
 
+  include Authentication
   include LocalesHelper
   include ProtectedFromForgery
   include CurrentUserHelper

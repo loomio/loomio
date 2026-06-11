@@ -2387,6 +2387,7 @@ sv:
     password_link_sent: Vi har skickat ett e-postmeddelande till %{email} med instruktioner om hur du ställer in ditt lösenord.
     reactivate_link_sent: Vi har skickat ett e-postmeddelande med instruktioner för att återaktivera ditt konto
     signed_in: Inloggad
+    signed_out: Signed out successfully
     email_verified: E-posten har verifierats
     name: namn
     email: E-post
