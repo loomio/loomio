@@ -1,21 +1,21 @@
-class Users::PasswordsController < Devise::PasswordsController
-
+class Users::PasswordsController < ApplicationController
   def update
-    self.resource = resource_class.reset_password_by_token(resource_params)
+    user = User.reset_password_by_token(resource_params)
 
-    if resource.errors.empty?
-      set_flash_message!(:notice, :updated)
-      sign_in(resource)
-      respond_with resource, location: after_sign_in_path_for(resource)
+    if user.errors.empty?
+      sign_in(user)
+      redirect_to dashboard_path, notice: t(:'password_reset.password_updated', default: 'Password updated')
     else
-      set_minimum_password_length
-      respond_with resource
+      respond_to do |format|
+        format.html { redirect_to dashboard_path, alert: user.errors.full_messages.to_sentence }
+        format.json { render json: { errors: user.errors }, status: :unprocessable_content }
+      end
     end
   end
 
   private
 
-  def require_no_authentication
-    # noop
+  def resource_params
+    params.fetch(:user, params).permit(:reset_password_token, :password, :password_confirmation)
   end
 end

@@ -35,7 +35,7 @@ class Identities::BaseController < ApplicationController
 
     # Handle successful login
     sign_in(identity.user)
-    flash[:notice] = t(:'devise.sessions.signed_in')
+    flash[:notice] = t(:'sessions.signed_in', default: 'Signed in')
 
     redirect_to session.delete(:back_to) || dashboard_path
   end

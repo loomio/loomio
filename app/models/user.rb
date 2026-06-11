@@ -21,8 +21,15 @@ class User < ApplicationRecord
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
-  devise :pwned_password if Rails.env.production?
+  alias_attribute :password_digest, :encrypted_password
+  has_secure_password validations: false
+  generates_token_for :password_reset, expires_in: 6.hours do
+    encrypted_password&.last(10)
+  end
+
+  MAX_LOGIN_ATTEMPTS = ENV.fetch('MAX_LOGIN_ATTEMPTS', 10).to_i
+  AUTO_UNLOCK_AFTER = 6.hours
+
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
@@ -36,6 +43,7 @@ class User < ApplicationRecord
   attr_accessor :require_valid_signup
 
   before_save :set_legal_accepted_at, if: :legal_accepted
+  before_validation :normalize_email
 
   validates :email, presence: true, email: true, length: { maximum: 200 }
 
@@ -52,6 +60,7 @@ class User < ApplicationRecord
   validates_length_of :short_bio, maximum: 5000
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
+  validate :password_has_not_been_pwned, if: :check_pwned_password?
 
   validates_length_of :password, minimum: 8, allow_nil: true
 
@@ -102,6 +111,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :sessions, dependent: :destroy
   has_many :events, dependent: :destroy
 
   has_many :tags, through: :groups
@@ -202,8 +212,34 @@ class User < ApplicationRecord
     find_by(email: email)&.email_status || :unused
   end
 
-  def self.find_for_database_authentication(warden_conditions)
-    super(warden_conditions.merge(email_verified: true))
+  def self.find_for_authentication(email:)
+    verified.find_by(email: email.to_s.strip.downcase)
+  end
+
+  def self.find_for_database_authentication(conditions)
+    find_for_authentication(email: conditions[:email])
+  end
+
+  def self.reset_password_by_token(params)
+    attrs = params.to_h.symbolize_keys
+    user = find_by_password_reset_token(attrs[:reset_password_token]) || new
+    user.errors.add(:reset_password_token, :invalid) unless user.persisted?
+    return user unless user.persisted?
+
+    unless user.update(password: attrs[:password], password_confirmation: attrs[:password_confirmation])
+      return user
+    end
+
+    user.update_columns(reset_password_token: nil, reset_password_sent_at: nil)
+    user
+  end
+
+  def self.find_by_password_reset_token(token)
+    return if token.blank?
+
+    find_by_token_for(:password_reset, token)
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    find_by(reset_password_token: token, reset_password_sent_at: 6.hours.ago..)
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.count }
@@ -218,6 +254,57 @@ class User < ApplicationRecord
 
   def remember_me
     true
+  end
+
+  def authenticatable_salt
+    encrypted_password.to_s[0, 29]
+  end
+
+  def authenticate_for_session(password, request: nil)
+    return false if access_locked?
+    return false if password.blank? || !has_password
+
+    if authenticate(password)
+      record_successful_login!(request)
+      true
+    else
+      record_failed_login!
+      false
+    end
+  end
+
+  def access_locked?
+    return false unless locked_at
+    return true if locked_at > AUTO_UNLOCK_AFTER.ago
+
+    unlock_access!
+    false
+  end
+
+  def lock_access!
+    update_columns(locked_at: Time.current, unlock_token: self.class.generate_unique_secure_token)
+  end
+
+  def unlock_access!
+    update_columns(locked_at: nil, failed_attempts: 0, unlock_token: nil)
+  end
+
+  def record_failed_login!
+    increment!(:failed_attempts)
+    lock_access! if failed_attempts >= MAX_LOGIN_ATTEMPTS
+  end
+
+  def record_successful_login!(request = nil)
+    update_columns(
+      failed_attempts: 0,
+      locked_at: nil,
+      unlock_token: nil,
+      sign_in_count: sign_in_count.to_i + 1,
+      current_sign_in_at: Time.current,
+      last_sign_in_at: current_sign_in_at,
+      current_sign_in_ip: request&.remote_ip,
+      last_sign_in_ip: current_sign_in_ip
+    )
   end
 
   def is_logged_in?
@@ -282,9 +369,8 @@ class User < ApplicationRecord
     self[:name] || self[:username]
   end
 
-  # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
-    super && !deactivated_at
+    !deactivated_at
   end
 
   def locale
@@ -299,8 +385,8 @@ class User < ApplicationRecord
     self.username ||= ::UsernameGenerator.new(self).generate
   end
 
-  def send_devise_notification(notification, *args)
-    I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  def normalize_email
+    self.email = email.to_s.strip.downcase if email
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -361,5 +447,15 @@ class User < ApplicationRecord
 
   def password_required?
     !password.nil? || !password_confirmation.nil?
+  end
+
+  def check_pwned_password?
+    Rails.env.production? && password.present?
+  end
+
+  def password_has_not_been_pwned
+    return unless PwnedPasswordService.pwned?(password)
+
+    errors.add(:password, I18n.t(:'password_reset.forbidden_passwords', default: 'has appeared in a data breach'))
   end
 end

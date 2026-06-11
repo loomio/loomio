@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   include LocalesHelper
   include ProtectedFromForgery
+  include Authentication
   include CurrentUserHelper
   include SentryHelper
   include PrettyUrlHelper

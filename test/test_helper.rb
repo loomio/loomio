@@ -61,6 +61,7 @@ module ActiveSupport
 
     # Setup common stubs before each test
     setup do
+      Current.reset
       ActionMailer::Base.deliveries.clear
       ThrottleService.reset!('hour')
       ThrottleService.reset!('day')
@@ -97,6 +98,17 @@ end
 # Controller test helpers
 module ActionController
   class TestCase
-    include Devise::Test::ControllerHelpers
+    def sign_in(user)
+      Current.reset
+      session_record = user.sessions.create!
+      cookies.signed[:session_id] = session_record.id
+      Current.session = session_record
+    end
+
+    def sign_out
+      Session.find_by(id: cookies.signed[:session_id])&.destroy
+      cookies.delete(:session_id)
+      Current.reset
+    end
   end
 end

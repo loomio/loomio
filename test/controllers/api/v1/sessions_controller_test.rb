@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 
@@ -102,8 +101,11 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       password: "s3curepassword123"
     )
     
-    post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    assert_difference -> { Session.count }, 1 do
+      post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    end
     assert_response :success
+    assert cookies.signed[:session_id].present?
     
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
@@ -156,6 +158,30 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     post :create, params: { user: { email: "sessionsuser3@example.com", password: nil } }
     assert_response :unauthorized
+  end
+
+  test "migrates an existing devise session to a rails session" do
+    user = users(:user)
+    session['warden.user.user.key'] = [[user.id], user.authenticatable_salt]
+
+    assert_difference -> { Session.count }, 1 do
+      post :create
+    end
+
+    assert cookies.signed[:session_id].present?
+    assert_nil session['warden.user.user.key']
+  end
+
+  test "does not migrate a devise session with a stale password salt" do
+    user = users(:user)
+    session['warden.user.user.key'] = [[user.id], 'stale-salt']
+
+    assert_no_difference -> { Session.count } do
+      post :create
+    end
+
+    assert_nil cookies.signed[:session_id]
+    assert session['warden.user.user.key'].present?
   end
 
   test "signs in a user via token" do

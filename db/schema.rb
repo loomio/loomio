@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_11_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -791,6 +791,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.integer "stance_id"
     t.integer "poll_option_id"
@@ -1105,4 +1114,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_000001) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "polls", "topics", deferrable: :deferred
+  add_foreign_key "sessions", "users"
 end

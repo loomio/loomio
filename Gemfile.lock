@@ -172,18 +172,6 @@ GEM
       tilt
     date (3.5.1)
     declarative (0.0.20)
-    devise (5.0.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 7.0)
-      responders
-      warden (~> 1.2.3)
-    devise-i18n (1.16.0)
-      devise (>= 5.0.0)
-      rails-i18n
-    devise-pwned_password (0.2.0)
-      devise (>= 4, < 6)
-      pwned (~> 2.4)
     digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     discard (2.0.0)
@@ -483,7 +471,6 @@ GEM
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.3)
     paper_trail (17.0.0)
@@ -528,7 +515,6 @@ GEM
     public_suffix (7.0.5)
     puma (8.0.2)
       nio4r (~> 2.0)
-    pwned (2.4.1)
     racc (1.8.1)
     rack (3.2.6)
     rack-attack (6.8.0)
@@ -569,9 +555,6 @@ GEM
     rails-html-sanitizer (1.7.0)
       loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails-i18n (8.1.0)
-      i18n (>= 0.7, < 2)
-      railties (>= 8.0.0, < 9)
     railties (8.0.5)
       actionpack (= 8.0.5)
       activesupport (= 8.0.5)
@@ -742,8 +725,6 @@ GEM
       iso8601 (~> 0.13.0)
       net_http_timeout_errors (~> 1.0.0)
       oga (~> 3.4)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     web-console (4.3.0)
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
@@ -779,6 +760,7 @@ DEPENDENCIES
   activeadmin (~> 3.5.1)
   activerecord-import (= 2.2.0)
   aws-sdk-s3
+  bcrypt (~> 3.1)
   bootsnap
   brakeman
   browser (~> 6.2.0)
@@ -789,9 +771,6 @@ DEPENDENCIES
   connection_pool (~> 2.4)
   custom_counter_cache
   dartsass-sprockets
-  devise (~> 5.0.4)
-  devise-i18n
-  devise-pwned_password
   discard (~> 2.0)
   discriminator (~> 0.1.1)
   dotenv-rails

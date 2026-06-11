@@ -53,6 +53,48 @@ class UserTest < ActiveSupport::TestCase
     assert @user.save!
   end
 
+  test "authenticates existing devise bcrypt password hashes" do
+    legacy_hash = BCrypt::Password.create('legacy_devise_password').to_s
+    user = User.create!(
+      name: 'Legacy Devise User',
+      username: "legacy#{SecureRandom.hex(4)}",
+      email: "legacy_#{SecureRandom.hex(4)}@test.com",
+      email_verified: true,
+      encrypted_password: legacy_hash
+    )
+
+    assert user.encrypted_password.start_with?('$2')
+    assert user.authenticate('legacy_devise_password')
+    assert user.authenticate_for_session('legacy_devise_password')
+  end
+
+  test "does not authenticate the wrong password against existing devise bcrypt password hashes" do
+    legacy_hash = BCrypt::Password.create('legacy_devise_password').to_s
+    user = User.create!(
+      name: 'Legacy Devise User',
+      username: "legacy#{SecureRandom.hex(4)}",
+      email: "legacy_#{SecureRandom.hex(4)}@test.com",
+      email_verified: true,
+      encrypted_password: legacy_hash
+    )
+
+    assert_not user.authenticate('wrong_password')
+    assert_not user.authenticate_for_session('wrong_password')
+  end
+
+  test "adds an error for pwned passwords when the pwned check is enabled" do
+    @user.password = 'pwned-password'
+    @user.password_confirmation = 'pwned-password'
+
+    @user.stub(:check_pwned_password?, true) do
+      PwnedPasswordService.stub(:pwned?, true) do
+        assert_not @user.valid?
+      end
+    end
+
+    assert @user.errors[:password].any?
+  end
+
   # Username validations
   test "requires username contain no whitespace" do
     @user.username = 'user name'
