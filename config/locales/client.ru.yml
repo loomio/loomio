@@ -1288,6 +1288,7 @@ ru:
     organization_name: Название организации
     handle: Ручка
     group_handle_placeholder: 'Используется в URL-адресе вашей группы: %{host}/%{handle}.'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Новая организация
     edit_organization_heading: Изменить настройки организации
     group_name_placeholder: Как называется ваша группа?

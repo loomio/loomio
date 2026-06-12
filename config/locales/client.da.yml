@@ -1288,6 +1288,7 @@ da:
     organization_name: Organisationens navn
     handle: Håndtere
     group_handle_placeholder: 'Brugt i din gruppe-URL: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Ny organisation
     edit_organization_heading: Rediger organisationsindstillinger
     group_name_placeholder: Hvad er navnet på din gruppe?

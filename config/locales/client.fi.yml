@@ -1288,6 +1288,7 @@ fi:
     organization_name: Organisaation nimi
     handle: Kahva
     group_handle_placeholder: 'Käytetty ryhmäsi URL-osoitteessa: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Uusi organisaatio
     edit_organization_heading: Muokkaa organisaation asetuksia
     group_name_placeholder: Mikä on ryhmäsi nimi?

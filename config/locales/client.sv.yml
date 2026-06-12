@@ -1288,6 +1288,7 @@ sv:
     organization_name: Organisations namn
     handle: Hantera
     group_handle_placeholder: 'Används i din grupp-URL: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Ny organisation
     edit_organization_heading: Redigera organisationsinställningar
     group_name_placeholder: Vad heter din grupp?

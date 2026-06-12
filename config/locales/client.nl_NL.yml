@@ -1294,6 +1294,7 @@ nl_NL:
     organization_name: Organisatienaam
     handle: Gebruikersnaam
     group_handle_placeholder: 'Gebruikt in uw groeps-URL: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Nieuwe organisatie
     edit_organization_heading: Bewerk organisatie instellingen
     group_name_placeholder: Wat is de naam van je groep?

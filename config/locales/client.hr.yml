@@ -1288,6 +1288,7 @@ hr:
     organization_name: Naziv organizacije
     handle: Ručka
     group_handle_placeholder: 'Koristi se u URL-u vaše grupe: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Nova organizacija
     edit_organization_heading: Uredite postavke organizacije
     group_name_placeholder: Kako se zove vaša grupa?

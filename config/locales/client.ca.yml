@@ -1294,6 +1294,7 @@ ca:
     organization_name: Nom de l'organització
     handle: Gestionar
     group_handle_placeholder: 'S''utilitza a l''URL del vostre grup: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: Nova organització
     edit_organization_heading: Edita la configuració de l'organització
     group_name_placeholder: Quin és el nom del vostre grup?

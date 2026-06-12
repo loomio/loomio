@@ -1292,6 +1292,7 @@ he:
     organization_name: שם ארגון
     handle: ידית
     group_handle_placeholder: 'בשימוש בכתובת האתר של הקבוצה שלך: %{host}/%{handle}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: ארגון חדש
     edit_organization_heading: ערוך את הגדרות הארגון
     group_name_placeholder: מה שם הקבוצה שלך?
