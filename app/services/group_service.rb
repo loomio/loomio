@@ -200,6 +200,7 @@ module GroupService
           handle: old_handle
         )
         trim_handle_redirects(group)
+        update_descendant_handles(group, old_handle, new_handle)
       end
     end
 
@@ -211,6 +212,28 @@ module GroupService
   def self.trim_handle_redirects(group)
     excess = group.handle_redirects.order(created_at: :desc).offset(3)
     excess.destroy_all if excess.any?
+  end
+
+  def self.update_descendant_handles(group, old_parent_handle, new_parent_handle)
+    group.all_subgroups.each do |subgroup|
+      old_sub_handle = subgroup.handle
+      next unless old_sub_handle&.starts_with?("#{old_parent_handle}-")
+
+      new_sub_handle = old_sub_handle.sub(
+        /\A#{Regexp.escape(old_parent_handle)}-/,
+        "#{new_parent_handle}-"
+      )
+
+      subgroup.update!(handle: new_sub_handle)
+
+      GroupHandleRedirect.find_or_create_by!(
+        group: subgroup,
+        handle: old_sub_handle
+      )
+      trim_handle_redirects(subgroup)
+
+      update_descendant_handles(subgroup, old_sub_handle, new_sub_handle)
+    end
   end
 
   def self.generate_handle(name, parent_handle, attempt)
