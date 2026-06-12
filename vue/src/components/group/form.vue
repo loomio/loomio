@@ -242,12 +242,11 @@ v-form(ref="form" @submit.prevent="submit")
           div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
             v-text-field.group-form__handle#group-handle(
               v-model='group.handle'
-              :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})"
+              :hint="realGroup && realGroup.handle && group.handle !== realGroup.handle ? $t('group_form.handle_changed_hint') : $t('group_form.group_handle_hint_new', {host: hostname, handle: group.handle})"
               :rules='validate("handle")'
               maxlength='100'
               :label="$t('group_form.handle')"
             )
-            .text-caption.text-medium-emphasis.mb-2(v-if="realGroup && realGroup.handle && group.handle !== realGroup.handle" v-t="'group_form.handle_redirect_notice'")
           v-spacer
 
           input.d-none.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")

@@ -475,7 +475,10 @@ class Group < ApplicationRecord
   def handle_is_valid
     self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)
     return if handle.nil?
-    self.handle = handle.parameterize
+    if handle != handle.parameterize
+      errors.add(:handle, I18n.t(:'group.error.handle_must_be_url_friendly'))
+      return
+    end
     if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
       errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
     end

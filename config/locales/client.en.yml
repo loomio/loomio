@@ -1422,6 +1422,8 @@ en:
     organization_name: Organization name
     handle: Handle
     group_handle_placeholder: 'For your group URL and email: %{host}/%{handle}, %{handle}{''@''}%{host}'
+    group_handle_hint_new: 'Your group URL and email will be %{host}/%{handle} and %{handle}{''@''}%{host}'
+    handle_changed_hint: Your previous URL and email address will redirect to your new address.
     handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings

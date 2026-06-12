@@ -420,6 +420,7 @@ en:
   group:
     error:
       handle_must_begin_with_parent_handle: Must begin with %{parent_handle}-
+      handle_must_be_url_friendly: Use only lowercase letters (a-z), numbers (0-9) and hyphens (-)
       no_public_trials: Please upgrade from trial to change the group privacy setting
     stats:
       group_stats: Group stats
