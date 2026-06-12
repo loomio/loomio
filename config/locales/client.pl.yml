@@ -1058,6 +1058,8 @@ pl:
     lock_thread: Zablokuj wątek
     unlock_thread: Odblokuj wątek
     add_to_discussion: Dodaj do dyskusji
+    save_bookmark: Zapisz zakładkę
+    remove_bookmark: Usuń zakładkę
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2410,6 +2412,7 @@ pl:
     password_link_sent: 'Wysłaliśmy wiadomość e-mail na adres %{email} z instrukcjami jak ustawić hasło. '
     reactivate_link_sent: Wysłaliśmy Ci wiadomość e-mail z instrukcjami dotyczącymi ponownej aktywacji konta 
     signed_in: Zalogowano pomyślnie
+    signed_out: Wylogowano pomyślnie
     email_verified: E-mail zweryfikowany pomyślnie
     name: Nazwa
     email: E-mail
@@ -2419,6 +2422,7 @@ pl:
     change_your_password: Czy chcesz ustawić nowe hasło?
     email_placeholder: ty{'@'}example.com
     turnstile_required: Aby kontynuować, należy zakończyć weryfikację.
+    invalid_login: Nie można zalogować się przy użyciu tych danych
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe
@@ -2896,3 +2900,16 @@ pl:
     discussion: Dyskusja
     success: Sukces, %{pollType} dodano do dyskusji!
     explanation: "%{pollType} oraz wszelkie głosy, komentarze i wyniki zostaną dołączone do wybranego wątku dyskusji."
+  bookmarks:
+    bookmarks: Zakładki
+    saved: Dodano zakładkę
+    removed: Usunięto zakładkę
+    empty: Brak zakładek
+    empty_help: Zakładki pozwalają śledzić rzeczy, do których chcesz wrócić.
+    subtitle: "%{type} przez %{name}"
+    types:
+      Discussion: Dyskusja
+      Poll: Głosowanie
+      Comment: Komentarz
+      Stance: Głos
+      Outcome: Konkluzja

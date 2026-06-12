@@ -18,6 +18,24 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal @user, group.reload.creator
   end
 
+  test "does not reparent a group on update" do
+    group = Group.create!(
+      name: "Managed Group",
+      handle: "managed-#{SecureRandom.hex(4)}"
+    )
+    group.add_admin!(@user)
+    parent = Group.create!(
+      name: "Unexpected Parent",
+      handle: "unexpected-parent-#{SecureRandom.hex(4)}"
+    )
+    parent.add_admin!(@user)
+
+    GroupService.update(group: group, params: { parent_id: parent.id, name: "Still Managed" }, actor: @user)
+
+    assert_equal "Still Managed", group.reload.name
+    assert_nil group.parent_id
+  end
+
   test "invites a user by email" do
     group = Group.create!(
       name: 'Invite Group',

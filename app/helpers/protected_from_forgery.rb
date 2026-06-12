@@ -17,7 +17,8 @@ module ProtectedFromForgery
       cookies[:csrftoken] = {
         value: form_authenticity_token,
         expires: 1.day.from_now,
-        secure: Rails.application.config.force_ssl
+        secure: Rails.application.config.force_ssl,
+        same_site: :lax
       }
     end
   end

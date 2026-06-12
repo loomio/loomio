@@ -80,7 +80,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     user = User.active.find(params[:id])
     if (user.name.blank? || !user.email_verified) &&
        (user.group_ids & current_user.adminable_group_ids).length > 0
-      user.update(name: params[:name], username: params[:username])
+      user.update(name: params[:name])
       self.resource = user
       respond_with_resource
     else

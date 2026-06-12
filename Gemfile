@@ -8,9 +8,8 @@ gem 'pg'
 gem 'active_record_extended'
 gem 'haml-rails', '~> 3.0.0'
 gem 'phlex-rails'
-gem 'devise', '~> 5.0.4'
-gem 'devise-i18n'
-gem 'devise-pwned_password'
+gem 'bcrypt'
+gem 'pwned'
 gem 'active_model_serializers', '~> 0.8.1', github: 'loomio/active_model_serializers', branch: 'fix-frozen-string-literal-ruby3'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
@@ -29,7 +28,8 @@ gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.60", require: false
-gem 'image_processing', '~> 1.14'
+gem 'image_processing', '~> 2.0'
+gem 'mini_magick', '~> 5.0'
 gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"

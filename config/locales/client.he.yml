@@ -1056,6 +1056,8 @@ he:
     lock_thread: נעילת שרשור
     unlock_thread: ביטול נעילת שרשור
     add_to_discussion: הוסף לדיון
+    save_bookmark: שמור סימניה
+    remove_bookmark: הסר סימניה
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2404,6 +2406,7 @@ he:
     password_link_sent: שלחנו לך מייל ל%{email} עם הנחיות איך לאפס את סיסמתך.
     reactivate_link_sent: שלחנו לך אימייל עם הוראות להפעלה מחדש של חשבונך
     signed_in: התחברת בהצלחה
+    signed_out: התנתקת בהצלחה
     email_verified: כתובת המייל אומתה בהצלחה
     name: שם
     email: דואר אלקטרוני
@@ -2413,6 +2416,7 @@ he:
     change_your_password: האם תרצה להגדיר סיסמה חדשה?
     email_placeholder: אתה{'@'}example.com
     turnstile_required: אנא השלם את האימות לפני שתמשיך.
+    invalid_login: לא ניתן להתחבר אותך עם הפרטים האלה
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
@@ -2888,3 +2892,16 @@ he:
     discussion: דִיוּן
     success: הצלחה, %{pollType} נוסף לדיון!
     explanation: ה-%{pollType} וכל הצבעה, תגובה ותוצאה יצורפו לשרשור הדיון שנבחר.
+  bookmarks:
+    bookmarks: סימניות
+    saved: הסימנייה נשמרה
+    removed: הסימנייה הוסרה
+    empty: אין עדיין סימניות
+    empty_help: סימניות הן דרך לעקוב אחר דברים שתרצו לחזור אליהם.
+    subtitle: "%{type} מאת %{name}"
+    types:
+      Discussion: דִיוּן
+      Poll: מִשׁאָל
+      Comment: הֶעָרָה
+      Stance: הַצבָּעָה
+      Outcome: מסקנה

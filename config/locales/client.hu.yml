@@ -1056,6 +1056,8 @@ hu:
     lock_thread: Téma zárolása
     unlock_thread: Téma zárolásának feloldása
     add_to_discussion: Hozzáadás a beszélgetéshez
+    save_bookmark: Könyvjelző mentése
+    remove_bookmark: Könyvjelző eltávolítása
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -2392,6 +2394,7 @@ hu:
     password_link_sent: Küldtünk egy e-mailt a(z) %{email} címre, amely leírja a jelszó beállításának menetét.
     reactivate_link_sent: Küldtünk egy e-mailt az Ön fiókjának újraaktiválására vonatkozó utasításokkal
     signed_in: Sikeres bejelentkezés
+    signed_out: Sikeres kijelentkezés
     email_verified: Az e-mail sikeresen ellenőrizve
     name: Név
     email: E-mail
@@ -2401,6 +2404,7 @@ hu:
     change_your_password: Szeretne új jelszót beállítani?
     email_placeholder: te{'@'}example.com
     turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
+    invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -2876,3 +2880,16 @@ hu:
     discussion: Vita
     success: Sikeresen hozzáadtuk a(z) %{pollType} elemet a beszélgetéshez!
     explanation: A %{pollType} és minden szavazat, hozzászólás és eredmény hozzáfűzésre kerül a kiválasztott beszélgetési témához.
+  bookmarks:
+    bookmarks: Könyvjelzők
+    saved: Könyvjelző mentve
+    removed: Könyvjelző eltávolítva
+    empty: Még nincsenek könyvjelzők
+    empty_help: A könyvjelzők segítségével nyomon követheted azokat a dolgokat, amelyekhez később vissza szeretnél térni.
+    subtitle: "%{type}, készítette: %{name}"
+    types:
+      Discussion: Vita
+      Poll: Szavazás
+      Comment: Megjegyzés
+      Stance: Szavazás
+      Outcome: Következtetés

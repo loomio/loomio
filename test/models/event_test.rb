@@ -53,11 +53,13 @@ class EventTest < ActiveSupport::TestCase
     # Webhook
     @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
     WebMock.stub_request(:post, @webhook_url).to_return(status: 200)
-    @webhook = Chatbot.create!(
-      group: @group, author: @admin, name: "Test Webhook",
-      server: @webhook_url, webhook_kind: 'markdown', kind: 'webhook',
-      event_kinds: %w[new_discussion discussion_edited poll_created poll_edited poll_closing_soon poll_expired poll_announced poll_reopened outcome_created]
-    )
+    LinkPreviewService.stub(:safe_to_fetch?, true) do
+      @webhook = Chatbot.create!(
+        group: @group, author: @admin, name: "Test Webhook",
+        server: @webhook_url, webhook_kind: 'markdown', kind: 'webhook',
+        event_kinds: %w[new_discussion discussion_edited poll_created poll_edited poll_closing_soon poll_expired poll_announced poll_reopened outcome_created]
+      )
+    end
 
     # Create poll without PollService.create to avoid publishing events/emails in setup
     @poll = PollService.build(params: {

@@ -1052,6 +1052,8 @@ ro:
     lock_thread: Blocați firul de discuție
     unlock_thread: Deblocați firul de discuție
     add_to_discussion: Adaugă la discuție
+    save_bookmark: Salvați marcajul
+    remove_bookmark: Eliminați marcajul
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -2385,6 +2387,7 @@ ro:
     password_link_sent: Am trimis un e-mail către %{email} cu instrucțiuni despre cum să vă setați parola.
     reactivate_link_sent: V-am trimis un e-mail cu instrucțiuni pentru a vă reactiva contul
     signed_in: Conectat cu succes
+    signed_out: Deconectat cu succes
     email_verified: E-mail verificat cu succes
     name: Nume
     email: E-mail
@@ -2394,6 +2397,7 @@ ro:
     change_your_password: Doriți să setați o nouă parolă?
     email_placeholder: tu{'@'}exemplu.com
     turnstile_required: Vă rugăm să finalizați verificarea înainte de a continua.
+    invalid_login: Nu te pot conecta cu aceste detalii
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -2869,3 +2873,16 @@ ro:
     discussion: Discuţie
     success: Succes, %{pollType} adăugat la discuție!
     explanation: "%{pollType} și orice voturi, comentarii și rezultate vor fi adăugate firului de discuție selectat."
+  bookmarks:
+    bookmarks: Semne de carte
+    saved: Marcaj salvat
+    removed: Marcaj eliminat
+    empty: Niciun marcaj încă
+    empty_help: Semnele de carte sunt o modalitate de a urmări lucrurile la care doriți să reveniți.
+    subtitle: "%{type} de %{name}"
+    types:
+      Discussion: Discuţie
+      Poll: Sondaj
+      Comment: Comentariu
+      Stance: Vot
+      Outcome: Concluzie

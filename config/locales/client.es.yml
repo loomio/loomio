@@ -1056,6 +1056,8 @@ es:
     lock_thread: Bloquear hilo
     unlock_thread: Desbloquear hilo
     add_to_discussion: Añadir a la discusión
+    save_bookmark: Guardar marcador
+    remove_bookmark: Eliminar marcador
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -2419,6 +2421,7 @@ es:
     password_link_sent: Le hemos enviado un correo electrónico a %{email}, con instrucciones para configurar su contraseña.
     reactivate_link_sent: Te hemos enviado un email con instrucciones para reactivar tu cuenta
     signed_in: Entraste exitosamente
+    signed_out: Saliste exitosamente
     email_verified: Correo electrónico verificado
     name: Nombre
     email: Correo Electrónico
@@ -2428,6 +2431,7 @@ es:
     change_your_password: "¿Quieres establecer una nueva contraseña?"
     email_placeholder: tu{'@'}ejemplo.com
     turnstile_required: Por favor, complete la verificación antes de continuar.
+    invalid_login: No se puede iniciar sesión con esos datos.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
@@ -2905,3 +2909,16 @@ es:
     discussion: Discusión
     success: "¡Éxito! %{pollType} se ha añadido a la discusión."
     explanation: El %{pollType} y cualquier voto, comentario y resultado se agregarán al hilo de discusión seleccionado.
+  bookmarks:
+    bookmarks: Marcadores
+    saved: Marcador guardado
+    removed: Marcador eliminado
+    empty: Aún no hay marcadores.
+    empty_help: Los marcadores son una forma de llevar un registro de las cosas a las que quieres volver.
+    subtitle: "%{type} por %{name}"
+    types:
+      Discussion: Discusión
+      Poll: Encuesta
+      Comment: Comentario
+      Stance: Voto
+      Outcome: Conclusión

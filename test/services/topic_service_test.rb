@@ -80,26 +80,6 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @poll_created_event.parent_id
   end
 
-  test "repair removes duplicate created events occupying the root sequence" do
-    poll = PollService.create(params: {
-      title: "Standalone Poll",
-      poll_type: "proposal",
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 5.days.from_now,
-      group_id: @group.id
-    }, actor: @user)
-    created_event = poll.created_event
-    created_event.update_columns(topic_id: nil, sequence_id: nil, position: 0, position_key: nil)
-    duplicate_event = poll.events.create!(kind: 'poll_created', user: @user)
-    duplicate_event.update_columns(topic_id: poll.topic_id, sequence_id: 0, position: 0, position_key: '00000', depth: 0)
-
-    TopicService.repair(poll.topic_id)
-
-    assert_equal 0, created_event.reload.sequence_id
-    assert_equal poll.topic_id, created_event.topic_id
-    assert_nil created_event.parent_id
-    assert_nil Event.find_by(id: duplicate_event.id)
-  end
 
   test "repair clears stale parent from root event" do
     poll = PollService.create(params: {

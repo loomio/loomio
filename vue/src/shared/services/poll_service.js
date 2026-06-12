@@ -7,6 +7,7 @@ import openModal      from '@/shared/helpers/open_modal';
 import { I18n }          from '@/i18n';
 import AppConfig      from '@/shared/services/app_config';
 import { hardReload } from '@/shared/helpers/window';
+import BookmarkService from '@/shared/services/bookmark_service';
 import { startOfHour, addDays, format } from 'date-fns';
 
 function openSetOutcomeModal(poll) {
@@ -42,6 +43,8 @@ export default new class PollService {
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
+      ...BookmarkService.actions(poll),
+
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',

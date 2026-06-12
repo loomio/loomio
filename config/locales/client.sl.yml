@@ -1052,6 +1052,8 @@ sl:
     lock_thread: Zakleni nit
     unlock_thread: Odkleni nit
     add_to_discussion: Dodaj v razpravo
+    save_bookmark: Shrani zaznamek
+    remove_bookmark: Odstrani zaznamek
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2385,6 +2387,7 @@ sl:
     password_link_sent: Na naslov %{email} smo poslali e-poštno sporočilo z navodili za nastavitev gesla.
     reactivate_link_sent: Poslali smo vam e-pošto z navodili za ponovno aktivacijo vašega računa
     signed_in: Uspešno vpisan
+    signed_out: Uspešno odjavljen
     email_verified: E-pošta je bila uspešno preverjena
     name: Ime
     email: E-naslov
@@ -2394,6 +2397,7 @@ sl:
     change_your_password: Ali želite nastaviti novo geslo?
     email_placeholder: vi{'@'}example.com
     turnstile_required: Pred nadaljevanjem opravite preverjanje.
+    invalid_login: S temi podatki vas ni mogoče prijaviti
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava
@@ -2869,3 +2873,16 @@ sl:
     discussion: Razprava
     success: Uspelo, %{pollType} dodan v razpravo!
     explanation: "%{pollType} in vsi glasovi, komentarji in izid bodo dodani izbrani niti razprave."
+  bookmarks:
+    bookmarks: Zaznamki
+    saved: Zaznamek shranjen
+    removed: Zaznamek odstranjen
+    empty: Še ni zaznamkov
+    empty_help: Zaznamki so način za sledenje stvari, h katerim se želite vrniti.
+    subtitle: "%{type} od %{name}"
+    types:
+      Discussion: Razprava
+      Poll: Anketa
+      Comment: Komentar
+      Stance: Glas
+      Outcome: Zaključek

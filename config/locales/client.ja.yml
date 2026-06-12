@@ -1051,6 +1051,8 @@ ja:
     lock_thread: スレッドをロック
     unlock_thread: スレッドのロックを解除
     add_to_discussion: 議論に追加
+    save_bookmark: ブックマークを保存
+    remove_bookmark: ブックマークを削除
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色
@@ -2384,6 +2386,7 @@ ja:
     password_link_sent: パスワードの設定方法を記載したメールを %{email} に送信しました。
     reactivate_link_sent: アカウントを再開する手順を記載したメールを送信しました
     signed_in: 正常にサインインしました
+    signed_out: 正常にサインアウトしました
     email_verified: メールが正常に認証されました
     name: 名前
     email: Eメール
@@ -2393,6 +2396,7 @@ ja:
     change_your_password: 新しいパスワードを設定しますか?
     email_placeholder: あなた{'@'}example.com
     turnstile_required: 続行する前に、確認手続きを完了してください。
+    invalid_login: 入力された情報ではログインできません
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
@@ -2868,3 +2872,16 @@ ja:
     discussion: 議論
     success: 成功しました！%{pollType}がディスカッションに追加されました！
     explanation: "%{pollType} と、投票、コメント、結果は、選択されたディスカッション スレッドに追加されます。"
+  bookmarks:
+    bookmarks: ブックマーク
+    saved: ブックマークを保存しました
+    removed: ブックマークが削除されました
+    empty: ブックマークはまだありません
+    empty_help: ブックマークは、後で見返したいものを記録しておくための方法です。
+    subtitle: "%{name} による %{type}"
+    types:
+      Discussion: 議論
+      Poll: アンケート
+      Comment: コメント
+      Stance: 投票
+      Outcome: 結論

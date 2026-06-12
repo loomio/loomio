@@ -1052,6 +1052,8 @@ sv:
     lock_thread: Lås tråden
     unlock_thread: Lås upp tråden
     add_to_discussion: Lägg till i diskussionen
+    save_bookmark: Spara bokmärke
+    remove_bookmark: Ta bort bokmärke
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -2385,6 +2387,7 @@ sv:
     password_link_sent: Vi har skickat ett e-postmeddelande till %{email} med instruktioner om hur du ställer in ditt lösenord.
     reactivate_link_sent: Vi har skickat ett e-postmeddelande med instruktioner för att återaktivera ditt konto
     signed_in: Inloggad
+    signed_out: Utloggad
     email_verified: E-posten har verifierats
     name: namn
     email: E-post
@@ -2394,6 +2397,7 @@ sv:
     change_your_password: Vill du ställa in ett nytt lösenord?
     email_placeholder: du{'@'}example.com
     turnstile_required: Slutför verifieringen innan du fortsätter.
+    invalid_login: Det går inte att logga in dig med de uppgifterna
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen
@@ -2869,3 +2873,16 @@ sv:
     discussion: Diskussion
     success: Lyckades, %{pollType} tillagd i diskussionen!
     explanation: "%{pollType} och eventuella röster, kommentarer och resultat kommer att läggas till i den valda diskussionstråden."
+  bookmarks:
+    bookmarks: Bokmärken
+    saved: Bokmärke sparat
+    removed: Bokmärke borttaget
+    empty: Inga bokmärken ännu
+    empty_help: Bokmärken är ett sätt att hålla reda på saker du vill återgå till.
+    subtitle: "%{type} av %{name}"
+    types:
+      Discussion: Diskussion
+      Poll: Röstning
+      Comment: Kommentar
+      Stance: Röst
+      Outcome: Slutsats

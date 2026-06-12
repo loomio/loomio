@@ -6,6 +6,7 @@ class Chatbot < ApplicationRecord
   validates_presence_of :name
   validates_inclusion_of :kind, in: ['matrix', 'webhook']
   validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', 'webex', nil]
+  validate :server_is_public_url, if: -> { server.present? }
 
   def config
     {
@@ -14,5 +15,11 @@ class Chatbot < ApplicationRecord
       access_token: self.access_token,
       channel: self.channel
     }
+  end
+
+  private
+
+  def server_is_public_url
+    errors.add(:server, :invalid) unless LinkPreviewService.safe_to_fetch?(server)
   end
 end

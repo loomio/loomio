@@ -8,8 +8,8 @@ class MergeUsersService
   end
 
   def self.prep_for_merge!(source_user:, target_user:)
-    source_user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
-    target_user.update_attribute(:reset_password_token, User.generate_unique_secure_token)
+    source_user.update_attribute(:secret_token, User.generate_unique_secure_token)
+    target_user.update_attribute(:secret_token, User.generate_unique_secure_token)
   end
 
   def self.validate(source_user:, target_user:, hash:)
@@ -19,8 +19,8 @@ class MergeUsersService
 
   def self.build_merge_hash(source_user:, target_user:)
     sha1 = Digest::SHA1.new
-    sha1 << source_user.reset_password_token
-    sha1 << target_user.reset_password_token
+    sha1 << source_user.secret_token
+    sha1 << target_user.secret_token
     sha1.hexdigest
   end
 end

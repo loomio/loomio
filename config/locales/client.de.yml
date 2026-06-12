@@ -1064,6 +1064,8 @@ de:
     lock_thread: Thread sperren
     unlock_thread: Thread entsperren
     add_to_discussion: Zur Diskussion hinzufügen
+    save_bookmark: Lesezeichen speichern
+    remove_bookmark: Lesezeichen entfernen
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -2418,6 +2420,7 @@ de:
     password_link_sent: Wir haben eine E-Mail mit der Anleitung zur Passwort-Festlegung an %{email} gesendet.
     reactivate_link_sent: 'Wir haben dir eine E-mail mit Anweisungen zur Reaktivierung deines Kontos geschickt. '
     signed_in: erfolgreich eingeloggt
+    signed_out: Erfolgreich ausgeloggt
     email_verified: E-Mail erfolgreich verifiziert
     name: Name
     email: E-Mail
@@ -2427,6 +2430,7 @@ de:
     change_your_password: Möchten Sie ein neues Passwort festlegen?
     email_placeholder: Sie{'@'}example.com
     turnstile_required: Bitte schließen Sie die Überprüfung ab, bevor Sie fortfahren.
+    invalid_login: Anmeldung mit diesen Daten nicht möglich
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -2904,3 +2908,16 @@ de:
     discussion: Diskussion
     success: Erfolgreich, %{pollType} wurde zur Diskussion hinzugefügt!
     explanation: Der %{pollType} sowie alle Stimmen, Kommentare und Ergebnisse werden dem ausgewählten Diskussionsthread angehängt.
+  bookmarks:
+    bookmarks: Lesezeichen
+    saved: Lesezeichen gespeichert
+    removed: Lesezeichen entfernt
+    empty: Noch keine Lesezeichen vorhanden
+    empty_help: Lesezeichen sind eine Möglichkeit, Dinge im Auge zu behalten, zu denen man zurückkehren möchte.
+    subtitle: "%{type} von %{name}"
+    types:
+      Discussion: Diskussion
+      Poll: Umfrage
+      Comment: Kommentar
+      Stance: Abstimmung
+      Outcome: Fazit

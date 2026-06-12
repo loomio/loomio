@@ -37,7 +37,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
       name: "Unauthorized User",
       email: "unauthorized@example.com",
       username: "unauthorized",
-      encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
+      password_digest: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
 
@@ -50,6 +50,15 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     sign_in unauthorized_user
     post :create, params: { reaction: reaction_params }
     assert_response :forbidden
+  end
+
+  test "create rejects reactable types outside the allowlist" do
+    user = users(:admin)
+
+    sign_in user
+    post :create, params: { reaction: { reaction: '+1', reactable_id: user.id, reactable_type: 'User' } }
+
+    assert_response :not_found
   end
 
   test "index fetches reactions for multiple records at once" do
@@ -121,7 +130,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
       name: "Unauthorized User 2",
       email: "unauthorized2@example.com",
       username: "unauthorized2",
-      encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
+      password_digest: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
 

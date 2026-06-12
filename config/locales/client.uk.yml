@@ -1059,6 +1059,8 @@ uk:
     lock_thread: Заблокувати тему
     unlock_thread: Розблокувати тему
     add_to_discussion: Додати до обговорення
+    save_bookmark: Зберегти закладку
+    remove_bookmark: Видалити закладку
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -2413,6 +2415,7 @@ uk:
     password_link_sent: Ми відправили лист на адресу %{email} з інструкціями як встановити пароль.
     reactivate_link_sent: Ми надіслали вам електронний лист з інструкціями щодо повторної активації вашого облікового запису
     signed_in: Вхід виконано успішно
+    signed_out: Вихід виконано успішно
     email_verified: Електронну адресу підтверджено
     name: Ім’я
     email: Електронна адреса
@@ -2422,6 +2425,7 @@ uk:
     change_your_password: Бажаєте встановити новий пароль?
     email_placeholder: you{'@'}example.com
     turnstile_required: Будь ласка, завершіть перевірку, перш ніж продовжити.
+    invalid_login: Не вдається увійти з цими даними
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення
@@ -2899,3 +2903,16 @@ uk:
     discussion: Обговорення
     success: Успіх, %{pollType} додано до обговорення!
     explanation: "%{pollType} та будь-які голоси, коментарі та результати будуть додані до вибраної теми обговорення."
+  bookmarks:
+    bookmarks: Закладки
+    saved: Закладку збережено
+    removed: Закладку видалено
+    empty: Поки що немає закладок
+    empty_help: Закладки – це спосіб відстежувати речі, до яких ви хочете повернутися.
+    subtitle: "%{type} від %{name}"
+    types:
+      Discussion: Обговорення
+      Poll: Опитування
+      Comment: Коментар
+      Stance: Голос
+      Outcome: Висновок

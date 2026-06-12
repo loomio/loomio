@@ -2,6 +2,7 @@ class Stance < ApplicationRecord
   include CustomCounterCache::Model
   include HasMentions
   include Reactable
+  include Bookmarkable
   include HasEvents
   include HasCreatedEvent
   include Searchable

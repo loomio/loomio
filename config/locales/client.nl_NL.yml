@@ -1058,6 +1058,8 @@ nl_NL:
     lock_thread: Discussie vergrendelen
     unlock_thread: Discussie ontgrendelen
     add_to_discussion: Voeg toe aan de discussie
+    save_bookmark: Sla bladwijzer op
+    remove_bookmark: Verwijder bladwijzer
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2410,6 +2412,7 @@ nl_NL:
     password_link_sent: We hebben je een e-mail gestuurd naar %{email} met instructies om je wachtwoord in te stellen.
     reactivate_link_sent: We hebben je een e-mail gestuurd met instructies om je account weer te activeren
     signed_in: Succesvol ingelogd
+    signed_out: Succesvol uitgelogd
     email_verified: E-mail succesvol bevestigd
     name: Naam
     email: E-mail
@@ -2419,6 +2422,7 @@ nl_NL:
     change_your_password: Wilt u een nieuw wachtwoord instellen?
     email_placeholder: jij{'@'}voorbeeld.com
     turnstile_required: Voltooi de verificatie voordat u verdergaat.
+    invalid_login: Het lukt niet om u met deze gegevens in te loggen.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
@@ -2896,3 +2900,16 @@ nl_NL:
     discussion: Discussie
     success: Succes, %{pollType} toegevoegd aan de discussie!
     explanation: De %{pollType} en alle stemmen, opmerkingen en de uitslag worden toegevoegd aan de geselecteerde discussiedraad.
+  bookmarks:
+    bookmarks: Bladwijzers
+    saved: Bladwijzer opgeslagen
+    removed: Bladwijzer verwijderd
+    empty: Nog geen bladwijzers
+    empty_help: Met bladwijzers kun je bijhouden waar je later nog eens naar wilt terugkeren.
+    subtitle: "%{type} door %{name}"
+    types:
+      Discussion: Discussie
+      Poll: Peiling
+      Comment: Opmerking
+      Stance: Stem
+      Outcome: Conclusie

@@ -1091,6 +1091,8 @@ zh_CN:
     lock_thread: 锁定主题
     unlock_thread: 解锁主题
     add_to_discussion: 加入讨论
+    save_bookmark: 保存书签
+    remove_bookmark: 移除书签
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -2609,12 +2611,14 @@ zh_CN:
     password_link_sent: 我们已向 %{email} 发送了一封电子邮件，其中包含有关如何设置密码的说明。
     reactivate_link_sent: 我们已向您发送一封电子邮件，其中包含重新激活帐户的说明。
     signed_in: 登录成功
+    signed_out: 退出登录成功
     email_verified: 邮箱已成功验证
     name: 名称
     email: 电子邮件
     password: 密码
     reactivate: 重新激活帐户
     turnstile_required: 请先完成验证再继续。
+    invalid_login: 无法使用您提供的信息登录。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接
@@ -2787,3 +2791,16 @@ zh_CN:
     discussion: 讨论
     success: 成功，%{pollType} 已加入讨论！
     explanation: "%{pollType} 以及任何投票、评论和结果都将附加到选定的讨论主题中。"
+  bookmarks:
+    bookmarks: 书签
+    saved: 已保存书签
+    removed: 书签已移除
+    empty: 暂无书签
+    empty_help: 书签是一种记录你想稍后查看的内容的方法。
+    subtitle: "%{name} 的%{type}"
+    types:
+      Discussion: 讨论
+      Poll: 轮询
+      Comment: 评论
+      Stance: 投票
+      Outcome: 结论

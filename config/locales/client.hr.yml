@@ -1052,6 +1052,8 @@ hr:
     lock_thread: Zaključaj nit
     unlock_thread: Otključaj nit
     add_to_discussion: Dodaj u raspravu
+    save_bookmark: Spremi oznaku
+    remove_bookmark: Ukloni oznaku
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje
@@ -2385,6 +2387,7 @@ hr:
     password_link_sent: Poslali smo e-poruku na %{email} s uputama o tome kako postaviti lozinku.
     reactivate_link_sent: Poslali smo vam e-poruku s uputama za ponovno aktiviranje vašeg računa
     signed_in: Uspješno ste prijavljeni
+    signed_out: Uspješno ste odjavljeni
     email_verified: E-pošta je uspješno potvrđena
     name: Ime
     email: E-mail
@@ -2394,6 +2397,7 @@ hr:
     change_your_password: Želite li postaviti novu lozinku?
     email_placeholder: vi{'@'}primjer.com
     turnstile_required: Molimo Vas da dovršite provjeru prije nego što nastavite.
+    invalid_login: Ne mogu vas prijaviti s tim podacima
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu
@@ -2869,3 +2873,16 @@ hr:
     discussion: Rasprava
     success: Uspjeh, %{pollType} dodan u raspravu!
     explanation: "%{pollType} i svi glasovi, komentari i ishod bit će dodani odabranoj niti rasprave."
+  bookmarks:
+    bookmarks: Oznake
+    saved: Oznaka spremljena
+    removed: Oznaka uklonjena
+    empty: Još nema oznaka
+    empty_help: Oznake su način praćenja stvari kojima se želite vratiti.
+    subtitle: "%{type} od %{name}"
+    types:
+      Discussion: Rasprava
+      Poll: Anketa
+      Comment: Komentar
+      Stance: Glas
+      Outcome: Ishod

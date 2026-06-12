@@ -1052,6 +1052,8 @@ tr:
     lock_thread: Konuyu kilitle
     unlock_thread: Konunun kilidini aç
     add_to_discussion: Tartışmaya ekle
+    save_bookmark: Yer işaretini kaydet
+    remove_bookmark: Yer işaretini kaldır
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -2385,6 +2387,7 @@ tr:
     password_link_sent: "%{email} adresine, şifrenizi nasıl belirleyeceğinize ilişkin talimatları içeren bir e-posta gönderdik."
     reactivate_link_sent: Hesabınızı yeniden etkinleştirme talimatlarını içeren bir e-posta gönderdik
     signed_in: Başarıyla oturum açıldı
+    signed_out: Başarıyla oturum kapatıldı
     email_verified: E-posta başarıyla doğrulandı
     name: İsim
     email: E-posta
@@ -2394,6 +2397,7 @@ tr:
     change_your_password: Yeni bir şifre belirlemek ister misiniz?
     email_placeholder: sen{'@'}example.com
     turnstile_required: Lütfen devam etmeden önce doğrulama işlemini tamamlayın.
+    invalid_login: Bu bilgilerle giriş yapamıyoruz.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
@@ -2869,3 +2873,16 @@ tr:
     discussion: Tartışma
     success: Başarılı, %{pollType} tartışmaya eklendi!
     explanation: "%{pollType} ve oylar, yorumlar ve sonuçlar seçilen tartışma başlığına eklenecektir."
+  bookmarks:
+    bookmarks: Yer işaretleri
+    saved: Yer imi kaydedildi.
+    removed: Yer işareti kaldırıldı
+    empty: Henüz yer imi yok.
+    empty_help: Yer işaretleri, daha sonra tekrar bakmak istediğiniz şeyleri takip etmenin bir yoludur.
+    subtitle: "%{type} tarafından %{name}"
+    types:
+      Discussion: Tartışma
+      Poll: Anket
+      Comment: Yorum
+      Stance: Oy
+      Outcome: Karar

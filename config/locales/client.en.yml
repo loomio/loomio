@@ -1080,6 +1080,8 @@ en:
   action_dock:
     actions_menu: Actions menu
     more_actions: More actions
+    save_bookmark: Save bookmark
+    remove_bookmark: Remove bookmark
     react: React
     notify: Notify
     add_resource: Add an attachment
@@ -1186,6 +1188,19 @@ en:
     edit_markdown: Edit Markdown
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
     upload_failed: Upload failed
+  bookmarks:
+    bookmarks: Bookmarks
+    saved: Bookmark saved
+    removed: Bookmark removed
+    empty: No bookmarks yet
+    empty_help: Bookmarks are a way to keep track of things you want to return to.
+    subtitle: "%{type} by %{name}"
+    types:
+      Discussion: Discussion
+      Poll: Poll
+      Comment: Comment
+      Stance: Vote
+      Outcome: Outcome
   cover_photo_form:
     heading: New cover photo
     upload_link: Upload new cover photo
@@ -2705,6 +2720,7 @@ en:
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
     account_locked: Your account has been locked after too many failed login attempts. Check your email for an unlock link
+    invalid_login: Unable to sign you in with those details
     turnstile_required: Please complete the verification before continuing.
     email_not_found: Sorry, we couldn't find an account with that email address
     email_taken: Email address is already registered
@@ -2744,6 +2760,7 @@ en:
     password_link_sent: We've sent an email to %{email} with instructions on how to set your password.
     reactivate_link_sent: We've sent you an email with instructions to reactivate your account
     signed_in: Signed in successfully
+    signed_out: Signed out successfully
     email_verified: Email verified successfully
     name: Name
     email: Email

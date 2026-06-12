@@ -53,10 +53,13 @@ class Clients::Base
       failure:    default_failure,
       is_success: default_is_success
     )
-    Clients::Request.new(method, [options[:host], path].compact.join('/'), {
+    request_options = {
       options[:params_field] => params_for(params),
       :"headers"             => headers_for(headers)
-    }).tap { |request| request.perform!(options) }
+    }
+    request_options[:timeout] = options[:timeout] if options[:timeout]
+
+    Clients::Request.new(method, [options[:host], path].compact.join('/'), request_options).tap { |request| request.perform!(options) }
   end
 
   def params_for(params = {})

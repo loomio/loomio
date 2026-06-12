@@ -22,6 +22,21 @@ class LoginTokenTest < ActiveSupport::TestCase
     assert_not token.useable?
   end
 
+  test "is not useable after too many failed code attempts" do
+    token = LoginToken.create!(user: users(:user), failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS)
+
+    assert_not token.useable?
+  end
+
+  test "records failed code attempts and burns token at the limit" do
+    token = LoginToken.create!(user: users(:user), failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1)
+
+    token.record_failed_code_attempt!
+
+    assert_equal LoginToken::MAX_FAILED_CODE_ATTEMPTS, token.failed_attempts
+    assert token.used
+  end
+
   test "is not useable if it is old" do
     token = LoginToken.create!(user: users(:user))
     token.update!(created_at: 25.hours.ago)

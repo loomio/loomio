@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance discussion discussion_template topic_reader topic comment
-    contact_message webhook chatbot contact_request reaction tag
+    contact_message webhook chatbot contact_request reaction bookmark tag
   )
 
   MODELS.each do |kind|
@@ -19,7 +19,7 @@ class PermittedParams < Struct.new(:params)
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
      :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
-     :email_catch_up_day, :has_password, :has_token, :email_status,
+     :email_catch_up_day,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
      :date_time_pref, :bot, :auto_translate,
      :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
@@ -99,7 +99,6 @@ class PermittedParams < Struct.new(:params)
       :key,
       :group_id,
       :position,
-      :author_id,
       :poll_type,
       :process_name,
       :process_subtitle,
@@ -259,12 +258,16 @@ class PermittedParams < Struct.new(:params)
       :image_files, {image_files: []}]
   end
 
+  def bookmark_attributes
+    [:bookmarkable_id, :bookmarkable_type]
+  end
+
   def reaction_attributes
     [:reaction, :reactable_id, :reactable_type]
   end
 
   def contact_message_attributes
-    [:email, :subject, :user_id, :message, :name]
+    [:email, :subject, :message, :name]
   end
 
   def contact_request_attributes

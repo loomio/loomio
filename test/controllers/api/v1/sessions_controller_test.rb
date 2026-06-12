@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
 
@@ -72,6 +71,29 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "invalid login code attempts are counted before turnstile" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "countbadcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+
+    assert_response :forbidden
+    assert_equal 1, token.reload.failed_attempts
+  end
+
+  test "invalid login code attempts burn the token at the limit" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "burnbadcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user, failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+
+    assert_response :forbidden
+    assert token.reload.used
+    assert_not token.useable?
+  end
+
   test "signs in with password" do
     user = User.create!(
       email: "sessionsuser@example.com",
@@ -79,11 +101,44 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       password: "s3curepassword123"
     )
     
-    post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
+    end
     assert_response :success
-    
+
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+  end
+
+  test "bridges a legacy devise session into a session record" do
+    user = User.create!(
+      email: "legacy-session@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+    session['warden.user.user.key'] = [[user.id], nil]
+
+    assert_difference 'Session.count', 1 do
+      assert_equal user.id, @controller.current_user.id
+    end
+    assert_equal user.id, Current.session.user_id
+    assert_nil session['warden.user.user.key']
+  end
+
+  test "sign out destroys the current session" do
+    user = User.create!(
+      email: "destroy-session@example.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+
+    post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+    assert_response :success
+
+    assert_difference 'Session.count', -1 do
+      delete :destroy
+    end
+    assert_response :success
   end
 
   test "does not sign in a blank password" do
@@ -91,6 +146,41 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     post :create, params: { user: { email: "sessionsuser2@example.com", password: "" } }
     assert_response :unauthorized
+  end
+
+  test "returns account locked failure for locked accounts" do
+    user = User.create!(email: "lockedlogin@example.com", email_verified: true, password: "s3curepassword123")
+    user.update!(locked_at: Time.current)
+
+    post :create, params: { user: { email: user.email, password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.account_locked')], JSON.parse(response.body).dig('errors', 'password')
+  end
+
+  test "returns email not found when password login account does not exist" do
+    post :create, params: { user: { email: "missinglogin@example.com", password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.email_not_found')], JSON.parse(response.body).dig('errors', 'email')
+  end
+
+  test "returns invalid password when password does not match" do
+    user = User.create!(email: "wrongpasswordlogin@example.com", email_verified: true, password: "s3curepassword123")
+
+    post :create, params: { user: { email: user.email, password: "wrongpassword" } }
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.invalid_password')], JSON.parse(response.body).dig('errors', 'password')
+  end
+
+  test "returns invalid token failure for invalid pending tokens" do
+    session[:pending_login_token] = 'notatoken'
+
+    post :create
+
+    assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.invalid_token')], JSON.parse(response.body).dig('errors', 'token')
   end
 
   test "does not sign in a nil password" do

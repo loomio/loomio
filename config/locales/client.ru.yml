@@ -1052,6 +1052,8 @@ ru:
     lock_thread: Заблокировать тему
     unlock_thread: Разблокировать тему
     add_to_discussion: Добавить к обсуждению
+    save_bookmark: Сохранить закладку
+    remove_bookmark: Удалить закладку
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -2385,6 +2387,7 @@ ru:
     password_link_sent: Мы отправили электронное письмо на адрес %{email} с инструкциями по установке пароля.
     reactivate_link_sent: Мы отправили вам электронное письмо с инструкциями по повторной активации вашей учетной записи.
     signed_in: Вход выполнен успешно
+    signed_out: Выход выполнен успешно
     email_verified: Электронная почта успешно подтверждена
     name: Название
     email: Электронная почта
@@ -2394,6 +2397,7 @@ ru:
     change_your_password: Хотите установить новый пароль?
     email_placeholder: вы{'@'}example.com
     turnstile_required: Пожалуйста, завершите проверку, прежде чем продолжить.
+    invalid_login: Не удалось выполнить вход в систему с указанными данными.
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение
@@ -2869,3 +2873,16 @@ ru:
     discussion: Обсуждение
     success: Успех, %{pollType} добавлен в обсуждение!
     explanation: В выбранную ветку обсуждения будет добавлен %{pollType}, а также все голоса, комментарии и результаты.
+  bookmarks:
+    bookmarks: Закладки
+    saved: Закладка сохранена
+    removed: Закладка удалена
+    empty: Закладок пока нет.
+    empty_help: Закладки — это способ отслеживать то, к чему вы хотите вернуться.
+    subtitle: "%{type} от %{name}"
+    types:
+      Discussion: Обсуждение
+      Poll: Голосование
+      Comment: Комментарий
+      Stance: Голосование
+      Outcome: Исход

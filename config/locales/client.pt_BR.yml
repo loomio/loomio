@@ -1066,6 +1066,8 @@ pt_BR:
     lock_thread: Bloquear tópico
     unlock_thread: Desbloquear tópico
     add_to_discussion: Adicionar à discussão
+    save_bookmark: Salvar marcador
+    remove_bookmark: Remover marcador
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores
@@ -2431,6 +2433,7 @@ pt_BR:
     password_link_sent: Nós enviamos um email para %{email} com instruções sobre como configurar sua senha.
     reactivate_link_sent: Nós mandamos um email com instruções para reativar sua conta.
     signed_in: Entrou com sucesso
+    signed_out: Saiu com sucesso
     email_verified: Email verificado com sucesso
     name: Nome
     email: E-mail
@@ -2440,6 +2443,7 @@ pt_BR:
     change_your_password: Gostaria de definir uma nova senha?
     email_placeholder: você{'@'}exemplo.com
     turnstile_required: Por favor, conclua a verificação antes de prosseguir.
+    invalid_login: Não foi possível efetuar o seu login com esses dados.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste
@@ -2917,3 +2921,16 @@ pt_BR:
     discussion: Discussão
     success: Sucesso! %{pollType} adicionado à discussão!
     explanation: O %{pollType} e quaisquer votos, comentários e resultados serão adicionados ao tópico de discussão selecionado.
+  bookmarks:
+    bookmarks: Favoritos
+    saved: Marcador salvo
+    removed: Marcador removido
+    empty: Ainda não há favoritos
+    empty_help: Os favoritos são uma forma de manter um registro de coisas às quais você deseja retornar.
+    subtitle: "%{type} por %{name}"
+    types:
+      Discussion: Discussão
+      Poll: Enquete
+      Comment: Comentário
+      Stance: Voto
+      Outcome: Conclusão

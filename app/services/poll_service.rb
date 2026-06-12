@@ -61,7 +61,7 @@ class PollService
       actor: actor
     )
     params = params.to_h.with_indifferent_access
-    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS)
+    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).except(:group_id, :topic_id)
     poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
