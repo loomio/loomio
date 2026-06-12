@@ -153,7 +153,7 @@ hu:
     error:
       handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'
       no_public_trials: Kérjük, frissítsen a próbaverzióról a csoport adatvédelmi beállításának módosításához
-      handle_must_be_url_friendly: Csak kisbetűket (az), számokat (0-9) és kötőjeleket (-) használjon.
+      handle_must_be_url_friendly: Csak kisbetűket (a-z), számokat (0-9) és kötőjeleket (-) használjon.
     stats:
       group_stats: Csoport statisztika
       org_stats: Szervezeti statisztikák (beleértve az alcsoportokat)

@@ -157,7 +157,7 @@ nl_NL:
     error:
       handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-
       no_public_trials: Upgrade van de proefversie om de privacyinstelling van de groep te wijzigen
-      handle_must_be_url_friendly: Gebruik alleen kleine letters (az), cijfers (0-9) en koppeltekens (-).
+      handle_must_be_url_friendly: Gebruik alleen kleine letters (a-z), cijfers (0-9) en koppeltekens (-).
     stats:
       group_stats: Groep statistieken
       org_stats: Organisatie statistieken (inclusief subgroepen)

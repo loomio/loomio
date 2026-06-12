@@ -153,7 +153,7 @@ ca:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
       no_public_trials: Si us plau, actualitzeu la versió de prova per canviar la configuració de privadesa del grup
-      handle_must_be_url_friendly: Feu servir només lletres minúscules (az), números (0-9) i guions (-)
+      handle_must_be_url_friendly: Feu servir només lletres minúscules (a-z), números (0-9) i guions (-)
     stats:
       group_stats: Estadístiques del grup
       org_stats: Estadístiques de l'organització (inclosos subgrups)
