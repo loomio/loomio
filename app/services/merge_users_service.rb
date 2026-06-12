@@ -26,4 +26,11 @@ class MergeUsersService
     sha1 << target_user.secret_token
     sha1.hexdigest
   end
+
+  # Invalidate any outstanding merge verification URLs by rotating the source
+  # user's secret_token. Called synchronously after a successful merge so the
+  # URL cannot be replayed before the async worker redacts the account.
+  def self.invalidate_merge!(source_user:)
+    source_user.update_attribute(:secret_token, User.generate_unique_secure_token)
+  end
 end
