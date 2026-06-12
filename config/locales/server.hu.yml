@@ -678,3 +678,5 @@ hu:
     zh-HK: Kínai (hagyományos, tajvani)
   upload:
     file_too_large: A fájl túl nagy. A maximális feltöltési méret %{limit}.
+  merge_users:
+    not_target_user: Az egyesítés megerősítéséhez célfiókként kell bejelentkeznie.

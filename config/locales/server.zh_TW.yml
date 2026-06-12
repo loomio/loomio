@@ -696,3 +696,5 @@ zh_TW:
     zh-HK: 中文（繁體，台灣）
   upload:
     file_too_large: 文件過大。最大上傳大小為 %{limit}。
+  merge_users:
+    not_target_user: 您必須以目標帳戶身分登入才能確認合併。

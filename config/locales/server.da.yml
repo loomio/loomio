@@ -672,3 +672,5 @@ da:
     zh-HK: Kinesisk (traditionel, Taiwan)
   upload:
     file_too_large: Filen er for stor. Maksimal uploadstørrelse er %{limit}.
+  merge_users:
+    not_target_user: Du skal være logget ind som målkontoen for at bekræfte en fletning.

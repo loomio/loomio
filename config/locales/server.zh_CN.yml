@@ -661,3 +661,5 @@ zh_CN:
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）
   upload:
     file_too_large: 文件过大。最大上传大小为 %{limit}。
+  merge_users:
+    not_target_user: 您必须以目标帐户身份登录才能确认合并。

@@ -696,3 +696,5 @@ pt_BR:
     zh-HK: Chinês (Tradicional, Taiwan)
   upload:
     file_too_large: O arquivo é muito grande. O tamanho máximo de upload é %{limit}.
+  merge_users:
+    not_target_user: Você precisa estar conectado com a conta de destino para confirmar a fusão.

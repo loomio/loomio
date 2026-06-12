@@ -666,3 +666,5 @@ hr:
     zh-HK: kineski (tradicionalni, tajvanski)
   upload:
     file_too_large: Datoteka je prevelika. Maksimalna veličina za prijenos je %{limit}.
+  merge_users:
+    not_target_user: Morate biti prijavljeni kao ciljni račun da biste potvrdili spajanje.

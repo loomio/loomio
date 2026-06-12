@@ -666,3 +666,5 @@ sv:
     zh-HK: Kinesiska (traditionell, Taiwan)
   upload:
     file_too_large: Filen är för stor. Maximal uppladdningsstorlek är %{limit}.
+  merge_users:
+    not_target_user: Du måste vara inloggad som målkonto för att bekräfta en sammanslagning.

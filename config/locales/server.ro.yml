@@ -666,3 +666,5 @@ ro:
     zh-HK: Chineză (tradițională, taiwaneză)
   upload:
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
+  merge_users:
+    not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
