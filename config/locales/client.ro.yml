@@ -1288,7 +1288,6 @@ ro:
     organization_name: Numele Organizatiei
     handle: Mâner
     group_handle_placeholder: 'Folosit în adresa URL a grupului dvs.: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Noua organizare
     edit_organization_heading: Editați setările organizației
     group_name_placeholder: Cum se va numi grupul tău?

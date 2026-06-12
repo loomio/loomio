@@ -1288,7 +1288,6 @@ el:
     organization_name: Ονομα Οργανισμού
     handle: Λαβή
     group_handle_placeholder: 'Χρησιμοποιείται στη διεύθυνση URL της ομάδας σας: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Νέα οργάνωση
     edit_organization_heading: Επεξεργασία ρυθμίσεων οργανισμού
     group_name_placeholder: Ποιο είναι το όνομα της ομάδα σας?

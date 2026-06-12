@@ -1288,7 +1288,6 @@ tr:
     organization_name: Kuruluş Adı
     handle: Halletmek
     group_handle_placeholder: 'Grup URL''nizde kullanılır: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Yeni organizasyon
     edit_organization_heading: Kuruluş ayarlarını düzenleyin
     group_name_placeholder: Grup isminizin adı nedir?

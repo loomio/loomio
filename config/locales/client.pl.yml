@@ -1294,7 +1294,6 @@ pl:
     organization_name: Nazwa organizacji
     handle: Adres
     group_handle_placeholder: 'Używany w adresie URL Twojej grupy: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Nowa grupa
     edit_organization_heading: Edytuj ustawienia organizacji
     group_name_placeholder: " Jak nazywa się Twoja grupa?"

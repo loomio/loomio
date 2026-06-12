@@ -1373,7 +1373,6 @@ zh_TW:
     default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
     aria_label: 小組形式
     list_in_the_groups_directory: 是否已列入群組目錄？

@@ -1292,7 +1292,6 @@ hu:
     organization_name: Szervezet neve
     handle: Fogantyú
     group_handle_placeholder: 'A csoport URL-jében használva: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Új szervezet
     edit_organization_heading: Szervezet beállításainak szerkesztése
     group_name_placeholder: Csoportod neve?

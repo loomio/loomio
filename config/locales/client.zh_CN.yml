@@ -1354,7 +1354,6 @@ zh_CN:
     organization_name: 组织名称
     handle: 处理
     group_handle_placeholder: 您的群组网址和邮箱地址：%{host}/%{handle}, %{handle}{'@'}%{host}
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: 新组织
     edit_organization_heading: 编辑组织设置
     group_name_placeholder: 你们子群组叫什么名字？

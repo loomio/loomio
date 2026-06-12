@@ -1287,7 +1287,6 @@ ja:
     organization_name: 組織名
     handle: ハンドル
     group_handle_placeholder: 'グループ URL で使用: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: 新組織
     edit_organization_heading: 組織設定の編集
     group_name_placeholder: あなたのグループの名前は何ですか？

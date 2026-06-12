@@ -1297,7 +1297,6 @@ uk:
     organization_name: Назва організації
     handle: Регулювання
     group_handle_placeholder: 'Використовується в URL-адресі вашої групи: %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Нова організація
     edit_organization_heading: Редагувати налаштування організації
     group_name_placeholder: Яка назва у вашої групи?

@@ -1315,7 +1315,6 @@ fr:
     organization_name: Nom de l’organisation
     handle: Gérer
     group_handle_placeholder: 'Utilisé dans l''URL de votre groupe : %{host}/%{handle}'
-    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
     group_name_placeholder: Quel est le nom de votre groupe ?
