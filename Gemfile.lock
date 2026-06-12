@@ -65,9 +65,6 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_record_extended (3.4.0)
-      activerecord (>= 5.2, < 8.1)
-      pg (< 3.0)
     activeadmin (3.5.1)
       arbre (~> 1.2, >= 1.2.1)
       csv
@@ -757,7 +754,6 @@ DEPENDENCIES
   actionpack-cloudflare
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)!
-  active_record_extended
   activeadmin (~> 3.5.1)
   activerecord-import (= 2.2.0)
   aws-sdk-s3
@@ -834,7 +830,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 4.0.5p0
+  ruby 4.0.5p0
 
 BUNDLED WITH
-   2.6.9
+  4.0.14
