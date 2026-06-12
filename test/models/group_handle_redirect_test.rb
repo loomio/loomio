@@ -107,4 +107,69 @@ class GroupHandleRedirectTest < ActiveSupport::TestCase
       @group.destroy
     end
   end
+
+  test "updating parent handle updates direct subgroup handles" do
+    hex = SecureRandom.hex(4)
+    subgroup = Group.create!(
+      name: "Sub #{hex}",
+      parent: @group,
+      handle: "#{@group.handle}-sub#{hex}",
+      group_privacy: 'closed'
+    )
+
+    old_sub_handle = subgroup.handle
+    new_parent_handle = "ghr-parent-new-#{hex}"
+
+    GroupService.update_handle(group: @group, handle: new_parent_handle, actor: @user)
+
+    subgroup.reload
+    assert_equal "#{new_parent_handle}-sub#{hex}", subgroup.handle
+    assert GroupHandleRedirect.exists?(handle: old_sub_handle, group_id: subgroup.id)
+  end
+
+  test "updating parent handle updates nested subgroup handles recursively" do
+    hex = SecureRandom.hex(4)
+    subgroup = Group.create!(
+      name: "Sub #{hex}",
+      parent: @group,
+      handle: "#{@group.handle}-sub#{hex}",
+      group_privacy: 'closed'
+    )
+    subsubgroup = Group.create!(
+      name: "SubSub #{hex}",
+      parent: subgroup,
+      handle: "#{subgroup.handle}-subsub#{hex}",
+      group_privacy: 'closed'
+    )
+
+    old_subsub_handle = subsubgroup.handle
+    new_parent_handle = "ghr-nested-new-#{hex}"
+
+    GroupService.update_handle(group: @group, handle: new_parent_handle, actor: @user)
+
+    subsubgroup.reload
+    expected = "#{new_parent_handle}-sub#{hex}-subsub#{hex}"
+    assert_equal expected, subsubgroup.handle
+    assert GroupHandleRedirect.exists?(handle: old_subsub_handle, group_id: subsubgroup.id)
+  end
+
+  test "updating parent handle creates redirects for all old subgroup handles" do
+    hex = SecureRandom.hex(4)
+    subgroup = Group.create!(
+      name: "Sub #{hex}",
+      parent: @group,
+      handle: "#{@group.handle}-sub#{hex}",
+      group_privacy: 'closed'
+    )
+
+    old_sub_handle = subgroup.handle
+    new_parent_handle = "ghr-redirects-#{hex}"
+
+    assert_difference 'GroupHandleRedirect.count', 2 do
+      # 1 for parent + 1 for subgroup
+      GroupService.update_handle(group: @group, handle: new_parent_handle, actor: @user)
+    end
+
+    assert GroupHandleRedirect.exists?(handle: old_sub_handle, group_id: subgroup.id)
+  end
 end
