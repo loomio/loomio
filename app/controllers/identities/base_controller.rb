@@ -29,13 +29,13 @@ class Identities::BaseController < ApplicationController
       back_to = session[:back_to]
       sign_out
       session[:pending_identity_id] = identity.id
-      flash[:notice] = t(:'auth.switching_accounts')
+      flash[:notice] = 'auth.switching_accounts'
       return redirect_to back_to || dashboard_path
     end
 
     # Handle successful login
     sign_in(identity.user)
-    flash[:notice] = t(:'auth_form.signed_in')
+    flash[:notice] = 'auth_form.signed_in'
 
     redirect_to session.delete(:back_to) || dashboard_path
   end
