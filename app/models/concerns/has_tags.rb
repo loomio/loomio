@@ -11,6 +11,6 @@ module HasTags
 
   def update_group_tags
     return unless group_id
-    GenericWorker.perform_async('TagService', 'update_group_and_org_tags', self.group_id)
+    GenericWorker.perform_later('TagService', 'update_group_and_org_tags', self.group_id)
   end
 end

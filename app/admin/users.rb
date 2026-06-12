@@ -85,27 +85,27 @@ ActiveAdmin.register User do
   member_action :merge, method: :post do
     source = User.friendly.find(params[:id])
     destination = User.find_by!(email: params[:destination_email].strip)
-    MigrateUserWorker.perform_async(source.id, destination.id)
+    MigrateUserWorker.perform_later(source.id, destination.id)
     redirect_to admin_user_path(destination)
   end
 
   member_action :redact, method: :put do
-    RedactUserWorker.perform_async(params[:id].to_i, current_user.id)
+    RedactUserWorker.perform_later(params[:id].to_i, current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
   end
 
   member_action :deactivate, method: :put do
-    DeactivateUserWorker.perform_async(params[:id].to_i, current_user.id)
+    DeactivateUserWorker.perform_later(params[:id].to_i, current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
   member_action :reactivate, method: :put do
-    GenericWorker.perform_async('UserService', 'reactivate', params[:id].to_i)
+    GenericWorker.perform_later('UserService', 'reactivate', params[:id].to_i)
     redirect_to admin_users_path, :notice => "User scheduled for reactivation immediately"
   end
 
   member_action :delete_spam, method: :delete do
-    DestroyUserWorker.perform_async(params[:id].to_i)
+    DestroyUserWorker.perform_later(params[:id].to_i)
     redirect_to admin_users_path, :notice => "User scheduled for spam deletion immediately"
   end
 

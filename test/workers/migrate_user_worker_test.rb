@@ -74,7 +74,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
 
   test "updates user_id references from old to new" do
     assert_difference 'ActionMailer::Base.deliveries.count', 1 do
-      MigrateUserWorker.perform_async(@patrick.id, @jennifer.id)
+      MigrateUserWorker.perform_later(@patrick.id, @jennifer.id)
     end
 
     @patrick.reload

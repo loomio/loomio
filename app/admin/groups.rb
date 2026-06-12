@@ -35,7 +35,7 @@ ActiveAdmin.register Group, as: 'Group' do
       if Group.any_trial.exists?(group_id)
         group = Group.find(group_id)
         if user = group.creator || group.admins.first
-          DestroyUserWorker.perform_async(user.id)
+          DestroyUserWorker.perform_later(user.id)
         end
       end
     end
@@ -216,8 +216,8 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   collection_action :import_json, method: :post do
-    GenericWorker.perform_async('GroupExportService', 'import', params[:url])
-    redirect_to admin_groups_path, notice: "Import started. Check /admin/sidekiq to see when job is complete"
+    GenericWorker.perform_later('GroupExportService', 'import', params[:url])
+    redirect_to admin_groups_path, notice: "Import started. Check /admin/jobs to see when job is complete"
   end
 
   collection_action :add_admin, method: :post do
@@ -265,7 +265,7 @@ ActiveAdmin.register Group, as: 'Group' do
 
   member_action :export_group, method: :post do
     group = Group.friendly.find(params[:id])
-    GroupExportWorker.perform_async(group.all_groups.pluck(:id), group.name, current_user.id)
+    GroupExportWorker.perform_later(group.all_groups.pluck(:id), group.name, current_user.id)
     redirect_to admin_group_path(group)
   end
 

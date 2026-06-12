@@ -1,6 +1,4 @@
-class DestroyUserWorker
-  include Sidekiq::Worker
-
+class DestroyUserWorker < ApplicationJob
   def perform(user_id)
     ActiveRecord::Base.transaction do
 

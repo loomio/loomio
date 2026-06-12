@@ -1,6 +1,4 @@
-class RedactUserWorker
-  include Sidekiq::Worker
-
+class RedactUserWorker < ApplicationJob
   # we deactivate and redact the user
   def perform(user_id, actor_id, send_email = true)
     user = User.find_by!(id:user_id)

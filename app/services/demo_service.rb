@@ -1,4 +1,7 @@
 class DemoService
+  DEMO_GROUP_IDS_CACHE_KEY = 'demo_group_ids'
+  DEMO_QUEUE_LOCK_KEY = 1_573_705_781
+
   def self.refill_queue
     return unless ENV['FEATURES_DEMO_GROUPS']
 
@@ -10,17 +13,26 @@ class DemoService
       TranslationService.translate_group_content!(demo.group, locale, true)
     end
 
-    expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3)
-    remaining = Redis::List.new('demo_group_ids').value.size
+    with_demo_queue_lock do
+      ids = demo_group_ids
+      expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3).to_i
 
-    (expected - remaining).times do
-      group = RecordCloner.new(recorded_at: demo.recorded_at).create_clone_group(demo.group)
-      Redis::List.new('demo_group_ids').push(group.id)
+      (expected - ids.size).times do
+        group = RecordCloner.new(recorded_at: demo.recorded_at).create_clone_group(demo.group)
+        ids.push(group.id)
+      end
+
+      write_demo_group_ids(ids)
     end
   end
 
   def self.take_demo(actor)
-    group = Group.find(Redis::List.new('demo_group_ids').shift)
+    group_id = with_demo_queue_lock do
+      ids = demo_group_ids
+      ids.shift.tap { write_demo_group_ids(ids) }
+    end
+
+    group = Group.find(group_id)
     group.creator = actor
     group.subscription = Subscription.new(plan: 'demo', owner: actor)
     group.save!
@@ -36,9 +48,11 @@ class DemoService
   def self.ensure_queue
     return unless ENV['FEATURES_DEMO_GROUPS']
 
-    existing_ids = Redis::List.new('demo_group_ids').value.select { |id| Group.where(id: id).exists? }
-    Redis::List.new('demo_group_ids').clear
-    Redis::List.new('demo_group_ids').unshift(*existing_ids) if existing_ids.any?
+    with_demo_queue_lock do
+      existing_ids = demo_group_ids.select { |id| Group.where(id: id).exists? }
+      write_demo_group_ids(existing_ids)
+    end
+
     refill_queue
   end
 
@@ -46,5 +60,24 @@ class DemoService
     Group.expired_demo.find_each do |group|
       group.destroy!
     end
+  end
+
+  def self.reset_queue!
+    Rails.cache.delete(DEMO_GROUP_IDS_CACHE_KEY)
+  end
+
+  def self.demo_group_ids
+    Rails.cache.fetch(DEMO_GROUP_IDS_CACHE_KEY) { [] }
+  end
+
+  def self.write_demo_group_ids(ids)
+    Rails.cache.write(DEMO_GROUP_IDS_CACHE_KEY, ids)
+  end
+
+  def self.with_demo_queue_lock
+    ActiveRecord::Base.connection.execute("SELECT pg_advisory_lock(#{DEMO_QUEUE_LOCK_KEY})")
+    yield
+  ensure
+    ActiveRecord::Base.connection.execute("SELECT pg_advisory_unlock(#{DEMO_QUEUE_LOCK_KEY})")
   end
 end

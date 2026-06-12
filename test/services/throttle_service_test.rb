@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ThrottleServiceTest < ActiveSupport::TestCase
   setup do
-    CACHE_REDIS_POOL.with { |client| client.flushall }
+    Rails.cache.clear
   end
 
   test "limits the number of times i can do something" do

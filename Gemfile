@@ -21,7 +21,8 @@ gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
-gem 'sidekiq', '~> 7.0'
+gem 'solid_queue'
+gem 'mission_control-jobs'
 gem 'friendly_id', '~> 5.7.0'
 gem 'httparty', '~> 0.24.2'
 gem 'browser', '~> 6.2.0'
@@ -34,7 +35,6 @@ gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
-gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '~> 4.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -49,8 +49,8 @@ gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
-gem 'redis-objects'
-gem 'connection_pool', '~> 2.4'
+gem 'solid_cache'
+gem 'solid_cable'
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'

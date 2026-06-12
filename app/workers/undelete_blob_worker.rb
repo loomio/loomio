@@ -1,6 +1,4 @@
-class UndeleteBlobWorker
-  include Sidekiq::Worker
-
+class UndeleteBlobWorker < ApplicationJob
   def perform(key)
     # client = Aws::S3::Client.new
     client = ActiveStorage::Blob.last.service.client.client

@@ -1,6 +1,4 @@
-class CloseExpiredPollWorker
-  include Sidekiq::Worker
-
+class CloseExpiredPollWorker < ApplicationJob
   def perform(poll_id)
     poll = Poll.find(poll_id)
     return if poll.closed_at

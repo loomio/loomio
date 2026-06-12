@@ -1,6 +1,4 @@
-class MigrateUserWorker
-  include Sidekiq::Worker
-
+class MigrateUserWorker < ApplicationJob
   attr_reader :source, :destination
 
   def perform(source_id, destination_id)
@@ -10,7 +8,7 @@ class MigrateUserWorker
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
-    RedactUserWorker.new.perform(source_id, destination_id, false)
+    RedactUserWorker.perform_now(source_id, destination_id, false)
     UserMailer.accounts_merged(destination.id).deliver_later
   end
 

@@ -1,6 +1,4 @@
-class UpdateTagWorker
-  include Sidekiq::Worker
-
+class UpdateTagWorker < ApplicationJob
   def perform(group_id, old_name, new_name, color)
     group = Group.find(group_id)
     group_ids = group.id_and_subgroup_ids

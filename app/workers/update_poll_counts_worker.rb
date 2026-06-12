@@ -1,6 +1,5 @@
-class UpdatePollCountsWorker
-  include Sidekiq::Worker
-  sidekiq_options queue: :low, retry: false
+class UpdatePollCountsWorker < ApplicationJob
+  queue_as :low
 
   def perform(poll_id)
     p = Poll.find(poll_id)

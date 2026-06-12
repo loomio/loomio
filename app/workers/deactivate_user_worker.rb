@@ -1,6 +1,4 @@
-class DeactivateUserWorker
-  include Sidekiq::Worker
-
+class DeactivateUserWorker < ApplicationJob
   def perform(user_id, actor_id)
     user = User.find(user_id)
     deactivated_at = DateTime.now

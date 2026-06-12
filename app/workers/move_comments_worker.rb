@@ -1,5 +1,4 @@
-class MoveCommentsWorker
-  include Sidekiq::Worker
+class MoveCommentsWorker < ApplicationJob
   def perform(event_ids, source_topic_id, target_topic_id, actor_id = nil)
     source_topic = Topic.find(source_topic_id)
     target_topic = Topic.find(target_topic_id)
