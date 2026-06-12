@@ -1,6 +1,4 @@
-class RevokeMembershipsOfDeactivatedUsersWorker
-  include Sidekiq::Worker
-
+class RevokeMembershipsOfDeactivatedUsersWorker < ApplicationJob
   def perform
     User.where.not(deactivated_at: nil).find_each do |user|
       group_ids = Membership.active.where(user_id: user.id).pluck(:group_id)

@@ -98,7 +98,7 @@ class DiscussionService
     Discussion.transaction do
       discussion.update(discarded_at: Time.now, discarded_by: actor.id)
       discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
-      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
+      GenericWorker.perform_later('SearchService', 'reindex_by_discussion_id', discussion.id)
 
       EventBus.broadcast('discussion_discard', discussion, actor)
       discussion.created_event

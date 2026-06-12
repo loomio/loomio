@@ -1,10 +1,14 @@
 development:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL", "redis://localhost:6379/0") %>
+  adapter: solid_cable
+  polling_interval: 0.1.seconds
+  message_retention: 1.day
 
 test:
-  adapter: test
+  adapter: solid_cable
+  polling_interval: 0.1.seconds
+  message_retention: 1.day
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_QUEUE_URL", ENV.fetch("REDIS_URL", "redis://localhost:6379/0")) %>
+  adapter: solid_cable
+  polling_interval: 0.1.seconds
+  message_retention: 1.day

@@ -77,7 +77,7 @@ class Api::V1::GroupsController < Api::V1::RestfulController
 
   def export_csv
     group = load_and_authorize(:group, :export)
-    GroupExportCsvWorker.perform_async(group.id, current_user.id)
+    GroupExportCsvWorker.perform_later(group.id, current_user.id)
     render json: { success: :ok }
   end
 

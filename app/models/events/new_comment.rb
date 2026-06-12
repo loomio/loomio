@@ -7,7 +7,7 @@ class Events::NewComment < Event
 
   def self.publish!(comment)
     if comment.parent.present?
-      GenericWorker.perform_async('NotificationService', 'mark_as_read', comment.parent_type, comment.parent_id, comment.author_id)
+      GenericWorker.perform_later('NotificationService', 'mark_as_read', comment.parent_type, comment.parent_id, comment.author_id)
     end
 
     super comment,

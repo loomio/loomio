@@ -1,6 +1,4 @@
-class AppendTranscriptWorker
-  include Sidekiq::Worker
-
+class AppendTranscriptWorker < ApplicationJob
   def perform(blob_id)
     blob = ActiveStorage::Blob.find(blob_id)
 

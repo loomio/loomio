@@ -17,10 +17,9 @@ You then need to install __Command Line Tools for XCode__ from https://developer
 With that done, use Homebrew to install Git and PostgreSQL
 
 ```
-brew install git postgresql pkgconfig redis
+brew install git postgresql pkgconfig
 brew install ImageMagick --with-perl
 brew services start postgresql
-brew services start redis
 ```
 
 And that's it. You can jump to 'Install ruby'
@@ -32,7 +31,7 @@ sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib build-essential \
                      libssl-dev libreadline-dev zlib1g-dev \
                      libpq-dev libffi-dev libmagickwand-dev \
-                     imagemagick python3 redis libyaml-dev \
+                     imagemagick python3 libyaml-dev \
                      git libvips ffmpeg poppler-utils \
 ```
 

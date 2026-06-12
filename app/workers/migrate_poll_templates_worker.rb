@@ -1,6 +1,4 @@
-class MigratePollTemplatesWorker
-  include Sidekiq::Worker
-
+class MigratePollTemplatesWorker < ApplicationJob
   def perform
     Poll.where(template: true).where("group_id is not null").find_each do |p|
       pt = PollTemplate.new

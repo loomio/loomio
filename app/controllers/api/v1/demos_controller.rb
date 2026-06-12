@@ -3,7 +3,7 @@ class Api::V1::DemosController < Api::V1::RestfulController
 
   def clone
     group = DemoService.take_demo(current_user)
-    GenericWorker.perform_async('DemoService', 'refill_queue')
+    GenericWorker.perform_later('DemoService', 'refill_queue')
     self.collection = [group]
     respond_with_collection
   end

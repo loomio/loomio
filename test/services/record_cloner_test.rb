@@ -6,10 +6,8 @@ class RecordClonerTest < ActiveSupport::TestCase
     @actor = users(:alien)
 
     # Reset invitation throttle from accumulated test runs
-    CACHE_REDIS_POOL.with do |r|
-      r.del("THROTTLE-DAY-UserInviterInvitations-#{@user.id}")
-      r.del("THROTTLE-HOUR-UserInviterInvitations-#{@user.id}")
-    end
+    Rails.cache.delete(ThrottleService.cache_key(per: 'day', key: 'UserInviterInvitations', id: @user.id))
+    Rails.cache.delete(ThrottleService.cache_key(per: 'hour', key: 'UserInviterInvitations', id: @user.id))
 
     # Use a fresh group to avoid fixture discussions without created_events
     @group = Group.new(

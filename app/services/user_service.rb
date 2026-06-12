@@ -23,7 +23,7 @@ class UserService
     user = User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
 
     if user.email_newsletter?
-      GenericWorker.perform_async('NewsletterService', 'subscribe', user.name, user.email)
+      GenericWorker.perform_later('NewsletterService', 'subscribe', user.name, user.email)
     end
 
     user
@@ -31,12 +31,12 @@ class UserService
 
   def self.deactivate(user:, actor:)
     actor.ability.authorize! :deactivate, user
-    DeactivateUserWorker.perform_async(user.id, actor.id)
+    DeactivateUserWorker.perform_later(user.id, actor.id)
   end
 
   def self.redact(user:, actor:)
     actor.ability.authorize! :redact, user
-    RedactUserWorker.perform_async(user.id, actor.id)
+    RedactUserWorker.perform_later(user.id, actor.id)
   end
 
   def self.reactivate(user_id)
@@ -46,7 +46,7 @@ class UserService
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
     user.update(deactivated_at: nil)
-    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id)
+    GenericWorker.perform_later('SearchService', 'reindex_by_author_id', user.id)
   end
 
   def self.set_volume(user:, actor:, params:)
@@ -75,7 +75,7 @@ class UserService
     user.save!
     rotate_credentials_after_password_change(user) if password_changed
     EventBus.broadcast('user_update', user, actor, params)
-    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id) if user.name_previously_changed?
+    GenericWorker.perform_later('SearchService', 'reindex_by_author_id', user.id) if user.name_previously_changed?
   end
 
   def self.rotate_credentials_after_password_change(user)

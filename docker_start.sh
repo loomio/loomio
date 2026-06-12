@@ -8,7 +8,7 @@ cp -r /loomio/client3-build/* /loomio/public/client3/
 find /loomio/public/client3 -type f -mtime +90 -delete
 
 if [ "$TASK" = "worker" ]; then
-  exec bundle exec sidekiq
+  exec bin/jobs start
 elif [ "$TASK" = "hocuspocus" ]; then
   exec node hocuspocus/server.mjs
 else
