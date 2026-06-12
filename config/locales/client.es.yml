@@ -335,6 +335,8 @@ es:
       submit: Verificar
       flash: Email de verificación enviado!
       helptext: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso.
+      helptext_and_signout: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso. Se cerrará tu sesión para que puedas iniciar sesión con la cuenta de destino y completar la fusión.
+      flash_and_signout: Se ha enviado un correo electrónico de verificación a %{targetEmail}. Ahora ha cerrado sesión para que pueda iniciar sesión como la cuenta de destino y completar la fusión.
     email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
     find_out_more: Descubre más
     placeholder_modal_text: |

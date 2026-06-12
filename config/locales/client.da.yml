@@ -335,6 +335,8 @@ da:
       helptext: Du kan flette kontoen under <strong>%{sourceEmail}</strong> til kontoen for <strong>%{targetEmail}</strong> . Klik på Bekræft, og en bekræftelses-e-mail vil blive sendt til %{targetEmail} for at starte processen.
       submit: Verificere
       flash: Bekræftelsesmail sendt!
+      helptext_and_signout: Du kan flette kontoen under <strong>%{sourceEmail}</strong> ind i kontoen <strong>%{targetEmail}</strong> . Klik på Bekræft, og en bekræftelsesmail sendes til %{targetEmail} for at starte processen. Du logges ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
+      flash_and_signout: Bekræftelsesmail sendt til %{targetEmail}. Du er nu logget ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
     email_taken: Beklager, den e-mail er allerede knyttet til en anden bruger. Tilhører den e-mail dig?
     find_out_more: Find ud af mere.
     placeholder_modal_text: <p>Hvis du gerne vil flette to konti sammen, skal du blot indtaste den respektive e-mailadresse (der hører til den anden konto) i e-mailfeltet på din profilside og følge instruktionerne, der vises.</p><p> Brug for hjælp? <a href="/contact" target="_blank">Kontakt os</a> .

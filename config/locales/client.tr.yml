@@ -335,6 +335,8 @@ tr:
       helptext: "<strong>%{sourceEmail}</strong> altındaki hesabı <strong>%{targetEmail}</strong> hesabıyla birleştirebilirsiniz. Doğrula'yı tıkladığınızda işlemi başlatmak için %{targetEmail} adresine bir doğrulama e-postası gönderilecektir."
       submit: Doğrula
       flash: Doğrulama e-postası gönderildi!
+      helptext_and_signout: "<strong>%{sourceEmail}</strong> altındaki hesabı <strong>%{targetEmail}</strong> hesabına birleştirebilirsiniz. Doğrula'ya tıklayın ve işlemi başlatmak için %{targetEmail} adresine bir doğrulama e-postası gönderilecektir. Birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilmeniz için oturumunuz kapatılacaktır."
+      flash_and_signout: Doğrulama e-postası %{targetEmail} adresine gönderildi. Artık oturumunuz kapatıldı, birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilirsiniz.
     email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
     find_out_more: Daha fazla bilgi.
     placeholder_modal_text: <p>İki hesabı birleştirmek istiyorsanız, ilgili e-posta adresini (diğer hesaba ait olan) Profil sayfanızın e-posta alanına girmeniz ve görüntülenen talimatları izlemeniz yeterlidir.</p><p> Yardıma mı ihtiyacınız var? <a href="/contact" target="_blank">Bizimle iletişime geçin</a> .

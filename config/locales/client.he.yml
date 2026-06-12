@@ -335,6 +335,8 @@ he:
       helptext: אתה יכול למזג את החשבון תחת <strong>%{sourceEmail}</strong> לזה של <strong>%{targetEmail}</strong> . לחץ על אמת והודעת דוא"ל אימות תישלח אל %{targetEmail} כדי להתחיל בתהליך.
       submit: תאשר
       flash: מייל אימות נשלח!
+      helptext_and_signout: באפשרותך למזג את החשבון תחת <strong>%{sourceEmail}</strong> עם זה של <strong>%{targetEmail}</strong> . לחץ על אימות ויישלח דוא"ל אימות אל %{targetEmail} כדי להתחיל בתהליך. תתנתק כדי שתוכל להיכנס כחשבון היעד ולהשלים את המיזוג.
+      flash_and_signout: אימייל אימות נשלח אל %{targetEmail}. כעת אינך מחובר/ת כך שתוכל/י להיכנס כחשבון היעד כדי להשלים את המיזוג.
     email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
     find_out_more: גלה עוד.
     placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .

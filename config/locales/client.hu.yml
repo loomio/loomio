@@ -337,6 +337,8 @@ hu:
       helptext: A <strong>(z) %{sourceEmail}</strong> alatti fiókot egyesítheti a <strong>(z) %{targetEmail}</strong> fiókkal. Kattintson az Ellenőrzés gombra, és a folyamat megkezdéséhez egy ellenőrző e-mailt küldünk a(z) %{targetEmail} címre.
       submit: Ellenőrzés
       flash: Ellenőrző e-mail elküldve!
+      helptext_and_signout: A <strong>%{sourceEmail}</strong> fiókot egyesítheti a <strong>%{targetEmail}</strong> fiókkal. Kattintson az Ellenőrzés gombra, és a folyamat megkezdéséhez egy ellenőrző e-mailt küldünk a %{targetEmail} címre. Kijelentkeztetjük, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
+      flash_and_signout: Megerősítő e-mail elküldve a(z) %{targetEmail} címre. Most kijelentkezett, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
     email_taken: Sajnáljuk, ez az e-mail már társítva van egy másik felhasználóhoz. Ez az e-mail a tiéd?
     find_out_more: Tudj meg többet.
     placeholder_modal_text: <p>Ha két fiókot szeretne egyesíteni, egyszerűen írja be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesse a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vegye fel velünk a kapcsolatot</a> .

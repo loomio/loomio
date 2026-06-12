@@ -335,6 +335,8 @@ ro:
       helptext: Puteți îmbina contul din <strong>%{sourceEmail}</strong> în cel al <strong>%{targetEmail}</strong> . Faceți clic pe Verificați și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul.
       submit: Verifica
       flash: Email de verificare trimis!
+      helptext_and_signout: Puteți îmbina contul de sub <strong>%{sourceEmail}</strong> cu cel al contului <strong>%{targetEmail}</strong> . Faceți clic pe Verificare și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul. Veți fi deconectat, astfel încât să vă puteți conecta ca și contul țintă pentru a finaliza îmbinarea.
+      flash_and_signout: E-mail de verificare trimis la %{targetEmail}. Acum sunteți deconectat, așa că vă puteți conecta ca și cont țintă pentru a finaliza îmbinarea.
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .

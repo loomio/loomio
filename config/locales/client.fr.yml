@@ -343,6 +343,8 @@ fr:
       helptext: Vous pouvez fusionner le compte %{sourceEmail} avec le compte %{targetEmail}. Cliquez sur Vérifier et un email de vérification sera envoyé à %{targetEmail} pour débuter la fusion des comptes.
       submit: Vérifier
       flash: Mail de vérification envoyé !
+      helptext_and_signout: Vous pouvez fusionner le compte associé à <strong>%{sourceEmail}</strong> avec celui associé à <strong>%{targetEmail}</strong> . Cliquez sur « Vérifier » ; un e-mail de vérification sera envoyé à %{targetEmail} pour lancer la procédure. Vous serez déconnecté(e) afin de vous connecter au compte cible et finaliser la fusion.
+      flash_and_signout: Un courriel de vérification a été envoyé à %{targetEmail}. Vous êtes maintenant déconnecté(e). Veuillez vous connecter avec le compte cible pour finaliser la fusion.
     email_taken: Désolé, l'adresse email que vous avez fournie correspond à celle d'un utilisateur existant. Est-ce votre adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |

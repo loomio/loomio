@@ -28,8 +28,9 @@ export default {
 
     sendVerification() {
       Records.users.sendMergeVerificationEmail(this.targetEmail).then(() => {
-        Flash.success('merge_accounts.modal.flash');
+        Flash.success('merge_accounts.modal.flash_and_signout', {targetEmail: this.targetEmail});
         EventBus.$emit('closeModal');
+        Session.signOut();
       });
     },
 

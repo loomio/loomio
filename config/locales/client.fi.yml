@@ -335,6 +335,8 @@ fi:
       helptext: Voit yhdistää <strong>%{sourceEmail}-</strong> tilin tilin <strong>%{targetEmail}</strong> tiliin. Napsauta Vahvista, niin osoitteeseen %{targetEmail} lähetetään vahvistussähköposti prosessin aloittamiseksi.
       submit: Vahvista
       flash: Vahvistussähköposti lähetetty!
+      helptext_and_signout: Voit yhdistää tilin <strong>%{sourceEmail}</strong> alta tilin <strong>%{targetEmail}</strong> tiliin. Napsauta Vahvista, niin vahvistussähköposti lähetetään osoitteeseen %{targetEmail} prosessin aloittamiseksi. Sinut kirjataan ulos, jotta voit kirjautua sisään kohdetilinä yhdistämisen loppuun saattamiseksi.
+      flash_and_signout: Vahvistussähköposti lähetetty osoitteeseen %{targetEmail}. Olet nyt kirjautunut ulos, joten voit kirjautua sisään kohdetilinä ja viimeistellä yhdistämisen.
     email_taken: Valitettavasti tämä sähköposti on jo liitetty toiseen käyttäjään. Kuuluuko tuo sähköposti sinulle?
     find_out_more: Lue lisää.
     placeholder_modal_text: <p>Jos haluat yhdistää kaksi tiliä, kirjoita vain vastaava sähköpostiosoite (joka kuuluu toiselle tilille) Profiilisivusi sähköpostikenttään ja seuraa näkyviin tulevia ohjeita.</p><p> Tarvitsetko apua? <a href="/contact" target="_blank">Ota meihin yhteyttä</a> .

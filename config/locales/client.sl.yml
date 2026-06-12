@@ -335,6 +335,8 @@ sl:
       helptext: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in potrditveno e-poštno sporočilo bo poslano na %{targetEmail} za začetek postopka.
       submit: Preveri
       flash: Potrditveno e-poštno sporočilo je poslano!
+      helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in na %{targetEmail} bo poslano potrditveno e-poštno sporočilo za začetek postopka. Odjavljeni boste, da se boste lahko prijavili kot ciljni račun za dokončanje združitve.
+      flash_and_signout: Potrditveno e-poštno sporočilo je bilo poslano na %{targetEmail}. Zdaj ste odjavljeni, zato se lahko prijavite kot ciljni račun in dokončate združitev.
     email_taken: Žal je ta e-poštni naslov že povezan z drugim uporabnikom. Ali ta e-pošta pripada vam?
     find_out_more: Izvedi več.
     placeholder_modal_text: <p>Če želite združiti dva računa, preprosto vnesite ustrezni e-poštni naslov (ki pripada drugemu računu) v polje za e-pošto na strani profila in sledite navodilom, ki se prikažejo.</p><p> Rabim pomoč? <a href="/contact" target="_blank">Kontaktirajte nas</a> .

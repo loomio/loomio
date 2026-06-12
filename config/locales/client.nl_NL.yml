@@ -335,6 +335,8 @@ nl_NL:
       helptext: Je kunt het account van <strong>%{sourceEmail}</strong> toevoegen aan dat van <strong>%{targetEmail}</strong>. Klik op Bevestigen en het proces wordt gestart met een controle e-mail naar %{targetEmail}.
       submit: Bevestigen
       flash: Bevestigingse-mail verstuurd!
+      helptext_and_signout: Je kunt het account onder <strong>%{sourceEmail}</strong> samenvoegen met dat van <strong>%{targetEmail}</strong> . Klik op 'Verifiëren' en er wordt een verificatiemail naar %{targetEmail} verzonden om het proces te starten. Je wordt uitgelogd, zodat je kunt inloggen met het doelaccount om de samenvoeging te voltooien.
+      flash_and_signout: Verificatie-e-mail verzonden naar %{targetEmail}. U bent nu afgemeld, zodat u kunt inloggen met het doelaccount om de samenvoeging te voltooien.
     email_taken: Sorry, dat e-mailadres is al in gebruik door een andere gebruiker. Is dat jouw e-mailadres?
     find_out_more: Meer informatie
     placeholder_modal_text: |

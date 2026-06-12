@@ -336,6 +336,8 @@ zh_TW:
       helptext: 您可以將 <strong>%{sourceEmail}</strong> 的帳號合併到 <strong>%{targetEmail}</strong>。點擊驗證，然後驗證用的電子郵件將會傳送到 %{targetEmail} 以開始流程。
       submit: 驗證
       flash: 驗證用的電子郵件已傳送！
+      helptext_and_signout: 您可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。您將被強制登出，以便使用目標帳號登入完成合併。
+      flash_and_signout: 驗證郵件已發送至 %{targetEmail}。您現在已登出登錄，請登入目標帳戶以完成合併。
     email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |

@@ -381,8 +381,10 @@ en:
     modal:
       title: Merge accounts
       helptext: You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process.
+      helptext_and_signout: You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process. You will be signed out so you can sign in as the target account to complete the merge.
       submit: Verify
       flash: Verification email sent!
+      flash_and_signout: Verification email sent to %{targetEmail}. You are now signed out so you can sign in as the target account to complete the merge.
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
     find_out_more: Find out more.
     placeholder_modal_text: |

@@ -1,5 +1,6 @@
 <script lang="js">
-import Flash  from '@/shared/services/flash';
+import Flash   from '@/shared/services/flash';
+import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
 
@@ -29,6 +30,7 @@ export default {
         if (this.confirm.redirect != null) { this.$router.push(`${this.confirm.redirect}`); }
         if (typeof this.confirm.successCallback === 'function') { this.confirm.successCallback(); }
         if (this.confirm.text.flash) { Flash.success(this.confirm.text.flash, this.confirm.textArgs); }
+        if (this.confirm.signOut) { Session.signOut(); }
       }).finally(() => {
         this.isDisabled = false;
       });

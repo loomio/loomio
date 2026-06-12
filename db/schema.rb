@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_12_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1015,6 +1015,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_000000) do
 
   create_table "users", id: :serial, force: :cascade do |t|
     t.citext "email"
+    t.string "password_digest", limit: 128, default: ""
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at", precision: nil
     t.datetime "last_sign_in_at", precision: nil
@@ -1073,7 +1074,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_000000) do
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
     t.integer "bounces_count", default: 0, null: false
-    t.string "password_digest", limit: 128, default: ""
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

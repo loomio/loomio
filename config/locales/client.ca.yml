@@ -335,6 +335,8 @@ ca:
       helptext: 'Podeu combinar el compte amb el correu <strong>%{sourceEmail}</strong> dins del compte amb el correu <strong>%{targetEmail}</strong>. Per començar el procés feu clic a "verificar", i se us enviarà un correu electrònic de verificació a %{targetEmail} '
       submit: Verifica
       flash: S'ha enviat un correu electrònic de verificació!
+      helptext_and_signout: Podeu fusionar el compte de <strong>%{sourceEmail}</strong> amb el de <strong>%{targetEmail}</strong> . Feu clic a Verifica i s'enviarà un correu electrònic de verificació a %{targetEmail} per iniciar el procés. Es tancarà la sessió perquè pugueu iniciar la sessió com a compte de destinació per completar la fusió.
+      flash_and_signout: Correu electrònic de verificació enviat a %{targetEmail}. Ara has tancat la sessió i pots iniciar-la com a compte de destinació per completar la combinació.
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |
