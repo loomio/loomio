@@ -26,6 +26,18 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   config.active_job.queue_adapter = :test
 
+  # Execute all jobs (including scheduled) immediately in test, matching the old
+  # Sidekiq::Testing.inline! behavior.
+  config.after_initialize do
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
+  end
+
+  # Disable ActionMailbox incineration — its after_create_commit callback
+  # enqueues a delayed IncinerationJob that would run immediately with
+  # perform_enqueued_at_jobs=true, destroying inbound emails mid-test.
+  config.action_mailbox.incinerate = false
+
   # Render exception templates for rescuable exceptions and raise for other exceptions.
   config.action_dispatch.show_exceptions = :rescuable
 

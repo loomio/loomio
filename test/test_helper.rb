@@ -21,7 +21,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
-    include ActiveJob::TestHelper
+
 
     # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
     ResetDatabaseHelper.reset_database
@@ -59,8 +59,6 @@ module ActiveSupport
 
     # Setup common stubs before each test
     setup do
-      ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
-      ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = false
       ActionMailer::Base.deliveries.clear
       ThrottleService.reset!('hour')
       ThrottleService.reset!('day')
@@ -92,10 +90,7 @@ module ActiveSupport
         to_return(status: 200, body: "stubbed response", headers: {})
     end
 
-    teardown do
-      clear_enqueued_jobs
-      clear_performed_jobs
-    end
+
   end
 end
 
