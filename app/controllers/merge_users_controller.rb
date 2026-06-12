@@ -15,7 +15,7 @@ class MergeUsersController < ApplicationController
     target_user = User.active.find_by!(id: params[:target_id])
     hash = params[:hash]
     if MergeUsersService.validate(source_user: source_user, target_user: target_user, hash: hash)
-      MigrateUserWorker.perform_async(source_user.id, target_user.id)
+      MigrateUserWorker.perform_later(source_user.id, target_user.id)
       render Views::MergeUsers::Complete.new(target_user: target_user)
     else
       respond_with_error 422

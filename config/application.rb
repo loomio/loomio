@@ -23,7 +23,8 @@ module Loomio
     config.load_defaults 6.0
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
-    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :solid_queue
+    config.mission_control.jobs.http_basic_auth_enabled = false
 
     config.generators do |g|
       g.template_engine :haml
@@ -90,7 +91,7 @@ module Loomio
       /https?:\/\/localhost:\d+/
     ]
 
-    config.cache_store = :redis_cache_store, { url: (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')) }
+    config.cache_store = :solid_cache_store
     config.action_dispatch.use_cookies_with_metadata = false
 
     if ENV['DISABLE_IPSPOOFINGCHECK']

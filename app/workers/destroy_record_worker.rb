@@ -1,5 +1,4 @@
-class DestroyRecordWorker
-  include Sidekiq::Worker
+class DestroyRecordWorker < ApplicationJob
   def perform(class_name, record_id)
   	class_name.constantize.find(record_id).destroy!
   end

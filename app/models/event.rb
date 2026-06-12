@@ -57,7 +57,7 @@ class Event < ApplicationRecord
   def self.publish!(eventable, **args)
     event = build(eventable, **args)
     event.save!
-    PublishEventWorker.perform_async(event.id)
+    PublishEventWorker.perform_later(event.id)
     event
   end
 

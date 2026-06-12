@@ -1,6 +1,4 @@
-class UpdateBlockedDomainsWorker
-  include Sidekiq::Worker
-
+class UpdateBlockedDomainsWorker < ApplicationJob
   def perform
     puts "updating blocked domains"
     hostsfile = 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts'

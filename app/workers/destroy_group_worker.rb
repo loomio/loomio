@@ -1,6 +1,4 @@
-class DestroyGroupWorker
-  include Sidekiq::Worker
-
+class DestroyGroupWorker < ApplicationJob
   def perform(group_id)
     begin
       Group.archived.find(group_id).try(:destroy!)

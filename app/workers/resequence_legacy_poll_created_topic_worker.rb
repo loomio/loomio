@@ -1,7 +1,4 @@
-class ResequenceLegacyPollCreatedTopicWorker
-  include Sidekiq::Worker
-  sidekiq_options retry: false
-
+class ResequenceLegacyPollCreatedTopicWorker < ApplicationJob
   def perform(topic_id)
     TopicService.resequence_chronologically(topic_id)
   end

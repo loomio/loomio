@@ -1,6 +1,4 @@
-class MigrateTagsWorker
-  include Sidekiq::Worker
-
+class MigrateTagsWorker < ApplicationJob
   def perform
     group_ids = []
     Tagging.where(taggable_type: 'Discussion').pluck(:taggable_id).uniq.each do |discussion_id|

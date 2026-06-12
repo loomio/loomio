@@ -1,6 +1,4 @@
-class GeoLocationWorker
-  include Sidekiq::Worker
-
+class GeoLocationWorker < ApplicationJob
   def perform
     db_filename = Rails.root.join('public', 'GeoLite2-Country.mmdb').to_s
 

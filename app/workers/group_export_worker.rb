@@ -1,6 +1,4 @@
-class GroupExportWorker
-  include Sidekiq::Worker
-
+class GroupExportWorker < ApplicationJob
   def perform(group_ids, group_name, actor_id)
     actor = User.find_by!(id: actor_id)
     groups = Group.where(id: group_ids)

@@ -1,6 +1,4 @@
-class DestroyTagWorker
-  include Sidekiq::Worker
-
+class DestroyTagWorker < ApplicationJob
   def perform(group_id, name)
     group = Group.find(group_id)
     group_ids = group.id_and_subgroup_ids

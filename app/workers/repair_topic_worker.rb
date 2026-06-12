@@ -1,7 +1,4 @@
-class RepairTopicWorker
-  include Sidekiq::Worker
-  sidekiq_options retry: false
-
+class RepairTopicWorker < ApplicationJob
   def perform(topic_id)
     TopicService.repair(topic_id)
   end
