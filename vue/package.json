@@ -20,7 +20,7 @@
     "@tiptap/extension-code": "3.25.0",
     "@tiptap/extension-code-block": "3.25.0",
     "@tiptap/extension-collaboration": "3.25.0",
-    "@tiptap/extension-collaboration-caret": "3.25.0",
+    "@tiptap/extension-collaboration-caret": "3.26.1",
     "@tiptap/extension-document": "3.25.0",
     "@tiptap/extension-gapcursor": "3.25.0",
     "@tiptap/extension-hard-break": "3.25.0",
