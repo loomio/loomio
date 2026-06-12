@@ -102,12 +102,23 @@ module GroupService
   def self.update(group:, params:, actor:)
     actor.ability.authorize! :update, group
 
+    old_handle = group.handle
     group.assign_attributes_and_files(params.except(:parent_id))
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)
 
     return false unless group.valid?
-    group.save!
+
+    Group.transaction do
+      group.save!
+
+      new_handle = group.handle
+      if old_handle.present? && new_handle.present? && old_handle != new_handle
+        GroupHandleRedirect.find_or_create_by!(group: group, handle: old_handle)
+        trim_handle_redirects(group)
+      end
+    end
+
     privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
@@ -133,7 +144,15 @@ module GroupService
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
-    group.update(handle: "#{parent.handle}-#{group.handle}") if group.handle?
+    old_handle = group.handle
+    if group.handle?
+      new_handle = "#{parent.handle}-#{group.handle}"
+      group.update(handle: new_handle)
+      if old_handle.present? && old_handle != new_handle
+        GroupHandleRedirect.find_or_create_by!(group: group, handle: old_handle)
+        trim_handle_redirects(group)
+      end
+    end
     group.update(parent: parent, subscription_id: nil)
     EventBus.broadcast('group_move', group, parent, actor)
   end
@@ -159,13 +178,40 @@ module GroupService
 
   def self.suggest_handle(name:, parent_handle:)
     attempt = 0
-    while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
+    while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists? ||
+         GroupHandleRedirect.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
       attempt += 1
     end
     generate_handle(name, parent_handle, attempt)
   end
 
+  def self.update_handle(group:, handle:, actor:)
+    actor.ability.authorize! :update, group
+
+    old_handle = group.handle
+    new_handle = handle.to_s.strip.parameterize.presence
+
+    Group.transaction do
+      group.update!(handle: new_handle)
+
+      if old_handle.present? && old_handle != new_handle
+        GroupHandleRedirect.find_or_create_by!(
+          group: group,
+          handle: old_handle
+        )
+        trim_handle_redirects(group)
+      end
+    end
+
+    old_handle
+  end
+
   private
+
+  def self.trim_handle_redirects(group)
+    excess = group.handle_redirects.order(created_at: :desc).offset(3)
+    excess.destroy_all if excess.any?
+  end
 
   def self.generate_handle(name, parent_handle, attempt)
     [parent_handle,

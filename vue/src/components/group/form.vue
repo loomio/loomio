@@ -247,6 +247,7 @@ v-form(ref="form" @submit.prevent="submit")
               maxlength='100'
               :label="$t('group_form.handle')"
             )
+            .text-caption.text-medium-emphasis.mb-2(v-if="realGroup && realGroup.handle && group.handle !== realGroup.handle" v-t="'group_form.handle_redirect_notice'")
           v-spacer
 
           input.d-none.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")

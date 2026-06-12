@@ -98,7 +98,7 @@ class ReceivedEmailService
     end
 
     # Group by handle
-    if group = Group.find_by(handle: email.route_path)
+    if group = group_from_route_path(email.route_path)
       unless address_is_blocked(email, group)
         email.update(group_id: group.id)
         if actor = actor_from_email_and_group(email, group)
@@ -198,9 +198,15 @@ class ReceivedEmailService
     nil
   end
 
+  def self.group_from_route_path(route_path)
+    Group.find_by(handle: route_path) ||
+      GroupHandleRedirect.find_by(handle: route_path)&.group
+  end
+
   def self.discussion_params(email)
     params = parse_route_params(email.route_path)
-    group = Group.find_by!(handle: (params['handle'] || email.route_path))
+    group = group_from_route_path(params['handle'] || email.route_path)
+    group || raise(ActiveRecord::RecordNotFound)
     {
       group_id: group.id,
       private: group.discussion_private_default,

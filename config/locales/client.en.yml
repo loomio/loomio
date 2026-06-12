@@ -1422,6 +1422,7 @@ en:
     organization_name: Organization name
     handle: Handle
     group_handle_placeholder: 'For your group URL and email: %{host}/%{handle}, %{handle}{''@''}%{host}'
+    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: What is the name of your group?
