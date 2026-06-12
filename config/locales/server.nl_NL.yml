@@ -693,3 +693,5 @@ nl_NL:
     zh-HK: Chinees (Traditioneel, Taiwan)
   upload:
     file_too_large: Het bestand is te groot. De maximale uploadgrootte is %{limit}.
+  merge_users:
+    not_target_user: Je moet ingelogd zijn met het doelaccount om een samenvoeging te bevestigen.

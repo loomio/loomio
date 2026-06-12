@@ -666,3 +666,5 @@ fi:
     zh-HK: Kiina (perinteinen, Taiwan)
   upload:
     file_too_large: Tiedosto on liian suuri. Suurin mahdollinen lähetyskoko on %{limit}.
+  merge_users:
+    not_target_user: Sinun on kirjauduttava sisään kohdetilillä vahvistaaksesi yhdistämisen.

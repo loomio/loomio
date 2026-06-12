@@ -696,3 +696,5 @@ fr:
     zh-HK: Chinois (traditionnel, Taïwan)
   upload:
     file_too_large: Le fichier est trop volumineux. La taille maximale autorisée pour le téléchargement est %{limit}.
+  merge_users:
+    not_target_user: Vous devez être connecté avec le compte cible pour confirmer une fusion.

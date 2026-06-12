@@ -693,3 +693,5 @@ pl:
     zh-HK: chiński (tradycyjny, tajwański)
   upload:
     file_too_large: Plik jest za duży. Maksymalny rozmiar przesyłanego pliku to %{limit}.
+  merge_users:
+    not_target_user: Aby potwierdzić scalenie, musisz zalogować się jako konto docelowe.

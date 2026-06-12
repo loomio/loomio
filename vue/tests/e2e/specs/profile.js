@@ -140,4 +140,17 @@ module.exports = {
   //   page.expectText('.header', "Merge successful!")
   // }
 
+  'confirms_merge_accounts_from_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_merge_verification_email')
+    page.loadLastEmail()
+    page.click('.base-mailer__button')
+    page.pause(500)
+    page.expectElement('.btn--accent--raised')
+    page.click('.btn--accent--raised')
+    page.pause(500)
+    page.expectText('.header', 'Merge successful!')
+  }
+
 }

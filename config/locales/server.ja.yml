@@ -666,3 +666,5 @@ ja:
     zh-HK: 中国語（繁体字、台湾語）
   upload:
     file_too_large: ファイルサイズが大きすぎます。アップロードできる最大サイズは%{limit}です。
+  merge_users:
+    not_target_user: 統合を確定するには、対象アカウントとしてログインしている必要があります。
