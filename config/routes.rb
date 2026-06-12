@@ -1,10 +1,12 @@
-def dev_routes_for(namespace)
+def dev_actions_for(namespace)
   controller = "Dev::#{namespace.to_s.humanize}Controller".constantize.new
-  methods = controller.public_methods - Dev::BaseController.new.public_methods
+  controller.public_methods - Dev::BaseController.new.public_methods
+end
 
+def dev_routes_for(namespace)
   namespace namespace do
     get '/' => :index
-    methods.map { |action| get action }
+    dev_actions_for(namespace).map { |action| get action }
   end
 end
 
@@ -31,7 +33,7 @@ Rails.application.routes.draw do
       dev_routes_for(:nightwatch)
 
       get '/', to: 'nightwatch#index'
-      get '/:action', to: 'nightwatch#:action'
+      dev_actions_for(:nightwatch).map { |action| get action, to: "nightwatch##{action}" }
     end
   end
 
