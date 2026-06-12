@@ -3,6 +3,7 @@
 ## Git commits
 
 - Do not run `git commit` unless the user explicitly asks for a specific commit.
+- Permission to commit once does not grant permission to commit again later without asking.
 
 ## i18n / Localization
 
