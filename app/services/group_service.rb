@@ -200,21 +200,18 @@ module GroupService
           handle: old_handle
         )
         trim_handle_redirects(group)
-        update_descendant_handles(group, old_handle, new_handle)
       end
+    end
+
+    if old_handle.present? && old_handle != new_handle
+      GenericWorker.perform_async('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
     end
 
     old_handle
   end
 
-  private
-
-  def self.trim_handle_redirects(group)
-    excess = group.handle_redirects.order(created_at: :desc).offset(3)
-    excess.destroy_all if excess.any?
-  end
-
-  def self.update_descendant_handles(group, old_parent_handle, new_parent_handle)
+  def self.update_descendant_handles(group_id, old_parent_handle, new_parent_handle)
+    group = Group.find(group_id)
     group.all_subgroups.each do |subgroup|
       old_sub_handle = subgroup.handle
       next unless old_sub_handle&.starts_with?("#{old_parent_handle}-")
@@ -232,8 +229,15 @@ module GroupService
       )
       trim_handle_redirects(subgroup)
 
-      update_descendant_handles(subgroup, old_sub_handle, new_sub_handle)
+      update_descendant_handles(subgroup.id, old_sub_handle, new_sub_handle)
     end
+  end
+
+  private
+
+  def self.trim_handle_redirects(group)
+    excess = group.handle_redirects.order(created_at: :desc).offset(3)
+    excess.destroy_all if excess.any?
   end
 
   def self.generate_handle(name, parent_handle, attempt)
