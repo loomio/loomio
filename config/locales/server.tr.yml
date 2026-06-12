@@ -153,6 +153,7 @@ tr:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
       no_public_trials: Grup gizlilik ayarını değiştirmek için lütfen deneme sürümünden yükseltme yapın
+      handle_must_be_url_friendly: Yalnızca küçük harfler (az), rakamlar (0-9) ve kısa çizgiler (-) kullanın.
     stats:
       group_stats: Grup istatistikleri
       org_stats: Organizasyon istatistikleri (alt gruplar dahil)

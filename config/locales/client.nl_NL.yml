@@ -1294,7 +1294,7 @@ nl_NL:
     organization_name: Organisatienaam
     handle: Gebruikersnaam
     group_handle_placeholder: 'Gebruikt in uw groeps-URL: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Nieuwe organisatie
     edit_organization_heading: Bewerk organisatie instellingen
     group_name_placeholder: Wat is de naam van je groep?
@@ -1385,6 +1385,8 @@ nl_NL:
     members_can_start_discussions_help_v2: Sta leden toe om nieuwe discussies binnen de groep te starten.
     members_can_edit_discussions_v2: Leden kunnen discussies en reacties beheren.
     members_can_edit_discussions_help_v2: Geef leden de mogelijkheid om discussies en reacties in de groep te bewerken, verplaatsen, vastzetten, taggen of sluiten.
+    group_handle_hint_new: De URL en het e-mailadres van uw groep zijn %{host}/%{handle} en %{handle}{'@'}%{host}.
+    handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
   group_export_modal:
     title: Groepsdata exporteren
     body: |

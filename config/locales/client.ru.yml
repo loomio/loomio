@@ -1288,7 +1288,7 @@ ru:
     organization_name: Название организации
     handle: Ручка
     group_handle_placeholder: 'Используется в URL-адресе вашей группы: %{host}/%{handle}.'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Новая организация
     edit_organization_heading: Изменить настройки организации
     group_name_placeholder: Как называется ваша группа?
@@ -1379,6 +1379,8 @@ ru:
     members_can_start_discussions_help_v2: Разрешите участникам начинать новые дискуссии внутри группы.
     members_can_edit_discussions_v2: Участники могут управлять обсуждениями и комментариями.
     members_can_edit_discussions_help_v2: Разрешите участникам редактировать, перемещать, закреплять, помечать тегами или закрывать любые обсуждения или комментарии в группе.
+    group_handle_hint_new: 'URL вашей группы и адрес электронной почты будут выглядеть так: %{host}/%{handle} и %{handle}{''@''}%{host}'
+    handle_changed_hint: Ваш прежний URL-адрес и адрес электронной почты будут перенаправлены на ваш новый адрес.
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>

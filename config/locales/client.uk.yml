@@ -1297,7 +1297,7 @@ uk:
     organization_name: Назва організації
     handle: Регулювання
     group_handle_placeholder: 'Використовується в URL-адресі вашої групи: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Нова організація
     edit_organization_heading: Редагувати налаштування організації
     group_name_placeholder: Яка назва у вашої групи?
@@ -1388,6 +1388,8 @@ uk:
     members_can_start_discussions_help_v2: Дозволити учасникам розпочинати нові обговорення в групі
     members_can_edit_discussions_v2: Учасники можуть керувати обговореннями та коментарями
     members_can_edit_discussions_help_v2: Дозволити учасникам редагувати, переміщувати, закріплювати, позначати тегами або закривати будь-яке обговорення чи коментар у групі
+    group_handle_hint_new: URL-адреса та електронна адреса вашої групи будуть %{host}/%{handle} та %{handle}{'@'}%{host}
+    handle_changed_hint: Ваша попередня URL-адреса та адреса електронної пошти перенаправлятимуть на вашу нову адресу.
   group_export_modal:
     title: Експортувати дані групи
     body: |

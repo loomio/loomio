@@ -157,6 +157,7 @@ it:
     error:
       handle_must_begin_with_parent_handle: Deve iniziare con%{parent_handle}-
       no_public_trials: Esegui l'upgrade dalla versione di prova per modificare l'impostazione sulla privacy del gruppo
+      handle_must_be_url_friendly: Utilizzare solo lettere minuscole (az), numeri (0-9) e trattini (-)
     stats:
       group_stats: Statistiche di gruppo
       org_stats: Statistiche dell'organizzazione (inclusi i sottogruppi)

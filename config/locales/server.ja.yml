@@ -148,6 +148,7 @@ ja:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
       no_public_trials: グループのプライバシー設定を変更するには、試用版からアップグレードしてください
+      handle_must_be_url_friendly: 小文字（az）、数字（0～9）、ハイフン（-）のみを使用してください。
     stats:
       group_stats: グループ統計
       org_stats: 組織統計 (サブグループを含む)

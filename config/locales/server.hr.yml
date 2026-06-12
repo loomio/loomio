@@ -153,6 +153,7 @@ hr:
     error:
       handle_must_begin_with_parent_handle: Mora započeti s %{parent_handle}-
       no_public_trials: Nadogradite s probnog razdoblja da biste promijenili postavku privatnosti grupe
+      handle_must_be_url_friendly: Koristite samo mala slova (az), brojeve (0-9) i crtice (-)
     stats:
       group_stats: Grupna statistika
       org_stats: Statistika organizacije (uključujući podgrupe)

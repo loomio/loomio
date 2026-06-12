@@ -1288,7 +1288,7 @@ ro:
     organization_name: Numele Organizatiei
     handle: Mâner
     group_handle_placeholder: 'Folosit în adresa URL a grupului dvs.: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Noua organizare
     edit_organization_heading: Editați setările organizației
     group_name_placeholder: Cum se va numi grupul tău?
@@ -1379,6 +1379,8 @@ ro:
     members_can_start_discussions_help_v2: Permiteți membrilor să înceapă discuții noi în cadrul grupului
     members_can_edit_discussions_v2: Membrii pot gestiona discuțiile și comentariile
     members_can_edit_discussions_help_v2: Permiteți membrilor să editeze, să mute, să fixeze, să eticheteze sau să închidă orice discuție sau comentariu din grup
+    group_handle_hint_new: Adresa URL și adresa de e-mail a grupului dvs. vor fi %{host}/%{handle} și %{handle}{'@'}%{host}
+    handle_changed_hint: Adresa URL și adresa de e-mail anterioare vor redirecționa către noua adresă.
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>

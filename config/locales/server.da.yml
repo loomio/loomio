@@ -153,6 +153,7 @@ da:
     error:
       handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-
       no_public_trials: Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen
+      handle_must_be_url_friendly: Brug kun små bogstaver (az), tal (0-9) og bindestreger (-)
     stats:
       group_stats: Gruppestatistik
       org_stats: Organisationsstatistik (inklusive undergrupper)

@@ -1288,7 +1288,7 @@ fi:
     organization_name: Organisaation nimi
     handle: Kahva
     group_handle_placeholder: 'Käytetty ryhmäsi URL-osoitteessa: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Uusi organisaatio
     edit_organization_heading: Muokkaa organisaation asetuksia
     group_name_placeholder: Mikä on ryhmäsi nimi?
@@ -1379,6 +1379,8 @@ fi:
     members_can_start_discussions_help_v2: Salli jäsenten aloittaa uusia keskusteluja ryhmässä
     members_can_edit_discussions_v2: Jäsenet voivat hallita keskusteluja ja kommentteja
     members_can_edit_discussions_help_v2: Salli jäsenten muokata, siirtää, kiinnittää, merkitä tai sulkea mitä tahansa keskustelua tai kommenttia ryhmässä
+    group_handle_hint_new: Ryhmäsi URL-osoite ja sähköpostiosoite ovat %{host}/%{handle} ja %{handle}{'@'}%{host}
+    handle_changed_hint: Edellinen URL-osoitteesi ja sähköpostiosoitteesi ohjaavat sinut uuteen osoitteeseesi.
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>

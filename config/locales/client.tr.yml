@@ -1288,7 +1288,7 @@ tr:
     organization_name: Kuruluş Adı
     handle: Halletmek
     group_handle_placeholder: 'Grup URL''nizde kullanılır: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Yeni organizasyon
     edit_organization_heading: Kuruluş ayarlarını düzenleyin
     group_name_placeholder: Grup isminizin adı nedir?
@@ -1379,6 +1379,8 @@ tr:
     members_can_start_discussions_help_v2: Üyelerin grup içinde yeni tartışmalar başlatmasına izin verin.
     members_can_edit_discussions_v2: Üyeler tartışmaları ve yorumları yönetebilirler.
     members_can_edit_discussions_help_v2: Gruptaki üyelerin herhangi bir tartışmayı veya yorumu düzenlemesine, taşımasına, sabitlemesine, etiketlemesine veya kapatmasına izin verin.
+    group_handle_hint_new: Grup URL'niz ve e-posta adresiniz %{host}/%{handle} ve %{handle}{'@'}%{host} olacaktır.
+    handle_changed_hint: Önceki URL'niz ve e-posta adresiniz yeni adresinize yönlendirilecektir.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>

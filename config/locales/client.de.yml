@@ -1302,7 +1302,7 @@ de:
     organization_name: Organizationsname
     handle: Kürzel
     group_handle_placeholder: 'Wird in Ihrer Gruppen-URL verwendet: %{host}/%{handle}'
-    handle_redirect_notice: 'If you change this handle, links using the old address will redirect here.'
+    handle_redirect_notice: If you change this handle, links using the old address will redirect here.
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: Wie heißt deine Gruppe?
@@ -1393,6 +1393,8 @@ de:
     members_can_start_discussions_help_v2: Erlauben Sie den Mitgliedern, neue Diskussionen innerhalb der Gruppe zu starten.
     members_can_edit_discussions_v2: Mitglieder können Diskussionen und Kommentare verwalten.
     members_can_edit_discussions_help_v2: Erlauben Sie den Mitgliedern, Diskussionen oder Kommentare in der Gruppe zu bearbeiten, zu verschieben, anzuheften, zu taggen oder zu schließen.
+    group_handle_hint_new: Ihre Gruppen-URL und E-Mail-Adresse lauten %{host}/%{handle} und %{handle}{'@'}%{host}.
+    handle_changed_hint: Ihre bisherige URL und E-Mail-Adresse werden auf Ihre neue Adresse weitergeleitet.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |

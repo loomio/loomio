@@ -153,6 +153,7 @@ fi:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
       no_public_trials: Päivitä kokeiluversiosta muuttaaksesi ryhmän tietosuoja-asetusta
+      handle_must_be_url_friendly: Käytä vain pieniä kirjaimia (az), numeroita (0–9) ja yhdysmerkkejä (-)
     stats:
       group_stats: Ryhmätilastot
       org_stats: Organisaatiotilastot (mukaan lukien alaryhmät)

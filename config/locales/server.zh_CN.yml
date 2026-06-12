@@ -420,6 +420,7 @@ zh_CN:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头
       no_public_trials: 请从试用版升级以更改群组隐私设置
+      handle_must_be_url_friendly: 仅使用小写字母（a）、数字（0-9）和连字符（-）。
     stats:
       group_stats: 小组统计数据
       org_stats: 组织统计数据（包括子组）
