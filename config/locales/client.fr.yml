@@ -1405,6 +1405,8 @@ fr:
     members_can_start_discussions_help_v2: Autoriser les membres à entamer de nouvelles discussions au sein du groupe
     members_can_edit_discussions_v2: Les membres peuvent gérer les discussions et les commentaires.
     members_can_edit_discussions_help_v2: Autoriser les membres à modifier, déplacer, épingler, étiqueter ou fermer toute discussion ou tout commentaire dans le groupe
+    group_handle_hint_new: L'URL et l'adresse e-mail de votre groupe seront %{host}/%{handle} et %{handle}{'@'}%{host}
+    handle_changed_hint: Votre ancienne URL et votre adresse e-mail seront redirigées vers votre nouvelle adresse.
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |

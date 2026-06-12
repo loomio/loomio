@@ -157,6 +157,7 @@ pl:
     error:
       handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-
       no_public_trials: Zaktualizuj wersję próbną, aby zmienić ustawienia prywatności grupy
+      handle_must_be_url_friendly: Używaj wyłącznie małych liter (a-z), cyfr (0-9) i myślników (-)
     stats:
       group_stats: Statystyki grupy
       org_stats: Statystyki organizacji (w tym podgrup)

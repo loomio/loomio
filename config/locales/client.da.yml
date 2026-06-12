@@ -1378,6 +1378,8 @@ da:
     members_can_start_discussions_help_v2: Tillad medlemmer at starte nye diskussioner i gruppen
     members_can_edit_discussions_v2: Medlemmer kan administrere diskussioner og kommentarer
     members_can_edit_discussions_help_v2: Tillad medlemmer at redigere, flytte, fastgøre, tagge eller lukke enhver diskussion eller kommentar i gruppen
+    group_handle_hint_new: Din gruppes URL og e-mailadresse vil være %{host}/%{handle} og %{handle}{'@'}%{host}
+    handle_changed_hint: Din tidligere URL og e-mailadresse vil omdirigere til din nye adresse.
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>

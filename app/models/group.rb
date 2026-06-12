@@ -58,6 +58,10 @@ class Group < ApplicationRecord
 
   has_many :chatbots, dependent: :destroy
 
+  has_many :handle_redirects,
+           class_name: 'GroupHandleRedirect',
+           dependent: :destroy
+
   has_many :tags, foreign_key: :group_id
 
   belongs_to :subscription
@@ -98,6 +102,7 @@ class Group < ApplicationRecord
   validates :subscription, absence: true, if: :is_subgroup?
   validate :handle_is_valid
   validates :handle, uniqueness: true, allow_nil: true
+  validate :handle_is_not_retired_handle
 
   delegate :locale, to: :creator, allow_nil: true
   delegate :time_zone, to: :creator, allow_nil: true
@@ -470,9 +475,20 @@ class Group < ApplicationRecord
   def handle_is_valid
     self.handle = nil if self.handle.to_s.strip == "" || (is_subgroup? && parent.handle.nil?)
     return if handle.nil?
-    self.handle = handle.parameterize
+    if handle != handle.parameterize
+      errors.add(:handle, I18n.t(:'group.error.handle_must_be_url_friendly'))
+      return
+    end
     if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
       errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
+    end
+  end
+
+  def handle_is_not_retired_handle
+    return if handle.blank?
+
+    if GroupHandleRedirect.where(handle: handle).where.not(group_id: id).exists?
+      errors.add(:handle, :taken)
     end
   end
 

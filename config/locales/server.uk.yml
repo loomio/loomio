@@ -153,6 +153,7 @@ uk:
     error:
       handle_must_begin_with_parent_handle: Має починатись з %{parent_handle}-
       no_public_trials: Перейдіть із пробної версії, щоб змінити налаштування конфіденційності групи
+      handle_must_be_url_friendly: Використовуйте лише малі літери (a-z), цифри (0-9) та дефіси (-)
     stats:
       group_stats: Статистика групи
       org_stats: Статистика організації (включаючи підгрупи)

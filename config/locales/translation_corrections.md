@@ -85,6 +85,7 @@ languages in the Nov 2025 pass.
 | client.*.yml   | `notifications.email_subject.poll_created` | Dropped `%{poll_type}` and used generic "Vote" labels | Restored `%{poll_type}: %{title}` | Email subject needs the dynamic poll type, not a hard-coded generic label |
 | client.zh_CN.yml | Multiple HTML/interpolation keys | Full-width percent signs or translated placeholder words like `％{标题}` / literal `作者` | Restored placeholders such as `%{title}`, `%{author}`, `%{username}` | Placeholder names and `%{...}` syntax must never be translated or converted to full-width characters |
 | client.*.yml   | `strand_nav.return`, `thread_arrangement_form.items`, `thread_arrangement_form.thread_settings`, `poll_common_settings.*`, `poll_common_details_meta.*` | UI labels translated in wrong senses like "Return"→yield, "items"→goods/articles, "thread"→subprocess/screw-thread, "opened"→inaugurated | Corrected to navigation, discussion-thread, poll-setting, and poll-time meanings | Short UI labels need surrounding UI context; Google often picks a plausible but wrong dictionary sense |
+| server.*.yml   | `group.error.handle_must_be_url_friendly` | Character range `(a-z)` collapsed to `(az)` or `(a)` | Preserve `(a-z)` | ASCII character ranges are literal validation guidance, not prose to translate |
 
 ## 2026-05-21 — lock_thread_modal body changed to explanation
 

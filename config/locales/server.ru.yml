@@ -153,6 +153,7 @@ ru:
     error:
       handle_must_begin_with_parent_handle: Должен начинаться с %{parent_handle}-
       no_public_trials: Пожалуйста, обновите пробную версию, чтобы изменить настройки конфиденциальности группы.
+      handle_must_be_url_friendly: Используйте только строчные буквы (a-z), цифры (0-9) и дефисы (-).
     stats:
       group_stats: Статистика группы
       org_stats: Статистика организации (включая подгруппы)

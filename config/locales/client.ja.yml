@@ -1377,6 +1377,8 @@ ja:
     members_can_start_discussions_help_v2: メンバーがグループ内で新しいディスカッションを開始できるようにする
     members_can_edit_discussions_v2: メンバーはディスカッションやコメントを管理できる
     members_can_edit_discussions_help_v2: メンバーがグループ内のあらゆるディスカッションやコメントを編集、移動、ピン留め、タグ付け、または閉じることを許可します
+    group_handle_hint_new: グループのURLとメールアドレスは、それぞれ %{host}/%{handle} と %{handle}{'@'}%{host} になります。
+    handle_changed_hint: 以前ご利用いただいていたURLとメールアドレスは、新しいアドレスにリダイレクトされます。
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>

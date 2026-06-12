@@ -1404,6 +1404,8 @@ it:
     members_can_start_discussions_help_v2: Consenti ai membri di avviare nuove discussioni all'interno del gruppo
     members_can_edit_discussions_v2: I membri possono gestire discussioni e commenti
     members_can_edit_discussions_help_v2: Consenti ai membri di modificare, spostare, aggiungere, taggare o chiudere qualsiasi discussione o commento nel gruppo
+    group_handle_hint_new: L'URL e l'indirizzo email del tuo gruppo saranno %{host}/%{handle} e %{handle}{'@'}%{host}
+    handle_changed_hint: Il tuo precedente URL e indirizzo email verranno reindirizzati al nuovo indirizzo.
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>

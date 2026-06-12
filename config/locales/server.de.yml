@@ -156,6 +156,7 @@ de:
     error:
       handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-
       no_public_trials: Bitte führe ein Upgrade von der Testversion durch, um die Datenschutzeinstellung der Gruppe zu ändern
+      handle_must_be_url_friendly: Verwenden Sie nur Kleinbuchstaben (a-z), Zahlen (0-9) und Bindestriche (-).
     stats:
       group_stats: Gruppen-Statistik
       org_stats: Organisationsstatistiken (einschließlich Untergruppen)

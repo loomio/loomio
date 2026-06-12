@@ -1382,6 +1382,8 @@ hu:
     members_can_start_discussions_help_v2: Engedélyezd a tagok számára új beszélgetések indítását a csoporton belül
     members_can_edit_discussions_v2: A tagok kezelhetik a beszélgetéseket és a hozzászólásokat
     members_can_edit_discussions_help_v2: A tagok szerkeszthetik, áthelyezhetik, rögzíthetik, címkézhetik vagy lezárhatják a csoportban található beszélgetéseket vagy hozzászólásokat.
+    group_handle_hint_new: 'A csoportod URL-címe és e-mail címe a következő lesz: %{host}/%{handle} és %{handle}{''@''}%{host}'
+    handle_changed_hint: Az előző URL-címed és e-mail címed átirányít az új címedre.
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>

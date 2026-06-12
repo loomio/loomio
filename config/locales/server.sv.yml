@@ -153,6 +153,7 @@ sv:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-
       no_public_trials: Vänligen uppgradera från testversion för att ändra gruppens sekretessinställning
+      handle_must_be_url_friendly: Använd endast gemener (a-z), siffror (0-9) och bindestreck (-)
     stats:
       group_stats: Gruppstatistik
       org_stats: Organisationsstatistik (inklusive undergrupper)

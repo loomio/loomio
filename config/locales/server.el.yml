@@ -153,6 +153,7 @@ el:
     error:
       handle_must_begin_with_parent_handle: Πρέπει να ξεκινά με %{parent_handle}-
       no_public_trials: Κάντε αναβάθμιση από τη δοκιμή για να αλλάξετε τη ρύθμιση απορρήτου της ομάδας
+      handle_must_be_url_friendly: Χρησιμοποιήστε μόνο πεζά γράμματα (a-z), αριθμούς (0-9) και παύλες (-)
     stats:
       group_stats: Στατιστικά ομάδας
       org_stats: Στατιστικά οργανισμού (συμπεριλαμβανομένων των υποομάδων)
