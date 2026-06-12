@@ -68,11 +68,8 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
   }
 
   sendMergeVerificationEmail(targetEmail) {
-    return this.fetch({
-      path: 'send_merge_verification_email',
-      params: {
-        target_email: targetEmail
-      }
+    return this.remote.post('send_merge_verification_email', {
+      target_email: targetEmail
     });
   }
 };

@@ -149,6 +149,13 @@ class Rack::Attack
     req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
   end
 
+  # Tight per-IP throttle for the merge verification endpoint (POST).
+  # An attacker could otherwise spam this with a victim's email to flood their
+  # inbox and/or rotate the source user's secret_token repeatedly.
+  throttle("send_merge_verification_email/ip", limit: 5 * RATE_MULTIPLIER, period: 1.hour) do |req|
+    req.remote_ip if req.post? && req.path == '/api/v1/profile/send_merge_verification_email'
+  end
+
   ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
     req = req_h[:request]
     matched = req.env['rack.attack.matched']

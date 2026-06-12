@@ -156,7 +156,7 @@ Rails.application.routes.draw do
           get  :groups
           get  :email_status
           get  :email_exists
-          get  :send_merge_verification_email
+          post :send_merge_verification_email
           get  :contactable
           get  :avatar_uploaded
           get  :email_api_key

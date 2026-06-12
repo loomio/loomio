@@ -4,7 +4,7 @@ class MergeUsersControllerTest < ActionController::TestCase
   setup do
     @source_user = users(:user)
     @target_user = users(:alien)
-    MergeUsersService.prep_for_merge!(source_user: @source_user, target_user: @target_user)
+    MergeUsersService.prep_for_merge!(source_user: @source_user)
   end
 
   test "confirm with valid hash renders page" do
