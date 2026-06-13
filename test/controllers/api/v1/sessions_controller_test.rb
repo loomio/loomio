@@ -108,6 +108,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
   test "bridges a legacy devise session into a session record" do
@@ -201,6 +202,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
   test "signs in a user via code and marks the token used" do
@@ -213,6 +215,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
   test "does not sign in with an expired code" do

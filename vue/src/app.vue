@@ -53,7 +53,7 @@ export default {
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
     EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); });
-    if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
+    Flash.fromServer(AppConfig.flash);
   },
 
   destroyed() {

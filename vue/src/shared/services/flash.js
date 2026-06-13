@@ -30,6 +30,13 @@ export default class Flash {
     });
   }
 
+  static fromServer(flash) {
+    if (!flash) { return; }
+    if (flash.notice) { return Flash.custom(flash.notice, 'success'); }
+    if (flash.alert) { return Flash.custom(flash.alert, 'error'); }
+    if (flash.error) { return Flash.custom(flash.error, 'error'); }
+  }
+
   static serverError(error, inlineFields = []) {
     if (error.error) {
       Flash.custom(error.error);
