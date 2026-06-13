@@ -115,7 +115,7 @@ uk:
     was_gift_trial: 'Твоя група використовує Loomio безкоштовно з %{createdDate}. Ми не можемо продовжувати надавати послуги безкоштовно. We are unable to continue providing a free service. Оновіть план, щоб продовжити користуватись Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Дізнатись більше.</a>'
     was_gift_remaining: "%{days} днів залишилось."
     was_gift_expired: Твій безкоштовний план закінчився.
-    was_gift_expired_or_mistake: ‘Термін дії твого безкоштовного плану закінчився. Якщо ти вважаєш, що сталася помилка, <a style=’’text-decoration: underline’’ href=’’/contact’’>зв’яжись з нами</a> .’
+    was_gift_expired_or_mistake: 'Термін дії твого безкоштовного плану закінчився. Якщо ти вважаєш, що сталася помилка, <a style=''text-decoration: underline'' href=''/contact''>зв’яжись з нами</a> .'
     subscription_ended: Твоя підписка на Loomio закінчилася. Щоб продовжити використовувати Loomio, оновіть програму
   subscription_status:
     plan: План

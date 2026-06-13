@@ -2728,7 +2728,7 @@ de:
     limit_reason_length: Beschränke den Grund auf maximal 500 Zeichen
     save_poll: Umfrage speichern
     start_poll_type: Starte %{poll_type}
-    share_poll_type: %{poll_type} teilen
+    share_poll_type: "%{poll_type} teilen"
     update: Aktualisieren
     add_voters: Wähler hinzufügen
     notify_invitees: Benachrichtigungen senden

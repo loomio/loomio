@@ -711,7 +711,7 @@ fr:
       membership_requested: "%{actor} a demandé à s'adhérer %{title}"
       membership_request_approved: "%{actor} a accepté ta demande à joindre %{title}"
       new_comment: "%{actor} a mentionné sur: %{title}"
-      new_coordinator: "%{actor} t\'a fait admin de %{title}"
+      new_coordinator: "%{actor} t'a fait admin de %{title}"
       outcome_announced: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_created: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type} : %{title}"
@@ -731,10 +731,10 @@ fr:
       stance_created: "%{actor} a voté sur: %{title}"
       stance_updated: "%{actor} a voté sur: %{title}"
       stance_created_option: "%{actor} a voté %{option} sur %{title}"
-      user_added_to_group: "%{actor} t\'a ajouté dans le group: %{title}"
-      user_mentioned: "%{actor} t\'a mentionné·e dans: %{title}"
+      user_added_to_group: "%{actor} t'a ajouté dans le group: %{title}"
+      user_mentioned: "%{actor} t'a mentionné·e dans: %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
-      new_delegate: "%{actor} t\'a nommé délégué avec droit de vote dans %{title}"
+      new_delegate: "%{actor} t'a nommé délégué avec droit de vote dans %{title}"
       poll_announced: "%{actor} t'a invité à voter : %{title}"
       discussion_announced: "%{actor} t'a invité à la discussion : %{title}"
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
@@ -769,7 +769,7 @@ fr:
       stance_created: "%{actor} a voté"
       stance_updated: "%{actor} a voté"
       stance_created_option: "%{actor} a voté %{option}"
-      user_mentioned: "%{actor} t\'a mentionné"
+      user_mentioned: "%{actor} t'a mentionné"
       user_reminded: "%{actor} te rappelle de voter"
       group_mentioned: "%{actor} a mentionné le groupe"
       poll_announced: "%{actor} t'a invité à voter sur un %{poll_type}"
@@ -786,7 +786,7 @@ fr:
       outcome_review_due: Envisagez de lancer un sondage d'opinion ou une nouvelle discussion invitant à réfléchir sur la manière dont la décision a été mise en œuvre.
     email_subject:
       unknown_sender: Examine le courriel provenant d'un expéditeur inconnu.
-      comment_replied_to: "%{actor} t\'a répondu dans : %{title}"
+      comment_replied_to: "%{actor} t'a répondu dans : %{title}"
       discussion_announced: "%{title}"
       invitation_accepted: "%{actor} a accepté ton invitation à rejoindre %{title}"
       membership_created: "%{actor} t'a invité à rejoindre %{title} sur %{site_name}"
@@ -794,8 +794,8 @@ fr:
       membership_requested: "%{actor} a demandé à rejoindre %{title}"
       membership_request_approved: "%{actor} a approuvé ta demande de rejoindre %{title}"
       new_comment: "%{actor} a commenté dans : %{title}"
-      new_coordinator: "%{actor} t\'a nommé administrateur de %{title}"
-      new_delegate: "%{actor} t\'a nommé délégué avec droit de vote dans %{title}"
+      new_coordinator: "%{actor} t'a nommé administrateur de %{title}"
+      new_delegate: "%{actor} t'a nommé délégué avec droit de vote dans %{title}"
       new_discussion: "%{title}"
       outcome_announced: 'Conclusion de %{poll_type} : %{title}'
       outcome_created: 'Conclusion de %{poll_type} : %{title}'
@@ -816,8 +816,8 @@ fr:
       stance_created: "%{actor} a voté pour : %{title}"
       stance_updated: "%{actor} a voté pour : %{title}"
       stance_created_option: "%{actor} a voté pour %{option} dans %{title}"
-      user_added_to_group: "%{actor} t\'a ajouté au groupe : %{title}"
-      user_mentioned: "%{actor} t\'a mentionné dans : %{title}"
+      user_added_to_group: "%{actor} t'a ajouté au groupe : %{title}"
+      user_mentioned: "%{actor} t'a mentionné dans : %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       poll_announced: 'Vote : %{title}'
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
@@ -877,7 +877,7 @@ fr:
     discussion_started: La discussion a commencé
     none_direct_discussion: Aucun (discussion directe)
     direct_discussion: Discussion directe
-    direct_discussion_hint: Une conversation privée n'est visible que par les personnes que tu invites. Elle n'apparaît pas dans la liste des discussions d'un groupe ; tu  trouverez sur la page « Conversations privées ».
+    direct_discussion_hint: Une conversation privée n'est visible que par les personnes que tu invites. Elle n'apparaît pas dans la liste des discussions d'un groupe ; tu  trouverez sur la page « Conversations privées ».
     recommended_poll_templates: Modèles de sondages recommandés
     edit_discussion_context: Modifier le contexte de la discussion
   announcement:
@@ -1252,7 +1252,7 @@ fr:
       normal_aria_description: Ton volume de notification pour ce groupe est réglé sur Normal. Tu recevras un courriel seulement en cas d’activité importante, par exemple si quelqu’un crée une nouvelle discussion, lance une proposition, ou publie les résultats.
       normal_message: Tu recevras un courriel uniquement lors d’activités importantes dans « %{name} ».
       quiet: Ne pas envoyer de courriel concernant ce groupe. Les activités resteront consultables sur le tableau de bord.
-      quiet_aria_description: Ton volume de notification pour ce groupe est réglé sur Léger. Tu ne recevras aucun courriel pour t\'informer des actualités de ce groupe. Tu pourrez les voir sur ton Tableau de Bord.
+      quiet_aria_description: Ton volume de notification pour ce groupe est réglé sur Léger. Tu ne recevras aucun courriel pour t'informer des actualités de ce groupe. Tu pourrez les voir sur ton Tableau de Bord.
       quiet_message: Tu ne recevras aucun courriel concernant les activités dans « %{name} ».
       mute_message: "« %{name} » a été retiré de ton tableau de bord."
       mute: Masquer ce groupe du tableau de bord et ne pas notifier sauf si {'@'}est mentionné.
@@ -1391,7 +1391,7 @@ fr:
     upload_logo: Télécharger le logo
     upload_cover_photo: Télécharger la photo de couverture
     request_to_join_prompt: Demande d'adhésion rapide
-    default_request_to_join_prompt: Merci de ton intérêt pour notre groupe. Veuillez tu  et expliquer pourquoi tu souhaites nous rejoindre.
+    default_request_to_join_prompt: Merci de ton intérêt pour notre groupe. Veuillez tu  et expliquer pourquoi tu souhaites nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau ton abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
     aria_label: Forme de groupe
@@ -1452,7 +1452,7 @@ fr:
     copy_link: Copier
     email_addresses: Adresses e-mail
     secret_group_url_explanation: Ceci est l'adresse de ton groupe. Seuls les membres invités pourront voir ce groupe.
-    shareable_group_url_explanation: Tu peux partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et tu  approuver ou ignorer ces requêtes.
+    shareable_group_url_explanation: Tu peux partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et tu  approuver ou ignorer ces requêtes.
     shareable_invitation_explanation: Ne partage pas ce lien publiquement. Quiconque ayant ce lien peut joindre le groupe sans ton approbation. Partage-le uniquement dans des communications privées pour permettre aux membres de ton organisation de rejoindre le groupe.
     shareable_link_reset: Réinitialisation du lien à partager. Le lien précédent ne fonctionnera plus.
     email_explanation: Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.
@@ -1527,7 +1527,7 @@ fr:
     message_user: Message %{name}
   contact_request_form:
     modal_title: Envoyer un courriel à %{name}
-    message_placeholder: Présentez-tu  dites-nous pourquoi tu veux entrer en relation.
+    message_placeholder: Présentez-tu  dites-nous pourquoi tu veux entrer en relation.
     helptext: Ton nom, adresse e-mail et message seront envoyés à %{name}
     email_sent: Courriel envoyé à %{name}
   profile_page:
@@ -1575,7 +1575,7 @@ fr:
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
     title: Régler la photo de profil
-    helptext: Tu peux charger ton propre photo de profil, ou si tu as un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, tu  l’utiliser.
+    helptext: Tu peux charger ton propre photo de profil, ou si tu as un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, tu  l’utiliser.
     use_initials: Utiliser mes initiales
     use_gravatar: Utiliser Gravatar
     use_uploaded: Télécharger une nouvelle photo
@@ -1625,7 +1625,7 @@ fr:
     default_settings:
       loud_description: Quand tu rejoins un nouveau groupe, tu recevras un courriel <strong>à chaque fois qu’il y aura une activité</strong>.
       normal_description: Quand tu rejoins un nouveau groupe, tu recevras un courriel pour chaque <strong>nouvelle discussion ou décision</strong>.
-      quiet_description: Quand tu  un nouveau groupe, <strong>Tu ne recevras pas de courriel pour les activités</strong>.
+      quiet_description: Quand tu  un nouveau groupe, <strong>Tu ne recevras pas de courriel pour les activités</strong>.
     edit: Modifier
     messages:
       updated: Réglages de courriel mis à jour
@@ -1707,7 +1707,7 @@ fr:
       start: Démarrer
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
-      explanation: Tu n'as aucune discussion non lue car tu  membre d'aucun groupe.
+      explanation: Tu n'as aucune discussion non lue car tu  membre d'aucun groupe.
     no_discussions: Hourra ! Tu as lu toutes les discussions dans ta boîte de réception.
     unread_discussions: Discussions non lues
     recent_activity_notice: Afficher uniquement les discussions ayant fait l'objet d'une activité au cours des 6 dernières semaines.
@@ -2317,7 +2317,7 @@ fr:
     total: Total
   poll_remove_vote:
     title: Supprimer ton vote?
-    helptext: Es-tu sûr de vouloir supprimer ton vote? Tu seras inscrit comme indécis et pourrez voter à nouveau plus tard si tu  souhaitez.
+    helptext: Es-tu sûr de vouloir supprimer ton vote? Tu seras inscrit comme indécis et pourrez voter à nouveau plus tard si tu  souhaitez.
     confirm: Supprimer vote
     success: Vote supprimé
   poll_poll_vote_form:
@@ -2378,10 +2378,10 @@ fr:
     youre_invited: Tu as été invité à rejoindre le groupe %{group_name}.
     youre_invited_discussion: Tu as été invité à rejoindre la discussion.
     youre_invited_poll: Tu as été invité à voter.
-    existing_account_can_sign_in: Si tu êtes déjà un utilisateur %{site_name}, connectez-tu  ton compte existant
+    existing_account_can_sign_in: Si tu êtes déjà un utilisateur %{site_name}, connectez-tu  ton compte existant
     sign_up_or_log_in: Créer un compte ou te connecter à %{site_name}
     sign_in_to_loomio: Connecte-toi à %{site_name}
-    sign_in_help: Tu rencontres des difficultés pour tu  ?
+    sign_in_help: Tu rencontres des difficultés pour tu  ?
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
@@ -2439,7 +2439,7 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
-    want_to_set_password: Tu souhaites tu  avec un mot de passe la prochaine fois ?
+    want_to_set_password: Tu souhaites tu  avec un mot de passe la prochaine fois ?
     change_your_password: Souhaites-tu définir un nouveau mot de passe ?
     email_placeholder: tu{'@'}exemple.com
     turnstile_required: Veuillez effectuer la vérification avant de continuer.

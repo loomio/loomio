@@ -91,8 +91,8 @@ nl_NL:
     practice_thread:
       process_subtitle: Een draadje om mensen welkom te heten in de groep en te oefenen met Loomio
       process_introduction: "<p>Gebruik deze sjabloon om nieuwe leden te verwelkomen en vroege deelname te stimuleren. Het geeft mensen de kans om zichzelf voor te stellen en de functies van Loomio te verkennen.</p>"
-      title: "\Je0001F44B Welkom! Zeg hallo en probeer dingen uit"
-      description: "<p>Welkom bij onze Loomio-groep. Leuk dat je er bent!</p><p> Deze thread is bedoeld om:</p><ul><li><p> Stel jezelf voor aan de groep</p></li><li><p> Probeer enkele functies van Loomio uit - probeer bijvoorbeeld reacties te gebruiken \Je0001F44D</p></li><li><p> Stel in dit stadium alle vragen die je heeft</p></li></ul><p> Als je niet zeker weet wat je moet zeggen, is een simpele hallo voldoende \Je0001F642</p>"
+      title: "\U0001F44B Welkom! Zeg hallo en probeer dingen uit"
+      description: "<p>Welkom bij onze Loomio-groep. Leuk dat je er bent!</p><p> Deze thread is bedoeld om:</p><ul><li><p> Stel jezelf voor aan de groep</p></li><li><p> Probeer enkele functies van Loomio uit - probeer bijvoorbeeld reacties te gebruiken \U0001F44D</p></li><li><p> Stel in dit stadium alle vragen die je heeft</p></li></ul><p> Als je niet zeker weet wat je moet zeggen, is een simpele hallo voldoende \U0001F642</p>"
       process_name: Praktijkbespreking
       process_subtitle_v2: Welkom allemaal en maak jezelf vertrouwd met het gebruik van Loomio.
       process_introduction_v2: "<p>Een welkomstforum voor nieuwe groepen. Mensen stellen zich voor, proberen functies zoals reageren en commentaar geven uit en presenteren hun eerste voorstel.</p>"
@@ -425,7 +425,7 @@ nl_NL:
       process_subtitle: Ontdek hoe voorstellen werken op Loomio door het uit te proberen.
       process_introduction: "<p>Gebruik deze sjabloon om je groep te helpen vertrouwd te raken met het gebruik van voorstellen op Loomio. Het is een veilige en eenvoudige manier om stemmen uit te proberen en te zien hoe alles in elkaar zit.</p>"
       details: "<p>Dit is een oefenronde, zodat iedereen vertrouwd kan raken met de werking van voorstellen op Loomio.</p><p> Stem en laat, als je dat wilt, een reden achter.</p><p> Geen druk, geen concrete gevolgen. Het is gewoon een manier om te ontdekken hoe voorstellen werken!</p>"
-      outcome_statement: "<p>Bedankt voor je deelname aan dit oefenvoorstel! \Je0001F389</p><p> Dit was gewoon een kans om te zien hoe stemmen en reageren werkt op Loomio. Er wordt hier nog geen echte beslissing genomen, maar hopelijk heeft dit iedereen geholpen om vertrouwd te raken met het proces.</p>"
+      outcome_statement: "<p>Bedankt voor je deelname aan dit oefenvoorstel! \U0001F389</p><p> Dit was gewoon een kans om te zien hoe stemmen en reageren werkt op Loomio. Er wordt hier nog geen echte beslissing genomen, maar hopelijk heeft dit iedereen geholpen om vertrouwd te raken met het proces.</p>"
       title_v2: Ananas hoort op pizza
       process_subtitle_v2: Probeer een voorstel uit, zodat je weet hoe stemmen werkt.
       process_introduction_v2: "<p>Een leuke manier voor je groep om te oefenen met stemmen op Loomio. Kies een luchtige vraag, laat iedereen stemmen en een reden opgeven – er is geen echte beslissing, het is gewoon oefening.</p>"
