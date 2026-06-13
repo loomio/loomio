@@ -357,6 +357,8 @@ zh_CN:
       helptext: 您可以将<strong>%{sourceEmail}</strong>下的帐户合并到<strong>%{targetEmail}</strong>下的帐户中。点击“验证”，系统将向 %{targetEmail} 发送一封验证邮件，以开始合并过程。
       submit: 核实
       flash: 验证邮件已发送！
+      helptext_and_signout: 您可以将<strong>%{sourceEmail}</strong>下的帐户合并到<strong>%{targetEmail}</strong>下的帐户中。点击“验证”，系统将向 %{targetEmail} 发送一封验证邮件，以开始合并过程。您将被强制登出，以便使用目标帐户登录完成合并。
+      flash_and_signout: 验证邮件已发送至 %{targetEmail}。您现在已退出登录，请登录目标帐户以完成合并。
     email_taken: 抱歉，该邮箱地址已被其他用户关联。请问该邮箱地址是您本人的吗？
     find_out_more: 了解更多。
     placeholder_modal_text: <p>如果您想将两个帐户合并在一起，只需将相应的电子邮件地址（属于另一个帐户）输入到您的个人资料页面电子邮件字段中，然后按照出现的说明进行操作即可。</p><p>需要帮助？<a href="/contact" target="_blank">请联系我们</a>。
@@ -1439,6 +1441,8 @@ zh_CN:
     members_can_start_discussions_help_v2: 允许成员在群组内发起新的讨论。
     members_can_edit_discussions_v2: 成员可以管理讨论和评论
     members_can_edit_discussions_help_v2: 允许成员编辑、移动、置顶、标记或关闭群组中的任何讨论或评论。
+    group_handle_hint_new: 您的群组网址和电子邮件地址将分别为 %{host}/%{handle} 和 %{handle}{'@'}%{host}
+    handle_changed_hint: 您之前的网址和电子邮件地址将重定向到您的新地址。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>

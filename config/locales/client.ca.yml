@@ -335,6 +335,8 @@ ca:
       helptext: 'Podeu combinar el compte amb el correu <strong>%{sourceEmail}</strong> dins del compte amb el correu <strong>%{targetEmail}</strong>. Per començar el procés feu clic a "verificar", i se us enviarà un correu electrònic de verificació a %{targetEmail} '
       submit: Verifica
       flash: S'ha enviat un correu electrònic de verificació!
+      helptext_and_signout: Podeu fusionar el compte de <strong>%{sourceEmail}</strong> amb el de <strong>%{targetEmail}</strong> . Feu clic a Verifica i s'enviarà un correu electrònic de verificació a %{targetEmail} per iniciar el procés. Es tancarà la sessió perquè pugueu iniciar la sessió com a compte de destinació per completar la fusió.
+      flash_and_signout: Correu electrònic de verificació enviat a %{targetEmail}. Ara has tancat la sessió i pots iniciar-la com a compte de destinació per completar la combinació.
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |
@@ -1384,6 +1386,8 @@ ca:
     members_can_start_discussions_help_v2: Permetre que els membres iniciïn noves discussions dins del grup
     members_can_edit_discussions_v2: Els membres poden gestionar debats i comentaris
     members_can_edit_discussions_help_v2: Permetre que els membres editin, moguin, fixin, etiquetin o tanquin qualsevol discussió o comentari del grup
+    group_handle_hint_new: L'URL i el correu electrònic del vostre grup seran %{host}/%{handle} i %{handle}{'@'}%{host}
+    handle_changed_hint: L'URL i l'adreça electrònica anteriors redirigiran a la nova adreça.
   group_export_modal:
     title: Exporta dades del grup
     body: |

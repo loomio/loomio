@@ -15,6 +15,22 @@ class GroupsController < ApplicationController
   end
 
   def show
+    if params[:id].present?
+      if group = Group.find_by(handle: params[:id])
+        return render_group(group)
+      end
+
+      if redirect = GroupHandleRedirect.includes(:group).find_by(handle: params[:id])
+        group = redirect.group
+        unless current_user.can?(:show, group)
+          return respond_with_error 403
+        end
+
+        return redirect_to group_handle_path(group.handle, request.query_parameters), status: :moved_permanently
+      end
+    end
+
+    # existing fallback behavior
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user
     if current_user.can? :show, resource
@@ -41,6 +57,24 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def render_group(group)
+    @group = group
+    @recipient = current_user
+    if current_user.can? :show, @group
+      respond_to do |format|
+        format.html do
+          render Views::Groups::Show.new(
+            group: @group, recipient: @recipient,
+            metadata: metadata, export: !!params[:export], bot: browser.bot?
+          )
+        end
+        format.xml
+      end
+    else
+      respond_with_error 403
+    end
+  end
 
   def require_signed_in_user_for_explore
     require_current_user if AppConfig.app_features[:restrict_explore_to_signed_in_users]

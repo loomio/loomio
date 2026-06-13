@@ -102,6 +102,10 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def send_merge_verification_email
+    unless ThrottleService.can?(key: 'MergeVerificationEmail', id: current_user.id, max: 5, per: 'hour')
+      render json: { error: 'Rate limit exceeded' }, status: 429
+      return
+    end
     MergeUsersService.send_merge_verification_email(actor: current_user, target_email: params[:target_email])
     success_response
   end

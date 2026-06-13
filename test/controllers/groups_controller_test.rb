@@ -4,7 +4,7 @@ class GroupsControllerTest < ActionController::TestCase
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "grpuser#{hex}", email: "grpuser#{hex}@example.com", username: "grpuser#{hex}", email_verified: true)
-    @group = Group.new(name: "grpctrl#{hex}", group_privacy: 'closed')
+    @group = Group.new(name: "grpctrl#{hex}", handle: "grpctrl#{hex}", group_privacy: 'closed')
     @group.creator = @user
     @group.save!
     ActionMailer::Base.deliveries.clear
@@ -117,5 +117,60 @@ class GroupsControllerTest < ActionController::TestCase
 
     get :export, params: { key: @group.key }, format: :csv
     assert_response 302
+  end
+
+  # Handle redirects
+  test "show renders group by current handle" do
+    @group.update!(handle: "current-handle-#{SecureRandom.hex(4)}")
+    sign_in @user
+    @group.add_member!(@user)
+    get :show, params: { id: @group.handle }
+    assert_response 200
+    assert_equal @group, assigns(:group)
+  end
+
+  test "show redirects retired handle to current handle" do
+    @group.add_admin!(@user)
+    old_handle = @group.handle
+    new_handle = "new-handle-#{SecureRandom.hex(4)}"
+    GroupService.update_handle(group: @group, handle: new_handle, actor: @user)
+
+    sign_in @user
+    @group.add_member!(@user)
+    get :show, params: { id: old_handle }
+    assert_response 301
+    assert_redirected_to group_handle_path(new_handle)
+  end
+
+  test "show redirect preserves query parameters" do
+    @group.add_admin!(@user)
+    old_handle = @group.handle
+    new_handle = "new-handle-qs-#{SecureRandom.hex(4)}"
+    GroupService.update_handle(group: @group, handle: new_handle, actor: @user)
+
+    sign_in @user
+    @group.add_member!(@user)
+    get :show, params: { id: old_handle, foo: 'bar' }
+    assert_response 301
+    assert_redirected_to group_handle_path(new_handle, foo: 'bar')
+  end
+
+  test "old handle redirect returns 403 for secret group if unauthorized" do
+    @group.add_admin!(@user)
+    old_handle = @group.handle
+    new_handle = "new-handle-secret-#{SecureRandom.hex(4)}"
+    @group.update!(group_privacy: 'secret')
+    GroupService.update_handle(group: @group, handle: new_handle, actor: @user)
+
+    # user is not a member of the secret group
+    alien = User.create!(name: "alienghr#{SecureRandom.hex(4)}", email: "alienghr#{SecureRandom.hex(4)}@example.com", username: "alienghr#{SecureRandom.hex(4)}", email_verified: true)
+    sign_in alien
+    get :show, params: { id: old_handle }
+    assert_response 403
+  end
+
+  test "show returns 404 for unknown handle" do
+    get :show, params: { id: "nonexistent-handle-#{SecureRandom.hex(4)}" }
+    assert_response 404
   end
 end

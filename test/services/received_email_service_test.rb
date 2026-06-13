@@ -159,6 +159,74 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
+  # -- Handle redirect routing --
+
+  test "routes email to group via retired handle" do
+    original_reply = ENV['REPLY_HOSTNAME']
+    ENV['REPLY_HOSTNAME'] = 'test.host'
+
+    user = User.create!(name: 'RedirectEmailUser', email: "redirectemail#{SecureRandom.hex(4)}@example.com",
+                        email_verified: true, username: "redirectemail#{SecureRandom.hex(4)}")
+    old_handle = "oldhandle#{SecureRandom.hex(4)}"
+    new_handle = "newhandle#{SecureRandom.hex(4)}"
+    group = Group.create!(name: 'Redirect Group', handle: old_handle)
+    group.add_admin!(user)
+    group.add_member!(user)
+    GroupService.update_handle(group: group, handle: new_handle, actor: user)
+
+    from = "\"#{user.name}\" <#{user.email}>"
+    to = "#{old_handle}@#{ENV['REPLY_HOSTNAME']}"
+
+    email = ReceivedEmail.create!(
+      headers: { 'From' => from, 'To' => to, 'Subject' => 'Thread via retired handle' },
+      body_text: "Thread body"
+    )
+
+    assert_difference 'Discussion.count', 1 do
+      ReceivedEmailService.route(email)
+    end
+
+    discussion = Discussion.order(:id).last
+    assert_equal group.id, discussion.group_id
+    assert email.reload.released
+  ensure
+    ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
+  test "routes personal email-to-group via retired handle" do
+    original_reply = ENV['REPLY_HOSTNAME']
+    ENV['REPLY_HOSTNAME'] = 'test.host'
+
+    user = User.create!(name: 'PersRedirectUser', email: "persredirect#{SecureRandom.hex(4)}@example.com",
+                        email_verified: true, username: "persredirect#{SecureRandom.hex(4)}")
+    old_handle = "persold#{SecureRandom.hex(4)}"
+    new_handle = "persnew#{SecureRandom.hex(4)}"
+    group = Group.create!(name: 'PersRedirect Group', handle: old_handle)
+    group.add_admin!(user)
+    group.add_member!(user)
+    GroupService.update_handle(group: group, handle: new_handle, actor: user)
+
+    from = "\"#{user.name}\" <#{user.email}>"
+    to = "#{old_handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}"
+
+    email = ReceivedEmail.create!(
+      headers: { 'From' => from, 'To' => to, 'Subject' => 'Personal thread via retired handle' },
+      body_text: "Personal thread body"
+    )
+
+    if AppConfig.app_features[:thread_from_mail]
+      assert_difference 'Discussion.count', 1 do
+        ReceivedEmailService.route(email)
+      end
+
+      discussion = Discussion.order(:id).last
+      assert_equal group.id, discussion.group_id
+      assert email.reload.released
+    end
+  ensure
+    ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
   # -- Bounce handling --
 
   test "bounce email increments bounces_count" do

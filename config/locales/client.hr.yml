@@ -335,6 +335,8 @@ hr:
       helptext: Možete spojiti račun pod <strong>%{sourceEmail}</strong> u onaj od <strong>%{targetEmail}</strong> . Kliknite Potvrdi i e-pošta za potvrdu bit će poslana na %{targetEmail} za početak postupka.
       submit: Potvrdi
       flash: E-pošta za potvrdu je poslana!
+      helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> možete spojiti s računom <strong>%{targetEmail}</strong> . Kliknite Potvrdi i e-poruka za potvrdu bit će poslana na %{targetEmail} kako biste započeli postupak. Bit ćete odjavljeni kako biste se mogli prijaviti kao ciljni račun za dovršetak spajanja.
+      flash_and_signout: E-poruka za potvrdu poslana je na %{targetEmail}. Sada ste odjavljeni pa se možete prijaviti kao ciljni račun kako biste dovršili spajanje.
     email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
     find_out_more: Saznaj više.
     placeholder_modal_text: <p>Ako želite spojiti dva računa, jednostavno unesite odgovarajuću adresu e-pošte (koja pripada drugom računu) u polje za e-poštu na stranici profila i slijedite upute koje se pojavljuju.</p><p> Trebate pomoć? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
@@ -1378,6 +1380,8 @@ hr:
     members_can_start_discussions_help_v2: Omogućite članovima da započnu nove rasprave unutar grupe
     members_can_edit_discussions_v2: Članovi mogu upravljati raspravama i komentarima
     members_can_edit_discussions_help_v2: Omogući članovima uređivanje, premještanje, prikvačivanje, označavanje ili zatvaranje bilo koje rasprave ili komentara u grupi
+    group_handle_hint_new: URL i e-adresa vaše grupe bit će %{host}/%{handle} i %{handle}{'@'}%{host}
+    handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>

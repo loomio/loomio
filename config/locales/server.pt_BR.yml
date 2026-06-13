@@ -156,6 +156,7 @@ pt_BR:
     error:
       handle_must_begin_with_parent_handle: Deve começar com %{parent_handle}-
       no_public_trials: Atualize do teste para mudar a configuração de privacidade do grupo
+      handle_must_be_url_friendly: Use apenas letras minúsculas (a-z), números (0-9) e hífens (-)
     stats:
       group_stats: Estatísticas do grupo
       org_stats: Estatísticas da organização (incluindo subgrupos)
@@ -696,3 +697,5 @@ pt_BR:
     zh-HK: Chinês (Tradicional, Taiwan)
   upload:
     file_too_large: O arquivo é muito grande. O tamanho máximo de upload é %{limit}.
+  merge_users:
+    not_target_user: Você precisa estar conectado com a conta de destino para confirmar a fusão.

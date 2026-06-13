@@ -335,6 +335,8 @@ he:
       helptext: אתה יכול למזג את החשבון תחת <strong>%{sourceEmail}</strong> לזה של <strong>%{targetEmail}</strong> . לחץ על אמת והודעת דוא"ל אימות תישלח אל %{targetEmail} כדי להתחיל בתהליך.
       submit: תאשר
       flash: מייל אימות נשלח!
+      helptext_and_signout: באפשרותך למזג את החשבון תחת <strong>%{sourceEmail}</strong> עם זה של <strong>%{targetEmail}</strong> . לחץ על אימות ויישלח דוא"ל אימות אל %{targetEmail} כדי להתחיל בתהליך. תתנתק כדי שתוכל להיכנס כחשבון היעד ולהשלים את המיזוג.
+      flash_and_signout: אימייל אימות נשלח אל %{targetEmail}. כעת אינך מחובר/ת כך שתוכל/י להיכנס כחשבון היעד כדי להשלים את המיזוג.
     email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
     find_out_more: גלה עוד.
     placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .
@@ -1382,6 +1384,8 @@ he:
     members_can_start_discussions_help_v2: לאפשר לחברים להתחיל דיונים חדשים בתוך הקבוצה
     members_can_edit_discussions_v2: חברים יכולים לנהל דיונים ותגובות
     members_can_edit_discussions_help_v2: אפשר לחברים לערוך, להעביר, להצמיד, לתייג או לסגור כל דיון או תגובה בקבוצה
+    group_handle_hint_new: כתובת ה-URL והאימייל של הקבוצה שלך יהיו %{host}/%{handle} ו-%{handle}{'@'}%{host}
+    handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |

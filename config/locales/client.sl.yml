@@ -335,6 +335,8 @@ sl:
       helptext: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in potrditveno e-poštno sporočilo bo poslano na %{targetEmail} za začetek postopka.
       submit: Preveri
       flash: Potrditveno e-poštno sporočilo je poslano!
+      helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in na %{targetEmail} bo poslano potrditveno e-poštno sporočilo za začetek postopka. Odjavljeni boste, da se boste lahko prijavili kot ciljni račun za dokončanje združitve.
+      flash_and_signout: Potrditveno e-poštno sporočilo je bilo poslano na %{targetEmail}. Zdaj ste odjavljeni, zato se lahko prijavite kot ciljni račun in dokončate združitev.
     email_taken: Žal je ta e-poštni naslov že povezan z drugim uporabnikom. Ali ta e-pošta pripada vam?
     find_out_more: Izvedi več.
     placeholder_modal_text: <p>Če želite združiti dva računa, preprosto vnesite ustrezni e-poštni naslov (ki pripada drugemu računu) v polje za e-pošto na strani profila in sledite navodilom, ki se prikažejo.</p><p> Rabim pomoč? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
@@ -1378,6 +1380,8 @@ sl:
     members_can_start_discussions_help_v2: Dovoli članom, da začnejo nove razprave znotraj skupine
     members_can_edit_discussions_v2: Člani lahko upravljajo razprave in komentarje
     members_can_edit_discussions_help_v2: Dovoli članom urejanje, premikanje, pripenjanje, označevanje ali zapiranje katere koli razprave ali komentarja v skupini
+    group_handle_hint_new: URL in e-poštni naslov vaše skupine bosta %{host}/%{handle} in %{handle}{'@'}%{host}
+    handle_changed_hint: Vaš prejšnji URL in e-poštni naslov bosta preusmerila na vaš novi naslov.
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>

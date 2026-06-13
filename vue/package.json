@@ -9,7 +9,7 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^3.4.0",
+    "@hocuspocus/provider": "^4.1.2",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
     "@sentry/browser": "^10.47.0",
@@ -65,7 +65,7 @@
     "tiny-emitter": "latest",
     "turndown": "^7.2.4",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "3.5.34",
+    "vue": "3.5.38",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "^11.4.0",
     "vue-router": "^5.0.7",

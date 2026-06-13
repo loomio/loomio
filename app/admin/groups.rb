@@ -240,7 +240,10 @@ ActiveAdmin.register Group, as: 'Group' do
   member_action :handle, method: :post do
     params.permit(:id, :handle)
     group = Group.friendly.find(params[:id])
-    group.update(handle: params[:handle])
+    old_handle = GroupService.update_handle(group: group, handle: params[:handle], actor: current_user)
+    if old_handle.present? && old_handle != group.handle
+      flash[:notice] = "Handle changed from '#{old_handle}' to '#{group.handle}'. Requests to the old URL will redirect."
+    end
     redirect_to admin_group_path(group)
   end
 

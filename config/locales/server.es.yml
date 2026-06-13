@@ -152,6 +152,7 @@ es:
     error:
       handle_must_begin_with_parent_handle: Debe comenzar con %{parent_handle}-
       no_public_trials: Por favor actualizar desde el periodo de prueba para cambiar los ajustes de privacidad del grupo
+      handle_must_be_url_friendly: Utilice únicamente letras minúsculas (a-z), números (0-9) y guiones (-).
     stats:
       group_stats: Estadísticas de grupo
       org_stats: Estadísticas de la organización (incluyendo subgrupos)
@@ -690,3 +691,5 @@ es:
     zh-HK: Chino (Tradicional, Taiwán)
   upload:
     file_too_large: El archivo es demasiado grande. El tamaño máximo de carga es %{limit}.
+  merge_users:
+    not_target_user: Debes iniciar sesión con la cuenta de destino para confirmar la fusión.

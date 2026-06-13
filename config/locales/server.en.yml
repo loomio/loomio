@@ -420,6 +420,7 @@ en:
   group:
     error:
       handle_must_begin_with_parent_handle: Must begin with %{parent_handle}-
+      handle_must_be_url_friendly: Use only lowercase letters (a-z), numbers (0-9) and hyphens (-)
       no_public_trials: Please upgrade from trial to change the group privacy setting
     stats:
       group_stats: Group stats
@@ -545,6 +546,8 @@ en:
         body_html: |
           <p>The merge of your user accounts was successful. You will receive a confirmation email at <strong>%{target_email}</strong> shortly.</p>
           <p>Please <a href="/contact" target="_blank">contact us</a> if you have any further questions.</p>
+  merge_users:
+    not_target_user: You must be signed in as the target account to confirm a merge.
   email:
     content_was_translated_html: This content was translated from %{source_locale}. <a href="%{profile_url}">View settings<a>
     common:

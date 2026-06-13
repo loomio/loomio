@@ -335,6 +335,8 @@ sv:
       helptext: Du kan slå samman kontot under <strong>%{sourceEmail}</strong> med kontot för <strong>%{targetEmail}</strong> . Klicka på Verifiera så skickas ett verifieringsmeddelande till %{targetEmail} för att påbörja processen.
       submit: Verifiera
       flash: Verifieringsmail har skickats!
+      helptext_and_signout: Du kan sammanfoga kontot under <strong>%{sourceEmail}</strong> med det som tillhör <strong>%{targetEmail}</strong> . Klicka på Verifiera så skickas ett verifieringsmeddelande till %{targetEmail} för att starta processen. Du kommer att loggas ut så att du kan logga in som målkontot för att slutföra sammanfogningen.
+      flash_and_signout: Verifieringsmejlet har skickats till %{targetEmail}. Du är nu utloggad så att du kan logga in som målkontot för att slutföra sammanslagningen.
     email_taken: Tyvärr, den e-postadressen är redan kopplad till en annan användare. Tillhör det mejlet dig?
     find_out_more: Få reda på mer.
     placeholder_modal_text: <p>Om du vill slå samman två konton anger du helt enkelt respektive e-postadress (som tillhör det andra kontot) i e-postfältet på din profilsida och följer instruktionerna som visas.</p><p> Behövs hjälp? <a href="/contact" target="_blank">Kontakta oss</a> .
@@ -1378,6 +1380,8 @@ sv:
     members_can_start_discussions_help_v2: Tillåt medlemmar att starta nya diskussioner inom gruppen
     members_can_edit_discussions_v2: Medlemmar kan hantera diskussioner och kommentarer
     members_can_edit_discussions_help_v2: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga diskussioner eller kommentarer i gruppen
+    group_handle_hint_new: Din grupp-URL och e-postadress kommer att vara %{host}/%{handle} och %{handle}{'@'}%{host}
+    handle_changed_hint: Din tidigare URL och e-postadress kommer att omdirigera till din nya adress.
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>

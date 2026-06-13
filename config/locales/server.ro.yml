@@ -153,6 +153,7 @@ ro:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
       no_public_trials: Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului
+      handle_must_be_url_friendly: Folosiți doar litere mici (a-z), cifre (0-9) și cratime (-)
     stats:
       group_stats: Statistici de grup
       org_stats: Statistici ale organizației (inclusiv subgrupuri)
@@ -666,3 +667,5 @@ ro:
     zh-HK: Chineză (tradițională, taiwaneză)
   upload:
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
+  merge_users:
+    not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.

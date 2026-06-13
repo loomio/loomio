@@ -343,6 +343,8 @@ pt_BR:
       helptext: Você pode mesclar a conta inscrita no email <strong>%{sourceEmail}</strong> com a conta <strong>%{targetEmail}</strong>. Clique para Verificar, e um email será enviado para o email %{targetEmail} para iniciar o processo.
       submit: Verificar
       flash: O email de verificação foi enviado!
+      helptext_and_signout: Você pode mesclar a conta em <strong>%{sourceEmail}</strong> com a conta em <strong>%{targetEmail}</strong> . Clique em Verificar e um e-mail de verificação será enviado para %{targetEmail} para iniciar o processo. Você será desconectado para que possa entrar com a conta de destino e concluir a mesclagem.
+      flash_and_signout: E-mail de verificação enviado para %{targetEmail}. Você foi desconectado e agora pode entrar com a conta de destino para concluir a mesclagem.
     email_taken: Desculpe, esse email já está associado a outro usuário. Esse email pertence a você?
     find_out_more: Descubra mais
     placeholder_modal_text: |
@@ -1405,6 +1407,8 @@ pt_BR:
     members_can_start_discussions_help_v2: Permitir que os membros iniciem novas discussões dentro do grupo.
     members_can_edit_discussions_v2: Os membros podem gerenciar discussões e comentários.
     members_can_edit_discussions_help_v2: Permitir que os membros editem, movam, fixem, marquem ou fechem qualquer discussão ou comentário no grupo.
+    group_handle_hint_new: O URL e o e-mail do seu grupo serão %{host}/%{handle} e %{handle}{'@'}%{host}
+    handle_changed_hint: Seu endereço de URL e e-mail anteriores serão redirecionados para seu novo endereço.
   group_export_modal:
     title: Exportar data do grupo
     body: |

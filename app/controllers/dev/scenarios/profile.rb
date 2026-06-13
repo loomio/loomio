@@ -26,4 +26,12 @@ module Dev::Scenarios::Profile
     UserService.reactivate(patrick.id)
     last_email
   end
+
+  def setup_merge_verification_email
+    source_user = patrick
+    target_user = jennifer
+    MergeUsersService.send_merge_verification_email(actor: source_user, target_email: target_user.email)
+    sign_in target_user
+    last_email
+  end
 end

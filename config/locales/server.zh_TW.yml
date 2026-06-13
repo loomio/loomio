@@ -156,6 +156,7 @@ zh_TW:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。
       no_public_trials: 請從試用版升級以變更群組隱私設定
+      handle_must_be_url_friendly: 僅使用小寫字母（a-z）、數字（0-9）和連字號（-）。
     stats:
       group_stats: 群組統計
       org_stats: 組織統計（包含子群組）
@@ -696,3 +697,5 @@ zh_TW:
     zh-HK: 中文（繁體，台灣）
   upload:
     file_too_large: 文件過大。最大上傳大小為 %{limit}。
+  merge_users:
+    not_target_user: 您必須以目標帳戶身分登入才能確認合併。

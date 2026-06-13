@@ -140,4 +140,44 @@ module.exports = {
   //   page.expectText('.header', "Merge successful!")
   // }
 
+  'confirms_merge_accounts_from_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_merge_verification_email')
+    page.loadLastEmail()
+    page.click('.base-mailer__button')
+    page.pause(500)
+    page.expectElement('.btn--accent--raised')
+    page.click('.btn--accent--raised')
+    page.pause(500)
+    page.expectText('.header', 'Merge successful!')
+  },
+
+  'signs_out_after_sending_merge_verification': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.pause(500)
+    page.goTo('profile')
+    page.waitFor('.profile-page__email-input input')
+
+    // Enter an email that belongs to another user and trigger the existence check
+    page.execute("var el = document.querySelector('.profile-page__email-input input'); el.value = 'jennifer@example.com'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('keyup', {bubbles: true}));")
+    page.pause(1000)
+
+    page.expectElement('.profile-page__email-taken')
+    page.click('.email-taken-find-out-more')
+    page.waitFor('.confirm-modal')
+
+    // Confirm dialog should explain the user will be signed out
+    page.expectText('.confirm-modal', 'You will be signed out')
+
+    page.click('.confirm-modal__submit')
+
+    // After sign out + hardReload to /, user should see the auth modal on any authenticated page
+    page.pause(3000)
+    page.goTo('dashboard')
+    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+  }
+
 }

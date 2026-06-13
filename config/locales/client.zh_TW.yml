@@ -336,6 +336,8 @@ zh_TW:
       helptext: 您可以將 <strong>%{sourceEmail}</strong> 的帳號合併到 <strong>%{targetEmail}</strong>。點擊驗證，然後驗證用的電子郵件將會傳送到 %{targetEmail} 以開始流程。
       submit: 驗證
       flash: 驗證用的電子郵件已傳送！
+      helptext_and_signout: 您可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。您將被強制登出，以便使用目標帳號登入完成合併。
+      flash_and_signout: 驗證郵件已發送至 %{targetEmail}。您現在已登出登錄，請登入目標帳戶以完成合併。
     email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |
@@ -1387,6 +1389,8 @@ zh_TW:
     members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
     members_can_edit_discussions_v2: 會員可以管理討論和評論
     members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
+    group_handle_hint_new: 您的群組網址和電子郵件位址將分別為 %{host}/%{handle} 和 %{handle}{'@'}%{host}
+    handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
   group_export_modal:
     title: 匯出群組資料
     body: |

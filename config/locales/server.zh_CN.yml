@@ -420,6 +420,7 @@ zh_CN:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头
       no_public_trials: 请从试用版升级以更改群组隐私设置
+      handle_must_be_url_friendly: 仅使用小写字母（a-z）、数字（0-9）和连字符（-）。
     stats:
       group_stats: 小组统计数据
       org_stats: 组织统计数据（包括子组）
@@ -661,3 +662,5 @@ zh_CN:
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）
   upload:
     file_too_large: 文件过大。最大上传大小为 %{limit}。
+  merge_users:
+    not_target_user: 您必须以目标帐户身份登录才能确认合并。

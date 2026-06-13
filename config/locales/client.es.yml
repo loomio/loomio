@@ -335,6 +335,8 @@ es:
       submit: Verificar
       flash: Email de verificación enviado!
       helptext: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso.
+      helptext_and_signout: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso. Se cerrará tu sesión para que puedas iniciar sesión con la cuenta de destino y completar la fusión.
+      flash_and_signout: Se ha enviado un correo electrónico de verificación a %{targetEmail}. Ahora ha cerrado sesión para que pueda iniciar sesión como la cuenta de destino y completar la fusión.
     email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
     find_out_more: Descubre más
     placeholder_modal_text: |
@@ -1393,6 +1395,8 @@ es:
     members_can_start_discussions_help_v2: Permitir que los miembros inicien nuevas discusiones dentro del grupo
     members_can_edit_discussions_v2: Los miembros pueden gestionar discusiones y comentarios.
     members_can_edit_discussions_help_v2: Permitir a los miembros editar, mover, fijar, etiquetar o cerrar cualquier discusión o comentario en el grupo
+    group_handle_hint_new: La URL y el correo electrónico de tu grupo serán %{host}/%{handle} y %{handle}{'@'}%{host}.
+    handle_changed_hint: Tu URL y dirección de correo electrónico anteriores se redirigirán a tu nueva dirección.
   group_export_modal:
     title: Exportar la data grupal
     body: |

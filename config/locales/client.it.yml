@@ -343,6 +343,8 @@ it:
       helptext: È possibile unire l'account in <strong>%{sourceEmail}</strong> in quello di <strong>%{targetEmail}</strong>. Fare clic su Verifica e verrà inviato un messaggio di posta elettronica di verifica a %{targetEmail} per avviare il processo.
       submit: Verifica
       flash: Email di verifica inviato!
+      helptext_and_signout: Puoi unire l'account di <strong>%{sourceEmail}</strong> con quello di <strong>%{targetEmail}</strong> . Fai clic su Verifica e un'email di verifica verrà inviata a %{targetEmail} per avviare la procedura. Verrai disconnesso per poter accedere con l'account di destinazione e completare l'unione.
+      flash_and_signout: Email di verifica inviata a %{targetEmail}. Hai effettuato il logout, quindi puoi accedere con l'account di destinazione per completare l'unione.
     email_taken: Spiacenti, quell'e-mail è già associata a un altro utente. Quell'email ti appartiene?
     find_out_more: Sappi di più
     placeholder_modal_text: |
@@ -1404,6 +1406,8 @@ it:
     members_can_start_discussions_help_v2: Consenti ai membri di avviare nuove discussioni all'interno del gruppo
     members_can_edit_discussions_v2: I membri possono gestire discussioni e commenti
     members_can_edit_discussions_help_v2: Consenti ai membri di modificare, spostare, aggiungere, taggare o chiudere qualsiasi discussione o commento nel gruppo
+    group_handle_hint_new: L'URL e l'indirizzo email del tuo gruppo saranno %{host}/%{handle} e %{handle}{'@'}%{host}
+    handle_changed_hint: Il tuo precedente URL e indirizzo email verranno reindirizzati al nuovo indirizzo.
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>

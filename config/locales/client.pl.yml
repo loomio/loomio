@@ -335,6 +335,8 @@ pl:
       helptext: Możesz połączyć konto w <strong>%{sourceEmail}</strong> z kontem <strong>%{targetEmail}. Kliknij Zweryfikuj, a e-mail weryfikacyjny zostanie wysłany na %{targetEmail}, aby rozpocząć proces.
       submit: Weryfikuj
       flash: E-mail weryfikacyjny został wysłany!
+      helptext_and_signout: Możesz połączyć konto z adresu <strong>%{sourceEmail}</strong> z kontem <strong>%{targetEmail}</strong> . Kliknij Zweryfikuj, a na adres %{targetEmail} zostanie wysłany e-mail weryfikacyjny, aby rozpocząć proces. Zostaniesz wylogowany, aby móc zalogować się jako konto docelowe i dokończyć scalanie.
+      flash_and_signout: E-mail weryfikacyjny został wysłany na adres %{targetEmail}. Zostałeś wylogowany, więc możesz zalogować się jako konto docelowe, aby dokończyć scalanie.
     email_taken: Przepraszamy, ale ten adres e-mail jest już połączony z innym użytkownikiem. Czy należy on do Ciebie?
     find_out_more: 'Dowiedz się wiecej. '
     placeholder_modal_text: |
@@ -1384,6 +1386,8 @@ pl:
     members_can_start_discussions_help_v2: Zezwól członkom na rozpoczynanie nowych dyskusji w grupie
     members_can_edit_discussions_v2: Członkowie mogą zarządzać dyskusjami i komentarzami
     members_can_edit_discussions_help_v2: Zezwalaj członkom na edytowanie, przenoszenie, przypinanie, oznaczanie lub zamykanie dowolnej dyskusji lub komentarza w grupie
+    group_handle_hint_new: 'Adres URL i adres e-mail Twojej grupy będą następujące: %{host}/%{handle} i %{handle}{''@''}%{host}'
+    handle_changed_hint: Twój poprzedni adres URL i adres e-mail będą przekierowywać na nowy adres.
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
