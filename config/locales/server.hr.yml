@@ -115,7 +115,7 @@ hr:
     404:
       title: Nije pronađeno
     noscript: Loomio zahtijeva javascript za rad! Za nastavak omogućite javascript u svom pregledniku
-    upgrade_browser: Uh oh! Vaš web preglednik je prestar i Loomio možda neće raditi ispravno. <a href="https://browser-update.org/update.html">Nadogradite svoj preglednik.</a>
+    upgrade_browser: Uh oh! tvoj web preglednik je prestar i Loomio možda neće raditi ispravno. <a href="https://browser-update.org/update.html">Nadogradite svoj preglednik.</a>
     return_home: Povratak kući
     not_found: 404 datoteka nije pronađena.
     messages:
@@ -242,18 +242,18 @@ hr:
       subject: Grupni izvoz podataka za %{group_name}
       body_html: <a href="%{url}">Ovdje</a> preuzmite svoje podatke o grupi. Imajte na umu da će ova veza isteći za tjedan dana.
     redacted:
-      subject: Vaš %{site_name} korisnički račun je izbrisan
-      body_html: "<p>Vaš %{site_name} korisnički račun je izbrisan.</p><p> Uklonjeni su svi osobni podaci.</p><p> Ako to niste zatražili, kontaktirajte %{support_email}</p>"
+      subject: tvoj %{site_name} korisnički račun je izbrisan
+      body_html: "<p>tvoj %{site_name} korisnički račun je izbrisan.</p><p> Uklonjeni su svi osobni podaci.</p><p> Ako to niste zatražili, kontaktirajte %{support_email}</p>"
     accounts_merged:
       subject: Vaši %{site_name} korisnički računi su spojeni.
-      body_html: Bok %{name}, Vaša dva loomio računa su spojena u jedan račun. Za pristup loomiju od sada, koristite <strong>%{email}</strong> kada se prijavljujete.
+      body_html: Bok %{name}, tvoja dva loomio računa su spojena u jedan račun. Za pristup loomiju od sada, koristite <strong>%{email}</strong> kada se prijavljujete.
     merge_verification:
       subject: Potvrdite svoju %{site_name} adresu e-pošte za spajanje
       body_html: "<p>Bok %{name},</p><p> Upućen je zahtjev za spajanje vašeg korisničkog računa pod adresom <strong>%{source_email}</strong> s računom koji pripada ovoj adresi, <strong>%{target_email}</strong> .</p><p> Nakon završetka ovog procesa, više se nećete moći prijaviti s <strong>%{source_email}</strong> , već samo s <strong>%{target_email}</strong> .</p><p> Molimo potvrdite da je to ono što želite učiniti.</p>"
       verify: Potvrdite e-poštu i nastavite
       confirm_page:
         confirm: Potvrdite spajanje
-        body_html: "<p>Molimo potvrdite da želite spojiti račun pod <strong>%{source_email}</strong> u račun pod <strong>%{target_email}</strong> .</p><p> Vaš račun pod <strong>%{source_email}</strong> bit će izbrisan i nakon toga ćete se moći prijaviti samo preko <strong>%{target_email}</strong> .</p><p> Ova promjena je nepovratna.</p>"
+        body_html: "<p>Molimo potvrdite da želite spojiti račun pod <strong>%{source_email}</strong> u račun pod <strong>%{target_email}</strong> .</p><p> tvoj račun pod <strong>%{source_email}</strong> bit će izbrisan i nakon toga ćete se moći prijaviti samo preko <strong>%{target_email}</strong> .</p><p> Ova promjena je nepovratna.</p>"
         merge: Spajanje računa
       complete_page:
         title: Spajanje uspješno!
@@ -309,10 +309,10 @@ hr:
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
     group_membership_approved:
-      intro: Vaš zahtjev za pristup grupi %{group_name} je odobren.
-      intro_html: Vaš zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.
+      intro: tvoj zahtjev za pristup grupi %{group_name} je odobren.
+      intro_html: tvoj zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.
       link_help: 'Kliknite vezu ispod da se pridružite %{group_name} i započnete:'
-      subject: Vaš zahtjev za pridruživanje %{group_name} je odobren
+      subject: tvoj zahtjev za pridruživanje %{group_name} je odobren
       join_group: Pridružite se grupi
     membership_request:
       intro_html: je zatražio pristup jednoj od vaših grupa.
@@ -367,11 +367,11 @@ hr:
   group_mailer:
     resend: 'PODSJETNIK: %{member} čeka da se pridružite %{group_name}'
     destroy_warning:
-      subject: Vaša Loomio grupa je zakazana za brisanje.
-      body: 'Vaša Loomio grupa: "%{group}" zakazana je za brisanje od strane %{deletor}. Ako ne želite da se vaša grupa izbriše, odgovorite na ovu e-poruku. Ako ste sigurni da želite izbrisati grupu, ne morate ništa učiniti. Hvala vam.'
+      subject: tvoja Loomio grupa je zakazana za brisanje.
+      body: 'tvoja Loomio grupa: "%{group}" zakazana je za brisanje od strane %{deletor}. Ako ne želite da se vaša grupa izbriše, odgovorite na ovu e-poruku. Ako ste sigurni da želite izbrisati grupu, ne morate ništa učiniti. Hvala vam.'
     trial_expired:
-      subject: Vaša Loomio grupa bit će izbrisana zbog neaktivnosti.
-      body: Vaša Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
+      subject: tvoja Loomio grupa bit će izbrisana zbog neaktivnosti.
+      body: tvoja Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
   poll_mailer:
     common:
       why_send_this: Primili ste ovu e-poruku jer %{reason}
@@ -550,7 +550,7 @@ hr:
       process_introduction_v2: <p><strong>Rezultat</strong> vam omogućuje mjerenje razine podrške grupe za svaku opciju. Sudionici ocjenjuju svaku opciju dodjeljivanjem rezultata na kliznoj skali, tako da možete vidjeti ne samo što ljudi preferiraju, već i koliko.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Pročitajte više o anketi Score</a> .</p>
     dot_vote:
       process_subtitle: Dodijelite proračun bodova kako biste otkrili prioritete
-      process_introduction: <p>Točkasto glasanje korisno je za grupe koje pokušavaju dodijeliti ograničene resurse većem broju opcija. Nadilazi jednostavnu anketu pomažući sudionicima da shvate da postoji ograničenje pri odabiru opcija.</p><p> Sudionici dobivaju određeni broj točaka. Vi odlučujete koliko.</p><p> Stavljaju točke pored ponuđenih opcija koje im se sviđaju. Sudionici mogu staviti sve svoje točke na jednu opciju ili ih rasporediti na više opcija.</p><p> Kako sudionici dodjeljuju točke, mogu premašiti ograničenje proračuna za točke te se stoga potiče da pažljivo razmotre kako troše svoje točke.</p><p> Opcije s najviše točaka "pobjeđuju". Tablica rezultata pruža dodatne podatke koji će vam pomoći u analizi rezultata.</p><ul><li><p> % bodova</p></li><li><p> Bodovi</p></li><li><p> Srednja vrijednost</p></li><li><p> Birači</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Pročitajte više o Dot voteu</a> .</p>
+      process_introduction: <p>Točkasto glasanje korisno je za grupe koje pokušavaju dodijeliti ograničene resurse većem broju opcija. Nadilazi jednostavnu anketu pomažući sudionicima da shvate da postoji ograničenje pri odabiru opcija.</p><p> Sudionici dobivaju određeni broj točaka. ti odlučujete koliko.</p><p> Stavljaju točke pored ponuđenih opcija koje im se sviđaju. Sudionici mogu staviti sve svoje točke na jednu opciju ili ih rasporediti na više opcija.</p><p> Kako sudionici dodjeljuju točke, mogu premašiti ograničenje proračuna za točke te se stoga potiče da pažljivo razmotre kako troše svoje točke.</p><p> Opcije s najviše točaka "pobjeđuju". Tablica rezultata pruža dodatne podatke koji će vam pomoći u analizi rezultata.</p><ul><li><p> % bodova</p></li><li><p> Bodovi</p></li><li><p> Srednja vrijednost</p></li><li><p> Birači</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Pročitajte više o Dot voteu</a> .</p>
       title: Odabir tema za našu konferenciju
       details: <h3 id="what-is-this-poll-about"><strong>O čemu se radi u ovoj anketi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je ovo važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> U ovoj anketi imate proračun od 8 točaka koje možete dodijeliti opcijama koje preferirate. Možete staviti sve točke na jednu opciju ili ih rasporediti.</p>
       process_subtitle_v2: Otkrijte prioritete kada postoje kompromisi
@@ -607,7 +607,7 @@ hr:
       details: <h3 id="what-is-this-election-about"><strong>O čemu se radi na ovim izborima?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Koliko se mjesta popunjava?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Tko su kandidati?</strong></h3><p></p><p> Glasajte povlačenjem kandidata u željeni redoslijed. Prvi rang je vaš najpoželjniji kandidat. Možete rangirati onoliko kandidata koliko želite.</p>
   forward_mailer:
     bounce:
-      subject: Vaša poruka za Loomio nije dostavljena
+      subject: tvoja poruka za Loomio nije dostavljena
       reason: To se dogodilo jer je vaš klijent e-pošte adresu poslao na adresu "Od", a ne na navedenu adresu "Odgovori".
       recommendation: Molimo vas da otvorite Loomio u svom pregledniku i izravno objavite svoju poruku.
   locale_names:

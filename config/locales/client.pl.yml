@@ -16,9 +16,9 @@ pl:
     taken_first_step: Zrobiłeś pierwszy krok w kierunku wspólnego podejmowania decyzji z Loomio.
     account_created_for_you: Stworzyliśmy konto użytkownika dla %{email} i grupę na Loomio.
     please_sign_in_to_continue: Zaloguj się, aby kontynuować.
-    please_complete_this_field: Proszę wypełnić to pole
-    please_enter_a_valid_email_address: Proszę wpisać aktualny adres e-mail
-    please_accept_the_terms: Proszę zaakceptować warunki
+    please_complete_this_field: Wypełnij to pole
+    please_enter_a_valid_email_address: Wpisz aktualny adres e-mail
+    please_accept_the_terms: Zaakceptuj warunki
     how_did_you_hear_about_loomio: Jak dowiedziałeś się o Loomio?
     newsletter_intro: Chcesz usłyszeć o nowych funkcjach, wywiadach z klientami, studiach przypadków i ogłoszeniach zespołu Loomio?
   tasks:
@@ -177,7 +177,7 @@ pl:
     loomio_help: Loomio pomóż
     visit_loomio_help: Odwiedź Loomio pomocy
     help_and_guides: Pomoc i przewodniki
-    please_wait: Proszę czekać
+    please_wait: Czekaj
     optional: "(Opcjonalny)"
     version: Wersja
     none: Nic
@@ -203,7 +203,7 @@ pl:
     confirm_discard_changes: Odrzucić zmiany?
     something_went_wrong: O o! Coś poszło nie tak
     check_for_errors_and_try_again: Sprawdź formularz pod kątem błędów i spróbuj ponownie
-    please_try_again: Proszę spróbuj ponownie
+    please_try_again: Spróbuj ponownie
     time:
       am: przed południem
       pm: po południu
@@ -931,7 +931,7 @@ pl:
       who_to_invite: Kogo chcesz zaprosić?
       invitation_message_placeholder: Wiadomość, która będzie dołączona do wiadomości e-mail z zaproszeniem. (opcjonalne)
       invitation_message_label: Wiadomość
-      invitation_message_default: Założyłem tę grupę Loomio, aby pomóc nam wspólnie podejmować decyzje. Proszę przyjąć moje zaproszenie. Aby dołączyć, wystarczy minuta. Dziękuję.
+      invitation_message_default: Założyłem tę grupę Loomio, aby pomóc nam wspólnie podejmować decyzje. Przyjmij moje zaproszenie. Aby dołączyć, wystarczy minuta. Dziękuję.
       group_announced:
         title: Zaproś do grupy
         helptext: Kogo chcesz zaprosić do grupy?
@@ -1827,7 +1827,7 @@ pl:
   global:
     messages:
       reload: Załaduj ponownie
-      app_update: Nowa wersja Loomio została wydana. Proszę odświeżyć.
+      app_update: Nowa wersja Loomio została wydana. Odśwież.
   decision_tools_card:
     choose_type: Wybierz typ ankiety
     title: Ułatwiaj
@@ -1925,7 +1925,7 @@ pl:
     have_your_say: Wypowiedz się
     your_response: Twoja odpowiedź
     change_your_response: Edytuj odpowiedź
-    please_vote: Proszę Głosuj
+    please_vote: Głosuj
     reason: Uzasadnienie
     response: Odpowiedź
     reason_placeholder: Wyjaśnij krótko dlaczego głosujesz w ten sposób, a następnie kliknij "Zatwiedź głos"
@@ -1987,7 +1987,7 @@ pl:
     start_a_poll: Rozpocznij ankietę
     export_blt: Karty do głosowania eksportowego (BLT)
     status: Status
-    your_vote_is_requested: Proszę o Twój głos
+    your_vote_is_requested: Twój głos jest potrzebny
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2258,7 +2258,7 @@ pl:
     new_time_slot: Nowy przedział czasowy
     closing_hour: Godzina zamknięcia
   poll_proposal_vote_form:
-    default_reason_placeholder: Wyjaśnij proszę swój punkt widzenia
+    default_reason_placeholder: Wyjaśnij swój punkt widzenia
     abstain_reason_placeholder: Powiadom ludzi, dlaczego rezygnujesz z tej decyzji
     agree_reason_placeholder: Co podoba Ci się w tej propozycji i jakie korzyści będzie miała z niej grupa?
     disagree_reason_placeholder: Jak można ulepszyć tę propozycję, abyś mógł ją poprzeć?
@@ -2655,8 +2655,8 @@ pl:
     hide_advanced_settings: Ukryj ustawienia zaawansowane
     choose_at_least: Wybierz co najmniej
     choose_at_most: Wybierz maksymalnie
-    please_review_the_form: Proszę sprawdzić formularz
-    option_added_please_add_details: Dodano opcję! Proszę o dodanie szczegółów, żeby ludzie wiedzieli, co to oznacza.
+    please_review_the_form: Sprawdź formularz
+    option_added_please_add_details: Dodano opcję! Dodaj szczegóły, żeby ludzie wiedzieli, co to oznacza.
     default_duration_in_days: Domyślny czas trwania w dniach
     how_many_options_can_a_voter_choose: Ile opcji może wybrać wyborca?
     minimum_choices: Minimalny wybór
@@ -2716,7 +2716,7 @@ pl:
     stance_reason_required: Wymagany
     stance_reason_optional: Fakultatywny
     stance_reason_disabled: Wyłączony
-    stance_reason_is_required: Proszę podać powód oddania głosu
+    stance_reason_is_required: Podaj powód oddania głosu
     limit_reason_length: Ogranicz powód do maksymalnie 500 znaków
     save_poll: Zapisz ankietę
     start_poll_type: Rozpocznij %{poll_type}

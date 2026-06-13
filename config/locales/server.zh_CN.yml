@@ -60,14 +60,14 @@ zh_CN:
       title: 我开始慢慢掌握要领了。
       process_name: 实践建议
       process_subtitle: 通过尝试撰写一份提案来了解提案是如何运作的
-      process_introduction: "<p>使用此模板可以帮助您的团队熟悉 Loomio 上的提案功能。这是一种安全简便的方式，让大家可以尝试投票并了解所有功能如何运作。</p>"
+      process_introduction: "<p>使用此模板可以帮助你的团队熟悉 Loomio 上的提案功能。这是一种安全简便的方式，让大家可以尝试投票并了解所有功能如何运作。</p>"
       details: "<p>这是一次演练，目的是让大家熟悉 Loomio 上的提案流程。</p><p>请投票，如果愿意，可以留下理由说明。</p><p>没有压力，没有实际后果。这只是探索求婚流程的一种方式！</p>"
-      outcome_statement: "<p>感谢您参与本次实践提案！\U0001F389</p><p>这只是让大家了解Loomio投票和评论机制的机会。这里并没有做出任何实际决定——但希望这能帮助大家熟悉整个流程。</p>"
+      outcome_statement: "<p>感谢你参与本次实践提案！\U0001F389</p><p>这只是让大家了解Loomio投票和评论机制的机会。这里并没有做出任何实际决定——但希望这能帮助大家熟悉整个流程。</p>"
       title_v2: 菠萝应该放在披萨上
       process_subtitle_v2: 尝试一下提案，这样你就能了解投票是如何进行的。
       process_introduction_v2: "<p>让你的团队以一种有趣的方式体验 Loomio 的投票功能。选择一个轻松有趣的问题，让大家投票并留下理由——无需做出任何实际决定，只是练习而已。</p>"
       details_v2: "<p>这是一个练习性提案——这里还没有真正的决定。</p><p>尝试投票并留下理由，看看提案在 Loomio 上是如何运作的。</p>"
-      outcome_statement_v2: "<p>感谢您尝试提案！现在您了解了 Loomio 上的投票机制。</p>"
+      outcome_statement_v2: "<p>感谢你尝试提案！现在你了解了 Loomio 上的投票机制。</p>"
       agree_meaning: 我同意这一点。
       agree_prompt: 你为什么同意？
       abstain_meaning: 我对此没有意见。
@@ -76,92 +76,92 @@ zh_CN:
       disagree_prompt: 你为什么不同意？
     proposal:
       process_subtitle: 提出一项决定建议
-      process_introduction: <p>经典的 Loomio 提案功能可帮助您做出决定，将讨论转化为明确的结果。</p><p>提出行动方案，并邀请人们投票表示同意、弃权或不同意。</p><p>人们投票时可以说明自己投票的理由。你可以看到其他人对此事的立场以及原因。</p><p>通过这种方式，你可以利用提案来促使人们做出回应，发现新的信息，并建立共同的理解，从而帮助你的团队做出更好、更明智的决定。</p><p>提案及其相关讨论本身就会记录下决策是如何产生的。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>阅读更多关于在简单决策过程中使用经典 Loomio 提案的信息</u></a>。</p>
+      process_introduction: <p>经典的 Loomio 提案功能可帮助你做出决定，将讨论转化为明确的结果。</p><p>提出行动方案，并邀请人们投票表示同意、弃权或不同意。</p><p>人们投票时可以说明自己投票的理由。你可以看到其他人对此事的立场以及原因。</p><p>通过这种方式，你可以利用提案来促使人们做出回应，发现新的信息，并建立共同的理解，从而帮助你的团队做出更好、更明智的决定。</p><p>提案及其相关讨论本身就会记录下决策是如何产生的。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>阅读更多关于在简单决策过程中使用经典 Loomio 提案的信息</u></a>。</p>
       title: 批准新的品牌概念
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果您不同意，请说明原因以及需要做出哪些改变才能让您同意。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果你不同意，请说明原因以及需要做出哪些改变才能让你同意。</p>
       agree: 同意
       agree_meaning: 我支持这项提议。
       agree_prompt: 你觉得这个方案有哪些优点？它将如何使团队受益？
       abstain: 弃权
       disagree: 不同意
       disagree_meaning: 这项提案需要修改一些内容，我才能支持它。
-      disagree_prompt: 如何改进这项提案才能让您支持它？
+      disagree_prompt: 如何改进这项提案才能让你支持它？
       abstain_meaning: 选择不参与投票，或无法参与投票。
       abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     advice:
       process_subtitle: 就你需要做的决定寻求建议。
-      process_introduction: <p>在需要做出决定时，向受影响的人或有专业知识的人寻求建议，以便为你的组织做出更好的决定。</p><ul><li><p>建议可以帮助您为您的组织做出更好的决策。</p></li><li><p>促进人际关系、学习机会和多元化意见的形成。</p></li><li><p>激发主动性和创造力，让工作更有趣。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>了解更多关于咨询流程的信息</u></a>。</p>
+      process_introduction: <p>在需要做出决定时，向受影响的人或有专业知识的人寻求建议，以便为你的组织做出更好的决定。</p><ul><li><p>建议可以帮助你为你的组织做出更好的决策。</p></li><li><p>促进人际关系、学习机会和多元化意见的形成。</p></li><li><p>激发主动性和创造力，让工作更有趣。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>了解更多关于咨询流程的信息</u></a>。</p>
       title: 帮高志买一台新电脑
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>你向别人寻求哪些建议来帮助你做出正确的决定？</strong></h3><p></p><p>我希望听取您的意见，以帮助我为我们组织做出正确的决定。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>你向别人寻求哪些建议来帮助你做出正确的决定？</strong></h3><p></p><p>我希望听取你的意见，以帮助我为我们组织做出正确的决定。</p>
       agree: 同意
       agree_meaning: 我已就此决定提出建议。
       agree_prompt: 总结你的建议或发表有用的评论
       abstain: 弃权
       abstain_meaning: 我没有什么建议可以提供。
-      abstain_prompt: 您有什么建议或意见吗？
+      abstain_prompt: 你有什么建议或意见吗？
       outcome_statement: "<p>感谢参与我的求助环节！</p>"
     consent:
       process_subtitle: 做出一个“可以安全尝试”的决定，且不会遭到反对。
       process_introduction: <p>对于需要做出的决定，如果对方没有提出任何实质性的反对意见，那么就应该寻求对方的同意，这样才能为你的组织快速做出一个“可以安全尝试”的决定。</p><ul><li><p>力求做出“足够好”的决定</p></li><li><p>广泛听取各方意见，制定切实可行的方案。</p></li><li><p>询问是否有人有合理的反对意见。</p></li><li><p>修改提案以消除反对意见</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">阅读更多关于同意流程的信息</a>。</p>
       title: 聘用 Chloe 担任设计职位
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>这份提案中，你对人们提出了什么要求？</strong></h3><p></p><p>如果您有异议，请说明理由并提出使该方案更安全的修改建议。</p><p>请记住，我们正在寻求对“足够好”且“可以安全尝试”的决定的同意，以便我们能够为我们的组织做出一个好的决定。</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>这份提案中，你对人们提出了什么要求？</strong></h3><p></p><p>如果你有异议，请说明理由并提出使该方案更安全的修改建议。</p><p>请记住，我们正在寻求对“足够好”且“可以安全尝试”的决定的同意，以便我们能够为我们的组织做出一个好的决定。</p>
       consent: 同意
       consent_meaning: 该方案可以尝试，安全性可行。
-      consent_prompt: 您觉得这个方案有哪些优点？它将如何使组织受益？
+      consent_prompt: 你觉得这个方案有哪些优点？它将如何使组织受益？
       objection: 异议
       objection_meaning: 我对此有合理的反对意见，并且认为该提案会造成损害。
-      objection_prompt: 为了使该提案“可以安全尝试”，从而让您能够支持它，需要对它做出哪些修改？
-      outcome_statement: "<p>感谢您参与知情同意流程。</p>"
+      objection_prompt: 为了使该提案“可以安全尝试”，从而让你能够支持它，需要对它做出哪些修改？
+      outcome_statement: "<p>感谢你参与知情同意流程。</p>"
       process_subtitle_v2: 除非有人提出异议，否则继续进行。
       process_introduction_v2: "<p><strong>同意原则</strong>关注的是提案是否可行，而非是否完美。只要没有人提出实质性的反对意见，提案就能通过。如果有人反对，小组会努力解决问题——而且由于参与者可以随着提案的演变而改变投票，反对意见就成为改进的工具，而不是阻碍。</p>"
-      details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>这份提案中，你对人们提出了什么要求？</strong></h3><p></p><p>我们并不追求完美——如果方案足够好且安全可行，请同意。如果您有异议，请说明需要修改哪些地方才能使其可行。</p>"
+      details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>这份提案中，你对人们提出了什么要求？</strong></h3><p></p><p>我们并不追求完美——如果方案足够好且安全可行，请同意。如果你有异议，请说明需要修改哪些地方才能使其可行。</p>"
     consensus:
       process_subtitle: 与所有相关人员达成集体协议
       process_introduction: <p>就你需要做出的决定达成共识，从而达成一项能够满足所有参与者的需求和关切的协议。</p><ul><li><p>共同讨论并制定提案</p></li><li><p>包容并尊重所有参与者</p></li><li><p>寻求大多数人的同意</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">阅读更多关于共识流程的信息</a>。</p>
       title: 批准新的品牌概念
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果您不同意，请说明原因以及需要做出哪些改变才能让您同意。</p>
-      outcome_statement: "<p>感谢您参与共识过程。</p>"
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>你需要做出什么决定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>该提案要想获得通过，需要大多数成员投票赞成。</p><p>如果你不同意，请说明原因以及需要做出哪些改变才能让你同意。</p>
+      outcome_statement: "<p>感谢你参与共识过程。</p>"
       agree: 同意
       agree_meaning: 我支持这项提议。
-      agree_prompt: 您觉得这个方案有哪些优点？它将如何使组织受益？
+      agree_prompt: 你觉得这个方案有哪些优点？它将如何使组织受益？
       abstain: 弃权
       abstain_meaning: 这个决定对我没有影响，我对小组的任何决定都表示理解和支持。
       disagree: 不同意
       disagree_meaning: 这份提案需要修改一些内容，我才能支持它。
-      disagree_prompt: 如何改进这项提案才能让您支持它？
+      disagree_prompt: 如何改进这项提案才能让你支持它？
       block: 堵塞
       block_meaning: 我反对这项提案，认为它不应该进行。
-      block_prompt: 请解释您反对这项提议的原因以及它为何不应实施。
-      details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请分享您的立场以及原因。如果您不同意，请解释需要做出哪些改变才能让您支持。</p>"
-      process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极同意的决策。参与者共同努力，了解彼此的需求，并不断完善提案，直至获得全体成员的支持。由于人们可以在讨论过程中改变投票，因此该过程鼓励真诚的对话，而非一蹴而就的决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>“阻止”</strong>选项。“阻止”功能并非适用于所有群体——它可能引发争议或被滥用。如果您在决策过程中不使用“阻止”功能，我们建议您编辑模板将其移除。</p>"
+      block_prompt: 请解释你反对这项提议的原因以及它为何不应实施。
+      details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请分享你的立场以及原因。如果你不同意，请解释需要做出哪些改变才能让你支持。</p>"
+      process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极同意的决策。参与者共同努力，了解彼此的需求，并不断完善提案，直至获得全体成员的支持。由于人们可以在讨论过程中改变投票，因此该过程鼓励真诚的对话，而非一蹴而就的决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>“阻止”</strong>选项。“阻止”功能并非适用于所有群体——它可能引发争议或被滥用。如果你在决策过程中不使用“阻止”功能，我们建议你编辑模板将其移除。</p>"
       abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     question_round:
       process_subtitle: 邀请提问者提出澄清问题，以帮助人们理解提案。
-      process_introduction: <p>提问环节是让人们有机会就提案提出澄清性问题，以便每个人在发表意见之前都能理解提案。</p><p> Loomio 问答环节是一种特殊的活动形式，不设投票选项。参与者可以在您设定的时长内提问。</p><p>问答环节通常用作知情同意流程中的一个步骤。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">阅读更多关于同意流程的信息</a>。</p>
-      title: 关于健康与安全政策，您有什么问题？
-      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>这是一个提问环节，您可以提出任何疑问以作澄清。</p><p>为了理解这份提案，你需要了解哪些信息？</p><p>请在问答环节结束前回复。</p>
+      process_introduction: <p>提问环节是让人们有机会就提案提出澄清性问题，以便每个人在发表意见之前都能理解提案。</p><p> Loomio 问答环节是一种特殊的活动形式，不设投票选项。参与者可以在你设定的时长内提问。</p><p>问答环节通常用作知情同意流程中的一个步骤。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">阅读更多关于同意流程的信息</a>。</p>
+      title: 关于健康与安全政策，你有什么问题？
+      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>这是一个提问环节，你可以提出任何疑问以作澄清。</p><p>为了理解这份提案，你需要了解哪些信息？</p><p>请在问答环节结束前回复。</p>
       reason_prompt: 为了理解这份提案，你需要了解哪些信息？
-      outcome_statement: "<p>感谢您在本轮提问中提交问题。</p>"
+      outcome_statement: "<p>感谢你在本轮提问中提交问题。</p>"
     sense_check:
       process_subtitle: 请提出反馈意见、问题和疑虑。
       process_introduction: <p>方案审核是获取反馈、提出问题和发现疑虑的好方法。它有助于在做出决定前澄清和改进方案。</p><p>意见征询环节旨在让人们了解提案正在形成，并鼓励他们积极参与。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入最终决策，做出更明智的决定。</p><p>在同意流程中使用“感觉检查”提案，以邀请各方反馈和评论来改进提案；在共识流程中使用“感觉检查”提案，以测试是否达成共识。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>阅读更多关于在简单决策过程中使用感知检查的内容</u></a><span>。</span></p>
-      title: 您对新的品牌理念有何看法？
-      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>您对这项提议有何看法？请留言或提出改进建议。</p><p>本次意见征询旨在收集您的意见和建议，以帮助我们做出更好的决策。</p>
-      outcome_statement: "<p>感谢您参与此次常识检验。</p>"
+      title: 你对新的品牌理念有何看法？
+      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>你对这项提议有何看法？请留言或提出改进建议。</p><p>本次意见征询旨在收集你的意见和建议，以帮助我们做出更好的决策。</p>
+      outcome_statement: "<p>感谢你参与此次常识检验。</p>"
       not_sure: 没有把握
       not_sure_meaning: 我有问题或需要更多时间
       not_sure_prompt: 哪些部分你不明白？这个问题该如何解决？
       looks_good: 看起来不错
       looks_good_meaning: 我对事情的发展方向很满意。
-      looks_good_prompt: 您对如何改进该方案有任何意见或建议吗？
+      looks_good_prompt: 你对如何改进该方案有任何意见或建议吗？
       abstain: 弃权
       abstain_meaning: 我没有什么要补充的，对这项工作也没有任何异议。
-      abstain_prompt: 弃权即表示同意该提案的方向。您弃权的原因是什么？
+      abstain_prompt: 弃权即表示同意该提案的方向。你弃权的原因是什么？
       concerned: 担心的
       concerned_meaning: 这件事可能需要做出一些改变我才能同意。
-      concerned_prompt: 您担心的是什么？该如何解决？
+      concerned_prompt: 你担心的是什么？该如何解决？
       process_subtitle_v2: 看看你是否走在正确的道路上
-      process_introduction_v2: "<p><strong>初步评估</strong>能帮助您在做出决定前尽早获得反馈。参与者会指出情况是否良好或提出问题，以便您在正式提案前调整方向。这并非最终决策，而是一次初步评估。</p>"
+      process_introduction_v2: "<p><strong>初步评估</strong>能帮助你在做出决定前尽早获得反馈。参与者会指出情况是否良好或提出问题，以便你在正式提案前调整方向。这并非最终决策，而是一次初步评估。</p>"
       details_v2: "<h3><strong>你的提议是什么？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请说明这看起来是好是坏，还可以更好，还是需要重新考虑——并分享你的理由。</p>"
       looks_good_meaning_v2: 我对这个方向很满意。
       looks_good_prompt_v2: 你喜欢它哪一点？
@@ -172,10 +172,10 @@ zh_CN:
       needs_a_rethink_prompt: 你担心的是什么？
       needs_a_rethink_meaning: 我认为这种做法是错误的。
     gradients_of_agreement:
-      process_subtitle: 请用 8 分制表达您对该提案的支持程度
+      process_subtitle: 请用 8 分制表达你对该提案的支持程度
       process_introduction: "<p>同意程度梯度提案允许小组成员以等级的方式表达他们对提案的支持，提供的表达支持的方式比“同意”和“不同意”更多。</p><p>使用“同意梯度”作为初步阶段，在达成正式协议之前测试对提案的支持度。</p><p>意见分歧程度的差异让人们知道提案正在形成，并鼓励他们参与讨论。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入决策，做出更明智的决定。</p>"
       title: 你觉得新的价值观声明怎么样？
-      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>您觉得这个方案怎么样？请在下方评分标准中表达您的支持，并留下评论或改进建议。</p><p>这项“协议梯度”提案旨在测试公众对该提案的支持度，并为您提供在达成正式协议之前提出意见的机会。</p>
+      details: <h3 id="what-are-you-proposing"><strong>你的提议是什么？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>你觉得这个方案怎么样？请在下方评分标准中表达你的支持，并留下评论或改进建议。</p><p>这项“协议梯度”提案旨在测试公众对该提案的支持度，并为你提供在达成正式协议之前提出意见的机会。</p>
       whole_hearted_endorsement: 全心全意的认可
       whole_hearted_endorsement_meaning: 我非常喜欢！
       whole_hearted_endorsement_prompt: 你喜欢它哪一点？
@@ -184,15 +184,15 @@ zh_CN:
       agreement_with_minor_contention_prompt: 你担心的是什么？
       support_with_reservations: 预订协助
       support_with_reservations_meaning: 我可以接受。
-      support_with_reservations_prompt: 您有什么顾虑？
+      support_with_reservations_prompt: 你有什么顾虑？
       abstain_meaning: 这个问题对我没有影响。
-      abstain_prompt: 您还有什么要补充的吗？
+      abstain_prompt: 你还有什么要补充的吗？
       more_discussion_needed: 还需要更多讨论。
       more_discussion_needed_meaning: 我对这些问题的理解还不够透彻。
       more_discussion_needed_prompt: 你哪里不明白？
       don_t_like_but_will_support: 不喜欢但会支持
       don_t_like_but_will_support_meaning: 虽然不太理想，但我不想拖累团队。
-      don_t_like_but_will_support_prompt: 您希望看到哪些方面的改进？
+      don_t_like_but_will_support_prompt: 你希望看到哪些方面的改进？
       serious_disagreement: 严重分歧
       serious_disagreement_meaning: 我不赞成这样做——别指望我。
       serious_disagreement_prompt: 你不同意什么？
@@ -203,22 +203,22 @@ zh_CN:
       process_subtitle: 找到最受欢迎的选项
       process_introduction: <p>通过单选或多选投票，找出最受欢迎的选项。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">阅读更多关于简易投票的信息</a>。</p>
       title: 我们的战略方向应该重点放在哪里？
-      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择您喜欢的选项。</p>
-      process_introduction_v2: <p><strong>“选择”功能</strong>可帮助您找到最受欢迎的选项。参与者从列表中选择——您可以设置他们可以选择一个或多个选项。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">阅读更多关于“选择”的信息</a>。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择你喜欢的选项。</p>
+      process_introduction_v2: <p><strong>“选择”功能</strong>可帮助你找到最受欢迎的选项。参与者从列表中选择——你可以设置他们可以选择一个或多个选项。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">阅读更多关于“选择”的信息</a>。</p>
     score_poll:
       process_subtitle: 衡量每个选项的支持程度
-      process_introduction: <p>当您想调查人们对每个选项的愿望、偏好或兴趣时，请使用评分投票。</p><p><span>参与者需要评估每个选项，并通过沿刻度移动滑块来分配分数。</span></p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">阅读更多关于评分投票的信息</a>。</p>
+      process_introduction: <p>当你想调查人们对每个选项的愿望、偏好或兴趣时，请使用评分投票。</p><p><span>参与者需要评估每个选项，并通过沿刻度移动滑块来分配分数。</span></p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">阅读更多关于评分投票的信息</a>。</p>
       title: 评估我们组织如何做出决策
-      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择您喜欢的选项。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>选择你喜欢的选项。</p>
       process_subtitle_v2: 衡量每项选择的支持程度
-      process_introduction_v2: <p><strong>评分功能</strong>可以衡量群体对每个选项的支持程度。参与者通过滑动标尺为每个选项打分来评估，因此您不仅可以了解人们的偏好，还可以了解他们的偏好程度。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">阅读更多关于评分投票的信息</a>。</p>
+      process_introduction_v2: <p><strong>评分功能</strong>可以衡量群体对每个选项的支持程度。参与者通过滑动标尺为每个选项打分来评估，因此你不仅可以了解人们的偏好，还可以了解他们的偏好程度。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">阅读更多关于评分投票的信息</a>。</p>
     dot_vote:
       process_subtitle: 分配一定数量的积分以揭示优先事项
       process_introduction: <p>点投票法可以将有限的资源分配给多个选项。它超越了简单的投票表决，帮助参与者意识到选择选项时存在资源限制。</p><p>每位参与者都会获得一定数量的积分预算供其分配。</p><p>参与者可以将所有积分分配给一个选项，也可以将积分分散到多个选项中。</p><p>参赛者不得超出预算，因此必须仔细考虑如何分配积分。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">阅读更多关于点投票的信息</a>。</p>
       title: 选择会议主题
-      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>本次投票中，您拥有一定数量的积分，可以分配给您偏好的选项。您可以将所有积分分配给一个选项，也可以分散分配。</p>
+      details: <h3 id="what-is-this-poll-about"><strong>这个投票是关于什么的？</strong></h3><p></p><h3 id="why-is-this-important"><strong>为什么这很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人们做什么？</strong></h3><p></p><p>本次投票中，你拥有一定数量的积分，可以分配给你偏好的选项。你可以将所有积分分配给一个选项，也可以分散分配。</p>
       process_subtitle_v2: 当需要权衡取舍时，要明确优先事项。
-      process_introduction_v2: <p><strong>“分配”功能</strong>可以帮助您了解团队在权衡取舍时的优先事项。每位参与者都会获得一定数量的点数，用于分配到各个选项上——他们可以全力投入一个选项，也可以将点数分散到多个选项中。由于点数有限，因此每一分的花费都真实地反映了优先级。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">阅读更多关于分配的信息</a>。</p>
+      process_introduction_v2: <p><strong>“分配”功能</strong>可以帮助你了解团队在权衡取舍时的优先事项。每位参与者都会获得一定数量的点数，用于分配到各个选项上——他们可以全力投入一个选项，也可以将点数分散到多个选项中。由于点数有限，因此每一分的花费都真实地反映了优先级。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">阅读更多关于分配的信息</a>。</p>
     ranked_choice:
       process_subtitle: 了解选项的优先顺序
       process_introduction: <p>当选项众多或举行选举时，排序复选制非常有用。</p><p>选民通过拖放选项来按偏好顺序排列。</p><p>结果按排名顺序显示。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">阅读更多关于排名选择的信息</a>。</p>
@@ -228,17 +228,17 @@ zh_CN:
       process_introduction_v2: <p><strong>排名</strong>显示了小组的偏好顺序。参与者通过拖放选项来按偏好程度从高到低排序，结果显示了总体排名。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">了解更多关于排名的信息</a>。</p>
     time_poll:
       process_subtitle: 找到人们何时有空见面
-      process_introduction: <p>快速找到最适合您会议或活动的时间。添加标题、详细信息以及您所在时区的日期/时间选项。参会者将看到根据他们所在时区自动调整的时间。</p><p>当您的时间投票结束后，请设置最佳时间结果以及任何会议说明。Loomio 会发送一封包含日历邀请的电子邮件，以便参与者将其添加到自己的日历中。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
+      process_introduction: <p>快速找到最适合你会议或活动的时间。添加标题、详细信息以及你所在时区的日期/时间选项。参会者将看到根据他们所在时区自动调整的时间。</p><p>当你的时间投票结束后，请设置最佳时间结果以及任何会议说明。Loomio 会发送一封包含日历邀请的电子邮件，以便参与者将其添加到自己的日历中。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
       title: 我们来确定一下下次会议的日期吧。
-      details: "<p><strong>会议或活动是什么？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p><span>请用绿色“点赞”图标标记您有空的时间段，或用红色“点踩”图标标记您无空的时间段。</span></p><p><span>使用“拇指向侧”图标表示“如有需要，您可以提供帮助”。</span></p>"
-      reason_prompt: 您能否提供一些建议，帮助组织者找到合适的时间？
+      details: "<p><strong>会议或活动是什么？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p><span>请用绿色“点赞”图标标记你有空的时间段，或用红色“点踩”图标标记你无空的时间段。</span></p><p><span>使用“拇指向侧”图标表示“如有需要，你可以提供帮助”。</span></p>"
+      reason_prompt: 你能否提供一些建议，帮助组织者找到合适的时间？
       process_subtitle_v2: 查找人们的空闲时间
-      process_introduction_v2: <p><strong>时间投票</strong>可以帮助您了解人们的空闲时间。添加您建议的时间，参与者将在其所在时区看到这些时间。投票结束后，设置结果，Loomio 会自动向所有人发送日历邀请。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
+      process_introduction_v2: <p><strong>时间投票</strong>可以帮助你了解人们的空闲时间。添加你建议的时间，参与者将在其所在时区看到这些时间。投票结束后，设置结果，Loomio 会自动向所有人发送日历邀请。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">阅读更多关于《时代》杂志民意调查的内容</a>。</p>
     opt_in:
       process_subtitle: 寻找志愿者或招募参与者
-      process_introduction: <p>使用选择加入功能邀请人们加入团队、委员会或工作组，或参加活动。</p><p> “选择加入”有两种投票选项：接受或拒绝。</p><p>您可以设定一个目标人数，例如 3 人加入您的工作组。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">了解更多关于选择加入的信息</a>。</p>
+      process_introduction: <p>使用选择加入功能邀请人们加入团队、委员会或工作组，或参加活动。</p><p> “选择加入”有两种投票选项：接受或拒绝。</p><p>你可以设定一个目标人数，例如 3 人加入你的工作组。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">了解更多关于选择加入的信息</a>。</p>
       title: 成立工作组，负责起草新的可持续发展政策
-      details: "<p><strong>您邀请大家参加的是什么团队、工作组或活动？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p>选择“接受”即可参与！</p>"
+      details: "<p><strong>你邀请大家参加的是什么团队、工作组或活动？</strong></p><p></p><p><strong>为什么这很重要？</strong></p><p></p><p><strong>你要求人们做什么？</strong></p><p></p><p>选择“接受”即可参与！</p>"
       accept_meaning: 我愿意参加
       accept_prompt: 你为什么自愿参加这个项目？
       decline_meaning: 我无法参加
@@ -246,12 +246,12 @@ zh_CN:
     try_loomio:
       process_name: 我们来试试 Loomio 吧
       process_subtitle: 让你的团队一起尝试 Loomio。
-      process_introduction: "<p>充分利用 Loomio 需要团队的共同努力。这份提案旨在帮助您的团队决定是否投入时间和精力来认真体验 Loomio——无论是参与试用期还是共同注册套餐。</p>"
+      process_introduction: "<p>充分利用 Loomio 需要团队的共同努力。这份提案旨在帮助你的团队决定是否投入时间和精力来认真体验 Loomio——无论是参与试用期还是共同注册套餐。</p>"
       title: 让我们一起尝试一下 Loomio 吧。
-      details: "<p>要想成功使用 Loomio，需要团队合作——只有当人们参与其中时，它才能发挥作用。</p><p>本提案要求所有用户在试用期内积极使用 Loomio。这意味着要定期签到、对提案进行投票并参与讨论。</p><p>如果您对此有任何疑虑，请提出异议并说明需要做出哪些改变——这就是提出异议的用途。</p>"
+      details: "<p>要想成功使用 Loomio，需要团队合作——只有当人们参与其中时，它才能发挥作用。</p><p>本提案要求所有用户在试用期内积极使用 Loomio。这意味着要定期签到、对提案进行投票并参与讨论。</p><p>如果你对此有任何疑虑，请提出异议并说明需要做出哪些改变——这就是提出异议的用途。</p>"
       outcome_statement: "<p>与小组分享该提案的结果——决定了什么以及接下来要做什么。</p>"
       consent_meaning: 我愿意尝试一下。
-      consent_prompt: 您期待使用 Loomio 的哪些方面？
+      consent_prompt: 你期待使用 Loomio 的哪些方面？
       objection_meaning: 我有一个需要先解决的问题。
       objection_prompt: 在你做出承诺之前，需要做出哪些改变？
     majority:
@@ -263,19 +263,19 @@ zh_CN:
       yes_prompt: 你为什么支持这项提议？
       no_meaning: 我不支持这项提议。
       no_prompt: 你为什么不支持这项提议？
-      outcome_statement: "<p>感谢您参与此次多数投票。</p>"
+      outcome_statement: "<p>感谢你参与此次多数投票。</p>"
     stv:
       process_subtitle: 按比例选出多名获胜者。
       process_introduction: <p>单记可转移投票制（STV）是一种适用于多席位选举的比例代表制投票方式。选民按偏好顺序对候选人进行排序。达到规定得票数的候选人当选，剩余或被淘汰的选票将转入下一轮投票。</p><p>配置席位数量、计票方法（苏格兰式或米克式）和配额类型（德鲁普式或黑尔式）。结果会逐轮显示选票转移情况。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">阅读更多关于单记可转移投票制（STV）选举的信息</a>。</p>
       title: 选举委员会成员
-      details: <h3 id="what-is-this-election-about"><strong>这次选举的意义何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填满了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>请通过拖动候选人来投票，按您喜欢的顺序排列。排名第一的候选人是您最喜欢的。您可以对任意数量的候选人进行排名。</p>
+      details: <h3 id="what-is-this-election-about"><strong>这次选举的意义何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填满了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>请通过拖动候选人来投票，按你喜欢的顺序排列。排名第一的候选人是你最喜欢的。你可以对任意数量的候选人进行排名。</p>
   discussion_templates:
     practice_thread:
       process_name: 练习讨论
       process_subtitle: 欢迎大家加入群组，并练习使用 Loomio
       process_introduction: "<p>使用此模板欢迎新成员并鼓励他们尽早参与。它让新成员有机会进行自我介绍并探索 Loomio 的各项功能。</p>"
       title: "\U0001F44B 欢迎！打个招呼，试试看吧！"
-      description: "<p>欢迎加入我们的 Loomio 小组——很高兴你能加入！</p><p>本帖旨在探讨以下话题：</p><ul><li><p>向大家介绍一下自己</p></li><li><p>试试 Loomio 的一些功能——例如：试试使用表情符号 \U0001F44D</p></li><li><p>在这个阶段，您可以提出任何问题。</p></li></ul><p>如果你不知道该说什么，简单地说声“你好”就可以了\U0001F642</p>"
+      description: "<p>欢迎加入我们的 Loomio 小组——很高兴你能加入！</p><p>本帖旨在探讨以下话题：</p><ul><li><p>向大家介绍一下自己</p></li><li><p>试试 Loomio 的一些功能——例如：试试使用表情符号 \U0001F44D</p></li><li><p>在这个阶段，你可以提出任何问题。</p></li></ul><p>如果你不知道该说什么，简单地说声“你好”就可以了\U0001F642</p>"
       process_subtitle_v2: 欢迎大家一起熟悉 Loomio 的使用方法。
       process_introduction_v2: "<p>欢迎新群组加入！大家可以在这里自我介绍，尝试评论和点赞等功能，并提交他们的第一个提案。</p>"
       title_v2: 欢迎！请自我介绍并尝试一下。
@@ -283,19 +283,19 @@ zh_CN:
     blank:
       process_name: 空白模板
       process_subtitle: 就任何话题发起新的讨论
-      process_introduction: "<p>在小组中发起关于任何你感兴趣的话题的讨论。</p><p>默认情况下，当您发起讨论时，群组中的所有人都会收到通知。您可以通过编辑下方的“邀请”字段来更改此设置。</p>"
+      process_introduction: "<p>在小组中发起关于任何你感兴趣的话题的讨论。</p><p>默认情况下，当你发起讨论时，群组中的所有人都会收到通知。你可以通过编辑下方的“邀请”字段来更改此设置。</p>"
     discuss_a_topic:
       title_placeholder: 你想讨论什么话题？
       process_name: 讨论某个话题
       process_subtitle: 与你的小组展开讨论
-      process_introduction: "<p>您是否想向团队提出某个问题、难题或机遇？</p><p>介绍主题，提供背景信息链接，并征求意见、想法和帮助。</p><p>邀请大家参与，贡献他们的想法和相关信息。使用@提及功能可以引起特定人员的注意。</p><p>随着讨论的进行，及时更新讨论主题内容，以促进讨论朝着既定方向发展。</p><p>不要等到掌握所有信息才开帖。相反，应该利用帖子邀请大家一起探讨问题，找到解决方案。</p>"
+      process_introduction: "<p>你是否想向团队提出某个问题、难题或机遇？</p><p>介绍主题，提供背景信息链接，并征求意见、想法和帮助。</p><p>邀请大家参与，贡献他们的想法和相关信息。使用@提及功能可以引起特定人员的注意。</p><p>随着讨论的进行，及时更新讨论主题内容，以促进讨论朝着既定方向发展。</p><p>不要等到掌握所有信息才开帖。相反，应该利用帖子邀请大家一起探讨问题，找到解决方案。</p>"
       description: <h3 id="introduce-and-describe-the-topic">介绍并描述该主题</h3><p></p><h3 id="why-is-this-important">为什么这很重要？</h3><p></p><h3 id="how-would-you-like-people-to-respond">你希望人们如何回应？</h3><p></p>
     onboarding_to_loomio:
       title: 我们团队正在使用 Loomio
       process_name: 我们一起来试试 Loomio 吧。
       process_subtitle: 一个帮助 Loomio 新用户练习撰写评论和投票的帖子。
       process_introduction: "<p>使用此模板向人们介绍 Loomio。</p><p>体验 Loomio 的一个好方法是通过一个简单的介绍帖和练习提案。</p>"
-      description: <h3 id="why-are-you-interested-in-using-loomio">您为什么对使用 Loomio 感兴趣？</h3><p>我们希望利用 Loomio 让人们参与到我们组织的决策中来。</p><h3 id="what-are-you-asking-people-to-do">你要求人们做什么？</h3><p>我很想听听大家的想法！请在下方留言并为提案投票。</p><p>你可以点击评论右下角的回复图标来回复别人的评论。</p><p>使用@提及功能通知他人。</p>
+      description: <h3 id="why-are-you-interested-in-using-loomio">你为什么对使用 Loomio 感兴趣？</h3><p>我们希望利用 Loomio 让人们参与到我们组织的决策中来。</p><h3 id="what-are-you-asking-people-to-do">你要求人们做什么？</h3><p>我很想听听大家的想法！请在下方留言并为提案投票。</p><p>你可以点击评论右下角的回复图标来回复别人的评论。</p><p>使用@提及功能通知他人。</p>
       onboarding: 入职
     consent_process:
       title_placeholder: 制定我们的健康与安全政策
@@ -308,7 +308,7 @@ zh_CN:
       title_placeholder: 寻求购买新电脑的建议
       process_name: 咨询流程
       process_subtitle: 就你需要做的决定寻求建议。
-      process_introduction: <p>听取受影响人员或具有专业知识的人员的建议，以便为你的组织做出更好的决策。</p><p>典型角色：</p><ul><li><p>协调人：做出决定的人，或者请别人来协调的人。</p></li><li><p>顾问：受其影响或拥有专业知识的人员，由您邀请。</p></li></ul><p>常见流程步骤：</p><p>第一步：在提出行动方案之前，征求意见以了解各方观点。</p><p>步骤 2. 提出建议并寻求建议 - 开展咨询提案。</p><p>步骤 3. 考虑收到的建议，做出决定并告知提供建议的人——说明结果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">阅读更多：咨询流程。</a></p>
+      process_introduction: <p>听取受影响人员或具有专业知识的人员的建议，以便为你的组织做出更好的决策。</p><p>典型角色：</p><ul><li><p>协调人：做出决定的人，或者请别人来协调的人。</p></li><li><p>顾问：受其影响或拥有专业知识的人员，由你邀请。</p></li></ul><p>常见流程步骤：</p><p>第一步：在提出行动方案之前，征求意见以了解各方观点。</p><p>步骤 2. 提出建议并寻求建议 - 开展咨询提案。</p><p>步骤 3. 考虑收到的建议，做出决定并告知提供建议的人——说明结果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">阅读更多：咨询流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">你需要做出什么决定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">为什么这件事很重要？它会产生什么影响？</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">你想寻求哪些建议来帮助你做出正确的决定？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">这个过程的协调人是谁？</h3><p></p>
       advice: 建议
     pass_a_resolution:
@@ -329,8 +329,8 @@ zh_CN:
       title_placeholder: 分享链接和信息
       process_name: 分享链接和信息
       process_subtitle: 发布信息、链接和报告，供大家评论和讨论。
-      process_introduction: "<p>您可以将帖子用作小组的“墙”或“公告板”，用于发布您想与彼此分享的信息、新闻和想法。</p><p>邀请大家使用<strong>“插入链接”</strong>和<strong>“嵌入视频”</strong>格式工具，帮助群组成员访问 Loomio 内的信息。在评论中使用<strong>标题</strong>，将评论固定到讨论串时间线上，以便轻松查找。</p><p><strong>将</strong>帖子置顶，使其保持活跃，并鼓励<strong>回复</strong>以保持其活力，让人们知道你看到了他们的物品。</p><p>本帖默认按<strong>“最新”</strong>顺序显示，因此最新评论会显示在帖子顶部。</p>"
-      description: <p>请在此帖中发布信息、通知和您想分享的内容——您可以在这里了解正在发生的事情并参与其中。</p><p data-text-align="start">分享活动、报告、播客和其他有趣的在线信息。</p><p data-text-align="start">使用<strong>“插入链接”</strong>和<strong>“嵌入视频”</strong>格式工具，帮助人们访问 Loomio 中的信息。</p>
+      process_introduction: "<p>你可以将帖子用作小组的“墙”或“公告板”，用于发布你想与彼此分享的信息、新闻和想法。</p><p>邀请大家使用<strong>“插入链接”</strong>和<strong>“嵌入视频”</strong>格式工具，帮助群组成员访问 Loomio 内的信息。在评论中使用<strong>标题</strong>，将评论固定到讨论串时间线上，以便轻松查找。</p><p><strong>将</strong>帖子置顶，使其保持活跃，并鼓励<strong>回复</strong>以保持其活力，让人们知道你看到了他们的物品。</p><p>本帖默认按<strong>“最新”</strong>顺序显示，因此最新评论会显示在帖子顶部。</p>"
+      description: <p>请在此帖中发布信息、通知和你想分享的内容——你可以在这里了解正在发生的事情并参与其中。</p><p data-text-align="start">分享活动、报告、播客和其他有趣的在线信息。</p><p data-text-align="start">使用<strong>“插入链接”</strong>和<strong>“嵌入视频”</strong>格式工具，帮助人们访问 Loomio 中的信息。</p>
       information: 信息
     prepare_for_a_meeting:
       title_placeholder: 为下次会议做准备
@@ -343,14 +343,14 @@ zh_CN:
       title_placeholder: 修订我们的招聘政策
       process_name: 制定政策
       process_subtitle: 与团队合作，制定并达成一致的政策或程序文件。
-      process_introduction: "<p><span>该主题帖是讨论政策的场所，您可以在这里商定要求和原则，并发布文件草稿以供评论。</span></p><p><span>使用该模板与一小群人制定政策，或者使其对整个组织透明，并邀请对文件的改进版本提出意见。</span></p><p><span>使用 Sense 检查提案通知小组成员，一份草稿文件已准备好供审阅，并邀请大家阅读该文件，提出任何意见或问题。</span></p><p><span>当最终草案完成后，提出同意或共识提案以批准该文件。</span></p>"
-      description: "<p><strong><span>您需要制定什么样的政策或文件？</span></strong></p><p></p><p><strong><span>为什么这很重要？</span></strong></p><p></p><p><strong><span>你要求人们做什么？</span></strong></p><p></p>"
+      process_introduction: "<p><span>该主题帖是讨论政策的场所，你可以在这里商定要求和原则，并发布文件草稿以供评论。</span></p><p><span>使用该模板与一小群人制定政策，或者使其对整个组织透明，并邀请对文件的改进版本提出意见。</span></p><p><span>使用 Sense 检查提案通知小组成员，一份草稿文件已准备好供审阅，并邀请大家阅读该文件，提出任何意见或问题。</span></p><p><span>当最终草案完成后，提出同意或共识提案以批准该文件。</span></p>"
+      description: "<p><strong><span>你需要制定什么样的政策或文件？</span></strong></p><p></p><p><strong><span>为什么这很重要？</span></strong></p><p></p><p><strong><span>你要求人们做什么？</span></strong></p><p></p>"
       policy: 政策
     elect_a_governance_position:
       title_placeholder: 理事会提名和选举
       process_name: 选举一名管理职位
       process_subtitle: 提名并选举某人担任理事会、委员会或董事会的管理职务。
-      process_introduction: "<p>介绍该职位的治理角色和评定标准，以帮助成员评估候选人。</p><p>发起提名征集活动，采用自愿参与投票的方式。邀请被提名人上传候选人照片、个人简介和推荐信。嵌入候选人的视频致辞，以便成员可以直接观看和聆听候选人的发言。</p><p>如果您准备选举候选人，请使用同意提案。</p><p>如果某个职位有多名候选人，可以使用排序复选制，让选民按偏好顺序对候选人进行排序。</p>"
+      process_introduction: "<p>介绍该职位的治理角色和评定标准，以帮助成员评估候选人。</p><p>发起提名征集活动，采用自愿参与投票的方式。邀请被提名人上传候选人照片、个人简介和推荐信。嵌入候选人的视频致辞，以便成员可以直接观看和聆听候选人的发言。</p><p>如果你准备选举候选人，请使用同意提案。</p><p>如果某个职位有多名候选人，可以使用排序复选制，让选民按偏好顺序对候选人进行排序。</p>"
       description: <h3 id="what-position-do-you-need-to-fill">你们需要招聘什么职位？</h3><p></p><h3 id="why-is-this-important">为什么这很重要？</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">优秀的候选人需要具备哪些资格、技能和经验？</h3><p></p><h3 id="what-is-the-election-process">选举流程是什么？</h3><p>第一阶段：提名——我们正在邀请大家提名合适的候选人。</p><p>第二阶段：介绍候选人——包括每位候选人的照片、简短的个人简介和推荐信。</p><p>第三阶段：选举——投票选出该职位候选人。</p>
       election: 选举
     funding_decision:
@@ -378,33 +378,33 @@ zh_CN:
     manage:
       all: 无权执行 %{action} %{subject} 操作。
     add_guests:
-      all: 您必须升级 Loomio 订阅才能添加访客。或者，您可以邀请他们成为您群组的成员。
+      all: 你必须升级 Loomio 订阅才能添加访客。或者，你可以邀请他们成为你群组的成员。
   errors:
     clear_cache: 检测到加载问题。请按住Shift键并重新加载页面，或清除浏览器缓存。
     '400':
       title: 错误的请求
-      body: 抱歉，我们没能理解您的请求。
+      body: 抱歉，我们没能理解你的请求。
     '401':
       title: 未经授权
-      body: 您无权访问此页面。您可能需要登录。
+      body: 你无权访问此页面。你可能需要登录。
     '403':
       title: 禁忌
-      body: 您无权访问此页面。您可能需要登录。
+      body: 你无权访问此页面。你可能需要登录。
     '404':
       title: 未找到
-      body: 您请求的项目未找到。这可能是因为讨论或投票已被删除。
+      body: 你请求的项目未找到。这可能是因为讨论或投票已被删除。
     '410':
       title: 已消失
       body: 此页面已不存在
     '417':
       title: 浏览器不兼容
-      body: 请<a href="https://browser-update.org/update.html?force_outdated=true">升级您的浏览器</a>以使用 Loomio。
+      body: 请<a href="https://browser-update.org/update.html?force_outdated=true">升级你的浏览器</a>以使用 Loomio。
     '422':
       title: 不可处理的实体
       body: 你想要进行的更改被拒绝了。也许你试图更改一些你无权更改的内容。
     '429':
       title: 请求过多
-      body: 抱歉，您每分钟执行此操作的请求次数已超过允许的最大值。请稍等片刻后重试。
+      body: 抱歉，你每分钟执行此操作的请求次数已超过允许的最大值。请稍等片刻后重试。
     '500':
       title: 内部服务器错误
       body: 很抱歉，出了点问题。我们已经收到相关通知，会尽快查看。
@@ -444,8 +444,8 @@ zh_CN:
     deleted_user: 已删除用户
     placeholder_name: 受邀用户 (%{hostname})
     error:
-      sign_in_required_html: 您必须登录才能继续。请<a href="/dashboard" target="_blank">登录</a>后重新加载此页面以继续。
-      bad_login: 抱歉，您提供的密码与我们存档的密码不符。
+      sign_in_required_html: 你必须登录才能继续。请<a href="/dashboard" target="_blank">登录</a>后重新加载此页面以继续。
+      bad_login: 抱歉，你提供的密码与我们存档的密码不符。
       username_must_be_alphanumeric: 用户名必须仅包含小写字母和数字。
   poll:
     error:
@@ -454,7 +454,7 @@ zh_CN:
       must_have_options: 必须至少有一个投票选项
       must_be_in_the_future: 必须在未来
       templates_cannot_close: 模板无法关闭
-      poll_options_dont_match: 由于 Loomio 的一个漏洞，您的投票未能保存。我们正在努力修复此问题。请刷新页面后重试。
+      poll_options_dont_match: 由于 Loomio 的一个漏洞，你的投票未能保存。我们正在努力修复此问题。请刷新页面后重试。
       opening_at_before_closing_at: 开业日期必须早于关闭日期
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 位成员已表明立场"
@@ -485,8 +485,8 @@ zh_CN:
     error:
       too_short: 请选择
   invitation:
-    invitation_cancelled: 抱歉，此邀请已被小组协调员撤销。请向您所在小组重新申请邀请。
-    invitation_already_used: 此邀请已使用。请直接登录 Loomio 以继续访问您的群组。
+    invitation_cancelled: 抱歉，此邀请已被小组协调员撤销。请向你所在小组重新申请邀请。
+    invitation_already_used: 此邀请已使用。请直接登录 Loomio 以继续访问你的群组。
   subscriptions:
     active: 积极的
     inactive: 非活跃状态
@@ -494,36 +494,36 @@ zh_CN:
     via_loomio: "%{name}（通过 %{site_name}）"
   event_mailer:
     notification_reason:
-      group_subscribed: 您收到此邮件是因为您订阅了该群组的所有活动。
-      discussion_subscribed: 您收到此邮件是因为您订阅了该讨论。
-      poll_subscribed: 您收到此邮件是因为您订阅了该投票。
-      group_mentioned: 您收到此消息是因为该群组被 @提及。
-      user_mentioned: 您收到此消息是因为您被@提及。
-      notified: 您收到此邮件是因为作者通知了您。
-      thread_subscribed: 您收到此邮件是因为您订阅了该主题。
+      group_subscribed: 你收到此邮件是因为你订阅了该群组的所有活动。
+      discussion_subscribed: 你收到此邮件是因为你订阅了该讨论。
+      poll_subscribed: 你收到此邮件是因为你订阅了该投票。
+      group_mentioned: 你收到此消息是因为该群组被 @提及。
+      user_mentioned: 你收到此消息是因为你被@提及。
+      notified: 你收到此邮件是因为作者通知了你。
+      thread_subscribed: 你收到此邮件是因为你订阅了该主题。
     received_email:
-      explaination_html: "<p>您收到此电子邮件是因为您是 Loomio 群组 %{group} 的管理员。</p><p>该组织收到了一封来自未知电子邮件地址的电子邮件。</p><p>如果邮件来自群组成员，请查看邮件并选择该成员。</p><p>如果您不想收到此类邮件，可以屏蔽来自该地址的任何后续邮件。</p>"
+      explaination_html: "<p>你收到此电子邮件是因为你是 Loomio 群组 %{group} 的管理员。</p><p>该组织收到了一封来自未知电子邮件地址的电子邮件。</p><p>如果邮件来自群组成员，请查看邮件并选择该成员。</p><p>如果你不想收到此类邮件，可以屏蔽来自该地址的任何后续邮件。</p>"
   user_mailer:
     group_export_ready:
       subject: 导出 %{group_name} 组的数据
-      body_html: 请点击<a href="%{url}">此处</a>下载您的团队数据。请注意，此链接将在一周后失效。
+      body_html: 请点击<a href="%{url}">此处</a>下载你的团队数据。请注意，此链接将在一周后失效。
     redacted:
-      subject: 您的 %{site_name} 用户帐户已被删除
-      body_html: "<p>您的 %{site_name} 用户帐户已被删除。</p><p>所有个人身份信息均已删除。</p><p>如果您没有提出此请求，请联系 %{support_email}</p>"
+      subject: 你的 %{site_name} 用户帐户已被删除
+      body_html: "<p>你的 %{site_name} 用户帐户已被删除。</p><p>所有个人身份信息均已删除。</p><p>如果你没有提出此请求，请联系 %{support_email}</p>"
     accounts_merged:
-      subject: 您的 %{site_name} 用户帐户已合并。
-      body_html: 您好 %{name}，您的两个 Loomio 账户已合并为一个账户。从现在起，请使用<strong>%{email}</strong>登录 Loomio。
+      subject: 你的 %{site_name} 用户帐户已合并。
+      body_html: 你好 %{name}，你的两个 Loomio 账户已合并为一个账户。从现在起，请使用<strong>%{email}</strong>登录 Loomio。
     merge_verification:
-      subject: 请验证您的 %{site_name} 电子邮件地址以进行合并
-      body_html: "<p>你好 %{name}，</p><p>已提出将地址为<strong>%{source_email} 的</strong>用户帐户与属于此地址<strong>%{target_email}</strong>的帐户合并的请求。</p><p>此过程完成后，您将无法再使用<strong>%{source_email}</strong>登录，而只能使用<strong>%{target_email}</strong>登录。</p><p>请确认这是您想要做的。</p>"
+      subject: 请验证你的 %{site_name} 电子邮件地址以进行合并
+      body_html: "<p>你好 %{name}，</p><p>已提出将地址为<strong>%{source_email} 的</strong>用户帐户与属于此地址<strong>%{target_email}</strong>的帐户合并的请求。</p><p>此过程完成后，你将无法再使用<strong>%{source_email}</strong>登录，而只能使用<strong>%{target_email}</strong>登录。</p><p>请确认这是你想要做的。</p>"
       verify: 请验证电子邮件并继续
       confirm_page:
         confirm: 确认合并
-        body_html: "<p>请确认您是否要将<strong>%{source_email}</strong>下的帐户合并到<strong>%{target_email}</strong>下的帐户中。</p><p>您使用<strong>%{source_email}</strong>创建的帐户将被删除，此后您只能通过<strong>%{target_email}</strong>登录。</p><p>这一变化是不可逆的。</p>"
+        body_html: "<p>请确认你是否要将<strong>%{source_email}</strong>下的帐户合并到<strong>%{target_email}</strong>下的帐户中。</p><p>你使用<strong>%{source_email}</strong>创建的帐户将被删除，此后你只能通过<strong>%{target_email}</strong>登录。</p><p>这一变化是不可逆的。</p>"
         merge: 合并账户
       complete_page:
         title: 合并成功！
-        body_html: <p>您的用户账户合并已成功。您稍后将收到一封确认邮件，发送至<strong>%{target_email}</strong> 。</p><p>如有任何疑问，请<a href="/contact" target="_blank">与我们联系</a>。</p>
+        body_html: <p>你的用户账户合并已成功。你稍后将收到一封确认邮件，发送至<strong>%{target_email}</strong> 。</p><p>如有任何疑问，请<a href="/contact" target="_blank">与我们联系</a>。</p>
   email:
     content_was_translated_html: 此内容由 %{source_locale} 翻译而来。<a href="%{profile_url}">查看设置<a></a>
     common:
@@ -531,72 +531,72 @@ zh_CN:
       resend: 此优惠券将在24小时后过期，且仅限使用一次。
     login:
       subject: 登录到 %{site_name}
-      intro: 这是您登录 %{site_name} 的链接
-      intro_code: 这是您登录 %{site_name} 的代码
+      intro: 这是你登录 %{site_name} 的链接
+      intro_code: 这是你登录 %{site_name} 的代码
       login: 以 %{name} 身份登录
     reactivate:
-      subject: 重新激活您的 %{site_name} 帐户
-      intro: 您好 %{name}，这是重新激活您的 %{site_name} 帐户的链接。
+      subject: 重新激活你的 %{site_name} 帐户
+      intro: 你好 %{name}，这是重新激活你的 %{site_name} 帐户的链接。
       login: 重新激活 %{name}
     contact_request:
-      subject: "%{name} 想在 %{site_name} 上与您联系！"
-      intro: "%{name} (%{email}) 已向您发送连接请求。"
-      footer: 您可以直接回复此邮件给 %{name}。
+      subject: "%{name} 想在 %{site_name} 上与你联系！"
+      intro: "%{name} (%{email}) 已向你发送连接请求。"
+      footer: 你可以直接回复此邮件给 %{name}。
     reset_password:
-      greeting: 您好 %{name}，您可以使用以下链接重置 Loomio 帐户密码：
+      greeting: 你好 %{name}，你可以使用以下链接重置 Loomio 帐户密码：
       link_text: 重置密码
-      signoff: 您收到此邮件是因为您在 %{hostname} 的“忘记密码”表单中输入了您的邮箱地址。但是，您必须点击上方链接并填写表单后，密码才能更改。如果您仍然无法登录，请回复此邮件联系客服人员。
+      signoff: 你收到此邮件是因为你在 %{hostname} 的“忘记密码”表单中输入了你的邮箱地址。但是，你必须点击上方链接并填写表单后，密码才能更改。如果你仍然无法登录，请回复此邮件联系客服人员。
     by_who: 由 %{person}
     reply_to_this_discussion: 回复此讨论
     loomio_app_description: 一个供协作组织共同决策的场所。
     view_group: 查看组
     to_join_group:
-      subject: "%{member} 已邀请您加入 %{site_name} 上的 %{group_name} 群组。"
-      invitation_text: "%{member} 已邀请您加入他们的群组 %{group_name}。"
-      invitation_text_html: 已邀请您加入他们的群组
+      subject: "%{member} 已邀请你加入 %{site_name} 上的 %{group_name} 群组。"
+      invitation_text: "%{member} 已邀请你加入他们的群组 %{group_name}。"
+      invitation_text_html: 已邀请你加入他们的群组
       link_help: 点击下方链接接受邀请：
       accept_invitation: 接受邀请
       stop_emails: 停止接收来自 %{site_name} 的电子邮件
-      accepting_is_important: 接受邀请非常重要，这样您就不会错过与您相关的决策通知。
+      accepting_is_important: 接受邀请非常重要，这样你就不会错过与你相关的决策通知。
     resend_to_join_group:
-      subject: "%{member} 正在等待您加入 %{group_name}，群组位于 %{site_name}。"
+      subject: "%{member} 正在等待你加入 %{group_name}，群组位于 %{site_name}。"
     user_added_to_group:
-      subject: "%{who} 已将您添加到 %{site_name} 上的 %{which_group} 群组。"
-      content: "%{who} 已将您添加到 %{which_group}。"
-      content_html: "<strong>%{who}</strong>已将您添加到<strong>%{which_group}</strong> 。"
+      subject: "%{who} 已将你添加到 %{site_name} 上的 %{which_group} 群组。"
+      content: "%{who} 已将你添加到 %{which_group}。"
+      content_html: "<strong>%{who}</strong>已将你添加到<strong>%{which_group}</strong> 。"
       link_help: 点击下方链接加入群组：
-    unsubscribe: 取消订阅或更改您的电子邮件偏好设置：
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消订阅或更改您的电子邮件偏好设置。"
+    unsubscribe: 取消订阅或更改你的电子邮件偏好设置：
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消订阅或更改你的电子邮件偏好设置。"
     catch_up:
       daily_subject: 昨天在 %{site_name}
       weekly_subject: 上周在 %{site_name}
       other_subject: 最近在 %{site_name}
       do_not_reply: 请勿回复此邮件。
       mark_as_read: 标记为已读
-      thanks_for_reading: 感谢阅读，祝您度过美好的一天！
+      thanks_for_reading: 感谢阅读，祝你度过美好的一天！
       marked_as_read_success: 邮件中的所有内容均已标记为已读
       click_here: 点击这里
     group_membership_approved:
-      intro: 您申请加入群组 %{group_name} 的请求已获批准。
-      intro_html: 您申请加入群组<strong>%{group_name} 的</strong>请求已获批准。
+      intro: 你申请加入群组 %{group_name} 的请求已获批准。
+      intro_html: 你申请加入群组<strong>%{group_name} 的</strong>请求已获批准。
       link_help: 点击下方链接加入 %{group_name} 并开始使用：
-      subject: 您加入 %{group_name} 的请求已获批准
+      subject: 你加入 %{group_name} 的请求已获批准
       join_group: 加入群组
     membership_request:
-      intro_html: 已请求访问您的某个群组。
+      intro_html: 已请求访问你的某个群组。
       subject: "%{who} 已申请加入 %{which_group}"
-      view_group: 您可以在这里批准或拒绝请求。
+      view_group: 你可以在这里批准或拒绝请求。
       button_text: 查看请求
   announcement_count_emails: "%{count}封邮件"
   email_actions:
-    unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。
+    unfollowed_discussion: 你已关闭此邮件主题的电子邮件通知。
   discussion_mailer:
     reply_or_view_online_html: 回复此电子邮件或<a href='%{url}'>在 %{hostname} 上查看</a>。
     turn_off_notifications_html: "<a href='%{url}'>关闭此讨论的电子邮件通知</a>。"
-    change_email_preferences_html: 更改您的<a href='%{email_preferences_url}'>电子邮件偏好设置</a>。
+    change_email_preferences_html: 更改你的<a href='%{email_preferences_url}'>电子邮件偏好设置</a>。
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>取消订阅</a>此主题帖中的后续通知。"
     unsubscribe_from_new_comment_html: "<a href='%{url}'>取消订阅</a>此主题的评论。"
-    unsubscribe_from_user_mentioned_html: 您收到此邮件是因为您被@提及。
+    unsubscribe_from_user_mentioned_html: 你收到此邮件是因为你被@提及。
     discussion_edited:
       inline: "%{actor} 编辑了线程上下文"
     discussion_closed:
@@ -616,34 +616,34 @@ zh_CN:
     change_my_password: 更改密码
     confirm_new_password: 确认密码
     new_password: 新密码
-    email_guidelines_html: "<p>请输入您的电子邮件地址，我们将向您发送密码重置链接。</p><p>如果您通常通过 Facebook 或 Google 登录，请输入与该帐户关联的电子邮件地址。</p>"
-    reset_email_timeframe: 邮件可能需要最多 5 分钟才能送达。如果未收到，请务必检查您的垃圾邮件文件夹。
+    email_guidelines_html: "<p>请输入你的电子邮件地址，我们将向你发送密码重置链接。</p><p>如果你通常通过 Facebook 或 Google 登录，请输入与该帐户关联的电子邮件地址。</p>"
+    reset_email_timeframe: 邮件可能需要最多 5 分钟才能送达。如果未收到，请务必检查你的垃圾邮件文件夹。
     length_restriction: 密码长度必须至少为 8 个字符。
-    forbidden_passwords: 为了保障您的账户安全，禁止使用“password”等常见密码。
+    forbidden_passwords: 为了保障你的账户安全，禁止使用“password”等常见密码。
   task_mailer:
     task_due_reminder:
       subject: 任务提醒：%{name}
-      greeting: 您好 %{name}，以下任务的截止日期为 %{due}：
+      greeting: 你好 %{name}，以下任务的截止日期为 %{due}：
       view_task: 在 %{site_name} 上查看
-      update_or_comment: 如果您已完成此任务，请勾选。如果尚未完成，请分享进度更新。
+      update_or_comment: 如果你已完成此任务，请勾选。如果尚未完成，请分享进度更新。
       due_today: 今天
       due_in_count_days: 用 %{count} 天
   group_mailer:
-    resend: 提醒：%{member} 正在等待您加入 %{group_name}
+    resend: 提醒：%{member} 正在等待你加入 %{group_name}
     destroy_warning:
-      subject: 您的 Loomio 群组已被安排删除。
-      body: 您的 Loomio 群组“%{group}”已被 %{deletor} 安排删除。如果您不希望删除该群组，请回复此邮件。如果您确定要删除该群组，则无需进行任何操作。谢谢。
+      subject: 你的 Loomio 群组已被安排删除。
+      body: 你的 Loomio 群组“%{group}”已被 %{deletor} 安排删除。如果你不希望删除该群组，请回复此邮件。如果你确定要删除该群组，则无需进行任何操作。谢谢。
     trial_expired:
-      subject: 由于长时间未活动，您的 Loomio 群组将被删除。
-      body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
+      subject: 由于长时间未活动，你的 Loomio 群组将被删除。
+      body: 你的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果你不希望你的群组被删除，请回复此邮件。
   forward_mailer:
     bounce:
-      subject: 您发送给 Loomio 的消息未送达
-      reason: 这是因为您的电子邮件客户端将邮件发送到了“发件人”地址，而不是提供的“回复”地址。
-      recommendation: 请在浏览器中打开 Loomio 并直接发布您的消息。
+      subject: 你发送给 Loomio 的消息未送达
+      reason: 这是因为你的电子邮件客户端将邮件发送到了“发件人”地址，而不是提供的“回复”地址。
+      recommendation: 请在浏览器中打开 Loomio 并直接发布你的消息。
   poll_mailer:
     common:
-      why_send_this: 您收到此邮件的原因是 %{reason}
+      why_send_this: 你收到此邮件的原因是 %{reason}
       view_on_loomio: 在 %{site_name} 上查看
       create_outcome: 分享结果
       your_response: 你投票了：
@@ -655,7 +655,7 @@ zh_CN:
       undecided_visitors: 未决定宾客人数 (%{count})
       more_undecided: 还有 %{count} 个...
       vote_now: 立即投票
-      you_have_until: 您可以在 %{when} 之前参与。
+      you_have_until: 你可以在 %{when} 之前参与。
       people_have_voted: "%{nom} 人参与了 %{dnom} 人的活动 (%{pct}%)"
       voting_opens_and_closes: 投票于 %{opens} 开始，%{closes} 结束。（%{days} 天）
       voting_closes: 投票将于 %{when} 结束。
@@ -663,4 +663,4 @@ zh_CN:
   upload:
     file_too_large: 文件过大。最大上传大小为 %{limit}。
   merge_users:
-    not_target_user: 您必须以目标帐户身份登录才能确认合并。
+    not_target_user: 你必须以目标帐户身份登录才能确认合并。

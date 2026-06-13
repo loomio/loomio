@@ -17,8 +17,8 @@ it:
     account_created_for_you: Abbiamo creato un account utente per %{email} e un gruppo su Loomio.
     please_sign_in_to_continue: Accedi per continuare.
     please_complete_this_field: Per favore completa questo campo
-    please_enter_a_valid_email_address: Si prega di inserire un indirizzo email valido
-    please_accept_the_terms: Si prega di accettare i termini
+    please_enter_a_valid_email_address: Inserisci un indirizzo email valido
+    please_accept_the_terms: Accetta i termini
     how_did_you_hear_about_loomio: Come sei venuto a conoscenza di Loomio?
     newsletter_intro: Vorresti ricevere informazioni sulle nuove funzionalità, interviste ai clienti, casi di studio e annunci dal team Loomio?
   tasks:
@@ -46,7 +46,7 @@ it:
     copy_of_title: Copia di %{title}
     loomio_default_templates: Modelli predefiniti di Loomio
     which_templates_would_you_like_to_use: Quali modelli vorresti utilizzare?
-    login_to_start_demo: 'Questa è una Demo di LOOMIO attiva. Siete invitati a dare un''occhiata in giro.
+    login_to_start_demo: 'Questa è una Demo di LOOMIO attiva. Sei invitato a dare un''occhiata in giro.
 
       '
     sign_in_to_try_features: 'Se vuoi provare una votazione in una dimostrazione di voto o iniziare una prova gratuita per la tua organizzazione, clicca "Iscriviti".
@@ -67,10 +67,10 @@ it:
     demo_group: Gruppo di prova
     play_with_an_example_group: Gioca con un gruppo di esempio
     look_and_feel: Guarda come appare Loomio per una piccola organizzazione. Scopri l'app provandola.
-    watch_then_start: Si prega di guardare il video, quindi fare clic su "Avvia demo" per provare Loomio
+    watch_then_start: Guarda il video, quindi fare clic su "Avvia demo" per provare Loomio
     generating_demo: Ok, aspetta un attimo! Creare una demo impiega circa 20 secondi.
     start_a_x_day_free_trial: Inizia una prova gratuita di %{day} giorni
-    ready_to_trial: Pronti per provare Loomio con la vostra organizzazione?
+    ready_to_trial: Pronti per provare Loomio con la tua organizzazione?
     start_a_no_obligation_x_day_trial: Inizia un gruppo di Loomio con una prova gratuita di %{day} giorni.
     you_can_test_it_out: 'Puoi invitare altre persone a unirsi, integrarlo con gli altri tuoi strumenti, e provare a prendere delle decisioni.
 
@@ -434,7 +434,7 @@ it:
       quiet: Ignora
       question: Quando vuoi ricevere una notifica?
       loud_explain: ogni volta che c'è attività
-      normal_explain: quando qualcuno chiede la vostra attenzione
+      normal_explain: quando qualcuno chiede la tua attenzione
       quiet_explain: nessuna notifica
     loud_label: Tutte le attività
     normal_label: Annunci
@@ -2428,7 +2428,7 @@ it:
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
     change_your_password: Vuoi impostare una nuova password?
     email_placeholder: tu{'@'}esempio.com
-    turnstile_required: Si prega di completare la verifica prima di continuare.
+    turnstile_required: Completa la verifica prima di continuare.
     invalid_login: Impossibile accedere con queste credenziali
   chatbot:
     configure_chatbot: Configura chatbot
@@ -2656,7 +2656,7 @@ it:
     hide_advanced_settings: Nascondi impostazioni avanzate
     choose_at_least: Scegli almeno
     choose_at_most: Scegli al massimo
-    please_review_the_form: Si prega di rivedere il modulo
+    please_review_the_form: Rivedi il modulo
     option_added_please_add_details: Opzione aggiunta! Aggiungete qualche dettaglio in modo che tutti sappiano cosa significa.
     default_duration_in_days: Durata predefinita in giorni
     how_many_options_can_a_voter_choose: Quante opzioni può scegliere un elettore?
@@ -2717,7 +2717,7 @@ it:
     stance_reason_required: Necessario
     stance_reason_optional: Opzionale
     stance_reason_disabled: Disabili
-    stance_reason_is_required: Si prega di fornire una motivazione per il voto
+    stance_reason_is_required: Fornisci una motivazione per il voto
     limit_reason_length: Limita il motivo a un massimo di 500 caratteri
     save_poll: Salva il sondaggio
     start_poll_type: Avvia %{poll_type}
