@@ -1,31 +1,31 @@
 ---
 zh_TW:
-  hello: 您好
+  hello: 你好
   start_trial:
     title: 開始免費試用 Loomio
-    intro: 感謝您對 Loomio 的興趣。我們很高興為您提供 %{day} 天的免費試用，以便您了解 Loomio 是否適合您的組織。
+    intro: 感謝你對 Loomio 的興趣。我們很高興為你提供 %{day} 天的免費試用，以便你了解 Loomio 是否適合你的組織。
     lets_get_started: 讓我們開始吧！
     your_name: 你的名字
     your_email: 你的郵件
-    we_use_this_to_help: 以下資訊用於建立您的 Loomio 小組並幫助我們了解一些有關您的組織的信息，以便我們可以更好地為您提供支援。
-    how_do_you_intend_to_use_loomio: 您打算如何使用 Loomio？
-    what_decisions_do_you_need_to_make: 您需要做出哪些決定？
+    we_use_this_to_help: 以下資訊用於建立你的 Loomio 小組並幫助我們了解一些有關你的組織的信息，以便我們可以更好地為你提供支援。
+    how_do_you_intend_to_use_loomio: 你打算如何使用 Loomio？
+    what_decisions_do_you_need_to_make: 你需要做出哪些決定？
     newsletter_description: 隨時了解世界各地的組織如何使用 Loomio 的新功能和鼓舞人心的故事
     subscribe_to_newsletter: 訂閱 Loomio 時事通訊
     form_incomplete: 請填寫表格上的所有欄位以繼續
     success: 成功！
-    taken_first_step: 您已經踏出了與 Loomio 協作決策的第一步。
+    taken_first_step: 你已經踏出了與 Loomio 協作決策的第一步。
     account_created_for_you: 我們已為 %{email} 建立了一個使用者帳戶，並在 Loomio 上建立了一個群組。
     please_sign_in_to_continue: 請登入以繼續。
     please_complete_this_field: 請填寫此字段
     please_enter_a_valid_email_address: 請輸入有效的電子郵件地址
     please_accept_the_terms: 請接受條款
-    how_did_you_hear_about_loomio: 您是如何得知 Loomio 的？
-    newsletter_intro: 您想了解 Loomio 團隊的新功能、客戶訪談、案例研究和公告嗎？
+    how_did_you_hear_about_loomio: 你是如何得知 Loomio 的？
+    newsletter_intro: 你想了解 Loomio 團隊的新功能、客戶訪談、案例研究和公告嗎？
   tasks:
     tasks: 工作
-    your_tasks: 您的工作
-    permission_denied: 您無權更新此工作的權限
+    your_tasks: 你的工作
+    permission_denied: 你無權更新此工作的權限
     due_date: 到期日
     send_reminder: 傳送提醒（若未完成）
     no_reminder: 無提醒
@@ -37,7 +37,7 @@ zh_TW:
     add_due_date: 新增到期日
     task_updated_done: 工作已標記為完成！
     task_updated_not_done: 工作被標記為未完成
-    no_tasks_assigned: 沒有分配給您的工作
+    no_tasks_assigned: 沒有分配給你的工作
     task_placeholder: 輸入任務並{'@'}提及某人來分配它
   templates:
     template_gallery: 範本庫
@@ -46,14 +46,14 @@ zh_TW:
     title_copy: "%{title} 複製"
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 預設模板
-    which_templates_would_you_like_to_use: 您想使用哪些模板？
-    login_to_start_demo: 這是 Loomio 的展示。歡迎您到處看看。
-    sign_in_to_try_features: 若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。
+    which_templates_would_you_like_to_use: 你想使用哪些模板？
+    login_to_start_demo: 這是 Loomio 的展示。歡迎你到處看看。
+    sign_in_to_try_features: 若你想要在展示用的決策中投票，或為你的組織開始免費試用，請點擊「登入」。
     click_button_to_start_demo: 歡迎！若要嘗試投票和其他功能，請按一下開始示範。
-    welcome_to_your_demo: 這是您自己的展示用群組！
+    welcome_to_your_demo: 這是你自己的展示用群組！
     try_voting_to_see_it_work: 嘗試對提案進行投票，以了解 Loomio 如何運作。
     delete_will_be_deleted_in_x_days: 此展示將會在 %{x} 天內刪除。
-    to_use_loomio_with_your_org_start_trial: 當您準備好與您的組織一起試用 Loomio 時，開始免費試用。
+    to_use_loomio_with_your_org_start_trial: 當你準備好與你的組織一起試用 Loomio 時，開始免費試用。
     templates: 範本
     make_a_copy: 複製
     try_loomio: 試試 Loomio
@@ -65,15 +65,15 @@ zh_TW:
     watch_then_start: 請觀看視頻，然後點擊“開始演示”來嘗試 Loomio
     generating_demo: 好的，請稍等！產生範例大概需要 20 秒。
     start_a_x_day_free_trial: 開始%{day}天的免費試用
-    ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
-    start_a_no_obligation_x_day_trial: 免費試用%{day}天，為您的組織建立 Loomio 群組。
-    you_can_test_it_out: 您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
-    demo_created: 示範用群組已建立，只為您！
+    ready_to_trial: 準備好與你的組織一起使用 Loomio 了嗎？
+    start_a_no_obligation_x_day_trial: 免費試用%{day}天，為你的組織建立 Loomio 群組。
+    you_can_test_it_out: 你可以邀請其他人加入，將其與你的其他工具整合，並試試看做出一些決策。
+    demo_created: 示範用群組已建立，只為你！
     start_demo: 試用範例
     view_demo: 檢視展示
     start_trial: 開始試用
     start_free_trial: 開始免費試用
-    demo_needs_user: 要啟動範例，您必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
+    demo_needs_user: 要啟動範例，你必須註冊（或登入）為 Loomio 使用者。這是免費的，且僅需一分鐘。
     trial_needs_user: 歡迎！請登入開始免費試用
     this_is_a_template_for_new_threads: 這是新討論串的範本
     share_a_custom_configuration: 與群組中的其他人共用自訂配置
@@ -111,13 +111,13 @@ zh_TW:
     change_plan: 變更方案
     view_plans: 檢視方案
     free_trial: 免費試用。剩 %{days} 天。
-    trial_expired: 您的試用已到期。升級以繼續使用 Loomio。
-    tooltip: 我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給您的組織的好處吧！
-    was_gift_trial: '自 %{createdDate} 開始，您的群組免費使用 Loomio 這麼久了。我們無法繼續提供免費服務。請升級以繼續使用 Loomio。<a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>閱讀更多。</a>'
+    trial_expired: 你的試用已到期。升級以繼續使用 Loomio。
+    tooltip: 我們的價錢超棒的！現在就升級並享受 Loomio 可以提供給你的組織的好處吧！
+    was_gift_trial: '自 %{createdDate} 開始，你的群組免費使用 Loomio 這麼久了。我們無法繼續提供免費服務。請升級以繼續使用 Loomio。<a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>閱讀更多。</a>'
     was_gift_remaining: 剩 %{days} 天
-    was_gift_expired: 您的免費方案已過期。
-    was_gift_expired_or_mistake: '您的免費方案現已過期。如果您認為其中有誤，<a style=''text-decoration: underline'' href=''/contact''>請與我們聯絡</a>。'
-    subscription_ended: 您的 Loomio 訂閱已結束。若要繼續使用 Loomio，請升級
+    was_gift_expired: 你的免費方案已過期。
+    was_gift_expired_or_mistake: '你的免費方案現已過期。如果你認為其中有誤，<a style=''text-decoration: underline'' href=''/contact''>請與我們聯絡</a>。'
+    subscription_ended: 你的 Loomio 訂閱已結束。若要繼續使用 Loomio，請升級
   subscription_status:
     plan: 方案
     state: 狀態
@@ -128,7 +128,7 @@ zh_TW:
     renews_at: 續訂
     referral_code: 推薦碼
     chargify_link: 計費入口
-    referral_code_help: 給朋友折扣，也為您贏得一些可用餘額！
+    referral_code_help: 給朋友折扣，也為你贏得一些可用餘額！
     manage_payment_details: 管理付款詳細資訊
     manage_subscription: 管理訂閱
     amount: 數量
@@ -145,8 +145,8 @@ zh_TW:
     modal_edit_title: 編輯標籤
     modal_destroy_title: 移除標籤
     destroy_tag: 刪除標籤
-    destroy_helptext: 這將會刪除此標籤將其從群組中的所有討論串移除。您確定嗎？
-    helptext: 標籤讓您可以分類討論，就可以較容易地在稍後找到它們
+    destroy_helptext: 這將會刪除此標籤將其從群組中的所有討論串移除。你確定嗎？
+    helptext: 標籤讓你可以分類討論，就可以較容易地在稍後找到它們
     discussions_count_singular: "（%{count} 個討論串）"
     discussions_count_plural: "（%{count} 個討論串）"
     tag_created: 標籤已儲存
@@ -189,7 +189,7 @@ zh_TW:
     history: 歷史
     option: 選項
     add: 新增
-    you: 您
+    you: 你
     expand: 展開
     all_day: 全天
     ok_got_it: 好的，我知道了
@@ -201,7 +201,7 @@ zh_TW:
     template: 範本
     links: 連結
     active_time_ago: 最後活躍 %{time_ago}
-    confirm_discard_changes: 丟棄您的變更？
+    confirm_discard_changes: 丟棄你的變更？
     something_went_wrong: 呃哦！出了點問題
     check_for_errors_and_try_again: 請檢查表格是否有錯誤，然後重試
     please_try_again: 請重試
@@ -321,27 +321,27 @@ zh_TW:
       add: 添加
     formatting_help:
       label: 格式化
-      title: 學習如何使用 Markdown 來格式化您的文字
+      title: 學習如何使用 Markdown 來格式化你的文字
     commercial: 商業的
     nonprofit: 非營利組織
     opening_in: 打開 %{time}
     read_more: 閱讀更多
-    templates_admin_hint: 因為您是群組管理員，您可以隱藏或刪除任何您不需要的模板，並編輯剩餘的模板以滿足您的需求。
+    templates_admin_hint: 因為你是群組管理員，你可以隱藏或刪除任何你不需要的模板，並編輯剩餘的模板以滿足你的需求。
     read: 讀
     unread: 未讀
     discussion: 討論
   merge_accounts:
     modal:
       title: 合併帳號
-      helptext: 您可以將 <strong>%{sourceEmail}</strong> 的帳號合併到 <strong>%{targetEmail}</strong>。點擊驗證，然後驗證用的電子郵件將會傳送到 %{targetEmail} 以開始流程。
+      helptext: 你可以將 <strong>%{sourceEmail}</strong> 的帳號合併到 <strong>%{targetEmail}</strong>。點擊驗證，然後驗證用的電子郵件將會傳送到 %{targetEmail} 以開始流程。
       submit: 驗證
       flash: 驗證用的電子郵件已傳送！
-      helptext_and_signout: 您可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。您將被強制登出，以便使用目標帳號登入完成合併。
-      flash_and_signout: 驗證郵件已發送至 %{targetEmail}。您現在已登出登錄，請登入目標帳戶以完成合併。
-    email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
+      helptext_and_signout: 你可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。你將被強制登出，以便使用目標帳號登入完成合併。
+      flash_and_signout: 驗證郵件已發送至 %{targetEmail}。你現在已登出登錄，請登入目標帳戶以完成合併。
+    email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於你嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |
-      <p>如果您想要合併兩個帳號，只要在您的個人檔案頁面的電子郵件欄位輸入對應的電子郵件地址（屬於其他帳號），然後遵照出現的指示操作。</p>
+      <p>如果你想要合併兩個帳號，只要在你的個人檔案頁面的電子郵件欄位輸入對應的電子郵件地址（屬於其他帳號），然後遵照出現的指示操作。</p>
       <p>需要協助嗎？<a href="/contact" target="_blank">聯絡我們</a>。
   emoji_picker:
     search: 搜尋
@@ -367,14 +367,14 @@ zh_TW:
     sessions:
       signed_up: 註冊成功！
     failure:
-      inactive: 與此電子郵件關聯的帳號已停用。若您想要重新啟用您的帳號，請聯絡我們。
+      inactive: 與此電子郵件關聯的帳號已停用。若你想要重新啟用你的帳號，請聯絡我們。
   error_page:
-    forbidden: 您沒有足夠的權限。
-    forbidden_view: 您無權檢視此內容。
+    forbidden: 你沒有足夠的權限。
+    forbidden_view: 你無權檢視此內容。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
     internal_server_error: 很抱歉，但是有些事情不太對勁。請再試一次。
   verify_email_notice:
-    please_verify: 感謝參與！請檢查您的電子郵件來找找驗證您的投票的連結。
+    please_verify: 感謝參與！請檢查你的電子郵件來找找驗證你的投票的連結。
   previous_polls_page:
     heading: 在 %{name} 中的動態
     polls_count: 顯示 %{total} 中的 %{loaded} 個決策
@@ -398,13 +398,13 @@ zh_TW:
     confirm_delete_body: 該電子郵件將會被刪除。 %{sender} 以後發送的任何電子郵件都不會受到影響。
     unreleased_emails: 未公開的電子郵件
     start_a_thread_by_email: 透過電子郵件發起話題
-    send_email_to_start_thread: 發送電子郵件至此地址以在您的群組中發起話題。
+    send_email_to_start_thread: 發送電子郵件至此地址以在你的群組中發起話題。
     copy_address: 複製地址
     email_me_this_address: 透過電子郵件給我這個地址
     email_address_copied_to_clipboard: 電子郵件地址已複製到剪貼簿
-    forward_email_to_move_conversation: 提示：當您需要做出決定或保留記錄時，將電子郵件對話轉發給 Loomio。
+    forward_email_to_move_conversation: 提示：當你需要做出決定或保留記錄時，將電子郵件對話轉發給 Loomio。
     start_a_discussion_by_email: 透過電子郵件發起討論
-    send_email_to_start_discussion: 向此地址發送電子郵件，即可在您的群組中發起討論。
+    send_email_to_start_discussion: 向此地址發送電子郵件，即可在你的群組中發起討論。
     subject_body_attachments: 郵件主題將變為討論標題，郵件正文將變為討論描述。文件附件也會被複製過來。
   volume_levels:
     loud: 大聲
@@ -415,19 +415,19 @@ zh_TW:
   pin_event_form:
     title: 釘選到時間軸
     title_label: 標題
-    hint: 下次的提示：試著在您點擊「釘選」前先反白某些文字。
+    hint: 下次的提示：試著在你點擊「釘選」前先反白某些文字。
   change_volume_form:
     explain_scope:
-      thread: 這會在您收到此討論串通知時發生變化
-      group: 這會在您收到關於此群組中的所有討論串的通知時發生變化
+      thread: 這會在你收到此討論串通知時發生變化
+      group: 這會在你收到關於此群組中的所有討論串的通知時發生變化
     simple:
       label: 通知
       loud: 已訂閱
       normal: 普通
       quiet: 忽略
-      question: 您想要什麼時候被通知？
+      question: 你想要什麼時候被通知？
       loud_explain: 只要有活動
-      normal_explain: 當某人請求您的注意時
+      normal_explain: 當某人請求你的注意時
       quiet_explain: 沒有通知
     loud_label: 所有動態
     normal_label: 公告
@@ -435,70 +435,70 @@ zh_TW:
     mute_label: 靜音
     saved: 通知設定已更新
     discussion:
-      loud_description: 您將會收到此討論串中所有活動的電子郵件。
-      normal_description: 您只會收到此討論串中重要活動的電子郵件。
-      quiet_description: 您不會收到此討論串中任何的電子郵件。
+      loud_description: 你將會收到此討論串中所有活動的電子郵件。
+      normal_description: 你只會收到此討論串中重要活動的電子郵件。
+      quiet_description: 你不會收到此討論串中任何的電子郵件。
       apply_to_all: 套用這些設定到在此群組中所有的討論串。
       only_this_thread: 僅套用到此討論串
       group: 變更群組的通知
       user: 在通知設定下變更
       messages:
-        loud: 您將會收到關於此討論串動態的電子郵件。
-        normal: 您將會收到關於此討論串提案的電子郵件。
-        quiet: 您將不會收到任何關於此討論串的電子郵件。
+        loud: 你將會收到關於此討論串動態的電子郵件。
+        normal: 你將會收到關於此討論串提案的電子郵件。
+        quiet: 你將不會收到任何關於此討論串的電子郵件。
       title: 討論通知
     membership:
       title: "%{title} 的通知"
-      loud_description: 您將會在這個群組有任何動態時收到電子郵件。
-      normal_description: 您將會在這個群組有任何動態時收到電子郵件。
-      quiet_description: 您將不會收到任何關於此群組動態的電子郵件。
+      loud_description: 你將會在這個群組有任何動態時收到電子郵件。
+      normal_description: 你將會在這個群組有任何動態時收到電子郵件。
+      quiet_description: 你將不會收到任何關於此群組動態的電子郵件。
       apply_to_all: 套用這些設定到我所有的群組。
       apply_to_organization: 套用到所有在 %{organization} 中的群組
       messages:
-        loud: 您將會收到關於此群組所有動態的電子郵件。
-        normal: 您將只會收到在這個群組內關於公告的電子郵件。
-        quiet: 您將不會收到任何關於此群組的電子郵件。
+        loud: 你將會收到關於此群組所有動態的電子郵件。
+        normal: 你將只會收到在這個群組內關於公告的電子郵件。
+        quiet: 你將不會收到任何關於此群組的電子郵件。
     all_groups:
       title: 所有群組的通知偏好設定
-      loud_description: 您將會收到關於您的所有群組中所有動態的電子郵件。
-      normal_description: 您只會收到您所有群組中重要活動的電子郵件。
-      quiet_description: 您將不會收到任何群組中動態的電子郵件。
+      loud_description: 你將會收到關於你的所有群組中所有動態的電子郵件。
+      normal_description: 你只會收到你所有群組中重要活動的電子郵件。
+      quiet_description: 你將不會收到任何群組中動態的電子郵件。
       messages:
-        loud: 您將會收到關於您的所有群組中所有動態的電子郵件。
-        normal: 您將只會收到在您的所有群組內關於公告的電子郵件。
-        quiet: 您將不會收到任何關於您的群組的電子郵件。
+        loud: 你將會收到關於你的所有群組中所有動態的電子郵件。
+        normal: 你將只會收到在你的所有群組內關於公告的電子郵件。
+        quiet: 你將不會收到任何關於你的群組的電子郵件。
     user:
       title: 新群組的電子郵件設定
-      loud_description: 您將會在任何您新加入的群組有動態時收到電子郵件。
-      normal_description: 您將會收到您加入的任何新群組與公告相關的電子郵件。
-      quiet_description: 您將不會收到任何關於您新加入的群組的動態的電子郵件。
+      loud_description: 你將會在任何你新加入的群組有動態時收到電子郵件。
+      normal_description: 你將會收到你加入的任何新群組與公告相關的電子郵件。
+      quiet_description: 你將不會收到任何關於你新加入的群組的動態的電子郵件。
       apply_to_all: 套用這些設定到我所有的群組。
       messages:
-        loud: 您將會收到關於您新加入的群組中所有動態的電子郵件。
-        normal: 您將會收到在新群組中關於公告的電子郵件。
-        quiet: 您將不會收到任何關於新群組的電子郵件。
+        loud: 你將會收到關於你新加入的群組中所有動態的電子郵件。
+        normal: 你將會收到在新群組中關於公告的電子郵件。
+        quiet: 你將不會收到任何關於新群組的電子郵件。
     change_your_email_settings: 更改電子郵件設定
-    when_would_you_like_to_be_emailed_group: 您希望何時收到有關該小組的電子郵件？
+    when_would_you_like_to_be_emailed_group: 你希望何時收到有關該小組的電子郵件？
     changes_all_threads_in_group: 這會改變群組中所有執行緒的設定。
     what_do_the_options_mean: 這些選項代表什麼意思？
     loud_desc: 每次有人參加
     normal_desc: 當有人通知我時
     quiet_desc: 絕不
-    when_would_you_like_to_be_emailed_poll_type: 您希望何時收到有關此 %{poll_type} 的電子郵件？
+    when_would_you_like_to_be_emailed_poll_type: 你希望何時收到有關此 %{poll_type} 的電子郵件？
     normal_excludes_mentioning_html: 當有人{'@'}提及你（例如，在評論中回覆你時），有一個單獨的設定。<a href="%{url}">點擊此處編輯@提及的設置</a>
-    loud_explained: 每次有新評論、有人投票或開始投票或討論時，您都會收到電子郵件。
+    loud_explained: 每次有新評論、有人投票或開始投票或討論時，你都會收到電子郵件。
     changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
-    when_do_you_want_to_be_emailed: 您希望何時收到郵件？
+    when_do_you_want_to_be_emailed: 你希望何時收到郵件？
     what_the_options_mean: 這些選項的含義
-    when_would_you_like_to_be_emailed_discussion: 您希望何時收到關於此次討論的電子郵件？
+    when_would_you_like_to_be_emailed_discussion: 你希望何時收到關於此次討論的電子郵件？
     changes_all_discussions_and_polls_in_group: 這將更改群組中所有討論和投票的設定。
     normal_explained: 當有人在討論或投票的「通知」欄位中輸入你的名字，或他們使用「@」提及該群組。
     aria_label: 更改電子郵件設定表單
-    when_do_you_want_to_be_emailed_thread: 您希望何時收到關於此主題的郵件？
+    when_do_you_want_to_be_emailed_thread: 你希望何時收到關於此主題的郵件？
     loud_option: 任何人參與的任何活動（所有活動）
     normal_option: 當有人想引起我的注意（收到通知時）
     quiet_option: 關於此主題的郵件已關閉
-    quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
+    quiet_explained: 即使有人試圖通知你，你也不會收到電子郵件。
   inbox:
     clear: 清除
     latest: 最新
@@ -508,8 +508,8 @@ zh_TW:
     password_label: 密碼：
     password_confirmation_label: 再輸入一次密碼：
   signed_out_modal:
-    title: 您的工作階段已結束
-    message: 您已經從其他視窗登出。請重新登入以繼續。
+    title: 你的工作階段已結束
+    message: 你已經從其他視窗登出。請重新登入以繼續。
     ok: 確定
     aria_label: 會議結束
   comment_form:
@@ -526,15 +526,15 @@ zh_TW:
     edit_comment: 編輯意見
     delete_comment: 刪除意見
     cancel_reply: 取消回覆
-    confirm_delete_message: 您確定要刪除這個意見嗎？
+    confirm_delete_message: 你確定要刪除這個意見嗎？
     confirm_delete: 刪除意見
     in_reply_to: 回覆給 %{name}
     write_a_comment: 撰寫評論……
     post_comment: 留下意見
     submit_button:
       label: 貼文
-    private_privacy_notice: 您的意見只會被 %{groupName} 群組的成員看到。
-    public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
+    private_privacy_notice: 你的意見只會被 %{groupName} 群組的成員看到。
+    public_privacy_notice: 你的意見將會讓任何在網路上的人看到。
     sign_in: 登入以加入對話
     add_a_comment: 新增評論
     share_your_thoughts: 分享你的想法…
@@ -584,7 +584,7 @@ zh_TW:
     whole_thread: 整個討論串
     from_comment: 從留言 URL
     from_sequence_id: 從討論串項目 URL
-    unread: 對您來說是新的
+    unread: 對你來說是新的
     jump_to: 跳至
     timeline: 時間軸
     top: 頂部
@@ -694,79 +694,79 @@ zh_TW:
     discussion: 討論：
   notifications:
     header: 通知
-    no_notifications: 您沒有任何通知
+    no_notifications: 你沒有任何通知
     with_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
-      comment_replied_to: "%{actor} 回覆您於：%{title}"
-      invitation_accepted: "%{actor} 接受了您加入 %{title} 的邀請"
-      membership_created: "%{actor} 邀請您加入 %{title} 於 %{site_name}"
-      membership_resent: "%{actor} 邀請您加入 %{site_name} 上的 %{title}"
+      comment_replied_to: "%{actor} 回覆你於：%{title}"
+      invitation_accepted: "%{actor} 接受了你加入 %{title} 的邀請"
+      membership_created: "%{actor} 邀請你加入 %{title} 於 %{site_name}"
+      membership_resent: "%{actor} 邀請你加入 %{site_name} 上的 %{title}"
       membership_requested: "%{actor} 請求加入 %{title}"
-      membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
+      membership_request_approved: "%{actor} 接受你加入 %{title} 的請求"
       new_comment: "%{actor} 留言於：%{title}"
-      new_coordinator: "%{actor} 讓您成為了 %{title} 的管理員"
+      new_coordinator: "%{actor} 讓你成為了 %{title} 的管理員"
       outcome_announced: "%{actor} 分享了 %{poll_type} 的結果：%{title}"
       outcome_created: "%{actor} 分享了 %{poll_type} 的結果：%{title}"
       outcome_updated: "%{actor} 更新了 %{poll_type} 結果：%{title} "
       outcome_review_due: 是時候審閱結果了：%{title}
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}：%{title}"
       poll_closing_soon: "%{poll_type} 將於24小時內關閉：%{title}"
-      poll_closing_soon_author: 您的 %{poll_type} 將於24小時內關閉：%{title}
+      poll_closing_soon_author: 你的 %{poll_type} 將於24小時內關閉：%{title}
       poll_created: "%{actor} 啟動了一個 %{poll_type}：%{title}"
       poll_edited: "%{actor} 更新了 %{poll_type}：%{title}"
       poll_expired: "%{poll_type} 已關閉：%{title}"
-      poll_expired_author: 分享了您的 %{poll_type} 結論：%{title}
+      poll_expired_author: 分享了你的 %{poll_type} 結論：%{title}
       poll_option_added: "%{actor} 新增了選項至 %{title}"
       poll_reopened: "%{actor} 重新開啟了 %{poll_type}：%{title}"
-      poll_reminder: "%{actor} 正在提醒您要在 %{title} 投票"
-      poll_reminder_wip: "%{actor} 正在提醒您給予回饋：%{title}"
-      reaction_created: "%{actor} 對您在 %{title} 的 %{model} 做出了 %{reaction} 反應"
+      poll_reminder: "%{actor} 正在提醒你要在 %{title} 投票"
+      poll_reminder_wip: "%{actor} 正在提醒你給予回饋：%{title}"
+      reaction_created: "%{actor} 對你在 %{title} 的 %{model} 做出了 %{reaction} 反應"
       stance_created: "%{actor} 已投票於：%{title}"
       stance_updated: "%{actor} 已投票於：%{title}"
       stance_created_option: "%{actor} 已投票 %{option} 於 %{title}"
-      user_added_to_group: "%{actor} 將您新增至群組：%{title}"
-      user_mentioned: "%{actor} 提到您在：%{title}"
+      user_added_to_group: "%{actor} 將你新增至群組：%{title}"
+      user_mentioned: "%{actor} 提到你在：%{title}"
       group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
       new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
-      poll_announced: "%{actor} 邀請您投票：%{title}"
-      discussion_announced: "%{actor} 邀請您參加討論：%{title}"
+      poll_announced: "%{actor} 邀請你投票：%{title}"
+      discussion_announced: "%{actor} 邀請你參加討論：%{title}"
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
+      user_reminded: 演員 %{actor} 提醒你投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
-      group_announced: "%{actor} 邀請您加入群組"
-      comment_replied_to: "%{actor} 回覆您"
-      membership_created: "%{actor} 邀請您加入群組"
-      membership_resent: "%{actor}邀請您加入群組"
-      membership_requested: "%{actor} 請求加入您的群組"
-      membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
+      group_announced: "%{actor} 邀請你加入群組"
+      comment_replied_to: "%{actor} 回覆你"
+      membership_created: "%{actor} 邀請你加入群組"
+      membership_resent: "%{actor}邀請你加入群組"
+      membership_requested: "%{actor} 請求加入你的群組"
+      membership_request_approved: "%{actor} 接受你加入 %{title} 的請求"
       outcome_announced: "%{actor} 分享了 %{poll_type} 結論"
       outcome_created: "%{actor} 分享了 %{poll_type} 結論"
       outcome_review_due: 是時候審閱 %{poll_type} 結論了
-      poll_announced_wip: "%{actor} 想要您在 %{poll_type} 提供回饋"
+      poll_announced_wip: "%{actor} 想要你在 %{poll_type} 提供回饋"
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}"
       poll_closing_soon: "%{poll_type} 將於24小時關閉"
-      poll_closing_soon_author: 您的 %{poll_type} 將於24小時內關閉
+      poll_closing_soon_author: 你的 %{poll_type} 將於24小時內關閉
       poll_created: "%{actor} 開始了 %{poll_type}"
       poll_edited: "%{actor} 更新了 %{poll_type}"
       poll_expired: "%{poll_type} 已關閉"
-      poll_expired_author: 分享了您的 %{poll_type} 結論
+      poll_expired_author: 分享了你的 %{poll_type} 結論
       poll_option_added: "%{actor} 新增了選項至 %{poll_type}"
       poll_reopened: "%{actor} 重新開啟了 %{poll_type}"
-      poll_reminder: "%{actor} 正在提醒您投票"
-      poll_reminder_wip: "%{actor} 正在提醒您給予回饋"
-      reaction_created: "%{actor} 在您的 %{model} 反應了 %{reaction}"
+      poll_reminder: "%{actor} 正在提醒你投票"
+      poll_reminder_wip: "%{actor} 正在提醒你給予回饋"
+      reaction_created: "%{actor} 在你的 %{model} 反應了 %{reaction}"
       stance_created: "%{actor} 投票了"
       stance_updated: "%{actor} 投票了"
       stance_created_option: "%{actor} 投票了 %{option}"
-      user_mentioned: "%{actor} 提及您"
-      user_reminded: "%{actor} 正在提醒您投票"
+      user_mentioned: "%{actor} 提及你"
+      user_reminded: "%{actor} 正在提醒你投票"
       group_mentioned: "%{actor} 提及了該團體"
-      poll_announced: "%{actor} 邀請您參與 %{poll_type} 投票"
-      discussion_announced: "%{actor} 邀請您參加討論"
+      poll_announced: "%{actor} 邀請你參與 %{poll_type} 投票"
+      discussion_announced: "%{actor} 邀請你參加討論"
       discussion_edited: "%{actor} 編輯了討論內容"
       discussion_closed: "%{actor} 結束了討論"
       new_discussion: "%{actor} 發起了一場討論"
@@ -774,21 +774,21 @@ zh_TW:
       outcome_updated: "%{actor} 更新了結果"
       thread_locked: "%{actor} 鎖定了該線程"
     hints:
-      poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
-      poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
+      poll_closing_soon: 現在是投票、變更你的心意或鼓勵他人參與的好時機。
+      poll_closing_soon_author: 你可能希望提醒人們投票或延長截止日期。
       outcome_review_due: 可以考慮發起回饋調查或新的討論，邀請大家反思該決定是如何執行的。
     email_subject:
       unknown_sender: 請查看來自未知寄件者的電子郵件
-      comment_replied_to: "%{actor} 在 %{title} 中回覆了您。"
+      comment_replied_to: "%{actor} 在 %{title} 中回覆了你。"
       discussion_announced: "%{title}"
-      invitation_accepted: "%{actor} 接受了您的邀請，加入了 %{title}"
-      membership_created: "%{actor} 邀請您加入 %{title} on %{site_name}"
-      membership_resent: "%{actor} 邀請您加入 %{title} on %{site_name}"
+      invitation_accepted: "%{actor} 接受了你的邀請，加入了 %{title}"
+      membership_created: "%{actor} 邀請你加入 %{title} on %{site_name}"
+      membership_resent: "%{actor} 邀請你加入 %{title} on %{site_name}"
       membership_requested: "%{actor} 請求加入 %{title}"
-      membership_request_approved: "%{actor} 已批准您加入 %{title} 的請求"
+      membership_request_approved: "%{actor} 已批准你加入 %{title} 的請求"
       new_comment: "%{actor} 評論於：%{title}"
-      new_coordinator: "%{actor} 將您設為 %{title} 的管理員"
-      new_delegate: "%{actor} 已將您指定為 %{title} 的代表，並賦予您投票權。"
+      new_coordinator: "%{actor} 將你設為 %{title} 的管理員"
+      new_delegate: "%{actor} 已將你指定為 %{title} 的代表，並賦予你投票權。"
       new_discussion: "%{title}"
       outcome_announced: "%{poll_type} 結論：%{title}"
       outcome_created: "%{poll_type} 結論：%{title}"
@@ -796,26 +796,26 @@ zh_TW:
       outcome_review_due: 是時候回顧一下結論了：%{title}
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 將於 24 小時後結束：%{title}"
-      poll_closing_soon_author: 您的 %{poll_type} 投票將於 24 小時後結束：%{title}
+      poll_closing_soon_author: 你的 %{poll_type} 投票將於 24 小時後結束：%{title}
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} 更新了 %{poll_type}: %{title}"
       poll_expired: "%{poll_type} 已結束：%{title}"
       poll_expired_author: 發布結論：%{title}
       poll_option_added: "%{actor} 為 %{title} 新增了選項"
       poll_reopened: 投票延長：%{title}
-      poll_reminder: "%{actor} 提醒您為 %{title} 投票"
-      poll_reminder_wip: "%{actor} 提醒您提供回饋：%{title}"
-      reaction_created: "%{actor} 對您的 %{model} 在 %{title} 中做出了 %{reaction} 的反應"
+      poll_reminder: "%{actor} 提醒你為 %{title} 投票"
+      poll_reminder_wip: "%{actor} 提醒你提供回饋：%{title}"
+      reaction_created: "%{actor} 對你的 %{model} 在 %{title} 中做出了 %{reaction} 的反應"
       stance_created: "%{actor} 投票支持：%{title}"
       stance_updated: "%{actor} 投票支持：%{title}"
       stance_created_option: "%{actor} 在 %{title} 中投票支持 %{option}"
-      user_added_to_group: "%{actor} 將您加入了群組：%{title}"
+      user_added_to_group: "%{actor} 將你加入了群組：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了你"
       group_mentioned: "%{actor} 在以下文章中提到了這個團體：%{title}"
       poll_announced: 投票：%{title}
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
+      user_reminded: 演員 %{actor} 提醒你投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
   discussion_fork_actions:
     move: 移動
@@ -851,7 +851,7 @@ zh_TW:
     group_label: 群組
     group_placeholder: 選擇一個群組
     title_label: 標題
-    title_placeholder: 您想討論的主題是？
+    title_placeholder: 你想討論的主題是？
     context_label: 論述
     context_placeholder: 提供此討論的部份內容，如此人們才能知道如何參與
     privacy_label: 隱私權
@@ -863,14 +863,14 @@ zh_TW:
     none_invite_only_discussion: 無（僅限受邀者參與討論）
     new_discussion_template: 新討論模板
     edit_discussion_template: 編輯討論模板
-    change_log_placeholder: 您可以選擇性地描述您的變更。此訊息將添加到討論中。
+    change_log_placeholder: 你可以選擇性地描述你的變更。此訊息將添加到討論中。
     start_discussion: 開始討論
     discussion_updated: 討論已更新
     discussion_created: 討論已創建
     discussion_started: 討論開始
     none_direct_discussion: 無（直接討論）
     direct_discussion: 直接討論
-    direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
+    direct_discussion_hint: 直接討論僅對你邀請的特定人員可見。它不會出現在任何群組的討論清單中——你可以在「直接討論」頁面找到它。
     recommended_poll_templates: 推薦的投票模板
     edit_discussion_context: 編輯討論上下文
   announcement:
@@ -920,50 +920,50 @@ zh_TW:
       non_voters: "%{name} 的成員尚未被邀請"
       delegates_of_group: "%{name} 的代表"
     form:
-      group_has_no_members_yet: 您是小組中唯一的成員。在開始話題或做出決定之前，您可能會想邀請一些人加入您的小組。
-      invite_people_to_evaluate_loomio: 邀請一些人加入您的 Loomio 小組，共同做出決定
+      group_has_no_members_yet: 你是小組中唯一的成員。在開始話題或做出決定之前，你可能會想邀請一些人加入你的小組。
+      invite_people_to_evaluate_loomio: 邀請一些人加入你的 Loomio 小組，共同做出決定
       too_many_invitations: '已超過邀請限制。<a href="%{upgradeUrl}" target="_blank">升級</a>
 
         '
       no_invitations_remaining: |
-        <p>您已經使用了此群組可用的全部 %{maxMembers} 個邀請。</p>
+        <p>你已經使用了此群組可用的全部 %{maxMembers} 個邀請。</p>
         <p>下一步，<a href="%{upgradeUrl}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
       invitations_remaining: 剩餘 %{count} 個邀請。<a href="%{upgradeUrl}" target="_blank">升級</a>
-      who_to_invite: 您想要邀請誰？
+      who_to_invite: 你想要邀請誰？
       invitation_message_placeholder: 邀請電子郵件中要包含的訊息。（選擇性）
       invitation_message_label: 訊息
       invitation_message_default: 我成立了這個 Loomio 小組來幫助我們一起做決定。請接受我的邀請。只需一分鐘即可加入。謝謝。
       group_announced:
         title: 邀請至群組
-        helptext: 您想要邀請誰到群組中？
+        helptext: 你想要邀請誰到群組中？
       discussion_announced:
         title: 邀請至討論串
-        helptext: 您想要邀請誰到討論串中？
-        notify_helptext: 您想通知此討論串給誰？
+        helptext: 你想要邀請誰到討論串中？
+        notify_helptext: 你想通知此討論串給誰？
       discussion_edited:
         title: 編輯的通知
-        helptext: 您想通知此更新給誰？（選擇性）
+        helptext: 你想通知此更新給誰？（選擇性）
       wip_poll_announced:
         title: 邀請給予回饋
-        helptext: 您想邀請誰來提供回饋？
+        helptext: 你想邀請誰來提供回饋？
       poll_reminder:
         title: 提醒投票
-        helptext: 您想要提醒誰投票？
+        helptext: 你想要提醒誰投票？
         message_label: 訊息
         message_placeholder: 選擇性的訊息，告訴夥伴為什麼他們應該要投票
       wip_poll_reminder:
         title: 提醒給予回饋
-        helptext: 您想提醒誰來給予回饋？
+        helptext: 你想提醒誰來給予回饋？
         message_label: 訊息
         message_placeholder: 包含在通知電子郵件中的選擇性訊息
       poll_edited:
         title: 編輯的通知
-        helptext: 您想通知此更新給誰？
+        helptext: 你想通知此更新給誰？
       outcome_announced:
         title: 分享成果
         helptext: 總結過程的結果，包含發現的任何意見與問題。
       anyone_can_participate: 任何有連結的人都可以參與
-      placeholder: 您可以輸入名稱或電子郵件地址
+      placeholder: 你可以輸入名稱或電子郵件地址
       type_or_paste_email_addresses_to_invite: 輸入或貼上要邀請的電子郵件地址
       notified_empty: 尚未選取任何人
       single_notification: 將會傳送 1 則通知。
@@ -1000,7 +1000,7 @@ zh_TW:
     group_mentioned: "%{name} 提及了有 %{length} 人的群組："
     poll_announced: "%{name} 邀請了 %{length} 人參與投票："
     discussion_notification_history: 討論通知歷史記錄
-    inviting_guests_to_discussion: 訪客不屬於您的群組，他們只能訪問此討論。
+    inviting_guests_to_discussion: 訪客不屬於你的群組，他們只能訪問此討論。
     topic_notification_history: 線程通知歷史記錄
     notification_history: 通知歷史記錄
   action_dock:
@@ -1113,7 +1113,7 @@ zh_TW:
     edit_markdown: 編輯 Markdown
     markdown_confirm: 將所見即所得內容轉換為 Markdown 可能會遺失某些格式。
     upload_failed: 上傳失敗
-    confirm_discard: 您確定要放棄更改嗎？
+    confirm_discard: 你確定要放棄更改嗎？
     discard_draft: 丟棄草稿
   cover_photo_form:
     heading: 新的封面圖片
@@ -1126,20 +1126,20 @@ zh_TW:
     image_size_helptext: 理想的圖片尺寸是 100x100 像素
     upload_success: 成功更新圖示
   join_group_button:
-    not_a_member: 您目前不是此群組的成員。
+    not_a_member: 你目前不是此群組的成員。
     join_group: 加入群組
     membership_requested: 已申請成員資格
     messages:
-      joined_group: 您現在是 %{group} 的成員了
+      joined_group: 你現在是 %{group} 的成員了
   membership_request_form:
     heading: 要求加入群組
     name_label: 名字
     email_label: 電子郵件
-    introduction_label: 為什麼您想要加入？
+    introduction_label: 為什麼你想要加入？
     submit_button: 要求加入
     introduction_over_limit: 回應太長了
     messages:
-      membership_requested: 您已請求加入 %{group}
+      membership_requested: 你已請求加入 %{group}
     aria_label: 會員申請表
   revision_history_modal:
     discussion_header: 討論編輯
@@ -1161,19 +1161,19 @@ zh_TW:
     group_id_changed: 移動至 %{name}
     aria_label: 修訂歷史
   reactions_input:
-    add_your_reaction: 新增您的反應
+    add_your_reaction: 新增你的反應
   reactions_display:
     more_reactions: "%{count} 更多"
-    you: 您
-    you_and_name: 您與 %{name}
-    you_and_name_and_count_more: 您、%{name} 與 %{count} 更多
+    you: 你
+    you_and_name: 你與 %{name}
+    you_and_name_and_count_more: 你、%{name} 與 %{count} 更多
     name_and_count_more: "%{name} 與 %{count} 更多"
   delete_group_modal:
     title: 刪除群組
     subgroup_title: 刪除子群組
-    parent_body: "<h2>這是您的父組 - 而不是子組！</h2><br>如果刪除此群組，所有子群組也將永久刪除。您的 Loomio 訂閱也將取消。強烈建議在執行此操作之前導出您的群組數據並手動下載所有重要文件。你確定你要繼續嗎？"
-    body: 您確定要刪除該子群組嗎？所有話題、投票、文件和其他群組內容都將永久刪除。建議您匯出群組資料並手動下載所有重要文件，然後再繼續。
-    confirm: 輸入「%{name}」以確認您想要刪除此群組。
+    parent_body: "<h2>這是你的父組 - 而不是子組！</h2><br>如果刪除此群組，所有子群組也將永久刪除。你的 Loomio 訂閱也將取消。強烈建議在執行此操作之前導出你的群組數據並手動下載所有重要文件。你確定你要繼續嗎？"
+    body: 你確定要刪除該子群組嗎？所有話題、投票、文件和其他群組內容都將永久刪除。建議你匯出群組資料並手動下載所有重要文件，然後再繼續。
+    confirm: 輸入「%{name}」以確認你想要刪除此群組。
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
   group_page:
     stats: 群組統計
@@ -1186,15 +1186,15 @@ zh_TW:
     show_opened: "%{count} 個開啟"
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
-    private_threads: 您需要是成員才能檢視群組中的私密討論串
+    private_threads: 你需要是成員才能檢視群組中的私密討論串
     no_more_threads: 無更多討論串可載入
     view_closed_threads: 檢視已關閉的討論串
     messages:
       privacy:
         members: 這個群組現在只對成員可見
-        parent_members: 這個群組現在只對您組織內的成員可見
+        parent_members: 這個群組現在只對你組織內的成員可見
         public: 這個群組現在可公開檢視
-      leave_group_success: 您已經離開了此群組
+      leave_group_success: 你已經離開了此群組
       archive_group_success: 這個群組已被停用
     group_logo: 群組標誌
     new_photo: 新圖片
@@ -1227,16 +1227,16 @@ zh_TW:
       subscription_status: 訂閱狀態
     volume:
       loud: 只要有活動就立刻寄發電子郵件。
-      loud_aria_description: 您在此群組的通知音量設定為大聲。只要一有動態，您就會收到電子郵件。
-      loud_message: 所有在「%{name}」中的活動會以電子郵件的方式通知您。
+      loud_aria_description: 你在此群組的通知音量設定為大聲。只要一有動態，你就會收到電子郵件。
+      loud_message: 所有在「%{name}」中的活動會以電子郵件的方式通知你。
       normal: 只在有重要的動態時寄發電子郵件：新討論串及提案、結果等等。
-      normal_aria_description: 您在此群組的通知音量設定為普通。您將只會在有重要動態時收到電子郵件，像是當某人啟動新討論串、提出提案或是結果定案。
-      normal_message: 在「%{name}」中只有重要的活動會以電子郵件的方式通知您。
+      normal_aria_description: 你在此群組的通知音量設定為普通。你將只會在有重要動態時收到電子郵件，像是當某人啟動新討論串、提出提案或是結果定案。
+      normal_message: 在「%{name}」中只有重要的活動會以電子郵件的方式通知你。
       quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
-      quiet_aria_description: 您在此群組的通知音量設定為安靜。您將不會收到任何有關此群組動態的電子郵件。群組動態將會顯示在您的儀表板上。
-      quiet_message: 在「%{name}」中的活動不再以電子郵件的方式通知您了。
-      mute_aria_description: 您在此群組的通知音量設定為靜音。您將不會收到任何電子郵件，除非有人提及您，且群組動態將不會顯示在您的儀表板上。
-      mute_message: "「%{name}」已從您的儀表板中移除。"
+      quiet_aria_description: 你在此群組的通知音量設定為安靜。你將不會收到任何有關此群組動態的電子郵件。群組動態將會顯示在你的儀表板上。
+      quiet_message: 在「%{name}」中的活動不再以電子郵件的方式通知你了。
+      mute_aria_description: 你在此群組的通知音量設定為靜音。你將不會收到任何電子郵件，除非有人提及你，且群組動態將不會顯示在你的儀表板上。
+      mute_message: "「%{name}」已從你的儀表板中移除。"
       mute: 從儀表板隱藏該群組並且除非提及 {'@'} 否則不通知。
     privacy:
       private: 隱私權：此群組現在只會被成員看到
@@ -1249,13 +1249,13 @@ zh_TW:
     members: 成員
     discussions: 討論
     no_discussions_here: 這裡沒有任何討論！
-    private_discussions: 您需要成為會員才能查看此群組中的私密討論串。
+    private_discussions: 你需要成為會員才能查看此群組中的私密討論串。
     discussion_templates: 討論模板
     show_locked: "%{count} 已鎖定"
     view_locked_discussions: 看已鎖定的討論
     locked_discussions: 已鎖定討論
   export_data_modal:
-    title: 您想要如何使用您的資料？
+    title: 你想要如何使用你的資料？
     as_csv: 在試算表中開啟它
     as_html: 在瀏覽器中開啟它
     as_json: 將此群組在我自己的伺服器上託管
@@ -1266,12 +1266,12 @@ zh_TW:
       description_updated: 描述已更新
   leave_group_form:
     title: 離開群組
-    question: 您確定您想要離開此群組嗎？
+    question: 你確定你想要離開此群組嗎？
     submit: 是的，離開此群組
     aria_label: 離開群組
   archive_group_form:
     title: 停用群組
-    question: 您確定您想要停用此群組嗎？
+    question: 你確定你想要停用此群組嗎？
     submit: 是的，停用此群組
     aria_label: 停用群組
   group_form:
@@ -1286,7 +1286,7 @@ zh_TW:
     new_organisation: 新組織
     new_group: 新增群組
     new_subgroup: 新的子群組
-    new_group_explainer: 開始新 Loomio 群組，您組織的討論與決策線上首頁
+    new_group_explainer: 開始新 Loomio 群組，你組織的討論與決策線上首頁
     new_subgroup_explainer: 在現有群組中開始下層群組，供組織中的團隊使用的私人空間
     start_group_heading: 啟動群組
     start_subgroup_heading: 啟動子群組
@@ -1300,13 +1300,13 @@ zh_TW:
     handle: 處理
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
-    group_name_placeholder: 您的群組的名稱是？
-    subgroup_name_placeholder: 您的下層群組的名稱是？
-    organization_name_placeholder: 您的組織的名字是什麼？
+    group_name_placeholder: 你的群組的名稱是？
+    subgroup_name_placeholder: 你的下層群組的名稱是？
+    organization_name_placeholder: 你的組織的名字是什麼？
     description: 描述
-    description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
+    description_placeholder: 描述群組的目的讓你的夥伴們知道他們為什麼在這裡。
     new_description_placeholder: 為什麼要試試 Loomio？你們需要共同做出哪些決定？
-    secret_by_default: 只有受邀加入的人才能存取您的群組。您可以在稍後變更此設定。
+    secret_by_default: 只有受邀加入的人才能存取你的群組。你可以在稍後變更此設定。
     privacy_statement:
       public_on_web: 群組內容的名稱、描述與附件將對公眾可見
       private_to_group: 名稱與描述都將只會對成員可見。
@@ -1316,10 +1316,10 @@ zh_TW:
     group_privacy_is_closed_description: 不列出。任何有連結的人都可以要求加入。所有討論串都是私密的。
     group_privacy_is_closed_public_threads_description: 不列出。任何有連結的人都可以要求加入。討論串可以是公開或私密的。
     group_privacy_is_secret_description: 僅被邀請的夥伴才能找到群組。所有討論串都是私密的。
-    confirm_change_to_secret: 若您繼續，所有在此群組及其子群組的討論串都會變為非公開。
-    confirm_change_to_secret_subgroup: 若您繼續，所有的討論串都會變為非公開。
-    confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
-    confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為非公開。
+    confirm_change_to_secret: 若你繼續，所有在此群組及其子群組的討論串都會變為非公開。
+    confirm_change_to_secret_subgroup: 若你繼續，所有的討論串都會變為非公開。
+    confirm_change_to_public: 若你繼續，所有在此群組的討論串都將會變為公開在網路上。
+    confirm_change_to_private_discussions_only: 若你繼續，任何在此群組中的公開討論串都將會變為非公開。
     profile: 簡歷
     subgroup_privacy_is_open_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
     subgroup_privacy_is_closed_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
@@ -1372,9 +1372,9 @@ zh_TW:
     upload_logo: 上傳圖示
     upload_cover_photo: 上傳封面圖片
     request_to_join_prompt: 請求加入提示
-    default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
-    upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
-    group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
+    default_request_to_join_prompt: 感謝你對我們小組的興趣。請自我介紹並解釋為什麼你要求加入。
+    upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級你的訂閱</a>以建立子群組'
+    group_handle_placeholder: 你的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
     aria_label: 小組形式
     list_in_the_groups_directory: 是否已列入群組目錄？
@@ -1389,18 +1389,18 @@ zh_TW:
     members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
     members_can_edit_discussions_v2: 會員可以管理討論和評論
     members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
-    group_handle_hint_new: 您的群組網址和電子郵件位址將分別為 %{host}/%{handle} 和 %{handle}{'@'}%{host}
-    handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
+    group_handle_hint_new: 你的群組網址和電子郵件位址將分別為 %{host}/%{handle} 和 %{handle}{'@'}%{host}
+    handle_changed_hint: 你先前的網址和電子郵件地址將會重新導向到你的新地址。
   group_export_modal:
     title: 匯出群組資料
     body: |
       <p>
-      您可以在任何時候下載一份您群組資料的副本。
+      你可以在任何時候下載一份你群組資料的副本。
       <a href="https://help.loomio.org/en/user_manual/groups/data_export/">更多資訊。</a>
       </p>
       <p>
-      這可能需要一些時間才能完成，取決於您群組的大小。
-      當它準備好的時候您將會收到一封帶有下載檔案連結的電子郵件。
+      這可能需要一些時間才能完成，取決於你群組的大小。
+      當它準備好的時候你將會收到一封帶有下載檔案連結的電子郵件。
       </p>
     submit: 開始匯出
     flash: 群組資料匯出開始
@@ -1430,15 +1430,15 @@ zh_TW:
     group: 群組
     group_placeholder: 選擇一個群組
     shareable_link: 可分享的連結
-    share_group: 分享您的群組
+    share_group: 分享你的群組
     copy_link: 複製
     email_addresses: 電子郵件地址
-    secret_group_url_explanation: 這是您群組的網址。僅有已受邀的成員才能看到這個群組。
-    shareable_group_url_explanation: 您可以公開分享此連結。人們可以請求加入，而您可以批准或忽略請求。
-    shareable_invitation_explanation: 不要公開分享此連結。任何取得此連結的人都可以不經您的批准而加入您的群組。請只在私人通訊中分享此連結以讓您組織中的成員加入。
+    secret_group_url_explanation: 這是你群組的網址。僅有已受邀的成員才能看到這個群組。
+    shareable_group_url_explanation: 你可以公開分享此連結。人們可以請求加入，而你可以批准或忽略請求。
+    shareable_invitation_explanation: 不要公開分享此連結。任何取得此連結的人都可以不經你的批准而加入你的群組。請只在私人通訊中分享此連結以讓你組織中的成員加入。
     shareable_link_reset: 可分享的連結已重設。先前的連結已不再可用。
     email_explanation: 替代方案是，在下面輸入電子郵件地址來以電子郵件傳送邀請。
-    add_custom_message: 讓您的邀請變為私人的，
+    add_custom_message: 讓你的邀請變為私人的，
     add_custom_message_link: 加入一段自訂的訊息。
     custom_message: 自訂訊息
     custom_message_placeholder: 輸入要包含在邀請函內的私人訊息。
@@ -1449,13 +1449,13 @@ zh_TW:
     messages:
       invitation_sent: 邀請函已寄出。
       invitations_sent: 送出了 %{count} 封邀請函。
-      no_invitations: 喔喔！請檢查您的電子郵件地址是否正確，並再試一次。
-      max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
+      no_invitations: 喔喔！請檢查你的電子郵件地址是否正確，並再試一次。
+      max_invitations: 若你想要寄出多於 100 封邀請函，使用團隊連結。
     copy_to_clipboard: 複製到剪貼簿
     already_chatting_somewhere: 已經在某處聊天了？
     to_stop_people_reset_the_link: 若要阻止他人透過此連結加入，請點擊「重設此連結」。現有連結將不再有效，並將建立一個新的連結。
     try_the_shareable_link_instead: 請嘗試使用可共享連結。
-    enter_emails_of_people_to_invite: 輸入您想要邀請加入群組的人員的電子郵件地址。如果您有列表，只需一次複製並貼上所有地址即可。
+    enter_emails_of_people_to_invite: 輸入你想要邀請加入群組的人員的電子郵件地址。如果你有列表，只需一次複製並貼上所有地址即可。
     shareable_link_to_join_group: 可分享的加入群組鏈接
     reset_the_link: 重置連結
     email_addresses_placeholder: 例如 helperbot{'@'}loomio.org、friendlybot{'@'}loomio.org
@@ -1466,22 +1466,22 @@ zh_TW:
     coordinator_label: 管理員
     remove_member_label: 移除
     fragment_placeholder: 以名稱或使用者名稱過濾使用者...
-    only_one_admin: 此群組中只有一個管理員。建議您至少再指定一名成員為管理員。
+    only_one_admin: 此群組中只有一個管理員。建議你至少再指定一名成員為管理員。
     messages:
       remove_member_success: 已移除 %{name}
       make_admin_success: "%{name} 現在是管理員了"
       remove_admin_success: "%{name} 不再是管理員了"
     remove_admin_from_self:
-      question: 您確定您不想要再當管理員了嗎？
+      question: 你確定你不想要再當管理員了嗎？
   membership_remove_modal:
     invitation:
       title: 取消邀請函
-      message: 您確定想要取消給 %{name} 的邀請嗎？
+      message: 你確定想要取消給 %{name} 的邀請嗎？
       flash: 邀請函已取消
       submit: 取消邀請函
     membership:
       title: 移除成員
-      message: 您確定您想要移除 %{name} 嗎？
+      message: 你確定你想要移除 %{name} 嗎？
       impact_for_subgroup: 這將會移除他們對下層群組的存取權（包含討論串與投票），但他們仍是上層群組的成員。
       impact_for_group: 這將會移除他們對群組（包含討論串與投票）與任何下層群組的存取權。
       flash: 成員已移除
@@ -1509,14 +1509,14 @@ zh_TW:
     message_user: 訊息 %{name}
   contact_request_form:
     modal_title: 電子郵件 %{name}
-    message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。
-    helptext: "%{name} 將會寄送包含您的名字、電子郵件地址與訊息的電子郵件"
+    message_placeholder: 自我介紹並分享為什麼你想要加入聯絡人。
+    helptext: "%{name} 將會寄送包含你的名字、電子郵件地址與訊息的電子郵件"
     email_sent: 電子郵件傳送給 %{name}
   profile_page:
     autodetect_time_zone: 自動偵測時區
     account_is_bot: 這是一個機器人帳戶
     incomplete_profile: 資料不完整！
-    set_your_profile_picture: 設定您的個人檔案照片
+    set_your_profile_picture: 設定你的個人檔案照片
     messages:
       updated: 簡歷已更新
       picture_changed: 簡歷照片已更新
@@ -1540,14 +1540,14 @@ zh_TW:
     short_bio_label: 簡介
     locale_label: 語言
     short_bio_placeholder: 請自我介紹，包含專業領域、有興趣的主題與其他附屬機構
-    locale_placeholder: 選取您偏好的語言
+    locale_placeholder: 選取你偏好的語言
     location_label: 位置
-    location_placeholder: 您在哪裡？
+    location_placeholder: 你在哪裡？
     update_profile: 更新簡歷
     deactivate_account: 停用使用者帳號
-    deactivate_account_subtitle: 停止發送電子郵件並取消會員資格。保留您的個人資料，以免過去的討論和決定受到影響。
-    delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
-    updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
+    deactivate_account_subtitle: 停止發送電子郵件並取消會員資格。保留你的個人資料，以免過去的討論和決定受到影響。
+    delete_account_subtitle: 徹底刪除你的帳戶，並從過去的討論和決定中刪除你的名字。
+    updated_on_sign_in: 由你的瀏覽器提供並在你登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
     bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
   text_editor:
@@ -1557,7 +1557,7 @@ zh_TW:
     insert_embedded_url: 嵌入影片
   change_picture_form:
     title: 設定簡介照片
-    helptext: 您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。
+    helptext: 你可以上傳你自己的簡歷照片，或是若你有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，你可以使用它。
     use_initials: 使用縮寫
     use_gravatar: 使用 Gravatar 的大頭貼
     use_uploaded: 上傳新照片
@@ -1565,19 +1565,19 @@ zh_TW:
     use_provider: 使用 %{provider} 照片
     aria_label: 個人資料照片表單
   change_password_form:
-    set_password_title: 設定您的密碼
+    set_password_title: 設定你的密碼
     set_password_helptext: 請輸入密碼，最少需要 8 個字元
     set_password: 設定密碼
-    password_changed: 您的密碼已更新
+    password_changed: 你的密碼已更新
   deactivation_modal:
-    introduction: 當您刪除帳號時：
-    deactivate_introduction: 當您停用您的帳戶時：
-    you_will_be_deactivated: 您的用戶帳戶將被標記為已停用。您的電子郵件地址和個人識別資料將保留。如果您願意，您可以稍後重新啟動您的帳戶。
-    name_not_removed: 您發布的評論、投票、提案和討論將保留，以便歷史記錄不會更改。
-    you_will_be_deleted: 您的使用者帳號，包含您的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。
-    name_removed: 您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。
-    no_longer_group_member: 您將不會再被任何群組列為成員
-    no_emails: 您將不會再收到電子郵件通知
+    introduction: 當你刪除帳號時：
+    deactivate_introduction: 當你停用你的帳戶時：
+    you_will_be_deactivated: 你的用戶帳戶將被標記為已停用。你的電子郵件地址和個人識別資料將保留。如果你願意，你可以稍後重新啟動你的帳戶。
+    name_not_removed: 你發布的評論、投票、提案和討論將保留，以便歷史記錄不會更改。
+    you_will_be_deleted: 你的使用者帳號，包含你的名字、電子郵件地址與其他可識別個人的資料，都將會從我們的系統中刪除。
+    name_removed: 你在群組中作出的意見、提案與討論串會留下，但你的大名將會從中移除。
+    no_longer_group_member: 你將不會再被任何群組列為成員
+    no_emails: 你將不會再收到電子郵件通知
     submit_delete: 現在刪除我的帳號
     submit_deactivate: 立即停用我的帳戶
   email_settings_page:
@@ -1591,29 +1591,29 @@ zh_TW:
     every_day: 每天
     every_second_day: 每兩天
     header: 通知設定
-    account_deactivated: 您的帳號已被停用。您將不會再收到任何電子郵件。
+    account_deactivated: 你的帳號已被停用。你將不會再收到任何電子郵件。
     deactivate_header: 永遠停止所有電子郵件
-    deactivate_description: 如果您不想要再從我們這裡收到任何電子郵件，您可以停用您的使用者帳號。
+    deactivate_description: 如果你不想要再從我們這裡收到任何電子郵件，你可以停用你的使用者帳號。
     email_newsletter: Loomio 通訊
-    email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
+    email_newsletter_description: 取得關於新功能、訓練、在你居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
     on_participation_label: 參與時訂閱
-    on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
+    on_participation_description: 當你參與討論串時，之後所有的動態都會即時寄給你。
     announcement_label: 公告
-    announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
+    announcement_description: 你將會收到一封關於所有在你的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆
     update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:
-      loud_description: 當您加入一個新群組時，您將會<strong>有動態時</strong>收到電子郵件。
-      normal_description: 當您加入新群組時，您將會收到關於<strong>新討論串與提案</strong>的電子郵件。
-      quiet_description: 當您加入新群組時，您將<strong>不會收到關於動態</strong>的電子郵件。
+      loud_description: 當你加入一個新群組時，你將會<strong>有動態時</strong>收到電子郵件。
+      normal_description: 當你加入新群組時，你將會收到關於<strong>新討論串與提案</strong>的電子郵件。
+      quiet_description: 當你加入新群組時，你將<strong>不會收到關於動態</strong>的電子郵件。
     edit: 編輯
     messages:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
-    mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
-    daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
+    mentioned_description: 當有人{'@'}在評論中提及你時，你會收到一封通知電子郵件
+    daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含你尚未查看的任何新活動。如果你不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
     send_email: 傳送電子郵件
   thread_preview:
@@ -1622,27 +1622,27 @@ zh_TW:
     items_count: "%{count} 個項目"
   dashboard_page:
     polls_to_vote_on: 投票表決
-    no_polls_to_vote_on: 沒有您需要進行的投票
+    no_polls_to_vote_on: 沒有你需要進行的投票
     recent_polls: 近期投票
     current_polls: 目前投票
     recent_threads: 最近的討論串
     no_groups:
-      show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
-      show_all: 歡迎！您目前還不是任何群組的成員。
+      show_muted: 你沒有任何已靜音的討論串，因為你不是任何群組的成員。
+      show_all: 歡迎！你目前還不是任何群組的成員。
     no_threads:
-      show_all: 您沒有任何最近的討論串
+      show_all: 你沒有任何最近的討論串
       show_proposals: 目前沒有活躍的提案。
-      show_muted: 您沒有任何已靜音的討論串。
+      show_muted: 你沒有任何已靜音的討論串。
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
     dismiss: 暫時忽略
     thread_dismissed: 討論串標記為已讀
     thread_recalled: 討論串已收回
     explain_mute:
-      title: 您尚未靜音任何討論串。
+      title: 你尚未靜音任何討論串。
       instructions: 要靜音討論串，滑鼠移到其上並點選靜音圖示。
-      see_muted_html: 要檢視您已靜音的討論串，點選<strong>「已靜音」</strong>。您也可以將滑鼠移到其上並點選相同的圖示以解除靜音。
-      explanation_html: 靜音是一種隱藏或靜音您不感興趣的話題的方法。靜音意味著您將不會在<strong>「最近」</strong>或<strong>「未讀」</strong>中看到該主題，也不會收到該主題活動（例如提案）的通知。只有當有人<strong>{'@'}提及</strong>您的名字時，您才會收到通知。
+      see_muted_html: 要檢視你已靜音的討論串，點選<strong>「已靜音」</strong>。你也可以將滑鼠移到其上並點選相同的圖示以解除靜音。
+      explanation_html: 靜音是一種隱藏或靜音你不感興趣的話題的方法。靜音意味著你將不會在<strong>「最近」</strong>或<strong>「未讀」</strong>中看到該主題，也不會收到該主題活動（例如提案）的通知。只有當有人<strong>{'@'}提及</strong>你的名字時，你才會收到通知。
     filtering:
       filter_threads: 過濾討論串
       filter_threads_aria_label: 過濾討論串
@@ -1657,8 +1657,8 @@ zh_TW:
       muted_description: 僅檢視已被靜音的討論串
       all: 近期討論
     thread_preview:
-      you_voted: 您已經投了 %{position}.
-      undecided: 您尚未決定
+      you_voted: 你已經投了 %{position}.
+      undecided: 你尚未決定
     threads_from:
       group: 討論串從
       pinned: 已釘選的討論串
@@ -1676,21 +1676,21 @@ zh_TW:
     discussion_marked_as_unread: 討論內容標記為未讀
     polls_to_vote_on_count: 待投票的民調 (%{count})
   threads_page:
-    no_direct_threads: 您沒有直接討論串
-    no_invite_only_threads: 您沒有僅限受邀者參與的討論串。
+    no_direct_threads: 你沒有直接討論串
+    no_invite_only_threads: 你沒有僅限受邀者參與的討論串。
     no_direct_discussions: 你們之間沒有直接的討論。
     no_direct_discussions_title: 你們之間沒有直接的討論。
     no_direct_discussions_helptext: 直接討論是指直接聯繫其他用戶，而不屬於任何群組的討論。
   inbox_page:
-    no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
+    no_threads: 太棒了！你已經讀完了你收件匣中所有的討論串。
     unread_threads: 未讀的討論串
     view_more: 顯示更多
     no_groups:
       start: 啟動
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
-      explanation: 您沒有未讀討論，因為您不是任何群組的成員。
-    no_discussions: 哇哦！您已閱讀完收件匣中的所有討論。
+      explanation: 你沒有未讀討論，因為你不是任何群組的成員。
+    no_discussions: 哇哦！你已閱讀完收件匣中的所有討論。
     unread_discussions: 未讀討論
     recent_activity_notice: 僅顯示最近 6 週內有活動的貼文。
   discussion:
@@ -1698,10 +1698,10 @@ zh_TW:
     invite_only: 僅邀請
     private_thread: 私人討論串
     max_threads_reached: |
-      <p>您已經使用了此群組可用的全部 %{maxThreads} 個邀請。</p>
+      <p>你已經使用了此群組可用的全部 %{maxThreads} 個邀請。</p>
       <p>下一步，<a href="%{upgradeUrl}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
     subscription_canceled: |
-      <p>抱歉！您的訂閱並未啟用。</p>
+      <p>抱歉！你的訂閱並未啟用。</p>
       <p>請<a href="%{upgradeUrl}" target="_blank">升級</a>以繼續使用 Loomio。</p>
     activity: 動態
     activity_placeholder: 尚無動態！
@@ -1781,45 +1781,45 @@ zh_TW:
     thread_settings: 主題設定
   delete_thread_form:
     title: 刪除討論串
-    body: 您確定要刪除這個討論串嗎？
+    body: 你確定要刪除這個討論串嗎？
     confirm: 刪除討論串
     messages:
       success: 討論串已刪除
   delete_comment_dialog:
     title: 刪除意見
-    question: 這將會永久刪除此留言。若您繼續，其將無法還原。
+    question: 這將會永久刪除此留言。若你繼續，其將無法還原。
   contact_message_form:
     alt_title: 聯絡 Loomio 支援
-    need_message: 請輸入留言，以便我們為您提供協助:-)
+    need_message: 請輸入留言，以便我們為你提供協助:-)
     respond_asap: 向 Loomio 團隊發送訊息，我們會盡快回覆。
-    happy_to_help_with: 我們很樂意協助您處理銷售查詢、支援請求、功能請求、報告錯誤或您遇到的問題。
-    title: 嗨，您好！我們可以怎麼協助您？
-    contact_us_email: 您也可以寄電子郵件給我們：<a href="mailto:%{email}">%{email}</a>
+    happy_to_help_with: 我們很樂意協助你處理銷售查詢、支援請求、功能請求、報告錯誤或你遇到的問題。
+    title: 嗨，你好！我們可以怎麼協助你？
+    contact_us_email: 你也可以寄電子郵件給我們：<a href="mailto:%{email}">%{email}</a>
     contact_us: 聯絡我們
-    name_label: 您的大名
-    name_placeholder: 輸入您的大名...
+    name_label: 你的大名
+    name_placeholder: 輸入你的大名...
     subject_label: 主旨
     subject_placeholder: '範例：登入時遇到問題，或是功能建議
 
       '
-    email_label: 您的電子郵件地址
-    email_placeholder: 輸入您的電子郵件位址...
-    message_label: 您的訊息
+    email_label: 你的電子郵件地址
+    email_placeholder: 輸入你的電子郵件位址...
+    message_label: 你的訊息
     message_placeholder: 若請求支援請嘗試提供盡可能多的資訊給我們。
     send_message: 寄送訊息
-    new_contact_message: 感謝您聯絡我們；我們會盡快回覆您！
+    new_contact_message: 感謝你聯絡我們；我們會盡快回覆你！
     consent_message: |
-      聯絡我們即代表您同意我們的員工在必要的時候存取您的帳號。<br />
-      我們的支援團隊會說英語，並會在必要的時候使用 Google 翻譯來翻譯您的訊息。<br />
+      聯絡我們即代表你同意我們的員工在必要的時候存取你的帳號。<br />
+      我們的支援團隊會說英語，並會在必要的時候使用 Google 翻譯來翻譯你的訊息。<br />
       我們的目標是在24小時內回覆所有訊息。
-    success: 感謝您的訊息，%{name}。我們將會在收到訊息後很快地回覆您。
-    success_via_email: 感謝您的訊息，%{name}。我們將於24小時內透過電子郵件回覆。
+    success: 感謝你的訊息，%{name}。我們將會在收到訊息後很快地回覆你。
+    success_via_email: 感謝你的訊息，%{name}。我們將於24小時內透過電子郵件回覆。
   explore_page:
     header: 探索群組
     search_placeholder: 搜尋公開群組
     single_search_result: 1 個公開群組符合 <strong>%{searchTerm}：</strong>
     multiple_search_results: "%{resultCount} 個公開群組符合 <strong>%{searchTerm}：</strong>"
-    no_results_found: "<strong>找不到您要找的群組嗎？</strong>如果群組的隱私設定為「私密」，那它就不會在此出現。"
+    no_results_found: "<strong>找不到你要找的群組嗎？</strong>如果群組的隱私設定為「私密」，那它就不會在此出現。"
     newest_first: 最新的放在最前面
     biggest_first: 最大的放在最前面
     order_by: 群組排序由
@@ -1917,21 +1917,21 @@ zh_TW:
     new_custom_poll: 新的自訂民意調查
     edit_custom_poll: 編輯自訂投票
     create_a_custom_poll_type: 使用自訂術語和設定建立新的民意調查類型
-    create_a_custom_process: 使用您自己的術語和選項建立新流程
+    create_a_custom_process: 使用你自己的術語和選項建立新流程
     create_a_custom_poll: 使用自訂術語和設定建立投票
     decision: 決定
     decision_templates: 決策模板
-    remove_your_vote: 刪除您的投票
-    remove_your_response: 刪除您的回复
+    remove_your_vote: 刪除你的投票
+    remove_your_response: 刪除你的回复
     vote_now: 現在投票
     review_due: 審閱到期
     have_your_say: 擁有發言權
-    your_response: 您的回應
+    your_response: 你的回應
     change_your_response: 編輯回應
     please_vote: 請投票
     reason: 理由
     response: 回覆
-    reason_placeholder: 簡要說明您為什麼要以此方式投票，然後點擊「遞交投票」
+    reason_placeholder: 簡要說明你為什麼要以此方式投票，然後點擊「遞交投票」
     message: 訊息
     results: 結果
     current_results: 目前結果
@@ -1949,7 +1949,7 @@ zh_TW:
     change_your_stance: 編輯回應
     load_more: 載入更多
     details: 詳細內容
-    participant_name: 您的大名
+    participant_name: 你的大名
     participant_email: 電子郵件地址
     submit_vote: 遞交投票
     submit_response: 提交回覆
@@ -1963,7 +1963,7 @@ zh_TW:
     share_outcome: 分享成果
     view_all: 檢視全部
     save_changes: 儲存
-    change_vote: 變更您的投票
+    change_vote: 變更你的投票
     change_response: 改變你的回應
     max_score: 最大分數
     min_score: 最小分數
@@ -1972,8 +1972,8 @@ zh_TW:
     no_voting: 僅討論，停用投票
     post_outcome: 發布結論
     view_all_votes: 查看所有投票
-    you_voted: 您投票了
-    these_are_templates: 這些是您所在小組的決策範本。點擊模板即可開始新的決策。管理員可以自訂範本的所有細節，使其符合您組織的實踐，並方便成員尋找和使用。
+    you_voted: 你投票了
+    these_are_templates: 這些是你所在小組的決策範本。點擊模板即可開始新的決策。管理員可以自訂範本的所有細節，使其符合你組織的實踐，並方便成員尋找和使用。
     example_templates: 範例模板
     example_poll_templates: 範例投票模板
     browse_example_templates: 瀏覽範例模板
@@ -1984,13 +1984,13 @@ zh_TW:
     all_templates_hidden: 所有模板均已隱藏
     new_poll_template_title: 新投票模板
     new_template_from_blank: 從空白模板建立新模板
-    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
+    new_template_from_blank_subtitle: 建立一個新模板，以適應你組織中的流程。
     blank: 新的
     blank_subtitle: 為特定流程建立新的投票模板
     start_a_poll: 發起投票
     export_blt: 出口選票（BLT）
     status: 地位
-    your_vote_is_requested: 請您投票
+    your_vote_is_requested: 請你投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2016,7 +2016,7 @@ zh_TW:
     include_subgroups_mine: "%{name} 與我的子群組"
     include_subgroups_all: "%{name} 與所有子群組"
     no_results_found: "「%{search}」無結果"
-    welcome_to_your_new_group: 歡迎加入您的新 Loomio 小組！
+    welcome_to_your_new_group: 歡迎加入你的新 Loomio 小組！
     lets_start_a_thread: 讓我們開始一個線程。點擊“新線程”繼續。
     lets_start_a_discussion: 我們開始討論吧。點選「新建討論」繼續。
     new_discussion: 新討論
@@ -2070,13 +2070,13 @@ zh_TW:
     filename: 檔案名稱
     uploaded_by: 上傳由
     uploaded_at: 上傳於
-    delete_confirmation: 您確定您想要刪除此附件嗎？其將會從任何相關的留言或討論串中移除。此動作無法復原。
+    delete_confirmation: 你確定你想要刪除此附件嗎？其將會從任何相關的留言或討論串中移除。此動作無法復原。
   subgroups_panel:
     search_subgroups_of_name: 搜尋 %{name} 的子群組
     group_without_subgroups: "%{name} 無子群組"
-    need_a_space_for_your_team: 您的團隊需要一個休息空間嗎？
+    need_a_space_for_your_team: 你的團隊需要一個休息空間嗎？
     explainer: 子組是組織內的團隊可以進行討論和決策的私人場所。子組中的內容對於組織的其他部分來說是私有的。子群組範例：董事會、招募決策或專案團隊
-    upgrade: 要建立子組，您需要<a class="text-decoration-underline" href="%{url}" target="_blank">升級您的 Loomio 訂閱。</a>
+    upgrade: 要建立子組，你需要<a class="text-decoration-underline" href="%{url}" target="_blank">升級你的 Loomio 訂閱。</a>
   poll_common_action_panel:
     from_the_thread: 從線程模板
     from_the_group: 來自團體
@@ -2089,13 +2089,13 @@ zh_TW:
     basic_templates: 基本模板
     anonymous: 匿名投票
     results_hidden_until_closed: 投票結束後將顯示結果
-    results_hidden_until_vote: 結果將在您投票後顯示
+    results_hidden_until_vote: 結果將在你投票後顯示
     draft_mode: 投票已禁用。目前尚未開放投票。
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
-    unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
+    unable_to_vote: 你未被邀請參與此項 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2105,14 +2105,14 @@ zh_TW:
     helptext_off: 沒有會面邀請將會被寄送
     event_duration: 持續時間
     event_summary: 會面名稱
-    event_summary_placeholder: 您想要叫這個會面什麼名字？
+    event_summary_placeholder: 你想要叫這個會面什麼名字？
     event_description: 會面描述
     event_description_placeholder: 這次會面的議程是什麼？
     location: 位置
     location_placeholder: 這個會面會在哪裡舉辦？
   poll_common_close_form:
     title: 立刻關閉 %{poll_type}？
-    helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
+    helptext: 你確定你想要提早關閉此 %{poll_type} 並分享結果？
     close_poll_type: 關閉 %{poll_type}
     poll_type_closed: "%{poll_type} 已關閉"
   poll_common_reopen_form:
@@ -2129,7 +2129,7 @@ zh_TW:
     past_tense: 投票已停用
     draft_mode: 草稿模式
     disable_voting_during_development: 此 %{poll_type} 還沒準備好投票於
-    helptext: 這個 %{poll_type} 正在進行。您可以在稍後啟用投票。
+    helptext: 這個 %{poll_type} 正在進行。你可以在稍後啟用投票。
     voting_open: 投票開放
     this_is_ready_for_voting: 此 %{poll_type} 已準備好投票
   poll_common_closing_at_field:
@@ -2150,7 +2150,7 @@ zh_TW:
     priority_last: 阻擋的放在最前面
     undecided_first: 未決定優先
     no_votes_yet: 尚未有人投票。
-    change_results_order: 變更您的結果順序
+    change_results_order: 變更你的結果順序
     none_of_the_above: "（以上皆非）"
     name_or_username: 姓名或用戶名
     cast: Cast
@@ -2172,14 +2172,14 @@ zh_TW:
     review_due_in_days: 幾天後檢討決定？
     review_date: 審閱日期
     review_date_hint: 設定提醒審查結果的日期（選擇性）
-    who_to_notify: 您想將此結果通知誰？（選擇性）
+    who_to_notify: 你想將此結果通知誰？（選擇性）
     outcome_statement_template: 結果陳述模板
     new_title: 輸入結果
     update_title: 更新結果
     outcome_created: 結果已建立
     outcome_updated: 結論已更新
     statement_placeholder: 總結回應並解釋接下來會發生什麼事。
-    you_will_be_notified: 您將在審閱日期時收到通知。
+    you_will_be_notified: 你將在審閱日期時收到通知。
     submit: 分享成果
     review_due_in_days_hint: 審查決定之前等待的天數（可選）。
     statement_template_hint: 提供撰寫決策結果的範本。 （可選）
@@ -2187,7 +2187,7 @@ zh_TW:
   poll_common_outcome_panel:
     authored_by: 由 %{name}
   poll_common_delete_modal:
-    question: 您確定要刪除這個嗎？
+    question: 你確定要刪除這個嗎？
     title: 刪除 %{pollType}
     success: 成功刪除
   poll_proposal_form:
@@ -2208,13 +2208,13 @@ zh_TW:
     watch_video: 看影片
     audio_transcript: 音訊文字記錄：%{text}
     why_type_when_you_can_talk: 當你能說話時為什麼要打字？發送錄音
-    transcript_included: 錄音副本將附加到您的訊息中
+    transcript_included: 錄音副本將附加到你的訊息中
   poll_poll_form:
     multiple_choice_subtitle: 評估選項受歡迎程度的簡單方法
     start_header: 啟動投票
     edit_header: 編輯投票
     tip: 提供多種選項
-    title_placeholder: 例如：您假日想要去哪裡？
+    title_placeholder: 例如：你假日想要去哪裡？
     details_placeholder: 提供人們回答此問題可能需要的資訊。
     add_option_placeholder: 新增選項
     new_option: 新選項
@@ -2229,7 +2229,7 @@ zh_TW:
     dots_per_person_helptext: 每個人被要求分配的總點數。
   poll_meeting_form:
     timeslots: 時間欄位
-    no_options: 輸入您目前時區 (%{zone}) 的時間。參與者可以看到翻譯成他們本地時區的時間。
+    no_options: 輸入你目前時區 (%{zone}) 的時間。參與者可以看到翻譯成他們本地時區的時間。
     meeting_duration: 會面持續時間
     add_option_placeholder: 新增新的時間
     time_slot_added: 已新增時間欄位
@@ -2237,10 +2237,10 @@ zh_TW:
     participants_see_local_times: 參與者將看到其時區的本地化時間
     use_24_hour_format: 錯誤！使用 24 小時格式，例如 %{time}
   poll_ranked_choice_form:
-    no_options: 您尚未加入任何選項。
+    no_options: 你尚未加入任何選項。
     add_option_placeholder: 輸入新選擇
     minimum_stance_choices: 要排序的選項
-    minimum_stance_choices_hint: 即為您最喜歡的 3 種冰淇淋口味進行排名
+    minimum_stance_choices_hint: 即為你最喜歡的 3 種冰淇淋口味進行排名
     ranked_choice_created: 已建立排序選擇
     ranked_choice_updated: 已更新排序選擇
     rank: 排名
@@ -2259,11 +2259,11 @@ zh_TW:
     new_time_slot: 新時間欄位
     closing_hour: 關閉時間
   poll_proposal_vote_form:
-    default_reason_placeholder: 請解釋您的理由
-    abstain_reason_placeholder: 讓人們知道您為什麼作出了這個決定
-    agree_reason_placeholder: 您對提案的感覺如何，以及其如何對群組產生助益？
-    disagree_reason_placeholder: 若您要支持它，此提案要如何改進？
-    block_reason_placeholder: 解釋您對此提案的反對意見，以及為什麼它不應該再繼續下去
+    default_reason_placeholder: 請解釋你的理由
+    abstain_reason_placeholder: 讓人們知道你為什麼作出了這個決定
+    agree_reason_placeholder: 你對提案的感覺如何，以及其如何對群組產生助益？
+    disagree_reason_placeholder: 若你要支持它，此提案要如何改進？
+    block_reason_placeholder: 解釋你對此提案的反對意見，以及為什麼它不應該再繼續下去
     stance_created: 已建立投票
     stance_updated: 已更新投票
     vote: 投票
@@ -2282,7 +2282,7 @@ zh_TW:
     no_voting: 沒有投票
   poll_count_form:
     pct_of_target: 目標的%
-    agree_target_helptext: 您希望擁有的志工目標數量是多少？
+    agree_target_helptext: 你希望擁有的志工目標數量是多少？
     agree_target_label: 目標數
   poll_count_options:
     accept: 接受
@@ -2300,8 +2300,8 @@ zh_TW:
   poll_meeting_chart_panel:
     total: 全部
   poll_remove_vote:
-    title: 刪除您的投票？
-    helptext: 您確定要刪除您的投票嗎？您將被列為未決定，如果您願意，可以稍後再次投票。
+    title: 刪除你的投票？
+    helptext: 你確定要刪除你的投票嗎？你將被列為未決定，如果你願意，可以稍後再次投票。
     confirm: 刪除投票
     success: 投票已移除
   poll_poll_vote_form:
@@ -2315,17 +2315,17 @@ zh_TW:
     can_attend: 可以參與
     unable: 不行
     if_need_be: 如果需要的話
-    your_response: 您何時能參加？
+    your_response: 你何時能參加？
     stance_created: 可用度已儲存
     stance_updated: 可用度已更新
-    reason_placeholder: 解釋您何時有空（或是忙碌），讓作者新增新的選項。
+    reason_placeholder: 解釋你何時有空（或是忙碌），讓作者新增新的選項。
   poll_dot_vote_vote_form:
     dots_remaining: 剩 %{count} 點
-    too_many_dots: 您已使用了太多點
+    too_many_dots: 你已使用了太多點
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_ranked_choice_vote_form:
-    helptext: 拖放偏好順序的選項（1 是您最偏好的選項）。您的頭 %{count} 個將會被記錄。
+    helptext: 拖放偏好順序的選項（1 是你最偏好的選項）。你的頭 %{count} 個將會被記錄。
     stance_created: 已記錄選擇
     stance_updated: 已更新選擇
   thread_item:
@@ -2359,10 +2359,10 @@ zh_TW:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:
     code: '000000'
-    youre_invited: 您已被邀請加入 %{group_name}。
-    youre_invited_discussion: 您已被邀請加入討論。
-    youre_invited_poll: 您已被邀請加入投票。
-    existing_account_can_sign_in: 如果您已經是 %{site_name} 使用者，請使用您現有的帳號登入
+    youre_invited: 你已被邀請加入 %{group_name}。
+    youre_invited_discussion: 你已被邀請加入討論。
+    youre_invited_poll: 你已被邀請加入投票。
+    existing_account_can_sign_in: 如果你已經是 %{site_name} 使用者，請使用你現有的帳號登入
     sign_up_or_log_in: 建立帳號或登入至 %{site_name}
     sign_in_to_loomio: 登入到 %{site_name}
     sign_in_help: 無法登入？
@@ -2373,29 +2373,29 @@ zh_TW:
     sign_in_as: 登入為 %{name}
     continue_with_provider: 以 %{provider} 繼續
     continue_with_email: 以電子郵件繼續
-    or_enter_your_email: 或是輸入您的電子郵件地址
-    enter_your_name: 輸入您的名字
-    invitation_required: 您需要獲得邀請才能建立帳戶。點擊邀請電子郵件中的連結繼續。
+    or_enter_your_email: 或是輸入你的電子郵件地址
+    enter_your_name: 輸入你的名字
+    invitation_required: 你需要獲得邀請才能建立帳戶。點擊邀請電子郵件中的連結繼續。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址
     invalid_email: 抱歉，這看起來不是有效的電子郵件地址
     invalid_password: 抱歉，這個密碼與我們的檔案上的不一樣
-    invalid_token: 抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。
-    account_locked: 您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結
+    invalid_token: 抱歉，我們無法使用那個憑證來讓你登入。點選下方來傳送另一個。
+    account_locked: 你的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查你的電子郵件以取得解鎖連結
     email_not_found: 抱歉，我們找不到與此電子郵件地址相關的帳號
     email_taken: 電子郵件位置已被註冊
-    login_with_token: 您已經設定好了！點選下方的連結以繼續。
-    login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。
-    enter_your_password: 輸入您的密碼以繼續
-    check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查您的垃圾信資料夾。
+    login_with_token: 你已經設定好了！點選下方的連結以繼續。
+    login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給你以供登入。
+    enter_your_password: 輸入你的密碼以繼續
+    check_spam_folder: 如果電子郵件未在短時間內抵達，請檢查你的垃圾信資料夾。
     sign_up_helptext: 請完成此表單以建立使用者帳號
     i_accept_all: 我接受 %{termsLink} 與 %{privacyLink}
     newsletter_label: 我想要收到 %{link}
-    name_placeholder: 您的大名
+    name_placeholder: 你的大名
     name_required: 請輸入名稱
-    terms_required: 您必須同意服務條款
+    terms_required: 你必須同意服務條款
     account_inactive: 喔喔，看起來 %{email} 的帳號已經被停用囉！
-    privacy_notice: 我們永遠都不會販賣您的資料。<br><a href='%{privacyUrl}' target='_blank'>隱私權政策</a>
+    privacy_notice: 我們永遠都不會販賣你的資料。<br><a href='%{privacyUrl}' target='_blank'>隱私權政策</a>
     welcome: 新加入 %{siteName}？
     welcome_back: 歡迎回來，%{name}！
     forgot_password: 忘記密碼
@@ -2403,19 +2403,19 @@ zh_TW:
     sign_in_via_email: 透過電子郵件登入
     set_password: 設定密碼
     set_password_helptext: 下次想要使用密碼嗎？
-    hello: 您好，%{name}！
+    hello: 你好，%{name}！
     new_to_loomio: 第一次來到 %{site_name}？
     already_a_user: 已經有帳號了嗎？
-    email_address_of_existing_account: 輸入您既有帳號的電子郵件地址
+    email_address_of_existing_account: 輸入你既有帳號的電子郵件地址
     link_accounts: 連結帳號
-    check_your_email: 檢查您的電子郵件
+    check_your_email: 檢查你的電子郵件
     login_link_sent: 我們已經寄送了一封電子郵件到 %{email}。
     instructions: 點按連結以登入，或是在下面輸入代碼：
     instructions_code: 輸入來自電子郵件的代碼：
     too_many_attempts: 嘗試太多次了；試試看點擊電子郵件中的連結來登入。
     invalid_code: 抱歉，代碼不正確。請檢查電子郵件並再試一次。
-    password_link_sent: 我們已經寄送一封包含了如何設定您的密碼的電子郵件到 %{email} 了。
-    reactivate_link_sent: 我們將會傳送一封包含重新啟用您帳號簡介的電子郵件給您
+    password_link_sent: 我們已經寄送一封包含了如何設定你的密碼的電子郵件到 %{email} 了。
+    reactivate_link_sent: 我們將會傳送一封包含重新啟用你帳號簡介的電子郵件給你
     signed_in: 登入成功
     signed_out: 登出成功
     email_verified: 電子郵件驗證成功
@@ -2424,14 +2424,14 @@ zh_TW:
     password: 密碼
     reactivate: 重新啟用帳號
     want_to_set_password: 下次想使用密碼登入嗎？
-    change_your_password: 您想設定新密碼嗎？
-    email_placeholder: 您{'@'}example.com
+    change_your_password: 你想設定新密碼嗎？
+    email_placeholder: 你{'@'}example.com
     turnstile_required: 請先完成驗證再繼續。
-    invalid_login: 無法使用您提供的資訊登入。
+    invalid_login: 無法使用你提供的資訊登入。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線
-    test_connection_ok: 看起來很好！您應該會在頻道中看到一則訊息
+    test_connection_ok: 看起來很好！你應該會在頻道中看到一則訊息
     test_connection_bad: 設定似乎有點問題
     name: 聊天機器人名稱
     connection_test_successful: Loomio 機器人連線測試成功！
@@ -2450,9 +2450,9 @@ zh_TW:
     discord: Discord
     mattermost: Mattermost
     microsoft_teams: Microsoft Teams
-    event_kind_helptext: 選取機器要一律通知的事件。若您不確定，請將它們維持在關閉狀態。
+    event_kind_helptext: 選取機器要一律通知的事件。若你不確定，請將它們維持在關閉狀態。
     notification_only_label: 僅傳送通知標題
-    check_for_test_message: 檢查您的聊天室以取得來自機器人的訊息！
+    check_for_test_message: 檢查你的聊天室以取得來自機器人的訊息！
     webex: Webex
   webhook:
     integrations: 整合
@@ -2468,25 +2468,25 @@ zh_TW:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: 使用我們的 API 將 Loomio 連線到您其他的工具
+    subtitle: 使用我們的 API 將 Loomio 連線到你其他的工具
     deprecated: 此 API 已棄用。請移至 APIv2（請參閱群組設定選單中的 API 文件）
-    we_have_guides: '看我們的 <a href="%{url}" target="_blank">webhook 設定指南</a>來取得連線到您服務的說明。
+    we_have_guides: '看我們的 <a href="%{url}" target="_blank">webhook 設定指南</a>來取得連線到你服務的說明。
 
       '
     add_webhook: 新增 webhook
     show_docs: 檢視 API 使用方式
-    save_to_show_docs: 在您儲存後，回到此處以尋找您的 API 金鑰
+    save_to_show_docs: 在你儲存後，回到此處以尋找你的 API 金鑰
     edit_integration: 編輯整合
     add_integration: 新增整合
     success: 整合已新增！
     remove: 移除整合
-    confirm_remove: 您確定您想要移除整合：%{name} 嗎？
+    confirm_remove: 你確定你想要移除整合：%{name} 嗎？
     removed: 已移除整合
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
     name_label: 名稱
-    name_placeholder: 給這個整合一個名稱，這樣您就可以識別它
-    event_kind_helptext: 您想要 webhook 為哪些活動發出通知？
+    name_placeholder: 給這個整合一個名稱，這樣你就可以識別它
+    event_kind_helptext: 你想要 webhook 為哪些活動發出通知？
     event_kinds:
       poll_edited: 投票已編輯
       new_comment: 已留言
@@ -2519,7 +2519,7 @@ zh_TW:
     terms_of_service: 服務條款
     front_page: 首頁
   group_survey:
-    describe_other: 您的群組是哪種分類？
+    describe_other: 你的群組是哪種分類？
     categories:
       party: 政黨
       coop: 合作社
@@ -2557,43 +2557,43 @@ zh_TW:
     discussions_with_polls: 討論與民意調查
     download_csv: 下載 CSV 文件
   tips:
-    youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
+    youve_completed_all_the_steps: "\U0001F389 你已完成所有步驟！"
     getting_started_checklist: 入門清單
-    complete_these_steps_to_set_up_your_group: 完成以下步驟來設定您的群組
+    complete_these_steps_to_set_up_your_group: 完成以下步驟來設定你的群組
     hide:
       title: 隱藏這些提示
       hide_onboarding: 隱藏入職提示
       unhide_onboarding: 顯示入職提示
-      helptext: "<p>這將從標題列中刪除“入門清單”。</p><p>如果您想稍後再恢復，您可以從側邊欄設定中<b>顯示入門提示</b></p>"
+      helptext: "<p>這將從標題列中刪除“入門清單”。</p><p>如果你想稍後再恢復，你可以從側邊欄設定中<b>顯示入門提示</b></p>"
     intro:
       tip_title: 點擊此處開始
-      title: 歡迎加入您的新 Loomio 小組！
-      body: "<p>這一系列簡短的小步驟旨在確保您邀請加入小組的人有良好的第一印象並了解如何參與討論和決策。</p><p>側邊欄中有一個「聯絡客服」按鈕。如果您有任何疑問或需要建議，請隨時與我們聯繫。</p>"
+      title: 歡迎加入你的新 Loomio 小組！
+      body: "<p>這一系列簡短的小步驟旨在確保你邀請加入小組的人有良好的第一印象並了解如何參與討論和決策。</p><p>側邊欄中有一個「聯絡客服」按鈕。如果你有任何疑問或需要建議，請隨時與我們聯繫。</p>"
       submit: 讓我們開始吧
     group:
       welcome_and_faq: 歡迎！閱讀此文開始
       upload_image:
-        title: 完成您的團體資料
-        helptext: "<p>讓我們來看看您的群組資料。名稱、描述、標誌和封面圖片將包含在您接下來發送的邀請郵件中。</p><p><b>添加您自己的群組封面圖片</b>，它有助於給您邀請加入的人留下良好的第一印象。</p><p>您可以使用最近的團隊照片或代表您組織的工作或社區的照片。</p>"
+        title: 完成你的團體資料
+        helptext: "<p>讓我們來看看你的群組資料。名稱、描述、標誌和封面圖片將包含在你接下來發送的邀請郵件中。</p><p><b>添加你自己的群組封面圖片</b>，它有助於給你邀請加入的人留下良好的第一印象。</p><p>你可以使用最近的團隊照片或代表你組織的工作或社區的照片。</p>"
         open_group_settings: 開啟群組設定
       invite_people:
         title: 邀請其他人加入群組
       start_a_thread:
         title: 發起一個話題
-        helptext: "<p>創建一個主題，人們接受邀請後就會看到該主題。</p><p>目的是鼓勵人們在 Loomio 中寫下他們的第一條評論。</p><p>為了簡化此操作，我們提供了您可以使用的<b>練習線程</b>範本。</p>"
+        helptext: "<p>創建一個主題，人們接受邀請後就會看到該主題。</p><p>目的是鼓勵人們在 Loomio 中寫下他們的第一條評論。</p><p>為了簡化此操作，我們提供了你可以使用的<b>練習線程</b>範本。</p>"
         submit: 查看主題模板
       start_a_proposal:
         title: 發起提案
-        helptext: "<p>在 Loomio 中，我們使用提案來揭示對某項決策的支持或尋找改善該決策的方法。</p><p>讓我們提出一項提案並要求小組成員對其進行投票。</p><p>我們建立了一個<b>實踐提案</b>範本供您使用。</p>"
+        helptext: "<p>在 Loomio 中，我們使用提案來揭示對某項決策的支持或尋找改善該決策的方法。</p><p>讓我們提出一項提案並要求小組成員對其進行投票。</p><p>我們建立了一個<b>實踐提案</b>範本供你使用。</p>"
         submit: 查看提案模板
       share_an_outcome:
         title: 分享提案結果
-        helptext: "<p>為了推動決策的推進，提案設有投票截止日期。截止日期過後，投票將結束，屆時您將收到通知，告知您分享提案結果。</p><p>結果是一個機會來表明該提議是否成功以及下一步會發生什麼。</p><p>如果您的提案截止日期尚未過去，但您仍然想繼續，您可以點擊<b>提前關閉</b>。</p><p>時機成熟時，<b>請輸入您的提案的結果</b>。</p>"
+        helptext: "<p>為了推動決策的推進，提案設有投票截止日期。截止日期過後，投票將結束，屆時你將收到通知，告知你分享提案結果。</p><p>結果是一個機會來表明該提議是否成功以及下一步會發生什麼。</p><p>如果你的提案截止日期尚未過去，但你仍然想繼續，你可以點擊<b>提前關閉</b>。</p><p>時機成熟時，<b>請輸入你的提案的結果</b>。</p>"
         submit: 查看提案
         cancel: 稍後再做
       start_a_discussion:
         title: 發起討論
-        helptext: "<p>創造一個人們接受邀請後才能看到的討論貼文。</p><p>目的是鼓勵人們在 Loomio 上發表他們的第一條評論。</p><p>為了方便起見，我們提供了一個<b>練習討論</b>範本供您使用。</p>"
+        helptext: "<p>創造一個人們接受邀請後才能看到的討論貼文。</p><p>目的是鼓勵人們在 Loomio 上發表他們的第一條評論。</p><p>為了方便起見，我們提供了一個<b>練習討論</b>範本供你使用。</p>"
         submit: 請參閱討論模板
     get_started_here: 從這裡開始
     try_loomio_with_your_group: 和你的團隊一起試試 Loomio 吧
@@ -2602,7 +2602,7 @@ zh_TW:
     specified_voters_only_true: 限受邀者
     specified_voters_only_false_group: 群組中的任何人
     specified_voters_only_false_discussion: 主題中的任何人
-    invite_people_next: 您可以在啟動 %{poll_type} 後選擇邀請誰投票
+    invite_people_next: 你可以在啟動 %{poll_type} 後選擇邀請誰投票
     show_none_of_the_above: 包含“以上皆非”選項
     show_options_in_random_order: 以隨機順序顯示選項
     reduce_bias_by_showing_options_in_random_order: 透過隨機順序顯示選項來減少偏差。
@@ -2623,7 +2623,7 @@ zh_TW:
       voters: 所有選民
     notify_on_participate:
       title: 當有人參與時通知我
-      helptext_on: 一旦被選中，每當有人參與時您都會收到通知。
+      helptext_on: 一旦被選中，每當有人參與時你都會收到通知。
     anonymous:
       title: 匿名投票者
       helptext_on: 選擇後，參與者資訊將不會隨每個回應顯示。
@@ -2646,11 +2646,11 @@ zh_TW:
     quorum_placeholder: 留空或輸入 0 到 100 之間的數字
     deadline: 最後期限
     notify_everyone_when_poll_starts: 當 %{poll_type} 開始時通知所有人
-    option_has_votes_confirm_delete: 有些人已投票支持此選項，您確定要刪除它嗎？
+    option_has_votes_confirm_delete: 有些人已投票支持此選項，你確定要刪除它嗎？
     example_title: 範例標題
     example_title_hint: 給出一個好的提案標題的例子
     example_details_placeholder: 為提案或民意調查提供一個起點。問題可以作為有用的提示，促使人們動筆。並包含參與者需要了解的任何規則或提醒。
-    confirm_delete: 您確定要刪除此投票範本嗎？此操作無法撤銷。
+    confirm_delete: 你確定要刪除此投票範本嗎？此操作無法撤銷。
     advanced_settings: 進階設定
     show_advanced_settings: 顯示進階設定
     hide_advanced_settings: 隱藏進階設定
@@ -2701,14 +2701,14 @@ zh_TW:
     you_can_set_a_prompt_per_option: 從詳細資料標籤編輯每個選項的提示
     chart_type: 圖表類型
     title: 標題
-    title_hint: 您需要做什麼決定？
+    title_hint: 你需要做什麼決定？
     no_options_add_some: 本次投票沒有選項，請在下面添加一些。
     details: 細節
     example_details: 示例詳細信息
     details_placeholder: 這是你解釋人們投票依據的機會
     options: 選項
     options_placeholder: 列出可用的選項
-    no_options: 您尚未新增任何選項。
+    no_options: 你尚未新增任何選項。
     closing: 結束語
     closed: 關閉
     start: 開始
@@ -2725,7 +2725,7 @@ zh_TW:
     update: 更新
     add_voters: 添加選民
     notify_invitees: 發送通知
-    no_notifications_warning: 投票者不會收到通知。如果您正在進行大量投票，並計劃稍後通知所有人，此功能非常有用。
+    no_notifications_warning: 投票者不會收到通知。如果你正在進行大量投票，並計劃稍後通知所有人，此功能非常有用。
     count_voters_added: 已新增 %{count} 位元投票者
     poll_type_created: "%{poll_type} 已創建"
     poll_type_started: "%{poll_type} 已開始"
@@ -2735,14 +2735,14 @@ zh_TW:
     anonymous_voting: 匿名投票
     votes_are_anonymous: 投票是匿名的
     vote_reason: 投票原因
-    quorum_tip_vote_share_requirement: 提示：您也可以指定提案通過所需的同意等級。編輯選項以定義投票份額要求
-    how_much_time_to_vote: 您會給人們多少時間投票？
+    quorum_tip_vote_share_requirement: 提示：你也可以指定提案通過所需的同意等級。編輯選項以定義投票份額要求
+    how_much_time_to_vote: 你會給人們多少時間投票？
     default_duration_in_days_hint: 人們需要多少天的時間進行投票？
     define_minimum_and_maxmimum_score: 定義投票者可以給出選項的最低和最高分數
     how_many_points_does_each_voter_have_to_allocate: 每個選民需要分配多少分？
     anonymous_voting_description: 顯示投票及其原因，但不顯示投票者。 %{poll_type} 開始後無法變更。
     vote_reason_description: 請人們分享他們投票的理由，或提供更多資訊。
-    hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
+    hide_results_description: 如果你希望人們投票時不看到其他人的投票情況，你可以隱藏結果。
     process_helptext: 命名並描述用於運行此投票的過程。
     reminder_helptext: 在截止日期前 24 小時發送「即將結束」通知。這可以提高參與度，並為人們創造重新考慮自己立場的機會。
     voting_duration: 期間
@@ -2754,7 +2754,7 @@ zh_TW:
     who_may_vote: 誰可以參與此次 %{poll_type} 投票？
   poll_receipts_page:
     verify_participants: 驗證參與者
-    see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
+    see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，你將看到誰投了票。
     voter_name: 選民姓名
     voter_email: 選民電子郵件
     vote_cast: 投票結果
@@ -2767,7 +2767,7 @@ zh_TW:
   discussion_template:
     browse_public_templates: 瀏覽範本庫
     discussion_template_saved: 討論範本已儲存
-    these_are_public_templates: 您可以複製或修改這些模板，以適應您的團隊需求。
+    these_are_public_templates: 你可以複製或修改這些模板，以適應你的團隊需求。
     default_title_label: 預設標題
     default_title_hint: 請在標題欄中預先填寫可編輯文字。此項為可選，如不確定，請留空。
     title_placeholder_label: 範例標題
@@ -2776,14 +2776,14 @@ zh_TW:
     example_description_label: 範例描述
     example_description_placeholder: 提供一個模板，讓人們用來發起討論帖。
     hidden_templates: 隱藏模板
-    confirm_delete: 您確定要刪除此討論範本嗎？
+    confirm_delete: 你確定要刪除此討論範本嗎？
     add_poll_template: 新增投票模板
     add_poll_template_help: 選擇任何有助於完成此過程的投票模板
     recommended_poll_templates: 推薦的投票模板
     share_in_template_gallery: 在公共模板庫中分享此模板
     browse_example_templates: 瀏覽範例模板
     example_templates: 範例模板
-    browse_public_templates_hint: 點擊範本名稱即可開始討論，或點擊右側的編輯按鈕進行複製並修改，以便用於您自己的團隊。
+    browse_public_templates_hint: 點擊範本名稱即可開始討論，或點擊右側的編輯按鈕進行複製並修改，以便用於你自己的團隊。
     process_name_placeholder: 例如：每週站會
     process_subtitle_placeholder: 例如：每週與團隊進行簡短的溝通
     default_title_placeholder: 例如：站立式演講 - 1月15日
@@ -2795,17 +2795,17 @@ zh_TW:
     choose_group_for_templates: 選擇一個群組以查看其討論模板
     start_direct_discussion: 直接展開討論
     poll_templates: 投票模板
-    poll_templates_help: 您在此處選擇的範本將在有人點擊「開始投票」時優先顯示。
+    poll_templates_help: 你在此處選擇的範本將在有人點擊「開始投票」時優先顯示。
     start_direct_discussion_from_blank: 從空白模板開始直接討論
     default_to_direct_discussion: 先以直接討論的形式開始（不要分組討論）。
-    default_to_direct_discussion_helptext: 如果您希望人們透過此範本直接發起討論，請使用此功能。
+    default_to_direct_discussion_helptext: 如果你希望人們透過此範本直接發起討論，請使用此功能。
     example_discussion_templates: 討論模板範例
     browse_example_use_hint: 點擊模板標題即可<b>開始討論</b>。
     browse_example_fork_hint: "<b>點擊叉形圖標</b>，以範例為起點，建立新的討論範本。"
     new_discussion_template_title: 新討論模板
     new_template_from_blank: 從空白模板建立新模板
-    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
-    these_are_templates_v3: 這些是您所在小組的討論範本。點擊模板即可開始新的討論。
+    new_template_from_blank_subtitle: 建立一個新模板，以適應你組織中的流程。
+    these_are_templates_v3: 這些是你所在小組的討論範本。點擊模板即可開始新的討論。
     these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
     show_hidden_templates: 顯示隱藏模板
     show_fewer: 顯示更少
@@ -2833,7 +2833,7 @@ zh_TW:
     title: 將討論轉移到另一個群組
     body: 目的地組
     confirm: 推進討論
-    confirm_change_to_private: "%{groupName} 是一個公開群組。如果您繼續操作，本次討論將會公開顯示。"
+    confirm_change_to_private: "%{groupName} 是一個公開群組。如果你繼續操作，本次討論將會公開顯示。"
     messages:
       success: 討論已轉移至 %{name}
   auth:
@@ -2859,7 +2859,7 @@ zh_TW:
     closed_at: 已關閉
     closing_at: 關閉於
   poll_stv_vote_form:
-    helptext: 將候選人拖到線上方進行排名。線下方的候選人未排名。排名第一的候選人是您最喜歡的。
+    helptext: 將候選人拖到線上方進行排名。線下方的候選人未排名。排名第一的候選人是你最喜歡的。
     divider_text: 將候選人拖到這條線以上進行排名
     stance_created: 投票記錄
     stance_updated: 投票結果已更新

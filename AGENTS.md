@@ -13,8 +13,33 @@
 - **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
 - **translation keys should closely match their values** So that templates are easy to read. Rather than title, call the key what the title says.
 - **Use concise language and a calm tone** For example: Don't use exclamation marks for success flash messages. Just tell the user what happened. Be aware of translation from english when writing english.. choose words with most correct meaning.
-- **Spanish (es): use the informal `tú` register throughout.** The app addresses users with "tu", "tú", informal imperatives ("Suscríbete", "Descubre"), and informal verb forms ("¿Cómo piensas?"). Google Translate often introduces `usted`/`su` — catch and correct this on review.
-- **Dutch (nl_NL): use the informal `je/jouw` register throughout.** The app addresses users with "je", "jouw", and informal verb forms ("Hoe wil je?", "je eigen demogroep"). Google Translate often introduces `u`/`uw` — catch and correct this on review.
+- **Second-person register per locale** — Loomio uses informal/familiar address throughout. Google Translate regularly drifts to formal; catch and correct on every retranslation review. The correct register for each supported locale:
+
+  | Locale | Language | Register | Informal markers | Formal drift to watch for |
+  |--------|----------|----------|-----------------|--------------------------|
+  | `ca` | Catalan | informal | tu, et, ton/ta | vostè, li |
+  | `da` | Danish | informal (du) | du, dig, din | De, Dem, Deres |
+  | `de` | German | informal (du) | du, dir, dein/deine | Sie, Ihnen, Ihr/Ihre |
+  | `el` | Greek | informal (εσύ) | εσύ, σε, σου | εσείς, σας |
+  | `es` | Spanish | informal (tú) | tú, tu, te, tú-imperative | usted, su, le, usted-imperative |
+  | `fi` | Finnish | informal (sinä) | sinä, sinulle, sinun | te, teille |
+  | `fr` | French | informal (tu) | tu, te, ton/ta/tes | vous, votre/vos |
+  | `he` | Hebrew | informal | אתה/את, שלך | no strong formal/informal split |
+  | `hr` | Croatian | informal (ti) | ti, te, tvoj | Vi, Vam, Vaš |
+  | `hu` | Hungarian | informal (te) | te, neked, téged | Ön, Önnek, Önt |
+  | `it` | Italian | informal (tu) | tu, ti, tuo/tua | Lei, La, Le |
+  | `ja` | Japanese | polite (です/ます) | です, ます forms | plain/casual forms |
+  | `nl_NL` | Dutch | informal (je) | je, jij, jouw | u, uw |
+  | `pl` | Polish | informal (ty) | ty, ci, twój | Pan, Pani, Państwo |
+  | `pt_BR` | Portuguese (BR) | informal (você) | você, seu/sua | senhor/senhora |
+  | `ro` | Romanian | informal (tu) | tu, tău/ta, te, îți | dumneavoastră, dvs |
+  | `ru` | Russian | informal (ты) | ты, тебе, твой (lowercase) | Вы, Вам, Ваш (capital В) |
+  | `sl` | Slovenian | informal (ti) | ti, te, tvoj | vi, vas, vaš |
+  | `sv` | Swedish | informal (du) | du, dig, din | (modern Swedish dropped ni) |
+  | `tr` | Turkish | informal (sen) | sen, senin, sana, -sin suffix | siz, sizin, -siniz suffix |
+  | `uk` | Ukrainian | informal (ти) | ти, тобі, твій (lowercase) | Ви, Вам, Ваш (capital В) |
+  | `zh_CN` | Chinese (Simplified) | neutral/polite | 你 preferred | 您 (too formal) |
+  | `zh_TW` | Chinese (Traditional) | neutral/polite | 你 preferred | 您 (too formal) |
 
 ## Frontend / Vue
 

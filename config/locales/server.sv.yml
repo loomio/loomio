@@ -43,7 +43,7 @@ sv:
       title_placeholder: Revidering av vår organisations stadgar
       process_name: Beslut med konsensus
       process_subtitle: Nå kollektivavtal med alla inblandade.
-      process_introduction: '<p>Bygg konsensus för ett beslut som ni måste fatta tillsammans, för att nå en överenskommelse som tillfredsställer alla deltagares behov och angelägenheter.</p><p> Typiska roller:</p><ul><li><p> Utse en handledare. (På styrelsemöten är detta vanligtvis ordföranden.)</p></li><li><p> Ett kvorum eller övermajoritet av medlemmar att delta, enligt vad som anges i din organisations stadgar.</p></li></ul><p> Vanliga processsteg:</p><p> Steg 1. Skapa ett öppet utrymme för diskussion om en fråga eller ett förslag till beslut.</p><p> Steg 2. Testa för konsensus och avslöja invändningar med ett Sense-kontrollförslag.</p><p> Steg 3. Klargör eventuella punkter, bjud in konstruktiva ändringar och ändra förslaget.</p><p> Steg 4. Testa för överenskommelse och eventuella kvarvarande invändningar med ett konsensusförslag.</p><p> Steg 5. Anteckna beslutet med ett resultat och i organisationens officiella protokoll.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer: Konsensusprocess.</a></p>'
+      process_introduction: '<p>Bygg konsensus för ett beslut som du måste fatta tillsammans, för att nå en överenskommelse som tillfredsställer alla deltagares behov och angelägenheter.</p><p> Typiska roller:</p><ul><li><p> Utse en handledare. (På styrelsemöten är detta vanligtvis ordföranden.)</p></li><li><p> Ett kvorum eller övermajoritet av medlemmar att delta, enligt vad som anges i din organisations stadgar.</p></li></ul><p> Vanliga processsteg:</p><p> Steg 1. Skapa ett öppet utrymme för diskussion om en fråga eller ett förslag till beslut.</p><p> Steg 2. Testa för konsensus och avslöja invändningar med ett Sense-kontrollförslag.</p><p> Steg 3. Klargör eventuella punkter, bjud in konstruktiva ändringar och ändra förslaget.</p><p> Steg 4. Testa för överenskommelse och eventuella kvarvarande invändningar med ett konsensusförslag.</p><p> Steg 5. Anteckna beslutet med ett resultat och i organisationens officiella protokoll.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer: Konsensusprocess.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Vad är det för beslut du behöver fatta?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Varför är detta viktigt och vilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Vilken information behöver människor för sitt sammanhang?</h3><p></p><h3 id="who-is-the-facilitator"> Vem är facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Vilka villkor måste vara uppfyllda för ett beslut?</h3><h3 id=""></h3>
       consensus: Konsensus
     share_links_and_info:
@@ -421,14 +421,14 @@ sv:
       abstain: Avstå
       disagree: Håller inte med
       disagree_meaning: Något i det här förslaget måste ändras innan jag kan stödja det.
-      disagree_prompt: Hur skulle det här förslaget kunna förbättras så att ni kan stödja det?
+      disagree_prompt: Hur skulle det här förslaget kunna förbättras så att du kan stödja det?
       abstain_meaning: Att välja att inte rösta, eller inte kunna, om detta beslut.
       abstain_prompt: Varför avstår du från att rösta, eller känner dig inte i stånd att rösta om detta beslut?
     advice:
       process_subtitle: Sök råd om ett beslut du behöver fatta
       process_introduction: <p>Sök råd om ett beslut du behöver fatta, med råd från berörda personer eller som har expertis, så att du kan fatta ett bättre beslut för din organisation.</p><ul><li><p> Råd hjälper dig att fatta bättre beslut för din organisation.</p></li><li><p> Främja relationer, lärandemöjligheter och mångsidig input.</p></li><li><p> Stimulera initiativförmåga och kreativitet, och ett roligare arbete.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Läs mer om rådgivningsprocessen</u></a> .</p>
       title: Hjälp Takashi att köpa en ny dator
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vilket beslut behöver du fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Vilka råd ber du folk om för att hjälpa dig att fatta ett bra beslut?</strong></h3><p></p><p> Jag söker era synpunkter för att kunna fatta ett bra beslut för vår organisation.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vilket beslut behöver du fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Vilka råd ber du folk om för att hjälpa dig att fatta ett bra beslut?</strong></h3><p></p><p> Jag söker dina synpunkter för att kunna fatta ett bra beslut för vår organisation.</p>
       agree: Komma överens
       agree_meaning: Jag har gett mitt råd om detta beslut
       agree_prompt: Sammanfatta dina råd eller lämna en användbar kommentar
@@ -453,7 +453,7 @@ sv:
       details_v2: "<h3><strong>Vilket beslut behöver du fatta?</strong></h3><p></p><h3> <strong>Varför är detta viktigt?</strong></h3><p></p><h3> <strong>Vad begär du av folk i det här förslaget?</strong></h3><p></p><p> Vi strävar inte efter perfektion – ge ditt samtycke om förslaget är tillräckligt bra och säkert att prova. Om du har en invändning, säg vad som behöver ändras för att det ska bli genomförbart.</p>"
     consensus:
       process_subtitle: Nå kollektivavtal med alla inblandade
-      process_introduction: <p>Bygg upp konsensus kring ett beslut ni behöver fatta, för att nå en överenskommelse som tillgodoser alla deltagares behov och intressen.</p><ul><li><p> Diskutera och utveckla ett förslag tillsammans</p></li><li><p> Inkludera och respektera alla inblandade</p></li><li><p> Söker samtycke från de flesta</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer om konsensusprocessen</a> .</p>
+      process_introduction: <p>Bygg upp konsensus kring ett beslut du behöver fatta, för att nå en överenskommelse som tillgodoser alla deltagares behov och intressen.</p><ul><li><p> Diskutera och utveckla ett förslag tillsammans</p></li><li><p> Inkludera och respektera alla inblandade</p></li><li><p> Söker samtycke från de flesta</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer om konsensusprocessen</a> .</p>
       title: Godkänn det nya varumärkeskonceptet
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vilket beslut behöver du fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> För att förslaget ska gå igenom krävs att en majoritet av ledamöterna röstar ja.</p><p> Om du inte håller med, beskriv varför och vad som behöver ändras för att du ska hålla med.</p>
       outcome_statement: "<p>Tack för att du deltar i konsensusprocessen.</p>"
@@ -464,7 +464,7 @@ sv:
       abstain_meaning: Detta beslut påverkar inte mig och jag är nöjd med vad gruppen än beslutar
       disagree: Håller inte med
       disagree_meaning: Något i det här förslaget måste ändras innan jag kan stödja det.
-      disagree_prompt: Hur skulle det här förslaget kunna förbättras så att ni kan stödja det?
+      disagree_prompt: Hur skulle det här förslaget kunna förbättras så att du kan stödja det?
       block: Blockera
       block_meaning: Jag blockerar detta förslag och anser att det inte bör gå vidare
       block_prompt: Förklara din invändning mot förslaget och varför det inte bör genomföras
@@ -477,7 +477,7 @@ sv:
       title: Vilka frågor har du om hälso- och säkerhetspolicyn?
       details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Detta är en frågerunda där du är välkommen att ställa förtydligande frågor.</p><p> Vad behöver du veta för att förstå förslaget?</p><p> Vänligen svara innan frågestunden avslutas.</p>
       reason_prompt: Vad behöver du veta för att förstå förslaget?
-      outcome_statement: "<p>Tack för att ni skickat in era frågor under den här omgången</p>"
+      outcome_statement: "<p>Tack för att du skickat in dina frågor under den här omgången</p>"
     sense_check:
       process_subtitle: Be om feedback, frågor och funderingar
       process_introduction: <p>Förslaget med Sense Check är ett bra sätt att få feedback, be om frågor och avslöja funderingar. Det hjälper till att förtydliga och förbättra ett förslag innan man går vidare till ett beslut.</p><p> En känslokontroll låter människor veta att ett förslag håller på att utformas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna av hur de känner och reagera på lämpligt sätt – vilket öppnar upp möjligheten att integrera deras bidrag för att fatta ett bättre beslut.</p><p> Använd förslaget "Sense check" i samtyckesprocessen för att bjuda in reaktioner och kommentarer för att förbättra förslaget, och i en konsensusprocess för att testa konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Läs mer om att använda Sense check i den enkla beslutsprocessen</u></a> <span>.</span></p>
@@ -511,7 +511,7 @@ sv:
       process_subtitle: Uttryckligt stöd för ett förslag på en 8-gradig skala
       process_introduction: <p>Med hjälp av överenskommelsesgradienter kan medlemmar i en grupp uttrycka sitt stöd för ett förslag i grader på en skala, vilket erbjuder fler sätt att uttrycka stöd än i termer av "håller med" och "håller inte med".</p><p> Använd gradienter av överenskommelse som en preliminär omgång för att testa stöd för ett förslag innan man går vidare till en formell överenskommelse.</p><p> Gradienter av enighet låter människor veta att ett förslag håller på att utformas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna av hur de känner och reagera på lämpligt sätt – vilket öppnar upp möjligheten att integrera deras bidrag för att fatta ett bättre beslut.</p>
       title: Vad tycker du om den nya värdegrunden?
-      details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Vad tycker du om förslaget? Uttryck ditt stöd på skalan nedan och lämna en kommentar eller ett förslag till förbättring.</p><p> Detta förslag till överenskommelsegradienter är till för att testa stödet för förslaget och ge en möjlighet för era synpunkter innan man går vidare till en formell överenskommelse.</p>
+      details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Vad tycker du om förslaget? Uttryck ditt stöd på skalan nedan och lämna en kommentar eller ett förslag till förbättring.</p><p> Detta förslag till överenskommelsegradienter är till för att testa stödet för förslaget och ge en möjlighet för dina synpunkter innan man går vidare till en formell överenskommelse.</p>
       whole_hearted_endorsement: Helhjärtat stöd
       whole_hearted_endorsement_meaning: Jag gillar det verkligen!
       whole_hearted_endorsement_prompt: Vad tycker du om det?
@@ -534,7 +534,7 @@ sv:
       serious_disagreement_prompt: Vad är du oenig med?
       veto: Veto
       veto_meaning: Jag blockerar detta förslag
-      veto_prompt: Varför blockerar ni förslaget? Vad behöver förändras för att ni ska stödja det?
+      veto_prompt: Varför blockerar du förslaget? Vad behöver förändras för att du ska stödja det?
     simple_poll:
       process_subtitle: Hitta det mest populära alternativet
       process_introduction: <p>Innan du fattar ett beslut, ta reda på vilka alternativ folk bryr sig mest om.</p><p> En enkel omröstning hjälper dig att hitta det eller de mest populära alternativen med ett eller flera valmöjligheter.</p><p> Skriv eventuella detaljer om alternativen i detaljfältet, ange sedan namnet på alternativet och klicka på + för att lägga till.</p><p> Ange det <strong>lägsta</strong> och <strong>högsta antalet valmöjligheter</strong> som en väljare kan välja. Låt det högsta antalet valmöjligheter vara 1 för en omröstning med ett enda val.</p><p> Du kan använda pennikonen bredvid varje alternativ för att lägga till en <strong>betydelse</strong> av alternativet, en ytterligare förklaring av alternativet för att hjälpa folk när de röstar.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Läs mer om Enkel omröstning</a> .</p>
@@ -582,7 +582,7 @@ sv:
     try_loomio:
       process_name: Låt oss prova Loomio
       process_subtitle: Få er grupp att tillsammans prova Loomio
-      process_introduction: "<p>Att få ut det mesta av Loomio kräver ett gemensamt engagemang. Det här förslaget hjälper er grupp att avgöra om ni ska investera tid och ansträngning i att ge Loomio ett riktigt försök – oavsett om det handlar om att prova på en period eller att registrera sig för ett abonnemang tillsammans.</p>"
+      process_introduction: "<p>Att få ut det mesta av Loomio kräver ett gemensamt engagemang. Det här förslaget hjälper er grupp att avgöra om du ska investera tid och ansträngning i att ge Loomio ett riktigt försök – oavsett om det handlar om att prova på en period eller att registrera sig för ett abonnemang tillsammans.</p>"
       title: Låt oss tillsammans prova Loomio
       details: "<p>Att använda Loomio på ett bra sätt kräver en gemensam ansträngning – det fungerar bara när folk dyker upp och deltar.</p><p> Detta förslag ber alla att aktivt använda Loomio under vår provperiod. Det innebär att de checkar in, röstar på förslag och deltar i diskussioner.</p><p> Om du har funderingar kring detta, invänd och ange vad som behöver ändras – det är ju därför invändningsmöjligheten är till.</p>"
       outcome_statement: "<p>Dela resultatet av detta förslag med gruppen – vad som beslutades och vad som händer härnäst.</p>"
@@ -598,7 +598,7 @@ sv:
       yes_meaning: Jag stöder detta förslag
       yes_prompt: Varför stöder du detta förslag?
       no_meaning: Jag stöder inte detta förslag
-      no_prompt: Varför stöder ni inte detta förslag?
+      no_prompt: Varför stöder du inte detta förslag?
       outcome_statement: "<p>Tack för att du deltog i denna majoritetsomröstning.</p>"
     stv:
       process_subtitle: Välj flera vinnare proportionellt

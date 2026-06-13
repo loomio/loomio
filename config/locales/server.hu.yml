@@ -29,7 +29,7 @@ hu:
       title_placeholder: Tanácsot kérek új számítógép vásárlásához
       process_name: Tanácsadási folyamat
       process_subtitle: Kérjen tanácsot a meghozandó döntéshez.
-      process_introduction: '<p>Hozzon döntést az érintett vagy szakértelemmel rendelkező emberek tanácsai alapján, így jobb döntést hozhat szervezete számára.</p><p> Tipikus szerepkörök:</p><ul><li><p> Facilitátor: A döntést hozó személy, vagy megkér valakit, hogy segítsen.</p></li><li><p> Tanácsadók: Az Ön által meghívott személyek, akik érintettek vagy szakértelemmel rendelkeznek.</p></li></ul><p> Gyakori folyamatlépések:</p><p> 1. lépés: A cselekvés javaslata előtt kérjen bemenetet a perspektívák megszólaltatásához.</p><p> 2. lépés: Tegyen javaslatot és kérjen tanácsot – futtasson egy tanácsi javaslatot.</p><p> 3. lépés: A kapott tanácsokat figyelembe véve döntést hoz, és tájékoztatja a tanácsot adó személyeket - közölje az eredményt.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Bővebben: Tanácsadási folyamat.</a></p>'
+      process_introduction: '<p>Hozzon döntést az érintett vagy szakértelemmel rendelkező emberek tanácsai alapján, így jobb döntést hozhat szervezete számára.</p><p> Tipikus szerepkörök:</p><ul><li><p> Facilitátor: A döntést hozó személy, vagy megkér valakit, hogy segítsen.</p></li><li><p> Tanácsadók: Az te által meghívott személyek, akik érintettek vagy szakértelemmel rendelkeznek.</p></li></ul><p> Gyakori folyamatlépések:</p><p> 1. lépés: A cselekvés javaslata előtt kérjen bemenetet a perspektívák megszólaltatásához.</p><p> 2. lépés: Tegyen javaslatot és kérjen tanácsot – futtasson egy tanácsi javaslatot.</p><p> 3. lépés: A kapott tanácsokat figyelembe véve döntést hoz, és tájékoztatja a tanácsot adó személyeket - közölje az eredményt.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Bővebben: Tanácsadási folyamat.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Milyen döntést kell meghoznia?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Miért fontos ez, és milyen hatásai vannak?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Milyen tanácsokat kérsz a jó döntés meghozatalához?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Ki a facilitátora ennek a folyamatnak?</h3><p></p>
       advice: Tanács
     pass_a_resolution:
@@ -230,7 +230,7 @@ hu:
     via_loomio: "%{name} (a %{site_name}-on keresztül)"
   event_mailer:
     received_email:
-      explaination_html: "<p>Azért kapta ezt az e-mailt, mert Ön a(z) %{group} Loomio csoport adminisztrátora.</p><p> A csoport e-mailt kapott egy ismeretlen e-mail címről.</p><p> Ha az üzenet a csoport egyik tagjától származik, kérjük, tekintse át az e-mailt, és válassza ki a tagot.</p><p> Ha az üzenet nem kívánt, letilthatja az erről a címről érkező további e-maileket.</p>"
+      explaination_html: "<p>Azért kapta ezt az e-mailt, mert te a(z) %{group} Loomio csoport adminisztrátora.</p><p> A csoport e-mailt kapott egy ismeretlen e-mail címről.</p><p> Ha az üzenet a csoport egyik tagjától származik, kérjük, tekintse át az e-mailt, és válassza ki a tagot.</p><p> Ha az üzenet nem kívánt, letilthatja az erről a címről érkező további e-maileket.</p>"
     notification_reason:
       group_subscribed: Azért kaptad ezt, mert feliratkoztál a csoport összes tevékenységére.
       group_mentioned: Ezt azért kaptad, mert a csoportot @említették.
@@ -299,7 +299,7 @@ hu:
       link_help: 'Kattints az alábbi hivatkozásra a meghívás elfogadásához:'
       accept_invitation: Meghívás elfogadása
       stop_emails: A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról
-      accepting_is_important: Fontos, hogy fogadja el a meghívást, különben nem kap értesítést az Önt érintő döntésekről.
+      accepting_is_important: Fontos, hogy fogadja el a meghívást, különben nem kap értesítést az téged érintő döntésekről.
     resend_to_join_group:
       subject: "%{member}arra vár, hogy csatlakozz a(z)%{group_name}csoporthoz a(z) %{site_name}oldalon"
     user_added_to_group:
@@ -458,7 +458,7 @@ hu:
       consent_prompt: Mi tetszik a javaslatban, és hogyan válik az szervezet javára?
       objection: Kifogás
       objection_meaning: Érvényes kifogásom van, és úgy gondolom, hogy a javaslat kárt okozna.
-      objection_prompt: Milyen változtatásra van szükség ezen a javaslaton ahhoz, hogy „biztonságosan kipróbálható” legyen, és Ön is támogatni tudja?
+      objection_prompt: Milyen változtatásra van szükség ezen a javaslaton ahhoz, hogy „biztonságosan kipróbálható” legyen, és te is támogatni tudja?
       outcome_statement: "<p>Köszönjük, hogy részt vett a hozzájárulási folyamatban.</p>"
       process_subtitle_v2: Folytasd, hacsak valaki nem emel kifogást
       process_introduction_v2: "<p><strong>A beleegyezés</strong> azt kérdezi, hogy egy javaslat biztonságosan kipróbálható-e, nem pedig azt, hogy tökéletes-e. A javaslat elfogadásra kerül, amíg senki sem emel érdemi kifogást. Ha valaki kifogást emel, a csoport azon dolgozik, hogy megoldja azt – és mivel a résztvevők a javaslat alakulásával párhuzamosan módosíthatják szavazatukat, az ellenvetések a fejlesztés eszközévé, nem pedig akadályává válnak.</p>"
@@ -551,13 +551,13 @@ hu:
       process_subtitle: Keresse meg a legnépszerűbb opciót
       process_introduction: <p>Mielőtt döntést hoznál, nézd meg, melyik lehetőség(ek) érdeklik a legjobban az embereket.</p><p> Az egyszerű szavazás segít megtalálni a legnépszerűbb opciót vagy opciókat egyetlen vagy többes választási lehetőséggel.</p><p> Írd be a részleteket a lehetőségekről a részletek mezőbe, majd add meg a lehetőség nevét, és kattints a + jelre a hozzáadáshoz.</p><p> Állítsa be a szavazó által választható <strong>minimális</strong> és <strong>maximális választási lehetőségek számát</strong> . Egyetlen választási lehetőség esetén hagyja a maximális választási lehetőséget 1-en.</p><p> Az egyes opciók melletti ceruza ikonnal hozzáadhatod az opció <strong>jelentését</strong> , és részletesebben is kifejtheted, hogy segítsd az embereket a szavazás során.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">További információ az Egyszerű szavazásról</a> .</p>
       title: Mire kellene összpontosítanunk stratégiai irányunkban?
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az neked tetsző opció(ka)t.</p>
       process_introduction_v2: <p><strong>A Choose (Válassz) funkció</strong> segít megtalálni a legnépszerűbb lehetőséget. A résztvevők egy listából választanak – beállíthatod, hogy egy vagy több lehetőséget válasszanak.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">További információ a Choose-ról</a> .</p>
     score_poll:
       process_subtitle: Mérje fel az egyes lehetőségek támogatottságának mértékét
       process_introduction: <p>Használd a Score poll-t, ha fel szeretnéd mérni az emberek vágyait, preferenciáit vagy érdeklődését az egyes lehetőségek iránt.</p><p> <span>A résztvevőket arra kérik, hogy értékeljék az egyes opciókat, és egy csúszka skálán történő mozgatásával rendeljenek hozzájuk pontszámot.</span></p><p> <span>Az eredményeket grafikusan jelenítjük meg, valamint minden opcióhoz táblázatot, amely mutatja az összesített pontszámot, az átlagpontszámokat és a szavazók számát.</span></p><p> A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a pontszám-felmérésnél a szavazási torzítás csökkentése érdekében.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
       title: A döntéshozatal folyamatának értékelése a szervezetünkben
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az neked tetsző opció(ka)t.</p>
       process_subtitle_v2: Mérje fel az egyes lehetőségek támogatottságának szintjét
       process_introduction_v2: <p><strong>A pontszám</strong> segítségével mérheted a csoport támogatottságának szintjét az egyes lehetőségek esetében. A résztvevők minden lehetőséget egy csúszó skálán pontszám hozzárendelésével értékelnek, így nem csak azt láthatod, hogy az emberek mit preferálnak, hanem azt is, hogy mennyire.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
     dot_vote:

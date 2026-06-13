@@ -61,7 +61,7 @@ ja:
     play_with_an_example_group: サンプルグループで遊んでみる
     look_and_feel: 小規模な組織にとって Loomio がどのようなものかをご覧ください。アプリを試してみて学習してください。
     watch_then_start: ビデオを見て「デモを開始」をクリックして Loomio をお試しください
-    generating_demo: わかった、そこで待ってて！デモの生成には約 20 秒かかります。
+    generating_demo: わかりました、そこでお待ちください！デモの生成には約 20 秒かかります。
     start_a_x_day_free_trial: "%{day} 日間の無料トライアルを開始する"
     ready_to_trial: あなたの組織で Loomio を試す準備はできていますか?
     start_a_no_obligation_x_day_trial: "%{day} 日間の無料トライアルを利用して、組織の Loomio グループを開始してください。"
@@ -190,7 +190,7 @@ ja:
     you: あなた
     expand: 拡大する
     all_day: 一日中
-    ok_got_it: はい、わかった
+    ok_got_it: はい、わかりました
     learn_more: もっと詳しく知る
     not_found: 見つかりません
     time_zone: タイムゾーン

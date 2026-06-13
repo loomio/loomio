@@ -1,24 +1,24 @@
 ---
 hu:
   start_trial:
-    title: Kezdje el a Loomio ingyenes próbaverzióját
-    intro: Köszönjük érdeklődését Loomio iránt. Örömmel kínálunk Önnek egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodjon arról, hogy a Loomio megfelelő-e az Ön szervezete számára.
+    title: Kezdd el a Loomio ingyenes próbaverziódat
+    intro: Köszönjük érdeklődésedet a Loomio iránt. Örömmel kínálunk neked egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodj arról, hogy a Loomio megfelelő-e a szervezeted számára.
     lets_get_started: Kezdjük el!
     your_name: A neved
     your_email: Az email címed
     we_use_this_to_help: Az alábbi információk a Loomio csoport létrehozására szolgálnak, és segít nekünk megérteni a szervezetét, hogy jobban tudjunk támogatni.
-    how_do_you_intend_to_use_loomio: Hogyan kívánja használni a Loomio-t?
+    how_do_you_intend_to_use_loomio: Hogyan kívánod használni a Loomio-t?
     what_decisions_do_you_need_to_make: Milyen döntéseket kell meghoznia?
     newsletter_description: Legyen naprakész az új funkciókkal és inspiráló történetekkel kapcsolatban arról, hogy a Loomiot hogyan használják a szervezetek szerte a világon
     subscribe_to_newsletter: Iratkozzon fel a Loomio hírlevélre
-    form_incomplete: A folytatáshoz töltse ki az űrlap összes mezőjét
+    form_incomplete: A folytatáshoz töltsd ki az űrlap összes mezőjét
     success: Siker!
-    taken_first_step: Ön megtette az első lépést az együttműködésen alapuló döntéshozatal felé a Loomióval.
+    taken_first_step: Megtetted az első lépést az együttműködésen alapuló döntéshozatal felé a Loomióval.
     account_created_for_you: Létrehoztunk egy felhasználói fiókot a %{email} számára és egy csoportot a Loomio-n.
     please_sign_in_to_continue: Kérjük, jelentkezzen be a folytatáshoz.
-    please_complete_this_field: Kérjük, töltse ki ezt a mezőt
+    please_complete_this_field: Kérjük, töltsd ki ezt a mezőt
     please_enter_a_valid_email_address: Kérjük valós e-mail címet adjon meg
-    please_accept_the_terms: Kérjük, fogadja el a feltételeket
+    please_accept_the_terms: Kérjük, fogadd el a feltételeket
     how_did_you_hear_about_loomio: Honnan hallott a Loomio-ról?
     newsletter_intro: Szeretne hallani az új funkciókról, ügyfélinterjúkról, esettanulmányokról és a Loomio csapatának bejelentéseiről?
   tasks:
@@ -45,12 +45,12 @@ hu:
     title_copy: "%{title} Másolás"
     copy_of_title: "%{title} másolata"
     loomio_default_templates: A Loomio alapértelmezett sablonjai
-    which_templates_would_you_like_to_use: Milyen sablonokat szeretne használni?
+    which_templates_would_you_like_to_use: Milyen sablonokat szeretnél használni?
     login_to_start_demo: 'Ez a Loomio demója, működés közben. Üdv, nézz körül!
 
       '
-    sign_in_to_try_features: Ha szeretné kipróbálni a szavazást egy demo döntésben, vagy ingyenes próbaidőszakot szeretne indítani szervezete számára, kattintson a „bejelentkezés” gombra.
-    click_button_to_start_demo: Üdvözöljük! A szavazás és más funkciók kipróbálásához kattintson a bemutató indítása lehetőségre.
+    sign_in_to_try_features: Ha szeretnéd kipróbálni a szavazást egy demo döntésben, vagy ingyenes próbaidőszakot szeretnél indítani szervezeted számára, kattints a „bejelentkezés” gombra.
+    click_button_to_start_demo: Üdvözlünk! A szavazás és más funkciók kipróbálásához kattints a bemutató indítása lehetőségre.
     welcome_to_your_demo: Ez a saját demo csoportod!
     try_voting_to_see_it_work: Próbáljon meg szavazni egy ajánlatra, hogy képet kapjon a Loomio működéséről.
     delete_will_be_deleted_in_x_days: Ez a demó %{x} napon belül törlésre kerül.
@@ -62,10 +62,10 @@ hu:
     start_a_demo: Indítson el egy bemutatót
     demo_group: Demo csoport
     play_with_an_example_group: Játssz egy példacsoporttal
-    look_and_feel: Nézze meg, hogyan néz ki a Loomio egy kis szervezetnél. Ismerje meg az alkalmazást úgy, hogy kipróbálja.
-    watch_then_start: Kérjük, nézze meg a videót, majd kattintson a "Demó indítása" gombra a Loomio kipróbálásához
+    look_and_feel: Nézd meg, hogyan néz ki a Loomio egy kis szervezetnél. Ismerd meg az alkalmazást úgy, hogy kipróbálod.
+    watch_then_start: Kérjük, nézd meg a videót, majd kattints a "Demó indítása" gombra a Loomio kipróbálásához
     generating_demo: Oké, várj ott! A demó létrehozása körülbelül 20 másodpercet vesz igénybe.
-    start_a_x_day_free_trial: Kezdjen el egy %{day} napos ingyenes próbaidőszakot
+    start_a_x_day_free_trial: Kezdd el egy %{day} napos ingyenes próbaidőszakot
     ready_to_trial: Készen áll, hogy kipróbálja a Loomio-t szervezetével?
     start_a_no_obligation_x_day_trial: Indítson el egy Loomio csoportot szervezete számára egy ingyenes %{day} napos próbaverzióval.
     you_can_test_it_out: Meghívhat másokat a csatlakozásra, integrálhatja más eszközeivel, és megpróbálhat döntéseket hozni.
@@ -74,8 +74,8 @@ hu:
     view_demo: Demo megtekintése
     start_trial: Indítsa el a próbaverziót
     start_free_trial: Ingyenes próba indítása
-    demo_needs_user: A demó elindításához regisztrálnia kell (vagy be kell jelentkeznie) Loomio-felhasználóként. Ez ingyenes, és csak egy percet vesz igénybe.
-    trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezzen be.
+    demo_needs_user: A demó elindításához regisztrálnod kell (vagy be kell jelentkezned) Loomio-felhasználóként. Ez ingyenes, és csak egy percet vesz igénybe.
+    trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezz be.
     this_is_a_template_for_new_threads: Ez egy sablon az új szálak számára
     share_a_custom_configuration: Egyéni konfiguráció megosztása a csoport többi tagjával
   doctypes:
@@ -117,7 +117,7 @@ hu:
     was_gift_trial: 'Csoportja ingyenesen használja a Loomio-t %{createdDate} óta. Nem tudjuk folytatni az ingyenes szolgáltatást. Kérjük, frissítsen a Loomio használatának folytatásához. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Olvass tovább.</a>'
     was_gift_remaining: "%{days} nap van hátra."
     was_gift_expired: Ingyenes csomagja lejárt.
-    was_gift_expired_or_mistake: 'Ingyenes csomagja lejárt. Ha úgy gondolja, hogy hiba történt, <a style=''text-decoration: underline'' href=''/contact''>lépjen kapcsolatba velünk</a> .'
+    was_gift_expired_or_mistake: 'Ingyenes csomagod lejárt. Ha úgy gondolod, hogy hiba történt, <a style=''text-decoration: underline'' href=''/contact''>lépj kapcsolatba velünk</a> .'
     subscription_ended: A Loomio-előfizetése lejárt. A Loomio használatának folytatásához frissítsen
   subscription_status:
     plan: Terv
@@ -341,7 +341,7 @@ hu:
       flash_and_signout: Megerősítő e-mail elküldve a(z) %{targetEmail} címre. Most kijelentkezett, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
     email_taken: Sajnáljuk, ez az e-mail már társítva van egy másik felhasználóhoz. Ez az e-mail a tiéd?
     find_out_more: Tudj meg többet.
-    placeholder_modal_text: <p>Ha két fiókot szeretne egyesíteni, egyszerűen írja be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesse a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vegye fel velünk a kapcsolatot</a> .
+    placeholder_modal_text: <p>Ha két fiókot szeretnél egyesíteni, egyszerűen írd be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesd a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vedd fel velünk a kapcsolatot</a> .
   emoji_picker:
     search: Keresés
     common: Gyakran használt
@@ -397,9 +397,9 @@ hu:
     confirm_delete_body: Ez az e-mail törlésre kerül. A %{sender} jövőbeli e-mailjeit ez nem érinti.
     unreleased_emails: Kiadatlan e-mailek
     start_a_thread_by_email: Indíts el egy szálat e-mailben
-    send_email_to_start_thread: Küldjön egy e-mailt erre a címre, ha szálat szeretne indítani a csoportjában.
+    send_email_to_start_thread: Küldj egy e-mailt erre a címre, ha szálat szeretnél indítani a csoportodban.
     copy_address: Cím másolása
-    email_me_this_address: Küldje el ezt a címet
+    email_me_this_address: Küldj el ezt a címet
     email_address_copied_to_clipboard: Az e-mail cím a vágólapra másolva
     forward_email_to_move_conversation: 'Tipp: Továbbítson egy e-mailes beszélgetést a Loomiónak, ha döntést kell hoznia vagy nyilvántartást kell vezetnie.'
     start_a_discussion_by_email: Beszélgetés indítása e-mailben
@@ -477,19 +477,19 @@ hu:
         normal: 'Új csoportjaidból a bejelentéseket kapod meg e-mailben. '
         quiet: Nem kérek e-mailt az új csoportokról.
     change_your_email_settings: Módosítsa az e-mail beállításait
-    when_would_you_like_to_be_emailed_group: Mikor szeretne e-mailt kapni erről a csoportról?
+    when_would_you_like_to_be_emailed_group: Mikor szeretnél e-mailt kapni erről a csoportról?
     changes_all_threads_in_group: Ez megváltoztatja a csoport összes szálának beállítását.
     what_do_the_options_mean: Mit jelentenek a lehetőségek?
     loud_desc: Minden alkalommal, amikor valaki részt vesz
     normal_desc: Amikor valaki értesít
     quiet_desc: Soha
-    loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
-    when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretne e-mailt kapni erről: %{poll_type}?'
+    loud_explained: Minden alkalommal e-mailt kapsz, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
+    when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretnél e-mailt kapni erről: %{poll_type}?'
     normal_excludes_mentioning_html: Külön beállítás vonatkozik arra az esetre, ha valaki {'@'}megemlít téged (pl. amikor valaki válaszol neked egy hozzászólásban). <a href="%{url}">Kattints ide az @megemlítések beállításainak szerkesztéséhez.</a>
     changes_all_threads_and_polls_in_group: Ez megváltoztatja a csoport összes hozzászólásláncának és szavazásának beállítását.
     when_do_you_want_to_be_emailed: Mikor szeretnél e-mailt kapni?
     what_the_options_mean: Mit jelentenek a lehetőségek
-    when_would_you_like_to_be_emailed_discussion: Mikor szeretne e-mailben értesülni erről a beszélgetésről?
+    when_would_you_like_to_be_emailed_discussion: Mikor szeretnél e-mailben értesülni erről a beszélgetésről?
     changes_all_discussions_and_polls_in_group: Ez megváltoztatja a csoport összes beszélgetésének és szavazásának beállítását.
     normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
     aria_label: E-mail-beállítások módosítása űrlap
@@ -773,9 +773,9 @@ hu:
       outcome_updated: "%{actor} frissítette az eredményt"
       thread_locked: "%{actor} zárolta a témát"
     hints:
-      poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
-      poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
-      outcome_review_due: Fontolja meg egy visszajelzési közvélemény-kutatás vagy egy új beszélgetés indítását, amely arra ösztönzi a résztvevőket, hogy hogyan valósult meg a döntés.
+      poll_closing_soon: Itt az ideje, hogy szavazz, meggondold magad, vagy bátoríts másokat a részvételre.
+      poll_closing_soon_author: Emlékeztetheted az embereket, hogy szavazzanak, vagy hosszabbítsd meg a határidőt.
+      outcome_review_due: Gondold meg egy visszajelzési közvélemény-kutatás vagy egy új beszélgetés indítását, amely arra ösztönzi a résztvevőket, hogy hogyan valósult meg a döntés.
     email_subject:
       unknown_sender: Ismeretlen feladótól érkező e-mail áttekintése
       comment_replied_to: "%{actor} válaszolt neked ebben a részben: %{title}"
@@ -822,13 +822,13 @@ hu:
     helptext: Jelöld ki azokat az elemeket, amelyeket egy másik beszélgetésbe szeretnél áthelyezni
     search_placeholder: Beszélgetés keresése cím szerint
     move_to_existing_thread: Ugrás a meglévő beszélgetésre
-    start_new_thread: Vagy indítson új beszélgetést
+    start_new_thread: Vagy indíts új beszélgetést
   discussion_form:
     thread_templates: Szálsablonok
     new_thread_template: Új szál sablon
     edit_thread_template: Szálsablon szerkesztése
     blank: Üres
-    blank_subtitle: Indítson el egy vitát, és nézze meg, hová visz
+    blank_subtitle: Indíts el egy vitát, és nézd meg, hová visz
     new_template: Új sablon
     new_template_subtitle: Hozzon létre egy példát, amelyet mások is lemásolhatnak
     to: Nak nek
@@ -890,7 +890,7 @@ hu:
     no_notifications_sent: Nem lettek értesítések küldve
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
     select_groups: Válasszon csoportokat
-    search_by_name_or_email: Keressen név szerint, vagy írja be az e-mail címeket a meghíváshoz
+    search_by_name_or_email: Keress név szerint, vagy írd be az e-mail címeket a meghíváshoz
     search_by_name: Emberek keresése név szerint
     only_admins_can_announce: Csak a rendszergazdák értesíthetik az egész csoportot
     only_admins_can_invite: Csak a rendszergazdák hívhatnak vendégeket
@@ -919,7 +919,7 @@ hu:
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
       delegates_of_group: "%{name} küldöttei"
     form:
-      group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
+      group_has_no_members_yet: Te vagy a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportodba, mielőtt szálat vagy döntést hoznál létre.
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
       too_many_invitations: 'A meghívási korlátot meghaladtad. <a href="%{upgradeUrl}" target="_blank"> Frissítés </a>
 
@@ -929,7 +929,7 @@ hu:
       who_to_invite: Kit szeretnél meghívni?
       invitation_message_placeholder: A meghívó e-mailben szereplő üzenet. (választható)
       invitation_message_label: Üzenet
-      invitation_message_default: Azért hoztam létre ezt a Loomio csoportot, hogy segítsen nekünk közös döntéseket hozni. Kérem, fogadja el meghívásomat. Csak egy percet vesz igénybe a csatlakozás. Köszönöm.
+      invitation_message_default: Azért hoztam létre ezt a Loomio csoportot, hogy segítsen nekünk közös döntéseket hozni. Kérem, fogadd el meghívásomat. Csak egy percet vesz igénybe a csatlakozás. Köszönöm.
       group_announced:
         title: Meghívás a csoportba
         helptext: Kit szeretnél meghívni a csoportba?
@@ -950,7 +950,7 @@ hu:
         message_placeholder: Választható üzenet, amely elmondja az embereknek, miért kell szavazniuk
       wip_poll_reminder:
         title: Emlékeztessen visszajelzésre
-        helptext: Kit szeretne emlékeztetni, hogy adjon visszajelzést?
+        helptext: Kit szeretnél emlékeztetni, hogy adjon visszajelzést?
         message_label: Üzenet
         message_placeholder: Választható üzenet az értesítő e-mailben
       poll_edited:
@@ -1110,7 +1110,7 @@ hu:
     edit_markdown: Markdown szerkesztése
     markdown_confirm: Előfordulhat, hogy bizonyos formázások elvesznek a wysiwyg-tartalom leértékelésre konvertálásakor.
     upload_failed: Feltöltés sikertelen
-    confirm_discard: Biztosan elveti a módosításokat?
+    confirm_discard: Biztosan elvetod a módosításokat?
     discard_draft: Piszkozat elvetése
   cover_photo_form:
     heading: Új borítókép
@@ -1168,9 +1168,9 @@ hu:
   delete_group_modal:
     title: Csoport törlése
     subgroup_title: Alcsoport törlése
-    parent_body: "<h2>Ez a szülőcsoportod – nem egy alcsoport!</h2><br> Ha ezt törli, minden alcsoport is véglegesen törlődik. A Loomio-előfizetését is töröljük. Erősen ajánlott a csoportadatok exportálása és a fontos fájlok manuális letöltése, mielőtt ezt megtenné. Biztos vagy benne, hogy folytatni akarod?"
-    body: Biztosan törli ezt az alcsoportot? Az összes szál, szavazás, fájl és egyéb csoporttartalom véglegesen törlődik. Javasoljuk, hogy a folytatás előtt exportálja a csoportadatokat, és manuálisan töltse le a fontos fájlokat.
-    confirm: A csoport törlésének megerősítéséhez írja be a „%{name}” parancsot.
+    parent_body: "<h2>Ez a szülőcsoportod – nem egy alcsoport!</h2><br> Ha ezt törlöd, minden alcsoport is véglegesen törlődik. A Loomio-előfizetésedet is töröljük. Erősen ajánlott a csoportadatok exportálása és a fontos fájlok manuális letöltése, mielőtt ezt megtenned. Biztos vagy benne, hogy folytatni akarod?"
+    body: Biztosan törlöd ezt az alcsoportot? Az összes szál, szavazás, fájl és egyéb csoporttartalom véglegesen törlődik. Javasoljuk, hogy a folytatás előtt exportáld a csoportadatokat, és manuálisan töltsd le a fontos fájlokat.
+    confirm: A csoport törlésének megerősítéséhez írd be a „%{name}” parancsot.
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
   group_page:
     stats: Csoport statisztika
@@ -1269,7 +1269,7 @@ hu:
   archive_group_form:
     title: Csoport deaktiválása
     question: Biztosan kikapcsolja ezt a csoportot?
-    submit: Igen, deaktiválja ezt a csoportot
+    submit: Igen, deaktiváld ezt a csoportot
     aria_label: Csoport deaktiválása
   group_form:
     thread_defaults_help: Az új szálak alapértelmezett beállításai
@@ -1300,9 +1300,9 @@ hu:
     subgroup_name_placeholder: Mi az alcsoportod neve?
     organization_name_placeholder: Mi a szervezeted neve?
     description: Leírás
-    description_placeholder: Mutassa be csoportjának célját, hogy a csoport tagjai tudják, miért vannak itt.
+    description_placeholder: Mutasd be csoportod célját, hogy a csoport tagjai tudják, miért vannak itt.
     new_description_placeholder: Miért próbálod ki a Loomio-t? Milyen döntéseket kell közösen meghoznotok?
-    secret_by_default: A csoportod csak azok számára lesz elérhető, akiket meghívtak, hogy csatlakozzanak. Ezt később módosíthatja.
+    secret_by_default: A csoportod csak azok számára lesz elérhető, akiket meghívtak, hogy csatlakozzanak. Ezt később módosíthatod.
     privacy_statement:
       public_on_web: A csoport kontextusának neve, leírása és mellékletei a nyilvánosság számára láthatóak lesznek
       private_to_group: A név és a leírás csak a tagok számára lesz látható.
@@ -1366,7 +1366,7 @@ hu:
       logo_removed: Logó eltávolítva
       cover_photo_removed: Borítókép eltávolítva
     upload_logo: Tölts fel logót
-    upload_cover_photo: Töltse fel a borítóképét
+    upload_cover_photo: Tölts fel a borítóképedet
     request_to_join_prompt: Csatlakozás kérése
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
@@ -1421,8 +1421,8 @@ hu:
     copy_link: Másolás
     email_addresses: E-mail címek
     secret_group_url_explanation: Ez a csoportod címe. Csak a meghívott tagok láthatják a csoportot.
-    shareable_group_url_explanation: Ezt a linket megoszthatod nyilvánosan. Az emberek kérhetik a csatlakozást, Ön pedig jóváhagyhatja vagy figyelmen kívül hagyhatja a kéréseket.
-    shareable_invitation_explanation: Ne ossza meg nyilvánosan ezt a linket. Bárki, aki rendelkezik ezzel, csatlakozhat a csoportjához az Ön jóváhagyása nélkül. Csak privát kommunikáción belül ossza meg ezt, hogy a szervezetéhez tartozó személyek csatlakozhassanak.
+    shareable_group_url_explanation: Ezt a linket megoszthatod nyilvánosan. Az emberek kérhetik a csatlakozást, te pedig jóváhagyhatod vagy figyelmen kívül hagyhatod a kéréseket.
+    shareable_invitation_explanation: Ne oszd meg nyilvánosan ezt a linket. Bárki, aki rendelkezik ezzel, csatlakozhat a csoportodhoz a te jóváhagyásod nélkül. Csak privát kommunikáción belül oszd meg ezt, hogy a szervezetedhez tartozó személyek csatlakozhassanak.
     shareable_link_reset: Megosztható link visszaállítása. Az előző link már nem működik.
     email_explanation: Alternatív megoldásként írhatja be az e-mail címeket az alábbiakba, hogy e-mailben meghívókat küldjön.
     add_custom_message: Tedd személyessé a meghívást,
@@ -1437,7 +1437,7 @@ hu:
       invitation_sent: Meghívó elküldve.
       invitations_sent: "%{count} meghívó elküldve."
       no_invitations: UH Oh! Ellenőrizze, hogy az e-mail cím helyes-e, és próbálja újra.
-      max_invitations: Ha több mint 100 meghívót szeretne küldeni, használjon egy csapat linket.
+      max_invitations: Ha több mint 100 meghívót szeretnél küldeni, használj egy csapat linket.
     copy_to_clipboard: Másolás a vágólapra
     already_chatting_somewhere: Már csevegsz valahol?
     to_stop_people_reset_the_link: Ha le szeretnéd tiltani másoknak a csatlakozást ezzel a linkkel, kattints a „Link visszaállítása” gombra. A meglévő link nem fog működni, és egy új link jön létre.
@@ -1496,7 +1496,7 @@ hu:
     message_user: 'Üzenet: %{name}'
   contact_request_form:
     modal_title: 'E-mail: %{name}'
-    message_placeholder: Mutassa be magát és ossza meg miért szeretne kapcsolatba lépni.
+    message_placeholder: Mutasd be magad és oszd meg, miért szeretnél kapcsolatba lépni.
     helptext: A(z) %{name} e-mailben küldi el a nevét, e-mail címét és üzenetét
     email_sent: 'E-mail küldve a következőhöz: %{name}'
   profile_page:
@@ -1558,9 +1558,9 @@ hu:
     password_changed: Jelszava frissült
   deactivation_modal:
     introduction: 'Amikor törli fiókját:'
-    deactivate_introduction: 'Amikor deaktiválja fiókját:'
-    you_will_be_deactivated: Felhasználói fiókja deaktiváltként lesz megjelölve. E-mail címe és személyazonosításra alkalmas adatai megmaradnak. Fiókját később újraaktiválhatja, ha kívánja.
-    name_not_removed: Az Ön által közzétett megjegyzések, szavazatok, javaslatok és viták megmaradnak, így a történelmi feljegyzések nem módosulnak.
+    deactivate_introduction: 'Amikor deaktivál fiókdat:'
+    you_will_be_deactivated: Felhasználói fiókod deaktiváltként lesz megjelölve. E-mail címed és személyazonosításra alkalmas adataid megmaradnak. Fiókdat később újraaktiválhatod, ha kívánod.
+    name_not_removed: Az általad közzétett megjegyzések, szavazatok, javaslatok és viták megmaradnak, így a történelmi feljegyzések nem módosulnak.
     you_will_be_deleted: Felhasználói fiókját, beleértve a nevét, e-mail címét és egyéb személyes azonosító adatait, rendszerünkből töröljük.
     name_removed: Az észrevételek, javaslatok és megbeszélések megmaradnak, de a nevét eltávolítják róluk
     no_longer_group_member: Már nem kerülnek felsorolásra egyetlen csoport tagjaként sem
@@ -1580,12 +1580,12 @@ hu:
     header: Értesítési beállítások
     account_deactivated: Fiókját inaktiválták. Soha nem fog e-mailt kapni.
     deactivate_header: Állítson le minden e-mailt örökre
-    deactivate_description: Ha soha többé nem szeretne új e-mailt kapni tőlünk, deaktiválhatja felhasználói fiókját.
+    deactivate_description: Ha soha többé nem szeretnél új e-mailt kapni tőlünk, deaktiválhatod felhasználói fiókdat.
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
     on_participation_label: Feliratkozás a részvételre
-    on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
+    on_participation_description: Amikor részt veszel egy témában, az összes további tevékenységet azonnal elküldjük neked e-mailben.
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat
@@ -1600,7 +1600,7 @@ hu:
       updated: Az e-mail beállítások frissítve
     learn_more: További információ az e-mail beállításokról ...
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
-    daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
+    daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy gyakori felhasználó.
     never: Soha
     send_email: E-mail küldése
   thread_preview:
@@ -1620,14 +1620,14 @@ hu:
       show_all: Nincs legutóbbi témája.
       show_proposals: Jelenleg nincs aktív javaslat.
       show_muted: Nincs elnémított téma.
-    load_more: Töltsön be további témákat
+    load_more: Tölts be további témákat
     mark_as_read: Olvasottként jelöl
     dismiss: Bezárás
     thread_dismissed: A téma olvasottként van megjelölve
     thread_recalled: A téma visszahívásra került
     explain_mute:
       title: Még egyetlen témát sem némított el.
-      instructions: A témát elnémításához vigye az egérmutatót rá, és kattintson a némítás ikonra.
+      instructions: A témát elnémításához vidd az egérmutatót rá, és kattints a némítás ikonra.
       see_muted_html: 'A némított témák megtekintéséhez kattints ide: <strong> "Némított" </strong> A némítást kikapcsolhatod ha rákattintasz ugyanarra az ikonra.'
       explanation_html: A némítás egy módja annak, hogy elrejtsd vagy elnémítsd azokat a beszélgetéseket, amelyek nem érdekelnek. A némítás azt jelenti, hogy nem fogod látni a témát <strong>a Legutóbbiak</strong> vagy <strong>az Olvasatlanok</strong> között, és nem kapsz értesítést az adott beszélgetésben végzett tevékenységekről, például a javaslatokról. Csak akkor kapsz értesítést, ha valaki <strong>{'@'}megemlíti</strong> a neved.
     filtering:
@@ -1688,7 +1688,7 @@ hu:
     subscription_canceled: <p>Az előfizetésed nem aktív.</p><p> Kérjük <a href="%{upgradeUrl}" target="_blank">, frissítsen</a> a Loomio használatának folytatásához.</p>
     activity: Tevékenység
     activity_placeholder: Még nincs tevékenység!
-    load_previous: Töltsön be korábbi tevékenységet
+    load_previous: Tölts be korábbi tevékenységet
     started_by: "<strong>%{name}</strong> indította"
     pin:
       pinned: Téma rögzítve
@@ -1774,7 +1774,7 @@ hu:
   contact_message_form:
     alt_title: Lépjen kapcsolatba a Loomio ügyfélszolgálatával
     need_message: Írj üzenetet, hogy segíthessünk :-)
-    respond_asap: Küldjön üzenetet a Loomio csapatának, és amint tudunk, válaszolunk.
+    respond_asap: Küldj üzenetet a Loomio csapatának, és amint tudunk, válaszolunk.
     happy_to_help_with: Örömmel segítünk értékesítési kérdésekben, támogatási kérésekben, funkciókra vonatkozó kérésekben, hibák vagy tapasztalt problémák bejelentésében.
     title: Szia! Hogyan segíthetünk?
     contact_us_email: 'E-mailt is küldhetsz nekünk: <a href="mailto:%{email}"> %{email} </a>'
@@ -1790,7 +1790,7 @@ hu:
     send_message: Üzenet küldése
     new_contact_message: Köszönjük, hogy felvette a kapcsolatot; hamarosan visszatérünk hozzád!
     consent_message: |
-      Ha felveszi velünk a kapcsolatot, hozzájárul ahhoz, hogy munkatársaink szükség esetén hozzáférjenek az Ön fiókjához. <br />
+      Ha felveszi velünk a kapcsolatot, hozzájárulsz ahhoz, hogy munkatársaink szükség esetén hozzáférjenek a te fiókodhoz. <br />
       Ügyfélszolgálatunk angolul beszél, és szükség esetén lefordítja az üzenetet a Google Translate segítségével. <br />
       Célunk, hogy minden üzenetre 24 órán belül válaszoljunk.
     success: Köszönöm az üzenetet, %{name}. Hamarosan vissza fog hallani.
@@ -1811,7 +1811,7 @@ hu:
   global:
     messages:
       reload: Reload
-      app_update: Megjelent a Loomio új verziója. Kérjük, töltse be újra az oldalt.
+      app_update: Megjelent a Loomio új verziója. Kérjük, töltsd be újra az oldalt.
   decision_tools_card:
     choose_type: Válassza ki a szavazás típusát
     title: Döntéstámogatás
@@ -1836,7 +1836,7 @@ hu:
     edit_option: Szerkesztési lehetőség
     option_name: Opció neve
     option_name_hint: Ennek az opciónak a rövid neve
-    option_name_validation: A legjobb, ha a név rövid marad, és a „Jelentés” mezőbe írja be a részleteket
+    option_name_validation: A legjobb, ha a név rövid marad, és a „Jelentés” mezőbe írd be a részleteket
     icon: Ikon
     meaning: Jelentése
     please_select_an_icon: Kérjük, válasszon egy ikont
@@ -1912,7 +1912,7 @@ hu:
     please_vote: Kérem szavazzon
     reason: Ok
     response: Válasz
-    reason_placeholder: Röviden indokolja meg, miért szavazott így, majd kattintson a „Szavazat elküldése” gombra
+    reason_placeholder: Röviden indokold meg, miért szavaztál így, majd kattints a „Szavazat elküldése” gombra
     message: Üzenet
     results: Eredmények
     current_results: Aktuális eredmények
@@ -1998,7 +1998,7 @@ hu:
     include_subgroups_all: "%{name} és minden alcsoport"
     no_results_found: Nincs eredmény a (z) "%{search}" kifejezésre
     welcome_to_your_new_group: Üdvözöljük új Loomio csoportjában!
-    lets_start_a_thread: Kezdjünk egy szálat. A folytatáshoz kattintson az "Új szál" gombra.
+    lets_start_a_thread: Kezdjünk egy szálat. A folytatáshoz kattints az "Új szál" gombra.
     lets_start_a_discussion: Kezdjünk egy beszélgetést! A folytatáshoz kattints az „Új beszélgetés” gombra.
     new_discussion: Új beszélgetés
     locked: Zárolva
@@ -2354,9 +2354,9 @@ hu:
     sign_in_as: 'Bejelentkezés itt: %{name}'
     continue_with_provider: 'Folytatás a következővel: %{provider}'
     continue_with_email: Folytatás email fiókkal
-    or_enter_your_email: Vagy írja be az e-mail címét
+    or_enter_your_email: Vagy írd be az e-mail címedet
     enter_your_name: Add meg a neved
-    invitation_required: Fiók létrehozásához meghívóra van szüksége. A folytatáshoz kövesse a meghívó e-mailben található linket.
+    invitation_required: Fiók létrehozásához meghívóra van szüksége. A folytatáshoz kövesd a meghívó e-mailben található linket.
     more_providers: Több
     email_not_present: E-mail címre van szükség
     invalid_email: Sajnos ez nem tűnik érvényes e-mail címnek
@@ -2365,25 +2365,25 @@ hu:
     account_locked: Túl sok sikertelen bejelentkezési kísérlet után zárolódott a fiókod. Ellenőrizze e-mail címét, hogy nincs-e kinyitási link
     email_not_found: Sajnos nem találtunk ilyen e-mail címmel rendelkező fiókot
     email_taken: Ez az email fiók már regisztrálva van
-    login_with_token: Minden készen állsz A folytatáshoz kattintson az alábbi linkre.
+    login_with_token: Minden készen állsz. A folytatáshoz kattints az alábbi linkre.
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
     enter_your_password: Add meg a jelszavad a folytatáshoz
     check_spam_folder: Ha az e-mail nem érkezik meg hamarosan, ellenőrizze a spam mappát.
-    sign_up_helptext: Kérjük, töltse ki ezt az űrlapot felhasználói fiók létrehozásához
+    sign_up_helptext: Kérjük, töltsd ki ezt az űrlapot felhasználói fiók létrehozásához
     i_accept_all: Elfogadom a %{termsLink} és a %{privacyLink}
     newsletter_label: szeretném megkapni a %{link}
     name_placeholder: Neved
     name_required: Adjon meg egy nevet
     terms_required: El kell fogadnia a Szolgáltatási feltételeket
     account_inactive: Hoppá, úgy tűnik, hogy a(z) %{email} fiókot deaktiválták!
-    privacy_notice: Soha nem adjuk el az Ön adatait.<br> <a href='%{privacyUrl}' target='_blank'>Adatvédelmi irányelvek</a>
+    privacy_notice: Soha nem adjuk el a te adataidat.<br> <a href='%{privacyUrl}' target='_blank'>Adatvédelmi irányelvek</a>
     welcome: Új a(z) %{siteName} oldalán?
     welcome_back: Üdvözlet újra, %{name}!
     forgot_password: Elfelejtettem a jelszót
     login_link: Bejelentkező hivatkozás elküldése e-mailben
     sign_in_via_email: Jelentkezzen be e-mailben
     set_password: Állítsd be a jelszót
-    set_password_helptext: A következő alkalommal szeretne jelszót használni?
+    set_password_helptext: A következő alkalommal szeretnél jelszót használni?
     hello: Üdvözlet, %{name}!
     new_to_loomio: 'Először jársz itt: %{site_name}?'
     already_a_user: Már van fiókja?
@@ -2396,7 +2396,7 @@ hu:
     too_many_attempts: Túl sok próbálkozás; próbáljon meg az e-mailben található linkre kattintva bejelentkezni.
     invalid_code: Sajnos ez a kód nem egyezett. Ellenőrizze az e-mailt, és próbálja újra.
     password_link_sent: Küldtünk egy e-mailt a(z) %{email} címre, amely leírja a jelszó beállításának menetét.
-    reactivate_link_sent: Küldtünk egy e-mailt az Ön fiókjának újraaktiválására vonatkozó utasításokkal
+    reactivate_link_sent: Küldtünk egy e-mailt a te fiókod újraaktiválására vonatkozó utasításokkal
     signed_in: Sikeres bejelentkezés
     signed_out: Sikeres kijelentkezés
     email_verified: Az e-mail sikeresen ellenőrizve
@@ -2404,7 +2404,7 @@ hu:
     email: E-mail
     password: Jelszó
     reactivate: A fiók újraaktiválása
-    want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
+    want_to_set_password: Legközelebb jelszóval szeretnél bejelentkezni?
     change_your_password: Szeretne új jelszót beállítani?
     email_placeholder: te{'@'}example.com
     turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
@@ -2450,7 +2450,7 @@ hu:
       slack: Laza
       discord: Viszály
     subtitle: Csatlakozzon a Loomio-hoz a többi eszközéhez API-nkkal
-    deprecated: Ez az API elavult. Kérjük, lépjen át APIv2-re (lásd az API-dokumentumokat a csoportbeállítások menüjében)
+    deprecated: Ez az API elavult. Kérjük, lépj át APIv2-re (lásd az API-dokumentumokat a csoportbeállítások menüjében)
     we_have_guides: Tekintse meg <a href="%{url}" target="_blank">webhook beállítási útmutatóinkat,</a> ha segítségre van szüksége a szolgáltatás csatlakoztatásához.
     add_webhook: Webhook hozzáadása
     show_docs: 'Lásd: API használat'
@@ -2538,7 +2538,7 @@ hu:
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája
-    complete_these_steps_to_set_up_your_group: A csoport beállításához kövesse ezeket a lépéseket
+    complete_these_steps_to_set_up_your_group: A csoport beállításához kövesd ezeket a lépéseket
     hide:
       title: Tippek elrejtése
       hide_onboarding: Bevezetési tippek elrejtése
@@ -2567,7 +2567,7 @@ hu:
         submit: Ajánlatsablonok megtekintése
       share_an_outcome:
         title: Javaslat eredményének megosztása
-        helptext: "<p>A döntéshozatal elősegítése érdekében a javaslatokra szavazási határidő vonatkozik. A határidő lejártakor a szavazás lezárul, és Ön értesítést kap, hogy ossza meg a javaslat eredményét.</p><p> Az eredmény lehetőséget ad arra, hogy megmondjuk, sikeres volt-e a javaslat, és mi fog történni a továbbiakban.</p><p> Ha a javaslat határideje még nem járt le, de ennek ellenére folytatni szeretné, kattintson <b>a Korai bezárás gombra</b> .</p><p> Amikor eljön a megfelelő idő, <b>add meg a javaslatod eredményét</b> .</p>"
+        helptext: "<p>A döntéshozatal elősegítése érdekében a javaslatokra szavazási határidő vonatkozik. A határidő lejártakor a szavazás lezárul, és értesítést kapsz, hogy oszd meg a javaslat eredményét.</p><p> Az eredmény lehetőséget ad arra, hogy megmondjuk, sikeres volt-e a javaslat, és mi fog történni a továbbiakban.</p><p> Ha a javaslat határideje még nem járt le, de ennek ellenére folytatni szeretnéd, kattints <b>a Korai bezárás gombra</b> .</p><p> Amikor eljön a megfelelő idő, <b>add meg a javaslatod eredményét</b> .</p>"
         submit: Ajánlat megtekintése
         cancel: Később csináld meg
       start_a_discussion:
@@ -2762,7 +2762,7 @@ hu:
     share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
     browse_example_templates: Példasablonok böngészése
     example_templates: Példa sablonok
-    browse_public_templates_hint: Kattintson egy sablon nevére, ha beszélgetést szeretne indítani vele, vagy kattintson a jobb oldalon található szerkesztés gombra, ha másolatot szeretne készíteni és módosítani a saját csoportja számára.
+    browse_public_templates_hint: Kattints egy sablon nevére, ha beszélgetést szeretnél indítani vele, vagy kattints a jobb oldalon található szerkesztés gombra, ha másolatot szeretnél készíteni és módosítani a saját csoportod számára.
     process_name_placeholder: pl. heti standup
     process_subtitle_placeholder: pl. Egy rövid bejelentkezés a csapattal minden héten
     default_title_placeholder: pl. Stand-up - január 15.
@@ -2827,7 +2827,7 @@ hu:
   strand_members_list:
     notify_members_or_invite_guests_info: Értesítsd a csoport tagjait név szerint, vagy hívd meg a nem tagokat e-mail címükkel. A meghívott vendégek részt vehetnek ebben a beszélgetésben, de nem férhetnek hozzá a többi csoportbeszélgetéshez.
     notify_members_info: Add meg a csoport tagjainak nevét, hogy értesítsd őket erről a beszélgetésről.
-    specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ezzel az űrlappal adsz hozzá, az nem ad neki szavazatot, csak lehetőséget arra, hogy kövesse a beszélgetést és hozzászóljon. Ha szavazatokat szeretnél kiosztani, használd a szavazáson a "szavazók hozzáadása" lehetőséget.
+    specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ezzel az űrlappal adsz hozzá, az nem ad neki szavazatot, csak lehetőséget arra, hogy kövesd a beszélgetést és hozzászóljon. Ha szavazatokat szeretnél kiosztani, használd a szavazáson a "szavazók hozzáadása" lehetőséget.
   poll_common_details_meta:
     opened: Megnyitva
     opens: Megnyílik

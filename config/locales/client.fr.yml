@@ -2,29 +2,29 @@
 fr:
   start_trial:
     title: Commencez un essai gratuit de Loomio
-    intro: Merci de votre intérêt pour Loomio. Nous sommes ravis de vous offrir un essai gratuit de %{day} jours afin que vous puissiez voir si Loomio convient bien à votre organisation.
+    intro: Merci de ton intérêt pour Loomio. Nous sommes ravis de t'offrir un essai gratuit de %{day} jours afin que tu puisses voir si Loomio convient bien à ton organisation.
     lets_get_started: Commençons!
-    your_name: Votre nom
-    your_email: Votre email
-    we_use_this_to_help: Les informations suivantes sont utilisées pour configurer votre groupe Loomio et pour nous aider à comprendre un peu votre organisation afin que nous puissions mieux vous soutenir.
-    how_do_you_intend_to_use_loomio: Comment comptez-vous utiliser Loomio ?
-    what_decisions_do_you_need_to_make: Quelles décisions devez-vous prendre ?
+    your_name: Ton nom
+    your_email: Ton email
+    we_use_this_to_help: Les informations suivantes sont utilisées pour configurer ton groupe Loomio et pour nous aider à comprendre un peu ton organisation afin que nous puissions mieux te soutenir.
+    how_do_you_intend_to_use_loomio: Comment comptes-tu utiliser Loomio ?
+    what_decisions_do_you_need_to_make: Quelles décisions dois-tu prendre ?
     newsletter_description: Restez informé des nouvelles fonctionnalités et des histoires inspirantes sur la façon dont Loomio est utilisé par les organisations du monde entier.
-    subscribe_to_newsletter: Abonnez-vous à la newsletter Loomio
-    form_incomplete: Veuillez remplir tous les champs du formulaire pour continuer
+    subscribe_to_newsletter: Abonne-toi à la newsletter Loomio
+    form_incomplete: Remplis tous les champs du formulaire pour continuer
     success: Succès!
-    taken_first_step: Vous avez fait le premier pas vers une prise de décision collaborative avec Loomio.
+    taken_first_step: Tu as fait le premier pas vers une prise de décision collaborative avec Loomio.
     account_created_for_you: Nous avons créé un compte utilisateur pour %{email} et un groupe sur Loomio.
-    please_sign_in_to_continue: Veuillez vous connecter pour continuer.
-    please_complete_this_field: Veuillez remplir ce champ
-    please_enter_a_valid_email_address: S'il vous plaît, mettez une adresse email valide
-    please_accept_the_terms: Veuillez accepter les conditions
-    how_did_you_hear_about_loomio: Comment avez-vous entendu parler de Loomio ?
-    newsletter_intro: Souhaitez-vous être informé des nouvelles fonctionnalités, des entretiens avec les clients, des études de cas et des annonces de l'équipe Loomio ?
+    please_sign_in_to_continue: Connecte-toi pour continuer.
+    please_complete_this_field: Remplis ce champ
+    please_enter_a_valid_email_address: Sil te plaît, mettez une adresse email valide
+    please_accept_the_terms: Accepte les conditions
+    how_did_you_hear_about_loomio: Comment as-tu entendu parler de Loomio ?
+    newsletter_intro: Veux-tu être informé des nouvelles fonctionnalités, des entretiens avec les clients, des études de cas et des annonces de l'équipe Loomio ?
   tasks:
     tasks: Tâches
-    your_tasks: Vos tâches
-    permission_denied: Vous n’avez pas la permission de faire cette tâche.
+    your_tasks: Tes tâches
+    permission_denied: Tu n’as pas la permission de faire cette tâche.
     due_date: Échéance
     send_reminder: Envoyer un rappel (si ce n'est pas fait)
     no_reminder: Pas rappel
@@ -36,8 +36,8 @@ fr:
     add_due_date: Ajouter échéance
     task_updated_done: Tâche marquée comme terminée !
     task_updated_not_done: Tâche marquée comme pas terminée !
-    no_tasks_assigned: Aucune tâche ne vous a été assignée
-    task_placeholder: Saisissez une tâche et {'@'}mentionnez quelqu'un à qui l'attribuer
+    no_tasks_assigned: Aucune tâche ne t'a été assignée
+    task_placeholder: Saisis une tâche et {'@'}mentionnez quelqu'un à qui l'attribuer
   templates:
     template_gallery: Galerie de modèles
     title_template: "%{title} Modèle"
@@ -45,23 +45,23 @@ fr:
     title_copy: "%{title}Copie"
     copy_of_title: Copie de %{title}
     loomio_default_templates: Modèles par défaut de Loomio
-    which_templates_would_you_like_to_use: Quels modèles souhaitez-vous utiliser ?
-    login_to_start_demo: 'Ceci est une démo de Loomio en action. Vous êtes invités à jeter un coup d’œil autour de vous.
+    which_templates_would_you_like_to_use: Quels modèles souhaites-tu utiliser ?
+    login_to_start_demo: 'Ceci est une démo de Loomio en action. Tu es invité à jeter un coup d’œil autour de toi.
 
       '
-    sign_in_to_try_features: 'Si vous souhaitez essayer de voter dans une décision de démonstration ou pour commencer un essai gratuit pour votre organisation, cliquez sur « Se connecter ».
+    sign_in_to_try_features: 'Si tu souhaites essayer de voter dans une décision de démonstration ou pour commencer un essai gratuit pour ton organisation, clique sur « Se connecter ».
 
       '
     click_button_to_start_demo: 'Bienvenue! Pour essayer de voter et d’autres fonctionnalités, cliquez commencer la demo :
 
       '
-    welcome_to_your_demo: C’est votre propre groupe de démonstration!
-    try_voting_to_see_it_work: Essayez de voter dans une proposition pour avoir une idée du fonctionnement de Loomio.
+    welcome_to_your_demo: C’est ton propre groupe de démonstration!
+    try_voting_to_see_it_work: Essaie de voter dans une proposition pour avoir une idée du fonctionnement de Loomio.
     delete_will_be_deleted_in_x_days: Cette démo sera supprimée dans %{x} jours.
-    to_use_loomio_with_your_org_start_trial: Lorsque vous êtes prêt à essayer Loomio avec votre organisation, commencez un essai gratuit.
+    to_use_loomio_with_your_org_start_trial: Lorsque tu es prêt à essayer Loomio avec ton organisation, commence un essai gratuit.
     templates: Modèles
     make_a_copy: Faire une copie
-    try_loomio: Essayez Loomio
+    try_loomio: Essaie Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
     demo_group: Groupe de démonstration
@@ -70,20 +70,20 @@ fr:
     watch_then_start: Veuillez regarder la vidéo, puis cliquez sur « Démarrer la démo » pour essayer Loomio
     generating_demo: Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.
     start_a_x_day_free_trial: Commencer un essai gratuit %{day}
-    ready_to_trial: Prêt à essayer Loomio avec votre organisation?
-    start_a_no_obligation_x_day_trial: Démarrez un groupe Loomio pour votre organisation avec un essai gratuit %{day}.
-    you_can_test_it_out: 'Vous pouvez inviter d’autres personnes à se joindre, l’intégrer à vos autres outils et essayer de prendre des décisions.
+    ready_to_trial: Prêt à essayer Loomio avec ton organisation?
+    start_a_no_obligation_x_day_trial: Démarrez un groupe Loomio pour ton organisation avec un essai gratuit %{day}.
+    you_can_test_it_out: ‘Tu peux inviter d’autres personnes à se joindre, l’intégrer à tes autres outils et essayer de prendre des décisions.
 
       '
-    demo_created: Groupe de démonstration créé, rien que pour vous !
+    demo_created: Groupe de démonstration créé, rien que pour toi !
     start_demo: Démarrer la démo
     view_demo: Voir la démo
     start_trial: Commencer un essai
     start_free_trial: Commencer l'essai gratuit
-    demo_needs_user: Pour démarrer une démo, vous devez vous inscrire (ou vous connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
-    trial_needs_user: Pour démarrer votre essai gratuit de Loomio, veuillez vous connecter.
+    demo_needs_user: Pour démarrer une démo, tu dois t’inscrire (ou te connecter) en tant qu’utilisateur Loomio. Ceci est gratuit et ne prend qu’une minute.
+    trial_needs_user: Pour démarrer ton essai gratuit de Loomio, connecte-toi.
     this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
-    share_a_custom_configuration: Partager une configuration personnalisée avec d’autres membres de votre groupe
+    share_a_custom_configuration: Partager une configuration personnalisée avec d’autres membres de ton groupe
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -118,13 +118,13 @@ fr:
     change_plan: Modifiez de plan
     view_plans: Voir les plans
     free_trial: Essai gratuit.  %{days} jours restants.
-    trial_expired: Votre période d'essai est terminé. Passez dès maintenant en version premium pour continuer à utiliser Loomio en toute tranquillité.
-    tooltip: Nos prix sont imbattables ! Passez en version premium dès aujourd'hui et profitez de toutes les fonctionnalités de Loomio pour votre travail en groupe.
-    was_gift_trial: Votre groupe utilise Loomio gratuitement depuis %{createdDate}}. Nous ne sommes pas en mesure de continuer à fournir un service gratuit. Changez d'offre pour continuer à utiliser Loomio. </a>En savoir plus ici.</a>
+    trial_expired: Ta période d'essai est terminé. Passe dès maintenant en version premium pour continuer à utiliser Loomio en toute tranquillité.
+    tooltip: Nos prix sont imbattables ! Passe en version premium dès aujourd'hui et profite de toutes les fonctionnalités de Loomio pour ton travail en groupe.
+    was_gift_trial: Ton groupe utilise Loomio gratuitement depuis %{createdDate}}. Nous ne sommes pas en mesure de continuer à fournir un service gratuit. Change d'offre pour continuer à utiliser Loomio. </a>En savoir plus ici.</a>
     was_gift_remaining: "%{days} jours restants."
-    was_gift_expired: Votre forfait gratuit a maintenant expiré.
-    was_gift_expired_or_mistake: 'Votre forfait gratuit a maintenant expiré. Si vous pensez qu''il y a eu une erreur, <a style=''text-decoration: underline'' href=''/contact''>contactez-nous</a> .'
-    subscription_ended: Votre abonnement Loomio est terminé. Pour continuer à utiliser Loomio, veuillez mettre à niveau
+    was_gift_expired: Ton forfait gratuit a maintenant expiré.
+    was_gift_expired_or_mistake: 'Ton forfait gratuit a maintenant expiré. Si tu penses qu''il y a eu une erreur, <a style=''text-decoration: underline'' href=''/contact''>contactez-nous</a> .'
+    subscription_ended: Ton abonnement Loomio est terminé. Pour continuer à utiliser Loomio, mets à niveau
   subscription_status:
     plan: Abonnement
     state: Statut
@@ -152,14 +152,14 @@ fr:
     modal_edit_title: Modifier un mot-clé
     modal_destroy_title: Supprimer le mot-clé
     destroy_tag: Supprimer le tag
-    destroy_helptext: 'Ceci va détruire le tag et le supprimer de tous les fils de discussion du groupe. Êtes-vous sûr ? '
+    destroy_helptext: 'Ceci va détruire le tag et le supprimer de tous les fils de discussion du groupe. Es-tu sûr ? '
     helptext: Les mots-clés permettent de catégoriser les discussions pour les retrouver facilement par la suite.
     discussions_count_singular: "(%{count} discussion)"
     discussions_count_plural: "(%{count} discussions)"
     tag_created: Mot-clé sauvegardé
     tag_destroyed: Tag supprimé
     tags_marked: Discussions marquées « %{name} » dans %{groupName}
-    no_tags_present: Aucune discussion n’a été trouvée avec ce tag ! Essayez avec un autre.
+    no_tags_present: Aucune discussion n’a été trouvée avec ce tag ! Essaie avec un autre.
     no_tags_in_group: Le groupe n'a pas encore de tags de catégories
     only_admins_can_edit_tags: Excusez-moi, juste les admins du %{group} peuvent créer, renommer ou supprimer des tags
     pick_a_color: Choisissez une couleur
@@ -182,7 +182,7 @@ fr:
     api_docs: Documents sur l'API
     prefix_eg: par exemple %{val}
     are_you_sure: Es-tu sûr?
-    loomio_help: Loomio vous aide
+    loomio_help: Loomio t'aide
     visit_loomio_help: Visitez l'aide de Loomio
     help_and_guides: Aide & guides
     please_wait: Patientez
@@ -196,7 +196,7 @@ fr:
     history: Historique
     option: Option
     add: Ajouter
-    you: Vous
+    you: Toi
     expand: Étendre
     all_day: Toute la journée
     ok_got_it: Ok, j’ai compris !
@@ -208,10 +208,10 @@ fr:
     template: Modèle
     links: Liens
     active_time_ago: Actif pour la dernière fois %{time_ago}
-    confirm_discard_changes: Annuler vos modifications ?
+    confirm_discard_changes: Annuler tes modifications ?
     something_went_wrong: Euh oh! Quelque chose s’est mal passé
-    check_for_errors_and_try_again: Veuillez vérifier le formulaire pour les erreurs et réessayer
-    please_try_again: Veuillez réessayer
+    check_for_errors_and_try_again: Vérifie le formulaire pour les erreurs et réessayer
+    please_try_again: Réessaie
     time:
       am: le matin
       pm: l'après-midi
@@ -268,7 +268,7 @@ fr:
       save: Enregistrer
       move: Déplacer
       save_changes: Sauvegarder les modifications
-      update_settings: Modifier vos paramètres
+      update_settings: Modifier tes paramètres
       reply: Répondre
       edit: Modifier
       remove: Supprimer
@@ -327,28 +327,28 @@ fr:
       add: Ajouter
     formatting_help:
       label: Mise en forme
-      title: Apprenez à utiliser Markdown pour mettre en forme votre texte
+      title: Apprends à utiliser Markdown pour mettre en forme ton texte
     thread: Fil
     commercial: Commercial
     nonprofit: À but non lucratif
     opening_in: Ouverture %{time}
     read_more: En savoir plus
-    templates_admin_hint: En tant qu'administrateur du groupe, vous pouvez masquer ou supprimer les modèles que vous ne souhaitez pas utiliser, et modifier les autres en fonction de vos besoins.
+    templates_admin_hint: En tant qu'administrateur du groupe, tu peux masquer ou supprimer les modèles que tu ne souhaites pas utiliser, et modifier les autres en fonction de tes besoins.
     read: Lire
     unread: Non lu
     discussion: Discussion
   merge_accounts:
     modal:
       title: Fusionner les comptes
-      helptext: Vous pouvez fusionner le compte %{sourceEmail} avec le compte %{targetEmail}. Cliquez sur Vérifier et un email de vérification sera envoyé à %{targetEmail} pour débuter la fusion des comptes.
+      helptext: Tu peux fusionner le compte %{sourceEmail} avec le compte %{targetEmail}. Clique sur Vérifier et un email de vérification sera envoyé à %{targetEmail} pour débuter la fusion des comptes.
       submit: Vérifier
       flash: Mail de vérification envoyé !
-      helptext_and_signout: Vous pouvez fusionner le compte associé à <strong>%{sourceEmail}</strong> avec celui associé à <strong>%{targetEmail}</strong> . Cliquez sur « Vérifier » ; un e-mail de vérification sera envoyé à %{targetEmail} pour lancer la procédure. Vous serez déconnecté(e) afin de vous connecter au compte cible et finaliser la fusion.
-      flash_and_signout: Un courriel de vérification a été envoyé à %{targetEmail}. Vous êtes maintenant déconnecté(e). Veuillez vous connecter avec le compte cible pour finaliser la fusion.
-    email_taken: Désolé, l'adresse email que vous avez fournie correspond à celle d'un utilisateur existant. Est-ce votre adresse email ?
+      helptext_and_signout: Tu peux fusionner le compte associé à <strong>%{sourceEmail}</strong> avec celui associé à <strong>%{targetEmail}</strong> . Clique sur « Vérifier » ; un e-mail de vérification sera envoyé à %{targetEmail} pour lancer la procédure. Tu seras déconnecté(e) afin de te connecter au compte cible et finaliser la fusion.
+      flash_and_signout: Un courriel de vérification a été envoyé à %{targetEmail}. Tu es maintenant déconnecté(e). Connecte-toi avec le compte cible pour finaliser la fusion.
+    email_taken: Désolé, l'adresse email que tu as fournie correspond à celle d'un utilisateur existant. Est-ce ton adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |
-      <p>Si vous souhaitez fusionner deux comptes ensemble, entrez simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de votre page de profil et suivez les instructions qui s'affichent.</p>
+      <p>Si tu souhaites fusionner deux comptes ensemble, entre simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de ta page de profil et suis les instructions qui s'affichent.</p>
       <p>Besoin d'aide? <a href="/contact" target="_blank">Nous contacter</a>.
   emoji_picker:
     search: Rechercher
@@ -374,14 +374,14 @@ fr:
     sessions:
       signed_up: Connecté avec succès !
     failure:
-      inactive: Il existe un compte désactivé associé à cette adresse e-mail. Si vous voulez réactiver votre compte, contactez- nous.
+      inactive: Il existe un compte désactivé associé à cette adresse e-mail. Si tu veux réactiver ton compte, contacte-nous.
   error_page:
-    forbidden: Vous n’avez pas la permission de faire cela.
-    forbidden_view: Vous n’êtes pas autorisé à le voir.
+    forbidden: Tu n’as pas la permission de faire cela.
+    forbidden_view: Tu n’es pas autorisé à le voir.
     page_not_found: Nous n’avons pas pu trouver cela. Cela a dû être déplacé ou supprimé.
-    internal_server_error: Désolé, mais quelque chose s’est mal passé. Veuillez essayer à nouveau.
+    internal_server_error: Désolé, mais quelque chose s’est mal passé. Essaie à nouveau.
   verify_email_notice:
-    please_verify: Merci d’avoir participé. Consultez vos courriels, un lien vous a été envoyé pour vérifier votre vote.
+    please_verify: Merci d’avoir participé. Consulte tes courriels, un lien t'a été envoyé pour vérifier ton vote.
   previous_polls_page:
     heading: Activité pour %{name}
     polls_count: Montrer %{loaded} de %{total} décisions
@@ -405,13 +405,13 @@ fr:
     confirm_delete_body: Cet e-mail sera supprimé. Les futurs e-mails de %{sender} ne seront pas affectés.
     unreleased_emails: E-mails inédits
     start_a_thread_by_email: Démarrer un fil de discussion par e-mail
-    send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
+    send_email_to_start_thread: Envoie un e-mail à cette adresse pour démarrer un fil de discussion dans ton groupe.
     copy_address: Copier l’adresse
-    email_me_this_address: Envoyez-moi cette adresse par e-mail
+    email_me_this_address: Envoie-moi cette adresse par e-mail
     email_address_copied_to_clipboard: Adresse e-mail copiée dans le presse-papiers
-    forward_email_to_move_conversation: 'Astuce : transférez une conversation par e-mail à Loomio lorsque vous devez prendre une décision ou conserver une trace.'
+    forward_email_to_move_conversation: 'Astuce : transfère une conversation par e-mail à Loomio lorsque tu dois prendre une décision ou conserver une trace.'
     start_a_discussion_by_email: Lancez une discussion par courriel
-    send_email_to_start_discussion: Envoyez un courriel à cette adresse pour lancer une discussion au sein de votre groupe.
+    send_email_to_start_discussion: Envoie un courriel à cette adresse pour lancer une discussion au sein de ton groupe.
     subject_body_attachments: L'objet du courriel devient le titre de la discussion, et son corps, la description. Les pièces jointes sont également copiées.
   volume_levels:
     loud: Élevé
@@ -425,16 +425,16 @@ fr:
     hint: 'Astuce pour la prochaine fois : surligner du texte avant de cliquer sur "Epingler".'
   change_volume_form:
     explain_scope:
-      thread: Cela changera lorsque vous recevrez les notifications de ce groupe de discussion.
-      group: Cela changera lorsque vous recevrez des notifications de tous les groupes de discussions dont vous faites partie.
+      thread: Cela changera lorsque tu recevras les notifications de ce groupe de discussion.
+      group: Cela changera lorsque tu recevras des notifications de tous les groupes de discussions dont tu fais partie.
     simple:
       label: Notifications
       loud: Abonné
       normal: Normal
       quiet: Ignorer
-      question: Quand souhaitez-vous recevoir des notifications ?
+      question: Quand souhaites-tu recevoir des notifications ?
       loud_explain: Dès qu'il y a de l'activité
-      normal_explain: Lorsque quelqu'un réclame votre attention
+      normal_explain: Lorsque quelqu'un réclame ton attention
       quiet_explain: Pas de notification
     loud_label: Toute l’activité
     normal_label: Nouvelles discussions et décisions
@@ -442,70 +442,70 @@ fr:
     mute_label: Ignorer
     saved: Les paramètres de notification ont été mis à jour
     discussion:
-      loud_description: Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion.
-      normal_description: Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans cette discussion.
-      quiet_description: Vous ne recevrez de courriel pour aucune activité dans cette discussion.
+      loud_description: Tu recevras un courriel à chaque fois qu’il y aura une activité dans cette discussion.
+      normal_description: Tu recevras un courriel uniquement lorsqu'il y aura une activité importante dans cette discussion.
+      quiet_description: Tu ne recevras de courriel pour aucune activité dans cette discussion.
       apply_to_all: Appliquer ces paramètres à toutes les discussions de ce groupe.
       only_this_thread: Appliquer à cette discussion uniquement
       group: Modifier les notifications pour ce groupe.
       user: Modifier les paramètres de notification de l'utilisateur
       messages:
-        loud: Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion.
-        normal: Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion.
-        quiet: Vous ne recevrez aucun courriel à propos de cette discussion.
+        loud: Tu recevras un courriel lorsqu’il y aura une activité dans cette discussion.
+        normal: Tu recevras un courriel lorsqu’il y aura une proposition dans cette discussion.
+        quiet: Tu ne recevras aucun courriel à propos de cette discussion.
       title: Notifications de discussion
     membership:
       title: Notifications pour %{title}
-      loud_description: Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe.
-      normal_description: Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe.
-      quiet_description: Vous ne recevrez aucun courriel concernant l’activité de ce groupe.
+      loud_description: Tu recevras un courriel à chaque fois qu’il y a une activité dans ce groupe.
+      normal_description: Tu recevras un courriel à chaque fois qu’il y a une activité dans ce groupe.
+      quiet_description: Tu ne recevras aucun courriel concernant l’activité de ce groupe.
       apply_to_all: Appliquer ces paramètres à tous mes groupes.
       apply_to_organization: 'Appliquer à tous les groupes dans %{organization} '
       messages:
-        loud: Vous recevrez un courriel lorsqu’il y aura une activité dans ce groupe.
-        normal: Vous recevrez un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe.
-        quiet: Vous ne recevrez aucun courriel concernant ce groupe.
+        loud: Tu recevras un courriel lorsqu’il y aura une activité dans ce groupe.
+        normal: Tu recevras un courriel lorsqu’il y aura une nouvelle discussion ou décision dans ce groupe.
+        quiet: Tu ne recevras aucun courriel concernant ce groupe.
     all_groups:
       title: Préférences de notification pour tous les groupes
-      loud_description: Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes.
-      normal_description: Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans vos groupes.
-      quiet_description: vous ne recevrez aucun e-mail signalant l'activité dans vos groupes
+      loud_description: Tu recevras un courriel lorsqu’il y aura une activité dans l’un de tes groupes.
+      normal_description: Tu recevras un courriel uniquement lorsqu'il y aura une activité importante dans tes groupes.
+      quiet_description: Tu ne recevras aucun e-mail signalant l'activité dans tes groupes
       messages:
-        loud: Vous recevrez un courriel lorsqu’il y aura une activité dans l’un de vos groupes.
-        normal: Vous ne recevrez de courriel que s’il y a nouvelle discussion ou décision dans un de vos groupes.
-        quiet: Vous ne recevrez aucun courriel, pour aucun de vos groupes.
+        loud: Tu recevras un courriel lorsqu’il y aura une activité dans l’un de tes groupes.
+        normal: Tu ne recevras de courriel que s’il y a nouvelle discussion ou décision dans un de tes groupes.
+        quiet: Tu ne recevras aucun courriel, pour aucun de tes groupes.
     user:
-      title: Paramètres de notification pour vos nouveaux groupes
-      loud_description: Vous recevrez un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes rejoints.
-      normal_description: Vous recevrez un courriel pour toute annonce dans un nouveau groupe que vous rejoignez.
-      quiet_description: Vous ne recevrez aucun courriel concernant l’activité des nouveaux groupes auxquels vous participez.
+      title: Paramètres de notification pour tes nouveaux groupes
+      loud_description: Tu recevras un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes rejoints.
+      normal_description: Tu recevras un courriel pour toute annonce dans un nouveau groupe que tu rejoins.
+      quiet_description: Tu ne recevras aucun courriel concernant l’activité des nouveaux groupes auxquels tu participes.
       apply_to_all: Appliquer ces paramètres à tous mes groupes.
       messages:
-        loud: Vous recevrez un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes.
-        normal: Vous recevrez un courriel pour toute nouvelle discussion ou décision dans un nouveau groupe.
-        quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
-    change_your_email_settings: Modifiez vos paramètres de messagerie
-    when_would_you_like_to_be_emailed_group: Quand souhaitez-vous recevoir un e-mail concernant ce groupe ?
+        loud: Tu recevras un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes.
+        normal: Tu recevras un courriel pour toute nouvelle discussion ou décision dans un nouveau groupe.
+        quiet: Tu ne recevras aucun courriel concernant les nouveaux groupes.
+    change_your_email_settings: Modifie tes paramètres de messagerie
+    when_would_you_like_to_be_emailed_group: Quand souhaites-tu recevoir un e-mail concernant ce groupe ?
     changes_all_threads_in_group: Cela modifie le paramètre pour tous les threads du groupe.
     what_do_the_options_mean: Que signifient les options ?
     loud_desc: Chaque fois que quelqu'un participe
     normal_desc: Quand quelqu'un me prévient
     quiet_desc: Jamais
-    loud_explained: Vous recevrez un e-mail chaque fois qu'il y aura un nouveau commentaire, que quelqu'un votera ou lancera un sondage ou un fil de discussion.
-    when_would_you_like_to_be_emailed_poll_type: Quand souhaitez-vous recevoir un e-mail à propos de ce %{poll_type} ?
-    normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions avec un @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des @mentions.</a>
+    loud_explained: Tu recevras un e-mail chaque fois qu'il y aura un nouveau commentaire, que quelqu'un votera ou lancera un sondage ou un fil de discussion.
+    when_would_you_like_to_be_emailed_poll_type: Quand souhaites-tu recevoir un e-mail à propos de ce %{poll_type} ?
+    normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions avec un @ (par exemple, lorsqu'on te répond dans un commentaire). <a href="%{url}">Clique ici pour modifier tes paramètres des @mentions.</a>
     changes_all_threads_and_polls_in_group: Cela modifie les paramètres de tous les fils de discussion et sondages du groupe.
-    when_do_you_want_to_be_emailed: Quand souhaitez-vous recevoir des e-mails ?
+    when_do_you_want_to_be_emailed: Quand souhaites-tu recevoir des e-mails ?
     what_the_options_mean: Que signifient les options ?
-    when_would_you_like_to_be_emailed_discussion: Quand souhaitez-vous recevoir un courriel concernant cette discussion ?
+    when_would_you_like_to_be_emailed_discussion: Quand souhaites-tu recevoir un courriel concernant cette discussion ?
     changes_all_discussions_and_polls_in_group: Cela modifie les paramètres de toutes les discussions et de tous les sondages du groupe.
-    normal_explained: Lorsqu'une personne saisit votre nom dans le champ « Notifier » d'une discussion ou d'un sondage, ou lorsqu'elle mentionne le groupe avec {'@'}.
+    normal_explained: Lorsqu'une personne saisit ton nom dans le champ « Notifier » d'une discussion ou d'un sondage, ou lorsqu'elle mentionne le groupe avec {'@'}.
     aria_label: Formulaire de modification des paramètres de messagerie
-    when_do_you_want_to_be_emailed_thread: Quand souhaitez-vous recevoir un e-mail concernant cette discussion ?
+    when_do_you_want_to_be_emailed_thread: Quand souhaites-tu recevoir un e-mail concernant cette discussion ?
     loud_option: Chaque fois qu'une personne participe (Toute activité)
     normal_option: Quand quelqu'un souhaite attirer mon attention (lorsqu'il est notifié)
     quiet_option: Aucun e-mail concernant cette discussion (Désactivé)
-    quiet_explained: Vous ne recevrez pas d'e-mail, même si quelqu'un tente de vous contacter.
+    quiet_explained: Tu ne recevras pas d'e-mail, même si quelqu'un tente de te contacter.
   inbox:
     clear: Vider
     latest: Dernier
@@ -515,8 +515,8 @@ fr:
     password_label: 'Mot de passe :'
     password_confirmation_label: 'Re-saississez ce mot de passe :'
   signed_out_modal:
-    title: Votre session est terminée
-    message: Vous avez été déconnecté dans une autre fenêtre. Merci de vous reconnecter pour continuer.
+    title: Ta session est terminée
+    message: Tu as été déconnecté dans une autre fenêtre. Merci de te reconnecter pour continuer.
     ok: Ok
     aria_label: La session s'est terminée.
   comment_form:
@@ -533,18 +533,18 @@ fr:
     edit_comment: Modifier le commentaire
     delete_comment: Effacer le commentaire
     cancel_reply: Annuler la réponse
-    confirm_delete_message: Êtes-vous certain de vouloir effacer ce commentaire ?
+    confirm_delete_message: Es-tu certain de vouloir effacer ce commentaire ?
     confirm_delete: Effacer le commentaire
     in_reply_to: Répondre à %{name}
     write_a_comment: Écrire un commentaire…
     post_comment: Publier le commentaire
     submit_button:
       label: Publier
-    private_privacy_notice: Votre commentaire sera visible seulement des membres de %{groupName}.
-    public_privacy_notice: Votre commentaire sera visible par tout le monde sur internet.
-    sign_in: Connectez-vous pour rejoindre la discussion
+    private_privacy_notice: Ton commentaire sera visible seulement des membres de %{groupName}.
+    public_privacy_notice: Ton commentaire sera visible par tout le monde sur internet.
+    sign_in: Connecte-toi pour rejoindre la discussion
     add_a_comment: Ajouter un commentaire
-    share_your_thoughts: Partagez vos réflexions…
+    share_your_thoughts: Partage tes réflexions…
     share_on_poll: Posez une question ou partagez de nouvelles informations
   thread_nav:
     participants: Participants
@@ -591,7 +591,7 @@ fr:
     whole_thread: La discussion dans son intégralité
     from_comment: Depuis un lien hypertexte en commentaire
     from_sequence_id: Depuis un lien hypertexte d'un élément de discussion
-    unread: Nouveau pour vous
+    unread: Nouveau pour toi
     jump_to: Aller à
     timeline: Chronologie
     top: Haut
@@ -703,15 +703,15 @@ fr:
     header: Notifications
     no_notifications: Aucune nouvelle notification
     with_title:
-      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
-      comment_replied_to: "%{actor} vous a repondu in: %{title}"
-      invitation_accepted: "%{actor} a accepté votre invitation à joindre %{title}"
-      membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
-      membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      unknown_sender: Examine les e-mails provenant d'un expéditeur non reconnu
+      comment_replied_to: "%{actor} t'a repondu in: %{title}"
+      invitation_accepted: "%{actor} a accepté ton invitation à joindre %{title}"
+      membership_created: "%{actor} t'a invité à rejoindre %{title} sur %{site_name}"
+      membership_resent: "%{actor} t'a invité à rejoindre %{title} sur %{site_name}"
       membership_requested: "%{actor} a demandé à s'adhérer %{title}"
-      membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
+      membership_request_approved: "%{actor} a accepté ta demande à joindre %{title}"
       new_comment: "%{actor} a mentionné sur: %{title}"
-      new_coordinator: "%{actor} vous a fait admin de %{title}"
+      new_coordinator: "%{actor} t'a fait admin de %{title}"
       outcome_announced: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_created: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type} : %{title}"
@@ -725,55 +725,55 @@ fr:
       poll_expired_author: 'Partage les résultats de ton %{poll_type}: %{title}'
       poll_option_added: "%{actor} a ajouté des options à %{title}"
       poll_reopened: "%{actor} a reouvert le %{poll_type}: %{title}"
-      poll_reminder: "%{actor} vous rappelle de voter sur: %{title}"
-      poll_reminder_wip: "%{actor} vous rappelle de donner du feedback: %{title}"
+      poll_reminder: "%{actor} te rappelle de voter sur: %{title}"
+      poll_reminder_wip: "%{actor} te rappelle de donner du feedback: %{title}"
       reaction_created: "%{actor} a réagi %{reaction} à ton %{model} sur %{title}"
       stance_created: "%{actor} a voté sur: %{title}"
       stance_updated: "%{actor} a voté sur: %{title}"
       stance_created_option: "%{actor} a voté %{option} sur %{title}"
-      user_added_to_group: "%{actor} vous a ajouté dans le group: %{title}"
-      user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
+      user_added_to_group: "%{actor} t'a ajouté dans le group: %{title}"
+      user_mentioned: "%{actor} t'a mentionné·e dans: %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
-      new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
-      poll_announced: "%{actor} vous a invité à voter : %{title}"
-      discussion_announced: "%{actor} vous a invité à la discussion : %{title}"
+      new_delegate: "%{actor} t'a nommé délégué avec droit de vote dans %{title}"
+      poll_announced: "%{actor} t'a invité à voter : %{title}"
+      discussion_announced: "%{actor} t'a invité à la discussion : %{title}"
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       new_discussion: "%{actor} a lancé une discussion : %{title}"
-      user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
     without_title:
-      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
-      group_announced: "%{actor} vous a invité dans le group"
-      comment_replied_to: "%{actor} vous a repondu"
-      membership_created: "%{actor} vous a invité à joindre le group"
-      membership_resent: "%{actor} vous a invité à rejoindre un groupe"
+      unknown_sender: Examine les e-mails provenant d'un expéditeur non reconnu
+      group_announced: "%{actor} t'a invité dans le group"
+      comment_replied_to: "%{actor} t'a repondu"
+      membership_created: "%{actor} t'a invité à joindre le group"
+      membership_resent: "%{actor} t'a invité à rejoindre un groupe"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
-      membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
+      membership_request_approved: "%{actor} a accepté ta demande à joindre %{title}"
       outcome_announced: "%{actor} a partagé la conclusion du %{poll_type}"
       outcome_created: "%{actor} a partagé la conclusion du %{poll_type}"
       outcome_review_due: C'est le moment de vérifier la conclusion du %{poll_type}
-      poll_announced_wip: "%{actor} vous a invité a donner votre avis sur %{poll_type}"
+      poll_announced_wip: "%{actor} t'a invité a donner ton avis sur %{poll_type}"
       poll_closed_by_user: "%{actor} a fermé le %{poll_type}"
       poll_closing_soon: "%{poll_type} se terminera dans 24 heures"
-      poll_closing_soon_author: Votre %{poll_type} se terminera dans 24 heures
+      poll_closing_soon_author: Ton %{poll_type} se terminera dans 24 heures
       poll_created: "%{actor} a commencé un %{poll_type}"
       poll_edited: "%{actor} a actualisé le %{poll_type}"
       poll_expired: "%{poll_type} est terminé·e"
       poll_expired_author: Partage les résultats de ton %{poll_type}
       poll_option_added: "%{actor} a ajouté des options à %{poll_type}"
       poll_reopened: "%{actor} a reouvert le %{poll_type}"
-      poll_reminder: "%{actor} vous rappelle de voter"
-      poll_reminder_wip: "%{actor} vous rappelle de donner du feedback"
+      poll_reminder: "%{actor} te rappelle de voter"
+      poll_reminder_wip: "%{actor} te rappelle de donner du feedback"
       reaction_created: "%{actor} a réagi %{reaction} à ton %{model}"
       stance_created: "%{actor} a voté"
       stance_updated: "%{actor} a voté"
       stance_created_option: "%{actor} a voté %{option}"
-      user_mentioned: "%{actor} vous a mentionné"
-      user_reminded: "%{actor} vous rappelle de voter"
+      user_mentioned: "%{actor} t'a mentionné"
+      user_reminded: "%{actor} te rappelle de voter"
       group_mentioned: "%{actor} a mentionné le groupe"
-      poll_announced: "%{actor} vous a invité à voter sur un %{poll_type}"
-      discussion_announced: "%{actor} vous a invité à une discussion"
+      poll_announced: "%{actor} t'a invité à voter sur un %{poll_type}"
+      discussion_announced: "%{actor} t'a invité à une discussion"
       discussion_edited: "%{actor} a modifié le contexte de la discussion"
       discussion_closed: "%{actor} a fermé la discussion"
       new_discussion: "%{actor} a lancé une discussion"
@@ -782,20 +782,20 @@ fr:
       thread_locked: "%{actor} a verrouillé la discussion"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
-      poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
+      poll_closing_soon_author: Tu voudras peut-être rappeler aux gens de voter ou de prolonger la date limite.
       outcome_review_due: Envisagez de lancer un sondage d'opinion ou une nouvelle discussion invitant à réfléchir sur la manière dont la décision a été mise en œuvre.
     email_subject:
-      unknown_sender: Veuillez examiner le courriel provenant d'un expéditeur inconnu.
-      comment_replied_to: "%{actor} vous a répondu dans : %{title}"
+      unknown_sender: Examine le courriel provenant d'un expéditeur inconnu.
+      comment_replied_to: "%{actor} t'a répondu dans : %{title}"
       discussion_announced: "%{title}"
-      invitation_accepted: "%{actor} a accepté votre invitation à rejoindre %{title}"
-      membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
-      membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      invitation_accepted: "%{actor} a accepté ton invitation à rejoindre %{title}"
+      membership_created: "%{actor} t'a invité à rejoindre %{title} sur %{site_name}"
+      membership_resent: "%{actor} t'a invité à rejoindre %{title} sur %{site_name}"
       membership_requested: "%{actor} a demandé à rejoindre %{title}"
-      membership_request_approved: "%{actor} a approuvé votre demande de rejoindre %{title}"
+      membership_request_approved: "%{actor} a approuvé ta demande de rejoindre %{title}"
       new_comment: "%{actor} a commenté dans : %{title}"
-      new_coordinator: "%{actor} vous a nommé administrateur de %{title}"
-      new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
+      new_coordinator: "%{actor} t'a nommé administrateur de %{title}"
+      new_delegate: "%{actor} t'a nommé délégué avec droit de vote dans %{title}"
       new_discussion: "%{title}"
       outcome_announced: 'Conclusion de %{poll_type} : %{title}'
       outcome_created: 'Conclusion de %{poll_type} : %{title}'
@@ -803,31 +803,31 @@ fr:
       outcome_review_due: 'Il est temps d''examiner la conclusion de : %{title}'
       poll_closed_by_user: "%{actor} a clôturé le %{poll_type} : %{title}"
       poll_closing_soon: "%{poll_type} se termine dans 24 heures : %{title}"
-      poll_closing_soon_author: 'Votre sondage %{poll_type} se termine dans 24 heures : %{title}'
+      poll_closing_soon_author: 'Ton sondage %{poll_type} se termine dans 24 heures : %{title}'
       poll_created: "%{poll_type} : %{title}"
       poll_edited: "%{actor} a mis à jour le %{poll_type} : %{title}"
       poll_expired: "%{poll_type} est clos : %{title}"
       poll_expired_author: 'Publier une conclusion : %{title}'
       poll_option_added: "%{actor} a ajouté des options à %{title}"
       poll_reopened: 'Vote prolongé : %{title}'
-      poll_reminder: "%{actor} vous rappelle de voter pour %{title}"
-      poll_reminder_wip: "%{actor} vous rappelle de donner votre avis : %{title}"
-      reaction_created: "%{actor} a réagi %{reaction} à votre %{model} dans %{title}"
+      poll_reminder: "%{actor} te rappelle de voter pour %{title}"
+      poll_reminder_wip: "%{actor} te rappelle de donner ton avis : %{title}"
+      reaction_created: "%{actor} a réagi %{reaction} à ton %{model} dans %{title}"
       stance_created: "%{actor} a voté pour : %{title}"
       stance_updated: "%{actor} a voté pour : %{title}"
       stance_created_option: "%{actor} a voté pour %{option} dans %{title}"
-      user_added_to_group: "%{actor} vous a ajouté au groupe : %{title}"
-      user_mentioned: "%{actor} vous a mentionné dans : %{title}"
+      user_added_to_group: "%{actor} t'a ajouté au groupe : %{title}"
+      user_mentioned: "%{actor} t'a mentionné dans : %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       poll_announced: 'Vote : %{title}'
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
       discussion_closed: "%{actor} a clos la discussion : %{title}"
-      user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
   discussion_fork_actions:
     move: Déplacer
     moved: Déplacer des commentaires, cette action peut prendre un moment
-    helptext: Sélectionnez les éléments que vous souhaitez déplacer vers une autre discussion.
+    helptext: Sélectionne les éléments que tu souhaites déplacer vers une autre discussion.
     search_placeholder: Trouver une discussion par titre
     move_to_existing_thread: Déplacer vers une discussion existante
     start_new_thread: Ou bien, lancez une nouvelle discussion.
@@ -836,7 +836,7 @@ fr:
     new_thread_template: Nouveau modèle de thread
     edit_thread_template: Modifier le modèle de thread
     blank: Blanc
-    blank_subtitle: Commencez une discussion et voyez où cela vous mène
+    blank_subtitle: Commencez une discussion et voyez où cela te mène
     new_template: Nouveau modèle
     new_template_subtitle: Créer un exemple que d’autres personnes peuvent copier
     to: A
@@ -858,7 +858,7 @@ fr:
     group_label: Groupe
     group_placeholder: Sélectionner un groupe
     title_label: Titre
-    title_placeholder: De quel sujet souhaitez-vous discuter ?
+    title_placeholder: De quel sujet souhaites-tu discuter ?
     context_label: Contexte
     context_placeholder: Veuillez indiquer le contexte de cette discussion, pour que les participants sachent comment y prendre part
     privacy_label: Privé
@@ -870,14 +870,14 @@ fr:
     none_invite_only_discussion: Aucun (discussion sur invitation uniquement)
     new_discussion_template: Nouveau modèle de discussion
     edit_discussion_template: Modèle de discussion à modifier
-    change_log_placeholder: Vous pouvez, si vous le souhaitez, décrire vos modifications. Ce message sera ajouté à la discussion.
+    change_log_placeholder: Tu peux, si tu le souhaitez, décrire tes modifications. Ce message sera ajouté à la discussion.
     start_discussion: Lancer une discussion
     discussion_updated: Discussion mise à jour
     discussion_created: Discussion créée
     discussion_started: La discussion a commencé
     none_direct_discussion: Aucun (discussion directe)
     direct_discussion: Discussion directe
-    direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
+    direct_discussion_hint: Une conversation privée n'est visible que par les personnes que tu invites. Elle n'apparaît pas dans la liste des discussions d'un groupe ; tu  trouverez sur la page « Conversations privées ».
     recommended_poll_templates: Modèles de sondages recommandés
     edit_discussion_context: Modifier le contexte de la discussion
   announcement:
@@ -897,7 +897,7 @@ fr:
     preview: Aperçu du courriel
     no_notifications_sent: Aucune notification n'a été envoyé
     history_error: Oups, petit souci technique ! L'historique n'a pu être téléchargé
-    select_groups: Sélectionnez des groupes
+    select_groups: Sélectionne des groupes
     search_by_name_or_email: Recherche par nom, ou saisir une adresse mail à inviter
     search_by_name: Recherche de personnes par leur nom
     only_admins_can_announce: Seuls les administrateur peuvent notifier tous les membres du groupe
@@ -927,51 +927,51 @@ fr:
       non_voters: Les membres de %{name} n'ont pas encore été invités
       delegates_of_group: Délégués de %{name}
     form:
-      group_has_no_members_yet: Vous êtes le seul membre de votre groupe. Vous souhaiterez peut-être inviter certaines personnes dans votre groupe avant de démarrer un fil de discussion ou une décision.
-      invite_people_to_evaluate_loomio: Invitez des personnes dans votre groupe Loomio pour prendre une décision ensemble
+      group_has_no_members_yet: Tu es le seul membre de ton groupe. Tu souhaitesrez peut-être inviter certaines personnes dans ton groupe avant de démarrer un fil de discussion ou une décision.
+      invite_people_to_evaluate_loomio: Invite des personnes dans ton groupe Loomio pour prendre une décision ensemble
       too_many_invitations: 'Invitations maximum atteintes. <a href="%{upgradeUrl}" target="_blank">Mettre à jour</a>
 
         '
       no_invitations_remaining: |
-        <p>Vous avez épuisé toutes les %{maxMembers} invitations disponible pour ce groupe.</p>
+        <p>Tu as épuisé toutes les %{maxMembers} invitations disponible pour ce groupe.</p>
         <p>Étape suivante, <a href="%{upgradeUrl}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
       invitations_remaining: '%{count} invitations restantes. <a href="%{upgradeUrl}" target="_blank">Mettre à jour</a>'
-      who_to_invite: Qui voulez vous inviter ?
+      who_to_invite: Qui veux-tu inviter ?
       invitation_message_placeholder: Message à joindre à l'invitation (facultatif)
       invitation_message_label: Message
-      invitation_message_default: J'ai créé ce groupe Loomio pour nous aider à prendre des décisions ensemble. Veuillez accepter mon invitation. Cela ne prend qu’une minute pour s’inscrire. Merci.
+      invitation_message_default: J'ai créé ce groupe Loomio pour nous aider à prendre des décisions ensemble. Accepte mon invitation. Cela ne prend qu’une minute pour s’inscrire. Merci.
       group_announced:
         title: Inviter au groupe
-        helptext: Qui voulez-vous inviter au groupe ?
+        helptext: Qui veux-tu inviter au groupe ?
       discussion_announced:
         title: Inviter à la discussion
-        helptext: Qui voulez-vous inviter à la discussion ?
-        notify_helptext: Qui voulez vous notifier à propos de la discussion ?
+        helptext: Qui veux-tu inviter à la discussion ?
+        notify_helptext: Qui veux-tu notifier à propos de la discussion ?
       discussion_edited:
         title: Notifier des modifications
-        helptext: Qui voulez-vous notifier à propos de cette mise à jour ? (facultatif)
+        helptext: Qui veux-tu notifier à propos de cette mise à jour ? (facultatif)
       wip_poll_announced:
         title: Inviter à donner des commentaires
-        helptext: Qui voulez-vous inviter à donner des commentaires ?
+        helptext: Qui veux-tu inviter à donner des commentaires ?
       poll_reminder:
         title: Rappel pour voter
-        helptext: 'A qui voulez-vous rappeler de voter ? '
+        helptext: 'A qui voulez-te rappeler de voter ? '
         message_label: Message
         message_placeholder: Message facultatif pour expliquer aux gens pourquoi ils devraient voter
       wip_poll_reminder:
-        title: Rappelez-vous de donner feedback
-        helptext: Qui voulez-vous rappeler à donner des commentaires ?
+        title: Rappelle-toi de donner feedback
+        helptext: Qui veux-tu rappeler à donner des commentaires ?
         message_label: Message
         message_placeholder: Message facultatif à inclure dans l’e-mail de notification
       poll_edited:
         title: Notifier des modifications
-        helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
+        helptext: 'Qui veux-tu notifier à propos de cette mise à jour ? '
       outcome_announced:
         title: Partager la conclusion
         helptext: Résumer la conclusion du processus, y compris les compréhensions trouvées ou les problèmes mis en lumière.
       anyone_can_participate: N’importe qui ayant un lien peut participer.
-      placeholder: Vous pouvez saisir les noms ou les adresses mail
-      type_or_paste_email_addresses_to_invite: Saisissez ou collez les adresses e-mail à inviter
+      placeholder: Tu peux saisir les noms ou les adresses mail
+      type_or_paste_email_addresses_to_invite: Saisis ou collez les adresses e-mail à inviter
       notified_empty: Personne n'est encore sélectionné
       single_notification: 1 notification sera envoyée.
       multiple_notifications: Des notifications %{notified} seront envoyées.
@@ -982,10 +982,10 @@ fr:
       added_singular: 1 personne sera ajouté
       added_none: Personne sera ajouté
       group_title: "%{name} (%{count} personnes)"
-      click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
+      click_group_to_see_individuals: Clique sur groupe pour voir les individus
       poll_announced:
         title: Invitation à voter
-        helptext: Qui aimeriez-vous inviter à voter ?
+        helptext: Qui aimerais-tu inviter à voter ?
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
@@ -1007,7 +1007,7 @@ fr:
     group_mentioned: "%{name} a mentionné le groupe avec %{length} personnes :"
     poll_announced: "%{name} a invité %{length} personnes à voter :"
     discussion_notification_history: Historique des notifications de discussion
-    inviting_guests_to_discussion: Les invités ne font pas partie de votre groupe et n'ont accès qu'à cette discussion.
+    inviting_guests_to_discussion: Les invités ne font pas partie de ton groupe et n'ont accès qu'à cette discussion.
     topic_notification_history: Historique des notifications du fil de discussion
     notification_history: Historique des notifications
   action_dock:
@@ -1030,7 +1030,7 @@ fr:
     announce_poll: Inviter des personnes au vote
     announce_poll_active: "(Personne n'a encore été invité)"
     translate_poll: Afficher une traduction automatique du sondage
-    edit_stance: Modifier votre position
+    edit_stance: Modifier ta position
     translate_stance: Afficher une traduction automatique du vote
     edit_comment: Modifier le commentaire
     delete_comment: Supprimer le commentaire
@@ -1120,7 +1120,7 @@ fr:
     edit_markdown: Editer Markdown
     markdown_confirm: Certains formats peuvent être perdus lors du passage du mode WYSIWIG (tel écran, tel écrit) au mode Markdown
     upload_failed: Echec du téléversement
-    confirm_discard: Êtes-vous sûr de vouloir annuler vos modifications ?
+    confirm_discard: Es-tu sûr de vouloir annuler tes modifications ?
     discard_draft: Supprimer le brouillon
   cover_photo_form:
     heading: Nouvelle photo de couverture
@@ -1133,20 +1133,20 @@ fr:
     image_size_helptext: La taille d’image idéale est de 100×100px
     upload_success: Le logo a été mis à jour avec succès
   join_group_button:
-    not_a_member: Vous n'êtes actuellement pas un membre de ce groupe
+    not_a_member: Tu n'es actuellement pas un membre de ce groupe
     join_group: Rejoindre le groupe
     membership_requested: Adhésion demandée
     messages:
-      joined_group: Vous êtes désormais membre de %{group}
+      joined_group: Tu es désormais membre de %{group}
   membership_request_form:
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: Adresse e-mail
-    introduction_label: Pourquoi voulez-vous rejoindre ?
+    introduction_label: Pourquoi veux-tu rejoindre ?
     submit_button: Demander à rejoindre
     introduction_over_limit: Réponse trop longue
     messages:
-      membership_requested: Vous avez demandé à rejoindre %{group}
+      membership_requested: Tu as demandé à rejoindre %{group}
     aria_label: Formulaire de demande d'adhésion
   revision_history_modal:
     discussion_header: Éditions de la discussion
@@ -1168,30 +1168,30 @@ fr:
     group_id_changed: Déplacé vers %{name}
     aria_label: Historique des révisions
   reactions_input:
-    add_your_reaction: Ajouter votre réaction
+    add_your_reaction: Ajouter ta réaction
   reactions_display:
     more_reactions: "%{count} de plus"
-    you: Vous
-    you_and_name: Vous et %{name}
-    you_and_name_and_count_more: Vous, %{name} et %{count} de plus
+    you: Toi
+    you_and_name: Toi et %{name}
+    you_and_name_and_count_more: Toi, %{name} et %{count} de plus
     name_and_count_more: "%{name} et %{count} de plus"
   delete_group_modal:
     title: Supprimer le groupe
     subgroup_title: Supprimer le sous-groupe
     parent_body: |
-      <h2>Il s’agit de votre groupe parent - pas d’un sous-groupe!</h2>
+      <h2>Il s’agit de ton groupe parent - pas d’un sous-groupe!</h2>
       <br>
-      Si vous supprimez ceci, tous les sous-groupes seront également supprimés définitivement.
+      Si tu supprimez ceci, tous les sous-groupes seront également supprimés définitivement.
 
-      Votre abonnement Loomio sera également annulé.
+      Ton abonnement Loomio sera également annulé.
 
-      Il est fortement recommandé d’exporter les données de votre groupe et de télécharger manuellement tous les fichiers importants avant de le faire.
-      Êtes-vous sûr de vouloir continuer?
+      Il est fortement recommandé d’exporter les données de ton groupe et de télécharger manuellement tous les fichiers importants avant de le faire.
+      Es-tu sûr de vouloir continuer?
     body: |
-      Voulez-vous vraiment supprimer ce sous-groupe ?
+      Veux-tu vraiment supprimer ce sous-groupe ?
       Tous les fils de discussion, sondages, fichiers et autres contenus de groupe seront définitivement supprimés.
       Il est recommandé d’exporter les données du groupe et de télécharger manuellement tous les fichiers importants avant de continuer.
-    confirm: Saisissez '%{name}' pour confirmer que vous voulez supprimer ce groupe.
+    confirm: Saisis '%{name}' pour confirmer que tu veux supprimer ce groupe.
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
   group_page:
     stats: Statistiques du groupe
@@ -1205,15 +1205,15 @@ fr:
     show_opened: "%{count} ouvertes"
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
-    private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
+    private_threads: Tu dois être membre du groupe pour voir des discussions privées de ce groupe
     no_more_threads: Aucune discussions supplémentaire à charger
     view_closed_threads: Voir les discussions fermées
     messages:
       privacy:
         members: Ce groupe est désormais visible uniquement aux membres
-        parent_members: Ce groupe est à présent uniquement visible par les membres de votre organisation
+        parent_members: Ce groupe est à présent uniquement visible par les membres de ton organisation
         public: Ce groupe est désormais visible au public
-      leave_group_success: Vous avez quitté ce groupe
+      leave_group_success: Tu as quitté ce groupe
       archive_group_success: Ce groupe a été désactivé
     group_logo: Logo du groupe
     new_photo: Nouvelle photo
@@ -1221,7 +1221,7 @@ fr:
     new_group_logo: Charger un nouveau logo de groupe
     open_discussions: Discussions en cours
     discussions_placeholder: Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.
-    members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
+    members_placeholder: 'Tu es le seul membre ici: invitez des personnes à te rejoindre !'
     member_options: Options des membres
     see_all_members: Voir les %{count} membres
     pending_invitations: "+ %{count} en attente"
@@ -1233,7 +1233,7 @@ fr:
       label: Options
       edit_group: Modifier les paramètres du groupe
       become_coordinator: Devenir administrateur
-      export_data: Exporter les données de votre groupe
+      export_data: Exporter les données de ton groupe
       export_data_as_json: Exporter les données du groupe au format JSON
       export_data_as_csv: Exporter les données du groupe au format CSV
       export_data_as_html: " Exporter les données du groupe au format HTML"
@@ -1246,17 +1246,17 @@ fr:
       subscription_status: Statut des inscriptions
     volume:
       loud: Envoyer un courriel dès qu’il y a de l’activité.
-      loud_aria_description: Votre volume de notification pour ce groupe est réglé sur Fort. Vous recevrez un courriel à chaque fois qu’il y a une activité.
-      loud_message: Vous recevrez un courriel à chaque activité dans « %{name} ».
+      loud_aria_description: Ton volume de notification pour ce groupe est réglé sur Fort. Tu recevras un courriel à chaque fois qu’il y a une activité.
+      loud_message: Tu recevras un courriel à chaque activité dans « %{name} ».
       normal: 'Envoyer par courriel seulement les activités importantes: nouvelles discussions et propositions, résultats, etc.'
-      normal_aria_description: Votre volume de notification pour ce groupe est réglé sur Normal. Vous recevrez un courriel seulement en cas d’activité importante, par exemple si quelqu’un crée une nouvelle discussion, lance une proposition, ou publie les résultats.
-      normal_message: Vous recevrez un courriel uniquement lors d’activités importantes dans « %{name} ».
+      normal_aria_description: Ton volume de notification pour ce groupe est réglé sur Normal. Tu recevras un courriel seulement en cas d’activité importante, par exemple si quelqu’un crée une nouvelle discussion, lance une proposition, ou publie les résultats.
+      normal_message: Tu recevras un courriel uniquement lors d’activités importantes dans « %{name} ».
       quiet: Ne pas envoyer de courriel concernant ce groupe. Les activités resteront consultables sur le tableau de bord.
-      quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez aucun courriel pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
-      quiet_message: Vous ne recevrez aucun courriel concernant les activités dans « %{name} ».
-      mute_message: "« %{name} » a été retiré de votre tableau de bord."
+      quiet_aria_description: Ton volume de notification pour ce groupe est réglé sur Léger. Tu ne recevras aucun courriel pour t'informer des actualités de ce groupe. Tu pourrez les voir sur ton Tableau de Bord.
+      quiet_message: Tu ne recevras aucun courriel concernant les activités dans « %{name} ».
+      mute_message: "« %{name} » a été retiré de ton tableau de bord."
       mute: Masquer ce groupe du tableau de bord et ne pas notifier sauf si {'@'}est mentionné.
-      mute_aria_description: Le volume des notifications pour ce groupe est réglé sur « Muet ». Vous ne recevrez aucun e-mail, sauf mention contraire, et l'activité du groupe ne sera pas affichée sur votre tableau de bord.
+      mute_aria_description: Le volume des notifications pour ce groupe est réglé sur « Muet ». Tu ne recevras aucun e-mail, sauf mention contraire, et l'activité du groupe ne sera pas affichée sur ton tableau de bord.
     privacy:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de %{parentGroupName} et les membres de %{groupName}'
@@ -1267,13 +1267,13 @@ fr:
     more_subgroups: Plus de sous-groupes
     discussions: Discussions
     no_discussions_here: Aucune discussion à signaler ici !
-    private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
+    private_discussions: Tu dois être membre pour consulter les discussions privées de ce groupe.
     discussion_templates: Modèles de discussion
     show_locked: "%{count} Verrouillé"
     view_locked_discussions: Consulter les discussions verrouillées
     locked_discussions: Discussions verrouillées
   export_data_modal:
-    title: Comment souhaitez-vous utiliser vos données ?
+    title: Comment souhaites-tu utiliser tes données ?
     as_csv: Ouvrir dans une feuille de calcul
     as_html: Ouvrir dans un navigateur web
     as_json: Héberger ce groupe sur mon propre serveur
@@ -1284,17 +1284,17 @@ fr:
       description_updated: Description mise à jour
   leave_group_form:
     title: Quitter le groupe
-    question: Êtes-vous sûr de vouloir quitter ce groupe ?
+    question: Es-tu sûr de vouloir quitter ce groupe ?
     submit: Oui, quitter ce groupe
     aria_label: Quitter le groupe
   archive_group_form:
     title: Désactiver le groupe
-    question: Êtes-vous sûr de vouloir désactiver ce groupe ?
+    question: Es-tu sûr de vouloir désactiver ce groupe ?
     submit: Oui, désactiver ce groupe
     aria_label: Désactiver le groupe
   group_form:
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
-    click_to_change_image: Cliquez pour modifier l’image de couverture (4x1) ou le logo (1x1)
+    click_to_change_image: Clique pour modifier l’image de couverture (4x1) ou le logo (1x1)
     change_cover_image: modifier l’image de couverture
     change_logo: changer de logo
     permissions_explaination: |
@@ -1304,7 +1304,7 @@ fr:
     new_organisation: Nouveau groupe
     new_group: Nouveau groupe
     new_subgroup: Nouveau sous-groupe
-    new_group_explainer: Démarrez un nouveau groupe Loomio - une maison en ligne pour les discussions et les décisions de votre organisation
+    new_group_explainer: Démarre un nouveau groupe Loomio - une maison en ligne pour les discussions et les décisions de ton organisation
     new_subgroup_explainer: Démarrer un sous-groupe au sein d’un groupe existant - un espace privé pour une équipe de personnes de l’organisation
     start_group_heading: Créer un groupe
     start_subgroup_heading: Créer un sous-groupe
@@ -1316,16 +1316,16 @@ fr:
     subgroup_name: Nom du sous-groupe
     organization_name: Nom de l’organisation
     handle: Gérer
-    group_handle_placeholder: 'Utilisé dans l''URL de votre groupe : %{host}/%{handle}'
+    group_handle_placeholder: 'Utilisé dans l''URL de ton groupe : %{host}/%{handle}'
     start_organization_heading: Nouveau groupe
     edit_organization_heading: Modifier les paramètres de l'organisation
-    group_name_placeholder: Quel est le nom de votre groupe ?
-    subgroup_name_placeholder: Quel est le nom de votre sous-groupe?
-    organization_name_placeholder: Quel est le nom de votre organisation ?
+    group_name_placeholder: Quel est le nom de ton groupe ?
+    subgroup_name_placeholder: Quel est le nom de ton sous-groupe?
+    organization_name_placeholder: Quel est le nom de ton organisation ?
     description: Description
-    description_placeholder: Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.
-    new_description_placeholder: Pourquoi testez-vous Loomio ? Quelles décisions devez-vous prendre ensemble ?
-    secret_by_default: Votre groupe ne sera accessible qu’aux personnes invitées à s’y joindre. Vous pouvez modifier cela ultérieurement.
+    description_placeholder: Utilise cet espace pour décrire le but de ton groupe afin que tes membres sachent pourquoi ils sont là.
+    new_description_placeholder: Pourquoi testes-tu Loomio ? Quelles décisions dois-tu prendre ensemble ?
+    secret_by_default: Ton groupe ne sera accessible qu’aux personnes invitées à s’y joindre. Tu peux modifier cela ultérieurement.
     privacy_statement:
       public_on_web: Le nom, la description et les pièces-jointes seront visibles par tous sur le web
       private_to_group: Le nom et la description ne seront visibles que par les membres du groupe.
@@ -1335,10 +1335,10 @@ fr:
     group_privacy_is_closed_description: Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont privées.
     group_privacy_is_closed_public_threads_description: Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Les discussions peuvent être publiques ou privées.
     group_privacy_is_secret_description: Seuls les personnes invitées peuvent trouver le groupe. Toutes les discussions sont privées.
-    confirm_change_to_secret: Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.
-    confirm_change_to_secret_subgroup: Si vous confirmez, toutes les discussions seront rendues privées.
-    confirm_change_to_public: Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.
-    confirm_change_to_private_discussions_only: Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.
+    confirm_change_to_secret: Si tu confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.
+    confirm_change_to_secret_subgroup: Si tu confirmez, toutes les discussions seront rendues privées.
+    confirm_change_to_public: Si tu confirmez, toutes les discussions de ce groupe seront rendues publiques.
+    confirm_change_to_private_discussions_only: Si tu confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.
     profile: Profil
     subgroup_privacy_is_open_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques.
     subgroup_privacy_is_closed_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans ce groupe. Toutes les discussions sont privées.
@@ -1391,8 +1391,8 @@ fr:
     upload_logo: Télécharger le logo
     upload_cover_photo: Télécharger la photo de couverture
     request_to_join_prompt: Demande d'adhésion rapide
-    default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
-    upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
+    default_request_to_join_prompt: Merci de ton intérêt pour notre groupe. Veuillez tu  et expliquer pourquoi tu souhaites nous rejoindre.
+    upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau ton abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
     aria_label: Forme de groupe
     list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
@@ -1407,18 +1407,18 @@ fr:
     members_can_start_discussions_help_v2: Autoriser les membres à entamer de nouvelles discussions au sein du groupe
     members_can_edit_discussions_v2: Les membres peuvent gérer les discussions et les commentaires.
     members_can_edit_discussions_help_v2: Autoriser les membres à modifier, déplacer, épingler, étiqueter ou fermer toute discussion ou tout commentaire dans le groupe
-    group_handle_hint_new: L'URL et l'adresse e-mail de votre groupe seront %{host}/%{handle} et %{handle}{'@'}%{host}
-    handle_changed_hint: Votre ancienne URL et votre adresse e-mail seront redirigées vers votre nouvelle adresse.
+    group_handle_hint_new: L'URL et l'adresse e-mail de ton groupe seront %{host}/%{handle} et %{handle}{'@'}%{host}
+    handle_changed_hint: Ton ancienne URL et ton adresse e-mail seront redirigées vers ta nouvelle adresse.
   group_export_modal:
-    title: Exporter les données de votre groupe
+    title: Exporter les données de ton groupe
     body: |
       <p>
-      Vous pouvez télécharger une copie des données de votre groupe quand vous le souhaitez.
+      Tu peux télécharger une copie des données de ton groupe quand tu le souhaites.
       <a href="https://help.loomio.org/en/user_manual/groups/data_export/">En savoir plus.</a>
       </p>
       <p>
-      L'export prend quelques minutes, en fonction de la taille de votre groupe.
-      Quand il est disponible, vous recevrez un e-mail contenant un lien pour télécharger le fichier.
+      L'export prend quelques minutes, en fonction de la taille de ton groupe.
+      Quand il est disponible, tu recevras un e-mail contenant un lien pour télécharger le fichier.
       </p>
     submit: Démarrer l'export
     flash: L'export des données du groupe a démarré
@@ -1446,20 +1446,20 @@ fr:
     notify_people: Notifier les personnes
     invite_people_to_group: Invitation à %{name}
     group: Groupe
-    group_placeholder: Sélectionnez un groupe
+    group_placeholder: Sélectionne un groupe
     shareable_link: Lien partageable
-    share_group: Partagez votre groupe
+    share_group: Partage ton groupe
     copy_link: Copier
     email_addresses: Adresses e-mail
-    secret_group_url_explanation: Ceci est l'adresse de votre groupe. Seuls les membres invités pourront voir ce groupe.
-    shareable_group_url_explanation: Vous pouvez partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et vous pourrez approuver ou ignorer ces requêtes.
-    shareable_invitation_explanation: Ne partagez pas ce lien publiquement. Quiconque ayant ce lien peut joindre le groupe sans votre approbation. Partagez-le uniquement dans des communications privées pour permettre aux membres de botre organisation de rejoindre le groupe.
+    secret_group_url_explanation: Ceci est l'adresse de ton groupe. Seuls les membres invités pourront voir ce groupe.
+    shareable_group_url_explanation: Tu peux partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et tu  approuver ou ignorer ces requêtes.
+    shareable_invitation_explanation: Ne partage pas ce lien publiquement. Quiconque ayant ce lien peut joindre le groupe sans ton approbation. Partage-le uniquement dans des communications privées pour permettre aux membres de ton organisation de rejoindre le groupe.
     shareable_link_reset: Réinitialisation du lien à partager. Le lien précédent ne fonctionnera plus.
     email_explanation: Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.
-    add_custom_message: Personnalisez votre invitation
+    add_custom_message: Personnalise ton invitation
     add_custom_message_link: ajouter un message personnalisé
     custom_message: Message personnalisé
-    custom_message_placeholder: Entrez un message personnalisé à joindre à l’invitation.
+    custom_message_placeholder: Entre un message personnalisé à joindre à l’invitation.
     add_members: Ajouter des membres
     from_parent_group: de %{name}.
     send: Envoyer
@@ -1468,12 +1468,12 @@ fr:
       invitation_sent: Invitation envoyée.
       invitations_sent: "%{count}invitations envoyées."
       no_invitations: Oh-oh ! Merci de vérifier l’adresse e-mail puis de réessayer.
-      max_invitations: Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d’invitation.
+      max_invitations: Si tu veux envoyer plus de 100 invitations, tu dois utiliser un lien d’invitation.
     copy_to_clipboard: Copier dans le presse-papiers
-    already_chatting_somewhere: Vous discutez déjà quelque part ?
+    already_chatting_somewhere: Tu discutes déjà quelque part ?
     to_stop_people_reset_the_link: Pour empêcher les utilisateurs de rejoindre la communauté avec ce lien, cliquez sur « Réinitialiser ce lien ». Le lien existant ne fonctionnera plus et un nouveau lien sera créé.
-    try_the_shareable_link_instead: Essayez plutôt d’utiliser le lien partageable.
-    enter_emails_of_people_to_invite: Saisissez les adresses e-mail des personnes que vous souhaitez inviter au groupe. Si vous avez une liste, copiez-les et collez-les toutes simultanément.
+    try_the_shareable_link_instead: Essaie plutôt d’utiliser le lien partageable.
+    enter_emails_of_people_to_invite: Saisis les adresses e-mail des personnes que tu souhaites inviter au groupe. Si tu avez une liste, copiez-les et collez-les toutes simultanément.
     shareable_link_to_join_group: Lien partageable pour rejoindre le groupe
     reset_the_link: Réinitialiser le lien
     email_addresses_placeholder: par exemple helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
@@ -1490,16 +1490,16 @@ fr:
       make_admin_success: "%{name}  est désormais administrateur"
       remove_admin_success: "%{name} n'est désormais plus administrateur"
     remove_admin_from_self:
-      question: Etes-vous sûrs de ne plus vouloir être administrateur ?
+      question: Es-tu sûr de ne plus vouloir être administrateur ?
   membership_remove_modal:
     invitation:
       title: Annuler l’invitation
-      message: Êtes-vous certain de vouloir annuler cette invitation à %{name} ?
+      message: Es-tu certain de vouloir annuler cette invitation à %{name} ?
       flash: Invitation annulée
       submit: Annuler l’invitation
     membership:
       title: Supprimer le membre
-      message: Êtes-vous certain⋅e de vouloir retirer %{name} ?
+      message: Es-tu certain de vouloir retirer %{name} ?
       impact_for_subgroup: Cela supprimera leur accès au sous-groupe (y compris les threads et les interrogations), mais ils resteront membres du groupe parent.
       impact_for_group: Cela supprimera leur accès au groupe (y compris les threads et les interrogations) et à tous les sous-groupes.
       flash: Membre supprimé
@@ -1527,14 +1527,14 @@ fr:
     message_user: Message %{name}
   contact_request_form:
     modal_title: Envoyer un courriel à %{name}
-    message_placeholder: Présentez-vous et dites-nous pourquoi vous voulez entrer en relation.
-    helptext: Votre nom, adresse e-mail et message seront envoyés à %{name}
+    message_placeholder: Présentez-tu  dites-nous pourquoi tu veux entrer en relation.
+    helptext: Ton nom, adresse e-mail et message seront envoyés à %{name}
     email_sent: Courriel envoyé à %{name}
   profile_page:
     autodetect_time_zone: Détection automatique du fuseau horaire
     account_is_bot: Ceci est un compte de robot
     incomplete_profile: Profil incomplet!
-    set_your_profile_picture: Définir votre photo de profil
+    set_your_profile_picture: Définir ta photo de profil
     messages:
       updated: Profil mis à jour
       picture_changed: Photo de profil mise à jour
@@ -1557,25 +1557,25 @@ fr:
     email_label: Adresse e-mail
     short_bio_label: Introduction
     locale_label: Langue
-    short_bio_placeholder: Merci de vous présenter en indiquant vos domaines de compétence, vos centres d’intérêts et les organisations auxquelles vous appartenez
-    locale_placeholder: Sélectionnez votre langage préféré
+    short_bio_placeholder: Présente-toi en indiquant tes domaines de compétence, tes centres d’intérêts et les organisations auxquelles tu appartiens
+    locale_placeholder: Sélectionne ton langage préféré
     location_label: Lieu
-    location_placeholder: Où êtes-vous ?
+    location_placeholder: Où es-tu ?
     update_profile: Mettre à jour mon profil
     deactivate_account: Désactiver le compte utilisateur
-    deactivate_account_subtitle: Arrêtez les e-mails et annulez les adhésions. Conservez votre profil afin que les discussions et décisions passées ne soient pas affectées.
-    delete_account_subtitle: Supprimez complètement votre compte et supprimez votre nom des discussions et décisions passées.
-    updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
+    deactivate_account_subtitle: Arrêtez les e-mails et annulez les adhésions. Conserve ton profil afin que les discussions et décisions passées ne soient pas affectées.
+    delete_account_subtitle: Supprime complètement ton compte et supprime ton nom des discussions et décisions passées.
+    updated_on_sign_in: Fourni par ton navigateur et mis à jour lorsque tu te connectes
     translate_content_automatically: Traduire automatiquement le contenu dans ma langue
     bot_account_warning: Les comptes de robots ne seront pas invités à voter aux sondages ni à participer aux discussions.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractères"
-    select_text_to_link: Sélectionnez le texte à lier et réessayez
+    select_text_to_link: Sélectionne le texte à lier et réessayez
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
     title: Régler la photo de profil
-    helptext: Vous pouvez charger votre propre photo de profil, ou si vous avez un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, vous pouvez l’utiliser.
+    helptext: Tu peux charger ton propre photo de profil, ou si tu as un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, tu  l’utiliser.
     use_initials: Utiliser mes initiales
     use_gravatar: Utiliser Gravatar
     use_uploaded: Télécharger une nouvelle photo
@@ -1584,18 +1584,18 @@ fr:
     aria_label: Formulaire de photo de profil
   change_password_form:
     set_password_title: Définir le mot de passe
-    set_password_helptext: Veuillez entrer un mot de passe - il doit contenir 8 caractères au minimum
+    set_password_helptext: Entre un mot de passe - il doit contenir 8 caractères au minimum
     set_password: Définir un mot de passe
-    password_changed: Votre mot de passe a été mis à jour
+    password_changed: Ton mot de passe a été mis à jour
   deactivation_modal:
-    introduction: 'Lorsque vous supprimez votre compte:'
-    deactivate_introduction: 'Lorsque vous désactivez votre compte :'
-    you_will_be_deactivated: Votre compte utilisateur sera marqué comme désactivé. Votre adresse e-mail et vos données d’identification personnelle resteront. Vous pourrez réactiver votre compte plus tard si vous le souhaitez.
-    name_not_removed: Les commentaires, votes, propositions et discussions que vous avez publiés resteront afin que les enregistrements historiques ne soient pas altérés.
-    you_will_be_deleted: Votre compte d'utilisateur, y compris votre nom, votre adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes.
-    name_removed: Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré
-    no_longer_group_member: Vous ne serez plus enregistré comme membre d’aucun groupe
-    no_emails: Vous ne recevrez plus de courriels de notification
+    introduction: 'Lorsque tu supprimes ton compte:'
+    deactivate_introduction: 'Lorsque tu désactives ton compte :'
+    you_will_be_deactivated: Ton compte utilisateur sera marqué comme désactivé. Ton adresse e-mail et tes données d’identification personnelle resteront. Tu pourras réactiver ton compte plus tard si tu le souhaites.
+    name_not_removed: Les commentaires, votes, propositions et discussions que tu as publiés resteront afin que les enregistrements historiques ne soient pas altérés.
+    you_will_be_deleted: Ton compte d'utilisateur, y compris ton nom, ton adresse e-mail et d'autres données d'identification personnelle seront supprimés de nos systèmes.
+    name_removed: Les commentaires, les décisions et les discussions que tu as faits resteront mais ton nom en sera retiré
+    no_longer_group_member: Tu ne seras plus enregistré comme membre d’aucun groupe
+    no_emails: Tu ne recevras plus de courriels de notification
     submit_delete: Supprimer mon compte maintenant
     submit_deactivate: Désactiver mon compte maintenant
   email_settings_page:
@@ -1609,29 +1609,29 @@ fr:
     every_day: Tous les jours
     every_second_day: Tous les deux jours
     header: Paramètres de notification
-    account_deactivated: Votre compte a été désactivé. Vous ne recevrez désormais plus d'emails, pour toujours.
+    account_deactivated: Ton compte a été désactivé. Tu ne recevras désormais plus d'emails, pour toujours.
     deactivate_header: Arrêtez tous les courriels, pour toujours.
-    deactivate_description: Si vous souhaitez ne plus jamais recevoir de courriels de notre part, vous pouvez désactiver votre compte utilisateur.
+    deactivate_description: Si tu souhaites ne plus jamais recevoir de courriels de notre part, tu peux désactiver ton compte utilisateur.
     email_newsletter: Bulletin d'information de Loomio
-    email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans votre ville et du futur de Loomio. 2 à 3 e-mails par an.
+    email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans ta ville et du futur de Loomio. 2 à 3 e-mails par an.
     email_catch_up_day: e-mail de synthèse de rattrapage
     on_participation_label: Notification sur les discussions auxquelles je participe
-    on_participation_description: Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel.
+    on_participation_description: Lorsque tu participes à une discussion, toute activité ultérieure te sera immédiatement envoyée par courriel.
     announcement_label: Nouvelles discussions et décisions
-    announcement_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de vos groupes.
+    announcement_description: Tu recevras un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de tes groupes.
     mentioned_label: Mentions et réponses
     update_settings: Sauvegarder les modifications
     specific_groups: Paramètres pour certains groupes
     default_settings:
-      loud_description: Quand vous rejoignez un nouveau groupe, vous recevrez un courriel <strong>à chaque fois qu’il y aura une activité</strong>.
-      normal_description: Quand vous rejoignez un nouveau groupe, vous recevrez un courriel pour chaque <strong>nouvelle discussion ou décision</strong>.
-      quiet_description: Quand vous rejoignez un nouveau groupe, <strong>Vous ne recevrez pas de courriel pour les activités</strong>.
+      loud_description: Quand tu rejoins un nouveau groupe, tu recevras un courriel <strong>à chaque fois qu’il y aura une activité</strong>.
+      normal_description: Quand tu rejoins un nouveau groupe, tu recevras un courriel pour chaque <strong>nouvelle discussion ou décision</strong>.
+      quiet_description: Quand tu  un nouveau groupe, <strong>Tu ne recevras pas de courriel pour les activités</strong>.
     edit: Modifier
     messages:
       updated: Réglages de courriel mis à jour
     learn_more: En savoir plus sur les paramètres d’e-mail…
-    mentioned_description: Lorsque quelqu'un {'@'}vous mentionne dans un commentaire, vous recevrez un e-mail de notification
-    daily_summary_description: Choisissez quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que vous n'avez pas encore vues. C'est un excellent moyen de rester informé si vous n'êtes pas un utilisateur régulier.
+    mentioned_description: Lorsque quelqu'un {'@'}te mentionne dans un commentaire, tu recevras un e-mail de notification
+    daily_summary_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
     never: Jamais
     send_email: Envoyer un courriel
   thread_preview:
@@ -1640,27 +1640,27 @@ fr:
     items_count: "%{count} articles"
   dashboard_page:
     polls_to_vote_on: Sondages sur les votes
-    no_polls_to_vote_on: Il n’y a pas de sondages sur lesquels vous devez voter
+    no_polls_to_vote_on: Il n’y a pas de sondages sur lesquels tu dois voter
     recent_polls: Sondages récents
     current_polls: Sondages actuels
     recent_threads: Discussions récentes
     no_groups:
-      show_muted: Aucune discussion ignorée car vous n’êtes membre d’aucun groupe.
-      show_all: Bienvenue ! Vous n'êtes encore membre d'aucun groupe.
+      show_muted: Aucune discussion ignorée car tu n’es membre d’aucun groupe.
+      show_all: Bienvenue ! Tu n'es encore membre d'aucun groupe.
     no_threads:
-      show_all: Vous n’avez aucune discussion récente.
+      show_all: Tu n’as aucune discussion récente.
       show_proposals: Il n’y a aucune proposition active actuellement.
-      show_muted: Vous n’avez pas de discussion ignorée.
+      show_muted: Tu n’as pas de discussion ignorée.
     load_more: Charger plus de discussions
     mark_as_read: Marquer comme lu
     dismiss: Marquer comme lue
     thread_dismissed: Discussion marquée comme lue
     thread_recalled: Discussion suivie
     explain_mute:
-      title: Vous n’avez pas encore ignoré de discussion.
-      instructions: Pour ignorer la discussion, passez la souris dessus et cliquez sur l’icône Ignorer.
-      see_muted_html: Pour voir vos discussions ignorées, cliquez sur <strong>« Ignoré »</strong>. Vous pouvez la suivre de nouveau en cliquant sur la même icône.
-      explanation_html: Le mode muet permet de masquer ou de désactiver les fils de discussion qui ne vous intéressent pas. Ce mode vous permet de ne pas les voir dans les <strong>sections Récentes</strong> ou <strong>Non lues</strong> , et de ne pas être averti de l'activité de ce fil, comme les propositions. Vous ne serez alerté que si quelqu'un <strong>mentionne votre nom ({'@'})</strong> .
+      title: Tu n’as pas encore ignoré de discussion.
+      instructions: Pour ignorer la discussion, passe la souris dessus et clique sur l’icône Ignorer.
+      see_muted_html: Pour voir tes discussions ignorées, clique sur <strong>« Ignoré »</strong>. Tu peux la suivre de nouveau en cliquant sur la même icône.
+      explanation_html: Le mode muet permet de masquer ou de désactiver les fils de discussion qui ne t'intéressent pas. Ce mode te permet de ne pas les voir dans les <strong>sections Récentes</strong> ou <strong>Non lues</strong> , et de ne pas être averti de l'activité de ce fil, comme les propositions. Tu ne seras alerté que si quelqu'un <strong>mentionne ton nom ({'@'})</strong> .
     filtering:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
@@ -1671,12 +1671,12 @@ fr:
       proposals_aria_label: Voici les discussions avec des décisions en cours
       proposals_description: Voir uniquement les discussions avec des décisions à prendre
       muted: Discussions ignorées
-      muted_aria_label: Voici les discussions que vous avez ignorées
+      muted_aria_label: Voici les discussions que tu as ignorées
       muted_description: Voir uniquement les discussions qui ont été ignorées
       all: Discussions récentes
     thread_preview:
-      you_voted: Vous avez voté %{position}
-      undecided: Vous n’avez pas pris de décision
+      you_voted: Tu as voté %{position}
+      undecided: Tu n’as pas pris de décision
     threads_from:
       group: Discussions depuis
       pinned: Discussions épinglées
@@ -1694,21 +1694,21 @@ fr:
     discussion_marked_as_unread: Discussion marquée comme non lue
     polls_to_vote_on_count: Sondages sur lesquels voter (%{count})
   threads_page:
-    no_direct_threads: Vous n'avez pas de discussion directe
-    no_invite_only_threads: Vous n'avez pas de sujets accessibles uniquement sur invitation.
-    no_direct_discussions: Vous n'avez aucune discussion directe
-    no_direct_discussions_title: Vous n'avez aucune discussion directe
+    no_direct_threads: Tu n'as pas de discussion directe
+    no_invite_only_threads: Tu n'as pas de sujets accessibles uniquement sur invitation.
+    no_direct_discussions: Tu n'as aucune discussion directe
+    no_direct_discussions_title: Tu n'as aucune discussion directe
     no_direct_discussions_helptext: Les discussions directes servent à contacter directement un autre utilisateur, en dehors du cadre d'un groupe.
   inbox_page:
-    no_threads: Woohoo ! Vous avez lu toutes les discussions de votre boîte de réception.
+    no_threads: Woohoo ! Tu as lu toutes les discussions de ta boîte de réception.
     unread_threads: Discussions non lues
     view_more: Voir plus
     no_groups:
       start: Démarrer
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
-      explanation: Vous n'avez aucune discussion non lue car vous n'êtes membre d'aucun groupe.
-    no_discussions: Hourra ! Vous avez lu toutes les discussions dans votre boîte de réception.
+      explanation: Tu n'as aucune discussion non lue car tu  membre d'aucun groupe.
+    no_discussions: Hourra ! Tu as lu toutes les discussions dans ta boîte de réception.
     unread_discussions: Discussions non lues
     recent_activity_notice: Afficher uniquement les discussions ayant fait l'objet d'une activité au cours des 6 dernières semaines.
   discussion:
@@ -1716,9 +1716,9 @@ fr:
     invite_only: Sur invitation uniquement
     private_thread: Discussion privée
     max_threads_reached: |
-      <p>Vous avez épuisé toutes les %{maxThreads} invitations disponible pour ce groupe.</p>
+      <p>Tu as épuisé toutes les %{maxThreads} invitations disponible pour ce groupe.</p>
       <p>Étape suivante, <a href="%{upgradeUrl}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
-    subscription_canceled: Votre abonnement n'est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio. %{upgradeUrl}
+    subscription_canceled: Ton abonnement n'est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio. %{upgradeUrl}
     activity: Activité
     activity_placeholder: Aucune activité pour l’instant !
     load_previous: Afficher les activités précédentes
@@ -1765,7 +1765,7 @@ fr:
   thread_arrangement_form:
     edit: Modifier la disposition
     title: Mise en page de la discussion
-    for_everyone: Cela modifiera la mise en page pour tous, pas uniquement vous.
+    for_everyone: Cela modifiera la mise en page pour tous, pas seulement toi.
     sorting: Les plus anciens ou les plus récents en premier ?
     latest: Les plus récents
     latest_description: Lisez d’abord les éléments les plus récents
@@ -1797,45 +1797,45 @@ fr:
     thread_settings: Paramètres du fil de discussion
   delete_thread_form:
     title: Supprimer la discussion
-    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
+    body: Es-tu sûr de vouloir supprimer cette discussion ?
     confirm: Supprimer la discussion
     messages:
       success: Discussion supprimée
   delete_comment_dialog:
     title: Effacer le commentaire
-    question: Cela supprimera définitivement ce commentaire. Si vous continuez, il ne peut pas être restauré.
+    question: Cela supprimera définitivement ce commentaire. Si tu continuez, il ne peut pas être restauré.
   contact_message_form:
     alt_title: Contacter le support Loomio
-    need_message: Veuillez entrer un message afin que nous puissions vous aider :-)
-    respond_asap: Envoyez un message à l'équipe Loomio et nous vous répondrons dans les plus brefs délais.
-    happy_to_help_with: Nous serons heureux de vous aider avec les demandes commerciales, les demandes d'assistance, les demandes de fonctionnalités, les rapports de bogues ou les problèmes que vous rencontrez.
-    title: Salut ! Comment puis-je vous aider ?
-    contact_us_email: 'Vous pouvez aussi nous contacter par e-mail : <a href="mailto:%{email}">%{email}</a>'
-    contact_us: Contactez-nous
-    name_label: Votre nom
-    name_placeholder: Entrez votre nom…
+    need_message: Entre un message afin que nous puissions t'aider :-)
+    respond_asap: Envoie un message à l'équipe Loomio et nous te répondrons dans les plus brefs délais.
+    happy_to_help_with: Nous serons heureux de t'aider avec les demandes commerciales, les demandes d'assistance, les demandes de fonctionnalités, les rapports de bogues ou les problèmes que tu rencontres.
+    title: Salut ! Comment puis-je t'aider ?
+    contact_us_email: 'Tu peux aussi nous contacter par e-mail : <a href="mailto:%{email}">%{email}</a>'
+    contact_us: Contacte-nous
+    name_label: Ton nom
+    name_placeholder: Entre ton nom…
     subject_label: Sujet
     subject_placeholder: 'Par exemple, problème de connexion ou suggestion de fonctionnalité
 
       '
-    email_label: Votre adresse e-mail
-    email_placeholder: Entrez votre adresse e-mail…
-    message_label: Votre message
-    message_placeholder: Si vous avez besoin d'aide, donnez autant d'information que possible s'il vous plait.
+    email_label: Ton adresse e-mail
+    email_placeholder: Entre ton adresse e-mail…
+    message_label: Ton message
+    message_placeholder: Si tu as besoin d'aide, donne autant d'information que possible s'il te plaît.
     send_message: Envoyer le Message
-    new_contact_message: Merci de nous avoir contacté, nous vous répondrons rapidement!
+    new_contact_message: Merci de nous avoir contacté, nous te répondrons rapidement!
     consent_message: |
-      En nous contactant, vous acceptez que notre équipe accède à votre compte lorsque c'est nécessaire.<br />
-      Notre équipe d'aide parle anglais et traduira votre message avec Google Traduction si nécessaire.<br />
-      Notre objectif est de répondre à tous vos messages en moins de 24 heures.
-    success: Merci pour votre message, %{name}. Nous prendrons rapidement contact.
-    success_via_email: Merci pour votre message, %{name}. Nous vous répondrons par e-mail dans les 24 heures.
+      En nous contactant, tu acceptes que notre équipe accède à ton compte lorsque c'est nécessaire.<br />
+      Notre équipe d'aide parle anglais et traduira ton message avec Google Traduction si nécessaire.<br />
+      Notre objectif est de répondre à tous tes messages en moins de 24 heures.
+    success: Merci pour ton message, %{name}. Nous prendrons rapidement contact.
+    success_via_email: Merci pour ton message, %{name}. Nous te répondrons par e-mail dans les 24 heures.
   explore_page:
     header: Explorer les groupes
     search_placeholder: Rechercher des groupes publics
     single_search_result: 1 groupe public correspond à <strong>%{searchTerm} :</strong>
     multiple_search_results: "%{resultCount} groupes publics correspondent à <strong>%{searchTerm} :</strong>"
-    no_results_found: <strong>Vous ne trouvez pas ce que vous cherchez ? </strong>Si le paramètre de confidentialité d'un groupe est  défini sur "secret", il n’apparaîtra pas ici.
+    no_results_found: <strong>Tu ne trouves pas ce que tu cherches ? </strong>Si le paramètre de confidentialité d'un groupe est  défini sur "secret", il n’apparaîtra pas ici.
     newest_first: Les plus récents en premier
     biggest_first: Du plus grand au plus petit
     order_by: Trier les groupes par
@@ -1901,7 +1901,7 @@ fr:
   poll_common:
     superseded: Remplacé
     outdated: Dépassé
-    need_help_with_templates: Besoin d'aide pour créer vos propres modèles de processus ?
+    need_help_with_templates: Besoin d'aide pour créer tes propres modèles de processus ?
     categorize_poll_templates: Catégoriser les modèles de sondage
     show_all_templates_in_one_list: Afficher tous les modèles dans une liste
     advice_process: Processus de conseil
@@ -1916,8 +1916,8 @@ fr:
     custom_process: Processus personnalisé
     custom_poll: Sondage personnalisé
     delete_poll: Supprimer le sondage
-    select_count_options: Sélectionnez les options %{count}
-    select_minimum_to_maximum_options: Sélectionnez les options %{minimum} à %{maximum}
+    select_count_options: Sélectionne les options %{count}
+    select_minimum_to_maximum_options: Sélectionne les options %{minimum} à %{maximum}
     custom_poll_types: Types de sondage personnalisés
     hidden_poll_templates: Modèles de sondage masqués
     poll_template: Modèle de sondage
@@ -1933,21 +1933,21 @@ fr:
     new_custom_poll: Nouveau sondage personnalisé
     edit_custom_poll: Modifier le sondage personnalisé
     create_a_custom_poll_type: Créer un nouveau type de sondage avec une terminologie et des paramètres personnalisés
-    create_a_custom_process: Créez un nouveau processus avec votre propre terminologie et vos propres options
+    create_a_custom_process: Crée un nouveau processus avec ta propre terminologie et tes propres options
     create_a_custom_poll: Créer un sondage avec une terminologie et des paramètres personnalisés
     decision: Décision
     decision_templates: Modèles de décision
-    remove_your_vote: Supprimer votre vote
-    remove_your_response: Supprimer votre réponse
+    remove_your_vote: Supprimer ton vote
+    remove_your_response: Supprimer ta réponse
     vote_now: Votez maintenant
     review_due: Examen dû
-    have_your_say: Prenez la parole
-    your_response: Votre réponse
+    have_your_say: Prends la parole
+    your_response: Ta réponse
     change_your_response: Modifier la réponse
-    please_vote: Veuillez de voter
+    please_vote: Vote s'il te plaît
     reason: Raison
     response: Réponse
-    reason_placeholder: Expliquez brièvement les raisons de votre vote, puis cliquez sur "Soumettre votre vote"
+    reason_placeholder: Explique brièvement les raisons de ton vote, puis cliquez sur "Soumettre ton vote"
     message: Message
     results: Résultats
     current_results: Résultats actuels
@@ -1965,11 +1965,11 @@ fr:
     change_your_stance: Modifier la réponse
     load_more: Plus
     details: Détails
-    participant_name: Votre nom
+    participant_name: Ton nom
     participant_email: Adresse e-mail
-    submit_vote: Soumettre votre vote
+    submit_vote: Soumettre ton vote
     submit_response: Soumettre la réponse
-    update_vote: Mettre à jour votre vote
+    update_vote: Mettre à jour ton vote
     update_response: Mettre à jour la réponse
     share_poll: Partager le sondage
     share_proposal: Partager la proposition
@@ -1979,8 +1979,8 @@ fr:
     share_outcome: Partager la conclusion
     view_all: Tout voir
     save_changes: Enregistrer
-    change_vote: Modifier votre vote
-    change_response: Modifier votre réponse
+    change_vote: Modifier ton vote
+    change_response: Modifier ta réponse
     max_score: Score maximum
     min_score: Score minimum
     too_long: Trop long
@@ -1988,25 +1988,25 @@ fr:
     no_voting: Pour discussion seulement, vote désactivé
     post_outcome: Publier la conclusion
     view_all_votes: Voir tous les votes
-    you_voted: Vous avez voté
-    these_are_templates: Voici les modèles de décision disponibles dans votre groupe. Cliquez sur un modèle pour démarrer une nouvelle décision. Les administrateurs peuvent personnaliser tous les détails d'un modèle afin qu'il corresponde aux pratiques de votre organisation et soit facile à trouver et à utiliser pour les membres.
+    you_voted: Tu as voté
+    these_are_templates: Voici les modèles de décision disponibles dans ton groupe. Clique sur un modèle pour démarrer une nouvelle décision. Les administrateurs peuvent personnaliser tous les détails d'un modèle afin qu'il corresponde aux pratiques de ton organisation et soit facile à trouver et à utiliser pour les membres.
     example_templates: Exemples de modèles
     example_poll_templates: Exemples de modèles de sondage
     browse_example_templates: Consultez les exemples de modèles
     browse_example_templates_hint: Créez un nouveau modèle de sondage à partir de zéro, ou utilisez un exemple pour commencer.
-    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>lancer un sondage</b> .
-    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de sondage, en utilisant l'exemple comme point de départ."
-    browse_unsure_help: Vous ne savez pas comment utiliser les modèles de sondage ?
+    browse_example_use_hint: Clique sur le titre du modèle pour <b>lancer un sondage</b> .
+    browse_example_fork_hint: "<b>Clique sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de sondage, en utilisant l'exemple comme point de départ."
+    browse_unsure_help: Tu ne sais pas comment utiliser les modèles de sondage ?
     all_templates_hidden: Tous les modèles ont été masqués.
     new_poll_template_title: Nouveau modèle de sondage
     new_template_from_blank: Nouveau modèle à partir de zéro
-    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
+    new_template_from_blank_subtitle: Crée un nouveau modèle adapté à un processus en place dans ton organisation.
     blank: Nouveau
     blank_subtitle: Créer un nouveau modèle de sondage pour un processus spécifique
     start_a_poll: Lancer un sondage
     export_blt: Bulletins d'exportation (BLT)
     status: Statut
-    your_vote_is_requested: Votre vote est demandé
+    your_vote_is_requested: Ton vote est demandé
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2021,7 +2021,7 @@ fr:
     show_results: Afficher les résultats
     hide_results: Cacher les résulats
     until_vote: Jusqu'à la fin du vote
-    until_you_vote: Jusqu'à ce que vous votiez
+    until_you_vote: Jusqu'à ce que tu votes
     until_poll_type_closed: Jusqu'à la fermeture de %{pollType}
     until_voting_is_closed: Jusqu'à la clôture des votes
     deleted: Ce sondage a été supprimé
@@ -2032,9 +2032,9 @@ fr:
     include_subgroups_mine: "%{name} et mes sous-groupes"
     include_subgroups_all: "%{name} et tous les sous-groupes"
     no_results_found: Pas de résultats pour "%{search}"
-    welcome_to_your_new_group: Bienvenue dans votre nouveau groupe Loomio !
-    lets_start_a_thread: Commençons un fil de discussion. Cliquez sur "Nouveau fil de discussion" pour continuer.
-    lets_start_a_discussion: Ouvrons la discussion. Cliquez sur « Nouvelle discussion » pour continuer.
+    welcome_to_your_new_group: Bienvenue dans ton nouveau groupe Loomio !
+    lets_start_a_thread: Commençons un fil de discussion. Clique sur "Nouveau fil de discussion" pour continuer.
+    lets_start_a_discussion: Ouvrons la discussion. Clique sur « Nouvelle discussion » pour continuer.
     new_discussion: Nouvelle discussion
     locked: Verrouillé
     unlocked: Déverrouillé
@@ -2086,13 +2086,13 @@ fr:
     filename: Nom de fichier
     uploaded_by: Ajouté par
     uploaded_at: 'Ajouté à '
-    delete_confirmation: Êtes-vous sûr de vouloir supprimer cette pièce jointe ? Elle sera supprimée de tous les commentaires et discussions liés. Cette action ne peut être annulée.
+    delete_confirmation: Es-tu sûr de vouloir supprimer cette pièce jointe ? Elle sera supprimée de tous les commentaires et discussions liés. Cette action ne peut être annulée.
   subgroups_panel:
     search_subgroups_of_name: Rechercher des sous-groupes de %{name}
     group_without_subgroups: "%{name} sans sous-groupes"
-    need_a_space_for_your_team: Besoin d'un espace de détente pour votre équipe ?
-    explainer: 'Les sous-groupes sont des lieux privés où les équipes de votre organisation peuvent discuter et prendre des décisions. Le contenu des sous-groupes est privé du reste de l’organisation. Exemples de sous-groupes : Conseil d''administration, décisions d''embauche ou équipe de projet'
-    upgrade: Pour créer un sous-groupe, vous devrez <a class="text-decoration-underline" href="%{url}" target="_blank">mettre à niveau votre abonnement Loomio.</a>
+    need_a_space_for_your_team: Besoin d'un espace de détente pour ton équipe ?
+    explainer: 'Les sous-groupes sont des lieux privés où les équipes de ton organisation peuvent discuter et prendre des décisions. Le contenu des sous-groupes est privé du reste de l’organisation. Exemples de sous-groupes : Conseil d''administration, décisions d''embauche ou équipe de projet'
+    upgrade: Pour créer un sous-groupe, tu devras <a class="text-decoration-underline" href="%{url}" target="_blank">mettre à niveau ton abonnement Loomio.</a>
   poll_common_action_panel:
     from_the_thread: À partir du modèle de thread
     from_the_group: Du groupe
@@ -2105,13 +2105,13 @@ fr:
     basic_templates: Modèles de base
     anonymous: Les votes sont anonymes
     results_hidden_until_closed: Les résultats seront affichés après la fin du vote
-    results_hidden_until_vote: Les résultats seront affichés après votre vote
+    results_hidden_until_vote: Les résultats seront affichés après ton vote
     draft_mode: Vote désactivé. Ce n’est pas encore ouvert au vote.
     voting_disabled_poll_is_template: Vote désactivé. Il s’agit d’un modèle.
     for_this_proposal_to_pass: 'Pour que cette proposition soit adoptée :'
     for_this_poll_type_to_be_valid: 'Pour que ce %{poll_type} soit valide :'
     voting_opens_at: Ce %{poll_type} ouvre au vote %{time}
-    unable_to_vote: Vous n'avez pas été invité à voter sur ce %{poll_type}
+    unable_to_vote: Tu n'as pas été invité à voter sur ce %{poll_type}
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2121,14 +2121,14 @@ fr:
     helptext_off: Aucune invitation à la réunion ne sera envoyée
     event_duration: Durée
     event_summary: Titre de la réunion
-    event_summary_placeholder: " Vers où voudriez-vous déplacer cette discussion ? "
+    event_summary_placeholder: " Vers où voudriez-tu déplaces cette discussion ? "
     event_description: Description de la réunion
     event_description_placeholder: Quel agenda pour cette réunion
     location: Lieu
     location_placeholder: Où se déroulera cette réunion ?
   poll_common_close_form:
     title: Fermer %{poll_type} maintenant?
-    helptext: Etes-vous sûr de vouloir clôturer ce %{poll_type} tôt et partager un résultat ?
+    helptext: Es-tu sûr de vouloir clôturer ce %{poll_type} tôt et partager un résultat ?
     close_poll_type: Ferme %{poll_type}
     poll_type_closed: "%{poll_type} est terminé"
   poll_common_reopen_form:
@@ -2145,7 +2145,7 @@ fr:
     past_tense: Vote désactivé
     draft_mode: Mode Brouillon
     disable_voting_during_development: Ce %{poll_type} n’est pas prêt à être voté
-    helptext: Il s’agit %{poll_type} d’un travail en cours. Vous pouvez activer le vote ultérieurement.
+    helptext: Il s’agit %{poll_type} d’un travail en cours. Tu peux activer le vote ultérieurement.
     voting_open: Vote ouvert
     this_is_ready_for_voting: ce %{poll_type} est prêt à être voté
   poll_common_closing_at_field:
@@ -2183,34 +2183,34 @@ fr:
   poll_common_set_outcome_panel:
     enter_outcome: Saisir une conclusion
     poll_type: Ce %{poll_type} est fermé. Prenez le temps d’examiner les résultats, puis partagez la conclusion afin que les gens sachent ce qui se passera ensuite.
-    enter_an_outcome: Entrez une conclusion
+    enter_an_outcome: Entre une conclusion
   poll_common_outcome_form:
     review_due_in_days: Revoir la décision après combien de jours ?
     review_date: Date de révision
     review_date_hint: Fixer la date du rappel pour examiner les résultats (facultatif)
-    who_to_notify: Qui voulez-vous informer de cette conclusion ?
+    who_to_notify: Qui veux-tu informer de cette conclusion ?
     outcome_statement_template: Modèle de déclaration de conclusion
     new_title: Saisir une conclusion
     update_title: Mettre à jour la conclusion
     outcome_created: Conclusion créée
     outcome_updated: Conclusion mise à jour
     statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
-    you_will_be_notified: Vous serez alerté à la date de revue
+    you_will_be_notified: Tu seras alerté à la date de revue
     submit: Partager la conclusion
     review_due_in_days_hint: Nombre de jours à attendre avant de réviser la décision (facultatif).
     statement_template_hint: Fournir un modèle pour rédiger la conclusion de la décision. (facultatif)
-    statement_template_placeholder: Merci de votre participation ! Le quorum a été atteint et nous avons le soutien nécessaire pour continuer.
+    statement_template_placeholder: Merci de ta participation ! Le quorum a été atteint et nous avons le soutien nécessaire pour continuer.
   poll_common_outcome_panel:
     authored_by: Par %{name}
   poll_common_delete_modal:
-    question: Êtes-vous sûr·e de vouloir supprimer cela ?
+    question: Es-tu sûr·e de vouloir supprimer cela ?
     title: Effacer %{pollType}
     success: Supprimer avec succès
   poll_proposal_form:
     start_header: Faire une proposition
     edit_header: Modifier la proposition
     title_placeholder: Par exemple « Allons sur la lune! »
-    details_placeholder: Quels sont les détails de votre proposition?
+    details_placeholder: Quels sont les détails de ta proposition?
     proposal_created: Proposition démarrée
     proposal_updated: Proposition mise à jour
   record_modal:
@@ -2224,17 +2224,17 @@ fr:
     watch_video: Regarder la vidéo
     audio_transcript: Transcription audio : %{text}
     why_type_when_you_can_talk: Pourquoi taper quand on peut parler ? Envoyer un enregistrement vocal
-    transcript_included: Une transcription de l'enregistrement sera annexée à votre message
+    transcript_included: Une transcription de l'enregistrement sera annexée à ton message
   poll_poll_form:
     multiple_choice_subtitle: Un moyen simple d’évaluer la popularité des options
     start_header: Démarrer le sondage
     edit_header: Éditer le sondage
     tip: Offrir le choix entre différentes options
-    title_placeholder: Par exemple « Où voulez-vous aller en vacances ? »
+    title_placeholder: Par exemple « Où veux-tu aller en vacances ? »
     details_placeholder: Partagez toutes les informations utiles pour répondre à la question
     add_option_placeholder: Ajouter une option
     new_option: Nouvelle option
-    add_option_hint: Entrez un nom court pour l’option
+    add_option_hint: Entre un nom court pour l’option
     remove_option: Retirer une option
     poll_created: Sondage créé
     poll_updated: Sondage mis à jour
@@ -2245,18 +2245,18 @@ fr:
     dots_per_person_helptext: Le nombre total de points que chaque personne doit attribuer
   poll_meeting_form:
     timeslots: Créneaux horaires
-    no_options: Saisissez les horaires dans votre fuseau horaire (%{zone}). Les participants verront ces horaires traduits dans leur fuseau horaire.
+    no_options: Saisis les horaires dans ton fuseau horaire (%{zone}). Les participants verront ces horaires traduits dans leur fuseau horaire.
     meeting_duration: Durée de la réunion
     add_option_placeholder: Ajouter un nouvel horaire
     time_slot_added: Créneau horaire ajouté
     time_slot_already_added: Créneau horaire déjà ajouté
     participants_see_local_times: Les participants verront les heures localisées à leur fuseau horaire
-    use_24_hour_format: Erreur! Utilisez le format 24 heures, par exemple %{time}
+    use_24_hour_format: Erreur! Utilise le format 24 heures, par exemple %{time}
   poll_ranked_choice_form:
-    no_options: Vous n’avez pas encore ajouté d’options.
-    add_option_placeholder: Saisissez un nouveau choix
+    no_options: Tu n’as pas encore ajouté d’options.
+    add_option_placeholder: Saisis un nouveau choix
     minimum_stance_choices: Options à classer
-    minimum_stance_choices_hint: c’est-à-dire classez vos 3 meilleures saveurs de crème glacée
+    minimum_stance_choices_hint: c’est-à-dire classe tes 3 meilleures saveurs de crème glacée
     ranked_choice_created: Classement par préférence créé
     ranked_choice_updated: Classement par préférence mis à jour
     rank: Classer
@@ -2275,16 +2275,16 @@ fr:
     new_time_slot: Nouveau créneau horaire
     closing_hour: Heure de fin
   poll_proposal_vote_form:
-    default_reason_placeholder: Veuillez expliquer votre raisonnement
-    abstain_reason_placeholder: Expliquez aux gens pourquoi vous vous abstenez
-    agree_reason_placeholder: Qu’aimez-vous dans cette proposition et comment va-t-elle bénéficier au groupe ?
-    disagree_reason_placeholder: Comment cette proposition pourrait être améliorée pour que vous puissiez la soutenir ?
-    block_reason_placeholder: Expliquez vos objections et pourquoi cette proposition ne devrait pas être soutenue
+    default_reason_placeholder: Explique ta raison
+    abstain_reason_placeholder: Explique aux gens pourquoi tu t'abstiens
+    agree_reason_placeholder: Qu’aimes-tu dans cette proposition et comment va-t-elle bénéficier au groupe ?
+    disagree_reason_placeholder: Comment cette proposition pourrait être améliorée pour que tu puisses la soutenir ?
+    block_reason_placeholder: Explique tes objections et pourquoi cette proposition ne devrait pas être soutenue
     stance_created: Vote créé
     stance_updated: Vote mis à jour
     vote: Vote
   poll_proposal_options:
-    select_an_option: Sélectionnez une option
+    select_an_option: Sélectionne une option
     'yes': Oui
     'no': Non
     agree: D’accord
@@ -2298,7 +2298,7 @@ fr:
     no_voting: 'Pas de vote '
   poll_count_form:
     pct_of_target: "% de l’objectif"
-    agree_target_helptext: Quel est le nombre cible de bénévoles que vous aimeriez avoir?
+    agree_target_helptext: Quel est le nombre cible de bénévoles que tu aimerais avoir?
     agree_target_label: Nombre cible
   poll_count_options:
     accept: Accepter
@@ -2316,8 +2316,8 @@ fr:
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
-    title: Supprimer votre vote?
-    helptext: Êtes-vous sûr de vouloir supprimer votre vote? Vous serez inscrit comme indécis et pourrez voter à nouveau plus tard si vous le souhaitez.
+    title: Supprimer ton vote?
+    helptext: Es-tu sûr de vouloir supprimer ton vote? Tu seras inscrit comme indécis et pourrez voter à nouveau plus tard si tu  souhaitez.
     confirm: Supprimer vote
     success: Vote supprimé
   poll_poll_vote_form:
@@ -2331,17 +2331,17 @@ fr:
     can_attend: Disponible
     unable: Indisponible
     if_need_be: Disponible si besoin
-    your_response: Quand êtes-vous disponible ?
+    your_response: Quand es-tu disponible ?
     stance_created: Disponibilité enregistrée
     stance_updated: Disponibilité mise à jour
-    reason_placeholder: Expliquez quand vous êtes libre (ou occupé), dans le cas où l’auteur veut ajouter des options.
+    reason_placeholder: Explique quand tu es libre (ou occupé), dans le cas où l’auteur veut ajouter des options.
   poll_dot_vote_vote_form:
     dots_remaining: "%{count} points restants"
-    too_many_dots: Vous avez utilisé trop de points
+    too_many_dots: Tu as utilisé trop de points
     stance_created: Vote créé
     stance_updated: Vote mis à jour
   poll_ranked_choice_vote_form:
-    helptext: Glissez et déposez les options par ordre décroissant de préférence (en premier, votre option préférée, en dernier celle que vous préférez le moins). Vos %{count} premiers choix seront enregistrés.
+    helptext: Glisse et dépose les options par ordre décroissant de préférence (en premier, ton option préférée, en dernier celle que tu préfères le moins). Tes %{count} premiers choix seront enregistrés.
     stance_created: Choix enregistré
     stance_updated: Choix mis à jour
   thread_item:
@@ -2375,63 +2375,63 @@ fr:
     success: "%{pollType} ajouté à la discussion avec succès !"
   auth_form:
     code: '000000'
-    youre_invited: Vous avez été invité à rejoindre le groupe %{group_name}.
-    youre_invited_discussion: Vous avez été invité à rejoindre la discussion.
-    youre_invited_poll: Vous avez été invité à voter.
-    existing_account_can_sign_in: Si vous êtes déjà un utilisateur %{site_name}, connectez-vous avec votre compte existant
-    sign_up_or_log_in: Créer un compte ou vous connecter à %{site_name}
-    sign_in_to_loomio: Connectez-vous à %{site_name}
-    sign_in_help: Vous rencontrez des difficultés pour vous connecter ?
+    youre_invited: Tu as été invité à rejoindre le groupe %{group_name}.
+    youre_invited_discussion: Tu as été invité à rejoindre la discussion.
+    youre_invited_poll: Tu as été invité à voter.
+    existing_account_can_sign_in: Si tu êtes déjà un utilisateur %{site_name}, connectez-tu  ton compte existant
+    sign_up_or_log_in: Créer un compte ou te connecter à %{site_name}
+    sign_in_to_loomio: Connecte-toi à %{site_name}
+    sign_in_help: Tu rencontres des difficultés pour tu  ?
     sign_in: Se connecter
     continue: Continuer
     create_account: Créez un compte
     sign_up_as: Créer un compte en tant que %{email}
     sign_in_as: Se connecter comme  %{name}
     continue_with_provider: Continuer avec %{provider}
-    continue_with_email: Connectez-vous avec votre adresse mail
-    or_enter_your_email: Ou saisir votre adresse e-mail
-    enter_your_name: Entrez votre nom
-    invitation_required: Vous avez besoin d’une invitation pour créer un compte.  Suivez le lien de votre e-mail d’invitation pour continuer.
+    continue_with_email: Connecte-toi avec ton adresse mail
+    or_enter_your_email: Ou saisir ton adresse e-mail
+    enter_your_name: Entre ton nom
+    invitation_required: Tu as besoin d’une invitation pour créer un compte.  Suivez le lien de ton e-mail d’invitation pour continuer.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
     invalid_email: Désolé, ça ne semble pas être une adresse e-mail valide.
     invalid_password: Désolé, le mot de passe n’est pas le même que celui enregistré.
-    invalid_token: Désolé, nous n’avons pas pu vous authentifier grâce à ce lien. Cliquez ci-dessous pour en recevoir un nouveau.
-    account_locked: Votre compte a été bloqué suite à de nombreuses tentatives de connexion. Vérifiez vos courriels pour obtenir le lien de déblocage.
+    invalid_token: Désolé, nous n’avons pas pu t'authentifier grâce à ce lien. Clique ci-dessous pour en recevoir un nouveau.
+    account_locked: Ton compte a été bloqué suite à de nombreuses tentatives de connexion. Vérifie tes courriels pour obtenir le lien de déblocage.
     email_not_found: Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail.
     email_taken: 'L''adresse e-mail existe déjà '
-    login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
-    login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
-    enter_your_password: Saisissez votre mot de passe pour continuer
-    check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
+    login_with_token: Tu es prêt·e ! Clique sur le lien ci-dessous pour continuer.
+    login_link_helptext: Clique sur le bouton ci-dessous et nous t'enverrons un lien pour te connecter.
+    enter_your_password: Saisis ton mot de passe pour continuer
+    check_spam_folder: Si tu ne reçois pas l'e-mail, vérifie le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept_all: J’accepte les %{termsLink} et %{privacyLink}
     newsletter_label: Je veux recevoir le %{link}
-    name_placeholder: Votre nom
-    name_required: Entrez un nom
-    terms_required: Vous devez accepter les Conditions d'utilisation
+    name_placeholder: Ton nom
+    name_required: Entre un nom
+    terms_required: Tu dois accepter les Conditions d'utilisation
     account_inactive: Oups, on dirait que le compte utilisateur lié à %{email} a été désactivé !
-    privacy_notice: Nous ne vendrons jamais vos données. <br><a href='%{privacyUrl}' target='_blank'> Politique de confidentialité</a>
+    privacy_notice: Nous ne vendrons jamais tes données. <br><a href='%{privacyUrl}' target='_blank'> Politique de confidentialité</a>
     welcome: Nouveau sur %{siteName} ?
-    welcome_back: Content de vous revoir, %{name} !
+    welcome_back: Content de te revoir, %{name} !
     forgot_password: Mot de passe oublié
     login_link: Envoyer l'adresse mail d'inscription
     sign_in_via_email: Se connecter avec une adresse email
     set_password: Définir un mot de passe
-    set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
+    set_password_helptext: Tu souhaites un mot de passe pour la prochaine fois ?
     hello: Bonjour, %{name} !
     new_to_loomio: Première fois sur %{site_name} ?
-    already_a_user: Vous avez déjà un compte ?
-    email_address_of_existing_account: Entrez l'adresse e-mail de votre compte existant
+    already_a_user: Tu as déjà un compte ?
+    email_address_of_existing_account: Entre l'adresse e-mail de ton compte existant
     link_accounts: Comptes associés
-    check_your_email: Vérifier votre e-mail !
+    check_your_email: Vérifier ton e-mail !
     login_link_sent: Ok, nous avons envoyé un message à %{email}.
-    instructions: 'Cliquez sur le lien pour vous connecter, ou entrez le code ci-dessous:'
-    instructions_code: 'Entrez le code de cet e-mail :'
-    too_many_attempts: Trop de tentatives; essayez de cliquer sur le lien dans l’e-mail pour vous connecter.
-    invalid_code: Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau.
-    password_link_sent: Nous avons envoyé un courriel à %{email} avec les instructions pour définir votre mot de passe.
-    reactivate_link_sent: Nous vous avons envoyé un mail avec des instructions pour réactiver votre compte
+    instructions: 'Clique sur le lien pour te connecter, ou entre le code ci-dessous:'
+    instructions_code: 'Entre le code de cet e-mail :'
+    too_many_attempts: Trop de tentatives; essaie de cliquer sur le lien dans l’e-mail pour te connecter.
+    invalid_code: Désolé, le code ne correspond pas. Vérifie le courriel et essaie de nouveau.
+    password_link_sent: Nous avons envoyé un courriel à %{email} avec les instructions pour définir ton mot de passe.
+    reactivate_link_sent: Nous t'avons envoyé un mail avec des instructions pour réactiver ton compte
     signed_in: Connexion réussie
     signed_out: Déconnexion réussie
     email_verified: La vérification par courriel a réussi
@@ -2439,15 +2439,15 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
-    want_to_set_password: Vous souhaitez vous connecter avec un mot de passe la prochaine fois ?
-    change_your_password: Souhaitez-vous définir un nouveau mot de passe ?
-    email_placeholder: vous{'@'}exemple.com
+    want_to_set_password: Tu souhaites tu  avec un mot de passe la prochaine fois ?
+    change_your_password: Souhaites-tu définir un nouveau mot de passe ?
+    email_placeholder: tu{'@'}exemple.com
     turnstile_required: Veuillez effectuer la vérification avant de continuer.
-    invalid_login: Impossible de vous connecter avec ces informations.
+    invalid_login: Impossible de te connecter avec ces informations.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion
-    test_connection_ok: Ça a l’air bien! Vous devriez voir un message dans le canal
+    test_connection_ok: Ça a l’air bien! Tu devrais voir un message dans le canal
     test_connection_bad: Quelque chose ne va pas avec les paramètres
     name: Le prénom de Chatbot!
     connection_test_successful: Test de connexion de bot Loomio réussi!
@@ -2466,9 +2466,9 @@ fr:
     discord: Discord
     mattermost: Ce qui compte le plus
     microsoft_teams: Microsoft Teams
-    event_kind_helptext: Sélectionnez les événements dont le bot sera toujours informé. Si vous n’êtes pas sûr, laissez-les tous de côté.
+    event_kind_helptext: Sélectionne les événements dont le bot sera toujours informé. Si tu n’êtes pas sûr, laissez-les tous de côté.
     notification_only_label: Envoyer le titre de notification uniquement
-    check_for_test_message: Vérifiez votre salon de discussion pour un message du bot!
+    check_for_test_message: Vérifie ton salon de discussion pour un message du bot!
     webex: Webex
   webhook:
     integrations: Integrations
@@ -2484,25 +2484,25 @@ fr:
       microsoft: Microsoft Teams
       slack: Slack
       discord: Discord
-    subtitle: Connectez-vous à Loomio au reste de vos outils avec notre API
-    deprecated: Cette API est obsolète. Veuillez passer à APIv2 (voir la documentation API dans le menu des paramètres de votre groupe)
-    we_have_guides: 'Lisez notre <a href="%{url}" target="_blank">guide de configuration webhook</a> pour connecter votre propre service.
+    subtitle: Connecte-toi à Loomio au reste de tes outils avec notre API
+    deprecated: Cette API est obsolète. Passe à APIv2 (voir la documentation API dans le menu des paramètres de ton groupe)
+    we_have_guides: 'Lis notre <a href="%{url}" target="_blank">guide de configuration webhook</a> pour connecter ton propre service.
 
       '
     add_webhook: Ajouter un webhook
     show_docs: Voir l'utilisation de l'API
-    save_to_show_docs: Après avoir enregistré, revenez ici pour trouver votre clé API
+    save_to_show_docs: Après avoir enregistré, reviens ici pour trouver ta clé API
     edit_integration: Modifier l'intégration
     add_integration: Ajouter une intégration
     success: 'Intégration ajoutée ! '
     remove: Retirer cette intégration
-    confirm_remove: 'Êtes-vous sûr de vouloir retirer l''intégration: %{name} ?'
+    confirm_remove: 'Es-tu sûr de vouloir retirer l''intégration: %{name} ?'
     removed: Intégration retirée
     url_label: L'URL webhook
     url_placeholder: https://hooks.example.com/...
     name_label: Nom
     name_placeholder: Donnez un nom à cette intégration de manière à pouvoir l'identifier
-    event_kind_helptext: De quels événements souhaitez-vous que le webhook soit notifié ?
+    event_kind_helptext: De quels événements souhaites-tu que le webhook soit notifié ?
     event_kinds:
       poll_edited: Un sondage a été modifié
       new_comment: Un commentaire a été ajouté
@@ -2528,14 +2528,14 @@ fr:
       manage_memberships: gérer les appartenances (ajouter ou supprimer des membres du groupe)
     include_body_label: Inclure le corps du message dans la notification
   powered_by:
-    this_is_loomio_md: Loomio est une application pour prendre des décisions ensemble. [Essayez gratuitement] (https://www.loomio.com)
+    this_is_loomio_md: Loomio est une application pour prendre des décisions ensemble. [Essaie gratuitement] (https://www.loomio.com)
     slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio
     privacy_policy: Politique de confidentialité
     terms_of_service: Conditions d'utilisation
     front_page: Première page
   group_survey:
-    describe_other: Quelle catégorie donneriez-vous à votre groupe ?
+    describe_other: Quelle catégorie donnerais-tu à ton groupe ?
     categories:
       party: Parti politique
       coop: Cooperative
@@ -2573,52 +2573,52 @@ fr:
     discussions_with_polls: Discussions avec sondages
     download_csv: Télécharger le fichier CSV
   tips:
-    youve_completed_all_the_steps: "\U0001F389 Vous avez terminé toutes les étapes !"
+    youve_completed_all_the_steps: "\U0001F389 Tu as terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage
-    complete_these_steps_to_set_up_your_group: Suivez ces étapes pour configurer votre groupe
+    complete_these_steps_to_set_up_your_group: Suis ces étapes pour configurer ton groupe
     hide:
       title: Masquer ces conseils
       hide_onboarding: Masquer les conseils d'intégration
       unhide_onboarding: Afficher les conseils d'intégration
-      helptext: "<p>Cela supprimera la « Liste de contrôle de démarrage » de la barre de titre.</p><p> Si vous souhaitez le réactiver ultérieurement, vous pouvez <b>afficher les conseils d'intégration</b> à partir des paramètres de la barre latérale</p>"
+      helptext: "<p>Cela supprimera la « Liste de contrôle de démarrage » de la barre de titre.</p><p> Si tu souhaites le réactiver ultérieurement, tu peux <b>afficher les conseils d'intégration</b> à partir des paramètres de la barre latérale</p>"
     intro:
-      tip_title: Cliquez ici pour commencer
-      title: Bienvenue dans votre nouveau groupe Loomio !
-      body: "<p>Cette courte série de petites étapes est conçue pour garantir que les personnes que vous invitez à rejoindre le groupe auront une bonne première impression et comprendront comment participer aux discussions et aux décisions.</p><p> Dans la barre latérale, vous trouverez un bouton « Contacter l'assistance ». N'hésitez pas à nous contacter si vous avez des questions ou besoin de conseils.</p>"
+      tip_title: Clique ici pour commencer
+      title: Bienvenue dans ton nouveau groupe Loomio !
+      body: "<p>Cette courte série de petites étapes est conçue pour garantir que les personnes que tu invites à rejoindre le groupe auront une bonne première impression et comprendront comment participer aux discussions et aux décisions.</p><p> Dans la barre latérale, te trouverez un bouton « Contacter l'assistance ». N'hésitez pas à nous contacter si tu as des questions ou besoin de conseils.</p>"
       submit: Commençons
     group:
       welcome_and_faq: Bienvenue ! Lisez ceci pour commencer.
       upload_image:
-        title: Complétez votre profil de groupe
-        helptext: "<p>Examinons le profil de votre groupe. Le nom, la description, le logo et l'image de couverture seront inclus dans les e-mails d'invitation que vous enverrez ultérieurement.</p><p> <b>Ajoutez votre propre image de couverture de groupe</b> , cela aide à faire une bonne première impression auprès des personnes que vous invitez à vous joindre.</p><p> Vous pouvez utiliser une photo d’équipe récente ou une image qui représente le travail ou la communauté de votre organisation.</p>"
+        title: Complète ton profil de groupe
+        helptext: "<p>Examinons le profil de ton groupe. Le nom, la description, le logo et l'image de couverture seront inclus dans les e-mails d'invitation que tu enverras ultérieurement.</p><p> <b>Ajoute ta propre image de couverture de groupe</b> , cela aide à faire une bonne première impression auprès des personnes que tu invites à te rejoindre.</p><p> Tu peux utiliser une photo d’équipe récente ou une image qui représente le travail ou la communauté de ton organisation.</p>"
         open_group_settings: Ouvrir les paramètres du groupe
       invite_people:
         title: Inviter des personnes au groupe
       start_a_thread:
         title: Démarrer un fil de discussion
-        helptext: "<p>Créez un fil de discussion que les gens verront après avoir accepté leur invitation.</p><p> L’intention est d’encourager les gens à écrire leur premier commentaire dans Loomio.</p><p> Pour vous faciliter la tâche, nous avons fourni un modèle <b>de fil d'entraînement</b> que vous pouvez utiliser.</p>"
+        helptext: "<p>Crée un fil de discussion que les gens verront après avoir accepté leur invitation.</p><p> L’intention est d’encourager les gens à écrire leur premier commentaire dans Loomio.</p><p> Pour te faciliter la tâche, nous avons fourni un modèle <b>de fil d'entraînement</b> que tu peux utiliser.</p>"
         submit: Voir les modèles de fils de discussion
       start_a_proposal:
         title: Démarrer une proposition
-        helptext: "<p>Dans Loomio, nous utilisons des propositions pour révéler le soutien à une décision ou trouver des moyens de l'améliorer.</p><p> Commençons par une proposition et demandons aux membres de votre groupe de voter dessus.</p><p> Nous avons créé un modèle <b>de proposition de pratique</b> que vous pouvez utiliser.</p>"
+        helptext: "<p>Dans Loomio, nous utilisons des propositions pour révéler le soutien à une décision ou trouver des moyens de l'améliorer.</p><p> Commençons par une proposition et demandons aux membres de ton groupe de voter dessus.</p><p> Nous avons créé un modèle <b>de proposition de pratique</b> que tu peux utiliser.</p>"
         submit: Voir les modèles de propositions
       share_an_outcome:
         title: Partager la conclusion d'une proposition
-        helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> La conclusion est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez la conclusion</b> de votre proposition.</p>"
+        helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et tu seras informé(e) des résultats de la proposition.</p><p> La conclusion est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de ta proposition n'est pas encore passée, mais que tu souhaites quand même continuer, tu peux cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez la conclusion</b> de ta proposition.</p>"
         submit: Voir la proposition
         cancel: Fais-le plus tard
       start_a_discussion:
         title: Lancer une discussion
-        helptext: "<p>Créez une discussion que les gens verront après avoir accepté leur invitation.</p><p> L'objectif est d'encourager les utilisateurs à écrire leur premier commentaire sur Loomio.</p><p> Pour vous faciliter la tâche, nous avons mis à votre disposition un modèle <b>de discussion pratique</b> que vous pouvez utiliser.</p>"
+        helptext: "<p>Crée une discussion que les gens verront après avoir accepté leur invitation.</p><p> L'objectif est d'encourager les utilisateurs à écrire leur premier commentaire sur Loomio.</p><p> Pour te faciliter la tâche, nous avons mis à ton disposition un modèle <b>de discussion pratique</b> que tu peux utiliser.</p>"
         submit: Consultez les modèles de discussion
     get_started_here: Commencez ici
-    try_loomio_with_your_group: Essayez Loomio avec votre groupe
+    try_loomio_with_your_group: Essaie Loomio avec ton groupe
   poll_common_settings:
     who_can_vote: Qui peut voter ?
     specified_voters_only_true: Personnes invitées uniquement
     specified_voters_only_false_group: Quelqu'un dans le groupe
     specified_voters_only_false_discussion: Toute personne dans le fil
-    invite_people_next: Vous pouvez choisir qui est invité à voter après avoir démarré le %{poll_type}
+    invite_people_next: Tu peux choisir qui est invité à voter après avoir démarré le %{poll_type}
     show_none_of_the_above: Inclure une option « Aucune des réponses ci-dessus »
     show_options_in_random_order: Afficher les options dans un ordre aléatoire
     reduce_bias_by_showing_options_in_random_order: Réduisez les biais en affichant les options dans un ordre aléatoire.
@@ -2639,7 +2639,7 @@ fr:
       voters: Tous les électeurs
     notify_on_participate:
       title: Prévenez-moi lorsque des personnes participent
-      helptext_on: Une fois sélectionné, vous serez averti chaque fois que quelqu'un participera.
+      helptext_on: Une fois sélectionné, tu seras averti chaque fois que quelqu'un participera.
     anonymous:
       title: Électeurs anonymes
       helptext_on: Lorsque cette option est sélectionnée, les informations sur les participants ne seront pas affichées avec chaque réponse.
@@ -2662,11 +2662,11 @@ fr:
     quorum_placeholder: Laissez vide ou entrez un nombre compris entre 0 et 100
     deadline: Date limite
     notify_everyone_when_poll_starts: Avertir tout le monde lorsque %{poll_type} démarre
-    option_has_votes_confirm_delete: Certaines personnes ont voté pour cette option, êtes-vous sûr de vouloir la supprimer ?
+    option_has_votes_confirm_delete: Certaines personnes ont voté pour cette option, es-tu sûr de vouloir la supprimer ?
     example_title: Exemple de titre
     example_title_hint: Donnez un exemple d’un bon titre de proposition
     example_details_placeholder: Fournissez un point de départ pour une proposition ou un sondage. Les questions peuvent être des pistes d'inspiration utiles pour inciter les participants à écrire. Incluez les règles et les rappels que les participants devront connaître.
-    confirm_delete: Êtes-vous sûr de vouloir supprimer ce modèle de sondage ? Cette action est irréversible.
+    confirm_delete: Es-tu sûr de vouloir supprimer ce modèle de sondage ? Cette action est irréversible.
     advanced_settings: Paramètres avancés
     show_advanced_settings: Afficher les paramètres avancés
     hide_advanced_settings: Masquer les paramètres avancés
@@ -2689,7 +2689,7 @@ fr:
     none_of_the_above: Aucune des réponses ci-dessus
     voting_methods:
       question: Tour de questions
-      question_hint: Invitez des questions et des commentaires sur votre proposition
+      question_hint: Invite des questions et des commentaires sur ta proposition
       show_thumbs: Montrer les pouces
       show_thumbs_hint: Les électeurs choisissent le pouce vers le haut, vers le bas, sur le côté ou la main levée
       choose: Choisir
@@ -2717,14 +2717,14 @@ fr:
     you_can_set_a_prompt_per_option: Modifiez l'invite pour chaque option à partir de l'onglet Détails
     chart_type: Type de graphique
     title: Titre
-    title_hint: Quelle décision devez-vous prendre ?
+    title_hint: Quelle décision dois-tu prendre ?
     no_options_add_some: Ce sondage n'a pas d'options, ajoutez-en ci-dessous.
     details: Détails
     example_details: Détails de l'exemple
-    details_placeholder: C'est votre opportunité d'expliquer sur quoi les gens votent.
+    details_placeholder: C'est ton opportunité d'expliquer sur quoi les gens votent.
     options: Options
     options_placeholder: Énumérez les options disponibles
-    no_options: Vous n'avez pas encore ajouté d'options.
+    no_options: Tu n'as pas encore ajouté d'options.
     closing: Clôture
     closed: Fermé
     start: Commencer
@@ -2733,7 +2733,7 @@ fr:
     stance_reason_required: Requis
     stance_reason_optional: Facultatif
     stance_reason_disabled: Désactivé
-    stance_reason_is_required: Veuillez fournir une raison à votre vote
+    stance_reason_is_required: Fournir une raison à ton vote
     limit_reason_length: Limiter la raison à 500 caractères maximum
     save_poll: Enregistrer le sondage
     start_poll_type: Démarrer %{poll_type}
@@ -2741,7 +2741,7 @@ fr:
     update: Mise à jour
     add_voters: Ajouter des électeurs
     notify_invitees: Envoyer des notifications
-    no_notifications_warning: Les électeurs ne seront pas informés. Ceci est utile si vous organisez de nombreux sondages et prévoyez d'informer tout le monde ultérieurement.
+    no_notifications_warning: Les électeurs ne seront pas informés. Ceci est utile si tu organises de nombreux sondages et prévoyez d'informer tout le monde ultérieurement.
     count_voters_added: "%{count} électeurs ajoutés"
     poll_type_created: "%{poll_type} créé"
     poll_type_started: "%{poll_type} a commencé"
@@ -2751,13 +2751,13 @@ fr:
     anonymous_voting: Vote anonyme
     votes_are_anonymous: Les votes sont anonymes
     vote_reason: Raison du vote
-    quorum_tip_vote_share_requirement: 'Conseil : Vous pouvez également préciser le niveau d''accord requis pour l''adoption d''une proposition. Modifiez une option pour définir la répartition des voix requise.'
-    how_much_time_to_vote: Combien de temps allez-vous donner aux gens pour voter ?
+    quorum_tip_vote_share_requirement: 'Conseil : Tu peux également préciser le niveau d''accord requis pour l''adoption d''une proposition. Modifiez une option pour définir la répartition des voix requise.'
+    how_much_time_to_vote: Combien de temps vas-tu donner aux gens pour voter ?
     default_duration_in_days_hint: Combien de jours les gens auront-ils pour voter ?
     define_minimum_and_maxmimum_score: Définir les scores minimum et maximum qu'un électeur peut donner à une option
     how_many_points_does_each_voter_have_to_allocate: Combien de points chaque électeur doit-il attribuer ?
     vote_reason_description: Demandez aux gens de partager leurs raisons lorsqu’ils votent ou de fournir des informations supplémentaires.
-    hide_results_description: Si vous souhaitez que les gens votent sans voir comment les autres ont voté, vous pouvez masquer les résultats.
+    hide_results_description: Si tu souhaitez que les gens votent sans voir comment les autres ont voté, te pouvez masquer les résultats.
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.
     reminder_helptext: Envoyez une notification « Clôture prochaine » 24 heures avant la date limite. Cela peut stimuler la participation et donner l'occasion aux participants de reconsidérer leur position.
     anonymous_voting_description: Afficher les votes et leurs motifs, mais pas l'identité des votants. Ceci ne peut plus être modifié une fois le sondage %{poll_type} lancé.
@@ -2770,7 +2770,7 @@ fr:
     who_may_vote: Qui peut voter sur ce %{poll_type} ?
   poll_receipts_page:
     verify_participants: Vérifier les participants
-    see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, vous verrez qui a voté.
+    see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, tu verras qui a voté.
     voter_name: Nom de l'électeur
     voter_email: Courriel des électeurs
     vote_cast: Vote exprimé
@@ -2783,7 +2783,7 @@ fr:
   discussion_template:
     browse_public_templates: Parcourez la galerie de modèles
     discussion_template_saved: Modèle de discussion enregistré
-    these_are_public_templates: Ces modèles sont à votre disposition pour que vous puissiez les copier ou les modifier selon les besoins de votre groupe.
+    these_are_public_templates: Ces modèles sont à ta disposition pour que tu puisses les copier ou les modifier selon les besoins de ton groupe.
     default_title_label: titre par défaut
     default_title_hint: Préremplissez le champ « Titre » avec du texte modifiable. Ce champ est facultatif ; laissez-le vide en cas de doute.
     title_placeholder_label: Exemple de titre
@@ -2792,14 +2792,14 @@ fr:
     example_description_label: Exemple de description
     example_description_placeholder: Fournissez un modèle que les gens peuvent utiliser pour démarrer une discussion.
     hidden_templates: Modèles cachés
-    confirm_delete: Êtes-vous sûr de vouloir supprimer ce modèle de discussion ?
+    confirm_delete: Es-tu sûr de vouloir supprimer ce modèle de discussion ?
     add_poll_template: Ajouter un modèle de sondage
-    add_poll_template_help: Sélectionnez les modèles de sondage qui vous aideront à mener à bien ce processus.
+    add_poll_template_help: Sélectionne les modèles de sondage qui t'aideront à mener à bien ce processus.
     recommended_poll_templates: Modèles de sondages recommandés
     share_in_template_gallery: Partagez ce modèle dans la galerie de modèles publique
     browse_example_templates: Consultez les exemples de modèles
     example_templates: Exemples de modèles
-    browse_public_templates_hint: Cliquez sur le nom d'un modèle pour entamer une discussion à son sujet, ou cliquez sur le bouton Modifier à droite pour en faire une copie et le modifier pour votre propre groupe.
+    browse_public_templates_hint: Clique sur le nom d'un modèle pour entamer une discussion à son sujet, ou cliquez sur le bouton Modifier à droite pour en faire une copie et le modifier pour ton propre groupe.
     process_name_placeholder: par exemple, la réunion debout hebdomadaire
     process_subtitle_placeholder: Par exemple, un bref point avec l'équipe chaque semaine
     default_title_placeholder: Ex. Stand-up - 15 janvier
@@ -2811,23 +2811,23 @@ fr:
     choose_group_for_templates: Choisissez un groupe pour consulter ses modèles de discussion.
     start_direct_discussion: Entamer une discussion directe
     poll_templates: Modèles de sondage
-    poll_templates_help: Les modèles que vous sélectionnez ici s'afficheront en premier lorsqu'une personne cliquera sur « Lancer un vote ».
+    poll_templates_help: Les modèles que tu sélectionnes ici s'afficheront en premier lorsqu'une personne cliquera sur « Lancer un vote ».
     start_direct_discussion_from_blank: Démarrez une discussion directe à partir d'un modèle vierge
     default_to_direct_discussion: Commencez par une discussion directe (pas de groupe).
-    default_to_direct_discussion_helptext: Utilisez ceci si vous souhaitez que les gens entament des discussions directes à partir de ce modèle.
+    default_to_direct_discussion_helptext: Utilisez ceci si tu souhaites que les gens entament des discussions directes à partir de ce modèle.
     example_discussion_templates: Exemples de modèles de discussion
-    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>démarrer une discussion</b> .
-    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de discussion, en utilisant l'exemple comme point de départ."
+    browse_example_use_hint: Clique sur le titre du modèle pour <b>démarrer une discussion</b> .
+    browse_example_fork_hint: "<b>Clique sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de discussion, en utilisant l'exemple comme point de départ."
     new_discussion_template_title: Nouveau modèle de discussion
     new_template_from_blank: Nouveau modèle à partir de zéro
-    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
-    these_are_templates_v3: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une nouvelle discussion.
+    new_template_from_blank_subtitle: Crée un nouveau modèle adapté à un processus en place dans ton organisation.
+    these_are_templates_v3: Voici les modèles de discussion de ton groupe. Clique sur un modèle pour démarrer une nouvelle discussion.
     these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
     show_hidden_templates: Afficher les modèles cachés
     show_fewer: Afficher moins
     start_discussion: Lancer une discussion
     start_a_direct_discussion: Entamez une discussion directe
-    these_are_templates: Voici les modèles de discussion de votre groupe.
+    these_are_templates: Voici les modèles de discussion de ton groupe.
     start_a_new_discussion: Lancer une nouvelle discussion
   context_panel:
     thread_status:
@@ -2844,27 +2844,27 @@ fr:
     helptext: Les discussions épinglées apparaissent toujours dans la liste des discussions du groupe.
   delete_discussion_form:
     discussion_deleted: Discussion supprimée
-    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
+    body: Es-tu sûr de vouloir supprimer cette discussion ?
   move_discussion_form:
     title: Déplacer la discussion vers un autre groupe
     body: Groupe de destination
     confirm: Discussion sur le déménagement
-    confirm_change_to_private: "%{groupName} est un groupe ouvert. Si vous continuez, cette discussion sera publique."
+    confirm_change_to_private: "%{groupName} est un groupe ouvert. Si tu continues, cette discussion sera publique."
     messages:
       success: Discussion déplacée vers %{name}
   auth:
     oauth_cancelled: La connexion a été annulée.
-    switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.
+    switching_accounts: Changement de compte. Connecte-toi avec tes nouvelles informations de compte.
   poll_common_opening_at_field:
     voting_opens_immediately: Le vote est ouvert immédiatement
     opening_date: Date d'ouverture
     opening_hour: Heures d'ouverture
     scheduled_hint: Le sondage sera visible mais il ne sera pas possible de voter avant l'heure d'ouverture.
-    draft_hint: Ce sondage sera enregistré comme brouillon. Définissez une date d'ouverture ou cochez « Ouverture immédiate du vote » lorsque vous serez prêt(e) à voter.
+    draft_hint: Ce sondage sera enregistré comme brouillon. Définissez une date d'ouverture ou cochez « Ouverture immédiate du vote » lorsque tu seras prêt(e) à voter.
   strand_members_list:
     notify_members_or_invite_guests_info: Prévenez les membres du groupe par leur nom ou invitez les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
-    notify_members_info: Saisissez les noms des membres du groupe pour les informer de cette discussion.
-    specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez "Ajouter des votants" dans le sondage.
+    notify_members_info: Saisis les noms des membres du groupe pour les informer de cette discussion.
+    specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si tu souhaitez attribuer des votes, utilisez "Ajouter des votants" dans le sondage.
   poll_common_details_meta:
     opened: Ouvert
     opens: S'ouvre
@@ -2875,8 +2875,8 @@ fr:
     closed_at: Fermé à
     closing_at: Fermeture à
   poll_stv_vote_form:
-    helptext: Faites glisser les candidats au-dessus de la ligne pour les classer. Les éléments en dessous de la ligne ne sont pas classés. Le candidat de rang 1 est votre préféré.
-    divider_text: Faites glisser les candidats au-dessus de cette ligne pour les classer.
+    helptext: Fais glisser les candidats au-dessus de la ligne pour les classer. Les éléments en dessous de la ligne ne sont pas classés. Le candidat de rang 1 est ton préféré.
+    divider_text: Fais glisser les candidats au-dessus de cette ligne pour les classer.
     stance_created: Vote enregistré
     stance_updated: Vote mis à jour
   poll_stv_form:
@@ -2926,7 +2926,7 @@ fr:
     saved: Signet enregistré
     removed: Signet supprimé
     empty: Aucun signet pour l'instant
-    empty_help: Les signets permettent de garder une trace des choses auxquelles vous souhaitez revenir.
+    empty_help: Les signets permettent de garder une trace des choses auxquelles tu souhaites revenir.
     subtitle: "%{type} par %{name}"
     types:
       Discussion: Discussion
