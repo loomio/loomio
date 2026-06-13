@@ -50,7 +50,7 @@ gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
 gem 'redis-objects'
-gem 'connection_pool', '~> 2.4'
+gem 'connection_pool', '~> 3.0'
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'
