@@ -67,8 +67,6 @@ jobs:
         MIN_THREADS: 3
         MAX_THREADS: 3
       run: |
-        rm -f bin/*
-        bundle install --binstubs
         bundle exec rails server -b 0.0.0.0 -p $E2E_PORT &
     - name: start hocuspocus server
       run: |
