@@ -155,7 +155,7 @@ tr:
     no_tags_in_group: Bu grupta henüz kategori etiketi yok
     only_admins_can_edit_tags: Üzgünüz, yalnızca %{group} grubunun yöneticileri etiketleri oluşturabilir, yeniden adlandırabilir veya silebilir
     pick_a_color: Bir renk seçin
-    filter_placeholder: Filtre etiketleri
+    filter_placeholder: Etiketleri filtrele
     new_named_tag: Yeni etiket "%{name}"
     edit_tags: Etiketleri düzenle
   poll_types:

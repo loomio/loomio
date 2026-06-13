@@ -157,7 +157,7 @@ sl:
     pick_a_color: Izberite barvo
     filter_placeholder: Filtriraj oznake
     new_named_tag: Nova oznaka »%{name}«
-    edit_tags: Urejanje oznak
+    edit_tags: Uredi oznake
   poll_types:
     proposal: snubitev
     count: privolitev
