@@ -61,7 +61,11 @@ function openNewTagModal() {
       tag,
       close: () => {
         const selected = selectedTags.value.slice();
-        if (tag.id && tag.name && !selected.includes(tag.name)) { selected.push(tag.name); }
+        // tag was built with Records.tags.build() (not in the collection);
+        // after save, importJSON creates a new record — the built object
+        // never gets its id set, so look up the saved tag by name instead.
+        const savedTag = Records.tags.find({groupId: topic.group().id, name: tag.name})[0];
+        if (tag.name && !selected.includes(tag.name) && savedTag) { selected.push(tag.name); }
         EventBus.$emit('openModal', {
           component: 'TopicTagsModal',
           props: {topic, initialTags: selected}
