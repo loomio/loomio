@@ -16,9 +16,9 @@ it:
     taken_first_step: Hai fatto il primo passo verso un processo decisionale collaborativo con Loomio.
     account_created_for_you: Abbiamo creato un account utente per %{email} e un gruppo su Loomio.
     please_sign_in_to_continue: Accedi per continuare.
-    please_complete_this_field: Per favore completa questo campo
-    please_enter_a_valid_email_address: Si prega di inserire un indirizzo email valido
-    please_accept_the_terms: Si prega di accettare i termini
+    please_complete_this_field: Completa questo campo
+    please_enter_a_valid_email_address: Inserisci un indirizzo email valido
+    please_accept_the_terms: Accetta i termini
     how_did_you_hear_about_loomio: Come sei venuto a conoscenza di Loomio?
     newsletter_intro: Vorresti ricevere informazioni sulle nuove funzionalità, interviste ai clienti, casi di studio e annunci dal team Loomio?
   tasks:
@@ -46,7 +46,7 @@ it:
     copy_of_title: Copia di %{title}
     loomio_default_templates: Modelli predefiniti di Loomio
     which_templates_would_you_like_to_use: Quali modelli vorresti utilizzare?
-    login_to_start_demo: 'Questa è una Demo di LOOMIO attiva. Siete invitati a dare un''occhiata in giro.
+    login_to_start_demo: 'Questa è una Demo di LOOMIO attiva. Sei invitato a dare un''occhiata in giro.
 
       '
     sign_in_to_try_features: 'Se vuoi provare una votazione in una dimostrazione di voto o iniziare una prova gratuita per la tua organizzazione, clicca "Iscriviti".
@@ -67,10 +67,10 @@ it:
     demo_group: Gruppo di prova
     play_with_an_example_group: Gioca con un gruppo di esempio
     look_and_feel: Guarda come appare Loomio per una piccola organizzazione. Scopri l'app provandola.
-    watch_then_start: Si prega di guardare il video, quindi fare clic su "Avvia demo" per provare Loomio
+    watch_then_start: Guarda il video, quindi fai clic su "Avvia demo" per provare Loomio
     generating_demo: Ok, aspetta un attimo! Creare una demo impiega circa 20 secondi.
     start_a_x_day_free_trial: Inizia una prova gratuita di %{day} giorni
-    ready_to_trial: Pronti per provare Loomio con la vostra organizzazione?
+    ready_to_trial: Pronto a provare Loomio con la tua organizzazione?
     start_a_no_obligation_x_day_trial: Inizia un gruppo di Loomio con una prova gratuita di %{day} giorni.
     you_can_test_it_out: 'Puoi invitare altre persone a unirsi, integrarlo con gli altri tuoi strumenti, e provare a prendere delle decisioni.
 
@@ -122,7 +122,7 @@ it:
     tooltip: 'Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. '
     was_gift_trial: 'Il tuo gruppo utilizza Loomio gratuitamente da %{createdDate}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l''aggiornamento per continuare a utilizzare Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Per saperne di più</a>'
     was_gift_remaining: "%{days} giorni restanti."
-    was_gift_expired: Il vostro piano gratuito è già scaduto
+    was_gift_expired: Il tuo piano gratuito è già scaduto
     was_gift_expired_or_mistake: 'Il tuo piano gratuito è scaduto. Se ritieni che ci sia stato un errore, <a style=''text-decoration: underline'' href=''/contact''>contattaci</a> .'
     subscription_ended: Il tuo abbonamento a Loomio è terminato. Per continuare a utilizzare Loomio, esegui l'aggiornamento
   subscription_status:
@@ -210,8 +210,8 @@ it:
     active_time_ago: Ultimamente attivo %{time_ago}
     confirm_discard_changes: Scarta le modifiche?
     something_went_wrong: Uh oh! Qualcosa è andato storto
-    check_for_errors_and_try_again: Per favore controlla gli errori nel modulo e riprova
-    please_try_again: Per favore riprova
+    check_for_errors_and_try_again: Controlla gli errori nel modulo e riprova
+    please_try_again: Riprova
     time:
       am: am
       pm: pm
@@ -434,7 +434,7 @@ it:
       quiet: Ignora
       question: Quando vuoi ricevere una notifica?
       loud_explain: ogni volta che c'è attività
-      normal_explain: quando qualcuno chiede la vostra attenzione
+      normal_explain: quando qualcuno chiede la tua attenzione
       quiet_explain: nessuna notifica
     loud_label: Tutte le attività
     normal_label: Annunci
@@ -939,7 +939,7 @@ it:
       who_to_invite: Chi vorresti invitare?
       invitation_message_placeholder: Messaggio da includere nel messaggio di posta elettronica di invito. (facoltativo)
       invitation_message_label: Messaggio
-      invitation_message_default: Ho creato questo gruppo Loomio per aiutarci a prendere decisioni insieme. Per favore accetta il mio invito. Ci vuole solo un minuto per iscriversi. Grazie.
+      invitation_message_default: Ho creato questo gruppo Loomio per aiutarci a prendere decisioni insieme. Accetta il mio invito. Ci vuole solo un minuto per iscriversi. Grazie.
       group_announced:
         title: Invita nel gruppo
         helptext: Chi vorresti invitare nel gruppo?
@@ -1458,7 +1458,7 @@ it:
     messages:
       invitation_sent: Invito spedito.
       invitations_sent: "%{count} inviti mandati."
-      no_invitations: Oh-oh! Per favore verifica che l'indirizzo email è corretto e riprova.
+      no_invitations: Oh-oh! Verifica che l'indirizzo email sia corretto e riprova.
       max_invitations: Se vuoi inviare più di 100 inviti, usa un team link.
     copy_to_clipboard: Copia negli appunti
     already_chatting_somewhere: Stai già chattando da qualche parte?
@@ -1709,7 +1709,7 @@ it:
     max_threads_reached: <p>Hai utilizzato tutti i %{maxThreads} thread disponibili per questo gruppo.</p><p> Passaggio successivo, <a href="%{upgradeUrl}" target="_blank">scegli un piano</a> per continuare a collaborare su Loomio.</p>
     subscription_canceled: |
       <p>La tua iscrizione non è attiva.</p>
-      <p>Per favore <a href="%{upgradeUrl}" target="_blank">scegli un abbonamento</a> per continuare a usare Loomio.</p>
+      <p><a href="%{upgradeUrl}" target="_blank">Scegli un abbonamento</a> per continuare a usare Loomio.</p>
     activity: Attività
     activity_placeholder: Ancora nessuna attività!
     load_previous: Carica attività precedente
@@ -1797,7 +1797,7 @@ it:
     question: Questo cancellerà definitivamente questo commento. Se procedi, non potrà essere recuperato.
   contact_message_form:
     alt_title: Contatta l'assistenza di Loomio
-    need_message: Per favore inserisci un messaggio così possiamo aiutarti :-)
+    need_message: Inserisci un messaggio così possiamo aiutarti :-)
     respond_asap: Invia un messaggio al team di Loomio e ti risponderemo il prima possibile.
     happy_to_help_with: Siamo felici di aiutarti con domande di vendita, richieste di supporto, richieste di funzionalità, segnalazione di bug o problemi che stai riscontrando.
     title: Ciao! Come possiamo aiutare?
@@ -1927,10 +1927,10 @@ it:
     remove_your_response: Rimuovi la tua risposta
     vote_now: Vota ora
     review_due: Revisione dovuta
-    have_your_say: Dite la vostra
+    have_your_say: Di' la tua
     your_response: La tua risposta
     change_your_response: Modifica risposta
-    please_vote: Per favore, vota
+    please_vote: Vota
     reason: Motivo
     response: Risposta
     reason_placeholder: Spiega brevemente perchè hai votato così, quindi scegli 'Invia Voto'
@@ -2261,7 +2261,7 @@ it:
     new_time_slot: Nuovo periodo di tempo
     closing_hour: Ora di chiusura
   poll_proposal_vote_form:
-    default_reason_placeholder: Per favore spiega il tuo ragionamento
+    default_reason_placeholder: Spiega il tuo ragionamento
     abstain_reason_placeholder: Fai sapere alle persone perché stai rinunciando a questa decisione
     agree_reason_placeholder: Cosa ti piace della proposta e in che modo andrà a vantaggio del gruppo?
     disagree_reason_placeholder: Come potrebbe essere migliorata questa proposta in modo che tu possa sostenerla?
@@ -2390,11 +2390,11 @@ it:
     login_link_helptext: Fai clic sul pulsante in basso e ti invieremo un link per accedere.
     enter_your_password: Inserisci la tua password per continuare
     check_spam_folder: Se l'email non arriva subito, cerca nella tua cartella spam.
-    sign_up_helptext: Per favore comileta questo modulo per creare un account utente
+    sign_up_helptext: Completa questo modulo per creare un account utente
     i_accept_all: Accetto i %{termsLink} e %{privacyLink}
     newsletter_label: Voglio ricevere la %{link}
     name_placeholder: Il tuo nome
-    name_required: Per favore inserisci un nome
+    name_required: Inserisci un nome
     terms_required: Devi accettare i Termini del Servizio
     account_inactive: Uh-oh, sembra come se l'account di %{email} sia stato disattivato!
     privacy_notice: Noi non venderemo mai i tuoi dati. <br><a href='%{privacyUrl}' target='_blank'>Privacy policy</a>
@@ -2428,7 +2428,7 @@ it:
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
     change_your_password: Vuoi impostare una nuova password?
     email_placeholder: tu{'@'}esempio.com
-    turnstile_required: Si prega di completare la verifica prima di continuare.
+    turnstile_required: Completa la verifica prima di continuare.
     invalid_login: Impossibile accedere con queste credenziali
   chatbot:
     configure_chatbot: Configura chatbot
@@ -2656,7 +2656,7 @@ it:
     hide_advanced_settings: Nascondi impostazioni avanzate
     choose_at_least: Scegli almeno
     choose_at_most: Scegli al massimo
-    please_review_the_form: Si prega di rivedere il modulo
+    please_review_the_form: Rivedi il modulo
     option_added_please_add_details: Opzione aggiunta! Aggiungete qualche dettaglio in modo che tutti sappiano cosa significa.
     default_duration_in_days: Durata predefinita in giorni
     how_many_options_can_a_voter_choose: Quante opzioni può scegliere un elettore?
@@ -2717,7 +2717,7 @@ it:
     stance_reason_required: Necessario
     stance_reason_optional: Opzionale
     stance_reason_disabled: Disabili
-    stance_reason_is_required: Si prega di fornire una motivazione per il voto
+    stance_reason_is_required: Fornisci una motivazione per il voto
     limit_reason_length: Limita il motivo a un massimo di 500 caratteri
     save_poll: Salva il sondaggio
     start_poll_type: Avvia %{poll_type}

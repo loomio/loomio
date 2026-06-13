@@ -94,9 +94,9 @@ it:
       title: "\U0001F44B Benvenuti! Salutatevi e provate le novità"
       description: "<p>Benvenuti nel nostro gruppo Loomio: è un piacere avervi qui!</p><p> Questo thread è uno spazio per:</p><ul><li><p> Presentati al gruppo</p></li><li><p> Prova alcune delle funzionalità di Loomio, ad esempio: prova a usare le reazioni \U0001F44D</p></li><li><p> Fai tutte le domande che hai in questa fase</p></li></ul><p> Se non sai cosa dire, un semplice ciao va bene \U0001F642</p>"
       process_name: Discussione pratica
-      process_subtitle_v2: Accogliete le persone e sentitevi a vostro agio nell'usare Loomio insieme
+      process_subtitle_v2: Accogli le persone e sentiti a tuo agio nell'usare Loomio insieme
       process_introduction_v2: "<p>Un thread di benvenuto per i nuovi gruppi. Le persone si presentano, provano funzionalità come i commenti e le reazioni e propongono la loro prima proposta.</p>"
-      title_v2: Benvenuti! Presentatevi e provate le cose
+      title_v2: Benvenuto! Presentati e prova le funzionalità
       description_v2: <p>Benvenuti nel gruppo! Questa discussione è uno spazio per salutarvi, fare domande, provare cose nuove e familiarizzare con Loomio.</p><p> Lascia un commento, usa una reazione o avvia una delle proposte qui sotto.</p><p> Se non sai cosa dire, un semplice "ciao" va bene! Oppure prova uno degli strumenti di voto qui sotto.</p>
   explore:
     header: Esplora i gruppi pubblici
@@ -128,7 +128,7 @@ it:
       body: Questa pagina non esiste più
     417:
       title: Browser incompatible
-      body: 'Per favore <a href="https://browser-update.org/update.html?force_outdated=true">aggiorna il browser</a> per utilizzare Loomio
+      body: 'Aggiorna il browser per utilizzare Loomio: <a href="https://browser-update.org/update.html?force_outdated=true">aggiorna il browser</a>
 
         '
     422:
@@ -140,7 +140,7 @@ it:
     500:
       title: Errore interno del server
       body: Ci dispiace, ma qualcosa è andato storto. Ci è stato notificato questo problema e lo daremo un'occhiata a breve.
-    noscript: Loomio richiede Javascript per funzionare! Per favore abilita Javascript nel tuo browser per poter continuare
+    noscript: Loomio richiede Javascript per funzionare. Abilita Javascript nel tuo browser per continuare
     upgrade_browser: 'Oh oh! Il tuo browser web è troppo vecchio e Loomio potrebbe non funzionare correttamente. <a href="https://browser-update.org/update.html">Aggiorna il browser.</a>
 
       '
@@ -184,7 +184,7 @@ it:
       sign_in_required_html: |
         È necessario avere effettuato l'accesso per procedere.
         <a href="/dashboard" target="_blank">Accedi</a> quindi ricarica questa pagina per continuare.
-      recaptcha: Non siamo stati in grado di verificare che tu non sia un robot. Per favore riprova ancora!
+      recaptcha: Non siamo stati in grado di verificare che tu non sia un robot. Riprova.
       bad_login: Spiacente, ma la password non corrisponde con quella che abbiamo archiviato.
       username_must_be_alphanumeric: I nomi utente devono avere solo lettere minuscole e numeri
   poll:
@@ -268,7 +268,7 @@ it:
         merge: Unisci account
       complete_page:
         title: Unione riuscita!
-        body_html: <p>L'unione dei tuoi account utente è andata a buon fine. A breve riceverai un'email di conferma all'indirizzo <strong>%{target_email}</strong> .</p><p> Vi preghiamo <a href="/contact" target="_blank">di contattarci</a> se avete ulteriori domande.</p>
+        body_html: <p>L'unione dei tuoi account utente è andata a buon fine. A breve riceverai un'email di conferma all'indirizzo <strong>%{target_email}</strong> .</p><p><a href="/contact" target="_blank">Contattaci</a> se hai altre domande.</p>
   email:
     common:
       or_enter_code: Oppure inserisci il codice qui sotto
@@ -366,7 +366,7 @@ it:
     email_guidelines_html: "<p>Inserisci il tuo indirizzo email e ti verrà inviato un link per reimpostare la password.</p><p> Se normalmente accedi tramite Facebook o Google, inserisci l'indirizzo email associato a quell'account.</p>"
     reset_email_timeframe: L'arrivo dell'e-mail potrebbe richiedere fino a 5 minuti. Se non viene visualizzato, assicurati di controllare la cartella della posta indesiderata.
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
-    forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
+    forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il tuo account.
   task_mailer:
     task_due_reminder:
       subject: 'Promemoria attività: %{name}'
@@ -391,7 +391,7 @@ it:
       your_response: 'Hai votato:'
       you_voted: Hai votato!
       not_invited: Non invitato
-      please_respond: Si prega di rispondere
+      please_respond: Rispondi
       time_zone: "(Orari visualizzati in %{zone})"
       undecided_members: Membri indecisi (%{count})
       undecided_visitors: Ospiti indecisi (%{count})
@@ -408,7 +408,7 @@ it:
       process_name: Proposta di pratica
       process_subtitle: Scopri come funzionano le proposte su Loomio provandone una.
       process_introduction: "<p>Usa questo modello per aiutare il tuo gruppo a familiarizzare con le proposte su Loomio. È un modo semplice e sicuro per provare a votare e vedere come funziona il tutto.</p>"
-      details: "<p>Si tratta di una prova pratica in modo che tutti possano familiarizzare con il funzionamento delle proposte su Loomio.</p><p> Vi preghiamo di votare e, se volete, di lasciare una motivazione.</p><p> Nessuna pressione, nessuna conseguenza concreta. È solo un modo per scoprire come funzionano le proposte!</p>"
+      details: "<p>Si tratta di una prova pratica in modo che tutti possano familiarizzare con il funzionamento delle proposte su Loomio.</p><p>Vota e, se vuoi, lascia una motivazione.</p><p> Nessuna pressione, nessuna conseguenza concreta. È solo un modo per scoprire come funzionano le proposte!</p>"
       outcome_statement: "<p>Grazie per aver partecipato a questa proposta pratica! \U0001F389</p><p> Questa era solo un'occasione per vedere come funzionano le votazioni e i commenti su Loomio. Non c'è una vera e propria decisione in atto, ma spero che questo abbia aiutato tutti a familiarizzare con il processo.</p>"
       title_v2: L'ananas è sulla pizza
       process_subtitle_v2: Prova una proposta per sapere come funziona il voto
@@ -486,7 +486,7 @@ it:
       process_subtitle: Invitare domande di chiarimento per aiutare le persone a comprendere una proposta
       process_introduction: <p>Il round di domande è un'opportunità per porre domande di chiarimento sulla proposta, in modo che tutti la comprendano prima di esprimere la propria opinione.</p><p> Il round di domande di Loomio è una proposta speciale senza possibilità di voto. Permette ai partecipanti di porre domande entro un periodo di tempo da te impostato per il round.</p><p> Il round di domande è comunemente utilizzato come fase del processo di consenso.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Per saperne di più sulla procedura di consenso</a> .</p>
       title: Quali domande hai in merito alla politica sulla salute e sicurezza?
-      details: <h3 id="what-are-you-proposing"><strong>Cosa proponi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Si tratta di un round di domande in cui sei invitato a porre domande di chiarimento.</p><p> Cosa devi sapere per comprendere la proposta?</p><p> Vi preghiamo di rispondere prima della chiusura del turno delle domande.</p>
+      details: <h3 id="what-are-you-proposing"><strong>Cosa proponi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Si tratta di un round di domande in cui sei invitato a porre domande di chiarimento.</p><p> Cosa devi sapere per comprendere la proposta?</p><p>Rispondi prima della chiusura del turno delle domande.</p>
       reason_prompt: Cosa devi sapere per comprendere la proposta?
       outcome_statement: "<p>Grazie per aver inviato le tue domande durante questo round</p>"
     sense_check:
@@ -593,7 +593,7 @@ it:
     try_loomio:
       process_name: Proviamo Loomio
       process_subtitle: Fai in modo che il tuo gruppo si impegni a provare Loomio insieme
-      process_introduction: "<p>Per sfruttare al meglio Loomio è necessario un impegno collettivo. Questa proposta aiuta il vostro gruppo a decidere se investire tempo ed energie per provare Loomio in modo concreto, impegnandosi per un periodo di prova o sottoscrivendo un piano insieme.</p>"
+      process_introduction: "<p>Per sfruttare al meglio Loomio è necessario un impegno collettivo. Questa proposta aiuta il tuo gruppo a decidere se investire tempo ed energie per provare Loomio in modo concreto, impegnandosi per un periodo di prova o sottoscrivendo un piano insieme.</p>"
       title: Impegniamoci a provare Loomio insieme
       details: "<p>Per usare bene Loomio è necessario uno sforzo di gruppo: funziona solo quando le persone si presentano e partecipano.</p><p> Questa proposta chiede a tutti di impegnarsi a utilizzare attivamente Loomio durante il periodo di prova. Ciò significa registrarsi, votare le proposte e partecipare alle discussioni.</p><p> Se hai dubbi al riguardo, solleva un'obiezione e spiega cosa andrebbe cambiato: è a questo che serve l'opzione dell'obiezione.</p>"
       outcome_statement: "<p>Condividi con il gruppo l'esito di questa proposta: cosa è stato deciso e cosa succederà dopo.</p>"

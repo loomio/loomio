@@ -86,6 +86,7 @@ languages in the Nov 2025 pass.
 | client.zh_CN.yml | Multiple HTML/interpolation keys | Full-width percent signs or translated placeholder words like `％{标题}` / literal `作者` | Restored placeholders such as `%{title}`, `%{author}`, `%{username}` | Placeholder names and `%{...}` syntax must never be translated or converted to full-width characters |
 | client.*.yml   | `strand_nav.return`, `thread_arrangement_form.items`, `thread_arrangement_form.thread_settings`, `poll_common_settings.*`, `poll_common_details_meta.*` | UI labels translated in wrong senses like "Return"→yield, "items"→goods/articles, "thread"→subprocess/screw-thread, "opened"→inaugurated | Corrected to navigation, discussion-thread, poll-setting, and poll-time meanings | Short UI labels need surrounding UI context; Google often picks a plausible but wrong dictionary sense |
 | server.*.yml   | `group.error.handle_must_be_url_friendly` | Character range `(a-z)` collapsed to `(az)` or `(a)` | Preserve `(a-z)` | ASCII character ranges are literal validation guidance, not prose to translate |
+| client.it.yml, server.it.yml | Multiple direct-address UI and template strings | Formal/plural `Si prega`, `Vi preghiamo`, `vostro/vostra`, and mixed replacements like `Vi prego` | Informal singular Italian `tu` register with direct imperatives like `inserisci`, `accetta`, `rispondi`, `contattaci` | Italian direct-address UI should be consistent and concise; Google introduced formal/plural politeness forms and bad mixed conjugations |
 
 ## 2026-05-21 — lock_thread_modal body changed to explanation
 
