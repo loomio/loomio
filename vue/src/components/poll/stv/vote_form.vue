@@ -76,7 +76,7 @@ export default {
 
 <template lang='pug'>
 .poll-stv-vote-form
-  .lmo-relative(style="position: relative")
+  .position-relative
     p.text-medium-emphasis.py-4(v-t="'poll_stv_vote_form.helptext'")
     sortable-list.pb-2(v-model:list="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
       sortable-item(

@@ -1,13 +1,7 @@
-import 'vuetify/styles'
-
-process.env
-
 // Composables
 import { createVuetify } from 'vuetify'
+import { md3 } from 'vuetify/blueprints'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import { VDateInput } from 'vuetify/labs/VDateInput'
-
-
 const colors = {
   gold: "#DCA034",
   goldDark1: "#C6902F",
@@ -23,16 +17,14 @@ const colors = {
 }
 
 export default createVuetify({
-  components: {
-    VDateInput,
-  },
+  // blueprint: md3,
   icons: {
     defaultSet: 'mdi',
     aliases,
     sets: { mdi },
   },
   theme: {
-    defaultTheme: 'light',
+    defaultTheme: 'system',
     themes: {
       light: {
         dark: false,

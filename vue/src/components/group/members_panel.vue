@@ -259,20 +259,20 @@ export default
               user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title
               template(v-if="membership.acceptedAt")
-                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                router-link.text-medium-emphasis.text-decoration-none(:to="urlFor(membership.user())") {{ membership.user().name }}
                 span.text-medium-emphasis(v-if="membership.acceptedAt && membership.userEmail")
                   space
                   span &lt;{{membership.userEmail}}&gt;
               template(v-if="!membership.acceptedAt && membership.userEmail")
                 | {{membership.userEmail}}
 
-              span.text-caption(v-if="$route.query.subgroups")
+              span.text-body-small(v-if="$route.query.subgroups")
                 space
                 span {{membership.group().name}}
 
               template(v-if="membership.user().title(group)")
                 space
-                span.text-caption {{membership.user().title(group)}}
+                span.text-body-small {{membership.user().title(group)}}
 
               template(v-if="membership.user().bot")
                 space
@@ -320,6 +320,6 @@ export default
               | {{memberships.length}} / {{loader.total}}
             v-btn.my-2.members-panel__show-more(outlined color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
-            a(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'") show users in all subgroups
+            a.text-medium-emphasis.text-decoration-none(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'")
 
 </template>

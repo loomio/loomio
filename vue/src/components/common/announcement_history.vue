@@ -36,7 +36,7 @@ v-card(:title="$t('announcement.' + modelKind + '_notification_history')")
     dismiss-modal-button
   .d-flex.justify-center.pa-8(v-if="historyLoading")
     v-progress-circular(color="primary" indeterminate)
-  v-card-text.text-body-2(v-else)
+  v-card-text.text-body-medium(v-else)
     p(v-if="historyError" v-t="'announcement.history_error'")
     p(v-else-if="historyData.length == 0" v-t="'announcement.no_notifications_sent'")
     template(v-else)

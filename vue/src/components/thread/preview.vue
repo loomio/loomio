@@ -1,7 +1,9 @@
 <script setup lang="js">
 import TopicService from '@/shared/services/topic_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { pick, some } from 'lodash-es';
+import AbilityService from '@/shared/services/ability_service';
+import EventBus from '@/shared/services/event_bus';
+import { pick, some, pull } from 'lodash-es';
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
 
@@ -24,17 +26,23 @@ const dockActions = computed(() =>
 );
 
 const menuActions = computed(() => {
-  const actions = props.groupPage
-    ? smAndDown.value
-      ? ['dismiss_thread', 'pin_thread', 'unpin_thread', 'lock_thread', 'unlock_thread', 'edit_thread', 'move_thread', 'discard_thread']
-      : ['pin_thread', 'unpin_thread', 'lock_thread', 'unlock_thread', 'edit_thread', 'move_thread', 'discard_thread']
-    : smAndDown.value
-      ? ['dismiss_thread', 'pin_thread', 'unpin_thread']
-      : ['pin_thread', 'unpin_thread'];
+  // if screen is ver smmal include dismiss
+  // if group page add lock. pin and unpin
+  let actions = ['dismiss_thread', 'pin_thread', 'unpin_thread', 'lock_thread', 'unlock_thread', 'edit_tags', 'edit_discussion', 'edit_poll', 'move_thread', 'discard_thread']
+  if (!smAndDown.value) { pull(actions, 'dismiss_thread') };
+  if (!props.groupPage) { pull(actions, 'pin_thread', 'unpin_thread') };
   return pick(TopicService.actions(props.topic), actions);
 });
 
 const canPerformAny = computed(() => some(menuActions.value, action => action.canPerform()));
+const canEditTags = computed(() => AbilityService.canEditTags(props.topic));
+
+function openTagsModal() {
+  EventBus.$emit('openModal', {
+    component: 'TopicTagsModal',
+    props: {topic: props.topic}
+  });
+}
 </script>
 
 <template lang="pug">

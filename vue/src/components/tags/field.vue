@@ -54,13 +54,11 @@ v-combobox.tags-field__input(
   :label="$t('loomio_tags.tags')"
   :items='items'
   )
-  template(v-slot:selection='data')
+  template(v-slot:selection='{ item }')
     v-chip.chip--select-multi(
-      :key="JSON.stringify(data.item)"
-      v-bind="data.attrs"
-      :model-value="data.selected"
-      :disabled="data.disabled"
-      :color='colorFor(data.item)'
-      @click:close='remove(data)') {{ data.item.title }}
+      :key="item"
+      closable
+      :color='colorFor(item)'
+      @click:close='remove(item)') {{ item }}
 
 </template>

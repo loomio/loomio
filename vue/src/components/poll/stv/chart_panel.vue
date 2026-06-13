@@ -169,10 +169,10 @@ export default {
       span(v-t="'poll_stv_results.results_available_when_closed'")
 
   template(v-else)
-    .text-subtitle-2.mb-2.text-medium-emphasis {{ methodLabel }}
+    .text-title-small.mb-2.text-medium-emphasis {{ methodLabel }}
 
     //- Winners summary
-    h3.text-subtitle-1.mb-2(v-t="'poll_stv_results.elected'")
+    h3.text-body-large.mb-2(v-t="'poll_stv_results.elected'")
     v-table.mb-4(density="compact" v-if="elected.length")
       thead
         tr
@@ -194,7 +194,7 @@ export default {
 
     //- Tied candidates summary
     template(v-if="tied.length")
-      h3.text-subtitle-1.mb-2.mt-4(v-t="'poll_stv_results.tied'")
+      h3.text-body-large.mb-2.mt-4(v-t="'poll_stv_results.tied'")
       v-table.mb-4(density="compact")
         thead
           tr

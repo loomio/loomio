@@ -32,6 +32,7 @@ export default
     RevisionHistoryModal: asyncComponent(() => import('@/components/revision_history/modal')),
     TagsSelect: asyncComponent(() => import('@/components/tags/select')),
     TagsModal: asyncComponent(() => import('@/components/tags/modal')),
+    TopicTagsModal: asyncComponent(() => import('@/components/tags/topic_tags_modal')),
     ChangePictureForm: asyncComponent(() => import('@/components/profile/change_picture_form')),
     GroupNewForm: asyncComponent(() => import('@/components/group/new_form')),
     PinEventForm: asyncComponent(() => import('@/components/thread/pin_event_form')),

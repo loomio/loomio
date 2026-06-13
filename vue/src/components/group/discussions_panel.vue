@@ -236,7 +236,7 @@ div.discussions-panel(v-if="group")
   .d-flex.align-center.flex-wrap.pt-4.pb-2
     v-menu
       template(v-slot:activator="{ props }")
-        v-btn.discussions-panel__filters.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
+        v-btn.discussions-panel__filters.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -251,13 +251,13 @@ div.discussions-panel(v-if="group")
 
     v-menu(offset-y)
       template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
+        v-btn.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
       v-sheet.pa-1.max-width-800
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
-    v-btn.text-transform-none.text-medium-emphasis(
+    v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"
     )
@@ -270,6 +270,7 @@ div.discussions-panel(v-if="group")
       :to="'/discussion_templates/?group_id='+group.id"
       color='primary'
     )
+
       span(v-t="'discussions_panel.new_discussion'")
 
   v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
@@ -299,7 +300,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
+          router-link.text-medium-emphasis.text-decoration-none.underline-on-hover.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

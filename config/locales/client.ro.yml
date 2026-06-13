@@ -155,6 +155,9 @@ ro:
     no_tags_in_group: Acest grup nu are încă etichete de categorie
     only_admins_can_edit_tags: Ne pare rău, numai administratorii %{group} pot crea, redenumi sau șterge etichete
     pick_a_color: Alege o culoare
+    filter_placeholder: Filtrează etichetele
+    new_named_tag: Etichetă nouă „%{name}”
+    edit_tags: Editează etichetele
   poll_types:
     proposal: propunere
     count: înscriere

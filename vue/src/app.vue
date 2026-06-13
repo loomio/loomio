@@ -53,7 +53,7 @@ export default {
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
     EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); });
-    if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
+    Flash.fromServer(AppConfig.flash);
   },
 
   destroyed() {
@@ -116,6 +116,14 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
+@layer vuetify-core.reset
+  ul, ol, figure, details, summary
+    padding: 0
+    margin: 0
+
+  h1, h2, h3, h4, h5, h6, p
+    margin: 0
+
 .underline-on-hover:hover
   text-decoration: underline
 
@@ -133,21 +141,8 @@ v-app.app-is-booted
 .text-on-surface
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
 
-.text-transform-none
-  text-transform: none
-
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
-
-a
-  text-decoration: none
-  color: rgb(var(--v-theme-anchor))
-
-.lmo-relative
-  position: relative
-
-.text-almost-black
-  color: rgba(0, 0, 0, 0.87)
 
 .max-width-320
   max-width: 320px !important
