@@ -155,6 +155,9 @@ ca:
     no_tags_in_group: Aquest grup encara no té etiquetes de categoria
     only_admins_can_edit_tags: Ho sentim, només els administradors de %{group} poden crear, canviar el nom o suprimir etiquetes
     pick_a_color: Tria un color
+    filter_placeholder: Filtrar etiquetes
+    new_named_tag: Nova etiqueta "%{name}"
+    edit_tags: Edita les etiquetes
   poll_types:
     proposal: proposta
     count: optar a

@@ -157,6 +157,9 @@ hu:
     no_tags_in_group: Ebben a csoportban még nincsenek kategóriacímkék
     only_admins_can_edit_tags: Sajnáljuk, csak a(z) %{group} adminisztrátorai hozhatnak létre, nevezhetnek át vagy törölhetnek címkéket
     pick_a_color: Válasszon egy színt
+    filter_placeholder: Címkék szűrése
+    new_named_tag: 'Új címke: „%{name}”'
+    edit_tags: Címkék szerkesztése
   poll_types:
     proposal: javaslat
     count: feliratkozás

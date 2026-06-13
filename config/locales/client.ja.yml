@@ -154,6 +154,9 @@ ja:
     no_tags_in_group: このグループにはまだカテゴリ タグがありません
     only_admins_can_edit_tags: 申し訳ありませんが、タグを作成、名前変更、削除できるのは %{group} の管理者だけです
     pick_a_color: 色を選ぶ
+    filter_placeholder: フィルタータグ
+    new_named_tag: 新しいタグ "%{name}"
+    edit_tags: タグを編集
   poll_types:
     proposal: 提案
     count: オプトイン

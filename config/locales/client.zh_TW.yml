@@ -156,6 +156,9 @@ zh_TW:
     no_tags_in_group: 此群組還沒有分類標籤
     only_admins_can_edit_tags: 抱歉，僅有 %{group} 的管理員可以建立、重新命名或刪除標籤
     pick_a_color: 選擇一種顏色
+    filter_placeholder: 篩選標籤
+    new_named_tag: 新標籤“%{name}”
+    edit_tags: 編輯標籤
   poll_types:
     proposal: 提議
     count: 選擇參加

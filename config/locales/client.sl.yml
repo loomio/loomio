@@ -155,6 +155,9 @@ sl:
     no_tags_in_group: Ta skupina še nima oznak kategorij
     only_admins_can_edit_tags: Oprostite, samo skrbniki skupine %{group} lahko ustvarjajo, preimenujejo ali brišejo oznake
     pick_a_color: Izberite barvo
+    filter_placeholder: Filtriraj oznake
+    new_named_tag: Nova oznaka »%{name}«
+    edit_tags: Urejanje oznak
   poll_types:
     proposal: snubitev
     count: privolitev

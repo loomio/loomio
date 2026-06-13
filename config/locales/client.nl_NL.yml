@@ -155,6 +155,9 @@ nl_NL:
     no_tags_in_group: Deze groep heeft nog geen categorielabel
     only_admins_can_edit_tags: Sorry, alleen admins van groep %{group} kunnen labels maken, hernoemen of verwijderen
     pick_a_color: Kies een kleur
+    filter_placeholder: Filter tags
+    new_named_tag: Nieuwe tag "%{name}"
+    edit_tags: Labels bewerken
   poll_types:
     proposal: voorstel
     count: opt-in

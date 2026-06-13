@@ -155,6 +155,9 @@ uk:
     no_tags_in_group: У цій групі ще немає міток категорій
     only_admins_can_edit_tags: На жаль, лише адміністратори %{group} можуть створювати, перейменовувати або видаляти мітки
     pick_a_color: Виберіть колір
+    filter_placeholder: Теги фільтра
+    new_named_tag: Новий тег "%{name}"
+    edit_tags: Редагувати теги
   poll_types:
     proposal: пропозиція
     count: вибрати в

@@ -163,6 +163,9 @@ pt_BR:
     no_tags_in_group: Este grupo ainda não tem tags de categoria
     only_admins_can_edit_tags: Desculpe, apenas os administradores do %{group} podem criar, renomear ou excluir tags
     pick_a_color: Escolha uma cor
+    filter_placeholder: Etiquetas de filtro
+    new_named_tag: Nova etiqueta "%{name}"
+    edit_tags: Editar etiquetas
   poll_types:
     proposal: proposta
     count: opt-in
