@@ -57,7 +57,7 @@ onMounted(() => {
     formatted-text.context-panel__description(:model="discussion" field="description")
     link-previews(:model="discussion")
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' color="primary" variant="tonal")
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' variant="tonal")
 </template>
 <style lang="sass">
 abbr[title]

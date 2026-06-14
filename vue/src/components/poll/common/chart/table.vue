@@ -68,7 +68,7 @@ export default {
     tbody
       tr(v-for="option, index in poll.results", :key="option.id")
         template(v-for="col in poll.resultColumns")
-          td.pa-0.d-none.d-sm-table-cell(
+          td.pa-2.d-none.d-sm-table-cell(
             v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
             style="vertical-align: top"
             :rowspan="poll.results.length"

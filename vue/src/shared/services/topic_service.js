@@ -192,7 +192,7 @@ export default new class TopicService {
       edit_discussion: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
-        collection: 'actions',
+        // collection: 'actions',
         canPerform() {
           return topic.topicableType === 'Discussion' && AbilityService.canEditDiscussion(topic.topicable());
         },
@@ -213,7 +213,7 @@ export default new class TopicService {
       edit_tags: {
         icon: 'mdi-tag-plus-outline',
         name: 'loomio_tags.apply_tags',
-        collection: 'actions',
+        // collection: 'actions',
         canPerform() {
           return AbilityService.canEditTags(topic);
         },
