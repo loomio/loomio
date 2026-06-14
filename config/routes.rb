@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       dev_routes_for(:nightwatch)
 
       get '/', to: 'nightwatch#index'
+      get 'last_email', to: 'nightwatch#last_email'
       dev_actions_for(:nightwatch).map { |action| get action, to: "nightwatch##{action}" }
     end
   end
