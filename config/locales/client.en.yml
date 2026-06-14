@@ -185,11 +185,14 @@ en:
     all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
+    filter_placeholder: Filter tags
+    new_named_tag: New tag "%{name}"
     new_tag: New tag
     name_label: Name
     color_label: Color
     pick_a_color: Pick a color
     card_title: Category tags
+    edit_tags: Edit tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag

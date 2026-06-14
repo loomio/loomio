@@ -165,7 +165,7 @@ export default
     .d-flex.align-center.flex-wrap.pt-4.pb-2
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
+          v-btn.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
@@ -178,7 +178,7 @@ export default
           v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
+          v-btn.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
             common-icon(name="mdi-menu-down")
@@ -191,7 +191,7 @@ export default
             :to="mergeQuery({poll_type: pollType})"
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-btn.text-transform-none.text-medium-emphasis(
+      v-btn.text-medium-emphasis(
         variant="tonal"
         @click="openSearchModal"
       )

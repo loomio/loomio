@@ -155,6 +155,9 @@ ru:
     no_tags_in_group: В этой группе пока нет тегов категорий.
     only_admins_can_edit_tags: К сожалению, только администраторы %{group} могут создавать, переименовывать или удалять теги.
     pick_a_color: Выберите цвет
+    filter_placeholder: Фильтровать метки
+    new_named_tag: Новая метка "%{name}"
+    edit_tags: Редактировать метки
   poll_types:
     proposal: предложение
     count: выбрать в

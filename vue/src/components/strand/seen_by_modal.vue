@@ -26,7 +26,7 @@ v-card(:title="$t('discussion_last_seen_by.title')")
     dismiss-modal-button
   .d-flex.justify-center.pa-8(v-if="seenByLoading")
     v-progress-circular(color="primary" indeterminate)
-  v-card-text.text-body-2(v-else)
+  v-card-text.text-body-medium(v-else)
     p(v-if="seenByError" v-t="'announcement.history_error'")
     p(v-else-if="seenByData.length == 0" v-t="'discussion_last_seen_by.no_one'")
     div.d-flex.align-center.ga-2.py-1(v-else v-for="reader in seenByData" :key="reader.user_id")

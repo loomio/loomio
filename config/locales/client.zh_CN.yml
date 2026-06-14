@@ -178,6 +178,9 @@ zh_CN:
     no_tags_present: 没有找到带有该标签的帖子！请尝试选择其他标签。
     no_tags_in_group: 该群组目前还没有分类标签。
     only_admins_can_edit_tags: 抱歉，只有 %{group} 的管理员才能创建、重命名或删除标签。
+    filter_placeholder: 筛选标签
+    new_named_tag: 新标签“%{name}”
+    edit_tags: 编辑标签
   poll_types:
     proposal: 提议
     count: 选择加入

@@ -155,6 +155,9 @@ sv:
     no_tags_in_group: Den här gruppen har inga kategoritaggar ännu
     only_admins_can_edit_tags: Tyvärr, bara administratörer för %{group} kan skapa, byta namn på eller ta bort taggar
     pick_a_color: Välj en färg
+    filter_placeholder: Filtrera taggar
+    new_named_tag: Ny tagg "%{name}"
+    edit_tags: Redigera taggar
   poll_types:
     proposal: förslag
     count: opt-in

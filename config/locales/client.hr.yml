@@ -155,6 +155,9 @@ hr:
     no_tags_in_group: Ova grupa još nema oznake kategorije
     only_admins_can_edit_tags: Nažalost, samo administratori grupe %{group} mogu stvarati, preimenovati ili brisati oznake
     pick_a_color: Odaberite boju
+    filter_placeholder: Filtriraj oznake
+    new_named_tag: Nova oznaka "%{name}"
+    edit_tags: Uredi oznake
   poll_types:
     proposal: prijedlog
     count: uključiti se

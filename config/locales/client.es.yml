@@ -155,6 +155,9 @@ es:
     no_tags_in_group: Este grupo todavía no tiene etiquetas de categoría.
     only_admins_can_edit_tags: Lo sentimos, solo los administradores de %{group} pueden crear, cambiar el nombre o eliminar etiquetas
     pick_a_color: Elige un color
+    filter_placeholder: Filtrar etiquetas
+    new_named_tag: Nueva etiqueta "%{name}"
+    edit_tags: Editar etiquetas
   poll_types:
     proposal: propuesta
     count: Apuntarse

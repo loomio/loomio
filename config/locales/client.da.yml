@@ -155,6 +155,9 @@ da:
     no_tags_in_group: Denne gruppe har endnu ingen kategori-tags
     only_admins_can_edit_tags: Beklager, kun administratorer af %{group} kan oprette, omdøbe eller slette tags
     pick_a_color: Vælg en farve
+    filter_placeholder: Filtrer tags
+    new_named_tag: Nyt tag "%{name}"
+    edit_tags: Rediger tags
   poll_types:
     proposal: forslag
     count: Tilmeld

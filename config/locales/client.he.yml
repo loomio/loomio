@@ -155,6 +155,9 @@ he:
     no_tags_in_group: לקבוצה הזו אין עדיין תגי קטגוריה
     only_admins_can_edit_tags: מצטערים, רק מנהלי מערכת של %{group} יכולים ליצור, לשנות שם או למחוק תגים
     pick_a_color: בחר צבע
+    filter_placeholder: סנן תגיות
+    new_named_tag: תגית חדשה "%{name}"
+    edit_tags: עריכת תגיות
   poll_types:
     proposal: הצעה
     count: לבחור ב

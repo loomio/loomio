@@ -209,7 +209,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
                 mid-dot.text-medium-emphasis
                 span.text-medium-emphasis {{ privacyStringFor(privacy) }}
 
-      p.group-form__privacy-statement.text-caption.text-medium-emphasis {{privacyStatement}}
+      p.group-form__privacy-statement.text-body-small.text-medium-emphasis {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
         v-list-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
@@ -224,7 +224,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
         span :
         space
         span(v-t="'common.privacy.secret'")
-      p.text-caption.text-medium-emphasis
+      p.text-body-small.text-medium-emphasis
         span(v-t="'group_form.secret_by_default'")
 
   v-card-actions.ma-2

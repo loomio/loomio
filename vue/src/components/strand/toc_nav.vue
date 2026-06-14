@@ -170,13 +170,13 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   min-height: 2px
 
 .strand-nav__entry--unread
-  border-color: var(--v-accent-lighten1)!important
+  border-color: rgba(var(--v-theme-secondary), 0.5)!important
 
 .strand-nav__entry--selected
-  border-color: var(--v-primary-darken1)!important
+  border-color: rgb(var(--v-theme-primary))!important
 
 .strand-nav__entry:hover
-  border-color: var(--v-primary-darken1)!important
+  border-color: rgb(var(--v-theme-primary))!important
 
 .strand-nav__entry:hover, .strand-nav__entry--visible
   background-color: #f8f8f8

@@ -65,7 +65,7 @@ export default {
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form
-  .lmo-relative(style="position: relative")
+  .position-relative
     p.text-medium-emphasis.py-4(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
     v-overlay.rounded(:model-value="stance.noneOfTheAbove" contained persistent :opacity="0.1")
     sortable-list.pb-2(v-model:list="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")

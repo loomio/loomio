@@ -139,6 +139,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_equal true, json['signed_in']
+    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
 
     u = User.find_by(email: "jon@snow.com")
     assert_equal "Jon Snow", u.name
@@ -218,6 +219,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_equal true, json['signed_in']
+    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
 
     u = User.find_by(email: "jon@snow.com")
     assert_equal "Jon Snow", u.name

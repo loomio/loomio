@@ -10,7 +10,7 @@ class UpdateTagWorker
       Tag.where(group_id: group_ids, name: old_name).update_all(name: new_name)
     end
 
-    Topic.where(group_id: group_ids).where.contains(tags: [old_name]).find_each do |t|
+    Topic.where(group_id: group_ids).where("topics.tags @> ARRAY[?]::varchar[]", old_name).find_each do |t|
       t.tags[t.tags.index(old_name)] = new_name
       t.update_column(:tags, t.tags.uniq)
     end

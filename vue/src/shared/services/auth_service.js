@@ -27,7 +27,7 @@ export default new class AuthService {
   authSuccess(data) {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
-    return Flash.success('auth_form.signed_in');
+    return Flash.fromServer(data.flash);
   }
 
   signIn(user) {

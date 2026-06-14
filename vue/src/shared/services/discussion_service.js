@@ -17,6 +17,10 @@ export default new class DiscussionService {
       //   to() { return `/d/new?discussion_id=${discussion.id}`; }
       // },
 
+      react: {
+        dock: 1,
+        canPerform() { return AbilityService.canAddReaction(discussion.topic()); }
+      },
       translate_thread: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
@@ -31,11 +35,6 @@ export default new class DiscussionService {
         dock: 3,
         canPerform() { return AbilityService.canUntranslate(discussion); },
         perform() { discussion.translationId = null }
-      },
-
-      react: {
-        dock: 1,
-        canPerform() { return AbilityService.canAddReaction(discussion.topic()); }
       },
 
       edit_thread: {

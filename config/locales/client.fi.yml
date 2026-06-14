@@ -155,6 +155,9 @@ fi:
     no_tags_in_group: Tällä ryhmällä ei ole vielä luokkatunnisteita
     only_admins_can_edit_tags: Valitettavasti vain ryhmän %{group} ylläpitäjät voivat luoda, nimetä uudelleen tai poistaa tunnisteita
     pick_a_color: Valitse väri
+    filter_placeholder: Suodata tunnisteet
+    new_named_tag: Uusi tagi "%{name}"
+    edit_tags: Muokkaa tunnisteita
   poll_types:
     proposal: ehdotus
     count: opt-in

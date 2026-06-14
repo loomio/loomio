@@ -48,7 +48,7 @@ v-card.mt-3(outlined).attachment-list-item-link
       span.text-medium-emphasis
         |{{ attachment.filename }}
         space
-        span.text-caption
+        span.text-body-small
           |{{ prettifyBytes(attachment.byte_size) }}
     .attachment-list-item-image.mb-2(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
 </template>

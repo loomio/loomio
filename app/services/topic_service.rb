@@ -232,6 +232,9 @@ class TopicService
     end
 
     created_event = topicable.created_event
+    Event.where(eventable: topicable, kind: topicable.created_event_kind.to_s)
+         .where.not(id: created_event.id)
+         .destroy_all
     Event.where(topic_id: topic.id, sequence_id: 0).where.not(id: created_event.id).update_all(sequence_id: nil, position: 0, position_key: nil)
     created_event.update_columns(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
