@@ -2405,6 +2405,8 @@ el:
     email_placeholder: εσείς{'@'}example.com
     turnstile_required: Ολοκληρώστε την επαλήθευση πριν συνεχίσετε.
     invalid_login: Δεν είναι δυνατή η σύνδεσή σας με αυτά τα στοιχεία
+    login_link_rate_limited: Ζητήθηκαν πάρα πολλά μηνύματα ηλεκτρονικού ταχυδρομείου σύνδεσης από αυτό το δίκτυο. Περιμένετε μία ώρα και δοκιμάστε ξανά.
+    send_login_link_error: Παρουσιάστηκε κάποιο πρόβλημα κατά την αποστολή του email σύνδεσης. Δοκιμάστε ξανά.
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

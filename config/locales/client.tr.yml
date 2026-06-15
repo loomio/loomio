@@ -2405,6 +2405,8 @@ tr:
     email_placeholder: sen{'@'}example.com
     turnstile_required: Lütfen devam etmeden önce doğrulama işlemini tamamlayın.
     invalid_login: Bu bilgilerle giriş yapamıyoruz.
+    login_link_rate_limited: Bu ağdan çok fazla oturum açma e-postası talep edildi. Lütfen bir saat bekleyin ve tekrar deneyin.
+    send_login_link_error: Giriş e-postası gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

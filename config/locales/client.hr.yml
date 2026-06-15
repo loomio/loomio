@@ -2405,6 +2405,8 @@ hr:
     email_placeholder: vi{'@'}primjer.com
     turnstile_required: Molimo Vas da dovršite provjeru prije nego što nastavite.
     invalid_login: Ne mogu vas prijaviti s tim podacima
+    login_link_rate_limited: Previše je e-poruka za prijavu zatraženo s ove mreže. Pričekajte sat vremena i pokušajte ponovno.
+    send_login_link_error: Došlo je do pogreške prilikom slanja e-pošte za prijavu. Pokušajte ponovno.
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu

@@ -2405,6 +2405,8 @@ fi:
     email_placeholder: sinä{'@'}esimerkki.com
     turnstile_required: Suorita vahvistus loppuun ennen jatkamista.
     invalid_login: Sinua ei voida kirjata sisään näillä tiedoilla
+    login_link_rate_limited: Liian monta kirjautumissähköpostia pyydettiin tästä verkosta. Odota tunti ja yritä uudelleen.
+    send_login_link_error: Kirjautumissähköpostin lähettämisessä tapahtui virhe. Yritä uudelleen.
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

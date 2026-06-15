@@ -2439,6 +2439,8 @@ es:
     email_placeholder: tu{'@'}ejemplo.com
     turnstile_required: Por favor, complete la verificación antes de continuar.
     invalid_login: No se puede iniciar sesión con esos datos.
+    login_link_rate_limited: Se han solicitado demasiados correos electrónicos de inicio de sesión desde esta red. Por favor, espera una hora e inténtalo de nuevo.
+    send_login_link_error: Se produjo un error al enviar el correo electrónico de inicio de sesión. Inténtalo de nuevo.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba

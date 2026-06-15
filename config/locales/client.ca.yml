@@ -2430,6 +2430,8 @@ ca:
     email_placeholder: tu{'@'}example.com
     turnstile_required: Si us plau, completeu la verificació abans de continuar.
     invalid_login: No es pot iniciar la sessió amb aquestes dades
+    login_link_rate_limited: S'han sol·licitat massa correus electrònics d'inici de sessió des d'aquesta xarxa. Espereu una hora i torneu-ho a provar.
+    send_login_link_error: S'ha produït un error en enviar el correu electrònic d'inici de sessió. Torna-ho a provar.
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

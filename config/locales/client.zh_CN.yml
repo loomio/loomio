@@ -2626,6 +2626,8 @@ zh_CN:
     reactivate: 重新激活帐户
     turnstile_required: 请先完成验证再继续。
     invalid_login: 无法使用您提供的信息登录。
+    login_link_rate_limited: 此网络请求的登录邮件过多。请稍等一小时后重试。
+    send_login_link_error: 登录邮件发送失败，请重试。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接

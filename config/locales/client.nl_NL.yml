@@ -2430,6 +2430,8 @@ nl_NL:
     email_placeholder: jij{'@'}voorbeeld.com
     turnstile_required: Voltooi de verificatie voordat u verdergaat.
     invalid_login: Het lukt niet om u met deze gegevens in te loggen.
+    login_link_rate_limited: Er zijn te veel aanmeldings-e-mailadressen aangevraagd vanuit dit netwerk. Wacht een uur en probeer het opnieuw.
+    send_login_link_error: Er is iets misgegaan bij het verzenden van de inlogmail. Probeer het opnieuw.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

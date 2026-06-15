@@ -2447,6 +2447,8 @@ fr:
     email_placeholder: vous{'@'}exemple.com
     turnstile_required: Veuillez effectuer la vérification avant de continuer.
     invalid_login: Impossible de vous connecter avec ces informations.
+    login_link_rate_limited: Trop d'adresses e-mail de connexion ont été demandées à ce réseau. Veuillez patienter une heure et réessayer.
+    send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Veuillez réessayer.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

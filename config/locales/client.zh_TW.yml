@@ -2431,6 +2431,8 @@ zh_TW:
     email_placeholder: 您{'@'}example.com
     turnstile_required: 請先完成驗證再繼續。
     invalid_login: 無法使用您提供的資訊登入。
+    login_link_rate_limited: 此網路請求的登入郵件過多。請稍等一小時後重試。
+    send_login_link_error: 登入郵件發送失敗，請重試。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

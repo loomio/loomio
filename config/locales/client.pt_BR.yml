@@ -2451,6 +2451,8 @@ pt_BR:
     email_placeholder: você{'@'}exemplo.com
     turnstile_required: Por favor, conclua a verificação antes de prosseguir.
     invalid_login: Não foi possível efetuar o seu login com esses dados.
+    login_link_rate_limited: Foram solicitadas muitas mensagens de e-mail para login desta rede. Aguarde uma hora e tente novamente.
+    send_login_link_error: Ocorreu um erro ao enviar o e-mail de login. Tente novamente.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

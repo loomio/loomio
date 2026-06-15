@@ -2412,6 +2412,8 @@ hu:
     email_placeholder: te{'@'}example.com
     turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
     invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
+    login_link_rate_limited: Túl sok bejelentkezési e-mailt kértek erről a hálózatról. Kérjük, várjon egy órát, és próbálja újra.
+    send_login_link_error: Hiba történt a bejelentkezési e-mail elküldésekor. Kérjük, próbálja újra.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

@@ -97,6 +97,12 @@ languages in the Nov 2025 pass.
 - **after:** Lock threads to prevent people from commenting or making further changes
 - **why it was wrong:** The original text claimed locking "removes threads from the list of open threads," which is no longer true — the default discussions panel now shows all threads (both locked and unlocked). The new text accurately describes what locking does: prevents further comments and changes.
 
+## 2026-06-16 — login_link_rate_limited / send_login_link_error
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.es.yml` | `auth_form.login_link_rate_limited` | `espere una hora e inténtelo de nuevo` | `espera una hora e inténtalo de nuevo` | Formal `usted` imperatives; app uses `tú` throughout |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

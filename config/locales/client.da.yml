@@ -2405,6 +2405,8 @@ da:
     email_placeholder: du{'@'}eksempel.com
     turnstile_required: Færdiggør venligst bekræftelsen, før du fortsætter.
     invalid_login: Kan ikke logge dig ind med disse oplysninger
+    login_link_rate_limited: Der er anmodet om for mange login-e-mails fra dette netværk. Vent en time, og prøv igen.
+    send_login_link_error: Noget gik galt under afsendelsen af login-e-mailen. Prøv igen.
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

@@ -2424,6 +2424,8 @@ he:
     email_placeholder: אתה{'@'}example.com
     turnstile_required: אנא השלם את האימות לפני שתמשיך.
     invalid_login: לא ניתן להתחבר אותך עם הפרטים האלה
+    login_link_rate_limited: יותר מדי כתובות דוא"ל לכניסה נדרשות מרשת זו. אנא המתן שעה ונסה שוב.
+    send_login_link_error: משהו השתבש בשליחת אימייל הכניסה. אנא נסה שוב.
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

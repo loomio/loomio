@@ -2433,6 +2433,8 @@ it:
     email_placeholder: tu{'@'}esempio.com
     turnstile_required: Si prega di completare la verifica prima di continuare.
     invalid_login: Impossibile accedere con queste credenziali
+    login_link_rate_limited: Sono state richieste troppe email di accesso da questa rete. Attendi un'ora e riprova.
+    send_login_link_error: Si è verificato un errore durante l'invio dell'email di accesso. Riprova.
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

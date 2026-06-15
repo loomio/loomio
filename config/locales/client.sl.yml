@@ -2405,6 +2405,8 @@ sl:
     email_placeholder: vi{'@'}example.com
     turnstile_required: Pred nadaljevanjem opravite preverjanje.
     invalid_login: S temi podatki vas ni mogoče prijaviti
+    login_link_rate_limited: Iz tega omrežja je bilo zahtevanih preveč prijavnih e-poštnih naslovov. Počakajte eno uro in poskusite znova.
+    send_login_link_error: Pri pošiljanju prijavnega e-poštnega sporočila je prišlo do napake. Poskusite znova.
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava
