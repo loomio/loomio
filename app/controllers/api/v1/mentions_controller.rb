@@ -7,10 +7,8 @@ class Api::V1::MentionsController < ApplicationController
     load_and_authorize(:group, optional: true)
     group_id = @topic&.group_id || @group&.id
 
-    if @topic
-      @topic.members.mention_search(params_query).limit(50).each do |user|
-        mentionables << user_mention(user)
-      end
+    mentionable_users.mention_search(params_query).limit(50).each do |user|
+      mentionables << user_mention(user)
     end
 
     if group_id
@@ -32,6 +30,13 @@ class Api::V1::MentionsController < ApplicationController
 
   def params_query
     String(params[:q]).strip.delete("\u0000")
+  end
+
+  def mentionable_users
+    return @topic.members if @topic
+    return @group.members.active if @group
+
+    User.none
   end
 
   def group_mention(group)
