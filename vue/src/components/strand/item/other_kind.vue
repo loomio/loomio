@@ -24,9 +24,12 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-other-kind.text-body-2
-  span.text-medium-emphasis(v-html='headline')
-  mid-dot.text-medium-emphasis
-  time-ago.text-medium-emphasis(:date='event.createdAt')
-  //formatted-text.thread-item__body(:model="eventable" field="statement")
+strand-item-headline(:event="event" :eventable="eventable")
 </template>
+
+<style>
+.strand-other-kind .actor-link {
+
+}
+
+</style>

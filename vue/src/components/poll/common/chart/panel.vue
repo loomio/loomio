@@ -74,7 +74,7 @@ export default {
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
     template(v-if="poll.decidedVotersCount > 0 && !hideViewAllVotes")
       mid-dot
-      router-link(:to="'/p/' + poll.key + '/votes'")
+      router-link.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
         span(v-t="'poll_common.view_all_votes'")
     //template(v-if="poll.quorumPct")
     //  br

@@ -14,8 +14,8 @@ class Api::V1::RegistrationsController < ApplicationController
       save_detected_locale(resource)
       if @email_can_be_verified
         sign_in resource
-        flash[:notice] = t(:'auth_form.signed_in')
-        render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
+        flash[:notice] = t('auth_form.signed_in')
+        render json: Boot::User.new(resource, root_url: URI(root_url).origin, flash: flash).payload.merge({ success: :ok, signed_in: true })
       else
         LoginTokenService.create(actor: resource, uri: referrer_uri)
         render json: { success: :ok, signed_in: false }

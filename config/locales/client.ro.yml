@@ -155,6 +155,9 @@ ro:
     no_tags_in_group: Acest grup nu are încă etichete de categorie
     only_admins_can_edit_tags: Ne pare rău, numai administratorii %{group} pot crea, redenumi sau șterge etichete
     pick_a_color: Alege o culoare
+    filter_placeholder: Filtrează etichetele
+    new_named_tag: Etichetă nouă „%{name}”
+    edit_tags: Editează etichetele
   poll_types:
     proposal: propunere
     count: înscriere
@@ -2402,6 +2405,8 @@ ro:
     email_placeholder: tu{'@'}exemplu.com
     turnstile_required: Vă rugăm să finalizați verificarea înainte de a continua.
     invalid_login: Nu te pot conecta cu aceste detalii
+    login_link_rate_limited: Prea multe adrese de e-mail de conectare solicitate din această rețea. Vă rugăm să așteptați o oră și să încercați din nou.
+    send_login_link_error: Ceva nu a funcționat la trimiterea e-mailului de conectare. Vă rugăm să încercați din nou.
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

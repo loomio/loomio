@@ -4,7 +4,6 @@ class MergeUsersControllerTest < ActionController::TestCase
   setup do
     @source_user = users(:user)
     @target_user = users(:alien)
-    MergeUsersService.prep_for_merge!(source_user: @source_user)
     sign_in @target_user
     @valid_hash = MergeUsersService.build_merge_hash(source_user: @source_user, target_user: @target_user)
   end
@@ -54,6 +53,17 @@ class MergeUsersControllerTest < ActionController::TestCase
     assert_response 422
   end
 
+  test "confirm remains valid after source secret token rotates" do
+    @source_user.update!(secret_token: User.generate_unique_secure_token)
+
+    get :confirm, params: {
+      source_id: @source_user.id,
+      target_id: @target_user.id,
+      hash: @valid_hash
+    }
+    assert_response 200
+  end
+
   test "merge with valid hash succeeds" do
     post :merge, params: {
       source_id: @source_user.id,
@@ -71,10 +81,8 @@ class MergeUsersControllerTest < ActionController::TestCase
     }
     assert_response 200
 
-    # After a successful merge, the hash is invalidated (secret_token rotated)
-    # and the source account is deactivated by the worker. Replaying the same
-    # hash from a second request must not succeed — 404 or 422 are both valid
-    # outcomes (404 from deactivated user, 422 from stale hash).
+    # After a successful merge, the source account is deactivated immediately.
+    # Replaying the same hash from a second request must not succeed.
     post :merge, params: {
       source_id: @source_user.id,
       target_id: @target_user.id,

@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template lang="pug">
-p.common-notifications-count.text-medium-emphasis.text-caption.mb-2
+p.common-notifications-count.text-medium-emphasis.text-body-small.mb-2
   span(v-if="model.groupId && model.group().membershipsCount < 2" v-t="'announcement.form.group_has_no_members_yet'")
   template(v-else)
     template(v-if="model.notifyRecipients")

@@ -132,7 +132,7 @@ export default
       :class="{'poll-common-vote-form--preview': isScheduled}"
       :style="isScheduled ? 'position: relative' : ''"
     )
-      h3.text-h6.py-3.text-high-emphasis(v-if="!isScheduled" v-t="'poll_common.have_your_say'")
+      h3.text-title-large.py-3.text-high-emphasis(v-if="!isScheduled" v-t="'poll_common.have_your_say'")
       poll-common-directive(:stance='stance' name='vote-form' :key="poll.id")
       v-overlay(v-if="isScheduled" contained model-value persistent opacity="0.25")
 

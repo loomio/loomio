@@ -155,6 +155,9 @@ sl:
     no_tags_in_group: Ta skupina še nima oznak kategorij
     only_admins_can_edit_tags: Oprostite, samo skrbniki skupine %{group} lahko ustvarjajo, preimenujejo ali brišejo oznake
     pick_a_color: Izberite barvo
+    filter_placeholder: Filtriraj oznake
+    new_named_tag: Nova oznaka »%{name}«
+    edit_tags: Uredi oznake
   poll_types:
     proposal: snubitev
     count: privolitev
@@ -2402,6 +2405,8 @@ sl:
     email_placeholder: vi{'@'}example.com
     turnstile_required: Pred nadaljevanjem opravite preverjanje.
     invalid_login: S temi podatki vas ni mogoče prijaviti
+    login_link_rate_limited: Iz tega omrežja je bilo zahtevanih preveč prijavnih e-poštnih naslovov. Počakajte eno uro in poskusite znova.
+    send_login_link_error: Pri pošiljanju prijavnega e-poštnega sporočila je prišlo do napake. Poskusite znova.
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

@@ -63,13 +63,13 @@ v-card.auth-form(:title="$t('auth_form.sign_up_or_log_in', { site_name: siteName
   template(v-slot:append)
     dismiss-modal-button(v-if='!preventClose')
   v-sheet
-    //- p.text-h5.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
-    //- p.text-h5.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
-    //- p.text-h5.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
-    p.text-center.text-caption(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
+    //- p.text-headline-small.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
+    //- p.text-headline-small.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
+    //- p.text-headline-small.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
+    p.text-center.text-body-small(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
     auth-provider-form(:user='user')
     auth-email-form.mt-4(:user='user' v-if='emailLogin')
-    .d-flex.text-caption.mt-4.justify-space-between.pa-4.text-medium-emphasis
+    .d-flex.text-body-small.mt-4.justify-space-between.pa-4.text-medium-emphasis
       a.text-medium-emphasis(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")
       space
       a.auth-form__sign-in-help.text-medium-emphasis(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")

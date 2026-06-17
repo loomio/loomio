@@ -233,8 +233,6 @@ v-form(ref="form" @submit.prevent="submit")
           v-model='discussion.title' maxlength='255'
         )
 
-        tags-field(:model="discussion")
-
         lmo-textarea(
           :model='discussion'
           field="description"
@@ -243,7 +241,7 @@ v-form(ref="form" @submit.prevent="submit")
         )
 
         template(v-if="!discussion.id && suggestedPollTemplates.length")
-          .text-subtitle-2.text-medium-emphasis.mt-4(v-t="'discussion_form.recommended_poll_templates'")
+          .text-title-small.text-medium-emphasis.mt-4(v-t="'discussion_form.recommended_poll_templates'")
           v-card.mt-2
             v-list-item(v-for="pt in suggestedPollTemplates" :key="pt.id || pt.key" lines="two")
               v-list-item-title {{ pt.processName }}

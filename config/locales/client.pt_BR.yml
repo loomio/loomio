@@ -163,6 +163,9 @@ pt_BR:
     no_tags_in_group: Este grupo ainda não tem tags de categoria
     only_admins_can_edit_tags: Desculpe, apenas os administradores do %{group} podem criar, renomear ou excluir tags
     pick_a_color: Escolha uma cor
+    filter_placeholder: Filtrar tags
+    new_named_tag: Nova tag "%{name}"
+    edit_tags: Editar tags
   poll_types:
     proposal: proposta
     count: opt-in
@@ -2448,6 +2451,8 @@ pt_BR:
     email_placeholder: você{'@'}exemplo.com
     turnstile_required: Por favor, conclua a verificação antes de prosseguir.
     invalid_login: Não foi possível efetuar o seu login com esses dados.
+    login_link_rate_limited: Foram solicitadas muitas mensagens de e-mail para login desta rede. Aguarde uma hora e tente novamente.
+    send_login_link_error: Ocorreu um erro ao enviar o e-mail de login. Tente novamente.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

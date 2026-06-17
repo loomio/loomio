@@ -58,6 +58,10 @@ export default new class AbilityService {
     (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
   }
 
+  canEditTags(topic) {
+    return topic.adminsInclude(Session.user());
+  }
+
   canPinEvent(event) {
     const topic = event.topic();
     return (event.depth === 1) &&

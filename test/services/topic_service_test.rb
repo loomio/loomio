@@ -80,6 +80,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @poll_created_event.parent_id
   end
 
+
   test "repair clears stale parent from root event" do
     poll = PollService.create(params: {
       title: "Standalone Poll",
