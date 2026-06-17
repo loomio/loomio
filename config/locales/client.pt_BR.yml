@@ -16,9 +16,9 @@ pt_BR:
     taken_first_step: Você deu o primeiro passo para a tomada de decisões colaborativas com o Loomio.
     account_created_for_you: Criamos uma conta de usuário para %{email} e um grupo no Loomio.
     please_sign_in_to_continue: Faça login para continuar.
-    please_complete_this_field: Por favor preencha este campo
-    please_enter_a_valid_email_address: Por favor insira um endereço de e-mail válido
-    please_accept_the_terms: Por favor, aceite os termos
+    please_complete_this_field: Preencha este campo
+    please_enter_a_valid_email_address: Insira um endereço de e-mail válido
+    please_accept_the_terms: Aceite os termos
     how_did_you_hear_about_loomio: Como você ouviu falar do Loomio?
     newsletter_intro: Gostaria de saber sobre novos recursos, entrevistas com clientes, estudos de caso e anúncios da equipe da Loomio?
   tasks:
@@ -120,7 +120,7 @@ pt_BR:
     free_trial: Teste gratuíto. Restam %{days} dias.
     trial_expired: Seu período de teste terminou. Assine um pacote para continuar utilizando o Loomio.
     tooltip: Nossos preços são fantásticos! Assine um pacote hoje para aproveitar o que o Loomio poder oferecer para o seu grupo.
-    was_gift_trial: 'Seu grupo utiliza o Loomio de graça desde %{createdDate}. Não é possível continuar oferecendo um serviço gratuito. Por favor assine para continuar utilizando o Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Leia mais.</a>'
+    was_gift_trial: 'Seu grupo utiliza o Loomio de graça desde %{createdDate}. Não é possível continuar oferecendo um serviço gratuito. Assine para continuar utilizando o Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Leia mais.</a>'
     was_gift_remaining: Faltam %{days} dias.
     was_gift_expired: Seu plano gratis acaba de expirar.
     was_gift_expired_or_mistake: 'Seu plano gratuito expirou. Se você acha que houve um erro, <a style=''text-decoration: underline'' href=''/contact''>entre em contato conosco</a> .'
@@ -188,7 +188,7 @@ pt_BR:
     loomio_help: Loomio ajuda
     visit_loomio_help: Visite a ajuda do Loomio
     help_and_guides: Ajuda e guias
-    please_wait: Por favor, aguarde
+    please_wait: Aguarde
     optional: "(Opcional)"
     version: Versão
     none: Nenhum
@@ -214,7 +214,7 @@ pt_BR:
     confirm_discard_changes: Descartar suas alterações?
     something_went_wrong: Ué! algo deu errado
     check_for_errors_and_try_again: Verifique se há erros no formulário e tente novamente
-    please_try_again: Por favor, tente novamente
+    please_try_again: Tente novamente
     time:
       am: am
       pm: pm
@@ -382,9 +382,9 @@ pt_BR:
     forbidden: Você não tem permissão para fazer isso.
     forbidden_view: Você não tem permissão para ver isso.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.
-    internal_server_error: Lamentamos, mas algo deu errado. Por favor, tente novamente.
+    internal_server_error: Lamentamos, mas algo deu errado. Tente novamente.
   verify_email_notice:
-    please_verify: Obrigada por participar! Por favor cheque seu email para um link que verificará seu voto.
+    please_verify: Obrigado por participar. Confira seu e-mail para acessar o link que verificará seu voto.
   previous_polls_page:
     heading: Atividades em %{name}
     polls_count: Mostrando %{loaded} de %{total} decisoões
@@ -519,7 +519,7 @@ pt_BR:
     password_confirmation_label: 'Mesma senha novamente:'
   signed_out_modal:
     title: Sua sessão foi encerrada
-    message: Você foi desconectado em outra janela. Por favor, entre novamente para continuar.
+    message: Você foi desconectado em outra janela. Entre novamente para continuar.
     ok: Ok
     aria_label: Sessão encerrada
   comment_form:
@@ -942,7 +942,7 @@ pt_BR:
       who_to_invite: Quem você gostaria de convidar?
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Mensagem
-      invitation_message_default: Criei este grupo Loomio para nos ajudar a tomar decisões juntos. Por favor, aceite meu convite. Leva apenas um minuto para entrar. Obrigado.
+      invitation_message_default: Criei este grupo Loomio para nos ajudar a tomar decisões juntos. Aceite meu convite. Leva apenas um minuto para entrar. Obrigado.
       group_announced:
         title: Convidar para o grupo
         helptext: Quem você gostaria de convidar para o grupo?
@@ -1394,7 +1394,7 @@ pt_BR:
     upload_logo: Enviar logo
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
-    default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
+    default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Apresente-se e explique por que você está solicitando para participar.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
     share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
     aria_label: Formulário de grupo
@@ -1470,7 +1470,7 @@ pt_BR:
     messages:
       invitation_sent: Convite enviado.
       invitations_sent: "%{count} convites enviados."
-      no_invitations: Uou! Por favor verifique se o endereço de email abaixo está correto e tente novamente.
+      no_invitations: Uou! Verifique se o endereço de email abaixo está correto e tente novamente.
       max_invitations: Se você quiser enviar mais de 100 convites, use um link de equipe.
     copy_to_clipboard: Copiar para a área de transferência
     already_chatting_somewhere: Já está conversando em algum lugar?
@@ -1560,7 +1560,7 @@ pt_BR:
     email_label: E-mail
     short_bio_label: Apresentação
     locale_label: Idioma
-    short_bio_placeholder: Por favor, apresente-se. Inclua suas áreas de conhecimento, os assuntos do seu interesse, e sua filiação a qualquer organização.
+    short_bio_placeholder: Apresente-se. Inclua suas áreas de conhecimento, assuntos de interesse e filiação a organizações.
     locale_placeholder: Selecione a lingua de preferencia
     location_label: Localização
     location_placeholder: Onde você está?
@@ -1587,7 +1587,7 @@ pt_BR:
     aria_label: Formulário para foto de perfil
   change_password_form:
     set_password_title: Escolha sua senha
-    set_password_helptext: Por favor digite sua senha - mínimo de 8 caracteres
+    set_password_helptext: Digite uma senha com pelo menos 8 caracteres
     set_password: Configurar a senha
     password_changed: Sua senha foi atualizada
   deactivation_modal:
@@ -1723,7 +1723,7 @@ pt_BR:
       <p>Próxima etapa, <a href="%{upgradeUrl}" target="_blank">escolha um plano</a> para continuar colaborando no Loomio.</p>
     subscription_canceled: |
       <p>Sua assinatura não está ativa.</p>
-      <p>Por favor <a href="%{upgradeUrl}" target="_blank">atualize</a>para continuar usando o Loomio.</p>
+      <p><a href="%{upgradeUrl}" target="_blank">Atualize</a> para continuar usando o Loomio.</p>
     activity: Atividade
     activity_placeholder: Ainda sem atividade!
     load_previous: Carregar atividade anterior
@@ -1811,7 +1811,7 @@ pt_BR:
     question: Isso excluirá permanentemente este comentário. Se você continuar, não poderá ser restaurado.
   contact_message_form:
     alt_title: Entre em contato com o suporte do Loomio
-    need_message: Por favor, digite uma mensagem para que possamos ajudá-lo :-)
+    need_message: Digite uma mensagem para que possamos ajudá-lo :-)
     respond_asap: Envie uma mensagem para a equipe Loomio e responderemos o mais breve possível.
     happy_to_help_with: Teremos prazer em ajudar com dúvidas de vendas, solicitações de suporte, solicitações de recursos, relatórios de bugs ou problemas que você esteja enfrentando.
     title: Olá! Como podemos ajudar?
@@ -1826,7 +1826,7 @@ pt_BR:
     email_label: Seu endereço de e-mail
     email_placeholder: Digite seu endereço de e-mail...
     message_label: Sua mensagem
-    message_placeholder: Se estiver pedindo suporte, por favor tente incluir o máximo de informações que você puder.
+    message_placeholder: Se estiver pedindo suporte, tente incluir o máximo de informações que você puder.
     send_message: Enviar Mensagem
     new_contact_message: Obrigado por entrar em contato; nós responderemos em breve!
     consent_message: |
@@ -1949,7 +1949,7 @@ pt_BR:
     have_your_say: Dê a sua opinião
     your_response: Sua resposta
     change_your_response: Editar resposta
-    please_vote: Por favor vote
+    please_vote: Vote
     reason: Motivo
     response: Resposta
     reason_placeholder: Explique resumidamente por que você votou dessa maneira e clique em 'Enviar voto'
@@ -2282,7 +2282,7 @@ pt_BR:
     new_time_slot: Nova opção de horário
     closing_hour: Hora de fechamento
   poll_proposal_vote_form:
-    default_reason_placeholder: Explique seu raciocínio por favor
+    default_reason_placeholder: Explique seu raciocínio
     abstain_reason_placeholder: Deixe as pessoas saberem porque você está se abstendo dessa decisão
     agree_reason_placeholder: O que você gosta na proposta e como ela pode beneficiar o grupo?
     disagree_reason_placeholder: Como essa proposta pode melhorar para que você dê seu apoio?
@@ -2411,11 +2411,11 @@ pt_BR:
     login_link_helptext: Clique no botão abaixo e nós enviaremos um link para você entrar.
     enter_your_password: Digite sua senha para continuar
     check_spam_folder: Se um email não chegar logo, verifique sua pasta de Mensagens Indesejadas (Spam).
-    sign_up_helptext: Por favor, complete esse formulário para criar seu perfil de usuário
+    sign_up_helptext: Complete esse formulário para criar seu perfil de usuário
     i_accept_all: Eu aceito os %{termsLink} e %{privacyLink}
     newsletter_label: Eu quero receber o %{link}
     name_placeholder: Seu nome
-    name_required: Por favor digite um nome
+    name_required: Digite um nome
     terms_required: Você deve concordar como os Termos de Serviço
     account_inactive: Uou! Parece que essa conta para %{email} foi desativada!
     privacy_notice: Nunca venderemos seus dados. <br><a href='%{privacyUrl}' target='_blank'>Política de privacidade</a>
@@ -2449,7 +2449,7 @@ pt_BR:
     want_to_set_password: Quer fazer login com uma senha na próxima vez?
     change_your_password: Gostaria de definir uma nova senha?
     email_placeholder: você{'@'}exemplo.com
-    turnstile_required: Por favor, conclua a verificação antes de prosseguir.
+    turnstile_required: Conclua a verificação antes de prosseguir.
     invalid_login: Não foi possível efetuar o seu login com esses dados.
     login_link_rate_limited: Foram solicitadas muitas mensagens de e-mail para login desta rede. Aguarde uma hora e tente novamente.
     send_login_link_error: Ocorreu um erro ao enviar o e-mail de login. Tente novamente.
@@ -2681,8 +2681,8 @@ pt_BR:
     hide_advanced_settings: Ocultar configurações avançadas
     choose_at_least: Escolha pelo menos
     choose_at_most: Escolha no máximo
-    please_review_the_form: Por favor, revise o formulário
-    option_added_please_add_details: Opção adicionada! Por favor, adicione alguns detalhes para que as pessoas saibam o que significa.
+    please_review_the_form: Revise o formulário
+    option_added_please_add_details: Opção adicionada. Adicione alguns detalhes para que as pessoas saibam o que significa.
     default_duration_in_days: Duração padrão em dias
     how_many_options_can_a_voter_choose: Quantas opções um eleitor pode escolher?
     minimum_choices: Escolhas mínimas
