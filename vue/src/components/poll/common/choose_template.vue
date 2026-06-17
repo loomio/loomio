@@ -165,7 +165,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userCanCreateTemplates")
       v-spacer
-      v-btn(variant="tonal" size="small" :to="'/poll_templates/browse?group_id='+group.id+'&return_to='+returnTo")
+      v-btn(variant="tonal" :to="'/poll_templates/browse?group_id='+group.id+'&return_to='+returnTo")
         span.text-medium-emphasis(v-t="'discussion_form.new_template'")
   v-list.decision-tools-card__poll-types(lines="two" density="comfortable")
 

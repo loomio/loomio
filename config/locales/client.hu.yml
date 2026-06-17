@@ -157,6 +157,9 @@ hu:
     no_tags_in_group: Ebben a csoportban még nincsenek kategóriacímkék
     only_admins_can_edit_tags: Sajnáljuk, csak a(z) %{group} adminisztrátorai hozhatnak létre, nevezhetnek át vagy törölhetnek címkéket
     pick_a_color: Válasszon egy színt
+    filter_placeholder: Címkék szűrése
+    new_named_tag: 'Új címke: „%{name}”'
+    edit_tags: Címkék szerkesztése
   poll_types:
     proposal: javaslat
     count: feliratkozás
@@ -2409,6 +2412,8 @@ hu:
     email_placeholder: te{'@'}example.com
     turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
     invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
+    login_link_rate_limited: Túl sok bejelentkezési e-mailt kértek erről a hálózatról. Kérjük, várjon egy órát, és próbálja újra.
+    send_login_link_error: Hiba történt a bejelentkezési e-mail elküldésekor. Kérjük, próbálja újra.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

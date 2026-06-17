@@ -172,7 +172,7 @@ export default new class TopicService {
       },
 
       export_thread: {
-      name: 'common.action.print',
+        name: 'common.action.print',
         icon: 'mdi-printer-outline',
         dock: 0,
         collection: 'actions',
@@ -188,6 +188,43 @@ export default new class TopicService {
           }
         }
       },
+
+      edit_discussion: {
+        name: 'common.action.edit',
+        icon: 'mdi-pencil',
+        // collection: 'actions',
+        canPerform() {
+          return topic.topicableType === 'Discussion' && AbilityService.canEditDiscussion(topic.topicable());
+        },
+        to() { return `/d/${topic.topicable().key}/edit`; }
+      },
+
+      edit_poll: {
+        name: 'action_dock.edit_poll_type',
+        nameArgs() { return {pollType: topic.topicable().translatedPollType()}; },
+        icon: 'mdi-pencil',
+        collection: 'actions',
+        canPerform() {
+          return topic.topicableType === 'Poll' && AbilityService.canEditPoll(topic.topicable());
+        },
+        to() { return `/p/${topic.topicable().key}/edit`; }
+      },
+
+      edit_tags: {
+        icon: 'mdi-tag-plus-outline',
+        name: 'loomio_tags.apply_tags',
+        // collection: 'actions',
+        canPerform() {
+          return AbilityService.canEditTags(topic);
+        },
+        perform() {
+          return openModal({
+            component: 'TopicTagsModal',
+            props: { topic }
+          });
+        }
+      },
+
 
       move_thread: {
         name: 'action_dock.move_thread',

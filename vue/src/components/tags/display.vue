@@ -1,43 +1,49 @@
-<script lang="js">
+<script setup lang="js">
 import Records from '@/shared/services/records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
+import { ref, computed, onMounted } from 'vue';
 
-export default {
-  props: {
-    tags: Array,
-    group: Object,
-    showCounts: Boolean,
-    showOrgCounts: Boolean,
-    selected: String,
-    size: {
-      type: String,
-      default: 'small'
-    },
-    selected: String
-  },
-
-  computed: {
-    groupKey() {
-      return this.group.key;
-    },
-
-    byName() {
-      const res = {};
-      this.group.tags().forEach(t => res[t.name] = t);
-      return res;
-    },
-    tagObjects() {
-      return this.tags.map((name, i) => {
-        return {
-          id: i,
-          name,
-          color: (this.byName[name] || {}).color,
-          taggingsCount: (this.byName[name] || {}).taggingsCount
-        };
-      });
-    }
+const { tags, group, showCounts, showOrgCounts, selected, size } = defineProps({
+  tags: Array,
+  group: Object,
+  showCounts: Boolean,
+  showOrgCounts: Boolean,
+  selected: String,
+  size: {
+    type: String,
+    default: 'small'
   }
-};
+});
 
+const { watchRecords } = useWatchRecords();
+const allTags = ref([]);
+
+onMounted(() => {
+  allTags.value = group.tags();
+  watchRecords({
+    collections: ['tags'],
+    query: () => { allTags.value = group.tags(); }
+  });
+});
+
+const groupKey = computed(() => group.key);
+
+const byName = computed(() => {
+  const res = {};
+  allTags.value.forEach(t => res[t.name] = t);
+  return res;
+});
+
+const tagObjects = computed(() => {
+  return tags.map((name, i) => {
+    return {
+      id: i,
+      name,
+      color: (byName.value[name] || {}).color,
+      taggingsCount: (byName.value[name] || {}).taggingsCount
+    };
+  });
+});
 </script>
 <template lang="pug">
 span.tags-display

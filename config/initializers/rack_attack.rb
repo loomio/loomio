@@ -91,7 +91,7 @@ class Rack::Attack
     '/api/v1/announcements' => 100,
     '/api/v1/groups' => 20,
     '/api/v1/templates' => 10,
-    '/api/v1/login_tokens' => 10,
+    '/api/v1/login_tokens' => 50,
     '/api/v1/membership_requests' => 100,
     '/api/v1/memberships' => 100,
     '/api/v1/identities' => 10,

@@ -8,7 +8,7 @@ class DestroyTagWorker
     Tag.transaction do
       Tag.where(group_id: group_ids, name: name).destroy_all
 
-      Topic.where(group_id: group_ids).where.contains(tags: [name]).find_each do |t|
+      Topic.where(group_id: group_ids).where("topics.tags @> ARRAY[?]::varchar[]", name).find_each do |t|
         t.update_column(:tags, t.tags - Array(name))
       end
     end

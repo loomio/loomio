@@ -161,6 +161,9 @@ de:
     no_tags_in_group: Diese Gruppe hat bis jetzt noch keine Schlagwörter
     only_admins_can_edit_tags: Leider können nur Administratoren von %{group} Schlagwörter erstellen, umbenennen oder löschen
     pick_a_color: Wählen Sie eine Farbe
+    filter_placeholder: Schlagwörter filtern
+    new_named_tag: Neues Schlagwort "%{name}"
+    edit_tags: Schlagwörter bearbeiten
   poll_types:
     proposal: Vorschlag
     count: Opt-in
@@ -2435,6 +2438,8 @@ de:
     email_placeholder: Sie{'@'}example.com
     turnstile_required: Bitte schließen Sie die Überprüfung ab, bevor Sie fortfahren.
     invalid_login: Anmeldung mit diesen Daten nicht möglich
+    login_link_rate_limited: Es wurden zu viele Anmelde-E-Mails von diesem Netzwerk angefordert. Bitte warten Sie eine Stunde und versuchen Sie es erneut.
+    send_login_link_error: Beim Senden der Anmelde-E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

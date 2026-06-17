@@ -163,6 +163,9 @@ fr:
     no_tags_in_group: Le groupe n'a pas encore de tags de catégories
     only_admins_can_edit_tags: Excuse-moi, juste les admins du %{group} peuvent créer, renommer ou supprimer des tags
     pick_a_color: Choisis une couleur
+    filter_placeholder: Filtrer les mots-clés
+    new_named_tag: Nouveau mot-clé « %{name} »
+    edit_tags: Modifier les mots-clés
   poll_types:
     proposal: Proposition
     count: opt-in
@@ -2439,11 +2442,13 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
-    want_to_set_password: Tu souhaites te connecter avec un mot de passe la prochaine fois ?
+    want_to_set_password: Tu souhaites te connecter avec un mot de passe la prochaine fois ?
     change_your_password: Souhaites-tu définir un nouveau mot de passe ?
     email_placeholder: toi{'@'}exemple.com
     turnstile_required: Effectue la vérification avant de continuer.
     invalid_login: Impossible de te connecter avec ces informations.
+    login_link_rate_limited: Trop d'e-mails de connexion ont été demandés depuis ce réseau. Attends une heure et réessaie.
+    send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Réessaie.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

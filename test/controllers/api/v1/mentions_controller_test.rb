@@ -65,6 +65,36 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     refute_includes handles, group.handle
   end
 
+  test "returns users for group" do
+    signed_in_user = users(:admin)
+    mentioned_user = User.create!(
+      name: "Quorum McGee",
+      email: "quorum-mcgee@example.com",
+      username: "quorummcgee",
+      email_verified: true
+    )
+
+    other_user = User.create!(
+      name: "Other User",
+      email: "othergroupmentions@example.com",
+      username: "othergroupmentions",
+      email_verified: true
+    )
+
+    group = groups(:group)
+    group.add_member! mentioned_user
+
+    sign_in signed_in_user
+    get :index, params: { group_id: group.id, q: 'quor' }
+    assert_response :success
+
+    rows = JSON.parse(response.body)
+    handles = rows.map { |row| row['handle'] }
+
+    assert_includes handles, mentioned_user.username
+    refute_includes handles, other_user.username
+  end
+
   test "returns users for topic" do
     admin = users(:admin)
     user = users(:user)

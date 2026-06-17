@@ -27,7 +27,7 @@ export default new class AuthService {
   authSuccess(data) {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
-    return Flash.success('auth_form.signed_in');
+    return Flash.fromServer(data.flash);
   }
 
   signIn(user) {
@@ -73,7 +73,15 @@ export default new class AuthService {
   }
 
   sendLoginLink(user) {
-    return Records.loginTokens.fetchToken(user.email, user.turnstileToken).then(() => user.update({authForm: 'complete', sentLoginLink: true}));
+    return Records.loginTokens.fetchToken(user.email, user.turnstileToken).then(
+      () => user.update({authForm: 'complete', sentLoginLink: true}),
+      (data) => {
+        const key = data.status === 429
+          ? 'auth_form.login_link_rate_limited'
+          : 'auth_form.send_login_link_error';
+        Flash.error(key);
+      }
+    );
   }
 
   validSignup(vars, user) {

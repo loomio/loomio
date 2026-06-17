@@ -154,6 +154,9 @@ ja:
     no_tags_in_group: このグループにはまだカテゴリ タグがありません
     only_admins_can_edit_tags: 申し訳ありませんが、タグを作成、名前変更、削除できるのは %{group} の管理者だけです
     pick_a_color: 色を選ぶ
+    filter_placeholder: タグを絞り込む
+    new_named_tag: 新しいタグ "%{name}"
+    edit_tags: タグを編集
   poll_types:
     proposal: 提案
     count: オプトイン
@@ -2401,6 +2404,8 @@ ja:
     email_placeholder: あなた{'@'}example.com
     turnstile_required: 続行する前に、確認手続きを完了してください。
     invalid_login: 入力された情報ではログインできません
+    login_link_rate_limited: このネットワークからログイン用のメールアドレスが多数要求されました。1時間ほどお待ちいただいてから、再度お試しください。
+    send_login_link_error: ログインメールの送信中に問題が発生しました。もう一度お試しください。
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
