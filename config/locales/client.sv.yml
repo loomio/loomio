@@ -155,6 +155,9 @@ sv:
     no_tags_in_group: Den här gruppen har inga kategoritaggar ännu
     only_admins_can_edit_tags: Tyvärr, bara administratörer för %{group} kan skapa, byta namn på eller ta bort taggar
     pick_a_color: Välj en färg
+    filter_placeholder: Filtrera taggar
+    new_named_tag: Ny tagg "%{name}"
+    edit_tags: Redigera taggar
   poll_types:
     proposal: förslag
     count: opt-in
@@ -2402,6 +2405,8 @@ sv:
     email_placeholder: du{'@'}example.com
     turnstile_required: Slutför verifieringen innan du fortsätter.
     invalid_login: Det går inte att logga in dig med de uppgifterna
+    login_link_rate_limited: För många inloggningsadresser har begärts från det här nätverket. Vänta en timme och försök igen.
+    send_login_link_error: Något gick fel när inloggningsmejlet skulle skickas. Försök igen.
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

@@ -51,7 +51,6 @@ span
     span.ml-1(v-if="action.dock == 3")
     span(v-if="action.dock > 1") {{text}}
 </template>
-
 <style lang="sass">
 .action-button
   text-transform: lowercase

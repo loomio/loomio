@@ -3,6 +3,7 @@ export default
 {
   props: {
     btnProps: Object,
+    iconProps: Object,
     editor: Object
   },
 
@@ -35,7 +36,7 @@ export default
 
 <template lang="pug">
 v-btn(v-bind="btnProps" :variant="showOutline ? 'tonal' : 'text'" :title="$t('formatting.alignment')")
-  common-icon(size="small" :name="'mdi-format-align-'+current")
+  common-icon(v-bind="iconProps" :name="'mdi-format-align-'+current")
   v-menu(activator="parent")
     v-list(density="compact")
       v-list-item(v-for="(item, index) in alignments" :key="index" :class="{ 'v-list-item--active': editor.isActive({ textAlign: item.value }) }" @click="editor.chain().focus().setTextAlign(item.value).run()")

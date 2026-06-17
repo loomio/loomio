@@ -155,6 +155,9 @@ nl_NL:
     no_tags_in_group: Deze groep heeft nog geen categorielabel
     only_admins_can_edit_tags: Sorry, alleen admins van groep %{group} kunnen labels maken, hernoemen of verwijderen
     pick_a_color: Kies een kleur
+    filter_placeholder: Labels filteren
+    new_named_tag: Nieuw label "%{name}"
+    edit_tags: Labels bewerken
   poll_types:
     proposal: voorstel
     count: opt-in
@@ -2427,6 +2430,8 @@ nl_NL:
     email_placeholder: jij{'@'}voorbeeld.com
     turnstile_required: Voltooi de verificatie voordat u verdergaat.
     invalid_login: Het lukt niet om u met deze gegevens in te loggen.
+    login_link_rate_limited: Er zijn te veel aanmeldings-e-mailadressen aangevraagd vanuit dit netwerk. Wacht een uur en probeer het opnieuw.
+    send_login_link_error: Er is iets misgegaan bij het verzenden van de inlogmail. Probeer het opnieuw.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

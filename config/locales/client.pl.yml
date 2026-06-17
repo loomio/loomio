@@ -155,6 +155,9 @@ pl:
     no_tags_in_group: Ta grupa nie ma jeszcze tagów kategorii
     only_admins_can_edit_tags: Przepraszamy, tylko administratorzy grupy %{group} mogą tworzyć, zmieniać nazwy i usuwać tagi
     pick_a_color: Wybierz kolor
+    filter_placeholder: Filtruj tagi
+    new_named_tag: Nowy tag „%{name}”
+    edit_tags: Edytuj tagi
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę
@@ -2427,6 +2430,8 @@ pl:
     email_placeholder: ty{'@'}example.com
     turnstile_required: Aby kontynuować, należy zakończyć weryfikację.
     invalid_login: Nie można zalogować się przy użyciu tych danych
+    login_link_rate_limited: Za dużo żądań adresów e-mail do logowania z tej sieci. Odczekaj godzinę i spróbuj ponownie.
+    send_login_link_error: Wystąpił błąd podczas wysyłania wiadomości e-mail z potwierdzeniem logowania. Spróbuj ponownie.
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe

@@ -29,7 +29,7 @@ class ChatbotService
     chatbots = event.eventable.topic.group.chatbots
 
     chatbots.where(id: event.recipient_chatbot_ids).
-                or(chatbots.where.any(event_kinds: event.kind)).each do |chatbot|
+                or(chatbots.where("? = ANY(chatbots.event_kinds)", event.kind)).each do |chatbot|
       template_name = event.eventable_type.tableize.singularize
       template_name = 'poll' if event.eventable_type == 'Outcome'
       template_name = 'group' if event.eventable_type == 'Membership'

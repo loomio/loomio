@@ -155,6 +155,9 @@ uk:
     no_tags_in_group: У цій групі ще немає міток категорій
     only_admins_can_edit_tags: На жаль, лише адміністратори %{group} можуть створювати, перейменовувати або видаляти мітки
     pick_a_color: Виберіть колір
+    filter_placeholder: Фільтрувати мітки
+    new_named_tag: Нова мітка "%{name}"
+    edit_tags: Редагувати мітки
   poll_types:
     proposal: пропозиція
     count: вибрати в
@@ -2430,6 +2433,8 @@ uk:
     email_placeholder: you{'@'}example.com
     turnstile_required: Будь ласка, завершіть перевірку, перш ніж продовжити.
     invalid_login: Не вдається увійти з цими даними
+    login_link_rate_limited: Забагато електронних адрес для входу запитується з цієї мережі. Зачекайте годину та спробуйте ще раз.
+    send_login_link_error: Сталася помилка під час надсилання електронного листа для входу. Спробуйте ще раз.
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

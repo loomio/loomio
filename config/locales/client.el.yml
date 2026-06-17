@@ -155,6 +155,9 @@ el:
     no_tags_in_group: Αυτή η ομάδα δεν έχει ακόμη ετικέτες κατηγορίας
     only_admins_can_edit_tags: Λυπούμαστε, μόνο οι διαχειριστές του %{group} μπορούν να δημιουργήσουν, να μετονομάσουν ή να διαγράψουν ετικέτες
     pick_a_color: Επιλέξτε ένα χρώμα
+    filter_placeholder: Φιλτράρισμα ετικετών
+    new_named_tag: Νέα ετικέτα "%{name}"
+    edit_tags: Επεξεργασία ετικετών
   poll_types:
     proposal: πρόταση
     count: συμμετοχή
@@ -2402,6 +2405,8 @@ el:
     email_placeholder: εσείς{'@'}example.com
     turnstile_required: Ολοκληρώστε την επαλήθευση πριν συνεχίσετε.
     invalid_login: Δεν είναι δυνατή η σύνδεσή σας με αυτά τα στοιχεία
+    login_link_rate_limited: Ζητήθηκαν πάρα πολλά μηνύματα ηλεκτρονικού ταχυδρομείου σύνδεσης από αυτό το δίκτυο. Περιμένετε μία ώρα και δοκιμάστε ξανά.
+    send_login_link_error: Παρουσιάστηκε κάποιο πρόβλημα κατά την αποστολή του email σύνδεσης. Δοκιμάστε ξανά.
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

@@ -87,6 +87,11 @@ module CurrentUserHelper
         same_site: :lax,
         secure: ENV['FORCE_SSL'].to_i == 1
       }
+      cookies.permanent[:signed_in] = {
+        value: '1',
+        same_site: :lax,
+        secure: ENV['FORCE_SSL'].to_i == 1
+      }
     end
   end
 
@@ -94,6 +99,7 @@ module CurrentUserHelper
     Current.session&.destroy
     Current.session = nil
     cookies.delete(:session_id)
+    cookies.delete(:signed_in)
     session.delete('warden.user.user.key')
   end
 

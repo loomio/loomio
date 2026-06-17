@@ -33,7 +33,7 @@ Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
 .poll-page
   v-main
     v-container
-      h1.text-h4.pa-4(v-t="'poll_receipts_page.verify_participants'")
+      h1.text-headline-large.pa-4(v-t="'poll_receipts_page.verify_participants'")
       p.font-italic.px-4.pb-4(v-t="'poll_receipts_page.see_votes_if_quorum_reached'")
 
       v-alert(type="error" v-if="voters_count > 0 && receipts.length == 0 " v-t="'poll_receipts_page.no_receipts'")

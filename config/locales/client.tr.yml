@@ -155,6 +155,9 @@ tr:
     no_tags_in_group: Bu grupta henüz kategori etiketi yok
     only_admins_can_edit_tags: Üzgünüz, yalnızca %{group} grubunun yöneticileri etiketleri oluşturabilir, yeniden adlandırabilir veya silebilir
     pick_a_color: Bir renk seçin
+    filter_placeholder: Etiketleri filtrele
+    new_named_tag: Yeni etiket "%{name}"
+    edit_tags: Etiketleri düzenle
   poll_types:
     proposal: öneri
     count: katılım
@@ -2402,6 +2405,8 @@ tr:
     email_placeholder: sen{'@'}example.com
     turnstile_required: Lütfen devam etmeden önce doğrulama işlemini tamamlayın.
     invalid_login: Bu bilgilerle giriş yapamıyoruz.
+    login_link_rate_limited: Bu ağdan çok fazla oturum açma e-postası talep edildi. Lütfen bir saat bekleyin ve tekrar deneyin.
+    send_login_link_error: Giriş e-postası gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
