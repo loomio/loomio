@@ -112,7 +112,7 @@ export default {
 v-main.poll-form-page
   loading(:until="!loading")
     v-container.max-width-800
-      v-breadcrumbs(v-if="group" color="primary" :items="breadcrumbs")
+      v-breadcrumbs.py-4(v-if="group" color="primary" :items="breadcrumbs")
         template(v-slot:divider)
           common-icon(name="mdi-chevron-right")
       v-card.poll-common-form-card(v-if="poll")

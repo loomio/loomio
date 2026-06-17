@@ -7,7 +7,9 @@ class Views::MergeUsers::Complete < Views::BasicLayout
   end
 
   def view_template
-    h1(class: "header") { plain t(:"user_mailer.merge_verification.complete_page.title") }
-    p { plain t(:"user_mailer.merge_verification.complete_page.body_html", target_email: @target_user.email) }
+    main(class: "sistema") do
+      h1(class: "header") { plain t(:"user_mailer.merge_verification.complete_page.title") }
+      raw t(:"user_mailer.merge_verification.complete_page.body_html", target_email: @target_user.email)
+    end
   end
 end

@@ -6,7 +6,8 @@ export default
 {
   props: {
     editor: Object,
-    btnProps: Object
+    btnProps: Object,
+    iconProps: Object
   },
 
   data() {
@@ -33,7 +34,7 @@ v-btn.drop-down-button(
   :color="activeColorKey"
   :variant="activeColorKey ? 'tonal' : 'text'"
 )
-  common-icon(size="small" name="mdi-palette" color="undefined")
+  common-icon(v-bind="iconProps" name="mdi-palette")
   v-menu(activator="parent")
     v-card.color-picker.pa-2
       .swatch.swatch-color(v-for="(value, key) in colors"

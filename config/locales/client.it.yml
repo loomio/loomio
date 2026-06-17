@@ -163,6 +163,9 @@ it:
     no_tags_in_group: Questo gruppo non ha ancora etichette di categoria
     only_admins_can_edit_tags: Spiacenti, solo gli amministratori di %{group} possono creare, rinominare o cancellare le etichette
     pick_a_color: Scegli un colore
+    filter_placeholder: Filtra etichette
+    new_named_tag: Nuova etichetta "%{name}"
+    edit_tags: Modifica etichette
   poll_types:
     proposal: proposta
     count: opt-in
@@ -2430,6 +2433,8 @@ it:
     email_placeholder: tu{'@'}esempio.com
     turnstile_required: Si prega di completare la verifica prima di continuare.
     invalid_login: Impossibile accedere con queste credenziali
+    login_link_rate_limited: Sono state richieste troppe email di accesso da questa rete. Attendi un'ora e riprova.
+    send_login_link_error: Si è verificato un errore durante l'invio dell'email di accesso. Riprova.
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

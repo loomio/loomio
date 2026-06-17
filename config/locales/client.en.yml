@@ -185,11 +185,14 @@ en:
     all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
+    filter_placeholder: Filter tags
+    new_named_tag: New tag "%{name}"
     new_tag: New tag
     name_label: Name
     color_label: Color
     pick_a_color: Pick a color
     card_title: Category tags
+    edit_tags: Edit tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag
@@ -2757,6 +2760,8 @@ en:
     instructions: 'Click the link to sign in, or enter the code below:'
     instructions_code: 'Enter the code from that email:'
     too_many_attempts: Too many attempts; try clicking the link in the email to sign in.
+    login_link_rate_limited: Too many sign-in emails requested from this network. Please wait an hour and try again.
+    send_login_link_error: Something went wrong sending the sign-in email. Please try again.
     invalid_code: Sorry, that code didn't match. Check the email and try again.
     password_link_sent: We've sent an email to %{email} with instructions on how to set your password.
     reactivate_link_sent: We've sent you an email with instructions to reactivate your account

@@ -281,7 +281,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.report-page.max-width-900
-    h1.text-h4.mb-8(v-t="'group_page.participation_report'")
+    h1.text-headline-large.mb-8(v-t="'group_page.participation_report'")
 
     v-select(
       :label="$t('common.groups')"
@@ -372,7 +372,7 @@ v-main
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadUsersPerCountryCsv")
             span(v-t="'report.download_csv'")
-        p.px-4.text-caption(v-t="'report.country_disclaimer'")
+        p.px-4.text-body-small(v-t="'report.country_disclaimer'")
         v-data-table(
           density="compact"
           :headers="users_per_country_headers"

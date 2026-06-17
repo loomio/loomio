@@ -1,6 +1,9 @@
 module HasCreatedEvent
   def created_event
-    events.find_by(kind: created_event_kind)
+    events
+      .where(kind: created_event_kind)
+      .order(:id)
+      .first
   end
 
   def topic_event

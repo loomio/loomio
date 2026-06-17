@@ -16,9 +16,33 @@
 - **Spanish (es): use the informal `tú` register throughout.** The app addresses users with "tu", "tú", informal imperatives ("Suscríbete", "Descubre"), and informal verb forms ("¿Cómo piensas?"). Google Translate often introduces `usted`/`su` — catch and correct this on review.
 - **Dutch (nl_NL): use the informal `je/jouw` register throughout.** The app addresses users with "je", "jouw", and informal verb forms ("Hoe wil je?", "je eigen demogroep"). Google Translate often introduces `u`/`uw` — catch and correct this on review.
 
+### Making a locale's register consistent
+
+When grooming a locale for register/formality consistency:
+
+1. Work on the locale as a pair: `config/locales/client.<locale>.yml` and `config/locales/server.<locale>.yml`.
+2. Decide the target register before editing (for example informal `tu`, `tú`, `du`, `je/jouw`) and keep it consistent across both files.
+3. Search for formal pronouns, possessives, verb endings, and imperatives that Google Translate commonly introduces; update the surrounding grammar, not just the pronoun.
+4. Preserve i18n keys, interpolation variables (`%{name}`), HTML tags, markdown, YAML quoting, and punctuation semantics exactly unless the locale requires typographic changes.
+5. Watch for grammar changes caused by gender, elision, case, or word order (for example French `ton organisation`, `t'aider`; German `du bist`, `dein`; Spanish informal imperatives).
+6. Parse the changed YAML files and compare key sets with `master` so no keys are added, removed, or renamed.
+7. Run the i18n/pre-push checks where practical, and mention any language-specific review notes in the PR body.
+
+Register-grooming completed so far:
+
+- `de` — German informal `du/dein` in PR #12540.
+- `es` — Spanish informal `tú/tu` in PR #12544.
+- `fr` — French informal `tu/ton/ta` in PR #12541.
+- `it` — Italian informal `tu` in PR #12542.
+- `pt_BR` — Brazilian Portuguese register cleanup in PR #12543.
+- Broad all-locale pass started in PR #12539; prefer dedicated locale PRs for careful review when a language needs substantial grammar fixes.
+
 ## Frontend / Vue
 
-- Prefer `<script setup>` format for new Vue components.
+- Write new Vue components in `<script setup>` format — even when sibling files in the same directory still use the Options API (much of the codebase is mid-migration; don't perpetuate the old style by matching neighbours).
+  - Use the `useWatchRecords` composable from `@/composables/useWatchRecords` instead of the `WatchRecords` mixin.
+  - Use `LmoUrlService.route({model})` directly instead of the `UrlFor` mixin.
+  - Destructure `defineProps` and reference bare prop names (not `props.x`).
 
 ## Null objects
 

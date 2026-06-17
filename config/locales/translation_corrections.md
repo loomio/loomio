@@ -78,6 +78,8 @@ languages in the Nov 2025 pass.
 | client.*.yml   | `poll_stv_form.quota_hare`, `poll_stv_results.quota_hare` | Local words for the animal hare/rabbit like `cuota de liebre`, `Hasenquote`, `野兔` | `Hare quota`, `Hare` | Hare is a named election quota, not the animal in ordinary prose |
 | client.*.yml   | `poll_stv_results.round` | Local verbs for "round/rounding" and translated placeholders like `Στρογγυλοποίηση %{αριθμός}` | `Round %{number}` or locale equivalent preserving `%{number}` | Round is an election counting round; interpolation names must not be translated |
 | client.*.yml   | `poll_stv_results.tied` | Local words for necktie/bind like `Cravate`, `Gravata`, `领带`, `Binden` | `Tie` or locale equivalent for equal result | Tie means equal votes/result, not clothing or fastening |
+| client.nl_NL.yml | `loomio_tags.new_named_tag` | `Nieuwe tag "%{naam}"` | `Nieuwe tag "%{name}"` | Interpolation placeholder names must not be translated |
+| client.*.yml | `loomio_tags.filter_placeholder`, `loomio_tags.new_named_tag`, `loomio_tags.edit_tags` | Noun-sense/inconsistent tag terms like `Filter-Tags`, `Etiquetas de filtro`, `Étiquettes de filtre`, `Tag di filtro`, `Теги фільтра`, or switching from local `labels`/`mots-clés`/`Schlagwörter` to English `tag` | Imperative/action wording and the locale's existing tag term, preserving `%{name}` | `Filter tags` is a UI action/placeholder, not a kind of tag; sibling tag labels should use the same term |
 | client.*.yml   | `poll_common_votes_panel.cast`, `poll_common_votes_panel.uncast` | Movie/casting/throwing/foundry senses like `Elenco`, `Gießen`, `Casting`, `投掷` | Vote-status wording such as `Cast` / `Uncast` or locale equivalent | In poll results, cast means a vote has been submitted, not thrown, moulded, or assigned to a cast |
 | client.*.yml   | `thread_arrangement_form.threaded`, `discussion_last_seen_by.thread_engagement` | Physical screw/thread senses like `Gewinde`, `Enroscado`, `螺纹`, `Angrenarea filetului` | UI conversation-thread wording such as `Threaded` / `Thread engagement` or locale equivalent | Thread refers to discussion threading, not screw threads or fibres |
 | server.*.yml   | `poll_templates.stv.process_introduction`, `poll_templates.stv.details` | Translated STV proper names and election terms like `manso`, `douce`, `scozzese o moderato`, `hareng/liebre`, and "occupied seats" | Preserved `Scottish`, `Meek`, `Droop`, `Hare`; corrected eliminated-vote and seats-to-fill wording | STV method/quota names are proper nouns; election seats are filled/available, not already occupied |
@@ -86,6 +88,7 @@ languages in the Nov 2025 pass.
 | client.zh_CN.yml | Multiple HTML/interpolation keys | Full-width percent signs or translated placeholder words like `％{标题}` / literal `作者` | Restored placeholders such as `%{title}`, `%{author}`, `%{username}` | Placeholder names and `%{...}` syntax must never be translated or converted to full-width characters |
 | client.*.yml   | `strand_nav.return`, `thread_arrangement_form.items`, `thread_arrangement_form.thread_settings`, `poll_common_settings.*`, `poll_common_details_meta.*` | UI labels translated in wrong senses like "Return"→yield, "items"→goods/articles, "thread"→subprocess/screw-thread, "opened"→inaugurated | Corrected to navigation, discussion-thread, poll-setting, and poll-time meanings | Short UI labels need surrounding UI context; Google often picks a plausible but wrong dictionary sense |
 | server.*.yml   | `group.error.handle_must_be_url_friendly` | Character range `(a-z)` collapsed to `(az)` or `(a)` | Preserve `(a-z)` | ASCII character ranges are literal validation guidance, not prose to translate |
+| client.es.yml, server.es.yml | Multiple direct-address UI and template strings | Formal `usted` register, Spain `vosotros`, and mixed forms like `tu ... puede` / `Vuestro grupo` | Informal Latin American `tú` register with consistent `tu/tus/te`, imperative `haz/usa/actualiza`, no `vosotros` | Spanish locale should address users informally and consistently; Google reintroduced formal/Spain forms and mixed conjugations |
 | client.pt_BR.yml, server.pt_BR.yml | Multiple direct-address UI and template strings | Overly formal/Google-ish `Por favor ...` phrasing and a few awkward Brazilian Portuguese direct-address strings | Concise Brazilian Portuguese using `você` register and direct imperatives like `preencha`, `entre`, `atualize`, `responda` | Keep Brazilian Portuguese consistent and concise; avoid mechanical polite filler in UI actions |
 
 ## 2026-05-21 — lock_thread_modal body changed to explanation
@@ -95,6 +98,12 @@ languages in the Nov 2025 pass.
 - **before:** Lock threads to remove them from the list of open threads and prevent people from commenting.
 - **after:** Lock threads to prevent people from commenting or making further changes
 - **why it was wrong:** The original text claimed locking "removes threads from the list of open threads," which is no longer true — the default discussions panel now shows all threads (both locked and unlocked). The new text accurately describes what locking does: prevents further comments and changes.
+
+## 2026-06-16 — login_link_rate_limited / send_login_link_error
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.es.yml` | `auth_form.login_link_rate_limited` | `espere una hora e inténtelo de nuevo` | `espera una hora e inténtalo de nuevo` | Formal `usted` imperatives; app uses `tú` throughout |
 
 ## 2026-05-22 — lock/unlock thread translation pass
 

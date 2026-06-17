@@ -163,6 +163,9 @@ fr:
     no_tags_in_group: Le groupe n'a pas encore de tags de catégories
     only_admins_can_edit_tags: Excusez-moi, juste les admins du %{group} peuvent créer, renommer ou supprimer des tags
     pick_a_color: Choisissez une couleur
+    filter_placeholder: Filtrer les mots-clés
+    new_named_tag: Nouveau mot-clé « %{name} »
+    edit_tags: Modifier les mots-clés
   poll_types:
     proposal: Proposition
     count: opt-in
@@ -2444,6 +2447,8 @@ fr:
     email_placeholder: vous{'@'}exemple.com
     turnstile_required: Veuillez effectuer la vérification avant de continuer.
     invalid_login: Impossible de vous connecter avec ces informations.
+    login_link_rate_limited: Trop d'adresses e-mail de connexion ont été demandées à ce réseau. Veuillez patienter une heure et réessayer.
+    send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Veuillez réessayer.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

@@ -11,11 +11,6 @@ class Views::UserMailer::MergeVerification < Views::ApplicationMailer::BaseLayou
   def view_template
     div(class: "invite-people-mailer") do
       div(class: "invite-people-mailer__container") do
-        div(class: "mailer__header") do
-          div(class: "mailer__header-logo") do
-            image_tag AppConfig.theme[:email_header_logo_src], alt: "Logo", class: "mailer__header-logo-image"
-          end
-        end
         div(class: "invite-people-mailer__body") do
           p do
             raw t(:"user_mailer.merge_verification.body_html",

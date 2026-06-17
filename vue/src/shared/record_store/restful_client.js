@@ -38,12 +38,17 @@ export default class RestfulClient {
 
   onFailure(response) {
     if (response.json) {
-      return response.json().then(function(data) {
-        data.status = response.status;
-        data.statusText = response.statusText;
-        data.ok = response.ok;
-        throw data;
-      });
+      return response.json().then(
+        function(data) {
+          data.status = response.status;
+          data.statusText = response.statusText;
+          data.ok = response.ok;
+          throw data;
+        },
+        function() {
+          throw { status: response.status, statusText: response.statusText, ok: false };
+        }
+      );
     } else {
       throw response;
     }

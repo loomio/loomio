@@ -169,13 +169,13 @@ watch(showHidden, () => { query(); });
 
       //- Template list: shown when group_id is present
       template(v-if="groupId")
-        v-breadcrumbs(color="anchor" :items="breadcrumbs")
+        v-breadcrumbs.py-4(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_discussion')")
           v-alert.mx-4(v-if="userIsAdmin && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
             span(v-t="'discussion_template.these_are_templates'")
-            |  
+            |
             span(v-t="'common.templates_admin_hint'")
 
           v-list.append-sort-here(lines="two")

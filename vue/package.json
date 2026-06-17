@@ -9,11 +9,11 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^4.1.2",
+    "@hocuspocus/provider": "^4.2.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
     "@sentry/browser": "^10.47.0",
-    "@sentry/vue": "^10.53.1",
+    "@sentry/vue": "^10.58.0",
     "@tiptap/core": "3.25.0",
     "@tiptap/extension-blockquote": "3.25.0",
     "@tiptap/extension-bold": "3.25.0",
@@ -70,7 +70,7 @@
     "vue-i18n": "^11.4.0",
     "vue-router": "^5.0.7",
     "vue-slicksort": "^2.0.5",
-    "vuetify": "^3",
+    "vuetify": "^4.1.2",
     "y-indexeddb": "^9.0.12",
     "yjs": "13.6.31"
   },
@@ -109,8 +109,8 @@
     }
   },
   "optionalDependencies": {
-    "@emnapi/core": "^1.11.0",
-    "@emnapi/runtime": "^1.11.0",
+    "@emnapi/core": "^1.11.1",
+    "@emnapi/runtime": "^1.11.1",
     "@esbuild/darwin-arm64": "latest",
     "@rollup/rollup-linux-x64-gnu": "latest"
   }
