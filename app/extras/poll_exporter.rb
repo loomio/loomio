@@ -74,13 +74,17 @@ class PollExporter
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
-      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
+      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
+        membership = memberships_by_user_id[stance.participant_id]
         line = [
           stance.id,
           stance.poll_id,
           stance.participant_id,
           stance.author_name,
+          membership&.title,
+          membership&.delegate,
           stance.created_at&.iso8601,
           stance.updated_at&.iso8601,
           stance.reason,

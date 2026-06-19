@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'csv'
 
 class PollExporterTest < ActiveSupport::TestCase
   setup do
@@ -80,6 +81,41 @@ class PollExporterTest < ActiveSupport::TestCase
 
     # Election title
     assert_equal '"Board Election"', lines[i + 4]
+  end
+
+  test "to_csv includes member title and delegate status for vote rows" do
+    stance = @poll.stances.latest.first
+    membership = @group.membership_for(stance.participant)
+    membership.update!(title: 'Board chair', delegate: true)
+
+    rows = CSV.parse(@exporter.to_csv)
+    votes_index = rows.index(['votes'])
+    headers = rows[votes_index + 1]
+    vote_rows = rows[(votes_index + 2)..]
+    vote_row = vote_rows.find { |row| row[headers.index('voter_id')] == stance.participant_id.to_s }
+
+    assert_equal 'member_title', headers[4]
+    assert_equal 'delegate', headers[5]
+    assert_equal 'Board chair', vote_row[headers.index('member_title')]
+    assert_equal 'true', vote_row[headers.index('delegate')]
+  end
+
+  test "to_csv does not use member titles or delegate status from another group" do
+    stance = @poll.stances.latest.first
+    membership = @group.membership_for(stance.participant)
+    membership.update!(title: nil, delegate: false)
+
+    other_group = Group.create!(name: 'Other Group', handle: 'poll-export-other-group')
+    other_group.add_member!(stance.participant).update!(title: 'Other chair', delegate: true)
+
+    rows = CSV.parse(@exporter.to_csv)
+    votes_index = rows.index(['votes'])
+    headers = rows[votes_index + 1]
+    vote_rows = rows[(votes_index + 2)..]
+    vote_row = vote_rows.find { |row| row[headers.index('voter_id')] == stance.participant_id.to_s }
+
+    assert_nil vote_row[headers.index('member_title')]
+    assert_equal 'false', vote_row[headers.index('delegate')]
   end
 
   test "blt_file_name includes poll details" do
