@@ -108,14 +108,20 @@ export default
       chain = Records.memberships.collection.chain().find({id: {$in: membershipIds}});
 
       if (this.$route.query.q) {
+        const query = this.$route.query.q;
         const users = Records.users.collection.find({
           $or: [
-            {name: {'$regex': [`^${this.$route.query.q}`, "i"]}},
-            {email: {'$regex': [`${this.$route.query.q}`, "i"]}},
-            {username: {'$regex': [`^${this.$route.query.q}`, "i"]}},
-            {name: {'$regex': [` ${this.$route.query.q}`, "i"]}}
+            {name: {'$regex': [`^${query}`, "i"]}},
+            {email: {'$regex': [`${query}`, "i"]}},
+            {username: {'$regex': [`^${query}`, "i"]}},
+            {name: {'$regex': [` ${query}`, "i"]}}
           ]});
-        chain = chain.find({userId: {$in: map(users, 'id')}});
+        const userIds = map(users, 'id');
+
+        chain = chain.where(membership => {
+          return userIds.includes(membership.userId) ||
+                 (membership.title || '').toLowerCase().includes(query.toLowerCase());
+        });
       }
 
       switch (this.$route.query.filter) {

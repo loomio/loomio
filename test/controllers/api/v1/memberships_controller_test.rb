@@ -129,6 +129,59 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_includes group_ids, @test_group.id
   end
 
+  test 'search matches membership titles' do
+    titled_user = User.create!(
+      name: 'Plain Name',
+      email: 'plain-name@example.com',
+      email_verified: true,
+      username: 'plainname'
+    )
+    untitled_user = User.create!(
+      name: 'Other Person',
+      email: 'other-person@example.com',
+      email_verified: true,
+      username: 'otherperson'
+    )
+    titled_membership = @test_group.add_member!(titled_user)
+    @test_group.add_member!(untitled_user)
+    titled_membership.update!(title: 'Working group facilitator')
+
+    get :index, params: { group_id: @test_group.id, q: 'FACIL' }, format: :json
+
+    json = JSON.parse(response.body)
+    user_ids = json['users'].map { |u| u['id'] }
+
+    assert_response :success
+    assert_includes user_ids, titled_user.id
+    refute_includes user_ids, untitled_user.id
+  end
+
+  test 'search does not match membership titles from another group' do
+    other_group = Group.create!(
+      name: 'Other Group',
+      handle: 'other-title-group',
+      is_visible_to_public: false
+    )
+    user = User.create!(
+      name: 'Plain Other Title',
+      email: 'plain-other-title@example.com',
+      email_verified: true,
+      username: 'plainothertitle'
+    )
+    @test_group.add_member!(user)
+    other_membership = other_group.add_member!(user)
+    other_membership.update!(title: 'External facilitator')
+
+    get :index, params: { group_id: @test_group.id, q: 'facilitator' }, format: :json
+
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    user_ids = json.fetch('users', []).map { |u| u['id'] }
+
+    refute_includes user_ids, user.id
+  end
+
   test 'responds with unauthorized for private groups when logged out' do
     private_group = Group.create!(
       name: 'Private Group',
