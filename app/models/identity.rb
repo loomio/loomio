@@ -20,7 +20,7 @@ class Identity < ApplicationRecord
       filename: File.basename(logo)
     )
     user.update(avatar_kind: :uploaded)
-  rescue OpenURI::HTTPError, TypeError
-    # Can't load logo uri as attachment; do nothing
+  rescue StandardError => e
+    Rails.logger.warn("assign_logo! failed for identity #{id}: #{e.message}")
   end
 end

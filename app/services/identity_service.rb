@@ -61,6 +61,11 @@ class IdentityService
       identity.user.update(name: identity.name, email: identity.email)
     end
 
+    # Apply the SSO provider's profile picture if the user hasn't uploaded their own
+    if identity.user && identity.logo.present? && identity.user.avatar_kind != 'uploaded'
+      identity.assign_logo!
+    end
+
     identity
   end
 end
