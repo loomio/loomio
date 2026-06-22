@@ -370,6 +370,8 @@ en:
       last_seen: Last seen
       invite: Invite
       resent: Invitation resent
+      redact: Redact
+      unredact: Restore
       export: Export
       fork: Fork
       apply: Apply
@@ -2327,6 +2329,15 @@ en:
     cast: Cast
     uncast: Uncast
     vote_removed: Vote removed
+    reason_redacted: Reason redacted
+    redact_reason_title: Redact vote reason?
+    redact_reason_helptext: The reason text and attachments will be hidden, but the vote will remain in the results
+    redact_reason_confirm: Redact reason
+    redact_reason_success: Vote reason redacted
+    unredact_reason_title: Restore vote reason?
+    unredact_reason_helptext: The reason text and attachments will be made visible again
+    unredact_reason_confirm: Restore reason
+    unredact_reason_success: Vote reason restored
     undecided: Undecided
     newest_first: Newest first
     oldest_first: Oldest first

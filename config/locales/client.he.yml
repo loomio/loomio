@@ -320,6 +320,8 @@ he:
       fork_template: תבנית מזלג
       customize: התאמה אישית
       add: לְהוֹסִיף
+      redact: עריכה
+      unredact: לְשַׁחְזֵר
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -2151,6 +2153,15 @@ he:
     name_or_username: שם או שם משתמש
     cast: Cast
     uncast: Uncast
+    reason_redacted: הסיבה נמחקה
+    redact_reason_title: למחוק את סיבת ההצבעה?
+    redact_reason_helptext: הסיבה שבגללה הטקסט והקבצים המצורפים יוסתרו, אך ההצבעה תישאר בתוצאות
+    redact_reason_confirm: סיבה להסרת סיבה
+    redact_reason_success: סיבת ההצבעה הוסרה
+    unredact_reason_title: לשחזר את סיבת ההצבעה?
+    unredact_reason_helptext: הסיבה לכך שטקסט וקבצים מצורפים יהיו גלויים שוב
+    unredact_reason_confirm: סיבה לשחזור
+    unredact_reason_success: סיבת ההצבעה שוחזרה
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות

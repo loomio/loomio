@@ -31,6 +31,18 @@ class Api::V1::StancesController < Api::V1::RestfulController
     respond_with_recent_stances
   end
 
+  def redact
+    load_resource
+    StanceService.redact(stance: resource, actor: current_user)
+    respond_with_resource
+  end
+
+  def unredact
+    load_resource
+    StanceService.unredact(stance: resource, actor: current_user)
+    respond_with_resource
+  end
+
   def index
     instantiate_collection do |collection|
       if !@poll.anonymous && name = params[:name].presence

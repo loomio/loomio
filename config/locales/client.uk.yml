@@ -320,6 +320,8 @@ uk:
       fork_template: Шаблон виделки
       customize: Налаштувати
       add: Додати
+      redact: Викреслити
+      unredact: Відновити
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -2160,6 +2162,15 @@ uk:
     name_or_username: Ім'я або ім'я користувача
     cast: Cast
     uncast: Uncast
+    reason_redacted: Причину вилучено
+    redact_reason_title: Викреслити причину голосування?
+    redact_reason_helptext: Текст причини та вкладення будуть приховані, але голосування залишиться в результатах
+    redact_reason_confirm: Причину викреслення
+    redact_reason_success: Причину голосування вилучено
+    unredact_reason_title: Відновити причину голосування?
+    unredact_reason_helptext: Причина, чому текст і вкладення знову стануть видимими
+    unredact_reason_confirm: Причина відновлення
+    unredact_reason_success: Причину голосування відновлено
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані

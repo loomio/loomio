@@ -52,6 +52,23 @@ export default new class AbilityService {
     return Session.user() === stance.author();
   }
 
+  canRedactStance(stance) {
+    const poll = stance.poll();
+    const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
+    return poll &&
+    hasContent &&
+    !stance.redactedAt &&
+    !stance.revokedAt &&
+    poll.adminsInclude(Session.user());
+  }
+
+  canUnredactStance(stance) {
+    const poll = stance.poll();
+    return poll &&
+    !!stance.redactedAt &&
+    poll.adminsInclude(Session.user());
+  }
+
   canEditDiscussion(discussion) {
     const topic = discussion.topic();
     return topic.adminsInclude(Session.user()) ||

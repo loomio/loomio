@@ -64,6 +64,61 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert @poll.reload.total_score >= 1
   end
 
+  test "redacts a stance reason" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = 'Agree'
+    stance.reason = "This should be hidden"
+    StanceService.create(stance: stance, actor: @user)
+
+    StanceService.redact(stance: stance, actor: @admin)
+
+    assert_not_nil stance.reload.redacted_at
+    assert_equal @admin.id, stance.redactor_id
+    assert_equal "This should be hidden", stance.reason
+    assert_nil PgSearch::Document.find_by(searchable_type: 'Stance', searchable_id: stance.id)
+  end
+
+  test "does not allow a non-admin to redact a stance reason" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = 'Agree'
+    stance.reason = "This should be hidden"
+    StanceService.create(stance: stance, actor: @user)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.redact(stance: stance, actor: @user)
+    end
+
+    assert_nil stance.reload.redacted_at
+  end
+
+  test "unredacts a stance reason" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = 'Agree'
+    stance.reason = "This was hidden"
+    StanceService.create(stance: stance, actor: @user)
+    StanceService.redact(stance: stance, actor: @admin)
+    assert_not_nil stance.reload.redacted_at
+
+    StanceService.unredact(stance: stance, actor: @admin)
+    assert_nil stance.reload.redacted_at
+    assert_nil stance.redactor_id
+    assert PgSearch::Document.exists?(searchable_type: 'Stance', searchable_id: stance.id)
+  end
+
+  test "does not allow a non-admin to unredact a stance reason" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = 'Agree'
+    stance.reason = "This was hidden"
+    StanceService.create(stance: stance, actor: @user)
+    StanceService.redact(stance: stance, actor: @admin)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.unredact(stance: stance, actor: @user)
+    end
+
+    assert_not_nil stance.reload.redacted_at
+  end
+
   # -- Redeem --
 
   test "redeems a guest stance for a verified user" do

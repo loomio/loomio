@@ -328,6 +328,8 @@ fr:
       fork_template: Modèle de fourche
       customize: Personnaliser
       add: Ajouter
+      redact: Rédiger
+      unredact: Restaurer
     formatting_help:
       label: Mise en forme
       title: Apprends à utiliser Markdown pour mettre en forme ton texte
@@ -2174,6 +2176,15 @@ fr:
     name_or_username: Nom ou nom d'utilisateur
     cast: Exprimés
     uncast: Non exprimés
+    reason_redacted: Motif masqué
+    redact_reason_title: Réduire la raison du vote ?
+    redact_reason_helptext: Le texte et les pièces jointes seront masqués, mais le vote restera dans les résultats.
+    redact_reason_confirm: Raison de la suppression
+    redact_reason_success: Motif du vote masqué
+    unredact_reason_title: Raison du vote rétablie ?
+    unredact_reason_helptext: La raison pour laquelle le texte et les pièces jointes seront à nouveau visibles
+    unredact_reason_confirm: Rétablir la raison
+    unredact_reason_success: Motif du vote rétabli
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente

@@ -320,6 +320,8 @@ da:
       fork_template: Gaffel skabelon
       customize: Tilpas
       add: Tilføje
+      redact: Redigér
+      unredact: Gendan
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -2132,6 +2134,15 @@ da:
     name_or_username: Navn eller brugernavn
     cast: Afgivet
     uncast: Ikke afgivet
+    reason_redacted: Årsag redigeret
+    redact_reason_title: Redigér årsagen til stemmen?
+    redact_reason_helptext: Årsagen til, at tekst og vedhæftede filer vil blive skjult, men afstemningen vil forblive i resultaterne
+    redact_reason_confirm: Rediger årsag
+    redact_reason_success: Stemmeårsag redigeret
+    unredact_reason_title: Gendan årsagen til stemmen?
+    unredact_reason_helptext: Årsagen til at tekst og vedhæftede filer bliver synlige igen
+    unredact_reason_confirm: Gendannelsesårsag
+    unredact_reason_success: Stemmeårsag gendannet
   poll_common_undecided_panel:
     show_undecided: Vis %{count} ubesluttede
     show_invitations: Vis afventende invitationer

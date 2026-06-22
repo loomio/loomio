@@ -272,6 +272,8 @@ Rails.application.routes.draw do
       resources :stances, only: [:index, :create, :update] do
         member do
           patch :uncast
+          patch :redact
+          patch :unredact
         end
 
         collection do

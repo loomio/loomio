@@ -28,5 +28,13 @@ module Ability::Stance
       stance.poll.admins.exists?(user.id)
     end
 
+    can [:redact], ::Stance do |stance|
+      stance.redacted_at.nil? && stance.poll.admins.exists?(user.id)
+    end
+
+    can [:unredact], ::Stance do |stance|
+      stance.redacted_at.present? && stance.poll.admins.exists?(user.id)
+    end
+
   end
 end

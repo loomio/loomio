@@ -328,6 +328,8 @@ pt_BR:
       fork_template: Modelo de garfo
       customize: Personalizar
       add: Adicionar
+      redact: Redigir
+      unredact: Restaurar
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
@@ -2178,6 +2180,15 @@ pt_BR:
     name_or_username: Nome ou nome de usuário
     cast: Emitidos
     uncast: Não emitidos
+    reason_redacted: Motivo omitido
+    redact_reason_title: Ocultar o motivo do voto?
+    redact_reason_helptext: O texto explicativo e os anexos serão ocultados, mas o voto permanecerá nos resultados.
+    redact_reason_confirm: Omitir motivo
+    redact_reason_success: Motivo do voto omitido
+    unredact_reason_title: Restaurar o motivo da votação?
+    unredact_reason_helptext: O texto explicativo e os anexos voltarão a ficar visíveis.
+    unredact_reason_confirm: Restaure a razão
+    unredact_reason_success: Motivo da votação restaurado
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indeciso
     show_invitations: Mostrar Convites Pendentes

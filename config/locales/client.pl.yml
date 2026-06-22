@@ -320,6 +320,8 @@ pl:
       fork_template: Szablon widelca
       customize: Dostosuj
       add: Dodać
+      redact: Redagować
+      unredact: Przywrócić
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -2157,6 +2159,15 @@ pl:
     name_or_username: Imię lub nazwa użytkownika
     cast: Cast
     uncast: Uncast
+    reason_redacted: Powód usunięty
+    redact_reason_title: Usunąć powód głosowania?
+    redact_reason_helptext: Powód, dla którego tekst i załączniki zostaną ukryte, ale głosowanie pozostanie w wynikach
+    redact_reason_confirm: Usuń powód
+    redact_reason_success: Powód głosowania został usunięty
+    unredact_reason_title: Przywrócić powód głosowania?
+    unredact_reason_helptext: Powód, dla którego tekst i załączniki będą ponownie widoczne
+    unredact_reason_confirm: Przywróć powód
+    unredact_reason_success: Przywrócono powód głosowania
   poll_common_undecided_panel:
     show_undecided: Pokaż %{count} niezdecydowanych
     show_invitations: Pokaż Oczekujące Zaproszenia

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_22_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -258,6 +258,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
     t.boolean "allow_concurrent_polls", default: false, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.integer "comment_length_max"
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
   end
 
@@ -707,6 +708,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
     t.boolean "notify_on_open", default: true, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.integer "comment_length_max"
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
@@ -850,6 +852,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
     t.boolean "none_of_the_above", default: false, null: false
+    t.datetime "redacted_at", precision: nil
+    t.integer "redactor_id"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
@@ -988,6 +992,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_12_031310) do
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.integer "comment_length_max"
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"

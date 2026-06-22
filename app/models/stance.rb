@@ -46,6 +46,7 @@ class Stance < ApplicationRecord
         LEFT JOIN topics t ON t.id = polls.topic_id
       WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
+        AND stances.redacted_at IS NULL
         AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
         #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
@@ -68,7 +69,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id, :attachments]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :redacted_at, :redactor_id, :inviter_id, :attachments]
 
   accepts_nested_attributes_for :stance_choices
 

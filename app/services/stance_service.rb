@@ -68,6 +68,20 @@ class StanceService
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end
 
+  def self.redact(stance:, actor:)
+    actor.ability.authorize!(:redact, stance)
+    stance.update!(redacted_at: Time.zone.now, redactor_id: actor.id)
+    stance.update_pg_search_document
+    MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+  end
+
+  def self.unredact(stance:, actor:)
+    actor.ability.authorize!(:unredact, stance)
+    stance.update!(redacted_at: nil, redactor_id: nil)
+    stance.update_pg_search_document
+    MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+  end
+
   # def self.destroy(stance:, actor:)
   #   actor.ability.authorize! :destroy, stance
   #   stance.destroy

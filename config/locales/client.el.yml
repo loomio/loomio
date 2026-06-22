@@ -320,6 +320,8 @@ el:
       fork_template: Πρότυπο πιρουνιού
       customize: Προσαρμογή
       add: Προσθέτω
+      redact: Συντάσσω
+      unredact: Επαναφέρω
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
@@ -2132,6 +2134,15 @@ el:
     name_or_username: Όνομα ή όνομα χρήστη
     cast: Cast
     uncast: Uncast
+    reason_redacted: Ο λόγος διορθώθηκε
+    redact_reason_title: Λόγος διαγραφής ψήφου;
+    redact_reason_helptext: Ο λόγος για τον οποίο το κείμενο και τα συνημμένα θα αποκρύπτονται, αλλά η ψήφος θα παραμείνει στα αποτελέσματα
+    redact_reason_confirm: Επεξεργασία λόγου
+    redact_reason_success: Ο λόγος ψήφου διαγράφηκε
+    unredact_reason_title: Επαναφορά λόγου ψήφου;
+    unredact_reason_helptext: Ο λόγος για τον οποίο το κείμενο και τα συνημμένα θα γίνουν ξανά ορατά
+    unredact_reason_confirm: Επαναφορά αιτίας
+    unredact_reason_success: Η αιτιολογία ψήφου αποκαταστάθηκε
   poll_common_undecided_panel:
     show_undecided: Εμφάνιση %{count} αναποφάσιστων
     show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα

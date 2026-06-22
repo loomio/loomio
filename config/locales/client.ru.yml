@@ -320,6 +320,8 @@ ru:
       fork_template: Шаблон форка
       customize: Настроить
       add: Добавлять
+      redact: Редактировать
+      unredact: Восстановить
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -2132,6 +2134,15 @@ ru:
     name_or_username: Имя или имя пользователя
     cast: Cast
     uncast: Uncast
+    reason_redacted: Причина удалена
+    redact_reason_title: Причина голосования "Замаскировать"?
+    redact_reason_helptext: Текст и вложения будут скрыты, но результаты голосования останутся в итоговой таблице.
+    redact_reason_confirm: Причина удаления
+    redact_reason_success: Причина голосования скрыта
+    unredact_reason_title: Восстановить обоснование голосования?
+    unredact_reason_helptext: Причина, по которой текст и вложения снова станут видимыми.
+    unredact_reason_confirm: Восстановить причину
+    unredact_reason_success: Причина голосования восстановлена.
   poll_common_undecided_panel:
     show_undecided: Показать %{count} не определился
     show_invitations: Показать ожидающие приглашения
