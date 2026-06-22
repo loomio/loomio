@@ -532,6 +532,7 @@ pt_BR:
       updated: Comentário atualizado
       destroyed: Comentário apagado
       removed: Comentário removido
+      too_long: O comentário deve ter no máximo %{count} caracteres.
     say_something: Diga algo...
     edit_comment: Editar comentários
     delete_comment: Apagar comentário
@@ -1800,6 +1801,10 @@ pt_BR:
     allow_reactions_description: Permitir que os participantes adicionem reações com emojis
     topic_settings: Configurações do tópico
     thread_settings: Configurações de thread
+    comment_length_max: Limite de comprimento do comentário
+    comment_length_max_help: Deixe em branco se não houver limite de tópicos.
+    comment_length_max_description: Incentive comentários concisos definindo um limite máximo de caracteres.
+    comment_length_max_hint: Número máximo de caracteres por comentário. Deixe em branco para não haver limite.
   delete_thread_form:
     title: Apagar conversa
     body: Você tem certeza de que deseja apagar este conversa?

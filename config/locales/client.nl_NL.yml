@@ -524,6 +524,7 @@ nl_NL:
       updated: Reactie bijgewerkt
       destroyed: Reactie verwijderd
       removed: Reactie verwijderd
+      too_long: De reactie mag maximaal %{count} tekens lang zijn.
     say_something: Zeg iets...
     edit_comment: Reactie bewerken
     delete_comment: Reactie verwijderen
@@ -1779,6 +1780,10 @@ nl_NL:
     allow_reactions_description: Sta deelnemers toe om emoji-reacties toe te voegen.
     topic_settings: Onderwerpinstellingen
     thread_settings: Draadinstellingen
+    comment_length_max: Maximale lengte van reacties
+    comment_length_max_help: Laat dit veld leeg als er geen onderwerplimiet is.
+    comment_length_max_description: Stimuleer beknopte reacties door een maximale lengte in te stellen.
+    comment_length_max_hint: Maximaal aantal tekens per reactie. Laat het veld leeg voor geen limiet.
   delete_thread_form:
     title: Bord verwijderen
     body: Weet je zeker dat je dit bord wil verwijderen?

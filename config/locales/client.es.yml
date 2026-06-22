@@ -524,6 +524,7 @@ es:
       updated: Comentario actualizado
       destroyed: Comentario eliminado
       removed: Comentario eliminado
+      too_long: El comentario debe tener %{count} caracteres o menos.
     say_something: Diga algo...
     edit_comment: Editar comentario
     delete_comment: Borrar comentario
@@ -1790,6 +1791,10 @@ es:
     allow_reactions_description: Permitir a los participantes añadir reacciones con emojis
     topic_settings: Configuración del tema
     thread_settings: Configuración del hilo
+    comment_length_max: Límite de longitud de los comentarios
+    comment_length_max_help: Déjalo en blanco si no deseas un límite para el tema.
+    comment_length_max_description: Fomenta comentarios concisos definiendo una longitud máxima.
+    comment_length_max_hint: Máximo de caracteres por comentario. Déjalo en blanco para no tener límite.
   delete_thread_form:
     title: 'Borrar hilo '
     body: "¿Estás seguro que quieres eliminar este hilo?"

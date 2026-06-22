@@ -634,6 +634,15 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             )
               template(v-slot:prepend)
                 v-checkbox-btn(v-model="poll.allowReactions" @click.stop)
+          .text-body-large.pt-4.pb-2(v-t="'thread_arrangement_form.comment_length_max'")
+          .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
+          v-number-input(
+            v-model="poll.commentLengthMax"
+            :hint="$t('thread_arrangement_form.comment_length_max_hint')"
+            persistent-hint
+            :min="1"
+            control-variant="hidden"
+          )
 
         common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 

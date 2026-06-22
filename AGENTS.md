@@ -5,6 +5,12 @@
 - Do not run `git commit` unless the user explicitly asks for a specific commit.
 - Permission to commit once does not grant permission to commit again later without asking.
 
+## Code style
+
+- Take selective lessons from [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md), especially naming:
+  - Put the most significant word first, then qualifiers/units in descending significance. Prefer names like `comment_length_max` over `max_comment_length`, so related names group together.
+  - Choose related names with the same length where practical, especially pairs like `min` and `max`, so code lines up and comparisons are easier to scan.
+
 ## i18n / Localization
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.

@@ -37,6 +37,92 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_not comment.persisted?
   end
 
+  test "raises when comment exceeds topic comment length limit" do
+    @discussion.topic.update!(comment_length_max: 10)
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "This comment is too long",
+      body_format: "md"
+    )
+
+    assert_raises ActiveRecord::RecordInvalid do
+      CommentService.create(comment: comment, actor: @user)
+    end
+    assert_not comment.persisted?
+    assert_includes comment.errors[:body], "Comment must be 10 characters or less"
+  end
+
+  test "comment length limit counts like javascript string length" do
+    @discussion.topic.update!(comment_length_max: 1)
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "😄",
+      body_format: "md"
+    )
+
+    assert_raises ActiveRecord::RecordInvalid do
+      CommentService.create(comment: comment, actor: @user)
+    end
+    assert_includes comment.errors[:body], "Comment must be 1 characters or less"
+  end
+
+  test "comment length limit ignores html tags" do
+    @discussion.topic.update!(comment_length_max: 10)
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "<p><strong>12345</strong></p>",
+      body_format: "html"
+    )
+
+    CommentService.create(comment: comment, actor: @user)
+
+    assert comment.persisted?
+    assert_equal 5, comment.body_visible_text_length
+  end
+
+  test "comment length limit counts visible text inside html tags" do
+    @discussion.topic.update!(comment_length_max: 4)
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "<p><strong>12345</strong></p>",
+      body_format: "html"
+    )
+
+    assert_raises ActiveRecord::RecordInvalid do
+      CommentService.create(comment: comment, actor: @user)
+    end
+    assert_includes comment.errors[:body], "Comment must be 4 characters or less"
+  end
+
+  test "builds discussion topic with comment length limit" do
+    discussion = DiscussionService.build(
+      params: { title: "Limited comments", group_id: @group.id, comment_length_max: 120 },
+      actor: @admin
+    )
+
+    assert_equal 120, discussion.topic.comment_length_max
+  end
+
+  test "builds standalone poll topic with comment length limit" do
+    poll = PollService.build(
+      params: {
+        title: "Limited poll comments",
+        poll_type: "poll",
+        group_id: @group.id,
+        poll_option_names: ["yes"],
+        closing_at: 3.days.from_now,
+        comment_length_max: 80
+      },
+      actor: @admin
+    )
+
+    assert_equal 80, poll.topic.comment_length_max
+  end
+
   test "creates user_mentioned event when mentioning a user" do
     @admin.update!(username: "mentionme#{SecureRandom.hex(4)}")
     comment = Comment.new(

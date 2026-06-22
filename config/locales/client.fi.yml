@@ -522,6 +522,7 @@ fi:
       updated: Kommentti päivitettiin
       destroyed: Kommentti poistettiin
       removed: Kommentti poistettu
+      too_long: Kommentin pituus saa olla enintään %{count} merkkiä
     say_something: Sano jotain...
     edit_comment: Muokkaa kommenttia
     delete_comment: Poista kommentti
@@ -1761,6 +1762,10 @@ fi:
     allow_reactions_description: Salli osallistujien lisätä emoji-reaktioita
     topic_settings: Aiheasetukset
     thread_settings: Ketjun asetukset
+    comment_length_max: Kommentin pituusrajoitus
+    comment_length_max_help: Jätä tyhjäksi, jos aihetta ei rajoiteta.
+    comment_length_max_description: Kannusta ytimekkäitä kommentteja asettamalla niille enimmäispituus.
+    comment_length_max_hint: Kommentin enimmäismäärä merkkejä. Jätä tyhjäksi, jos et halua merkkien määrää.
   delete_thread_form:
     title: Poista lanka
     body: Haluatko varmasti poistaa tämän ketjun?

@@ -527,6 +527,15 @@ export default {
         )
           template(v-slot:prepend)
             v-checkbox-btn(v-model="pollTemplate.allowReactions" @click.stop)
+      .text-body-large.pt-4.pb-2(v-t="'thread_arrangement_form.comment_length_max'")
+      .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
+      v-number-input(
+        v-model="pollTemplate.commentLengthMax"
+        :hint="$t('thread_arrangement_form.comment_length_max_hint')"
+        persistent-hint
+        :min="1"
+        control-variant="hidden"
+      )
 
     v-card-actions.poll-common-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')

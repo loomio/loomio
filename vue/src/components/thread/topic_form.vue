@@ -42,6 +42,15 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.thread_settin
     template(v-if="topic.topicableType === 'Poll'")
       v-checkbox(v-model="clone.allowComments" :label="$t('thread_arrangement_form.allow_comments')" hide-details)
       v-checkbox(v-model="clone.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" hide-details)
+    .text-body-large.mt-4.pb-2(v-t="'thread_arrangement_form.comment_length_max'")
+    .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
+    v-number-input(
+      v-model="clone.commentLengthMax"
+      :hint="$t('thread_arrangement_form.comment_length_max_hint')"
+      persistent-hint
+      :min="1"
+      control-variant="hidden"
+    )
   v-card-actions
     v-spacer
     v-btn(color="primary" variant="elevated" @click="submit()" :loading="clone.processing")

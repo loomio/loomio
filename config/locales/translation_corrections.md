@@ -105,6 +105,8 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/client.es.yml` | `auth_form.login_link_rate_limited` | `espere una hora e inténtelo de nuevo` | `espera una hora e inténtalo de nuevo` | Formal `usted` imperatives; app uses `tú` throughout |
+| `config/locales/client.es.yml` | `thread_arrangement_form.comment_length_max_help` | `Déjelo en blanco si no desea un límite de temas. Se aplicará un límite del sistema.` | `Déjalo en blanco si no deseas un límite para el tema.` | Formal `usted` imperative; app uses informal `tú` throughout |
+| `config/locales/client.es.yml` | `thread_arrangement_form.comment_length_max_description`, `thread_arrangement_form.comment_length_max_hint` | `Fomente...`, `Déjelo...` | `Fomenta...`, `Déjalo...` | Formal `usted` forms; app uses informal `tú` throughout |
 
 ## 2026-05-22 — lock/unlock thread translation pass
 
@@ -122,4 +124,3 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | notification/thread item lock keys | Translated placeholders like `%{acteur}`, `%{ator}`, `%{автор}`, `%{yazar}` | Restored `%{actor}` / `%{author}` | Interpolation placeholder names must never be translated. |
 | `config/locales/client.he.yml` | `action_dock.unlock_thread`, `discussion.locked.unlocked` | Repeated the lock wording | `ביטול נעילת שרשור`, `נעילת השרשור בוטלה` | Unlock status/action was translated as lock. |
 | `config/locales/client.fr.yml`, `client.hu.yml`, `client.it.yml`, `client.pl.yml`, `client.ru.yml` | locked discussion labels | Closed/shut wording such as `Fermé`, `Bezárt`, `Chiuso`, `Zamknięty`, `Закрытые обсуждения` | Lock-state wording such as `Verrouillé`, `Zárolva`, `Bloccate`, `Zablokowane`, `Заблокированные обсуждения` | Locking a thread is distinct from closing a poll/discussion; these labels should not drift back to "closed". |
-

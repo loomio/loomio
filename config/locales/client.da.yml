@@ -522,6 +522,7 @@ da:
       updated: Kommentar redigeret
       destroyed: Kommentar slette
       removed: Kommentar fjernet
+      too_long: Kommentaren skal være %{count} tegn højst
     say_something: Sig noget...
     edit_comment: Rediger kommentar
     delete_comment: Slet kommentar
@@ -1761,6 +1762,10 @@ da:
     allow_reactions_description: Tillad deltagerne at tilføje emoji-reaktioner
     topic_settings: Emneindstillinger
     thread_settings: Trådindstillinger
+    comment_length_max: Kommentarlængdegrænse
+    comment_length_max_help: Lad feltet stå tomt, hvis der ikke er nogen emnegrænse.
+    comment_length_max_description: Opfordr til kortfattede kommentarer ved at sætte en maksimal længde.
+    comment_length_max_hint: Maksimalt antal tegn pr. kommentar. Lad det stå tomt for ingen begrænsning.
   delete_thread_form:
     title: Slet debat
     body: Er du sikker på at du vil slette denne debat?

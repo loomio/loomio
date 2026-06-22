@@ -521,6 +521,7 @@ ja:
       updated: コメントを更新しました
       destroyed: コメントが削除されました
       removed: コメントが削除されました
+      too_long: コメントは%{count}文字以下でなければなりません
     say_something: 何か言って...
     edit_comment: コメントの編集
     delete_comment: コメントを削除します
@@ -1760,6 +1761,10 @@ ja:
     allow_reactions_description: 参加者が絵文字リアクションを追加できるようにする
     topic_settings: トピック設定
     thread_settings: スレッド設定
+    comment_length_max: コメントの文字数制限
+    comment_length_max_help: トピック制限を設けない場合は空欄のままにしてください。
+    comment_length_max_description: 最大文字数を設定することで、簡潔なコメントを促しましょう。
+    comment_length_max_hint: コメントあたりの最大文字数。制限なしの場合は空欄のままにしてください。
   delete_thread_form:
     title: スレッドの削除
     body: このスレッドを削除してもよろしいですか?

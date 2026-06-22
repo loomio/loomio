@@ -522,6 +522,7 @@ sv:
       updated: Kommentar uppdaterad
       destroyed: Kommentar borttagen
       removed: Kommentar borttagen
+      too_long: Kommentaren måste vara högst %{count} tecken lång
     say_something: Säg något...
     edit_comment: Edit kommentar
     delete_comment: Ta bort kommentaren
@@ -1761,6 +1762,10 @@ sv:
     allow_reactions_description: Tillåt deltagare att lägga till emoji-reaktioner
     topic_settings: Ämnesinställningar
     thread_settings: Trådinställningar
+    comment_length_max: Kommentarlängdsgräns
+    comment_length_max_help: Lämna tomt om du vill ha obegränsad ämnesgräns.
+    comment_length_max_description: Uppmuntra koncisa kommentarer genom att ange en maximal längd.
+    comment_length_max_hint: Maximalt antal tecken per kommentar. Lämna tomt om du vill ha obegränsat antal tecken.
   delete_thread_form:
     title: Ta bort tråd
     body: Är du säker på att du vill ta bort den här tråden?
