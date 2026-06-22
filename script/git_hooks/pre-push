@@ -13,6 +13,16 @@ else
   bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
 fi
 
+# ── Bundler Audit ───────────────────────────────────────────────────────
+
+if [ "${SKIP_BUNDLER_AUDIT:-}" = "1" ]; then
+  echo "Skipping Bundler Audit because SKIP_BUNDLER_AUDIT=1."
+else
+  echo ""
+  echo "==> Running Bundler Audit before push..."
+  bundle exec bundler-audit check --update
+fi
+
 # ── Translation checks ──────────────────────────────────────────────────
 
 if [ "${SKIP_TRANSLATIONS:-}" = "1" ]; then
