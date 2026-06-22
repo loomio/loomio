@@ -2,7 +2,7 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   include LocalesHelper
   include CurrentUserHelper
 
-  PAID_MAX_UPLOAD_BYTES  = ENV.fetch('PAID_MAX_UPLOAD_BYTES',  1.gigabyte).to_i
+  PAID_MAX_UPLOAD_BYTES  = (ENV['FILE_UPLOAD_MAX_MB'] ? ENV['FILE_UPLOAD_MAX_MB'].to_i.megabytes : ENV.fetch('PAID_MAX_UPLOAD_BYTES', 1.gigabyte).to_i)
   TRIAL_MAX_UPLOAD_BYTES = ENV.fetch('TRIAL_MAX_UPLOAD_BYTES', 25.megabytes).to_i
 
   protect_from_forgery with: :exception
