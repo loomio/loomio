@@ -24,6 +24,7 @@ export default class StanceModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       revokedAt: null,
+      redactedAt: null,
       participantId: null,
       pollId: null,
       optionScores: {},

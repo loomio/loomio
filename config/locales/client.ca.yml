@@ -320,6 +320,8 @@ ca:
       fork_template: Plantilla de forquilla
       customize: Personalitza
       add: Afegeix
+      redact: Redactar
+      unredact: Restaurar
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -2162,6 +2164,15 @@ ca:
     name_or_username: Nom o nom d'usuari
     cast: Emès
     uncast: No emès
+    reason_redacted: Motiu redactat
+    redact_reason_title: Voleu eliminar el motiu del vot?
+    redact_reason_helptext: El motiu pel qual el text i els fitxers adjunts s'ocultaran, però el vot romandrà als resultats
+    redact_reason_confirm: Retalla el motiu
+    redact_reason_success: Motiu del vot redactat
+    unredact_reason_title: Voleu restaurar el motiu del vot?
+    unredact_reason_helptext: El motiu pel qual el text i els fitxers adjunts tornaran a ser visibles
+    unredact_reason_confirm: Restaurar la raó
+    unredact_reason_success: Motiu del vot restaurat
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} indecisos
     show_invitations: Mostra les invitacions pendents

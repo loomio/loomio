@@ -320,6 +320,8 @@ sv:
       fork_template: Gaffelmall
       customize: Anpassa
       add: Tillägga
+      redact: Redigera
+      unredact: Återställa
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -2137,6 +2139,15 @@ sv:
     name_or_username: Namn eller användarnamn
     cast: Avgivna
     uncast: Inte avgivna
+    reason_redacted: Anledningen borttagen
+    redact_reason_title: Ta bort anledningen till röstning?
+    redact_reason_helptext: Anledningen till att text och bilagor kommer att döljas, men rösten kommer att finnas kvar i resultatet
+    redact_reason_confirm: Redigeringsorsak
+    redact_reason_success: Röstorsak borttagen
+    unredact_reason_title: Återställa röstorsaken?
+    unredact_reason_helptext: Anledningen till att text och bilagor blir synliga igen
+    unredact_reason_confirm: Återställningsorsak
+    unredact_reason_success: Röstorsaken återställd
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar

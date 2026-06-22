@@ -112,6 +112,56 @@ export default new class StanceService {
             }
           });
         }
+      },
+
+      redact_stance: {
+        name: 'common.action.redact',
+        icon: 'mdi-eye-off',
+        menu: true,
+        canPerform() { return AbilityService.canRedactStance(stance); },
+        perform() {
+          return openModal({
+            component: 'ConfirmModal',
+            props: {
+              confirm: {
+                submit() {
+                  return Records.stances.remote.patchMember(stance.id, 'redact');
+                },
+                text: {
+                  title: 'poll_common_votes_panel.redact_reason_title',
+                  helptext: 'poll_common_votes_panel.redact_reason_helptext',
+                  submit: 'poll_common_votes_panel.redact_reason_confirm',
+                  flash: 'poll_common_votes_panel.redact_reason_success'
+                }
+              }
+            }
+          });
+        }
+      },
+
+      unredact_stance: {
+        name: 'common.action.unredact',
+        icon: 'mdi-eye',
+        menu: true,
+        canPerform() { return AbilityService.canUnredactStance(stance); },
+        perform() {
+          return openModal({
+            component: 'ConfirmModal',
+            props: {
+              confirm: {
+                submit() {
+                  return Records.stances.remote.patchMember(stance.id, 'unredact');
+                },
+                text: {
+                  title: 'poll_common_votes_panel.unredact_reason_title',
+                  helptext: 'poll_common_votes_panel.unredact_reason_helptext',
+                  submit: 'poll_common_votes_panel.unredact_reason_confirm',
+                  flash: 'poll_common_votes_panel.unredact_reason_success'
+                }
+              }
+            }
+          });
+        }
       }
     };
   }

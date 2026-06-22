@@ -320,6 +320,8 @@ hr:
       fork_template: Predložak vilice
       customize: Prilagodi
       add: Dodati
+      redact: Urediti
+      unredact: Vratiti
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -2137,6 +2139,15 @@ hr:
     name_or_username: Ime ili korisničko ime
     cast: Cast
     uncast: Uncast
+    reason_redacted: Razlog je uklonjen
+    redact_reason_title: Uredi razlog glasanja?
+    redact_reason_helptext: Razlog zašto će tekst i privitci biti skriveni, ali će glas ostati u rezultatima
+    redact_reason_confirm: Razlog uređivanja
+    redact_reason_success: Razlog glasanja je uklonjen
+    unredact_reason_title: Vratiti razlog glasanja?
+    unredact_reason_helptext: Razlog zašto će tekst i privitci ponovno biti vidljivi
+    unredact_reason_confirm: Razlog vraćanja
+    unredact_reason_success: Razlog glasanja vraćen
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodlučenih
     show_invitations: Prikaži pozivnice na čekanju

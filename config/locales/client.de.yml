@@ -326,6 +326,8 @@ de:
       fork_template: Gabelvorlage
       customize: Anpassen
       add: Hinzufügen
+      redact: Redact
+      unredact: Wiederherstellen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -2170,6 +2172,15 @@ de:
     name_or_username: Name oder Benutzername
     cast: Abgegeben
     uncast: Nicht abgegeben
+    reason_redacted: Grund geschwärzt
+    redact_reason_title: Grund für die Schwärzungsabstimmung?
+    redact_reason_helptext: Der Begründungstext und die Anhänge werden ausgeblendet, die Abstimmung bleibt jedoch im Ergebnis sichtbar.
+    redact_reason_confirm: Grund für die Schwärzung
+    redact_reason_success: Abstimmungsgrund geschwärzt
+    unredact_reason_title: Abstimmungsgrund wiederherstellen?
+    unredact_reason_helptext: Der Grundtext und die Anhänge werden wieder sichtbar gemacht.
+    unredact_reason_confirm: Wiederherstellungsgrund
+    unredact_reason_success: Abstimmungsgrund wiederhergestellt
   poll_common_undecided_panel:
     show_undecided: Zeige %{count} unentschlossen
     show_invitations: Ausstehende Einladungen anzeigen

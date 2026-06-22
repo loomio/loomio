@@ -320,6 +320,8 @@ es:
       fork_template: Plantilla de horquilla
       customize: Personalizar
       add: Agregar
+      redact: Redactar
+      unredact: Restaurar
     formatting_help:
       label: 'Formato '
       title: Aprende a usar Markdown para dar formato a tu texto
@@ -2171,6 +2173,15 @@ es:
     name_or_username: Nombre o nombre de usuario
     cast: Emitidos
     uncast: No emitidos
+    reason_redacted: Motivo censurado
+    redact_reason_title: "¿Motivo de la votación?"
+    redact_reason_helptext: El texto y los archivos adjuntos se ocultarán, pero el voto permanecerá en los resultados.
+    redact_reason_confirm: Motivo de la censura
+    redact_reason_success: Motivo del voto censurado
+    unredact_reason_title: "¿Restaurar el motivo del voto?"
+    unredact_reason_helptext: El motivo por el cual el texto y los archivos adjuntos volverán a ser visibles
+    unredact_reason_confirm: Restaurar motivo
+    unredact_reason_success: Motivo del voto restaurado
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indecisos
     show_invitations: Mostrar invitaciones pendientes
@@ -2582,7 +2593,7 @@ es:
       title: Ocultar estos consejos
       hide_onboarding: Ocultar consejos de incorporación
       unhide_onboarding: Mostrar consejos de incorporación
-      helptext: “<p>Esto eliminará la “Lista de verificación de primeros pasos” de la barra de título.</p><p> Si deseas recuperarlo más tarde, puedes <b>mostrar sugerencias de incorporación</b> desde la configuración de la barra lateral.</p>”
+      helptext: "“<p>Esto eliminará la “Lista de verificación de primeros pasos” de la barra de título.</p><p> Si deseas recuperarlo más tarde, puedes <b>mostrar sugerencias de incorporación</b> desde la configuración de la barra lateral.</p>”"
     intro:
       tip_title: Haz clic aquí para comenzar
       title: "¡Bienvenido a tu nuevo grupo Loomio!"
@@ -2675,7 +2686,7 @@ es:
     choose_at_least: Elige al menos
     choose_at_most: Elige como máximo
     please_review_the_form: Revisa el formulario
-    option_added_please_add_details: "Opción añadida. Añade más detalles para que sepan qué significa."
+    option_added_please_add_details: Opción añadida. Añade más detalles para que sepan qué significa.
     default_duration_in_days: Duración predeterminada en días
     how_many_options_can_a_voter_choose: "¿Cuántas opciones puede elegir un votante?"
     minimum_choices: Opciones mínimas

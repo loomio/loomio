@@ -83,6 +83,82 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_nil stance.reload.revoked_at
   end
 
+  test "redact with permission sets redacted_at and hides reason in response" do
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
+    stance_params = {
+      poll_id: @poll.id,
+      stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
+      reason: "moderate this"
+    }
+    post :update, params: { id: stance.id, stance: stance_params }
+    assert_response :success
+
+    sign_in @admin
+    patch :redact, params: { id: stance.id }
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    redacted_stance = json['stances'].find { |record| record['id'] == stance.id }
+    assert_not_nil stance.reload.redacted_at
+    assert_not_nil redacted_stance['redacted_at']
+    assert_not redacted_stance.key?('reason')
+    assert_not redacted_stance.key?('attachments')
+    assert_not redacted_stance.key?('link_previews')
+    assert redacted_stance.key?('option_scores')
+  end
+
+  test "unredact restores reason visibility" do
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
+    stance_params = {
+      poll_id: @poll.id,
+      stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
+      reason: "restore this"
+    }
+    post :update, params: { id: stance.id, stance: stance_params }
+    assert_response :success
+
+    sign_in @admin
+    patch :redact, params: { id: stance.id }
+    assert_response :success
+    assert_not_nil stance.reload.redacted_at
+
+    patch :unredact, params: { id: stance.id }
+    assert_response :success
+    assert_nil stance.reload.redacted_at
+
+    json = JSON.parse(response.body)
+    restored_stance = json['stances'].find { |s| s['id'] == stance.id }
+    assert restored_stance.key?('reason')
+  end
+
+  test "unredact without permission returns 403" do
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
+    stance.update!(redacted_at: Time.zone.now)
+
+    patch :unredact, params: { id: stance.id }
+    assert_response :forbidden
+    assert_not_nil stance.reload.redacted_at
+  end
+
+  test "redact without permission returns 403" do
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
+    stance_params = {
+      poll_id: @poll.id,
+      stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
+      reason: "moderate this"
+    }
+    post :update, params: { id: stance.id, stance: stance_params }
+    assert_response :success
+
+    patch :redact, params: { id: stance.id }
+    assert_response :forbidden
+    assert_nil stance.reload.redacted_at
+  end
+
   # -- Uncast tests --
 
   test "uncast sets cast_at to nil for own vote" do

@@ -320,6 +320,8 @@ nl_NL:
       fork_template: Vorksjabloon
       customize: Aanpassen
       add: Toevoegen
+      redact: Redactie
+      unredact: Herstellen
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -2162,6 +2164,15 @@ nl_NL:
     name_or_username: Naam of gebruikersnaam
     cast: Uitgebracht
     uncast: Niet uitgebracht
+    reason_redacted: Reden weggelaten
+    redact_reason_title: Reden voor stemming?
+    redact_reason_helptext: De toelichting en bijlagen worden verborgen, maar de stem blijft wel zichtbaar in de resultaten.
+    redact_reason_confirm: Reden voor redactie
+    redact_reason_success: Reden voor de stemming is verwijderd
+    unredact_reason_title: Stemreden herstellen?
+    unredact_reason_helptext: De reden waarom tekst en bijlagen weer zichtbaar worden gemaakt.
+    unredact_reason_confirm: Reden herstellen
+    unredact_reason_success: Reden voor de stemming hersteld
   poll_common_undecided_panel:
     show_undecided: Toon %{count} onbeslist
     show_invitations: Toon uitnodigingen in afwachting

@@ -320,6 +320,8 @@ tr:
       fork_template: Çatal şablonu
       customize: Özelleştirmek
       add: Eklemek
+      redact: Yazıya dökmek
+      unredact: Eski haline getirmek
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -2137,6 +2139,15 @@ tr:
     name_or_username: Ad veya kullanıcı adı
     cast: Cast
     uncast: Uncast
+    reason_redacted: Sebep gizlendi
+    redact_reason_title: Oy verme gerekçesini gizle?
+    redact_reason_helptext: Metin ve ekler gizlenecek, ancak oy sonuçlarda görünecektir.
+    redact_reason_confirm: Gerekçeyi gizle
+    redact_reason_success: Oy verme gerekçesi gizlenmiştir.
+    unredact_reason_title: Oy verme gerekçesini geri yükle?
+    unredact_reason_helptext: Metin ve eklerin tekrar görünür hale getirilmesinin nedeni
+    unredact_reason_confirm: Mantığı geri getir
+    unredact_reason_success: Oy verme gerekçesi geri yüklendi.
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster

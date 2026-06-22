@@ -320,6 +320,8 @@ ro:
       fork_template: Șablon furcă
       customize: Personalizare
       add: Adăuga
+      redact: Redacta
+      unredact: Restabili
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -2137,6 +2139,15 @@ ro:
     name_or_username: Nume sau nume de utilizator
     cast: Cast
     uncast: Uncast
+    reason_redacted: Motivul a fost redactat
+    redact_reason_title: Se elimină motivul votului?
+    redact_reason_helptext: Motivul pentru care textul și atașamentele vor fi ascunse, dar votul va rămâne în rezultate
+    redact_reason_confirm: Redactați motivul
+    redact_reason_success: Motivul votului a fost redactat
+    unredact_reason_title: Restabiliți motivul votului?
+    unredact_reason_helptext: Motivul pentru care textul și atașamentele vor fi din nou vizibile
+    unredact_reason_confirm: Restaurați motivul
+    unredact_reason_success: Motivul votului a fost restabilit
   poll_common_undecided_panel:
     show_undecided: Afișați %{count} nehotărâți
     show_invitations: Afișați invitațiile în așteptare

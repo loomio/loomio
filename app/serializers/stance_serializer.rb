@@ -17,6 +17,8 @@ class StanceSerializer < ApplicationSerializer
              :poll_id,
              :participant_id,
              :revoked_at,
+             :redacted_at,
+             :redactor_id,
              :order_at,
              :option_scores
 
@@ -36,7 +38,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_option_scores?
-    include_reason?
+    include_results?
   end
 
   def locale
@@ -54,6 +56,10 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
+    include_results? && !object.redacted_at
+  end
+
+  def include_results?
     !object.revoked_at && (object.participant_id == scope[:current_user_id] || poll.show_results?(voted: true))
   end
 

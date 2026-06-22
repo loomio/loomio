@@ -322,6 +322,8 @@ hu:
       fork_template: Villa sablon
       customize: Testreszabás
       add: Hozzáadás
+      redact: Megrövidít
+      unredact: Visszaállítás
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -2144,6 +2146,15 @@ hu:
     name_or_username: Név vagy felhasználónév
     cast: Cast
     uncast: Uncast
+    reason_redacted: Indoklás kitakarva
+    redact_reason_title: Szavazás indokának kitakarása?
+    redact_reason_helptext: Az ok, amiért a szöveg és a mellékletek rejtve lesznek, de a szavazat megmarad az eredmények között.
+    redact_reason_confirm: Kihagyás oka
+    redact_reason_success: Szavazási indoklás kitakarva
+    unredact_reason_title: Szavazás indokának visszaállítása?
+    unredact_reason_helptext: Az ok, amiért a szöveg és a mellékletek ismét láthatóvá válnak
+    unredact_reason_confirm: Visszaállítás oka
+    unredact_reason_success: Szavazási indok visszaállítva
   poll_common_undecided_panel:
     show_undecided: "%{count} bizonytalan megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése

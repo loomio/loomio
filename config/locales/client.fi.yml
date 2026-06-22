@@ -320,6 +320,8 @@ fi:
       fork_template: Haarukan mallipohja
       customize: Mukauta
       add: Lisätä
+      redact: Muokkaa
+      unredact: Palauttaa
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -2137,6 +2139,15 @@ fi:
     name_or_username: Nimi tai käyttäjätunnus
     cast: Cast
     uncast: Uncast
+    reason_redacted: Syy muokattu
+    redact_reason_title: Peitetäänkö äänestyksen syy?
+    redact_reason_helptext: Syy, miksi teksti ja liitteet piilotetaan, mutta ääni pysyy tuloksissa
+    redact_reason_confirm: Peittämisen syy
+    redact_reason_success: Äänestyksen syy poistettu
+    unredact_reason_title: Palautetaanko äänestyksen syy?
+    unredact_reason_helptext: Syy, miksi teksti ja liitteet tulevat taas näkyviin
+    unredact_reason_confirm: Palautuksen syy
+    unredact_reason_success: Äänestyssyy palautettu
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut

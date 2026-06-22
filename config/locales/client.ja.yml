@@ -318,6 +318,8 @@ ja:
       fork_template: フォークテンプレート
       customize: カスタマイズ
       add: 追加
+      redact: 編集済み
+      unredact: 復元する
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -2136,6 +2138,15 @@ ja:
     name_or_username: 名前またはユーザー名
     cast: Cast
     uncast: Uncast
+    reason_redacted: 理由は伏せられています
+    redact_reason_title: 投票理由を伏せてください。
+    redact_reason_helptext: 理由テキストと添付ファイルは非表示になりますが、投票結果は残ります。
+    redact_reason_confirm: 編集理由
+    redact_reason_success: 投票理由（伏字）
+    unredact_reason_title: 投票理由を復元しますか？
+    unredact_reason_helptext: テキストと添付ファイルが再び表示される理由
+    unredact_reason_confirm: 理性を回復する
+    unredact_reason_success: 投票理由が復元されました
   poll_common_undecided_panel:
     show_undecided: "%{count} を表示するかどうかは未定"
     show_invitations: 保留中の招待状を表示

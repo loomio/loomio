@@ -343,6 +343,8 @@ zh_CN:
       fork_template: 分支模板
       customize: 定制
       add: 添加
+      redact: 纂
+      unredact: 恢复
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
@@ -2249,6 +2251,15 @@ zh_CN:
     name_or_username: 真实姓名或用户名
     cast: Cast
     uncast: Uncast
+    reason_redacted: 原因已隐去
+    redact_reason_title: 删除投票理由？
+    redact_reason_helptext: 原因文本和附件将被隐藏，但投票结果仍将保留。
+    redact_reason_confirm: 删除原因
+    redact_reason_success: 投票理由已隐去
+    unredact_reason_title: 恢复投票理由？
+    unredact_reason_helptext: 文本和附件将再次可见的原因
+    unredact_reason_confirm: 恢复原因
+    unredact_reason_success: 投票理由已恢复
   poll_common_undecided_panel:
     show_undecided: 显示 %{count} 个未决定
     show_invitations: 待处理的邀请

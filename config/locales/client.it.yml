@@ -328,6 +328,8 @@ it:
       fork_template: Modello di forcella
       customize: Personalizzare
       add: Aggiungere
+      redact: Redigere
+      unredact: Ripristinare
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -2165,6 +2167,15 @@ it:
     name_or_username: Nome o nome utente
     cast: Espressi
     uncast: Non espressi
+    reason_redacted: Motivo omesso
+    redact_reason_title: Motivo della votazione di censura?
+    redact_reason_helptext: Il testo e gli allegati verranno nascosti, ma il voto rimarrà nei risultati.
+    redact_reason_confirm: Motivo della censura
+    redact_reason_success: Motivazione del voto omessa
+    unredact_reason_title: Ripristinare la motivazione del voto?
+    unredact_reason_helptext: Il motivo per cui testo e allegati saranno nuovamente visibili
+    unredact_reason_confirm: Ripristinare la ragione
+    unredact_reason_success: Motivazione del voto ripristinata
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti

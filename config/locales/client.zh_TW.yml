@@ -322,6 +322,8 @@ zh_TW:
       fork_template: 分支模板
       customize: 客製化
       add: 添加
+      redact: 纂
+      unredact: 恢復
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -2163,6 +2165,15 @@ zh_TW:
     name_or_username: 姓名或用戶名
     cast: Cast
     uncast: Uncast
+    reason_redacted: 原因已隱去
+    redact_reason_title: 刪除投票理由？
+    redact_reason_helptext: 原因文字和附件將被隱藏，但投票結果仍將保留。
+    redact_reason_confirm: 刪除原因
+    redact_reason_success: 投票理由已隱去
+    unredact_reason_title: 恢復投票理由？
+    unredact_reason_helptext: 文字和附件將再次可見的原因
+    unredact_reason_confirm: 恢復原因
+    unredact_reason_success: 恢復投票理由
   poll_common_undecided_panel:
     show_undecided: 顯示 %{count} 個未決定
     show_invitations: 顯示擱置中的邀請函
