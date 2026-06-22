@@ -204,7 +204,7 @@ module GroupService
     end
 
     if old_handle.present? && old_handle != new_handle
-      GenericWorker.perform_async('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
+      GenericWorker.perform_later('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
     end
 
     old_handle
