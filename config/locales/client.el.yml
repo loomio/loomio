@@ -1763,8 +1763,8 @@ el:
     topic_settings: Ρυθμίσεις θέματος
     thread_settings: Ρυθμίσεις νήματος
     comment_length_max: Όριο μήκους σχολίου
-    comment_length_max_help: Αφήστε κενό εάν δεν υπάρχει όριο θεμάτων.
-    comment_length_max_description: Ενθαρρύνετε τα συνοπτικά σχόλια ορίζοντας ένα μέγιστο μήκος.
+    comment_length_max_help: Αφήστε κενό εάν δεν υπάρχει όριο θεμάτων
+    comment_length_max_description: Ενθαρρύνετε τα συνοπτικά σχόλια ορίζοντας ένα μέγιστο μήκος
     comment_length_max_hint: Μέγιστος αριθμός χαρακτήρων ανά σχόλιο. Αφήστε το κενό για λόγους ασφαλείας.
   delete_thread_form:
     title: Διαγραφή νήματος

@@ -1763,8 +1763,8 @@ tr:
     topic_settings: Konu ayarları
     thread_settings: Konu ayarları
     comment_length_max: Yorum uzunluğu sınırı
-    comment_length_max_help: Konu sınırlaması yoksa boş bırakın.
-    comment_length_max_description: Yorumların kısa ve öz olmasını teşvik etmek için maksimum uzunluk sınırı belirleyin.
+    comment_length_max_help: Konu sınırlaması yoksa boş bırakın
+    comment_length_max_description: Yorumların kısa ve öz olmasını teşvik etmek için maksimum uzunluk sınırı belirleyin
     comment_length_max_hint: Yorum başına maksimum karakter sayısı. Sınırlama yoksa boş bırakın.
   delete_thread_form:
     title: Müzakereyi sil

@@ -1767,8 +1767,8 @@ hu:
     topic_settings: Témabeállítások
     thread_settings: Szálbeállítások
     comment_length_max: Hozzászóláshossz-korlát
-    comment_length_max_help: Hagyja üresen, ha nincs témakorlát.
-    comment_length_max_description: Ösztönözd a tömör hozzászólásokat a maximális hossz meghatározásával.
+    comment_length_max_help: Hagyja üresen, ha nincs témakorlát
+    comment_length_max_description: Ösztönözd a tömör hozzászólásokat a maximális hossz meghatározásával
     comment_length_max_hint: Maximális karakterszám hozzászólásonként. Hagyja üresen, ha nem szeretne korlátot létrehozni.
   delete_thread_form:
     title: Törölje a témát

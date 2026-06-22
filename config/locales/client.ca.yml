@@ -1783,8 +1783,8 @@ ca:
     topic_settings: Configuració del tema
     thread_settings: Configuració del fil
     comment_length_max: Límit de longitud dels comentaris
-    comment_length_max_help: Deixeu-ho en blanc si no hi ha límit de temes.
-    comment_length_max_description: Fomenta els comentaris concisos establint una longitud màxima.
+    comment_length_max_help: Deixeu-ho en blanc si no hi ha límit de temes
+    comment_length_max_description: Fomenta els comentaris concisos establint una longitud màxima
     comment_length_max_hint: Màxim de caràcters per comentari. Deixeu-ho en blanc si no hi ha límit.
   delete_thread_form:
     title: Elimina el fil

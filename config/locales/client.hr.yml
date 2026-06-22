@@ -1763,8 +1763,8 @@ hr:
     topic_settings: Postavke teme
     thread_settings: Postavke teme
     comment_length_max: Ograničenje duljine komentara
-    comment_length_max_help: Ostavite prazno ako nema ograničenja tema.
-    comment_length_max_description: Potaknite sažete komentare postavljanjem maksimalne duljine.
+    comment_length_max_help: Ostavite prazno ako nema ograničenja tema
+    comment_length_max_description: Potaknite sažete komentare postavljanjem maksimalne duljine
     comment_length_max_hint: Maksimalan broj znakova po komentaru. Ostavite prazno ako nema ograničenja.
   delete_thread_form:
     title: Izbriši nit

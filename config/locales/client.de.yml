@@ -1789,8 +1789,8 @@ de:
     topic_settings: Themeneinstellungen
     thread_settings: Thread-Einstellungen
     comment_length_max: Kommentarlängenbegrenzung
-    comment_length_max_help: Lassen Sie dieses Feld leer, wenn keine Themenbeschränkung gewünscht ist.
-    comment_length_max_description: Fördern Sie prägnante Kommentare, indem Sie eine maximale Länge festlegen.
+    comment_length_max_help: Lassen Sie dieses Feld leer, wenn keine Themenbeschränkung gewünscht ist
+    comment_length_max_description: Fördern Sie prägnante Kommentare, indem Sie eine maximale Länge festlegen
     comment_length_max_hint: Maximale Zeichenanzahl pro Kommentar. Für keine Zeichenbegrenzung leer lassen.
   delete_thread_form:
     title: Diskussion löschen

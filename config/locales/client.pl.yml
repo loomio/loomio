@@ -1781,8 +1781,8 @@ pl:
     topic_settings: Ustawienia tematu
     thread_settings: Ustawienia wątku
     comment_length_max: Limit długości komentarza
-    comment_length_max_help: Pozostaw puste pole, aby nie było limitu tematów.
-    comment_length_max_description: Zachęcaj do zwięzłych komentarzy, ustalając maksymalną długość.
+    comment_length_max_help: Pozostaw puste pole, aby nie było limitu tematów
+    comment_length_max_description: Zachęcaj do zwięzłych komentarzy, ustalając maksymalną długość
     comment_length_max_hint: Maksymalna liczba znaków w komentarzu. Pozostaw puste miejsce, aby nie ograniczać liczby znaków.
   delete_thread_form:
     title: Usuń wątek

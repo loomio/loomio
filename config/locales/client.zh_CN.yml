@@ -1824,8 +1824,8 @@ zh_CN:
     topic_settings: 主题设置
     thread_settings: 主题设置
     comment_length_max: 评论长度限制
-    comment_length_max_help: 留空表示不设主题数量限制。
-    comment_length_max_description: 设置评论长度上限，鼓励评论简洁明了。
+    comment_length_max_help: 留空表示不设主题数量限制
+    comment_length_max_description: 设置评论长度上限，鼓励评论简洁明了
     comment_length_max_hint: 每条评论的字数限制。留空则无字数限制。
   delete_discussion_form:
     discussion_deleted: 讨论已删除

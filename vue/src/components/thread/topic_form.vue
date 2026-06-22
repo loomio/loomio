@@ -24,7 +24,7 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.thread_settin
   template(v-slot:append)
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
-    p.text-medium-emphasis(v-t="'thread_arrangement_form.layout'")
+    .text-body-large.pb-2(v-t="'thread_arrangement_form.layout'")
     v-radio-group(v-model="clone.maxDepth")
       v-radio(:value="1")
         template(v-slot:label)

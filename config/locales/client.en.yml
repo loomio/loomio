@@ -1898,8 +1898,8 @@ en:
     allow_comments: Allow comments
     allow_comments_description: Allow participants to post comments in this thread
     comment_length_max: Comment length limit
-    comment_length_max_help: Leave blank for no topic limit.
-    comment_length_max_description: Encourage concise comments by setting a maximum length.
+    comment_length_max_help: Leave blank for no topic limit
+    comment_length_max_description: Encourage concise comments by setting a maximum length
     comment_length_max_hint: Maximum characters per comment. Leave blank for no limit.
     allow_reactions: Allow reactions
     allow_reactions_description: Allow participants to add emoji reactions

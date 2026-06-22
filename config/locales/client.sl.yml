@@ -1763,8 +1763,8 @@ sl:
     topic_settings: Nastavitve teme
     thread_settings: Nastavitve niti
     comment_length_max: Omejitev dolžine komentarja
-    comment_length_max_help: Pustite prazno, če ni omejitve tem.
-    comment_length_max_description: Spodbujajte jedrnate komentarje z določitvijo največje dolžine.
+    comment_length_max_help: Pustite prazno, če ni omejitve tem
+    comment_length_max_description: Spodbujajte jedrnate komentarje z določitvijo največje dolžine
     comment_length_max_hint: Največje dovoljeno število znakov na komentar. Pustite prazno, če ni omejitve.
   delete_thread_form:
     title: Izbriši temo

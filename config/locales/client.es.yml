@@ -1792,8 +1792,8 @@ es:
     topic_settings: Configuración del tema
     thread_settings: Configuración del hilo
     comment_length_max: Límite de longitud de los comentarios
-    comment_length_max_help: Déjalo en blanco si no deseas un límite para el tema.
-    comment_length_max_description: Fomenta comentarios concisos definiendo una longitud máxima.
+    comment_length_max_help: Déjalo en blanco si no deseas un límite para el tema
+    comment_length_max_description: Fomenta comentarios concisos definiendo una longitud máxima
     comment_length_max_hint: Máximo de caracteres por comentario. Déjalo en blanco para no tener límite.
   delete_thread_form:
     title: 'Borrar hilo '

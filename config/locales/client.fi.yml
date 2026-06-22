@@ -1763,8 +1763,8 @@ fi:
     topic_settings: Aiheasetukset
     thread_settings: Ketjun asetukset
     comment_length_max: Kommentin pituusrajoitus
-    comment_length_max_help: Jätä tyhjäksi, jos aihetta ei rajoiteta.
-    comment_length_max_description: Kannusta ytimekkäitä kommentteja asettamalla niille enimmäispituus.
+    comment_length_max_help: Jätä tyhjäksi, jos aihetta ei rajoiteta
+    comment_length_max_description: Kannusta ytimekkäitä kommentteja asettamalla niille enimmäispituus
     comment_length_max_hint: Kommentin enimmäismäärä merkkejä. Jätä tyhjäksi, jos et halua merkkien määrää.
   delete_thread_form:
     title: Poista lanka

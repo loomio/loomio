@@ -1763,8 +1763,8 @@ ro:
     topic_settings: Setări subiect
     thread_settings: Setări fir
     comment_length_max: Limită de lungime a comentariilor
-    comment_length_max_help: Lăsați necompletat dacă nu există limită de subiecte.
-    comment_length_max_description: Încurajați comentariile concise prin stabilirea unei lungimi maxime.
+    comment_length_max_help: Lăsați necompletat dacă nu există limită de subiecte
+    comment_length_max_description: Încurajați comentariile concise prin stabilirea unei lungimi maxime
     comment_length_max_hint: Număr maxim de caractere per comentariu. Lăsați necompletat dacă nu există limită.
   delete_thread_form:
     title: Sterge discutia

@@ -1763,8 +1763,8 @@ da:
     topic_settings: Emneindstillinger
     thread_settings: Trådindstillinger
     comment_length_max: Kommentarlængdegrænse
-    comment_length_max_help: Lad feltet stå tomt, hvis der ikke er nogen emnegrænse.
-    comment_length_max_description: Opfordr til kortfattede kommentarer ved at sætte en maksimal længde.
+    comment_length_max_help: Lad feltet stå tomt, hvis der ikke er nogen emnegrænse
+    comment_length_max_description: Opfordr til kortfattede kommentarer ved at sætte en maksimal længde
     comment_length_max_hint: Maksimalt antal tegn pr. kommentar. Lad det stå tomt for ingen begrænsning.
   delete_thread_form:
     title: Slet debat

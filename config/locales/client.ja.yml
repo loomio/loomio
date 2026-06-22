@@ -1762,8 +1762,8 @@ ja:
     topic_settings: トピック設定
     thread_settings: スレッド設定
     comment_length_max: コメントの文字数制限
-    comment_length_max_help: トピック制限を設けない場合は空欄のままにしてください。
-    comment_length_max_description: 最大文字数を設定することで、簡潔なコメントを促しましょう。
+    comment_length_max_help: トピック制限を設けない場合は空欄のままにしてください
+    comment_length_max_description: 最大文字数を設定することで、簡潔なコメントを促しましょう
     comment_length_max_hint: コメントあたりの最大文字数。制限なしの場合は空欄のままにしてください。
   delete_thread_form:
     title: スレッドの削除
