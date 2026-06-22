@@ -31,6 +31,13 @@ class Identities::GoogleControllerTest < ActionController::TestCase
         headers: { 'Content-Type' => 'application/json' }
       )
 
+    stub_request(:get, 'https://lh3.googleusercontent.com/photo.jpg')
+      .to_return(
+        status: 200,
+        body: File.binread(Rails.root.join('public/brand/icon_sky_128h.png')),
+        headers: { 'Content-Type' => 'image/png' }
+      )
+
     ActionMailer::Base.deliveries.clear
   end
 
@@ -61,6 +68,8 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     assert user
     assert user.email_verified?
     assert_equal 'Google User', user.name
+    assert_equal 'uploaded', user.avatar_kind
+    assert user.uploaded_avatar.attached?
 
     identity = Identity.find_by(identity_type: 'google', uid: "google_#{@hex}")
     assert identity
