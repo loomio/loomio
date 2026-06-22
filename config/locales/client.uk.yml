@@ -527,6 +527,7 @@ uk:
       updated: Коментар оновлено.
       destroyed: Коментар видалено
       removed: Коментар видалено
+      too_long: Коментар має містити не більше %{count} символів
     say_something: Скажіть щось....
     edit_comment: Редагувати коментар
     delete_comment: Видалити коментар
@@ -1784,6 +1785,10 @@ uk:
     allow_reactions_description: Дозволити учасникам додавати реакції у вигляді емодзі
     topic_settings: Налаштування теми
     thread_settings: Налаштування теми
+    comment_length_max: Обмеження довжини коментаря
+    comment_length_max_help: Залиште поле порожнім, якщо обмеження за темами немає
+    comment_length_max_description: Заохочуйте стислих коментарів, встановлюючи максимальну довжину
+    comment_length_max_hint: Максимальна кількість символів у коментарі. Залиште порожнім, якщо обмеження немає.
   delete_thread_form:
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?

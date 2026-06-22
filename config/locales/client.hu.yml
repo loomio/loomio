@@ -526,6 +526,7 @@ hu:
       updated: Hozzászólás frissítve
       destroyed: Hozzászólás törölve
       removed: Megjegyzés eltávolítva
+      too_long: A megjegyzés legfeljebb %{count} karakterből állhat
     say_something: Mondj valamit...
     edit_comment: Hozzászólás szerkesztése
     delete_comment: Hozzászólás törlése
@@ -1767,6 +1768,10 @@ hu:
     allow_reactions_description: A résztvevők emoji reakciókat adhatnak hozzá
     topic_settings: Témabeállítások
     thread_settings: Szálbeállítások
+    comment_length_max: Hozzászóláshossz-korlát
+    comment_length_max_help: Hagyja üresen, ha nincs témakorlát
+    comment_length_max_description: Ösztönözd a tömör hozzászólásokat a maximális hossz meghatározásával
+    comment_length_max_hint: Maximális karakterszám hozzászólásonként. Hagyja üresen, ha nem szeretne korlátot létrehozni.
   delete_thread_form:
     title: Törölje a témát
     body: Biztosan törli ezt a témát?

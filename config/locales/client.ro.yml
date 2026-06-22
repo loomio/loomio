@@ -524,6 +524,7 @@ ro:
       updated: Comentariu actualizat.
       destroyed: Comentariu sters.
       removed: Comentariul a fost eliminat
+      too_long: Comentariul trebuie să aibă maximum %{count} caractere
     say_something: Spune ceva..
     edit_comment: Editeaza comentariul
     delete_comment: Sterge comentariu
@@ -1763,6 +1764,10 @@ ro:
     allow_reactions_description: Permiteți participanților să adauge reacții cu emoji
     topic_settings: Setări subiect
     thread_settings: Setări fir
+    comment_length_max: Limită de lungime a comentariilor
+    comment_length_max_help: Lăsați necompletat dacă nu există limită de subiecte
+    comment_length_max_description: Încurajați comentariile concise prin stabilirea unei lungimi maxime
+    comment_length_max_hint: Număr maxim de caractere per comentariu. Lăsați necompletat dacă nu există limită.
   delete_thread_form:
     title: Sterge discutia
     body: Esti sigur ca doresti sa stergi aceasta discutie?

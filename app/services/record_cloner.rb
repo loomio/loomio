@@ -153,6 +153,7 @@ class RecordCloner
       max_depth
       newest_first
       private
+      comment_length_max
       locked_at
       locker_id
       pinned_at

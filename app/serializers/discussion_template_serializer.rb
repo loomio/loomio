@@ -27,6 +27,7 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
              :allow_concurrent_polls,
              :allow_comments,
              :allow_reactions,
+             :comment_length_max,
              :poll_template_keys_or_ids,
              :public,
              :recipient_audience,

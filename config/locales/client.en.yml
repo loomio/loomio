@@ -578,6 +578,7 @@ en:
       updated: Comment updated
       destroyed: Comment deleted
       removed: Comment removed
+      too_long: Comment must be %{count} characters or less
     say_something: Say something...
     share_your_thoughts: Share your thoughts…
     edit_comment: Edit comment
@@ -1898,6 +1899,10 @@ en:
     allow_concurrent_polls_description: Allow more than one poll to be open at the same time
     allow_comments: Allow comments
     allow_comments_description: Allow participants to post comments in this thread
+    comment_length_max: Comment length limit
+    comment_length_max_help: Leave blank for no topic limit
+    comment_length_max_description: Encourage concise comments by setting a maximum length
+    comment_length_max_hint: Maximum characters per comment. Leave blank for no limit.
     allow_reactions: Allow reactions
     allow_reactions_description: Allow participants to add emoji reactions
     topic_settings: Topic settings

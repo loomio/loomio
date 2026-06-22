@@ -544,6 +544,7 @@ zh_CN:
       updated: 评论已更新
       destroyed: 评论已删除
       removed: 评论已删除
+      too_long: 注释长度必须小于等于 %{count} 个字符
     say_something: 说些什么...
     edit_comment: 编辑评论
     delete_comment: 删除评论
@@ -1824,6 +1825,10 @@ zh_CN:
     allow_reactions_description: 允许参与者添加表情符号反应
     topic_settings: 主题设置
     thread_settings: 主题设置
+    comment_length_max: 评论长度限制
+    comment_length_max_help: 留空表示不设主题数量限制
+    comment_length_max_description: 设置评论长度上限，鼓励评论简洁明了
+    comment_length_max_hint: 每条评论的字数限制。留空则无字数限制。
   delete_discussion_form:
     discussion_deleted: 讨论已删除
     body: 你确定要删除这个帖子吗？

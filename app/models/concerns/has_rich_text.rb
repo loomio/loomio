@@ -35,6 +35,10 @@ module HasRichText
           end
         end
 
+        define_method "#{field}_visible_text_length" do
+          self.send("#{field}_visible_text").encode("UTF-16LE").bytesize / 2
+        end
+
         define_method "body_is_blank?" do
           self[field] == '' ||
           self[field] == nil ||

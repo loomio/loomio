@@ -48,6 +48,12 @@ class StanceTest < ActiveSupport::TestCase
     assert_not stance.valid?
   end
 
+  test "reason length validation counts like javascript string length" do
+    poll = PollService.create(params: poll_params, actor: @admin)
+    stance = Stance.new(poll: poll, participant: @admin, reason: "😄" * 251, cast_at: Time.zone.now)
+    assert_not stance.valid?
+  end
+
   test "choice shorthand with string" do
     poll = PollService.create(params: poll_params(
       maximum_stance_choices: 2,

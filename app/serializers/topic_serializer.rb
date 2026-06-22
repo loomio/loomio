@@ -8,6 +8,7 @@ class TopicSerializer < ApplicationSerializer
              :allow_concurrent_polls,
              :allow_comments,
              :allow_reactions,
+             :comment_length_max,
              :active_polls_count,
              :last_activity_at,
              :discarded_at,

@@ -14,6 +14,7 @@ class DiscussionTemplate < ApplicationRecord
 
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
+  normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
 
   has_paper_trail only: [
     :public,
@@ -26,6 +27,7 @@ class DiscussionTemplate < ApplicationRecord
     :description_format,
     :group_id,
     :tags,
+    :comment_length_max,
     :discarded_at,
     :attachments
   ]

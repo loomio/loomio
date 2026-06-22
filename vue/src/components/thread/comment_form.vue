@@ -32,6 +32,10 @@ export default {
       } else {
         return this.$t('comment_form.share_your_thoughts');
       }
+    },
+
+    maxLength() {
+      return this.comment.parent()?.topic?.()?.commentLengthMax || undefined;
     }
   },
 
@@ -83,6 +87,7 @@ export default {
       field="body"
       :placeholder="placeholder"
       :autofocus="autofocus"
+      :max-length="maxLength"
     )
       template(v-slot:actions)
         v-btn.mr-2(
@@ -94,7 +99,7 @@ export default {
         v-btn.comment-form__submit-button(
           variant="elevated"
           :loading="processing"
-          :disabled="!canSubmit"
+          :disabled="!canSubmit || comment.saveDisabled"
           color="primary"
           type='submit'
         )

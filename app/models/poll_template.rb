@@ -22,6 +22,7 @@ class PollTemplate < ApplicationRecord
   validates :process_subtitle, presence: true
   validates :default_duration_in_days, presence: true
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
+  normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
 
   has_paper_trail only: [
     :poll_type,
@@ -54,6 +55,7 @@ class PollTemplate < ApplicationRecord
     :meeting_duration,
     :can_respond_maybe,
     :tags,
+    :comment_length_max,
     :discarded_at,
     :attachments
   ]

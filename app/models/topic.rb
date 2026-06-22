@@ -65,6 +65,8 @@ class Topic < ApplicationRecord
 
   after_destroy :drop_sequence_id_sequence
 
+  normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
+
   delegate :members_can_raise_motions, to: :group, allow_nil: true
 
   def replies_count
