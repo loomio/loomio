@@ -10,7 +10,7 @@ def dev_routes_for(namespace)
   end
 end
 
-require 'sidekiq/web'
+require 'mission_control/jobs/engine'
 
 Rails.application.routes.draw do
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   constraints admin_session_constraint do
-    mount Sidekiq::Web => '/admin/sidekiq'
+    mount MissionControl::Jobs::Engine => '/admin/jobs'
   end
 
   if !Rails.env.production?

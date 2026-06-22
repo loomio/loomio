@@ -10,7 +10,7 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
 
   def deactivate
     user = User.active.find(params[:id]) # throws 404 if not present
-    DeactivateUserWorker.perform_async(user.id, user.id)
+    DeactivateUserWorker.perform_later(user.id, user.id)
     render json: {success: :ok}
   end
 

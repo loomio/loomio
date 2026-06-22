@@ -12,10 +12,7 @@ Minitest.parallel_executor = Minitest::Parallel::Executor.new(1)
 # Configure WebMock
 WebMock.disable_net_connect!(allow_localhost: true)
 
-# Configure Sidekiq for testing
-require 'sidekiq/testing'
-Sidekiq::Testing.inline!
-Sidekiq.logger.level = Logger::ERROR
+
 
 module ActiveSupport
   class TestCase
@@ -24,6 +21,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
+
 
     # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
     ResetDatabaseHelper.reset_database
@@ -91,6 +89,8 @@ module ActiveSupport
       WebMock.stub_request(:head, /www.gravatar.com/).
         to_return(status: 200, body: "stubbed response", headers: {})
     end
+
+
   end
 end
 

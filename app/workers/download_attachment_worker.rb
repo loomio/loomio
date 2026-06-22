@@ -1,6 +1,4 @@
-class DownloadAttachmentWorker
-  include Sidekiq::Worker
-
+class DownloadAttachmentWorker < ApplicationJob
   def perform(record, new_id)
   	GroupExportService.download_attachment(record, new_id)
   end

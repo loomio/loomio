@@ -1,6 +1,4 @@
-class AnnounceDiscussionWorker
-  include Sidekiq::Worker
-
+class AnnounceDiscussionWorker < ApplicationJob
   def perform(discussion_id, actor_id, params)
     DiscussionService.invite(
       discussion: Discussion.find(discussion_id),

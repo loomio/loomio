@@ -18,7 +18,7 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::Profile
   include Dev::Scenarios::Tags
 
-  before_action :redis_flushall, except: [
+  before_action :reset_transient_state, except: [
     :last_email,
     :use_last_login_token,
     :index,
@@ -32,9 +32,7 @@ class Dev::NightwatchController < Dev::BaseController
   ]
 
 
-  def redis_flushall
-    CACHE_REDIS_POOL.with do |client|
-      client.flushall
-    end
+  def reset_transient_state
+    Rails.cache.clear
   end
 end

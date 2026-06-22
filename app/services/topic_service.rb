@@ -44,7 +44,7 @@ class TopicService
     topic.assign_attributes(params)
     rearrange = topic.max_depth_changed?
     topic.save!
-    RepairTopicWorker.perform_async(topic.id) if rearrange
+    RepairTopicWorker.perform_later(topic.id) if rearrange
   end
 
   def self.lock(topic:, actor:)
@@ -72,8 +72,8 @@ class TopicService
       # TODO we gotta stop adding group_id to activestorage attachment
       ActiveStorage::Attachment.where(record: topic.items.map(&:eventable).concat([topic])).update_all(group_id: destination.id)
 
-      GenericWorker.perform_async('PollService', 'group_members_added', topic.group_id) if topic.group_id
-      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', topic.id)
+      GenericWorker.perform_later('PollService', 'group_members_added', topic.group_id) if topic.group_id
+      GenericWorker.perform_later('SearchService', 'reindex_by_discussion_id', topic.id)
       Events::DiscussionMoved.publish!(topic.topicable, actor, source)
     end
   end
@@ -143,7 +143,7 @@ class TopicService
       topic.update(discarded_at: Time.now, discarded_by: actor.id)
       topicable.update(discarded_at: Time.now, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
-      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', topicable.id) if topicable.is_a?(Discussion)
+      GenericWorker.perform_later('SearchService', 'reindex_by_discussion_id', topicable.id) if topicable.is_a?(Discussion)
       EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
   end
@@ -186,7 +186,7 @@ class TopicService
   def self.enqueue_legacy_poll_created_resequence
     legacy_misordered_poll_created_topic_ids.tap do |topic_ids|
       topic_ids.each do |topic_id|
-        ResequenceLegacyPollCreatedTopicWorker.perform_async(topic_id)
+        ResequenceLegacyPollCreatedTopicWorker.perform_later(topic_id)
       end
     end.length
   end
@@ -297,7 +297,7 @@ class TopicService
 
   def self.repair_all
     Topic.pluck(:id).each do |id|
-      RepairTopicWorker.perform_async(id)
+      RepairTopicWorker.perform_later(id)
     end
   end
 

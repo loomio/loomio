@@ -23,7 +23,7 @@ class TagService
   def self.destroy(tag:, actor:)
     actor.ability.authorize! :destroy, tag
 
-    DestroyTagWorker.perform_async(tag.group_id, tag.name)
+    DestroyTagWorker.perform_later(tag.group_id, tag.name)
     EventBus.broadcast 'tag_destroy', tag, actor
   end
 

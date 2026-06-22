@@ -1,6 +1,4 @@
-class ConvertDiscussionTemplatesWorker
-  include Sidekiq::Worker
-
+class ConvertDiscussionTemplatesWorker < ApplicationJob
   def perform
     Discussion.where(template: true).each do |discussion|
       template = DiscussionTemplate.new(discussion.slice(

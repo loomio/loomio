@@ -1,6 +1,4 @@
-class AddHeadingIdsWorker
-  include Sidekiq::Worker
-
+class AddHeadingIdsWorker < ApplicationJob
   def perform()
     {
       Discussion => 'description',

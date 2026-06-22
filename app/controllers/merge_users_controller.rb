@@ -21,7 +21,7 @@ class MergeUsersController < ApplicationController
       # Invalidate the hash immediately by rotating the source user's secret_token,
       # so the merge URL cannot be replayed before the async worker runs.
       MergeUsersService.invalidate_merge!(source_user: source_user)
-      MigrateUserWorker.perform_async(source_user.id, target_user.id)
+      MigrateUserWorker.perform_later(source_user.id, target_user.id)
       render Views::MergeUsers::Complete.new(target_user: target_user)
     else
       respond_with_error 422

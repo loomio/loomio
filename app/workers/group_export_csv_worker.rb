@@ -1,6 +1,4 @@
-class GroupExportCsvWorker
-  include Sidekiq::Worker
-
+class GroupExportCsvWorker < ApplicationJob
   def perform(group_id, actor_id)
     actor = User.find(actor_id)
     group = Group.find(group_id)

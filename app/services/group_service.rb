@@ -68,7 +68,7 @@ module GroupService
 
       g.update_pending_memberships_count
       g.update_memberships_count
-      GenericWorker.perform_async('PollService', 'group_members_added', g.id)
+      GenericWorker.perform_later('PollService', 'group_members_added', g.id)
     end
 
     Events::MembershipCreated.publish!(
@@ -133,13 +133,13 @@ module GroupService
 
     group.archive!
 
-    DestroyGroupWorker.perform_in(2.weeks, group.id)
+    DestroyGroupWorker.set(wait: 2.weeks).perform_later(group.id)
     EventBus.broadcast('group_destroy', group, actor)
   end
 
   def self.destroy_without_warning!(group_id)
     Group.find(group_id).archive!
-    DestroyGroupWorker.perform_async(group_id)
+    DestroyGroupWorker.perform_later(group_id)
   end
 
   def self.move(group:, parent:, actor:)
@@ -160,7 +160,7 @@ module GroupService
   def self.export(group: , actor: )
     actor.ability.authorize! :show, group
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
-    GroupExportWorker.perform_async(group_ids, group.name, actor.id)
+    GroupExportWorker.perform_later(group_ids, group.name, actor.id)
   end
 
   def self.merge(source:, target:, actor:)
@@ -204,7 +204,7 @@ module GroupService
     end
 
     if old_handle.present? && old_handle != new_handle
-      GenericWorker.perform_async('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
+      GenericWorker.perform_later('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
     end
 
     old_handle

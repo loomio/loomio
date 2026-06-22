@@ -24,11 +24,19 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
-  # Use Redis cache store like production to catch initialization issues
-  # Use database 1 to keep test data separate
-  config.cache_store = :redis_cache_store, {
-    url: ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379/1')
-  }
+  config.active_job.queue_adapter = :test
+
+  # Execute all jobs (including scheduled) immediately in test, matching the old
+  # Sidekiq::Testing.inline! behavior.
+  config.after_initialize do
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
+  end
+
+  # Disable ActionMailbox incineration — its after_create_commit callback
+  # enqueues a delayed IncinerationJob that would run immediately with
+  # perform_enqueued_at_jobs=true, destroying inbound emails mid-test.
+  config.action_mailbox.incinerate = false
 
   # Render exception templates for rescuable exceptions and raise for other exceptions.
   config.action_dispatch.show_exceptions = :rescuable
