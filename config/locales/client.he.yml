@@ -522,6 +522,7 @@ he:
       updated: הערה עודכנה
       destroyed: הערה נמחקה
       removed: התגובה הוסרה
+      too_long: התגובה חייבת להיות באורך %{count} תווים או פחות
     say_something: אמור משהו...
     edit_comment: ערוך הערה
     delete_comment: מחקו תגובה
@@ -1775,6 +1776,10 @@ he:
     allow_reactions_description: אפשר למשתתפים להוסיף תגובות אמוג'י
     topic_settings: הגדרות נושא
     thread_settings: הגדרות שרשור
+    comment_length_max: מגבלת אורך התגובה
+    comment_length_max_help: השאר ריק אם אין הגבלת נושאים
+    comment_length_max_description: עודדו הערות תמציתיות על ידי קביעת אורך מקסימלי
+    comment_length_max_hint: מספר תווים מקסימלי לכל תגובה. השאר ריק ללא הגבלה.
   delete_thread_form:
     title: מחיקת שיחה
     body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?

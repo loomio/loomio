@@ -522,6 +522,7 @@ sl:
       updated: Komentar posodobljen
       destroyed: Komentar izbrisan
       removed: Komentar odstranjen
+      too_long: Komentar mora imeti %{count} znakov ali manj
     say_something: Povejte kaj...
     edit_comment: Uredi komentar
     delete_comment: Izbriši komentar
@@ -1761,6 +1762,10 @@ sl:
     allow_reactions_description: Dovoli udeležencem dodajanje emojijev
     topic_settings: Nastavitve teme
     thread_settings: Nastavitve niti
+    comment_length_max: Omejitev dolžine komentarja
+    comment_length_max_help: Pustite prazno, če ni omejitve tem
+    comment_length_max_description: Spodbujajte jedrnate komentarje z določitvijo največje dolžine
+    comment_length_max_hint: Največje dovoljeno število znakov na komentar. Pustite prazno, če ni omejitve.
   delete_thread_form:
     title: Izbriši temo
     body: Ali ste prepričani, da želite izbrisati to nit?

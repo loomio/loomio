@@ -524,6 +524,7 @@ pl:
       updated: Komentarz zmieniony
       destroyed: Komentarz usunięty
       removed: Komentarz usunięty
+      too_long: Komentarz musi mieć %{count} znaków lub mniej
     say_something: Powiedz coś...
     edit_comment: Edytuj komentarz
     delete_comment: Usuń komentarz
@@ -1779,6 +1780,10 @@ pl:
     allow_reactions_description: Zezwól uczestnikom na dodawanie reakcji emoji
     topic_settings: Ustawienia tematu
     thread_settings: Ustawienia wątku
+    comment_length_max: Limit długości komentarza
+    comment_length_max_help: Pozostaw puste pole, aby nie było limitu tematów
+    comment_length_max_description: Zachęcaj do zwięzłych komentarzy, ustalając maksymalną długość
+    comment_length_max_hint: Maksymalna liczba znaków w komentarzu. Pozostaw puste miejsce, aby nie ograniczać liczby znaków.
   delete_thread_form:
     title: Usuń wątek
     body: Czy na pewno chcesz usunąć ten wątek?

@@ -64,6 +64,7 @@ class Comment < ApplicationRecord
 
   validate :parent_belongs_to_same_topic
   validate :has_body_or_attachment
+  validate :body_within_topic_limit
 
   alias_method :author, :user
   alias_method :author=, :user=
@@ -128,6 +129,14 @@ class Comment < ApplicationRecord
     if !discarded_at && body_blank? && files.empty? && image_files.empty?
       errors.add(:body, I18n.t(:"activerecord.errors.messages.blank"))
     end
+  end
+
+  def body_within_topic_limit
+    return if discarded_at
+    return unless topic&.comment_length_max.present?
+    return if body_visible_text_length <= topic.comment_length_max
+
+    errors.add(:body, I18n.t(:"comment_form.messages.too_long", count: topic.comment_length_max))
   end
 
   def body_blank?

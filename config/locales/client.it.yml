@@ -532,6 +532,7 @@ it:
       updated: Commento aggiornato
       destroyed: Commento cancellato.
       removed: Commento eliminato
+      too_long: Il commento deve essere di %{count} caratteri o meno
     say_something: Scrivi qualcosa...
     edit_comment: Modifica commento
     delete_comment: Cancella il commento
@@ -1789,6 +1790,10 @@ it:
     allow_reactions_description: Consenti ai partecipanti di aggiungere reazioni emoji
     topic_settings: Impostazioni dell'argomento
     thread_settings: Impostazioni del thread
+    comment_length_max: limite di lunghezza dei commenti
+    comment_length_max_help: Lasciare vuoto per non impostare alcun limite di argomenti
+    comment_length_max_description: Incoraggiate commenti concisi impostando una lunghezza massima
+    comment_length_max_hint: Numero massimo di caratteri per commento. Lasciare vuoto per nessun limite.
   delete_thread_form:
     title: Cancella discussione
     body: Sei sicuro/a di voler cancellare questa discussione?

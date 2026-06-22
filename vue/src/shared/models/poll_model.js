@@ -91,6 +91,7 @@ export default class PollModel extends BaseModel {
       topicId: null,
       allowComments: true,
       allowReactions: true,
+      commentLengthMax: null,
       stvSeats: 1,
       stvMethod: 'scottish',
       stvQuota: 'droop',

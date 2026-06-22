@@ -524,6 +524,7 @@ ca:
       updated: Comentari actualitzat
       destroyed: Comentari eliminat
       removed: Comentari eliminat
+      too_long: El comentari ha de tenir %{count} caràcters o menys
     say_something: Digueu alguna cosa...
     edit_comment: Edita el comentari
     delete_comment: Elimina el comentari
@@ -1781,6 +1782,10 @@ ca:
     allow_reactions_description: Permet als participants afegir reaccions amb emojis
     topic_settings: Configuració del tema
     thread_settings: Configuració del fil
+    comment_length_max: Límit de longitud dels comentaris
+    comment_length_max_help: Deixeu-ho en blanc si no hi ha límit de temes
+    comment_length_max_description: Fomenta els comentaris concisos establint una longitud màxima
+    comment_length_max_hint: Màxim de caràcters per comentari. Deixeu-ho en blanc si no hi ha límit.
   delete_thread_form:
     title: Elimina el fil
     body: Esteu segur que voleu eliminar aquest fil?

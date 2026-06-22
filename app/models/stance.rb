@@ -307,7 +307,7 @@ class Stance < ApplicationRecord
   def valid_reason_length
     return if !cast_at
     return if !poll.limit_reason_length
-    return if reason_visible_text.length < 501
+    return if reason_visible_text_length <= 500
 
     errors.add(:reason, I18n.t(:"poll_common.too_long"))
   end

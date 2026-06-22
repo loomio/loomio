@@ -532,6 +532,7 @@ fr:
       updated: Commentaire mis à jour
       destroyed: Commentaire effacé
       removed: Commentaire supprimé
+      too_long: Le commentaire doit comporter %{count} caractères ou moins.
     say_something: Dites quelque chose…
     edit_comment: Modifier le commentaire
     delete_comment: Effacer le commentaire
@@ -1798,6 +1799,10 @@ fr:
     allow_reactions_description: Autoriser les participants à ajouter des réactions émoji
     topic_settings: Paramètres du sujet
     thread_settings: Paramètres du fil de discussion
+    comment_length_max: Limite de longueur des commentaires
+    comment_length_max_help: Laissez vide pour aucune limite de sujets
+    comment_length_max_description: Encouragez les commentaires concis en fixant une longueur maximale
+    comment_length_max_hint: Nombre de caractères maximum par commentaire. Laisser vide pour aucune limite.
   delete_thread_form:
     title: Supprimer la discussion
     body: Es-tu sûr de vouloir supprimer cette discussion ?

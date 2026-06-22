@@ -525,6 +525,7 @@ zh_TW:
       updated: 意見已更新
       destroyed: 意見已刪除
       removed: 留言已移除
+      too_long: 註釋長度必須小於等於 %{count} 個字符
     say_something: 留下些想法⋯
     edit_comment: 編輯意見
     delete_comment: 刪除意見
@@ -1782,6 +1783,10 @@ zh_TW:
     allow_reactions_description: 允許參與者添加表情符號反應
     topic_settings: 主題設定
     thread_settings: 主題設定
+    comment_length_max: 評論長度限制
+    comment_length_max_help: 留空表示不設主題數量限制
+    comment_length_max_description: 設定評論長度上限，鼓勵評論簡潔明了
+    comment_length_max_hint: 每則評論的字數限制。留空則無字數限制。
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？

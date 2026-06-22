@@ -27,6 +27,7 @@ export default class DiscussionTemplateModel extends BaseModel {
       allowConcurrentPolls: false,
       allowComments: true,
       allowReactions: true,
+      commentLengthMax: null,
       pollTemplateKeysOrIds: [],
       recipientAudience: null,
       defaultToDirectDiscussion: false,

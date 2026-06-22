@@ -49,8 +49,11 @@ class PermittedParams < Struct.new(:params)
       :notify_on_open,
       :voter_can_add_options,
       :specified_voters_only,
+      :allow_comments,
+      :allow_reactions,
       :recipient_audience,
       :recipient_message,
+      :comment_length_max,
       :tags, {tags: []},
       :notify_recipients,
       :recipient_user_ids, {recipient_user_ids: []},
@@ -139,6 +142,7 @@ class PermittedParams < Struct.new(:params)
       :quorum_pct,
       :allow_comments,
       :allow_reactions,
+      :comment_length_max,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -178,7 +182,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def topic_attributes
-    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions, :tags, {tags: []}]
+    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions, :comment_length_max, :tags, {tags: []}]
   end
 
   def group_attributes
@@ -209,6 +213,12 @@ class PermittedParams < Struct.new(:params)
      :discussion_template_key,
      :group_id,
      :private,
+     :newest_first,
+     :max_depth,
+     :allow_concurrent_polls,
+     :allow_comments,
+     :allow_reactions,
+     :comment_length_max,
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
@@ -239,6 +249,7 @@ class PermittedParams < Struct.new(:params)
      :allow_concurrent_polls,
      :allow_comments,
      :allow_reactions,
+     :comment_length_max,
      :public,
      :default_to_direct_discussion,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},

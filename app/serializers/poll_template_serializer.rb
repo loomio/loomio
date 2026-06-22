@@ -48,5 +48,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :quorum_pct,
              :example,
              :allow_comments,
-             :allow_reactions
+             :allow_reactions,
+             :comment_length_max
 end

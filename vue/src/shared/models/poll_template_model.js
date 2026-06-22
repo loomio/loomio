@@ -60,7 +60,8 @@ export default class PollTemplateModel extends BaseModel {
       outcomeReviewDueInDays: null,
       example: false,
       allowComments: true,
-      allowReactions: true
+      allowReactions: true,
+      commentLengthMax: null
     };
   }
 
