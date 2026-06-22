@@ -47,6 +47,7 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.thread_settin
     v-number-input(
       v-model="clone.commentLengthMax"
       :hint="$t('thread_arrangement_form.comment_length_max_hint')"
+      placeholder="e.g. 500"
       persistent-hint
       :min="1"
       control-variant="hidden"

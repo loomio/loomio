@@ -532,6 +532,7 @@ export default {
       v-number-input(
         v-model="pollTemplate.commentLengthMax"
         :hint="$t('thread_arrangement_form.comment_length_max_hint')"
+        placeholder="e.g. 500"
         persistent-hint
         :min="1"
         control-variant="hidden"
