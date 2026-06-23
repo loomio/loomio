@@ -606,6 +606,7 @@ pl:
     email_all_activity: Wyślij e-mailem całą aktywność
     email_notifications: Wyślij e-mail po powiadomieniu
     email_none: Brak e-maili
+    new_to_you: Nowe dla Ciebie
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz

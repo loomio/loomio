@@ -9,7 +9,7 @@ import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
 const props = defineProps({
   topic:             Object,
@@ -36,12 +36,29 @@ const menuActions        = computed(() => {
 function scrollToEnd() {
   props.loader.addLoadArgsRule({ order_by: 'position_key', order_desc: true });
   props.loader.fetch().then(() => {
+    props.loader.updateCollection();
     const endEvent = Records.events.collection.chain()
       .find({ topicId: props.topic.id })
       .simplesort('positionKey', true)
       .limit(1)
       .data()[0];
     if (endEvent) nextTick(() => ScrollService.scrollTo(`.positionKey-${endEvent.positionKey}`));
+  });
+}
+
+function scrollToLatest() {
+  props.loader.addLoadNewestRule();
+  props.loader.fetch().then(() => {
+    props.loader.updateCollection();
+    nextTick(() => ScrollService.scrollTo(`.sequenceId-${props.loader.lastSequenceId()}`));
+  });
+}
+
+function scrollToNewToYou() {
+  props.loader.addLoadUnreadRule();
+  props.loader.fetch().then(() => {
+    props.loader.updateCollection();
+    nextTick(() => ScrollService.scrollTo(`.sequenceId-${props.loader.firstUnreadSequenceId()}`));
   });
 }
 
@@ -108,13 +125,15 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   v-list(nav slim density="compact" :lines="false")
     v-list-subheader(v-t="'strand_nav.jump_to'")
     v-list-item(color="info" value="toc-start" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
+    v-list-item(color="info" value="toc-new-to-you" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.new_to_you')" @click="scrollToNewToYou" v-if="loader.firstUnreadSequenceId()")
+    v-list-item(color="info" value="toc-latest" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToLatest" v-if="loader.lastSequenceId() !== topic.lastSequenceId()")
     v-list-item(v-for="item in pinnedItems" :key="item.key" :value="'toc-pinned-' + item.key" :title="item.title" :to="baseUrl+'/'+item.sequenceId" @click="scrollToSequenceId(item.sequenceId)")
       template(v-slot:prepend)
         poll-common-icon-panel(v-if="item.poll && item.poll.showResults()" :poll="item.poll" show-my-stance :size="24" :stanceSize="12")
         v-icon(v-else-if="item.user")
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
-    v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
+    v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd")
   template(v-if="isSignedIn")
 
     v-list(nav slim density="compact" :lines="false")

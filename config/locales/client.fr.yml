@@ -614,6 +614,7 @@ fr:
     email_all_activity: Envoyer par e-mail toute l'activité
     email_notifications: E-mail lorsqu’une notification est envoyée
     email_none: Pas d'e-mails
+    new_to_you: Nouveau pour toi
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance

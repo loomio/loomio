@@ -5,9 +5,10 @@ class Events::PollCreated < Event
   include Events::Notify::Subscribers
 
   def self.publish!(poll, actor)
-    super poll,
-          user: actor,
-          topic: poll.topic,
-          pinned: true
+    publish_and_mark_read!(poll,
+                           reader: actor,
+                           user: actor,
+                           topic: poll.topic,
+                           pinned: true)
   end
 end

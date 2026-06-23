@@ -61,12 +61,28 @@ class Event < ApplicationRecord
     event
   end
 
+  def self.publish_and_mark_read!(eventable, reader:, **args)
+    event = build(eventable, **args)
+    event.save!
+    mark_created_event_as_read_for(event, reader)
+    PublishEventWorker.perform_later(event.id)
+    event
+  end
+
   def self.build(eventable, **args)
     new({
       kind:       name.demodulize.underscore,
       eventable:  eventable,
       eventable_version_id: ((eventable.respond_to?(:versions) && eventable.versions.last&.id) || nil)
     }.merge(args))
+  end
+
+  def self.mark_created_event_as_read_for(event, reader)
+    return unless reader&.is_logged_in?
+    return unless event.topic_id && event.sequence_id
+
+    TopicReader.for(user: reader, topic: event.topic).viewed!(event.sequence_id)
+    MessageChannelService.publish_models([event], user_id: reader.id)
   end
 
   def user

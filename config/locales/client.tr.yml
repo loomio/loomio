@@ -604,6 +604,7 @@ tr:
     email_all_activity: Tüm etkinlikleri e-posta ile gönder
     email_notifications: Bildirim aldığımda e-posta gönder
     email_none: E-posta yok
+    new_to_you: Sizin için yeni
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

@@ -604,6 +604,7 @@ sv:
     email_all_activity: E-posta all aktivitet
     email_notifications: E-posta när du får meddelande
     email_none: Inga e-postmeddelanden
+    new_to_you: Nytt för dig
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

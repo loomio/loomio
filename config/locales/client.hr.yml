@@ -604,6 +604,7 @@ hr:
     email_all_activity: Pošalji e-poštom sve aktivnosti
     email_notifications: E-pošta prilikom obavijesti
     email_none: Nema e-poruka
+    new_to_you: Novo za tebe
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj

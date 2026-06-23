@@ -606,6 +606,7 @@ nl_NL:
     email_all_activity: Alle activiteiten per e-mail verzenden
     email_notifications: E-mail wanneer ik een melding ontvang
     email_none: Geen e-mails
+    new_to_you: Nieuw voor jou
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst

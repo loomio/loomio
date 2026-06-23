@@ -30,12 +30,18 @@ class OutcomeServiceTest < ActiveSupport::TestCase
   end
 
   test "creates a new outcome" do
+    reader = TopicReader.for(user: @user, topic: @poll.topic)
+    reader.viewed!(@poll.topic.ranges)
+
+    event = nil
     assert_difference 'Outcome.count', 1 do
-      OutcomeService.create(outcome: @new_outcome, actor: @user)
+      event = OutcomeService.create(outcome: @new_outcome, actor: @user)
     end
 
     assert_equal @new_outcome.statement, @poll.reload.current_outcome.statement
     assert_equal @new_outcome.author, @poll.current_outcome.author
+    assert reader.reload.has_read?(event.sequence_id)
+    assert_equal 0, reader.unread_items_count
   end
 
   test "does not create an invalid outcome" do

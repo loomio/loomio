@@ -604,6 +604,7 @@ sl:
     email_all_activity: Pošlji vse dejavnosti po e-pošti
     email_notifications: E-pošta ob obvestilu
     email_none: Brez e-poštnih sporočil
+    new_to_you: Novo zate
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

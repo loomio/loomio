@@ -19,12 +19,17 @@ class StanceServiceTest < ActiveSupport::TestCase
   # -- Create --
 
   test "creates a new stance" do
+    reader = TopicReader.for(user: @user, topic: @poll.topic)
+    reader.viewed!(@poll.topic.ranges)
+
     stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "I agree"
 
     event = StanceService.create(stance: stance, actor: @user)
     assert_kind_of Event, event
+    assert reader.reload.has_read?(event.sequence_id)
+    assert_equal 0, reader.unread_items_count
   end
 
   test "does not create an invalid stance" do
