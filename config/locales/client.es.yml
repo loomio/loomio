@@ -606,6 +606,7 @@ es:
     email_all_activity: Enviar por correo electrónico toda la actividad
     email_notifications: Correo electrónico cuando se me notifique
     email_none: Sin correos electrónicos
+    new_to_you: Nuevo para ti
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido

@@ -613,6 +613,7 @@ zh_CN:
     email_all_activity: 通过电子邮件发送所有动态
     email_notifications: 收到通知时发送电子邮件
     email_none: 不发送电子邮件
+    new_to_you: 对你来说是新的
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配

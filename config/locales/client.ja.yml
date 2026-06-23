@@ -603,6 +603,7 @@ ja:
     email_all_activity: すべてのアクティビティをメールで送信
     email_notifications: 通知があった際にメールでお知らせします
     email_none: メールなし
+    new_to_you: あなたにとって新しい
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ

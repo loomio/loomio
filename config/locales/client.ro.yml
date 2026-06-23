@@ -604,6 +604,7 @@ ro:
     email_all_activity: Trimiteți prin e-mail toată activitatea
     email_notifications: Trimiteți un e-mail când primiți notificare
     email_none: Niciun e-mail
+    new_to_you: Nou pentru tine
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire

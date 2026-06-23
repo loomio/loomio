@@ -604,6 +604,7 @@ fi:
     email_all_activity: Lähetä kaikki toiminnot sähköpostitse
     email_notifications: Sähköposti, kun saat ilmoituksen
     email_none: Ei sähköposteja
+    new_to_you: Uusi sinulle
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

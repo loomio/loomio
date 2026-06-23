@@ -124,3 +124,9 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | notification/thread item lock keys | Translated placeholders like `%{acteur}`, `%{ator}`, `%{автор}`, `%{yazar}` | Restored `%{actor}` / `%{author}` | Interpolation placeholder names must never be translated. |
 | `config/locales/client.he.yml` | `action_dock.unlock_thread`, `discussion.locked.unlocked` | Repeated the lock wording | `ביטול נעילת שרשור`, `נעילת השרשור בוטלה` | Unlock status/action was translated as lock. |
 | `config/locales/client.fr.yml`, `client.hu.yml`, `client.it.yml`, `client.pl.yml`, `client.ru.yml` | locked discussion labels | Closed/shut wording such as `Fermé`, `Bezárt`, `Chiuso`, `Zamknięty`, `Закрытые обсуждения` | Lock-state wording such as `Verrouillé`, `Zárolva`, `Bloccate`, `Zablokowane`, `Заблокированные обсуждения` | Locking a thread is distinct from closing a poll/discussion; these labels should not drift back to "closed". |
+| `config/locales/client.es.yml` | `strand_nav.new_to_you` | `Novedad para ti` | `Nuevo para ti` | "Novedad" means novelty/news item; the label means "new to you" (unread). |
+| `config/locales/client.de.yml` | `strand_nav.new_to_you` | `Neu für Sie` | `Neu für dich` | Formal register; app uses informal `du` throughout. |
+| `config/locales/client.fr.yml` | `strand_nav.new_to_you` | `Nouveau pour vous` | `Nouveau pour toi` | Formal register; app uses informal `tu` throughout. |
+| `config/locales/client.pl.yml` | `strand_nav.new_to_you` | `Nowość dla Ciebie` | `Nowe dla Ciebie` | "Nowość" means novelty/new thing; the label should be the adjective "new". |
+| `config/locales/client.zh_CN.yml` | `strand_nav.new_to_you` | `对你来说很新鲜` | `对你来说是新的` | "新鲜" means fresh (food sense); should be the adjective "new". |
+| `config/locales/client.zh_TW.yml` | `strand_nav.new_to_you` | `對你來說很新鮮` | `對你來說是新的` | "新鮮" means fresh (food sense); should be the adjective "new". |

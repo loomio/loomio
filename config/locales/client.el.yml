@@ -604,6 +604,7 @@ el:
     email_all_activity: Email για όλη τη δραστηριότητα
     email_notifications: Email όταν ειδοποιηθείτε
     email_none: Χωρίς email
+    new_to_you: Νέο για εσάς
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα

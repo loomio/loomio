@@ -606,6 +606,7 @@ ca:
     email_all_activity: Enviar per correu electrònic tota l'activitat
     email_notifications: Correu electrònic quan es notifiqui
     email_none: Sense correus electrònics
+    new_to_you: Nou per a tu
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

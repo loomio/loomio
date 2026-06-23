@@ -604,6 +604,7 @@ da:
     email_all_activity: Send al aktivitet via e-mail
     email_notifications: E-mail når du får besked
     email_none: Ingen e-mails
+    new_to_you: Ny for dig
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match

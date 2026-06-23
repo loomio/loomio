@@ -607,6 +607,7 @@ uk:
     email_all_activity: Надіслати всю активність електронною поштою
     email_notifications: Електронна пошта при отриманні сповіщення
     email_none: Без електронних листів
+    new_to_you: Новий для тебе
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч

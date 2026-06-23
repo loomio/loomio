@@ -607,6 +607,7 @@ zh_TW:
     email_all_activity: 透過電子郵件發送所有動態
     email_notifications: 收到通知時發送電子郵件
     email_none: 不發送電子郵件
+    new_to_you: 對你來說是新的
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配

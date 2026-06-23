@@ -604,6 +604,7 @@ ru:
     email_all_activity: Отправлять всю активность по электронной почте
     email_notifications: Письмо при уведомлении
     email_none: Нет электронных писем
+    new_to_you: Новое для вас
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч
