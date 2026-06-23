@@ -51,6 +51,53 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     assert_includes [400, 403], response.status, "Expected 400 or 403 but got #{response.status}"
   end
 
+  test "update happy case" do
+    discussion = DiscussionService.create(params: { title: 'Original title', group_id: @group.id }, actor: @user)
+
+    patch :update, params: {
+      id: discussion.id,
+      title: 'Updated title',
+      description: 'Updated description',
+      description_format: 'md',
+      api_key: @user.api_key
+    }
+
+    assert_response 200
+    discussion.reload
+    assert_equal 'Updated title', discussion.title
+    assert_equal 'Updated description', discussion.description
+    assert_equal 'Updated title', json['discussions'][0]['title']
+  end
+
+  test "update missing permission" do
+    discussion = DiscussionService.create(params: { title: 'Original title', group_id: @group.id }, actor: @user)
+    outsider = create_user_with_api_key!
+
+    patch :update, params: {
+      id: discussion.id,
+      title: 'Blocked update',
+      api_key: outsider.api_key
+    }
+
+    assert_response 403
+    refute_equal 'Blocked update', discussion.reload.title
+  end
+
+  test "destroy soft deletes discussion" do
+    discussion = DiscussionService.create(params: { title: 'Delete me', group_id: @group.id }, actor: @user)
+
+    delete :destroy, params: {
+      id: discussion.id,
+      api_key: @user.api_key
+    }
+
+    assert_response 200
+    discussion.reload
+    assert discussion.discarded_at.present?
+    assert_equal @user.id, discussion.discarded_by
+    assert json['discussions'][0]['discarded_at'].present?
+  end
+
   test "index returns open discussions in the group" do
     private_d = DiscussionService.create(params: { title: 'Private Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d = DiscussionService.create(params: { title: 'Discarded Discussion', group_id: @group.id, private: true }, actor: @user)
@@ -131,5 +178,18 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
       count = body.scan(/"#{key}":/).size
       assert count <= 1, "Expected '#{key}' key to appear at most once in response body, got #{count}"
     end
+  end
+
+  private
+
+  def create_user_with_api_key!
+    hex = SecureRandom.hex(4)
+    User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true).tap do |user|
+      user.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
+    end
+  end
+
+  def json
+    JSON.parse(response.body)
   end
 end
