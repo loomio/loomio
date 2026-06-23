@@ -10,6 +10,7 @@ ActiveAdmin.setup do |config|
 end
 
 def authenticate_admin_user!
-  authenticate_user!
+  return false unless authenticate_user!
+
   redirect_to dashboard_path unless current_user.is_admin?
 end
