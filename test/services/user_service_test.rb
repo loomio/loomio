@@ -4,6 +4,13 @@ class UserServiceTest < ActiveSupport::TestCase
   setup do
     @user = users(:user)
     @group = groups(:group)
+    @original_disable_edit_user_profile = ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE']
+    @original_sso_force_user_attrs = ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
+  end
+
+  teardown do
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = @original_disable_edit_user_profile
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = @original_sso_force_user_attrs
   end
 
   test "deactivates the user" do
@@ -92,5 +99,34 @@ class UserServiceTest < ActiveSupport::TestCase
     verified_user = UserService.verify(user: @user)
 
     assert_equal true, verified_user.email_verified
+  end
+
+  test "disable edit user profile blocks externally managed fields but allows local fields" do
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+    original_name = @user.name
+    original_email = @user.email
+    original_username = @user.username
+    original_avatar_kind = @user.avatar_kind
+
+    UserService.update(
+      user: @user,
+      actor: @user,
+      params: {
+        name: 'Managed Name',
+        email: "managed#{SecureRandom.hex(4)}@example.com",
+        username: "managed#{SecureRandom.hex(4)}",
+        avatar_kind: 'uploaded',
+        short_bio: 'Local introduction',
+        location: 'Local place'
+      }
+    )
+
+    @user.reload
+    assert_equal original_name, @user.name
+    assert_equal original_email, @user.email
+    assert_equal original_username, @user.username
+    assert_equal original_avatar_kind, @user.avatar_kind
+    assert_equal 'Local introduction', @user.short_bio
+    assert_equal 'Local place', @user.location
   end
 end

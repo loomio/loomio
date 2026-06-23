@@ -80,6 +80,7 @@ export default {
     },
 
     changePicture() {
+      if (this.ssoDisableEditProfile) { return; }
       openModal({component: 'ChangePictureForm'});
     },
 
@@ -159,7 +160,7 @@ v-main
 
               .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12.mb-4(@click="changePicture()")
                 user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")
-                v-btn(color="primary" variant="tonal" @click="changePicture")
+                v-btn(color="primary" variant="tonal" @click="changePicture" :disabled="ssoDisableEditProfile")
                   span(v-t="'profile_page.change_picture_link'")
 
             lmo-textarea(

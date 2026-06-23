@@ -57,7 +57,7 @@ class IdentityService
     end
 
     # Sync user attributes from SSO provider if configured
-    if ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] && identity.user
+    if update_user_profile_on_login? && identity.user
       identity.user.update(name: identity.name, email: identity.email)
     end
 
@@ -67,5 +67,10 @@ class IdentityService
     end
 
     identity
+  end
+
+  def self.update_user_profile_on_login?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'])
   end
 end

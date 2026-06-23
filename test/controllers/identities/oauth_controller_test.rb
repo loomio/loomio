@@ -7,7 +7,8 @@ class Identities::OauthControllerTest < ActionController::TestCase
     @saved_env = {}
     %w[OAUTH_AUTH_URL OAUTH_TOKEN_URL OAUTH_PROFILE_URL OAUTH_SCOPE
        OAUTH_ATTR_UID OAUTH_ATTR_NAME OAUTH_ATTR_EMAIL OAUTH_APP_KEY OAUTH_APP_SECRET
-       LOOMIO_SSO_FORCE_USER_ATTRS].each do |key|
+       LOOMIO_DISABLE_EDIT_USER_PROFILE LOOMIO_SSO_FORCE_USER_ATTRS
+       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN].each do |key|
       @saved_env[key] = ENV[key]
     end
 
@@ -121,6 +122,32 @@ class Identities::OauthControllerTest < ActionController::TestCase
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
+
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
+
+    existing_user.reload
+    assert_equal 'OAuth User', existing_user.name
+    assert_equal 'oauth@example.com', existing_user.email
+    assert_equal existing_user, @controller.current_user
+  end
+
+  test "disable edit user profile does not overwrite user name on login" do
+    hex = SecureRandom.hex(4)
+    existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
+
+    existing_user.reload
+    assert_equal 'Original Name', existing_user.name
+    assert_equal 'oauth@example.com', existing_user.email
+    assert_equal existing_user, @controller.current_user
+  end
+
+  test "updates user profile on login when configured" do
+    hex = SecureRandom.hex(4)
+    existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
+    ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'] = 'true'
 
     get :create, params: oauth_callback_params(code: 'authorization_code_123')
 
