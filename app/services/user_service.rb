@@ -62,12 +62,7 @@ class UserService
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
     
-    # Remove restricted fields if SSO is forcing user attrs
-    if ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
-      params.delete(:name)
-      params.delete(:email)
-      params.delete(:username)
-    end
+    remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
     
     user.assign_attributes_and_files(params)
     return false unless user.valid?
@@ -76,6 +71,17 @@ class UserService
     rotate_credentials_after_password_change(user) if password_changed
     EventBus.broadcast('user_update', user, actor, params)
     GenericWorker.perform_later('SearchService', 'reindex_by_author_id', user.id) if user.name_previously_changed?
+  end
+
+  def self.disable_edit_user_profile?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'])
+  end
+
+  def self.remove_externally_managed_profile_fields(params)
+    [:name, :email, :username, :avatar_kind, :uploaded_avatar].each do |field|
+      params.delete(field)
+    end
   end
 
   def self.rotate_credentials_after_password_change(user)

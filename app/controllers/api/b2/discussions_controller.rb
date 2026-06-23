@@ -9,6 +9,21 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
     respond_with_resource
   end
 
+  def update
+    load_resource
+    if DiscussionService.update(discussion: resource, params: resource_params, actor: current_user)
+      respond_with_resource
+    else
+      respond_with_errors
+    end
+  end
+
+  def destroy
+    load_resource
+    DiscussionService.discard(discussion: resource, actor: current_user)
+    respond_with_resource
+  end
+
   def index
     instantiate_collection { |collection| collection.order_by_latest_activity }
     respond_with_collection

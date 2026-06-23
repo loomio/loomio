@@ -147,6 +147,55 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     assert_response 403
   end
 
+  test "update happy case" do
+    poll = make_poll(group: @group, title: 'Original poll')
+    @admin.update_columns(api_key: "adminkey#{SecureRandom.hex(8)}")
+
+    patch :update, params: {
+      id: poll.id,
+      title: 'Updated poll',
+      details: 'Updated details',
+      details_format: 'md',
+      api_key: @admin.api_key
+    }
+
+    assert_response 200
+    poll.reload
+    assert_equal 'Updated poll', poll.title
+    assert_equal 'Updated details', poll.details
+    assert_equal 'Updated poll', json['polls'][0]['title']
+  end
+
+  test "update missing permission" do
+    poll = make_poll(group: @group, title: 'Original poll')
+    @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
+
+    patch :update, params: {
+      id: poll.id,
+      title: 'Blocked update',
+      api_key: @member.api_key
+    }
+
+    assert_response 403
+    refute_equal 'Blocked update', poll.reload.title
+  end
+
+  test "destroy soft deletes poll" do
+    poll = make_poll(group: @group, title: 'Delete me')
+    @admin.update_columns(api_key: "adminkey#{SecureRandom.hex(8)}")
+
+    delete :destroy, params: {
+      id: poll.id,
+      api_key: @admin.api_key
+    }
+
+    assert_response 200
+    poll.reload
+    assert poll.discarded_at.present?
+    assert_equal @admin.id, poll.discarded_by
+    assert json['polls'][0]['discarded_at'].present?
+  end
+
   test "index returns active polls in the group" do
     make_poll(title: 'open one', group: @group)
     make_poll(title: 'closed one', group: @group, closed_at: 1.day.ago)
@@ -255,5 +304,9 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
     poll.update!(closed_at: closed_at) if closed_at
     poll
+  end
+
+  def json
+    JSON.parse(response.body)
   end
 end

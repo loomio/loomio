@@ -19,6 +19,7 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
       jarams.delete(:format)
       jarams.delete(:discussion)
       jarams.delete(:poll)
+      jarams.delete(:id)
       jarams = ActionController::Parameters.new({resource_name => jarams})
     end
 

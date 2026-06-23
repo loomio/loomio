@@ -13,6 +13,21 @@ class Api::B2::CommentsController < Api::B2::BaseController
     end
   end
 
+  def update
+    load_resource
+    if CommentService.update(comment: resource, params: resource_params, actor: current_user)
+      respond_with_resource
+    else
+      respond_with_errors
+    end
+  end
+
+  def destroy
+    load_resource
+    CommentService.discard(comment: resource, actor: current_user)
+    respond_with_resource
+  end
+
   private
 
   def permitted_params
@@ -22,6 +37,8 @@ class Api::B2::CommentsController < Api::B2::BaseController
       jarams.delete(:format)
       jarams.delete(:discussion_id)
       jarams.delete(:discussion)
+      jarams.delete(:comment)
+      jarams.delete(:id)
       jarams = ActionController::Parameters.new({resource_name => jarams})
     end
     @permitted_params ||= PermittedParams.new(jarams)

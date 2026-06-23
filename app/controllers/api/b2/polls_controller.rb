@@ -10,6 +10,21 @@ class Api::B2::PollsController < Api::B2::BaseController
     respond_with_resource
   end
 
+  def update
+    load_resource
+    if PollService.update(poll: resource, params: resource_params, actor: current_user)
+      respond_with_resource
+    else
+      respond_with_errors
+    end
+  end
+
+  def destroy
+    load_resource
+    PollService.discard(poll: resource, actor: current_user)
+    respond_with_resource
+  end
+
   def index
     instantiate_collection { |collection| collection.order(created_at: :desc) }
     respond_with_collection

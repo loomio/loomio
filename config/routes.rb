@@ -48,21 +48,28 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     post 'hocuspocus', to: 'hocuspocus#create'
 
-    namespace :b1 do
-      resources :discussions, only: [:create, :show]
-      resources :polls, only: [:create, :show]
-      resources :memberships, only: [:index, :create]
-    end
-
     namespace :b2 do
-      resources :discussions, only: [:create, :show, :index]
-      resources :polls, only: [:create, :show, :index]
+      resources :discussions, only: [:create, :show, :index, :update, :destroy]
+      resources :polls, only: [:create, :show, :index, :update, :destroy]
       resources :memberships, only: [:index, :create]
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :update, :destroy]
     end
 
     namespace :b3, only: [] do
-      resources :users do
+      get    'users/identity/:identity_type/:uid',            to: 'users#show_by_identity'
+      patch  'users/identity/:identity_type/:uid',            to: 'users#update_by_identity'
+      delete 'users/identity/:identity_type/:uid',            to: 'users#destroy_by_identity'
+      post   'users/identity/:identity_type/:uid/deactivate', to: 'users#deactivate_by_identity'
+      post   'users/identity/:identity_type/:uid/reactivate', to: 'users#reactivate_by_identity'
+      post   'users/identity/:identity_type/:uid/redact',     to: 'users#redact_by_identity'
+
+      resources :users, only: [:index, :show, :update, :destroy] do
+        member do
+          post :deactivate
+          post :reactivate
+          post :redact
+        end
+
         collection do
           post :deactivate
           post :reactivate
@@ -365,7 +372,6 @@ Rails.application.routes.draw do
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
-  get '/help/api'   => 'help#api'
   get '/help/api2'   => 'help#api2'
   get '/help/api3'   => 'help#api3'
 
