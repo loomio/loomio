@@ -64,9 +64,14 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- create --
 
   test "creates a new poll" do
+    poll = nil
     assert_difference 'Poll.count', 1 do
-      PollService.create(params: poll_params, actor: @user)
+      poll = PollService.create(params: poll_params, actor: @user)
     end
+
+    reader = TopicReader.for(user: @user, topic: poll.topic)
+    assert reader.reload.has_read?(poll.created_event.sequence_id)
+    assert_equal 0, reader.unread_items_count
   end
 
   test "populates custom poll options" do

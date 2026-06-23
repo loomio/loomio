@@ -8,9 +8,11 @@ class Events::StanceCreated < Event
   def self.publish!(stance)
     GenericWorker.perform_later('NotificationService', 'mark_as_read', "Poll", stance.poll_id, stance.participant_id)
 
-    super stance,
-          user: stance.participant.presence,
-          topic: stance.add_to_thread? ? stance.poll.topic : nil
+    participant = stance.participant.presence
+    publish_and_mark_read!(stance,
+                           reader: participant,
+                           user: participant,
+                           topic: stance.add_to_thread? ? stance.poll.topic : nil)
   end
 
   def silence_mentions?

@@ -23,6 +23,23 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_equal "My body is ready", comment.body
   end
 
+  test "marks created comment as read for the author" do
+    reader = TopicReader.for(user: @user, topic: @discussion.topic)
+    reader.viewed!(@discussion.topic.ranges)
+
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "Read my own comment",
+      body_format: "md"
+    )
+
+    event = CommentService.create(comment: comment, actor: @user)
+
+    assert reader.reload.has_read?(event.sequence_id)
+    assert_equal 0, reader.unread_items_count
+  end
+
   test "raises when creating invalid comment" do
     comment = Comment.new(
       parent: @discussion,

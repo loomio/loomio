@@ -10,10 +10,11 @@ class Events::NewComment < Event
       GenericWorker.perform_later('NotificationService', 'mark_as_read', comment.parent_type, comment.parent_id, comment.author_id)
     end
 
-    super comment,
-          user: comment.author,
-          topic: comment.topic,
-          pinned: comment.should_pin
+    publish_and_mark_read!(comment,
+                           reader: comment.author,
+                           user: comment.author,
+                           topic: comment.topic,
+                           pinned: comment.should_pin)
   end
 
 end
