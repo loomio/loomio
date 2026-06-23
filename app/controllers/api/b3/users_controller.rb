@@ -47,6 +47,14 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
     reactivate_user(user_by_identity(deactivated: true))
   end
 
+  def redact
+    redact_user(user)
+  end
+
+  def redact_by_identity
+    redact_user(user_by_identity)
+  end
+
   def destroy
     destroy_user(user)
   end
@@ -100,8 +108,13 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
     render json: {success: true, user: user_json(user.reload)}
   end
 
-  def destroy_user(user)
+  def redact_user(user)
     RedactUserWorker.perform_later(user.id, user.id)
+    render json: {success: true}
+  end
+
+  def destroy_user(user)
+    DestroyUserWorker.perform_later(user.id)
     render json: {success: true}
   end
 

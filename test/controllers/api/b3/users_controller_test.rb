@@ -164,12 +164,39 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     assert_equal true, json['user']['active']
   end
 
-  test "destroy redacts user" do
+  test "redact removes identifying fields and sessions" do
+    @user.sessions.create!(user_agent: 'other browser', ip_address: '127.0.0.2')
+
+    post :redact, params: { b3_api_key: @api_key, id: @user.id }
+    assert_response 200
+    assert_equal true, json['success']
+
+    @user.reload
+    assert_nil @user.email
+    assert_nil @user[:name]
+    assert_empty @user.sessions
+  end
+
+  test "redact by identity" do
+    post :redact_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    assert_response 200
+
+    assert_nil @user.reload.email
+  end
+
+  test "destroy deletes user" do
     delete :destroy, params: { b3_api_key: @api_key, id: @user.id }
     assert_response 200
     assert_equal true, json['success']
 
-    assert_nil @user.reload.email
+    assert_not User.exists?(@user.id)
+  end
+
+  test "destroy by identity deletes user" do
+    delete :destroy_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    assert_response 200
+
+    assert_not User.exists?(@user.id)
   end
 
   private

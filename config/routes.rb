@@ -61,11 +61,13 @@ Rails.application.routes.draw do
       delete 'users/identity/:identity_type/:uid',            to: 'users#destroy_by_identity'
       post   'users/identity/:identity_type/:uid/deactivate', to: 'users#deactivate_by_identity'
       post   'users/identity/:identity_type/:uid/reactivate', to: 'users#reactivate_by_identity'
+      post   'users/identity/:identity_type/:uid/redact',     to: 'users#redact_by_identity'
 
       resources :users, only: [:index, :show, :update, :destroy] do
         member do
           post :deactivate
           post :reactivate
+          post :redact
         end
 
         collection do
