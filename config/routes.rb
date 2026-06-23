@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       resources :discussions, only: [:create, :show, :index]
       resources :polls, only: [:create, :show, :index]
       resources :memberships, only: [:index, :create]
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :update, :destroy]
     end
 
     namespace :b3, only: [] do
