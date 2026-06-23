@@ -40,7 +40,8 @@ class HelpController < ApplicationController
     if current_user.bot?
       "This user account is a bot. That's good. It will not be included in polls and notifications"
     else
-      "This user account is a human. You may want to [set up a bot account](/profile) for API requests"
+      "This user account is not marked as \"bot\". This means it will be issued votes and expected to participate in decision. " \
+        "You may want to [set up a bot account](/profile) for API requests. Bot accounts are not issued votes or considered when calculating poll results."
     end
   end
 
