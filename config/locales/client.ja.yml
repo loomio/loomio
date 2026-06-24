@@ -2554,7 +2554,7 @@ ja:
     filter_by_name: 名前でフィルタリング
     filter_by_country: 国で絞り込む
     show_tags: タグ
-    tags_per_interval: %{interval}別タグ数
+    tags_per_interval: "%{interval}別タグ数"
     all_groups_and_direct_threads: すべてのグループと直接のスレッド
     custom_selection: カスタム選択
   tips:
