@@ -21,13 +21,79 @@ const { watchRecords } = useWatchRecords();
 const loading = ref(false);
 const query = ref('');
 const selectedTags = ref((initialTags || topic.tags || []).slice());
-const allTags = ref(topic.group().tags());
+const allTags = ref([]);
+const tagGroup = ref(null);
+
+function tagsFromNames(names, group) {
+  const byName = {};
+  if (group && !group.isNullGroup) {
+    group.tags().forEach(tag => byName[tag.name] = tag);
+  }
+
+  return (names || []).map((name, i) => ({
+    id: `template-tag-${i}`,
+    name,
+    color: (byName[name] || {}).color
+  }));
+}
+
+function usableGroup(group) {
+  return group && !group.isNullGroup;
+}
+
+function loadGroup(group) {
+  tagGroup.value = group;
+  allTags.value = group.tags();
+}
+
+function fetchTemplateGroup(template) {
+  if (!template || !template.groupId) { return Promise.resolve(null); }
+
+  return Records.groups.findOrFetch(template.groupId).then(group => {
+    return usableGroup(group) ? group : template.group();
+  });
+}
+
+function fetchDirectTemplateGroup() {
+  if (topic.topicableType === 'Discussion') {
+    const discussion = topic.discussion();
+    if (!discussion || !discussion.discussionTemplateId) { return Promise.resolve(null); }
+
+    return Records.discussionTemplates.findOrFetchById(discussion.discussionTemplateId).then(fetchTemplateGroup);
+  }
+
+  if (topic.topicableType === 'Poll') {
+    const poll = topic.topicable();
+    if (!poll || !poll.pollTemplateId) { return Promise.resolve(null); }
+
+    return Records.pollTemplates.findOrFetchById(poll.pollTemplateId).then(fetchTemplateGroup);
+  }
+
+  return Promise.resolve(null);
+}
+
+function loadTags() {
+  if (topic.groupId) {
+    loadGroup(topic.group());
+    return;
+  }
+
+  tagGroup.value = null;
+  fetchDirectTemplateGroup().then(group => {
+    if (usableGroup(group)) {
+      loadGroup(group);
+    } else {
+      allTags.value = tagsFromNames(topic.tags || []);
+    }
+  });
+}
 
 onMounted(() => {
+  loadTags();
   watchRecords({
     key: 'topicTags' + topic.id,
     collections: ['tags'],
-    query: () => { allTags.value = topic.group().tags(); }
+    query: () => { loadTags(); }
   });
 });
 
@@ -44,6 +110,8 @@ const hasExactMatch = computed(() => {
   return allTags.value.some(tag => tag.name.toLowerCase() === q);
 });
 
+const canCreateTags = computed(() => usableGroup(tagGroup.value));
+
 function isSelected(tag) {
   return selectedTags.value.includes(tag.name);
 }
@@ -54,7 +122,10 @@ function toggle(tag) {
 }
 
 function openNewTagModal() {
-  const tag = Records.tags.build({groupId: topic.group().id, name: trimmedQuery.value});
+  if (!usableGroup(tagGroup.value)) { return; }
+
+  const group = tagGroup.value;
+  const tag = Records.tags.build({groupId: group.id, name: trimmedQuery.value});
   EventBus.$emit('openModal', {
     component: 'TagsModal',
     props: {
@@ -64,7 +135,7 @@ function openNewTagModal() {
         // tag was built with Records.tags.build() (not in the collection);
         // after save, importJSON creates a new record — the built object
         // never gets its id set, so look up the saved tag by name instead.
-        const savedTag = Records.tags.find({groupId: topic.group().id, name: tag.name})[0];
+        const savedTag = Records.tags.find({groupId: group.id, name: tag.name})[0];
         if (tag.name && !selected.includes(tag.name) && savedTag) { selected.push(tag.name); }
         EventBus.$emit('openModal', {
           component: 'TopicTagsModal',
@@ -109,7 +180,7 @@ v-card.topic-tags-modal(:title="$t('loomio_tags.apply_tags')")
           v-checkbox-btn(:model-value="isSelected(tag)" readonly)
         v-chip(:color="tag.color" size="small") {{ tag.name }}
       v-list-item.topic-tags-modal__create(
-        v-if="!(trimmedQuery && hasExactMatch)"
+        v-if="canCreateTags && !(trimmedQuery && hasExactMatch)"
         @click="openNewTagModal"
       )
         template(v-slot:prepend)

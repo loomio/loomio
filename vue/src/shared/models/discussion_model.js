@@ -44,6 +44,7 @@ export default class DiscussionModel extends BaseModel {
       notifyRecipients: true,
       groupId: null,
       topicId: null,
+      discussionTemplateId: null,
       commentLengthMax: null,
       discussionReaderUserId: null,
       pinnedAt: null,
