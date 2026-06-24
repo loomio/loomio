@@ -27,7 +27,6 @@ class HourlyTaskJob < ApplicationJob
       GenericWorker.perform_later('ReceivedEmailService', 'delete_old_emails')
     end
 
-    SolidCable::Message.prune
     GenericWorker.perform_later('DemoService', 'ensure_queue')
 
     if hour == 0 && Time.now.mday == 1
