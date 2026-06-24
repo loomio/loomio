@@ -2583,7 +2583,7 @@ zh_TW:
     filter_by_name: 按名稱篩選
     filter_by_country: 按國家篩選
     show_tags: 標籤
-    tags_per_interval: 每 %{interval} 個標籤
+    tags_per_interval: 每%{interval}的標籤數量
     all_groups_and_direct_threads: 所有群組和直接討論串
     custom_selection: 自訂選擇
   tips:

@@ -1246,7 +1246,7 @@ zh_CN:
     filter_by_name: 按名称筛选
     filter_by_country: 按国家/地区筛选
     show_tags: 标签
-    tags_per_interval: 每 %{interval} 个标签
+    tags_per_interval: 每%{interval}的标签数量
     all_groups_and_direct_threads: 所有群组和直接讨论串
     custom_selection: 自定义选择
   group_page:

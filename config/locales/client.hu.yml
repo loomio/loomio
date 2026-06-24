@@ -2562,7 +2562,7 @@ hu:
     filter_by_name: Szűrés név szerint
     filter_by_country: Szűrés ország szerint
     show_tags: Címkék
-    tags_per_interval: Címkék %{interval}
+    tags_per_interval: Cimkék per %{interval}
     all_groups_and_direct_threads: Minden csoport és közvetlen szál
     custom_selection: Egyéni kijelölés
   tips:
