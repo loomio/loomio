@@ -64,6 +64,8 @@ const validate = (field) => {
   return [ () => props.discussionTemplate.errors[field] === undefined || props.discussionTemplate.errors[field][0] ];
 };
 
+const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
+
 const discardDraft = () => {
   if (confirm(I18n.global.t('formatting.confirm_discard'))) {
     EventBus.$emit('resetDraft', 'discussionTemplate', props.discussionTemplate.id, 'description', props.discussionTemplate.description);
@@ -127,7 +129,9 @@ v-form(ref="form" @submit.prevent="submit")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card.discussion-template-form(:title="discussionTemplate.id ? $t('discussion_form.edit_discussion_template') : $t('discussion_form.new_discussion_template')")
+  v-card.discussion-template-form
+    template(v-slot:title)
+      span(v-intersect="{handler: titleVisible}") {{ discussionTemplate.id ? $t('discussion_form.edit_discussion_template') : $t('discussion_form.new_discussion_template') }}
     template(v-slot:append)
       v-btn.back-button(v-if="$route.query.return_to" variant="flat" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
         common-icon(name="mdi-close")

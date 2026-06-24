@@ -86,6 +86,7 @@ export default {
   },
 
   methods: {
+    titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     setPoll(poll) {
       return this.poll = poll;
     }
@@ -122,7 +123,9 @@ v-main.poll-form-page
           @setPoll="setPoll"
           redirect-on-save
         )
-      v-card.poll-common-choose-template(v-if="!poll" :title="$t('poll_common.start_a_poll')")
+      v-card.poll-common-choose-template(v-if="!poll")
+        template(v-slot:title)
+          span(v-intersect="{handler: titleVisible}") {{ $t('poll_common.start_a_poll') }}
         poll-common-choose-template(
           v-if="!poll"
           @setPoll="setPoll"

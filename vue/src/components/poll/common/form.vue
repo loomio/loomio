@@ -224,6 +224,8 @@ const titlePath = computed(() => {
   return (props.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
 });
 
+const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
+
 const titleArgs = computed(() => {
   return {pollType: props.poll.translatedPollType().toLowerCase()};
 });
@@ -243,6 +245,8 @@ const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 
 // Lifecycle
 onMounted(() => {
+  EventBus.$emit('content-title-visible', false);
+  EventBus.$emit('currentComponent', { title: I18n.global.t(titlePath.value, titleArgs.value), page: 'pollFormPage' });
   loadGroups();
 
   Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
@@ -270,7 +274,7 @@ defineOptions({
 <template lang="pug">
 v-form.poll-common-form(ref="form" @submit.prevent="submit")
   v-card-title.px-0.pt-4.d-flex
-    span(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
+    span(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
 
     v-btn(v-if="poll.id" icon variant="text" :to="urlFor(poll)" aria-hidden='true')

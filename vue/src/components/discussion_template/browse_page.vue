@@ -26,6 +26,8 @@ export default {
   },
 
   mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', { titleKey: 'discussion_template.example_discussion_templates', page: 'discussionTemplateBrowsePage' });
     this.fetch();
     Records.remote.get('discussion_templates/browse_tags').then(data => {
       this.tags = data;
@@ -67,6 +69,7 @@ export default {
   },
 
   methods: {
+    titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     changed() { return this.fetch(); },
     fetch() {
       this.loading = true;
@@ -91,7 +94,9 @@ export default {
       v-breadcrumbs(v-if="breadcrumbs.length" color="anchor" :items="breadcrumbs")
         template(v-slot:divider)
           common-icon(name="mdi-chevron-right")
-      v-card(:title="$t('discussion_template.example_discussion_templates')")
+      v-card
+        template(v-slot:title)
+          span(v-intersect="{handler: titleVisible}") {{ $t('discussion_template.example_discussion_templates') }}
         template(v-slot:append)
           v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
             common-icon(name="mdi-close")

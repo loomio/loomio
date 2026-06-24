@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
 
 const route = useRoute();
 
@@ -73,6 +74,12 @@ const init = () => {
 
 onMounted(() => {
   init();
+  EventBus.$emit('content-title-visible', false);
+  const isEdit = !!route.params.key;
+  EventBus.$emit('currentComponent', {
+    titleKey: isEdit ? 'discussion_form.edit_discussion_context' : 'discussion_form.new_discussion_title',
+    page: 'discussionFormPage'
+  });
 });
 
 watch(() => route.query, () => { init(); });
