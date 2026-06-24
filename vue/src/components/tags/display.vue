@@ -40,7 +40,8 @@ const tagObjects = computed(() => {
       id: i,
       name,
       color: (byName.value[name] || {}).color,
-      taggingsCount: (byName.value[name] || {}).taggingsCount
+      taggingsCount: (byName.value[name] || {}).taggingsCount,
+      to: groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
     };
   });
 });
@@ -52,7 +53,7 @@ span.tags-display
     :key="tag.id || tag.name"
     :size="size"
     :color="tag.color"
-    :to="'/g/'+groupKey+'/tags/'+encodeURIComponent(tag.name)"
+    :to="tag.to"
     :class="{'mb-1': showCounts}"
   )
     plain-text.text-on-surface(:model="tag" field="name")

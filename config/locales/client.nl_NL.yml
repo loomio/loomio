@@ -2577,6 +2577,14 @@ nl_NL:
     total_discussions: Totale discussies
     discussions_with_polls: Discussies met peilingen
     download_csv: CSV downloaden
+    tag_threads_by_user: Getagde berichten door gebruiker
+    authored_only: Alleen door de auteur geschreven
+    filter_by_name: Filteren op naam
+    filter_by_country: Filteren op land
+    show_tags: Tags
+    tags_per_interval: Tags per %{interval}
+    all_groups_and_direct_threads: Alle groepen en directe discussies
+    custom_selection: Aangepaste selectie
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag

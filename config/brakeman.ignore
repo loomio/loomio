@@ -1,6 +1,18 @@
 {
   "ignored_warnings": [
     {
+      "fingerprint": "88415a0ceffc1581ce819891ff3188da88178115e16c432435896abc9b25209c",
+      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:182#tag_counts_per_interval)"
+    },
+    {
+      "fingerprint": "cfc65db7e8768c6e1a2e59ebdab9dd769b88b88b25e89b67a9af74c0f8ff56c4",
+      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:240#tag_threads_per_user)"
+    },
+    {
+      "fingerprint": "062b0fea38a3bcb5a0e64405863299172144d0e1cb6ec09d39bf156839c914e3",
+      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:264#tag_threads_authored_per_user)"
+    },
+    {
       "fingerprint": "bf9ace7f399efc663058ca06b96011f09175dd7f594c0164a7cfd606c1d642c6",
       "note": "Baselined — field validated against column_names before interpolation (SQL Injection @ app/models/concerns/has_timeframe.rb:7)"
     },
@@ -173,6 +185,6 @@
       "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:374)"
     }
   ],
-  "updated": "2026-05-27",
-  "brakeman_version": "8.0.4"
+  "updated": "2026-06-24",
+  "brakeman_version": "8.0.5"
 }

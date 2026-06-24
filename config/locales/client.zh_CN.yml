@@ -1241,6 +1241,14 @@ zh_CN:
     total_threads: 总线程数
     threads_with_polls: 带有投票的帖子
     download_csv: 下载 CSV 文件
+    tag_threads_by_user: 用户标记的帖子
+    authored_only: 仅作者
+    filter_by_name: 按名称筛选
+    filter_by_country: 按国家/地区筛选
+    show_tags: 标签
+    tags_per_interval: 每%{interval}的标签数量
+    all_groups_and_direct_threads: 所有群组和直接讨论串
+    custom_selection: 自定义选择
   group_page:
     stats: 子群组统计数据
     participation_report: 参与报告

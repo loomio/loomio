@@ -2550,6 +2550,14 @@ hr:
     total_discussions: Ukupno rasprava
     discussions_with_polls: Rasprave s anketama
     download_csv: Preuzmi CSV
+    tag_threads_by_user: Označene teme od strane korisnika
+    authored_only: Samo autorsko
+    filter_by_name: Filtriraj po imenu
+    filter_by_country: Filtriraj po državi
+    show_tags: Oznake
+    tags_per_interval: Oznake po %{interval}
+    all_groups_and_direct_threads: Sve grupe i izravne teme
+    custom_selection: Prilagođeni odabir
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak

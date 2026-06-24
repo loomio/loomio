@@ -2569,6 +2569,14 @@ he:
     total_discussions: סך כל הדיונים
     discussions_with_polls: דיונים עם סקרים
     download_csv: הורד קובץ CSV
+    tag_threads_by_user: שרשורים שתויגו על ידי המשתמש
+    authored_only: נכתב בלבד
+    filter_by_name: סנן לפי שם
+    filter_by_country: סנן לפי מדינה
+    show_tags: תגיות
+    tags_per_interval: תגיות לכל %{interval}
+    all_groups_and_direct_threads: כל הקבוצות והשרשורים הישירים
+    custom_selection: בחירה מותאמת אישית
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה

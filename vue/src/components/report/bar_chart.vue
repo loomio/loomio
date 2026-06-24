@@ -47,15 +47,15 @@ export default {
     plugins: {
       type: Array,
       default: () => []
+    },
+    options: {
+      type: Object,
+      default: () => ({})
     }
   },
-  data() {
-    return {
-
-      chartOptions: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
+  computed: {
+    chartOptions() {
+      return { responsive: true, maintainAspectRatio: false, ...this.options };
     }
   }
 }

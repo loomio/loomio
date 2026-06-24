@@ -2550,6 +2550,14 @@ sv:
     total_discussions: Totalt antal diskussioner
     discussions_with_polls: Diskussioner med opinionsundersökningar
     download_csv: Ladda ner CSV-filen
+    tag_threads_by_user: Taggade trådar av användare
+    authored_only: Endast författad
+    filter_by_name: Filtrera efter namn
+    filter_by_country: Filtrera efter land
+    show_tags: Taggar
+    tags_per_interval: Taggar per %{interval}
+    all_groups_and_direct_threads: Alla grupper och direkta trådar
+    custom_selection: Anpassat val
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har slutfört alla steg!"
     getting_started_checklist: Checklista för att komma igång

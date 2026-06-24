@@ -2550,6 +2550,14 @@ ru:
     total_discussions: Всего обсуждений
     discussions_with_polls: Обсуждения с опросами
     download_csv: Скачать CSV
+    tag_threads_by_user: Помеченные пользователем темы
+    authored_only: Авторский контент
+    filter_by_name: Фильтр по имени
+    filter_by_country: Фильтр по стране
+    show_tags: Теги
+    tags_per_interval: Теги на %{interval}
+    all_groups_and_direct_threads: Все группы и прямые обсуждения
+    custom_selection: Индивидуальный выбор
   tips:
     youve_completed_all_the_steps: "\U0001F389 Вы выполнили все шаги!"
     getting_started_checklist: Контрольный список для начала работы

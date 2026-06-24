@@ -2586,6 +2586,14 @@ es:
     total_discussions: Discusiones totales
     discussions_with_polls: Discusiones con encuestas
     download_csv: Descargar CSV
+    tag_threads_by_user: Hilos etiquetados por el usuario
+    authored_only: Autor únicamente
+    filter_by_name: Filtrar por nombre
+    filter_by_country: Filtrar por país
+    show_tags: Etiquetas
+    tags_per_interval: Etiquetas por %{interval}
+    all_groups_and_direct_threads: Todos los grupos y conversaciones directas
+    custom_selection: Selección personalizada
   tips:
     youve_completed_all_the_steps: "\U0001F389¡Has completado todos los pasos!"
     getting_started_checklist: Lista de verificación para comenzar

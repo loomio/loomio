@@ -103,7 +103,10 @@ function dismissAlert() {
 
 function cloneTemplate(template) {
   const poll = template.buildPoll();
-  if (props.topic) { poll.topicId = props.topic.id }
+  if (props.topic) {
+    poll.topicId = props.topic.id;
+    poll.groupId = props.topic.groupId;
+  }
   emit('setPoll', poll);
 }
 

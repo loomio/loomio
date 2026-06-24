@@ -1296,6 +1296,14 @@ en:
     download_csv: Download CSV
     actions_per_interval: Actions per %{interval}
     actions_per_user: Actions per user
+    tag_threads_by_user: Tagged threads by user
+    authored_only: Authored only
+    filter_by_name: Filter by name
+    filter_by_country: Filter by country
+    show_tags: Tags
+    tags_per_interval: Tags per %{interval}
+    all_groups_and_direct_threads: All groups and direct threads
+    custom_selection: Custom selection
     users_per_country: Users per country
     actions_per_country: Actions per country
     country: Country
