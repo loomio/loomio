@@ -1964,6 +1964,7 @@ en:
   poll_receipts_page:
     no_receipts: This anonymous poll closed before the verification feature existed, so verification is not possible.
     verify_participants: Verify participants
+    see_votes_if_quorum_reached: If the poll has closed and quorum was reached, you will see who voted
     voter_name: Name
     voter_email: Email
     vote_cast: Vote cast

@@ -1890,6 +1890,7 @@ zh_CN:
     member_since: 会员自
     invited_by: 受邀
     invited_on: 受邀加入
+    see_votes_if_quorum_reached: 如果投票已结束且达到法定人数，您将看到投票者名单。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进

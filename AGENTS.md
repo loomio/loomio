@@ -51,6 +51,7 @@ Register-grooming completed so far:
   - Use the `useWatchRecords` composable from `@/composables/useWatchRecords` instead of the `WatchRecords` mixin.
   - Use `LmoUrlService.route({model})` directly instead of the `UrlFor` mixin.
   - Destructure `defineProps` and reference bare prop names (not `props.x`).
+- In client code, do not guard `poll.topic()` or `discussion.topic()` with existence checks once the poll or discussion has been created. Topics are required for created polls and discussions; if a topic is missing, let it raise so the data integrity issue is visible.
 
 ## Null objects
 

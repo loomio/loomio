@@ -86,7 +86,7 @@ export default new class OutcomeService {
             }
           });
         },
-        canPerform() { return true; }
+        canPerform() { return poll.topic().membersInclude(user); }
       }
     };
   }

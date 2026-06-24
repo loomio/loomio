@@ -57,6 +57,30 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "history for public topic denied to non-members" do
+    sign_in @alien
+
+    get :history, params: { topic_id: topics(:public_discussion_topic).id }
+
+    assert_response :forbidden
+  end
+
+  test "history for public group denied to non-members" do
+    sign_in @alien
+
+    get :history, params: { group_id: groups(:public_group).id }
+
+    assert_response :forbidden
+  end
+
+  test "history for public group requires sign in" do
+    sign_out @admin
+
+    get :history, params: { group_id: groups(:public_group).id }
+
+    assert_response :forbidden
+  end
+
   test "history for topic includes user_mentioned notifications" do
     member = users(:user)
     topic = @discussion.topic

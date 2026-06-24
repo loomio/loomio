@@ -183,6 +183,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
+      anonymous: true,
       group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
@@ -201,6 +202,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
+      anonymous: true,
       group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
@@ -211,12 +213,65 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "receipts allowed for poll member who is not a group member" do
+    poll = PollService.create(params: {
+      title: "receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      specified_voters_only: true,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    Stance.create!(
+      poll: poll,
+      participant: @alien,
+      inviter: @admin,
+      latest: true,
+      reason_format: @alien.default_format
+    )
+
+    sign_in @alien
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+  end
+
+  test "receipts denied for non-member by default" do
+    poll = PollService.create(params: {
+      title: "receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+
+    sign_in @alien
+    get :receipts, params: { id: poll.key }
+    assert_response :forbidden
+  end
+
+  test "receipts denied for signed out users" do
+    poll = PollService.create(params: {
+      title: "receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+
+    get :receipts, params: { id: poll.key }
+    assert_response :forbidden
+  end
+
   test "receipts denied for non-admin member when admin only env set" do
     ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
 
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
+      anonymous: true,
       group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
@@ -235,6 +290,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
+      anonymous: true,
       group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now

@@ -113,7 +113,7 @@ export default new class PollService {
         icon: 'mdi-content-copy',
         name: 'templates.make_a_copy',
         menu: true,
-        canPerform() { return Session.user(); },
+        canPerform() { return Session.isSignedIn(); },
         to() { return `/p/new?template_id=${poll.id}`; }
       },
 
@@ -240,7 +240,10 @@ export default new class PollService {
             }
           });
         },
-        canPerform() { return !poll.discardedAt; }
+        canPerform() {
+          return !poll.discardedAt &&
+                 poll.topic().membersInclude(Session.user());
+        }
       },
 
 
@@ -291,8 +294,9 @@ export default new class PollService {
         to() { return `/p/${poll.key}/receipts`; },
         canPerform() {
           if (!poll.anonymous) { return false };
+          if (!poll.membersInclude(Session.user())) { return false };
           if (AppConfig.features.app.verify_participants_admin_only) {
-            return poll.group() && poll.group().adminsInclude(Session.user());
+            return poll.adminsInclude(Session.user());
           }
           return true;
         }

@@ -56,7 +56,12 @@ export default new class CommentService {
             }
           });
         },
-        canPerform() { return !comment.discardedAt; }
+        canPerform() {
+          const topic = comment.topic();
+          return !comment.discardedAt &&
+                 topic &&
+                 topic.membersInclude(Session.user());
+        }
       },
 
       reply_to_comment: {

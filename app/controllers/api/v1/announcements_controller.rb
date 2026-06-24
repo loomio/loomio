@@ -89,6 +89,8 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   end
 
   def history
+    authorize_history!
+
     notifications = {}
 
     events = Event.where(kind: notification_kinds, id: target_event_ids).order('id desc').limit(1000)
@@ -171,6 +173,23 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
        discussion_edited
        comment_replied_to
        poll_closing_soon]
+  end
+
+  def authorize_history!
+    model = target_model
+
+    allowed = case model
+    when Group
+      model.members.exists?(current_user.id)
+    when Topic
+      model.members.exists?(current_user.id)
+    when Discussion, Comment, Poll, Outcome
+      model.topic&.members&.exists?(current_user.id)
+    else
+      false
+    end
+
+    raise CanCan::AccessDenied unless allowed
   end
 
   def default_scope

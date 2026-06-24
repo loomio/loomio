@@ -17,9 +17,12 @@ module Ability::Poll
 
     can :receipts, ::Poll do |poll|
       if AppConfig.app_features[:verify_participants_admin_only]
-        poll.group_id && poll.group.admins.exists?(user.id)
+        poll.anonymous? && poll.admins.exists?(user.id)
       else
-        user.can?(:show, poll)
+        poll.anonymous? && (
+          poll.members.exists?(user.id) ||
+          poll.stances.latest.exists?(participant_id: user.id)
+        )
       end
     end
 
