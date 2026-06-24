@@ -96,12 +96,14 @@ export default {
       return months.reverse();
     },
     groupScopeItems() {
-      const allGroupsTitle = this.current_user_is_admin ? this.$t('report.all_groups_and_direct_threads') : this.$t('sidebar.all_groups');
-      return [
-        {title: allGroupsTitle, value: 'all'},
+      const items = [
         {title: this.$t('sidebar.my_groups'), value: 'my'},
         {title: this.$t('report.custom_selection'), value: 'custom'}
       ];
+      if (this.current_user_is_admin) {
+        items.unshift({title: this.$t('sidebar.all_groups'), value: 'all'});
+      }
+      return items;
     }
   },
   data() {
@@ -114,16 +116,17 @@ export default {
         datasets: []
       },
       all_groups: [],
-      group_scope: this.$route.query['group_scope'] || (this.$route.query['group_ids'] ? 'custom' : 'all'),
+      group_scope: this.$route.query['group_scope'] || (this.$route.query['group_ids'] ? 'custom' : 'my'),
       group_ids: parseGroupIds(this.$route.query['group_ids']),
       current_user_is_admin: Session.user().isAdmin,
-      apply_default_direct_threads: true,
+
       start_menu: false,
       end_menu: false,
       start_month: (this.$route.query['start_on'] || (new Date(2019,1,1)).toISOString().slice(0,7)),
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       report_data: null,
+      user_data: null,
       intervalItems: [
         {title: this.$t('report.day'), value: 'day'},
         {title: this.$t('report.week'), value: 'week'},
@@ -203,7 +206,9 @@ export default {
       this.fetch();
     },
     tag_threads_authored_only(val) {
-      this.setTagThreadsByUserRows(this.report_data);
+      if (this.user_data) {
+        this.setTagThreadsByUserRows({...this.user_data, tag_names: this.report_data?.tag_names || []});
+      }
     }
   },
   methods: {
@@ -252,128 +257,134 @@ export default {
         return row;
       });
     },
-    fetch() {
-      this.loading = true
+    buildQuery(extra = {}) {
       const queryParams = {
         group_scope: this.group_scope,
         interval: this.interval,
         start_month: this.start_month,
         end_month: this.end_month,
-        group_ids: this.group_ids.join(',')
+        group_ids: this.group_ids.join(','),
+        ...extra,
       };
-      if (this.apply_default_direct_threads) {
-        queryParams.default_direct_threads = '1';
-      }
-      const query = new URLSearchParams(queryParams).toString()
-      fetch('/api/v1/reports?'+query).then(response => {
-        response.json().then(data => {
-          this.report_data = data;
-          this.visible_tags = data.tag_names.slice();
-          this.firstYear = data.first_year;
+      return new URLSearchParams(queryParams).toString();
+    },
+    applyBaseData(data) {
+      this.report_data = data;
+      this.visible_tags = data.tag_names.slice();
+      this.firstYear = data.first_year;
+      this.all_groups = data.all_groups;
+      this.group_ids = data.group_ids;
+      this.current_user_is_admin = data.current_user_is_admin;
+
+      this.topics_count = data.topics_count;
+      this.discussion_topics_count = data.discussion_topics_count;
+      this.poll_topics_count = data.poll_topics_count;
+      this.polls_count = data.polls_count;
+      this.polls_with_outcomes_count = data.polls_with_outcomes_count;
+
+      this.chartData = {
+        labels: data.intervals,
+        datasets: [
+          {
+            label: this.$t('common.threads'),
+            backgroundColor: '#2196F3',
+            data: data.intervals.map(interval => (data.topics_per_interval[interval] || 0))
+          },
+          {
+            label: this.$t('navbar.search.comments'),
+            backgroundColor: '#009688',
+            data: data.intervals.map(interval => (data.comments_per_interval[interval] || 0))
+          },
+          {
+            label: this.$t('group_page.polls'),
+            backgroundColor: '#4CAF50',
+            data: data.intervals.map(interval => (data.polls_per_interval[interval] || 0))
+          },
+          {
+            label: this.$t('poll_common.votes'),
+            backgroundColor: '#E91E63',
+            data: data.intervals.map(interval => (data.stances_per_interval[interval] || 0))
+          },
+          {
+            label: this.$t('poll_common.outcomes'),
+            backgroundColor: '#FF9800',
+            data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0))
+          },
+        ]
+      };
+
+      this.models_per_interval = data.intervals.slice().reverse().map(interval => ({
+        date: interval,
+        threads: data.topics_per_interval[interval] || 0,
+        comments: data.comments_per_interval[interval] || 0,
+        polls: data.polls_per_interval[interval] || 0,
+        votes: data.stances_per_interval[interval] || 0,
+        outcomes: data.outcomes_per_interval[interval] || 0,
+      }));
+
+      this.models_per_interval.push({
+        date: 'total',
+        threads: sumValues(data.topics_per_interval),
+        comments: sumValues(data.comments_per_interval),
+        polls: sumValues(data.polls_per_interval),
+        votes: sumValues(data.stances_per_interval),
+        outcomes: sumValues(data.outcomes_per_interval),
+      });
+
+      this.tags_rows = data.tag_names.map(tag => ({
+        tag: tag,
+        total_count: data.tag_counts[tag],
+      }));
+    },
+    applyUserData(data) {
+      this.user_data = data;
+      this.total_users = data.total_users || this.total_users;
+      this.setTagThreadsByUserRows({...data, tag_names: this.report_data?.tag_names || []});
+      this.per_user_rows = data.users.map(user => ({
+        user: user.name,
+        country: user.country,
+        threads: data.discussions_per_user[user.id] || 0,
+        comments: data.comments_per_user[user.id] || 0,
+        polls: data.polls_per_user[user.id] || 0,
+        votes: data.stances_per_user[user.id] || 0,
+        outcomes: data.outcomes_per_user[user.id] || 0,
+        reactions: data.reactions_per_user[user.id] || 0,
+      }));
+    },
+    applyCountryData(data) {
+      this.total_users = data.total_users;
+      this.users_per_country_rows = data.countries.map(country => ({
+        country: country,
+        users: data.users_per_country[country],
+      }));
+      this.per_country_rows = data.countries.map(country => ({
+        country: country,
+        threads: data.discussions_per_country[country] || 0,
+        comments: data.comments_per_country[country] || 0,
+        polls: data.polls_per_country[country] || 0,
+        votes: data.stances_per_country[country] || 0,
+        outcomes: data.outcomes_per_country[country] || 0,
+        reactions: data.reactions_per_country[country] || 0,
+      }));
+    },
+    fetch() {
+      this.loading = true;
+      const baseQuery = this.buildQuery({section: 'base'});
+      fetch('/api/v1/reports?' + baseQuery)
+        .then(r => r.json())
+        .then(data => {
+          this.applyBaseData(data);
           this.loading = false;
-          this.all_groups = data.all_groups;
-          this.group_ids = data.group_ids;
-          this.current_user_is_admin = data.current_user_is_admin;
-          this.apply_default_direct_threads = false;
-          this.total_users = data.total_users;
-          this.topics_count = data.topics_count;
-          this.discussion_topics_count = data.discussion_topics_count;
-          this.poll_topics_count = data.poll_topics_count;
-          this.polls_count = data.polls_count;
-          this.polls_with_outcomes_count = data.polls_with_outcomes_count;
-
-          this.chartData = {
-            labels: data.intervals,
-            datasets: [
-              {
-                label: this.$t('common.threads'),
-                backgroundColor: '#2196F3',
-                data: data.intervals.map(interval => (data.topics_per_interval[interval] || 0) )
-              },
-              {
-                label: this.$t('navbar.search.comments'),
-                backgroundColor: '#009688',
-                data: data.intervals.map(interval => (data.comments_per_interval[interval] || 0) )
-              },
-              {
-                label: this.$t('group_page.polls'),
-                backgroundColor: '#4CAF50',
-                data: data.intervals.map(interval => (data.polls_per_interval[interval] || 0) )
-              },
-              {
-                label: this.$t('poll_common.votes'),
-                backgroundColor: '#E91E63',
-                data: data.intervals.map(interval => (data.stances_per_interval[interval] || 0) )
-              },
-              {
-                label: this.$t('poll_common.outcomes'),
-                backgroundColor: '#FF9800',
-                data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
-              },
-            ]
-          }
-
-          this.models_per_interval = data.intervals.slice().reverse().map(interval => {
-            return {
-              date: interval,
-              threads: data.topics_per_interval[interval] || 0,
-              comments: data.comments_per_interval[interval] || 0,
-              polls: data.polls_per_interval[interval] || 0,
-              votes: data.stances_per_interval[interval] || 0,
-              outcomes: data.outcomes_per_interval[interval] || 0,
-            }
-          });
-
-          this.models_per_interval.push({
-            date: 'total',
-            threads: sumValues(data.topics_per_interval),
-            comments: sumValues(data.comments_per_interval),
-            polls: sumValues(data.polls_per_interval),
-            votes: sumValues(data.stances_per_interval),
-            outcomes: sumValues(data.outcomes_per_interval),
-          });
-
-          this.tags_rows = data.tag_names.map(tag => {
-            return {
-              tag: tag,
-              total_count: data.tag_counts[tag],
-            };
-          });
-          this.setTagThreadsByUserRows(data);
-
-          this.per_user_rows = data.users.map(user => {
-            return {
-              user: user.name,
-              country: user.country,
-              threads: data.discussions_per_user[user.id] || 0,
-              comments: data.comments_per_user[user.id] || 0,
-              polls: data.polls_per_user[user.id] || 0,
-              votes: data.stances_per_user[user.id] || 0,
-              outcomes: data.outcomes_per_user[user.id] || 0,
-              reactions: data.reactions_per_user[user.id] || 0,
-            }
-          });
-
-          this.users_per_country_rows = data.countries.map(country => {
-            return {
-              country: country,
-              users: data.users_per_country[country]
-            }
-          });
-
-          this.per_country_rows = data.countries.map(country => {
-            return {
-              country: country,
-              threads: data.discussions_per_country[country] || 0,
-              comments: data.comments_per_country[country] || 0,
-              polls: data.polls_per_country[country] || 0,
-              votes: data.stances_per_country[country] || 0,
-              outcomes: data.outcomes_per_country[country] || 0,
-              reactions: data.reactions_per_country[country] || 0,
-            }
+          const usersQuery = this.buildQuery({section: 'users'});
+          const countriesQuery = this.buildQuery({section: 'countries'});
+          Promise.all([
+            fetch('/api/v1/reports?' + usersQuery).then(r => r.json()),
+            fetch('/api/v1/reports?' + countriesQuery).then(r => r.json()),
+          ]).then(([userData, countryData]) => {
+            this.applyUserData(userData);
+            this.applyCountryData(countryData);
           });
         });
-      });
     }
   },
 };
