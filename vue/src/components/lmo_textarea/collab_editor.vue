@@ -321,6 +321,7 @@ onMounted(() => {
   });
 
   localProvider = new IndexeddbPersistence(docname, ydoc);
+  localProvider._db.catch(() => { /* IndexedDB unavailable (e.g. iOS Private Browsing) — collab still works via server */ });
 
   // Fallback: If server doesn't connect within timeout, load content from local model
   syncFallbackTimeout = setTimeout(() => {
