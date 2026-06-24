@@ -2583,7 +2583,7 @@ it:
     filter_by_name: Filtra per nome
     filter_by_country: Filtra per paese
     show_tags: Etichette
-    tags_per_interval: Tag per %{intervallo}
+    tags_per_interval: Tag per %{interval}
     all_groups_and_direct_threads: Tutti i gruppi e le discussioni dirette
     custom_selection: Selezione personalizzata
   tips:

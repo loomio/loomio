@@ -2555,7 +2555,7 @@ hr:
     filter_by_name: Filtriraj po imenu
     filter_by_country: Filtriraj po državi
     show_tags: Oznake
-    tags_per_interval: Oznake po %{intervalu}
+    tags_per_interval: Oznake po %{interval}
     all_groups_and_direct_threads: Sve grupe i izravne teme
     custom_selection: Prilagođeni odabir
   tips:

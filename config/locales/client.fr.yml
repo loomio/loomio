@@ -2599,7 +2599,7 @@ fr:
     filter_by_name: Filtrer par nom
     filter_by_country: Filtrer par pays
     show_tags: Étiquettes
-    tags_per_interval: Étiquettes par %{intervalle}
+    tags_per_interval: Étiquettes par %{interval}
     all_groups_and_direct_threads: Tous les groupes et les discussions directes
     custom_selection: Sélection personnalisée
   tips:

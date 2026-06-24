@@ -2555,7 +2555,7 @@ el:
     filter_by_name: Φιλτράρισμα κατά όνομα
     filter_by_country: Φιλτράρισμα ανά χώρα
     show_tags: Ετικέτες
-    tags_per_interval: Ετικέτες ανά %{διάστημα}
+    tags_per_interval: Ετικέτες ανά %{interval}
     all_groups_and_direct_threads: Όλες οι ομάδες και τα άμεσα νήματα
     custom_selection: Προσαρμοσμένη επιλογή
   tips:

@@ -2591,7 +2591,7 @@ es:
     filter_by_name: Filtrar por nombre
     filter_by_country: Filtrar por país
     show_tags: Etiquetas
-    tags_per_interval: Etiquetas por %{intervalo}
+    tags_per_interval: Etiquetas por %{interval}
     all_groups_and_direct_threads: Todos los grupos y conversaciones directas
     custom_selection: Selección personalizada
   tips:
