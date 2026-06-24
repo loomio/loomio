@@ -33,6 +33,15 @@ function downloadCsv(headers, rows, filename) {
 export default {
   components: {BarChart},
   computed: {
+    availableTagNames() {
+      if (!this.report_data) return [];
+      return this.report_data.tag_names;
+    },
+    visibleTagThreadsByUserHeaders() {
+      return this.tag_threads_by_user_headers.filter(h =>
+        h.key === 'user' || this.visible_tags.includes(h.title)
+      );
+    },
     tagChartData() {
       if (!this.report_data) return { labels: [], datasets: [] };
       const TAG_COLORS = [
@@ -44,7 +53,7 @@ export default {
       const allTagCounts = data.tag_counts_per_interval || {};
       const topTags = data.tag_names
         .map(tag => ({ tag, total: Object.values(allTagCounts[tag] || {}).reduce((s, v) => s + parseInt(v), 0) }))
-        .filter(t => t.total > 0)
+        .filter(t => t.total > 0 && this.visible_tags.includes(t.tag))
         .sort((a, b) => b.total - a.total)
         .slice(0, 15)
         .map(t => t.tag);
@@ -56,16 +65,6 @@ export default {
           data: data.intervals.map(interval => parseInt(allTagCounts[tag]?.[interval] || 0)),
         })),
       };
-    },
-    filteredPerUserRows() {
-      if (!this.user_name_filter) return this.per_user_rows;
-      const q = this.user_name_filter.toLowerCase();
-      return this.per_user_rows.filter(r => r.user.toLowerCase().includes(q));
-    },
-    filteredTagThreadsByUserRows() {
-      if (!this.user_name_filter) return this.tag_threads_by_user_rows;
-      const q = this.user_name_filter.toLowerCase();
-      return this.tag_threads_by_user_rows.filter(r => r.user.toLowerCase().includes(q));
     },
     startMonths() {
       let months = [];
@@ -154,7 +153,9 @@ export default {
       tag_threads_authored_only: false,
       tag_threads_by_user_rows: [],
       tag_threads_by_user_headers: [],
+      visible_tags: [],
       user_name_filter: '',
+      country_filter: '',
       per_user_headers: [
         {title: "User", key: "user"},
         {title: this.$t('report.country'), key: "country"},
@@ -267,6 +268,7 @@ export default {
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
           this.report_data = data;
+          this.visible_tags = data.tag_names.slice();
           this.firstYear = data.first_year;
           this.loading = false;
           this.all_groups = data.all_groups;
@@ -446,6 +448,17 @@ v-main
       bar-chart.mt-8(:chart-data="chartData")
 
       v-card.mt-8(:title="$t('report.tags_per_interval', {interval: interval})")
+        v-select.mx-4.mt-2(
+          v-model="visible_tags"
+          :label="$t('report.show_tags')"
+          :items="availableTagNames"
+          multiple
+          chips
+          closable-chips
+          density="compact"
+          hide-details
+          clearable
+        )
         bar-chart.pa-4(
           :chart-data="tagChartData"
           :options="{ scales: { x: { stacked: true }, y: { stacked: true } } }"
@@ -484,17 +497,30 @@ v-main
             )
             v-btn(variant="text" size="small" @click="downloadTagThreadsByUserCsv")
               span(v-t="'report.download_csv'")
-        v-text-field.mx-4.mb-2(
+        v-text-field.mx-4.mt-2(
           v-model="user_name_filter"
           :label="$t('report.filter_by_name')"
+          density="compact"
+          hide-details
+          clearable
+          style="min-width: 256px"
+        )
+        v-select.mx-4.mt-2.mb-2(
+          v-model="visible_tags"
+          :label="$t('report.show_tags')"
+          :items="availableTagNames"
+          multiple
+          chips
+          closable-chips
           density="compact"
           hide-details
           clearable
         )
         v-data-table(
           density="compact"
-          :headers="tag_threads_by_user_headers"
-          :items="filteredTagThreadsByUserRows"
+          :headers="visibleTagThreadsByUserHeaders"
+          :items="tag_threads_by_user_rows"
+          :search="user_name_filter"
         )
 
       v-card.mt-8(:title="$t('report.actions_per_user')")
@@ -511,7 +537,8 @@ v-main
         v-data-table(
           density="compact"
           :headers="per_user_headers"
-          :items="filteredPerUserRows"
+          :items="per_user_rows"
+          :search="user_name_filter"
         )
 
       v-card.mt-8(:title="$t('report.users_per_country')")
@@ -519,20 +546,36 @@ v-main
           v-btn(variant="text" size="small" @click="downloadUsersPerCountryCsv")
             span(v-t="'report.download_csv'")
         p.px-4.text-body-small(v-t="'report.country_disclaimer'")
+        v-text-field.mx-4.mb-2(
+          v-model="country_filter"
+          :label="$t('report.filter_by_country')"
+          density="compact"
+          hide-details
+          clearable
+        )
         v-data-table(
           density="compact"
           :headers="users_per_country_headers"
           :items="users_per_country_rows"
+          :search="country_filter"
         )
 
       v-card.mt-8(:title="$t('report.actions_per_country')")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadPerCountryCsv")
             span(v-t="'report.download_csv'")
+        v-text-field.mx-4.mb-2(
+          v-model="country_filter"
+          :label="$t('report.filter_by_country')"
+          density="compact"
+          hide-details
+          clearable
+        )
         v-data-table(
           density="compact"
           :headers="per_country_headers"
           :items="per_country_rows"
+          :search="country_filter"
         )
 
 </template>
