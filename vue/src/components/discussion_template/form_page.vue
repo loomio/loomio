@@ -16,6 +16,15 @@ export default {
     };
   },
 
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    const isEdit = !!this.$route.params.id;
+    EventBus.$emit('currentComponent', {
+      titleKey: isEdit ? 'discussion_form.edit_discussion_template' : 'discussion_form.new_discussion_template',
+      page: 'discussionTemplateFormPage'
+    });
+  },
+
   created() {
     let groupId, templateId, templateKey;
     if (templateId = parseInt(this.$route.params.id)) {

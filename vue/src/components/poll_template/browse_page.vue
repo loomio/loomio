@@ -1,6 +1,7 @@
 <script lang="js">
 import Records       from '@/shared/services/records';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus      from '@/shared/services/event_bus';
 import utils         from '@/shared/record_store/utils';
 import { compact }   from 'lodash-es';
 import { mdiSourceBranchPlus } from '@mdi/js';
@@ -17,6 +18,8 @@ export default {
   },
 
   mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', { titleKey: 'poll_common.example_poll_templates', page: 'pollTemplateBrowsePage' });
     this.fetch();
     const groupId = parseInt(this.$route.query.group_id);
     if (groupId) {
@@ -56,6 +59,7 @@ export default {
   },
 
   methods: {
+    titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     fetch() {
       this.loading = true;
       Records.remote.get('poll_templates/browse', {group_id: this.$route.query.group_id}).then(data => {
@@ -73,7 +77,9 @@ export default {
       v-breadcrumbs(v-if="breadcrumbs.length" color="anchor" :items="breadcrumbs")
         template(v-slot:divider)
           common-icon(name="mdi-chevron-right")
-      v-card(:title="$t('poll_common.example_poll_templates')")
+      v-card
+        template(v-slot:title)
+          span(v-intersect="{handler: titleVisible}") {{ $t('poll_common.example_poll_templates') }}
         template(v-slot:append)
           v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
             common-icon(name="mdi-close")

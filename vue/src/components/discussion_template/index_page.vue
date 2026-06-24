@@ -108,8 +108,12 @@ onUnmounted(() => {
   EventBus.$off('reloadDiscussionTemplates');
 });
 
+const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
+
 // Mounted
 onMounted(() => {
+  EventBus.$emit('content-title-visible', false);
+  EventBus.$emit('currentComponent', { titleKey: 'discussion_template.start_discussion', page: 'discussionTemplatesPage' });
   loadGroups();
 
   if (route.query.group_id) {
@@ -156,7 +160,9 @@ watch(showHidden, () => { query(); });
     v-container.max-width-800.px-0.px-sm-3
       //- Direct discussion templates: shown when no group_id
       template(v-if="!groupId")
-        v-card(:title="$t('discussion_template.start_a_direct_discussion')")
+        v-card
+          template(v-slot:title)
+            span(v-intersect="{handler: titleVisible}") {{ $t('discussion_template.start_a_direct_discussion') }}
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_form.direct_discussion_hint'")
           v-list(lines="three")
@@ -175,7 +181,9 @@ watch(showHidden, () => { query(); });
         v-breadcrumbs.py-4(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
-        v-card(:title="$t('discussion_template.start_discussion')")
+        v-card
+          template(v-slot:title)
+            span(v-intersect="{handler: titleVisible}") {{ $t('discussion_template.start_discussion') }}
           v-alert.mx-4(v-if="userIsAdmin && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
             span(v-t="'discussion_template.these_are_templates'")
             |

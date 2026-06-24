@@ -71,6 +71,7 @@ export default {
   },
 
   methods: {
+    titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     validate(field) {
       return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
     },
@@ -218,7 +219,9 @@ export default {
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card(:title="$t(titlePath)")
+  v-card
+    template(v-slot:title)
+      span(v-intersect="{handler: titleVisible}") {{ $t(titlePath) }}
     template(v-slot:append)
       v-btn.back-button(v-if="$route.query.return_to" icon variant="text" :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
         common-icon(name="mdi-close")

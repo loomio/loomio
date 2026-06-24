@@ -1,6 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import PollTemplateForm from '@/components/poll_template/form';
+import EventBus from '@/shared/services/event_bus';
 
 export default {
   components: {PollTemplateForm},
@@ -11,6 +12,15 @@ export default {
       group: null,
       sourceProcessName: null
     };
+  },
+
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    const isEdit = !!this.$route.params.id;
+    EventBus.$emit('currentComponent', {
+      titleKey: isEdit ? 'poll_common.edit_poll_template' : 'poll_common.new_poll_template',
+      page: 'pollTemplateFormPage'
+    });
   },
 
   created() {
