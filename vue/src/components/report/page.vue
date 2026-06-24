@@ -1,13 +1,14 @@
 <script lang="js">
-import AppConfig          from '@/shared/services/app_config';
-import Records            from '@/shared/services/records';
 import Session            from '@/shared/services/session';
-import {subMonths, startOfMonth } from 'date-fns';
 import { mdiCalendar } from '@mdi/js';
 
 import BarChart from '@/components/report/bar_chart';
 
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
+
+function parseGroupIds(ids) {
+  return (ids || '').split(',').map(id => parseInt(id)).filter(id => Number.isFinite(id));
+}
 
 function downloadCsv(headers, rows, filename) {
   const headerRow = headers.map(h => h.title).join(',');
@@ -32,6 +33,40 @@ function downloadCsv(headers, rows, filename) {
 export default {
   components: {BarChart},
   computed: {
+    tagChartData() {
+      if (!this.report_data) return { labels: [], datasets: [] };
+      const TAG_COLORS = [
+        '#2196F3','#E91E63','#4CAF50','#FF9800','#9C27B0',
+        '#00BCD4','#FF5722','#009688','#3F51B5','#F44336',
+        '#CDDC39','#795548','#FFC107','#8BC34A','#607D8B',
+      ];
+      const data = this.report_data;
+      const allTagCounts = data.tag_counts_per_interval || {};
+      const topTags = data.tag_names
+        .map(tag => ({ tag, total: Object.values(allTagCounts[tag] || {}).reduce((s, v) => s + parseInt(v), 0) }))
+        .filter(t => t.total > 0)
+        .sort((a, b) => b.total - a.total)
+        .slice(0, 15)
+        .map(t => t.tag);
+      return {
+        labels: data.intervals,
+        datasets: topTags.map((tag, i) => ({
+          label: tag,
+          backgroundColor: TAG_COLORS[i % TAG_COLORS.length],
+          data: data.intervals.map(interval => parseInt(allTagCounts[tag]?.[interval] || 0)),
+        })),
+      };
+    },
+    filteredPerUserRows() {
+      if (!this.user_name_filter) return this.per_user_rows;
+      const q = this.user_name_filter.toLowerCase();
+      return this.per_user_rows.filter(r => r.user.toLowerCase().includes(q));
+    },
+    filteredTagThreadsByUserRows() {
+      if (!this.user_name_filter) return this.tag_threads_by_user_rows;
+      const q = this.user_name_filter.toLowerCase();
+      return this.tag_threads_by_user_rows.filter(r => r.user.toLowerCase().includes(q));
+    },
     startMonths() {
       let months = [];
       let next = null;
@@ -40,10 +75,11 @@ export default {
           next = year+"-"+String(month).padStart(2, '0');
           months.push(next);
           if (next > new Date().toISOString().slice(0,7)) {
-            return months;
+            return months.reverse();
           }
         }
       }
+      return months.reverse();
     },
     endMonths() {
       let months = [];
@@ -54,10 +90,19 @@ export default {
           next = year+"-"+String(month).padStart(2, '0');
           months.push(next);
           if (next > new Date().toISOString().slice(0,7)) {
-            return months;
+            return months.reverse();
           }
         }
       }
+      return months.reverse();
+    },
+    groupScopeItems() {
+      const allGroupsTitle = this.current_user_is_admin ? this.$t('report.all_groups_and_direct_threads') : this.$t('sidebar.all_groups');
+      return [
+        {title: allGroupsTitle, value: 'all'},
+        {title: this.$t('sidebar.my_groups'), value: 'my'},
+        {title: this.$t('report.custom_selection'), value: 'custom'}
+      ];
     }
   },
   data() {
@@ -70,12 +115,16 @@ export default {
         datasets: []
       },
       all_groups: [],
-      group_ids: this.$route.query['group_ids'].split(',').map(id => parseInt(id)),
+      group_scope: this.$route.query['group_scope'] || (this.$route.query['group_ids'] ? 'custom' : 'all'),
+      group_ids: parseGroupIds(this.$route.query['group_ids']),
+      current_user_is_admin: Session.user().isAdmin,
+      apply_default_direct_threads: true,
       start_menu: false,
       end_menu: false,
       start_month: (this.$route.query['start_on'] || (new Date(2019,1,1)).toISOString().slice(0,7)),
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
+      report_data: null,
       intervalItems: [
         {title: this.$t('report.day'), value: 'day'},
         {title: this.$t('report.week'), value: 'week'},
@@ -102,6 +151,10 @@ export default {
         {title:  this.$t('common.threads'), key: "total_count"},
       ],
       tags_rows: [],
+      tag_threads_authored_only: false,
+      tag_threads_by_user_rows: [],
+      tag_threads_by_user_headers: [],
+      user_name_filter: '',
       per_user_headers: [
         {title: "User", key: "user"},
         {title: this.$t('report.country'), key: "country"},
@@ -144,6 +197,12 @@ export default {
     },
     interval(val) {
       this.fetch();
+    },
+    group_scope(val) {
+      this.fetch();
+    },
+    tag_threads_authored_only(val) {
+      this.setTagThreadsByUserRows(this.report_data);
     }
   },
   methods: {
@@ -152,6 +211,9 @@ export default {
     },
     downloadTagsCsv() {
       downloadCsv(this.tags_headers, this.tags_rows, 'tags.csv');
+    },
+    downloadTagThreadsByUserCsv() {
+      downloadCsv(this.tag_threads_by_user_headers, this.tag_threads_by_user_rows, 'tag_threads_by_user.csv');
     },
     downloadPerUserCsv() {
       downloadCsv(this.per_user_headers, this.per_user_rows, 'activity_per_user.csv');
@@ -162,18 +224,55 @@ export default {
     downloadPerCountryCsv() {
       downloadCsv(this.per_country_headers, this.per_country_rows, 'activity_per_country.csv');
     },
+    setTagThreadsByUserRows(data) {
+      if (!data) { return; }
+      const counts = this.tag_threads_authored_only ? data.tag_threads_authored_per_user : data.tag_threads_per_user;
+      const tag_names = data.tag_names.map(tag => {
+        return {
+          name: tag,
+          total_count: Object.values(counts[tag] || {}).reduce((sum, count) => sum + count, 0)
+        };
+      }).filter(tag => {
+        return tag.total_count > 0;
+      }).sort((a, b) => {
+        return b.total_count - a.total_count || a.name.localeCompare(b.name);
+      }).map(tag => tag.name);
+
+      this.tag_threads_by_user_headers = [
+        {title: "User", key: "user"},
+        ...tag_names.map((tag, i) => ({title: tag, key: `tag_${i}`}))
+      ];
+
+      this.tag_threads_by_user_rows = data.users.map(user => {
+        const row = {user: user.name};
+        tag_names.forEach((tag, i) => {
+          row[`tag_${i}`] = (counts[tag] || {})[user.id] || 0;
+        });
+        return row;
+      });
+    },
     fetch() {
       this.loading = true
-      const query = new URLSearchParams({
+      const queryParams = {
+        group_scope: this.group_scope,
         interval: this.interval,
         start_month: this.start_month,
         end_month: this.end_month,
-        group_ids: this.group_ids.join(',')}).toString()
+        group_ids: this.group_ids.join(',')
+      };
+      if (this.apply_default_direct_threads) {
+        queryParams.default_direct_threads = '1';
+      }
+      const query = new URLSearchParams(queryParams).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
+          this.report_data = data;
           this.firstYear = data.first_year;
           this.loading = false;
-          this.all_groups = data.all_groups,
+          this.all_groups = data.all_groups;
+          this.group_ids = data.group_ids;
+          this.current_user_is_admin = data.current_user_is_admin;
+          this.apply_default_direct_threads = false;
           this.total_users = data.total_users;
           this.topics_count = data.topics_count;
           this.discussion_topics_count = data.discussion_topics_count;
@@ -212,7 +311,7 @@ export default {
             ]
           }
 
-          this.models_per_interval = data.intervals.map(interval => {
+          this.models_per_interval = data.intervals.slice().reverse().map(interval => {
             return {
               date: interval,
               threads: data.topics_per_interval[interval] || 0,
@@ -238,6 +337,7 @@ export default {
               total_count: data.tag_counts[tag],
             };
           });
+          this.setTagThreadsByUserRows(data);
 
           this.per_user_rows = data.users.map(user => {
             return {
@@ -284,6 +384,13 @@ v-main
     h1.text-headline-large.mb-8(v-t="'group_page.participation_report'")
 
     v-select(
+      :label="$t('common.groups')"
+      v-model="group_scope"
+      :items="groupScopeItems"
+    )
+
+    v-select(
+      v-if="group_scope === 'custom'"
       :label="$t('common.groups')"
       v-model="group_ids"
       :items="all_groups"
@@ -338,6 +445,13 @@ v-main
 
       bar-chart.mt-8(:chart-data="chartData")
 
+      v-card.mt-8(:title="$t('report.tags_per_interval', {interval: interval})")
+        bar-chart.pa-4(
+          :chart-data="tagChartData"
+          :options="{ scales: { x: { stacked: true }, y: { stacked: true } } }"
+          chart-id="tag-chart"
+        )
+
       v-card.mt-8(:title="$t('report.actions_per_interval', {interval: interval})")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadIntervalCsv")
@@ -358,14 +472,46 @@ v-main
           :items="tags_rows"
         )
 
+      v-card.mt-8(:title="$t('report.tag_threads_by_user')")
+        template(v-slot:append)
+          .d-flex.align-center
+            v-switch.mr-4(
+              v-model="tag_threads_authored_only"
+              color="primary"
+              density="compact"
+              hide-details
+              :label="$t('report.authored_only')"
+            )
+            v-btn(variant="text" size="small" @click="downloadTagThreadsByUserCsv")
+              span(v-t="'report.download_csv'")
+        v-text-field.mx-4.mb-2(
+          v-model="user_name_filter"
+          :label="$t('report.filter_by_name')"
+          density="compact"
+          hide-details
+          clearable
+        )
+        v-data-table(
+          density="compact"
+          :headers="tag_threads_by_user_headers"
+          :items="filteredTagThreadsByUserRows"
+        )
+
       v-card.mt-8(:title="$t('report.actions_per_user')")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadPerUserCsv")
             span(v-t="'report.download_csv'")
+        v-text-field.mx-4.mb-2(
+          v-model="user_name_filter"
+          :label="$t('report.filter_by_name')"
+          density="compact"
+          hide-details
+          clearable
+        )
         v-data-table(
           density="compact"
           :headers="per_user_headers"
-          :items="per_user_rows"
+          :items="filteredPerUserRows"
         )
 
       v-card.mt-8(:title="$t('report.users_per_country')")
