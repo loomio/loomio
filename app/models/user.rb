@@ -138,7 +138,7 @@ class User < ApplicationRecord
     where("users.name ilike :first OR
            users.name ilike :other OR
            users.username ilike :first OR
-           users.email ilike :first",
+           (users.email)::text ilike :first",
           first: "#{q}%", other: "% #{q}%")
   }
   scope :visible_by, ->(user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }

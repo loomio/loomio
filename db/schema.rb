@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_25_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
@@ -317,7 +318,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
     t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
-    t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
     t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_and_sequence_id", unique: true
@@ -525,7 +525,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
     t.jsonb "translation_values", default: {}, null: false
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
-    t.index ["id"], name: "index_notifications_on_id", order: :desc
     t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -630,8 +629,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
     t.bigint "topic_id"
     t.string "tags", default: [], array: true
     t.index ["author_id"], name: "index_pg_search_documents_on_author_id"
-    t.index ["authored_at"], name: "pg_search_documents_authored_at_asc_index"
-    t.index ["authored_at"], name: "pg_search_documents_authored_at_desc_index", order: :desc
     t.index ["discussion_id"], name: "index_pg_search_documents_on_discussion_id"
     t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
     t.index ["poll_id"], name: "index_pg_search_documents_on_poll_id"
@@ -1224,12 +1221,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
     t.integer "bounces_count", default: 0, null: false
+    t.index "((email)::text) gin_trgm_ops", name: "index_users_on_email_trgm", using: :gin
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
+    t.index ["name"], name: "index_users_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["username"], name: "index_users_on_username_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
