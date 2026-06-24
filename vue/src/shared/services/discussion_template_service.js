@@ -38,6 +38,16 @@ export default new class DiscussionTemplateService {
         }
       },
 
+      fork_template: {
+        name: 'common.action.fork_template',
+        icon: 'mdi-source-branch-plus',
+        menu: true,
+        canPerform() { return discussionTemplate.id && service.canEditTemplate(discussionTemplate, group); },
+        to() {
+          return `/discussion_templates/new?template_id=${discussionTemplate.id}&group_id=${group.id}&return_to=${Session.returnTo()}`;
+        }
+      },
+
       rearrange: {
         name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',

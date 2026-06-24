@@ -38,6 +38,16 @@ export default new class PollTemplateService {
         }
       },
 
+      fork_template: {
+        name: 'common.action.fork_template',
+        icon: 'mdi-source-branch-plus',
+        menu: true,
+        canPerform() { return pollTemplate.id && service.canEditTemplate(pollTemplate, group); },
+        to() {
+          return `/poll_templates/new?template_id=${pollTemplate.id}&group_id=${group.id}&return_to=${Session.returnTo()}`;
+        }
+      },
+
       rearrange: {
         name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',
