@@ -1,24 +1,8 @@
 {
   "ignored_warnings": [
     {
-      "fingerprint": "88415a0ceffc1581ce819891ff3188da88178115e16c432435896abc9b25209c",
-      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:182#tag_counts_per_interval)"
-    },
-    {
-      "fingerprint": "cfc65db7e8768c6e1a2e59ebdab9dd769b88b88b25e89b67a9af74c0f8ff56c4",
-      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:240#tag_threads_per_user)"
-    },
-    {
-      "fingerprint": "062b0fea38a3bcb5a0e64405863299172144d0e1cb6ec09d39bf156839c914e3",
-      "note": "Baselined 2026-06-24 — same pattern as existing report_service baselines; @interval validated against VALID_INTERVALS allowlist, @group_ids are integer PKs, dates via iso8601 (SQL Injection @ app/services/report_service.rb:264#tag_threads_authored_per_user)"
-    },
-    {
       "fingerprint": "bf9ace7f399efc663058ca06b96011f09175dd7f594c0164a7cfd606c1d642c6",
       "note": "Baselined — field validated against column_names before interpolation (SQL Injection @ app/models/concerns/has_timeframe.rb:7)"
-    },
-    {
-      "fingerprint": "0ea9f0ccef8ef1ba9af81de764ecb3417622e95a8eabc5aa919c3599f835acf1",
-      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:49)"
     },
     {
       "fingerprint": "19a0d86c4cbf6e7f4f0695e105302a66c9c6d2ec751678984494182dbb66a8d9",
@@ -43,10 +27,6 @@
     {
       "fingerprint": "879c7eb00bcbc3bbc0b853247ccf92d689224a550d96bae2141103b0663c2a50",
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/sequence_service.rb:10)"
-    },
-    {
-      "fingerprint": "89f2cf63cb1d4d7d291c02e674d50b2e1775279311295e21b0c8046c2a4caf19",
-      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:338)"
     },
     {
       "fingerprint": "95cd55aa5088c36a21e43459032d912ac2cfb50cb3106ab65b5a8982f823f0c9",
@@ -77,96 +57,12 @@
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/extras/queries/users_by_volume_query.rb:30#self.users_by_volume)"
     },
     {
-      "fingerprint": "19d0c81f4fe0bd10e3eeebdeb2d11a5b60b14896bd618f565579233b4d25619a",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:220#polls_per_user)"
-    },
-    {
       "fingerprint": "1e978456fc895ece8b2ddec22510126a8ed01de3a999da099138a3d19e8fce46",
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/models/group.rb:208#members_by_volume)"
     },
     {
-      "fingerprint": "1f0119dc3462045ba90ceaa056d7f877d51c0949d0842fbd40963f5f00f24125",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:100#stances_per_interval)"
-    },
-    {
-      "fingerprint": "3f2589bc5475d6e35bcb211a1478bf445ec8774da7f22d03e2bdcbd88c99f9f1",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:249#stances_per_user)"
-    },
-    {
-      "fingerprint": "44d86837297a7748d94b2f237ea190c00aa4b0a9f2f14db07d15fb9c8dfe92e2",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:60#topics_per_interval)"
-    },
-    {
-      "fingerprint": "4aa4f7b26e306a6718946b957426648e7795e8795347566977dcfe8cac6d16a7",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:349#discussions_per_country)"
-    },
-    {
-      "fingerprint": "60c24cfecc02ea64ff6cfa5f454aed303e122eb4850e11c88aef06751fd57fd4",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:377#polls_per_country)"
-    },
-    {
-      "fingerprint": "65c54e805ff8b3733a55388721433e621a5c7c74cadb57dc696f45491ad82b52",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:113#outcomes_per_interval)"
-    },
-    {
-      "fingerprint": "6cc27bdc3f505f349e181d43264ece574c4362188cbf8a488220c648c590f5b5",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:134#discussion_topics_count)"
-    },
-    {
-      "fingerprint": "773289a00c083bade522f4f9b61c45cf8f30cd6e93e18c1d6f1832f0689c5612",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:145#poll_topics_count)"
-    },
-    {
       "fingerprint": "8bfc9b9e7bb72abb8a3d2cd767024bae002ffbb78de32b5f45670c17e739ab89",
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/models/topic.rb:168#members_by_volume)"
-    },
-    {
-      "fingerprint": "8d19b9cfe15d6fcbaf108cbf32dcd59b0a9da643b75b3206e2355c8a4f46fab1",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:195#discussions_per_user)"
-    },
-    {
-      "fingerprint": "903f3425c0c006cff1f2d3f3ec7db71805bfa9ae419b7b9decbb10e26576b4dd",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:233#outcomes_per_user)"
-    },
-    {
-      "fingerprint": "9a61fa0111b8a0a739993143fc6b43be6b8c9b78fe72093b15b655056fae5935",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:364#comments_per_country)"
-    },
-    {
-      "fingerprint": "9beeb851334fa733000c3cae8f953deb5842904cbbe9837e74027b7bd516104d",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:73#comments_per_interval)"
-    },
-    {
-      "fingerprint": "9e9871527c557770df1d7423c2ac986cfccf979a7aed6337787b2383b4720563",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:85#polls_per_interval)"
-    },
-    {
-      "fingerprint": "9ea15d0188499e46710f2bec9aca0363961e97a193a95f0a98d4e33871a826da",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:174#tag_counts)"
-    },
-    {
-      "fingerprint": "9fc7fadab4e133ce041acb746755dd046e143e5fc1bac5444dee91e7e3c76b1a",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:408#stances_per_country)"
-    },
-    {
-      "fingerprint": "a8a289c792efcce6e967d21646880c537ac713b6b66056dad9bad9ef4a4db699",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:391#outcomes_per_country)"
-    },
-    {
-      "fingerprint": "bc0a522e57601354c2cc45abe9629d678d487563e503d29ff42c04efff490164",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:156#polls_count)"
-    },
-    {
-      "fingerprint": "e511f6647faf1ebe59c96d5f600055dd7d9231e83648827af8fe9570cfcd86f4",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:208#comments_per_user)"
-    },
-    {
-      "fingerprint": "ec4d57970675eb4f0b84356b6c1a2a50286f2730c22be8ea008eebfad46406d5",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:168#polls_with_outcomes_count)"
-    },
-    {
-      "fingerprint": "ff4f69d7863394beea34d736f7e192e25ed57cd5070322d9545fc9eedd72a009",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/services/report_service.rb:123#topics_count)"
     },
     {
       "fingerprint": "a81bf8ba1f714b8e15ee523c6ae08ea86658b37e566a646380fd3bfee28e0ddd",
@@ -183,8 +79,112 @@
     {
       "fingerprint": "84f8776861c11b22f82bb4b287c74ba805c4c6360ad50246325e2bc21cd9d499",
       "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:374)"
+    },
+    {
+      "fingerprint": "021d7026f913f6997626231b957fa3735439209627726fafc3dc88fcbfdc63c8",
+      "note": "Baselined 2026-06-25 — report_service.rb line 71; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "1518cd955826c775c226d549b38e191c05ff3d957a594866c8f6a1a7d1fbe4c5",
+      "note": "Baselined 2026-06-25 — report_service.rb line 306; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "1c676643d9e8a821a5eb58402007bcc9a892840897f5aa0b59256fa019d22ab6",
+      "note": "Baselined 2026-06-25 — report_service.rb line 193; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "2ab721e5e44c136c6cda976234ee57d15572814163f1bbe4114f0bcab8e2b90a",
+      "note": "Baselined 2026-06-25 — report_service.rb line 124; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "2af97e9768d8e860c8acb636e593f2ee246742f5e30d8b401fac896db3be3c70",
+      "note": "Baselined 2026-06-25 — report_service.rb line 111; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "4f3c271c720108499e7547ff250d700f2739bd05d146cbb1b15264a173fea1cc",
+      "note": "Baselined 2026-06-25 — report_service.rb line 360; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "53d3c218862b19e2c8233125ba42255714d14d558a42c04ba2d72523f64a64c3",
+      "note": "Baselined 2026-06-25 — report_service.rb line 344; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "56f5ea6b7e76decc21a236664bd964d417794620d2f14746a8f1b84646ca0a2f",
+      "note": "Baselined 2026-06-25 — report_service.rb line 204; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "5b0bcc031830a98a64cb0fe26945f4364aa59dc0a0f670b09830d607c645b1bc",
+      "note": "Baselined 2026-06-25 — report_service.rb line 428; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "7fb420e221280b9f840682183b0ce7dcc22f443943c49114e2415011da8568ef",
+      "note": "Baselined 2026-06-25 — report_service.rb line 84; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "935e7a6f4bc4fd7702efb5fc5e6b46182ac78deb01e3a90f3845696c5a588008",
+      "note": "Baselined 2026-06-25 — report_service.rb line 400; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "975d752ae19a69fea15cbfd053ec80fdf64895fbe7b91eac18cc6cc00884e614",
+      "note": "Baselined 2026-06-25 — report_service.rb line 319; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "9ba6f8a85e7dab610c5777eb3eaf5c35b43a8bab599435fec7d1bfa578f68ef0",
+      "note": "Baselined 2026-06-25 — report_service.rb line 179; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "a9af897c9b950b2da6e781fb00f1adbfa2b896a1b7ab1712fb2de622d7e3f4e9",
+      "note": "Baselined 2026-06-25 — report_service.rb line 331; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "b7e4c833954b911bc485b691350a59d6e7c91aef3cd88749ef0cfb85aff477f3",
+      "note": "Baselined 2026-06-25 — report_service.rb line 156; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "bfeb5648d91ff99cf1c9235920d256711a5268ee2469410c492cf41192cc15c6",
+      "note": "Baselined 2026-06-25 — report_service.rb line 459; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "c7e7c7f33d6bf8bc0333cfb764a105c617aca819b22e6d32cfa2ef5ea99cdd53",
+      "note": "Baselined 2026-06-25 — report_service.rb line 60; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "d318a11f83a2c9badea706513474e0b8b08b83eb0651957551a949484fa04824",
+      "note": "Baselined 2026-06-25 — report_service.rb line 96; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "d717933929134898c805dcaf4baa81a2ad55b04f6808117a8bec21fabc88a91b",
+      "note": "Baselined 2026-06-25 — report_service.rb line 167; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "d8cd4bdc9e07b1567aa8df16878b81477583b39006f5a36b208eef52a7859b48",
+      "note": "Baselined 2026-06-25 — report_service.rb line 134; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "dfc039566f1032928356d1293715ac01ba9ca6837b4fa63d077aa4943a7ea877",
+      "note": "Baselined 2026-06-25 — report_service.rb line 287; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "e11a70b43d10d75048391ab29f2180c1630fe03bc49f376bcf0b8621930a5959",
+      "note": "Baselined 2026-06-25 — report_service.rb line 145; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "e3ebbb4c1924d354c5071af8818f87eac77adf5e3154319dfc3eb9c3e6f6f9dd",
+      "note": "Baselined 2026-06-25 — report_service.rb line 415; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "e6666ea418fa32eec6df0c031992493c7e3e18f0cd2d55c47f957fb67d8fafe5",
+      "note": "Baselined 2026-06-25 — report_service.rb line 442; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "f437be2f02c8701a1397ec4ca2894ce3a2993bbaef94cd80a1ec31365e01eda6",
+      "note": "Baselined 2026-06-25 — report_service.rb line 387; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "ffd18dd7beb515ce80aa18e3b80105d6d6f5779098b8bf0de578c8b39e711111",
+      "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     }
   ],
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "brakeman_version": "8.0.5"
 }
