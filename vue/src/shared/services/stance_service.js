@@ -27,7 +27,24 @@ export default new class StanceService {
 
   actions(stance, vm, event) {
     return {
-      ...BookmarkService.actions(stance),
+      save_bookmark: {
+        icon: 'mdi-bookmark-outline',
+        name: 'action_dock.save_bookmark',
+        menu: true,
+        canPerform() {
+          const poll = stance.poll();
+          return poll && poll.showResults() && Session.isSignedIn() && !BookmarkService.bookmarkFor(stance);
+        },
+        perform() { return BookmarkService.actions(stance).save_bookmark.perform(); }
+      },
+
+      remove_bookmark: {
+        icon: 'mdi-bookmark',
+        name: 'action_dock.remove_bookmark',
+        menu: true,
+        canPerform() { return Session.isSignedIn() && !!BookmarkService.bookmarkFor(stance); },
+        perform() { return BookmarkService.actions(stance).remove_bookmark.perform(); }
+      },
 
       react: {
         dock: 1,
