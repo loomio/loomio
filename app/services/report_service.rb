@@ -168,6 +168,23 @@ class ReportService
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
 
+  def tag_counts_per_interval
+    query = <<~SQL
+      SELECT date_trunc('#{@interval}', topics.created_at)::date AS interval,
+             tag,
+             count(DISTINCT topics.id) count
+      FROM topics
+      CROSS JOIN unnest(topics.tags) tag
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      GROUP BY interval, tag
+    SQL
+    ActiveRecord::Base.connection.execute(query).each_with_object({}) do |row, counts|
+      counts[row['tag']] ||= {}
+      counts[row['tag']][row['interval']] = row['count']
+    end
+  end
+
   def tag_counts
     counts = {}
     Topic
@@ -181,6 +198,77 @@ class ReportService
 
   def tag_names
     tag_counts.keys.sort
+  end
+
+  def tag_threads_per_user
+    query = <<~SQL
+      WITH participations AS (
+        SELECT topics.id topic_id, discussions.author_id user_id
+        FROM discussions
+        JOIN topics ON topics.id = discussions.topic_id
+        WHERE discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        UNION
+        SELECT events.topic_id, comments.user_id
+        FROM comments
+        JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+        WHERE comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        UNION
+        SELECT polls.topic_id, polls.author_id
+        FROM polls
+        WHERE polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        UNION
+        SELECT polls.topic_id, stances.participant_id user_id
+        FROM stances
+        JOIN polls ON stances.poll_id = polls.id
+        WHERE stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        AND stances.latest IS true
+        AND stances.cast_at IS NOT NULL
+        UNION
+        SELECT polls.topic_id, outcomes.author_id user_id
+        FROM outcomes
+        JOIN polls ON outcomes.poll_id = polls.id
+        WHERE outcomes.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      )
+      SELECT tag, participations.user_id, count(DISTINCT participations.topic_id) count
+      FROM participations
+      JOIN topics ON topics.id = participations.topic_id
+      CROSS JOIN unnest(topics.tags) tag
+      WHERE participations.user_id IS NOT NULL
+      AND (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      GROUP BY tag, participations.user_id
+    SQL
+    tag_user_counts ActiveRecord::Base.connection.execute(query)
+  end
+
+  def tag_threads_authored_per_user
+    query = <<~SQL
+      SELECT tag, authors.user_id, count(DISTINCT authors.topic_id) count
+      FROM (
+        SELECT topics.id topic_id, discussions.author_id user_id
+        FROM discussions
+        JOIN topics ON topics.id = discussions.topic_id
+        WHERE discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        UNION
+        SELECT topics.id topic_id, polls.author_id user_id
+        FROM polls
+        JOIN topics ON topics.id = polls.topic_id
+        WHERE topics.topicable_type = 'Poll'
+        AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      ) authors
+      JOIN topics ON topics.id = authors.topic_id
+      CROSS JOIN unnest(topics.tags) tag
+      WHERE authors.user_id IS NOT NULL
+      AND (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      GROUP BY tag, authors.user_id
+    SQL
+    tag_user_counts ActiveRecord::Base.connection.execute(query)
+  end
+
+  def tag_user_counts(results)
+    results.each_with_object({}) do |row, counts|
+      counts[row['tag']] ||= {}
+      counts[row['tag']][row['user_id']] = row['count']
+    end
   end
 
   def discussions_per_user
