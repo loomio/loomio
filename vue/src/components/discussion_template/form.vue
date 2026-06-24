@@ -184,7 +184,7 @@ v-form(ref="form" @submit.prevent="submit")
         :model='discussionTemplate'
         field="description"
         :placeholder="$t('discussion_template.example_description_placeholder')"
-        :label="$t('discussion_template.example_description_label')"
+        :label="$t('discussion_form.context_label')"
       )
 
       v-select.mt-4(v-model="discussionTemplate.recipientAudience" :label="$t('discussion_form.invite')" :items="recipientAudienceItems")

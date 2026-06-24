@@ -62,6 +62,7 @@ const breadcrumbs = computed(() => {
   });
 });
 
+
 const queryDirect = () => {
   const all = Records.discussionTemplates.collection.chain().find({ discardedAt: null }).simplesort('position').data();
   const blank = all.filter(t => t.key === 'blank');
@@ -158,14 +159,16 @@ watch(showHidden, () => { query(); });
         v-card(:title="$t('discussion_template.start_a_direct_discussion')")
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_form.direct_discussion_hint'")
-          v-list(lines="two")
+          v-list(lines="three")
             v-list-item.discussion-templates--direct-discussion(
               v-for="template in directTemplates"
               :key="template.id || template.key"
               :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key) + '&return_to='+returnTo"
             )
               v-list-item-title {{template.processName || template.title}}
-              v-list-item-subtitle {{template.group() && template.group().name || template.processSubtitle}}
+              v-list-item-subtitle
+                div {{template.processSubtitle}}
+                div(v-if="template.group() && template.group().name") {{template.group().name}}
 
       //- Template list: shown when group_id is present
       template(v-if="groupId")
