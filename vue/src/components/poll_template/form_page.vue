@@ -14,13 +14,21 @@ export default {
   },
 
   created() {
-    let pollTemplateId;
+    let pollTemplateId, groupId;
     if ((pollTemplateId = parseInt(this.$route.params.id))) {
       Records.pollTemplates.findOrFetchById(pollTemplateId).then(pollTemplate => {
         this.pollTemplate = pollTemplate;
       });
+    } else if ((pollTemplateId = parseInt(this.$route.query.template_id)) && (groupId = parseInt(this.$route.query.group_id))) {
+      Records.pollTemplates.findOrFetchById(pollTemplateId).then(pollTemplate => {
+        this.pollTemplate = pollTemplate.clone();
+        this.sourceProcessName = this.pollTemplate.processName;
+        this.pollTemplate.id = null;
+        this.pollTemplate.processName = null;
+        this.pollTemplate.groupId = groupId;
+        this.pollTemplate.example = false;
+      });
     } else {
-      let groupId;
       if ((groupId = parseInt(this.$route.query.group_id))) {
         Records.groups.findOrFetchById(groupId).then(group => {
           let key;

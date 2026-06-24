@@ -31,11 +31,13 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
       }
     }
 
-    # Include parent group's DB templates when browsing from a subgroup
     if params[:group_id].present?
       group = current_user.groups.find_by(id: params[:group_id])
-      if group&.parent_id && current_user.group_ids.include?(group.parent_id)
-        parent_results = DiscussionTemplate.where(group_id: group.parent_id, discarded_at: nil).order(:position).map { |dt|
+      if group
+        group_ids = [group.id]
+        group_ids << group.parent_id if group.parent_id && current_user.group_ids.include?(group.parent_id)
+
+        db_results = DiscussionTemplate.where(group_id: group_ids, discarded_at: nil).order(:group_id, :position).map { |dt|
           {
             id: dt.id,
             key: dt.key,
@@ -45,7 +47,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
             tags: dt.tags || []
           }
         }
-        results = parent_results + results
+        results = db_results + results
       end
     end
 
