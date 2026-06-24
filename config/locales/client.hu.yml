@@ -2557,6 +2557,14 @@ hu:
     total_discussions: Összes megbeszélés
     discussions_with_polls: Beszélgetések szavazásokkal
     download_csv: CSV letöltése
+    tag_threads_by_user: Felhasználó által címkézett témák
+    authored_only: Csak szerzői joggal
+    filter_by_name: Szűrés név szerint
+    filter_by_country: Szűrés ország szerint
+    show_tags: Címkék
+    tags_per_interval: Címkék %{intervallumonként}
+    all_groups_and_direct_threads: Minden csoport és közvetlen szál
+    custom_selection: Egyéni kijelölés
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája

@@ -2550,6 +2550,14 @@ tr:
     total_discussions: Toplam tartışmalar
     discussions_with_polls: Anketlerle tartışmalar
     download_csv: CSV dosyasını indir
+    tag_threads_by_user: Kullanıcı tarafından etiketlenmiş konular
+    authored_only: Sadece yazar tarafından
+    filter_by_name: İsime göre filtrele
+    filter_by_country: Ülkeye göre filtrele
+    show_tags: Etiketler
+    tags_per_interval: Etiketler %{aralık} başına
+    all_groups_and_direct_threads: Tüm gruplar ve doğrudan ileti dizileri
+    custom_selection: Özel seçim
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi

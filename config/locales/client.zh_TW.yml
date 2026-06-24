@@ -2578,6 +2578,14 @@ zh_TW:
     total_discussions: 討論總數
     discussions_with_polls: 討論與民意調查
     download_csv: 下載 CSV 文件
+    tag_threads_by_user: 用戶標記的帖子
+    authored_only: 僅作者
+    filter_by_name: 按名稱篩選
+    filter_by_country: 按國家篩選
+    show_tags: 標籤
+    tags_per_interval: 每 %{interval} 個標籤
+    all_groups_and_direct_threads: 所有群組和直接討論串
+    custom_selection: 自訂選擇
   tips:
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
     getting_started_checklist: 入門清單

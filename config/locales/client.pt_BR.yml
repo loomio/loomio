@@ -2598,6 +2598,14 @@ pt_BR:
     total_discussions: Discussões totais
     discussions_with_polls: Discussões com pesquisas
     download_csv: Baixar CSV
+    tag_threads_by_user: Tópicos marcados pelo usuário
+    authored_only: Autoria exclusiva
+    filter_by_name: Filtrar por nome
+    filter_by_country: Filtrar por país
+    show_tags: Etiquetas
+    tags_per_interval: Tags por %{interval}
+    all_groups_and_direct_threads: Todos os grupos e tópicos diretos
+    custom_selection: Seleção personalizada
   tips:
     youve_completed_all_the_steps: "\U0001F389 Você concluiu todas as etapas!"
     getting_started_checklist: Lista de verificação para começar

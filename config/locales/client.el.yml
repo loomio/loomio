@@ -2550,6 +2550,14 @@ el:
     total_discussions: Σύνολο συζητήσεων
     discussions_with_polls: Συζητήσεις με δημοσκοπήσεις
     download_csv: Λήψη CSV
+    tag_threads_by_user: Θέματα με ετικέτα ανά χρήστη
+    authored_only: Μόνο με συγγραφή
+    filter_by_name: Φιλτράρισμα κατά όνομα
+    filter_by_country: Φιλτράρισμα ανά χώρα
+    show_tags: Ετικέτες
+    tags_per_interval: Ετικέτες ανά %{διάστημα}
+    all_groups_and_direct_threads: Όλες οι ομάδες και τα άμεσα νήματα
+    custom_selection: Προσαρμοσμένη επιλογή
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ολοκληρώσατε όλα τα βήματα!"
     getting_started_checklist: Λίστα ελέγχου για το ξεκίνημα - Λίστα ελέγχου για το ξεκίνημα

@@ -2550,6 +2550,14 @@ da:
     total_discussions: Samlede diskussioner
     discussions_with_polls: Diskussioner med afstemninger
     download_csv: Download CSV-fil
+    tag_threads_by_user: Taggede tråde af bruger
+    authored_only: Kun forfattet
+    filter_by_name: Filtrer efter navn
+    filter_by_country: Filtrer efter land
+    show_tags: Tags
+    tags_per_interval: Tags pr. %{interval}
+    all_groups_and_direct_threads: Alle grupper og direkte tråde
+    custom_selection: Brugerdefineret valg
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion

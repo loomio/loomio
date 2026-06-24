@@ -2577,6 +2577,14 @@ ca:
     total_discussions: Total de debats
     discussions_with_polls: Debats amb enquestes
     download_csv: Descarrega el fitxer CSV
+    tag_threads_by_user: Fils etiquetats per usuari
+    authored_only: Només autoritzat
+    filter_by_name: Filtra per nom
+    filter_by_country: Filtra per país
+    show_tags: Etiquetes
+    tags_per_interval: Etiquetes per %{interval}
+    all_groups_and_direct_threads: Tots els grups i fils directes
+    custom_selection: Selecció personalitzada
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar

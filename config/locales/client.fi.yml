@@ -2550,6 +2550,14 @@ fi:
     total_discussions: Keskusteluja yhteensä
     discussions_with_polls: Keskustelut kyselyillä
     download_csv: Lataa CSV-tiedosto
+    tag_threads_by_user: Käyttäjän tägäämät ketjut
+    authored_only: Vain kirjoittanut
+    filter_by_name: Suodata nimen mukaan
+    filter_by_country: Suodata maan mukaan
+    show_tags: Tunnisteet
+    tags_per_interval: Tagit per %{interval}
+    all_groups_and_direct_threads: Kaikki ryhmät ja suorat ketjut
+    custom_selection: Mukautettu valinta
   tips:
     youve_completed_all_the_steps: "\U0001F389 Olet suorittanut kaikki vaiheet!"
     getting_started_checklist: Aloittamisen tarkistuslista

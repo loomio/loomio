@@ -2550,6 +2550,14 @@ ro:
     total_discussions: Discuții totale
     discussions_with_polls: Discuții cu sondaje
     download_csv: Descărcați fișierul CSV
+    tag_threads_by_user: Subiecte etichetate de utilizator
+    authored_only: Doar cu autor
+    filter_by_name: Filtrare după nume
+    filter_by_country: Filtrare după țară
+    show_tags: Etichete
+    tags_per_interval: Etichete per %{interval}
+    all_groups_and_direct_threads: Toate grupurile și firele de discuție directe
+    custom_selection: Selecție personalizată
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ai finalizat toți pașii!"
     getting_started_checklist: Listă de verificare pentru început

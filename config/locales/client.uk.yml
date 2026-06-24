@@ -2580,6 +2580,14 @@ uk:
     total_discussions: Загальна кількість обговорень
     discussions_with_polls: Обговорення з опитуваннями
     download_csv: Завантажити CSV-файл
+    tag_threads_by_user: Позначені користувачем теми
+    authored_only: Тільки авторське
+    filter_by_name: Фільтрувати за назвою
+    filter_by_country: Фільтрувати за країною
+    show_tags: Теги
+    tags_per_interval: Теги на %{interval}
+    all_groups_and_direct_threads: Усі групи та прямі обговорення
+    custom_selection: Вибір на замовлення
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи

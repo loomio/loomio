@@ -2549,6 +2549,14 @@ ja:
     total_discussions: 合計ディスカッション数
     discussions_with_polls: 世論調査による議論
     download_csv: CSVをダウンロード
+    tag_threads_by_user: ユーザーによるタグ付けスレッド
+    authored_only: 著者のみ
+    filter_by_name: 名前でフィルタリング
+    filter_by_country: 国で絞り込む
+    show_tags: タグ
+    tags_per_interval: タグ数/%{interval}
+    all_groups_and_direct_threads: すべてのグループと直接のスレッド
+    custom_selection: カスタム選択
   tips:
     youve_completed_all_the_steps: "\U0001F389 すべての手順が完了しました。"
     getting_started_checklist: 開始チェックリスト
