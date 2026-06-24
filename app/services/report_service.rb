@@ -186,14 +186,16 @@ class ReportService
   end
 
   def tag_counts
-    counts = {}
-    Topic
-      .where("topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''}")
-      .where("topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'")
-      .pluck(:tags).flatten.each do |tag|
-        counts[tag] = counts.fetch(tag, 0) + 1
-      end
-    counts
+    @tag_counts ||= begin
+      counts = {}
+      Topic
+        .where("topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''}")
+        .where("topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'")
+        .pluck(:tags).flatten.each do |tag|
+          counts[tag] = counts.fetch(tag, 0) + 1
+        end
+      counts
+    end
   end
 
   def tag_names
@@ -201,66 +203,89 @@ class ReportService
   end
 
   def tag_threads_per_user
-    query = <<~SQL
-      WITH participations AS (
-        SELECT topics.id topic_id, discussions.author_id user_id
-        FROM discussions
-        JOIN topics ON topics.id = discussions.topic_id
-        WHERE discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+    query = ActiveRecord::Base.sanitize_sql_array([
+      <<~SQL,
+      WITH tagged_topics AS (
+        SELECT id topic_id, unnest(tags) tag
+        FROM topics
+        WHERE (group_id IN (?) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+        AND cardinality(tags) > 0
+      ),
+      participations AS (
+        SELECT tt.tag, d.author_id user_id, tt.topic_id
+        FROM discussions d
+        JOIN tagged_topics tt ON tt.topic_id = d.topic_id
+        WHERE d.created_at BETWEEN ? AND ?
         UNION
-        SELECT events.topic_id, comments.user_id
-        FROM comments
-        JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-        WHERE comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        SELECT tt.tag, c.user_id, tt.topic_id
+        FROM comments c
+        JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = c.id
+        JOIN tagged_topics tt ON tt.topic_id = events.topic_id
+        WHERE c.created_at BETWEEN ? AND ?
         UNION
-        SELECT polls.topic_id, polls.author_id
-        FROM polls
-        WHERE polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        SELECT tt.tag, p.author_id, tt.topic_id
+        FROM polls p
+        JOIN tagged_topics tt ON tt.topic_id = p.topic_id
+        WHERE p.created_at BETWEEN ? AND ?
         UNION
-        SELECT polls.topic_id, stances.participant_id user_id
-        FROM stances
-        JOIN polls ON stances.poll_id = polls.id
-        WHERE stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-        AND stances.latest IS true
-        AND stances.cast_at IS NOT NULL
+        SELECT tt.tag, s.participant_id, tt.topic_id
+        FROM stances s
+        JOIN polls p ON s.poll_id = p.id
+        JOIN tagged_topics tt ON tt.topic_id = p.topic_id
+        WHERE s.created_at BETWEEN ? AND ?
+        AND s.latest IS true
+        AND s.cast_at IS NOT NULL
         UNION
-        SELECT polls.topic_id, outcomes.author_id user_id
-        FROM outcomes
-        JOIN polls ON outcomes.poll_id = polls.id
-        WHERE outcomes.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        SELECT tt.tag, o.author_id, tt.topic_id
+        FROM outcomes o
+        JOIN polls p ON o.poll_id = p.id
+        JOIN tagged_topics tt ON tt.topic_id = p.topic_id
+        WHERE o.created_at BETWEEN ? AND ?
       )
-      SELECT tag, participations.user_id, count(DISTINCT participations.topic_id) count
+      SELECT tag, user_id, count(DISTINCT topic_id) count
       FROM participations
-      JOIN topics ON topics.id = participations.topic_id
-      CROSS JOIN unnest(topics.tags) tag
-      WHERE participations.user_id IS NOT NULL
-      AND (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      GROUP BY tag, participations.user_id
-    SQL
+      WHERE user_id IS NOT NULL
+      GROUP BY tag, user_id
+      SQL
+      @group_ids,
+      @start_at, @end_at,
+      @start_at, @end_at,
+      @start_at, @end_at,
+      @start_at, @end_at,
+      @start_at, @end_at,
+    ])
     tag_user_counts ActiveRecord::Base.connection.execute(query)
   end
 
   def tag_threads_authored_per_user
-    query = <<~SQL
-      SELECT tag, authors.user_id, count(DISTINCT authors.topic_id) count
+    query = ActiveRecord::Base.sanitize_sql_array([
+      <<~SQL,
+      WITH tagged_topics AS (
+        SELECT id topic_id, unnest(tags) tag
+        FROM topics
+        WHERE (group_id IN (?) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+        AND cardinality(tags) > 0
+      )
+      SELECT tt.tag, a.user_id, count(DISTINCT tt.topic_id) count
       FROM (
-        SELECT topics.id topic_id, discussions.author_id user_id
-        FROM discussions
-        JOIN topics ON topics.id = discussions.topic_id
-        WHERE discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+        SELECT d.author_id user_id, d.topic_id
+        FROM discussions d
+        WHERE d.created_at BETWEEN ? AND ?
         UNION
-        SELECT topics.id topic_id, polls.author_id user_id
-        FROM polls
-        JOIN topics ON topics.id = polls.topic_id
+        SELECT p.author_id, p.topic_id
+        FROM polls p
+        JOIN topics ON topics.id = p.topic_id
         WHERE topics.topicable_type = 'Poll'
-        AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      ) authors
-      JOIN topics ON topics.id = authors.topic_id
-      CROSS JOIN unnest(topics.tags) tag
-      WHERE authors.user_id IS NOT NULL
-      AND (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      GROUP BY tag, authors.user_id
-    SQL
+        AND p.created_at BETWEEN ? AND ?
+      ) a
+      JOIN tagged_topics tt ON tt.topic_id = a.topic_id
+      WHERE a.user_id IS NOT NULL
+      GROUP BY tt.tag, a.user_id
+      SQL
+      @group_ids,
+      @start_at, @end_at,
+      @start_at, @end_at,
+    ])
     tag_user_counts ActiveRecord::Base.connection.execute(query)
   end
 
@@ -338,69 +363,12 @@ class ReportService
   end
 
   def reactions_per_user
-    queries = []
-    data = {}
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, reactions.user_id user_id
-      FROM reactions
-      JOIN comments ON reactions.reactable_id = comments.id AND reactions.reactable_type = 'Comment'
-      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
-      JOIN discussions ON discussions.id = topics.topicable_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by reactions.user_id
+    query = reaction_rows_query <<~SQL
+      SELECT count(reaction_id) count, user_id
+      FROM reaction_rows
+      GROUP BY user_id
     SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, reactions.user_id user_id
-      FROM reactions
-      JOIN discussions ON reactions.reactable_id = discussions.id AND reactions.reactable_type = 'Discussion'
-      JOIN topics ON topics.id = discussions.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by reactions.user_id
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, reactions.user_id user_id
-      FROM reactions
-      JOIN polls ON reactions.reactable_id = polls.id AND reactions.reactable_type = 'Poll'
-      JOIN topics ON topics.id = polls.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by reactions.user_id
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, reactions.user_id user_id
-      FROM reactions
-      JOIN stances ON reactions.reactable_id = stances.id AND reactions.reactable_type = 'Stance'
-      JOIN polls ON stances.poll_id = polls.id
-      JOIN topics ON topics.id = polls.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by reactions.user_id
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, reactions.user_id user_id
-      FROM reactions
-      JOIN outcomes ON reactions.reactable_id = outcomes.id AND reactions.reactable_type = 'Outcome'
-      JOIN polls ON outcomes.poll_id = polls.id
-      JOIN topics ON topics.id = polls.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by reactions.user_id
-    SQL
-
-    queries.each do |query|
-      rows_to_hash(ActiveRecord::Base.connection.execute(query), 'user_id', 'count').each_pair do |k, v|
-        data[k] = data.fetch(k, 0) + v
-      end
-    end
-    data
+    rows_to_hash ActiveRecord::Base.connection.execute(query), 'user_id', 'count'
   end
 
   def users
@@ -497,74 +465,66 @@ class ReportService
   end
 
   def reactions_per_country
-    queries = []
-    data = {}
+    query = reaction_rows_query <<~SQL
+      SELECT count(reaction_rows.reaction_id) count, users.country
+      FROM reaction_rows
+      JOIN users ON reaction_rows.user_id = users.id
+      GROUP BY users.country
+    SQL
+    rows_to_hash ActiveRecord::Base.connection.execute(query), 'country', 'count'
+  end
 
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, country
+  def reaction_rows_query(select_sql)
+    ActiveRecord::Base.sanitize_sql_array([
+      <<~SQL,
+      WITH reaction_rows AS (
+      SELECT reactions.id reaction_id, reactions.user_id user_id
       FROM reactions
       JOIN comments ON reactions.reactable_id = comments.id AND reactions.reactable_type = 'Comment'
       JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
       JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
       JOIN discussions ON discussions.id = topics.topicable_id
-      JOIN users ON reactions.user_id = users.id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by country
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, country
+      WHERE (topics.group_id IN (?) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND reactions.created_at BETWEEN ? AND ?
+      UNION ALL
+      SELECT reactions.id, reactions.user_id
       FROM reactions
       JOIN discussions ON reactions.reactable_id = discussions.id AND reactions.reactable_type = 'Discussion'
       JOIN topics ON topics.id = discussions.topic_id
-      JOIN users ON reactions.user_id = users.id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by country
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, country
+      WHERE (topics.group_id IN (?) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND reactions.created_at BETWEEN ? AND ?
+      UNION ALL
+      SELECT reactions.id, reactions.user_id
       FROM reactions
       JOIN polls ON reactions.reactable_id = polls.id AND reactions.reactable_type = 'Poll'
       JOIN topics ON topics.id = polls.topic_id
-      JOIN users ON reactions.user_id = users.id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by country
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, country
+      WHERE (topics.group_id IN (?) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND reactions.created_at BETWEEN ? AND ?
+      UNION ALL
+      SELECT reactions.id, reactions.user_id
       FROM reactions
       JOIN stances ON reactions.reactable_id = stances.id AND reactions.reactable_type = 'Stance'
       JOIN polls ON stances.poll_id = polls.id
       JOIN topics ON topics.id = polls.topic_id
-      JOIN users ON reactions.user_id = users.id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by country
-    SQL
-
-    queries.push <<~SQL
-      SELECT count(reactions.id) count, country
+      WHERE (topics.group_id IN (?) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND reactions.created_at BETWEEN ? AND ?
+      UNION ALL
+      SELECT reactions.id, reactions.user_id
       FROM reactions
       JOIN outcomes ON reactions.reactable_id = outcomes.id AND reactions.reactable_type = 'Outcome'
       JOIN polls ON outcomes.poll_id = polls.id
       JOIN topics ON topics.id = polls.topic_id
-      JOIN users ON reactions.user_id = users.id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by country
-    SQL
-
-    queries.each do |query|
-      rows_to_hash(ActiveRecord::Base.connection.execute(query), 'country', 'count').each_pair do |k, v|
-        data[k] = data.fetch(k, 0) + v
-      end
-    end
-    data
+      WHERE (topics.group_id IN (?) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND reactions.created_at BETWEEN ? AND ?
+      )
+      #{select_sql}
+      SQL
+      @group_ids, @start_at, @end_at,
+      @group_ids, @start_at, @end_at,
+      @group_ids, @start_at, @end_at,
+      @group_ids, @start_at, @end_at,
+      @group_ids, @start_at, @end_at,
+    ])
   end
 
   def countries

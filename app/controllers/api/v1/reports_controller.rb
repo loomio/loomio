@@ -5,7 +5,6 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     interval = params.fetch(:interval, 'month')
     group_scope = params.fetch(:group_scope, 'custom')
     group_scope = 'custom' unless %w[all my custom].include?(group_scope)
-    group_count = Group.count
 
     group_ids = case group_scope
     when 'all'
@@ -19,7 +18,7 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     else
       ids = params.fetch(:group_ids, '').split(',').map(&:to_i)
       ids = ids & current_user.group_ids unless current_user.is_admin?
-      if current_user.is_admin? && params[:default_direct_threads].present? && group_count < 1000
+      if current_user.is_admin? && params[:default_direct_threads].present?
         ids |= [0]
       end
       ids
@@ -27,7 +26,8 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     group_ids = group_ids.uniq
     report_group_ids = group_ids.presence || [-1]
 
-    all_group_ids = current_user.is_admin? ? Group.pluck(:id) : current_user.group_ids
+    membership_group_ids = current_user.group_ids
+    all_group_ids = Group.where(parent_id: membership_group_ids).pluck(:id) | membership_group_ids
 
     all_groups = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
     all_groups.unshift({id: 0, name: I18n.t('sidebar.direct_discussions')}) if current_user.is_admin?

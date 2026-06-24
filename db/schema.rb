@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_22_000002) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_25_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -202,6 +202,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_22_000002) do
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.string "parent_type", null: false
+    t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
   end
 
@@ -604,6 +605,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_22_000002) do
     t.date "review_on"
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
+    t.index ["created_at"], name: "index_outcomes_on_created_at"
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -994,8 +996,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_22_000002) do
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
     t.boolean "none_of_the_above", default: false, null: false
-    t.datetime "redacted_at", precision: nil
+    t.datetime "redacted_at"
     t.integer "redactor_id"
+    t.index ["created_at"], name: "index_stances_on_created_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
