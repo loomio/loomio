@@ -140,6 +140,8 @@ export default {
       this.setPollOptionPriority();
       this.pollTemplate.pollOptions = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
       this.pollTemplate.save().then(() => {
+        EventBus.$emit('deleteDraft', 'pollTemplate', this.pollTemplate.id, 'details');
+        EventBus.$emit('deleteDraft', 'pollTemplate', this.pollTemplate.id, 'processIntroduction');
         Flash.success("poll_common.poll_template_saved");
         this.$router.push(this.$route.query.return_to);
       }).catch(error => {
