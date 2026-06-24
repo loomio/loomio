@@ -2555,7 +2555,7 @@ sv:
     filter_by_name: Filtrera efter namn
     filter_by_country: Filtrera efter land
     show_tags: Taggar
-    tags_per_interval: Taggar per %{intervall}
+    tags_per_interval: Taggar per %{interval}
     all_groups_and_direct_threads: Alla grupper och direkta trådar
     custom_selection: Anpassat val
   tips:

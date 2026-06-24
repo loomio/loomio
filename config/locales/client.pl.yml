@@ -2582,7 +2582,7 @@ pl:
     filter_by_name: Filtruj według nazwy
     filter_by_country: Filtruj według kraju
     show_tags: Tagi
-    tags_per_interval: Tagi na %{interwał}
+    tags_per_interval: Tagi na %{interval}
     all_groups_and_direct_threads: Wszystkie grupy i wątki bezpośrednie
     custom_selection: Wybór niestandardowy
   tips:

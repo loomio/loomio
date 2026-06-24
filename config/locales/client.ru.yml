@@ -2555,7 +2555,7 @@ ru:
     filter_by_name: Фильтр по имени
     filter_by_country: Фильтр по стране
     show_tags: Теги
-    tags_per_interval: Теги на %{интервал}
+    tags_per_interval: Теги на %{interval}
     all_groups_and_direct_threads: Все группы и прямые обсуждения
     custom_selection: Индивидуальный выбор
   tips:

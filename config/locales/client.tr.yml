@@ -2555,7 +2555,7 @@ tr:
     filter_by_name: İsime göre filtrele
     filter_by_country: Ülkeye göre filtrele
     show_tags: Etiketler
-    tags_per_interval: Etiketler %{aralık} başına
+    tags_per_interval: Etiketler %{interval} başına
     all_groups_and_direct_threads: Tüm gruplar ve doğrudan ileti dizileri
     custom_selection: Özel seçim
   tips:
