@@ -32,6 +32,7 @@ gem 'image_processing', '~> 2.0'
 gem 'mini_magick', '~> 5.0'
 gem "ruby-vips"
 gem "stackprof"
+gem "rails_pulse"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem 'http_accept_language'
