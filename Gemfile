@@ -50,6 +50,7 @@ gem 'rack-attack'
 gem 'bootsnap', require: false
 gem 'solid_cache'
 gem 'solid_cable'
+gem 'redis' # optional: used for cache + cable when REDIS_CACHE_URL is set (else solid_*)
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'

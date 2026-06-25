@@ -92,7 +92,20 @@ module Loomio
       /https?:\/\/localhost:\d+/
     ]
 
-    config.cache_store = :solid_cache_store
+    config.cache_store =
+      if ENV['REDIS_CACHE_URL'].to_s.empty?
+        :solid_cache_store
+      else
+        [:redis_cache_store, {
+          url: ENV['REDIS_CACHE_URL'],
+          namespace: Rails.env,
+          pool: { size: Integer(ENV.fetch('REDIS_POOL_SIZE', 5)) },
+          # Treat Redis outages as cache misses rather than crashing requests
+          error_handler: ->(method:, returning:, exception:) {
+            Rails.logger.error("redis cache #{method} failed: #{exception.class}: #{exception.message}")
+          }
+        }]
+      end
     config.action_dispatch.use_cookies_with_metadata = false
 
     if ENV['DISABLE_IPSPOOFINGCHECK']

@@ -8,7 +8,16 @@ test:
   polling_interval: 0.1.seconds
   message_retention: 1.day
 
+# Production uses Redis pub/sub when REDIS_CACHE_URL is set (shares the cache
+# instance — cable is pub/sub, so the cache's LRU eviction does not affect it),
+# otherwise falls back to the DB-backed solid_cable adapter.
 production:
+<% if ENV['REDIS_CACHE_URL'].to_s.empty? %>
   adapter: solid_cable
   polling_interval: 0.5.seconds
   message_retention: 1.day
+<% else %>
+  adapter: redis
+  url: <%= ENV['REDIS_CACHE_URL'] %>
+  channel_prefix: loomio_<%= Rails.env %>
+<% end %>
