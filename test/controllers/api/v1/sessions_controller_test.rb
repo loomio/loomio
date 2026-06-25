@@ -108,6 +108,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal false, json['signed_in_via_login_code']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
@@ -202,6 +203,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal false, json['signed_in_via_login_code']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
@@ -215,6 +217,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal true, json['signed_in_via_login_code']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 

@@ -3,6 +3,7 @@ import Records   from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
+import PasswordPromptService from '@/shared/services/password_prompt_service';
 import { I18n } from '@/i18n';
 import {head, pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 
@@ -27,7 +28,9 @@ export default new class AuthService {
   authSuccess(data) {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
-    return Flash.fromServer(data.flash);
+    Flash.fromServer(data.flash);
+    if (data.signed_in_via_login_code) { PasswordPromptService.maybeOpen(); }
+    return user;
   }
 
   signIn(user) {

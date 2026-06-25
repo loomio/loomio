@@ -20,6 +20,7 @@ export default
     EmailToGroupSettings: asyncComponent(() => import('@/components/group/email_to_group_settings')),
     MemberEmailAliasModal: asyncComponent(() => import('@/components/group/member_email_alias_modal')),
     ChangePasswordForm: asyncComponent(() => import('@/components/profile/change_password_form')),
+    SetPasswordPrompt: asyncComponent(() => import('@/components/profile/set_password_prompt')),
     ChatbotList: asyncComponent(() => import('@/components/chatbot/list')),
     ChatbotMatrixForm: asyncComponent(() => import('@/components/chatbot/matrix_form')),
     ChatbotWebhookForm: asyncComponent(() => import('@/components/chatbot/webhook_form')),
