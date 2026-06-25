@@ -66,7 +66,6 @@ class PollSerializer < ApplicationSerializer
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
-  has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   hide_when_discarded [
     :attachments,

@@ -30,15 +30,12 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
   test "index serializes without record cache fallbacks" do
     sign_in @user
-    Reaction.create!(reactable: @discussion, user: @alien, reaction: ':heart:')
 
     assert_no_record_cache_fallbacks do
       get :index
     end
 
     assert_response :success
-    json = JSON.parse(response.body)
-    assert_includes json['reactions'].map { |r| r['id'] }, Reaction.last.id
   end
 
   test "index does not return topics from groups user is not a member of" do

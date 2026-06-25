@@ -20,7 +20,6 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :translation, serializer: TranslationSerializer, root: :translations
-  has_many :reactions, serializer: ReactionSerializer, root: :reactions
   hide_when_discarded [:description, :title]
 
   def group_id

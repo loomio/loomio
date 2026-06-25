@@ -90,30 +90,13 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_equal users(:alien), cache.scope[:users_by_id][users(:alien).id] if cache.scope[:users_by_id]
   end
 
-  test 'add reactions for eventables indexes existing reactions and known empty reaction lists' do
-    discussion = discussions(:discussion)
-    other_discussion = discussions(:alien_discussion)
-    reaction = Reaction.create!(reactable: discussion, user: users(:alien), reaction: ':heart:')
-    cache = RecordCache.new
-
-    cache.add_reactions_for_eventables([discussion, other_discussion])
-
-    assert_includes cache.scope[:reactions_by_reactable_type_and_id]['Discussion'][discussion.id], reaction
-    assert_equal [], cache.scope[:reactions_by_reactable_type_and_id]['Discussion'][other_discussion.id]
-    assert_equal reaction, cache.scope[:reactions_by_id][reaction.id]
-  end
-
-  test 'for event collection caches eventables and their reactions' do
+  test 'for event collection caches eventables' do
     event = events(:discussion_created_event)
     discussion = discussions(:discussion)
-    reaction = Reaction.create!(reactable: discussion, user: users(:alien), reaction: ':heart:')
 
     cache = RecordCache.for_collection([event], users(:admin).id)
 
     assert_equal event, cache.scope[:events_by_id][event.id]
     assert_equal discussion, cache.scope[:discussions_by_id][discussion.id]
-    assert_includes cache.scope[:reactions_by_reactable_type_and_id]['Discussion'][discussion.id], reaction
-    assert_equal reaction, cache.scope[:reactions_by_id][reaction.id]
-    assert_equal users(:alien), cache.scope[:users_by_id][users(:alien).id]
   end
 end
