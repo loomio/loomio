@@ -124,11 +124,18 @@ class Topic < ApplicationRecord
 
   def admins
     return User.none unless persisted?
-    User.active
-        .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (tr.admin = TRUE AND tr.id IS NOT NULL AND tr.revoked_at IS NULL)')
+
+    # Two-arm UNION (see #members) so the list path drives from the small
+    # admin-membership / admin-reader sets instead of seq-scanning all users.
+    member_arm = User.active
+        .joins("JOIN memberships m ON m.user_id = users.id")
+        .where("m.group_id = ? AND m.admin = TRUE AND m.revoked_at IS NULL", group_id || 0)
+
+    guest_arm = User.active
+        .joins("JOIN topic_readers tr ON tr.user_id = users.id")
+        .where("tr.topic_id = ? AND tr.admin = TRUE AND tr.revoked_at IS NULL", id)
+
+    User.from("(#{member_arm.to_sql} UNION #{guest_arm.to_sql}) AS users")
   end
 
   def guests
