@@ -89,6 +89,19 @@ module Dev::Scenarios::Auth
     redirect_to(login_token_path(login_token.token))
   end
 
+  def setup_login_token_user_without_password
+    user = User.create!(
+      email: 'no-password@example.com',
+      name: 'No Password',
+      email_verified: true
+    )
+    redirect_to dashboard_path
+  end
+
+  def last_login_code
+    render plain: LoginToken.last.code
+  end
+
   def setup_login_token_email
     login_token = LoginToken.create!(user: patrick)
     UserMailer.login(patrick.id, login_token.id).deliver
