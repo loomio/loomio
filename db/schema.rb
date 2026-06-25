@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_25_000003) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_25_000005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1221,15 +1221,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_000003) do
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
     t.integer "bounces_count", default: 0, null: false
-    t.index "((email)::text) gin_trgm_ops", name: "index_users_on_email_trgm", using: :gin
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
-    t.index ["name"], name: "index_users_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-    t.index ["username"], name: "index_users_on_username_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|

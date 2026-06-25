@@ -37,7 +37,7 @@ class MembershipQuery
     query = params[:q].to_s
     if query.length > 0
       chain = chain.where("users.name ilike :first OR users.name ilike :last OR
-                           (users.email)::text ilike :first OR
+                           users.email ilike :first OR
                            users.username ilike :first OR
                            memberships.title ilike :contains",
                            first: "#{query}%",
