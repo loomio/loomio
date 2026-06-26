@@ -107,6 +107,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
+    android_key_attestation (0.3.0)
     ansi (1.5.0)
     arbre (1.7.0)
       activesupport (>= 3.0.0)
@@ -141,6 +142,7 @@ GEM
     bcrypt (3.1.22)
     benchmark (0.5.0)
     bigdecimal (4.1.2)
+    bindata (2.5.1)
     bindex (0.8.1)
     bootsnap (1.24.6)
       msgpack (~> 1.2)
@@ -154,6 +156,7 @@ GEM
     byebug (13.0.0)
       reline (>= 0.6.0)
     cancancan (3.6.1)
+    cbor (0.5.10.3)
     cld (0.13.0)
       ffi
     concurrent-ruby (1.3.7)
@@ -162,6 +165,9 @@ GEM
       fiber-annotation
       fiber-local (~> 1.1)
       json
+    cose (1.3.1)
+      cbor (~> 0.5.9)
+      openssl-signature_algorithm (~> 1.0)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -504,6 +510,9 @@ GEM
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
+    openssl (4.0.2)
+    openssl-signature_algorithm (1.3.0)
+      openssl (> 2.0)
     os (1.1.4)
     ostruct (0.6.3)
     paper_trail (17.0.0)
@@ -682,6 +691,8 @@ GEM
       ffi (~> 1.12)
       logger
     ruby2_keywords (0.0.5)
+    safety_net_attestation (0.5.0)
+      jwt (>= 2.0, < 4.0)
     sass-embedded (1.93.2-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
     sass-embedded (1.93.2-aarch64-linux-musl)
@@ -751,6 +762,10 @@ GEM
     thruster (0.1.21-x86_64-linux)
     tilt (2.6.1)
     timeout (0.6.1)
+    tpm-key_attestation (0.14.1)
+      bindata (~> 2.4)
+      openssl (> 2.0)
+      openssl-signature_algorithm (~> 1.0)
     traces (0.18.2)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
@@ -780,6 +795,14 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
+    webauthn (3.4.3)
+      android_key_attestation (~> 0.3.0)
+      bindata (~> 2.4)
+      cbor (~> 0.5.9)
+      cose (~> 1.1)
+      openssl (>= 2.2)
+      safety_net_attestation (~> 0.5.0)
+      tpm-key_attestation (~> 0.14.0)
     webmock (3.26.2)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -882,6 +905,7 @@ DEPENDENCIES
   victor
   video_info
   web-console
+  webauthn
   webmock
 
 RUBY VERSION

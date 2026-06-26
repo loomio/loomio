@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_25_035332) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_26_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -612,6 +612,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_035332) do
     t.text "key", null: false
     t.integer "id", null: false
     t.integer "counter", default: 0
+  end
+
+  create_table "passkey_credentials", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "external_id", null: false
+    t.binary "public_key", null: false
+    t.bigint "sign_count", default: 0, null: false
+    t.string "nickname"
+    t.jsonb "transports", default: [], null: false
+    t.datetime "last_used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_id"], name: "index_passkey_credentials_on_external_id", unique: true
+    t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -1378,12 +1392,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_035332) do
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
     t.integer "bounces_count", default: 0, null: false
+    t.string "webauthn_id"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["webauthn_id"], name: "index_users_on_webauthn_id", unique: true
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
@@ -1419,6 +1435,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_25_035332) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
+  add_foreign_key "passkey_credentials", "users"
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "rails_pulse_job_runs", "rails_pulse_jobs", column: "job_id"
   add_foreign_key "rails_pulse_operations", "rails_pulse_job_runs", column: "job_run_id"

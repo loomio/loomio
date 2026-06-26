@@ -85,6 +85,7 @@ class User < ApplicationRecord
   has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
   has_many :identities, class_name: "Identity", dependent: :destroy
+  has_many :passkey_credentials, dependent: :destroy
 
   has_many :reactions, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -241,6 +242,14 @@ class User < ApplicationRecord
 
   def has_password
     password_digest.present?
+  end
+
+  def has_passkey
+    passkey_credentials.exists?
+  end
+
+  def ensure_webauthn_id!
+    PasskeyService.ensure_webauthn_id!(self)
   end
 
   def valid_password?(password)

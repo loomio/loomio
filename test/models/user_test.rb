@@ -53,6 +53,14 @@ class UserTest < ActiveSupport::TestCase
     assert @user.save!
   end
 
+  test "knows if a passkey is set" do
+    assert_equal false, @user.has_passkey
+
+    PasskeyCredential.create!(user: @user, external_id: "credential-#{SecureRandom.hex(4)}", public_key: 'public-key')
+
+    assert_equal true, @user.has_passkey
+  end
+
   # Username validations
   test "requires username contain no whitespace" do
     @user.username = 'user name'

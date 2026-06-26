@@ -37,6 +37,16 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "email_status includes passkey status" do
+    PasskeyCredential.create!(user: @user, external_id: "credential-#{SecureRandom.hex(4)}", public_key: 'public-key')
+
+    get :email_status, params: { email: @user.email }, format: :json
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal true, json.dig('users', 0, 'has_passkey')
+  end
+
   test "destroy deactivates the users account" do
     sign_in @user
     post :destroy, format: :json

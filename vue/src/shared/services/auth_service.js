@@ -18,9 +18,9 @@ export default new class AuthService {
   applyEmailStatus(user, data) {
     if (data == null) { data = {}; }
     const vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
-            'avatar_url', 'has_password', 'email_status', 'email_verified',
+            'avatar_url', 'has_password', 'has_passkey', 'email_status', 'email_verified',
             'legal_accepted_at', 'auth_form'];
-    user.update(pickBy(mapKeys(pick(data, vals), (v, k) => camelCase(k)), val => !!val));
+    user.update(pickBy(mapKeys(pick(data, vals), (v, k) => camelCase(k)), val => val !== null && val !== undefined));
     user.update({hasToken: data.has_token});
     return user;
   }
