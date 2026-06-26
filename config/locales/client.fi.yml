@@ -2920,3 +2920,7 @@ fi:
       Comment: Kommentti
       Stance: Ääni
       Outcome: Johtopäätös
+  set_password_prompt:
+    title: Asettaa salasana?
+    helptext: Voit kirjautua sisään salasanalla seuraavalla kerralla sen sijaan, että odottaisit sähköpostilinkkiä.
+    no_thanks: Ei kiitos

@@ -2948,3 +2948,7 @@ zh_TW:
       Comment: 評論
       Stance: 投票
       Outcome: 結論
+  set_password_prompt:
+    title: 設定密碼？
+    helptext: 下次登入時，您可以使用密碼，而無需等待電子郵件連結。
+    no_thanks: 不，謝謝

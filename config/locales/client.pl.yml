@@ -2947,3 +2947,7 @@ pl:
       Comment: Komentarz
       Stance: Głos
       Outcome: Konkluzja
+  set_password_prompt:
+    title: Ustawić hasło?
+    helptext: Następnym razem możesz zalogować się, podając hasło, zamiast czekać na link wysłany e-mailem.
+    no_thanks: Nie, dziękuję

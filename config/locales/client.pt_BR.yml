@@ -2968,3 +2968,7 @@ pt_BR:
       Comment: Comentário
       Stance: Voto
       Outcome: Conclusão
+  set_password_prompt:
+    title: Definir uma senha?
+    helptext: Na próxima vez, você poderá usar uma senha para fazer login, em vez de esperar por um link enviado por e-mail.
+    no_thanks: Não, obrigado

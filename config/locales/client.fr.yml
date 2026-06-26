@@ -2964,3 +2964,7 @@ fr:
       Comment: Commentaire
       Stance: Vote
       Outcome: Conclusion
+  set_password_prompt:
+    title: Définir un mot de passe ?
+    helptext: Vous pourrez utiliser un mot de passe pour vous connecter la prochaine fois, au lieu d'attendre un lien par e-mail.
+    no_thanks: Non merci

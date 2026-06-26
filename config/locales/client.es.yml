@@ -2956,3 +2956,7 @@ es:
       Comment: Comentario
       Stance: Voto
       Outcome: Conclusión
+  set_password_prompt:
+    title: "¿Establecer una contraseña?"
+    helptext: La próxima vez, puedes usar una contraseña para iniciar sesión, en lugar de esperar a recibir un enlace por correo electrónico.
+    no_thanks: No, gracias

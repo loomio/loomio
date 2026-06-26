@@ -2920,3 +2920,7 @@ sv:
       Comment: Kommentar
       Stance: Röst
       Outcome: Slutsats
+  set_password_prompt:
+    title: Ange ett lösenord?
+    helptext: Du kan använda ett lösenord för att logga in nästa gång, istället för att vänta på en e-postlänk.
+    no_thanks: Nej tack

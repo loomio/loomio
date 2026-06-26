@@ -107,6 +107,7 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `auth_form.login_link_rate_limited` | `espere una hora e inténtelo de nuevo` | `espera una hora e inténtalo de nuevo` | Formal `usted` imperatives; app uses `tú` throughout |
 | `config/locales/client.es.yml` | `thread_arrangement_form.comment_length_max_help` | `Déjelo en blanco si no desea un límite de temas. Se aplicará un límite del sistema.` | `Déjalo en blanco si no deseas un límite para el tema.` | Formal `usted` imperative; app uses informal `tú` throughout |
 | `config/locales/client.es.yml` | `thread_arrangement_form.comment_length_max_description`, `thread_arrangement_form.comment_length_max_hint` | `Fomente...`, `Déjelo...` | `Fomenta...`, `Déjalo...` | Formal `usted` forms; app uses informal `tú` throughout |
+| `config/locales/client.ca.yml`, `client.nl_NL.yml`, `client.sl.yml`, `client.uk.yml` | `set_password_prompt.no_thanks` | Button labels with final full stops, e.g. `Nee, bedankt.` | Removed final full stops, e.g. `Nee, bedankt` | Short button labels should not end with a full stop |
 
 ## 2026-05-22 — lock/unlock thread translation pass
 

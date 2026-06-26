@@ -2955,3 +2955,7 @@ de:
       Comment: Kommentar
       Stance: Abstimmung
       Outcome: Fazit
+  set_password_prompt:
+    title: Ein Passwort festlegen?
+    helptext: Sie können sich beim nächsten Mal mit einem Passwort anmelden, anstatt auf einen Link in einer E-Mail zu warten.
+    no_thanks: Nein danke
