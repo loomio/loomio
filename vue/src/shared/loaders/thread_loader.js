@@ -284,7 +284,7 @@ export default class ThreadLoader {
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
-      const params = Object.assign({}, rule.remote, this.isFirstLoad ? {} : {exclude_types: 'topic'});
+      const params = Object.assign({}, rule.remote, this.isFirstLoad ? {exclude_types: 'reaction'} : {exclude_types: 'topic reaction'});
       return Records.events.fetch({params});
     });
 

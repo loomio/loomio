@@ -191,32 +191,6 @@ class RecordCache
     end
   end
 
-  def add_reactions_for_eventables(collection)
-    return [] if exclude_types.include?('reaction')
-
-    reactables = collection.flat_map do |eventable|
-      eventable.is_a?(Reaction) ? eventable.reactable : eventable
-    end.compact.select { |eventable| eventable.respond_to?(:reactions) }.uniq
-
-    scope[:reactions_by_reactable_type_and_id] ||= {}
-    reactables.each do |reactable|
-      scope[:reactions_by_reactable_type_and_id][reactable.class.to_s] ||= {}
-      scope[:reactions_by_reactable_type_and_id][reactable.class.to_s][reactable.id] = []
-    end
-
-    reaction_query_for_eventables(reactables).includes(:user).each do |reaction|
-      add_reaction(reaction)
-    end
-  end
-
-  def reaction_query_for_eventables(collection)
-    relations = collection.group_by { |eventable| eventable.class.to_s }.map do |reactable_type, eventables|
-      Reaction.where(reactable_type: reactable_type, reactable_id: eventables.map(&:id))
-    end
-
-    relations.reduce { |relation, next_relation| relation.or(next_relation) } || Reaction.none
-  end
-
   def poll_ids_from_eventables(collection)
     collection.filter_map { |eventable| poll_id_for_eventable(eventable) }.uniq
   end
@@ -336,6 +310,32 @@ class RecordCache
     add_known_missing(:outcomes_by_poll_id, options.fetch(:poll_ids, []))
     scope[:outcomes_by_poll_id].merge!(collection.select(&:latest).index_by(&:poll_id))
     add_reactions_for_eventables(collection)
+  end
+
+  def add_reactions_for_eventables(collection)
+    return [] if exclude_types.include?('reaction')
+
+    reactables = collection.flat_map do |eventable|
+      eventable.is_a?(Reaction) ? eventable.reactable : eventable
+    end.compact.select { |eventable| eventable.respond_to?(:reactions) }.uniq
+
+    scope[:reactions_by_reactable_type_and_id] ||= {}
+    reactables.each do |reactable|
+      scope[:reactions_by_reactable_type_and_id][reactable.class.to_s] ||= {}
+      scope[:reactions_by_reactable_type_and_id][reactable.class.to_s][reactable.id] = []
+    end
+
+    reaction_query_for_eventables(reactables).includes(:user).each do |reaction|
+      add_reaction(reaction)
+    end
+  end
+
+  def reaction_query_for_eventables(collection)
+    relations = collection.group_by { |eventable| eventable.class.to_s }.map do |reactable_type, eventables|
+      Reaction.where(reactable_type: reactable_type, reactable_id: eventables.map(&:id))
+    end
+
+    relations.reduce { |relation, next_relation| relation.or(next_relation) } || Reaction.none
   end
 
   def add_reactions(collection)

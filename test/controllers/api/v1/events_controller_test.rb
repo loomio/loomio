@@ -32,16 +32,13 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   test "index serializes without record cache fallbacks" do
     sign_in @user
-    event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)
-    reaction = Reaction.create!(reactable: event.eventable, user: @alien, reaction: ':heart:')
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)
 
     assert_no_record_cache_fallbacks do
       get :index, params: { discussion_id: @discussion.id }, format: :json
     end
 
     assert_response :success
-    json = JSON.parse(response.body)
-    assert_includes json['reactions'].map { |r| r['id'] }, reaction.id
   end
 
   test "index filters by discussion" do

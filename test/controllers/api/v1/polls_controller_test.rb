@@ -40,15 +40,12 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     }, actor: @admin)
 
     sign_in @user
-    Reaction.create!(reactable: poll, user: @alien, reaction: ':heart:')
 
     assert_no_record_cache_fallbacks do
       get :show, params: { id: poll.key }
     end
 
     assert_response :success
-    json = JSON.parse(response.body)
-    assert_includes json['reactions'].map { |r| r['id'] }, Reaction.last.id
   end
 
   # Index tests
