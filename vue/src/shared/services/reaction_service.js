@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import { debounce, uniq } from 'lodash-es';
+import { debounce, uniq, capitalize } from 'lodash-es';
 
 const pending = {
   comment_ids: [],
@@ -16,6 +16,8 @@ const TYPE_TO_PARAM = {
   poll:       'poll_ids',
   stance:     'stance_ids'
 };
+
+const fetched = new Set();
 
 const flush = debounce(function() {
   const params = {};
@@ -38,6 +40,14 @@ export default {
   enqueueFetch(model) {
     const key = TYPE_TO_PARAM[model.constructor.singular];
     if (!key) return;
+
+    const cacheKey = `${model.constructor.singular}:${model.id}`;
+    if (fetched.has(cacheKey)) return;
+    fetched.add(cacheKey);
+
+    const reactableType = capitalize(model.constructor.singular);
+    if (Records.reactions.find({ reactableId: model.id, reactableType }).length > 0) return;
+
     pending[key] = uniq([...pending[key], model.id]);
     flush();
   }
