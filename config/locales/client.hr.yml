@@ -2920,3 +2920,7 @@ hr:
       Comment: Komentar
       Stance: Glas
       Outcome: Ishod
+  set_password_prompt:
+    title: Postaviti lozinku?
+    helptext: Sljedeći put se možete prijaviti lozinkom umjesto da čekate poveznicu u e-poruci.
+    no_thanks: Ne hvala

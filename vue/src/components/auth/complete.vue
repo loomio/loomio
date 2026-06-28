@@ -80,7 +80,7 @@ v-card.auth-complete(
           a(@click='submitAndSetPassword()' v-t="'auth_form.set_password'")
   v-card-actions
     v-spacer
-    v-btn(
+    v-btn.auth-complete__submit(
       variant="elevated"
       color="primary"
       :loading="loading"

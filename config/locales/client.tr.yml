@@ -2920,3 +2920,7 @@ tr:
       Comment: Yorum
       Stance: Oy
       Outcome: Karar
+  set_password_prompt:
+    title: Şifre belirleyeyim mi?
+    helptext: Bir dahaki sefere giriş yaparken e-posta bağlantısını beklemek yerine şifre kullanabilirsiniz.
+    no_thanks: Hayır, teşekkürler

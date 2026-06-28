@@ -1699,6 +1699,10 @@ en:
     set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
     password_changed: Your password has been updated
+  set_password_prompt:
+    title: Set a password?
+    helptext: You can use a password to sign in next time, instead of waiting for an email link.
+    no_thanks: No thanks
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'

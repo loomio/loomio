@@ -2939,3 +2939,7 @@ he:
       Comment: הֶעָרָה
       Stance: הַצבָּעָה
       Outcome: מסקנה
+  set_password_prompt:
+    title: להגדיר סיסמה?
+    helptext: באפשרותך להשתמש בסיסמה כדי להיכנס בפעם הבאה, במקום לחכות לקישור בדוא"ל.
+    no_thanks: לא תודה

@@ -2947,3 +2947,7 @@ ca:
       Comment: Comentari
       Stance: Vot
       Outcome: Conclusió
+  set_password_prompt:
+    title: Voleu establir una contrasenya?
+    helptext: Pots utilitzar una contrasenya per iniciar la sessió la propera vegada, en comptes d'esperar un enllaç per correu electrònic.
+    no_thanks: No, gràcies

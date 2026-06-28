@@ -13,7 +13,7 @@
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
     "@sentry/browser": "^10.47.0",
-    "@sentry/vue": "^10.59.0",
+    "@sentry/vue": "^10.61.0",
     "@tiptap/core": "3.27.1",
     "@tiptap/extension-blockquote": "3.27.1",
     "@tiptap/extension-bold": "3.27.1",
@@ -81,7 +81,7 @@
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "8.0.14",
+    "vite": "8.1.0",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "yaml": "^2.9.0"

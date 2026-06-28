@@ -1,4 +1,21 @@
 pageHelper = require('../helpers/pageHelper')
+const http = require('http')
+
+const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080')
+const baseUrl = `http://localhost:${port}`
+
+const enterLastLoginCode = (test, page) => {
+  test.perform(done => {
+    http.get(`${baseUrl}/dev/last_login_code`, res => {
+      let body = ''
+      res.on('data', chunk => { body += chunk })
+      res.on('end', () => {
+        page.fillIn('.auth-complete__code input', body.trim())
+        done()
+      })
+    })
+  })
+}
 
 module.exports = {
   'can_sign_up_a_user': (test) => {
@@ -42,6 +59,38 @@ module.exports = {
     page.loadPath('setup_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
+  },
+
+  'prompts_login_code_user_without_password_to_set_one': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_login_token_user_without_password')
+    page.fillIn('.auth-email-form__email input', 'no-password@example.com')
+    page.click('.auth-email-form__submit')
+    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.expectText('.set-password-prompt', 'Set a password?')
+    page.click('.set-password-prompt__submit')
+    page.expectText('.change-password-form', 'Set your password')
+  },
+
+  'can_dismiss_password_prompt_after_login_code_sign_in': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_login_token_user_without_password')
+    page.fillIn('.auth-email-form__email input', 'no-password@example.com')
+    page.click('.auth-email-form__submit')
+    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.expectText('.set-password-prompt', 'Set a password?')
+    page.click('.set-password-prompt__dismiss')
+    page.expectNoElement('.set-password-prompt')
+    page.refresh()
+    page.expectNoElement('.set-password-prompt')
   },
 
   'can_use_a_shareable_link': (test) => {

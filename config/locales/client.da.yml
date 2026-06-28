@@ -2920,3 +2920,7 @@ da:
       Comment: Kommentar
       Stance: Stemme
       Outcome: Konklusion
+  set_password_prompt:
+    title: Angiv en adgangskode?
+    helptext: Du kan bruge en adgangskode til at logge ind næste gang i stedet for at vente på et link via e-mail.
+    no_thanks: Nej tak

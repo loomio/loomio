@@ -2948,3 +2948,7 @@ it:
       Comment: Commento
       Stance: Voto
       Outcome: Conclusione
+  set_password_prompt:
+    title: Impostare una password?
+    helptext: La prossima volta potrai accedere utilizzando una password, invece di attendere il link via email.
+    no_thanks: No grazie
