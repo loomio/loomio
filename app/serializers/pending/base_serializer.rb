@@ -1,6 +1,6 @@
 class Pending::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :name, :email, :email_status, :email_verified, :has_password, :identity_type,
+  attributes :name, :email, :email_status, :email_verified, :has_password, :has_passkey, :identity_type,
              :avatar_kind, :avatar_initials, :thumb_url, :avatar_url, :has_token, :auth_form
 
   def identity_type
@@ -47,6 +47,10 @@ class Pending::BaseSerializer < ActiveModel::Serializer
 
   def has_password
     user.has_password
+  end
+
+  def has_passkey
+    user.has_passkey
   end
 
   private

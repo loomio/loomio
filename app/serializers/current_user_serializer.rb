@@ -2,7 +2,8 @@ class CurrentUserSerializer < UserSerializer
   attributes :email, :email_when_proposal_closing_soon, :email_catch_up_day,
              :email_when_mentioned, :email_on_participation, :selected_locale,
              :locale, :default_membership_volume, :experiences,
-             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate
+             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate,
+             :has_passkey
 
   def include_email?
     true
@@ -13,6 +14,10 @@ class CurrentUserSerializer < UserSerializer
   end
 
   def include_has_password?
+    true
+  end
+
+  def include_has_passkey?
     true
   end
 

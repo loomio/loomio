@@ -4,6 +4,7 @@ class UserSerializer < AuthorSerializer
              :content_locale,
              :location,
              :has_password,
+             :has_passkey,
              :autodetect_time_zone,
              :avatar_url,
              :attachments,
@@ -14,6 +15,10 @@ class UserSerializer < AuthorSerializer
 
 
   def include_has_password?
+    scope[:include_password_status]
+  end
+
+  def include_has_passkey?
     scope[:include_password_status]
   end
 

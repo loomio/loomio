@@ -183,6 +183,13 @@ Rails.application.routes.draw do
       end
 
       resources :login_tokens, only: [:create]
+      resources :passkey_credentials, only: [:create] do
+        collection do
+          post :registration_options
+          post :authentication_options
+          post :authenticate
+        end
+      end
 
       resources :events, only: :index do
         get :count, on: :collection
