@@ -10,12 +10,14 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')
     page.pause()
-    page.click('.new-comment .action-menu')
-    page.click('.action-dock__button--save_bookmark')
+    page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('a comment worth bookmarking')).querySelector('.action-menu--btn').click()")
+    page.waitFor('.action-dock__button--save_bookmark')
+    page.execute("Array.from(document.querySelectorAll('.action-dock__button--save_bookmark')).find(el => el.offsetParent).click()")
     page.expectFlash('Bookmark saved')
 
     page.goTo('bookmarks')
-    page.expectText('.bookmarks-page', 'a comment worth bookmarking')
+    page.expectText('.bookmarks-page', 'What star sign are you?')
+    page.expectText('.bookmarks-page', 'Comment by Patrick Swayze')
 
     page.click('.bookmarks-page button[title="Remove bookmark"]')
     page.expectFlash('Bookmark removed')
