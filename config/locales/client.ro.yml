@@ -2920,3 +2920,7 @@ ro:
       Comment: Comentariu
       Stance: Vot
       Outcome: Concluzie
+  set_password_prompt:
+    title: Setați o parolă?
+    helptext: Poți folosi o parolă pentru a te conecta data viitoare, în loc să aștepți un link prin e-mail.
+    no_thanks: Nu, mulțumesc

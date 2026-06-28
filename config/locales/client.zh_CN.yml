@@ -2839,3 +2839,7 @@ zh_CN:
       Comment: 评论
       Stance: 投票
       Outcome: 结论
+  set_password_prompt:
+    title: 设置密码？
+    helptext: 下次登录时，您可以使用密码，而无需等待电子邮件链接。
+    no_thanks: 不，谢谢

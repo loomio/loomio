@@ -2927,3 +2927,7 @@ hu:
       Comment: Megjegyzés
       Stance: Szavazás
       Outcome: Következtetés
+  set_password_prompt:
+    title: Jelszó beállítása?
+    helptext: Legközelebb jelszóval jelentkezhet be, ahelyett, hogy e-mailben küldött linkre várna.
+    no_thanks: Nem, köszönöm

@@ -2919,3 +2919,7 @@ ja:
       Comment: コメント
       Stance: 投票
       Outcome: 結論
+  set_password_prompt:
+    title: パスワードを設定しますか？
+    helptext: 次回からは、メールで送られてくるリンクを待つ代わりに、パスワードを使ってログインできます。
+    no_thanks: 結構です

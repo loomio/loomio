@@ -2920,3 +2920,7 @@ sl:
       Comment: Komentar
       Stance: Glas
       Outcome: Zaključek
+  set_password_prompt:
+    title: Nastaviti geslo?
+    helptext: Naslednjič se lahko prijavite z geslom, namesto da čakate na povezavo po e-pošti.
+    no_thanks: Ne, hvala

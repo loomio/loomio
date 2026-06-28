@@ -2947,3 +2947,7 @@ nl_NL:
       Comment: Opmerking
       Stance: Stem
       Outcome: Conclusie
+  set_password_prompt:
+    title: Een wachtwoord instellen?
+    helptext: Je kunt de volgende keer inloggen met een wachtwoord in plaats van te wachten op een link in je e-mail.
+    no_thanks: Nee, bedankt

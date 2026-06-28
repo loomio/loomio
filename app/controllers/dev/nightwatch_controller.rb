@@ -20,12 +20,14 @@ class Dev::NightwatchController < Dev::BaseController
 
   before_action :reset_transient_state, except: [
     :last_email,
+    :last_login_code,
     :use_last_login_token,
     :index,
     :accept_last_invitation,
   ]
   before_action :reset_database, except: [
     :last_email,
+    :last_login_code,
     :use_last_login_token,
     :index,
     :accept_last_invitation,
