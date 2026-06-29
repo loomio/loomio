@@ -37,20 +37,19 @@ export default class RestfulClient {
   onSuccess(data) { return data; }
 
   onFailure(response) {
+    const httpError = (data = {}) => Object.assign(
+      new Error(`HTTP ${response.status}: ${data.error || response.statusText || 'Request failed'}`),
+      data,
+      { status: response.status, statusText: response.statusText, ok: false }
+    );
+
     if (response.json) {
       return response.json().then(
-        function(data) {
-          data.status = response.status;
-          data.statusText = response.statusText;
-          data.ok = response.ok;
-          throw data;
-        },
-        function() {
-          throw { status: response.status, statusText: response.statusText, ok: false };
-        }
+        data  => { throw httpError(data); },
+        ()    => { throw httpError(); }
       );
     } else {
-      throw response;
+      throw httpError();
     }
   }
 

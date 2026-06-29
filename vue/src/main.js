@@ -50,8 +50,6 @@ boot(function(data) {
         "TypeError: annulé",
         "Permission denied to access property \"dispatchEvent\" on cross-origin object",
         "TypeError: Failed to fetch",
-        "Object captured as promise rejection with keys: error, ok, status, statusText",
-        "Object captured as promise rejection with keys: exception, ok, status, statusText",
         "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
       ],
       tunnel: '/bug_tunnel',
