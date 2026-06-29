@@ -157,8 +157,10 @@ class RecordCache
     topics = events.map(&:topic).compact.uniq
     eventables = events.map(&:eventable).compact.uniq
 
-    reactions = eventables.select { |e| e.is_a?(Reaction) }
-    ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call if reactions.any?
+    unless exclude_types.include?('reaction')
+      reactions = eventables.select { |e| e.is_a?(Reaction) }
+      ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call if reactions.any?
+    end
 
     topic_readers = TopicReader.where(topic_id: topics.map(&:id), user_id: current_user_id)
     poll_ids = poll_ids_from_eventables(eventables)
