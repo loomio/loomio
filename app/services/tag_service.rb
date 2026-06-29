@@ -63,8 +63,12 @@ class TagService
     present = Tag.where(group_id: group_id, name: counts.keys).pluck(:name).map(&:downcase)
     missing = counts.keys - present
 
-    Tag.where(group_id: group_id, name: present).each do |tag|
-      tag.update_column(:taggings_count, counts[tag.name.downcase])
+    if present.any?
+      Tag.upsert_all(
+        present.map { |name| {group_id: group_id, name: name, taggings_count: counts[name]} },
+        unique_by: [:group_id, :name],
+        update_only: [:taggings_count]
+      )
     end
 
     missing.each do |dname|
@@ -86,9 +90,8 @@ class TagService
     return if names.empty?
 
     counts = {}
-
-    Tag.where(group_id: group_ids).pluck(:name).map(&:downcase).uniq.map do |dname|
-      counts[dname] = Tag.where(group_id: group_ids, name: dname).sum(:taggings_count) 
+    Tag.where(group_id: group_ids).group(:name).sum(:taggings_count).each do |name, count|
+      counts[name.downcase] = (counts[name.downcase] || 0) + count
     end
 
     group.tags.where.not(name: counts.keys).update_all(org_taggings_count: 0)
@@ -96,8 +99,12 @@ class TagService
     present = Tag.where(group_id: group_id, name: names).pluck(:name).map(&:downcase)
     missing = counts.keys - present
 
-    Tag.where(group_id: group_id, name: present).each do |tag|
-      tag.update_column(:org_taggings_count, counts[tag.name.downcase])
+    if present.any?
+      Tag.upsert_all(
+        present.map { |name| {group_id: group_id, name: name, org_taggings_count: counts[name]} },
+        unique_by: [:group_id, :name],
+        update_only: [:org_taggings_count]
+      )
     end
 
     missing.each do |dname|
