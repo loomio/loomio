@@ -6,7 +6,7 @@ class Events::StanceCreated < Event
   include Events::Notify::Subscribers
 
   def self.publish!(stance)
-    GenericWorker.perform_later('NotificationService', 'mark_as_read', "Poll", stance.poll_id, stance.participant_id)
+    MarkNotificationsAsReadWorker.perform_later("Poll", stance.poll_id, stance.participant_id)
 
     participant = stance.participant.presence
     publish_and_mark_read!(stance,

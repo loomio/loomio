@@ -72,8 +72,8 @@ class TopicService
       # TODO we gotta stop adding group_id to activestorage attachment
       ActiveStorage::Attachment.where(record: topic.items.map(&:eventable).concat([topic])).update_all(group_id: destination.id)
 
-      GenericWorker.perform_later('PollService', 'group_members_added', topic.group_id) if topic.group_id
-      GenericWorker.perform_later('SearchService', 'reindex_by_discussion_id', topic.id)
+      PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
+      ReindexDiscussionWorker.perform_later(topic.id)
       Events::DiscussionMoved.publish!(topic.topicable, actor, source)
     end
   end
@@ -143,7 +143,7 @@ class TopicService
       topic.update(discarded_at: Time.now, discarded_by: actor.id)
       topicable.update(discarded_at: Time.now, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
-      GenericWorker.perform_later('SearchService', 'reindex_by_discussion_id', topicable.id) if topicable.is_a?(Discussion)
+      ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
       EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
   end

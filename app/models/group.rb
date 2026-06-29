@@ -277,7 +277,7 @@ class Group < ApplicationRecord
       membership = Membership.create!(user_id: user.id, group_id: id, inviter: inviter, accepted_at: DateTime.now)
     end
 
-    GenericWorker.perform_later('PollService', 'group_members_added', self.id)
+    PollGroupMembersAddedWorker.perform_later(self.id)
     membership
   rescue ActiveRecord::RecordNotUnique
     retry

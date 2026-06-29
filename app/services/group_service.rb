@@ -68,7 +68,7 @@ module GroupService
 
       g.update_pending_memberships_count
       g.update_memberships_count
-      GenericWorker.perform_later('PollService', 'group_members_added', g.id)
+      PollGroupMembersAddedWorker.perform_later(g.id)
     end
 
     Events::MembershipCreated.publish!(
@@ -204,7 +204,7 @@ module GroupService
     end
 
     if old_handle.present? && old_handle != new_handle
-      GenericWorker.perform_later('GroupService', 'update_descendant_handles', group.id, old_handle, new_handle)
+      UpdateDescendantHandlesWorker.perform_later(group.id, old_handle, new_handle)
     end
 
     old_handle

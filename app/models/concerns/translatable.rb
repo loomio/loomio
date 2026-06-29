@@ -12,7 +12,7 @@ module Translatable
   end
 
   def update_translations
-    GenericWorker.perform_later('TranslationService', 'update_and_broadcast', self.class.to_s, self.id)
+    UpdateAndBroadcastTranslationWorker.perform_later(self.class.to_s, self.id)
   end
 
   module ClassMethods

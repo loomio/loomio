@@ -25,13 +25,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_discussion_as_read
-    GenericWorker.perform_later(
-      'TopicService',
-      'mark_as_read_simple_params',
-      discussion.id,
-      event.sequence_id || [],
-      current_user.id
-    )
+    MarkDiscussionAsReadWorker.perform_later(discussion.id, event.sequence_id || [], current_user.id)
     event.notifications.where(user: current_user).update_all(viewed: true)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
@@ -46,8 +40,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_summary_email_as_read
-    GenericWorker.perform_later('TopicService', 'mark_summary_email_as_read', current_user.id, params[:time_start].to_i,
-                                params[:time_finish].to_i)
+    MarkSummaryEmailAsReadWorker.perform_later(current_user.id, params[:time_start].to_i, params[:time_finish].to_i)
 
     respond_to do |format|
       format.html do

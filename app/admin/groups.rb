@@ -216,7 +216,7 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   collection_action :import_json, method: :post do
-    GenericWorker.perform_later('GroupExportService', 'import', params[:url])
+    ImportGroupWorker.perform_later(params[:url])
     redirect_to admin_groups_path, notice: "Import started. Check /admin/jobs to see when job is complete"
   end
 

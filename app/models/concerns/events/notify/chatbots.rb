@@ -1,6 +1,6 @@
 module Events::Notify::Chatbots
   def trigger!
     super
-    GenericWorker.perform_later('ChatbotService', 'publish_event!', id)
+    PublishChatbotEventWorker.perform_later(id)
   end
 end

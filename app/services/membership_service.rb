@@ -57,7 +57,7 @@ class MembershipService
     end
 
     invited_group_ids.each do |group_id|
-      GenericWorker.perform_later('PollService', 'group_members_added', group_id)
+      PollGroupMembersAddedWorker.perform_later(group_id)
     end
 
     Events::InvitationAccepted.publish!(accepted_membership) if notify && accepted_membership&.accepted_at

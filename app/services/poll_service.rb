@@ -78,9 +78,9 @@ class PollService
 
       open_poll_if_ready(poll)
 
-      GenericWorker.perform_later('SearchService', 'reindex_by_poll_id', poll.id)
+      ReindexPollWorker.perform_later(poll.id)
 
-      GenericWorker.perform_later('PollService', 'group_members_added', poll.group_id) if poll.group_id
+      PollGroupMembersAddedWorker.perform_later(poll.group_id) if poll.group_id
 
       users = UserInviter.where_or_create!(
         actor: actor,
@@ -216,7 +216,7 @@ class PollService
       poll.topic.update_sequence_info!
     end
 
-    GenericWorker.perform_later('SearchService', 'reindex_by_poll_id', poll.id)
+    ReindexPollWorker.perform_later(poll.id)
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end
@@ -530,7 +530,7 @@ class PollService
       poll.save!  # persist stv_results in custom_fields
     end
 
-    GenericWorker.perform_later('SearchService', 'reindex_by_poll_id', poll.id)
+    ReindexPollWorker.perform_later(poll.id)
   end
 
   def self.build_receipts(poll)
