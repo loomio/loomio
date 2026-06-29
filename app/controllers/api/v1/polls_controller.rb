@@ -72,7 +72,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
   def voters
     load_and_authorize(:poll)
     if !@poll.anonymous
-      self.collection = User.where(id: @poll.voter_ids)
+      self.collection = User.with_attached_uploaded_avatar.where(id: @poll.voter_ids)
     else
       self.collection = User.none
     end
