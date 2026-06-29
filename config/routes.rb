@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
   constraints admin_session_constraint do
     mount MissionControl::Jobs::Engine => '/admin/jobs'
-    mount RailsPulse::Engine => '/admin/pulse'
   end
 
   if !Rails.env.production?
