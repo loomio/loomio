@@ -160,6 +160,9 @@ class RecordCache
     poll_ids = poll_ids_from_eventables(eventables)
     group_ids = topics.map(&:group_id).compact.uniq
 
+    reactions = eventables.select { |e| e.is_a?(Reaction) }
+    ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call if reactions.any?
+
     user_ids.concat events.map(&:user_id).compact
     add_events(events)
     add_eventables(eventables)
