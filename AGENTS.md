@@ -64,12 +64,6 @@ Register-grooming completed so far:
 
 ## Running Tests
 
-**Always run the Rails test suite before committing.** Use:
-```bash
-bin/rails test 2>&1 | grep -E "^(Failure|Error|Finished|bin/rails test)" | head -40
-```
-This shows failures, errors, and the summary in one pass. Never run it twice to "see details" — run once, read the output.
-
 **Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
 
 ## Running E2E Tests
