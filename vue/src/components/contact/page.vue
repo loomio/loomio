@@ -9,7 +9,6 @@ import Flash from '@/shared/services/flash';
 export default {
   data() {
     return {
-      submitted: false,
       message: Records.contactMessages.build(),
       isDisabled: false,
       helpLink: "https://help.loomio.com",
@@ -39,7 +38,15 @@ export default {
       if (this.message.message) {
         return this.message.save()
         .then(() => {
-          this.submitted = true;
+          const name = this.message.name;
+          this.message = Records.contactMessages.build();
+          Flash.success('contact_message_form.success_via_email', { name });
+          if (this.isLoggedIn) {
+            this.message.name = Session.user().name;
+            this.message.email = Session.user().email;
+            this.message.userId = Session.user().id;
+          }
+          this.needMessage = false;
         });
       } else {
         this.needMessage = true;
@@ -58,7 +65,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.contact-page
-    v-card.contact-form(v-show='!submitted' :title="$t('contact_message_form.title')").max-width-800
+    v-card.contact-form(:title="$t('contact_message_form.title')").max-width-800
       v-card-item.text-body-medium
         p(v-t="'contact_message_form.respond_asap'")
         p(v-t="'contact_message_form.happy_to_help_with'")
@@ -84,8 +91,4 @@ v-main
         v-spacer
         v-btn(color="primary" @click='submit' variant="elevated")
           span(v-t="'contact_message_form.send_message'")
-
-    v-card.contact-form__success(v-show='submitted')
-      v-card-title
-        h1.text-headline-small(tabindex="-1" v-t="$t('contact_message_form.success_via_email', { name: message.name })")
 </template>
