@@ -111,7 +111,7 @@ export default class LmoUrlService {
     const topic = e.topic();
     const topicable = topic ? topic.topicable() : (e.discussion ? e.discussion() : null);
     if (topicable) {
-      return this.route({model: topicable, params, ...options}) + `/${e.sequenceId}`;
+      return this.route({model: topicable, params, options}) + `/${e.sequenceId}`;
     }
     return '';
   }
