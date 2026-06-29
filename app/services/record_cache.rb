@@ -156,12 +156,13 @@ class RecordCache
     events = Event.includes(:eventable, :topic).where(id: collection.map(&:id))
     topics = events.map(&:topic).compact.uniq
     eventables = events.map(&:eventable).compact.uniq
-    topic_readers = TopicReader.where(topic_id: topics.map(&:id), user_id: current_user_id)
-    poll_ids = poll_ids_from_eventables(eventables)
-    group_ids = topics.map(&:group_id).compact.uniq
 
     reactions = eventables.select { |e| e.is_a?(Reaction) }
     ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call if reactions.any?
+
+    topic_readers = TopicReader.where(topic_id: topics.map(&:id), user_id: current_user_id)
+    poll_ids = poll_ids_from_eventables(eventables)
+    group_ids = topics.map(&:group_id).compact.uniq
 
     user_ids.concat events.map(&:user_id).compact
     add_events(events)
