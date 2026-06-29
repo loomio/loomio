@@ -68,7 +68,10 @@ class UserService
     return false unless user.valid?
     password_changed = user.password_digest_changed?
     user.save!
-    rotate_credentials_after_password_change(user) if password_changed
+    if password_changed
+      rotate_credentials_after_password_change(user)
+      Sentry.metrics.count("user.password_changed")
+    end
     EventBus.broadcast('user_update', user, actor, params)
     ReindexAuthorWorker.perform_later(user.id) if user.name_previously_changed?
   end
