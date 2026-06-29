@@ -18,14 +18,10 @@ class NotificationService
     reactions = Reaction.where(reactable: events.map(&:eventable))
     event_ids.concat Event.where(eventable: reactions).pluck(:id)
 
-    eventable_ids = {}
-
-    %w[Comment Discussion Poll Stance Outcome].each do |type|
-      eventable_ids[type] = Event.where(
-        topic_id: topic_id,
-        sequence_id: sequence_ids,
-        eventable_type: type).pluck(:eventable_id)
-    end
+    eventable_ids = Hash.new { |h, k| h[k] = [] }
+    Event.where(topic_id: topic_id, sequence_id: sequence_ids)
+         .pluck(:eventable_type, :eventable_id)
+         .each { |type, id| eventable_ids[type] << id }
 
     eventable_ids.each_pair do |type, ids|
       event_ids.concat Notification.joins(:event).where(
