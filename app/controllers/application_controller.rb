@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper
+  around_action :track_request_metrics
   before_action :deny_spam_users            # CurrentUserHelper
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
@@ -155,6 +156,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def track_request_metrics
+    start = Time.now
+    yield
+  ensure
+    attrs = { controller: controller_name, action: action_name, status: response.status.to_s }
+    Sentry.metrics.distribution("http.response_time", (Time.now - start) * 1000, unit: "millisecond", attributes: attrs)
+    Sentry.metrics.count("http.request", attributes: attrs)
+  end
 
   def boot_app(status: 200)
     expires_now
