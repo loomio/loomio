@@ -159,7 +159,10 @@ class RecordCache
 
     unless exclude_types.include?('reaction')
       reactions = eventables.select { |e| e.is_a?(Reaction) }
-      ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call if reactions.any?
+      if reactions.any?
+        ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call
+        add_eventables(reactions.map(&:reactable).compact)
+      end
     end
 
     topic_readers = TopicReader.where(topic_id: topics.map(&:id), user_id: current_user_id)
