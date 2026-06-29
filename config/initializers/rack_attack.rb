@@ -166,18 +166,15 @@ class Rack::Attack
     next if matched == 'bug_tunnel/ip'
     email = (req.params['email'] || req.params.dig('user', 'email')).to_s.downcase.presence rescue nil
     turnstile_provided = !!(req.params['turnstile_token'] || req.params.dig('user', 'turnstile_token')) rescue false
-    Rails.logger.warn "rack_attack:throttle #{matched} #{discriminator} #{req.request_method} #{req.fullpath}"
-    Sentry.capture_message("Rate limit hit: #{matched}",
-      level: :warning,
-      fingerprint: ['rack_attack', matched, discriminator],
-      extra: {
-        ip: req.remote_ip,
-        path: req.fullpath,
-        method: req.request_method,
+    Sentry.logger.warn("rack_attack:throttle",
+      attributes: {
         matched: matched,
         discriminator: discriminator,
+        method: req.request_method,
+        path: req.fullpath,
+        ip: req.remote_ip,
         email: email,
-        turnstile_provided: turnstile_provided
+        turnstile: turnstile_provided
       }
     )
   end
