@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     post 'hocuspocus', to: 'hocuspocus#create'
 
     namespace :b2 do
+      resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
       resources :polls, only: [:create, :show, :index, :update, :destroy]
       resources :memberships, only: [:index, :create]
