@@ -1,5 +1,6 @@
 class Api::V1::BootController < Api::V1::RestfulController
   def site
+    Sentry.metrics.count("boot.site", attributes: { signed_in: current_user.is_logged_in? })
     render json: Boot::Site.new.payload.merge(user_payload)
     EventBus.broadcast('boot_site', current_user)
   end

@@ -12,9 +12,11 @@ class Api::V1::TrialsController < Api::V1::RestfulController
     if trial.valid?
       user = trial.current_or_create_user
       group = trial.create_group
+      Sentry.metrics.count("trial.start")
       group_path = group.handle ? group_handle_path(group.handle) : group_path(group)
       render json: { group_path: group_path }
     else
+      Sentry.metrics.count("trial.validation_failed", attributes: { columns: trial.errors.attribute_names.join(',') })
       render json: { errors: trial.errors.as_json }, status: :unprocessable_entity
     end
   end

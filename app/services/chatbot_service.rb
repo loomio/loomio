@@ -3,21 +3,30 @@ class ChatbotService
 
   def self.create(chatbot:, actor:)
     actor.ability.authorize! :create, chatbot
-    return false unless chatbot.valid?
+    unless chatbot.valid?
+      Sentry.metrics.count("chatbot.create_failed", attributes: { columns: chatbot.errors.attribute_names.join(',') })
+      return false
+    end
     chatbot.author = actor
     chatbot.save!
+    Sentry.metrics.count("chatbot.create", attributes: { kind: chatbot.kind })
   end
 
   def self.update(chatbot:, params:, actor:)
     actor.ability.authorize! :update, chatbot
     params.delete(:access_token) unless params[:access_token].present?
     chatbot.assign_attributes(params.except(:group_id))
-    return false unless chatbot.valid?
+    unless chatbot.valid?
+      Sentry.metrics.count("chatbot.update_failed", attributes: { columns: chatbot.errors.attribute_names.join(',') })
+      return false
+    end
     chatbot.save!
+    Sentry.metrics.count("chatbot.update", attributes: { kind: chatbot.kind })
   end
 
   def self.destroy(chatbot:, actor:)
     actor.ability.authorize! :destroy, chatbot
+    Sentry.metrics.count("chatbot.destroy", attributes: { kind: chatbot.kind })
     chatbot.destroy
   end
 
@@ -45,6 +54,7 @@ class ChatbotService
                                     time_zone: example_user.time_zone,
                                     date_time_pref: example_user.date_time_pref)
 
+      Sentry.metrics.count("chatbot.notify", attributes: { kind: chatbot.kind, event_kind: event.kind })
       I18n.with_locale(recipient.locale) do
         if chatbot.kind == "webhook"
           serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize

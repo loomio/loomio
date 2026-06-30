@@ -8,7 +8,7 @@ class StanceService
     stance.revoker_id = nil
     stance.save!
     stance.poll.update_counts!
-
+    Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
     Events::StanceCreated.publish!(stance)
   end
 
@@ -45,6 +45,7 @@ class StanceService
 
       new_stance.poll.update_counts!
       MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
+      Sentry.metrics.count("stance.update", attributes: { poll_type: stance.poll.poll_type })
       Events::StanceCreated.publish!(new_stance)
     else
       stance.stance_choices = []
@@ -55,8 +56,10 @@ class StanceService
       stance.save!
       stance.poll.update_counts!
       if is_update
+        Sentry.metrics.count("stance.update", attributes: { poll_type: stance.poll.poll_type })
         Events::StanceUpdated.publish!(stance)
       else
+        Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
         Events::StanceCreated.publish!(stance)
       end
     end

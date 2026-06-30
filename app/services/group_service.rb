@@ -78,13 +78,17 @@ module GroupService
       recipient_message: params[:recipient_message]
     )
 
+    Sentry.metrics.count("membership.invite", attributes: { recipient_count: users.size })
     Membership.active.where(group_id: group.id, user_id: users.pluck(:id))
   end
 
   def self.create(group:, actor: , skip_authorize: false)
     actor.ability.authorize!(:create, group) unless skip_authorize
 
-    return false unless group.valid?
+    unless group.valid?
+      Sentry.metrics.count("group.create_failed", attributes: { columns: group.errors.attribute_names.join(',') })
+      return false
+    end
 
     if group.is_parent?
       url = remote_cover_photo
@@ -96,6 +100,7 @@ module GroupService
     group.save!
     group.add_admin!(actor)
 
+    Sentry.metrics.count("group.create", attributes: { is_subgroup: !group.is_parent? })
     EventBus.broadcast('group_create', group, actor)
   end
 
@@ -107,7 +112,10 @@ module GroupService
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)
 
-    return false unless group.valid?
+    unless group.valid?
+      Sentry.metrics.count("group.update_failed", attributes: { columns: group.errors.attribute_names.join(',') })
+      return false
+    end
 
     Group.transaction do
       group.save!
@@ -121,6 +129,7 @@ module GroupService
 
     privacy_change.commit!
 
+    Sentry.metrics.count("group.update")
     EventBus.broadcast('group_update', group, params, actor)
   end
 
@@ -133,6 +142,7 @@ module GroupService
 
     group.archive!
 
+    Sentry.metrics.count("group.destroy")
     DestroyGroupWorker.set(wait: 2.weeks).perform_later(group.id)
     EventBus.broadcast('group_destroy', group, actor)
   end
@@ -160,6 +170,7 @@ module GroupService
   def self.export(group: , actor: )
     actor.ability.authorize! :show, group
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
+    Sentry.metrics.count("group.export")
     GroupExportWorker.perform_later(group_ids, group.name, actor.id)
   end
 

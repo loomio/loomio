@@ -41,6 +41,7 @@ class DemoService
 
     TranslationService.translate_group_content!(group, actor.locale) if actor.locale != 'en'
 
+    Sentry.metrics.count("demo.start")
     EventBus.broadcast('demo_started', actor)
     group
   end

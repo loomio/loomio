@@ -46,6 +46,7 @@ class DiscussionService
         actor: actor
       )
 
+      Sentry.metrics.count("discussion.create")
       EventBus.broadcast('discussion_create', discussion, actor)
 
       Events::NewDiscussion.publish!(
@@ -71,7 +72,10 @@ class DiscussionService
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*TOPIC_ATTRS)
     discussion.assign_attributes_and_files(params.except(:group_id))
-    return false unless discussion.valid?
+    unless discussion.valid?
+      Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
+      return false
+    end
     Discussion.transaction do
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
@@ -84,6 +88,7 @@ class DiscussionService
                                      emails: params[:recipient_emails],
                                      audience: params[:recipient_audience])
 
+      Sentry.metrics.count("discussion.update")
       Events::DiscussionEdited.publish!(discussion: discussion,
                                         actor: actor,
                                         recipient_user_ids: users.pluck(:id),
@@ -100,6 +105,7 @@ class DiscussionService
       discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
       ReindexDiscussionWorker.perform_later(discussion.id)
 
+      Sentry.metrics.count("discussion.discard")
       EventBus.broadcast('discussion_discard', discussion, actor)
       discussion.created_event
     end

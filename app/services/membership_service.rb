@@ -60,6 +60,7 @@ class MembershipService
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
 
+    Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
     Events::InvitationAccepted.publish!(accepted_membership) if notify && accepted_membership&.accepted_at
   end
 
@@ -74,6 +75,7 @@ class MembershipService
       revoked_at,
     )
 
+    Sentry.metrics.count("membership.revoke")
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 
@@ -186,6 +188,7 @@ class MembershipService
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
     membership = group.add_member!(actor)
+    Sentry.metrics.count("membership.join")
     EventBus.broadcast('membership_join_group', group, actor)
     Events::UserJoinedGroup.publish!(membership)
   end
@@ -193,6 +196,7 @@ class MembershipService
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
     group.add_members!(users, inviter: inviter).tap do |memberships|
+      Sentry.metrics.count("membership.add", attributes: { user_count: memberships.size })
       Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
     end
   end

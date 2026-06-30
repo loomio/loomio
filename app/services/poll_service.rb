@@ -42,6 +42,7 @@ class PollService
       TopicReader.for(user: actor, topic: poll.topic)
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
+      Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
       EventBus.broadcast('poll_create', poll, actor)
       event = Events::PollCreated.publish!(poll, actor)
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
@@ -70,7 +71,10 @@ class PollService
 
     poll.prioritise_poll_options!
 
-    return false unless poll.valid?
+    unless poll.valid?
+      Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+      return false
+    end
 
     Poll.transaction do
       poll.save!
@@ -90,6 +94,7 @@ class PollService
         model: poll
       )
 
+      Sentry.metrics.count("poll.update", attributes: { poll_type: poll.poll_type })
       EventBus.broadcast('poll_update', poll, actor)
 
       Events::PollEdited.publish!(
@@ -209,6 +214,7 @@ class PollService
   def self.discard(poll:, actor:)
     actor.ability.authorize!(:destroy, poll)
 
+    Sentry.metrics.count("poll.discard", attributes: { poll_type: poll.poll_type })
     Poll.transaction do
       poll.update(discarded_at: Time.now, discarded_by: actor.id)
       Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(topic_id: nil)
@@ -235,7 +241,10 @@ class PollService
 
     poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
     poll.stv_results = nil if poll.poll_type == 'stv'
-    return false unless poll.valid?
+    unless poll.valid?
+      Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+      return false
+    end
 
     Poll.transaction do
       poll.save!

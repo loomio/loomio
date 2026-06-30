@@ -29,7 +29,10 @@ class OutcomeService
                            actor: actor)
 
     outcome.assign_attributes(author: actor)
-    return false unless outcome.valid?
+    unless outcome.valid?
+      Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
+      return false
+    end
     outcome.poll.outcomes.update_all(latest: false)
 
     outcome.save!
@@ -41,6 +44,7 @@ class OutcomeService
                                          audience: params[:recipient_audience],
                                          include_actor: params[:include_actor].present?)
 
+    Sentry.metrics.count("outcome.create")
     EventBus.broadcast 'outcome_create', outcome, actor
 
     Events::OutcomeCreated.publish!(outcome: outcome,
@@ -59,7 +63,10 @@ class OutcomeService
                            actor: actor)
 
     outcome.assign_attributes_and_files(params.slice(:review_on, :statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews, :poll_option_id))
-    return false unless outcome.valid?
+    unless outcome.valid?
+      Sentry.metrics.count("outcome.update_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
+      return false
+    end
 
     outcome.save!
     outcome.update_versions_count
@@ -71,6 +78,7 @@ class OutcomeService
                                          audience: params[:recipient_audience],
                                          include_actor: params[:include_actor].present?)
 
+    Sentry.metrics.count("outcome.update")
     EventBus.broadcast 'outcome_update', outcome, actor
 
     Events::OutcomeUpdated.publish!(outcome: outcome,

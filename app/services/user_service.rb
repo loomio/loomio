@@ -11,6 +11,11 @@ class UserService
     user.attributes = params.slice(:name, :email, :legal_accepted, :email_newsletter)
     user.require_valid_signup = true
     user.save
+    if user.persisted?
+      Sentry.metrics.count("user.sign_up")
+    else
+      Sentry.metrics.count("user.sign_up_failed", attributes: { columns: user.errors.attribute_names.join(',') })
+    end
 
     user
   rescue ActiveRecord::RecordNotUnique
@@ -31,11 +36,13 @@ class UserService
 
   def self.deactivate(user:, actor:)
     actor.ability.authorize! :deactivate, user
+    Sentry.metrics.count("user.deactivate", attributes: { self_initiated: actor.id == user.id })
     DeactivateUserWorker.perform_later(user.id, actor.id)
   end
 
   def self.redact(user:, actor:)
     actor.ability.authorize! :redact, user
+    Sentry.metrics.count("user.redact", attributes: { self_initiated: actor.id == user.id })
     RedactUserWorker.perform_later(user.id, actor.id)
   end
 
@@ -65,7 +72,10 @@ class UserService
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
     
     user.assign_attributes_and_files(params)
-    return false unless user.valid?
+    unless user.valid?
+      Sentry.metrics.count("user.update_failed", attributes: { columns: user.errors.attribute_names.join(',') })
+      return false
+    end
     password_changed = user.password_digest_changed?
     user.save!
     if password_changed
