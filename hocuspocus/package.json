@@ -4,9 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@hocuspocus/extension-logger": "^4.3.0",
     "@hocuspocus/server": "^4.3.0",
-    "@sentry/node": "^10.62.0",
-    "@sentry/tracing": "^7.114.0"
+    "@sentry/node": "^10.62.0"
   }
 }
