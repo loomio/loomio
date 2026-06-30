@@ -92,12 +92,14 @@ module Loomio
       /https?:\/\/localhost:\d+/
     ]
 
+    redis_url = ENV['REDIS_CACHE_URL'].presence || ENV['REDIS_URL'].presence
+
     config.cache_store =
-      if ENV['REDIS_CACHE_URL'].to_s.empty?
+      if redis_url.nil?
         :solid_cache_store
       else
         [:redis_cache_store, {
-          url: ENV['REDIS_CACHE_URL'],
+          url: redis_url,
           namespace: Rails.env,
           pool: { size: Integer(ENV.fetch('REDIS_POOL_SIZE', 5)) },
           # Treat Redis outages as cache misses rather than crashing requests
