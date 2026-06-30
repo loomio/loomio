@@ -336,7 +336,7 @@ class TopicService
                       topic: topic,
                       inviter: actor,
                       guest: !volumes.has_key?(user.id),
-                      admin: !topic.group_id,
+                      admin: false,
                       volume: volumes[user.id] || user.default_membership_volume)
     end
 
