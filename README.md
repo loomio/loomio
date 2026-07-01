@@ -10,6 +10,6 @@ To setup a Loomio development environment, see the [setup development environmen
 
 To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](https://github.com/loomio/loomio-coop-handbook)
 
-To contact us, send an [email](mailto:contact@loomio.com) or a [tweet](https://twitter.com/Loomio).
+To contact us, send an [email](mailto:contact@loomio.com) or a message on [BlueSky](https://bsky.app/profile/loomio.org).
 
 Loomio is free software released under the [GNU Affero General Public License](LICENSE.txt)
