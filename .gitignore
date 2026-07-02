@@ -1,5 +1,7 @@
 .irb_history
 .claude
+.agents/
+skills-lock.json
 .zed/
 
 # loomio.com marketing injections
