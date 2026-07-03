@@ -125,7 +125,7 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
               common-icon(name="mdi-drag-vertical")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           template(v-slot:append)
-            v-btn(icon variant="text" @click="openEditTagModal(tag)")
+            v-btn.tag-form__edit-tag(icon variant="text" @click="openEditTagModal(tag)")
               common-icon.text-medium-emphasis(name="mdi-pencil")
 
   v-card-actions(v-if="canAdminTags")

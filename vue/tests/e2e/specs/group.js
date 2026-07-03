@@ -284,16 +284,27 @@ module.exports = {
     page.expectFlash('Notification settings updated')
   },
 
-  'create_tag': (test) => {
+  'creates_and_deletes_category_tag': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.action-menu')
+    page.pause(200)
     page.click('.action-dock__button--edit_tags')
     page.click('.tag-form__new-tag')
     page.fillIn('.tags-modal__tag-name input', "important")
     page.click('.tag-form__submit')
     page.expectText('.tags-modal .v-chip__content', 'important' )
+    page.click('.tag-form__edit-tag')
+    page.click('.tag-form__delete')
+    page.expectText('.confirm-modal', 'Delete tag')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Tag deleted')
+
+    page.click('.action-menu')
+    page.pause(200)
+    page.click('.action-dock__button--edit_tags')
+    page.expectNoText('.tags-modal', 'important')
   },
 
   'delete_group': (test) => {

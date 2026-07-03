@@ -70,7 +70,7 @@ v-card.tags-modal(:title="$t(title)")
       v-btn(size="x-small" icon v-for="color in tag.constructor.colors" :key="color" :value="color" :color="color")
         common-icon(size="large" name="mdiTag" :color="tag.color == color ? '#333' : color")
   v-card-actions
-    v-btn(v-if="tag.id", @click="deleteTag" :disabled="loading")
+    v-btn.tag-form__delete(v-if="tag.id", @click="deleteTag" :disabled="loading")
       span(v-t="'common.action.delete'")
     v-spacer
     v-btn.tag-form__submit(:disabled="!tag.name" variant="elevated" color="primary" @click="submit" :loading="loading")
