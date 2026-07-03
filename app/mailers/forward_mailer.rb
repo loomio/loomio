@@ -12,7 +12,10 @@ class ForwardMailer < ActionMailer::Base
       subject: subject,
       layout: nil,
       skip_premailer: true
-    )
+    ) do |format|
+      format.text { render 'forward_message' } if body_text.present?
+      format.html { render 'forward_message' } if body_html.present?
+    end
   end
 
 
