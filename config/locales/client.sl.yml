@@ -877,6 +877,7 @@ sl:
     direct_discussion_hint: Neposredna razprava je vidna samo določenim osebam, ki jih povabite. Ne bo prikazana na seznamu razprav nobene skupine – najdete jo na strani Neposredne razprave.
     recommended_poll_templates: Priporočene predloge anket
     edit_discussion_context: Uredi kontekst razprave
+    tags_field_moved: Oznake so bile premaknjene. Kliknite ikono oznake v zgornjem desnem kotu strani niti, desno od naslova razprave.
   announcement:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}

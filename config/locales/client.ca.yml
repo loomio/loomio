@@ -879,6 +879,7 @@ ca:
     direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
     recommended_poll_templates: Plantilles d'enquesta recomanades
     edit_discussion_context: Edita el context de la discussió
+    tags_field_moved: Les etiquetes s'han mogut. Feu clic a la icona d'etiquetes a l'extrem superior dret de la pàgina del fil, a la dreta del títol de la discussió.
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}

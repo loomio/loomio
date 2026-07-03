@@ -877,6 +877,7 @@ tr:
     direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
     recommended_poll_templates: Önerilen anket şablonları
     edit_discussion_context: Tartışma bağlamını düzenle
+    tags_field_moved: Etiketler taşındı. Lütfen konu başlığının sağında, konu sayfasının sağ üst köşesindeki etiket simgesine tıklayın.
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin

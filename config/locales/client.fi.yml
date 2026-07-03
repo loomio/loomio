@@ -877,6 +877,7 @@ fi:
     direct_discussion_hint: Suora keskustelu näkyy vain kutsumillesi henkilöille. Se ei näy minkään ryhmän keskusteluluettelossa – löydät sen Suorat keskustelut -sivultasi.
     recommended_poll_templates: Suositellut kyselypohjat
     edit_discussion_context: Muokkaa keskustelun kontekstia
+    tags_field_moved: Tunnisteet on siirretty. Klikkaa tunnistekuvaketta ketjusivun oikeassa yläkulmassa, keskustelun otsikon oikealla puolella.
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}

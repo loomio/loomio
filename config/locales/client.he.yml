@@ -877,6 +877,7 @@ he:
     direct_discussion_hint: דיון ישיר גלוי רק לאנשים הספציפיים שאתה מזמין. הוא לא יופיע ברשימת הדיונים של אף קבוצה - תוכל למצוא אותו בדף הדיונים הישירים שלך.
     recommended_poll_templates: תבניות מומלצות לסקר
     edit_discussion_context: עריכת הקשר של הדיון
+    tags_field_moved: התגיות הועברו. לחצו על סמל התגית בפינה הימנית העליונה של דף השרשור, מימין לכותרת הדיון.
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}

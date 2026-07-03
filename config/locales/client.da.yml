@@ -877,6 +877,7 @@ da:
     direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
     recommended_poll_templates: Anbefalede skabeloner til afstemninger
     edit_discussion_context: Rediger diskussionskontekst
+    tags_field_moved: Tags er flyttet. Klik på tag-ikonet i øverste højre hjørne af trådsiden, til højre for diskussionstitlen.
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}

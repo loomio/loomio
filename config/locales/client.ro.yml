@@ -877,6 +877,7 @@ ro:
     direct_discussion_hint: O discuție directă este vizibilă doar persoanelor specifice pe care le invitați. Nu va apărea în lista de discuții a niciunui grup — o puteți găsi pe pagina Discuții directe.
     recommended_poll_templates: Șabloane de sondaj recomandate
     edit_discussion_context: Editați contextul discuției
+    tags_field_moved: Etichetele au fost mutate. Faceți clic pe pictograma etichetei din colțul din dreapta sus al paginii firului de discuție, în dreapta titlului discuției.
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}

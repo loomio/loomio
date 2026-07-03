@@ -918,6 +918,7 @@ zh_CN:
     direct_discussion_hint: 直接讨论仅对您邀请的特定人员可见。它不会出现在任何群组的讨论列表中——您可以在“直接讨论”页面找到它。
     recommended_poll_templates: 推荐的投票模板
     edit_discussion_context: 编辑讨论上下文
+    tags_field_moved: 标签位置已更改。请点击帖子页面右上角、讨论标题右侧的标签图标。
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}

@@ -887,6 +887,7 @@ fr:
     direct_discussion_hint: Une conversation privée n'est visible que par les personnes que tu invites. Elle n'apparaît pas dans la liste des discussions d'un groupe ; tu la trouveras sur la page « Conversations privées ».
     recommended_poll_templates: Modèles de sondages recommandés
     edit_discussion_context: Modifier le contexte de la discussion
+    tags_field_moved: Les étiquettes ont été déplacées. Cliquez sur l'icône d'étiquette en haut à droite de la page de la discussion, à droite du titre.
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}

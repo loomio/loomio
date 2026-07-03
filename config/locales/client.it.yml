@@ -887,6 +887,7 @@ it:
     direct_discussion_hint: 'Una discussione diretta è visibile solo alle persone specifiche che inviti. Non apparirà nell''elenco delle discussioni di nessun gruppo: puoi trovarla nella tua pagina Discussioni dirette.'
     recommended_poll_templates: Modelli di sondaggio consigliati
     edit_discussion_context: Modifica il contesto della discussione
+    tags_field_moved: I tag sono stati spostati. Fai clic sull'icona del tag nell'angolo in alto a destra della pagina della discussione, a destra del titolo della discussione.
   announcement:
     send_discussion: Invia thread
     send_group: Invita persone a %{name}

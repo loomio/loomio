@@ -880,6 +880,7 @@ zh_TW:
     direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
     recommended_poll_templates: 推薦的投票模板
     edit_discussion_context: 編輯討論上下文
+    tags_field_moved: 標籤位置已變更。請點選貼文頁面右上角、討論標題右側的標籤圖示。
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}

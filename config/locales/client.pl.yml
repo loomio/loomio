@@ -879,6 +879,7 @@ pl:
     direct_discussion_hint: Dyskusja bezpośrednia jest widoczna tylko dla zaproszonych przez Ciebie osób. Nie pojawi się na liście dyskusyjnej żadnej grupy — znajdziesz ją na swojej stronie „Dyskusje bezpośrednie”.
     recommended_poll_templates: Zalecane szablony ankiet
     edit_discussion_context: Edytuj kontekst dyskusji
+    tags_field_moved: Tagi zostały przeniesione. Kliknij ikonę tagu w prawym górnym rogu strony wątku, po prawej stronie tytułu dyskusji.
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}

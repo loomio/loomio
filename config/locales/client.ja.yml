@@ -876,6 +876,7 @@ ja:
     direct_discussion_hint: ダイレクトディスカッションは、招待した特定の人だけが閲覧できます。グループのディスカッションリストには表示されません。ダイレクトディスカッションページで確認できます。
     recommended_poll_templates: 推奨される投票テンプレート
     edit_discussion_context: ディスカッションのコンテキストを編集する
+    tags_field_moved: タグの位置が変わりました。スレッドページの右上、ディスカッションタイトルの右側にあるタグアイコンをクリックしてください。
   announcement:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します

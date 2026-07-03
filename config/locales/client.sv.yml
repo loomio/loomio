@@ -877,6 +877,7 @@ sv:
     direct_discussion_hint: En direkt diskussion är bara synlig för de specifika personer du bjuder in. Den kommer inte att visas i någon grupps diskussionslista – du hittar den på din sida för direkta diskussioner.
     recommended_poll_templates: Rekommenderade omröstningsmallar
     edit_discussion_context: Redigera diskussionskontext
+    tags_field_moved: Taggarna har flyttats. Klicka på taggikonen i det övre högra hörnet av trådsidan, till höger om diskussionsrubriken.
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}

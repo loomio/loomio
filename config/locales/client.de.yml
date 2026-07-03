@@ -885,6 +885,7 @@ de:
     direct_discussion_hint: Eine Direktkonversation ist nur für die von dir eingeladenen Personen sichtbar. Sie erscheint nicht in der Diskussionsliste einer Gruppe, sondern auf deiner Seite „Direktdiskussionen“.
     recommended_poll_templates: Empfohlene Umfragevorlagen
     edit_discussion_context: Diskussionskontext bearbeiten
+    tags_field_moved: Die Schlagwörter wurden verschoben. Klicken Sie auf das Schlagwortsymbol oben rechts auf der Threadseite, rechts neben dem Diskussionstitel.
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen

@@ -879,6 +879,7 @@ es:
     direct_discussion_hint: Una discusión directa solo es visible para las personas que invites. No aparecerá en la lista de discusiones de ningún grupo; puedes encontrarla en tu página de Discusiones directas.
     recommended_poll_templates: Plantillas de encuesta recomendadas
     edit_discussion_context: Editar el contexto de la discusión
+    tags_field_moved: Las etiquetas se han movido. Haz clic en el icono de etiqueta que se encuentra en la esquina superior derecha de la página del hilo, a la derecha del título de la discusión.
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}

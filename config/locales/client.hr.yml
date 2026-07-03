@@ -877,6 +877,7 @@ hr:
     direct_discussion_hint: Izravna rasprava vidljiva je samo određenim osobama koje pozovete. Neće se pojaviti na popisu rasprava nijedne grupe — možete je pronaći na svojoj stranici Izravne rasprave.
     recommended_poll_templates: Preporučeni predlošci anketa
     edit_discussion_context: Uredi kontekst rasprave
+    tags_field_moved: Oznake su premještene. Kliknite ikonu oznake u gornjem desnom kutu stranice teme, desno od naslova rasprave.
   announcement:
     send_discussion: Pošalji nit
     send_group: Pozovi ljude u %{name}

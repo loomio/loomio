@@ -879,6 +879,7 @@ hu:
     direct_discussion_hint: A közvetlen beszélgetések csak a meghívott személyek számára láthatók. Nem jelennek meg egyetlen csoport beszélgetési listájában sem – a Közvetlen beszélgetések oldalon találod meg őket.
     recommended_poll_templates: Ajánlott szavazássablonok
     edit_discussion_context: Beszélgetés kontextusának szerkesztése
+    tags_field_moved: A címkék áthelyezve. Kattintson a címke ikonra a témaoldal jobb felső sarkában, a beszélgetés címétől jobbra.
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'

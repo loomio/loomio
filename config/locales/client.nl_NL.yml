@@ -879,6 +879,7 @@ nl_NL:
     direct_discussion_hint: Een privégesprek is alleen zichtbaar voor de specifieke personen die je uitnodigt. Het verschijnt niet in de gesprekslijst van een groep, maar je vindt het op je pagina met privégesprekken.
     recommended_poll_templates: Aanbevolen enquêtesjablonen
     edit_discussion_context: Discussiecontext bewerken
+    tags_field_moved: De tags zijn verplaatst. Klik op het tag-icoon in de rechterbovenhoek van de discussiepagina, rechts van de titel van de discussie.
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
