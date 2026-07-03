@@ -1,11 +1,7 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
 
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
-}
-
-const getCSRF = () => decodeURIComponent(__guard__(document.cookie.match("(^|;)\\s*csrftoken\\s*=\\s*([^;]+)"), x => x.pop()) || '');
+const getCSRF = () => decodeURIComponent(document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/)?.[1] || '');
 
 export default class RestfulClient {
 
@@ -13,7 +9,6 @@ export default class RestfulClient {
     this.defaultParams = {};
     this.currentUpload = null;
     this.apiPrefix = "/api/v1";
-    this.onResponse = this.onResponse.bind(this);
     this.defaultParams.locale = new URLSearchParams(location.search).get('locale');
     this.defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token');
     this.defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token');
@@ -24,33 +19,16 @@ export default class RestfulClient {
     if (resourcePlural) { this.resourcePlural = snakeCase(resourcePlural); }
   }
 
-  onPrepare(request)  { return request; }
-  onCleanup(response) { return response; }
-  onResponse(response) {
-    if (response.ok) {
-      return response.json().then(this.onSuccess);
-    } else {
-      return this.onFailure(response);
-    }
-  }
-
   onSuccess(data) { return data; }
 
-  onFailure(response) {
-    const httpError = (data = {}) => Object.assign(
+  // response is always a real Response here - network failures are handled in request()
+  async onFailure(response) {
+    const data = await response.json().catch(() => ({}));
+    throw Object.assign(
       new Error(`HTTP ${response.status}: ${data.error || response.statusText || 'Request failed'}`),
       data,
       { status: response.status, statusText: response.statusText, ok: false }
     );
-
-    if (response.json) {
-      return response.json().then(
-        data  => { throw httpError(data); },
-        ()    => { throw httpError(); }
-      );
-    } else {
-      throw httpError();
-    }
   }
 
   onUploadSuccess(response) { return response; }
@@ -91,8 +69,7 @@ export default class RestfulClient {
     return this.request(this.buildUrl(path, this.paramsFor(params)), 'GET');
   }
 
-  request(path, method, body) {
-    if (body == null) { body = {}; }
+  async request(path, method, body = {}) {
     const opts = {
       method,
       credentials: 'same-origin',
@@ -103,12 +80,21 @@ export default class RestfulClient {
       body: JSON.stringify(body)
     };
     if (method === 'GET') { delete opts.body; }
-    this.onPrepare();
-    const promise = fetch(path, opts)
-    .then(this.onResponse, this.onFailure)
-    .finally(this.onCleanup);
-    promise.catch(err => console.warn('Request failed:', method, path, err.status || err));
-    return promise;
+
+    let response;
+    try {
+      response = await fetch(path, opts);
+    } catch (err) {
+      console.warn('Network error:', method, path, err);
+      throw Object.assign(err, { networkError: true });
+    }
+
+    try {
+      return response.ok ? await response.json().then(this.onSuccess) : await this.onFailure(response);
+    } catch (err) {
+      console.warn('Request failed:', method, path, err.status || err);
+      throw err;
+    }
   }
 
   postMember(keyOrId, action, params) {

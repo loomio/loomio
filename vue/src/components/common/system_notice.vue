@@ -24,7 +24,7 @@ export default {
           version: AppConfig.version,
           release: AppConfig.release,
           now: Date.now()
-        }}).then(this.eatData);
+        }}).then(this.eatData, () => {}); // transient network errors on this background poll aren't actionable
     } , 1000 * 60 * 5);
     EventBus.$on('systemNotice', this.eatData);
     EventBus.$on('signedIn', () => { return this.showNotice = false; });
