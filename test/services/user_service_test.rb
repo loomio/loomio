@@ -45,6 +45,8 @@ class UserServiceTest < ActiveSupport::TestCase
 
     email = @user.email
     user_id = @user.id
+    api_key = @user.api_key
+    unsubscribe_token = @user.unsubscribe_token
 
     UserService.redact(user: @user, actor: @user)
 
@@ -74,6 +76,14 @@ class UserServiceTest < ActiveSupport::TestCase
     # Verify false booleans
     assert_equal false, @user.email_newsletter
     assert_equal false, @user.email_verified
+
+    # Verify required tokens remain present but are rotated
+    assert_not_nil @user.api_key
+    assert_not_nil @user.email_api_key
+    assert_not_nil @user.secret_token
+    assert_not_nil @user.unsubscribe_token
+    refute_equal api_key, @user.api_key
+    refute_equal unsubscribe_token, @user.unsubscribe_token
 
     # Verify email_sha256 is set
     assert_equal Digest::SHA256.hexdigest(email), @user.email_sha256

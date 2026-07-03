@@ -14,7 +14,7 @@ class RedactUserWorker < ApplicationJob
 
       User.where(id: user_id).update_all(
         is_admin: false,
-        api_key: nil,
+        api_key: User.generate_unique_secure_token,
         secret_token: User.generate_unique_secure_token,
         name: nil,
         email: nil,
@@ -31,7 +31,7 @@ class RedactUserWorker < ApplicationJob
         current_sign_in_ip: nil,
         last_sign_in_ip: nil,
         password_digest: nil,
-        unsubscribe_token: nil,
+        unsubscribe_token: User.generate_unique_secure_token,
         detected_locale: nil,
         email_verified: false,
         legal_accepted_at: nil,
