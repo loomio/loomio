@@ -57,12 +57,6 @@ const validate = (field) => {
   return [ () => props.discussion.errors[field] === undefined || props.discussion.errors[field][0] ];
 };
 
-const discardDraft = () => {
-  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-    EventBus.$emit('resetDraft', 'discussion', props.discussion.id, 'description', props.discussion.description);
-  }
-};
-
 const updateGroupItems = () => {
   groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(Session.user().groups().map(g => ({
     title: g.fullName,
@@ -259,8 +253,6 @@ v-form(ref="form" @submit.prevent="submit")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/threads/starting_threads')
       v-spacer
-      v-btn.mr-2(@click="discardDraft" variant="text")
-        span(v-t="'common.reset'")
       v-btn.discussion-form__submit(
         variant="elevated"
         color="primary"

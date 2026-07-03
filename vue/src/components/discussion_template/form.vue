@@ -66,13 +66,6 @@ const validate = (field) => {
 
 const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
 
-const discardDraft = () => {
-  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-    EventBus.$emit('resetDraft', 'discussionTemplate', props.discussionTemplate.id, 'description', props.discussionTemplate.description);
-    EventBus.$emit('resetDraft', 'discussionTemplate', props.discussionTemplate.id, 'processIntroduction', props.discussionTemplate.processIntroduction);
-  }
-};
-
 const updatePollTemplateItems = () => {
   pollTemplateItems.value = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
     Records.pollTemplates.find({groupId: props.discussionTemplate.group().id}).filter(pt => {
@@ -285,10 +278,6 @@ v-form(ref="form" @submit.prevent="submit")
       //- .d-flex.justify-space-between.my-4.mt-4.discussion-template-form-actions
     v-card-actions
       v-spacer
-      v-btn.mr-2(
-        @click="discardDraft"
-        v-t="'common.reset'"
-      )
       v-btn.discussion-template-form__submit(
         variant="elevated"
         color="primary"

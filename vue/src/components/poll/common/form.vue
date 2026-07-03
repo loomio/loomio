@@ -70,12 +70,6 @@ const validate = (field) => {
   return [ () => props.poll.errors[field] === undefined || props.poll.errors[field][0] ];
 };
 
-const discardDraft = () => {
-  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-    EventBus.$emit('resetDraft', 'poll', props.poll.id, 'details', props.poll.details);
-  }
-};
-
 const optionHasVotes = (option) => {
   return (props.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
 };
@@ -654,11 +648,6 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   v-card-actions.poll-common-form-actions
     help-btn(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
-    v-btn(
-      variant="plain"
-      @click="discardDraft"
-    )
-     span(v-t="'common.reset'")
 
     v-btn.poll-common-form__submit(
       color="primary"

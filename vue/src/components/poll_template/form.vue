@@ -3,7 +3,6 @@ import AppConfig from '@/shared/services/app_config';
 import { mapKeys, snakeCase, compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
-import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
@@ -74,12 +73,6 @@ export default {
     titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
     validate(field) {
       return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
-    },
-    discardDraft() {
-      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'details', this.pollTemplate.details);
-        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'processIntroduction', this.pollTemplate.processIntroduction);
-      }
     },
     setPollOptionPriority() {
       let i = 0;
@@ -546,10 +539,6 @@ export default {
     v-card-actions.poll-common-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')
       v-spacer
-      v-btn.mr-2(
-        @click="discardDraft"
-      )
-        span(v-t="'common.reset'")
       v-btn.poll-common-form__submit(
         variant="elevated"
         color="primary"

@@ -146,6 +146,37 @@ const format = computed(() => {
 });
 
 
+const draftContentMatchesModel = () => {
+  if (!editor.value) return false;
+
+  if (editor.value.storage.characterCount.characters() == 0 && props.model.attributeIsBlank(props.field)) {
+    return true;
+  }
+
+  return (editor.value.getHTML() || '') === (props.model[props.field] || '');
+};
+
+const undoAvailable = () => {
+  return editor.value.can().undo?.() || false;
+};
+
+const shouldPromptDiscardDraft = () => {
+  return !props.model.isNew() &&
+         !draftContentMatchesModel() &&
+         !undoAvailable();
+};
+
+const handleUndoKeyDown = (event) => {
+  const isUndoShortcut = (event.metaKey || event.ctrlKey) && !event.shiftKey && (event.key || '').toLowerCase() === 'z';
+  if (!isUndoShortcut || !shouldPromptDiscardDraft()) return false;
+
+  event.preventDefault();
+  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
+    resetDraft(props.model[props.field]);
+  }
+  return true;
+};
+
 const resetDraft = (content) => {
   if (!editor.value) return;
   editor.value.commands.setContent(content);
@@ -353,7 +384,8 @@ onMounted(() => {
   editor.value = new Editor({
     editorProps: {
       scrollThreshold: 100,
-      scrollMargin: 100
+      scrollMargin: 100,
+      handleKeyDown: (_view, event) => handleUndoKeyDown(event)
     },
     autofocus: props.autofocus,
     extensions: [

@@ -3,7 +3,6 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import { I18n } from '@/i18n';
 import Flash  from '@/shared/services/flash';
 
 export default {
@@ -40,12 +39,6 @@ export default {
   },
 
   methods: {
-    discardDraft() {
-      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-        EventBus.$emit('resetDraft', 'comment', this.comment.id, 'body', this.comment.body);
-      }
-    },
-
     handleIsUploading(val) {
       return this.canSubmit = !val;
     },
@@ -90,12 +83,6 @@ export default {
       :max-length="maxLength"
     )
       template(v-slot:actions)
-        v-btn.mr-2(
-          variant="text"
-          v-if="comment.id"
-          @click="discardDraft"
-        )
-          span(v-t="'common.reset'")
         v-btn.comment-form__submit-button(
           variant="elevated"
           :loading="processing"
