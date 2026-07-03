@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_29_000002) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_03_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1179,14 +1179,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_29_000002) do
     t.string "avatar_initials", limit: 255
     t.string "username", limit: 255
     t.boolean "email_when_proposal_closing_soon", default: false, null: false
-    t.string "unsubscribe_token", limit: 255
+    t.string "unsubscribe_token", limit: 255, null: false
     t.integer "memberships_count", default: 0, null: false
     t.string "selected_locale", limit: 255
     t.string "time_zone", limit: 255
     t.string "key", limit: 255
     t.string "detected_locale", limit: 255
     t.boolean "email_catch_up", default: true, null: false
-    t.string "email_api_key", limit: 255
+    t.string "email_api_key", limit: 255, null: false
     t.boolean "email_when_mentioned", default: true, null: false
     t.boolean "email_on_participation", default: false, null: false
     t.integer "default_membership_volume", default: 2, null: false
@@ -1214,7 +1214,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_29_000002) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "email_catch_up_day"
     t.string "date_time_pref"
-    t.string "api_key"
+    t.string "api_key", null: false
     t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"

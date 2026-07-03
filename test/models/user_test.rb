@@ -39,6 +39,41 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
   end
 
+  test "new records are still assigned tokens on initialization" do
+    user = User.new(name: "Token User", email: "token_#{SecureRandom.hex(4)}@test.com")
+    assert user.new_record?
+    assert_not_nil user.api_key
+    assert_not_nil user.email_api_key
+    assert_not_nil user.unsubscribe_token
+  end
+
+  # Regression for the Sentry error from Api::V1::SessionsController#create:
+  # loading a persisted user whose token columns are NULL used to dirty the
+  # record via initialized_with_token, then increment_failed_attempts! /
+  # with_lock raised "Locking a record with unpersisted changes is not
+  # supported." The migration backfills NULLs and adds NOT NULL constraints,
+  # so every persisted user now has a real token and loads clean.
+  test "increment_failed_attempts! does not raise for a loaded user" do
+    user = User.create!(
+      name: "Failed Login User",
+      email: "failedlogin_#{SecureRandom.hex(4)}@test.com",
+      email_verified: true,
+      password: "s3curepassword123"
+    )
+    reloaded = User.find(user.id)
+
+    assert_nothing_raised { reloaded.increment_failed_attempts! }
+    assert_equal 1, User.find(user.id).failed_attempts
+  end
+
+  test "no persisted users have null token columns" do
+    User.find_each do |user|
+      assert_not_nil user.api_key, "user #{user.id} has null api_key"
+      assert_not_nil user.email_api_key, "user #{user.id} has null email_api_key"
+      assert_not_nil user.unsubscribe_token, "user #{user.id} has null unsubscribe_token"
+    end
+  end
+
   test "only requires password to be valid when being updated" do
     @user.password = 'qwerty123'
     @user.save!(validate: false)
