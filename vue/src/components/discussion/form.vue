@@ -232,7 +232,6 @@ v-form(ref="form" @submit.prevent="submit")
         )
 
         tags-field(v-if="!discussion.id" :model="discussion")
-        v-alert.mb-4(v-if="discussion.id" type="info" variant="tonal" density="compact") {{ $t('discussion_form.tags_field_moved') }}
 
         lmo-textarea(
           :model='discussion'

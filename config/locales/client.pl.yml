@@ -158,6 +158,12 @@ pl:
     filter_placeholder: Filtruj tagi
     new_named_tag: Nowy tag „%{name}”
     edit_tags: Edytuj tagi
+    select_tags: Wybierz tagi
+    merge_tag: Scal tag
+    merge: Łączyć
+    merge_into: Połącz się z
+    merge_helptext: Połącz „%{name}” z innym tagiem. Wątki używające „%{name}” będą używać wybranego tagu.
+    tag_merged: Tag scalony
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę

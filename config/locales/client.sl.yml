@@ -158,6 +158,12 @@ sl:
     filter_placeholder: Filtriraj oznake
     new_named_tag: Nova oznaka »%{name}«
     edit_tags: Uredi oznake
+    select_tags: Izberite oznake
+    merge_tag: Združi oznako
+    merge: Združi
+    merge_into: Združi se v
+    merge_helptext: Združi »%{name}« z drugo oznako. Niti, ki uporabljajo »%{name}«, bodo namesto tega uporabile izbrano oznako.
+    tag_merged: Oznaka združena
   poll_types:
     proposal: snubitev
     count: privolitev

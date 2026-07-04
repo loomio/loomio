@@ -157,6 +157,12 @@ ja:
     filter_placeholder: タグを絞り込む
     new_named_tag: 新しいタグ "%{name}"
     edit_tags: タグを編集
+    select_tags: タグを選択
+    merge_tag: マージタグ
+    merge: マージ
+    merge_into: 合流する
+    merge_helptext: "「%{name}」を別のタグにマージします。「%{name}」を使用しているスレッドは、代わりに選択されたタグを使用します。"
+    tag_merged: タグが統合されました
   poll_types:
     proposal: 提案
     count: オプトイン

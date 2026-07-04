@@ -166,6 +166,12 @@ fr:
     filter_placeholder: Filtrer les mots-clés
     new_named_tag: Nouveau mot-clé « %{name} »
     edit_tags: Modifier les mots-clés
+    select_tags: Sélectionner les étiquettes
+    merge_tag: Balise de fusion
+    merge: Fusionner
+    merge_into: Fusionner dans
+    merge_helptext: Fusionnez "%{name}" avec une autre balise. Les discussions utilisant "%{name}" utiliseront la balise sélectionnée à la place.
+    tag_merged: Balise fusionnée
   poll_types:
     proposal: Proposition
     count: opt-in

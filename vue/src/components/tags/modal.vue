@@ -10,7 +10,8 @@ export default {
       type: Object,
       required: true
     },
-    close: Function
+    close: Function,
+    afterSave: Function
   },
 
   data() {
@@ -47,6 +48,8 @@ export default {
     submit() {
       this.loading = true;
       this.tag.save().then(() => {
+        return this.afterSave ? this.afterSave(this.tag) : null;
+      }).then(() => {
         this.close();
       }).finally(() => {
         this.loading = false;

@@ -181,6 +181,12 @@ zh_CN:
     filter_placeholder: 筛选标签
     new_named_tag: 新标签“%{name}”
     edit_tags: 编辑标签
+    select_tags: 选择标签
+    merge_tag: 合并标签
+    merge: 合并
+    merge_into: 合并
+    merge_helptext: 将“%{name}”合并到另一个标签中。使用“%{name}”的帖子将使用选定的标签。
+    tag_merged: 标签已合并
   poll_types:
     proposal: 提议
     count: 选择加入

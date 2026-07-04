@@ -1,8 +1,6 @@
 <script setup lang="js">
 import TopicService from '@/shared/services/topic_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import AbilityService from '@/shared/services/ability_service';
-import EventBus from '@/shared/services/event_bus';
 import { pick, some, pull } from 'lodash-es';
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
@@ -35,14 +33,6 @@ const menuActions = computed(() => {
 });
 
 const canPerformAny = computed(() => some(menuActions.value, action => action.canPerform()));
-const canEditTags = computed(() => AbilityService.canEditTags(props.topic));
-
-function openTagsModal() {
-  EventBus.$emit('openModal', {
-    component: 'TopicTagsModal',
-    props: {topic: props.topic}
-  });
-}
 </script>
 
 <template lang="pug">

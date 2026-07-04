@@ -158,6 +158,12 @@ tr:
     filter_placeholder: Etiketleri filtrele
     new_named_tag: Yeni etiket "%{name}"
     edit_tags: Etiketleri düzenle
+    select_tags: Etiketleri seçin
+    merge_tag: Birleştirme etiketi
+    merge: Birleştir
+    merge_into: Birleştir
+    merge_helptext: '"%{name}" ifadesini başka bir etiketle birleştirin. "%{name}" ifadesini kullanan konular, seçilen etiketi kullanacaktır.'
+    tag_merged: Etiketler birleştirildi
   poll_types:
     proposal: öneri
     count: katılım

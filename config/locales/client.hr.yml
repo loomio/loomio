@@ -158,6 +158,12 @@ hr:
     filter_placeholder: Filtriraj oznake
     new_named_tag: Nova oznaka "%{name}"
     edit_tags: Uredi oznake
+    select_tags: Odaberite oznake
+    merge_tag: Spoji oznaku
+    merge: Spojiti
+    merge_into: Spoji u
+    merge_helptext: Spoji "%{name}" u drugu oznaku. Niti koje koriste "%{name}" koristit će odabranu oznaku umjesto nje.
+    tag_merged: Oznaka spojena
   poll_types:
     proposal: prijedlog
     count: uključiti se

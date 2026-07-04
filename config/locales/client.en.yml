@@ -185,6 +185,7 @@ en:
     all_tags: All tags
     tags: Tags
     apply_tags: Apply tags
+    select_tags: Select tags
     filter_placeholder: Filter tags
     new_named_tag: New tag "%{name}"
     new_tag: New tag
@@ -198,6 +199,11 @@ en:
     modal_destroy_title: Remove tag
     destroy_tag: Delete tag
     destroy_helptext: This will delete this tag and remove it from all threads in the group. Are you sure?
+    merge_tag: Merge tag
+    merge: Merge
+    merge_into: Merge into
+    merge_helptext: Merge "%{name}" into another tag. Threads using "%{name}" will use the selected tag instead
+    tag_merged: Tag merged
     helptext: Tags allow you to categorize conversations and easily find them later
     discussions_count_singular: "(%{count} thread)"
     discussions_count_plural: "(%{count} threads)"

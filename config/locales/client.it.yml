@@ -166,6 +166,12 @@ it:
     filter_placeholder: Filtra etichette
     new_named_tag: Nuova etichetta "%{name}"
     edit_tags: Modifica etichette
+    select_tags: Seleziona i tag
+    merge_tag: Tag di unione
+    merge: Unire
+    merge_into: Unirsi in
+    merge_helptext: Unisci "%{name}" in un altro tag. I thread che utilizzano "%{name}" useranno il tag selezionato invece
+    tag_merged: Tag uniti
   poll_types:
     proposal: proposta
     count: opt-in

@@ -166,6 +166,12 @@ pt_BR:
     filter_placeholder: Filtrar tags
     new_named_tag: Nova tag "%{name}"
     edit_tags: Editar tags
+    select_tags: Selecione as etiquetas
+    merge_tag: Etiqueta de mesclagem
+    merge: Fusão
+    merge_into: Fundir em
+    merge_helptext: Mesclar "%{name}" em outra tag. As threads que usam "%{name}" usarão a tag selecionada em vez da tag selecionada.
+    tag_merged: Etiqueta mesclada
   poll_types:
     proposal: proposta
     count: opt-in

@@ -169,6 +169,28 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes topic_ids, topic_id
   end
 
+  test "tags updates only topic tags" do
+    sign_in @admin
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
+
+    assert_response :success
+    assert_equal ['new', 'urgent'], @topic.reload.tags
+    assert_equal({}, JSON.parse(response.body))
+  end
+
+  test "tags can clear all topic tags" do
+    sign_in @admin
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: [] }
+
+    assert_response :success
+    assert_equal [], @topic.reload.tags
+    assert_equal({}, JSON.parse(response.body))
+  end
+
   # Test dismiss action
   test "dismiss updates dismissed_at" do
     sign_in @user

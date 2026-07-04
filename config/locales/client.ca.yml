@@ -158,6 +158,12 @@ ca:
     filter_placeholder: Filtrar etiquetes
     new_named_tag: Nova etiqueta "%{name}"
     edit_tags: Edita les etiquetes
+    select_tags: Selecciona etiquetes
+    merge_tag: Etiqueta de fusió
+    merge: Fusionar
+    merge_into: Fusionar-se en
+    merge_helptext: Fusiona "%{name}" amb una altra etiqueta. Els fils que utilitzin "%{name}" utilitzaran l'etiqueta seleccionada.
+    tag_merged: Etiqueta fusionada
   poll_types:
     proposal: proposta
     count: optar a

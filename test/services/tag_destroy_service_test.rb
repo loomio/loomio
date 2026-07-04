@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DestroyTagWorkerTest < ActiveSupport::TestCase
+class TagDestroyServiceTest < ActiveSupport::TestCase
   setup do
     @admin = users(:admin)
     @group = groups(:group)
@@ -15,7 +15,7 @@ class DestroyTagWorkerTest < ActiveSupport::TestCase
   end
 
   test "removes matching topic tags in the group and subgroups" do
-    DestroyTagWorker.new.perform(@group.id, 'apple')
+    TagService.destroy_by_name(@group.id, 'apple')
 
     assert_equal ['banana'], @parent_discussion.topic.reload.tags
     assert_equal ['banana'], @subgroup_discussion.topic.reload.tags

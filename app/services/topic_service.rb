@@ -47,6 +47,11 @@ class TopicService
     RepairTopicWorker.perform_later(topic.id) if rearrange
   end
 
+  def self.update_tags(topic:, tags:, actor:)
+    actor.ability.authorize! :update, topic
+    topic.update!(tags: Array(tags))
+  end
+
   def self.lock(topic:, actor:)
     actor.ability.authorize! :update, topic
     topic.update(locked_at: Time.now, locker_id: actor.id)

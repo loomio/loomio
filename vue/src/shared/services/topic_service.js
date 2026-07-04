@@ -212,19 +212,18 @@ export default new class TopicService {
 
       edit_tags: {
         icon: 'mdi-tag-plus-outline',
-        name: 'loomio_tags.apply_tags',
-        // collection: 'actions',
+        name: 'loomio_tags.select_tags',
         canPerform() {
           return AbilityService.canEditTags(topic);
         },
         perform() {
           return openModal({
-            component: 'TopicTagsModal',
+            component: 'TopicTagsDialog',
+            persistent: false,
             props: { topic }
           });
         }
       },
-
 
       move_thread: {
         name: 'action_dock.move_thread',

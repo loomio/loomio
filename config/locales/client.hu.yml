@@ -160,6 +160,12 @@ hu:
     filter_placeholder: Címkék szűrése
     new_named_tag: 'Új címke: „%{name}”'
     edit_tags: Címkék szerkesztése
+    select_tags: Címkék kiválasztása
+    merge_tag: Címke egyesítése
+    merge: Összeolvad
+    merge_into: Egyesítés
+    merge_helptext: A(z) „%{name}” címkét egy másik címkével egyesíti. A(z) „%{name}” címkét használó szálak a kiválasztott címkét fogják használni.
+    tag_merged: Címke egyesítve
   poll_types:
     proposal: javaslat
     count: feliratkozás

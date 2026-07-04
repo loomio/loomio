@@ -158,6 +158,12 @@ sv:
     filter_placeholder: Filtrera taggar
     new_named_tag: Ny tagg "%{name}"
     edit_tags: Redigera taggar
+    select_tags: Välj taggar
+    merge_tag: Sammanfogningstagg
+    merge: Slå ihop
+    merge_into: Sammanfoga till
+    merge_helptext: Sammanfoga "%{name}" med en annan tagg. Trådar som använder "%{name}" kommer att använda den valda taggen istället.
+    tag_merged: Tagg sammanfogad
   poll_types:
     proposal: förslag
     count: opt-in

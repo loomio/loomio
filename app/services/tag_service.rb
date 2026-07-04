@@ -23,8 +23,23 @@ class TagService
   def self.destroy(tag:, actor:)
     actor.ability.authorize! :destroy, tag
 
-    DestroyTagWorker.perform_later(tag.group_id, tag.name)
+    destroy_by_name(tag.group_id, tag.name)
     EventBus.broadcast 'tag_destroy', tag, actor
+  end
+
+  def self.destroy_by_name(group_id, name)
+    group = Group.find(group_id)
+    group_ids = group.id_and_subgroup_ids
+
+    Tag.transaction do
+      Tag.where(group_id: group_ids, name: name).destroy_all
+
+      Topic.where(group_id: group_ids).where("topics.tags @> ARRAY[?]::varchar[]", name).find_each do |topic|
+        topic.update_column(:tags, topic.tags - Array(name))
+      end
+    end
+
+    update_org_tagging_counts(group.parent_or_self.id)
   end
 
   def self.apply_colors(group_id)

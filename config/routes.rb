@@ -242,6 +242,7 @@ Rails.application.routes.draw do
         patch :dismiss, on: :member
         patch :recall, on: :member
         patch :set_volume, on: :member
+        patch :tags, on: :member
         patch :pin, on: :member
         patch :unpin, on: :member
         patch :lock, on: :member

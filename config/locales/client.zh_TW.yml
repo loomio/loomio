@@ -159,6 +159,12 @@ zh_TW:
     filter_placeholder: 篩選標籤
     new_named_tag: 新標籤“%{name}”
     edit_tags: 編輯標籤
+    select_tags: 選擇標籤
+    merge_tag: 合併標籤
+    merge: 合併
+    merge_into: 合併
+    merge_helptext: 將“%{name}”合併到另一個標籤中。使用「%{name}」的貼文將使用選定的標籤。
+    tag_merged: 標籤已合併
   poll_types:
     proposal: 提議
     count: 選擇參加

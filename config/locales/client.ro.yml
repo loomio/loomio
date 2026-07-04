@@ -158,6 +158,12 @@ ro:
     filter_placeholder: Filtrează etichetele
     new_named_tag: Etichetă nouă „%{name}”
     edit_tags: Editează etichetele
+    select_tags: Selectați etichetele
+    merge_tag: Etichetă de îmbinare
+    merge: Îmbinare
+    merge_into: Fuzionați în
+    merge_helptext: Îmbinați „%{name}” cu o altă etichetă. Firele de discuție care utilizează „%{name}” vor folosi în schimb eticheta selectată.
+    tag_merged: Etichetă îmbinată
   poll_types:
     proposal: propunere
     count: înscriere

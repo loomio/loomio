@@ -1,11 +1,8 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import Session        from '@/shared/services/session';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import AppConfig      from '@/shared/services/app_config';
+import Records      from '@/shared/services/records';
+import Session      from '@/shared/services/session';
+import EventBus     from '@/shared/services/event_bus';
 import WatchRecords from '@/mixins/watch_records';
-import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
 export default {
   mixins: [WatchRecords],
@@ -18,12 +15,8 @@ export default {
     close: Function
   },
 
-  directives: {
-    handle: HandleDirective
-  },
-
   data() {
-    return {allTags: this.group.tags()};
+    return {allTags: this.sortedTags()};
   },
 
   mounted() {
@@ -31,7 +24,7 @@ export default {
       key: 'tags'+this.group.id,
       collections: ['tags'],
       query: () => {
-        return this.allTags = this.group.tags();
+        return this.allTags = this.sortedTags();
       }
     });
   },
@@ -43,8 +36,18 @@ export default {
   },
 
   methods: {
+    sortedTags() {
+      const seen = {};
+      return this.group.tags().filter(tag => {
+        const name = tag.name.toLowerCase();
+        if (seen[name]) { return false; }
+        seen[name] = true;
+        return true;
+      }).sort((a, b) => a.name.localeCompare(b.name));
+    },
+
     query() {
-      this.allTags = this.group.tags();
+      this.allTags = this.sortedTags();
     },
 
     openNewTagModal() {
@@ -52,14 +55,7 @@ export default {
         component: 'TagsModal',
         props: {
           tag: Records.tags.build({groupId: this.group.id}),
-          close: () => {
-            EventBus.$emit('openModal', {
-              component: 'TagsSelect',
-              props: {
-                group: this.group
-              }
-            });
-          }
+          close: () => this.openTagsSelect()
         }
       });
     },
@@ -69,29 +65,51 @@ export default {
         component: 'TagsModal',
         props: {
           tag: tag.clone(),
-          close: () => {
-            EventBus.$emit('openModal', {
-              component: 'TagsSelect',
-              props: {
-                group: this.group
-              }
-            });
+          close: () => this.openTagsSelect()
+        }
+      });
+    },
+
+    openMergeTagModal(tag) {
+      EventBus.$emit('openModal', {
+        component: 'TagsMergeModal',
+        props: {
+          tag,
+          group: this.group,
+          close: () => this.openTagsSelect()
+        }
+      });
+    },
+
+    deleteTag(tag) {
+      EventBus.$emit('openModal', {
+        component: 'ConfirmModal',
+        props: {
+          close: () => this.openTagsSelect(),
+          confirm: {
+            submit: tag.destroy,
+            text: {
+              title:    'loomio_tags.destroy_tag',
+              helptext: 'loomio_tags.destroy_helptext',
+              submit:   'common.action.delete',
+              flash:    'loomio_tags.tag_destroyed'
+            }
           }
+        }
+      });
+    },
+
+    openTagsSelect() {
+      EventBus.$emit('openModal', {
+        component: 'TagsSelect',
+        props: {
+          group: this.group
         }
       });
     },
 
     submit() {
       EventBus.$emit('closeModal');
-    },
-
-    sortEnded() {
-      setTimeout(() => {
-        Records.remote.post('tags/priority', {
-          group_id: this.group.id,
-          ids: this.allTags.map(t => t.id)
-        });
-      });
     }
   }
 };
@@ -110,26 +128,19 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
       p.text-medium-emphasis(v-t="'loomio_tags.no_tags_in_group'")
-    sortable-list(
-      v-model:list="allTags"
-      useDragHandle
-      @sort-end="sortEnded"
-      append-to=".app-is-booted"
-      lock-axis="y"
-      axis="y"
-    )
-      sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
-        v-list-item
-          template(v-slot:prepend)
-            .handle(v-handle)
-              common-icon(name="mdi-drag-vertical")
-          v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
-          template(v-slot:append)
-            v-btn.tag-form__edit-tag(icon variant="text" @click="openEditTagModal(tag)")
-              common-icon.text-medium-emphasis(name="mdi-pencil")
-
-  v-card-actions(v-if="canAdminTags")
-    v-spacer
-    v-btn.tag-form__new-tag(variant="elevated" color="primary" @click="openNewTagModal")
-      span(v-t="'loomio_tags.new_tag'")
+    v-list
+      v-list-item(v-for="tag in allTags" :key="tag.id")
+        v-chip(:color="tag.color" outlined)
+          span.text-on-surface {{tag.name}}
+        template(v-slot:append)
+          v-btn.tag-form__edit-tag(icon size="small" variant="text" :title="$t('common.action.edit')" @click="openEditTagModal(tag)")
+            common-icon.text-medium-emphasis(name="mdi-pencil")
+          v-btn.tag-form__merge-tag(icon size="small" variant="text" :title="$t('loomio_tags.merge')" @click="openMergeTagModal(tag)" :disabled="allTags.length < 2")
+            common-icon.text-medium-emphasis(name="mdi-merge")
+          v-btn.tag-form__delete(icon size="small" variant="text" :title="$t('common.action.delete')" @click="deleteTag(tag)")
+            common-icon.text-medium-emphasis(name="mdi-delete")
+      v-list-item.tag-form__new-tag.mb-4(@click="openNewTagModal")
+        template(v-slot:prepend)
+          common-icon(name="mdi-plus")
+        span(v-t="'loomio_tags.new_tag'")
 </template>

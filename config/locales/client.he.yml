@@ -158,6 +158,12 @@ he:
     filter_placeholder: סנן תגיות
     new_named_tag: תגית חדשה "%{name}"
     edit_tags: עריכת תגיות
+    select_tags: בחירת תגיות
+    merge_tag: תג מיזוג
+    merge: לְמַזֵג
+    merge_into: התמזגו לתוך
+    merge_helptext: מיזוג "%{name}" לתוך תג אחר. שרשורים המשתמשים ב-"%{name}" ישתמשו בתג שנבחר במקום זאת
+    tag_merged: תגיות מוזגו
   poll_types:
     proposal: הצעה
     count: לבחור ב

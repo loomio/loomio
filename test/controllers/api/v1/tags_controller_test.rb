@@ -107,4 +107,18 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_equal ['banana'], @sub_poll.topic.reload.tags
     assert_equal 3, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
   end
+
+  test "destroy removes a parent tag from group and subgroup topics" do
+    tag = Tag.find_by(group_id: @group.id, name: 'apple')
+
+    delete :destroy, params: { id: tag.id }
+    assert_response :success
+
+    assert_equal ['banana'], @discussion.topic.reload.tags
+    assert_equal ['banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['banana'], @poll.topic.reload.tags
+    assert_equal ['banana'], @sub_poll.topic.reload.tags
+    assert_not Tag.exists?(group_id: @group.parent_or_self.id_and_subgroup_ids, name: 'apple')
+    assert JSON.parse(response.body)['tags'].none? { |t| t['name'] == 'apple' }
+  end
 end

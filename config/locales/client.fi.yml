@@ -158,6 +158,12 @@ fi:
     filter_placeholder: Suodata tunnisteet
     new_named_tag: Uusi tagi "%{name}"
     edit_tags: Muokkaa tunnisteita
+    select_tags: Valitse tunnisteet
+    merge_tag: Yhdistä tagi
+    merge: Yhdistää
+    merge_into: Yhdistä osaksi
+    merge_helptext: Yhdistä "%{name}" toiseen tagiin. Säikeet, jotka käyttävät "%{name}"-tagia, käyttävät valittua tagia sen sijaan.
+    tag_merged: Tagi yhdistetty
   poll_types:
     proposal: ehdotus
     count: opt-in

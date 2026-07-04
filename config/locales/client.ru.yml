@@ -158,6 +158,12 @@ ru:
     filter_placeholder: Фильтровать метки
     new_named_tag: Новая метка "%{name}"
     edit_tags: Редактировать метки
+    select_tags: Выберите теги
+    merge_tag: Тег слияния
+    merge: Слияние
+    merge_into: Слияние в
+    merge_helptext: Объедините тег "%{name}" с другим тегом. В темах, использующих "%{name}", будет использоваться выбранный тег.
+    tag_merged: Тег объединен
   poll_types:
     proposal: предложение
     count: выбрать в

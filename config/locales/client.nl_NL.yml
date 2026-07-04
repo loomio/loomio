@@ -158,6 +158,12 @@ nl_NL:
     filter_placeholder: Labels filteren
     new_named_tag: Nieuw label "%{name}"
     edit_tags: Labels bewerken
+    select_tags: Selecteer tags
+    merge_tag: Samenvoegtag
+    merge: Samenvoegen
+    merge_into: Samenvoegen in
+    merge_helptext: Voeg "%{name}" samen met een andere tag. Threads die "%{name}" gebruiken, zullen in plaats daarvan de geselecteerde tag gebruiken.
+    tag_merged: Labels samengevoegd
   poll_types:
     proposal: voorstel
     count: opt-in

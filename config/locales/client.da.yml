@@ -158,6 +158,12 @@ da:
     filter_placeholder: Filtrer tags
     new_named_tag: Nyt tag "%{name}"
     edit_tags: Rediger tags
+    select_tags: Vælg tags
+    merge_tag: Flet-tag
+    merge: Flet
+    merge_into: Flet ind i
+    merge_helptext: Flet "%{name}" ind i et andet tag. Tråde, der bruger "%{name}", vil bruge det valgte tag i stedet.
+    tag_merged: Tag flettet
   poll_types:
     proposal: forslag
     count: Tilmeld

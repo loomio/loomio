@@ -164,6 +164,12 @@ de:
     filter_placeholder: Schlagwörter filtern
     new_named_tag: Neues Schlagwort "%{name}"
     edit_tags: Schlagwörter bearbeiten
+    select_tags: Schlagwörter auswählen
+    merge_tag: Merge-Tag
+    merge: Verschmelzen
+    merge_into: Zusammenführen mit
+    merge_helptext: Füge "%{name}" in ein anderes Tag ein. Threads, die "%{name}" verwenden, verwenden stattdessen das ausgewählte Tag.
+    tag_merged: Tag zusammengeführt
   poll_types:
     proposal: Vorschlag
     count: Opt-in

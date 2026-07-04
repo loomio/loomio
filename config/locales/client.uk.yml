@@ -158,6 +158,12 @@ uk:
     filter_placeholder: Фільтрувати мітки
     new_named_tag: Нова мітка "%{name}"
     edit_tags: Редагувати мітки
+    select_tags: Вибрати теги
+    merge_tag: Тег об'єднання
+    merge: Об'єднати
+    merge_into: Об'єднати з
+    merge_helptext: Об'єднати "%{name}" з іншим тегом. Теми, що використовують "%{name}", використовуватимуть вибраний тег.
+    tag_merged: Тег об'єднано
   poll_types:
     proposal: пропозиція
     count: вибрати в
