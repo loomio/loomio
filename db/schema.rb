@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_03_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_05_053018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1044,7 +1044,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_03_000001) do
     t.string "color"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.integer "taggings_count", default: 0
+    t.integer "taggings_count", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.integer "org_taggings_count", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
