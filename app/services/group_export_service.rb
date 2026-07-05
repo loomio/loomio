@@ -280,16 +280,21 @@ class GroupExportService
     ActiveRecord::Base.transaction do
       migrate_ids = build_migrate_ids(datas_by_table, tables)
       existing_user_ids = User.where(id: migrate_ids['users']&.values || []).pluck(:id)
+      existing_tag_ids = Tag.where(id: migrate_ids['tags']&.values || []).pluck(:id)
 
       tables.each do |table|
         klass = table.classify.constantize
         pk = klass.primary_key
+        inserted_tag_ids = Set.new
         datas_by_table[table].each do |data|
           old_id = data['record'][pk]
-          next if table == 'users' && existing_user_ids.include?(migrate_ids[table][old_id])
+          new_id = migrate_ids[table][old_id]
+          next if table == 'users' && existing_user_ids.include?(new_id)
+          next if table == 'tags' && existing_tag_ids.include?(new_id)
+          next if table == 'tags' && !inserted_tag_ids.add?(new_id)
 
           attrs = data['record'].deep_dup
-          attrs[pk] = migrate_ids[table][attrs[pk]]
+          attrs[pk] = new_id
           translate_foreign_keys!(attrs, table, migrate_ids)
           record = klass.new(attrs)
           prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
@@ -333,6 +338,14 @@ class GroupExportService
     conn.select_values("SELECT nextval(#{conn.quote(seq)}) FROM generate_series(1, #{count.to_i})").map(&:to_i)
   end
 
+  # Look up a foreign key's migrated id, falling back to the original id when
+  # the target table wasn't part of this import (e.g. importing into an
+  # existing group without re-creating the group record itself).
+  def self.resolve_id(target_table, old_id, migrate_ids)
+    map = migrate_ids[target_table]
+    map&.has_key?(old_id) ? map[old_id] : old_id
+  end
+
   def self.build_migrate_ids(datas_by_table, tables)
     tables.each_with_object({}.with_indifferent_access) do |table, migrate_ids|
       klass = table.classify.constantize
@@ -350,6 +363,24 @@ class GroupExportService
           old_id = data['record'][pk]
           existing_user = existing_users_by_email[data['record']['email'].to_s.downcase]
           migrate_ids[table][old_id] = existing_user ? existing_user.id : reserved_ids.shift
+        end
+      elsif table == 'tags'
+        # Source data can itself contain multiple tag rows that collide once
+        # inserted, since Tag#name is citext (case-insensitive) and normalizes
+        # by stripping whitespace on assignment. Key on the same normalization
+        # TagService uses so we dedupe exactly what the DB will treat as identical.
+        tag_key = ->(data) { [resolve_id('groups', data['record']['group_id'], migrate_ids), TagService.normalized_tag_name(data['record']['name'])] }
+        resolved_group_ids = records.map { |data| tag_key.call(data).first }.uniq
+        existing_tags_by_key = Tag.where(group_id: resolved_group_ids).index_by { |tag| [tag.group_id, TagService.normalized_tag_name(tag.name)] }
+
+        unique_keys = records.map { |data| tag_key.call(data) }.uniq
+        new_keys = unique_keys.reject { |key| existing_tags_by_key.key?(key) }
+        new_id_by_key = new_keys.zip(reserve_ids(klass, new_keys.length)).to_h
+
+        records.each do |data|
+          old_id = data['record'][pk]
+          key = tag_key.call(data)
+          migrate_ids[table][old_id] = existing_tags_by_key[key]&.id || new_id_by_key[key]
         end
       else
         old_ids = records.map { |data| data['record'][pk] }

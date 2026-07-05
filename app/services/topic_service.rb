@@ -49,7 +49,7 @@ class TopicService
 
   def self.update_tags(topic:, tags:, actor:)
     actor.ability.authorize! :update, topic
-    topic.update!(tags: Array(tags))
+    topic.update!(tags: Array(tags).map { |tag| tag.to_s.strip }.reject(&:blank?))
   end
 
   def self.lock(topic:, actor:)
