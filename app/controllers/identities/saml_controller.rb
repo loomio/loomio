@@ -32,10 +32,14 @@ class Identities::SamlController < ApplicationController
       access_token: nil
     }
 
-    identity = IdentityService.link_or_create(
-      identity_params: identity_params,
-      current_user: current_user
-    )
+    identity = begin
+      IdentityService.link_or_create(
+        identity_params: identity_params,
+        current_user: current_user
+      )
+    rescue ActiveRecord::RecordInvalid => e
+      return respond_with_error(422, e.message)
+    end
 
     # Handle pending identity flow (user is switching accounts)
     if !identity.user

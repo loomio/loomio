@@ -48,6 +48,7 @@ class IdentityService
 
       if identity.user.nil?
         identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
+        Sentry.set_context('identity_params', identity_params.slice(:identity_type, :uid, :email, :name))
         identity.user.save!
       else
         identity.user.update(email_verified: true) unless identity.user.email_verified?
