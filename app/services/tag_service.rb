@@ -174,7 +174,7 @@ class TagService
 
     Tag.transaction do
       duplicate_groups.each do |tags|
-        canonical = tags.max_by { |tag| [tag.taggings_count, -tag.id] }
+        canonical = tags.max_by { |tag| [tag.taggings_count.to_i, -tag.id] }
 
         (tags - [canonical]).each do |dupe|
           Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
@@ -182,8 +182,8 @@ class TagService
           end
 
           canonical.update_columns(
-            taggings_count: canonical.taggings_count + dupe.taggings_count,
-            org_taggings_count: canonical.org_taggings_count + dupe.org_taggings_count
+            taggings_count: canonical.taggings_count.to_i + dupe.taggings_count.to_i,
+            org_taggings_count: canonical.org_taggings_count.to_i + dupe.org_taggings_count.to_i
           )
           dupe.destroy!
           merged += 1
