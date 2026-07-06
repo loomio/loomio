@@ -3,7 +3,7 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
   before_action :authenticate_api_key!
   include ::LoadAndAuthorize
 
-  USER_UPDATE_FIELDS = [:name, :username, :email]
+  USER_UPDATE_FIELDS = [:name, :username, :email, :is_admin]
 
   def authenticate_api_key!
     api_key = ENV.fetch('B3_API_KEY', '')
@@ -12,7 +12,7 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
   end
 
   def index
-    render json: {users: User.includes(:identities).order(:id).map { |user| user_json(user) }}
+    render json: {users: users.includes(:identities).order(:id).map { |user| user_json(user) }}
   end
 
   def show
@@ -77,6 +77,12 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
     User.includes(:identities)
   end
 
+  def users
+    scope = User.all
+    scope = scope.where(is_admin: ActiveModel::Type::Boolean.new.cast(params[:is_admin])) if params.key?(:is_admin)
+    scope
+  end
+
   def user
     @user ||= user_scope.find(params[:id])
   end
@@ -128,6 +134,7 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
       name: user.name,
       username: user.username,
       email: user.email,
+      is_admin: user.is_admin,
       active: user.deactivated_at.blank?,
       deactivated_at: user.deactivated_at&.iso8601,
       identities: user.identities.map { |identity| identity_json(identity) }

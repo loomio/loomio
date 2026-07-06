@@ -27,9 +27,27 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     assert_equal @user.name, user['name']
     assert_equal @user.username, user['username']
     assert_equal @user.email, user['email']
+    assert_equal false, user['is_admin']
     assert_equal true, user['active']
     assert_nil user['deactivated_at']
     assert_equal @identity.uid, user['identities'].first['uid']
+  end
+
+  test "index filters users by admin status" do
+    admin = User.create!(
+      name: "b3admin#{SecureRandom.hex(4)}",
+      email: "b3admin#{SecureRandom.hex(4)}@example.com",
+      username: "b3admin#{SecureRandom.hex(4)}",
+      email_verified: true,
+      is_admin: true
+    )
+
+    get :index, params: { b3_api_key: @api_key, is_admin: true }
+    assert_response 200
+
+    user_ids = json['users'].map { |item| item['id'] }
+    assert_includes user_ids, admin.id
+    refute_includes user_ids, @user.id
   end
 
   test "show returns a user" do
@@ -37,6 +55,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     assert_response 200
 
     assert_equal @user.id, json['user']['id']
+    assert_equal false, json['user']['is_admin']
     assert_equal @identity.uid, json['user']['identities'].first['uid']
   end
 
@@ -54,14 +73,17 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
       user: {
         name: 'Updated Name',
         username: "updated#{SecureRandom.hex(4)}",
-        email: "updated#{SecureRandom.hex(4)}@example.com"
+        email: "updated#{SecureRandom.hex(4)}@example.com",
+        is_admin: true
       }
     }
     assert_response 200
 
     @user.reload
     assert_equal 'Updated Name', @user.name
+    assert @user.is_admin
     assert_equal @user.name, json['user']['name']
+    assert_equal true, json['user']['is_admin']
   end
 
   test "update rejects unknown user fields" do
@@ -70,14 +92,13 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
       id: @user.id,
       user: {
         name: 'Updated Name',
-        is_admin: true
+        memberships_count: 99
       }
     }
     assert_response 400
 
     @user.reload
     refute_equal 'Updated Name', @user.name
-    refute @user.is_admin
   end
 
   test "update by identity changes managed user fields" do
