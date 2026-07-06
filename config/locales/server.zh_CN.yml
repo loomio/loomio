@@ -641,6 +641,11 @@ zh_CN:
       subject: 您发送给 Loomio 的消息未送达
       reason: 这是因为您的电子邮件客户端将邮件发送到了“发件人”地址，而不是提供的“回复”地址。
       recommendation: 请在浏览器中打开 Loomio 并直接发布您的消息。
+    comment_rejected:
+      subject: 您的回复未发布。
+      reason: 您的回复未发布，因为它超过了主题帖的 %{count} 个字符限制。
+      recommendation: 为避免出现更多问题，请打开帖子并直接输入您的消息。
+      open_thread: 打开帖子
   poll_mailer:
     common:
       why_send_this: 您收到此邮件的原因是 %{reason}

@@ -642,6 +642,11 @@ de:
       subject: Deine Nachricht an Loomio wurde nicht zugestellt.
       reason: Dies geschah, weil dein E-Mail-Client die Nachricht an die „Von“-Adresse und nicht an die angegebene „Antwort an“-Adresse adressiert hat.
       recommendation: Bitte öffne Loomio in deinem Browser und poste deine Nachricht direkt.
+    comment_rejected:
+      subject: Deine Antwort wurde nicht veröffentlicht
+      reason: Deine Antwort wurde nicht veröffentlicht, weil sie länger als das Limit von %{count} Zeichen für diesen Thread ist
+      recommendation: Um weitere Probleme zu vermeiden, öffne den Thread und gib deine Nachricht direkt ein
+      open_thread: Thread öffnen
   locale_names:
     en: Englisch
     be-BY: Belarussisch

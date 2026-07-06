@@ -610,6 +610,11 @@ ro:
       subject: Mesajul tău către Loomio nu a fost livrat.
       reason: Acest lucru s-a întâmplat deoarece clientul dvs. de e-mail a adresat mesajul adresei „Expeditor”, în loc de adresa „Răspuns către” furnizată.
       recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.
+    comment_rejected:
+      subject: Răspunsul tău nu a fost postat
+      reason: Răspunsul tău nu a fost postat deoarece este mai lung decât limita de %{count} caractere a firului de discuție.
+      recommendation: Pentru a evita alte probleme, deschideți firul de discuție și introduceți direct mesajul.
+      open_thread: Deschide firul de discuție
   locale_names:
     en: Engleză
     be-BY: Belarusă

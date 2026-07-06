@@ -99,6 +99,42 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
+  test "releases personal email-to-thread route when reply exceeds comment length limit" do
+    original_reply = ENV['REPLY_HOSTNAME']
+    ENV['REPLY_HOSTNAME'] = 'test.host'
+
+    user = User.create!(name: 'LongReplyUser', email: "longreply#{SecureRandom.hex(4)}@example.com",
+                        email_verified: true, username: "longreply#{SecureRandom.hex(4)}")
+    group = Group.create!(name: 'Long Reply Group', handle: "longreplygroup#{SecureRandom.hex(4)}")
+    group.add_member!(user)
+    discussion = DiscussionService.create(params: { title: "Test", group_id: group.id, comment_length_max: 10 }, actor: user)
+
+    route_local = "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+    to = "#{route_local}@#{ENV['REPLY_HOSTNAME']}"
+    from = "\"#{user.name}\" <#{user.email}>"
+
+    email = ReceivedEmail.create!(
+      headers: { 'From' => from, 'To' => to, 'Subject' => 'Test Subject' },
+      body_text: "This reply is too long"
+    )
+
+    assert_no_difference 'Comment.count' do
+      assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+        ReceivedEmailService.route(email)
+      end
+    end
+
+    assert email.reload.released
+    delivered = ActionMailer::Base.deliveries.last
+    assert_includes delivered.to, user.email
+    assert_equal 'Your reply was not posted', delivered.subject
+    assert_includes delivered.text_part.body.to_s, "10 character limit"
+    assert_includes delivered.text_part.body.to_s, discussion.key
+    assert_includes delivered.html_part.body.to_s, "open the thread"
+  ensure
+    ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
   test "creates a discussion for group handle" do
     original_reply = ENV['REPLY_HOSTNAME']
     ENV['REPLY_HOSTNAME'] = 'test.host'

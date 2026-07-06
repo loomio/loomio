@@ -610,6 +610,11 @@ sv:
       subject: Ditt meddelande till Loomio levererades inte
       reason: Detta hände eftersom din e-postklient adresserade meddelandet till "Från"-adressen snarare än den angivna "Svara till"-adressen.
       recommendation: Öppna Loomio i din webbläsare och skicka ditt meddelande direkt.
+    comment_rejected:
+      subject: Ditt svar publicerades inte
+      reason: Ditt svar publicerades inte eftersom det är längre än trådens teckengräns på %{count}
+      recommendation: För att undvika ytterligare problem, öppna tråden och skriv ditt meddelande direkt.
+      open_thread: Öppna tråden
   locale_names:
     en: Engelska
     be-BY: vitryska

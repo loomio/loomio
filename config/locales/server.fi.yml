@@ -610,6 +610,11 @@ fi:
       subject: Viestiäsi Loomiolle ei toimitettu
       reason: Tämä tapahtui, koska sähköpostiohjelmasi osoitti viestin lähettäjäosoitteeseen eikä annettuun vastausosoitteeseen.
       recommendation: Avaa Loomio selaimessasi ja lähetä viestisi suoraan.
+    comment_rejected:
+      subject: Vastaustasi ei julkaistu
+      reason: Vastaustasi ei lähetetty, koska se on pidempi kuin ketjun %{count} merkkiä.
+      recommendation: Välttääksesi lisäongelmia, avaa ketju ja kirjoita viestisi suoraan
+      open_thread: Avaa ketju
   locale_names:
     en: englanti
     be-BY: Valko-Venäjän

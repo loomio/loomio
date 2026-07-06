@@ -616,6 +616,11 @@ da:
       subject: Din besked til Loomio blev ikke leveret
       reason: Dette skete, fordi din e-mailklient adresserede beskeden til "Fra"-adressen i stedet for den angivne "Svar-til"-adresse.
       recommendation: Åbn Loomio i din browser og send din besked direkte.
+    comment_rejected:
+      subject: Dit svar blev ikke postet
+      reason: Dit svar blev ikke postet, fordi det er længere end trådens tegngrænse på %{count}
+      recommendation: For at undgå yderligere problemer, åbn tråden og indtast din besked direkte
+      open_thread: Åben tråd
   locale_names:
     en: Engelsk
     be-BY: Hviderussisk

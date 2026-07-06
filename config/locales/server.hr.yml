@@ -610,6 +610,11 @@ hr:
       subject: Vaša poruka za Loomio nije dostavljena
       reason: To se dogodilo jer je vaš klijent e-pošte adresu poslao na adresu "Od", a ne na navedenu adresu "Odgovori".
       recommendation: Molimo vas da otvorite Loomio u svom pregledniku i izravno objavite svoju poruku.
+    comment_rejected:
+      subject: Vaš odgovor nije objavljen
+      reason: Vaš odgovor nije objavljen jer je duži od ograničenja broja znakova u temi (%{count})
+      recommendation: Kako biste izbjegli daljnje probleme, otvorite temu i izravno unesite svoju poruku
+      open_thread: Otvori nit
   locale_names:
     en: engleski
     be-BY: Bjeloruski

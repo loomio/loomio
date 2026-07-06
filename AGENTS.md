@@ -58,6 +58,11 @@ Register-grooming completed so far:
   - Destructure `defineProps` and reference bare prop names (not `props.x`).
 - In client code, do not guard `poll.topic()` or `discussion.topic()` with existence checks once the poll or discussion has been created. Topics are required for created polls and discussions; if a topic is missing, let it raise so the data integrity issue is visible.
 
+## Phlex / Mailers
+
+- Write new Rails views and mailer views as Phlex components under `app/views`, not ERB templates.
+- Do not add separate text templates for mailers; the plain-text version is generated automatically from the HTML email.
+
 ## Null objects
 
 - When adding a method to `User` or `Group`, also add the corresponding method to the null object (`LoggedOutUser` or `NullGroup`) so logged-out and nil-group paths do not raise `NoMethodError`.

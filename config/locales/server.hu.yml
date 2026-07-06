@@ -622,6 +622,11 @@ hu:
       subject: Az üzeneted Loomiónak nem érkezett meg kézbesítésre.
       reason: Ez azért történt, mert az e-mail kliens a megadott „Feladó” címre küldte az üzenetet, nem pedig a megadott „Válaszcímre”.
       recommendation: Kérjük, nyissa meg a Loomiót a böngészőjében, és küldje el közvetlenül az üzenetét.
+    comment_rejected:
+      subject: A válaszod nem lett közzétéve
+      reason: A válaszod nem lett közzétéve, mert hosszabb, mint a téma %{count} karakterkorlátja.
+      recommendation: A további problémák elkerülése érdekében nyisd meg a beszélgetést, és írd be közvetlenül az üzenetedet.
+      open_thread: Nyitott téma
   locale_names:
     en: angol
     be-BY: fehérorosz

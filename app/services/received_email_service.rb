@@ -71,7 +71,7 @@ class ReceivedEmailService
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
       Rails.logger.info("creating comment from email for #{email.sender_email}");
-      CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+      create_comment_from_email(email)
       email.update_attribute(:released, true)
       return
     when /[^\s]+\+u=.+&k=.+/
@@ -248,5 +248,19 @@ class ReceivedEmailService
       body_format: 'md',
       files: email.attachments.map {|a| a.blob }
     }.compact
+  end
+
+  def self.create_comment_from_email(email)
+    CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.info("email comment invalid: #{e.record.errors.full_messages.join(', ')}")
+    send_comment_rejected_email(email, e.record)
+    nil
+  end
+
+  def self.send_comment_rejected_email(email, comment)
+    return unless ThrottleService.can?(key: 'comment_rejected', id: email.sender_email.downcase, max: 1, per: 'hour')
+
+    ForwardMailer.comment_rejected(to: email.sender_name_and_email, comment: comment).deliver_now
   end
 end

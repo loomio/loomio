@@ -640,6 +640,11 @@ zh_TW:
       subject: 您發送給 Loomio 的訊息未送達
       reason: 這是因為您的電子郵件用戶端將郵件發送到了「寄件者」地址，而不是提供的「回覆」地址。
       recommendation: 請在瀏覽器中開啟 Loomio 並直接發布您的訊息。
+    comment_rejected:
+      subject: 您的回覆未發布。
+      reason: 您的回覆未發布，因為它超過了主題貼文的 %{count} 個字元限制。
+      recommendation: 為避免更多問題，請開啟貼文並直接輸入您的訊息。
+      open_thread: 開啟貼文
   locale_names:
     en: 英語
     be-BY: 白俄羅斯

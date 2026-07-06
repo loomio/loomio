@@ -610,6 +610,11 @@ tr:
       subject: Loomio'ya mesajınız iletilmedi
       reason: Bu durum, e-posta istemcinizin iletiyi sağlanan "Yanıtla" adresi yerine "Kimden" adresine yönlendirmesinden kaynaklandı.
       recommendation: Lütfen tarayıcınızda Loomio'yu açın ve mesajınızı doğrudan gönderin.
+    comment_rejected:
+      subject: Yanıtınız yayınlanmadı.
+      reason: Yanıtınız, konunun %{count} karakter sınırını aştığı için yayınlanmadı.
+      recommendation: Daha fazla sorun yaşamamak için, ileti dizisini açın ve mesajınızı doğrudan girin.
+      open_thread: Konuyu aç
   locale_names:
     en: İngilizce
     be-BY: Belarusça

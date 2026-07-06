@@ -109,6 +109,16 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `thread_arrangement_form.comment_length_max_description`, `thread_arrangement_form.comment_length_max_hint` | `Fomente...`, `Déjelo...` | `Fomenta...`, `Déjalo...` | Formal `usted` forms; app uses informal `tú` throughout |
 | `config/locales/client.ca.yml`, `client.nl_NL.yml`, `client.sl.yml`, `client.uk.yml` | `set_password_prompt.no_thanks` | Button labels with final full stops, e.g. `Nee, bedankt.` | Removed final full stops, e.g. `Nee, bedankt` | Short button labels should not end with a full stop |
 
+## 2026-07-06 — forward_mailer comment_rejected
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml`, `server.fr.yml` | `forward_mailer.comment_rejected.*` | Formal `Ihre/Sie` / `Votre/ouvrez` register | Informal `du/dein` / `tu/ton` register | These locales use informal direct address throughout |
+| `config/locales/server.es.yml` | `forward_mailer.comment_rejected.open_thread` | `Hilo abierto` | `Abrir hilo` | Button text should be an action, not an adjective phrase |
+| `config/locales/server.it.yml` | `forward_mailer.comment_rejected.open_thread` | `Discussione aperta` | `Apri discussione` | Button text should be an action, not an adjective phrase |
+| `config/locales/server.nl_NL.yml` | `forward_mailer.comment_rejected.reason` | `thread` | `discussie` | Thread means discussion here, not a technical/mechanical thread |
+| `config/locales/server.pt_BR.yml` | `forward_mailer.comment_rejected.open_thread` | `Tópico aberto` | `Abrir discussão` | Button text should be an action, not an adjective phrase |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

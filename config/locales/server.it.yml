@@ -621,6 +621,11 @@ it:
       subject: Il tuo messaggio a Loomio non è stato recapitato
       reason: Ciò è accaduto perché il tuo client di posta elettronica ha indirizzato il messaggio all'indirizzo "Da" anziché all'indirizzo "Rispondi a" fornito.
       recommendation: Apri Loomio nel tuo browser e pubblica direttamente il tuo messaggio.
+    comment_rejected:
+      subject: La tua risposta non è stata pubblicata
+      reason: La tua risposta non è stata pubblicata perché è più lunga del limite di caratteri %{count} consentito per la discussione.
+      recommendation: Per evitare ulteriori problemi, apri la discussione e inserisci il tuo messaggio direttamente
+      open_thread: Apri discussione
   locale_names:
     en: Inglese
     be-BY: bielorusso

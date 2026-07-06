@@ -1,4 +1,4 @@
-class ForwardMailer < ActionMailer::Base
+class ForwardMailer < ApplicationMailer
   layout nil
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}>"
 
@@ -29,5 +29,17 @@ class ForwardMailer < ActionMailer::Base
       to: to,
       subject: I18n.t('forward_mailer.bounce.subject'),
     )
+  end
+
+  def comment_rejected(to:, comment:)
+    headers['Auto-Submitted'] = 'auto-replied'
+    headers['X-Precedence'] = 'auto_reply'
+    headers['X-Auto-Response-Suppress'] = 'All'
+
+    component = Views::ForwardMailer::CommentRejected.new(comment: comment)
+
+    send_email(to: to, locale: :en, component: component) {
+      I18n.t('forward_mailer.comment_rejected.subject')
+    }
   end
 end

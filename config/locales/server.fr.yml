@@ -640,6 +640,11 @@ fr:
       subject: Ton message à Loomio n'a pas été transmis.
       reason: Cela s'est produit car ton client de messagerie a adressé le message à l'adresse « De » au lieu de l'adresse « Répondre à » indiquée.
       recommendation: Ouvre Loomio dans ton navigateur et poste ton message directement.
+    comment_rejected:
+      subject: Ta réponse n'a pas été publiée
+      reason: Ta réponse n'a pas été publiée parce qu'elle dépasse la limite de %{count} caractères de la discussion
+      recommendation: Pour éviter d'autres problèmes, ouvre la discussion et saisis ton message directement
+      open_thread: Ouvrir la discussion
   locale_names:
     en: Anglais
     be-BY: Biélorusse

@@ -640,6 +640,11 @@ pt_BR:
       subject: Sua mensagem para a Loomio não foi entregue.
       reason: Isso aconteceu porque seu cliente de e-mail endereçou a mensagem para o endereço "De", em vez do endereço "Responder para" fornecido.
       recommendation: Abra o Loomio no seu navegador e publique sua mensagem diretamente.
+    comment_rejected:
+      subject: Sua resposta não foi publicada
+      reason: Sua resposta não foi publicada porque excede o limite de %{count} caracteres da discussão
+      recommendation: Para evitar problemas futuros, abra a discussão e digite sua mensagem diretamente
+      open_thread: Abrir discussão
   locale_names:
     en: Inglês
     be-BY: bielorrusso

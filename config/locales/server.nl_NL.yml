@@ -637,6 +637,11 @@ nl_NL:
       subject: Uw bericht aan Loomio is niet afgeleverd
       reason: Dit gebeurde omdat uw e-mailclient het bericht naar het 'Van'-adres had geadresseerd in plaats van het opgegeven 'Beantwoorden aan'-adres.
       recommendation: Open Loomio in uw browser en plaats uw bericht direct.
+    comment_rejected:
+      subject: Je reactie is niet geplaatst
+      reason: Je reactie is niet geplaatst omdat deze langer is dan de limiet van %{count} tekens voor de discussie
+      recommendation: Open de discussie en typ je bericht direct in om verdere problemen te voorkomen
+      open_thread: Open discussie
   locale_names:
     en: Engels
     be-BY: Wit-Russisch

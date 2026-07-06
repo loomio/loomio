@@ -610,6 +610,11 @@ ja:
       subject: Loomioへのメッセージは配信されませんでした
       reason: これは、電子メール クライアントが、指定された「返信先」アドレスではなく、「送信元」アドレスにメッセージを送信したために発生しました。
       recommendation: ブラウザでLoomioを開いて、メッセージを直接投稿してください。
+    comment_rejected:
+      subject: あなたの返信は投稿されませんでした
+      reason: あなたの返信は、スレッドの文字数制限である%{count}文字を超えているため、投稿されませんでした。
+      recommendation: さらなる問題を避けるため、スレッドを開いて直接メッセージを入力してください。
+      open_thread: オープンスレッド
   locale_names:
     en: 英語
     be-BY: ベラルーシ語

@@ -612,6 +612,11 @@ ca:
       subject: El teu missatge a Loomio no s'ha lliurat.
       reason: Això ha passat perquè el vostre client de correu electrònic ha adreçat el missatge a l'adreça "De", en comptes de l'adreça "Respon" que heu proporcionat.
       recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.
+    comment_rejected:
+      subject: La teva resposta no s'ha publicat
+      reason: La teva resposta no s'ha publicat perquè és més llarga que el límit de %{count} caràcters del fil.
+      recommendation: Per evitar més problemes, obre el fil i escriu el teu missatge directament.
+      open_thread: Obre el fil
   locale_names:
     en: Anglès
     be-BY: Bielorús

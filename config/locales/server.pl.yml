@@ -637,6 +637,11 @@ pl:
       subject: Twoja wiadomość do Loomio nie została dostarczona
       reason: Stało się tak, ponieważ Twój klient poczty e-mail zaadresował wiadomość na adres „Od”, a nie na podany adres „Odpowiedz do”.
       recommendation: Otwórz Loomio w przeglądarce i bezpośrednio opublikuj swoją wiadomość.
+    comment_rejected:
+      subject: Twoja odpowiedź nie została opublikowana
+      reason: Twoja odpowiedź nie została opublikowana, ponieważ jest dłuższa niż limit %{count} znaków wątku
+      recommendation: Aby uniknąć dalszych problemów, otwórz wątek i wpisz bezpośrednio swoją wiadomość
+      open_thread: Otwarty wątek
   locale_names:
     en: angielski
     be-BY: białoruski

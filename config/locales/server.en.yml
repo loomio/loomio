@@ -678,6 +678,11 @@ en:
       subject: Your message to Loomio was not delivered
       reason: This happened because your email client addressed the message to the “From” address, rather than the “Reply‑To” address provided.
       recommendation: Please open Loomio in your browser and post your message directly.
+    comment_rejected:
+      subject: Your reply was not posted
+      reason: Your reply was not posted because it is longer than the thread's %{count} character limit
+      recommendation: To avoid further issues, open the thread and enter your message directly
+      open_thread: Open thread
   poll_mailer:
     common:
       why_send_this: You are receiving this email because %{reason}
