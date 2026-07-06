@@ -52,7 +52,7 @@ boot(function(data) {
         "TypeError: Failed to fetch",
         "TypeError: Load failed",
         "Non-Error promise rejection captured with keys: exception, ok, status, statusText",
-        "Can't find variable: __firefox__"
+        /__firefox__/
       ],
       tunnel: '/bug_tunnel',
       integrations: [Sentry.browserTracingIntegration({ router })],
