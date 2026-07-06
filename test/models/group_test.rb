@@ -136,7 +136,7 @@ class GroupTest < ActiveSupport::TestCase
     subgroup.add_member!(user1)
     total_memberships = group.memberships.count + subgroup.memberships.count
     # total_memberships should be > org_members_count due to user1 being in both
-    assert total_memberships > group.org_members_count
+    assert total_memberships > group.reload.org_members_count
     assert_equal 2, group.org_members_count
   end
 end

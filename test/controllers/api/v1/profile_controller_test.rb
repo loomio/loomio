@@ -37,6 +37,17 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "groups uses record cache for serialized associations" do
+    sign_in @user
+    @group.add_member!(@user) unless @group.members.include?(@user)
+
+    assert_no_record_cache_fallbacks do
+      get :groups, format: :json
+    end
+
+    assert_response :success
+  end
+
   test "destroy deactivates the users account" do
     sign_in @user
     post :destroy, format: :json

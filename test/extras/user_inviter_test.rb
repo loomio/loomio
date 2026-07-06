@@ -25,7 +25,7 @@ class UserInviterTest < ActiveSupport::TestCase
     end
 
     # org_members_count (old path) doesn't count revoked rows — only the actor
-    assert_equal 1, @group.org_members_count
+    assert_equal 1, @group.reload.org_members_count
 
     # all_memberships.count (new trial path) includes revoked — actor + 2 revoked = 3
     assert_equal 3, @group.all_memberships.count
@@ -65,7 +65,7 @@ class UserInviterTest < ActiveSupport::TestCase
       Membership.create!(user: user, group: @group, accepted_at: Time.current, revoked_at: Time.current)
     end
 
-    assert_equal 1, @group.org_members_count
+    assert_equal 1, @group.reload.org_members_count
 
     # Non-trial uses org_members_count: 1 + 1 = 2 ≤ 3 → allowed
     assert_nothing_raised do

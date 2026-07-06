@@ -54,6 +54,7 @@ class Membership < ApplicationRecord
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
+  after_commit :update_org_members_count
 
   def title_model
     group
@@ -95,5 +96,14 @@ class Membership < ApplicationRecord
 
   def set_volume
     self.volume = user.default_membership_volume if id.nil?
+  end
+
+  def update_org_members_count
+    return unless previous_changes.keys.intersect?(%w[group_id user_id revoked_at]) || destroyed?
+
+    Group.update_org_members_count_for_group_ids([
+      previous_changes.dig('group_id', 0),
+      group_id
+    ])
   end
 end

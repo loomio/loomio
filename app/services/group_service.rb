@@ -70,6 +70,7 @@ module GroupService
       g.update_memberships_count
       PollGroupMembersAddedWorker.perform_later(g.id)
     end
+    Group.update_org_members_count_for_group_ids(group_ids)
 
     Events::MembershipCreated.publish!(
       group: group,
@@ -179,11 +180,14 @@ module GroupService
     actor.ability.authorize! :merge, target
 
     Group.transaction do
+      old_group_ids = source.parent_or_self.id_and_subgroup_ids
+      new_group_ids = target.parent_or_self.id_and_subgroup_ids
       source.subgroups.update_all(parent_id: target.id)
       Topic.where(group_id: source.id).update_all(group_id: target.id)
       source.membership_requests.update_all(group_id: target.id)
       source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
       source.destroy
+      Group.update_org_members_count_for_group_ids(old_group_ids + new_group_ids)
     end
   end
 

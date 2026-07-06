@@ -37,6 +37,7 @@ module Null::Group
       update_closed_polls_count
       update_discussions_count
       update_discussion_templates_count
+      update_org_members_count
       presence
       present?
       content_locale
@@ -123,6 +124,7 @@ module Null::Group
       memberships_count
       pending_memberships_count
       admin_memberships_count
+      org_members_count
       subgroups_count
     ]
   end

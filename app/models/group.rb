@@ -115,6 +115,7 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
   define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
+  define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
   define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
@@ -312,10 +313,6 @@ class Group < ApplicationRecord
     reload
   end
 
-  def org_members_count
-    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
-  end
-
   def org_accepted_members_count
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
@@ -360,6 +357,16 @@ class Group < ApplicationRecord
 
   def id_and_subgroup_ids
     subgroup_ids.concat([id]).compact.uniq
+  end
+
+  def self.update_org_members_count_for_group_ids(group_ids)
+    parent_ids = Group
+      .where(id: Array(group_ids).compact)
+      .pluck(Arel.sql('COALESCE(parent_id, id)'))
+      .compact
+      .uniq
+
+    Group.where(id: parent_ids).find_each(&:update_org_members_count)
   end
 
 

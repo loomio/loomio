@@ -59,6 +59,7 @@ class MembershipService
     invited_group_ids.each do |group_id|
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
+    Group.update_org_members_count_for_group_ids(invited_group_ids)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
     Events::InvitationAccepted.publish!(accepted_membership) if notify && accepted_membership&.accepted_at
@@ -97,6 +98,7 @@ class MembershipService
       .update_all(revoked_at: revoked_at, revoker_id: actor_id)
 
     Group.where(id: group_ids).map(&:update_memberships_count)
+    Group.update_org_members_count_for_group_ids(group_ids)
   end
 
 

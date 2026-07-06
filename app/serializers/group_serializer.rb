@@ -82,16 +82,16 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def logo_url
-    object.self_or_parent_logo_url
+    cached_group.logo_url || cached_parent_group&.logo_url
   end
 
 
   def has_custom_cover_photo
-    object.custom_cover_photo?
+    cached_group.custom_cover_photo?
   end
 
   def cover_url
-    object.self_or_parent_cover_url
+    cached_group.cover_url || cached_parent_group&.cover_url
   end
 
   def tag_names
@@ -103,6 +103,16 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
+  def cached_group
+    @cached_group ||= cache_fetch(:groups_by_id, object.id) { object }
+  end
+
+  def cached_parent_group
+    return nil unless object.parent_id
+
+    @cached_parent_group ||= cache_fetch(:groups_by_id, object.parent_id) { cached_group.parent }
+  end
+
   def include_tags?
     super && (object.group_privacy == 'open' || current_user_membership)
   end

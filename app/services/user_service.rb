@@ -52,6 +52,7 @@ class UserService
     Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
+    Group.update_org_members_count_for_group_ids(group_ids)
     user.update(deactivated_at: nil)
     ReindexAuthorWorker.perform_later(user.id)
   end
