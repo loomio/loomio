@@ -126,6 +126,24 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal I18n.t('auth_form.signed_in'), flash[:notice]
   end
 
+  test "strips whitespace from SAML nameid before creating user" do
+    session[:back_to] = '/dashboard'
+
+    with_saml_mocks(saml_response: mock_saml_response(nameid: 'samltest@example.com ')) do
+      assert_difference ['Identity.where(identity_type: "saml").count', 'User.count'], 1 do
+        post :create, params: { SAMLResponse: 'base64_encoded' }
+      end
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'samltest@example.com', identity.uid
+    assert_equal 'samltest@example.com', identity.email
+    assert_equal 'samltest@example.com', identity.user.email
+
+    assert_equal identity.user, @controller.current_user
+    assert_redirected_to '/dashboard'
+  end
+
   # Create - verified user with same email exists
   test "auto-links to verified user and signs in" do
     hex = SecureRandom.hex(4)

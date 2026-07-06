@@ -24,10 +24,12 @@ class Identities::SamlController < ApplicationController
 
     return respond_with_error(500, "SAML response is not valid") unless saml_response.is_valid?
 
+    nameid = saml_response.nameid.to_s.strip
+
     identity_params = {
       identity_type: 'saml',
-      uid: saml_response.nameid,
-      email: saml_response.nameid,
+      uid: nameid,
+      email: nameid,
       name: saml_response.attributes['displayName'],
       access_token: nil
     }
