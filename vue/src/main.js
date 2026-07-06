@@ -50,7 +50,9 @@ boot(function(data) {
         "TypeError: annulé",
         "Permission denied to access property \"dispatchEvent\" on cross-origin object",
         "TypeError: Failed to fetch",
-        "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
+        "TypeError: Load failed",
+        "Non-Error promise rejection captured with keys: exception, ok, status, statusText",
+        "Can't find variable: __firefox__"
       ],
       tunnel: '/bug_tunnel',
       integrations: [Sentry.browserTracingIntegration({ router })],

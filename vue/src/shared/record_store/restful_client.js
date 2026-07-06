@@ -1,7 +1,14 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
+import * as Sentry from '@sentry/browser';
 
 const getCSRF = () => decodeURIComponent(document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/)?.[1] || '');
+
+const metricResourceFor = path => {
+  const pathname = new URL(path, window.location.origin).pathname;
+  const [, api, version, resource] = pathname.split('/');
+  return api === 'api' && version === 'v1' && resource ? resource : 'unknown';
+};
 
 export default class RestfulClient {
 
@@ -86,6 +93,14 @@ export default class RestfulClient {
       response = await fetch(path, opts);
     } catch (err) {
       console.warn('Network error:', method, path, err);
+      Sentry.metrics.count('client.network_error', 1, {
+        attributes: {
+          method,
+          resource: metricResourceFor(path),
+          online: navigator.onLine,
+          error_name: err.name || 'Error'
+        }
+      });
       throw Object.assign(err, { networkError: true });
     }
 
