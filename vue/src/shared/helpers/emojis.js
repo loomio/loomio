@@ -74,6 +74,10 @@ const frequentShortcodes = [
   'waving_hand'
 ];
 
+function emojiIsSelectable(emoji) {
+  return emoji.group != null && emoji.group !== 2;
+}
+
 function metadataKey(emoji) {
   return emoji.replace(/\uFE0F/g, '');
 }
@@ -117,7 +121,7 @@ function canonicalEntryFor(english) {
   };
 }
 
-const canonicalEntries = englishEmojiData.map(canonicalEntryFor);
+const canonicalEntries = englishEmojiData.filter(emojiIsSelectable).map(canonicalEntryFor);
 const englishMetadata = metadataByEmoji(englishEmojiData);
 
 function aliasesFor(shortcode) {
