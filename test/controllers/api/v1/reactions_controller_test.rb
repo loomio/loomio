@@ -12,7 +12,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     CommentService.create(comment: comment, actor: user)
 
     reaction_params = {
-      reaction: '+1',
+      reaction: '👍',
       reactable_id: comment.id,
       reactable_type: 'Comment'
     }
@@ -42,7 +42,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     )
 
     reaction_params = {
-      reaction: '+1',
+      reaction: '👍',
       reactable_id: comment.id,
       reactable_type: 'Comment'
     }
@@ -56,7 +56,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     user = users(:admin)
 
     sign_in user
-    post :create, params: { reaction: { reaction: '+1', reactable_id: user.id, reactable_type: 'User' } }
+    post :create, params: { reaction: { reaction: '👍', reactable_id: user.id, reactable_type: 'User' } }
 
     assert_response :not_found
   end
@@ -86,10 +86,10 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     )
     OutcomeService.create(outcome: outcome, actor: user)
 
-    comment_reaction = Reaction.create!(user: user, reactable: comment, reaction: '+1')
-    discussion_reaction = Reaction.create!(user: user, reactable: discussion, reaction: '+1')
-    poll_reaction = Reaction.create!(user: user, reactable: poll, reaction: '+1')
-    outcome_reaction = Reaction.create!(user: user, reactable: outcome, reaction: '+1')
+    comment_reaction = Reaction.create!(user: user, reactable: comment, reaction: '👍')
+    discussion_reaction = Reaction.create!(user: user, reactable: discussion, reaction: '👍')
+    poll_reaction = Reaction.create!(user: user, reactable: poll, reaction: '👍')
+    outcome_reaction = Reaction.create!(user: user, reactable: outcome, reaction: '👍')
 
     sign_in user
     get :index, params: {
@@ -111,7 +111,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     discussion.topic.update!(allow_reactions: false)
 
     sign_in user
-    post :create, params: { reaction: { reaction: '+1', reactable_id: comment.id, reactable_type: 'Comment' } }
+    post :create, params: { reaction: { reaction: '👍', reactable_id: comment.id, reactable_type: 'Comment' } }
     assert_response :forbidden
   end
 
@@ -122,8 +122,8 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     comment = Comment.new(body: "Test comment", parent: discussion, author: author)
     CommentService.create(comment: comment, actor: author)
 
-    Reaction.create!(user: author, reactable: comment, reaction: '+1')
-    Reaction.create!(user: author, reactable: discussion, reaction: '+1')
+    Reaction.create!(user: author, reactable: comment, reaction: '👍')
+    Reaction.create!(user: author, reactable: discussion, reaction: '👍')
 
     # Create a user who is NOT a member of the group
     unauthorized_user = User.create!(

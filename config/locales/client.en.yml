@@ -404,12 +404,6 @@ en:
   emoji_picker:
     search: Search
     common: Frequently used
-    expressions: Faces
-    hands: Hands
-    people: People
-    nature: Nature
-    objects: Things
-    places: Places
   ordinal:
     _1: 1st
     _2: 2nd

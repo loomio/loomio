@@ -1,6 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
-import { colonToUnicode } from '@/shared/helpers/emojis';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
 import { compact } from 'lodash-es';
 
@@ -53,7 +52,7 @@ export default class NotificationModel extends BaseModel {
   args() {
     return {
       actor: this.name,
-      reaction: (this.kind === "reaction_created" ? colonToUnicode(this.reaction) : undefined),
+      reaction: (this.kind === "reaction_created" ? this.reaction : undefined),
       title: this.title,
       poll_type: this.pollType,
       model: this.model

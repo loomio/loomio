@@ -318,7 +318,7 @@ module Dev::FakeDataHelper
     Reaction.new({
       reactable: fake_comment,
       user: fake_user,
-      reaction: "+1"
+      reaction: "👍"
     }.merge(args))
   end
 

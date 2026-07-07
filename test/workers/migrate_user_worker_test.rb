@@ -36,7 +36,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     @jennifer_comment = Comment.new(parent: @discussion, body: "Jennifer's comment #{hex}")
     CommentService.create(comment: @jennifer_comment, actor: @jennifer)
 
-    @reaction = Reaction.create!(reactable: @patrick_comment, user: @patrick, reaction: "+1")
+    @reaction = Reaction.create!(reactable: @patrick_comment, user: @patrick, reaction: "👍")
 
     @poll = PollService.create(params: {
       title: "MigratePoll#{hex}",

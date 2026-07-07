@@ -1,49 +1,68 @@
-<script lang="js">
-import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis';
-import { pick } from 'lodash-es';
+<script setup lang="js">
+import { computed, ref } from 'vue';
+import { emojis, frequentEmojis, searchEmojis } from '@/shared/helpers/emojis';
 
-export default {
-  props: {
-    isPoll: Boolean,
-    insert: {
-      type: Function,
-      required: true
-    }
-  },
-
-  data() {
-    return {
-      search: '',
-      showMore: false
-    };
-  },
-
-  methods: {
-    srcForEmoji
-  },
-
-  computed: {
-    emojis() {
-      if (this.showMore) {
-        return emojisByCategory;
-      } else {
-        return pick(emojisByCategory, ['common', 'hands', 'expressions']);
-      }
-    }
+const props = defineProps({
+  isPoll: Boolean,
+  insert: {
+    type: Function,
+    required: true
   }
-};
+});
 
+const search = ref('');
+
+// Flatten emojilib into a single ordered list for the unfiltered grid.
+// We render as a flat scrollable set (categories were dropped when the
+// curated emoji_table.js was replaced by emojilib).
+const allEntries = computed(() =>
+  Object.entries(emojis).map(([shortcode, unicode]) => ({ shortcode, unicode }))
+);
+
+const searchResults = computed(() => searchEmojis(search.value));
+
+function pick(entry) {
+  props.insert(entry.shortcode, entry.unicode);
+}
 </script>
 
 <template lang="pug">
 v-sheet.emoji-picker.pa-2
-  div(v-for='(emojiGroup, category) in emojis', :key='category')
-    h5(v-t="'emoji_picker.'+category")
-    div.emoji-picker__emojis
-      span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
-  .d-flex.justify-center.pb-2
-    v-btn(v-if="!showMore" size="x-small" @click.stop="showMore = true" v-t="'common.action.show_more'")
-    v-btn(v-if="showMore" size="x-small" @click.stop="showMore = false" v-t="'common.action.show_fewer'")
+  div.emoji-picker__search-wrapper(@click.stop)
+    v-text-field.emoji-picker__search(
+      v-model="search"
+      variant="outlined"
+      density="compact"
+      hide-details
+      single-line
+      clearable
+      :placeholder="$t('emoji_picker.search')"
+      prepend-inner-icon="mdi-magnify"
+    )
+  template(v-if="search")
+    .emoji-picker__emojis
+      span.emoji-picker__emoji(
+        v-for="entry in searchResults"
+        :key="entry.shortcode"
+        :title="entry.shortcode"
+        @click="pick(entry)"
+      ) {{ entry.unicode }}
+  template(v-else)
+    h5.emoji-picker__heading(v-t="'emoji_picker.common'")
+    .emoji-picker__emojis.emoji-picker__frequent
+      span.emoji-picker__emoji(
+        v-for="entry in frequentEmojis"
+        :key="entry.shortcode"
+        :title="entry.shortcode"
+        @click="pick(entry)"
+      ) {{ entry.unicode }}
+    .emoji-picker__emojis
+      span.emoji-picker__emoji(
+        v-for="entry in allEntries"
+        :key="entry.shortcode"
+        :title="entry.shortcode"
+        @click="pick(entry)"
+      ) {{ entry.unicode }}
 </template>
 
 <style lang="sass">
@@ -51,22 +70,36 @@ v-sheet.emoji-picker.pa-2
   max-width: 330px
   max-height: 400px
   overflow-y: auto
-  h5
-    font-weight: normal
-    // text-align: center
+
+.emoji-picker__search-wrapper
+  margin-bottom: 4px
+
+.emoji-picker__search
+  // v-text-field's own padding handles spacing
+
+.emoji-picker__heading
+  font-weight: normal
+  margin-top: 4px
 
 .emoji-picker__emojis
   display: flex
   flex-direction: row
   flex-wrap: wrap
-  font-size: 36px
+  font-size: 24px
+  margin-bottom: 12px
+
+.emoji-picker__frequent
   margin-bottom: 16px
 
-  img, span
-    width: 40px
-    height: 40px
-    cursor: pointer
-    text-align: center
-    display: block
-    margin: 4px
+.emoji-picker__emoji
+  width: 32px
+  height: 32px
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  margin: 2px
+  border-radius: 4px
+  &:hover
+    background-color: rgba(var(--v-theme-on-surface), 0.08)
 </style>

@@ -13,7 +13,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
     )
 
     @reaction = Reaction.new(
-      reaction: ":heart:",
+      reaction: "❤️",
       reactable: @comment,
       user: @user
     )
@@ -28,15 +28,15 @@ class ReactionServiceTest < ActiveSupport::TestCase
   test "does not notify if the user is no longer in the group" do
     @group.memberships.find_by(user: @user).destroy
 
-    reactor_reaction = Reaction.new(reaction: ":heart:", reactable: @comment, user: @admin)
-    ReactionService.update(reaction: reactor_reaction, params: { reaction: 'smiley' }, actor: @admin)
+    reactor_reaction = Reaction.new(reaction: "❤️", reactable: @comment, user: @admin)
+    ReactionService.update(reaction: reactor_reaction, params: { reaction: '😃' }, actor: @admin)
 
     assert_equal 0, @user.notifications.count
   end
 
   test "comment reaction notification url uses contextual topic route" do
-    reactor_reaction = Reaction.new(reaction: ":heart:", reactable: @comment, user: @admin)
-    ReactionService.update(reaction: reactor_reaction, params: { reaction: 'smiley' }, actor: @admin)
+    reactor_reaction = Reaction.new(reaction: "❤️", reactable: @comment, user: @admin)
+    ReactionService.update(reaction: reactor_reaction, params: { reaction: '😃' }, actor: @admin)
 
     assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", @user.notifications.last.event.notification_url
   end

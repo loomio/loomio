@@ -282,9 +282,9 @@ module Dev::NintiesMoviesHelper
   def create_all_notifications
     #'reaction_created'
     patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
-    reaction = Reaction.new(reactable: patrick_comment, reaction: ":heart:")
+    reaction = Reaction.new(reactable: patrick_comment, reaction: "❤️")
     new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
-    reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
+    reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: '🙂'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
@@ -298,11 +298,11 @@ module Dev::NintiesMoviesHelper
 
 
     [max, emilio, judd].each {|u| patrick_comment.group.add_member! u}
-    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
-    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':heart:'}, actor: patrick)
-    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':laughing:'}, actor: max)
-    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':cry:'}, actor: emilio)
-    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':wave:'}, actor: judd)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: '🙂'}, actor: jennifer)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: '❤️'}, actor: patrick)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: '😆'}, actor: max)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: '😢'}, actor: emilio)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: '👋'}, actor: judd)
 
     #'membership_requested',
     membership_request = MembershipRequest.new(group: create_group)

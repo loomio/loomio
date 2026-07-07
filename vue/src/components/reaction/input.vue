@@ -14,14 +14,8 @@ export default {
     }
   },
 
-  data() {
-    return {
-      search: null,
-    };
-  },
-
   methods: {
-    insert(emoji) {
+    insert(shortcode, unicode) {
       const params = {
         reactableType: capitalize(this.model.constructor.singular),
         reactableId: this.model.id,
@@ -29,7 +23,7 @@ export default {
       };
 
       const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);
-      reaction.reaction = `:${emoji}:`;
+      reaction.reaction = unicode;
       reaction.save();
     }
   }
