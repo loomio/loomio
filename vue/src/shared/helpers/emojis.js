@@ -1,20 +1,68 @@
-import emojiLib from 'emojilib';
+import englishEmojiData from 'emojibase-data/en/compact.json';
 
-// emojiLib is keyed by unicode glyph -> [canonical_shortcode, *keywords].
-// Flatten to {shortcode: glyph} so the picker and any callers iterate by name.
-export const emojis = (() => {
-  const out = {};
-  for (const [glyph, [code, ...keywords]] of Object.entries(emojiLib)) {
-    out[code] = glyph;
-  }
-  return out;
-})();
+const emojiDataLoaders = {
+  bn: () => import('emojibase-data/bn/compact.json'),
+  da: () => import('emojibase-data/da/compact.json'),
+  de: () => import('emojibase-data/de/compact.json'),
+  en: () => import('emojibase-data/en/compact.json'),
+  'en-gb': () => import('emojibase-data/en-gb/compact.json'),
+  es: () => import('emojibase-data/es/compact.json'),
+  'es-mx': () => import('emojibase-data/es-mx/compact.json'),
+  et: () => import('emojibase-data/et/compact.json'),
+  fi: () => import('emojibase-data/fi/compact.json'),
+  fr: () => import('emojibase-data/fr/compact.json'),
+  hi: () => import('emojibase-data/hi/compact.json'),
+  hu: () => import('emojibase-data/hu/compact.json'),
+  it: () => import('emojibase-data/it/compact.json'),
+  ja: () => import('emojibase-data/ja/compact.json'),
+  ko: () => import('emojibase-data/ko/compact.json'),
+  lt: () => import('emojibase-data/lt/compact.json'),
+  ms: () => import('emojibase-data/ms/compact.json'),
+  nb: () => import('emojibase-data/nb/compact.json'),
+  nl: () => import('emojibase-data/nl/compact.json'),
+  pl: () => import('emojibase-data/pl/compact.json'),
+  pt: () => import('emojibase-data/pt/compact.json'),
+  ru: () => import('emojibase-data/ru/compact.json'),
+  sv: () => import('emojibase-data/sv/compact.json'),
+  th: () => import('emojibase-data/th/compact.json'),
+  uk: () => import('emojibase-data/uk/compact.json'),
+  vi: () => import('emojibase-data/vi/compact.json'),
+  zh: () => import('emojibase-data/zh/compact.json'),
+  'zh-hant': () => import('emojibase-data/zh-hant/compact.json')
+};
+
+const emojiEntriesByLocale = {};
+
+const legacyAliases = {
+  '+1': ['thumbs_up'],
+  '-1': ['thumbs_down'],
+  call_me: ['call_me_hand'],
+  clap: ['clapping_hands'],
+  heart: ['red_heart'],
+  hankey: ['pile_of_poo'],
+  laughing: ['grinning_squinting_face'],
+  metal: ['sign_of_the_horns'],
+  pray: ['folded_hands'],
+  simple_smile: ['slightly_smiling_face'],
+  slight_frown: ['frowning_face'],
+  slight_smile: ['slightly_smiling_face'],
+  tada: ['party_popper'],
+  thumbsup: ['thumbs_up'],
+  thumbsdown: ['thumbs_down'],
+  v: ['victory_hand'],
+  wave: ['waving_hand']
+};
+
+const unicodeOverrides = {
+  thumbs_down: '👎',
+  thumbs_up: '👍'
+};
 
 // A small set of shortcodes that frequently get used and that we want to
 // surface even when the user has not typed anything specific. Pinned at the
 // top of the picker so common picks (smile, heart, thumbs up, tada, ...) are
 // one click away regardless of scroll position.
-export const frequentEmojis = [
+const frequentShortcodes = [
   'slightly_smiling_face',
   'red_heart',
   'thumbs_up',
@@ -24,20 +72,119 @@ export const frequentEmojis = [
   'ok_hand',
   'folded_hands',
   'waving_hand'
-].map(code => ({ shortcode: code, unicode: emojis[code] }))
- .filter(e => e.unicode);
+];
 
-// Search emoji by shortcode or emojilib keyword. Returns matching entries
-// as the user types; an empty string returns an empty array (callers render
-// the full grid instead).
-export function searchEmojis(query) {
+function metadataKey(emoji) {
+  return emoji.replace(/\uFE0F/g, '');
+}
+
+function metadataByEmoji(data) {
+  const out = {};
+  data.forEach(emoji => {
+    out[metadataKey(emoji.unicode)] = emoji;
+  });
+  return out;
+}
+
+function shortcodeForLabel(label) {
+  return normalizeSearchTerm(label)
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9+]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function normalizeSearchTerm(term) {
+  return term.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+function normalizeLocale(locale) {
+  const normalized = (locale || 'en').replaceAll('_', '-').toLowerCase();
+  const localeAliases = {
+    'nl-nl': 'nl',
+    'pt-br': 'pt',
+    'zh-cn': 'zh',
+    'zh-tw': 'zh-hant'
+  };
+  const candidate = localeAliases[normalized] || normalized.split('-')[0] || 'en';
+  return emojiDataLoaders[candidate] ? candidate : 'en';
+}
+
+function canonicalEntryFor(english) {
+  const shortcode = shortcodeForLabel(english.label);
+  return {
+    shortcode,
+    unicode: unicodeOverrides[shortcode] || english.unicode
+  };
+}
+
+const canonicalEntries = englishEmojiData.map(canonicalEntryFor);
+const englishMetadata = metadataByEmoji(englishEmojiData);
+
+function aliasesFor(shortcode) {
+  return Object.keys(legacyAliases).filter(alias => legacyAliases[alias].includes(shortcode));
+}
+
+function entryFor(canonicalEntry, localizedMetadata) {
+  const key = metadataKey(canonicalEntry.unicode);
+  const english = englishMetadata[key] || {};
+  const localized = localizedMetadata[key] || english;
+  const label = localized.label || english.label || canonicalEntry.shortcode.replaceAll('_', ' ');
+  const aliases = aliasesFor(canonicalEntry.shortcode);
+
+  return {
+    ...canonicalEntry,
+    label,
+    searchTerms: [
+      canonicalEntry.shortcode,
+      canonicalEntry.shortcode.replaceAll('_', ' '),
+      ...aliases,
+      ...aliases.map(alias => alias.replaceAll('_', ' ')),
+      label,
+      ...(localized.tags || []),
+      english.label,
+      ...(english.tags || [])
+    ].filter(Boolean).map(normalizeSearchTerm)
+  };
+}
+
+export async function loadEmojiEntries(locale) {
+  const emojiLocale = normalizeLocale(locale);
+  if (emojiEntriesByLocale[emojiLocale]) { return emojiEntriesByLocale[emojiLocale]; }
+
+  const data = emojiLocale === 'en'
+    ? englishEmojiData
+    : (await emojiDataLoaders[emojiLocale]()).default;
+  const localizedMetadata = metadataByEmoji(data);
+  const entries = canonicalEntries.map(entry => entryFor(entry, localizedMetadata));
+
+  emojiEntriesByLocale[emojiLocale] = entries;
+  return entries;
+}
+
+export const emojis = canonicalEntries.reduce((out, entry) => {
+  out[entry.shortcode] = entry.unicode;
+  return out;
+}, {});
+
+export const frequentEmojis = frequentShortcodes
+  .map(code => {
+    const entry = canonicalEntries.find(candidate => candidate.shortcode === code);
+    return entry && { ...entry, label: entry.shortcode.replaceAll('_', ' ') };
+  })
+  .filter(Boolean);
+
+export function frequentEmojiEntries(entries) {
+  const entriesByShortcode = {};
+  entries.forEach(entry => {
+    entriesByShortcode[entry.shortcode] = entry;
+  });
+
+  return frequentShortcodes.map(code => entriesByShortcode[code]).filter(Boolean);
+}
+
+// Search emoji by shortcode plus localized and English labels/keywords.
+export function searchEmojis(query, entries = []) {
   if (!query) { return []; }
-  const q = query.toLowerCase();
-  const results = [];
-  for (const [glyph, [code, ...keywords]] of Object.entries(emojiLib)) {
-    if (code.includes(q) || keywords.some(k => k.includes(q))) {
-      results.push({ shortcode: code, unicode: glyph });
-    }
-  }
-  return results;
+  const q = normalizeSearchTerm(query);
+  return entries.filter(entry => entry.searchTerms.some(term => term.includes(q)));
 }

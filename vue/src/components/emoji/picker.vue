@@ -1,6 +1,7 @@
 <script setup lang="js">
-import { computed, ref } from 'vue';
-import { emojis, frequentEmojis, searchEmojis } from '@/shared/helpers/emojis';
+import { computed, onMounted, ref } from 'vue';
+import { frequentEmojiEntries, loadEmojiEntries, searchEmojis } from '@/shared/helpers/emojis';
+import Session from '@/shared/services/session';
 
 const props = defineProps({
   isPoll: Boolean,
@@ -11,15 +12,17 @@ const props = defineProps({
 });
 
 const search = ref('');
+const entries = ref([]);
 
-// Flatten emojilib into a single ordered list for the unfiltered grid.
-// We render as a flat scrollable set (categories were dropped when the
-// curated emoji_table.js was replaced by emojilib).
-const allEntries = computed(() =>
-  Object.entries(emojis).map(([shortcode, unicode]) => ({ shortcode, unicode }))
-);
+const allEntries = computed(() => entries.value);
+const frequentEntries = computed(() => frequentEmojiEntries(entries.value));
+const searchResults = computed(() => searchEmojis(search.value, entries.value));
 
-const searchResults = computed(() => searchEmojis(search.value));
+onMounted(() => {
+  loadEmojiEntries(Session.user()?.locale).then(loadedEntries => {
+    entries.value = loadedEntries;
+  });
+});
 
 function pick(entry) {
   props.insert(entry.shortcode, entry.unicode);
@@ -44,23 +47,23 @@ v-sheet.emoji-picker.pa-2
       span.emoji-picker__emoji(
         v-for="entry in searchResults"
         :key="entry.shortcode"
-        :title="entry.shortcode"
+        :title="entry.label"
         @click="pick(entry)"
       ) {{ entry.unicode }}
   template(v-else)
     h5.emoji-picker__heading(v-t="'emoji_picker.common'")
     .emoji-picker__emojis.emoji-picker__frequent
       span.emoji-picker__emoji(
-        v-for="entry in frequentEmojis"
+        v-for="entry in frequentEntries"
         :key="entry.shortcode"
-        :title="entry.shortcode"
+        :title="entry.label"
         @click="pick(entry)"
       ) {{ entry.unicode }}
     .emoji-picker__emojis
       span.emoji-picker__emoji(
         v-for="entry in allEntries"
         :key="entry.shortcode"
-        :title="entry.shortcode"
+        :title="entry.label"
         @click="pick(entry)"
       ) {{ entry.unicode }}
 </template>
