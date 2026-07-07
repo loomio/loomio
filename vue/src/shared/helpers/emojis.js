@@ -81,8 +81,50 @@ const frequentShortcodes = [
   'rocket'
 ];
 
+// Fitzpatrick skin tone modifiers, ordered light to dark. Index 0 here maps to
+// the picker's tone 1 (the "default" tone 0 uses the base, un-toned emoji).
+const skinToneHexcodes = ['1F3FB', '1F3FC', '1F3FD', '1F3FE', '1F3FF'];
+
+// Swatch colours + i18n keys for the picker's skin tone menu. Index matches the
+// tone value stored/applied (0 = default/yellow, 1-5 = light to dark).
+export const skinTones = [
+  { tone: 0, color: '#ffc93a', key: 'default' },
+  { tone: 1, color: '#fadcbd', key: 'light' },
+  { tone: 2, color: '#e0bb95', key: 'medium_light' },
+  { tone: 3, color: '#bf8f68', key: 'medium' },
+  { tone: 4, color: '#9b643d', key: 'medium_dark' },
+  { tone: 5, color: '#594539', key: 'dark' }
+];
+
+// Resolve the unicode for an entry at the given skin tone (0 = base emoji).
+// Falls back to the base emoji when the entry has no variant for that tone.
+export function tonedUnicode(entry, tone) {
+  if (!tone || !entry.skins) { return entry.unicode; }
+  return entry.skins[tone - 1] || entry.unicode;
+}
+
 function emojiIsSelectable(emoji) {
   return emoji.group != null && emoji.group !== 2;
+}
+
+// Extract the single-tone variants for an emoji, ordered light to dark. For
+// multi-person emojis (which also carry mixed-tone combinations) this keeps
+// only the variant where every person shares the same tone. The tone modifier
+// can appear mid-sequence in ZWJ emojis, so we match on the modifiers present
+// rather than a fixed hexcode suffix.
+function skinsFor(emoji) {
+  if (!emoji.skins) { return null; }
+  const byTone = {};
+  emoji.skins.forEach(skin => {
+    const tones = skin.hexcode.split('-').filter(part => skinToneHexcodes.includes(part));
+    const distinct = [...new Set(tones)];
+    if (distinct.length === 1) {
+      const index = skinToneHexcodes.indexOf(distinct[0]);
+      if (byTone[index] === undefined) { byTone[index] = skin.unicode; }
+    }
+  });
+  const skins = skinToneHexcodes.map((hexcode, index) => byTone[index] || null);
+  return skins.some(Boolean) ? skins : null;
 }
 
 function metadataKey(emoji) {
@@ -122,9 +164,11 @@ function normalizeLocale(locale) {
 
 function canonicalEntryFor(english) {
   const shortcode = shortcodeForLabel(english.label);
+  const skins = skinsFor(english);
   return {
     shortcode,
-    unicode: unicodeOverrides[shortcode] || english.unicode
+    unicode: unicodeOverrides[shortcode] || english.unicode,
+    ...(skins ? { skins } : {})
   };
 }
 

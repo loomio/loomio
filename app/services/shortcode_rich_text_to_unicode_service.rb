@@ -147,8 +147,7 @@ class ShortcodeRichTextToUnicodeService
   end
 
   def shortcode_unicode(code)
-    MigrateReactionsToUnicode::SHORTCODE_TO_UNICODE[code] ||
-      MigrateReactionsToUnicode::SHORTCODE_TO_UNICODE[code.to_sym]
+    MigrateReactionsToUnicode::SHORTCODE_TO_UNICODE[code]
   end
 
   def convert_text(text, unknown_counts)
