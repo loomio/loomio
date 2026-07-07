@@ -1,5 +1,7 @@
 class TagService
   def self.create(tag:, actor:)
+    tag.group = tag.group.parent_or_self if tag.group
+    tag.name = clean_tag_name(tag.name)
     actor.ability.authorize! :create, tag
 
     return false unless tag.valid?
@@ -12,7 +14,7 @@ class TagService
   def self.update(tag:, params:, actor:)
     actor.ability.authorize! :update, tag
 
-    UpdateTagWorker.new.perform(tag.group_id, tag.name, params[:name].strip, params[:color])
+    UpdateTagWorker.new.perform(tag.group_id, tag.name, clean_tag_name(params[:name]), params[:color])
     tag.reload
 
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
@@ -28,137 +30,89 @@ class TagService
   end
 
   def self.destroy_by_name(group_id, name)
-    group = Group.find(group_id)
+    group = Group.find(group_id).parent_or_self
     group_ids = group.id_and_subgroup_ids
-    normalized_name = name.to_s.strip
+    normalized_name = normalized_tag_name(name)
 
     Tag.transaction do
-      # tags.name is citext (case-insensitive) but plain `where(name:)` won't
-      # catch look-alike rows that differ only by whitespace (e.g. a legacy
-      # "Community Energy " next to "Community Energy") - those render
-      # identically in the UI, so a name-only match leaves an indistinguishable
-      # duplicate behind and looks like the delete silently failed.
+      # Match by normalized name so legacy rows or topic arrays that differ by
+      # case or whitespace are removed together.
       variant_names = Tag.where(group_id: group_ids)
-                          .where("btrim(tags.name) = ?", normalized_name)
-                          .distinct.pluck(:name)
+                          .select { |tag| normalized_tag_name(tag.name) == normalized_name }
+                          .map(&:name)
+                          .uniq
 
       Tag.where(group_id: group_ids, name: variant_names).destroy_all
 
-      variant_names.each do |variant_name|
-        Topic.where(group_id: group_ids).where("topics.tags @> ARRAY[?]::varchar[]", variant_name).find_each do |topic|
-          topic.update_column(:tags, topic.tags - Array(variant_name))
-        end
+      Topic.where(group_id: group_ids).find_each do |topic|
+        next unless topic.tags.any? { |tag| normalized_tag_name(tag) == normalized_name }
+
+        topic.update_column(:tags, topic.tags.reject { |tag| normalized_tag_name(tag) == normalized_name })
       end
     end
 
-    update_org_tagging_counts(group.parent_or_self.id)
+    update_org_tags(group.id)
   end
 
   def self.apply_colors(group_id)
-    group_ids = Group.find(group_id).parent_or_self.id_and_subgroup_ids
-    Tag.where(group_id: group_id, color: nil).each do |tag|
-      if parent_tag = Tag.where(group_id: group_ids, name: tag.name).where.not(color: nil).first
-        tag.update_columns(color: parent_tag.color)
-      else
-        tag.update_columns(color: Tag::COLORS.sample)
-      end
+    group = Group.find(group_id).parent_or_self
+    Tag.where(group_id: group.id, color: nil).find_each do |tag|
+      tag.update_columns(color: Tag::COLORS.sample)
     end
   end
 
   def self.update_group_and_org_tags(group_id)
-    return unless group = Group.find_by(id: group_id)
-    update_group_tags(group_id)
-    update_org_tagging_counts(group.parent_or_self.id)
+    update_org_tags(group_id)
   end
 
   def self.normalized_tag_name(name)
-    name.to_s.strip.downcase
+    clean_tag_name(name).downcase
+  end
+
+  def self.clean_tag_name(name)
+    name.to_s.split.join(' ')
+  end
+
+  def self.clean_tag_names(names)
+    seen = {}
+    Array(names).filter_map do |name|
+      clean = clean_tag_name(name)
+      key = normalized_tag_name(clean)
+      next if key.blank? || seen[key]
+
+      seen[key] = true
+      clean
+    end
   end
 
   def self.update_group_tags(group_id)
-    return unless group = Group.find_by(id: group_id)
-
-    names = group.topics.pluck(:tags).flatten
-
-    return if names.empty?
-
-    counts = {}
-
-    names.map { |name| normalized_tag_name(name) }.each do |dname|
-      counts[dname] ||= 0
-      counts[dname] += 1
-    end
-
-    group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
-
-    # Match on the actual stored name (whitespace and all) - citext already
-    # folds case for us, but a stripped key won't hit the unique index if the
-    # stored row still has stray whitespace, which would upsert a *new* row
-    # instead of updating the existing one.
-    actual_name_by_key = group.tags.pluck(:name).index_by { |name| normalized_tag_name(name) }
-    present = actual_name_by_key.keys & counts.keys
-    missing = counts.keys - present
-
-    if present.any?
-      Tag.upsert_all(
-        present.map { |key| {group_id: group_id, name: actual_name_by_key[key], taggings_count: counts[key]} },
-        unique_by: [:group_id, :name],
-        update_only: [:taggings_count]
-      )
-    end
-
-    missing.each do |dname|
-      Tag.insert({group_id: group_id,
-                  name: names.find { |name| normalized_tag_name(name) == dname }.to_s.strip,
-                  taggings_count: counts[dname]})
-    end
-
-    apply_colors(group_id)
+    update_org_tags(group_id)
   end
 
-  def self.update_org_tagging_counts(group_id)
-    return unless group = Group.find_by(id: group_id)
+  def self.update_org_tags(group_id)
+    return unless group = Group.find_by(id: group_id)&.parent_or_self
 
     group_ids = group.id_and_subgroup_ids
-
-    names = Tag.where(group_id: group_ids).pluck(:name).uniq
-
-    return if names.empty?
-
-    counts = {}
-    Tag.where(group_id: group_ids).group(:name).sum(:taggings_count).each do |name, count|
-      key = normalized_tag_name(name)
-      counts[key] = (counts[key] || 0) + count
+    names = clean_tag_names(Topic.where(group_id: group_ids).pluck(:tags).flatten)
+    legacy_tags = Tag.where(group_id: group_ids - [group.id]).to_a
+    legacy_color_by_key = legacy_tags.each_with_object({}) do |tag, colors|
+      colors[normalized_tag_name(tag.name)] ||= tag.color
     end
-
-    group.tags.where.not(name: counts.keys).update_all(org_taggings_count: 0)
 
     actual_name_by_key = group.tags.pluck(:name).index_by { |name| normalized_tag_name(name) }
-    present = actual_name_by_key.keys & counts.keys
-    missing = counts.keys - present
+    missing = names.reject { |name| actual_name_by_key.key?(normalized_tag_name(name)) }
 
-    if present.any?
-      Tag.upsert_all(
-        present.map { |key| {group_id: group_id, name: actual_name_by_key[key], org_taggings_count: counts[key]} },
-        unique_by: [:group_id, :name],
-        update_only: [:org_taggings_count]
-      )
+    missing.each do |name|
+      Tag.insert({group_id: group.id, name: name, color: legacy_color_by_key[normalized_tag_name(name)]})
     end
 
-    missing.each do |dname|
-      Tag.insert({group_id: group_id,
-                  name: names.find { |name| normalized_tag_name(name) == dname }.to_s.strip,
-                  org_taggings_count: counts[dname]})
-    end
-
-    apply_colors(group_id)
+    Tag.where(id: legacy_tags.map(&:id)).destroy_all
+    apply_colors(group.id)
   end
 
   # Merge existing tags within the same group that only differ by whitespace
-  # (citext already folds case, but two rows like "Community Energy" and
-  # "Community Energy " can coexist from before whitespace was normalized on
-  # write). Keeps the tag with the highest taggings_count as canonical,
-  # repoints any topics tagged with the duplicate, and deletes the duplicate.
+  # or case. Keeps the oldest tag as canonical, repoints matching topics, and
+  # deletes the duplicate metadata rows.
   def self.groom_duplicate_tags
     Tag.distinct.pluck(:group_id).sum { |group_id| groom_duplicate_tags_for_group(group_id) }
   end
@@ -174,17 +128,13 @@ class TagService
 
     Tag.transaction do
       duplicate_groups.each do |tags|
-        canonical = tags.max_by { |tag| [tag.taggings_count.to_i, -tag.id] }
+        canonical = tags.min_by(&:id)
 
         (tags - [canonical]).each do |dupe|
           Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
             topic.update_column(:tags, ((topic.tags - [dupe.name]) + [canonical.name]).uniq)
           end
 
-          canonical.update_columns(
-            taggings_count: canonical.taggings_count.to_i + dupe.taggings_count.to_i,
-            org_taggings_count: canonical.org_taggings_count.to_i + dupe.org_taggings_count.to_i
-          )
           dupe.destroy!
           merged += 1
         end

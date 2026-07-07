@@ -227,11 +227,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :tags, only: [:create, :update, :destroy] do
-        collection do
-          post :priority
-        end
-      end
+      resources :tags, only: [:create, :update, :destroy]
 
       resources :search, only: :index
 

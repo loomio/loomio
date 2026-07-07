@@ -390,7 +390,7 @@ class RecordCloner
   end
 
   def new_clone_tag(tag)
-    clone_tag = new_clone(tag, %w[name color priority])
+    clone_tag = new_clone(tag, %w[name color])
     clone_tag.group = existing_clone(tag.group)
     clone_tag
   end

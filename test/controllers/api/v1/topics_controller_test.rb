@@ -191,6 +191,45 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal({}, JSON.parse(response.body))
   end
 
+  test "tags can be updated by users who can edit the topicable" do
+    poll = PollService.create(params: {
+      title: "Topicable tags #{SecureRandom.hex(4)}",
+      poll_type: "proposal",
+      group_id: @group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["Agree", "Disagree"]
+    }, actor: @admin)
+    sign_in @admin
+
+    patch :tags, params: { id: poll.topic.id, tags: ['poll-tag'] }
+
+    assert_response :success
+    assert_equal ['poll-tag'], poll.topic.reload.tags
+  end
+
+  test "tags can be updated by members who can edit discussions" do
+    @group.update!(members_can_edit_discussions: true)
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
+
+    assert_response :success
+    assert_equal ['new', 'urgent'], @topic.reload.tags
+  end
+
+  test "tags cannot be updated by members who cannot edit discussions" do
+    @group.update!(members_can_edit_discussions: false)
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new'] }
+
+    assert_response :forbidden
+    assert_equal ['old'], @topic.reload.tags
+  end
+
   # Test dismiss action
   test "dismiss updates dismissed_at" do
     sign_in @user

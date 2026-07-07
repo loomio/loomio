@@ -259,7 +259,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def tag_attributes
-    [:name, :color, :group_id, :priority]
+    [:name, :color, :group_id]
   end
 
   def comment_attributes

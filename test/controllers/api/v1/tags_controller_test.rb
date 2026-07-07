@@ -28,25 +28,33 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
       tags: ['apple', 'banana']
     }, actor: @admin)
 
-    TagService.update_group_tags(@subgroup.id)
     TagService.update_group_and_org_tags(@group.id)
 
     sign_in @admin
   end
 
-  test "create creates a new tag" do
-    post :create, params: { tag: { name: 'newtag', color: '#ccc', group_id: @group.id } }
+  test "create stores tag metadata on the parent group" do
+    post :create, params: { tag: { name: 'newtag', color: '#ccc', group_id: @subgroup.id } }
     assert_response :success
 
     tag = JSON.parse(response.body)['tags'].find { |t| t['name'] == 'newtag' }
     assert_equal @group.id, tag['group_id']
     assert_equal '#ccc', tag['color']
-    assert_equal 0, tag['taggings_count']
-    assert_equal 0, tag['org_taggings_count']
+    assert_not Tag.exists?(group_id: @subgroup.id, name: 'newtag')
   end
 
-  test "update updates a tag" do
-    tag = Tag.find_by(group_id: @group.id, name: 'apple')
+  test "subgroup admin cannot manage tag metadata" do
+    memberships(:user_subgroup_membership).update!(admin: true)
+    sign_in users(:user)
+
+    post :create, params: { tag: { name: 'subtag', color: '#ccc', group_id: @subgroup.id } }
+
+    assert_response :forbidden
+  end
+
+  test "update renames a tag across the parent group and subgroups" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
+
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
 
@@ -54,24 +62,17 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_equal 'apple2', tag_attrs['name']
     assert_equal @group.id, tag_attrs['group_id']
     assert_equal '#aaa', tag_attrs['color']
-    assert_equal 2, tag_attrs['taggings_count']
-    assert_equal 4, tag_attrs['org_taggings_count']
-  end
-
-  test "update parent tag updates subgroup tag" do
-    tag = Tag.find_by(group_id: @group.id, name: 'apple')
-    put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
-    assert_response :success
 
     assert_equal ['apple2', 'banana'], @discussion.topic.reload.tags
     assert_equal ['apple2', 'banana'], @sub_discussion.topic.reload.tags
     assert_equal ['apple2', 'banana'], @poll.topic.reload.tags
     assert_equal ['apple2', 'banana'], @sub_poll.topic.reload.tags
-    assert_equal 4, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
+    assert_not Tag.exists?(group_id: @subgroup.id, name: 'apple2')
   end
 
-  test "merge parent tag into existing tag" do
-    tag = Tag.find_by(group_id: @group.id, name: 'apple')
+  test "merge tag into existing tag across the parent group and subgroups" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
+
     put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
     assert_response :success
 
@@ -79,37 +80,11 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_equal ['banana'], @sub_discussion.topic.reload.tags
     assert_equal ['banana'], @poll.topic.reload.tags
     assert_equal ['banana'], @sub_poll.topic.reload.tags
-    assert_equal 2, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
+    assert_equal ['banana'], Tag.where(group_id: @group.id).pluck(:name).sort
   end
 
-  test "update subgroup tag does not update parent tag" do
-    tag = Tag.find_by(group_id: @subgroup.id, name: 'apple')
-    put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
-    assert_response :success
-
-    assert_equal ['apple', 'banana'], @discussion.topic.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_discussion.topic.reload.tags
-    assert_equal ['apple', 'banana'], @poll.topic.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_poll.topic.reload.tags
-    assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple').taggings_count
-    assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple').org_taggings_count
-    assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple2').org_taggings_count
-    assert_equal 2, Tag.find_by(group_id: @subgroup.id, name: 'apple2').taggings_count
-  end
-
-  test "merge subgroup tag" do
-    tag = Tag.find_by(group_id: @subgroup.id, name: 'apple')
-    put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
-
-    assert_equal ['apple', 'banana'], @discussion.topic.reload.tags
-    assert_equal ['banana'], @sub_discussion.topic.reload.tags
-    assert_equal ['apple', 'banana'], @poll.topic.reload.tags
-    assert_equal ['banana'], @sub_poll.topic.reload.tags
-    assert_equal 3, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
-  end
-
-  test "destroy removes a parent tag from group and subgroup topics" do
-    tag = Tag.find_by(group_id: @group.id, name: 'apple')
+  test "destroy removes a tag from parent group and subgroup topics" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
 
     delete :destroy, params: { id: tag.id }
     assert_response :success
@@ -118,7 +93,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_equal ['banana'], @sub_discussion.topic.reload.tags
     assert_equal ['banana'], @poll.topic.reload.tags
     assert_equal ['banana'], @sub_poll.topic.reload.tags
-    assert_not Tag.exists?(group_id: @group.parent_or_self.id_and_subgroup_ids, name: 'apple')
+    assert_not Tag.exists?(group_id: @group.id, name: 'apple')
     assert JSON.parse(response.body)['tags'].none? { |t| t['name'] == 'apple' }
   end
 end

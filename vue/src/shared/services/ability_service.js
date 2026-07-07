@@ -42,6 +42,8 @@ export default new class AbilityService {
   }
 
   canEdit(model) {
+    if (!model) { return false; }
+
     return (model.isA('discussion') && this.canEditDiscussion(model)) ||
     (model.isA('comment') && this.canEditComment(model)) ||
     (model.isA('poll') && this.canEditPoll(model)) ||
@@ -76,7 +78,12 @@ export default new class AbilityService {
   }
 
   canEditTags(topic) {
-    return topic.adminsInclude(Session.user());
+    return this.canEdit(topic.topicable());
+  }
+
+  canAdminTags(topic) {
+    const group = topic.group();
+    return group && group.parentOrSelf().adminsInclude(Session.user());
   }
 
   canPinEvent(event) {

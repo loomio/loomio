@@ -194,7 +194,7 @@ export default
     },
 
     groupTags() {
-      return this.group && this.group.tags().filter(tag => tag.taggingsCount > 0);
+      return this.group && this.group.tags();
     },
 
     loading() {
@@ -256,7 +256,7 @@ div.discussions-panel(v-if="group")
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
       v-sheet.pa-1.max-width-800
-        tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
+        tags-display(:tags="group.tagNames()" :group="group")
     v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"

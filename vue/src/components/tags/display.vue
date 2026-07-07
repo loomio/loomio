@@ -3,11 +3,9 @@ import Records from '@/shared/services/records';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
-const { tags, group, showCounts, showOrgCounts, selected, size } = defineProps({
+const { tags, group, selected, size } = defineProps({
   tags: Array,
   group: Object,
-  showCounts: Boolean,
-  showOrgCounts: Boolean,
   selected: String,
   size: {
     type: String,
@@ -40,7 +38,6 @@ const tagObjects = computed(() => {
       id: i,
       name,
       color: (byName.value[name] || {}).color,
-      taggingsCount: (byName.value[name] || {}).taggingsCount,
       to: groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
     };
   });
@@ -54,13 +51,6 @@ span.tags-display
     :size="size"
     :color="tag.color"
     :to="tag.to"
-    :class="{'mb-1': showCounts}"
   )
     plain-text.text-on-surface(:model="tag" field="name")
-    span(v-if="showCounts")
-      space
-      span {{tag.taggingsCount}}
-    span(v-if="showOrgCounts")
-      space
-      span {{tag.orgTaggingsCount}}
 </template>

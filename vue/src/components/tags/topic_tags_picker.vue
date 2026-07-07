@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
+import AbilityService from '@/shared/services/ability_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
@@ -24,6 +25,12 @@ const loading = ref(false);
 const selectedTags = ref((topic.tags || []).slice());
 const allTags = ref([]);
 const tagGroup = ref(null);
+const addingTag = ref(false);
+const newTagName = ref('');
+
+function cleanTagName(name) {
+  return String(name || '').trim().split(/\s+/).filter(Boolean).join(' ');
+}
 
 function tagsFromNames(names, group) {
   const byName = {};
@@ -95,6 +102,8 @@ function loadTags() {
 
 function reset() {
   selectedTags.value = (topic.tags || []).slice();
+  addingTag.value = false;
+  newTagName.value = '';
   loadTags();
 }
 
@@ -109,7 +118,8 @@ onMounted(() => {
   });
 });
 
-const canEditTags = computed(() => usableGroup(tagGroup.value));
+const canAdminTags = computed(() => usableGroup(tagGroup.value) && AbilityService.canAdminTags(topic));
+const canCreateTags = computed(() => usableGroup(tagGroup.value));
 
 function isSelected(tag) {
   return selectedTags.value.includes(tag.name);
@@ -121,7 +131,7 @@ function toggle(tag) {
 }
 
 function openTagsSelect() {
-  if (!usableGroup(tagGroup.value)) { return; }
+  if (!canAdminTags.value) { return; }
 
   emit('beforeOpenExternal');
   EventBus.$emit('openModal', {
@@ -137,29 +147,10 @@ function saveTags() {
   return Records.topics.remote.patchMember(topic.id, 'tags', {tags: selectedTags.value}).catch(err => Flash.serverError(err));
 }
 
-function applyCreatedTag(tag, group) {
-  const selected = selectedTags.value.slice();
-  // TagsModal saves a different record from the built tag object, so look up
-  // the saved tag by name after the modal closes.
-  const savedTag = Records.tags.find({groupId: group.id, name: tag.name})[0];
-  if (tag.name && savedTag && !selected.includes(tag.name)) { selected.push(tag.name); }
-  selectedTags.value = selected;
-  return saveTags();
-}
-
 function openNewTagModal() {
-  if (!usableGroup(tagGroup.value)) { return; }
+  if (!canCreateTags.value) { return; }
 
-  const group = tagGroup.value;
-  const tag = Records.tags.build({groupId: group.id});
-  emit('beforeOpenExternal');
-  EventBus.$emit('openModal', {
-    component: 'TagsModal',
-    props: {
-      tag,
-      afterSave: () => applyCreatedTag(tag, group)
-    }
-  });
+  addingTag.value = true;
 }
 
 function submit() {
@@ -169,6 +160,16 @@ function submit() {
   }).finally(() => {
     loading.value = false;
   });
+}
+
+function submitNewTag() {
+  const name = cleanTagName(newTagName.value);
+  if (!name) { return; }
+
+  const selectedKeys = selectedTags.value.map(tag => cleanTagName(tag).toLowerCase());
+  if (!selectedKeys.includes(name.toLowerCase())) { selectedTags.value.push(name); }
+  newTagName.value = '';
+  addingTag.value = false;
 }
 </script>
 
@@ -185,17 +186,27 @@ function submit() {
         v-checkbox-btn(:model-value="isSelected(tag)" readonly)
       v-chip(:color="tag.color" size="small")
         span.text-on-surface {{ tag.name }}
-    v-list-item.topic-tags-picker__new-tag(v-if="canEditTags" density="compact" @click="openNewTagModal")
+    v-list-item.topic-tags-picker__new-tag(v-if="canCreateTags && !addingTag" density="compact" @click="openNewTagModal")
       span(v-t="'loomio_tags.new_tag'")
+    v-list-item.topic-tags-picker__new-tag-input(v-if="addingTag" density="compact")
+      v-text-field(
+        v-model="newTagName"
+        :label="$t('loomio_tags.name_label')"
+        autofocus
+        density="compact"
+        hide-details
+        @keyup.enter="submitNewTag"
+      )
+      template(v-slot:append)
+        v-btn(icon size="small" variant="text" @click="submitNewTag")
+          common-icon(name="mdi-check")
   v-divider
   v-card-actions
-    v-btn.topic-tags-picker__edit-tags(v-if="canEditTags" variant="text" @click="openTagsSelect")
+    v-btn.topic-tags-picker__edit-tags(v-if="canAdminTags" variant="text" @click="openTagsSelect")
       span(v-t="'loomio_tags.edit_tags'")
     v-spacer
     v-btn.topic-tags-picker__submit(variant="elevated" color="primary" @click="submit" :loading="loading")
       span(v-t="'common.action.save'")
 </template>
-
-
 
 

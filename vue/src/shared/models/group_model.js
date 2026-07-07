@@ -75,15 +75,15 @@ export default class GroupModel extends BaseModel {
   }
 
   tags() {
-    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('priority').data();
+    return Records.tags.collection.chain().find({groupId: this.parentOrSelf().id}).simplesort('name').data();
   }
 
   tagsByName() {
-    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('name').data();
+    return this.tags();
   }
 
   tagNames() {
-    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('name').data().map(t => t.name);
+    return this.tags().map(t => t.name);
   }
 
   parentOrSelf() {

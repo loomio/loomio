@@ -31,7 +31,7 @@ export default {
 
   computed: {
     canAdminTags() {
-      return this.group.adminsInclude(Session.user());
+      return this.group.parentOrSelf().adminsInclude(Session.user());
     }
   },
 
@@ -54,7 +54,7 @@ export default {
       EventBus.$emit('openModal', {
         component: 'TagsModal',
         props: {
-          tag: Records.tags.build({groupId: this.group.id}),
+          tag: Records.tags.build({groupId: this.group.parentOrSelf().id}),
           close: () => this.openTagsSelect()
         }
       });

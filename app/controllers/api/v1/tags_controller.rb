@@ -1,16 +1,4 @@
 class Api::V1::TagsController < Api::V1::RestfulController
-  def priority
-    load_and_authorize_group
-    Array(params[:ids]).each_with_index do |id, index|
-      Tag.where(id: id, group_id: @group.id).update_all(priority: index)
-    end
-
-    instantiate_collection
-
-    # rember to live update too
-    respond_with_collection
-  end
-
   private
   def respond_with_group
     self.resource = resource.group.reload
@@ -26,11 +14,11 @@ class Api::V1::TagsController < Api::V1::RestfulController
   end
 
   def accessible_records
-    Tag.where(group_id: @group.id)
+    Tag.where(group_id: @group.parent_or_self.id).order(:name)
   end
 
   def load_and_authorize_group
     @group = Group.find(params[:group_id])
-    current_user.ability.authorize!(:update, @group)
+    current_user.ability.authorize!(:update, @group.parent_or_self)
   end
 end
