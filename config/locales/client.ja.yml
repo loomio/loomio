@@ -163,6 +163,9 @@ ja:
     merge_into: 合流する
     merge_helptext: "「%{name}」を別のタグにマージします。「%{name}」を使用しているスレッドは、代わりに選択されたタグを使用します。"
     tag_merged: タグが統合されました
+    show_tags_used_in_this_group: このグループで使用されているタグを表示する
+    show_all_tags_in_organization: 組織内のすべてのタグを表示する
+    only_show_tags_in_this_group: このグループのタグのみを表示する
   poll_types:
     proposal: 提案
     count: オプトイン
@@ -2013,6 +2016,8 @@ ja:
     new_discussion: 新しい議論
     locked: ロック済み
     unlocked: ロック解除済み
+    no_threads_found_that_match_your_query_or_filters: 検索条件やフィルターに一致するスレッドは見つかりませんでした。
+    no_threads_found_that_match_your_filters: フィルターに一致するスレッドは見つかりませんでした
   members_panel:
     bot: ボット
     no_results: メンバーが見つかりませんでした

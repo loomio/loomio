@@ -1,8 +1,6 @@
 <script setup lang="js">
 import Records from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
-import AbilityService from '@/shared/services/ability_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
@@ -17,19 +15,29 @@ const { topic, watchKey } = defineProps({
   }
 });
 
-const emit = defineEmits(['beforeOpenExternal', 'close']);
-
 const { watchRecords } = useWatchRecords();
 
-const loading = ref(false);
-const selectedTags = ref((topic.tags || []).slice());
-const allTags = ref([]);
+const selectedTags = ref([]);
+const orgTags = ref([]);
 const tagGroup = ref(null);
 const addingTag = ref(false);
 const newTagName = ref('');
+const showAllTags = ref(false);
+let savePromise = Promise.resolve();
 
 function cleanTagName(name) {
   return String(name || '').trim().split(/\s+/).filter(Boolean).join(' ');
+}
+
+function cleanTagNames(names) {
+  const seen = {};
+  return (names || []).map(cleanTagName).filter(name => {
+    const key = name.toLowerCase();
+    if (!key || seen[key]) { return false; }
+
+    seen[key] = true;
+    return true;
+  }).sort((a, b) => a.localeCompare(b));
 }
 
 function tagsFromNames(names, group) {
@@ -53,9 +61,13 @@ function sortedTags(tags) {
   return tags.slice().sort((a, b) => a.name.localeCompare(b.name));
 }
 
+function tagDotStyle(tag) {
+  return tag.color ? {backgroundColor: tag.color} : {};
+}
+
 function loadGroup(group) {
   tagGroup.value = group;
-  allTags.value = sortedTags(group.tags());
+  orgTags.value = sortedTags(group.tags());
 }
 
 function fetchTemplateGroup(template) {
@@ -95,13 +107,13 @@ function loadTags() {
     if (usableGroup(group)) {
       loadGroup(group);
     } else {
-      allTags.value = sortedTags(tagsFromNames(topic.tags || []));
+      orgTags.value = sortedTags(tagsFromNames(topic.tags || []));
     }
   });
 }
 
 function reset() {
-  selectedTags.value = (topic.tags || []).slice();
+  selectedTags.value = cleanTagNames(topic.tags || []);
   addingTag.value = false;
   newTagName.value = '';
   loadTags();
@@ -110,6 +122,7 @@ function reset() {
 defineExpose({ reset });
 
 onMounted(() => {
+  selectedTags.value = cleanTagNames(topic.tags || []);
   loadTags();
   watchRecords({
     key: watchKey,
@@ -118,8 +131,21 @@ onMounted(() => {
   });
 });
 
-const canAdminTags = computed(() => usableGroup(tagGroup.value) && AbilityService.canAdminTags(topic));
 const canCreateTags = computed(() => usableGroup(tagGroup.value));
+
+function tagVisibleInCurrentGroup(tag) {
+  return showAllTags.value ||
+    isSelected(tag) ||
+    (tag.usedGroupIds || []).includes(tagGroup.value.id);
+}
+
+const allTags = computed(() => {
+  const tags = usableGroup(tagGroup.value) ? orgTags.value.filter(tagVisibleInCurrentGroup) : orgTags.value;
+  const tagKeys = tags.map(tag => cleanTagName(tag.name).toLowerCase());
+  const selectedWithoutMetadata = selectedTags.value.filter(name => !tagKeys.includes(cleanTagName(name).toLowerCase()));
+
+  return sortedTags(tags.concat(tagsFromNames(selectedWithoutMetadata, tagGroup.value)));
+});
 
 function isSelected(tag) {
   return selectedTags.value.includes(tag.name);
@@ -128,23 +154,18 @@ function isSelected(tag) {
 function toggle(tag) {
   const i = selectedTags.value.indexOf(tag.name);
   if (i === -1) { selectedTags.value.push(tag.name); } else { selectedTags.value.splice(i, 1); }
-}
-
-function openTagsSelect() {
-  if (!canAdminTags.value) { return; }
-
-  emit('beforeOpenExternal');
-  EventBus.$emit('openModal', {
-    component: 'TagsSelect',
-    props: {
-      group: tagGroup.value
-    }
-  });
+  selectedTags.value = cleanTagNames(selectedTags.value);
+  saveTags();
 }
 
 function saveTags() {
-  topic.tags = selectedTags.value;
-  return Records.topics.remote.patchMember(topic.id, 'tags', {tags: selectedTags.value}).catch(err => Flash.serverError(err));
+  const tags = cleanTagNames(selectedTags.value);
+  selectedTags.value = tags;
+  topic.tags = tags;
+  savePromise = savePromise.catch(() => {}).then(() => {
+    return Records.topics.remote.patchMember(topic.id, 'tags', {tags}).catch(err => Flash.serverError(err));
+  });
+  return savePromise;
 }
 
 function openNewTagModal() {
@@ -153,21 +174,19 @@ function openNewTagModal() {
   addingTag.value = true;
 }
 
-function submit() {
-  loading.value = true;
-  saveTags().then(() => {
-    emit('close');
-  }).finally(() => {
-    loading.value = false;
-  });
-}
-
 function submitNewTag() {
   const name = cleanTagName(newTagName.value);
-  if (!name) { return; }
+  if (!name) {
+    addingTag.value = false;
+    return;
+  }
 
   const selectedKeys = selectedTags.value.map(tag => cleanTagName(tag).toLowerCase());
-  if (!selectedKeys.includes(name.toLowerCase())) { selectedTags.value.push(name); }
+  if (!selectedKeys.includes(name.toLowerCase())) {
+    selectedTags.value.push(name);
+    selectedTags.value = cleanTagNames(selectedTags.value);
+    saveTags();
+  }
   newTagName.value = '';
   addingTag.value = false;
 }
@@ -184,29 +203,47 @@ function submitNewTag() {
     )
       template(v-slot:prepend)
         v-checkbox-btn(:model-value="isSelected(tag)" readonly)
-      v-chip(:color="tag.color" size="small")
-        span.text-on-surface {{ tag.name }}
+      .topic-tags-picker__tag-content
+        .tag-color-dot(:style="tagDotStyle(tag)")
+        span {{ tag.name }}
+    v-list-item.topic-tags-picker__all-tags(v-if="canCreateTags" density="compact" @click="showAllTags = !showAllTags")
+      template(v-slot:prepend)
+        common-icon.text-medium-emphasis(name="mdi-unfold-more-horizontal")
+      v-list-item-title(v-if="showAllTags" v-t="'common.action.show_fewer'")
+      v-list-item-title(v-else v-t="'common.action.show_more'")
+      v-list-item-subtitle(v-if="showAllTags" v-t="'loomio_tags.only_show_tags_in_this_group'")
+      v-list-item-subtitle(v-else v-t="'loomio_tags.show_all_tags_in_organization'")
     v-list-item.topic-tags-picker__new-tag(v-if="canCreateTags && !addingTag" density="compact" @click="openNewTagModal")
+      template(v-slot:prepend)
+        common-icon.text-medium-emphasis(name="mdi-tag-plus-outline")
       span(v-t="'loomio_tags.new_tag'")
-    v-list-item.topic-tags-picker__new-tag-input(v-if="addingTag" density="compact")
+    .topic-tags-picker__new-tag-input.px-4.py-2(v-if="addingTag")
       v-text-field(
         v-model="newTagName"
         :label="$t('loomio_tags.name_label')"
+        append-inner-icon="mdi-check"
         autofocus
         density="compact"
         hide-details
+        variant="outlined"
+        @click:append-inner="submitNewTag"
         @keyup.enter="submitNewTag"
       )
-      template(v-slot:append)
-        v-btn(icon size="small" variant="text" @click="submitNewTag")
-          common-icon(name="mdi-check")
-  v-divider
-  v-card-actions
-    v-btn.topic-tags-picker__edit-tags(v-if="canAdminTags" variant="text" @click="openTagsSelect")
-      span(v-t="'loomio_tags.edit_tags'")
-    v-spacer
-    v-btn.topic-tags-picker__submit(variant="elevated" color="primary" @click="submit" :loading="loading")
-      span(v-t="'common.action.save'")
 </template>
 
+<style lang="sass">
+.topic-tags-picker__tag-content
+  align-items: center
+  display: flex
 
+.tag-color-dot
+  border-radius: 50%
+  height: 16px
+  margin-right: 12px
+  width: 16px
+
+.topic-tags-picker__all-tags
+  .v-list-item-subtitle
+    line-clamp: unset
+    -webkit-line-clamp: unset
+</style>

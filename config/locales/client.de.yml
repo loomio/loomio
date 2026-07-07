@@ -170,6 +170,9 @@ de:
     merge_into: Zusammenführen mit
     merge_helptext: Füge "%{name}" in ein anderes Tag ein. Threads, die "%{name}" verwenden, verwenden stattdessen das ausgewählte Tag.
     tag_merged: Tag zusammengeführt
+    show_tags_used_in_this_group: In dieser Gruppe verwendete Tags anzeigen
+    show_all_tags_in_organization: Alle Tags in der Organisation anzeigen
+    only_show_tags_in_this_group: Nur Tags dieser Gruppe anzeigen
   poll_types:
     proposal: Vorschlag
     count: Opt-in
@@ -2045,6 +2048,8 @@ de:
     new_discussion: Neue Diskussion
     locked: Gesperrt
     unlocked: Entsperrt
+    no_threads_found_that_match_your_query_or_filters: Es wurden keine Threads gefunden, die Ihrer Suchanfrage oder Ihren Filtern entsprechen.
+    no_threads_found_that_match_your_filters: Es wurden keine Threads gefunden, die Ihren Filtern entsprechen.
   members_panel:
     bot: Bot
     no_results: Keine Mitglieder gefunden

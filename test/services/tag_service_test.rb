@@ -15,6 +15,14 @@ class TagServiceTest < ActiveSupport::TestCase
     assert @group.tags.exists?(name: 'proposal')
     assert @group.tags.exists?(name: 'urgent')
     assert_not @subgroup.tags.exists?(name: 'urgent')
+    assert_equal [@group.id], @group.tags.find_by!(name: 'proposal').used_group_ids
+    assert_equal [@subgroup.id], @group.tags.find_by!(name: 'urgent').used_group_ids
+  end
+
+  test "clean_tag_names normalizes dedupes and sorts alphabetically" do
+    names = TagService.clean_tag_names(['  Zeta  ', 'alpha', 'zeta', ' Beta  value '])
+
+    assert_equal ['alpha', 'Beta value', 'Zeta'], names
   end
 
   test "update_group_and_org_tags preserves existing metadata when tags are still in use" do
@@ -33,6 +41,7 @@ class TagServiceTest < ActiveSupport::TestCase
     TagService.update_group_and_org_tags(@subgroup.id)
 
     assert_equal '#abcdef', @group.tags.find_by!(name: 'legacy').color
+    assert_equal [@subgroup.id], @group.tags.find_by!(name: 'legacy').used_group_ids
     assert_not @subgroup.tags.exists?(name: 'legacy')
   end
 
@@ -44,6 +53,7 @@ class TagServiceTest < ActiveSupport::TestCase
 
     assert @group.tags.exists?(name: 'planned')
     assert @group.tags.exists?(name: 'active')
+    assert_equal [], @group.tags.find_by!(name: 'planned').used_group_ids
   end
 
   test "update_group_and_org_tags normalizes whitespace and dedupes names case-insensitively" do

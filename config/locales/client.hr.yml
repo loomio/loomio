@@ -164,6 +164,9 @@ hr:
     merge_into: Spoji u
     merge_helptext: Spoji "%{name}" u drugu oznaku. Niti koje koriste "%{name}" koristit će odabranu oznaku umjesto nje.
     tag_merged: Oznaka spojena
+    show_tags_used_in_this_group: Prikaži oznake korištene u ovoj grupi
+    show_all_tags_in_organization: Prikaži sve oznake u organizaciji
+    only_show_tags_in_this_group: Prikaži samo oznake u ovoj grupi
   poll_types:
     proposal: prijedlog
     count: uključiti se
@@ -2014,6 +2017,8 @@ hr:
     new_discussion: Nova rasprava
     locked: Zaključan
     unlocked: Otključan
+    no_threads_found_that_match_your_query_or_filters: Nisu pronađene teme koje odgovaraju vašem upitu ili filterima
+    no_threads_found_that_match_your_filters: Nisu pronađene teme koje odgovaraju vašim filterima
   members_panel:
     bot: Bot
     no_results: Nema pronađenih članova

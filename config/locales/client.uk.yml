@@ -164,6 +164,9 @@ uk:
     merge_into: Об'єднати з
     merge_helptext: Об'єднати "%{name}" з іншим тегом. Теми, що використовують "%{name}", використовуватимуть вибраний тег.
     tag_merged: Тег об'єднано
+    show_tags_used_in_this_group: Показати теги, що використовуються в цій групі
+    show_all_tags_in_organization: Показати всі теги в організації
+    only_show_tags_in_this_group: Показувати лише теги в цій групі
   poll_types:
     proposal: пропозиція
     count: вибрати в
@@ -2040,6 +2043,8 @@ uk:
     new_discussion: Нове обговорення
     locked: Заблоковано
     unlocked: Розблоковано
+    no_threads_found_that_match_your_query_or_filters: Не знайдено тем, що відповідають вашому запиту або фільтрам
+    no_threads_found_that_match_your_filters: Не знайдено тем, що відповідають вашим фільтрам
   members_panel:
     bot: Бот
     no_results: Не знайдено учасників

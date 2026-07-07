@@ -164,6 +164,9 @@ tr:
     merge_into: Birleştir
     merge_helptext: '"%{name}" ifadesini başka bir etiketle birleştirin. "%{name}" ifadesini kullanan konular, seçilen etiketi kullanacaktır.'
     tag_merged: Etiketler birleştirildi
+    show_tags_used_in_this_group: Bu grupta kullanılan etiketleri göster
+    show_all_tags_in_organization: Organizasyondaki tüm etiketleri göster
+    only_show_tags_in_this_group: Sadece bu gruptaki etiketleri göster
   poll_types:
     proposal: öneri
     count: katılım
@@ -2014,6 +2017,8 @@ tr:
     new_discussion: Yeni tartışma
     locked: Kilitli
     unlocked: Kilidi Açıldı
+    no_threads_found_that_match_your_query_or_filters: Sorgunuza veya filtrelerinize uyan hiçbir konu bulunamadı.
+    no_threads_found_that_match_your_filters: Filtrelerinize uyan hiçbir konu bulunamadı.
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı

@@ -187,6 +187,9 @@ zh_CN:
     merge_into: 合并
     merge_helptext: 将“%{name}”合并到另一个标签中。使用“%{name}”的帖子将使用选定的标签。
     tag_merged: 标签已合并
+    show_tags_used_in_this_group: 显示此组中使用的标签
+    show_all_tags_in_organization: 显示组织中的所有标签
+    only_show_tags_in_this_group: 仅显示此组中的标签
   poll_types:
     proposal: 提议
     count: 选择加入
@@ -2096,6 +2099,8 @@ zh_CN:
     new_discussion: 新讨论
     locked: 已锁定
     unlocked: 已解锁
+    no_threads_found_that_match_your_query_or_filters: 未找到符合您的查询或筛选条件的帖子
+    no_threads_found_that_match_your_filters: 未找到符合您筛选条件的帖子
   members_panel:
     email_rejected: 邮件被拒
     email_rejected_meaning: 发送到此地址的邮件已被退回或被标记为垃圾邮件。我们将不再向此地址发送邮件。

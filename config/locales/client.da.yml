@@ -164,6 +164,9 @@ da:
     merge_into: Flet ind i
     merge_helptext: Flet "%{name}" ind i et andet tag. Tråde, der bruger "%{name}", vil bruge det valgte tag i stedet.
     tag_merged: Tag flettet
+    show_tags_used_in_this_group: Vis tags brugt i denne gruppe
+    show_all_tags_in_organization: Vis alle tags i organisationen
+    only_show_tags_in_this_group: Vis kun tags i denne gruppe
   poll_types:
     proposal: forslag
     count: Tilmeld
@@ -2014,6 +2017,8 @@ da:
     new_discussion: Ny diskussion
     locked: Låst
     unlocked: Låst op
+    no_threads_found_that_match_your_query_or_filters: Der blev ikke fundet nogen tråde, der matcher din forespørgsel eller dine filtre
+    no_threads_found_that_match_your_filters: Der blev ikke fundet nogen tråde, der matcher dine filtre
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet

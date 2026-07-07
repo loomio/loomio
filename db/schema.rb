@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_06_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_07_013500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1048,9 +1048,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_06_000001) do
     t.integer "taggings_count", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.integer "org_taggings_count", default: 0, null: false
+    t.integer "used_group_ids", default: [], null: false, array: true
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_tags_on_group_id"
     t.index ["name"], name: "index_tags_on_name"
+    t.index ["used_group_ids"], name: "index_tags_on_used_group_ids", using: :gin
   end
 
   create_table "tasks", force: :cascade do |t|

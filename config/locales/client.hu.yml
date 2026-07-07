@@ -166,6 +166,9 @@ hu:
     merge_into: Egyesítés
     merge_helptext: A(z) „%{name}” címkét egy másik címkével egyesíti. A(z) „%{name}” címkét használó szálak a kiválasztott címkét fogják használni.
     tag_merged: Címke egyesítve
+    show_tags_used_in_this_group: A csoportban használt címkék megjelenítése
+    show_all_tags_in_organization: Az összes címke megjelenítése a szervezetben
+    only_show_tags_in_this_group: Csak ebben a csoportban lévő címkék megjelenítése
   poll_types:
     proposal: javaslat
     count: feliratkozás
@@ -2021,6 +2024,8 @@ hu:
     new_discussion: Új beszélgetés
     locked: Zárolva
     unlocked: Feloldva
+    no_threads_found_that_match_your_query_or_filters: Nem található a keresésnek vagy a szűrőknek megfelelő szál
+    no_threads_found_that_match_your_filters: Nem található a szűrőknek megfelelő szál
   members_panel:
     bot: Bot
     no_results: Nem találhatók tagok

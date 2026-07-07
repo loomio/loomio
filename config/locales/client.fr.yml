@@ -172,6 +172,9 @@ fr:
     merge_into: Fusionner dans
     merge_helptext: Fusionnez "%{name}" avec une autre balise. Les discussions utilisant "%{name}" utiliseront la balise sélectionnée à la place.
     tag_merged: Balise fusionnée
+    show_tags_used_in_this_group: Afficher les étiquettes utilisées dans ce groupe
+    show_all_tags_in_organization: Afficher toutes les étiquettes de l'organisation
+    only_show_tags_in_this_group: Afficher uniquement les tags de ce groupe
   poll_types:
     proposal: Proposition
     count: opt-in
@@ -2056,6 +2059,8 @@ fr:
     new_discussion: Nouvelle discussion
     locked: Verrouillé
     unlocked: Déverrouillé
+    no_threads_found_that_match_your_query_or_filters: Aucun sujet ne correspond à votre requête ou à vos filtres.
+    no_threads_found_that_match_your_filters: Aucun sujet correspondant à vos filtres n'a été trouvé.
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '

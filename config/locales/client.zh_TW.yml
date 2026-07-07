@@ -165,6 +165,9 @@ zh_TW:
     merge_into: 合併
     merge_helptext: 將“%{name}”合併到另一個標籤中。使用「%{name}」的貼文將使用選定的標籤。
     tag_merged: 標籤已合併
+    show_tags_used_in_this_group: 顯示此群組中使用的標籤
+    show_all_tags_in_organization: 顯示組織中的所有標籤
+    only_show_tags_in_this_group: 僅顯示此群組中的標籤
   poll_types:
     proposal: 提議
     count: 選擇參加
@@ -2040,6 +2043,8 @@ zh_TW:
     new_discussion: 新討論
     locked: 已鎖定
     unlocked: 已解鎖
+    no_threads_found_that_match_your_query_or_filters: 未找到符合您的查詢或篩選條件的帖子
+    no_threads_found_that_match_your_filters: 未找到符合您篩選條件的帖子
   members_panel:
     bot: 機器人
     no_results: 找不到成員

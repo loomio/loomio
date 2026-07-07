@@ -43,7 +43,5 @@ v-menu.topic-tags-menu(v-model="open" :close-on-content-click="false" location="
       ref="picker"
       :topic="topic"
       :watch-key="'topicTagsMenu' + topic.id"
-      @before-open-external="open = false"
-      @close="open = false"
     )
 </template>

@@ -183,6 +183,9 @@ en:
     amount: Amount
   loomio_tags:
     all_tags: All tags
+    show_all_tags_in_organization: Show all tags in organization
+    show_tags_used_in_this_group: Show tags used in this group
+    only_show_tags_in_this_group: Only show tags in this group
     tags: Tags
     apply_tags: Apply tags
     select_tags: Select tags
@@ -2179,6 +2182,8 @@ en:
     include_subgroups_mine: "%{name} and my subgroups"
     include_subgroups_all: "%{name} and all subgroups"
     no_results_found: No results for "%{search}"
+    no_threads_found_that_match_your_query_or_filters: No threads found that match your query or filters
+    no_threads_found_that_match_your_filters: No threads found that match your filters
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion

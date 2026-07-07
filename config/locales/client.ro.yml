@@ -164,6 +164,9 @@ ro:
     merge_into: Fuzionați în
     merge_helptext: Îmbinați „%{name}” cu o altă etichetă. Firele de discuție care utilizează „%{name}” vor folosi în schimb eticheta selectată.
     tag_merged: Etichetă îmbinată
+    show_tags_used_in_this_group: Afișează etichetele utilizate în acest grup
+    show_all_tags_in_organization: Afișează toate etichetele din organizație
+    only_show_tags_in_this_group: Afișați doar etichetele din acest grup
   poll_types:
     proposal: propunere
     count: înscriere
@@ -2014,6 +2017,8 @@ ro:
     new_discussion: Discuție nouă
     locked: Blocat
     unlocked: Deblocat
+    no_threads_found_that_match_your_query_or_filters: Nu s-au găsit subiecte care să corespundă interogării sau filtrelor dvs.
+    no_threads_found_that_match_your_filters: Nu s-au găsit subiecte care să corespundă filtrelor dvs.
   members_panel:
     bot: Bot
     no_results: Nu s-au găsit membri

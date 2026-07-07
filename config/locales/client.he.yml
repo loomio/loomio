@@ -164,6 +164,9 @@ he:
     merge_into: התמזגו לתוך
     merge_helptext: מיזוג "%{name}" לתוך תג אחר. שרשורים המשתמשים ב-"%{name}" ישתמשו בתג שנבחר במקום זאת
     tag_merged: תגיות מוזגו
+    show_tags_used_in_this_group: הצג תגיות ששימשו בקבוצה זו
+    show_all_tags_in_organization: הצג את כל התגים בארגון
+    only_show_tags_in_this_group: הצג רק תגיות בקבוצה זו
   poll_types:
     proposal: הצעה
     count: לבחור ב
@@ -2033,6 +2036,8 @@ he:
     new_discussion: דיון חדש
     locked: נָעוּל
     unlocked: לא נעול
+    no_threads_found_that_match_your_query_or_filters: לא נמצאו שרשורים התואמים את השאילתה או המסננים שלך
+    no_threads_found_that_match_your_filters: לא נמצאו שרשורים התואמים את המסננים שלך
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים

@@ -40,8 +40,12 @@ const tagObjects = computed(() => {
       color: (byName.value[name] || {}).color,
       to: groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
     };
-  });
+  }).sort((a, b) => a.name.localeCompare(b.name));
 });
+
+function tagDotStyle(tag) {
+  return tag.color ? {backgroundColor: tag.color} : {};
+}
 </script>
 <template lang="pug">
 span.tags-display
@@ -49,8 +53,18 @@ span.tags-display
     v-for="tag in tagObjects"
     :key="tag.id || tag.name"
     :size="size"
-    :color="tag.color"
     :to="tag.to"
+    variant="tonal"
   )
-    plain-text.text-on-surface(:model="tag" field="name")
+    .tag-color-dot(:style="tagDotStyle(tag)")
+    plain-text(:model="tag" field="name")
 </template>
+
+<style lang="sass">
+.tags-display .tag-color-dot
+  border-radius: 50%
+  display: inline-block
+  height: 10px
+  margin-right: 6px
+  width: 10px
+</style>

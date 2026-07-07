@@ -85,9 +85,9 @@ export default {
       EventBus.$emit('openModal', {
         component: 'ConfirmModal',
         props: {
-          close: () => this.openTagsSelect(),
           confirm: {
             submit: tag.destroy,
+            successCallback: () => this.openTagsSelect(),
             text: {
               title:    'loomio_tags.destroy_tag',
               helptext: 'loomio_tags.destroy_helptext',
@@ -106,6 +106,10 @@ export default {
           group: this.group
         }
       });
+    },
+
+    tagDotStyle(tag) {
+      return tag.color ? {backgroundColor: tag.color} : {};
     },
 
     submit() {
@@ -130,8 +134,9 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
       p.text-medium-emphasis(v-t="'loomio_tags.no_tags_in_group'")
     v-list
       v-list-item(v-for="tag in allTags" :key="tag.id")
-        v-chip(:color="tag.color" outlined)
-          span.text-on-surface {{tag.name}}
+        template(v-slot:prepend)
+          .tag-color-dot(:style="tagDotStyle(tag)")
+        v-list-item-title {{tag.name}}
         template(v-slot:append)
           v-btn.tag-form__edit-tag(icon size="small" variant="text" :title="$t('common.action.edit')" @click="openEditTagModal(tag)")
             common-icon.text-medium-emphasis(name="mdi-pencil")
@@ -141,6 +146,14 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
             common-icon.text-medium-emphasis(name="mdi-delete")
       v-list-item.tag-form__new-tag.mb-4(@click="openNewTagModal")
         template(v-slot:prepend)
-          common-icon(name="mdi-plus")
+          common-icon.text-medium-emphasis(name="mdi-tag-plus-outline")
         span(v-t="'loomio_tags.new_tag'")
 </template>
+
+<style lang="sass">
+.tag-color-dot
+  border-radius: 50%
+  height: 16px
+  margin-right: 12px
+  width: 16px
+</style>

@@ -173,7 +173,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     sign_in @admin
     @topic.update!(tags: ['old'])
 
-    patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
+    patch :tags, params: { id: @topic.id, tags: ['urgent', 'new'] }
 
     assert_response :success
     assert_equal ['new', 'urgent'], @topic.reload.tags

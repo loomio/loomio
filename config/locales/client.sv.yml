@@ -164,6 +164,9 @@ sv:
     merge_into: Sammanfoga till
     merge_helptext: Sammanfoga "%{name}" med en annan tagg. Trådar som använder "%{name}" kommer att använda den valda taggen istället.
     tag_merged: Tagg sammanfogad
+    show_tags_used_in_this_group: Visa taggar som används i den här gruppen
+    show_all_tags_in_organization: Visa alla taggar i organisationen
+    only_show_tags_in_this_group: Visa endast taggar i den här gruppen
   poll_types:
     proposal: förslag
     count: opt-in
@@ -2014,6 +2017,8 @@ sv:
     new_discussion: Ny diskussion
     locked: Låst
     unlocked: Olåst
+    no_threads_found_that_match_your_query_or_filters: Inga trådar hittades som matchar din sökfråga eller dina filter
+    no_threads_found_that_match_your_filters: Inga trådar hittades som matchar dina filter
   members_panel:
     bot: Bot
     no_results: Inga medlemmar hittades

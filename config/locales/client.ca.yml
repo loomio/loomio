@@ -164,6 +164,9 @@ ca:
     merge_into: Fusionar-se en
     merge_helptext: Fusiona "%{name}" amb una altra etiqueta. Els fils que utilitzin "%{name}" utilitzaran l'etiqueta seleccionada.
     tag_merged: Etiqueta fusionada
+    show_tags_used_in_this_group: Mostra les etiquetes utilitzades en aquest grup
+    show_all_tags_in_organization: Mostra totes les etiquetes de l'organització
+    only_show_tags_in_this_group: Mostra només les etiquetes d'aquest grup
   poll_types:
     proposal: proposta
     count: optar a
@@ -2037,6 +2040,8 @@ ca:
     new_discussion: Nova discussió
     locked: Bloquejat
     unlocked: Desbloquejat
+    no_threads_found_that_match_your_query_or_filters: No s'han trobat fils que coincideixin amb la consulta o els filtres.
+    no_threads_found_that_match_your_filters: No s'han trobat fils que coincideixin amb els filtres
   members_panel:
     bot: Bot
     everyone: Tothom

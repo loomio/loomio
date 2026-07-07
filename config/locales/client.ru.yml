@@ -164,6 +164,9 @@ ru:
     merge_into: Слияние в
     merge_helptext: Объедините тег "%{name}" с другим тегом. В темах, использующих "%{name}", будет использоваться выбранный тег.
     tag_merged: Тег объединен
+    show_tags_used_in_this_group: Показать теги, используемые в этой группе
+    show_all_tags_in_organization: Показать все теги в организации
+    only_show_tags_in_this_group: Отображать только теги из этой группы.
   poll_types:
     proposal: предложение
     count: выбрать в
@@ -2014,6 +2017,8 @@ ru:
     new_discussion: Новое обсуждение
     locked: Заблокировано
     unlocked: Разблокировано
+    no_threads_found_that_match_your_query_or_filters: Не найдено ни одной темы, соответствующей вашему запросу или фильтрам.
+    no_threads_found_that_match_your_filters: Соответствующие вашим фильтрам темы не найдены.
   members_panel:
     bot: Бот
     no_results: Участники не найдены

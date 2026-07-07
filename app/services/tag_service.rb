@@ -1,3 +1,5 @@
+require 'set'
+
 class TagService
   def self.create(tag:, actor:)
     tag.group = tag.group.parent_or_self if tag.group
@@ -47,7 +49,7 @@ class TagService
       Topic.where(group_id: group_ids).find_each do |topic|
         next unless topic.tags.any? { |tag| normalized_tag_name(tag) == normalized_name }
 
-        topic.update_column(:tags, topic.tags.reject { |tag| normalized_tag_name(tag) == normalized_name })
+        topic.update_column(:tags, clean_tag_names(topic.tags.reject { |tag| normalized_tag_name(tag) == normalized_name }))
       end
     end
 
@@ -82,31 +84,54 @@ class TagService
 
       seen[key] = true
       clean
-    end
+    end.sort_by(&:downcase)
   end
 
   def self.update_group_tags(group_id)
     update_org_tags(group_id)
   end
 
+  def self.update_all_org_tags
+    Group.where(parent_id: nil).find_each do |group|
+      update_org_tags(group.id)
+    end
+  end
+
   def self.update_org_tags(group_id)
     return unless group = Group.find_by(id: group_id)&.parent_or_self
 
     group_ids = group.id_and_subgroup_ids
-    names = clean_tag_names(Topic.where(group_id: group_ids).pluck(:tags).flatten)
+    used_group_ids_by_key = {}
+    names_by_key = {}
+
+    Topic.where(group_id: group_ids).pluck(:group_id, :tags).each do |topic_group_id, tags|
+      clean_tag_names(tags).each do |name|
+        key = normalized_tag_name(name)
+        names_by_key[key] ||= name
+        used_group_ids_by_key[key] ||= Set.new
+        used_group_ids_by_key[key].add(topic_group_id)
+      end
+    end
+
     legacy_tags = Tag.where(group_id: group_ids - [group.id]).to_a
     legacy_color_by_key = legacy_tags.each_with_object({}) do |tag, colors|
       colors[normalized_tag_name(tag.name)] ||= tag.color
     end
 
-    actual_name_by_key = group.tags.pluck(:name).index_by { |name| normalized_tag_name(name) }
-    missing = names.reject { |name| actual_name_by_key.key?(normalized_tag_name(name)) }
+    actual_tag_by_key = group.tags.index_by { |tag| normalized_tag_name(tag.name) }
+    missing_keys = names_by_key.keys - actual_tag_by_key.keys
 
-    missing.each do |name|
-      Tag.insert({group_id: group.id, name: name, color: legacy_color_by_key[normalized_tag_name(name)]})
+    missing_keys.each do |key|
+      Tag.insert({group_id: group.id, name: names_by_key[key], color: legacy_color_by_key[key]})
     end
 
     Tag.where(id: legacy_tags.map(&:id)).destroy_all
+
+    Tag.where(group_id: group.id).find_each do |tag|
+      key = normalized_tag_name(tag.name)
+      tag.update_column(:used_group_ids, Array(used_group_ids_by_key[key]).map(&:to_i).sort)
+    end
+
     apply_colors(group.id)
   end
 
@@ -132,7 +157,7 @@ class TagService
 
         (tags - [canonical]).each do |dupe|
           Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
-            topic.update_column(:tags, ((topic.tags - [dupe.name]) + [canonical.name]).uniq)
+            topic.update_column(:tags, clean_tag_names((topic.tags - [dupe.name]) + [canonical.name]))
           end
 
           dupe.destroy!

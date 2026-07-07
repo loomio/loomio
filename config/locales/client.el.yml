@@ -164,6 +164,9 @@ el:
     merge_into: Συγχώνευση σε
     merge_helptext: Συγχώνευση του "%{name}" σε μια άλλη ετικέτα. Τα νήματα που χρησιμοποιούν το "%{name}" θα χρησιμοποιήσουν την επιλεγμένη ετικέτα.
     tag_merged: Η ετικέτα συγχωνεύτηκε
+    show_tags_used_in_this_group: Εμφάνιση ετικετών που χρησιμοποιούνται σε αυτήν την ομάδα
+    show_all_tags_in_organization: Εμφάνιση όλων των ετικετών στον οργανισμό
+    only_show_tags_in_this_group: Εμφάνιση ετικετών μόνο σε αυτήν την ομάδα
   poll_types:
     proposal: πρόταση
     count: συμμετοχή
@@ -2014,6 +2017,8 @@ el:
     new_discussion: Νέα συζήτηση
     locked: Κλειδωμένο
     unlocked: Ακλείδωτος
+    no_threads_found_that_match_your_query_or_filters: Δεν βρέθηκαν θέματα που να ταιριάζουν με το ερώτημά σας ή τα φίλτρα σας
+    no_threads_found_that_match_your_filters: Δεν βρέθηκαν θέματα που να ταιριάζουν με τα φίλτρα σας
   members_panel:
     bot: Bot
     no_results: Δεν βρέθηκαν μέλη

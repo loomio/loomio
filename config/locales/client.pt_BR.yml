@@ -172,6 +172,9 @@ pt_BR:
     merge_into: Fundir em
     merge_helptext: Mesclar "%{name}" em outra tag. As threads que usam "%{name}" usarão a tag selecionada em vez da tag selecionada.
     tag_merged: Etiqueta mesclada
+    show_tags_used_in_this_group: Mostrar etiquetas usadas neste grupo
+    show_all_tags_in_organization: Mostrar todas as etiquetas na organização
+    only_show_tags_in_this_group: Mostrar apenas as tags deste grupo
   poll_types:
     proposal: proposta
     count: opt-in
@@ -2058,6 +2061,8 @@ pt_BR:
     new_discussion: Nova discussão
     locked: Bloqueado
     unlocked: Desbloqueado
+    no_threads_found_that_match_your_query_or_filters: Não foram encontrados tópicos que correspondam à sua pesquisa ou filtros.
+    no_threads_found_that_match_your_filters: Não foram encontradas discussões que correspondam aos seus filtros.
   members_panel:
     bot: Robô
     no_results: Nenhum membro encontrado

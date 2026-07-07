@@ -164,6 +164,9 @@ sl:
     merge_into: Združi se v
     merge_helptext: Združi »%{name}« z drugo oznako. Niti, ki uporabljajo »%{name}«, bodo namesto tega uporabile izbrano oznako.
     tag_merged: Oznaka združena
+    show_tags_used_in_this_group: Prikaži oznake, uporabljene v tej skupini
+    show_all_tags_in_organization: Prikaži vse oznake v organizaciji
+    only_show_tags_in_this_group: Prikaži samo oznake v tej skupini
   poll_types:
     proposal: snubitev
     count: privolitev
@@ -2014,6 +2017,8 @@ sl:
     new_discussion: Nova razprava
     locked: Zaklenjeno
     unlocked: Odklenjeno
+    no_threads_found_that_match_your_query_or_filters: Ni najdenih niti, ki bi ustrezale vaši poizvedbi ali filtrom
+    no_threads_found_that_match_your_filters: Ni najdenih niti, ki bi ustrezale vašim filtrom
   members_panel:
     bot: Bot
     no_results: Ni članov
