@@ -675,6 +675,7 @@ zh_TW:
     dark: 黑暗的
     light_blue: 淺藍色
     dark_blue: 深藍色
+    whats_new: 什麼是新的
   membership_card:
     group_members: 群組成員
     poll_members: "%{pollType} 成員"

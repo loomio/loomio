@@ -672,6 +672,7 @@ he:
     dark: כֵּהֶה
     light_blue: תכלת
     dark_blue: כחול כהה
+    whats_new: מה חדש
   membership_card:
     group_members: חברי הקבוצה
     poll_members: חברי %{pollType}

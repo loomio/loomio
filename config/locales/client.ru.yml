@@ -672,6 +672,7 @@ ru:
     dark: Темный
     light_blue: светло-голубой
     dark_blue: Темно-синий
+    whats_new: Что нового
   membership_card:
     group_members: Участники группы
     poll_members: "%{pollType} участников"

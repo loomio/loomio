@@ -674,6 +674,7 @@ hu:
     dark: Sötét
     light_blue: Világoskék
     dark_blue: Sötétkék
+    whats_new: Újdonságok
   membership_card:
     group_members: Csoporttagok
     poll_members: "%{pollType} tagjai"

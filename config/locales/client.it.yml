@@ -682,6 +682,7 @@ it:
     dark: Buio
     light_blue: Azzurro chiaro
     dark_blue: Blu scuro
+    whats_new: Cosa c'è di nuovo
   membership_card:
     group_members: Membri del gruppo
     poll_members: Membri del sondaggio %{pollType}

@@ -672,6 +672,7 @@ tr:
     dark: Karanlık
     light_blue: Açık mavi
     dark_blue: Koyu mavi
+    whats_new: Ne var ne yok
   membership_card:
     group_members: Grup üyeleri
     poll_members: "%{pollType} üye"

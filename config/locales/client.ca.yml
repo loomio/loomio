@@ -674,6 +674,7 @@ ca:
     dark: Fosc
     light_blue: Blau clar
     dark_blue: Blau fosc
+    whats_new: Què hi ha de nou?
   membership_card:
     group_members: Membres del grup
     poll_members: "%{pollType} membres"

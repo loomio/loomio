@@ -682,6 +682,7 @@ pt_BR:
     dark: Escuro
     light_blue: Azul claro
     dark_blue: Azul escuro
+    whats_new: O que há de novo
   membership_card:
     group_members: Membros do Grupo
     poll_members: "%{pollType} membros"

@@ -672,6 +672,7 @@ sv:
     dark: Mörk
     light_blue: Ljusblå
     dark_blue: Mörkblå
+    whats_new: Nyheter
   membership_card:
     group_members: Gruppmedlemmar
     poll_members: "%{pollType} medlemmar"

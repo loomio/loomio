@@ -672,6 +672,7 @@ fi:
     dark: Tumma
     light_blue: Vaaleansininen
     dark_blue: Tummansininen
+    whats_new: Mitä uutta
   membership_card:
     group_members: Ryhmän jäsenet
     poll_members: "%{pollType} jäsentä"

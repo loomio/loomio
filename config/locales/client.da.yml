@@ -672,6 +672,7 @@ da:
     dark: Mørk
     light_blue: Lyseblå
     dark_blue: Mørkeblå
+    whats_new: Hvad er nyt?
   membership_card:
     group_members: Gruppemedlemmer
     poll_members: "%{pollType} medlemmer"

@@ -672,6 +672,7 @@ ro:
     dark: Întuneric
     light_blue: Albastru deschis
     dark_blue: Albastru închis
+    whats_new: Ce este nou
   membership_card:
     group_members: Membrii grupului
     poll_members: "%{pollType} membri"

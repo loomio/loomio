@@ -671,6 +671,7 @@ ja:
     dark: 暗い
     light_blue: 水色
     dark_blue: ダークブルー
+    whats_new: 新着情報
   membership_card:
     group_members: グループの人（仲間）たち
     poll_members: "%{pollType} メンバー"

@@ -674,6 +674,7 @@ nl_NL:
     dark: Donker
     light_blue: Lichtblauw
     dark_blue: Donkerblauw
+    whats_new: Wat is er nieuw?
   membership_card:
     group_members: Groepsleden
     poll_members: "%{pollType} gebruikers"

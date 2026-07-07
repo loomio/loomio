@@ -672,6 +672,7 @@ el:
     dark: Σκοτάδι
     light_blue: Ανοιχτό μπλε
     dark_blue: Σκούρο μπλε
+    whats_new: Τι νέο υπάρχει
   membership_card:
     group_members: Μέλη ομάδας
     poll_members: "%{pollType} μέλη"

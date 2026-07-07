@@ -674,6 +674,7 @@ pl:
     dark: Ciemny
     light_blue: Jasnoniebieski
     dark_blue: Ciemnoniebieski
+    whats_new: Co nowego
   membership_card:
     group_members: Osoby w tej grupy
     poll_members: "%{pollType} osoby"

@@ -672,6 +672,7 @@ sl:
     dark: Temno
     light_blue: Svetlo modra
     dark_blue: Temno modra
+    whats_new: Kaj je novega
   membership_card:
     group_members: Člani skupine
     poll_members: "%{pollType} članov"

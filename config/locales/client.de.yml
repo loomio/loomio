@@ -680,6 +680,7 @@ de:
     dark: Dunkel
     light_blue: Hellblau
     dark_blue: Dunkelblau
+    whats_new: Was ist neu
   membership_card:
     group_members: Mitglieder der Gruppe
     poll_members: "%{pollType} Mitglieder"

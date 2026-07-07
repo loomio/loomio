@@ -675,6 +675,7 @@ uk:
     dark: Темний
     light_blue: Світло-блакитний
     dark_blue: Темно-синій
+    whats_new: Що нового
   membership_card:
     group_members: Учасники групи
     poll_members: учасники %{pollType}

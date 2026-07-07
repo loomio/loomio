@@ -682,6 +682,7 @@ fr:
     dark: Sombre
     light_blue: Bleu clair
     dark_blue: Bleu foncé
+    whats_new: Quoi de neuf
   membership_card:
     group_members: Membres du groupe
     poll_members: Membres du %{pollType}
