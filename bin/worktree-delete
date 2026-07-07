@@ -1,0 +1,94 @@
+#!/usr/bin/env sh
+set -eu
+
+usage() {
+  cat <<'USAGE'
+Usage: bin/worktree-delete [--force] WORKTREE_NAME_OR_PATH
+
+Removes a Git worktree created by bin/worktree-create and drops its
+worktree-specific Rails test database.
+
+Examples:
+  bin/worktree-delete ready-bolt
+  bin/worktree-delete --force ready-bolt
+  bin/worktree-delete /Users/rob/projects/worktrees/loomio/ready-bolt/loomio
+USAGE
+}
+
+force=""
+if [ "${1:-}" = "--force" ] || [ "${1:-}" = "-f" ]; then
+  force="--force"
+  shift
+fi
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ] || [ "${1:-}" = "" ]; then
+  usage
+  exit 0
+fi
+
+worktree_arg="$1"
+repo_root="$(git rev-parse --show-toplevel)"
+repo_name="$(basename "$repo_root")"
+worktrees_root="$(dirname "$(dirname "$repo_root")")/worktrees/$repo_name"
+
+case "$worktree_arg" in
+  /*)
+    worktree_path="$worktree_arg"
+    if [ "$(basename "$worktree_path")" = "$repo_name" ]; then
+      worktree_name="$(basename "$(dirname "$worktree_path")")"
+    else
+      worktree_name="$(basename "$worktree_path")"
+    fi
+    ;;
+  *)
+    worktree_name="$worktree_arg"
+    worktree_path="$worktrees_root/$worktree_name/$repo_name"
+    ;;
+esac
+
+main_worktree_path="$(git worktree list --porcelain | awk 'NR == 1 { print substr($0, 10); exit }')"
+if [ -d "$worktree_path" ]; then
+  worktree_path_resolved="$(cd "$worktree_path" && pwd -P)"
+  main_worktree_path_resolved="$(cd "$main_worktree_path" && pwd -P)"
+  if [ "$worktree_path_resolved" = "$main_worktree_path_resolved" ]; then
+    echo "Refusing to delete the main worktree: $worktree_path" >&2
+    exit 1
+  fi
+fi
+
+db_suffix="$(printf '%s' "$worktree_name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/_/g; s/^_*//; s/_*$//; s/__*/_/g')"
+
+if [ -z "$db_suffix" ]; then
+  echo "Worktree name must contain at least one letter or number" >&2
+  exit 1
+fi
+
+database_name="loomio_test_$db_suffix"
+
+if [ -d "$worktree_path" ]; then
+  if [ -n "$force" ]; then
+    git worktree remove --force "$worktree_path"
+  else
+    git worktree remove "$worktree_path"
+  fi
+else
+  echo "Worktree path does not exist, pruning stale Git worktree metadata if present: $worktree_path"
+  git worktree prune
+fi
+
+if command -v dropdb >/dev/null 2>&1; then
+  dropdb --if-exists "$database_name"
+  echo "Dropped test database: $database_name"
+else
+  echo "dropdb was not found; delete this database manually: $database_name" >&2
+fi
+
+parent_dir="$(dirname "$worktree_path")"
+if [ -d "$parent_dir" ]; then
+  rmdir "$parent_dir" 2>/dev/null || true
+fi
+
+cat <<SUMMARY
+Deleted worktree: $worktree_path
+Test database: $database_name
+SUMMARY

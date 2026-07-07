@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+set -eu
+
+usage() {
+  cat <<'USAGE'
+Usage: bin/worktree-create WORKTREE_NAME [BRANCH_NAME] [BASE_REF]
+
+Creates a Git worktree at ../worktrees/loomio/WORKTREE_NAME/loomio, then runs
+bin/worktree-setup in the new worktree.
+
+Examples:
+  bin/worktree-create ready-bolt
+  bin/worktree-create ready-bolt emoji-search-and-unicode master
+USAGE
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ] || [ "${1:-}" = "" ]; then
+  usage
+  exit 0
+fi
+
+worktree_name="$1"
+branch_name="${2:-$worktree_name}"
+base_ref="${3:-HEAD}"
+
+repo_root="$(git rev-parse --show-toplevel)"
+repo_name="$(basename "$repo_root")"
+worktrees_root="$(dirname "$(dirname "$repo_root")")/worktrees/$repo_name"
+worktree_path="$worktrees_root/$worktree_name/$repo_name"
+mkdir -p "$(dirname "$worktree_path")"
+
+if git show-ref --verify --quiet "refs/heads/$branch_name"; then
+  git worktree add "$worktree_path" "$branch_name"
+else
+  git worktree add -b "$branch_name" "$worktree_path" "$base_ref"
+fi
+
+"$repo_root/bin/worktree-setup" "$worktree_path" "$worktree_name"
+
+cat <<SUMMARY
+Created worktree: $worktree_path
+Branch: $branch_name
+SUMMARY
