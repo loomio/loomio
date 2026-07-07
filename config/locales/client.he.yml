@@ -1403,6 +1403,8 @@ he:
     members_can_edit_discussions_help_v2: אפשר לחברים לערוך, להעביר, להצמיד, לתייג או לסגור כל דיון או תגובה בקבוצה
     group_handle_hint_new: כתובת ה-URL והאימייל של הקבוצה שלך יהיו %{host}/%{handle} ו-%{handle}{'@'}%{host}
     handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
+    members_can_create_tags: חברים יכולים ליצור תגיות
+    members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |

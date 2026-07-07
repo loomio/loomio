@@ -1,6 +1,7 @@
 <script setup lang="js">
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
+import Session from '@/shared/services/session';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
@@ -131,7 +132,13 @@ onMounted(() => {
   });
 });
 
-const canCreateTags = computed(() => usableGroup(tagGroup.value));
+const canCreateTags = computed(() => {
+  if (!usableGroup(tagGroup.value)) { return false; }
+
+  return tagGroup.value.parentOrSelf().adminsInclude(Session.user()) ||
+    tagGroup.value.adminsInclude(Session.user()) ||
+    (tagGroup.value.membersCanCreateTags && tagGroup.value.membersInclude(Session.user()));
+});
 
 function tagVisibleInCurrentGroup(tag) {
   return showAllTags.value ||
@@ -206,7 +213,7 @@ function submitNewTag() {
       .topic-tags-picker__tag-content
         .tag-color-dot(:style="tagDotStyle(tag)")
         span {{ tag.name }}
-    v-list-item.topic-tags-picker__all-tags(v-if="canCreateTags" density="compact" @click="showAllTags = !showAllTags")
+    v-list-item.topic-tags-picker__all-tags(v-if="usableGroup(tagGroup)" density="compact" @click="showAllTags = !showAllTags")
       template(v-slot:prepend)
         common-icon.text-medium-emphasis(name="mdi-unfold-more-horizontal")
       v-list-item-title(v-if="showAllTags" v-t="'common.action.show_fewer'")

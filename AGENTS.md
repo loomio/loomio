@@ -17,6 +17,10 @@
   - Put the most significant word first, then qualifiers/units in descending significance. Prefer names like `comment_length_max` over `max_comment_length`, so related names group together.
   - Choose related names with the same length where practical, especially pairs like `min` and `max`, so code lines up and comparisons are easier to scan.
 
+## Changelog
+
+- For every significant user-facing change, add a new Markdown file under `docs/user_manual/updates/` named with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
+
 ## i18n / Localization
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.

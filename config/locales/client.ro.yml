@@ -1399,6 +1399,8 @@ ro:
     members_can_edit_discussions_help_v2: Permiteți membrilor să editeze, să mute, să fixeze, să eticheteze sau să închidă orice discuție sau comentariu din grup
     group_handle_hint_new: Adresa URL și adresa de e-mail a grupului dvs. vor fi %{host}/%{handle} și %{handle}{'@'}%{host}
     handle_changed_hint: Adresa URL și adresa de e-mail anterioare vor redirecționa către noua adresă.
+    members_can_create_tags: Membrii pot crea etichete
+    members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>

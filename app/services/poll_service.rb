@@ -34,6 +34,7 @@ class PollService
 
     Poll.transaction do
       actor.ability.authorize!(:create, poll)
+      TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
 
       poll.save!
       poll.update_counts!
@@ -63,6 +64,7 @@ class PollService
     )
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).except(:group_id, :topic_id)
+    TagService.authorize_create_tag_names!(poll.group, topic_params[:tags], actor) if topic_params.key?(:tags)
     poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 

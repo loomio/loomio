@@ -87,6 +87,24 @@ class TagService
     end.sort_by(&:downcase)
   end
 
+  def self.can_create_tag?(group, actor)
+    group.parent_or_self.admins_include?(actor) ||
+      group.admins_include?(actor) ||
+      (group.members_can_create_tags && group.members_include?(actor))
+  end
+
+  def self.new_tag_names(group, names)
+    existing_keys = group.parent_or_self.tags.map { |tag| normalized_tag_name(tag.name) }.to_set
+    clean_tag_names(names).reject { |name| existing_keys.include?(normalized_tag_name(name)) }
+  end
+
+  def self.authorize_create_tag_names!(group, names, actor)
+    return if new_tag_names(group, names).empty?
+    return if can_create_tag?(group, actor)
+
+    raise CanCan::AccessDenied
+  end
+
   def self.update_group_tags(group_id)
     update_org_tags(group_id)
   end

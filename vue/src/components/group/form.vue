@@ -365,6 +365,12 @@ v-form(ref="form" @submit.prevent="submit")
                 span(v-t="'group_form.members_can_edit_discussions_v2'")
                 br
                 span.text-body-small(v-t="'group_form.members_can_edit_discussions_help_v2'")
+          v-checkbox.group-form__members-can-create-tags(hide-details v-model='group.membersCanCreateTags')
+            template(v-slot:label)
+              div
+                span(v-t="'group_form.members_can_create_tags'")
+                br
+                span.text-body-small(v-t="'group_form.members_can_create_tags_help'")
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group.membersCanEditComments')
             template(v-slot:label)
               div

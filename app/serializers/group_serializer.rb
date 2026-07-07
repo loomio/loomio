@@ -14,6 +14,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_add_guests,
              :members_can_announce,
              :members_can_create_subgroups,
+             :members_can_create_tags,
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,

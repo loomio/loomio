@@ -1399,6 +1399,8 @@ hr:
     members_can_edit_discussions_help_v2: Omogući članovima uređivanje, premještanje, prikvačivanje, označavanje ili zatvaranje bilo koje rasprave ili komentara u grupi
     group_handle_hint_new: URL i e-adresa vaše grupe bit će %{host}/%{handle} i %{handle}{'@'}%{host}
     handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
+    members_can_create_tags: Članovi mogu kreirati oznake
+    members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>

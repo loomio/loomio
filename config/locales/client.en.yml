@@ -1522,6 +1522,8 @@ en:
     members_can_start_discussions_help_v2: Allow members to start new discussions within the group
     members_can_edit_discussions_v2: Members can manage discussions and comments
     members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
+    members_can_create_tags: Members can create tags
+    members_can_create_tags_help: Allow members to create new tags when tagging threads and polls
     admins_can_edit_user_content: Admins can edit members' comments
     admins_can_edit_user_content_help: Allow admins to edit content written by members
     submit_start_group: Start group

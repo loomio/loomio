@@ -1405,6 +1405,8 @@ nl_NL:
     members_can_edit_discussions_help_v2: Geef leden de mogelijkheid om discussies en reacties in de groep te bewerken, verplaatsen, vastzetten, taggen of sluiten.
     group_handle_hint_new: De URL en het e-mailadres van uw groep zijn %{host}/%{handle} en %{handle}{'@'}%{host}.
     handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
+    members_can_create_tags: Leden kunnen tags aanmaken.
+    members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
   group_export_modal:
     title: Groepsdata exporteren
     body: |

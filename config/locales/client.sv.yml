@@ -1399,6 +1399,8 @@ sv:
     members_can_edit_discussions_help_v2: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga diskussioner eller kommentarer i gruppen
     group_handle_hint_new: Din grupp-URL och e-postadress kommer att vara %{host}/%{handle} och %{handle}{'@'}%{host}
     handle_changed_hint: Din tidigare URL och e-postadress kommer att omdirigera till din nya adress.
+    members_can_create_tags: Medlemmar kan skapa taggar
+    members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>

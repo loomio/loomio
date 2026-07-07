@@ -1426,6 +1426,8 @@ pt_BR:
     members_can_edit_discussions_help_v2: Permitir que os membros editem, movam, fixem, marquem ou fechem qualquer discussão ou comentário no grupo.
     group_handle_hint_new: O URL e o e-mail do seu grupo serão %{host}/%{handle} e %{handle}{'@'}%{host}
     handle_changed_hint: Seu endereço de URL e e-mail anteriores serão redirecionados para seu novo endereço.
+    members_can_create_tags: Os membros podem criar etiquetas.
+    members_can_create_tags_help: Permitir que os membros criem novas etiquetas ao etiquetar tópicos e enquetes.
   group_export_modal:
     title: Exportar data do grupo
     body: |

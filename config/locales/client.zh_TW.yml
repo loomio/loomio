@@ -1408,6 +1408,8 @@ zh_TW:
     members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
     group_handle_hint_new: 您的群組網址和電子郵件位址將分別為 %{host}/%{handle} 和 %{handle}{'@'}%{host}
     handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
+    members_can_create_tags: 成員可以建立標籤
+    members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
   group_export_modal:
     title: 匯出群組資料
     body: |

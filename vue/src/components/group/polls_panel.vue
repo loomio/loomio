@@ -37,7 +37,7 @@ export default
       query: () => this.findRecords()
     });
 
-    this.loader.fetch(this.page).then(() => {
+    this.fetch().then(() => {
       EventBus.$emit('currentComponent', {
         page: 'groupPage',
         title: this.group.name,
@@ -95,6 +95,10 @@ export default
       });
     },
 
+    fetch() {
+      return this.loader.fetch(this.page).then(() => this.findRecords());
+    },
+
     findRecords() {
       const groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
         case 'all': return this.group.organisationIds();
@@ -124,7 +128,7 @@ export default
 
       if (this.$route.query.tag) {
         const tagName = this.$route.query.tag;
-        chain = chain.where(poll => (poll.tags || []).includes(tagName));
+        chain = chain.where(poll => poll.topic().tags.includes(tagName));
       }
 
       if (this.loader.pageWindow[this.page]) {
@@ -142,19 +146,23 @@ export default
 
   watch: {
     '$route.query.status'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.poll_type'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.tag'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.subgroups'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.page'() {
-      this.loader.fetch(this.page);
+      this.fetch();
     }
   },
 

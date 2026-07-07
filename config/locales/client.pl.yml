@@ -1405,6 +1405,8 @@ pl:
     members_can_edit_discussions_help_v2: Zezwalaj członkom na edytowanie, przenoszenie, przypinanie, oznaczanie lub zamykanie dowolnej dyskusji lub komentarza w grupie
     group_handle_hint_new: 'Adres URL i adres e-mail Twojej grupy będą następujące: %{host}/%{handle} i %{handle}{''@''}%{host}'
     handle_changed_hint: Twój poprzedni adres URL i adres e-mail będą przekierowywać na nowy adres.
+    members_can_create_tags: Członkowie mogą tworzyć tagi
+    members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
   group_export_modal:
     title: Eksportuj dane grupy
     body: |

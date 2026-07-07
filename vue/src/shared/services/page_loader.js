@@ -28,11 +28,17 @@ export default class PageLoader {
       path: this.path,
       params: merge({from: ((page - 1) * this.per)}, this.params)}).then(json => {
       const data = utils.deserialize(json);
+      const records = data[data.meta.root];
       this.total = data.meta.total;
-      const firstId = data[data.meta.root][0][this.order];
-      const lastId = data[data.meta.root][(data[data.meta.root].length - 1)][this.order];
-      this.pageWindow[page] = [lastId,firstId];
-      this.pageIds[page] = map(data[data.meta.root], 'id');
+      if (records.length) {
+        const firstId = records[0][this.order];
+        const lastId = records[(records.length - 1)][this.order];
+        this.pageWindow[page] = [lastId,firstId];
+        this.pageIds[page] = map(records, 'id');
+      } else {
+        this.pageWindow[page] = null;
+        this.pageIds[page] = [];
+      }
       // console.log 'page', page, 'discussions.length', data.discussions.length, 'first', firstId, 'last', lastId, 'groupIds!', orderBy uniq(map(data['discussions'], 'groupId'))
       return Records.importREADY(data);
     }).catch(err => {

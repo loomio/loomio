@@ -1413,6 +1413,8 @@ de:
     members_can_edit_discussions_help_v2: Erlaube den Mitgliedern, Diskussionen oder Kommentare in der Gruppe zu bearbeiten, zu verschieben, anzuheften, zu taggen oder zu schließen.
     group_handle_hint_new: Deine Gruppen-URL und E-Mail-Adresse lauten %{host}/%{handle} und %{handle}{'@'}%{host}.
     handle_changed_hint: Deine bisherige URL und E-Mail-Adresse werden auf deine neue Adresse weitergeleitet.
+    members_can_create_tags: Mitglieder können Tags erstellen
+    members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
