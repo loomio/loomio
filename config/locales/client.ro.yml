@@ -164,6 +164,9 @@ ro:
     merge_into: Fuzionați în
     merge_helptext: Îmbinați „%{name}” cu o altă etichetă. Firele de discuție care utilizează „%{name}” vor folosi în schimb eticheta selectată.
     tag_merged: Etichetă îmbinată
+    show_tags_used_in_this_group: Afișează etichetele utilizate în acest grup
+    show_all_tags_in_organization: Afișează toate etichetele din organizație
+    only_show_tags_in_this_group: Afișați doar etichetele din acest grup
   poll_types:
     proposal: propunere
     count: înscriere
@@ -669,6 +672,7 @@ ro:
     dark: Întuneric
     light_blue: Albastru deschis
     dark_blue: Albastru închis
+    whats_new: Ce este nou
   membership_card:
     group_members: Membrii grupului
     poll_members: "%{pollType} membri"
@@ -1396,6 +1400,8 @@ ro:
     members_can_edit_discussions_help_v2: Permiteți membrilor să editeze, să mute, să fixeze, să eticheteze sau să închidă orice discuție sau comentariu din grup
     group_handle_hint_new: Adresa URL și adresa de e-mail a grupului dvs. vor fi %{host}/%{handle} și %{handle}{'@'}%{host}
     handle_changed_hint: Adresa URL și adresa de e-mail anterioare vor redirecționa către noua adresă.
+    members_can_create_tags: Membrii pot crea etichete
+    members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -2014,6 +2020,8 @@ ro:
     new_discussion: Discuție nouă
     locked: Blocat
     unlocked: Deblocat
+    no_threads_found_that_match_your_query_or_filters: Nu s-au găsit subiecte care să corespundă interogării sau filtrelor dvs.
+    no_threads_found_that_match_your_filters: Nu s-au găsit subiecte care să corespundă filtrelor dvs.
   members_panel:
     bot: Bot
     no_results: Nu s-au găsit membri

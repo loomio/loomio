@@ -3,11 +3,9 @@ import Records from '@/shared/services/records';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 
-const { tags, group, showCounts, showOrgCounts, selected, size } = defineProps({
+const { tags, group, selected, size } = defineProps({
   tags: Array,
   group: Object,
-  showCounts: Boolean,
-  showOrgCounts: Boolean,
   selected: String,
   size: {
     type: String,
@@ -40,11 +38,14 @@ const tagObjects = computed(() => {
       id: i,
       name,
       color: (byName.value[name] || {}).color,
-      taggingsCount: (byName.value[name] || {}).taggingsCount,
       to: groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
     };
-  });
+  }).sort((a, b) => a.name.localeCompare(b.name));
 });
+
+function tagDotStyle(tag) {
+  return tag.color ? {backgroundColor: tag.color} : {};
+}
 </script>
 <template lang="pug">
 span.tags-display
@@ -52,15 +53,18 @@ span.tags-display
     v-for="tag in tagObjects"
     :key="tag.id || tag.name"
     :size="size"
-    :color="tag.color"
     :to="tag.to"
-    :class="{'mb-1': showCounts}"
+    variant="tonal"
   )
-    plain-text.text-on-surface(:model="tag" field="name")
-    span(v-if="showCounts")
-      space
-      span {{tag.taggingsCount}}
-    span(v-if="showOrgCounts")
-      space
-      span {{tag.orgTaggingsCount}}
+    .tag-color-dot(:style="tagDotStyle(tag)")
+    plain-text(:model="tag" field="name")
 </template>
+
+<style lang="sass">
+.tags-display .tag-color-dot
+  border-radius: 50%
+  display: inline-block
+  height: 10px
+  margin-right: 6px
+  width: 10px
+</style>

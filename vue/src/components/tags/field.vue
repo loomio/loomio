@@ -18,15 +18,11 @@ export default {
 
   methods: {
     query() {
-      this.items = uniq(this.model.group().tags().map(t => t.name).concat(this.model.group().parentOrSelf().tags().filter(t => t.taggingsCount).map(t => t.name)));
+      this.items = uniq(this.model.group().tags().map(t => t.name));
     },
 
     colorFor(name) {
-      return (
-        this.model.group().tags().find(t => t.name === name) ||
-        this.model.group().parentOrSelf().tags().find(t => t.name === name) ||
-        {}
-      ).color;
+      return (this.model.group().tags().find(t => t.name === name) || {}).color;
     },
 
     remove(name) {

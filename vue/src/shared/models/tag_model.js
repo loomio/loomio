@@ -7,11 +7,14 @@ export default class TagModel extends BaseModel {
   static singular = 'tag';
   static plural = 'tags';
   static uniqueIndices = ['id'];
-  static indices = ['groupId'];
+  static indices = ['groupId', 'usedGroupIds'];
   static colors = colors;
 
   defaultValues() {
-    return {color: colors[Math.floor(Math.random() * colors.length)]};
+    return {
+      color: colors[Math.floor(Math.random() * colors.length)],
+      usedGroupIds: []
+    };
   }
 
   relationships() {

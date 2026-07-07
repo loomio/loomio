@@ -165,6 +165,9 @@ zh_TW:
     merge_into: 合併
     merge_helptext: 將“%{name}”合併到另一個標籤中。使用「%{name}」的貼文將使用選定的標籤。
     tag_merged: 標籤已合併
+    show_tags_used_in_this_group: 顯示此群組中使用的標籤
+    show_all_tags_in_organization: 顯示組織中的所有標籤
+    only_show_tags_in_this_group: 僅顯示此群組中的標籤
   poll_types:
     proposal: 提議
     count: 選擇參加
@@ -672,6 +675,7 @@ zh_TW:
     dark: 黑暗的
     light_blue: 淺藍色
     dark_blue: 深藍色
+    whats_new: 什麼是新的
   membership_card:
     group_members: 群組成員
     poll_members: "%{pollType} 成員"
@@ -1405,6 +1409,8 @@ zh_TW:
     members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
     group_handle_hint_new: 您的群組網址和電子郵件位址將分別為 %{host}/%{handle} 和 %{handle}{'@'}%{host}
     handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
+    members_can_create_tags: 成員可以建立標籤
+    members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2040,6 +2046,8 @@ zh_TW:
     new_discussion: 新討論
     locked: 已鎖定
     unlocked: 已解鎖
+    no_threads_found_that_match_your_query_or_filters: 未找到符合您的查詢或篩選條件的帖子
+    no_threads_found_that_match_your_filters: 未找到符合您篩選條件的帖子
   members_panel:
     bot: 機器人
     no_results: 找不到成員

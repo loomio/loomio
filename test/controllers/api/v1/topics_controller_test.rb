@@ -173,7 +173,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     sign_in @admin
     @topic.update!(tags: ['old'])
 
-    patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
+    patch :tags, params: { id: @topic.id, tags: ['urgent', 'new'] }
 
     assert_response :success
     assert_equal ['new', 'urgent'], @topic.reload.tags
@@ -189,6 +189,80 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal [], @topic.reload.tags
     assert_equal({}, JSON.parse(response.body))
+  end
+
+  test "tags can be updated by users who can edit the topicable" do
+    poll = PollService.create(params: {
+      title: "Topicable tags #{SecureRandom.hex(4)}",
+      poll_type: "proposal",
+      group_id: @group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["Agree", "Disagree"]
+    }, actor: @admin)
+    sign_in @admin
+
+    patch :tags, params: { id: poll.topic.id, tags: ['poll-tag'] }
+
+    assert_response :success
+    assert_equal ['poll-tag'], poll.topic.reload.tags
+  end
+
+  test "tags can be updated by members who can edit discussions" do
+    @group.update!(members_can_edit_discussions: true)
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
+
+    assert_response :success
+    assert_equal ['new', 'urgent'], @topic.reload.tags
+  end
+
+  test "members can apply existing tags when members cannot create tags" do
+    @group.update!(members_can_edit_discussions: true, members_can_create_tags: false)
+    Tag.find_or_create_by!(group: @group, name: 'apple')
+    Tag.find_or_create_by!(group: @group, name: 'banana')
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['apple', 'banana'] }
+
+    assert_response :success
+    assert_equal ['apple', 'banana'], @topic.reload.tags
+  end
+
+  test "members cannot create new tags when members cannot create tags" do
+    @group.update!(members_can_edit_discussions: true, members_can_create_tags: false)
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new'] }
+
+    assert_response :forbidden
+    assert_equal ['old'], @topic.reload.tags
+  end
+
+  test "admins can create new tags when members cannot create tags" do
+    @group.update!(members_can_create_tags: false)
+    sign_in @admin
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new'] }
+
+    assert_response :success
+    assert_equal ['new'], @topic.reload.tags
+  end
+
+  test "tags cannot be updated by members who cannot edit discussions" do
+    @group.update!(members_can_edit_discussions: false)
+    sign_in @user
+    @topic.update!(tags: ['old'])
+
+    patch :tags, params: { id: @topic.id, tags: ['new'] }
+
+    assert_response :forbidden
+    assert_equal ['old'], @topic.reload.tags
   end
 
   # Test dismiss action

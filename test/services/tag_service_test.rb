@@ -2,107 +2,71 @@ require 'test_helper'
 
 class TagServiceTest < ActiveSupport::TestCase
   setup do
-    @admin = users(:admin)
     @group = groups(:group)
+    @subgroup = groups(:subgroup)
   end
 
-  test "update_group_and_org_tags creates tags for tag names used in topics" do
-    @group.topics.update_all(tags: ['proposal', 'urgent'])
+  test "update_group_and_org_tags creates parent tag records for tags used in the org" do
+    @group.topics.update_all(tags: ['proposal'])
+    @subgroup.topics.update_all(tags: ['urgent'])
 
-    TagService.update_group_and_org_tags(@group.id)
+    TagService.update_group_and_org_tags(@subgroup.id)
 
-    names = @group.tags.pluck(:name)
-    assert_includes names, 'proposal'
-    assert_includes names, 'urgent'
+    assert @group.tags.exists?(name: 'proposal')
+    assert @group.tags.exists?(name: 'urgent')
+    assert_not @subgroup.tags.exists?(name: 'urgent')
+    assert_equal [@group.id], @group.tags.find_by!(name: 'proposal').used_group_ids
+    assert_equal [@subgroup.id], @group.tags.find_by!(name: 'urgent').used_group_ids
   end
 
-  test "update_group_and_org_tags sets taggings_count based on usage" do
-    @group.topics.update_all(tags: ['budget'])
+  test "clean_tag_names normalizes dedupes and sorts alphabetically" do
+    names = TagService.clean_tag_names(['  Zeta  ', 'alpha', 'zeta', ' Beta  value '])
 
-    TagService.update_group_and_org_tags(@group.id)
-
-    tag = @group.tags.find_by!(name: 'budget')
-    assert_equal @group.topics.count, tag.taggings_count
+    assert_equal ['alpha', 'Beta value', 'Zeta'], names
   end
 
-  test "update_group_and_org_tags zeroes count for tags not present in current topics" do
-    stale_tag = Tag.create!(group: @group, name: 'stale', taggings_count: 5)
+  test "update_group_and_org_tags preserves existing metadata when tags are still in use" do
+    tag = Tag.create!(group: @group, name: 'budget', color: '#abcdef')
+    @subgroup.topics.update_all(tags: ['budget'])
+
+    TagService.update_group_and_org_tags(@subgroup.id)
+
+    assert_equal '#abcdef', tag.reload.color
+  end
+
+  test "update_group_and_org_tags collapses legacy subgroup metadata into the parent group" do
+    Tag.create!(group: @subgroup, name: 'legacy', color: '#abcdef')
+    @subgroup.topics.update_all(tags: ['legacy'])
+
+    TagService.update_group_and_org_tags(@subgroup.id)
+
+    assert_equal '#abcdef', @group.tags.find_by!(name: 'legacy').color
+    assert_equal [@subgroup.id], @group.tags.find_by!(name: 'legacy').used_group_ids
+    assert_not @subgroup.tags.exists?(name: 'legacy')
+  end
+
+  test "update_group_and_org_tags does not destroy metadata for unused tags" do
+    Tag.create!(group: @group, name: 'planned', color: '#abcdef')
     @group.topics.update_all(tags: ['active'])
 
     TagService.update_group_and_org_tags(@group.id)
 
-    assert_equal 0, stale_tag.reload.taggings_count
+    assert @group.tags.exists?(name: 'planned')
+    assert @group.tags.exists?(name: 'active')
+    assert_equal [], @group.tags.find_by!(name: 'planned').used_group_ids
+  end
+
+  test "update_group_and_org_tags normalizes whitespace and dedupes names case-insensitively" do
+    @group.topics.update_all(tags: ['  Community   Energy  ', 'community energy'])
+
+    TagService.update_group_and_org_tags(@group.id)
+
+    assert_equal ['Community Energy'], @group.tags.where("lower(name) = ?", 'community energy').pluck(:name)
   end
 
   test "update_group_and_org_tags is a no-op for unknown group" do
     assert_nothing_raised do
       TagService.update_group_and_org_tags(-1)
     end
-  end
-
-  test "update_group_and_org_tags propagates org_taggings_count to parent group" do
-    subgroup = groups(:subgroup)
-    subgroup.topics.update_all(tags: ['strategy'])
-
-    TagService.update_group_and_org_tags(subgroup.id)
-
-    parent_tag = @group.tags.find_by(name: 'strategy')
-    assert parent_tag, "expected a tag named 'strategy' on the parent group"
-    assert parent_tag.org_taggings_count > 0
-  end
-
-  test "update_group_and_org_tags updates taggings_count on an existing tag" do
-    tag = Tag.create!(group: @group, name: 'budget', taggings_count: 99)
-    @group.topics.update_all(tags: ['budget'])
-
-    TagService.update_group_and_org_tags(@group.id)
-
-    assert_equal @group.topics.count, tag.reload.taggings_count
-  end
-
-  test "update_group_and_org_tags does not destroy existing tags when a new tag is added" do
-    Tag.create!(group: @group, name: 'existing', taggings_count: 3)
-    @group.topics.update_all(tags: ['existing', 'new-tag'])
-
-    TagService.update_group_and_org_tags(@group.id)
-
-    assert @group.tags.exists?(name: 'existing'), "existing tag should not be destroyed"
-    assert @group.tags.exists?(name: 'new-tag'), "new tag should be created"
-  end
-
-  test "update_group_and_org_tags does not destroy existing tags when one is removed from topics" do
-    Tag.create!(group: @group, name: 'removed', taggings_count: 5)
-    Tag.create!(group: @group, name: 'kept', taggings_count: 2)
-    @group.topics.update_all(tags: ['kept'])
-
-    TagService.update_group_and_org_tags(@group.id)
-
-    assert @group.tags.exists?(name: 'removed'), "removed tag record should still exist"
-    assert_equal 0, @group.tags.find_by!(name: 'removed').taggings_count
-    assert @group.tags.exists?(name: 'kept'), "kept tag should still exist"
-  end
-
-  test "update_group_and_org_tags sets exact org_taggings_count across subgroups" do
-    subgroup = groups(:subgroup)
-    @group.topics.update_all(tags: ['theme'])
-    subgroup.topics.update_all(tags: ['theme'])
-
-    TagService.update_group_and_org_tags(@group.id)
-    TagService.update_group_and_org_tags(subgroup.id)
-
-    parent_tag = @group.tags.reload.find_by!(name: 'theme')
-    expected = @group.topics.count + subgroup.topics.count
-    assert_equal expected, parent_tag.org_taggings_count
-  end
-
-  test "update_group_and_org_tags updates org_taggings_count on an existing parent tag" do
-    Tag.create!(group: @group, name: 'policy', org_taggings_count: 99)
-    subgroup = groups(:subgroup)
-    subgroup.topics.update_all(tags: ['policy'])
-
-    TagService.update_group_and_org_tags(subgroup.id)
-
-    parent_tag = @group.tags.find_by!(name: 'policy')
-    assert_equal subgroup.topics.count, parent_tag.org_taggings_count
   end
 end

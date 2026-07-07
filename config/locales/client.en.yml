@@ -183,6 +183,9 @@ en:
     amount: Amount
   loomio_tags:
     all_tags: All tags
+    show_all_tags_in_organization: Show all tags in organization
+    show_tags_used_in_this_group: Show tags used in this group
+    only_show_tags_in_this_group: Only show tags in this group
     tags: Tags
     apply_tags: Apply tags
     select_tags: Select tags
@@ -698,6 +701,7 @@ en:
     edit_profile: Edit profile
     email_settings: Notification settings
     help: Help
+    whats_new: What's new
     contact_site_name: Contact %{site_name}
     contact_support: Contact support
     sign_out: Sign out
@@ -1519,6 +1523,8 @@ en:
     members_can_start_discussions_help_v2: Allow members to start new discussions within the group
     members_can_edit_discussions_v2: Members can manage discussions and comments
     members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
+    members_can_create_tags: Members can create tags
+    members_can_create_tags_help: Allow members to create new tags when tagging threads and polls
     admins_can_edit_user_content: Admins can edit members' comments
     admins_can_edit_user_content_help: Allow admins to edit content written by members
     submit_start_group: Start group
@@ -2179,6 +2185,8 @@ en:
     include_subgroups_mine: "%{name} and my subgroups"
     include_subgroups_all: "%{name} and all subgroups"
     no_results_found: No results for "%{search}"
+    no_threads_found_that_match_your_query_or_filters: No threads found that match your query or filters
+    no_threads_found_that_match_your_filters: No threads found that match your filters
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion

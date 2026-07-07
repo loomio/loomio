@@ -164,6 +164,9 @@ nl_NL:
     merge_into: Samenvoegen in
     merge_helptext: Voeg "%{name}" samen met een andere tag. Threads die "%{name}" gebruiken, zullen in plaats daarvan de geselecteerde tag gebruiken.
     tag_merged: Labels samengevoegd
+    show_tags_used_in_this_group: Toon tags die in deze groep worden gebruikt
+    show_all_tags_in_organization: Toon alle tags in de organisatie
+    only_show_tags_in_this_group: Toon alleen tags in deze groep
   poll_types:
     proposal: voorstel
     count: opt-in
@@ -671,6 +674,7 @@ nl_NL:
     dark: Donker
     light_blue: Lichtblauw
     dark_blue: Donkerblauw
+    whats_new: Wat is er nieuw?
   membership_card:
     group_members: Groepsleden
     poll_members: "%{pollType} gebruikers"
@@ -1402,6 +1406,8 @@ nl_NL:
     members_can_edit_discussions_help_v2: Geef leden de mogelijkheid om discussies en reacties in de groep te bewerken, verplaatsen, vastzetten, taggen of sluiten.
     group_handle_hint_new: De URL en het e-mailadres van uw groep zijn %{host}/%{handle} en %{handle}{'@'}%{host}.
     handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
+    members_can_create_tags: Leden kunnen tags aanmaken.
+    members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -2037,6 +2043,8 @@ nl_NL:
     new_discussion: Nieuwe discussie
     locked: Vergrendeld
     unlocked: Ontgrendeld
+    no_threads_found_that_match_your_query_or_filters: Er zijn geen threads gevonden die overeenkomen met uw zoekopdracht of filters.
+    no_threads_found_that_match_your_filters: Er zijn geen threads gevonden die overeenkomen met uw filters.
   members_panel:
     bot: Bot
     no_results: Geen leden gevonden

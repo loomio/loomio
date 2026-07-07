@@ -54,6 +54,14 @@ export default {
       }).finally(() => {
         this.loading = false;
       });
+    },
+
+    textColor(color) {
+      const hex = color.replace('#', '');
+      const red = parseInt(hex.slice(0, 2), 16);
+      const green = parseInt(hex.slice(2, 4), 16);
+      const blue = parseInt(hex.slice(4, 6), 16);
+      return ((red * 299) + (green * 587) + (blue * 114)) / 1000 > 150 ? '#212121' : '#fff';
     }
   }
 };
@@ -70,8 +78,8 @@ v-card.tags-modal(:title="$t(title)")
     label(for="input-708" class="v-label caption" v-t="'loomio_tags.pick_a_color'")
 
     v-btn-toggle.tag-colors.flex-wrap(rounded v-model="tag.color")
-      v-btn(size="x-small" icon v-for="color in tag.constructor.colors" :key="color" :value="color" :color="color")
-        common-icon(size="large" name="mdiTag" :color="tag.color == color ? '#333' : color")
+      v-btn(size="x-small" icon v-for="color in tag.constructor.colors" :key="color" :value="color" :style="{backgroundColor: color}")
+        common-icon(size="large" name="mdiTag" :color="textColor(color)")
   v-card-actions
     v-btn.tag-form__delete(v-if="tag.id", @click="deleteTag" :disabled="loading")
       span(v-t="'common.action.delete'")

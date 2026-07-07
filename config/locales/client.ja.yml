@@ -163,6 +163,9 @@ ja:
     merge_into: 合流する
     merge_helptext: "「%{name}」を別のタグにマージします。「%{name}」を使用しているスレッドは、代わりに選択されたタグを使用します。"
     tag_merged: タグが統合されました
+    show_tags_used_in_this_group: このグループで使用されているタグを表示する
+    show_all_tags_in_organization: 組織内のすべてのタグを表示する
+    only_show_tags_in_this_group: このグループのタグのみを表示する
   poll_types:
     proposal: 提案
     count: オプトイン
@@ -668,6 +671,7 @@ ja:
     dark: 暗い
     light_blue: 水色
     dark_blue: ダークブルー
+    whats_new: 新着情報
   membership_card:
     group_members: グループの人（仲間）たち
     poll_members: "%{pollType} メンバー"
@@ -1395,6 +1399,8 @@ ja:
     members_can_edit_discussions_help_v2: メンバーがグループ内のあらゆるディスカッションやコメントを編集、移動、ピン留め、タグ付け、または閉じることを許可します
     group_handle_hint_new: グループのURLとメールアドレスは、それぞれ %{host}/%{handle} と %{handle}{'@'}%{host} になります。
     handle_changed_hint: 以前ご利用いただいていたURLとメールアドレスは、新しいアドレスにリダイレクトされます。
+    members_can_create_tags: メンバーはタグを作成できます
+    members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2013,6 +2019,8 @@ ja:
     new_discussion: 新しい議論
     locked: ロック済み
     unlocked: ロック解除済み
+    no_threads_found_that_match_your_query_or_filters: 検索条件やフィルターに一致するスレッドは見つかりませんでした。
+    no_threads_found_that_match_your_filters: フィルターに一致するスレッドは見つかりませんでした
   members_panel:
     bot: ボット
     no_results: メンバーが見つかりませんでした

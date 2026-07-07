@@ -6,7 +6,7 @@ class MigrateTagsWorker < ApplicationJob
       names = Tag.where(id: tag_ids).pluck(:name)
       if d = Discussion.find_by(id: discussion_id)
         group_ids.push d.group_id
-        d.update_columns(tags: names.uniq) 
+        d.update_columns(tags: TagService.clean_tag_names(names))
       end
     end
 
@@ -15,11 +15,10 @@ class MigrateTagsWorker < ApplicationJob
       names = Tag.where(id: tag_ids).pluck(:name)
       if p = Poll.find_by(id: poll_id)
         group_ids.push p.group_id
-        p.update_columns(tags: names.uniq) 
+        p.update_columns(tags: TagService.clean_tag_names(names))
       end
     end
 
-    group_ids.each {|id| TagService.update_group_tags(id) }
-    Group.where(id: group_ids).where(parent_id: nil).pluck(:id).each {|id| TagService.update_org_tagging_counts(id) }
+    group_ids.uniq.each { |id| TagService.update_org_tags(id) }
   end
 end

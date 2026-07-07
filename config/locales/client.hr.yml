@@ -164,6 +164,9 @@ hr:
     merge_into: Spoji u
     merge_helptext: Spoji "%{name}" u drugu oznaku. Niti koje koriste "%{name}" koristit će odabranu oznaku umjesto nje.
     tag_merged: Oznaka spojena
+    show_tags_used_in_this_group: Prikaži oznake korištene u ovoj grupi
+    show_all_tags_in_organization: Prikaži sve oznake u organizaciji
+    only_show_tags_in_this_group: Prikaži samo oznake u ovoj grupi
   poll_types:
     proposal: prijedlog
     count: uključiti se
@@ -669,6 +672,7 @@ hr:
     dark: tamno
     light_blue: Svijetloplava
     dark_blue: Tamnoplava
+    whats_new: Što je novo
   membership_card:
     group_members: Članovi grupe
     poll_members: "%{pollType} članova"
@@ -1396,6 +1400,8 @@ hr:
     members_can_edit_discussions_help_v2: Omogući članovima uređivanje, premještanje, prikvačivanje, označavanje ili zatvaranje bilo koje rasprave ili komentara u grupi
     group_handle_hint_new: URL i e-adresa vaše grupe bit će %{host}/%{handle} i %{handle}{'@'}%{host}
     handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
+    members_can_create_tags: Članovi mogu kreirati oznake
+    members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -2014,6 +2020,8 @@ hr:
     new_discussion: Nova rasprava
     locked: Zaključan
     unlocked: Otključan
+    no_threads_found_that_match_your_query_or_filters: Nisu pronađene teme koje odgovaraju vašem upitu ili filterima
+    no_threads_found_that_match_your_filters: Nisu pronađene teme koje odgovaraju vašim filterima
   members_panel:
     bot: Bot
     no_results: Nema pronađenih članova

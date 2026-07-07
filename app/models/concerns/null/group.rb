@@ -71,6 +71,7 @@ module Null::Group
       discussion_private_default
       members_can_announce
       members_can_edit_discussions
+      members_can_create_tags
       members_can_add_guests
     ]
   end

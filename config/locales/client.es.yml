@@ -164,6 +164,9 @@ es:
     merge_into: Fusionarse en
     merge_helptext: Fusiona "%{name}" en otra etiqueta. Los hilos que utilicen "%{name}" usarán la etiqueta seleccionada en su lugar.
     tag_merged: Etiqueta fusionada
+    show_tags_used_in_this_group: Mostrar etiquetas utilizadas en este grupo
+    show_all_tags_in_organization: Mostrar todas las etiquetas en la organización
+    only_show_tags_in_this_group: Mostrar solo etiquetas en este grupo
   poll_types:
     proposal: propuesta
     count: Apuntarse
@@ -671,6 +674,7 @@ es:
     dark: Oscuro
     light_blue: Azul claro
     dark_blue: Azul oscuro
+    whats_new: Qué hay de nuevo
   membership_card:
     group_members: Integrantes del grupo
     poll_members: "%{pollType} integrantes"
@@ -1411,6 +1415,8 @@ es:
     members_can_edit_discussions_help_v2: Permitir a los miembros editar, mover, fijar, etiquetar o cerrar cualquier discusión o comentario en el grupo
     group_handle_hint_new: La URL y el correo electrónico de tu grupo serán %{host}/%{handle} y %{handle}{'@'}%{host}.
     handle_changed_hint: Tu URL y dirección de correo electrónico anteriores se redirigirán a tu nueva dirección.
+    members_can_create_tags: Los miembros pueden crear etiquetas
+    members_can_create_tags_help: Permitir a los miembros crear nuevas etiquetas al etiquetar hilos y encuestas.
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -2048,6 +2054,8 @@ es:
     new_discussion: Nueva discusión
     locked: Bloqueado
     unlocked: Desbloqueado
+    no_threads_found_that_match_your_query_or_filters: No se encontraron hilos que coincidan con su consulta o filtros.
+    no_threads_found_that_match_your_filters: No se encontraron hilos que coincidan con sus filtros.
   members_panel:
     bot: Bot
     no_results: No se han encontrado miembros

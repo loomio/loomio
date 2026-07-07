@@ -164,6 +164,9 @@ pl:
     merge_into: Połącz się z
     merge_helptext: Połącz „%{name}” z innym tagiem. Wątki używające „%{name}” będą używać wybranego tagu.
     tag_merged: Tag scalony
+    show_tags_used_in_this_group: Pokaż tagi używane w tej grupie
+    show_all_tags_in_organization: Pokaż wszystkie tagi w organizacji
+    only_show_tags_in_this_group: Pokaż tylko tagi w tej grupie
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę
@@ -671,6 +674,7 @@ pl:
     dark: Ciemny
     light_blue: Jasnoniebieski
     dark_blue: Ciemnoniebieski
+    whats_new: Co nowego
   membership_card:
     group_members: Osoby w tej grupy
     poll_members: "%{pollType} osoby"
@@ -1402,6 +1406,8 @@ pl:
     members_can_edit_discussions_help_v2: Zezwalaj członkom na edytowanie, przenoszenie, przypinanie, oznaczanie lub zamykanie dowolnej dyskusji lub komentarza w grupie
     group_handle_hint_new: 'Adres URL i adres e-mail Twojej grupy będą następujące: %{host}/%{handle} i %{handle}{''@''}%{host}'
     handle_changed_hint: Twój poprzedni adres URL i adres e-mail będą przekierowywać na nowy adres.
+    members_can_create_tags: Członkowie mogą tworzyć tagi
+    members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2037,6 +2043,8 @@ pl:
     new_discussion: Nowa dyskusja
     locked: Zablokowane
     unlocked: Odblokowany
+    no_threads_found_that_match_your_query_or_filters: Nie znaleziono wątków odpowiadających Twojemu zapytaniu lub filtrom
+    no_threads_found_that_match_your_filters: Nie znaleziono wątków spełniających Twoje kryteria
   members_panel:
     bot: Nerw
     no_results: Nie znaleziono osób

@@ -155,6 +155,7 @@ ActiveAdmin.register Group, as: 'Group' do
       row :members_can_raise_motions
       row :members_can_start_discussions
       row :members_can_create_subgroups
+      row :members_can_create_tags
       row :handle
       row :is_referral
       row :subscription_id

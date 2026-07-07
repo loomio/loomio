@@ -21,6 +21,7 @@ class DiscussionService
 
     Discussion.transaction do
       actor.ability.authorize!(:create, discussion)
+      TagService.authorize_create_tag_names!(discussion.group, discussion.topic.tags, actor)
       discussion.save!
       discussion.topic.update_sequence_info!
 
@@ -77,6 +78,7 @@ class DiscussionService
       return false
     end
     Discussion.transaction do
+      TagService.authorize_create_tag_names!(discussion.group, topic_params[:tags], actor) if topic_params.key?(:tags)
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
 

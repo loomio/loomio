@@ -1,24 +1,31 @@
 class UpdateTagWorker < ApplicationJob
   def perform(group_id, old_name, new_name, color)
-    group = Group.find(group_id)
+    group = Group.find(group_id).parent_or_self
     group_ids = group.id_and_subgroup_ids
+    old_key = TagService.normalized_tag_name(old_name)
+    new_name = TagService.clean_tag_name(new_name)
+    new_key = TagService.normalized_tag_name(new_name)
 
-    if old_name != new_name
-      Tag.where(group_id: group_ids, name: new_name).destroy_all
-      Tag.where(group_id: group_ids, name: old_name).update_all(name: new_name)
+    if old_key != new_key
+      Tag.where(group_id: group_ids).select { |tag| TagService.normalized_tag_name(tag.name) == new_key }.each(&:destroy!)
+      old_tags = Tag.where(group_id: group_ids).select { |tag| TagService.normalized_tag_name(tag.name) == old_key }
+      canonical = old_tags.find { |tag| tag.group_id == group.id } || old_tags.first
+      (old_tags - Array(canonical)).each(&:destroy!)
+      canonical&.update!(group: group, name: new_name)
     end
 
-    Topic.where(group_id: group_ids).where("topics.tags @> ARRAY[?]::varchar[]", old_name).find_each do |t|
-      t.tags[t.tags.index(old_name)] = new_name
-      t.update_column(:tags, t.tags.uniq)
+    Topic.where(group_id: group_ids).find_each do |topic|
+      next unless topic.tags.any? { |tag| TagService.normalized_tag_name(tag) == old_key }
+
+      topic.update_column(:tags, TagService.clean_tag_names(topic.tags.map { |tag|
+        TagService.normalized_tag_name(tag) == old_key ? new_name : tag
+      }))
     end
 
-    group_ids.each do |group_id|
-      TagService.update_group_tags(group_id)
+    TagService.update_org_tags(group.id)
+
+    Tag.where(group_id: group.id).select { |tag| TagService.normalized_tag_name(tag.name) == new_key }.each do |tag|
+      tag.update!(color: color)
     end
-
-    Tag.where(group_id: group_ids, name: new_name).update_all(color: color)
-
-    TagService.update_org_tagging_counts(group.parent_or_self.id)
   end
 end

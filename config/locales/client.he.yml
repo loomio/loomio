@@ -164,6 +164,9 @@ he:
     merge_into: התמזגו לתוך
     merge_helptext: מיזוג "%{name}" לתוך תג אחר. שרשורים המשתמשים ב-"%{name}" ישתמשו בתג שנבחר במקום זאת
     tag_merged: תגיות מוזגו
+    show_tags_used_in_this_group: הצג תגיות ששימשו בקבוצה זו
+    show_all_tags_in_organization: הצג את כל התגים בארגון
+    only_show_tags_in_this_group: הצג רק תגיות בקבוצה זו
   poll_types:
     proposal: הצעה
     count: לבחור ב
@@ -669,6 +672,7 @@ he:
     dark: כֵּהֶה
     light_blue: תכלת
     dark_blue: כחול כהה
+    whats_new: מה חדש
   membership_card:
     group_members: חברי הקבוצה
     poll_members: חברי %{pollType}
@@ -1400,6 +1404,8 @@ he:
     members_can_edit_discussions_help_v2: אפשר לחברים לערוך, להעביר, להצמיד, לתייג או לסגור כל דיון או תגובה בקבוצה
     group_handle_hint_new: כתובת ה-URL והאימייל של הקבוצה שלך יהיו %{host}/%{handle} ו-%{handle}{'@'}%{host}
     handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
+    members_can_create_tags: חברים יכולים ליצור תגיות
+    members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2033,6 +2039,8 @@ he:
     new_discussion: דיון חדש
     locked: נָעוּל
     unlocked: לא נעול
+    no_threads_found_that_match_your_query_or_filters: לא נמצאו שרשורים התואמים את השאילתה או המסננים שלך
+    no_threads_found_that_match_your_filters: לא נמצאו שרשורים התואמים את המסננים שלך
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים

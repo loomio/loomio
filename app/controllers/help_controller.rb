@@ -12,7 +12,18 @@ class HelpController < ApplicationController
     render_api_doc "b3", root_url: root_url
   end
 
+  def whats_new
+    render Views::Help::WhatsNew.new(updates: whats_new_updates)
+  end
+
   private
+
+  def whats_new_updates
+    Dir.glob(Rails.root.join("docs", "user_manual", "updates", "*.md")).sort.reverse.map do |path|
+      date = Date.parse(File.basename(path)[0, 10]).strftime("%B %-e, %Y")
+      { date: date, html: MarkdownService.render_html(File.read(path)) }
+    end
+  end
 
   def render_api_doc(name, values = {})
     markdown = Rails.root.join("docs", "api", "#{name}.md").read

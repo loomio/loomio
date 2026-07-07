@@ -227,11 +227,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :tags, only: [:create, :update, :destroy] do
-        collection do
-          post :priority
-        end
-      end
+      resources :tags, only: [:create, :update, :destroy]
 
       resources :search, only: :index
 
@@ -376,6 +372,7 @@ Rails.application.routes.draw do
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api2'   => 'help#api2'
   get '/help/api3'   => 'help#api3'
+  get '/whats_new'   => 'help#whats_new'
 
   get '/start_group', to: redirect('/try')
 
