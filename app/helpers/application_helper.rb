@@ -1,24 +1,5 @@
 module ApplicationHelper
-  def vue_index
-    File.read(Rails.root.join('public/client3/index.html'))
-  end
-
-  def vue_css_includes
-    Nokogiri::HTML(vue_index).css('head link[as=style], head link[rel=stylesheet]').to_s
-  end
-
-  def vue_js_includes
-    Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
-  end
-
-  def logo_svg
-    return nil unless AppConfig.theme[:app_logo_src].ends_with?('.svg')
-
-    path = Rails.root.join('public', AppConfig.theme[:app_logo_src].gsub(Regexp.new("^/"), ''))
-    File.read(path).html_safe
-  end
-
-  def metadata
+  def application_metadata
     @metadata ||= if should_have_metadata && current_user.can?(:show, resource)
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else

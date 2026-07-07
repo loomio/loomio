@@ -339,6 +339,16 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal 'SAML request state missing', json['error']
   end
 
+  test "returns html error when SAML request state is missing" do
+    with_saml_mocks do
+      session.delete(:saml_request_id)
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    assert_response 401
+    assert_includes response.body, 'SAML request state missing'
+  end
+
   # Fallback redirect
   test "redirects to dashboard when no back_to is set" do
     with_saml_mocks do

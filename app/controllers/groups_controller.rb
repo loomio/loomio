@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
     offset = page == 1 ? 0 : ((page - 1) * limit)
     render Views::Groups::Index.new(
       groups: groups.limit(limit).offset(offset), pages: pages, page: page,
-      metadata: metadata, export: !!params[:export], bot: browser.bot?
+      metadata: application_metadata, export: !!params[:export], bot: browser.bot?
     )
   end
 
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
         format.html do
           render Views::Groups::Show.new(
             group: @group, recipient: @recipient,
-            metadata: metadata, export: !!params[:export], bot: browser.bot?
+            metadata: application_metadata, export: !!params[:export], bot: browser.bot?
           )
         end
         format.xml
@@ -66,7 +66,7 @@ class GroupsController < ApplicationController
         format.html do
           render Views::Groups::Show.new(
             group: @group, recipient: @recipient,
-            metadata: metadata, export: !!params[:export], bot: browser.bot?
+            metadata: application_metadata, export: !!params[:export], bot: browser.bot?
           )
         end
         format.xml
