@@ -48,8 +48,9 @@ class TopicService
   end
 
   def self.update_tags(topic:, tags:, actor:)
-    actor.ability.authorize! :update, topic
-    topic.update!(tags: Array(tags).map { |tag| tag.to_s.strip }.reject(&:blank?))
+    actor.ability.authorize! :update_tags, topic
+    TagService.authorize_create_tag_names!(topic.group, tags, actor)
+    topic.update!(tags: TagService.clean_tag_names(tags))
   end
 
   def self.lock(topic:, actor:)

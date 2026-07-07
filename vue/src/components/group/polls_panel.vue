@@ -7,11 +7,13 @@ import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
 import { intersection, uniq } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
+import TagsFilterMenu from '@/components/tags/filter_menu';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  components: { TagsFilterMenu },
   mixins: [WatchRecords, UrlFor],
   data() {
     return {
@@ -35,7 +37,7 @@ export default
       query: () => this.findRecords()
     });
 
-    this.loader.fetch(this.page).then(() => {
+    this.fetch().then(() => {
       EventBus.$emit('currentComponent', {
         page: 'groupPage',
         title: this.group.name,
@@ -47,6 +49,10 @@ export default
   methods: {
     startNewPoll() {
       this.$router.push('/p/new?group_id=' + this.group.id);
+    },
+
+    selectTag(tag) {
+      this.$router.replace(this.mergeQuery({tag, page: null}));
     },
 
     openSearchModal() {
@@ -82,10 +88,15 @@ export default
           group_key: this.$route.params.key,
           status: this.$route.query.status,
           poll_type: this.$route.query.poll_type,
+          tags: this.$route.query.tag,
           subgroups: this.$route.query.subgroups,
           per: this.per
         }
       });
+    },
+
+    fetch() {
+      return this.loader.fetch(this.page).then(() => this.findRecords());
     },
 
     findRecords() {
@@ -115,6 +126,11 @@ export default
         chain = chain.find({'pollType': this.$route.query.poll_type});
       }
 
+      if (this.$route.query.tag) {
+        const tagName = this.$route.query.tag;
+        chain = chain.where(poll => poll.topic().tags.includes(tagName));
+      }
+
       if (this.loader.pageWindow[this.page]) {
         if (this.page === 1) {
           chain = chain.find({createdAt: {$gte: this.loader.pageWindow[this.page][0]}});
@@ -130,16 +146,23 @@ export default
 
   watch: {
     '$route.query.status'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.poll_type'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
+    },
+    '$route.query.tag'() {
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.subgroups'() {
-      this.initLoader().fetch(this.page);
+      this.initLoader();
+      this.fetch();
     },
     '$route.query.page'() {
-      this.loader.fetch(this.page);
+      this.fetch();
     }
   },
 
@@ -191,6 +214,7 @@ export default
             :to="mergeQuery({poll_type: pollType})"
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
+      tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
       v-btn.text-medium-emphasis(
         variant="tonal"
         @click="openSearchModal"

@@ -12,9 +12,10 @@ const { topic, close } = defineProps({
 
 <template lang="pug">
 v-card.topic-tags-dialog(:title="$t('loomio_tags.select_tags')")
+  template(v-slot:append)
+    dismiss-modal-button(:close="close")
   topic-tags-picker(
     :topic="topic"
     :watch-key="'topicTagsDialog' + topic.id"
-    @close="close"
   )
 </template>

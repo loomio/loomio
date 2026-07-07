@@ -164,6 +164,9 @@ sv:
     merge_into: Sammanfoga till
     merge_helptext: Sammanfoga "%{name}" med en annan tagg. Trådar som använder "%{name}" kommer att använda den valda taggen istället.
     tag_merged: Tagg sammanfogad
+    show_tags_used_in_this_group: Visa taggar som används i den här gruppen
+    show_all_tags_in_organization: Visa alla taggar i organisationen
+    only_show_tags_in_this_group: Visa endast taggar i den här gruppen
   poll_types:
     proposal: förslag
     count: opt-in
@@ -669,6 +672,7 @@ sv:
     dark: Mörk
     light_blue: Ljusblå
     dark_blue: Mörkblå
+    whats_new: Nyheter
   membership_card:
     group_members: Gruppmedlemmar
     poll_members: "%{pollType} medlemmar"
@@ -1396,6 +1400,8 @@ sv:
     members_can_edit_discussions_help_v2: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga diskussioner eller kommentarer i gruppen
     group_handle_hint_new: Din grupp-URL och e-postadress kommer att vara %{host}/%{handle} och %{handle}{'@'}%{host}
     handle_changed_hint: Din tidigare URL och e-postadress kommer att omdirigera till din nya adress.
+    members_can_create_tags: Medlemmar kan skapa taggar
+    members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2014,6 +2020,8 @@ sv:
     new_discussion: Ny diskussion
     locked: Låst
     unlocked: Olåst
+    no_threads_found_that_match_your_query_or_filters: Inga trådar hittades som matchar din sökfråga eller dina filter
+    no_threads_found_that_match_your_filters: Inga trådar hittades som matchar dina filter
   members_panel:
     bot: Bot
     no_results: Inga medlemmar hittades

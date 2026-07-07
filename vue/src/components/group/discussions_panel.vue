@@ -5,11 +5,13 @@ import EventBus           from '@/shared/services/event_bus';
 import PageLoader         from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import TagsFilterMenu from '@/components/tags/filter_menu';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  components: { TagsFilterMenu },
   mixins: [WatchRecords, UrlFor],
   created() {
     this.watchRecords({
@@ -43,6 +45,10 @@ export default
   methods: {
     routeQuery(o) {
       this.$router.replace(this.mergeQuery(o));
+    },
+
+    selectTag(tag) {
+      this.routeQuery({tag, page: null});
     },
 
     hardRefresh() {
@@ -193,16 +199,16 @@ export default
       return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
     },
 
-    groupTags() {
-      return this.group && this.group.tags().filter(tag => tag.taggingsCount > 0);
-    },
-
     loading() {
       return this.loader.loading;
     },
 
     noThreads() {
       return !this.loading && this.topics.length === 0
+    },
+
+    noThreadsMatchingFilters() {
+      return this.noThreads && this.group.discussionsCount > 0;
     },
 
     canViewPrivateContent() {
@@ -249,14 +255,7 @@ div.discussions-panel(v-if="group")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
-    v-menu(offset-y)
-      template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
-          span(v-if="$route.query.tag") {{$route.query.tag}}
-          span(v-else v-t="'loomio_tags.tags'")
-          common-icon(name="mdi-menu-down")
-      v-sheet.pa-1.max-width-800
-        tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
+    tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
     v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"
@@ -273,7 +272,11 @@ div.discussions-panel(v-if="group")
 
       span(v-t="'discussions_panel.new_discussion'")
 
-  v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
+  v-alert(color="info" variant="tonal" v-if="noThreadsMatchingFilters")
+    v-card-text
+      p(v-t="'discussions_panel.no_threads_found_that_match_your_filters'")
+
+  v-alert(color="info" variant="tonal" v-else-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     v-card-text
       p(v-t="'discussions_panel.lets_start_a_discussion'")

@@ -164,6 +164,9 @@ da:
     merge_into: Flet ind i
     merge_helptext: Flet "%{name}" ind i et andet tag. Tråde, der bruger "%{name}", vil bruge det valgte tag i stedet.
     tag_merged: Tag flettet
+    show_tags_used_in_this_group: Vis tags brugt i denne gruppe
+    show_all_tags_in_organization: Vis alle tags i organisationen
+    only_show_tags_in_this_group: Vis kun tags i denne gruppe
   poll_types:
     proposal: forslag
     count: Tilmeld
@@ -669,6 +672,7 @@ da:
     dark: Mørk
     light_blue: Lyseblå
     dark_blue: Mørkeblå
+    whats_new: Hvad er nyt?
   membership_card:
     group_members: Gruppemedlemmer
     poll_members: "%{pollType} medlemmer"
@@ -1396,6 +1400,8 @@ da:
     members_can_edit_discussions_help_v2: Tillad medlemmer at redigere, flytte, fastgøre, tagge eller lukke enhver diskussion eller kommentar i gruppen
     group_handle_hint_new: Din gruppes URL og e-mailadresse vil være %{host}/%{handle} og %{handle}{'@'}%{host}
     handle_changed_hint: Din tidligere URL og e-mailadresse vil omdirigere til din nye adresse.
+    members_can_create_tags: Medlemmer kan oprette tags
+    members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2014,6 +2020,8 @@ da:
     new_discussion: Ny diskussion
     locked: Låst
     unlocked: Låst op
+    no_threads_found_that_match_your_query_or_filters: Der blev ikke fundet nogen tråde, der matcher din forespørgsel eller dine filtre
+    no_threads_found_that_match_your_filters: Der blev ikke fundet nogen tråde, der matcher dine filtre
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet

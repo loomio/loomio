@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_07_000002) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_07_023000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -439,6 +439,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_07_000002) do
     t.string "category"
     t.boolean "members_can_create_templates", default: false, null: false
     t.integer "org_members_count", default: 0, null: false
+    t.boolean "members_can_create_tags", default: true, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -1048,9 +1049,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_07_000002) do
     t.integer "taggings_count", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.integer "org_taggings_count", default: 0, null: false
+    t.integer "used_group_ids", default: [], null: false, array: true
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_tags_on_group_id"
     t.index ["name"], name: "index_tags_on_name"
+    t.index ["used_group_ids"], name: "index_tags_on_used_group_ids", using: :gin
   end
 
   create_table "tasks", force: :cascade do |t|

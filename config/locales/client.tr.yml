@@ -164,6 +164,9 @@ tr:
     merge_into: Birleştir
     merge_helptext: '"%{name}" ifadesini başka bir etiketle birleştirin. "%{name}" ifadesini kullanan konular, seçilen etiketi kullanacaktır.'
     tag_merged: Etiketler birleştirildi
+    show_tags_used_in_this_group: Bu grupta kullanılan etiketleri göster
+    show_all_tags_in_organization: Organizasyondaki tüm etiketleri göster
+    only_show_tags_in_this_group: Sadece bu gruptaki etiketleri göster
   poll_types:
     proposal: öneri
     count: katılım
@@ -669,6 +672,7 @@ tr:
     dark: Karanlık
     light_blue: Açık mavi
     dark_blue: Koyu mavi
+    whats_new: Ne var ne yok
   membership_card:
     group_members: Grup üyeleri
     poll_members: "%{pollType} üye"
@@ -1396,6 +1400,8 @@ tr:
     members_can_edit_discussions_help_v2: Gruptaki üyelerin herhangi bir tartışmayı veya yorumu düzenlemesine, taşımasına, sabitlemesine, etiketlemesine veya kapatmasına izin verin.
     group_handle_hint_new: Grup URL'niz ve e-posta adresiniz %{host}/%{handle} ve %{handle}{'@'}%{host} olacaktır.
     handle_changed_hint: Önceki URL'niz ve e-posta adresiniz yeni adresinize yönlendirilecektir.
+    members_can_create_tags: Üyeler etiket oluşturabilir.
+    members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2014,6 +2020,8 @@ tr:
     new_discussion: Yeni tartışma
     locked: Kilitli
     unlocked: Kilidi Açıldı
+    no_threads_found_that_match_your_query_or_filters: Sorgunuza veya filtrelerinize uyan hiçbir konu bulunamadı.
+    no_threads_found_that_match_your_filters: Filtrelerinize uyan hiçbir konu bulunamadı.
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı

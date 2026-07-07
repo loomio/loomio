@@ -1,3 +1,3 @@
 class TagSerializer < ApplicationSerializer
-  attributes :id, :name, :color, :taggings_count, :org_taggings_count, :group_id, :priority
+  attributes :id, :name, :color, :group_id, :used_group_ids
 end

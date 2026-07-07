@@ -164,6 +164,9 @@ ca:
     merge_into: Fusionar-se en
     merge_helptext: Fusiona "%{name}" amb una altra etiqueta. Els fils que utilitzin "%{name}" utilitzaran l'etiqueta seleccionada.
     tag_merged: Etiqueta fusionada
+    show_tags_used_in_this_group: Mostra les etiquetes utilitzades en aquest grup
+    show_all_tags_in_organization: Mostra totes les etiquetes de l'organització
+    only_show_tags_in_this_group: Mostra només les etiquetes d'aquest grup
   poll_types:
     proposal: proposta
     count: optar a
@@ -671,6 +674,7 @@ ca:
     dark: Fosc
     light_blue: Blau clar
     dark_blue: Blau fosc
+    whats_new: Què hi ha de nou?
   membership_card:
     group_members: Membres del grup
     poll_members: "%{pollType} membres"
@@ -1402,6 +1406,8 @@ ca:
     members_can_edit_discussions_help_v2: Permetre que els membres editin, moguin, fixin, etiquetin o tanquin qualsevol discussió o comentari del grup
     group_handle_hint_new: L'URL i el correu electrònic del vostre grup seran %{host}/%{handle} i %{handle}{'@'}%{host}
     handle_changed_hint: L'URL i l'adreça electrònica anteriors redirigiran a la nova adreça.
+    members_can_create_tags: Els membres poden crear etiquetes
+    members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2037,6 +2043,8 @@ ca:
     new_discussion: Nova discussió
     locked: Bloquejat
     unlocked: Desbloquejat
+    no_threads_found_that_match_your_query_or_filters: No s'han trobat fils que coincideixin amb la consulta o els filtres.
+    no_threads_found_that_match_your_filters: No s'han trobat fils que coincideixin amb els filtres
   members_panel:
     bot: Bot
     everyone: Tothom

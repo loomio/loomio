@@ -187,6 +187,9 @@ zh_CN:
     merge_into: 合并
     merge_helptext: 将“%{name}”合并到另一个标签中。使用“%{name}”的帖子将使用选定的标签。
     tag_merged: 标签已合并
+    show_tags_used_in_this_group: 显示此组中使用的标签
+    show_all_tags_in_organization: 显示组织中的所有标签
+    only_show_tags_in_this_group: 仅显示此组中的标签
   poll_types:
     proposal: 提议
     count: 选择加入
@@ -669,6 +672,7 @@ zh_CN:
     sign_out: 登出
     beta_collab: "\U0001F9EA 测试版功能已启用！"
     outcomes: 总结
+    whats_new: 什么是新的
   membership_card:
     group_members: 团队成员
     discussion_members: 讨论成员
@@ -1465,6 +1469,8 @@ zh_CN:
     members_can_edit_discussions_help_v2: 允许成员编辑、移动、置顶、标记或关闭群组中的任何讨论或评论。
     group_handle_hint_new: 您的群组网址和电子邮件地址将分别为 %{host}/%{handle} 和 %{handle}{'@'}%{host}
     handle_changed_hint: 您之前的网址和电子邮件地址将重定向到您的新地址。
+    members_can_create_tags: 成员可以创建标签
+    members_can_create_tags_help: 允许成员在标记帖子和投票时创建新标签。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -2096,6 +2102,8 @@ zh_CN:
     new_discussion: 新讨论
     locked: 已锁定
     unlocked: 已解锁
+    no_threads_found_that_match_your_query_or_filters: 未找到符合您的查询或筛选条件的帖子
+    no_threads_found_that_match_your_filters: 未找到符合您筛选条件的帖子
   members_panel:
     email_rejected: 邮件被拒
     email_rejected_meaning: 发送到此地址的邮件已被退回或被标记为垃圾邮件。我们将不再向此地址发送邮件。

@@ -164,6 +164,9 @@ uk:
     merge_into: Об'єднати з
     merge_helptext: Об'єднати "%{name}" з іншим тегом. Теми, що використовують "%{name}", використовуватимуть вибраний тег.
     tag_merged: Тег об'єднано
+    show_tags_used_in_this_group: Показати теги, що використовуються в цій групі
+    show_all_tags_in_organization: Показати всі теги в організації
+    only_show_tags_in_this_group: Показувати лише теги в цій групі
   poll_types:
     proposal: пропозиція
     count: вибрати в
@@ -672,6 +675,7 @@ uk:
     dark: Темний
     light_blue: Світло-блакитний
     dark_blue: Темно-синій
+    whats_new: Що нового
   membership_card:
     group_members: Учасники групи
     poll_members: учасники %{pollType}
@@ -1405,6 +1409,8 @@ uk:
     members_can_edit_discussions_help_v2: Дозволити учасникам редагувати, переміщувати, закріплювати, позначати тегами або закривати будь-яке обговорення чи коментар у групі
     group_handle_hint_new: URL-адреса та електронна адреса вашої групи будуть %{host}/%{handle} та %{handle}{'@'}%{host}
     handle_changed_hint: Ваша попередня URL-адреса та адреса електронної пошти перенаправлятимуть на вашу нову адресу.
+    members_can_create_tags: Учасники можуть створювати теги
+    members_can_create_tags_help: Дозволити учасникам створювати нові теги під час додавання тегів до тем та опитувань
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -2040,6 +2046,8 @@ uk:
     new_discussion: Нове обговорення
     locked: Заблоковано
     unlocked: Розблоковано
+    no_threads_found_that_match_your_query_or_filters: Не знайдено тем, що відповідають вашому запиту або фільтрам
+    no_threads_found_that_match_your_filters: Не знайдено тем, що відповідають вашим фільтрам
   members_panel:
     bot: Бот
     no_results: Не знайдено учасників

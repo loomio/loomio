@@ -10,6 +10,10 @@ module Ability::Topic
       topic.admins_include?(user)
     end
 
+    can [:update_tags], ::Topic do |topic|
+      topic.topicable.present? && can?(:update, topic.topicable)
+    end
+
     can [:announce], ::Topic do |topic|
       group = topic.group
       if topic.group_id

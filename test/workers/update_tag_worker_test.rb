@@ -17,8 +17,8 @@ class UpdateTagWorkerTest < ActiveSupport::TestCase
   test "renames matching topic tags in the group and subgroups" do
     UpdateTagWorker.new.perform(@group.id, 'apple', 'pear', '#aaa')
 
-    assert_equal ['pear', 'banana'], @parent_discussion.topic.reload.tags
-    assert_equal ['pear', 'banana'], @subgroup_discussion.topic.reload.tags
+    assert_equal ['banana', 'pear'], @parent_discussion.topic.reload.tags
+    assert_equal ['banana', 'pear'], @subgroup_discussion.topic.reload.tags
     assert_equal ['banana'], @other_discussion.topic.reload.tags
   end
 end

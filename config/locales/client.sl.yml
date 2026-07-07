@@ -164,6 +164,9 @@ sl:
     merge_into: Združi se v
     merge_helptext: Združi »%{name}« z drugo oznako. Niti, ki uporabljajo »%{name}«, bodo namesto tega uporabile izbrano oznako.
     tag_merged: Oznaka združena
+    show_tags_used_in_this_group: Prikaži oznake, uporabljene v tej skupini
+    show_all_tags_in_organization: Prikaži vse oznake v organizaciji
+    only_show_tags_in_this_group: Prikaži samo oznake v tej skupini
   poll_types:
     proposal: snubitev
     count: privolitev
@@ -669,6 +672,7 @@ sl:
     dark: Temno
     light_blue: Svetlo modra
     dark_blue: Temno modra
+    whats_new: Kaj je novega
   membership_card:
     group_members: Člani skupine
     poll_members: "%{pollType} članov"
@@ -1396,6 +1400,8 @@ sl:
     members_can_edit_discussions_help_v2: Dovoli članom urejanje, premikanje, pripenjanje, označevanje ali zapiranje katere koli razprave ali komentarja v skupini
     group_handle_hint_new: URL in e-poštni naslov vaše skupine bosta %{host}/%{handle} in %{handle}{'@'}%{host}
     handle_changed_hint: Vaš prejšnji URL in e-poštni naslov bosta preusmerila na vaš novi naslov.
+    members_can_create_tags: Člani lahko ustvarijo oznake
+    members_can_create_tags_help: Dovoli članom ustvarjanje novih oznak pri označevanju niti in anket
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -2014,6 +2020,8 @@ sl:
     new_discussion: Nova razprava
     locked: Zaklenjeno
     unlocked: Odklenjeno
+    no_threads_found_that_match_your_query_or_filters: Ni najdenih niti, ki bi ustrezale vaši poizvedbi ali filtrom
+    no_threads_found_that_match_your_filters: Ni najdenih niti, ki bi ustrezale vašim filtrom
   members_panel:
     bot: Bot
     no_results: Ni članov
