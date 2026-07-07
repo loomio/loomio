@@ -71,7 +71,14 @@ const frequentShortcodes = [
   'thinking_face',
   'ok_hand',
   'folded_hands',
-  'waving_hand'
+  'waving_hand',
+  'face_with_tears_of_joy',
+  'smiling_face_with_heart_eyes',
+  'grinning_face_with_sweat',
+  'face_with_rolling_eyes',
+  'fire',
+  'eyes',
+  'rocket'
 ];
 
 function emojiIsSelectable(emoji) {
