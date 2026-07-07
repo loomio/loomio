@@ -294,7 +294,7 @@ module.exports = {
     page.click('.tag-form__new-tag')
     page.fillIn('.tags-modal__tag-name input', "important")
     page.click('.tag-form__submit')
-    page.expectText('.tags-modal .v-chip__content', 'important' )
+    page.expectText('.tags-modal .v-list-item-title', 'important' )
     page.click('.tag-form__edit-tag')
     page.click('.tag-form__delete')
     page.expectText('.confirm-modal', 'Delete tag')
