@@ -44,7 +44,7 @@
     "@tiptap/extension-underline": "3.27.1",
     "@tiptap/pm": "3.27.1",
     "@tiptap/suggestion": "3.27.1",
-    "@tiptap/vue-3": "3.27.1",
+    "@tiptap/vue-3": "3.27.2",
     "@tiptap/y-tiptap": "3.0.5",
     "y-protocols": "^1.0.1",
     "activestorage": "^5.2.8",
