@@ -43,7 +43,7 @@ v-sheet.emoji-picker.pa-2
       prepend-inner-icon="mdi-magnify"
     )
   template(v-if="search")
-    .emoji-picker__emojis
+    .emoji-picker__emojis.emoji-picker__results
       span.emoji-picker__emoji(
         v-for="entry in searchResults"
         :key="entry.shortcode"
@@ -70,7 +70,8 @@ v-sheet.emoji-picker.pa-2
 
 <style lang="sass">
 .emoji-picker
-  max-width: 330px
+  width: min(330px, calc(100vw - 24px))
+  min-width: min(304px, calc(100vw - 24px))
   max-height: 400px
   overflow-y: auto
 
@@ -93,6 +94,9 @@ v-sheet.emoji-picker.pa-2
 
 .emoji-picker__frequent
   margin-bottom: 16px
+
+.emoji-picker__results
+  min-height: 144px
 
 .emoji-picker__emoji
   width: 32px
