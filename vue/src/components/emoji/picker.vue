@@ -95,6 +95,7 @@ v-sheet.emoji-picker.pa-2
       span.emoji-picker__emoji(
         v-for="entry in searchResults"
         :key="entry.shortcode"
+        :data-shortcode="entry.shortcode"
         :title="entry.label"
         @mousedown.prevent
         @click="pick(entry)"
@@ -104,6 +105,7 @@ v-sheet.emoji-picker.pa-2
       span.emoji-picker__emoji(
         v-for="entry in frequentEntries"
         :key="entry.shortcode"
+        :data-shortcode="entry.shortcode"
         :title="entry.label"
         @mousedown.prevent
         @click="pick(entry)"
@@ -112,6 +114,7 @@ v-sheet.emoji-picker.pa-2
       span.emoji-picker__emoji(
         v-for="entry in allEntries"
         :key="entry.shortcode"
+        :data-shortcode="entry.shortcode"
         :title="entry.label"
         @mousedown.prevent
         @click="pick(entry)"
