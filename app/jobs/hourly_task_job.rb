@@ -25,6 +25,7 @@ class HourlyTaskJob < ApplicationJob
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
       DeleteOldReceivedEmailsWorker.perform_later
+      GroomDuplicateTagsWorker.perform_later
     end
 
     EnsureDemoQueueWorker.perform_later
