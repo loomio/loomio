@@ -4,7 +4,6 @@ import Session from '@/shared/services/session';
 import ReactionService from '@/shared/services/reaction_service';
 
 import { merge, capitalize, difference, keys, startsWith, each, compact } from 'lodash-es';
-import { colonToUnicode, stripColons, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
 import WatchRecords from '@/mixins/watch_records';
 
 export default {
@@ -27,8 +26,7 @@ export default {
       diameter: (this.size == 'x-small' && 20) || 24,
       maxNamesCount: 10,
       reactions: [],
-      reactionHash: {all: []},
-      emojiSupported
+      reactionHash: {all: []}
     };
   },
 
@@ -55,9 +53,6 @@ export default {
   },
 
   methods: {
-    srcForEmoji,
-    stripColons,
-    colonToUnicode,
     runQuery() {
       this.reactionHash = {all: []};
       this.reactions = []
@@ -108,7 +103,7 @@ export default {
       .reactions-display__emojis
       //.reaction.lmo-pointer(@click="removeMine(reaction, canEdit)" v-for="reaction in reactionTypes" :key="reaction")
       .reactions-display__group
-        span(:class="(size == 'x-small' && 'small') || undefined") {{colonToUnicode(reaction)}}
+        span(:class="(size == 'x-small' && 'small') || undefined") {{reaction}}
         template(v-if="reactionHash[reaction].length > 2")
           span.reactions-display__count {{reactionHash[reaction].length}}
         template(v-else)
@@ -118,14 +113,14 @@ export default {
         template(v-for="reaction in reactions" :key="reaction.id")
           v-list-item(v-if="reaction.userId == userId && canEdit" density="compact" :title="reaction.user().name" )
             template(v-slot:prepend)
-              span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
+              span.reaction--char.mr-2 {{reaction.reaction}}
               user-avatar.mr-2(:user="reaction.user()")
             template(v-slot:append)
               v-btn(icon variant="text" size="small" density="comfortable" @click="removeMine(reaction.reaction)")
                 common-icon(name="mdi-close")
           v-list-item(v-else density="compact" :title="reaction.user().name" )
             template(v-slot:prepend)
-              span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
+              span.reaction--char.mr-2 {{reaction.reaction}}
               user-avatar.mr-2(:user="reaction.user()")
 
 

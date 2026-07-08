@@ -80,7 +80,7 @@ class RecordCacheTest < ActiveSupport::TestCase
 
   test 'add reactions stores reactions by id and tracks reaction users' do
     discussion = discussions(:discussion)
-    reaction = Reaction.create!(reactable: discussion, user: users(:alien), reaction: ':heart:')
+    reaction = Reaction.create!(reactable: discussion, user: users(:alien), reaction: '❤️')
     cache = RecordCache.new
 
     cache.add_reactions([reaction])

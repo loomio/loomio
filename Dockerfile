@@ -1,4 +1,5 @@
-FROM node:24-slim AS nodebuild
+ARG NODE_VERSION=24.18.0
+FROM node:${NODE_VERSION}-slim AS nodebuild
 
 WORKDIR /build/vue
 

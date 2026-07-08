@@ -124,11 +124,6 @@ div.lmo-markdown-wrapper(@click="onClick")
       background-color: rgba(0,0,0,0.3)
       border-left: 4px solid #000
 
-img.emoji
-  width: 1.4em !important
-  vertical-align: top
-  margin: 0 .05em
-
 .editor
   .lmo-markdown-wrapper
     ul[data-type="taskList"]
