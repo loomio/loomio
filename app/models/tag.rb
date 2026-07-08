@@ -23,7 +23,7 @@ class Tag < ApplicationRecord
   belongs_to :group
 
   normalizes :name, with: ->(name) { TagService.clean_tag_name(name) }
-  validates :name, presence: true, uniqueness: { scope: :group }
+  validates :name, presence: true, uniqueness: { scope: :group_id }
   # validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
   before_validation :set_defaults
 

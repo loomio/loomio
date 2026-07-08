@@ -210,7 +210,7 @@ class ReportService
   end
 
   def tag_names
-    tag_counts.keys.sort
+    tag_counts.keys.sort_by(&:downcase)
   end
 
   def tag_threads_per_user

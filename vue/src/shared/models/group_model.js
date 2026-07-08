@@ -76,7 +76,7 @@ export default class GroupModel extends BaseModel {
   }
 
   tags() {
-    return Records.tags.collection.chain().find({groupId: this.parentOrSelf().id}).simplesort('name').data();
+    return Records.tags.collection.chain().find({groupId: this.parentOrSelf().id}).data().sort((a, b) => a.name.localeCompare(b.name));
   }
 
   tagsByName() {
