@@ -99,6 +99,7 @@ class TagService
   end
 
   def self.authorize_create_tag_names!(group, names, actor)
+    return if group.blank?
     return if new_tag_names(group, names).empty?
     return if can_create_tag?(group, actor)
 

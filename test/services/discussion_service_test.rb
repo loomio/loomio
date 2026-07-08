@@ -34,6 +34,18 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "creates a direct discussion with tags without raising" do
+    discussion = DiscussionService.create(params: {
+      title: 'Direct Discussion',
+      description: 'Test description',
+      tags: ['urgent']
+    }, actor: @user)
+
+    assert discussion.persisted?
+    assert_nil discussion.group_id
+    assert_equal ['urgent'], discussion.topic.tags
+  end
+
   test "does not email people when creating discussion" do
     assert_no_difference 'ActionMailer::Base.deliveries.count' do
       DiscussionService.create(params: {

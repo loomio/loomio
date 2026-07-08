@@ -78,7 +78,7 @@ class DiscussionService
       return false
     end
     Discussion.transaction do
-      TagService.authorize_create_tag_names!(discussion.group, topic_params[:tags], actor) if topic_params.key?(:tags)
+      TagService.authorize_create_tag_names!(discussion.group, Array(topic_params[:tags]), actor)
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
 
