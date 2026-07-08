@@ -19,7 +19,7 @@ class HelpController < ApplicationController
   private
 
   def whats_new_updates
-    Dir.glob(Rails.root.join("docs", "user_manual", "updates", "*.md")).sort.reverse.map do |path|
+    Dir.glob(Rails.root.join("docs", "user_manual", "changelog", "*.md")).sort.reverse.map do |path|
       date = Date.parse(File.basename(path)[0, 10]).strftime("%B %-e, %Y")
       { date: date, html: MarkdownService.render_html(File.read(path)) }
     end

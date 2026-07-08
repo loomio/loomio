@@ -19,9 +19,37 @@
 - **Fix invariants at the shared method, not at each call site.** If several callers guard a shared method the same way (e.g. `TagService.authorize_create_tag_names!(discussion.group, ...)` from `discussion_service.rb`, `poll_service.rb`, and `topic_service.rb` all need to no-op for group-less/direct records), add the guard inside the shared method (`return if group.blank?`) instead of repeating it at every call site. Only reach for a call-site guard when the condition is truly specific to that one caller.
 - **Prefer coercion over presence guards when the callee already handles the empty case.** If a method already treats `nil`/`[]` as a no-op, call it unconditionally with `Array(value)` rather than wrapping the call in `if params.key?(:x)`. Only add a conditional when the callee can't safely handle the absent/empty case itself.
 
+## Writing voice for user-facing content
+
+These notes apply to any copy written for end users: UI strings, flash/error
+messages, changelog entries, emails, onboarding text, etc.
+
+### Avoid
+
+- **Unearned assumptions about the reader.** Don't presuppose how the user
+  feels about a topic to set up a punchline or hook. We don't know how the
+  reader feels, and for Loomio's cooperativist/organizer audience the
+  assumption is often wrong. It can also read as belittling.
+- **Virtue signaling.** Don't make moral claims about our own character
+  ("run by humans, not growth metrics", "open, forever"). State the
+  verifiable fact instead (worker-owned cooperative, open source) and let
+  the reader draw their own conclusion.
+- **Snazzy filler.** Emoji flourishes, wordplay, performed enthusiasm,
+  exclamation marks on routine success messages — these read as marketing
+  voice rather than a person's voice, and date badly.
+- **Vague self-praise.** Don't reach for tone to earn trust ("out in the
+  open", "small and scrappy"). Reach for facts instead.
+
+### Prefer
+
+Plain, factual statements: what happened, what the software does, who it's
+for. No adjectives doing the work that a fact could do. This is consistent
+with the existing i18n guidance below (calm tone, no exclamation marks on
+success messages).
+
 ## Changelog
 
-- For every significant user-facing change, add a new Markdown file under `docs/user_manual/updates/` named with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
+- For every significant user-facing change, add a new Markdown file under `docs/user_manual/changelog/` named with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
 
 ## i18n / Localization
 
