@@ -64,6 +64,29 @@ class TagServiceTest < ActiveSupport::TestCase
     assert_equal ['Community Energy'], @group.tags.where("lower(name) = ?", 'community energy').pluck(:name)
   end
 
+  test "groom_duplicate_tags normalizes singleton metadata names" do
+    tag = Tag.create!(group: @group, name: 'planned')
+    Tag.where(id: tag.id).update_all(name: 'planned ')
+
+    TagService.groom_duplicate_tags_for_group(@group.id)
+
+    assert_equal 'planned', tag.reload.name
+  end
+
+  test "normalize_all_tag_names normalizes topics and metadata" do
+    tag = Tag.create!(group: @group, name: 'planned')
+    topic = @group.topics.first
+    topic.update_columns(tags: ['planned ', '  Beta   tag'])
+    Tag.where(id: tag.id).update_all(name: 'planned ')
+
+    result = TagService.normalize_all_tag_names
+
+    assert_equal ['Beta tag', 'planned'], topic.reload.tags
+    assert_equal 'planned', tag.reload.name
+    assert_equal 1, result[:topic_updates_count]
+    assert result.key?(:tag_updates_count)
+  end
+
   test "update_group_and_org_tags is a no-op for unknown group" do
     assert_nothing_raised do
       TagService.update_group_and_org_tags(-1)

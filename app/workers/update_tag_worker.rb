@@ -8,11 +8,12 @@ class UpdateTagWorker < ApplicationJob
 
     if old_key != new_key
       Tag.where(group_id: group_ids).select { |tag| TagService.normalized_tag_name(tag.name) == new_key }.each(&:destroy!)
-      old_tags = Tag.where(group_id: group_ids).select { |tag| TagService.normalized_tag_name(tag.name) == old_key }
-      canonical = old_tags.find { |tag| tag.group_id == group.id } || old_tags.first
-      (old_tags - Array(canonical)).each(&:destroy!)
-      canonical&.update!(group: group, name: new_name)
     end
+
+    old_tags = Tag.where(group_id: group_ids).select { |tag| TagService.normalized_tag_name(tag.name) == old_key }
+    canonical = old_tags.find { |tag| tag.group_id == group.id } || old_tags.first
+    (old_tags - Array(canonical)).each(&:destroy!)
+    canonical&.update!(group: group, name: new_name)
 
     Topic.where(group_id: group_ids).find_each do |topic|
       next unless topic.tags.any? { |tag| TagService.normalized_tag_name(tag) == old_key }

@@ -1,8 +1,6 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import AppConfig      from '@/shared/services/app_config';
 
 export default {
   props: {
@@ -54,14 +52,6 @@ export default {
       }).finally(() => {
         this.loading = false;
       });
-    },
-
-    textColor(color) {
-      const hex = color.replace('#', '');
-      const red = parseInt(hex.slice(0, 2), 16);
-      const green = parseInt(hex.slice(2, 4), 16);
-      const blue = parseInt(hex.slice(4, 6), 16);
-      return ((red * 299) + (green * 587) + (blue * 114)) / 1000 > 150 ? '#212121' : '#fff';
     }
   }
 };
@@ -77,9 +67,9 @@ v-card.tags-modal(:title="$t(title)")
 
     label(for="input-708" class="v-label caption" v-t="'loomio_tags.pick_a_color'")
 
-    v-btn-toggle.tag-colors.flex-wrap(rounded v-model="tag.color")
-      v-btn(size="x-small" icon v-for="color in tag.constructor.colors" :key="color" :value="color" :style="{backgroundColor: color}")
-        common-icon(size="large" name="mdiTag" :color="textColor(color)")
+    v-btn-toggle.tag-colors.flex-wrap(v-model="tag.color")
+      v-btn.tag-color-button(icon size="small" variant="text" v-for="color in tag.constructor.colors" :key="color" :value="color" :title="color")
+        span.tag-color-dot(:style="{backgroundColor: color}")
   v-card-actions
     v-btn.tag-form__delete(v-if="tag.id", @click="deleteTag" :disabled="loading")
       span(v-t="'common.action.delete'")
@@ -90,18 +80,18 @@ v-card.tags-modal(:title="$t(title)")
 
 <style lang="sass">
 
-.color-swatch input
-  opacity: 0 !important
-  pointer-events: none !important
+.tag-colors
+  gap: 4px
 
-.color-swatch label
-  overflow: hidden
-  border: 2px solid #ddd
-  border-radius: 28px
-  display: block
-  width: 28px
-  height: 28px
+.tag-color-button
+  min-width: 32px
 
-.color-swatch input:checked + label
-  border: 2px solid #777
+.tag-color-dot
+  border-radius: 50%
+  display: inline-block
+  height: 16px
+  width: 16px
+
+.tag-color-button.v-btn--active .tag-color-dot
+  box-shadow: 0 0 0 2px rgb(var(--v-theme-surface)), 0 0 0 4px rgba(var(--v-theme-on-surface), 0.65)
 </style>

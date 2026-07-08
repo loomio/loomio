@@ -292,19 +292,54 @@ module.exports = {
     page.pause(200)
     page.click('.action-dock__button--edit_tags')
     page.click('.tag-form__new-tag')
-    page.fillIn('.tags-modal__tag-name input', "important")
+    page.fillIn('.tags-modal__tag-name input', "#important")
     page.click('.tag-form__submit')
-    page.expectText('.tags-modal .v-list-item-title', 'important' )
-    page.click('.tag-form__edit-tag')
-    page.click('.tag-form__delete')
+    page.expectText('.tags-modal .v-list-item-title', '#important' )
+    page.click('.tags-modal .v-list-item .tag-form__delete')
     page.expectText('.confirm-modal', 'Delete tag')
     page.click('.confirm-modal__submit')
     page.expectFlash('Tag deleted')
+    page.expectNoText('.tags-modal', '#important')
+  },
 
+  'renames_category_tag': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
     page.click('.action-menu')
     page.pause(200)
     page.click('.action-dock__button--edit_tags')
-    page.expectNoText('.tags-modal', 'important')
+    page.click('.tag-form__new-tag')
+    page.fillIn('.tags-modal__tag-name input', "#important")
+    page.click('.tag-form__submit')
+    page.expectText('.tags-modal .v-list-item-title', '#important')
+
+    page.click('.tags-modal .v-list-item .tag-form__edit-tag')
+    page.clearField('.tags-modal__tag-name input')
+    page.fillIn('.tags-modal__tag-name input', "#renamed")
+    page.click('.tag-form__submit')
+    page.expectText('.tags-modal .v-list-item-title', '#renamed')
+    page.expectNoText('.tags-modal', '#important')
+  },
+
+  'renames_category_tag_case_only': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.action-menu')
+    page.pause(200)
+    page.click('.action-dock__button--edit_tags')
+    page.click('.tag-form__new-tag')
+    page.fillIn('.tags-modal__tag-name input', "advice")
+    page.click('.tag-form__submit')
+    page.expectText('.tags-modal .v-list-item-title', 'advice')
+
+    page.click('.tags-modal .v-list-item .tag-form__edit-tag')
+    page.clearField('.tags-modal__tag-name input')
+    page.fillIn('.tags-modal__tag-name input', "Advice")
+    page.click('.tag-form__submit')
+    page.expectText('.tags-modal .v-list-item-title', 'Advice')
+    page.expectNoText('.tags-modal', 'advice')
   },
 
   'delete_group': (test) => {

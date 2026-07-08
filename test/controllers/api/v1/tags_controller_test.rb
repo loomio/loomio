@@ -70,6 +70,23 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_not Tag.exists?(group_id: @subgroup.id, name: 'apple2')
   end
 
+  test "update renames a tag when only case changes" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
+
+    put :update, params: { id: tag.id, tag: { name: 'Apple', color: '#aaa' } }
+    assert_response :success
+
+    tag_attrs = JSON.parse(response.body)['tags'][0]
+    assert_equal 'Apple', tag_attrs['name']
+    assert_equal '#aaa', tag_attrs['color']
+
+    assert_equal ['Apple', 'banana'], @discussion.topic.reload.tags
+    assert_equal ['Apple', 'banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['Apple', 'banana'], @poll.topic.reload.tags
+    assert_equal ['Apple', 'banana'], @sub_poll.topic.reload.tags
+    assert_not_includes Tag.where(group_id: @group.id).map(&:name), 'apple'
+  end
+
   test "merge tag into existing tag across the parent group and subgroups" do
     tag = Tag.find_by!(group_id: @group.id, name: 'apple')
 
@@ -95,5 +112,18 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     assert_equal ['banana'], @sub_poll.topic.reload.tags
     assert_not Tag.exists?(group_id: @group.id, name: 'apple')
     assert JSON.parse(response.body)['tags'].none? { |t| t['name'] == 'apple' }
+  end
+
+  test "destroy removes legacy tag metadata with unnormalized whitespace" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
+    Tag.where(id: tag.id).update_all(name: 'apple ')
+
+    delete :destroy, params: { id: tag.id }
+    assert_response :success
+
+    assert_equal ['banana'], @discussion.topic.reload.tags
+    assert_equal ['banana'], @sub_discussion.topic.reload.tags
+    assert_not Tag.exists?(id: tag.id)
+    assert JSON.parse(response.body)['tags'].none? { |t| t['id'] == tag.id }
   end
 end

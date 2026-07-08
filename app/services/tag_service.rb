@@ -39,12 +39,11 @@ class TagService
     Tag.transaction do
       # Match by normalized name so legacy rows or topic arrays that differ by
       # case or whitespace are removed together.
-      variant_names = Tag.where(group_id: group_ids)
-                          .select { |tag| normalized_tag_name(tag.name) == normalized_name }
-                          .map(&:name)
-                          .uniq
+      variant_ids = Tag.where(group_id: group_ids)
+                       .select { |tag| normalized_tag_name(tag.name) == normalized_name }
+                       .map(&:id)
 
-      Tag.where(group_id: group_ids, name: variant_names).destroy_all
+      Tag.where(id: variant_ids).destroy_all
 
       Topic.where(group_id: group_ids).find_each do |topic|
         next unless topic.tags.any? { |tag| normalized_tag_name(tag) == normalized_name }
@@ -116,6 +115,31 @@ class TagService
     end
   end
 
+  def self.normalize_all_tag_names
+    result = {
+      topic_updates_count: 0,
+      tag_updates_count: 0,
+      tag_merges_count: 0
+    }
+
+    Topic.find_each do |topic|
+      clean_tags = clean_tag_names(topic.tags)
+      next if topic.tags == clean_tags
+
+      result[:topic_updates_count] += 1
+      topic.update_column(:tags, clean_tags)
+    end
+
+    Tag.distinct.pluck(:group_id).each do |group_id|
+      tags = Tag.where(group_id: group_id).to_a
+      result[:tag_updates_count] += tags.count { |tag| tag.name != clean_tag_name(tag.name) }
+      result[:tag_merges_count] += groom_duplicate_tags_for_group(group_id)
+    end
+
+    update_all_org_tags
+    result
+  end
+
   def self.update_org_tags(group_id)
     return unless group = Group.find_by(id: group_id)&.parent_or_self
 
@@ -166,23 +190,32 @@ class TagService
                            .group_by { |tag| normalized_tag_name(tag.name) }
                            .values
                            .select { |tags| tags.length > 1 }
-    return 0 if duplicate_groups.empty?
 
     merged = 0
 
-    Tag.transaction do
-      duplicate_groups.each do |tags|
-        canonical = tags.min_by(&:id)
+    if duplicate_groups.any?
+      Tag.transaction do
+        duplicate_groups.each do |tags|
+          canonical = tags.min_by(&:id)
+          canonical_name = clean_tag_name(canonical.name)
 
-        (tags - [canonical]).each do |dupe|
-          Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
-            topic.update_column(:tags, clean_tag_names((topic.tags - [dupe.name]) + [canonical.name]))
+          (tags - [canonical]).each do |dupe|
+            Topic.where(group_id: group_id).where("topics.tags @> ARRAY[?]::varchar[]", dupe.name).find_each do |topic|
+              topic.update_column(:tags, clean_tag_names((topic.tags - [dupe.name]) + [canonical_name]))
+            end
+
+            dupe.destroy!
+            merged += 1
           end
 
-          dupe.destroy!
-          merged += 1
+          canonical.update!(name: canonical_name) if canonical.name != canonical_name
         end
       end
+    end
+
+    Tag.where(group_id: group_id).find_each do |tag|
+      clean = clean_tag_name(tag.name)
+      tag.update!(name: clean) if tag.name != clean
     end
 
     merged

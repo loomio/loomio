@@ -21,4 +21,13 @@ class UpdateTagWorkerTest < ActiveSupport::TestCase
     assert_equal ['banana', 'pear'], @subgroup_discussion.topic.reload.tags
     assert_equal ['banana'], @other_discussion.topic.reload.tags
   end
+
+  test "renames tag metadata when only case changes" do
+    UpdateTagWorker.new.perform(@group.id, 'apple', 'Apple', '#aaa')
+
+    assert_equal ['Apple', 'banana'], @parent_discussion.topic.reload.tags
+    assert_equal ['Apple', 'banana'], @subgroup_discussion.topic.reload.tags
+    assert_equal 'Apple', Tag.find_by!(group_id: @group.id, name: 'Apple').name
+    assert_not_includes Tag.where(group_id: @group.id).map(&:name), 'apple'
+  end
 end

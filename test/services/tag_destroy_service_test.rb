@@ -22,4 +22,15 @@ class TagDestroyServiceTest < ActiveSupport::TestCase
     assert_equal ['banana'], @other_discussion.topic.reload.tags
     assert_not Tag.exists?(group_id: [@group.id, @subgroup.id], name: 'apple')
   end
+
+  test "removes legacy tag metadata with unnormalized whitespace" do
+    tag = Tag.find_by!(group_id: @group.id, name: 'apple')
+    Tag.where(id: tag.id).update_all(name: 'apple ')
+
+    TagService.destroy_by_name(@group.id, 'apple ')
+
+    assert_equal ['banana'], @parent_discussion.topic.reload.tags
+    assert_equal ['banana'], @subgroup_discussion.topic.reload.tags
+    assert_not Tag.exists?(id: tag.id)
+  end
 end
