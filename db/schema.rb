@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_11_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_11_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1027,6 +1027,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_000000) do
     t.boolean "allow_subgroups", default: true, null: false
     t.boolean "allow_guests", default: true, null: false
     t.string "lead_status"
+    t.index ["expires_at", "id"], name: "index_subscriptions_on_trial_expiry_for_relay", where: "(((plan)::text = 'trial'::text) AND (expires_at IS NOT NULL))"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
