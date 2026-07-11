@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_11_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_12_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -513,6 +513,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_000001) do
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
+    t.index ["revoked_at", "id"], name: "index_memberships_on_revoked_at_and_id_for_relay", where: "(revoked_at IS NOT NULL)"
     t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
     t.index ["volume"], name: "index_memberships_on_volume"
