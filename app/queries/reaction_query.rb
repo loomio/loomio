@@ -4,15 +4,15 @@ class ReactionQuery
   end
 
   def self.authorize!(user: LoggedOutUser.new, chain: start, params: )
-    discussion_ids = []
-    poll_ids = []
+    comment_topic_ids = []
+    discussion_ids    = []
+    poll_ids          = []
 
     if params[:comment_ids]
-      discussion_ids.concat(
+      comment_topic_ids.concat(
         Comment.joins(:events)
-               .joins("INNER JOIN topics ON topics.id = events.topic_id")
                .where(comments: { id: params[:comment_ids] })
-               .pluck('topics.topicable_id')
+               .pluck('events.topic_id')
       )
     end
     discussion_ids.concat(params[:discussion_ids]) if params[:discussion_ids]
@@ -21,10 +21,12 @@ class ReactionQuery
     poll_ids.concat(Outcome.where(id: params[:outcome_ids]).pluck(:poll_id)) if params[:outcome_ids]
     poll_ids.concat(params[:poll_ids]) if params[:poll_ids]
 
+    comment_topic_ids.uniq!
     discussion_ids.uniq!
     poll_ids.uniq!
 
-    if (PollQuery.visible_to(user: user).where(id: poll_ids).count != poll_ids.length) ||
+    if (TopicQuery.visible_to(user: user).where(id: comment_topic_ids).count != comment_topic_ids.length) ||
+       (PollQuery.visible_to(user: user).where(id: poll_ids).count != poll_ids.length) ||
        (TopicQuery.visible_to(user: user).where(topicable_type: 'Discussion', topicable_id: discussion_ids).count != discussion_ids.length)
       raise CanCan::AccessDenied.new
     end

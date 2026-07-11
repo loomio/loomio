@@ -11,6 +11,10 @@
 
 - Boolean env vars: **presence is truthy**. Set the var to enable, omit it to disable. Check with `ENV["VAR"].present?` (Rails) or `ENV.key?("VAR")` (plain Ruby) — never compare against `"true"` or `"1"`.
 
+## Sentry
+
+- Loomio uses the configured Sentry MCP connection for the self-hosted instance at `https://bugs.loomio.com` (organization slug: `loomio`). Use its Sentry tools to inspect or manage issues; do not use the generic Sentry CLI unless specifically asked.
+
 ## Code style
 
 - Take selective lessons from [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md), especially naming:

@@ -102,6 +102,28 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_equal 4, JSON.parse(response.body)['reactions'].length
   end
 
+  test "index fetches reactions for comments on a poll" do
+    user = users(:admin)
+    group = groups(:group)
+    poll = PollService.create(params: {
+      title: "Test Poll",
+      poll_type: "proposal",
+      group_id: group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: user)
+    comment = Comment.new(body: "Test poll comment", parent: poll, author: user)
+    CommentService.create(comment: comment, actor: user)
+    Reaction.create!(user: user, reactable: comment, reaction: '👍')
+
+    sign_in user
+    get :index, params: { comment_ids: comment.id }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['reactions'].length
+  end
+
   test "create denied when allow_reactions is false" do
     user = users(:admin)
     discussion = discussions(:discussion)
