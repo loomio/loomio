@@ -1113,6 +1113,11 @@ zh_CN:
     add_to_discussion: 加入讨论
     save_bookmark: 保存书签
     remove_bookmark: 移除书签
+    copy_thread_for_ai: 人工智能文案
+    thread_copied_for_ai: 帖子已复制用于人工智能
+    copy_thread_for_ai_help: 将引导提示和完整的对话记录复制到您的AI助手
+    copy_facilitation_prompt: 复制促进提示
+    facilitation_prompt_copied: 辅助提示已复制
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿

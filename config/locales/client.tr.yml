@@ -1074,6 +1074,11 @@ tr:
     add_to_discussion: Tartışmaya ekle
     save_bookmark: Yer işaretini kaydet
     remove_bookmark: Yer işaretini kaldır
+    copy_thread_for_ai: Yapay Zeka için Kopyala
+    thread_copied_for_ai: Konu yapay zeka için kopyalandı.
+    copy_thread_for_ai_help: Kolaylaştırma yönergesini ve tüm görüşme dökümünü yapay zeka asistanınıza kopyalayın.
+    copy_facilitation_prompt: Kopyalama kolaylaştırma istemi
+    facilitation_prompt_copied: Kolaylaştırma talimatı kopyalandı
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler

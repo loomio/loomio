@@ -46,6 +46,11 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def markdown
+    load_resource
+    render json: {markdown: ThreadMarkdownService.render(topic: resource, user: current_user)}
+  end
+
   def mark_as_read
     load_resource
     TopicService.mark_as_read(topic: resource, params: params, actor: current_user)

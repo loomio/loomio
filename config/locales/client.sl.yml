@@ -1074,6 +1074,11 @@ sl:
     add_to_discussion: Dodaj v razpravo
     save_bookmark: Shrani zaznamek
     remove_bookmark: Odstrani zaznamek
+    copy_thread_for_ai: Kopiraj za umetno inteligenco
+    thread_copied_for_ai: Nit kopirana za AI
+    copy_thread_for_ai_help: Kopirajte poziv za vodenje in celoten prepis niti v svojega pomočnika z umetno inteligenco
+    copy_facilitation_prompt: Poziv za poenostavitev kopiranja
+    facilitation_prompt_copied: Poziv za poenostavitev je bil kopiran
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve

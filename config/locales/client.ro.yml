@@ -1074,6 +1074,11 @@ ro:
     add_to_discussion: Adaugă la discuție
     save_bookmark: Salvați marcajul
     remove_bookmark: Eliminați marcajul
+    copy_thread_for_ai: Copiere pentru inteligență artificială
+    thread_copied_for_ai: Fir de discuție copiat pentru AI
+    copy_thread_for_ai_help: Copiați solicitarea de facilitare și transcrierea completă a firului de discuție în asistentul dvs. de inteligență artificială.
+    copy_facilitation_prompt: Sugestie de facilitare a copierii
+    facilitation_prompt_copied: Promptul de facilitare a fost copiat
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori

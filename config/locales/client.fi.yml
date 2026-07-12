@@ -1074,6 +1074,11 @@ fi:
     add_to_discussion: Lisää keskusteluun
     save_bookmark: Tallenna kirjanmerkki
     remove_bookmark: Poista kirjanmerkki
+    copy_thread_for_ai: Teksti tekoälylle
+    thread_copied_for_ai: Ketju kopioitu tekoälyä varten
+    copy_thread_for_ai_help: Kopioi fasilitointikehote ja koko ketjun transkriptio tekoälyavustajaasi
+    copy_facilitation_prompt: Kopioinnin helpottamiskehote
+    facilitation_prompt_copied: Fasilitointikehote kopioitu
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit

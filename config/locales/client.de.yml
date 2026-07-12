@@ -1086,6 +1086,11 @@ de:
     add_to_discussion: Zur Diskussion hinzufügen
     save_bookmark: Lesezeichen speichern
     remove_bookmark: Lesezeichen entfernen
+    copy_thread_for_ai: Für KI kopieren
+    thread_copied_for_ai: Thread für KI kopiert
+    copy_thread_for_ai_help: Kopiere die Moderationsanweisung und das vollständige Gesprächsprotokoll in deinen KI-Assistenten
+    copy_facilitation_prompt: Moderationsanweisung kopieren
+    facilitation_prompt_copied: Moderationsanweisung kopiert
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

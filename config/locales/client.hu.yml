@@ -1078,6 +1078,11 @@ hu:
     add_to_discussion: Hozzáadás a beszélgetéshez
     save_bookmark: Könyvjelző mentése
     remove_bookmark: Könyvjelző eltávolítása
+    copy_thread_for_ai: Szöveg a mesterséges intelligenciának
+    thread_copied_for_ai: A téma másolva a mesterséges intelligencia számára
+    copy_thread_for_ai_help: Másold át a moderációs kérdést és a teljes beszélgetési szál átiratát az AI asszisztensedbe.
+    copy_facilitation_prompt: Másolássegítő kérdés
+    facilitation_prompt_copied: A lebonyolítási kérdés kimásolva
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek

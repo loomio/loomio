@@ -1073,6 +1073,11 @@ ja:
     add_to_discussion: 議論に追加
     save_bookmark: ブックマークを保存
     remove_bookmark: ブックマークを削除
+    copy_thread_for_ai: AI向けコピー
+    thread_copied_for_ai: AI用にスレッドをコピーしました
+    copy_thread_for_ai_help: ファシリテーションの指示とスレッド全体のトランスクリプトをAIアシスタントにコピーしてください。
+    copy_facilitation_prompt: コピー促進プロンプト
+    facilitation_prompt_copied: ファシリテーションの指示がコピーされました
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色

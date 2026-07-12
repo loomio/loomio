@@ -1088,6 +1088,11 @@ pt_BR:
     add_to_discussion: Adicionar à discussão
     save_bookmark: Salvar marcador
     remove_bookmark: Remover marcador
+    copy_thread_for_ai: Texto para IA
+    thread_copied_for_ai: Tópico copiado para IA
+    copy_thread_for_ai_help: Copie a instrução de facilitação e a transcrição completa da conversa para o seu assistente de IA.
+    copy_facilitation_prompt: Instruções para facilitar a cópia
+    facilitation_prompt_copied: Instruções de facilitação copiadas
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores

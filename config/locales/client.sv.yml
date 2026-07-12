@@ -1074,6 +1074,11 @@ sv:
     add_to_discussion: Lägg till i diskussionen
     save_bookmark: Spara bokmärke
     remove_bookmark: Ta bort bokmärke
+    copy_thread_for_ai: Kopiera för AI
+    thread_copied_for_ai: Tråd kopierad för AI
+    copy_thread_for_ai_help: Kopiera handledningsprompten och den fullständiga trådtranskriptionen till din AI-assistent
+    copy_facilitation_prompt: Uppmaning till kopiering
+    facilitation_prompt_copied: Faciliteringsuppmaningen kopierades
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger

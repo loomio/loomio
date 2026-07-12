@@ -1080,6 +1080,11 @@ ca:
     add_to_discussion: Afegeix a la discussió
     save_bookmark: Desa el marcador
     remove_bookmark: Elimina el marcador
+    copy_thread_for_ai: Copiar per a IA
+    thread_copied_for_ai: Fil copiat per a IA
+    copy_thread_for_ai_help: Copia la indicació de facilitació i la transcripció completa del fil al teu assistent d'IA.
+    copy_facilitation_prompt: Suggeriment de facilitació de còpia
+    facilitation_prompt_copied: S'ha copiat la sol·licitud de facilitació
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors

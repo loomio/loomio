@@ -1081,6 +1081,11 @@ zh_TW:
     add_to_discussion: 加入討論
     save_bookmark: 儲存書籤
     remove_bookmark: 移除書籤
+    copy_thread_for_ai: 人工智慧文案
+    thread_copied_for_ai: 貼文已複製用於人工智慧
+    copy_thread_for_ai_help: 將引導提示和完整的對話記錄複製到您的AI助手
+    copy_facilitation_prompt: 複製促進提示
+    facilitation_prompt_copied: 輔助提示已複製
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色

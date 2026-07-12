@@ -1088,6 +1088,11 @@ fr:
     add_to_discussion: Ajouter à la discussion
     save_bookmark: Enregistrer le signet
     remove_bookmark: Supprimer le signet
+    copy_thread_for_ai: Copier pour l'IA
+    thread_copied_for_ai: Discussion copiée pour l'IA
+    copy_thread_for_ai_help: Copie l'invite de facilitation et la transcription complète de la discussion dans ton assistant IA
+    copy_facilitation_prompt: Copier l'invite de facilitation
+    facilitation_prompt_copied: Invite de facilitation copiée
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs

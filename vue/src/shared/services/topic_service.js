@@ -189,13 +189,25 @@ export default new class TopicService {
         }
       },
 
+      copy_thread_for_ai: {
+        name: 'action_dock.copy_thread_for_ai',
+        icon: 'mdi-robot-outline',
+        dock: 0,
+        collection: 'actions',
+        canPerform() {
+          return !topic.discardedAt && topic.membersInclude(Session.user());
+        },
+        perform: () => openModal({component: 'CopyForAiModal', props: {topic}})
+      },
+
       edit_discussion: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         // collection: 'actions',
         canPerform() {
           return topic.topicableType === 'Discussion' && AbilityService.canEditDiscussion(topic.topicable());
-        },
+  },
+
         to() { return `/d/${topic.topicable().key}/edit`; }
       },
 

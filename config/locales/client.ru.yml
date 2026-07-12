@@ -1074,6 +1074,11 @@ ru:
     add_to_discussion: Добавить к обсуждению
     save_bookmark: Сохранить закладку
     remove_bookmark: Удалить закладку
+    copy_thread_for_ai: Текст для ИИ
+    thread_copied_for_ai: Ветка скопирована для ИИ.
+    copy_thread_for_ai_help: Скопируйте подсказку для модерации и полную стенограмму обсуждения в своего ИИ-помощника.
+    copy_facilitation_prompt: Копирование подсказки для содействия
+    facilitation_prompt_copied: Подсказка для модерации скопирована
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета

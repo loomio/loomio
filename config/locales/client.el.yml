@@ -1074,6 +1074,11 @@ el:
     add_to_discussion: Προσθήκη στη συζήτηση
     save_bookmark: Αποθήκευση σελιδοδείκτη
     remove_bookmark: Αφαίρεση σελιδοδείκτη
+    copy_thread_for_ai: Αντίγραφο για την Τεχνητή Νοημοσύνη
+    thread_copied_for_ai: Το νήμα αντιγράφηκε για τεχνητή νοημοσύνη
+    copy_thread_for_ai_help: Αντιγράψτε την προτροπή διευκόλυνσης και την πλήρη μεταγραφή του νήματος στον βοηθό τεχνητής νοημοσύνης σας
+    copy_facilitation_prompt: Προτροπή για διευκόλυνση αντιγραφής
+    facilitation_prompt_copied: Η προτροπή διευκόλυνσης αντιγράφηκε
   formatting:
     formatting_tools: Εργαλεία μορφοποίησης κειμένου
     colors: Χρωματιστά

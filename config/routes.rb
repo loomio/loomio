@@ -52,6 +52,10 @@ Rails.application.routes.draw do
       resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
       resources :polls, only: [:create, :show, :index, :update, :destroy]
+      resources :threads, only: [:index, :show] do
+        get :items, on: :member
+        get :markdown, on: :member
+      end
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create, :update, :destroy]
     end
@@ -232,6 +236,7 @@ Rails.application.routes.draw do
       resources :search, only: :index
 
       resources :topics, only: [:index, :update] do
+        get :markdown, on: :member
         get :history, on: :member
         patch :mark_as_read, on: :member
         patch :mark_as_seen, on: :member

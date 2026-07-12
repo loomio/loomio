@@ -1074,6 +1074,11 @@ da:
     add_to_discussion: Tilføj til diskussion
     save_bookmark: Gem bogmærke
     remove_bookmark: Fjern bogmærke
+    copy_thread_for_ai: Tekst til AI
+    thread_copied_for_ai: Tråd kopieret til AI
+    copy_thread_for_ai_help: Kopier faciliteringsprompten og den komplette trådtransskription ind i din AI-assistent
+    copy_facilitation_prompt: Prompt til facilitering af kopiering
+    facilitation_prompt_copied: Tilrettelæggelsesprompt kopieret
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver

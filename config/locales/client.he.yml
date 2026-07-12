@@ -1078,6 +1078,11 @@ he:
     add_to_discussion: הוסף לדיון
     save_bookmark: שמור סימניה
     remove_bookmark: הסר סימניה
+    copy_thread_for_ai: עותק עבור בינה מלאכותית
+    thread_copied_for_ai: השרשור הועתק עבור בינה מלאכותית
+    copy_thread_for_ai_help: העתיקו את הנחיית התוכנית ואת תמליל השרשור המלא לעוזר הבינה המלאכותית שלכם
+    copy_facilitation_prompt: הנחיית העתקה
+    facilitation_prompt_copied: הנחיית הנחיה הועתקה
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים

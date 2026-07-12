@@ -1080,6 +1080,11 @@ pl:
     add_to_discussion: Dodaj do dyskusji
     save_bookmark: Zapisz zakładkę
     remove_bookmark: Usuń zakładkę
+    copy_thread_for_ai: Tekst dla AI
+    thread_copied_for_ai: Wątek skopiowany dla AI
+    copy_thread_for_ai_help: Skopiuj monit ułatwiający i cały zapis wątku do swojego asystenta AI
+    copy_facilitation_prompt: Podpowiedź dotycząca ułatwienia kopiowania
+    facilitation_prompt_copied: Skopiowano polecenie ułatwiające
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie

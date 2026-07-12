@@ -1081,6 +1081,11 @@ uk:
     add_to_discussion: Додати до обговорення
     save_bookmark: Зберегти закладку
     remove_bookmark: Видалити закладку
+    copy_thread_for_ai: Копія для ШІ
+    thread_copied_for_ai: Тема скопійована для ШІ
+    copy_thread_for_ai_help: Скопіюйте запит на модерацію та повний текст теми у свій помічник зі штучним інтелектом
+    copy_facilitation_prompt: Підказка для спрощення копіювання
+    facilitation_prompt_copied: Запит на сприяння скопійовано
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори

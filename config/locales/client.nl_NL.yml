@@ -1080,6 +1080,11 @@ nl_NL:
     add_to_discussion: Voeg toe aan de discussie
     save_bookmark: Sla bladwijzer op
     remove_bookmark: Verwijder bladwijzer
+    copy_thread_for_ai: Thread kopiëren voor AI
+    thread_copied_for_ai: Thread gekopieerd voor AI
+    copy_thread_for_ai_help: Kopieer de begeleidingsvraag en het volledige transcript van de discussie naar je AI-assistent.
+    copy_facilitation_prompt: Facilitatieprompt kopiëren
+    facilitation_prompt_copied: Facilitatieprompt gekopieerd
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren

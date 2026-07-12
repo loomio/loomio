@@ -119,6 +119,15 @@ languages in the Nov 2025 pass.
 | `config/locales/server.nl_NL.yml` | `forward_mailer.comment_rejected.reason` | `thread` | `discussie` | Thread means discussion here, not a technical/mechanical thread |
 | `config/locales/server.pt_BR.yml` | `forward_mailer.comment_rejected.open_thread` | `Tópico aberto` | `Abrir discussão` | Button text should be an action, not an adjective phrase |
 
+## 2026-07-12 — Copy for AI
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `action_dock.copy_*_for_ai`, facilitation keys | Formal address and `Kopiererleichterung` | Informal action labels using `Moderationsanweisung` | The UI uses informal `du`; machine translation treated facilitation as a copying aid |
+| `config/locales/client.es.yml` | `action_dock.copy_facilitation_prompt`, `facilitation_prompt_copied` | `Indicación para facilitar la copia` | `Copiar la indicación de facilitación` | The label should copy a facilitation prompt, not facilitate copying |
+| `config/locales/client.fr.yml` | Copy for AI keys | Formal `votre` and noun phrases | Informal `ton` and imperative action labels | French UI uses informal `tu`; copy buttons need verb labels |
+| `config/locales/client.nl_NL.yml` | Copy for AI keys | `Tekst voor AI`, compound copy-facilitation wording | `Thread kopiëren voor AI`, `Facilitatieprompt` | Preserve the discussion-thread meaning and distinguish the prompt from the copy action |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

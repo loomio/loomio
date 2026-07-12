@@ -157,18 +157,34 @@ Pass `remove_absent: 1` to also remove members not in the `emails` list.
 
 ---
 
-## Rob's credentials
+### Threads
 
+**List my visible threads**
 ```
-api_key: 0e6947f7720ba843996d53ba78b93b25
-Loomio Cooperative - Workers group handle: loomio-cooperative-workers
+GET /api/b2/threads?api_key=<key>&limit=50&offset=0
+```
+Returns discussion and poll threads the authenticated user can view, ordered by latest activity. A thread ID is its `topic_id`.
+
+**Read a thread and its items**
+```
+GET /api/b2/threads/<topic_id>?api_key=<key>
+GET /api/b2/threads/<topic_id>/items?api_key=<key>
+GET /api/b2/threads/<topic_id>/markdown?api_key=<key>
+```
+The items endpoint returns the ordered event stream, including its serialised eventables such as comments, polls, stances, and outcomes. It respects the same visibility rules as the Loomio interface.
+
+The markdown endpoint returns the complete thread as one Markdown document. It includes vote reasons only when they are visible to the authenticated user.
+
+## Agent facilitation skill
+
+Install the public skill from:
+```
+https://www.loomio.com/skills/loomio-facilitator/SKILL.md
 ```
 
-To find the numeric group ID, run:
-```bash
-curl -s "https://www.loomio.com/api/b2/groups/loomio-cooperative-workers?api_key=0e6947f7720ba843996d53ba78b93b25" \
-  | python3 -c "import json,sys; g=json.load(sys.stdin)['groups'][0]; print(g['id'], g['name'])"
-```
+Suggested prompt: “Use the Loomio facilitator skill. Read the relevant thread and tell me what has been decided, whose concerns need attention, and which facilitation pattern would help us move forward. Do not post or create anything without my approval.”
+
+Never share an API key in documentation, source control, or a prompt. Create and rotate keys from the user's account settings.
 
 ## Implementation notes
 
