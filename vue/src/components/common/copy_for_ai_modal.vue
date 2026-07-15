@@ -59,10 +59,11 @@ v-card(:title="$t('action_dock.copy_thread_for_ai')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text.pb-2
-    p.text-body-2(v-t="'action_dock.copy_for_ai_skill_description'")
-    v-alert.mt-4(type="info" variant="tonal" density="compact")
-      div(v-t="'action_dock.share_ai_skill'")
-      router-link(to="/contact" @click="close" v-t="'action_dock.share_ai_skill_contact'")
+    p.text-body-2.mb-4(v-t="'action_dock.copy_for_ai_skill_description'")
+    p.text-body-2.font-italic.text-medium-emphasis
+      span(v-t="'action_dock.share_ai_skill'")
+      space
+      router-link.text-medium-emphasis.text-primary(to="https://www.loomio.com/contact" @click="close" v-t="'action_dock.share_ai_skill_contact'" target="_blank")
   v-card-actions.d-flex.flex-column.align-stretch.ga-2
     v-btn(color="primary" variant="elevated" :disabled="loading || !skillMarkdown || !markdown" :loading="loading" @click="copySkillAndThread")
       span(v-t="'action_dock.copy_skill_and_thread'")
