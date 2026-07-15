@@ -1091,6 +1091,10 @@ de:
     copy_thread_for_ai_help: Kopiere die Moderationsanweisung und das vollständige Gesprächsprotokoll in deinen KI-Assistenten
     copy_facilitation_prompt: Moderationsanweisung kopieren
     facilitation_prompt_copied: Moderationsanweisung kopiert
+    copy_prompt_and_thread: Prompt und Thread kopieren
+    copy_prompt: Prompt kopieren
+    copy_thread: Thread kopieren
+    copy_for_ai_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge die Moderationsanweisung hinzu, um eine Anleitung auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

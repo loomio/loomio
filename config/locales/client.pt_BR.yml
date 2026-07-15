@@ -1093,6 +1093,10 @@ pt_BR:
     copy_thread_for_ai_help: Copie a instrução de facilitação e a transcrição completa da conversa para o seu assistente de IA.
     copy_facilitation_prompt: Instruções para facilitar a cópia
     facilitation_prompt_copied: Instruções de facilitação copiadas
+    copy_prompt_and_thread: Copiar prompt e tópico
+    copy_prompt: Copiar prompt
+    copy_thread: Copiar tópico
+    copy_for_ai_description: Copie a conversa como Markdown estruturado para um assistente de IA. Inclua o prompt de facilitação para orientação com base nas práticas de facilitação do Loomio.
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores

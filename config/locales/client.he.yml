@@ -1083,6 +1083,10 @@ he:
     copy_thread_for_ai_help: העתיקו את הנחיית התוכנית ואת תמליל השרשור המלא לעוזר הבינה המלאכותית שלכם
     copy_facilitation_prompt: הנחיית העתקה
     facilitation_prompt_copied: הנחיית הנחיה הועתקה
+    copy_prompt_and_thread: העתקת הנחיה ושרשור
+    copy_prompt: העתקת הנחיה
+    copy_thread: העתקת שרשור
+    copy_for_ai_description: העתיקו את השרשור כ-Markdown מובנה עבור עוזר בינה מלאכותית. כללו את הנחיית הנחייה לקבלת הדרכה המבוססת על שיטות ההנחיה של Loomio.
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים

@@ -1079,6 +1079,10 @@ tr:
     copy_thread_for_ai_help: Kolaylaştırma yönergesini ve tüm görüşme dökümünü yapay zeka asistanınıza kopyalayın.
     copy_facilitation_prompt: Kopyalama kolaylaştırma istemi
     facilitation_prompt_copied: Kolaylaştırma talimatı kopyalandı
+    copy_prompt_and_thread: İstemi ve ileti dizisini kopyala
+    copy_prompt: İstemi kopyala
+    copy_thread: Konuyu kopyala
+    copy_for_ai_description: Yapay zekâ asistanı için yapılandırılmış Markdown formatında ileti dizisini kopyalayın. Loomio'nun kolaylaştırma uygulamalarına dayalı rehberlik için kolaylaştırma istemini de ekleyin.
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler

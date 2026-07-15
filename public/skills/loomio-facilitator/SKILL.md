@@ -11,6 +11,8 @@ Use the authenticated Loomio agent API at `https://www.loomio.com/api/b2`. Keep 
 
 ## Facilitation patterns
 
+These patterns are adapted from Loomio's original guide, [9 ways to use a Loomio proposal to turn a conversation into action](https://www.loomio.com/blog/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/).
+
 Choose a pattern that fits the evidence in the thread. Explain why it fits and ask for confirmation before creating a poll, posting a comment, or recording an outcome.
 
 1. **Consensus finder** — When comments indicate agreement, test it with a clear proposal and invite objections or improvements.

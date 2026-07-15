@@ -1085,6 +1085,10 @@ pl:
     copy_thread_for_ai_help: Skopiuj monit ułatwiający i cały zapis wątku do swojego asystenta AI
     copy_facilitation_prompt: Podpowiedź dotycząca ułatwienia kopiowania
     facilitation_prompt_copied: Skopiowano polecenie ułatwiające
+    copy_prompt_and_thread: Kopiuj monit i wątek
+    copy_prompt: Kopiuj monit
+    copy_thread: Kopiuj wątek
+    copy_for_ai_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown dla asystenta AI. Dołącz podpowiedź dotyczącą facylitacji, aby uzyskać wskazówki oparte na praktykach facylitacji Loomio.
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie

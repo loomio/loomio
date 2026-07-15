@@ -1085,6 +1085,10 @@ ca:
     copy_thread_for_ai_help: Copia la indicació de facilitació i la transcripció completa del fil al teu assistent d'IA.
     copy_facilitation_prompt: Suggeriment de facilitació de còpia
     facilitation_prompt_copied: S'ha copiat la sol·licitud de facilitació
+    copy_prompt_and_thread: Copiar la indicació i el fil
+    copy_prompt: Copiar la indicació
+    copy_thread: Copiar fil
+    copy_for_ai_description: Copia el fil com a Markdown estructurat per a un assistent d'IA. Inclou la indicació de facilitació per obtenir orientació basada en les pràctiques de facilitació de Loomio.
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors

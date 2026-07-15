@@ -5,11 +5,7 @@ import { ref, onMounted } from 'vue';
 const { topic, close } = defineProps({ topic: Object, close: Function });
 const markdown = ref('');
 const loading = ref(true);
-const facilitationPrompt = `Read these Loomio facilitation guides before analysing the conversation:
-- https://www.loomio.com/blog/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/
-- https://www.loomio.com/skills/loomio-facilitator/SKILL.md
-
-Then read the Loomio thread transcript I provide. Explain: (1) the decision or purpose of the thread, (2) what seems agreed, (3) unanswered questions and concerns or objections that need attention, (4) whose participation may still be needed, and (5) the most suitable way to move the conversation forward. Offer a draft comment, poll, or outcome only for my review. Do not claim consensus from a majority vote, infer identities in an anonymous poll, or take any action on Loomio.`;
+const facilitationPrompt = 'https://www.loomio.com/skills/loomio-facilitator/SKILL.md';
 
 onMounted(async () => {
   const response = await fetch(`/api/v1/topics/${topic.id}/markdown`);
@@ -17,7 +13,12 @@ onMounted(async () => {
   loading.value = false;
 });
 
-async function copy() {
+async function copyPromptAndThread() {
+  await navigator.clipboard.writeText(`${facilitationPrompt}\n\n${markdown.value}`);
+  Flash.success('common.copied');
+}
+
+async function copyThread() {
   await navigator.clipboard.writeText(markdown.value);
   Flash.success('action_dock.thread_copied_for_ai');
 }
@@ -32,15 +33,13 @@ async function copyPrompt() {
 v-card(:title="$t('action_dock.copy_thread_for_ai')")
   template(v-slot:append)
     dismiss-modal-button
-  v-card-text
-    p.text-body-2(v-t="'action_dock.copy_thread_for_ai_help'")
-    v-textarea(:model-value="facilitationPrompt" readonly auto-grow)
-    v-btn.mb-4(variant="outlined" @click="copyPrompt")
-      span(v-t="'action_dock.copy_facilitation_prompt'")
-    v-progress-linear(v-if="loading" indeterminate)
-    v-textarea(v-else :model-value="markdown" readonly auto-grow)
-  v-card-actions
-    v-spacer
-    v-btn(color="primary" :disabled="loading" @click="copy")
-      span(v-t="'common.copy'")
+  v-card-text.pb-2
+    p.text-body-2(v-t="'action_dock.copy_for_ai_description'")
+  v-card-actions.d-flex.flex-column.align-stretch.ga-2
+    v-btn(color="primary" variant="elevated" :disabled="loading" :loading="loading" @click="copyPromptAndThread")
+      span(v-t="'action_dock.copy_prompt_and_thread'")
+    v-btn(color="primary" variant="tonal" @click="copyPrompt")
+      span(v-t="'action_dock.copy_prompt'")
+    v-btn(color="primary" variant="tonal" :disabled="loading" @click="copyThread")
+      span(v-t="'action_dock.copy_thread'")
 </template>

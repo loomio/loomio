@@ -1078,6 +1078,10 @@ ja:
     copy_thread_for_ai_help: ファシリテーションの指示とスレッド全体のトランスクリプトをAIアシスタントにコピーしてください。
     copy_facilitation_prompt: コピー促進プロンプト
     facilitation_prompt_copied: ファシリテーションの指示がコピーされました
+    copy_prompt_and_thread: プロンプトとスレッドをコピー
+    copy_prompt: プロンプトをコピー
+    copy_thread: スレッドをコピー
+    copy_for_ai_description: AIアシスタント向けに、スレッドを構造化されたMarkdown形式でコピーしてください。Loomioのファシリテーション手法に基づいたガイダンスを提供するため、ファシリテーションプロンプトを含めてください。
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色

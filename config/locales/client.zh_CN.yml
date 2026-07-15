@@ -1118,6 +1118,10 @@ zh_CN:
     copy_thread_for_ai_help: 将引导提示和完整的对话记录复制到您的AI助手
     copy_facilitation_prompt: 复制促进提示
     facilitation_prompt_copied: 辅助提示已复制
+    copy_prompt_and_thread: 复制提示和帖子
+    copy_prompt: 复制提示
+    copy_thread: 复制帖子
+    copy_for_ai_description: 将帖子内容复制成结构化的 Markdown 格式，以便 AI 助手使用。请根据 Loomio 的引导实践，添加引导提示。
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿

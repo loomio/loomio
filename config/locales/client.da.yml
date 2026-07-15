@@ -1079,6 +1079,10 @@ da:
     copy_thread_for_ai_help: Kopier faciliteringsprompten og den komplette trådtransskription ind i din AI-assistent
     copy_facilitation_prompt: Prompt til facilitering af kopiering
     facilitation_prompt_copied: Tilrettelæggelsesprompt kopieret
+    copy_prompt_and_thread: Kopiér prompt og tråd
+    copy_prompt: Kopiér prompt
+    copy_thread: Kopiér tråd
+    copy_for_ai_description: Kopiér tråden som en struktureret Markdown for en AI-assistent. Inkluder faciliteringsprompten for vejledning baseret på Loomios faciliteringspraksis.
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver

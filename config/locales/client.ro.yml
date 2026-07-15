@@ -1079,6 +1079,10 @@ ro:
     copy_thread_for_ai_help: Copiați solicitarea de facilitare și transcrierea completă a firului de discuție în asistentul dvs. de inteligență artificială.
     copy_facilitation_prompt: Sugestie de facilitare a copierii
     facilitation_prompt_copied: Promptul de facilitare a fost copiat
+    copy_prompt_and_thread: Copiază promptul și firul de discuție
+    copy_prompt: Copiază promptul
+    copy_thread: Copiază firul de discuție
+    copy_for_ai_description: Copiază firul de discuție ca Markdown structurat pentru un asistent AI. Include promptul de facilitare pentru îndrumare bazată pe practicile de facilitare Loomio.
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori

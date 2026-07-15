@@ -1083,6 +1083,10 @@ hu:
     copy_thread_for_ai_help: Másold át a moderációs kérdést és a teljes beszélgetési szál átiratát az AI asszisztensedbe.
     copy_facilitation_prompt: Másolássegítő kérdés
     facilitation_prompt_copied: A lebonyolítási kérdés kimásolva
+    copy_prompt_and_thread: Prompt és téma másolása
+    copy_prompt: Prompt másolása
+    copy_thread: Téma másolása
+    copy_for_ai_description: Másold le a szálat strukturált Markdownként egy MI-asszisztens számára. A Loomio facilitációs gyakorlatán alapuló útmutatást adj a facilitációs kérdésnek.
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek

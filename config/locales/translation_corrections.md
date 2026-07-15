@@ -128,6 +128,27 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | Copy for AI keys | Formal `votre` and noun phrases | Informal `ton` and imperative action labels | French UI uses informal `tu`; copy buttons need verb labels |
 | `config/locales/client.nl_NL.yml` | Copy for AI keys | `Tekst voor AI`, compound copy-facilitation wording | `Thread kopiëren voor AI`, `Facilitatieprompt` | Preserve the discussion-thread meaning and distinguish the prompt from the copy action |
 
+## 2026-07-15 — Copy for AI button labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.ca.yml` | `action_dock.copy_prompt*` | `sol·licitud` | `indicació` | The prompt is an instruction for the AI, not a generic request |
+| `config/locales/client.de.yml` | `action_dock.copy_prompt*` | `Eingabeaufforderung`, `Kopieraufforderung` | `Prompt` | Use the established technical term and keep the labels concise |
+| `config/locales/client.es.yml` | `action_dock.copy_prompt*` | `solicitud` | `indicación` | The prompt is an instruction for the AI, not a generic request |
+| `config/locales/client.he.yml` | `action_dock.copy_prompt` | `העתקה` | `העתקת הנחיה` | The machine translation said only “Copy” and omitted the prompt |
+| `config/locales/client.hu.yml` | `action_dock.copy_prompt*` | `Másolási prompt`, `Másolási kérés` | `Prompt ... másolása` | The labels described a copying request instead of the action to copy an AI prompt |
+| `config/locales/client.it.yml` | `action_dock.copy_prompt*` | `richiesta`, `gancio` | `prompt` | The machine translation used “request” and “hook” rather than an AI prompt |
+| `config/locales/client.ja.yml` | `action_dock.copy_prompt*` | `コピープロンプト`, polite sentence form | `プロンプトをコピー`, concise action form | The prompt-only label was a compound noun rather than the copy action |
+| `config/locales/client.ro.yml` | `action_dock.copy_prompt*` | `solicitarea`, noun label | `promptul`, action label | The label should be a concise copy action for an AI prompt |
+| `config/locales/client.ru.yml` | `action_dock.copy_prompt_and_thread` | Final full stop | No final full stop | Single-sentence button labels do not use final full stops |
+| `config/locales/client.sl.yml` | `action_dock.copy_prompt` | `Poziv za kopiranje` | `Kopiraj poziv` | The machine translation described a prompt for copying rather than the copy action |
+| `config/locales/client.sv.yml` | `action_dock.copy_prompt` | `Kopieringsuppmaning` | `Kopiera prompt` | The machine translation described a copying prompt rather than the copy action |
+| `config/locales/client.tr.yml` | `action_dock.copy_prompt` | `Kopyala istemi` | `İstemi kopyala` | The verb and object were in the wrong order for the action label |
+| `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.copy_prompt_and_thread` | `线程`, `線程` | `帖子`, `貼文` | Thread means a Loomio discussion here, not a software execution thread |
+| `config/locales/client.de.yml` | `action_dock.copy_for_ai_description` | Formal `Sie` imperatives | Informal `du` imperatives | German UI uses informal direct address throughout |
+| `config/locales/client.fr.yml` | `action_dock.copy_for_ai_description` | Formal `vous` imperatives and animation terminology | Informal `tu` imperatives and facilitation terminology | French UI uses informal direct address; facilitation here is not animation |
+| `config/locales/client.ro.yml` | `action_dock.copy_for_ai_description` | Formal/plural imperatives | Informal singular imperatives | Keep the description consistent with its adjacent action labels |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

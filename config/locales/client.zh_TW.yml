@@ -1086,6 +1086,10 @@ zh_TW:
     copy_thread_for_ai_help: 將引導提示和完整的對話記錄複製到您的AI助手
     copy_facilitation_prompt: 複製促進提示
     facilitation_prompt_copied: 輔助提示已複製
+    copy_prompt_and_thread: 複製提示和貼文
+    copy_prompt: 複製提示
+    copy_thread: 複製貼文
+    copy_for_ai_description: 將貼文內容複製成結構化的 Markdown 格式，以便 AI 助理可以使用。請根據 Loomio 的引導實踐，新增引導提示。
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色

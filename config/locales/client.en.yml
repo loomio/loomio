@@ -1094,6 +1094,10 @@ en:
     copy_thread_for_ai_help: Copy the facilitation prompt and the complete thread transcript into your AI assistant
     copy_facilitation_prompt: Copy facilitation prompt
     facilitation_prompt_copied: Facilitation prompt copied
+    copy_prompt_and_thread: Copy prompt and thread
+    copy_prompt: Copy prompt
+    copy_thread: Copy thread
+    copy_for_ai_description: Copy the thread as structured Markdown for an AI assistant. Include the facilitation prompt for guidance based on Loomio's facilitation practices.
     actions_menu: Actions menu
     more_actions: More actions
     save_bookmark: Save bookmark

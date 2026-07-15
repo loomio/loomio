@@ -1079,6 +1079,10 @@ fi:
     copy_thread_for_ai_help: Kopioi fasilitointikehote ja koko ketjun transkriptio tekoälyavustajaasi
     copy_facilitation_prompt: Kopioinnin helpottamiskehote
     facilitation_prompt_copied: Fasilitointikehote kopioitu
+    copy_prompt_and_thread: Kopioi kehote ja ketju
+    copy_prompt: Kopioi kehote
+    copy_thread: Kopioi ketju
+    copy_for_ai_description: Kopioi ketju strukturoituna Markdown-muodossa tekoälyavustajalle. Sisällytä fasilitointikehote Loomion fasilitointikäytäntöihin perustuvan ohjauksen saamiseksi.
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
