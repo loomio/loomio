@@ -1087,6 +1087,9 @@ hu:
     copy_prompt: Prompt másolása
     copy_thread: Téma másolása
     copy_for_ai_description: Másold le a szálat strukturált Markdownként egy MI-asszisztens számára. A Loomio facilitációs gyakorlatán alapuló útmutatást adj a facilitációs kérdésnek.
+    copy_skill_and_thread: Készség és téma másolása
+    copy_skill: Készség másolása
+    copy_for_ai_skill_description: Másold le a szálat strukturált Markdownként egy MI-asszisztens számára. Tartalmazd a teljes Loomio facilitátori készséget útmutatásként a Loomio facilitációs gyakorlata alapján.
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek

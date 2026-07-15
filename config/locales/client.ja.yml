@@ -1082,6 +1082,9 @@ ja:
     copy_prompt: プロンプトをコピー
     copy_thread: スレッドをコピー
     copy_for_ai_description: AIアシスタント向けに、スレッドを構造化されたMarkdown形式でコピーしてください。Loomioのファシリテーション手法に基づいたガイダンスを提供するため、ファシリテーションプロンプトを含めてください。
+    copy_skill_and_thread: スキルとスレッドをコピー
+    copy_skill: スキルをコピー
+    copy_for_ai_skill_description: AIアシスタント向けに、スレッドを構造化されたMarkdown形式でコピーしてください。Loomioのファシリテーション手法に基づいたガイダンスを提供するため、Loomioファシリテーターのスキルをすべて含めてください。
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色

@@ -1083,6 +1083,9 @@ sl:
     copy_prompt: Kopiraj poziv
     copy_thread: Kopiraj nit
     copy_for_ai_description: Kopirajte nit kot strukturiran Markdown za pomočnika z umetno inteligenco. Vključite poziv za vodenje na podlagi Loomiovih praks vodenja.
+    copy_skill_and_thread: Kopiraj spretnost in nit
+    copy_skill: Kopiraj spretnost
+    copy_for_ai_skill_description: Kopirajte nit kot strukturiran Markdown za pomočnika z umetno inteligenco. Vključite celotno veščino moderatorja Loomio za smernice, ki temeljijo na praksah moderiranja Loomio.
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve

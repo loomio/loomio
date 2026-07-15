@@ -1097,6 +1097,9 @@ it:
     copy_prompt: Copia prompt
     copy_thread: Copia discussione
     copy_for_ai_description: Copia il thread come Markdown strutturato per un assistente AI. Includi il prompt di facilitazione per fornire indicazioni basate sulle pratiche di facilitazione di Loomio.
+    copy_skill_and_thread: Copia abilità e thread
+    copy_skill: Copia abilità
+    copy_for_ai_skill_description: Copia il thread come Markdown strutturato per un assistente AI. Includi la skill completa del facilitatore Loomio per fornire indicazioni basate sulle pratiche di facilitazione di Loomio.
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori

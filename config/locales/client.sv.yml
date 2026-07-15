@@ -1083,6 +1083,9 @@ sv:
     copy_prompt: Kopiera prompt
     copy_thread: Kopiera tråd
     copy_for_ai_description: Kopiera tråden som en strukturerad Markdown för en AI-assistent. Inkludera handledningsprompten för vägledning baserad på Loomios handledningspraxis.
+    copy_skill_and_thread: Kopiera färdighet och tråd
+    copy_skill: Kopiera färdighet
+    copy_for_ai_skill_description: Kopiera tråden som en strukturerad Markdown för en AI-assistent. Inkludera den fullständiga Loomio-faciliteringsfärdigheten för vägledning baserad på Loomios faciliteringsrutiner.
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger

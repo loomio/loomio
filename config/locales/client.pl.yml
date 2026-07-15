@@ -1089,6 +1089,9 @@ pl:
     copy_prompt: Kopiuj monit
     copy_thread: Kopiuj wątek
     copy_for_ai_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown dla asystenta AI. Dołącz podpowiedź dotyczącą facylitacji, aby uzyskać wskazówki oparte na praktykach facylitacji Loomio.
+    copy_skill_and_thread: Kopiuj umiejętność i wątek
+    copy_skill: Kopiuj umiejętność
+    copy_for_ai_skill_description: Skopiuj wątek w postaci ustrukturyzowanego Markdowna dla asystenta AI. Dołącz pełną umiejętność facylitatora Loomio, aby uzyskać wskazówki oparte na praktykach facylitacyjnych Loomio.
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie

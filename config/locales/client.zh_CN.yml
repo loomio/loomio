@@ -1122,6 +1122,9 @@ zh_CN:
     copy_prompt: 复制提示
     copy_thread: 复制帖子
     copy_for_ai_description: 将帖子内容复制成结构化的 Markdown 格式，以便 AI 助手使用。请根据 Loomio 的引导实践，添加引导提示。
+    copy_skill_and_thread: 复制技能和帖子
+    copy_skill: 复制技能
+    copy_for_ai_skill_description: 请将此讨论串复制为结构化的 Markdown 格式，以便 AI 助手使用。请包含完整的 Loomio 引导员技能，以便根据 Loomio 的引导实践提供指导。
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿

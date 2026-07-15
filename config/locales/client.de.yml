@@ -1095,6 +1095,9 @@ de:
     copy_prompt: Prompt kopieren
     copy_thread: Thread kopieren
     copy_for_ai_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge die Moderationsanweisung hinzu, um eine Anleitung auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
+    copy_skill_and_thread: Loomio-Skill und Thread kopieren
+    copy_skill: Loomio-Skill kopieren
+    copy_for_ai_skill_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge den vollständigen Loomio-Facilitator-Skill hinzu, um Anleitungen auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

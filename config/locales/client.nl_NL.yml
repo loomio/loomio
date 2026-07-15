@@ -1089,6 +1089,9 @@ nl_NL:
     copy_prompt: Kopieer prompt
     copy_thread: Kopieer thread
     copy_for_ai_description: Kopieer de thread als gestructureerde Markdown voor een AI-assistent. Voeg de begeleidingsvraag toe ter ondersteuning, gebaseerd op de begeleidingsmethoden van Loomio.
+    copy_skill_and_thread: Skill en thread kopiëren
+    copy_skill: Skill kopiëren
+    copy_for_ai_skill_description: Kopieer de thread als gestructureerde Markdown voor een AI-assistent. Voeg de volledige Loomio-facilitatievaardigheid toe voor begeleiding op basis van de facilitatiepraktijken van Loomio.
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren

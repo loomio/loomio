@@ -1083,6 +1083,9 @@ fi:
     copy_prompt: Kopioi kehote
     copy_thread: Kopioi ketju
     copy_for_ai_description: Kopioi ketju strukturoituna Markdown-muodossa tekoälyavustajalle. Sisällytä fasilitointikehote Loomion fasilitointikäytäntöihin perustuvan ohjauksen saamiseksi.
+    copy_skill_and_thread: Kopioi taito ja ketju
+    copy_skill: Kopioi taito
+    copy_for_ai_skill_description: Kopioi ketju strukturoituna Markdown-muodossa tekoälyassistenttia varten. Sisällytä Loomion fasilitaattorin koko taito ohjeistuksena Loomion fasilitointikäytäntöjen perusteella.
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit

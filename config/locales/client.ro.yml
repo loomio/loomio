@@ -1083,6 +1083,9 @@ ro:
     copy_prompt: Copiază promptul
     copy_thread: Copiază firul de discuție
     copy_for_ai_description: Copiază firul de discuție ca Markdown structurat pentru un asistent AI. Include promptul de facilitare pentru îndrumare bazată pe practicile de facilitare Loomio.
+    copy_skill_and_thread: Copiază abilitatea și firul de discuție
+    copy_skill: Copiază abilitatea
+    copy_for_ai_skill_description: Copiază firul de discuție ca Markdown structurat pentru un asistent cu inteligență artificială. Include abilitatea completă de facilitator Loomio pentru îndrumare bazată pe practicile de facilitare ale Loomio.
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori

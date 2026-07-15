@@ -1090,6 +1090,9 @@ zh_TW:
     copy_prompt: 複製提示
     copy_thread: 複製貼文
     copy_for_ai_description: 將貼文內容複製成結構化的 Markdown 格式，以便 AI 助理可以使用。請根據 Loomio 的引導實踐，新增引導提示。
+    copy_skill_and_thread: 複製技能和貼文
+    copy_skill: 複製技能
+    copy_for_ai_skill_description: 請將此討論串複製為結構化的 Markdown 格式，以便 AI 助理使用。請包含完整的 Loomio 引導員技能，以便根據 Loomio 的引導實踐提供指導。
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色

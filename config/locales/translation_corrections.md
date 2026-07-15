@@ -149,6 +149,16 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | `action_dock.copy_for_ai_description` | Formal `vous` imperatives and animation terminology | Informal `tu` imperatives and facilitation terminology | French UI uses informal direct address; facilitation here is not animation |
 | `config/locales/client.ro.yml` | `action_dock.copy_for_ai_description` | Formal/plural imperatives | Informal singular imperatives | Keep the description consistent with its adjacent action labels |
 
+## 2026-07-15 — Copy for AI skill labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `action_dock.copy_skill*` | Labels equivalent to “copying ability” | Action labels meaning “copy the skill” | Machine translation treated “skill” as a person's ability to copy rather than an AI instruction package |
+| `config/locales/client.de.yml` | `action_dock.copy_for_ai_skill_description` | Formal `Sie` imperatives | Informal `du` imperatives | German UI uses informal direct address throughout |
+| `config/locales/client.fr.yml` | `action_dock.copy_for_ai_skill_description` | Formal `vous` imperatives | Informal `tu` imperatives | French UI uses informal direct address throughout |
+| `config/locales/client.ro.yml` | `action_dock.copy_for_ai_skill_description` | Formal/plural imperatives | Informal singular imperatives | Keep the description consistent with its adjacent action labels |
+| `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.copy_skill_and_thread` | `线程`, `線程` | `帖子`, `貼文` | Thread means a Loomio discussion here, not a software execution thread |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

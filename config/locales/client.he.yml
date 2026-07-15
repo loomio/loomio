@@ -1087,6 +1087,9 @@ he:
     copy_prompt: העתקת הנחיה
     copy_thread: העתקת שרשור
     copy_for_ai_description: העתיקו את השרשור כ-Markdown מובנה עבור עוזר בינה מלאכותית. כללו את הנחיית הנחייה לקבלת הדרכה המבוססת על שיטות ההנחיה של Loomio.
+    copy_skill_and_thread: העתקת מיומנות ושרשור
+    copy_skill: מיומנות העתקת
+    copy_for_ai_skill_description: העתיקו את השרשור כ-Markdown מובנה עבור עוזר בינה מלאכותית. כללו את מיומנות ההנחיה המלאה של Loomio לקבלת הדרכה המבוססת על שיטות ההנחיה של Loomio.
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים

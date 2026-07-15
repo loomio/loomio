@@ -1097,6 +1097,9 @@ fr:
     copy_prompt: Copier l'invite
     copy_thread: Copier le fil de discussion
     copy_for_ai_description: Copie la discussion au format Markdown structuré pour un assistant IA. Inclus l'invite de facilitation pour obtenir des conseils fondés sur les pratiques de facilitation de Loomio.
+    copy_skill_and_thread: Copier la compétence et le fil
+    copy_skill: Copier la compétence
+    copy_for_ai_skill_description: Copie la discussion au format Markdown structuré pour un assistant IA. Inclus la compétence complète de facilitation Loomio pour te guider selon les pratiques de facilitation de Loomio.
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs

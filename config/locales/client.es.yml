@@ -1087,6 +1087,9 @@ es:
     copy_prompt: Copiar indicación
     copy_thread: Copiar hilo
     copy_for_ai_description: Copia el hilo como Markdown estructurado para un asistente de IA. Incluye la indicación de facilitación para obtener orientación basada en las prácticas de facilitación de Loomio.
+    copy_skill_and_thread: Copiar habilidad e hilo
+    copy_skill: Copiar habilidad
+    copy_for_ai_skill_description: Copia el hilo como Markdown estructurado para un asistente de IA. Incluye la habilidad completa de facilitador de Loomio para obtener orientación basada en las prácticas de facilitación de Loomio.
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
