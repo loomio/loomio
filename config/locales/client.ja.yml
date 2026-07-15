@@ -1085,6 +1085,8 @@ ja:
     copy_skill_and_thread: スキルとスレッドをコピー
     copy_skill: スキルをコピー
     copy_for_ai_skill_description: AIアシスタント向けに、スレッドを構造化されたMarkdown形式でコピーしてください。Loomioのファシリテーション手法に基づいたガイダンスを提供するため、Loomioファシリテーターのスキルをすべて含めてください。
+    share_ai_skill: 新しいAIスキルを作成したり、既存のスキルを改良したりした場合は、ぜひLoomioチームと共有してください
+    share_ai_skill_contact: Loomioチームにお問い合わせください
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色

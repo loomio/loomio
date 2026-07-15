@@ -1100,6 +1100,8 @@ it:
     copy_skill_and_thread: Copia abilità e thread
     copy_skill: Copia abilità
     copy_for_ai_skill_description: Copia il thread come Markdown strutturato per un assistente AI. Includi la skill completa del facilitatore Loomio per fornire indicazioni basate sulle pratiche di facilitazione di Loomio.
+    share_ai_skill: Se scrivi una nuova skill basata sull'intelligenza artificiale o migliori una skill già esistente, puoi condividerla con il team di Loomio
+    share_ai_skill_contact: Contatta il team di Loomio
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori

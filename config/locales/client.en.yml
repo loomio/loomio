@@ -1101,6 +1101,8 @@ en:
     copy_skill_and_thread: Copy skill and thread
     copy_skill: Copy skill
     copy_for_ai_skill_description: Copy the thread as structured Markdown for an AI assistant. Include the complete Loomio facilitator skill for guidance based on Loomio's facilitation practices.
+    share_ai_skill: If you write a new AI skill or improve the supplied skill, you’re welcome to share it with the Loomio team
+    share_ai_skill_contact: Contact the Loomio team
     actions_menu: Actions menu
     more_actions: More actions
     save_bookmark: Save bookmark

@@ -1092,6 +1092,8 @@ nl_NL:
     copy_skill_and_thread: Skill en thread kopiëren
     copy_skill: Skill kopiëren
     copy_for_ai_skill_description: Kopieer de thread als gestructureerde Markdown voor een AI-assistent. Voeg de volledige Loomio-facilitatievaardigheid toe voor begeleiding op basis van de facilitatiepraktijken van Loomio.
+    share_ai_skill: Als je een nieuwe AI-vaardigheid ontwikkelt of een bestaande vaardigheid verbetert, deel deze dan gerust met het Loomio-team
+    share_ai_skill_contact: Neem contact op met het Loomio-team
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren

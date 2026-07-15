@@ -1086,6 +1086,8 @@ da:
     copy_skill_and_thread: Kopiér færdighed og tråd
     copy_skill: Kopier færdighed
     copy_for_ai_skill_description: Kopiér tråden som en struktureret Markdown for en AI-assistent. Inkluder den komplette Loomio-facilitatorfærdighed som vejledning baseret på Loomios faciliteringspraksis.
+    share_ai_skill: Hvis du skriver en ny AI-færdighed eller forbedrer den medfølgende færdighed, er du velkommen til at dele den med Loomio-teamet
+    share_ai_skill_contact: Kontakt Loomio-teamet
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver

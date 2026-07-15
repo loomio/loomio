@@ -60,6 +60,9 @@ v-card(:title="$t('action_dock.copy_thread_for_ai')")
     dismiss-modal-button
   v-card-text.pb-2
     p.text-body-2(v-t="'action_dock.copy_for_ai_skill_description'")
+    v-alert.mt-4(type="info" variant="tonal" density="compact")
+      div(v-t="'action_dock.share_ai_skill'")
+      router-link(to="/contact" @click="close" v-t="'action_dock.share_ai_skill_contact'")
   v-card-actions.d-flex.flex-column.align-stretch.ga-2
     v-btn(color="primary" variant="elevated" :disabled="loading || !skillMarkdown || !markdown" :loading="loading" @click="copySkillAndThread")
       span(v-t="'action_dock.copy_skill_and_thread'")

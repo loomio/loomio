@@ -1100,6 +1100,8 @@ fr:
     copy_skill_and_thread: Copier la compétence et le fil
     copy_skill: Copier la compétence
     copy_for_ai_skill_description: Copie la discussion au format Markdown structuré pour un assistant IA. Inclus la compétence complète de facilitation Loomio pour te guider selon les pratiques de facilitation de Loomio.
+    share_ai_skill: Si tu écris une nouvelle compétence d’IA ou améliores celle proposée, tu peux la partager avec l’équipe Loomio
+    share_ai_skill_contact: Contacte l’équipe Loomio
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs

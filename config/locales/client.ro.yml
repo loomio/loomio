@@ -1086,6 +1086,8 @@ ro:
     copy_skill_and_thread: Copiază abilitatea și firul de discuție
     copy_skill: Copiază abilitatea
     copy_for_ai_skill_description: Copiază firul de discuție ca Markdown structurat pentru un asistent cu inteligență artificială. Include abilitatea completă de facilitator Loomio pentru îndrumare bazată pe practicile de facilitare ale Loomio.
+    share_ai_skill: Dacă scrii o nouă abilitate de inteligență artificială sau îmbunătățești abilitatea furnizată, o poți împărtăși cu echipa Loomio
+    share_ai_skill_contact: Contactează echipa Loomio
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori

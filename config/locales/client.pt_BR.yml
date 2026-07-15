@@ -1100,6 +1100,8 @@ pt_BR:
     copy_skill_and_thread: Copiar habilidade e tópico
     copy_skill: Copiar habilidade
     copy_for_ai_skill_description: Copie a conversa como Markdown estruturado para um assistente de IA. Inclua a habilidade completa de facilitador do Loomio para orientação com base nas práticas de facilitação do Loomio.
+    share_ai_skill: Se você criar uma nova habilidade de IA ou aprimorar uma habilidade já existente, fique à vontade para compartilhá-la com a equipe da Loomio
+    share_ai_skill_contact: Entre em contato com a equipe da Loomio
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores

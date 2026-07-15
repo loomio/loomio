@@ -1086,6 +1086,8 @@ tr:
     copy_skill_and_thread: Beceriyi ve konuyu kopyala
     copy_skill: Beceriyi kopyala
     copy_for_ai_skill_description: Yapay zekâ asistanı için yapılandırılmış Markdown formatında ileti dizisini kopyalayın. Loomio'nun kolaylaştırma uygulamalarına dayalı rehberlik için eksiksiz Loomio kolaylaştırıcı becerisini ekleyin.
+    share_ai_skill: Yeni bir yapay zeka becerisi yazarsanız veya mevcut beceriyi geliştirirseniz, bunu Loomio ekibiyle paylaşabilirsiniz
+    share_ai_skill_contact: Loomio ekibiyle iletişime geçin
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler

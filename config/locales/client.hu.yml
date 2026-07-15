@@ -1090,6 +1090,8 @@ hu:
     copy_skill_and_thread: Készség és téma másolása
     copy_skill: Készség másolása
     copy_for_ai_skill_description: Másold le a szálat strukturált Markdownként egy MI-asszisztens számára. Tartalmazd a teljes Loomio facilitátori készséget útmutatásként a Loomio facilitációs gyakorlata alapján.
+    share_ai_skill: Ha új MI-készséget írsz, vagy a már meglévőt fejleszted, megoszthatod a Loomio csapatával
+    share_ai_skill_contact: Lépjen kapcsolatba a Loomio csapatával
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek

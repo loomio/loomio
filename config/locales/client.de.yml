@@ -1098,6 +1098,8 @@ de:
     copy_skill_and_thread: Loomio-Skill und Thread kopieren
     copy_skill: Loomio-Skill kopieren
     copy_for_ai_skill_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge den vollständigen Loomio-Facilitator-Skill hinzu, um Anleitungen auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
+    share_ai_skill: Wenn du einen neuen KI-Skill schreibst oder den bereitgestellten Skill verbesserst, kannst du ihn gerne mit dem Loomio-Team teilen
+    share_ai_skill_contact: Kontaktiere das Loomio-Team
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

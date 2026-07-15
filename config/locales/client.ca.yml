@@ -1092,6 +1092,8 @@ ca:
     copy_skill_and_thread: Copiar habilitat i fil
     copy_skill: Copiar habilitat
     copy_for_ai_skill_description: Copia el fil com a Markdown estructurat per a un assistent d'IA. Inclou l'habilitat completa del facilitador de Loomio per obtenir orientació basada en les pràctiques de facilitació de Loomio.
+    share_ai_skill: Si escriviu una nova habilitat d'IA o milloreu l'habilitat proporcionada, podeu compartir-la amb l'equip de Loomio
+    share_ai_skill_contact: Contacta amb l'equip de Loomio
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors

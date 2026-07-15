@@ -158,6 +158,8 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | `action_dock.copy_for_ai_skill_description` | Formal `vous` imperatives | Informal `tu` imperatives | French UI uses informal direct address throughout |
 | `config/locales/client.ro.yml` | `action_dock.copy_for_ai_skill_description` | Formal/plural imperatives | Informal singular imperatives | Keep the description consistent with its adjacent action labels |
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.copy_skill_and_thread` | `线程`, `線程` | `帖子`, `貼文` | Thread means a Loomio discussion here, not a software execution thread |
+| `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `action_dock.share_ai_skill*` | Formal address | Informal singular address | These locales use informal direct address throughout |
+| Multiple `config/locales/client.*.yml` files | `action_dock.share_ai_skill*` | Final full stops | No final full stops | Single-sentence UI strings do not use final full stops |
 
 ## 2026-05-22 — lock/unlock thread translation pass
 

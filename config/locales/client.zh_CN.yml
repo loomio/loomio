@@ -1125,6 +1125,8 @@ zh_CN:
     copy_skill_and_thread: 复制技能和帖子
     copy_skill: 复制技能
     copy_for_ai_skill_description: 请将此讨论串复制为结构化的 Markdown 格式，以便 AI 助手使用。请包含完整的 Loomio 引导员技能，以便根据 Loomio 的引导实践提供指导。
+    share_ai_skill: 如果您编写了新的 AI 技能或改进了现有技能，欢迎与 Loomio 团队分享
+    share_ai_skill_contact: 联系 Loomio 团队
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
