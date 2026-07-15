@@ -12,6 +12,7 @@ class ReactionQuery
       comment_topic_ids.concat(
         Comment.joins(:events)
                .where(comments: { id: params[:comment_ids] })
+               .where.not(events: { topic_id: nil })
                .pluck('events.topic_id')
       )
     end

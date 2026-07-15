@@ -124,6 +124,23 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['reactions'].length
   end
 
+  test "index fetches reactions for edited comments" do
+    user = users(:admin)
+    discussion = discussions(:discussion)
+    comment = Comment.new(body: "Test comment", parent: discussion, author: user)
+    CommentService.create(comment: comment, actor: user)
+    Events::CommentEdited.publish!(comment, user)
+    Reaction.create!(user: user, reactable: comment, reaction: '👍')
+
+    assert comment.events.where(topic_id: nil).exists?
+
+    sign_in user
+    get :index, params: { comment_ids: comment.id }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['reactions'].length
+  end
+
   test "create denied when allow_reactions is false" do
     user = users(:admin)
     discussion = discussions(:discussion)
