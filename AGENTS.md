@@ -53,7 +53,8 @@ success messages).
 
 ## Changelog
 
-- For every significant user-facing change, add a new Markdown file under `docs/user_manual/changelog/` named with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
+- Add a new Markdown file under `docs/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
+- Name changelog files with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
 
 ## i18n / Localization
 

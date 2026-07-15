@@ -10,6 +10,7 @@ export default
     EditCommentForm: asyncComponent(() => import('@/components/thread/edit_comment_form.vue')),
     ConfirmModal: asyncComponent(() => import('@/components/common/confirm_modal.vue')),
     InfoModal: asyncComponent(() => import('@/components/common/info_modal.vue')),
+    CopyForAiModal: asyncComponent(() => import('@/components/common/copy_for_ai_modal.vue')),
     TopicForm: asyncComponent(() => import('@/components/thread/topic_form.vue')),
     ChangeVolumeForm: asyncComponent(() => import('@/components/common/change_volume_form')),
     PollCommonModal: asyncComponent(() => import('@/components/poll/common/modal')),
