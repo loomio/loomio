@@ -435,7 +435,7 @@ GEM
       net-smtp
     marcel (1.1.0)
     maxminddb (0.1.22)
-    mini_magick (5.3.1)
+    mini_magick (5.3.2)
       logger
     mini_mime (1.1.5)
     minitest (6.0.6)
@@ -818,7 +818,7 @@ DEPENDENCIES
   image_processing (~> 2.0)
   lograge
   maxminddb
-  mini_magick (~> 5.0)
+  mini_magick (~> 5.3)
   minitest (~> 6.0)
   minitest-mock
   mission_control-jobs
