@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Generate user manual screenshots with the same application setup as bin/e2e.
+#
+# Usage:
+#   bin/e2e-screenshots
+#   bin/e2e-screenshots discussion.js
+#   bin/e2e-screenshots discussion.js --testcase thread
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+if [[ "${1:-}" == *.js ]]; then
+  SPEC_FILE="${1##*/}"
+  shift
+  exec "$ROOT/bin/e2e" "tests/e2e/screenshots/$SPEC_FILE" --serial "$@"
+fi
+
+exec "$ROOT/bin/e2e" tests/e2e/screenshots --serial "$@"

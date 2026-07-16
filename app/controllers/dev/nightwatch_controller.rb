@@ -15,6 +15,7 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::MembershipRequest
   include Dev::Scenarios::Membership
   include Dev::Scenarios::Notification
+  include Dev::Scenarios::OatmilkCooperative
   include Dev::Scenarios::Profile
   include Dev::Scenarios::Tags
 
