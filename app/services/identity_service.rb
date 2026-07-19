@@ -21,41 +21,35 @@ class IdentityService
 
     # Find existing identity by uid, preferring one already linked to a user.
     # This matters because legacy code created orphan duplicates on every login.
-    identity = Identity.with_user.find_by(identity_type: identity_type, uid: uid) ||
-               Identity.find_by(identity_type: identity_type, uid: uid)
+    identity = find_identity(identity_type: identity_type, uid: uid)
 
-    if identity
-      # Existing identity found - update its attributes (email/name may have changed in SSO)
-      identity.update(identity_params)
-    else
-      # New identity - need to create it and link to a user
-      identity = Identity.new(identity_params)
+    # create_or_find_by! handles another login creating the same identity after
+    # the lookup above. Its transaction also rolls back any user created by the
+    # block when the identity insert loses that race.
+    identity ||= Identity.create_or_find_by!(identity_type: identity_type, uid: uid) do |new_identity|
+      new_identity.assign_attributes(identity_params)
 
-      # SECURITY: If user is already signed in, don't auto-link new identities
-      # This prevents accidental linking of SSO accounts. Users can intentionally
-      # link identities via the identity_form.vue UI if they choose to.
-      if current_user.present?
-        identity.save
-        return identity
-      end
+      # SECURITY: If user is already signed in, don't auto-link new identities.
+      # Users can intentionally link the pending identity via identity_form.vue.
+      next if current_user.present?
 
-      # The SSO provider is fully trusted as the authority on email ownership.
-      # If the provider says this person owns this email, we link them to the
-      # matching Loomio account (or create one). This is the correct model for
-      # SSO — the IdP has already authenticated the user and verified their email.
-      # Admins control which SSO providers are configured, so trust is explicit.
-      identity.user = User.find_by(email: email)
+      # The configured SSO provider is trusted as the authority on email ownership.
+      new_identity.user = User.find_by(email: email)
 
-      if identity.user.nil?
-        identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
+      if new_identity.user.nil?
+        new_identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
         Sentry.set_context('identity_params', identity_params.slice(:identity_type, :uid, :email, :name))
-        identity.user.save!
+        new_identity.user.save!
       else
-        identity.user.update(email_verified: true) unless identity.user.email_verified?
+        new_identity.user.update(email_verified: true) unless new_identity.user.email_verified?
       end
-
-      identity.save
     end
+
+    # Existing identities may have changed email, name, token, or profile image.
+    identity.assign_attributes(identity_params)
+    identity.save! if identity.changed?
+
+    return identity unless identity.user
 
     # Sync user attributes from SSO provider if configured
     if update_user_profile_on_login? && identity.user
@@ -74,4 +68,10 @@ class IdentityService
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
       ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'])
   end
+
+  def self.find_identity(identity_type:, uid:)
+    Identity.with_user.find_by(identity_type: identity_type, uid: uid) ||
+      Identity.find_by(identity_type: identity_type, uid: uid)
+  end
+  private_class_method :find_identity
 end

@@ -95,4 +95,30 @@ class IdentityServiceTest < ActiveSupport::TestCase
     assert_equal existing_identity.id, identity.id
     assert_equal user, identity.user
   end
+
+  test "returns identity created by a competing login" do
+    user = users(:user)
+    existing_identity = Identity.create!(
+      user: user,
+      uid: 'oauth_user_123',
+      identity_type: 'oauth',
+      email: 'oauthuser@example.com',
+      name: 'Original Name',
+      access_token: 'old_token'
+    )
+
+    assert_no_difference ['Identity.count', 'User.count'] do
+      IdentityService.stub :find_identity, nil do
+        identity = IdentityService.link_or_create(
+          identity_params: @identity_params,
+          current_user: nil
+        )
+
+        assert_equal existing_identity.id, identity.id
+        assert_equal user, identity.user
+        assert_equal 'OAuth User', identity.name
+        assert_equal 'token_123', identity.access_token
+      end
+    end
+  end
 end
