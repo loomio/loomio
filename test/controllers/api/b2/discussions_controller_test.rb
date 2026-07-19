@@ -18,6 +18,40 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     assert_equal 'test', discussion['title']
   end
 
+  test "create defaults to public when the group requires public discussions" do
+    group = Group.create!(
+      name: "Open Group #{SecureRandom.hex(4)}",
+      group_privacy: 'open'
+    )
+    Membership.create!(user: @user, group: group, accepted_at: Time.current, admin: true)
+
+    post :create, params: { title: 'test', group_id: group.id, api_key: @user.api_key }
+
+    assert_response :success
+    discussion = Discussion.find(json['discussions'][0]['id'])
+    assert_equal false, discussion.topic.private
+  end
+
+  test "create returns validation errors when privacy is not permitted by the group" do
+    group = Group.create!(
+      name: "Open Group #{SecureRandom.hex(4)}",
+      group_privacy: 'open'
+    )
+    Membership.create!(user: @user, group: group, accepted_at: Time.current, admin: true)
+
+    assert_no_difference ['Discussion.count', 'Topic.count'] do
+      post :create, params: {
+        title: 'test',
+        group_id: group.id,
+        private: true,
+        api_key: @user.api_key
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal ['must be public'], json.dig('errors', 'private')
+  end
+
   test "create happy case notify group" do
     post :create, params: { title: 'test', group_id: @group.id, api_key: @user.api_key, recipient_audience: 'group' }
     assert_response 200

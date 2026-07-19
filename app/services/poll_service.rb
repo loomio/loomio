@@ -14,8 +14,7 @@ class PollService
     unless topic_params.key?(:private)
       gid = topic_params[:group_id]
       gid ||= poll.topic.group_id if poll.topic
-      group = Group.find_by(id: gid)
-      topic_params[:private] = group ? !group.public_discussions_only? : true
+      topic_params[:private] = TopicService.private_default(group_id: gid)
     end
 
     poll.topic ||= Topic.new topic_params.merge(topicable: poll)

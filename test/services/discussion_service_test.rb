@@ -23,6 +23,40 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_kind_of Topic, discussion.topic
   end
 
+  test "creates a public discussion when the group requires public discussions" do
+    group = Group.create!(
+      name: "Open Group #{SecureRandom.hex(4)}",
+      group_privacy: 'open'
+    )
+    Membership.create!(user: @user, group: group, accepted_at: Time.current, admin: true)
+
+    discussion = DiscussionService.create(
+      params: { title: 'Public Discussion', group_id: group.id },
+      actor: @user
+    )
+
+    assert group.public_discussions_only?
+    assert_equal false, discussion.topic.private
+  end
+
+  test "raises a validation error when discussion privacy is not permitted by the group" do
+    group = Group.create!(
+      name: "Open Group #{SecureRandom.hex(4)}",
+      group_privacy: 'open'
+    )
+    Membership.create!(user: @user, group: group, accepted_at: Time.current, admin: true)
+
+    error = assert_raises ActiveRecord::RecordInvalid do
+      DiscussionService.create(
+        params: { title: 'Private Discussion', group_id: group.id, private: true },
+        actor: @user
+      )
+    end
+
+    assert_equal ['must be public'], error.record.errors[:private]
+    assert_not error.record.persisted?
+  end
+
   test "does not allow unauthorized user to create discussion" do
     assert_raises CanCan::AccessDenied do
       DiscussionService.create(params: {

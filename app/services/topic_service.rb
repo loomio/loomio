@@ -1,4 +1,9 @@
 class TopicService
+  def self.private_default(group_id:)
+    group = Group.find_by(id: group_id)
+    group ? !group.public_discussions_only? : true
+  end
+
   def self.invite(topic:, actor:, params:)
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                            emails: params[:recipient_emails],

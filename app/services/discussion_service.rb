@@ -4,6 +4,9 @@ class DiscussionService
   def self.build(params:, actor:)
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*TOPIC_ATTRS)
+    unless topic_params.key?(:private)
+      topic_params[:private] = TopicService.private_default(group_id: topic_params[:group_id])
+    end
 
     discussion = Discussion.new
     discussion.assign_attributes_and_files(params)
@@ -23,6 +26,7 @@ class DiscussionService
       actor.ability.authorize!(:create, discussion)
       TagService.authorize_create_tag_names!(discussion.group, discussion.topic.tags, actor)
       discussion.save!
+      discussion.topic.save!
       discussion.topic.update_sequence_info!
 
       TopicReader.for(
