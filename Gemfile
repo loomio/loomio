@@ -29,7 +29,7 @@ gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
 gem 'image_processing', '~> 2.0'
-gem 'mini_magick', '~> 5.0'
+gem 'mini_magick', '~> 5.3'
 gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"
