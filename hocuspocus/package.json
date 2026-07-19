@@ -8,7 +8,7 @@
     "npm": "11.16.0"
   },
   "dependencies": {
-    "@hocuspocus/server": "^4.3.0",
+    "@hocuspocus/server": "^4.4.0",
     "@sentry/node": "^10.66.0"
   }
 }
