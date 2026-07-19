@@ -419,11 +419,6 @@ GEM
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
-    lograge (0.14.0)
-      actionpack (>= 4)
-      activesupport (>= 4)
-      railties (>= 4)
-      request_store (~> 1.0)
     loofah (2.25.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -817,7 +812,6 @@ DEPENDENCIES
   i18n-timezones
   icalendar
   image_processing (~> 2.0)
-  lograge
   maxminddb
   mini_magick (~> 5.3)
   minitest (~> 6.0)
