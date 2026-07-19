@@ -181,7 +181,7 @@ GEM
       dotenv (= 3.1.8)
       railties (>= 6.1)
     drb (2.2.3)
-    erb (6.0.4)
+    erb (6.0.5)
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
@@ -346,11 +346,11 @@ GEM
       google-protobuf (>= 3.18, < 5.a)
       googleapis-common-protos (~> 1.9.0)
       grpc (~> 1.41)
-    haml (6.3.0)
+    haml (7.2.0)
       temple (>= 0.8.2)
       thor
       tilt
-    haml-rails (3.0.0)
+    haml-rails (3.1.0)
       actionpack (>= 5.1)
       activesupport (>= 5.1)
       haml (>= 4.0.6)
@@ -731,7 +731,7 @@ GEM
     thruster (0.1.23-arm64-darwin)
     thruster (0.1.23-x86_64-darwin)
     thruster (0.1.23-x86_64-linux)
-    tilt (2.6.1)
+    tilt (2.8.0)
     timeout (0.6.1)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
@@ -811,7 +811,7 @@ DEPENDENCIES
   google-cloud-storage (~> 1.62)
   google-cloud-translate
   gravtastic
-  haml-rails (~> 3.0.0)
+  haml-rails (~> 3.1.0)
   http_accept_language
   httparty (~> 0.24.2)
   i18n-timezones
