@@ -15,6 +15,17 @@
 
 - Loomio uses the configured Sentry MCP connection for the self-hosted instance at `https://bugs.loomio.com` (organization slug: `loomio`). Use its Sentry tools to inspect or manage issues; do not use the generic Sentry CLI unless specifically asked.
 
+## Security review
+
+- Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests.
+- For anonymous polls, review the complete data flow rather than only the primary serializer. Check API responses, nested serializers, events and timelines, search indexes, live updates, notifications, mailers, CSV/JSON exports, backups, and background jobs.
+- Anonymity requires preventing correlation, not only removing `participant_id`. Check exact and relative timestamps, stable record IDs, response ordering, event actors, sequence metadata, invitation metadata, revision counts, and any other fields that can join a named participant list to an individual ballot.
+- Review each access boundary separately: signed-out/public users, ordinary members, poll participants, coordinators/group administrators, instance administrators, and operators with database or backup access. Do not assume that authorization at one endpoint protects related endpoints or exports.
+- Test both direct disclosure and composition attacks. Individually harmless endpoints can reveal sensitive information when records are joined by IDs, timestamps, ordering, or shared events.
+- Exercise permission failures as well as successful paths. Include public/private groups, direct and group topics, active and closed polls, each `hide_results` mode, anonymous and identified polls, quorum behavior, and administrator-only feature flags.
+- Review session security when changing authentication or authorization: session creation, rotation, expiry, revocation, logout, impersonation, CSRF protection, token scope, cookie flags, and cleanup of dependent session records.
+- Prefer defense in depth at storage and shared serialization boundaries. Avoid relying only on UI hiding, closing-time mutation, or one controller guard to protect sensitive data.
+
 ## Code style
 
 - Take selective lessons from [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md), especially naming:
