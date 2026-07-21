@@ -229,7 +229,7 @@ export default
         @click="startNewPoll"
       )
         span(v-t="'polls_panel.new_poll'")
-    v-card(outlined)
+    v-card(variant="flat")
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)

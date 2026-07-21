@@ -170,7 +170,10 @@ class ApplicationController < ActionController::Base
     expires_now
     prevent_caching
     render Views::Application::Boot.new(
-      metadata: application_metadata, export: !!params[:export], bot: browser.bot?
+      metadata: application_metadata,
+      export: !!params[:export],
+      bot: browser.bot?,
+      theme_name: current_user.experiences['theme']
     ), status: status
   end
 end

@@ -316,10 +316,10 @@ function shouldSettleAnchorScroll() {
 <template lang="pug">
 .strand-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topic")
+    v-container.max-width-800#strand-page(v-if="topic")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
-      v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+      v-sheet.strand-card.thread-card.mb-8.pb-4.rounded
+        strand-list.px-8.py-4(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
 </template>

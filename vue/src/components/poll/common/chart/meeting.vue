@@ -93,7 +93,7 @@ export default {
 .poll-meeting-chart-table tbody tr:hover
   background-color: #EEE
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .poll-meeting-chart-table tbody tr:hover
     background-color: #333
 
@@ -112,10 +112,10 @@ export default {
   height: 24px
   border-radius: 2px
 .poll-meeting-chart__cell--yes
-  background-color: #00D177
+  background-color: #22B866
 
 .poll-meeting-chart__cell--maybe
-  background-color: #F6A82B
+  background-color: #F5C401
 
 .poll-meeting-chart__meeting-time
   font-family: 'Roboto Mono'

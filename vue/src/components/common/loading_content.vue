@@ -36,7 +36,7 @@ const lines = computed(() => new Array(props.lineCount || 3));
 .loading-content__background
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .loading-content__background
     background: linear-gradient(to right, #222 8%, #333 18%, #222 33%)
 

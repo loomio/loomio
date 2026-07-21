@@ -122,7 +122,6 @@ v-main
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(
-      color="primary"
       v-model="activeTab"
       background-color="transparent"
       center-active

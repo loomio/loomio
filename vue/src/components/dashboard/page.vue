@@ -85,7 +85,7 @@ v-main
 
     dashboard-polls-panel
 
-    v-card.mb-3(v-if='!dashboardLoaded')
+    v-card.mb-3(v-if='!dashboardLoaded' variant="flat")
       v-list(lines="two")
         v-list-subheader(v-t="'dashboard_page.recent_threads'")
         loading-content(
@@ -100,7 +100,7 @@ v-main
           .dashboard-page__no-threads(v-if='!noGroups')
             span(v-t="'dashboard_page.no_threads.show_all'")
         .dashboard-page__collections(v-if='topics.length')
-          v-card.mb-3.thread-preview-collection__container.thread-previews-container
+          v-card.mb-3.thread-preview-collection__container.thread-previews-container(variant="flat")
             v-list.thread-previews(lines="two")
               v-list-subheader(v-t="'dashboard_page.recent_threads'")
               thread-preview(

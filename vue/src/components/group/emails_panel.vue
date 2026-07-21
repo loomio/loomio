@@ -102,7 +102,7 @@ export default
 .group-emails-panel
   h2.ma-4.headline(v-t="'email_to_group.unreleased_emails'")
   loading(v-if="!group")
-  v-card.mt-4(outlined v-if="group")
+  v-card.mt-4(variant="outlined" v-if="group")
     v-alert.text-center.text-medium-emphasis(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
     v-list(v-else lines="two")
       v-list-item(v-for="email in emails" :key="email.id")
@@ -117,7 +117,7 @@ export default
 
   template(v-if="group && aliases.length")
     h2.ma-4.headline(v-t="'email_to_group.email_aliases'")
-    v-card.mt-4(outlined)
+    v-card.mt-4(variant="outlined")
       v-list(lines="two")
         v-list-item(v-for="alias in aliases" :key="alias.id")
           v-list-item-title

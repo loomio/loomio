@@ -46,7 +46,10 @@ class Views::Application::Layout < Views::Application::Component
     end
     meta content: AppConfig.theme[:site_name], property: "og:site_name"
     meta content: "website", property: "og:type"
+    link rel: "icon", type: "image/png", sizes: "16x16", href: AppConfig.theme[:favicon16_src]
+    link rel: "icon", type: "image/png", sizes: "32x32", href: AppConfig.theme[:favicon32_src]
     link rel: "icon", href: AppConfig.theme[:icon_src]
+    link rel: "apple-touch-icon", href: AppConfig.theme[:touch_icon_src]
     stylesheet_link_tag "vtfy/themeauto"
     raw vue_css_includes.html_safe
     unless @export || @bot

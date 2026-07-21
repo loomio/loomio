@@ -158,8 +158,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
       v-list-item(lines="two")
         template(v-slot:prepend)
           template(v-if="hasOptionIcon")
-            v-avatar(size="48")
-              img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
+            v-avatar.poll-common-vote-form__option-icon(size="48")
+              img(aria-hidden="true" :src="'/img/' + option.icon + '.svg?v=20260721'")
           template(v-else)
             common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
             common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
@@ -214,6 +214,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
 .poll-common-vote-form__button.voting-enabled label
   cursor: pointer
+
+.poll-common-vote-form__option-icon
+  z-index: 1
 
 .poll-common-vote-form__button label
   input

@@ -37,7 +37,7 @@ export default {
   border-radius: 100%
   background-color: #fff
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .poll-common-stance-icon
     background-color: #000
 

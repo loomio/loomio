@@ -80,6 +80,7 @@ const socket = ref(null);
 const count = ref(0);
 const editor = ref(null);
 const editorContentRef = ref(null);
+const focused = ref(false);
 const expanded = ref(false);
 const linkUrl = ref("");
 const iframeUrl = ref("");
@@ -459,6 +460,12 @@ onMounted(() => {
     onUpdate: () => {
       if (props.maxLength) { checkLength(); }
     },
+    onFocus: () => {
+      focused.value = true;
+    },
+    onBlur: () => {
+      focused.value = false;
+    },
     onCreate: () => {
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
@@ -508,16 +515,22 @@ defineExpose({
 
 <template lang="pug">
 div.mb-2
-  .v-input.v-input--density-default.editor(v-if="editor")
-    .v-input-control
-      .v-field.v-field--active.v-field--variant-filled
-        .v-field__overlay
-
-        .v-field__field(style="display: block")
-          label.v-label.v-field-label.v-field-label--floating(v-if="label" aria-hidden="true")
-            span {{label}}
-          editor-content.html-editor__textarea.mx-4(v-if="editor" :class="{'mt-6': label, 'mt-2': !label}" ref="editorContentRef" :editor='editor').lmo-markdown-wrapper
-        .v-field__outline
+  .v-input--density-default.editor(v-if="editor")
+    .v-input__control
+      v-field(
+        active
+        :dirty="charCount() > 0"
+        :focused="focused"
+        :label="label"
+        variant="outlined"
+        @click="editor.commands.focus()"
+      )
+        template(v-slot:default="{ props: fieldProps }")
+          editor-content.html-editor__textarea.lmo-markdown-wrapper(
+            v-bind="fieldProps"
+            ref="editorContentRef"
+            :editor="editor"
+          )
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
         v-btn(v-bind="btnProps" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
@@ -691,7 +704,7 @@ img.collaboration-cursor__avatar
   word-break: normal
   z-index: 100
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .collaboration-cursor__caret
     border-left: 1px solid #ddd
 
@@ -748,7 +761,7 @@ img.collaboration-cursor__avatar
   pointer-events: none
   height: 0
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .ProseMirror p.is-editor-empty:first-child::before
     color: rgba(255,255,255,0.333)
 
@@ -786,6 +799,7 @@ progress::-webkit-progress-value
 
 .html-editor__textarea .ProseMirror
   cursor: text
+  width: 100%
   padding: 4px 0px
   margin: 4px 0px
   outline: none
@@ -832,7 +846,7 @@ li[data-done="true"]
   > .todo-checkbox::before
     position: relative
     top: -6px
-    color: rgb(var(--v-theme-secondary))
+    color: rgb(var(--v-theme-primary))
     font-size: 1.5rem
     content: "✓"
 

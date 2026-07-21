@@ -114,7 +114,7 @@ div.lmo-markdown-wrapper(@click="onClick")
   a
     color: rgb(var(--v-theme-anchor))
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .lmo-markdown-wrapper
     color: rgba(255,255,255,1)
     hr

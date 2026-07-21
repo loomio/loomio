@@ -11,13 +11,6 @@ export default function(callback) {
 
     AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    ['shortcut icon'].forEach(function(name) {
-      const link = document.createElement('link');
-      link.rel = name;
-      link.href = appConfig.theme.icon_src;
-      return document.getElementsByTagName('head')[0].appendChild(link);
-    });
-
     forEach(Records, function(recordInterface, k) {
       const model = recordInterface.model
       if (model && appConfig.permittedParams[snakeCase(model.singular)]) {

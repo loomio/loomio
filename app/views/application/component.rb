@@ -36,11 +36,13 @@ class Views::Application::Component < Phlex::HTML
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
   end
 
-  def logo_svg
+  def logo_svg(style: nil)
     return nil unless AppConfig.theme[:app_logo_src].ends_with?('.svg')
 
     path = Rails.root.join('public', AppConfig.theme[:app_logo_src].gsub(Regexp.new("^/"), ''))
-    File.read(path).html_safe
+    svg = File.read(path)
+    svg = svg.sub('<svg ', %(<svg style="#{style}" )) if style
+    svg.html_safe
   end
 
   def time_ago(time, current_user)

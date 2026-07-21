@@ -78,7 +78,7 @@ export default {
             v-if="col == 'chart' && poll.chartType == 'bar'"
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
-            div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
+            div.rounded.bg-primary(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px'}")
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             template(v-if="realOption(option).meaning")
               v-tooltip(right)

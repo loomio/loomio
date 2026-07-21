@@ -94,7 +94,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
         :comment="newComment"
         @comment-submitted="resetComment")
     template(v-else)
-      v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
+      v-tabs.activity-panel__actions.mb-3(grow v-model="currentAction")
         v-tab(value='add-comment')
           span(v-t="'comment_form.add_a_comment'")
         v-tab.activity-panel__add-poll(value='add-poll')

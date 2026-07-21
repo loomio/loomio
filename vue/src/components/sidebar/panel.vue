@@ -52,6 +52,8 @@ const greySidebarLogo = computed(() =>
 );
 const activeGroup = computed(() => group.value ? [group.value.id] : []);
 const logoUrl = computed(() => AppConfig.theme.app_logo_src);
+const logoInline = computed(() => logoUrl.value === '/brand/logo-current-color.svg');
+const logoSvg = ref('');
 const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
 const showNewThreadButton = computed(() => AppConfig.features.app.new_thread_button);
 
@@ -182,6 +184,12 @@ onMounted(() => {
   updateSessionState();
   openIfPinned();
   if (open.value) fetchOnce();
+  if (logoInline.value) {
+    fetch(logoUrl.value)
+      .then(response => response.ok ? response.text() : '')
+      .then(svg => { logoSvg.value = svg; })
+      .catch(() => {});
+  }
 });
 
 watch(organization, () => { updateGroups() });
@@ -192,7 +200,7 @@ watch(open, (val) => {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
+v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" color="drawer")
   sidebar-settings(
     v-if="showSettings"
     @closeSettings="showSettings = false"
@@ -260,10 +268,25 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:append)
     v-divider
     v-layout.mx-13.my-3(column align-center style="max-height: 64px" :class="{greySidebarLogo: greySidebarLogo}")
-      v-img(:src="logoUrl")
+      .sidebar__loomio-logo.text-accent(v-if="logoInline && logoSvg" v-html="logoSvg")
+      v-img(v-else :src="logoUrl")
 
 </template>
 <style lang="sass">
+.sidebar__loomio-logo
+  display: block
+  width: 100%
+  max-width: 100%
+  min-width: 0
+  overflow: hidden
+  line-height: 0
+
+  svg
+    display: block
+    width: 100% !important
+    max-width: 100%
+    height: auto !important
+
 .greySidebarLogo
   filter: saturate(99999%) grayscale(1)
 </style>

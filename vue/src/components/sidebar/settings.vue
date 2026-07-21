@@ -45,19 +45,11 @@ v-list(nav density="comfortable")
 
   v-list-item(@click="setTheme('light')" :title="$t('user_dropdown.light')")
     template(v-slot:prepend)
-      common-icon(name="mdi-white-balance-sunny" color="#DCA034")
-
-  v-list-item(@click="setTheme('lightBlue')" :title="$t('user_dropdown.light_blue')")
-    template(v-slot:prepend)
-      common-icon(name="mdi-white-balance-sunny" color="#658AE7")
+      common-icon(name="mdi-white-balance-sunny" color="#F5C401")
 
   v-list-item(@click="setTheme('dark')" :title="$t('user_dropdown.dark')")
     template(v-slot:prepend)
-      common-icon(name="mdi-weather-night" color="#DCA034")
-
-  v-list-item(@click="setTheme('darkBlue')" :title="$t('user_dropdown.dark_blue')")
-    template(v-slot:prepend)
-      common-icon(name="mdi-weather-night" color="#658AE7")
+      common-icon(name="mdi-weather-night" color="#F5C401")
 
   v-divider
   v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")

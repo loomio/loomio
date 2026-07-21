@@ -13,6 +13,18 @@ import { useTheme } from 'vuetify';
 
 import SidebarPanel from '@/components/sidebar/panel';
 
+const themeNameNormalized = (name) => ['dark', 'darkBlue'].includes(name) ? 'dark' : 'light';
+const themeColorsApply = (theme, name, overrides) => {
+  const colors = theme.themes.value[name].colors;
+
+  Object.entries(overrides).forEach(([key, value]) => {
+    if (value) { colors[key] = value; }
+  });
+
+  colors.appbar ||= colors.background;
+  colors.drawer ||= colors.surface;
+};
+
 export default {
   components: [SidebarPanel],
   mixins: [AuthModalMixin],
@@ -24,26 +36,14 @@ export default {
   created() {
     const theme = useTheme();
 
-    Object.entries(AppConfig.theme.light).forEach(([key, value]) => {
-      if (value) { theme.themes.value.light.colors[key] = value; }
-    });
-
-    Object.entries(AppConfig.theme.lightblue).forEach(([key, value]) => {
-      if (value) { theme.themes.value.lightBlue.colors[key] = value; }
-    });
-
-    Object.entries(AppConfig.theme.dark).forEach(([key, value]) => {
-      if (value) { theme.themes.value.dark.colors[key] = value; }
-    });
-
-    Object.entries(AppConfig.theme.darkblue).forEach(([key, value]) => {
-      if (value) { theme.themes.value.darkBlue.colors[key] = value; }
-    });
+    themeColorsApply(theme, 'light', AppConfig.theme.light);
+    themeColorsApply(theme, 'dark', AppConfig.theme.dark);
 
     if (Session.user().experiences.theme != null) {
-      theme.change(Session.user().experiences['theme']);
+      theme.change(themeNameNormalized(Session.user().experiences['theme']));
     } else {
-      theme.change( (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme )
+      const defaultTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme;
+      theme.change(themeNameNormalized(defaultTheme));
     }
   },
 

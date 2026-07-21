@@ -32,57 +32,51 @@ class AppConfig
 
   def self.theme
     brand_colors = {
-      gold: "#DCA034",
-      ink: "#293C4A",
-      wellington: "#7F9EA0",
-      sunset: "#E4C2B9",
-      sky: "#658AE7",
-      rock: "#C77C3B",
+      yellow50: "#FFF7E0",
+      yellow425: "#F5C401",
+      blue50: "#EBF4FF",
+      blue400: "#1F87FF",
+      blue500: "#0070E0",
+      green50: "#EDFAF3",
+      green400: "#22B866",
+      green600: "#0D7A3C",
+      red50: "#FEF1F1",
+      red400: "#F05252",
+      red500: "#D43030",
+      grey50: "#F5F5F5",
+      grey100: "#E8E8E8",
+      grey700: "#212121",
+      grey800: "#121212",
       white: "#FFFFFF"
     }
-
-    # here are some useful variations on these colours
-    # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
     default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:4444"
 
     light = {
+      background: ENV['THEME_LIGHT_BACKGROUND'],
+      surface: ENV['THEME_LIGHT_SURFACE'],
+      appbar: ENV['THEME_LIGHT_APPBAR'],
+      drawer: ENV['THEME_LIGHT_DRAWER'],
       primary: ENV['THEME_LIGHT_PRIMARY'],
-      info: ENV['THEME_LIGHT_INFO'],
-      error: ENV['THEME_LIGHT_ERROR'],
-      warning: ENV['THEME_LIGHT_WARNING'],
-      success: ENV['THEME_LIGHT_SUCCESS'],
+      accent: ENV['THEME_LIGHT_ACCENT'],
       anchor: ENV['THEME_LIGHT_ANCHOR'],
-      background: ENV['THEME_LIGHT_BACKGROUND']
-    }
-
-    lightblue = {
-      primary: ENV['THEME_LIGHTBLUE_PRIMARY'],
-      info: ENV['THEME_LIGHTBLUE_INFO'],
-      error: ENV['THEME_LIGHTBLUE_ERROR'],
-      warning: ENV['THEME_LIGHTBLUE_WARNING'],
-      success: ENV['THEME_LIGHTBLUE_SUCCESS'],
-      anchor: ENV['THEME_LIGHTBLUE_ANCHOR'],
-      background: ENV['THEME_LIGHTBLUE_BACKGROUND']
+      info: ENV['THEME_LIGHT_INFO'],
+      success: ENV['THEME_LIGHT_SUCCESS'],
+      error: ENV['THEME_LIGHT_ERROR'],
+      warning: ENV['THEME_LIGHT_WARNING']
     }
 
     dark = {
+      background: ENV['THEME_DARK_BACKGROUND'],
+      surface: ENV['THEME_DARK_SURFACE'],
+      appbar: ENV['THEME_DARK_APPBAR'],
+      drawer: ENV['THEME_DARK_DRAWER'],
       primary: ENV['THEME_DARK_PRIMARY'],
-      info: ENV['THEME_DARK_INFO'],
-      error: ENV['THEME_DARK_ERROR'],
-      warning: ENV['THEME_DARK_WARNING'],
-      success: ENV['THEME_DARK_SUCCESS'],
+      accent: ENV['THEME_DARK_ACCENT'],
       anchor: ENV['THEME_DARK_ANCHOR'],
-      background: ENV['THEME_DARK_BACKGROUND']
-    }
-
-    darkblue = {
-      primary: ENV['THEME_DARKBLUE_PRIMARY'],
-      info: ENV['THEME_DARKBLUE_INFO'],
-      error: ENV['THEME_DARKBLUE_ERROR'],
-      warning: ENV['THEME_DARKBLUE_WARNING'],
-      success: ENV['THEME_DARKBLUE_SUCCESS'],
-      anchor: ENV['THEME_DARKBLUE_ANCHOR'],
-      background: ENV['THEME_DARKBLUE_BACKGROUND']
+      info: ENV['THEME_DARK_INFO'],
+      success: ENV['THEME_DARK_SUCCESS'],
+      error: ENV['THEME_DARK_ERROR'],
+      warning: ENV['THEME_DARK_WARNING']
     }
 
     {
@@ -95,24 +89,27 @@ class AppConfig
       canonical_host: ENV['CANONICAL_HOST'],
       reply_hostname: ENV['REPLY_HOSTNAME'],
       help_url: ENV.fetch('HELP_URL', 'https://help.loomio.com/'),
-      icon_src: ENV.fetch('THEME_ICON_SRC', "/brand/icon_gold_150h.png"),
-      app_logo_src: ENV.fetch('THEME_APP_LOGO_SRC', "/brand/logo_gold.svg"),
+      icon_src: ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent.svg"),
+      favicon16_src: ENV.fetch('THEME_FAVICON_16_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-16.png")),
+      favicon32_src: ENV.fetch('THEME_FAVICON_32_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-32.png")),
+      touch_icon_src: ENV.fetch('THEME_TOUCH_ICON_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-256.png")),
+      icon192_src: ENV.fetch('THEME_ICON_192_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-192.png")),
+      icon512_src: ENV.fetch('THEME_ICON_512_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-512.png")),
+      app_logo_src: ENV.fetch('THEME_APP_LOGO_SRC', "/brand/logo-current-color.svg"),
       saml_login_provider_name: ENV.fetch('SAML_LOGIN_PROVIDER_NAME', 'SAML'),
       oauth_login_provider_name: ENV.fetch('OAUTH_LOGIN_PROVIDER_NAME', 'OAUTH'),
       # used in emails
-      email_header_logo_src: ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC', "/brand/logo_gold_96h.png"),
-      email_footer_logo_src: ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC', "/brand/logo_gold_48h.png"),
-      primary_color: ENV.fetch('THEME_PRIMARY_COLOR', brand_colors[:sky]),
-      accent_color: ENV.fetch('THEME_ACCENT_COLOR', brand_colors[:gold]),
+      email_header_logo_src: ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC', "/brand/logo-yellow-96h.png"),
+      email_footer_logo_src: ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC', "/brand/logo-yellow-48h.png"),
+      primary_color: ENV.fetch('THEME_PRIMARY_COLOR', brand_colors[:blue500]),
+      accent_color: ENV.fetch('THEME_ACCENT_COLOR', brand_colors[:yellow425]),
       text_on_primary_color: ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR', '#ffffff'),
-      text_on_accent_color: ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR', '#ffffff'),
+      text_on_accent_color: ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR', brand_colors[:grey700]),
       default_invitation_message: ENV['THEME_DEFAULT_INVITATION_MESSAGE'],
       default_dark_theme: ENV.fetch('THEME_DEFAULT_DARK_THEME', 'dark'),
       default_light_theme: ENV.fetch('THEME_DEFAULT_LIGHT_THEME', 'light'),
       light: light,
-      dark: dark,
-      lightblue: lightblue,
-      darkblue: darkblue
+      dark: dark
     }
   end
 
