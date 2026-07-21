@@ -91,6 +91,8 @@
     "yaml": "^2.9.0"
   },
   "overrides": {
+    "form-data": "^4.0.6",
+    "piscina": "^4.9.3",
     "@originjs/vite-plugin-commonjs": {
       "esbuild": "^0.25.0"
     },
