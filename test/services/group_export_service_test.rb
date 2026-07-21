@@ -142,6 +142,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Group.where(id: data[:another_group].id).delete_all
     Group.where(id: group_ids).delete_all
     Identity.where(user_id: [admin_id, member_id, alien_id]).delete_all
+    Session.where(user_id: [admin_id, member_id, alien_id]).delete_all
     User.where(id: [admin_id, member_id, alien_id]).delete_all
 
     GroupExportService.import(filename)
