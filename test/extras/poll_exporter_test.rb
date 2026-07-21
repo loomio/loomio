@@ -100,6 +100,24 @@ class PollExporterTest < ActiveSupport::TestCase
     assert_equal 'true', vote_row[headers.index('delegate')]
   end
 
+  test "to_csv hides voter identity and timestamps for anonymous polls" do
+    @poll.update!(anonymous: true)
+    stance = @poll.stances.latest.where.not(participant_id: nil).first
+
+    rows = CSV.parse(@exporter.to_csv)
+    votes_index = rows.index(['votes'])
+    headers = rows[votes_index + 1]
+    vote_rows = rows[(votes_index + 2)..]
+    vote_row = vote_rows.find { |row| row[headers.index('id')] == stance.id.to_s }
+
+    assert_nil vote_row[headers.index('voter_id')]
+    assert_nil vote_row[headers.index('voter_name')]
+    assert_nil vote_row[headers.index('member_title')]
+    assert_nil vote_row[headers.index('delegate')]
+    assert_nil vote_row[headers.index('created_at')]
+    assert_nil vote_row[headers.index('updated_at')]
+  end
+
   test "to_csv does not use member titles or delegate status from another group" do
     stance = @poll.stances.latest.first
     membership = @group.membership_for(stance.participant)

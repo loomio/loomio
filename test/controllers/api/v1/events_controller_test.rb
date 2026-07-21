@@ -30,6 +30,30 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
+  test "anonymous stance events hide timestamps from index and timeline" do
+    poll = PollService.create(params: {
+      title: 'Anonymous poll',
+      poll_type: 'proposal',
+      topic_id: @discussion.topic_id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: @admin)
+    stance = poll.stances.find_by!(participant_id: @user.id)
+    event = Event.create!(kind: 'stance_created', eventable: stance, topic: @discussion.topic, user: @user)
+
+    sign_in @user
+    get :index, params: { discussion_id: @discussion.id }, format: :json
+    serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == event.id }
+    assert_not serialized_event.key?('actor_id')
+    assert_not serialized_event.key?('created_at')
+
+    get :timeline, params: { discussion_id: @discussion.id }, format: :json
+    timeline_record = JSON.parse(response.body).find { |record| record[1] == event.sequence_id }
+    assert_nil timeline_record[2]
+    assert_nil timeline_record[3]
+  end
+
   test "index serializes without record cache fallbacks" do
     sign_in @user
     CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)

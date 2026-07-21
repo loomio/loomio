@@ -45,6 +45,25 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
+  test "does not return author or timestamp metadata for anonymous stances" do
+    @poll.update!(anonymous: true)
+    stance = @poll.stances.build(participant: @user, latest: true)
+    stance.reason = 'findanonymousstance'
+    stance.cast_at = 2.days.ago
+    stance.stance_choices.build(poll_option: @poll.poll_options.first)
+    stance.save!
+    Stance.rebuild_pg_search_documents
+
+    sign_in @user
+    get :index, params: { query: 'findanonymousstance' }
+
+    result = JSON.parse(response.body)['search_results'].find { |record| record['searchable_id'] == stance.id }
+    assert_not_nil result
+    assert_not result.key?('author_id')
+    assert_not result.key?('author_name')
+    assert_not result.key?('authored_at')
+  end
+
   test "returns group filtered records" do
     sign_in @user
 

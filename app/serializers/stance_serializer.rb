@@ -30,11 +30,31 @@ class StanceSerializer < ApplicationSerializer
     object.cast_at || object.created_at
   end
 
+  def include_cast_at?
+    !poll.anonymous?
+  end
+
+  def include_created_at?
+    !poll.anonymous?
+  end
+
+  def include_updated_at?
+    !poll.anonymous?
+  end
+
+  def include_order_at?
+    !poll.anonymous?
+  end
+
   def option_scores
     if ENV['JIT_POLL_COUNTS'] && object.option_scores == {} && object.cast_at
       object.update_option_scores!
     end
     object.option_scores
+  end
+
+  def include_none_of_the_above?
+    include_results?
   end
 
   def include_option_scores?
