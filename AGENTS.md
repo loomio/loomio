@@ -67,6 +67,14 @@ success messages).
 - Add a new Markdown file under `docs/user_manual/changelog/` only for new features, changes to behaviour that users would notice, or fixes for long-standing bugs. Do not add changelog entries for minor or routine bug fixes.
 - Name changelog files with the current date and a short feature slug, for example `2026-07-07_tags_improvements.md`. Write for Loomio power users: explain what changed, who can use it, permission effects, and visible workflow or interface changes without describing internal implementation details.
 
+## Release notes
+
+- Store release notes under `docs/release_notes/` using an ISO date followed by the Git tag version, for example `2026-07-22_v3.1.0.md`.
+- When drafting a release, update `lib/version.rb` to the same version number without the `v` prefix.
+- Summarize changes that affect users, permissions, security, performance, deployment, APIs, or operator workflows. Omit routine dependency updates and purely internal refactors unless they require action or materially affect reliability.
+- Include required migration and upgrade steps, exact commands, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
+- Verify release-note claims against merged code, tests, pull requests, and user-manual changelog entries. Resolve placeholder links before publishing the release.
+
 ## i18n / Localization
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
