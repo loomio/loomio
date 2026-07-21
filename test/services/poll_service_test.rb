@@ -190,6 +190,17 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not_nil poll.reload.closed_at
   end
 
+  test "closing an anonymous poll removes voter identity from stances and events" do
+    poll = create_poll(anonymous: true)
+    stance = poll.stances.find_by!(participant_id: @user.id)
+    event = Event.create!(kind: 'stance_created', eventable: stance, user: @user)
+
+    PollService.close(poll: poll, actor: @user)
+
+    assert_nil stance.reload.participant_id
+    assert_nil event.reload.user_id
+  end
+
   test "does not allow change from anonymous to normal" do
     poll = create_poll
     poll.update!(anonymous: true)

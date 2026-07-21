@@ -40,6 +40,9 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
       closing_at: 1.day.from_now
     }, actor: @admin)
     stance = poll.stances.find_by!(participant_id: @user.id)
+    published_event = Events::StanceCreated.publish!(stance)
+    assert_nil published_event.user_id
+
     event = Event.create!(kind: 'stance_created', eventable: stance, topic: @discussion.topic, user: @user)
 
     sign_in @user

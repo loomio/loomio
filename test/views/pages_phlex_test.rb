@@ -344,6 +344,28 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Stances"
   end
 
+  test "group exports hide anonymous stance identity and timestamps" do
+    poll = PollService.create(params: {
+      title: 'Anonymous export poll',
+      poll_type: 'proposal',
+      topic_id: @discussion.topic_id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: @user)
+    stance = poll.stances.find_by!(participant_id: @user.id)
+
+    rows = CSV.parse(GroupExporter.new(@group).to_csv)
+    stances_index = rows.index { |row| row.first&.start_with?('Stances') }
+    headers = rows[stances_index + 1]
+    stance_row = rows[(stances_index + 2)..].find { |row| row[headers.index('Id')] == stance.id.to_s }
+
+    assert_nil stance_row[headers.index('Participant')]
+    assert_nil stance_row[headers.index('Author name')]
+    assert_nil stance_row[headers.index('Created at')]
+    assert_nil stance_row[headers.index('Updated at')]
+  end
+
   test "group csv export uses topic ids for topicable records" do
     comment = Comment.new(parent: @discussion, body: "Exported comment")
     CommentService.create(comment: comment, actor: @user)

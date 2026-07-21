@@ -264,7 +264,24 @@ class GroupExportService
     table = record.class.table_name
     return if ids[table].include?(record.id)
     ids[table] << record.id
-    file.puts({table: table, record: record.as_json(JSON_PARAMS[table])}.to_json)
+    file.puts({table: table, record: export_record(record, table)}.to_json)
+  end
+
+  def self.export_record(record, table)
+    json = record.as_json(JSON_PARAMS[table])
+
+    case record
+    when Stance
+      json.merge!('participant_id' => nil, 'cast_at' => nil, 'created_at' => nil, 'updated_at' => nil, 'revoked_at' => nil, 'redacted_at' => nil) if record.poll.anonymous?
+    when StanceChoice
+      json.merge!('created_at' => nil, 'updated_at' => nil) if record.poll.anonymous?
+    when Event
+      if record.eventable.is_a?(Stance) && record.eventable.poll.anonymous?
+        json.merge!('user_id' => nil, 'created_at' => nil, 'updated_at' => nil)
+      end
+    end
+
+    json
   end
 
   def self.import(filename_or_url, reset_keys: false)

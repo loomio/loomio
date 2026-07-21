@@ -26,6 +26,12 @@ class GroupExporter
     @field_names = {}
   end
 
+  def value_for(model, field)
+    return nil if model.is_a?(Stance) && model.poll.anonymous? && %w[participant_id author_name created_at updated_at].include?(field)
+
+    model.send(field)
+  end
+
   def to_csv(opts = {})
     CSV.generate(**opts) do |csv|
       csv << ["Export for #{@group.full_name}"]
@@ -51,7 +57,7 @@ class GroupExporter
   def csv_append(csv:, fields:, models:, title:)
     csv << ["#{title} (#{models.length})"]
     csv << fields.map(&:humanize)
-    models.each { |model| csv << fields.map { |field| model.send(field) } }
+    models.each { |model| csv << fields.map { |field| value_for(model, field) } }
     csv << []
   end
 end

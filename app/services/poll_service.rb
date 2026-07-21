@@ -520,7 +520,11 @@ class PollService
     StanceReceipt.where(poll_id: poll.id).delete_all
     StanceReceipt.insert_all build_receipts(poll)
 
-    poll.stances.update_all(participant_id: nil) if poll.anonymous
+    if poll.anonymous
+      stance_ids = poll.stances.select(:id)
+      Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
+      poll.stances.update_all(participant_id: nil)
+    end
 
     if poll.topic && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
