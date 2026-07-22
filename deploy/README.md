@@ -87,6 +87,7 @@ Copy the environment template:
 
 ```sh
 cp env_template .env
+chmod 600 .env
 ```
 
 Generate the required secrets using the Loomio image:
@@ -188,35 +189,6 @@ A PostgreSQL shell to inspect the database:
 
 ```sh
 docker exec -ti loomio-db su - postgres -c 'psql loomio_production'
-```
-
-## Backups
-
-The default `docker-compose.yml` includes automatic backups with [prodrigestivill/docker-postgres-backup-local](https://github.com/prodrigestivill/docker-postgres-backup-local). Set up the backup directory permissions before starting the services:
-
-```sh
-mkdir -p pgdumps
-chown -R 999:999 pgdumps
-```
-
-You can test that the automatic backup permissions are correct with this command:
-
-```sh
-docker compose run --rm pgbackups /backup.sh
-```
-
-However, sometimes you just want to make or restore an SQL snapshot directly.
-
-Dump SQL:
-
-```sh
-docker exec -ti loomio-db su - postgres -c 'pg_dump -c loomio_production' > loomio_production.sql
-```
-
-Restore SQL:
-
-```sh
-cat loomio_production.sql | docker exec -i loomio-db su - postgres -c 'psql loomio_production'
 ```
 
 ## Upgrading

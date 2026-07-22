@@ -4,7 +4,7 @@ services:
   nginx-proxy:
     image: nginxproxy/nginx-proxy:${NGINX_PROXY_CONTAINER_TAG}
     labels:
-      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true"
+      - "com.github.nginx-proxy.nginx"
     networks:
       - main
     ports:
@@ -14,7 +14,7 @@ services:
       - source: nginx-custom
         target: /etc/nginx/conf.d/custom.conf
     volumes:
-      - certs:/etc/nginx/certs
+      - certs:/etc/nginx/certs:ro
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -22,6 +22,8 @@ services:
 
   nginx-proxy-acme:
     image: nginxproxy/acme-companion:${ACME_COMPANION_CONTAINER_TAG}
+    environment:
+      - DEFAULT_EMAIL=${SUPPORT_EMAIL}
     networks:
       - main
     depends_on:
@@ -45,7 +47,7 @@ services:
     env_file: ./.env
     environment:
       - VIRTUAL_HOST=${CANONICAL_HOST}
-      - LETSENCRYPT_HOST=${CANONICAL_HOST}
+      - ACME_HOST=${CANONICAL_HOST}
     volumes:
       - ./uploads:/loomio/public/system
       - ./storage:/loomio/storage
@@ -90,7 +92,6 @@ services:
     env_file: ./.env
     volumes:
       - ./pgdata:/pgdata
-      - ./pgdumps:/pgdumps
     environment:
      - PGDATA=/pgdata
 
@@ -133,31 +134,8 @@ services:
     environment:
       - TASK=hocuspocus
       - VIRTUAL_HOST=hocuspocus.${CANONICAL_HOST}
-      - LETSENCRYPT_HOST=hocuspocus.${CANONICAL_HOST}
+      - ACME_HOST=hocuspocus.${CANONICAL_HOST}
 
-  pgbackups:
-    image: prodrigestivill/postgres-backup-local:${POSTGRES_BACKUP_CONTAINER_TAG}
-    restart: always
-    user: postgres:postgres
-    networks:
-      - main
-    volumes:
-      - ./pgdumps:/backups
-    links:
-      - db
-    depends_on:
-      - db
-    environment:
-      - POSTGRES_HOST=db
-      - POSTGRES_DB=loomio_production
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_EXTRA_OPTS=-Z6 --schema=public --blobs
-      - SCHEDULE=@daily
-      - BACKUP_KEEP_DAYS=7
-      - BACKUP_KEEP_WEEKS=1
-      - BACKUP_KEEP_MONTHS=1
-      - HEALTHCHECK_PORT=8080
 networks:
   main:
 

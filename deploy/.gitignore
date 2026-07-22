@@ -1,0 +1,8 @@
+.env
+files/
+import/
+pgdata/
+plugins/
+storage/
+tmp/
+uploads/
