@@ -453,7 +453,6 @@ Rails.application.routes.draw do
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/crowdfunding'                      => 'application#crowdfunding'
   get '/brand'                             => 'application#brand'
-  get '/sitemap.xml' => 'application#sitemap'
 
 
   Identity::PROVIDERS.each do |provider|

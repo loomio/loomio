@@ -27,8 +27,6 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   skip_before_action :verify_authenticity_token, only: :bug_tunnel
-  caches_page :sitemap
-
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end
@@ -56,19 +54,6 @@ class ApplicationController < ActionController::Base
       redirect_to dashboard_path
     else
       authenticate_user!
-    end
-  end
-
-  def sitemap
-    @entries = []
-    return unless AppConfig.app_features[:sitemap]
-
-    Group.published.where(is_visible_to_public: true).each do |g|
-      @entries << [url_for(g), g.updated_at.to_date.iso8601]
-    end
-
-    Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').each do |d|
-      @entries << [url_for(d), d.topic.last_activity_at.to_date.iso8601]
     end
   end
 
