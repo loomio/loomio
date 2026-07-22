@@ -2,7 +2,7 @@
 
 To learn about or try Loomio, visit [Loomio.com](https://www.loomio.com).
 
-To setup your own Loomio instance see [loomio/loomio-deploy](https://github.com/loomio/loomio-deploy)
+To set up your own Loomio instance, see the [self-hosting deployment guide](deploy/README.md).
 
 If you'd like to report a bug, give us feedback, or contribute to Loomio, please open a Github issue.
 
