@@ -106,6 +106,7 @@ v-app.app-is-booted
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer
+  common-footer
   modal-launcher
   common-flash
 </template>

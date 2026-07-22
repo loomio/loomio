@@ -17,8 +17,6 @@ class ApplicationControllerTest < ActionController::TestCase
     get :index
 
     assert_equal 'noindex', response.headers['X-Robots-Tag']
-    assert_select "#loading-placeholder footer a[href='/about-loomio']"
-    assert_includes response.body, "v#{Version.current}"
   end
 
   test "allows indexing on configured self-hosted installations" do

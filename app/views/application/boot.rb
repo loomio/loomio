@@ -20,7 +20,6 @@ class Views::Application::Boot < Views::Application::Component
             else
               img(src: AppConfig.theme[:app_logo_src])
             end
-            render Views::Application::Footer.new
           end
         end
       end
@@ -72,11 +71,6 @@ class Views::Application::Boot < Views::Application::Component
           height: 100%;
           background-color: #f0f0f0;
           justify-content: center;
-        }
-
-        #loading-placeholder footer {
-          bottom: 1rem;
-          position: absolute;
         }
 
         @media (prefers-color-scheme: dark) {

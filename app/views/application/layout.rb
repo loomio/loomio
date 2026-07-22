@@ -68,6 +68,6 @@ class Views::Application::Layout < Views::Application::Component
   end
 
   def render_footer
-    render Views::Application::Footer.new(class_names: "v-footer theme--auto text-body-2")
+    render Views::Application::Footer.new(class_names: "v-footer flex-grow-0 theme--auto text-body-2")
   end
 end
