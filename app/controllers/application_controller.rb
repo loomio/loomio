@@ -80,6 +80,13 @@ class ApplicationController < ActionController::Base
     render Views::Application::Crowdfunding.new
   end
 
+  def about_loomio
+    render Views::Application::AboutLoomio.new(
+      canonical_url: about_loomio_url,
+      independently_operated: !ENV['LOOMIO_MANAGED_SERVER']
+    )
+  end
+
   def brand
     render Views::Application::Brand.new
   end
