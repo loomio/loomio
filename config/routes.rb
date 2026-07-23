@@ -453,7 +453,6 @@ Rails.application.routes.draw do
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/crowdfunding'                      => 'application#crowdfunding'
   get '/about-loomio'                      => 'application#about_loomio', as: :about_loomio
-  get '/brand'                             => 'application#brand'
 
 
   Identity::PROVIDERS.each do |provider|

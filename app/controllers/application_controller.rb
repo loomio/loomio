@@ -87,10 +87,6 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  def brand
-    render Views::Application::Brand.new
-  end
-
   def bug_tunnel
     raise "no sentry dsn" unless ENV['SENTRY_PUBLIC_DSN']
 
@@ -129,6 +125,7 @@ class ApplicationController < ActionController::Base
       format.html { boot_app(status: status) }
       format.json { render json: { error: message || @title }, root: false, status: status }
       format.xml { render xml: { error: message || @title }, status: status }
+      format.any { head status }
     end
   end
 
