@@ -281,6 +281,15 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "topic create explains when subscription does not allow guests" do
+    Subscription.for(@group).update!(allow_guests: false)
+
+    post :create, params: { topic_id: @discussion.topic_id, recipient_emails: ['jim@example.com'] }
+
+    assert_response :forbidden
+    assert_equal I18n.t("unauthorized.add_guests.all"), JSON.parse(response.body)["error"]
+  end
+
   test "topic create members can announce when permission enabled" do
     @group.update(members_can_announce: true)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)

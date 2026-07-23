@@ -1,5 +1,5 @@
 class Api::V1::SnorlaxBase < ActionController::Base
-  rescue_from(CanCan::AccessDenied)                    { |e| respond_with_standard_error e, 403 }
+  rescue_from(CanCan::AccessDenied)                    { |e| respond_with_access_denied e }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
@@ -270,7 +270,26 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def respond_with_standard_error(error, status)
     Rails.logger.error("API Error: #{error.class} - #{error.message}")
+    track_forbidden(error) if status == 403
     render json: { error: status }, root: false, status: status
+  end
+
+  def respond_with_access_denied(error)
+    Rails.logger.error("API Error: #{error.class} - #{error.message}")
+    track_forbidden(error)
+    render json: { error: error.message }, root: false, status: :forbidden
+  end
+
+  def track_forbidden(error)
+    Sentry.metrics.count(
+      "http.forbidden",
+      attributes: {
+        controller: controller_name,
+        action: action_name,
+        reason: error.class.name,
+        permission: error.respond_to?(:action) ? error.action.to_s : "unknown"
+      }
+    )
   end
 
   def respond_with_error(status, message = "error")
