@@ -10,6 +10,8 @@ class Views::Chatbot::Markdown::Stance < Views::Chatbot::Markdown::Base
   end
 
   def view_template
+    return if @event.eventable.results_hidden_until_closed?
+
     render_notification_text(@event, @poll)
     md "\n"
     render_title(@event.eventable.poll)

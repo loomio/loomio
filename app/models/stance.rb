@@ -160,6 +160,10 @@ class Stance < ApplicationRecord
     participant_id == user_id || poll.show_results?(voted: voted)
   end
 
+  def results_hidden_until_closed?
+    poll.hide_results == 'until_closed' && poll.closed_at.blank?
+  end
+
   def assign_option_scores
     self.option_scores = build_option_scores
   end

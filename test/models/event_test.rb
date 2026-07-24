@@ -284,6 +284,21 @@ class EventTest < ActiveSupport::TestCase
     assert event.send(:subscribed_recipients).empty?
   end
 
+  test "stance_created does not email subscribers or enqueue chatbots while results are hidden until close" do
+    @poll.update!(hide_results: 'until_closed')
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Hidden ballot reason', cast_at: Time.current)
+    event = nil
+    chatbot_jobs_before = ActiveJob::Base.queue_adapter.enqueued_jobs.count { |job| job[:job] == PublishChatbotEventWorker }
+
+    assert_no_difference -> { ActionMailer::Base.deliveries.count } do
+      event = Events::StanceCreated.publish!(stance)
+    end
+
+    assert_empty event.subscribed_recipients
+    chatbot_jobs_after = ActiveJob::Base.queue_adapter.enqueued_jobs.count { |job| job[:job] == PublishChatbotEventWorker }
+    assert_equal chatbot_jobs_before, chatbot_jobs_after
+  end
+
   test "poll_announced does not email people with topic reader volume quiet" do
     stance = Stance.create!(participant: @user_thread_normal, poll: @poll)
     TopicReader.find_or_create_by!(topic: @poll.topic, user: @user_thread_normal).set_volume!('quiet')
