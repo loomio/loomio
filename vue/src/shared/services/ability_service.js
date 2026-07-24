@@ -308,7 +308,6 @@ export default new class AbilityService {
   }
 
   canJoinGroup(group) {
-    if (group.subscription.plan === 'demo') { return false; }
     if (!this.canViewGroup(group) || group.membersInclude(Session.user())) { return false; }
     return (group.membershipGrantedUpon === 'request') || group.parentOrSelf().adminsInclude(Session.user());
   }
