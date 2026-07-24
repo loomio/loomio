@@ -108,14 +108,18 @@ class PollExporterTest < ActiveSupport::TestCase
     votes_index = rows.index(['votes'])
     headers = rows[votes_index + 1]
     vote_rows = rows[(votes_index + 2)..]
-    vote_row = vote_rows.find { |row| row[headers.index('id')] == stance.id.to_s }
+    vote_row = vote_rows.first
 
+    assert_nil vote_row[headers.index('id')]
     assert_nil vote_row[headers.index('voter_id')]
     assert_nil vote_row[headers.index('voter_name')]
     assert_nil vote_row[headers.index('member_title')]
     assert_nil vote_row[headers.index('delegate')]
     assert_nil vote_row[headers.index('created_at')]
     assert_nil vote_row[headers.index('updated_at')]
+    assert_nil vote_row[headers.index('reason')]
+    assert_nil vote_row[headers.index('reason_format')]
+    refute_includes vote_rows.flatten.compact, stance.id.to_s
   end
 
   test "to_csv does not use member titles or delegate status from another group" do
