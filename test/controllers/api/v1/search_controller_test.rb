@@ -62,6 +62,8 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_not_nil result
     assert_equal Stance.anonymous_id_for(poll_id: @poll.id, stance_id: stance.id), result['searchable_id']
     refute_equal stance.id, result['searchable_id']
+    assert_equal Stance.anonymous_id_for(poll_id: @poll.id, stance_id: "search:#{stance.id}"), result['id']
+    assert_not result.key?('sequence_id')
     assert_not result.key?('author_id')
     assert_not result.key?('author_name')
     assert_not result.key?('authored_at')

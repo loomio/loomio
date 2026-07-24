@@ -47,15 +47,23 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
     sign_in @user
     get :index, params: { discussion_id: @discussion.id }, format: :json
-    serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == event.id }
+    opaque_event_id = Stance.anonymous_id_for(poll_id: poll.id, stance_id: "event:#{event.id}")
+    serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == opaque_event_id }
+    assert_not_nil serialized_event
+    refute_equal event.id, serialized_event['id']
     assert_not serialized_event.key?('actor_id')
     assert_not serialized_event.key?('created_at')
     assert_not serialized_event.key?('eventable_id')
+    %w[sequence_id position position_key depth child_count].each do |attribute|
+      assert_not serialized_event.key?(attribute), "anonymous event exposed #{attribute}"
+    end
+    assert_nil serialized_event['parent_id']
 
     get :timeline, params: { discussion_id: @discussion.id }, format: :json
-    timeline_record = JSON.parse(response.body).find { |record| record[1] == event.sequence_id }
-    assert_nil timeline_record[2]
-    assert_nil timeline_record[3]
+    assert_includes JSON.parse(response.body), [nil, nil, nil, nil, nil]
+
+    get :position_keys, params: {discussion_id: @discussion.id}, format: :json
+    refute_includes JSON.parse(response.body), event.position_key
   end
 
   test "index serializes without record cache fallbacks" do

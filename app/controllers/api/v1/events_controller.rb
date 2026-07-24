@@ -1,26 +1,25 @@
 class Api::V1::EventsController < Api::V1::RestfulController
   def position_keys
     load_and_authorize_topic
-    keys = Event.where(topic_id: @topic.id).pluck(:position_key).sort
+    events = Event.where(topic_id: @topic.id)
+    keys = events.where.not(id: anonymous_stance_event_ids(events)).pluck(:position_key).sort
     render json: keys, root: 'position_keys'
   end
 
   def timeline
     load_and_authorize_topic
     events = Event.where(topic_id: @topic.id)
-    anonymous_stance_event_ids = events
-      .where(eventable_type: 'Stance')
-      .joins('INNER JOIN stances ON stances.id = events.eventable_id')
-      .joins('INNER JOIN polls ON polls.id = stances.poll_id')
-      .where(polls: { anonymous: true })
-      .pluck(:id)
-      .index_with(true)
+    anonymous_stance_events = anonymous_stance_event_ids(events).index_with(true)
 
     data = events.order(:position_key)
                  .pluck(:id, :position_key, :sequence_id, :created_at, :user_id, :depth)
                  .map do |id, position_key, sequence_id, created_at, user_id, depth|
-      anonymous_stance_event = anonymous_stance_event_ids[id]
-      [position_key, sequence_id, anonymous_stance_event ? nil : created_at, anonymous_stance_event ? nil : user_id, depth]
+      anonymous_stance_event = anonymous_stance_events[id]
+      if anonymous_stance_event
+        [nil, nil, nil, nil, nil]
+      else
+        [position_key, sequence_id, created_at, user_id, depth]
+      end
     end
     render json: data.to_json, root: 'timeline'
   end
@@ -70,6 +69,14 @@ class Api::V1::EventsController < Api::V1::RestfulController
   end
 
   private
+
+  def anonymous_stance_event_ids(events)
+    events.where(eventable_type: 'Stance')
+          .joins('INNER JOIN stances ON stances.id = events.eventable_id')
+          .joins('INNER JOIN polls ON polls.id = stances.poll_id')
+          .where(polls: {anonymous: true})
+          .pluck(:id)
+  end
 
   def load_and_authorize_topic
     if params[:topic_id]
