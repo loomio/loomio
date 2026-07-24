@@ -1,17 +1,17 @@
 class UserInviter
-  def self.count(emails: , user_ids:, chatbot_ids:, audience:, model:, usernames: , actor:, exclude_members: false, include_actor: false)
+  def self.count(emails: , user_ids:, chatbot_ids:, audience:, model:, actor:, exclude_members: false, include_actor: false)
     emails = Array(emails).map(&:presence).compact.uniq
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     chatbot_ids = Array(chatbot_ids).uniq.compact.map(&:to_i)
-    usernames =  Array(usernames).map(&:presence).compact.uniq
 
     audience_ids = AnnouncementService.audience_users(
       model, audience, actor, exclude_members, include_actor).pluck(:id)
     email_count = emails.count - User.where(email: emails).count
-    users = User.active.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
-                        emails: emails,
-                        usernames: usernames,
-                        user_ids: user_ids.concat(audience_ids))
+    users = User.active.where(
+      'email in (:emails) or id in (:user_ids)',
+      emails: emails,
+      user_ids: user_ids.concat(audience_ids)
+    )
     users = users.where.not(id: model.voter_ids) if exclude_members
     email_count + users.count + chatbot_ids.length
   end
@@ -63,6 +63,11 @@ class UserInviter
     new_emails_count + new_user_ids_count
   end
 
+  def self.authorize_preview!(model:, actor:)
+    auth_target = model.respond_to?(:topic) ? model.topic : model
+    actor.ability.authorize!(:add_members, auth_target)
+  end
+
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
     # check inviter can notify group if that's happening
     # check inviter can invite guests (from the org, or external) if that's happening
@@ -78,7 +83,7 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    actor.ability.authorize!(:announce, model)    if audience == 'group'
+    actor.ability.authorize!(:announce, model) if %w[group discussion_group].include?(audience)
     auth_target = model.respond_to?(:topic) ? model.topic : model
     actor.ability.authorize!(:add_members, auth_target) if member_ids.any?
     actor.ability.authorize!(:add_guests, auth_target)  if emails.any? or guest_ids.any?

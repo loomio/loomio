@@ -24,6 +24,10 @@ module Ability::Topic
       end
     end
 
+    can [:members_autocomplete], ::Topic do |topic|
+      topic.members_include?(user) && (topic.group_id.nil? || user.email_verified?)
+    end
+
     can [:add_members], ::Topic do |topic|
       group = topic.group
       if topic.group_id

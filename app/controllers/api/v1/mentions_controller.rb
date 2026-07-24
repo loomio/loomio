@@ -3,8 +3,8 @@ class Api::V1::MentionsController < ApplicationController
 
   def index
     mentionables = []
-    load_and_authorize(:topic, optional: true)
-    load_and_authorize(:group, optional: true)
+    load_and_authorize(:topic, :members_autocomplete, optional: true)
+    load_and_authorize(:group, :members_autocomplete, optional: true)
     group_id = @topic&.group_id || @group&.id
 
     mentionable_users.mention_search(params_query).limit(50).each do |user|

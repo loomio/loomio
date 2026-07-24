@@ -42,6 +42,32 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_includes user_ids, @admin.id
   end
 
+  test "users action denies an ordinary poll participant" do
+    sign_in @user
+
+    get :users, params: { poll_id: @poll.id }
+
+    assert_response :forbidden
+  end
+
+  test "users action denies a public poll viewer" do
+    public_poll = Poll.create!(
+      title: 'Public roster poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 5.days.from_now
+    )
+    public_viewer = users(:alien)
+    assert public_viewer.ability.can?(:show, public_poll)
+    sign_in public_viewer
+
+    get :users, params: { poll_id: public_poll.id }
+
+    assert_response :forbidden
+  end
+
   test "index does not allow unauthorized users" do
     outsider = User.create!(name: 'Outsider', email: "outsider#{SecureRandom.hex(4)}@example.com",
                             email_verified: true, username: "outsider#{SecureRandom.hex(4)}")

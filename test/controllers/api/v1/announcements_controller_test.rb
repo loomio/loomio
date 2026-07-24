@@ -28,6 +28,43 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert json['count'] > 0
   end
 
+  test "count is denied to a public-group non-member" do
+    sign_in @alien
+
+    get :count, params: { group_id: groups(:public_group).id }
+
+    assert_response :forbidden
+  end
+
+  test "search is denied to a public-group non-member" do
+    sign_in @alien
+
+    get :search, params: {group_id: groups(:public_group).id, q: @admin.username}
+
+    assert_response :forbidden
+  end
+
+  test "audience is denied to a public-group non-member" do
+    sign_in @alien
+
+    get :audience, params: {
+      group_id: groups(:public_group).id,
+      recipient_audience: 'group'
+    }
+
+    assert_response :forbidden
+  end
+
+  test "count ignores obsolete recipient usernames" do
+    get :count, params: {
+      group_id: @group.id,
+      recipient_usernames: @alien.username
+    }
+
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)['count']
+  end
+
   # History tests
   test "history responds with event history" do
     get :history, params: { group_id: @group.id }
@@ -167,6 +204,20 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 1, JSON.parse(response.body)['count']
+  end
+
+  test "poll create with discussion audience requires announcement permission" do
+    poll = create_test_poll
+    @group.update!(members_can_announce: false)
+    Membership.find_by!(user_id: @admin.id, group_id: @group.id).update!(admin: false)
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_audience: 'discussion_group',
+      include_actor: '1'
+    }
+
+    assert_response :forbidden
   end
 
   test "poll create supports discussion audience" do

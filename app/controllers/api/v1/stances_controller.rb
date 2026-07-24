@@ -80,6 +80,8 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def users
     instantiate_collection do |collection|
+      current_user.ability.authorize!(:add_voters, @poll)
+
       if query = params[:query]
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').

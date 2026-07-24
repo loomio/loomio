@@ -1,6 +1,6 @@
 class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def audience
-    current_user.ability.authorize! :show, target_model
+    current_user.ability.authorize! :members_autocomplete, recipient_target
 
     if target_model.respond_to?(:anonymous) &&
        target_model.anonymous &&
@@ -19,7 +19,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   end
 
   def new_member_count
-    current_user.ability.authorize! :show, target_model
+    current_user.ability.authorize! :add_members, target_model
 
     count = UserInviter.new_members_count(
       parent_group: target_model.parent_or_self,
@@ -31,6 +31,15 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   # count for number of notifications that will be send
   def count
+    UserInviter.authorize_preview!(model: target_model, actor: current_user)
+    UserInviter.authorize!(
+      actor: current_user,
+      model: target_model,
+      emails: String(params[:recipient_emails_cmr]).split(','),
+      user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
+      audience: params[:recipient_audience]
+    )
+
     count = UserInviter.count(
       actor: current_user,
       model: target_model,
@@ -38,7 +47,6 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       chatbot_ids: String(params[:recipient_chatbot_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience],
-      usernames: String(params[:recipient_usernames]).split(','),
       exclude_members: params[:exclude_members].present?,
       include_actor: params[:include_actor].present?
     )
@@ -46,6 +54,8 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   end
 
   def search
+    current_user.ability.authorize! :members_autocomplete, recipient_target
+
     # if target model has no groups, no discussions, then draw from users groups and guest threads
     self.collection = if params[:existing_only]
       target_model.members.invitable_search(params[:q]).limit(50)
@@ -216,6 +226,10 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
       load_and_authorize(:outcome, :announce, optional: false)
+  end
+
+  def recipient_target
+    target_model.respond_to?(:topic) ? target_model.topic : target_model
   end
 
   def target_model
