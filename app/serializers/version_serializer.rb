@@ -16,6 +16,18 @@ class VersionSerializer < ApplicationSerializer
     object.whodunnit.to_i
   end
 
+  # Anonymous polls must not reveal who cast a stance. PaperTrail records the
+  # voter id in `whodunnit` and the (possibly redacted) reason text in
+  # `object_changes`, neither of which StanceSerializer exposes for anonymous
+  # polls — so suppress them here too.
+  def include_whodunnit?
+    !hide_anonymous_stance_identity?
+  end
+
+  def include_object_changes?
+    !hide_anonymous_stance_data?
+  end
+
   def discussion
     object.item
   end
@@ -50,5 +62,21 @@ class VersionSerializer < ApplicationSerializer
 
   def include_stance?
     object.item_type == 'Stance'
+  end
+
+  private
+
+  def stance_item
+    object.item if object.item_type == 'Stance'
+  end
+
+  def hide_anonymous_stance_identity?
+    stance = stance_item
+    stance.present? && stance.poll&.anonymous?
+  end
+
+  def hide_anonymous_stance_data?
+    stance = stance_item
+    stance.present? && (stance.poll&.anonymous? || stance.redacted_at.present?)
   end
 end
