@@ -148,6 +148,20 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal 'Admin Updated', discussion.reload.title
   end
 
+  test "update cannot move a discussion to another group" do
+    discussion = discussions(:discussion)
+    destination = groups(:alien_group)
+
+    DiscussionService.update(
+      discussion: discussion,
+      actor: @user,
+      params: { title: 'Safe update', group_id: destination.id }
+    )
+
+    assert_equal @group.id, discussion.reload.group_id
+    assert_equal 'Safe update', discussion.title
+  end
+
   # -- Discard --
 
   test "discard marks discussion and polls as discarded" do
@@ -165,6 +179,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     DiscussionService.discard(discussion: discussion, actor: @admin)
 
     assert_not_nil discussion.reload.discarded_at
+    assert_not_nil discussion.topic.reload.discarded_at
     assert_not_nil poll.reload.discarded_at
   end
 

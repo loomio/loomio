@@ -75,8 +75,8 @@ class DiscussionService
 
 
     params = params.to_h.with_indifferent_access
-    topic_params = params.extract!(*TOPIC_ATTRS)
-    discussion.assign_attributes_and_files(params.except(:group_id))
+    topic_params = params.extract!(*TOPIC_ATTRS).except(:group_id)
+    discussion.assign_attributes_and_files(params)
     unless discussion.valid?
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
       return false
@@ -106,14 +106,9 @@ class DiscussionService
 
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)
-    Discussion.transaction do
-      discussion.update(discarded_at: Time.now, discarded_by: actor.id)
-      discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
-      ReindexDiscussionWorker.perform_later(discussion.id)
-
-      Sentry.metrics.count("discussion.discard")
-      EventBus.broadcast('discussion_discard', discussion, actor)
-      discussion.created_event
-    end
+    TopicService.discard_without_authorization(topic: discussion.topic, actor: actor)
+    discussion.reload
+    Sentry.metrics.count("discussion.discard")
+    discussion.created_event
   end
 end

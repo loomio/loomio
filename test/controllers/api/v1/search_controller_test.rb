@@ -70,6 +70,17 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
   end
 
+  test "does not return stale documents for a legacy discarded discussion" do
+    @discussion.update_columns(discarded_at: Time.current)
+    assert PgSearch::Document.where(discussion_id: @discussion.id).exists?
+
+    sign_in @user
+    get :index, params: { query: 'findme' }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['discussion_key'] == @discussion.key }
+  end
+
   test "returns group filtered records" do
     sign_in @user
 

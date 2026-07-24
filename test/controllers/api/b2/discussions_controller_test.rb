@@ -139,6 +139,7 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     assert_response 200
     discussion.reload
     assert discussion.discarded_at.present?
+    assert discussion.topic.reload.discarded_at.present?
     assert_equal @user.id, discussion.discarded_by
     assert json['discussions'][0]['discarded_at'].present?
   end

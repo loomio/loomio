@@ -14,6 +14,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
       rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
     end
 
+    rel = rel.where(topic_id: TopicQuery.visible_to(user: current_user).select(:id))
+    rel = rel.where(
+      "pg_search_documents.discussion_id IS NULL OR pg_search_documents.discussion_id IN (?)",
+      Discussion.kept.select(:id)
+    )
+
     if params[:tag]
       tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
       rel = rel.where(topic_id: tag_topic_ids)

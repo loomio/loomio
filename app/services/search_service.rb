@@ -44,7 +44,10 @@ class SearchService
   def self.reindex_by_discussion_id(discussion_id)
     PgSearch::Document.where(discussion_id: discussion_id).delete_all
 
-    topic_id = Topic.where(topicable_type: 'Discussion', topicable_id: discussion_id).pick(:id)
+    topic = Topic.find_by(topicable_type: 'Discussion', topicable_id: discussion_id)
+    return if topic.nil? || topic.discarded_at.present? || topic.topicable.discarded_at.present?
+
+    topic_id = topic.id
 
     statements = [
       Discussion.pg_search_insert_statement(id: discussion_id),

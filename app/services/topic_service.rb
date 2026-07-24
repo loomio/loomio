@@ -149,14 +149,20 @@ class TopicService
 
   def self.discard(topic:, actor:)
     actor.ability.authorize! :discard, topic
+    discard_without_authorization(topic: topic, actor: actor)
+  end
+
+  def self.discard_without_authorization(topic:, actor:)
     topicable = topic.topicable
+    discarded_at = Time.current
     Topic.transaction do
-      topic.update(discarded_at: Time.now, discarded_by: actor.id)
-      topicable.update(discarded_at: Time.now, discarded_by: actor.id)
-      topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+      topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
       EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
+    topicable
   end
 
   def self.moved_discussion_privacy_for(topic, destination)
