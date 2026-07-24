@@ -9,15 +9,17 @@ class ReceivedEmail < ApplicationRecord
     headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
   end
 
-  # The inbound relay (SES/Postfix) evaluates SPF/DKIM/DMARC and stamps
-  # Authentication-Results before forwarding to us. Returns true only when we
-  # can positively determine the From: domain FAILED authentication — used to
-  # refuse auto-authoring content for a spoofed sender on the group-handle
-  # route (which otherwise trusts the From: header alone). Absent/unparseable
-  # results return false: we can't prove a failure, and requiring a positive
-  # pass would break relays that don't stamp the header. Domains with no DMARC
-  # remain inherently spoofable — this stops the practical case where an
-  # attacker forges a DMARC-protected member's address.
+  # The bundled Haraka relay removes sender-supplied Authentication-Results,
+  # stamps its own SPF result, and rejects SPF failures before they reach Rails.
+  # It does not currently evaluate DKIM or DMARC. This check provides an
+  # additional boundary for operators using another trusted relay that reports
+  # those results without rejecting the message.
+  #
+  # Returns true only when we can positively determine that the From: domain
+  # failed authentication. This prevents auto-authoring group-handle content for
+  # a spoofed sender. Absent/unparseable results return false because requiring a
+  # positive pass would break relays that don't stamp the header. Domains with
+  # no DMARC remain inherently spoofable.
   def sender_authentication_failed?
     results = String(header('authentication-results')).downcase
     return false if results.blank?

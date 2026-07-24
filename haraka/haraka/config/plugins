@@ -1,0 +1,68 @@
+# This file lists plugins that Haraka will run
+#
+# Plugin ordering often matters, run 'haraka -o -c /path/to/haraka/config'
+# to see the order plugins (and their hooks) will run.
+#
+# To see a list of installed plugins, run 'haraka -l'
+#
+# The plugin registry: https://github.com/haraka/Haraka/blob/master/Plugins.md
+#
+# To see the docs for a plugin, run 'haraka -h plugin.name'
+
+# status
+# process_title
+# syslog
+# watch
+
+# CONNECT
+# ----------
+# toobusy
+# karma
+# relay
+# access
+# p0f
+# geoip
+# asn
+fcrdns
+# dns-list
+
+# HELO
+# ----------
+# early_talker
+# helo.checks
+# see 'haraka -h tls' before enabling!
+# tls
+#
+# AUTH plugins require TLS before AUTH is advertised, see
+#     https://github.com/haraka/Haraka/wiki/Require-SSL-TLS
+# ----------
+# auth/flat_file
+# auth/auth_proxy
+
+# MAIL FROM
+# ----------
+mail_from.is_resolvable
+spf
+
+# RCPT TO
+# ----------
+# At least one rcpt_to plugin is REQUIRED for inbound email.
+rcpt_to.in_host_list
+# qmail-deliverable
+# rcpt_to.routes
+
+# DATA
+# ----------
+# attachment
+# bounce
+# clamd
+# dkim
+# headers
+# limit
+# rspamd
+# spamassassin
+# uribl
+
+# QUEUE
+# ----------
+rails
