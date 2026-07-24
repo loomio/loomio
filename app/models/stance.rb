@@ -84,7 +84,6 @@ class Stance < ApplicationRecord
   belongs_to :participant, class_name: 'User', required: true
 
   alias user participant
-  alias author participant
 
   scope :latest, -> { where(latest: true, revoked_at: nil) }
   scope :newest_first, -> { order("cast_at DESC NULLS LAST") }
@@ -149,6 +148,10 @@ class Stance < ApplicationRecord
 
   def author_name
     participant&.name
+  end
+
+  def author
+    participant
   end
 
   def reason_visible_to?(user_id:, voted: false)

@@ -1,8 +1,15 @@
 class Api::V1::BookmarksController < Api::V1::RestfulController
+  BOOKMARKABLE_CLASSES = {
+    'Comment' => Comment,
+    'Discussion' => Discussion,
+    'Outcome' => Outcome,
+    'Poll' => Poll
+  }.freeze
+
   alias :create :update
 
   def index
-    self.collection = current_user.bookmarks.kept.order(created_at: :desc)
+    self.collection = current_user.bookmarks.kept.where.not(bookmarkable_type: 'Stance').order(created_at: :desc)
     respond_with_collection
   end
 
@@ -20,6 +27,10 @@ class Api::V1::BookmarksController < Api::V1::RestfulController
   end
 
   def bookmarkable
-    @bookmarkable ||= resource_params[:bookmarkable_type].classify.constantize.find(resource_params[:bookmarkable_id])
+    bookmarkable_type = resource_params[:bookmarkable_type].classify
+    bookmarkable_class = BOOKMARKABLE_CLASSES[bookmarkable_type]
+    raise ActiveRecord::RecordNotFound unless bookmarkable_class
+
+    @bookmarkable ||= bookmarkable_class.find(resource_params[:bookmarkable_id])
   end
 end
