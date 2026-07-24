@@ -354,16 +354,21 @@ class PagesPhlexTest < ActiveSupport::TestCase
       closing_at: 1.day.from_now
     }, actor: @user)
     stance = poll.stances.find_by!(participant_id: @user.id)
+    stance.update!(reason: 'anonymous export reason marker')
 
     rows = CSV.parse(GroupExporter.new(@group).to_csv)
     stances_index = rows.index { |row| row.first&.start_with?('Stances') }
     headers = rows[stances_index + 1]
-    stance_row = rows[(stances_index + 2)..].find { |row| row[headers.index('Id')] == stance.id.to_s }
+    stance_row = rows[(stances_index + 2)..].find { |row| row[headers.index('Poll')] == poll.id.to_s }
 
+    assert_nil stance_row[headers.index('Id')]
     assert_nil stance_row[headers.index('Participant')]
     assert_nil stance_row[headers.index('Author name')]
     assert_nil stance_row[headers.index('Created at')]
     assert_nil stance_row[headers.index('Updated at')]
+    assert_nil stance_row[headers.index('Reason')]
+    refute_includes rows.flatten.compact, stance.id.to_s
+    refute_includes rows.flatten.compact, 'anonymous export reason marker'
   end
 
   test "group csv export uses topic ids for topicable records" do

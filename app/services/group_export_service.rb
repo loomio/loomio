@@ -185,8 +185,22 @@ class GroupExportService
   end
 
   def self.export_records(records, file, ids)
-    records.find_each(batch_size: 20000) do |record|
-      puts_record(record, file, ids)
+    if records.klass == Stance
+      records.reorder(nil).distinct.pluck(:poll_id).each do |poll_id|
+        records.where(poll_id: poll_id).includes(:poll).to_a.sort_by { |stance| stance_export_sort_key(stance) }.each do |record|
+          puts_record(record, file, ids)
+        end
+      end
+    elsif records.klass == StanceChoice
+      records.joins(:stance).reorder(nil).distinct.pluck('stances.poll_id').each do |poll_id|
+        records.joins(:stance).where(stances: {poll_id: poll_id}).includes(stance: :poll).to_a.sort_by { |choice| stance_choice_export_sort_key(choice) }.each do |record|
+          puts_record(record, file, ids)
+        end
+      end
+    else
+      records.find_each(batch_size: 20000) do |record|
+        puts_record(record, file, ids)
+      end
     end
   end
 
@@ -206,9 +220,7 @@ class GroupExportService
         puts_record(group, file, ids)
         RELATIONS.each do |relation|
           # puts "Exporting: #{relation}"
-          group.send(relation).find_each(batch_size: 20000) do |record|
-            puts_record(record, file, ids)
-          end
+          export_records(group.send(relation), file, ids)
         end
 
         user_attachments = group.all_users.map(&:uploaded_avatar_attachment)
@@ -249,7 +261,7 @@ class GroupExportService
       id: attachment.id,
       host: ENV['CANONICAL_HOST'],
       record_type: attachment.record_type,
-      record_id: attachment.record_id,
+      record_id: attachment_record_id(attachment),
       name: attachment.name,
       filename: attachment.filename,
       content_type: attachment.content_type,
@@ -272,16 +284,67 @@ class GroupExportService
 
     case record
     when Stance
-      json.merge!('participant_id' => nil, 'cast_at' => nil, 'created_at' => nil, 'updated_at' => nil, 'revoked_at' => nil, 'redacted_at' => nil) if record.poll.anonymous?
+      if record.poll.anonymous?
+        json.merge!(
+          'id' => anonymous_stance_export_id(record),
+          'participant_id' => nil,
+          'cast_at' => nil,
+          'created_at' => nil,
+          'updated_at' => nil,
+          'revoked_at' => nil,
+          'redacted_at' => nil
+        )
+      end
     when StanceChoice
-      json.merge!('created_at' => nil, 'updated_at' => nil) if record.poll.anonymous?
+      if record.poll.anonymous?
+        json.merge!(
+          'id' => anonymous_stance_child_export_id(record.stance, record.id),
+          'stance_id' => anonymous_stance_export_id(record.stance),
+          'created_at' => nil,
+          'updated_at' => nil
+        )
+      end
     when Event
       if record.eventable.is_a?(Stance) && record.eventable.poll.anonymous?
-        json.merge!('user_id' => nil, 'created_at' => nil, 'updated_at' => nil)
+        json.merge!(
+          'eventable_id' => anonymous_stance_export_id(record.eventable),
+          'user_id' => nil,
+          'created_at' => nil,
+          'updated_at' => nil
+        )
       end
+    when Reaction
+      json['reactable_id'] = anonymous_stance_export_id(record.reactable) if record.reactable.is_a?(Stance) && record.reactable.poll.anonymous?
+    when Comment
+      json['parent_id'] = anonymous_stance_export_id(record.parent) if record.parent.is_a?(Stance) && record.parent.poll.anonymous?
     end
 
     json
+  end
+
+  def self.anonymous_stance_export_id(stance)
+    Stance.anonymous_id_for(poll_id: stance.poll_id, stance_id: stance.id)
+  end
+
+  def self.anonymous_stance_child_export_id(stance, child_id)
+    Stance.anonymous_id_for(poll_id: stance.poll_id, stance_id: "#{stance.id}:#{child_id}")
+  end
+
+  def self.stance_export_sort_key(stance)
+    stance.poll.anonymous? ? anonymous_stance_export_id(stance) : stance.id.to_s.rjust(20, '0')
+  end
+
+  def self.stance_choice_export_sort_key(choice)
+    return [choice.stance_id.to_s.rjust(20, '0'), choice.id] unless choice.poll.anonymous?
+
+    [anonymous_stance_export_id(choice.stance), anonymous_stance_child_export_id(choice.stance, choice.id)]
+  end
+
+  def self.attachment_record_id(attachment)
+    return attachment.record_id unless attachment.record_type == 'Stance'
+
+    stance = Stance.find_by(id: attachment.record_id)
+    stance&.poll&.anonymous? ? anonymous_stance_export_id(stance) : attachment.record_id
   end
 
   def self.import(filename_or_url, reset_keys: false)

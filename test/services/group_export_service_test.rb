@@ -89,14 +89,18 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     event_json = GroupExportService.export_record(event, 'events')
 
     assert_nil stance_json['participant_id']
+    refute_equal stance.id, stance_json['id']
     assert_nil stance_json['cast_at']
     assert_nil stance_json['created_at']
     assert_nil stance_json['updated_at']
     assert_nil choice_json['created_at']
     assert_nil choice_json['updated_at']
+    assert_equal stance_json['id'], choice_json['stance_id']
+    refute_equal choice.id, choice_json['id']
     assert_nil event_json['user_id']
     assert_nil event_json['created_at']
     assert_nil event_json['updated_at']
+    assert_equal stance_json['id'], event_json['eventable_id']
   end
 
   test "export, truncate specific records, and import recreates the scenario" do
