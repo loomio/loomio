@@ -49,6 +49,35 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes topic_ids, @topic.id
   end
 
+  test "markdown does not return a topic the user cannot view" do
+    secret_discussion = discussions(:alien_discussion)
+    secret_discussion.update!(title: "Private markdown security marker")
+    sign_in @user
+
+    get :markdown, params: {id: secret_discussion.topic.id}
+
+    assert_response :forbidden
+    refute_includes response.body, "Private markdown security marker"
+  end
+
+  test "mark as read does not return a topic after guest access is revoked" do
+    secret_discussion = discussions(:alien_discussion)
+    secret_discussion.update!(title: "Private mark read security marker")
+    TopicReader.create!(
+      user: @user,
+      topic: secret_discussion.topic,
+      volume: "normal",
+      guest: true,
+      revoked_at: 1.minute.ago
+    )
+    sign_in @user
+
+    patch :mark_as_read, params: {id: secret_discussion.topic.id, ranges: [[0, 1]]}
+
+    assert_response :forbidden
+    refute_includes response.body, "Private mark read security marker"
+  end
+
   test "index only includes public topics when a group is requested" do
     public_group = groups(:public_group)
     hex = SecureRandom.hex(4)
@@ -391,7 +420,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
     patch :mark_as_read, params: { id: @topic.id, ranges: "1-1" }
 
-    assert_response :success # returns success but doesn't create reader due to ability check
+    assert_response :forbidden
   end
 
   # Test mark_as_seen action

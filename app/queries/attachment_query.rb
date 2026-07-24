@@ -1,5 +1,5 @@
 class AttachmentQuery
-  def self.find(group_ids, query, limit, offset)
+  def self.find(group_ids, query, limit, offset, user:)
     ids = []
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN groups ON active_storage_attachments.record_type = 'Group' AND active_storage_attachments.record_id = groups.id").
@@ -24,11 +24,20 @@ class AttachmentQuery
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
+    visible_stance_poll_ids = PollQuery.visible_to(user: user, group_ids: group_ids).select do |poll|
+      next false if poll.anonymous?
+
+      voted = poll.stances.latest.decided.exists?(participant_id: user.id)
+      poll.show_results?(voted: voted)
+    end.map(&:id)
+
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN stances  ON active_storage_attachments.record_type = 'Stance'  AND active_storage_attachments.record_id = stances.id").
       joins("LEFT OUTER JOIN polls stances_polls ON stances_polls.id = stances.poll_id").
       joins("LEFT OUTER JOIN topics stances_topics ON stances_topics.id = stances_polls.topic_id").
       where('stances_topics.group_id IN (:group_ids) AND stances_polls.discarded_at IS NULL AND stances.revoked_at IS NULL', group_ids: group_ids).
+      where('stances.participant_id = :user_id OR stances_polls.id IN (:visible_poll_ids)',
+            user_id: user.id, visible_poll_ids: visible_stance_poll_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 

@@ -50,6 +50,7 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == event.id }
     assert_not serialized_event.key?('actor_id')
     assert_not serialized_event.key?('created_at')
+    assert_not serialized_event.key?('eventable_id')
 
     get :timeline, params: { discussion_id: @discussion.id }, format: :json
     timeline_record = JSON.parse(response.body).find { |record| record[1] == event.sequence_id }
@@ -110,6 +111,19 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
     # The comment_id must be scoped to the authorized topic, so this is a 404,
     # not a leak of the secret comment's body.
+    assert_response :not_found
+  end
+
+  test "index does not use a comment from another topic as its starting point" do
+    secret_comment = Comment.new(parent: discussions(:alien_discussion), body: "secret")
+    secret_event = CommentService.create(comment: secret_comment, actor: users(:alien))
+    sign_in @user
+
+    get :index, params: {
+      discussion_id: @discussion.id,
+      comment_id: secret_event.eventable.id
+    }
+
     assert_response :not_found
   end
 

@@ -9,7 +9,8 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     section = params.fetch(:section, 'base')
 
     membership_group_ids = current_user.group_ids
-    all_group_ids = Group.where(parent_id: membership_group_ids).pluck(:id) | membership_group_ids
+    candidate_group_ids = Group.where(parent_id: membership_group_ids).pluck(:id) | membership_group_ids
+    all_group_ids = GroupQuery.visible_to(user: current_user).where(id: candidate_group_ids).pluck(:id)
     all_groups_mode = group_scope == 'all'
 
     group_ids = case group_scope

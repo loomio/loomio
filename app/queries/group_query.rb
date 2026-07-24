@@ -7,8 +7,8 @@ class GroupQuery
     guest_group_ids = Topic.where(id: user.guest_topic_ids).pluck(:group_id).compact
     group_ids = user.group_ids.concat(guest_group_ids)
     chain.published.
-      where("#{'is_visible_to_public = true OR ' if show_public}
+      where("#{'groups.is_visible_to_public = true OR ' if show_public}
             groups.id in (:group_ids) OR
-            (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)", group_ids: group_ids)
+            (groups.parent_id in (:group_ids) AND groups.is_visible_to_parent_members = TRUE)", group_ids: group_ids)
   end
 end

@@ -2,6 +2,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
 
   def index
+    model
     instantiate_collection do |collection|
       %w[user_xids].each do |key|
         next unless params.has_key? key
@@ -98,8 +99,10 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   end
 
   def index_scope
-    admins_scope = model.admins
-    default_scope.merge({ current_user_is_admin: admins_scope.exists?(current_user.id), include_inviter: true })
+    default_scope.merge({
+      membership_email_group_ids: current_user.adminable_group_ids,
+      include_inviter: true
+    })
   end
 
   def model

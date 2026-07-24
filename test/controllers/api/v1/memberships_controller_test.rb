@@ -182,6 +182,57 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     refute_includes user_ids, user.id
   end
 
+  test 'poll admin scope does not expose email addresses from other groups' do
+    @test_group.membership_for(@user).update!(admin: true)
+    source_poll = PollService.create(params: {
+      title: "Membership scope source",
+      poll_type: "proposal",
+      group_id: @test_group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 1.day.from_now
+    }, actor: @user)
+
+    hex = SecureRandom.hex(4)
+    owner = User.create!(
+      name: "Membership scope owner",
+      email: "membership-scope-owner-#{hex}@example.com",
+      email_verified: true,
+      username: "membershipscopeowner#{hex}"
+    )
+    victim = User.create!(
+      name: "Membership scope victim",
+      email: "membership-scope-victim-#{hex}@example.com",
+      email_verified: true,
+      username: "membershipscopevictim#{hex}"
+    )
+    target_group = Group.create!(
+      name: "Membership target group",
+      handle: "membership-target-scope-#{hex}",
+      group_privacy: "secret",
+      creator: owner
+    )
+    Membership.create!(group: target_group, user: owner, admin: true, accepted_at: Time.current)
+    Membership.create!(group: target_group, user: @user, admin: false, accepted_at: Time.current)
+    victim_membership = Membership.create!(
+      group: target_group,
+      user: victim,
+      admin: false,
+      accepted_at: Time.current
+    )
+    @user.reload
+
+    sign_in @user
+    get :index, params: {poll_id: source_poll.id, per: 2000}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    serialized_membership = json.fetch('memberships').find { |membership| membership['id'] == victim_membership.id }
+    assert_not_nil serialized_membership
+    assert_not serialized_membership.key?('user_email')
+    serialized_user = json.fetch('users').find { |user| user['id'] == victim.id }
+    assert_not serialized_user.key?('email')
+  end
+
   test 'responds with unauthorized for private groups when logged out' do
     private_group = Group.create!(
       name: 'Private Group',

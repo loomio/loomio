@@ -37,6 +37,12 @@ class SearchResultSerializer < ApplicationSerializer
     !anonymous_stance?
   end
 
+  def searchable_id
+    return object.searchable_id unless anonymous_stance?
+
+    Stance.anonymous_id_for(poll_id: object.poll_id, stance_id: object.searchable_id)
+  end
+
   private
 
   def anonymous_stance?

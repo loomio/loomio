@@ -49,4 +49,32 @@ class Api::V1::ReportsControllerTest < ActionController::TestCase
     assert_includes group_ids, subgroup.id
     refute_includes group_ids, alien_group.id
   end
+
+  test "my reports exclude subgroups hidden from parent group members" do
+    user = users(:user)
+    parent = groups(:group)
+    victim = User.create!(
+      name: "Hidden subgroup member",
+      email: "hidden-subgroup-member@example.com",
+      email_verified: true,
+      username: "hiddensubgroupmember",
+      country: "NZ"
+    )
+    hidden_subgroup = Group.create!(
+      name: "Hidden reports subgroup",
+      handle: "testgroup-hidden-reports-subgroup",
+      parent: parent,
+      is_visible_to_public: false,
+      is_visible_to_parent_members: false
+    )
+    Membership.create!(group: hidden_subgroup, user: victim, accepted_at: Time.current)
+    sign_in user
+
+    get :index, params: {group_scope: "my", section: "users"}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    refute_includes json.fetch("all_groups").map { |group| group["id"] }, hidden_subgroup.id
+    refute_includes json.fetch("users").map { |record| record["id"] }, victim.id
+  end
 end

@@ -160,11 +160,10 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def current_user_is_admin?
-    stance = Stance.find_by(id: params[:id])
-    poll = Poll.find_by(id: params[:poll_id])
-    return false unless (stance || poll)
+    poll = @poll || @stance&.poll || (resource.poll if resource.respond_to?(:poll))
+    return false unless poll
 
-    (stance || poll).poll.admins.exists?(current_user.id)
+    poll.admins.exists?(current_user.id)
   end
 
   def exclude_types

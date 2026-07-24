@@ -94,7 +94,7 @@ class StanceSerializer < ApplicationSerializer
   private
 
   def anonymous_id
-    OpenSSL::HMAC.hexdigest('SHA256', Rails.application.secret_key_base, "#{object.poll_id}:#{object.id}")[0, 20]
+    Stance.anonymous_id_for(poll_id: object.poll_id, stance_id: object.id)
   end
 
   def include_reason?

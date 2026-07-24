@@ -92,7 +92,9 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
   def from
     if params[:comment_id]
-      Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
+      Event.where(topic_id: @topic.id)
+           .find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
+           .sequence_id
     else
       params[:from] || 0
     end

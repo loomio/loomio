@@ -10,8 +10,16 @@ class Stance < ApplicationRecord
   extend HasTokens
   initialized_with_token :token
 
+  def self.anonymous_id_for(poll_id:, stance_id:)
+    OpenSSL::HMAC.hexdigest(
+      'SHA256',
+      Rails.application.secret_key_base,
+      "#{poll_id}:#{stance_id}"
+    )[0, 20]
+  end
+
   def self.pg_search_insert_statement(id: nil, author_id: nil, poll_id: nil)
-    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, users.name), E'<[^>]+>', '', 'gi')"
+    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, CASE WHEN polls.anonymous = TRUE THEN NULL ELSE users.name END), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
         searchable_type,

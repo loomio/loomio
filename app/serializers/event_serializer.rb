@@ -27,6 +27,10 @@ class EventSerializer < ApplicationSerializer
     !anonymous_stance_event?
   end
 
+  def include_eventable_id?
+    !anonymous_stance_event?
+  end
+
   def include_eventable?
     !(object.kind == "new_discussion" && exclude_type?('discussion'))
   end

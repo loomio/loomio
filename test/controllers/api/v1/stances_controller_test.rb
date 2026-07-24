@@ -50,6 +50,56 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "index does not use a foreign stance to include participant emails" do
+    @group.membership_for(@user).update!(admin: true)
+    source_poll = PollService.create(params: {
+      title: "Email scope source",
+      poll_type: "proposal",
+      group_id: @group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 1.day.from_now
+    }, actor: @user)
+    source_stance = source_poll.stances.find_by!(participant_id: @user.id)
+
+    hex = SecureRandom.hex(4)
+    owner = User.create!(
+      name: "Email scope owner",
+      email: "email-scope-owner-#{hex}@example.com",
+      email_verified: true,
+      username: "emailscopeowner#{hex}"
+    )
+    victim = User.create!(
+      name: "Email scope victim",
+      email: "email-scope-victim-#{hex}@example.com",
+      email_verified: true,
+      username: "emailscopevictim#{hex}"
+    )
+    target_group = Group.create!(
+      name: "Email scope target",
+      handle: "email-scope-target-#{hex}",
+      group_privacy: "secret",
+      creator: owner
+    )
+    Membership.create!(group: target_group, user: owner, admin: true, accepted_at: Time.current)
+    Membership.create!(group: target_group, user: @user, admin: false, accepted_at: Time.current)
+    Membership.create!(group: target_group, user: victim, admin: false, accepted_at: Time.current)
+    target_poll = PollService.create(params: {
+      title: "Email scope target poll",
+      poll_type: "proposal",
+      group_id: target_group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 1.day.from_now
+    }, actor: owner)
+
+    sign_in @user
+    get :index, params: {poll_id: target_poll.id, id: source_stance.id}
+
+    assert_response :success
+    serialized_victim = JSON.parse(response.body).fetch('users').find { |user| user['id'] == victim.id }
+    assert_not_nil serialized_victim
+    assert_not serialized_victim.key?('email')
+  end
+
   test "index hides identifying metadata for anonymous polls" do
     @poll.update!(anonymous: true)
     # Another user's stance exists from auto-creation
