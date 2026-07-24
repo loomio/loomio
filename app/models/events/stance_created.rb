@@ -11,7 +11,7 @@ class Events::StanceCreated < Event
     participant = stance.participant.presence
     publish_and_mark_read!(stance,
                            reader: participant,
-                           user: participant,
+                           user: stance.poll.anonymous? ? nil : participant,
                            topic: stance.add_to_thread? ? stance.poll.topic : nil)
   end
 

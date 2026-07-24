@@ -452,8 +452,7 @@ Rails.application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/crowdfunding'                      => 'application#crowdfunding'
-  get '/brand'                             => 'application#brand'
-  get '/sitemap.xml' => 'application#sitemap'
+  get '/about-loomio'                      => 'application#about_loomio', as: :about_loomio
 
 
   Identity::PROVIDERS.each do |provider|

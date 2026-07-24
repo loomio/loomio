@@ -71,20 +71,6 @@ class Views::Application::Layout < Views::Application::Component
   end
 
   def render_footer
-    footer(class: "v-footer theme--auto text-body-2") do
-      div(class: "v-layout justify-space-around") do
-        div(class: "powered-by caption") do
-          a(href: "https://www.loomio.com?utm_source=#{ENV['CANONICAL_HOST']}&utm_campaign=appfooter", target: "_blank") do
-            plain t(:"powered_by.powered_by_loomio")
-          end
-          span { plain " \u00b7 " }
-          a(href: AppConfig.theme[:privacy_url], target: "_blank") { plain t(:"powered_by.privacy_policy") }
-          span { plain " \u00b7 " }
-          a(href: AppConfig.theme[:terms_url], target: "_blank") { plain t(:"powered_by.terms_of_service") }
-          span { plain " \u00b7 " }
-          a(href: AppConfig.theme[:help_url], target: "_blank") { plain t(:"common.help") }
-        end
-      end
-    end
+    render Views::Application::Footer.new(class_names: "v-footer flex-grow-0 theme--auto text-body-2")
   end
 end

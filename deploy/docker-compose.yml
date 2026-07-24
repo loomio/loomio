@@ -1,0 +1,152 @@
+name: loomio
+
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy:${NGINX_PROXY_CONTAINER_TAG}
+    labels:
+      - "com.github.nginx-proxy.nginx"
+    networks:
+      - main
+    ports:
+      - 80:80
+      - 443:443
+    configs:
+      - source: nginx-custom
+        target: /etc/nginx/conf.d/custom.conf
+    volumes:
+      - certs:/etc/nginx/certs:ro
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: unless-stopped
+
+  nginx-proxy-acme:
+    image: nginxproxy/acme-companion:${ACME_COMPANION_CONTAINER_TAG}
+    environment:
+      - DEFAULT_EMAIL=${SUPPORT_EMAIL}
+    networks:
+      - main
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+    restart: unless-stopped
+
+  app:
+    container_name: loomio-app
+    image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --fail http://localhost:3000/ || exit 1']
+    expose:
+      - 3000
+    env_file: ./.env
+    environment:
+      - VIRTUAL_HOST=${CANONICAL_HOST}
+      - ACME_HOST=${CANONICAL_HOST}
+    volumes:
+      - ./uploads:/loomio/public/system
+      - ./storage:/loomio/storage
+      - ./files:/loomio/public/files
+      - ./plugins:/loomio/plugins/docker
+      - ./import:/import
+      - ./tmp:/loomio/tmp
+      - client3:/loomio/public/client3
+    networks:
+      - main
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    container_name: loomio-worker
+    image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
+    restart: always
+    networks:
+      - main
+    env_file: ./.env
+    environment:
+      - TASK=worker
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/loomio/public/system
+      - ./storage:/loomio/storage
+      - ./files:/loomio/public/files
+      - ./plugins:/loomio/plugins/docker
+      - ./tmp:/loomio/tmp
+
+  db:
+    container_name: loomio-db
+    image: postgres:${POSTGRES_CONTAINER_TAG}
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+    networks:
+      - main
+    env_file: ./.env
+    volumes:
+      - ./pgdata:/pgdata
+    environment:
+     - PGDATA=/pgdata
+
+  redis:
+    container_name: loomio-redis
+    image: redis:8.4
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --save
+      - ""
+      - --appendonly
+      - "no"
+      - --maxmemory
+      - "${REDIS_MAXMEMORY:-256mb}"
+      - --maxmemory-policy
+      - allkeys-lru
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+    networks:
+      - main
+
+  haraka:
+    container_name: loomio-haraka
+    image: ${HARAKA_CONTAINER_IMAGE}:${HARAKA_CONTAINER_TAG}
+    restart: unless-stopped
+    env_file: ./.env
+    networks:
+      - main
+    ports:
+      - "25:25"
+
+  hocuspocus:
+    container_name: loomio-hocuspocus
+    image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
+    restart: unless-stopped
+    networks:
+      - main
+    env_file: ./.env
+    environment:
+      - TASK=hocuspocus
+      - VIRTUAL_HOST=hocuspocus.${CANONICAL_HOST}
+      - ACME_HOST=hocuspocus.${CANONICAL_HOST}
+
+networks:
+  main:
+
+configs:
+  nginx-custom:
+    content: |
+      client_max_body_size ${FILE_UPLOAD_MAX_MB:-1024}m;
+
+volumes:
+  certs:
+  vhost:
+  html:
+  acme:
+  client3:

@@ -16,8 +16,8 @@
     "@hocuspocus/provider": "^4.4.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
-    "@sentry/browser": "^10.63.0",
-    "@sentry/vue": "^10.66.0",
+    "@sentry/browser": "^10.67.0",
+    "@sentry/vue": "^10.67.0",
     "@tiptap/core": "3.28.0",
     "@tiptap/extension-blockquote": "3.28.0",
     "@tiptap/extension-bold": "3.28.0",
@@ -91,6 +91,8 @@
     "yaml": "^2.9.0"
   },
   "overrides": {
+    "form-data": "^4.0.6",
+    "piscina": "^4.9.3",
     "@originjs/vite-plugin-commonjs": {
       "esbuild": "^0.25.0"
     },

@@ -69,7 +69,11 @@ class Api::V1::StancesController < Api::V1::RestfulController
         end
       end
 
-      collection.order('cast_at DESC NULLS LAST, created_at DESC')
+      if @poll.anonymous?
+        collection.order(:id)
+      else
+        collection.order('cast_at DESC NULLS LAST, created_at DESC')
+      end
     end
     respond_with_collection
   end

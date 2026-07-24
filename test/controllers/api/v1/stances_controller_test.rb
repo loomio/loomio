@@ -25,6 +25,11 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert json['stances'].is_a?(Array)
+    stance = json['stances'].first
+    assert stance.key?('cast_at')
+    assert stance.key?('created_at')
+    assert stance.key?('updated_at')
+    assert stance.key?('order_at')
   end
 
   test "index does not allow unauthorized users" do
@@ -35,7 +40,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "index hides participant_id for anonymous polls" do
+  test "index hides identifying metadata for anonymous polls" do
     @poll.update!(anonymous: true)
     # Another user's stance exists from auto-creation
     sign_in @admin
@@ -47,6 +52,31 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     # In anonymous polls, participant_ids should be nil
     participant_ids.each do |pid|
       assert_nil pid, "participant_id should be nil in anonymous poll"
+    end
+
+    json['stances'].each do |stance|
+      assert_not stance.key?('cast_at')
+      assert_not stance.key?('created_at')
+      assert_not stance.key?('updated_at')
+      assert_not stance.key?('order_at')
+    end
+  end
+
+  test "index does not reveal anonymous choices or voting order before results are visible" do
+    @poll.update!(anonymous: true, hide_results: 'until_closed')
+    @poll.stances.first.update_columns(cast_at: 1.minute.ago)
+    @poll.stances.last.update_columns(cast_at: 2.minutes.ago)
+    other_stance_ids = @poll.stances.where.not(participant_id: @admin.id).pluck(:id)
+
+    sign_in @admin
+    get :index, params: { poll_id: @poll.id }
+    assert_response :success
+
+    stances = JSON.parse(response.body)['stances']
+    assert_equal stances.map { |stance| stance['id'] }.sort, stances.map { |stance| stance['id'] }
+    stances.select { |stance| other_stance_ids.include?(stance['id']) }.each do |stance|
+      assert_not stance.key?('none_of_the_above')
+      assert_not stance.key?('option_scores')
     end
   end
 

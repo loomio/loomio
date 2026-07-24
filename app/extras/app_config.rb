@@ -139,7 +139,6 @@ class AppConfig
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,
       max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
-      sitemap: ENV.fetch('FEATURES_SITEMAP', false),
       verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
     }
   end

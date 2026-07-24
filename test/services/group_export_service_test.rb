@@ -68,6 +68,37 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     }
   end
 
+  test "raw export records do not link anonymous ballots to voters or timestamps" do
+    group = groups(:group)
+    admin = users(:admin)
+    poll = PollService.create(params: {
+      title: 'Anonymous export poll',
+      poll_type: 'proposal',
+      group_id: group.id,
+      anonymous: true,
+      closing_at: 1.day.from_now,
+      poll_option_names: %w[Agree Disagree]
+    }, actor: admin)
+    stance = poll.stances.find_by!(participant_id: admin.id)
+    stance.update!(choice: 'Agree', cast_at: Time.current)
+    choice = stance.stance_choices.first
+    event = Event.create!(kind: 'stance_created', eventable: stance, user: admin)
+
+    stance_json = GroupExportService.export_record(stance, 'stances')
+    choice_json = GroupExportService.export_record(choice, 'stance_choices')
+    event_json = GroupExportService.export_record(event, 'events')
+
+    assert_nil stance_json['participant_id']
+    assert_nil stance_json['cast_at']
+    assert_nil stance_json['created_at']
+    assert_nil stance_json['updated_at']
+    assert_nil choice_json['created_at']
+    assert_nil choice_json['updated_at']
+    assert_nil event_json['user_id']
+    assert_nil event_json['created_at']
+    assert_nil event_json['updated_at']
+  end
+
   test "export, truncate specific records, and import recreates the scenario" do
     data = create_scenario
     group = data[:group]
@@ -111,6 +142,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Group.where(id: data[:another_group].id).delete_all
     Group.where(id: group_ids).delete_all
     Identity.where(user_id: [admin_id, member_id, alien_id]).delete_all
+    Session.where(user_id: [admin_id, member_id, alien_id]).delete_all
     User.where(id: [admin_id, member_id, alien_id]).delete_all
 
     GroupExportService.import(filename)

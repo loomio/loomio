@@ -27,8 +27,6 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   skip_before_action :verify_authenticity_token, only: :bug_tunnel
-  caches_page :sitemap
-
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end
@@ -59,19 +57,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def sitemap
-    @entries = []
-    return unless AppConfig.app_features[:sitemap]
-
-    Group.published.where(is_visible_to_public: true).each do |g|
-      @entries << [url_for(g), g.updated_at.to_date.iso8601]
-    end
-
-    Discussion.visible_to_public.joins(:group).where('groups.archived_at is null').each do |d|
-      @entries << [url_for(d), d.topic.last_activity_at.to_date.iso8601]
-    end
-  end
-
   def index
     boot_app
   end
@@ -95,8 +80,11 @@ class ApplicationController < ActionController::Base
     render Views::Application::Crowdfunding.new
   end
 
-  def brand
-    render Views::Application::Brand.new
+  def about_loomio
+    render Views::Application::AboutLoomio.new(
+      canonical_url: about_loomio_url,
+      independently_operated: !ENV['LOOMIO_MANAGED_SERVER']
+    )
   end
 
   def bug_tunnel
@@ -137,6 +125,7 @@ class ApplicationController < ActionController::Base
       format.html { boot_app(status: status) }
       format.json { render json: { error: message || @title }, root: false, status: status }
       format.xml { render xml: { error: message || @title }, status: status }
+      format.any { head status }
     end
   end
 

@@ -1,0 +1,249 @@
+# PLEASE NOTE: To disable a setting you MUST comment out (or delete) the line.
+# If you set change SOME_FEATURE=1 to SOME_FEATURE=0, that feature is still enabled!
+# You should change comment it out like so: # SOME_FEATURE=1
+
+POSTGRES_CONTAINER_TAG=17
+LOOMIO_CONTAINER_IMAGE=loomio/loomio
+LOOMIO_CONTAINER_TAG=3.1
+HARAKA_CONTAINER_IMAGE=loomio/haraka-rails-docker
+HARAKA_CONTAINER_TAG=stable
+NGINX_PROXY_CONTAINER_TAG=1.11-alpine
+ACME_COMPANION_CONTAINER_TAG=2.8
+
+# human name of the app. eg: Loomio
+SITE_NAME=REPLACE_WITH_HOSTNAME
+
+# hostname of your app eg: loomio.example.com
+CANONICAL_HOST=REPLACE_WITH_HOSTNAME
+
+# public url for app, eg: https://loomio.example.com
+PUBLIC_APP_URL=https://REPLACE_WITH_HOSTNAME
+
+# private url for app. (from node.js to rails app)
+PRIVATE_APP_URL=http://app:3000
+
+# email address of admin of the server for LetsEncrypt. eg: you@gmail.com
+SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
+
+# hostname with MX record of haraka service. eg: loomio.example.com
+REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
+
+# Uncomment to set a custom notifications email address
+# NOTIFICATIONS_EMAIL_ADDRESS=notifications@loomio.example.com
+
+# hocuspocus collaborative editing server
+HOCUSPOCUS_URL=wss://hocuspocus.REPLACE_WITH_HOSTNAME
+
+# url for haraka to post inbound emails
+RAILS_INBOUND_EMAIL_URL=http://app:3000/rails/action_mailbox/relay/inbound_emails
+
+# smtp settings
+SMTP_AUTH=plain
+SMTP_DOMAIN=REPLACE_WITH_HOSTNAME
+SMTP_SERVER=smtp.example.com
+SMTP_PORT=465
+SMTP_USERNAME=smtpusername
+SMTP_PASSWORD=smtppassword
+SMTP_USE_SSL=1
+# to disable SSL, comment out line (rather than changing to 0)
+
+# Number of webserver processes and threads. See https://github.com/puma/puma
+WEB_CONCURRENCY=auto
+MIN_THREADS=3
+MAX_THREADS=3
+
+# Force all connections to be https
+FORCE_SSL=1
+
+# If you terminate https connections with a proxy in front of Loomio and send Loomio http requests, uncomment this to stop Loomio respond with redirect
+# ASSUME_SSL=1
+
+# Enable rate limiting on group creation, other POST actions
+USE_RACK_ATTACK=1
+RACK_ATTACK_RATE_MULTPLIER=1
+RACK_ATTACK_TIME_MULTPLIER=1
+
+# Postgres
+POSTGRES_PASSWORD=REPLACE_WITH_POSTGRES_PASSWORD
+POSTGRES_DB=loomio_production
+DATABASE_URL=postgresql://postgres:REPLACE_WITH_POSTGRES_PASSWORD@db/loomio_production
+
+# Redis is used for cache and Action Cable only. Existing REDIS_URL settings remain supported.
+REDIS_CACHE_URL=redis://redis:6379/0
+# Maximum memory used by the Redis cache (default: 256mb). Least recently used keys are discarded when this limit is reached.
+REDIS_MAXMEMORY=256mb
+
+# maximum file upload size in megabytes (default: 1024)
+# FILE_UPLOAD_MAX_MB=100
+
+# attachment storage service
+# local will keep attachments on the server's disk under ./storage
+# cloud storage options: amazon, digitalocean or s3_compatible
+ACTIVE_STORAGE_SERVICE=local
+
+# configure amazon S3
+# AWS_ACCESS_KEY_ID=
+# AWS_SECRET_ACCESS_KEY=
+# AWS_BUCKET=
+# AWS_REGION=
+#
+# configure digitalocean spaces
+# DO_ENDPOINT=https://syd1.digitaloceanspaces.com
+# DO_ACCESS_KEY_ID=
+# DO_SECRET_ACCESS_KEY=
+# DO_BUCKET=abucketname
+#
+# s3_compatible
+# STORAGE_ENDPOINT
+# STORAGE_ACCESS_KEY_ID
+# STORAGE_SECRET_ACCESS_KEY
+# STORAGE_REGION
+# STORAGE_BUCKET_NAME
+# STORAGE_FORCE_PATH_STYLE
+
+# Uncomment these to disable features
+# FEATURES_DISABLE_CREATE_USER=1     # users must be invited
+# FEATURES_DISABLE_CREATE_GROUP=1    # users cannot create groups
+# FEATURES_DISABLE_HELP_LINK=1       # disable the help link
+# FEATURES_DISABLE_EMAIL_LOGIN=1     # Disable login via email (usually when you have enabled SSO of some kind)
+# FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
+
+# Restrict explore page to signed-in users only
+# LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS=1
+
+# Restrict "Verify participants" feature to group admins only
+# LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY=1
+
+# Enable search engines to index public content
+# ALLOW_ROBOTS=1
+
+# Sentry DSN
+# SENTRY_PUBLIC_DSN=https://1234567890@sentry.io/123
+
+# Plausible metrics
+# PLAUSIBLE_SRC=https://plausible.io
+# PLAUSIBLE_SITE=REPLACE_WITH_HOSTNAME
+
+# Cloudflare Turnstile CAPTCHA (optional, protects registration and login from bots)
+# Get keys at https://dash.cloudflare.com/?to=/:account/turnstile
+# TURNSTILE_SITE_KEY=your-site-key
+# TURNSTILE_SECRET_KEY=your-secret-key
+
+# oauth providers, to let your users login using external accounts
+# FACEBOOK_APP_KEY=REPLACE
+# FACEBOOK_APP_SECRET=REPLACE
+# GOOGLE_APP_KEY=REPLACE
+# GOOGLE_APP_SECRET=REPLACE
+
+# Google translate (enable "translate" button on user content)
+# this uses google-cloud-translate gem. See that gem for configuration guide.
+# TRANSLATE_CREDENTIALS="{ \"type\": \"service_account\", \"project_id\": ..."
+
+# OpenAI transcription (enable transcription of audio recordings)
+# OPENAI_API_KEY=sk-1234-abcd
+
+### SAML SSO (optional)
+# SAML_APP_KEY=1 # just a flag, keep value as 1 to enable saml sso
+# SAML_IDP_METADATA_URL is used to specify the metadata endpoint, for example `https://sso.yourdomain.com/realms/YourRealm/protocol/saml/descriptor`. This setting is ignored if `SAML_IDP_METADATA` is set.
+# SAML_IDP_METADATA_URL=https://saml-metadata-url-provided-by-your-SSO-provider.com/12356
+# SAML_IDP_METADATA is used to directly specify the SAML configuration rather than fetching it from a URL. Useful if you don't want to hammer your SAML provider for this data, but not recommended for general use.
+# SAML_ISSUER is occasionally useful if you need to override the issuer value.
+# SAML_ISSUER=an-appropriate-issuer
+# SAML_LOGIN_PROVIDER_NAME is the label used for the SSO login button. The user will see this value when they're prompted to log in using SSO. For example, `Your Domain SSO`.
+# SAML_LOGIN_PROVIDER_NAME=My SAML SSO Provider Name
+# SAML_ALLOW_IDP_INITIATED=1 # Set to allow IdP-initiated SSO flows (e.g. Okta tiles, Azure AD app launcher). By default Loomio requires SP-initiated flows for security. Only enable this if your IdP does not support SP-initiated SSO.
+
+### OAuth2 and OIDC (optional)
+# auth endpoint
+# OAUTH_AUTH_URL=https://login.microsoftonline.com/token/oauth2/v2.0/authorize
+
+# token endpoint
+# OAUTH_TOKEN_URL=https://login.microsoftonline.com/token/oauth2/v2.0/token
+
+# endpoint for user profile data
+# OAUTH_PROFILE_URL=https://sso.yourdomain.com/realms/YourRealm/protocol/openid-connect/userinfo
+
+# list of scopes passed in the auth request
+# OAUTH_SCOPE=openid email profile
+
+# what OIDC refers to as the Client ID
+# OAUTH_APP_KEY=loomio
+
+# what OIDC refers to as the Client Secret
+# OAUTH_APP_SECRET=abc123
+
+# The following OAUTH_ATTR settings map fields from your OAuth provider's user profile response
+# to Loomio user attributes. The defaults match the standard OIDC claim names, so most
+# providers (Keycloak, Authentik, Azure AD, etc.) will work without setting these.
+# Only override if your provider uses non-standard field names.
+# OAUTH_ATTR_UID=sub
+# OAUTH_ATTR_NAME=name
+# OAUTH_ATTR_EMAIL=email
+# OAUTH_ATTR_PICTURE=picture
+
+# the label used for the SSO login button. The user will see this value when they're prompted to log in using SSO.
+# OAUTH_LOGIN_PROVIDER_NAME=Company auth
+
+# prevent users from editing their name, email address, or username on the profile page.
+# LOOMIO_SSO_FORCE_USER_ATTRS=1
+
+# Theme variables
+
+# Logos. Prefer SVG for the app logo. PNG for the others
+# THEME_ICON_SRC=/files/icon.png
+# THEME_APP_LOGO_SRC=/files/logo.svg
+# THEME_EMAIL_HEADER_LOGO_SRC=/files/logo_128h.png
+# THEME_EMAIL_FOOTER_LOGO_SRC=/files/logo_64h.png
+
+# colors used in emails
+# THEME_PRIMARY_COLOR
+# THEME_ACCENT_COLOR
+# THEME_TEXT_ON_PRIMARY_COLOR
+# THEME_TEXT_ON_ACCENT_COLOR
+
+# colors used in app
+
+# Default theme for light and dark modes
+# valid values: light dark lightblue darkblue
+# THEME_DEFAULT_DARK_THEME=dark
+# THEME_DEFAULT_LIGHT_THEME=light
+
+# THEME_LIGHT_PRIMARY=#6A94CA
+# THEME_LIGHT_INFO
+# THEME_LIGHT_ERROR
+# THEME_LIGHT_WARNING
+# THEME_LIGHT_SUCCESS
+# THEME_LIGHT_ANCHOR
+# THEME_LIGHT_BACKGROUND
+#
+# THEME_LIGHTBLUE_PRIMARY
+# THEME_LIGHTBLUE_INFO
+# THEME_LIGHTBLUE_ERROR
+# THEME_LIGHTBLUE_WARNING
+# THEME_LIGHTBLUE_SUCCESS
+# THEME_LIGHTBLUE_ANCHOR
+# THEME_LIGHTBLUE_BACKGROUND
+#
+# THEME_DARK_PRIMARY
+# THEME_DARK_INFO
+# THEME_DARK_ERROR
+# THEME_DARK_WARNING
+# THEME_DARK_SUCCESS
+# THEME_DARK_ANCHOR
+# THEME_DARK_BACKGROUND
+#
+# THEME_DARKBLUE_PRIMARY
+# THEME_DARKBLUE_INFO
+# THEME_DARKBLUE_ERROR
+# THEME_DARKBLUE_WARNING
+# THEME_DARKBLUE_SUCCESS
+# THEME_DARKBLUE_ANCHOR
+# THEME_DARKBLUE_BACKGROUND
+
+# tell clients to reload when the server is upgraded
+LOOMIO_SYSTEM_RELOAD=1
+
+DEVISE_SECRET=REPLACE_WITH_DEVISE_SECRET
+SECRET_COOKIE_TOKEN=REPLACE_WITH_SECRET_COOKIE_TOKEN
+RAILS_INBOUND_EMAIL_PASSWORD=REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD
+RAILS_ENV=production

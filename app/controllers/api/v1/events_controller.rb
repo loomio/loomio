@@ -7,9 +7,21 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
   def timeline
     load_and_authorize_topic
-    data = Event.where(topic_id: @topic.id)
-                .order(:position_key)
-                .pluck(:position_key, :sequence_id, :created_at, :user_id, :depth)
+    events = Event.where(topic_id: @topic.id)
+    anonymous_stance_event_ids = events
+      .where(eventable_type: 'Stance')
+      .joins('INNER JOIN stances ON stances.id = events.eventable_id')
+      .joins('INNER JOIN polls ON polls.id = stances.poll_id')
+      .where(polls: { anonymous: true })
+      .pluck(:id)
+      .index_with(true)
+
+    data = events.order(:position_key)
+                 .pluck(:id, :position_key, :sequence_id, :created_at, :user_id, :depth)
+                 .map do |id, position_key, sequence_id, created_at, user_id, depth|
+      anonymous_stance_event = anonymous_stance_event_ids[id]
+      [position_key, sequence_id, anonymous_stance_event ? nil : created_at, anonymous_stance_event ? nil : user_id, depth]
+    end
     render json: data.to_json, root: 'timeline'
   end
 

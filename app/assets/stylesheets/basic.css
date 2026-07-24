@@ -70,6 +70,7 @@ header {
 footer {
   margin: 1em;
   padding: 1em;
+  text-align: center;
   color: #888;
   a {
     color: #888;

@@ -21,7 +21,7 @@ class Views::Groups::ExportTable < Views::Application::Component
           @records.each do |record|
             tr do
               @fields.each do |field|
-                td { plain record.send(field).to_s }
+                td { plain @exporter.value_for(record, field).to_s }
               end
             end
           end

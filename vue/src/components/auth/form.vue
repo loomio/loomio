@@ -70,7 +70,6 @@ v-card.auth-form(:title="$t('auth_form.sign_up_or_log_in', { site_name: siteName
     auth-provider-form(:user='user')
     auth-email-form.mt-4(:user='user' v-if='emailLogin')
     .d-flex.text-body-small.mt-4.justify-space-between.pa-4.text-medium-emphasis
+      a.text-medium-emphasis(href="/about-loomio" v-t="'powered_by.about_loomio'")
       a.text-medium-emphasis(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")
-      space
-      a.auth-form__sign-in-help.text-medium-emphasis(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
 </template>
