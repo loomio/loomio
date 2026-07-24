@@ -16,6 +16,12 @@ docker compose run --rm app rake db:migrate
 docker compose up -d
 ```
 
+Or run [`update.sh`](update.sh) from the deployment directory, which performs these steps for you (image cleanup, pull, migrate, restart):
+
+```sh
+./update.sh
+```
+
 ## 3.1.0
 
 Loomio 3.1.0 replaces Sidekiq with Solid Queue. Migrating outstanding Sidekiq jobs is optional, and they are not transferred automatically. Skipping them does not prevent the upgrade or affect primary application data.
