@@ -20,7 +20,8 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "index returns users with identities" do
-    get :index, params: { b3_api_key: @api_key }
+    @request.headers['Authorization'] = "Bearer #{@api_key}"
+    get :index
     assert_response 200
 
     user = json['users'].find { |item| item['id'] == @user.id }
@@ -42,7 +43,8 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
       is_admin: true
     )
 
-    get :index, params: { b3_api_key: @api_key, is_admin: true }
+    @request.headers['Authorization'] = "Bearer #{@api_key}"
+    get :index, params: { is_admin: true }
     assert_response 200
 
     user_ids = json['users'].map { |item| item['id'] }
@@ -51,7 +53,8 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "show returns a user" do
-    get :show, params: { b3_api_key: @api_key, id: @user.id }
+    @request.headers['Authorization'] = "Bearer #{@api_key}"
+    get :show, params: { id: @user.id }
     assert_response 200
 
     assert_equal @user.id, json['user']['id']
@@ -60,7 +63,8 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "show by identity returns a user" do
-    get :show_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    @request.headers['Authorization'] = "Bearer #{@api_key}"
+    get :show_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
     assert_equal @user.id, json['user']['id']
@@ -112,6 +116,11 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
     assert_equal 'Identity Update', @user.reload.name
     assert_equal @user.id, json['user']['id']
+  end
+
+  test "query string API keys are rejected" do
+    get :show, params: { b3_api_key: @api_key, id: @user.id }
+    assert_response :forbidden
   end
 
   test "bearer token authenticates requests" do

@@ -8,21 +8,32 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
   end
 
   def current_user
-    @current_user ||= User.active.find_by(api_key: params[:api_key])
+    @current_user ||= User.active.find_by(api_key: bearer_token.presence || request.request_parameters[:api_key])
   end
 
   private
+
+  def bearer_token
+    request.authorization.to_s[/\ABearer (.+)\z/, 1].to_s
+  end
+
   def permitted_params
     jarams = params.dup
-    if jarams[:api_key]
+    resource_params = jarams[resource_name]
+
+    unless resource_params.respond_to?(:permit)
       jarams.delete(:api_key)
       jarams.delete(:format)
+      jarams.delete(:controller)
+      jarams.delete(:action)
       jarams.delete(:discussion)
       jarams.delete(:poll)
       jarams.delete(:id)
-      jarams = ActionController::Parameters.new({resource_name => jarams})
+      resource_params = jarams
     end
 
-    @permitted_params ||= PermittedParams.new(jarams)
+    @permitted_params ||= PermittedParams.new(
+      ActionController::Parameters.new(resource_name => resource_params)
+    )
   end
 end

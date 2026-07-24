@@ -174,7 +174,7 @@ class Rack::Attack
         matched: matched,
         discriminator: discriminator,
         method: req.request_method,
-        path: req.fullpath,
+        path: req.path,
         ip: req.remote_ip,
         email: email,
         turnstile: turnstile_provided
