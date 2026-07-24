@@ -43,6 +43,8 @@ class Api::V1::VersionsControllerTest < ActionController::TestCase
     version = JSON.parse(response.body)['versions'].first
     assert_not version.key?('whodunnit'), "anonymous poll version must not expose whodunnit (voter id)"
     assert_not version.key?('object_changes'), "anonymous poll version must not expose object_changes (reason text)"
+    assert_not version.key?('item_id'), "anonymous poll version must not expose the real stance id"
+    assert_not version.key?('created_at'), "anonymous poll version must not expose edit timing"
   end
 
   test "show returns forbidden for discarded comment" do

@@ -97,6 +97,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "### Vote — Anonymous participant — Anonymous check"
       assert_includes markdown, "I have a concern."
       refute_includes markdown, @member.name
+      refute_includes markdown, "**Submitted:**"
     end
   end
 

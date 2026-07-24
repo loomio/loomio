@@ -28,6 +28,14 @@ class VersionSerializer < ApplicationSerializer
     !hide_anonymous_stance_data?
   end
 
+  def include_item_id?
+    !hide_anonymous_stance_identity?
+  end
+
+  def include_created_at?
+    !hide_anonymous_stance_identity?
+  end
+
   def discussion
     object.item
   end
