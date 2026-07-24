@@ -42,7 +42,7 @@ fcrdns
 # MAIL FROM
 # ----------
 mail_from.is_resolvable
-spf
+mailauth
 
 # RCPT TO
 # ----------
@@ -56,7 +56,6 @@ rcpt_to.in_host_list
 # attachment
 # bounce
 # clamd
-# dkim
 # headers
 # limit
 # rspamd

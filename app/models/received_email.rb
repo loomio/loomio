@@ -9,11 +9,10 @@ class ReceivedEmail < ApplicationRecord
     headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
   end
 
-  # The bundled Haraka relay removes sender-supplied Authentication-Results,
-  # stamps its own SPF result, and rejects SPF failures before they reach Rails.
-  # It does not currently evaluate DKIM or DMARC. This check provides an
-  # additional boundary for operators using another trusted relay that reports
-  # those results without rejecting the message.
+  # The bundled Haraka relay renames sender-supplied Authentication-Results and
+  # stamps its own SPF, DKIM, and DMARC results. Authentication failures are
+  # delivered to Rails rather than rejected at the SMTP boundary so that DKIM
+  # can authenticate legitimate mail that fails SPF after forwarding.
   #
   # Returns true only when we can positively determine that the From: domain
   # failed authentication. This prevents auto-authoring group-handle content for

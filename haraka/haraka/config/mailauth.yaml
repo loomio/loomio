@@ -1,0 +1,7 @@
+---
+dns:
+  # SPF permits no more than 10 terms that cause DNS queries.
+  maxLookups: 10
+
+# Treat shorter DKIM and ARC public keys as a policy failure.
+minBitLength: 1024
