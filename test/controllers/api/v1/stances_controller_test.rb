@@ -32,6 +32,16 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
+  test "users action returns no participants for anonymous polls" do
+    @poll.update!(anonymous: true)
+    sign_in @admin
+    get :users, params: { poll_id: @poll.id }
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    assert_empty(json['users'] || [], "anonymous poll must not expose participants via users action")
+  end
+
   test "index does not allow unauthorized users" do
     outsider = User.create!(name: 'Outsider', email: "outsider#{SecureRandom.hex(4)}@example.com",
                             email_verified: true, username: "outsider#{SecureRandom.hex(4)}")

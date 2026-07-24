@@ -1,5 +1,7 @@
 require 'ipaddr'
 require 'resolv'
+require 'net/http'
+require 'stringio'
 
 module LinkPreviewService
   MAX_REDIRECTS = 3
@@ -29,14 +31,15 @@ module LinkPreviewService
   ].freeze
 
   def self.fetch(url, redirect_depth: 0)
-    return nil unless safe_to_fetch?(url)
-    response = HTTParty.get(url, follow_redirects: false, timeout: REQUEST_TIMEOUT_SECONDS)
-    if [301, 302, 303, 307, 308].include?(response.code) && response.headers['location']
+    response = pinned_get(url)
+    return nil unless response
+
+    if [301, 302, 303, 307, 308].include?(response.code.to_i) && response['location']
       return nil if redirect_depth >= MAX_REDIRECTS
-      next_url = URI.join(url, response.headers['location']).to_s
+      next_url = URI.join(url, response['location']).to_s
       return fetch(next_url, redirect_depth: redirect_depth + 1)
     end
-    return nil if response.code != 200
+    return nil if response.code.to_i != 200
     doc = Nokogiri::HTML::Document.parse(response.body)
 
     title = [doc.css('meta[property="og:title"]').attr('content')&.text,
@@ -89,6 +92,63 @@ module LinkPreviewService
     resolved.none? { |ip| blocked_ip?(ip) }
   rescue URI::InvalidURIError, Resolv::ResolvError
     false
+  end
+
+  # Fetch a URL's raw body as an IO, applying the same SSRF protection as the
+  # link-preview fetch (single DNS resolution, IP-range allow-list, connection
+  # pinned to the validated address). Returns nil if the URL is unsafe or the
+  # request fails. Used for fetching remote avatars/logos.
+  def self.safe_open(url, max_bytes: 10.megabytes)
+    response = pinned_get(url)
+    return nil unless response && response.code.to_i == 200
+    body = response.body.to_s
+    return nil if body.bytesize > max_bytes
+
+    StringIO.new(body)
+  end
+
+  # Performs an HTTP GET while defeating DNS rebinding: the host is resolved
+  # exactly once, every resolved address is checked against BLOCKED_IP_RANGES,
+  # and the socket is pinned (via Net::HTTP#ipaddr=) to the address we
+  # validated — so HTTParty/Net::HTTP cannot re-resolve to an internal IP
+  # between the check and the connection. Returns a Net::HTTPResponse or nil.
+  def self.pinned_get(url)
+    uri = URI.parse(url.to_s)
+    return nil unless %w[http https].include?(uri.scheme)
+    return nil if uri.host.to_s.empty?
+
+    safe_ip = validated_ip(uri.host)
+    return nil unless safe_ip
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.ipaddr = safe_ip
+    http.use_ssl = (uri.scheme == 'https')
+    http.open_timeout = REQUEST_TIMEOUT_SECONDS
+    http.read_timeout = REQUEST_TIMEOUT_SECONDS
+    http.start { |h| h.request(Net::HTTP::Get.new(uri)) }
+  rescue URI::InvalidURIError, SocketError, SystemCallError, Net::OpenTimeout, Net::ReadTimeout, OpenSSL::SSL::SSLError, IOError
+    nil
+  end
+
+  # Resolve host to a single address that is confirmed to be outside the
+  # blocked ranges. Rejects the host outright if ANY resolved address is
+  # blocked (matching the strict semantics of safe_to_fetch?). Handles literal
+  # IP hosts without a DNS lookup.
+  def self.validated_ip(host)
+    literal = begin
+      IPAddr.new(host)
+      true
+    rescue IPAddr::InvalidAddressError
+      false
+    end
+
+    ips = literal ? [host] : Resolv.getaddresses(host)
+    return nil if ips.empty?
+    return nil if ips.any? { |ip| blocked_ip?(ip) }
+
+    ips.first
+  rescue Resolv::ResolvError
+    nil
   end
 
   def self.blocked_ip?(ip_str)

@@ -27,7 +27,7 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
   def comment
     load_and_authorize_topic
-    self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
+    self.resource = Event.where(topic_id: @topic.id).find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
     respond_with_resource
   end
 
