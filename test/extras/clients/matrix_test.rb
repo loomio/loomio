@@ -7,6 +7,13 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     @client = Clients::Matrix.new(server: @server, access_token: @token)
   end
 
+  # Matrix delivery goes through the SSRF-guarded, IP-pinned client, which
+  # resolves the host once before connecting. Stub DNS so the (fake) test host
+  # resolves to a public address and the request proceeds.
+  def with_dns(&block)
+    Resolv.stub(:getaddresses, ->(_host) { ['93.184.216.34'] }, &block)
+  end
+
   def stub_join(room_id_or_alias, returned_room_id: nil)
     stub_request(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id_or_alias)}")
       .to_return(
@@ -31,9 +38,9 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     stub_join(room_id)
     stub_send(room_id)
 
-    response = @client.send_text(room_id, "hello world")
+    response = with_dns { @client.send_text(room_id, "hello world") }
 
-    assert_equal 200, response.code
+    assert_equal 200, response.code.to_i
     assert_requested(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id)}")
   end
 
@@ -51,8 +58,8 @@ class Clients::MatrixTest < ActiveSupport::TestCase
       ))
       .to_return(status: 200, body: {event_id: "$evt"}.to_json)
 
-    response = @client.send_html(room_id, html)
-    assert_equal 200, response.code
+    response = with_dns { @client.send_html(room_id, html) }
+    assert_equal 200, response.code.to_i
   end
 
   test "send_text to a room alias resolves via join" do
@@ -61,7 +68,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     stub_join(room_alias, returned_room_id: room_id)
     stub_send(room_id)
 
-    @client.send_text(room_alias, "test message")
+    with_dns { @client.send_text(room_alias, "test message") }
 
     assert_requested(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_alias)}")
     assert_requested(:put, %r{/rooms/#{Regexp.escape(room_id)}/send/})
@@ -71,7 +78,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     room_id = "!private999:example.com"
     stub_join(room_id)
 
-    result = @client.join_room(room_id)
+    result = with_dns { @client.join_room(room_id) }
 
     assert_equal room_id, result
     assert_requested(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id)}")
@@ -82,7 +89,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     room_id = "!private456:example.com"
     stub_join(room_alias, returned_room_id: room_id)
 
-    result = @client.join_room(room_alias)
+    result = with_dns { @client.join_room(room_alias) }
 
     assert_equal room_id, result
   end
@@ -92,7 +99,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     stub_join(room_id)
     stub_send(room_id)
 
-    @client.send_html(room_id, "<p>Secret message</p>")
+    with_dns { @client.send_html(room_id, "<p>Secret message</p>") }
 
     assert_requested(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id)}")
     assert_requested(:put, %r{/rooms/#{Regexp.escape(room_id)}/send/})
@@ -107,9 +114,22 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     stub_request(:put, %r{https://matrix.example.com/_matrix/client/v3/rooms/.+/send/m.room.message/.+})
       .to_return(status: 200, body: {event_id: "$evt"}.to_json)
 
-    client.send_text(room_id, "trailing slash test")
+    with_dns { client.send_text(room_id, "trailing slash test") }
 
     assert_not_requested(:post, %r{https://matrix.example.com//_matrix})
     assert_not_requested(:put, %r{https://matrix.example.com//_matrix})
+  end
+
+  test "join_room to a host resolving to a blocked internal IP is not sent (SSRF guard)" do
+    room_id = "!x:example.com"
+    stub_join(room_id)
+
+    result = Resolv.stub(:getaddresses, ->(_host) { ['169.254.169.254'] }) do
+      @client.join_room(room_id)
+    end
+
+    # Falls back to the passed id and never connects to the internal address.
+    assert_equal room_id, result
+    assert_not_requested(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id)}")
   end
 end

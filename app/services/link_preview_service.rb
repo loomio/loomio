@@ -107,12 +107,19 @@ module LinkPreviewService
     StringIO.new(body)
   end
 
-  # Performs an HTTP GET while defeating DNS rebinding: the host is resolved
+  def self.pinned_get(url)
+    pinned_request(:get, url)
+  end
+
+  # Performs an HTTP request while defeating DNS rebinding: the host is resolved
   # exactly once, every resolved address is checked against BLOCKED_IP_RANGES,
   # and the socket is pinned (via Net::HTTP#ipaddr=) to the address we
-  # validated — so HTTParty/Net::HTTP cannot re-resolve to an internal IP
-  # between the check and the connection. Returns a Net::HTTPResponse or nil.
-  def self.pinned_get(url)
+  # validated — so Net::HTTP cannot re-resolve to an internal IP between the
+  # check and the connection. Redirects are NOT followed (callers that need to
+  # follow must re-validate each hop). Returns a Net::HTTPResponse or nil.
+  # Use this for ANY outbound request to a user/provider-controlled URL
+  # (link previews, chatbot webhooks/Matrix, remote avatars).
+  def self.pinned_request(method, url, headers: {}, body: nil, timeout: REQUEST_TIMEOUT_SECONDS)
     uri = URI.parse(url.to_s)
     return nil unless %w[http https].include?(uri.scheme)
     return nil if uri.host.to_s.empty?
@@ -123,10 +130,18 @@ module LinkPreviewService
     http = Net::HTTP.new(uri.host, uri.port)
     http.ipaddr = safe_ip
     http.use_ssl = (uri.scheme == 'https')
-    http.open_timeout = REQUEST_TIMEOUT_SECONDS
-    http.read_timeout = REQUEST_TIMEOUT_SECONDS
-    http.start { |h| h.request(Net::HTTP::Get.new(uri)) }
-  rescue URI::InvalidURIError, SocketError, SystemCallError, Net::OpenTimeout, Net::ReadTimeout, OpenSSL::SSL::SSLError, IOError
+    http.open_timeout = timeout
+    http.read_timeout = timeout
+
+    request_class = {
+      get: Net::HTTP::Get, post: Net::HTTP::Post, put: Net::HTTP::Put
+    }.fetch(method.to_sym)
+    request = request_class.new(uri)
+    headers.each { |k, v| request[k] = v }
+    request.body = body if body
+
+    http.start { |h| h.request(request) }
+  rescue URI::InvalidURIError, KeyError, SocketError, SystemCallError, Net::OpenTimeout, Net::ReadTimeout, OpenSSL::SSL::SSLError, IOError
     nil
   end
 

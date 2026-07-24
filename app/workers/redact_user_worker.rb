@@ -44,6 +44,9 @@ class RedactUserWorker < ApplicationJob
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       Identity.where(user_id: user_id).delete_all
       Session.where(user_id: user_id).destroy_all
+      # Destroy any outstanding login credentials so a redacted/merged source
+      # account's pending login codes/magic links can never be redeemed.
+      LoginToken.where(user_id: user_id).delete_all
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
     end
 

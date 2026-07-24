@@ -101,6 +101,14 @@ class ReceivedEmailService
     if group = group_from_route_path(email.route_path)
       unless address_is_blocked(email, group)
         email.update(group_id: group.id)
+        # This route authenticates the actor solely from the (spoofable) From:
+        # header — so refuse to auto-author when the relay says the sender
+        # domain failed SPF/DKIM/DMARC. Treat as an unrecognised sender.
+        if email.sender_authentication_failed?
+          Rails.logger.info("rejecting unauthenticated sender for route: #{email.sender_email}, #{email.route_path}")
+          Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
+          return
+        end
         if actor = actor_from_email_and_group(email, group)
           Rails.logger.info("creating discussion from email: #{email.route_path}")
           DiscussionService.create(params: discussion_params(email), actor: actor)

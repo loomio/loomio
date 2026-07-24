@@ -20,7 +20,10 @@ class MigrateUserWorker < ApplicationJob
     discussions: :author_id,
     events: :user_id,
     groups: :creator_id,
-    login_tokens: :user_id,
+    # NB: login_tokens are deliberately NOT migrated. They are one-time login
+    # credentials delivered to the source account's inbox; reassigning them to
+    # the destination would let a source-account holder log in as the
+    # destination. They are destroyed with the source user in RedactUserWorker.
     membership_requests: [:requestor_id, :responder_id],
     memberships: [:user_id, :inviter_id],
     notifications: :user_id,
