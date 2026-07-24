@@ -139,4 +139,22 @@ class TaskServiceTest < ActiveSupport::TestCase
     last_email = ActionMailer::Base.deliveries.last
     assert_includes last_email.to, @member.email
   end
+
+  test "does not create tasks from anonymous stance reasons" do
+    poll = PollService.create(params: {
+      title: 'Anonymous task extraction',
+      poll_type: 'proposal',
+      group_id: @group.id,
+      anonymous: true,
+      poll_option_names: %w[Agree Disagree],
+      closing_at: 1.day.from_now
+    }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant_id: @member.id)
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='false'>private ballot task</li>"
+    stance.update_column(:reason, rich_text)
+
+    TaskService.parse_and_update(stance, :reason)
+
+    assert_empty stance.tasks.reload
+  end
 end
