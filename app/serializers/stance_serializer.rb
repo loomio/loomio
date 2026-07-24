@@ -98,7 +98,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    include_results? && !object.redacted_at
+    object.reason_visible_to?(user_id: scope[:current_user_id], voted: true)
   end
 
   def include_results?

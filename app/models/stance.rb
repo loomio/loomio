@@ -151,6 +151,12 @@ class Stance < ApplicationRecord
     participant&.name
   end
 
+  def reason_visible_to?(user_id:, voted: false)
+    return false if revoked_at.present? || redacted_at.present?
+
+    participant_id == user_id || poll.show_results?(voted: voted)
+  end
+
   def assign_option_scores
     self.option_scores = build_option_scores
   end
