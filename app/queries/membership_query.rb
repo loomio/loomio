@@ -5,7 +5,8 @@ class MembershipQuery
 
   def self.visible_to(user: , chain: start)
     chain.where("memberships.group_id IN (#{ids_or_null(user.group_ids)}) OR
-                 groups.parent_id IN (#{ids_or_null(user.adminable_group_ids)})")
+                 (groups.parent_id IN (#{ids_or_null(user.adminable_group_ids)}) AND
+                  groups.is_visible_to_parent_members = TRUE)")
   end
 
   def self.search(chain: start, params:)

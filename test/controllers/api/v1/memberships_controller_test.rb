@@ -233,6 +233,31 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_not serialized_user.key?('email')
   end
 
+  test 'parent administrators cannot list memberships of hidden subgroups' do
+    @test_group.membership_for(@user).update!(admin: true)
+    hidden_subgroup = Group.create!(
+      name: 'Hidden membership subgroup',
+      handle: "#{@test_group.handle}-hidden-membership-subgroup-#{SecureRandom.hex(4)}",
+      parent: @test_group,
+      group_privacy: 'secret',
+      is_visible_to_parent_members: false
+    )
+    hidden_member = User.create!(
+      name: 'Hidden subgroup member',
+      email: "hidden-subgroup-member-#{SecureRandom.hex(4)}@example.com",
+      email_verified: true,
+      username: "hiddensubgroupmember#{SecureRandom.hex(4)}"
+    )
+    hidden_membership = Membership.create!(group: hidden_subgroup, user: hidden_member, accepted_at: Time.current)
+    @user.reload
+
+    get :index, params: {group_id: @test_group.id, subgroups: 'all', per: 2000}
+
+    assert_response :success
+    membership_ids = JSON.parse(response.body).fetch('memberships').map { |membership| membership['id'] }
+    refute_includes membership_ids, hidden_membership.id
+  end
+
   test 'responds with unauthorized for private groups when logged out' do
     private_group = Group.create!(
       name: 'Private Group',
