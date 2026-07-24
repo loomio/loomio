@@ -59,9 +59,9 @@ class ChatbotService
         if chatbot.kind == "webhook"
           serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
           payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
-          req = Clients::Webhook.new.post(chatbot.server, params: payload)
-          if req.response.code != 200
-            Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{req.response.code} body: #{req.response.body}")
+          response = deliver_webhook(chatbot.server, payload)
+          if response.nil? || response.code.to_i != 200
+            Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{response&.code} body: #{response&.body}")
           end
         else
           component = matrix_component(template_name, event: event, poll: poll, recipient: recipient)
@@ -116,11 +116,7 @@ class ChatbotService
 
     case params[:kind]
     when 'slack_webhook'
-      Clients::Webhook.new.post(
-        params[:server],
-        params: {text: I18n.t('chatbot.connection_test_successful')},
-        options: {timeout: REQUEST_TIMEOUT_SECONDS}
-      )
+      deliver_webhook(params[:server], {text: I18n.t('chatbot.connection_test_successful')})
     else
       matrix_client = Clients::Matrix.new(server: params[:server], access_token: params[:access_token])
       message = I18n.t('chatbot.connection_test_successful', group: params[:group_name])
@@ -130,5 +126,16 @@ class ChatbotService
 
   def self.validate_public_server!(server)
     raise CanCan::AccessDenied unless LinkPreviewService.safe_to_fetch?(server)
+  end
+
+  # Deliver a webhook payload through the SSRF-guarded, IP-pinned client. The
+  # chatbot.server URL is user-controlled and only validated at save time, so
+  # every send must re-resolve-and-pin to defeat DNS rebinding / redirects.
+  # Returns a Net::HTTPResponse or nil.
+  def self.deliver_webhook(url, payload)
+    LinkPreviewService.pinned_request(:post, url,
+      headers: { 'Content-Type' => 'application/json; charset=utf-8' },
+      body: payload.to_json,
+      timeout: REQUEST_TIMEOUT_SECONDS)
   end
 end

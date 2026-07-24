@@ -7,6 +7,7 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
 
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token
+  before_action :require_logged_in_user, only: :create
   before_action :enforce_upload_size_limit, only: :create
   before_action :enforce_content_type, only: :create
 
@@ -22,6 +23,13 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   ].freeze
 
   private
+
+  # Only signed-in users may mint presigned upload URLs / blobs — otherwise
+  # anonymous callers can create orphan blobs and public loomio-domain
+  # download URLs for arbitrary content.
+  def require_logged_in_user
+    head :unauthorized unless current_user.is_logged_in?
+  end
 
   def enforce_content_type
     content_type = params.dig(:blob, :content_type).to_s.downcase

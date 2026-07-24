@@ -2,9 +2,13 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def audience
     current_user.ability.authorize! :show, target_model
 
+    # Anonymous polls must never disclose who voted. 'voters' maps to
+    # Poll#unmasked_voters (which does NOT self-mask, since it is also used for
+    # internal notification targeting), and 'non_voters' reveals voters by
+    # complement — so all voter-derived audiences are refused for anon polls.
     if target_model.respond_to?(:anonymous) &&
        target_model.anonymous &&
-       ['decided_voters', 'undecided_voters'].include?(params[:recipient_audience])
+       ['voters', 'decided_voters', 'undecided_voters', 'non_voters'].include?(params[:recipient_audience])
       raise CanCan::AccessDenied
     end
 

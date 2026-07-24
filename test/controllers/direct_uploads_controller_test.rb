@@ -60,8 +60,8 @@ class DirectUploadsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
-  test "anonymous upload is treated as trial tier" do
-    post :create, params: blob_params(byte_size: DirectUploadsController::TRIAL_MAX_UPLOAD_BYTES + 1), format: :json
-    assert_response :unprocessable_entity
+  test "anonymous upload is rejected as unauthorized" do
+    post :create, params: blob_params(byte_size: 1024), format: :json
+    assert_response :unauthorized
   end
 end

@@ -339,6 +339,11 @@ Rails.application.routes.draw do
 
   get '/pie_chart', to: 'pie_chart#show'
   post '/direct_uploads', to: 'direct_uploads#create'
+  # Shadow the stock ActiveStorage direct-upload route (draw_routes stays on so
+  # blob/representation download routes keep working) with our guarded
+  # controller, so its auth + size + content-type checks can't be bypassed by
+  # targeting the engine path directly.
+  post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')

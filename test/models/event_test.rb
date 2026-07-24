@@ -133,7 +133,10 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "poll_created notifies webhook" do
-    Events::PollCreated.publish!(@poll, @poll.author)
+    # Webhook delivery now resolves + IP-pins the host (SSRF guard), so stub DNS.
+    Resolv.stub(:getaddresses, ->(_host) { ['93.184.216.34'] }) do
+      Events::PollCreated.publish!(@poll, @poll.author)
+    end
     assert_requested :post, @webhook_url, at_least_times: 1
   end
 

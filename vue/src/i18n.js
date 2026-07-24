@@ -36,7 +36,13 @@ export function setupI18n(options = {
   messages: {en},
   silentTranslationWarn: false,
   warnHtmlInMessage: 'off',
-  warnHtmlMessage: false
+  warnHtmlMessage: false,
+  // Escape HTML in interpolation parameters. Many translations are rendered
+  // with v-html and interpolate user-controlled values (discussion/poll
+  // titles, user names) — without this, a title like `<img onerror=…>` is a
+  // stored XSS. The message templates keep their own markup; only the injected
+  // params are escaped.
+  escapeParameterHtml: true
 }){
   const i18n = createI18n(options)
   setI18nLanguage(i18n, options.locale)
