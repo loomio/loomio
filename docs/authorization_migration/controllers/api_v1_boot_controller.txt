@@ -1,0 +1,90 @@
+# Authorization migration tracker
+# controller = api/v1/boot
+# Update each action as its evidence is added. Do not delete route aliases.
+
+[action site]
+routes = GET /api/v1/boot/site
+action_id = api/v1/boot#site
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action user]
+routes = GET /api/v1/boot/user
+action_id = api/v1/boot#user
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action version]
+routes = GET /api/v1/boot/version
+action_id = api/v1/boot#version
+status = complete
+risk = low
+authorization_mode = public
+current_loader = none
+current_cancan = none
+target_policy = PublicResponsePolicy
+target_query = show?
+base_scope = not applicable
+parent_constraint = not applicable
+response_type = aggregate
+response_records = none; scalar deployment metadata
+sensitive_fields = version, release, reload, operator notice
+response_proof = named public response :boot_version with reviewed reason
+actors = signed_out, session user, restricted user, API clients
+dimensions = current version, old version, release mismatch, system notice
+baseline_tests = test/controllers/api/v1/boot_controller_test.rb
+policy_tests = test/policies/public_response_policy_test.rb
+request_tests = test/controllers/api/v1/boot_controller_test.rb
+negative_tests = PublicResponsePolicy rejects unreviewed response names
+composition_tests = not applicable; response contains no user or tenant records
+decision_differences = none; endpoint was public and remains public
+review = reviewed
+commit = this commit
+verified_at = 2026-07-24
+notes = First pilot for explicit public response authorization

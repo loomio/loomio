@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include SentryHelper
   include PrettyUrlHelper
   include LoadAndAuthorize
+  include PunditAuthorization
   include EmailHelper
   include ApplicationHelper
   helper :email
@@ -48,7 +49,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from(CanCan::AccessDenied) do |exception|
+  rescue_from(CanCan::AccessDenied, Pundit::NotAuthorizedError) do |exception|
     if current_user.is_logged_in?
       flash[:error] = t("error.access_denied")
       redirect_to dashboard_path

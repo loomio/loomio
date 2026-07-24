@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require_relative "../lib/authorization_migration/inventory"
+
+remaining_only = ARGV.delete("--remaining")
+update = ARGV.delete("--update")
+check = ARGV.delete("--check")
+
+unless ARGV.empty?
+  warn "Unknown arguments: #{ARGV.join(" ")}"
+  exit 2
+end
+
+if update || check
+  ENV["RAILS_ENV"] ||= "development"
+  require_relative "../config/environment"
+  root = Rails.root
+else
+  root = Pathname(__dir__).join("..").expand_path
+end
+
+inventory = AuthorizationMigration::Inventory.new(root:)
+result = if update
+  inventory.update!
+elsif check
+  inventory.check
+else
+  inventory.status
+end
+puts inventory.format(result, remaining_only:)
+
+exit(result.exit_status) unless update

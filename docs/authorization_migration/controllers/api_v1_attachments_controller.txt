@@ -1,0 +1,61 @@
+# Authorization migration tracker
+# controller = api/v1/attachments
+# Update each action as its evidence is added. Do not delete route aliases.
+
+[action destroy]
+routes = DELETE /api/v1/attachments/:id
+action_id = api/v1/attachments#destroy
+status = inventoried
+risk = high
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action index]
+routes = GET /api/v1/attachments
+action_id = api/v1/attachments#index
+status = inventoried
+risk = high
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =

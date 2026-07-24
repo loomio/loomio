@@ -1,0 +1,22 @@
+Pundit migration
+  routes:                 761
+  first-party actions:    280
+  complete:                 1
+  remaining:              279
+  reviews pending:        313
+  untracked routes:         0
+  stale tracked routes:     0
+  invalid trackers:         0
+  action status:         inventoried=279, complete=1
+
+Next:
+  api/b2/memberships#create                  inventoried    high
+  api/b2/memberships#index                   inventoried    high
+  api/b2/polls#create                        inventoried    high
+  api/b2/polls#destroy                       inventoried    high
+  api/b2/polls#index                         inventoried    high
+  api/b2/polls#show                          inventoried    high
+  api/b2/polls#update                        inventoried    high
+  api/b3/users#deactivate_by_identity        inventoried    high
+  api/b3/users#destroy_by_identity           inventoried    high
+  api/b3/users#reactivate_by_identity        inventoried    high

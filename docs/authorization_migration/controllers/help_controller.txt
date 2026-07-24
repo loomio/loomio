@@ -1,0 +1,90 @@
+# Authorization migration tracker
+# controller = help
+# Update each action as its evidence is added. Do not delete route aliases.
+
+[action api2]
+routes = GET /help/api2
+action_id = help#api2
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action api3]
+routes = GET /help/api3
+action_id = help#api3
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action whats_new]
+routes = GET /whats_new
+action_id = help#whats_new
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =

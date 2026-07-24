@@ -13,6 +13,7 @@ gem 'active_model_serializers', '~> 0.8.1', github: 'loomio/active_model_seriali
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
+gem 'pundit'
 gem 'gravtastic'
 gem 'activeadmin', '~> 3.5.2'
 gem 'ransack', '4.4.1'

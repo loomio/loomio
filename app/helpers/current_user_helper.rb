@@ -6,6 +6,7 @@ module CurrentUserHelper
 
   def sign_in(user)
     @current_user = nil
+    reset_pundit_context
     user = UserService.verify(user: user)
     start_new_session_for(user)
     record_successful_sign_in(user)
@@ -16,6 +17,7 @@ module CurrentUserHelper
   def sign_out(_scope = nil)
     terminate_session
     @current_user = nil
+    reset_pundit_context
     true
   end
 
@@ -42,6 +44,10 @@ module CurrentUserHelper
   end
 
   private
+
+  def reset_pundit_context
+    pundit_reset! if respond_to?(:pundit_reset!, true)
+  end
 
   def authenticated_user
     resume_session&.user || bridge_devise_session&.user

@@ -1,6 +1,6 @@
 class Api::V1::MembershipRequestsController < Api::V1::RestfulController
 
-  before_action :authorize, only: [:pending, :previous]
+  before_action :authorize_group_membership_requests, only: [:pending, :previous]
 
   def pending
     @membership_requests = page_collection(@group.membership_requests.pending)
@@ -30,7 +30,7 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
 
   private
 
-  def authorize
+  def authorize_group_membership_requests
     load_and_authorize :group
     current_user.ability.authorize! :manage_membership_requests, @group
   end

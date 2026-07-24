@@ -1,0 +1,38 @@
+# Durable authorization architecture and behaviour decisions
+
+[2026-07-24 authorization context]
+Pundit receives AuthorizationContext rather than a bare User. The context records
+the authentication mechanism and delegates user predicates. It is reset whenever
+sign-in or sign-out changes the current user.
+
+[2026-07-24 policy defaults]
+ApplicationPolicy denies conventional actions. ApplicationPolicy::Scope raises
+until a concrete scope implements resolve. Policies must opt in to access.
+
+[2026-07-24 query boundary]
+Policy scopes own visibility and access constraints. Query objects own filtering,
+search, ordering, pagination, and eager loading. PollQuery.visible_to and
+PollQuery.relevant_to will move into PollPolicy::Scope; PollQuery.filter may
+remain, but only over the relation returned by policy_scope.
+
+[2026-07-24 route inventory environment]
+The inventory boots the normal development environment using DATABASE_URL from
+the initialized login shell. Development-only routes are included and explicitly
+classified, but do not count as first-party production migration work.
+
+[2026-07-24 generated and mounted routes]
+ActiveAdmin, mounted-engine, and development-only actions require reviewed
+entries in exceptions.txt. They are not silently excluded and the migration
+cannot report complete while their reviews remain pending.
+
+[2026-07-24 Pundit method names]
+Controller helper and callback methods may not use names reserved by Pundit.
+Api::V1::MembershipRequestsController's private authorize callback was renamed
+before action migration because it would otherwise override Pundit's authorize
+method.
+
+[2026-07-24 explicit public responses]
+Public actions declare pundit_authorization_mode :public and call
+authorize_public_response! with a named response and reason. The named response
+must also be allowed by PublicResponsePolicy. The after-action verifier raises
+if the declared response evidence is absent or has a different mode.

@@ -1,5 +1,7 @@
 class Api::V1::SnorlaxBase < ActionController::Base
-  rescue_from(CanCan::AccessDenied)                    { |e| respond_with_access_denied e }
+  include PunditAuthorization
+
+  rescue_from(CanCan::AccessDenied, Pundit::NotAuthorizedError) { |e| respond_with_access_denied e }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }

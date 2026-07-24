@@ -1,0 +1,90 @@
+# Authorization migration tracker
+# controller = identities/google
+# Update each action as its evidence is added. Do not delete route aliases.
+
+[action create]
+routes = GET /google/authorize
+action_id = identities/google#create
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action destroy]
+routes = DELETE /google
+action_id = identities/google#destroy
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action oauth]
+routes = GET /google/oauth
+action_id = identities/google#oauth
+status = inventoried
+risk = unclassified
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =

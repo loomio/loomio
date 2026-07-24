@@ -1,0 +1,61 @@
+# Authorization migration tracker
+# controller = api/b2/memberships
+# Update each action as its evidence is added. Do not delete route aliases.
+
+[action create]
+routes = POST /api/b2/memberships
+action_id = api/b2/memberships#create
+status = inventoried
+risk = high
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =
+
+[action index]
+routes = GET /api/b2/memberships
+action_id = api/b2/memberships#index
+status = inventoried
+risk = high
+authorization_mode = undecided
+current_loader =
+current_cancan =
+target_policy =
+target_query =
+base_scope =
+parent_constraint =
+response_type =
+response_records =
+sensitive_fields =
+response_proof =
+actors =
+dimensions =
+baseline_tests =
+policy_tests =
+request_tests =
+negative_tests =
+composition_tests =
+decision_differences = undecided
+review = pending
+commit =
+verified_at =
+notes =

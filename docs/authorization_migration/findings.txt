@@ -1,0 +1,1 @@
+# Security findings discovered during the Pundit migration

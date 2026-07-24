@@ -1,4 +1,6 @@
 class Api::V1::BootController < Api::V1::RestfulController
+  pundit_authorization_mode :public, only: :version
+
   def site
     Sentry.metrics.count("boot.site", attributes: { signed_in: current_user.is_logged_in? })
     render json: Boot::Site.new.payload.merge(user_payload)
@@ -6,6 +8,10 @@ class Api::V1::BootController < Api::V1::RestfulController
   end
 
   def version
+    authorize_public_response!(
+      :boot_version,
+      reason: "The deployed application version and operator notice are public"
+    )
     render json: {
       version: Version.current,
       release: AppConfig.release,
