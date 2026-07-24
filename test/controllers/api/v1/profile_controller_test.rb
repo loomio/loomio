@@ -108,4 +108,82 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     refute_equal original_unsubscribe_token, @user.unsubscribe_token
     refute LoginToken.exists?(unused_login_token.id)
   end
+
+  # -- unsubscribe-token (restricted user) authorization --
+  # An attacker who obtains a victim's permanent unsubscribe_token (present in
+  # the footer of every notification email) must not be able to take over or
+  # destroy the account. These prove the restricted-user guardrails.
+
+  UNSUB = 'unsub-secret-token-for-tests'
+
+  test "restricted user cannot change password via update_profile" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+    original_digest = @user.password_digest
+
+    post :update_profile, params: {
+      unsubscribe_token: UNSUB,
+      user: { password: 'attacker_password_123', password_confirmation: 'attacker_password_123' }
+    }, format: :json
+
+    assert_equal original_digest, @user.reload.password_digest, "restricted user must not change password"
+  end
+
+  test "restricted user cannot change email via update_profile" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+    original_email = @user.email
+
+    post :update_profile, params: {
+      unsubscribe_token: UNSUB,
+      user: { email: 'attacker@evil.test' }
+    }, format: :json
+
+    assert_equal original_email, @user.reload.email, "restricted user must not change email"
+  end
+
+  test "restricted user cannot deactivate the account" do
+    @user.update_columns(unsubscribe_token: UNSUB, deactivated_at: nil)
+
+    post :deactivate, params: { unsubscribe_token: UNSUB }, format: :json
+
+    assert_response :forbidden
+    assert_nil @user.reload.deactivated_at
+  end
+
+  test "restricted user cannot redact/destroy the account" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+
+    delete :destroy, params: { unsubscribe_token: UNSUB }, format: :json
+
+    assert_response :forbidden
+  end
+
+  test "restricted user cannot read the email_api_key" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+
+    get :email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
+
+    assert_response :forbidden
+  end
+
+  test "restricted user cannot reset the email_api_key" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+    original = @user.email_api_key
+
+    post :reset_email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
+
+    assert_response :forbidden
+    assert_equal original, @user.reload.email_api_key
+  end
+
+  test "restricted user CAN still update notification preferences" do
+    @user.update_columns(unsubscribe_token: UNSUB, email_when_mentioned: true)
+
+    post :update_profile, params: {
+      unsubscribe_token: UNSUB,
+      user: { email_when_mentioned: false }
+    }, format: :json
+
+    assert_response :success
+    assert_equal false, @user.reload.email_when_mentioned, "email preference update must still work"
+  end
 end

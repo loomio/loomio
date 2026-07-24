@@ -25,20 +25,23 @@ class Clients::Matrix
   # invite. For rooms already joined this is a no-op on the server side.
   # Returns the canonical room ID.
   def join_room(room_id_or_alias)
-    response = HTTParty.post(
+    # @server is user-controlled; go through the SSRF-guarded, IP-pinned client
+    # so a rebinding/redirect can't reach internal services or cloud metadata.
+    response = LinkPreviewService.pinned_request(:post,
       "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id_or_alias)}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
       body: "{}",
       timeout: REQUEST_TIMEOUT_SECONDS
     )
-    response.parsed_response["room_id"] || room_id_or_alias
+    parsed = (JSON.parse(response.body) rescue {}) if response
+    (parsed.is_a?(Hash) && parsed["room_id"]) || room_id_or_alias
   end
 
   private
 
   def send_message(room_id, content)
     txn_id = SecureRandom.hex(16)
-    HTTParty.put(
+    LinkPreviewService.pinned_request(:put,
       "#{@server}/_matrix/client/v3/rooms/#{CGI.escape(room_id)}/send/m.room.message/#{txn_id}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
       body: content.to_json,

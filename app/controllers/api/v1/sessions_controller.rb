@@ -88,10 +88,16 @@ class Api::V1::SessionsController < ApplicationController
   def login_token_user
     LoginToken.transaction do
       token = LoginToken.unused.lock.find_by(code: resource_params.require(:code))
-      next unless login_token_matches?(token)
-
-      token.update!(used: true)
-      token.user
+      if login_token_matches?(token)
+        token.update!(used: true)
+        token.user
+      else
+        # This path only runs once the request has cleared turnstile_ok?, so a
+        # wrong code here is a genuine login attempt worth counting against the
+        # token's MAX_FAILED_CODE_ATTEMPTS budget.
+        record_failed_login_code_attempt
+        nil
+      end
     end
   end
 
@@ -99,16 +105,17 @@ class Api::V1::SessionsController < ApplicationController
     resource_params[:email].present? && token&.useable? && token.user.email == resource_params[:email]
   end
 
+  # Used only to decide whether a fresh turnstile is required. A matching code
+  # means the user already solved a CAPTCHA to receive it, so skip turnstile.
+  # A mismatch must NOT mutate token state here (that would let an
+  # unauthenticated, CAPTCHA-less request burn a victim's remaining attempts) —
+  # it simply falls through to the turnstile check. Failed-attempt accounting
+  # happens later, in login_token_user, behind the turnstile gate.
   def usable_login_token_for_code
     return unless resource_params[:code].present?
 
     token = LoginToken.unused.find_by(code: resource_params[:code])
-    if login_token_matches?(token)
-      token
-    else
-      record_failed_login_code_attempt
-      nil
-    end
+    token if login_token_matches?(token)
   end
 
   def record_failed_login_code_attempt

@@ -1,5 +1,25 @@
 class Api::V1::ProfileController < Api::V1::RestfulController
+  # A "restricted" current_user is one authenticated ONLY by an unsubscribe_token
+  # (a permanent bearer token embedded in every notification email), not by a
+  # real session. Such a request may manage email/notification preferences, but
+  # must NEVER reach account-destructive or credential-bearing actions, nor edit
+  # identity fields (name/email/password/username/avatar) via update_profile.
+  RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
+    email_api_key reset_email_api_key deactivate destroy
+    send_merge_verification_email remind upload_avatar
+  ].freeze
+
+  # The only user fields update_profile may change for a restricted user.
+  RESTRICTED_USER_UPDATABLE_FIELDS = %i[
+    email_when_mentioned email_when_proposal_closing_soon
+    email_new_discussions_and_proposals email_on_participation
+    email_newsletter email_catch_up_day default_membership_volume
+    selected_locale autodetect_time_zone time_zone date_time_pref
+    email_new_discussions_and_proposals_group_ids
+  ].freeze
+
   before_action :require_current_user, except: [:email_status]
+  before_action :forbid_restricted_user_actions
 
   def index
     ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
@@ -146,7 +166,22 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def current_user_params
-    { user: current_user, actor: current_user, params: permitted_params.user }
+    { user: current_user, actor: current_user, params: profile_update_params }
+  end
+
+  def profile_update_params
+    return permitted_params.user unless current_user.restricted
+
+    # Restricted (unsubscribe-token) users may only update notification prefs —
+    # strip identity/credential fields so the token cannot be used to change
+    # name, email, password, username, or avatar.
+    permitted_params.user.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
+  end
+
+  def forbid_restricted_user_actions
+    return unless RESTRICTED_USER_FORBIDDEN_ACTIONS.include?(action_name) && current_user.restricted
+
+    raise CanCan::AccessDenied.new("unsubscribe-token users may not perform #{action_name}")
   end
 
   def resource_class

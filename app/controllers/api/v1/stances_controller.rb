@@ -70,7 +70,14 @@ class Api::V1::StancesController < Api::V1::RestfulController
       end
 
       if @poll.anonymous?
-        collection.order(:id)
+        # Anonymous stances must NOT be returned in creation order: stance ids
+        # are assigned in member order, so ordering by id (or created_at) lets a
+        # viewer align each row's position with the member list and read its
+        # option_scores to reconstruct who voted for what. Order by a stable,
+        # app-secret-keyed hash instead — deterministic (so pagination is
+        # consistent) but uncorrelated with creation/member order.
+        salt = Stance.connection.quote(Rails.application.secret_key_base)
+        collection.order(Arel.sql("md5(stances.id::text || #{salt})"))
       else
         collection.order('cast_at DESC NULLS LAST, created_at DESC')
       end
@@ -80,6 +87,10 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def users
     instantiate_collection do |collection|
+      # Anonymous polls must not expose who participated — mirror the masking
+      # applied by polls#voters and stances#index.
+      next User.none if @poll.anonymous?
+
       if query = params[:query]
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').

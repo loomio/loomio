@@ -71,7 +71,10 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "invalid login code attempts are counted before turnstile" do
+  test "invalid login code attempts are NOT counted when turnstile is not solved" do
+    # A wrong code with no turnstile token must be rejected at the turnstile
+    # gate WITHOUT burning the victim's remaining code attempts — otherwise an
+    # unauthenticated, captcha-less attacker could invalidate a victim's token.
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
     user = User.create!(email: "countbadcode@example.com", email_verified: true)
     token = LoginToken.create!(user: user)
@@ -79,17 +82,32 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     post :create, params: { user: { email: user.email, code: token.code + 1 } }
 
     assert_response :forbidden
+    assert_equal 0, token.reload.failed_attempts
+  end
+
+  test "invalid login code attempts are counted once turnstile is solved" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    WebMock.stub_request(:post, TurnstileService::SITEVERIFY_URL).
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
+    user = User.create!(email: "countbadcode2@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1, turnstile_token: "cf-ok" } }
+
+    assert_response :unauthorized
     assert_equal 1, token.reload.failed_attempts
   end
 
-  test "invalid login code attempts burn the token at the limit" do
+  test "invalid login code attempts burn the token at the limit once turnstile is solved" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    WebMock.stub_request(:post, TurnstileService::SITEVERIFY_URL).
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
     user = User.create!(email: "burnbadcode@example.com", email_verified: true)
     token = LoginToken.create!(user: user, failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1)
 
-    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+    post :create, params: { user: { email: user.email, code: token.code + 1, turnstile_token: "cf-ok" } }
 
-    assert_response :forbidden
+    assert_response :unauthorized
     assert token.reload.used
     assert_not token.useable?
   end

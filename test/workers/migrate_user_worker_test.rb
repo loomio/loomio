@@ -108,4 +108,19 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert @patrick.reload.deactivated_at.present?
     assert_equal 2, @jennifer.reload.sign_in_count
   end
+
+  test "does not migrate source login tokens to destination; destroys them" do
+    source_token = LoginToken.create!(user: @patrick)
+    token_id = source_token.id
+    source_code = source_token.code
+
+    # (the merge legitimately mints a fresh login token for the destination's
+    # own account via the accounts_merged email — that one is fine; what must
+    # NOT happen is the SOURCE's token/code becoming valid for the destination)
+    MigrateUserWorker.perform_later(@patrick.id, @jennifer.id)
+
+    assert_not LoginToken.exists?(token_id), "source login token must be destroyed on merge, not reassigned"
+    assert_not LoginToken.where(user_id: @jennifer.id, code: source_code).exists?,
+               "the source account's login code must not become valid for the destination"
+  end
 end

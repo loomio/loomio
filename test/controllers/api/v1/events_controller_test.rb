@@ -99,6 +99,20 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
+  test "comment does not leak a comment from a different topic (IDOR)" do
+    # A comment lives in a discussion the actor is NOT allowed to see...
+    secret_comment = Comment.new(parent: discussions(:alien_discussion), body: "secret")
+    secret_event = CommentService.create(comment: secret_comment, actor: users(:alien))
+
+    # ...and the actor supplies a topic they CAN see plus the foreign comment id.
+    sign_in @user
+    get :comment, params: { discussion_id: @discussion.id, comment_id: secret_event.eventable.id }
+
+    # The comment_id must be scoped to the authorized topic, so this is a 404,
+    # not a leak of the secret comment's body.
+    assert_response :not_found
+  end
+
   test "index responds to per parameter" do
     sign_in @user
     3.times { CommentService.create(comment: Comment.new(parent: @discussion, body: "Test comment"), actor: @user) }

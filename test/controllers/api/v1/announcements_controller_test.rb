@@ -127,6 +127,24 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     }.merge(extra), actor: @admin)
   end
 
+  test "audience voters is rejected for anonymous polls" do
+    poll = create_test_poll(anonymous: true)
+    get :audience, params: { poll_id: poll.id, recipient_audience: 'voters' }
+    assert_response :forbidden
+  end
+
+  test "audience non_voters is rejected for anonymous polls" do
+    poll = create_test_poll(anonymous: true)
+    get :audience, params: { poll_id: poll.id, recipient_audience: 'non_voters' }
+    assert_response :forbidden
+  end
+
+  test "audience voters still works for non-anonymous polls" do
+    poll = create_test_poll
+    get :audience, params: { poll_id: poll.id, recipient_audience: 'voters' }
+    assert_response :success
+  end
+
   test "poll create can add group members when members_can_add_guests=false" do
     hex = SecureRandom.hex(4)
     member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
