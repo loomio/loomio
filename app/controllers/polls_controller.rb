@@ -30,9 +30,4 @@ class PollsController < ApplicationController
     end
   end
 
-  private
-
-  def current_user
-    restricted_user || super
-  end
 end

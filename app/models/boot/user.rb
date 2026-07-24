@@ -14,9 +14,10 @@ module Boot
         current_user_id:  user.id,
         pending_identity: @identity,
         flash:            @flash,
-        root_url:         @root_url,
-        channel_token:    user.secret_token
-      )
+        root_url:         @root_url
+      ).tap do |payload|
+        payload[:channel_token] = user.secret_token unless user.restricted
+      end
     end
 
     private
