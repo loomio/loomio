@@ -148,19 +148,7 @@ $blue: #3498db !default;
 
 }
 
-.btn--ink {
-  @extend .btn--base--landing;
-  border-color: transparent;
-  background-color: #293c4a;
-  color: #fff;
-}
 
-.btn--gold {
-  @extend .btn--base--landing;
-  border-color: transparent;
-  background-color: #dca034;
-  color: #fff;
-}
 
 .btn--primary--landing {
   @extend .btn--base--landing;

@@ -4,11 +4,13 @@ import { md3 } from 'vuetify/blueprints'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 const colors = {
   yellow50: "#FFF7E0",
+  yellow100: "#FFECB3",
   yellow425: "#F5C401",
   bluegoo: "#f0f4f9",
   blue25: "#F5FAFF",
   blue35: "#F1F8FF",
   blue50: "#EBF4FF",
+  blue75: "#D7EAFF",
   blue300: "#4DA3FF",
   blue400: "#1F87FF",
   blue500: "#0070E0",

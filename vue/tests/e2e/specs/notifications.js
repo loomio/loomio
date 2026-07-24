@@ -7,6 +7,7 @@ module.exports = {
     page.loadPath('setup_all_notifications')
     page.pause(500)
     page.click('.notifications__button')
+    page.expectText('.notifications__dropdown', 'invited you to a group')
     page.expectText('.notifications__dropdown', 'accepted your invitation to join')
     page.expectText('.notifications__dropdown', 'invited you to join')
     page.expectText('.notifications__dropdown', 'approved your request')
