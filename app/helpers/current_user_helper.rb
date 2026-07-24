@@ -85,12 +85,12 @@ module CurrentUserHelper
         value: session_record.id,
         httponly: true,
         same_site: :lax,
-        secure: ENV['FORCE_SSL'].to_i == 1
+        secure: Rails.application.config.force_ssl
       }
       cookies.permanent[:signed_in] = {
         value: '1',
         same_site: :lax,
-        secure: ENV['FORCE_SSL'].to_i == 1
+        secure: Rails.application.config.force_ssl
       }
     end
   end
