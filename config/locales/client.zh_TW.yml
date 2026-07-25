@@ -2404,6 +2404,7 @@ zh_TW:
     new: 新的
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>鎖定了該主題"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>解鎖了該主題"
+    discussion_moved_without_source: "<a class='actor-link' href='/u/%{username}'>%{author}</a>移動了主題"
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:

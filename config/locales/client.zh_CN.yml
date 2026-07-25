@@ -2608,6 +2608,7 @@ zh_CN:
     event_removed: 已从帖子中移除
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>锁定了该主题"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>解锁了该主题"
+    discussion_moved_without_source: "<a class='actor-link' href='/u/%{username}'>%{author}</a>移动了主题"
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已添加到帖子！
   auth_form:
