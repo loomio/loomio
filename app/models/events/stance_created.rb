@@ -16,11 +16,21 @@ class Events::StanceCreated < Event
   end
 
   def silence_mentions?
-    eventable.poll.anonymous || eventable.poll.hide_results == 'until_closed'
+    eventable.poll.anonymous? || !eventable.shared_update_visible?
   end
 
   def real_user
     eventable.real_participant
+  end
+
+  def subscribed_recipients
+    return User.none unless eventable.shared_update_visible?
+
+    super
+  end
+
+  def notify_chatbots?
+    eventable.shared_update_visible?
   end
 
   private

@@ -180,6 +180,10 @@ class Stance < ApplicationRecord
                  kind: ['stance_created', 'stance_updated']).exists?
   end
 
+  def shared_update_visible?
+    poll.anonymous? || poll.show_results?(voted: false)
+  end
+
   def body
     reason
   end

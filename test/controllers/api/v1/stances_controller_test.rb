@@ -32,6 +32,28 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
+  test "index only returns the viewer stance while identified results are hidden until vote" do
+    @poll.update!(hide_results: 'until_vote')
+    admin_stance = @poll.stances.find_by!(participant_id: @admin.id)
+    admin_stance.update!(
+      stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
+      cast_at: Time.current
+    )
+
+    sign_in @user
+    get :index, params: { poll_id: @poll.id }
+
+    assert_response :success
+    payload = JSON.parse(response.body)
+    stances = payload['stances']
+    assert_equal [@user.id], stances.map { |stance| stance['participant_id'] }
+
+    serialized_poll = payload['polls'].find { |poll| poll['id'] == @poll.id }
+    %w[results stance_counts total_score stv_results].each do |attribute|
+      assert_not serialized_poll.key?(attribute), "hidden poll exposed #{attribute}"
+    end
+  end
+
   test "users action returns participants for anonymous polls" do
     @poll.update!(anonymous: true)
     sign_in @admin

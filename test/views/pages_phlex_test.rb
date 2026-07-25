@@ -35,6 +35,36 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, @discussion.author.name
   end
 
+  test "discussion show excludes hidden identified stances before pagination without excluding anonymous stances" do
+    @discussion.topic.update!(allow_concurrent_polls: true)
+    anonymous_poll = PollService.create(params: {
+      title: 'Anonymous SSR poll',
+      poll_type: 'proposal',
+      topic_id: @discussion.topic_id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: users(:admin))
+    hidden_poll = PollService.create(params: {
+      title: 'Hidden SSR poll',
+      poll_type: 'proposal',
+      topic_id: @discussion.topic_id,
+      hide_results: 'until_closed',
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: users(:admin))
+
+    component = Views::Topics::Show.new(
+      topic: @discussion.topic,
+      recipient: @recipient,
+      pagination: { limit: 10, offset: 0 }
+    )
+    hidden_ids = component.send(:stance_ids_hidden_from_activity).pluck(:id)
+
+    assert_includes hidden_ids, hidden_poll.stances.find_by!(participant_id: @user.id).id
+    assert_not_includes hidden_ids, anonymous_poll.stances.find_by!(participant_id: @user.id).id
+  end
+
   test "discussion show renders comment thread items" do
     comment = Comment.create!(
       body: "Test comment in pages",

@@ -105,7 +105,7 @@ class PollSerializer < ApplicationSerializer
   ]
 
   def include_stance_counts?
-    poll.show_results?(voted: true)
+    results_visible?
   end
 
   def results
@@ -113,7 +113,11 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_results?
-    poll.show_results?(voted: true)
+    results_visible?
+  end
+
+  def include_total_score?
+    results_visible?
   end
 
   def stv_results
@@ -121,7 +125,11 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_stv_results?
-    object.poll_type == 'stv' && poll.show_results?(voted: true)
+    object.poll_type == 'stv' && results_visible?
+  end
+
+  def results_visible?
+    poll.show_results?(voted: poll.anonymous? || my_stance&.cast_at.present?)
   end
 
   def current_outcome

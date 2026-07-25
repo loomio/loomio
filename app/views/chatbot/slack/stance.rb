@@ -10,6 +10,8 @@ class Views::Chatbot::Slack::Stance < Views::Chatbot::Slack::Base
   end
 
   def view_template
+    return unless @event.eventable.shared_update_visible?
+
     slack_convert { render_notification_text(@event, @poll) }
     md "\n"
     slack_convert { render_title(@event.eventable.poll) }

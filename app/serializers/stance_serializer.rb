@@ -80,7 +80,17 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_results?
-    !object.revoked_at && (object.participant_id == scope[:current_user_id] || poll.show_results?(voted: true))
+    !object.revoked_at && (object.participant_id == scope[:current_user_id] || poll.show_results?(voted: current_user_voted?))
+  end
+
+  def current_user_voted?
+    return true if poll.anonymous?
+    return false unless scope[:current_user_id]
+
+    stance = cache_fetch(:my_stances_by_poll_id, poll.id) do
+      Stance.latest.find_by(poll_id: poll.id, participant_id: scope[:current_user_id])
+    end
+    stance&.cast_at.present?
   end
 
   def include_mentioned_usernames?

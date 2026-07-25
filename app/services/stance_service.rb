@@ -45,7 +45,9 @@ class StanceService
       end
 
       new_stance.poll.update_counts!
-      MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
+      if stance.shared_update_visible?
+        MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
+      end
       Sentry.metrics.count("stance.update", attributes: { poll_type: stance.poll.poll_type })
       Events::StanceCreated.publish!(new_stance)
     else
@@ -76,14 +78,18 @@ class StanceService
     actor.ability.authorize!(:redact, stance)
     stance.update!(redacted_at: Time.zone.now, redactor_id: actor.id)
     stance.update_pg_search_document
-    MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+    if stance.shared_update_visible?
+      MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+    end
   end
 
   def self.unredact(stance:, actor:)
     actor.ability.authorize!(:unredact, stance)
     stance.update!(redacted_at: nil, redactor_id: nil)
     stance.update_pg_search_document
-    MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+    if stance.shared_update_visible?
+      MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
+    end
   end
 
   # def self.destroy(stance:, actor:)
