@@ -79,7 +79,12 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
-      respond_with_collection serializer: StanceSerializer, root: :stances
+      if target_model.detached_anonymous?
+        self.collection = User.where(id: collection.select(:voter_id))
+        respond_with_collection serializer: AuthorSerializer, root: :users
+      else
+        respond_with_collection serializer: StanceSerializer, root: :stances
+      end
     elsif target_model.is_a?(Outcome)
       self.collection = OutcomeService.invite(outcome: target_model, actor: current_user, params: params)
       respond_with_collection serializer: UserSerializer, root: :users

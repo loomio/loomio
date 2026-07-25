@@ -7,14 +7,25 @@ class PollOption < ApplicationRecord
 
   has_many :stance_choices, dependent: :destroy
   has_many :stances, -> { where("stances.revoked_at IS NULL") }, through: :stance_choices
+  has_many :anonymous_ballot_choices, dependent: :restrict_with_error
 
   validates :test_operator, inclusion: { in: [ 'gte', 'lte' ] }, allow_nil: true
   normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validates :test_against, inclusion: { in: [ 'score_percent', 'voter_percent' ] }, allow_nil: true
+  validate :cannot_change_after_anonymous_ballot, on: :update
 
   delegate :content_locale, to: :poll
 
   def update_counts!
+    if poll.detached_anonymous?
+      choices = anonymous_ballot_choices
+      return update_columns(
+        voter_scores: {},
+        total_score: choices.sum(:score),
+        voter_count: choices.distinct.count(:anonymous_ballot_id)
+      )
+    end
+
     update_columns(
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,
       total_score: stance_choices.latest.sum(:score),
@@ -62,4 +73,14 @@ class PollOption < ApplicationRecord
     return 0 if voter_count == 0
     (total_score.to_f / voter_count.to_f)
   end
+
+  private
+
+  def cannot_change_after_anonymous_ballot
+    return unless poll.detached_anonymous? && poll.anonymous_ballots.exists?
+    return unless changes_to_save.except("updated_at").any?
+
+    errors.add(:base, :anonymous_ballot_configuration_frozen)
+  end
+
 end

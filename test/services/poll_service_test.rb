@@ -191,7 +191,8 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "closing an anonymous poll removes voter identity from stances and events" do
-    poll = create_poll(anonymous: true)
+    poll = create_poll
+    poll.update!(anonymous: true)
     stance = poll.stances.find_by!(participant_id: @user.id)
     event = Event.create!(kind: 'stance_created', eventable: stance, user: @user)
 

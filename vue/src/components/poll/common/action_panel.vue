@@ -49,8 +49,17 @@ export default
     });
 
     this.watchRecords({
-      collections: ["stances"],
+      collections: ["stances", "polls"],
       query: () => {
+        if (this.poll.detachedAnonymousVoting()) {
+          if (this.poll.anonymousVoterEligible && !this.poll.anonymousBallotSubmitted && !this.stance) {
+            this.stance = Records.stances.build({pollId: this.poll.id});
+          }
+          if (this.poll.anonymousBallotSubmitted) {
+            this.stance = null;
+          }
+          return;
+        }
         // we need to maintain a clone of our stance, so live updates don't clobber our form.
         if (this.poll.myStance()) {
           // we have been issued a vote for this poll
@@ -120,12 +129,27 @@ export default
     span(v-t="{path: 'poll_common_action_panel.voting_opens_at', args: {poll_type: poll.translatedPollType(), time: exact(poll.openingAt)}}")
   template(v-if="poll.isVotable() || isScheduled")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-if='poll.anonymous && !isScheduled'
+      v-if='poll.detachedAnonymousVoting() && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
     )
-      span(v-t="'poll_common_action_panel.anonymous'")
+      span(v-t="'poll_common_action_panel.anonymous_votes_are_stored_separately_from_voter_identities'")
+    v-alert.poll-common-action-panel__anonymous-message.my-4(
+      v-else-if='poll.anonymous && !isScheduled'
+      density="compact"
+      variant="tonal"
+      type="info"
+    )
+      span(v-t="'poll_common_action_panel.legacy_anonymous_voting_format'")
+
+    v-alert.my-4(
+      v-if="poll.detachedAnonymousVoting() && stance && !isScheduled"
+      density="compact"
+      variant="tonal"
+      type="warning"
+    )
+      span(v-t="'poll_common_action_panel.anonymous_vote_cannot_be_changed'")
 
     .poll-common-vote-form(
       v-if="stance && !stance.castAt"
@@ -136,12 +160,20 @@ export default
       poll-common-directive(:stance='stance' name='vote-form' :key="poll.id")
       v-overlay(v-if="isScheduled" contained model-value persistent opacity="0.25")
 
-    .poll-common-unable-to-vote(v-if='!stance && !isScheduled')
+    .poll-common-unable-to-vote(v-if='!stance && !isScheduled && !poll.anonymousBallotSubmitted')
       v-alert.my-4(
         color="warning"
         variant="tonal"
       )
         span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+
+  v-alert.poll-common-action-panel__recorded.my-4(
+    v-if="poll.detachedAnonymousVoting() && poll.anonymousBallotSubmitted"
+    density="compact"
+    variant="tonal"
+    type="success"
+  )
+    span(v-t="'poll_common_action_panel.anonymous_vote_recorded'")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
     v-alert.poll-common-current-vote.mb-4(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")

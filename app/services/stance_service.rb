@@ -1,5 +1,7 @@
 class StanceService
   def self.create(stance:, actor:)
+    raise CanCan::AccessDenied if stance.poll&.detached_anonymous?
+
     actor.ability.authorize!(:vote_in, stance.poll)
 
     stance.participant = actor
@@ -25,6 +27,8 @@ class StanceService
   end
 
   def self.update(stance: , actor: , params: )
+    raise CanCan::AccessDenied if stance.poll&.detached_anonymous?
+
     actor.ability.authorize!(:update, stance)
     params = params.to_h.with_indifferent_access.except(:poll_id)
     is_update = !!stance.cast_at

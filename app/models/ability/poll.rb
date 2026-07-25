@@ -6,8 +6,12 @@ module Ability::Poll
       user.is_logged_in? &&
       poll.active? &&
       (
-        poll.unmasked_voters.exists?(user.id) ||
-        (!poll.specified_voters_only && poll.members.exists?(user.id))
+        if poll.detached_anonymous?
+          poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
+        else
+          poll.unmasked_voters.exists?(user.id) ||
+            (!poll.specified_voters_only && poll.members.exists?(user.id))
+        end
       )
     end
 
@@ -16,6 +20,8 @@ module Ability::Poll
     end
 
     can :receipts, ::Poll do |poll|
+      next poll.admins.exists?(user.id) if poll.detached_anonymous?
+
       if AppConfig.app_features[:verify_participants_admin_only]
         poll.anonymous? && poll.admins.exists?(user.id)
       else
@@ -86,7 +92,7 @@ module Ability::Poll
 
     can :reopen, ::Poll do |poll|
       poll.closed? &&
-      !poll.anonymous &&
+      !poll.anonymous? &&
       !poll.topic&.locked_at &&
       poll.admins.exists?(user.id)
     end

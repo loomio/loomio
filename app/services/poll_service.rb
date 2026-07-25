@@ -5,6 +5,12 @@ class PollService
 
     poll = Poll.new
     poll.assign_attributes_and_files(params)
+    if poll.anonymous?
+      poll.voting_system = :anonymous_ballot
+      poll.hide_results = :until_closed
+      poll.stance_reason_required = :disabled
+      poll.notify_on_closing_soon = :undecided_voters
+    end
     poll.author = actor
     poll.prioritise_poll_options!
 
@@ -36,8 +42,12 @@ class PollService
       TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
 
       poll.save!
+      if poll.detached_anonymous?
+        create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
+      else
+        create_anyone_can_vote_stances(poll) if !poll.specified_voters_only
+      end
       poll.update_counts!
-      create_anyone_can_vote_stances(poll) if !poll.specified_voters_only
 
       TopicReader.for(user: actor, topic: poll.topic)
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
@@ -53,6 +63,10 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
+    if poll.stance? && !poll.anonymous? && ActiveModel::Type::Boolean.new.cast(params[:anonymous])
+      poll.errors.add(:anonymous, :cannot_enable_legacy_anonymous_voting)
+      return false
+    end
 
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
@@ -110,6 +124,10 @@ class PollService
   end
 
   def self.invite(poll:, actor:, params:)
+    if poll.detached_anonymous? && poll.anonymous_ballots.exists?
+      raise CanCan::AccessDenied
+    end
+
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
       emails: params[:recipient_emails],
@@ -119,6 +137,7 @@ class PollService
     )
 
     stances = nil
+    voters = nil
 
     Poll.transaction do
       TopicService.add_users(
@@ -129,15 +148,19 @@ class PollService
         audience: params[:recipient_audience],
       )
 
-      stances = create_stances(
-        poll: poll, actor: actor,
-        user_ids: params[:recipient_user_ids],
-        emails: params[:recipient_emails],
-        include_actor: params[:include_actor],
-        audience: params[:recipient_audience]
-      )
+      if poll.detached_anonymous?
+        voters = create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
+      else
+        stances = create_stances(
+          poll: poll, actor: actor,
+          user_ids: params[:recipient_user_ids],
+          emails: params[:recipient_emails],
+          include_actor: params[:include_actor],
+          audience: params[:recipient_audience]
+        )
+      end
 
-      if params[:notify_recipients]
+      if params[:notify_recipients] && !poll.detached_anonymous?
         Events::PollAnnounced.publish!(
           poll: poll,
           actor: actor,
@@ -147,10 +170,54 @@ class PollService
           recipient_audience: params[:recipient_audience],
           recipient_message:  params[:recipient_message],
         )
+      elsif params[:notify_recipients] && poll.detached_anonymous?
+        Events::PollAnnounced.publish!(
+          poll: poll,
+          actor: actor,
+          stances: [],
+          recipient_user_ids: voters.pluck(:voter_id),
+          recipient_chatbot_ids: [],
+          recipient_audience: nil,
+          recipient_message: params[:recipient_message]
+        )
       end
     end
 
-    stances
+    poll.detached_anonymous? ? voters : stances
+  end
+
+  def self.create_anonymous_poll_voters(poll:, actor:, params:)
+    users = if poll.specified_voters_only?
+      UserInviter.authorize!(
+        user_ids: params[:recipient_user_ids],
+        emails: params[:recipient_emails],
+        audience: params[:recipient_audience],
+        model: poll,
+        actor: actor
+      )
+      UserInviter.where_or_create!(
+        actor: actor,
+        model: poll,
+        user_ids: params[:recipient_user_ids],
+        emails: params[:recipient_emails],
+        audience: params[:recipient_audience]
+      )
+    else
+      poll.members.humans
+    end
+
+    group_member_ids = poll.group ? poll.group.members.where(id: users.select(:id)).pluck(:id).to_set : Set.new
+    rows = users.map do |user|
+      {
+        poll_id: poll.id,
+        voter_id: user.id,
+        inviter_id: actor.id,
+        group_member: group_member_ids.include?(user.id),
+        ballot_submitted: false
+      }
+    end
+    AnonymousPollVoter.insert_all(rows, unique_by: [:poll_id, :voter_id]) if rows.any?
+    poll.anonymous_poll_voters.where(voter_id: users.select(:id))
   end
 
   def self.remind(poll:, actor:, params:)
@@ -257,11 +324,28 @@ class PollService
     publish_topic_if_active(poll)
   end
 
-  def self.publish_closing_soon
-    hour_start = 1.day.from_now.at_beginning_of_hour
+  def self.publish_closing_soon(now: Time.current)
+    hour_start = (now + 1.day).at_beginning_of_hour
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
-    Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
+    Poll.closing_soon_not_published(this_hour_tomorrow).where.not(voting_system: Poll.voting_systems[:anonymous_ballot]).each do |poll|
+      Events::PollClosingSoon.publish!(poll)
+    end
+
+    reminded_poll_ids = Event.where(
+      kind: "poll_closing_soon",
+      eventable_type: "Poll"
+    ).select(:eventable_id)
+
+    Poll.active
+        .where(voting_system: Poll.voting_systems[:anonymous_ballot])
+        .where(closing_at: now..(now + 24.hours))
+        .where.not(id: reminded_poll_ids)
+        .find_each do |poll|
+      opening_at = poll.opening_at || poll.opened_at
+      next unless opening_at && poll.closing_at - opening_at >= 24.hours
+      next unless poll.anonymous_poll_voters.where(ballot_submitted: false).exists?
+
       Events::PollClosingSoon.publish!(poll)
     end
   end
@@ -283,6 +367,7 @@ class PollService
 
   def self.create_anyone_can_vote_stances(poll)
     raise "only use on specified_voters_only=false" if poll.specified_voters_only
+    return if poll.detached_anonymous?
 
     member_ids = poll.members.humans.pluck(:id).uniq
     revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
@@ -517,6 +602,15 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
 
+    if poll.detached_anonymous?
+      poll.stv_results = StvCountService.count(poll) if poll.poll_type == "stv"
+      poll.update!(closed_at: Time.current)
+      poll.update_counts!
+      poll.topic.update_active_polls_count
+      ReindexPollWorker.perform_later(poll.id)
+      return
+    end
+
     StanceReceipt.where(poll_id: poll.id).delete_all
     StanceReceipt.insert_all build_receipts(poll)
 
@@ -548,6 +642,17 @@ class PollService
   end
 
   def self.build_receipts(poll)
+    if poll.detached_anonymous?
+      return poll.anonymous_poll_voters.map do |voter|
+        {
+          poll_id: poll.id,
+          voter_id: voter.voter_id,
+          inviter_id: voter.inviter_id,
+          vote_cast: voter.ballot_submitted
+        }
+      end
+    end
+
     return [] if poll.anonymous && poll.closed_at
 
     poll.stances.latest.map do |stance|
@@ -737,6 +842,19 @@ class PollService
   end
 
   def self.announce_poll_opened(poll)
+    if poll.detached_anonymous?
+      recipient_user_ids = poll.anonymous_poll_voters.where.not(voter_id: poll.author_id).pluck(:voter_id)
+      return if recipient_user_ids.empty?
+
+      Events::PollAnnounced.publish!(
+        poll: poll,
+        actor: poll.author,
+        stances: [],
+        recipient_user_ids: recipient_user_ids
+      )
+      return
+    end
+
     stances = poll.stances.latest.where.not(participant_id: poll.author_id)
     return if stances.empty?
 

@@ -32,6 +32,8 @@ class Events::PollAnnounced < Event
   end
 
   def notification_recipients
+    return User.active.where(id: recipient_user_ids) if stance_ids.blank?
+
     User.active.distinct.joins(:stances).where('stances.id IN (?)', self.stance_ids)
   end
 end

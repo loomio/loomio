@@ -38,7 +38,7 @@ export default {
 
   mounted() {
     this.poll.notifyRecipients = !(this.poll.openingAt && !this.poll.openedAt);
-    this.actionNames = ['revoke'];
+    this.actionNames = this.poll.detachedAnonymousVoting() ? [] : ['revoke'];
 
     this.fetchStances();
     this.updateStances();
@@ -94,7 +94,7 @@ export default {
         exclude_members: true,
         notify_recipients: this.poll.notifyRecipients
       }).then(data => {
-        const count = data.stances.length;
+        const count = (data.stances || data.users).length;
         if (this.poll.notifyRecipients) {
           Flash.success('announcement.flash.success', { count });
         } else {

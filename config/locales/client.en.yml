@@ -2267,6 +2267,10 @@ en:
     group_templates: Group templates
     basic_templates: Basic templates
     anonymous: Votes are anonymous
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonymous votes are stored separately from voter identities. Results appear after voting closes
+    legacy_anonymous_voting_format: This poll uses the legacy anonymous voting format
+    anonymous_vote_cannot_be_changed: You cannot review or change your vote after submitting it
+    anonymous_vote_recorded: Your vote was recorded
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote on this %{poll_type}
@@ -2433,6 +2437,7 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
     participation_quorum: Participation quorum
     quorum_hint: What percentage of voters must participate for the result to be valid? Optional, leave blank for no quorum.

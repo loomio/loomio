@@ -133,6 +133,13 @@ const addOption = () => {
   });
 };
 
+const setAnonymousVoting = (value) => {
+  if (!value) { return; }
+  props.poll.hideResults = 'until_closed';
+  props.poll.stanceReasonRequired = 'disabled';
+  props.poll.notifyOnClosingSoon = 'undecided_voters';
+};
+
 const editOption = (option) => {
   const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
 
@@ -534,6 +541,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
         v-select(
           :disabled="!poll.closingAt"
+          v-if="!poll.anonymous"
           :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
@@ -546,7 +554,15 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             hide-label
             :disabled="!poll.isNew()"
             v-model="poll.anonymous"
+            @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
+          v-alert.mb-4(
+            v-if="poll.anonymous"
+            density="compact"
+            variant="tonal"
+            type="info"
+          )
+            span(v-t="'poll_common_form.anonymous_votes_are_stored_separately_from_voter_identities_description'")
 
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_card.hide_results'")
@@ -555,7 +571,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             :label="$t('poll_common_card.hide_results')"
             :items="hideResultsItems"
             v-model="poll.hideResults"
-            :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
+            :disabled="poll.anonymous || (!poll.isNew() && currentHideResults == 'until_closed')"
           )
 
         template(v-if="poll.config().can_shuffle_options")
@@ -567,7 +583,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             v-model="poll.shuffleOptions"
             :label="$t('poll_common_settings.show_options_in_random_order')")
 
-        template(v-if="!poll.config().hide_reason_required")
+        template(v-if="!poll.config().hide_reason_required && !poll.anonymous")
           v-divider.pb-4
           .text-body-large.pb-2(v-t="'poll_common_form.vote_reason'")
           .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")

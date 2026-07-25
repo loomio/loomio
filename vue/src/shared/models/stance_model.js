@@ -146,6 +146,35 @@ export default class StanceModel extends BaseModel {
     return this.optionScores[option.id] || this.poll().minScore;
   }
 
+  save() {
+    if (!this.poll().detachedAnonymousVoting()) {
+      return super.save();
+    }
+
+    const choices = (this.stanceChoicesAttributes || []).map(choice => ({
+      poll_option_id: choice.poll_option_id || choice.pollOptionId,
+      score: choice.score == null ? 1 : choice.score
+    }));
+    const payload = {
+      anonymous_ballot: {
+        poll_id: this.pollId,
+        none_of_the_above: !!this.noneOfTheAbove,
+        anonymous_ballot_choices_attributes: choices
+      }
+    };
+
+    this.processing = true;
+    return Records.remote.post('anonymous_ballots', payload).then(data => {
+      this.poll().anonymousBallotSubmitted = true;
+      this.optionScores = {};
+      this.stanceChoicesAttributes = [];
+      this.noneOfTheAbove = false;
+      return data;
+    }).finally(() => {
+      this.processing = false;
+    });
+  }
+
   totalScore() {
     return sumBy(this.sortedChoices(), 'score');
   }

@@ -5,6 +5,9 @@ class PollSerializer < ApplicationSerializer
              :agree_target,
              :author_id,
              :anonymous,
+             :voting_system,
+             :anonymous_voter_eligible,
+             :anonymous_ballot_submitted,
              :can_respond_maybe,
              :chart_type,
              :chart_column,
@@ -108,6 +111,26 @@ class PollSerializer < ApplicationSerializer
     results_visible?
   end
 
+  def participation_visible?
+    !object.detached_anonymous? || object.closed?
+  end
+
+  def include_cast_stances_pct?
+    participation_visible?
+  end
+
+  def include_decided_voters_count?
+    participation_visible?
+  end
+
+  def include_undecided_voters_count?
+    participation_visible?
+  end
+
+  def include_quorum_votes_required?
+    participation_visible?
+  end
+
   def results
     PollService.calculate_results(object, poll_options)
   end
@@ -130,6 +153,28 @@ class PollSerializer < ApplicationSerializer
 
   def results_visible?
     poll.show_results?(voted: poll.anonymous? || my_stance&.cast_at.present?)
+  end
+
+  def anonymous_voter
+    return unless object.detached_anonymous? && scope[:current_user_id]
+
+    @anonymous_voter ||= object.anonymous_poll_voters.find_by(voter_id: scope[:current_user_id])
+  end
+
+  def anonymous_voter_eligible
+    anonymous_voter.present?
+  end
+
+  def anonymous_ballot_submitted
+    anonymous_voter&.ballot_submitted? || false
+  end
+
+  def include_anonymous_voter_eligible?
+    object.detached_anonymous?
+  end
+
+  def include_anonymous_ballot_submitted?
+    object.detached_anonymous?
   end
 
   def current_outcome
@@ -161,6 +206,6 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_my_stance?
-    my_stance.present?
+    !object.detached_anonymous? && my_stance.present?
   end
 end

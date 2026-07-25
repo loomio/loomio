@@ -82,6 +82,21 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def users
+    if load_and_authorize(:poll).detached_anonymous?
+      current_user.ability.authorize!(:add_voters, @poll)
+      self.collection = User.where(id: @poll.anonymous_poll_voters.select(:voter_id))
+      if query = params[:query].presence
+        collection = collection.where(
+          "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
+          first: "#{query}%",
+          last: "% #{query}%"
+        )
+        self.collection = collection
+      end
+      add_voter_role_meta(collection.pluck(:id))
+      return respond_with_collection serializer: AuthorSerializer, root: :users
+    end
+
     instantiate_collection do |collection|
       current_user.ability.authorize!(:add_voters, @poll)
 
@@ -96,9 +111,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
       end
 
       user_ids = collection.pluck(:participant_id)
-      self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
-      self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
-      self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+      add_voter_role_meta(user_ids)
       User.where(id: collection.pluck(:participant_id))
     end
     respond_with_collection serializer: AuthorSerializer
@@ -134,6 +147,12 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   private
+
+  def add_voter_role_meta(user_ids)
+    self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+    self.add_meta :group_admin_ids, @poll.group&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+    self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+  end
 
   def live_update_outdated_stances(poll)
     return if poll.topic.nil?

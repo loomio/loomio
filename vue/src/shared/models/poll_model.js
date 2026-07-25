@@ -87,6 +87,9 @@ export default class PollModel extends BaseModel {
       showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
+      votingSystem: 'stance',
+      anonymousVoterEligible: false,
+      anonymousBallotSubmitted: false,
       stanceCounts: [],
       topicId: null,
       allowComments: true,
@@ -267,7 +270,14 @@ export default class PollModel extends BaseModel {
   }
 
   iHaveVoted() {
+    if (this.detachedAnonymousVoting()) {
+      return this.anonymousBallotSubmitted;
+    }
     return this.myStanceId && this.myStance() && this.myStance().castAt;
+  }
+
+  detachedAnonymousVoting() {
+    return this.anonymous && this.votingSystem === 'anonymous_ballot';
   }
 
   showResults() {
@@ -287,6 +297,9 @@ export default class PollModel extends BaseModel {
   }
 
   iCanVote() {
+    if (this.detachedAnonymousVoting()) {
+      return this.isVotable() && this.anonymousVoterEligible && !this.anonymousBallotSubmitted;
+    }
     return this.isVotable() && (this.myStance() || (!this.specifiedVotersOnly && this.membersInclude(Session.user())));
   }
 

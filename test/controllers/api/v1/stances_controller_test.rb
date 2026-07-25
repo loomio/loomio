@@ -470,9 +470,10 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
     poll = PollService.create(params: {
       title: "Anon #{hex}", poll_type: "proposal", group_id: group.id,
-      anonymous: true, hide_results: 'off', specified_voters_only: false,
+      hide_results: 'off', specified_voters_only: false,
       poll_option_names: %w[agree disagree abstain], closing_at: 5.days.from_now
     }, actor: creator)
+    poll.update!(anonymous: true)
 
     voters.each_with_index do |v, i|
       stance = poll.stances.undecided.find_by(participant_id: v.id, latest: true)

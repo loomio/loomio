@@ -155,6 +155,7 @@ class Poll < ApplicationRecord
   enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
   enum :stance_reason_required, {disabled: 0, optional: 1, required: 2}
+  enum :voting_system, {stance: 0, anonymous_ballot: 1}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -162,6 +163,10 @@ class Poll < ApplicationRecord
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
+
+  has_many :anonymous_poll_voters, dependent: :destroy
+  has_many :anonymous_ballots, dependent: :destroy
+  has_many :anonymous_ballot_choices, through: :anonymous_ballots
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -200,6 +205,9 @@ class Poll < ApplicationRecord
   validate :opening_at_before_closing_at
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
+  validate :detached_anonymous_invariants
+  validate :voting_system_cannot_change_after_opening
+  validate :detached_configuration_cannot_change_after_ballot
   validate :title_if_not_discarded
 
   alias_method :user, :author
@@ -332,15 +340,25 @@ class Poll < ApplicationRecord
   end
 
   def unmasked_voters
+    return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
+
     User.where(id: stances.latest.pluck(:participant_id))
   end
 
   def unmasked_undecided_voters
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
+
     User.where(id: stances.latest.undecided.pluck(:participant_id))
   end
 
   def unmasked_decided_voters
+    return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
+
     User.where(id: stances.latest.decided.pluck(:participant_id))
+  end
+
+  def detached_anonymous?
+    anonymous? && anonymous_ballot?
   end
 
   def body
@@ -401,6 +419,16 @@ class Poll < ApplicationRecord
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
+    if detached_anonymous?
+      return update_columns(
+        stance_counts: poll_options.map(&:total_score),
+        voters_count: anonymous_poll_voters.count,
+        undecided_voters_count: anonymous_poll_voters.where(ballot_submitted: false).count,
+        none_of_the_above_count: anonymous_ballots.where(none_of_the_above: true).count,
+        versions_count: versions.count
+      )
+    end
+
     update_columns(
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
@@ -485,6 +513,35 @@ class Poll < ApplicationRecord
   def cannot_reveal_results_early
     if hide_results_changed? && (hide_results_was == 'until_closed')
       errors.add :hide_results, :cannot_show_results_early
+    end
+  end
+
+  def detached_anonymous_invariants
+    return unless anonymous_ballot?
+
+    errors.add(:anonymous, :invalid) unless anonymous?
+    errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
+    errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
+    errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
+  end
+
+  def voting_system_cannot_change_after_opening
+    return unless will_save_change_to_voting_system?
+    return unless voting_system_in_database && opened_at_in_database
+
+    errors.add(:voting_system, :invalid)
+  end
+
+  def detached_configuration_cannot_change_after_ballot
+    return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
+
+    protected_attributes = %w[
+      anonymous voting_system hide_results stance_reason_required poll_type
+      min_score max_score minimum_stance_choices maximum_stance_choices
+      dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
+    ]
+    if (changes_to_save.keys & protected_attributes).any?
+      errors.add(:base, :anonymous_ballot_configuration_frozen)
     end
   end
 

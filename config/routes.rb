@@ -291,6 +291,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :anonymous_ballots, only: [:create]
+
       resources :outcomes,    only: [:create, :update]
 
       resources :comments,    only: [:create, :update, :destroy] do

@@ -1,0 +1,334 @@
+require "test_helper"
+
+class AnonymousBallotServiceTest < ActiveSupport::TestCase
+  setup do
+    @admin = users(:admin)
+    @voter = users(:user)
+    @group = groups(:group)
+    @poll = PollService.create(
+      params: {
+        title: "Detached anonymous poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+  end
+
+  test "new anonymous polls use detached ballots and a named electorate" do
+    assert @poll.detached_anonymous?
+    assert_equal "until_closed", @poll.hide_results
+    assert_equal "disabled", @poll.stance_reason_required
+    assert_empty @poll.stances
+    assert @poll.anonymous_poll_voters.exists?(voter_id: @voter.id)
+  end
+
+  test "legacy anonymous polls remain stance based" do
+    legacy_poll = Poll.create!(
+      title: "Legacy anonymous poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      topic: @poll.topic,
+      author: @admin,
+      anonymous: true,
+      poll_option_names: ["Agree", "Disagree"]
+    )
+
+    assert legacy_poll.stance?
+    refute legacy_poll.detached_anonymous?
+  end
+
+  test "the poll update API cannot enable legacy anonymous voting" do
+    identified_poll = PollService.create(
+      params: {
+        title: "Identified poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+
+    refute PollService.update(poll: identified_poll, params: { anonymous: true }, actor: @admin)
+    refute identified_poll.reload.anonymous?
+  end
+
+  test "automatic reminders select only voters who have not submitted" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+    event = Events::PollClosingSoon.new(eventable: @poll)
+    recipient_ids = event.send(:raw_recipients).pluck(:id)
+
+    assert_equal "undecided_voters", @poll.notify_on_closing_soon
+    assert_not_includes recipient_ids, @voter.id
+    assert_includes recipient_ids, @admin.id
+  end
+
+  test "hourly reminder publishes once when a long poll enters its final 24 hours" do
+    travel_to(@poll.closing_at - 24.hours - 1.minute) do
+      assert_no_difference("Events::PollClosingSoon.count") do
+        PollService.publish_closing_soon
+      end
+    end
+
+    travel_to(@poll.closing_at - 24.hours + 1.minute) do
+      assert_difference("Events::PollClosingSoon.count", 1) do
+        PollService.publish_closing_soon
+      end
+      assert_no_difference("Events::PollClosingSoon.count") do
+        PollService.publish_closing_soon
+      end
+    end
+  end
+
+  test "hourly reminder is not published for polls lasting less than 24 hours" do
+    short_poll = PollService.create(
+      params: {
+        title: "Short detached anonymous poll",
+        poll_type: "proposal",
+        closing_at: 23.hours.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+
+    assert short_poll.detached_anonymous?
+    assert_no_difference("Events::PollClosingSoon.count") do
+      PollService.publish_closing_soon
+    end
+  end
+
+  test "hourly reminder uses an extended deadline without scheduling state" do
+    original_closing_at = @poll.closing_at
+    @poll.update!(closing_at: original_closing_at + 2.days)
+
+    travel_to(original_closing_at - 24.hours + 1.minute) do
+      assert_no_difference("Events::PollClosingSoon.count") do
+        PollService.publish_closing_soon
+      end
+    end
+
+    travel_to(@poll.closing_at - 24.hours + 1.minute) do
+      assert_difference("Events::PollClosingSoon.count", 1) do
+        PollService.publish_closing_soon
+      end
+    end
+  end
+
+  test "submits a ballot without storing a voter relationship or timing metadata" do
+    ballot = build_ballot(@poll.poll_options.first)
+    mail_jobs_before = ActiveJob::Base.queue_adapter.enqueued_jobs.count do |job|
+      job[:job] == ActionMailer::MailDeliveryJob
+    end
+
+    assert AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+
+    ballot.reload
+    mail_jobs_after = ActiveJob::Base.queue_adapter.enqueued_jobs.count do |job|
+      job[:job] == ActionMailer::MailDeliveryJob
+    end
+    assert_match(/\A[0-9a-f-]{36}\z/, ballot.id)
+    assert_equal mail_jobs_before, mail_jobs_after
+    assert @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+    assert_empty @poll.stances
+    assert_empty Event.where(eventable_type: "AnonymousBallot", eventable_id: ballot.id)
+    assert_not ballot.attributes.key?("created_at")
+    assert_not ballot.attributes.key?("updated_at")
+    assert_not ballot.attributes.key?("voter_id")
+    assert_not ballot.attributes.key?("anonymous_poll_voter_id")
+    assert_equal %w[anonymous_ballot_id poll_option_id score], AnonymousBallotChoice.column_names.sort
+  end
+
+  test "does not allow a second ballot" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+
+    assert_raises(CanCan::AccessDenied) do
+      AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.last), actor: @voter)
+    end
+
+    assert_equal 1, @poll.anonymous_ballots.count
+  end
+
+  test "ballots, choices, and voting configuration are immutable" do
+    ballot = build_ballot(@poll.poll_options.first)
+    AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    choice = ballot.anonymous_ballot_choices.first
+
+    refute ballot.update(none_of_the_above: true)
+    refute ballot.destroy
+    refute choice.update(score: 2)
+    refute choice.destroy
+    refute @poll.update(hide_results: "off")
+    refute @poll.poll_options.first.update(name: "Changed")
+  end
+
+  test "aggregate-only policy blocks ballot-pattern exports" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+    PollService.close(poll: @poll, actor: @admin)
+
+    assert_raises(CanCan::AccessDenied) { PollExporter.new(@poll).to_blt }
+    assert_includes PollExporter.new(@poll).to_csv, "poll_options"
+    assert_not_includes PollExporter.new(@poll).to_csv, @poll.anonymous_ballots.first.id
+  end
+
+  test "specified electorate invitations create no stances and freeze after the first ballot" do
+    poll = PollService.create(
+      params: {
+        title: "Specified anonymous poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+
+    voters = PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [@voter.id], notify_recipients: true }
+    )
+
+    assert_equal [@voter.id], voters.pluck(:voter_id)
+    assert_empty poll.stances
+    event = Events::PollAnnounced.order(:id).last
+    assert_equal [@voter.id], event.recipient_user_ids
+    assert_empty event.stance_ids
+
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: @voter
+    )
+
+    assert_raises(CanCan::AccessDenied) do
+      PollService.invite(
+        poll: poll,
+        actor: @admin,
+        params: { recipient_user_ids: [users(:alien).id] }
+      )
+    end
+  end
+
+  test "direct-topic voters use the detached path without group metadata" do
+    topic = discussions(:discussion).topic
+    topic.update!(group_id: nil)
+    TopicReader.for(user: @admin, topic: topic).update!(admin: true, guest: true)
+    poll = PollService.create(
+      params: {
+        title: "Direct anonymous poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        topic_id: topic.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [@voter.id] }
+    )
+
+    voter = poll.anonymous_poll_voters.find_by!(voter: @voter)
+    refute voter.group_member?
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: @voter
+    )
+    assert voter.reload.ballot_submitted?
+    assert_empty poll.stances
+  end
+
+  test "rejects a choice belonging to another poll" do
+    other_poll = PollService.create(
+      params: {
+        title: "Other poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+
+    assert_raises(ActiveRecord::RecordInvalid) do
+      AnonymousBallotService.create(
+        anonymous_ballot: build_ballot(other_poll.poll_options.first),
+        actor: @voter
+      )
+    end
+
+    refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+    assert_empty @poll.anonymous_ballots
+  end
+
+  test "rejects duplicate choices before the database constraint is reached" do
+    option = @poll.poll_options.first
+    ballot = @poll.anonymous_ballots.build(
+      anonymous_ballot_choices_attributes: [
+        { poll_option_id: option.id, score: 1 },
+        { poll_option_id: option.id, score: 1 }
+      ]
+    )
+
+    assert_raises(ActiveRecord::RecordInvalid) do
+      AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    end
+
+    refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+    assert_empty @poll.anonymous_ballots
+  end
+
+  test "results remain hidden before close and use detached choices after close" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+    @poll.reload
+
+    open_serializer = PollSerializer.new(@poll, scope: { current_user_id: @admin.id })
+    refute open_serializer.send(:include_results?)
+    refute open_serializer.send(:include_stance_counts?)
+    refute open_serializer.send(:include_decided_voters_count?)
+    refute open_serializer.send(:include_undecided_voters_count?)
+    refute open_serializer.send(:include_cast_stances_pct?)
+
+    PollService.close(poll: @poll, actor: @admin)
+    closed_serializer = PollSerializer.new(@poll.reload, scope: { current_user_id: @admin.id })
+    assert closed_serializer.send(:include_results?)
+    agree_result = closed_serializer.results.find { |result| result[:id] == @poll.poll_options.first.id }
+
+    assert_equal 1, agree_result[:score]
+    assert_equal({}, agree_result[:voter_scores])
+    assert_empty agree_result[:voter_ids]
+  end
+
+  test "the electorate and ballot have no joinable application-visible value" do
+    ballot = build_ballot(@poll.poll_options.first)
+    AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    voter = @poll.anonymous_poll_voters.find_by!(voter: @voter)
+
+    ballot_values = ballot.reload.attributes.values.compact.map(&:to_s)
+    voter_values = voter.attributes.except("poll_id", "id", "ballot_submitted", "group_member").values.compact.map(&:to_s)
+
+    assert_empty ballot_values & voter_values
+  end
+
+  private
+
+  def build_ballot(option)
+    @poll.anonymous_ballots.build(
+      anonymous_ballot_choices_attributes: [{ poll_option_id: option.id, score: 1 }]
+    )
+  end
+end

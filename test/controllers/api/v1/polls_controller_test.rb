@@ -195,7 +195,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert json.key?('receipts')
   end
 
-  test "receipts allowed for non-admin member by default" do
+  test "detached anonymous receipts denied for non-admin member" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -207,10 +207,10 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     sign_in @user
     get :receipts, params: { id: poll.key }
-    assert_response :success
+    assert_response :forbidden
   end
 
-  test "receipts allowed for poll member who is not a group member" do
+  test "detached anonymous receipts denied for poll member who is not a group member" do
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -230,7 +230,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     sign_in @alien
     get :receipts, params: { id: poll.key }
-    assert_response :success
+    assert_response :forbidden
   end
 
   test "receipts denied for non-member by default" do

@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_template topic_reader topic comment
+    stance anonymous_ballot discussion discussion_template topic_reader topic comment
     contact_message webhook chatbot contact_request reaction bookmark tag
   )
 
@@ -156,6 +156,15 @@ class PermittedParams < Struct.new(:params)
 
   def stance_choice_attributes
     [:score, :poll_option_id, :stance_id]
+  end
+
+  def anonymous_ballot_attributes
+    [
+      :poll_id,
+      :none_of_the_above,
+      :anonymous_ballot_choices_attributes,
+      { anonymous_ballot_choices_attributes: [:score, :poll_option_id] }
+    ]
   end
 
   def outcome_attributes

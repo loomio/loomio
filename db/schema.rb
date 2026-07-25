@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_25_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -70,6 +70,33 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_25_000000) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "anonymous_ballot_choices", id: false, force: :cascade do |t|
+    t.uuid "anonymous_ballot_id", null: false
+    t.bigint "poll_option_id", null: false
+    t.integer "score", default: 1, null: false
+    t.index ["anonymous_ballot_id", "poll_option_id"], name: "index_anonymous_ballot_choices_on_ballot_and_option", unique: true
+    t.index ["anonymous_ballot_id"], name: "index_anonymous_ballot_choices_on_anonymous_ballot_id"
+    t.index ["poll_option_id"], name: "index_anonymous_ballot_choices_on_poll_option_id"
+  end
+
+  create_table "anonymous_ballots", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "poll_id", null: false
+    t.boolean "none_of_the_above", default: false, null: false
+    t.index ["poll_id"], name: "index_anonymous_ballots_on_poll_id"
+  end
+
+  create_table "anonymous_poll_voters", force: :cascade do |t|
+    t.bigint "poll_id", null: false
+    t.bigint "voter_id", null: false
+    t.bigint "inviter_id"
+    t.boolean "group_member", default: false, null: false
+    t.boolean "ballot_submitted", default: false, null: false
+    t.index ["inviter_id"], name: "index_anonymous_poll_voters_on_inviter_id"
+    t.index ["poll_id", "voter_id"], name: "index_anonymous_poll_voters_on_poll_id_and_voter_id", unique: true
+    t.index ["poll_id"], name: "index_anonymous_poll_voters_on_poll_id"
+    t.index ["voter_id"], name: "index_anonymous_poll_voters_on_voter_id"
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -773,6 +800,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_25_000000) do
     t.integer "stv_seats"
     t.string "stv_method"
     t.string "stv_quota"
+    t.integer "voting_system", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -1267,6 +1295,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_25_000000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "anonymous_ballot_choices", "anonymous_ballots"
+  add_foreign_key "anonymous_ballot_choices", "poll_options"
+  add_foreign_key "anonymous_ballots", "polls"
+  add_foreign_key "anonymous_poll_voters", "polls"
+  add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
+  add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "polls", "topics", deferrable: :deferred
