@@ -2110,6 +2110,10 @@ tr:
     for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
     voting_opens_at: Bu %{poll_type} anketi %{time} tarihinde oylamaya açılıyor.
     unable_to_vote: Bu ankete (%{poll_type}) oy vermeye davet edilmediniz.
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonim oylar, seçmen kimliklerinden ayrı olarak saklanır. Sonuçlar, oylama sona erdikten sonra açıklanır.
+    legacy_anonymous_voting_format: Bu anket, eski anonim oylama formatını kullanmaktadır.
+    anonymous_vote_cannot_be_changed: Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz.
+    anonymous_vote_recorded: Oylarınız kaydedildi.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ tr:
     notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
     voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
     who_may_vote: Bu %{poll_type} için kimler oy kullanabilir?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonim oylar, seçmen kimliklerinden ayrı olarak saklanır. Sonuçlar, oylama sona erdikten sonra açıklanır. Seçmenler gerekçe ekleyemez, oyunu gönderdikten sonra gözden geçiremez veya oyunu değiştiremez.
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.

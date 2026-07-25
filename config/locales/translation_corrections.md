@@ -94,6 +94,15 @@ languages in the Nov 2025 pass.
 | `config/locales/client.ru.yml` | `thread_item.discussion_moved_without_source` | `%{автор}` | `%{author}` | Interpolation placeholder names must remain unchanged |
 | `config/locales/client.tr.yml` | `thread_item.discussion_moved_without_source` | `%{yazar}` | `%{author}` | Interpolation placeholder names must remain unchanged |
 
+## 2026-07-26 — Anonymous voting notices
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `poll_common_action_panel.anonymous_vote_cannot_be_changed`, `anonymous_vote_recorded` | Formal `Sie/Ihre` address | Informal `du/deine` address | German UI uses informal direct address throughout |
+| `config/locales/client.es.yml` | `poll_common_action_panel.anonymous_vote_recorded` | Formal `Su voto` | Informal `Tu voto` | Spanish UI uses the informal `tú` register throughout |
+| `config/locales/client.fr.yml` | `poll_common_action_panel.anonymous_vote_cannot_be_changed`, `anonymous_vote_recorded` | Formal `vous/votre` address | Informal `tu/ton` address | French UI uses informal direct address throughout |
+| `config/locales/client.nl_NL.yml` | `poll_common_action_panel.anonymous_vote_recorded` | Formal `Uw stem` | Informal `Je stem` | Dutch UI uses the informal `je/jouw` register throughout |
+
 ## 2026-05-21 — lock_thread_modal body changed to explanation
 
 - **file:** `config/locales/client.en.yml`

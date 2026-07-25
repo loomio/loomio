@@ -2152,6 +2152,10 @@ fr:
     for_this_poll_type_to_be_valid: 'Pour que ce %{poll_type} soit valide :'
     voting_opens_at: Ce %{poll_type} ouvre au vote %{time}
     unable_to_vote: Tu n'as pas été invité à voter sur ce %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Les votes anonymes sont stockés séparément des identités des électeurs. Les résultats sont publiés après la clôture du scrutin.
+    legacy_anonymous_voting_format: Ce sondage utilise l'ancien format de vote anonyme
+    anonymous_vote_cannot_be_changed: Tu ne peux ni revoir ni modifier ton vote après l’avoir soumis
+    anonymous_vote_recorded: Ton vote a été enregistré
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2829,6 +2833,7 @@ fr:
     notify_voters_when_voting_opens: Avertir les électeurs de l'ouverture des bureaux de vote
     voters_notified_when_opens: Les électeurs seront avertis de l'ouverture des bureaux de vote.
     who_may_vote: Qui peut voter sur ce %{poll_type} ?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Les votes anonymes sont enregistrés séparément des identités des électeurs. Les résultats sont publiés après la clôture du vote. Les électeurs ne peuvent ni ajouter de raisons, ni modifier leur vote après l'avoir soumis, ni le changer.
   poll_receipts_page:
     verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, tu verras qui a voté.

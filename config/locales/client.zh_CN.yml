@@ -2190,6 +2190,10 @@ zh_CN:
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
     unable_to_vote: 您未被邀请参与此项 %{poll_type} 的投票。
+    anonymous_votes_are_stored_separately_from_voter_identities: 匿名投票与选民身份信息分开存储。投票结束后，结果才会公布。
+    legacy_anonymous_voting_format: 本次投票采用传统的匿名投票形式。
+    anonymous_vote_cannot_be_changed: 提交投票后，您将无法查看或更改您的投票。
+    anonymous_vote_recorded: 您的投票已记录
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2446,6 +2450,7 @@ zh_CN:
     notify_voters_when_voting_opens: 投票开始时通知选民
     voters_notified_when_opens: 投票开始时，选民将会收到通知。
     who_may_vote: 谁可以参与此次 %{poll_type} 投票？
+    anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票与选民身份信息分开存储。投票结束后，结果才会公布。选民无法添加理由、提交投票后无法查看或更改投票。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

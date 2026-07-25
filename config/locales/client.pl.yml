@@ -2135,6 +2135,10 @@ pl:
     for_this_poll_type_to_be_valid: 'Aby ten %{poll_type} był ważny:'
     voting_opens_at: Ta ankieta %{poll_type} jest otwarta do głosowania %{time}
     unable_to_vote: Nie zaproszono Cię do głosowania w tej ankiecie %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Głosy anonimowe są przechowywane oddzielnie od danych osobowych wyborców. Wyniki pojawiają się po zamknięciu głosowania.
+    legacy_anonymous_voting_format: W tej ankiecie wykorzystano dotychczasowy format anonimowego głosowania
+    anonymous_vote_cannot_be_changed: Po oddaniu głosu nie możesz go przejrzeć ani zmienić
+    anonymous_vote_recorded: Twój głos został zarejestrowany
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2812,6 +2816,7 @@ pl:
     notify_voters_when_voting_opens: Powiadom wyborców o otwarciu głosowania
     voters_notified_when_opens: Wyborcy zostaną powiadomieni o otwarciu głosowania
     who_may_vote: Kto może głosować w tej ankiecie %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Głosy anonimowe są przechowywane oddzielnie od tożsamości wyborców. Wyniki pojawiają się po zakończeniu głosowania. Wyborcy nie mogą dodawać powodów, przeglądać swojego głosu po jego oddaniu ani go zmieniać.
   poll_receipts_page:
     verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

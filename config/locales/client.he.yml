@@ -2129,6 +2129,10 @@ he:
     for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
     voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
     unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
+    anonymous_votes_are_stored_separately_from_voter_identities: הצבעות אנונימיות נשמרות בנפרד מזהויות הבוחרים. התוצאות מופיעות לאחר סגירת ההצבעה.
+    legacy_anonymous_voting_format: סקר זה משתמש בפורמט ההצבעה האנונימי הישן
+    anonymous_vote_cannot_be_changed: לא ניתן לבדוק או לשנות את הצבעתך לאחר הגשתה
+    anonymous_vote_recorded: הצבעתך נרשמה
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2804,6 +2808,7 @@ he:
     notify_voters_when_voting_opens: הודעה לבוחרים עם פתיחת ההצבעה
     voters_notified_when_opens: המצביעים יקבלו הודעה עם פתיחת ההצבעה
     who_may_vote: מי רשאי להצביע ב%{poll_type} הזה?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: קולות אנונימיים נשמרים בנפרד מזהויות הבוחרים. התוצאות מופיעות לאחר סגירת ההצבעה. הבוחרים אינם יכולים להוסיף נימוקים, לבדוק את הצבעתם לאחר הגשתה או לשנות את הצבעתם.
   poll_receipts_page:
     verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.

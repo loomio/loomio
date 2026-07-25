@@ -2135,6 +2135,10 @@ ca:
     for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
     voting_opens_at: Aquest %{poll_type} s'obre per a votacions %{time}
     unable_to_vote: No has estat convidat a votar en aquest %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Els vots anònims s'emmagatzemen per separat de les identitats dels votants. Els resultats apareixen després que es tanqui la votació.
+    legacy_anonymous_voting_format: Aquesta enquesta utilitza el format de votació anònima antic
+    anonymous_vote_cannot_be_changed: No pots revisar ni canviar el teu vot després d'enviar-lo
+    anonymous_vote_recorded: El vostre vot s'ha enregistrat
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2812,6 +2816,7 @@ ca:
     notify_voters_when_voting_opens: Avisar els votants quan s'obri la votació
     voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
     who_may_vote: Qui pot votar en aquest %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Els vots anònims s'emmagatzemen per separat de les identitats dels votants. Els resultats apareixen després que es tanqui la votació. Els votants no poden afegir motius, revisar el seu vot després d'enviar-lo ni canviar-lo.
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.

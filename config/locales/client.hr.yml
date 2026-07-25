@@ -2110,6 +2110,10 @@ hr:
     for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
     unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se pojavljuju nakon završetka glasanja
+    legacy_anonymous_voting_format: Ova anketa koristi stari format anonimnog glasanja
+    anonymous_vote_cannot_be_changed: Ne možete pregledati ili promijeniti svoj glas nakon što ga pošaljete
+    anonymous_vote_recorded: Vaš glas je zabilježen
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ hr:
     notify_voters_when_voting_opens: Obavijestite birače kada je otvoreno glasanje
     voters_notified_when_opens: Birači će biti obaviješteni kada se otvori glasanje
     who_may_vote: Tko može glasati na ovom %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se pojavljuju nakon završetka glasanja. Birači ne mogu dodavati razloge, pregledavati svoj glas nakon što ga predaju ili mijenjati svoj glas.
   poll_receipts_page:
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.

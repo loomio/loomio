@@ -2110,6 +2110,10 @@ fi:
     for_this_poll_type_to_be_valid: 'Jotta tämä %{poll_type} olisi kelvollinen:'
     voting_opens_at: Tämä %{poll_type} avautuu äänestykseen %{time}
     unable_to_vote: Sinua ei ole kutsuttu äänestämään tässä %{poll_type} -kyselyssä
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät äänestyksen päätyttyä.
+    legacy_anonymous_voting_format: Tässä kyselyssä käytetään vanhaa anonyymiä äänestysmuotoa
+    anonymous_vote_cannot_be_changed: Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen
+    anonymous_vote_recorded: Äänesi tallennettiin
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ fi:
     notify_voters_when_voting_opens: Ilmoita äänestäjille äänestyksen alkamisesta
     voters_notified_when_opens: Äänestäjille ilmoitetaan äänestyksen alkamisesta
     who_may_vote: Ketkä voivat äänestää tässä %{poll_type} -kyselyssä?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät äänestyksen päätyttyä. Äänestäjät eivät voi lisätä syitä, tarkastella ääntään sen lähettämisen jälkeen tai muuttaa ääntään.
   poll_receipts_page:
     verify_participants: Vahvista osallistujat
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.

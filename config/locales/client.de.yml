@@ -2143,6 +2143,10 @@ de:
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
     unable_to_vote: Du wurdest nicht zur Abstimmung über diesen %{poll_type} eingeladen.
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht.
+    legacy_anonymous_voting_format: Diese Umfrage verwendet das herkömmliche anonyme Abstimmungsformat.
+    anonymous_vote_cannot_be_changed: Du kannst deine Stimme nach dem Absenden nicht mehr überprüfen oder ändern
+    anonymous_vote_recorded: Deine Stimme wurde erfasst
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2820,6 +2824,7 @@ de:
     notify_voters_when_voting_opens: Wähler benachrichtigen, wenn die Wahllokale geöffnet sind
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
     who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht. Wähler können keine Gründe hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.

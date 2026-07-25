@@ -2138,6 +2138,10 @@ uk:
     for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
     voting_opens_at: Цей %{poll_type} відкривається для голосування %{time}
     unable_to_vote: Вас не запросили голосувати за цей %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Анонімні голоси зберігаються окремо від ідентифікаційних даних виборців. Результати з'являються після завершення голосування.
+    legacy_anonymous_voting_format: Це опитування використовує застарілий формат анонімного голосування
+    anonymous_vote_cannot_be_changed: Ви не можете переглянути або змінити свій голос після його надсилання
+    anonymous_vote_recorded: Ваш голос було записано
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2815,6 +2819,7 @@ uk:
     notify_voters_when_voting_opens: Повідомити виборців про початок голосування
     voters_notified_when_opens: Виборців буде повідомлено про початок голосування
     who_may_vote: Хто може голосувати в цьому %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Анонімні голоси зберігаються окремо від ідентифікаційних даних виборців. Результати з’являються після завершення голосування. Виборці не можуть додавати причини, переглядати свій голос після його подання або змінювати його.
   poll_receipts_page:
     verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.

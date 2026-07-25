@@ -2110,6 +2110,10 @@ el:
     for_this_poll_type_to_be_valid: 'Για να είναι έγκυρο αυτό το %{poll_type}:'
     voting_opens_at: Αυτό το %{poll_type} ανοίγει για ψηφοφορία %{time}
     unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Οι ανώνυμες ψήφοι αποθηκεύονται ξεχωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μετά το κλείσιμο της ψηφοφορίας.
+    legacy_anonymous_voting_format: Αυτή η δημοσκόπηση χρησιμοποιεί την παλαιότερη μορφή ανώνυμης ψηφοφορίας
+    anonymous_vote_cannot_be_changed: Δεν μπορείτε να ελέγξετε ή να αλλάξετε την ψήφο σας μετά την υποβολή της
+    anonymous_vote_recorded: Η ψήφος σας καταγράφηκε
   poll_common_collapsed:
     by_who: από %{name}
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ el:
     notify_voters_when_voting_opens: Ειδοποιήστε τους ψηφοφόρους όταν ανοίξει η ψηφοφορία
     voters_notified_when_opens: Οι ψηφοφόροι θα ειδοποιηθούν όταν ανοίξει η ψηφοφορία
     who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το %{poll_type};
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Οι ανώνυμες ψήφοι αποθηκεύονται ξεχωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μετά το κλείσιμο της ψηφοφορίας. Οι ψηφοφόροι δεν μπορούν να προσθέσουν λόγους, να ελέγξουν την ψήφο τους μετά την υποβολή της ή να αλλάξουν την ψήφο τους.
   poll_receipts_page:
     verify_participants: Επαλήθευση συμμετεχόντων
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.

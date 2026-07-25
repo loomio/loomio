@@ -2110,6 +2110,10 @@ ro:
     for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
     voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
     unable_to_vote: Nu ați fost invitat să votați pentru acest %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării.
+    legacy_anonymous_voting_format: Acest sondaj folosește formatul vechi de vot anonim
+    anonymous_vote_cannot_be_changed: Nu puteți revizui sau modifica votul după ce l-ați trimis.
+    anonymous_vote_recorded: Votul dumneavoastră a fost înregistrat
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ ro:
     notify_voters_when_voting_opens: Anunță alegătorii când se deschide votul
     voters_notified_when_opens: Alegătorii vor fi anunțați când se va deschide votul
     who_may_vote: Cine poate vota pentru acest %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării. Alegătorii nu pot adăuga motive, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
   poll_receipts_page:
     verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.

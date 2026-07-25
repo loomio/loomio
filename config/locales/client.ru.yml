@@ -2110,6 +2110,10 @@ ru:
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
     voting_opens_at: Этот %{poll_type} открывается для голосования %{time}.
     unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Анонимные голоса хранятся отдельно от данных избирателей. Результаты отображаются после закрытия голосования.
+    legacy_anonymous_voting_format: В этом опросе используется устаревший формат анонимного голосования.
+    anonymous_vote_cannot_be_changed: После отправки своего голоса вы не сможете его просмотреть или изменить.
+    anonymous_vote_recorded: Ваш голос был учтен.
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ ru:
     notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
     voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
     who_may_vote: Кто может голосовать в этом %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Анонимные голоса хранятся отдельно от данных избирателей. Результаты отображаются после закрытия голосования. Избиратели не могут добавлять причины, проверять свой голос после его отправки или изменять свой голос.
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.

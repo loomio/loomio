@@ -2110,6 +2110,10 @@ sv:
     for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
     voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
     unable_to_vote: Du har inte blivit inbjuden att rösta på denna %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonyma röster lagras separat från väljaridentiteter. Resultaten visas efter att röstningen avslutats.
+    legacy_anonymous_voting_format: Den här omröstningen använder det äldre formatet för anonym röstning
+    anonymous_vote_cannot_be_changed: Du kan inte granska eller ändra din röst efter att du har skickat in den
+    anonymous_vote_recorded: Din röst registrerades
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ sv:
     notify_voters_when_voting_opens: Meddela väljarna när röstningen öppnar
     voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
     who_may_vote: Vem får rösta på denna %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyma röster lagras separat från väljaridentiteter. Resultaten visas efter att omröstningen avslutats. Väljare kan inte lägga till skäl, granska sin röst efter att ha skickat in den eller ändra sin röst.
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.

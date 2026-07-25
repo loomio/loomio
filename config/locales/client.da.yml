@@ -2110,6 +2110,10 @@ da:
     for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
     voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
     unable_to_vote: Du er ikke blevet inviteret til at stemme på denne %{poll_type}
+    anonymous_votes_are_stored_separately_from_voter_identities: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises efter afstemningen er afsluttet.
+    legacy_anonymous_voting_format: Denne afstemning bruger det traditionelle anonyme afstemningsformat
+    anonymous_vote_cannot_be_changed: Du kan ikke gennemgå eller ændre din stemme, efter du har indsendt den
+    anonymous_vote_recorded: Din stemme blev registreret
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2785,6 +2789,7 @@ da:
     notify_voters_when_voting_opens: Giv vælgerne besked, når afstemningen åbner
     voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
     who_may_vote: Hvem må stemme på denne %{poll_type}?
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises, når afstemningen er afsluttet. Vælgere kan ikke tilføje årsager, gennemgå deres stemme efter at have indsendt den eller ændre deres stemme.
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
