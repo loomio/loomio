@@ -227,6 +227,8 @@ class Views::Topics::StanceBody < Views::Application::Component
   end
 
   def render_reason
+    return if @stance.redacted_at.present?
+
     div(class: "poll-common-stance") do
       div(class: "lmo-markdown-wrapper text-body-2 text--primary poll-common-stance-created__reason") do
         raw MarkdownService.render_rich_text(@stance.reason, @stance.reason_format)
