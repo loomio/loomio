@@ -279,6 +279,7 @@ class GroupExportService
       if record.eventable.is_a?(Stance) && record.eventable.poll.anonymous?
         json.merge!('user_id' => nil, 'created_at' => nil, 'updated_at' => nil)
       end
+      json['custom_fields'] = record.custom_fields.except('source_group_id') if record.kind == 'discussion_moved'
     end
 
     json

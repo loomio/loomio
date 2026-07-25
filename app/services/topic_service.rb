@@ -71,7 +71,6 @@ class TopicService
   end
 
   def self.move(topic:, params:, actor:)
-    source = topic.group
     destination = ModelLocator.new(:group, params).locate || NullGroup.new
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
@@ -85,7 +84,7 @@ class TopicService
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
       ReindexDiscussionWorker.perform_later(topic.id)
-      Events::DiscussionMoved.publish!(topic.topicable, actor, source)
+      Events::DiscussionMoved.publish!(topic.topicable, actor)
     end
   end
 

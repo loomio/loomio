@@ -60,6 +60,24 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_nil timeline_record[3]
   end
 
+  test "discussion moved events do not expose a legacy source group" do
+    source_group = Group.create!(name: 'Secret source', group_privacy: 'secret', is_visible_to_public: false)
+    event = Event.create!(
+      kind: 'discussion_moved',
+      eventable: @public_discussion,
+      topic: @public_discussion.topic,
+      user: @admin,
+      custom_fields: { source_group_id: source_group.id }
+    )
+
+    get :index, params: { discussion_id: @public_discussion.id }, format: :json
+
+    payload = JSON.parse(response.body)
+    serialized_event = payload['events'].find { |record| record['id'] == event.id }
+    assert_not serialized_event['custom_fields'].key?('source_group_id')
+    refute_includes payload.fetch('groups', []).map { |group| group['id'] }, source_group.id
+  end
+
   test "index serializes without record cache fallbacks" do
     sign_in @user
     CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)

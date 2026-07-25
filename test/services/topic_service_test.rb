@@ -122,14 +122,24 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal true, discussion.topic.reload.private
   end
 
-  test "move updates topic group" do
+  test "move versions the topic group without recording it on the event" do
     admin = users(:admin)
     alien_group = groups(:alien_group)
     alien_group.add_member!(admin)
 
     discussion = discussions(:discussion)
-    TopicService.move(topic: discussion.topic, params: { group_id: alien_group.id }, actor: admin)
+    source_group_id = discussion.topic.group_id
+
+    assert_difference -> { discussion.topic.versions.count }, 1 do
+      TopicService.move(topic: discussion.topic, params: { group_id: alien_group.id }, actor: admin)
+    end
+
     assert_equal alien_group.id, discussion.topic.reload.group_id
+    assert_equal [source_group_id, alien_group.id], discussion.topic.versions.last.changeset['group_id']
+
+    moved_event = discussion.events.where(kind: 'discussion_moved').order(:id).last!
+    assert_equal admin.id, moved_event.user_id
+    assert_not moved_event.custom_fields.key?('source_group_id')
   end
 
   # -- Close / Reopen --

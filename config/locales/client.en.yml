@@ -2732,6 +2732,7 @@ en:
     discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> changed the thread privacy"
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> moved the thread from <strong>%{title}</strong>"
+    discussion_moved_without_source: "<a class='actor-link' href='/u/%{username}'>%{author}</a> moved the thread"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the thread"
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> locked the thread"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
