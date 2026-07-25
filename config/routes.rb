@@ -38,9 +38,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/discussions/:id', to: 'redirect#discussion'
-  get '/groups/:id',      to: 'redirect#group'
-
   root to: 'root#index'
 
   ActiveAdmin.routes(self)
@@ -446,7 +443,6 @@ Rails.application.routes.draw do
   get '/notifications/dropdown_items'      => redirect('410.html')
   get '/u/:key(/:stub)'                    => redirect('410.html')
   get '/g/:key/membership_requests/new'    => redirect('410.html')
-  get '/c/:id'                              => 'comments#redirect'
   get '/comments/:id'                      => redirect('410.html')
 
   get '/merge_users/confirm' => 'merge_users#confirm'
