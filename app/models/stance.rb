@@ -106,6 +106,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :valid_require_all_choices
   validate :valid_none_of_the_above
+  validate :poll_id_cannot_change, on: :update
   validate :poll_options_must_match_stance_poll
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
@@ -223,6 +224,10 @@ class Stance < ApplicationRecord
   end
 
   private
+
+  def poll_id_cannot_change
+    errors.add(:poll_id, :invalid) if will_save_change_to_poll_id?
+  end
 
   def poll_options_must_match_stance_poll
     invalid_choices = stance_choices.reject do |sc|

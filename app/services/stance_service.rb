@@ -26,6 +26,7 @@ class StanceService
 
   def self.update(stance: , actor: , params: )
     actor.ability.authorize!(:update, stance)
+    params = params.to_h.with_indifferent_access.except(:poll_id)
     is_update = !!stance.cast_at
 
     new_stance = stance.build_replacement
