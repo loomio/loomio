@@ -133,27 +133,6 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     assert_includes output, @user.name
   end
 
-  test "stance component hides ballots until the poll closes" do
-    poll = Poll.create!(
-      title: 'Hidden Slack Stance Poll',
-      poll_type: 'proposal',
-      closing_at: 3.days.from_now,
-      hide_results: 'until_closed',
-      topic: @discussion.topic,
-      author: @user,
-      poll_option_names: %w[agree disagree]
-    )
-    stance = poll.stances.build(participant: @user, reason: 'Hidden Slack reason')
-    stance.stance_choices.build(poll_option: poll.poll_options.first, score: 1)
-    stance.save!
-    event = Events::StanceCreated.create!(kind: 'stance_created', eventable: stance, user: @user)
-
-    output = render_phlex(Views::Chatbot::Slack::Stance.new(event: event, poll: poll, recipient: @recipient))
-
-    refute_includes output, 'Hidden Slack reason'
-    refute_includes output, poll.poll_options.first.name
-  end
-
   test "comment component renders" do
     comment = Comment.create!(
       body: "Test comment body",

@@ -23,16 +23,6 @@ class Events::StanceCreated < Event
     eventable.real_participant
   end
 
-  def subscribed_recipients
-    return User.none if eventable.results_hidden_until_closed?
-
-    super
-  end
-
-  def notify_chatbots?
-    !eventable.results_hidden_until_closed?
-  end
-
   private
 
   def subscribed_eventable

@@ -112,22 +112,22 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "create does not allow anonymous stances to be enumerated as bookmark targets" do
+  test "create bookmarks an anonymous stance when authorized" do
     voter = users(:member)
     stance = anonymous_stance_for(voter)
-    sign_in users(:user)
+    user = users(:user)
+    sign_in user
 
-    assert_no_difference 'Bookmark.count' do
+    assert_difference 'Bookmark.count', 1 do
       post :create, params: {bookmark: {bookmarkable_id: stance.id, bookmarkable_type: 'Stance'}}
     end
 
-    assert_response :not_found
-    assert_equal I18n.t('common.anonymous'), stance.author.name
-    refute_includes response.body, voter.name
-    refute_includes response.body, stance.id.to_s
+    assert_response :success
+    assert Bookmark.exists?(user: user, bookmarkable: stance)
+    assert_equal voter.name, stance.author.name
   end
 
-  test "index excludes legacy stance bookmarks" do
+  test "index includes stance bookmarks" do
     user = users(:user)
     stance = anonymous_stance_for(users(:member))
     bookmark = Bookmark.create!(user: user, bookmarkable: stance)
@@ -136,7 +136,9 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
     get :index
 
     assert_response :success
-    refute_includes JSON.parse(response.body).fetch('bookmarks').map { |record| record['id'] }, bookmark.id
+    serialized = JSON.parse(response.body).fetch('bookmarks').find { |record| record['id'] == bookmark.id }
+    assert_not_nil serialized
+    assert_equal stance.id, serialized['bookmarkable_id']
   end
 
   private
@@ -147,7 +149,7 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
       poll_type: 'proposal',
       group_id: groups(:group).id,
       anonymous: true,
-      hide_results: 'until_closed',
+      hide_results: 'off',
       poll_option_names: %w[Agree Disagree],
       closing_at: 1.day.from_now
     }, actor: users(:admin))

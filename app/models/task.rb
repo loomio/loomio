@@ -9,8 +9,4 @@ class Task < ApplicationRecord
 
   has_many :tasks_users
   has_many :users, through: :tasks_users
-
-  def anonymous_stance?
-    record_type == 'Stance' && record&.poll&.anonymous?
-  end
 end

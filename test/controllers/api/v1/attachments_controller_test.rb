@@ -21,7 +21,7 @@ class Api::V1::AttachmentsControllerTest < ActionController::TestCase
     assert_equal 'strongbad.png', json['attachments'][0]['filename']
   end
 
-  test "index does not expose another voter's anonymous stance attachment" do
+  test "index includes anonymous stance attachments while results are hidden" do
     admin = users(:admin)
     user = users(:user)
     voter = users(:member)
@@ -48,7 +48,7 @@ class Api::V1::AttachmentsControllerTest < ActionController::TestCase
     get :index, params: {group_id: group.id, q: "anonymous-voter-secret"}
 
     assert_response :success
-    assert_empty JSON.parse(response.body).fetch('attachments')
+    assert_equal 'anonymous-voter-secret.png', JSON.parse(response.body).fetch('attachments').first['filename']
   end
 
   test "destroy allowed if admin" do

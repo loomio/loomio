@@ -27,7 +27,7 @@ class GroupExporter
   end
 
   def value_for(model, field)
-    return nil if model.is_a?(Stance) && model.poll.anonymous? && %w[id participant_id author_name reason created_at updated_at].include?(field)
+    return nil if model.is_a?(Stance) && model.poll.anonymous? && %w[participant_id author_name created_at updated_at].include?(field)
 
     model.send(field)
   end
@@ -51,12 +51,7 @@ class GroupExporter
   private
 
   def models_for(model)
-    records = model.to_s.classify.constantize.in_organisation(@group).order(created_at: :asc)
-    return records unless model == :stances
-
-    records.to_a.sort_by do |stance|
-      stance.poll.anonymous? ? Stance.anonymous_id_for(poll_id: stance.poll_id, stance_id: stance.id) : stance.created_at.to_f.to_s
-    end
+    model.to_s.classify.constantize.in_organisation(@group).order(created_at: :asc)
   end
 
   def csv_append(csv:, fields:, models:, title:)

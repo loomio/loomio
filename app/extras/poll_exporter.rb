@@ -76,12 +76,10 @@ class PollExporter
       csv << ['votes']
       memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
       csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
-      stances = @poll.stances.latest
-      stances = stances.sort_by { |stance| Stance.anonymous_id_for(poll_id: @poll.id, stance_id: stance.id) } if @poll.anonymous?
-      stances.each do |stance|
+      @poll.stances.latest.each do |stance|
         membership = memberships_by_user_id[stance.participant_id] unless @poll.anonymous?
         line = [
-          @poll.anonymous? ? nil : stance.id,
+          stance.id,
           stance.poll_id,
           @poll.anonymous? ? nil : stance.participant_id,
           @poll.anonymous? ? nil : stance.author_name,
@@ -89,8 +87,8 @@ class PollExporter
           membership&.delegate,
           @poll.anonymous? ? nil : stance.created_at&.iso8601,
           @poll.anonymous? ? nil : stance.updated_at&.iso8601,
-          @poll.anonymous? ? nil : stance.reason,
-          @poll.anonymous? ? nil : stance.reason_format]
+          stance.reason,
+          stance.reason_format]
 
         @poll.poll_options.each do |poll_option|
           line.push(stance.option_scores[poll_option.id.to_s] || nil)

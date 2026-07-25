@@ -60,17 +60,14 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     result = JSON.parse(response.body)['search_results'].find { |record| record['searchable_id'] == stance.id }
     result ||= JSON.parse(response.body)['search_results'].find { |record| record['poll_id'] == @poll.id }
     assert_not_nil result
-    assert_equal Stance.anonymous_id_for(poll_id: @poll.id, stance_id: stance.id), result['searchable_id']
-    refute_equal stance.id, result['searchable_id']
-    assert_equal Stance.anonymous_id_for(poll_id: @poll.id, stance_id: "search:#{stance.id}"), result['id']
-    assert_not result.key?('sequence_id')
+    assert_equal stance.id, result['searchable_id']
     assert_not result.key?('author_id')
     assert_not result.key?('author_name')
     assert_not result.key?('authored_at')
 
-    get :index, params: { query: @user.name }
+    get :index, params: {query: @user.name}
     name_results = JSON.parse(response.body)['search_results']
-    refute name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
+    assert name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
   end
 
   test "returns group filtered records" do

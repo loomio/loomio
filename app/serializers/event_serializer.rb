@@ -27,28 +27,6 @@ class EventSerializer < ApplicationSerializer
     !anonymous_stance_event?
   end
 
-  def include_eventable_id?
-    !anonymous_stance_event?
-  end
-
-  def id
-    return object.id unless anonymous_stance_event?
-
-    Stance.anonymous_id_for(poll_id: eventable.poll_id, stance_id: "event:#{object.id}")
-  end
-
-  %i[sequence_id position position_key depth child_count].each do |attribute|
-    define_method("include_#{attribute}?") { !anonymous_stance_event? }
-  end
-
-  def parent_id
-    object.parent_id unless anonymous_stance_event?
-  end
-
-  def include_parent?
-    !anonymous_stance_event? && super
-  end
-
   def include_eventable?
     !(object.kind == "new_discussion" && exclude_type?('discussion'))
   end

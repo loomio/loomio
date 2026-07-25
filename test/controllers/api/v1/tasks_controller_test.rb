@@ -133,34 +133,4 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     li = doc.css("li[data-uid='#{tasks[0]['uid']}']").first
     assert_equal 'false', li['data-checked']
   end
-
-  test "does not expose legacy tasks from anonymous stance reasons" do
-    poll = PollService.create(params: {
-      title: 'Anonymous task poll',
-      poll_type: 'proposal',
-      group_id: @group.id,
-      anonymous: true,
-      hide_results: 'until_closed',
-      poll_option_names: %w[Agree Disagree],
-      closing_at: 1.day.from_now
-    }, actor: @author)
-    stance = poll.stances.latest.find_by!(participant_id: @author.id)
-    task = Task.create!(
-      record: stance,
-      author: @author,
-      doer: @doer,
-      users: [@doer],
-      uid: 998877,
-      name: 'Private anonymous ballot task',
-      done: false
-    )
-
-    get :index
-
-    assert_response :success
-    task_ids = JSON.parse(response.body).fetch('tasks').map { |record| record['id'] }
-    refute_includes task_ids, task.id
-    refute_includes response.body, 'Private anonymous ballot task'
-    assert_not @doer.can?(:show, task)
-  end
 end

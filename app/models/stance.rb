@@ -10,16 +10,8 @@ class Stance < ApplicationRecord
   extend HasTokens
   initialized_with_token :token
 
-  def self.anonymous_id_for(poll_id:, stance_id:)
-    OpenSSL::HMAC.hexdigest(
-      'SHA256',
-      Rails.application.secret_key_base,
-      "#{poll_id}:#{stance_id}"
-    )[0, 20]
-  end
-
   def self.pg_search_insert_statement(id: nil, author_id: nil, poll_id: nil)
-    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, CASE WHEN polls.anonymous = TRUE THEN NULL ELSE users.name END), E'<[^>]+>', '', 'gi')"
+    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
         searchable_type,
@@ -84,6 +76,7 @@ class Stance < ApplicationRecord
   belongs_to :participant, class_name: 'User', required: true
 
   alias user participant
+  alias author participant
 
   scope :latest, -> { where(latest: true, revoked_at: nil) }
   scope :newest_first, -> { order("cast_at DESC NULLS LAST") }
@@ -148,20 +141,6 @@ class Stance < ApplicationRecord
 
   def author_name
     participant&.name
-  end
-
-  def author
-    participant
-  end
-
-  def reason_visible_to?(user_id:, voted: false)
-    return false if revoked_at.present? || redacted_at.present?
-
-    participant_id == user_id || poll.show_results?(voted: voted)
-  end
-
-  def results_hidden_until_closed?
-    poll.hide_results == 'until_closed' && poll.closed_at.blank?
   end
 
   def assign_option_scores

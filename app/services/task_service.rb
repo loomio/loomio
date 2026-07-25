@@ -1,8 +1,6 @@
 class TaskService
   def self.send_task_reminders(time = Time.now.utc.at_beginning_of_hour)
     Task.not_done.where(remind_at: time).each do |task|
-      next if task.anonymous_stance?
-
       task.users.each do |user|
         TaskMailer.task_due_reminder(user, task).deliver_later
       end
@@ -54,8 +52,6 @@ class TaskService
   end
 
   def self.parse_and_update(model, field)
-    return update_model(model, []) if model.is_a?(Stance) && model.poll.anonymous?
-
     update_model(model, parse_tasks(model[field], model.author))
   end
 

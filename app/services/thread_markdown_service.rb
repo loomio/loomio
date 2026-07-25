@@ -128,9 +128,10 @@ class ThreadMarkdownService
     poll = stance.poll
     voter = poll.anonymous? ? "Anonymous participant" : author_name(stance)
     response = stance_response(stance)
-    metadata = ["- **Response:** #{response}"]
-    metadata.unshift("- **Submitted:** #{timestamp(event.created_at)}") unless poll.anonymous?
-    metadata = metadata.join("\n")
+    metadata = [
+      "- **Submitted:** #{timestamp(event.created_at)}",
+      "- **Response:** #{response}"
+    ].join("\n")
     reason = body(stance, heading_offset: 3)
     sections = ["### Vote — #{voter} — #{inline(poll.title)}", metadata]
     sections << "#### Reason\n\n#{reason}" if reason.present?

@@ -32,14 +32,14 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
-  test "users action returns no participants for anonymous polls" do
+  test "users action returns participants for anonymous polls" do
     @poll.update!(anonymous: true)
     sign_in @admin
-    get :users, params: { poll_id: @poll.id }
+    get :users, params: {poll_id: @poll.id}
     assert_response :success
 
-    json = JSON.parse(response.body)
-    assert_empty(json['users'] || [], "anonymous poll must not expose participants via users action")
+    user_ids = JSON.parse(response.body).fetch('users').map { |user| user['id'] }
+    assert_includes user_ids, @admin.id
   end
 
   test "index does not allow unauthorized users" do
@@ -134,11 +134,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
     stances = JSON.parse(response.body)['stances']
 
-    # Voting order must not be inferable: other voters' stances are exposed with
-    # opaque (non-creation-ordered) ids, so the response is not the id-sorted
-    # creation order.
-    creation_order = @poll.stances.latest.order(:id).pluck(:id)
-    refute_equal creation_order, stances.map { |stance| stance['id'] }
+    assert_equal @poll.stances.latest.order(:id).pluck(:id), stances.map { |stance| stance['id'] }
 
     # Other voters' choices stay hidden until results are visible.
     stances.reject { |stance| stance['id'] == own_id }.each do |stance|
@@ -401,61 +397,16 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
-  # -- Anonymous-poll de-anonymization via stance id/order --
-  # The stance id is a creation-ordered primary key; if it (or the response
-  # order) is exposed for anonymous polls, a member can align stances with the
-  # member list and read each one's choice. These lock down both vectors.
-
-  test "index does not expose real stance ids of other voters in an anonymous poll" do
-    anon = anon_poll_with_voters(3)
-    voter = anon[:voters].first
-    sign_in voter
-
-    get :index, params: { poll_id: anon[:poll].id }
-    assert_response :success
-
-    exposed = JSON.parse(response.body)['stances'].map { |s| s['id'] }
-    real_ids = anon[:poll].stances.latest.pluck(:id)
-    own_real_id = anon[:poll].stances.latest.find_by(participant_id: voter.id).id
-
-    # The only real id present is the viewer's own (so they can still edit it);
-    # everyone else's is an opaque, non-creation-ordered token.
-    leaked = exposed & real_ids
-    assert_equal [own_real_id], leaked,
-      "anonymous poll leaked real stance ids #{(leaked - [own_real_id]).inspect} of other voters"
-  end
-
-  test "index returns anonymous stances in a scrambled (non-creation) order" do
+  test "index returns anonymous stances with their database ids in id order" do
     anon = anon_poll_with_voters(4)
     poll = anon[:poll]
-    voter = anon[:voters].first
-    sign_in voter
+    sign_in anon[:voters].first
 
-    get :index, params: { poll_id: poll.id }
-    exposed = JSON.parse(response.body)['stances'].map { |s| s['id'] }
+    get :index, params: {poll_id: poll.id}
+    assert_response :success
 
-    # Invert the opaque ids back to real ids to read the response's true order.
-    secret = Rails.application.secret_key_base
-    hmac_to_real = poll.stances.latest.pluck(:id).to_h do |id|
-      [OpenSSL::HMAC.hexdigest('SHA256', secret, "#{poll.id}:#{id}")[0, 20], id]
-    end
-    own_real_id = poll.stances.latest.find_by(participant_id: voter.id).id
-    response_real_order = exposed.map { |x| x == own_real_id ? own_real_id : hmac_to_real[x] }
-
-    creation_order = poll.stances.latest.order(:id).pluck(:id)
-    assert_not_equal creation_order, response_real_order,
-      "anonymous stances were returned in creation order — position reveals the voter"
-  end
-
-  test "anonymous voter's own stance keeps its real id so it stays editable" do
-    anon = anon_poll_with_voters(2)
-    voter = anon[:voters].first
-    own = anon[:poll].stances.latest.find_by(participant_id: voter.id)
-    sign_in voter
-
-    get :index, params: { poll_id: anon[:poll].id }
-    exposed = JSON.parse(response.body)['stances'].map { |s| s['id'] }
-    assert_includes exposed, own.id, "voter must still see their own stance by its real id"
+    exposed = JSON.parse(response.body)['stances'].map { |stance| stance['id'] }
+    assert_equal poll.stances.latest.order(:id).pluck(:id), exposed
   end
 
   private

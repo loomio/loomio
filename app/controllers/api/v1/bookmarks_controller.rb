@@ -3,13 +3,14 @@ class Api::V1::BookmarksController < Api::V1::RestfulController
     'Comment' => Comment,
     'Discussion' => Discussion,
     'Outcome' => Outcome,
-    'Poll' => Poll
+    'Poll' => Poll,
+    'Stance' => Stance
   }.freeze
 
   alias :create :update
 
   def index
-    self.collection = current_user.bookmarks.kept.where.not(bookmarkable_type: 'Stance').order(created_at: :desc)
+    self.collection = current_user.bookmarks.kept.order(created_at: :desc)
     respond_with_collection
   end
 

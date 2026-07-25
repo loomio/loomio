@@ -8,9 +8,6 @@ class Views::EventMailer::Poll::Stance < Views::ApplicationMailer::Component
   end
 
   def view_template
-    voted = @stance.poll.stances.latest.decided.exists?(participant_id: @recipient.id)
-    return unless @stance.reason_visible_to?(user_id: @recipient.id, voted: voted)
-
     div(class: "poll-mailer__stance") do
       table do
         poll = @stance.poll
