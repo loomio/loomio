@@ -218,3 +218,12 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `podrá/su` address | Informal `puedes/tu` address | The Spanish interface uses informal `tú` |
 | `config/locales/client.fr.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `vous` address | Informal `tu/ton` address | The French interface uses informal `tu` |
 | `config/locales/client.nl_NL.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `u/uw` address | Informal `je` address | The Dutch interface uses informal `je/jouw` |
+
+## 2026-07-27 — Participant verification status
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `poll_receipts_page.voted`, `poll_receipts_page.not_voted` | Passive labels meaning “was voted for” or mismatched verb forms | Labels meaning the participant voted or did not vote | The column reports a participant’s action, not whether the participant was selected in a vote |
+| `config/locales/client.fr.yml` | `poll_receipts_page.voted` | `Élu` | `A voté` | `Élu` means “elected”, not “voted” |
+| `config/locales/client.fr.yml` | `poll_receipts_page.participation_records_explanation` | `Ce document...` | `Cette liste...` | The interface shows a participant list, not a document |
+| `config/locales/client.pt_BR.yml` | `poll_receipts_page.participation_records_explanation` | `Não mostra em quem votou` | `Não mostra como cada pessoa votou` | The poll may not elect a person; the guarantee covers how each participant voted |

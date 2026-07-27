@@ -151,6 +151,7 @@ class PollService
 
       if poll.detached_anonymous?
         voters = create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
+        poll.update_counts!
       else
         stances = create_stances(
           poll: poll, actor: actor,

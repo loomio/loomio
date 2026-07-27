@@ -2839,6 +2839,9 @@ de:
     invited_by: Eingeladen von
     invited_on: Eingeladen am
     no_receipts: Diese anonyme Umfrage wurde geschlossen, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.
+    participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
+    voted: Abgestimmt
+    not_voted: Nicht abgestimmt
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:

@@ -2804,6 +2804,9 @@ el:
     invited_by: Προσκλήθηκε από
     invited_on: Προσκλήθηκε στις
     no_receipts: Αυτή η ανώνυμη δημοσκόπηση έκλεισε πριν υπάρξει η λειτουργία επαλήθευσης, επομένως η επαλήθευση δεν είναι δυνατή.
+    participation_records_explanation: Αυτό δείχνει ποιοι ήταν επιλέξιμοι και αν ψήφισαν. Δεν δείχνει πώς ψήφισε ο καθένας.
+    voted: Ψήφισε
+    not_voted: Δεν ψήφισε
   comment_reply_form:
     aria_label: Προσθήκη απάντησης
   discussion_template:

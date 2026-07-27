@@ -216,6 +216,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
 
     assert_equal [@voter.id], voters.pluck(:voter_id)
+    assert_equal 1, poll.reload.voters_count
+    assert_equal 1, poll.undecided_voters_count
     assert_empty poll.stances
     event = Events::PollAnnounced.order(:id).last
     assert_equal [@voter.id], event.recipient_user_ids

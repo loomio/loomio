@@ -8,7 +8,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
       receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
     end
 
-    is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
+    can_view_email = @poll.group.admins.include?(current_user)
     memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
     voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
@@ -16,6 +16,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     render json: {
       voters_count: @poll.voters_count,
       poll_title: @poll.title,
+      show_voter_email: can_view_email,
       receipts: receipts.map do |receipt|
         voter = voters[receipt.voter_id]
         inviter = inviters[receipt.inviter_id]
@@ -24,10 +25,10 @@ class Api::V1::PollsController < Api::V1::RestfulController
           poll_id: @poll.id,
           voter_id: receipt.voter_id,
           voter_name: voter.name,
-          voter_email: is_admin ? voter.email : (voter.email || "").split('@').last,
+          voter_email: (voter.email if can_view_email),
           member_since: membership&.accepted_at&.to_date&.iso8601,
           inviter_id: receipt.inviter_id,
-          inviter_name: inviter.name,
+          inviter_name: inviter&.name,
           invited_on: receipt.invited_at&.to_date&.iso8601,
           vote_cast: receipt.vote_cast
         }

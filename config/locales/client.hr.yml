@@ -2804,6 +2804,9 @@ hr:
     invited_by: Pozvao/la
     invited_on: Pozvani
     no_receipts: Ova anonimna anketa zatvorena je prije nego što je postojala značajka provjere, tako da provjera nije moguća.
+    participation_records_explanation: Ovo pokazuje tko je bio podoban i jesu li glasali. Ne pokazuje kako je tko glasao.
+    voted: Glasao/la
+    not_voted: Nije glasao/la
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:

@@ -2,6 +2,7 @@
 import Records       from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
+import { mdiCheck, mdiClose } from '@mdi/js';
 
 import { ref, defineProps } from 'vue';
 const receipts = ref([]);
@@ -11,7 +12,6 @@ const { id } = defineProps({ id: String });
 const headers = ref(
   [
     { title: I18n.global.t('poll_receipts_page.voter_name'), key: 'voter_name' },
-    { title: I18n.global.t('poll_receipts_page.voter_email'), key: 'voter_email' },
     { title: I18n.global.t('poll_receipts_page.member_since'), key: 'member_since' },
     { title: I18n.global.t('poll_receipts_page.invited_by'), key: 'inviter_name' },
     { title: I18n.global.t('poll_receipts_page.invited_on'), key: 'invited_on' },
@@ -22,6 +22,12 @@ const headers = ref(
 Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   receipts.value = data.receipts;
   voters_count.value = data.voters_count;
+  if (data.show_voter_email) {
+    headers.value.splice(1, 0, {
+      title: I18n.global.t('poll_receipts_page.voter_email'),
+      key: 'voter_email'
+    });
+  }
   EventBus.$emit('currentComponent', {
     title: data.poll_title,
   });
@@ -40,4 +46,19 @@ Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
       v-alert(type="error" v-if="voters_count > 0 && receipts.length == 0 " v-t="'poll_receipts_page.no_receipts'")
 
       v-data-table(density="compact" :items="receipts" :headers="headers" :items-per-page="-1" hide-default-footer)
+        template(v-slot:[`item.vote_cast`]="{ value }")
+          v-icon(
+            v-if="value === true"
+            :icon="mdiCheck"
+            color="success"
+            size="small"
+            :aria-label="$t('poll_receipts_page.voted')"
+          )
+          v-icon(
+            v-else
+            :icon="mdiClose"
+            color="error"
+            size="small"
+            :aria-label="$t('poll_receipts_page.not_voted')"
+          )
 </template>

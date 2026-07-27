@@ -2804,6 +2804,9 @@ fi:
     invited_by: Kutsuttu
     invited_on: Kutsuttu
     no_receipts: Tämä anonyymi kysely sulkeutui ennen vahvistusominaisuuden käyttöönottoa, joten vahvistus ei ole mahdollista.
+    participation_records_explanation: Tämä näyttää, ketkä olivat äänioikeutettuja ja äänestivätkö he. Se ei näytä, miten kukaan äänesti.
+    voted: Äänesti
+    not_voted: Ei äänestänyt
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:

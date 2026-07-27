@@ -2804,6 +2804,9 @@ ro:
     invited_by: Invitat de
     invited_on: Invitat pe
     no_receipts: Acest sondaj anonim s-a închis înainte ca funcția de verificare să existe, deci verificarea nu este posibilă.
+    participation_records_explanation: Asta arată cine a fost eligibil și dacă a votat. Nu arată cum a votat fiecare.
+    voted: A votat
+    not_voted: Nu a votat
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:

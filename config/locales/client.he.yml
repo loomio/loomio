@@ -2823,6 +2823,9 @@ he:
     invited_by: הוזמן על ידי
     invited_on: הוזמן בתאריך
     no_receipts: סקר אנונימי זה נסגר לפני שתכונת האימות הייתה קיימת, כך שאימות אינו אפשרי.
+    participation_records_explanation: זה מראה מי היה זכאי והאם הוא הצביע. זה לא מראה איך מישהו הצביע.
+    voted: הצביעו
+    not_voted: לא הצביעו
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:

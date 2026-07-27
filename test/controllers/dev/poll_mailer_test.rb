@@ -56,6 +56,16 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   # Cast stance via service (triggers events/emails, requires open poll)
   # Returns the event from StanceService.update
   def cast_stance(poll, user)
+    if poll.detached_anonymous?
+      ballot = poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [
+          {poll_option_id: poll.poll_options.first.id, score: 1}
+        ]
+      )
+      AnonymousBallotService.create(anonymous_ballot: ballot, actor: user)
+      return
+    end
+
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
     event = StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll))
@@ -65,6 +75,8 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   # Save stance directly (no authorization check, for closed polls / display purposes)
   def save_cast_stance(poll, user)
+    return cast_stance(poll, user) if poll.detached_anonymous?
+
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
     choice = poll.poll_options.limit(poll.minimum_stance_choices).map.with_index do |option, i|
@@ -136,10 +148,11 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   def build_poll_closing_soon(poll_type:, anonymous: false, hide_results: :off, notify_on_closing_soon: 'voters')
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results,
-                       created_at: 6.days.ago,
+                       opened_at: 6.days.ago,
                        closing_at: 1.day.from_now.beginning_of_hour,
                        quorum_pct: 80,
                        notify_on_closing_soon: notify_on_closing_soon), actor: @actor)
+    ActionMailer::Base.deliveries.clear
     # Cast a stance while poll is open so we have voter data
     save_cast_stance(@poll, @voter)
     @poll.update_counts!
@@ -155,6 +168,14 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     # Clear deliveries so we only see emails from the mention, not poll_announced
     ActionMailer::Base.deliveries.clear
+    if @poll.detached_anonymous?
+      @scenario_observer = @mentioned
+      @scenario_actor = @voter
+      @email = find_email_for(@mentioned)
+      @parsed_body = parse_email(@email)
+      return
+    end
+
     stance = @poll.stances.find_by(participant_id: @voter.id, latest: true)
     params = cast_stance_params(@poll)
     params[:reason] = "<p><span class='mention' data-mention-id='#{@mentioned.username}'>@#{@mentioned.name}</span></p>"
@@ -260,11 +281,9 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       assert_element('.poll-mailer__stance')
     end
 
-    test "anonymous #{poll_type} stance_created email" do
+    test "anonymous #{poll_type} vote does not send a stance_created email" do
       build_poll_stance_created(poll_type: poll_type, anonymous: true)
-      assert_notification_headline("notifications.without_title.stance_created")
-      assert_text(".base-mailer__event-headline", "Anonymous")
-      assert_element('.poll-mailer__stance')
+      assert_no_email_sent
     end
 
     test "results_hidden #{poll_type} stance_created email is suppressed until close" do

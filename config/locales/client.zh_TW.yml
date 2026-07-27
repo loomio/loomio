@@ -2832,6 +2832,9 @@ zh_TW:
     invited_by: 受邀者
     invited_on: 受邀於
     no_receipts: 此匿名投票在驗證功能出現之前就已關閉，因此無法進行驗證。
+    participation_records_explanation: 這顯示了哪些人有資格投票以及他們是否投票。但它並不顯示任何人的投票情況。
+    voted: 投票
+    not_voted: 未投票
   comment_reply_form:
     aria_label: 新增回覆
   discussion_template:

@@ -2804,6 +2804,9 @@ sl:
     invited_by: Povabljen/a s strani
     invited_on: Povabljen/a
     no_receipts: Ta anonimna anketa se je zaključila, preden je obstajala funkcija preverjanja, zato preverjanje ni mogoče.
+    participation_records_explanation: To prikazuje, kdo je bil upravičen in ali je glasoval. Ne prikazuje, kako je kdo glasoval.
+    voted: Glasoval/a
+    not_voted: Ni glasoval/a
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:

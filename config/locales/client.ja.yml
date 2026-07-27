@@ -2803,6 +2803,9 @@ ja:
     invited_by: 招待者
     invited_on: 招待された
     no_receipts: この匿名投票は検証機能が存在する前に終了したため、検証は不可能です。
+    participation_records_explanation: これは、誰が投票資格を有していたか、そして投票したかどうかを示しています。誰がどのように投票したかは示していません。
+    voted: 投票済み
+    not_voted: 未投票
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:

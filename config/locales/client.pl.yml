@@ -2831,6 +2831,9 @@ pl:
     invited_by: Zaproszony przez
     invited_on: Zaproszony na
     no_receipts: Ta anonimowa ankieta została zamknięta, zanim pojawiła się funkcja weryfikacji, dlatego weryfikacja nie jest możliwa.
+    participation_records_explanation: Pokazuje, kto był uprawniony do głosowania i czy głosował. Nie pokazuje, jak ktoś głosował.
+    voted: Zagłosował(a)
+    not_voted: Nie zagłosował(a)
   comment_reply_form:
     aria_label: Dodaj odpowiedź
   discussion_template:

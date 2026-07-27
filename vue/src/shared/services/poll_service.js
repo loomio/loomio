@@ -294,6 +294,7 @@ export default new class PollService {
         to() { return `/p/${poll.key}/receipts`; },
         canPerform() {
           if (!poll.anonymous) { return false };
+          if (!poll.groupId) { return false };
           if (poll.detachedAnonymousVoting()) {
             return poll.adminsInclude(Session.user());
           }

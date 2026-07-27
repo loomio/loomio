@@ -2832,6 +2832,9 @@ it:
     invited_by: Invitato da
     invited_on: Invitato il
     no_receipts: Questo sondaggio anonimo è stato chiuso prima che la funzione di verifica esistesse, quindi la verifica non è possibile.
+    participation_records_explanation: Questo elenco mostra chi aveva diritto di voto e se ha votato. Non indica come ha votato ciascuno.
+    voted: Ha votato
+    not_voted: Non ha votato
   comment_reply_form:
     aria_label: Aggiungi una risposta
   discussion_template:

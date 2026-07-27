@@ -30,15 +30,15 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
-  test "anonymous stance events hide timestamps from index and timeline" do
+  test "legacy anonymous stance events hide timestamps from index and timeline" do
     poll = PollService.create(params: {
       title: 'Anonymous poll',
       poll_type: 'proposal',
       topic_id: @discussion.topic_id,
-      anonymous: true,
       poll_option_names: %w[agree disagree],
       closing_at: 1.day.from_now
     }, actor: @admin)
+    poll.update_column(:anonymous, true)
     stance = poll.stances.find_by!(participant_id: @user.id)
     published_event = Events::StanceCreated.publish!(stance)
     assert_nil published_event.user_id

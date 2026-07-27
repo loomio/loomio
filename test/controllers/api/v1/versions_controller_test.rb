@@ -16,7 +16,7 @@ class Api::V1::VersionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "show returns voter identity and changes for anonymous poll stance versions" do
+  test "show returns voter identity and changes for legacy anonymous stance versions" do
     admin = users(:admin)
     user = users(:user)
     discussion = discussions(:discussion)
@@ -25,9 +25,9 @@ class Api::V1::VersionsControllerTest < ActionController::TestCase
       poll_type: "proposal",
       topic_id: discussion.topic.id,
       poll_option_names: ["Agree", "Disagree"],
-      anonymous: true,
       closing_at: 5.days.from_now
     }, actor: admin)
+    poll.update_column(:anonymous, true)
 
     stance = poll.stances.find_by(participant: user) || poll.stances.first
     PaperTrail.request(whodunnit: user.id.to_s) do

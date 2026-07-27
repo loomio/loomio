@@ -266,6 +266,73 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "detached anonymous receipts allow a missing historical inviter" do
+    poll = PollService.create(params: {
+      title: "migrated receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    poll.anonymous_poll_voters.find_by!(voter: @user).update_column(:inviter_id, nil)
+
+    sign_in @admin
+    get :receipts, params: {id: poll.key}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal true, json["show_voter_email"]
+    receipt = json.fetch("receipts").find { |record| record["voter_id"] == @user.id }
+    assert_nil receipt["inviter_id"]
+    assert_nil receipt["inviter_name"]
+    assert_equal @user.email, receipt["voter_email"]
+  end
+
+  test "direct-topic coordinator cannot verify participants" do
+    @discussion.topic.update!(group_id: nil)
+    TopicReader.for(user: @admin, topic: @discussion.topic).update!(admin: true, guest: true)
+    poll = PollService.create(params: {
+      title: "direct receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      specified_voters_only: true,
+      topic_id: @discussion.topic_id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: {recipient_user_ids: [@user.id]}
+    )
+
+    sign_in @admin
+    get :receipts, params: {id: poll.key}
+
+    assert_response :forbidden
+  end
+
+  test "group poll coordinator verifies participation without participant emails" do
+    poll = PollService.create(params: {
+      title: "coordinator receipts test",
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    TopicReader.for(user: @user, topic: poll.topic).update!(admin: true)
+
+    sign_in @user
+    get :receipts, params: {id: poll.key}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal false, json["show_voter_email"]
+    assert json.fetch("receipts").all? { |receipt| receipt["voter_email"].nil? }
+  end
+
   test "detached anonymous receipts denied for poll member who is not a group member" do
     poll = PollService.create(params: {
       title: "receipts test",

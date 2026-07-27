@@ -28,6 +28,7 @@ This review covers the detached anonymous voting implementation and the migratio
 - Before closing, general poll serialization omits results, option counts, cast/uncast counts, participation percentages, quorum progress, and STV results.
 - The current voter receives only their own eligibility and submitted/not-submitted state.
 - Named participation verification is coordinator-only and uses only electorate records.
+- Direct-topic participant verification is denied. For group polls, only group administrators receive participant email addresses; other poll coordinators receive no email value. Missing historical inviters remain blank, and specified-voter invitations update cached participation counts inside the locked poll transaction.
 - The ballot API has no show, index, update, destroy, revoke, redact, or replace route.
 - After closing, charts and CSV exports use aggregate option totals. BLT ballot-pattern export is denied.
 - JSON group and direct-topic portability archives preserve detached ballots, choices, participant state, and legacy reasons as an operational restore exception. Ballots and the named ledger have no shared identifier or timestamp, ballot UUIDs are randomized independently for each archive, and imports assign another fresh set of UUIDs.
@@ -80,7 +81,7 @@ The application-level design does not protect against database, backup, host, pr
 
 On 2026-07-27:
 
-- the focused anonymous-voting and group-portability regression suite passed 198 tests and 653 assertions;
+- the cross-boundary anonymous-voting regression suite passed 364 tests and 1,329 assertions; the only skipped case is the pre-existing optional chatbot comparison render;
 - the native anonymous-poll browser scenario passed against a fresh Rails test server and production Vue build;
 - the legacy browser scenario passed against a production Vue build and verified the legacy-format notice, plain-text reason and choice, and absence of voter-name and avatar elements;
 - locale YAML parsed successfully and both legacy-reason strings were present in every supported client locale;

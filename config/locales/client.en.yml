@@ -2002,6 +2002,8 @@ en:
     voter_name: Name
     voter_email: Email
     vote_cast: Vote cast
+    voted: Voted
+    not_voted: Not voted
     member_since: Member since
     invited_by: Invited by
     invited_on: Invited on

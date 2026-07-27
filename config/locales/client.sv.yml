@@ -2804,6 +2804,9 @@ sv:
     invited_by: Inbjuden av
     invited_on: Inbjuden den
     no_receipts: Denna anonyma omröstning avslutades innan verifieringsfunktionen fanns, så verifiering är inte möjlig.
+    participation_records_explanation: Detta visar vilka som var röstberättigade och om de röstade. Det visar inte hur någon röstade.
+    voted: Röstade
+    not_voted: Röstade inte
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:

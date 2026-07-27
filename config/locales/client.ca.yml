@@ -2831,6 +2831,9 @@ ca:
     invited_by: Convidat per
     invited_on: Convidat el
     no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.
+    participation_records_explanation: Això mostra qui era elegible i si va votar. No mostra com va votar cadascú.
+    voted: Votat
+    not_voted: No votat
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:

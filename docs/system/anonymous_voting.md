@@ -266,6 +266,8 @@ It must never expose or internally derive which ballot belongs to a participant.
 
 Authorization for participation verification must be defined independently from authorization to view poll results. Poll access or result access alone must not imply access to the named electorate ledger.
 
+Participation verification is available only for group-owned polls. Poll coordinators may view names, membership duration, invitation provenance, and participation status. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
+
 The UI must describe participation verification as named participation metadata, not ballot identity.
 
 ## Automatic reminders

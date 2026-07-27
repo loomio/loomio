@@ -2852,6 +2852,9 @@ pt_BR:
     invited_by: Convidado por
     invited_on: Convidado em
     no_receipts: Esta enquete anônima foi encerrada antes que o recurso de verificação existisse, portanto a verificação não é possível.
+    participation_records_explanation: Isso mostra quem era elegível e se votou. Não mostra como cada pessoa votou.
+    voted: Votou
+    not_voted: Não votou
   comment_reply_form:
     aria_label: Adicionar uma resposta
   discussion_template:

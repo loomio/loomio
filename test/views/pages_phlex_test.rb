@@ -35,16 +35,16 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, @discussion.author.name
   end
 
-  test "discussion show excludes hidden identified stances before pagination without excluding anonymous stances" do
+  test "discussion show excludes hidden identified stances before pagination without excluding legacy anonymous stances" do
     @discussion.topic.update!(allow_concurrent_polls: true)
     anonymous_poll = PollService.create(params: {
       title: 'Anonymous SSR poll',
       poll_type: 'proposal',
       topic_id: @discussion.topic_id,
-      anonymous: true,
       poll_option_names: %w[agree disagree],
       closing_at: 1.day.from_now
     }, actor: users(:admin))
+    anonymous_poll.update_column(:anonymous, true)
     hidden_poll = PollService.create(params: {
       title: 'Hidden SSR poll',
       poll_type: 'proposal',
@@ -401,15 +401,15 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Stances"
   end
 
-  test "group exports hide anonymous stance identity and timestamps" do
+  test "group exports hide legacy anonymous stance identity and timestamps" do
     poll = PollService.create(params: {
       title: 'Anonymous export poll',
       poll_type: 'proposal',
       topic_id: @discussion.topic_id,
-      anonymous: true,
       poll_option_names: %w[agree disagree],
       closing_at: 1.day.from_now
     }, actor: @user)
+    poll.update_column(:anonymous, true)
     stance = poll.stances.find_by!(participant_id: @user.id)
 
     rows = CSV.parse(GroupExporter.new(@group).to_csv)

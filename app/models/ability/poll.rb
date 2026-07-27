@@ -20,6 +20,7 @@ module Ability::Poll
     end
 
     can :receipts, ::Poll do |poll|
+      next false unless poll.group_id
       next poll.admins.exists?(user.id) if poll.detached_anonymous?
 
       if AppConfig.app_features[:verify_participants_admin_only]

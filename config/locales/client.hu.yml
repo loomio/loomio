@@ -2811,6 +2811,9 @@ hu:
     invited_by: Meghívott
     invited_on: 'Meghívva ekkor:'
     no_receipts: Ez a névtelen szavazás még az ellenőrzési funkció megjelenése előtt bezárt, így az ellenőrzés nem lehetséges.
+    participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
+    voted: Szavazott
+    not_voted: Nem szavazott
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:

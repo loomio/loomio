@@ -73,7 +73,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not identify voters in anonymous polls" do
+  test "does not identify voters in legacy anonymous polls" do
     travel_to Time.zone.parse('2026-07-15 10:00:00 UTC') do
       discussion = create_discussion
       poll = PollService.create(
@@ -82,11 +82,11 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
           title: 'Anonymous check',
           poll_type: 'proposal',
           poll_option_names: ['Agree', 'Disagree'],
-          closing_at: 3.days.from_now,
-          anonymous: true
+          closing_at: 3.days.from_now
         },
         actor: @admin
       )
+      poll.update_column(:anonymous, true)
       stance = poll.stances.latest.find_by!(participant_id: @member.id)
       stance.choice = 'Disagree'
       stance.reason = 'I have a concern.'
@@ -98,6 +98,40 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "I have a concern."
       refute_includes markdown, @member.name
     end
+  end
+
+  test "detached anonymous polls render aggregate results without individual votes" do
+    discussion = create_discussion
+    poll = PollService.create(
+      params: {
+        topic_id: discussion.topic_id,
+        title: "Detached anonymous check",
+        poll_type: "proposal",
+        poll_option_names: ["Agree", "Disagree"],
+        closing_at: 3.days.from_now,
+        anonymous: true
+      },
+      actor: @admin
+    )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [
+          {poll_option_id: poll.poll_options.find_by!(name: "Agree").id}
+        ]
+      ),
+      actor: @member
+    )
+
+    open_markdown = render(discussion.topic)
+    assert_includes open_markdown, "Hidden until the poll closes"
+    refute_includes open_markdown, "### Vote —"
+    refute_includes open_markdown, @member.name
+
+    PollService.close(poll: poll, actor: @admin)
+    closed_markdown = render(discussion.topic)
+    assert_includes closed_markdown, "- **Agree:** 1 voter"
+    refute_includes closed_markdown, "### Vote —"
+    refute_includes closed_markdown, @member.name
   end
 
   test "does not expose results or vote reasons before they are visible" do

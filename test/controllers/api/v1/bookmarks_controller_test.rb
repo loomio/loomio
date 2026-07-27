@@ -114,7 +114,7 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
 
   test "create bookmarks an anonymous stance when authorized" do
     voter = users(:member)
-    stance = anonymous_stance_for(voter)
+    stance = legacy_anonymous_stance_for(voter)
     user = users(:user)
     sign_in user
 
@@ -129,7 +129,7 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
 
   test "index includes stance bookmarks" do
     user = users(:user)
-    stance = anonymous_stance_for(users(:member))
+    stance = legacy_anonymous_stance_for(users(:member))
     bookmark = Bookmark.create!(user: user, bookmarkable: stance)
     sign_in user
 
@@ -143,16 +143,16 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
 
   private
 
-  def anonymous_stance_for(voter)
+  def legacy_anonymous_stance_for(voter)
     poll = PollService.create(params: {
       title: 'Anonymous bookmark target',
       poll_type: 'proposal',
       group_id: groups(:group).id,
-      anonymous: true,
       hide_results: 'off',
       poll_option_names: %w[Agree Disagree],
       closing_at: 1.day.from_now
     }, actor: users(:admin))
+    poll.update_column(:anonymous, true)
     poll.stances.latest.find_by!(participant_id: voter.id)
   end
 end

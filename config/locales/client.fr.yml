@@ -2848,6 +2848,9 @@ fr:
     invited_by: Invité par
     invited_on: Invité sur
     no_receipts: Ce sondage anonyme a été fermé avant que la fonction de vérification n'existe, la vérification n'est donc pas possible.
+    participation_records_explanation: Cette liste indique qui pouvait voter et si cette personne a voté. Elle n’indique pas comment chaque personne a voté.
+    voted: A voté
+    not_voted: N’a pas voté
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:

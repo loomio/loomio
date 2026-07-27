@@ -2831,6 +2831,9 @@ nl_NL:
     invited_by: Uitgenodigd door
     invited_on: Uitgenodigd op
     no_receipts: Deze anonieme poll is gesloten voordat de verificatiefunctie bestond. Verificatie is daarom niet mogelijk.
+    participation_records_explanation: Dit laat zien wie stemgerechtigd was en of ze hebben gestemd. Het laat niet zien hoe iemand heeft gestemd.
+    voted: Gestemd
+    not_voted: Niet gestemd
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:

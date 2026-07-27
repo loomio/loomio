@@ -1926,6 +1926,9 @@ zh_CN:
     invited_by: 受邀
     invited_on: 受邀加入
     see_votes_if_quorum_reached: 如果投票已结束且达到法定人数，您将看到投票者名单。
+    participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
+    voted: 投票
+    not_voted: 未投票
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进

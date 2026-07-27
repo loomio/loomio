@@ -2840,6 +2840,9 @@ es:
     invited_by: Invitado por
     invited_on: Invitado a
     no_receipts: Esta encuesta anónima se cerró antes de que existiera la función de verificación, por lo que la verificación no es posible.
+    participation_records_explanation: Esto muestra quiénes eran elegibles y si votaron. No muestra cómo votó cada persona.
+    voted: Votó
+    not_voted: No votó
   comment_reply_form:
     aria_label: Añadir una respuesta
   discussion_template:
