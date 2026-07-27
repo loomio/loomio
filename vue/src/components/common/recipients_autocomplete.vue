@@ -1,8 +1,6 @@
 <script lang="js">
 import Records from '@/shared/services/records';
-import Flash from '@/shared/services/flash';
-import AnnouncementService from '@/shared/services/announcement_service';
-import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
+import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
 import Session from '@/shared/services/session';
@@ -42,6 +40,7 @@ export default {
       query: '',
       suggestedUserIds: [],
       suggestions: [],
+      availableAudiences: [],
       recipients: [],
       loading: false,
       currentUserId: Session.user().id
@@ -51,6 +50,7 @@ export default {
   mounted() {
     this.recipients = this.initialRecipients;
     this.fetchChatbots();
+    this.fetchAvailableAudiences();
     this.fetchAndUpdateSuggestions();
   },
 
@@ -59,6 +59,7 @@ export default {
       this.suggestedUserIds = [];
       this.newRecipients(this.initialRecipients);
       this.fetchChatbots();
+      this.fetchAvailableAudiences();
       this.fetchAndUpdateSuggestions();
     },
 
@@ -120,6 +121,19 @@ export default {
       this.updateSuggestions();
     },
 
+    fetchAvailableAudiences() {
+      Records.fetch({
+        path: 'announcements/available_audiences',
+        params: {
+          include_actor: (this.includeActor && 1) || null,
+          ...this.model.bestNamedId()
+        }
+      }).then(data => {
+        this.availableAudiences = data.audiences || [];
+        this.updateSuggestions();
+      });
+    },
+
     newRecipients(val) {
       this.model.recipientAudience = (find(val, o => o.type === 'audience') || {}).id;
       this.model.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
@@ -145,10 +159,6 @@ export default {
 
     expand(item) {
       const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
-      if (this.model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)) {
-        Flash.warning('announcement.cannot_reveal_when_anonymous');
-        return false;
-      }
       Records.fetch({
         path: 'announcements/audience',
         params: {
@@ -183,6 +193,23 @@ export default {
         icon: 'mdi-email-outline',
         name: email
       };
+    },
+
+    audienceName(audience) {
+      switch (audience.kind) {
+        case 'group':
+          return this.$t('announcement.audiences.group', {name: audience.name});
+        case 'delegates':
+          return this.$t('announcement.audiences.delegates_of_group', {name: audience.name});
+        case 'discussion_group':
+          return this.$t('announcement.audiences.discussion_group');
+        case 'voters':
+          return this.$t('announcement.audiences.voters');
+        case 'decided_voters':
+          return this.$t('announcement.audiences.decided_voters');
+        case 'undecided_voters':
+          return this.$t('announcement.audiences.undecided_voters');
+      }
     },
 
     updateSuggestions() {
@@ -241,90 +268,15 @@ export default {
     modelName() { return this.model.constructor.singular; },
 
     audiences() {
-      let ret = [];
-      if (this.recipients.length === 0) {
-        AnnouncementService.audiencesFor(this.model).forEach(audience => {
-          switch (audience) {
-            case 'group':
-              ret.push({
-                id: 'group',
-                name: this.$t('announcement.audiences.group', {name: this.model.group().name}),
-                size: this.model.group().membershipsCount,
-                icon: 'mdi-account-group'
-              });
-              break;
-            case 'discussion_group':
-              ret.push({
-                id: 'discussion_group',
-                name: this.$t('announcement.audiences.discussion_group'),
-                size: this.model.membersCount,
-                icon: 'mdi-forum'
-              });
-              break;
-            case 'voters':
-              ret.push({
-                id: 'voters',
-                name: this.$t('announcement.audiences.voters', {pollType: this.model.poll().translatedPollType()}),
-                size: this.model.poll().votersCount,
-                icon: 'mdi-forum'
-              });
-              break;
-            case 'decided_voters':
-              ret.push({
-                id: 'decided_voters',
-                name: this.$t('announcement.audiences.decided_voters'),
-                size: this.model.poll().decidedVotersCount,
-                icon: 'mdi-forum'
-              });
-              break;
-            case 'undecided_voters':
-              ret.push({
-                id: 'undecided_voters',
-                name: this.$t('announcement.audiences.undecided_voters'),
-                size: this.model.poll().undecidedVotersCount,
-                icon: 'mdi-forum'
-              });
-              break;
-          }
-        });
+      if (this.recipients.length > 0) { return []; }
 
-        if (!this.excludedAudiences.includes('group')) {
-          const groups = (() => { switch (this.model.constructor.singular) {
-            case 'poll': case 'discussion': case 'outcome': case 'topic':
-              return compact([
-                this.model.group(),
-                (this.model.group().parentId && this.model.group().parent()),
-              ].concat(
-                without(this.model.group().parentOrSelf().subgroups(), this.model.group())
-              )
-              );
-            default:
-              return [];
-          } })();
-
-          groups.filter(AbilityService.canNotifyGroup).forEach(group => {
-            if (group.membershipsCount) {
-              ret.push({
-                id: `group-${group.id}`,
-                name: this.$t('announcement.audiences.group', {name: group.name}),
-                size: group.membershipsCount,
-                icon: 'mdi-forum'
-              });
-            }
-
-            if (group.delegatesCount) {
-              ret.push({
-                id: `delegates-${group.id}`,
-                name: this.$t('announcement.audiences.delegates_of_group', {name: group.name}),
-                size: group.delegatesCount,
-                icon: 'mdi-forum'
-              });
-            }
-          });
-        }
-      }
-
-      return ret.filter(a => {
+      return this.availableAudiences.map(audience => ({
+        id: audience.id,
+        type: 'audience',
+        icon: 'mdi-account-group',
+        name: this.audienceName(audience),
+        size: audience.size
+      })).filter(a => {
         return !this.excludedAudiences.includes(a.id) &&
         ((this.query && a.name.match(new RegExp(escapeRegExp(this.query), 'i'))) || true);
       });

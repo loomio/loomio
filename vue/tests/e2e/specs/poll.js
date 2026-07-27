@@ -277,6 +277,14 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.expectText('.poll-common-action-panel__anonymous-closed-message', 'Votes are anonymous')
     test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
+    page.expectNoElement('.confirm-modal', 5000)
+    page.pause(500)
+
+    page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').click()")
+    page.click('.recipients-autocomplete input')
+    page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
+    page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
+    page.expectNoText('.v-autocomplete__content', 'Undecided voters')
   },
 
   'shows_migrated_legacy_anonymous_vote_reasons_without_voter_names': (test) => {

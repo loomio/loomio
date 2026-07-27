@@ -313,6 +313,7 @@ Rails.application.routes.draw do
 
       resources :announcements, only: [:create] do
         collection do
+          get :available_audiences
           get :audience
           get :count
           get :new_member_count

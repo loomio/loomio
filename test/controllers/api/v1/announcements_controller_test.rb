@@ -55,6 +55,22 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "available audiences are denied to a public-group non-member" do
+    sign_in @alien
+
+    get :available_audiences, params: { group_id: groups(:public_group).id }
+
+    assert_response :forbidden
+  end
+
+  test "available audiences require sign in" do
+    sign_out @admin
+
+    get :available_audiences, params: { group_id: groups(:public_group).id }
+
+    assert_response :forbidden
+  end
+
   test "count ignores obsolete recipient usernames" do
     get :count, params: {
       group_id: @group.id,
@@ -165,14 +181,14 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "audience voters works for anonymous polls" do
-    poll = create_test_poll(anonymous: true)
+    poll = create_test_poll(anonymous: true, specified_voters_only: false)
     get :audience, params: {poll_id: poll.id, recipient_audience: 'voters'}
     assert_response :success
   end
 
 
   test "audience voters still works for non-anonymous polls" do
-    poll = create_test_poll
+    poll = create_test_poll(specified_voters_only: false)
     get :audience, params: { poll_id: poll.id, recipient_audience: 'voters' }
     assert_response :success
   end
@@ -267,7 +283,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create member can notify voters when members_can_announce=false" do
-    poll = create_test_poll
+    poll = create_test_poll(specified_voters_only: false)
 
     @group.update(members_can_announce: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
@@ -432,6 +448,106 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     outcome = Outcome.new(poll: poll, author: @admin, statement: "Test outcome")
     OutcomeService.create(outcome: outcome, actor: @admin)
     [poll, outcome]
+  end
+
+  def create_closed_anonymous_poll_with_outcome
+    hex = SecureRandom.hex(4)
+    voter = User.create!(name: "Anonymous voter #{hex}", email: "anonymous-voter-#{hex}@example.com", username: "anonymousvoter#{hex}")
+    non_voter = User.create!(name: "Anonymous non-voter #{hex}", email: "anonymous-non-voter-#{hex}@example.com", username: "anonymousnonvoter#{hex}")
+    @group.add_member!(voter)
+    @group.add_member!(non_voter)
+
+    poll = PollService.create(params: {
+      title: "Anonymous test poll",
+      poll_type: "proposal",
+      group_id: @group.id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    poll.anonymous_poll_voters.find_by!(voter: voter).update!(ballot_submitted: true)
+    poll.update_counts!
+    PollService.close(poll: poll, actor: @admin)
+
+    outcome = Outcome.new(poll: poll, author: @admin, statement: "Anonymous test outcome")
+    OutcomeService.create(outcome: outcome, actor: @admin)
+    [poll, outcome, voter, non_voter]
+  end
+
+  test "available audiences for detached anonymous outcomes exclude voter status audiences" do
+    _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
+
+    get :available_audiences, params: { outcome_id: outcome.id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    assert_includes audience_ids, "voters"
+    refute_includes audience_ids, "decided_voters"
+    refute_includes audience_ids, "undecided_voters"
+    refute_includes audience_ids, "non_voters"
+  end
+
+  test "available audiences for identified outcomes include voter status audiences" do
+    hex = SecureRandom.hex(4)
+    voter = User.create!(name: "Identified voter #{hex}", email: "identified-voter-#{hex}@example.com", username: "identifiedvoter#{hex}")
+    non_voter = User.create!(name: "Identified non-voter #{hex}", email: "identified-non-voter-#{hex}@example.com", username: "identifiednonvoter#{hex}")
+    @group.add_member!(voter)
+    @group.add_member!(non_voter)
+
+    poll = PollService.create(params: {
+      title: "Identified test poll",
+      poll_type: "proposal",
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    poll.stances.latest.find_by!(participant: voter).update!(choice: poll.poll_option_names.first, cast_at: Time.current)
+    poll.update_counts!
+    PollService.close(poll: poll, actor: @admin)
+    outcome = Outcome.new(poll: poll, author: @admin, statement: "Identified test outcome")
+    OutcomeService.create(outcome: outcome, actor: @admin)
+
+    get :available_audiences, params: { outcome_id: outcome.id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    assert_includes audience_ids, "voters"
+    assert_includes audience_ids, "decided_voters"
+    assert_includes audience_ids, "undecided_voters"
+  end
+
+  test "detached anonymous outcome audience cannot expand voters by participation status" do
+    _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
+
+    get :audience, params: { outcome_id: outcome.id, recipient_audience: "decided_voters" }
+
+    assert_response :forbidden
+  end
+
+  test "detached anonymous outcome audience cannot expand non-voters" do
+    _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
+
+    get :audience, params: { outcome_id: outcome.id, recipient_audience: "non_voters" }
+
+    assert_response :forbidden
+  end
+
+  test "detached anonymous outcome audience count rejects participation status" do
+    _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
+
+    get :count, params: { outcome_id: outcome.id, recipient_audience: "undecided_voters" }
+
+    assert_response :forbidden
+  end
+
+  test "detached anonymous outcome notification rejects participation status" do
+    _poll, outcome, voter, _non_voter = create_closed_anonymous_poll_with_outcome
+    voter.notifications.destroy_all
+
+    post :create, params: { outcome_id: outcome.id, recipient_audience: "decided_voters" }
+
+    assert_response :forbidden
+    assert_empty voter.notifications
   end
 
   test "outcome create does not permit stranger to announce" do

@@ -73,6 +73,7 @@ class UserInviter
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
+    AnnouncementService.audience_users(model, audience, actor) if audience.present?
 
     # members belong to group
     member_ids = model.members.where(id: user_ids).pluck(:id)

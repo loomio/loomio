@@ -232,4 +232,32 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
 
     assert_response :forbidden
   end
+
+  test "update rejects voter status audiences for detached anonymous polls before changing the outcome" do
+    sign_in @user
+    poll = PollService.create(params: {
+      title: "Anonymous outcome poll",
+      poll_type: "proposal",
+      topic_id: @discussion.topic.id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @user)
+    poll.anonymous_poll_voters.find_by!(voter: @user).update!(ballot_submitted: true)
+    poll.update_counts!
+    PollService.close(poll: poll, actor: @user)
+    outcome = Outcome.new(poll: poll, author: @user, statement: "Original anonymous outcome")
+    OutcomeService.create(outcome: outcome, actor: @user)
+
+    post :update, params: {
+      id: outcome.id,
+      outcome: {
+        statement: "This must not be saved",
+        recipient_audience: "decided_voters"
+      }
+    }
+
+    assert_response :forbidden
+    assert_equal "Original anonymous outcome", outcome.reload.statement
+  end
 end

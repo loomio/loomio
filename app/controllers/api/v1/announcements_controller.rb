@@ -1,12 +1,18 @@
 class Api::V1::AnnouncementsController < Api::V1::RestfulController
-  def audience
+  def available_audiences
     current_user.ability.authorize! :members_autocomplete, recipient_target
 
-    if target_model.respond_to?(:anonymous) &&
-       target_model.anonymous &&
-       ['decided_voters', 'undecided_voters'].include?(params[:recipient_audience])
-      raise CanCan::AccessDenied
-    end
+    render json: {
+      audiences: AnnouncementService.available_audiences(
+        target_model,
+        current_user,
+        params[:include_actor].present?
+      )
+    }, root: false
+  end
+
+  def audience
+    current_user.ability.authorize! :members_autocomplete, recipient_target
 
     self.collection = AnnouncementService.audience_users(
       target_model,
