@@ -251,6 +251,7 @@ div.lmo-markdown-wrapper(@click="onClick")
   overflow: auto
 
   img
+    width: auto
     max-width: 100%
     height: auto
     max-height: 600px
