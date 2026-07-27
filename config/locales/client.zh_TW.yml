@@ -2140,6 +2140,9 @@ zh_TW:
     legacy_anonymous_voting_format: 本次投票採用傳統的匿名投票形式。
     anonymous_vote_cannot_be_changed: 提交投票後，您將無法查看或更改您的投票。
     anonymous_vote_recorded: 您的投票已記錄
+    legacy_vote_reasons: 歷史投票原因
+    legacy_vote_reasons_description: 使用傳統匿名投票方式投出的選票的理由以純文字形式顯示
+    anonymous_voting_participant_notice: 投票是匿名的。提交投票後，您將無法查看或更改您的投票。投票結束後才會公佈結果。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2818,6 +2821,7 @@ zh_TW:
     voters_notified_when_opens: 投票開始時，選民將會收到通知。
     who_may_vote: 誰可以參與此次 %{poll_type} 投票？
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票與選民身分資訊分開儲存。投票結束後，結果才會公佈。選民無法添加理由、提交投票後無法查看或更改投票。
+    anonymous_voting_explanation: 確保任何人的投票情況都無法被知道。匿名投票與選民身分資訊分開記錄。投票結果僅在投票結束後公佈。選民無法添加理由說明，提交投票後也無法查看或更改投票。
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。

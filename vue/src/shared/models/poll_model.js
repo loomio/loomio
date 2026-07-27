@@ -88,6 +88,7 @@ export default class PollModel extends BaseModel {
       tags: [],
       hideResults: 'off',
       votingSystem: 'stance',
+      legacyAnonymous: false,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
       stanceCounts: [],

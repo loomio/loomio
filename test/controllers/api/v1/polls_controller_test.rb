@@ -48,6 +48,62 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "legacy vote reasons expose plain text and choices without vote metadata" do
+    poll = PollService.create(params: {
+      title: "Migrated anonymous poll",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now,
+      anonymous: true
+    }, actor: @admin)
+    poll.update_columns(closed_at: Time.current)
+    sign_in @user
+    get :legacy_vote_reasons, params: {id: poll.key}
+    assert_response :not_found
+
+    poll.update_columns(legacy_anonymous: true)
+    ballot = poll.anonymous_ballots.create!(
+      anonymous_ballot_choices_attributes: [
+        {poll_option_id: poll.poll_options.first.id, score: 1}
+      ]
+    )
+    LegacyAnonymousVoteReason.create!(
+      anonymous_ballot: ballot,
+      body: "A plain text legacy reason"
+    )
+
+    get :legacy_vote_reasons, params: {id: poll.key}
+
+    assert_response :success
+    assert_equal(
+      [
+        {
+          "body" => "A plain text legacy reason",
+          "none_of_the_above" => false,
+          "choices" => [
+            {
+              "poll_option_id" => poll.poll_options.first.id,
+              "score" => 1
+            }
+          ]
+        }
+      ],
+      JSON.parse(response.body)
+    )
+    assert_not_includes response.body, ballot.id
+    assert_not_includes response.body, "created_at"
+
+    get :show, params: {id: poll.key}
+    serialized_poll = JSON.parse(response.body).fetch("polls").first
+    assert_equal true, serialized_poll["legacy_anonymous"]
+
+    sign_in @alien
+    get :legacy_vote_reasons, params: {id: poll.key}
+    assert_response :forbidden
+  end
+
   # Index tests
   test "index responds successfully" do
     PollService.create(params: {

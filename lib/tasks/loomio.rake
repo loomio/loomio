@@ -89,6 +89,57 @@ namespace :loomio do
     puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:readers_updated]} topic readers"
   end
 
+  desc "Migrate closed legacy anonymous stance votes to detached votes"
+  task migrate_legacy_anonymous_votes: :environment do
+    $stdout.sync = true
+    poll_id = ENV["POLL_ID"].presence&.to_i
+    limit = ENV["LIMIT"].presence&.to_i
+    scope = LegacyAnonymousVoteMigrationService.eligible_poll_scope.order(:id)
+    scope = scope.where(id: poll_id) if poll_id
+    scope = scope.limit(limit) if limit
+
+    if ENV.key?("DRY_RUN")
+      scope.find_each do |poll|
+        audit = LegacyAnonymousVoteMigrationService.audit(poll: poll)
+        puts "Would migrate anonymous poll #{poll.id}: #{audit[:votes]} votes, #{audit[:reasons]} reasons, " \
+             "#{audit[:attachments]} attachments, and #{audit[:receipts]} receipts"
+      end
+      next
+    end
+
+    backup_confirmed = ENV.key?("ANONYMOUS_VOTE_BACKUP_CONFIRMED")
+    unless backup_confirmed
+      abort "Set ANONYMOUS_VOTE_BACKUP_CONFIRMED after confirming a current database backup"
+    end
+
+    stats = LegacyAnonymousVoteMigrationService.migrate_all!(
+      backup_confirmed: true,
+      poll_id: poll_id,
+      limit: limit,
+      progress: ->(message) { puts message }
+    )
+
+    puts "Migrated #{stats[:polls]} polls, #{stats[:ballots]} votes, #{stats[:reasons]} reasons, " \
+         "#{stats[:attachments]} attachments, and #{stats[:electorate_records]} electorate records"
+  end
+
+  desc "Audit detached legacy anonymous vote conversion"
+  task audit_legacy_anonymous_votes: :environment do
+    $stdout.sync = true
+    if (path = ENV["CAPTURE_DANGLING_BASELINE_PATH"].presence)
+      File.write(path, JSON.pretty_generate(LegacyAnonymousVoteMigrationAuditService.reference_baseline))
+      puts "Wrote dangling stance reference baseline to #{path}"
+      next
+    end
+
+    path = ENV["DANGLING_BASELINE_PATH"].presence
+    abort "Set DANGLING_BASELINE_PATH to the baseline captured before conversion" unless path
+    baseline = JSON.parse(File.read(path))
+    result = LegacyAnonymousVoteMigrationAuditService.audit(dangling_baseline: baseline)
+    puts JSON.pretty_generate(result)
+    abort "Legacy anonymous vote audit failed" unless result[:ok]
+  end
+
   desc "Attach legacy standalone poll stance events to poll topics"
   task backfill_standalone_poll_stance_thread_items: :environment do
     $stdout.sync = true

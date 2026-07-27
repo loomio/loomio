@@ -2156,6 +2156,9 @@ fr:
     legacy_anonymous_voting_format: Ce sondage utilise l'ancien format de vote anonyme
     anonymous_vote_cannot_be_changed: Tu ne peux ni revoir ni modifier ton vote après l’avoir soumis
     anonymous_vote_recorded: Ton vote a été enregistré
+    legacy_vote_reasons: Motifs des votes antérieurs
+    legacy_vote_reasons_description: Les motifs des votes exprimés selon l'ancien format de vote anonyme sont affichés en texte brut
+    anonymous_voting_participant_notice: Le vote est anonyme. Tu ne peux ni consulter ni modifier ton vote après l'avoir soumis. Les résultats ne sont disponibles qu'après la clôture du vote.
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2834,6 +2837,7 @@ fr:
     voters_notified_when_opens: Les électeurs seront avertis de l'ouverture des bureaux de vote.
     who_may_vote: Qui peut voter sur ce %{poll_type} ?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Les votes anonymes sont enregistrés séparément des identités des électeurs. Les résultats sont publiés après la clôture du vote. Les électeurs ne peuvent ni ajouter de raisons, ni modifier leur vote après l'avoir soumis, ni le changer.
+    anonymous_voting_explanation: Il est impossible de savoir comment un électeur a voté. Les votes anonymes sont enregistrés séparément de l'identité des électeurs. Les résultats ne sont publiés qu'après la clôture du scrutin. Les électeurs ne peuvent ni justifier leur vote, ni le modifier après l'avoir validé.
   poll_receipts_page:
     verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, tu verras qui a voté.

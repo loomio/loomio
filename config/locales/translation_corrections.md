@@ -194,3 +194,27 @@ languages in the Nov 2025 pass.
 | `config/locales/client.pl.yml` | `strand_nav.new_to_you` | `Nowość dla Ciebie` | `Nowe dla Ciebie` | "Nowość" means novelty/new thing; the label should be the adjective "new". |
 | `config/locales/client.zh_CN.yml` | `strand_nav.new_to_you` | `对你来说很新鲜` | `对你来说是新的` | "新鲜" means fresh (food sense); should be the adjective "new". |
 | `config/locales/client.zh_TW.yml` | `strand_nav.new_to_you` | `對你來說很新鮮` | `對你來說是新的` | "新鮮" means fresh (food sense); should be the adjective "new". |
+
+## 2026-07-27 — Legacy anonymous vote reasons
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `poll_common_action_panel.legacy_vote_reasons` | Literal translations of “legacy” meaning inheritance, a product name, or a voting method | Concise labels meaning “reasons from earlier votes” | “Legacy” describes the former anonymous-voting format, not inheritance or a named product |
+| `config/locales/client.de.yml` | `poll_common_action_panel.legacy_vote_reasons_description` | `Klartext` | `reiner Text` | `Klartext` can imply decrypted cleartext; this copy means unformatted plain text |
+| `config/locales/client.fi.yml` | `poll_common_action_panel.legacy_vote_reasons_description` | `selkotekstinä` | `pelkkänä tekstinä` | `selkoteksti` means simplified easy-to-read language, not plain text without formatting |
+| Multiple `config/locales/client.*.yml` files | `poll_common_action_panel.legacy_vote_reasons_description` | Single-sentence strings with final full stops | Removed final full stops | Single-sentence UI descriptions do not use final full stops |
+
+## 2026-07-27 — Anonymous voting explanation
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.es.yml` | `poll_common_form.anonymous_voting_explanation` | `Impida saber...` | `Haz que sea imposible saber...` | Formal `usted` imperative; the Spanish interface uses informal `tú` |
+
+## 2026-07-27 — Anonymous voting participant notice
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `Sie/Ihre` address | Informal `du/deine` address | The German interface uses informal `du` |
+| `config/locales/client.es.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `podrá/su` address | Informal `puedes/tu` address | The Spanish interface uses informal `tú` |
+| `config/locales/client.fr.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `vous` address | Informal `tu/ton` address | The French interface uses informal `tu` |
+| `config/locales/client.nl_NL.yml` | `poll_common_action_panel.anonymous_voting_participant_notice` | Formal `u/uw` address | Informal `je` address | The Dutch interface uses informal `je/jouw` |

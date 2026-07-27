@@ -167,6 +167,7 @@ class Poll < ApplicationRecord
   has_many :anonymous_poll_voters, dependent: :destroy
   has_many :anonymous_ballots, dependent: :destroy
   has_many :anonymous_ballot_choices, through: :anonymous_ballots
+  has_many :legacy_anonymous_vote_reasons, through: :anonymous_ballots
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -523,6 +524,7 @@ class Poll < ApplicationRecord
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
+    errors.add(:legacy_anonymous, :invalid) if legacy_anonymous? && !closed?
   end
 
   def voting_system_cannot_change_after_opening
@@ -536,7 +538,7 @@ class Poll < ApplicationRecord
     return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
 
     protected_attributes = %w[
-      anonymous voting_system hide_results stance_reason_required poll_type
+      anonymous voting_system legacy_anonymous hide_results stance_reason_required poll_type
       min_score max_score minimum_stance_choices maximum_stance_choices
       dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
     ]

@@ -2114,6 +2114,9 @@ fi:
     legacy_anonymous_voting_format: Tässä kyselyssä käytetään vanhaa anonyymiä äänestysmuotoa
     anonymous_vote_cannot_be_changed: Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen
     anonymous_vote_recorded: Äänesi tallennettiin
+    legacy_vote_reasons: Aiemmin annettujen äänten perustelut
+    legacy_vote_reasons_description: Vanhaa anonyymiä äänestysmuotoa käyttäen annettujen äänten perustelut näytetään pelkkänä tekstinä
+    anonymous_voting_participant_notice: Äänestäminen on anonyymiä. Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen. Tulokset eivät ole saatavilla ennen äänestyksen päättymistä.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ fi:
     voters_notified_when_opens: Äänestäjille ilmoitetaan äänestyksen alkamisesta
     who_may_vote: Ketkä voivat äänestää tässä %{poll_type} -kyselyssä?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät äänestyksen päätyttyä. Äänestäjät eivät voi lisätä syitä, tarkastella ääntään sen lähettämisen jälkeen tai muuttaa ääntään.
+    anonymous_voting_explanation: Tee mahdottomaksi tietää, miten joku äänesti. Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät vasta äänestyksen päätyttyä. Äänestäjät eivät voi lisätä perusteluja, tarkastella ääntään sen lähettämisen jälkeen tai muuttaa ääntään.
   poll_receipts_page:
     verify_participants: Vahvista osallistujat
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.

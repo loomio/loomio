@@ -2121,6 +2121,9 @@ hu:
     legacy_anonymous_voting_format: Ez a szavazás a hagyományos anonim szavazási formátumot használja.
     anonymous_vote_cannot_be_changed: A szavazat beküldése után nem lehet azt felülvizsgálni vagy módosítani.
     anonymous_vote_recorded: A szavazatát rögzítettük
+    legacy_vote_reasons: Korábbi szavazatok indokai
+    legacy_vote_reasons_description: A hagyományos anonim szavazási formátummal leadott szavazatok indokai egyszerű szövegként jelennek meg
+    anonymous_voting_participant_notice: A szavazás névtelen. A szavazat beküldése után nem ellenőrizheti vagy módosíthatja azt. Az eredmények csak a szavazás lezárultával érhetők el.
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2797,6 +2800,7 @@ hu:
     voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
     who_may_vote: Kik szavazhatnak ezen a %{poll_type}-on?
     anonymous_votes_are_stored_separately_from_voter_identities_description: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények a szavazás lezárása után jelennek meg. A szavazók nem adhatnak meg indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
+    anonymous_voting_explanation: Lehetetlenné teszi annak megállapítását, hogy valaki hogyan szavazott. A névtelen szavazatokat a szavazók személyazonosságától elkülönítve rögzítik. Az eredmények csak a szavazás lezárása után jelennek meg. A szavazók nem fűzhetnek hozzá indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.

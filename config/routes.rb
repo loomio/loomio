@@ -258,6 +258,7 @@ Rails.application.routes.draw do
           post :close
           post :reopen
           get :voters
+          get :legacy_vote_reasons
         end
         get :closed, on: :collection
       end

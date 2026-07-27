@@ -35,6 +35,30 @@ class Api::V1::PollsController < Api::V1::RestfulController
     }, root: false
   end
 
+  def legacy_vote_reasons
+    poll = load_and_authorize(:poll)
+    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.legacy_anonymous?
+
+    reasons = poll.legacy_anonymous_vote_reasons
+                  .joins(:anonymous_ballot)
+                  .includes(anonymous_ballot: :anonymous_ballot_choices)
+                  .order("anonymous_ballots.id")
+
+    render json: reasons.map { |reason|
+      ballot = reason.anonymous_ballot
+      {
+        body: reason.body,
+        none_of_the_above: ballot.none_of_the_above?,
+        choices: ballot.anonymous_ballot_choices.sort_by(&:poll_option_id).map { |choice|
+          {
+            poll_option_id: choice.poll_option_id,
+            score: choice.score
+          }
+        }
+      }
+    }, root: false
+  end
+
   def show
     self.resource = load_and_authorize(:poll)
     accept_pending_membership

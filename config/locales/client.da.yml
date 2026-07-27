@@ -2114,6 +2114,9 @@ da:
     legacy_anonymous_voting_format: Denne afstemning bruger det traditionelle anonyme afstemningsformat
     anonymous_vote_cannot_be_changed: Du kan ikke gennemgå eller ændre din stemme, efter du har indsendt den
     anonymous_vote_recorded: Din stemme blev registreret
+    legacy_vote_reasons: Begrundelser fra tidligere stemmer
+    legacy_vote_reasons_description: Begrundelser fra stemmer afgivet ved hjælp af det ældre anonyme afstemningsformat vises som almindelig tekst
+    anonymous_voting_participant_notice: Afstemningen er anonym. Du kan ikke gennemgå eller ændre din stemme efter afgivelse. Resultaterne er ikke tilgængelige, før afstemningen er afsluttet.
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ da:
     voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
     who_may_vote: Hvem må stemme på denne %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises, når afstemningen er afsluttet. Vælgere kan ikke tilføje årsager, gennemgå deres stemme efter at have indsendt den eller ændre deres stemme.
+    anonymous_voting_explanation: Gør det umuligt at vide, hvordan nogen har stemt. Anonyme stemmer registreres separat fra vælgeridentiteter. Resultaterne vises først, når afstemningen er afsluttet. Vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter at have afgivet den eller ændre deres stemme.
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.

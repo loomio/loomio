@@ -2114,6 +2114,9 @@ ro:
     legacy_anonymous_voting_format: Acest sondaj folosește formatul vechi de vot anonim
     anonymous_vote_cannot_be_changed: Nu puteți revizui sau modifica votul după ce l-ați trimis.
     anonymous_vote_recorded: Votul dumneavoastră a fost înregistrat
+    legacy_vote_reasons: Motivele voturilor anterioare
+    legacy_vote_reasons_description: Motivele voturilor exprimate folosind formatul de vot anonim tradițional sunt afișate ca text simplu
+    anonymous_voting_participant_notice: Votarea este anonimă. Nu puteți revizui sau modifica votul după ce l-ați trimis. Rezultatele nu sunt disponibile până la închiderea votării.
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ ro:
     voters_notified_when_opens: Alegătorii vor fi anunțați când se va deschide votul
     who_may_vote: Cine poate vota pentru acest %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării. Alegătorii nu pot adăuga motive, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
+    anonymous_voting_explanation: Faceți imposibilă știrea modului în care a votat cineva. Voturile anonime sunt înregistrate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării. Alegătorii nu pot adăuga declarații de motivare, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
   poll_receipts_page:
     verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.

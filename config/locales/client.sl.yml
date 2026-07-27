@@ -2114,6 +2114,9 @@ sl:
     legacy_anonymous_voting_format: Ta anketa uporablja stari anonimni format glasovanja
     anonymous_vote_cannot_be_changed: Po oddaji glasu ga ne morete več pregledati ali spremeniti
     anonymous_vote_recorded: Vaš glas je bil zabeležen
+    legacy_vote_reasons: Razlogi prejšnjih glasov
+    legacy_vote_reasons_description: Razlogi za glasove, oddane z uporabo starejše anonimne oblike glasovanja, so prikazani kot navadno besedilo
+    anonymous_voting_participant_notice: Glasovanje je anonimno. Po oddaji glasu ga ne morete pregledati ali spremeniti. Rezultati niso na voljo, dokler glasovanje ni zaključeno.
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ sl:
     voters_notified_when_opens: Volivci bodo obveščeni, ko se bo glasovanje začelo
     who_may_vote: Kdo lahko glasuje na tej anketi %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonimni glasovi se shranjujejo ločeno od identitet volivcev. Rezultati se prikažejo po koncu glasovanja. Volivci ne morejo dodajati razlogov, pregledati svojega glasu po oddaji ali ga spremeniti.
+    anonymous_voting_explanation: Onemogočite ugotavljanje, kako je nekdo glasoval. Anonimni glasovi se beležijo ločeno od identitet volivcev. Rezultati se prikažejo šele po koncu glasovanja. Volivci ne morejo dodajati obrazložitev, pregledati svojega glasu po oddaji ali ga spremeniti.
   poll_receipts_page:
     verify_participants: Preverjanje udeležencev
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.

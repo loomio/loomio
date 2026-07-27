@@ -2114,6 +2114,9 @@ sv:
     legacy_anonymous_voting_format: Den här omröstningen använder det äldre formatet för anonym röstning
     anonymous_vote_cannot_be_changed: Du kan inte granska eller ändra din röst efter att du har skickat in den
     anonymous_vote_recorded: Din röst registrerades
+    legacy_vote_reasons: Skäl från tidigare röster
+    legacy_vote_reasons_description: Skäl från röster som avgivits med det äldre anonyma röstningsformatet visas som vanlig text
+    anonymous_voting_participant_notice: Röstningen är anonym. Du kan inte granska eller ändra din röst efter att du skickat in den. Resultaten är inte tillgängliga förrän omröstningen har avslutats.
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ sv:
     voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
     who_may_vote: Vem får rösta på denna %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyma röster lagras separat från väljaridentiteter. Resultaten visas efter att omröstningen avslutats. Väljare kan inte lägga till skäl, granska sin röst efter att ha skickat in den eller ändra sin röst.
+    anonymous_voting_explanation: Gör det omöjligt att veta hur någon röstade. Anonyma röster registreras separat från väljaridentiteter. Resultaten visas bara efter att omröstningen avslutats. Väljare kan inte lägga till skäl, granska sin röst efter att ha skickat in den eller ändra sin röst.
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.

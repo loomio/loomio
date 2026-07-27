@@ -237,7 +237,17 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__more-settings')
+    page.expectText(
+      '.poll-common-form__anonymous-voting-explanation',
+      'Make it impossible to know how someone voted. Anonymous votes are recorded separately from voter identities. Results only appear after voting closes. Voters cannot add reason statements, review their vote after submitting it, or change their vote.'
+    )
+    page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__anonymous-voting-title')
+    page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__reminder-title')
     page.click('.poll-settings-anonymous input')
+    page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
+    page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
+    page.expectText('.poll-common-form__stance-reason-required', 'Disabled')
+    page.expectElement('.poll-common-form__stance-reason-required.v-input--disabled')
 
     page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
@@ -247,7 +257,39 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
-    page.expectText('.poll-common-action-panel__anonymous-message', 'Votes are anonymous')
+    page.expectText(
+      '.poll-common-action-panel__anonymous-message',
+      'Voting is anonymous. You cannot review or change your vote after submitting it. Results are not available until voting has closed.'
+    )
+    test.expect.element('.poll-common-action-panel__results-hidden-until-closed').to.not.be.present
+
+    page.click('.poll-common-vote-form__button-text')
+    page.click('.poll-common-vote-form__submit')
+    page.expectText('.poll-common-action-panel__recorded', 'Your vote was recorded')
+    page.expectText(
+      '.poll-common-action-panel__anonymous-message',
+      'Voting is anonymous. You cannot review or change your vote after submitting it. Results are not available until voting has closed.'
+    )
+    test.expect.element('.poll-common-vote-form').to.not.be.present
+    test.expect.element('.poll-common-action-panel__results-hidden-until-closed').to.not.be.present
+
+    page.click('.action-dock__button--close_poll')
+    page.click('.confirm-modal__submit')
+    page.expectText('.poll-common-action-panel__anonymous-closed-message', 'Votes are anonymous')
+    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
+  },
+
+  'shows_migrated_legacy_anonymous_vote_reasons_without_voter_names': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
+    page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
+    page.click('.poll-common-chart-panel a')
+    page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
+    page.expectText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
+    page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
+    test.expect.element('.poll-common-votes-panel__stance-name-and-option').to.not.be.present
+    test.expect.element('.poll-common-votes-panel__avatar').to.not.be.present
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {

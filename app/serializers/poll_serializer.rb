@@ -5,6 +5,7 @@ class PollSerializer < ApplicationSerializer
              :agree_target,
              :author_id,
              :anonymous,
+             :legacy_anonymous,
              :voting_system,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,

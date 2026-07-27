@@ -2,6 +2,7 @@ class AnonymousBallot < ApplicationRecord
   belongs_to :poll
   has_many :anonymous_ballot_choices, dependent: :destroy
   has_many :poll_options, through: :anonymous_ballot_choices
+  has_one :legacy_anonymous_vote_reason, dependent: :destroy
 
   accepts_nested_attributes_for :anonymous_ballot_choices
 

@@ -2147,6 +2147,9 @@ de:
     legacy_anonymous_voting_format: Diese Umfrage verwendet das herkömmliche anonyme Abstimmungsformat.
     anonymous_vote_cannot_be_changed: Du kannst deine Stimme nach dem Absenden nicht mehr überprüfen oder ändern
     anonymous_vote_recorded: Deine Stimme wurde erfasst
+    legacy_vote_reasons: Begründungen früherer Stimmen
+    legacy_vote_reasons_description: Die Begründungen der im alten anonymen Abstimmungsformat abgegebenen Stimmen werden als reiner Text angezeigt
+    anonymous_voting_participant_notice: Die Abstimmung ist anonym. Du kannst deine Stimme nach dem Absenden weder einsehen noch ändern. Die Ergebnisse sind erst nach Ende der Abstimmung verfügbar.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2825,6 +2828,7 @@ de:
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
     who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht. Wähler können keine Gründe hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
+    anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Wähleridentitäten erfasst. Die Ergebnisse werden erst nach Schließung der Wahllokale veröffentlicht. Wähler können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.

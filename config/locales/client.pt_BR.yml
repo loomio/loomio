@@ -2160,6 +2160,9 @@ pt_BR:
     legacy_anonymous_voting_format: Esta pesquisa utiliza o formato de votação anônima tradicional.
     anonymous_vote_cannot_be_changed: Você não poderá revisar ou alterar seu voto após enviá-lo.
     anonymous_vote_recorded: Seu voto foi registrado.
+    legacy_vote_reasons: Justificativas de votos anteriores
+    legacy_vote_reasons_description: As justificativas dos votos feitos no formato anterior de votação anônima são exibidas como texto simples
+    anonymous_voting_participant_notice: A votação é anônima. Você não poderá revisar ou alterar seu voto após enviá-lo. Os resultados só serão divulgados após o encerramento da votação.
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2838,6 +2841,7 @@ pt_BR:
     voters_notified_when_opens: Os eleitores serão notificados quando a votação começar.
     who_may_vote: Quem pode votar nesta %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Os votos anônimos são armazenados separadamente das identidades dos eleitores. Os resultados são divulgados após o encerramento da votação. Os eleitores não podem adicionar justificativas, revisar seu voto após o envio ou alterá-lo.
+    anonymous_voting_explanation: Torne impossível saber como alguém votou. Os votos anônimos são registrados separadamente da identidade do eleitor. Os resultados só aparecem após o encerramento da votação. Os eleitores não podem adicionar justificativas, revisar seu voto após enviá-lo ou alterá-lo.
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.

@@ -2139,6 +2139,9 @@ nl_NL:
     legacy_anonymous_voting_format: Deze peiling maakt gebruik van het traditionele anonieme stemformaat.
     anonymous_vote_cannot_be_changed: Je kunt je stem niet meer herzien of wijzigen nadat je deze hebt uitgebracht.
     anonymous_vote_recorded: Je stem is geregistreerd
+    legacy_vote_reasons: Redenen bij eerdere stemmen
+    legacy_vote_reasons_description: De redenen bij stemmen die met het oude anonieme stemsysteem zijn uitgebracht, worden als platte tekst weergegeven
+    anonymous_voting_participant_notice: Stemmen is anoniem. Je kunt je stem niet meer bekijken of wijzigen nadat je die hebt uitgebracht. De resultaten zijn pas beschikbaar nadat de stemming is gesloten.
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2817,6 +2820,7 @@ nl_NL:
     voters_notified_when_opens: Kiezers worden op de hoogte gesteld wanneer de stembussen opengaan.
     who_may_vote: Wie mag stemmen op deze %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonieme stemmen worden apart van de identiteit van de kiezers opgeslagen. De resultaten worden bekendgemaakt nadat de stemming is gesloten. Kiezers kunnen geen redenen toevoegen, hun stem na het indienen ervan herzien of hun stem wijzigen.
+    anonymous_voting_explanation: Maak het onmogelijk om te weten hoe iemand heeft gestemd. Anonieme stemmen worden apart van de identiteit van de kiezer geregistreerd. De uitslag wordt pas na sluiting van de stembus bekendgemaakt. Kiezers kunnen geen reden toevoegen, hun stem na het uitbrengen niet herzien en hun stem niet wijzigen.
   poll_receipts_page:
     verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.

@@ -2268,7 +2268,10 @@ en:
     basic_templates: Basic templates
     anonymous: Votes are anonymous
     anonymous_votes_are_stored_separately_from_voter_identities: Anonymous votes are stored separately from voter identities. Results appear after voting closes
+    anonymous_voting_participant_notice: Voting is anonymous. You cannot review or change your vote after submitting it. Results are not available until voting has closed.
     legacy_anonymous_voting_format: This poll uses the legacy anonymous voting format
+    legacy_vote_reasons: Legacy vote reasons
+    legacy_vote_reasons_description: Reasons from votes cast using the legacy anonymous voting format are shown as plain text
     anonymous_vote_cannot_be_changed: You cannot review or change your vote after submitting it
     anonymous_vote_recorded: Your vote was recorded
     results_hidden_until_closed: Results will be shown after voting has closed
@@ -2544,6 +2547,7 @@ en:
     each_option_has_own_reason_prompt: Each option has its own reason prompt. Edit an option to view or change its prompt.
     anonymous_voting: Anonymous voting
     anonymous_voting_description: Show votes and reasons but not who cast them. This cannot be changed after the %{poll_type} has started.
+    anonymous_voting_explanation: Make it impossible to know how someone voted. Anonymous votes are recorded separately from voter identities. Results only appear after voting closes. Voters cannot add reason statements, review their vote after submitting it, or change their vote.
     votes_are_anonymous: Votes are anonymous
     vote_reason: Vote reason
     vote_reason_description: Ask people to share their rationale when they vote, or to supply further information.

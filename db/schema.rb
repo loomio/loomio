@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_27_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -91,7 +91,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
     t.bigint "poll_id", null: false
     t.bigint "voter_id", null: false
     t.bigint "inviter_id"
-    t.boolean "group_member", default: false, null: false
+    t.boolean "group_member", default: false
     t.boolean "ballot_submitted", default: false, null: false
     t.index ["inviter_id"], name: "index_anonymous_poll_voters_on_inviter_id"
     t.index ["poll_id", "voter_id"], name: "index_anonymous_poll_voters_on_poll_id_and_voter_id", unique: true
@@ -478,6 +478,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
     t.index ["token"], name: "index_groups_on_token", unique: true
   end
 
+  create_table "legacy_anonymous_vote_reasons", primary_key: "anonymous_ballot_id", id: :uuid, default: nil, force: :cascade do |t|
+    t.text "body", null: false
+  end
+
   create_table "login_tokens", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "token"
@@ -801,6 +805,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
     t.string "stv_method"
     t.string "stv_quota"
     t.integer "voting_system", default: 0, null: false
+    t.boolean "legacy_anonymous", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -1303,6 +1308,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_26_000000) do
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
+  add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

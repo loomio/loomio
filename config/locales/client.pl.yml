@@ -2139,6 +2139,9 @@ pl:
     legacy_anonymous_voting_format: W tej ankiecie wykorzystano dotychczasowy format anonimowego głosowania
     anonymous_vote_cannot_be_changed: Po oddaniu głosu nie możesz go przejrzeć ani zmienić
     anonymous_vote_recorded: Twój głos został zarejestrowany
+    legacy_vote_reasons: Uzasadnienia wcześniejszych głosów
+    legacy_vote_reasons_description: Powody głosowania w tradycyjnym, anonimowym formacie są wyświetlane w postaci zwykłego tekstu
+    anonymous_voting_participant_notice: Głosowanie jest anonimowe. Po oddaniu głosu nie można go przejrzeć ani zmienić. Wyniki będą dostępne dopiero po zakończeniu głosowania.
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2817,6 +2820,7 @@ pl:
     voters_notified_when_opens: Wyborcy zostaną powiadomieni o otwarciu głosowania
     who_may_vote: Kto może głosować w tej ankiecie %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Głosy anonimowe są przechowywane oddzielnie od tożsamości wyborców. Wyniki pojawiają się po zakończeniu głosowania. Wyborcy nie mogą dodawać powodów, przeglądać swojego głosu po jego oddaniu ani go zmieniać.
+    anonymous_voting_explanation: Uniemożliwić poznanie, jak ktoś głosował. Głosy anonimowe są rejestrowane oddzielnie od tożsamości wyborców. Wyniki pojawiają się dopiero po zakończeniu głosowania. Wyborcy nie mogą dodawać uzasadnień, sprawdzać swojego głosu po jego oddaniu ani go zmieniać.
   poll_receipts_page:
     verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

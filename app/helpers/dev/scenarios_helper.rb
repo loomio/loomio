@@ -71,6 +71,35 @@ module Dev::ScenariosHelper
     }
   end
 
+  def poll_legacy_anonymous_scenario(params)
+    scenario = poll_closed_scenario(params.merge(anonymous: false))
+    poll = scenario[:poll]
+    option = poll.poll_options.first
+
+    StanceChoice.where(stance_id: poll.stance_ids).delete_all
+    Stance.where(poll_id: poll.id).delete_all
+    poll.update_columns(
+      anonymous: true,
+      voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
+      legacy_anonymous: true,
+      voters_count: 1,
+      undecided_voters_count: 0
+    )
+    ballot = AnonymousBallot.create!(
+      id: SecureRandom.uuid,
+      poll: poll,
+      anonymous_ballot_choices_attributes: [{poll_option: option, score: 1}]
+    )
+    LegacyAnonymousVoteReason.create!(
+      anonymous_ballot: ballot,
+      body: "A plain text reason retained from the legacy vote"
+    )
+    option.update_counts!
+    poll.reload
+
+    scenario
+  end
+
   def poll_user_mentioned_scenario(params)
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)

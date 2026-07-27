@@ -10,4 +10,4 @@ For anonymous polls lasting at least 24 hours, Loomio automatically reminds elig
 
 This provides application-level separation between names and submitted votes. It does not protect against operators with access to the database, backups, server logs, process memory, or network traffic.
 
-Existing anonymous polls keep the previous stance-based format and behavior. Their votes, reasons, events, comments, reactions, tasks, translations, versions, and exports are not changed or migrated.
+Closed polls created with the previous anonymous voting format can be migrated to detached votes. Vote choices and aggregate results are preserved. Historical reasons are converted to plain text and shown in a read-only legacy reasons section, and files from those reasons are moved to the poll. These polls retain a legacy-format notice because activity created under the previous format does not receive the stronger detached-voting guarantee.

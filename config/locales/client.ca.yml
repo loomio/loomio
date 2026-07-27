@@ -2139,6 +2139,9 @@ ca:
     legacy_anonymous_voting_format: Aquesta enquesta utilitza el format de votació anònima antic
     anonymous_vote_cannot_be_changed: No pots revisar ni canviar el teu vot després d'enviar-lo
     anonymous_vote_recorded: El vostre vot s'ha enregistrat
+    legacy_vote_reasons: Motius dels vots anteriors
+    legacy_vote_reasons_description: Els motius dels vots emesos mitjançant el format de votació anònima antic es mostren com a text sense format
+    anonymous_voting_participant_notice: La votació és anònima. No podeu revisar ni canviar el vostre vot després d'enviar-lo. Els resultats no estaran disponibles fins que s'hagi tancat la votació.
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2817,6 +2820,7 @@ ca:
     voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
     who_may_vote: Qui pot votar en aquest %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Els vots anònims s'emmagatzemen per separat de les identitats dels votants. Els resultats apareixen després que es tanqui la votació. Els votants no poden afegir motius, revisar el seu vot després d'enviar-lo ni canviar-lo.
+    anonymous_voting_explanation: Feu que sigui impossible saber com ha votat algú. Els vots anònims es registren per separat de les identitats dels votants. Els resultats només apareixen després que es tanqui la votació. Els votants no poden afegir declaracions de motius, revisar el seu vot després d'enviar-lo ni canviar-lo.
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.

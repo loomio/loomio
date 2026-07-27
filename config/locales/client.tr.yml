@@ -2114,6 +2114,9 @@ tr:
     legacy_anonymous_voting_format: Bu anket, eski anonim oylama formatını kullanmaktadır.
     anonymous_vote_cannot_be_changed: Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz.
     anonymous_vote_recorded: Oylarınız kaydedildi.
+    legacy_vote_reasons: Önceki oyların gerekçeleri
+    legacy_vote_reasons_description: Eski anonim oylama formatı kullanılarak verilen oyların gerekçeleri düz metin olarak gösterilir
+    anonymous_voting_participant_notice: Oylama anonimdir. Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz. Sonuçlar, oylama sona erene kadar açıklanmaz.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2790,6 +2793,7 @@ tr:
     voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
     who_may_vote: Bu %{poll_type} için kimler oy kullanabilir?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonim oylar, seçmen kimliklerinden ayrı olarak saklanır. Sonuçlar, oylama sona erdikten sonra açıklanır. Seçmenler gerekçe ekleyemez, oyunu gönderdikten sonra gözden geçiremez veya oyunu değiştiremez.
+    anonymous_voting_explanation: Birinin nasıl oy kullandığını bilmeyi imkansız hale getirin. Anonim oylar, seçmen kimliklerinden ayrı olarak kaydedilir. Sonuçlar yalnızca oylama sona erdikten sonra açıklanır. Seçmenler gerekçe açıklaması ekleyemez, oyunu gönderdikten sonra gözden geçiremez veya oyunu değiştiremez.
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.

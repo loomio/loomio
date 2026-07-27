@@ -4,15 +4,15 @@
 
 This document specifies the intended design and security guarantees for Loomio's new anonymous voting system. It is the normative reference for implementation, review, testing, user documentation, and interface copy.
 
-The new system is additive. It does not change or migrate existing anonymous polls. Existing anonymous stances, reasons, thread items, reactions, bookmarks, tasks, translations, events, versions, and exports must remain intact.
+The new system initially introduces detached anonymous voting for new polls, then migrates closed legacy anonymous polls according to the migration section in this document. Vote choices and readable reason text are preserved. Obsolete stance records and their rich-content features are removed only after per-poll verification.
 
 The implementation must distinguish between:
 
 - identified polls, which use `Stance`;
-- legacy anonymous polls, which continue to use the existing stance-based behavior; and
-- new anonymous polls, which use detached `AnonymousBallot` records.
+- native anonymous polls, which use detached `AnonymousBallot` records; and
+- migrated legacy anonymous polls, which use detached ballots plus read-only plain-text legacy reasons.
 
-The exact database field used to identify the voting system is an implementation decision, but it must be immutable after voting opens.
+The exact database field used to identify the voting system is an implementation decision. It must be immutable after voting opens except for the verified, closed-poll legacy migration defined below.
 
 ## Purpose
 
@@ -148,7 +148,7 @@ New identified polls do not need persisted participation receipts. Their named s
 
 Identified participation reports should be derived from stances.
 
-Existing `StanceReceipt` records must remain available for historical and legacy polls. They must not be destructively migrated or deleted as part of this project.
+Existing `StanceReceipt` records remain available for historical polls. Complete receipt sets may be copied into `AnonymousPollVoter` during legacy migration, but the source receipts are not deleted or linked to individual ballots.
 
 ## Poll invariants
 
@@ -348,23 +348,117 @@ The electorate and ballots should not be placed in the same user-facing export u
 
 Raw database backups and operator exports are outside the application-level guarantee. Documentation must not claim that detached storage prevents an infrastructure operator from using transaction-level or backup-level correlation.
 
-## Legacy anonymous polls
+## Migration of legacy stance votes
 
-Legacy anonymous polls retain their existing stance-based behavior.
+Legacy anonymous polls must be migrated from stance-based votes to detached anonymous ballots. After migration, `Stance` is used only for identified voting and contains no anonymous-voting behavior.
 
-This project must not:
+### Migration preconditions
 
-- delete or rewrite historical stance reasons;
-- delete historical stances or stance choices;
-- remove participant links from existing open polls outside their established lifecycle;
-- delete thread items, comments, reactions, bookmarks, tasks, translations, events, versions, or search records;
-- rewrite historical identifiers or timestamps;
-- change historical exports; or
-- claim the new guarantee for legacy records.
+The migration applies only to polls where `anonymous` is true and `voting_system` is `stance`.
 
-Legacy polls must remain readable and operational under their current behavior. New poll creation should use the detached anonymous ballot system once it is available.
+Before migrating a poll:
 
-Any future migration of legacy polls is a separate project requiring explicit product approval, a preservation plan for user content, and a complete security review.
+- the poll must be closed;
+- no participant may be able to submit, update, revoke, or replace a stance;
+- every stance `participant_id` and associated stance-event `user_id` must be null;
+- the existing poll totals, option scores, none-of-the-above count, STV input, current-vote count, and non-empty-reason count must be recorded for verification; and
+- a database backup must exist because removing identity links and obsolete rich-content records is irreversible.
+
+Active or scheduled legacy anonymous polls must be allowed to close before migration. The migration must not silently close them or remove their electorate while voting is open.
+
+### Vote conversion
+
+Each current submitted vote, represented by a `latest`, non-revoked stance with `cast_at`, becomes one `AnonymousBallot`.
+
+The migration copies:
+
+- `poll_id`;
+- `none_of_the_above`; and
+- each current stance choice and score.
+
+It does not copy:
+
+- the stance ID;
+- participant, inviter, revoker, or redactor IDs;
+- tokens;
+- creation, update, submission, revocation, or redaction times; or
+- sequence or ordering metadata.
+
+Undecided, revoked, and superseded stances do not become ballots. A redacted stance that is still a current submitted vote does become a ballot so its choices continue contributing to the result, but its redacted reason is not restored. The poll's `voting_system` changes to `anonymous_ballot` only after every current vote has been converted and its results have been verified.
+
+### Legacy vote reasons
+
+New detached anonymous votes do not support reasons. Historical non-empty reasons are preserved in dedicated `LegacyAnonymousVoteReason` records associated with their migrated ballots.
+
+`LegacyAnonymousVoteReason` contains an `anonymous_ballot_id` foreign key and normalized plain-text body. It has no timestamps or application-visible identifier. A unique constraint permits at most one legacy reason per ballot.
+
+A legacy vote reason:
+
+- contains only normalized plain text;
+- may exist only for a migrated legacy poll;
+- has no participant, timestamp, public ID, or ordering metadata;
+- cannot be created or edited through an application API;
+- does not support attachments, rich-text formatting, link previews, mentions, translations, reactions, bookmarks, tasks, version history, search indexing, events, notifications, or replies; and
+- is shown only after the poll has closed.
+
+HTML and Markdown reasons are converted directly to readable plain text. Paragraph and line-break boundaries are retained. Lists, emphasis, links, and mentions retain their readable text but lose formatting and interactive behavior. Redacted reasons are not restored.
+
+The poll results page displays migrated reasons in one read-only **Legacy vote reasons** section below the results. A reason may be displayed with the choices from its migrated vote because writing identifying information is a choice made by the voter. The response must still omit ballot UUIDs, database IDs, timestamps, submission ordering, and system-supplied voter metadata.
+
+This exception does not permit reasons on newly submitted detached anonymous votes and does not make individual ballots without legacy reasons application-visible.
+
+### Attachments and related content
+
+Files attached to a migrated legacy reason are moved to the poll before the stance is removed.
+
+The migration must:
+
+- preserve each Active Storage blob and filename;
+- attach the file to the poll without recording or implying a vote author;
+- handle duplicate filenames deterministically;
+- remove the old stance attachment after the poll attachment exists; and
+- purge a blob only when no remaining attachment references it.
+
+Attachment references are removed from the plain-text reason. Link previews, translations, reactions, bookmarks, tasks, versions, mention metadata, and stance search documents are not migrated.
+
+Stance timeline events are removed after any child comments have been reparented to the poll's root event. The comments remain ordinary poll discussion, but no event, reply relationship, or timestamp continues to associate them with an individual migrated vote.
+
+### Electorate and participation records
+
+Where complete `StanceReceipt` records exist, they are used to populate `AnonymousPollVoter` without linking an electorate row to a ballot.
+
+The migration may copy:
+
+- `voter_id`;
+- `inviter_id`; and
+- submitted or not-submitted state from `vote_cast`.
+
+It must not infer historical group-membership state from current membership. If the historical value is unavailable, migrated electorate records must represent it as unknown rather than false.
+
+Some older polls may not have complete receipts. For those polls, the migration preserves the stored electorate and participation counts but does not invent named electorate rows. Named participation verification is unavailable when its source records do not exist.
+
+### Verification and deletion
+
+Each poll is migrated in its own database transaction. Before deleting its stances, the migration must confirm that the detached ballots produce the same:
+
+- submitted-vote count;
+- per-option scores and voter counts;
+- none-of-the-above count;
+- ranked-choice and score results;
+- STV input and result; and
+- number of preserved non-redacted reasons.
+
+Any mismatch rolls back the entire poll migration.
+
+After successful verification:
+
+- stance choices and stances for the poll are deleted;
+- obsolete stance-owned rich-content records are deleted;
+- the poll is marked as a migrated legacy anonymous poll;
+- the poll remains permanently closed and cannot be reopened; and
+- aggregate result caches are rebuilt from detached ballots.
+
+The legacy marker exists only to enforce archival immutability, display the legacy-format notice and reasons section, and distinguish these polls from the stronger guarantee made for native detached anonymous polls.
 
 ## User interface requirements
 
@@ -390,7 +484,7 @@ After submission, the UI must remove the local ballot choices and show a factual
 
 User-facing copy must not claim “complete anonymity,” protection from instance operators, or cryptographic secrecy.
 
-Legacy anonymous polls may display the factual notice “This poll uses the legacy anonymous voting format”. The notice must not imply that historical content will be removed or rewritten.
+Migrated legacy polls display the factual notice “This poll uses the legacy anonymous voting format”. The notice must not claim the stronger guarantee made for native detached anonymous polls.
 
 ## Access boundaries to test
 
@@ -441,12 +535,114 @@ Implementation should proceed in independently reviewable stages:
 9. Audit every related data flow and access boundary listed above.
 10. Add user-manual documentation and release notes.
 11. Enable the new mode for newly created anonymous polls.
+12. Audit, migrate, verify, and remove legacy anonymous stances according to the migration section above.
 
-No stage may destructively migrate legacy anonymous poll content.
+The legacy migration is an explicitly approved irreversible stage. It must run only after the detached system is deployed, each target poll has closed, backups exist, and per-poll verification is available.
+
+The schema migration only adds the marker and reason storage required by the feature. It must not convert, enqueue, or schedule conversion of any legacy poll.
+
+Legacy stance conversion is performed exclusively through a resumable, manually invoked operator task. Audit eligible polls before changing data:
+
+```sh
+DRY_RUN=1 bin/rails loomio:migrate_legacy_anonymous_votes
+```
+
+`POLL_ID` limits the task to one poll and `LIMIT` limits the number processed. After confirming a current database backup, run the migration with the backup-confirmation variable present:
+
+```sh
+ANONYMOUS_VOTE_BACKUP_CONFIRMED=1 bin/rails loomio:migrate_legacy_anonymous_votes
+```
+
+The task commits one verified poll at a time. A failure stops the run without changing the failing poll; already verified polls remain migrated and are excluded when the task is resumed.
+
+## Rollout and legacy removal plan
+
+The rollout is divided into two releases. Stance-specific anonymity code must remain available between them so that active and scheduled legacy polls can close normally.
+
+### Release 1: conversion support
+
+Before merging the conversion release:
+
+1. complete the legacy notice and reason-section translations;
+2. add an end-to-end test covering the legacy notice and read-only reasons;
+3. add a post-migration audit command covering all stance-owned records;
+4. run an actual conversion on a disposable copy of representative production data, including reasons, attachments, incomplete receipts, ranked or scored votes, and STV;
+5. verify backup restoration and record the recovery procedure; and
+6. complete the anonymous-voting security and code review.
+
+Deploy the detached-voting application code and storage schema before converting data. The deployment:
+
+- enables detached storage for newly created anonymous polls;
+- retains stance behavior for existing active and scheduled legacy polls;
+- adds the migrated-poll marker and legacy-reason storage;
+- adds the read-only legacy notice and reason display; and
+- does not automatically convert, enqueue, or schedule any legacy poll.
+
+### Manual conversion
+
+After Release 1 is deployed:
+
+1. Inventory legacy anonymous polls by state and data shape:
+   - closed and eligible;
+   - active or scheduled and ineligible;
+   - reasons present;
+   - attachments present;
+   - complete or incomplete receipts; and
+   - poll type, including ranked, scored, and STV polls.
+2. Take a current database backup and verify that it can be restored.
+3. Capture the existing dangling-reference baseline before changing any poll:
+   ```sh
+   CAPTURE_DANGLING_BASELINE_PATH=/secure/path/anonymous-vote-reference-baseline.json \
+     bin/rails loomio:audit_legacy_anonymous_votes
+   ```
+4. Run the manual task with `DRY_RUN` and resolve every precondition failure.
+5. Convert individual canary polls with `POLL_ID`. The canaries must cover an ordinary vote, reasons, attachments, ranked or scored choices, STV, complete receipts, and incomplete receipts.
+6. For each canary, verify:
+   - aggregate results and participation counts;
+   - the legacy notice and plain-text reasons;
+   - poll-level attachments;
+   - participation verification;
+   - API responses and access failures;
+   - CSV, JSON, group, and poll exports;
+   - thread and timeline integrity; and
+   - absence of vote identifiers, timestamps, ordering, and named metadata.
+7. Convert eligible polls in bounded batches with `LIMIT`. Review the task output and run the post-migration audit after every batch:
+   ```sh
+   DANGLING_BASELINE_PATH=/secure/path/anonymous-vote-reference-baseline.json \
+     bin/rails loomio:audit_legacy_anonymous_votes
+   ```
+8. Stop on any mismatch. Preserve the failing poll unchanged, investigate it, and resume only after the cause is understood.
+9. Allow remaining active and scheduled legacy polls to close normally. Repeat the dry run, canary where necessary, batch conversion, and audit until none remain.
+
+The post-migration audit must confirm:
+
+- no migrated poll contains a stance or stance choice;
+- detached vote counts, option totals, none-of-the-above totals, calculated results, and STV results remain valid;
+- the number of dangling event, notification, comment parent, reaction, bookmark, task, translation, version, search document, attachment, or announcement stance-ID references does not increase from the pre-conversion baseline; each poll transaction separately verifies that none refer to its exact deleted stance IDs;
+- every legacy reason response omits vote and reason record IDs, names, timestamps, and ordering metadata; poll-option IDs already present in ordinary poll serialization may be used to identify the displayed choices;
+- poll attachments refer to preserved blobs and no referenced blob was purged;
+- incomplete receipt sets did not create invented electorate records; and
+- no closed anonymous stance-based poll remains eligible for conversion.
+
+### Release 2: remove stance anonymity
+
+Release 2 may begin only when an audit confirms that no anonymous stance-based poll remains in any state, including active, scheduled, closed, discarded, or archived records.
+
+Release 2 must:
+
+1. make the combination `anonymous = true` and `voting_system = stance` invalid at shared model and service boundaries;
+2. remove anonymous behavior from `Stance` and `StanceChoice`;
+3. remove anonymous-stance conditions from controllers, serializers, timelines, events, search, attachment queries, exports, reports, mailers, chatbots, and thread rendering;
+4. remove legacy stance closing, receipt-building, invitation, and result paths;
+5. remove tests and interface branches that support active legacy stance polls;
+6. retain migrated detached votes, the legacy marker, plain-text legacy reasons, source receipts, poll-level attachments, the legacy-format notice, and archival immutability; and
+7. repeat the complete anonymous-voting security review and focused regression suite before deployment.
+
+The migration is complete only after Release 2 is deployed and the final production audit reports no anonymous stance records or stance-owned references.
 
 ## Implemented product decisions
 
-1. Results and application exports expose aggregates only, not individual detached ballots or ballot patterns.
+1. Native detached results and application exports expose aggregates only, not individual ballots or ballot patterns. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
 2. Poll coordinators may view named participation status and invitation provenance. Result access alone does not grant this permission.
 3. Group polls establish their electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
 4. Coordinators may add specified voters until the first ballot is submitted. The electorate is frozen after that point.
@@ -454,5 +650,5 @@ No stage may destructively migrate legacy anonymous poll content.
 6. The automatic reminder is sent when a poll lasting at least 24 hours enters its final 24 hours. Polls lasting less than 24 hours receive no automatic closing reminder.
 7. There is no minimum electorate size.
 8. Quorum and participation counts are unavailable through the general poll API before closing. Coordinators may verify named participation separately without receiving ballot contents.
-9. New anonymous polls use detached ballots. Supported application APIs cannot enable the legacy anonymous format on an identified poll. Existing legacy anonymous polls remain unchanged.
+9. New anonymous polls use detached ballots. Supported application APIs cannot enable the legacy anonymous format on an identified poll. Closed legacy anonymous polls are migrated to detached ballots with plain-text legacy reasons and no stance-based voting behavior.
 10. General poll comments remain available according to the topic's ordinary comment permissions.

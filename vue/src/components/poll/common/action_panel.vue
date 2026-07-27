@@ -105,6 +105,14 @@ export default
     }
   },
 
+  watch: {
+    'poll.anonymousBallotSubmitted'(submitted) {
+      if (submitted) {
+        this.stance = null;
+      }
+    }
+  },
+
   methods: {
     exact,
     makeCloneStance() {
@@ -127,9 +135,23 @@ export default
     type="info"
   )
     span(v-t="{path: 'poll_common_action_panel.voting_opens_at', args: {poll_type: poll.translatedPollType(), time: exact(poll.openingAt)}}")
+  v-alert.poll-common-action-panel__anonymous-closed-message.my-4(
+    v-if="poll.detachedAnonymousVoting() && poll.isClosed()"
+    density="compact"
+    variant="tonal"
+    type="info"
+  )
+    span(v-t="'poll_common_action_panel.anonymous'")
   template(v-if="poll.isVotable() || isScheduled")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-if='poll.detachedAnonymousVoting() && !isScheduled'
+      v-if='poll.detachedAnonymousVoting() && (stance || poll.anonymousBallotSubmitted) && !isScheduled'
+      density="compact"
+      variant="tonal"
+      type="warning"
+    )
+      span(v-t="'poll_common_action_panel.anonymous_voting_participant_notice'")
+    v-alert.poll-common-action-panel__anonymous-message.my-4(
+      v-else-if='poll.detachedAnonymousVoting() && !poll.legacyAnonymous && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
@@ -143,16 +165,8 @@ export default
     )
       span(v-t="'poll_common_action_panel.legacy_anonymous_voting_format'")
 
-    v-alert.my-4(
-      v-if="poll.detachedAnonymousVoting() && stance && !isScheduled"
-      density="compact"
-      variant="tonal"
-      type="warning"
-    )
-      span(v-t="'poll_common_action_panel.anonymous_vote_cannot_be_changed'")
-
     .poll-common-vote-form(
-      v-if="stance && !stance.castAt"
+      v-if="stance && !stance.castAt && !poll.anonymousBallotSubmitted"
       :class="{'poll-common-vote-form--preview': isScheduled}"
       :style="isScheduled ? 'position: relative' : ''"
     )

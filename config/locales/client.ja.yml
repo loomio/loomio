@@ -2113,6 +2113,9 @@ ja:
     legacy_anonymous_voting_format: この投票では、従来の匿名投票形式を使用します。
     anonymous_vote_cannot_be_changed: 投票を送信した後は、投票内容を確認したり変更したりすることはできません。
     anonymous_vote_recorded: あなたの投票は記録されました
+    legacy_vote_reasons: 過去の投票理由
+    legacy_vote_reasons_description: 従来の匿名投票形式で行われた投票の理由は、プレーンテキストで表示されます
+    anonymous_voting_participant_notice: 投票は匿名で行われます。投票送信後は、投票内容を確認したり変更したりすることはできません。投票結果は、投票締め切り後に公開されます。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2789,6 +2792,7 @@ ja:
     voters_notified_when_opens: 投票開始時に投票者に通知されます
     who_may_vote: この%{poll_type}に投票できるのは誰ですか？
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票は投票者の身元情報とは別に保存されます。投票結果は投票締め切り後に表示されます。投票者は理由を追加したり、投票後に投票内容を確認したり、投票を変更したりすることはできません。
+    anonymous_voting_explanation: 誰がどのように投票したかを知ることは不可能にする。匿名投票は投票者の身元とは別に記録される。結果は投票締め切り後にのみ公開される。投票者は理由を記入したり、投票後に投票内容を確認したり、投票を変更したりすることはできない。
   poll_receipts_page:
     verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
