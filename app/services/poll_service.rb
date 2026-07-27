@@ -124,10 +124,6 @@ class PollService
   end
 
   def self.invite(poll:, actor:, params:)
-    if poll.detached_anonymous? && poll.anonymous_ballots.exists?
-      raise CanCan::AccessDenied
-    end
-
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
       emails: params[:recipient_emails],
@@ -140,6 +136,11 @@ class PollService
     voters = nil
 
     Poll.transaction do
+      poll.lock!
+      if poll.detached_anonymous? && poll.anonymous_ballots.exists?
+        raise CanCan::AccessDenied
+      end
+
       TopicService.add_users(
         topic:  poll.topic,
         actor: actor,
@@ -600,45 +601,48 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    return if poll.closed_at
+    Poll.transaction do
+      poll.lock!
+      next if poll.closed_at
 
-    if poll.detached_anonymous?
-      poll.stv_results = StvCountService.count(poll) if poll.poll_type == "stv"
-      poll.update!(closed_at: Time.current)
-      poll.update_counts!
+      if poll.detached_anonymous?
+        poll.stv_results = StvCountService.count(poll) if poll.poll_type == "stv"
+        poll.update!(closed_at: Time.current)
+        poll.update_counts!
+        poll.topic.update_active_polls_count
+        ReindexPollWorker.perform_later(poll.id)
+        next
+      end
+
+      StanceReceipt.where(poll_id: poll.id).delete_all
+      StanceReceipt.insert_all build_receipts(poll)
+
+      if poll.anonymous
+        stance_ids = poll.stances.select(:id)
+        Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
+        poll.stances.update_all(participant_id: nil)
+      end
+
+      if poll.topic && poll.hide_results == 'until_closed'
+        stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
+        Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
+        TopicService.repair(poll.topic_id)
+      end
+
+      if poll.poll_type == 'stv'
+        poll.stv_results = StvCountService.count(poll)
+      end
+
+      poll.update(closed_at: Time.now)
+      # why isn't active polls count being updated?
       poll.topic.update_active_polls_count
+
+      if poll.poll_type == 'stv'
+        poll.save!  # persist stv_results in custom_fields
+      end
+
       ReindexPollWorker.perform_later(poll.id)
-      return
     end
-
-    StanceReceipt.where(poll_id: poll.id).delete_all
-    StanceReceipt.insert_all build_receipts(poll)
-
-    if poll.anonymous
-      stance_ids = poll.stances.select(:id)
-      Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
-      poll.stances.update_all(participant_id: nil)
-    end
-
-    if poll.topic && poll.hide_results == 'until_closed'
-      stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
-      TopicService.repair(poll.topic_id)
-    end
-
-    if poll.poll_type == 'stv'
-      poll.stv_results = StvCountService.count(poll)
-    end
-
-    poll.update(closed_at: Time.now)
-    # why isn't active polls count being updated?
-    poll.topic.update_active_polls_count
-
-    if poll.poll_type == 'stv'
-      poll.save!  # persist stv_results in custom_fields
-    end
-
-    ReindexPollWorker.perform_later(poll.id)
   end
 
   def self.build_receipts(poll)

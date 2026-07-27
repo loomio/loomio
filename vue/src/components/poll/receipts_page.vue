@@ -21,6 +21,7 @@ const headers = ref(
 
 Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   receipts.value = data.receipts;
+  voters_count.value = data.voters_count;
   EventBus.$emit('currentComponent', {
     title: data.poll_title,
   });
@@ -34,7 +35,7 @@ Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   v-main
     v-container
       h1.text-headline-large.pa-4(v-t="'poll_receipts_page.verify_participants'")
-      p.font-italic.px-4.pb-4(v-t="'poll_receipts_page.see_votes_if_quorum_reached'")
+      p.font-italic.px-4.pb-4(v-t="'poll_receipts_page.participation_records_explanation'")
 
       v-alert(type="error" v-if="voters_count > 0 && receipts.length == 0 " v-t="'poll_receipts_page.no_receipts'")
 

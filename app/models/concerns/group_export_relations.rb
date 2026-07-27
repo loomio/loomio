@@ -9,6 +9,10 @@ module GroupExportRelations
     has_many :exportable_polls, -> { where("anonymous = false OR polls.closed_at is not null") }, through: :topics, source: :polls
 
     has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
+    has_many :exportable_anonymous_ballots,     through: :exportable_polls, source: :anonymous_ballots
+    has_many :exportable_anonymous_ballot_choices, through: :exportable_anonymous_ballots, source: :anonymous_ballot_choices
+    has_many :exportable_anonymous_poll_voters, through: :exportable_polls, source: :anonymous_poll_voters
+    has_many :exportable_legacy_anonymous_vote_reasons, through: :exportable_anonymous_ballots, source: :legacy_anonymous_vote_reason
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
     has_many :exportable_stance_choices,        through: :exportable_stances, source: :stance_choices
@@ -44,6 +48,8 @@ module GroupExportRelations
     has_many :exportable_poll_authors,    through: :exportable_polls,               source: :author
     has_many :exportable_outcome_authors, through: :exportable_outcomes,            source: :author
     has_many :exportable_stance_authors,  through: :exportable_stances,             source: :participant
+    has_many :exportable_anonymous_voters, through: :exportable_anonymous_poll_voters, source: :voter
+    has_many :exportable_anonymous_voter_inviters, through: :exportable_anonymous_poll_voters, source: :inviter
     has_many :reader_users,               through: :topic_readers,                  source: :user
 
     # events
@@ -63,6 +69,8 @@ module GroupExportRelations
       self.exportable_poll_authors,
       self.exportable_outcome_authors,
       self.exportable_stance_authors,
+      self.exportable_anonymous_voters,
+      self.exportable_anonymous_voter_inviters,
       self.reaction_users,
       self.reader_users
     ])

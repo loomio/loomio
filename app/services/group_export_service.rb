@@ -13,6 +13,10 @@ class GroupExportService
     topics
     exportable_polls
     exportable_poll_options
+    exportable_anonymous_ballots
+    exportable_anonymous_ballot_choices
+    exportable_anonymous_poll_voters
+    exportable_legacy_anonymous_vote_reasons
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
@@ -66,7 +70,12 @@ class GroupExportService
     },
     poll_options: {
       stance_choices: %w[poll_option_id],
+      anonymous_ballot_choices: %w[poll_option_id],
       events: %w[eventable]
+    },
+    anonymous_ballots: {
+      anonymous_ballot_choices: %w[anonymous_ballot_id],
+      legacy_anonymous_vote_reasons: %w[anonymous_ballot_id]
     },
     stances: {
       comments: %w[parent],
@@ -79,6 +88,8 @@ class GroupExportService
       events: %w[eventable]
     },
     polls: {
+      anonymous_ballots: %w[poll_id],
+      anonymous_poll_voters: %w[poll_id],
       comments: %w[parent],
       topics: %w[topicable],
       stance_receipts: %w[poll_id],
@@ -89,6 +100,7 @@ class GroupExportService
       reactions: %w[reactable]
     },
     users: {
+      anonymous_poll_voters: %w[voter_id inviter_id],
       stance_receipts: %w[voter_id inviter_id],
       events: %w[eventable user_id],
       discussions: %w[author_id discarded_by],
@@ -134,41 +146,47 @@ class GroupExportService
                   .where("discussions.author_id IN (:author_ids) OR polls.author_id IN (:author_ids)", author_ids: author_ids)
     filename = export_filename_for("invite-only-topics-for-group-#{group_id.to_i}")
     ids = Hash.new { |hash, key| hash[key] = [] }
+    anonymous_ballot_ids = {}
 
     File.open(filename, 'w') do |file|
       topics.find_each(batch_size: 20000) do |topic|
-        export_direct_topic(topic, file, ids)
+        export_direct_topic(topic, file, ids, anonymous_ballot_ids)
       end
     end
 
     filename
   end
 
-  def self.export_direct_topic(topic, file, ids)
-    puts_record(topic, file, ids)
-    puts_record(topic.topicable, file, ids) if topic.topicable
+  def self.export_direct_topic(topic, file, ids, anonymous_ballot_ids = {})
+    export_records(topic.members, file, ids, anonymous_ballot_ids)
+    puts_record(topic, file, ids, anonymous_ballot_ids)
+    puts_record(topic.topicable, file, ids, anonymous_ballot_ids) if topic.topicable
 
     polls = Poll.where(topic_id: topic.id).where("anonymous = false OR closed_at is not null")
     outcomes = Outcome.where(poll_id: polls.select(:id))
     stances = Stance.where(poll_id: polls.select(:id))
+    anonymous_ballots = AnonymousBallot.where(poll_id: polls.select(:id))
     comments = topic.comments
 
     [
       polls,
       PollOption.where(poll_id: polls.select(:id)),
+      anonymous_ballots,
+      AnonymousBallotChoice.where(anonymous_ballot_id: anonymous_ballots.select(:id)),
+      AnonymousPollVoter.where(poll_id: polls.select(:id)),
+      LegacyAnonymousVoteReason.where(anonymous_ballot_id: anonymous_ballots.select(:id)),
       outcomes,
       stances,
       StanceChoice.where(stance_id: stances.select(:id)),
       StanceReceipt.where(poll_id: polls.select(:id)),
       topic.items,
       topic.topic_readers,
-      comments,
-      topic.members
+      comments
     ].each do |records|
-      export_records(records, file, ids)
+      export_records(records, file, ids, anonymous_ballot_ids)
     end
 
-    export_records(reactions_for_records([topic.topicable].compact + polls.to_a + stances.to_a + outcomes.to_a + comments.to_a), file, ids)
+    export_records(reactions_for_records([topic.topicable].compact + polls.to_a + stances.to_a + outcomes.to_a + comments.to_a), file, ids, anonymous_ballot_ids)
 
     [
       topic.topicable&.files,
@@ -184,9 +202,14 @@ class GroupExportService
     end
   end
 
-  def self.export_records(records, file, ids)
-    records.find_each(batch_size: 20000) do |record|
-      puts_record(record, file, ids)
+  def self.export_records(records, file, ids, anonymous_ballot_ids)
+    options = {batch_size: 20000}
+    if records.klass == AnonymousBallotChoice
+      options.merge!(cursor: [:anonymous_ballot_id, :poll_option_id], order: [:asc, :asc])
+    end
+
+    records.find_each(**options) do |record|
+      puts_record(record, file, ids, anonymous_ballot_ids)
     end
   end
 
@@ -201,14 +224,13 @@ class GroupExportService
   def self.export(groups, group_name)
     filename = export_filename_for(group_name)
     ids = Hash.new { |hash, key| hash[key] = [] }
+    anonymous_ballot_ids = {}
     File.open(filename, 'w') do |file|
       groups.each do |group|
-        puts_record(group, file, ids)
+        puts_record(group, file, ids, anonymous_ballot_ids)
         RELATIONS.each do |relation|
           # puts "Exporting: #{relation}"
-          group.send(relation).find_each(batch_size: 20000) do |record|
-            puts_record(record, file, ids)
-          end
+          export_records(group.send(relation), file, ids, anonymous_ballot_ids)
         end
 
         user_attachments = group.all_users.map(&:uploaded_avatar_attachment)
@@ -260,11 +282,35 @@ class GroupExportService
     file.puts({table: 'attachments', record: obj}.to_json)
   end
 
-  def self.puts_record(record, file, ids)
+  def self.puts_record(record, file, ids, anonymous_ballot_ids = {})
     table = record.class.table_name
-    return if ids[table].include?(record.id)
-    ids[table] << record.id
-    file.puts({table: table, record: export_record(record, table)}.to_json)
+    identity = export_record_identity(record)
+    return if ids[table].include?(identity)
+    ids[table] << identity
+    file.puts({table: table, record: export_archive_record(record, table, anonymous_ballot_ids)}.to_json)
+  end
+
+  def self.export_record_identity(record)
+    return [record.anonymous_ballot_id, record.poll_option_id] if record.is_a?(AnonymousBallotChoice)
+
+    record.id
+  end
+
+  def self.export_archive_record(record, table, anonymous_ballot_ids)
+    json = export_record(record, table)
+
+    case record
+    when AnonymousBallot
+      json['id'] = anonymous_ballot_export_id(record.id, anonymous_ballot_ids)
+    when AnonymousBallotChoice, LegacyAnonymousVoteReason
+      json['anonymous_ballot_id'] = anonymous_ballot_export_id(record.anonymous_ballot_id, anonymous_ballot_ids)
+    end
+
+    json
+  end
+
+  def self.anonymous_ballot_export_id(id, anonymous_ballot_ids)
+    anonymous_ballot_ids[id] ||= SecureRandom.uuid
   end
 
   def self.export_record(record, table)
@@ -312,8 +358,8 @@ class GroupExportService
           next if table == 'tags' && !inserted_tag_ids.add?(new_id)
 
           attrs = data['record'].deep_dup
-          attrs[pk] = new_id
           translate_foreign_keys!(attrs, table, migrate_ids)
+          attrs[pk] = new_id if pk
           record = klass.new(attrs)
           prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
           klass.import([record], validate: false)
@@ -371,7 +417,9 @@ class GroupExportService
       records = datas_by_table[table]
       migrate_ids[table] = {}.with_indifferent_access
 
-      if table == 'users'
+      if pk.blank?
+        next
+      elsif table == 'users'
         existing_users_by_email = User.where(email: records.map { |data| data['record']['email'] }.compact)
                                       .index_by { |user| user.email.to_s.downcase }
         new_records = records.reject { |data| existing_users_by_email.key?(data['record']['email'].to_s.downcase) }
@@ -400,6 +448,14 @@ class GroupExportService
           key = tag_key.call(data)
           migrate_ids[table][old_id] = existing_tags_by_key[key]&.id || new_id_by_key[key]
         end
+      elsif (target_table = FORWARD_REFERENCES.dig(table, pk)) && migrate_ids[target_table]
+        old_ids = records.map { |data| data['record'][pk] }
+        migrate_ids[table] = old_ids.index_with do |old_id|
+          migrate_ids[target_table].fetch(old_id)
+        end.with_indifferent_access
+      elsif klass.type_for_attribute(pk).type == :uuid
+        old_ids = records.map { |data| data['record'][pk] }
+        migrate_ids[table] = old_ids.index_with { SecureRandom.uuid }.with_indifferent_access
       else
         old_ids = records.map { |data| data['record'][pk] }
         migrate_ids[table] = old_ids.zip(reserve_ids(klass, old_ids.length)).to_h.with_indifferent_access

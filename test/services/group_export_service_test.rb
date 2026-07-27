@@ -1,6 +1,58 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  def create_detached_export_group
+    admin = User.create!(
+      email: "anonymous-export-admin-#{SecureRandom.hex(4)}@example.com",
+      name: "Anonymous export admin",
+      password: "password",
+      email_verified: true
+    )
+    voter = User.create!(
+      email: "anonymous-export-voter-#{SecureRandom.hex(4)}@example.com",
+      name: "Anonymous export voter",
+      password: "password",
+      email_verified: true
+    )
+    group = Group.create!(name: "anonymous-export-#{SecureRandom.hex(4)}", creator: admin)
+    group.add_admin!(admin)
+    group.add_member!(voter)
+
+    [group, admin, voter]
+  end
+
+  def create_detached_export_poll(group:, admin:, voter:, title:, topic_id: nil, close: true)
+    params = {
+      title: title,
+      poll_type: "proposal",
+      anonymous: true,
+      closing_at: 1.day.from_now,
+      specified_voters_only: topic_id.present?,
+      poll_option_names: %w[Agree Disagree]
+    }
+    params[topic_id ? :topic_id : :group_id] = topic_id || group.id
+    poll = PollService.create(params: params, actor: admin)
+    if topic_id
+      PollService.invite(
+        poll: poll,
+        actor: admin,
+        params: {recipient_user_ids: [voter.id]}
+      )
+    end
+
+    ballot = poll.anonymous_ballots.build(
+      anonymous_ballot_choices_attributes: [
+        {poll_option_id: poll.poll_options.find_by!(name: "Agree").id}
+      ]
+    )
+    AnonymousBallotService.create(anonymous_ballot: ballot, actor: voter)
+    poll.update_column(:legacy_anonymous, true)
+    LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "A plain text legacy reason")
+    PollService.close(poll: poll, actor: admin) if close
+
+    [poll, ballot]
+  end
+
   def create_scenario
     admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password', email_verified: true)
     member = User.create!(email: "exportmember#{SecureRandom.hex(4)}@example.com", name: 'member', password: 'password')
@@ -75,10 +127,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       title: 'Anonymous export poll',
       poll_type: 'proposal',
       group_id: group.id,
-      anonymous: true,
       closing_at: 1.day.from_now,
       poll_option_names: %w[Agree Disagree]
     }, actor: admin)
+    poll.update_column(:anonymous, true)
     stance = poll.stances.find_by!(participant_id: admin.id)
     stance.update!(choice: 'Agree', cast_at: Time.current)
     choice = stance.stance_choices.first
@@ -111,6 +163,100 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     event_json = GroupExportService.export_record(event, 'events')
 
     assert_not event_json['custom_fields'].key?('source_group_id')
+  end
+
+  test "group export and import preserve detached anonymous polls with fresh ballot ids" do
+    group, admin, voter = create_detached_export_group
+    poll, ballot = create_detached_export_poll(
+      group: group,
+      admin: admin,
+      voter: voter,
+      title: "Detached anonymous group export"
+    )
+
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    archived_ballot = archive.find { |item| item["table"] == "anonymous_ballots" }.fetch("record")
+    archived_choice = archive.find { |item| item["table"] == "anonymous_ballot_choices" }.fetch("record")
+    archived_reason = archive.find { |item| item["table"] == "legacy_anonymous_vote_reasons" }.fetch("record")
+    archived_voters = archive.select { |item| item["table"] == "anonymous_poll_voters" }.map { |item| item.fetch("record") }
+
+    refute_equal ballot.id, archived_ballot.fetch("id")
+    assert_equal archived_ballot.fetch("id"), archived_choice.fetch("anonymous_ballot_id")
+    assert_equal archived_ballot.fetch("id"), archived_reason.fetch("anonymous_ballot_id")
+    assert_equal 2, archived_voters.length
+    assert archived_voters.none? { |record| record.key?("anonymous_ballot_id") }
+
+    second_filename = GroupExportService.export(group.all_groups, group.name)
+    second_archive = File.readlines(second_filename, chomp: true).map { |line| JSON.parse(line) }
+    second_archived_ballot = second_archive.find { |item| item["table"] == "anonymous_ballots" }.fetch("record")
+    refute_equal archived_ballot.fetch("id"), second_archived_ballot.fetch("id")
+
+    GroupExportService.import(filename, reset_keys: true)
+
+    imported_poll = Poll.where(title: poll.title).where.not(id: poll.id).order(:id).last!
+    imported_ballot = imported_poll.anonymous_ballots.sole
+    refute_equal ballot.id, imported_ballot.id
+    refute_equal archived_ballot.fetch("id"), imported_ballot.id
+    assert_equal [["Agree", 1]], imported_ballot.anonymous_ballot_choices.includes(:poll_option).map { |choice| [choice.poll_option.name, choice.score] }
+    assert_equal "A plain text legacy reason", imported_ballot.legacy_anonymous_vote_reason.body
+    assert_equal(
+      {admin.email => false, voter.email => true},
+      imported_poll.anonymous_poll_voters.includes(:voter).to_h { |record| [record.voter.email, record.ballot_submitted?] }
+    )
+    assert_empty imported_poll.stances
+  end
+
+  test "group export excludes active detached anonymous polls and their records" do
+    group, admin, voter = create_detached_export_group
+    poll, ballot = create_detached_export_poll(
+      group: group,
+      admin: admin,
+      voter: voter,
+      title: "Active detached anonymous export",
+      close: false
+    )
+
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+
+    refute_includes archive.select { |item| item["table"] == "polls" }.map { |item| item.dig("record", "id") }, poll.id
+    refute_includes File.read(filename), ballot.id
+    assert_empty archive.select { |item| %w[anonymous_ballots anonymous_ballot_choices anonymous_poll_voters legacy_anonymous_vote_reasons].include?(item["table"]) }
+  end
+
+  test "direct-topic export and import preserve detached anonymous records" do
+    group, admin, voter = create_detached_export_group
+    discussion = DiscussionService.create(
+      params: {title: "Direct export discussion", group_id: group.id},
+      actor: admin
+    )
+    discussion.topic.update!(group_id: nil)
+    TopicReader.for(user: admin, topic: discussion.topic).update!(admin: true, guest: true)
+    poll, ballot = create_detached_export_poll(
+      group: group,
+      admin: admin,
+      voter: voter,
+      topic_id: discussion.topic_id,
+      title: "Detached anonymous direct export"
+    )
+
+    filename = GroupExportService.export_direct_topics(group.id)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    tables = archive.pluck("table")
+    assert_includes tables, "anonymous_ballots"
+    assert_includes tables, "anonymous_ballot_choices"
+    assert_includes tables, "anonymous_poll_voters"
+    assert_includes tables, "legacy_anonymous_vote_reasons"
+
+    GroupExportService.import(filename, reset_keys: true)
+
+    imported_poll = Poll.where(title: poll.title).where.not(id: poll.id).order(:id).last!
+    imported_ballot = imported_poll.anonymous_ballots.sole
+    refute_equal ballot.id, imported_ballot.id
+    assert_equal ["Agree"], imported_ballot.poll_options.pluck(:name)
+    assert_equal "A plain text legacy reason", imported_ballot.legacy_anonymous_vote_reason.body
+    assert imported_poll.anonymous_poll_voters.find_by!(voter: voter).ballot_submitted?
   end
 
   test "export, truncate specific records, and import recreates the scenario" do

@@ -16,8 +16,9 @@ This review covers the detached anonymous voting implementation and the migratio
 
 ## Submission boundary
 
-- The dedicated service authenticates and authorizes the voter, locks their electorate row, validates choices against the poll, creates the ballot, and marks participation in one transaction.
-- A used electorate row cannot submit again. Concurrent requests serialize on the same electorate-row lock.
+- The dedicated service authenticates and authorizes the voter, locks the poll and their electorate row, validates choices against the poll, creates the ballot, and marks participation in one transaction.
+- Ballot submission, poll closing, and specified-electorate changes serialize on the same poll-row lock. A vote cannot cross the closing boundary, and a voter cannot be added as the first ballot arrives.
+- A used electorate row cannot submit again. Concurrent requests by the same voter serialize on the same electorate-row lock.
 - The response contains only `recorded: true`.
 - Unsupported fields, including reasons and attachments, are rejected. Ballot request parameters are filtered from application logs.
 - Submission creates no stance, ballot event, topic item, search document, live update, shared notification, version, reaction, bookmark, task, translation, mention, comment, or chatbot payload.
@@ -29,6 +30,7 @@ This review covers the detached anonymous voting implementation and the migratio
 - Named participation verification is coordinator-only and uses only electorate records.
 - The ballot API has no show, index, update, destroy, revoke, redact, or replace route.
 - After closing, charts and CSV exports use aggregate option totals. BLT ballot-pattern export is denied.
+- JSON group and direct-topic portability archives preserve detached ballots, choices, participant state, and legacy reasons as an operational restore exception. Ballots and the named ledger have no shared identifier or timestamp, ballot UUIDs are randomized independently for each archive, and imports assign another fresh set of UUIDs.
 - Ballots are not side-loaded through stance, event, topic, notification, search, thread, group, or chatbot serializers.
 - Migrated legacy reasons are available only for closed marked polls through a dedicated endpoint. The response contains plain text, choices, and `none_of_the_above`; it omits vote and reason record IDs, names, timestamps, submission ordering, and invitation metadata. Choice entries use poll-option IDs already present in ordinary poll serialization.
 - Legacy reasons are returned in random-UUID order rather than former stance or submission order.
@@ -78,7 +80,8 @@ The application-level design does not protect against database, backup, host, pr
 
 On 2026-07-27:
 
-- the focused anonymous-voting regression suite passed 70 tests and 264 assertions;
+- the focused anonymous-voting and group-portability regression suite passed 198 tests and 653 assertions;
+- the native anonymous-poll browser scenario passed against a fresh Rails test server and production Vue build;
 - the legacy browser scenario passed against a production Vue build and verified the legacy-format notice, plain-text reason and choice, and absence of voter-name and avatar elements;
 - locale YAML parsed successfully and both legacy-reason strings were present in every supported client locale;
 - four representative polls in the local development dataset passed dry-run preconditions and rollback-only conversion: an ordinary count poll, a proposal with two reasons and one attachment, a dot vote, and an STV election with an incomplete receipt ledger;

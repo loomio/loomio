@@ -294,6 +294,9 @@ export default new class PollService {
         to() { return `/p/${poll.key}/receipts`; },
         canPerform() {
           if (!poll.anonymous) { return false };
+          if (poll.detachedAnonymousVoting()) {
+            return poll.adminsInclude(Session.user());
+          }
           if (!poll.membersInclude(Session.user())) { return false };
           if (AppConfig.features.app.verify_participants_admin_only) {
             return poll.adminsInclude(Session.user());

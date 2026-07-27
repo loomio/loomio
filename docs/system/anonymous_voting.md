@@ -200,14 +200,15 @@ The submission path must:
 
 1. authenticate the voter;
 2. authorize access to the poll;
-3. lock the voter's `AnonymousPollVoter` record;
-4. confirm that voting is open and the electorate record is unused;
-5. validate choices against the poll and poll options;
-6. create a detached `AnonymousBallot` and its choices without a user association;
-7. mark the electorate record as used without storing the ballot UUID;
-8. commit the ballot and participation-state change atomically.
+3. lock the poll row shared by submission, closing, and electorate changes;
+4. lock the voter's `AnonymousPollVoter` record;
+5. confirm that voting is open and the electorate record is unused;
+6. validate choices against the poll and poll options;
+7. create a detached `AnonymousBallot` and its choices without a user association;
+8. mark the electorate record as used without storing the ballot UUID;
+9. commit the ballot and participation-state change atomically.
 
-The database constraint and row lock must prevent duplicate or concurrent submissions.
+The shared poll lock must prevent a submission from crossing the closing boundary or racing the electorate freeze. The electorate-row lock must prevent duplicate or concurrent submissions by the same voter.
 
 The submission response must acknowledge success without returning the ballot UUID or choices. The client must discard its local vote state after a successful submission.
 
@@ -344,7 +345,7 @@ After closing, an authorized ballot export may contain only fields that are alre
 
 A named participation export may contain authorized `AnonymousPollVoter` fields but must not contain ballot identifiers or choices.
 
-The electorate and ballots should not be placed in the same user-facing export unless there is a documented operational requirement and a security review confirms that the files contain no joinable metadata.
+The electorate and ballots should not be placed in the same user-facing export unless there is a documented operational requirement and a security review confirms that the files contain no joinable metadata. The JSON group portability archive is such an operational exception: it includes closed-poll ballots and the participant ledger as separate record sets so a group can be restored, but contains no ballot timestamps or shared vote-to-voter identifier. Ballot identifiers are replaced with export-local UUIDs on every export and replaced again on import.
 
 Raw database backups and operator exports are outside the application-level guarantee. Documentation must not claim that detached storage prevents an infrastructure operator from using transaction-level or backup-level correlation.
 
@@ -567,8 +568,9 @@ Before merging the conversion release:
 2. add an end-to-end test covering the legacy notice and read-only reasons;
 3. add a post-migration audit command covering all stance-owned records;
 4. run an actual conversion on a disposable copy of representative production data, including reasons, attachments, incomplete receipts, ranked or scored votes, and STV;
-5. verify backup restoration and record the recovery procedure; and
-6. complete the anonymous-voting security and code review.
+5. verify backup restoration and record the recovery procedure;
+6. verify that JSON group and direct-topic export/import preserve detached ballots, choices, participant state, and legacy reasons without preserving ballot identifiers; and
+7. complete the anonymous-voting security and code review.
 
 Deploy the detached-voting application code and storage schema before converting data. The deployment:
 
@@ -642,7 +644,7 @@ The migration is complete only after Release 2 is deployed and the final product
 
 ## Implemented product decisions
 
-1. Native detached results and application exports expose aggregates only, not individual ballots or ballot patterns. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
+1. Native detached results and ordinary user-facing application exports expose aggregates only, not individual ballots or ballot patterns. The closed-poll JSON group portability archive is the documented operational exception required for restoration. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
 2. Poll coordinators may view named participation status and invitation provenance. Result access alone does not grant this permission.
 3. Group polls establish their electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
 4. Coordinators may add specified voters until the first ballot is submitted. The electorate is frozen after that point.

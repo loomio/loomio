@@ -4,12 +4,13 @@ class AnonymousBallotService
     actor.ability.authorize!(:vote_in, poll)
     raise CanCan::AccessDenied unless poll.detached_anonymous?
 
-    voter = poll.anonymous_poll_voters.find_by!(voter_id: actor.id)
-
     AnonymousBallot.transaction do
+      poll.lock!
+      raise CanCan::AccessDenied unless poll.active?
+
+      voter = poll.anonymous_poll_voters.find_by!(voter_id: actor.id)
       voter.lock!
       raise CanCan::AccessDenied if voter.ballot_submitted?
-      raise CanCan::AccessDenied unless poll.reload.active?
 
       anonymous_ballot.save!
       voter.update_columns(ballot_submitted: true)

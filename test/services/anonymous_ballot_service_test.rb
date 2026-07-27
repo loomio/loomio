@@ -154,6 +154,25 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_equal 1, @poll.anonymous_ballots.count
   end
 
+  test "rejects a ballot when the poll closes at the poll lock boundary" do
+    ballot = build_ballot(@poll.poll_options.first)
+    locked = false
+
+    @poll.stub(:lock!, -> {
+      locked = true
+      @poll
+    }) do
+      @poll.stub(:active?, -> { !locked }) do
+        assert_raises(CanCan::AccessDenied) do
+          AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+        end
+      end
+    end
+
+    assert_empty @poll.reload.anonymous_ballots
+    refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+  end
+
   test "ballots, choices, and voting configuration are immutable" do
     ballot = build_ballot(@poll.poll_options.first)
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
@@ -218,6 +237,59 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "specified electorate freezes when the first ballot arrives at the poll lock boundary" do
+    poll = PollService.create(
+      params: {
+        title: "Specified anonymous poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [@voter.id] }
+    )
+    locked = false
+    ballots = poll.anonymous_ballots
+
+    poll.stub(:lock!, -> {
+      locked = true
+      poll
+    }) do
+      ballots.stub(:exists?, -> { locked }) do
+        assert_raises(CanCan::AccessDenied) do
+          PollService.invite(
+            poll: poll,
+            actor: @admin,
+            params: { recipient_user_ids: [users(:alien).id] }
+          )
+        end
+      end
+    end
+
+    refute poll.anonymous_poll_voters.exists?(voter_id: users(:alien).id)
+  end
+
+  test "closing takes the shared poll lock" do
+    lock_called = false
+
+    @poll.stub(:lock!, -> {
+      lock_called = true
+      @poll
+    }) do
+      PollService.do_closing_work(poll: @poll)
+    end
+
+    assert lock_called
+    assert @poll.reload.closed?
+  end
+
   test "direct-topic voters use the detached path without group metadata" do
     topic = discussions(:discussion).topic
     topic.update!(group_id: nil)
@@ -272,7 +344,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
 
     refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
-    assert_empty @poll.anonymous_ballots
+    assert_empty @poll.reload.anonymous_ballots
   end
 
   test "rejects duplicate choices before the database constraint is reached" do
@@ -289,7 +361,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
 
     refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
-    assert_empty @poll.anonymous_ballots
+    assert_empty @poll.reload.anonymous_ballots
   end
 
   test "results remain hidden before close and use detached choices after close" do

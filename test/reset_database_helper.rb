@@ -4,6 +4,7 @@ module ResetDatabaseHelper
   def reset_database
     tables = %w[
       stance_receipts omniauth_identities users groups memberships polls outcomes
+      anonymous_ballot_choices anonymous_ballots anonymous_poll_voters legacy_anonymous_vote_reasons
       events discussions stances stance_choices poll_options tasks
       topics topic_readers discussion_templates poll_templates
       action_mailbox_inbound_emails
