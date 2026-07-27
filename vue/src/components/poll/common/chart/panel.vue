@@ -79,7 +79,11 @@ export default {
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
-    template(v-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && !poll.detachedAnonymousVoting()")
+    template(v-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && poll.legacyAnonymous")
+      mid-dot
+      router-link.poll-common-chart-panel__view-legacy-vote-reasons.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
+        span(v-t="'poll_common_action_panel.legacy_vote_reasons'")
+    template(v-else-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && !poll.detachedAnonymousVoting()")
       mid-dot
       router-link.poll-common-chart-panel__view-all-votes.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
         span(v-t="'poll_common.view_all_votes'")

@@ -292,7 +292,8 @@ module.exports = {
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
     page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
-    page.click('.poll-common-chart-panel a')
+    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
+    page.click('.poll-common-chart-panel__view-legacy-vote-reasons')
     page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
     page.expectText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
     page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
