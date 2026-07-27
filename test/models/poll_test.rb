@@ -123,6 +123,22 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
+  test "until vote results are available to the backend before voting" do
+    poll = create_poll(hide_results: "until_vote")
+
+    assert poll.show_results?(voted: false)
+    assert poll.show_results?(voted: true)
+  end
+
+  test "until closed results remain hidden from the backend until close" do
+    poll = create_poll(hide_results: "until_closed")
+
+    refute poll.show_results?(voted: false)
+    refute poll.show_results?(voted: true)
+    poll.update!(closed_at: Time.current)
+    assert poll.show_results?(voted: false)
+  end
+
   test "assigns poll options" do
     option_poll = create_poll(poll_option_names: ['A', 'C', 'B'])
     assert_equal ['A', 'C', 'B'], option_poll.poll_options.map(&:name)
