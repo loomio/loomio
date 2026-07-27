@@ -117,6 +117,8 @@ class TopicService
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
     discussion = Discussion.find(discussion_id)
     actor = User.find(actor_id)
+    return unless actor.ability.can?(:mark_as_read, discussion.topic)
+
     mark_as_read(topic: discussion.topic, params: {ranges: ranges}, actor: actor)
   end
 

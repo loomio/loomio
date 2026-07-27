@@ -100,6 +100,20 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_response 200
   end
 
+  test "does not error when discussion has since been discarded" do
+    notification = Notification.create!(event: @event, user: @user, viewed: false)
+    TopicService.discard(topic: @topic, actor: @author)
+
+    get :mark_discussion_as_read, params: {
+      discussion_id: @discussion.id,
+      event_id: @event.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_response 200
+    assert notification.reload.viewed
+  end
+
   test "marks a comment as read" do
     comment_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "hello"), actor: @author)
     reader = TopicReader.for(user: @user, topic: @topic)

@@ -165,4 +165,26 @@ class TopicServiceTest < ActiveSupport::TestCase
     TopicService.unlock(topic: discussion.topic, actor: @user)
     assert_nil discussion.topic.reload.locked_at
   end
+
+  # -- Mark as read --
+
+  test "mark_as_read_simple_params ignores a topic the actor can no longer view" do
+    @topic.update!(discarded_at: Time.current)
+
+    assert_nothing_raised do
+      TopicService.mark_as_read_simple_params(@discussion.id, @discussion_event.sequence_id, @user.id)
+    end
+  end
+
+  test "mark_as_read rejects a topic the actor cannot view" do
+    @topic.update!(discarded_at: Time.current)
+
+    assert_raises CanCan::AccessDenied do
+      TopicService.mark_as_read(
+        topic: @topic,
+        params: {ranges: @discussion_event.sequence_id},
+        actor: @user
+      )
+    end
+  end
 end
