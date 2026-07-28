@@ -13,8 +13,19 @@ class TopicQuery
                       tags: [],
                       or_subgroups: true,
                       only_direct: false,
-                      only_unread: false)
-    visible_scope(chain: chain, user: user, group_ids: group_ids, tags: tags, or_subgroups: or_subgroups, only_direct: only_direct, only_unread: only_unread, public_group_ids: nil)
+                      only_unread: false,
+                      topic_id: nil)
+    visible_scope(
+      chain: chain,
+      user: user,
+      group_ids: group_ids,
+      tags: tags,
+      or_subgroups: or_subgroups,
+      only_direct: only_direct,
+      only_unread: only_unread,
+      public_group_ids: nil,
+      topic_id: topic_id
+    )
   end
 
   def self.relevant_to(chain: start,
@@ -34,7 +45,8 @@ class TopicQuery
                          or_subgroups:,
                          only_direct:,
                          only_unread:,
-                         public_group_ids:)
+                         public_group_ids:,
+                         topic_id: nil)
     group_ids = Array(group_ids).compact.map(&:to_i)
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 
@@ -78,6 +90,7 @@ class TopicQuery
       .where(discarded_at: nil)
 
     arms = [arm1, arm2].map do |arm|
+      arm = arm.where(Topic.arel_table[:id].eq(topic_id)) if topic_id
       arm = arm.where("topics.group_id IN (?)", group_ids) if group_ids.any?
       arm = arm.where("topics.group_id IS NULL")            if only_direct
       arm = arm.where("topics.tags @> ARRAY[?]::varchar[]", tags) if tags.any?
