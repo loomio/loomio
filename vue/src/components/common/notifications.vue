@@ -63,7 +63,7 @@ v-menu.notifications(location="bottom" v-model="open")
       template(v-slot:prepend)
         user-avatar.mr-3(v-if="n.actor()" :user="n.actor()")
       v-list-item-title.notification__content
-        span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
+        span(v-t="{path: n.translationPath(), args: n.args()}")
         space
         mid-dot
         space

@@ -188,9 +188,6 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   margin-left: 8px
   min-height: 2px
 
-.strand-nav__entry--unread
-  border-color: rgba(var(--v-theme-secondary), 0.5)!important
-
 .strand-nav__entry--selected
   border-color: rgb(var(--v-theme-primary))!important
 
@@ -200,9 +197,9 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
 .strand-nav__entry:hover, .strand-nav__entry--visible
   background-color: #f8f8f8
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .strand-nav__entry
     border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #222
+    background-color: rgb(var(--v-theme-surface))
 </style>

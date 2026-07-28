@@ -80,7 +80,7 @@ export default {
         case 1: return 'abstain';
         case 0: return 'disagree';
       } })();
-      return `/img/${name}.svg`;
+      return `/img/${name}.svg?v=20260721`;
     },
 
     incrementScore(choice) {

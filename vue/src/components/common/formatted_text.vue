@@ -114,7 +114,7 @@ div.lmo-markdown-wrapper(@click="onClick")
   a
     color: rgb(var(--v-theme-anchor))
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .lmo-markdown-wrapper
     color: rgba(255,255,255,1)
     hr
@@ -139,8 +139,6 @@ div.lmo-markdown-wrapper(@click="onClick")
         content: none
 
 .lmo-markdown-wrapper
-  color: rgba(0, 0, 0, 0.88)
-
   audio,video
     display: block
     margin-bottom: 8px

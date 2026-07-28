@@ -1,7 +1,7 @@
 class ManifestController < ApplicationController
   respond_to :json
 
-  ICON_SIZES = %w(32 48 128 144 192 512).freeze
+  ICON_SIZES = %w(192 512).freeze
 
   def show
     render json: {
@@ -10,8 +10,8 @@ class ManifestController < ApplicationController
       display:          'standalone',
       orientation:      'portrait',
       start_url:        '/dashboard',
-      background_color: AppConfig.theme[:primary_color],
-      theme_color:      AppConfig.theme[:text_on_primary_color],
+      background_color: AppConfig.theme[:brand_colors][:yellow425],
+      theme_color:      AppConfig.theme[:primary_color],
       icons:            ICON_SIZES.map { |size| icon_for(size) }
     }
   end

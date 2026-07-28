@@ -106,7 +106,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
+v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="appbar")
   v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
   v-app-bar-title(@click="scrollTo('#context')")

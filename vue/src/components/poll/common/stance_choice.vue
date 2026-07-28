@@ -23,10 +23,6 @@ export default
   },
 
   computed: {
-    color() {
-      return this.pollOption.color;
-    },
-
     pollOption() {
       return this.stanceChoice.pollOption;
     },
@@ -62,12 +58,11 @@ export default
 <template lang="pug">
 span.poll-common-stance-choice.text-truncate(:class="'poll-common-stance-choice--' + pollType")
   span(v-if='poll.config().has_option_icon')
-    v-avatar(tile :size="size")
-      img(:style="{width: size + 'px', height: size + 'px'}" :src="'/img/' + pollOption.icon + '.svg'" :alt='optionName')
+    v-avatar(color="transparent" :size="size")
+      img(:style="{width: size + 'px', height: size + 'px'}" :src="'/img/' + pollOption.icon + '.svg?v=20260721'" :alt='optionName')
     span.ml-2(v-if="verbose") {{ optionName }}
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"' :color="colorFor(stanceChoice.score)")
     poll-meeting-time(:name="optionName")
   span(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
-    //common-icon.mr-2(size="small" :color="pollOption.color" name="mdi-check-circle")
     span {{ optionName }}
 </template>

@@ -74,7 +74,7 @@ form(v-on:submit.prevent='submit()')
           )
             input(type="radio" :value="icon.value" v-model="pollOption.icon")
             v-avatar(size="48")
-              img(:src="'/img/' + icon.value + '.svg'" :alt="icon.text" draggable="false")
+              img(:src="'/img/' + icon.value + '.svg?v=20260721'" :alt="icon.text" draggable="false")
 
         .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
           span.text-body-small.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")

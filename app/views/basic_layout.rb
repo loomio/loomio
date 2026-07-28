@@ -15,10 +15,15 @@ class Views::BasicLayout < Views::Application::Component
     doctype
     html(lang: @lang) do
       head { render_head }
-      body do
+      body(style: "background-color: #{AppConfig.theme[:brand_colors][:blue35]}") do
         header do
           a(href: "/") do
-            img(style: "max-width: 192px", src: AppConfig.theme[:app_logo_src])
+            svg = logo_svg(style: "display: block; width: 100%; height: auto")
+            if svg
+              div(style: "color: #{AppConfig.theme[:accent_color]}; margin: 0 auto; max-width: 192px") { raw svg }
+            else
+              img(style: "max-width: 192px", src: AppConfig.theme[:app_logo_src])
+            end
           end
         end
         if @flash[:notice]
@@ -49,7 +54,10 @@ class Views::BasicLayout < Views::Application::Component
       meta name: "twitter:card", content: "summary"
     end
     link rel: "stylesheet", href: "/roboto.css"
-    link rel: "shortcut icon", href: AppConfig.theme[:icon_src]
+    link rel: "icon", type: "image/png", sizes: "16x16", href: AppConfig.theme[:favicon16_src]
+    link rel: "icon", type: "image/png", sizes: "32x32", href: AppConfig.theme[:favicon32_src]
+    link rel: "icon", href: AppConfig.theme[:icon_src]
+    link rel: "apple-touch-icon", href: AppConfig.theme[:touch_icon_src]
     stylesheet_link_tag "basic"
     stylesheet_link_tag "loomiosubs"
     render_plausible

@@ -254,7 +254,7 @@ export default
       )
         span(v-t="'members_panel.requests'")
 
-    v-card(outlined)
+    v-card(variant="flat")
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)

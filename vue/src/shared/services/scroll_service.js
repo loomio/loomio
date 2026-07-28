@@ -56,11 +56,6 @@ export default new class ScrollService {
 
         const elapsed = performance.now() - startedAt;
         if ((alignedFrames >= stableFrames && elapsed >= minDuration) || elapsed > timeout) {
-          if (target) {
-            target.classList.remove('scroll-highlight');
-            void target.offsetWidth;
-            target.classList.add('scroll-highlight');
-          }
           return;
         }
 
@@ -73,7 +68,7 @@ export default new class ScrollService {
     return cancel;
   }
 
-  elementScrollTo(el, selector, callback, behavior = 'instant', offset = 0, highlight = true) {
+  elementScrollTo(el, selector, callback, behavior = 'instant', offset = 0) {
     waitFor(selector, () => {
       // console.log(`document.querySelector("${selector}").getBoundingClientRect().top -> `, document.querySelector(selector).getBoundingClientRect().top);
       // console.log(`document.body.getBoundingClientRect().top -> `, document.body.getBoundingClientRect().top);
@@ -86,12 +81,6 @@ export default new class ScrollService {
           document.body.getBoundingClientRect().top -
           offset,
       })
-
-      if (highlight) {
-        target.classList.remove('scroll-highlight');
-        void target.offsetWidth;
-        target.classList.add('scroll-highlight');
-      }
 
       if (callback) { callback(); }
     });

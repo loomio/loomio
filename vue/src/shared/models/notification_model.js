@@ -49,6 +49,11 @@ export default class NotificationModel extends BaseModel {
     }
   }
 
+  translationPath() {
+    const titleScope = this.title ? 'with_title' : 'without_title';
+    return `notifications.${titleScope}.${this.kind}`;
+  }
+
   args() {
     return {
       actor: this.name,

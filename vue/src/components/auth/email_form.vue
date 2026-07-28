@@ -50,6 +50,6 @@ export default {
       v-model='email'
       autocomplete="username email")
     validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit( color="primary" @click='submit()' :disabled='!email' :loading="loading")
+    v-btn.auth-email-form__submit( :color="email ? 'primary' : undefined" @click='submit()' :disabled='!email' :loading="loading")
       span( v-t="'auth_form.continue_with_email'")
 </template>

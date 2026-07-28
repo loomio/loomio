@@ -25,7 +25,7 @@ export default {
       :class="'poll-proposal-chart-preview__stance--'+pollOption.icon"
     )
     .poll-common-chart-preview__stance(v-else)
-      common-icon(v-if="poll.pollType != 'meeting'" size="small" :color="pollOption.color" name="mdi-check")
+      common-icon(v-if="poll.pollType != 'meeting'" size="small" color="primary" name="mdi-check")
       common-icon(v-else size="small" name="mdi-check")
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else :title="$t('poll_common.your_vote_is_requested')")
     common-icon(style="margin-top: 2px" :size="size - (size/5)" name="mdi-help" color="primary")
@@ -37,7 +37,7 @@ export default {
   border-radius: 100%
   background-color: #fff
 
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .poll-common-stance-icon
     background-color: #000
 

@@ -1,6 +1,5 @@
 <script lang="js">
 import svg from 'svg.js';
-import AppConfig from '@/shared/services/app_config';
 import { take, map, max, each} from 'lodash-es';
 
 export default {
@@ -18,11 +17,11 @@ export default {
       stanceCounts() { return this.poll.stanceCounts; },
       scoreData() {
         return take(map(this.stanceCounts, (score, index) => ({
-          color: AppConfig.pollColors.poll[index],
           index,
           score
         })), 5);
       },
+      barColor() { return 'rgb(var(--v-theme-primary))'; },
       scoreMaxValue() {
         return max(map(this.scoreData, data => data.score));
       }
@@ -45,7 +44,7 @@ export default {
         };
         each(barWidths, (width, index) => {
           this.svgEl.rect(width, barHeight - 2)
-              .fill("#ebebeb")
+              .style('fill', this.barColor)
               .x(0)
               .y(index * barHeight);
         });
@@ -56,7 +55,7 @@ export default {
         map(this.scoreData, scoreDatum => {
           const barWidth = max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2]);
           return this.svgEl.rect(barWidth, barHeight-2)
-              .fill(scoreDatum.color)
+              .style('fill', this.barColor)
               .x(0)
               .y(scoreDatum.index * barHeight);
         });

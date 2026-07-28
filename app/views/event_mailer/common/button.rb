@@ -8,7 +8,7 @@ class Views::EventMailer::Common::Button < Views::ApplicationMailer::Component
 
   def view_template
     bgcolor = AppConfig.theme[:primary_color]
-    fgcolor = "#ffffff"
+    fgcolor = AppConfig.theme[:text_on_primary_color]
 
     a(
       class: "base-mailer__button",

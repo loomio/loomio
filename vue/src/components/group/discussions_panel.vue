@@ -281,7 +281,7 @@ div.discussions-panel(v-if="group")
     v-card-text
       p(v-t="'discussions_panel.lets_start_a_discussion'")
 
-  v-card.discussions-panel(v-else)
+  v-card.discussions-panel(v-else variant="flat")
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)

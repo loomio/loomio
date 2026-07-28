@@ -22,7 +22,7 @@ export default
       //- span {{option.optionName()}} {{option.scorePercent()}}%
 </template>
 <style lang="sass">
-.v-theme--dark, .v-theme--darkBlue
+.v-theme--dark
   .poll-common-chart-bar
     color: #000E
 </style>

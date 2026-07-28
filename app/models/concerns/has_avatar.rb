@@ -48,7 +48,7 @@ module HasAvatar
   end
 
   def avatar_initials_url(size = 256)
-    colors = AppConfig.theme[:brand_colors].slice(:gold, :sky, :wellington, :sunset).values
+    colors = AppConfig.theme[:brand_colors].slice(:yellow425, :blue400, :blue50, :grey100).values
     color = colors[id % colors.length].gsub('#','')
     params = {
       name: String(avatar_initials).split('').join('+'),

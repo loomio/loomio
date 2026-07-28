@@ -12,6 +12,6 @@ export default {
 
 <template lang="pug">
 v-avatar.poll-meeting-stance-icon(left :size="size")
-  img.poll-common-form__icon(src="/img/abstain.svg" v-if="score == 1")
-  img.poll-common-form__icon(src="/img/agree.svg" v-if="score == 2")
+  img.poll-common-form__icon(src="/img/abstain.svg?v=20260721" v-if="score == 1")
+  img.poll-common-form__icon(src="/img/agree.svg?v=20260721" v-if="score == 2")
 </template>
