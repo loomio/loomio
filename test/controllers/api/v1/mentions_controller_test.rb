@@ -8,6 +8,45 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
+  test "public topic members cannot be enumerated by non-members" do
+    sign_in users(:alien)
+
+    get :index, params: { topic_id: topics(:public_discussion_topic).id, q: '' }, format: :json
+
+    assert_response :redirect
+  end
+
+  test "unverified direct-topic participants can use mention autocomplete" do
+    participant = User.create!(
+      name: 'Direct participant',
+      email: "direct-participant-#{SecureRandom.hex(4)}@example.com",
+      username: "directparticipant#{SecureRandom.hex(4)}",
+      email_verified: false
+    )
+    discussion = DiscussionService.create(
+      params: { title: "Direct mentions #{SecureRandom.hex(4)}" },
+      actor: users(:admin)
+    )
+    TopicReader.for(user: participant, topic: discussion.topic).update!(guest: true)
+
+    sign_in participant
+    get :index, params: { topic_id: discussion.topic_id }
+
+    assert_response :success
+  end
+
+  test "direct-topic outsiders cannot use mention autocomplete" do
+    discussion = DiscussionService.create(
+      params: { title: "Private direct mentions #{SecureRandom.hex(4)}" },
+      actor: users(:admin)
+    )
+
+    sign_in users(:alien)
+    get :index, params: { topic_id: discussion.topic_id }
+
+    assert_response :redirect
+  end
+
   test "returns something when signed in" do
     user = users(:admin)
     topic = topics(:discussion_topic)

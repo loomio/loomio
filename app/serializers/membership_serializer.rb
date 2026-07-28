@@ -23,7 +23,7 @@ class MembershipSerializer < ApplicationSerializer
   def include_user_email?
     scope && (
       object.inviter_id == scope[:current_user_id] ||
-      scope[:current_user_is_admin]
+      Array(scope[:membership_email_group_ids]).include?(object.group_id)
     )
   end
 end

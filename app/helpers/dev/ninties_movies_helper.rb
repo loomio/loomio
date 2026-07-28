@@ -253,7 +253,7 @@ module Dev::NintiesMoviesHelper
     Events::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author)
 
     # discussion_moved
-    Events::DiscussionMoved.publish!(create_discussion, patrick, create_another_group)
+    Events::DiscussionMoved.publish!(create_discussion, patrick)
 
     # new_comment
     Events::NewComment.publish!(create_comment)

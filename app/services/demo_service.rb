@@ -34,6 +34,7 @@ class DemoService
 
     group = Group.find(group_id)
     group.creator = actor
+    group.membership_granted_upon = 'invitation'
     group.subscription = Subscription.new(plan: 'demo', owner: actor)
     group.save!
     group.add_member! actor

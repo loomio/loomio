@@ -71,14 +71,49 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_includes all_ids, @subgroup.id
   end
 
-  test "show returns public group when logged out" do
+  test "show returns public group without subscription details when logged out" do
     get :show, params: { id: @public_group.id }, format: :json
 
     assert_response :success
     json = JSON.parse(response.body)
-    group_ids = json['groups'].map { |g| g['id'] }
+    group_data = json['groups'].find { |group| group['id'] == @public_group.id }
 
-    assert_includes group_ids, @public_group.id
+    assert_not_nil group_data
+    assert_not group_data.key?('subscription')
+  end
+
+  test "show returns public group without subscription details to a logged in nonmember" do
+    sign_in @alien
+
+    get :show, params: { id: @public_group.id }, format: :json
+
+    assert_response :success
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
+    assert_not group_data.key?('subscription')
+  end
+
+  test "show returns subscription details to an organization member" do
+    @public_group.add_member!(@user)
+    sign_in @user
+
+    get :show, params: { id: @public_group.id }, format: :json
+
+    assert_response :success
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
+    assert group_data['subscription'].present?
+  end
+
+  test "show returns parent subscription details to a subgroup member" do
+    subscription = Subscription.create!(owner: @user, plan: 'trial', max_members: 321)
+    @group.update!(subscription: subscription)
+    @subgroup.add_member!(@user)
+    sign_in @user
+
+    get :show, params: { id: @subgroup.id }, format: :json
+
+    assert_response :success
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @subgroup.id }
+    assert_equal 321, group_data.dig('subscription', 'max_members')
   end
 
   test "show returns 403 for private group when logged out" do

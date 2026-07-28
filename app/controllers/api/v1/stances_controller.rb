@@ -63,10 +63,13 @@ class Api::V1::StancesController < Api::V1::RestfulController
         collection = collection.undecided
       end
 
-      if @poll.show_results?(voted: true)
+      voted = @poll.anonymous? || @poll.stances.latest.decided.exists?(participant_id: current_user.id)
+      if @poll.show_results?(voted: voted)
         if poll_option_id = params[:poll_option_id].presence
           collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
         end
+      elsif !@poll.anonymous?
+        collection = collection.where(participant_id: current_user.id)
       end
 
       if @poll.anonymous?
@@ -80,9 +83,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def users
     instantiate_collection do |collection|
-      # Anonymous polls must not expose who participated — mirror the masking
-      # applied by polls#voters and stances#index.
-      next User.none if @poll.anonymous?
+      current_user.ability.authorize!(:add_voters, @poll)
 
       if query = params[:query]
         collection = collection.
@@ -143,7 +144,10 @@ class Api::V1::StancesController < Api::V1::RestfulController
       eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
     ).where("child_count > 0").pluck('eventable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
-    MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id, user_id: current_user.id)
+    MessageChannelService.publish_models(stances, user_id: current_user.id)
+    if poll.anonymous? || poll.show_results?(voted: false)
+      MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id)
+    end
   end
 
   def respond_with_recent_stances
@@ -153,11 +157,10 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def current_user_is_admin?
-    stance = Stance.find_by(id: params[:id])
-    poll = Poll.find_by(id: params[:poll_id])
-    return false unless (stance || poll)
+    poll = @poll || @stance&.poll || (resource.poll if resource.respond_to?(:poll))
+    return false unless poll
 
-    (stance || poll).poll.admins.exists?(current_user.id)
+    poll.admins.exists?(current_user.id)
   end
 
   def exclude_types

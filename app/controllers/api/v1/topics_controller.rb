@@ -47,7 +47,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   end
 
   def markdown
-    load_resource
+    self.resource = load_and_authorize(:topic)
     render json: {markdown: ThreadMarkdownService.render(topic: resource, user: current_user)}
   end
 

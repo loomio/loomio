@@ -2378,6 +2378,7 @@ el:
     new: νέος
     thread_locked: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> κλείδωσε το νήμα"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> ξεκλείδωσε το νήμα"
+    discussion_moved_without_source: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> μετακίνησε το νήμα"
   add_poll_to_thread_modal:
     success: Επιτυχία, το %{pollType} προστέθηκε στο νήμα!
   auth_form:

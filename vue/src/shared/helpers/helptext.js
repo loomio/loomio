@@ -1,4 +1,3 @@
-import Records from '@/shared/services/records';
 import {includes} from 'lodash-es';
 import { I18n } from '@/i18n';
 
@@ -8,6 +7,7 @@ export var eventHeadline = function(event) {
     case 'stance_created':    return 'new_comment';
     case 'stance_updated':    return 'new_comment';
     case 'discussion_edited': return discussionEditedKey(event);
+    case 'discussion_moved':  return 'discussion_moved_without_source';
     case 'discussion_closed': return 'thread_locked';
     case 'discussion_reopened': return 'thread_unlocked';
     case 'poll_created': return 'poll_created';
@@ -22,16 +22,7 @@ export var eventTitle = function(event) {
     case 'Poll': case 'Outcome':     return event.model().poll().title;
     case 'Group': case 'Membership': return event.model().group().name;
     case 'Stance':              return event.model().poll().title;
-    case 'Discussion':
-      if (event.kind === 'discussion_moved') {
-        if (event.sourceGroupId) {
-          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.global.t('thread_item.deleted_group')}).fullName;
-        } else {
-          return I18n.global.t('discussion.direct');
-        }
-      } else {
-        return event.model().title;
-      }
+    case 'Discussion':          return event.model().title;
   }
 };
 

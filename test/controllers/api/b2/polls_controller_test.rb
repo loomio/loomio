@@ -200,7 +200,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     make_poll(title: 'open one', group: @group)
     make_poll(title: 'closed one', group: @group, closed_at: 1.day.ago)
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
     titles = JSON.parse(response.body)['polls'].map { |p| p['title'] }
     assert_includes titles, 'open one'
@@ -211,7 +212,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     make_poll(title: 'open one', group: @group)
     make_poll(title: 'closed one', group: @group, closed_at: 1.day.ago)
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key, status: 'closed' }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id, status: 'closed' }
     assert_response 200
     titles = JSON.parse(response.body)['polls'].map { |p| p['title'] }
     assert_equal ['closed one'], titles
@@ -221,7 +223,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     make_poll(title: 'open one', group: @group)
     make_poll(title: 'closed one', group: @group, closed_at: 1.day.ago)
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key, status: 'all' }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id, status: 'all' }
     assert_response 200
     titles = JSON.parse(response.body)['polls'].map { |p| p['title'] }
     assert_includes titles, 'open one'
@@ -231,7 +234,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
   test "index respects limit pagination" do
     3.times { |i| make_poll(title: "poll #{i}", group: @group) }
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key, limit: 2 }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id, limit: 2 }
     assert_response 200
     assert_equal 2, JSON.parse(response.body)['polls'].size
   end
@@ -239,7 +243,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
   test "index still accepts legacy per param" do
     3.times { |i| make_poll(title: "poll #{i}", group: @group) }
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key, per: 2 }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id, per: 2 }
     assert_response 200
     assert_equal 2, JSON.parse(response.body)['polls'].size
   end
@@ -247,7 +252,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
   test "index respects offset pagination" do
     3.times { |i| make_poll(title: "poll #{i}", group: @group) }
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key, limit: 2, offset: 1 }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id, limit: 2, offset: 1 }
     assert_response 200
     assert_equal 2, JSON.parse(response.body)['polls'].size
   end
@@ -256,7 +262,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     hex = SecureRandom.hex(4)
     stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true)
     stranger.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: stranger.api_key }
+    @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 403
   end
 
@@ -264,25 +271,29 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     admin = users(:admin)
     admin.update!(is_admin: true)
     admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: admin.api_key }
+    @request.headers['Authorization'] = "Bearer #{admin.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
   end
 
   test "index rejects bad api_key" do
-    get :index, params: { group_id: @group.id, api_key: 'nope' }
+    @request.headers['Authorization'] = 'Bearer nope'
+    get :index, params: { group_id: @group.id }
     assert_response 403
   end
 
   test "index missing group_id returns 404" do
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { api_key: @member.api_key }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index
     assert_response 404
   end
 
   test "index response has no duplicate top-level keys" do
     make_poll(title: 'open one', group: @group)
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: @member.api_key }
+    @request.headers['Authorization'] = "Bearer #{@member.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
     body = response.body
     %w[polls discussions groups users events stances outcomes poll_options].each do |key|

@@ -195,6 +195,24 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_equal "Updated body", comment.reload.body
   end
 
+  test "does not allow update to reparent a comment" do
+    comment = Comment.new(parent: @discussion, author: @user, body: "Original body", body_format: "md")
+    CommentService.create(comment: comment, actor: @user)
+    other_discussion = DiscussionService.create(
+      params: { title: "Other discussion", group_id: @group.id },
+      actor: @user
+    )
+
+    refute CommentService.update(
+      comment: comment,
+      params: { parent_type: 'Discussion', parent_id: other_discussion.id },
+      actor: @user
+    )
+
+    comment.reload
+    assert_equal @discussion, comment.parent
+  end
+
   test "does not renotify old mentions on update" do
     @admin.update!(username: "mentiontest#{SecureRandom.hex(4)}")
 

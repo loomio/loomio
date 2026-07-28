@@ -8,9 +8,6 @@ class EventSerializer < ApplicationSerializer
   has_one :eventable, polymorphic: true
   has_one :parent, serializer: EventSerializer, root: :parent_events
 
-  # for discussion moved event
-  has_one :source_group, serializer: GroupSerializer, root: :groups
-
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
   end
@@ -47,16 +44,14 @@ class EventSerializer < ApplicationSerializer
     end
   end
 
-  def source_group
-    Group.find_by(id: object.custom_fields['source_group_id'])
-  end
-
-  def include_source_group?
-    object.kind == "discussion_moved" && object.custom_fields['source_group_id'].present?
-  end
-
   def pinned_title
     object.custom_fields['pinned_title']
+  end
+
+  def custom_fields
+    return object.custom_fields unless object.kind == "discussion_moved"
+
+    object.custom_fields.except('source_group_id')
   end
 
   def include_custom_fields?

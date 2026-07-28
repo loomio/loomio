@@ -34,6 +34,7 @@ class ChatbotService
     return unless event = Event.find_by(id: event_id)
     event.reload
     return if event.eventable.nil?
+    return if event.eventable.is_a?(Stance) && !event.eventable.shared_update_visible?
 
     chatbots = event.eventable.topic.group.chatbots
 

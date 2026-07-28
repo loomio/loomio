@@ -67,8 +67,18 @@ class GroupSerializer < ApplicationSerializer
     cache_fetch(:groups_by_id, object.parent_id) { object.parent }
   end
 
+  def include_subscription?
+    return false unless scope[:current_user_id]
+    return true if User.where(id: scope[:current_user_id], is_admin: true).exists?
+
+    Membership.active.where(
+      group_id: object.parent_or_self.id_and_subgroup_ids,
+      user_id: scope[:current_user_id]
+    ).exists?
+  end
+
   def subscription
-    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new }
+    sub = subscription_record
     {
       max_members:     sub.max_members,
       max_threads:     sub.max_threads,
@@ -80,6 +90,13 @@ class GroupSerializer < ApplicationSerializer
       expires_at:      sub.expires_at,
       members_count:   sub.members_count
     }
+  end
+
+  def subscription_record
+    group = object.parent_or_self
+    @subscription_record ||= cache_fetch(:subscriptions_by_group_id, group.id) do
+      group.subscription || Subscription.new
+    end
   end
 
   def logo_url

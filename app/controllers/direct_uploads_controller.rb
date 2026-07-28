@@ -51,6 +51,8 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
     current_user.is_paying? ? PAID_MAX_UPLOAD_BYTES : TRIAL_MAX_UPLOAD_BYTES
   end
 
+  # The editor persists these stable bearer paths in rich text. Keep their URL
+  # and access semantics aligned with HasRichText#build_attachments.
   def direct_upload_json(blob)
     json = blob.as_json(root: false, methods: :signed_id).merge(
       direct_upload: {

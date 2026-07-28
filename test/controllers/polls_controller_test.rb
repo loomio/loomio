@@ -36,6 +36,18 @@ class PollsControllerTest < ActionController::TestCase
     assert_includes response.body, @poll.title
   end
 
+  test "unsubscribe token does not authorize a private poll export" do
+    @discussion.topic.update!(private: true)
+    @user.update_columns(unsubscribe_token: 'poll-export-unsubscribe-token')
+
+    get :export, params: {
+      key: @poll.key,
+      unsubscribe_token: @user.unsubscribe_token
+    }, format: :csv
+
+    assert_response :redirect
+  end
+
   test "does not show export to users who cannot see the poll" do
     @discussion.topic.update!(private: true)
     sign_in @alien

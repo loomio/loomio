@@ -8,6 +8,17 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "accepts a bearer API key for reads and writes" do
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+
+    get :index, params: { group_id: @group.id }
+    assert_response :success
+
+    post :create, params: { title: 'Bearer discussion', group_id: @group.id }
+    assert_response :success
+    assert_equal 'Bearer discussion', json['discussions'][0]['title']
+  end
+
   test "create happy case" do
     post :create, params: { title: 'test', group_id: @group.id, api_key: @user.api_key }
     assert_response 200
@@ -128,6 +139,7 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     assert_response 200
     discussion.reload
     assert discussion.discarded_at.present?
+    assert discussion.topic.reload.discarded_at.present?
     assert_equal @user.id, discussion.discarded_by
     assert json['discussions'][0]['discarded_at'].present?
   end
@@ -136,7 +148,8 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     private_d = DiscussionService.create(params: { title: 'Private Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d = DiscussionService.create(params: { title: 'Discarded Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d.update!(discarded_at: Time.now)
-    get :index, params: { group_id: @group.id, api_key: @user.api_key }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
     json = JSON.parse(response.body)
     titles = json['discussions'].map { |d| d['title'] }
@@ -147,7 +160,8 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
 
   test "index status=closed returns closed discussions only" do
     discussions(:discussion).topic.update!(locked_at: Time.now)
-    get :index, params: { group_id: @group.id, api_key: @user.api_key, status: 'closed' }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id, status: 'closed' }
     assert_response 200
     titles = JSON.parse(response.body)['discussions'].map { |d| d['title'] }
     assert_equal ['Test Discussion'], titles
@@ -158,7 +172,8 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     private_d = DiscussionService.create(params: { title: 'Private Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d = DiscussionService.create(params: { title: 'Discarded Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d.update!(discarded_at: Time.now)
-    get :index, params: { group_id: @group.id, api_key: @user.api_key, status: 'all' }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id, status: 'all' }
     assert_response 200
     titles = JSON.parse(response.body)['discussions'].map { |d| d['title'] }
     assert_includes titles, 'Test Discussion'
@@ -167,13 +182,15 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
   end
 
   test "index respects limit pagination" do
-    get :index, params: { group_id: @group.id, api_key: @user.api_key, limit: 1 }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id, limit: 1 }
     assert_response 200
     assert_equal 1, JSON.parse(response.body)['discussions'].size
   end
 
   test "index still accepts legacy per param" do
-    get :index, params: { group_id: @group.id, api_key: @user.api_key, per: 1 }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id, per: 1 }
     assert_response 200
     assert_equal 1, JSON.parse(response.body)['discussions'].size
   end
@@ -182,7 +199,8 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     hex = SecureRandom.hex(4)
     stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true)
     stranger.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: stranger.api_key }
+    @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 403
   end
 
@@ -190,22 +208,26 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     admin = users(:admin)
     admin.update!(is_admin: true)
     admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
-    get :index, params: { group_id: @group.id, api_key: admin.api_key }
+    @request.headers['Authorization'] = "Bearer #{admin.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
   end
 
   test "index rejects bad api_key" do
-    get :index, params: { group_id: @group.id, api_key: 'nope' }
+    @request.headers['Authorization'] = 'Bearer nope'
+    get :index, params: { group_id: @group.id }
     assert_response 403
   end
 
   test "index missing group_id returns 404" do
-    get :index, params: { api_key: @user.api_key }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index
     assert_response 404
   end
 
   test "index response has no duplicate top-level keys" do
-    get :index, params: { group_id: @group.id, api_key: @user.api_key }
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :index, params: { group_id: @group.id }
     assert_response 200
     body = response.body
     %w[discussions polls groups users events stances outcomes poll_options].each do |key|

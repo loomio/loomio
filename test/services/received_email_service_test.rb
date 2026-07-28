@@ -165,6 +165,38 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
+  test "does not attribute a DMARC failure to a group member" do
+    original_reply = ENV['REPLY_HOSTNAME']
+    ENV['REPLY_HOSTNAME'] = 'test.host'
+
+    user = User.create!(name: 'SpoofedEmailUser', email: "spoofed#{SecureRandom.hex(4)}@example.com",
+                        email_verified: true, username: "spoofed#{SecureRandom.hex(4)}")
+    handle = "spoofed#{SecureRandom.hex(4)}"
+    group = Group.create!(name: 'Spoofed Email Group', handle: handle)
+    group.add_member!(user)
+
+    email = ReceivedEmail.create!(
+      headers: {
+        'From' => "\"#{user.name}\" <#{user.email}>",
+        'To' => "#{handle}@#{ENV['REPLY_HOSTNAME']}",
+        'Subject' => 'Spoofed thread',
+        'Authentication-Results' => 'mx.test.host; spf=fail; dkim=none; dmarc=fail header.from=example.com'
+      },
+      body_text: 'This must not be attributed to the member'
+    )
+
+    assert_no_difference 'Discussion.count' do
+      assert_difference -> { Event.where(kind: 'unknown_sender').count }, 1 do
+        ReceivedEmailService.route(email)
+      end
+    end
+
+    assert_not email.reload.released
+    assert_equal group.id, email.group_id
+  ensure
+    ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
   test "forwards using a forward rule" do
     original_reply = ENV['REPLY_HOSTNAME']
     ENV['REPLY_HOSTNAME'] = 'test.host'

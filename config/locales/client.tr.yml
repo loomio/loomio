@@ -2378,6 +2378,7 @@ tr:
     new: yeni
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kilitledi"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konunun kilidini açtı"
+    discussion_moved_without_source: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu taşıdı"
   add_poll_to_thread_modal:
     success: Başarılı, %{pollType} konuya eklendi!
   auth_form:

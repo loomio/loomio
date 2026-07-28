@@ -124,6 +124,37 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_not_nil stance.reload.redacted_at
   end
 
+  test "update cannot move a stance to another poll" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+
+    target_poll = PollService.create(params: {
+      title: 'Target Poll',
+      poll_type: 'proposal',
+      closing_at: 3.days.from_now,
+      group_id: @group.id,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+
+    StanceService.update(
+      stance: stance,
+      actor: @user,
+      params: {
+        poll_id: target_poll.id,
+        reason: 'Still in the original poll',
+        stance_choices_attributes: [{ poll_option_id: @poll.poll_options.find_by!(name: 'Agree').id }]
+      }
+    )
+
+    assert_equal @poll.id, stance.reload.poll_id
+    assert_equal 'Still in the original poll', stance.reason
+
+    stance.poll = target_poll
+    refute stance.save
+    assert stance.errors[:poll_id].present?
+  end
+
   # -- Redeem --
 
   test "redeems a guest stance for a verified user" do

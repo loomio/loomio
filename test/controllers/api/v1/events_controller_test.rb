@@ -50,11 +50,32 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == event.id }
     assert_not serialized_event.key?('actor_id')
     assert_not serialized_event.key?('created_at')
+    assert_equal stance.id, serialized_event['eventable_id']
+    assert_equal event.sequence_id, serialized_event['sequence_id']
+    assert_equal event.position_key, serialized_event['position_key']
 
     get :timeline, params: { discussion_id: @discussion.id }, format: :json
     timeline_record = JSON.parse(response.body).find { |record| record[1] == event.sequence_id }
     assert_nil timeline_record[2]
     assert_nil timeline_record[3]
+  end
+
+  test "discussion moved events do not expose a legacy source group" do
+    source_group = Group.create!(name: 'Secret source', group_privacy: 'secret', is_visible_to_public: false)
+    event = Event.create!(
+      kind: 'discussion_moved',
+      eventable: @public_discussion,
+      topic: @public_discussion.topic,
+      user: @admin,
+      custom_fields: { source_group_id: source_group.id }
+    )
+
+    get :index, params: { discussion_id: @public_discussion.id }, format: :json
+
+    payload = JSON.parse(response.body)
+    serialized_event = payload['events'].find { |record| record['id'] == event.id }
+    assert_not serialized_event['custom_fields'].key?('source_group_id')
+    refute_includes payload.fetch('groups', []).map { |group| group['id'] }, source_group.id
   end
 
   test "index serializes without record cache fallbacks" do
@@ -110,6 +131,19 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
     # The comment_id must be scoped to the authorized topic, so this is a 404,
     # not a leak of the secret comment's body.
+    assert_response :not_found
+  end
+
+  test "index does not use a comment from another topic as its starting point" do
+    secret_comment = Comment.new(parent: discussions(:alien_discussion), body: "secret")
+    secret_event = CommentService.create(comment: secret_comment, actor: users(:alien))
+    sign_in @user
+
+    get :index, params: {
+      discussion_id: @discussion.id,
+      comment_id: secret_event.eventable.id
+    }
+
     assert_response :not_found
   end
 

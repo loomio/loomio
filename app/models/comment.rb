@@ -45,6 +45,11 @@ class Comment < ApplicationRecord
         LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
       WHERE comments.discarded_at IS NULL
+        AND topics.discarded_at IS NULL
+        AND (
+          (topics.topicable_type = 'Discussion' AND discussions.discarded_at IS NULL) OR
+          (topics.topicable_type = 'Poll' AND polls.discarded_at IS NULL)
+        )
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
         #{topic_id ? " AND events.topic_id = #{topic_id.to_i}" : ""}
@@ -62,7 +67,7 @@ class Comment < ApplicationRecord
 
   validates_presence_of :user, unless: :discarded_at
 
-  validate :parent_belongs_to_same_topic
+  validate :parent_cannot_change, on: :update
   validate :has_body_or_attachment
   validate :body_within_topic_limit
 
@@ -143,7 +148,9 @@ class Comment < ApplicationRecord
     body.to_s.empty? || body.to_s == "<p></p>"
   end
 
-  def parent_belongs_to_same_topic
-    errors.add(:parent, "parent needs same topic") unless parent.topic == topic
+  def parent_cannot_change
+    if will_save_change_to_parent_id? || will_save_change_to_parent_type?
+      errors.add(:parent, "cannot be changed")
+    end
   end
 end

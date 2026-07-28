@@ -86,6 +86,7 @@ class Views::Topics::Show < Views::Application::Layout
         .includes(:eventable, :user)
         .order("position_key #{@topic.newest_first ? 'desc' : 'asc'}")
         .where(kind: %w[new_comment poll_created stance_created stance_updated])
+        .where.not(eventable_type: 'Stance', eventable_id: stance_ids_hidden_from_activity)
 
       total = scope.count
       items = scope.limit(@pagination[:limit]).offset(@pagination[:offset]).to_a
@@ -101,6 +102,19 @@ class Views::Topics::Show < Views::Application::Layout
         end
       end
     end
+  end
+
+  def stance_ids_hidden_from_activity
+    polls = @topic.polls.reject(&:anonymous?)
+    voted_poll_ids = Stance.latest.decided.where(
+      poll_id: polls.map(&:id), participant_id: @recipient.id
+    ).pluck(:poll_id)
+
+    hidden_poll_ids = polls.reject do |poll|
+      poll.show_results?(voted: voted_poll_ids.include?(poll.id))
+    end.map(&:id)
+
+    Stance.where(poll_id: hidden_poll_ids).where.not(participant_id: @recipient.id).select(:id)
   end
 
   def preload_item_avatars(items)

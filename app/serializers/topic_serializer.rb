@@ -86,8 +86,8 @@ class TopicSerializer < ApplicationSerializer
 
     return @reader if @reader.present?
 
-    m = cache_fetch(:memberships_by_group_id, object.group_id) { Membership.new(volume: 'normal') }
-    @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: m.volume)
+    m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
+    @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: m&.volume || 'normal')
   end
 
   def topic_reader_id

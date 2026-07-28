@@ -376,8 +376,6 @@ class Poll < ApplicationRecord
     !!case hide_results
       when 'until_closed'
         closed_at
-      when 'until_vote'
-        closed_at || voted
       else
         true
       end

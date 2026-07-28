@@ -27,14 +27,30 @@ class SearchServiceTest < ActiveSupport::TestCase
     assert_equal first_count, second_count
   end
 
-  test "reindex_by_discussion_id removes documents for a discarded discussion" do
+  test "reindex_by_discussion_id removes all documents for a discarded discussion" do
+    comment = Comment.new(parent: @discussion, body: 'Secret deleted comment')
+    CommentService.create(comment: comment, actor: @user)
     SearchService.reindex_by_discussion_id(@discussion.id)
-    assert PgSearch::Document.where(searchable_type: 'Discussion', searchable_id: @discussion.id).exists?
+    assert PgSearch::Document.where(discussion_id: @discussion.id).exists?
 
-    @discussion.update_columns(discarded_at: Time.now)
+    discarded_at = Time.current
+    @discussion.update_columns(discarded_at: discarded_at)
+    @discussion.topic.update_columns(discarded_at: discarded_at)
     SearchService.reindex_by_discussion_id(@discussion.id)
 
-    refute PgSearch::Document.where(searchable_type: 'Discussion', searchable_id: @discussion.id).exists?
+    refute PgSearch::Document.where(discussion_id: @discussion.id).exists?
+  end
+
+  test "reindex_by_discussion_id removes legacy documents when only the discussion is discarded" do
+    comment = Comment.new(parent: @discussion, body: 'Legacy deleted comment')
+    CommentService.create(comment: comment, actor: @user)
+    SearchService.reindex_by_discussion_id(@discussion.id)
+    assert PgSearch::Document.where(discussion_id: @discussion.id).exists?
+
+    @discussion.update_columns(discarded_at: Time.current)
+    SearchService.reindex_by_discussion_id(@discussion.id)
+
+    refute PgSearch::Document.where(discussion_id: @discussion.id).exists?
   end
 
   # -- reindex_by_comment_id --

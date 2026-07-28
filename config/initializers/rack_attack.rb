@@ -107,6 +107,7 @@ class Rack::Attack
     '/api/v1/sessions' => 30,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
+    '/api/v1/demos/clone' => 10,
     '/api/v1/discussion_readers' => 500,
     '/rails/active_storage/direct_uploads' => 20,
     # The app's real upload route (the stock path is shadowed to the same
@@ -174,7 +175,7 @@ class Rack::Attack
         matched: matched,
         discriminator: discriminator,
         method: req.request_method,
-        path: req.fullpath,
+        path: req.path,
         ip: req.remote_ip,
         email: email,
         turnstile: turnstile_provided

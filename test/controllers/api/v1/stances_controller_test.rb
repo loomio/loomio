@@ -32,14 +32,65 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
-  test "users action returns no participants for anonymous polls" do
+  test "until vote has the same backend response as results off" do
+    @poll.update!(hide_results: 'until_vote')
+    admin_stance = @poll.stances.find_by!(participant_id: @admin.id)
+    admin_stance.update!(
+      stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
+      cast_at: Time.current
+    )
+
+    sign_in @user
+    get :index, params: { poll_id: @poll.id }
+
+    assert_response :success
+    until_vote_payload = JSON.parse(response.body)
+    until_vote_poll = until_vote_payload['polls'].find { |poll| poll['id'] == @poll.id }
+
+    @poll.update!(hide_results: 'off')
+    get :index, params: { poll_id: @poll.id }
+
+    assert_response :success
+    results_off_payload = JSON.parse(response.body)
+    results_off_poll = results_off_payload['polls'].find { |poll| poll['id'] == @poll.id }
+    assert_equal results_off_payload['stances'], until_vote_payload['stances']
+    assert_equal results_off_poll.except('hide_results'), until_vote_poll.except('hide_results')
+  end
+
+  test "users action returns participants for anonymous polls" do
     @poll.update!(anonymous: true)
     sign_in @admin
-    get :users, params: { poll_id: @poll.id }
+    get :users, params: {poll_id: @poll.id}
     assert_response :success
 
-    json = JSON.parse(response.body)
-    assert_empty(json['users'] || [], "anonymous poll must not expose participants via users action")
+    user_ids = JSON.parse(response.body).fetch('users').map { |user| user['id'] }
+    assert_includes user_ids, @admin.id
+  end
+
+  test "users action denies an ordinary poll participant" do
+    sign_in @user
+
+    get :users, params: { poll_id: @poll.id }
+
+    assert_response :forbidden
+  end
+
+  test "users action denies a public poll viewer" do
+    public_poll = Poll.create!(
+      title: 'Public roster poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 5.days.from_now
+    )
+    public_viewer = users(:alien)
+    assert public_viewer.ability.can?(:show, public_poll)
+    sign_in public_viewer
+
+    get :users, params: { poll_id: public_poll.id }
+
+    assert_response :forbidden
   end
 
   test "index does not allow unauthorized users" do
@@ -48,6 +99,56 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     sign_in outsider
     get :index, params: { poll_id: @poll.id }
     assert_response :forbidden
+  end
+
+  test "index does not use a foreign stance to include participant emails" do
+    @group.membership_for(@user).update!(admin: true)
+    source_poll = PollService.create(params: {
+      title: "Email scope source",
+      poll_type: "proposal",
+      group_id: @group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 1.day.from_now
+    }, actor: @user)
+    source_stance = source_poll.stances.find_by!(participant_id: @user.id)
+
+    hex = SecureRandom.hex(4)
+    owner = User.create!(
+      name: "Email scope owner",
+      email: "email-scope-owner-#{hex}@example.com",
+      email_verified: true,
+      username: "emailscopeowner#{hex}"
+    )
+    victim = User.create!(
+      name: "Email scope victim",
+      email: "email-scope-victim-#{hex}@example.com",
+      email_verified: true,
+      username: "emailscopevictim#{hex}"
+    )
+    target_group = Group.create!(
+      name: "Email scope target",
+      handle: "email-scope-target-#{hex}",
+      group_privacy: "secret",
+      creator: owner
+    )
+    Membership.create!(group: target_group, user: owner, admin: true, accepted_at: Time.current)
+    Membership.create!(group: target_group, user: @user, admin: false, accepted_at: Time.current)
+    Membership.create!(group: target_group, user: victim, admin: false, accepted_at: Time.current)
+    target_poll = PollService.create(params: {
+      title: "Email scope target poll",
+      poll_type: "proposal",
+      group_id: target_group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 1.day.from_now
+    }, actor: owner)
+
+    sign_in @user
+    get :index, params: {poll_id: target_poll.id, id: source_stance.id}
+
+    assert_response :success
+    serialized_victim = JSON.parse(response.body).fetch('users').find { |user| user['id'] == victim.id }
+    assert_not_nil serialized_victim
+    assert_not serialized_victim.key?('email')
   end
 
   test "index hides identifying metadata for anonymous polls" do
@@ -76,15 +177,18 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     @poll.update!(anonymous: true, hide_results: 'until_closed')
     @poll.stances.first.update_columns(cast_at: 1.minute.ago)
     @poll.stances.last.update_columns(cast_at: 2.minutes.ago)
-    other_stance_ids = @poll.stances.where.not(participant_id: @admin.id).pluck(:id)
+    own_id = @poll.stances.find_by(participant_id: @admin.id).id
 
     sign_in @admin
     get :index, params: { poll_id: @poll.id }
     assert_response :success
 
     stances = JSON.parse(response.body)['stances']
-    assert_equal stances.map { |stance| stance['id'] }.sort, stances.map { |stance| stance['id'] }
-    stances.select { |stance| other_stance_ids.include?(stance['id']) }.each do |stance|
+
+    assert_equal @poll.stances.latest.order(:id).pluck(:id), stances.map { |stance| stance['id'] }
+
+    # Other voters' choices stay hidden until results are visible.
+    stances.reject { |stance| stance['id'] == own_id }.each do |stance|
       assert_not stance.key?('none_of_the_above')
       assert_not stance.key?('option_scores')
     end
@@ -342,5 +446,48 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
       post :update, params: { id: stance.id, stance: stance_params }
     end
     assert_response :unprocessable_entity
+  end
+
+  test "index returns anonymous stances with their database ids in id order" do
+    anon = anon_poll_with_voters(4)
+    poll = anon[:poll]
+    sign_in anon[:voters].first
+
+    get :index, params: {poll_id: poll.id}
+    assert_response :success
+
+    exposed = JSON.parse(response.body)['stances'].map { |stance| stance['id'] }
+    assert_equal poll.stances.latest.order(:id).pluck(:id), exposed
+  end
+
+  private
+
+  def anon_poll_with_voters(count)
+    hex = SecureRandom.hex(4)
+    group = Group.new(name: "Anon#{hex}", group_privacy: 'secret', handle: "anon#{hex}")
+    group.creator = (creator = mk_voter("creator", hex))
+    group.save!
+    Membership.create!(user: creator, group: group, accepted_at: Time.current, admin: true)
+
+    voters = count.times.map { |i| v = mk_voter("v#{i}", hex); Membership.create!(user: v, group: group, accepted_at: Time.current); v }
+
+    poll = PollService.create(params: {
+      title: "Anon #{hex}", poll_type: "proposal", group_id: group.id,
+      anonymous: true, hide_results: 'off', specified_voters_only: false,
+      poll_option_names: %w[agree disagree abstain], closing_at: 5.days.from_now
+    }, actor: creator)
+
+    voters.each_with_index do |v, i|
+      stance = poll.stances.undecided.find_by(participant_id: v.id, latest: true)
+      option = poll.poll_options[i % 2]
+      StanceService.update(stance: stance, actor: v, params: { stance_choices_attributes: [{ poll_option_id: option.id }] })
+    end
+
+    { poll: poll, group: group, voters: voters }
+  end
+
+  def mk_voter(name, hex)
+    uname = "#{name}#{hex}".delete('_')
+    User.create!(name: "#{name}#{hex}", email: "#{name}#{hex}@example.com", username: uname, email_verified: true)
   end
 end

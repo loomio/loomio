@@ -33,7 +33,21 @@ class IdentityService
       # Users can intentionally link the pending identity via identity_form.vue.
       next if current_user.present?
 
-      # The configured SSO provider is trusted as the authority on email ownership.
+      # SECURITY MODEL — SSO provider is trusted for email ownership.
+      #
+      # An unauthenticated SSO login is linked to (and signs the visitor in as)
+      # an existing account whenever the provider-asserted email matches. We do
+      # NOT check an `email_verified` / `verified_email` claim, and the provider
+      # clients (Clients::Google, Clients::Oauth) deliberately do not surface one.
+      #
+      # This is an accepted design decision, not an oversight: a self-hosted
+      # deployment configures exactly ONE SSO provider and trusts it as the
+      # authority on who owns an email address. It is the operator's
+      # responsibility to configure a provider that only asserts emails it has
+      # verified. If you point Loomio at a provider that lets users self-assert
+      # unverified emails, that provider can take over any account by email — by
+      # design of this trust model. Do not "fix" this by matching on email
+      # without also changing the documented trust model.
       new_identity.user = User.find_by(email: email)
 
       if new_identity.user.nil?

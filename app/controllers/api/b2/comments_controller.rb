@@ -28,19 +28,4 @@ class Api::B2::CommentsController < Api::B2::BaseController
     respond_with_resource
   end
 
-  private
-
-  def permitted_params
-    jarams = params.dup
-    if jarams[:api_key]
-      jarams.delete(:api_key)
-      jarams.delete(:format)
-      jarams.delete(:discussion_id)
-      jarams.delete(:discussion)
-      jarams.delete(:comment)
-      jarams.delete(:id)
-      jarams = ActionController::Parameters.new({resource_name => jarams})
-    end
-    @permitted_params ||= PermittedParams.new(jarams)
-  end
 end

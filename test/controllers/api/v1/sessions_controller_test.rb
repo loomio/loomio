@@ -3,10 +3,12 @@ require 'test_helper'
 class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
+    @original_force_ssl = Rails.application.config.force_ssl
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
+    Rails.application.config.force_ssl = @original_force_ssl
   end
 
   test "turnstile is not required when TURNSTILE_SECRET_KEY is unset" do
@@ -128,6 +130,32 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal user.id, json['current_user_id']
     assert_equal false, json['signed_in_via_login_code']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+  end
+
+  test "marks authentication cookies secure when force_ssl is enabled" do
+    Rails.application.config.force_ssl = true
+    user = User.create!(
+      email: "securecookies@example.com",
+      email_verified: true
+    )
+
+    cookie_writes = authentication_cookie_writes(user)
+
+    assert_equal true, cookie_writes.dig(:session_id, :secure)
+    assert_equal true, cookie_writes.dig(:signed_in, :secure)
+  end
+
+  test "does not mark authentication cookies secure when force_ssl is disabled" do
+    Rails.application.config.force_ssl = false
+    user = User.create!(
+      email: "nonsecurecookies@example.com",
+      email_verified: true
+    )
+
+    cookie_writes = authentication_cookie_writes(user)
+
+    assert_equal false, cookie_writes.dig(:session_id, :secure)
+    assert_equal false, cookie_writes.dig(:signed_in, :secure)
   end
 
   test "bridges a legacy devise session into a session record" do
@@ -304,5 +332,21 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     json = JSON.parse(response.body)
     assert_equal unverified_user.id, json['current_user_id']
+  end
+
+  private
+
+  def authentication_cookie_writes(user)
+    writes = {}
+    cookie_jar = Object.new
+    cookie_jar.define_singleton_method(:signed) { self }
+    cookie_jar.define_singleton_method(:permanent) { self }
+    cookie_jar.define_singleton_method(:[]=) { |key, value| writes[key] = value }
+
+    @controller.stub(:cookies, cookie_jar) do
+      @controller.send(:start_new_session_for, user)
+    end
+
+    writes
   end
 end

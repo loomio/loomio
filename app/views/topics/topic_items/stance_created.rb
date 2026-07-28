@@ -18,7 +18,7 @@ class Views::Topics::TopicItems::StanceCreated < Views::Application::Component
             render Views::EventMailer::Common::Avatar.new(user: voter, size: 24)
           end
           div(class: "#{@kind == :updated ? 'layout ' : ''}thread-item__body#{' column' if @kind == :updated}") do
-            if @kind == :created && stance.revoked_at
+            if stance.revoked_at
               plain t("poll_common_votes_panel.vote_removed")
             else
               render Views::Topics::StanceBody.new(stance: stance, voter: voter, poll: poll, current_user: @current_user)

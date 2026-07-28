@@ -8,6 +8,8 @@ class Views::EventMailer::Poll::Stance < Views::ApplicationMailer::Component
   end
 
   def view_template
+    return unless @stance.shared_update_visible?
+
     div(class: "poll-mailer__stance") do
       table do
         poll = @stance.poll

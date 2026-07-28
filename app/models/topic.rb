@@ -1,6 +1,8 @@
 class Topic < ApplicationRecord
   include SelfReferencing
 
+  has_paper_trail only: [:group_id]
+
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true
   belongs_to :locker, foreign_key: 'locker_id', class_name: 'User', optional: true

@@ -263,6 +263,6 @@ export default class GroupModel extends BaseModel {
   }
 
   isTrialOrDemo() {
-    return ['trial', 'demo'].includes(this.parentOrSelf().subscription.plan)
+    return ['trial', 'demo'].includes(this.parentOrSelf().subscription?.plan)
   }
 };

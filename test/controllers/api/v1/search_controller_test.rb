@@ -58,10 +58,94 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     get :index, params: { query: 'findanonymousstance' }
 
     result = JSON.parse(response.body)['search_results'].find { |record| record['searchable_id'] == stance.id }
+    result ||= JSON.parse(response.body)['search_results'].find { |record| record['poll_id'] == @poll.id }
     assert_not_nil result
+    assert_equal stance.id, result['searchable_id']
     assert_not result.key?('author_id')
     assert_not result.key?('author_name')
     assert_not result.key?('authored_at')
+
+    get :index, params: {query: @user.name}
+    name_results = JSON.parse(response.body)['search_results']
+    assert name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
+  end
+
+  test "does not return stale documents for a legacy discarded discussion" do
+    @discussion.update_columns(discarded_at: Time.current)
+    assert PgSearch::Document.where(discussion_id: @discussion.id).exists?
+
+    sign_in @user
+    get :index, params: { query: 'findme' }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['discussion_key'] == @discussion.key }
+  end
+
+  test "does not return records from a discarded topic" do
+    @discussion.topic.update_columns(discarded_at: Time.current)
+    assert PgSearch::Document.where(topic_id: @discussion.topic.id).exists?
+
+    sign_in @user
+    get :index, params: { query: 'findme' }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['discussion_key'] == @discussion.key }
+  end
+
+  test "respects parent member access to private subgroup discussions" do
+    subgroup = groups(:subgroup)
+    subgroup.update_columns(
+      is_visible_to_parent_members: true,
+      parent_members_can_see_discussions: false
+    )
+    discussion = DiscussionService.create(
+      params: {
+        group_id: subgroup.id,
+        title: "findprivatesubgroup",
+        private: true
+      },
+      actor: users(:admin)
+    )
+    discussion.update_pg_search_document
+
+    sign_in users(:member)
+    get :index, params: { query: "findprivatesubgroup" }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['searchable_id'] == discussion.id }
+
+    subgroup.update_columns(parent_members_can_see_discussions: true)
+    get :index, params: { query: "findprivatesubgroup" }
+
+    results = JSON.parse(response.body)['search_results']
+    assert results.any? { |result| result['searchable_id'] == discussion.id }
+  end
+
+  test "returns direct discussions only to guests" do
+    discussion = DiscussionService.build(
+      params: {
+        title: "findguestdiscussion",
+        private: true,
+        description_format: "html"
+      },
+      actor: users(:admin)
+    )
+    discussion.save!(validate: false)
+    discussion.create_missing_created_event!
+    discussion.add_guest!(@user, discussion.author)
+    discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: "findguestdiscussion" }
+
+    results = JSON.parse(response.body)['search_results']
+    assert results.any? { |result| result['searchable_id'] == discussion.id }
+
+    sign_in users(:alien)
+    get :index, params: { query: "findguestdiscussion" }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['searchable_id'] == discussion.id }
   end
 
   test "returns group filtered records" do

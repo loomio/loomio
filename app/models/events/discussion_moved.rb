@@ -1,10 +1,9 @@
 class Events::DiscussionMoved < Event
   include Events::LiveUpdate
 
-  def self.publish!(discussion, actor, source_group)
+  def self.publish!(discussion, actor)
     super discussion,
           topic: discussion.topic,
-          custom_fields: { source_group_id: source_group.id },
           user: actor,
           created_at: Time.now
   end

@@ -267,10 +267,12 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       assert_element('.poll-mailer__stance')
     end
 
-    test "results_hidden #{poll_type} stance_created email" do
+    test "results_hidden #{poll_type} stance_created email is suppressed until close" do
+      # A poll that hides results until it closes must not leak a new ballot to
+      # loud subscribers before close — StanceCreated#subscribed_recipients
+      # returns no one while results are hidden.
       build_poll_stance_created(poll_type: poll_type, hide_results: 'until_closed')
-      assert_notification_headline("notifications.without_title.stance_created")
-      assert_element('.poll-mailer__stance')
+      assert_no_email_sent
     end
 
     test "#{poll_type} poll_closing_soon email" do

@@ -93,6 +93,16 @@ module HasRichText
     end
   end
 
+  # Rich text intentionally stores stable Active Storage blob and representation
+  # paths, not temporary storage-service URLs. Active Storage resolves these
+  # signed bearer URLs to a fresh service URL on each request, so embedded files
+  # do not break when a service URL expires or the storage service changes.
+  #
+  # These URLs must also work without a Loomio session because rich text is
+  # rendered in email, chatbots, and exports. Possession of the unguessable URL
+  # therefore grants access to the file; authorization is not re-checked against
+  # the group or record on download. Changing that access model requires a design
+  # for signed-out renderers as well as the web application.
   def build_attachments
     # this line is just to help migrations through
     return true unless self.class.column_names.include?('attachments')

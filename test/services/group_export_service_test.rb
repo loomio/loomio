@@ -99,6 +99,20 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert_nil event_json['updated_at']
   end
 
+  test "discussion moved exports do not expose the source group id" do
+    source_group = groups(:alien_group)
+    discussion = discussions(:discussion)
+    event = Event.create!(
+      kind: 'discussion_moved',
+      eventable: discussion,
+      custom_fields: { source_group_id: source_group.id }
+    )
+
+    event_json = GroupExportService.export_record(event, 'events')
+
+    assert_not event_json['custom_fields'].key?('source_group_id')
+  end
+
   test "export, truncate specific records, and import recreates the scenario" do
     data = create_scenario
     group = data[:group]

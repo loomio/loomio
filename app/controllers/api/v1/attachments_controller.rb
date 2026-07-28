@@ -1,8 +1,8 @@
 class Api::V1::AttachmentsController < Api::V1::RestfulController
   def index
     group = current_user.groups.find_by!(id: params[:group_id])
-    self.collection = AttachmentQuery.find([group.id], params[:q], (params[:per] || 20), (params[:from] || 0))
-    self.collection_count = AttachmentQuery.find([group.id], params[:q], 1000, 0).count
+    self.collection = AttachmentQuery.find([group.id], params[:q], (params[:per] || 20), (params[:from] || 0), user: current_user)
+    self.collection_count = AttachmentQuery.find([group.id], params[:q], 1000, 0, user: current_user).count
     respond_with_collection
   end
 

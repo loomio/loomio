@@ -14,6 +14,23 @@ class Api::V1::SearchController < Api::V1::RestfulController
       rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
     end
 
+    visible_topic = TopicQuery
+      .visible_to(
+        user: current_user,
+        topic_id: PgSearch::Document.arel_table[:topic_id]
+      )
+      .select(:id)
+      .limit(1)
+      .offset(0)
+
+    # Keep this as a correlated lookup so PostgreSQL checks visibility only
+    # after using the full-text index to find matching search documents.
+    rel = rel.where(visible_topic.arel.exists)
+    rel = rel.where(
+      "pg_search_documents.discussion_id IS NULL OR pg_search_documents.discussion_id IN (?)",
+      Discussion.kept.select(:id)
+    )
+
     if params[:tag]
       tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
       rel = rel.where(topic_id: tag_topic_ids)

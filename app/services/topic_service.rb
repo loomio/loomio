@@ -71,7 +71,6 @@ class TopicService
   end
 
   def self.move(topic:, params:, actor:)
-    source = topic.group
     destination = ModelLocator.new(:group, params).locate || NullGroup.new
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
@@ -85,7 +84,7 @@ class TopicService
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
       ReindexDiscussionWorker.perform_later(topic.id)
-      Events::DiscussionMoved.publish!(topic.topicable, actor, source)
+      Events::DiscussionMoved.publish!(topic.topicable, actor)
     end
   end
 
@@ -118,11 +117,13 @@ class TopicService
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
     discussion = Discussion.find(discussion_id)
     actor = User.find(actor_id)
+    return unless actor.ability.can?(:mark_as_read, discussion.topic)
+
     mark_as_read(topic: discussion.topic, params: {ranges: ranges}, actor: actor)
   end
 
   def self.mark_as_read(topic:, params:, actor:)
-    return unless actor.ability.can?(:mark_as_read, topic)
+    actor.ability.authorize! :mark_as_read, topic
     RetryOnError.with_limit(2) do
       sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
       NotificationService.viewed_events(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
@@ -149,14 +150,20 @@ class TopicService
 
   def self.discard(topic:, actor:)
     actor.ability.authorize! :discard, topic
+    discard_without_authorization(topic: topic, actor: actor)
+  end
+
+  def self.discard_without_authorization(topic:, actor:)
     topicable = topic.topicable
+    discarded_at = Time.current
     Topic.transaction do
-      topic.update(discarded_at: Time.now, discarded_by: actor.id)
-      topicable.update(discarded_at: Time.now, discarded_by: actor.id)
-      topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+      topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
       EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
+    topicable
   end
 
   def self.moved_discussion_privacy_for(topic, destination)
