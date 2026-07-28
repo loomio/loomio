@@ -68,7 +68,8 @@ Operational rollout, canary conversion, batch auditing, and removal of stance-sp
 - Result verification compares submitted-vote count, option scores and voter counts, none-of-the-above count, calculated results, STV input and output, and preserved-reason count before stance deletion. Any mismatch rolls back the poll.
 - Complete receipt sets may populate the named electorate without vote identifiers. Incomplete receipts create no named electorate records, and existing aggregate participation counts are retained.
 - Files belonging to preserved reasons are moved to the poll with no vote or author association. Other stance attachments are detached, and blobs are purged only when unreferenced.
-- Direct replies are reparented to the poll before stance events are deleted. Stance events, notifications, reactions, bookmarks, tasks, translations, versions, search documents, choices, and stances are removed.
+- Direct replies in the poll topic are reparented to the poll before stance events are deleted. Stance events, notifications, reactions, bookmarks, tasks, translations, versions, search documents, choices, and stances are removed.
+- The complete topic event tree is repaired after stance-event deletion. The poll transaction verifies parent membership, depth, sequence and position metadata, position-key ancestry, and cached child counts before it can commit.
 - Before conversion, the operator captures counts of pre-existing dangling stance references. The post-conversion audit fails if any category increases. Independently, each poll transaction verifies zero remaining references to the exact stance and event IDs it deletes before committing.
 - Poll announcement events have obsolete stance ID lists removed. Source receipts remain as the historical participation-verification record and contain no vote identifier.
 - The poll is marked as migrated legacy anonymous, remains closed, and cannot be presented as a native detached anonymous poll.
@@ -90,3 +91,5 @@ On 2026-07-27:
 - the operator baseline capture and unchanged-database audit commands completed successfully.
 
 The rollback-only run does not replace the deployment checklist requirement to restore a current backup into a disposable database and perform persistent canary conversions there. That operational exercise, manual interface inspection, and independent security/code review remain approval gates before production conversion.
+
+On 2026-07-28, development poll 182764 was persistently converted with an existing operator-confirmed backup. It produced three detached votes, two plain-text reasons, and one poll-level attachment. The repaired topic had no missing parents or cached child-count mismatches. Focused browser scenarios passed for the legacy-format notice both before migration and for migrated legacy reasons afterward. This development conversion is implementation evidence; it does not replace the production deployment gate requiring a restored current backup in a disposable database.

@@ -100,6 +100,12 @@ module Dev::ScenariosHelper
     scenario
   end
 
+  def poll_legacy_anonymous_stance_scenario(params)
+    scenario = poll_closed_scenario(params.merge(anonymous: false))
+    scenario[:poll].update_columns(anonymous: true)
+    scenario
+  end
+
   def poll_user_mentioned_scenario(params)
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)

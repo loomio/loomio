@@ -34,7 +34,7 @@ export default {
 <template lang="pug">
 .poll-common-chart-panel.mt-8
   v-alert.mb-4(
-    v-if="poll.legacyAnonymous"
+    v-if="poll.usesLegacyAnonymousVotingFormat()"
     density="compact"
     variant="tonal"
     type="info"

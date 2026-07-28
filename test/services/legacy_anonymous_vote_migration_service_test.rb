@@ -143,6 +143,13 @@ class LegacyAnonymousVoteMigrationServiceTest < ActiveSupport::TestCase
     assert_equal "Poll", comment.reload.parent_type
     assert_equal @poll.id, comment.parent_id
     assert_equal @poll.created_event.id, comment_event.reload.parent_id
+    assert_equal @poll.created_event.depth + 1, comment_event.depth
+    assert comment_event.position_key.start_with?("#{@poll.created_event.position_key}-")
+    assert_equal(
+      Event.where(topic_id: @poll.topic_id, parent_id: @poll.created_event.id).count,
+      @poll.created_event.reload.child_count
+    )
+    assert_empty @poll.topic.items.where(eventable_type: "Stance")
     assert_not Reaction.exists?(reactable_type: "Stance", reactable_id: stance.id)
     assert_not Bookmark.exists?(bookmarkable_type: "Stance", bookmarkable_id: stance.id)
     assert_not Translation.exists?(translatable_type: "Stance", translatable_id: stance.id)
@@ -150,6 +157,32 @@ class LegacyAnonymousVoteMigrationServiceTest < ActiveSupport::TestCase
     assert_not PaperTrail::Version.exists?(item_type: "Stance", item_id: stance.id)
     assert_not PgSearch::Document.exists?(searchable_type: "Stance", searchable_id: stance.id)
     assert_not Event.exists?(stance_event.id)
+  end
+
+  test "repairs the topic tree after removing stance thread items" do
+    @poll.create_missing_created_event!
+    first = cast_vote(user: @admin, option: @poll.poll_options.first, reason: "First reason")
+    second = cast_vote(user: @voter, option: @poll.poll_options.second, reason: "Second reason")
+    stance_event_ids = Event.where(eventable_type: "Stance", eventable_id: [first.id, second.id]).pluck(:id)
+    poll_event = @poll.created_event
+    close_legacy_poll
+
+    assert_equal 2, Event.where(id: stance_event_ids, parent_id: poll_event.id).count
+
+    LegacyAnonymousVoteMigrationService.migrate!(poll: @poll, backup_confirmed: true)
+
+    poll_event.reload
+    assert_empty Event.where(id: stance_event_ids)
+    assert_equal(
+      Event.where(topic_id: @poll.topic_id, parent_id: poll_event.id).count,
+      poll_event.child_count
+    )
+    @poll.topic.items.where.not(parent_id: nil).find_each do |event|
+      parent = Event.find_by(id: event.parent_id, topic_id: @poll.topic_id)
+      assert parent, "event #{event.id} has a missing topic parent"
+      assert_equal parent.depth + 1, event.depth
+      assert event.position_key.start_with?("#{parent.position_key}-")
+    end
   end
 
   test "rejects an open poll and leaves its stance untouched" do

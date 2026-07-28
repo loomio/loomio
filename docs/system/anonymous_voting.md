@@ -14,6 +14,26 @@ The implementation must distinguish between:
 
 The exact database field used to identify the voting system is an implementation decision. It must be immutable after voting opens except for the verified, closed-poll legacy migration defined below.
 
+## Implementation handover — 2026-07-28
+
+Release 1 is implemented on the `detached-anonymous-voting` branch and is ready for manual and security review. It includes detached voting for new anonymous polls, named participation verification, hourly reminder selection, portability archives, legacy notices and reasons, and the manually triggered legacy migration and audit tasks.
+
+The migration checkpoint has been exercised against development data. Poll 182764 was persistently converted into three detached votes and two plain-text reasons, with one attachment moved to the poll. Its stance events were removed, its topic tree was repaired, and the post-conversion topic invariants passed. Browser coverage verifies the legacy notice before conversion and the legacy reason display after conversion.
+
+The remaining rollout work is:
+
+1. complete independent code, security, and manual interface review;
+2. deploy Release 1 application code and its storage schema without starting conversion automatically;
+3. restore a current production backup into a disposable environment and capture the dangling-reference baseline before any conversion;
+4. dry-run the full eligible set and resolve every precondition failure;
+5. persistently convert representative canaries covering ordinary, reason, attachment, ranked or scored, STV, complete-receipt, and incomplete-receipt cases;
+6. verify each canary through the interface, API permission failures, exports, participation records, aggregate results, and topic integrity;
+7. convert closed eligible polls in bounded batches, running the baseline-aware audit after every batch;
+8. leave active and scheduled legacy polls unchanged until they close normally, then repeat the dry run, conversion, and audit cycle; and
+9. begin Release 2 stance-anonymity removal only after no anonymous stance-based poll remains in any state.
+
+Active legacy polls must not be converted in place. Their stances remain participant-linked while voting is open, voters may still change their votes, and switching systems would change vote immutability, reason support, and result visibility during a live process. A coordinator may deliberately close a poll early through the ordinary interface, after which it becomes eligible for the closed-poll migration.
+
 ## Purpose
 
 Anonymous voting should be safe primarily because identifying and correlating data is never stored with a ballot, rather than because serializers and controllers repeatedly remove sensitive fields.
@@ -424,7 +444,9 @@ The migration must:
 
 Attachment references are removed from the plain-text reason. Link previews, translations, reactions, bookmarks, tasks, versions, mention metadata, and stance search documents are not migrated.
 
-Stance timeline events are removed after any child comments have been reparented to the poll's root event. The comments remain ordinary poll discussion, but no event, reply relationship, or timestamp continues to associate them with an individual migrated vote.
+Stance timeline events are removed after any child comments have been reparented to the poll's root event. Only comment events in the poll's topic are reparented. The comments remain ordinary poll discussion, but no event, reply relationship, or timestamp continues to associate them with an individual migrated vote.
+
+After removing the stance events, the migration repairs the complete topic event tree. Before committing, it verifies that every topic event has sequence and position metadata, every parent belongs to the same topic, every child has the expected depth and position-key ancestry, and every cached child count matches the events that remain. A failed repair rolls back the entire poll migration.
 
 ### Electorate and participation records
 
@@ -457,6 +479,7 @@ After successful verification:
 
 - stance choices and stances for the poll are deleted;
 - obsolete stance-owned rich-content records are deleted;
+- the repaired topic event tree passes its parent, depth, position, sequence, and child-count invariants;
 - the poll is marked as a migrated legacy anonymous poll;
 - the poll remains permanently closed and cannot be reopened; and
 - aggregate result caches are rebuilt from detached ballots.
@@ -487,7 +510,7 @@ After submission, the UI must remove the local ballot choices and show a factual
 
 User-facing copy must not claim “complete anonymity,” protection from instance operators, or cryptographic secrecy.
 
-Migrated legacy polls display the factual notice “This poll uses the legacy anonymous voting format”. The notice must not claim the stronger guarantee made for native detached anonymous polls.
+Legacy anonymous stance polls display the factual notice “This poll uses the legacy anonymous voting format” before migration and continue to display it after migration. The notice must not claim the stronger guarantee made for native detached anonymous polls.
 
 ## Access boundaries to test
 

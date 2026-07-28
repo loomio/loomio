@@ -158,7 +158,7 @@ export default
     )
       span(v-t="'poll_common_action_panel.anonymous_votes_are_stored_separately_from_voter_identities'")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.anonymous && !isScheduled'
+      v-else-if='poll.usesLegacyAnonymousVotingFormat() && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"

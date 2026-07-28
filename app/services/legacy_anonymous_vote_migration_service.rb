@@ -335,7 +335,7 @@ class LegacyAnonymousVoteMigrationService
     Comment.where(id: comment_ids).update_all(parent_type: "Poll", parent_id: poll.id)
 
     stance_event_ids = Event.where(eventable_type: "Stance", eventable_id: stance_ids).pluck(:id)
-    Event.where(eventable_type: "Comment", eventable_id: comment_ids)
+    Event.where(eventable_type: "Comment", eventable_id: comment_ids, topic_id: poll.topic_id)
          .update_all(parent_id: poll.created_event&.id)
 
     event_ids_to_delete = Event.where(parent_id: stance_event_ids).pluck(:id)
@@ -358,9 +358,37 @@ class LegacyAnonymousVoteMigrationService
     end
 
     TopicService.repair(poll.topic_id)
+    verify_topic_integrity!(poll.topic_id)
     verify_stance_content_removed!(stance_ids, stance_event_ids, event_ids_to_delete)
   end
   private_class_method :remove_stance_content!
+
+  def self.verify_topic_integrity!(topic_id)
+    events = Event.where(topic_id: topic_id).to_a
+    events_by_id = events.index_by(&:id)
+    child_counts = events.group_by(&:parent_id).transform_values(&:length)
+    failures = []
+
+    events.each do |event|
+      expected_child_count = child_counts.fetch(event.id, 0)
+      failures << "event #{event.id} child_count" unless event.child_count == expected_child_count
+      failures << "event #{event.id} sequence_id" if event.sequence_id.nil?
+      failures << "event #{event.id} position" if event.position.nil?
+      failures << "event #{event.id} position_key" if event.position_key.blank?
+
+      if event.parent_id
+        parent = events_by_id[event.parent_id]
+        failures << "event #{event.id} parent" unless parent
+        failures << "event #{event.id} depth" if parent && event.depth != parent.depth + 1
+        failures << "event #{event.id} position ancestry" if parent && !event.position_key.to_s.start_with?("#{parent.position_key}-")
+      end
+    end
+
+    return if failures.empty?
+
+    raise MigrationError, "Topic #{topic_id} repair failed: #{failures.join(', ')}"
+  end
+  private_class_method :verify_topic_integrity!
 
   def self.verify_stance_content_removed!(stance_ids, stance_event_ids, deleted_event_ids)
     checks = {

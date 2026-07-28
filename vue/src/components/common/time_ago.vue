@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template lang="pug">
-abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
+abbr.time-ago(v-if='parsedDate' :title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
 <style lang="sass">

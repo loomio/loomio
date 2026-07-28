@@ -281,6 +281,10 @@ export default class PollModel extends BaseModel {
     return this.anonymous && this.votingSystem === 'anonymous_ballot';
   }
 
+  usesLegacyAnonymousVotingFormat() {
+    return this.anonymous && (this.votingSystem === 'stance' || this.legacyAnonymous);
+  }
+
   showResults() {
     return !!this.closingAt &&
     (() => { switch (this.hideResults) {
