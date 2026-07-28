@@ -39,7 +39,7 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_select "meta[property='og:url'][content$='/about-loomio']"
     assert_select "link[rel=canonical][href$='/about-loomio']"
     assert_select "h1", "Loomio is a collaborative decision-making tool"
-    assert_select "img[src*='logo']", count: 1
+    assert_select "header a[href='/'] svg", count: 1
     assert_includes response.body, "cohousing communities"
     assert_includes response.body, "ecovillages"
     assert_select "a[href='https://www.loomio.com']"

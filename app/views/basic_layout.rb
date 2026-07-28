@@ -15,12 +15,12 @@ class Views::BasicLayout < Views::Application::Component
     doctype
     html(lang: @lang) do
       head { render_head }
-      body do
+      body(style: "background-color: #{AppConfig.theme[:brand_colors][:blue35]}") do
         header do
           a(href: "/") do
             svg = logo_svg(style: "display: block; width: 100%; height: auto")
             if svg
-              div(style: "color: #{AppConfig.theme[:accent_color]}; max-width: 192px") { raw svg }
+              div(style: "color: #{AppConfig.theme[:accent_color]}; margin: 0 auto; max-width: 192px") { raw svg }
             else
               img(style: "max-width: 192px", src: AppConfig.theme[:app_logo_src])
             end

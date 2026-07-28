@@ -34,6 +34,7 @@ class AppConfig
     brand_colors = {
       yellow50: "#FFF7E0",
       yellow425: "#F5C401",
+      blue35: "#F1F8FF",
       blue50: "#EBF4FF",
       blue400: "#1F87FF",
       blue500: "#0070E0",
