@@ -1,6 +1,4 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
-
 export default {
   props: {
     stance: Object
@@ -15,15 +13,7 @@ export default {
   },
 
   methods: {
-    emitClick() { this.$emit('click'); },
-
-    colorFor(score) {
-      switch (score) {
-        case 2: return AppConfig.pollColors.proposal[0];
-        case 1: return AppConfig.pollColors.proposal[1];
-        case 0: return AppConfig.pollColors.proposal[2];
-      }
-    }
+    emitClick() { this.$emit('click'); }
   }
 };
 
@@ -37,7 +27,7 @@ export default {
       v-for="choice in choices"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
-      common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
+      common-icon(size="small" color="primary" v-if="!variableScore" name="mdi-check-circle")
       span.text-medium-emphasis(v-if="choice.rank")
         span {{choice.rank}}
         mid-dot

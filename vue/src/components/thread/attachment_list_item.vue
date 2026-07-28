@@ -42,7 +42,7 @@ export default {
 </script>
 <template lang="pug">
 v-card.mt-3(outlined).attachment-list-item-link
-  a(:href="attachment.download_url" target="_blank")
+  a.text-decoration-none(:href="attachment.download_url" target="_blank")
     v-card-title
       common-icon.mr-2(size="small" :name="'mdi-' + attachment.icon")
       span.text-medium-emphasis

@@ -116,6 +116,12 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
+.v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
+  box-shadow: none !important
+
+.v-theme--light .v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
+  border: thin solid rgba(var(--v-border-color), var(--v-border-opacity))
+
 @layer vuetify-core.reset
   ul, ol, figure, details, summary
     padding: 0

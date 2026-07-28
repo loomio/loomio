@@ -23,10 +23,6 @@ export default
   },
 
   computed: {
-    color() {
-      return this.pollOption.color;
-    },
-
     pollOption() {
       return this.stanceChoice.pollOption;
     },
@@ -68,6 +64,5 @@ span.poll-common-stance-choice.text-truncate(:class="'poll-common-stance-choice-
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"' :color="colorFor(stanceChoice.score)")
     poll-meeting-time(:name="optionName")
   span(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
-    //common-icon.mr-2(size="small" :color="pollOption.color" name="mdi-check-circle")
     span {{ optionName }}
 </template>

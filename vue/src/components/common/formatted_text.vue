@@ -139,8 +139,6 @@ div.lmo-markdown-wrapper(@click="onClick")
         content: none
 
 .lmo-markdown-wrapper
-  color: rgba(0, 0, 0, 0.88)
-
   audio,video
     display: block
     margin-bottom: 8px

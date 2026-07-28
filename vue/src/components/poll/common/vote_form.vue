@@ -101,6 +101,11 @@ export default {
       }
     },
 
+    selectedOptionColor(option) {
+      if (!this.isSelected(option)) { return null; }
+      return this.poll.pollType === 'proposal' ? option.color : null;
+    },
+
     classes(option) {
       let votingStatus;
       if (this.poll.isVotable() && !this.stance.noneOfTheAbove) {
@@ -110,7 +115,11 @@ export default {
       }
 
       if (this.optionSelected && this.isSelected(option)) {
-          return ['elevation-2', votingStatus];
+          return [
+            'elevation-2',
+            votingStatus,
+            {'poll-common-vote-form__button--brand-selected': this.poll.pollType !== 'proposal'}
+          ];
       } else {
         return ['poll-common-vote-form__button--none-selected', votingStatus];
       }
@@ -133,7 +142,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
     variant="tonal"
-    :color="(isSelected(option) && option.color) || null"
+    :color="selectedOptionColor(option)"
     v-for='option in options'
     :key='option.id'
     :class="classes(option)"
@@ -161,10 +170,10 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
             v-avatar.poll-common-vote-form__option-icon(size="48")
               img(aria-hidden="true" :src="'/img/' + option.icon + '.svg?v=20260721'")
           template(v-else)
-            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
+            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)")
+            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" color="primary")
+            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)")
+            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" color="primary")
         v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
         v-list-item-subtitle
           plain-text.poll-common-vote-form__allow-wrap(:model="option" field="meaning")
@@ -205,6 +214,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
 .poll-common-vote-form__button--none-selected:hover
   opacity: 1 !important
+
+.poll-common-vote-form__button--brand-selected
+  background-color: rgb(var(--v-theme-primary) / 0.12) !important
 
 .poll-common-vote-form__button--not-selected
   opacity: 0.44 !important

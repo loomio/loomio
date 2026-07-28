@@ -806,6 +806,9 @@ progress::-webkit-progress-value
   overflow-y: scroll
   overflow: visible
 
+.html-editor__textarea.v-field__input
+  opacity: 1
+
 ul[data-type="todo_list"]
   padding-left: 0
 

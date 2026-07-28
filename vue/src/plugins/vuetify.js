@@ -19,6 +19,7 @@ const colors = {
   red50: "#FEF1F1",
   red500: "#D43030",
   grey50: "#F5F5F5",
+  grey75: "#F2F2F2",
   grey100: "#E8E8E8",
   white: "#FFFFFF",
 }
