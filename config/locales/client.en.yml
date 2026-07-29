@@ -1089,6 +1089,9 @@ en:
     flash:
       success: "%{count} notifications sent"
   action_dock:
+    copy_markdown: Copy Markdown
+    copy_markdown_description: Copy the thread as structured Markdown — ideal for use with an AI agent or for creating a simple document from the thread content.
+    thread_markdown_copied: Thread Markdown copied
     copy_thread_for_ai: Copy for AI
     thread_copied_for_ai: Thread copied for AI
     copy_thread_for_ai_help: Copy the facilitation prompt and the complete thread transcript into your AI assistant

@@ -190,8 +190,8 @@ export default new class TopicService {
       },
 
       copy_thread_for_ai: {
-        name: 'action_dock.copy_thread_for_ai',
-        icon: 'mdi-robot-outline',
+        name: 'action_dock.copy_markdown',
+        icon: 'mdi-language-markdown-outline',
         dock: 0,
         collection: 'actions',
         canPerform() {
