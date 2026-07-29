@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records';
 import PollTemplateForm from '@/components/poll_template/form';
 import EventBus from '@/shared/services/event_bus';
+import { takeImportedTemplate } from '@/shared/helpers/template_file';
 
 export default {
   components: {PollTemplateForm},
@@ -24,10 +25,25 @@ export default {
   },
 
   created() {
-    let pollTemplateId, groupId;
+    let pollTemplateId, groupId, importedTemplate;
     if ((pollTemplateId = parseInt(this.$route.params.id))) {
       Records.pollTemplates.findOrFetchById(pollTemplateId).then(pollTemplate => {
         this.pollTemplate = pollTemplate;
+      });
+    } else if (
+      (groupId = parseInt(this.$route.query.group_id)) &&
+      this.$route.query.import_json &&
+      (importedTemplate = takeImportedTemplate('poll_template'))
+    ) {
+      Records.groups.findOrFetchById(groupId).then(group => {
+        this.group = group;
+        this.pollTemplate = Records.pollTemplates.build({
+          ...importedTemplate,
+          id: null,
+          key: null,
+          groupId,
+          example: false
+        });
       });
     } else if ((pollTemplateId = parseInt(this.$route.query.template_id)) && (groupId = parseInt(this.$route.query.group_id))) {
       Records.pollTemplates.findOrFetchById(pollTemplateId).then(pollTemplate => {

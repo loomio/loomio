@@ -4,6 +4,7 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
 import DiscussionTemplateForm from '@/components/discussion_template/form';
+import { takeImportedTemplate } from '@/shared/helpers/template_file';
 
 export default {
   components: {DiscussionTemplateForm},
@@ -26,10 +27,22 @@ export default {
   },
 
   created() {
-    let groupId, templateId, templateKey;
+    let groupId, templateId, templateKey, importedTemplate;
     if (templateId = parseInt(this.$route.params.id)) {
       Records.discussionTemplates.findOrFetchById(templateId).then(template => {
         this.discussionTemplate = template.clone();
+      });
+    } else if (
+      (groupId = parseInt(this.$route.query.group_id)) &&
+      this.$route.query.import_json &&
+      (importedTemplate = takeImportedTemplate('discussion_template'))
+    ) {
+      this.discussionTemplate = Records.discussionTemplates.build({
+        ...importedTemplate,
+        id: null,
+        key: null,
+        groupId,
+        public: false
       });
     } else if ((templateId = parseInt(this.$route.query.template_id)) && (groupId = parseInt(this.$route.query.group_id))) {
       Records.discussionTemplates.findOrFetchById(templateId).then(template => {

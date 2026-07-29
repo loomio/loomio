@@ -1,7 +1,9 @@
 <script lang="js">
 import Records       from '@/shared/services/records';
+import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
+import { importTemplateFile } from '@/shared/helpers/template_file';
 import utils         from '@/shared/record_store/utils';
 import { compact }   from 'lodash-es';
 import { mdiSourceBranchPlus } from '@mdi/js';
@@ -13,6 +15,7 @@ export default {
       group: null,
       results: [],
       loading: false,
+      importing: false,
       filter: 'proposal'
     };
   },
@@ -40,6 +43,12 @@ export default {
         };
       });
     },
+    canImportTemplates() {
+      return this.group && (
+        this.group.adminsInclude(Session.user()) ||
+        (this.group.membersCanCreateTemplates && this.group.membersInclude(Session.user()))
+      );
+    },
     filteredResults() {
       if (this.filter === 'proposal') {
         return this.results.filter(r => ['proposal', 'question'].includes(r.pollType));
@@ -60,6 +69,30 @@ export default {
 
   methods: {
     titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
+    importTemplate() {
+      this.$refs.templateFileInput.click();
+    },
+    async templateFileSelected(event) {
+      const file = event.target.files[0];
+      if (!file) { return; }
+
+      this.importing = true;
+      try {
+        if (await importTemplateFile('poll_template', file)) {
+          await this.$router.push({
+            path: '/poll_templates/new',
+            query: {
+              group_id: this.group.id,
+              import_json: '1',
+              return_to: this.$route.fullPath
+            }
+          });
+        }
+      } finally {
+        this.importing = false;
+        event.target.value = '';
+      }
+    },
     fetch() {
       this.loading = true;
       Records.remote.get('poll_templates/browse', {group_id: this.$route.query.group_id}).then(data => {
@@ -81,8 +114,12 @@ export default {
         template(v-slot:title)
           span(v-intersect="{handler: titleVisible}") {{ $t('poll_common.example_poll_templates') }}
         template(v-slot:append)
-          v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
-            common-icon(name="mdi-close")
+          .d-flex.align-center
+            input.d-none(ref="templateFileInput" type="file" accept="application/json,.json" @change="templateFileSelected")
+            v-btn.mr-2(v-if="canImportTemplates" variant="text" :loading="importing" @click="importTemplate")
+              span(v-t="'common.action.import_json'")
+            v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
+              common-icon(name="mdi-close")
         v-alert.ma-4(type="info" variant="tonal" :icon="mdiSourceBranchPlus")
           div(v-html="$t('poll_common.browse_example_fork_hint')")
 

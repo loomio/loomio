@@ -205,6 +205,7 @@ Rails.application.routes.draw do
           post :undiscard
           post :positions
         end
+        get :export, on: :member
       end
 
       resources :topic_readers, only: [:index] do
@@ -272,6 +273,7 @@ Rails.application.routes.draw do
           post :positions
           post :settings
         end
+        get :export, on: :member
       end
 
       resource :outcomes, only: [:create, :update]

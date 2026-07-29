@@ -107,6 +107,7 @@ en:
     to_use_loomio_with_your_org_start_trial: When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
     make_a_copy: Make a copy
+    invalid_template_file: This is not a valid Loomio template file
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -331,6 +332,8 @@ en:
       save: Save
       save_template: Save template
       fork_template: Fork template
+      export_json: Export json
+      import_json: Import json
       move: Move
       save_changes: Save changes
       update_settings: Update settings

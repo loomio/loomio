@@ -105,6 +105,55 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  # === EXPORT ===
+
+  test "export returns a portable poll template file" do
+    template = create_poll_template(
+      process_name: "Consent",
+      poll_options: [{ name: "Agree" }, { name: "Object" }],
+      anonymous: true,
+      hide_results: "until_closed"
+    )
+
+    sign_in @user
+    get :export, params: { id: template.id, group_id: @group.id }
+
+    assert_response :success
+    assert_equal "application/json", response.media_type
+    assert_includes response.headers["Content-Disposition"], "#{@group.full_name.parameterize}-consent.json"
+    data = JSON.parse(response.body).fetch("loomio_template")
+    assert_equal 1, data["version"]
+    assert_equal "poll_template", data["type"]
+    assert_equal "Consent", data.dig("template", "process_name")
+    assert_equal true, data.dig("template", "anonymous")
+    assert_equal "until_closed", data.dig("template", "hide_results")
+    assert_equal ["Agree", "Object"], data.dig("template", "poll_options").pluck("name")
+    refute data["template"].key?("id")
+    refute data["template"].key?("group_id")
+    refute data["template"].key?("author_id")
+  end
+
+  test "export supports built-in poll templates" do
+    sign_in @admin
+    template = PollTemplateService.default_templates.first
+
+    get :export, params: { id: template.key, group_id: @group.id }
+
+    assert_response :success
+    data = JSON.parse(response.body).fetch("loomio_template")
+    assert_equal template.process_name, data.dig("template", "process_name")
+  end
+
+  test "export does not expose a template from another group" do
+    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @user)
+    template = create_poll_template(group: other_group, author: @user)
+
+    sign_in @admin
+    get :export, params: { id: template.id, group_id: @group.id }
+
+    assert_response :not_found
+  end
+
   # === UPDATE ===
 
   test "update modifies a poll template as admin" do
