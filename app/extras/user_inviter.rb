@@ -6,13 +6,14 @@ class UserInviter
 
     audience_ids = AnnouncementService.audience_users(
       model, audience, actor, exclude_members, include_actor).pluck(:id)
+    user_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids)
     email_count = emails.count - User.where(email: emails).count
     users = User.active.where(
       'email in (:emails) or id in (:user_ids)',
       emails: emails,
       user_ids: user_ids.concat(audience_ids)
     )
-    users = users.where.not(id: model.voter_ids) if exclude_members
+    users = users.where.not(id: model.voter_ids) if exclude_members && model.respond_to?(:voter_ids)
     email_count + users.count + chatbot_ids.length
   end
 
@@ -63,9 +64,30 @@ class UserInviter
     new_emails_count + new_user_ids_count
   end
 
-  def self.authorize_preview!(model:, actor:)
+  def self.authorize_preview!(model:, actor:, emails:, audience:)
+    authorize_recipient_discovery!(model: model, actor: actor)
     auth_target = model.respond_to?(:topic) ? model.topic : model
-    actor.ability.authorize!(:add_members, auth_target)
+
+    if %w[group discussion_group].include?(audience)
+      action = model.is_a?(Group) ? :notify : :announce
+      actor.ability.authorize!(action, model)
+    end
+
+    emails = Array(emails).map(&:presence).compact
+    emails -= model.members.where(email: emails).pluck(:email) if model
+    return if emails.empty? || auth_target.nil?
+
+    actor.ability.authorize!(:add_guests, auth_target)
+  end
+
+  def self.authorize_recipient_discovery!(model:, actor:)
+    if model
+      auth_target = model.respond_to?(:topic) ? model.topic : model
+      actor.ability.authorize!(:members_autocomplete, auth_target)
+    else
+      discussion = DiscussionService.build(params: {}, actor: actor)
+      actor.ability.authorize!(:create, discussion)
+    end
   end
 
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)

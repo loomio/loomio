@@ -36,10 +36,133 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "count requires sign in" do
+    sign_out @admin
+
+    get :count, params: { group_id: groups(:public_group).id }
+
+    assert_response :unauthorized
+  end
+
+  test "count permits group members who cannot add members" do
+    @group.update!(members_can_add_members: false)
+    sign_in users(:user)
+
+    get :count, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)['count']
+  end
+
+  test "count permits an existing member email without guest permission" do
+    @group.update!(members_can_add_guests: false, members_can_add_members: false)
+    sign_in users(:user)
+
+    get :count, params: {
+      group_id: @group.id,
+      recipient_emails_cmr: users(:member).email
+    }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['count']
+  end
+
+  test "count denies a guest email without guest permission" do
+    @group.update!(members_can_add_guests: false)
+    sign_in users(:user)
+
+    get :count, params: {
+      group_id: @group.id,
+      recipient_emails_cmr: 'guest@example.com'
+    }
+
+    assert_response :forbidden
+  end
+
+  test "count permits group audience when member can announce but cannot add members" do
+    @group.update!(members_can_add_members: false, members_can_announce: true)
+    sign_in users(:user)
+
+    get :count, params: {
+      group_id: @group.id,
+      recipient_audience: 'group'
+    }
+
+    assert_response :success
+    assert_operator JSON.parse(response.body)['count'], :>, 0
+  end
+
+  test "count denies group audience when member cannot announce" do
+    @group.update!(members_can_add_members: true, members_can_announce: false)
+    sign_in users(:user)
+
+    get :count, params: {
+      group_id: @group.id,
+      recipient_audience: 'group'
+    }
+
+    assert_response :forbidden
+  end
+
+  test "count supports a new direct discussion without a target model" do
+    get :count, params: {
+      recipient_user_xids: users(:user).id
+    }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['count']
+  end
+
+  test "count does not expose an unrelated user id" do
+    get :count, params: {
+      group_id: @group.id,
+      recipient_user_xids: @alien.id
+    }
+
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)['count']
+  end
+
+  test "direct discussion count does not expose an unrelated user id" do
+    get :count, params: { recipient_user_xids: @alien.id }
+
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)['count']
+  end
+
   test "search is denied to a public-group non-member" do
     sign_in @alien
 
     get :search, params: {group_id: groups(:public_group).id, q: @admin.username}
+
+    assert_response :forbidden
+  end
+
+  test "search supports a new direct discussion without a target model" do
+    get :search, params: { q: 'User' }
+
+    assert_response :success
+    user_ids = JSON.parse(response.body)['users'].map { |user| user['id'] }
+    assert_includes user_ids, users(:user).id
+    refute_includes user_ids, @alien.id
+  end
+
+  test "search requires sign in" do
+    sign_out @admin
+
+    get :search, params: { q: users(:user).username }
+
+    assert_response :unauthorized
+  end
+
+  test "direct discussion search requires permission to create a direct discussion" do
+    user = User.create!(
+      email: "unverified-#{SecureRandom.hex(4)}@example.com",
+      email_verified: false
+    )
+    sign_in user
+
+    get :search, params: { q: users(:user).username }
 
     assert_response :forbidden
   end
@@ -115,7 +238,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     get :history, params: { group_id: groups(:public_group).id }
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   test "history for topic includes user_mentioned notifications" do

@@ -1,4 +1,6 @@
 class Api::V1::AnnouncementsController < Api::V1::RestfulController
+  before_action :require_current_user
+
   def audience
     current_user.ability.authorize! :members_autocomplete, recipient_target
 
@@ -31,18 +33,17 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   # count for number of notifications that will be send
   def count
-    UserInviter.authorize_preview!(model: target_model, actor: current_user)
-    UserInviter.authorize!(
+    model = target_model
+    UserInviter.authorize_preview!(
       actor: current_user,
-      model: target_model,
+      model: model,
       emails: String(params[:recipient_emails_cmr]).split(','),
-      user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       audience: params[:recipient_audience]
     )
 
     count = UserInviter.count(
       actor: current_user,
-      model: target_model,
+      model: model,
       emails: String(params[:recipient_emails_cmr]).split(','),
       user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
       chatbot_ids: String(params[:recipient_chatbot_xids]).split('x').map(&:to_i),
@@ -54,14 +55,15 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   end
 
   def search
-    current_user.ability.authorize! :members_autocomplete, recipient_target
+    model = target_model
+    UserInviter.authorize_recipient_discovery!(model: model, actor: current_user)
 
     # if target model has no groups, no discussions, then draw from users groups and guest threads
     self.collection = if params[:existing_only]
-      target_model.members.invitable_search(params[:q]).limit(50)
+      model.members.invitable_search(params[:q]).limit(50)
     else
       UserQuery.invitable_search(
-        model: target_model,
+        model: model,
         actor: current_user,
         q: params[:q]
       )
