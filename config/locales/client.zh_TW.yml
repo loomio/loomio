@@ -1095,6 +1095,9 @@ zh_TW:
     copy_for_ai_skill_description: 請將此討論串複製為結構化的 Markdown 格式，以便 AI 助理使用。請包含完整的 Loomio 引導員技能，以便根據 Loomio 的引導實踐提供指導。
     share_ai_skill: 如果您編寫了新的 AI 技能或改進了現有技能，歡迎與 Loomio 團隊分享
     share_ai_skill_contact: 聯絡 Loomio 團隊
+    copy_markdown: 複製 Markdown
+    copy_markdown_description: 將貼文內容複製為結構化的 Markdown 格式——非常適合與 AI 代理程式一起使用，或從貼文內容創建簡單的文件。
+    thread_markdown_copied: 貼文 Markdown 已複製
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色

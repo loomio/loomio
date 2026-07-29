@@ -163,6 +163,15 @@ languages in the Nov 2025 pass.
 | `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `action_dock.share_ai_skill*` | Formal address | Informal singular address | These locales use informal direct address throughout |
 | Multiple `config/locales/client.*.yml` files | `action_dock.share_ai_skill*` | Final full stops | No final full stops | Single-sentence UI strings do not use final full stops |
 
+## 2026-07-29 — Copy Markdown
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `action_dock.copy_markdown*` | Formal or impersonal action wording | Informal singular action wording | These locales use informal direct address throughout |
+| `config/locales/client.el.yml` | `action_dock.thread_markdown_copied` | Referred to a copied price reduction | Referred to the thread's copied Markdown | Machine translation interpreted “markdown” as a price reduction |
+| `config/locales/client.he.yml` | `action_dock.copy_markdown`, `thread_markdown_copied` | Translated Markdown as generic markup | Retained the Markdown format name | Markdown is the name of the copied document format |
+| `config/locales/client.ru.yml` | `action_dock.thread_markdown_copied` | Translated Markdown as generic markup and added a full stop | Retained the Markdown format name with no final full stop | Markdown is the format name, and single-sentence UI strings do not use final full stops |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

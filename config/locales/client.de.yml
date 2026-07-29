@@ -1100,6 +1100,9 @@ de:
     copy_for_ai_skill_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge den vollständigen Loomio-Facilitator-Skill hinzu, um Anleitungen auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
     share_ai_skill: Wenn du einen neuen KI-Skill schreibst oder den bereitgestellten Skill verbesserst, kannst du ihn gerne mit dem Loomio-Team teilen
     share_ai_skill_contact: Kontaktiere das Loomio-Team
+    copy_markdown: Markdown kopieren
+    copy_markdown_description: Kopiere den Thread als strukturiertes Markdown – ideal für die Verwendung mit einem KI-Agenten oder zum Erstellen eines einfachen Dokuments aus dem Thread-Inhalt.
+    thread_markdown_copied: Thread-Markdown kopiert
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben

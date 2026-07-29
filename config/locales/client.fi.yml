@@ -1088,6 +1088,9 @@ fi:
     copy_for_ai_skill_description: Kopioi ketju strukturoituna Markdown-muodossa tekoälyassistenttia varten. Sisällytä Loomion fasilitaattorin koko taito ohjeistuksena Loomion fasilitointikäytäntöjen perusteella.
     share_ai_skill: Jos kirjoitat uuden tekoälytaidon tai parannat annettua taitoa, olet tervetullut jakamaan sen Loomio-tiimin kanssa
     share_ai_skill_contact: Ota yhteyttä Loomio-tiimiin
+    copy_markdown: Kopioi Markdown
+    copy_markdown_description: Kopioi ketju jäsenneltynä Markdown-muodossa – ihanteellinen tekoälyagentin kanssa käytettäväksi tai yksinkertaisen dokumentin luomiseen ketjun sisällöstä.
+    thread_markdown_copied: Ketjun Markdown kopioitu
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit

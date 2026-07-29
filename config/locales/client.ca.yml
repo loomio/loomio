@@ -1094,6 +1094,9 @@ ca:
     copy_for_ai_skill_description: Copia el fil com a Markdown estructurat per a un assistent d'IA. Inclou l'habilitat completa del facilitador de Loomio per obtenir orientació basada en les pràctiques de facilitació de Loomio.
     share_ai_skill: Si escriviu una nova habilitat d'IA o milloreu l'habilitat proporcionada, podeu compartir-la amb l'equip de Loomio
     share_ai_skill_contact: Contacta amb l'equip de Loomio
+    copy_markdown: Copiar Markdown
+    copy_markdown_description: Copieu el fil com a Markdown estructurat, ideal per utilitzar-lo amb un agent d'IA o per crear un document senzill a partir del contingut del fil.
+    thread_markdown_copied: S'ha copiat el Markdown del fil
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors

@@ -1088,6 +1088,9 @@ sl:
     copy_for_ai_skill_description: Kopirajte nit kot strukturiran Markdown za pomočnika z umetno inteligenco. Vključite celotno veščino moderatorja Loomio za smernice, ki temeljijo na praksah moderiranja Loomio.
     share_ai_skill: Če napišete novo veščino umetne inteligence ali izboljšate že podano veščino, jo lahko delite z ekipo Loomio
     share_ai_skill_contact: Kontaktirajte ekipo Loomio
+    copy_markdown: Kopiraj Markdown
+    copy_markdown_description: Kopirajte nit kot strukturiran Markdown – idealno za uporabo z agentom umetne inteligence ali za ustvarjanje preprostega dokumenta iz vsebine niti.
+    thread_markdown_copied: Nit Markdown kopiran
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve

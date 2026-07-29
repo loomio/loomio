@@ -1088,6 +1088,9 @@ hr:
     copy_for_ai_skill_description: Kopirajte nit kao strukturirani Markdown za AI asistenta. Uključite kompletnu vještinu Loomio facilitatora za smjernice na temelju Loomioovih praksi facilitacije.
     share_ai_skill: Ako napišete novu AI vještinu ili poboljšate već postojeću, slobodno je podijelite s Loomio timom
     share_ai_skill_contact: Kontaktirajte Loomio tim
+    copy_markdown: Kopiraj Markdown
+    copy_markdown_description: Kopirajte nit kao strukturirani Markdown — idealno za korištenje s AI agentom ili za stvaranje jednostavnog dokumenta iz sadržaja niti.
+    thread_markdown_copied: Markdown teme kopiran
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje

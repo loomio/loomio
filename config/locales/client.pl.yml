@@ -1094,6 +1094,9 @@ pl:
     copy_for_ai_skill_description: Skopiuj wątek w postaci ustrukturyzowanego Markdowna dla asystenta AI. Dołącz pełną umiejętność facylitatora Loomio, aby uzyskać wskazówki oparte na praktykach facylitacyjnych Loomio.
     share_ai_skill: Jeśli napiszesz nową umiejętność sztucznej inteligencji lub ulepszysz dostarczoną umiejętność, możesz podzielić się nią z zespołem Loomio
     share_ai_skill_contact: Skontaktuj się z zespołem Loomio
+    copy_markdown: Kopiuj Markdown
+    copy_markdown_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown — idealnego do użycia z agentem AI lub do utworzenia prostego dokumentu z zawartości wątku.
+    thread_markdown_copied: Wątek Markdown skopiowany
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie

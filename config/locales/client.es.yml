@@ -1092,6 +1092,9 @@ es:
     copy_for_ai_skill_description: Copia el hilo como Markdown estructurado para un asistente de IA. Incluye la habilidad completa de facilitador de Loomio para obtener orientación basada en las prácticas de facilitación de Loomio.
     share_ai_skill: Si desarrollas una nueva habilidad de IA o mejoras la habilidad ya existente, puedes compartirla con el equipo de Loomio
     share_ai_skill_contact: Contacta con el equipo de Loomio
+    copy_markdown: Copiar Markdown
+    copy_markdown_description: Copia el hilo de conversación como Markdown estructurado, ideal para usar con un agente de IA o para crear un documento sencillo a partir del contenido del hilo.
+    thread_markdown_copied: Hilo Markdown copiado
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores

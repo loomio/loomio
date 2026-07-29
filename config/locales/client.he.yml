@@ -1092,6 +1092,9 @@ he:
     copy_for_ai_skill_description: העתיקו את השרשור כ-Markdown מובנה עבור עוזר בינה מלאכותית. כללו את מיומנות ההנחיה המלאה של Loomio לקבלת הדרכה המבוססת על שיטות ההנחיה של Loomio.
     share_ai_skill: אם תכתבו מיומנות בינה מלאכותית חדשה או תשפרו את המיומנות שסופקה, אתם מוזמנים לשתף אותה עם צוות Loomio
     share_ai_skill_contact: צרו קשר עם צוות לומיו
+    copy_markdown: העתקת Markdown
+    copy_markdown_description: העתק את השרשור כ-Markdown מובנה - אידיאלי לשימוש עם סוכן בינה מלאכותית או ליצירת מסמך פשוט מתוכן השרשור.
+    thread_markdown_copied: ה-Markdown של השרשור הועתק
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
