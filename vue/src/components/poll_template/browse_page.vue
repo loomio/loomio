@@ -6,12 +6,12 @@ import EventBus      from '@/shared/services/event_bus';
 import { importTemplateFile } from '@/shared/helpers/template_file';
 import utils         from '@/shared/record_store/utils';
 import { compact }   from 'lodash-es';
-import { mdiSourceBranchPlus } from '@mdi/js';
+import { mdiContentCopy } from '@mdi/js';
 
 export default {
   data() {
     return {
-      mdiSourceBranchPlus,
+      mdiContentCopy,
       group: null,
       results: [],
       loading: false,
@@ -120,8 +120,8 @@ export default {
               span(v-t="'common.action.import_json'")
             v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
               common-icon(name="mdi-close")
-        v-alert.ma-4(type="info" variant="tonal" :icon="mdiSourceBranchPlus")
-          div(v-html="$t('poll_common.browse_example_fork_hint')")
+        v-alert.ma-4(type="info" variant="tonal" :icon="mdiContentCopy")
+          div(v-t="'templates.make_a_copy'")
 
         .d-flex.px-4
           v-chip.mr-1(
@@ -151,9 +151,9 @@ export default {
                 color="primary"
                 icon
                 :to="'/poll_templates/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key) + groupIdParam+returnToParam"
-                :title="$t('common.action.fork_template')"
+                :title="$t('templates.make_a_copy')"
               )
-                common-icon(name="mdi-source-branch-plus")
+                common-icon(name="mdi-content-copy")
 
             v-list-item-title {{result.processName}}
             v-list-item-subtitle {{result.groupName || result.processSubtitle}}

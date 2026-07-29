@@ -9,7 +9,7 @@ import { importTemplateFile } from '@/shared/helpers/template_file';
 import utils         from '@/shared/record_store/utils';
 import { compact }   from 'lodash-es';
 import VuetifyColors  from 'vuetify/lib/util/colors';
-import { mdiMagnify, mdiSourceBranchPlus } from '@mdi/js';
+import { mdiContentCopy, mdiMagnify } from '@mdi/js';
 
 const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
 
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       mdiMagnify,
-      mdiSourceBranchPlus,
+      mdiContentCopy,
       group: null,
       results: [],
       query: this.$route.query.query,
@@ -136,8 +136,8 @@ export default {
               span(v-t="'common.action.import_json'")
             v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
               common-icon(name="mdi-close")
-        v-alert.ma-4(type="info" variant="tonal" :icon="mdiSourceBranchPlus")
-          div(v-html="$t('discussion_template.browse_example_fork_hint')")
+        v-alert.ma-4(type="info" variant="tonal" :icon="mdiContentCopy")
+          div(v-t="'templates.make_a_copy'")
 
         v-list(lines="two")
           v-list-item(
@@ -151,9 +151,9 @@ export default {
                 color="primary"
                 icon
                 :to="'/discussion_templates/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key) + groupIdParam+returnToParam"
-                :title="$t('common.action.fork_template')"
+                :title="$t('templates.make_a_copy')"
               )
-                common-icon(name="mdi-source-branch-plus")
+                common-icon(name="mdi-content-copy")
 
             v-list-item-title {{result.processName || result.title}}
             v-list-item-subtitle {{result.groupName || result.processSubtitle}}

@@ -40,8 +40,8 @@ export default new class PollTemplateService {
       },
 
       fork_template: {
-        name: 'common.action.fork_template',
-        icon: 'mdi-source-branch-plus',
+        name: 'templates.make_a_copy',
+        icon: 'mdi-content-copy',
         menu: true,
         canPerform() { return pollTemplate.id && service.canEditTemplate(pollTemplate, group); },
         to() {

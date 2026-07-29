@@ -40,8 +40,8 @@ export default new class DiscussionTemplateService {
       },
 
       fork_template: {
-        name: 'common.action.fork_template',
-        icon: 'mdi-source-branch-plus',
+        name: 'templates.make_a_copy',
+        icon: 'mdi-content-copy',
         menu: true,
         canPerform() { return discussionTemplate.id && service.canEditTemplate(discussionTemplate, group); },
         to() {
