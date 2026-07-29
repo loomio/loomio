@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# bin/screenshots — Generate help manual screenshots against a local Rails server
+#
+# Usage:
+#   bin/screenshots                                              # run all screenshot specs
+#   bin/screenshots discussions.js                              # run one spec file
+#   bin/screenshots discussions.js --testcase discussion_thread # run one test
+#   bin/screenshots --show                                       # run in visible browser
+#   bin/screenshots --dark                                       # dark mode pass
+#
+# Screenshots are written to SCREENSHOT_DIR/light or SCREENSHOT_DIR/dark.
+# Default SCREENSHOT_DIR: docs/src/user_manual/screenshots (relative to repo root).
+#
+# Run both passes:
+#   bin/screenshots && bin/screenshots --dark
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+RAILS_PID=""
+TEST_FILE=""
+HEADLESS=true
+DARK=false
+NW_ARGS=()
+E2E_PORT="${E2E_PORT:-3001}"
+SCREENSHOT_DIR="${SCREENSHOT_DIR:-$ROOT/docs/src/user_manual/screenshots}"
+
+for arg in "$@"; do
+  if [ "$arg" = "--show" ]; then
+    HEADLESS=false
+  elif [ "$arg" = "--dark" ]; then
+    DARK=true
+  elif [[ "$arg" == *.js ]] && [ -z "$TEST_FILE" ]; then
+    arg="${arg#vue/}"
+    if [[ "$arg" != */* ]]; then
+      arg="tests/e2e/screenshots/$arg"
+    fi
+    TEST_FILE="$arg"
+  else
+    NW_ARGS+=("$arg")
+  fi
+done
+
+if [ "$DARK" = true ]; then
+  export SCREENSHOT_THEME=dark
+  SCREENSHOT_DIR="$SCREENSHOT_DIR/dark"
+else
+  export SCREENSHOT_THEME=light
+  SCREENSHOT_DIR="$SCREENSHOT_DIR/light"
+fi
+export SCREENSHOT_DIR
+
+# Build the nightwatch command args
+FINAL_ARGS=()
+if [ "$HEADLESS" = true ]; then
+  FINAL_ARGS+=(--headless)
+fi
+if [ -n "$TEST_FILE" ]; then
+  FINAL_ARGS+=(--test "$TEST_FILE")
+else
+  FINAL_ARGS+=(--group tests/e2e/screenshots)
+fi
+if [ ${#NW_ARGS[@]} -gt 0 ]; then
+  FINAL_ARGS+=("${NW_ARGS[@]}")
+fi
+
+cleanup() {
+  if [ -n "$RAILS_PID" ]; then
+    echo "Stopping Rails server (pid $RAILS_PID)..."
+    kill "$RAILS_PID" 2>/dev/null || true
+    wait "$RAILS_PID" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
+
+# 1. Build Vue assets
+echo "==> Building Vue assets..."
+(cd "$ROOT/vue" && npm run build)
+
+# 2. Prepare test database
+echo "==> Preparing test database..."
+RAILS_ENV=test bundle exec rails db:prepare
+
+# 3. Start Rails server
+echo "==> Starting Rails server on port $E2E_PORT..."
+E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
+RAILS_PID=$!
+
+# 4. Wait for server to be ready
+echo "==> Waiting for Rails server..."
+for i in $(seq 1 30); do
+  if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then
+    echo "    Server is ready."
+    break
+  fi
+  if [ "$i" -eq 30 ]; then
+    echo "    ERROR: Rails server did not start within 30 seconds."
+    exit 1
+  fi
+  sleep 1
+done
+
+# 5. Run Nightwatch
+MODE="${SCREENSHOT_THEME:-light}"
+echo "==> Running screenshots ($MODE) → $SCREENSHOT_DIR"
+echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
+set +e
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test SCREENSHOT_DIR="$SCREENSHOT_DIR" SCREENSHOT_THEME="${SCREENSHOT_THEME:-}" npx nightwatch --config nightwatch.screenshots.conf.js "${FINAL_ARGS[@]}")
+SHOT_EXIT=$?
+set -e
+
+# 6. Cleanup happens via trap; exit with result
+if [ "$SHOT_EXIT" -ne 0 ]; then
+  echo "==> Screenshots failed (exit code $SHOT_EXIT)."
+fi
+exit "$SHOT_EXIT"

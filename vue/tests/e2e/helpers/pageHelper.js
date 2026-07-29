@@ -1,16 +1,53 @@
 const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080');
 const base_url = `http://localhost:${port}`;
+const fs = require('fs');
+const path = require('path');
+
+// CSS injected after every screenshot page load
+const SCREENSHOT_CSS = `
+  .v-snackbar, .v-snackbar__wrapper, .flash-root { display: none !important; }
+  .v-app-bar { display: none !important; }
+  .v-main { padding-top: 0 !important; }
+`;
 
 module.exports = function(test, browser) {
-  test.resizeWindow(1000, 2000);
   return {
     refresh() {
       return test.refresh();
     },
 
-    loadPath(path, opts = {}) {
-      test.url(`${base_url}/dev/${path}`);
-      return test.waitForElementPresent('.app-is-booted', 20000);
+    loadPath(pathStr, opts = {}) {
+      const theme = process.env.SCREENSHOT_THEME;
+      const sep = pathStr.includes('?') ? '&' : '?';
+      const url = theme ? `${base_url}/dev/${pathStr}${sep}theme=${theme}` : `${base_url}/dev/${pathStr}`;
+      test.url(url);
+      test.waitForElementPresent('.app-is-booted', 20000);
+      return test.execute(`
+        const s = document.createElement('style');
+        s.textContent = ${JSON.stringify(SCREENSHOT_CSS)};
+        document.head.appendChild(s);
+      `);
+    },
+
+    resize(width, height) {
+      return test.resizeWindow(width, height);
+    },
+
+    screenshot(name) {
+      const dir = process.env.SCREENSHOT_DIR || './tests/screenshots/docs';
+      if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); }
+      this.pause(400);
+      return test.saveScreenshot(`${dir}/${name}.png`);
+    },
+
+    screenshotElement(selector, name) {
+      const dir = process.env.SCREENSHOT_DIR || './tests/screenshots/docs';
+      if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); }
+      this.pause(400);
+      test.waitForElementVisible(selector);
+      return test.takeElementScreenshot(selector, (result) => {
+        fs.writeFileSync(`${dir}/${name}.png`, Buffer.from(result.value, 'base64'));
+      });
     },
 
     loadPathNoApp(path, opts = {}) {
