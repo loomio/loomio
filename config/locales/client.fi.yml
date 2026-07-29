@@ -76,6 +76,7 @@ fi:
     trial_needs_user: Tervetuloa! Kirjaudu sisään aloittaaksesi ilmaisen kokeilujakson
     this_is_a_template_for_new_threads: Tämä on malli uusille säikeille
     share_a_custom_configuration: Jaa mukautettu kokoonpano muiden ryhmäsi jäsenten kanssa
+    invalid_template_file: Tämä ei ole kelvollinen Loomio-mallitiedosto
   doctypes:
     youtube_video: YouTube-video
     image: Kuva
@@ -331,6 +332,8 @@ fi:
       add: Lisätä
       redact: Muokkaa
       unredact: Palauttaa
+      export_json: Vie JSON-tiedosto
+      import_json: Tuo JSON-tiedosto
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun

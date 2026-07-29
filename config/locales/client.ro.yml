@@ -76,6 +76,7 @@ ro:
     trial_needs_user: Bine ati venit! Vă rugăm să vă conectați pentru a începe perioada de încercare gratuită
     this_is_a_template_for_new_threads: Acesta este un șablon pentru fire noi
     share_a_custom_configuration: Partajați o configurație personalizată altora din grupul dvs
+    invalid_template_file: Acesta nu este un fișier șablon Loomio valid
   doctypes:
     youtube_video: Video YouTube
     image: Imagine
@@ -331,6 +332,8 @@ ro:
       add: Adăuga
       redact: Redacta
       unredact: Restabili
+      export_json: Exportați JSON
+      import_json: Importați json
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul

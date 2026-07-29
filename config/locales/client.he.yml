@@ -76,6 +76,7 @@ he:
     trial_needs_user: ברוך הבא! היכנס כדי להתחיל את תקופת הניסיון בחינם
     this_is_a_template_for_new_threads: זוהי תבנית לשרשורים חדשים
     share_a_custom_configuration: שתף תצורה מותאמת אישית עם אחרים בקבוצה שלך
+    invalid_template_file: קובץ תבנית Loomio אינו חוקי
   doctypes:
     youtube_video: סרטון יוטיוב
     image: תמונה
@@ -331,6 +332,8 @@ he:
       add: לְהוֹסִיף
       redact: עריכה
       unredact: לְשַׁחְזֵר
+      export_json: ייצוא json
+      import_json: ייבוא json
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך

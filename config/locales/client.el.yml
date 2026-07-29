@@ -76,6 +76,7 @@ el:
     trial_needs_user: Καλως ΗΡΘΑΤΕ! Συνδεθείτε για να ξεκινήσετε τη δωρεάν δοκιμή σας
     this_is_a_template_for_new_threads: Αυτό είναι ένα πρότυπο για νέα νήματα
     share_a_custom_configuration: Μοιραστείτε μια προσαρμοσμένη διαμόρφωση με άλλους στην ομάδα σας
+    invalid_template_file: Αυτό δεν είναι ένα έγκυρο αρχείο προτύπου Loomio
   doctypes:
     youtube_video: Βίντεο YouTube
     image: Εικόνα
@@ -331,6 +332,8 @@ el:
       add: Προσθέτω
       redact: Συντάσσω
       unredact: Επαναφέρω
+      export_json: Εξαγωγή json
+      import_json: Εισαγωγή json
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας

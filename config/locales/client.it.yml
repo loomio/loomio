@@ -84,6 +84,7 @@ it:
     trial_needs_user: Per iniziare la tua prova gratuita di Loomio, accedi.
     this_is_a_template_for_new_threads: Questo è un modello per nuove discussioni
     share_a_custom_configuration: Condividi una configurazione personalizzata con altri nel tuo gruppo
+    invalid_template_file: Questo non è un file modello Loomio valido
   doctypes:
     youtube_video: YouTube Video
     image: Immagine
@@ -339,6 +340,8 @@ it:
       add: Aggiungere
       redact: Redigere
       unredact: Ripristinare
+      export_json: Esporta in formato JSON
+      import_json: Importa JSON
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo

@@ -76,6 +76,7 @@ uk:
     trial_needs_user: Щоб розпочати безкоштовну пробну версію Loomio, увійдіть.
     this_is_a_template_for_new_threads: Це шаблон для нових тем
     share_a_custom_configuration: Поділіться власною конфігурацією з іншими у вашій групі
+    invalid_template_file: Це недійсний файл шаблону Loomio
   doctypes:
     youtube_video: Відео YouTube
     image: Зображення
@@ -331,6 +332,8 @@ uk:
       add: Додати
       redact: Викреслити
       unredact: Відновити
+      export_json: Експортувати JSON
+      import_json: Імпорт JSON
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту

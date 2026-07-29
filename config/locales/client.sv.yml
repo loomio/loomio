@@ -76,6 +76,7 @@ sv:
     trial_needs_user: Välkommen! Logga in för att starta din kostnadsfria provperiod
     this_is_a_template_for_new_threads: Detta är en mall för nya trådar
     share_a_custom_configuration: Dela en anpassad konfiguration med andra i din grupp
+    invalid_template_file: Detta är inte en giltig Loomio-mallfil
   doctypes:
     youtube_video: YouTubevideo
     image: Bild
@@ -331,6 +332,8 @@ sv:
       add: Tillägga
       redact: Redigera
       unredact: Återställa
+      export_json: Exportera json
+      import_json: Importera json
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text

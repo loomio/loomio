@@ -78,6 +78,7 @@ hu:
     trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezzen be.
     this_is_a_template_for_new_threads: Ez egy sablon az új szálak számára
     share_a_custom_configuration: Egyéni konfiguráció megosztása a csoport többi tagjával
+    invalid_template_file: Ez nem egy érvényes Loomio sablonfájl
   doctypes:
     youtube_video: Youtube videó
     image: Kép
@@ -333,6 +334,8 @@ hu:
       add: Hozzáadás
       redact: Megrövidít
       unredact: Visszaállítás
+      export_json: JSON exportálása
+      import_json: JSON importálása
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására

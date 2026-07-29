@@ -76,6 +76,7 @@ da:
     trial_needs_user: Velkommen! Log venligst ind for at starte din gratis prøveperiode
     this_is_a_template_for_new_threads: Dette er en skabelon til nye tråde
     share_a_custom_configuration: Del en brugerdefineret konfiguration med andre i din gruppe
+    invalid_template_file: Dette er ikke en gyldig Loomio-skabelonfil
   doctypes:
     youtube_video: YouTube-video
     image: Billede
@@ -331,6 +332,8 @@ da:
       add: Tilføje
       redact: Redigér
       unredact: Gendan
+      export_json: Eksportér json
+      import_json: Importér json
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst

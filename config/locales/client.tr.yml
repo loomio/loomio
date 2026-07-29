@@ -76,6 +76,7 @@ tr:
     trial_needs_user: Hoş geldin! Ücretsiz denemenizi başlatmak için lütfen oturum açın
     this_is_a_template_for_new_threads: Bu yeni konular için bir şablondur
     share_a_custom_configuration: Özel bir yapılandırmayı grubunuzdaki diğer kişilerle paylaşın
+    invalid_template_file: Bu geçerli bir Loomio şablon dosyası değil
   doctypes:
     youtube_video: Youtube videosu
     image: Resim
@@ -331,6 +332,8 @@ tr:
       add: Eklemek
       redact: Yazıya dökmek
       unredact: Eski haline getirmek
+      export_json: JSON'u dışa aktar
+      import_json: JSON'u içe aktar
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin

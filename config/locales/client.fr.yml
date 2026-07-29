@@ -84,6 +84,7 @@ fr:
     trial_needs_user: Pour démarrer ton essai gratuit de Loomio, connecte-toi.
     this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
     share_a_custom_configuration: Partager une configuration personnalisée avec d’autres membres de ton groupe
+    invalid_template_file: Ceci n'est pas un fichier modèle Loomio valide
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -339,6 +340,8 @@ fr:
       add: Ajouter
       redact: Rédiger
       unredact: Restaurer
+      export_json: Exporter au format JSON
+      import_json: Importer du JSON
     formatting_help:
       label: Mise en forme
       title: Apprends à utiliser Markdown pour mettre en forme ton texte

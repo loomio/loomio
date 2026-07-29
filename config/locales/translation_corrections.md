@@ -172,6 +172,12 @@ languages in the Nov 2025 pass.
 | `config/locales/client.he.yml` | `action_dock.copy_markdown`, `thread_markdown_copied` | Translated Markdown as generic markup | Retained the Markdown format name | Markdown is the name of the copied document format |
 | `config/locales/client.ru.yml` | `action_dock.thread_markdown_copied` | Translated Markdown as generic markup and added a full stop | Retained the Markdown format name with no final full stop | Markdown is the format name, and single-sentence UI strings do not use final full stops |
 
+## 2026-07-29 — Template JSON import
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.ca.yml`, `client.de.yml`, `client.es.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml` | `templates.invalid_template_file` | Single-sentence UI message with a final full stop | Removed the final full stop | Single-sentence UI strings do not use final full stops |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

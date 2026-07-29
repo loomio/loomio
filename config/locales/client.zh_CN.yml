@@ -100,6 +100,7 @@ zh_CN:
     start_free_trial: 开始免费试用
     demo_needs_user: 要开始演示，您需要注册（或登录）成为 Loomio 用户。注册是免费的，只需一分钟。
     trial_needs_user: 欢迎！请登录开始您的免费试用。
+    invalid_template_file: 这不是有效的 Loomio 模板文件
   doctypes:
     youtube_video: Youtube 视频
     image: 图像
@@ -354,6 +355,8 @@ zh_CN:
       add: 添加
       redact: 纂
       unredact: 恢复
+      export_json: 导出 JSON
+      import_json: 导入 JSON
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本

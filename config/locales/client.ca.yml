@@ -76,6 +76,7 @@ ca:
     trial_needs_user: Benvingut! Inicieu la sessió per iniciar la vostra prova gratuïta
     this_is_a_template_for_new_threads: Aquesta és una plantilla per a nous fils
     share_a_custom_configuration: Comparteix una configuració personalitzada amb altres persones del teu grup
+    invalid_template_file: Aquest no és un fitxer de plantilla de Loomio vàlid
   doctypes:
     youtube_video: Vídeo de YouTube
     image: Imatge
@@ -331,6 +332,8 @@ ca:
       add: Afegeix
       redact: Redactar
       unredact: Restaurar
+      export_json: Exporta JSON
+      import_json: Importa json
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown

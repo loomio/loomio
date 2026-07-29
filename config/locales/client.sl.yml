@@ -76,6 +76,7 @@ sl:
     trial_needs_user: Dobrodošli! Za začetek brezplačnega preizkusa se prijavite
     this_is_a_template_for_new_threads: To je predloga za nove teme
     share_a_custom_configuration: Delite konfiguracijo po meri z drugimi v vaši skupini
+    invalid_template_file: To ni veljavna datoteka predloge Loomio
   doctypes:
     youtube_video: YouTube Video
     image: Slika
@@ -331,6 +332,8 @@ sl:
       add: Dodaj
       redact: Redigiraj
       unredact: Obnovi
+      export_json: Izvozi JSON
+      import_json: Uvozi JSON
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila

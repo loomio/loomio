@@ -76,6 +76,7 @@ ru:
     trial_needs_user: Добро пожаловать! Пожалуйста, войдите в систему, чтобы начать бесплатную пробную версию
     this_is_a_template_for_new_threads: Это шаблон для новых тем
     share_a_custom_configuration: Поделитесь пользовательской конфигурацией с другими участниками вашей группы.
+    invalid_template_file: Это недействительный файл шаблона Loomio
   doctypes:
     youtube_video: YouTube видео
     image: Изображение
@@ -331,6 +332,8 @@ ru:
       add: Добавлять
       redact: Редактировать
       unredact: Восстановить
+      export_json: Экспорт в формате JSON
+      import_json: Импортировать json
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.

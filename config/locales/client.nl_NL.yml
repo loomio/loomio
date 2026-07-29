@@ -76,6 +76,7 @@ nl_NL:
     trial_needs_user: Meld u aan om uw gratis Loomio-proefperiode te starten.
     this_is_a_template_for_new_threads: Dit is een sjabloon voor nieuwe threads
     share_a_custom_configuration: Deel een aangepaste configuratie met anderen in uw groep
+    invalid_template_file: Dit is geen geldig Loomio-sjabloonbestand
   doctypes:
     youtube_video: YouTube Video
     image: Afbeelding
@@ -331,6 +332,8 @@ nl_NL:
       add: Toevoegen
       redact: Redactie
       unredact: Herstellen
+      export_json: Exporteer JSON
+      import_json: Importeer json
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken

@@ -76,6 +76,7 @@ hr:
     trial_needs_user: Dobrodošli! Prijavite se kako biste započeli besplatno probno razdoblje
     this_is_a_template_for_new_threads: Ovo je predložak za nove teme
     share_a_custom_configuration: Podijelite prilagođenu konfiguraciju s drugima u svojoj grupi
+    invalid_template_file: Ovo nije valjana datoteka predloška za Loomio
   doctypes:
     youtube_video: YouTube video
     image: Slika
@@ -331,6 +332,8 @@ hr:
       add: Dodati
       redact: Urediti
       unredact: Vratiti
+      export_json: Izvoz JSON-a
+      import_json: Uvoz JSON-a
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta

@@ -77,6 +77,7 @@ zh_TW:
     trial_needs_user: 歡迎！請登入開始免費試用
     this_is_a_template_for_new_threads: 這是新討論串的範本
     share_a_custom_configuration: 與群組中的其他人共用自訂配置
+    invalid_template_file: 這不是有效的 Loomio 模板文件
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -333,6 +334,8 @@ zh_TW:
       add: 添加
       redact: 纂
       unredact: 恢復
+      export_json: 導出 JSON
+      import_json: 導入 JSON
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字

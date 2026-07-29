@@ -75,6 +75,7 @@ ja:
     trial_needs_user: いらっしゃいませ！無料トライアルを開始するにはサインインしてください
     this_is_a_template_for_new_threads: これは新しいスレッド用のテンプレートです
     share_a_custom_configuration: グループ内の他のユーザーとカスタム構成を共有する
+    invalid_template_file: これは有効なLoomioテンプレートファイルではありません
   doctypes:
     youtube_video: YouTubeビデオ
     image: 画像
@@ -329,6 +330,8 @@ ja:
       add: 追加
       redact: 編集済み
       unredact: 復元する
+      export_json: JSONをエクスポート
+      import_json: JSONをインポート
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます

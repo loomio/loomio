@@ -76,6 +76,7 @@ pl:
     trial_needs_user: Aby rozpocząć bezpłatny okres próbny Loomio, zaloguj się.
     this_is_a_template_for_new_threads: To jest szablon dla nowych wątków
     share_a_custom_configuration: Udostępnij niestandardową konfigurację innym osobom w swojej grupie
+    invalid_template_file: To nie jest prawidłowy plik szablonu Loomio
   doctypes:
     youtube_video: Film z YouTube
     image: Obraz
@@ -331,6 +332,8 @@ pl:
       add: Dodać
       redact: Redagować
       unredact: Przywrócić
+      export_json: Eksportuj json
+      import_json: Importuj json
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst

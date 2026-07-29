@@ -76,6 +76,7 @@ es:
     trial_needs_user: Para iniciar tu prueba gratuita de Loomio, inicia sesión.
     this_is_a_template_for_new_threads: Esta es una plantilla para nuevos hilos
     share_a_custom_configuration: Compartir una configuración personalizada con otros miembros de tu grupo
+    invalid_template_file: Este no es un archivo de plantilla de Loomio válido
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -331,6 +332,8 @@ es:
       add: Agregar
       redact: Redactar
       unredact: Restaurar
+      export_json: Exportar json
+      import_json: Importar json
     formatting_help:
       label: 'Formato '
       title: Aprende a usar Markdown para dar formato a tu texto
