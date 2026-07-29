@@ -2016,6 +2016,7 @@ hu:
     export_blt: Export szavazólapok (BLT)
     status: Állapot
     your_vote_is_requested: Szavazatot kérünk
+    browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új szavazássablon létrehozásához, a példa kiindulópontként való használatával."
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2859,6 +2860,7 @@ hu:
     start_a_direct_discussion: Közvetlen beszélgetés indítása
     these_are_templates: Ezek a csoportodban található beszélgetési sablonok.
     start_a_new_discussion: Új beszélgetés indítása
+    browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új beszélgetési sablon létrehozásához, a példa kiindulópontként való használatával."
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.

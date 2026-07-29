@@ -2009,6 +2009,7 @@ da:
     export_blt: Eksport af stemmesedler (BLT)
     status: Status
     your_vote_is_requested: Din stemme er anmodet
+    browse_example_make_a_copy_hint: "<b>Klik på kopieringsikonet</b> for at oprette en ny skabelon til afstemning med eksemplet som udgangspunkt."
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ da:
     start_a_direct_discussion: Start en direkte diskussion
     these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
     start_a_new_discussion: Start en ny diskussion
+    browse_example_make_a_copy_hint: "<b>Klik på kopieringsikonet</b> for at oprette en ny diskussionsskabelon med eksemplet som udgangspunkt."
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.

@@ -178,6 +178,14 @@ languages in the Nov 2025 pass.
 |------|-----|--------|-------|------------------|
 | `config/locales/client.ca.yml`, `client.de.yml`, `client.es.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml` | `templates.invalid_template_file` | Single-sentence UI message with a final full stop | Removed the final full stop | Single-sentence UI strings do not use final full stops |
 
+## 2026-07-29 — Template copy help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `Sie` wording | Informal `du` wording | German UI uses informal direct address throughout |
+| `config/locales/client.fr.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `vous` imperative | Informal `tu` imperative | French UI uses informal direct address throughout |
+| `config/locales/client.nl_NL.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `u` wording | Informal `je` wording | Dutch UI uses informal direct address throughout |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

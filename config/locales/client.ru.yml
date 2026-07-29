@@ -2009,6 +2009,7 @@ ru:
     export_blt: Экспорт бюллетеней (BLT)
     status: Статус
     your_vote_is_requested: Просим вас проголосовать.
+    browse_example_make_a_copy_hint: "<b>Нажмите на значок копирования</b> , чтобы создать новый шаблон опроса, используя пример в качестве отправной точки."
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ ru:
     start_a_direct_discussion: Начните прямое обсуждение
     these_are_templates: Это шаблоны для обсуждений в вашей группе.
     start_a_new_discussion: Начать новое обсуждение
+    browse_example_make_a_copy_hint: "<b>Нажмите на значок копирования</b> , чтобы создать новый шаблон обсуждения, используя пример в качестве отправной точки."
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.

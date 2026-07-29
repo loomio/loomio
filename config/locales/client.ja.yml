@@ -2008,6 +2008,7 @@ ja:
     export_blt: 投票用紙の輸出（BLT）
     status: 状態
     your_vote_is_requested: あなたの投票をお願いします
+    browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、サンプルを参考に新しいアンケートテンプレートを作成できます。"
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2851,6 +2852,7 @@ ja:
     start_a_direct_discussion: 直接議論を始める
     these_are_templates: これらはグループ内のディスカッション テンプレートです。
     start_a_new_discussion: 新しいディスカッションを開始する
+    browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、例を参考に新しいディスカッションテンプレートを作成できます。"
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。

@@ -2040,6 +2040,7 @@ de:
     export_blt: Wahlzettel exportieren (BLT)
     status: Status
     your_vote_is_requested: Deine Stimme wird erbeten.
+    browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Umfragevorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2887,6 +2888,7 @@ de:
     start_a_direct_discussion: Starte eine direkte Diskussion
     these_are_templates: Dies sind die Diskussionsvorlagen in deiner Gruppe.
     start_a_new_discussion: Neue Diskussion starten
+    browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Diskussionsvorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.

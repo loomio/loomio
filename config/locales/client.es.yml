@@ -2043,6 +2043,7 @@ es:
     export_blt: Papeletas de exportación (BLT)
     status: Estado
     your_vote_is_requested: Se solicita tu voto.
+    browse_example_make_a_copy_hint: "<b>Haz clic en el icono de copiar</b> para crear una nueva plantilla de encuesta, utilizando el ejemplo como punto de partida."
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2888,6 +2889,7 @@ es:
     start_a_direct_discussion: Iniciar una discusión directa
     these_are_templates: Éstas son las plantillas de discusión en tu grupo.
     start_a_new_discussion: Iniciar una nueva discusión
+    browse_example_make_a_copy_hint: "<b>Haz clic en el icono de copiar</b> para crear una nueva plantilla de debate, utilizando el ejemplo como punto de partida."
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.

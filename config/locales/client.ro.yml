@@ -2009,6 +2009,7 @@ ro:
     export_blt: Buletine de vot pentru export (BLT)
     status: Stare
     your_vote_is_requested: Votul dumneavoastră este solicitat
+    browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ ro:
     start_a_direct_discussion: Începeți o discuție directă
     these_are_templates: Acestea sunt șabloanele de discuții din grupul vostru.
     start_a_new_discussion: Începeți o discuție nouă
+    browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de discuție, folosind exemplul ca punct de plecare."
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.

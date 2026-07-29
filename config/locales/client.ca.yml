@@ -2032,6 +2032,7 @@ ca:
     export_blt: Exportació de paperetes (BLT)
     status: Estat
     your_vote_is_requested: Es demana el vostre vot
+    browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2879,6 +2880,7 @@ ca:
     start_a_direct_discussion: Inicia una discussió directa
     these_are_templates: Aquestes són les plantilles de discussió del vostre grup.
     start_a_new_discussion: Inicia una nova discussió
+    browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla de discussió, utilitzant l'exemple com a punt de partida."
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.

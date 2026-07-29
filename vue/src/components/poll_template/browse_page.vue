@@ -121,7 +121,7 @@ export default {
             v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
               common-icon(name="mdi-close")
         v-alert.ma-4(type="info" variant="tonal" :icon="mdiContentCopy")
-          div(v-t="'templates.make_a_copy'")
+          div(v-html="$t('poll_common.browse_example_make_a_copy_hint')")
 
         .d-flex.px-4
           v-chip.mr-1(

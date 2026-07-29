@@ -2032,6 +2032,7 @@ nl_NL:
     export_blt: Export stembiljetten (BLT)
     status: Status
     your_vote_is_requested: Uw stem wordt gevraagd.
+    browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2879,6 +2880,7 @@ nl_NL:
     start_a_direct_discussion: Start een direct gesprek
     these_are_templates: Dit zijn de discussiesjablonen in jullie groep.
     start_a_new_discussion: Start een nieuwe discussie
+    browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuw discussiesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.

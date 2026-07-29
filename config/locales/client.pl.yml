@@ -2032,6 +2032,7 @@ pl:
     export_blt: Karty do głosowania eksportowego (BLT)
     status: Status
     your_vote_is_requested: Proszę o Twój głos
+    browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon ankiety, używając przykładu jako punktu wyjścia."
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2879,6 +2880,7 @@ pl:
     start_a_direct_discussion: Rozpocznij bezpośrednią dyskusję
     these_are_templates: Oto szablony dyskusji w Twojej grupie.
     start_a_new_discussion: Rozpocznij nową dyskusję
+    browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon dyskusji, używając przykładu jako punktu wyjścia."
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.

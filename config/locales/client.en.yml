@@ -886,6 +886,7 @@ en:
     browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
     browse_example_use_hint: "Click the template title to <b>start a discussion</b>."
     browse_example_fork_hint: "<b>Click the fork icon</b> to create a new discussion template, using the example as a starting point."
+    browse_example_make_a_copy_hint: "<b>Click the copy icon</b> to create a new discussion template, using the example as a starting point"
     new_discussion_template_title: New discussion template
     new_template_from_blank: New template from blank
     new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
@@ -2094,6 +2095,7 @@ en:
     browse_example_templates_hint: 'Create a new poll template from blank, or use an example to get started.'
     browse_example_use_hint: "Click the template title to <b>start a poll</b>."
     browse_example_fork_hint: "<b>Click the fork icon</b> to create a new poll template, using the example as a starting point."
+    browse_example_make_a_copy_hint: "<b>Click the copy icon</b> to create a new poll template, using the example as a starting point"
     browse_unsure_help: "Unsure how to use Poll Templates?"
     all_templates_hidden: All templates have been hidden
     new_poll_template_title: New poll template

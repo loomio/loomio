@@ -2051,6 +2051,7 @@ fr:
     export_blt: Bulletins d'exportation (BLT)
     status: Statut
     your_vote_is_requested: Ton vote est demandé
+    browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de sondage en utilisant l'exemple comme point de départ"
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2896,6 +2897,7 @@ fr:
     start_a_direct_discussion: Entame une discussion directe
     these_are_templates: Voici les modèles de discussion de ton groupe.
     start_a_new_discussion: Lancer une nouvelle discussion
+    browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de discussion en utilisant l'exemple comme point de départ"
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.

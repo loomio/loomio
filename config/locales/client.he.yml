@@ -2028,6 +2028,7 @@ he:
     export_blt: ייצוא פתקי הצבעה (BLT)
     status: סטָטוּס
     your_vote_is_requested: הצבעתך מתבקשת
+    browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2871,6 +2872,7 @@ he:
     start_a_direct_discussion: התחל דיון ישיר
     these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.
     start_a_new_discussion: התחל דיון חדש
+    browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית דיון חדשה, תוך שימוש בדוגמה כנקודת התחלה."
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.

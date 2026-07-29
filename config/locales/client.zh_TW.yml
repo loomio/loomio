@@ -2035,6 +2035,7 @@ zh_TW:
     export_blt: 出口選票（BLT）
     status: 地位
     your_vote_is_requested: 請您投票
+    browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立一個新的投票模板。"
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2880,6 +2881,7 @@ zh_TW:
     start_a_direct_discussion: 發起直接討論
     these_are_templates: 這些是你們小組的討論範本。
     start_a_new_discussion: 發起新的討論
+    browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立新的討論範本。"
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。

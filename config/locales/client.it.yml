@@ -2037,6 +2037,7 @@ it:
     export_blt: Schede elettorali di esportazione (BLT)
     status: Stato
     your_vote_is_requested: È richiesto il tuo voto
+    browse_example_make_a_copy_hint: "<b>Fai clic sull'icona di copia</b> per creare un nuovo modello di sondaggio, utilizzando l'esempio come punto di partenza."
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2880,6 +2881,7 @@ it:
     start_a_direct_discussion: Avvia una discussione diretta
     these_are_templates: Questi sono i modelli di discussione nel tuo gruppo.
     start_a_new_discussion: Avvia una nuova discussione
+    browse_example_make_a_copy_hint: "<b>Fai clic sull'icona di copia</b> per creare un nuovo modello di discussione, utilizzando l'esempio come punto di partenza."
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.

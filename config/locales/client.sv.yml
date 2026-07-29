@@ -2009,6 +2009,7 @@ sv:
     export_blt: Exportvalsedlar (BLT)
     status: Status
     your_vote_is_requested: Din röst begärs
+    browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ sv:
     start_a_direct_discussion: Starta en direkt diskussion
     these_are_templates: Det här är diskussionsmallarna i er grupp.
     start_a_new_discussion: Starta en ny diskussion
+    browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny diskussionsmall med exemplet som utgångspunkt."
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.

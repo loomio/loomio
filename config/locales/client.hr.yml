@@ -2009,6 +2009,7 @@ hr:
     export_blt: Izvoz glasačkih listića (BLT)
     status: Status
     your_vote_is_requested: Traži se vaš glas
+    browse_example_make_a_copy_hint: "<b>Kliknite ikonu za kopiranje</b> da biste stvorili novi predložak ankete, koristeći primjer kao početnu točku."
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ hr:
     start_a_direct_discussion: Započnite izravnu raspravu
     these_are_templates: Ovo su predlošci za raspravu u vašoj grupi.
     start_a_new_discussion: Započni novu raspravu
+    browse_example_make_a_copy_hint: "<b>Kliknite ikonu za kopiranje</b> da biste stvorili novi predložak rasprave, koristeći primjer kao početnu točku."
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.

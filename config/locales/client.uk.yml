@@ -2035,6 +2035,7 @@ uk:
     export_blt: Експортні бюлетені (BLT)
     status: Статус
     your_vote_is_requested: Запитується ваш голос
+    browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2882,6 +2883,7 @@ uk:
     start_a_direct_discussion: Почати пряму дискусію
     these_are_templates: Це шаблони для обговорення у вашій групі.
     start_a_new_discussion: Розпочати нове обговорення
+    browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон обговорення, використовуючи приклад як відправну точку."
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.

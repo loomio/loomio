@@ -2009,6 +2009,7 @@ tr:
     export_blt: İhracat oyları (BLT)
     status: Durum
     your_vote_is_requested: Oylarınız rica olunur.
+    browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ tr:
     start_a_direct_discussion: Doğrudan bir tartışma başlatın
     these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.
     start_a_new_discussion: Yeni bir tartışma başlatın
+    browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir tartışma şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.

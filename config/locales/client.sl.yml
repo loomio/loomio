@@ -2009,6 +2009,7 @@ sl:
     export_blt: Izvoz glasovnic (BLT)
     status: Stanje
     your_vote_is_requested: Zahteva se vaš glas
+    browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo ankete, pri čemer uporabite primer kot izhodišče."
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ sl:
     start_a_direct_discussion: Začnite neposredno razpravo
     these_are_templates: To so predloge za razpravo v vaši skupini.
     start_a_new_discussion: Začni novo razpravo
+    browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo za razpravo, pri čemer uporabite primer kot izhodišče."
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.

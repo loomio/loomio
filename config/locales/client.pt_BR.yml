@@ -2053,6 +2053,7 @@ pt_BR:
     export_blt: Cédulas de exportação (BLT)
     status: Status
     your_vote_is_requested: Seu voto é solicitado.
+    browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de pesquisa, usando o exemplo como ponto de partida."
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2900,6 +2901,7 @@ pt_BR:
     start_a_direct_discussion: Inicie uma conversa direta
     these_are_templates: Esses são os modelos de discussão do seu grupo.
     start_a_new_discussion: Iniciar uma nova discussão
+    browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de discussão, usando o exemplo como ponto de partida."
   context_panel:
     thread_status:
       pinned: Esta discussão foi fixada. Ela permanecerá no topo da lista de discussões do grupo para todos os usuários.

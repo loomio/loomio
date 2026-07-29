@@ -2009,6 +2009,7 @@ fi:
     export_blt: Vientiäänestysliput (BLT)
     status: Status
     your_vote_is_requested: Ääntäsi pyydetään
+    browse_example_make_a_copy_hint: "<b>Luo uusi kyselymalli napsauttamalla kopiointikuvaketta</b> ja käytä esimerkkiä lähtökohtana."
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2852,6 +2853,7 @@ fi:
     start_a_direct_discussion: Aloita suora keskustelu
     these_are_templates: Nämä ovat ryhmäsi keskustelupohjat.
     start_a_new_discussion: Aloita uusi keskustelu
+    browse_example_make_a_copy_hint: "<b>Luo uusi keskustelumalli napsauttamalla kopiointikuvaketta</b> ja käytä esimerkkiä lähtökohtana."
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
