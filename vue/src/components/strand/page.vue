@@ -318,7 +318,7 @@ function shouldSettleAnchorScroll() {
   v-main
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topic")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
-      v-sheet.strand-card.thread-card.mb-8.pb-4.rounded
+      v-sheet.strand-card.thread-card.mb-8.pb-4.rounded-lg
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")

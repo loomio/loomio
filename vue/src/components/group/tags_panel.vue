@@ -83,8 +83,8 @@ export default
             .d-flex.flex-column.align-center
               .text-medium-emphasis {{topics.length}} / {{topicsLoader.total}}
               v-btn.my-2(
-                outlined
-                color='accent'
+                variant="tonal"
+                color='primary'
                 v-if="topics.length < topicsLoader.total && !topicsLoader.exhausted"
                 :loading="topicsLoader.loading"
                 @click="topicsLoader.fetchRecords()"

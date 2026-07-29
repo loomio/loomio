@@ -21,11 +21,6 @@ const isFocused = (event) => {
     (event.eventableType === 'Comment' && props.focusSelector == `.comment-${event.eventableId || 0}`);
 };
 
-const rowClasses = (obj) => {
-  if (isFocused(obj.event)) {
-    return ['strand-item__row--focused', 'rounded-lg'];
-  }
-};
 </script>
 
 <template lang="pug">
@@ -67,21 +62,21 @@ const rowClasses = (obj) => {
 
 <style lang="sass">
 
-.strand-item__row--focused
-  padding: 12px;
-  position: relative
-  color: rgb(var(--v-theme-info)) !important;
+// .strand-item__row--focused
+//   padding: 12px;
+//   position: relative
+//   color: rgb(var(--v-theme-info)) !important;
 
-.strand-item__row--focused-underlay
-  position: absolute
-  background: currentColor
-  opacity: var(--v-activated-opacity)
-  border-radius: inherit
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  pointer-events: none
+// .strand-item__row--focused-underlay
+//   position: absolute
+//   background: currentColor
+//   opacity: var(--v-activated-opacity)
+//   border-radius: inherit
+//   top: 0
+//   right: 0
+//   bottom: 0
+//   left: 0
+//   pointer-events: none
 
 .strand-item--deep
   .strand-item__gutter

@@ -120,10 +120,6 @@ div.lmo-markdown-wrapper(@click="onClick")
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
 
-    blockquote
-      background-color: rgba(0,0,0,0.3)
-      border-left: 4px solid #000
-
 .editor
   .lmo-markdown-wrapper
     ul[data-type="taskList"]
@@ -347,11 +343,26 @@ div.lmo-markdown-wrapper(@click="onClick")
     background: rgba(0, 0, 0, .1)
 
   blockquote
-    font-style: italic
-    border-left: 4px solid rgba(0,0,0,.1)
-    padding-left: .8rem
-    padding: .5rem 0 0.5rem 0.8rem
-    background-color: rgba(0,0,0,0.05)
+    position: relative
+    margin: 1rem 0
+    padding: 0.5rem 0 0.5rem 2.5rem
+    background: transparent
+    font-style: normal
+
+    &::before
+      content: ""
+      position: absolute
+      inset-inline-start: 0
+      top: 0.25rem
+      width: 2rem
+      height: 2rem
+      background-color: rgba(var(--v-theme-on-surface), var(--v-medium-emphasis-opacity))
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z'/%3E%3C/svg%3E")
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z'/%3E%3C/svg%3E")
+      -webkit-mask-size: contain
+      mask-size: contain
+      -webkit-mask-repeat: no-repeat
+      mask-repeat: no-repeat
 
   table
     table-layout: fixed

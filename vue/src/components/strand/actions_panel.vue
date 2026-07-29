@@ -84,7 +84,7 @@ onUnmounted(() => {
 <template lang="pug">
 section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
   template(v-if="topic.lockedAt")
-    v-alert(:prepend-icon="mdiLockOutline" variant="tonal")
+    v-alert(:icon="mdiLockOutline" variant="tonal")
       span(v-t="{path: 'notifications.without_title.thread_locked', args: {actor: topic.locker().name} }")
       mid-dot
       time-ago(:date='topic.lockedAt')

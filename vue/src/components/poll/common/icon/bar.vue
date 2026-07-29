@@ -21,7 +21,7 @@ export default {
           score
         })), 5);
       },
-      barColor() { return 'rgb(var(--v-theme-primary))'; },
+      barColor() { return 'rgb(var(--v-theme-info))'; },
       scoreMaxValue() {
         return max(map(this.scoreData, data => data.score));
       }

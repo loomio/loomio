@@ -14,6 +14,7 @@ const colors = {
   blue300: "#4DA3FF",
   blue400: "#1F87FF",
   blue500: "#0070E0",
+  blue600: "#005FBF",
   green50: "#EDFAF3",
   green600: "#0D7A3C",
   red50: "#FEF1F1",
@@ -27,8 +28,12 @@ const colors = {
 export default createVuetify({
   blueprint: md3,
   defaults: {
+    VChip: {
+      rounded: 'pill',
+    },
     VBtn: {
       color: undefined,
+      rounded: 'xl',
     },
     VCheckbox: {
       color: 'primary',
@@ -45,7 +50,7 @@ export default createVuetify({
       light: {
         dark: false,
         colors: {
-          background: colors.blue50,
+          background: colors.blue25,
           surface: colors.white,
           primary: colors.blue500,
           accent: colors.yellow425,

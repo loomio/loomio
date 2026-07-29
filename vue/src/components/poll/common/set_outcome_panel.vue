@@ -33,8 +33,7 @@ v-alert.my-4.poll-common-set-outcome-panel(
   :icon="mdiFlagCheckered"
   variant="tonal"
   v-if="showPanel()"
-  color="info"
-  elevation="3")
+  color="info")
     p.pb-4(v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}")
     v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_an_outcome'")
 </template>

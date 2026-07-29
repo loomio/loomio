@@ -324,7 +324,7 @@ export default
               | {{memberships.length}} / {{group.orgMembersCount}}
             .text-medium-emphasis(v-else)
               | {{memberships.length}} / {{loader.total}}
-            v-btn.my-2.members-panel__show-more(outlined color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
+            v-btn.my-2.members-panel__show-more(variant="tonal" color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
             a.text-medium-emphasis.text-decoration-none(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'")
 

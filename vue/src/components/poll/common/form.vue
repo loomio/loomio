@@ -289,7 +289,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :label="$t('common.group')"
   )
 
-  v-text-field.poll-common-form-fields__title(
+  v-text-field.poll-common-form-fields__title.mb-2(
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
