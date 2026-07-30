@@ -171,7 +171,7 @@ export function useHtmlMentioning(editor, query, mentions, navigatedUserIndex, s
       id: row.handle,
       label: row.name
     });
-    editor.value.chain().focus();
+    editor.value.chain().focus().run();
   };
 
   const updatePopup = (coords) => {
