@@ -230,6 +230,10 @@ en:
     question: question round
   timezones:
     local: Local time (%{value})
+  mention_notifications_count:
+    nobody_will_be_notified: Nobody will be notified
+    one_person_will_be_notified: 1 person will be notified
+    x_people_will_be_notified: "%{count} people will be notified"
   common:
     commercial: Commercial
     nonprofit: Nonprofit
@@ -587,6 +591,7 @@ en:
       too_long: Comment must be %{count} characters or less
     say_something: Say something...
     share_your_thoughts: Share your thoughts…
+    type_at_to_notify_people: "Type {'@'} to notify people"
     edit_comment: Edit comment
     delete_comment: Delete comment
     cancel_reply: Cancel Reply

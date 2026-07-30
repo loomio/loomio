@@ -557,6 +557,7 @@ uk:
     add_a_comment: Додати коментар
     share_your_thoughts: Поділіться своїми думками…
     share_on_poll: Задайте питання або поділіться новою інформацією
+    type_at_to_notify_people: "Введіть {'@'}, щоб повідомити людей"
   thread_nav:
     participants: Учасники
   sidebar:
@@ -2993,3 +2994,7 @@ uk:
     title: Встановити пароль?
     helptext: Ви можете використовувати пароль для входу наступного разу, замість того, щоб чекати на посилання електронною поштою.
     no_thanks: Ні, дякую
+  mention_notifications_count:
+    nobody_will_be_notified: Нікого не повідомлять
+    one_person_will_be_notified: 1 особа отримає сповіщення
+    x_people_will_be_notified: "%{count} людей отримають сповіщення"

@@ -556,6 +556,7 @@ pl:
     add_a_comment: Dodaj komentarz
     share_your_thoughts: Podziel się swoimi przemyśleniami…
     share_on_poll: Zadaj pytanie lub udostępnij nowe informacje
+    type_at_to_notify_people: "Wpisz {'@'}, aby powiadomić ludzi"
   thread_nav:
     participants: Uczestnicy
   sidebar:
@@ -2990,3 +2991,7 @@ pl:
     title: Ustawić hasło?
     helptext: Następnym razem możesz zalogować się, podając hasło, zamiast czekać na link wysłany e-mailem.
     no_thanks: Nie, dziękuję
+  mention_notifications_count:
+    nobody_will_be_notified: Nikt nie zostanie powiadomiony
+    one_person_will_be_notified: 1 osoba zostanie powiadomiona
+    x_people_will_be_notified: "%{count} osób zostanie powiadomionych"

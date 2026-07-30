@@ -556,6 +556,7 @@ ca:
     add_a_comment: Afegeix un comentari
     share_your_thoughts: Comparteix els teus pensaments…
     share_on_poll: Fes una pregunta o comparteix informació nova
+    type_at_to_notify_people: "Escriu {'@'} per notificar a la gent"
   thread_nav:
     participants: Participants
   sidebar:
@@ -2990,3 +2991,7 @@ ca:
     title: Voleu establir una contrasenya?
     helptext: Pots utilitzar una contrasenya per iniciar la sessió la propera vegada, en comptes d'esperar un enllaç per correu electrònic.
     no_thanks: No, gràcies
+  mention_notifications_count:
+    nobody_will_be_notified: Ningú serà notificat
+    one_person_will_be_notified: S'avisarà a 1 persona
+    x_people_will_be_notified: "%{count} persones seran notificades"

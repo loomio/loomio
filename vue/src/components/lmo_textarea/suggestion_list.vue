@@ -24,11 +24,12 @@ export default {
 <template lang="pug">
 v-card.suggestion-list(
   :elevation=8
-  v-show='query'
+  color="surface"
+  v-show='query !== null'
   ref='suggestions'
   :style="positionStyles"
 )
-  v-list(v-if="mentions.length" density="compact")
+  v-list(v-if="mentions.length" bg-color="surface" density="compact")
     v-list-item(
       v-for='(row, index) in mentions'
       :key='row.id'
@@ -39,7 +40,7 @@ v-card.suggestion-list(
         | {{ row.name }}
         span.text-medium-emphasis(v-if="row.handle == currentUser.username") &nbsp; ({{ $t('common.you') }})
         span.text-medium-emphasis(v-if="showUsername") &nbsp; {{ "@" + row.handle }}
-  v-list(v-else density="compact")
+  v-list(v-else bg-color="surface" density="compact")
     v-list-item
       v-progress-circular(
         v-if="loading"
@@ -53,3 +54,13 @@ v-card.suggestion-list(
   .d-flex.justify-center
     v-progress-linear(v-if="loading" indeterminate color='primary' size='24' width="2")
 </template>
+
+<style scoped lang="sass">
+.suggestion-list,
+.suggestion-list .v-list
+  background-color: rgb(var(--v-theme-surface)) !important
+  opacity: 1
+
+.suggestion-list
+  z-index: 10
+</style>

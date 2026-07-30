@@ -556,6 +556,7 @@ nl_NL:
     add_a_comment: Voeg een opmerking toe
     share_your_thoughts: Deel uw gedachten…
     share_on_poll: Stel een vraag of deel nieuwe informatie.
+    type_at_to_notify_people: "Typ {'@'} om mensen op de hoogte te stellen"
   thread_nav:
     participants: Deelnemers
   sidebar:
@@ -2990,3 +2991,7 @@ nl_NL:
     title: Een wachtwoord instellen?
     helptext: Je kunt de volgende keer inloggen met een wachtwoord in plaats van te wachten op een link in je e-mail.
     no_thanks: Nee, bedankt
+  mention_notifications_count:
+    nobody_will_be_notified: Niemand zal op de hoogte worden gesteld
+    one_person_will_be_notified: 1 persoon wordt op de hoogte gesteld
+    x_people_will_be_notified: "%{count} personen zullen op de hoogte worden gesteld"

@@ -554,6 +554,7 @@ sv:
     add_a_comment: Lägg till en kommentar
     share_your_thoughts: Dela dina tankar…
     share_on_poll: Ställ en fråga eller dela ny information
+    type_at_to_notify_people: "Skriv {'@'} för att meddela andra"
   thread_nav:
     participants: Deltagare
   sidebar:
@@ -2963,3 +2964,7 @@ sv:
     title: Ange ett lösenord?
     helptext: Du kan använda ett lösenord för att logga in nästa gång, istället för att vänta på en e-postlänk.
     no_thanks: Nej tack
+  mention_notifications_count:
+    nobody_will_be_notified: Ingen kommer att bli underrättad
+    one_person_will_be_notified: 1 person kommer att meddelas
+    x_people_will_be_notified: "%{count} personer kommer att meddelas"

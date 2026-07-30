@@ -573,6 +573,7 @@ zh_CN:
     sign_in: 登录参与
     share_your_thoughts: 分享你的想法……
     share_on_poll: 提出问题或分享新信息
+    type_at_to_notify_people: "输入{'@'}即可通知他人"
   sidebar:
     user_settings: 用户设置
     my_groups: 我的群组
@@ -2882,3 +2883,7 @@ zh_CN:
     title: 设置密码？
     helptext: 下次登录时，您可以使用密码，而无需等待电子邮件链接。
     no_thanks: 不，谢谢
+  mention_notifications_count:
+    nobody_will_be_notified: 不会通知任何人
+    one_person_will_be_notified: 将会通知1人
+    x_people_will_be_notified: "%{count} 人将收到通知"

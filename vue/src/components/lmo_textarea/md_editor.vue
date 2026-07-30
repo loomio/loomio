@@ -4,6 +4,7 @@ import { convertToHtml } from '@/shared/services/format_converter';
 import Records from '@/shared/services/records';
 import FilesList from './files_list.vue';
 import SuggestionList from './suggestion_list';
+import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
 import { useAttaching } from './composables/useAttaching';
 import { useI18n } from 'vue-i18n';
@@ -48,6 +49,12 @@ const {
 const textarea = computed(() => {
   return fieldRef.value?.$el.querySelector('textarea');
 });
+
+const mentionHandles = computed(() => {
+  const handles = String(props.model[props.field]).matchAll(/(?:^|[^\w])@([a-z0-9_-]+)/gi);
+  return Array.from(new Set(Array.from(handles, match => match[1].toLowerCase())));
+});
+const editorEmpty = computed(() => String(props.model[props.field]).trim().length === 0);
 
 const {
   onKeyUp,
@@ -184,18 +191,19 @@ defineExpose({
 
 <template lang="pug">
 div(style="position: relative")
-  v-textarea(
-    v-if="!preview"
-    filled
-    ref="fieldRef"
-    v-model="model[field]"
-    :placeholder="placeholder"
-    :label="label"
-    @keyup="onKeyUp"
-    @keydown="onKeyDown"
-    @paste="onPaste"
-    @drop="onDrop"
-    @dragover.prevent="onDragOver")
+  .mention-textarea-field(v-if="!preview")
+    v-textarea(
+      filled
+      ref="fieldRef"
+      v-model="model[field]"
+      :placeholder="placeholder"
+      :label="label"
+      @keyup="onKeyUp"
+      @keydown="onKeyDown"
+      @paste="onPaste"
+      @drop="onDrop"
+      @dragover.prevent="onDragOver")
+    mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
   formatted-text(v-if="preview" :model="model" :field="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
@@ -214,3 +222,8 @@ div(style="position: relative")
   form(style="display: block" @change="fileSelected")
     input.d-none(ref="filesField" type="file" name="files" multiple=true)
 </template>
+
+<style lang="sass">
+.mention-textarea-field
+  position: relative
+</style>

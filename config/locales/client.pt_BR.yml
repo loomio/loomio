@@ -564,6 +564,7 @@ pt_BR:
     add_a_comment: Adicione um comentário
     share_your_thoughts: Compartilhe suas ideias…
     share_on_poll: Faça uma pergunta ou compartilhe novas informações.
+    type_at_to_notify_people: "Digite {'@'} para notificar as pessoas"
   thread_nav:
     participants: Participantes
   sidebar:
@@ -3011,3 +3012,7 @@ pt_BR:
     title: Definir uma senha?
     helptext: Na próxima vez, você poderá usar uma senha para fazer login, em vez de esperar por um link enviado por e-mail.
     no_thanks: Não, obrigado
+  mention_notifications_count:
+    nobody_will_be_notified: Ninguém será notificado
+    one_person_will_be_notified: Uma pessoa será notificada
+    x_people_will_be_notified: "%{count} pessoas serão notificadas"

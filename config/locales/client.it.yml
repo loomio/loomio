@@ -564,6 +564,7 @@ it:
     add_a_comment: Aggiungi un commento
     share_your_thoughts: Condividi i tuoi pensieri…
     share_on_poll: Fai una domanda o condividi nuove informazioni
+    type_at_to_notify_people: "Digita {'@'} per avvisare le persone"
   thread_nav:
     participants: Partecipanti
   sidebar:
@@ -2991,3 +2992,7 @@ it:
     title: Impostare una password?
     helptext: La prossima volta potrai accedere utilizzando una password, invece di attendere il link via email.
     no_thanks: No grazie
+  mention_notifications_count:
+    nobody_will_be_notified: Nessuno verrà avvisato
+    one_person_will_be_notified: Una persona verrà avvisata
+    x_people_will_be_notified: "%{count} persone riceveranno una notifica"

@@ -37,6 +37,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3';
 import { getEmbedLink } from '@/shared/helpers/embed_link';
 
 import SuggestionList from './suggestion_list';
+import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
@@ -89,6 +90,8 @@ const iframeDialogIsOpen = ref(false);
 const fetchedUrls = ref([]);
 const filesField = ref(null);
 const imagesField = ref(null);
+const mentionHandles = ref([]);
+const editorEmpty = ref(true);
 let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
@@ -297,6 +300,19 @@ const updateModel = () => {
   updateFiles();
 };
 
+const updateMentionState = () => {
+  const handles = [];
+  const visit = node => {
+    if (node.type === 'mention' && node.attrs.id) {
+      handles.push(String(node.attrs.id).toLowerCase());
+    }
+    Array.from(node.content || []).forEach(visit);
+  };
+  visit(editor.value.getJSON());
+  mentionHandles.value = Array.from(new Set(handles));
+  editorEmpty.value = editor.value.isEmpty;
+};
+
 const removeLinkPreview = (url) => {
   props.model.linkPreviews = reject(props.model.linkPreviews, p => p.url === url);
 };
@@ -459,6 +475,7 @@ onMounted(() => {
     ],
     onUpdate: () => {
       if (props.maxLength) { checkLength(); }
+      updateMentionState();
     },
     onFocus: () => {
       focused.value = true;
@@ -467,6 +484,7 @@ onMounted(() => {
       focused.value = false;
     },
     onCreate: () => {
+      updateMentionState();
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
       }
@@ -531,6 +549,7 @@ div.mb-2
             ref="editorContentRef"
             :editor="editor"
           )
+          mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
         v-btn(v-bind="btnProps" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
@@ -800,8 +819,8 @@ progress::-webkit-progress-value
 .html-editor__textarea .ProseMirror
   cursor: text
   width: 100%
-  padding: 4px 0px
-  margin: 4px 0px
+  padding: 2px 0 4px
+  margin: 0
   outline: none
   overflow-y: scroll
   overflow: visible

@@ -554,6 +554,7 @@ tr:
     add_a_comment: Yorum ekle
     share_your_thoughts: Düşüncelerinizi paylaşın…
     share_on_poll: Bir soru sorun veya yeni bilgiler paylaşın
+    type_at_to_notify_people: "Kişileri bilgilendirmek için {'@'} işaretini kullanın"
   thread_nav:
     participants: Katılımcılar
   sidebar:
@@ -2963,3 +2964,7 @@ tr:
     title: Şifre belirleyeyim mi?
     helptext: Bir dahaki sefere giriş yaparken e-posta bağlantısını beklemek yerine şifre kullanabilirsiniz.
     no_thanks: Hayır, teşekkürler
+  mention_notifications_count:
+    nobody_will_be_notified: Kimseye bildirim yapılmayacak
+    one_person_will_be_notified: 1 kişiye bildirim gönderilecektir
+    x_people_will_be_notified: "%{count} kişiye bildirim gönderilecektir"

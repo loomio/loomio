@@ -564,6 +564,7 @@ fr:
     add_a_comment: Ajouter un commentaire
     share_your_thoughts: Partage tes réflexions…
     share_on_poll: Pose une question ou partage de nouvelles informations
+    type_at_to_notify_people: "Tape {'@'} pour notifier des personnes"
   thread_nav:
     participants: Participants
   sidebar:
@@ -3007,3 +3008,7 @@ fr:
     title: Définir un mot de passe ?
     helptext: Vous pourrez utiliser un mot de passe pour vous connecter la prochaine fois, au lieu d'attendre un lien par e-mail.
     no_thanks: Non merci
+  mention_notifications_count:
+    nobody_will_be_notified: Personne ne sera averti
+    one_person_will_be_notified: Une personne sera avertie
+    x_people_will_be_notified: "%{count} personnes seront notifiées"

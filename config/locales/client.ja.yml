@@ -553,6 +553,7 @@ ja:
     add_a_comment: コメントを追加する
     share_your_thoughts: あなたの考えを共有してください…
     share_on_poll: 質問をしたり新しい情報を共有したりしましょう
+    type_at_to_notify_people: "{'@'} を入力して通知する"
   thread_nav:
     participants: 参加者
   sidebar:
@@ -2962,3 +2963,7 @@ ja:
     title: パスワードを設定しますか？
     helptext: 次回からは、メールで送られてくるリンクを待つ代わりに、パスワードを使ってログインできます。
     no_thanks: 結構です
+  mention_notifications_count:
+    nobody_will_be_notified: 誰にも通知されません
+    one_person_will_be_notified: 1名に通知されます
+    x_people_will_be_notified: "%{count}人に通知されます"

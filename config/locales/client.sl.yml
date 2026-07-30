@@ -554,6 +554,7 @@ sl:
     add_a_comment: Dodaj komentar
     share_your_thoughts: Delite svoje misli …
     share_on_poll: Postavite vprašanje ali delite nove informacije
+    type_at_to_notify_people: "Vtipkajte {'@'}, da obvestite ljudi"
   thread_nav:
     participants: Udeleženci
   sidebar:
@@ -2963,3 +2964,7 @@ sl:
     title: Nastaviti geslo?
     helptext: Naslednjič se lahko prijavite z geslom, namesto da čakate na povezavo po e-pošti.
     no_thanks: Ne, hvala
+  mention_notifications_count:
+    nobody_will_be_notified: Nihče ne bo obveščen
+    one_person_will_be_notified: Obveščena bo 1 oseba
+    x_people_will_be_notified: Obveščenih bo %{count} oseb

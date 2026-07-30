@@ -554,6 +554,7 @@ da:
     add_a_comment: Tilføj en kommentar
     share_your_thoughts: Del dine tanker…
     share_on_poll: Stil et spørgsmål eller del nye oplysninger
+    type_at_to_notify_people: "Skriv {'@'} for at give folk besked"
   thread_nav:
     participants: Deltagere
   sidebar:
@@ -2963,3 +2964,7 @@ da:
     title: Angiv en adgangskode?
     helptext: Du kan bruge en adgangskode til at logge ind næste gang i stedet for at vente på et link via e-mail.
     no_thanks: Nej tak
+  mention_notifications_count:
+    nobody_will_be_notified: Ingen vil blive underrettet
+    one_person_will_be_notified: 1 person vil blive underrettet
+    x_people_will_be_notified: "%{count} personer vil blive underrettet"

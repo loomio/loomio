@@ -27,6 +27,7 @@ const poll = ref(null);
 const resetComment = () => {
   newComment.value = Records.comments.build({
     bodyFormat: Session.defaultFormat(),
+    topicId: topic.id,
     parentType: topic.topicableType,
     parentId: topic.topicableId,
     authorId: Session.user().id

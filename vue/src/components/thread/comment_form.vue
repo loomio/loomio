@@ -34,7 +34,7 @@ export default {
     },
 
     maxLength() {
-      return this.comment.parent()?.topic?.()?.commentLengthMax || undefined;
+      return this.comment.parent().topic().commentLengthMax || undefined;
     }
   },
 

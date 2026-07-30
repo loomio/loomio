@@ -186,6 +186,15 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `vous` imperative | Informal `tu` imperative | French UI uses informal direct address throughout |
 | `config/locales/client.nl_NL.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `u` wording | Informal `je` wording | Dutch UI uses informal direct address throughout |
 
+## 2026-07-30 — Mention notification count
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | `mention_notifications_count.*` | One or more count messages had a final full stop | Removed final full stops | Single-sentence UI strings do not use final full stops |
+| `config/locales/client.fr.yml` | `comment_form.type_at_to_notify_people` | `Tapez @ pour notifier les personnes` | `Tape @ pour notifier des personnes` | French UI uses the informal singular register |
+| `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `comment_form.type_at_to_notify_people` | Translation had a final full stop | Removed final full stop | Single-sentence UI strings do not use final full stops |
+| All `config/locales/client.*.yml` files | `comment_form.type_at_to_notify_people` | Literal `@` | Vue I18n literal `{'@'}` | A bare `@` is parsed as linked-message syntax and causes message compilation to fail |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

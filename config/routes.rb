@@ -158,7 +158,9 @@ Rails.application.routes.draw do
         post :ignore, on: :member
       end
 
-      resources :mentions, only: :index
+      resources :mentions, only: :index do
+        get :count, on: :collection
+      end
 
       resources :profile, only: [:show, :index] do
         collection do
