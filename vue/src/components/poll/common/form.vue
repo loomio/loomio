@@ -655,7 +655,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
     v-btn.poll-common-form__submit(
       color="primary"
-      @click='submit'
+      type="submit"
       :loading="loading"
       :disabled="hasOptions && pollOptions.length < minOptions"
       variant="elevated"

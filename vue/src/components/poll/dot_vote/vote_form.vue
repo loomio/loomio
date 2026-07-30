@@ -110,7 +110,7 @@ export default {
 
 <template lang="pug">
 div
-  v-form.poll-dot-vote-vote-form(ref="form")
+  v-form.poll-dot-vote-vote-form(ref="form" @submit.prevent="submit()")
     v-alert.poll-dot-vote-vote-form__dots-remaining.mb-4(density="compact" variant="tonal" :color="alertColor" )
       span(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
     .poll-dot-vote-vote-form__options
@@ -142,7 +142,7 @@ div
       v-btn.poll-common-vote-form__submit(
         block
         variant="elevated"
-        @click="submit()"
+        type="submit"
         :disabled="(dotsRemaining < 0) || !poll.isVotable()"
         :loading="loading"
         color="primary"

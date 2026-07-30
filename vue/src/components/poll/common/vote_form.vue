@@ -131,7 +131,7 @@ export default {
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@submit.prevent="submit()" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
@@ -191,7 +191,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
-      @click='submit()'
+      type="submit"
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="loading"
       color="primary"
