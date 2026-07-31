@@ -66,6 +66,19 @@ module.exports = {
     page.expectText('.context-panel__description', 'improved description')
   },
 
+  'moves_a_group_thread_to_a_direct_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('.thread-sidebar .action-dock__button--move_thread')
+    page.click('.move-thread-form__group-dropdown .v-field')
+    page.expectText('.v-overlay-container', 'Direct thread')
+    test.useXpath().click("//div[contains(@class, 'v-list-item-title') and normalize-space()='Direct thread']").useCss()
+    page.expectText('.move-thread-form', 'Everyone who has participated will retain access')
+    page.click('.move-thread-form__submit')
+    page.expectText('.context-panel__breadcrumbs', 'Direct')
+  },
+
   // 'stores_draft_edits': (test) => {
   //   page = pageHelper(test)
   //
@@ -214,6 +227,15 @@ module.exports = {
     page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
+  },
+
+  'ranks_mention_prefix_matches_first': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_for_mention_ranking')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@sco')
+    page.expectText('.suggestion-list .v-list-item:nth-child(1)', 'Scott Lemmon')
+    page.expectText('.suggestion-list .v-list-item:nth-child(2)', 'Jerry Scott')
   },
 
   'mentions_a_user_in_markdown': (test) => {

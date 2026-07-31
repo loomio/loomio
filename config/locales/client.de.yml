@@ -562,7 +562,7 @@ de:
     add_a_comment: Einen Kommentar hinzufügen
     share_your_thoughts: Teile deine Gedanken mit…
     share_on_poll: Stelle eine Frage oder teile neue Informationen.
-    type_at_to_notify_people: "Gib {'@'} ein, um Personen zu benachrichtigen"
+    type_at_to_notify_people: Gib {'@'} ein, um Personen zu benachrichtigen
   thread_nav:
     participants: Teilnehmer
   sidebar:
@@ -1107,6 +1107,7 @@ de:
     copy_markdown: Markdown kopieren
     copy_markdown_description: Kopiere den Thread als strukturiertes Markdown – ideal für die Verwendung mit einem KI-Agenten oder zum Erstellen eines einfachen Dokuments aus dem Thread-Inhalt.
     thread_markdown_copied: Thread-Markdown kopiert
+    move_thread_v2: Thema verschieben
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -1740,7 +1741,7 @@ de:
     unread_discussions: Ungelesene Diskussionen
     recent_activity_notice: Es werden nur Threads angezeigt, in denen in den letzten 6 Wochen Aktivität stattgefunden hat.
   discussion:
-    direct_thread: Direkter Thread
+    direct_thread: Direkte Diskussion
     invite_only: Invite-only
     private_thread: Private Diskussion
     max_threads_reached: |
@@ -2913,6 +2914,11 @@ de:
     confirm_change_to_private: "%{groupName} ist eine offene Gruppe. Wenn du fortfährst, wird diese Diskussion öffentlich sein."
     messages:
       success: Die Diskussion wurde nach %{name} verlegt.
+    move_thread_title: Thema verschieben
+    destination: Ziel
+    direct_thread: Direkter Thread
+    direct_thread_hint: Alle Teilnehmenden behalten den Zugriff. Du und die Person, die das Thema erstellt hat, werdet zu Administratoren des Themas.
+    direct_thread_anonymous_poll: Threads mit anonymen Umfragen können nicht in direkte Threads umgewandelt werden, da dies offenlegen könnte, wer abgestimmt hat.
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melde dich mit deinen neuen Kontodaten an.

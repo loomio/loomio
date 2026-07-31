@@ -556,7 +556,7 @@ es:
     add_a_comment: Añadir un comentario
     share_your_thoughts: Comparte tus pensamientos…
     share_on_poll: Haz una pregunta o comparte nueva información
-    type_at_to_notify_people: "Escribe {'@'} para notificar a las personas"
+    type_at_to_notify_people: Escribe {'@'} para notificar a las personas
   thread_nav:
     participants: Participantes
   sidebar:
@@ -1099,6 +1099,7 @@ es:
     copy_markdown: Copiar Markdown
     copy_markdown_description: Copia el hilo de conversación como Markdown estructurado, ideal para usar con un agente de IA o para crear un documento sencillo a partir del contenido del hilo.
     thread_markdown_copied: Hilo Markdown copiado
+    move_thread_v2: Mover hilo
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -2914,6 +2915,11 @@ es:
     confirm_change_to_private: "%{groupName} es un grupo abierto. Si continúas, esta discusión será pública."
     messages:
       success: La discusión se trasladó a %{name}
+    move_thread_title: Mover hilo
+    destination: Destino
+    direct_thread: Hilo directo
+    direct_thread_hint: Todos los participantes conservarán el acceso. Tú y la persona que creó el hilo serán sus administradores.
+    direct_thread_anonymous_poll: Los hilos que contienen encuestas anónimas no se pueden convertir en hilos directos porque esto podría revelar quién votó.
   auth:
     oauth_cancelled: Se canceló el inicio de sesión
     switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.

@@ -554,7 +554,7 @@ ro:
     add_a_comment: Adaugă un comentariu
     share_your_thoughts: Împărtășește-ți gândurile…
     share_on_poll: Pune o întrebare sau distribuie informații noi
-    type_at_to_notify_people: "Tastează {'@'} pentru a notifica persoanele"
+    type_at_to_notify_people: Tastează {'@'} pentru a notifica persoanele
   thread_nav:
     participants: Participanții
   sidebar:
@@ -1095,6 +1095,7 @@ ro:
     copy_markdown: Copiază Markdown
     copy_markdown_description: Copiază firul de discuție ca Markdown structurat — ideal pentru utilizare cu un agent AI sau pentru crearea unui document simplu din conținutul firului de discuție.
     thread_markdown_copied: Markdown-ul firului de discuție a fost copiat
+    move_thread_v2: Mută firul de discuție
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -2878,6 +2879,11 @@ ro:
     confirm_change_to_private: "%{groupName} este un grup deschis. Dacă continuați, această discuție va fi publică."
     messages:
       success: Discuția a fost mutată la %{name}
+    move_thread_title: Mută firul de discuție
+    destination: Destinaţie
+    direct_thread: Fir direct
+    direct_thread_hint: Toți cei care au participat vor păstra accesul. Tu și creatorul firului de discuție veți fi administratori ai firului de discuție.
+    direct_thread_anonymous_poll: Subiectele care conțin sondaje anonime nu pot fi convertite în subiecte directe, deoarece acest lucru ar putea dezvălui cine a votat.
   auth:
     oauth_cancelled: Conectarea a fost anulată
     switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.

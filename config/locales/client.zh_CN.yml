@@ -573,7 +573,7 @@ zh_CN:
     sign_in: 登录参与
     share_your_thoughts: 分享你的想法……
     share_on_poll: 提出问题或分享新信息
-    type_at_to_notify_people: "输入{'@'}即可通知他人"
+    type_at_to_notify_people: 输入{'@'}即可通知他人
   sidebar:
     user_settings: 用户设置
     my_groups: 我的群组
@@ -1135,6 +1135,7 @@ zh_CN:
     copy_markdown: 复制 Markdown
     copy_markdown_description: 将帖子内容复制为结构化的 Markdown 格式——非常适合与 AI 代理一起使用，或者从帖子内容创建简单的文档。
     thread_markdown_copied: 帖子 Markdown 已复制
+    move_thread_v2: 移动主题
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -1883,6 +1884,11 @@ zh_CN:
     confirm_change_to_private: "%{groupName} 是一个公开群组。如果您继续操作，本次讨论将公开显示。"
     messages:
       success: 讨论已转移至 %{name}
+    move_thread_title: 移动主题
+    destination: 目的地
+    direct_thread: 直接帖子
+    direct_thread_hint: 所有参与者都将保留访问权限。您和帖子创建者将成为帖子管理员。
+    direct_thread_anonymous_poll: 包含匿名投票的帖子不能转换为直接对话帖，因为这可能会泄露投票者的身份。
   delete_comment_dialog:
     title: 删除评论
     question: 这将永久删除此评论。如果您继续操作，则无法恢复。

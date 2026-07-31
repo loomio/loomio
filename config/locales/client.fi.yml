@@ -554,7 +554,7 @@ fi:
     add_a_comment: Lisää kommentti
     share_your_thoughts: Jaa ajatuksesi…
     share_on_poll: Esitä kysymys tai jaa uutta tietoa
-    type_at_to_notify_people: "Kirjoita {'@'} ilmoittaaksesi ihmisille"
+    type_at_to_notify_people: Kirjoita {'@'} ilmoittaaksesi ihmisille
   thread_nav:
     participants: Osallistujat
   sidebar:
@@ -1095,6 +1095,7 @@ fi:
     copy_markdown: Kopioi Markdown
     copy_markdown_description: Kopioi ketju jäsenneltynä Markdown-muodossa – ihanteellinen tekoälyagentin kanssa käytettäväksi tai yksinkertaisen dokumentin luomiseen ketjun sisällöstä.
     thread_markdown_copied: Ketjun Markdown kopioitu
+    move_thread_v2: Siirrä ketju
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
@@ -2878,6 +2879,11 @@ fi:
     confirm_change_to_private: "%{groupName} on avoin ryhmä. Jos jatkat, tästä keskustelusta tulee julkinen."
     messages:
       success: Keskustelu siirretty keskusteluun %{name}
+    move_thread_title: Siirrä ketju
+    destination: Määränpää
+    direct_thread: Suora ketju
+    direct_thread_hint: Kaikki osallistuneet säilyttävät käyttöoikeuden. Sinusta ja ketjun luojasta tulee ketjun ylläpitäjiä.
+    direct_thread_anonymous_poll: Anonyymejä kyselyitä sisältäviä ketjuja ei voida muuntaa suoriksi ketjuiksi, koska se voisi paljastaa, kuka äänesti.
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.

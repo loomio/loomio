@@ -195,6 +195,15 @@ languages in the Nov 2025 pass.
 | `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `comment_form.type_at_to_notify_people` | Translation had a final full stop | Removed final full stop | Single-sentence UI strings do not use final full stops |
 | All `config/locales/client.*.yml` files | `comment_form.type_at_to_notify_people` | Literal `@` | Vue I18n literal `{'@'}` | A bare `@` is parsed as linked-message syntax and causes message compilation to fail |
 
+## 2026-07-31 — Move to direct thread
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.da.yml`, `client.de.yml`, `client.fi.yml`, `client.fr.yml`, `client.he.yml`, `client.hu.yml`, `client.it.yml`, `client.ja.yml`, `client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml`, `client.uk.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | `move_discussion_form.direct_thread` | Mechanical-thread, cord, screw-thread, threading, or link terminology | Each locale's established discussion-thread terminology | Thread means a Loomio discussion, not a mechanical or software thread, cord, or link |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml` | `move_discussion_form.direct_thread_hint` | Formal `Sie` / `Usted` / `Vous` address | Informal `du` / `tú` / `toi` address | These locales use informal direct address throughout |
+| `config/locales/client.nl_NL.yml` | `action_dock.move_thread_v2`, `move_discussion_form.move_thread_title` | `Verplaats thread` | `Verplaats discussie` | Use the established discussion term rather than the English technical word “thread” |
+| `config/locales/server.nl_NL.yml`, `server.ro.yml` | `errors.direct_thread_anonymous_poll` | Discussion-forum or software-execution-thread terminology | Discussion-thread terminology | Thread means a Loomio discussion, not a forum or software execution thread |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |

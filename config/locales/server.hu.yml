@@ -149,6 +149,7 @@ hu:
     '404':
       body: A kért elem nem található. Ez akkor fordulhat elő, ha egy beszélgetést vagy szavazást töröltek.
     new_account_trial_group_limit: Az új fiókok egy csoportra korlátozódnak. Kérjük, vegye fel a kapcsolatot az ügyfélszolgálattal, ha többre van szüksége.
+    direct_thread_anonymous_poll: Egy névtelen szavazást tartalmazó szál nem alakítható át közvetlen szállá.
   group:
     error:
       handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'

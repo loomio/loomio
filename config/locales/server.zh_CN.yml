@@ -416,6 +416,7 @@ zh_CN:
       spoofed_media_type: 该文件的内容与其文件名不匹配。
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
     new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
+    direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为直接帖子。
   group:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头

@@ -148,6 +148,7 @@ es:
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
       pwned_password: Esta contraseña apareció anteriormente en una violación de datos y nunca debe usarse
     new_account_trial_group_limit: Las nuevas cuentas están limitadas a un grupo. Si necesitas más, ponte en contacto con el servicio de asistencia.
+    direct_thread_anonymous_poll: Un hilo que contiene una encuesta anónima no se puede convertir en un hilo directo.
   group:
     error:
       handle_must_begin_with_parent_handle: Debe empezar con %{parent_handle}-

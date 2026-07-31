@@ -152,6 +152,7 @@ fr:
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
       pwned_password: Ce mot de passe est déjà apparu lors d'une violation de données et ne doit jamais être utilisé
     new_account_trial_group_limit: Les nouveaux comptes sont limités à un seul groupe. Contacte l'assistance si tu as besoin de plusieurs comptes.
+    direct_thread_anonymous_poll: Un fil de discussion contenant un sondage anonyme ne peut pas être converti en fil de discussion direct.
   group:
     error:
       handle_must_begin_with_parent_handle: Doit commencer par %{parent_handle}

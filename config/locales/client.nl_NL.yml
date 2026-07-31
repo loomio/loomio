@@ -556,7 +556,7 @@ nl_NL:
     add_a_comment: Voeg een opmerking toe
     share_your_thoughts: Deel uw gedachten…
     share_on_poll: Stel een vraag of deel nieuwe informatie.
-    type_at_to_notify_people: "Typ {'@'} om mensen op de hoogte te stellen"
+    type_at_to_notify_people: Typ {'@'} om mensen op de hoogte te stellen
   thread_nav:
     participants: Deelnemers
   sidebar:
@@ -1101,6 +1101,7 @@ nl_NL:
     copy_markdown: Markdown kopiëren
     copy_markdown_description: Kopieer de conversatie als gestructureerde Markdown — ideaal voor gebruik met een AI-agent of voor het maken van een eenvoudig document op basis van de conversatie-inhoud.
     thread_markdown_copied: Markdown-tekst van de thread gekopieerd
+    move_thread_v2: Verplaats discussie
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2905,6 +2906,11 @@ nl_NL:
     confirm_change_to_private: "%{groupName} is een open groep. Als u doorgaat, wordt deze discussie openbaar."
     messages:
       success: Discussie verplaatst naar %{name}
+    move_thread_title: Verplaats discussie
+    destination: Bestemming
+    direct_thread: Directe discussie
+    direct_thread_hint: Iedereen die heeft deelgenomen, behoudt toegang. Jij en de maker van het topic worden de topicbeheerders.
+    direct_thread_anonymous_poll: Discussies met anonieme peilingen kunnen niet worden omgezet naar directe discussies, omdat dit zou kunnen onthullen wie er heeft gestemd.
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.

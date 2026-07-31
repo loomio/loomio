@@ -554,7 +554,7 @@ da:
     add_a_comment: Tilføj en kommentar
     share_your_thoughts: Del dine tanker…
     share_on_poll: Stil et spørgsmål eller del nye oplysninger
-    type_at_to_notify_people: "Skriv {'@'} for at give folk besked"
+    type_at_to_notify_people: Skriv {'@'} for at give folk besked
   thread_nav:
     participants: Deltagere
   sidebar:
@@ -1095,6 +1095,7 @@ da:
     copy_markdown: Kopiér Markdown
     copy_markdown_description: Kopiér tråden som struktureret Markdown – ideel til brug med en AI-agent eller til at oprette et simpelt dokument ud fra trådens indhold.
     thread_markdown_copied: Trådmarkdown kopieret
+    move_thread_v2: Flyt tråd
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -2878,6 +2879,11 @@ da:
     confirm_change_to_private: "%{groupName} er en åben gruppe. Hvis du fortsætter, vil denne diskussion være offentlig."
     messages:
       success: Diskussion flyttet til %{name}
+    move_thread_title: Flyt tråd
+    destination: Bestemmelsessted
+    direct_thread: Direkte tråd
+    direct_thread_hint: Alle, der har deltaget, vil beholde adgangen. Du og trådens opretter vil være trådadministratorer.
+    direct_thread_anonymous_poll: Tråde, der indeholder anonyme afstemninger, kan ikke konverteres til direkte tråde, da dette kan afsløre, hvem der har stemt.
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.

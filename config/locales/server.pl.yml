@@ -153,6 +153,7 @@ pl:
     '401':
       title: Nieautoryzowane
     new_account_trial_group_limit: Nowe konta są ograniczone do jednej grupy. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej.
+    direct_thread_anonymous_poll: Wątku zawierającego anonimową ankietę nie można przekształcić w wątek bezpośredni
   group:
     error:
       handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-

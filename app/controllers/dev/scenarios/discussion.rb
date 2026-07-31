@@ -10,6 +10,25 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_discussion_for_mention_ranking
+    group = create_group
+    [
+      ["Jerry Scott", "jerryscott"],
+      ["Scott Lemmon", "scottlemmon"]
+    ].each do |name, username|
+      user = User.find_or_create_by!(email: "#{username}@example.com") do |new_user|
+        new_user.name = name
+        new_user.username = username
+        new_user.email_verified = true
+      end
+      group.add_member!(user)
+    end
+
+    create_discussion
+    sign_in patrick
+    redirect_to discussion_path(create_discussion)
+  end
+
   def setup_multiple_discussions
     sign_in patrick
     create_discussion

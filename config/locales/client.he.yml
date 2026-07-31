@@ -554,7 +554,7 @@ he:
     add_a_comment: הוסף תגובה
     share_your_thoughts: שתפו את מחשבותיכם…
     share_on_poll: שאל שאלה או שתף מידע חדש
-    type_at_to_notify_people: "הקלד {'@'} כדי להודיע לאנשים"
+    type_at_to_notify_people: הקלד {'@'} כדי להודיע לאנשים
   thread_nav:
     participants: משתתפים
   sidebar:
@@ -851,7 +851,7 @@ he:
     new_template: תבנית חדשה
     new_template_subtitle: צור דוגמה שאחרים יכולים להעתיק
     to: ל
-    direct_thread: חוט ישיר
+    direct_thread: שרשור ישיר
     invite_only_thread: שרשור להזמנה בלבד
     none_direct_thread: שרשור ישיר (ללא קבוצה)
     none_invite_only_thread: שרשור להזמנה בלבד (ללא קבוצה)
@@ -1099,6 +1099,7 @@ he:
     copy_markdown: העתקת Markdown
     copy_markdown_description: העתק את השרשור כ-Markdown מובנה - אידיאלי לשימוש עם סוכן בינה מלאכותית או ליצירת מסמך פשוט מתוכן השרשור.
     thread_markdown_copied: ה-Markdown של השרשור הועתק
+    move_thread_v2: הזזת שרשור
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2897,6 +2898,11 @@ he:
     confirm_change_to_private: "%{groupName} היא קבוצה פתוחה. אם תמשיך, דיון זה יהיה ציבורי."
     messages:
       success: הדיון הועבר ל-%{name}
+    move_thread_title: הזזת שרשור
+    destination: יַעַד
+    direct_thread: חוט ישיר
+    direct_thread_hint: כל מי שהשתתף ישמור על הגישה. אתה ויוצר השרשור תהיו מנהלי השרשור.
+    direct_thread_anonymous_poll: לא ניתן להמיר שרשורים המכילים סקרים אנונימיים לשרשורים ישירים מכיוון שזה עלול לחשוף מי הצביע
   auth:
     oauth_cancelled: הכניסה בוטלה
     switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.

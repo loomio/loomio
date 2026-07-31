@@ -556,7 +556,7 @@ hu:
     add_a_comment: Hozzászólás hozzáadása
     share_your_thoughts: Oszd meg a gondolataidat…
     share_on_poll: Tegyen fel kérdést, vagy osszon meg új információkat
-    type_at_to_notify_people: "Írd be a {'@'} jelet az értesítéshez"
+    type_at_to_notify_people: Írd be a {'@'} jelet az értesítéshez
   thread_nav:
     participants: Résztvevők
   sidebar:
@@ -1099,6 +1099,7 @@ hu:
     copy_markdown: Markdown másolása
     copy_markdown_description: Másolja a szálat strukturált Markdown-ként – ideális mesterséges intelligencia alapú ügynökkel való használatra vagy egy egyszerű dokumentum létrehozásához a szál tartalmából.
     thread_markdown_copied: A szál Markdown másolva
+    move_thread_v2: Szál áthelyezése
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -2885,6 +2886,11 @@ hu:
     confirm_change_to_private: A %{groupName} egy nyílt csoport. Ha folytatod, ez a beszélgetés nyilvános lesz.
     messages:
       success: 'Vita áthelyezve ide: %{name}'
+    move_thread_title: Szál áthelyezése
+    destination: Rendeltetési hely
+    direct_thread: Közvetlen szál
+    direct_thread_hint: Mindenki, aki részt vett, megtartja a hozzáférést. Te és a téma létrehozója a téma adminisztrátorai lesztek.
+    direct_thread_anonymous_poll: A névtelen szavazásokat tartalmazó szálak nem alakíthatók át közvetlen szálakká, mert ez felfedheti, hogy ki szavazott.
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
     switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.

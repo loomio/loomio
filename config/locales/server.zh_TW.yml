@@ -152,6 +152,7 @@ zh_TW:
       spoofed_media_type: 檔案內容不符合其檔案名稱
       pwned_password: 該密碼之前曾出現在資料外洩事件中，切勿使用
     new_account_trial_group_limit: 新帳號僅限加入一個群組。如需加入更多群組，請聯絡客服。
+    direct_thread_anonymous_poll: 包含匿名投票的貼文無法轉換為直接貼文。
   group:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。

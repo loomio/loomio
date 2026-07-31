@@ -62,7 +62,11 @@ export function useCommonMentioning(model) {
                 (u.handle || '').toLowerCase().startsWith(query.value) ||
                 (u.name || '').toLowerCase().includes(` ${query.value}`);
       });
-      mentions.value = sortBy(unsorted, row => row.name);
+      mentions.value = sortBy(unsorted, row => {
+        const name = (row.name || '').toLowerCase();
+        const handle = (row.handle || '').toLowerCase();
+        return name.startsWith(query.value) || handle.startsWith(query.value) ? 0 : 1;
+      });
     }
   };
 

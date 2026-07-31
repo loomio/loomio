@@ -149,6 +149,7 @@ he:
     '404':
       body: הפריט שביקשת לא נמצא. זה יכול לקרות אם דיון או סקר נמחקו.
     new_account_trial_group_limit: חשבונות חדשים מוגבלים לקבוצה אחת. אנא צרו קשר עם התמיכה אם אתם זקוקים ליותר.
+    direct_thread_anonymous_poll: לא ניתן להמיר שרשור המכיל סקר אנונימי לשרשור ישיר
   group:
     error:
       handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-

@@ -564,7 +564,7 @@ fr:
     add_a_comment: Ajouter un commentaire
     share_your_thoughts: Partage tes réflexions…
     share_on_poll: Pose une question ou partage de nouvelles informations
-    type_at_to_notify_people: "Tape {'@'} pour notifier des personnes"
+    type_at_to_notify_people: Tape {'@'} pour notifier des personnes
   thread_nav:
     participants: Participants
   sidebar:
@@ -1109,6 +1109,7 @@ fr:
     copy_markdown: Copier le Markdown
     copy_markdown_description: Copie la discussion au format Markdown structuré — idéal pour une utilisation avec un agent d'IA ou pour créer un document simple à partir du contenu de la discussion.
     thread_markdown_copied: Fil de discussion Markdown copié
+    move_thread_v2: Déplacer le sujet
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -2922,6 +2923,11 @@ fr:
     confirm_change_to_private: "%{groupName} est un groupe ouvert. Si tu continues, cette discussion sera publique."
     messages:
       success: Discussion déplacée vers %{name}
+    move_thread_title: Déplacer le sujet
+    destination: Destination
+    direct_thread: Discussion directe
+    direct_thread_hint: Toutes les personnes ayant participé conserveront leur accès. Toi et la personne qui a créé la discussion en serez les administrateurs.
+    direct_thread_anonymous_poll: Les discussions contenant des sondages anonymes ne peuvent pas être converties en discussions directes car cela pourrait révéler qui a voté.
   auth:
     oauth_cancelled: La connexion a été annulée.
     switching_accounts: Changement de compte. Connecte-toi avec tes nouvelles informations de compte.

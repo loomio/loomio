@@ -142,6 +142,93 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_not moved_event.custom_fields.key?('source_group_id')
   end
 
+  test "move converts a group discussion to a direct thread for its participants" do
+    mover = users(:admin)
+    voter = users(:member)
+    commenter = User.create!(
+      name: "Direct commenter",
+      email: "direct-commenter-#{SecureRandom.hex(4)}@example.com",
+      username: "directcommenter#{SecureRandom.hex(4)}",
+      email_verified: true
+    )
+    reactor = User.create!(
+      name: "Direct reactor",
+      email: "direct-reactor-#{SecureRandom.hex(4)}@example.com",
+      username: "directreactor#{SecureRandom.hex(4)}",
+      email_verified: true
+    )
+    observer = User.create!(
+      name: "Direct observer",
+      email: "direct-observer-#{SecureRandom.hex(4)}@example.com",
+      username: "directobserver#{SecureRandom.hex(4)}",
+      email_verified: true
+    )
+    [commenter, reactor, observer].each { |user| @group.add_member!(user) }
+
+    comment = Comment.new(body: "Participating by commenting", parent: @discussion)
+    CommentService.create(comment:, actor: commenter)
+    ReactionService.update(
+      reaction: Reaction.new(reactable: comment),
+      params: { reaction: "🙂" },
+      actor: reactor
+    )
+
+    poll = @topic.polls.first!
+    stance = poll.stances.undecided.find_by!(participant: voter, latest: true)
+    stance.choice = poll.poll_option_names.first
+    StanceService.create(stance:, actor: voter)
+
+    TopicReader.for(user: observer, topic: @topic).viewed!
+    @topic.add_admin!(commenter, @user)
+
+    TopicService.move(topic: @topic, params: { make_direct: true }, actor: mover)
+
+    participant_ids = [@user.id, mover.id, voter.id, commenter.id, reactor.id]
+    active_readers = @topic.topic_readers.active
+
+    assert_nil @topic.reload.group_id
+    assert @topic.private
+    assert_equal participant_ids.sort, active_readers.pluck(:user_id).sort
+    assert_equal participant_ids.sort, active_readers.guests.pluck(:user_id).sort
+    assert_equal [@user.id, mover.id].sort, active_readers.admins.pluck(:user_id).sort
+    assert_not_nil @topic.topic_readers.find_by!(user: observer).revoked_at
+    assert TopicQuery.visible_to(user: commenter, topic_id: @topic.id).exists?
+    assert_not TopicQuery.visible_to(user: observer, topic_id: @topic.id).exists?
+  end
+
+  test "move does not convert a thread containing an anonymous poll to direct" do
+    poll = @topic.polls.first!
+    poll.update!(anonymous: true)
+    group_id = @topic.group_id
+    reader_attributes = @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+
+    error = assert_raises ActiveRecord::RecordInvalid do
+      TopicService.move(topic: @topic, params: { make_direct: true }, actor: users(:admin))
+    end
+
+    assert_includes error.record.errors[:base], I18n.t("errors.direct_thread_anonymous_poll")
+    assert_equal group_id, @topic.reload.group_id
+    assert_equal reader_attributes, @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+  end
+
+  test "move does not treat an unknown destination group as direct" do
+    group_id = @topic.group_id
+
+    assert_raises ActiveRecord::RecordNotFound do
+      TopicService.move(topic: @topic, params: { group_id: -1 }, actor: users(:admin))
+    end
+
+    assert_equal group_id, @topic.reload.group_id
+  end
+
+  test "move does not let a non-admin convert a group discussion to direct" do
+    assert_raises CanCan::AccessDenied do
+      TopicService.move(topic: @topic, params: { make_direct: true }, actor: users(:member))
+    end
+
+    assert_equal @group.id, @topic.reload.group_id
+  end
+
   # -- Close / Reopen --
 
   test "locks a topic" do

@@ -554,7 +554,7 @@ tr:
     add_a_comment: Yorum ekle
     share_your_thoughts: Düşüncelerinizi paylaşın…
     share_on_poll: Bir soru sorun veya yeni bilgiler paylaşın
-    type_at_to_notify_people: "Kişileri bilgilendirmek için {'@'} işaretini kullanın"
+    type_at_to_notify_people: Kişileri bilgilendirmek için {'@'} işaretini kullanın
   thread_nav:
     participants: Katılımcılar
   sidebar:
@@ -1095,6 +1095,7 @@ tr:
     copy_markdown: Markdown'ı Kopyala
     copy_markdown_description: Konuşma dizisini yapılandırılmış Markdown olarak kopyalayın — yapay zeka ajanlarıyla kullanım veya konuşma dizisi içeriğinden basit bir belge oluşturmak için idealdir.
     thread_markdown_copied: Konu Markdown'ı kopyalandı
+    move_thread_v2: Konuyu taşı
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -2878,6 +2879,11 @@ tr:
     confirm_change_to_private: "%{groupName} açık bir gruptur. Devam ederseniz, bu tartışma herkese açık olacaktır."
     messages:
       success: Tartışma %{name}'e taşındı
+    move_thread_title: Konuyu taşı
+    destination: Varış noktası
+    direct_thread: Doğrudan konu
+    direct_thread_hint: Katılan herkes erişim hakkını koruyacak. Siz ve konuyu oluşturan kişi, konunun yöneticileri olacaksınız.
+    direct_thread_anonymous_poll: Anonim anketler içeren konular, kimin oy kullandığını ortaya çıkarabileceği için doğrudan konulara dönüştürülemez.
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.

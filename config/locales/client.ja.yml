@@ -1094,6 +1094,7 @@ ja:
     copy_markdown: マークダウンをコピー
     copy_markdown_description: スレッドを構造化されたMarkdown形式でコピーします。これは、AIエージェントと連携させたり、スレッドの内容からシンプルなドキュメントを作成したりするのに最適です。
     thread_markdown_copied: スレッドのマークダウンがコピーされました
+    move_thread_v2: スレッドを移動
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色
@@ -2877,6 +2878,11 @@ ja:
     confirm_change_to_private: "%{groupName} は公開グループです。続行すると、このディスカッションは公開されます。"
     messages:
       success: ディスカッションは %{name} に移動されました
+    move_thread_title: スレッドを移動
+    destination: 行き先
+    direct_thread: ダイレクトスレッド
+    direct_thread_hint: 参加者全員が引き続きアクセスできます。あなたとスレッド作成者がスレッド管理者となります。
+    direct_thread_anonymous_poll: 匿名投票を含むスレッドは、誰が投票したかが明らかになる可能性があるため、直接投票スレッドに変換することはできません。
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。

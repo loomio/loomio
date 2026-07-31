@@ -556,7 +556,7 @@ ca:
     add_a_comment: Afegeix un comentari
     share_your_thoughts: Comparteix els teus pensaments…
     share_on_poll: Fes una pregunta o comparteix informació nova
-    type_at_to_notify_people: "Escriu {'@'} per notificar a la gent"
+    type_at_to_notify_people: Escriu {'@'} per notificar a la gent
   thread_nav:
     participants: Participants
   sidebar:
@@ -1101,6 +1101,7 @@ ca:
     copy_markdown: Copiar Markdown
     copy_markdown_description: Copieu el fil com a Markdown estructurat, ideal per utilitzar-lo amb un agent d'IA o per crear un document senzill a partir del contingut del fil.
     thread_markdown_copied: S'ha copiat el Markdown del fil
+    move_thread_v2: Mou el fil
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -2905,6 +2906,11 @@ ca:
     confirm_change_to_private: "%{groupName} és un grup obert. Si continueu, aquesta discussió serà pública."
     messages:
       success: La discussió s'ha mogut a %{name}
+    move_thread_title: Mou el fil
+    destination: Destinació
+    direct_thread: Fil directe
+    direct_thread_hint: Tothom qui ha participat conservarà l'accés. Tu i el creador del fil sereu administradors del fil.
+    direct_thread_anonymous_poll: Els fils que contenen enquestes anònimes no es poden convertir en fils directes perquè això podria revelar qui ha votat.
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.

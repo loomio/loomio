@@ -554,7 +554,7 @@ sl:
     add_a_comment: Dodaj komentar
     share_your_thoughts: Delite svoje misli …
     share_on_poll: Postavite vprašanje ali delite nove informacije
-    type_at_to_notify_people: "Vtipkajte {'@'}, da obvestite ljudi"
+    type_at_to_notify_people: Vtipkajte {'@'}, da obvestite ljudi
   thread_nav:
     participants: Udeleženci
   sidebar:
@@ -1095,6 +1095,7 @@ sl:
     copy_markdown: Kopiraj Markdown
     copy_markdown_description: Kopirajte nit kot strukturiran Markdown – idealno za uporabo z agentom umetne inteligence ali za ustvarjanje preprostega dokumenta iz vsebine niti.
     thread_markdown_copied: Nit Markdown kopiran
+    move_thread_v2: Premakni nit
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2878,6 +2879,11 @@ sl:
     confirm_change_to_private: "%{groupName} je odprta skupina. Če nadaljujete, bo ta razprava javna."
     messages:
       success: Razprava je bila premaknjena na %{name}
+    move_thread_title: Premakni nit
+    destination: Destinacija
+    direct_thread: Neposredna nit
+    direct_thread_hint: Vsi, ki so sodelovali, bodo ohranili dostop. Vi in ustvarjalec teme bosta skrbnika teme.
+    direct_thread_anonymous_poll: Niti, ki vsebujejo anonimne ankete, ni mogoče pretvoriti v neposredne niti, ker bi to lahko razkrilo, kdo je glasoval
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.

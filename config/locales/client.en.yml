@@ -1160,6 +1160,7 @@ en:
     unpin_event: Unpin from timeline
     comment_copied: Comment URL copied to clipboard
     move_thread: Move to group
+    move_thread_v2: Move thread
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
     url_copied: Link copied to clipboard
@@ -1961,6 +1962,11 @@ en:
     body: Destination group
     confirm: Move discussion
     confirm_change_to_private: "%{groupName} is an open group. If you proceed, this discussion will be public."
+    move_thread_title: Move thread
+    destination: Destination
+    direct_thread: Direct thread
+    direct_thread_hint: Everyone who has participated will retain access. You and the thread creator will be thread administrators.
+    direct_thread_anonymous_poll: Threads containing anonymous polls cannot be converted to direct threads because this could reveal who voted
     messages:
       success: Discussion moved to %{name}
   delete_comment_dialog:

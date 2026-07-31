@@ -556,7 +556,7 @@ pl:
     add_a_comment: Dodaj komentarz
     share_your_thoughts: Podziel się swoimi przemyśleniami…
     share_on_poll: Zadaj pytanie lub udostępnij nowe informacje
-    type_at_to_notify_people: "Wpisz {'@'}, aby powiadomić ludzi"
+    type_at_to_notify_people: Wpisz {'@'}, aby powiadomić ludzi
   thread_nav:
     participants: Uczestnicy
   sidebar:
@@ -1101,6 +1101,7 @@ pl:
     copy_markdown: Kopiuj Markdown
     copy_markdown_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown — idealnego do użycia z agentem AI lub do utworzenia prostego dokumentu z zawartości wątku.
     thread_markdown_copied: Wątek Markdown skopiowany
+    move_thread_v2: Przenieś wątek
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2905,6 +2906,11 @@ pl:
     confirm_change_to_private: "%{groupName} to grupa otwarta. Jeśli przejdziesz dalej, ta dyskusja stanie się publiczna."
     messages:
       success: Dyskusja przeniesiona do %{name}
+    move_thread_title: Przenieś wątek
+    destination: Miejsce docelowe
+    direct_thread: Bezpośredni wątek
+    direct_thread_hint: Każdy, kto wziął udział, zachowa dostęp. Ty i twórca wątku będziecie administratorami wątku.
+    direct_thread_anonymous_poll: Wątków zawierających anonimowe ankiety nie można przekształcić w wątki bezpośrednie, ponieważ mogłoby to ujawnić, kto głosował
   auth:
     oauth_cancelled: Logowanie zostało anulowane
     switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.

@@ -557,7 +557,7 @@ uk:
     add_a_comment: Додати коментар
     share_your_thoughts: Поділіться своїми думками…
     share_on_poll: Задайте питання або поділіться новою інформацією
-    type_at_to_notify_people: "Введіть {'@'}, щоб повідомити людей"
+    type_at_to_notify_people: Введіть {'@'}, щоб повідомити людей
   thread_nav:
     participants: Учасники
   sidebar:
@@ -1102,6 +1102,7 @@ uk:
     copy_markdown: Копіювати Markdown
     copy_markdown_description: Скопіюйте тему як структурований Markdown — ідеально підходить для використання з агентом штучного інтелекту або для створення простого документа з вмісту теми.
     thread_markdown_copied: Розмітка теми скопійована
+    move_thread_v2: Перемістити тему
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -1735,7 +1736,7 @@ uk:
     unread_discussions: Непрочитані обговорення
     recent_activity_notice: Показуються лише теми з активністю за останні 6 тижнів.
   discussion:
-    direct_thread: Пряма нитка
+    direct_thread: Пряма тема
     invite_only: Лише для запрошених
     private_thread: Приватна тема
     max_threads_reached: |
@@ -2908,6 +2909,11 @@ uk:
     confirm_change_to_private: "%{groupName} – це відкрита група. Якщо ви продовжите, це обговорення буде публічним."
     messages:
       success: Обговорення перенесено до %{name}
+    move_thread_title: Перемістити тему
+    destination: Пункт призначення
+    direct_thread: Пряма нитка
+    direct_thread_hint: Усі, хто брав участь, збережуть доступ. Ви та автор теми будете адміністраторами теми.
+    direct_thread_anonymous_poll: Теми, що містять анонімні опитування, не можна перетворити на прямі теми, оскільки це може розкрити, хто голосував
   auth:
     oauth_cancelled: Вхід скасовано
     switching_accounts: Зміна облікових записів. Будь ласка, увійдіть, використовуючи дані нового облікового запису.
