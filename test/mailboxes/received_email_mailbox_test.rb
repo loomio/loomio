@@ -167,6 +167,29 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     assert_equal 1, Notification.where(user_id: @group.admins.pluck(:id)).count
   end
 
+  test "mailing list envelope recipient creates an unknown sender notification" do
+    raw_email = Mail.new do
+      from    'mailing-list-sender@example.com'
+      to      'Mailing list <list@example.com>'
+      subject 'Mailing list message'
+      body    'Message delivered through a mailing list'
+    end
+    raw_email['harakadata'] = {
+      mail_from: 'list-bounces@example.com',
+      rcpt_to: ["#{@group.handle}@#{ENV['REPLY_HOSTNAME']}"]
+    }.to_json
+
+    assert_difference -> { Event.where(kind: 'unknown_sender').count }, 1 do
+      receive_inbound_email_from_source(raw_email.to_s)
+    end
+
+    email = ReceivedEmail.last
+    assert_equal false, email.released
+    assert_equal @group.id, email.group_id
+    assert_equal 'mailing-list-sender@example.com', email.sender_email
+    assert_equal 1, Notification.where(user_id: @group.admins.pluck(:id)).count
+  end
+
   test "validated member alias starts a discussion" do
     MemberEmailAlias.create!(
       user_id: @user.id,

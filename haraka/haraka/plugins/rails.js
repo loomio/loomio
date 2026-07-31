@@ -66,8 +66,9 @@ const { URL } = require('url');
         }
       };
 
-      // optional: add Haraka meta headers for traceability
+      // Replace sender-supplied metadata before adding the trusted SMTP envelope.
       try {
+        transaction.remove_header('harakadata');
         transaction.add_header('harakadata', JSON.stringify({
           mail_from: transaction.mail_from.address(),
           rcpt_to: transaction.rcpt_to.map(r => r.address()),

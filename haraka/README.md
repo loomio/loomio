@@ -9,6 +9,12 @@ trusted `Authentication-Results` header. Authentication failures are not
 rejected at the SMTP boundary: Loomio uses the DMARC result when deciding
 whether a message can be attributed to the claimed member.
 
+It also replaces any sender-supplied `harakadata` header with trusted SMTP
+envelope metadata. Loomio uses the envelope recipients for routing so mail
+forwarders and mailing lists do not need to rewrite the visible `To` header.
+Custom relays that provide this header must remove sender-supplied copies
+before stamping their own.
+
 It rejects messages that:
 
 - Fail fcrdns

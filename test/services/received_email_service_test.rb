@@ -227,6 +227,37 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
+  test "forwards from an SMTP envelope recipient and replies to the original sender" do
+    original_reply = ENV['REPLY_HOSTNAME']
+    ENV['REPLY_HOSTNAME'] = 'test.host'
+
+    rule = ForwardEmailRule.create!(handle: "staff#{SecureRandom.hex(4)}", email: 'staff@example.net')
+    sender_email = "sender#{SecureRandom.hex(4)}@example.com"
+    email = ReceivedEmail.create!(
+      headers: {
+        'From' => "Original Sender <#{sender_email}>",
+        'To' => 'Public address <hello@example.org>',
+        'Subject' => 'Forwarded staff message',
+        'harakadata' => {
+          mail_from: 'list-bounces@example.org',
+          rcpt_to: ["#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"]
+        }.to_json
+      },
+      body_text: 'Forwarded message body'
+    )
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+      ReceivedEmailService.route(email)
+    end
+
+    delivered = ActionMailer::Base.deliveries.last
+    assert_equal [rule.email], delivered.to
+    assert_equal [sender_email], delivered.reply_to
+    assert_not ReceivedEmail.where(id: email.id).exists?
+  ensure
+    ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
   # -- Handle redirect routing --
 
   test "routes email to group via retired handle" do
