@@ -19,7 +19,7 @@ class ReceivedEmailMailboxMixedTest < ActionMailbox::TestCase
     original_route = ReceivedEmailService.method(:route)
     ReceivedEmailService.define_singleton_method(:route) { |email| route_called = true }
 
-    inbound_email = receive_inbound_email_from_source(@mail.to_s)
+    inbound_email = create_inbound_email_from_source(@mail.to_s)
 
     assert_difference 'ReceivedEmail.count', 1 do
       ReceivedEmailMailbox.receive(inbound_email)

@@ -7,7 +7,8 @@ class ReceivedEmailMailbox < ApplicationMailbox
       return inbound_email.bounced!
     end
 
-    email.save!
+    return unless save_received_email(email)
+
     attach_files_and_inline_images(email)
     ReceivedEmailService.route(email)
   rescue => e
@@ -19,10 +20,21 @@ class ReceivedEmailMailbox < ApplicationMailbox
 
   def build_received_email
     ReceivedEmail.new(
+      message_id: inbound_email.message_id,
       headers:   mail.header.fields.to_h { |f| [f.name, f.decoded] },
       body_text: mail.text_part&.decoded || mail.decoded,
       body_html: mail.html_part&.decoded
     )
+  end
+
+  def save_received_email(email)
+    email.save!
+    true
+  rescue ActiveRecord::RecordNotUnique
+    raise unless ReceivedEmail.exists?(message_id: email.message_id)
+
+    Rails.logger.info("Ignored duplicate inbound email with Message-ID: #{email.message_id}")
+    false
   end
 
   def attach_files_and_inline_images(email)

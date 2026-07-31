@@ -222,7 +222,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     assert_includes delivered.to, rule.email
     assert_equal 'Forward me', delivered.subject
 
-    assert_not ReceivedEmail.where(id: email.id).exists?
+    assert email.reload.released
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -253,7 +253,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     delivered = ActionMailer::Base.deliveries.last
     assert_equal [rule.email], delivered.to
     assert_equal [sender_email], delivered.reply_to
-    assert_not ReceivedEmail.where(id: email.id).exists?
+    assert email.reload.released
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
