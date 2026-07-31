@@ -26,8 +26,8 @@ const listen = async (handler) => {
 const connectionFor = (message, addedHeaders = {}, headerActions = []) => ({
   transaction: {
     message_stream: Readable.from([message]),
-    mail_from: { address: () => 'sender@example.com' },
-    rcpt_to: [{ address: () => 'group@loomio.example' }],
+    mail_from: { address: 'sender@example.com' },
+    rcpt_to: [{ address: 'group@loomio.example' }],
     uuid: 'message-uuid',
     add_header: (name, value) => {
       addedHeaders[name] = value;
@@ -112,4 +112,25 @@ test('soft-denies delivery when Action Mailbox returns an error', async () => {
 
   assert.equal(result.status, DENYSOFT);
   assert.equal(result.reason, 'Rails returned 503');
+});
+
+test('does not send to Action Mailbox when trace metadata cannot be added', async () => {
+  let requestCount = 0;
+  process.env.RAILS_INBOUND_EMAIL_PASSWORD = 'inbound-secret';
+  process.env.RAILS_INBOUND_EMAIL_URL = await listen((_request, response) => {
+    requestCount += 1;
+    response.writeHead(204);
+    response.end();
+  });
+
+  const connection = connectionFor('Subject: Test\r\n\r\nMessage');
+  connection.transaction.add_header = () => {
+    throw new Error('cannot add header');
+  };
+
+  const result = await deliver(connection);
+
+  assert.equal(result.status, DENYSOFT);
+  assert.equal(result.reason, 'Adding custom headers failed: cannot add header');
+  assert.equal(requestCount, 0);
 });
