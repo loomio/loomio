@@ -74,6 +74,7 @@ success messages).
 - Summarize changes that affect users, permissions, security, performance, deployment, APIs, or operator workflows. Omit routine dependency updates and purely internal refactors unless they require action or materially affect reliability.
 - Include required migration and upgrade steps, exact commands, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
 - Verify release-note claims against merged code, tests, pull requests, and user-manual changelog entries. Resolve placeholder links before publishing the release.
+- Draft release notes locally and stop for the user to edit and explicitly approve them as a human check before committing the release notes, creating or pushing a tag, publishing a GitHub release, or deploying the release.
 
 ## i18n / Localization
 

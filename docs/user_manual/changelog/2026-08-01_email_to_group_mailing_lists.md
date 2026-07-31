@@ -1,14 +1,17 @@
-# Email-to-group supports mailing lists and forwarding
+# Subscribe a group to an email mailing list
 
-Email-to-group now uses the delivery address supplied by Loomio's inbound mail
-server. Messages forwarded from another address, or delivered through a mailing
-list, can reach a group even when the visible **To** field still shows the
-original address.
+You can now subscribe a group's Loomio email address to an external mailing
+list. When the list delivers a message to Loomio, it can start a new thread even
+when the visible **To** field shows the mailing-list address rather than the
+group's address. Find the group's email address in **Group settings** under
+**Start a discussion by email**.
 
-The same handling applies to Loomio email addresses configured to forward to a
-staff mailbox; replies continue to go to the original sender.
+The thread author is matched from the message's visible **From** address. A
+group member's address works immediately. For an unrecognised address, group
+administrators receive an in-app notification where they can associate the
+address with a member or block it. Mailing lists that preserve each sender's
+address may therefore require an alias for each sender; lists that use one
+stable **From** address need only one alias.
 
-Existing email-to-group permissions are unchanged. Messages from group members
-and approved email aliases can start threads. Group administrators receive an
-in-app notification when a message comes from an unrecognised address, where
-they can associate the address with a member or block it.
+Email forwarding also works when another address forwards messages to a Loomio
+group address. Existing email-to-group permissions are unchanged.

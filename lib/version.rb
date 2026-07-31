@@ -1,5 +1,5 @@
 module Version
   def self.current
-    "3.1.4"
+    "3.1.5"
   end
 end
