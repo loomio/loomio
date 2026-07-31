@@ -13,6 +13,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     )
     @original_b3_api_key = ENV['B3_API_KEY']
     ENV['B3_API_KEY'] = @api_key
+    @request.headers['Authorization'] = "Bearer #{@api_key}"
   end
 
   teardown do
@@ -20,7 +21,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "index returns users with identities" do
-    @request.headers['Authorization'] = "Bearer #{@api_key}"
     get :index
     assert_response 200
 
@@ -43,7 +43,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
       is_admin: true
     )
 
-    @request.headers['Authorization'] = "Bearer #{@api_key}"
     get :index, params: { is_admin: true }
     assert_response 200
 
@@ -53,7 +52,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "show returns a user" do
-    @request.headers['Authorization'] = "Bearer #{@api_key}"
     get :show, params: { id: @user.id }
     assert_response 200
 
@@ -63,7 +61,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "show by identity returns a user" do
-    @request.headers['Authorization'] = "Bearer #{@api_key}"
     get :show_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
@@ -72,7 +69,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "update changes managed user fields" do
     patch :update, params: {
-      b3_api_key: @api_key,
       id: @user.id,
       user: {
         name: 'Updated Name',
@@ -92,7 +88,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "update rejects unknown user fields" do
     patch :update, params: {
-      b3_api_key: @api_key,
       id: @user.id,
       user: {
         name: 'Updated Name',
@@ -107,7 +102,6 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "update by identity changes managed user fields" do
     patch :update_by_identity, params: {
-      b3_api_key: @api_key,
       identity_type: @identity.identity_type,
       uid: @identity.uid,
       user: { name: 'Identity Update' }
@@ -119,12 +113,12 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "query string API keys are rejected" do
+    @request.headers['Authorization'] = nil
     get :show, params: { b3_api_key: @api_key, id: @user.id }
     assert_response :forbidden
   end
 
   test "bearer token authenticates requests" do
-    @request.headers['Authorization'] = "Bearer #{@api_key}"
     get :show, params: { id: @user.id }
     assert_response 200
 
@@ -132,7 +126,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "deactivate happy case" do
-    post :deactivate, params: { b3_api_key: @api_key, id: @user.id }
+    post :deactivate, params: { id: @user.id }
     assert_response 200
     assert_equal true, json['success']
     assert @user.reload.deactivated_at.present?
@@ -141,31 +135,40 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "cannot deactivate deactivated user" do
     @user.update_column(:deactivated_at, DateTime.now)
-    post :deactivate, params: { b3_api_key: @api_key, id: @user.id }
+    post :deactivate, params: { id: @user.id }
     assert_response 404
   end
 
   test "deactivate by identity" do
-    post :deactivate_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    post :deactivate_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
     assert @user.reload.deactivated_at.present?
     assert_equal false, json['user']['active']
   end
 
-  test "deactivate incorrect key" do
-    post :deactivate, params: { b3_api_key: '09876543210987654321', id: @user.id }
+  test "request body API keys are rejected" do
+    @request.headers['Authorization'] = nil
+    post :deactivate, params: { b3_api_key: @api_key, id: @user.id }
     assert_response 403
     refute @user.reload.deactivated_at.present?
   end
 
-  test "deactivate blank key" do
-    post :deactivate, params: { b3_api_key: '', id: @user.id }
+  test "incorrect bearer token is rejected" do
+    @request.headers['Authorization'] = 'Bearer 09876543210987654321'
+    post :deactivate, params: { id: @user.id }
     assert_response 403
     refute @user.reload.deactivated_at.present?
   end
 
-  test "deactivate nil key" do
+  test "non-Bearer authorization schemes are rejected" do
+    @request.headers['Authorization'] = "Basic #{@api_key}"
+    get :show, params: { id: @user.id }
+    assert_response :forbidden
+  end
+
+  test "missing bearer token is rejected" do
+    @request.headers['Authorization'] = nil
     post :deactivate, params: { id: @user.id }
     assert_response 403
     refute @user.reload.deactivated_at.present?
@@ -173,7 +176,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "reactivate happy case" do
     @user.update_column(:deactivated_at, DateTime.now)
-    post :reactivate, params: { b3_api_key: @api_key, id: @user.id }
+    post :reactivate, params: { id: @user.id }
     assert_response 200
     assert_equal true, json['success']
     refute @user.reload.deactivated_at.present?
@@ -181,13 +184,13 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "cannot reactivate activated user" do
-    post :reactivate, params: { b3_api_key: @api_key, id: @user.id }
+    post :reactivate, params: { id: @user.id }
     assert_response 404
   end
 
   test "reactivate by identity" do
     @user.update_column(:deactivated_at, DateTime.now)
-    post :reactivate_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    post :reactivate_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
     refute @user.reload.deactivated_at.present?
@@ -197,7 +200,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   test "redact removes identifying fields and sessions" do
     @user.sessions.create!(user_agent: 'other browser', ip_address: '127.0.0.2')
 
-    post :redact, params: { b3_api_key: @api_key, id: @user.id }
+    post :redact, params: { id: @user.id }
     assert_response 200
     assert_equal true, json['success']
 
@@ -208,14 +211,14 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "redact by identity" do
-    post :redact_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    post :redact_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
     assert_nil @user.reload.email
   end
 
   test "destroy deletes user" do
-    delete :destroy, params: { b3_api_key: @api_key, id: @user.id }
+    delete :destroy, params: { id: @user.id }
     assert_response 200
     assert_equal true, json['success']
 
@@ -223,7 +226,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "destroy by identity deletes user" do
-    delete :destroy_by_identity, params: { b3_api_key: @api_key, identity_type: @identity.identity_type, uid: @identity.uid }
+    delete :destroy_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
     assert_response 200
 
     assert_not User.exists?(@user.id)

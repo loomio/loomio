@@ -8,7 +8,7 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
   def authenticate_api_key!
     api_key = ENV.fetch('B3_API_KEY', '')
     raise CanCan::AccessDenied unless api_key.length > 16
-    raise CanCan::AccessDenied unless secure_api_key?(api_key_param, api_key) || secure_api_key?(bearer_token, api_key)
+    raise CanCan::AccessDenied unless secure_api_key?(bearer_token, api_key)
   end
 
   def index
@@ -67,10 +67,6 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
 
   def secure_api_key?(candidate, api_key)
     ActiveSupport::SecurityUtils.secure_compare(candidate, api_key)
-  end
-
-  def api_key_param
-    request.request_parameters[:b3_api_key].to_s
   end
 
   def bearer_token
