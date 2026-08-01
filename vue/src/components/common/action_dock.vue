@@ -21,6 +21,18 @@ export default {
       type: String,
       default: 'mdi-dots-horizontal'
     },
+    menuIconOnly: {
+      type: Boolean,
+      default: true
+    },
+    menuShowIcon: {
+      type: Boolean,
+      default: false
+    },
+    menuName: {
+      type: String,
+      default: null
+    },
     color: {
       type: String,
       default: undefined
@@ -85,8 +97,9 @@ section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px"
     v-if="menuActions"
     :actions='menuActions'
     :menuIcon="menuIcon"
-    :name="$t('action_dock.more_actions')"
-    icon
+    :show-icon="menuShowIcon"
+    :name="menuName || $t('action_dock.more_actions')"
+    :icon="menuIconOnly"
     :color="color"
     :variant="variant"
     :size="size"

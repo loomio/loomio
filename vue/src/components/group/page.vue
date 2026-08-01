@@ -117,6 +117,9 @@ v-main
       :model='group'
       :actions='dockActions'
       menu-icon='mdi-cog'
+      :menu-name="$t('common.settings')"
+      :menu-icon-only="false"
+      menu-show-icon
       :menu-actions='menuActions')
     join-group-button(:group='group')
     attachment-list(:attachments="group.attachments")
