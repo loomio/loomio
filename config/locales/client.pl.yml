@@ -346,6 +346,7 @@ pl:
     read: Czytać
     unread: Niewykształcony
     discussion: Dyskusja
+    user_guide: Instrukcja obsługi
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1102,6 +1103,7 @@ pl:
     copy_markdown_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown — idealnego do użycia z agentem AI lub do utworzenia prostego dokumentu z zawartości wątku.
     thread_markdown_copied: Wątek Markdown skopiowany
     move_thread_v2: Przenieś wątek
+    more: Więcej
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2514,6 +2516,12 @@ pl:
     notification_only_label: Wyślij tylko nagłówek powiadomienia
     check_for_test_message: Sprawdź swój pokój czatu w poszukiwaniu wiadomości od bota!
     webex: WeBex
+    chat_integrations: Integracje czatów
+    no_chat_integrations_yet: Wysyłaj powiadomienia o aktywności Loomio do usługi czatu swojej grupy
+    new_chat_integration: Nowa integracja czatu
+    delete_chat_integration: Usunąć integrację czatu?
+    delete_chat_integration_helptext: Loomio przestanie wysyłać powiadomienia do %{name}
+    chat_integration_deleted: Usunięto integrację czatu
   webhook:
     integrations: Integracje
     api_keys: klucze API

@@ -346,6 +346,7 @@ hr:
     read: Čitaj
     unread: Nepročitano
     discussion: Rasprava
+    user_guide: Vodič za korisnike
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -1096,6 +1097,7 @@ hr:
     copy_markdown_description: Kopirajte nit kao strukturirani Markdown — idealno za korištenje s AI agentom ili za stvaranje jednostavnog dokumenta iz sadržaja niti.
     thread_markdown_copied: Markdown teme kopiran
     move_thread_v2: Premjesti nit
+    more: Više
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje
@@ -2489,6 +2491,12 @@ hr:
     notification_only_label: Pošalji samo naslov obavijesti
     check_for_test_message: Provjerite svoju chat sobu za poruku od bota!
     webex: Webex
+    chat_integrations: Integracije chata
+    no_chat_integrations_yet: Šaljite obavijesti o Loomio aktivnosti na uslugu chata vaše grupe
+    new_chat_integration: Nova integracija chata
+    delete_chat_integration: Izbrisati integraciju chata?
+    delete_chat_integration_helptext: Loomio će prestati slati obavijesti korisniku %{name}
+    chat_integration_deleted: Integracija chata izbrisana
   webhook:
     integrations: Integracije
     api_keys: API ključevi

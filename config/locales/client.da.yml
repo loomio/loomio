@@ -346,6 +346,7 @@ da:
     read: Læse
     unread: Ulæst
     discussion: Diskussion
+    user_guide: Brugervejledning
   merge_accounts:
     modal:
       title: Flet konti
@@ -1096,6 +1097,7 @@ da:
     copy_markdown_description: Kopiér tråden som struktureret Markdown – ideel til brug med en AI-agent eller til at oprette et simpelt dokument ud fra trådens indhold.
     thread_markdown_copied: Trådmarkdown kopieret
     move_thread_v2: Flyt tråd
+    more: Mere
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -2489,6 +2491,12 @@ da:
     notification_only_label: Send kun meddelelsesoverskrift
     check_for_test_message: Tjek dit chatrum for en besked fra botten!
     webex: Webex
+    chat_integrations: Chatintegrationer
+    no_chat_integrations_yet: Send notifikationer om Loomio-aktivitet til din gruppes chattjeneste
+    new_chat_integration: Ny chatintegration
+    delete_chat_integration: Slet chatintegration?
+    delete_chat_integration_helptext: Loomio stopper med at sende notifikationer til %{name}
+    chat_integration_deleted: Chatintegration slettet
   webhook:
     integrations: Integrationer
     api_keys: API nøgler

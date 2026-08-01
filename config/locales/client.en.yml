@@ -294,6 +294,7 @@ en:
     decisions: Decisions
     settings: Settings
     help: Help
+    user_guide: User guide
     anonymous: Anonymous
     required: Required
     email_address: Email address
@@ -1116,6 +1117,7 @@ en:
     share_ai_skill: If you write a new AI skill or improve the supplied skill, you’re welcome to share it with the Loomio team
     share_ai_skill_contact: Contact the Loomio team
     actions_menu: Actions menu
+    more: More
     more_actions: More actions
     save_bookmark: Save bookmark
     remove_bookmark: Remove bookmark
@@ -2846,6 +2848,12 @@ en:
     password: Password
     reactivate: Reactivate account
   chatbot:
+    chat_integrations: Chat integrations
+    no_chat_integrations_yet: Send notifications about Loomio activity to your group’s chat service
+    new_chat_integration: New chat integration
+    delete_chat_integration: Delete chat integration?
+    delete_chat_integration_helptext: Loomio will stop sending notifications to %{name}
+    chat_integration_deleted: Chat integration deleted
     configure_chatbot: Configure chatbot
     test_connection: Test connection
     test_connection_ok: Looks good! You should see a message in the channel

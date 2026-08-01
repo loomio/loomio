@@ -346,6 +346,7 @@ uk:
     read: Читати
     unread: Непрочитане
     discussion: Обговорення
+    user_guide: Посібник користувача
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -1103,6 +1104,7 @@ uk:
     copy_markdown_description: Скопіюйте тему як структурований Markdown — ідеально підходить для використання з агентом штучного інтелекту або для створення простого документа з вмісту теми.
     thread_markdown_copied: Розмітка теми скопійована
     move_thread_v2: Перемістити тему
+    more: Більше
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -2517,6 +2519,12 @@ uk:
     notification_only_label: Надіслати лише заголовок сповіщення
     check_for_test_message: Перевірте свою кімнату чату на наявність повідомлення від бота!
     webex: Вебекс
+    chat_integrations: Інтеграції чату
+    no_chat_integrations_yet: Надсилайте сповіщення про активність у Loomio до чату вашої групи
+    new_chat_integration: Нова інтеграція чату
+    delete_chat_integration: Видалити інтеграцію чату?
+    delete_chat_integration_helptext: Loomio припинить надсилати сповіщення користувачу %{name}
+    chat_integration_deleted: Інтеграцію чату видалено
   webhook:
     integrations: Інтеграція
     api_keys: Ключі API

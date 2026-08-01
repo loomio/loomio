@@ -346,6 +346,7 @@ ru:
     read: Читать
     unread: Непрочитано
     discussion: Обсуждение
+    user_guide: Руководство пользователя
   merge_accounts:
     modal:
       title: Объединить аккаунты
@@ -1096,6 +1097,7 @@ ru:
     copy_markdown_description: Скопируйте ветку обсуждения в формате структурированного Markdown — идеально подходит для использования с ИИ-агентом или для создания простого документа на основе содержимого ветки.
     thread_markdown_copied: Markdown обсуждения скопирован
     move_thread_v2: Переместить тему
+    more: Более
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -2489,6 +2491,12 @@ ru:
     notification_only_label: Отправлять только заголовок уведомления
     check_for_test_message: Проверьте свой чат на наличие сообщения от бота!
     webex: Вебекс
+    chat_integrations: Интеграция чата
+    no_chat_integrations_yet: Отправляйте уведомления об активности в Loomio в чат вашей группы
+    new_chat_integration: Новая интеграция чата
+    delete_chat_integration: Удалить интеграцию чата?
+    delete_chat_integration_helptext: Loomio прекратит отправлять уведомления пользователю %{name}
+    chat_integration_deleted: Интеграция чата удалена
   webhook:
     integrations: Интеграции
     api_keys: Ключи API

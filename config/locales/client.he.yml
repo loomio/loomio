@@ -346,6 +346,7 @@ he:
     read: לִקְרוֹא
     unread: לא נקרא
     discussion: דִיוּן
+    user_guide: מדריך למשתמש
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -1100,6 +1101,7 @@ he:
     copy_markdown_description: העתק את השרשור כ-Markdown מובנה - אידיאלי לשימוש עם סוכן בינה מלאכותית או ליצירת מסמך פשוט מתוכן השרשור.
     thread_markdown_copied: ה-Markdown של השרשור הועתק
     move_thread_v2: הזזת שרשור
+    more: יוֹתֵר
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2508,6 +2510,12 @@ he:
     notification_only_label: שלח כותרת התראה בלבד
     check_for_test_message: בדוק בחדר הצ'אט שלך להודעה מהבוט!
     webex: וובקס
+    chat_integrations: אינטגרציות צ'אט
+    no_chat_integrations_yet: שלח התראות על פעילות Loomio לשירות הצ'אט של הקבוצה שלך
+    new_chat_integration: אינטגרציה חדשה בצ'אט
+    delete_chat_integration: למחוק את שילוב הצ'אט?
+    delete_chat_integration_helptext: Loomio יפסיק לשלוח התראות אל %{name}
+    chat_integration_deleted: שילוב הצ'אט נמחק
   webhook:
     integrations: אינטגרציות
     api_keys: מפתחות API

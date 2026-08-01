@@ -346,6 +346,7 @@ fi:
     read: Lukea
     unread: Lukematon
     discussion: Keskustelu
+    user_guide: Käyttöopas
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -1096,6 +1097,7 @@ fi:
     copy_markdown_description: Kopioi ketju jäsenneltynä Markdown-muodossa – ihanteellinen tekoälyagentin kanssa käytettäväksi tai yksinkertaisen dokumentin luomiseen ketjun sisällöstä.
     thread_markdown_copied: Ketjun Markdown kopioitu
     move_thread_v2: Siirrä ketju
+    more: Lisää
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
@@ -2489,6 +2491,12 @@ fi:
     notification_only_label: Lähetä vain ilmoituksen otsikko
     check_for_test_message: Tarkista chat-huoneestasi viesti bottilta!
     webex: Webex
+    chat_integrations: Chat-integraatiot
+    no_chat_integrations_yet: Lähetä ilmoituksia Loomio-toiminnasta ryhmäsi chat-palveluun
+    new_chat_integration: Uusi chat-integraatio
+    delete_chat_integration: Poistetaanko chat-integraatio?
+    delete_chat_integration_helptext: Loomio lopettaa ilmoitusten lähettämisen käyttäjälle %{name}
+    chat_integration_deleted: Chat-integraatio poistettu
   webhook:
     integrations: Integraatiot
     api_keys: API-avaimet

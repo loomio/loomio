@@ -346,6 +346,7 @@ nl_NL:
     read: Lezen
     unread: Ongelezen
     discussion: Discussie
+    user_guide: Gebruikershandleiding
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1102,6 +1103,7 @@ nl_NL:
     copy_markdown_description: Kopieer de conversatie als gestructureerde Markdown — ideaal voor gebruik met een AI-agent of voor het maken van een eenvoudig document op basis van de conversatie-inhoud.
     thread_markdown_copied: Markdown-tekst van de thread gekopieerd
     move_thread_v2: Verplaats discussie
+    more: Meer
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2514,6 +2516,12 @@ nl_NL:
     notification_only_label: Alleen meldingskop verzenden
     check_for_test_message: Controleer je chatroom voor een bericht van de bot!
     webex: Webex
+    chat_integrations: Chatintegraties
+    no_chat_integrations_yet: Verstuur meldingen over Loomio-activiteit naar de chatfunctie van je groep
+    new_chat_integration: Nieuwe chatintegratie
+    delete_chat_integration: Chatintegratie verwijderen?
+    delete_chat_integration_helptext: Loomio stopt met het verzenden van notificaties naar %{name}
+    chat_integration_deleted: Chatintegratie verwijderd
   webhook:
     integrations: Integraties
     api_keys: API-sleutels

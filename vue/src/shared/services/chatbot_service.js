@@ -1,15 +1,54 @@
 import Records        from '@/shared/services/records';
-import AppConfig      from '@/shared/services/app_config';
 import openModal      from '@/shared/helpers/open_modal';
-import EventBus from '@/shared/services/event_bus';
-import { I18n } from '@/i18n';
+
+const icons = {
+  matrix: 'mdi-matrix',
+  slack: 'mdi-slack',
+  discord: 'mdi-discord',
+  microsoft: 'mdi-microsoft-teams',
+  markdown: 'mdi-chat-processing',
+  webex: 'webex'
+};
 
 export default new class ChatbotService {
+  iconForKind(kind) {
+    return icons[kind] || 'mdi-connection';
+  }
+
+  iconForChatbot(chatbot) {
+    return this.iconForKind(chatbot.kind === 'webhook' ? chatbot.webhookKind : chatbot.kind);
+  }
+
+  confirmDestroy(chatbot) {
+    const openList = () => openModal({
+      component: 'ChatbotList',
+      props: { group: chatbot.group() }
+    });
+
+    return openModal({
+      component: 'ConfirmModal',
+      props: {
+        confirm: {
+          submit: () => chatbot.destroy(),
+          successCallback: openList,
+          cancelCallback: openList,
+          text: {
+            title: 'chatbot.delete_chat_integration',
+            helptext: 'chatbot.delete_chat_integration_helptext',
+            submit: 'common.action.delete',
+            flash: 'chatbot.chat_integration_deleted'
+          },
+          textArgs: { name: chatbot.name }
+        }
+      }
+    });
+  }
+
   addActions(group) {
     return {
       matrix: {
         name: 'chatbot.matrix',
-        icon: 'mdi-matrix',
+        icon: this.iconForKind('matrix'),
         menu: true,
         canPerform() { return true; },
         perform() {
@@ -27,7 +66,7 @@ export default new class ChatbotService {
 
       slack: {
         name: 'chatbot.slack',
-        icon: 'mdi-slack',
+        icon: this.iconForKind('slack'),
         menu: true,
         canPerform() { return true; },
         perform() {
@@ -46,7 +85,7 @@ export default new class ChatbotService {
 
       discord: {
         name: 'chatbot.discord',
-        icon: 'mdi-discord',
+        icon: this.iconForKind('discord'),
         menu: true,
         canPerform() { return true; },
         perform() {
@@ -65,7 +104,7 @@ export default new class ChatbotService {
               
       microsoft: {
         name: 'chatbot.microsoft_teams',
-        icon: 'mdi-microsoft-teams',
+        icon: this.iconForKind('microsoft'),
         menu: true,
         canPerform() { return true; },
         perform() {
@@ -84,7 +123,7 @@ export default new class ChatbotService {
 
       mattermost: {
         name: 'chatbot.mattermost',
-        icon: 'mdi-chat-processing',
+        icon: this.iconForKind('markdown'),
         menu: true,
         canPerform() { return true; },
         perform() {
@@ -103,7 +142,7 @@ export default new class ChatbotService {
 
       webex: {
         name: 'chatbot.webex',
-        icon: 'webex',
+        icon: this.iconForKind('webex'),
         menu: true,
         canPerform() { return true; },
         perform() {

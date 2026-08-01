@@ -346,6 +346,7 @@ sv:
     read: Läsa
     unread: Oläst
     discussion: Diskussion
+    user_guide: Användarhandbok
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -1096,6 +1097,7 @@ sv:
     copy_markdown_description: Kopiera tråden som strukturerad Markdown – perfekt för användning med en AI-agent eller för att skapa ett enkelt dokument från trådinnehållet.
     thread_markdown_copied: Trådmarkdown kopierad
     move_thread_v2: Flytta tråd
+    more: Mer
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -2489,6 +2491,12 @@ sv:
     notification_only_label: Skicka endast meddelanderubrik
     check_for_test_message: Kolla ditt chattrum efter ett meddelande från boten!
     webex: Webex
+    chat_integrations: Chattintegrationer
+    no_chat_integrations_yet: Skicka aviseringar om Loomio-aktivitet till din grupps chattjänst
+    new_chat_integration: Ny chattintegration
+    delete_chat_integration: Ta bort chattintegrationen?
+    delete_chat_integration_helptext: Loomio kommer att sluta skicka aviseringar till %{name}
+    chat_integration_deleted: Chattintegrationen har raderats
   webhook:
     integrations: Integrationer
     api_keys: API-nycklar

@@ -79,7 +79,7 @@ v-main
     .d-flex.justify-center
       v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
         common-icon.mr-2(name="mdi-help-circle-outline")
-        span(v-t="'common.help'")
+        span(v-t="'common.user_guide'")
         span :
         space
         span(v-t="'tasks.tasks'")

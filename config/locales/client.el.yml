@@ -346,6 +346,7 @@ el:
     read: Ανάγνωση
     unread: Αδιάβαστος
     discussion: Συζήτηση
+    user_guide: Οδηγός χρήστη
   merge_accounts:
     modal:
       title: Συγχώνευση λογαριασμών
@@ -1096,6 +1097,7 @@ el:
     copy_markdown_description: Αντιγράψτε το νήμα ως δομημένο Markdown — ιδανικό για χρήση με έναν πράκτορα AI ή για τη δημιουργία ενός απλού εγγράφου από το περιεχόμενο του νήματος.
     thread_markdown_copied: Το Markdown του νήματος αντιγράφηκε
     move_thread_v2: Μετακίνηση νήματος
+    more: Περισσότερο
   formatting:
     formatting_tools: Εργαλεία μορφοποίησης κειμένου
     colors: Χρωματιστά
@@ -2489,6 +2491,12 @@ el:
     notification_only_label: Αποστολή μόνο επικεφαλίδας ειδοποίησης
     check_for_test_message: Ελέγξτε το chatroom σας για μήνυμα από το bot!
     webex: Webex
+    chat_integrations: Ενσωματώσεις συνομιλίας
+    no_chat_integrations_yet: Αποστολή ειδοποιήσεων σχετικά με τη δραστηριότητα του Loomio στην υπηρεσία συνομιλίας της ομάδας σας
+    new_chat_integration: Νέα ενσωμάτωση συνομιλίας
+    delete_chat_integration: Διαγραφή ενσωμάτωσης συνομιλίας;
+    delete_chat_integration_helptext: Το Loomio θα σταματήσει να στέλνει ειδοποιήσεις στον/στην %{name}
+    chat_integration_deleted: Η ενσωμάτωση συνομιλίας διαγράφηκε.
   webhook:
     integrations: Ενσωματώσεις
     api_keys: Κλειδιά API

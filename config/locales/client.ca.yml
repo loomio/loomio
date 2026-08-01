@@ -346,6 +346,7 @@ ca:
     read: Llegir
     unread: No llegit
     discussion: Discussió
+    user_guide: Guia de l'usuari
   merge_accounts:
     modal:
       title: Combina comptes
@@ -1102,6 +1103,7 @@ ca:
     copy_markdown_description: Copieu el fil com a Markdown estructurat, ideal per utilitzar-lo amb un agent d'IA o per crear un document senzill a partir del contingut del fil.
     thread_markdown_copied: S'ha copiat el Markdown del fil
     move_thread_v2: Mou el fil
+    more: Més
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -2514,6 +2516,12 @@ ca:
     notification_only_label: Envia només el títol de la notificació
     check_for_test_message: Comproveu la vostra sala de xat si hi ha un missatge del bot!
     webex: Webex
+    chat_integrations: Integracions de xat
+    no_chat_integrations_yet: Envia notificacions sobre l'activitat de Loomio al servei de xat del teu grup
+    new_chat_integration: Nova integració de xat
+    delete_chat_integration: Voleu suprimir la integració del xat?
+    delete_chat_integration_helptext: Loomio deixarà d'enviar notificacions a %{name}
+    chat_integration_deleted: Integració de xat suprimida
   webhook:
     integrations: Integracions
     api_keys: Claus API

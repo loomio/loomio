@@ -116,8 +116,8 @@ v-main
     action-dock(
       :model='group'
       :actions='dockActions'
-      menu-icon='mdi-cog'
-      :menu-name="$t('common.settings')"
+      :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"
+      :menu-name="canEditGroup ? $t('common.settings') : $t('action_dock.more')"
       :menu-icon-only="false"
       menu-show-icon
       :menu-actions='menuActions')

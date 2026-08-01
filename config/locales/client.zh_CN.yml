@@ -368,6 +368,7 @@ zh_CN:
     read: 读
     unread: 未读
     discussion: 讨论
+    user_guide: 用户指南
   merge_accounts:
     modal:
       title: 合并账户
@@ -1136,6 +1137,7 @@ zh_CN:
     copy_markdown_description: 将帖子内容复制为结构化的 Markdown 格式——非常适合与 AI 代理一起使用，或者从帖子内容创建简单的文档。
     thread_markdown_copied: 帖子 Markdown 已复制
     move_thread_v2: 移动主题
+    more: 更多
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -2725,6 +2727,12 @@ zh_CN:
     event_kind_helptext: 选择机器人始终会收到通知的事件。如果您不确定，可以全部取消选中。
     notification_only_label: 仅发送通知标题
     check_for_test_message: 请查看聊天室，看看有没有机器人发来的消息！
+    chat_integrations: 聊天集成
+    no_chat_integrations_yet: 将 Loomio 活动通知发送到您群组的聊天服务
+    new_chat_integration: 新的聊天集成
+    delete_chat_integration: 删除聊天集成？
+    delete_chat_integration_helptext: Loomio 将停止向 %{name} 发送通知
+    chat_integration_deleted: 聊天集成功能已删除
   webhook:
     integrations: 集成
     api_keys: API密钥

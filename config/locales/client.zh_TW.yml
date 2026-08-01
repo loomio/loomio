@@ -347,6 +347,7 @@ zh_TW:
     read: 讀
     unread: 未讀
     discussion: 討論
+    user_guide: 使用者指南
   merge_accounts:
     modal:
       title: 合併帳號
@@ -1103,6 +1104,7 @@ zh_TW:
     copy_markdown_description: 將貼文內容複製為結構化的 Markdown 格式——非常適合與 AI 代理程式一起使用，或從貼文內容創建簡單的文件。
     thread_markdown_copied: 貼文 Markdown 已複製
     move_thread_v2: 移動主題
+    more: 更多
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -2515,6 +2517,12 @@ zh_TW:
     notification_only_label: 僅傳送通知標題
     check_for_test_message: 檢查您的聊天室以取得來自機器人的訊息！
     webex: Webex
+    chat_integrations: 聊天集成
+    no_chat_integrations_yet: 將 Loomio 活動通知發送到您群組的聊天服務
+    new_chat_integration: 新的聊天集成
+    delete_chat_integration: 刪除聊天整合？
+    delete_chat_integration_helptext: Loomio 將停止向 %{name} 發送通知
+    chat_integration_deleted: 聊天整合功能已刪除
   webhook:
     integrations: 整合
     api_keys: API 金鑰

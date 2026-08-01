@@ -346,6 +346,7 @@ ro:
     read: Citire
     unread: Necitit
     discussion: Discuţie
+    user_guide: Ghid de utilizare
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -1096,6 +1097,7 @@ ro:
     copy_markdown_description: Copiază firul de discuție ca Markdown structurat — ideal pentru utilizare cu un agent AI sau pentru crearea unui document simplu din conținutul firului de discuție.
     thread_markdown_copied: Markdown-ul firului de discuție a fost copiat
     move_thread_v2: Mută firul de discuție
+    more: Mai mult
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -2489,6 +2491,12 @@ ro:
     notification_only_label: Trimiteți numai titlul notificării
     check_for_test_message: Verificați camera de chat pentru un mesaj de la bot!
     webex: Webex
+    chat_integrations: Integrări de chat
+    no_chat_integrations_yet: Trimite notificări despre activitatea Loomio către serviciul de chat al grupului tău
+    new_chat_integration: Nouă integrare a chatului
+    delete_chat_integration: Ștergeți integrarea chatului?
+    delete_chat_integration_helptext: Loomio va înceta să mai trimită notificări către %{name}
+    chat_integration_deleted: Integrarea chatului a fost ștearsă
   webhook:
     integrations: Integrari
     api_keys: Chei API

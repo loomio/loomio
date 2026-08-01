@@ -346,6 +346,7 @@ sl:
     read: Preberi
     unread: Neprebrano
     discussion: Razprava
+    user_guide: Uporabniški priročnik
   merge_accounts:
     modal:
       title: Združite račune
@@ -1096,6 +1097,7 @@ sl:
     copy_markdown_description: Kopirajte nit kot strukturiran Markdown – idealno za uporabo z agentom umetne inteligence ali za ustvarjanje preprostega dokumenta iz vsebine niti.
     thread_markdown_copied: Nit Markdown kopiran
     move_thread_v2: Premakni nit
+    more: Več
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2489,6 +2491,12 @@ sl:
     notification_only_label: Pošlji samo naslov obvestila
     check_for_test_message: Preverite svojo klepetalnico za sporočilo bota!
     webex: Webex
+    chat_integrations: Integracije klepeta
+    no_chat_integrations_yet: Pošlji obvestila o dejavnosti Loomia v klepetalno storitev vaše skupine
+    new_chat_integration: Nova integracija klepeta
+    delete_chat_integration: Želite izbrisati integracijo klepeta?
+    delete_chat_integration_helptext: Loomio bo prenehal pošiljati obvestila uporabniku %{name}
+    chat_integration_deleted: Integracija klepeta je bila izbrisana
   webhook:
     integrations: Integracije
     api_keys: API ključi

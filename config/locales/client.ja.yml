@@ -345,6 +345,7 @@ ja:
     read: 読む
     unread: 未読
     discussion: 議論
+    user_guide: ユーザーガイド
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -1095,6 +1096,7 @@ ja:
     copy_markdown_description: スレッドを構造化されたMarkdown形式でコピーします。これは、AIエージェントと連携させたり、スレッドの内容からシンプルなドキュメントを作成したりするのに最適です。
     thread_markdown_copied: スレッドのマークダウンがコピーされました
     move_thread_v2: スレッドを移動
+    more: もっと
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色
@@ -2488,6 +2490,12 @@ ja:
     notification_only_label: 通知の見出しのみを送信する
     check_for_test_message: チャットルームでボットからのメッセージをチェックしてください。
     webex: ウェブエックス
+    chat_integrations: チャット連携
+    no_chat_integrations_yet: Loomioのアクティビティに関する通知をグループのチャットサービスに送信する
+    new_chat_integration: 新しいチャット連携機能
+    delete_chat_integration: チャット連携を削除しますか？
+    delete_chat_integration_helptext: Loomioは%{name}への通知の送信を停止します
+    chat_integration_deleted: チャット統合が削除されました
   webhook:
     integrations: 統合
     api_keys: APIキー

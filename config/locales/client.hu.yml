@@ -348,6 +348,7 @@ hu:
     read: Olvas
     unread: Nem olvasott
     discussion: Vita
+    user_guide: Felhasználói útmutató
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -1100,6 +1101,7 @@ hu:
     copy_markdown_description: Másolja a szálat strukturált Markdown-ként – ideális mesterséges intelligencia alapú ügynökkel való használatra vagy egy egyszerű dokumentum létrehozásához a szál tartalmából.
     thread_markdown_copied: A szál Markdown másolva
     move_thread_v2: Szál áthelyezése
+    more: Több
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -2496,6 +2498,12 @@ hu:
     notification_only_label: Csak az értesítés címsorának küldése
     check_for_test_message: Nézze meg csevegőszobájában üzenetet a bottól!
     webex: Webex
+    chat_integrations: Csevegési integrációk
+    no_chat_integrations_yet: Értesítések küldése a Loomio-tevékenységekről a csoport csevegőszolgáltatásába
+    new_chat_integration: Új csevegési integráció
+    delete_chat_integration: Törli a csevegésintegrációt?
+    delete_chat_integration_helptext: A Loomio nem fog értesítéseket küldeni %{name} felhasználónak
+    chat_integration_deleted: Csevegésintegráció törölve
   webhook:
     integrations: Integrációk
     api_keys: API kulcsok

@@ -354,6 +354,7 @@ pt_BR:
     read: Ler
     unread: Não lido
     discussion: Discussão
+    user_guide: Guia do usuário
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -1110,6 +1111,7 @@ pt_BR:
     copy_markdown_description: Copie a conversa como Markdown estruturado — ideal para usar com um agente de IA ou para criar um documento simples a partir do conteúdo da conversa.
     thread_markdown_copied: Tópico Markdown copiado
     move_thread_v2: Mover tópico
+    more: Mais
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores
@@ -2535,6 +2537,12 @@ pt_BR:
     notification_only_label: Enviar apenas o título da notificação
     check_for_test_message: Verifique sua sala de chat para uma mensagem do bot!
     webex: Webex
+    chat_integrations: Integrações de bate-papo
+    no_chat_integrations_yet: Envie notificações sobre a atividade do Loomio para o serviço de bate-papo do seu grupo
+    new_chat_integration: Nova integração de chat
+    delete_chat_integration: Excluir a integração do chat?
+    delete_chat_integration_helptext: O Loomio deixará de enviar notificações para %{name}
+    chat_integration_deleted: Integração de chat desativada
   webhook:
     integrations: Integrações
     api_keys: API keys
