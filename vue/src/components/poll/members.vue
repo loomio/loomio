@@ -104,7 +104,7 @@ export default {
 
         this.reset = !this.reset;
       }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
+        Flash.fromServer(error.flash || error);
       }).finally(() => {
         this.saving = false;
       });

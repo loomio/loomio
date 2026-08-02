@@ -4,7 +4,6 @@ class User < ApplicationRecord
   include HasExperiences
   include HasAvatar
   include SelfReferencing
-  include NoForbiddenEmails
   include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper
@@ -179,11 +178,13 @@ class User < ApplicationRecord
   end
 
   def invitations_rate_limit
+    return unless ENV.key?('TRIAL_INVITATIONS_RATE_LIMIT') || ENV.key?('PAID_INVITATIONS_RATE_LIMIT')
+
     if user.is_paying?
-      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 50000)
+      ENV['PAID_INVITATIONS_RATE_LIMIT']&.to_i
     else
-      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 500)
-    end.to_i
+      ENV['TRIAL_INVITATIONS_RATE_LIMIT']&.to_i
+    end
   end
 
   def browseable_group_ids

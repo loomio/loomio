@@ -69,7 +69,7 @@ function inviteRecipients() {
     reset.value = !reset.value;
     Flash.success('announcement.flash.success', { count });
   }).catch(error => {
-    Flash.custom(error.error, 'error', 5000);
+    Flash.fromServer(error.flash || error);
   }).finally(() => {
     saving.value = false;
   });

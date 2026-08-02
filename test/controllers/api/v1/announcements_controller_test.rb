@@ -379,6 +379,33 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, json['stances'].length
   end
 
+  test "poll create reports the invitation rate limit" do
+    poll = create_test_poll
+    error = ThrottleService::LimitReached.new('Throttled')
+    trial_limit = ENV['TRIAL_INVITATIONS_RATE_LIMIT']
+    paid_limit = ENV['PAID_INVITATIONS_RATE_LIMIT']
+    ENV['TRIAL_INVITATIONS_RATE_LIMIT'] = '500'
+    ENV['PAID_INVITATIONS_RATE_LIMIT'] = '50000'
+
+    ThrottleService.stub(:limit!, ->(**) { raise error }) do
+      post :create, params: { poll_id: poll.id, recipient_emails: ['jim@example.com'] }
+    end
+
+    assert_response :too_many_requests
+    assert_equal I18n.t('errors.invitation_rate_limit_reached_contact_support'), JSON.parse(response.body).dig('flash', 'error')
+  ensure
+    if trial_limit.nil?
+      ENV.delete('TRIAL_INVITATIONS_RATE_LIMIT')
+    else
+      ENV['TRIAL_INVITATIONS_RATE_LIMIT'] = trial_limit
+    end
+    if paid_limit.nil?
+      ENV.delete('PAID_INVITATIONS_RATE_LIMIT')
+    else
+      ENV['PAID_INVITATIONS_RATE_LIMIT'] = paid_limit
+    end
+  end
+
   test "poll create member cannot announce when members_can_announce=false" do
     poll = create_test_poll
 

@@ -136,20 +136,16 @@ class UserInviter
 
     ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
 
-    ThrottleService.limit!(key: 'UserInviterInvitations',
-                           id: actor.id,
-                           max: actor.invitations_rate_limit,
-                           inc: emails.length + ids.length,
-                           per: :day)
+    invitations_limit_max = actor.invitations_rate_limit
+    if invitations_limit_max
+      ThrottleService.limit!(key: 'UserInviterInvitations',
+                             id: actor.id,
+                             max: invitations_limit_max,
+                             inc: emails.length + ids.length,
+                             per: :day)
+    end
 
-    wday = Date.today.wday
-    User.import(safe_emails(emails).map do |email|
-      User.new(email: email,
-               time_zone: actor.time_zone,
-               date_time_pref: actor.date_time_pref,
-               detected_locale: actor.locale,
-               email_catch_up_day: wday)
-    end, on_duplicate_key_ignore: true)
+    users_insert_all(emails: safe_emails(emails), actor: actor)
 
     User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
   end
@@ -157,6 +153,60 @@ class UserInviter
   private
 
   def self.safe_emails(emails)
-    emails.uniq.reject {|email| NoSpam::SPAM_REGEX.match?(email) }
+    emails.uniq.select do |email|
+      email.present? &&
+        email.length <= 200 &&
+        EmailValidator::EMAIL_REGEXP.match?(email) &&
+        NoSpam::SPAM_REGEX.match?(email) == false
+    end
+  end
+
+  def self.users_insert_all(emails:, actor:)
+    return if emails.empty?
+
+    wday = Date.today.wday
+    rows = emails.map do |email|
+      user = User.new(
+        email: email,
+        time_zone: actor.time_zone,
+        date_time_pref: actor.date_time_pref,
+        detected_locale: actor.locale,
+        email_catch_up_day: wday
+      )
+      user.username = username_for_insert(email)
+      user.key = key_for_insert
+      user.set_avatar_initials
+
+      user.attributes.slice(
+        'email',
+        'username',
+        'key',
+        'avatar_initials',
+        'unsubscribe_token',
+        'email_api_key',
+        'api_key',
+        'secret_token',
+        'time_zone',
+        'date_time_pref',
+        'detected_locale',
+        'email_catch_up_day'
+      )
+    end
+
+    User.insert_all(rows)
+  end
+
+  def self.username_for_insert(email)
+    base = ActiveSupport::Inflector.transliterate(email.split('@').first)
+                                           .downcase
+                                           .gsub(/[^a-z0-9]+/, '')[0, 18]
+    "#{base}#{SecureRandom.alphanumeric(12).downcase}"
+  end
+
+  def self.key_for_insert
+    loop do
+      key = SecureRandom.alphanumeric(ReadableUnguessableUrls::KEY_LENGTH)
+      return key unless key.match?(/^\d+$/)
+    end
   end
 end

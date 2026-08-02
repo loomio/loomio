@@ -47,6 +47,35 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil user.unsubscribe_token
   end
 
+  test "invitation rate limiting is disabled when no limits are configured" do
+    trial_limit = ENV.delete('TRIAL_INVITATIONS_RATE_LIMIT')
+    paid_limit = ENV.delete('PAID_INVITATIONS_RATE_LIMIT')
+
+    @user.stub(:is_paying?, -> { flunk('subscription state was checked') }) do
+      assert_nil @user.invitations_rate_limit
+    end
+  ensure
+    restore_env('TRIAL_INVITATIONS_RATE_LIMIT', trial_limit)
+    restore_env('PAID_INVITATIONS_RATE_LIMIT', paid_limit)
+  end
+
+  test "invitation rate limits come from the environment" do
+    trial_limit = ENV['TRIAL_INVITATIONS_RATE_LIMIT']
+    paid_limit = ENV['PAID_INVITATIONS_RATE_LIMIT']
+    ENV['TRIAL_INVITATIONS_RATE_LIMIT'] = '123'
+    ENV['PAID_INVITATIONS_RATE_LIMIT'] = '456'
+
+    @user.stub(:is_paying?, false) do
+      assert_equal 123, @user.invitations_rate_limit
+    end
+    @user.stub(:is_paying?, true) do
+      assert_equal 456, @user.invitations_rate_limit
+    end
+  ensure
+    restore_env('TRIAL_INVITATIONS_RATE_LIMIT', trial_limit)
+    restore_env('PAID_INVITATIONS_RATE_LIMIT', paid_limit)
+  end
+
   # Regression for the Sentry error from Api::V1::SessionsController#create:
   # loading a persisted user whose token columns are NULL used to dirty the
   # record via initialized_with_token, then increment_failed_attempts! /
@@ -218,5 +247,11 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(name: "Wow this is quite long as a name", email: "longname_#{SecureRandom.hex(4)}@example.com")
     user.generate_username
     assert_equal 18, user.username.length
+  end
+
+  private
+
+  def restore_env(key, value)
+    value.nil? ? ENV.delete(key) : ENV[key] = value
   end
 end
