@@ -10,6 +10,7 @@
     "serve": "vite",
     "build": "vite build",
     "vv": "vite --version",
+    "test:unit": "node --test tests/unit/*.test.mjs",
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {

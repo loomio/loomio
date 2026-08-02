@@ -81,6 +81,7 @@ jobs:
         cd vue
         rm -rf node_modules
         npm install
+        npm run test:unit
         npm run build
     - name: run e2es
       env:

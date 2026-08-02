@@ -19,6 +19,7 @@ import vuetify from './plugins/vuetify'
 import router from './routes'
 
 import boot from '@/shared/helpers/boot';
+import { beforeSend } from '@/shared/helpers/sentry_event.mjs';
 import Session from '@/shared/services/session';
 import { plugin as Slicksort } from 'vue-slicksort';
 
@@ -30,6 +31,7 @@ boot(function(data) {
     Sentry.init({
       app,
       dsn: AppConfig.sentry_dsn,
+      beforeSend,
       ignoreErrors: [
         "Avoided redundant navigation to current location",
         "NotFoundError: Node.removeChild",
