@@ -266,10 +266,12 @@ module.exports = {
     page.click('.discussion-templates--template')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
+    page.fillIn('.discussion-form .tags-field__input input', '#important')
     page.click('.discussion-form__submit')
     page.expectFlash("Discussion started")
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
+    page.expectText('.tags-display', '#important')
   },
 
   'lets_you_change_membership_volume': (test) => {

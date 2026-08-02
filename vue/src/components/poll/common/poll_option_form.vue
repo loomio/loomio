@@ -138,7 +138,7 @@ form(v-on:submit.prevent='submit()')
     v-card-actions
       v-btn.poll-option-form__done-btn(
         color="primary" variant="elevated"
-        @click="submit"
+        type="submit"
         :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
       )
         span(v-t="'common.action.done'")

@@ -220,7 +220,7 @@ export default {
         common-icon(name="mdi-close")
 
     v-card-text
-      v-form(ref="form" @submit.prevent="submit")
+      v-form#poll-template-form(ref="form" @submit.prevent="submit")
         v-select(
           :label="$t('poll_common_form.voting_method')"
           v-model="pollTemplate.pollType"
@@ -542,7 +542,8 @@ export default {
       v-btn.poll-common-form__submit(
         variant="elevated"
         color="primary"
-        @click='submit()'
+        type="submit"
+        form="poll-template-form"
         :loading="pollTemplate.processing"
       )
         span(v-t="'common.action.save_template'")

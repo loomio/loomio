@@ -255,7 +255,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-btn.discussion-form__submit(
         variant="elevated"
         color="primary"
-        @click="submit()"
+        type="submit"
         :disabled="submitIsDisabled"
         :loading="discussion.processing"
       )

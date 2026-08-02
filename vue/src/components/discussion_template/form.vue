@@ -281,7 +281,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-btn.discussion-template-form__submit(
         variant="elevated"
         color="primary"
-        @click='submit()'
+        type="submit"
         :loading="discussionTemplate.processing"
       )
         span(v-t="'common.action.save_template'")
