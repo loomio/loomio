@@ -3,32 +3,23 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     start_at = Date.parse(params.fetch(:start_month, 12.months.ago.to_date.iso8601[0..-4]) + "-01")
     end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month
     interval = params.fetch(:interval, 'month')
-    group_scope = params.fetch(:group_scope, 'custom')
-    group_scope = 'custom' unless %w[all my custom].include?(group_scope)
-    group_scope = 'my' if group_scope == 'all' && !current_user.is_admin?
     section = params.fetch(:section, 'base')
 
-    membership_group_ids = current_user.group_ids
-    candidate_group_ids = Group.where(parent_id: membership_group_ids).pluck(:id) | membership_group_ids
-    all_group_ids = GroupQuery.visible_to(user: current_user).where(id: candidate_group_ids).pluck(:id)
-    all_groups_mode = group_scope == 'all'
+    group = Group.published.find(params[:group_id]) if params[:group_id].present?
+    authorize_report!(group)
 
-    group_ids = case group_scope
-    when 'all'
-      []
-    when 'my'
-      all_group_ids
-    else
-      ids = params.fetch(:group_ids, '').split(',').map(&:to_i)
-      ids & (current_user.is_admin? ? ids : current_user.group_ids)
-    end
-    group_ids = group_ids.uniq
+    group_scope_options = report_scope_options(group)
+    group_scope_values = group_scope_options.pluck(:value)
+    group_scope = params[:group_scope].presence_in(group_scope_values) || report_scope_default(group)
+    all_groups_mode = group_scope == 'all'
+    group_ids = report_group_ids(group, group_scope, group_scope_options)
     report_group_ids = group_ids.presence || [-1]
 
-    all_groups_list = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
-    all_groups_list.unshift({id: 0, name: I18n.t('sidebar.direct_discussions')}) if current_user.is_admin?
-
-    first_year = Group.where(id: all_group_ids).order("created_at").first&.created_at&.year || Date.today.year
+    first_year = if all_groups_mode
+      Group.published.minimum(:created_at)&.year
+    else
+      Group.where(id: group_ids).minimum(:created_at)&.year
+    end || Date.today.year
 
     @report = ReportService.new(
       interval: interval,
@@ -40,10 +31,9 @@ class Api::V1::ReportsController < Api::V1::RestfulController
 
     meta = {
       first_year: first_year,
-      all_groups: all_groups_list,
+      group_scope_options: group_scope_options,
       group_ids: group_ids,
       group_scope: group_scope,
-      current_user_is_admin: current_user.is_admin?,
     }
 
     data = case section
@@ -92,5 +82,69 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     end
 
     render json: meta.merge(data)
+  end
+
+  private
+
+  def authorize_report!(group)
+    if group
+      current_user.ability.authorize!(:report, group)
+    else
+      raise CanCan::AccessDenied unless current_user.is_admin?
+    end
+  end
+
+  def report_scope_options(group)
+    options = []
+    options << {value: 'all'} if current_user.is_admin?
+    if group
+      options << {value: 'organisation', group_name: group.name} if can_report_organisation?(group)
+      report_scope_groups(group).each do |scope_group|
+        options << {
+          value: "group:#{scope_group.id}",
+          group_id: scope_group.id,
+          group_name: scope_group.name,
+        }
+      end
+    end
+    options
+  end
+
+  def report_scope_default(group)
+    return 'all' unless group
+    return 'organisation' if can_report_organisation?(group)
+
+    "group:#{group.id}"
+  end
+
+  def report_group_ids(group, group_scope, group_scope_options)
+    case group_scope
+    when 'all'
+      []
+    when 'organisation'
+      organisation_group_ids(group)
+    else
+      [group_scope_options.find { |option| option[:value] == group_scope }.fetch(:group_id)]
+    end
+  end
+
+  def report_scope_groups(group)
+    return [group] if group.is_subgroup? || can_report_organisation?(group)
+
+    current_user.groups
+      .where(id: group.id_and_subgroup_ids)
+      .order(Arel.sql('parent_id NULLS FIRST, name ASC'))
+  end
+
+  def can_report_organisation?(group)
+    group.is_parent? && (current_user.is_admin? || group.admins.exists?(current_user.id))
+  end
+
+  def organisation_group_ids(group)
+    visible_subgroup_ids = group.subgroups
+      .where('is_visible_to_public = TRUE OR is_visible_to_parent_members = TRUE')
+      .pluck(:id)
+    member_subgroup_ids = current_user.groups.where(parent_id: group.id).pluck(:id)
+    [group.id] | visible_subgroup_ids | member_subgroup_ids
   end
 end

@@ -2636,6 +2636,12 @@ uk:
     tags_per_interval: Теги на %{interval}
     all_groups_and_direct_threads: Усі групи та прямі обговорення
     custom_selection: Вибір на замовлення
+    whole_server: Весь сервер
+    whole_server_help: Цей звіт містить активність з кожної групи та прямого потоку на цьому сервері
+    group_and_subgroups: "%{group} та підгрупи"
+    group_and_subgroups_help: Цей звіт містить активність %{group} та її доступних підгруп. Секретні підгрупи включаються лише тоді, коли ви до них належите.
+    group_only: Тільки %{group}
+    group_only_help: Цей звіт містить активність лише з %{group}. Адміністратори батьківської групи також можуть звітувати про батьківську групу та її підгрупи, доступні для користувачів.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи

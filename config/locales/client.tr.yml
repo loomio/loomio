@@ -2606,6 +2606,12 @@ tr:
     tags_per_interval: Etiketler %{interval} başına
     all_groups_and_direct_threads: Tüm gruplar ve doğrudan ileti dizileri
     custom_selection: Özel seçim
+    whole_server: Tüm sunucu
+    whole_server_help: Bu rapor, bu sunucudaki her grup ve doğrudan ileti dizisinden gelen etkinlikleri içermektedir.
+    group_and_subgroups: "%{group} ve alt gruplar"
+    group_and_subgroups_help: Bu rapor, %{group} ve erişilebilir alt gruplarından gelen etkinlikleri içermektedir. Gizli alt gruplar yalnızca onlara üye olduğunuzda dahil edilir.
+    group_only: yalnızca %{group}
+    group_only_help: Bu rapor yalnızca %{group} grubunun faaliyetlerini içermektedir. Üst grup yöneticileri ayrıca üst grup ve erişilebilir alt grupları hakkında da rapor verebilirler.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi

@@ -1317,6 +1317,12 @@ en:
     confirm: Type '%{name}' to confirm you want to delete this group.
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
   report:
+    whole_server: Whole server
+    whole_server_help: This report includes activity from every group and direct thread on this server
+    group_and_subgroups: "%{group} and subgroups"
+    group_and_subgroups_help: This report includes activity from %{group} and its accessible subgroups. Secret subgroups are included only when you belong to them.
+    group_only: "%{group} only"
+    group_only_help: This report includes activity from %{group} only. Parent group administrators can also report on the parent group and its accessible subgroups.
     start_on: Start on
     end_on: End on
     interval: Interval

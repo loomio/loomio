@@ -2633,6 +2633,12 @@ ca:
     tags_per_interval: Etiquetes per %{interval}
     all_groups_and_direct_threads: Tots els grups i fils directes
     custom_selection: Selecció personalitzada
+    whole_server: Tot el servidor
+    whole_server_help: Aquest informe inclou l'activitat de tots els grups i fils directes d'aquest servidor.
+    group_and_subgroups: "%{group} i subgrups"
+    group_and_subgroups_help: Aquest informe inclou l'activitat de %{group} i els seus subgrups accessibles. Els subgrups secrets només s'inclouen quan hi pertanys.
+    group_only: Només %{group}
+    group_only_help: Aquest informe només inclou l'activitat de %{group}. Els administradors del grup principal també poden informar sobre el grup principal i els seus subgrups accessibles.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar

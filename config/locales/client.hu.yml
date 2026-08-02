@@ -2613,6 +2613,12 @@ hu:
     tags_per_interval: Cimkék per %{interval}
     all_groups_and_direct_threads: Minden csoport és közvetlen szál
     custom_selection: Egyéni kijelölés
+    whole_server: Teljes szerver
+    whole_server_help: Ez a jelentés tartalmazza a szerveren található összes csoport és közvetlen szál tevékenységét.
+    group_and_subgroups: "%{group} és alcsoportok"
+    group_and_subgroups_help: Ez a jelentés a(z) %{group} csoport és elérhető alcsoportjainak tevékenységeit tartalmazza. A titkos alcsoportok csak akkor szerepelnek, ha Ön is tartozik hozzájuk.
+    group_only: Csak %{group}
+    group_only_help: Ez a jelentés csak a(z) %{group} csoport tevékenységét tartalmazza. A szülőcsoport adminisztrátorai a szülőcsoportról és annak elérhető alcsoportjairól is jelentést készíthetnek.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája

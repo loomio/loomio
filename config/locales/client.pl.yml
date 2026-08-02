@@ -2633,6 +2633,12 @@ pl:
     tags_per_interval: Tagi na %{interval}
     all_groups_and_direct_threads: Wszystkie grupy i wątki bezpośrednie
     custom_selection: Wybór niestandardowy
+    whole_server: Cały serwer
+    whole_server_help: Ten raport obejmuje aktywność każdej grupy i wątku bezpośredniego na tym serwerze
+    group_and_subgroups: "%{group} i podgrupy"
+    group_and_subgroups_help: Ten raport obejmuje aktywność z grupy %{group} i jej dostępnych podgrup. Ukryte podgrupy są uwzględniane tylko wtedy, gdy do nich należysz.
+    group_only: Tylko %{group}
+    group_only_help: Ten raport obejmuje aktywność tylko z grupy %{group}. Administratorzy grupy nadrzędnej mogą również raportować aktywność grupy nadrzędnej i jej dostępnych podgrup.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ukończyłeś wszystkie kroki!"
     getting_started_checklist: Lista kontrolna na początek

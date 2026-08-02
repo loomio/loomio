@@ -2634,6 +2634,12 @@ it:
     tags_per_interval: Tag per %{interval}
     all_groups_and_direct_threads: Tutti i gruppi e le discussioni dirette
     custom_selection: Selezione personalizzata
+    whole_server: Server intero
+    whole_server_help: Questo report include l'attività di ogni gruppo e thread diretto su questo server.
+    group_and_subgroups: "%{group} e sottogruppi"
+    group_and_subgroups_help: Questo report include l'attività di %{group} e dei suoi sottogruppi accessibili. I sottogruppi segreti sono inclusi solo se ne fai parte.
+    group_only: solo %{group}
+    group_only_help: Questo report include solo le attività del gruppo %{group}. Gli amministratori del gruppo principale possono anche generare report sul gruppo principale e sui relativi sottogruppi accessibili.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Hai completato tutti i passaggi!"
     getting_started_checklist: Lista di controllo per iniziare

@@ -2606,6 +2606,12 @@ sl:
     tags_per_interval: Oznake na %{interval}
     all_groups_and_direct_threads: Vse skupine in neposredne niti
     custom_selection: Izbira po meri
+    whole_server: Celoten strežnik
+    whole_server_help: To poročilo vključuje aktivnost iz vsake skupine in neposredne niti na tem strežniku.
+    group_and_subgroups: "%{group} in podskupine"
+    group_and_subgroups_help: To poročilo vključuje aktivnost skupine %{group} in njenih dostopnih podskupin. Skrivne podskupine so vključene le, če jim pripadate.
+    group_only: Samo %{group}
+    group_only_help: To poročilo vključuje samo dejavnost skupine %{group}. Skrbniki nadrejene skupine lahko poročajo tudi o nadrejeni skupini in njenih dostopnih podskupinah.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Vse korake ste zaključili!"
     getting_started_checklist: Kontrolni seznam za začetek
