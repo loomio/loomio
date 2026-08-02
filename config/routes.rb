@@ -377,8 +377,6 @@ Rails.application.routes.draw do
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
   end
 
-  post '/bug_tunnel' => 'application#bug_tunnel'
-
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api2'   => 'help#api2'

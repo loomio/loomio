@@ -56,7 +56,6 @@ boot(function(data) {
         "Non-Error promise rejection captured with keys: exception, ok, status, statusText",
         /__firefox__/
       ],
-      tunnel: '/bug_tunnel',
       integrations: [Sentry.browserTracingIntegration({ router })],
       tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
       tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],

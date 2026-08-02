@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
-  skip_before_action :verify_authenticity_token, only: :bug_tunnel
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end
@@ -85,30 +84,6 @@ class ApplicationController < ActionController::Base
       canonical_url: about_loomio_url,
       independently_operated: !ENV['LOOMIO_MANAGED_SERVER']
     )
-  end
-
-  def bug_tunnel
-    raise "no sentry dsn" unless ENV['SENTRY_PUBLIC_DSN']
-
-    uri = URI(ENV['SENTRY_PUBLIC_DSN'])
-    known_host = uri.host
-    known_project_id = uri.path.tr('/', '')
-
-    envelope = request.body.read
-    piece = envelope.split("\n").first
-    header = JSON.parse(piece)
-    dsn = URI.parse(header['dsn'])
-    project_id = dsn.path.tr('/', '')
-
-    raise "Invalid sentry hostname: #{dsn.hostname}" if dsn.hostname != known_host
-    raise "Invalid sentry project id: #{project_id}" if project_id != known_project_id
-
-    upstream_sentry_url = "https://#{known_host}/api/#{known_project_id}/envelope/"
-    Net::HTTP.post(URI(upstream_sentry_url), envelope)
-
-    head(:ok)
-  rescue => e
-    Rails.logger.error('error tunneling to sentry')
   end
 
   def ok
