@@ -101,6 +101,10 @@ module GroupService
     group.save!
     group.add_admin!(actor)
 
+    if group.parent_id && (group.is_visible_to_public? || group.is_visible_to_parent_members?)
+      MessageChannelService.publish_models([group], group_id: group.parent_id)
+    end
+
     Sentry.metrics.count("group.create", attributes: { is_subgroup: !group.is_parent? })
     EventBus.broadcast('group_create', group, actor)
   end

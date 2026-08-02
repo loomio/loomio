@@ -18,6 +18,43 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal @user, group.reload.creator
   end
 
+  test "publishes a public subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'closed')
+    subgroup = Group.new(
+      name: "Public subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'closed'
+    )
+
+    assert_subgroup_published_to_parent(subgroup, parent)
+  end
+
+  test "publishes a parent-visible subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'secret')
+    subgroup = Group.new(
+      name: "Parent-visible subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'closed'
+    )
+
+    assert subgroup.is_visible_to_parent_members?
+    assert_subgroup_published_to_parent(subgroup, parent)
+  end
+
+  test "does not publish a secret subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'secret')
+    subgroup = Group.new(
+      name: "Secret subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'secret'
+    )
+    publications = capture_group_publications do
+      GroupService.create(group: subgroup, actor: @user)
+    end
+
+    refute publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
+  end
+
   test "does not reparent a group on update" do
     group = Group.create!(
       name: "Managed Group",
@@ -178,5 +215,29 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_raises CanCan::AccessDenied do
       GroupService.move(group: group, parent: parent, actor: @user)
     end
+  end
+
+  private
+
+  def create_parent_group(group_privacy:)
+    Group.create!(
+      name: "Parent group #{SecureRandom.hex(4)}",
+      group_privacy: group_privacy
+    ).tap { |group| group.add_admin!(@user) }
+  end
+
+  def assert_subgroup_published_to_parent(subgroup, parent)
+    publications = capture_group_publications do
+      GroupService.create(group: subgroup, actor: @user)
+    end
+
+    assert publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
+  end
+
+  def capture_group_publications(&block)
+    publications = []
+    publish = ->(models, **options) { publications << [models, options] }
+    MessageChannelService.stub(:publish_models, publish, &block)
+    publications
   end
 end
