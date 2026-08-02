@@ -113,6 +113,41 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert_not event_json['custom_fields'].key?('source_group_id')
   end
 
+  test "import reuses an existing redacted user with the same key" do
+    user = User.create!(
+      email: "redacted-export-#{SecureRandom.hex(4)}@example.com",
+      name: 'Redacted export user'
+    )
+    group = Group.create!(name: "Redacted user import group #{SecureRandom.hex(4)}")
+    user.update_columns(
+      email: nil,
+      name: nil,
+      username: nil,
+      deactivated_at: Time.current
+    )
+    membership = Membership.new(
+      id: Membership.maximum(:id).to_i + 10_000,
+      user: user,
+      group: group,
+      accepted_at: Time.current
+    )
+
+    Tempfile.create(['redacted-user-export', '.json']) do |file|
+      file.puts({ table: 'users', record: GroupExportService.export_record(user, 'users') }.to_json)
+      file.puts({ table: 'memberships', record: membership.attributes }.to_json)
+      file.flush
+
+      assert_no_difference('User.count') do
+        assert_difference('Membership.count', 1) do
+          GroupExportService.import(file.path)
+        end
+      end
+    end
+
+    assert_equal user.id, User.find_by!(key: user.key).id
+    assert Membership.find_by!(user: user, group: group)
+  end
+
   test "export, truncate specific records, and import recreates the scenario" do
     data = create_scenario
     group = data[:group]

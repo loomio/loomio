@@ -374,12 +374,23 @@ class GroupExportService
       if table == 'users'
         existing_users_by_email = User.where(email: records.map { |data| data['record']['email'] }.compact)
                                       .index_by { |user| user.email.to_s.downcase }
-        new_records = records.reject { |data| existing_users_by_email.key?(data['record']['email'].to_s.downcase) }
+        redacted_user_keys = records.filter_map do |data|
+          data['record']['key'] if data['record']['email'].blank?
+        end
+        existing_redacted_users_by_key = User.where(email: nil, key: redacted_user_keys).index_by(&:key)
+        existing_user_for = lambda do |data|
+          if data['record']['email'].present?
+            existing_users_by_email[data['record']['email'].downcase]
+          else
+            existing_redacted_users_by_key[data['record']['key']]
+          end
+        end
+        new_records = records.reject { |data| existing_user_for.call(data) }
         reserved_ids = reserve_ids(klass, new_records.length)
 
         records.each do |data|
           old_id = data['record'][pk]
-          existing_user = existing_users_by_email[data['record']['email'].to_s.downcase]
+          existing_user = existing_user_for.call(data)
           migrate_ids[table][old_id] = existing_user ? existing_user.id : reserved_ids.shift
         end
       elsif table == 'tags'
