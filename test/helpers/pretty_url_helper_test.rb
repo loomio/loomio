@@ -26,4 +26,16 @@ class PrettyUrlHelperTest < ActionView::TestCase
   test "returns nil path when model has no url" do
     assert_nil polymorphic_path(nil)
   end
+
+  test "returns the group email path for a received email" do
+    received_email = ReceivedEmail.new(group: @group)
+
+    assert_equal group_emails_url(@group.key), polymorphic_url(received_email)
+  end
+
+  test "returns nil for a received email whose group has been cleared" do
+    event = Event.new(kind: "unknown_sender", eventable: ReceivedEmail.new)
+
+    assert_nil event.notification_url
+  end
 end
