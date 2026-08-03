@@ -3,34 +3,61 @@ class ReactionQuery
     Reaction.includes(:user)
   end
 
-  def self.authorize!(user: LoggedOutUser.new, chain: start, params: )
-    comment_topic_ids = []
-    discussion_ids    = []
-    poll_ids          = []
+  def self.visible_where(user: LoggedOutUser.new, params:)
+    ids_requested = {
+      comment_ids:    Array(params[:comment_ids]),
+      discussion_ids: Array(params[:discussion_ids]),
+      outcome_ids:    Array(params[:outcome_ids]),
+      poll_ids:       Array(params[:poll_ids]),
+      stance_ids:     Array(params[:stance_ids])
+    }
 
-    if params[:comment_ids]
-      comment_topic_ids.concat(
-        Comment.joins(:events)
-               .where(comments: { id: params[:comment_ids] })
-               .where.not(events: { topic_id: nil })
-               .pluck('events.topic_id')
-      )
-    end
-    discussion_ids.concat(params[:discussion_ids]) if params[:discussion_ids]
+    comment_topic_ids = Comment.joins(:events)
+                               .where(comments: { id: ids_requested[:comment_ids] })
+                               .where.not(events: { topic_id: nil })
+                               .distinct
+                               .pluck('events.topic_id')
+    topic_ids_visible = TopicQuery.visible_to(user: user)
+                                  .where(id: comment_topic_ids)
+                                  .except(:includes)
+                                  .ids
 
-    poll_ids.concat(Stance.where(id: params[:stance_ids]).pluck(:poll_id)) if params[:stance_ids]
-    poll_ids.concat(Outcome.where(id: params[:outcome_ids]).pluck(:poll_id)) if params[:outcome_ids]
-    poll_ids.concat(params[:poll_ids]) if params[:poll_ids]
+    discussion_ids_visible = TopicQuery.visible_to(user: user)
+                                       .where(
+                                         topicable_type: 'Discussion',
+                                         topicable_id: ids_requested[:discussion_ids]
+                                       )
+                                       .except(:includes)
+                                       .pluck(:topicable_id)
 
-    comment_topic_ids.uniq!
-    discussion_ids.uniq!
-    poll_ids.uniq!
+    poll_ids_requested = ids_requested[:poll_ids]
+    poll_ids_requested += Outcome.where(id: ids_requested[:outcome_ids]).pluck(:poll_id)
+    poll_ids_requested += Stance.where(id: ids_requested[:stance_ids]).pluck(:poll_id)
+    poll_ids_visible = PollQuery.visible_to(user: user)
+                                .where(id: poll_ids_requested.uniq)
+                                .except(:includes)
+                                .ids
+    stance_ids_visible = Stance.joins(:poll)
+                               .where(id: ids_requested[:stance_ids], poll_id: poll_ids_visible)
+                               .where(
+                                 "polls.anonymous = TRUE OR polls.hide_results != :until_closed OR " \
+                                 "polls.closed_at IS NOT NULL OR stances.participant_id = :user_id",
+                                 until_closed: Poll.hide_results[:until_closed],
+                                 user_id: user.id || 0
+                               )
+                               .ids
 
-    if (TopicQuery.visible_to(user: user).where(id: comment_topic_ids).count != comment_topic_ids.length) ||
-       (PollQuery.visible_to(user: user).where(id: poll_ids).count != poll_ids.length) ||
-       (TopicQuery.visible_to(user: user).where(topicable_type: 'Discussion', topicable_id: discussion_ids).count != discussion_ids.length)
-      raise CanCan::AccessDenied.new
-    end
+    unsafe_where(
+      comment_ids: Comment.joins(:events)
+                          .where(comments: { id: ids_requested[:comment_ids] })
+                          .where(events: { topic_id: topic_ids_visible })
+                          .distinct
+                          .ids,
+      discussion_ids: discussion_ids_visible,
+      outcome_ids: Outcome.where(id: ids_requested[:outcome_ids], poll_id: poll_ids_visible).ids,
+      poll_ids: ids_requested[:poll_ids] & poll_ids_visible,
+      stance_ids: stance_ids_visible
+    )
   end
 
   def self.unsafe_where(params)
@@ -48,4 +75,6 @@ class ReactionQuery
        (reactable_type = 'Stance'     AND reactable_id IN (:stance_ids)) OR
        (reactable_type = 'Poll'       AND reactable_id IN (:poll_ids))", ids)
   end
+
+  private_class_method :unsafe_where
 end
