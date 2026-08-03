@@ -1,4 +1,11 @@
 module HasRichText
+  INLINE_BLOB_SIGNED_ID_PATTERN = %r{
+    /rails/active_storage/
+    (?:blobs|representations)
+    (?:/(?:redirect|proxy))?/
+    ([^/\s?"'<>]+)
+  }x.freeze
+
   PREVIEW_OPTIONS = {
     resize_to_limit: [1280,1280],
     saver: {
@@ -8,6 +15,18 @@ module HasRichText
   }
 
   extend ActiveSupport::Concern
+
+  def self.inline_blob_signed_ids(text)
+    String(text).scan(INLINE_BLOB_SIGNED_ID_PATTERN).flatten.uniq
+  end
+
+  def self.inline_blobs(record)
+    signed_ids = record.class.rich_text_fields.flat_map do |field|
+      inline_blob_signed_ids(record[field])
+    end
+
+    signed_ids.uniq.filter_map { |signed_id| ActiveStorage::Blob.find_signed(signed_id) }.uniq(&:id)
+  end
 
   module ClassMethods
     def is_rich_text(on: [])
@@ -117,13 +136,40 @@ module HasRichText
   end
 
   def assign_attributes_and_files(params)
+    params = params.dup
+
     # this prevents accidentally removing attachments
-    [:files, :image_files].each do |key|
-      params.delete(key) if params.has_key?(key) && params[key].nil?
-    end
+    files_key = params.has_key?(:files) ? :files : "files"
+    params.delete(files_key) if params.has_key?(files_key) && params[files_key].nil?
+
+    image_files_key = params.has_key?(:image_files) ? :image_files : "image_files"
+    image_file_attachables = params.delete(image_files_key) if params.has_key?(image_files_key)
 
     self.assign_attributes Api::V1::SnorlaxBase.filter_params(self.class, params)
+    attach_inline_image_files(image_file_attachables)
   end
+
+  def attach_inline_image_files(image_file_attachables)
+    existing_blob_ids = image_files.blobs.map(&:id)
+    attachables = Array(image_file_attachables).map do |attachable|
+      attachable.is_a?(String) ? ActiveStorage::Blob.find_signed(attachable) || attachable : attachable
+    end
+    attachables.concat(inline_image_blobs)
+    attachables.uniq! do |attachable|
+      attachable.is_a?(ActiveStorage::Blob) ? [:blob, attachable.id] : attachable
+    end
+    attachables.reject! do |attachable|
+      attachable.is_a?(ActiveStorage::Blob) && existing_blob_ids.include?(attachable.id)
+    end
+
+    image_files.attach(attachables) if attachables.present?
+  end
+
+  def inline_image_blobs
+    HasRichText.inline_blobs(self)
+  end
+
+  private :attach_inline_image_files, :inline_image_blobs
 
   def attachment_icon(name)
     AppConfig.doctypes.detect{ |type| /#{type['regex']}/.match(name) }['icon']
