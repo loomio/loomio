@@ -63,4 +63,19 @@ class Api::V1::TranslationsControllerTest < ActionController::TestCase
 
     assert_response :too_many_requests
   end
+
+  test "inline reports the daily translation limit" do
+    sign_in @user
+
+    TranslationService.stub(:available?, true) do
+      ThrottleService.stub(:can?, true) do
+        TranslationService.stub(:create, ->(**) { raise TranslationService::CharacterLimitReached }) do
+          get :inline, params: { model: 'discussion', id: @discussion.id, to: 'fr' }
+        end
+      end
+    end
+
+    assert_response :too_many_requests
+    assert_equal 'translation daily limit exceeded', response.parsed_body['error']
+  end
 end

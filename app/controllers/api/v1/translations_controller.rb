@@ -1,5 +1,8 @@
 class Api::V1::TranslationsController < Api::V1::RestfulController
   before_action :require_current_user
+  rescue_from TranslationService::CharacterLimitReached do
+    render json: { error: 'translation daily limit exceeded' }, status: :too_many_requests
+  end
 
   def inline
     unless TranslationService.supported_locale?(params[:to])

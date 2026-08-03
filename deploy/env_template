@@ -138,6 +138,7 @@ ACTIVE_STORAGE_SERVICE=local
 # Google translate (enable "translate" button on user content)
 # this uses google-cloud-translate gem. See that gem for configuration guide.
 # TRANSLATE_CREDENTIALS="{ \"type\": \"service_account\", \"project_id\": ..."
+# THROTTLE_MAX_TranslationCharacters=10000
 
 # OpenAI transcription (enable transcription of audio recordings)
 # OPENAI_API_KEY=sk-1234-abcd

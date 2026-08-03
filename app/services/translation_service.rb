@@ -3,6 +3,11 @@ require "google/cloud/translate"
 class TranslationService
   extend LocalesHelper
 
+  CHARACTER_LIMIT_DAY_DEFAULT = 10_000
+
+  class CharacterLimitReached < StandardError
+  end
+
   GOOGLE_LOCALES = %w[af sq am ar hy as ay az bm eu be bn bho bs bg ca ceb zh-CN zh zh-TW co hr cs da dv doi nl en eo et ee fil fi fr fy gl ka de el gn gu ht ha haw he iw hi hmn hu is ig ilo id ga it ja jv jw kn kk km rw gom ko kri ku ckb ky lo la lv ln lt lg lb mk mai mg ms ml mt mi mr mni-Mtei lus mn my ne no ny or om ps fa pl pt pa qu ro ru sm sa gd nso sr st sn sd si sk sl so es su sw sv tl tg ta tt te th ti ts tr tk ak uk ur ug uz vi cy xh yi yo zu]
 
   KNOWN_I18N_LABEL_KEYS = %w[
@@ -99,7 +104,6 @@ class TranslationService
   end
 
   def self.translated_fields_for(model, to:)
-    service = Google::Cloud::Translate.translation_v2_service
     fields = {}
     from_locale = if model.respond_to?(:content_locale) && model.content_locale.present?
       model.content_locale
@@ -131,10 +135,56 @@ class TranslationService
         end
       end
 
-      fields[field.to_s] = service.translate(content, **translate_options)
+      fields[field.to_s] = translate_text(
+        content,
+        **translate_options,
+        source_locale: from_locale,
+        source: 'model',
+        translatable_type: model.class.name,
+        field: field.to_s
+      )
     end
 
     fields
+  end
+
+  def self.translate_text(content, to:, format: :text, source_locale: nil, source: 'application', translatable_type: nil, field: nil)
+    character_count = content.to_s.length
+    character_limit_day = ENV.fetch('THROTTLE_MAX_TranslationCharacters', CHARACTER_LIMIT_DAY_DEFAULT).to_i
+
+    unless ThrottleService.can?(
+      key: 'TranslationCharacters',
+      id: 'all',
+      max: character_limit_day,
+      inc: character_count,
+      per: 'day'
+    )
+      Sentry.logger.error(
+        'google translation daily character limit reached',
+        audit_kind: 'translation_api',
+        character_count: character_count,
+        character_limit_day: character_limit_day,
+        source: source,
+        source_locale: source_locale,
+        target_locale: to,
+        translatable_type: translatable_type,
+        field: field
+      )
+      raise CharacterLimitReached, "Google Translation daily character limit reached"
+    end
+
+    Sentry.logger.info(
+      'google translation request',
+      audit_kind: 'translation_api',
+      character_count: character_count,
+      source: source,
+      source_locale: source_locale,
+      target_locale: to,
+      translatable_type: translatable_type,
+      field: field
+    )
+
+    Google::Cloud::Translate.translation_v2_service.translate(content, to: to, format: format)
   end
 
   def self.create(model:, to:)

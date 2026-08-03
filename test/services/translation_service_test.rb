@@ -92,4 +92,75 @@ class TranslationServiceTest < ActiveSupport::TestCase
     assert_equal 'fr', translate_options[:to]
     assert_equal :text, translate_options[:format]
   end
+
+  test "counts and logs characters before calling Google Translate" do
+    throttle_args = nil
+    log_args = nil
+    translate_args = nil
+
+    logger = Object.new
+    logger.define_singleton_method(:info) do |message, **attributes|
+      log_args = [message, attributes]
+    end
+
+    google_service = Object.new
+    google_service.define_singleton_method(:translate) do |content, **options|
+      translate_args = [content, options]
+      'Kia ora'
+    end
+
+    ThrottleService.stub(:can?, ->(**args) { throttle_args = args; true }) do
+      Sentry.stub(:logger, logger) do
+        Google::Cloud::Translate.stub(:translation_v2_service, google_service) do
+          result = TranslationService.translate_text(
+            'Hello',
+            to: 'mi',
+            source_locale: 'en',
+            source: 'test'
+          )
+
+          assert_equal 'Kia ora', result
+        end
+      end
+    end
+
+    assert_equal({
+      key: 'TranslationCharacters',
+      id: 'all',
+      max: 10_000,
+      inc: 5,
+      per: 'day'
+    }, throttle_args)
+    assert_equal ['Hello', { to: 'mi', format: :text }], translate_args
+    assert_equal 'google translation request', log_args[0]
+    assert_equal 'translation_api', log_args[1][:audit_kind]
+    assert_equal 5, log_args[1][:character_count]
+    assert_equal 'test', log_args[1][:source]
+  end
+
+  test "does not call Google Translate after reaching the daily character limit" do
+    error_log = nil
+    logger = Object.new
+    logger.define_singleton_method(:error) do |message, **attributes|
+      error_log = [message, attributes]
+    end
+
+    ThrottleService.stub(:can?, false) do
+      Sentry.stub(:logger, logger) do
+        assert_raises TranslationService::CharacterLimitReached do
+          TranslationService.translate_text('Hello', to: 'mi')
+        end
+      end
+    end
+
+    assert_equal 'google translation daily character limit reached', error_log[0]
+    assert_equal 'translation_api', error_log[1][:audit_kind]
+    assert_equal 10_000, error_log[1][:character_limit_day]
+  end
+
+  test "allows translation audit logs through the Sentry log filter" do
+    log = Struct.new(:level, :attributes).new(:info, { 'audit_kind' => 'translation_api' })
+
+    assert_same log, Sentry.configuration.before_send_log.call(log)
+  end
 end

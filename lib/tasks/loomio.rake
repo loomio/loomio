@@ -181,7 +181,6 @@ namespace :loomio do
 
     AppConfig.locales['supported'].map do |file_locale|
       Thread.new do
-        google = Google::Cloud::Translate.translation_v2_service
         google_locale = file_locale == 'nl_NL' ? 'nl' : file_locale
 
         sources.each do |source_name, source_data|
@@ -206,7 +205,12 @@ namespace :loomio do
             end
 
             write_file = true
-            translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
+            translated_string = CGI.unescapeHTML(TranslationService.translate_text(
+              source_string,
+              to: google_locale,
+              source_locale: 'en',
+              source: 'i18n_locale_task'
+            ))
             foreign.bury(*path.split('.'), translated_string)
           end
 
