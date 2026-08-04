@@ -85,14 +85,13 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
       end
     when 'stv_status'
       status = option[:stv_status]
-      style = case status
-              when 'elected' then "color: green; font-weight: bold"
-              when 'tied' then "color: #e65100; font-weight: bold"
-              when 'not_elected' then "color: #999"
-              else ""
-              end
+      status_class = case status
+                     when 'elected' then "email-status--elected"
+                     when 'tied' then "email-status--tied"
+                     when 'not_elected' then "email-status--eliminated"
+                     end
       label = status ? t("poll_stv_results.#{status}") : ''
-      td(class: "text-right", style: style) { plain label }
+      td(class: ["text-right", status_class].compact.join(" ")) { plain label }
     when 'rank'
       td(class: "text-right") { plain option[:rank].to_s }
     when 'score'
@@ -126,7 +125,7 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
   def render_chart_cell(option, index, results)
     if @poll.chart_type == 'pie' && index == 0
       td(class: "pr-2 py-2", rowspan: results.size) do
-        div(class: "poll-mailer-proposal__chart poll-mailer__results-chart d-flex align-center justify-center") do
+        div(class: "poll-mailer-proposal__chart poll-mailer__results-chart text-center") do
           img(
             class: "poll-mailer-proposal__chart-image",
             style: "height: 128px; width: 128px",
@@ -144,8 +143,8 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
           table(cellspacing: 0, cellpadding: 0, width: "100%", height: "100%") do
             tr do
               td(
-                class: "no-border rounded",
-                style: "background-color: #{option[:color]}; height: 24px",
+                class: "poll-mailer__result-bar no-border rounded",
+                style: "height: 24px",
                 height: 24,
                 width: "#{option[@poll.chart_column].clamp(0, 100)}%"
               )

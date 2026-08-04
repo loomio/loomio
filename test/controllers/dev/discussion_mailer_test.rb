@@ -23,6 +23,8 @@ class Dev::DiscussionMailerTest < ActionController::TestCase
   test "discussion_created" do
     get :setup_discussion_mailer_discussion_created_email
     assert_response :success
+    assert_equal "light dark", parsed_body.at_css('meta[name="color-scheme"]')['content']
+    assert_equal "light dark", parsed_body.at_css('meta[name="supported-color-schemes"]')['content']
     assert_text_no_tags('.base-mailer__event-headline', "started a discussion")
     assert_text_no_tags('.thread-mailer__body', "A description for this discussion. Should this be rich?")
   end
