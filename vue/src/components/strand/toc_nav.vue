@@ -5,9 +5,11 @@ import TopicService  from '@/shared/services/topic_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
+import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
 import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
@@ -18,6 +20,8 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
+const display = useDisplay();
+const theme = useTheme();
 const { watchRecords } = useWatchRecords();
 
 const open        = ref(null);
@@ -28,6 +32,9 @@ const topicActions = ref({});
 const selectedSequenceId = computed(() => parseInt(route.params.sequence_id));
 const selectedCommentId  = computed(() => parseInt(route.params.comment_id));
 const isSignedIn         = computed(() => Session.isSignedIn());
+const drawerColor        = computed(() =>
+  !display.mdAndUp.value && colorIsTransparent(theme.current.value.colors['thread-drawer']) ? 'background' : 'thread-drawer'
+);
 const memberActions      = computed(() => Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())).map(([key, action]) => ({ key, action })));
 const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
@@ -121,7 +128,7 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="thread-drawer" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp" app fixed location="right" clipped :color="drawerColor" floating)
   v-list(nav slim density="compact" :lines="false")
     v-list-subheader(v-t="'strand_nav.jump_to'")
     v-list-item(color="info" value="toc-start" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
