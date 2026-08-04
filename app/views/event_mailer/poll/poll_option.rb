@@ -18,13 +18,18 @@ class Views::EventMailer::Poll::PollOption < Views::ApplicationMailer::Component
 
     score = @stance && @stance.option_scores[@poll_option.id.to_s]
     link = @poll.active? && tracked_url(@poll, recipient: @recipient, args: { poll_option_id: @poll_option.id })
-    option_color = @poll_option.color.sub('#', '')
+    semantic_option = @poll.has_option_icon && @poll_option.icon
+    border_color = semantic_option ? @poll_option.color : AppConfig.theme[:primary_color]
+    container_class = semantic_option ? "poll-mailer__poll-option-container--semantic" : "poll-mailer__poll-option-container"
 
-    table(class: "rounded mb-2 pa-1", style: "border: 1px solid #{@poll_option.color}; width: 100%; max-width: 600px") do
+    table(
+      class: "#{container_class} mb-2 pa-1",
+      style: "border: 1px solid #{border_color}; border-collapse: separate; border-radius: 4px; width: 100%; max-width: 600px"
+    ) do
       tr(class: "poll-mailer__poll-option") do
         td(style: "width: 48px; height: 48px; text-align: center") do
           optional_link_wrapper(link) do
-            render_icon(display_name, score, option_color)
+            render_icon(display_name, score)
           end
         end
         td(class: "pl-4") do
@@ -47,44 +52,48 @@ class Views::EventMailer::Poll::PollOption < Views::ApplicationMailer::Component
     end
   end
 
-  def render_icon(display_name, score, option_color)
+  def render_icon(display_name, score)
     if @poll.has_option_icon && @poll_option.icon
       img(src: image_path("poll_mailer/vote-button-#{@poll_option.icon.to_s.downcase}.png"), width: 48, height: 48, alt: display_name, style: 'display: inline-block')
+      return
     end
 
     case @poll.poll_type
     when 'poll'
       if @poll.is_single_choice?
-        icon_name = (score && score > 0) ? "radiobox-marked" : "radiobox-blank"
+        selection_indicator((score && score > 0) ? "●" : "○")
       else
-        icon_name = (score && score > 0) ? "checkbox-marked" : "checkbox-blank-outline"
+        selection_indicator((score && score > 0) ? "☑" : "☐")
       end
-      img(src: image_path("icons/#{icon_name}-#{option_color}.png"), width: 24, height: 24, alt: display_name)
     when 'score', 'dot_vote'
       if score
         div(class: "text-h6") { plain score.to_s }
       else
-        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+        selection_indicator("☐")
       end
     when 'ranked_choice'
       if score
         div(class: "text-h6") { plain "##{@poll.minimum_stance_choices - score + 1}" }
       else
-        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+        selection_indicator("☐")
       end
     when 'stv'
       if score
         div(class: "text-h6") { plain "##{score}" }
       else
-        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+        selection_indicator("☐")
       end
     when 'meeting'
       if score
         icon = { 0 => 'disagree', 1 => 'abstain', 2 => 'agree' }[score]
         img(src: image_path("poll_mailer/vote-button-#{icon}.png"), width: 48, height: 48, alt: display_name, style: 'display: inline-block')
       else
-        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+        selection_indicator("☐")
       end
     end
+  end
+
+  def selection_indicator(character)
+    span(class: "poll-mailer__option-indicator", style: "font-size: 24px; line-height: 24px") { plain character }
   end
 end

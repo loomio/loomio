@@ -212,6 +212,26 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   public
 
+  test "ordinary poll options use the primary rounded outline" do
+    build_poll_created(poll_type: 'poll')
+
+    option = @parsed_body.at_css('.poll-mailer__poll-option-container')
+    assert option
+    assert_includes option['style'], "border: 1px solid #{AppConfig.theme[:primary_color]}"
+    assert_includes option['style'], 'border-radius: 4px'
+  end
+
+  test "semantic poll options use their option color for the rounded outline" do
+    build_poll_created(poll_type: 'proposal')
+
+    options = @parsed_body.css('.poll-mailer__poll-option-container--semantic')
+    assert_equal @poll.poll_options.size, options.size
+    @poll.poll_options.zip(options).each do |poll_option, option|
+      assert_includes option['style'], "border: 1px solid #{poll_option.color}"
+      assert_includes option['style'], 'border-radius: 4px'
+    end
+  end
+
   POLL_TYPES.each do |poll_type|
     test "#{poll_type} created email" do
       build_poll_created(poll_type: poll_type)
