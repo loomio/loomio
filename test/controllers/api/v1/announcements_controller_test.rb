@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
+  inline_jobs "history for topic includes users in response",
+              "poll create as admin can add group member",
+              "poll create as admin can add group member with notification",
+              "topic create as admin can add member",
+              "topic create as admin can add multiple members",
+              "outcome create member can add members when permission enabled",
+              "group create with existing member notification",
+              "group create invites to subgroup"
   setup do
     @admin = users(:admin)
     @alien = users(:alien)

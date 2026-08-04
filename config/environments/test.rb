@@ -15,7 +15,8 @@ Rails.application.configure do
   # this is usually not necessary, and can slow down your test suite. However, it's
   # recommended that you enable it in continuous integration systems to ensure eager
   # loading is working properly before deploying your code.
-  # Enable by default to catch production initialization issues early
+  # Enable by default to catch production initialization issues early and make
+  # namespace constants available before test classes are loaded.
   config.eager_load = true
 
   # Configure public file server for tests with Cache-Control for performance.
@@ -26,11 +27,12 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   config.active_job.queue_adapter = :test
 
-  # Execute all jobs (including scheduled) immediately in test, matching the old
-  # Sidekiq::Testing.inline! behavior.
+  # E2E scenarios need production-like immediate job execution. Rails tests
+  # opt in per class when they exercise worker-driven behavior.
   config.after_initialize do
-    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
-    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
+    jobs_inline = ENV.key?("E2E_PORT")
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = jobs_inline
+    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = jobs_inline
   end
 
   # Disable ActionMailbox incineration — its after_create_commit callback

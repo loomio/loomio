@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Dev::AuthMailerTest < ActionController::TestCase
+  inline_jobs
   tests Dev::NightwatchController
 
   setup do

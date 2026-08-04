@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Api::V1::CommentsControllerTest < ActionController::TestCase
+  inline_jobs "create mentions appropriate users"
   setup do
     @admin = users(:admin)
     @user = users(:user)

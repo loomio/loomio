@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Events::CommentRepliedToTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     @user = users(:user)
     @alien = users(:alien)

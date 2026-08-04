@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Dev::DiscussionMailerTest < ActionController::TestCase
+  inline_jobs
   tests Dev::NightwatchController
 
   setup do

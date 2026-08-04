@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class MigrateUserWorkerTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     hex = SecureRandom.hex(4)
     @patrick = User.create!(name: "Patrick#{hex}", email: "patrick#{hex}@example.com", username: "patrickswayze#{hex}", email_verified: true)

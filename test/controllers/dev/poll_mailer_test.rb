@@ -3,6 +3,7 @@ require 'test_helper'
 # Email rendering tests using fixtures for users/group/discussion.
 # Only creates polls (which are poll_type-specific) per test.
 class Dev::PollMailerTest < ActiveSupport::TestCase
+  inline_jobs
   include Dev::FakeDataHelper
 
   # POLL_TYPES = %w[proposal poll dot_vote score count meeting ranked_choice].freeze

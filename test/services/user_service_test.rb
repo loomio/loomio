@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class UserServiceTest < ActiveSupport::TestCase
+  inline_jobs "deactivates the user",
+              "redacts user and removes personally identifying information"
   setup do
     @user = users(:user)
     @group = groups(:group)

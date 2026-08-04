@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     @admin = users(:admin)
     @group = groups(:group)

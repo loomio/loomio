@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ReceivedEmailMailboxTest < ActionMailbox::TestCase
+  inline_jobs "email from alias creates notification",
+              "mailing list envelope recipient creates an unknown sender notification"
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "mboxuser#{hex}", email: "mboxuser#{hex}@example.com", username: "mboxuser#{hex}", email_verified: true)

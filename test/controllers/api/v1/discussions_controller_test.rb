@@ -1,6 +1,7 @@
 require "test_helper"
 
 class Api::V1::DiscussionsControllerTest < ActionController::TestCase
+  inline_jobs "emails mentioned users on discussion create"
   setup do
     @user = users(:user)
     @admin = users(:admin)

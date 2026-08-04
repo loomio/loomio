@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Dev::PollsControllerTest < ActionController::TestCase
+  inline_jobs
   tests Dev::PollsController
 
   setup do
