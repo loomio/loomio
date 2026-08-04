@@ -6,7 +6,7 @@ usage() {
 Usage: bin/worktree-setup [WORKTREE_PATH] [WORKTREE_NAME]
 
 Sets up a linked Git worktree after creation: runs npm ci in vue and hocuspocus,
-writes a worktree-specific TEST_DATABASE_URL, and prepares the Rails test DB.
+writes a worktree-specific mise test override, and prepares the Rails test DB.
 
 When WORKTREE_NAME is omitted, it is inferred from WORKTREE_PATH. For paths like
 .../worktrees/loomio/ready-bolt/loomio, the inferred name is ready-bolt.
@@ -49,26 +49,29 @@ test:
   url: <%= ENV.fetch("TEST_DATABASE_URL", "postgresql:///loomio_test") %>
 YAML
 
-printf 'TEST_DATABASE_URL=%s\n' "$test_database_url" > "$worktree_path/.env.test.local"
+cat > "$worktree_path/mise.test.local.toml" <<EOF
+[env]
+TEST_DATABASE_URL = "$test_database_url"
+EOF
 
 (
   cd "$worktree_path/vue"
-  npm ci
+  mise exec -- npm ci
 )
 
 (
   cd "$worktree_path/hocuspocus"
-  npm ci
+  mise exec -- npm ci
 )
 
 (
   cd "$worktree_path"
-  RAILS_ENV=test TEST_DATABASE_URL="$test_database_url" bin/rails db:prepare
+  RAILS_ENV=test mise -E test exec -- bin/rails db:prepare
 )
 
 cat <<SUMMARY
 Set up worktree: $worktree_path
 Worktree name: $worktree_name
 Test database: $database_name
-TEST_DATABASE_URL written to: $worktree_path/.env.test.local
+TEST_DATABASE_URL written to: $worktree_path/mise.test.local.toml
 SUMMARY

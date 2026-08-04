@@ -1,6 +1,11 @@
 Spring.watch(
   ".ruby-version",
-  ".rbenv-vars",
+  ".miserc.toml",
+  "mise.toml",
+  "mise.development.toml",
+  "mise.test.toml",
+  ".env.development",
+  ".env.development.local",
   "tmp/restart.txt",
   "tmp/caching-dev.txt"
 )

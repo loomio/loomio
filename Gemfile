@@ -68,7 +68,6 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'dotenv-rails'
   gem 'rails-controller-testing'
   gem "brakeman", require: false
   gem "bundler-audit", require: false

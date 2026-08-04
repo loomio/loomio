@@ -17,6 +17,16 @@ jobs:
       PGUSER: postgres
       RAILS_ENV: test
       E2E_PORT: 3001
+      # Keep these values aligned with .env.test. Local test commands load that
+      # file through mise; GitHub Actions supplies them directly.
+      CANONICAL_HOST: localhost
+      CANONICAL_PORT: 3000
+      SMTP_DOMAIN: localhost
+      REPLY_HOSTNAME: localhost
+      SUPPORT_EMAIL: 'support <support@localhost>'
+      FLASH_TIMEOUT_SHORT: 100000
+      TERMS_URL: https://www.loomio.org/terms_of_use
+      PRIVACY_URL: https://www.loomio.org/privacy
     services:
       postgres:
         image: postgres:latest

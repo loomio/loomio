@@ -16,6 +16,7 @@ set -euo pipefail
 # for --testcase filtering to work).
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+MISE_BIN="${MISE_BIN:-mise}"
 RAILS_PID=""
 HOCUSPOCUS_PID=""
 TEST_FILE=""
@@ -71,13 +72,13 @@ echo "==> Building Vue assets..."
 
 # 2. Prepare test database
 echo "==> Preparing test database..."
-RAILS_ENV=test bundle exec rails db:prepare
+RAILS_ENV=test "$MISE_BIN" -E test exec -- bundle exec rails db:prepare
 
 HOCUSPOCUS_PORT="${HOCUSPOCUS_PORT:-4445}"
 
 # 3. Start hocuspocus on its own port (separate from dev's 4444)
 echo "==> Starting hocuspocus server on port $HOCUSPOCUS_PORT..."
-APP_URL="http://localhost:$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" node "$ROOT/hocuspocus/server.mjs" > /tmp/hocuspocus-e2e.log 2>&1 &
+APP_URL="http://localhost:$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" "$MISE_BIN" -E test exec -- node "$ROOT/hocuspocus/server.mjs" > /tmp/hocuspocus-e2e.log 2>&1 &
 HOCUSPOCUS_PID=$!
 for i in $(seq 1 10); do
   if nc -z localhost "$HOCUSPOCUS_PORT" 2>/dev/null; then
@@ -94,7 +95,7 @@ done
 
 # 4. Start Rails server
 echo "==> Starting Rails server on port $E2E_PORT..."
-E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
+E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test "$MISE_BIN" -E test exec -- bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
 RAILS_PID=$!
 
 # 5. Wait for server to be ready
@@ -114,7 +115,7 @@ done
 # 6. Run Nightwatch
 echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
 set +e
-(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test "$MISE_BIN" -E test exec -- npx nightwatch "${FINAL_ARGS[@]}")
 TEST_EXIT=$?
 set -e
 

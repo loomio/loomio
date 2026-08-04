@@ -35,44 +35,36 @@ sudo apt-get install postgresql postgresql-contrib build-essential \
                      git libvips ffmpeg poppler-utils \
 ```
 
-## Install ruby
+## Install mise, ruby, and node
 
-I recommend that you install ruby via `rbenv`, this gives you the flexibility required to install and switch between various versions of ruby.
-
-Follow the installation steps for rbenv from  [https://github.com/sstephenson/rbenv#installation](https://github.com/sstephenson/rbenv#installation).
-
-Then install [ruby-build](https://github.com/sstephenson/ruby-build#readme) like so:
+[mise](https://mise.jdx.dev/) installs the Ruby and Node.js versions declared in
+[`mise.toml`](mise.toml). Install it with the official installer, then enable
+shell activation for your shell:
 
 ```
-mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+curl https://mise.run | sh
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
 ```
 
-When a new version of ruby is released, you can update ruby-build with
-```
-cd "$(rbenv root)"/plugins/ruby-build && git pull
-```
-
-At the time of writing 3.4.5 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+For Bash, use `mise activate bash` and add the equivalent line to `~/.bashrc`.
+Restart your terminal, or run `exec "$SHELL" -l`, then install the project
+tools from the repository root:
 
 ```
-rbenv install 3.4.5
-gem install bundler
+mise trust
+mise install
 ```
 
-## Install node
+The required versions are also recorded in [`.ruby-version`](.ruby-version)
+and [`.node-version`](.node-version). You do not need a separate rbenv, ruby-
+build, or nvm installation.
 
-You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
-
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-```
-
-You'll need to restart your terminal, then run:
+Mise loads `.env.development` and the optional `.env.development.local` file
+when you work in the normal development environment. Test commands use
+`.env.test`; run them through the test environment explicitly:
 
 ```
-nvm install 22
-nvm alias default 22
+mise -E test exec -- bundle exec rails test
 ```
 
 ## Fork and clone the Loomio git repo
@@ -129,5 +121,5 @@ Rails stuff
 
 - `rails s` will start the server outside of Foreman, which I find helpful.
 - `rails c` will bring up a rails console.
-- 'rails test' will run the tests.
+- `mise -E test exec -- bundle exec rails test` will run the tests.
 - 'bin/e2e' will run the e2e tests
