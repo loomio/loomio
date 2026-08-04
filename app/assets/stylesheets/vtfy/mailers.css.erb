@@ -1,6 +1,3 @@
-//= depend_on "_variables.scss.erb"
-@import "variables";
-
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -81,13 +78,13 @@ pre {
 }
 
 .base-mailer__button--primary {
-  background-color: $primary-color;
-  color: $text-on-primary-color;
+  background-color: <%= AppConfig.theme[:primary_color] %>;
+  color: <%= AppConfig.theme[:text_on_primary_color] %>;
 }
 
 .base-mailer__button--accent {
-  background-color: $accent-color;
-  color: $text-on-accent-color;
+  background-color: <%= AppConfig.theme[:accent_color] %>;
+  color: <%= AppConfig.theme[:text_on_accent_color] %>;
 }
 
 .invite-people-mailer__value-proposition {
@@ -201,15 +198,15 @@ mark[data-color="grey"] { background-color: #e0e0e0; }
 }
 
 .poll-mailer__poll-option-container {
-  border: 1px solid $primary-color;
+  border: 1px solid <%= AppConfig.theme[:primary_color] %>;
 }
 
 .poll-mailer__option-indicator {
-  color: $primary-color;
+  color: <%= AppConfig.theme[:primary_color] %>;
 }
 
 .poll-mailer__result-bar {
-  background-color: $primary-color;
+  background-color: <%= AppConfig.theme[:primary_color] %>;
 }
 
 .poll-meeting-chart td {
@@ -238,24 +235,24 @@ mark[data-color="grey"] { background-color: #e0e0e0; }
 
 @media (prefers-color-scheme: dark) {
   .poll-mailer__poll-option-container {
-    border-color: $dark-primary-color !important;
+    border-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
   }
 
   .poll-mailer__option-indicator {
-    color: $dark-primary-color !important;
+    color: <%= AppConfig.theme[:dark_primary_color] %> !important;
   }
 
   .poll-mailer__result-bar {
-    background-color: $dark-primary-color !important;
+    background-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
   }
 
   .base-mailer__button--primary {
-    background-color: $dark-primary-color !important;
-    color: $dark-text-on-primary-color !important;
+    background-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
+    color: <%= AppConfig.theme[:dark_text_on_primary_color] %> !important;
   }
 
   .base-mailer__button--accent {
-    background-color: $dark-accent-color !important;
-    color: $dark-text-on-accent-color !important;
+    background-color: <%= AppConfig.theme[:dark_accent_color] %> !important;
+    color: <%= AppConfig.theme[:dark_text_on_accent_color] %> !important;
   }
 }
