@@ -3,7 +3,7 @@ require 'resolv'
 require 'net/http'
 require 'stringio'
 
-module LinkPreviewService
+module SafeHttpService
   MAX_REDIRECTS = 3
   REQUEST_TIMEOUT_SECONDS = 5
 
@@ -27,7 +27,12 @@ module LinkPreviewService
     IPAddr.new('::1/128'),
     IPAddr.new('fc00::/7'),
     IPAddr.new('fe80::/10'),
-    IPAddr.new('ff00::/8')
+    IPAddr.new('ff00::/8'),
+    IPAddr.new('::/96'),
+    IPAddr.new('64:ff9b::/96'),
+    IPAddr.new('64:ff9b:1::/48'),
+    IPAddr.new('2001::/32'),
+    IPAddr.new('2002::/16')
   ].freeze
 
   def self.fetch(url, redirect_depth: 0)
