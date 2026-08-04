@@ -39,9 +39,9 @@ v-menu.reactions-input(:close-on-content-click="true")
   emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
 </template>
 
-<style lang="sass">
-.reactions-input
-	display: flex
-	align-items: center
-
+<style>
+.reactions-input {
+  display: flex;
+  align-items: center;
+}
 </style>

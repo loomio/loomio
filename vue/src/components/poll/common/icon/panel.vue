@@ -40,20 +40,23 @@ export default {
 
 </template>
 
-<style lang="sass">
-.poll-common-chart-preview__stance-container
-  position: absolute
-  left: -3px
-  bottom: -3px
-  border-radius: 100%
-  box-shadow: 0 2px 1px rgba(0,0,0,.15)
+<style>
+.poll-common-chart-preview__stance-container {
+  position: absolute;
+  left: -3px;
+  bottom: -3px;
+  border-radius: 100%;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
+}
 
-.poll-common-chart-preview__stance
-  width: 100%
-  height: 100%
-  background-repeat: no-repeat
-  line-height: 0.9
+.poll-common-chart-preview__stance {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  line-height: 0.9;
+}
 
-.poll-common-chart-preview
-  position: relative
+.poll-common-chart-preview {
+  position: relative;
+}
 </style>

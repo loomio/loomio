@@ -99,20 +99,23 @@ v-menu.tags-filter-menu(v-model="open" offset-y :close-on-content-click="false")
           v-list-item-title(v-t="'loomio_tags.edit_tags'")
 </template>
 
-<style lang="sass">
-.tags-filter-menu__selected-tag
-  align-items: center
-  display: inline-flex
-  margin-left: -4px
+<style>
+.tags-filter-menu__selected-tag {
+  align-items: center;
+  display: inline-flex;
+  margin-left: -4px;
+}
 
-.tags-filter-menu__selected-tag-dot
-  height: 12px
-  margin-right: 6px
-  width: 12px
+.tags-filter-menu__selected-tag-dot {
+  height: 12px;
+  margin-right: 6px;
+  width: 12px;
+}
 
-.tag-color-dot
-  border-radius: 50%
-  height: 16px
-  margin-right: 12px
-  width: 16px
+.tag-color-dot {
+  border-radius: 50%;
+  height: 16px;
+  margin-right: 12px;
+  width: 16px;
+}
 </style>

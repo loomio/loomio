@@ -131,73 +131,150 @@ v-app.app-is-booted(:style="themeBackgroundStyle")
   common-flash
 </template>
 
-<style lang="sass">
-@import '@/css/utilities.scss'
-@import '@/css/roboto.css'
-@import '@/css/thumbicons.css'
-@import '@/css/print.scss'
+<style>
+@import '@/css/roboto.css';
+@import '@/css/thumbicons.css';
+.lmo-disabled-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: 6px;
+  opacity: 0.5;
+}
 
-.v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
-  box-shadow: none !important
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
-.v-application.v-theme--light
-  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-background)))
-  background-attachment: fixed
+@media print {
+  header,
+  .lmo-no-print,
+  .md-sidenav-left.lmo-no-print,
+  .md-dialog-backdrop,
+  .md-open-menu-container,
+  .sr-only {
+    display: none !important;
+  }
+  .lmo-one-column-layout,
+  .lmo-two-column-layout {
+    padding-top: 0 !important;
+  }
+  .lmo-print-only {
+    display: block !important;
+  }
+  .lmo-main-background {
+    position: static !important;
+  }
+  .lmo-column-left,
+  .lmo-column-right {
+    width: 100% !important;
+    float: none !important;
+  }
+  .lmo-sidebar-and-main-container {
+    display: block;
+    overflow: visible !important;
+  }
+  .thread-page .group-theme__header--compact {
+    margin: 0 0 15px 0;
+  }
+  .thread-page a[href]:after {
+    content: "" !important;
+  }
+}
+.v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet)) {
+  box-shadow: none !important;
+}
 
-.v-application.v-theme--dark
-  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-background)))
-  background-attachment: fixed
+.v-application.v-theme--light {
+  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-background)));
+  background-attachment: fixed;
+}
 
-.v-theme--light .v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
-  border: thin solid rgba(var(--v-border-color), var(--v-border-opacity))
+.v-application.v-theme--dark {
+  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-background)));
+  background-attachment: fixed;
+}
 
-@layer vuetify-core.reset
-  ul, ol, figure, details, summary
-    padding: 0
-    margin: 0
+.v-theme--light .v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet)) {
+  border: thin solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
 
-  h1, h2, h3, h4, h5, h6, p
-    margin: 0
+@layer vuetify-core.reset {
+  ul, ol, figure, details, summary {
+    padding: 0;
+    margin: 0;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+}
+.underline-on-hover:hover {
+  text-decoration: underline;
+}
 
-.underline-on-hover:hover
-  text-decoration: underline
-
-.v-card.group-form > .v-card__content
-  overflow: visible!important
+.v-card.group-form > .v-card__content {
+  overflow: visible !important;
+}
 
 .v-card.discussion-form,
 .v-card.thread-template-form,
 .v-card.thread-template-form .v-card-item__content,
 .v-card.discussion-form .v-card-item__content,
 .v-card.poll-common-modal,
-.v-card.poll-common-modal .v-card-item__content
-  overflow: visible!important
+.v-card.poll-common-modal .v-card-item__content {
+  overflow: visible !important;
+}
 
-.text-on-surface
-  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
+.text-on-surface {
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
+}
 
-h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
-  outline: 0
+h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus {
+  outline: 0;
+}
 
-.max-width-320
-  max-width: 320px !important
-.max-width-400
-  max-width: 400px !important
-.max-width-640
-  max-width: 640px !important
-.max-width-800
-  max-width: 800px !important
-.max-width-900
-  max-width: 900px !important
-.max-width-1024
-  max-width: 1024px !important
+.max-width-320 {
+  max-width: 320px !important;
+}
 
-@media (prefers-color-scheme: dark)
-  body
-    background-color: #000
+.max-width-400 {
+  max-width: 400px !important;
+}
 
-@media print
-  .lmo-no-print
-    display: none !important
+.max-width-640 {
+  max-width: 640px !important;
+}
 
+.max-width-800 {
+  max-width: 800px !important;
+}
+
+.max-width-900 {
+  max-width: 900px !important;
+}
+
+.max-width-1024 {
+  max-width: 1024px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+  }
+}
+@media print {
+  .lmo-no-print {
+    display: none !important;
+  }
+}
 </style>

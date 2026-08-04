@@ -116,29 +116,35 @@ export default {
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 
-<style lang="sass">
-.poll-stv-vote-form__option
-  user-select: none
+<style>
+.poll-stv-vote-form__option {
+  user-select: none;
+}
 
-.poll-stv-vote-form__option--unranked
-  opacity: 0.5
+.poll-stv-vote-form__option--unranked {
+  opacity: 0.5;
+}
 
-.poll-stv-vote-form__divider
-  display: flex
-  align-items: center
-  gap: 8px
-  user-select: none
-  cursor: pointer
-  .v-divider
-    flex: 1
+.poll-stv-vote-form__divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  cursor: pointer;
+}
+.poll-stv-vote-form__divider .v-divider {
+  flex: 1;
+}
 
-.poll-stv-vote-form__divider-text
-  display: flex
-  align-items: center
-  gap: 4px
-  white-space: nowrap
-  font-size: 0.85rem
+.poll-stv-vote-form__divider-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
 
-.app-is-booted > .sortable-list-item
-  z-index: 10000
+.app-is-booted > .sortable-list-item {
+  z-index: 10000;
+}
 </style>

@@ -150,10 +150,11 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
         span(v-t="'loomio_tags.new_tag'")
 </template>
 
-<style lang="sass">
-.tag-color-dot
-  border-radius: 50%
-  height: 16px
-  margin-right: 12px
-  width: 16px
+<style>
+.tag-color-dot {
+  border-radius: 50%;
+  height: 16px;
+  margin-right: 12px;
+  width: 16px;
+}
 </style>

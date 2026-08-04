@@ -125,18 +125,21 @@ v-app-bar.lmo-no-print(app clipped-right color="appbar" :class="{'navbar--scroll
       span(v-t="'auth_form.sign_in'")
 </template>
 
-<style lang="sass">
-.v-app-bar.navbar--scrolled
-  background-color: rgb(var(--v-theme-appbar-scrolled)) !important
-  color: rgb(var(--v-theme-on-appbar-scrolled)) !important
+<style>
+.v-app-bar.navbar--scrolled {
+  background-color: rgb(var(--v-theme-appbar-scrolled)) !important;
+  color: rgb(var(--v-theme-on-appbar-scrolled)) !important;
+}
 
-.v-theme--light .v-app-bar.navbar--scrolled
-  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important
-  background-attachment: fixed !important
-  color: var(--loomio-theme-light-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important
+.v-theme--light .v-app-bar.navbar--scrolled {
+  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important;
+  background-attachment: fixed !important;
+  color: var(--loomio-theme-light-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important;
+}
 
-.v-theme--dark .v-app-bar.navbar--scrolled
-  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important
-  background-attachment: fixed !important
-  color: var(--loomio-theme-dark-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important
+.v-theme--dark .v-app-bar.navbar--scrolled {
+  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important;
+  background-attachment: fixed !important;
+  color: var(--loomio-theme-dark-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important;
+}
 </style>

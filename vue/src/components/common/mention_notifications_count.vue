@@ -76,13 +76,14 @@ p.mention-notifications-count.text-medium-emphasis.text-body-small(
   )
 </template>
 
-<style scoped lang="sass">
-.mention-notifications-count
-  position: absolute
-  right: 12px
-  bottom: 9px
-  margin: 0
-  padding-left: 8px
-  pointer-events: none
-  background: rgb(var(--v-theme-surface))
+<style scoped>
+.mention-notifications-count {
+  position: absolute;
+  right: 12px;
+  bottom: 9px;
+  margin: 0;
+  padding-left: 8px;
+  pointer-events: none;
+  background: rgb(var(--v-theme-surface));
+}
 </style>

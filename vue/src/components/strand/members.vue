@@ -49,6 +49,3 @@ export default {
   v-btn(size="small" icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
     common-icon(name="mdi-plus")
 </template>
-
-<style lang="sass">
-</style>

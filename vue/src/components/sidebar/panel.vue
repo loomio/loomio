@@ -276,24 +276,27 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
       v-img(v-else :src="logoUrl")
 
 </template>
-<style lang="sass">
-.sidenav-left .v-list
-  background: inherit
+<style>
+.sidenav-left .v-list {
+  background: inherit;
+}
 
-.sidebar__loomio-logo
-  display: block
-  width: 100%
-  max-width: 100%
-  min-width: 0
-  overflow: hidden
-  line-height: 0
+.sidebar__loomio-logo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+.sidebar__loomio-logo svg {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+}
 
-  svg
-    display: block
-    width: 100% !important
-    max-width: 100%
-    height: auto !important
-
-.greySidebarLogo
-  filter: saturate(99999%) grayscale(1)
+.greySidebarLogo {
+  filter: saturate(99999%) grayscale(1);
+}
 </style>
