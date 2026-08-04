@@ -111,8 +111,9 @@ const size = () => {
     span(v-t="{path: 'common.action.count_more', args: {count: count}}")
 </template>
 
-<style lang="sass">
-.strand-item__load-more
-  width: 100%
-  padding: 8px 0
+<style>
+.strand-item__load-more {
+  width: 100%;
+  padding: 8px 0;
+}
 </style>

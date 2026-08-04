@@ -93,7 +93,8 @@ export default {
           span(v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
 </template>
 
-<style lang="sass">
-.comment-form__body
-  flex-grow: 1
+<style>
+.comment-form__body {
+  flex-grow: 1;
+}
 </style>

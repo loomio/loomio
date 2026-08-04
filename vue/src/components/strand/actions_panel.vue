@@ -135,14 +135,16 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
 
 </template>
 
-<style lang="sass">
-#add-comment .v-window
-  overflow: visible
+<style>
+#add-comment .v-window {
+  overflow: visible;
+}
 
-.add-comment-panel__sign-in-btn
-  width: 100%
-.add-comment-panel__join-actions
-  button
-    width: 100%
+.add-comment-panel__sign-in-btn {
+  width: 100%;
+}
 
+.add-comment-panel__join-actions button {
+  width: 100%;
+}
 </style>

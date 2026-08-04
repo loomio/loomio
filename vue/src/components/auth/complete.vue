@@ -88,8 +88,9 @@ v-card.auth-complete(
       :disabled='!user.code || loading')
       span(v-t="'auth_form.sign_in'")
 </template>
-<style lang="sass">
-.auth-complete__code input
-  letter-spacing: 0.5em
-  text-align: center
+<style>
+.auth-complete__code input {
+  letter-spacing: 0.5em;
+  text-align: center;
+}
 </style>

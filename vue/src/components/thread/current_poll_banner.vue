@@ -53,20 +53,15 @@ v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="eve
     span(v-t="'common.view'")
 </template>
 
-<style lang="sass">
-.current-poll-banner
-  display: flex
-  align-items: center
-.current-poll-banner__title
-  white-space: nowrap
-  overflow: hidden
-  text-overflow: ellipsis
+<style>
+.current-poll-banner {
+  display: flex;
+  align-items: center;
+}
 
-  // position: sticky top: 64px
-  // z-index: 1
-//   .v-banner__content
-//     overflow: visible
-// .v-banner--single-line
-//   .v-banner__text
-// overflow: visible !important
+.current-poll-banner__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

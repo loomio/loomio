@@ -59,22 +59,26 @@ onMounted(() => {
     attachment-list(:attachments="discussion.attachments")
     action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' variant="tonal")
 </template>
-<style lang="sass">
-abbr[title]
-  text-decoration: none
-a
-  cursor: pointer
+<style>
+abbr[title] {
+  text-decoration: none;
+}
 
-.context-panel__heading-pin
-  margin-left: 4px
+a {
+  cursor: pointer;
+}
 
-.context-panel__discussion-privacy i
-  position: relative
-  font-size: 14px
-  top: 2px
+.context-panel__heading-pin {
+  margin-left: 4px;
+}
 
-.context-panel__description
-  > p:last-of-type
-    margin-bottom: 24px
+.context-panel__discussion-privacy i {
+  position: relative;
+  font-size: 14px;
+  top: 2px;
+}
 
+.context-panel__description > p:last-of-type {
+  margin-bottom: 24px;
+}
 </style>

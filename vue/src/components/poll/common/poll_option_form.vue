@@ -144,20 +144,23 @@ form(v-on:submit.prevent='submit()')
         span(v-t="'common.action.done'")
 </template>
 
-<style lang="sass">
-.poll-option-form__icon-selected
-  border: 1px solid rgb(var(--v-theme-primary)) !important
+<style>
+.poll-option-form__icon-selected {
+  border: 1px solid rgb(var(--v-theme-primary)) !important;
+}
 
-.poll-option-form__icon-not-selected
-  opacity: 0.33 !important
+.poll-option-form__icon-not-selected {
+  opacity: 0.33 !important;
+}
 
-.poll-option-form__icon
-  cursor: pointer
-  border: 1px solid #333
-  input
-    position: absolute
-    opacity: 0
-    width: 0
-    height: 0
-
+.poll-option-form__icon {
+  cursor: pointer;
+  border: 1px solid #333;
+}
+.poll-option-form__icon input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 </style>

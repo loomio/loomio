@@ -37,8 +37,8 @@ export default {
         mid-dot
         span {{choice.score}}
 </template>
-<style lang="sass">
-.poll-common-stance-choices
-  overflow: hidden
-
+<style>
+.poll-common-stance-choices {
+  overflow: hidden;
+}
 </style>

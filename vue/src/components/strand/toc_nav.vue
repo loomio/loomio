@@ -171,45 +171,54 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
           common-icon(:name="action.icon")
 </template>
 
-<style lang="sass">
-.thread-sidebar .v-list
-  background: inherit
+<style>
+.thread-sidebar .v-list {
+  background: inherit;
+}
 
-.thread-sidebar .v-list-item-title
-  white-space: normal !important
+.thread-sidebar .v-list-item-title {
+  white-space: normal !important;
+}
 
+.strand-nav__stance-icon-container {
+  display: inline-block;
+}
 
-.strand-nav__stance-icon-container
-  display: inline-block
+.strand-nav__toc {
+  display: flex;
+  flex-direction: column;
+  min-height: 70%;
+}
 
-.strand-nav__toc
-  display: flex
-  flex-direction: column
-  min-height: 70%
+.strand-nav__entry:empty {
+  flex-grow: 1;
+}
 
-.strand-nav__entry:empty
-  flex-grow: 1
+.strand-nav__entry {
+  display: block;
+  border-left: 2px solid #ccc;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 8px;
+  min-height: 2px;
+}
 
-.strand-nav__entry
-  display: block
-  border-left: 2px solid #ccc
-  padding-left: 8px
-  padding-right: 8px
-  margin-left: 8px
-  min-height: 2px
+.strand-nav__entry--selected {
+  border-color: rgb(var(--v-theme-primary)) !important;
+}
 
-.strand-nav__entry--selected
-  border-color: rgb(var(--v-theme-primary))!important
+.strand-nav__entry:hover {
+  border-color: rgb(var(--v-theme-primary)) !important;
+}
 
-.strand-nav__entry:hover
-  border-color: rgb(var(--v-theme-primary))!important
+.strand-nav__entry:hover, .strand-nav__entry--visible {
+  background-color: #f8f8f8;
+}
 
-.strand-nav__entry:hover, .strand-nav__entry--visible
-  background-color: #f8f8f8
-
-.v-theme--dark
-  .strand-nav__entry
-    border-left: 2px solid #999
-  .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: rgb(var(--v-theme-surface))
+.v-theme--dark .strand-nav__entry {
+  border-left: 2px solid #999;
+}
+.v-theme--dark .strand-nav__entry:hover, .v-theme--dark .strand-nav__entry--visible {
+  background-color: rgb(var(--v-theme-surface));
+}
 </style>

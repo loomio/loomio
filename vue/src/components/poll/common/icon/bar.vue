@@ -77,13 +77,14 @@ export default {
 .bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
 </template>
 
-<style lang="sass">
-.bar-chart
-	border: 0
-	margin: 0
-	padding: 0
-	svg
-		height: 100%
-		width: 100%
-
+<style>
+.bar-chart {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.bar-chart svg {
+  height: 100%;
+  width: 100%;
+}
 </style>

@@ -16,10 +16,3 @@ export default {
 <template lang="pug">
 pre.poll-meeting-time.my-0 {{time}}
 </template>
-
-<style lang="sass">
-.poll-meeting-time
-  // white-space: pre
-
-
-</style>

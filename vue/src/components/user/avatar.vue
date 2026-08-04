@@ -65,12 +65,12 @@ v-avatar(v-else :title='user.name' :size='size' :color="color")
   common-icon(v-else :name="user.avatarKind")
 </template>
 
-<style lang="sass">
-.user-avatar--initials
-  color: rgba(0,0,0,.88)
-  font-size: 15px
-  display: flex
-  align-items: center
-  justify-content: center
-
+<style>
+.user-avatar--initials {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

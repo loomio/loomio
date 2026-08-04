@@ -15,7 +15,8 @@ export default {
   slot
 </template>
 
-<style lang="sass">
-body > .sortable-list-item
-  z-index: 999
+<style>
+body > .sortable-list-item {
+  z-index: 999;
+}
 </style>

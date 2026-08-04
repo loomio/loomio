@@ -55,8 +55,8 @@ function titleVisible(visible) {
     i.mdi.mdi-pin-outline.context-panel__heading-pin(v-if="isPinned")
 </template>
 
-<style lang="sass">
-.strand-header
-  .v-breadcrumbs
-    padding: 4px 10px 4px 10px
+<style>
+.strand-header .v-breadcrumbs {
+  padding: 4px 10px 4px 10px;
+}
 </style>

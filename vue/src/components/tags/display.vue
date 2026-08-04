@@ -60,11 +60,12 @@ span.tags-display
     plain-text(:model="tag" field="name")
 </template>
 
-<style lang="sass">
-.tags-display .tag-color-dot
-  border-radius: 50%
-  display: inline-block
-  height: 10px
-  margin-right: 6px
-  width: 10px
+<style>
+.tags-display .tag-color-dot {
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 6px;
+  width: 10px;
+}
 </style>

@@ -103,17 +103,18 @@ export default {
             div.poll-common-chart-table__voter-avatars
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>
-<style lang="sass">
-.v-data-table tbody tr:hover
-  background: none !important
+<style>
+.v-data-table tbody tr:hover {
+  background: none !important;
+}
 
-.poll-common-chart-table
-  table
-    width: 100%
+.poll-common-chart-table table {
+  width: 100%;
+}
 
-.poll-common-chart-table__voter-avatars
-  position: relative
-  max-height: 72px
-  overflow: hidden
-
+.poll-common-chart-table__voter-avatars {
+  position: relative;
+  max-height: 72px;
+  overflow: hidden;
+}
 </style>

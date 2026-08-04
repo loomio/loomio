@@ -56,12 +56,14 @@ v-card.suggestion-list(
     v-progress-linear(v-if="loading" indeterminate color='primary' size='24' width="2")
 </template>
 
-<style scoped lang="sass">
+<style scoped>
 .suggestion-list,
-.suggestion-list .v-list
-  background-color: rgb(var(--v-theme-surface)) !important
-  opacity: 1
+.suggestion-list .v-list {
+  background-color: rgb(var(--v-theme-surface)) !important;
+  opacity: 1;
+}
 
-.suggestion-list
-  z-index: 10
+.suggestion-list {
+  z-index: 10;
+}
 </style>
