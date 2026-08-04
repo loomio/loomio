@@ -54,9 +54,15 @@ class AppConfig
 
     light = {
       background: ENV['THEME_LIGHT_BACKGROUND'],
+      "on-background": ENV['THEME_LIGHT_ON_BACKGROUND'],
       surface: ENV['THEME_LIGHT_SURFACE'],
+      "on-surface": ENV['THEME_LIGHT_ON_SURFACE'],
+      "on-primary": ENV['THEME_LIGHT_ON_PRIMARY'],
+      "on-accent": ENV['THEME_LIGHT_ON_ACCENT'],
       appbar: ENV['THEME_LIGHT_APPBAR'],
+      "appbar-scrolled": ENV['THEME_LIGHT_APPBAR_SCROLLED'],
       drawer: ENV['THEME_LIGHT_DRAWER'],
+      "thread-drawer": ENV['THEME_LIGHT_THREAD_DRAWER'],
       primary: ENV['THEME_LIGHT_PRIMARY'],
       accent: ENV['THEME_LIGHT_ACCENT'],
       anchor: ENV['THEME_LIGHT_ANCHOR'],
@@ -68,9 +74,15 @@ class AppConfig
 
     dark = {
       background: ENV['THEME_DARK_BACKGROUND'],
+      "on-background": ENV['THEME_DARK_ON_BACKGROUND'],
       surface: ENV['THEME_DARK_SURFACE'],
+      "on-surface": ENV['THEME_DARK_ON_SURFACE'],
+      "on-primary": ENV['THEME_DARK_ON_PRIMARY'],
+      "on-accent": ENV['THEME_DARK_ON_ACCENT'],
       appbar: ENV['THEME_DARK_APPBAR'],
+      "appbar-scrolled": ENV['THEME_DARK_APPBAR_SCROLLED'],
       drawer: ENV['THEME_DARK_DRAWER'],
+      "thread-drawer": ENV['THEME_DARK_THREAD_DRAWER'],
       primary: ENV['THEME_DARK_PRIMARY'],
       accent: ENV['THEME_DARK_ACCENT'],
       anchor: ENV['THEME_DARK_ANCHOR'],
@@ -102,13 +114,21 @@ class AppConfig
       # used in emails
       email_header_logo_src: ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC', "/brand/logo-yellow-96h.png"),
       email_footer_logo_src: ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC', "/brand/logo-yellow-48h.png"),
-      primary_color: ENV.fetch('THEME_PRIMARY_COLOR', brand_colors[:blue500]),
-      accent_color: ENV.fetch('THEME_ACCENT_COLOR', brand_colors[:yellow425]),
-      text_on_primary_color: ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR', '#ffffff'),
-      text_on_accent_color: ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR', brand_colors[:grey700]),
+      primary_color: light[:primary].presence || brand_colors[:blue500],
+      dark_primary_color: dark[:primary].presence || brand_colors[:yellow425],
+      accent_color: light[:accent].presence || ENV.fetch('THEME_ACCENT_COLOR', brand_colors[:yellow425]),
+      dark_accent_color: dark[:accent].presence || brand_colors[:yellow425],
+      text_on_primary_color: light[:"on-primary"].presence || ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR', '#ffffff'),
+      dark_text_on_primary_color: dark[:"on-primary"].presence || brand_colors[:grey700],
+      text_on_accent_color: light[:"on-accent"].presence || ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR', brand_colors[:grey700]),
+      dark_text_on_accent_color: dark[:"on-accent"].presence || brand_colors[:grey700],
       default_invitation_message: ENV['THEME_DEFAULT_INVITATION_MESSAGE'],
       default_dark_theme: ENV.fetch('THEME_DEFAULT_DARK_THEME', 'dark'),
       default_light_theme: ENV.fetch('THEME_DEFAULT_LIGHT_THEME', 'light'),
+      background_gradient: {
+        light: ENV['THEME_LIGHT_BACKGROUND_GRADIENT'],
+        dark: ENV['THEME_DARK_BACKGROUND_GRADIENT']
+      },
       light: light,
       dark: dark
     }
