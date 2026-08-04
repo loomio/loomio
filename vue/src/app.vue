@@ -21,8 +21,11 @@ const themeColorsApply = (theme, name, overrides) => {
     if (value) { colors[key] = value; }
   });
 
+  if (!overrides.anchor) { colors.anchor = colors.primary; }
   colors.appbar ||= colors.background;
+  colors['appbar-scrolled'] ||= colors.appbar;
   colors.drawer ||= colors.surface;
+  colors['thread-drawer'] ||= colors.background;
 };
 
 export default {
@@ -31,6 +34,24 @@ export default {
 
   data() {
     return {pageError: null};
+  },
+
+  computed: {
+    themeBackgroundStyle() {
+      const style = {};
+
+      if (AppConfig.theme.background_gradient?.light) {
+        style['--loomio-theme-light-background-gradient'] = AppConfig.theme.background_gradient.light;
+        style['--loomio-theme-light-background-foreground'] = 'rgb(var(--v-theme-on-background))';
+      }
+
+      if (AppConfig.theme.background_gradient?.dark) {
+        style['--loomio-theme-dark-background-gradient'] = AppConfig.theme.background_gradient.dark;
+        style['--loomio-theme-dark-background-foreground'] = 'rgb(var(--v-theme-on-background))';
+      }
+
+      return style;
+    },
   },
 
   created() {
@@ -99,7 +120,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-app.app-is-booted
+v-app.app-is-booted(:style="themeBackgroundStyle")
   system-notice
   sidebar-panel
   navbar
@@ -118,6 +139,14 @@ v-app.app-is-booted
 
 .v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
   box-shadow: none !important
+
+.v-application.v-theme--light
+  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-background)))
+  background-attachment: fixed
+
+.v-application.v-theme--dark
+  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-background)))
+  background-attachment: fixed
 
 .v-theme--light .v-main :is(.v-card, .v-sheet):not(:is(.v-card, .v-sheet) :is(.v-card, .v-sheet))
   border: thin solid rgba(var(--v-border-color), var(--v-border-opacity))

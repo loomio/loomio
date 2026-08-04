@@ -273,6 +273,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" color="drawer")
 
 </template>
 <style lang="sass">
+.sidenav-left .v-list
+  background: inherit
+
 .sidebar__loomio-logo
   display: block
   width: 100%
