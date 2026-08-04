@@ -6,7 +6,7 @@ class Api::V1::ChatbotsControllerTest < ActionController::TestCase
     @member = users(:member)
     @group = groups(:group)
     @alien_group = groups(:alien_group)
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       @chatbot = Chatbot.create!(
         name: 'Test webhook',
         group: @group,
@@ -21,7 +21,7 @@ class Api::V1::ChatbotsControllerTest < ActionController::TestCase
   test "update ignores group_id transfer" do
     sign_in @admin
 
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       patch :update, params: {
         id: @chatbot.id,
         chatbot: {
@@ -64,7 +64,7 @@ class Api::V1::ChatbotsControllerTest < ActionController::TestCase
   test "check rejects unsafe server urls" do
     sign_in @admin
 
-    LinkPreviewService.stub(:safe_to_fetch?, false) do
+    SafeHttpService.stub(:safe_to_fetch?, false) do
       post :check, params: {
         group_id: @group.id,
         kind: 'slack_webhook',
@@ -80,7 +80,7 @@ class Api::V1::ChatbotsControllerTest < ActionController::TestCase
 
     WebMock.stub_request(:post, 'https://hooks.example.test/').to_return(status: 200)
 
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       post :check, params: {
         group_id: @group.id,
         kind: 'slack_webhook',

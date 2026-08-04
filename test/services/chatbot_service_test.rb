@@ -11,7 +11,7 @@ class ChatbotServiceTest < ActiveSupport::TestCase
     matching_url = 'https://hooks.example.test/matching'
     non_matching_url = 'https://hooks.example.test/non-matching'
 
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       Chatbot.create!(
         name: 'Matching webhook',
         group: @group,
@@ -47,7 +47,7 @@ class ChatbotServiceTest < ActiveSupport::TestCase
   test "publish_event does not deliver to a webhook host that resolves to a blocked internal IP (SSRF guard)" do
     internal_url = 'https://rebind.example.test/hook'
 
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       Chatbot.create!(
         name: 'Rebinding webhook',
         group: @group,

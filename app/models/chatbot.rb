@@ -20,6 +20,6 @@ class Chatbot < ApplicationRecord
   private
 
   def server_is_public_url
-    errors.add(:server, :invalid) unless LinkPreviewService.safe_to_fetch?(server)
+    errors.add(:server, :invalid) unless SafeHttpService.safe_to_fetch?(server)
   end
 end

@@ -27,7 +27,7 @@ class Clients::Matrix
   def join_room(room_id_or_alias)
     # @server is user-controlled; go through the SSRF-guarded, IP-pinned client
     # so a rebinding/redirect can't reach internal services or cloud metadata.
-    response = LinkPreviewService.pinned_request(:post,
+    response = SafeHttpService.pinned_request(:post,
       "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id_or_alias)}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
       body: "{}",
@@ -41,7 +41,7 @@ class Clients::Matrix
 
   def send_message(room_id, content)
     txn_id = SecureRandom.hex(16)
-    LinkPreviewService.pinned_request(:put,
+    SafeHttpService.pinned_request(:put,
       "#{@server}/_matrix/client/v3/rooms/#{CGI.escape(room_id)}/send/m.room.message/#{txn_id}",
       headers: auth_headers.merge("Content-Type" => "application/json"),
       body: content.to_json,
