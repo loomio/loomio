@@ -13,8 +13,7 @@ class Api::V1::ReactionsController < Api::V1::RestfulController
       next unless params.has_key? key
       params[key] = params[key].split('x').map(&:to_i)
     end
-    ReactionQuery.authorize!(user: current_user, params: params)
-    self.collection = ReactionQuery.unsafe_where(params)
+    self.collection = ReactionQuery.visible_where(user: current_user, params: params)
     respond_with_collection
   end
 

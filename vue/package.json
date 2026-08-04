@@ -17,7 +17,7 @@
     "@hocuspocus/provider": "^4.4.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
-    "@sentry/browser": "^10.67.0",
+    "@sentry/browser": "^10.69.0",
     "@sentry/vue": "^10.67.0",
     "@tiptap/core": "3.28.0",
     "@tiptap/extension-blockquote": "3.28.0",
@@ -85,7 +85,7 @@
     "nightwatch": "^3.15.0",
     "pug": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "8.1.5",
+    "vite": "8.2.0",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "yaml": "^2.9.0"

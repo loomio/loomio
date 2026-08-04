@@ -168,27 +168,125 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "index denies access correctly" do
-    author = users(:admin)
+  test "index filters inaccessible discussions and comments from a mixed batch" do
+    user = users(:admin)
+    inaccessible_user = users(:alien)
     discussion = discussions(:discussion)
-
-    comment = Comment.new(body: "Test comment", parent: discussion, author: author)
-    CommentService.create(comment: comment, actor: author)
-
-    Reaction.create!(user: author, reactable: comment, reaction: '👍')
-    Reaction.create!(user: author, reactable: discussion, reaction: '👍')
-
-    # Create a user who is NOT a member of the group
-    unauthorized_user = User.create!(
-      name: "Unauthorized User 2",
-      email: "unauthorized2@example.com",
-      username: "unauthorized2",
-      password_digest: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
-      email_verified: true
+    inaccessible_discussion = discussions(:alien_discussion)
+    comment = Comment.new(body: "Visible comment", parent: discussion, author: user)
+    inaccessible_comment = Comment.new(
+      body: "Inaccessible comment",
+      parent: inaccessible_discussion,
+      author: inaccessible_user
     )
+    CommentService.create(comment: comment, actor: user)
+    CommentService.create(comment: inaccessible_comment, actor: inaccessible_user)
 
-    sign_in unauthorized_user
-    get :index, params: { comment_ids: comment.id, discussion_ids: discussion.id }
-    assert_response :forbidden
+    reactions_visible = [
+      Reaction.create!(user: user, reactable: comment, reaction: '👍'),
+      Reaction.create!(user: user, reactable: discussion, reaction: '👍')
+    ]
+    Reaction.create!(user: inaccessible_user, reactable: inaccessible_comment, reaction: '👍')
+    Reaction.create!(user: inaccessible_user, reactable: inaccessible_discussion, reaction: '👍')
+
+    sign_in user
+    get :index, params: {
+      comment_ids: [comment.id, inaccessible_comment.id].join('x'),
+      discussion_ids: [discussion.id, inaccessible_discussion.id].join('x')
+    }
+
+    assert_response :success
+    assert_equal reactions_visible.map(&:id).sort, response_reaction_ids
+  end
+
+  test "index filters inaccessible polls outcomes and stances from a mixed batch" do
+    user = users(:admin)
+    inaccessible_user = users(:alien)
+    poll = create_poll(topic: discussions(:discussion).topic, actor: user)
+    inaccessible_poll = create_poll(topic: discussions(:alien_discussion).topic, actor: inaccessible_user)
+    outcome = create_outcome(poll: poll, actor: user)
+    inaccessible_outcome = create_outcome(poll: inaccessible_poll, actor: inaccessible_user)
+    stance = create_stance(poll: poll, actor: user)
+    inaccessible_stance = create_stance(poll: inaccessible_poll, actor: inaccessible_user)
+
+    reactions_visible = [poll, outcome, stance].map do |reactable|
+      Reaction.create!(user: user, reactable: reactable, reaction: '👍')
+    end
+    [inaccessible_poll, inaccessible_outcome, inaccessible_stance].each do |reactable|
+      Reaction.create!(user: inaccessible_user, reactable: reactable, reaction: '👍')
+    end
+
+    sign_in user
+    get :index, params: {
+      poll_ids: [poll.id, inaccessible_poll.id].join('x'),
+      outcome_ids: [outcome.id, inaccessible_outcome.id].join('x'),
+      stance_ids: [stance.id, inaccessible_stance.id].join('x')
+    }
+
+    assert_response :success
+    assert_equal reactions_visible.map(&:id).sort, response_reaction_ids
+  end
+
+  test "index only returns public reactions to signed out users" do
+    user = users(:admin)
+    discussion = discussions(:public_discussion)
+    inaccessible_discussion = discussions(:discussion)
+    reactions_visible = [Reaction.create!(user: user, reactable: discussion, reaction: '👍')]
+    Reaction.create!(user: user, reactable: inaccessible_discussion, reaction: '👍')
+
+    get :index, params: { discussion_ids: [discussion.id, inaccessible_discussion.id].join('x') }
+
+    assert_response :success
+    assert_equal reactions_visible.map(&:id), response_reaction_ids
+  end
+
+  test "index filters other participants' stance reactions while results are hidden" do
+    user = users(:admin)
+    participant = users(:user)
+    poll = create_poll(topic: discussions(:discussion).topic, actor: user)
+    poll.update!(hide_results: 'until_closed')
+    stance = create_stance(poll: poll, actor: user)
+    inaccessible_stance = create_stance(poll: poll, actor: participant)
+    reaction_visible = Reaction.create!(user: user, reactable: stance, reaction: '👍')
+    Reaction.create!(user: participant, reactable: inaccessible_stance, reaction: '👍')
+
+    sign_in user
+    get :index, params: { stance_ids: [stance.id, inaccessible_stance.id].join('x') }
+
+    assert_response :success
+    assert_equal [reaction_visible.id], response_reaction_ids
+  end
+
+  private
+
+  def create_poll(topic:, actor:)
+    PollService.create(params: {
+      title: "Test Poll",
+      poll_type: "proposal",
+      topic_id: topic.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: actor)
+  end
+
+  def create_outcome(poll:, actor:)
+    poll.update!(closed_at: 1.day.ago)
+    outcome = Outcome.new(statement: "Test outcome", poll: poll, author: actor)
+    OutcomeService.create(outcome: outcome, actor: actor)
+    outcome
+  end
+
+  def create_stance(poll:, actor:)
+    stance = poll.stances.latest.find_or_initialize_by(participant: actor)
+    stance.assign_attributes(
+      cast_at: Time.current,
+      stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+    )
+    stance.save!
+    stance
+  end
+
+  def response_reaction_ids
+    JSON.parse(response.body)['reactions'].pluck('id').sort
   end
 end
