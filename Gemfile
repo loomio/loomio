@@ -37,7 +37,6 @@ gem "sentry-rails"
 gem 'http_accept_language'
 gem 'sprockets', '~> 4.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'dartsass-sprockets'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"

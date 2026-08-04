@@ -124,16 +124,18 @@
   line-height: 1.5;
   max-width: 800px;
   margin-bottom: 16px;
-  td, th {
-    font-size: .8rem;
-    // height: 32px;
-    padding: 0 4px;
-    border-bottom: thin solid rgba(0,0,0,.12);
-  }
-  td.no-border {
-    border-bottom: none;
-    border: 0;
-  }
+}
+
+.v-table td,
+.v-table th {
+  font-size: .8rem;
+  padding: 0 4px;
+  border-bottom: thin solid rgba(0,0,0,.12);
+}
+
+.v-table td.no-border {
+  border-bottom: none;
+  border: 0;
 }
 
 .v-layout-table {
@@ -141,9 +143,11 @@
   margin: 0;
   padding: 0;
   border: 0;
-  td, tr, th {
-    margin: 0;
-    padding: 0;
-  }
 }
 
+.v-layout-table td,
+.v-layout-table tr,
+.v-layout-table th {
+  margin: 0;
+  padding: 0;
+}
