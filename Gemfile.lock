@@ -587,9 +587,9 @@ GEM
       rbs (>= 4.0.0)
       tsort
     redcarpet (3.6.1)
-    redis (5.4.1)
-      redis-client (>= 0.22.0)
-    redis-client (0.30.0)
+    redis (6.0.0)
+      redis-client (= 0.30.1)
+    redis-client (0.30.1)
       connection_pool
     refract (1.1.0)
       prism
@@ -808,7 +808,7 @@ DEPENDENCIES
   rake
   ransack (= 4.4.1)
   redcarpet (~> 3.6.1)
-  redis (< 6)
+  redis (< 7)
   reverse_markdown
   rubocop-rails-omakase
   ruby-openai
