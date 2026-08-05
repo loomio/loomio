@@ -20,7 +20,7 @@ import Paragraph from '@tiptap/extension-paragraph';
 import Strike from '@tiptap/extension-strike';
 import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
 import { BulletList, OrderedList, ListItem, ListKeymap } from '@tiptap/extension-list'
-import { Focus, Placeholder, UndoRedo, Dropcursor, CharacterCount } from '@tiptap/extensions'
+import { Focus, Placeholder, UndoRedo, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions'
 import {CustomTaskItem} from './extension_custom_task_item';
 import {CustomTaskList} from './extension_custom_task_list';
 import { TextStyle } from '@tiptap/extension-text-style';
@@ -451,6 +451,7 @@ onMounted(() => {
       Audio,
       Document,
       Dropcursor,
+      Gapcursor,
       HardBreak,
       Heading,
       Highlight.configure({ multicolor: true }),

@@ -18,16 +18,13 @@
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
     "@sentry/browser": "^10.69.0",
-    "@sentry/vue": "^10.67.0",
     "@tiptap/core": "3.28.0",
     "@tiptap/extension-blockquote": "3.28.0",
     "@tiptap/extension-bold": "3.28.0",
-    "@tiptap/extension-code": "3.28.0",
     "@tiptap/extension-code-block": "3.28.0",
     "@tiptap/extension-collaboration": "3.28.0",
     "@tiptap/extension-collaboration-caret": "3.28.0",
     "@tiptap/extension-document": "3.28.0",
-    "@tiptap/extension-gapcursor": "3.28.0",
     "@tiptap/extension-hard-break": "3.28.0",
     "@tiptap/extension-heading": "3.28.0",
     "@tiptap/extension-horizontal-rule": "3.28.0",
@@ -42,9 +39,7 @@
     "@tiptap/extension-task-item": "3.28.0",
     "@tiptap/extension-task-list": "3.28.0",
     "@tiptap/extension-text": "3.28.0",
-    "@tiptap/extension-text-align": "3.28.0",
     "@tiptap/extension-text-style": "3.28.0",
-    "@tiptap/extension-typography": "3.28.0",
     "@tiptap/extension-underline": "3.28.0",
     "@tiptap/extensions": "3.28.0",
     "@tiptap/pm": "3.28.0",
@@ -55,9 +50,7 @@
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.1",
-    "deepmerge": "^4.3.1",
     "emojibase-data": "^17.0.0",
-    "jstimezonedetect": "~1.0.7",
     "lodash-es": "latest",
     "lokijs": "1.5.12",
     "marked": "^4.3.0",
@@ -68,7 +61,6 @@
     "textarea-caret": "^3.1.0",
     "tiny-emitter": "latest",
     "turndown": "^7.2.4",
-    "turndown-plugin-gfm": "^1.0.2",
     "vue": "3.5.40",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "^11.4.0",
@@ -117,7 +109,6 @@
   "optionalDependencies": {
     "@emnapi/core": "1.11.3",
     "@emnapi/runtime": "1.11.2",
-    "@esbuild/darwin-arm64": "latest",
-    "@rollup/rollup-linux-x64-gnu": "latest"
+    "@esbuild/darwin-arm64": "latest"
   }
 }
