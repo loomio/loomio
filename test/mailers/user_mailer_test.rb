@@ -48,6 +48,17 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match @group.handle, mail.body.encoded
   end
 
+  test "html emails support light and dark color schemes" do
+    membership = @group.add_member!(@user)
+    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
+    mail = UserMailer.membership_request_approved(@user.id, event.id)
+    html = mail.html_part&.decoded || mail.body.decoded
+
+    assert_includes html, '<meta name="color-scheme" content="light dark">'
+    assert_includes html, '<meta name="supported-color-schemes" content="light dark">'
+    assert_includes html, 'color-scheme: light dark'
+  end
+
   # User added to group
   test "user_added_to_group renders the subject" do
     membership = @group.add_member!(@user)

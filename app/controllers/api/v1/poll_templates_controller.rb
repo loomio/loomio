@@ -56,6 +56,23 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def export
+    group = current_user.groups.find(params[:group_id])
+    template = PollTemplateService.group_templates(group: group).find do |poll_template|
+      poll_template.id.to_s == params[:id] || poll_template.key == params[:id]
+    end
+    raise ActiveRecord::RecordNotFound unless template
+
+    send_data(
+      JSON.pretty_generate(TemplateFileService.export(template: template)),
+      filename: [
+        group.full_name,
+        template.process_name.presence || "poll template"
+      ].join(" ").parameterize + ".json",
+      type: "application/json"
+    )
+  end
+
   def update
     if params[:id].to_i.to_s != params[:id].to_s
       self.resource = PollTemplate.find_by(group_id: params[:poll_template][:group_id], key: params[:id])

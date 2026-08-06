@@ -76,6 +76,7 @@ he:
     trial_needs_user: ברוך הבא! היכנס כדי להתחיל את תקופת הניסיון בחינם
     this_is_a_template_for_new_threads: זוהי תבנית לשרשורים חדשים
     share_a_custom_configuration: שתף תצורה מותאמת אישית עם אחרים בקבוצה שלך
+    invalid_template_file: קובץ תבנית Loomio אינו חוקי
   doctypes:
     youtube_video: סרטון יוטיוב
     image: תמונה
@@ -331,6 +332,8 @@ he:
       add: לְהוֹסִיף
       redact: עריכה
       unredact: לְשַׁחְזֵר
+      export_json: ייצוא json
+      import_json: ייבוא json
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -343,6 +346,7 @@ he:
     read: לִקְרוֹא
     unread: לא נקרא
     discussion: דִיוּן
+    user_guide: מדריך למשתמש
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -551,6 +555,7 @@ he:
     add_a_comment: הוסף תגובה
     share_your_thoughts: שתפו את מחשבותיכם…
     share_on_poll: שאל שאלה או שתף מידע חדש
+    type_at_to_notify_people: הקלד {'@'} כדי להודיע לאנשים
   thread_nav:
     participants: משתתפים
   sidebar:
@@ -847,7 +852,7 @@ he:
     new_template: תבנית חדשה
     new_template_subtitle: צור דוגמה שאחרים יכולים להעתיק
     to: ל
-    direct_thread: חוט ישיר
+    direct_thread: שרשור ישיר
     invite_only_thread: שרשור להזמנה בלבד
     none_direct_thread: שרשור ישיר (ללא קבוצה)
     none_invite_only_thread: שרשור להזמנה בלבד (ללא קבוצה)
@@ -1092,6 +1097,11 @@ he:
     copy_for_ai_skill_description: העתיקו את השרשור כ-Markdown מובנה עבור עוזר בינה מלאכותית. כללו את מיומנות ההנחיה המלאה של Loomio לקבלת הדרכה המבוססת על שיטות ההנחיה של Loomio.
     share_ai_skill: אם תכתבו מיומנות בינה מלאכותית חדשה או תשפרו את המיומנות שסופקה, אתם מוזמנים לשתף אותה עם צוות Loomio
     share_ai_skill_contact: צרו קשר עם צוות לומיו
+    copy_markdown: העתקת Markdown
+    copy_markdown_description: העתק את השרשור כ-Markdown מובנה - אידיאלי לשימוש עם סוכן בינה מלאכותית או ליצירת מסמך פשוט מתוכן השרשור.
+    thread_markdown_copied: ה-Markdown של השרשור הועתק
+    move_thread_v2: הזזת שרשור
+    more: יוֹתֵר
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -2022,6 +2032,7 @@ he:
     export_blt: ייצוא פתקי הצבעה (BLT)
     status: סטָטוּס
     your_vote_is_requested: הצבעתך מתבקשת
+    browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2506,6 +2517,12 @@ he:
     notification_only_label: שלח כותרת התראה בלבד
     check_for_test_message: בדוק בחדר הצ'אט שלך להודעה מהבוט!
     webex: וובקס
+    chat_integrations: אינטגרציות צ'אט
+    no_chat_integrations_yet: שלח התראות על פעילות Loomio לשירות הצ'אט של הקבוצה שלך
+    new_chat_integration: אינטגרציה חדשה בצ'אט
+    delete_chat_integration: למחוק את שילוב הצ'אט?
+    delete_chat_integration_helptext: Loomio יפסיק לשלוח התראות אל %{name}
+    chat_integration_deleted: שילוב הצ'אט נמחק
   webhook:
     integrations: אינטגרציות
     api_keys: מפתחות API
@@ -2877,6 +2894,7 @@ he:
     start_a_direct_discussion: התחל דיון ישיר
     these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.
     start_a_new_discussion: התחל דיון חדש
+    browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית דיון חדשה, תוך שימוש בדוגמה כנקודת התחלה."
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
@@ -2900,6 +2918,11 @@ he:
     confirm_change_to_private: "%{groupName} היא קבוצה פתוחה. אם תמשיך, דיון זה יהיה ציבורי."
     messages:
       success: הדיון הועבר ל-%{name}
+    move_thread_title: הזזת שרשור
+    destination: יַעַד
+    direct_thread: חוט ישיר
+    direct_thread_hint: כל מי שהשתתף ישמור על הגישה. אתה ויוצר השרשור תהיו מנהלי השרשור.
+    direct_thread_anonymous_poll: לא ניתן להמיר שרשורים המכילים סקרים אנונימיים לשרשורים ישירים מכיוון שזה עלול לחשוף מי הצביע
   auth:
     oauth_cancelled: הכניסה בוטלה
     switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.
@@ -2986,3 +3009,7 @@ he:
     title: להגדיר סיסמה?
     helptext: באפשרותך להשתמש בסיסמה כדי להיכנס בפעם הבאה, במקום לחכות לקישור בדוא"ל.
     no_thanks: לא תודה
+  mention_notifications_count:
+    nobody_will_be_notified: אף אחד לא יקבל הודעה
+    one_person_will_be_notified: אדם אחד יקבל הודעה
+    x_people_will_be_notified: "%{count} אנשים יקבלו הודעה"

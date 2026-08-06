@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     @admin = users(:admin)
     @group = groups(:group)
@@ -53,7 +54,7 @@ class EventTest < ActiveSupport::TestCase
     # Webhook
     @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
     WebMock.stub_request(:post, @webhook_url).to_return(status: 200)
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       @webhook = Chatbot.create!(
         group: @group, author: @admin, name: "Test Webhook",
         server: @webhook_url, webhook_kind: 'markdown', kind: 'webhook',
@@ -284,8 +285,23 @@ class EventTest < ActiveSupport::TestCase
     assert event.send(:subscribed_recipients).empty?
   end
 
-  test "stance_created suppresses shared delivery while identified results are hidden" do
+  test "stance_created uses shared delivery when results are hidden until vote" do
     @poll.update!(hide_results: 'until_vote')
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Response', cast_at: Time.current)
+    event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
+
+    assert_not_empty event.subscribed_recipients
+    assert event.notify_chatbots?
+
+    publish_count = 0
+    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
+      event.notify_clients!
+    end
+    assert_operator publish_count, :>, 0
+  end
+
+  test "stance_created suppresses shared delivery while results are hidden until close" do
+    @poll.update!(hide_results: 'until_closed')
     stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Hidden response', cast_at: Time.current)
     event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
 

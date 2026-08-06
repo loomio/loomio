@@ -76,6 +76,7 @@ da:
     trial_needs_user: Velkommen! Log venligst ind for at starte din gratis prøveperiode
     this_is_a_template_for_new_threads: Dette er en skabelon til nye tråde
     share_a_custom_configuration: Del en brugerdefineret konfiguration med andre i din gruppe
+    invalid_template_file: Dette er ikke en gyldig Loomio-skabelonfil
   doctypes:
     youtube_video: YouTube-video
     image: Billede
@@ -331,6 +332,8 @@ da:
       add: Tilføje
       redact: Redigér
       unredact: Gendan
+      export_json: Eksportér json
+      import_json: Importér json
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -343,6 +346,7 @@ da:
     read: Læse
     unread: Ulæst
     discussion: Diskussion
+    user_guide: Brugervejledning
   merge_accounts:
     modal:
       title: Flet konti
@@ -551,6 +555,7 @@ da:
     add_a_comment: Tilføj en kommentar
     share_your_thoughts: Del dine tanker…
     share_on_poll: Stil et spørgsmål eller del nye oplysninger
+    type_at_to_notify_people: Skriv {'@'} for at give folk besked
   thread_nav:
     participants: Deltagere
   sidebar:
@@ -1088,6 +1093,11 @@ da:
     copy_for_ai_skill_description: Kopiér tråden som en struktureret Markdown for en AI-assistent. Inkluder den komplette Loomio-facilitatorfærdighed som vejledning baseret på Loomios faciliteringspraksis.
     share_ai_skill: Hvis du skriver en ny AI-færdighed eller forbedrer den medfølgende færdighed, er du velkommen til at dele den med Loomio-teamet
     share_ai_skill_contact: Kontakt Loomio-teamet
+    copy_markdown: Kopiér Markdown
+    copy_markdown_description: Kopiér tråden som struktureret Markdown – ideel til brug med en AI-agent eller til at oprette et simpelt dokument ud fra trådens indhold.
+    thread_markdown_copied: Trådmarkdown kopieret
+    move_thread_v2: Flyt tråd
+    more: Mere
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -2003,6 +2013,7 @@ da:
     export_blt: Eksport af stemmesedler (BLT)
     status: Status
     your_vote_is_requested: Din stemme er anmodet
+    browse_example_make_a_copy_hint: "<b>Klik på kopieringsikonet</b> for at oprette en ny skabelon til afstemning med eksemplet som udgangspunkt."
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ da:
     notification_only_label: Send kun meddelelsesoverskrift
     check_for_test_message: Tjek dit chatrum for en besked fra botten!
     webex: Webex
+    chat_integrations: Chatintegrationer
+    no_chat_integrations_yet: Send notifikationer om Loomio-aktivitet til din gruppes chattjeneste
+    new_chat_integration: Ny chatintegration
+    delete_chat_integration: Slet chatintegration?
+    delete_chat_integration_helptext: Loomio stopper med at sende notifikationer til %{name}
+    chat_integration_deleted: Chatintegration slettet
   webhook:
     integrations: Integrationer
     api_keys: API nøgler
@@ -2858,6 +2875,7 @@ da:
     start_a_direct_discussion: Start en direkte diskussion
     these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
     start_a_new_discussion: Start en ny diskussion
+    browse_example_make_a_copy_hint: "<b>Klik på kopieringsikonet</b> for at oprette en ny diskussionsskabelon med eksemplet som udgangspunkt."
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
@@ -2881,6 +2899,11 @@ da:
     confirm_change_to_private: "%{groupName} er en åben gruppe. Hvis du fortsætter, vil denne diskussion være offentlig."
     messages:
       success: Diskussion flyttet til %{name}
+    move_thread_title: Flyt tråd
+    destination: Bestemmelsessted
+    direct_thread: Direkte tråd
+    direct_thread_hint: Alle, der har deltaget, vil beholde adgangen. Du og trådens opretter vil være trådadministratorer.
+    direct_thread_anonymous_poll: Tråde, der indeholder anonyme afstemninger, kan ikke konverteres til direkte tråde, da dette kan afsløre, hvem der har stemt.
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.
@@ -2967,3 +2990,7 @@ da:
     title: Angiv en adgangskode?
     helptext: Du kan bruge en adgangskode til at logge ind næste gang i stedet for at vente på et link via e-mail.
     no_thanks: Nej tak
+  mention_notifications_count:
+    nobody_will_be_notified: Ingen vil blive underrettet
+    one_person_will_be_notified: 1 person vil blive underrettet
+    x_people_will_be_notified: "%{count} personer vil blive underrettet"

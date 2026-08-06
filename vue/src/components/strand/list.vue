@@ -21,11 +21,6 @@ const isFocused = (event) => {
     (event.eventableType === 'Comment' && props.focusSelector == `.comment-${event.eventableId || 0}`);
 };
 
-const rowClasses = (obj) => {
-  if (isFocused(obj.event)) {
-    return ['strand-item__row--focused', 'rounded-lg'];
-  }
-};
 </script>
 
 <template lang="pug">
@@ -65,118 +60,106 @@ const rowClasses = (obj) => {
 
 </template>
 
-<style lang="sass">
+<style>
+.strand-item--deep .strand-item__gutter {
+  width: 28px;
+}
+.strand-item--deep .strand-item__stem {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+.strand-item--deep .strand-item__circle {
+  width: 28px;
+  height: 28px;
+}
+.strand-item--deep .strand-item__load-more {
+  min-height: 28px;
+}
 
-.strand-item__row--focused
-  padding: 12px;
-  position: relative
-  color: rgb(var(--v-theme-info)) !important;
+.strand-item__row {
+  display: flex;
+  padding-top: 4px;
+}
 
-.strand-item__row--focused-underlay
-  position: absolute
-  background: currentColor
-  opacity: var(--v-activated-opacity)
-  border-radius: inherit
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  pointer-events: none
-
-.strand-item--deep
-  .strand-item__gutter
-    width: 28px
-    // margin-right: 4px
-
-  .strand-item__stem
-    margin-left: 14px
-    margin-right: 14px
-
-  .strand-item__circle
-    // margin: 4px 0
-    // padding: 4px 0
-    width: 28px
-    height: 28px
-
-  .strand-item__load-more
-    min-height: 28px
-
-.strand-item__row
-  display: flex
-  padding-top: 4px
-
-.strand-item__gutter
+.strand-item__gutter {
   cursor: pointer;
-  display: flex
-  flex-direction: column
-  width: 32px
-  // margin-right: 8px
+  display: flex;
+  flex-direction: column;
+  width: 32px;
+}
 
-.strand-item__main
-  flex-grow: 1
-  padding-left: 8px
-  overflow: hidden
-  max-width: 100%
+.strand-item__main {
+  flex-grow: 1;
+  padding-left: 8px;
+  overflow: hidden;
+  max-width: 100%;
+}
 
-.strand-item__stem-wrapper
-  width: 32px
-  height: 100%
-  padding-top: 4px
-  padding-bottom: 4px
+.strand-item__stem-wrapper {
+  width: 32px;
+  height: 100%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 
-.strand-item__stem
-  width: 0
-  height: 100%
-  padding: 0 1px
-  background-color: rgb(var(--v-theme-surface-light))
-  margin: 0px 16px
+.strand-item__stem {
+  width: 0;
+  height: 100%;
+  padding: 0 1px;
+  background-color: rgb(var(--v-theme-surface-light));
+  margin: 0px 16px;
+}
 
-.strand-item__gutter:hover
-  .strand-item__stem
-    background-color: #d0d0d0
+.strand-item__gutter:hover .strand-item__stem {
+  background-color: #d0d0d0;
+}
 
-.v-theme--dark, .v-theme--darkBlue
-  .strand-item__gutter:hover
-    .strand-item__stem
-      background-color: rgb(var(--v-theme-surface-bright))
+.v-theme--dark .strand-item__gutter:hover .strand-item__stem {
+  background-color: rgb(var(--v-theme-surface-bright));
+}
 
-.strand-item__stem--broken
-  background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
-  background-size: 16.00px 16.00px
-  background-repeat: repeat-y
+.strand-item__stem--broken {
+  background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%);
+  background-size: 16px 16px;
+  background-repeat: repeat-y;
+}
 
-.strand-item__circle
-  display: flex
-  align-items: center
-  justify-content: center
-  width: 32px
-  height: 32px
-  border: 1px solid #dadada
-  border-radius: 100%
-  margin: 4px 0
-  cursor: pointer
+.strand-item__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #dadada;
+  border-radius: 100%;
+  margin: 4px 0;
+  cursor: pointer;
+}
 
-.strand-item__gutter-toggle
-  cursor: pointer
-  display: flex
-  align-items: center
-  justify-content: center
+.strand-item__gutter-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.strand-item__gutter-collapse
-  display: none
-  align-items: center
-  justify-content: center
-  width: 32px
-  height: 32px
+.strand-item__gutter-collapse {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
 
-.strand-item--deep .strand-item__gutter-collapse
-  width: 28px
-  height: 28px
+.strand-item--deep .strand-item__gutter-collapse {
+  width: 28px;
+  height: 28px;
+}
 
-.strand-item__gutter:hover
-  .strand-item__gutter-avatar
-    display: none
-  .strand-item__gutter-collapse
-    display: flex
-
+.strand-item__gutter:hover .strand-item__gutter-avatar {
+  display: none;
+}
+.strand-item__gutter:hover .strand-item__gutter-collapse {
+  display: flex;
+}
 </style>

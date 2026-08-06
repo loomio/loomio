@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class CommentServiceTest < ActiveSupport::TestCase
+  inline_jobs "creates user_mentioned event when mentioning a user",
+              "marks notification as read on reply",
+              "does not renotify old mentions on update"
   setup do
     @user = users(:user)
     @admin = users(:admin)

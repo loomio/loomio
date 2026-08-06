@@ -2,12 +2,9 @@
 import Flash from '@/shared/services/flash';
 import { ref, onMounted } from 'vue';
 
-const { topic, close } = defineProps({ topic: Object, close: Function });
+const { topic } = defineProps({ topic: Object, close: Function });
 const markdown = ref('');
-const skillMarkdown = ref('');
 const loading = ref(true);
-const skillPath = '/skills/loomio-facilitator/SKILL.md';
-const skillUrl = new URL(skillPath, window.location.origin).href;
 
 async function loadThread() {
   const response = await fetch(`/api/v1/topics/${topic.id}/markdown`);
@@ -15,60 +12,30 @@ async function loadThread() {
   markdown.value = (await response.json()).markdown;
 }
 
-async function loadSkill() {
-  const response = await fetch(skillPath);
-  if (!response.ok) throw new Error('Could not load Loomio facilitator skill');
-  skillMarkdown.value = await response.text();
-}
-
 onMounted(async () => {
-  const results = await Promise.allSettled([loadThread(), loadSkill()]);
-  const errors = results.filter(({ status }) => status === 'rejected');
-
-  if (errors.length) {
-    errors.forEach(({ reason }) => console.error(reason));
+  try {
+    await loadThread();
+  } catch (error) {
+    console.error(error);
     Flash.error('common.something_went_wrong');
+  } finally {
+    loading.value = false;
   }
-
-  loading.value = false;
 });
-
-function skillWithSource() {
-  return `${skillMarkdown.value.trim()}\n\nSkill source: ${skillUrl}`;
-}
-
-async function copySkillAndThread() {
-  const content = `${skillWithSource()}\n\n---\n\n# Loomio thread transcript\n\n${markdown.value}`;
-  await navigator.clipboard.writeText(content);
-  Flash.success('common.copied');
-}
 
 async function copyThread() {
   await navigator.clipboard.writeText(markdown.value);
-  Flash.success('action_dock.thread_copied_for_ai');
-}
-
-async function copySkill() {
-  await navigator.clipboard.writeText(skillWithSource());
-  Flash.success('common.copied');
+  Flash.success('action_dock.thread_markdown_copied');
 }
 </script>
 
 <template lang="pug">
-v-card(:title="$t('action_dock.copy_thread_for_ai')")
+v-card(:title="$t('action_dock.copy_markdown')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text.pb-2
-    p.text-body-2.mb-4(v-t="'action_dock.copy_for_ai_skill_description'")
-    p.text-body-2.font-italic.text-medium-emphasis
-      span(v-t="'action_dock.share_ai_skill'")
-      space
-      router-link.text-medium-emphasis.text-primary(to="https://www.loomio.com/contact" @click="close" v-t="'action_dock.share_ai_skill_contact'" target="_blank")
-  v-card-actions.d-flex.flex-column.align-stretch.ga-2
-    v-btn(color="primary" variant="elevated" :disabled="loading || !skillMarkdown || !markdown" :loading="loading" @click="copySkillAndThread")
-      span(v-t="'action_dock.copy_skill_and_thread'")
-    v-btn(color="primary" variant="tonal" :disabled="loading || !skillMarkdown" @click="copySkill")
-      span(v-t="'action_dock.copy_skill'")
-    v-btn(color="primary" variant="tonal" :disabled="loading || !markdown" @click="copyThread")
+    p.text-body-2(v-t="'action_dock.copy_markdown_description'")
+  v-card-actions.justify-center
+    v-btn(color="primary" variant="elevated" :disabled="loading || !markdown" :loading="loading" @click="copyThread")
       span(v-t="'action_dock.copy_thread'")
 </template>

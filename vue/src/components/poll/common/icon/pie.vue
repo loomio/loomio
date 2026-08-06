@@ -85,13 +85,14 @@ export default
 <template lang="pug">
 .poll-proposal-chart(:style="{width: size+'px', height: size+'px'}")
 </template>
-<style lang="sass">
-.poll-proposal-chart
-  border: 0
-  margin: 0
-  padding: 0
-  svg
-    height: 100%
-    width: 100%
-
+<style>
+.poll-proposal-chart {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.poll-proposal-chart svg {
+  height: 100%;
+  width: 100%;
+}
 </style>

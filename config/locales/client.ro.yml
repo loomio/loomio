@@ -76,6 +76,7 @@ ro:
     trial_needs_user: Bine ati venit! Vă rugăm să vă conectați pentru a începe perioada de încercare gratuită
     this_is_a_template_for_new_threads: Acesta este un șablon pentru fire noi
     share_a_custom_configuration: Partajați o configurație personalizată altora din grupul dvs
+    invalid_template_file: Acesta nu este un fișier șablon Loomio valid
   doctypes:
     youtube_video: Video YouTube
     image: Imagine
@@ -331,6 +332,8 @@ ro:
       add: Adăuga
       redact: Redacta
       unredact: Restabili
+      export_json: Exportați JSON
+      import_json: Importați json
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -343,6 +346,7 @@ ro:
     read: Citire
     unread: Necitit
     discussion: Discuţie
+    user_guide: Ghid de utilizare
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -551,6 +555,7 @@ ro:
     add_a_comment: Adaugă un comentariu
     share_your_thoughts: Împărtășește-ți gândurile…
     share_on_poll: Pune o întrebare sau distribuie informații noi
+    type_at_to_notify_people: Tastează {'@'} pentru a notifica persoanele
   thread_nav:
     participants: Participanții
   sidebar:
@@ -1088,6 +1093,11 @@ ro:
     copy_for_ai_skill_description: Copiază firul de discuție ca Markdown structurat pentru un asistent cu inteligență artificială. Include abilitatea completă de facilitator Loomio pentru îndrumare bazată pe practicile de facilitare ale Loomio.
     share_ai_skill: Dacă scrii o nouă abilitate de inteligență artificială sau îmbunătățești abilitatea furnizată, o poți împărtăși cu echipa Loomio
     share_ai_skill_contact: Contactează echipa Loomio
+    copy_markdown: Copiază Markdown
+    copy_markdown_description: Copiază firul de discuție ca Markdown structurat — ideal pentru utilizare cu un agent AI sau pentru crearea unui document simplu din conținutul firului de discuție.
+    thread_markdown_copied: Markdown-ul firului de discuție a fost copiat
+    move_thread_v2: Mută firul de discuție
+    more: Mai mult
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -2003,6 +2013,7 @@ ro:
     export_blt: Buletine de vot pentru export (BLT)
     status: Stare
     your_vote_is_requested: Votul dumneavoastră este solicitat
+    browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ ro:
     notification_only_label: Trimiteți numai titlul notificării
     check_for_test_message: Verificați camera de chat pentru un mesaj de la bot!
     webex: Webex
+    chat_integrations: Integrări de chat
+    no_chat_integrations_yet: Trimite notificări despre activitatea Loomio către serviciul de chat al grupului tău
+    new_chat_integration: Nouă integrare a chatului
+    delete_chat_integration: Ștergeți integrarea chatului?
+    delete_chat_integration_helptext: Loomio va înceta să mai trimită notificări către %{name}
+    chat_integration_deleted: Integrarea chatului a fost ștearsă
   webhook:
     integrations: Integrari
     api_keys: Chei API
@@ -2858,6 +2875,7 @@ ro:
     start_a_direct_discussion: Începeți o discuție directă
     these_are_templates: Acestea sunt șabloanele de discuții din grupul vostru.
     start_a_new_discussion: Începeți o discuție nouă
+    browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de discuție, folosind exemplul ca punct de plecare."
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.
@@ -2881,6 +2899,11 @@ ro:
     confirm_change_to_private: "%{groupName} este un grup deschis. Dacă continuați, această discuție va fi publică."
     messages:
       success: Discuția a fost mutată la %{name}
+    move_thread_title: Mută firul de discuție
+    destination: Destinaţie
+    direct_thread: Fir direct
+    direct_thread_hint: Toți cei care au participat vor păstra accesul. Tu și creatorul firului de discuție veți fi administratori ai firului de discuție.
+    direct_thread_anonymous_poll: Subiectele care conțin sondaje anonime nu pot fi convertite în subiecte directe, deoarece acest lucru ar putea dezvălui cine a votat.
   auth:
     oauth_cancelled: Conectarea a fost anulată
     switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.
@@ -2967,3 +2990,7 @@ ro:
     title: Setați o parolă?
     helptext: Poți folosi o parolă pentru a te conecta data viitoare, în loc să aștepți un link prin e-mail.
     no_thanks: Nu, mulțumesc
+  mention_notifications_count:
+    nobody_will_be_notified: Nimeni nu va fi notificat
+    one_person_will_be_notified: O persoană va fi notificată
+    x_people_will_be_notified: "%{count} persoane vor fi notificate"

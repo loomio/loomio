@@ -1,0 +1,48 @@
+# Loomio APIs
+
+> Loomio is software for collaborative discussion and decision-making. It provides a user API for actions performed as a Loomio user and a server API for trusted administrative
+integrations.
+
+## User API
+
+- [User API documentation](/help/api2)
+- Base path: `/api/b2`
+
+The user API performs actions as a Loomio user account. API requests have the same permissions as the authenticated user.
+
+Sign in to Loomio and open [User API documentation](/help/api2) to view your user API key.
+
+Authenticate with a user API key:
+
+`Authorization: Bearer <user_api_key>`
+
+Use this API for user-oriented operations involving groups, discussions, threads, comments, polls and memberships.
+
+## Server API
+
+- [Server API documentation](/help/api3)
+- Base path: `/api/b3`
+
+The server API provides trusted server-level operations such as managing, deactivating, reactivating and redacting users. It is intended for administrators and server-to-server
+integrations.
+
+Server operators create a secret longer than 16 characters and set it as `B3_API_KEY` in the Loomio server environment.
+
+Authenticate using the server’s `B3_API_KEY`:
+
+`Authorization: Bearer <server_api_key>`
+
+Server API operations can be destructive. Consult the server API documentation before modifying or deleting data.
+
+## Product guidance
+
+- [Loomio Help](https://help.loomio.com/)
+
+Use Loomio Help to understand product concepts, terminology and recommended workflows. Use the API documentation as the authority for authentication, permissions, parameters, request
+behaviour and response formats.
+
+## Security
+
+Never include API keys in URLs. Send credentials only in the `Authorization` header.
+
+Do not assume that API credentials bypass Loomio permissions. The user API applies the permissions of its authenticated user.

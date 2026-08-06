@@ -41,8 +41,8 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card.mt-3(outlined).attachment-list-item-link
-  a(:href="attachment.download_url" target="_blank")
+v-card.mt-3(variant="outlined").attachment-list-item-link
+  a.text-decoration-none(:href="attachment.download_url" target="_blank")
     v-card-title
       common-icon.mr-2(size="small" :name="'mdi-' + attachment.icon")
       span.text-medium-emphasis
@@ -53,28 +53,26 @@ v-card.mt-3(outlined).attachment-list-item-link
     .attachment-list-item-image.mb-2(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
 </template>
 
-<style lang="sass">
-.attachment-list-item-link
-  // opacity: 90%
-  .v-card__title
-    word-break: break-word
-    display: block
+<style>
+.attachment-list-item-link.v-card--variant-outlined {
+  border-color: rgba(var(--v-border-color), var(--v-border-opacity));
+}
+.attachment-list-item-link .v-card__title {
+  word-break: break-word;
+  display: block;
+}
 
-// .attachment-list-item-link:hover
-//   opacity: 100%
+.attachment-list-item-link .v-card__subtitle {
+  word-break: break-word;
+}
 
-.attachment-list-item-link
-  .v-card__subtitle
-    word-break: break-word
+.link-preview__hostname {
+  word-break: break-word;
+}
 
-.link-preview__hostname
-  word-break: break-word
-
-.attachment-list-item-image
-  background-repeat: no-repeat
-  height: 128px
-  overflow: none
-  // background-position: center
-  // max-width: 512px
-  // margin: 0 auto
+.attachment-list-item-image {
+  background-repeat: no-repeat;
+  height: 128px;
+  overflow: none;
+}
 </style>

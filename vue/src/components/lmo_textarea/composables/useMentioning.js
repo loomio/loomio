@@ -3,39 +3,54 @@ import { sortBy, filter, uniqBy, debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
 
+export function mentionNamedIdFor(model) {
+  if (model.isA('comment')) {
+    return model.topic().namedId();
+  }
+
+  if (model.isA('stance', 'outcome')) {
+    return model.poll().topic().namedId();
+  }
+
+  if (model.topicId) {
+    return model.topic().namedId();
+  }
+
+  if (model.groupId) {
+    return model.group().namedId();
+  }
+
+  if (model.isA('group') && model.id) {
+    return model.namedId();
+  }
+
+  return {};
+}
+
 export function useCommonMentioning(model) {
   const mentionsCache = ref([]);
   const mentions = ref([]);
-  const query = ref('');
+  const query = ref(null);
   const navigatedUserIndex = ref(0);
   const suggestionListStyles = ref({});
   const fetchingMentions = ref(false);
 
-  const namedIdFor = record => {
-    if (record && record.id && typeof record.namedId === 'function') {
-      return record.namedId();
-    }
-  };
-
-  const fetchMentionable = debounce(function() {
+  const fetchMentionableNow = () => {
     if (!query.value && mentionsCache.value.length > 0) { return; }
     fetchingMentions.value = true;
-    const topic = model.value.topicId && model.value.topic && model.value.topic() ||
-      model.value.parent && model.value.parent() && model.value.parent().topic && model.value.parent().topic();
-    const group = model.value.groupId && model.value.group && model.value.group() ||
-      model.value.isA && model.value.isA('group') && model.value ||
-      model.value.parent && model.value.parent() && model.value.parent().group && model.value.parent().group();
-    const namedId = namedIdFor(topic) || namedIdFor(group) || {};
+    const namedId = mentionNamedIdFor(model.value);
     Records.remote.get('mentions', Object.assign(namedId, { q: query.value })).then(rows => {
       mentionsCache.value = uniqBy(mentionsCache.value.concat(rows), 'handle');
       updateMentions();
     }).finally(() => {
       fetchingMentions.value = false;
     });
-  }, 500);
+  };
+
+  const fetchMentionable = debounce(fetchMentionableNow, 500);
 
   onMounted(() => {
-    fetchMentionable();
+    fetchMentionableNow();
   });
 
   const updateMentions = () => {
@@ -47,7 +62,11 @@ export function useCommonMentioning(model) {
                 (u.handle || '').toLowerCase().startsWith(query.value) ||
                 (u.name || '').toLowerCase().includes(` ${query.value}`);
       });
-      mentions.value = sortBy(unsorted, row => row.name);
+      mentions.value = sortBy(unsorted, row => {
+        const name = (row.name || '').toLowerCase();
+        const handle = (row.handle || '').toLowerCase();
+        return name.startsWith(query.value) || handle.startsWith(query.value) ? 0 : 1;
+      });
     }
   };
 
@@ -66,7 +85,7 @@ export function useCommonMentioning(model) {
 export function useMdMentioning(model, field, textarea, query, mentions, navigatedUserIndex, suggestionListStyles, fetchMentionable, updateMentions) {
   const onKeyUp = (event) => {
     if ([38, 40, 13, 9].includes(event.keyCode)) { return; }
-    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@(\w+)$/);
+    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@(\w*)$/);
     if (res) {
       query.value = res[1].toLowerCase();
       fetchMentionable();
@@ -74,12 +93,12 @@ export function useMdMentioning(model, field, textarea, query, mentions, navigat
       respondToKey(event);
       return updatePopup();
     } else {
-      return query.value = '';
+      return query.value = null;
     }
   };
 
   const onKeyDown = (event) => {
-    if (query.value) { return respondToKey(event); }
+    if (query.value !== null) { return respondToKey(event); }
   };
 
   const respondToKey = (event) => {
@@ -99,7 +118,7 @@ export function useMdMentioning(model, field, textarea, query, mentions, navigat
       let user;
       if (user = mentions.value[navigatedUserIndex.value]) {
         selectRow(user);
-        query.value = '';
+        query.value = null;
         event.preventDefault();
       }
     }
@@ -112,7 +131,7 @@ export function useMdMentioning(model, field, textarea, query, mentions, navigat
     model.value[field.value] = beforeText + user.handle + ' ' + afterText;
     textarea.value.selectionEnd = (beforeText + user.handle).length + 1;
     textarea.value.focus();
-    query.value = '';
+    query.value = null;
   };
 
   const updatePopup = () => {
@@ -156,7 +175,7 @@ export function useHtmlMentioning(editor, query, mentions, navigatedUserIndex, s
       id: row.handle,
       label: row.name
     });
-    editor.value.chain().focus();
+    editor.value.chain().focus().run();
   };
 
   const updatePopup = (coords) => {

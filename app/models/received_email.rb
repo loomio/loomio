@@ -28,6 +28,21 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def recipient_emails
+    recipient_emails_relay.presence || recipient_emails_header
+  end
+
+  def recipient_emails_relay
+    metadata = JSON.parse(String(header('harakadata')))
+    return [] unless metadata.is_a?(Hash)
+
+    Array(metadata['rcpt_to']).flat_map do |address|
+      String(address).scan(AppConfig::EMAIL_REGEX)
+    end.uniq
+  rescue JSON::ParserError
+    []
+  end
+
+  def recipient_emails_header
     String(header('to')).scan(AppConfig::EMAIL_REGEX).uniq
   end
 

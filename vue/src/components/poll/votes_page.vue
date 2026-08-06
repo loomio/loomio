@@ -25,7 +25,7 @@ Records.polls.findOrFetchById(route.params.key).then(p => {
 <template lang="pug">
 v-main
   v-container.max-width-800(v-if="poll")
-    v-sheet.votes-page.mb-8.pb-4.rounded.pa-4(elevation=1)
+    v-sheet.votes-page.mb-8.pb-4.rounded-lg.pa-4(elevation=1)
       loading(:until="poll")
         strand-header(:topicable="poll")
         .d-flex.align-start

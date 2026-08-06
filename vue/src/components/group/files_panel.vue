@@ -122,7 +122,7 @@ div
       @update:model-value="onQueryInput"
       :placeholder="$t('navbar.search_files_short')"
       :prepend-inner-icon="mdiMagnify")
-  v-card.group-files-panel(outlined)
+  v-card.group-files-panel(variant="flat")
     div
       p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
       v-table(v-else :items="items" hide-default-footer)

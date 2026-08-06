@@ -101,6 +101,11 @@ export default {
       }
     },
 
+    selectedOptionColor(option) {
+      if (!this.isSelected(option)) { return null; }
+      return this.poll.pollType === 'proposal' ? option.color : null;
+    },
+
     classes(option) {
       let votingStatus;
       if (this.poll.isVotable() && !this.stance.noneOfTheAbove) {
@@ -110,7 +115,11 @@ export default {
       }
 
       if (this.optionSelected && this.isSelected(option)) {
-          return ['elevation-2', votingStatus];
+          return [
+            'elevation-2',
+            votingStatus,
+            {'poll-common-vote-form__button--brand-selected': this.poll.pollType !== 'proposal'}
+          ];
       } else {
         return ['poll-common-vote-form__button--none-selected', votingStatus];
       }
@@ -122,7 +131,7 @@ export default {
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@submit.prevent="submit()" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
@@ -133,7 +142,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
     variant="tonal"
-    :color="(isSelected(option) && option.color) || null"
+    :color="selectedOptionColor(option)"
     v-for='option in options'
     :key='option.id'
     :class="classes(option)"
@@ -158,13 +167,13 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
       v-list-item(lines="two")
         template(v-slot:prepend)
           template(v-if="hasOptionIcon")
-            v-avatar(size="48")
-              img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
+            v-avatar.poll-common-vote-form__option-icon(size="48")
+              img(aria-hidden="true" :src="'/img/' + option.icon + '.svg?v=20260721'")
           template(v-else)
-            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
+            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)")
+            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" color="primary")
+            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)")
+            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" color="primary")
         v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
         v-list-item-subtitle
           plain-text.poll-common-vote-form__allow-wrap(:model="option" field="meaning")
@@ -182,7 +191,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
 
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
-      @click='submit()'
+      type="submit"
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="loading"
       color="primary"
@@ -192,38 +201,52 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
       span(v-t="submitText")
 </template>
 
-<style lang="sass">
-.none-of-the-above label
-  margin-left: 24px
+<style>
+.none-of-the-above label {
+  margin-left: 24px;
+}
 
-.poll-common-vote-form__allow-wrap
-  white-space: normal
+.poll-common-vote-form__allow-wrap {
+  white-space: normal;
   -webkit-line-clamp: none !important;
+}
 
-.poll-common-vote-form__button--none-selected
-  opacity: 0.88 !important
+.poll-common-vote-form__button--none-selected {
+  opacity: 0.88 !important;
+}
 
-.poll-common-vote-form__button--none-selected:hover
-  opacity: 1 !important
+.poll-common-vote-form__button--none-selected:hover {
+  opacity: 1 !important;
+}
 
-.poll-common-vote-form__button--not-selected
-  opacity: 0.44 !important
+.poll-common-vote-form__button--brand-selected {
+  background-color: rgb(var(--v-theme-primary)/0.12) !important;
+}
 
-.poll-common-vote-form__button--not-selected:hover
-  opacity: 0.66 !important
+.poll-common-vote-form__button--not-selected {
+  opacity: 0.44 !important;
+}
 
-.poll-common-vote-form__button.voting-enabled label
-  cursor: pointer
+.poll-common-vote-form__button--not-selected:hover {
+  opacity: 0.66 !important;
+}
 
-.poll-common-vote-form__button label
-  input
-    position: absolute
-    opacity: 0
-    width: 0
-    height: 0
+.poll-common-vote-form__button.voting-enabled label {
+  cursor: pointer;
+}
 
+.poll-common-vote-form__option-icon {
+  z-index: 1;
+}
 
-.poll-common-vote-form__button.voting-disabled
-  opacity: 0.33 !important
+.poll-common-vote-form__button label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+.poll-common-vote-form__button.voting-disabled {
+  opacity: 0.33 !important;
+}
 </style>

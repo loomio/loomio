@@ -31,10 +31,12 @@ class Views::EventMailer::Membership < Views::EventMailer::Layout
 
     h1(class: "text-h5") { plain @group.full_name }
 
-    plain sanitize(
-      MarkdownService.render_plain_text(@group.description, @group.description_format).truncate(280),
-      tags: %w[p br strong em]
-    )
+    div(class: "group-mailer__description") do
+      raw sanitize(
+        MarkdownService.render_plain_text(@group.description, @group.description_format).truncate(280),
+        tags: %w[p br strong em]
+      )
+    end
 
     div(class: "px-2 py-1") do
       div(class: "text-center") do

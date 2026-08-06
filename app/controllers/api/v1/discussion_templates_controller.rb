@@ -78,6 +78,18 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def export
+    template = DiscussionTemplate.where(group_id: current_user.group_ids).find(params[:id])
+    send_data(
+      JSON.pretty_generate(TemplateFileService.export(template: template)),
+      filename: [
+        template.group.full_name,
+        template.process_name.presence || "discussion template"
+      ].join(" ").parameterize + ".json",
+      type: "application/json"
+    )
+  end
+
   def positions
     group = current_user.adminable_groups.find_by!(id: params[:group_id])
 

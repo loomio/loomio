@@ -206,7 +206,7 @@ v-form(ref="form" @submit.prevent="submit")
       dismiss-modal-button(:model="group")
 
     v-card-subtitle
-      v-tabs(v-model="tab" color="primary")
+      v-tabs(v-model="tab")
         v-tab(value="profile")
           span(v-t="'group_form.profile'")
         v-tab.group-form__privacy-tab(value="privacy")
@@ -405,22 +405,24 @@ v-form(ref="form" @submit.prevent="submit")
     v-card-actions
       help-btn(path="en/user_manual/groups/settings")
       v-spacer
-      v-btn.group-form__submit-button(color="primary" variant="tonal" @click='submit()')
+      v-btn.group-form__submit-button(color="primary" variant="elevated" type="submit")
         span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
         span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
         span(v-if='!group.isNew()' v-t="'common.action.save_changes'")
 </template>
 
-<style lang="sass">
-.lmo-font-12px
-  font-size: 12px
+<style>
+.lmo-font-12px {
+  font-size: 12px;
+}
 
-.group_form__file-select
-  cursor: pointer
+.group_form__file-select {
+  cursor: pointer;
+}
 
-.group_form__logo
-  margin-left: 8px
-  margin-top: -104px
-  border-radius: 8px
-
+.group_form__logo {
+  margin-left: 8px;
+  margin-top: -104px;
+  border-radius: 8px;
+}
 </style>

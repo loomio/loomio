@@ -126,7 +126,7 @@ class ChatbotService
   end
 
   def self.validate_public_server!(server)
-    raise CanCan::AccessDenied unless LinkPreviewService.safe_to_fetch?(server)
+    raise CanCan::AccessDenied unless SafeHttpService.safe_to_fetch?(server)
   end
 
   # Deliver a webhook payload through the SSRF-guarded, IP-pinned client. The
@@ -134,7 +134,7 @@ class ChatbotService
   # every send must re-resolve-and-pin to defeat DNS rebinding / redirects.
   # Returns a Net::HTTPResponse or nil.
   def self.deliver_webhook(url, payload)
-    LinkPreviewService.pinned_request(:post, url,
+    SafeHttpService.pinned_request(:post, url,
       headers: { 'Content-Type' => 'application/json; charset=utf-8' },
       body: payload.to_json,
       timeout: REQUEST_TIMEOUT_SECONDS)

@@ -78,6 +78,8 @@ export default
         Records.groups.findOrFetchById(this.group.id);
         Flash.success('announcement.flash.success', { count: data.memberships.length });
         EventBus.$emit('closeModal');
+      }).catch(error => {
+        Flash.fromServer(error.flash || error);
       }).finally(() => {
         this.saving = false;
       });

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class DiscussionServiceTest < ActiveSupport::TestCase
+  inline_jobs "notifies mentioned users in discussion description"
   setup do
     @user = users(:user)
     @admin = users(:admin)

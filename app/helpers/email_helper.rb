@@ -1,6 +1,44 @@
 module EmailHelper
   include PrettyUrlHelper
 
+  def email_theme_css
+    <<~CSS
+      :root { color-scheme: light dark; supported-color-schemes: light dark; }
+      .base-mailer__button--primary {
+        background-color: #{AppConfig.theme[:primary_color]};
+        color: #{AppConfig.theme[:text_on_primary_color]};
+      }
+      .base-mailer__button--accent {
+        background-color: #{AppConfig.theme[:accent_color]};
+        color: #{AppConfig.theme[:text_on_accent_color]};
+      }
+      .poll-mailer__poll-option-container {
+        border: 1px solid #{AppConfig.theme[:primary_color]};
+      }
+      .poll-mailer__option-indicator { color: #{AppConfig.theme[:primary_color]}; }
+      .poll-mailer__result-bar { background-color: #{AppConfig.theme[:primary_color]}; }
+      @media (prefers-color-scheme: dark) {
+        .poll-mailer__poll-option-container {
+          border-color: #{AppConfig.theme[:dark_primary_color]} !important;
+        }
+        .poll-mailer__option-indicator {
+          color: #{AppConfig.theme[:dark_primary_color]} !important;
+        }
+        .poll-mailer__result-bar {
+          background-color: #{AppConfig.theme[:dark_primary_color]} !important;
+        }
+        .base-mailer__button--primary {
+          background-color: #{AppConfig.theme[:dark_primary_color]} !important;
+          color: #{AppConfig.theme[:dark_text_on_primary_color]} !important;
+        }
+        .base-mailer__button--accent {
+          background-color: #{AppConfig.theme[:dark_accent_color]} !important;
+          color: #{AppConfig.theme[:dark_text_on_accent_color]} !important;
+        }
+      }
+    CSS
+  end
+
   def recipient_stance(recipient, poll)
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end

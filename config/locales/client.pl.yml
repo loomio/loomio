@@ -76,6 +76,7 @@ pl:
     trial_needs_user: Aby rozpocząć bezpłatny okres próbny Loomio, zaloguj się.
     this_is_a_template_for_new_threads: To jest szablon dla nowych wątków
     share_a_custom_configuration: Udostępnij niestandardową konfigurację innym osobom w swojej grupie
+    invalid_template_file: To nie jest prawidłowy plik szablonu Loomio
   doctypes:
     youtube_video: Film z YouTube
     image: Obraz
@@ -331,6 +332,8 @@ pl:
       add: Dodać
       redact: Redagować
       unredact: Przywrócić
+      export_json: Eksportuj json
+      import_json: Importuj json
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -343,6 +346,7 @@ pl:
     read: Czytać
     unread: Niewykształcony
     discussion: Dyskusja
+    user_guide: Instrukcja obsługi
   merge_accounts:
     modal:
       title: Połącz konta
@@ -553,6 +557,7 @@ pl:
     add_a_comment: Dodaj komentarz
     share_your_thoughts: Podziel się swoimi przemyśleniami…
     share_on_poll: Zadaj pytanie lub udostępnij nowe informacje
+    type_at_to_notify_people: Wpisz {'@'}, aby powiadomić ludzi
   thread_nav:
     participants: Uczestnicy
   sidebar:
@@ -1094,6 +1099,11 @@ pl:
     copy_for_ai_skill_description: Skopiuj wątek w postaci ustrukturyzowanego Markdowna dla asystenta AI. Dołącz pełną umiejętność facylitatora Loomio, aby uzyskać wskazówki oparte na praktykach facylitacyjnych Loomio.
     share_ai_skill: Jeśli napiszesz nową umiejętność sztucznej inteligencji lub ulepszysz dostarczoną umiejętność, możesz podzielić się nią z zespołem Loomio
     share_ai_skill_contact: Skontaktuj się z zespołem Loomio
+    copy_markdown: Kopiuj Markdown
+    copy_markdown_description: Skopiuj wątek w postaci ustrukturyzowanego kodu Markdown — idealnego do użycia z agentem AI lub do utworzenia prostego dokumentu z zawartości wątku.
+    thread_markdown_copied: Wątek Markdown skopiowany
+    move_thread_v2: Przenieś wątek
+    more: Więcej
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2026,6 +2036,7 @@ pl:
     export_blt: Karty do głosowania eksportowego (BLT)
     status: Status
     your_vote_is_requested: Proszę o Twój głos
+    browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon ankiety, używając przykładu jako punktu wyjścia."
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2512,6 +2523,12 @@ pl:
     notification_only_label: Wyślij tylko nagłówek powiadomienia
     check_for_test_message: Sprawdź swój pokój czatu w poszukiwaniu wiadomości od bota!
     webex: WeBex
+    chat_integrations: Integracje czatów
+    no_chat_integrations_yet: Wysyłaj powiadomienia o aktywności Loomio do usługi czatu swojej grupy
+    new_chat_integration: Nowa integracja czatu
+    delete_chat_integration: Usunąć integrację czatu?
+    delete_chat_integration_helptext: Loomio przestanie wysyłać powiadomienia do %{name}
+    chat_integration_deleted: Usunięto integrację czatu
   webhook:
     integrations: Integracje
     api_keys: klucze API
@@ -2885,6 +2902,7 @@ pl:
     start_a_direct_discussion: Rozpocznij bezpośrednią dyskusję
     these_are_templates: Oto szablony dyskusji w Twojej grupie.
     start_a_new_discussion: Rozpocznij nową dyskusję
+    browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon dyskusji, używając przykładu jako punktu wyjścia."
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.
@@ -2908,6 +2926,11 @@ pl:
     confirm_change_to_private: "%{groupName} to grupa otwarta. Jeśli przejdziesz dalej, ta dyskusja stanie się publiczna."
     messages:
       success: Dyskusja przeniesiona do %{name}
+    move_thread_title: Przenieś wątek
+    destination: Miejsce docelowe
+    direct_thread: Bezpośredni wątek
+    direct_thread_hint: Każdy, kto wziął udział, zachowa dostęp. Ty i twórca wątku będziecie administratorami wątku.
+    direct_thread_anonymous_poll: Wątków zawierających anonimowe ankiety nie można przekształcić w wątki bezpośrednie, ponieważ mogłoby to ujawnić, kto głosował
   auth:
     oauth_cancelled: Logowanie zostało anulowane
     switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.
@@ -2994,3 +3017,7 @@ pl:
     title: Ustawić hasło?
     helptext: Następnym razem możesz zalogować się, podając hasło, zamiast czekać na link wysłany e-mailem.
     no_thanks: Nie, dziękuję
+  mention_notifications_count:
+    nobody_will_be_notified: Nikt nie zostanie powiadomiony
+    one_person_will_be_notified: 1 osoba zostanie powiadomiona
+    x_people_will_be_notified: "%{count} osób zostanie powiadomionych"

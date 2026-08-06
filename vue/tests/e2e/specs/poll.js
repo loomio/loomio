@@ -6,11 +6,13 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
@@ -24,9 +26,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click(".poll-common-choose-template__poll")
-    page.click('.decision-tools-card__poll-type--poll')
+    page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
+    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--poll')
+    page.clickAndWait('.decision-tools-card__poll-type--poll', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
 
@@ -39,6 +41,8 @@ module.exports = {
     page.click('.poll-option-form__done-btn')
 
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.expectElement('.poll-members-form__submit')
     page.pause(1000)
     // page.click('.dismiss-modal-button')
@@ -57,10 +61,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.pause(500)
-    page.click(".poll-common-choose-template__poll")
-    page.click('.decision-tools-card__poll-type--dot_vote')
+    page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
+    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--dot_vote')
+    page.clickAndWait('.decision-tools-card__poll-type--dot_vote', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
 
@@ -69,6 +72,8 @@ module.exports = {
     page.click('.poll-option-form__done-btn')
 
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.expectElement('.poll-members-form__submit')
     page.pause(500)
     // page.click('.dismiss-modal-button')
@@ -88,10 +93,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.pause(500)
-    page.click(".poll-common-choose-template__poll")
-    page.click('.decision-tools-card__poll-type--score')
+    page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
+    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--score')
+    page.clickAndWait('.decision-tools-card__poll-type--score', '.poll-common-form-fields__title input')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
@@ -101,6 +105,8 @@ module.exports = {
     page.click('.poll-option-form__done-btn')
 
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.expectElement('.poll-members-form__submit')
     // page.expectElement('.dismiss-modal-button')
     page.pause(500)
@@ -122,14 +128,15 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.pause(500)
-    page.click(".poll-common-choose-template__poll")
-    page.click('.decision-tools-card__poll-type--meeting')
+    page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
+    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting')
+    page.clickAndWait('.decision-tools-card__poll-type--meeting', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.expectElement('.poll-members-form__submit')
     // page.expectElement('.dismiss-modal-button')
     // page.pause(500)
@@ -232,8 +239,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('/polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__more-settings')
@@ -243,13 +250,15 @@ module.exports = {
     )
     page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__anonymous-voting-title')
     page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__reminder-title')
-    page.click('.poll-settings-anonymous input')
+    page.click('.poll-settings-anonymous .v-selection-control__wrapper')
     page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
     page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
     page.expectText('.poll-common-form__stance-reason-required', 'Disabled')
     page.expectElement('.poll-common-form__stance-reason-required.v-input--disabled')
 
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.expectElement('.poll-members-form__submit')
     // page.expectElement('.dismiss-modal-button')
     // page.pause(500)
@@ -314,18 +323,21 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('/polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__more-settings')
 
-    page.click('.poll-common-settings__hide-results .v-field')
-    page.click('.v-select__content .v-list .v-list-item:nth-child(4)')
+    page.scrollClick('.poll-common-settings__hide-results .v-field')
+    page.waitFor('.v-overlay--active .v-list-item')
+    page.clickLastElement('.v-overlay--active .v-list-item')
 
     // change dropdown here
 
     page.click('.poll-common-form__submit')
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
     // page.pause(300)
     // page.expectElement('.poll-members-form__submit')
     // page.expectElement('.dismiss-modal-button')
@@ -384,11 +396,11 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-settings__specified-voters-only input')
+    page.click('.poll-common-settings__specified-voters-only .v-selection-control__wrapper')
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')
@@ -400,6 +412,7 @@ module.exports = {
     page.click('.poll-members-form__submit')
     page.expectText('.poll-members-form__list', 'test@example.com')
     page.click('.dismiss-modal-button')
+    page.refreshAndWait()
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
@@ -477,17 +490,18 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.click('.activity-panel__add-poll')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A scheduled proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
 
     // Uncheck "opens immediately" to schedule the poll for the future
-    page.click('.poll-common-form__opens-immediately input')
+    page.click('.poll-common-form__opens-immediately .v-selection-control__wrapper')
     page.pause(500)
 
     page.click('.poll-common-form__submit')
-    page.pause(1000)
+    page.expectNoElement('.poll-common-form__submit', 8000)
+    page.refreshAndWait()
 
     // Poll should show scheduled voting info (not "Closing in...")
     page.expectText('.poll-common-action-panel__scheduled', 'opens for voting')
@@ -527,7 +541,7 @@ module.exports = {
 
     page.loadPath('polls/start_poll')
     page.expectElement('.poll-common-choose-template')
-    page.click('.decision-tools-card__poll-type--proposal')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A standalone proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')

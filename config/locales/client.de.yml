@@ -82,6 +82,7 @@ de:
     trial_needs_user: Um deine kostenlose Loomio-Testversion zu starten, melde dich bitte an.
     this_is_a_template_for_new_threads: Dies ist eine Vorlage für neue Threads
     share_a_custom_configuration: Teile eine benutzerdefinierte Konfiguration mit anderen in deiner Gruppe
+    invalid_template_file: Dies ist keine gültige Loomio-Vorlagendatei
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -337,6 +338,8 @@ de:
       add: Hinzufügen
       redact: Redact
       unredact: Wiederherstellen
+      export_json: JSON exportieren
+      import_json: JSON importieren
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -349,6 +352,7 @@ de:
     read: Lesen
     unread: Ungelesen
     discussion: Diskussion
+    user_guide: Benutzerhandbuch
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -559,6 +563,7 @@ de:
     add_a_comment: Einen Kommentar hinzufügen
     share_your_thoughts: Teile deine Gedanken mit…
     share_on_poll: Stelle eine Frage oder teile neue Informationen.
+    type_at_to_notify_people: Gib {'@'} ein, um Personen zu benachrichtigen
   thread_nav:
     participants: Teilnehmer
   sidebar:
@@ -1100,6 +1105,11 @@ de:
     copy_for_ai_skill_description: Kopiere den Thread als strukturiertes Markdown für einen KI-Assistenten. Füge den vollständigen Loomio-Facilitator-Skill hinzu, um Anleitungen auf Grundlage der Moderationspraktiken von Loomio zu erhalten.
     share_ai_skill: Wenn du einen neuen KI-Skill schreibst oder den bereitgestellten Skill verbesserst, kannst du ihn gerne mit dem Loomio-Team teilen
     share_ai_skill_contact: Kontaktiere das Loomio-Team
+    copy_markdown: Markdown kopieren
+    copy_markdown_description: Kopiere den Thread als strukturiertes Markdown – ideal für die Verwendung mit einem KI-Agenten oder zum Erstellen eines einfachen Dokuments aus dem Thread-Inhalt.
+    thread_markdown_copied: Thread-Markdown kopiert
+    move_thread_v2: Thema verschieben
+    more: Mehr
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -1733,7 +1743,7 @@ de:
     unread_discussions: Ungelesene Diskussionen
     recent_activity_notice: Es werden nur Threads angezeigt, in denen in den letzten 6 Wochen Aktivität stattgefunden hat.
   discussion:
-    direct_thread: Direkter Thread
+    direct_thread: Direkte Diskussion
     invite_only: Invite-only
     private_thread: Private Diskussion
     max_threads_reached: |
@@ -2034,6 +2044,7 @@ de:
     export_blt: Wahlzettel exportieren (BLT)
     status: Status
     your_vote_is_requested: Deine Stimme wird erbeten.
+    browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Umfragevorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2520,6 +2531,12 @@ de:
     notification_only_label: Nur die Überschrift der Benachrichtigung senden
     check_for_test_message: Überprüfe deinen Chatroom auf eine Nachricht vom Bot!
     webex: Webex
+    chat_integrations: Chat-Integrationen
+    no_chat_integrations_yet: Sende Benachrichtigungen über Loomio-Aktivitäten an den Chat-Dienst deiner Gruppe
+    new_chat_integration: Neue Chat-Integration
+    delete_chat_integration: Chat-Integration löschen?
+    delete_chat_integration_helptext: Loomio wird keine Benachrichtigungen mehr an %{name} senden
+    chat_integration_deleted: Chat-Integration gelöscht
   webhook:
     integrations: Integrationen
     api_keys: API-Schlüssel
@@ -2893,6 +2910,7 @@ de:
     start_a_direct_discussion: Starte eine direkte Diskussion
     these_are_templates: Dies sind die Diskussionsvorlagen in deiner Gruppe.
     start_a_new_discussion: Neue Diskussion starten
+    browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Diskussionsvorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
@@ -2916,6 +2934,11 @@ de:
     confirm_change_to_private: "%{groupName} ist eine offene Gruppe. Wenn du fortfährst, wird diese Diskussion öffentlich sein."
     messages:
       success: Die Diskussion wurde nach %{name} verlegt.
+    move_thread_title: Thema verschieben
+    destination: Ziel
+    direct_thread: Direkter Thread
+    direct_thread_hint: Alle Teilnehmenden behalten den Zugriff. Du und die Person, die das Thema erstellt hat, werdet zu Administratoren des Themas.
+    direct_thread_anonymous_poll: Threads mit anonymen Umfragen können nicht in direkte Threads umgewandelt werden, da dies offenlegen könnte, wer abgestimmt hat.
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melde dich mit deinen neuen Kontodaten an.
@@ -3002,3 +3025,7 @@ de:
     title: Ein Passwort festlegen?
     helptext: Sie können sich beim nächsten Mal mit einem Passwort anmelden, anstatt auf einen Link in einer E-Mail zu warten.
     no_thanks: Nein danke
+  mention_notifications_count:
+    nobody_will_be_notified: Niemand wird benachrichtigt
+    one_person_will_be_notified: Eine Person wird benachrichtigt
+    x_people_will_be_notified: "%{count} Personen werden benachrichtigt"

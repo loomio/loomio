@@ -8,17 +8,17 @@ class Views::EventMailer::Common::Button < Views::ApplicationMailer::Component
 
   def view_template
     bgcolor = AppConfig.theme[:primary_color]
-    fgcolor = "#ffffff"
+    fgcolor = AppConfig.theme[:text_on_primary_color]
 
     a(
-      class: "base-mailer__button",
+      class: "base-mailer__button base-mailer__button--primary",
       href: @url,
       style: "background-color: #{bgcolor}; font-size: 18px; font-weight: bold; text-decoration: none; padding: 12px 24px; color: #{fgcolor}; border-radius: 5px; display: inline-block; mso-padding-alt: 0;"
     ) do
       raw mso_open_comment(<<~MSO)
         <i style="letter-spacing: 25px; mso-font-width: -100%; mso-text-raise: 30pt;">&nbsp;</i>
       MSO
-      span(style: "mso-text-raise: 15pt; color: #{fgcolor}") { plain @text }
+      span(style: "mso-text-raise: 15pt") { plain @text }
       raw mso_close_comment(<<~MSO)
         <i style="letter-spacing: 25px; mso-font-width: -100%;">&nbsp;</i>
       MSO

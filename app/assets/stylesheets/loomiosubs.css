@@ -1,0 +1,193 @@
+.btn,
+.btn--blue,
+.btn--ink,
+.btn--accent--raised {
+  background: transparent;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn--blue,
+.btn--ink {
+  background-color: var(--loomio-primary-color);
+  border-color: transparent;
+  color: var(--loomio-primary-text-color);
+}
+
+.btn--accent--raised {
+  background-color: var(--loomio-accent-color);
+  border-color: transparent;
+  color: var(--loomio-accent-text-color);
+}
+
+.btn--blue:hover,
+.btn--blue:focus,
+.btn--blue:active,
+.btn--ink:hover,
+.btn--ink:focus,
+.btn--ink:active,
+.btn--accent--raised:hover,
+.btn--accent--raised:focus,
+.btn--accent--raised:active {
+  opacity: 0.9;
+}
+
+.pricing--pay-frequency-btns {
+  gap: 24px 48px;
+  margin-bottom: 32px !important;
+  margin-top: 16px !important;
+}
+
+.pricing--pay-frequency-btns > div {
+  flex: 1 1 300px;
+  gap: 8px;
+  max-width: 360px;
+}
+
+.pricing--pay-frequency-btns > div > span {
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+}
+
+.pricing--pay-frequency-btns > div > div {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+}
+
+.pricing--pay-frequency-btns .btn,
+.pricing--pay-frequency-btns .btn--ink {
+  box-sizing: border-box;
+  display: block;
+  margin-right: 0 !important;
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.ribbon-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.ribbon {
+  background: var(--loomio-accent-color);
+  color: var(--loomio-accent-text-color);
+  margin: 0;
+  padding: 6px 0;
+  position: absolute;
+  right: -48px;
+  text-align: center;
+  top: 30px;
+  transform: rotate(45deg);
+  width: 170px;
+  z-index: 1 !important;
+}
+
+.ribbon-grey,
+.ribbon-grey::before,
+.ribbon-grey::after {
+  background: var(--loomio-primary-color) !important;
+  color: var(--loomio-primary-text-color);
+}
+
+.ribbon::before,
+.ribbon::after {
+  content: none;
+}
+
+.main--landing section {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.main--landing h1,
+.main--landing h2 {
+  line-height: 120%;
+  margin-bottom: 20px;
+}
+
+.main--landing h2 {
+  font-size: 30px;
+}
+
+.main--landing p,
+.main--landing li,
+.main--landing blockquote {
+  line-height: 140%;
+}
+
+.main--landing small {
+  font-size: 13px;
+}
+
+.price-box {
+  border: 2px solid var(--loomio-primary-color);
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  flex: 0 1 340px;
+  margin: 0 8px 20px;
+  max-width: calc(100% - 16px);
+  padding: 24px 18px;
+  width: 340px;
+}
+
+.price-box > a {
+  color: inherit;
+  display: block;
+}
+
+.price-box h2 {
+  color: #000;
+  font-size: 1.875rem;
+  font-weight: 400;
+  line-height: 2.25rem;
+  margin: 0;
+}
+
+.price-box.primary {
+  border-color: var(--loomio-accent-color);
+}
+
+.price-box .invitation {
+  font-size: 19px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ticks--pricing {
+  list-style: outside none;
+  margin: 0 0 30px;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.ticks--pricing li {
+  font-size: 15.5px;
+  margin-bottom: 10px;
+}
+
+.ticks--pricing li::before {
+  content: "✓  ";
+}
+
+@media (max-width: 720px) {
+  .pricing--pay-frequency-btns {
+    gap: 20px;
+  }
+
+  .pricing--pay-frequency-btns > div {
+    max-width: 100%;
+  }
+
+  .price-box {
+    flex-basis: 100%;
+  }
+}

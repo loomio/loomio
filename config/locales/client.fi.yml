@@ -76,6 +76,7 @@ fi:
     trial_needs_user: Tervetuloa! Kirjaudu sisään aloittaaksesi ilmaisen kokeilujakson
     this_is_a_template_for_new_threads: Tämä on malli uusille säikeille
     share_a_custom_configuration: Jaa mukautettu kokoonpano muiden ryhmäsi jäsenten kanssa
+    invalid_template_file: Tämä ei ole kelvollinen Loomio-mallitiedosto
   doctypes:
     youtube_video: YouTube-video
     image: Kuva
@@ -331,6 +332,8 @@ fi:
       add: Lisätä
       redact: Muokkaa
       unredact: Palauttaa
+      export_json: Vie JSON-tiedosto
+      import_json: Tuo JSON-tiedosto
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -343,6 +346,7 @@ fi:
     read: Lukea
     unread: Lukematon
     discussion: Keskustelu
+    user_guide: Käyttöopas
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -551,6 +555,7 @@ fi:
     add_a_comment: Lisää kommentti
     share_your_thoughts: Jaa ajatuksesi…
     share_on_poll: Esitä kysymys tai jaa uutta tietoa
+    type_at_to_notify_people: Kirjoita {'@'} ilmoittaaksesi ihmisille
   thread_nav:
     participants: Osallistujat
   sidebar:
@@ -1088,6 +1093,11 @@ fi:
     copy_for_ai_skill_description: Kopioi ketju strukturoituna Markdown-muodossa tekoälyassistenttia varten. Sisällytä Loomion fasilitaattorin koko taito ohjeistuksena Loomion fasilitointikäytäntöjen perusteella.
     share_ai_skill: Jos kirjoitat uuden tekoälytaidon tai parannat annettua taitoa, olet tervetullut jakamaan sen Loomio-tiimin kanssa
     share_ai_skill_contact: Ota yhteyttä Loomio-tiimiin
+    copy_markdown: Kopioi Markdown
+    copy_markdown_description: Kopioi ketju jäsenneltynä Markdown-muodossa – ihanteellinen tekoälyagentin kanssa käytettäväksi tai yksinkertaisen dokumentin luomiseen ketjun sisällöstä.
+    thread_markdown_copied: Ketjun Markdown kopioitu
+    move_thread_v2: Siirrä ketju
+    more: Lisää
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
@@ -2003,6 +2013,7 @@ fi:
     export_blt: Vientiäänestysliput (BLT)
     status: Status
     your_vote_is_requested: Ääntäsi pyydetään
+    browse_example_make_a_copy_hint: "<b>Luo uusi kyselymalli napsauttamalla kopiointikuvaketta</b> ja käytä esimerkkiä lähtökohtana."
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ fi:
     notification_only_label: Lähetä vain ilmoituksen otsikko
     check_for_test_message: Tarkista chat-huoneestasi viesti bottilta!
     webex: Webex
+    chat_integrations: Chat-integraatiot
+    no_chat_integrations_yet: Lähetä ilmoituksia Loomio-toiminnasta ryhmäsi chat-palveluun
+    new_chat_integration: Uusi chat-integraatio
+    delete_chat_integration: Poistetaanko chat-integraatio?
+    delete_chat_integration_helptext: Loomio lopettaa ilmoitusten lähettämisen käyttäjälle %{name}
+    chat_integration_deleted: Chat-integraatio poistettu
   webhook:
     integrations: Integraatiot
     api_keys: API-avaimet
@@ -2858,6 +2875,7 @@ fi:
     start_a_direct_discussion: Aloita suora keskustelu
     these_are_templates: Nämä ovat ryhmäsi keskustelupohjat.
     start_a_new_discussion: Aloita uusi keskustelu
+    browse_example_make_a_copy_hint: "<b>Luo uusi keskustelumalli napsauttamalla kopiointikuvaketta</b> ja käytä esimerkkiä lähtökohtana."
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
@@ -2881,6 +2899,11 @@ fi:
     confirm_change_to_private: "%{groupName} on avoin ryhmä. Jos jatkat, tästä keskustelusta tulee julkinen."
     messages:
       success: Keskustelu siirretty keskusteluun %{name}
+    move_thread_title: Siirrä ketju
+    destination: Määränpää
+    direct_thread: Suora ketju
+    direct_thread_hint: Kaikki osallistuneet säilyttävät käyttöoikeuden. Sinusta ja ketjun luojasta tulee ketjun ylläpitäjiä.
+    direct_thread_anonymous_poll: Anonyymejä kyselyitä sisältäviä ketjuja ei voida muuntaa suoriksi ketjuiksi, koska se voisi paljastaa, kuka äänesti.
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.
@@ -2967,3 +2990,7 @@ fi:
     title: Asettaa salasana?
     helptext: Voit kirjautua sisään salasanalla seuraavalla kerralla sen sijaan, että odottaisit sähköpostilinkkiä.
     no_thanks: Ei kiitos
+  mention_notifications_count:
+    nobody_will_be_notified: Ketään ei ilmoiteta
+    one_person_will_be_notified: 1 henkilölle ilmoitetaan
+    x_people_will_be_notified: "%{count} henkilöä ilmoitetaan"

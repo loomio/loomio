@@ -50,13 +50,13 @@ module Dev::FakeDataHelper
 
     # puts 'attaching'
     # group.logo.attach(
-    #   io: URI.open(Rails.root.join('public/brand/icon_sky_300h.png')),
+    #   io: URI.open(Rails.root.join('public/brand/icon-yellow-on-white-256.png')),
     #   filename: 'loomiologo.png',
     #   identify: false,
     #   content_type: 'image/png'
     # )
     # puts 'attached'
-    # group.cover_photo.attach(io: URI.open(Rails.root.join('public/brand/logo_sky_256h.png')), filename: 'loomiocover.png')
+    # group.cover_photo.attach(io: URI.open(Rails.root.join('public/brand/logo-yellow-96h.png')), filename: 'loomiocover.png')
 
     group
   end

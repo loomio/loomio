@@ -76,6 +76,7 @@ uk:
     trial_needs_user: Щоб розпочати безкоштовну пробну версію Loomio, увійдіть.
     this_is_a_template_for_new_threads: Це шаблон для нових тем
     share_a_custom_configuration: Поділіться власною конфігурацією з іншими у вашій групі
+    invalid_template_file: Це недійсний файл шаблону Loomio
   doctypes:
     youtube_video: Відео YouTube
     image: Зображення
@@ -331,6 +332,8 @@ uk:
       add: Додати
       redact: Викреслити
       unredact: Відновити
+      export_json: Експортувати JSON
+      import_json: Імпорт JSON
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -343,6 +346,7 @@ uk:
     read: Читати
     unread: Непрочитане
     discussion: Обговорення
+    user_guide: Посібник користувача
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -554,6 +558,7 @@ uk:
     add_a_comment: Додати коментар
     share_your_thoughts: Поділіться своїми думками…
     share_on_poll: Задайте питання або поділіться новою інформацією
+    type_at_to_notify_people: Введіть {'@'}, щоб повідомити людей
   thread_nav:
     participants: Учасники
   sidebar:
@@ -1095,6 +1100,11 @@ uk:
     copy_for_ai_skill_description: Скопіюйте тему як структурований Markdown для помічника зі штучним інтелектом. Додайте повний навик фасилітатора Loomio для керівництва на основі практик фасилітації Loomio.
     share_ai_skill: Якщо ви напишете новий навик штучного інтелекту або вдосконалите наданий навик, ви можете поділитися ним з командою Loomio
     share_ai_skill_contact: Зв'яжіться з командою Loomio
+    copy_markdown: Копіювати Markdown
+    copy_markdown_description: Скопіюйте тему як структурований Markdown — ідеально підходить для використання з агентом штучного інтелекту або для створення простого документа з вмісту теми.
+    thread_markdown_copied: Розмітка теми скопійована
+    move_thread_v2: Перемістити тему
+    more: Більше
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -1728,7 +1738,7 @@ uk:
     unread_discussions: Непрочитані обговорення
     recent_activity_notice: Показуються лише теми з активністю за останні 6 тижнів.
   discussion:
-    direct_thread: Пряма нитка
+    direct_thread: Пряма тема
     invite_only: Лише для запрошених
     private_thread: Приватна тема
     max_threads_reached: |
@@ -2029,6 +2039,7 @@ uk:
     export_blt: Експортні бюлетені (BLT)
     status: Статус
     your_vote_is_requested: Запитується ваш голос
+    browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2515,6 +2526,12 @@ uk:
     notification_only_label: Надіслати лише заголовок сповіщення
     check_for_test_message: Перевірте свою кімнату чату на наявність повідомлення від бота!
     webex: Вебекс
+    chat_integrations: Інтеграції чату
+    no_chat_integrations_yet: Надсилайте сповіщення про активність у Loomio до чату вашої групи
+    new_chat_integration: Нова інтеграція чату
+    delete_chat_integration: Видалити інтеграцію чату?
+    delete_chat_integration_helptext: Loomio припинить надсилати сповіщення користувачу %{name}
+    chat_integration_deleted: Інтеграцію чату видалено
   webhook:
     integrations: Інтеграція
     api_keys: Ключі API
@@ -2888,6 +2905,7 @@ uk:
     start_a_direct_discussion: Почати пряму дискусію
     these_are_templates: Це шаблони для обговорення у вашій групі.
     start_a_new_discussion: Розпочати нове обговорення
+    browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон обговорення, використовуючи приклад як відправну точку."
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.
@@ -2911,6 +2929,11 @@ uk:
     confirm_change_to_private: "%{groupName} – це відкрита група. Якщо ви продовжите, це обговорення буде публічним."
     messages:
       success: Обговорення перенесено до %{name}
+    move_thread_title: Перемістити тему
+    destination: Пункт призначення
+    direct_thread: Пряма нитка
+    direct_thread_hint: Усі, хто брав участь, збережуть доступ. Ви та автор теми будете адміністраторами теми.
+    direct_thread_anonymous_poll: Теми, що містять анонімні опитування, не можна перетворити на прямі теми, оскільки це може розкрити, хто голосував
   auth:
     oauth_cancelled: Вхід скасовано
     switching_accounts: Зміна облікових записів. Будь ласка, увійдіть, використовуючи дані нового облікового запису.
@@ -2997,3 +3020,7 @@ uk:
     title: Встановити пароль?
     helptext: Ви можете використовувати пароль для входу наступного разу, замість того, щоб чекати на посилання електронною поштою.
     no_thanks: Ні, дякую
+  mention_notifications_count:
+    nobody_will_be_notified: Нікого не повідомлять
+    one_person_will_be_notified: 1 особа отримає сповіщення
+    x_people_will_be_notified: "%{count} людей отримають сповіщення"

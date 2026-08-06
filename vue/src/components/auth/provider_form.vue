@@ -61,9 +61,9 @@ export default {
     p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
 </template>
 
-<style lang="sass">
-.auth-provider-form__providers
-  max-width: 400px
-  margin: 0 auto
-
+<style>
+.auth-provider-form__providers {
+  max-width: 400px;
+  margin: 0 auto;
+}
 </style>

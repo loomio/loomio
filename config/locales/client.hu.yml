@@ -78,6 +78,7 @@ hu:
     trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezzen be.
     this_is_a_template_for_new_threads: Ez egy sablon az új szálak számára
     share_a_custom_configuration: Egyéni konfiguráció megosztása a csoport többi tagjával
+    invalid_template_file: Ez nem egy érvényes Loomio sablonfájl
   doctypes:
     youtube_video: Youtube videó
     image: Kép
@@ -333,6 +334,8 @@ hu:
       add: Hozzáadás
       redact: Megrövidít
       unredact: Visszaállítás
+      export_json: JSON exportálása
+      import_json: JSON importálása
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -345,6 +348,7 @@ hu:
     read: Olvas
     unread: Nem olvasott
     discussion: Vita
+    user_guide: Felhasználói útmutató
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -553,6 +557,7 @@ hu:
     add_a_comment: Hozzászólás hozzáadása
     share_your_thoughts: Oszd meg a gondolataidat…
     share_on_poll: Tegyen fel kérdést, vagy osszon meg új információkat
+    type_at_to_notify_people: Írd be a {'@'} jelet az értesítéshez
   thread_nav:
     participants: Résztvevők
   sidebar:
@@ -1092,6 +1097,11 @@ hu:
     copy_for_ai_skill_description: Másold le a szálat strukturált Markdownként egy MI-asszisztens számára. Tartalmazd a teljes Loomio facilitátori készséget útmutatásként a Loomio facilitációs gyakorlata alapján.
     share_ai_skill: Ha új MI-készséget írsz, vagy a már meglévőt fejleszted, megoszthatod a Loomio csapatával
     share_ai_skill_contact: Lépjen kapcsolatba a Loomio csapatával
+    copy_markdown: Markdown másolása
+    copy_markdown_description: Másolja a szálat strukturált Markdown-ként – ideális mesterséges intelligencia alapú ügynökkel való használatra vagy egy egyszerű dokumentum létrehozásához a szál tartalmából.
+    thread_markdown_copied: A szál Markdown másolva
+    move_thread_v2: Szál áthelyezése
+    more: Több
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -2010,6 +2020,7 @@ hu:
     export_blt: Export szavazólapok (BLT)
     status: Állapot
     your_vote_is_requested: Szavazatot kérünk
+    browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új szavazássablon létrehozásához, a példa kiindulópontként való használatával."
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2494,6 +2505,12 @@ hu:
     notification_only_label: Csak az értesítés címsorának küldése
     check_for_test_message: Nézze meg csevegőszobájában üzenetet a bottól!
     webex: Webex
+    chat_integrations: Csevegési integrációk
+    no_chat_integrations_yet: Értesítések küldése a Loomio-tevékenységekről a csoport csevegőszolgáltatásába
+    new_chat_integration: Új csevegési integráció
+    delete_chat_integration: Törli a csevegésintegrációt?
+    delete_chat_integration_helptext: A Loomio nem fog értesítéseket küldeni %{name} felhasználónak
+    chat_integration_deleted: Csevegésintegráció törölve
   webhook:
     integrations: Integrációk
     api_keys: API kulcsok
@@ -2865,6 +2882,7 @@ hu:
     start_a_direct_discussion: Közvetlen beszélgetés indítása
     these_are_templates: Ezek a csoportodban található beszélgetési sablonok.
     start_a_new_discussion: Új beszélgetés indítása
+    browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új beszélgetési sablon létrehozásához, a példa kiindulópontként való használatával."
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
@@ -2888,6 +2906,11 @@ hu:
     confirm_change_to_private: A %{groupName} egy nyílt csoport. Ha folytatod, ez a beszélgetés nyilvános lesz.
     messages:
       success: 'Vita áthelyezve ide: %{name}'
+    move_thread_title: Szál áthelyezése
+    destination: Rendeltetési hely
+    direct_thread: Közvetlen szál
+    direct_thread_hint: Mindenki, aki részt vett, megtartja a hozzáférést. Te és a téma létrehozója a téma adminisztrátorai lesztek.
+    direct_thread_anonymous_poll: A névtelen szavazásokat tartalmazó szálak nem alakíthatók át közvetlen szálakká, mert ez felfedheti, hogy ki szavazott.
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
     switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.
@@ -2974,3 +2997,7 @@ hu:
     title: Jelszó beállítása?
     helptext: Legközelebb jelszóval jelentkezhet be, ahelyett, hogy e-mailben küldött linkre várna.
     no_thanks: Nem, köszönöm
+  mention_notifications_count:
+    nobody_will_be_notified: Senkit sem fognak értesíteni
+    one_person_will_be_notified: 1 személy értesítést kap
+    x_people_will_be_notified: "%{count} embert értesítenek"

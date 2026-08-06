@@ -5,6 +5,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
   rescue_from(ActiveRecord::RecordInvalid)             { |e| respond_with_errors(e.record) }
+  rescue_from(ThrottleService::LimitReached)            { respond_with_invitation_limit_reached }
   attr_accessor :collection_count
 
   def show
@@ -272,6 +273,12 @@ class Api::V1::SnorlaxBase < ActionController::Base
     Rails.logger.error("API Error: #{error.class} - #{error.message}")
     track_forbidden(error) if status == 403
     render json: { error: status }, root: false, status: status
+  end
+
+  def respond_with_invitation_limit_reached
+    render json: {
+      flash: { error: I18n.t('errors.invitation_rate_limit_reached_contact_support') }
+    }, root: false, status: :too_many_requests
   end
 
   def respond_with_access_denied(error)

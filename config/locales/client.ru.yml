@@ -76,6 +76,7 @@ ru:
     trial_needs_user: Добро пожаловать! Пожалуйста, войдите в систему, чтобы начать бесплатную пробную версию
     this_is_a_template_for_new_threads: Это шаблон для новых тем
     share_a_custom_configuration: Поделитесь пользовательской конфигурацией с другими участниками вашей группы.
+    invalid_template_file: Это недействительный файл шаблона Loomio
   doctypes:
     youtube_video: YouTube видео
     image: Изображение
@@ -331,6 +332,8 @@ ru:
       add: Добавлять
       redact: Редактировать
       unredact: Восстановить
+      export_json: Экспорт в формате JSON
+      import_json: Импортировать json
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -343,6 +346,7 @@ ru:
     read: Читать
     unread: Непрочитано
     discussion: Обсуждение
+    user_guide: Руководство пользователя
   merge_accounts:
     modal:
       title: Объединить аккаунты
@@ -551,6 +555,7 @@ ru:
     add_a_comment: Добавить комментарий
     share_your_thoughts: Поделитесь своими мыслями…
     share_on_poll: Задайте вопрос или поделитесь новой информацией.
+    type_at_to_notify_people: Введите {'@'} для уведомления пользователей
   thread_nav:
     participants: Участники
   sidebar:
@@ -1088,6 +1093,11 @@ ru:
     copy_for_ai_skill_description: Скопируйте ветку обсуждения в формате структурированного Markdown для ИИ-помощника. Включите полный текст навыка модератора Loomio для получения рекомендаций, основанных на методах модерации Loomio.
     share_ai_skill: Если вы создадите новый навык для ИИ или улучшите существующий, вы можете поделиться им с командой Loomio
     share_ai_skill_contact: Свяжитесь с командой Loomio
+    copy_markdown: Скопировать Markdown
+    copy_markdown_description: Скопируйте ветку обсуждения в формате структурированного Markdown — идеально подходит для использования с ИИ-агентом или для создания простого документа на основе содержимого ветки.
+    thread_markdown_copied: Markdown обсуждения скопирован
+    move_thread_v2: Переместить тему
+    more: Более
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -2003,6 +2013,7 @@ ru:
     export_blt: Экспорт бюллетеней (BLT)
     status: Статус
     your_vote_is_requested: Просим вас проголосовать.
+    browse_example_make_a_copy_hint: "<b>Нажмите на значок копирования</b> , чтобы создать новый шаблон опроса, используя пример в качестве отправной точки."
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ ru:
     notification_only_label: Отправлять только заголовок уведомления
     check_for_test_message: Проверьте свой чат на наличие сообщения от бота!
     webex: Вебекс
+    chat_integrations: Интеграция чата
+    no_chat_integrations_yet: Отправляйте уведомления об активности в Loomio в чат вашей группы
+    new_chat_integration: Новая интеграция чата
+    delete_chat_integration: Удалить интеграцию чата?
+    delete_chat_integration_helptext: Loomio прекратит отправлять уведомления пользователю %{name}
+    chat_integration_deleted: Интеграция чата удалена
   webhook:
     integrations: Интеграции
     api_keys: Ключи API
@@ -2858,6 +2875,7 @@ ru:
     start_a_direct_discussion: Начните прямое обсуждение
     these_are_templates: Это шаблоны для обсуждений в вашей группе.
     start_a_new_discussion: Начать новое обсуждение
+    browse_example_make_a_copy_hint: "<b>Нажмите на значок копирования</b> , чтобы создать новый шаблон обсуждения, используя пример в качестве отправной точки."
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.
@@ -2881,6 +2899,11 @@ ru:
     confirm_change_to_private: "%{groupName} — открытая группа. Если вы продолжите, это обсуждение станет публичным."
     messages:
       success: Обсуждение перенесено в %{name}
+    move_thread_title: Переместить тему
+    destination: Место назначения
+    direct_thread: Прямая тема
+    direct_thread_hint: Все участники сохранят доступ. Вы и создатель темы будете администраторами темы.
+    direct_thread_anonymous_poll: Темы, содержащие анонимные опросы, нельзя преобразовать в прямые сообщения, поскольку это может раскрыть, кто голосовал.
   auth:
     oauth_cancelled: Вход был отменен.
     switching_accounts: Переключение между учетными записями. Пожалуйста, войдите в систему, используя данные вашей новой учетной записи.
@@ -2967,3 +2990,7 @@ ru:
     title: Установить пароль?
     helptext: В следующий раз вы сможете войти в систему, используя пароль, вместо того чтобы ждать ссылку по электронной почте.
     no_thanks: Нет, спасибо
+  mention_notifications_count:
+    nobody_will_be_notified: Никто не будет уведомлен
+    one_person_will_be_notified: Уведомление получит 1 человек
+    x_people_will_be_notified: "%{count} человек будут уведомлены"

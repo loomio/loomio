@@ -149,6 +149,7 @@ sl:
     '404':
       body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila razprava ali anketa izbrisana.
     new_account_trial_group_limit: Novi računi so omejeni na eno skupino. Če jih potrebujete več, se obrnite na podporo.
+    direct_thread_anonymous_poll: Niti, ki vsebuje anonimno anketo, ni mogoče pretvoriti v neposredno nit
   group:
     error:
       handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-

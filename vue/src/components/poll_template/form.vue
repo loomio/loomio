@@ -220,7 +220,7 @@ export default {
         common-icon(name="mdi-close")
 
     v-card-text
-      v-form(ref="form" @submit.prevent="submit")
+      v-form#poll-template-form(ref="form" @submit.prevent="submit")
         v-select(
           :label="$t('poll_common_form.voting_method')"
           v-model="pollTemplate.pollType"
@@ -295,7 +295,7 @@ export default {
               v-list-item.mb-2(lines="two" rounded variant="tonal" style="user-select: none")
                 template(v-slot:prepend v-if="hasOptionIcon" v-handle)
                   v-avatar(size="48")
-                    img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+                    img(:src="'/img/' + option.icon + '.svg?v=20260721'" aria-hidden="true")
 
                 v-list-item-title(v-handle)
                   span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
@@ -542,7 +542,8 @@ export default {
       v-btn.poll-common-form__submit(
         variant="elevated"
         color="primary"
-        @click='submit()'
+        type="submit"
+        form="poll-template-form"
         :loading="pollTemplate.processing"
       )
         span(v-t="'common.action.save_template'")

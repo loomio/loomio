@@ -149,6 +149,7 @@ da:
     '404':
       body: Det element, du anmodede om, blev ikke fundet. Dette kan ske, hvis en diskussion eller afstemning er blevet slettet.
     new_account_trial_group_limit: Nye konti er begrænset til én gruppe. Kontakt venligst support, hvis du har brug for flere.
+    direct_thread_anonymous_poll: En tråd, der indeholder en anonym afstemning, kan ikke konverteres til en direkte tråd
   group:
     error:
       handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-

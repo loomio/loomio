@@ -181,13 +181,14 @@ fetchNow();
       v-pagination(v-if="totalPages > 1" v-model="page", :length="totalPages")
 </template>
 
-<style lang="sass">
-.poll-common-votes-panel__stance
-	display: flex
-	align-items: flex-start
-	margin: 7px 0
+<style>
+.poll-common-votes-panel__stance {
+  display: flex;
+  align-items: flex-start;
+  margin: 7px 0;
+}
 
-.poll-common-votes-panel__legacy-reason + .poll-common-votes-panel__legacy-reason
-	border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity))
-
+.poll-common-votes-panel__legacy-reason + .poll-common-votes-panel__legacy-reason {
+  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
 </style>

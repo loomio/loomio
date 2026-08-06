@@ -116,13 +116,15 @@ v-main
     action-dock(
       :model='group'
       :actions='dockActions'
-      menu-icon='mdi-cog'
+      :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"
+      :menu-name="canEditGroup ? $t('common.settings') : $t('action_dock.more')"
+      :menu-icon-only="false"
+      menu-show-icon
       :menu-actions='menuActions')
     join-group-button(:group='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(
-      color="primary"
       v-model="activeTab"
       background-color="transparent"
       center-active

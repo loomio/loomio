@@ -13,7 +13,7 @@ module Dev::ScenariosHelper
     discussion = DiscussionService.create(params: {group_id: group.id, title: "Some discussion", private: true}, actor: group.members.first)
 
     actor = group.admins.first
-    user  = saved(fake_user(time_zone: "America/New_York", auto_translate: true))
+    user  = saved(fake_user(time_zone: "America/New_York", auto_translate: params[:auto_translate].present?))
 
     group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]

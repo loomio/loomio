@@ -66,6 +66,19 @@ module.exports = {
     page.expectText('.context-panel__description', 'improved description')
   },
 
+  'moves_a_group_thread_to_a_direct_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('.thread-sidebar .action-dock__button--move_thread')
+    page.click('.move-thread-form__group-dropdown .v-field')
+    page.expectText('.v-overlay-container', 'Direct thread')
+    test.useXpath().click("//div[contains(@class, 'v-list-item-title') and normalize-space()='Direct thread']").useCss()
+    page.expectText('.move-thread-form', 'Everyone who has participated will retain access')
+    page.click('.move-thread-form__submit')
+    page.expectText('.context-panel__breadcrumbs', 'Direct')
+  },
+
   // 'stores_draft_edits': (test) => {
   //   page = pageHelper(test)
   //
@@ -192,12 +205,37 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.expectText('.mention-notifications-count', 'Type @ to notify people')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello @')
+    page.expectText('.suggestion-list', 'Dirty Dancing Shoes')
+    page.expectElement('.suggestion-list [data-mention-handle="shoes"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="shoes"] .v-list-item-title')
+    page.expectText('.mention-notifications-count', '2 people will be notified')
+
+    page.loadPath('setup_discussion')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@patrick')
+    page.expectText('.suggestion-list', 'Patrick Swayze')
+    page.expectElement('.suggestion-list [data-mention-handle="patrickswayze"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="patrickswayze"] .v-list-item-title')
+    page.expectText('.mention-notifications-count', '1 person will be notified')
+
+    page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item-title')
+    page.expectElement('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title')
     page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
+  },
+
+  'ranks_mention_prefix_matches_first': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_for_mention_ranking')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@sco')
+    page.expectText('.suggestion-list .v-list-item:nth-child(1)', 'Scott Lemmon')
+    page.expectText('.suggestion-list .v-list-item:nth-child(2)', 'Jerry Scott')
   },
 
   'mentions_a_user_in_markdown': (test) => {
@@ -208,9 +246,16 @@ module.exports = {
     // page.click('i.mdi-chevron-right')
     page.click('.e2e-markdown-btn')
     page.acceptConfirm()
+    page.fillIn('.comment-form .lmo-textarea textarea', 'Hello @')
+    page.expectText('.suggestion-list', 'Dirty Dancing Shoes')
+    page.expectText('.suggestion-list', 'Jennifer Grey')
+    page.expectElement('.suggestion-list [data-mention-handle="shoes"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="shoes"] .v-list-item-title')
+    page.expectText('.mention-notifications-count', '2 people will be notified')
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item-title')
+    page.expectElement('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title')
     page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@jennifergrey')

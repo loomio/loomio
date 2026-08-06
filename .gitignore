@@ -88,6 +88,8 @@ selenium-debug.log
 # local env files
 .env.local
 .env.*.local
+mise.local.toml
+mise.*.local.toml
 
 # Log files
 npm-debug.log*

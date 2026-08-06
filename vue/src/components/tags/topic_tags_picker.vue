@@ -238,19 +238,21 @@ function submitNewTag() {
       )
 </template>
 
-<style lang="sass">
-.topic-tags-picker__tag-content
-  align-items: center
-  display: flex
+<style>
+.topic-tags-picker__tag-content {
+  align-items: center;
+  display: flex;
+}
 
-.tag-color-dot
-  border-radius: 50%
-  height: 16px
-  margin-right: 12px
-  width: 16px
+.tag-color-dot {
+  border-radius: 50%;
+  height: 16px;
+  margin-right: 12px;
+  width: 16px;
+}
 
-.topic-tags-picker__all-tags
-  .v-list-item-subtitle
-    line-clamp: unset
-    -webkit-line-clamp: unset
+.topic-tags-picker__all-tags .v-list-item-subtitle {
+  line-clamp: unset;
+  -webkit-line-clamp: unset;
+}
 </style>

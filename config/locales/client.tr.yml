@@ -76,6 +76,7 @@ tr:
     trial_needs_user: Hoş geldin! Ücretsiz denemenizi başlatmak için lütfen oturum açın
     this_is_a_template_for_new_threads: Bu yeni konular için bir şablondur
     share_a_custom_configuration: Özel bir yapılandırmayı grubunuzdaki diğer kişilerle paylaşın
+    invalid_template_file: Bu geçerli bir Loomio şablon dosyası değil
   doctypes:
     youtube_video: Youtube videosu
     image: Resim
@@ -331,6 +332,8 @@ tr:
       add: Eklemek
       redact: Yazıya dökmek
       unredact: Eski haline getirmek
+      export_json: JSON'u dışa aktar
+      import_json: JSON'u içe aktar
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -343,6 +346,7 @@ tr:
     read: Okumak
     unread: Okunmamış
     discussion: Tartışma
+    user_guide: Kullanıcı kılavuzu
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -551,6 +555,7 @@ tr:
     add_a_comment: Yorum ekle
     share_your_thoughts: Düşüncelerinizi paylaşın…
     share_on_poll: Bir soru sorun veya yeni bilgiler paylaşın
+    type_at_to_notify_people: Kişileri bilgilendirmek için {'@'} işaretini kullanın
   thread_nav:
     participants: Katılımcılar
   sidebar:
@@ -1088,6 +1093,11 @@ tr:
     copy_for_ai_skill_description: Yapay zekâ asistanı için yapılandırılmış Markdown formatında ileti dizisini kopyalayın. Loomio'nun kolaylaştırma uygulamalarına dayalı rehberlik için eksiksiz Loomio kolaylaştırıcı becerisini ekleyin.
     share_ai_skill: Yeni bir yapay zeka becerisi yazarsanız veya mevcut beceriyi geliştirirseniz, bunu Loomio ekibiyle paylaşabilirsiniz
     share_ai_skill_contact: Loomio ekibiyle iletişime geçin
+    copy_markdown: Markdown'ı Kopyala
+    copy_markdown_description: Konuşma dizisini yapılandırılmış Markdown olarak kopyalayın — yapay zeka ajanlarıyla kullanım veya konuşma dizisi içeriğinden basit bir belge oluşturmak için idealdir.
+    thread_markdown_copied: Konu Markdown'ı kopyalandı
+    move_thread_v2: Konuyu taşı
+    more: Daha
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -2003,6 +2013,7 @@ tr:
     export_blt: İhracat oyları (BLT)
     status: Durum
     your_vote_is_requested: Oylarınız rica olunur.
+    browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ tr:
     notification_only_label: Yalnızca bildirim başlığını gönder
     check_for_test_message: Bottan gelecek bir mesaj için sohbet odanızı kontrol edin!
     webex: Webex
+    chat_integrations: Sohbet entegrasyonları
+    no_chat_integrations_yet: Loomio etkinliğiyle ilgili bildirimleri grubunuzun sohbet hizmetine gönderin
+    new_chat_integration: Yeni sohbet entegrasyonu
+    delete_chat_integration: Sohbet entegrasyonunu silmek mi?
+    delete_chat_integration_helptext: Loomio, %{name} adresine bildirim göndermeyi durduracak
+    chat_integration_deleted: Sohbet entegrasyonu silindi.
   webhook:
     integrations: Entegrasyonlar
     api_keys: API anahtarları
@@ -2858,6 +2875,7 @@ tr:
     start_a_direct_discussion: Doğrudan bir tartışma başlatın
     these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.
     start_a_new_discussion: Yeni bir tartışma başlatın
+    browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir tartışma şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
@@ -2881,6 +2899,11 @@ tr:
     confirm_change_to_private: "%{groupName} açık bir gruptur. Devam ederseniz, bu tartışma herkese açık olacaktır."
     messages:
       success: Tartışma %{name}'e taşındı
+    move_thread_title: Konuyu taşı
+    destination: Varış noktası
+    direct_thread: Doğrudan konu
+    direct_thread_hint: Katılan herkes erişim hakkını koruyacak. Siz ve konuyu oluşturan kişi, konunun yöneticileri olacaksınız.
+    direct_thread_anonymous_poll: Anonim anketler içeren konular, kimin oy kullandığını ortaya çıkarabileceği için doğrudan konulara dönüştürülemez.
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.
@@ -2967,3 +2990,7 @@ tr:
     title: Şifre belirleyeyim mi?
     helptext: Bir dahaki sefere giriş yaparken e-posta bağlantısını beklemek yerine şifre kullanabilirsiniz.
     no_thanks: Hayır, teşekkürler
+  mention_notifications_count:
+    nobody_will_be_notified: Kimseye bildirim yapılmayacak
+    one_person_will_be_notified: 1 kişiye bildirim gönderilecektir
+    x_people_will_be_notified: "%{count} kişiye bildirim gönderilecektir"

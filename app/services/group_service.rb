@@ -101,6 +101,10 @@ module GroupService
     group.save!
     group.add_admin!(actor)
 
+    if group.parent_id && (group.is_visible_to_public? || group.is_visible_to_parent_members?)
+      MessageChannelService.publish_models([group], group_id: group.parent_id)
+    end
+
     Sentry.metrics.count("group.create", attributes: { is_subgroup: !group.is_parent? })
     EventBus.broadcast('group_create', group, actor)
   end
@@ -169,8 +173,13 @@ module GroupService
   end
 
   def self.export(group: , actor: )
-    actor.ability.authorize! :show, group
+    actor.ability.authorize! :export, group
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
+
+    if group.is_parent? && group.admins.exists?(actor.id)
+      group_ids |= group.subgroups.reject { |subgroup| subgroup.group_privacy == 'secret' }.map(&:id)
+    end
+
     Sentry.metrics.count("group.export")
     GroupExportWorker.perform_later(group_ids, group.name, actor.id)
   end

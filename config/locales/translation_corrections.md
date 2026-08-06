@@ -172,6 +172,47 @@ languages in the Nov 2025 pass.
 | `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `action_dock.share_ai_skill*` | Formal address | Informal singular address | These locales use informal direct address throughout |
 | Multiple `config/locales/client.*.yml` files | `action_dock.share_ai_skill*` | Final full stops | No final full stops | Single-sentence UI strings do not use final full stops |
 
+## 2026-07-29 — Copy Markdown
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.fr.yml`, `client.ro.yml` | `action_dock.copy_markdown*` | Formal or impersonal action wording | Informal singular action wording | These locales use informal direct address throughout |
+| `config/locales/client.el.yml` | `action_dock.thread_markdown_copied` | Referred to a copied price reduction | Referred to the thread's copied Markdown | Machine translation interpreted “markdown” as a price reduction |
+| `config/locales/client.he.yml` | `action_dock.copy_markdown`, `thread_markdown_copied` | Translated Markdown as generic markup | Retained the Markdown format name | Markdown is the name of the copied document format |
+| `config/locales/client.ru.yml` | `action_dock.thread_markdown_copied` | Translated Markdown as generic markup and added a full stop | Retained the Markdown format name with no final full stop | Markdown is the format name, and single-sentence UI strings do not use final full stops |
+
+## 2026-07-29 — Template JSON import
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.ca.yml`, `client.de.yml`, `client.es.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml` | `templates.invalid_template_file` | Single-sentence UI message with a final full stop | Removed the final full stop | Single-sentence UI strings do not use final full stops |
+
+## 2026-07-29 — Template copy help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `Sie` wording | Informal `du` wording | German UI uses informal direct address throughout |
+| `config/locales/client.fr.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `vous` imperative | Informal `tu` imperative | French UI uses informal direct address throughout |
+| `config/locales/client.nl_NL.yml` | `discussion_template.browse_example_make_a_copy_hint`, `poll_common.browse_example_make_a_copy_hint` | Formal `u` wording | Informal `je` wording | Dutch UI uses informal direct address throughout |
+
+## 2026-07-30 — Mention notification count
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | `mention_notifications_count.*` | One or more count messages had a final full stop | Removed final full stops | Single-sentence UI strings do not use final full stops |
+| `config/locales/client.fr.yml` | `comment_form.type_at_to_notify_people` | `Tapez @ pour notifier les personnes` | `Tape @ pour notifier des personnes` | French UI uses the informal singular register |
+| `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `comment_form.type_at_to_notify_people` | Translation had a final full stop | Removed final full stop | Single-sentence UI strings do not use final full stops |
+| All `config/locales/client.*.yml` files | `comment_form.type_at_to_notify_people` | Literal `@` | Vue I18n literal `{'@'}` | A bare `@` is parsed as linked-message syntax and causes message compilation to fail |
+
+## 2026-07-31 — Move to direct thread
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.da.yml`, `client.de.yml`, `client.fi.yml`, `client.fr.yml`, `client.he.yml`, `client.hu.yml`, `client.it.yml`, `client.ja.yml`, `client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml`, `client.uk.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | `move_discussion_form.direct_thread` | Mechanical-thread, cord, screw-thread, threading, or link terminology | Each locale's established discussion-thread terminology | Thread means a Loomio discussion, not a mechanical or software thread, cord, or link |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml` | `move_discussion_form.direct_thread_hint` | Formal `Sie` / `Usted` / `Vous` address | Informal `du` / `tú` / `toi` address | These locales use informal direct address throughout |
+| `config/locales/client.nl_NL.yml` | `action_dock.move_thread_v2`, `move_discussion_form.move_thread_title` | `Verplaats thread` | `Verplaats discussie` | Use the established discussion term rather than the English technical word “thread” |
+| `config/locales/server.nl_NL.yml`, `server.ro.yml` | `errors.direct_thread_anonymous_poll` | Discussion-forum or software-execution-thread terminology | Discussion-thread terminology | Thread means a Loomio discussion, not a forum or software execution thread |
+
 ## 2026-05-22 — lock/unlock thread translation pass
 
 | File | Key | Before | After | Why it was wrong |
@@ -194,7 +235,6 @@ languages in the Nov 2025 pass.
 | `config/locales/client.pl.yml` | `strand_nav.new_to_you` | `Nowość dla Ciebie` | `Nowe dla Ciebie` | "Nowość" means novelty/new thing; the label should be the adjective "new". |
 | `config/locales/client.zh_CN.yml` | `strand_nav.new_to_you` | `对你来说很新鲜` | `对你来说是新的` | "新鲜" means fresh (food sense); should be the adjective "new". |
 | `config/locales/client.zh_TW.yml` | `strand_nav.new_to_you` | `對你來說很新鮮` | `對你來說是新的` | "新鮮" means fresh (food sense); should be the adjective "new". |
-
 ## 2026-07-27 — Legacy anonymous vote reasons
 
 | File | Key | Before | After | Why it was wrong |
@@ -227,3 +267,10 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | `poll_receipts_page.voted` | `Élu` | `A voté` | `Élu` means “elected”, not “voted” |
 | `config/locales/client.fr.yml` | `poll_receipts_page.participation_records_explanation` | `Ce document...` | `Cette liste...` | The interface shows a participant list, not a document |
 | `config/locales/client.pt_BR.yml` | `poll_receipts_page.participation_records_explanation` | `Não mostra em quem votou` | `Não mostra como cada pessoa votou` | The poll may not elect a person; the guarantee covers how each participant voted |
+## 2026-08-01 — chat integrations translation pass
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml` | `chatbot.no_chat_integrations_yet` | `Envoyez ... votre groupe` | `Envoie ... ton groupe` | French UI uses the informal singular register. |
+| `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.more` | `更多的` | `更多` | The menu label is the standalone action “More”; the generated translation was an attributive adjective requiring a noun. |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | `chatbot.no_chat_integrations_yet`, `chatbot.delete_chat_integration_helptext` | Single-sentence UI strings with final full stops | Removed final full stops | Single-sentence UI strings do not use final full stops. |

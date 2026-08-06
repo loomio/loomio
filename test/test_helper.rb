@@ -21,6 +21,18 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
+    include ActiveJob::TestHelper
+
+    class_attribute :jobs_inline, default: false
+    class_attribute :jobs_inline_names, default: []
+
+    def self.inline_jobs(*test_names)
+      if test_names.empty?
+        self.jobs_inline = true
+      else
+        self.jobs_inline_names += test_names.map { |test_name| "test_#{test_name.gsub(/\s+/, '_')}" }
+      end
+    end
 
 
     # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
@@ -59,6 +71,9 @@ module ActiveSupport
 
     # Setup common stubs before each test
     setup do
+      jobs_inline_for_test = jobs_inline || jobs_inline_names.include?(name)
+      ActiveJob::Base.queue_adapter.perform_enqueued_jobs = jobs_inline_for_test
+      ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = jobs_inline_for_test
       ActionMailer::Base.deliveries.clear
       ThrottleService.reset!('hour')
       ThrottleService.reset!('day')
@@ -88,6 +103,13 @@ module ActiveSupport
         to_return(status: 200)
       WebMock.stub_request(:head, /www.gravatar.com/).
         to_return(status: 200, body: "stubbed response", headers: {})
+    end
+
+    teardown do
+      ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
+      ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = false
+      clear_enqueued_jobs
+      clear_performed_jobs
     end
 
 

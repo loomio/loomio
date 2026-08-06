@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ReceivedEmailMailboxTest < ActionMailbox::TestCase
+  inline_jobs "email from alias creates notification",
+              "mailing list envelope recipient creates an unknown sender notification"
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "mboxuser#{hex}", email: "mboxuser#{hex}@example.com", username: "mboxuser#{hex}", email_verified: true)
@@ -152,6 +154,62 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     assert_equal @group.id, e.group_id
   end
 
+  test "duplicate Message-ID creates one discussion" do
+    message_id = "duplicate-#{SecureRandom.hex(4)}@example.com"
+    sender = @user.name_and_email
+    recipient = "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}"
+    source = ->(uuid) do
+      raw_email = Mail.new do
+        from       sender
+        to         recipient
+        subject    'Retried inbound email'
+        message_id message_id
+        body       'This message must create one thread'
+      end
+      raw_email['harakadata'] = {
+        rcpt_to: [recipient],
+        uuid: uuid
+      }.to_json
+      raw_email.to_s
+    end
+
+    assert_difference 'Discussion.count', 1 do
+      receive_inbound_email_from_source(source.call('first-delivery'))
+      receive_inbound_email_from_source(source.call('retried-delivery'))
+    end
+
+    assert_equal 1, ReceivedEmail.where(message_id: message_id).count
+    assert_equal ['delivered', 'delivered'], ActionMailbox::InboundEmail.where(message_id: message_id).order(:id).map(&:status)
+  end
+
+  test "duplicate Message-ID forwards one copy to a staff mailbox" do
+    rule = ForwardEmailRule.create!(handle: "staff#{SecureRandom.hex(4)}", email: 'staff@example.net')
+    message_id = "duplicate-forward-#{SecureRandom.hex(4)}@example.com"
+    recipient = "#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"
+    sender = 'original-sender@example.com'
+    source = ->(uuid) do
+      raw_email = Mail.new do
+        from       sender
+        to         'Public address <hello@example.org>'
+        subject    'Retried staff email'
+        message_id message_id
+        body       'This message must be forwarded once'
+      end
+      raw_email['harakadata'] = { rcpt_to: [recipient], uuid: uuid }.to_json
+      raw_email.to_s
+    end
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+      receive_inbound_email_from_source(source.call('first-delivery'))
+      receive_inbound_email_from_source(source.call('retried-delivery'))
+    end
+
+    delivered = ActionMailer::Base.deliveries.last
+    assert_equal [rule.email], delivered.to
+    assert_equal [sender], delivered.reply_to
+    assert ReceivedEmail.find_by!(message_id: message_id).released
+  end
+
   test "email from alias creates notification" do
     receive_inbound_email_from_mail(
       from: 'alias@gmail.com',
@@ -164,6 +222,29 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     assert_equal false, email.released
     assert_equal @group.id, email.group_id
     assert_equal 1, Event.where(kind: 'unknown_sender').count
+    assert_equal 1, Notification.where(user_id: @group.admins.pluck(:id)).count
+  end
+
+  test "mailing list envelope recipient creates an unknown sender notification" do
+    raw_email = Mail.new do
+      from    'mailing-list-sender@example.com'
+      to      'Mailing list <list@example.com>'
+      subject 'Mailing list message'
+      body    'Message delivered through a mailing list'
+    end
+    raw_email['harakadata'] = {
+      mail_from: 'list-bounces@example.com',
+      rcpt_to: ["#{@group.handle}@#{ENV['REPLY_HOSTNAME']}"]
+    }.to_json
+
+    assert_difference -> { Event.where(kind: 'unknown_sender').count }, 1 do
+      receive_inbound_email_from_source(raw_email.to_s)
+    end
+
+    email = ReceivedEmail.last
+    assert_equal false, email.released
+    assert_equal @group.id, email.group_id
+    assert_equal 'mailing-list-sender@example.com', email.sender_email
     assert_equal 1, Notification.where(user_id: @group.admins.pluck(:id)).count
   end
 

@@ -5,7 +5,7 @@ class Views::EventMailer::Layout < Views::ApplicationMailer::Component
   def around_template(&)
     doctype
     html do
-      head { stylesheet_link_tag 'email' }
+      head { render_email_head }
       body(class: "max-width-600") do
         raw EventMailer::REPLY_DELIMITER.html_safe
         main(class: "base-mailer__body") do

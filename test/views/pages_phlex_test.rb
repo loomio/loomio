@@ -501,4 +501,18 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Outcomes (0)"
     refute_includes output, "<tbody>"
   end
+
+  # ── ErrorPage ────────────────────────────────────────────────────
+
+  test "error page renders configured brand assets" do
+    output = render_phlex(Views::Application::Error.new(
+      title: "Not found",
+      body: "The requested item was not found"
+    ))
+
+    assert_includes output, "Not found"
+    assert_includes output, "The requested item was not found"
+    assert_includes output, AppConfig.theme[:favicon16_src]
+    assert_includes output, "<svg"
+  end
 end

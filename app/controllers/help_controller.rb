@@ -8,10 +8,6 @@ class HelpController < ApplicationController
     render_api_doc "b2", api2_doc_values
   end
 
-  def api3
-    render_api_doc "b3", root_url: root_url
-  end
-
   def whats_new
     render Views::Help::WhatsNew.new(updates: whats_new_updates)
   end
@@ -35,7 +31,7 @@ class HelpController < ApplicationController
   end
 
   def api2_doc_values
-    group_id = params[:group_id] || 123
+    group_id = params[:group_id].presence || 123
     {
       api_key: current_user.api_key,
       bot_account_note: bot_account_note,
@@ -43,8 +39,14 @@ class HelpController < ApplicationController
       email: current_user.email,
       root_url: root_url,
       closing_at: 7.days.from_now.at_beginning_of_hour.utc.iso8601,
-      admin_groups: admin_groups_markdown
+      group_selector: group_selector_markdown
     }
+  end
+
+  def group_selector_markdown
+    return if params[:group_id].present?
+
+    "Select a group for example commands:\n\n#{admin_groups_markdown}"
   end
 
   def bot_account_note

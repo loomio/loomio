@@ -36,10 +36,10 @@ v-card.pin-event-form(:title="$t('pin_event_form.title')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
-    v-form(@submit.prevent="submit()")
+    v-form#pin-event-form(@submit.prevent="submit()")
       v-text-field(:disabled="loading" ref="focus" v-model="title" :label="$t('pin_event_form.title_label')")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" :loading="loading")
+    v-btn(color="primary" type="submit" form="pin-event-form" :loading="loading")
       span(v-t="'common.action.save'")
 </template>

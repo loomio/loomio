@@ -1,0 +1,3 @@
+[tools]
+node = "{{ read_file(path='.node-version') | trim }}"
+ruby = "{{ read_file(path='.ruby-version') | trim }}"

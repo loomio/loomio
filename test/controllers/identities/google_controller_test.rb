@@ -34,7 +34,7 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     stub_request(:get, 'https://lh3.googleusercontent.com/photo.jpg')
       .to_return(
         status: 200,
-        body: File.binread(Rails.root.join('public/brand/icon_sky_128h.png')),
+        body: File.binread(Rails.root.join('public/brand/icon-yellow-on-white-192.png')),
         headers: { 'Content-Type' => 'image/png' }
       )
 

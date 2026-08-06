@@ -94,7 +94,7 @@ class ReceivedEmailService
         body_text: email.body_text,
         body_html: email.body_html
       ).deliver_now
-      return email.destroy
+      return email.update_attribute(:released, true)
     end
 
     # Group by handle

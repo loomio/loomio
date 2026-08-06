@@ -165,6 +165,49 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  # === EXPORT ===
+
+  test "export returns a portable discussion template file" do
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @admin,
+      process_name: "Consent",
+      process_subtitle: "Seek consent",
+      description: "A shared process",
+      poll_template_keys_or_ids: ["proposal", 123]
+    )
+
+    sign_in @user
+    get :export, params: { id: template.id }
+
+    assert_response :success
+    assert_equal "application/json", response.media_type
+    assert_includes response.headers["Content-Disposition"], "#{@group.full_name.parameterize}-consent.json"
+    data = JSON.parse(response.body).fetch("loomio_template")
+    assert_equal 1, data["version"]
+    assert_equal "discussion_template", data["type"]
+    assert_equal "Consent", data.dig("template", "process_name")
+    assert_equal ["proposal"], data.dig("template", "poll_template_keys_or_ids")
+    refute data["template"].key?("id")
+    refute data["template"].key?("group_id")
+    refute data["template"].key?("author_id")
+  end
+
+  test "export does not expose a template from another group" do
+    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @user)
+    template = DiscussionTemplate.create!(
+      group: other_group,
+      author: @user,
+      process_name: "Private process",
+      process_subtitle: "Private subtitle"
+    )
+
+    sign_in @admin
+    get :export, params: { id: template.id }
+
+    assert_response :not_found
+  end
+
   # === UPDATE ===
 
   test "update modifies a discussion template" do

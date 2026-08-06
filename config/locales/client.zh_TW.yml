@@ -77,6 +77,7 @@ zh_TW:
     trial_needs_user: 歡迎！請登入開始免費試用
     this_is_a_template_for_new_threads: 這是新討論串的範本
     share_a_custom_configuration: 與群組中的其他人共用自訂配置
+    invalid_template_file: 這不是有效的 Loomio 模板文件
   doctypes:
     youtube_video: YouTube 影片
     image: 圖片
@@ -333,6 +334,8 @@ zh_TW:
       add: 添加
       redact: 纂
       unredact: 恢復
+      export_json: 導出 JSON
+      import_json: 導入 JSON
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -344,6 +347,7 @@ zh_TW:
     read: 讀
     unread: 未讀
     discussion: 討論
+    user_guide: 使用者指南
   merge_accounts:
     modal:
       title: 合併帳號
@@ -554,6 +558,7 @@ zh_TW:
     add_a_comment: 新增評論
     share_your_thoughts: 分享你的想法…
     share_on_poll: 提出問題或分享新訊息
+    type_at_to_notify_people: 輸入{'@'}即可通知他人
   thread_nav:
     participants: 參與者
   sidebar:
@@ -1095,6 +1100,11 @@ zh_TW:
     copy_for_ai_skill_description: 請將此討論串複製為結構化的 Markdown 格式，以便 AI 助理使用。請包含完整的 Loomio 引導員技能，以便根據 Loomio 的引導實踐提供指導。
     share_ai_skill: 如果您編寫了新的 AI 技能或改進了現有技能，歡迎與 Loomio 團隊分享
     share_ai_skill_contact: 聯絡 Loomio 團隊
+    copy_markdown: 複製 Markdown
+    copy_markdown_description: 將貼文內容複製為結構化的 Markdown 格式——非常適合與 AI 代理程式一起使用，或從貼文內容創建簡單的文件。
+    thread_markdown_copied: 貼文 Markdown 已複製
+    move_thread_v2: 移動主題
+    more: 更多
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -1728,7 +1738,7 @@ zh_TW:
     unread_discussions: 未讀討論
     recent_activity_notice: 僅顯示最近 6 週內有活動的貼文。
   discussion:
-    direct_thread: 直接螺紋
+    direct_thread: 直接貼文
     invite_only: 僅邀請
     private_thread: 私人討論串
     max_threads_reached: |
@@ -2029,6 +2039,7 @@ zh_TW:
     export_blt: 出口選票（BLT）
     status: 地位
     your_vote_is_requested: 請您投票
+    browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立一個新的投票模板。"
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2513,6 +2524,12 @@ zh_TW:
     notification_only_label: 僅傳送通知標題
     check_for_test_message: 檢查您的聊天室以取得來自機器人的訊息！
     webex: Webex
+    chat_integrations: 聊天集成
+    no_chat_integrations_yet: 將 Loomio 活動通知發送到您群組的聊天服務
+    new_chat_integration: 新的聊天集成
+    delete_chat_integration: 刪除聊天整合？
+    delete_chat_integration_helptext: Loomio 將停止向 %{name} 發送通知
+    chat_integration_deleted: 聊天整合功能已刪除
   webhook:
     integrations: 整合
     api_keys: API 金鑰
@@ -2886,6 +2903,7 @@ zh_TW:
     start_a_direct_discussion: 發起直接討論
     these_are_templates: 這些是你們小組的討論範本。
     start_a_new_discussion: 發起新的討論
+    browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立新的討論範本。"
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
@@ -2909,6 +2927,11 @@ zh_TW:
     confirm_change_to_private: "%{groupName} 是一個公開群組。如果您繼續操作，本次討論將會公開顯示。"
     messages:
       success: 討論已轉移至 %{name}
+    move_thread_title: 移動主題
+    destination: 目的地
+    direct_thread: 直接螺紋
+    direct_thread_hint: 所有參與者都將保留存取權限。您和帖子創建者將成為帖子管理員。
+    direct_thread_anonymous_poll: 包含匿名投票的帖子不能轉換為直接對話帖，因為這可能會洩露投票者的身份。
   auth:
     oauth_cancelled: 登入已取消
     switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。
@@ -2995,3 +3018,7 @@ zh_TW:
     title: 設定密碼？
     helptext: 下次登入時，您可以使用密碼，而無需等待電子郵件連結。
     no_thanks: 不，謝謝
+  mention_notifications_count:
+    nobody_will_be_notified: 不會通知任何人
+    one_person_will_be_notified: 將會通知1人
+    x_people_will_be_notified: "%{count} 人將會收到通知"

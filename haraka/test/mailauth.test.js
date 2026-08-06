@@ -3,7 +3,7 @@ const { generateKeyPairSync } = require('node:crypto');
 const { Readable } = require('node:stream');
 const { test } = require('node:test');
 
-const mailauth = require('haraka-plugin-mailauth');
+const mailauth = require('../haraka/plugins/mailauth');
 const { dkimSign } = require('mailauth/lib/dkim/sign');
 
 const { privateKey, publicKey } = generateKeyPairSync('rsa', {
@@ -77,7 +77,7 @@ const authenticate = async (message) => {
       plugin,
       (status) => resolve(status),
       connection,
-      [{ address: () => 'bounce@forwarder.example' }],
+      [{ get address() { return 'bounce@forwarder.example'; } }],
     );
   });
 

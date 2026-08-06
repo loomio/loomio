@@ -152,6 +152,7 @@ pt_BR:
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
       pwned_password: Esta senha já apareceu em uma violação de dados e nunca deve ser usada
     new_account_trial_group_limit: As novas contas estão limitadas a um grupo. Entre em contato com o suporte se precisar de mais.
+    direct_thread_anonymous_poll: Uma thread contendo uma enquete anônima não pode ser convertida em uma thread direta.
   group:
     error:
       handle_must_begin_with_parent_handle: Deve começar com %{parent_handle}-

@@ -22,7 +22,7 @@ brew install ImageMagick --with-perl
 brew services start postgresql
 ```
 
-And that's it. You can jump to 'Install ruby'
+And that's it. You can jump to 'Install mise'
 
 ## Ubuntu system setup
 
@@ -35,45 +35,29 @@ sudo apt-get install postgresql postgresql-contrib build-essential \
                      git libvips ffmpeg poppler-utils \
 ```
 
-## Install ruby
+## Install mise
 
-I recommend that you install ruby via `rbenv`, this gives you the flexibility required to install and switch between various versions of ruby.
+Loomio specifies its Ruby and Node.js versions in `.ruby-version` and `.node-version`. We recommend [mise](https://mise.jdx.dev/) to install those versions and switch to them automatically when you enter the Loomio directory, but Loomio does not require mise. You can use another version manager that supports these files.
 
-Follow the installation steps for rbenv from  [https://github.com/sstephenson/rbenv#installation](https://github.com/sstephenson/rbenv#installation).
+Install mise:
 
-Then install [ruby-build](https://github.com/sstephenson/ruby-build#readme) like so:
-
-```
-mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+```sh
+curl https://mise.run | sh
 ```
 
-When a new version of ruby is released, you can update ruby-build with
-```
-cd "$(rbenv root)"/plugins/ruby-build && git pull
+Activate mise in your shell. For zsh:
+
+```sh
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
 ```
 
-At the time of writing 3.4.5 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+For bash:
 
-```
-rbenv install 3.4.5
-gem install bundler
-```
-
-## Install node
-
-You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
-
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```sh
+echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 ```
 
-You'll need to restart your terminal, then run:
-
-```
-nvm install 22
-nvm alias default 22
-```
+Restart your terminal to activate mise.
 
 ## Fork and clone the Loomio git repo
 
@@ -84,11 +68,19 @@ cd ~/projects # or wherever you like to keep your code
 git clone git@github.com:YOURUSERNAME/loomio.git && cd loomio
 ```
 
-## Install ruby and node dependencies
+## Install Ruby, Node.js, and dependencies
 
-From you freshly checked out Loomio repo:
+From your freshly checked out Loomio repo, trust its mise configuration and install the runtime versions specified by the project. The mise configuration reads the versions from `.ruby-version` and `.node-version` so they remain the source of truth.
 
+```sh
+mise trust
+mise install
 ```
+
+Then install the Ruby and Node.js dependencies:
+
+```sh
+gem install bundler
 bundle install
 cd vue; npm install && cd ..
 ```

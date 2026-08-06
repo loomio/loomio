@@ -74,7 +74,7 @@ form(v-on:submit.prevent='submit()')
           )
             input(type="radio" :value="icon.value" v-model="pollOption.icon")
             v-avatar(size="48")
-              img(:src="'/img/' + icon.value + '.svg'" :alt="icon.text" draggable="false")
+              img(:src="'/img/' + icon.value + '.svg?v=20260721'" :alt="icon.text" draggable="false")
 
         .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
           span.text-body-small.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
@@ -138,26 +138,29 @@ form(v-on:submit.prevent='submit()')
     v-card-actions
       v-btn.poll-option-form__done-btn(
         color="primary" variant="elevated"
-        @click="submit"
+        type="submit"
         :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
       )
         span(v-t="'common.action.done'")
 </template>
 
-<style lang="sass">
-.poll-option-form__icon-selected
-  border: 1px solid rgb(var(--v-theme-primary)) !important
+<style>
+.poll-option-form__icon-selected {
+  border: 1px solid rgb(var(--v-theme-primary)) !important;
+}
 
-.poll-option-form__icon-not-selected
-  opacity: 0.33 !important
+.poll-option-form__icon-not-selected {
+  opacity: 0.33 !important;
+}
 
-.poll-option-form__icon
-  cursor: pointer
-  border: 1px solid #333
-  input
-    position: absolute
-    opacity: 0
-    width: 0
-    height: 0
-
+.poll-option-form__icon {
+  cursor: pointer;
+  border: 1px solid #333;
+}
+.poll-option-form__icon input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 </style>

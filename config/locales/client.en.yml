@@ -107,6 +107,7 @@ en:
     to_use_loomio_with_your_org_start_trial: When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
     make_a_copy: Make a copy
+    invalid_template_file: This is not a valid Loomio template file
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -229,6 +230,10 @@ en:
     question: question round
   timezones:
     local: Local time (%{value})
+  mention_notifications_count:
+    nobody_will_be_notified: Nobody will be notified
+    one_person_will_be_notified: 1 person will be notified
+    x_people_will_be_notified: "%{count} people will be notified"
   common:
     commercial: Commercial
     nonprofit: Nonprofit
@@ -289,6 +294,7 @@ en:
     decisions: Decisions
     settings: Settings
     help: Help
+    user_guide: User guide
     anonymous: Anonymous
     required: Required
     email_address: Email address
@@ -331,6 +337,8 @@ en:
       save: Save
       save_template: Save template
       fork_template: Fork template
+      export_json: Export json
+      import_json: Import json
       move: Move
       save_changes: Save changes
       update_settings: Update settings
@@ -584,6 +592,7 @@ en:
       too_long: Comment must be %{count} characters or less
     say_something: Say something...
     share_your_thoughts: Share your thoughts…
+    type_at_to_notify_people: "Type {'@'} to notify people"
     edit_comment: Edit comment
     delete_comment: Delete comment
     cancel_reply: Cancel Reply
@@ -883,6 +892,7 @@ en:
     browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
     browse_example_use_hint: "Click the template title to <b>start a discussion</b>."
     browse_example_fork_hint: "<b>Click the fork icon</b> to create a new discussion template, using the example as a starting point."
+    browse_example_make_a_copy_hint: "<b>Click the copy icon</b> to create a new discussion template, using the example as a starting point"
     new_discussion_template_title: New discussion template
     new_template_from_blank: New template from blank
     new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
@@ -1089,6 +1099,9 @@ en:
     flash:
       success: "%{count} notifications sent"
   action_dock:
+    copy_markdown: Copy Markdown
+    copy_markdown_description: Copy the thread as structured Markdown — ideal for use with an AI agent or for creating a simple document from the thread content.
+    thread_markdown_copied: Thread Markdown copied
     copy_thread_for_ai: Copy for AI
     thread_copied_for_ai: Thread copied for AI
     copy_thread_for_ai_help: Copy the facilitation prompt and the complete thread transcript into your AI assistant
@@ -1104,6 +1117,7 @@ en:
     share_ai_skill: If you write a new AI skill or improve the supplied skill, you’re welcome to share it with the Loomio team
     share_ai_skill_contact: Contact the Loomio team
     actions_menu: Actions menu
+    more: More
     more_actions: More actions
     save_bookmark: Save bookmark
     remove_bookmark: Remove bookmark
@@ -1148,6 +1162,7 @@ en:
     unpin_event: Unpin from timeline
     comment_copied: Comment URL copied to clipboard
     move_thread: Move to group
+    move_thread_v2: Move thread
     poll_copied: Decision URL copied to clipboard
     discussion_copied: Thread URL copied to clipboard
     url_copied: Link copied to clipboard
@@ -1949,6 +1964,11 @@ en:
     body: Destination group
     confirm: Move discussion
     confirm_change_to_private: "%{groupName} is an open group. If you proceed, this discussion will be public."
+    move_thread_title: Move thread
+    destination: Destination
+    direct_thread: Direct thread
+    direct_thread_hint: Everyone who has participated will retain access. You and the thread creator will be thread administrators.
+    direct_thread_anonymous_poll: Threads containing anonymous polls cannot be converted to direct threads because this could reveal who voted
     messages:
       success: Discussion moved to %{name}
   delete_comment_dialog:
@@ -2091,6 +2111,7 @@ en:
     browse_example_templates_hint: 'Create a new poll template from blank, or use an example to get started.'
     browse_example_use_hint: "Click the template title to <b>start a poll</b>."
     browse_example_fork_hint: "<b>Click the fork icon</b> to create a new poll template, using the example as a starting point."
+    browse_example_make_a_copy_hint: "<b>Click the copy icon</b> to create a new poll template, using the example as a starting point"
     browse_unsure_help: "Unsure how to use Poll Templates?"
     all_templates_hidden: All templates have been hidden
     new_poll_template_title: New poll template
@@ -2839,6 +2860,12 @@ en:
     password: Password
     reactivate: Reactivate account
   chatbot:
+    chat_integrations: Chat integrations
+    no_chat_integrations_yet: Send notifications about Loomio activity to your group’s chat service
+    new_chat_integration: New chat integration
+    delete_chat_integration: Delete chat integration?
+    delete_chat_integration_helptext: Loomio will stop sending notifications to %{name}
+    chat_integration_deleted: Chat integration deleted
     configure_chatbot: Configure chatbot
     test_connection: Test connection
     test_connection_ok: Looks good! You should see a message in the channel

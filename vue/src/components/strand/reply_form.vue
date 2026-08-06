@@ -36,6 +36,7 @@ export default {
             bodyFormat: Session.defaultFormat(),
             body,
             authorId: Session.user().id,
+            topicId: eventable.topic().id,
             parentId: eventable.id,
             parentType: startCase(eventable.constructor.singular)
           });

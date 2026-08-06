@@ -8,11 +8,11 @@ User-generated discussion and poll templates can now appear in template browsing
 
 This makes it easier to discover useful templates created inside your organization, not only built-in examples.
 
-## Forking templates
+## Making copies of templates
 
-Templates now have a fork action.
+Templates now have a **Make a copy** action.
 
-Forking lets you copy a template and use it as a starting point for your own group or process. This is useful when an example is close to what you need, but you want to adapt the wording, settings, or poll structure.
+Making a copy lets you use a template as a starting point for your own group or process. This is useful when an example is close to what you need, but you want to adapt the wording, settings, or poll structure.
 
 ## Template draft cleanup
 

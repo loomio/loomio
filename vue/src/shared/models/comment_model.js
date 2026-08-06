@@ -22,6 +22,7 @@ export default class CommentModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
+      topicId: null,
       body: '',
       bodyFormat: 'html',
       mentionedUsernames: []
@@ -32,11 +33,8 @@ export default class CommentModel extends BaseModel {
     this.belongsTo('author', {from: 'users'});
     this.belongsToPolymorphic('parent');
     this.belongsTo('poll');
+    this.belongsTo('topic');
     this.belongsTo('translation');
-  }
-
-  topic() {
-    return this.createdEvent().topic();
   }
 
   createdEvent() {

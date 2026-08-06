@@ -107,13 +107,16 @@ export default {
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 
-<style lang="sass">
-.poll-option-disabled
-  opacity: 0.4
+<style>
+.poll-option-disabled {
+  opacity: 0.4;
+}
 
-.poll-ranked-choice-vote-form__option
-  user-select: none
+.poll-ranked-choice-vote-form__option {
+  user-select: none;
+}
 
-.app-is-booted > .sortable-list-item
-  z-index: 10000
+.app-is-booted > .sortable-list-item {
+  z-index: 10000;
+}
 </style>

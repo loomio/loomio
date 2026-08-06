@@ -76,6 +76,7 @@ sv:
     trial_needs_user: Välkommen! Logga in för att starta din kostnadsfria provperiod
     this_is_a_template_for_new_threads: Detta är en mall för nya trådar
     share_a_custom_configuration: Dela en anpassad konfiguration med andra i din grupp
+    invalid_template_file: Detta är inte en giltig Loomio-mallfil
   doctypes:
     youtube_video: YouTubevideo
     image: Bild
@@ -331,6 +332,8 @@ sv:
       add: Tillägga
       redact: Redigera
       unredact: Återställa
+      export_json: Exportera json
+      import_json: Importera json
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -343,6 +346,7 @@ sv:
     read: Läsa
     unread: Oläst
     discussion: Diskussion
+    user_guide: Användarhandbok
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -551,6 +555,7 @@ sv:
     add_a_comment: Lägg till en kommentar
     share_your_thoughts: Dela dina tankar…
     share_on_poll: Ställ en fråga eller dela ny information
+    type_at_to_notify_people: Skriv {'@'} för att meddela andra
   thread_nav:
     participants: Deltagare
   sidebar:
@@ -1088,6 +1093,11 @@ sv:
     copy_for_ai_skill_description: Kopiera tråden som en strukturerad Markdown för en AI-assistent. Inkludera den fullständiga Loomio-faciliteringsfärdigheten för vägledning baserad på Loomios faciliteringsrutiner.
     share_ai_skill: Om du skriver en ny AI-färdighet eller förbättrar den medföljande färdigheten är du välkommen att dela den med Loomio-teamet
     share_ai_skill_contact: Kontakta Loomio-teamet
+    copy_markdown: Kopiera Markdown
+    copy_markdown_description: Kopiera tråden som strukturerad Markdown – perfekt för användning med en AI-agent eller för att skapa ett enkelt dokument från trådinnehållet.
+    thread_markdown_copied: Trådmarkdown kopierad
+    move_thread_v2: Flytta tråd
+    more: Mer
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -2003,6 +2013,7 @@ sv:
     export_blt: Exportvalsedlar (BLT)
     status: Status
     your_vote_is_requested: Din röst begärs
+    browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ sv:
     notification_only_label: Skicka endast meddelanderubrik
     check_for_test_message: Kolla ditt chattrum efter ett meddelande från boten!
     webex: Webex
+    chat_integrations: Chattintegrationer
+    no_chat_integrations_yet: Skicka aviseringar om Loomio-aktivitet till din grupps chattjänst
+    new_chat_integration: Ny chattintegration
+    delete_chat_integration: Ta bort chattintegrationen?
+    delete_chat_integration_helptext: Loomio kommer att sluta skicka aviseringar till %{name}
+    chat_integration_deleted: Chattintegrationen har raderats
   webhook:
     integrations: Integrationer
     api_keys: API-nycklar
@@ -2858,6 +2875,7 @@ sv:
     start_a_direct_discussion: Starta en direkt diskussion
     these_are_templates: Det här är diskussionsmallarna i er grupp.
     start_a_new_discussion: Starta en ny diskussion
+    browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny diskussionsmall med exemplet som utgångspunkt."
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
@@ -2881,6 +2899,11 @@ sv:
     confirm_change_to_private: "%{groupName} är en öppen grupp. Om du fortsätter kommer diskussionen att vara offentlig."
     messages:
       success: Diskussionen flyttad till %{name}
+    move_thread_title: Flytta tråd
+    destination: Destination
+    direct_thread: Direkt tråd
+    direct_thread_hint: Alla som har deltagit kommer att behålla åtkomst. Du och trådskaparen kommer att vara trådadministratörer.
+    direct_thread_anonymous_poll: Trådar som innehåller anonyma omröstningar kan inte konverteras till direkta trådar eftersom det kan avslöja vem som röstade.
   auth:
     oauth_cancelled: Inloggningen avbröts
     switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.
@@ -2967,3 +2990,7 @@ sv:
     title: Ange ett lösenord?
     helptext: Du kan använda ett lösenord för att logga in nästa gång, istället för att vänta på en e-postlänk.
     no_thanks: Nej tack
+  mention_notifications_count:
+    nobody_will_be_notified: Ingen kommer att bli underrättad
+    one_person_will_be_notified: 1 person kommer att meddelas
+    x_people_will_be_notified: "%{count} personer kommer att meddelas"

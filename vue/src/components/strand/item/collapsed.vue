@@ -28,20 +28,24 @@ onMounted(() => {
     user-avatar.strand-item__descendant-avatar(v-for="user in users" :key="user.id" :user="user" :size="24" no-link)
 </template>
 
-<style lang="sass">
-.strand-item__collapsed-headline
-  flex-shrink: 0
-  cursor: pointer
-  // when collapsed, clicking anything in the headline expands rather than
-  // navigating to the user's profile etc.
-  a
-    pointer-events: none
-.strand-item__descendant-avatars
-  display: flex
-  flex: 1
-  min-width: 0
-  overflow: hidden
-  margin-left: 8px
-.strand-item__descendant-avatar:not(:first-child)
-  margin-left: -8px
+<style>
+.strand-item__collapsed-headline {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.strand-item__collapsed-headline a {
+  pointer-events: none;
+}
+
+.strand-item__descendant-avatars {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  margin-left: 8px;
+}
+
+.strand-item__descendant-avatar:not(:first-child) {
+  margin-left: -8px;
+}
 </style>

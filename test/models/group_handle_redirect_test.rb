@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class GroupHandleRedirectTest < ActiveSupport::TestCase
+  inline_jobs "updating parent handle updates direct subgroup handles",
+              "updating parent handle updates nested subgroup handles recursively",
+              "updating parent handle creates redirects for all old subgroup handles"
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "ghruser#{hex}", email: "ghruser#{hex}@example.com", username: "ghruser#{hex}", email_verified: true)

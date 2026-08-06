@@ -149,6 +149,7 @@ fi:
     '404':
       body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos keskustelu tai kysely on poistettu.
     new_account_trial_group_limit: Uusia tilejä voi luoda vain yhteen ryhmään. Jos tarvitset lisää tilejä, ota yhteyttä tukeen.
+    direct_thread_anonymous_poll: Anonyymin kyselyn sisältävää ketjua ei voida muuntaa suoraksi ketjuksi.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-

@@ -76,6 +76,7 @@ ca:
     trial_needs_user: Benvingut! Inicieu la sessió per iniciar la vostra prova gratuïta
     this_is_a_template_for_new_threads: Aquesta és una plantilla per a nous fils
     share_a_custom_configuration: Comparteix una configuració personalitzada amb altres persones del teu grup
+    invalid_template_file: Aquest no és un fitxer de plantilla de Loomio vàlid
   doctypes:
     youtube_video: Vídeo de YouTube
     image: Imatge
@@ -331,6 +332,8 @@ ca:
       add: Afegeix
       redact: Redactar
       unredact: Restaurar
+      export_json: Exporta JSON
+      import_json: Importa json
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -343,6 +346,7 @@ ca:
     read: Llegir
     unread: No llegit
     discussion: Discussió
+    user_guide: Guia de l'usuari
   merge_accounts:
     modal:
       title: Combina comptes
@@ -553,6 +557,7 @@ ca:
     add_a_comment: Afegeix un comentari
     share_your_thoughts: Comparteix els teus pensaments…
     share_on_poll: Fes una pregunta o comparteix informació nova
+    type_at_to_notify_people: Escriu {'@'} per notificar a la gent
   thread_nav:
     participants: Participants
   sidebar:
@@ -1094,6 +1099,11 @@ ca:
     copy_for_ai_skill_description: Copia el fil com a Markdown estructurat per a un assistent d'IA. Inclou l'habilitat completa del facilitador de Loomio per obtenir orientació basada en les pràctiques de facilitació de Loomio.
     share_ai_skill: Si escriviu una nova habilitat d'IA o milloreu l'habilitat proporcionada, podeu compartir-la amb l'equip de Loomio
     share_ai_skill_contact: Contacta amb l'equip de Loomio
+    copy_markdown: Copiar Markdown
+    copy_markdown_description: Copieu el fil com a Markdown estructurat, ideal per utilitzar-lo amb un agent d'IA o per crear un document senzill a partir del contingut del fil.
+    thread_markdown_copied: S'ha copiat el Markdown del fil
+    move_thread_v2: Mou el fil
+    more: Més
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -2026,6 +2036,7 @@ ca:
     export_blt: Exportació de paperetes (BLT)
     status: Estat
     your_vote_is_requested: Es demana el vostre vot
+    browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2512,6 +2523,12 @@ ca:
     notification_only_label: Envia només el títol de la notificació
     check_for_test_message: Comproveu la vostra sala de xat si hi ha un missatge del bot!
     webex: Webex
+    chat_integrations: Integracions de xat
+    no_chat_integrations_yet: Envia notificacions sobre l'activitat de Loomio al servei de xat del teu grup
+    new_chat_integration: Nova integració de xat
+    delete_chat_integration: Voleu suprimir la integració del xat?
+    delete_chat_integration_helptext: Loomio deixarà d'enviar notificacions a %{name}
+    chat_integration_deleted: Integració de xat suprimida
   webhook:
     integrations: Integracions
     api_keys: Claus API
@@ -2885,6 +2902,7 @@ ca:
     start_a_direct_discussion: Inicia una discussió directa
     these_are_templates: Aquestes són les plantilles de discussió del vostre grup.
     start_a_new_discussion: Inicia una nova discussió
+    browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla de discussió, utilitzant l'exemple com a punt de partida."
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
@@ -2908,6 +2926,11 @@ ca:
     confirm_change_to_private: "%{groupName} és un grup obert. Si continueu, aquesta discussió serà pública."
     messages:
       success: La discussió s'ha mogut a %{name}
+    move_thread_title: Mou el fil
+    destination: Destinació
+    direct_thread: Fil directe
+    direct_thread_hint: Tothom qui ha participat conservarà l'accés. Tu i el creador del fil sereu administradors del fil.
+    direct_thread_anonymous_poll: Els fils que contenen enquestes anònimes no es poden convertir en fils directes perquè això podria revelar qui ha votat.
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.
@@ -2994,3 +3017,7 @@ ca:
     title: Voleu establir una contrasenya?
     helptext: Pots utilitzar una contrasenya per iniciar la sessió la propera vegada, en comptes d'esperar un enllaç per correu electrònic.
     no_thanks: No, gràcies
+  mention_notifications_count:
+    nobody_will_be_notified: Ningú serà notificat
+    one_person_will_be_notified: S'avisarà a 1 persona
+    x_people_will_be_notified: "%{count} persones seran notificades"

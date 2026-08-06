@@ -225,7 +225,9 @@ const titlePath = computed(() => {
   return (props.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
 });
 
-const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
+const titleVisible = (visible) => {
+  if (props.redirectOnSave) { EventBus.$emit('content-title-visible', visible); }
+};
 
 const titleArgs = computed(() => {
   return {pollType: props.poll.translatedPollType().toLowerCase()};
@@ -246,8 +248,10 @@ const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 
 // Lifecycle
 onMounted(() => {
-  EventBus.$emit('content-title-visible', false);
-  EventBus.$emit('currentComponent', { title: I18n.global.t(titlePath.value, titleArgs.value), page: 'pollFormPage' });
+  if (props.redirectOnSave) {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', { title: I18n.global.t(titlePath.value, titleArgs.value), page: 'pollFormPage' });
+  }
   loadGroups();
 
   Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
@@ -292,7 +296,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :label="$t('common.group')"
   )
 
-  v-text-field.poll-common-form-fields__title(
+  v-text-field.poll-common-form-fields__title.mb-2(
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
@@ -332,7 +336,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         v-list-item.mb-2(lines="two" rounded variant="tonal" style="user-select: none")
           template(v-slot:prepend v-if="hasOptionIcon" v-handle)
             v-avatar(size="48")
-              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+              img(:src="'/img/' + option.icon + '.svg?v=20260721'" aria-hidden="true")
 
           v-list-item-title(v-handle)
             span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
@@ -662,7 +666,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
     v-btn.poll-common-form__submit(
       color="primary"
-      @click='submit'
+      type="submit"
       :loading="loading"
       :disabled="hasOptions && pollOptions.length < minOptions"
       variant="elevated"

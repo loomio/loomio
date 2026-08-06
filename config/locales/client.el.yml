@@ -76,6 +76,7 @@ el:
     trial_needs_user: Καλως ΗΡΘΑΤΕ! Συνδεθείτε για να ξεκινήσετε τη δωρεάν δοκιμή σας
     this_is_a_template_for_new_threads: Αυτό είναι ένα πρότυπο για νέα νήματα
     share_a_custom_configuration: Μοιραστείτε μια προσαρμοσμένη διαμόρφωση με άλλους στην ομάδα σας
+    invalid_template_file: Αυτό δεν είναι ένα έγκυρο αρχείο προτύπου Loomio
   doctypes:
     youtube_video: Βίντεο YouTube
     image: Εικόνα
@@ -331,6 +332,8 @@ el:
       add: Προσθέτω
       redact: Συντάσσω
       unredact: Επαναφέρω
+      export_json: Εξαγωγή json
+      import_json: Εισαγωγή json
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
@@ -343,6 +346,7 @@ el:
     read: Ανάγνωση
     unread: Αδιάβαστος
     discussion: Συζήτηση
+    user_guide: Οδηγός χρήστη
   merge_accounts:
     modal:
       title: Συγχώνευση λογαριασμών
@@ -551,6 +555,7 @@ el:
     add_a_comment: Προσθήκη σχολίου
     share_your_thoughts: Μοιραστείτε τις σκέψεις σας…
     share_on_poll: Κάντε μια ερώτηση ή μοιραστείτε νέες πληροφορίες
+    type_at_to_notify_people: Πληκτρολογήστε {'@'} για να ειδοποιήσετε τους χρήστες
   thread_nav:
     participants: Συμμετέχοντες
   sidebar:
@@ -1088,6 +1093,11 @@ el:
     copy_for_ai_skill_description: Αντιγράψτε το νήμα ως δομημένο Markdown για έναν βοηθό τεχνητής νοημοσύνης. Συμπεριλάβετε την πλήρη δεξιότητα συντονιστή Loomio για καθοδήγηση με βάση τις πρακτικές συντονισμού του Loomio.
     share_ai_skill: Αν γράψετε μια νέα δεξιότητα Τεχνητής Νοημοσύνης ή βελτιώσετε την παρεχόμενη δεξιότητα, μπορείτε να την μοιραστείτε με την ομάδα του Loomio
     share_ai_skill_contact: Επικοινωνήστε με την ομάδα του Loomio
+    copy_markdown: Αντιγραφή Markdown
+    copy_markdown_description: Αντιγράψτε το νήμα ως δομημένο Markdown — ιδανικό για χρήση με έναν πράκτορα AI ή για τη δημιουργία ενός απλού εγγράφου από το περιεχόμενο του νήματος.
+    thread_markdown_copied: Το Markdown του νήματος αντιγράφηκε
+    move_thread_v2: Μετακίνηση νήματος
+    more: Περισσότερο
   formatting:
     formatting_tools: Εργαλεία μορφοποίησης κειμένου
     colors: Χρωματιστά
@@ -2003,6 +2013,7 @@ el:
     export_blt: Εξαγωγή ψηφοδελτίων (BLT)
     status: Κατάσταση
     your_vote_is_requested: Η ψήφος σας ζητείται
+    browse_example_make_a_copy_hint: "<b>Κάντε κλικ στο εικονίδιο αντιγραφής</b> για να δημιουργήσετε ένα νέο πρότυπο δημοσκόπησης, χρησιμοποιώντας το παράδειγμα ως σημείο εκκίνησης."
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ el:
     notification_only_label: Αποστολή μόνο επικεφαλίδας ειδοποίησης
     check_for_test_message: Ελέγξτε το chatroom σας για μήνυμα από το bot!
     webex: Webex
+    chat_integrations: Ενσωματώσεις συνομιλίας
+    no_chat_integrations_yet: Αποστολή ειδοποιήσεων σχετικά με τη δραστηριότητα του Loomio στην υπηρεσία συνομιλίας της ομάδας σας
+    new_chat_integration: Νέα ενσωμάτωση συνομιλίας
+    delete_chat_integration: Διαγραφή ενσωμάτωσης συνομιλίας;
+    delete_chat_integration_helptext: Το Loomio θα σταματήσει να στέλνει ειδοποιήσεις στον/στην %{name}
+    chat_integration_deleted: Η ενσωμάτωση συνομιλίας διαγράφηκε.
   webhook:
     integrations: Ενσωματώσεις
     api_keys: Κλειδιά API
@@ -2858,6 +2875,7 @@ el:
     start_a_direct_discussion: Ξεκινήστε μια άμεση συζήτηση
     these_are_templates: Αυτά είναι τα πρότυπα συζήτησης στην ομάδα σας.
     start_a_new_discussion: Έναρξη νέας συζήτησης
+    browse_example_make_a_copy_hint: "<b>Κάντε κλικ στο εικονίδιο αντιγραφής</b> για να δημιουργήσετε ένα νέο πρότυπο συζήτησης, χρησιμοποιώντας το παράδειγμα ως σημείο εκκίνησης."
   context_panel:
     thread_status:
       pinned: Αυτή η συζήτηση έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας συζητήσεων της ομάδας για όλους τους χρήστες.
@@ -2881,6 +2899,11 @@ el:
     confirm_change_to_private: Η %{groupName} είναι μια ανοιχτή ομάδα. Αν συνεχίσετε, αυτή η συζήτηση θα είναι δημόσια.
     messages:
       success: Η συζήτηση μεταφέρθηκε στο %{name}
+    move_thread_title: Μετακίνηση νήματος
+    destination: Προορισμός
+    direct_thread: Άμεσο νήμα
+    direct_thread_hint: Όλοι όσοι έχουν συμμετάσχει θα διατηρήσουν την πρόσβαση. Εσείς και ο δημιουργός του νήματος θα είστε οι διαχειριστές του νήματος.
+    direct_thread_anonymous_poll: Τα νήματα που περιέχουν ανώνυμες δημοσκοπήσεις δεν μπορούν να μετατραπούν σε άμεσα νήματα, επειδή αυτό θα μπορούσε να αποκαλύψει ποιος ψήφισε
   auth:
     oauth_cancelled: Η σύνδεση ακυρώθηκε
     switching_accounts: Αλλαγή λογαριασμών. Συνδεθείτε με τα στοιχεία του νέου σας λογαριασμού.
@@ -2967,3 +2990,7 @@ el:
     title: Ορισμός κωδικού πρόσβασης;
     helptext: Μπορείτε να χρησιμοποιήσετε έναν κωδικό πρόσβασης για να συνδεθείτε την επόμενη φορά, αντί να περιμένετε έναν σύνδεσμο μέσω email.
     no_thanks: Όχι ευχαριστώ
+  mention_notifications_count:
+    nobody_will_be_notified: Κανείς δεν θα ειδοποιηθεί
+    one_person_will_be_notified: 1 άτομο θα ειδοποιηθεί
+    x_people_will_be_notified: "%{count} άτομα θα ειδοποιηθούν"

@@ -76,6 +76,7 @@ es:
     trial_needs_user: Para iniciar tu prueba gratuita de Loomio, inicia sesión.
     this_is_a_template_for_new_threads: Esta es una plantilla para nuevos hilos
     share_a_custom_configuration: Compartir una configuración personalizada con otros miembros de tu grupo
+    invalid_template_file: Este no es un archivo de plantilla de Loomio válido
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -331,6 +332,8 @@ es:
       add: Agregar
       redact: Redactar
       unredact: Restaurar
+      export_json: Exportar json
+      import_json: Importar json
     formatting_help:
       label: 'Formato '
       title: Aprende a usar Markdown para dar formato a tu texto
@@ -343,6 +346,7 @@ es:
     read: Leer
     unread: No leído
     discussion: Discusión
+    user_guide: Guía del usuario
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -553,6 +557,7 @@ es:
     add_a_comment: Añadir un comentario
     share_your_thoughts: Comparte tus pensamientos…
     share_on_poll: Haz una pregunta o comparte nueva información
+    type_at_to_notify_people: Escribe {'@'} para notificar a las personas
   thread_nav:
     participants: Participantes
   sidebar:
@@ -1092,6 +1097,11 @@ es:
     copy_for_ai_skill_description: Copia el hilo como Markdown estructurado para un asistente de IA. Incluye la habilidad completa de facilitador de Loomio para obtener orientación basada en las prácticas de facilitación de Loomio.
     share_ai_skill: Si desarrollas una nueva habilidad de IA o mejoras la habilidad ya existente, puedes compartirla con el equipo de Loomio
     share_ai_skill_contact: Contacta con el equipo de Loomio
+    copy_markdown: Copiar Markdown
+    copy_markdown_description: Copia el hilo de conversación como Markdown estructurado, ideal para usar con un agente de IA o para crear un documento sencillo a partir del contenido del hilo.
+    thread_markdown_copied: Hilo Markdown copiado
+    move_thread_v2: Mover hilo
+    more: Más
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -2037,6 +2047,7 @@ es:
     export_blt: Papeletas de exportación (BLT)
     status: Estado
     your_vote_is_requested: Se solicita tu voto.
+    browse_example_make_a_copy_hint: "<b>Haz clic en el icono de copiar</b> para crear una nueva plantilla de encuesta, utilizando el ejemplo como punto de partida."
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2521,6 +2532,12 @@ es:
     notification_only_label: Enviar solo título de notificación
     check_for_test_message: "¡Revisa tu sala de chat para ver si hay un mensaje del bot!"
     webex: Webex
+    chat_integrations: Integraciones de chat
+    no_chat_integrations_yet: Envía notificaciones sobre la actividad de Loomio al servicio de chat de tu grupo
+    new_chat_integration: Nueva integración de chat
+    delete_chat_integration: "¿Eliminar la integración del chat?"
+    delete_chat_integration_helptext: Loomio dejará de enviar notificaciones a %{name}
+    chat_integration_deleted: Integración de chat eliminada
   webhook:
     integrations: Incorporaciones
     api_keys: Claves de API
@@ -2894,6 +2911,7 @@ es:
     start_a_direct_discussion: Iniciar una discusión directa
     these_are_templates: Éstas son las plantillas de discusión en tu grupo.
     start_a_new_discussion: Iniciar una nueva discusión
+    browse_example_make_a_copy_hint: "<b>Haz clic en el icono de copiar</b> para crear una nueva plantilla de debate, utilizando el ejemplo como punto de partida."
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.
@@ -2917,6 +2935,11 @@ es:
     confirm_change_to_private: "%{groupName} es un grupo abierto. Si continúas, esta discusión será pública."
     messages:
       success: La discusión se trasladó a %{name}
+    move_thread_title: Mover hilo
+    destination: Destino
+    direct_thread: Hilo directo
+    direct_thread_hint: Todos los participantes conservarán el acceso. Tú y la persona que creó el hilo serán sus administradores.
+    direct_thread_anonymous_poll: Los hilos que contienen encuestas anónimas no se pueden convertir en hilos directos porque esto podría revelar quién votó.
   auth:
     oauth_cancelled: Se canceló el inicio de sesión
     switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.
@@ -3003,3 +3026,7 @@ es:
     title: "¿Establecer una contraseña?"
     helptext: La próxima vez, puedes usar una contraseña para iniciar sesión, en lugar de esperar a recibir un enlace por correo electrónico.
     no_thanks: No, gracias
+  mention_notifications_count:
+    nobody_will_be_notified: Nadie será notificado
+    one_person_will_be_notified: Se notificará a 1 persona
+    x_people_will_be_notified: Se notificará a %{count} personas

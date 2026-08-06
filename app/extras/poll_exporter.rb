@@ -1,3 +1,5 @@
+require 'csv'
+
 class PollExporter
   include Routing
 

@@ -23,14 +23,18 @@ const listen = async (handler) => {
   return `http://127.0.0.1:${server.address().port}/rails/action_mailbox/relay/inbound_emails`;
 };
 
-const connectionFor = (message, addedHeaders = {}) => ({
+const connectionFor = (message, addedHeaders = {}, headerActions = []) => ({
   transaction: {
     message_stream: Readable.from([message]),
-    mail_from: { address: () => 'sender@example.com' },
-    rcpt_to: [{ address: () => 'group@loomio.example' }],
+    mail_from: { address: 'sender@example.com' },
+    rcpt_to: [{ address: 'group@loomio.example' }],
     uuid: 'message-uuid',
     add_header: (name, value) => {
       addedHeaders[name] = value;
+      headerActions.push(['add', name]);
+    },
+    remove_header: (name) => {
+      headerActions.push(['remove', name]);
     },
   },
   remote: {
@@ -63,6 +67,7 @@ test('forwards the raw message to Action Mailbox with authentication and trace m
     'Hello from SMTP',
   ].join('\r\n');
   const addedHeaders = {};
+  const headerActions = [];
 
   process.env.RAILS_INBOUND_EMAIL_PASSWORD = password;
   process.env.RAILS_INBOUND_EMAIL_URL = await listen((request, response) => {
@@ -78,10 +83,14 @@ test('forwards the raw message to Action Mailbox with authentication and trace m
     });
   });
 
-  const result = await deliver(connectionFor(message, addedHeaders));
+  const result = await deliver(connectionFor(message, addedHeaders, headerActions));
 
   assert.equal(result.status, OK);
   assert.match(result.reason, /delivered \(204\)/);
+  assert.deepEqual(headerActions, [
+    ['remove', 'harakadata'],
+    ['add', 'harakadata'],
+  ]);
   assert.deepEqual(JSON.parse(addedHeaders.harakadata), {
     mail_from: 'sender@example.com',
     rcpt_to: ['group@loomio.example'],
@@ -103,4 +112,25 @@ test('soft-denies delivery when Action Mailbox returns an error', async () => {
 
   assert.equal(result.status, DENYSOFT);
   assert.equal(result.reason, 'Rails returned 503');
+});
+
+test('does not send to Action Mailbox when trace metadata cannot be added', async () => {
+  let requestCount = 0;
+  process.env.RAILS_INBOUND_EMAIL_PASSWORD = 'inbound-secret';
+  process.env.RAILS_INBOUND_EMAIL_URL = await listen((_request, response) => {
+    requestCount += 1;
+    response.writeHead(204);
+    response.end();
+  });
+
+  const connection = connectionFor('Subject: Test\r\n\r\nMessage');
+  connection.transaction.add_header = () => {
+    throw new Error('cannot add header');
+  };
+
+  const result = await deliver(connection);
+
+  assert.equal(result.status, DENYSOFT);
+  assert.equal(result.reason, 'Adding custom headers failed: cannot add header');
+  assert.equal(requestCount, 0);
 });

@@ -44,9 +44,6 @@ module Loomio
 
     config.action_controller.action_on_unpermitted_parameters = :raise
 
-    # Enable the asset pipeline
-    config.assets.enabled = true
-
     config.active_storage.variant_processor = :vips
 
     if ENV['AWS_BUCKET']
@@ -130,9 +127,5 @@ module Loomio
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.add_autoload_paths_to_load_path = false
     config.autoload_lib(ignore: %w[assets tasks])
-
-    config.sass.quiet_deps = true
-    config.sass.silence_deprecations = ['import']
-
   end
 end

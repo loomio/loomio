@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import Flash  from '@/shared/services/flash';
+import ChatbotService from '@/shared/services/chatbot_service';
 
 export default {
   props: {
@@ -29,13 +30,7 @@ export default {
     },
 
     destroy() {
-      this.chatbot.destroy().then(() => {
-        Flash.success('poll_common_delete_modal.success');
-        EventBus.$emit('closeModal');
-      }).catch(b => {
-        Flash.error('common.something_went_wrong');
-        console.log(this.chatbot.errors);
-      });
+      ChatbotService.confirmDestroy(this.chatbot);
     },
 
     testConnection() {

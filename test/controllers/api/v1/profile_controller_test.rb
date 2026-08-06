@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Api::V1::ProfileControllerTest < ActionController::TestCase
+  inline_jobs "destroy deactivates the users account"
   setup do
     @user = users(:user)
     @alien = users(:alien)

@@ -26,11 +26,13 @@ export default {
 abbr.time-ago(v-if='parsedDate' :title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
 </template>
 
-<style lang="sass">
-.time-ago
-  white-space: nowrap
-abbr[title]
-  text-decoration: none
-  border-bottom: none
+<style>
+.time-ago {
+  white-space: nowrap;
+}
 
+abbr[title] {
+  text-decoration: none;
+  border-bottom: none;
+}
 </style>

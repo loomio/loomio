@@ -76,6 +76,7 @@ nl_NL:
     trial_needs_user: Meld u aan om uw gratis Loomio-proefperiode te starten.
     this_is_a_template_for_new_threads: Dit is een sjabloon voor nieuwe threads
     share_a_custom_configuration: Deel een aangepaste configuratie met anderen in uw groep
+    invalid_template_file: Dit is geen geldig Loomio-sjabloonbestand
   doctypes:
     youtube_video: YouTube Video
     image: Afbeelding
@@ -331,6 +332,8 @@ nl_NL:
       add: Toevoegen
       redact: Redactie
       unredact: Herstellen
+      export_json: Exporteer JSON
+      import_json: Importeer json
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -343,6 +346,7 @@ nl_NL:
     read: Lezen
     unread: Ongelezen
     discussion: Discussie
+    user_guide: Gebruikershandleiding
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -553,6 +557,7 @@ nl_NL:
     add_a_comment: Voeg een opmerking toe
     share_your_thoughts: Deel uw gedachten…
     share_on_poll: Stel een vraag of deel nieuwe informatie.
+    type_at_to_notify_people: Typ {'@'} om mensen op de hoogte te stellen
   thread_nav:
     participants: Deelnemers
   sidebar:
@@ -1094,6 +1099,11 @@ nl_NL:
     copy_for_ai_skill_description: Kopieer de thread als gestructureerde Markdown voor een AI-assistent. Voeg de volledige Loomio-facilitatievaardigheid toe voor begeleiding op basis van de facilitatiepraktijken van Loomio.
     share_ai_skill: Als je een nieuwe AI-vaardigheid ontwikkelt of een bestaande vaardigheid verbetert, deel deze dan gerust met het Loomio-team
     share_ai_skill_contact: Neem contact op met het Loomio-team
+    copy_markdown: Markdown kopiëren
+    copy_markdown_description: Kopieer de conversatie als gestructureerde Markdown — ideaal voor gebruik met een AI-agent of voor het maken van een eenvoudig document op basis van de conversatie-inhoud.
+    thread_markdown_copied: Markdown-tekst van de thread gekopieerd
+    move_thread_v2: Verplaats discussie
+    more: Meer
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -2026,6 +2036,7 @@ nl_NL:
     export_blt: Export stembiljetten (BLT)
     status: Status
     your_vote_is_requested: Uw stem wordt gevraagd.
+    browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2512,6 +2523,12 @@ nl_NL:
     notification_only_label: Alleen meldingskop verzenden
     check_for_test_message: Controleer je chatroom voor een bericht van de bot!
     webex: Webex
+    chat_integrations: Chatintegraties
+    no_chat_integrations_yet: Verstuur meldingen over Loomio-activiteit naar de chatfunctie van je groep
+    new_chat_integration: Nieuwe chatintegratie
+    delete_chat_integration: Chatintegratie verwijderen?
+    delete_chat_integration_helptext: Loomio stopt met het verzenden van notificaties naar %{name}
+    chat_integration_deleted: Chatintegratie verwijderd
   webhook:
     integrations: Integraties
     api_keys: API-sleutels
@@ -2885,6 +2902,7 @@ nl_NL:
     start_a_direct_discussion: Start een direct gesprek
     these_are_templates: Dit zijn de discussiesjablonen in jullie groep.
     start_a_new_discussion: Start een nieuwe discussie
+    browse_example_make_a_copy_hint: "<b>Klik op het kopieerpictogram</b> om een nieuw discussiesjabloon te maken, waarbij je het voorbeeld als uitgangspunt gebruikt"
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
@@ -2908,6 +2926,11 @@ nl_NL:
     confirm_change_to_private: "%{groupName} is een open groep. Als u doorgaat, wordt deze discussie openbaar."
     messages:
       success: Discussie verplaatst naar %{name}
+    move_thread_title: Verplaats discussie
+    destination: Bestemming
+    direct_thread: Directe discussie
+    direct_thread_hint: Iedereen die heeft deelgenomen, behoudt toegang. Jij en de maker van het topic worden de topicbeheerders.
+    direct_thread_anonymous_poll: Discussies met anonieme peilingen kunnen niet worden omgezet naar directe discussies, omdat dit zou kunnen onthullen wie er heeft gestemd.
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.
@@ -2994,3 +3017,7 @@ nl_NL:
     title: Een wachtwoord instellen?
     helptext: Je kunt de volgende keer inloggen met een wachtwoord in plaats van te wachten op een link in je e-mail.
     no_thanks: Nee, bedankt
+  mention_notifications_count:
+    nobody_will_be_notified: Niemand zal op de hoogte worden gesteld
+    one_person_will_be_notified: 1 persoon wordt op de hoogte gesteld
+    x_people_will_be_notified: "%{count} personen zullen op de hoogte worden gesteld"

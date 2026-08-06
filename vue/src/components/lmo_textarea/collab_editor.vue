@@ -20,7 +20,7 @@ import Paragraph from '@tiptap/extension-paragraph';
 import Strike from '@tiptap/extension-strike';
 import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
 import { BulletList, OrderedList, ListItem, ListKeymap } from '@tiptap/extension-list'
-import { Focus, Placeholder, UndoRedo, Dropcursor, CharacterCount } from '@tiptap/extensions'
+import { Focus, Placeholder, UndoRedo, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions'
 import {CustomTaskItem} from './extension_custom_task_item';
 import {CustomTaskList} from './extension_custom_task_list';
 import { TextStyle } from '@tiptap/extension-text-style';
@@ -37,6 +37,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3';
 import { getEmbedLink } from '@/shared/helpers/embed_link';
 
 import SuggestionList from './suggestion_list';
+import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
@@ -80,6 +81,7 @@ const socket = ref(null);
 const count = ref(0);
 const editor = ref(null);
 const editorContentRef = ref(null);
+const focused = ref(false);
 const expanded = ref(false);
 const linkUrl = ref("");
 const iframeUrl = ref("");
@@ -88,6 +90,8 @@ const iframeDialogIsOpen = ref(false);
 const fetchedUrls = ref([]);
 const filesField = ref(null);
 const imagesField = ref(null);
+const mentionHandles = ref([]);
+const editorEmpty = ref(true);
 let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
@@ -296,6 +300,19 @@ const updateModel = () => {
   updateFiles();
 };
 
+const updateMentionState = () => {
+  const handles = [];
+  const visit = node => {
+    if (node.type === 'mention' && node.attrs.id) {
+      handles.push(String(node.attrs.id).toLowerCase());
+    }
+    Array.from(node.content || []).forEach(visit);
+  };
+  visit(editor.value.getJSON());
+  mentionHandles.value = Array.from(new Set(handles));
+  editorEmpty.value = editor.value.isEmpty;
+};
+
 const removeLinkPreview = (url) => {
   props.model.linkPreviews = reject(props.model.linkPreviews, p => p.url === url);
 };
@@ -434,6 +451,7 @@ onMounted(() => {
       Audio,
       Document,
       Dropcursor,
+      Gapcursor,
       HardBreak,
       Heading,
       Highlight.configure({ multicolor: true }),
@@ -458,8 +476,16 @@ onMounted(() => {
     ],
     onUpdate: () => {
       if (props.maxLength) { checkLength(); }
+      updateMentionState();
+    },
+    onFocus: () => {
+      focused.value = true;
+    },
+    onBlur: () => {
+      focused.value = false;
     },
     onCreate: () => {
+      updateMentionState();
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
       }
@@ -508,16 +534,23 @@ defineExpose({
 
 <template lang="pug">
 div.mb-2
-  .v-input.v-input--density-default.editor(v-if="editor")
-    .v-input-control
-      .v-field.v-field--active.v-field--variant-filled
-        .v-field__overlay
-
-        .v-field__field(style="display: block")
-          label.v-label.v-field-label.v-field-label--floating(v-if="label" aria-hidden="true")
-            span {{label}}
-          editor-content.html-editor__textarea.mx-4(v-if="editor" :class="{'mt-6': label, 'mt-2': !label}" ref="editorContentRef" :editor='editor').lmo-markdown-wrapper
-        .v-field__outline
+  .v-input--density-default.editor(v-if="editor")
+    .v-input__control
+      v-field(
+        active
+        :dirty="charCount() > 0"
+        :focused="focused"
+        :label="label"
+        variant="outlined"
+        @click="editor.commands.focus()"
+      )
+        template(v-slot:default="{ props: fieldProps }")
+          editor-content.html-editor__textarea.lmo-markdown-wrapper(
+            v-bind="fieldProps"
+            ref="editorContentRef"
+            :editor="editor"
+          )
+          mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
         v-btn(v-bind="btnProps" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
@@ -669,208 +702,230 @@ div.mb-2
   form(style="display: block", @change="imageSelected")
     input.d-none(ref="imagesField", type="file", name="files", multiple=true)
 </template>
-<style lang="sass">
+<style>
+@charset "UTF-8";
+.collaboration-cursor__avatar-div {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
 
-.collaboration-cursor__avatar-div
-  width: 18px
-  height: 18px
-  margin-right: 4px
+img.collaboration-cursor__avatar {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
 
-img.collaboration-cursor__avatar
-  height: 100%
-  width: 100%
-  object-fit: cover
-  border-radius: 100%
+.collaboration-cursor__caret {
+  border-left: 1px solid #333;
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative !important;
+  word-break: normal;
+  z-index: 100;
+}
 
-.collaboration-cursor__caret
-  border-left: 1px solid #333
-  margin-left: -1px
-  margin-right: -1px
-  pointer-events: none
-  position: relative !important
-  word-break: normal
-  z-index: 100
+.v-theme--dark .collaboration-cursor__caret {
+  border-left: 1px solid #ddd;
+}
+.v-theme--dark .collaboration-cursor__label {
+  color: #fff;
+  background-color: rgba(51, 51, 51, 0.5333333333);
+  border-color: #eee;
+}
 
-.v-theme--dark, .v-theme--darkBlue
-  .collaboration-cursor__caret
-    border-left: 1px solid #ddd
+.collaboration-cursor__label {
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  border: 0px solid #333;
+  background-color: rgba(221, 221, 221, 0.5333333333);
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  left: -1px;
+  line-height: normal;
+  padding: 2px 6px;
+  position: absolute;
+  top: -1.4em;
+  user-select: none;
+  white-space: nowrap;
+}
 
-  .collaboration-cursor__label
-    color: #fff
-    background-color: #3338
-    border-color: #eee
+.collaboration-cursor__label-with-avatar {
+  padding: 0 4px 0 0 !important;
+}
 
-.collaboration-cursor__label
-  opacity: 0.75
-  display: flex
-  align-items: center
-  border-radius: 16px
-  border: 0px solid #333
-  background-color: #ddd8
-  color: #000
-  font-size: 12px
-  font-style: normal
-  font-weight: 400
-  left: -1px
-  line-height: normal
-  padding: 2px 6px
-  position: absolute
-  top: -1.4em
-  user-select: none
-  white-space: nowrap
-
-.collaboration-cursor__label-with-avatar
-  padding: 0 4px 0 0 !important
-
-.ProseMirror-widget
-  position: absolute
-  width: 0.1px
+.ProseMirror-widget {
+  position: absolute;
+  width: 0.1px;
   /*border-style: solid;*/
+}
 
-.bv-row
-  padding-top: 20px
+.bv-row {
+  padding-top: 20px;
+}
 
-.ProseMirror [contenteditable="false"]
-  white-space: normal
+.ProseMirror [contenteditable=false] {
+  white-space: normal;
+}
 
-.ProseMirror [contenteditable="true"]
-  white-space: pre-wrap
-
-// .ProseMirror
-//   > * + *
-//     margin-top: 0.75em
+.ProseMirror [contenteditable=true] {
+  white-space: pre-wrap;
+}
 
 /* Placeholder (at the top) */
-.ProseMirror p.is-editor-empty:first-child::before
-  content: attr(data-placeholder)
-  float: left
-  color: rgba(0,0,0,0.25)
-  pointer-events: none
-  height: 0
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  height: 0;
+}
 
-.v-theme--dark, .v-theme--darkBlue
-  .ProseMirror p.is-editor-empty:first-child::before
-    color: rgba(255,255,255,0.333)
+.v-theme--dark .ProseMirror p.is-editor-empty:first-child::before {
+  color: rgba(255, 255, 255, 0.333);
+}
 
-.ProseMirror
-  outline: none
-  min-height: 64px
+.ProseMirror {
+  outline: none;
+  min-height: 64px;
+}
 
-progress
+progress {
   background-color: rgb(var(--v-theme-background)) !important;
   border: 1px solid rgba(var(--v-border-color), var(--v-disabled-opacity)) !important;
-  width: 100%!important
+  width: 100% !important;
   height: 16px;
+}
 
-progress::-moz-progress-bar
-  border: 0
+progress::-moz-progress-bar {
+  border: 0;
   background-color: rgb(var(--v-theme-primary)) !important;
+}
 
-progress::-webkit-progress-bar
+progress::-webkit-progress-bar {
   background-color: rgb(var(--v-theme-background)) !important;
+}
 
-progress::-webkit-progress-value
+progress::-webkit-progress-value {
   background-color: rgb(var(--v-theme-primary)) !important;
+}
 
-.menubar
-  position: sticky
-  bottom: 0
+.menubar {
+  position: sticky;
+  bottom: 0;
+}
 
-//  .v-btn.v-btn--icon
-//    min-width: 0
-//    margin-left: 0
-//    margin-right: 0
-//    max-width: 32px
-//    .v-icon
-//      font-size: 16px
+.html-editor__textarea .ProseMirror {
+  cursor: text;
+  width: 100%;
+  padding: 2px 0 4px;
+  margin: 0;
+  outline: none;
+  overflow-y: scroll;
+  overflow: visible;
+}
 
-.html-editor__textarea .ProseMirror
-  cursor: text
-  padding: 4px 0px
-  margin: 4px 0px
-  outline: none
-  overflow-y: scroll
-  overflow: visible
+.html-editor__textarea.v-field__input {
+  opacity: 1;
+}
 
-ul[data-type="todo_list"]
-  padding-left: 0
+ul[data-type=todo_list] {
+  padding-left: 0;
+}
 
-li[data-type="todo_item"]
-  display: flex
-  flex-direction: row
+li[data-type=todo_item] {
+  display: flex;
+  flex-direction: row;
+}
 
-.todo-checkbox
-  border: 1px solid #999
-  height: 1.3em
-  width: 1.3em
-  box-sizing: border-box
-  margin-right: 8px
-  margin-top: 0px
-  user-select: none
-  border-radius: 0.2em
-  background-color: transparent
-  &:hover
-    border: 1px solid rgb(var(--v-theme-primary))
-    // background: #eee
+.todo-checkbox {
+  border: 1px solid #999;
+  height: 1.3em;
+  width: 1.3em;
+  box-sizing: border-box;
+  margin-right: 8px;
+  margin-top: 0px;
+  user-select: none;
+  border-radius: 0.2em;
+  background-color: transparent;
+}
+.todo-checkbox:hover {
+  border: 1px solid rgb(var(--v-theme-primary));
+}
 
-.lmo-textarea .todo-checkbox
-  cursor: pointer
+.lmo-textarea .todo-checkbox {
+  cursor: pointer;
+}
 
-.todo-content
-  flex: 1
-  > p:last-of-type
-    margin-bottom: 0
-  > ul[data-type="todo_list"]
-    margin: .5rem 0
-  p
-    margin: 0
+.todo-content {
+  flex: 1;
+}
+.todo-content > p:last-of-type {
+  margin-bottom: 0;
+}
+.todo-content > ul[data-type=todo_list] {
+  margin: 0.5rem 0;
+}
+.todo-content p {
+  margin: 0;
+}
 
-li[data-done="true"]
-  > .todo-content
-    > p
-      text-decoration: line-through
-  > .todo-checkbox::before
-    position: relative
-    top: -6px
-    color: rgb(var(--v-theme-secondary))
-    font-size: 1.5rem
-    content: "✓"
+li[data-done=true] > .todo-content > p {
+  text-decoration: line-through;
+}
+li[data-done=true] > .todo-checkbox::before {
+  position: relative;
+  top: -6px;
+  color: rgb(var(--v-theme-primary));
+  font-size: 1.5rem;
+  content: "✓";
+}
 
-li[data-done="false"]
-  text-decoration: none
+li[data-done=false] {
+  text-decoration: none;
+}
 
-input[type="file"]
-  display: none
+input[type=file] {
+  display: none;
+}
 
-// .html-editor__textarea, .formatted-text
-.lmo-markdown-wrapper
-  video
-    position: relative
-    width: 100%
-    height: auto
+.lmo-markdown-wrapper video {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.lmo-markdown-wrapper div[data-iframe-container], .lmo-markdown-wrapper .iframe-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.lmo-markdown-wrapper div[data-iframe-container].ProseMirror-selectednode, .lmo-markdown-wrapper .iframe-container.ProseMirror-selectednode {
+  outline: 3px solid #68CEF8;
+}
+.lmo-markdown-wrapper div[data-iframe-container] iframe, .lmo-markdown-wrapper .iframe-container iframe {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: 2px solid #68CEF8;
+}
 
-  div[data-iframe-container], .iframe-container
-    position: relative
-    padding-bottom: 100/16*9%
-    height: 0
-    overflow: hidden
-    width: 100%
-    height: auto
-    margin: 0 auto
-    &.ProseMirror-selectednode
-      outline: 3px solid #68CEF8
-    iframe
-      border: 0
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      outline: 2px solid #68CEF8
-
-@media screen and (min-width: 960px)
-  div[data-iframe-container], .iframe-container
-    padding-bottom: 432px !important
-    max-width: 768px
-
+@media screen and (min-width: 960px) {
+  div[data-iframe-container], .iframe-container {
+    padding-bottom: 432px !important;
+    max-width: 768px;
+  }
+}
 </style>

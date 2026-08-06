@@ -104,8 +104,9 @@ v-main
       p.text-body-small.text-medium-emphasis.text-center.mt-4(v-t="'inbox_page.recent_activity_notice'")
 </template>
 
-<style lang="sass">
-.inbox-page__group-link
-  color: inherit
-  text-decoration: none
+<style>
+.inbox-page__group-link {
+  color: inherit;
+  text-decoration: none;
+}
 </style>

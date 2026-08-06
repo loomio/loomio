@@ -216,9 +216,12 @@ v-main
 
 </template>
 
-<style lang="sass">
-.profile-page__avatar
-  cursor: pointer
-.email-taken-message
-  color: red
+<style>
+.profile-page__avatar {
+  cursor: pointer;
+}
+
+.email-taken-message {
+  color: red;
+}
 </style>

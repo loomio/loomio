@@ -90,7 +90,7 @@ module Dev::NintiesMoviesHelper
                         group_privacy: 'closed',
                         handle: 'shoes',
                         discussion_privacy_options: 'public_or_private', creator: patrick)
-      file = open(Rails.root.join('public','brand','icon_sky_150h.png'))
+      file = open(Rails.root.join('public', 'brand', 'icon-yellow-on-white-192.png'))
       @group.logo.attach(io: file, filename: 'logo.png')
       GroupService.create(group: @group, actor: @group.creator)
       @group.add_admin!  patrick
@@ -280,6 +280,19 @@ module Dev::NintiesMoviesHelper
 
 
   def create_all_notifications
+    group_announced_event = Event.create!(
+      kind: 'announcement_created',
+      eventable: create_another_group,
+      user: jennifer,
+      custom_fields: { kind: 'group_announced' }
+    )
+    Notification.create!(
+      user: patrick,
+      actor: jennifer,
+      event: group_announced_event,
+      translation_values: { name: jennifer.name }
+    )
+
     #'reaction_created'
     patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: "❤️")

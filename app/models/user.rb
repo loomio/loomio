@@ -4,7 +4,6 @@ class User < ApplicationRecord
   include HasExperiences
   include HasAvatar
   include SelfReferencing
-  include NoForbiddenEmails
   include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper
@@ -179,11 +178,13 @@ class User < ApplicationRecord
   end
 
   def invitations_rate_limit
+    return unless ENV.key?('TRIAL_INVITATIONS_RATE_LIMIT') || ENV.key?('PAID_INVITATIONS_RATE_LIMIT')
+
     if user.is_paying?
-      ENV.fetch('PAID_INVITATIONS_RATE_LIMIT', 50000)
+      ENV['PAID_INVITATIONS_RATE_LIMIT']&.to_i
     else
-      ENV.fetch('TRIAL_INVITATIONS_RATE_LIMIT', 500)
-    end.to_i
+      ENV['TRIAL_INVITATIONS_RATE_LIMIT']&.to_i
+    end
   end
 
   def browseable_group_ids
@@ -345,60 +346,6 @@ class User < ApplicationRecord
 
   def generate_username
     self.username ||= ::UsernameGenerator.new(self).generate
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["admin_memberships", "adminable_groups", "all_memberships", "authored_discussions", "authored_polls", "comments", "created_groups", "discussion_readers", "discussions", "events", "files_attachments", "files_blobs", "group_polls", "groups", "guest_discussion_readers", "guest_discussions", "guest_polls", "guest_stances", "identities", "image_files_attachments", "image_files_blobs", "login_tokens", "membership_requests", "memberships", "notifications", "participated_polls", "reactions", "stances", "tags", "tasks", "uploaded_avatar_attachment", "uploaded_avatar_blob", "versions"]
-  end
-
-  def self.ransackable_attributes(auth_object = nil)
-    [
-    "avatar_initials",
-    "avatar_kind",
-    "bounces_count",
-    "city",
-    "content_locale",
-    "country",
-    "complaints_count",
-    "created_at",
-    "current_sign_in_at",
-    "current_sign_in_ip",
-    "date_time_pref",
-    "deactivated_at",
-    "detected_locale",
-    "email",
-    "email_catch_up",
-    "email_catch_up_day",
-    "email_newsletter",
-    "email_on_participation",
-    "email_verified",
-    "email_when_mentioned",
-    "email_when_proposal_closing_soon",
-    "id",
-    "is_admin",
-    "key",
-    "last_seen_at",
-    "last_sign_in_at",
-    "last_sign_in_ip",
-    "legal_accepted_at",
-    "link_previews",
-    "location",
-    "locked_at",
-    "memberships_count",
-    "name",
-    "region",
-    "secret_token",
-    "selected_locale",
-    "short_bio",
-    "short_bio_format",
-    "sign_in_count",
-    "time_zone",
-    "updated_at",
-    "uploaded_avatar_content_type",
-    "uploaded_avatar_file_name",
-    "uploaded_avatar_file_size",
-    "uploaded_avatar_updated_at",
-    "username"]
   end
 
   protected

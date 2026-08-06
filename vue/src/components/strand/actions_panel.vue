@@ -27,6 +27,7 @@ const poll = ref(null);
 const resetComment = () => {
   newComment.value = Records.comments.build({
     bodyFormat: Session.defaultFormat(),
+    topicId: topic.id,
     parentType: topic.topicableType,
     parentId: topic.topicableId,
     authorId: Session.user().id
@@ -84,7 +85,7 @@ onUnmounted(() => {
 <template lang="pug">
 section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
   template(v-if="topic.lockedAt")
-    v-alert(:prepend-icon="mdiLockOutline" variant="tonal")
+    v-alert(:icon="mdiLockOutline" variant="tonal")
       span(v-t="{path: 'notifications.without_title.thread_locked', args: {actor: topic.locker().name} }")
       mid-dot
       time-ago(:date='topic.lockedAt')
@@ -94,7 +95,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
         :comment="newComment"
         @comment-submitted="resetComment")
     template(v-else)
-      v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
+      v-tabs.activity-panel__actions.mb-3(grow v-model="currentAction")
         v-tab(value='add-comment')
           span(v-t="'comment_form.add_a_comment'")
         v-tab.activity-panel__add-poll(value='add-poll')
@@ -134,14 +135,16 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
 
 </template>
 
-<style lang="sass">
-#add-comment .v-window
-  overflow: visible
+<style>
+#add-comment .v-window {
+  overflow: visible;
+}
 
-.add-comment-panel__sign-in-btn
-  width: 100%
-.add-comment-panel__join-actions
-  button
-    width: 100%
+.add-comment-panel__sign-in-btn {
+  width: 100%;
+}
 
+.add-comment-panel__join-actions button {
+  width: 100%;
+}
 </style>

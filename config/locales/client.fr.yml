@@ -84,6 +84,7 @@ fr:
     trial_needs_user: Pour démarrer ton essai gratuit de Loomio, connecte-toi.
     this_is_a_template_for_new_threads: Il s’agit d’un modèle pour les nouveaux threads
     share_a_custom_configuration: Partager une configuration personnalisée avec d’autres membres de ton groupe
+    invalid_template_file: Ceci n'est pas un fichier modèle Loomio valide
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -339,6 +340,8 @@ fr:
       add: Ajouter
       redact: Rédiger
       unredact: Restaurer
+      export_json: Exporter au format JSON
+      import_json: Importer du JSON
     formatting_help:
       label: Mise en forme
       title: Apprends à utiliser Markdown pour mettre en forme ton texte
@@ -351,6 +354,7 @@ fr:
     read: Lire
     unread: Non lu
     discussion: Discussion
+    user_guide: Guide de l'utilisateur
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -561,6 +565,7 @@ fr:
     add_a_comment: Ajouter un commentaire
     share_your_thoughts: Partage tes réflexions…
     share_on_poll: Pose une question ou partage de nouvelles informations
+    type_at_to_notify_people: Tape {'@'} pour notifier des personnes
   thread_nav:
     participants: Participants
   sidebar:
@@ -1102,6 +1107,11 @@ fr:
     copy_for_ai_skill_description: Copie la discussion au format Markdown structuré pour un assistant IA. Inclus la compétence complète de facilitation Loomio pour te guider selon les pratiques de facilitation de Loomio.
     share_ai_skill: Si tu écris une nouvelle compétence d’IA ou améliores celle proposée, tu peux la partager avec l’équipe Loomio
     share_ai_skill_contact: Contacte l’équipe Loomio
+    copy_markdown: Copier le Markdown
+    copy_markdown_description: Copie la discussion au format Markdown structuré — idéal pour une utilisation avec un agent d'IA ou pour créer un document simple à partir du contenu de la discussion.
+    thread_markdown_copied: Fil de discussion Markdown copié
+    move_thread_v2: Déplacer le sujet
+    more: Plus
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -2045,6 +2055,7 @@ fr:
     export_blt: Bulletins d'exportation (BLT)
     status: Statut
     your_vote_is_requested: Ton vote est demandé
+    browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de sondage en utilisant l'exemple comme point de départ"
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2529,6 +2540,12 @@ fr:
     notification_only_label: Envoyer le titre de notification uniquement
     check_for_test_message: Vérifie ton salon de discussion pour un message du bot!
     webex: Webex
+    chat_integrations: Intégrations de chat
+    no_chat_integrations_yet: Envoie des notifications concernant l'activité de Loomio au service de chat de ton groupe
+    new_chat_integration: Nouvelle intégration de chat
+    delete_chat_integration: Supprimer l'intégration du chat ?
+    delete_chat_integration_helptext: Loomio cessera d'envoyer des notifications à %{name}
+    chat_integration_deleted: Intégration de chat supprimée
   webhook:
     integrations: Integrations
     api_keys: Clés API
@@ -2902,6 +2919,7 @@ fr:
     start_a_direct_discussion: Entame une discussion directe
     these_are_templates: Voici les modèles de discussion de ton groupe.
     start_a_new_discussion: Lancer une nouvelle discussion
+    browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de discussion en utilisant l'exemple comme point de départ"
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
@@ -2925,6 +2943,11 @@ fr:
     confirm_change_to_private: "%{groupName} est un groupe ouvert. Si tu continues, cette discussion sera publique."
     messages:
       success: Discussion déplacée vers %{name}
+    move_thread_title: Déplacer le sujet
+    destination: Destination
+    direct_thread: Discussion directe
+    direct_thread_hint: Toutes les personnes ayant participé conserveront leur accès. Toi et la personne qui a créé la discussion en serez les administrateurs.
+    direct_thread_anonymous_poll: Les discussions contenant des sondages anonymes ne peuvent pas être converties en discussions directes car cela pourrait révéler qui a voté.
   auth:
     oauth_cancelled: La connexion a été annulée.
     switching_accounts: Changement de compte. Connecte-toi avec tes nouvelles informations de compte.
@@ -3011,3 +3034,7 @@ fr:
     title: Définir un mot de passe ?
     helptext: Vous pourrez utiliser un mot de passe pour vous connecter la prochaine fois, au lieu d'attendre un lien par e-mail.
     no_thanks: Non merci
+  mention_notifications_count:
+    nobody_will_be_notified: Personne ne sera averti
+    one_person_will_be_notified: Une personne sera avertie
+    x_people_will_be_notified: "%{count} personnes seront notifiées"

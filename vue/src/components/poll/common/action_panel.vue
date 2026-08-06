@@ -190,7 +190,7 @@ export default
     span(v-t="'poll_common_action_panel.anonymous_vote_recorded'")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    v-alert.poll-common-current-vote.mb-4(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+    v-alert.poll-common-current-vote.mb-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
       .mt-2
         poll-common-stance-choice(
           v-if="poll.singleChoice()"
@@ -207,15 +207,17 @@ export default
 
 </template>
 
-<style lang="sass">
-.poll-common-vote-form--preview
-  .v-overlay__scrim
-    cursor: not-allowed
-  .poll-common-vote-form__button.voting-disabled
-    opacity: 1 !important
-  .poll-common-form-actions,
-  .poll-common-stance-reason,
-  .none-of-the-above,
-  .v-alert
-    display: none
+<style>
+.poll-common-vote-form--preview .v-overlay__scrim {
+  cursor: not-allowed;
+}
+.poll-common-vote-form--preview .poll-common-vote-form__button.voting-disabled {
+  opacity: 1 !important;
+}
+.poll-common-vote-form--preview .poll-common-form-actions,
+.poll-common-vote-form--preview .poll-common-stance-reason,
+.poll-common-vote-form--preview .none-of-the-above,
+.poll-common-vote-form--preview .v-alert {
+  display: none;
+}
 </style>

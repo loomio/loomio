@@ -190,8 +190,8 @@ export default new class TopicService {
       },
 
       copy_thread_for_ai: {
-        name: 'action_dock.copy_thread_for_ai',
-        icon: 'mdi-robot-outline',
+        name: 'action_dock.copy_markdown',
+        icon: 'mdi-language-markdown-outline',
         dock: 0,
         collection: 'actions',
         canPerform() {
@@ -238,7 +238,7 @@ export default new class TopicService {
       },
 
       move_thread: {
-        name: 'action_dock.move_thread',
+        name: 'action_dock.move_thread_v2',
         collection: 'actions',
         icon: 'mdi-file-move-outline',
         canPerform() { return AbilityService.canMoveTopic(topic); },
@@ -250,21 +250,6 @@ export default new class TopicService {
         }
       },
 
-
-      thread_settings: {
-        name: 'thread_arrangement_form.thread_settings',
-        icon: 'mdi-cog-outline',
-        collection: 'actions',
-        canPerform() {
-          return topic && topic.adminsInclude(Session.user());
-        },
-        perform() {
-          return openModal({
-            component: 'TopicForm',
-            props: { topic: topic.clone() }
-          });
-        }
-      },
 
       lock_thread: {
         name: 'action_dock.lock_thread',
@@ -293,6 +278,20 @@ export default new class TopicService {
         perform: () => this.unlock(topic)
       },
 
+      thread_settings: {
+        name: 'thread_arrangement_form.thread_settings',
+        icon: 'mdi-cog-outline',
+        collection: 'actions',
+        canPerform() {
+          return topic && topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'TopicForm',
+            props: { topic: topic.clone() }
+          });
+        }
+      },
 
       discard_thread: {
         name: 'action_dock.delete_thread',

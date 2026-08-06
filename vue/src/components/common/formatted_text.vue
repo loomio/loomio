@@ -109,279 +109,296 @@ div.lmo-markdown-wrapper(@click="onClick")
   span(v-if="format == 'none'") Format none. Use plain-text instead.
 </template>
 
-<style lang="sass">
-.lmo-markdown-wrapper
-  a
-    color: rgb(var(--v-theme-anchor))
+<style>
+@charset "UTF-8";
+.lmo-markdown-wrapper a {
+  color: rgb(var(--v-theme-anchor));
+}
 
-.v-theme--dark, .v-theme--darkBlue
-  .lmo-markdown-wrapper
-    color: rgba(255,255,255,1)
-    hr
-      border-bottom: 2px solid rgba(255, 255, 255, 0.5)
+.v-theme--dark .lmo-markdown-wrapper {
+  color: rgb(255, 255, 255);
+}
+.v-theme--dark .lmo-markdown-wrapper hr {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
 
-    blockquote
-      background-color: rgba(0,0,0,0.3)
-      border-left: 4px solid #000
+.editor .lmo-markdown-wrapper ul[data-type=taskList] li::before {
+  content: none;
+  margin-right: 8px;
+}
+.editor .lmo-markdown-wrapper ul[data-type=taskList] li[data-checked=true] label::before {
+  content: none;
+}
+.editor .lmo-markdown-wrapper ul[data-type=taskList] li[data-checked=true]::before {
+  content: none;
+}
 
-.editor
-  .lmo-markdown-wrapper
-    ul[data-type="taskList"]
-      li::before
-        content: none
-        margin-right: 8px
-
-      li[data-checked="true"]
-        label::before
-          content: none
-
-      li[data-checked="true"]::before
-        content: none
-
-.lmo-markdown-wrapper
-  color: rgba(0, 0, 0, 0.88)
-
-  audio,video
-    display: block
-    margin-bottom: 8px
-
-  span[style^="color"]
-    color: inherit !important
-
-  span[style^="background"], td[style^="background"], p[style^="background"]
-    background: inherit !important
-
-  a
-    text-decoration: underline
-
-  p
-    margin-bottom: 0.75rem
-
-  p:empty:first-child
-    height: 0rem
-    margin-bottom: 0
-
-  p:empty
-    height: 1rem
-
-  p:last-child:empty
-    display: none
-
-  p:last-child
-    margin-bottom: 0.25rem
-
-  *[data-text-align="left"]
-    text-align: left !important
-  *[data-text-align="center"]
-    text-align: center !important
-  *[data-text-align="right"]
-    text-align: right !important
-  *[data-text-align="justify"]
-    text-align: justify !important
-
-  mark
-    background-color: rgba(var(--v-theme-primary), 0.2)
-    color: #000
-    padding: 0.2em 0.3em
-
-  mark[data-color="red"]
-    background-color: #ef5350
-  mark[data-color="pink"]
-    background-color: #f48fb1
-  mark[data-color="purple"]
-    background-color: #ce93d8
-  mark[data-color="blue"]
-    background-color: #90caf9
-  mark[data-color="green"]
-    background-color: #a5d6a7
-  mark[data-color="yellow"]
-    background-color: #fff59d
-  mark[data-color="orange"]
-    background-color: #ffcc80
-  mark[data-color="brown"]
-    background-color: #bcaaa4
-  mark[data-color="grey"]
-    background-color: #e0e0e0
-
-  .cursor
-    font-size: 0.8rem
-    font-weight: normal
-    line-height: 20px
-    letter-spacing: normal
-
-  span[data-mention-id]
-    color: rgb(var(--v-theme-anchor))
-
-  blockquote, pre
-    margin: 0.5rem 0
-
-  h1, h2, h3
-    margin-top: 1.5rem
-    margin-bottom: 0.75rem
-
-  h1:first-child, h2:first-child, h3:first-child
-    margin-top: 0
-
-  h1
-    font-size: 1.75rem
-    font-weight: 500
-    letter-spacing: -0.015625rem
-
-  h2
-    font-size: 1.25rem
-    font-weight: 500
-    letter-spacing: normal
-
-  h3
-    font-size: 1rem
-    font-weight: 700
-    letter-spacing: normal
-
-  strong
-    font-weight: 700
-
-  hr
-    border: 0
-    border-bottom: 2px solid rgba(0,0,0,0.1)
-    margin: 16px 0
-
-  overflow-wrap: break-word
-  word-wrap: break-word
-  word-break: break-word
-  overflow: auto
-
-  img
-    max-width: 100%
-    height: auto
-    max-height: 600px
-
-  ol, ul
-    padding-left: 24px
-    margin-bottom: .75rem
-
-  ul
-    list-style: disc
-
-  ul[data-type="taskList"]
-    list-style: none
-    padding: 0
-
-    li
-      display: flex
-      align-items: center
-      justify-content: flex-start
-
-      .v-selection-control
-        flex-grow: 0
-
-      input[type="checkbox"]
-        margin-right: 8px
-
-      p
-        margin: 0
-
-    li[data-due-on]:not([data-due-on=""])::after
-      font-size: 10px
-      color: #fff
-      content: " 📅 " attr(data-due-on) ""
-      border-radius: 8px
-      background-color: rgb(var(--v-theme-primary))
-      margin-left: 8px
-      padding: 2px 8px
-      height: 16px
-      display: flex
-      align-items: center
-      // border: 1px solid rgb(var(--v-theme-primary))
-
-    li::before
-      content: ""
-      display: inline-block
-      vertical-align: bottom
-      width: 1rem
-      height: 1rem
-      border-radius: 30%
-      border-style: solid
-      border-width: 0.1rem
-      line-height: 100%
-      margin-right: 8px
-      border-color: rgba(var(--v-theme-on-surface), 0.2)
-      min-width: 15px
-
-    li[data-checked="true"]::before
-      display: inline-block
-      vertical-align: middle
-      position: relative
-      content: "✓"
-      color: white
-      text-align: center
-      vertical-align: middle
-      background-color: rgb(var(--v-theme-primary))
-      border-color: rgb(var(--v-theme-primary))
-
-    li:hover:before
-      cursor: pointer
-      border-color: rgba(var(--v-theme-primary), 0.4)
-
-    li.task-item-busy::before
-      background-color: rgba(var(--v-theme-primary), 0.4)
-      border-color: rgba(var(--v-theme-primary), 0.4)
-      // background-color: none !important
-
-  ol
-    list-style: decimal
-
-  li p
-    margin-bottom: 8px
-
-  pre
-    overflow-x: auto
-    font-family: 'Roboto mono', monospace, monospace
-    white-space: pre-wrap
-    font-size: 0.88rem;
-    margin: 1rem 0;
-
-  pre code
-    display: block
-
-  p code
-    display: inline-block
-    background: rgba(0, 0, 0, .1)
-
-  blockquote
-    font-style: italic
-    border-left: 4px solid rgba(0,0,0,.1)
-    padding-left: .8rem
-    padding: .5rem 0 0.5rem 0.8rem
-    background-color: rgba(0,0,0,0.05)
-
-  table
-    table-layout: fixed
-    width: 100%
-    margin-bottom: 12px
-    border-collapse: collapse
-
-  table td
-    padding: 4px 4px
-    border: 1px solid #ddd
-
-  thead td
-    font-weight: bold
-
-  table table
-    margin: 0 !important
-    border: 0 !important
-
-  td td
-    padding: 0 !important
-
-  td td td
-    border: 0 !important
-
-  table
-    p
-      margin-bottom: 0
-
-    p:last-child
-      margin-bottom: 0
-
+.lmo-markdown-wrapper audio, .lmo-markdown-wrapper video {
+  display: block;
+  margin-bottom: 8px;
+}
+.lmo-markdown-wrapper span[style^=color] {
+  color: inherit !important;
+}
+.lmo-markdown-wrapper span[style^=background], .lmo-markdown-wrapper td[style^=background], .lmo-markdown-wrapper p[style^=background] {
+  background: inherit !important;
+}
+.lmo-markdown-wrapper a {
+  text-decoration: underline;
+}
+.lmo-markdown-wrapper p {
+  margin-bottom: 0.75rem;
+}
+.lmo-markdown-wrapper p:empty:first-child {
+  height: 0rem;
+  margin-bottom: 0;
+}
+.lmo-markdown-wrapper p:empty {
+  height: 1rem;
+}
+.lmo-markdown-wrapper p:last-child:empty {
+  display: none;
+}
+.lmo-markdown-wrapper p:last-child {
+  margin-bottom: 0.25rem;
+}
+.lmo-markdown-wrapper *[data-text-align=left] {
+  text-align: left !important;
+}
+.lmo-markdown-wrapper *[data-text-align=center] {
+  text-align: center !important;
+}
+.lmo-markdown-wrapper *[data-text-align=right] {
+  text-align: right !important;
+}
+.lmo-markdown-wrapper *[data-text-align=justify] {
+  text-align: justify !important;
+}
+.lmo-markdown-wrapper mark {
+  background-color: rgba(var(--v-theme-primary), 0.2);
+  color: #000;
+  padding: 0.2em 0.3em;
+}
+.lmo-markdown-wrapper mark[data-color=red] {
+  background-color: #ef5350;
+}
+.lmo-markdown-wrapper mark[data-color=pink] {
+  background-color: #f48fb1;
+}
+.lmo-markdown-wrapper mark[data-color=purple] {
+  background-color: #ce93d8;
+}
+.lmo-markdown-wrapper mark[data-color=blue] {
+  background-color: #90caf9;
+}
+.lmo-markdown-wrapper mark[data-color=green] {
+  background-color: #a5d6a7;
+}
+.lmo-markdown-wrapper mark[data-color=yellow] {
+  background-color: #fff59d;
+}
+.lmo-markdown-wrapper mark[data-color=orange] {
+  background-color: #ffcc80;
+}
+.lmo-markdown-wrapper mark[data-color=brown] {
+  background-color: #bcaaa4;
+}
+.lmo-markdown-wrapper mark[data-color=grey] {
+  background-color: #e0e0e0;
+}
+.lmo-markdown-wrapper .cursor {
+  font-size: 0.8rem;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+}
+.lmo-markdown-wrapper span[data-mention-id] {
+  color: rgb(var(--v-theme-anchor));
+}
+.lmo-markdown-wrapper blockquote, .lmo-markdown-wrapper pre {
+  margin: 0.5rem 0;
+}
+.lmo-markdown-wrapper h1, .lmo-markdown-wrapper h2, .lmo-markdown-wrapper h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.lmo-markdown-wrapper h1:first-child, .lmo-markdown-wrapper h2:first-child, .lmo-markdown-wrapper h3:first-child {
+  margin-top: 0;
+}
+.lmo-markdown-wrapper h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.015625rem;
+}
+.lmo-markdown-wrapper h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+.lmo-markdown-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+.lmo-markdown-wrapper strong {
+  font-weight: 700;
+}
+.lmo-markdown-wrapper hr {
+  border: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+}
+.lmo-markdown-wrapper {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow: auto;
+}
+.lmo-markdown-wrapper img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+}
+.lmo-markdown-wrapper ol, .lmo-markdown-wrapper ul {
+  padding-left: 24px;
+  margin-bottom: 0.75rem;
+}
+.lmo-markdown-wrapper ul {
+  list-style: disc;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] {
+  list-style: none;
+  padding: 0;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li .v-selection-control {
+  flex-grow: 0;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li input[type=checkbox] {
+  margin-right: 8px;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li p {
+  margin: 0;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li[data-due-on]:not([data-due-on=""])::after {
+  font-size: 10px;
+  color: #fff;
+  content: " 📅 " attr(data-due-on) "";
+  border-radius: 8px;
+  background-color: rgb(var(--v-theme-primary));
+  margin-left: 8px;
+  padding: 2px 8px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li::before {
+  content: "";
+  display: inline-block;
+  vertical-align: bottom;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 30%;
+  border-style: solid;
+  border-width: 0.1rem;
+  line-height: 100%;
+  margin-right: 8px;
+  border-color: rgba(var(--v-theme-on-surface), 0.2);
+  min-width: 15px;
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li[data-checked=true]::before {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  content: "✓";
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgb(var(--v-theme-primary));
+  border-color: rgb(var(--v-theme-primary));
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li:hover:before {
+  cursor: pointer;
+  border-color: rgba(var(--v-theme-primary), 0.4);
+}
+.lmo-markdown-wrapper ul[data-type=taskList] li.task-item-busy::before {
+  background-color: rgba(var(--v-theme-primary), 0.4);
+  border-color: rgba(var(--v-theme-primary), 0.4);
+}
+.lmo-markdown-wrapper ol {
+  list-style: decimal;
+}
+.lmo-markdown-wrapper li p {
+  margin-bottom: 8px;
+}
+.lmo-markdown-wrapper pre {
+  overflow-x: auto;
+  font-family: "Roboto mono", monospace, monospace;
+  white-space: pre-wrap;
+  font-size: 0.88rem;
+  margin: 1rem 0;
+}
+.lmo-markdown-wrapper pre code {
+  display: block;
+}
+.lmo-markdown-wrapper p code {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.1);
+}
+.lmo-markdown-wrapper blockquote {
+  position: relative;
+  margin: 1rem 0;
+  padding: 0.5rem 0 0.5rem 2.5rem;
+  background: transparent;
+  font-style: normal;
+}
+.lmo-markdown-wrapper blockquote::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(var(--v-theme-on-surface), var(--v-medium-emphasis-opacity));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.lmo-markdown-wrapper table {
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: 12px;
+  border-collapse: collapse;
+}
+.lmo-markdown-wrapper table td {
+  padding: 4px 4px;
+  border: 1px solid #ddd;
+}
+.lmo-markdown-wrapper thead td {
+  font-weight: bold;
+}
+.lmo-markdown-wrapper table table {
+  margin: 0 !important;
+  border: 0 !important;
+}
+.lmo-markdown-wrapper td td {
+  padding: 0 !important;
+}
+.lmo-markdown-wrapper td td td {
+  border: 0 !important;
+}
+.lmo-markdown-wrapper table p {
+  margin-bottom: 0;
+}
+.lmo-markdown-wrapper table p:last-child {
+  margin-bottom: 0;
+}
 </style>

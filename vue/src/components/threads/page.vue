@@ -69,5 +69,5 @@ v-main
       .d-flex.align-center.justify-center(v-if='threads.length > 0')
         div
           p.text-center.text-medium-emphasis(v-t="{path: 'members_panel.loaded_of_total', args: {loaded: threads.length, total: loader.total}}")
-          v-btn(v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")
+          v-btn(variant="tonal" color="primary" v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")
 </template>

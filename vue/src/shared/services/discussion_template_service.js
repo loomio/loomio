@@ -8,6 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { I18n }           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
+import { exportTemplateFile } from '@/shared/helpers/template_file';
 
 export default new class DiscussionTemplateService {
   canEditTemplate(discussionTemplate, group) {
@@ -39,12 +40,22 @@ export default new class DiscussionTemplateService {
       },
 
       fork_template: {
-        name: 'common.action.fork_template',
-        icon: 'mdi-source-branch-plus',
+        name: 'templates.make_a_copy',
+        icon: 'mdi-content-copy',
         menu: true,
         canPerform() { return discussionTemplate.id && service.canEditTemplate(discussionTemplate, group); },
         to() {
           return `/discussion_templates/new?template_id=${discussionTemplate.id}&group_id=${group.id}&return_to=${Session.returnTo()}`;
+        }
+      },
+
+      export_json: {
+        name: 'common.action.export_json',
+        icon: 'mdi-download',
+        menu: true,
+        canPerform() { return !!discussionTemplate.id; },
+        perform() {
+          exportTemplateFile('discussion_template', discussionTemplate, group.id);
         }
       },
 

@@ -8,6 +8,11 @@ module.exports = function(test, browser) {
       return test.refresh();
     },
 
+    refreshAndWait() {
+      test.refresh();
+      return test.waitForElementPresent('.app-is-booted', 20000);
+    },
+
     loadPath(path, opts = {}) {
       test.url(`${base_url}/dev/${path}`);
       return test.waitForElementPresent('.app-is-booted', 20000);
@@ -47,6 +52,35 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       test.click(selector);
+    },
+
+    clickElement(selector, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector) {
+        const element = Array.from(document.querySelectorAll(selector)).find((candidate) => {
+          const style = window.getComputedStyle(candidate);
+          return candidate.getClientRects().length > 0 && style.visibility !== 'hidden';
+        });
+
+        element.click();
+      }, [selector]);
+    },
+
+    clickAndWait(selector, nextSelector, wait = 8000) {
+      this.clickElement(selector, wait);
+      return this.waitFor(nextSelector, wait);
+    },
+
+    clickLastElement(selector, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector) {
+        const elements = Array.from(document.querySelectorAll(selector)).filter((candidate) => {
+          const style = window.getComputedStyle(candidate);
+          return candidate.getClientRects().length > 0 && style.visibility !== 'hidden';
+        });
+
+        elements.at(-1).click();
+      }, [selector]);
     },
 
     scrollClick(selector, pause) {

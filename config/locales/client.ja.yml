@@ -75,6 +75,7 @@ ja:
     trial_needs_user: いらっしゃいませ！無料トライアルを開始するにはサインインしてください
     this_is_a_template_for_new_threads: これは新しいスレッド用のテンプレートです
     share_a_custom_configuration: グループ内の他のユーザーとカスタム構成を共有する
+    invalid_template_file: これは有効なLoomioテンプレートファイルではありません
   doctypes:
     youtube_video: YouTubeビデオ
     image: 画像
@@ -329,6 +330,8 @@ ja:
       add: 追加
       redact: 編集済み
       unredact: 復元する
+      export_json: JSONをエクスポート
+      import_json: JSONをインポート
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -342,6 +345,7 @@ ja:
     read: 読む
     unread: 未読
     discussion: 議論
+    user_guide: ユーザーガイド
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -550,6 +554,7 @@ ja:
     add_a_comment: コメントを追加する
     share_your_thoughts: あなたの考えを共有してください…
     share_on_poll: 質問をしたり新しい情報を共有したりしましょう
+    type_at_to_notify_people: "{'@'} を入力して通知する"
   thread_nav:
     participants: 参加者
   sidebar:
@@ -1087,6 +1092,11 @@ ja:
     copy_for_ai_skill_description: AIアシスタント向けに、スレッドを構造化されたMarkdown形式でコピーしてください。Loomioのファシリテーション手法に基づいたガイダンスを提供するため、Loomioファシリテーターのスキルをすべて含めてください。
     share_ai_skill: 新しいAIスキルを作成したり、既存のスキルを改良したりした場合は、ぜひLoomioチームと共有してください
     share_ai_skill_contact: Loomioチームにお問い合わせください
+    copy_markdown: マークダウンをコピー
+    copy_markdown_description: スレッドを構造化されたMarkdown形式でコピーします。これは、AIエージェントと連携させたり、スレッドの内容からシンプルなドキュメントを作成したりするのに最適です。
+    thread_markdown_copied: スレッドのマークダウンがコピーされました
+    move_thread_v2: スレッドを移動
+    more: もっと
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色
@@ -2002,6 +2012,7 @@ ja:
     export_blt: 投票用紙の輸出（BLT）
     status: 状態
     your_vote_is_requested: あなたの投票をお願いします
+    browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、サンプルを参考に新しいアンケートテンプレートを作成できます。"
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2486,6 +2497,12 @@ ja:
     notification_only_label: 通知の見出しのみを送信する
     check_for_test_message: チャットルームでボットからのメッセージをチェックしてください。
     webex: ウェブエックス
+    chat_integrations: チャット連携
+    no_chat_integrations_yet: Loomioのアクティビティに関する通知をグループのチャットサービスに送信する
+    new_chat_integration: 新しいチャット連携機能
+    delete_chat_integration: チャット連携を削除しますか？
+    delete_chat_integration_helptext: Loomioは%{name}への通知の送信を停止します
+    chat_integration_deleted: チャット統合が削除されました
   webhook:
     integrations: 統合
     api_keys: APIキー
@@ -2857,6 +2874,7 @@ ja:
     start_a_direct_discussion: 直接議論を始める
     these_are_templates: これらはグループ内のディスカッション テンプレートです。
     start_a_new_discussion: 新しいディスカッションを開始する
+    browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、例を参考に新しいディスカッションテンプレートを作成できます。"
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。
@@ -2880,6 +2898,11 @@ ja:
     confirm_change_to_private: "%{groupName} は公開グループです。続行すると、このディスカッションは公開されます。"
     messages:
       success: ディスカッションは %{name} に移動されました
+    move_thread_title: スレッドを移動
+    destination: 行き先
+    direct_thread: ダイレクトスレッド
+    direct_thread_hint: 参加者全員が引き続きアクセスできます。あなたとスレッド作成者がスレッド管理者となります。
+    direct_thread_anonymous_poll: 匿名投票を含むスレッドは、誰が投票したかが明らかになる可能性があるため、直接投票スレッドに変換することはできません。
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。
@@ -2966,3 +2989,7 @@ ja:
     title: パスワードを設定しますか？
     helptext: 次回からは、メールで送られてくるリンクを待つ代わりに、パスワードを使ってログインできます。
     no_thanks: 結構です
+  mention_notifications_count:
+    nobody_will_be_notified: 誰にも通知されません
+    one_person_will_be_notified: 1名に通知されます
+    x_people_will_be_notified: "%{count}人に通知されます"

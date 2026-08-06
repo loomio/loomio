@@ -18,7 +18,12 @@ const props = defineProps({
   menuIcon: {
     type: String,
     default: 'mdi-dots-horizontal'
-  }
+  },
+  showIcon: {
+    type: Boolean,
+    default: false
+  },
+  listItem: Boolean
 });
 
 const canPerformAny = computed(() => some(props.actions, action => action.canPerform()));
@@ -28,8 +33,13 @@ const canPerformAny = computed(() => some(props.actions, action => action.canPer
 .action-menu.lmo-no-print(v-if='canPerformAny')
   v-menu(offset-y)
     template(v-slot:activator="{ props }" )
-      v-btn.action-menu--btn(:title="name" :icon="icon" density="comfortable" :size="size" :variant="variant" :color="color" v-bind="props" @click.stop.prevent)
-        common-icon(v-if="icon" :size="size" :name="menuIcon" :color="color")
+      v-list-item.action-menu--list-item(v-if="listItem" v-bind="props" :title="name" @click.stop.prevent)
+        template(v-slot:prepend)
+          common-icon(:name="menuIcon")
+        template(v-slot:append)
+          common-icon(name="mdi-chevron-down")
+      v-btn.action-menu--btn.action-button(v-else :title="name" :icon="icon" density="comfortable" :size="size" :variant="variant" :color="color" v-bind="props" @click.stop.prevent)
+        common-icon(v-if="icon || showIcon" :size="size" :name="menuIcon" :color="color" :class="{'mr-1': showIcon}")
         span(v-if="!icon") {{name}}
 
     v-list(density="compact")

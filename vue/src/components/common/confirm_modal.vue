@@ -23,6 +23,11 @@ export default {
   },
 
   methods: {
+    cancel() {
+      this.close();
+      if (typeof this.confirm.cancelCallback === 'function') { this.confirm.cancelCallback(); }
+    },
+
     submit() {
       this.isDisabled = true;
       this.confirm.submit().then(() => {
@@ -65,7 +70,7 @@ v-card.confirm-modal(:title)
       v-text-field.confirm-text-field(v-model="confirmText" v-on:keyup.enter="canProceed && submit()")
 
   v-card-actions
-    v-btn(text v-if="!confirm.forceSubmit" @click="close()")
+    v-btn(text v-if="!confirm.forceSubmit" @click="cancel()")
       span(v-t="confirm.text.cancel || 'common.action.cancel'")
     v-spacer
     v-btn.confirm-modal__submit(

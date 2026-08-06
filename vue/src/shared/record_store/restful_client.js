@@ -29,12 +29,27 @@ export default class RestfulClient {
   onSuccess(data) { return data; }
 
   // response is always a real Response here - network failures are handled in request()
-  async onFailure(response) {
+  async onFailure(response, method, path) {
     const data = await response.json().catch(() => ({}));
+    const httpResource = metricResourceFor(path);
+    Sentry.metrics.count('client.http_error', 1, {
+      attributes: {
+        method,
+        resource: httpResource,
+        status: String(response.status)
+      }
+    });
     throw Object.assign(
       new Error(`HTTP ${response.status}: ${data.error || response.statusText || 'Request failed'}`),
       data,
-      { status: response.status, statusText: response.statusText, ok: false }
+      {
+        status: response.status,
+        statusText: response.statusText,
+        ok: false,
+        httpMethod: method,
+        httpResource,
+        restfulClientError: true
+      }
     );
   }
 
@@ -105,7 +120,7 @@ export default class RestfulClient {
     }
 
     try {
-      return response.ok ? await response.json().then(this.onSuccess) : await this.onFailure(response);
+      return response.ok ? await response.json().then(this.onSuccess) : await this.onFailure(response, method, path);
     } catch (err) {
       console.warn('Request failed:', method, path, err.status || err);
       throw err;

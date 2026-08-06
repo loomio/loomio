@@ -6,12 +6,21 @@ const https = require('https');
 const { URL } = require('url');
 
 (() => {
+  const addressValue = (address) => (
+    typeof address.address === 'function' ? address.address() : address.address
+  );
+
   const buildPluginFunction = () => {
     return function (next, connection) {
       const plugin = this;
       const { transaction, remote, hello } = connection;
+      let finished = false;
 
-      const done = (status, reason) => next(status, reason);
+      const done = (status, reason) => {
+        if (finished) return;
+        finished = true;
+        next(status, reason);
+      };
 
       const handleError = (message, reason) => {
         connection.logerror(message, plugin);
@@ -66,18 +75,19 @@ const { URL } = require('url');
         }
       };
 
-      // optional: add Haraka meta headers for traceability
+      // Replace sender-supplied metadata before adding the trusted SMTP envelope.
       try {
+        transaction.remove_header('harakadata');
         transaction.add_header('harakadata', JSON.stringify({
-          mail_from: transaction.mail_from.address(),
-          rcpt_to: transaction.rcpt_to.map(r => r.address()),
+          mail_from: addressValue(transaction.mail_from),
+          rcpt_to: transaction.rcpt_to.map(addressValue),
           remote_ip: remote.ip,
           remote_host: remote.host,
           helo: hello.host,
           uuid: transaction.uuid,
         }));
       } catch (err) {
-        handleError(`Adding custom headers failed: ${err.message}`);
+        return handleError(`Adding custom headers failed: ${err.message}`);
       }
 
       run();

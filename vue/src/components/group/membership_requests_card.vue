@@ -39,7 +39,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershipRequests.length')
+v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershipRequests.length' variant="flat")
   v-list(lines="two")
     v-list-subheader(v-t="'membership_requests_card.heading'")
     v-list-item.membership-requests-card__request(v-for='request in orderedPendingMembershipRequests()', :key='request.id' :to="urlFor(group, 'membership_requests')")
@@ -51,12 +51,12 @@ v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershi
     v-btn.membership-requests-card__link(text :to="urlFor(group, 'membership_requests')")
       span(v-t="{ path: 'membership_requests_card.manage_requests_with_count', args: { count: group.pendingMembershipRequests().length } }")
 </template>
-<style lang="sass">
-.membership-requests-card__request-link
-	margin: 0
-	padding: 8px 0
-	width: 100%
-	text-transform: none
-	text-align: left
-
+<style>
+.membership-requests-card__request-link {
+  margin: 0;
+  padding: 8px 0;
+  width: 100%;
+  text-transform: none;
+  text-align: left;
+}
 </style>

@@ -76,6 +76,7 @@ sl:
     trial_needs_user: Dobrodošli! Za začetek brezplačnega preizkusa se prijavite
     this_is_a_template_for_new_threads: To je predloga za nove teme
     share_a_custom_configuration: Delite konfiguracijo po meri z drugimi v vaši skupini
+    invalid_template_file: To ni veljavna datoteka predloge Loomio
   doctypes:
     youtube_video: YouTube Video
     image: Slika
@@ -331,6 +332,8 @@ sl:
       add: Dodaj
       redact: Redigiraj
       unredact: Obnovi
+      export_json: Izvozi JSON
+      import_json: Uvozi JSON
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -343,6 +346,7 @@ sl:
     read: Preberi
     unread: Neprebrano
     discussion: Razprava
+    user_guide: Uporabniški priročnik
   merge_accounts:
     modal:
       title: Združite račune
@@ -551,6 +555,7 @@ sl:
     add_a_comment: Dodaj komentar
     share_your_thoughts: Delite svoje misli …
     share_on_poll: Postavite vprašanje ali delite nove informacije
+    type_at_to_notify_people: Vtipkajte {'@'}, da obvestite ljudi
   thread_nav:
     participants: Udeleženci
   sidebar:
@@ -1088,6 +1093,11 @@ sl:
     copy_for_ai_skill_description: Kopirajte nit kot strukturiran Markdown za pomočnika z umetno inteligenco. Vključite celotno veščino moderatorja Loomio za smernice, ki temeljijo na praksah moderiranja Loomio.
     share_ai_skill: Če napišete novo veščino umetne inteligence ali izboljšate že podano veščino, jo lahko delite z ekipo Loomio
     share_ai_skill_contact: Kontaktirajte ekipo Loomio
+    copy_markdown: Kopiraj Markdown
+    copy_markdown_description: Kopirajte nit kot strukturiran Markdown – idealno za uporabo z agentom umetne inteligence ali za ustvarjanje preprostega dokumenta iz vsebine niti.
+    thread_markdown_copied: Nit Markdown kopiran
+    move_thread_v2: Premakni nit
+    more: Več
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
     colors: Barve
@@ -2003,6 +2013,7 @@ sl:
     export_blt: Izvoz glasovnic (BLT)
     status: Stanje
     your_vote_is_requested: Zahteva se vaš glas
+    browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo ankete, pri čemer uporabite primer kot izhodišče."
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2487,6 +2498,12 @@ sl:
     notification_only_label: Pošlji samo naslov obvestila
     check_for_test_message: Preverite svojo klepetalnico za sporočilo bota!
     webex: Webex
+    chat_integrations: Integracije klepeta
+    no_chat_integrations_yet: Pošlji obvestila o dejavnosti Loomia v klepetalno storitev vaše skupine
+    new_chat_integration: Nova integracija klepeta
+    delete_chat_integration: Želite izbrisati integracijo klepeta?
+    delete_chat_integration_helptext: Loomio bo prenehal pošiljati obvestila uporabniku %{name}
+    chat_integration_deleted: Integracija klepeta je bila izbrisana
   webhook:
     integrations: Integracije
     api_keys: API ključi
@@ -2858,6 +2875,7 @@ sl:
     start_a_direct_discussion: Začnite neposredno razpravo
     these_are_templates: To so predloge za razpravo v vaši skupini.
     start_a_new_discussion: Začni novo razpravo
+    browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo za razpravo, pri čemer uporabite primer kot izhodišče."
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.
@@ -2881,6 +2899,11 @@ sl:
     confirm_change_to_private: "%{groupName} je odprta skupina. Če nadaljujete, bo ta razprava javna."
     messages:
       success: Razprava je bila premaknjena na %{name}
+    move_thread_title: Premakni nit
+    destination: Destinacija
+    direct_thread: Neposredna nit
+    direct_thread_hint: Vsi, ki so sodelovali, bodo ohranili dostop. Vi in ustvarjalec teme bosta skrbnika teme.
+    direct_thread_anonymous_poll: Niti, ki vsebujejo anonimne ankete, ni mogoče pretvoriti v neposredne niti, ker bi to lahko razkrilo, kdo je glasoval
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.
@@ -2967,3 +2990,7 @@ sl:
     title: Nastaviti geslo?
     helptext: Naslednjič se lahko prijavite z geslom, namesto da čakate na povezavo po e-pošti.
     no_thanks: Ne, hvala
+  mention_notifications_count:
+    nobody_will_be_notified: Nihče ne bo obveščen
+    one_person_will_be_notified: Obveščena bo 1 oseba
+    x_people_will_be_notified: Obveščenih bo %{count} oseb

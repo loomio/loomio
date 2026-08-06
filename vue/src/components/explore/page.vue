@@ -149,7 +149,7 @@ v-main
               common-icon.mr-2(name="mdi-thumbs-up-down")
               span.mr-4 {{group.pollsCount}}
       .lmo-show-more(v-show='canLoadMoreGroups')
-        v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
+        v-btn(variant="tonal" color="primary" v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
 
 
 </template>

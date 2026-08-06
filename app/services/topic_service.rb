@@ -71,11 +71,14 @@ class TopicService
   end
 
   def self.move(topic:, params:, actor:)
-    destination = ModelLocator.new(:group, params).locate || NullGroup.new
+    direct = ActiveModel::Type::Boolean.new.cast(params[:make_direct])
+    destination = direct ? NullGroup.new : ModelLocator.new(:group, params).locate!
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
     Topic.transaction do
+      direct_participants_retain!(topic:, actor:) if direct
+
       topic.update!(group_id: destination.present? ? destination.id : nil,
                     private: moved_discussion_privacy_for(topic, destination))
 
@@ -86,6 +89,69 @@ class TopicService
       ReindexDiscussionWorker.perform_later(topic.id)
       Events::DiscussionMoved.publish!(topic.topicable, actor)
     end
+  end
+
+  def self.direct_participant_ids(topic:, actor:)
+    direct_participant_ids = topic.items.where.not(user_id: nil).distinct.pluck(:user_id)
+    direct_participant_ids.concat(
+      topic.polls
+        .where(anonymous: false)
+        .joins(:stances)
+        .merge(Stance.latest.decided)
+        .pluck("stances.participant_id")
+    )
+
+    topic.items
+      .where.not(eventable_type: nil, eventable_id: nil)
+      .distinct
+      .pluck(:eventable_type, :eventable_id)
+      .group_by(&:first)
+      .each_value do |eventables|
+        direct_participant_ids.concat(
+          Reaction.where(
+            reactable_type: eventables.first.first,
+            reactable_id: eventables.map(&:last)
+          ).pluck(:user_id)
+        )
+      end
+
+    direct_participant_ids
+      .concat([actor.id, topic.topicable.author_id])
+      .compact
+      .uniq
+  end
+
+  def self.direct_participants_retain!(topic:, actor:)
+    if topic.polls.where(anonymous: true).exists?
+      topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
+      raise ActiveRecord::RecordInvalid, topic
+    end
+
+    direct_participant_ids = direct_participant_ids(topic:, actor:)
+    direct_admin_ids = [actor.id, topic.topicable.author_id].compact.uniq
+    direct_revoked_at = Time.current
+
+    topic.topic_readers
+      .where.not(user_id: direct_participant_ids)
+      .update_all(
+        admin: false,
+        revoked_at: direct_revoked_at,
+        revoker_id: actor.id
+      )
+
+    direct_participant_ids.each do |user_id|
+      reader = TopicReader.for(user: User.find(user_id), topic:)
+      reader.assign_attributes(
+        admin: direct_admin_ids.include?(user_id),
+        guest: true,
+        inviter_id: reader.inviter_id || actor.id,
+        revoked_at: nil,
+        revoker_id: nil
+      )
+      reader.save!
+    end
+
+    topic.update_members_count
   end
 
   def self.pin(topic:, actor:)
@@ -117,6 +183,8 @@ class TopicService
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
     discussion = Discussion.find(discussion_id)
     actor = User.find(actor_id)
+    return unless actor.ability.can?(:mark_as_read, discussion.topic)
+
     mark_as_read(topic: discussion.topic, params: {ranges: ranges}, actor: actor)
   end
 

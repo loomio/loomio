@@ -116,23 +116,26 @@ div
             v-card-text.text-medium-emphasis(v-if="preview.description" v-html="truncate(preview.description, {length: 240})")
 </template>
 
-<style lang="sass">
-.link-preview
-  position: relative
-  overflow-wrap: break-word
-  word-wrap: break-word
-  word-break: break-word
+<style>
+.link-preview {
+  position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
 
-.link-preview .v-card-title
-  white-space: wrap
+.link-preview .v-card-title {
+  white-space: wrap;
+}
 
-.link-preview__image
-  height: 160px
-  overflow: none
-  background-position: center
+.link-preview__image {
+  height: 160px;
+  overflow: none;
+  background-position: center;
+}
 
-.link-preview__btn
-  top: 8px
-  position: absolute
-
+.link-preview__btn {
+  top: 8px;
+  position: absolute;
+}
 </style>

@@ -63,7 +63,7 @@ v-menu.notifications(location="bottom" v-model="open")
       template(v-slot:prepend)
         user-avatar.mr-3(v-if="n.actor()" :user="n.actor()")
       v-list-item-title.notification__content
-        span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
+        span(v-t="{path: n.translationPath(), args: n.args()}")
         space
         mid-dot
         space
@@ -72,15 +72,17 @@ v-menu.notifications(location="bottom" v-model="open")
     v-list-item.notification(v-t="'notifications.no_notifications'")
 </template>
 
-<style lang="sass">
-.notifications__dropdown
-  max-width: 512px
-  overflow-y: scroll
-  max-height: 600px
+<style>
+.notifications__dropdown {
+  max-width: 512px;
+  overflow-y: scroll;
+  max-height: 600px;
+}
 
-.notification__content
-  white-space: initial
-  -webkit-line-clamp: 2
-  -webkit-box-orient: vertical
-  display: -webkit-box
+.notification__content {
+  white-space: initial;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
 </style>

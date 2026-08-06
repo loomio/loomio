@@ -149,6 +149,7 @@ sv:
     '404':
       body: Det begärda objektet hittades inte. Detta kan hända om en diskussion eller omröstning har raderats.
     new_account_trial_group_limit: Nya konton är begränsade till en grupp. Kontakta supporten om du behöver fler.
+    direct_thread_anonymous_poll: En tråd som innehåller en anonym omröstning kan inte konverteras till en direkt tråd
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-

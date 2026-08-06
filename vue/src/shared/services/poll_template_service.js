@@ -8,6 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { I18n }           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
+import { exportTemplateFile } from '@/shared/helpers/template_file';
 
 export default new class PollTemplateService {
   canEditTemplate(pollTemplate, group) {
@@ -39,12 +40,22 @@ export default new class PollTemplateService {
       },
 
       fork_template: {
-        name: 'common.action.fork_template',
-        icon: 'mdi-source-branch-plus',
+        name: 'templates.make_a_copy',
+        icon: 'mdi-content-copy',
         menu: true,
         canPerform() { return pollTemplate.id && service.canEditTemplate(pollTemplate, group); },
         to() {
           return `/poll_templates/new?template_id=${pollTemplate.id}&group_id=${group.id}&return_to=${Session.returnTo()}`;
+        }
+      },
+
+      export_json: {
+        name: 'common.action.export_json',
+        icon: 'mdi-download',
+        menu: true,
+        canPerform() { return !!(pollTemplate.id || pollTemplate.key); },
+        perform() {
+          exportTemplateFile('poll_template', pollTemplate, group.id);
         }
       },
 

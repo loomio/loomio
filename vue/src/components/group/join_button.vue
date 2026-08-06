@@ -84,7 +84,7 @@ export default
 v-alert.my-4.text-center(
   variant="tonal"
   density="compact"
-  color="primary"
+  color="info"
   v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)"
 )
   p.pb-4(v-t="'join_group_button.not_a_member'")

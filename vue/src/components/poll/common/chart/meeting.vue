@@ -82,46 +82,56 @@ export default {
             | &nbsp;
 </template>
 
-<style lang="sass">
-.poll-meeting-chart-panel
-  overflow-x: scroll
+<style>
+.poll-meeting-chart-panel {
+  overflow-x: scroll;
+}
 
-.poll-meeting-chart-table
-  width: auto
-  background-color: none
+.poll-meeting-chart-table {
+  width: auto;
+  background-color: none;
+}
 
-.poll-meeting-chart-table tbody tr:hover
-  background-color: #EEE
+.poll-meeting-chart-table tbody tr:hover {
+  background-color: #EEE;
+}
 
-.v-theme--dark, .v-theme--darkBlue
-  .poll-meeting-chart-table tbody tr:hover
-    background-color: #333
+.v-theme--dark .poll-meeting-chart-table tbody tr:hover {
+  background-color: #333;
+}
 
-.poll-meeting-chart__bar
-  border: 1px solid
-  margin: 4px 0px
+.poll-meeting-chart__bar {
+  border: 1px solid;
+  margin: 4px 0px;
   /* padding: 0 2px */
-  display: flex
-  flex-direction: row
-  align-items: center
-  justify-content: space-around
-  border-radius: 2px
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 2px;
+}
 
-.poll-meeting-chart__cell
-  width: 24px
-  height: 24px
-  border-radius: 2px
-.poll-meeting-chart__cell--yes
-  background-color: #00D177
+.poll-meeting-chart__cell {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+}
 
-.poll-meeting-chart__cell--maybe
-  background-color: #F6A82B
+.poll-meeting-chart__cell--yes {
+  background-color: #22B866;
+}
 
-.poll-meeting-chart__meeting-time
-  font-family: 'Roboto Mono'
-  font-size: 12px
-  padding-right: 24px
+.poll-meeting-chart__cell--maybe {
+  background-color: #F5C401;
+}
 
-.total
-  padding-left: 24px
+.poll-meeting-chart__meeting-time {
+  font-family: "Roboto Mono";
+  font-size: 12px;
+  padding-right: 24px;
+}
+
+.total {
+  padding-left: 24px;
+}
 </style>

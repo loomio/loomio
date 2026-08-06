@@ -18,6 +18,70 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal @user, group.reload.creator
   end
 
+  test "publishes a public subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'closed')
+    subgroup = Group.new(
+      name: "Public subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'closed'
+    )
+
+    assert_subgroup_published_to_parent(subgroup, parent)
+  end
+
+  test "publishes a parent-visible subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'secret')
+    subgroup = Group.new(
+      name: "Parent-visible subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'closed'
+    )
+
+    assert subgroup.is_visible_to_parent_members?
+    assert_subgroup_published_to_parent(subgroup, parent)
+  end
+
+  test "does not publish a secret subgroup to parent group members" do
+    parent = create_parent_group(group_privacy: 'secret')
+    subgroup = Group.new(
+      name: "Secret subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: 'secret'
+    )
+    publications = capture_group_publications do
+      GroupService.create(group: subgroup, actor: @user)
+    end
+
+    refute publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
+  end
+
+  test "exports open and closed subgroups for a parent group admin" do
+    parent = create_parent_group(group_privacy: 'secret')
+    closed_subgroup = create_subgroup(parent: parent, group_privacy: 'closed')
+    open_subgroup = create_subgroup(parent: parent, group_privacy: 'open')
+    secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
+    joined_secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
+    joined_secret_subgroup.add_member!(@user, inviter: joined_secret_subgroup.creator)
+
+    group_ids = capture_group_export_ids(parent, @user)
+
+    assert_includes group_ids, parent.id
+    assert_includes group_ids, closed_subgroup.id
+    assert_includes group_ids, open_subgroup.id
+    assert_includes group_ids, joined_secret_subgroup.id
+    refute_includes group_ids, secret_subgroup.id
+  end
+
+  test "only group admins can export a group" do
+    parent = create_parent_group(group_privacy: 'secret')
+    member = users(:member)
+    parent.add_member!(member, inviter: @user)
+
+    assert_raises CanCan::AccessDenied do
+      GroupService.export(group: parent, actor: member)
+    end
+  end
+
   test "does not reparent a group on update" do
     group = Group.create!(
       name: "Managed Group",
@@ -178,5 +242,46 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_raises CanCan::AccessDenied do
       GroupService.move(group: group, parent: parent, actor: @user)
     end
+  end
+
+  private
+
+  def create_parent_group(group_privacy:)
+    Group.create!(
+      name: "Parent group #{SecureRandom.hex(4)}",
+      group_privacy: group_privacy
+    ).tap { |group| group.add_admin!(@user) }
+  end
+
+  def create_subgroup(parent:, group_privacy:)
+    Group.create!(
+      name: "Subgroup #{SecureRandom.hex(4)}",
+      parent: parent,
+      group_privacy: group_privacy
+    )
+  end
+
+  def capture_group_export_ids(group, actor)
+    group_ids = nil
+    perform_later = ->(ids, _name, _actor_id) { group_ids = ids }
+    GroupExportWorker.stub(:perform_later, perform_later) do
+      GroupService.export(group: group, actor: actor)
+    end
+    group_ids
+  end
+
+  def assert_subgroup_published_to_parent(subgroup, parent)
+    publications = capture_group_publications do
+      GroupService.create(group: subgroup, actor: @user)
+    end
+
+    assert publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
+  end
+
+  def capture_group_publications(&block)
+    publications = []
+    publish = ->(models, **options) { publications << [models, options] }
+    MessageChannelService.stub(:publish_models, publish, &block)
+    publications
   end
 end

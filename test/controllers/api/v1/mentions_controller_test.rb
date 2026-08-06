@@ -6,6 +6,9 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
 
     get :index, params: { topic_id: topic.id }
     assert_response :redirect
+
+    get :count, params: { topic_id: topic.id, handles_cmr: users(:admin).username }
+    assert_response :redirect
   end
 
   test "public topic members cannot be enumerated by non-members" do
@@ -13,6 +16,12 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
 
     get :index, params: { topic_id: topics(:public_discussion_topic).id, q: '' }, format: :json
 
+    assert_response :redirect
+
+    get :count, params: {
+      topic_id: topics(:public_discussion_topic).id,
+      handles_cmr: users(:admin).username
+    }
     assert_response :redirect
   end
 
@@ -67,6 +76,7 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
 
     rows = JSON.parse(response.body)
     handles = rows.map { |row| row['handle'] }
+    assert_equal group.handle, handles.first
     assert_includes handles, group.handle
   end
 
@@ -102,6 +112,10 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     rows = JSON.parse(response.body)
     handles = rows.map { |row| row['handle'] }
     refute_includes handles, group.handle
+
+    get :count, params: { topic_id: discussion.topic_id, handles_cmr: group.handle }
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)["count"]
   end
 
   test "returns users for group" do
@@ -155,9 +169,111 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     rows = JSON.parse(response.body)
     handles = rows.map { |row| row['handle'] }
 
-    assert_includes handles, user.username
+    refute_includes handles, user.username
     assert_includes handles, admin.username
     refute_includes handles, other_user.username
+
+    get :index, params: { topic_id: topic.id, q: user.username }
+    assert_response :success
+
+    handles = JSON.parse(response.body).map { |row| row['handle'] }
+    assert_includes handles, user.username
+  end
+
+  test "returns recently active topic members first" do
+    older_user = User.create!(
+      name: "Older participant",
+      email: "older-participant-#{SecureRandom.hex(4)}@example.com",
+      username: "olderparticipant#{SecureRandom.hex(4)}",
+      email_verified: true
+    )
+    newer_user = User.create!(
+      name: "Newer participant",
+      email: "newer-participant-#{SecureRandom.hex(4)}@example.com",
+      username: "newerparticipant#{SecureRandom.hex(4)}",
+      email_verified: true
+    )
+    group = groups(:group)
+    group.add_member! older_user
+    group.add_member! newer_user
+    discussion = DiscussionService.create(
+      params: { title: "Recent mentions #{SecureRandom.hex(4)}", group_id: group.id },
+      actor: users(:admin)
+    )
+    CommentService.create(
+      comment: Comment.new(parent: discussion, body: "Older comment"),
+      actor: older_user
+    )
+    CommentService.create(
+      comment: Comment.new(parent: discussion, body: "Newer comment"),
+      actor: newer_user
+    )
+
+    sign_in users(:admin)
+    get :index, params: { topic_id: discussion.topic_id }
+
+    assert_response :success
+    handles = JSON.parse(response.body).map { |row| row['handle'] }
+    assert_operator handles.index(newer_user.username), :<, handles.index(older_user.username)
+  end
+
+  test "counts unique recipients across user and group mentions" do
+    hex = SecureRandom.hex(4)
+    group = Group.create!(
+      name: "Mention count #{hex}",
+      handle: "mentioncount#{hex}",
+      members_can_announce: true
+    )
+    actor = User.create!(
+      name: "Mention actor",
+      email: "mention-actor-#{hex}@example.com",
+      username: "mentionactor#{hex}",
+      email_verified: true
+    )
+    muted_user = User.create!(
+      name: "Muted mention",
+      email: "muted-mention-#{hex}@example.com",
+      username: "mutedmention#{hex}",
+      email_verified: true
+    )
+    group_user = User.create!(
+      name: "Group mention",
+      email: "group-mention-#{hex}@example.com",
+      username: "groupmention#{hex}",
+      email_verified: true
+    )
+    [actor, muted_user, group_user].each { |user| group.add_member!(user) }
+    group.add_admin!(actor)
+    group.membership_for(muted_user).update!(volume: :mute)
+    discussion = DiscussionService.create(
+      params: { title: "Mention count #{hex}", group_id: group.id },
+      actor:
+    )
+
+    sign_in actor
+    get :count, params: {
+      topic_id: discussion.topic_id,
+      handles_cmr: [group.handle, muted_user.username, group_user.username, actor.username].join(",")
+    }
+
+    assert_response :success
+    assert_equal 3, JSON.parse(response.body)["count"]
+
+    get :count, params: {
+      group_id: group.id,
+      handles_cmr: [group.handle, muted_user.username, group_user.username, actor.username].join(",")
+    }
+
+    assert_response :success
+    assert_equal 3, JSON.parse(response.body)["count"]
+
+    get :count, params: {
+      topic_id: discussion.topic_id,
+      handles_cmr: group.handle
+    }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)["count"]
   end
 
   test "returns filtered results" do

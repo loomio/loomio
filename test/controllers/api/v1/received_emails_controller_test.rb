@@ -190,9 +190,15 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       body_html: "<p>hello there</p>",
       body_text: "hello there"
     )
+    event = Event.create!(kind: 'unknown_sender', eventable: received_email)
+    Notification.create!(event: event, user: @admin)
 
-    assert_difference 'MemberEmailAlias.count', 1 do
-      post :block, params: { id: received_email.id, user_id: @admin.id }
+    assert_difference -> { MemberEmailAlias.count }, 1 do
+      assert_difference -> { Event.where(eventable: received_email).count }, -1 do
+        assert_difference -> { Notification.where(event: event).count }, -1 do
+          post :block, params: { id: received_email.id, user_id: @admin.id }
+        end
+      end
     end
 
     json = JSON.parse(response.body)
