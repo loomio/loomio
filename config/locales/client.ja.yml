@@ -2613,6 +2613,12 @@ ja:
     tags_per_interval: "%{interval}別タグ数"
     all_groups_and_direct_threads: すべてのグループと直接のスレッド
     custom_selection: カスタム選択
+    whole_server: サーバー全体
+    whole_server_help: このレポートには、このサーバー上のすべてのグループと直接のスレッドのアクティビティが含まれています。
+    group_and_subgroups: "%{group}とサブグループ"
+    group_and_subgroups_help: このレポートには、%{group}とそのアクセス可能なサブグループの活動が含まれます。非公開のサブグループは、あなたがそのサブグループに所属している場合にのみ含まれます。
+    group_only: "%{group}のみ"
+    group_only_help: このレポートには、%{group} のアクティビティのみが含まれています。親グループの管理者は、親グループとそのアクセス可能なサブグループに関するレポートを作成することもできます。
   tips:
     youve_completed_all_the_steps: "\U0001F389 すべての手順が完了しました。"
     getting_started_checklist: 開始チェックリスト

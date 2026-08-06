@@ -1,14 +1,9 @@
 <script lang="js">
-import Session            from '@/shared/services/session';
 import { mdiCalendar } from '@mdi/js';
 
 import BarChart from '@/components/report/bar_chart';
 
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
-
-function parseGroupIds(ids) {
-  return (ids || '').split(',').map(id => parseInt(id)).filter(id => Number.isFinite(id));
-}
 
 function downloadCsv(headers, rows, filename) {
   const headerRow = headers.map(h => h.title).join(',');
@@ -96,14 +91,30 @@ export default {
       return months.reverse();
     },
     groupScopeItems() {
-      const items = [
-        {title: this.$t('sidebar.my_groups'), value: 'my'},
-        {title: this.$t('report.custom_selection'), value: 'custom'}
-      ];
-      if (this.current_user_is_admin) {
-        items.unshift({title: this.$t('sidebar.all_groups'), value: 'all'});
+      return this.group_scope_options.map(option => {
+        if (option.value === 'all') {
+          return {title: this.$t('report.whole_server'), value: option.value};
+        }
+        if (option.value === 'organisation') {
+          return {
+            title: this.$t('report.group_and_subgroups', {group: option.group_name}),
+            value: option.value
+          };
+        }
+        return {
+          title: this.$t('report.group_only', {group: option.group_name}),
+          value: option.value
+        };
+      });
+    },
+    groupScopeHelp() {
+      const option = this.group_scope_options.find(option => option.value === this.group_scope);
+      if (!option) return '';
+      if (option.value === 'all') return this.$t('report.whole_server_help');
+      if (option.value === 'organisation') {
+        return this.$t('report.group_and_subgroups_help', {group: option.group_name});
       }
-      return items;
+      return this.$t('report.group_only_help', {group: option.group_name});
     }
   },
   data() {
@@ -115,10 +126,8 @@ export default {
         labels: [],
         datasets: []
       },
-      all_groups: [],
-      group_scope: this.$route.query['group_scope'] || (this.$route.query['group_ids'] ? 'custom' : 'my'),
-      group_ids: parseGroupIds(this.$route.query['group_ids']),
-      current_user_is_admin: Session.user().isAdmin,
+      group_scope: this.$route.query['group_scope'] || '',
+      group_scope_options: [],
 
       start_menu: false,
       end_menu: false,
@@ -202,8 +211,8 @@ export default {
     interval(val) {
       this.fetch();
     },
-    group_scope(val) {
-      this.fetch();
+    group_scope(val, oldVal) {
+      if (val && oldVal) this.fetch();
     },
     tag_threads_authored_only(val) {
       if (this.user_data) {
@@ -263,7 +272,7 @@ export default {
         interval: this.interval,
         start_month: this.start_month,
         end_month: this.end_month,
-        group_ids: this.group_ids.join(','),
+        group_id: this.$route.query['group_id'] || '',
         ...extra,
       };
       return new URLSearchParams(queryParams).toString();
@@ -272,9 +281,8 @@ export default {
       this.report_data = data;
       this.visible_tags = data.tag_names.slice();
       this.firstYear = data.first_year;
-      this.all_groups = data.all_groups;
-      this.group_ids = data.group_ids;
-      this.current_user_is_admin = data.current_user_is_admin;
+      this.group_scope_options = data.group_scope_options;
+      this.group_scope = data.group_scope;
 
       this.topics_count = data.topics_count;
       this.discussion_topics_count = data.discussion_topics_count;
@@ -396,23 +404,17 @@ v-main
   v-container.report-page.max-width-900
     h1.text-headline-large.mb-8(v-t="'group_page.participation_report'")
 
-    v-select(
+    v-select.mb-4(
       :label="$t('common.groups')"
       v-model="group_scope"
       :items="groupScopeItems"
     )
 
-    v-select(
-      v-if="group_scope === 'custom'"
-      :label="$t('common.groups')"
-      v-model="group_ids"
-      :items="all_groups"
-      item-title="name"
-      item-value="id"
-      multiple
-      small-chips
-      @blur="fetch()"
-    )
+    v-alert.mb-4(
+      v-if="groupScopeHelp"
+      type="info"
+      variant="tonal"
+    ) {{groupScopeHelp}}
 
     .d-flex
       v-select(

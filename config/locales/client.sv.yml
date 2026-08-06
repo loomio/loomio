@@ -2614,6 +2614,12 @@ sv:
     tags_per_interval: Taggar per %{interval}
     all_groups_and_direct_threads: Alla grupper och direkta trådar
     custom_selection: Anpassat val
+    whole_server: Hela servern
+    whole_server_help: Den här rapporten inkluderar aktivitet från varje grupp och direkta trådar på den här servern
+    group_and_subgroups: "%{group} och undergrupper"
+    group_and_subgroups_help: Den här rapporten inkluderar aktivitet från %{group} och dess tillgängliga undergrupper. Hemliga undergrupper inkluderas endast när du tillhör dem.
+    group_only: Endast %{group}
+    group_only_help: Denna rapport inkluderar endast aktivitet från %{group}. Administratörer för överordnade grupper kan också rapportera om överordnade grupper och dess tillgängliga undergrupper.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har slutfört alla steg!"
     getting_started_checklist: Checklista för att komma igång

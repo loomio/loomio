@@ -2614,6 +2614,12 @@ ro:
     tags_per_interval: Etichete per %{interval}
     all_groups_and_direct_threads: Toate grupurile și firele de discuție directe
     custom_selection: Selecție personalizată
+    whole_server: Întregul server
+    whole_server_help: Acest raport include activitatea din fiecare grup și fir de execuție direct de pe acest server
+    group_and_subgroups: "%{group} și subgrupuri"
+    group_and_subgroups_help: Acest raport include activitatea din %{group} și subgrupurile sale accesibile. Subgrupurile secrete sunt incluse numai atunci când aparțineți acestora.
+    group_only: Doar %{group}
+    group_only_help: Acest raport include doar activitatea din %{group}. Administratorii grupului părinte pot, de asemenea, să raporteze despre grupul părinte și subgrupurile sale accesibile.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ai finalizat toți pașii!"
     getting_started_checklist: Listă de verificare pentru început

@@ -2633,6 +2633,12 @@ he:
     tags_per_interval: תגיות לכל %{interval}
     all_groups_and_direct_threads: כל הקבוצות והשרשורים הישירים
     custom_selection: בחירה מותאמת אישית
+    whole_server: שרת שלם
+    whole_server_help: דוח זה כולל פעילות מכל קבוצה ושרשור ישיר בשרת זה
+    group_and_subgroups: "%{group} ותת-קבוצות"
+    group_and_subgroups_help: דוח זה כולל פעילות מ-%{group} ותת-הקבוצות הנגישות לה. תת-קבוצות סודיות נכללות רק כאשר אתה שייך אליהן.
+    group_only: "%{group} בלבד"
+    group_only_help: דוח זה כולל פעילות מ-%{group} בלבד. מנהלי קבוצות האם יכולים גם לדווח על קבוצת האם ועל תת-הקבוצות הנגישות לה.
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה

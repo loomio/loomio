@@ -2614,6 +2614,12 @@ da:
     tags_per_interval: Tags pr. %{interval}
     all_groups_and_direct_threads: Alle grupper og direkte tråde
     custom_selection: Brugerdefineret valg
+    whole_server: Hele serveren
+    whole_server_help: Denne rapport indeholder aktivitet fra alle grupper og direkte tråde på denne server
+    group_and_subgroups: "%{group} og undergrupper"
+    group_and_subgroups_help: Denne rapport inkluderer aktivitet fra %{group} og dens tilgængelige undergrupper. Hemmelige undergrupper er kun inkluderet, når du tilhører dem.
+    group_only: Kun %{group}
+    group_only_help: Denne rapport indeholder kun aktivitet fra %{group}. Administratorer af forældregrupper kan også rapportere om forældregruppen og dens tilgængelige undergrupper.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion

@@ -2641,6 +2641,12 @@ nl_NL:
     tags_per_interval: Tags per %{interval}
     all_groups_and_direct_threads: Alle groepen en directe discussies
     custom_selection: Aangepaste selectie
+    whole_server: Volledige server
+    whole_server_help: Dit rapport bevat activiteiten van elke groep en elk direct gesprek op deze server.
+    group_and_subgroups: "%{group} en subgroepen"
+    group_and_subgroups_help: Dit rapport bevat activiteiten van %{group} en de daaraan verbonden subgroepen. Geheime subgroepen worden alleen opgenomen als je er lid van bent.
+    group_only: "%{group} alleen"
+    group_only_help: Dit rapport bevat alleen activiteiten van %{group}. Beheerders van de bovenliggende groep kunnen ook rapporteren over de bovenliggende groep en de daartoe toegankelijke subgroepen.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag
