@@ -388,6 +388,7 @@ nl_NL:
   error_page:
     forbidden: Je bent niet gemachtigd om dit te doen.
     forbidden_view: U heeft geen toestemming om dit te bekijken.
+    signed_in_account_tip: Je bent mogelijk aangemeld bij het verkeerde account. Meld je af en meld je daarna aan met een ander e-mailadres.
     page_not_found: Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.
     internal_server_error: Helaas, er ging iets fout. Probeer het opnieuw.
   verify_email_notice:

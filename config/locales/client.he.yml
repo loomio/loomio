@@ -386,6 +386,7 @@ he:
   error_page:
     forbidden: אין לך הרשאות לעשות זאת.
     forbidden_view: אין לך הרשאה לצפות בזה.
+    signed_in_account_tip: ייתכן שנכנסת לחשבון הלא נכון. יש לצאת מהחשבון ולהיכנס שוב עם כתובת אימייל אחרת.
     page_not_found: אנחנו לא יכולים למצוא את זה. יתכן והוא נמחק או הוזז.
     internal_server_error: מצטערים,  היתה כאן שגיאה. אנא נסו שוב.
   verify_email_notice:

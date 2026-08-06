@@ -53,7 +53,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_non_member')
-    page.expectElement('.error-page')
+    page.expectElement('.error-page__forbidden.v-alert')
+    page.expectText('.error-page__forbidden', 'You do not have permission to view this')
+    page.expectText('.error-page__forbidden', 'You may be signed in to the wrong account')
   },
 
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {

@@ -388,6 +388,7 @@ hu:
   error_page:
     forbidden: Ehhez nincs jogosultságod.
     forbidden_view: Nincs engedélye ennek megtekintéséhez.
+    signed_in_account_tip: Lehet, hogy nem a megfelelő fiókba vagy bejelentkezve. Jelentkezz ki, majd jelentkezz be egy másik e-mail-címmel.
     page_not_found: Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték.
     internal_server_error: Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.
   verify_email_notice:

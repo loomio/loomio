@@ -386,6 +386,7 @@ tr:
   error_page:
     forbidden: Bunu yapmaya yetkin bulunmuyor.
     forbidden_view: Bunu görüntüleme izniniz yok.
+    signed_in_account_tip: Yanlış hesapta oturum açmış olabilirsiniz. Oturumu kapatın, ardından başka bir e-posta adresiyle oturum açın.
     page_not_found: Bulunamadı. Bu taşınmış veya silinmiş olabilir.
     internal_server_error: Üzgünüz, yanlış giden birşeyler oldu. Lütfen tekrar deneyin.
   verify_email_notice:

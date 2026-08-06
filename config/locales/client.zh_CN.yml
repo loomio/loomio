@@ -408,6 +408,7 @@ zh_CN:
   error_page:
     forbidden: 您没有权限这样做。
     forbidden_view: 您没有权限查看此内容。
+    signed_in_account_tip: 您可能登录了错误的账户。请退出登录，然后使用其他电子邮件地址登录。
     page_not_found: 页面未找到。该页面可能已被删除或移动。
     internal_server_error: 服务器错误！请重试。
   verify_email_notice:

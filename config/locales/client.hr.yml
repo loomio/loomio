@@ -386,6 +386,7 @@ hr:
   error_page:
     forbidden: Nepostojeća dozvola za izvršenje.
     forbidden_view: Nemate dopuštenje za pregled ovoga.
+    signed_in_account_tip: Možda ste prijavljeni na pogrešan račun. Odjavite se, a zatim se prijavite s drugom adresom e-pošte.
     page_not_found: To nismo uspjeli pronaći. Možda je izbrisan ili premješten.
     internal_server_error: Žao nam je, ali nešto je pošlo krivo. Molim te pokušaj ponovno.
   verify_email_notice:

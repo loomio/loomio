@@ -385,6 +385,7 @@ ja:
   error_page:
     forbidden: このアクションの許可がありません
     forbidden_view: これを閲覧する権限がありません。
+    signed_in_account_tip: 別のアカウントでログインしている可能性があります。ログアウトしてから、別のメールアドレスでログインしてください。
     page_not_found: それを見つけることができませんでした。削除または移動された可能性があります。
     internal_server_error: 申し訳ありませんが、問題が発生しました。もう一度試してください。
   verify_email_notice:

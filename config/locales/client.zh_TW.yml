@@ -389,6 +389,7 @@ zh_TW:
   error_page:
     forbidden: 您沒有足夠的權限。
     forbidden_view: 您無權檢視此內容。
+    signed_in_account_tip: 您可能登入了錯誤的帳戶。請登出，然後使用其他電子郵件地址登入。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
     internal_server_error: 很抱歉，但是有些事情不太對勁。請再試一次。
   verify_email_notice:

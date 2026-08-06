@@ -386,6 +386,7 @@ ro:
   error_page:
     forbidden: Nu ai permisiune pentru aceasta actiune.
     forbidden_view: Nu aveți permisiunea de a vizualiza acest lucru.
+    signed_in_account_tip: Este posibil să fiți conectat la contul greșit. Deconectați-vă, apoi conectați-vă cu o altă adresă de e-mail.
     page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.
     internal_server_error: Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.
   verify_email_notice:

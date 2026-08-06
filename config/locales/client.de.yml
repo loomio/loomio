@@ -394,6 +394,7 @@ de:
   error_page:
     forbidden: Du bist nicht berechtigt, diese Aktion auszuführen.
     forbidden_view: Du hast keine Berechtigung, dies anzuzeigen.
+    signed_in_account_tip: Du bist möglicherweise mit dem falschen Konto angemeldet. Melde dich ab und dann mit einer anderen E-Mail-Adresse wieder an.
     page_not_found: Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.
     internal_server_error: Entschuldigung, etwas ist schiefgegangen. Bitte versuche es erneut.
   verify_email_notice:

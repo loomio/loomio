@@ -386,6 +386,7 @@ fi:
   error_page:
     forbidden: Sinulla ei ole oikeutta tehdä tätä.
     forbidden_view: Sinulla ei ole lupaa tarkastella tätä.
+    signed_in_account_tip: Olet ehkä kirjautunut väärälle tilille. Kirjaudu ulos ja kirjaudu sitten sisään toisella sähköpostiosoitteella.
     page_not_found: Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.
     internal_server_error: Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.
   verify_email_notice:

@@ -396,6 +396,7 @@ fr:
   error_page:
     forbidden: Tu n’as pas la permission de faire cela.
     forbidden_view: Tu n’es pas autorisé à le voir.
+    signed_in_account_tip: Tu es peut-être connecté avec le mauvais compte. Déconnecte-toi, puis reconnecte-toi avec une autre adresse e-mail.
     page_not_found: Nous n’avons pas pu trouver cela. Cela a dû être déplacé ou supprimé.
     internal_server_error: Désolé, mais quelque chose s’est mal passé. Réessayer.
   verify_email_notice:

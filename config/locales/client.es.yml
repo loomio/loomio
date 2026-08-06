@@ -388,6 +388,7 @@ es:
   error_page:
     forbidden: No tienes permiso para hacer esto.
     forbidden_view: No tienes permiso para ver esto.
+    signed_in_account_tip: Es posible que hayas iniciado sesión con la cuenta equivocada. Cierra sesión y vuelve a iniciarla con otra dirección de correo electrónico.
     page_not_found: No encontramos lo que buscas. Puede haber sido borrado o movido.
     internal_server_error: Lo sentimos, algo ha salido mal. Inténtalo de nuevo.
   verify_email_notice:

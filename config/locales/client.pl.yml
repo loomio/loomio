@@ -388,6 +388,7 @@ pl:
   error_page:
     forbidden: Nie masz uprawnień, aby to wykonać.
     forbidden_view: Nie masz uprawnień, aby to zobaczyć.
+    signed_in_account_tip: Możesz być zalogowany na niewłaściwe konto. Wyloguj się, a następnie zaloguj się przy użyciu innego adresu e-mail.
     page_not_found: Nie udało się tego znaleźć. Możliwe, że zostało to usunięte lub przeniesione.
     internal_server_error: Przykro nam, ale coś poszło nie tak. Spróbuj jeszcze raz.
   verify_email_notice:

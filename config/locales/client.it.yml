@@ -396,6 +396,7 @@ it:
   error_page:
     forbidden: Non hai l'autorizzazione per farlo.
     forbidden_view: Non hai le autorizzazioni per vederlo.
+    signed_in_account_tip: Potresti aver effettuato l'accesso con l'account sbagliato. Esci, quindi accedi con un altro indirizzo email.
     page_not_found: Oggetto non trovato. Potrebbe essere stato rimosso o cancellato.
     internal_server_error: 'Spiacenti, ma qualcosa è andato storto. Riprova più tardi '
   verify_email_notice:

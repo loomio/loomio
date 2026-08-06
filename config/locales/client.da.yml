@@ -386,6 +386,7 @@ da:
   error_page:
     forbidden: Du har ikke adgang til at gøre dette.
     forbidden_view: Du har ikke tilladelse til at se dette.
+    signed_in_account_tip: Du er muligvis logget ind på den forkerte konto. Log ud, og log derefter ind med en anden e-mailadresse.
     page_not_found: Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,
     internal_server_error: Noget gik desværre galt. Prøv igen.
   verify_email_notice:

@@ -388,6 +388,7 @@ ca:
   error_page:
     forbidden: No teniu permís per realitzar aquesta acció.
     forbidden_view: No teniu permís per veure això.
+    signed_in_account_tip: És possible que hagis iniciat la sessió amb el compte equivocat. Tanca la sessió i inicia-la amb una altra adreça electrònica.
     page_not_found: No ho hem pogut trobar. Pot ser que hagi estat suprimit o mogut.
     internal_server_error: Alguna cosa ha anat malament. Torneu-ho a provar.
   verify_email_notice:

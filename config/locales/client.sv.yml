@@ -386,6 +386,7 @@ sv:
   error_page:
     forbidden: Du saknar behörighet att göra detta.
     forbidden_view: Du har inte behörighet att se detta.
+    signed_in_account_tip: Du kan vara inloggad på fel konto. Logga ut och logga sedan in med en annan e-postadress.
     page_not_found: Vi kunde inte hitta det. Det kan ha blivit raderat eller flyttat.
     internal_server_error: Vi är ledsna, men något gick fel. Var god försök igen.
   verify_email_notice:

@@ -437,6 +437,7 @@ en:
   error_page:
     forbidden: You do not have permission to do this.
     forbidden_view: You do not have permission to view this.
+    signed_in_account_tip: You may be signed in to the wrong account. Sign out, then sign in with another email address.
     page_not_found: Page not found. It may have been deleted or moved.
     internal_server_error: Server error! Please try again.
   verify_email_notice:

@@ -396,6 +396,7 @@ pt_BR:
   error_page:
     forbidden: Você não tem permissão para fazer isso.
     forbidden_view: Você não tem permissão para ver isso.
+    signed_in_account_tip: Talvez você tenha entrado na conta errada. Saia e entre novamente com outro endereço de e-mail.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.
     internal_server_error: Lamentamos, mas algo deu errado. Tente novamente.
   verify_email_notice:

@@ -386,6 +386,7 @@ sl:
   error_page:
     forbidden: Nimaš dovoljenja za to.
     forbidden_view: Nimate dovoljenja za ogled tega.
+    signed_in_account_tip: Morda ste prijavljeni v napačen račun. Odjavite se in se nato prijavite z drugim e-poštnim naslovom.
     page_not_found: Tega nismo mogli najti. Morda je bil izbrisan ali premaknjen.
     internal_server_error: Žal nam je, ampak nekaj je šlo narobe. Prosim poskusite ponovno.
   verify_email_notice:
