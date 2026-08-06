@@ -44,9 +44,6 @@ module Loomio
 
     config.action_controller.action_on_unpermitted_parameters = :raise
 
-    # Enable the asset pipeline
-    config.assets.enabled = true
-
     config.active_storage.variant_processor = :vips
 
     if ENV['AWS_BUCKET']

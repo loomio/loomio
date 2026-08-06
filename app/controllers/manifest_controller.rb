@@ -1,6 +1,4 @@
 class ManifestController < ApplicationController
-  respond_to :json
-
   ICON_SIZES = %w(192 512).freeze
 
   def show

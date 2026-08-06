@@ -77,16 +77,6 @@ pre {
   white-space: nowrap;
 }
 
-.base-mailer__button--primary {
-  background-color: <%= AppConfig.theme[:primary_color] %>;
-  color: <%= AppConfig.theme[:text_on_primary_color] %>;
-}
-
-.base-mailer__button--accent {
-  background-color: <%= AppConfig.theme[:accent_color] %>;
-  color: <%= AppConfig.theme[:text_on_accent_color] %>;
-}
-
 .invite-people-mailer__value-proposition {
   font-size: 16px;
   font-weight: bold;
@@ -197,18 +187,6 @@ mark[data-color="grey"] { background-color: #e0e0e0; }
   font-weight: bold;
 }
 
-.poll-mailer__poll-option-container {
-  border: 1px solid <%= AppConfig.theme[:primary_color] %>;
-}
-
-.poll-mailer__option-indicator {
-  color: <%= AppConfig.theme[:primary_color] %>;
-}
-
-.poll-mailer__result-bar {
-  background-color: <%= AppConfig.theme[:primary_color] %>;
-}
-
 .poll-meeting-chart td {
   font-size: 0.8rem;
   height: 24px;
@@ -231,28 +209,4 @@ mark[data-color="grey"] { background-color: #e0e0e0; }
 
 .poll-meeting-chart__meeting-time {
   font-family: monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  .poll-mailer__poll-option-container {
-    border-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
-  }
-
-  .poll-mailer__option-indicator {
-    color: <%= AppConfig.theme[:dark_primary_color] %> !important;
-  }
-
-  .poll-mailer__result-bar {
-    background-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
-  }
-
-  .base-mailer__button--primary {
-    background-color: <%= AppConfig.theme[:dark_primary_color] %> !important;
-    color: <%= AppConfig.theme[:dark_text_on_primary_color] %> !important;
-  }
-
-  .base-mailer__button--accent {
-    background-color: <%= AppConfig.theme[:dark_accent_color] %> !important;
-    color: <%= AppConfig.theme[:dark_text_on_accent_color] %> !important;
-  }
 }

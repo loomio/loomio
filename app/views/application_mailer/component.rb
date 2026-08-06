@@ -29,10 +29,9 @@ class Views::ApplicationMailer::Component < Phlex::HTML
     meta(name: "viewport", content: "width=device-width,initial-scale=1")
     meta(name: "color-scheme", content: "light dark")
     meta(name: "supported-color-schemes", content: "light dark")
-    style do
-      plain ":root { color-scheme: light dark; supported-color-schemes: light dark; }"
-    end
-    stylesheet_link_tag "email"
+    style { plain email_theme_css }
+    stylesheet_link_tag "vtfy/mailers"
+    stylesheet_link_tag "vtfy/email_utilities"
   end
 
   def time_ago(time, current_user)
