@@ -2478,6 +2478,7 @@ zh_CN:
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票与选民身份信息分开存储。投票结束后，结果才会公布。选民无法添加理由、提交投票后无法查看或更改投票。
     anonymous_voting_explanation: 确保任何人的投票情况都无法被知晓。匿名投票与选民身份信息分开记录。投票结果仅在投票结束后公布。选民无法添加理由说明，提交投票后也无法查看或更改投票。
     anonymous_voting_risk_explanation: 匿名投票与选民身份信息分开存储。投票结果仅在投票结束后显示，选民无法添加理由、在提交后查看自己的投票或更改投票。这些措施降低了将个人与投票关联起来的风险，但当有资格投票或实际投票的人很少、结果一致、投票模式具有明显特征，或选民公开自己的选择时，结果仍可能透露信息。
+    stance_reason_required_when_disagreeing: 意见不一致时需要填写
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

@@ -2813,6 +2813,7 @@ fi:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät äänestyksen päätyttyä. Äänestäjät eivät voi lisätä syitä, tarkastella ääntään sen lähettämisen jälkeen tai muuttaa ääntään.
     anonymous_voting_explanation: Tee mahdottomaksi tietää, miten joku äänesti. Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät vasta äänestyksen päätyttyä. Äänestäjät eivät voi lisätä perusteluja, tarkastella ääntään sen lähettämisen jälkeen tai muuttaa ääntään.
     anonymous_voting_risk_explanation: Anonyymit äänet tallennetaan erillään äänestäjien henkilöllisyyksistä. Tulokset näkyvät vasta äänestyksen päätyttyä, eivätkä äänestäjät voi lisätä perusteluja, tarkastella ääntään lähettämisen jälkeen tai muuttaa sitä. Nämä toimet vähentävät riskiä yhdistää henkilö ääneen, mutta tulokset voivat silti paljastaa tietoa, jos vain harvat ovat äänioikeutettuja tai äänestävät, tulos on yksimielinen, äänestysmallit ovat erottuvia tai äänestäjät kertovat valinnoistaan.
+    stance_reason_required_when_disagreeing: Pakollinen, kun on eri mieltä
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     verify_participants: Vahvista osallistujat

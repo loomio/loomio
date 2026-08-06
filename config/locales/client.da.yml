@@ -2813,6 +2813,7 @@ da:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises, når afstemningen er afsluttet. Vælgere kan ikke tilføje årsager, gennemgå deres stemme efter at have indsendt den eller ændre deres stemme.
     anonymous_voting_explanation: Gør det umuligt at vide, hvordan nogen har stemt. Anonyme stemmer registreres separat fra vælgeridentiteter. Resultaterne vises først, når afstemningen er afsluttet. Vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter at have afgivet den eller ændre deres stemme.
     anonymous_voting_risk_explanation: Anonyme stemmer gemmes separat fra vælgernes identitet. Resultaterne vises først, når afstemningen er afsluttet, og vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter afgivelse eller ændre den. Disse tiltag reducerer risikoen for at knytte en person til en stemme, men resultaterne kan stadig afsløre oplysninger, når få personer er stemmeberettigede eller stemmer, resultatet er enstemmigt, stemmemønstre er særlige, eller vælgere fortæller om deres valg.
+    stance_reason_required_when_disagreeing: Påkrævet ved uenighed
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere
