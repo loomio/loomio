@@ -274,3 +274,10 @@ languages in the Nov 2025 pass.
 | `config/locales/client.fr.yml` | `chatbot.no_chat_integrations_yet` | `Envoyez ... votre groupe` | `Envoie ... ton groupe` | French UI uses the informal singular register. |
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.more` | `更多的` | `更多` | The menu label is the standalone action “More”; the generated translation was an attributive adjective requiring a noun. |
 | `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | `chatbot.no_chat_integrations_yet`, `chatbot.delete_chat_integration_helptext` | Single-sentence UI strings with final full stops | Removed final full stops | Single-sentence UI strings do not use final full stops. |
+
+## 2026-08-07 — Vote reasons when disagreeing
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.pt_BR.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Necessário em caso de discordância.` | `Necessário em caso de discordância` | Single-sentence UI labels do not use final full stops |
+| `config/locales/client.tr.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Anlaşmazlık durumunda gereklidir.` | `Anlaşmazlık durumunda gereklidir` | Single-sentence UI labels do not use final full stops |

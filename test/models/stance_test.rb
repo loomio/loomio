@@ -54,6 +54,52 @@ class StanceTest < ActiveSupport::TestCase
     assert_not stance.valid?
   end
 
+  test "requires a reason for disagree and block options when configured" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree abstain disagree block],
+      stance_reason_required: "required_when_disagreeing"
+    ), actor: @admin)
+
+    %w[agree abstain].each do |icon|
+      assert stance_for(poll, icon: icon).valid?, "expected #{icon} without a reason to be valid"
+    end
+
+    %w[disagree block].each do |icon|
+      stance = stance_for(poll, icon: icon)
+      assert_not stance.valid?, "expected #{icon} without a reason to be invalid"
+      assert stance_for(poll, icon: icon, reason: "Because this concerns me").valid?
+    end
+  end
+
+  test "uses the option icon when deciding whether a reason is required" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree disagree],
+      stance_reason_required: "required_when_disagreeing"
+    ), actor: @admin)
+    objection = poll.poll_options.find_by!(icon: "disagree")
+    objection.update!(name: "Objection")
+
+    assert_not stance_for(poll, icon: "disagree").valid?
+  end
+
+  test "preserves the existing reason requirement modes" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree disagree]
+    ), actor: @admin)
+
+    poll.stance_reason_required = "optional"
+    assert stance_for(poll, icon: "disagree").valid?
+
+    poll.stance_reason_required = "required"
+    assert_not stance_for(poll, icon: "agree").valid?
+
+    poll.stance_reason_required = "disabled"
+    assert stance_for(poll, icon: "disagree").valid?
+  end
+
   test "choice shorthand with string" do
     poll = PollService.create(params: poll_params(
       maximum_stance_choices: 2,
@@ -74,5 +120,17 @@ class StanceTest < ActiveSupport::TestCase
     Stance.create!(poll: poll, participant: @admin, choice: ['dog', 'cat'])
     poll.update_counts!
     assert_equal [1, 1], poll.stance_counts
+  end
+
+  private
+
+  def stance_for(poll, icon:, reason: nil)
+    Stance.new(
+      poll: poll,
+      participant: @admin,
+      reason: reason,
+      cast_at: Time.zone.now,
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.find_by!(icon: icon).id, score: 1}]
+    )
   end
 end

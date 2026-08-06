@@ -2840,6 +2840,7 @@ pl:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Głosy anonimowe są przechowywane oddzielnie od tożsamości wyborców. Wyniki pojawiają się po zakończeniu głosowania. Wyborcy nie mogą dodawać powodów, przeglądać swojego głosu po jego oddaniu ani go zmieniać.
     anonymous_voting_explanation: Uniemożliwić poznanie, jak ktoś głosował. Głosy anonimowe są rejestrowane oddzielnie od tożsamości wyborców. Wyniki pojawiają się dopiero po zakończeniu głosowania. Wyborcy nie mogą dodawać uzasadnień, sprawdzać swojego głosu po jego oddaniu ani go zmieniać.
     anonymous_voting_risk_explanation: Anonimowe głosy są przechowywane oddzielnie od tożsamości głosujących. Wyniki są wyświetlane dopiero po zakończeniu głosowania, a głosujący nie mogą dodawać uzasadnień, przeglądać oddanego głosu ani go zmieniać. Środki te zmniejszają ryzyko powiązania osoby z głosem, ale wyniki mogą nadal ujawniać informacje, gdy niewiele osób jest uprawnionych do głosowania lub głosuje, wynik jest jednomyślny, wzorce głosowania są charakterystyczne albo głosujący ujawniają swoje wybory.
+    stance_reason_required_when_disagreeing: Wymagane w przypadku braku zgody
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     verify_participants: Zweryfikuj uczestników

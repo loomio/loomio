@@ -2813,6 +2813,7 @@ ro:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării. Alegătorii nu pot adăuga motive, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
     anonymous_voting_explanation: Faceți imposibilă știrea modului în care a votat cineva. Voturile anonime sunt înregistrate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării. Alegătorii nu pot adăuga declarații de motivare, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
     anonymous_voting_risk_explanation: Voturile anonime sunt stocate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării, iar alegătorii nu pot adăuga justificări, nu își pot consulta votul după trimitere și nu îl pot modifica. Aceste măsuri reduc riscul de a asocia o persoană cu un vot, dar rezultatele pot dezvălui în continuare informații atunci când puține persoane sunt eligibile sau votează, rezultatul este unanim, tiparele de vot sunt distinctive ori alegătorii își dezvăluie opțiunile.
+    stance_reason_required_when_disagreeing: Necesar în caz de dezacord
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     verify_participants: Verificați participanții

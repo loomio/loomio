@@ -2857,6 +2857,7 @@ fr:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Les votes anonymes sont enregistrés séparément des identités des électeurs. Les résultats sont publiés après la clôture du vote. Les électeurs ne peuvent ni ajouter de raisons, ni modifier leur vote après l'avoir soumis, ni le changer.
     anonymous_voting_explanation: Il est impossible de savoir comment un électeur a voté. Les votes anonymes sont enregistrés séparément de l'identité des électeurs. Les résultats ne sont publiés qu'après la clôture du scrutin. Les électeurs ne peuvent ni justifier leur vote, ni le modifier après l'avoir validé.
     anonymous_voting_risk_explanation: Les votes anonymes sont stockés séparément de l'identité des électeurs. Les résultats ne sont affichés qu'après la clôture du scrutin, et les électeurs ne peuvent pas ajouter de justification, revoir leur vote après l'avoir soumis ni le modifier. Ces mesures réduisent le risque de relier une personne à un vote, mais les résultats peuvent encore révéler des informations lorsque peu de personnes ont le droit de voter ou votent, que le résultat est unanime, que les schémas de vote sont distinctifs ou que les électeurs révèlent leurs choix.
+    stance_reason_required_when_disagreeing: Requis en cas de désaccord
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants

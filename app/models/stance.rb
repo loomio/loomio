@@ -324,9 +324,16 @@ class Stance < ApplicationRecord
 
   def valid_reason_required
     return if !cast_at
-    return if poll.stance_reason_required != "required"
+    return unless reason_required?
     return if reason_visible_text.length > 5
 
     errors.add(:reason, I18n.t(:"poll_common_form.stance_reason_is_required"))
+  end
+
+  def reason_required?
+    return true if poll.stance_reason_required == "required"
+    return false unless poll.stance_reason_required == "required_when_disagreeing"
+
+    stance_choices.any? { |choice| %w[disagree block].include?(choice.poll_option.icon) }
   end
 end

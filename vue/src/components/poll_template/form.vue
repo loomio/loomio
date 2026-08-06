@@ -175,11 +175,12 @@ export default {
 
     allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
     stanceReasonRequiredItems() {
-      return [
+      return compact([
         {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
+        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_when_disagreeing'), value: 'required_when_disagreeing'},
         {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
         {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
-      ];
+      ]);
     },
 
     titlePath() {

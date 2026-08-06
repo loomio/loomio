@@ -432,6 +432,46 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "update requires a reason when disagreeing" do
+    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    disagreement = @poll.poll_options.last
+    disagreement.update!(icon: "disagree")
+    sign_in @user
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [{poll_option_id: disagreement.id}],
+        reason: ""
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+  end
+
+  test "update accepts disagreement with a reason" do
+    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    disagreement = @poll.poll_options.last
+    disagreement.update!(icon: "disagree")
+    sign_in @user
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [{poll_option_id: disagreement.id}],
+        reason: "I have an objection"
+      }
+    }
+
+    assert_response :success
+    assert_equal "I have an objection", @poll.stances.latest.find_by!(participant_id: @user.id).reason
+  end
+
   test "specified_voters_only true prevents group member from voting via create" do
     @poll.update!(specified_voters_only: true)
     new_member = User.create!(name: 'NewMember', email: "newmember#{SecureRandom.hex(4)}@example.com",
