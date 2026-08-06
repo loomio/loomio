@@ -78,20 +78,23 @@ v-card.tags-modal(:title="$t(title)")
       span(v-t="'common.action.save'")
 </template>
 
-<style lang="sass">
+<style>
+.tag-colors {
+  gap: 4px;
+}
 
-.tag-colors
-  gap: 4px
+.tag-color-button {
+  min-width: 32px;
+}
 
-.tag-color-button
-  min-width: 32px
+.tag-color-dot {
+  border-radius: 50%;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
 
-.tag-color-dot
-  border-radius: 50%
-  display: inline-block
-  height: 16px
-  width: 16px
-
-.tag-color-button.v-btn--active .tag-color-dot
-  box-shadow: 0 0 0 2px rgb(var(--v-theme-surface)), 0 0 0 4px rgba(var(--v-theme-on-surface), 0.65)
+.tag-color-button.v-btn--active .tag-color-dot {
+  box-shadow: 0 0 0 2px rgb(var(--v-theme-surface)), 0 0 0 4px rgba(var(--v-theme-on-surface), 0.65);
+}
 </style>

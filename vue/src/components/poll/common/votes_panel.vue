@@ -150,10 +150,10 @@ fetchNow();
     v-pagination(v-if="totalPages > 1" v-model="page", :length="totalPages")
 </template>
 
-<style lang="sass">
-.poll-common-votes-panel__stance
-	display: flex
-	align-items: flex-start
-	margin: 7px 0
-
+<style>
+.poll-common-votes-panel__stance {
+  display: flex;
+  align-items: flex-start;
+  margin: 7px 0;
+}
 </style>

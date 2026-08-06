@@ -36,5 +36,6 @@ class Dev::NightwatchController < Dev::BaseController
 
   def reset_transient_state
     Rails.cache.clear
+    ActionMailer::Base.deliveries.clear
   end
 end

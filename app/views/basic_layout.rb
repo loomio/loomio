@@ -59,7 +59,19 @@ class Views::BasicLayout < Views::Application::Component
     link rel: "icon", href: AppConfig.theme[:icon_src]
     link rel: "apple-touch-icon", href: AppConfig.theme[:touch_icon_src]
     stylesheet_link_tag "basic"
+    stylesheet_link_tag "vtfy/typography"
+    stylesheet_link_tag "vtfy/layout"
     stylesheet_link_tag "loomiosubs"
+    style do
+      plain <<~CSS
+        :root {
+          --loomio-primary-color: #{AppConfig.theme[:primary_color]};
+          --loomio-primary-text-color: #{AppConfig.theme[:text_on_primary_color]};
+          --loomio-accent-color: #{AppConfig.theme[:accent_color]};
+          --loomio-accent-text-color: #{AppConfig.theme[:text_on_accent_color]};
+        }
+      CSS
+    end
     render_plausible
   end
 

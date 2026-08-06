@@ -14,8 +14,6 @@ gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'activeadmin', '~> 3.5.2'
-gem 'ransack', '4.4.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
@@ -35,9 +33,7 @@ gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem 'http_accept_language'
-gem 'sprockets', '~> 4.2'
-gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'dartsass-sprockets'
+gem 'propshaft', '~> 1.3'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
@@ -50,7 +46,7 @@ gem 'rack-attack'
 gem 'bootsnap', require: false
 gem 'solid_cache'
 gem 'solid_cable'
-gem 'redis' # optional: used for cache + cable when REDIS_CACHE_URL is set (else solid_*)
+gem 'redis', '< 6' # optional: used for cache + cable when REDIS_CACHE_URL is set (else solid_*)
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'

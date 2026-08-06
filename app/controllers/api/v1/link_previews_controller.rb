@@ -6,7 +6,7 @@ class Api::V1::LinkPreviewsController < Api::V1::RestfulController
       render json: { error: 'Rate limit exceeded' }, status: 429
       return
     end
-    previews = LinkPreviewService.fetch_urls(filtered_urls)
+    previews = SafeHttpService.fetch_urls(filtered_urls)
     render json: {previews: previews}
   end
 

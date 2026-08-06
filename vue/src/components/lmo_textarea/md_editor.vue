@@ -223,7 +223,8 @@ div(style="position: relative")
     input.d-none(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
-<style lang="sass">
-.mention-textarea-field
-  position: relative
+<style>
+.mention-textarea-field {
+  position: relative;
+}
 </style>

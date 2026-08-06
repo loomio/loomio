@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PollServiceTest < ActiveSupport::TestCase
+  inline_jobs "expires a lapsed poll",
+              "open_scheduled_polls delivers emails to voters when notify_on_open is true"
   setup do
     @user = users(:user)
     @admin = users(:admin)

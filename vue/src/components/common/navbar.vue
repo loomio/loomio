@@ -22,6 +22,7 @@ export default {
       sidebarOpen: false,
       activeTab: '',
       showTitle: true,
+      appBarScrolled: false,
       page: null,
       highlightTips: true,
       mergeProps: mergeProps
@@ -61,6 +62,7 @@ export default {
 
     EventBus.$on('content-title-visible', val => {
       this.showTitle = !val;
+      this.appBarScrolled = !val;
     });
 
     EventBus.$on('currentComponent', data => {
@@ -106,7 +108,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="appbar")
+v-app-bar.lmo-no-print(app clipped-right color="appbar" :class="{'navbar--scrolled': appBarScrolled}")
   v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
   v-app-bar-title(@click="scrollTo('#context')")
@@ -122,3 +124,22 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="appbar")
     v-btn.navbar__sign-in(variant="text" @click='signIn()')
       span(v-t="'auth_form.sign_in'")
 </template>
+
+<style>
+.v-app-bar.navbar--scrolled {
+  background-color: rgb(var(--v-theme-appbar-scrolled)) !important;
+  color: rgb(var(--v-theme-on-appbar-scrolled)) !important;
+}
+
+.v-theme--light .v-app-bar.navbar--scrolled {
+  background: var(--loomio-theme-light-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important;
+  background-attachment: fixed !important;
+  color: var(--loomio-theme-light-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important;
+}
+
+.v-theme--dark .v-app-bar.navbar--scrolled {
+  background: var(--loomio-theme-dark-background-gradient, rgb(var(--v-theme-appbar-scrolled))) !important;
+  background-attachment: fixed !important;
+  color: var(--loomio-theme-dark-background-foreground, rgb(var(--v-theme-on-appbar-scrolled))) !important;
+}
+</style>

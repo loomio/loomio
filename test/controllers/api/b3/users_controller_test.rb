@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class Api::B3::UsersControllerTest < ActionController::TestCase
+  inline_jobs "deactivate happy case",
+              "deactivate by identity",
+              "redact removes identifying fields and sessions",
+              "redact by identity",
+              "destroy deletes user",
+              "destroy by identity deletes user"
   setup do
     hex = SecureRandom.hex(4)
     @api_key = '12345678901234567890'

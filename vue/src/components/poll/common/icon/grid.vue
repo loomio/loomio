@@ -55,15 +55,19 @@ div.poll-common-icon-grid.d-flex.align-center.justify-center
           | &nbsp;
 </template>
 
-<style lang="sass">
-.poll-meeting-chart__cell--empty
-  background-color: #ddd
-.poll-meeting-icon__cell
-  border-radius: 50%
-  max-height: 8px
-  max-width: 8px
-.poll-common-icon-grid
-  table, tbody, th, td
-    border-collapse: collapse
-    border: 0
+<style>
+.poll-meeting-chart__cell--empty {
+  background-color: #ddd;
+}
+
+.poll-meeting-icon__cell {
+  border-radius: 50%;
+  max-height: 8px;
+  max-width: 8px;
+}
+
+.poll-common-icon-grid table, .poll-common-icon-grid tbody, .poll-common-icon-grid th, .poll-common-icon-grid td {
+  border-collapse: collapse;
+  border: 0;
+}
 </style>

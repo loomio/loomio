@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class OutcomeServiceTest < ActiveSupport::TestCase
+  inline_jobs "publishes a due review, and only once"
   setup do
     @user = users(:user)
     @group = groups(:group)

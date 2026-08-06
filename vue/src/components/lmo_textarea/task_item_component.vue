@@ -94,17 +94,16 @@ node-view-wrapper(as="li")
           span(v-t="'common.action.ok'")
 </template>
 
-<style lang="sass">
-.task-item-text.task-item-is-empty::before
-  content: attr(data-placeholder)
-  float: left
-  color: #ced4da
-  pointer-events: none
-  height: 0
+<style>
+.task-item-text.task-item-is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #ced4da;
+  pointer-events: none;
+  height: 0;
+}
 
-.v-theme--dark
-  .task-item-text.task-item-is-empty::before
-    color: rgba(255, 255, 255, 0.2)
-
-
+.v-theme--dark .task-item-text.task-item-is-empty::before {
+  color: rgba(255, 255, 255, 0.2);
+}
 </style>

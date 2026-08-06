@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class EmailActionsControllerTest < ActionController::TestCase
+  inline_jobs "marks the discussion as read at event created_at",
+              "marks a comment as read"
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "eauser#{hex}", email: "eauser#{hex}@example.com", username: "eauser#{hex}", email_verified: true)

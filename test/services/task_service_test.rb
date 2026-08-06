@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class TaskServiceTest < ActiveSupport::TestCase
+  inline_jobs "sends an email to assigned users"
   setup do
     @member = users(:user)
     @member.update(username: 'sam', name: 'Sam Sammy')

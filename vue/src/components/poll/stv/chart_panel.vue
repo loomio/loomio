@@ -243,19 +243,23 @@ export default {
                   | {{ tallyForRound(round, cid) }}
 </template>
 
-<style lang="sass">
-.stv-cell-elected
-  background-color: rgba(76, 175, 80, 0.15)
-  font-weight: bold
+<style>
+.stv-cell-elected {
+  background-color: rgba(76, 175, 80, 0.15);
+  font-weight: bold;
+}
 
-.stv-cell-eliminated
-  background-color: rgba(244, 67, 54, 0.1)
-  text-decoration: line-through
+.stv-cell-eliminated {
+  background-color: rgba(244, 67, 54, 0.1);
+  text-decoration: line-through;
+}
 
-.stv-cell-tied
-  background-color: rgba(255, 152, 0, 0.15)
-  font-weight: bold
+.stv-cell-tied {
+  background-color: rgba(255, 152, 0, 0.15);
+  font-weight: bold;
+}
 
-.stv-cell-inactive
-  color: rgba(0, 0, 0, 0.3)
+.stv-cell-inactive {
+  color: rgba(0, 0, 0, 0.3);
+}
 </style>

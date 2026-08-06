@@ -44,38 +44,44 @@ v-btn.drop-down-button(
       v-btn.mt-2(block size="x-small" outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
 </template>
 
-<style lang="sass">
+<style>
+.color-picker-btn {
+  padding-left: 1px;
+}
 
-.color-picker-btn
-  padding-left: 1px
+.color-picker {
+  width: 250px;
+}
 
-.color-picker
-  width: 250px
+.swatch {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 1px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: border-radius 0.1s linear;
+}
 
-.swatch
-  box-sizing: border-box
-  display: inline-block
-  width: 24px
-  height: 24px
-  margin: 1px
-  border: 1px solid transparent
-  border-radius: 2px
-  transition: border-radius 0.1s linear
+.swatch--color {
+  border: 2px solid transparent;
+}
 
-.swatch--color
-  // border-radius: 24px
-  border: 2px solid transparent
+.swatch--white {
+  border: 2px solid #ddd;
+}
 
-.swatch--white
-  border: 2px solid #ddd
+.swatch--selected {
+  border-radius: 24px;
+}
 
-.swatch--selected
-  border-radius: 24px
+.swatch:hover {
+  cursor: pointer;
+  border-radius: 8px;
+}
 
-.swatch:hover
-  cursor: pointer
-  border-radius: 8px
-
-.swatch-active
-  border-radius: 24px
+.swatch-active {
+  border-radius: 24px;
+}
 </style>

@@ -44,7 +44,3 @@ v-btn(v-bind="btnProps" :variant="showOutline ? 'tonal' : 'text'" :title="$t('fo
           common-icon(size="small" :name="'mdi-format-align-'+item.value")
         v-list-item-title(v-t="item.label")
 </template>
-
-<style lang="sass">
-
-</style>

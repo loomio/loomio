@@ -53,13 +53,15 @@ h3.strand-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
     common-icon.text--disabled(v-if="event.pinned" name="mdi-pin-outline")
 
 </template>
-<style lang="sass">
-.strand-item__headline
-  strong
-    font-weight: 400
-  .actor-link
-    text-decoration: none
-    color: inherit
-  .actor-link:hover
-    text-decoration: underline
+<style>
+.strand-item__headline strong {
+  font-weight: 400;
+}
+.strand-item__headline .actor-link {
+  text-decoration: none;
+  color: inherit;
+}
+.strand-item__headline .actor-link:hover {
+  text-decoration: underline;
+}
 </style>

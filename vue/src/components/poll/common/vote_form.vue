@@ -201,44 +201,52 @@ form.poll-common-vote-form(@submit.prevent="submit()" @keyup.ctrl.enter="submit(
       span(v-t="submitText")
 </template>
 
-<style lang="sass">
-.none-of-the-above label
-  margin-left: 24px
+<style>
+.none-of-the-above label {
+  margin-left: 24px;
+}
 
-.poll-common-vote-form__allow-wrap
-  white-space: normal
+.poll-common-vote-form__allow-wrap {
+  white-space: normal;
   -webkit-line-clamp: none !important;
+}
 
-.poll-common-vote-form__button--none-selected
-  opacity: 0.88 !important
+.poll-common-vote-form__button--none-selected {
+  opacity: 0.88 !important;
+}
 
-.poll-common-vote-form__button--none-selected:hover
-  opacity: 1 !important
+.poll-common-vote-form__button--none-selected:hover {
+  opacity: 1 !important;
+}
 
-.poll-common-vote-form__button--brand-selected
-  background-color: rgb(var(--v-theme-primary) / 0.12) !important
+.poll-common-vote-form__button--brand-selected {
+  background-color: rgb(var(--v-theme-primary)/0.12) !important;
+}
 
-.poll-common-vote-form__button--not-selected
-  opacity: 0.44 !important
+.poll-common-vote-form__button--not-selected {
+  opacity: 0.44 !important;
+}
 
-.poll-common-vote-form__button--not-selected:hover
-  opacity: 0.66 !important
+.poll-common-vote-form__button--not-selected:hover {
+  opacity: 0.66 !important;
+}
 
-.poll-common-vote-form__button.voting-enabled label
-  cursor: pointer
+.poll-common-vote-form__button.voting-enabled label {
+  cursor: pointer;
+}
 
-.poll-common-vote-form__option-icon
-  z-index: 1
+.poll-common-vote-form__option-icon {
+  z-index: 1;
+}
 
-.poll-common-vote-form__button label
-  input
-    position: absolute
-    opacity: 0
-    width: 0
-    height: 0
+.poll-common-vote-form__button label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-
-.poll-common-vote-form__button.voting-disabled
-  opacity: 0.33 !important
-
+.poll-common-vote-form__button.voting-disabled {
+  opacity: 0.33 !important;
+}
 </style>

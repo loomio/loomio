@@ -12,6 +12,7 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
@@ -49,6 +50,9 @@ const { loadBookmarks } = useBookmarks();
 // Computed properties
 const greySidebarLogo = computed(() =>
   AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
+);
+const drawerColor = computed(() =>
+  !display.mdAndUp.value && colorIsTransparent(theme.current.value.colors.drawer) ? 'surface' : 'drawer'
 );
 const activeGroup = computed(() => group.value ? [group.value.id] : []);
 const logoUrl = computed(() => AppConfig.theme.app_logo_src);
@@ -200,7 +204,7 @@ watch(open, (val) => {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" color="drawer")
+v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerColor")
   sidebar-settings(
     v-if="showSettings"
     @closeSettings="showSettings = false"
@@ -272,21 +276,27 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" color="drawer")
       v-img(v-else :src="logoUrl")
 
 </template>
-<style lang="sass">
-.sidebar__loomio-logo
-  display: block
-  width: 100%
-  max-width: 100%
-  min-width: 0
-  overflow: hidden
-  line-height: 0
+<style>
+.sidenav-left .v-list {
+  background: inherit;
+}
 
-  svg
-    display: block
-    width: 100% !important
-    max-width: 100%
-    height: auto !important
+.sidebar__loomio-logo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+.sidebar__loomio-logo svg {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+}
 
-.greySidebarLogo
-  filter: saturate(99999%) grayscale(1)
+.greySidebarLogo {
+  filter: saturate(99999%) grayscale(1);
+}
 </style>

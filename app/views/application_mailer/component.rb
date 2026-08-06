@@ -24,6 +24,16 @@ class Views::ApplicationMailer::Component < Phlex::HTML
 
   private
 
+  def render_email_head
+    meta(charset: "UTF-8")
+    meta(name: "viewport", content: "width=device-width,initial-scale=1")
+    meta(name: "color-scheme", content: "light dark")
+    meta(name: "supported-color-schemes", content: "light dark")
+    style { plain email_theme_css }
+    stylesheet_link_tag "vtfy/mailers"
+    stylesheet_link_tag "vtfy/email_utilities"
+  end
+
   def time_ago(time, current_user)
     abbr(class: "time-ago", title: time.to_s) do
       plain format_date_for_humans(time, current_user.time_zone, current_user.date_time_pref)

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Events::GroupMentionedTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     hex = SecureRandom.hex(4)
     @group = Group.create!(name: "GM Group #{hex}", handle: "gmgroup#{hex}", group_privacy: 'secret',

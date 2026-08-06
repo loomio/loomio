@@ -307,7 +307,8 @@ div.discussions-panel(v-if="group")
 
 </template>
 
-<style lang="sass">
-.overflow-x-auto
-  overflow-x: auto
+<style>
+.overflow-x-auto {
+  overflow-x: auto;
+}
 </style>

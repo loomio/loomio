@@ -29,27 +29,36 @@ export default {
       img(:src="wrapper.blob.preview_url")
 </template>
 
-<style lang="sass">
-.files-list
-  ul
-    padding-left: 0
-  li
-    list-style: none
-  p
-    img
-      width: 100%
-.files-list__item
-  display: flex
-  align-items: center
-.files-list__file-name
-  flex-grow: 1
-  white-space: wrap
-  word-wrap: break-word
-.files-list__progress
-  flex-grow: 1
-  display: flex
-  height: 16px
-.files-list__progress-bar
-  width: 0
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+<style>
+.files-list ul {
+  padding-left: 0;
+}
+.files-list li {
+  list-style: none;
+}
+.files-list p img {
+  width: 100%;
+}
+
+.files-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.files-list__file-name {
+  flex-grow: 1;
+  white-space: wrap;
+  word-wrap: break-word;
+}
+
+.files-list__progress {
+  flex-grow: 1;
+  display: flex;
+  height: 16px;
+}
+
+.files-list__progress-bar {
+  width: 0;
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+}
 </style>

@@ -71,6 +71,7 @@ success messages).
 
 - Store release notes under `docs/release_notes/` using an ISO date followed by the Git tag version, for example `2026-07-22_v3.1.0.md`.
 - When drafting a release, update `lib/version.rb` to the same version number without the `v` prefix.
+- After the release title, start with a paragraph describing any significant changes. Follow it with one-line summary bullets prefixed with `**Fix:**` or `**New:**`, then add detailed sections describing each change.
 - Summarize changes that affect users, permissions, security, performance, deployment, APIs, or operator workflows. Omit routine dependency updates and purely internal refactors unless they require action or materially affect reliability.
 - Include required migration and upgrade steps, exact commands, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
 - Verify release-note claims against merged code, tests, pull requests, and user-manual changelog entries. Resolve placeholder links before publishing the release.

@@ -5,4 +5,11 @@ cache/*
 storage/*
 **/.git
 vue/node_modules/*
+vue/dist/*
+vue/logs/*
+vue/tests/reports/*
+vue/tests/screenshots/*
+public/assets/*
+public/client3/*
+public/system/*
 config/deploy.yml

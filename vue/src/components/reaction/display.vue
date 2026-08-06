@@ -130,33 +130,39 @@ export default {
 
 </template>
 
-<style lang="sass">
-.reactions-display__count
-  font-weight: 600
-  font-size: inherit !important
+<style>
+.reactions-display__count {
+  font-weight: 600;
+  font-size: inherit !important;
+}
 
-.reaction--char
-  font-size: 22px
-  line-height: 20px
+.reaction--char {
+  font-size: 22px;
+  line-height: 20px;
+}
 
-.reactions-display__group
-  overflow: hidden
-  opacity: 0.8
-  display: flex
-  align-items: center
-  margin-right: 2px
-  span
-    font-size: 22px
-    line-height: 20px
-  span.small
-    font-size: 20px
-    line-height: 18px
+.reactions-display__group {
+  overflow: hidden;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+}
+.reactions-display__group span {
+  font-size: 22px;
+  line-height: 20px;
+}
+.reactions-display__group span.small {
+  font-size: 20px;
+  line-height: 18px;
+}
+.reactions-display__group .user-avatar span {
+  font-size: 10px;
+  line-height: 20px;
+  margin-bottom: -2px;
+}
 
-  .user-avatar
-    span
-      font-size: 10px
-      line-height: 20px
-      margin-bottom: -2px
-.reactions-display__emojis
-  display: flex
+.reactions-display__emojis {
+  display: flex;
+}
 </style>

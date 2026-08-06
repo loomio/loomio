@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Api::V1::OutcomesControllerTest < ActionController::TestCase
+  inline_jobs "create notifies group"
   setup do
     @user = users(:user)
     @alien = users(:alien)

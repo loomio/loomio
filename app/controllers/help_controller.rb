@@ -8,10 +8,6 @@ class HelpController < ApplicationController
     render_api_doc "b2", api2_doc_values
   end
 
-  def api3
-    render_api_doc "b3", root_url: root_url
-  end
-
   def whats_new
     render Views::Help::WhatsNew.new(updates: whats_new_updates)
   end

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
+  inline_jobs
   setup do
     @admin = users(:admin)
     @group = groups(:group)
@@ -53,7 +54,7 @@ class EventTest < ActiveSupport::TestCase
     # Webhook
     @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
     WebMock.stub_request(:post, @webhook_url).to_return(status: 200)
-    LinkPreviewService.stub(:safe_to_fetch?, true) do
+    SafeHttpService.stub(:safe_to_fetch?, true) do
       @webhook = Chatbot.create!(
         group: @group, author: @admin, name: "Test Webhook",
         server: @webhook_url, webhook_kind: 'markdown', kind: 'webhook',

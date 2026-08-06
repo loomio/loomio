@@ -25,7 +25,7 @@ class Views::EventMailer::Group::CoverAndLogo < Views::ApplicationMailer::Compon
         td(
           class: "rounded",
           valign: "bottom",
-          style: "background: url(#{cover_url}) #ffffff; background-size:cover; background-position:center;"
+          style: "background-image: url(#{cover_url}); background-position: center; background-size: cover"
         ) do
           raw "<!--[if mso]><img src=\"#{cover_url}\" height=\"150\" width=\"600\"><![endif]-->".html_safe
           raw "<!--[if !mso]><!-->".html_safe

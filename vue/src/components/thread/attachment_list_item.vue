@@ -53,31 +53,26 @@ v-card.mt-3(variant="outlined").attachment-list-item-link
     .attachment-list-item-image.mb-2(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
 </template>
 
-<style lang="sass">
-.attachment-list-item-link
-  &.v-card--variant-outlined
-    border-color: rgba(var(--v-border-color), var(--v-border-opacity))
+<style>
+.attachment-list-item-link.v-card--variant-outlined {
+  border-color: rgba(var(--v-border-color), var(--v-border-opacity));
+}
+.attachment-list-item-link .v-card__title {
+  word-break: break-word;
+  display: block;
+}
 
-  // opacity: 90%
-  .v-card__title
-    word-break: break-word
-    display: block
+.attachment-list-item-link .v-card__subtitle {
+  word-break: break-word;
+}
 
-// .attachment-list-item-link:hover
-//   opacity: 100%
+.link-preview__hostname {
+  word-break: break-word;
+}
 
-.attachment-list-item-link
-  .v-card__subtitle
-    word-break: break-word
-
-.link-preview__hostname
-  word-break: break-word
-
-.attachment-list-item-image
-  background-repeat: no-repeat
-  height: 128px
-  overflow: none
-  // background-position: center
-  // max-width: 512px
-  // margin: 0 auto
+.attachment-list-item-image {
+  background-repeat: no-repeat;
+  height: 128px;
+  overflow: none;
+}
 </style>

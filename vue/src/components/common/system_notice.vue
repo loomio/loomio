@@ -66,14 +66,14 @@ v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
     )
 </template>
 
-<style lang="sass">
-.system-notice
-
-  p
-    color: #fff
-    margin-top: 0
-    margin-bottom: 0
-    a
-      color: #fff
-      text-decoration: underline
+<style>
+.system-notice p {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.system-notice p a {
+  color: #fff;
+  text-decoration: underline;
+}
 </style>

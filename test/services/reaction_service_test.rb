@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ReactionServiceTest < ActiveSupport::TestCase
+  inline_jobs "comment reaction notification url uses contextual topic route"
   setup do
     @user = users(:user)
     @admin = users(:admin)

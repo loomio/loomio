@@ -55,10 +55,8 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Highlight code that enqueued background job in logs.
+  config.active_job.queue_adapter = :inline
   config.active_job.verbose_enqueue_logs = true
-
-  # Suppress logger output for asset requests.
-  config.assets.quiet = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
