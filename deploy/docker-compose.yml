@@ -55,7 +55,6 @@ services:
       - ./plugins:/loomio/plugins/docker
       - ./import:/import
       - ./tmp:/loomio/tmp
-      - client3:/loomio/public/client3
     networks:
       - main
     depends_on:
@@ -149,4 +148,3 @@ volumes:
   vhost:
   html:
   acme:
-  client3:
