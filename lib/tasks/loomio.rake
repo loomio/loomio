@@ -77,6 +77,21 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_later
   end
 
+  desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
+  task repair_inline_image_attachments: :environment do
+    if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
+      RepairInlineImageAttachmentsWorker.perform_later
+      puts "Queued inline image attachment repair"
+    else
+      stats = InlineImageAttachmentRepairService.run(
+        dry_run: true,
+        progress: ->(message) { puts message }
+      )
+      puts "DRY RUN: #{stats.to_json}"
+      puts "Set APPLY_INLINE_IMAGE_REPAIR to queue the repair job"
+    end
+  end
+
   desc "Mark closed standalone poll topics as read for their current readers"
   task mark_closed_poll_topics_read: :environment do
     $stdout.sync = true

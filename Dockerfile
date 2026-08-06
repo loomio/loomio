@@ -65,8 +65,14 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
-# Copy built Vite assets to staging path (copied to volume at startup)
-COPY --from=nodebuild /build/public/client3 /loomio/client3-build
+# Compile Propshaft assets into the image. Production does not serve assets
+# dynamically, so the manifest and digested files must exist at build time.
+RUN DATABASE_URL=postgresql://localhost/loomio_build \
+    SECRET_KEY_BASE_DUMMY=1 \
+    bundle exec rails assets:precompile
+
+# Copy built Vite assets into the image
+COPY --from=nodebuild /build/public/client3 /loomio/public/client3
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
 COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
