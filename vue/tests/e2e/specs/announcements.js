@@ -53,6 +53,16 @@ module.exports = {
     page.expectFlash('1 notifications sent')
   },
 
+  'announcement_autocompletes_group_member_names': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('.action-dock__button--announce_thread')
+    page.expectElement('.strand-members-list')
+    page.fillIn('.recipients-autocomplete input', 'Emilio')
+    page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
+  },
+
   // poll members list
   'poll_created': (test) => {
     page = pageHelper(test)
