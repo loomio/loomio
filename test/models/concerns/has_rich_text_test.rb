@@ -20,6 +20,26 @@ class HasRichTextTest < ActiveSupport::TestCase
     assert_equal [blob.id], @comment.reload.image_files.blobs.ids
   end
 
+  test "preserves existing regular attachments when string-key files are nil" do
+    blob = create_blob("existing file")
+    @comment.files.attach(blob)
+
+    @comment.assign_attributes_and_files("body" => "Updated comment", "files" => nil)
+    @comment.save!
+
+    assert_equal [blob.id], @comment.reload.files.blobs.ids
+  end
+
+  test "removes existing regular attachments when files are explicitly empty" do
+    blob = create_blob("existing file")
+    @comment.files.attach(blob)
+
+    @comment.assign_attributes_and_files(body: "Updated comment", files: [])
+    @comment.save!
+
+    assert_empty @comment.reload.files.blobs
+  end
+
   test "preserves existing inline image attachments with string parameter keys" do
     blob = create_blob("existing image")
     @comment.image_files.attach(blob)

@@ -138,12 +138,11 @@ module HasRichText
   def assign_attributes_and_files(params)
     params = params.dup
 
-    # this prevents accidentally removing attachments
-    files_key = params.has_key?(:files) ? :files : "files"
-    params.delete(files_key) if params.has_key?(files_key) && params[files_key].nil?
+    # Ignore nil rather than accidentally removing regular attachments.
+    files = params.delete(:files) { params.delete("files") }
+    params[:files] = files unless files.nil?
 
-    image_files_key = params.has_key?(:image_files) ? :image_files : "image_files"
-    image_file_attachables = params.delete(image_files_key) if params.has_key?(image_files_key)
+    image_file_attachables = params.delete(:image_files) { params.delete("image_files") }
 
     self.assign_attributes Api::V1::SnorlaxBase.filter_params(self.class, params)
     attach_inline_image_files(image_file_attachables)
