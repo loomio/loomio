@@ -33,8 +33,8 @@ class Views::Admin::Api < Views::Admin::Layout
       p do
         plain "To enable the API, set "
         code { "B3_API_KEY" }
-        plain " to a secret longer than 16 characters in the Rails web process environment, then restart it. For the included Docker deployment, set it in "
-        code { "deploy/env" }
+        plain " to a secret longer than 16 characters in the Rails web process environment, then restart it. For the included Docker deployment, set it in the repository-root "
+        code { ".env" }
         plain ". Do not store the key in the repository"
       end
     end

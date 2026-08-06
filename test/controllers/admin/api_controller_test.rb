@@ -27,7 +27,8 @@ class Admin::ApiControllerTest < ActionController::TestCase
     assert_includes response.body, "Loomio admin"
     assert_includes response.body, "Disabled"
     assert_includes response.body, "B3_API_KEY is not set"
-    assert_includes response.body, "deploy/env"
+    assert_includes response.body, "repository-root"
+    assert_includes response.body, ".env"
   end
 
   test "API documentation reports a configured key without displaying it" do
