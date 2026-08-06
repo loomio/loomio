@@ -1,5 +1,6 @@
 require "test_helper"
 
+if defined?(LoomioSubs)
 class Admin::SubscriptionsControllerTest < ActionController::TestCase
   setup do
     @admin = users(:admin)
@@ -94,4 +95,13 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     refute called
     assert_redirected_to dashboard_path
   end
+end
+else
+class Admin::SubscriptionsControllerTest < ActionDispatch::IntegrationTest
+  test "subscription admin routes are unavailable without loomio_subs" do
+    assert_raises(ActionController::RoutingError) do
+      Rails.application.routes.recognize_path("/admin/subscriptions", method: :get)
+    end
+  end
+end
 end

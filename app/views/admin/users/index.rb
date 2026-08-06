@@ -13,11 +13,11 @@ class Views::Admin::Users::Index < Views::Admin::Layout
     render_filters
     div(class: "admin-table-wrap") do
       table(class: "admin-table") do
-        thead { tr { %w[Name Email Created Last sign-in Groups Deactivated Verified Locale Timezone Actions].each { |heading| th { heading } } } }
+        thead { tr { ["Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"].each { |heading| th { heading } } } }
         tbody do
           @users.each do |user|
             tr do
-              td { link_to user.name, admin_user_path(user) }
+              td { link_to(user.name.presence || user.email, admin_user_path(user)) }
               td { user.email }
               td { value(user.created_at&.to_date) }
               td { value(user.last_sign_in_at&.to_date) }
@@ -26,7 +26,6 @@ class Views::Admin::Users::Index < Views::Admin::Layout
               td { user.email_verified? ? "Yes" : "No" }
               td { value(user.detected_locale || user.locale) }
               td { value(user.time_zone) }
-              td { link_to "Edit", edit_admin_user_path(user) }
             end
           end
         end

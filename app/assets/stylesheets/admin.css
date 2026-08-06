@@ -111,12 +111,14 @@ input, select, textarea {
 .admin-link-button--danger { color: var(--admin-danger); }
 
 .admin-table-wrap { margin-bottom: 16px; overflow-x: auto; }
-.admin-table { background: var(--admin-surface); border-collapse: collapse; font-size: .875rem; width: 100%; }
-.admin-table th, .admin-table td { border-bottom: 1px solid var(--admin-border); padding: 10px 12px; text-align: left; vertical-align: top; }
+.admin-table { background: var(--admin-surface); border-collapse: collapse; font-size: .8rem; width: 100%; }
+.admin-table th, .admin-table td { border-bottom: 1px solid var(--admin-border); padding: 6px 8px; text-align: left; vertical-align: middle; }
 .admin-table th { background: #eef1f3; color: #475467; font-size: .75rem; letter-spacing: .02em; text-transform: uppercase; }
 .admin-table tbody tr:hover { background: #f8fafb; }
-.admin-table--compact { font-size: .8rem; }
-.admin-table--compact th, .admin-table--compact td { padding: 6px 8px; }
+.admin-table input[type="checkbox"] { height: 18px; min-height: 0; padding: 0; width: 18px; }
+.admin-table--compact { font-size: .75rem; line-height: 1.25; }
+.admin-table--compact th, .admin-table--compact td { padding: 4px 6px; }
+.admin-table--compact .admin-link-button { font-size: inherit; line-height: 1.25; }
 
 .admin-panel { background: var(--admin-surface); border: 1px solid var(--admin-border); border-radius: 8px; margin-bottom: 20px; }
 .admin-panel--operations { max-width: 760px; }
@@ -136,6 +138,8 @@ input, select, textarea {
 .admin-stats div { background: #f4f7f5; border-radius: 6px; display: grid; padding: 14px; }
 .admin-stats strong { font-size: 1.5rem; }
 .admin-stats span { color: var(--admin-muted); font-size: .8rem; }
+.admin-dashboard-stats { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.admin-dashboard-stats div { min-height: 96px; }
 .admin-list { margin: 0; padding-left: 20px; }
 .admin-pagination { align-items: center; display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
 .admin-disclosure { border-top: 1px solid var(--admin-border); padding-top: 12px; }

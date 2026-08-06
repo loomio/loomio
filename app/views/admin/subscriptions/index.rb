@@ -13,7 +13,7 @@ class Views::Admin::Subscriptions::Index < Views::Admin::Layout
     render_filters
     div(class: "admin-table-wrap") do
       table(class: "admin-table") do
-        thead { tr { %w[Plan Groups State Expires Payment Chargify ID Owner Actions].each { |heading| th { heading } } } }
+        thead { tr { ["Plan", "Groups", "State", "Expires", "Payment", "Chargify ID", "Owner", "Actions"].each { |heading| th { heading } } } }
         tbody do
           @subscriptions.each do |subscription|
             tr do

@@ -28,6 +28,10 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, '<datalist id="admin-user-locales">'
     assert_includes response.body, '<option value="en">'
     refute_includes response.body, 'name="time_zone"'
+    document = Nokogiri::HTML(response.body)
+    assert_equal ["Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"], document.css(".admin-table thead th").map { |header| header.text.strip }
+    assert_equal 9, document.css(".admin-table tbody tr").first.css("td").size
+    refute_includes response.body, ">Edit</a>"
   end
 
   test "show renders memberships with a missing group" do

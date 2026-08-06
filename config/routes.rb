@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   root to: 'root#index'
 
   namespace :admin do
-    root to: "groups#index"
+    root to: "dashboard#show"
     get :api, to: "api#show"
 
     resources :groups, only: %i[index show edit update] do
@@ -76,8 +76,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :subscriptions, only: %i[index show edit update] do
-      post :refresh, on: :member
+    if Object.const_defined?("LoomioSubs")
+      resources :subscriptions, only: %i[index show edit update] do
+        post :refresh, on: :member
+      end
     end
   end
 

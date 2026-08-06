@@ -36,9 +36,10 @@ class Views::Admin::Layout < Views::Admin::Base
   def render_sidebar
     div(class: "admin-brand") { link_to "Loomio admin", admin_root_path }
     nav(class: "admin-nav") do
+      link_to "Dashboard", admin_root_path
       link_to "Groups", admin_groups_path
       link_to "Users", admin_users_path
-      link_to "Subscriptions", admin_subscriptions_path
+      link_to "Subscriptions", admin_subscriptions_path if Object.const_defined?("LoomioSubs")
       link_to "API", admin_api_path
       link_to "Jobs", "/admin/jobs"
     end
