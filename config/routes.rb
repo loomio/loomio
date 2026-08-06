@@ -40,7 +40,48 @@ Rails.application.routes.draw do
 
   root to: 'root#index'
 
-  ActiveAdmin.routes(self)
+  namespace :admin do
+    root to: "dashboard#show"
+    get :api, to: "api#show"
+
+    resources :groups, only: %i[index show edit update] do
+      collection do
+        get :import
+        post :import_json
+        post :delete_spam
+        post :add_admin
+        post :remove_admin
+        get :export_users
+        get :export_users_report
+      end
+      member do
+        post :move
+        post :handle
+        post :archive
+        post :unarchive
+        post :delete_group
+        post :export_group
+      end
+    end
+
+    resources :users, only: %i[index show edit update] do
+      member do
+        post :login_as
+        post :merge
+        put :redact
+        put :deactivate
+        put :reactivate
+        delete :delete_spam
+        post :delete_identity
+      end
+    end
+
+    if Object.const_defined?("LoomioSubs")
+      resources :subscriptions, only: %i[index show edit update] do
+        post :refresh, on: :member
+      end
+    end
+  end
 
   namespace :api, defaults: {format: :json} do
     post 'hocuspocus', to: 'hocuspocus#create'
@@ -380,7 +421,6 @@ Rails.application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api2'   => 'help#api2'
-  get '/help/api3'   => 'help#api3'
   get '/whats_new'   => 'help#whats_new'
 
   get '/start_group', to: redirect('/try')
