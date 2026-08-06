@@ -4,6 +4,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   setup do
     @user = users(:user)
     @admin = users(:admin)
+    @member = users(:member)
     @alien = users(:alien)
     @group = groups(:group)
     @discussion = discussions(:discussion)
@@ -251,6 +252,49 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert json.key?('receipts')
   end
 
+  test "anonymous participation status is hidden until three people vote" do
+    poll = create_detached_anonymous_poll(title: "participation threshold test")
+    sign_in @admin
+
+    [@admin, @user, @member].each_with_index do |voter, votes_count|
+      get :receipts, params: { id: poll.key }
+      assert_response :success
+
+      json = JSON.parse(response.body)
+      assert_equal false, json["participation_status_visible"], "status was visible after #{votes_count} votes"
+      assert_equal 3, json["participation_status_votes_min"]
+      assert json.fetch("receipts").none? { |receipt| receipt.key?("vote_cast") }
+
+      create_anonymous_ballot(poll: poll, voter: voter)
+    end
+
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    assert_equal true, json["participation_status_visible"]
+    assert json.fetch("receipts").all? { |receipt| receipt.key?("vote_cast") }
+    voter_ids = [@admin.id, @user.id, @member.id]
+    voter_receipts = json.fetch("receipts").select { |receipt| voter_ids.include?(receipt["voter_id"]) }
+    assert voter_receipts.all? { |receipt| receipt["vote_cast"] }
+  end
+
+  test "anonymous participation status remains hidden when poll closes with two votes" do
+    poll = create_detached_anonymous_poll(title: "closed participation threshold test")
+    create_anonymous_ballot(poll: poll, voter: @admin)
+    create_anonymous_ballot(poll: poll, voter: @user)
+    PollService.close(poll: poll, actor: @admin)
+
+    sign_in @admin
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    assert_equal false, json["participation_status_visible"]
+    assert_equal 3, json["participation_status_votes_min"]
+    assert json.fetch("receipts").none? { |receipt| receipt.key?("vote_cast") }
+  end
+
   test "detached anonymous receipts denied for non-admin member" do
     poll = PollService.create(params: {
       title: "receipts test",
@@ -440,5 +484,27 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     poll.reload
     assert poll.closed?
+  end
+
+  private
+
+  def create_detached_anonymous_poll(title:)
+    PollService.create(params: {
+      title: title,
+      poll_type: "proposal",
+      anonymous: true,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+  end
+
+  def create_anonymous_ballot(poll:, voter:)
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id, score: 1 }]
+      ),
+      actor: voter
+    )
   end
 end

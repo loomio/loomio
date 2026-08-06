@@ -7,6 +7,9 @@ import { mdiCheck, mdiClose } from '@mdi/js';
 import { ref, defineProps } from 'vue';
 const receipts = ref([]);
 const voters_count = ref(0);
+const loaded = ref(false);
+const participationStatusVisible = ref(false);
+const participationStatusVotesMin = ref(3);
 const { id } = defineProps({ id: String });
 
 const headers = ref(
@@ -14,14 +17,21 @@ const headers = ref(
     { title: I18n.global.t('poll_receipts_page.voter_name'), key: 'voter_name' },
     { title: I18n.global.t('poll_receipts_page.member_since'), key: 'member_since' },
     { title: I18n.global.t('poll_receipts_page.invited_by'), key: 'inviter_name' },
-    { title: I18n.global.t('poll_receipts_page.invited_on'), key: 'invited_on' },
-    { title: I18n.global.t('poll_receipts_page.vote_cast'), key: 'vote_cast' }
+    { title: I18n.global.t('poll_receipts_page.invited_on'), key: 'invited_on' }
   ]
 );
 
 Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   receipts.value = data.receipts;
   voters_count.value = data.voters_count;
+  participationStatusVisible.value = data.participation_status_visible;
+  participationStatusVotesMin.value = data.participation_status_votes_min ?? 3;
+  if (participationStatusVisible.value) {
+    headers.value.push({
+      title: I18n.global.t('poll_receipts_page.vote_cast'),
+      key: 'vote_cast'
+    });
+  }
   if (data.show_voter_email) {
     headers.value.splice(1, 0, {
       title: I18n.global.t('poll_receipts_page.voter_email'),
@@ -31,6 +41,7 @@ Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   EventBus.$emit('currentComponent', {
     title: data.poll_title,
   });
+  loaded.value = true;
 });
 
 
@@ -41,7 +52,14 @@ Records.fetch({ path: `/polls/${id}/receipts` }).then(data => {
   v-main
     v-container
       h1.text-headline-large.pa-4(v-t="'poll_receipts_page.verify_participants'")
-      p.font-italic.px-4.pb-4(v-t="'poll_receipts_page.participation_records_explanation'")
+      p.font-italic.px-4.pb-4(
+        v-if="loaded && participationStatusVisible"
+        v-t="'poll_receipts_page.participation_records_explanation'"
+      )
+      p.font-italic.px-4.pb-4(
+        v-else-if="loaded"
+        v-t="{ path: 'poll_receipts_page.participation_status_requires_min_votes', args: { count: participationStatusVotesMin } }"
+      )
 
       v-alert(type="error" v-if="voters_count > 0 && receipts.length == 0 " v-t="'poll_receipts_page.no_receipts'")
 

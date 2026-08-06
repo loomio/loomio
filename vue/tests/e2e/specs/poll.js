@@ -246,7 +246,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.expectText(
       '.poll-common-form__anonymous-voting-explanation',
-      'Make it impossible to know how someone voted. Anonymous votes are recorded separately from voter identities. Results only appear after voting closes. Voters cannot add reason statements, review their vote after submitting it, or change their vote.'
+      'Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it. These measures reduce the risk of linking a person to a vote, but results may still reveal information when few people are eligible or vote, the result is unanimous, voting patterns are distinctive, or voters disclose their choices.'
     )
     page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__anonymous-voting-title')
     page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__reminder-title')

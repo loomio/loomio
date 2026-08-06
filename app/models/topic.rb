@@ -80,7 +80,7 @@ class Topic < ApplicationRecord
   end
 
   def poll
-    topicable_type == 'Poll' && topicable
+    topicable if topicable_type == 'Poll'
   end
 
   def group

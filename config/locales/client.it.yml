@@ -2839,7 +2839,9 @@ it:
     who_may_vote: Chi può votare su questo %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: I voti anonimi vengono memorizzati separatamente dalle identità degli elettori. I risultati saranno disponibili dopo la chiusura delle votazioni. Gli elettori non possono aggiungere motivazioni, rivedere il proprio voto dopo averlo inviato o modificarlo.
     anonymous_voting_explanation: Rendere impossibile sapere come ha votato qualcuno. I voti anonimi vengono registrati separatamente dall'identità dell'elettore. I risultati vengono pubblicati solo dopo la chiusura delle votazioni. Gli elettori non possono aggiungere motivazioni, rivedere il proprio voto dopo averlo inviato o modificarlo.
+    anonymous_voting_risk_explanation: I voti anonimi vengono memorizzati separatamente dall'identità degli elettori. I risultati vengono mostrati solo dopo la chiusura della votazione e gli elettori non possono aggiungere motivazioni, rivedere il proprio voto dopo averlo inviato o modificarlo. Queste misure riducono il rischio di collegare una persona a un voto, ma i risultati possono comunque rivelare informazioni quando poche persone hanno diritto di voto o votano, il risultato è unanime, gli schemi di voto sono distintivi o gli elettori rivelano le proprie scelte.
   poll_receipts_page:
+    participation_status_requires_min_votes: Mostra chi aveva diritto di voto. Lo stato di partecipazione di ogni persona viene mostrato solo quando hanno votato almeno %{count} persone.
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
     voter_name: Nome dell'elettore

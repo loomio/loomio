@@ -2811,7 +2811,9 @@ hr:
     who_may_vote: Tko može glasati na ovom %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se pojavljuju nakon završetka glasanja. Birači ne mogu dodavati razloge, pregledavati svoj glas nakon što ga predaju ili mijenjati svoj glas.
     anonymous_voting_explanation: Onemogućite saznanje kako je netko glasao. Anonimni glasovi bilježe se odvojeno od identiteta birača. Rezultati se pojavljuju tek nakon završetka glasanja. Birači ne mogu dodavati obrazloženja, pregledavati svoj glas nakon što ga predaju ili mijenjati svoj glas.
+    anonymous_voting_risk_explanation: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se prikazuju tek nakon završetka glasanja, a birači ne mogu dodavati obrazloženja, pregledati svoj glas nakon predaje ili ga promijeniti. Ove mjere smanjuju rizik povezivanja osobe s glasom, ali rezultati i dalje mogu otkriti informacije kada malo ljudi ima pravo glasa ili glasa, rezultat je jednoglasan, obrasci glasanja su prepoznatljivi ili birači otkriju svoje odabire.
   poll_receipts_page:
+    participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
     voter_name: Ime birača

@@ -12,16 +12,19 @@ class Api::V1::PollsController < Api::V1::RestfulController
     memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
     voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
+    participation_status_visible = @poll.participation_status_visible?
 
     render json: {
       voters_count: @poll.voters_count,
       poll_title: @poll.title,
       show_voter_email: can_view_email,
+      participation_status_visible:,
+      participation_status_votes_min: Poll::PARTICIPATION_STATUS_VOTES_MIN,
       receipts: receipts.map do |receipt|
         voter = voters[receipt.voter_id]
         inviter = inviters[receipt.inviter_id]
         membership = memberships[receipt.voter_id]
-        {
+        receipt_data = {
           poll_id: @poll.id,
           voter_id: receipt.voter_id,
           voter_name: voter.name,
@@ -29,9 +32,10 @@ class Api::V1::PollsController < Api::V1::RestfulController
           member_since: membership&.accepted_at&.to_date&.iso8601,
           inviter_id: receipt.inviter_id,
           inviter_name: inviter&.name,
-          invited_on: receipt.invited_at&.to_date&.iso8601,
-          vote_cast: receipt.vote_cast
+          invited_on: receipt.invited_at&.to_date&.iso8601
         }
+        receipt_data[:vote_cast] = receipt.vote_cast if participation_status_visible
+        receipt_data
       end.shuffle
     }, root: false
   end

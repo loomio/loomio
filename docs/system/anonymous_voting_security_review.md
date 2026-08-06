@@ -27,7 +27,7 @@ This review covers the detached anonymous voting implementation and the migratio
 
 - Before closing, general poll serialization omits results, option counts, cast/uncast counts, participation percentages, quorum progress, and STV results.
 - The current voter receives only their own eligibility and submitted/not-submitted state.
-- Named participation verification is coordinator-only and uses only electorate records.
+- Named participation verification is coordinator-only and uses only electorate records. The API omits each person's submitted status until at least three submitted votes exist, including after a poll closes below the threshold.
 - Direct-topic participant verification is denied. For group polls, only group administrators receive participant email addresses; other poll coordinators receive no email value. Missing historical inviters remain blank, and specified-voter invitations update cached participation counts inside the locked poll transaction.
 - The ballot API has no show, index, update, destroy, revoke, redact, or replace route.
 - After closing, charts and CSV exports use aggregate option totals. BLT ballot-pattern export is denied.
@@ -49,7 +49,7 @@ This review covers the detached anonymous voting implementation and the migratio
 - Ordinary members must have an electorate row and may see only their own participation state.
 - Eligible voters can submit once; submitted voters cannot retrieve or change their ballot.
 - Non-eligible users cannot submit.
-- Coordinators can view participation metadata but cannot retrieve ballots before or after closing.
+- Coordinators can view electorate and invitation metadata but cannot retrieve ballots before or after closing. They can view named submitted status only once at least three people have voted.
 - Group and topic administration does not create a ballot lookup path.
 - Instance administration through application permissions does not create a ballot lookup path.
 - Group-topic and direct-topic submission paths use the same detached storage boundary.
@@ -76,7 +76,7 @@ Operational rollout, canary conversion, batch auditing, and removal of stance-sp
 
 ## Residual risks
 
-The application-level design does not protect against database, backup, host, process-memory, transaction-log, network-timing, mail-system, or server-log operators. Small electorates and distinctive aggregate patterns can also permit inference. The UI and user documentation must not describe the feature as cryptographically anonymous or protected from infrastructure operators.
+The application-level design does not protect against database, backup, host, process-memory, transaction-log, network-timing, mail-system, or server-log operators. Small electorates, unanimous results, distinctive aggregate patterns, and information voters disclose elsewhere can also permit inference. Hiding named participation status below three votes reduces one disclosure risk but cannot prevent inference from the aggregate result itself. The UI and user documentation must not describe the feature as cryptographically anonymous or protected from infrastructure operators.
 
 ## Validation evidence for manual review
 

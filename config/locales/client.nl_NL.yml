@@ -2838,7 +2838,9 @@ nl_NL:
     who_may_vote: Wie mag stemmen op deze %{poll_type}?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonieme stemmen worden apart van de identiteit van de kiezers opgeslagen. De resultaten worden bekendgemaakt nadat de stemming is gesloten. Kiezers kunnen geen redenen toevoegen, hun stem na het indienen ervan herzien of hun stem wijzigen.
     anonymous_voting_explanation: Maak het onmogelijk om te weten hoe iemand heeft gestemd. Anonieme stemmen worden apart van de identiteit van de kiezer geregistreerd. De uitslag wordt pas na sluiting van de stembus bekendgemaakt. Kiezers kunnen geen reden toevoegen, hun stem na het uitbrengen niet herzien en hun stem niet wijzigen.
+    anonymous_voting_risk_explanation: Anonieme stemmen worden apart van de identiteit van de stemmers opgeslagen. Resultaten worden pas na het sluiten van de stemming getoond en stemmers kunnen geen redenen toevoegen, hun stem na het indienen bekijken of deze wijzigen. Deze maatregelen verkleinen het risico dat een persoon aan een stem wordt gekoppeld, maar resultaten kunnen nog steeds informatie prijsgeven wanneer weinig mensen stemgerechtigd zijn of stemmen, de uitslag unaniem is, stempatronen opvallend zijn of stemmers hun keuzes bekendmaken.
   poll_receipts_page:
+    participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
     voter_name: Naam van de kiezer

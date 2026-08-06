@@ -1,4 +1,6 @@
 class Poll < ApplicationRecord
+  PARTICIPATION_STATUS_VOTES_MIN = 3
+
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -360,6 +362,18 @@ class Poll < ApplicationRecord
 
   def detached_anonymous?
     anonymous? && anonymous_ballot?
+  end
+
+  def participation_status_visible?
+    return true unless anonymous?
+
+    votes = if detached_anonymous?
+      anonymous_ballots
+    else
+      stances.latest.decided
+    end
+
+    votes.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
   end
 
   def body

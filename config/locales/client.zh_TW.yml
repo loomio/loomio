@@ -2839,7 +2839,9 @@ zh_TW:
     who_may_vote: 誰可以參與此次 %{poll_type} 投票？
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票與選民身分資訊分開儲存。投票結束後，結果才會公佈。選民無法添加理由、提交投票後無法查看或更改投票。
     anonymous_voting_explanation: 確保任何人的投票情況都無法被知道。匿名投票與選民身分資訊分開記錄。投票結果僅在投票結束後公佈。選民無法添加理由說明，提交投票後也無法查看或更改投票。
+    anonymous_voting_risk_explanation: 匿名投票與選民身分資訊分開儲存。投票結果僅在投票結束後顯示，選民無法新增理由、在提交後查看自己的投票或更改投票。這些措施降低了將個人與投票連結起來的風險，但當有資格投票或實際投票的人很少、結果一致、投票模式具有明顯特徵，或選民公開自己的選擇時，結果仍可能透露資訊。
   poll_receipts_page:
+    participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
     voter_name: 選民姓名

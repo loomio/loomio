@@ -2846,7 +2846,9 @@ de:
     who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht. Wähler können keine Gründe hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
     anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Wähleridentitäten erfasst. Die Ergebnisse werden erst nach Schließung der Wahllokale veröffentlicht. Wähler können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
+    anonymous_voting_risk_explanation: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse werden erst nach Ende der Abstimmung angezeigt, und Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe einsehen oder ändern. Diese Maßnahmen verringern das Risiko, eine Person mit einer Stimme zu verknüpfen. Ergebnisse können jedoch weiterhin Rückschlüsse zulassen, wenn nur wenige Personen teilnahmeberechtigt sind oder abstimmen, das Ergebnis einstimmig ist, Abstimmungsmuster auffällig sind oder Abstimmende ihre Auswahl offenlegen.
   poll_receipts_page:
+    participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
     voter_name: Name des Wählers

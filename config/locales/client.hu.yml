@@ -2818,7 +2818,9 @@ hu:
     who_may_vote: Kik szavazhatnak ezen a %{poll_type}-on?
     anonymous_votes_are_stored_separately_from_voter_identities_description: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények a szavazás lezárása után jelennek meg. A szavazók nem adhatnak meg indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
     anonymous_voting_explanation: Lehetetlenné teszi annak megállapítását, hogy valaki hogyan szavazott. A névtelen szavazatokat a szavazók személyazonosságától elkülönítve rögzítik. Az eredmények csak a szavazás lezárása után jelennek meg. A szavazók nem fűzhetnek hozzá indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
+    anonymous_voting_risk_explanation: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények csak a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak indoklást, nem tekinthetik meg a szavazatukat a beküldés után, és nem módosíthatják azt. Ezek az intézkedések csökkentik annak kockázatát, hogy egy személyt egy szavazathoz kapcsoljanak, de az eredmények továbbra is felfedhetnek információt, ha kevesen jogosultak szavazni vagy kevesen szavaznak, az eredmény egyhangú, a szavazási minták jellegzetesek, vagy a szavazók nyilvánosságra hozzák választásaikat.
   poll_receipts_page:
+    participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
     voter_name: Szavazó neve

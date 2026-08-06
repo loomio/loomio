@@ -202,6 +202,15 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "available audiences support a discussion topic without a poll" do
+    get :available_audiences, params: { topic_id: @discussion.topic_id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    assert_includes audience_ids, "group-#{@group.id}"
+    refute_includes audience_ids, "voters"
+  end
+
   test "count ignores obsolete recipient usernames" do
     get :count, params: {
       group_id: @group.id,

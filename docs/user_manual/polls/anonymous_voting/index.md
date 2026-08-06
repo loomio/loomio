@@ -1,6 +1,6 @@
 # Anonymous voting
 
-Anonymous voting separates the record of who has voted from the votes themselves. Poll coordinators can verify participation, but application users cannot connect a submitted vote with the person who submitted it.
+Anonymous voting separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
 
 This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
 
@@ -57,7 +57,7 @@ An anonymous poll cannot be reopened after it closes.
 
 ## Participation verification
 
-Poll coordinators can view the named participation records. These show who was eligible and whether each person voted, but never show how anyone voted.
+Poll coordinators can view the named participation records. These always show who was eligible. Once at least three people have voted, they also show whether each person voted, but never show how anyone voted. If a poll closes with fewer than three votes, the participation status remains hidden.
 
 Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
 
@@ -76,7 +76,7 @@ Polls with a total voting period of less than 24 hours do not send this automati
 Through the application, a poll coordinator, group administrator, or instance administrator may be able to see:
 
 - the poll and its eligible voters;
-- whether each eligible person has voted, where their role permits access; and
+- whether each eligible person has voted, where their role permits access and at least three people have voted; and
 - aggregate results after the poll closes.
 
 They cannot use application features to see:
@@ -117,7 +117,7 @@ A historical reason may identify its author through what they chose to write. Th
 
 ### Can a coordinator see how I voted?
 
-No. A coordinator can verify whether you voted but cannot connect you with a submitted vote through the application.
+No. Once at least three people have voted, a coordinator can verify whether you voted but cannot connect you with a submitted vote through the application. Below that threshold, your participation status remains hidden.
 
 ### Can I see my vote after submitting it?
 

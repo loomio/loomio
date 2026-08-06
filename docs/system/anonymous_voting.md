@@ -286,7 +286,7 @@ It must never expose or internally derive which ballot belongs to a participant.
 
 Authorization for participation verification must be defined independently from authorization to view poll results. Poll access or result access alone must not imply access to the named electorate ledger.
 
-Participation verification is available only for group-owned polls. Poll coordinators may view names, membership duration, invitation provenance, and participation status. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
+Participation verification is available only for group-owned polls. Poll coordinators may view names, membership duration, and invitation provenance. The API must omit each person's participation status until at least three people have voted, including after a poll closes below the threshold. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
 
 The UI must describe participation verification as named participation metadata, not ballot identity.
 
@@ -498,7 +498,7 @@ The poll form must explain that new anonymous voting:
 
 Suggested form copy:
 
-> Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote.
+> Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it. These measures reduce the risk of linking a person to a vote, but results may still reveal information when few people are eligible or vote, the result is unanimous, voting patterns are distinctive, or voters disclose their choices.
 
 The confirmation step must warn the voter before submission:
 
@@ -670,12 +670,12 @@ The migration is complete only after Release 2 is deployed and the final product
 ## Implemented product decisions
 
 1. Native detached results and ordinary user-facing application exports expose aggregates only, not individual ballots or ballot patterns. The closed-poll JSON group portability archive is the documented operational exception required for restoration. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
-2. Poll coordinators may view named participation status and invitation provenance. Result access alone does not grant this permission.
+2. Poll coordinators may view invitation provenance. They may view named participation status only once at least three people have voted. Result access alone does not grant this permission.
 3. Group polls establish their electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
 4. Coordinators may add specified voters until the first ballot is submitted. The electorate is frozen after that point.
 5. `closing_at` may be extended while voting is open. The hourly check uses the current deadline without maintaining queued-job state. A poll receives at most one automatic closing reminder, including after an extension.
 6. The automatic reminder is sent when a poll lasting at least 24 hours enters its final 24 hours. Polls lasting less than 24 hours receive no automatic closing reminder.
 7. There is no minimum electorate size.
-8. Quorum and participation counts are unavailable through the general poll API before closing. Coordinators may verify named participation separately without receiving ballot contents.
+8. Quorum and participation counts are unavailable through the general poll API before closing. Coordinators may verify named participation separately after at least three people have voted, without receiving ballot contents. Status remains hidden if a poll closes below the threshold.
 9. New anonymous polls use detached ballots. Supported application APIs cannot enable the legacy anonymous format on an identified poll. Closed legacy anonymous polls are migrated to detached ballots with plain-text legacy reasons and no stance-based voting behavior.
 10. General poll comments remain available according to the topic's ordinary comment permissions.
