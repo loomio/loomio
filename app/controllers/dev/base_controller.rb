@@ -2,10 +2,10 @@ class Dev::BaseController < ApplicationController
   before_action :ensure_not_production
 
   def index
-    @routes = self.class.action_methods.select do |action|
+    routes = self.class.action_methods.select do |action|
       /^(test_|setup_|view_)/.match action
     end
-    render 'dev/main/index', layout: false
+    render Views::Dev::Main::Index.new(routes: routes)
   end
 
   def import_test_data
@@ -20,7 +20,11 @@ class Dev::BaseController < ApplicationController
     else
       ActionMailer::Base.deliveries
     end.last
-    render template: 'dev/main/last_email', layout: false
+    render Views::Dev::Main::LastEmail.new(
+      email: @email,
+      scenario: @scenario,
+      action_name: action_name
+    )
   end
 
   private
