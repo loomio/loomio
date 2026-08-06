@@ -71,6 +71,12 @@ export default {
 
   methods: {
     titleVisible(visible) { EventBus.$emit('content-title-visible', visible); },
+    setAnonymousVoting(value) {
+      if (!value) { return; }
+      this.pollTemplate.hideResults = 'until_closed';
+      this.pollTemplate.stanceReasonRequired = 'disabled';
+      this.pollTemplate.notifyOnClosingSoon = 'undecided_voters';
+    },
     validate(field) {
       return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
     },
@@ -410,6 +416,7 @@ export default {
         .text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")
         .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
         v-select(
+          :disabled="pollTemplate.anonymous"
           :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
           v-model="pollTemplate.notifyOnClosingSoon"
           :items="closingSoonItems")
@@ -421,6 +428,7 @@ export default {
           v-checkbox.poll-settings-anonymous(
             hide-details
             v-model="pollTemplate.anonymous"
+            @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
 
           v-divider.mb-4
@@ -430,6 +438,7 @@ export default {
             :label="$t('poll_common_card.hide_results')"
             :items="hideResultsItems"
             v-model="pollTemplate.hideResults"
+            :disabled="pollTemplate.anonymous"
           )
 
         template(v-if="pollTemplate.config().can_shuffle_options")
@@ -445,6 +454,7 @@ export default {
         .text-body-large.pb-2(v-t="'poll_common_form.vote_reason'")
         .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
         v-select(
+          :disabled="pollTemplate.anonymous"
           :label="$t('poll_common_form.stance_reason_required_label')"
           :items="stanceReasonRequiredItems"
           v-model="pollTemplate.stanceReasonRequired"

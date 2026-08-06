@@ -253,6 +253,8 @@ module.exports = {
     page.click('.poll-settings-anonymous .v-selection-control__wrapper')
     page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
     page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
+    page.expectText('.poll-common-settings__hide-results', 'Until voting is closed')
+    page.expectElement('.poll-common-settings__hide-results.v-input--disabled')
     page.expectText('.poll-common-form__stance-reason-required', 'Disabled')
     page.expectElement('.poll-common-form__stance-reason-required.v-input--disabled')
 

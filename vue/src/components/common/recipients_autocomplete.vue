@@ -49,6 +49,7 @@ export default {
 
   mounted() {
     this.recipients = this.initialRecipients;
+    this.newRecipients(this.recipients);
     this.fetchChatbots();
     this.fetchAvailableAudiences();
     this.fetchAndUpdateSuggestions();

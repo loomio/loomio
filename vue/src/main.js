@@ -7,6 +7,9 @@ import './removeServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import PlausibleService from '@/shared/services/plausible_service';
+import { installVitePreloadErrorHandler } from '@/shared/services/chunk_error_handling';
+
+installVitePreloadErrorHandler();
 
 try {
   document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();

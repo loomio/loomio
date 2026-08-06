@@ -23,6 +23,7 @@ export const DEFAULT_CONFIRM_MESSAGE =
 
 // Prevent multiple simultaneous reload attempts within the same page lifecycle
 let isReloading = false
+let reloadPrompted = false
 
 /**
  * Best-effort detection of failures that are fixed by a hard reload:
@@ -65,6 +66,9 @@ export function isChunkOrDynamicImportError(err) {
  */
 export function promptAndMaybeReload(confirmMessage = DEFAULT_CONFIRM_MESSAGE) {
   if (isReloading) return true
+  if (reloadPrompted) return false
+
+  reloadPrompted = true
 
   let confirmed = false
   try {
@@ -79,7 +83,10 @@ export function promptAndMaybeReload(confirmMessage = DEFAULT_CONFIRM_MESSAGE) {
     confirmed = false
   }
 
-  if (!confirmed) return false
+  if (!confirmed) {
+    setTimeout(() => { reloadPrompted = false }, 0)
+    return false
+  }
 
   isReloading = true
 
@@ -170,6 +177,13 @@ export function installRouterChunkErrorHandler(router, { confirmMessage = DEFAUL
   })
 }
 
+export function installVitePreloadErrorHandler({ confirmMessage = DEFAULT_CONFIRM_MESSAGE } = {}) {
+  window.addEventListener('vite:preloadError', (event) => {
+    const { reloading } = handleChunkError(event.payload, { confirmMessage })
+    if (reloading) event.preventDefault()
+  })
+}
+
 // Optional default export for convenience
 export default {
   DEFAULT_CONFIRM_MESSAGE,
@@ -178,4 +192,5 @@ export default {
   handleChunkError,
   wrapAsyncLoader,
   installRouterChunkErrorHandler,
+  installVitePreloadErrorHandler,
 }

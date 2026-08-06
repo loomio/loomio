@@ -267,11 +267,6 @@ h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus {
   max-width: 1024px !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000;
-  }
-}
 @media print {
   .lmo-no-print {
     display: none !important;

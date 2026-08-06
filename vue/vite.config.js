@@ -101,7 +101,7 @@ export default defineConfig({
 
   build: {
     sourcemap: true,
-    emptyOutDir: false,
+    emptyOutDir: true,
     outDir: '../public/client3',
 
     // Prevent Vite from treating Nightwatch HTML reports as entries

@@ -1,6 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
+import Flash from '@/shared/services/flash';
 
 export default {
   props: {
@@ -26,6 +27,9 @@ export default {
         ...excludeMembers
       }}).then(data => {
         this.count = data.count;
+      }).catch(error => {
+        this.count = 0;
+        Flash.fromServer(error.flash || error);
       });
     }
   },
