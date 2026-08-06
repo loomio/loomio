@@ -26,7 +26,7 @@ class InlineImageAttachmentRepairServiceTest < ActiveSupport::TestCase
   end
 
   test "repair creates a missing image attachment with group ownership" do
-    updated_at = @comment.updated_at
+    updated_at = @comment.reload.updated_at
 
     result = InlineImageAttachmentRepairService.repair_record(@comment, dry_run: false)
 
