@@ -67,6 +67,35 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_includes user_ids, @admin.id
   end
 
+  test "users action returns the named electorate for detached anonymous polls with an empty query" do
+    poll = create_detached_anonymous_poll
+    sign_in @admin
+
+    get :users, params: { poll_id: poll.id, query: "" }
+
+    assert_response :success
+    user_ids = JSON.parse(response.body).fetch("users").pluck("id")
+    assert_equal poll.anonymous_poll_voters.pluck(:voter_id).sort, user_ids.sort
+  end
+
+  test "users action denies a detached anonymous poll participant" do
+    poll = create_detached_anonymous_poll
+    assert poll.anonymous_poll_voters.exists?(voter_id: @user.id)
+    sign_in @user
+
+    get :users, params: { poll_id: poll.id, query: "" }
+
+    assert_response :forbidden
+  end
+
+  test "users action denies a signed-out detached anonymous poll viewer" do
+    poll = create_detached_anonymous_poll
+
+    get :users, params: { poll_id: poll.id, query: "" }
+
+    assert_response :forbidden
+  end
+
   test "users action denies an ordinary poll participant" do
     sign_in @user
 
@@ -461,6 +490,20 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   private
+
+  def create_detached_anonymous_poll
+    PollService.create(
+      params: {
+        title: "Detached anonymous poll",
+        poll_type: "proposal",
+        group_id: @group.id,
+        anonymous: true,
+        poll_option_names: ["Agree", "Disagree"],
+        closing_at: 5.days.from_now
+      },
+      actor: @admin
+    )
+  end
 
   def anon_poll_with_voters(count)
     hex = SecureRandom.hex(4)

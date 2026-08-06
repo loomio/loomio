@@ -84,15 +84,15 @@ class Api::V1::StancesController < Api::V1::RestfulController
   def users
     if load_and_authorize(:poll).detached_anonymous?
       current_user.ability.authorize!(:add_voters, @poll)
-      self.collection = User.where(id: @poll.anonymous_poll_voters.select(:voter_id))
+      collection = User.where(id: @poll.anonymous_poll_voters.select(:voter_id))
       if query = params[:query].presence
         collection = collection.where(
           "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
           first: "#{query}%",
           last: "% #{query}%"
         )
-        self.collection = collection
       end
+      self.collection = collection
       add_voter_role_meta(collection.pluck(:id))
       return respond_with_collection serializer: AuthorSerializer, root: :users
     end
