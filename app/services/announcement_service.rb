@@ -70,7 +70,7 @@ class AnnouncementService
 
     unless model.is_a?(Group)
       group = model.group if model.respond_to?(:group)
-      if group&.persisted?
+      if group.present? && group.persisted?
         groups = [group, group.parent, *group.parent_or_self.subgroups].compact.uniq
         groups.each do |candidate_group|
           candidates << {id: "group-#{candidate_group.id}", kind: 'group', name: candidate_group.name} if candidate_group.members.exists?

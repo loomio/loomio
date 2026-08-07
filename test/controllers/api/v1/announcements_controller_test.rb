@@ -211,6 +211,23 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     refute_includes audience_ids, "voters"
   end
 
+  test "available audiences support a direct discussion" do
+    discussion = DiscussionService.create(
+      params: {
+        title: "Direct discussion audiences",
+        recipient_user_ids: [@alien.id]
+      },
+      actor: @admin
+    )
+
+    get :available_audiences, params: { discussion_id: discussion.id, include_actor: 1 }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    assert_includes audience_ids, "discussion_group"
+    refute audience_ids.any? { |id| id.start_with?("group-") }
+  end
+
   test "count ignores obsolete recipient usernames" do
     get :count, params: {
       group_id: @group.id,

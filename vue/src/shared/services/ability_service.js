@@ -131,7 +131,7 @@ export default new class AbilityService {
       return discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user()));
     } else {
-      return !discussion.id || discussion.adminsInclude(Session.user());
+      return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
   }
 
@@ -165,7 +165,7 @@ export default new class AbilityService {
       return discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user()));
     } else {
-      return !discussion.id || discussion.adminsInclude(Session.user());
+      return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
   }
 
