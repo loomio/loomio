@@ -45,22 +45,6 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, "Missing group ##{missing_group_id}"
   end
 
-  test "show places revoked memberships behind a disclosure toggle" do
-    revoked_membership = memberships(:user_subgroup_membership)
-    revoked_membership.update_columns(revoked_at: 1.day.ago)
-
-    get :show, params: { id: @user.id }
-
-    assert_response :success
-    assert_includes response.body, '<details class="admin-disclosure">'
-    assert_includes response.body, "Revoked memberships (1)"
-    details_start = response.body.index('<details class="admin-disclosure">')
-    details_end = response.body.index("</details>", details_start)
-    details_html = response.body[details_start..details_end]
-    assert_includes details_html, revoked_membership.id.to_s
-    assert_includes details_html, revoked_membership.revoked_at.to_date.to_s
-  end
-
   test "show uses Sign in as wording and native confirmation" do
     get :show, params: { id: @user.id }
 

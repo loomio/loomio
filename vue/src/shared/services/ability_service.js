@@ -141,23 +141,16 @@ export default new class AbilityService {
   }
 
   canAnnounce(model) {
-    if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
-      return this.canAnnouncePoll(model);
-    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
-      return this.canAnnounceTopic(model);
-    } else {
-      return this.canAnnounceDiscussion(model);
-    }
+    if (model.isA('poll')) { return this.canAnnouncePoll(model); }
+    if (model.isA('topic')) { return this.canAnnounceTopic(model); }
+    return this.canAnnounceDiscussion(model);
   }
 
   canAddGuests(model) {
-    if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
-      return this.canAddGuestsPoll(model);
-    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
-      return this.canAddGuestsTopic(model);
-    } else {
-      return this.canAddGuestsDiscussion(model);
-    }
+    if (model.isA('group')) { return this.canAddMembersToGroup(model); }
+    if (model.isA('poll')) { return this.canAddGuestsPoll(model); }
+    if (model.isA('topic')) { return this.canAddGuestsTopic(model); }
+    return this.canAddGuestsDiscussion(model);
   }
 
   canAddGuestsDiscussion(discussion) {
