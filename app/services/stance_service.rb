@@ -72,6 +72,32 @@ class StanceService
     end
   end
 
+  def self.set_weight(stance:, weight:, actor:)
+    stance.poll.with_lock do
+      actor.ability.authorize! :set_weight, stance
+      stance.update!(weight: weight)
+      stance.poll.update_counts!
+    end
+    stance
+  end
+
+  def self.set_weights(poll:, weights_by_stance_id:, actor:)
+    raise ActionController::ParameterMissing, :weights if weights_by_stance_id.empty?
+
+    poll.with_lock do
+      stances = poll.stances.latest.where(id: weights_by_stance_id.keys).index_by { |stance| stance.id.to_s }
+      raise ActiveRecord::RecordNotFound unless stances.length == weights_by_stance_id.length
+
+      stances.each_value { |stance| actor.ability.authorize! :set_weight, stance }
+      stances.each do |id, stance|
+        stance.update!(weight: weights_by_stance_id.fetch(id))
+      end
+      poll.update_counts!
+    end
+
+    poll
+  end
+
   def self.redeem(stance:, actor:)
     return if Stance.latest.where(participant_id: actor.id, poll_id: stance.poll_id).exists?
     return unless Stance.redeemable_by(actor).where(id: stance.id).exists?

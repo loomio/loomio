@@ -49,6 +49,7 @@ class PermittedParams < Struct.new(:params)
       :notify_on_open,
       :voter_can_add_options,
       :specified_voters_only,
+      :vote_weights_enabled,
       :allow_comments,
       :allow_reactions,
       :recipient_audience,

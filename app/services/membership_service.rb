@@ -157,6 +157,13 @@ class MembershipService
     end
   end
 
+  def self.set_weight(membership:, weight:, actor:)
+    actor.ability.authorize! :set_weight, membership
+    membership.update!(weight: weight)
+    EventBus.broadcast 'membership_update', membership, {weight: weight}, actor
+    membership
+  end
+
   def self.resend(membership:, actor:)
     actor.ability.authorize! :resend, membership
     EventBus.broadcast 'membership_resend', membership, actor

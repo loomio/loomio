@@ -18,6 +18,98 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
   # -- Index tests --
 
+  test "poll admin updates stance weight before voting opens" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :success
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "poll admin cannot set a fractional stance weight" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0.5}
+
+    assert_response :unprocessable_entity
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin cannot set stance weights when vote weights are disabled" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 2}
+
+    assert_response :forbidden
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin updates stance weight after voting opens" do
+    @poll.update_column(:vote_weights_enabled, true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :success
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "poll admin cannot update stance weight after voting closes" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    @poll.update_columns(vote_weights_enabled: true, closed_at: Time.current)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :forbidden
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin updates all stance weights atomically before voting opens" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    stances = @poll.stances.latest.limit(2).to_a
+    sign_in @admin
+
+    patch :set_weights, params: {
+      poll_id: @poll.id,
+      weights: {stances.first.id => 0, stances.second.id => 2}
+    }
+
+    assert_response :success
+    assert_equal [0, 2], stances.map { |stance| stance.reload.weight.to_i }
+  end
+
+  test "bulk stance weight update rolls back when one stance belongs to another poll" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    stance = @poll.stances.latest.first
+    other_poll = Poll.create!(
+      title: 'Other poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      vote_weights_enabled: true,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 1.day.from_now
+    )
+    other_stance = Stance.create!(poll: other_poll, participant: users(:alien))
+    sign_in @admin
+
+    patch :set_weights, params: {
+      poll_id: @poll.id,
+      weights: {stance.id => 0, other_stance.id => 2}
+    }
+
+    assert_response :not_found
+    assert_equal 1, stance.reload.weight
+  end
+
   test "index returns stances for a poll" do
     sign_in @admin
     get :index, params: { poll_id: @poll.id }
@@ -30,6 +122,51 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('created_at')
     assert stance.key?('updated_at')
     assert stance.key?('order_at')
+  end
+
+  test "stance weight is visible to viewers of identified polls" do
+    @poll.update_column(:vote_weights_enabled, true)
+    weighted_stance = @poll.stances.latest.find_by!(participant: @user)
+    weighted_stance.update!(weight: 2)
+
+    sign_in @admin
+    get :index, params: {poll_id: @poll.id}
+    admin_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == weighted_stance.id }
+    assert_equal 2, admin_stance.fetch('weight')
+
+    sign_in users(:alien)
+    public_poll = Poll.create!(
+      title: 'Public weighted poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      vote_weights_enabled: true,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 1.day.from_now
+    )
+    public_stance = Stance.create!(poll: public_poll, participant: @user, weight: 2)
+    get :index, params: {poll_id: public_poll.id}
+    viewer_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == public_stance.id }
+    assert_equal 2, viewer_stance.fetch('weight')
+  end
+
+  test "stance weight is hidden for anonymous polls" do
+    anonymous_poll = Poll.create!(
+      title: 'Public anonymous poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      anonymous: true,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 1.day.from_now
+    )
+    anonymous_stance = Stance.create!(poll: anonymous_poll, participant: @user, weight: 2)
+    sign_in users(:alien)
+
+    get :index, params: {poll_id: anonymous_poll.id}
+
+    viewer_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == anonymous_stance.id }
+    refute viewer_stance.key?('weight')
   end
 
   test "until vote has the same backend response as results off" do

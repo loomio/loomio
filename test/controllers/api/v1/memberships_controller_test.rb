@@ -44,6 +44,16 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'dr', m.reload.title
   end
 
+  test 'ordinary membership update cannot change vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Member', weight: 0}}
+
+    assert_response :bad_request
+    assert_nil membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
   test 'user_name updates name but not username' do
     sign_in @admin
     member_user = User.create!(
@@ -62,6 +72,35 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   # ===== Set Volume Tests =====
+
+  test 'group admin updates membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weight, params: {id: membership.id, weight: 2}
+
+    assert_response :success
+    assert_equal 2, membership.reload.weight
+  end
+
+  test 'group admin cannot set a fractional membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weight, params: {id: membership.id, weight: 0.5}
+
+    assert_response :unprocessable_entity
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'member cannot update their own membership vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weight, params: {id: membership.id, weight: 0}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
 
   test 'updates volume for single membership' do
     membership = @test_group.membership_for(@user)

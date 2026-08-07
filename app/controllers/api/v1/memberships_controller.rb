@@ -71,6 +71,11 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def set_weight
+    service.set_weight membership: load_resource, weight: params.require(:weight), actor: current_user
+    respond_with_resource
+  end
+
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
     service.save_experience membership: load_resource, actor: current_user, params: { experience: params[:experience] }

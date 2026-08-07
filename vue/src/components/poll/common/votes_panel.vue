@@ -154,11 +154,20 @@ fetchNow();
     .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
       .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')
         .poll-common-votes-panel__avatar.pr-3
-          user-avatar(:user='stance.participant()', :size='24')
+          v-badge(
+            :content="stance.weight"
+            :model-value="poll.weightedVoting"
+            color="primary"
+            overlap)
+            user-avatar(:user='stance.participant()', :size='24')
         .poll-common-votes-panel__stance-content
           .poll-common-votes-panel__stance-name-and-option
-            v-layout.text-body-medium(align-center)
+            .d-flex.align-center.flex-wrap.text-body-medium
               span.text-medium-emphasis {{ stance.participantName() }}
+              v-chip.ml-2(
+                v-if="poll.weightedVoting"
+                size="x-small"
+                :text="$t('poll_common_votes_panel.vote_weight', {weight: stance.weight})")
               span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
                 poll-common-stance-choice.pl-2.pr-1(
                   :poll="poll"

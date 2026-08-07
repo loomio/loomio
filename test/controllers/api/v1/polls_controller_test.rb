@@ -199,6 +199,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
           topic_id: @discussion.topic_id,
           group_id: @group.id,
           options: %w[agree abstain disagree],
+          vote_weights_enabled: true,
           closing_at: 3.days.from_now.at_beginning_of_hour
         }
       }
@@ -209,6 +210,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal "hello", poll.title
     assert_equal @discussion.topic, poll.topic
     assert_equal @admin, poll.author
+    assert poll.vote_weights_enabled?
     assert_includes poll.admins, @admin
   end
 

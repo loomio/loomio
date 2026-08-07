@@ -79,7 +79,7 @@ class PollExporter
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
       memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
-      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'weight', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
         membership = memberships_by_user_id[stance.participant_id] unless @poll.anonymous?
         line = [
@@ -89,6 +89,7 @@ class PollExporter
           @poll.anonymous? ? nil : stance.author_name,
           membership&.title,
           membership&.delegate,
+          @poll.anonymous? ? nil : stance.weight,
           @poll.anonymous? ? nil : stance.created_at&.iso8601,
           @poll.anonymous? ? nil : stance.updated_at&.iso8601,
           stance.reason,

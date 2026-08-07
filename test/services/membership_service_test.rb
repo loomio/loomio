@@ -32,6 +32,24 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_includes subgroup.reload.members, @user
   end
 
+  test "group admin sets a membership vote weight" do
+    membership = @group.add_member!(@user)
+
+    MembershipService.set_weight(membership: membership, weight: 2, actor: @admin)
+
+    assert_equal 2, membership.reload.weight
+  end
+
+  test "member cannot set their own membership vote weight" do
+    membership = @group.add_member!(@user)
+
+    assert_raises CanCan::AccessDenied do
+      MembershipService.set_weight(membership: membership, weight: 0, actor: @user)
+    end
+
+    assert_equal 1, membership.reload.weight
+  end
+
   test "revoke cascade deletes discussion reader access" do
     membership = @group.add_member!(@user)
     discussion = DiscussionService.create(params: { title: "Test", group_id: @group.id }, actor: @admin)

@@ -100,6 +100,44 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
+  test "vote weights are disabled by default" do
+    poll = create_poll
+
+    refute poll.vote_weights_enabled?
+    refute poll.vote_weights_active?
+  end
+
+  test "identified non-STV polls can enable vote weights" do
+    poll = create_poll(vote_weights_enabled: true)
+
+    assert poll.vote_weights_enabled?
+    assert poll.vote_weights_active?
+  end
+
+  test "vote weights cannot be enabled after voting opens" do
+    poll = create_poll
+
+    poll.vote_weights_enabled = true
+
+    refute poll.save
+  end
+
+  test "vote weights can be enabled before voting opens" do
+    poll = create_poll(closing_at: nil)
+
+    assert poll.update(vote_weights_enabled: true)
+  end
+
+  test "anonymous and STV polls cannot enable vote weights" do
+    assert_raises ActiveRecord::RecordInvalid do
+      create_poll(anonymous: true, vote_weights_enabled: true)
+    end
+
+    assert_raises ActiveRecord::RecordInvalid do
+      create_poll(poll_type: 'stv', stv_seats: 1, vote_weights_enabled: true)
+    end
+  end
+
   test "disallows closing dates in the past" do
     poll = Poll.new(
       poll_type: "poll",

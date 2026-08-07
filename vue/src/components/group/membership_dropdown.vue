@@ -33,6 +33,10 @@ export default
       return AbilityService.canSetMembershipTitle(this.membership);
     },
 
+    canEditMembership() {
+      return AbilityService.canAdminister(this.membership.group());
+    },
+
     setName() {
       EventBus.$emit('openModal', {
           component: 'UserNameModal',
@@ -139,7 +143,7 @@ export default
       v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
         v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
-        v-list-item-title(v-t="'membership_dropdown.set_title'")
+        v-list-item-title(v-t="canEditMembership() ? 'membership_dropdown.edit_membership' : 'membership_dropdown.set_title'")
       v-list-item.membership-dropdown__resend(v-if='canResendMembership()' @click='resendMembership()', :disabled='membership.resent')
         v-list-item-title(v-t="'membership_dropdown.resend'", v-if='!membership.resent')
         v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')

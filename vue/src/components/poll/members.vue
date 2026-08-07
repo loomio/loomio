@@ -32,7 +32,11 @@ export default {
       actionNames: [],
       service: StanceService,
       query: '',
-      message: ''
+      message: '',
+      stanceIdsByUserId: {},
+      weightsByUserId: {},
+      weightsSavedByUserId: {},
+      weightsSaving: false
     };
   },
 
@@ -57,12 +61,37 @@ export default {
       this.poll.recipientUserIds.length ||
       this.poll.recipientEmails.length ||
       this.poll.recipientChatbotIds.length;
+    },
+    canManageWeights() {
+      return this.poll.voteWeightsEnabled && !this.poll.closedAt;
+    },
+    weightsDirty() {
+      return Object.keys(this.weightsByUserId).some(id => Number(this.weightsByUserId[id]) !== Number(this.weightsSavedByUserId[id]));
+    },
+    weightsValid() {
+      return Object.values(this.weightsByUserId).every(weight => Number.isInteger(Number(weight)) && Number(weight) >= 0 && Number(weight) <= 1000000);
     }
   },
 
   methods: {
     performableActions(poll, user) {
       return this.actionNames.filter(name => this.canPerform(name, poll, user))
+    },
+    saveWeights() {
+      const weights = {};
+      Object.keys(this.weightsByUserId).forEach(userId => {
+        weights[this.stanceIdsByUserId[userId]] = this.weightsByUserId[userId];
+      });
+
+      this.weightsSaving = true;
+      Records.remote.patch('stances/set_weights', {poll_id: this.poll.id, weights}).then(() => {
+        this.weightsSavedByUserId = Object.assign({}, this.weightsByUserId);
+        Flash.success('poll_common_form.vote_weights_updated');
+      }).catch(error => {
+        Flash.fromServer(error);
+      }).finally(() => {
+        this.weightsSaving = false;
+      });
     },
     canPerform(action, poll, user) {
       switch (action) {
@@ -134,6 +163,11 @@ export default {
         this.isGuest = this.toHash(data['meta']['guest_ids']);
         this.isGroupAdmin = this.toHash(data['meta']['group_admin_ids']);
         this.isTopicAdmin = this.toHash(data['meta']['topic_admin_ids']);
+        if (this.canManageWeights) {
+          this.stanceIdsByUserId = data.meta.stance_ids_by_user_id || {};
+          this.weightsByUserId = Object.fromEntries(Object.entries(data.meta.weights_by_user_id || {}).map(([id, weight]) => [id, Number(weight)]));
+          this.weightsSavedByUserId = Object.assign({}, this.weightsByUserId);
+        }
         this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
         this.updateStances();
       }).finally(() => {
@@ -197,6 +231,8 @@ v-card.poll-members-form
     v-alert(density="compact" type="warning" text v-if="!isScheduled && someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="!isScheduled && poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+    v-alert.mt-2(v-if="canManageWeights" density="compact" type="info" variant="tonal")
+      span(v-t="'poll_common_form.vote_weight_helptext'")
   v-list.poll-members-form__list
     v-list-subheader
       span(v-t="'membership_card.voters'")
@@ -214,6 +250,16 @@ v-card.poll-members-form
         v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="$t('announcement.members_list.has_not_joined_yet_hint')")
           span(v-t="'announcement.members_list.has_not_joined_yet'")
       template(v-slot:append)
+        v-text-field.poll-members-form__weight.mr-2(
+          v-if="canManageWeights"
+          v-model.number="weightsByUserId[user.id]"
+          type="number"
+          min="0"
+          max="1000000"
+          step="1"
+          density="compact"
+          hide-details
+          :aria-label="$t('poll_common_form.vote_weight_for', {name: user.name})")
         v-menu(offset-y)
           template(v-slot:activator="{ props }")
             v-btn.membership-dropdown__button(variant="flat" icon size="small" v-bind="props")
@@ -228,7 +274,15 @@ v-card.poll-members-form
     v-list-item(v-if="query && users.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
   .d-flex.justify-end.mx-4.pb-4
+    v-btn(v-if="canManageWeights" color="primary" :disabled="!weightsDirty || !weightsValid" :loading="weightsSaving" @click="saveWeights")
+      span(v-t="'poll_common_form.save_vote_weights'")
     help-btn(
       path="en/user_manual/polls/starting_proposals/index.html#invite-members")
     v-spacer
 </template>
+
+<style>
+.poll-members-form__weight {
+  max-width: 112px;
+}
+</style>

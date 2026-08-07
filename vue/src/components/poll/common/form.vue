@@ -135,6 +135,7 @@ const addOption = () => {
 
 const setAnonymousVoting = (value) => {
   if (!value) { return; }
+  props.poll.voteWeightsEnabled = false;
   props.poll.hideResults = 'until_closed';
   props.poll.stanceReasonRequired = 'disabled';
   props.poll.notifyOnClosingSoon = 'undecided_voters';
@@ -214,6 +215,7 @@ const visiblePollOptions = computed(() => pollOptions.value.filter(o => !o._dest
 const hasOptions = computed(() => props.poll.config().has_options);
 const minOptions = computed(() => props.poll.config().min_options);
 const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
+const voteWeightsSupported = computed(() => !props.poll.anonymous && props.poll.pollType !== 'stv');
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -571,7 +573,17 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
 
-        v-divider.mb-4(v-if="allowAnonymous || poll.config().allow_quorum")
+        template(v-if="voteWeightsSupported")
+          v-divider.mb-4
+          .text-body-large.pb-2(v-t="'poll_common_form.vote_weights'")
+          .text-body-medium.pb-2.text-medium-emphasis(v-t="'poll_common_form.vote_weights_description'")
+          v-checkbox.poll-settings-vote-weights(
+            hide-details
+            :disabled="!!poll.openedAt"
+            v-model="poll.voteWeightsEnabled"
+            :label="$t('poll_common_form.use_vote_weights')")
+
+        v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")
         .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
         p(v-if="poll.closingAt && closesSoon"

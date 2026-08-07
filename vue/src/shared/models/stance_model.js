@@ -28,6 +28,7 @@ export default class StanceModel extends BaseModel {
       participantId: null,
       pollId: null,
       optionScores: {},
+      weight: 1,
       castAt: null
     };
   }

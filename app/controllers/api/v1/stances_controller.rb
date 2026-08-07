@@ -31,6 +31,20 @@ class Api::V1::StancesController < Api::V1::RestfulController
     respond_with_recent_stances
   end
 
+  def set_weight
+    self.resource = Stance.latest.find(params[:id])
+    StanceService.set_weight stance: resource, weight: params.require(:weight), actor: current_user
+    respond_with_resource
+  end
+
+  def set_weights
+    poll = Poll.find(params.require(:poll_id))
+    weights_by_stance_id = params.require(:weights).permit!.to_h
+    StanceService.set_weights poll: poll, weights_by_stance_id: weights_by_stance_id, actor: current_user
+    self.collection = poll.stances.latest.where(id: weights_by_stance_id.keys)
+    respond_with_collection
+  end
+
   def redact
     load_resource
     StanceService.redact(stance: resource, actor: current_user)
@@ -152,6 +166,11 @@ class Api::V1::StancesController < Api::V1::RestfulController
     self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
     self.add_meta :group_admin_ids, @poll.group&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
     self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+    if @poll.vote_weights_active? && @poll.closed_at.nil?
+      stances = @poll.stances.latest.where(participant_id: user_ids)
+      self.add_meta :stance_ids_by_user_id, stances.pluck(:participant_id, :id).to_h
+      self.add_meta :weights_by_user_id, stances.pluck(:participant_id, :weight).to_h
+    end
   end
 
   def live_update_outdated_stances(poll)

@@ -41,4 +41,13 @@ class MembershipTest < ActiveSupport::TestCase
     membership.set_volume!(:quiet)
     assert_equal :quiet, membership.reload.volume.to_sym
   end
+
+  test "vote weight defaults to one and accepts non-negative whole numbers" do
+    membership = @group.add_member!(@user)
+
+    assert_equal 1, membership.weight
+    assert membership.update(weight: 2)
+    refute membership.update(weight: 0.5)
+    refute membership.update(weight: -1)
+  end
 end

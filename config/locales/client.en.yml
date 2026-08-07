@@ -730,6 +730,7 @@ en:
     view_profile: View profile
     set_name_and_username: Set name and username
     set_title: Set title
+    edit_membership: Edit membership
     resend: Resend invitation
     invitation_resent: Invitation resent
     make_coordinator: Make admin
@@ -1659,11 +1660,16 @@ en:
   membership_form:
     modal_title:
       group: Set title
+      membership: Edit membership
     title_helptext:
       group: This title will appear beside %{name}'s name within this group. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
+    membership_updated: Membership updated
+    weight_label: Vote weight
+    weight_helptext: This value is copied to the member's vote when they are added to a new poll. Changing it does not affect existing polls. Set it to 0 to let the member vote without adding to the score.
+    weight_invalid: Enter a whole number from 0 to 1,000,000
   user_name_modal:
     user_name_updated: User name updated
     set_user_name: Set user name
@@ -2083,6 +2089,7 @@ en:
     name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
+    weighted_score: Score
     your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
@@ -2422,6 +2429,7 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
+    vote_weight: Weight %{weight}
   poll_common_details_meta:
     opened: Opened
     opens: Opens
@@ -2466,6 +2474,13 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    vote_weights: Vote weights
+    vote_weights_description: Assign each voter a whole-number weight. Results show both the number of voters and the weighted score. Voter weights are visible to everyone who can view the poll.
+    use_vote_weights: Use vote weights
+    vote_weight_helptext: Vote weight changes the score but not the voter count. A weight of 0 records the person's vote without adding it to the score. Weights can be changed until the poll closes.
+    vote_weight_for: Vote weight for %{name}
+    save_vote_weights: Save vote weights
+    vote_weights_updated: Vote weights updated
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
     participation_quorum: Participation quorum

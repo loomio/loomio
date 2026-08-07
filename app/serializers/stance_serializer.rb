@@ -20,7 +20,8 @@ class StanceSerializer < ApplicationSerializer
              :redacted_at,
              :redactor_id,
              :order_at,
-             :option_scores
+             :option_scores,
+             :weight
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
@@ -32,6 +33,14 @@ class StanceSerializer < ApplicationSerializer
 
   def include_cast_at?
     !poll.anonymous?
+  end
+
+  def include_weight?
+    poll.vote_weights_active?
+  end
+
+  def weight
+    object.weight
   end
 
   def include_created_at?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_07_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -541,6 +541,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
     t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
     t.boolean "delegate", default: false, null: false
+    t.integer "weight", default: 1, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -548,6 +549,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
     t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
     t.index ["volume"], name: "index_memberships_on_volume"
+    t.check_constraint "weight >= 0 AND weight <= 1000000", name: "memberships_weight_in_range"
   end
 
   create_table "notifications", id: :serial, force: :cascade do |t|
@@ -806,6 +808,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
     t.string "stv_quota"
     t.integer "voting_system", default: 0, null: false
     t.boolean "legacy_anonymous", default: false, null: false
+    t.boolean "vote_weights_enabled", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -1033,6 +1036,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
     t.boolean "none_of_the_above", default: false, null: false
     t.datetime "redacted_at"
     t.integer "redactor_id"
+    t.integer "weight", default: 1, null: false
     t.index ["cast_at", "id"], name: "index_stances_on_cast_at_and_id_for_relay", where: "((cast_at IS NOT NULL) AND (redacted_at IS NULL))"
     t.index ["created_at"], name: "index_stances_on_created_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
@@ -1040,6 +1044,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_05_000000) do
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
+    t.check_constraint "weight >= 0 AND weight <= 1000000", name: "stances_weight_in_range"
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|

@@ -211,6 +211,8 @@ class Poll < ApplicationRecord
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
+  validate :vote_weights_enabled_is_supported
+  validate :vote_weights_enabled_cannot_change_after_opening
   validate :title_if_not_discarded
 
   alias_method :user, :author
@@ -231,6 +233,7 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :notify_on_open,
+    :vote_weights_enabled,
     :poll_option_names,
     :hide_results,
     :attachments]
@@ -281,7 +284,7 @@ class Poll < ApplicationRecord
   end
 
   def result_columns
-    case poll_type
+    columns = case poll_type
     when 'proposal'
       %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
@@ -307,6 +310,26 @@ class Poll < ApplicationRecord
     else
       []
     end
+
+    return columns unless weighted_voting?
+
+    columns = columns.dup
+    voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
+    columns.insert(columns.index('name') + 1, voter_column) unless columns.include?(voter_column)
+    columns.insert(columns.index(voter_column) + 1, 'score') unless columns.include?('score')
+    columns
+  end
+
+  def vote_weights_supported?
+    !anonymous? && poll_type != 'stv'
+  end
+
+  def vote_weights_active?
+    vote_weights_enabled? && vote_weights_supported?
+  end
+
+  def weighted_voting?
+    vote_weights_active? && stances.latest.where.not(weight: 1).exists?
   end
 
   def results
@@ -427,14 +450,14 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    stance_counts.sum
+    stance_counts.sum(&:to_f)
   end
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
     if detached_anonymous?
       return update_columns(
-        stance_counts: poll_options.map(&:total_score),
+        stance_counts: poll_options.map { |option| option.total_score.to_f },
         voters_count: anonymous_poll_voters.count,
         undecided_voters_count: anonymous_poll_voters.where(ballot_submitted: false).count,
         none_of_the_above_count: anonymous_ballots.where(none_of_the_above: true).count,
@@ -443,7 +466,7 @@ class Poll < ApplicationRecord
     end
 
     update_columns(
-      stance_counts: poll_options.map(&:total_score), # should rename to option scores
+      stance_counts: poll_options.map { |option| option.total_score.to_f }, # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
       none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
@@ -557,6 +580,20 @@ class Poll < ApplicationRecord
     if (changes_to_save.keys & protected_attributes).any?
       errors.add(:base, :anonymous_ballot_configuration_frozen)
     end
+  end
+
+  def vote_weights_enabled_is_supported
+    return unless vote_weights_enabled?
+    return if vote_weights_supported?
+
+    errors.add(:vote_weights_enabled, :invalid)
+  end
+
+  def vote_weights_enabled_cannot_change_after_opening
+    return unless will_save_change_to_vote_weights_enabled?
+    return unless persisted? && opened_at_in_database.present?
+
+    errors.add(:vote_weights_enabled, :invalid)
   end
 
   def closes_in_future

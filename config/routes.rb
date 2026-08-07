@@ -186,6 +186,7 @@ Rails.application.routes.draw do
           post :save_experience
           post :resend
           patch :set_volume
+          patch :set_weight
         end
       end
 
@@ -327,6 +328,7 @@ Rails.application.routes.draw do
           patch :uncast
           patch :redact
           patch :unredact
+          patch :set_weight
         end
 
         collection do
@@ -334,6 +336,7 @@ Rails.application.routes.draw do
           get :users
           get :my_stances
           post :revoke
+          patch :set_weights
         end
       end
 
