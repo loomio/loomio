@@ -43,6 +43,11 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-table admin-table--compact"'
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
+    assert_includes response.body, "Parent group ID or key"
+    assert_includes response.body, "Their content will be retained"
+    assert_includes response.body, "all of its subgroups"
+    assert_includes response.body, "memberships and membership requests"
+    assert_includes response.body, "User accounts and subscriptions are not deleted"
 
     get :edit, params: { id: @group.id }
     assert_response :success
@@ -120,6 +125,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       post :delete_group, params: { id: @group.id }
     end
     assert_equal @group.id, destroyed_id
+    assert_equal "Group deletion scheduled", flash[:notice]
   end
 
   test "admin can schedule trial groups for spam deletion" do

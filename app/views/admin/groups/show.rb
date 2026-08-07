@@ -90,15 +90,15 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
   def render_operations
     panel("Operations", class_name: "admin-panel--operations") do
       div(class: "admin-operation-list") do
-        operation_form("Move group", move_admin_group_path(@group), "parent_id", @group.parent_id, "Move")
+        operation_form("Parent group ID or key", move_admin_group_path(@group), "parent_id", @group.parent_id, "Move group")
         operation_form("Change handle", handle_admin_group_path(@group), "handle", @group.handle, "Change handle")
         if @group.archived_at
           button_to "Unarchive group", unarchive_admin_group_path(@group), method: :post, class: "admin-button"
         else
-          button_to "Archive group", archive_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Archive #{@group.name}?" } }
+          button_to "Archive group", archive_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Archive #{@group.name} and all of its subgroups? Their content will be retained, but the groups will be hidden from normal use until they are unarchived." } }
         end
         button_to "Export group", export_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary"
-        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Permanently delete #{@group.name} and all related content?" } }
+        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@group.name} and all of its subgroups? This permanently deletes their memberships and membership requests, topics and discussions, polls, votes and outcomes, events and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are not deleted. This cannot be undone." } }
       end
     end
   end

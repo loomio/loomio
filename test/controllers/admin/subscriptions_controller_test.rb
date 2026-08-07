@@ -44,6 +44,10 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
 
     get :edit, params: { id: @subscription.id }
     assert_response :success
+    document = Nokogiri::HTML(response.body)
+    assert_equal SubscriptionService::PLANS.keys.map(&:to_s), select_values(document, "subscription_plan")
+    assert_equal Subscription::PAYMENT_METHODS, select_values(document, "subscription_payment_method")
+    assert_equal Subscription::STATES, select_values(document, "subscription_state")
 
     put :update, params: { id: @subscription.id, subscription: { plan: "community", max_members: 200 } }
     assert_redirected_to admin_subscription_path(@subscription)
@@ -94,6 +98,12 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     end
     refute called
     assert_redirected_to dashboard_path
+  end
+
+  private
+
+  def select_values(document, id)
+    document.css("select##{id} option").map { |option| option["value"] }
   end
 end
 else

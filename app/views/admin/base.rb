@@ -63,6 +63,13 @@ class Views::Admin::Base < Phlex::HTML
     end
   end
 
+  def select_field(form, name, choices)
+    div(class: "admin-field") do
+      form.label(name)
+      form.select(name, choices)
+    end
+  end
+
   def checkbox_field(form, name, label: nil)
     label(class: "admin-checkbox") do
       form.check_box(name)

@@ -84,7 +84,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def delete_group
     GroupService.destroy_without_warning!(@group.id)
-    redirect_to admin_groups_path, notice: "Group deleted"
+    redirect_to admin_groups_path, notice: "Group deletion scheduled"
   end
 
   def export_group

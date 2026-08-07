@@ -3,8 +3,9 @@ class Subscription < ApplicationRecord
   class NotActive < StandardError; end
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 
-  PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
-  ACTIVE_STATES = %w[active on_hold pending]
+  PAYMENT_METHODS = %w[barter none chargify manual paypal].freeze
+  STATES = %w[active on_hold pending past_due canceled].freeze
+  ACTIVE_STATES = %w[active on_hold pending].freeze
 
   scope :active, -> { where(state: ACTIVE_STATES).where("expires_at is null OR expires_at > ?", Time.current) }
   scope :expired, -> { where(state: ACTIVE_STATES).where("expires_at < ?", Time.current) }
