@@ -10,8 +10,11 @@ class Views::EventMailer::Common::Avatar < Views::ApplicationMailer::Component
   def view_template
     user = @user.presence || LoggedOutUser.new
     if user.thumb_url
+      avatar_url = user.thumb_url
+      avatar_url = "#{root_url.chomp('/')}#{avatar_url}" if avatar_url.start_with?('/')
+
       img(
-        src: user.thumb_url,
+        src: avatar_url,
         alt: user.name,
         class: "base-mailer__avatar-image rounded-circle",
         style: "width: #{@size}px; height: #{@size}px",

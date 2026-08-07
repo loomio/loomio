@@ -128,10 +128,9 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
         div(class: "poll-mailer-proposal__chart poll-mailer__results-chart text-center") do
           img(
             class: "poll-mailer-proposal__chart-image",
-            style: "height: 128px; width: 128px",
+            style: "height: auto; width: 128px",
             src: google_pie_chart_url(@poll),
-            width: 128,
-            height: 128
+            width: 128
           )
         end
       end
