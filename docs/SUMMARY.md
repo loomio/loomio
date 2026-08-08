@@ -105,6 +105,7 @@
 # Changelog
 
 - [Product changelog](user_manual/changelog/index.md)
+  - [Require vote reasons when disagreeing](user_manual/changelog/2026-08-07_vote_reasons_for_disagreement.md)
   - [Gradient theme backgrounds](user_manual/changelog/2026-08-04_gradient_backgrounds.md)
   - [Dark mode for email](user_manual/changelog/2026-08-04_email_dark_mode.md)
   - [Prevent duplicate threads from retried email](user_manual/changelog/2026-08-01_inbound_email_duplicate_prevention.md)

@@ -20,6 +20,11 @@
     border-block-end-color: transparent;
 }
 
+.changelog-date {
+    color: var(--sidebar-fg);
+    margin-block-start: 2rem;
+}
+
 
 /* On this page (right-side TOC) */
 #page-toc {

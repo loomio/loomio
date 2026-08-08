@@ -7,6 +7,10 @@ title = "Loomio Help"
 [build]
 build-dir = "book"
 
+[preprocessor.changelog]
+command = "node preprocessors/changelog.js"
+renderers = ["html"]
+
 [output.html]
 mathjax-support = true
 additional-css = ["theme/css/custom.css"]

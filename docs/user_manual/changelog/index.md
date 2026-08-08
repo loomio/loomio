@@ -1,3 +1,5 @@
-# Product changelog
+# What's new in Loomio
 
-These notes describe user-visible changes to Loomio. Entries are listed from newest to oldest in the navigation.
+This page lists user-visible changes to Loomio, from newest to oldest.
+
+[Subscribe to the Loomio newsletter](https://newsletter.loomio.com/subscription/form) for release updates and stories from groups using Loomio.

@@ -12,7 +12,7 @@ fi
 # remain unchanged. mdBook copies non-Markdown source files automatically;
 # remove source-only configuration, scripts, and static/theme duplicates from
 # the generated book before it is validated or published.
-rm -rf "$BOOK_DIR/static" "$BOOK_DIR/theme"
+rm -rf "$BOOK_DIR/preprocessors" "$BOOK_DIR/static" "$BOOK_DIR/theme"
 rm -f \
   "$BOOK_DIR/book.toml" \
   "$BOOK_DIR/check-links.sh" \

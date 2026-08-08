@@ -209,3 +209,7 @@ GitHub Pages workflow builds it with `mdbook build docs`, places the book under
   first substantive paragraph. Add a near-top
   `<!-- seo-description: ... -->` override when that paragraph is not a useful
   page summary.
+- The `changelog` mdBook preprocessor concatenates dated files under
+  `docs/user_manual/changelog/` into the static changelog index, newest first.
+  Keep each entry in `docs/SUMMARY.md` as well so its individual page is
+  published and linked in the navigation.
