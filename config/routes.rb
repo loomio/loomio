@@ -42,7 +42,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#show"
-    get :api, to: "api#show"
 
     resources :groups, only: %i[index show edit update] do
       collection do

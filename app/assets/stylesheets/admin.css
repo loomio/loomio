@@ -144,18 +144,6 @@ input, select, textarea {
 .admin-pagination { align-items: center; display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
 .admin-disclosure { border-top: 1px solid var(--admin-border); padding-top: 12px; }
 .admin-disclosure summary { color: #145ea8; cursor: pointer; font-weight: 600; margin-bottom: 12px; }
-.admin-api-status { font-size: 1.1rem; font-weight: 700; margin: 0; }
-.admin-api-status--enabled { color: var(--admin-primary); }
-.admin-api-status--disabled { color: var(--admin-danger); }
-.admin-markdown { padding: 20px 24px; }
-.admin-markdown h1:first-child { display: none; }
-.admin-markdown h2 { border: 0; font-size: 1.35rem; padding: 16px 0 4px; }
-.admin-markdown h3 { margin-top: 24px; }
-.admin-markdown pre { background: #202a25; border-radius: 6px; color: #fff; overflow-x: auto; padding: 14px; }
-.admin-markdown code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-.admin-markdown :not(pre) > code { background: #edf0f2; border-radius: 3px; padding: 2px 4px; }
-.admin-markdown table { border-collapse: collapse; width: 100%; }
-.admin-markdown th, .admin-markdown td { border: 1px solid var(--admin-border); padding: 8px; text-align: left; }
 
 @media (max-width: 900px) {
   .admin-sidebar { transform: translateX(-100%); transition: transform .15s ease; }
