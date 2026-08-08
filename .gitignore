@@ -108,3 +108,7 @@ yarn-error.log*
 
 # Ruby bundle and gems
 /vendor
+
+# Generated help site
+/docs/book/
+/docs/public/

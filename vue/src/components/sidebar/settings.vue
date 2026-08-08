@@ -53,7 +53,7 @@ v-list(nav density="comfortable")
 
   v-divider
   v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")
-  v-list-item(href="/whats_new" target="_blank" :title="$t('user_dropdown.whats_new')")
+  v-list-item(href="https://help.loomio.com/en/user_manual/changelog/" target="_blank" :title="$t('user_dropdown.whats_new')")
   v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two" title="Loomio version" :subtitle="version")
 
 </template>

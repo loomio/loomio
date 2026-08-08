@@ -425,7 +425,6 @@ Rails.application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api2'   => 'help#api2'
-  get '/whats_new'   => 'help#whats_new'
 
   get '/start_group', to: redirect('/try')
 
