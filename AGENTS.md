@@ -19,7 +19,6 @@
 
 - Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests.
 - For anonymous polls, review the complete data flow rather than only the primary serializer. Check API responses, nested serializers, events and timelines, search indexes, live updates, notifications, mailers, CSV/JSON exports, backups, and background jobs.
-- Anonymity requires preventing correlation, not only removing `participant_id`. Check exact and relative timestamps, stable record IDs, response ordering, event actors, sequence metadata, invitation metadata, revision counts, and any other fields that can join a named participant list to an individual ballot.
 - Review each access boundary separately: signed-out/public users, ordinary members, poll participants, coordinators/group administrators, instance administrators, and operators with database or backup access. Do not assume that authorization at one endpoint protects related endpoints or exports.
 - Test both direct disclosure and composition attacks. Individually harmless endpoints can reveal sensitive information when records are joined by IDs, timestamps, ordering, or shared events.
 - Exercise permission failures as well as successful paths. Include public/private groups, direct and group topics, active and closed polls, each `hide_results` mode, anonymous and identified polls, quorum behavior, and administrator-only feature flags.
@@ -178,3 +177,35 @@ Use `--testcase <name>` to run a single test within a file. This is much faster 
 - `app/controllers/dev/` — dev scenario routes
 - `app/helpers/dev/ninties_movies_helper.rb` — main scenario data builder
 - `app/helpers/dev/scenarios_helper.rb` — additional scenario helpers
+
+## Help manual and GitHub Pages
+
+The mdBook source for `help.loomio.com` lives directly under `docs/`. The
+GitHub Pages workflow builds it with `mdbook build docs`, places the book under
+`docs/public/en/`, and places `docs/static/` at the deployed site root.
+
+- Keep user-manual source files under `docs/user_manual/`. Add every page that
+  should be published to `docs/SUMMARY.md`; mdBook does not build orphaned
+  Markdown files.
+- Internal help links must include the deployed `/en/` prefix and use a
+  trailing slash, for example `/en/user_manual/groups/settings/`.
+- Redirect source keys in `[output.html.redirect]` in `docs/book.toml` must not
+  start with `/en/`. Deployment already nests the built book under `/en`, so a
+  source key beginning with `/en/` would be deployed under `/en/en/`. Redirect
+  targets should use the complete browser-facing `/en/...` path.
+- When a public page path changes, retain its old URL with a redirect in
+  `docs/book.toml`.
+- Run the same structural checks used by GitHub Pages after changing manual
+  pages, images, links, navigation, or redirects:
+
+  ```bash
+  mdbook build docs
+  bash docs/clean-book.sh
+  bash docs/check-redirects.sh
+  bash docs/check-links.sh
+  ```
+
+- `docs/generate-meta-descriptions.js` derives search descriptions from the
+  first substantive paragraph. Add a near-top
+  `<!-- seo-description: ... -->` override when that paragraph is not a useful
+  page summary.
