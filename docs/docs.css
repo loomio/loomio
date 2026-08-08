@@ -1,10 +1,45 @@
 :root {
   --background: #ebf4ff;
   --border: #d7eaff;
+  --blockquote-background: #f1f8ff;
+  --button-background: #fff;
+  --button-hover-background: #eef5fc;
+  --code-background: #f5f7f9;
   --content-width: 760px;
   --foreground: #212121;
+  --foreground-muted: #616161;
+  --image-border: #c8c8c8;
   --link: #0070e0;
+  --navigation-current-background: #e6f2ff;
+  --navigation-current-foreground: var(--link);
+  --sidebar-background: #fff;
   --sidebar-width: 300px;
+  --table-border: #ddd;
+  --table-heading-background: #f2f2f2;
+  --toc-link: var(--link);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111;
+    --border: #454545;
+    --blockquote-background: #1c252d;
+    --button-background: #292929;
+    --button-hover-background: #363636;
+    --code-background: #202020;
+    --foreground: #eee;
+    --foreground-muted: #aaa;
+    --image-border: #555;
+    --link: #79b8ff;
+    --navigation-current-background: transparent;
+    --navigation-current-foreground: #f4c63d;
+    --sidebar-background: #242424;
+    --table-border: #555;
+    --table-heading-background: #292929;
+    --toc-link: var(--foreground);
+    color-scheme: dark;
+  }
 }
 
 * {
@@ -34,7 +69,7 @@ a:hover {
 }
 
 .sidebar {
-  background: #fff;
+  background: var(--sidebar-background);
   border-right: 1px solid var(--border);
   bottom: 0;
   left: 0;
@@ -63,7 +98,7 @@ a:hover {
 }
 
 .sidebar h2 {
-  color: #616161;
+  color: var(--foreground-muted);
   font-size: 12px;
   letter-spacing: 0.08em;
   margin: 28px 0 8px;
@@ -94,8 +129,8 @@ a:hover {
 }
 
 .sidebar a.current {
-  background: #e6f2ff;
-  color: var(--link);
+  background: var(--navigation-current-background);
+  color: var(--navigation-current-foreground);
   font-weight: 500;
 }
 
@@ -112,7 +147,7 @@ a:hover {
 }
 
 .sidebar details > summary::before {
-  color: #888;
+  color: var(--foreground-muted);
   content: "▶";
   flex: 0 0 14px;
   font-size: 12px;
@@ -179,7 +214,7 @@ main video,
 }
 
 main img {
-  border: 1px solid #c8c8c8;
+  border: 1px solid var(--image-border);
 }
 
 main iframe {
@@ -201,7 +236,7 @@ code {
 }
 
 pre {
-  background: #f5f7f9;
+  background: var(--code-background);
   border-radius: 6px;
   overflow-wrap: anywhere;
   padding: 44px 16px 16px;
@@ -217,8 +252,8 @@ pre code {
 }
 
 .code-copy-button {
-  background: #fff;
-  border: 1px solid #c8c8c8;
+  background: var(--button-background);
+  border: 1px solid var(--image-border);
   border-radius: 4px;
   color: var(--foreground);
   cursor: pointer;
@@ -232,7 +267,7 @@ pre code {
 }
 
 .code-copy-button:hover {
-  background: #eef5fc;
+  background: var(--button-hover-background);
 }
 
 .code-copy-button:focus-visible {
@@ -241,7 +276,7 @@ pre code {
 }
 
 blockquote {
-  background: #f1f8ff;
+  background: var(--blockquote-background);
   border-left: 4px solid var(--border);
   margin: 20px 0;
   padding: 4px 20px;
@@ -259,17 +294,17 @@ table {
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--table-border);
   padding: 7px 10px;
   text-align: left;
 }
 
 thead {
-  background: #f2f2f2;
+  background: var(--table-heading-background);
 }
 
 .changelog-date {
-  color: #616161;
+  color: var(--foreground-muted);
   margin-top: 48px;
 }
 
@@ -281,7 +316,7 @@ thead {
 }
 
 .page-toc h2 {
-  color: #616161;
+  color: var(--foreground-muted);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -295,6 +330,10 @@ thead {
 
 .page-toc li {
   margin: 6px 0;
+}
+
+.page-toc a {
+  color: var(--toc-link);
 }
 
 .page-toc .toc-level-3 {
@@ -311,7 +350,7 @@ thead {
 }
 
 .page-navigation a {
-  background: #fff;
+  background: var(--button-background);
   border: 1px solid var(--border);
   border-radius: 8px;
   display: flex;
@@ -324,7 +363,7 @@ thead {
 }
 
 .page-navigation small {
-  color: #616161;
+  color: var(--foreground-muted);
 }
 
 .sidebar-toggle,
@@ -366,8 +405,9 @@ thead {
   }
 
   .sidebar-toggle {
-    background: #fff;
+    background: var(--button-background);
     border: 1px solid var(--border);
+    color: var(--foreground);
     border-radius: 6px;
     display: block;
     left: 14px;
@@ -396,6 +436,13 @@ thead {
 }
 
 @media print {
+  :root {
+    --background: #fff;
+    --foreground: #212121;
+    --link: #0070e0;
+    color-scheme: light;
+  }
+
   .sidebar,
   .sidebar-toggle,
   .page-toc,
