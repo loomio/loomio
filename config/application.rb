@@ -21,7 +21,6 @@ end
 module Loomio
   class Application < Rails::Application
     config.load_defaults 6.0
-    config.active_support.to_time_preserves_timezone = :zone
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :solid_queue
