@@ -8,18 +8,18 @@ Make a decision with the advice of people impacted or who have expertise, so you
 
 > *“With the advice process, any person can make any decision but must seek advice from affected parties and people with expertise.” - Frederick Laloux, Reinventing Organizations.*
 
-### Key points
+## Key points
 - Freedom to make a decision.
 - Invite people to offer their advice.
 - Take into account other people’s voices.
 
-### Steps in the Advice process
+## Steps in the Advice process
 You notice a problem or opportunity and take the initiative.
 1. Seek input to sound out perspectives before proposing action - start a Loomio **discussion**.
 2. Clarify and build on advice through comments in the discussion thread.
 3. Taking advice received into account, make a decision and inform the people who have given advice - state an **outcome**.
 
-### Benefits
+## Benefits
 - Advice helps you make a better decision for your organization. 
 - Foster relationships, learning opportunities and diverse input.
 - Stimulate initiative and creativity, and more enjoyable work.

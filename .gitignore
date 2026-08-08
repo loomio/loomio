@@ -110,5 +110,4 @@ yarn-error.log*
 /vendor
 
 # Generated help site
-/docs/book/
-/docs/public/
+/public/docs/

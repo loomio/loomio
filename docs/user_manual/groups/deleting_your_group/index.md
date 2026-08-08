@@ -16,7 +16,7 @@ You will be invited to type the name of your group (*case sensitive*) to confirm
 
 ![](group_delete_group_confirm.png)
 
-### Group data is permanently deleted after 2 weeks
+## Group data is permanently deleted after 2 weeks
 
 Two weeks after you use **Delete group**, all the threads, polls, files and other group content will be permanently deleted. ***This is non-reversible!*** 
 

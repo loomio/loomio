@@ -6,15 +6,15 @@ For many organizations, a single Loomio group is sufficient. You can start as ma
 
 ![](new_group.png)
 
-### Group details
+## Group details
 
 ![](new_group_start.png#width-80)
 
-#### Group name
+### Group name
 
 Type your group name. It's best to keep your group name short and concise.
 
-#### Group handle
+### Group handle
 
 Your group is automatically assigned a 'handle'. This provides a simplified url address for your group that can help you find your group, and that you can share with people to help them find your group.
 
@@ -22,13 +22,12 @@ The simplied url address for your group is **loomio.com/your-group-handle**.
 
 You can edit the handle.
 
-#### Group description
+### Group description
 
 This short description will show at the top of the dashboard, to offer any necessary context for new members.
 
 **When you click 'Start Group' your new group is automatically created!**
 
 ---
-
 
 

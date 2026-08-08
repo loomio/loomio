@@ -8,7 +8,7 @@ Build consensus for a decision you need to make together, to reach an agreement 
 
 > *“Consensus is the process – a participatory process by which a group thinks and feels together, en route to their decision.” - Sam Kaner, Community at Work*
 
-### Key points
+## Key points
 - Discuss and develop a proposal together
 - Include and respect everyone involved
 - Seek agreement from most people
@@ -22,14 +22,14 @@ Build consensus for a decision you need to make together, to reach an agreement 
 - Appoint a facilitator.  In board meetings this is usually the Chairperson.
 - A quorum or supermajority of members to participate, as specified in the organization's statutes.
 
-### Consensus process steps
+## Consensus process steps
 1. State the issue to be decided - start a Loomio **discussion**.
 2. Present a proposal to test for consensus - start a **Sense check proposal**.
 3. Clarify any points, invite constructive modifications and amend the proposal.
 4. Test for agreement - start a **Consensus proposal**.
 5. Outcome - state the decision **outcome**.
 
-### Benefits
+## Benefits
 - Grow shared understanding.
 - Decisions for the collective will of the group.
 - Encourage people to value the group over their personal preferences.
@@ -91,4 +91,3 @@ This template includes a Block option by default. Block isn't suitable for every
 When the Consensus proposal closes, Vivien states an outcome and notifies everyone that agreement has been reached, and that work to implement the new brand will commence. 
 
 ![](proposal_outcome_consensus_process_refresh_brand.png)
-

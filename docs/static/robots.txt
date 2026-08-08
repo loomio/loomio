@@ -1,3 +1,0 @@
-Sitemap: https://help.loomio.com/sitemap.xml
-User-agent: *
-Allow: /

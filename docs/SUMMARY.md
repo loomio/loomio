@@ -53,13 +53,16 @@
   - [Language and translation](user_manual/users/translation/index.md)
   - [Deleting your account](user_manual/users/deleting_your_account/index.md)
 
-- [Chatbots](user_manual/groups/integrations/chatbots/index.md)
-  - [Discord](user_manual/groups/integrations/discord/index.md)
-  - [Matrix](user_manual/groups/integrations/matrix/index.md)
-  - [Mattermost](user_manual/groups/integrations/mattermost/index.md)
-  - [Microsoft Teams](user_manual/groups/integrations/microsoft_teams/index.md)
-  - [Slack](user_manual/groups/integrations/slack/index.md)
-- [API](user_manual/groups/integrations/api/index.md)
+- [Integrations](user_manual/integrations/index.md)
+  - [Chat integrations](user_manual/integrations/chatbots/index.md)
+    - [Discord](user_manual/integrations/discord/index.md)
+    - [Matrix](user_manual/integrations/matrix/index.md)
+    - [Mattermost](user_manual/integrations/mattermost/index.md)
+    - [Microsoft Teams](user_manual/integrations/microsoft_teams/index.md)
+    - [Slack](user_manual/integrations/slack/index.md)
+  - [API](user_manual/integrations/api/index.md)
+    - [User API](user_manual/integrations/api/user-api.md)
+    - [Server API](user_manual/integrations/api/server-api.md)
 - [Newsletter](newsletter/index.md)
 
 ---

@@ -82,7 +82,7 @@ To add people individually:
 
 You can remove a person from the discussion by clicking the 3 dots menu to the right of their name and selecting **Remove from discussion**.
 
-#### Invite a guest
+### Invite a guest
 You can invite any person outside your group to see and participate in a discussion.
 
 Guests can not see any other discussions in your group - only the discussion they have been specifically invited to.

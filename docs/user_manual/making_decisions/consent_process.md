@@ -8,7 +8,7 @@ Seek consent on a decision you need to make, where there are no meaningful objec
 
 > *“Consent turns the question around: instead of asking for what we want, we ask whether there are reasons not to go ahead.” - Ted Rau, Sociocracy For All*
 
-### Key points
+## Key points
 - Aim for a ‘good enough’ decision.
 - Involve many voices to develop a workable proposal.
 - Ask if anyone has a valid objection.
@@ -18,7 +18,7 @@ Seek consent on a decision you need to make, where there are no meaningful objec
 - Proposer: The person who raises a topic that requires a decision.
 - Facilitator: Someone who can help the proposer do their job efficiently.
 
-### Consent process steps
+## Consent process steps
 You notice a problem or opportunity and take the initiative.
 1. Present a proposal - start a Loomio **discussion**.
 2. Facilitate a round of questions, reactions and any comments to improve the proposal - run a **Sense check proposal**.
@@ -29,7 +29,7 @@ You notice a problem or opportunity and take the initiative.
 >[!Tip]
 >In more complex decisions you may also include a clarifying **Questions round** at step 2, to help people understand the proposal before inviting them to react and comment on the proposal.
 
-### Benefits
+## Benefits
 - Faster, efficient, clear and more adaptable decisions.
 - Diverse perspectives and empowered engagement builds trust.
 - A more agile, transparent and inclusive culture.

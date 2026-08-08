@@ -7,7 +7,7 @@ Board and committee members frequently need to make 'out-of-session' decisions. 
 - something has happened (internally or externally) that requires the board to act before the next meeting,
 - a director has a particular interest to explore with the board.
 
-### On Loomio
+## On Loomio
 Start a **thread** and open a discussion:
 - Introduce the topic or decision that you would like to make,
 - invite directors to comment with their thoughts, opinions and any information they have to help everyone understand their perspective about the 'out-of-session' topic or decision,

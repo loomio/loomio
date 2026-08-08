@@ -1,0 +1,287 @@
+# Loomio Server API documentation
+
+<!-- seo-description: Use the Loomio Server API to manage user accounts on a self-hosted Loomio installation. -->
+
+`/api/b3` is for server-level operations. Use `/api/b2` for user-oriented actions performed as a Loomio user account.
+
+## Authentication
+
+Set `B3_API_KEY` to a secret longer than 16 characters.
+
+Send the key as a bearer token:
+
+```bash
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+```
+
+Send credentials only in the `Authorization` header. API keys in query strings or request bodies are rejected.
+
+## User Object
+
+User responses use this shape:
+
+```json
+{
+  "id": 123,
+  "name": "Ada Lovelace",
+  "username": "ada",
+  "email": "ada@example.org",
+  "active": true,
+  "deactivated_at": null,
+  "identities": [
+    {
+      "id": 456,
+      "identity_type": "oauth",
+      "uid": "external-123",
+      "email": "ada@example.org",
+      "name": "Ada Lovelace"
+    }
+  ]
+}
+```
+
+## List Users
+
+List all user accounts on the Loomio installation.
+
+`GET /api/b3/users`
+
+### Example
+
+```bash
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+```
+
+Returns:
+
+```json
+{
+  "users": []
+}
+```
+
+## Show User
+
+Find a user by their Loomio user ID or external identity.
+
+`GET /api/b3/users/:id`
+
+`GET /api/b3/users/identity/:identity_type/:uid`
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+```
+
+By external identity:
+
+```bash
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+```
+
+Returns:
+
+```json
+{
+  "user": {}
+}
+```
+
+## Update User
+
+Update the profile fields of a user found by their Loomio user ID or external identity.
+
+`PATCH /api/b3/users/:id`
+
+`PATCH /api/b3/users/identity/:identity_type/:uid`
+
+### Params
+
+| Field | Description |
+| --- | --- |
+| `name` | Display name |
+| `username` | Loomio username |
+| `email` | Email address |
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -X PATCH \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
+  https://www.loomio.com/api/b3/users/123
+```
+
+By external identity:
+
+```bash
+curl -X PATCH \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
+  https://www.loomio.com/api/b3/users/identity/oauth/external-123
+```
+
+Returns the updated user:
+
+```json
+{
+  "user": {}
+}
+```
+
+## Deactivate User
+
+Deactivate a user account found by its Loomio user ID or external identity.
+
+`POST /api/b3/users/:id/deactivate`
+
+`POST /api/b3/users/identity/:identity_type/:uid/deactivate`
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
+```
+
+By external identity:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
+```
+
+Returns:
+
+```json
+{
+  "success": true,
+  "user": {}
+}
+```
+
+## Reactivate User
+
+Reactivate a deactivated user account found by its Loomio user ID or external identity.
+
+`POST /api/b3/users/:id/reactivate`
+
+`POST /api/b3/users/identity/:identity_type/:uid/reactivate`
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
+```
+
+By external identity:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
+```
+
+Returns:
+
+```json
+{
+  "success": true,
+  "user": {}
+}
+```
+
+## Redact User
+
+Redaction keeps the user's comments and other user-generated content within their groups, but removes known personally identifying information such as name, bio, profile photo, email address, login credentials, identities, and active sessions.
+
+This is the recommended way to remove a user from Loomio.
+
+`POST /api/b3/users/:id/redact`
+
+`POST /api/b3/users/identity/:identity_type/:uid/redact`
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
+```
+
+By external identity:
+
+```bash
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
+```
+
+Returns:
+
+```json
+{
+  "success": true
+}
+```
+
+## Delete User
+
+Delete removes the user and records the user created. Comments are removed from threads, votes are removed from polls, and groups, discussions, polls, and other records created by the user may also be deleted through database associations.
+
+This is very destructive. Redaction is highly recommended instead.
+
+`DELETE /api/b3/users/:id`
+
+`DELETE /api/b3/users/identity/:identity_type/:uid`
+
+### Examples
+
+By Loomio user ID:
+
+```bash
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+```
+
+By external identity:
+
+```bash
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+```
+
+Returns:
+
+```json
+{
+  "success": true
+}
+```
+
+## SSO Profile Sync Settings
+
+Use these settings when another system manages Loomio profile fields.
+
+```env
+LOOMIO_DISABLE_EDIT_USER_PROFILE=1
+# LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
+```
+
+`LOOMIO_DISABLE_EDIT_USER_PROFILE=1` prevents users from editing these fields themselves:
+
+| Field | Notes |
+| --- | --- |
+| `name` | Managed by external sync |
+| `username` | Managed by external sync |
+| `email` | Managed by external sync |
+| `avatar_kind` / `uploaded_avatar` | Managed by external sync |
+
+Users can still edit Loomio-local fields such as `short_bio` and `location`.
+
+`LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1` updates `name` and `email` from SSO login data. Leave it commented out or unset when an external sync script should be the only source of those updates.
+
+`LOOMIO_SSO_FORCE_USER_ATTRS` still works for existing installs. It both disables user edits and updates `name` and `email` on SSO login.

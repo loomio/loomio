@@ -4,7 +4,7 @@ Good governance includes establishing, reviewing and challenging governance prac
 
 However many boards are short on time and often weighed down by board papers, compliance and risk, without sufficient time to discuss and debate critical strategy and performance issues.
 
-### On Loomio
+## On Loomio
 Loomio offers the opportunity to work online on a document, policy or procedure.  Discussion and decisions are contained in a thread that members can access when and wherever works for them.  
 
 Use a **thread** for each document, policy or procedure. The thread is the container for discussion, and holds document drafts and subsequent versions of the document.  

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#ebf4ff"/>
+  <image href="logo-yellow.svg" x="360" y="225" width="480" height="77"/>
+  <text
+    x="600"
+    y="380"
+    fill="#212121"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="38"
+    text-anchor="middle"
+  >Help and documentation</text>
+</svg>

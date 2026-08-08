@@ -4,7 +4,7 @@ At times topics arise that require the attention of board or committee members m
 
 And sometimes there is just not space during a meeting for discussion or to sufficiently deliberate on a decision.
 
-### On Loomio
+## On Loomio
 
 Use a Loomio **thread** to facilitate a discussion.  Give the thread a descriptive title that members will recognize and provide details in the thread context.  Add a relevant category tag to help members find the thread in future.
 

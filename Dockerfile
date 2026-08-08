@@ -65,6 +65,9 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
+# Render the static help site under /public/docs.
+RUN bundle exec ruby docs/build.rb
+
 # Compile Propshaft assets into the image. Production does not serve assets
 # dynamically, so the manifest and digested files must exist at build time.
 RUN DATABASE_URL=postgresql://localhost/loomio_build \

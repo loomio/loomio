@@ -60,7 +60,7 @@ You can change the order that tags are displayed by dragging the tag handle, on 
 
 ![rearrange category tag display](tag_handle_move.gif)
 
-#### Edit tag in thread or poll
+### Edit tag in thread or poll
 
 To change the tag of an existing thread, go to the thread and click the edit thread pencil icon.
 

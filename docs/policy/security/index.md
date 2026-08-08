@@ -1,11 +1,11 @@
 # Security overview
 _Keeping customer data secure is a a top priority for us. Here’s how we make it happen._
 
-### We're working towards ISO27001 certification
+## We're working towards ISO27001 certification
 
 You can view our [RiskLedger Trust Center page](https://app.riskledger.com/p/shared/6cc1455fbe514c03ba6cbb9cab716889) to review our security policies in the pre-audit phase.
 
-### Practices we have at Loomio
+## Practices we have at Loomio
 
 * We never have and never will sell customer data.
 * We don’t run ads for other services in our products.
