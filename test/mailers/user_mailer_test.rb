@@ -179,7 +179,11 @@ class UserMailerTest < ActionMailer::TestCase
 
     mail = UserMailer.group_export_ready(@user.id, @group.full_name, blob.signed_id)
     assert_equal [@user.email], mail.to
-    assert_equal I18n.t("user_mailer.group_export_ready.subject", group_name: @group.full_name), mail.subject
+    assert_equal I18n.t(
+      "user_mailer.group_export_ready.subject",
+      group_name: @group.full_name,
+      locale: @user.locale
+    ), mail.subject
     assert_match "/rails/active_storage/blobs/", mail.body.encoded
   end
 
