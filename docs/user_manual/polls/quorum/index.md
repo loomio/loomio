@@ -1,33 +1,33 @@
-#  Quorum
+# Quorum
 
-When drafting a new decision, you have the option to set a quorum, or the minimum percentage of participants required for the decision to be valid.   This feature allows you to fine-tune Loomio's decision-making tools to your own governance process.
+A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
 
-The quorum setting is found at the very bottom of a proposal's customisation screen.  You set the quorum as a percentage of the total eligible voters, or leave it blank if a quorum is not required.
+When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
 
-![Screenshot showing the bottom of a proposal's customisation window, with "Quorum" as a heading above an input box, and a percentage sign at the end of the input box.  "60" is entered into the input box.  In the bottom right is an orange "start proposal" button.](./quorum-section.png)
+![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)
 
-You can also set a quorum percentage when making a proposal template, so that certain proposal types always require a quorum (see [Poll Templates](/en/user_manual/polls/poll_templates/)).
+You can also set a quorum in a [poll template](/en/user_manual/polls/poll_templates/) so that polls created from that template use it by default.
 
-## Example Scenario
+## Example scenario
 
-The Oat Milk Co-op has an active discussion in Loomio about whether to switch oat suppliers. This discussion has gained momentum, and it is time to make a decision.
+Oatmilk Cooperative is discussing a six-week returnable bottle trial. The discussion has reached the point where the cooperative needs to approve the trial budget.
 
-Zach, a member of the co-op board, clicks the 'Start a Vote' tab at the top of the discussion thread, and selects the "Consent" proposal template.  The window expands with all the options for this proposal, like title and description and who can cast a vote.  
+Jamie selects **Start a vote**, chooses the **Consent** proposal template, and completes the title, details, options, duration, and voter settings.
 
-![Screenshot of the proposal options, with text fields for title and description, an option to set the type of votes to cast, a calendar input for setting a deadline, and radio options for limiting who can vote](proposal-options.png)
+![The proposal title, details, options, duration, and voter settings](proposal-options.png)
 
-Zach titles it "Should we switch suppliers?" and limits the vote to invited people only, i.e., just the board.
+Jamie limits the vote to the five people responsible for the trial budget.
 
-Oat Milk Co-ops's governance process states that significant decisions require a quorum of 60 percent of the board.  This feels like a significant decision, so Zach scrolls to the quorum section at the bottom of the proposal options, inputs "60" into the quorum field, and clicks "Start Proposal".  Finally, he sends invites to the board members when prompted.
+The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
 
-With the proposal created, a pie chart now appears in the thread showing the vote distribution, with a banner above highlighting the quorum requirements. 
+Before anyone votes, the results panel shows that the quorum has not been reached.
 
-![Screenshot of the pie chart, entirely gray as there are no votes. A blue banner above lists the requirements of the quorum, 60 percent of eligible voters, with an X next to this requirement.](pie-chart-0.png)
+![No votes cast and the 60 percent quorum not yet reached](pie-chart-0.png)
 
-Boardmembers Zach and Liz cast their votes, consenting and objecting respectively.  The pie chart updates, but the banner still shows an X next to the quorum requirements as only 40 percent of the eligible voters have participated.
+Jamie agrees and Samira disagrees. The chart updates, but two of five eligible voters is only 40 percent participation, so the quorum is still not reached.
 
-![Screenshot showing pie chart, half green and half red. The banner above is unchanged](pie-chart-40.png)
+![Two of five votes cast and the quorum not yet reached](pie-chart-40.png)
 
-Boardmember Matt casts a consenting vote.  60 percent of the board have now participated. The banner above the pie chart now shows a check mark, indicating a quorum is present.  Zach may close the vote early, or wait for the rest of the co-op board to cast their votes.
+Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
 
-![Screenshot showing pie chart, now 66 percent green and 33 percent red.  The banner above is updated, with a check mark next to the 60 percent requirement instead of an X](pie-chart-60.png)
+![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)

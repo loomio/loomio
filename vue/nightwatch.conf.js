@@ -1,3 +1,9 @@
+const chromeArgs = ['window-size=1280,6400'];
+
+if (process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR) {
+  chromeArgs.push(`--force-device-scale-factor=${process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR}`);
+}
+
 module.exports = {
   detailed_output: false,
   skip_testcases_on_fail: false,
@@ -23,7 +29,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions: {
-          args: ['window-size=1280,6400']
+          args: chromeArgs
         }
       },
       

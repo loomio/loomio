@@ -1,10 +1,6 @@
 # Meeting polls
 
-Polls to help you organize meetings!  
-
-Find a time for your meeting or event. **Time poll** is particularly useful for people in multiple timezones.
-
-Invite people to **Opt-in** to the meeting, event or to join your working group.
+Use a **Time poll** to find a time for a meeting or event. Participants see the options in their own time zone.
 
 ![](meeting_polls.png)
 
@@ -12,13 +8,13 @@ Invite people to **Opt-in** to the meeting, event or to join your working group.
 
 _Find when people are available to meet_
 
-Save time arranging a date for your meeting or event. 
+Save time arranging a date for your meeting or event.
 
 ![](timepoll_label.png)
 
 Time poll makes it easy to see everyone's availability and find the best time.
 
-Give your Time poll a title and details. Enter a list of date and time options in your time zone.  
+Give your Time poll a title and details. Enter a list of date and time options in your time zone.
 
 When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
 
@@ -28,7 +24,7 @@ Set a meeting duration.
 
 ### Voting
 
-People mark the timeslots they are available with the green 'thumbs up' icon or leave the red 'thumbs down' in place when unavailable.  They can also use the 'thumbs sideways' icon to say they are available 'if need be'. 
+People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
 
 Participants can leave a reason comment to help the organizer find a suitable time.
 
@@ -40,40 +36,36 @@ The results update as voting proceeds in a table showing who is available when, 
 
 ### Outcome
 
-When the Time poll closes, pick the best time slot and state an Outcome.
+When the Time poll closes, pick the best time and post an outcome.
 
 ![](timepoll_outcome.png)
 
-**Notify**: Add the people you are inviting to the meeting or event.
+**Notify**: Add the people you are inviting to the meeting or event
 
-**Meeting time**: Click on the meeting time to select the best meeting time.  
+**Meeting time**: Select the time that works best
 
-**Meeting name**: Give your meeting a name. (Default name is the Time poll title.)
+**Meeting name**: Give your meeting a name. The Time poll title is used by default
 
-**Location**: You can add a location for the meeting.
+**Location**: Add a physical location or a meeting link
 
-**Statement**: State the outcome of the Time poll and any instructions for the meeting.
+**Statement**: Summarize the result and add any instructions for the meeting
 
-Loomio will include a calendar invitation with the Outcome notification email, so participants can add to their calendar.
-
-![](timepoll_calendar.png)
+Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
 
 ## Opt-in
 
 _Find volunteers or participants_
 
-Use Opt-in to invite people to a join a team, committee or working group, or to participate in an event.  
+Use **Opt-in** to invite people to join a team, committee, working group, or event. Open the Opt-in template to start the form.
 
-![](opt_in_label.png)
+Opt-in has two voting options: **Accept** and **Decline**.
 
-‘Opt-in’ has two voting options: Accept or Decline. 
-
-Set how many people you are looking for, say 3 people to join your working group.
+Set a target for how many people you need. In this example, Oatmilk Cooperative needs three people for its reusable packaging working group.
 
 ![](opt_in_options.png)
 
-Use Opt-in to seek engagement and encourage participation.  For example think of Opt-in as the online way to ask a room of people *"Raise you hand if ..."*
+The results show progress towards the target, who accepted or declined, and who has not voted.
 
 ![](opt_in_results.png)
 
-Like other Loomio polls, Opt-in asks you to set a closing time and will automatically notify people 24 hours before close - encouraging people to participate in a timely way so you can get on with the work. 
+Like other Loomio polls, Opt-in has a closing time and can notify undecided voters before it closes.

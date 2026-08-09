@@ -16,17 +16,17 @@ Subgroups work just like groups do, but are located within your "parent" group. 
 
 To add a subgroup, visit your main group page, then click **New Subgroup** from the sidebar.  
 
-![](subgroups-sidebar.png)
+![New subgroup button in the Oatmilk Cooperative sidebar](subgroups-sidebar.png)
 
 Click the **New subgroup** button, give it a name and select the privacy setting, then click **Start subgroup**.
 
-![](subgroups_new.png)
+![New subgroup form for the Packaging Working Group](subgroups_new.png)
 
 When you are ready, [invite people](/en/user_manual/groups/inviting_people/) to the subgroup.
 
 You can edit the subgroups [group settings](/en/user_manual/groups/settings/) by clicking the cog icon on the subgroup page.
 
-![](subgroups_edit_group_settings.png)
+![Edit group settings action on the Packaging Working Group](subgroups_edit_group_settings.png)
 
 ## Subgroup settings
 
@@ -48,13 +48,13 @@ Subgroups operate independently of the main group. For example, if the subgroup 
 
 **Closed** subgroups have an additional setting that allow members of its parent group to see private threads, enabling the subgroup to be transparent to members of the parent group.
 
-![](subgroups_private_threads_settings.png)
+![Setting that lets parent group members see private subgroup threads](subgroups_private_threads_settings.png)
 
 ## Find subgroups
 
 Open the sidebar menu, and click your group name to see it's subgroups.
 
-![](subgroups_find_subgroups.png)
+![Oatmilk Cooperative subgroups listed in the sidebar](subgroups_find_subgroups.png)
 
 ## Invite to a subgroup
 
@@ -64,7 +64,7 @@ Invite people to a subgroup as you invite them into a group. If they're already 
 
 If you use the **Invite people** button from your parent group's **Members** tab, you can invite people to multiple subgroups at the same time by ticking the boxes of those you would like them to join immediately.
 
-![](group_invite_email_subgroups.png)
+![Selecting the parent group and subgroup in the invitation form](group_invite_email_subgroups.png)
 
 ## Administer a subgroup
 
@@ -74,11 +74,11 @@ However an admin of the 'parent' group can make themselves admin of any subgroup
 
 Go to the Subgroup tab, find the subgroup and click **Join group**.
 
-![](member_join_subgroup.png)
+![Join group button on a closed subgroup](member_join_subgroup.png)
 
 Now a member of the subgroup, an admin of the parent group can make themselves an admin of the subgroup.
 
-![](member_make_admin.png)
+![Make admin action for a parent group admin](member_make_admin.png)
 
 ## Archive a subgroup
 

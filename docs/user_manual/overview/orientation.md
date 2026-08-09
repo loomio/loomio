@@ -132,7 +132,7 @@ There are several tools included within Loomio to help you find the information 
 
 You can use the Search bar at the top of almost every page to search for content relevant to that page.
 
-For example, on the discussions tab, clicking 'search' then typing 'strategy' in the search bar brings up discussions with the word 'strategy'.
+For example, on the discussions tab, clicking **Search** then typing **bottle** brings up discussions containing that word.
 
 ![](search_strategy.png)
 

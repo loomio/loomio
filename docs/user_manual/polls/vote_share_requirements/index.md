@@ -1,63 +1,49 @@
-# Vote Share Requirements
+# Vote share requirements
 
-When starting a vote, you may set a share requirement on any voting option. These are percentage based constraints a proposal must satisfy to pass.  For example, you may require that  a proposal must have 60 percent consenting votes, or a proposal fails if it receives more than 30 percent objecting votes.
+Set a vote share requirement on an option when a proposal must receive a particular percentage of support, or remain below a particular percentage of opposition, to pass.
 
-The vote share requirements can be used in tandem with the [quorum feature](/en/user_manual/polls/quorum/) to finely customize Loomio's voting feature to match your own governance process.
+Vote share requirements can be combined with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a particular distribution of votes.
 
-Vote share requirements can be found by clicking the edit icon next to a voting option.
+When creating a proposal, select the edit icon beside an option.
 
-![Screenshot of a consenting vote option.  In the right is a circular pencil icon lightly highlighted with "edit" showing in the tooltip](edit-highlight-on-option.png)
+![The edit icon beside the Consent option](edit-highlight-on-option.png)
 
-## Eligible vs. Cast Votes
+## Eligible voters and votes cast
 
-When setting vote share requirements, you may base the percentage on either the **votes cast** or the **eligible voters**.
+The percentage can be based on either **Votes cast** or **Eligible voters**.
 
-![Screenshot of the options edit screen. The vote share requirement checkbox is checked, with the input fields below it to state "For the proposal to pass, this option must receive at least 60% of eligible voters".  The voters dropdown is currently selected, so you can see the options of eligible voters or cast votes](./eligible-vs-cast.png)
+![Choosing whether a vote share requirement uses votes cast or eligible voters](./eligible-vs-cast.png)
 
-**Eligible voters**  refer to every person who is able to vote in the proposal.
-**Votes cast** refer to the current votes, regardless of the overall turnout.
+**Eligible voters** means everyone who is able to vote in the proposal. **Votes cast** means only the votes that have been submitted.
 
-For example: let's say you begin a proposal whose voting is open to every member in your organization.   You set a vote share requirement that the proposal passes if it receives 75 percent consent from _eligible voters_.  This means the proposal could only pass if at least 75 percent of your entire organisation votes,  _and_ they cast consenting votes.
+A requirement of 75 percent agreement from eligible voters can pass only when at least 75 percent of all eligible voters vote for that option.
 
-Alternatively, let's say you set the vote share requirement to 60 percent of _votes cast_.  Then, the proposal may pass once 60 percent of the votes are consenting, regardless of how many people in your organisation voted.  It may be that a tiny fraction of your organisation participated, but the majority of that fraction voted yes.
+A requirement of 60 percent agreement from votes cast can pass when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
 
-Setting the vote share requirements alongside a quorum requirement is useful for critical decisions in which you want to protect against low voter turnout.
+## Different vote share requirements
 
-## Different types of vote share requirements
+A proposal can have requirements on more than one option. For example:
 
-A proposal can have multiple voting options and each of them can have a vote share requirement, enabling highly specific voting processes.  For example:
+- Agreement must be at least 75 percent of eligible voters
+- Abstention must be no more than 30 percent of votes cast
+- Block must be no more than 0 percent of votes cast
 
-- You may require a strong majority, and  set a requirement that *consenting votes must be 75 percent of the eligible voters**.
-- You may want enthusiastic participation, so set a quorum of 60 percent of your organization and a vote share requirement that _abstaining votes are no more than 30 percent of the cast votes_.
-- To enforce the power of a block, you may require that _blocking votes must be no more than 0 percent of the cast votes_.
+You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
 
-These requirements can also be set while making a [proposal template](/en/user_manual/polls/poll_templates/), so that Loomio's proposals always follow your organisation's governance requirements.
+## Detailed example
 
-## Detailed example 
+Oatmilk Cooperative is deciding whether to approve the budget for its six-week returnable bottle trial. Five people are eligible to vote.
 
-The Oat Milk Co-op are looking for a new supplier, with Mayo Valley Farms their strongest candidate.  The co-op decides it is time to vote on whether they should switch to this farm.
+Jamie uses the **Consent** proposal template, edits the Consent option, and enables its vote share requirement.
 
-Matt starts a new proposal, titled "We should switch to Mayo Valley Farms" and limits the vote to board members.
+The cooperative's process requires at least 75 percent of eligible voters to support the proposal. Jamie sets the requirement to **At least 75% of Eligible voters**.
 
-This is a critical decision, and their governance handbook states that critical decisions require at least 75 percent consent from the board.
+![The Consent option requiring at least 75 percent of eligible voters](./consent-vote-option.png)
 
-To facilitate this requirement, Matt sets the voting options to "Consent" and "Objection", then clicks the edit option next to "Consent".
+Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
 
-In the edit screen, he checks the vote share requirement box, and fills it out to state "For the proposal to pass, this option must receive at least 75% of eligible voters".
+![Two of five people have voted in agreement and neither requirement is reached](./first-vote-breakdown.png)
 
-![Screenshot of the edit modal for the consenting option. At the bottom of the modal is a checked checkbox, with the text 'For the proposal to pass, this option must receive...'. Below this are three dropdown menus with the requirement set.  Together, they state "at least 75 % of eligible voters".](./consent-vote-option.png)
+Alex and Morgan then agree, while Taylor disagrees. All five people have voted, reaching the quorum, and four of five eligible voters agree. The 80 percent agreement exceeds the 75 percent vote share requirement, so both requirements show green check marks.
 
-He saves the proposal and sends an invite to the five member board.  Then, he casts an approving vote.
-
-Liz votes next, and votes in consent.  The proposal results update with the voting breakdown, showing 100 percent of the current votes in consent.  An 'X' remains next to the vote share requirement and quorum requirements, as the current votes represent only 40 percent of the eligible voters, and so the requirements are still not met.
-
-![Screenshot of voting breakdown. A pie chart shows bright green with all consenting votes. Next to this is a table breakdown, with columns for option, votes, % of votes cast, % of eligible votes. These columns show that the current votes are 100% of votes cast but 40% of eligible votes. Above the breakdown is a blue banner listing the requirements. An X is next to the vote share requirement, and an X is next to the quorum requirement.](./first-vote-breakdown.png)
-
-Tom votes in objection,  then the remaining members of the board vote in consent. 
-
-The results update with the curent breakdown.  Check marks appear next to the vote share and quorum requirements, as 100 percent of the board has voted and 80 percent of them voted in consent.
-
-![Screenshot of voting breakdown. Same layout the previous image, with the pie chart updated to show 80% consenting votes. The blue banner also updates with check marks next to the vote share requirement and quorum requirement. ](./final-vote-breakdown.png)
-
-The proposal can now close, in favour of switching to Mayo Valley Farms.
-
+![All five people have voted and both requirements are reached](./final-vote-breakdown.png)

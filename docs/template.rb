@@ -38,7 +38,7 @@ class DocsTemplate < Phlex::HTML
         script(
           src: "https://measure.loomio.com/js/script.outbound-links.js",
           defer: true,
-          data_domain: "www.loomio.com,all.loomio.com"
+          data_domain: "www.loomio.com,all.loomio.com,help.loomio.com"
         )
       end
     end

@@ -215,6 +215,7 @@ main video,
 
 main img {
   border: 1px solid var(--image-border);
+  border-radius: 12px;
 }
 
 main iframe {

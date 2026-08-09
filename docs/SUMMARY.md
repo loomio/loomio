@@ -48,6 +48,8 @@
   - [Anonymous voting](user_manual/polls/anonymous_voting/index.md)
 
 - [Your profile](user_manual/users/user_profile/index.md)
+  - [Signing in](user_manual/users/signing_in/index.md)
+  - [Bookmarks](user_manual/users/bookmarks/index.md)
   - [Notifications](user_manual/users/email_settings/index.md)
   - [Merge accounts](user_manual/users/merge_accounts/index.md)
   - [Language and translation](user_manual/users/translation/index.md)
@@ -64,49 +66,6 @@
     - [User API](user_manual/integrations/api/user-api.md)
     - [Server API](user_manual/integrations/api/server-api.md)
 - [Newsletter](newsletter/index.md)
-
----
-
-# Subscriptions
-- [Subscription plans](policy/subscriptions/pricing.md)
-- [Customer FAQs](policy/subscriptions/pricing_faq.md)
-- [Subscription management](policy/subscriptions/management/index.md)
-
----
-
-# Policies
-- [Terms of Service](policy/terms/index.md)
-  - [Account Ownership](policy/ownership/index.md)
-  - [Use restrictions](policy/abuse/index.md)
-- [Privacy Policy](policy/privacy/index.md)
-  - [Regulations](policy/privacy/regulations/index.md)
-  - [Loomio Subprocessors](policy/privacy/loomio-subprocessors/index.md)
-  - [Company Processors](policy/privacy/company-processors/index.md)
-- [Security](policy/security/index.md)
-
----
-
-# Guides
-
-- [The Facilitator's Guide to Loomio](guides/facilitators_guide/index.md)
-  - [Preparation](guides/facilitators_guide/preparation/index.md)
-  - [Commencing](guides/facilitators_guide/commencing/index.md)
-  - [Underway](guides/facilitators_guide/underway/index.md)
-  - [Concluding](guides/facilitators_guide/concluding/index.md)
-  - [Ongoing Practice](guides/facilitators_guide/ongoing_practice/index.md)
-
-- [Good Governance Guide to Loomio](guides/board_processes/index.md)
-  - [Prepare for a meeting](guides/board_processes/meeting.md)
-  - [Facilitating discussions](guides/board_processes/facilitating_discussions.md)
-  - [Making resolutions](guides/board_processes/decisions.md)
-  - [Governance practices](guides/board_processes/practices.md)
-  - [Record keeping](guides/board_processes/admin.md)
-  - [Introducing Loomio to your board](guides/board_processes/introduce.md)
-
----
-
-# Changelog
-
 - [Product changelog](user_manual/changelog/index.md)
   - [Require vote reasons when disagreeing](user_manual/changelog/2026-08-07_vote_reasons_for_disagreement.md)
   - [Gradient theme backgrounds](user_manual/changelog/2026-08-04_gradient_backgrounds.md)
@@ -230,3 +189,38 @@
   - [Reply to polls via email](user_manual/changelog/2020-11-10_reply_to_poll_email.md)
   - [Private threads](user_manual/changelog/2020-04-08_private_threads.md)
   - [Thread export](user_manual/changelog/2020-01-06_thread_export.md)
+
+---
+
+# Guides
+
+- [The Facilitator's Guide to Loomio](guides/facilitators_guide/index.md)
+  - [Preparation](guides/facilitators_guide/preparation/index.md)
+  - [Commencing](guides/facilitators_guide/commencing/index.md)
+  - [Underway](guides/facilitators_guide/underway/index.md)
+  - [Concluding](guides/facilitators_guide/concluding/index.md)
+  - [Ongoing Practice](guides/facilitators_guide/ongoing_practice/index.md)
+
+- [Good Governance Guide to Loomio](guides/board_processes/index.md)
+  - [Prepare for a meeting](guides/board_processes/meeting.md)
+  - [Facilitating discussions](guides/board_processes/facilitating_discussions.md)
+  - [Making resolutions](guides/board_processes/decisions.md)
+  - [Governance practices](guides/board_processes/practices.md)
+  - [Record keeping](guides/board_processes/admin.md)
+  - [Introducing Loomio to your board](guides/board_processes/introduce.md)
+
+---
+
+# Customer information
+
+- [Subscriptions](policy/subscriptions/pricing.md)
+  - [Customer FAQs](policy/subscriptions/pricing_faq.md)
+  - [Subscription management](policy/subscriptions/management/index.md)
+- [Terms of Service](policy/terms/index.md)
+  - [Account Ownership](policy/ownership/index.md)
+  - [Use restrictions](policy/abuse/index.md)
+  - [Security](policy/security/index.md)
+- [Privacy Policy](policy/privacy/index.md)
+  - [Regulations](policy/privacy/regulations/index.md)
+  - [Loomio Subprocessors](policy/privacy/loomio-subprocessors/index.md)
+  - [Company Processors](policy/privacy/company-processors/index.md)

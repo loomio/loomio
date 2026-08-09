@@ -15,7 +15,7 @@ Or you may invite people to participate in a particular decision, using a consen
 
 Discussions can also contain polls and proposals to help progress a discussion to an outcome. As people comment in the discussion and vote in polls, a discussion timeline builds so you can easily find key milestones.
 
-![screenshot of a discussion thread, with the title "Preparing a new sustainability service". The top text shows the author, Chloe Miller, the time she wrote it, and the tag given to it (marketing). Beneath her opening message is a list of replies from her, Jaiyush, and vivian. The replies are sorted oldest first and there are icons next to each message allowing one to react or reply to that message. ](discussion-example.png)
+![The Returnable bottles for cafe customers discussion, with a comment and a proposal](discussion-example.png)
 
 ## Using discussions
 
@@ -54,4 +54,3 @@ Here are some common uses of discussions:
 **Advice, Consent and Generative decision making** - Prepare, propose, clarify, respond to reactions and objections, agree and implement - all within a Loomio discussion.
 
 See [Example discussions](/en/user_manual/discussions/examples/) if you're looking for inspiration.
-
