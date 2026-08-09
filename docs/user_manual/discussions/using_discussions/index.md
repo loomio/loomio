@@ -2,7 +2,7 @@
 
 Loomio discussions are versatile and you have many tools available to help you progress a discussion to an outcome.  Read on to see how to get the most from discussions.
 
-## Discussion navigation
+## Thread anatomy
 
 A typical thread looks like this:
 
@@ -12,7 +12,7 @@ Description of thread features from the top.
 
 **Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page.
 
-**Discussion privacy** - At the top right of the discussion page is a tag showing that this discussion is private - only members of the group, and anyone specifically invited to the discussion, can see and participate in the discussion.
+**Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings.
 
 **Discussion title** - The discussion title is the largest type font on the page, so easy to spot.
 
@@ -22,17 +22,19 @@ Description of thread features from the top.
 
 **Date** - Hover over the date to see the full date and time of discussion start.
 
-**Seen by** - Shows who has read the discussion, and when.
+**Seen by** - In the right sidebar, shows who has read the discussion and when.
 
-**Notified** - Shows who has been notified about the discussion, and if read or email opened.
+**Notified** - In the right sidebar, shows who has been notified about the discussion and whether each notification has been read or its email opened.
 
 **Discussion context** - Content to frame the discussion.
 
-**Discussion interaction and administration tools** - Under discussion context is a range of tools where you can watch, invite, react, reply and edit the discussion context.  Click on the 3 dot menu (**...**) to see more tools.
+**Discussion interaction and administration tools** - The discussion context has controls to react to and edit it. The right sidebar contains notification, membership and administration actions.
 
-**Comments** - Comments are displayed under the discussion context. The default display is from oldest to newest. You can change the order of display if you wish, however this applies to everyone in the group.   The comment author, image and date comment added helps you see who has written the comment and when.   Interaction and administration tools are also available for each comment.
+**Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment.
 
-**Timeline** - As comments and polls are posted in the discussion, a timeline builds marking important milestones in the discussion.  Polls are automatically pinned to the timeline.  Any comment may be pinned to the timeline.
+**Thread navigation and actions** - The right sidebar contains shortcuts to
+unread and recent activity, important milestones, notification settings,
+thread members, and actions available to you.
 
 ## Discussion context
 
@@ -50,25 +52,40 @@ At the bottom of the context panel is a formatting bar, where you can format tex
 
 ![](thread_context_edit.png)
 
-## Discussion timeline
+## Thread navigation and actions
 
-The discussion timeline is on the right of the discussion, and helps you quickly access comments and polls in a discussion. It is a visual, interactive history automatically building as the discussion progresses with important comments, polls and milestones.
+The right sidebar keeps navigation and thread-level controls together.
 
-Comments that include a header (H2 or H3), polls and proposals are automatically pinned to the timeline.
+Under **Jump to**:
 
-Click on the item in the timeline to go directly to the comment or poll in the discussion.
+- **Start** goes to the discussion context
+- **New to you** appears when the thread contains activity you have not read
+- **Latest** appears when newer activity is available beyond the items
+  currently loaded
+- milestone links go directly to important comments, polls, and outcomes
+- **End** goes to the latest item in the thread
+
+Comments that include an H2 or H3 heading, polls, and proposals are
+automatically included as milestone links. Select any milestone to go directly
+to it.
+
+The other sections control email notifications, show participant and
+notification information you are permitted to see, and provide actions such as
+printing, copying Markdown, moving, configuring, locking, or deleting the
+thread. The actions shown depend on your permissions.
 
 ![](thread_timeline_1.png)
 
-Jump to the top of the discussion by clicking on "**Context**".
+When you add a comment, poll, vote, or outcome, Loomio marks your own new item
+as read. It will not appear as something new for you to review.
 
 ## Comments
 The most common activity in a discussion is commenting. Comments are visible to anyone who has permission to see the discussion.
 
 ### Reading comments
-When you open a discussion, Loomio will first show you new comments. 
+When you open a discussion, Loomio takes you to activity that is new to you.
 
-Unread comments are shown with a yellow line on the left side. 
+Unread comments have a blue **new** label beside their posting time.
 
 ![](thread_unread_comments.png)
 
@@ -85,21 +102,19 @@ The full range of formatting tools described in [Formatting](/en/user_manual/dis
 Write your comment and press **Post Comment**.
 
 ### Reactions
-Reacting to a comment is a great way to encourage and acknowledge a comment by letting the comment author know how you feel.  
-
-It is a quick and easy way to participate that does not require any text, nor send an email.
+Use the smiley button to respond with an emoji. Reactions let people acknowledge a comment without writing another comment or sending an email.
 
 ![](reaction.png)
 
 ### Replying to a comment
 
-You can reply to someone's comment by clicking on the reply icon located at the bottom right of the comment.
+You can reply to someone's comment by clicking **Reply** below the comment.
 
 Your reply is published in the thread and an email notification is sent to the author of the comment.
 
 ![](comment_reply.png)
 
-You can reply to your own comment so as to nest your reply underneath the comment. Click the three horizontal dots (**⋯**) to find the **reply** feature.
+You can also reply to your own comment to nest a response beneath it.
 
 If Loomio has emailed you a comment and says you can reply to the email, you can reply directly from your email and your message will appear in the thread.
 
@@ -107,7 +122,7 @@ If Loomio has emailed you a comment and says you can reply to the email, you can
 
 Loomio can translate user content - written in discussion context, comment or polls -  into your language.
 
-If the author uses a language other than yours, **Translate comment** will be available in the drop-down options of that comment.
+If the author uses a language other than yours, a **Translate** action appears below the comment.
 
 ![](comment_translate.png)
 
@@ -117,31 +132,32 @@ Click **Translate comment** to see the comment in your language.
 
 ### Comment tools
 
-The following tools can be used on any comment by clicking on the three dot menu (**⋯**) at the bottom-right of the comment.
+Common actions appear directly below a comment. Additional actions are available from the three-dot menu (**⋯**).
 
-### Pin to timeline
+### Add a comment to Jump to
 
-Use **Pin to timeline** to pin a comment to the timeline.
+Use **Pin to timeline** to add a comment to the **Jump to** list.
 
-You an edit the comment label on the timeline. Unpin and then pin it again; this will give you the opportunity to reword the text that appears as a link in the timeline.
+You can edit the comment label in **Jump to**. Unpin and then pin it again to
+change the link text.
 
 >[!Tip]
->Highlight the words that you would like to use as the text in the timeline
+>Highlight the words that you would like to use as the text in the **Jump to** list
 
-**Unpin**  removes the item from the timeline.
+**Unpin** removes the item from **Jump to**.
 
 ### Editing comment
-If you want to change anything you can edit the comment by selecting **Edit** under the 3 dot menu.
+To change one of your comments, click **Edit** below it. Group administrators can also edit member comments when the group permission allows it.
 
 ![](comment_edit.png)
 
 ### Show edits
 
-When a comment has been edited, the **Show edits** icon appears.
+When a comment has been edited, an **Edited** action appears below it.
 
 ![](comment_show_edits.png)
 
-Click on **Show edits** to see what changes have been made.  Red highlighted text has been deleted, and green highlighted text added.  
+Click **Edited** to see what changed. Red highlighting shows removed text and green highlighting shows added text.
 
 The person who edited the comment, and the date and time of edit, is recorded in Loomio.  
 
@@ -149,9 +165,10 @@ Click on the arrows to see previous edits.
 
 ![](comment_edits.png)
 
-You cannot edit other people's comments unless:
-- You are the comment author
-- You are a group admin and the group permission [Admins can edit members' comments](https://help.loomio.com/en/user_manual/groups/settings/index.html#permissions) is enabled. 
+You can edit a comment when:
+
+- You wrote it and the group allows members to edit their comments.
+- You are a group administrator and [Admins can edit members' comments](/en/user_manual/groups/settings/#permissions) is enabled.
 
 ### Copy link
 
@@ -171,13 +188,13 @@ See [Comment notification history](/en/user_manual/discussions/notifying_people/
 
 Discarding a comment removes it from the thread, but retains the comment in a trash bin.
 
-You can discard your own comments at any time with **Discard** under the 3 dot (*...*) menu located at the bottom right of your comment.
+You can discard your own comments with **Discard** in the three-dot menu. Group administrators can also discard comments.
 
 ![](comment_discard.png)
 
 #### Restore comment
 
-You can restore your own comment with **Restore**.  The location of the comment will be labeled as **Item removed**.  Click on the 3 dot (*...*) menu located at the bottom right of your discarded comment and select **Restore**.
+The location of a discarded comment is labelled **Item removed**. Open its three-dot menu and select **Restore**.
 
 ![](comment_restore.png)
 
@@ -185,15 +202,15 @@ You can restore your own comment with **Restore**.  The location of the comment 
 
 Delete comment removes the comment permanently from the discussion.  It cannot be restored.
 
-If "Members can delete their own comments" is permitted in [Group Settings](https://help.loomio.com/en/user_manual/groups/settings/index.html#permissions), you can delete your comment.
+If **Members can delete their own comments** is enabled in [Group settings](/en/user_manual/groups/settings/#permissions), members can permanently delete their own discarded comments.
 
 ![](permissions_delete_comment.png)
 
-The location of the comment will be labeled as **Item removed**.  Click on the 3 dot (*...*) menu located at the bottom right of your discarded comment and select **Delete**.
+Open the three-dot menu on an **Item removed** entry and select **Delete**.
 
 ![](comment_delete.png)
 
-A warning message will appear and ask you to acknowledge that the comment will be permanently from the discussion and cannot be restored.
+A confirmation message explains that the comment will be permanently deleted and cannot be restored.
 
 ![](comment_delete_message.png)
 
@@ -201,33 +218,31 @@ Admins can delete any comment - their own comments and the comments of other peo
 
 ## Discussion display
 
-By default comments in discussions are listed one after the other as you scroll down the discussion page - oldest comments first.  However you can change the discussion order so that newest comments are listed at the top of the discussion.  Seeing the latest comments first is useful for discussions used for reporting or discussions that have been active for some time.
-
-The grey text just under the context will indicate in which order the activity is being listed, along with the number of replies.
-
-To change this setting, click that grey text, choose your preference, and save. _This changes the layout for everyone, not just you._
+Group administrators can change how replies are arranged in a discussion. Select **Thread settings** under **Actions** in the right sidebar.
 
 ![](thread_display.png)
 
 ### Discussion display options
 
+Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
+
 ![](thread_layout_options.png)
 
 ## Other discussion tools
 
-The discussion menu includes tools to view the notification history and print the discussion.
-
-Find these tools under the 3 dot (**⋯**) menu, under the discussion context on the right.
+The right sidebar contains shortcuts for navigating the discussion, changing email notifications, managing thread members and administering the discussion. Available actions depend on your permissions.
 
 ![](thread_admin.png)
 
 ### Show notifications
 
+Select **Notified** under **Thread members** to see the discussion notification history.
+
 See [Notified: (Discussion notification history)](/en/user_manual/discussions/notifying_people/#notified-discussion-notification-history).
 
 ### Print
 
-In the discussion menu click on the 3 dots menu (**⋯**) and choose **Print**.
+Under **Actions** in the right sidebar, select **Print**.
 
 A page suitable for print is generated.
 

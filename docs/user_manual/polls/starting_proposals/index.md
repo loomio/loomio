@@ -1,4 +1,4 @@
-# Settings
+# Proposal and poll settings
 
 ## Setting up a proposal or poll
 
@@ -28,14 +28,14 @@ Use the formatting tools to support your poll.  For example, attach a document f
 
 ### Voting options
 
-Each proposal and poll template provide options for voting.
+Each proposal and poll template provides options for voting.
 
-You can add, edit and remove voting options to suit the proposal or decision process you are running.  
+Depending on the template, you can edit, remove, reorder, or add voting options to suit the decision process you are running.
 
 - Use the pencil icon to edit voting option 
 - Use the trash can icon to remove unwanted voting options
 - Use the handle to move the order of voting options
-- Add voting options with **New option** and click the + button 
+- Add voting options with **Add option** when the template allows custom options
 
 ![](vote_options.png)
 
@@ -47,7 +47,7 @@ Use the pencil icon alongside the voting option to open the edit modal:
 
 **Option name:** A short name for the option.
 
-**Icon:** Select the icon for the option; thumbs up, thumbs down, thumbs sideway or hand up.
+**Icon:** Select an icon for the option, such as thumbs up, thumbs down, abstain, or block.
 
 **Meaning:** A sentence that explains what choosing this options means.
 
@@ -73,7 +73,7 @@ Give sufficient time for people to vote. You could time the proposal so it close
 
 You can later add or remove people from an 'Invite people only' poll.
 
-## Advanced Settings
+## More settings
 
 ![](settings_advanced.png)
 
@@ -86,8 +86,8 @@ Setting options:
 - Undecided voters (default)
 - All voters
 
-### Votes are anonymous
-If enabled, this allows people to vote anonymously - the identity of voters will not be associated to their votes.  This is useful for elections and secret ballots.  
+### Anonymous voting
+If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
 
 >[!Warning]
 >Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
@@ -98,10 +98,18 @@ If enabled, this allows people to vote anonymously - the identity of voters will
 ### Vote reason
 It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
 
-Setting options:
-- Optional (default) - reason is optional.
-- Required - people must write something in the reason field before their vote is submitted.
-- Disabled - the reason text box is not available.
+Available settings depend on the template:
+
+- **Optional** lets voters choose whether to give a reason
+- **Required when disagreeing** requires a reason only when the selected option
+  uses the Disagree or Block voting icon
+- **Required** requires every voter to give a reason
+- **Disabled** removes the vote-reason field
+
+**Required when disagreeing** follows the voting icon rather than the option
+name. It still applies if you rename Disagree to a term such as Objection.
+Built-in templates with disagreement options use this setting by default, and
+the poll author can change it for an individual poll.
 
 >[!Tip]
 >In an election or anonymous poll, consider disabling vote reason to avoid a voter inadvertently revealing their identity with their text comment.
@@ -112,16 +120,16 @@ Setting options:
 If you want people to vote without knowing how others have voted, you can hide the results of the poll.  Useful if you do not want people to be affected by how other people have voted.
 
 Setting options:
-- Off (default) - means voting results are visible.
-- Until vote is cast - means voting results are not visible until you vote, and are then revealed.
-- Until proposal is closed - means voting results are not visible until the proposal closes. 
+- Do not hide results (default)
+- Hide results until a vote is cast
+- Hide results until voting closes
 
-### Start Poll
-Click the **Start Poll** button.
+### Start the poll
+Select the **Start proposal** or **Start poll** button.
 
 ## Managing polls
 
-Click on the 3 dot menu at the bottom right of the poll.
+Open the three-dot menu at the bottom right of the poll.
 
 ![](proposal_edit.png)
 
@@ -131,11 +139,11 @@ Use **Edit poll** to edit poll content or settings.   You can not change voting 
 
 ### Make a copy
 
-Use **Make a copy** to create a copy of the poll and settings.  Useful when you have a repeating workflow.
+Use **Make a copy** to create a new poll using the current poll and settings as a starting point.
 
-### Show notifications
+### Notification history
 
-**Show notifications** indicates that the notification has been read or the email has been opened.
+**Notification history** shows who was notified and whether each notification has been read.
 
 ![](proposal_notification_history.png)
 
@@ -145,7 +153,7 @@ Use **Make a copy** to create a copy of the poll and settings.  Useful when you 
 
 ### Print
 
-**Print** exports the poll as an html document preserving the poll format. You can print the html document to a printer or to pdf document format for publishing and archiving.
+Use **Print** in the thread actions to open a printable HTML document. You can print it or save it as a PDF for publishing and archiving.
 
 ![](proposal_print.png#width-80)
 
@@ -155,27 +163,10 @@ Use **Make a copy** to create a copy of the poll and settings.  Useful when you 
 
 Make sure you want to delete the poll.  There is no 'restore' option.
 
-After deletion an **Item removed** marker is left in the thread. This cannot be removed.
+After deletion, an **Item removed** marker remains in the thread.
 
 ![](proposal_delete.png)
 
-### Move item
+### Save bookmark
 
-**Move item** enables you to move the poll to another thread and/or group.
-
-![](proposal_move.png)
-
-Select the items (poll, reasons) along with any other comments in the thread you want to move, and then select the group and thread you want to move them to.
-
-![](proposal_move_items.png)
-
-### Unpin from timeline
-
-Removes the poll from the timeline.  You can re-pin the poll to the timeline.
-
-### Copy link
-
-Copies a unique link to the poll to your computer clipboard, so you can paste it in a document, thread or any other internet property.
-
-Use this when you want to directly refer people to the poll. For example, paste the poll link in an email newsletter to members.
-
+Use **Save bookmark** to add the poll to your bookmarks for quick access later.

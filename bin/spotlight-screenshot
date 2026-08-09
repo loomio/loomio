@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'vips'
+
+abort 'Usage: bin/spotlight-screenshot IMAGE_PATH OPTIONS_JSON' unless ARGV.length == 2
+
+image_path = File.expand_path(ARGV.fetch(0))
+options = JSON.parse(ARGV.fetch(1))
+
+abort "Screenshot not found: #{image_path}" unless File.file?(image_path)
+
+image = Vips::Image.new_from_file(image_path, access: :sequential)
+base_width = Float(options.fetch('baseWidth'))
+base_height = Float(options.fetch('baseHeight'))
+abort 'Spotlight base dimensions must be positive' unless base_width.positive? && base_height.positive?
+
+scale_x = image.width / base_width
+scale_y = image.height / base_height
+padding = Float(options.fetch('padding', 8))
+
+x = [0, (Float(options.fetch('x')) - padding) * scale_x].max
+y = [0, (Float(options.fetch('y')) - padding) * scale_y].max
+width = [(Float(options.fetch('width')) + (padding * 2)) * scale_x, image.width - x].min
+height = [(Float(options.fetch('height')) + (padding * 2)) * scale_y, image.height - y].min
+
+radius = Float(options.fetch('radius', 8)) * ((scale_x + scale_y) / 2)
+opacity = Float(options.fetch('opacity', 0.4)).clamp(0, 0.9)
+outline = options.fetch('outline', '#ffffff')
+outline_width = Float(options.fetch('outlineWidth', 0)) * ((scale_x + scale_y) / 2)
+
+abort "Invalid spotlight outline: #{outline}" unless outline.match?(/\A#[0-9a-f]{3,8}\z/i)
+
+outline_svg = if outline_width.positive?
+  <<~SVG
+    <rect x="#{x}" y="#{y}" width="#{width}" height="#{height}" rx="#{radius}"
+          fill="none" stroke="#{outline}" stroke-width="#{outline_width}"/>
+  SVG
+end
+
+svg = <<~SVG
+  <svg xmlns="http://www.w3.org/2000/svg" width="#{image.width}" height="#{image.height}">
+    <defs>
+      <mask id="spotlight-mask">
+        <rect width="100%" height="100%" fill="white"/>
+        <rect x="#{x}" y="#{y}" width="#{width}" height="#{height}" rx="#{radius}" fill="black"/>
+      </mask>
+    </defs>
+    <rect width="100%" height="100%" fill="black" fill-opacity="#{opacity}" mask="url(#spotlight-mask)"/>
+    #{outline_svg}
+  </svg>
+SVG
+
+overlay = Vips::Image.svgload_buffer(svg)
+output = image.composite2(overlay, :over)
+temporary_path = "#{image_path}.spotlight.png"
+output.write_to_file(temporary_path)
+File.rename(temporary_path, image_path)

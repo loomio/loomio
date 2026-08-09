@@ -13,13 +13,13 @@ Loomio proposals and polls help you involve people in decisions.  They are used 
 
 You can start a proposal or poll within a thread to run a decision process or progress a discussion. 
 
-Open the thread, scroll to the **Add Comment** bar and click on the **Run Process** tab, select a proposal or poll template.
+Open the thread, scroll to the reply area and select **Start a vote**, then choose a proposal or poll template.
 
 ![](process_run.png)
 
 ### Standalone proposal or poll
 
-You can also run a standalone proposal or poll from your group page, from the **Polls** tab on your group page. Click on **New Poll** and select your proposal or poll template.
+You can also run a standalone proposal or poll from the **Polls** tab on your group page. Select **New poll**, then choose a proposal or poll template.
 
 ![](standalone_poll.png)
 

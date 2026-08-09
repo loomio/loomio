@@ -14,9 +14,9 @@ Find the **New discussion** button on your Loomio group page to start a new disc
 
 You can start a discussion within your Loomio group or any subgroup.
 
-![Screenshot of main loomio page, with most of the page grayed out so that the Discussion button is highlighted.](new-discussion-button.png)
+![New discussion button on the Oatmilk Cooperative page](new-discussion-button.png)
 
-![A screenshot of a new discussion form, showing fields for title, tags, context, and group.  The title is "Preparing a new sustainability service" with the context a longer description of the service. It is tagged with sustainability and marketing.](new-discussion-example.png)
+![New discussion form for planning the returnable bottle trial](new-discussion-example.png)
 
 ### Group
 Check the name of the group or subgroup is correct for your discussion.  Anyone in this group will be able to see the discussion. You can also start the discussion in another group or as a 'direct' discussion (no group).

@@ -12,11 +12,7 @@ Loomio now includes a series of predefined proposal templates for common decisio
 
 The proposal templates are part of the scaffolding used to run a process. You can edit the templates to suit your particular needs, create new templates, or remove and rearrange templates to customize the experience for your organization.
 
-You will find more proposal and poll templates under the tabs:
-- Poll - Choose, Score, Allocate, Rank, Time poll
-- Settings - Proposal (classic), Gradients of Agreement, Question round
-
-The classic Loomio proposal is still available under the Settings tab. You can **Unhide** it to make available for use under the Proposals tab.
+Use the **Proposal** and **Poll** tabs to browse the templates available in your group. Group admins can use each template's menu to edit, move, hide, or delete it.
 
 See our guides for [Advice process](/en/user_manual/making_decisions/advice_process.html), [Consent process](/en/user_manual/making_decisions/consent_process.html) and [Consensus](/en/user_manual/making_decisions/consensus_process.html) for help and examples of using proposal templates at key steps in each process.
 
@@ -32,9 +28,7 @@ Under the Proposal tab, you will find templates for proposals commonly used in d
 
 Sense check is an easy way to invite feedback, questions and concerns.  Sense check can also be used in the Consent process or to test for Consensus.
 
-You will find more proposal and poll templates under the tabs:
-- Poll - Choose, Score, Allocate, Rank, Time poll
-- Settings - Proposal (classic), Gradients of Agreement, Question round
+Under the Poll tab, you will find Choose, Score, Allocate, Rank, and Time poll templates.
 
 ### Example
 
@@ -78,7 +72,7 @@ With the **New poll template** form, you can add a template name, subtitle and i
 
 Only group admins can create poll templates.
 
-Create your poll template under the Settings tab.
+Select **New template** from the template list.
 
 ![](proposal_template_setting.png)
 
@@ -172,7 +166,7 @@ You can manage the poll templates available for use within your group.
 
 ![](template_manage.png)
 
-Under the **Settings** tab, you can see all hidden poll templates and **Unhide** to restore for use in your group.
+Select **Show hidden templates** below the template list to see hidden templates and restore one for use in your group.
 
 Default and Custom templates are tagged.
 

@@ -1,17 +1,18 @@
 # Direct discussions
-A 'direct' discussion is useful when you want to invite particular people to a private discussion.
+
+A direct discussion is a private discussion for a specific set of people.
 
 A direct discussion does not belong to a group. Invited people do not need to be a member of your Loomio group.
 
-With **Direct Discussions** you control who can see and participate in the discussion.
+You control who can see and participate by adding people or email addresses to the **Invite** field.
 
-Direct discussions have all of the benefits of Loomio discussions and are often used in place of subgroups.
+Direct discussions support the same comments, polls and other tools as group discussions. They can be useful when creating a subgroup is unnecessary.
 
-![Screenshot of direct discussion window. It is formatted similarly to a thread window. It has a group window, pre-populated with "None (direct discussion)", a title, tags, and a context text area.  It also has an "invite" field, that is populated with the member name "Matt Peterson".  In the bottom right are buttons to reset or start a discussion. ](direct-discussion-example.png)
+![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)
 
-Your direct discussions can be found (and new ones created) under **Direct Discussions** in the sidebar menu.
+Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
 
-![Screenshot of sidebar in loomio group, showing navigation links. The "Direct Discussions" link is highlighted in this list.  It says "Direct discussions " followed by "(1)" , indicating this user has 1 direct discussion.](direct-discussion-sidebar.png)
+![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)
 
 ## Contacting someone via a direct discussion
-A direct discussion can be a useful way to contact another member of your group privately.
+A direct discussion can be used to contact one or more people privately without creating a subgroup.

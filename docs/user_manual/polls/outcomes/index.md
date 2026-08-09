@@ -1,6 +1,6 @@
 # Outcome
 
-When your proposal or poll closes, you’ll be prompted to set an **outcome**.
+When your proposal or poll closes, you’ll be prompted to enter an **outcome**.
 
 ![](outcome_prompt.png)
 
@@ -28,7 +28,7 @@ The outcome statement is an opportunity to state the results and what has been l
 
 You can notify people - they will receive an email from Loomio containing the poll results and your outcome statement.
 
-You can also choose to set a **Review date** - a future date when you would like to review this poll or decision.  For example to review a strategy at the same time next year.
+You can also set a **Review date**: a future date when you would like to review this poll or decision. For example, you might review a strategy at the same time next year.
 
 ![](outcome_published.png)
 
@@ -39,5 +39,4 @@ You can also choose to set a **Review date** - a future date when you would like
 or
 
 > _I've taken on board everyone's input. As the project manager, this is my call to make and I've decided we are going to extend the timeline by 10 days._
-
 

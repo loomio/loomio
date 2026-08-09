@@ -1,12 +1,12 @@
 # Formatting
 
-When starting a discussion, poll or writing a comment, you will see the formatting bar under the text.
+When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
 
 Hover the mouse or cursor over each item for the name of each tool.
 
 ![](thread_format_bar.png)
 
-Use the formatting tools to add information, emphasis and structure to your discussion; so as to communicate clearly and encourage people to participate in the discussion.
+Use formatting to add structure and emphasis so information is easier to scan.
 
 ## Attach file
 
@@ -26,11 +26,11 @@ Use this tool to insert and display an image.
 
 ![](format_insert_image.png)
 
-Select the image file to insert from your computer.
+Select an image file from your computer. The image is inserted into the editor after it uploads.
 
 ![](format_insert_example.png)
 
-The image is displayed within Loomio.
+The image is displayed within the published discussion, poll or comment.
 
 >[!Tip]
 >You can also copy/paste an image directly into Loomio.
@@ -41,11 +41,13 @@ The image is displayed within Loomio.
 
 You can add a link to any shareable document or page on the internet.  
 
-To add a link for a Google doc: 
+To add a link:
+
 1. Select the text you want to link to - say the name of a document.
 2. Click the link icon.
-3. Find the document link - go to your Google drive and ‘Get link’, or in your Google doc ‘Share link’.  Check the link permissions so members can open the link - usually ‘Anyone with the link’. Copy the link to your clipboard.
-4. Now, go back to Loomio and paste the link.
+3. Paste the address into the **Insert link** field and select **Apply**.
+
+For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
 
 A preview of the doc will appear under the text space. You can remove this if you want.
 
@@ -57,13 +59,13 @@ Now, anyone with access to your Loomio discussion and permission to view the doc
 
 ## Insert Emoji
 
-Emojis are great way to lighten the mood and encourage people.  Select the emoji you like from the pop up screen.
+Select the smiley button and choose an emoji from the picker.
 
 ![](thread_insert_emoji.png)
 
 ## Headings
 
-H1, H2, H3 headings can help you structure your discussion or comment.
+Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
 
 Select the text to mark as a heading and click on the heading format tool.
 
@@ -79,19 +81,19 @@ Select the text to format and click on the required format tool.
 
 ## List
 
-Use to add a list of items formatted as bullet points.
+Use **List** to format items as bullet points.
 
 ![](thread_bullets.png)
 
 ## Numbered list
 
-Use to add a numbered list of items.
+Use **Numbered list** when the order of items matters.
 
 ![](format_numbers.png)
 
 ## Task list
 
-Use the task list to add check boxes for each task, and assign someone with a due date for completion.
+Use **Task list** to add checkboxes. After posting the list, tasks can be assigned to someone and given a due date.
 
 ![](format_tasks.png)
 
@@ -99,7 +101,7 @@ See the page on [Tasks](/en/user_manual/discussions/tasks/) for more information
 
 ## Colors
 
-Use colors to add a highlight color to text.
+Use **Colors** to add a highlight colour to selected text.
 
 ![](thread_colors.png)
 
@@ -111,18 +113,18 @@ Select to align text to left, center or right.
 
 ## Embed videos and webpages
 
-You can embed a video from platforms like Youtube, anywhere there is a text space with a formatting toolbar. The feature also works for embedding other webpages - some creative uses we've seen include embedding spreadsheets at the top of threads and calendars into group descriptions.
+You can embed supported videos and webpages anywhere there is a formatting toolbar.
 
 To use the embed video feature: 
-1. Go to the video you want to embed, find and copy the embed link.
-2. Click the embed video icon and paste the link.
+1. Copy the address of the video or webpage.
+2. Select **Embed video**, paste the address and select **Apply**.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Make sure you set the visibility of the video in Youtube or Vimeo so it can be accesses by anyone with the link. In Youtube 'Unlisted' is a good option if you do not want to make the video public.
+>Make sure the video can be accessed by everyone who can participate in the discussion. For example, an unlisted video may be suitable when it should not appear in public search results.
 
 ## Quote
 
@@ -152,25 +154,24 @@ Additional tools are available to add/remove columns and rows.
 
 ## Markdown
 
-To revert to markdown editing, click **M↓**. 
+To switch to Markdown editing, select **Edit Markdown**.
 
 If you click this while there is text in the form, some formatting may be lost upon conversion.
 
-### WYSIWYG
+### Rich text
 
-Click **WYSIWYG** to return to the formatting tools. This will convert any text and markdown formatting to display how it will appear when posted. 
+Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
 
-***PREVIEW*** shows how your text will appear, but without converting.
+**Preview** shows how Markdown will appear when posted without converting it.
 
 ## Lock thread
 
 Lock a thread to prevent people from commenting or making further changes. Locked threads are removed from the list of open threads.
 
-You can only lock a thread after any proposals in the thread have closed. Open the three horizontal dots (**⋯**) for the thread and select **Lock thread**.
+You can only lock a thread after its active polls have closed. Select **Lock thread** under **Actions** in the right sidebar.
 
 To view locked threads, go to the relevant **group page** and change the discussion filter from **Open** to **Locked**.
 
 ### Unlock thread
 
-Open the three horizontal dots (**⋯**) for a locked thread and select **Unlock thread**. This allows comments and changes again and restores the thread to the open thread list.
-
+Open the locked thread and select **Unlock thread** under **Actions** in the right sidebar. This allows comments and changes again and restores the thread to the open discussion list.

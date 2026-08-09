@@ -2,7 +2,7 @@
 
 The group participation report gives insights into the usage of your Loomio group. 
 
-![](group_participation_report_graph.png)
+![Participation report controls, totals, and activity graph for Oatmilk Cooperative](group_participation_report_graph.png)
 
 You're able to choose which groups to include in the report, the start and end date for the report, and the interval (year, month, week or day) for grouping results. 
 
@@ -10,7 +10,7 @@ The report is available to everyone in your group, however users can only see re
 
 You can find the report by clicking the group settings menu cog, as shown below. 
 
-![](group_participation_report.png)
+![Participation report action in the Oatmilk Cooperative menu](group_participation_report.png)
 
 ## What's in the report?
 

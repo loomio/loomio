@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'vips'
+
+abort 'Usage: bin/crop-screenshot IMAGE_PATH OPTIONS_JSON' unless ARGV.length == 2
+
+image_path = File.expand_path(ARGV.fetch(0))
+options = JSON.parse(ARGV.fetch(1))
+
+abort "Screenshot not found: #{image_path}" unless File.file?(image_path)
+
+image = Vips::Image.new_from_file(image_path, access: :sequential)
+base_width = Float(options.fetch('baseWidth'))
+base_height = Float(options.fetch('baseHeight'))
+abort 'Crop base dimensions must be positive' unless base_width.positive? && base_height.positive?
+
+scale_x = image.width / base_width
+scale_y = image.height / base_height
+padding = Float(options.fetch('padding', 0))
+
+left = [(Float(options.fetch('x')) - padding) * scale_x, 0].max.floor
+top = [(Float(options.fetch('y')) - padding) * scale_y, 0].max.floor
+right = [
+  (Float(options.fetch('x')) + Float(options.fetch('width')) + padding) * scale_x,
+  image.width
+].min.ceil
+bottom = [
+  (Float(options.fetch('y')) + Float(options.fetch('height')) + padding) * scale_y,
+  image.height
+].min.ceil
+
+abort 'Crop region must have positive dimensions' unless right > left && bottom > top
+
+output = image.crop(left, top, right - left, bottom - top)
+temporary_path = "#{image_path}.crop.png"
+output.write_to_file(temporary_path)
+File.rename(temporary_path, image_path)
