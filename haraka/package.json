@@ -5,7 +5,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "haraka": "3.3.2",
+    "haraka": "3.3.3",
     "haraka-plugin-mailauth": "1.1.1"
   },
   "overrides": {
