@@ -7,6 +7,7 @@ module Dev::Scenarios::Notification
   end
 
   def setup_all_notifications
+    patrick.update!(experiences: patrick.experiences.merge('theme' => 'light'))
     sign_in patrick
     create_all_notifications
     redirect_to discussion_path(create_discussion)

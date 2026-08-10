@@ -24,26 +24,38 @@ module.exports = function(test) {
     const height = options.height || 900;
 
     test.resizeWindow(width, height);
-    test.execute(function() {
+    test.execute(function(showFlash) {
       let style = document.getElementById('manual-screenshot-styles');
 
       if (!style) {
         style = document.createElement('style');
         style.id = 'manual-screenshot-styles';
-        style.textContent = `
-          *, *::before, *::after {
-            animation-delay: 0s !important;
-            animation-duration: 0s !important;
-            caret-color: transparent !important;
-            scroll-behavior: auto !important;
-            transition-delay: 0s !important;
-            transition-duration: 0s !important;
-          }
-        `;
         document.head.appendChild(style);
       }
-    });
+      style.textContent = `
+        *, *::before, *::after {
+          animation-delay: 0s !important;
+          animation-duration: 0s !important;
+          caret-color: transparent !important;
+          scroll-behavior: auto !important;
+          transition-delay: 0s !important;
+          transition-duration: 0s !important;
+        }
+        ${showFlash ? '' : '.flash-root { display: none !important; }'}
+      `;
+    }, [options.showFlash === true]);
     test.pause(300);
+  }
+
+  function scrollIntoView(options) {
+    test.execute(function(scrollSelector, scrollBlock) {
+      if (scrollSelector) {
+        document.querySelector(scrollSelector)?.scrollIntoView({block: scrollBlock || 'center'});
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, [options.scrollSelector, options.scrollBlock]);
+    test.pause(200);
   }
 
   function spotlightGeometry(spotlight, captureSelector) {
@@ -136,14 +148,7 @@ module.exports = function(test) {
     capture(name, options = {}) {
       const outputPath = imagePath(name);
       prepare(options);
-      test.execute(function(scrollSelector, scrollBlock) {
-        if (scrollSelector) {
-          document.querySelector(scrollSelector)?.scrollIntoView({block: scrollBlock || 'center'});
-        } else {
-          window.scrollTo(0, 0);
-        }
-      }, [options.scrollSelector, options.scrollBlock]);
-      test.pause(200);
+      scrollIntoView(options);
       const geometry = spotlightGeometry(options.spotlight, null);
 
       return test.saveScreenshot(outputPath, () => applySpotlight(outputPath, geometry));
@@ -153,6 +158,7 @@ module.exports = function(test) {
       const outputPath = imagePath(name);
       prepare(options);
       test.waitForElementVisible(selector);
+      scrollIntoView({...options, scrollSelector: options.scrollSelector || selector});
       const geometry = spotlightGeometry(options.spotlight, selector);
 
       return test.takeElementScreenshot(selector, (result) => {
@@ -164,7 +170,10 @@ module.exports = function(test) {
     captureRegion(name, selectors, options = {}) {
       const outputPath = imagePath(name);
       prepare(options);
-      selectors.forEach((selector) => test.waitForElementVisible(selector));
+      selectors.forEach((selector) => test.waitForElementPresent(selector));
+      if (options.scrollSelector) {
+        scrollIntoView(options);
+      }
       const geometry = spotlightGeometry({selectors}, null);
       const spotlight = spotlightGeometry(options.spotlight, null);
       test.pause(200);

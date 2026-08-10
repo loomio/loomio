@@ -7,6 +7,13 @@ function openDiscussion(page) {
   page.waitFor('.context-panel');
 }
 
+function openAdviceDiscussion(page) {
+  page.loadPath('setup_manual_oatmilk_advice_discussion');
+  page.waitFor('.strand-page');
+  page.waitFor('.new-comment');
+  page.expectText('.strand-card', 'updated comparison after the warehouse visit');
+}
+
 function openPoll(page, template, mode) {
   page.loadPath(`setup_manual_oatmilk_proposal_template_poll?template=${template}${mode ? `&mode=${mode}` : ''}`);
   page.waitFor('.poll-common-card__title');
@@ -36,7 +43,7 @@ module.exports = {
   },
   'discussion_comments_advice_process_new_computer': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page); page.waitFor('.new-comment'); captureDiscussion(screenshot, 'discussion_comments_advice_process_new_computer', '.strand-card');
+    openAdviceDiscussion(page); captureDiscussion(screenshot, 'discussion_comments_advice_process_new_computer', '.strand-card');
   },
   'decision_outcome_advice_process_new_computer': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);

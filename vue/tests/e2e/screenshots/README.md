@@ -28,6 +28,10 @@ Each spec should:
    full viewport or `captureElement('path/from/user_manual/name', '.selector')`
    for a focused UI state.
 
+Set the final viewport before opening a menu or dialog. Vuetify overlays retain
+the geometry from the viewport in which they opened, so resizing afterward can
+make a correctly positioned menu appear detached from its activator.
+
 Use names containing letters, numbers, hyphens, underscores, and slashes;
 preserve uppercase letters when an existing manual image uses them. The helper
 disables animations and transitions, resets the scroll position, and captures
@@ -55,6 +59,25 @@ screenshot.captureElement('groups/settings/group_settings', '.group-page', {
 The short form `spotlight: '.action-menu--btn'` uses the helper defaults. Keep
 spotlights borderless; use generous padding and corner radius when overriding
 the defaults.
+
+Framing defaults:
+
+- Capture the full central strand card for discussions, proposals, comments,
+  replies, reactions, unread items, and moved-item states; omit app and thread
+  drawers unless they are instructional context.
+- Capture a whole form or modal and spotlight the relevant control.
+- Give tightly focused editors, tasks, comments, and menus about 32 CSS pixels
+  of external padding, with per-image adjustment where necessary.
+- Show both an activator and its open menu, crop after the final meaningful
+  action, use light mode, and hide transient flash messages unless the flash is
+  the subject of the screenshot.
+
+Example discussion and poll text should normally be about three short
+paragraphs and use no more than three deterministic, common formatting features
+per record. Reuse the Oatmilk Cooperative profile, logo, bottle, and warehouse
+box fixtures. Conceptual illustrations do not belong in Nightwatch, and images
+that need representative long-running real-group data (currently the
+participation-report graph) remain manual captures.
 To spotlight adjacent controls as one region, pass a `selectors` array instead
 of `selector`; the helper uses their combined bounding rectangle.
 

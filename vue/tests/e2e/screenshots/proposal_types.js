@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openPollTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
@@ -20,9 +21,13 @@ function openChooseForm(page) {
   openPollTemplates(page);
   page.clickAndWait('.decision-tools-card__poll-type--poll', '.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Which bottle trial topics need the most meeting time?');
-  page.fillIn(
+  page.fillRichText(
     '.poll-common-form-fields__details [contenteditable=true]',
-    'Choose up to two topics for the Oatmilk Cooperative planning meeting. We will use the result to set the agenda.'
+    richText.context('new-choose-poll', [
+      'Choose up to two topics that need the most time at the Oatmilk Cooperative planning meeting.',
+      'Consider which questions affect cafe staff, production work, and the delivery schedule.',
+      'We will use the result to order the agenda and assign preparation before the meeting.'
+    ])
   );
   addOption(page, 'Cafe collection schedule', 'Confirm collection days and the contact at each cafe.');
   addOption(page, 'Bottle deposit amount', 'Agree on a deposit that is clear for customers and cafe staff.');
@@ -78,7 +83,11 @@ function openTypeForm(page, pollType) {
   page.loadPath(`setup_manual_oatmilk_new_poll?poll_type=${pollType}`);
   page.waitFor('.poll-common-form');
   page.fillIn('.poll-common-form-fields__title input', config.title);
-  page.fillIn('.poll-common-form-fields__details [contenteditable=true]', config.details);
+  page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context(`new-${pollType}`, [
+    config.details,
+    'Base your response on the current cafe collection plan, washing capacity, and food-safety checks.',
+    'Add a reason so the cooperative can understand what should happen before launch.'
+  ]));
   config.options.forEach(([name, meaning]) => addOption(page, name, meaning));
 
   if (pollType === 'dot_vote') {

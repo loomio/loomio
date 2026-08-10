@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function spotlight(selector) {
   return {
@@ -31,7 +32,11 @@ function openProposalForm(page) {
   page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-type--proposal');
   page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve reusable bottle pilot');
-  page.fillIn('.poll-common-form-fields__details [contenteditable=true]', 'Invite the cooperative delegates to decide whether to begin the pilot.');
+  page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context('delegate-proposal', [
+    'Invite the cooperative delegates to decide whether to begin the returnable bottle pilot.',
+    'The proposal covers the cafe collection schedule, washing checks, deposit guidance, and reporting responsibilities.',
+    'Delegates should consult the members they represent and explain any concern in their vote reason.'
+  ]));
   page.click('.poll-common-settings__specified-voters-only .v-selection-control__wrapper');
 }
 
@@ -55,11 +60,10 @@ module.exports = {
 
     openProposalForm(page);
     page.expectText('.poll-common-form', 'Selected people only');
-    page.execute("const heading = document.querySelector('.poll-common-settings__specified-voters-only').closest('.v-radio-group').previousElementSibling; heading.classList.add('manual-who-can-vote'); heading.style.scrollMarginTop = '88px'");
-    screenshot.capture('groups/delegated_voters/poll_invited_people_only', {
-      height: 560,
-      scrollSelector: '.manual-who-can-vote',
-      scrollBlock: 'start'
+    screenshot.captureElement('groups/delegated_voters/poll_invited_people_only', '.poll-common-form', {
+      width: 1100,
+      height: 1900,
+      spotlight: {selector: '.poll-common-settings__specified-voters-only', padding: 10, radius: 12}
     });
   },
 

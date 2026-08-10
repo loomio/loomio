@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openNewDiscussionForm(page) {
   page.loadPath('setup_manual_oatmilk_new_discussion');
@@ -21,6 +22,7 @@ function openDiscussion(page) {
   page.waitFor('.strand-page');
   page.expectText('.strand-page', 'Returnable bottles for cafe customers');
   page.waitFor('.comment-form .ProseMirror');
+  page.pause(1000);
 }
 
 function prepareDiscussionEdit(page) {
@@ -39,9 +41,9 @@ function prepareDiscussionEdit(page) {
 
 function postMentionComment(page) {
   openDiscussion(page);
-  page.fillIn('.comment-form .ProseMirror', 'Could you confirm the cafe collection dates, @samira');
-  page.waitFor('.suggestion-list');
-  page.click('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+  page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the cafe collection dates, @samira');
+  page.waitForPresent('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+  page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
   page.click('.comment-form__submit-button');
   page.pause(800);
   page.expectText('.strand-page', 'Could you confirm the cafe collection dates');
@@ -50,7 +52,7 @@ function postMentionComment(page) {
 
 function revealPoll(page) {
   openDiscussion(page);
-  page.click('.strand-item__load-more button');
+  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
   page.waitFor('.poll-created');
 }
 
@@ -65,9 +67,14 @@ module.exports = {
     page.execute("document.querySelector('.recipients-autocomplete .chip--select-multi').click()");
     page.expectText('.recipients-autocomplete', 'Samira Patel');
     page.expectText('.recipients-autocomplete', 'Alex Morgan');
-    screenshot.captureElement('discussions/notifying_people/thread_notification', '.recipients-autocomplete', {
+    screenshot.captureElement('discussions/notifying_people/thread_notification', '.discussion-form', {
       width: 1000,
-      height: 1000
+      height: 1600,
+      spotlight: {
+        selector: '.discussion-form .recipients-autocomplete',
+        padding: 10,
+        radius: 12
+      }
     });
   },
 
@@ -82,9 +89,14 @@ module.exports = {
     page.expectText('.v-overlay--active .recipients-autocomplete-suggestion', 'Samira Patel');
     page.execute("document.querySelector('.discussion-form__submit').style.visibility = 'hidden'");
     screenshot.captureRegion('discussions/notifying_people/thread_notify_user', [
-      '.recipients-autocomplete .announcement-form__input',
+      '.discussion-form',
       '.v-overlay--active .v-list'
-    ], {padding: 8, width: 1000, height: 1600});
+    ], {
+      padding: 16,
+      width: 1000,
+      height: 1800,
+      spotlight: {selector: '.v-overlay--active .recipients-autocomplete-suggestion', padding: 8, radius: 12}
+    });
   },
 
   'notify_guest_email': (test) => {
@@ -98,9 +110,14 @@ module.exports = {
     page.expectText('.v-overlay--active .recipients-autocomplete-suggestion', 'guest@cafecircle.example');
     page.execute("document.querySelector('.discussion-form__submit').style.visibility = 'hidden'");
     screenshot.captureRegion('discussions/notifying_people/thread_notify_email', [
-      '.recipients-autocomplete .announcement-form__input',
+      '.discussion-form',
       '.v-overlay--active .v-list'
-    ], {padding: 8, width: 1000, height: 1600});
+    ], {
+      padding: 16,
+      width: 1000,
+      height: 1800,
+      spotlight: {selector: '.v-overlay--active .recipients-autocomplete-suggestion', padding: 8, radius: 12}
+    });
   },
 
   'mention_member': (test) => {
@@ -108,10 +125,9 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'Could you confirm the collection schedule, @samira');
-    page.waitFor('.suggestion-list');
-    page.expectText('.suggestion-list', 'Samira Patel');
-    page.click('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the collection schedule, @samira');
+    page.waitForPresent('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+    page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
     screenshot.captureElement('discussions/notifying_people/comment_mention', '.comment-form .lmo-textarea', {
       width: 1000,
       height: 1200
@@ -123,9 +139,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'Packaging update for @Oat');
-    page.waitFor('.suggestion-list');
-    page.expectText('.suggestion-list', 'Oatmilk Cooperative');
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Packaging update for @Oat');
+    page.waitForPresent('.suggestion-list .v-list-item');
     screenshot.captureRegion('discussions/notifying_people/mentioning_group_1', [
       '.comment-form .lmo-textarea',
       '.suggestion-list'
@@ -137,8 +152,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'Packaging update for @Oat');
-    page.waitFor('.suggestion-list');
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Packaging update for @Oat');
+    page.waitForPresent('.suggestion-list .v-list-item');
     page.execute("Array.from(document.querySelectorAll('.suggestion-list .v-list-item')).find(el => el.textContent.includes('Oatmilk Cooperative')).click()");
     screenshot.captureElement('discussions/notifying_people/mentioning_group_2', '.comment-form .lmo-textarea', {
       width: 1000,
@@ -230,10 +245,11 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     prepareDiscussionEdit(page);
-    page.fillIn(
-      '.discussion-form .lmo-textarea textarea',
-      'Several cafe customers have asked about reusable packaging. Use this thread to share practical questions before we decide whether to run a trial. We will also record cleaning time and transport costs.'
-    );
+    page.fillRichText('.discussion-form .lmo-textarea [contenteditable=true]', richText.context('notified-thread-edit', [
+      'Several cafe customers have asked whether we can supply oat milk in returnable glass bottles.',
+      'Use this thread to compare collection dates, bottle deposits, washing checks, and responsibilities for the trial.',
+      'We will record return rates, cleaning time, damaged bottles, and transport costs before reviewing the result.'
+    ]));
     page.click('.discussion-form__submit');
     page.waitFor('.strand-item__discussion-edited');
     page.expectText('.strand-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');

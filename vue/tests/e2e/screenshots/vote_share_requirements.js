@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function spotlight(selector) {
   return {selector, padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0};
@@ -13,9 +14,13 @@ function openConsentForm(page) {
   page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial budget');
-  page.fillIn(
+  page.fillRichText(
     '.poll-common-form-fields__details [contenteditable=true]',
-    'Approve the bottle deposits, washing costs, and collection budget for the six-week trial.'
+    richText.context('vote-share-proposal', [
+      'Approve the bottle deposits, washing costs, and collection budget for the six-week trial.',
+      'The budget covers three cafe partners, weekly collections, replacement bottles, and batch records.',
+      'Review the figures before voting and explain any cost that should be adjusted.'
+    ])
   );
   page.execute(`
     const heading = Array.from(document.querySelectorAll('.poll-common-form .text-body-large'))

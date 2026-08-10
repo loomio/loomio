@@ -31,8 +31,8 @@ function fillTask(page) {
 function fillAssignedTask(page) {
   openTaskEditor(page);
   page.fillIn(proseMirror, 'Confirm bottle washer capacity with suppliers @jamie');
-  page.waitFor('.suggestion-list');
-  page.click('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
+  page.waitForPresent('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
+  page.clickElement('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
   selectEditorText(page);
   page.click(`${editor} button[title="Task list"]`);
   page.waitFor(`${editor} .task-item-text`);
@@ -47,12 +47,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     fillTask(page);
-    screenshot.captureElement('discussions/tasks/tasklist1', editor, {
+    screenshot.captureRegion('discussions/tasks/tasklist1', [editor], {
       spotlight: {
         selector: `${editor} button[title="Task list"]`,
         padding: 10,
         radius: 12
       },
+      padding: 32,
       width: 1100,
       height: 1200
     });
@@ -62,7 +63,8 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     fillAssignedTask(page);
-    screenshot.captureElement('discussions/tasks/tasklist2', editor, {
+    screenshot.captureRegion('discussions/tasks/tasklist2', [editor], {
+      padding: 32,
       width: 1100,
       height: 1200
     });
@@ -103,7 +105,8 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_task_discussion');
     page.waitFor('.context-panel__description');
     page.expectText('.context-panel__description', 'Share cafe collection dates');
-    screenshot.captureElement('discussions/tasks/taskdone', '.context-panel__description', {
+    screenshot.captureRegion('discussions/tasks/taskdone', ['.context-panel__description'], {
+      padding: 32,
       width: 1100,
       height: 1000
     });

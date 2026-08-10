@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 module.exports = {
   '@tags': ['manual-screenshot'],
@@ -32,9 +33,13 @@ module.exports = {
     page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
     page.waitFor('.discussion-form');
     page.fillIn('.discussion-form__title-input input', 'Plan the returnable bottle trial');
-    page.fillIn(
+    page.fillRichText(
       '.discussion-form .lmo-textarea div[contenteditable=true]',
-      'Several cafes want to trial returnable glass bottles.\n\nCompare collection options, cleaning requirements, and costs before we agree on a plan.'
+      richText.context('new-discussion', [
+        'Several cafes want to trial returnable glass bottles, and each cafe has offered to record returns for six weeks.',
+        'We need to compare collection options, cleaning requirements, and transport costs before agreeing on a plan.',
+        'Add practical questions, dependencies, and anything cafe staff will need before the trial begins.'
+      ])
     );
     page.click('.tags-field__input .v-field');
     page.waitFor('.v-overlay .v-list-item');

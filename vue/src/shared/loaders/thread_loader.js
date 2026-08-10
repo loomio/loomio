@@ -138,6 +138,25 @@ export default class ThreadLoader {
     })
   }
 
+  addLoadPollsNotClosedRule() {
+    this.addRule({
+      name: 'polls not closed',
+      local: {
+        find: {
+          topicId: this.topic.id,
+          kind: 'poll_created',
+          eventableType: 'Poll'
+        },
+        pollsNotClosed: true
+      },
+      remote: {
+        topic_id: this.topic.id,
+        polls_not_closed: 1,
+        order_by: 'position_key'
+      }
+    });
+  }
+
   addLoadCommentRule(commentId, remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: "comment from url",
@@ -299,6 +318,13 @@ export default class ThreadLoader {
     this.records = [];
     this.rules.forEach(rule => {
       let chain = Records.events.collection.chain().find(rule.local.find);
+
+      if (rule.local.pollsNotClosed) {
+        chain = chain.where(event => {
+          const poll = Records.polls.find(event.eventableId);
+          return poll && !poll.discardedAt && poll.closedAt == null;
+        });
+      }
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);

@@ -4,6 +4,10 @@ const base_url = `http://localhost:${port}`;
 module.exports = function(test, browser) {
   test.resizeWindow(1000, 2000);
   return {
+    resizeWindow(width, height) {
+      return test.resizeWindow(width, height);
+    },
+
     refresh() {
       return test.refresh();
     },
@@ -52,6 +56,35 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       test.click(selector);
+    },
+
+    fillRichText(selector, html, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector, html) {
+        const editor = document.querySelector(selector);
+        editor.focus();
+
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(editor);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('insertHTML', false, html);
+        editor.dispatchEvent(new InputEvent('input', {
+          bubbles: true,
+          inputType: 'insertText'
+        }));
+      }, [selector, html]);
+    },
+
+    fillTextarea(selector, value, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector, value) {
+        const textarea = document.querySelector(selector);
+        const setValue = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
+        setValue.call(textarea, value);
+        textarea.dispatchEvent(new Event('input', {bubbles: true}));
+      }, [selector, value]);
     },
 
     clickElement(selector, wait = 8000) {
@@ -247,6 +280,10 @@ module.exports = function(test, browser) {
 
     waitFor(selector, wait = 8000) {
       if (selector != null) { return test.waitForElementVisible(selector, wait); }
+    },
+
+    waitForPresent(selector, wait = 8000) {
+      if (selector != null) { return test.waitForElementPresent(selector, wait); }
     },
 
     waitForElementNotVisible(selector, wait = 8000) {

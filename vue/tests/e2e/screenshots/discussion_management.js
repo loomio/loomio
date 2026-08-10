@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openGroup(page) {
   page.loadPath('setup_manual_oatmilk_group');
@@ -10,6 +11,7 @@ function openGroup(page) {
 }
 
 function openThreadMenu(page) {
+  page.resizeWindow(1200, 1200);
   openGroup(page);
   page.click('.manual-thread .action-menu');
   page.waitFor('.v-overlay--active .v-list');
@@ -73,6 +75,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openThreadMenu(page);
     screenshot.captureRegion('discussions/discussion_management/pin_thread', [
+      '.group-page .v-tabs',
+      '.discussions-panel > .d-flex',
       '.manual-thread',
       '.v-overlay--active .v-list'
     ], {
@@ -155,9 +159,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     selectCommentForMove(page);
-    screenshot.captureElement('discussions/using_discussions/move_items', '.discussion-fork-actions', {
+    screenshot.captureElement('discussions/using_discussions/move_items', '.strand-card', {
       width: 1100,
-      height: 1000
+      height: 1600
     });
   },
 
@@ -168,7 +172,11 @@ module.exports = {
     page.click('.modal-launcher .v-card-actions .v-btn:first-of-type');
     page.waitFor('.discussion-form');
     page.fillIn('.discussion-form__title-input input', 'Cafe return tracking follow-up');
-    page.fillIn('.discussion-form .ProseMirror', 'Continue the detailed return tracking conversation in this focused discussion.');
+    page.fillRichText('.discussion-form .ProseMirror', richText.context('move-items-new-thread', [
+      'Continue the detailed return tracking conversation in this focused discussion.',
+      'Compare the number of bottles delivered, collected, damaged, and still held by each cafe.',
+      'Use the weekly totals to identify collection problems before the trial review.'
+    ]));
     screenshot.captureElement('discussions/using_discussions/move_items_new_thread', '.discussion-form', {
       width: 1100,
       height: 1400
@@ -182,7 +190,11 @@ module.exports = {
     page.click('.modal-launcher .v-card-actions .v-btn:first-of-type');
     page.waitFor('.discussion-form');
     page.fillIn('.discussion-form__title-input input', 'Cafe return tracking follow-up');
-    page.fillIn('.discussion-form .ProseMirror', 'Continue the detailed return tracking conversation in this focused discussion.');
+    page.fillRichText('.discussion-form .ProseMirror', richText.context('move-items-confirm', [
+      'Continue the detailed return tracking conversation in this focused discussion.',
+      'Compare the number of bottles delivered, collected, damaged, and still held by each cafe.',
+      'Use the weekly totals to identify collection problems before the trial review.'
+    ]));
     page.click('.discussion-form__submit');
     page.waitForUrlToContain('/d/');
     page.waitFor('.context-panel__heading');
