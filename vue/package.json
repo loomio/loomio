@@ -69,7 +69,7 @@
     "vuetify": "^4.1.7",
     "y-indexeddb": "^9.0.12",
     "y-protocols": "^1.0.1",
-    "yjs": "13.6.31"
+    "yjs": "13.6.32"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
