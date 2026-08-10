@@ -23,7 +23,7 @@
     "@tiptap/extension-bold": "3.28.0",
     "@tiptap/extension-code-block": "3.28.0",
     "@tiptap/extension-collaboration": "3.28.0",
-    "@tiptap/extension-collaboration-caret": "3.28.0",
+    "@tiptap/extension-collaboration-caret": "3.29.2",
     "@tiptap/extension-document": "3.28.0",
     "@tiptap/extension-hard-break": "3.28.0",
     "@tiptap/extension-heading": "3.28.0",
