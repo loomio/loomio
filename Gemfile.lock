@@ -377,7 +377,7 @@ GEM
       net-smtp
     marcel (1.2.1)
     maxminddb (0.1.22)
-    mini_magick (5.3.2)
+    mini_magick (5.3.3)
       logger
     mini_mime (1.1.5)
     minitest (6.0.6)
