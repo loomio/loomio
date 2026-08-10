@@ -228,6 +228,73 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json['polls'].map { |p| p['id'] }, poll.id
   end
 
+  test "index returns every poll that is not closed, including polls that are not open" do
+    sign_in @user
+    @discussion.topic.update!(allow_concurrent_polls: true)
+
+    create_poll = lambda do |title|
+      PollService.create(params: {
+        title: title,
+        poll_type: 'proposal',
+        topic_id: @discussion.topic_id,
+        group_id: @group.id,
+        poll_option_names: %w[agree disagree],
+        closing_at: 3.days.from_now
+      }, actor: @admin)
+    end
+
+    poll_open = create_poll.call('Open poll')
+    poll_not_open = create_poll.call('Poll that is not open')
+    poll_not_open.update_columns(opened_at: nil, opening_at: 1.day.from_now)
+    poll_closed = create_poll.call('Closed poll')
+    poll_closed.update_column(:closed_at, 1.hour.ago)
+    poll_discarded = create_poll.call('Discarded poll')
+    poll_discarded.discard
+
+    get :index, params: {topic_id: @discussion.topic_id, polls_not_closed: 1, per: 1}, format: :json
+    event_ids = JSON.parse(response.body)['events'].map { |event| event['id'] }
+
+    assert_includes event_ids, poll_open.created_event.id
+    assert_includes event_ids, poll_not_open.created_event.id
+    refute_includes event_ids, poll_closed.created_event.id
+    refute_includes event_ids, poll_discarded.created_event.id
+  end
+
+  test "index includes polls that are not closed alongside unread events" do
+    sign_in @user
+    @discussion.topic.update!(allow_concurrent_polls: true)
+    poll = PollService.create(params: {
+      title: 'Read but not closed poll',
+      poll_type: 'proposal',
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    unread_event = CommentService.create(
+      comment: Comment.new(parent: @discussion, body: 'Unread comment'),
+      actor: @admin
+    )
+    TopicReader.for(user: @user, topic: @discussion.topic).viewed!([0, poll.created_event.sequence_id])
+
+    get :index, params: {
+      discussion_key: @discussion.key,
+      unread_or_newest: 1,
+      include_polls_not_closed: 1,
+      per: 10
+    }, format: :json
+    event_ids = JSON.parse(response.body)['events'].map { |event| event['id'] }
+
+    assert_includes event_ids, unread_event.id
+    assert_includes event_ids, poll.created_event.id
+  end
+
+  test "polls_not_closed does not bypass topic authorization" do
+    get :index, params: {topic_id: @discussion.topic_id, polls_not_closed: 1}, format: :json
+
+    assert_response :forbidden
+  end
+
   test "index handles parent_id parameter with correct filtering" do
     sign_in @user
     parent_comment = Comment.new(parent: @discussion, body: "Parent comment")

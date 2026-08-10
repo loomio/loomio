@@ -50,7 +50,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    screenshot.captureElement('discussions/using_discussions/thread_context', '.strand-new-discussion', {
+    screenshot.captureRegion('discussions/using_discussions/thread_context', ['.strand-new-discussion'], {
+      padding: 32,
       width: 1100,
       height: 1000
     });
@@ -63,7 +64,8 @@ module.exports = {
     openDiscussion(page);
     page.click('.context-panel .action-dock__button--edit_thread');
     page.waitFor('.discussion-form');
-    screenshot.captureElement('discussions/using_discussions/thread_context_edit', '.discussion-form .lmo-textarea', {
+    screenshot.captureRegion('discussions/using_discussions/thread_context_edit', ['.discussion-form .lmo-textarea'], {
+      padding: 32,
       width: 1100,
       height: 1000
     });
@@ -94,9 +96,10 @@ module.exports = {
 
     openDiscussion(page);
     page.waitFor('.new-comment');
-    screenshot.captureElement('discussions/using_discussions/thread_unread_comments', '.new-comment', {
+    screenshot.captureElement('discussions/using_discussions/thread_unread_comments', '.strand-card', {
+      spotlight: {selector: '.new-comment', padding: 12, radius: 14},
       width: 1100,
-      height: 1000
+      height: 1600
     });
   },
 
@@ -106,10 +109,11 @@ module.exports = {
 
     openDiscussion(page);
     page.fillIn('.comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
-    screenshot.captureRegion('discussions/using_discussions/comment', [
-      '.comment-form .lmo-textarea',
-      '.comment-form__submit-button'
-    ], {padding: 12, width: 1100, height: 1200});
+    screenshot.captureElement('discussions/using_discussions/comment', '.strand-card', {
+      width: 1100,
+      height: 1600,
+      spotlight: {selector: '.comment-form', padding: 12, radius: 14}
+    });
   },
 
   'reaction': (test) => {
@@ -118,15 +122,16 @@ module.exports = {
 
     openDiscussion(page);
     page.waitFor('.new-comment .emoji-picker__toggle');
-    page.execute("document.querySelector('.new-comment .action-dock').style.marginLeft = '20px'");
-    screenshot.captureElement('discussions/using_discussions/reaction', '.new-comment', {
-      spotlight: {
-        selector: '.new-comment .emoji-picker__toggle',
-        padding: 12,
-        radius: 14
-      },
+    page.click('.new-comment .emoji-picker__toggle');
+    page.waitFor('.v-overlay--active .emoji-picker');
+    screenshot.captureRegion('discussions/using_discussions/reaction', [
+      '.new-comment',
+      '.v-overlay--active .emoji-picker'
+    ], {
+      padding: 24,
       width: 1100,
-      height: 1000
+      height: 1400,
+      spotlight: {selector: '.new-comment .emoji-picker__toggle', padding: 10, radius: 12}
     });
   },
 
@@ -137,10 +142,11 @@ module.exports = {
     openDiscussion(page);
     page.click('.new-comment .action-dock__button--reply_to_comment');
     page.waitFor('.reply-form .comment-form');
-    screenshot.captureRegion('discussions/using_discussions/comment_reply', [
-      '.new-comment',
-      '.reply-form .comment-form'
-    ], {padding: 12, width: 1100, height: 1400});
+    screenshot.captureElement('discussions/using_discussions/comment_reply', '.strand-card', {
+      width: 1100,
+      height: 1700,
+      spotlight: {selector: '.reply-form .comment-form', padding: 12, radius: 14}
+    });
   },
 
   'comment_translate': (test) => {
@@ -150,12 +156,13 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_translated_comment');
     page.waitFor('.strand-page');
     page.waitFor('.new-comment .action-dock__button--translate_comment');
-    screenshot.captureElement('discussions/using_discussions/comment_translate', '.new-comment', {
+    screenshot.captureRegion('discussions/using_discussions/comment_translate', ['.new-comment'], {
       spotlight: {
         selector: '.new-comment .action-dock__button--translate_comment',
         padding: 12,
         radius: 14
       },
+      padding: 32,
       width: 1100,
       height: 1000
     });
@@ -170,7 +177,8 @@ module.exports = {
     page.click('.new-comment .action-dock__button--translate_comment');
     page.waitFor('.new-comment .action-dock__button--untranslate_comment');
     page.expectText('.new-comment', 'I can ask three cafes to track');
-    screenshot.captureElement('discussions/using_discussions/comment_translated', '.new-comment', {
+    screenshot.captureRegion('discussions/using_discussions/comment_translated', ['.new-comment'], {
+      padding: 32,
       width: 1100,
       height: 1000
     });
@@ -197,12 +205,14 @@ module.exports = {
     page.fillIn('.edit-comment-form .ProseMirror', 'I can document the bottle cleaning time during the trial.');
     page.click('.edit-comment-form .comment-form__submit-button');
     page.waitFor('.manual-own-comment .action-dock__button--show_history');
-    screenshot.captureElement('discussions/using_discussions/comment_show_edits', '.manual-own-comment', {
+    screenshot.captureRegion('discussions/using_discussions/comment_show_edits', ['.manual-own-comment'], {
+      scrollSelector: '.manual-own-comment',
       spotlight: {
         selector: '.manual-own-comment .action-dock__button--show_history',
         padding: 12,
         radius: 14
       },
+      padding: 32,
       width: 1100,
       height: 1000
     });
@@ -236,7 +246,7 @@ module.exports = {
       '.new-comment',
       '.v-overlay--active .v-list'
     ], {
-      padding: 12,
+      padding: 32,
       width: 1100,
       height: 1200
     });
@@ -299,9 +309,10 @@ module.exports = {
     page.click('.group-form__permissions-tab');
     page.waitFor('.group-form__members-can-delete-comments');
     page.execute("const input = document.querySelector('.group-form__members-can-delete-comments input'); if (!input.checked) input.click()");
-    screenshot.captureElement('discussions/using_discussions/permissions_delete_comment', '.group-form__members-can-delete-comments', {
+    screenshot.captureElement('discussions/using_discussions/permissions_delete_comment', '.group-form', {
+      spotlight: {selector: '.group-form__members-can-delete-comments', padding: 10, radius: 12},
       width: 1100,
-      height: 1000
+      height: 1600
     });
   },
 

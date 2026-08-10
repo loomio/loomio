@@ -1,4 +1,12 @@
 class Api::V1::EventsController < Api::V1::RestfulController
+  def index
+    instantiate_collection
+    if params[:include_polls_not_closed].present?
+      self.collection = collection.to_a.union(poll_created_events_not_closed.to_a)
+    end
+    respond_with_collection
+  end
+
   def position_keys
     load_and_authorize_topic
     keys = Event.where(topic_id: @topic.id).pluck(:position_key).sort
@@ -104,6 +112,8 @@ class Api::V1::EventsController < Api::V1::RestfulController
     load_and_authorize_topic
     records = Event.where(topic_id: @topic.id)
 
+    return poll_created_events_not_closed if params[:polls_not_closed].present?
+
     if params[:unread_or_newest].present?
       if params[:poll_id] || params[:poll_key]
         poll = ModelLocator.new(:poll, params).locate!
@@ -171,7 +181,18 @@ class Api::V1::EventsController < Api::V1::RestfulController
   end
 
   def page_collection(collection)
+    return collection if params[:polls_not_closed].present?
+
     collection.order(order).limit(per)
+  end
+
+  def poll_created_events_not_closed
+    Event.where(
+      topic_id: @topic.id,
+      kind: 'poll_created',
+      eventable_type: 'Poll',
+      eventable_id: @topic.polls.kept.where(closed_at: nil).select(:id)
+    )
   end
 
   def ranges_for_query(ranges)

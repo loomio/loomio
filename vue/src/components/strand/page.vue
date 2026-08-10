@@ -119,7 +119,7 @@ function routeCommentId() {
 //    c. The top (if nothing has been read yet — first visit).
 
 function initialFetchParams() {
-  const remoteTopicParams = routeTopicParams();
+  const remoteTopicParams = {...routeTopicParams(), include_polls_not_closed: 1};
   const sequenceId = routeSequenceId();
   const commentId = routeCommentId();
   const padding = 25;
@@ -228,6 +228,7 @@ function loadContent(remoteTopicParams = null) {
   anchorOffset.value  = null;
 
   loader.value.addLoadMyStuffRule();
+  loader.value.addLoadPollsNotClosedRule();
 
   if (topic.value.itemsCount <= 1) {
     loader.value.addLoadNewestRule(remoteTopicParams);

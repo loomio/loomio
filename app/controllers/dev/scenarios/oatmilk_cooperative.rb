@@ -13,6 +13,24 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_advice_discussion
+    _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'alex@oatmilk.example')
+    sales_lead = User.find_by!(email: 'samira@oatmilk.example')
+
+    [
+      [production_lead, 'The supplier can provide a trial washer next month. I will check its water use and cleaning cycle time.'],
+      [sales_lead, 'Three cafes can join the trial if collections happen on Tuesdays. They also want a simple guide for customers.'],
+      [coordinator, 'Please add the food-safety checks and staff training time to the comparison before we request quotes.'],
+      [production_lead, 'I have added those requirements and will share the updated comparison after the warehouse visit.']
+    ].each do |actor, body|
+      CommentService.create(comment: Comment.new(parent: discussion, body: body), actor: actor)
+    end
+
+    sign_in coordinator
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_profile
     _group, coordinator, = create_manual_oatmilk_cooperative
     sign_in coordinator
@@ -1155,15 +1173,18 @@ module Dev::Scenarios::OatmilkCooperative
   def create_manual_oatmilk_cooperative
     coordinator = create_manual_oatmilk_member(
       name: 'Jamie Chen',
-      email: 'jamie@oatmilk.example'
+      email: 'jamie@oatmilk.example',
+      avatar_filename: 'jamie-chen.png'
     )
     production_lead = create_manual_oatmilk_member(
       name: 'Samira Patel',
-      email: 'samira@oatmilk.example'
+      email: 'samira@oatmilk.example',
+      avatar_filename: 'samira-patel.png'
     )
     sales_lead = create_manual_oatmilk_member(
       name: 'Alex Morgan',
-      email: 'alex@oatmilk.example'
+      email: 'alex@oatmilk.example',
+      avatar_filename: 'alex-morgan.png'
     )
 
     group = Group.new(
@@ -1179,6 +1200,10 @@ module Dev::Scenarios::OatmilkCooperative
       io: File.open(Rails.root.join('public/theme/group_cover_photos/cover1.jpg')),
       filename: 'oatmilk-cooperative-cover.jpg'
     )
+    group.logo.attach(
+      io: File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-logo.png')),
+      filename: 'oatmilk-cooperative-logo.png'
+    )
     group.add_admin!(coordinator)
     group.add_member!(production_lead)
     group.add_member!(sales_lead)
@@ -1187,7 +1212,12 @@ module Dev::Scenarios::OatmilkCooperative
       params: {
         group_id: group.id,
         title: 'Returnable bottles for cafe customers',
-        description: 'Several cafe customers have asked about reusable packaging. Use this thread to share practical questions before we decide whether to run a trial.',
+        description: <<~HTML,
+          <p>Several cafe customers have asked whether we can supply oat milk in returnable glass bottles. This thread is for working through the practical questions before we decide whether to run a trial. 🥛</p>
+          <p><strong>We need a plan that cafe staff can explain easily</strong>, including the deposit, collection days, and what happens when a bottle is damaged or not returned.</p>
+          <p>Please read the <a href="https://example.com/oatmilk-bottle-return-guide">draft bottle return guide</a> and add any questions about washing capacity, food-safety checks, transport costs, or weekly reporting.</p>
+        HTML
+        description_format: 'html',
         private: false,
         allow_reactions: true
       },
@@ -1206,7 +1236,12 @@ module Dev::Scenarios::OatmilkCooperative
       params: {
         topic_id: discussion.topic_id,
         title: 'Run a six-week returnable bottle trial',
-        details: 'Supply returnable glass bottles to three cafe customers, then review the return rate, cleaning time, and transport costs.',
+        details: <<~HTML,
+          <p>Supply returnable glass bottles to three cafe customers for six weeks, with one collection from each cafe every week.</p>
+          <p><mark>Before launch, confirm the deposit guidance and the food-safety record for every washed batch.</mark></p>
+          <table><thead><tr><th>Measure</th><th>Review</th></tr></thead><tbody><tr><td>Return rate</td><td>Weekly</td></tr><tr><td>Cleaning time</td><td>Each batch</td></tr><tr><td>Transport cost</td><td>End of trial</td></tr></tbody></table>
+        HTML
+        details_format: 'html',
         poll_type: 'proposal',
         poll_option_names: %w[agree abstain disagree block],
         closing_at: 1.week.from_now
@@ -1223,7 +1258,12 @@ module Dev::Scenarios::OatmilkCooperative
       params: {
         group_id: group.id,
         title: 'Weekly production schedule',
-        description: 'Plan production shifts and delivery days for the coming month.',
+        description: <<~HTML,
+          <p>Use this thread to plan production shifts and delivery days for the coming month, including the extra work required for the bottle trial.</p>
+          <blockquote><p>Keep enough time between filling and dispatch for the food-safety checks.</p></blockquote>
+          <p><em>Flag any shift that still needs cover</em>, and check the <a href="https://example.com/oatmilk-delivery-calendar">shared delivery calendar</a> before confirming a route.</p>
+        HTML
+        description_format: 'html',
         private: false
       },
       actor: coordinator
@@ -1232,8 +1272,8 @@ module Dev::Scenarios::OatmilkCooperative
     [group, coordinator, discussion]
   end
 
-  def create_manual_oatmilk_member(name:, email:)
-    User.create!(
+  def create_manual_oatmilk_member(name:, email:, avatar_filename: nil)
+    user = User.create!(
       name: name,
       email: email,
       password: 'password',
@@ -1241,5 +1281,14 @@ module Dev::Scenarios::OatmilkCooperative
       email_verified: true,
       experiences: {changePicture: true, hideOnboarding: true, theme: 'light'}
     )
+
+    if avatar_filename
+      File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars', avatar_filename)) do |avatar|
+        user.uploaded_avatar.attach(io: avatar, filename: avatar_filename)
+      end
+      user.update!(avatar_kind: 'uploaded')
+    end
+
+    user
   end
 end

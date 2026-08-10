@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openPollTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
@@ -18,7 +19,11 @@ function openPollTemplates(page) {
 function fillCommonFields(page, title, details) {
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', title);
-  page.fillIn('.poll-common-form-fields__details [contenteditable=true]', details);
+  page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context(title, [
+    details,
+    'Check the production roster and cafe collection calendar before choosing or proposing an option.',
+    'Add a reason if another person needs to account for a delivery, washing, or reporting commitment.'
+  ]));
 }
 
 function openTimePollForm(page) {

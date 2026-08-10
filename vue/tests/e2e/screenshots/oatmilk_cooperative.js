@@ -166,7 +166,7 @@ module.exports = {
 
     page.loadPath('setup_manual_oatmilk_discussion');
     page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-    page.click('.strand-item__load-more button');
+    page.execute("document.querySelector('.strand-item__load-more button')?.click()");
     page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
     screenshot.captureElement('discussions/discussion-example', '.strand-card', {height: 1100});
   }

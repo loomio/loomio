@@ -57,12 +57,28 @@ filename when replacing a manual screenshot. Photos, diagrams, email-client
 screenshots, and third-party integration interfaces are not automatically in
 scope merely because they are images in the manual.
 
+Do not change production UI behavior merely to make a screenshot look right.
+First check capture timing, viewport changes, overlay positioning, selectors,
+and crop geometry. Set the final viewport before opening a Vuetify menu or
+dialog; resizing after an overlay opens can make it appear detached from its
+activator even when the application behaves correctly.
+
 Use the Oatmilk Cooperative scenarios in
 `Dev::Scenarios::OatmilkCooperative` as the shared setting. Extend that story
 rather than creating unrelated groups and people for each page. Keep names,
 roles, group purpose, cover image, discussions, comments, polls, and dates
 deterministic. Use fictional people and reserved example domains; never use
 production or customer data.
+
+Give recurring fictional participants ordinary, consistent profile photos and
+reuse the Oatmilk Cooperative logo and product-image fixtures under
+`vue/tests/e2e/fixtures/avatars/`. Example discussion contexts and poll details
+should usually contain about three short paragraphs. Use no more than three
+common rich-text features per record, varying the features deterministically
+between records (for example a link, bold or highlighted text, an emoji, a
+list, a quote, or a small table). Do not use embedded video merely to decorate
+example content. Use the branded oatmilk bottle or warehouse-box fixtures when
+an inline-image example is needed.
 
 Work through screenshot replacements one image at a time:
 
@@ -98,6 +114,35 @@ Work through screenshot replacements one image at a time:
    rendered documentation width. Keep screenshot corner clipping in the shared
    documentation CSS rather than baking it into individual PNGs, so rounded app
    surfaces do not expose captured page-background pixels at their corners.
+
+Use these framing defaults unless the page needs a deliberate exception:
+
+- Capture the smallest complete interface context that explains the action. A
+  discussion or proposal example usually needs the full central `.strand-card`,
+  but not the application drawer, top bar, or thread drawer.
+- When the subject is a control inside a form or modal, show the whole form or
+  modal and spotlight the control. Do not crop so tightly that the reader cannot
+  identify where the control belongs.
+- Give compact editor, comment, task, and menu captures about 32 pixels of
+  external padding. Adjust individual images when an overlay or unusually shaped
+  target needs more or less space.
+- For comments, replies, reactions, unread items, and move-item states, prefer a
+  full strand-card capture with the relevant item or composer spotlighted.
+- When documenting a trigger and its menu, show both the activator and the open
+  menu. Crop after the final meaningful action or control instead of retaining a
+  large blank tail.
+- Generate screenshots in light mode unless the documentation is specifically
+  teaching theme selection or dark mode.
+- Hide `.flash-root` by default so a previous operation's snackbar does not leak
+  into an unrelated image. Set `showFlash: true` only when the flash message is
+  the subject of the screenshot.
+
+Conceptual diagrams are not application screenshots. Do not add them to the
+Nightwatch screenshot suite; update their source image intentionally. Likewise,
+leave images that require representative long-running real-group data out of
+automated regeneration and document that they require a manual capture. The
+participation-report graph is one such image; preserve its current PNG until a
+suitable real-group replacement is reviewed.
 7. Run `bundle exec ruby docs/build.rb` before sharing the review URL. The
    localhost documentation serves the built copy under `public/docs`, so this
    step is required for the reviewer to see the current source image.

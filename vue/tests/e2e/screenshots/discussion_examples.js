@@ -12,18 +12,16 @@ function revealPoll(page) {
 }
 
 function captureThread(screenshot, name) {
-  screenshot.capture(`discussions/examples/${name}`, {
-    width: 1280,
-    height: 1100
+  screenshot.captureElement(`discussions/examples/${name}`, '.strand-card', {
+    width: 1100,
+    height: 1600
   });
 }
 
 function capturePoll(screenshot, name) {
-  screenshot.capture(`discussions/examples/${name}`, {
-    scrollSelector: '.poll-created',
-    scrollBlock: 'center',
-    width: 1280,
-    height: 1200
+  screenshot.captureElement(`discussions/examples/${name}`, '.strand-card', {
+    width: 1100,
+    height: 1800
   });
 }
 

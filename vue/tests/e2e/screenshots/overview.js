@@ -10,6 +10,7 @@ function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
   page.waitFor('.strand-page');
   page.waitFor('.thread-sidebar .action-dock__button--seen_by');
+  page.pause(1000);
 }
 
 function openProposal(page, mode) {
@@ -28,13 +29,6 @@ function postOwnComment(page) {
 
 module.exports = {
   '@tags': ['manual-screenshot'],
-
-  'key_concept_1': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    screenshot.captureElement('overview/key_concept_1', '.strand-page', {width: 1280, height: 2000});
-  },
 
   'group_example': (test) => {
     const page = pageHelper(test);
@@ -132,7 +126,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openDiscussion(page);
-    screenshot.captureElement('overview/discussion_timeline_example', '.thread-sidebar', {width: 1100, height: 1900});
+    screenshot.captureRegion('overview/discussion_timeline_example', [
+      '.thread-sidebar .v-list:first-child',
+      '.thread-sidebar .v-list:last-child'
+    ], {width: 1100, height: 1900, padding: 16});
   },
 
   'polls_tab': (test) => {
@@ -151,7 +148,11 @@ module.exports = {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openDiscussion(page);
     page.fillIn('.comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
-    screenshot.captureRegion('overview/comment_add', ['.comment-form .lmo-textarea', '.comment-form__submit-button'], {width: 1100, height: 1200, padding: 16});
+    screenshot.captureElement('overview/comment_add', '.strand-card', {
+      width: 1100,
+      height: 1600,
+      spotlight: {selector: '.comment-form', padding: 12, radius: 14}
+    });
   },
 
   'comment_edit': (test) => {
@@ -171,9 +172,9 @@ module.exports = {
   'comment_mention': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'Could you confirm the cafe collection dates, @samira');
-    page.waitFor('.suggestion-list');
-    page.click('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the cafe collection dates, @samira');
+    page.waitForPresent('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
+    page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
     screenshot.captureElement('overview/comment_mention', '.comment-form .lmo-textarea', {width: 1100, height: 1100});
   },
 
@@ -181,10 +182,16 @@ module.exports = {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openDiscussion(page);
     page.waitFor('.new-comment .emoji-picker__toggle');
-    screenshot.captureElement('overview/comment_reaction', '.new-comment', {
+    page.click('.new-comment .emoji-picker__toggle');
+    page.waitFor('.v-overlay--active .emoji-picker');
+    screenshot.captureRegion('overview/comment_reaction', [
+      '.new-comment',
+      '.v-overlay--active .emoji-picker'
+    ], {
       width: 1100,
-      height: 1100,
-      spotlight: '.new-comment .emoji-picker__toggle'
+      height: 1400,
+      padding: 24,
+      spotlight: {selector: '.new-comment .emoji-picker__toggle', padding: 10, radius: 12}
     });
   },
 
@@ -203,13 +210,19 @@ module.exports = {
   'vote_change': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openProposal(page, 'results');
-    screenshot.captureElement('overview/vote_change', '.poll-common-action-panel', {width: 1100, height: 1600});
+    page.waitFor('.poll-common-current-vote .action-button');
+    screenshot.captureElement('overview/vote_change', '.poll-created', {
+      width: 1100,
+      height: 2000,
+      spotlight: {selector: '.poll-common-current-vote .action-button', padding: 10, radius: 12}
+    });
   },
 
   'vote_edit': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openProposal(page, 'results');
-    screenshot.captureElement('overview/vote_edit', '.poll-common-action-panel', {width: 1100, height: 1800});
+    page.clickAndWait('.poll-common-current-vote .action-button', '.poll-common-edit-vote-modal');
+    screenshot.captureElement('overview/vote_edit', '.poll-common-edit-vote-modal', {width: 1100, height: 1800});
   },
 
   'proposal_results': (test) => {

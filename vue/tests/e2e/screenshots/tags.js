@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openGroup(page) {
   page.loadPath('setup_manual_oatmilk_tags');
@@ -26,7 +27,11 @@ function openNewDiscussion(page) {
   page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
   page.waitFor('.discussion-form');
   page.fillIn('.discussion-form__title-input input', 'Compare bottle washing suppliers');
-  page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', 'Compare capacity, water use, delivery times, and service support.');
+  page.fillRichText('.discussion-form .lmo-textarea div[contenteditable=true]', richText.context('tagged-discussion', [
+    'Compare local bottle washing suppliers before the returnable bottle trial begins.',
+    'Check capacity, water use, food-safety records, delivery times, and service support.',
+    'Share quotes and note which requirements each supplier can meet.'
+  ]));
 }
 
 module.exports = {
@@ -60,10 +65,10 @@ module.exports = {
     openNewDiscussion(page);
     page.click('.tags-field__input .v-field');
     page.fillIn('.tags-field__input input', 'Supplier research');
-    screenshot.captureRegion('discussions/tags/tags_create_new', ['.tags-field__input'], {
-      padding: 24,
+    screenshot.captureElement('discussions/tags/tags_create_new', '.discussion-form', {
       width: 1100,
-      height: 1000
+      height: 1400,
+      spotlight: {selector: '.discussion-form .tags-field__input', padding: 10, radius: 12}
     });
   },
 

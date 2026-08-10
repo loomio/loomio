@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openProposalForm(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
@@ -9,9 +10,13 @@ function openProposalForm(page) {
   page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial budget');
-  page.fillIn(
+  page.fillRichText(
     '.poll-common-form-fields__details [contenteditable=true]',
-    'Approve the bottle deposits, washing costs, and collection budget for the six-week trial.'
+    richText.context('quorum-proposal', [
+      'Approve the bottle deposits, washing costs, and collection budget for the six-week trial.',
+      'The budget covers three cafe partners, weekly collections, replacement bottles, and batch records.',
+      'Review the figures before voting and explain any cost that should be adjusted.'
+    ])
   );
 }
 
@@ -79,7 +84,7 @@ module.exports = {
     screenshot.captureRegion(
       'polls/quorum/quorum-section',
       ['.manual-quorum-title', '.manual-quorum-hint', '.manual-quorum-input', '.manual-quorum-tip'],
-      {padding: 16, width: 1100, height: 1400}
+      {padding: 16, width: 1100, height: 1400, scrollSelector: '.manual-quorum-title'}
     );
   },
 

@@ -15,9 +15,9 @@ function openAdviceForm(page) {
   // is deterministic even though persisted templates do not have key classes.
   page.clickAndWait('.decision-tools-card__poll-type', '.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Choose a bottle washing supplier');
-  page.fillIn(
+  page.fillTextarea(
     '.poll-common-form-fields__details textarea',
-    'We need advice about capacity, food-safety records, water use, and support before selecting a supplier for the returnable bottle trial.'
+    'We need advice about **capacity, food-safety records, and water use** before selecting a washing supplier. 🧼\n\nCompare response times, batch-record support, and the practical limits of each service.\n\nRead the [supplier questions](https://example.com/oatmilk-supplier-questions) and add anything we should ask before signing an agreement.'
   );
 }
 

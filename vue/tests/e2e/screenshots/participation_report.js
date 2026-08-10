@@ -4,20 +4,8 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 module.exports = {
   '@tags': ['manual-screenshot'],
 
-  'report_overview': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-
-    page.loadPath('setup_manual_oatmilk_participation_report');
-    page.waitFor('.report-page');
-    page.expectText('.report-page', 'Participation report');
-    page.expectText('.report-page', 'Oatmilk Cooperative');
-    page.waitFor('.report-page canvas');
-    page.pause(500);
-    screenshot.captureElement('groups/participation_report/group_participation_report_graph', '.report-page', {
-      height: 1300
-    });
-  },
+  // group_participation_report_graph.png needs representative multi-year data
+  // and is intentionally captured manually from a suitable real group.
 
   'participation_report_action': (test) => {
     const page = pageHelper(test);

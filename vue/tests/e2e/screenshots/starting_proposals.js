@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
@@ -13,9 +14,13 @@ function openProposalForm(page) {
   page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial plan');
-  page.fillIn(
+  page.fillRichText(
     '.poll-common-form-fields__details [contenteditable=true]',
-    'Approve the collection schedule, washing checks, and responsibilities for the six-week returnable bottle trial.'
+    richText.context('new-proposal', [
+      'Approve a six-week returnable bottle trial with three cafe partners and one collection from each cafe every week.',
+      'Before launch, confirm the collection schedule, washing checks, bottle deposit guidance, and named responsibilities.',
+      'At the end of the trial, review return rates, cleaning time, damaged bottles, and transport costs.'
+    ])
   );
 }
 
@@ -34,7 +39,7 @@ function markOptions(page) {
 function openPoll(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  page.click('.strand-item__load-more button');
+  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
   page.waitFor('.poll-created');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
 }

@@ -4,7 +4,7 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 
 const editor = '.comment-form .lmo-textarea';
 const proseMirror = `${editor} .ProseMirror`;
-const sampleImage = path.resolve(__dirname, '../../../../public/theme/group_cover_photos/cover4.jpg');
+const sampleImage = path.resolve(__dirname, '../fixtures/avatars/oatmilk-bottle.png');
 const sampleFile = path.resolve(__dirname, '../fixtures/oatmilk-bottle-trial.md');
 let scenarioKey = 0;
 
@@ -27,9 +27,10 @@ function fillAndSelect(page, text) {
 }
 
 function captureEditor(screenshot, name, options = {}) {
-  screenshot.captureElement(`discussions/formatting/${name}`, editor, {
+  screenshot.captureRegion(`discussions/formatting/${name}`, [editor], {
     width: 1100,
     height: 1200,
+    padding: 32,
     ...options
   });
 }
@@ -73,9 +74,10 @@ module.exports = {
     prepareUploadInputs(page);
     test.setValue('.manual-file-input', sampleFile);
     page.waitFor(`${editor} .files-list`);
-    screenshot.captureElement('discussions/formatting/thread_file_remove', `${editor} .files-list`, {
+    screenshot.captureRegion('discussions/formatting/thread_file_remove', [`${editor} .files-list`], {
       width: 1100,
-      height: 1000
+      height: 1000,
+      padding: 32
     });
   },
 
@@ -106,9 +108,10 @@ module.exports = {
     page.click('.comment-form__submit-button');
     page.waitFor('.new-comment .new-comment__body img', 15000);
     page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.querySelector('.new-comment__body img')).classList.add('manual-image-comment')");
-    screenshot.captureElement('discussions/formatting/format_image_example', '.manual-image-comment', {
+    screenshot.captureRegion('discussions/formatting/format_image_example', ['.manual-image-comment'], {
       width: 1100,
-      height: 1200
+      height: 1200,
+      padding: 32
     });
   },
 
@@ -122,7 +125,7 @@ module.exports = {
     screenshot.captureRegion('discussions/formatting/format_link', [
       editor,
       '.v-overlay--active .v-card'
-    ], {padding: 12, width: 1100, height: 1200});
+    ], {padding: 32, width: 1100, height: 1200});
   },
 
   'thread_insert_emoji': (test) => {
@@ -134,7 +137,7 @@ module.exports = {
     screenshot.captureRegion('discussions/formatting/thread_insert_emoji', [
       editor,
       '.v-overlay--active .emoji-picker'
-    ], {padding: 12, width: 1100, height: 1400});
+    ], {padding: 32, width: 1100, height: 1400});
   },
 
   'format_heading': (test) => {
@@ -192,7 +195,7 @@ module.exports = {
     screenshot.captureRegion('discussions/formatting/thread_colors', [
       editor,
       '.v-overlay--active .color-picker'
-    ], {padding: 12, width: 1100, height: 1200});
+    ], {padding: 32, width: 1100, height: 1200});
   },
 
   'thread_align': (test) => {
@@ -205,7 +208,7 @@ module.exports = {
     screenshot.captureRegion('discussions/formatting/thread_align', [
       editor,
       '.v-overlay--active .v-list'
-    ], {padding: 12, width: 1100, height: 1200});
+    ], {padding: 32, width: 1100, height: 1200});
   },
 
   'format_embed': (test) => {
@@ -218,7 +221,7 @@ module.exports = {
     screenshot.captureRegion('discussions/formatting/format_embed', [
       editor,
       '.v-overlay--active .v-card'
-    ], {padding: 12, width: 1100, height: 1200});
+    ], {padding: 32, width: 1100, height: 1200});
   },
 
   'thread_quote': (test) => {

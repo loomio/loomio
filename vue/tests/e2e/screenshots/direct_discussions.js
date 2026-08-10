@@ -1,5 +1,6 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
 
 function openDirectDiscussions(page) {
   page.loadPath('setup_manual_oatmilk_direct_discussions');
@@ -20,7 +21,11 @@ module.exports = {
     page.click('.discussion-templates--direct-discussion');
     page.waitFor('.discussion-form');
     page.fillIn('.discussion-form__title-input input', 'Cafe bottle collection planning');
-    page.fillIn('.discussion-form .ProseMirror', 'Confirm collection dates and responsibilities for the six-week bottle trial.');
+    page.fillRichText('.discussion-form .ProseMirror', richText.context('direct-discussion', [
+      'Use this direct discussion to confirm collection dates for the six-week bottle trial.',
+      'Samira will check washing capacity while Jamie confirms the driver schedule and crate storage.',
+      'Record any change that cafe staff need to know before the first delivery.'
+    ]));
     page.fillIn('.recipients-autocomplete input', 'Samira');
     page.waitFor('.recipients-autocomplete-suggestion');
     page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Samira Patel')).click()");
