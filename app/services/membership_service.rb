@@ -142,7 +142,13 @@ class MembershipService
 
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
-    val = Membership.volumes[params[:volume]]
+    volume = params[:volume]
+    unless Membership.volumes.key?(volume)
+      membership.errors.add :volume, I18n.t(:"activerecord.errors.messages.invalid")
+      raise ActiveRecord::RecordInvalid, membership
+    end
+
+    val = Membership.volumes.fetch(volume)
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
       actor.memberships.where(group_id: group_ids).update_all(volume: val)
@@ -152,7 +158,7 @@ class MembershipService
         .where("topics.group_id IN (?)", group_ids)
         .update_all(volume: val)
     else
-      membership.set_volume! params[:volume]
+      membership.set_volume! volume
       membership.topic_readers.update_all(volume: val)
     end
   end

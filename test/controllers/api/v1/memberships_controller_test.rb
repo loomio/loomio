@@ -95,6 +95,20 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'loud', second_membership.volume
   end
 
+  test 'rejects a missing volume without changing topic readers' do
+    membership = @test_group.membership_for(@user)
+    membership.set_volume!('quiet')
+    topic_reader = TopicReader.for(user: @user, topic: topics(:discussion_topic))
+    topic_reader.set_volume!('quiet')
+
+    put :set_volume, params: { id: membership.id }
+
+    assert_response :unprocessable_entity
+    assert_equal ['is not a valid value'], response.parsed_body.dig('errors', 'volume')
+    assert_equal 'quiet', membership.reload.volume
+    assert_equal 'quiet', topic_reader.reload.volume
+  end
+
   # ===== Index Tests =====
 
   test 'returns users filtered by group' do

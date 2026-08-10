@@ -26,9 +26,19 @@ class Api::V1::SearchController < Api::V1::RestfulController
     # Keep this as a correlated lookup so PostgreSQL checks visibility only
     # after using the full-text index to find matching search documents.
     rel = rel.where(visible_topic.arel.exists)
+
+    search_documents = PgSearch::Document.arel_table
+    kept_discussion = Discussion.kept
+      .where(Discussion.arel_table[:id].eq(search_documents[:discussion_id]))
+      .select(:id)
+      .limit(1)
+      .offset(0)
+
+    # Avoid materializing every kept discussion for each search. Documents for
+    # standalone polls have no discussion, while discussion documents must
+    # still belong to a non-discarded discussion.
     rel = rel.where(
-      "pg_search_documents.discussion_id IS NULL OR pg_search_documents.discussion_id IN (?)",
-      Discussion.kept.select(:id)
+      search_documents[:discussion_id].eq(nil).or(kept_discussion.arel.exists)
     )
 
     if params[:tag]
