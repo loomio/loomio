@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+assets_source_path="${1:-/loomio/client3-build}"
+assets_destination_path="${2:-/loomio/public/client3}"
+assets_retention_days="${3:-90}"
+
+if [[ ! "$assets_retention_days" =~ ^[0-9]+$ ]]; then
+  echo "Asset retention days must be a non-negative integer" >&2
+  exit 1
+fi
+
+mkdir -p "$assets_destination_path"
+find "$assets_destination_path" -type f -mtime "+$assets_retention_days" -delete
+cp -a "$assets_source_path/." "$assets_destination_path/"

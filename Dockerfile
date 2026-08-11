@@ -74,8 +74,12 @@ RUN DATABASE_URL=postgresql://localhost/loomio_build \
     SECRET_KEY_BASE_DUMMY=1 \
     bundle exec rails assets:precompile
 
-# Copy built Vite assets into the image
+# Keep assets at their served path for Kamal's asset bridge.
 COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+
+# Also keep an immutable staging copy for Docker Compose. Its startup script
+# copies this release over the mounted volume while retaining old hashed files.
+COPY --from=nodebuild /build/public/client3 /loomio/client3-build
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
 COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
