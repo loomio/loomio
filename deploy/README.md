@@ -72,11 +72,14 @@ mkdir loomio-deploy
 cd loomio-deploy
 ```
 
-Download [docker-compose.yml](docker-compose.yml) and [env_template](env_template) into the new deployment directory:
+Download [docker-compose.yml](docker-compose.yml), [env_template](env_template),
+and [update.sh](update.sh) into the new deployment directory:
 
 ```sh
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/docker-compose.yml
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/env_template
+curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/update.sh
+chmod +x update.sh
 ```
 
 The commands below assume this is your working directory.
