@@ -23,8 +23,9 @@ const cssClass = computed(() => `action-dock__button--${props.name}`);
 <template lang="pug">
 span
   v-btn.action-button.mr-1(
-    v-if="action.to"
-    :to="action.to()"
+    v-if="action.to || action.href"
+    :to="action.to && action.to()"
+    :href="action.href && action.href()"
     :icon="action.dock == 1"
     :title="text"
     :class='cssClass'

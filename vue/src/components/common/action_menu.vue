@@ -46,7 +46,7 @@ const canPerformAny = computed(() => some(props.actions, action => action.canPer
       template(v-for="(action, name) in actions")
         template(v-if="action.canPerform()")
           v-list-item(
-            v-if='!action.to'
+            v-if='!action.to && !action.href'
             :key="name"
             @click.stop="action.perform()"
             :class="'action-dock__button--' + name")
@@ -54,9 +54,10 @@ const canPerformAny = computed(() => some(props.actions, action => action.canPer
               common-icon(:name="action.icon")
             v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
           v-list-item(
-            v-if='action.to'
+            v-if='action.to || action.href'
             :key="name"
-            :to="action.to()"
+            :to="action.to && action.to()"
+            :href="action.href && action.href()"
             @click.stop
             :class="'action-dock__button--' + name")
             template(v-slot:prepend)

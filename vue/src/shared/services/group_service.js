@@ -7,7 +7,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
 import { I18n } from '@/i18n';
-import { hardReload } from '@/shared/helpers/window';
 
 export default new class GroupService {
   actions(group) {
@@ -154,9 +153,7 @@ export default new class GroupService {
         icon: 'mdi-webhook',
         menu: true,
         canPerform() { return group.adminsInclude(Session.user()); },
-        perform() {
-          return hardReload('/profile/api_access');
-        }
+        href() { return '/profile/api_access'; }
       },
 
       export_data: {

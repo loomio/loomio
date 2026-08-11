@@ -58,6 +58,24 @@ class ApiAccessControllerTest < ActionController::TestCase
     assert_select "a[href='/g/#{pending_group.key}']", count: 0
   end
 
+  test "signed in user can open the page with a dangling membership" do
+    dangling_membership = Membership.create!(
+      user: @user,
+      group: groups(:public_group),
+      inviter: @alien,
+      accepted_at: Time.current
+    )
+    dangling_membership.update_columns(group_id: -1)
+    sign_in @user
+
+    get :show
+
+    assert_response :success
+    assert_select "code.api-access__key", @user.api_key
+    assert_select "a[href='/g/#{@group.key}']", @group.name
+    assert_select "a[href='/g/#{@subgroup.key}']", @subgroup.name
+  end
+
   test "API access page is not cached and does not load JavaScript" do
     sign_in @user
 
