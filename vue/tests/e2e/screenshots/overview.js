@@ -103,7 +103,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openDiscussion(page);
-    screenshot.captureElement('overview/discussion_example', '.strand-page', {width: 1280, height: 2000});
+    page.execute("document.querySelector('.v-app-bar').style.visibility = 'hidden'");
+    screenshot.captureRegion('overview/discussion_example', ['.strand-card'], {
+      width: 1280,
+      height: 2400,
+      padding: 16,
+      scrollSelector: '.strand-card'
+    });
   },
 
   'discussion_seen_by_example': (test) => {

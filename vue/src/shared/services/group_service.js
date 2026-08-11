@@ -155,7 +155,7 @@ export default new class GroupService {
         menu: true,
         canPerform() { return group.adminsInclude(Session.user()); },
         perform() {
-          return hardReload('/docs/en/user_manual/integrations/api/user-api');
+          return hardReload('/profile/api_access');
         }
       },
 

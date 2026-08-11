@@ -8,7 +8,17 @@ Group operations use the permissions of the API-key user. If the user can access
 
 Use the API key from the Loomio user account that will perform the actions. A dedicated bot account is useful when an integration should not be invited to polls or receive notifications.
 
-Send the API key in an `Authorization: Bearer` header. API keys in query strings are rejected because URLs can be recorded by proxies and access logs. Existing write integrations may continue sending the key in the request body while migrating to the header.
+Signed-in users can find their API key and group IDs on the [API access page](/profile/api_access).
+
+Send the API key in an `Authorization: Bearer` header. API keys in query strings are rejected because URLs can be recorded by proxies and access logs.
+
+### Authentication change
+
+The API key was previously accepted as an `api_key` URL parameter. Requests using `?api_key=YOUR_API_KEY` no longer work. Use the HTTP `Authorization` header instead:
+
+```text
+Authorization: Bearer YOUR_API_KEY
+```
 
 The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. Replace these with your API key, group ID, and Loomio installation URL.
 

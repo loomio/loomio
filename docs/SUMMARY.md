@@ -67,6 +67,7 @@
     - [Server API](user_manual/integrations/api/server-api.md)
 - [Newsletter](newsletter/index.md)
 - [Product changelog](user_manual/changelog/index.md)
+  - [API access page](user_manual/changelog/2026-08-11_api_access_page.md)
   - [Keep unclosed polls visible in threads](user_manual/changelog/2026-08-10_unclosed_polls_in_threads.md)
   - [Require vote reasons when disagreeing](user_manual/changelog/2026-08-07_vote_reasons_for_disagreement.md)
   - [Gradient theme backgrounds](user_manual/changelog/2026-08-04_gradient_backgrounds.md)
