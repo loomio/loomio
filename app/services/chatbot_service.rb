@@ -61,7 +61,7 @@ class ChatbotService
           serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
           payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
           response = deliver_webhook(chatbot.server, payload)
-          if response.nil? || response.code.to_i != 200
+          unless response.is_a?(Net::HTTPSuccess)
             Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{response&.code} body: #{response&.body}")
           end
         else

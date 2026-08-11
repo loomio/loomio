@@ -68,4 +68,32 @@ class ChatbotServiceTest < ActiveSupport::TestCase
 
     assert_not_requested :post, internal_url
   end
+
+  test "publish_event accepts a no content webhook response" do
+    webhook_url = 'https://hooks.example.test/no-content'
+    captured_messages = []
+
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      Chatbot.create!(
+        name: 'No content webhook',
+        group: @group,
+        author: @admin,
+        kind: 'webhook',
+        webhook_kind: 'slack',
+        server: webhook_url,
+        event_kinds: [@event.kind]
+      )
+    end
+
+    WebMock.stub_request(:post, webhook_url).to_return(status: 204)
+
+    Sentry.stub(:capture_message, ->(message) { captured_messages << message }) do
+      Resolv.stub(:getaddresses, ['93.184.216.34']) do
+        ChatbotService.publish_event!(@event.id)
+      end
+    end
+
+    assert_requested :post, webhook_url, times: 1
+    assert_empty captured_messages
+  end
 end
