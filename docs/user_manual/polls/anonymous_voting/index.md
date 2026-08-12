@@ -1,6 +1,6 @@
 # Anonymous voting
 
-Anonymous voting separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
+Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
 
 This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
 
