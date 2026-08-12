@@ -498,7 +498,7 @@ The poll form must explain that new anonymous voting:
 
 Suggested form copy:
 
-> Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it. These measures reduce the risk of linking a person to a vote, but results may still reveal information when few people are eligible or vote, the result is unanimous, voting patterns are distinctive, or voters disclose their choices.
+> Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it.
 
 The confirmation step must warn the voter before submission:
 

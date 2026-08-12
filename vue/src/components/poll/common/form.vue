@@ -563,7 +563,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           v-divider.mb-4(v-if="poll.config().allow_quorum")
           .poll-common-form__anonymous-voting-title.text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
           .poll-common-form__anonymous-voting-explanation.text-body-medium.pb-2.text-medium-emphasis(
-            v-t="'poll_common_form.anonymous_voting_risk_explanation'")
+            v-t="'poll_common_form.anonymous_votes_stored_separately'")
           v-checkbox.poll-settings-anonymous(
             hide-label
             :disabled="!poll.isNew()"

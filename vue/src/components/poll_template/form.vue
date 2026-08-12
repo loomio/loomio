@@ -425,7 +425,7 @@ export default {
         template(v-if="allowAnonymous")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
-          .text-body-medium.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_risk_explanation'")
+          .text-body-medium.text-medium-emphasis(v-t="'poll_common_form.anonymous_votes_stored_separately'")
           v-checkbox.poll-settings-anonymous(
             hide-details
             v-model="pollTemplate.anonymous"
