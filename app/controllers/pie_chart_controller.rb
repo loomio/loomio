@@ -15,6 +15,7 @@ class PieChartController < ApplicationController
 
     png = ImageProcessing::MiniMagick
     .source(file)
+    .loader(background: 'none')
     .convert("png")
     .call
 
