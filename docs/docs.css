@@ -1,5 +1,15 @@
 :root {
   --background: #ebf4ff;
+  --alert-caution: #cf222e;
+  --alert-caution-background: #fff1f3;
+  --alert-important: #8250df;
+  --alert-important-background: #f7f2ff;
+  --alert-note: #0969da;
+  --alert-note-background: #eef7ff;
+  --alert-tip: #1a7f37;
+  --alert-tip-background: #effaf2;
+  --alert-warning: #9a6700;
+  --alert-warning-background: #fff8e5;
   --border: #d7eaff;
   --blockquote-background: #f1f8ff;
   --button-background: #fff;
@@ -23,6 +33,16 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #111;
+    --alert-caution: #f85149;
+    --alert-caution-background: #28191c;
+    --alert-important: #a371f7;
+    --alert-important-background: #211a2c;
+    --alert-note: #58a6ff;
+    --alert-note-background: #152033;
+    --alert-tip: #3fb950;
+    --alert-tip-background: #14251a;
+    --alert-warning: #d29922;
+    --alert-warning-background: #292312;
     --border: #454545;
     --blockquote-background: #1c252d;
     --button-background: #292929;
@@ -281,6 +301,62 @@ blockquote {
   border-left: 4px solid var(--border);
   margin: 20px 0;
   padding: 4px 20px;
+}
+
+.markdown-alert {
+  background: var(--markdown-alert-background);
+  border-left-color: var(--markdown-alert-color);
+  color: var(--foreground);
+  padding: 12px 16px;
+}
+
+.markdown-alert-note {
+  --markdown-alert-background: var(--alert-note-background);
+  --markdown-alert-color: var(--alert-note);
+}
+
+.markdown-alert-tip {
+  --markdown-alert-background: var(--alert-tip-background);
+  --markdown-alert-color: var(--alert-tip);
+}
+
+.markdown-alert-important {
+  --markdown-alert-background: var(--alert-important-background);
+  --markdown-alert-color: var(--alert-important);
+}
+
+.markdown-alert-warning {
+  --markdown-alert-background: var(--alert-warning-background);
+  --markdown-alert-color: var(--alert-warning);
+}
+
+.markdown-alert-caution {
+  --markdown-alert-background: var(--alert-caution-background);
+  --markdown-alert-color: var(--alert-caution);
+}
+
+.markdown-alert-title {
+  align-items: center;
+  color: var(--markdown-alert-color);
+  display: flex;
+  font-weight: 600;
+  gap: 8px;
+  margin: 0 0 4px;
+}
+
+.markdown-alert-icon {
+  fill: currentColor;
+  flex: 0 0 auto;
+  height: 20px;
+  width: 20px;
+}
+
+.markdown-alert-title + * {
+  margin-top: 4px;
+}
+
+.markdown-alert > :last-child {
+  margin-bottom: 0;
 }
 
 .table-wrapper {

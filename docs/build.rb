@@ -33,6 +33,30 @@ module Docs
     tables: true,
     underline: true
   }.freeze
+  # These paths come from @mdi/js, matching the mdi-svg icon set used by Vuetify.
+  MARKDOWN_ALERTS = {
+    "note" => {
+      title: "Note",
+      icon: "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+    },
+    "tip" => {
+      title: "Tip",
+      icon: "M12,2A7,7 0 0,1 19,9C19,11.38 17.81,13.47 16,14.74V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V14.74C6.19,13.47 5,11.38 5,9A7,7 0 0,1 12,2M9,21V20H15V21A1,1 0 0,1 14,22H10A1,1 0 0,1 9,21M12,4A5,5 0 0,0 7,9C7,11.05 8.23,12.81 10,13.58V16H14V13.58C15.77,12.81 17,11.05 17,9A5,5 0 0,0 12,4Z"
+    },
+    "important" => {
+      title: "Important",
+      icon: "M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"
+    },
+    "warning" => {
+      title: "Warning",
+      icon: "M12,2L1,21H23M12,6L19.53,19H4.47M11,10V14H13V10M11,16V18H13V16"
+    },
+    "caution" => {
+      title: "Caution",
+      icon: "M8.27,3L3,8.27V15.73L8.27,21H15.73C17.5,19.24 21,15.73 21,15.73V8.27L15.73,3M9.1,5H14.9L19,9.1V14.9L14.9,19H9.1L5,14.9V9.1M11,15H13V17H11V15M11,7H13V13H11V7"
+    }
+  }.freeze
+  MARKDOWN_ALERT_PATTERN = /\A\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i
 
   Heading = Data.define(:level, :id, :title)
 
@@ -310,6 +334,7 @@ module Docs
       fragment = Nokogiri::HTML5.fragment(rendered)
 
       fragment.xpath("//comment()").remove
+      render_alerts(fragment)
       rewrite_links(fragment, page, pages_by_source, pages_by_url)
       wrap_tables(fragment)
 
@@ -319,6 +344,45 @@ module Docs
         Heading.new(level: heading.name.delete_prefix("h").to_i, id: heading["id"], title: heading.text.strip)
       end
       page.html = fragment.to_html
+    end
+
+    def render_alerts(fragment)
+      fragment.css("blockquote").each do |blockquote|
+        children = blockquote.element_children.to_a
+        next if children.empty? || !children.first.inner_html.match?(MARKDOWN_ALERT_PATTERN)
+
+        alerts = []
+        current_alert = nil
+
+        children.each do |child|
+          marker = child.inner_html.match(MARKDOWN_ALERT_PATTERN)
+          if marker
+            type = marker[1].downcase
+            current_alert = {type: type, nodes: []}
+            alerts << current_alert
+            child.inner_html = child.inner_html.sub(MARKDOWN_ALERT_PATTERN, "")
+          end
+
+          current_alert[:nodes] << child if current_alert && (!child.text.strip.empty? || child.element_children.any?)
+        end
+
+        alerts.each do |alert|
+          config = MARKDOWN_ALERTS.fetch(alert[:type])
+          alert_node = Nokogiri::XML::Node.new("blockquote", fragment.document)
+          alert_node["class"] = "markdown-alert markdown-alert-#{alert[:type]}"
+          title = Nokogiri::HTML5.fragment(<<~HTML).children.first
+            <p class="markdown-alert-title">
+              <svg class="markdown-alert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="#{config[:icon]}"></path></svg>
+              <span>#{config[:title]}</span>
+            </p>
+          HTML
+          alert_node.add_child(title)
+          alert[:nodes].each { |node| alert_node.add_child(node.unlink) }
+          blockquote.add_previous_sibling(alert_node)
+        end
+
+        blockquote.remove
+      end
     end
 
     def changelog_markdown

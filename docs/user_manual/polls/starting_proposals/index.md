@@ -89,11 +89,11 @@ Setting options:
 ### Anonymous voting
 If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
 
->[!Warning]
->Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
+> [!WARNING]
+> Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
 
->[!Warning]
->You cannot re-open an anonymous poll after it has closed.  Voter information including the voter identity is discarded, so Loomio doesn't know who has voted.
+> [!WARNING]
+> You cannot re-open an anonymous poll after it has closed. Voter information including the voter identity is discarded, so Loomio doesn't know who has voted.
 
 ### Vote reason
 It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
