@@ -13,15 +13,22 @@ function openDiscussion(page) {
   page.pause(1000);
 }
 
+function openCommentDiscussion(page) {
+  page.loadPath('setup_manual_oatmilk_comment_discussion');
+  page.waitFor('.strand-page');
+  page.expectText('.strand-page', 'Improve the cafe bottle collection process');
+  page.waitFor('#add-comment .comment-form .ProseMirror');
+}
+
 function openProposal(page, mode) {
   page.loadPath(`setup_manual_oatmilk_proposal_template_poll?template=majority${mode ? `&mode=${mode}` : ''}`);
   page.waitFor('.poll-common-card__title');
 }
 
 function postOwnComment(page) {
-  openDiscussion(page);
-  page.fillIn('.comment-form .ProseMirror', 'I can document the cleaning time during the trial.');
-  page.click('.comment-form__submit-button');
+  openCommentDiscussion(page);
+  page.fillIn('#add-comment .comment-form .ProseMirror', 'I can document the cleaning time during the trial.');
+  page.click('#add-comment .comment-form__submit-button');
   page.pause(600);
   page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('I can document the cleaning time')).classList.add('manual-own-comment')");
   page.waitFor('.manual-own-comment');
@@ -152,12 +159,12 @@ module.exports = {
 
   'comment_add': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
+    openCommentDiscussion(page);
+    page.fillIn('#add-comment .comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
     screenshot.captureElement('overview/comment_add', '.strand-card', {
       width: 1100,
       height: 1600,
-      spotlight: {selector: '.comment-form', padding: 12, radius: 14}
+      spotlight: {selector: '#add-comment .comment-form', padding: 12, radius: 14}
     });
   },
 
@@ -170,23 +177,23 @@ module.exports = {
 
   'comment_reply': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
+    openCommentDiscussion(page);
     page.clickAndWait('.new-comment .action-dock__button--reply_to_comment', '.reply-form .comment-form');
     screenshot.captureRegion('overview/comment_reply', ['.new-comment', '.reply-form .comment-form'], {width: 1100, height: 1400, padding: 16});
   },
 
   'comment_mention': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the cafe collection dates, @samira');
+    openCommentDiscussion(page);
+    page.fillIn('#add-comment .comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the cafe collection dates, @samira');
     page.waitForPresent('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
     page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
-    screenshot.captureElement('overview/comment_mention', '.comment-form .lmo-textarea', {width: 1100, height: 1100});
+    screenshot.captureElement('overview/comment_mention', '#add-comment .comment-form .lmo-textarea', {width: 1100, height: 1100});
   },
 
   'comment_reaction': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
+    openCommentDiscussion(page);
     page.waitFor('.new-comment .emoji-picker__toggle');
     page.click('.new-comment .emoji-picker__toggle');
     page.waitFor('.v-overlay--active .emoji-picker');

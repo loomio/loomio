@@ -13,6 +13,36 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_comment_discussion
+    group, coordinator, = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    discussion = DiscussionService.create(
+      params: {
+        group_id: group.id,
+        title: 'Improve the cafe bottle collection process',
+        description: <<~HTML,
+          <p>Use this thread to improve the collection process for returnable bottles from cafe customers.</p>
+          <p>Share practical suggestions about collection days, storage, washing, and communication with cafe staff.</p>
+          <p>We will use these comments to update the <a href="https://example.com/oatmilk-bottle-return-guide">draft bottle return guide</a>.</p>
+        HTML
+        description_format: 'html',
+        private: false,
+        allow_reactions: true
+      },
+      actor: coordinator
+    )
+    CommentService.create(
+      comment: Comment.new(
+        parent: discussion,
+        body: 'I can ask the cafe teams which collection days work best for them.'
+      ),
+      actor: production_lead
+    )
+
+    sign_in coordinator
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_advice_discussion
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'alex@oatmilk.example')
