@@ -16,6 +16,18 @@ function loadEmailSettings(page) {
   page.waitFor('.email-settings-page');
 }
 
+function loadMergeAccounts(page) {
+  page.loadPath('setup_manual_oatmilk_merge_accounts');
+  page.waitFor('.profile-page__email-input input');
+  page.execute(`
+    const input = document.querySelector('.profile-page__email-input input');
+    input.value = 'jamie.chen@gmail.example';
+    input.dispatchEvent(new Event('input', {bubbles: true}));
+    input.dispatchEvent(new Event('keyup', {bubbles: true}));
+  `);
+  page.waitFor('.profile-page__email-taken');
+}
+
 module.exports = {
   '@tags': ['manual-screenshot'],
 
@@ -34,6 +46,63 @@ module.exports = {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     loadProfile(page);
     screenshot.captureElement('users/deleting_your_account/profile_edit', '.profile-page > div > .v-card:first-of-type', {width: 1100, height: 2200});
+  },
+
+  'merge_accounts_profile': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    loadMergeAccounts(page);
+    screenshot.captureRegion(
+      'users/merge_accounts/merge_accounts_profile',
+      [
+        '.profile-page > div > .v-card:first-of-type .v-card-title',
+        '.profile-page__details > .d-sm-flex'
+      ],
+      {
+        width: 1100,
+        height: 1200,
+        padding: 0,
+        spotlight: {selectors: ['.profile-page__email-input', '.profile-page__email-taken']}
+      }
+    );
+  },
+
+  'merge_accounts_verify': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    loadMergeAccounts(page);
+    page.clickAndWait('.email-taken-find-out-more', '.confirm-modal');
+    screenshot.captureElement(
+      'users/merge_accounts/merge_accounts_verify',
+      '.confirm-modal',
+      {width: 1100, height: 1000, spotlight: '.confirm-modal__submit'}
+    );
+  },
+
+  'merge_accounts_email': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
+    page.waitFor('.base-mailer__button');
+    screenshot.captureRegion(
+      'users/merge_accounts/merge_accounts_email',
+      ['.mailer__header', '.invite-people-mailer'],
+      {width: 1100, height: 1200, padding: 24, spotlight: '.base-mailer__button'}
+    );
+  },
+
+  'merge_accounts_confirm': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
+    page.waitFor('.base-mailer__button');
+    page.click('.base-mailer__button');
+    page.waitFor('main.sistema');
+    screenshot.captureElement(
+      'users/merge_accounts/merge_accounts_confirm',
+      'main.sistema',
+      {width: 1100, height: 1000, spotlight: '.btn--accent--raised'}
+    );
   },
 
   'permanently_delete_account': (test) => {
@@ -174,11 +243,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadProfile(page);
-    page.execute("document.querySelector('#user-locale-field').scrollIntoView({block: 'center'})");
-    page.pause(200);
-    screenshot.captureElement('users/translation/change_language', '#user-locale-field', {
+    screenshot.captureElement('users/translation/change_language', '.profile-page > div > .v-card:first-of-type', {
       width: 1100,
-      height: 900,
+      height: 2200,
       spotlight: '#user-locale-field'
     });
   },
@@ -188,7 +255,45 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_translated_comment');
     page.waitFor('.strand-item__new-comment', 15000);
-    screenshot.captureElement('users/translation/content_translation', '.strand-item__new-comment', {width: 1100, height: 1200});
+    screenshot.captureRegion(
+      'users/translation/content_translation',
+      ['.strand-item__new-comment'],
+      {
+        width: 1100,
+        height: 1200,
+        padding: 4,
+        includeThreadGutters: true,
+        spotlight: '.action-dock__button--translate_comment'
+      }
+    );
+    page.click('.action-dock__button--translate_comment');
+    page.expectText('.strand-item__new-comment', 'I can ask three cafes to track how many bottles are returned each week.');
+    screenshot.captureRegion(
+      'users/translation/content_translated',
+      ['.strand-item__new-comment'],
+      {width: 1100, height: 1200, padding: 4, includeThreadGutters: true}
+    );
+  },
+
+  'automatic_translation': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    loadProfile(page);
+    page.execute(`
+      const control = Array.from(document.querySelectorAll('.profile-page .v-checkbox'))
+        .find((element) => element.textContent.includes('Translate content to my language automatically'));
+      control?.classList.add('manual-automatic-translation');
+    `);
+    page.waitFor('.manual-automatic-translation');
+    screenshot.captureElement(
+      'users/translation/automatic_translation',
+      '.profile-page > div > .v-card:first-of-type',
+      {
+        width: 1100,
+        height: 2200,
+        spotlight: '.manual-automatic-translation'
+      }
+    );
   },
 
   'sidebar_menu': (test) => {

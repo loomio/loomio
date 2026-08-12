@@ -15,7 +15,16 @@ If you want to change the preferred language, you can do so from the "Edit profi
 ## Content translation
 When someone in your group writes their message in a language that is different to your preferred language, a "translate" button will appear below the message. You can click this button to automatically translate the message into your preferred language.
 
-
 ![content tranlation](content_translation.png)
 
-Translation of the user content is provided by Google Translate, and done automatically when requested by users.
+The translated text replaces the original text in the discussion. Select **original** to show the original text again.
+
+![A comment translated from Spanish into English](content_translated.png)
+
+Translation of user content is provided by Google Translate and performed when requested by a user.
+
+## Automatic translation
+
+To translate supported content automatically, open **Edit profile** and select **Translate content to my language automatically**. Loomio uses the language selected in your profile.
+
+![The automatic content translation preference on the Edit Profile page](automatic_translation.png)

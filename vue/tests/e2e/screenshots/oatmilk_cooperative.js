@@ -160,14 +160,18 @@ module.exports = {
     screenshot.captureElement('groups/starting_a_group/new_group_start', '.group-form', {height: 1200});
   },
 
-  'proposal_discussion': (test) => {
+  'discussion_intro': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    page.loadPath('setup_manual_oatmilk_discussion');
-    page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-    page.execute("document.querySelector('.strand-item__load-more button')?.click()");
-    page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
-    screenshot.captureElement('discussions/discussion-example', '.strand-card', {height: 1100});
+    page.loadPath('setup_manual_oatmilk_discussion_intro');
+    page.expectText('.context-panel__heading', 'Improve the cafe bottle return process');
+    page.waitFor('.strand-item__new-comment');
+    page.execute("document.querySelector('.v-app-bar').style.visibility = 'hidden'");
+    screenshot.captureRegion(
+      'discussions/discussion-example',
+      ['.strand-new-discussion', '.strand-item__new-comment', '.actions-panel'],
+      {width: 1100, height: 1400, padding: 32, includeThreadGutters: true}
+    );
   }
 };

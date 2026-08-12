@@ -64,7 +64,7 @@ On any comment or thread's context you can **react** and choose an emoji.
 
 Reactions send a notification within Loomio, but do not send an email.
 
-![The reaction button highlighted below the Oatmilk Cooperative discussion context](reaction.png)
+![The reaction menu open below the Oatmilk Cooperative discussion context](reaction.png)
 
 ## Invite to discussion
 

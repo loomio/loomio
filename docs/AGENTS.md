@@ -120,6 +120,8 @@ Use these framing defaults unless the page needs a deliberate exception:
 - Capture the smallest complete interface context that explains the action. A
   discussion or proposal example usually needs the full central `.strand-card`,
   but not the application drawer, top bar, or thread drawer.
+- Do not include the application toolbar or title bar unless the screenshot also
+  includes an application drawer that needs it for orientation.
 - When the subject is a control inside a form or modal, show the whole form or
   modal and spotlight the control. Do not crop so tightly that the reader cannot
   identify where the control belongs.

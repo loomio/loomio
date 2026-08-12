@@ -65,6 +65,8 @@ Framing defaults:
 - Capture the full central strand card for discussions, proposals, comments,
   replies, reactions, unread items, and moved-item states; omit app and thread
   drawers unless they are instructional context.
+- Omit the application toolbar or title bar unless an application drawer is
+  included for instructional context.
 - Capture a whole form or modal and spotlight the relevant control.
 - Give tightly focused editors, tasks, comments, and menus about 32 CSS pixels
   of external padding, with per-image adjustment where necessary.

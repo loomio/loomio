@@ -13,6 +13,39 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_discussion_intro
+    group, coordinator, = create_manual_oatmilk_cooperative
+    commenter = User.find_by!(email: 'alex@oatmilk.example')
+    group.tags.create!(name: 'Packaging', color: '#1565c0')
+    discussion = DiscussionService.create(
+      params: {
+        group_id: group.id,
+        title: 'Improve the cafe bottle return process',
+        description: <<~HTML,
+          <p>Use this discussion to improve how we collect returnable bottles from cafe customers before the six-week trial begins.</p>
+          <p><strong>Questions to resolve before the trial:</strong></p>
+          <ul><li>Choose a weekly collection day</li><li>Agree how cafes will store returned bottles</li><li>Assign the washing and return-rate records</li></ul>
+          <p>Read the <a href="https://example.com/oatmilk-bottle-return-guide">draft bottle return guide</a> before adding your suggestions.</p>
+        HTML
+        description_format: 'html',
+        private: false,
+        allow_reactions: true
+      },
+      actor: coordinator
+    )
+    discussion.topic.update!(tags: ['Packaging'])
+    CommentService.create(
+      comment: Comment.new(
+        parent: discussion,
+        body: 'I can ask the cafe teams which collection days work best and add their answers to the draft guide.'
+      ),
+      actor: commenter
+    )
+
+    sign_in coordinator
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_comment_discussion
     group, coordinator, = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')
@@ -65,6 +98,25 @@ module Dev::Scenarios::OatmilkCooperative
     _group, coordinator, = create_manual_oatmilk_cooperative
     sign_in coordinator
     redirect_to '/profile'
+  end
+
+  def setup_manual_oatmilk_merge_accounts
+    _group, coordinator, = create_manual_oatmilk_cooperative
+    create_manual_oatmilk_merge_target
+    sign_in coordinator
+    redirect_to '/profile'
+  end
+
+  def setup_manual_oatmilk_merge_verification_email
+    _group, coordinator, = create_manual_oatmilk_cooperative
+    target_user = create_manual_oatmilk_merge_target
+
+    MergeUsersService.send_merge_verification_email(
+      actor: coordinator,
+      target_email: target_user.email
+    )
+    sign_in target_user
+    last_email(to: target_user)
   end
 
   def setup_manual_oatmilk_email_settings
@@ -1322,5 +1374,13 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     user
+  end
+
+  def create_manual_oatmilk_merge_target
+    create_manual_oatmilk_member(
+      name: 'Jamie Chen',
+      email: 'jamie.chen@gmail.example',
+      avatar_filename: 'jamie-chen.png'
+    )
   end
 end

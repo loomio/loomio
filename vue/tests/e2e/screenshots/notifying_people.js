@@ -25,6 +25,15 @@ function openDiscussion(page) {
   page.pause(1000);
 }
 
+function openMentionDiscussion(page) {
+  page.resizeWindow(1000, 1200);
+  page.loadPath('setup_manual_oatmilk_discussion_intro');
+  page.waitFor('.strand-page');
+  page.expectText('.strand-page', 'Improve the cafe bottle return process');
+  page.waitFor('.comment-form .ProseMirror');
+  page.pause(1000);
+}
+
 function prepareDiscussionEdit(page) {
   openDiscussion(page);
   page.click('.context-panel .action-dock__button--edit_thread');
@@ -124,57 +133,76 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
+    openMentionDiscussion(page);
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Could you confirm the collection schedule, @samira');
     page.waitForPresent('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
     page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
-    screenshot.captureElement('discussions/notifying_people/comment_mention', '.comment-form .lmo-textarea', {
-      width: 1000,
-      height: 1200
-    });
+    screenshot.captureRegion(
+      'discussions/notifying_people/comment_mention',
+      ['.comment-form'],
+      {width: 1000, height: 1200, padding: 16}
+    );
   },
 
   'mention_group_search': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
+    openMentionDiscussion(page);
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Packaging update for @Oat');
     page.waitForPresent('.suggestion-list .v-list-item');
     screenshot.captureRegion('discussions/notifying_people/mentioning_group_1', [
-      '.comment-form .lmo-textarea',
+      '.comment-form',
       '.suggestion-list'
-    ], {padding: 8, width: 1000, height: 1200});
+    ], {padding: 16, width: 1000, height: 1200});
   },
 
   'mention_group_selected': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
+    openMentionDiscussion(page);
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Packaging update for @Oat');
     page.waitForPresent('.suggestion-list .v-list-item');
     page.execute("Array.from(document.querySelectorAll('.suggestion-list .v-list-item')).find(el => el.textContent.includes('Oatmilk Cooperative')).click()");
-    screenshot.captureElement('discussions/notifying_people/mentioning_group_2', '.comment-form .lmo-textarea', {
-      width: 1000,
-      height: 1200
-    });
+    page.expectText('.comment-form', 'Oatmilk Cooperative');
+    screenshot.captureRegion(
+      'discussions/notifying_people/mentioning_group_2',
+      ['.comment-form'],
+      {width: 1000, height: 1200, padding: 16}
+    );
   },
 
   'reaction': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
+    page.resizeWindow(1100, 1400);
+    page.loadPath('setup_manual_oatmilk_discussion_intro');
+    page.waitFor('.strand-page');
+    page.expectText('.strand-page', 'Improve the cafe bottle return process');
     page.waitFor('.strand-new-discussion .emoji-picker__toggle');
-    screenshot.captureElement('discussions/notifying_people/reaction', '.strand-new-discussion', {
-      spotlight: {
-        selector: '.strand-new-discussion .emoji-picker__toggle',
-        padding: 12,
-        radius: 14
-      },
+    page.click('.strand-new-discussion .emoji-picker__toggle');
+    page.waitFor('.emoji-picker');
+    page.execute(`
+      document.querySelector('.v-app-bar')?.remove();
+      document.querySelector('.thread-sidebar')?.style.setProperty('visibility', 'hidden');
+      document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
+      document.querySelectorAll('.strand-item__gutter').forEach((gutter) => {
+        gutter.style.visibility = 'hidden';
+      });
+      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
+        if (!item.querySelector('.strand-new-discussion')) item.style.visibility = 'hidden';
+      });
+    `);
+    screenshot.captureRegion('discussions/notifying_people/reaction', [
+      '.strand-new-discussion',
+      '.emoji-picker'
+    ], {
+      padding: 32,
       width: 1100,
-      height: 1200
+      height: 1400,
+      includeThreadGutters: true
     });
   },
 
@@ -253,10 +281,24 @@ module.exports = {
     page.click('.discussion-form__submit');
     page.waitFor('.strand-item__discussion-edited');
     page.expectText('.strand-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
-    screenshot.captureElement(
+    page.execute(`
+      const target = document.querySelector('.strand-item__discussion-edited');
+      document.querySelector('.v-app-bar')?.remove();
+      document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
+      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
+        if (!item.contains(target)) item.style.visibility = 'hidden';
+      });
+    `);
+    screenshot.captureRegion(
       'discussions/notifying_people/thread_edit_comment',
-      '.strand-item__discussion-edited',
-      {width: 1100, height: 1200}
+      ['.strand-item__discussion-edited'],
+      {
+        width: 1100,
+        height: 1200,
+        padding: 16,
+        includeThreadGutters: true,
+        scrollSelector: '.strand-item__discussion-edited'
+      }
     );
   },
 
