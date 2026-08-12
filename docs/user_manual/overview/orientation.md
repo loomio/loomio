@@ -42,6 +42,8 @@ Use this menu to edit your profile, change notification settings, choose a theme
 
 The bell button at the top right opens your in-app notifications. A badge appears when you have notifications you have not viewed.
 
+![](../users/email_settings/in_app_notifications.png)
+
 See [Notifications](/en/user_manual/users/email_settings) to learn about in-app notifications, email preferences, and notification settings for groups and discussions.
 
 ## What to do next

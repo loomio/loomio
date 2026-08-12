@@ -3,6 +3,7 @@ const path = require('node:path');
 const {spawnSync} = require('node:child_process');
 
 const manualDir = path.resolve(__dirname, '../../../../docs/user_manual');
+const docsDir = path.resolve(__dirname, '../../../../docs');
 const repoDir = path.resolve(__dirname, '../../../..');
 const spotlightScript = path.join(repoDir, 'bin/spotlight-screenshot');
 const cropScript = path.join(repoDir, 'bin/crop-screenshot');
@@ -14,7 +15,8 @@ module.exports = function(test) {
       throw new Error(`Invalid manual screenshot name: ${name}`);
     }
 
-    const imagePath = path.join(manualDir, `${name}.png`);
+    const imageRoot = name.startsWith('guides/') ? docsDir : manualDir;
+    const imagePath = path.join(imageRoot, `${name}.png`);
     fs.mkdirSync(path.dirname(imagePath), {recursive: true});
     return imagePath;
   }

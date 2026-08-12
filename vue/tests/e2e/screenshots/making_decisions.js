@@ -20,14 +20,14 @@ function openPoll(page, template, mode) {
 }
 
 function captureDiscussion(screenshot, name, selector = '.strand-card') {
-  screenshot.captureElement(`making_decisions/${name}`, selector, {width: 1280, height: 2000});
+  screenshot.captureElement(`guides/making_decisions/${name}`, selector, {width: 1280, height: 2000});
 }
 
 function capturePoll(screenshot, name, mode = 'voting') {
   const selectors = mode === 'outcome'
     ? ['.poll-common-card__title', '.poll-common-outcome-panel']
     : ['.poll-common-card__title', '.poll-common-action-panel'];
-  screenshot.captureRegion(`making_decisions/${name}`, selectors, {
+  screenshot.captureRegion(`guides/making_decisions/${name}`, selectors, {
     width: 1100,
     height: 2300,
     padding: 16

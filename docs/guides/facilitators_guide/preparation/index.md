@@ -58,7 +58,7 @@ On Loomio
 ![](../collaboration-process.png)
 
 * Skilled users are already adapting Loomio for various experience designs — such as a multi-step consultation processes, signing off documents, etc. Each job, when facilitated effectively, takes a certain repeatable shape.
-* Online collaboration design doesn't have to reinvent the wheel. Trust what you know works, and translate it. Many tried and tested offline processes can be adapted to the online space (ex: the [Advice Process](/en/user_manual/making_decisions/advice_process.html)).
+* Online collaboration design doesn't have to reinvent the wheel. Trust what you know works, and translate it. Many tried and tested offline processes can be adapted to the online space (ex: the [Advice Process](/en/guides/making_decisions/advice_process.html)).
 * [Case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) of thoughtfully designed processes could be used as “recipes” — if you're not sure what design to use, start by seeing what others have tried.
 
 

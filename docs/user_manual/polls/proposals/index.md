@@ -36,7 +36,7 @@ Invite advice from people impacted or who have expertise, so you can make a bett
 - Foster relationships, learning opportunities and diverse input
 - Stimulate initiative and creativity, and more enjoyable work
 
-[Read more about the Advice process](/en/user_manual/making_decisions/advice_process.html).
+[Read more about the Advice process](/en/guides/making_decisions/advice_process.html).
 
 **Voting with the Advice proposal**
 
@@ -57,7 +57,7 @@ Seek consent on a decision you need to make, where there are no meaningful objec
 - Ask if anyone has a valid objection
 - Amend the proposal to resolve objections
 
-[Read more about the Consent process](/en/user_manual/making_decisions/consent_process.html).
+[Read more about the Consent process](/en/guides/making_decisions/consent_process.html).
 
 **Voting with the Consent proposal**
 
@@ -77,7 +77,7 @@ Build consensus for a decision you need to make, to reach an agreement that sati
 - Include and respect everyone involved
 - Seek agreement from most people
 
-[Read more about the Consensus process](/en/user_manual/making_decisions/consensus_process.html).
+[Read more about the Consensus process](/en/guides/making_decisions/consensus_process.html).
 
 >[!Note]
 >This template includes a Block option by default. Block isn't suitable for every group — it can be controversial or misused. If you don't use block in your decision-making process, we recommend editing the template to remove it.
@@ -102,7 +102,7 @@ Use the Sense check proposal in the Consent process to invite reactions and comm
 
 You can use one or more rounds of ‘Sense check’ to help you co-create a better, more cohesive decision with less stress and anxiety.
 
-[Read more about using Sense check in the Simple decision process](/en/user_manual/making_decisions/simple_decision_process.html).
+[Read more about using Sense check in the Simple decision process](/en/guides/making_decisions/simple_decision_process.html).
 
 **Voting with the Sense check proposal**
 
@@ -133,7 +133,7 @@ In this way you can use a proposal to prompt people for a response, uncover new 
 
 A proposal and associated discussion creates its own record of how the decision came about.
 
-[Read more about using the classic Loomio proposal in the Simple decision process](/en/user_manual/making_decisions/simple_decision_process.html).
+[Read more about using the classic Loomio proposal in the Simple decision process](/en/guides/making_decisions/simple_decision_process.html).
 
 **Voting with the classic proposal**
 
@@ -167,7 +167,7 @@ The Loomio Question round is a special proposal with no voting options. It enabl
 
 A Question round is commonly used as a step in the Consent process.
 
-[Read more about the Consent process](/en/user_manual/making_decisions/consent_process.html).
+[Read more about the Consent process](/en/guides/making_decisions/consent_process.html).
 
 **Example**
 

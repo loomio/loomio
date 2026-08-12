@@ -14,7 +14,7 @@ The proposal templates are part of the scaffolding used to run a process. You ca
 
 Use the **Proposal** and **Poll** tabs to browse the templates available in your group. Group admins can use each template's menu to edit, move, hide, or delete it.
 
-See our guides for [Advice process](/en/user_manual/making_decisions/advice_process.html), [Consent process](/en/user_manual/making_decisions/consent_process.html) and [Consensus](/en/user_manual/making_decisions/consensus_process.html) for help and examples of using proposal templates at key steps in each process.
+See our guides for [Advice process](/en/guides/making_decisions/advice_process.html), [Consent process](/en/guides/making_decisions/consent_process.html) and [Consensus](/en/guides/making_decisions/consensus_process.html) for help and examples of using proposal templates at key steps in each process.
 
 ---
 

@@ -59,4 +59,4 @@ When a Loomio poll closes, you will be prompted to set an **outcome** to let eve
 
 Don't hesitate to start a proposal just because you're not sure everyone will agree - proposals are not only for when you have consensus, they're designed to surface issues that need resolving and are useful for clarifying disagreements. 
 
-The next pages show a few more complex processes for reaching decisions, through [advice](/en/user_manual/making_decisions/advice_process.md), [consent](/en/user_manual/making_decisions/consent_process.md ), or [consensus](/en/user_manual/making_decisions/consensus_process.md ).
+The next pages show a few more complex processes for reaching decisions, through [advice](/en/guides/making_decisions/advice_process), [consent](/en/guides/making_decisions/consent_process ), or [consensus](/en/guides/making_decisions/consensus_process ).

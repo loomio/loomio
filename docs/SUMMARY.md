@@ -5,12 +5,6 @@
   - [How to participate](user_manual/overview/how-to-participate.md)
   - [Finding content](user_manual/overview/finding-content.md)
 
-- [Making decisions](user_manual/making_decisions/index.md)
-  - [Simple decision process](user_manual/making_decisions/simple_decision_process.md)
-  - [Advice process](user_manual/making_decisions/advice_process.md)
-  - [Consent process](user_manual/making_decisions/consent_process.md)
-  - [Consensus process](user_manual/making_decisions/consensus_process.md)
-
 - [Groups](user_manual/groups/index.md)
   - [Starting a group](user_manual/groups/starting_a_group/index.md)
   - [Group settings](user_manual/groups/settings/index.md)
@@ -196,6 +190,12 @@
 ---
 
 # Guides
+
+- [Making decisions](guides/making_decisions/index.md)
+  - [Simple decision process](guides/making_decisions/simple_decision_process.md)
+  - [Advice process](guides/making_decisions/advice_process.md)
+  - [Consent process](guides/making_decisions/consent_process.md)
+  - [Consensus process](guides/making_decisions/consensus_process.md)
 
 - [The Facilitator's Guide to Loomio](guides/facilitators_guide/index.md)
   - [Preparation](guides/facilitators_guide/preparation/index.md)
