@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_08_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -670,6 +670,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_08_000000) do
     t.index ["tags"], name: "index_pg_search_documents_on_tags", using: :gin
     t.index ["topic_id"], name: "index_pg_search_documents_on_topic_id"
     t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
+  end
+
+  create_table "pg_search_words", id: false, force: :cascade do |t|
+    t.text "word", null: false
+    t.integer "document_count", null: false
+    t.index ["word"], name: "index_pg_search_words_on_word", unique: true
+    t.index ["word"], name: "index_pg_search_words_on_word_trigram", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|
