@@ -21,7 +21,7 @@ function loadMergeAccounts(page) {
   page.waitFor('.profile-page__email-input input');
   page.execute(`
     const input = document.querySelector('.profile-page__email-input input');
-    input.value = 'jamie.chen@gmail.example';
+    input.value = 'jamie@oatmilk.example';
     input.dispatchEvent(new Event('input', {bubbles: true}));
     input.dispatchEvent(new Event('keyup', {bubbles: true}));
   `);

@@ -102,21 +102,21 @@ module Dev::Scenarios::OatmilkCooperative
 
   def setup_manual_oatmilk_merge_accounts
     _group, coordinator, = create_manual_oatmilk_cooperative
-    create_manual_oatmilk_merge_target
-    sign_in coordinator
+    gmail_account = create_manual_oatmilk_merge_gmail_account
+    sign_in gmail_account
     redirect_to '/profile'
   end
 
   def setup_manual_oatmilk_merge_verification_email
     _group, coordinator, = create_manual_oatmilk_cooperative
-    target_user = create_manual_oatmilk_merge_target
+    gmail_account = create_manual_oatmilk_merge_gmail_account
 
     MergeUsersService.send_merge_verification_email(
-      actor: coordinator,
-      target_email: target_user.email
+      actor: gmail_account,
+      target_email: coordinator.email
     )
-    sign_in target_user
-    last_email(to: target_user)
+    sign_in coordinator
+    last_email(to: coordinator)
   end
 
   def setup_manual_oatmilk_email_settings
@@ -1281,7 +1281,7 @@ module Dev::Scenarios::OatmilkCooperative
     )
     GroupService.create(group: group, actor: coordinator)
     group.cover_photo.attach(
-      io: File.open(Rails.root.join('public/theme/group_cover_photos/cover1.jpg')),
+      io: File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-cover.jpg')),
       filename: 'oatmilk-cooperative-cover.jpg'
     )
     group.logo.attach(
@@ -1376,7 +1376,7 @@ module Dev::Scenarios::OatmilkCooperative
     user
   end
 
-  def create_manual_oatmilk_merge_target
+  def create_manual_oatmilk_merge_gmail_account
     create_manual_oatmilk_member(
       name: 'Jamie Chen',
       email: 'jamie.chen@gmail.example',
