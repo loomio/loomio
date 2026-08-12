@@ -217,16 +217,22 @@ module.exports = {
   'vote_reason': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openProposal(page);
-    screenshot.captureElement('overview/vote_reason', '.poll-common-vote-form', {width: 1100, height: 1600});
+    screenshot.captureRegion('overview/vote_reason', ['.poll-common-vote-form'], {
+      width: 1100,
+      height: 1600,
+      padding: 16,
+      includeThreadGutters: false
+    });
   },
 
   'vote_change': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openProposal(page, 'results');
     page.waitFor('.poll-common-current-vote .action-button');
-    screenshot.captureElement('overview/vote_change', '.poll-created', {
+    screenshot.captureRegion('overview/vote_change', ['.poll-created'], {
       width: 1100,
       height: 2000,
+      padding: 16,
       spotlight: {selector: '.poll-common-current-vote .action-button', padding: 10, radius: 12}
     });
   },

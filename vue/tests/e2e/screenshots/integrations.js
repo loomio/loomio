@@ -59,9 +59,10 @@ module.exports = {
   'invite_button_on_proposal': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openPoll(page);
-    screenshot.captureElement('integrations/chatbots/invite_button_on_proposal', '.poll-created', {
+    screenshot.captureRegion('integrations/chatbots/invite_button_on_proposal', ['.poll-created'], {
       width: 1100,
       height: 1800,
+      padding: 16,
       spotlight: '.action-dock__button--announce_poll'
     });
   },

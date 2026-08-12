@@ -442,7 +442,7 @@ module Dev::Scenarios::OatmilkCooperative
         title: 'Approve the bottle trial responsibilities',
         details: 'Confirm the collection, washing, and reporting responsibilities before the six-week trial begins.',
         poll_type: 'proposal',
-        poll_option_names: %w[agree abstain disagree block],
+        poll_option_names: %w[agree abstain disagree],
         specified_voters_only: true,
         closing_at: 1.week.from_now
       },
@@ -822,9 +822,7 @@ module Dev::Scenarios::OatmilkCooperative
         minimum_stance_choices: template.minimum_stance_choices,
         maximum_stance_choices: template.maximum_stance_choices,
         dots_per_person: template.dots_per_person,
-        poll_options_attributes: template.poll_options.map do |option|
-          option.slice('name', 'icon', 'meaning', 'prompt')
-        end,
+        poll_options_attributes: manual_oatmilk_poll_options_attributes(template),
         closing_at: 1.week.from_now
       },
       actor: coordinator
@@ -879,9 +877,7 @@ module Dev::Scenarios::OatmilkCooperative
       closing_at: 1.week.from_now
     }
     if template.poll_options.any?
-      poll_params[:poll_options_attributes] = template.poll_options.map do |option|
-        option.slice('name', 'icon', 'meaning', 'prompt')
-      end
+      poll_params[:poll_options_attributes] = manual_oatmilk_poll_options_attributes(template)
     end
     poll = PollService.create(params: poll_params, actor: coordinator)
     PollService.invite(
@@ -921,6 +917,12 @@ module Dev::Scenarios::OatmilkCooperative
   end
 
   private
+
+  def manual_oatmilk_poll_options_attributes(template)
+    template.poll_options.each_with_index.map do |option, priority|
+      option.slice('name', 'icon', 'meaning', 'prompt').merge(priority: priority)
+    end
+  end
 
   def manual_oatmilk_proposal_title(template_key)
     {
@@ -1273,7 +1275,7 @@ module Dev::Scenarios::OatmilkCooperative
         HTML
         details_format: 'html',
         poll_type: 'proposal',
-        poll_option_names: %w[agree abstain disagree block],
+        poll_option_names: %w[agree abstain disagree],
         closing_at: 1.week.from_now
       },
       actor: coordinator

@@ -58,7 +58,7 @@ module.exports = function(test) {
     test.pause(200);
   }
 
-  function spotlightGeometry(spotlight, captureSelector) {
+  function spotlightGeometry(spotlight, captureSelector, includeThreadGutters = false) {
     if (!spotlight) {
       return null;
     }
@@ -70,7 +70,7 @@ module.exports = function(test) {
     }
 
     const geometry = {options};
-    test.execute(function(selectors, rootSelector) {
+    test.execute(function(selectors, rootSelector, includeThreadGutters) {
       const targets = selectors.map((selector) => document.querySelector(selector));
       const root = rootSelector ? document.querySelector(rootSelector) : null;
 
@@ -83,10 +83,25 @@ module.exports = function(test) {
       }
 
       const targetRects = targets.map((target) => target.getBoundingClientRect());
-      const targetLeft = Math.min(...targetRects.map((rect) => rect.left));
       const targetTop = Math.min(...targetRects.map((rect) => rect.top));
-      const targetRight = Math.max(...targetRects.map((rect) => rect.right));
       const targetBottom = Math.max(...targetRects.map((rect) => rect.bottom));
+      const threadGutterRects = includeThreadGutters
+        ? targets.flatMap((target) => {
+          const gutter = target.closest('.strand-item__row')?.querySelector(':scope > .strand-item__gutter');
+          const avatar = gutter?.querySelector('.user-avatar');
+
+          if (!gutter || !avatar) {
+            return [];
+          }
+
+          const avatarRect = avatar.getBoundingClientRect();
+          return avatarRect.bottom > targetTop && avatarRect.top < targetBottom
+            ? [gutter.getBoundingClientRect()]
+            : [];
+        })
+        : [];
+      const targetLeft = Math.min(...targetRects.map((rect) => rect.left), ...threadGutterRects.map((rect) => rect.left));
+      const targetRight = Math.max(...targetRects.map((rect) => rect.right));
       const rootRect = root ? root.getBoundingClientRect() : {
         left: 0,
         top: 0,
@@ -102,7 +117,7 @@ module.exports = function(test) {
         baseWidth: rootRect.width,
         baseHeight: rootRect.height
       };
-    }, [selectors, captureSelector], (result) => {
+    }, [selectors, captureSelector, includeThreadGutters], (result) => {
       geometry.rect = result.value;
     });
 
@@ -174,7 +189,7 @@ module.exports = function(test) {
       if (options.scrollSelector) {
         scrollIntoView(options);
       }
-      const geometry = spotlightGeometry({selectors}, null);
+      const geometry = spotlightGeometry({selectors}, null, options.includeThreadGutters !== false);
       const spotlight = spotlightGeometry(options.spotlight, null);
       test.pause(200);
 
