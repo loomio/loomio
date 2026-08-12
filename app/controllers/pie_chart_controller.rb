@@ -3,7 +3,7 @@ require_relative Rails.root.join('lib/pie_chart_svg')
 class PieChartController < ApplicationController
   def show
     scores = params[:scores].to_s.split(',').map(&:to_i)
-    colors = params[:colors].to_s.split(',').map {|c| "##{c}"}
+    colors = params[:colors].to_s.split(',').map { |c| "##{c}" }
 
     svg = PieChartSvg.from_primitives(scores, colors)
 
