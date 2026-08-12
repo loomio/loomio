@@ -109,12 +109,43 @@ a:hover {
 
 .sidebar-logo {
   display: block;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .sidebar-logo img {
   display: block;
   max-width: 170px;
+}
+
+.sidebar-search,
+.pagefind-search-modal {
+  --pf-background: var(--sidebar-background);
+  --pf-border: var(--border);
+  --pf-border-focus: var(--link);
+  --pf-font: "Roboto", sans-serif;
+  --pf-hover: var(--button-hover-background);
+  --pf-input-font-size: 14px;
+  --pf-mark: var(--foreground);
+  --pf-outline-focus: var(--link);
+  --pf-result-excerpt-font-size: 14px;
+  --pf-result-title-font-size: 14px;
+  --pf-summary-font-size: 14px;
+  --pf-text: var(--foreground);
+  --pf-text-muted: var(--foreground-muted);
+  --pf-text-secondary: var(--foreground-muted);
+}
+
+.sidebar-search {
+  margin-bottom: 22px;
+}
+
+.sidebar-search pagefind-modal-trigger {
+  display: block;
+}
+
+.pagefind-search-modal .pf-heading-chip,
+.pagefind-search-modal .pf-heading-excerpt {
+  font-size: 14px !important;
 }
 
 .sidebar h2 {

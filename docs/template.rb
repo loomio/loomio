@@ -25,10 +25,11 @@ class DocsTemplate < Phlex::HTML
 
         div(class: "sidebar-scrim", aria_hidden: "true")
         aside(id: "site-navigation", class: "sidebar") { render_sidebar }
+        tag(:"pagefind-modal", class: "pagefind-search-modal", reset_on_close: true)
 
         div(class: "page") do
           div(class: "content-grid") do
-            main { raw safe(@page.html) }
+            main(**pagefind_attributes) { raw safe(@page.html) }
             render_page_toc
             render_page_navigation
           end
@@ -46,6 +47,10 @@ class DocsTemplate < Phlex::HTML
 
   private
 
+  def pagefind_attributes
+    @page.search_indexed? ? {data_pagefind_body: true} : {}
+  end
+
   def render_head
     social_image_url = "#{Docs::SITE_ORIGIN}#{Docs.site_path("/brand/social-preview.png")}"
 
@@ -53,6 +58,7 @@ class DocsTemplate < Phlex::HTML
     meta(charset: "utf-8")
     meta(name: "viewport", content: "width=device-width, initial-scale=1")
     meta(name: "description", content: @page.description)
+    meta(data_pagefind_meta: "title", content: @page.title)
     meta(name: "theme-color", content: "#ffffff", media: "(prefers-color-scheme: light)")
     meta(name: "theme-color", content: "#111111", media: "(prefers-color-scheme: dark)")
     meta(property: "og:title", content: "#{@page.title} - Loomio Help")
@@ -78,12 +84,26 @@ class DocsTemplate < Phlex::HTML
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400;500;700&display=swap"
     )
+    link(rel: "stylesheet", href: Docs.site_path("/pagefind/pagefind-component-ui.css"))
     link(rel: "stylesheet", href: Docs.site_path("/docs.css"))
+    script(src: Docs.site_path("/pagefind/pagefind-component-ui.js"), type: "module")
   end
 
   def render_sidebar
     a(class: "sidebar-logo", href: Docs.site_path("/en/user_manual/overview/index.html")) do
       img(src: Docs.site_path("/brand/logo-yellow.svg"), alt: "Loomio")
+    end
+
+    div(class: "sidebar-search", role: "search", aria_label: "Search Loomio Help") do
+      tag(
+        :"pagefind-config",
+        bundle_path: Docs.site_path("/pagefind/"),
+        base_url: Docs.site_path("/")
+      )
+      tag(
+        :"pagefind-modal-trigger",
+        placeholder: "Search",
+      )
     end
 
     nav(aria_label: "Help contents") do

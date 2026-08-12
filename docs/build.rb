@@ -88,6 +88,17 @@ module Docs
       source_path.end_with?("/index.md")
     end
 
+    def changelog?
+      source_path == Docs::CHANGELOG_INDEX || (
+        source_path.start_with?("user_manual/changelog/") &&
+        File.basename(source_path).match?(Docs::CHANGELOG_PATTERN)
+      )
+    end
+
+    def search_indexed?
+      !source_path.start_with?("policy/") && !changelog?
+    end
+
     def legacy_index_path
       return unless index?
 
@@ -174,6 +185,7 @@ module Docs
       end
       write_landing_redirect
       write_sitemap(pages)
+      build_search_index
       validate_site(pages)
 
       puts "built #{pages.length} pages in #{OUTPUT_ROOT.relative_path_from(SOURCE_ROOT.parent)}"
@@ -577,6 +589,18 @@ module Docs
       FileUtils.cp(SOURCE_ROOT.join("docs.css"), OUTPUT_ROOT.join("docs.css"))
       FileUtils.cp(SOURCE_ROOT.join("docs.js"), OUTPUT_ROOT.join("docs.js"))
       OUTPUT_ROOT.join("robots.txt").write("Sitemap: #{SITE_ORIGIN}#{Docs.site_path("/sitemap.xml")}\n")
+    end
+
+    def build_search_index
+      binary = ENV.fetch("PAGEFIND_BINARY", SOURCE_ROOT.join("../vue/node_modules/.bin/pagefind").to_s)
+      license = ENV.fetch("PAGEFIND_LICENSE", SOURCE_ROOT.join("../vue/node_modules/pagefind/LICENSE/LICENSE").to_s)
+      raise "Pagefind binary not found at #{binary}; run npm install in vue/" unless File.executable?(binary)
+      raise "Pagefind license not found at #{license}; run npm install in vue/" unless File.file?(license)
+
+      success = system(binary, "--site", OUTPUT_ROOT.to_s, "--output-subdir", "pagefind")
+      raise "Pagefind indexing failed" unless success
+
+      FileUtils.cp(license, OUTPUT_ROOT.join("pagefind/LICENSE"))
     end
 
     def write_redirects(pages_by_url)
