@@ -17,7 +17,9 @@ When you are notified, Loomio will send a notification within the app and, by de
 
 The bell icon in the top-right is where notifications are accessed within the app; a number will display the number of notifications you have yet to read.
 
-![](notification_bell.png)
+![](in_app_notifications.png)
+
+The notification list tells you when someone mentions you, invites you to vote, starts a discussion, or shares other activity that needs your attention. Select a notification to open the related discussion or poll.
 
 ## Email notifications
 

@@ -125,6 +125,66 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to '/email_preferences'
   end
 
+  def setup_manual_oatmilk_notifications
+    group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    schedule_discussion = group.discussions.find_by!(title: 'Weekly production schedule')
+    mention_comment = Comment.new(
+      parent: discussion,
+      body: 'Alex, could you confirm the cafe collection schedule before the trial begins?'
+    )
+    CommentService.create(comment: mention_comment, actor: production_lead)
+
+    sales_lead.notifications.delete_all
+    [
+      {
+        kind: 'new_discussion',
+        eventable: schedule_discussion,
+        actor: coordinator,
+        title: schedule_discussion.title,
+        created_at: 2.hours.ago
+      },
+      {
+        kind: 'poll_announced',
+        eventable: poll,
+        actor: coordinator,
+        title: poll.title,
+        poll_type: I18n.t('poll_types.proposal'),
+        created_at: 1.hour.ago
+      },
+      {
+        kind: 'user_mentioned',
+        eventable: mention_comment,
+        actor: production_lead,
+        title: discussion.title,
+        created_at: 5.minutes.ago
+      }
+    ].each do |attributes|
+      event = Event.create!(
+        kind: attributes.fetch(:kind),
+        eventable: attributes.fetch(:eventable),
+        user: attributes.fetch(:actor),
+        created_at: attributes.fetch(:created_at)
+      )
+      Notification.create!(
+        user: sales_lead,
+        actor: attributes.fetch(:actor),
+        event: event,
+        created_at: attributes.fetch(:created_at),
+        translation_values: {
+          name: attributes.fetch(:actor).name,
+          title: attributes.fetch(:title),
+          poll_type: attributes[:poll_type]
+        }.compact
+      )
+    end
+
+    sign_in sales_lead
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_bookmarks
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     comment = discussion.comments.first

@@ -1,8 +1,9 @@
 # Help
 
 - [Overview](user_manual/overview/index.md)
-  - [Orientation tour](user_manual/overview/orientation.md)
+  - [Getting around Loomio](user_manual/overview/orientation.md)
   - [How to participate](user_manual/overview/how-to-participate.md)
+  - [Finding content](user_manual/overview/finding-content.md)
 
 - [Making decisions](user_manual/making_decisions/index.md)
   - [Simple decision process](user_manual/making_decisions/simple_decision_process.md)

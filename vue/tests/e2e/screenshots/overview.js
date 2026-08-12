@@ -25,15 +25,6 @@ function openProposal(page, mode) {
   page.waitFor('.poll-common-card__title');
 }
 
-function postOwnComment(page) {
-  openCommentDiscussion(page);
-  page.fillIn('#add-comment .comment-form .ProseMirror', 'I can document the cleaning time during the trial.');
-  page.click('#add-comment .comment-form__submit-button');
-  page.pause(600);
-  page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('I can document the cleaning time')).classList.add('manual-own-comment')");
-  page.waitFor('.manual-own-comment');
-}
-
 module.exports = {
   '@tags': ['manual-screenshot'],
 
@@ -42,6 +33,47 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openGroup(page);
     screenshot.captureElement('overview/group_example', '.group-page', {width: 1280, height: 2000});
+  },
+
+  'orientation_group': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openGroup(page);
+    screenshot.captureRegion('overview/orientation_group', [
+      '.group-page .v-img',
+      '.group-page__name',
+      '.group-page__description',
+      '.group-page .v-tabs'
+    ], {width: 1100, height: 900, padding: 16});
+  },
+
+  'orientation_discussion': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_discussion_intro');
+    page.waitFor('.strand-card');
+    screenshot.captureRegion('overview/orientation_discussion', [
+      '.strand-header',
+      '.context-panel__description',
+      '.new-comment'
+    ], {
+      width: 1100,
+      height: 1500,
+      padding: 24,
+      scrollSelector: '.strand-card',
+      scrollBlock: 'start'
+    });
+  },
+
+  'orientation_proposal': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openDiscussion(page);
+    screenshot.captureRegion('overview/orientation_proposal', [
+      '.poll-common-card__title',
+      '.poll-common-details-panel__details',
+      '.poll-common-action-panel'
+    ], {width: 1100, height: 1900, padding: 12, includeThreadGutters: true});
   },
 
   'sidebar': (test) => {
@@ -61,34 +93,37 @@ module.exports = {
     screenshot.captureElement('overview/user_settings_sidebar', '.sidenav-left', {width: 1100, height: 1700});
   },
 
-  'notifications_demo': (test) => {
+  'in_app_notifications': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    page.loadPath('setup_all_notifications');
+    page.loadPath('setup_manual_oatmilk_notifications');
     page.clickAndWait('.notifications__button', '.notifications__dropdown');
-    screenshot.captureRegion('overview/notifications_demo', ['.notifications__button', '.notifications__dropdown'], {
+    page.expectText('.notifications__dropdown', 'mentioned you');
+    page.expectText('.notifications__dropdown', 'invited you to vote');
+    page.expectText('.notifications__dropdown', 'started a discussion');
+    screenshot.captureRegion('users/email_settings/in_app_notifications', ['.notifications__button', '.notifications__dropdown'], {
       width: 1100,
-      height: 1500,
+      height: 900,
       padding: 16
     });
   },
 
-  'email_settings_full': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    page.loadPath('setup_manual_oatmilk_email_settings');
-    page.waitFor('.email-settings-page');
-    screenshot.captureElement('overview/email_settings_full', '.email-settings-page', {width: 1100, height: 2600});
-  },
-
-  'search_strategy': (test) => {
+  'global_search': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openGroup(page);
-    page.execute("Array.from(document.querySelectorAll('.discussions-panel button')).find(el => el.textContent.includes('Search')).click()");
+    screenshot.capture('overview/search_button', {
+      width: 1280,
+      height: 900,
+      spotlight: {
+        selector: '.v-app-bar button[title="Search"]',
+        padding: 10,
+        radius: 24
+      }
+    });
+    page.clickAndWait('.v-app-bar button[title="Search"]', '.search-modal');
     page.waitFor('.search-modal');
-    page.fillIn('.search-modal input', 'bottle');
-    page.fillInAndEnter('.search-modal input', '');
+    page.fillInAndEnter('.search-modal input', 'bottle');
     page.pause(500);
     screenshot.captureElement('overview/search_strategy', '.search-modal', {width: 1100, height: 1600});
   },
@@ -106,57 +141,6 @@ module.exports = {
     });
   },
 
-  'discussion_example': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.execute("document.querySelector('.v-app-bar').style.visibility = 'hidden'");
-    screenshot.captureRegion('overview/discussion_example', ['.strand-card'], {
-      width: 1280,
-      height: 2400,
-      padding: 16,
-      scrollSelector: '.strand-card'
-    });
-  },
-
-  'discussion_seen_by_example': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.clickAndWait('.thread-sidebar .action-dock__button--seen_by', '.v-overlay--active .v-card');
-    screenshot.captureElement('overview/discussion_seen_by_example', '.v-overlay--active .v-card', {width: 1100, height: 1200});
-  },
-
-  'discussion_notification_example': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.clickAndWait('.thread-sidebar .action-dock__button--users_notified', '.v-overlay--active .v-card');
-    screenshot.captureElement('overview/discussion_notification_example', '.v-overlay--active .v-card', {width: 1100, height: 1400});
-  },
-
-  'discussion_timeline_example': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    screenshot.captureRegion('overview/discussion_timeline_example', [
-      '.thread-sidebar .v-list:first-child',
-      '.thread-sidebar .v-list:last-child'
-    ], {width: 1100, height: 1900, padding: 16});
-  },
-
-  'polls_tab': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openGroup(page);
-    page.clickAndWait('.group-page-polls-tab', '.polls-panel');
-    screenshot.captureRegion('overview/polls_tab', ['.group-page .v-tabs', '.polls-panel'], {
-      width: 1280,
-      height: 1800,
-      padding: 16
-    });
-  },
-
   'comment_add': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openCommentDiscussion(page);
@@ -166,13 +150,6 @@ module.exports = {
       height: 1600,
       spotlight: {selector: '#add-comment .comment-form', padding: 12, radius: 14}
     });
-  },
-
-  'comment_edit': (test) => {
-    const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    postOwnComment(page);
-    page.clickAndWait('.manual-own-comment .action-dock__button--edit_comment', '.edit-comment-form');
-    screenshot.captureElement('overview/comment_edit', '.edit-comment-form', {width: 1100, height: 1200});
   },
 
   'comment_reply': (test) => {
@@ -256,18 +233,5 @@ module.exports = {
     openProposal(page, 'outcome');
     page.waitFor('.poll-common-outcome-panel');
     screenshot.captureRegion('overview/proposal_outcome', ['.poll-common-card__title', '.poll-common-outcome-panel'], {width: 1100, height: 1800, padding: 16});
-  },
-
-  'discussion_context_example': (test) => {
-    const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    screenshot.captureElement('overview/discussion_context_example', '.context-panel', {width: 1100, height: 1500});
-  },
-
-  'discussion_comments_example': (test) => {
-    const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page);
-    page.waitFor('.new-comment');
-    screenshot.captureElement('overview/discussion_comments_example', '.strand-card', {width: 1100, height: 1800});
   }
 };

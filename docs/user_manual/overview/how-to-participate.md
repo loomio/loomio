@@ -12,10 +12,6 @@ When you have written your text, use **Post Comment** to instantly publish the c
 
 ![](comment_add.png#width-90)
 
-If you want to change anything you can edit the comment by clicking on the pencil icon beneath your comment.
-
-![](comment_edit.png#width-90)
-
 ### Reply to a comment
 
 You can reply to someone's comment by clicking on the reply icon beneath the comment.

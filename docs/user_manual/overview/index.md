@@ -8,6 +8,34 @@ It enables you to bring people together to discuss topics, explore proposals and
 <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## How Loomio works
+
+Loomio has three main parts: groups, discussions, and polls.
+
+### Groups
+
+A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and provides access to its discussions, polls, members, and files.
+
+![](orientation_group.png)
+
+### Discussions
+
+Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move the discussion towards an outcome.
+
+![](orientation_discussion.png)
+
+Over time, discussions create a searchable record of the information considered and the decisions made by your group.
+
+### Polls and proposals
+
+Polls help a group understand preferences, gather advice, and make decisions. Different poll templates support different processes. A proposal asks people to respond to a suggested course of action and explain the reason for their response.
+
+![](orientation_proposal.png)
+
+Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
+
+To learn where these parts appear in the interface, see [Getting around Loomio](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
+
 ## Try it out
 
 The best way to learn about Loomio is to [start a free trial](https://www.loomio.com/try)
