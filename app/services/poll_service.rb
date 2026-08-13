@@ -137,9 +137,7 @@ class PollService
 
     Poll.transaction do
       poll.lock!
-      if poll.detached_anonymous? && poll.anonymous_ballots.exists?
-        raise CanCan::AccessDenied
-      end
+      raise CanCan::AccessDenied if poll.detached_anonymous? && !poll.active?
 
       TopicService.add_users(
         topic:  poll.topic,
@@ -363,7 +361,15 @@ class PollService
     return if group_id.nil?
 
     Poll.active.joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
-      create_anyone_can_vote_stances(poll)
+      if poll.detached_anonymous?
+        Poll.transaction do
+          poll.lock!
+          create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {})
+          poll.update_counts!
+        end
+      else
+        create_anyone_can_vote_stances(poll)
+      end
     end
   end
 

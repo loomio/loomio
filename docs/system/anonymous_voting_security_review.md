@@ -17,7 +17,7 @@ This review covers the detached anonymous voting implementation and the migratio
 ## Submission boundary
 
 - The dedicated service authenticates and authorizes the voter, locks the poll and their electorate row, validates choices against the poll, creates the ballot, and marks participation in one transaction.
-- Ballot submission, poll closing, and specified-electorate changes serialize on the same poll-row lock. A vote cannot cross the closing boundary, and a voter cannot be added as the first ballot arrives.
+- Ballot submission, poll closing, and electorate changes serialize on the same poll-row lock. A vote cannot cross the closing boundary, and each voter addition completes atomically before that voter can submit a ballot.
 - A used electorate row cannot submit again. Concurrent requests by the same voter serialize on the same electorate-row lock.
 - The response contains only `recorded: true`.
 - Unsupported fields, including reasons and attachments, are rejected. Ballot request parameters are filtered from application logs.
@@ -76,7 +76,7 @@ Operational rollout, canary conversion, batch auditing, and removal of stance-sp
 
 ## Residual risks
 
-The application-level design does not protect against database, backup, host, process-memory, transaction-log, network-timing, mail-system, or server-log operators. Small electorates, unanimous results, distinctive aggregate patterns, and information voters disclose elsewhere can also permit inference. Hiding named participation status below three votes reduces one disclosure risk but cannot prevent inference from the aggregate result itself. The UI and user documentation must not describe the feature as cryptographically anonymous or protected from infrastructure operators.
+The application-level design does not protect against database, backup, host, process-memory, transaction-log, network-timing, mail-system, or server-log operators. Small electorates, unanimous results, distinctive aggregate patterns, and information voters disclose elsewhere can also permit inference. A coordinator or cooperating participants who know every ballot except one can subtract their ballots from the aggregate result to infer the remaining ballot; adding voters after voting starts can make that composition attack easier to arrange. Hiding named participation status below three votes reduces one disclosure risk but cannot prevent inference from the aggregate result itself. The UI and user documentation must not describe the feature as cryptographically anonymous or protected from infrastructure operators.
 
 ## Validation evidence for manual review
 

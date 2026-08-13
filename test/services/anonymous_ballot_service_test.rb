@@ -195,7 +195,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_not_includes PollExporter.new(@poll).to_csv, @poll.anonymous_ballots.first.id
   end
 
-  test "specified electorate invitations create no stances and freeze after the first ballot" do
+  test "specified electorate invitations create no stances and remain open after the first ballot" do
     poll = PollService.create(
       params: {
         title: "Specified anonymous poll",
@@ -230,16 +230,21 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       actor: @voter
     )
 
-    assert_raises(CanCan::AccessDenied) do
-      PollService.invite(
-        poll: poll,
-        actor: @admin,
-        params: { recipient_user_ids: [users(:alien).id] }
-      )
-    end
+    late_voter = users(:alien)
+    voters = PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_emails: [late_voter.email] }
+    )
+
+    assert_equal [late_voter.id], voters.pluck(:voter_id)
+    assert_not poll.anonymous_poll_voters.find_by!(voter: late_voter).group_member
+    assert_equal 2, poll.reload.voters_count
+    assert_equal 1, poll.undecided_voters_count
+    assert_equal 1, poll.anonymous_ballots.count
   end
 
-  test "specified electorate freezes when the first ballot arrives at the poll lock boundary" do
+  test "late specified electorate invitations take the shared poll lock" do
     poll = PollService.create(
       params: {
         title: "Specified anonymous poll",
@@ -257,22 +262,50 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       actor: @admin,
       params: { recipient_user_ids: [@voter.id] }
     )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: @voter
+    )
     locked = false
-    ballots = poll.anonymous_ballots
 
     poll.stub(:lock!, -> {
       locked = true
       poll
     }) do
-      ballots.stub(:exists?, -> { locked }) do
-        assert_raises(CanCan::AccessDenied) do
-          PollService.invite(
-            poll: poll,
-            actor: @admin,
-            params: { recipient_user_ids: [users(:alien).id] }
-          )
-        end
-      end
+      PollService.invite(
+        poll: poll,
+        actor: @admin,
+        params: { recipient_emails: [users(:alien).email] }
+      )
+    end
+
+    assert locked
+    assert poll.anonymous_poll_voters.exists?(voter_id: users(:alien).id)
+  end
+
+  test "specified electorate invitations are rejected after an anonymous poll closes" do
+    poll = PollService.create(
+      params: {
+        title: "Specified anonymous poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: @admin
+    )
+    PollService.close(poll: poll, actor: @admin)
+
+    assert_raises(CanCan::AccessDenied) do
+      PollService.invite(
+        poll: poll,
+        actor: @admin,
+        params: { recipient_emails: [users(:alien).email] }
+      )
     end
 
     refute poll.anonymous_poll_voters.exists?(voter_id: users(:alien).id)
