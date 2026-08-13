@@ -30,10 +30,10 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: install libvips
+    - name: install image processing tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y libvips
+        sudo apt-get install -y imagemagick libvips
     - name: git checkout
       uses: actions/checkout@v5
     - name: install ruby
