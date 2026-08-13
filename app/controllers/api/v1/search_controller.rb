@@ -3,16 +3,27 @@ class Api::V1::SearchController < Api::V1::RestfulController
     guest_discussion_ids = Topic.where(id: current_user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id)
 
     if group_or_org_id.to_i == 0
-      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
+      rel = PgSearch::Document.where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
     end
 
     if group_or_org_id.to_i > 0
-      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids)", group_ids: group_ids)
+      rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
     end
 
     if group_or_org_id.blank?
-      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
+      rel = PgSearch::Document.where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
     end
+
+    if params[:tag]
+      tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
+      rel = rel.where(topic_id: tag_topic_ids)
+    end
+
+    if %w[Discussion Comment Poll Stance Outcome].include?(params[:type])
+      rel = rel.where(searchable_type: params[:type])
+    end
+
+    candidate_rel = rel
 
     visible_topic = TopicQuery
       .visible_to(
@@ -41,24 +52,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
       search_documents[:discussion_id].eq(nil).or(kept_discussion.arel.exists)
     )
 
-    if params[:tag]
-      tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      rel = rel.where(topic_id: tag_topic_ids)
-    end
-
-    if %w[Discussion Comment Poll Stance Outcome].include?(params[:type])
-      rel = rel.where(searchable_type: params[:type])
-    end
-
-    if params[:order] == 'authored_at_desc'
-      rel = rel.reorder('authored_at desc')
-    end
-
-    if params[:order] == 'authored_at_asc'
-      rel = rel.reorder('authored_at asc')
-    end
-
-    results = rel.limit(20).with_pg_search_highlight.all
+    results = SearchQuery.new(
+      relation: rel,
+      candidate_relation: candidate_rel,
+      query: params[:query],
+      order: params[:order]
+    ).results
     # results = results.order().offset().limit()
 
     groups = access_by_id(Group.where(id: results.map(&:group_id)))
@@ -72,7 +71,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
     )
 
     stance_events = access_by_id(
-      Event.where("topic_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
+      Event.where("topic_id is not null").where(eventable_type: "Stance", eventable_id: results.filter { |r| r.searchable_type == 'Stance' }.map(&:searchable_id)),
       :eventable_id
     )
 
