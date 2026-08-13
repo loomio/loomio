@@ -429,6 +429,29 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, json['stances'].length
   end
 
+  test "poll create can invite a voter after an anonymous ballot is submitted" do
+    poll = create_test_poll(anonymous: true)
+    voter = users(:user)
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [voter.id] }
+    )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: voter
+    )
+
+    post :create, params: { poll_id: poll.id, recipient_emails: ['late-voter@example.com'] }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['users'].length
+    assert poll.anonymous_poll_voters.joins(:voter).exists?(users: { email: 'late-voter@example.com' })
+    assert_equal 1, poll.reload.undecided_voters_count
+  end
+
   test "poll create reports the invitation rate limit" do
     poll = create_test_poll
     error = ThrottleService::LimitReached.new('Throttled')

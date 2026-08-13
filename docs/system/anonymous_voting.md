@@ -95,6 +95,7 @@ The application-level guarantee does not protect against:
 - malicious changes to the running application;
 - a voter identifying themselves outside Loomio;
 - statistical inference from a small electorate;
+- aggregate subtraction when a coordinator or other participants know every ballot except one, including when a voter is added after voting starts;
 - inference from a distinctive ballot pattern; or
 - information voluntarily shared by voters.
 
@@ -210,7 +211,7 @@ When voting opens, Loomio must:
 4. make the poll eligible for the hourly automatic-reminder check; and
 5. avoid creating named or undecided stance records.
 
-The implementation must define whether the electorate is frozen when voting opens and whether late invitations are permitted. The selected policy must not create a ballot-to-voter correlation path.
+Coordinators may add eligible voters while the poll is open, including after ballots have been submitted. Group members added to an unrestricted group poll also become eligible while it remains open. Existing electorate records cannot be removed, and late additions must not create a ballot-to-voter correlation path.
 
 ## Ballot submission
 
@@ -671,8 +672,8 @@ The migration is complete only after Release 2 is deployed and the final product
 
 1. Native detached results and ordinary user-facing application exports expose aggregates only, not individual ballots or ballot patterns. The closed-poll JSON group portability archive is the documented operational exception required for restoration. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
 2. Poll coordinators may view invitation provenance. They may view named participation status only once at least three people have voted. Result access alone does not grant this permission.
-3. Group polls establish their electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
-4. Coordinators may add specified voters until the first ballot is submitted. The electorate is frozen after that point.
+3. Group polls establish their initial electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
+4. Coordinators may add specified voters while voting is open, including after ballots have been submitted. New group members become eligible in unrestricted group polls while voting remains open. Existing electorate records cannot be removed.
 5. `closing_at` may be extended while voting is open. The hourly check uses the current deadline without maintaining queued-job state. A poll receives at most one automatic closing reminder, including after an extension.
 6. The automatic reminder is sent when a poll lasting at least 24 hours enters its final 24 hours. Polls lasting less than 24 hours receive no automatic closing reminder.
 7. There is no minimum electorate size.

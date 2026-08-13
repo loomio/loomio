@@ -414,6 +414,26 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal count + 1, poll.voters.count
   end
 
+  test "adds new group members to active anonymous polls after voting starts" do
+    poll = create_poll(specified_voters_only: false, anonymous: true)
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id, score: 1 }]
+      ),
+      actor: @user
+    )
+    voters_count = poll.reload.voters_count
+    undecided_voters_count = poll.undecided_voters_count
+
+    new_member = create_unique_user("newanonymousmember")
+    Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
+    PollService.group_members_added(@group.id)
+
+    assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
+    assert_equal voters_count + 1, poll.reload.voters_count
+    assert_equal undecided_voters_count + 1, poll.undecided_voters_count
+  end
+
   test "does not add bot users to polls" do
     poll = create_poll(specified_voters_only: false)
     PollService.group_members_added(@group.id)
