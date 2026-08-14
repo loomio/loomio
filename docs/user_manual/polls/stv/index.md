@@ -2,8 +2,6 @@
 
 **Single Transferable Vote (STV)** is a proportional representation voting method for electing multiple winners from a field of candidates. It ensures that elected candidates proportionally represent the diversity of views among voters.
 
-STV is widely used by organizations like DSA, YDSA, cooperatives, unions, and local governments (e.g., Scotland, Ireland, and Australia) to run fair multi-winner elections.
-
 ## When to use STV
 
 Use an STV Election when you need to:
@@ -13,11 +11,15 @@ Use an STV Election when you need to:
 - Run elections where voters rank candidates by preference
 
 >[!NOTE]
->STV is **not** the same as Loomio's ["Ranked Choice" poll](https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice), which is a simpler score-based ranking for choosing a single best option. STV handles multi-winner elections with vote transfers and elimination rounds.
+>STV is **not** the same as Loomio's [Rank poll](/en/user_manual/polls/rank/), which is a simpler score-based ranking for choosing a single best option. STV handles multi-winner elections with vote transfers and elimination rounds.
 
 ## Creating an STV Election
 
 When starting a poll, select **STV Election** as the poll type, then add the candidates as the poll options. You can customize the poll by setting the **number of seats**, the **counting method**, and the **quota type**.
+
+In this example, Oatmilk Cooperative is electing three people to oversee its returnable packaging trial. The form explains the role, lists five candidates, and uses Scottish STV with the Droop quota.
+
+![](form.png)
 
 ### Number of seats
 

@@ -1,139 +1,31 @@
 # Polls
 
-Polls help you involve people in decisions.  Use polls to engage people, survey opinion, seek contributions, uncover information, identify priorities, vote on issues, approve documents, organize events and hold elections.
+Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
 
-![](polls_templates.png)
+## Simple poll
 
-## Choose
+[Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist.
 
-_Find the most popular option_
+## Score poll
 
-Before making a decision, find which option(s) people care most about.
+[Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options.
 
-Choose helps you find the most popular option. Participants pick from a list — you can configure whether they select one or multiple options.
+## Dot vote
 
-Write any details about the options in the details field, then enter the name of the option and click + to add.
+[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another.
 
-![](new_simple_poll.png)
+## Ranked choice
 
-Set the **Minimum choices** and **Maximum choices** a voter may choose.  Leave the maximum choice as 1 for a single choice poll.
+[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option.
 
-You can use the pencil icon alongside each option to add a meaning, or elaboration, of the option.
+## Time poll
 
-![](poll_edit_option.png)
+[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones.
 
-### Advanced Settings
+## STV Election
 
-As well as the usual Poll Settings, Choose includes a setting: 
+[STV Elections](/en/user_manual/polls/stv/) let participants rank candidates in a proportional, multi-winner election. Use STV to elect a committee, board, or group of delegates.
 
-**Show options in random order** - helpful if you are concerned the order of options may bias voting.
+## Other specialized method
 
-![](new_simple_poll_random.png)
-
-### Voting
-
-People invited to the poll can choose options and leave a reason for their choice.
-
-![](new_simple_poll_voting.png)
-
-### Results 
-
-Results update as voting takes place.
-
-![](poll_results.png)
-
-### Outcome
-
-When the poll closes, state an **Outcome** and say what will happen next.
-
-![](poll_outcome.png)
-
-## Score
-
-_Measure the level of support for each option_
-
-![](score_label.png)
-
-Score lets you measure the group's level of support for each option. Participants evaluate every option by assigning a score on a sliding scale, so you can see not just what people prefer, but by how much.
-
-'Anonymous voting' and 'Shuffle options' settings are common for Score to reduce any voting bias.
-
-![](score_options.png)
-
-Participants are asked to evaluate each option and assign a score by moving a slider along a scale.
-
-![](score_voting.png)
-
-Results are displayed graphically along with a table for each option showing total points, mean points and the number of voters.
-
-![](score_results.png)
-
-Examples:
-
-* How would you rate your interest in these topics for the next meeting agenda?
-* How important are each of these principles to you?
-* Which speakers would you like at the next conference?
-
-## Allocate
-
-_Reveal priorities when there are trade-offs_
-
-![](dot_vote_label.png)
-
-Allocate helps you understand a group's priorities when there are trade-offs. Each participant gets a budget of points to spread across the options — they can go all-in on one option or distribute their points across several. Because the budget is limited, every point spent is a genuine signal of priority.
-
-![](dot_vote_options.png)
-
-Participants are each given a set number of dots.  You decide how many.
-
-![](dot_vote_voting.png)
-
-They place dots next to options presented that they like.  Participants can place all their dots on a single option or spread over multiple options.  
-
-As participants allocate dots, they may exceed the dot budget limit and so are encouraged to consider how they spend their dots carefully.
-
-![](dot_vote_results.png)
-
-Options with the most dots “win”.  The results table provides additional data to help you analyse results.
-- % of points
-- Points
-- Mean
-- Voters 
-
-Examples:
-
-* Choose strategic priorities for the year ahead.
-* Choose agenda items for meeting, conference or General Assembly.
-* Allocate spend in a fixed budget.
-
-## Rank
-
-_Find the group's order of preference_
-
-![](ranked_choice_label.png)
-
-Rank reveals the group's order of preference. Participants drag and drop the options to arrange them from most to least preferred, and results show the overall ranking. Particularly useful when you have a large number of options or are holding an election.
-
-'Anonymous voting' and 'Shuffle options' settings are common for Rank to reduce any voting bias.
-
-![](ranked_choice_options.png)
-
-You can choose the number of votes people can give and rank. 
-
-![](ranked_choice_voting.png)
-
-Voters drag and drop options in order of preference (#1 being your most preferred option). 
-
-![](ranked_choice_results.png)
-
-Results are showed in ranked order. The results table provides additional data to help you analyse results.
-- Rank
-- % of points
-- Points
-- Mean
-
-Examples:
-
-* Electing directors to governance board.
-* What topics should we focus on at our next conference?
-
+Loomio also includes a Question round for collecting questions without voting. Group administrators can make it available from [Poll templates](/en/user_manual/polls/poll_templates/).

@@ -1,65 +1,72 @@
 # Discussion templates
 
-Discussion templates let you save a reusable starting point for discussions your group runs regularly. A template can include a process name, subtitle, description, default title, tags, and recommended poll templates -- so people can start a well-structured discussion in a few clicks.
+Discussion templates provide a reusable starting point for discussions your group runs regularly. A template can supply instructions, a title, context, tags, invite settings, and recommended poll templates.
 
-## What are discussion templates
+Use a template when a discussion follows a repeatable process, such as a project review, advice process, meeting preparation, funding decision, or document approval. Members can still edit the supplied content before starting each discussion.
 
-When someone starts a new discussion in a group, they see a list of the group's discussion templates. Clicking a template pre-fills the new discussion with the template's content, making it easy to follow a consistent process.
+## Choose a template
 
-Every group comes with a set of default templates. Group admins can edit, hide, rearrange, or create new templates to suit the group's needs.
+Select **Start a new discussion** from the group page to see the group's available templates. Each item has a process name and subtitle explaining its purpose.
 
-## Creating a template
+![](list.png)
 
-1. Go to your group and click **Start a new discussion**.
-2. Click the **New template** button at the top right of the template list.
-3. Fill in the template form:
-   - **Process name** -- a short name for the template (e.g. "Weekly standup").
-   - **Process subtitle** -- a brief description shown in the template list (e.g. "A short check-in with the team each week").
-   - **Process introduction** -- detailed instructions shown at the top of the discussion when people use this template.
-   - **Default title** -- optionally pre-fill the discussion title (e.g. "Standup - January 15").
-   - **Example title** -- placeholder text shown in the title field as a hint.
-   - **Tags** -- category tags to apply to discussions created from this template.
-   - **Example description** -- sample text for the discussion description that people can edit.
-   - **Poll templates** -- add any poll templates that are part of this process. These will appear as recommended polls when someone uses the template.
-4. Click **Save**.
+Select a template to open a pre-filled discussion form, or select **New template** to browse examples and create one. Starting a blank discussion is also a template choice.
 
-## Using templates to start discussions
+## Example: bottle trial review
 
-1. Go to your group and click **Start a new discussion**.
-2. You'll see the list of discussion templates for your group.
-3. Click a template to start a new discussion pre-filled with the template's content.
-4. Edit the title, description, and other fields as needed, then start the discussion.
+Oatmilk Cooperative reviews its returnable-bottle trial after each cycle. Its template reminds members to read the weekly report and consider return rates, washing records, cafe feedback, and transport costs. It also recommends a Sense check followed by Consent.
 
-## Hiding and showing templates
+This is a useful template because the purpose and evidence remain consistent while the observations and decisions change each cycle.
 
-Group admins can control which templates appear in the template list:
+## Create or edit a template
 
-- Click the **...** menu on any template to **Hide** it. Hidden templates won't appear when starting a new discussion.
-- Click **More templates** at the bottom of the template list to see hidden templates.
-- Click the **...** menu on a hidden template to **Unhide** it.
-- Admins can also **Rearrange** templates to change their order in the list.
-- Default templates that came with the group can be hidden or customized by clicking **Edit** in the **...** menu, which creates a copy you can modify.
+Group administrators can select **New template** from the template list, choose an example or blank template, and then adapt it. Use the action menu beside an existing template to edit it.
 
-## Members can create templates
+![](form.png)
 
-By default, only group admins can create and manage templates. If you'd like to allow regular members to contribute templates too, enable the **Members can create templates** setting:
+The form includes:
 
-1. Go to your group settings (click the gear icon or **Edit group settings**).
-2. Open the **Permissions** tab.
-3. Check **Members can create templates**.
-4. Save.
+- **Process name**: the short name shown in the template list;
+- **Process subtitle**: a one-line explanation of when to use it;
+- **Process introduction**: instructions shown above the new discussion form;
+- **Group**: whether the template starts a group or direct discussion;
+- **Default title**: a title supplied to each new discussion;
+- **Example title**: placeholder guidance when there is no default title;
+- **Tags**: tags automatically applied to the discussion;
+- **Context**: headings, questions, links, or other editable starting content;
+- **Invite**: whether to invite everyone in the group by default;
+- **Poll templates**: polls or proposals recommended for this process;
+- **Concurrent polls**: whether more than one poll may be open at a time; and
+- **Comment length**: an optional limit for replies.
 
-When this setting is enabled:
-- Members can create new discussion and poll templates.
-- Templates created by members are **hidden by default** so they don't immediately appear in the template list.
-- An admin can review member-created templates and **unhide** them to make them available to the group.
-- Members can edit and delete their own templates, but cannot modify templates created by others.
+Use a default title only when it will remain accurate. Otherwise, provide an example title that prompts the author to name the particular review, period, document, or decision.
+
+## Start a discussion from a template
+
+Select the template, review the process instructions, and edit the supplied title and context for this instance. Check the invite list before selecting **Start discussion**.
+
+![](use.png)
+
+Recommended poll templates appear in the form as a guide to the process. They do not start automatically. Once the discussion is open, start the recommended poll when the group reaches the appropriate stage.
+
+## Manage the template list
+
+Group administrators can use the action menu beside a template to:
+
+- edit its content and settings;
+- hide it from the main template list;
+- unhide it from **Hidden templates**;
+- rearrange the order of visible templates; or
+- delete a template the group no longer needs.
+
+Hiding a template preserves it for later use. Deleting it removes the template but does not delete discussions previously created from it.
+
+## Let members create templates
+
+By default, group administrators manage templates. An administrator can enable **Members can create templates** under **Group settings** → **Permissions**.
+
+When enabled, members can create discussion and poll templates and manage templates they authored. Group administrators can manage every template in the group. A member-created template is available in the group's template list after it is saved, so agree on naming and review practices before enabling this permission.
 
 ## Browse example templates
 
-Loomio provides a gallery of example templates created by other groups. To browse them:
-
-1. Go to your group's discussion template list.
-2. Click **More templates** to expand the list.
-3. Click **Browse example templates** to see the public template gallery.
-4. Click a template to preview it, then copy or adapt it for your group.
+Select **New template** to browse Loomio's example processes. Search or filter the gallery, choose an example, and edit the copy for your group. The example is not added to the group until you save it.

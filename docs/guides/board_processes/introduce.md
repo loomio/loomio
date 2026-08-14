@@ -67,9 +67,7 @@ Before you launch into new work on Loomio, you might want to check that everyone
 Start a thread asking just that: "Please reply to my first thread on Loomio"
 Maybe add a question like: "What device do you use most frequently to access the internet?"
 
-Then start an [Opt-in poll](https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#opt-in): "I know how to vote in a Loomio poll"
-Invite members to leave a reason describing their experience.
+Then start a low-stakes [Proposal](/en/user_manual/polls/proposals/), such as: "We are ready to begin using Loomio for board decisions."
+Invite members to select a response and leave a reason describing their experience.
 
 When your members know how to sign in, write a comment and vote in a poll, they have can participate effectively in your Loomio group.
-
-

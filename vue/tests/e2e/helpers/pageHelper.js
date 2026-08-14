@@ -63,13 +63,7 @@ module.exports = function(test, browser) {
       return test.execute(function(selector, html) {
         const editor = document.querySelector(selector);
         editor.focus();
-
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(editor);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand('insertHTML', false, html);
+        editor.innerHTML = html;
         editor.dispatchEvent(new InputEvent('input', {
           bubbles: true,
           inputType: 'insertText'

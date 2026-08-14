@@ -1,5 +1,26 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
+const richText = require('../helpers/oatmilkRichText');
+
+function addOption(page, name) {
+  page.clickAndWait('.poll-common-form__add-option-btn', '.poll-common-option-form');
+  page.fillIn('.poll-option-form__name input', name);
+  page.clickAndWait('.poll-option-form__done-btn', '.poll-common-form__add-option-btn');
+}
+
+function openStvForm(page) {
+  page.loadPath('setup_manual_oatmilk_new_poll?poll_type=stv');
+  page.waitFor('.poll-common-form');
+  page.fillIn('.poll-common-form-fields__title input', 'Elect the reusable packaging committee');
+  page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context('new-stv-election', [
+    'Elect three people to oversee bottle deposits, cafe collections, washing, and the review of the six-week trial.',
+    'Rank as many candidates as you can support so your vote can transfer if a candidate is elected or eliminated.',
+    'The three elected candidates will report to the cooperative after the trial.'
+  ]));
+  ['Samira Patel', 'Alex Morgan', 'Taylor Reed', 'Morgan Price', 'Riley Thompson'].forEach(name => addOption(page, name));
+  page.clear('.poll-common-form .lmo-number-input input');
+  page.fillIn('.poll-common-form .lmo-number-input input', '3');
+}
 
 function openStvPoll(page, results = false) {
   page.loadPath(`setup_manual_oatmilk_stv${results ? '?results=1' : ''}`);
@@ -8,6 +29,17 @@ function openStvPoll(page, results = false) {
 
 module.exports = {
   '@tags': ['manual-screenshot'],
+
+  'form': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openStvForm(page);
+    screenshot.captureElement(
+      'polls/stv/form',
+      '.poll-common-form',
+      {width: 1100, height: 2800}
+    );
+  },
 
   'vote_in_progress': (test) => {
     const page = pageHelper(test);

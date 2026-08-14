@@ -19,9 +19,7 @@ Announce your next meeting with a clear agenda.
 
 Include documents, links and any materials that will be discussed to help everyone prepare.  
 
-Invite people to respond with an **Opt-in** poll to confirm they have read the agenda and are ready for the meeting.
-
-![The September production meeting agenda with an opt-in poll asking members to confirm they have read it and will attend.](meeting_agenda.png#width-90)
+Ask people to leave a comment confirming they have read the agenda and are ready for the meeting. Use **Seen by** to identify anyone who may need a reminder.
 
 ### Step 3: Minutes and actions
 Following the meeting, record the minutes and actions.  

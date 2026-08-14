@@ -1,5 +1,7 @@
 # Advice process
 
+This guide describes the complete Advice process. For help setting up and interpreting one Advice proposal, see [Advice](/en/user_manual/polls/proposals/advice/).
+
 ![Photo of yoda implying sage advice - *Photo by Nadir sYzYgY on Unsplash*](nadir-syzygy-den6gTowZKs-unsplash.jpg)
 
 Seek advice on a decision you need to make.
@@ -15,9 +17,10 @@ Make a decision with the advice of people impacted or who have expertise, so you
 
 ## Steps in the Advice process
 You notice a problem or opportunity and take the initiative.
-1. Seek input to sound out perspectives before proposing action - start a Loomio **discussion**.
-2. Clarify and build on advice through comments in the discussion thread.
-3. Taking advice received into account, make a decision and inform the people who have given advice - state an **outcome**.
+1. Frame the decision, identify who owns it, and invite the affected people and relevant experts.
+2. Start a Loomio **discussion** and, when a structured response or deadline is useful, run an **Advice proposal**.
+3. Clarify and build on the advice through vote reasons and discussion comments.
+4. Make the decision, then publish an **outcome** explaining what was decided and how the advice informed it.
 
 ## Benefits
 - Advice helps you make a better decision for your organization. 
@@ -29,7 +32,7 @@ You notice a problem or opportunity and take the initiative.
 | **Advice process** | **On Loomio** |
 |---|---|
 | You notice a problem or opportunity and take the initiative. |  |
-| Seek input to sound out perspectives before  proposing action. | Start a Loomio **discussion**.  <br /><br />Name the issue or opportunity in the discussion title, and seek input and perspectives from people. |
+| Seek input to sound out perspectives before proposing action. | Start a Loomio **discussion** to provide context and open conversation. Run an **[Advice proposal](/en/user_manual/polls/proposals/advice/)** when you want a defined response period, vote reasons, and a clear record of who participated. |
 | Taking advice received into account, you make a decision and inform the people who have given advice. | Add an an **outcome** to the discussion thread.   <br /><br />State the decision made and thank people for their advice and feedback.  <br /><br />   Say what will happen next and notify people about the outcome.  <br /><br />The outcome statement is an important record of the decision for future reference. <br /> <br /> Either update the context to include this outcome, or state it in a comment you pin to the timeline to quickly find it in the future.<br /><br/> |        
 
 
@@ -49,6 +52,8 @@ Does it impact other people and your organization?  Takashi's colleagues want hi
 Takashi starts a Loomio discussion with a clear statement of the decision he needs to make.  He provides some context to open a discussion, that he is starting an advice process.
 
 ![](discussion_takashi_computer.png)
+
+He can also run an [Advice proposal](/en/user_manual/polls/proposals/advice/) in the discussion to request structured responses by a closing date.
 
 ### Step 2.  Clarify and strengthen the advice through discussion
 

@@ -2,6 +2,13 @@ const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
 const richText = require('../helpers/oatmilkRichText');
 
+const pollTypeDirectories = {
+  poll: 'choose',
+  score: 'score',
+  dot_vote: 'allocate',
+  ranked_choice: 'rank'
+};
+
 function openPollTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
@@ -43,38 +50,50 @@ function startChoosePoll(page) {
 
 const pollTypes = {
   score: {
-    title: 'Assess our readiness for the returnable bottle trial',
-    details: 'Score each part of the proposed trial from 0 (not ready) to 10 (ready).',
-    options: [
-      ['Cafe collection plan', 'Confirm collection days and contacts with each cafe.'],
-      ['Washing capacity', 'Check equipment capacity and who records each batch.'],
-      ['Food-safety process', 'Confirm the cleaning checks required before reuse.'],
-      ['Return-rate reporting', 'Agree what each cafe reports during the trial.']
+    title: 'Score possible locations for the bottle trial',
+    details: 'Score each location from 0 (unsuitable) to 10 (ideal) for the six-week trial.',
+    context: [
+      'Consider customer access, staff capacity, storage space, and collection transport.',
+      'Add a reason to identify advantages or constraints that the project team should check.'
     ],
-    reason: 'This score reflects the work completed and the checks still needed before launch.'
+    options: [
+      ['Central Station cafe', 'High foot traffic with limited storage space.'],
+      ['Riverside market', 'Weekend trading with space for a staffed collection point.'],
+      ['University food court', 'High weekday demand and an existing washing facility.'],
+      ['Harbour offices', 'Regular customers but collection transport is less frequent.']
+    ],
+    reason: 'I scored customer access highly and reduced scores where storage or transport may constrain collections.'
   },
   dot_vote: {
-    title: 'Prioritise work for the returnable bottle trial',
-    details: 'Allocate eight points across the work that needs attention before the six-week trial starts.',
-    options: [
-      ['Cafe collection schedule', 'Confirm collection days and contacts.'],
-      ['Bottle deposit guidance', 'Make the deposit clear for customers and cafe staff.'],
-      ['Washing workflow', 'Check equipment capacity and batch records.'],
-      ['Food-safety checks', 'Confirm the cleaning checks required before reuse.'],
-      ['Return-rate reporting', 'Agree what each cafe reports during the trial.']
+    title: "Set priorities for next year's strategy review",
+    details: 'Allocate ten points across the areas that should receive the most time in our annual strategy review.',
+    context: [
+      'Consider what has changed over the past year and where a deeper review would most improve our plans.',
+      'Add a reason to explain which opportunities, risks, or unresolved questions shaped your allocation.'
     ],
-    reason: 'I have allocated points to the work that carries the most operational risk.'
+    options: [
+      ['Member participation', 'Review how members contribute to decisions and cooperative activities.'],
+      ['Financial sustainability', 'Review revenue, costs, reserves, and financial risks.'],
+      ['Products and services', 'Review what we offer and how well it meets member needs.'],
+      ['Environmental impact', 'Review emissions, waste, sourcing, and practical improvements.'],
+      ['Staff development', 'Review staffing, skills, workload, and development needs.']
+    ],
+    reason: 'I gave more time to member participation and financial sustainability because both need decisions before we set next year’s priorities.'
   },
   ranked_choice: {
-    title: 'Rank the bottle trial priorities',
-    details: 'Rank the four priorities in the order the cooperative should address them.',
-    options: [
-      ['Food-safety checks', 'Confirm the cleaning checks required before reuse.'],
-      ['Washing workflow', 'Check equipment capacity and batch records.'],
-      ['Cafe collection schedule', 'Confirm collection days and contacts.'],
-      ['Return-rate reporting', 'Agree what each cafe reports during the trial.']
+    title: 'Rank the bottle designs for the trial',
+    details: 'Rank the four bottle designs in the order the cooperative should consider them for the trial.',
+    context: [
+      'Consider handling, durability, customer needs, storage, and compatibility with washing equipment.',
+      'Add a reason to explain the criteria behind your order of preference.'
     ],
-    reason: 'I ranked the work by safety impact and the dependencies between each step.'
+    options: [
+      ['500 ml amber bottle', 'Protects contents from light and fits existing cafe storage.'],
+      ['500 ml clear bottle', 'Shows the product and fits existing cafe storage.'],
+      ['750 ml amber bottle', 'Larger serving with light protection.'],
+      ['1 litre clear bottle', 'Family size with higher storage and handling requirements.']
+    ],
+    reason: 'I ranked the designs by handling, storage, and compatibility with the existing washing equipment.'
   }
 };
 
@@ -85,14 +104,18 @@ function openTypeForm(page, pollType) {
   page.fillIn('.poll-common-form-fields__title input', config.title);
   page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context(`new-${pollType}`, [
     config.details,
-    'Base your response on the current cafe collection plan, washing capacity, and food-safety checks.',
-    'Add a reason so the cooperative can understand what should happen before launch.'
+    ...config.context
   ]));
   config.options.forEach(([name, meaning]) => addOption(page, name, meaning));
 
   if (pollType === 'dot_vote') {
     page.clear('.poll-common-form input[type="number"]');
-    page.fillIn('.poll-common-form input[type="number"]', '8');
+    page.fillIn('.poll-common-form input[type="number"]', '10');
+  }
+
+  if (pollType === 'score') {
+    page.clear('.poll-score-form__max input');
+    page.fillIn('.poll-score-form__max input', '10');
   }
 
   if (pollType === 'ranked_choice') {
@@ -108,33 +131,25 @@ function openTypePoll(page, pollType, mode) {
   page.expectText('.poll-common-card__title', pollTypes[pollType]?.title || 'Which bottle trial topics need the most meeting time?');
 }
 
-function captureTypeLabel(screenshot, pollType, name) {
+function captureTypeForm(screenshot, pollType) {
   screenshot.captureElement(
-    `polls/proposal_types/${name}`,
-    `.decision-tools-card__poll-type--${pollType}`,
-    {width: 1100, height: 1000}
-  );
-}
-
-function captureTypeForm(screenshot, name) {
-  screenshot.captureElement(
-    `polls/proposal_types/${name}`,
+    `polls/${pollTypeDirectories[pollType]}/form`,
     '.poll-common-form',
     {width: 1100, height: 2800}
   );
 }
 
-function captureVoteForm(screenshot, root, name) {
+function captureVoteForm(screenshot, pollType, root) {
   screenshot.captureRegion(
-    `polls/proposal_types/${name}`,
+    `polls/${pollTypeDirectories[pollType]}/voting`,
     ['.poll-common-action-panel h3', root, `${root} .poll-common-form-actions`],
     {width: 1100, height: 2400, padding: 16}
   );
 }
 
-function captureResults(screenshot, name) {
+function captureResults(screenshot, pollType) {
   screenshot.captureRegion(
-    `polls/proposal_types/${name}`,
+    `polls/${pollTypeDirectories[pollType]}/results`,
     ['.poll-common-card__title', '.poll-common-chart-panel'],
     {width: 1100, height: 2200, padding: 16}
   );
@@ -143,23 +158,12 @@ function captureResults(screenshot, name) {
 module.exports = {
   '@tags': ['manual-screenshot'],
 
-  'poll_templates': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openPollTemplates(page);
-    screenshot.captureElement(
-      'polls/proposal_types/polls_templates',
-      '.poll-common-templates-list',
-      {width: 1100, height: 1200}
-    );
-  },
-
   'new_simple_poll': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openChooseForm(page);
     screenshot.captureElement(
-      'polls/proposal_types/new_simple_poll',
+      'polls/choose/form',
       '.poll-common-form',
       {width: 1100, height: 1800}
     );
@@ -176,7 +180,7 @@ module.exports = {
     `);
     page.clickAndWait('.manual-cafe-option button[title="Edit"]', '.poll-common-option-form');
     screenshot.captureElement(
-      'polls/proposal_types/poll_edit_option',
+      'polls/choose/edit_option',
       '.poll-common-option-form',
       {width: 1000, height: 900}
     );
@@ -201,7 +205,7 @@ module.exports = {
       document.body.append(wrapper);
     `);
     screenshot.captureElement(
-      'polls/proposal_types/new_simple_poll_random',
+      'polls/choose/random_order',
       '.manual-shuffle-capture',
       {width: 1100, height: 1000}
     );
@@ -228,7 +232,7 @@ module.exports = {
     );
     page.execute("document.querySelector('.poll-common-action-panel h3').scrollIntoView({block: 'start'})");
     screenshot.captureRegion(
-      'polls/proposal_types/new_simple_poll_voting',
+      'polls/choose/voting',
       [
         '.poll-common-action-panel h3',
         '.poll-common-vote-form > .v-alert',
@@ -247,7 +251,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'poll', 'results');
-    captureResults(screenshot, 'poll_results');
+    captureResults(screenshot, 'poll');
   },
 
   'poll_outcome': (test) => {
@@ -256,24 +260,17 @@ module.exports = {
     openTypePoll(page, 'poll', 'outcome');
     page.waitFor('.poll-common-outcome-panel');
     screenshot.captureElement(
-      'polls/proposal_types/poll_outcome',
+      'polls/choose/outcome',
       '.poll-common-outcome-panel',
       {width: 1100, height: 1000}
     );
-  },
-
-  'score_label': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openPollTemplates(page);
-    captureTypeLabel(screenshot, 'score', 'score_label');
   },
 
   'score_options': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypeForm(page, 'score');
-    captureTypeForm(screenshot, 'score_options');
+    captureTypeForm(screenshot, 'score');
   },
 
   'score_voting': (test) => {
@@ -282,58 +279,44 @@ module.exports = {
     openTypePoll(page, 'score');
     page.execute("document.querySelectorAll('.vote-form-number-input').forEach((input, index) => { input.value = [8, 6, 7, 5][index]; input.dispatchEvent(new Event('input', {bubbles: true})); })");
     page.fillIn('.poll-score-vote-form .poll-common-vote-form__reason [contenteditable=true]', pollTypes.score.reason);
-    captureVoteForm(screenshot, '.poll-score-vote-form', 'score_voting');
+    captureVoteForm(screenshot, 'score', '.poll-score-vote-form');
   },
 
   'score_results': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'score', 'results');
-    captureResults(screenshot, 'score_results');
-  },
-
-  'dot_vote_label': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openPollTemplates(page);
-    captureTypeLabel(screenshot, 'dot_vote', 'dot_vote_label');
+    captureResults(screenshot, 'score');
   },
 
   'dot_vote_options': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypeForm(page, 'dot_vote');
-    captureTypeForm(screenshot, 'dot_vote_options');
+    captureTypeForm(screenshot, 'dot_vote');
   },
 
   'dot_vote_voting': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'dot_vote');
-    page.execute("document.querySelectorAll('.poll-dot-vote-vote-form .vote-form-number-input').forEach((input, index) => { input.value = [3, 0, 3, 2, 0][index]; input.dispatchEvent(new Event('input', {bubbles: true})); })");
+    page.execute("document.querySelectorAll('.poll-dot-vote-vote-form .vote-form-number-input').forEach((input, index) => { input.value = [3, 3, 0, 2, 2][index]; input.dispatchEvent(new Event('input', {bubbles: true})); })");
     page.fillIn('.poll-dot-vote-vote-form .poll-common-vote-form__reason [contenteditable=true]', pollTypes.dot_vote.reason);
-    captureVoteForm(screenshot, '.poll-dot-vote-vote-form', 'dot_vote_voting');
+    captureVoteForm(screenshot, 'dot_vote', '.poll-dot-vote-vote-form');
   },
 
   'dot_vote_results': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'dot_vote', 'results');
-    captureResults(screenshot, 'dot_vote_results');
-  },
-
-  'ranked_choice_label': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openPollTemplates(page);
-    captureTypeLabel(screenshot, 'ranked_choice', 'ranked_choice_label');
+    captureResults(screenshot, 'dot_vote');
   },
 
   'ranked_choice_options': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypeForm(page, 'ranked_choice');
-    captureTypeForm(screenshot, 'ranked_choice_options');
+    captureTypeForm(screenshot, 'ranked_choice');
   },
 
   'ranked_choice_voting': (test) => {
@@ -341,13 +324,13 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'ranked_choice');
     page.fillIn('.poll-ranked-choice-vote-form .poll-common-vote-form__reason [contenteditable=true]', pollTypes.ranked_choice.reason);
-    captureVoteForm(screenshot, '.poll-ranked-choice-vote-form', 'ranked_choice_voting');
+    captureVoteForm(screenshot, 'ranked_choice', '.poll-ranked-choice-vote-form');
   },
 
   'ranked_choice_results': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTypePoll(page, 'ranked_choice', 'results');
-    captureResults(screenshot, 'ranked_choice_results');
+    captureResults(screenshot, 'ranked_choice');
   }
 };

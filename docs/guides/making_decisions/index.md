@@ -1,40 +1,18 @@
 # Making decisions
 
-![photo of the hands of a group of people coming together - Photo by Hannah Busing on Unsplash](hannah-busing-Zyx1bK9mqmA-unsplash.jpg)
+These guides explain complete decision processes: how to frame a decision, involve the right people, use discussion and proposals, respond to concerns, and record an outcome.
 
-Including people in decision-making leads to better decisions, and better outcomes;
-- People are well-informed and can exercise their voice,
-- More engagement and diverse input strengthens decisions, 
-- Sharing power and responsibility builds trust and buy-in, 
-- Involving people reduces the decision risk.
+They are different from the proposal-template pages. A [proposal template](/en/user_manual/polls/proposals/) explains one proposal and its response options. A decision process can use several proposals over time.
 
-## Decision making practices in Loomio
+## Choose a process
 
-There are many ways to involve people in making decisions. The tools within Loomio are versatile to adapt to most practices.
+| Process | Who decides? | Main question |
+|---|---|---|
+| [Simple decision process](simple_decision_process) | Defined by the group | How can we discuss, test, and decide? |
+| [Advice process](advice_process) | A person or delegated team | What advice should the decision maker consider? |
+| [Consent process](consent_process) | The group | Is the proposal safe to try without a meaningful objection? |
+| [Consensus process](consensus_process) | The group | Can we reach collective agreement? |
 
-Many organizations use one or more decision processes, depending on the type of decision, governing policy, values and culture.  
+Use the process required by your group's governing rules or decision policy. Different kinds of decisions may use different processes.
 
-Check out these common decision making processes and how to apply these within Loomio:
-
-**[Simple decision process](/en/guides/making_decisions/simple_decision_process.html)** - A simple process to introduce and discuss the decision to be made, listen and sense how people think about it, propose and decide. Start here if you are new to collaborative decision making.
- 
-**[Advice process](/en/guides/making_decisions/advice_process.html)** - Seek advice on a decision you need to make, with the advice of people impacted or who have expertise, so you can make a better decision for your organization.
-
-**[Consent process](/en/guides/making_decisions/consent_process.html)** - Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision that is 'safe to try' now.
-
-**[Consensus process](/en/guides/making_decisions/consensus_process.html)** - Build consensus for a decision you need to make together, to reach an agreement that satisfies the needs and concerns of all participants.
-
-
-## Examples of organizations practicing inclusive decision making
-
-- [Camplight Guidebook](https://camplight.net/wp-content/uploads/2023/05/Copy-of-Camplight-Illustrated-Guidebook-6.0-EN.pdf)
-
-- [Raise Teal Operating System](https://teal.raiserecruiting.com/)
-
-- [Greaterthan Handbook](https://handbook.greaterthan.works/)
-
-- [Enspiral Decisions Agreement](https://handbook.enspiral.com/agreements/decisions) 
-
-- [The Loomio Co-op Handbook](https://www.loomio.coop/#the-loomio-co-op-handbook)
-
-*[Get in touch](https://www.loomio.com/contact) if you would like to add your handbook or operating system here!*
+If you only need help choosing a response format, compare [Proposals](/en/user_manual/polls/proposals/) and [Polls](/en/user_manual/polls/proposal_types/). If you administer the reusable choices shown when someone selects **Start a vote**, see [Poll templates](/en/user_manual/polls/poll_templates/).

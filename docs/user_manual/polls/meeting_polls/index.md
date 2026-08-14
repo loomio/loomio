@@ -1,4 +1,4 @@
-# Meeting polls
+# Time poll
 
 Use a **Time poll** to find a time for a meeting or event. Participants see the options in their own time zone.
 
@@ -51,21 +51,3 @@ When the Time poll closes, pick the best time and post an outcome.
 **Statement**: Summarize the result and add any instructions for the meeting
 
 Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
-
-## Opt-in
-
-_Find volunteers or participants_
-
-Use **Opt-in** to invite people to join a team, committee, working group, or event. Open the Opt-in template to start the form.
-
-Opt-in has two voting options: **Accept** and **Decline**.
-
-Set a target for how many people you need. In this example, Oatmilk Cooperative needs three people for its reusable packaging working group.
-
-![](opt_in_options.png)
-
-The results show progress towards the target, who accepted or declined, and who has not voted.
-
-![](opt_in_results.png)
-
-Like other Loomio polls, Opt-in has a closing time and can notify undecided voters before it closes.

@@ -705,6 +705,30 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to "/p/new?template_key=#{params.require(:poll_type)}&group_id=#{group.id}"
   end
 
+  def setup_manual_oatmilk_discussion_templates
+    group, coordinator, = create_manual_oatmilk_cooperative
+    create_manual_oatmilk_discussion_template(group: group, coordinator: coordinator)
+
+    sign_in coordinator
+    redirect_to "/discussion_templates/?group_id=#{group.id}"
+  end
+
+  def setup_manual_oatmilk_discussion_template_form
+    group, coordinator, = create_manual_oatmilk_cooperative
+    template = create_manual_oatmilk_discussion_template(group: group, coordinator: coordinator)
+
+    sign_in coordinator
+    redirect_to "/discussion_templates/#{template.id}"
+  end
+
+  def setup_manual_oatmilk_discussion_from_template
+    group, coordinator, = create_manual_oatmilk_cooperative
+    template = create_manual_oatmilk_discussion_template(group: group, coordinator: coordinator)
+
+    sign_in coordinator
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{group.id}"
+  end
+
   def setup_manual_oatmilk_meeting_poll
     group, coordinator, = create_manual_oatmilk_cooperative
     discussion = group.discussions.find_by!(title: 'Weekly production schedule')
@@ -1030,6 +1054,62 @@ module Dev::Scenarios::OatmilkCooperative
 
   private
 
+  def create_manual_oatmilk_discussion_template(group:, coordinator:)
+    DiscussionTemplateService.ensure_templates_materialized(group)
+    group.tags.find_or_create_by!(name: 'Bottle trial') { |tag| tag.color = '#1565c0' }
+    poll_template_ids = %w[check consent].map do |key|
+      source = PollTemplateService.default_templates.find { |template| template.key == key }
+      create_manual_oatmilk_poll_template_copy(source: source, group: group, coordinator: coordinator).id
+    end
+
+    DiscussionTemplate.create!(
+      group: group,
+      author: coordinator,
+      position: -1,
+      process_name: 'Bottle trial review',
+      process_subtitle: 'Review evidence and agree changes after each trial cycle',
+      process_introduction: 'Use this process after each trial cycle to review the evidence before deciding what to change.',
+      process_introduction_format: 'html',
+      title: 'Returnable bottle trial review',
+      title_placeholder: 'Name the trial cycle and review date',
+      description: <<~HTML,
+        <p>Review the latest return rates, washing records, cafe feedback, and transport costs.</p>
+        <p><strong>Before commenting:</strong></p>
+        <ul><li>Read the weekly trial report</li><li>Identify evidence for any proposed change</li><li>Note who would be affected</li></ul>
+        <p>We will use a Sense check to identify revisions, followed by Consent when the updated plan is ready.</p>
+      HTML
+      description_format: 'html',
+      tags: ['Bottle trial'],
+      recipient_audience: 'group',
+      poll_template_keys_or_ids: poll_template_ids,
+      allow_concurrent_polls: false,
+      comment_length_max: 500
+    )
+  end
+
+  def create_manual_oatmilk_poll_template_copy(source:, group:, coordinator:)
+    PollTemplate.create!(
+      group: group,
+      author: coordinator,
+      poll_type: source.poll_type,
+      process_name: source.process_name,
+      process_subtitle: source.process_subtitle,
+      process_introduction: source.process_introduction,
+      title: source.title,
+      title_placeholder: source.title_placeholder,
+      details: source.details,
+      reason_prompt: source.reason_prompt,
+      outcome_statement: source.outcome_statement,
+      default_duration_in_days: source.default_duration_in_days,
+      minimum_stance_choices: source.minimum_stance_choices,
+      maximum_stance_choices: source.maximum_stance_choices,
+      dots_per_person: source.dots_per_person,
+      stance_reason_required: source.stance_reason_required,
+      poll_options: source.poll_options,
+      tags: source.tags
+    )
+  end
+
   def manual_oatmilk_poll_options_attributes(template)
     template.poll_options.each_with_index.map do |option, priority|
       option.slice('name', 'icon', 'meaning', 'prompt').merge(priority: priority)
@@ -1122,44 +1202,44 @@ module Dev::Scenarios::OatmilkCooperative
         reason: 'These topics affect every cafe collection, so we should confirm them together before the trial starts.'
       },
       'score' => {
-        title: 'Assess our readiness for the returnable bottle trial',
-        details: 'Score each part of the proposed trial from 0 (not ready) to 10 (ready).',
-        options: ['Cafe collection plan', 'Washing capacity', 'Food-safety process', 'Return-rate reporting'],
+        title: 'Score possible locations for the bottle trial',
+        details: 'Score each location from 0 (unsuitable) to 10 (ideal) for the six-week trial.',
+        options: ['Central Station cafe', 'Riverside market', 'University food court', 'Harbour offices'],
         min_score: 0,
         max_score: 10,
         votes: [
-          {'Cafe collection plan' => 8, 'Washing capacity' => 6, 'Food-safety process' => 7, 'Return-rate reporting' => 5},
-          {'Cafe collection plan' => 7, 'Washing capacity' => 8, 'Food-safety process' => 6, 'Return-rate reporting' => 6},
-          {'Cafe collection plan' => 9, 'Washing capacity' => 7, 'Food-safety process' => 8, 'Return-rate reporting' => 4},
-          {'Cafe collection plan' => 6, 'Washing capacity' => 7, 'Food-safety process' => 7, 'Return-rate reporting' => 6}
+          {'Central Station cafe' => 8, 'Riverside market' => 6, 'University food court' => 7, 'Harbour offices' => 5},
+          {'Central Station cafe' => 7, 'Riverside market' => 8, 'University food court' => 6, 'Harbour offices' => 6},
+          {'Central Station cafe' => 9, 'Riverside market' => 7, 'University food court' => 8, 'Harbour offices' => 4},
+          {'Central Station cafe' => 6, 'Riverside market' => 7, 'University food court' => 7, 'Harbour offices' => 6}
         ],
-        reason: 'This score reflects the work completed and the checks still needed before launch.'
+        reason: 'I scored customer access highly and reduced scores where storage or transport may constrain collections.'
       },
       'dot_vote' => {
-        title: 'Prioritise work for the returnable bottle trial',
-        details: 'Allocate eight points across the work that needs attention before the six-week trial starts.',
-        options: ['Cafe collection schedule', 'Bottle deposit guidance', 'Washing workflow', 'Food-safety checks', 'Return-rate reporting'],
-        dots_per_person: 8,
+        title: "Set priorities for next year's strategy review",
+        details: 'Allocate ten points across the areas that should receive the most time in our annual strategy review.',
+        options: ['Member participation', 'Financial sustainability', 'Products and services', 'Environmental impact', 'Staff development'],
+        dots_per_person: 10,
         votes: [
-          {'Cafe collection schedule' => 3, 'Washing workflow' => 3, 'Food-safety checks' => 2},
-          {'Cafe collection schedule' => 2, 'Bottle deposit guidance' => 2, 'Return-rate reporting' => 4},
-          {'Washing workflow' => 4, 'Food-safety checks' => 3, 'Return-rate reporting' => 1},
-          {'Cafe collection schedule' => 2, 'Bottle deposit guidance' => 1, 'Washing workflow' => 2, 'Food-safety checks' => 3}
+          {'Member participation' => 3, 'Financial sustainability' => 3, 'Environmental impact' => 2, 'Staff development' => 2},
+          {'Member participation' => 2, 'Financial sustainability' => 4, 'Products and services' => 2, 'Environmental impact' => 2},
+          {'Member participation' => 2, 'Financial sustainability' => 3, 'Products and services' => 1, 'Staff development' => 4},
+          {'Financial sustainability' => 2, 'Products and services' => 2, 'Environmental impact' => 3, 'Staff development' => 3}
         ],
-        reason: 'I have allocated points to the work that carries the most operational risk.'
+        reason: 'I gave more time to member participation and financial sustainability because both need decisions before we set next year’s priorities.'
       },
       'ranked_choice' => {
-        title: 'Rank the bottle trial priorities',
-        details: 'Rank the four priorities in the order the cooperative should address them.',
-        options: ['Food-safety checks', 'Washing workflow', 'Cafe collection schedule', 'Return-rate reporting'],
+        title: 'Rank the bottle designs for the trial',
+        details: 'Rank the four bottle designs in the order the cooperative should consider them for the trial.',
+        options: ['500 ml amber bottle', '500 ml clear bottle', '750 ml amber bottle', '1 litre clear bottle'],
         minimum_stance_choices: 4,
         votes: [
-          {'Food-safety checks' => 1, 'Washing workflow' => 2, 'Cafe collection schedule' => 3, 'Return-rate reporting' => 4},
-          {'Washing workflow' => 1, 'Food-safety checks' => 2, 'Return-rate reporting' => 3, 'Cafe collection schedule' => 4},
-          {'Cafe collection schedule' => 1, 'Washing workflow' => 2, 'Food-safety checks' => 3, 'Return-rate reporting' => 4},
-          {'Food-safety checks' => 1, 'Cafe collection schedule' => 2, 'Washing workflow' => 3, 'Return-rate reporting' => 4}
+          {'500 ml amber bottle' => 4, '500 ml clear bottle' => 3, '750 ml amber bottle' => 2, '1 litre clear bottle' => 1},
+          {'500 ml clear bottle' => 4, '500 ml amber bottle' => 3, '1 litre clear bottle' => 2, '750 ml amber bottle' => 1},
+          {'750 ml amber bottle' => 4, '500 ml clear bottle' => 3, '500 ml amber bottle' => 2, '1 litre clear bottle' => 1},
+          {'500 ml amber bottle' => 4, '750 ml amber bottle' => 3, '500 ml clear bottle' => 2, '1 litre clear bottle' => 1}
         ],
-        reason: 'I ranked the work by safety impact and the dependencies between each step.'
+        reason: 'I ranked the designs by handling, storage, and compatibility with the existing washing equipment.'
       }
     }
   end

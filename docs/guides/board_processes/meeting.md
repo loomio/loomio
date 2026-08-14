@@ -58,11 +58,7 @@ While similar to sending an email, a Loomio thread has advantages:
 Members can find all the information about the meeting readily available in one place, thereby avoiding confusing email chains and losing important info in their email inbox.
 
 ### Confirm
-A great way to confirm everyone is prepared for the meeting is to use an **Opt-in** poll.  Ask people to confirm they have read the agenda and meeting papers, and are coming to the meeting.  
-
-A Loomio poll lets everyone know that something is happening and their response is required.  It adds that extra level of participation and an encouragement to read and prepare for the meeting.  Members can also leave a comment when responding.
-
-![](meeting_agenda.png#width-90)
+Ask members to leave a comment confirming they have read the agenda and meeting papers and are prepared for the meeting. Use **Seen by** to identify anyone who may need a reminder.
 
 ## Find a time for meeting
 Finding a time to meet can be a frequent headache for many administrators. 
