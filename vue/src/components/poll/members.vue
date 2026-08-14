@@ -229,6 +229,6 @@ v-card.poll-members-form
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
   .d-flex.justify-end.mx-4.pb-4
     help-btn(
-      path="en/user_manual/polls/starting_proposals/index.html#invite-members")
+      path="en/user_manual/polls/inviting_people#add-voters-to-the-poll")
     v-spacer
 </template>

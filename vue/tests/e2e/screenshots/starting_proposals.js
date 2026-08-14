@@ -59,7 +59,7 @@ module.exports = {
 
     openTemplates(page);
     screenshot.captureElement(
-      'polls/starting_proposals/proposal_templates',
+      'polls/settings/proposal_templates',
       '.actions-panel',
       {width: 1280, height: 1000}
     );
@@ -88,7 +88,7 @@ module.exports = {
     `);
     page.pause(200);
     screenshot.captureElement(
-      'polls/starting_proposals/proposal_new',
+      'polls/settings/proposal_new',
       '.manual-proposal-new-capture',
       {width: 1200, height: 1100}
     );
@@ -113,7 +113,7 @@ module.exports = {
       document.body.append(wrapper);
     `);
     screenshot.captureElement(
-      'polls/starting_proposals/vote_options',
+      'polls/settings/vote_options',
       '.manual-options-capture',
       {width: 1200, height: 1200}
     );
@@ -127,7 +127,7 @@ module.exports = {
     markOptions(page);
     page.clickAndWait('.manual-options-list button[title="Edit"]', '.poll-common-option-form');
     screenshot.captureElement(
-      'polls/starting_proposals/proposal_edit_option',
+      'polls/settings/proposal_edit_option',
       '.poll-common-option-form',
       {width: 1100, height: 1000}
     );
@@ -140,7 +140,7 @@ module.exports = {
     openProposalForm(page);
     page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
     screenshot.captureElement(
-      'polls/starting_proposals/settings_advanced',
+      'polls/settings/settings_advanced',
       '.poll-common-form .v-expansion-panel',
       {width: 1100, height: 1600}
     );
@@ -168,7 +168,7 @@ module.exports = {
       document.body.append(wrapper);
     `);
     screenshot.captureElement(
-      'polls/starting_proposals/vote_reason_options',
+      'polls/settings/vote_reason_options',
       '.manual-vote-reason-options-capture',
       {width: 900, height: 900}
     );
@@ -180,7 +180,7 @@ module.exports = {
 
     openPollMenu(page);
     screenshot.captureRegion(
-      'polls/starting_proposals/proposal_edit',
+      'polls/settings/proposal_edit',
       ['.poll-created .action-dock', '.v-overlay--active .v-list'],
       {padding: 16, width: 1280, height: 1100}
     );
@@ -194,7 +194,7 @@ module.exports = {
     page.clickAndWait('.v-overlay--active .action-dock__button--notification_history', '.modal-launcher .v-card');
     page.expectText('.modal-launcher .v-card', 'Poll notification history');
     screenshot.captureElement(
-      'polls/starting_proposals/proposal_notification_history',
+      'polls/settings/proposal_notification_history',
       '.modal-launcher .v-card',
       {width: 1100, height: 900}
     );
@@ -207,7 +207,7 @@ module.exports = {
     openPollMenu(page);
     page.clickAndWait('.v-overlay--active .action-dock__button--discard_poll', '.confirm-modal');
     screenshot.captureElement(
-      'polls/starting_proposals/proposal_delete',
+      'polls/settings/proposal_delete',
       '.confirm-modal',
       {width: 1100, height: 800}
     );
@@ -222,7 +222,7 @@ module.exports = {
     page.click('.thread-sidebar .action-dock__button--export_thread');
     page.waitForUrlToContain('export=1');
     page.waitFor('body');
-    screenshot.capture('polls/starting_proposals/proposal_print', {
+    screenshot.capture('polls/settings/proposal_print', {
       width: 1280,
       height: 1200
     });

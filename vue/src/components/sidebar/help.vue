@@ -21,7 +21,7 @@ const showContact = computed(() => AppConfig.features.app.show_contact);
 
 const helpURL = computed(() => {
   const siteUrl = new URL(AppConfig.baseUrl);
-  return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
+  return `https://www.loomio.com/docs/en?utm_source=${siteUrl.host}`;
 });
 
 const startOrFindDemo = () => {
@@ -50,7 +50,7 @@ v-list(nav lines="two")
   v-list-item.sidebar-start-demo(v-if="canStartDemo" @click="startOrFindDemo" lines="two" :title="$t('templates.start_a_demo')" :subtitle="$t('templates.play_with_an_example_group')")
     template(v-slot:append)
       common-icon(name="mdi-car-convertible")
-  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" lines="two" :title="$t('common.loomio_help')" :subtitle="$t('sidebar.a_detailed_guide_to_loomio')")
+  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" lines="two" :title="$t('common.user_manual')" :subtitle="$t('sidebar.a_detailed_guide_to_loomio')")
     template(v-slot:append)
       common-icon(name="mdi-book-open-page-variant")
   v-list-item(v-if="showContact" @click="$router.push('/contact')" lines="two" :title="$t('user_dropdown.contact_support')" :subtitle="$t('sidebar.talk_to_the_loomio_team')")

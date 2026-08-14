@@ -85,7 +85,7 @@ Set a default duration that is suitable for most uses of the template. The autho
 
 ![](poll_type_duration.png)
 
-Other defaults can control result visibility, anonymous voting, vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../starting_proposals/) for their effects.
+Other defaults can control result visibility, anonymous voting, vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../settings/) for their effects.
 
 ### Save and test the template
 

@@ -180,7 +180,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
   v-card-actions
-    help-btn(path="en/user_manual/groups/membership")
+    help-btn(path="en/user_manual/groups/inviting_people")
     v-spacer
     v-btn.announcement-form__submit(
       variant="elevated"

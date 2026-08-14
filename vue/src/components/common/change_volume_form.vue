@@ -103,7 +103,7 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
 
     p.mt-4(v-if="model.isA('membership')")
   v-card-actions(align-center)
-    help-btn(path="en/user_manual/users/email_settings/#group-email-notification-settings")
+    help-btn(path="en/user_manual/users/email_settings#group-email-settings")
     v-spacer
     v-btn.change-volume-form__submit(variant="tonal" :disabled='!formChanged' @click='submit()' color="primary")
       span( v-t="'common.action.update'" )

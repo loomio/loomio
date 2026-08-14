@@ -188,6 +188,7 @@ es:
     prefix_eg: por ejemplo, %{val}
     are_you_sure: "¿Estás seguro?"
     loomio_help: Ayuda de Loomio
+    user_manual: Guía del usuario
     visit_loomio_help: Visita la ayuda de Loomio
     help_and_guides: Ayuda y guías
     please_wait: Espera

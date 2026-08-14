@@ -188,6 +188,7 @@ fi:
     prefix_eg: esim. %{val}
     are_you_sure: Oletko varma?
     loomio_help: Loomio apua
+    user_manual: Käyttöopas
     visit_loomio_help: Käy Loomio-ohjeessa
     help_and_guides: Ohjeet ja oppaat
     please_wait: Odota

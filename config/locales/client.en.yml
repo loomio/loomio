@@ -244,6 +244,7 @@ en:
     prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
     loomio_help: Loomio help
+    user_manual: User manual
     visit_loomio_help: Visit Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait

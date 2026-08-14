@@ -250,7 +250,7 @@ v-form(ref="form" @submit.prevent="submit")
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
-      help-btn(path='en/user_manual/threads/starting_threads')
+      help-btn(path='en/user_manual/discussions/starting_a_discussion')
       v-spacer
       v-btn.discussion-form__submit(
         variant="elevated"

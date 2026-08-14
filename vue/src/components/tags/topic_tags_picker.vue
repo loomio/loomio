@@ -213,7 +213,7 @@ function submitNewTag() {
       .topic-tags-picker__tag-content
         .tag-color-dot(:style="tagDotStyle(tag)")
         span {{ tag.name }}
-    v-list-item.topic-tags-picker__all-tags(v-if="usableGroup(tagGroup)" density="compact" @click="showAllTags = !showAllTags")
+    v-list-item.topic-tags-picker__all-tags(v-if="usableGroup(tagGroup) && orgTags.length" density="compact" @click="showAllTags = !showAllTags")
       template(v-slot:prepend)
         common-icon.text-medium-emphasis(name="mdi-unfold-more-horizontal")
       v-list-item-title(v-if="showAllTags" v-t="'common.action.show_fewer'")

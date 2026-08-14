@@ -95,6 +95,8 @@ cannot be changed in the poll settings.
 ### Anonymous voting
 If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
 
+See [Anonymous voting](/en/user_manual/polls/anonymous_voting) for details about how voter identities are separated from submitted votes, what information is retained, and the limits of the protection.
+
 > [!WARNING]
 > Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
 

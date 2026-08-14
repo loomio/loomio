@@ -188,6 +188,7 @@ nl_NL:
     prefix_eg: bijv. %{val}
     are_you_sure: Weet je het zeker?
     loomio_help: Loomio helpt
+    user_manual: Gebruikershandleiding
     visit_loomio_help: Bezoek Loomio-hulp
     help_and_guides: Hulp & gidsen
     please_wait: Even geduld

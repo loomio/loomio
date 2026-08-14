@@ -61,11 +61,11 @@ export default
 
 <template lang="pug">
 .tags-panel
-  v-card.my-4.pa-2(variant="outlined")
+  v-card.my-4.pa-2(variant="flat")
     tags-display(:tags="group.tagNames()" :group="group" :selected="$route.params.tag")
   loading(v-if="!group")
   div(v-if="group")
-    v-card.mb-4(variant="outlined")
+    v-card.mb-4(variant="flat")
       div(v-if="topicsLoader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
