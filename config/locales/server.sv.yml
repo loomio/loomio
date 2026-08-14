@@ -150,6 +150,7 @@ sv:
       body: Det begärda objektet hittades inte. Detta kan hända om en diskussion eller omröstning har raderats.
     new_account_trial_group_limit: Nya konton är begränsade till en grupp. Kontakta supporten om du behöver fler.
     direct_thread_anonymous_poll: En tråd som innehåller en anonym omröstning kan inte konverteras till en direkt tråd
+    invitation_rate_limit_reached_contact_support: Daglig inbjudningsgräns har nåtts. Kontakta supporten omedelbart.
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-

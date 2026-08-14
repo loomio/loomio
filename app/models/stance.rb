@@ -332,8 +332,15 @@ class Stance < ApplicationRecord
 
   def reason_required?
     return true if poll.stance_reason_required == "required"
-    return false unless poll.stance_reason_required == "required_when_disagreeing"
+    icons_reason_required = case poll.stance_reason_required
+                            when "required_for_disagree_or_block"
+                              %w[disagree block]
+                            when "required_for_block"
+                              %w[block]
+                            else
+                              return false
+                            end
 
-    stance_choices.any? { |choice| %w[disagree block].include?(choice.poll_option.icon) }
+    stance_choices.any? { |choice| icons_reason_required.include?(choice.poll_option.icon) }
   end
 end

@@ -2815,6 +2815,8 @@ sv:
     anonymous_voting_risk_explanation: Anonyma röster lagras separat från väljarnas identiteter. Resultaten visas först när omröstningen har avslutats, och väljare kan inte lägga till skäl, granska sin röst efter att den skickats in eller ändra den. Dessa åtgärder minskar risken för att koppla en person till en röst, men resultaten kan fortfarande avslöja information när få personer är röstberättigade eller röstar, resultatet är enhälligt, röstmönster är särskiljande eller väljare avslöjar sina val.
     anonymous_votes_stored_separately: Anonyma röster lagras separat från väljarnas identiteter. Resultaten visas först när omröstningen har avslutats, och väljare kan inte lägga till skäl, granska sin röst efter att den skickats in eller ändra den.
     stance_reason_required_when_disagreeing: Krävs vid oenighet
+    stance_reason_required_for_disagree_or_block: Krävs för att inte godkänna eller blockera
+    stance_reason_required_for_block: Krävs vid blockering
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare

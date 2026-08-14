@@ -281,3 +281,11 @@ languages in the Nov 2025 pass.
 |------|-----|--------|-------|------------------|
 | `config/locales/client.pt_BR.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Necessário em caso de discordância.` | `Necessário em caso de discordância` | Single-sentence UI labels do not use final full stops |
 | `config/locales/client.tr.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Anlaşmazlık durumunda gereklidir.` | `Anlaşmazlık durumunda gereklidir` | Single-sentence UI labels do not use final full stops |
+
+## 2026-08-14 — Vote reasons for disagreement or blocking
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `poll_common_form.stance_reason_required_for_block` | Building-block, module, or political-bloc nouns | Wording for the voting action of blocking | Block is a proposal response, not a physical block, software module, or political bloc |
+| `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels ending with a full stop | Removed the final full stop | Single-sentence UI labels do not use final full stops |
+| `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels omitted that the reason is required | Restored the required meaning | The labels must state both the triggering responses and that a reason is required |

@@ -154,6 +154,7 @@ nl_NL:
       title: Ongeautoriseerd
     new_account_trial_group_limit: Nieuwe accounts zijn beperkt tot één groep. Neem contact op met de supportafdeling als u meer groepen nodig heeft.
     direct_thread_anonymous_poll: Een discussie met een anonieme peiling kan niet worden omgezet in een directe discussie
+    invitation_rate_limit_reached_contact_support: Het dagelijkse limiet voor uitnodigingen is bereikt. Neem direct contact op met de supportafdeling.
   group:
     error:
       handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-

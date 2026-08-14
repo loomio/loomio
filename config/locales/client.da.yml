@@ -2815,6 +2815,8 @@ da:
     anonymous_voting_risk_explanation: Anonyme stemmer gemmes separat fra vælgernes identitet. Resultaterne vises først, når afstemningen er afsluttet, og vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter afgivelse eller ændre den. Disse tiltag reducerer risikoen for at knytte en person til en stemme, men resultaterne kan stadig afsløre oplysninger, når få personer er stemmeberettigede eller stemmer, resultatet er enstemmigt, stemmemønstre er særlige, eller vælgere fortæller om deres valg.
     anonymous_votes_stored_separately: Anonyme stemmer gemmes separat fra vælgernes identitet. Resultaterne vises først, når afstemningen er afsluttet, og vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter afgivelse eller ændre den.
     stance_reason_required_when_disagreeing: Påkrævet ved uenighed
+    stance_reason_required_for_disagree_or_block: Kræves for uenighed eller blokering
+    stance_reason_required_for_block: Påkrævet ved blokering
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere

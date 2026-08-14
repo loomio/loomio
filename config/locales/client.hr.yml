@@ -2815,6 +2815,8 @@ hr:
     anonymous_voting_risk_explanation: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se prikazuju tek nakon završetka glasanja, a birači ne mogu dodavati obrazloženja, pregledati svoj glas nakon predaje ili ga promijeniti. Ove mjere smanjuju rizik povezivanja osobe s glasom, ali rezultati i dalje mogu otkriti informacije kada malo ljudi ima pravo glasa ili glasa, rezultat je jednoglasan, obrasci glasanja su prepoznatljivi ili birači otkriju svoje odabire.
     anonymous_votes_stored_separately: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se prikazuju tek nakon završetka glasanja, a birači ne mogu dodavati obrazloženja, pregledati svoj glas nakon predaje ili ga promijeniti.
     stance_reason_required_when_disagreeing: Obavezno u slučaju neslaganja
+    stance_reason_required_for_disagree_or_block: Obavezno za neslaganje ili blokiranje
+    stance_reason_required_for_block: Potrebno za blokiranje
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     verify_participants: Potvrdite sudionike
