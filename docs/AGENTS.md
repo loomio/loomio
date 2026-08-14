@@ -8,7 +8,8 @@ Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
 
 - Keep user-manual source files under `docs/user_manual/`. Add every page that
   should be published to `docs/SUMMARY.md`; the builder does not publish
-  orphaned Markdown files.
+  orphaned Markdown files. Dated changelog files are source fragments for the
+  consolidated changelog and are the exception to this rule.
 - Write internal help links from the help-site root, beginning with `/en/`, and
   omit `.html`, `index.html`, and trailing slashes, for example
   `/en/user_manual/groups/settings`. The builder adds the configured hosting
@@ -45,8 +46,8 @@ Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
   page summary.
 - The renderer concatenates dated files under
   `docs/user_manual/changelog/` into the static changelog index, newest first.
-  Keep each entry in `docs/SUMMARY.md` as well so its individual page is
-  published and linked in the navigation.
+  Do not add dated entries to `docs/SUMMARY.md`; they are published only as
+  part of the consolidated changelog page.
 
 ## User-manual screenshot workflow
 
