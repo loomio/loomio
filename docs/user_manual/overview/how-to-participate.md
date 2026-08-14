@@ -46,7 +46,9 @@ Read the poll, and any attached files, then cast your vote by selecting one of t
 
 ### State a reason
 
-When voting, you can also leave a **Reason** to say why you have voted this way. This is optional.
+When voting, you can also leave a **Reason** to say why you have voted this
+way. Depending on the poll settings, a reason may be optional or required for
+some or all responses.
 
 ![](vote_reason.png#width-90)
 

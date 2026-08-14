@@ -146,6 +146,34 @@ module.exports = {
     );
   },
 
+  'vote_reason_options': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    openProposalForm(page);
+    page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
+    page.click('.poll-common-form__stance-reason-required .v-field');
+    page.waitFor('.v-overlay--active .v-list');
+    page.execute(`
+      const wrapper = document.createElement('div');
+      wrapper.className = 'manual-vote-reason-options-capture';
+      Object.assign(wrapper.style, {
+        position: 'fixed', top: '0', left: '0', width: '720px', zIndex: '9999',
+        padding: '24px', background: 'white'
+      });
+      wrapper.append(
+        document.querySelector('.poll-common-form__stance-reason-required').cloneNode(true),
+        document.querySelector('.v-overlay--active .v-list').cloneNode(true)
+      );
+      document.body.append(wrapper);
+    `);
+    screenshot.captureElement(
+      'polls/starting_proposals/vote_reason_options',
+      '.manual-vote-reason-options-capture',
+      {width: 900, height: 900}
+    );
+  },
+
   'proposal_edit': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
