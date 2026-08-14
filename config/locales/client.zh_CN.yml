@@ -2480,6 +2480,8 @@ zh_CN:
     anonymous_voting_risk_explanation: 匿名投票与选民身份信息分开存储。投票结果仅在投票结束后显示，选民无法添加理由、在提交后查看自己的投票或更改投票。这些措施降低了将个人与投票关联起来的风险，但当有资格投票或实际投票的人很少、结果一致、投票模式具有明显特征，或选民公开自己的选择时，结果仍可能透露信息。
     anonymous_votes_stored_separately: 匿名投票与选民身份信息分开存储。投票结果仅在投票结束后显示，选民无法添加理由、在提交后查看自己的投票或更改投票。
     stance_reason_required_when_disagreeing: 意见不一致时需要填写
+    stance_reason_required_for_disagree_or_block: 不同意或阻止时必填
+    stance_reason_required_for_block: 阻止时必填
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

@@ -2822,6 +2822,8 @@ hu:
     anonymous_voting_risk_explanation: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények csak a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak indoklást, nem tekinthetik meg a szavazatukat a beküldés után, és nem módosíthatják azt. Ezek az intézkedések csökkentik annak kockázatát, hogy egy személyt egy szavazathoz kapcsoljanak, de az eredmények továbbra is felfedhetnek információt, ha kevesen jogosultak szavazni vagy kevesen szavaznak, az eredmény egyhangú, a szavazási minták jellegzetesek, vagy a szavazók nyilvánosságra hozzák választásaikat.
     anonymous_votes_stored_separately: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények csak a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak indoklást, nem tekinthetik meg a szavazatukat a beküldés után, és nem módosíthatják azt.
     stance_reason_required_when_disagreeing: Kötelező, ha nem ért egyet
+    stance_reason_required_for_disagree_or_block: Kötelező a nemetmondáshoz vagy a blokkoláshoz
+    stance_reason_required_for_block: Kötelező a blokkoláshoz
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése

@@ -149,6 +149,7 @@ es:
       pwned_password: Esta contraseña apareció anteriormente en una violación de datos y nunca debe usarse
     new_account_trial_group_limit: Las nuevas cuentas están limitadas a un grupo. Si necesitas más, ponte en contacto con el servicio de asistencia.
     direct_thread_anonymous_poll: Un hilo que contiene una encuesta anónima no se puede convertir en un hilo directo.
+    invitation_rate_limit_reached_contact_support: Se ha alcanzado el límite diario de invitaciones. Póngase en contacto con el servicio de asistencia de inmediato.
   group:
     error:
       handle_must_begin_with_parent_handle: Debe empezar con %{parent_handle}-

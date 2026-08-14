@@ -58,7 +58,7 @@ class StanceTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(
       poll_type: "proposal",
       poll_option_names: %w[agree abstain disagree block],
-      stance_reason_required: "required_when_disagreeing"
+      stance_reason_required: "required_for_disagree_or_block"
     ), actor: @admin)
 
     %w[agree abstain].each do |icon|
@@ -72,11 +72,27 @@ class StanceTest < ActiveSupport::TestCase
     end
   end
 
+  test "requires a reason only for block options when configured" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree abstain disagree block],
+      stance_reason_required: "required_for_block"
+    ), actor: @admin)
+
+    %w[agree abstain disagree].each do |icon|
+      assert stance_for(poll, icon: icon).valid?, "expected #{icon} without a reason to be valid"
+    end
+
+    stance = stance_for(poll, icon: "block")
+    assert_not stance.valid?
+    assert stance_for(poll, icon: "block", reason: "Because this concerns me").valid?
+  end
+
   test "uses the option icon when deciding whether a reason is required" do
     poll = PollService.create(params: poll_params(
       poll_type: "proposal",
       poll_option_names: %w[agree disagree],
-      stance_reason_required: "required_when_disagreeing"
+      stance_reason_required: "required_for_disagree_or_block"
     ), actor: @admin)
     objection = poll.poll_options.find_by!(icon: "disagree")
     objection.update!(name: "Objection")

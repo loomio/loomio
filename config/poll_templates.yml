@@ -1,7 +1,6 @@
 practice_proposal:
   example: true
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
   process_name_i18n: poll_templates.practice_proposal.process_name
   process_subtitle_i18n: poll_templates.practice_proposal.process_subtitle_v2
   process_introduction_i18n: poll_templates.practice_proposal.process_introduction_v2
@@ -32,7 +31,6 @@ practice_proposal:
 try_loomio:
   example: true
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
   process_name_i18n: poll_templates.try_loomio.process_name
   process_subtitle_i18n: poll_templates.try_loomio.process_subtitle
   process_introduction_i18n: poll_templates.try_loomio.process_introduction
@@ -91,7 +89,6 @@ count:
 
 check:
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
   process_name_i18n: decision_tools_card.check_title
   process_subtitle_i18n: poll_templates.sense_check.process_subtitle_v2
   process_introduction_i18n: poll_templates.sense_check.process_introduction_v2
@@ -123,7 +120,6 @@ check:
 
 majority:
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
   process_name_i18n: decision_tools_card.majority_title
   process_subtitle_i18n: poll_templates.majority.process_subtitle
   process_introduction_i18n: poll_templates.majority.process_introduction
@@ -239,7 +235,7 @@ advice:
 
 consent:
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
+  stance_reason_required: required_for_disagree_or_block
   process_name_i18n: decision_tools_card.consent_title
   process_subtitle_i18n: poll_templates.consent.process_subtitle_v2
   process_introduction_i18n: poll_templates.consent.process_introduction_v2
@@ -264,7 +260,7 @@ consent:
 
 consensus:
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
+  stance_reason_required: required_for_block
   process_name_i18n: decision_tools_card.consensus_title
   process_subtitle_i18n: poll_templates.consensus.process_subtitle
   process_introduction_i18n: poll_templates.consensus.process_introduction_v2
@@ -307,7 +303,6 @@ consensus:
 gradients_of_agreement:
   example: true
   poll_type: proposal
-  stance_reason_required: required_when_disagreeing
   process_name_i18n: decision_tools_card.gradients_of_agreement_title
   process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle
   process_introduction_i18n: poll_templates.gradients_of_agreement.process_introduction

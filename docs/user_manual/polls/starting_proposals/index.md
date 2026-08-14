@@ -101,15 +101,21 @@ It can be helpful to understand why people voted the way they did. With this set
 Available settings depend on the template:
 
 - **Optional** lets voters choose whether to give a reason
-- **Required when disagreeing** requires a reason only when the selected option
+- **Required for disagree or block** requires a reason when the selected option
   uses the Disagree or Block voting icon
+- **Required for block** requires a reason when the selected option uses the
+  Block voting icon
 - **Required** requires every voter to give a reason
 - **Disabled** removes the vote-reason field
 
-**Required when disagreeing** follows the voting icon rather than the option
-name. It still applies if you rename Disagree to a term such as Objection.
-Built-in templates with disagreement options use this setting by default, and
-the poll author can change it for an individual poll.
+![](vote_reason_options.png)
+
+The conditional settings follow the voting icon rather than the option name.
+They still apply if you rename Disagree to a term such as Objection. The
+Consent template defaults to **Required for disagree or block**, while the
+Consensus template defaults to **Required for block**. Other templates default
+to **Optional**, except Question rounds where the response itself is required.
+The poll author can change the setting for an individual poll.
 
 >[!Tip]
 >In an election or anonymous poll, consider disabling vote reason to avoid a voter inadvertently revealing their identity with their text comment.

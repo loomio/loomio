@@ -2842,6 +2842,8 @@ pl:
     anonymous_voting_risk_explanation: Anonimowe głosy są przechowywane oddzielnie od tożsamości głosujących. Wyniki są wyświetlane dopiero po zakończeniu głosowania, a głosujący nie mogą dodawać uzasadnień, przeglądać oddanego głosu ani go zmieniać. Środki te zmniejszają ryzyko powiązania osoby z głosem, ale wyniki mogą nadal ujawniać informacje, gdy niewiele osób jest uprawnionych do głosowania lub głosuje, wynik jest jednomyślny, wzorce głosowania są charakterystyczne albo głosujący ujawniają swoje wybory.
     anonymous_votes_stored_separately: Anonimowe głosy są przechowywane oddzielnie od tożsamości głosujących. Wyniki są wyświetlane dopiero po zakończeniu głosowania, a głosujący nie mogą dodawać uzasadnień, przeglądać oddanego głosu ani go zmieniać.
     stance_reason_required_when_disagreeing: Wymagane w przypadku braku zgody
+    stance_reason_required_for_disagree_or_block: Wymagane w przypadku wyrażenia sprzeciwu lub zablokowania
+    stance_reason_required_for_block: Wymagane przy blokowaniu
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     verify_participants: Zweryfikuj uczestników

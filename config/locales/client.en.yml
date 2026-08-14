@@ -2551,6 +2551,8 @@ en:
     stance_reason_required_label: Providing a reason when voting is ...
     stance_reason_required: Required
     stance_reason_required_when_disagreeing: Required when disagreeing
+    stance_reason_required_for_disagree_or_block: Required for disagree or block
+    stance_reason_required_for_block: Required for block
     stance_reason_optional: Optional
     stance_reason_disabled: Disabled
     stance_reason_is_required: Please provide a reason with your vote

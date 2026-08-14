@@ -2815,6 +2815,8 @@ sl:
     anonymous_voting_risk_explanation: Anonimni glasovi se shranjujejo ločeno od identitet volivcev. Rezultati se prikažejo šele po koncu glasovanja, volivci pa ne morejo dodati obrazložitve, pregledati svojega glasu po oddaji ali ga spremeniti. Ti ukrepi zmanjšujejo tveganje povezovanja osebe z glasom, vendar lahko rezultati še vedno razkrijejo informacije, kadar je upravičenih ali glasuje malo ljudi, je rezultat soglasen, so vzorci glasovanja značilni ali volivci razkrijejo svoje izbire.
     anonymous_votes_stored_separately: Anonimni glasovi se shranjujejo ločeno od identitet volivcev. Rezultati se prikažejo šele po koncu glasovanja, volivci pa ne morejo dodati obrazložitve, pregledati svojega glasu po oddaji ali ga spremeniti.
     stance_reason_required_when_disagreeing: Obvezno v primeru nestrinjanja
+    stance_reason_required_for_disagree_or_block: Zahtevano za nestrinjanje ali blokiranje
+    stance_reason_required_for_block: Zahtevano za blokiranje
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     verify_participants: Preverjanje udeležencev

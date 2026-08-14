@@ -150,6 +150,7 @@ ca:
       body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit una discussió o una enquesta.
     new_account_trial_group_limit: Els comptes nous estan limitats a un grup. Si us plau, contacteu amb l'assistència si en necessiteu més.
     direct_thread_anonymous_poll: Un fil que conté una enquesta anònima no es pot convertir en un fil directe.
+    invitation_rate_limit_reached_contact_support: S'ha arribat al límit diari d'invitacions. Contacta amb l'assistència immediatament.
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-

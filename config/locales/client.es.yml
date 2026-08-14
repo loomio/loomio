@@ -2851,6 +2851,8 @@ es:
     anonymous_voting_risk_explanation: Los votos anónimos se almacenan por separado de la identidad de los votantes. Los resultados solo aparecen cuando finaliza la votación, y los votantes no pueden añadir explicaciones, revisar su voto después de enviarlo ni cambiarlo. Estas medidas reducen el riesgo de vincular a una persona con un voto, pero los resultados aún pueden revelar información cuando pocas personas tienen derecho a votar o votan, el resultado es unánime, los patrones de votación son distintivos o los votantes revelan sus opciones.
     anonymous_votes_stored_separately: Los votos anónimos se almacenan por separado de la identidad de los votantes. Los resultados solo aparecen cuando finaliza la votación, y los votantes no pueden añadir explicaciones, revisar su voto después de enviarlo ni cambiarlo.
     stance_reason_required_when_disagreeing: Obligatorio en caso de desacuerdo
+    stance_reason_required_for_disagree_or_block: Requerido para estar en desacuerdo o bloquear
+    stance_reason_required_for_block: Requerido para bloquear
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     verify_participants: Verificar participantes

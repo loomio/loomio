@@ -433,7 +433,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "update requires a reason when disagreeing" do
-    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    @poll.update!(stance_reason_required: "required_for_disagree_or_block")
     stance = @poll.stances.find_by!(participant_id: @user.id)
     disagreement = @poll.poll_options.last
     disagreement.update!(icon: "disagree")
@@ -453,7 +453,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "update accepts disagreement with a reason" do
-    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    @poll.update!(stance_reason_required: "required_for_disagree_or_block")
     stance = @poll.stances.find_by!(participant_id: @user.id)
     disagreement = @poll.poll_options.last
     disagreement.update!(icon: "disagree")

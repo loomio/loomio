@@ -217,7 +217,8 @@ const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_when_disagreeing'), value: 'required_when_disagreeing'},
+  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_for_disagree_or_block'), value: 'required_for_disagree_or_block'},
+  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_for_block'), value: 'required_for_block'},
   {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
   {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
 ].filter(Boolean));

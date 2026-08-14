@@ -177,7 +177,8 @@ export default {
     stanceReasonRequiredItems() {
       return compact([
         {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
-        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_when_disagreeing'), value: 'required_when_disagreeing'},
+        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_for_disagree_or_block'), value: 'required_for_disagree_or_block'},
+        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_for_block'), value: 'required_for_block'},
         {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
         {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ]);

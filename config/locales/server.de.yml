@@ -153,6 +153,7 @@ de:
       pwned_password: Dieses Passwort ist bereits bei einem Datenverstoß aufgetaucht und sollte niemals verwendet werden
     new_account_trial_group_limit: Neue Konten sind auf eine Gruppe beschränkt. Bitte kontaktiere den Support, falls du weitere Konten benötigst.
     direct_thread_anonymous_poll: Ein Thread, der eine anonyme Umfrage enthält, kann nicht in einen direkten Thread umgewandelt werden.
+    invitation_rate_limit_reached_contact_support: Das tägliche Einladungslimit ist erreicht. Bitte kontaktieren Sie umgehend den Support.
   group:
     error:
       handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-

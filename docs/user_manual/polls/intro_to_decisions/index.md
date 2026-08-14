@@ -83,11 +83,12 @@ As you start using proposals and polls, you will notice the setup, running and c
 In "Advanced settings" you can also set:
 - Hide results, until vote is cast or poll closes
 - Anonymous voting
-- Vote reason to required, optional or disabled
+- Vote reason to required for particular responses, required for every
+  response, optional or disabled
 - Reminder that poll is closing soon to nobody, author, undecided voters or all voters
 
 **Running proposal or poll:**
-- Participants vote and add a reason (optional) 
+- Participants vote and add a reason
 - Results are updated live
 - Participants can change their vote if new info emerges
 - A reminder is sent to people who haven’t voted 

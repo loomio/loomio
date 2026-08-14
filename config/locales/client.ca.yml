@@ -2842,6 +2842,8 @@ ca:
     anonymous_voting_risk_explanation: Els vots anònims s'emmagatzemen per separat de les identitats dels votants. Els resultats només apareixen després del tancament de la votació, i els votants no poden afegir motius, revisar el vot després d'enviar-lo ni canviar-lo. Aquestes mesures redueixen el risc de relacionar una persona amb un vot, però els resultats encara poden revelar informació quan poques persones poden votar o voten, el resultat és unànime, els patrons de vot són distintius o els votants revelen les seves opcions.
     anonymous_votes_stored_separately: Els vots anònims s'emmagatzemen per separat de les identitats dels votants. Els resultats només apareixen després del tancament de la votació, i els votants no poden afegir motius, revisar el vot després d'enviar-lo ni canviar-lo.
     stance_reason_required_when_disagreeing: Obligatori quan no hi ha acord
+    stance_reason_required_for_disagree_or_block: Obligatori per a desacord o bloqueig
+    stance_reason_required_for_block: Obligatori per bloqueig
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     verify_participants: Verifica els participants

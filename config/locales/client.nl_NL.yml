@@ -2842,6 +2842,8 @@ nl_NL:
     anonymous_voting_risk_explanation: Anonieme stemmen worden apart van de identiteit van de stemmers opgeslagen. Resultaten worden pas na het sluiten van de stemming getoond en stemmers kunnen geen redenen toevoegen, hun stem na het indienen bekijken of deze wijzigen. Deze maatregelen verkleinen het risico dat een persoon aan een stem wordt gekoppeld, maar resultaten kunnen nog steeds informatie prijsgeven wanneer weinig mensen stemgerechtigd zijn of stemmen, de uitslag unaniem is, stempatronen opvallend zijn of stemmers hun keuzes bekendmaken.
     anonymous_votes_stored_separately: Anonieme stemmen worden apart van de identiteit van de stemmers opgeslagen. Resultaten worden pas na het sluiten van de stemming getoond en stemmers kunnen geen redenen toevoegen, hun stem na het indienen bekijken of deze wijzigen.
     stance_reason_required_when_disagreeing: Vereist bij meningsverschillen
+    stance_reason_required_for_disagree_or_block: Vereist om niet akkoord te gaan of te blokkeren
+    stance_reason_required_for_block: Vereist bij blokkeren
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren

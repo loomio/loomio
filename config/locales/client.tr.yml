@@ -2815,6 +2815,8 @@ tr:
     anonymous_voting_risk_explanation: Anonim oylar, seçmenlerin kimliklerinden ayrı olarak saklanır. Sonuçlar yalnızca oylama kapandıktan sonra gösterilir ve seçmenler gerekçe ekleyemez, oylarını gönderdikten sonra inceleyemez veya değiştiremez. Bu önlemler bir kişiyi bir oyla ilişkilendirme riskini azaltır; ancak az sayıda kişi oy kullanma hakkına sahipse veya oy verirse, sonuç oybirliğiyle çıkarsa, oy verme örüntüleri ayırt ediciyse ya da seçmenler tercihlerini açıklarsa sonuçlar yine de bilgi açığa çıkarabilir.
     anonymous_votes_stored_separately: Anonim oylar, seçmenlerin kimliklerinden ayrı olarak saklanır. Sonuçlar yalnızca oylama kapandıktan sonra gösterilir ve seçmenler gerekçe ekleyemez, oylarını gönderdikten sonra inceleyemez veya değiştiremez.
     stance_reason_required_when_disagreeing: Anlaşmazlık durumunda gereklidir
+    stance_reason_required_for_disagree_or_block: Katılmıyorsanız veya engelliyorsanız gereklidir
+    stance_reason_required_for_block: Engelleme için gerekli
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın
