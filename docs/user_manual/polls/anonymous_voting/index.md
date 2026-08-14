@@ -61,7 +61,9 @@ Poll coordinators can view the named participation records. These always show wh
 
 Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
 
-For a poll limited to explicitly invited people, coordinators can add voters until the first vote is submitted. Restricting electorate changes after voting begins reduces the information that could be used to infer how someone voted.
+Coordinators can add eligible people while voting remains open, including after
+other people have voted. Existing voters cannot be removed from an anonymous
+poll.
 
 ## Reminders
 
