@@ -59,10 +59,6 @@ Seek consent on a decision you need to make, where there are no meaningful objec
 
 [Read more about the Consent process](/en/guides/making_decisions/consent_process.html).
 
-By default, a reason is required when a participant selects an option marked
-Disagree or Block. This includes the Objection option supplied by the Consent
-template.
-
 **Voting with the Consent proposal**
 
 ![](proposal_consent_voting.png)
@@ -85,9 +81,6 @@ Build consensus for a decision you need to make, to reach an agreement that sati
 
 >[!Note]
 >This template includes a Block option by default. Block isn't suitable for every group — it can be controversial or misused. If you don't use block in your decision-making process, we recommend editing the template to remove it.
-
-By default, a reason is required when a participant selects Block. Reasons are
-optional for the other responses.
 
 **Voting with the Consensus proposal**
 

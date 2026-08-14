@@ -88,8 +88,7 @@ In "Advanced settings" you can also set:
 - Reminder that poll is closing soon to nobody, author, undecided voters or all voters
 
 **Running proposal or poll:**
-- Participants vote and add a reason when required, or choose whether to add
-  one when reasons are optional
+- Participants vote and add a reason
 - Results are updated live
 - Participants can change their vote if new info emerges
 - A reminder is sent to people who haven’t voted 
