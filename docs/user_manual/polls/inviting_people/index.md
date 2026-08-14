@@ -49,6 +49,8 @@ If the poll has a scheduled opening time and voting has not yet opened, voters w
 
 Select **Add voters**, find the person's name, open the three-dot menu beside it, and select **Remove from proposal**.
 
+People cannot be removed from an anonymous poll.
+
 For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
 
 ![](proposal_invite_remove.png)
@@ -70,5 +72,7 @@ You might do this when everyone has voted or the poll no longer needs to remain 
 ### Reopen
 
 Select **Reopen** on a closed poll, then set a new closing date and time.
+
+Anonymous polls cannot be reopened.
 
 ![](proposal_reopen.png)

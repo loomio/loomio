@@ -71,7 +71,9 @@ Give sufficient time for people to vote. You could time the proposal so it close
 
 **Who can vote?** Invite everyone in the group or only specific people that you invite.
 
-You can later add or remove people from an 'Invite people only' poll.
+You can later add people to an 'Invite people only' poll. For identified polls,
+you can also remove people who should no longer be eligible to vote. People
+cannot be removed from an anonymous poll.
 
 ## More settings
 
@@ -86,6 +88,10 @@ Setting options:
 - Undecided voters (default)
 - All voters
 
+For an anonymous poll lasting at least 24 hours, Loomio automatically reminds
+eligible people who have not voted during the final 24 hours. This reminder
+cannot be changed in the poll settings.
+
 ### Anonymous voting
 If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
 
@@ -93,7 +99,7 @@ If enabled, votes are stored separately from voter identities. Results appear af
 > Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
 
 > [!WARNING]
-> You cannot re-open an anonymous poll after it has closed. Voter information including the voter identity is discarded, so Loomio doesn't know who has voted.
+> You cannot re-open an anonymous poll after it has closed. Submitted votes are not linked to the participation records that show who has voted.
 
 ### Vote reason
 It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
@@ -117,18 +123,18 @@ Consensus template defaults to **Required for block**. Other templates default
 to **Optional**, except Question rounds where the response itself is required.
 The poll author can change the setting for an individual poll.
 
->[!Tip]
->In an election or anonymous poll, consider disabling vote reason to avoid a voter inadvertently revealing their identity with their text comment.
-
 **Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons.
 
 ### Hide results
 If you want people to vote without knowing how others have voted, you can hide the results of the poll.  Useful if you do not want people to be affected by how other people have voted.
 
 Setting options:
-- Do not hide results (default)
+- Do not hide results
 - Hide results until a vote is cast
 - Hide results until voting closes
+
+Anonymous polls always hide results until voting closes. The STV Election
+template enables anonymous voting by default.
 
 ### Start the poll
 Select the **Start proposal** or **Start poll** button.
