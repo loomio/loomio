@@ -70,10 +70,19 @@ export async function loadLocaleMessages(i18n, locale) {
       return false
     }
 
-    const dateMessages = await dateLocales[dateLocaleKey]()
-    const appMessages = await clientLocales[clientLocaleKey]();
-    dateLocale = dateMessages.default;
-    i18n.global.setLocaleMessage(locale, appMessages.default[locale])
+    const [dateMessages, appMessages] = await Promise.all([
+      dateLocales[dateLocaleKey](),
+      clientLocales[clientLocaleKey](),
+    ])
+    const localeMessages = appMessages?.default?.[locale]
+
+    if (!localeMessages) {
+      Sentry.captureMessage(`empty clientLocale: ${clientLocaleKey}`)
+      return false
+    }
+
+    dateLocale = dateMessages?.default || defaultLocale;
+    i18n.global.setLocaleMessage(locale, localeMessages)
   }
 
   setI18nLanguage(i18n, locale);
