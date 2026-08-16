@@ -21,13 +21,24 @@ The bell icon in the top-right is where notifications are accessed within the ap
 
 The notification list tells you when someone mentions you, invites you to vote, starts a discussion, or shares other activity that needs your attention. Select a notification to open the related discussion or poll.
 
+## How access and notifications fit together
+
+Being able to see something does not mean you will receive an immediate notification about it.
+
+- **Access** controls which groups, discussions, and polls you are allowed to open.
+- **Invitations, mentions, and replies** ask for your attention and normally send an immediate in-app notification and email.
+- **Subscriptions** send email for all activity in a group or thread.
+- The **Catch-up summary** collects unread activity into one scheduled email.
+
+For example, a group member can find a discussion without being invited to it. Inviting them sends it to their attention immediately. Mentioning them later asks for a specific response without changing their access.
+
 ## Email notifications
 
 Loomio sends emails to keep you updated on the activity in your groups. The default settings assume that you don't have a habit of using Loomio regularly so are designed to ensure you can stay up to date by checking your emails.
 
 Emails we send out include:
 
-- A daily summary called **Yesterday on Loomio**. This includes activity from all your groups and discussions, but only content which you have not read yet.
+- A **Catch-up summary email** containing recent activity you have not read. Its subject is **Yesterday on Loomio**, **Recently on Loomio**, or **Last week on Loomio**, depending on your chosen schedule.
 
 - **Mention** and **Reply** notifications. If someone replies to a comment you wrote, or they write a comment and mention you in it, you'll get an email with what they wrote.
 
@@ -35,7 +46,9 @@ Emails we send out include:
 
 - Discussion updates. If **subscribe on participation** is checked, then after you comment or vote within a discussion, you'll be emailed any further activity.
 
-For any discussion-specific email (that's most except the Yesterday on Loomio email) you can reply directly from your email and your replies will be posted into the Loomio discussion.
+When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
+
+Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The Catch-up summary cannot accept replies; open the linked discussion or poll first.
 
 ## User email settings
 
@@ -61,12 +74,24 @@ Enabling this setting means when you participate in a thread, all further activi
 
 ### Catch-up summary email
 
-Enabling this setting means you will get an email with any activity that you missed the day, or week, before. This provides an easy routine for staying up to date with Loomio activity.  You can choose:
+The Catch-up summary email provides a regular overview of unread activity without emailing you about every event or requiring you to check Loomio each day.
 
-- 'Off' to not receive this email.
-- 'Every day' to receive the email daily.
-- 'Every second day' to receive the email every second day.
-- 'Monday', 'Tuesday'...'Sunday' to receive the email once a week on a particular day.
+It groups discussions and standalone polls by group, and can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+
+Loomio does not send a summary when there is no unread activity from the relevant period.
+
+Choose how often you want to receive it:
+
+- **Never** to turn off the summary
+- **Every day** for activity from approximately the previous 24 hours
+- **Every second day** for activity from approximately the previous two days
+- a weekday to receive a weekly summary on that day
+
+The summary is sent in the morning according to the time zone in your Loomio profile.
+
+Opening the email normally marks the activity included in it as read in Loomio. Some email clients block the small image used to do this; in that case, the activity remains unread until you open it in Loomio.
+
+The Catch-up summary is not a discussion-specific email, so do not reply to it. Open a discussion or poll from the summary before commenting or replying.
 
 ![catchup summary email setting](catchup_summary_email_setting.png)
 

@@ -1,6 +1,6 @@
 # Time poll
 
-Use a **Time poll** to find a time for a meeting or event. Participants see the options in their own time zone.
+Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
 
 ![](meeting_polls.png)
 

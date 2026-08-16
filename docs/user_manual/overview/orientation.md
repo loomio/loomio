@@ -18,7 +18,7 @@ The tabs under the group description provide access to:
 
 **Members** - The people who belong to the group.
 
-**Files** - Documents and other files attached to discussions in the group.
+**Files** - Documents and other files attached throughout the group. The tab collects files from discussion contexts, comments, proposals, and polls, so you can find a document without remembering where it was attached.
 
 See [Finding content](/en/user_manual/overview/finding-content) for help with search, filters, tags, bookmarks, and unread discussions.
 

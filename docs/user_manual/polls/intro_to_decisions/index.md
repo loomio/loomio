@@ -41,6 +41,12 @@ See [Polls](../proposal_types/) to compare them.
 
 ## Start a proposal or poll
 
+### Choose whether to use a discussion
+
+Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+
+Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+
 ### In a discussion
 
 Open the discussion, scroll to the reply area, select **Start a vote**, and choose a template.
@@ -52,6 +58,8 @@ Open the discussion, scroll to the reply area, select **Start a vote**, and choo
 Open the **Polls** tab on the group page, select **New poll**, and choose a template.
 
 ![](standalone_poll.png)
+
+If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
 
 ## What happens next
 

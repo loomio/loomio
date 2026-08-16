@@ -2,24 +2,20 @@
 
 Loomio can become the online place where your board or committee meet, discuss, decide and build an auditable record for your organization.
 
+Start with the general sequence in [Introducing Loomio to your group](/en/user_manual/groups/introducing_loomio). This page adds considerations specific to boards and committees.
+
 However Loomio will be of little value if only some of your board participate.  Information and communication will likely remain scattered over multiple tools, lost in email inboxes and the confusion will waste everyone's time.
 
 Consider the problem you are trying to solve by using Loomio, say to improve and track communication or build institutional memory.  Then commit as a board to move your work into Loomio, and encourage everyone to make a genuine effort.  
 
 As administrator your primary objective is to set up Loomio effectively for your board.
 
-Aim to encourage directors to join and participate. They should be easily able to:
+Aim to encourage directors to join and participate. They should be able to:
 
 - Sign in to Loomio
 - Read and comment on threads
 - Vote in polls
 - See how your governance practices work in Loomio
-
-Send this 6 minute video to members to help them sign in, comment and vote.
-
-<div class="iframe-container">
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hFWVuwqmJKI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 ## Check technical proficiency 
 
@@ -61,13 +57,8 @@ Your [personal profile](https://help.loomio.com/en/user_manual/users/user_profil
 ### Manage group membership
 Make sure all the members of your board or committee have been [invited](/en/user_manual/groups/inviting_people/) to the group, and accepted their invitation.
 
-### Start with baby steps
-Before you launch into new work on Loomio, you might want to check that everyone can read threads, write a comment and vote in a poll.
+### Start with a board process
 
-Start a thread asking just that: "Please reply to my first thread on Loomio"
-Maybe add a question like: "What device do you use most frequently to access the internet?"
+The general introduction guide explains how to help everyone comment and vote once. For a board, follow that practice with one recurring governance process, such as preparing an agenda, approving minutes, reviewing a report, or making a small out-of-session decision.
 
-Then start a low-stakes [Proposal](/en/user_manual/polls/proposals/), such as: "We are ready to begin using Loomio for board decisions."
-Invite members to select a response and leave a reason describing their experience.
-
-When your members know how to sign in, write a comment and vote in a poll, they have can participate effectively in your Loomio group.
+Agree whether decisions made in Loomio take effect when their outcome is published or must be ratified at the next meeting. Record the agreed quorum, vote threshold, eligible voters, and ratification process in the group description or governance documents.
