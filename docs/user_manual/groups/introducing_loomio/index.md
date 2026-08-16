@@ -43,17 +43,38 @@ Link to documents and other systems from the group description or discussion con
 
 Tell members what you expect to happen in Loomio. A simple boundary such as “important discussions and decisions go in Loomio; quick coordination stays in chat” is easier to adopt than an unexplained new tool.
 
-## Decide how decisions count
+## Decide how your group decides
 
-Before running a formal vote, agree on the process:
+Loomio does not require every group, or every decision, to use the same process. Some groups arrive with established rules. Others use Loomio while they develop a clearer decision-making practice together.
 
-- who is allowed to vote;
+### If your process is already established
+
+Translate the group's existing requirements into Loomio. Before running a formal decision, make sure participants can tell:
+
+- which kinds of decisions can be made in Loomio;
+- who provides input and who has authority to decide;
+- who is eligible to vote;
 - whether a [quorum](/en/user_manual/polls/quorum) is required;
-- whether a majority, supermajority, unanimous agreement, consent, or another [vote share requirement](/en/user_manual/polls/vote_share_requirements) is needed;
-- whether the decision takes effect when the outcome is published or must be ratified at a meeting; and
-- who is responsible for recording and carrying out the outcome.
+- whether the decision requires a majority, supermajority, unanimous agreement, consent, or another [vote share requirement](/en/user_manual/polls/vote_share_requirements);
+- whether the decision takes effect when its outcome is published or must be ratified elsewhere; and
+- who will record and carry out the outcome.
 
-If only some group members have formal voting rights, see [Delegated voters](/en/user_manual/groups/delegated_voters). If your constitution, bylaws, or local law govern electronic decisions, make sure your Loomio process follows those requirements.
+If your constitution, bylaws, policy, or local law governs electronic decisions, make sure the Loomio process follows those requirements. Configure [delegated voters](/en/user_manual/groups/delegated_voters), proposal settings, and [poll templates](/en/user_manual/polls/poll_templates) to make the agreed process easy to repeat.
+
+### If your group is still deciding
+
+Start a discussion about how decisions should be made. Instead of beginning with a voting tool, ask the group to consider:
+
+- What kinds of decisions do we make?
+- Who is affected, who should be consulted, and who is responsible for deciding?
+- Which decisions need advice, consent, consensus, a vote, or delegated authority?
+- What level of participation or support makes a decision valid?
+- How will we respond to objections, tied results, or insufficient participation?
+- How will we communicate, record, review, and change a decision?
+
+The answers may be different for an operational decision, a policy, an election, and a constitutional change. See [Making decisions](/en/guides/making_decisions) to compare several complete processes.
+
+If the group is not ready to settle every rule, agree on a provisional process for one low-risk decision. State what the result will mean before asking people to participate, publish an outcome, then review how the process worked. Record what the group learns in its description, governance documents, or reusable templates.
 
 ## Invite people
 
