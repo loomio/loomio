@@ -67,6 +67,6 @@ Participants often look to the leader or facilitator for confirmation of when it
 On Loomio
 
 * The clearest indication of conclusion on Loomio is publishing a decision outcome.
-* Some groups use the [lock thread](/en/user_manual/discussions/discussion_management/#lock-a-thread) feature to prevent further changes and reduce clutter.
+* Some groups use the [lock thread](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread) feature to prevent further changes and reduce clutter.
 * Deactivating a group is the strongest possible “closure” move. No one can say anything else after that.
 * Since Loomio groups can remain while group activity goes up and down, it can be useful to recognize milestones like the conclusion of a particular phase, even if the group will reactivate in the future.

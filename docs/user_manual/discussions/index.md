@@ -17,7 +17,7 @@ Discussions can also contain polls and proposals to help progress a discussion t
 
 ![The Returnable bottles for cafe customers discussion, with a comment and a proposal](discussion-example.png)
 
-## Using discussions
+## Common uses
 
 Here are some common uses of discussions:
 
@@ -52,5 +52,3 @@ Here are some common uses of discussions:
 **Explore ideas** - Share thoughts and invite discussion about a concern you notice, or an improvement that can be made.
 
 **Advice, Consent and Generative decision making** - Prepare, propose, clarify, respond to reactions and objections, agree and implement - all within a Loomio discussion.
-
-See [Example discussions](/en/user_manual/discussions/examples/) if you're looking for inspiration.

@@ -8,6 +8,16 @@ function openDiscussion(page) {
   page.waitFor('.comment-form .ProseMirror');
 }
 
+function openCommentDiscussion(page) {
+  page.loadPath('setup_manual_oatmilk_comment_discussion');
+  page.waitFor('.strand-page');
+  page.expectText('.strand-page', 'Improve the cafe bottle collection process');
+  page.expectCount('.new-comment', 5);
+  page.waitFor('#add-comment .comment-form .ProseMirror');
+  page.execute("const comments = Array.from(document.querySelectorAll('.new-comment')); comments[0].classList.add('manual-comment-first'); comments[2].classList.add('manual-comment-reply-target'); comments.at(-1).classList.add('manual-comment-last')");
+  page.waitFor('.manual-comment-last');
+}
+
 function postOwnComment(page, body) {
   page.fillIn('.comment-form .ProseMirror', body);
   page.click('.comment-form__submit-button');
@@ -94,12 +104,15 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
-    page.waitFor('.new-comment');
-    screenshot.captureElement('discussions/using_discussions/thread_unread_comments', '.strand-card', {
-      spotlight: {selector: '.new-comment', padding: 12, radius: 14},
+    openCommentDiscussion(page);
+    screenshot.captureRegion('discussions/using_discussions/thread_unread_comments', [
+      '.manual-comment-first',
+      '.manual-comment-last'
+    ], {
+      padding: 32,
+      spotlight: {selectors: ['.manual-comment-first', '.manual-comment-last'], padding: 12, radius: 14},
       width: 1100,
-      height: 1600
+      height: 1800
     });
   },
 
@@ -107,12 +120,21 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
-    page.fillIn('.comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
-    screenshot.captureElement('discussions/using_discussions/comment', '.strand-card', {
+    page.resizeWindow(1100, 1200);
+    openCommentDiscussion(page);
+    const draft = 'I can help document the cleaning time during the trial.';
+    page.clickElement('#add-comment .comment-form .ProseMirror');
+    page.fillIn('#add-comment .comment-form .ProseMirror', draft);
+    page.expectText('#add-comment .comment-form .ProseMirror', draft);
+    test.pause(500);
+    screenshot.captureRegion('discussions/using_discussions/comment', [
+      '.manual-comment-last',
+      '#add-comment .comment-form'
+    ], {
+      padding: 32,
       width: 1100,
-      height: 1600,
-      spotlight: {selector: '.comment-form', padding: 12, radius: 14}
+      height: 1200,
+      spotlight: {selector: '#add-comment .comment-form', padding: 12, radius: 14}
     });
   },
 
@@ -139,12 +161,16 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openDiscussion(page);
-    page.click('.new-comment .action-dock__button--reply_to_comment');
+    openCommentDiscussion(page);
+    page.click('.manual-comment-reply-target .action-dock__button--reply_to_comment');
     page.waitFor('.reply-form .comment-form');
-    screenshot.captureElement('discussions/using_discussions/comment_reply', '.strand-card', {
+    screenshot.captureRegion('discussions/using_discussions/comment_reply', [
+      '.manual-comment-reply-target',
+      '.reply-form .comment-form'
+    ], {
+      padding: 32,
       width: 1100,
-      height: 1700,
+      height: 1200,
       spotlight: {selector: '.reply-form .comment-form', padding: 12, radius: 14}
     });
   },

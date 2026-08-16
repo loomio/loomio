@@ -61,6 +61,16 @@ Select **Remind** to send a notification to people who have not voted. **Everyon
 
 ![](proposal_remind.png)
 
+### View notification history
+
+Open the three-dot menu (**⋯**) at the bottom of the poll and select **Notification history**.
+
+![Notification history in a poll's actions menu](../../discussions/notifying_people/poll_notification_history.png)
+
+The history shows who has been invited to vote, when each invitation was sent, and whether it has been read when that information is available.
+
+![Notification history for a poll](../../discussions/notifying_people/poll_notification_example.png)
+
 ### Close early
 
 Select **Close early** to close a poll before its scheduled closing time.

@@ -14,7 +14,7 @@ Clarification of purpose is one of the highest value offerings of a skilled faci
 
 On Loomio
 
-* The app offers space for explication of purpose, such as the [group description](/en/user_manual/groups/starting_a_group/#group-description) and [discussion context](/en/user_manual/discussions/using_discussions/#thread-context) fields.
+* The app offers space for explication of purpose, such as the [group description](/en/user_manual/groups/starting_a_group/#group-description) and [discussion context](/en/user_manual/discussions/using_discussions/#discussion-context) fields.
 * A Loomio discussion *about* purpose is a great place to start with your group, if it's not already clear.
 * Our analytics (stats about how people use the software) show that groups with a clear shared purpose are more successful.
 * [Customer stories and case studies](https://blog.loomio.com/?utm_campaign=facilitators_guide_help&utm_term=help) we've collected emphasise the importance of setting a collective purpose.

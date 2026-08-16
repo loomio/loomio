@@ -55,8 +55,6 @@ Now, anyone with access to your Loomio discussion and permission to view the doc
 
 ![](format_link.png)
 
-<iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/84FAbGJbTws" frameborder="0" allowfullscreen></iframe>
-
 ## Insert Emoji
 
 Select the smiley button and choose an emoji from the picker.
@@ -163,15 +161,3 @@ If you click this while there is text in the form, some formatting may be lost u
 Select **Edit rich text** to return to the formatting tools. This converts supported Markdown into its displayed form.
 
 **Preview** shows how Markdown will appear when posted without converting it.
-
-## Lock thread
-
-Lock a thread to prevent people from commenting or making further changes. Locked threads are removed from the list of open threads.
-
-You can only lock a thread after its active polls have closed. Select **Lock thread** under **Actions** in the right sidebar.
-
-To view locked threads, go to the relevant **group page** and change the discussion filter from **Open** to **Locked**.
-
-### Unlock thread
-
-Open the locked thread and select **Unlock thread** under **Actions** in the right sidebar. This allows comments and changes again and restores the thread to the open discussion list.

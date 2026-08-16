@@ -1,6 +1,6 @@
-# Using discussions
+# Using threads
 
-Loomio discussions are versatile and you have many tools available to help you progress a discussion to an outcome.  Read on to see how to get the most from discussions.
+A discussion keeps its context, comments, decisions, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation and actions.
 
 ## Thread anatomy
 
@@ -8,17 +8,17 @@ A typical thread looks like this:
 
 ![](thread_navigation.png)
 
-Description of thread features from the top.
+From the top of the page, a thread contains:
 
 **Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page.
 
 **Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings.
 
-**Discussion title** - The discussion title is the largest type font on the page, so easy to spot.
+**Discussion title** - The name of the discussion.
 
 **Category tags** - The discussion may have one or more category tags. Using simple tags helps people more easily find discussions of a similar type.
 
-**Discussion author** - Under the discussion title is see the photo/avatar and name of the person who started the discussion.
+**Discussion author** - The name and avatar of the person who started the discussion, shown beneath the title.
 
 **Date** - Hover over the date to see the full date and time of discussion start.
 
@@ -32,9 +32,9 @@ Description of thread features from the top.
 
 **Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment.
 
-**Thread navigation and actions** - The right sidebar contains shortcuts to
-unread and recent activity, important milestones, notification settings,
-thread members, and actions available to you.
+**Navigation, notifications and actions** - The right sidebar contains
+shortcuts to activity and milestones, notification and membership information,
+and the thread actions available to you.
 
 ## Discussion context
 
@@ -52,200 +52,137 @@ At the bottom of the context panel is a formatting bar, where you can format tex
 
 ![](thread_context_edit.png)
 
-## Thread navigation and actions
+### Notify people about context changes
 
-The right sidebar keeps navigation and thread-level controls together.
+When you edit the discussion context, use **What's changed?** to summarize the update and choose who should be notified.
 
-Under **Jump to**:
+![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)
+
+The summary appears as an item in the thread so participants can see what changed.
+
+![A timeline item describing a discussion context change](../notifying_people/thread_edit_comment.png)
+
+## Navigation
+
+The **Jump to** section of the right sidebar helps you move through a thread:
 
 - **Start** goes to the discussion context
 - **New to you** appears when the thread contains activity you have not read
-- **Latest** appears when newer activity is available beyond the items
-  currently loaded
+- **Latest** appears when newer activity is available beyond the items currently loaded
 - milestone links go directly to important comments, polls, and outcomes
 - **End** goes to the latest item in the thread
 
-Comments that include an H2 or H3 heading, polls, and proposals are
-automatically included as milestone links. Select any milestone to go directly
-to it.
-
-The other sections control email notifications, show participant and
-notification information you are permitted to see, and provide actions such as
-printing, copying Markdown, moving, configuring, locking, or deleting the
-thread. The actions shown depend on your permissions.
+Comments that include an H2 or H3 heading, polls, and proposals are automatically included as milestone links. Select any milestone to go directly to it.
 
 ![](thread_timeline_1.png)
 
-When you add a comment, poll, vote, or outcome, Loomio marks your own new item
-as read. It will not appear as something new for you to review.
+When you add a comment, poll, vote, or outcome, Loomio marks your own new item as read. It will not appear as something new for you to review.
 
-## Comments
-The most common activity in a discussion is commenting. Comments are visible to anyone who has permission to see the discussion.
+## Notifications and members
 
-### Reading comments
-When you open a discussion, Loomio takes you to activity that is new to you.
+The right sidebar controls your email notifications and shows who has been invited, who has seen the thread, and who has been notified.
 
-Unread comments have a blue **new** label beside their posting time.
+### Email notifications for this thread
 
-![](thread_unread_comments.png)
+Select the current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Receiving email for all activity can produce many messages in an active thread.
 
-### Writing a comment
+![Email when notified selected in the discussion sidebar](../notifying_people/thread_interact.png)
 
-You can write a comment in a discussion, and people can reply, react or post their own comment to continue the discussion.
+### Invite people
 
-When you have written your text, use **Post Comment** to instantly publish the comment. Your comment will be visible to anyone who has permission to see the discussion. 
+Select **Invite people** to add people after the thread has started.
 
-![](comment.png)
+![Invite people in the thread sidebar](../notifying_people/thread_invite_icon.png)
 
-The full range of formatting tools described in [Formatting](/en/user_manual/discussions/formatting/) are available for use in comments.
+Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
 
-Write your comment and press **Post Comment**.
+![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)
 
-### Reactions
-Use the smiley button to respond with an emoji. Reactions let people acknowledge a comment without writing another comment or sending an email.
+A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
 
-![](reaction.png)
+![Inviting a guest by email address](../notifying_people/invite_guest.png)
 
-### Replying to a comment
+To remove someone, open the three-dot menu (**⋯**) beside their name and select **Remove from discussion**.
 
-You can reply to someone's comment by clicking **Reply** below the comment.
+### Seen by
 
-Your reply is published in the thread and an email notification is sent to the author of the comment.
+**Seen by** shows who has opened the thread and when. It can help you identify people who may not have seen important information yet.
 
-![](comment_reply.png)
+![Seen by and Notified in the Thread members section](../notifying_people/thread_engagement.png)
 
-You can also reply to your own comment to nest a response beneath it.
+![Seen by window listing thread members](../notifying_people/thread_seenby.png)
 
-If Loomio has emailed you a comment and says you can reply to the email, you can reply directly from your email and your message will appear in the thread.
+### Notified
 
-### Automatic translation
+**Notified** opens the discussion notification history. It includes invitations, mentions, and replies, showing who was notified and whether each notification has been read when that information is available.
 
-Loomio can translate user content - written in discussion context, comment or polls -  into your language.
+![Discussion notification history](../notifying_people/thread_notified.png)
 
-If the author uses a language other than yours, a **Translate** action appears below the comment.
+## Actions
 
-![](comment_translate.png)
+The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
 
-Click **Translate comment** to see the comment in your language.
+The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/#permissions).
 
-![](comment_translated.png)
+![](thread_admin.png)
 
-### Comment tools
+### Print
 
-Common actions appear directly below a comment. Additional actions are available from the three-dot menu (**⋯**).
+Select **Print** to generate a page suitable for printing. Use your browser's print dialog to save it as a PDF.
 
-### Add a comment to Jump to
+![](thread_print_thread.png)
 
-Use **Pin to timeline** to add a comment to the **Jump to** list.
+### Copy Markdown
 
-You can edit the comment label in **Jump to**. Unpin and then pin it again to
-change the link text.
+Select **Copy Markdown**, then **Copy thread**, to copy the complete thread as structured Markdown. You can paste it into a document, an AI assistant, or another tool that supports Markdown.
 
->[!Tip]
->Highlight the words that you would like to use as the text in the **Jump to** list
+![](../discussion_management/copy_markdown_dialog.png)
 
-**Unpin** removes the item from **Jump to**.
+The copied document includes the discussion context, timestamps, replies, polls, visible results, vote reasons, and outcomes. Loomio applies the same visibility rules as the thread: results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls.
 
-### Editing comment
-To change one of your comments, click **Edit** below it. Group administrators can also edit member comments when the group permission allows it.
+### Thread settings and display
 
-![](comment_edit.png)
-
-### Show edits
-
-When a comment has been edited, an **Edited** action appears below it.
-
-![](comment_show_edits.png)
-
-Click **Edited** to see what changed. Red highlighting shows removed text and green highlighting shows added text.
-
-The person who edited the comment, and the date and time of edit, is recorded in Loomio.  
-
-Click on the arrows to see previous edits.
-
-![](comment_edits.png)
-
-You can edit a comment when:
-
-- You wrote it and the group allows members to edit their comments.
-- You are a group administrator and [Admins can edit members' comments](/en/user_manual/groups/settings/#permissions) is enabled.
-
-### Copy link
-
-Use **Copy link** to copy the unique address (url) of the comment.  
-
-The link will be copied to your computer or mobile device clipboard, where you can paste or add it as a link in another part of Loomio or any online document.
-
-This is a great way to directly refer to your own comment or a comment someone has posted.
-
-![](comment_copy_link.png)
-
-### Notification history
-
-See [Comment notification history](/en/user_manual/discussions/notifying_people/#comment-notification-history).
-
-### Discard comment
-
-Discarding a comment removes it from the thread, but retains the comment in a trash bin.
-
-You can discard your own comments with **Discard** in the three-dot menu. Group administrators can also discard comments.
-
-![](comment_discard.png)
-
-#### Restore comment
-
-The location of a discarded comment is labelled **Item removed**. Open its three-dot menu and select **Restore**.
-
-![](comment_restore.png)
-
-### Delete comment
-
-Delete comment removes the comment permanently from the discussion.  It cannot be restored.
-
-If **Members can delete their own comments** is enabled in [Group settings](/en/user_manual/groups/settings/#permissions), members can permanently delete their own discarded comments.
-
-![](permissions_delete_comment.png)
-
-Open the three-dot menu on an **Item removed** entry and select **Delete**.
-
-![](comment_delete.png)
-
-A confirmation message explains that the comment will be permanently deleted and cannot be restored.
-
-![](comment_delete_message.png)
-
-Admins can delete any comment - their own comments and the comments of other people in the group.
-
-## Discussion display
-
-Group administrators can change how replies are arranged in a discussion. Select **Thread settings** under **Actions** in the right sidebar.
+Group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
 
 ![](thread_display.png)
-
-### Discussion display options
 
 Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
 
 ![](thread_layout_options.png)
 
-## Other discussion tools
+### Pin or unpin a thread
 
-The right sidebar contains shortcuts for navigating the discussion, changing email notifications, managing thread members and administering the discussion. Available actions depend on your permissions.
+Pinned threads appear above other threads on the group page. Welcome discussions, news items, and announcements are typical uses for pinned threads.
 
-![](thread_admin.png)
+Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by the time they were pinned. To change their order, unpin and pin them again.
 
-### Show notifications
+Select **Unpin thread** to return a thread to the activity-based order.
 
-Select **Notified** under **Thread members** to see the discussion notification history.
+![](../discussion_management/pin_thread.png)
 
-See [Notified: (Discussion notification history)](/en/user_manual/discussions/notifying_people/#notified-discussion-notification-history).
+### Move a thread
 
-### Print
+Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
 
-Under **Actions** in the right sidebar, select **Print**.
+![](../discussion_management/move_thread_select.png)
 
-A page suitable for print is generated.
+>[!Tip]
+>Start a draft as a direct discussion or in a private subgroup, then move it to the group when it is ready.
 
-To save as a file, use your browser's ability to "save to pdf", or copy and paste it into a file or repository of your choosing.
+To move selected activity rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
 
-![](thread_print_thread.png)
+### Lock or unlock a thread
+
+Lock a thread to prevent comments or further changes. A thread can only be locked after its active polls have closed.
+
+Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
+
+To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to allow comments and changes again.
+
+### Delete a thread
+
+Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
+
+Select **Delete thread** and confirm the deletion.
+
+![](../discussion_management/thread_delete.png)

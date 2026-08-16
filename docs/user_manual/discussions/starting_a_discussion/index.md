@@ -1,4 +1,4 @@
-# Starting a discussion
+# Start a discussion
 
 Starting a Loomio discussion is like writing an email. The subject line of an email is like the discussion title, and the text you write in an email is like the context of a discussion.
 
@@ -24,14 +24,29 @@ Check the name of the group or subgroup is correct for your discussion.  Anyone 
 >[!Tip]
 >If you are not ready to make the discussion visible in your group, start the discussion as 'direct'.  You can move the discussion to your Loomio group when ready.
 
+### Invite and notify
+
+The **Invite** field controls who receives the new discussion immediately.
+
+Group members can see a discussion in their group even if you do not notify them. Adding a group member to **Invite** sends them an email notification and a notification in Loomio.
+
+Select a group to notify everyone in it, or expand the group to choose individual members. Select the × beside a name to remove that person from the notification.
+
+![Invite field expanded to show individual recipients](../notifying_people/thread_notification.png)
+
+Start typing a member's name and select it from the list.
+
+![Searching for Samira Patel in the Invite field](../notifying_people/thread_notify_user.png)
+
+Enter an email address to invite a guest. A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+
+![Adding a guest email address to the Invite field](../notifying_people/thread_notify_email.png)
+
+You can also start the discussion without notifying anyone. Group members can still find it in Loomio and may see it in their catch-up email, depending on their notification settings.
+
 ### Tags
-Add tag(s) to help people find your discussion when searching by tag.  Admins can create new tags.
 
-### Invite
-
-Use invite to send the discussion to specific people via email.
-
-See [Notifying people](/en/user_manual/discussions/notifying_people/) for guidance.
+Add tag(s) to help people find your discussion when searching by tag. Admins can create new tags.
 
 ### Title
 Give your discussion a relevant title.  A discussion title is similar to an email subject line.

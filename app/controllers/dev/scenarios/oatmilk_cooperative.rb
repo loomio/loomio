@@ -49,6 +49,7 @@ module Dev::Scenarios::OatmilkCooperative
   def setup_manual_oatmilk_comment_discussion
     group, coordinator, = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
     discussion = DiscussionService.create(
       params: {
         group_id: group.id,
@@ -64,13 +65,15 @@ module Dev::Scenarios::OatmilkCooperative
       },
       actor: coordinator
     )
-    CommentService.create(
-      comment: Comment.new(
-        parent: discussion,
-        body: 'I can ask the cafe teams which collection days work best for them.'
-      ),
-      actor: production_lead
-    )
+    [
+      [production_lead, 'I can ask the cafe teams which collection days work best for them.'],
+      [sales_lead, 'Tuesday collections fit the current delivery route, provided cafes can store the empty bottles until then.'],
+      [production_lead, 'We should give each cafe two labelled crates so full and empty bottles stay separate.'],
+      [sales_lead, 'I will draft a counter card explaining the deposit and what customers should do with damaged bottles.'],
+      [production_lead, 'Once we confirm the route and storage plan, I will add them to the washing checklist and bottle return guide.']
+    ].each do |actor, body|
+      CommentService.create(comment: Comment.new(parent: discussion, body: body), actor: actor)
+    end
 
     sign_in coordinator
     redirect_to discussion_path(discussion)
