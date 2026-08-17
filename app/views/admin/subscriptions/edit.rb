@@ -9,6 +9,7 @@ class Views::Admin::Subscriptions::Edit < Views::Admin::Layout
   def view_template
     page_header("Edit subscription ##{@subscription.id}")
     form_with(model: @subscription, url: admin_subscription_path(@subscription), method: :put, class: "admin-form") do |form|
+      form_errors(@subscription, title: "Subscription could not be updated")
       select_field(form, :plan, SubscriptionService::PLANS.keys)
       select_field(form, :payment_method, Subscription::PAYMENT_METHODS)
       select_field(form, :state, Subscription::STATES)

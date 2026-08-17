@@ -9,7 +9,9 @@ class Views::Admin::Users::Edit < Views::Admin::Layout
   def view_template
     page_header("Edit #{@user.name}")
     form_with(model: @user, url: admin_user_path(@user), method: :put, class: "admin-form") do |form|
-      render_errors if @user.errors.any?
+      form_errors(@user, title: "User could not be updated") do
+        render_email_collision_guidance if @user.errors.of_kind?(:email, :taken)
+      end
       field(form, :name)
       field(form, :email, type: :email_field)
       field(form, :username)
@@ -22,16 +24,6 @@ class Views::Admin::Users::Edit < Views::Admin::Layout
   end
 
   private
-
-  def render_errors
-    div(class: "admin-form-errors", role: "alert") do
-      strong { "User could not be updated" }
-      ul do
-        @user.errors.full_messages.each { |message| li { message } }
-      end
-      render_email_collision_guidance if @user.errors.of_kind?(:email, :taken)
-    end
-  end
 
   def render_email_collision_guidance
     p do

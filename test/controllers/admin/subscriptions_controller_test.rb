@@ -65,6 +65,18 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     refute_equal "not permitted", @subscription.reload.lead_status
   end
 
+  test "subscription update shows validation errors" do
+    sign_in @admin
+    original_owner_id = @subscription.owner_id
+
+    put :update, params: { id: @subscription.id, subscription: { owner_id: User.maximum(:id) + 1 } }
+
+    assert_response :unprocessable_entity
+    assert_equal original_owner_id, @subscription.reload.owner_id
+    assert_includes response.body, "Subscription could not be updated"
+    assert_includes response.body, "Owner must exist"
+  end
+
   test "admin can refresh a Chargify subscription" do
     sign_in @admin
     payload = { "subscription" => { "state" => "active" } }

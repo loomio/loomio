@@ -73,6 +73,24 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     refute_equal "Not permitted", @group.reload.name
   end
 
+  test "group update shows validation errors" do
+    sign_in @admin
+    original_handle = @group.handle
+    privacy_change_committed = false
+    privacy_change = Object.new
+    privacy_change.define_singleton_method(:commit!) { privacy_change_committed = true }
+
+    GroupService::PrivacyChange.stub(:new, privacy_change) do
+      put :update, params: { id: @group.id, group: { handle: groups(:alien_group).handle } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal original_handle, @group.reload.handle
+    refute privacy_change_committed
+    assert_includes response.body, "Group could not be updated"
+    assert_includes response.body, "Handle has already been taken"
+  end
+
   test "admin can add and remove a group admin" do
     sign_in @admin
     membership = memberships(:user_membership)

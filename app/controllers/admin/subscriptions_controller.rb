@@ -17,8 +17,11 @@ class Admin::SubscriptionsController < Admin::BaseController
   end
 
   def update
-    @subscription.update!(subscription_params)
-    redirect_to admin_subscription_path(@subscription), notice: "Subscription updated"
+    if @subscription.update(subscription_params)
+      redirect_to admin_subscription_path(@subscription), notice: "Subscription updated"
+    else
+      render Views::Admin::Subscriptions::Edit.new(subscription: @subscription), status: :unprocessable_entity
+    end
   end
 
   def refresh

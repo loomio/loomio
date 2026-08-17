@@ -19,9 +19,12 @@ class Admin::GroupsController < Admin::BaseController
   def update
     @group.assign_attributes_and_files(group_params)
     privacy_change = GroupService::PrivacyChange.new(@group)
-    @group.save!
-    privacy_change.commit!
-    redirect_to admin_group_path(@group), notice: "Group updated"
+    if @group.save
+      privacy_change.commit!
+      redirect_to admin_group_path(@group), notice: "Group updated"
+    else
+      render Views::Admin::Groups::Edit.new(group: @group), status: :unprocessable_entity
+    end
   end
 
   def delete_spam
