@@ -220,7 +220,7 @@ export default {
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card
+  v-card.poll-template-form-card
     template(v-slot:title)
       span(v-intersect="{handler: titleVisible}") {{ $t(titlePath) }}
     template(v-slot:append)

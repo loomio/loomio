@@ -227,9 +227,13 @@ v-app.app-is-booted(:style="themeBackgroundStyle")
 }
 
 .v-card.discussion-form,
-.v-card.thread-template-form,
-.v-card.thread-template-form .v-card-item__content,
+.v-card.discussion-template-form,
+.v-card.discussion-template-form .v-card-item__content,
 .v-card.discussion-form .v-card-item__content,
+.v-card.poll-template-form-card,
+.v-card.poll-template-form-card .v-card-item__content,
+.v-card.poll-common-form-card,
+.v-card.poll-common-form-card .v-card-item__content,
 .v-card.poll-common-modal,
 .v-card.poll-common-modal .v-card-item__content {
   overflow: visible !important;
