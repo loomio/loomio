@@ -114,10 +114,13 @@ class Views::Admin::Users::Show < Views::Admin::Layout
         end
         button_to "Redact user", redact_admin_user_path(@user), method: :put, class: "admin-button admin-button--danger", form: { data: { confirm: "Permanently redact #{@user.email}?" } } if @user.email
         button_to "Delete spam user", delete_spam_admin_user_path(@user), method: :delete, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@user.email} and content they authored?" } }
-        form_with(url: merge_admin_user_path(@user), method: :post, class: "admin-inline-form", data: { confirm: "Merge this account into the destination account?" }) do
-          label(for: "destination-email") { "Merge into another account" }
-          input(id: "destination-email", name: "destination_email", type: "email", required: true, placeholder: "Destination email")
-          button(type: "submit", class: "admin-button admin-button--danger") { "Merge user" }
+        form_with(url: merge_admin_user_path(@user), method: :post, id: "merge-user", class: "admin-inline-form", data: { confirm: "Merge this account into the destination account?" }) do
+          label(for: "destination-email") { "Email address of account to keep" }
+          input(id: "destination-email", name: "destination_email", type: "email", required: true, placeholder: "Account email")
+          button(type: "submit", class: "admin-button admin-button--danger") { "Merge into account" }
+          p(class: "admin-inline-form__help") do
+            plain "Enter the email address of the account that should remain. Loomio will move this user's groups, content, votes and other records into that account, then redact this account. The destination account's email and sign-in details will be kept. This cannot be undone."
+          end
         end
       end
     end

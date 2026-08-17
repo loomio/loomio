@@ -17,8 +17,11 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    @user.update!(user_params)
-    redirect_to admin_user_path(@user), notice: "User updated"
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user), notice: "User updated"
+    else
+      render Views::Admin::Users::Edit.new(user: @user), status: :unprocessable_entity
+    end
   end
 
   def login_as

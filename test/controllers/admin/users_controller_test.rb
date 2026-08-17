@@ -53,6 +53,10 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, 'data-confirm="Create a one-time sign-in link'
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
+    assert_includes response.body, "Email address of account to keep"
+    assert_includes response.body, "Merge into account"
+    assert_includes response.body, "The destination account&#39;s email and sign-in details will be kept"
+    assert_includes response.body, "This cannot be undone"
   end
 
   test "show never renders authentication secrets" do
@@ -98,6 +102,18 @@ class Admin::UsersControllerTest < ActionController::TestCase
     end
 
     refute_equal "UTC", @user.reload.time_zone
+  end
+
+  test "user update shows validation errors and recommends account merge for a duplicate email" do
+    original_email = @user.email
+
+    put :update, params: { id: @user.id, user: { email: users(:member).email } }
+
+    assert_response :unprocessable_entity
+    assert_equal original_email, @user.reload.email
+    assert_includes response.body, "Email has already been taken"
+    assert_includes response.body, "That email belongs to another account"
+    assert_includes response.body, %(href="#{admin_user_path(@user)}#merge-user")
   end
 
   test "admin can create a one-time sign-in link" do
