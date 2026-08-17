@@ -17,7 +17,8 @@ Enter a word or phrase, then press Enter or select the search icon. For example,
 ### Search tips
 
 - Start with one or two distinctive words from the title or content you remember.
-- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. It does not match misspellings or similar-sounding words.
+- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. 
+- It will compensate for misspellings when results for the given query are very few.
 - Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls.
 - Sort by **Best match** when relevance matters, or by newest or oldest when you know roughly when the content was posted.
 
