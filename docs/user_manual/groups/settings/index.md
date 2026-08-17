@@ -19,8 +19,13 @@ The ideal pixel resolution for the group image is 2048 x 512. But any image with
 ### Change group name
 You can edit the name for your organization or group. We recommend short names, particularly if you plan to use subgroups.
 
-###  Change Handle
-When you start a group, a handle is automatically created. The handle provides a simplified url for your group, structured as **loomio.com/your-group-handle**, for easy sharing.  Your handle can be edited in these settings.
+### Change group handle
+
+When you start a group, a handle is automatically created. The handle is used in the group's URL and email address, such as **loomio.com/your-group-handle** and **your-group-handle@loomio.com**. You can change the handle in these settings.
+
+When you change the handle, links that use the old handle redirect to the group's new URL. Email sent to the old group address also continues to reach the group. These redirects do not give anyone access they would not otherwise have under the group's privacy settings.
+
+Loomio keeps up to three old handles. If you change the handle more than three times, the oldest handle expires: its links no longer redirect and its email address no longer reaches the group.
 
 ### Add group description
 The group description will show on the main dashboard. It is a good place to write an invitation and context for the group, .e.g., what you will use loomio for, why the work is important, who is invited into this work, and how to participate.
