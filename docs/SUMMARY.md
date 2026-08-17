@@ -1,7 +1,7 @@
 # Help
 
-- [Overview](user_manual/overview/index.md)
-  - [Getting around Loomio](user_manual/overview/orientation.md)
+- [Getting started](user_manual/overview/index.md)
+  - [Quick tour](user_manual/overview/orientation.md)
   - [How to participate](user_manual/overview/how-to-participate.md)
   - [Finding content](user_manual/overview/finding-content.md)
   - [Introducing Loomio to your group](user_manual/overview/introducing_loomio/index.md)

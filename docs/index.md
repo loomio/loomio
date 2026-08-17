@@ -2,7 +2,7 @@
 
 The Loomio user manual explains how to set up groups, hold discussions, make decisions, and manage your account.
 
-- [Overview](user_manual/overview/index.md)
+- [Getting started](user_manual/overview/index.md)
 - [Groups](user_manual/groups/index.md)
 - [Discussions](user_manual/discussions/index.md)
 - [Proposals and polls](user_manual/polls/intro_to_decisions/index.md)

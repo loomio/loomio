@@ -1,4 +1,4 @@
-# Overview
+# Getting started
 
 Loomio is a discussion and decision making tool for collaborative organizations.
 
@@ -34,7 +34,7 @@ Polls help a group understand preferences, gather advice, and make decisions. Di
 
 Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
 
-To learn where these parts appear in the interface, see [Getting around Loomio](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
+To learn where these parts appear in the interface, see the [Quick tour](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
 
 ## Try it out
 

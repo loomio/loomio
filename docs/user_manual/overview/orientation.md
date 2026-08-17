@@ -1,4 +1,4 @@
-# Getting around Loomio
+# Quick tour
 
 This page introduces the main parts of the Loomio interface and where to find the work that involves you.
 
