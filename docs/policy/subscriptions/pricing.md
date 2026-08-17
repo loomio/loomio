@@ -45,7 +45,7 @@ All new Loomio Cloud groups start on a free trial, so you can evaluate Loomio fo
 
 Free trials are for 14 days, limited to 10 people and 10 threads.
 
-[Contact us](https://www.loomio.com/contact) if you wish to extend your trial.
+[Contact us](/contact) if you wish to extend your trial.
 
 At the end of the trial period you will be asked to upgrade to a paid subscription plan.
 

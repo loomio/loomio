@@ -29,7 +29,7 @@ Check that members have all of the following:
 
 Loomio works with all standard internet browsers such as Google Chrome, Microsoft Edge, Firefox and Apple Safari. Old out-of-date browsers such as Microsoft Internet Explorer may not work.
 
-If you have a problem using Loomio on your device, [Contact Loomio support](https://loomio.com/contact).
+If you have a problem using Loomio on your device, [Contact Loomio support](/contact).
 
 ## Configure your group
 
@@ -46,13 +46,13 @@ For example, welcome people and let them know that this is there online space fo
 ### Check privacy and permission settings
 Loomio groups are **Secret** by default, which means only the people you specifically invite to the group know of its existence.
 
-See [member permissions](https://help.loomio.com/en/user_manual/groups/settings/index.html#permissions), and set to suit the proficiency of members in your group.  It may help to remove some permissions to avoid confusion as you are starting out. You can always restore permissions and everyone becomes more familiar with Loomio.
+See [member permissions](/en/user_manual/groups/settings#permissions), and set to suit the proficiency of members in your group.  It may help to remove some permissions to avoid confusion as you are starting out. You can always restore permissions and everyone becomes more familiar with Loomio.
 
 ### Category tags
 Add [category tags](/en/user_manual/discussions/tags/) to suit your organization.  Setting these in advance will help everyone use tags and find the threads and info they are looking for.
 
 ### Set up your personal profile
-Your [personal profile](https://help.loomio.com/en/user_manual/users/user_profile/index.html) will help members of your group easily identify you, and have confidence that the messages they receive from you actually come from you.
+Your [personal profile](/en/user_manual/users/user_profile) will help members of your group easily identify you, and have confidence that the messages they receive from you actually come from you.
 
 ### Manage group membership
 Make sure all the members of your board or committee have been [invited](/en/user_manual/groups/inviting_people/) to the group, and accepted their invitation.

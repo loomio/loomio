@@ -36,11 +36,7 @@ class DocsTemplate < Phlex::HTML
         end
 
         script(src: Docs.site_path("/docs.js"), defer: true)
-        script(
-          src: "https://measure.loomio.com/js/script.outbound-links.js",
-          defer: true,
-          data_domain: "www.loomio.com,all.loomio.com,help.loomio.com"
-        )
+        render_plausible
       end
     end
   end
@@ -49,6 +45,16 @@ class DocsTemplate < Phlex::HTML
 
   def pagefind_attributes
     @page.search_indexed? ? {data_pagefind_body: true} : {}
+  end
+
+  def render_plausible
+    return unless ENV["PLAUSIBLE_SRC"] && ENV["PLAUSIBLE_SITE"]
+
+    script(
+      src: ENV["PLAUSIBLE_SRC"],
+      defer: true,
+      data_domain: ENV["PLAUSIBLE_SITE"]
+    )
   end
 
   def render_head
@@ -78,12 +84,7 @@ class DocsTemplate < Phlex::HTML
     meta(name: "twitter:image:alt", content: "Loomio help and documentation")
     link(rel: "canonical", href: @page.canonical_url)
     link(rel: "icon", type: "image/svg+xml", href: Docs.site_path("/brand/favicon-yellow-on-transparent.svg"))
-    link(rel: "preconnect", href: "https://fonts.googleapis.com")
-    link(rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true)
-    link(
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400;500;700&display=swap"
-    )
+    link(rel: "stylesheet", href: "/roboto.css")
     link(rel: "stylesheet", href: Docs.site_path("/pagefind/pagefind-component-ui.css"))
     link(rel: "stylesheet", href: Docs.site_path("/docs.css"))
     script(src: Docs.site_path("/pagefind/pagefind-component-ui.js"), type: "module")

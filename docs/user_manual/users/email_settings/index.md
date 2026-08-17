@@ -143,7 +143,7 @@ To turn off notifications for this thread, select **no notifications (ignore)**.
 
 ## Turn off all notifications
 
-To turn off all email notifications go to [Notification settings](https://www.loomio.com/email_preferences/). First, untick all the boxes and **Save changes**. Lastly, choose **no notifications** and then **Update**.
+To turn off all email notifications go to [Notification settings](/email_preferences). First, untick all the boxes and **Save changes**. Lastly, choose **no notifications** and then **Update**.
 
 ![](turn_off_all_emails_1.png)
 

@@ -26,4 +26,4 @@ Some topics bring tension in a group.  So it's important to allow a robust discu
 
 We recommend establishing a code of conduct for your group, to help everyone be aware of their responsibility for appropriate behaviour and encourage self-regulation. 
 
-See the [Facilitator's Guide](https://help.loomio.com/en/guides/facilitators_guide/commencing/index.html#culture-protocol-expectations) to further explore the value of a code of conduct.
+See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) to further explore the value of a code of conduct.

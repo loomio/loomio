@@ -49,13 +49,13 @@ If a new topic is introduced in the middle of a discussion, you can select and m
 
 Subgroups help you organize your communications and members so that the right people are engaged in their work together.  For example, you can use a subgroup for a subcommittee or working group.
 
-[Setting up subgroups.](https://help.loomio.com/en/user_manual/groups/subgroups/index.html)
+[Setting up subgroups.](/en/user_manual/groups/subgroups)
 
 ## Archiving records
 
-To keep a record of a thread discussion and decisions in polls, use **[Print thread](https://help.loomio.com/en/user_manual/groups/data_export/index.html#print-thread-to-pdf)** and print the file to pdf.  You can then store a published copy of the thread in your chosen document storage archive.
+To keep a record of a thread discussion and decisions in polls, use **[Print thread](/en/user_manual/groups/data_export#print-thread-to-pdf)** and print the file to pdf.  You can then store a published copy of the thread in your chosen document storage archive.
 
-To keep a complete record of the data in your Loomio group, use **[Export group data](https://help.loomio.com/en/user_manual/groups/data_export/index.html#group-data-backup-or-export)**.
+To keep a complete record of the data in your Loomio group, use **[Export group data](/en/user_manual/groups/data_export#group-data-backup-or-export)**.
 
 ## Data storage
 
@@ -68,6 +68,6 @@ Files attached to threads can also be seen under the Files tab.
 ![](files_tab.png#width-90)
 
 [More about security in Loomio.
-](https://help.loomio.com/en/policy/security/index.html)
+](/en/policy/security)
 
  

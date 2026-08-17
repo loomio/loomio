@@ -38,7 +38,7 @@ To learn where these parts appear in the interface, see the [Quick tour](/en/use
 
 ## Try it out
 
-The best way to learn about Loomio is to [start a free trial](https://www.loomio.com/try)
+The best way to learn about Loomio is to [start a free trial](/try)
 
 ## How people use Loomio
 

@@ -10,9 +10,9 @@ When you delete your account:
 
 It is important to understand that copies of the data you have generated on Loomio have likely been emailed to everyone in the group - Loomio has no ability to delete those.
 
-Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](https://help.loomio.com/en/policy/subscriptions/management/#cancel-your-plan).
+Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
 
-**Loomio takes privacy and data protection very seriously**. Here is a link to our [policy](https://help.loomio.com/en/policy/privacy/) - if you have any questions about our policy, you can [get in touch](https://www.loomio.com/contact) with us.
+Loomio has made fundamental decisions about its ownership, business model and software to protect users' rights. Loomio is an independent, worker-owned cooperative, the software is open source, you can [export your data](/en/user_manual/groups/data_export), and Loomio never sells your data or uses it for advertising. These commitments are set out in our [privacy policy](/en/policy/privacy) and grounded in the purpose and values in our [constitution](https://www.loomio.coop/constitution.html) and [cooperative handbook](https://www.loomio.coop/purpose_and_vision.html). If you have any questions, [contact us](/contact).
 
 ## To delete your account entirely
 
@@ -29,4 +29,3 @@ Scroll to the bottom, and click on **Delete account**.
 A pop up will appear requesting confirmation that you wish to delete your account.
 
 ![](permanently_delete_account.png#width-80)
-

@@ -15,7 +15,7 @@ We may update these Terms of Service in the future. You can track changes [on Gi
 
 When you use our Services, now or in the future, you are agreeing to the latest Terms of Service. That's true for any of our existing and future products and all features that we add to our Services over time. There may be times where we do not exercise or enforce any right or provision of the Terms of Service; in doing so, we are not waiving that right or provision. **These terms do contain a limitation of our liability.**
 
-If you violate any of the terms, we may terminate your account. That's a broad statement and it means you need to place a lot of trust in us. We do our best to deserve that trust by being open about [who we are](https://www.loomio.com/about), [how we work](https://loomio.coop), and keeping an open door to [your feedback](https://www.loomio.com/contact).
+If you violate any of the terms, we may terminate your account. That's a broad statement and it means you need to place a lot of trust in us. We do our best to deserve that trust by being open about [who we are](https://www.loomio.com/about), [how we work](https://loomio.coop), and keeping an open door to [your feedback](/contact).
 
 ## Account Terms
 
@@ -38,8 +38,8 @@ We want satisfied customers, not hostages. That’s why we make it easy for you 
 
 [Cancel your subscription](/en/policy/subscriptions/management/#cancel-your-plan)
 
-1. Our legal responsibility is to subscription owners, which means we cannot cancel an account at the request of anyone else. If for whatever reason you no longer know who the account owner is, [contact us](https://www.loomio.com/contact). We will gladly reach out to any current account owners we have on file.
-2. You are responsible for properly canceling your account. You can find instructions for how to cancel your account in our [Subscription help page](/en/policy/subscriptions/management/#cancel-your-plan). An email or phone request to cancel your account is not automatically considered cancellation. If you need help canceling your account, you can always [contact our Support team](https://www.loomio.com/contact).
+1. Our legal responsibility is to subscription owners, which means we cannot cancel an account at the request of anyone else. If for whatever reason you no longer know who the account owner is, [contact us](/contact). We will gladly reach out to any current account owners we have on file.
+2. You are responsible for properly canceling your account. You can find instructions for how to cancel your account in our [Subscription help page](/en/policy/subscriptions/management/#cancel-your-plan). An email or phone request to cancel your account is not automatically considered cancellation. If you need help canceling your account, you can always [contact our Support team](/contact).
 3. When you cancel, your group data will remain available, however you will no longer be able to start new threads or invite members to the group. After 30 days all content will be deleted from our active systems and you will no longer be able to access the data. If you want to export any data before your account is cancelled, we‘ve provided [instructions](/en/user_manual/groups/data_export/). Retrieving data for a group from a backup isn’t possible, so if you change your mind you’ll need to do it within the first 30 days. **Data can’t be recovered once it has been permanently deleted.**
 4. We won’t bill you again once you cancel. We don’t automatically prorate any unused time you may have left but if you haven’t used your account in months or just started a new billing cycle.
 
@@ -56,7 +56,7 @@ We want satisfied customers, not hostages. That’s why we make it easy for you 
 
 ## Uptime, Security, and Privacy
 
-1. Your use of the Services is at your sole risk. We provide these Services on an “as is” and “as available” basis. If you require a Service Level Agreement please [contact us](https://www.loomio.com/contact).
+1. Your use of the Services is at your sole risk. We provide these Services on an “as is” and “as available” basis. If you require a Service Level Agreement please [contact us](/contact).
 2. We reserve the right to temporarily disable your account if your usage significantly exceeds the average usage of other customers of the Services. Of course, we'll reach out to the account owner before taking any action except in rare cases where the level of use may negatively impact the performance of the Service for other customers.
 3. We take many measures to protect and secure your data through backups, redundancies, and encryption. We enforce encryption for data transmission from the public Internet. There are some edge cases where we may send your data through our network unencrypted. Please refer to our [Security Overview](/en/policy/security/) for full details.
 4. When you use our Services, you entrust us with your data. We take that trust to heart. You agree that Loomio may process your data as described in our [Privacy Policy](/en/policy/privacy/) and for no other purpose. We as humans can access your data for the following reasons:
@@ -67,7 +67,7 @@ We want satisfied customers, not hostages. That’s why we make it easy for you 
 5. We use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Services. You can see a list of all subprocessors who handle personal data for [Loomio](/en/policy/privacy/loomio-subprocessors/).
 6. You may request data related to your personal account and service. Loomio has the right to refuse repetitive or technically difficult requests. For information about how we collect and share user information please refer to our [Privacy Policy](/en/policy/privacy/).
 7. Under the California Consumer Privacy Act (“CCPA”), Loomio is a “service provider”, not a “business” or “third party”, with respect to your use of the Services. That means we process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](/en/policy/privacy/), and other policies. We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements under the CCPA and not use Loomio’s Services in a way that violates the regulations.
-8. These Service Terms incorporate the [Loomio Data Processing Addendum (“DPA”)](/en/Loomio_Data_Processing_Addendum_2021-11-22.pdf), when the General Data Protection regulation (“GDPR”) applies to your use of Loomio Services to process Customer Data as defined in the DPA. The DPA is effective as of November 22, 2021 and replaces and supersedes any previously agreed data processing addendum between you and the Company relating to the GDPR. If you prefer to have an executed copy of the Data Processing Addendum, [contact us](https://www.loomio.com/contact) to request a signed DPA with your organization name, and name and email address of the person with authority to sign on behalf of your organization. Regardless of whether you execute or not, we protect and secure your data to the high standards set out in the addendum.
+8. These Service Terms incorporate the [Loomio Data Processing Addendum (“DPA”)](/en/Loomio_Data_Processing_Addendum_2021-11-22.pdf), when the General Data Protection regulation (“GDPR”) applies to your use of Loomio Services to process Customer Data as defined in the DPA. The DPA is effective as of November 22, 2021 and replaces and supersedes any previously agreed data processing addendum between you and the Company relating to the GDPR. If you prefer to have an executed copy of the Data Processing Addendum, [contact us](/contact) to request a signed DPA with your organization name, and name and email address of the person with authority to sign on behalf of your organization. Regardless of whether you execute or not, we protect and secure your data to the high standards set out in the addendum.
 
 ## Content
 
@@ -89,7 +89,7 @@ By making Content available, you represent and warrant that:
 1. All content posted on the Services must comply with copyright law.
 2. We claim no intellectual property rights over the material you provide to the Services. All materials uploaded remain yours.
 3. We do not pre-screen content, but reserve the right (but not the obligation) in our sole discretion to refuse or remove any content that is available via the Service.
-4. The names, look, and feel of the Services are copyright© to the Company. All rights reserved. You must request permission to use the Company's logo or any Service logos for promotional purposes. Please [contact us](https://www.loomio.com/contact) for requests to use logos. We reserve the right to rescind this permission if you violate these Terms of Service.
+4. The names, look, and feel of the Services are copyright© to the Company. All rights reserved. You must request permission to use the Company's logo or any Service logos for promotional purposes. Please [contact us](/contact) for requests to use logos. We reserve the right to rescind this permission if you violate these Terms of Service.
 5. You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Services, use of the Services, or access to the Services without the express written permission by the Company.
 6. You must not modify another website so as to falsely imply that it is associated with the Services or the Company.
 
@@ -134,7 +134,7 @@ You represent and warrant that:
 2. Your use of the Service will not infringe or misappropriate the intellectual property rights of any third party.
 
 ## Disputes and choice of law
-This section outlines how disputes may be resolved. Most of your concerns can be resolved quickly and to everyone’s satisfaction by [contacting our support team](https://www.loomio.com/contact).
+This section outlines how disputes may be resolved. Most of your concerns can be resolved quickly and to everyone’s satisfaction by [contacting our support team](/contact).
 
 This Agreement constitutes the entire agreement between the Company and you concerning the subject matter hereof, and may only be modified by a written amendment signed by an authorized representative of the Company, or by the posting by the Company of a revised version. Any and all disputes arising of this agreement, termination, or our relationship with you shall be determined by binding arbitration under the Arbitration Act 1996 in Wellington, New Zealand, by one arbitrator who shall be a lawyer knowledgeable in relevant technology matters appointed by the President for the time being of the Arbitrators and Mediators Institute of New Zealand Incorporated (AMINZ) on a request by either you or Loomio. Notice must be given to apply for any interim measure in the arbitration proceeding.
 1. The arbitration proceeding will commence when a request is made to AMINZ to appoint an arbitrator.
@@ -146,7 +146,7 @@ This Agreement constitutes the entire agreement between the Company and you conc
 
 The relationship we have with you under these terms is governed by New Zealand law.
 
-If you have a question about any of the Terms of Service, please [contact our Support team](https://www.loomio.com/contact).
+If you have a question about any of the Terms of Service, please [contact our Support team](/contact).
 
 ## Changes
 We reserve the right to modify these terms at any time and modified terms are in effect upon posting to this website. We will make every effort to inform you of these changes via email or through the Service. Your continued use of or access to the Service following the posting of any changes to this Agreement constitutes acceptance of those changes. Loomio may also, in the future, offer new services and/or features including the release of new tools and resources. Such new features and/or services shall be subject to the terms and conditions of this Agreement.

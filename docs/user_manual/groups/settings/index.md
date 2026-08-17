@@ -45,10 +45,6 @@ A member of an open group can see that a closed subgroup exists, but not secret 
 
 If you set your group privacy to **Open** or **Closed**,  additional settings appear to determine how people can find and join the group.
 
-### Finding the group
-
-You can choose to list your group in Loomio's global directory, viewable at [loomio.com/explore](https://loomio.com/explore).  Anyone visiting this page can search for and discover your group.
-
 ### Joining the group
 
 You can choose to either let anyone join (pending approval)  or have membership be invite only. 

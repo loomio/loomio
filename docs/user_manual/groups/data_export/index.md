@@ -10,9 +10,9 @@ With the group data export feature you can:
 
 If you ever want to move from Loomio managed servers [to your own](https://github.com/loomio/loomio), you can use this feature.
 
-If you're running your own Loomio server, and would rather not anymore, Loomio offer managed hosting in USA, EU and Australia. If you'd like to migrate your group to one of these servers, please [contact us](https://www.loomio.com/contact).
+If you're running your own Loomio server, and would rather not anymore, Loomio offer managed hosting in USA, EU and Australia. If you'd like to migrate your group to one of these servers, please [contact us](/contact).
 
-[Contact us](https://www.loomio.com/contact) if you would like to transfer your Loomio group from Loomio's global hosted service at loomio.com to one of our regional services; loomio.eu for Europe or loomio.nz for Australia and New Zealand.
+[Contact us](/contact) if you would like to transfer your Loomio group from Loomio's global hosted service at loomio.com to one of our regional services; loomio.eu for Europe or loomio.nz for Australia and New Zealand.
 
 ## Export data
 

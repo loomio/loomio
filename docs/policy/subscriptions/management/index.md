@@ -95,7 +95,7 @@ You may need to enter your email address to receive a secure link to the portal.
 You can also access the billing portal with the **Account Management** link at the bottom of your statement.
 
 ## Cancel your plan
-Before cancelling your plan, we recommend that you [export your group data](https://help.loomio.com/en/user_manual/groups/data_export/index.html). 
+Before cancelling your plan, we recommend that you [export your group data](/en/user_manual/groups/data_export).
 
 You can cancel your plan via the billing portal.
 
@@ -123,12 +123,12 @@ In the billing portal:
 
 In general we do not refund subscription fees for any remaining unused billing period.  See [Refunds](#refunds) below.
 
-If you’re having trouble finding your billing portal link or need help to cancel, or manage any details of your plan, please [contact us](https://www.loomio.com/contact).
+If you’re having trouble finding your billing portal link or need help to cancel, or manage any details of your plan, please [contact us](/contact).
 
 ### What happens when a subscription is cancelled?
 Initially when you cancel, your group data will remain available, however you will no longer be able to start new threads or invite members to the group. 
 
-If you have not already done so, we recommend that you [export your group data](https://help.loomio.com/en/user_manual/groups/data_export/index.html). 
+If you have not already done so, we recommend that you [export your group data](/en/user_manual/groups/data_export).
 
 After 30 days from cancellation, your group and all content will be deleted from our active systems and you will no longer be able to access the data. 
 
@@ -137,4 +137,4 @@ When it comes to refunds, we treat our customers how we ourselves would like to 
 
 To process a refund, we must receive a request within 30 days of the date payment was made.
 
-[Contact us](https://www.loomio.com/contact) if you would like a refund. 
+[Contact us](/contact) if you would like a refund.
