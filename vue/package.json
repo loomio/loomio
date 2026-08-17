@@ -31,7 +31,7 @@
     "@tiptap/extension-image": "3.29.2",
     "@tiptap/extension-italic": "3.29.2",
     "@tiptap/extension-link": "3.29.2",
-    "@tiptap/extension-list": "3.29.2",
+    "@tiptap/extension-list": "3.30.1",
     "@tiptap/extension-mention": "3.29.2",
     "@tiptap/extension-paragraph": "3.29.2",
     "@tiptap/extension-strike": "3.29.2",
