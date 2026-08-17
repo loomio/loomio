@@ -16,7 +16,7 @@ Choose a representative name for your group and use the group description to out
 
 You may also include information like a code of conduct, terms of reference or other governing documents for the group.
 
-If you are preparing a new group, see [Introducing Loomio to your group](/en/user_manual/groups/introducing_loomio) for a practical sequence from choosing the first piece of work through to recording an outcome.
+If you are preparing a new group, see [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio) for a practical sequence from choosing the first piece of work through to recording an outcome.
 
 ## Administration, Facilitation and Moderation - Code of Conduct
 

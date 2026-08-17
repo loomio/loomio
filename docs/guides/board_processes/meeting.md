@@ -4,7 +4,7 @@ Effective meetings are productive, inclusive, and collaborative - they improve e
 
 Use Loomio to plan an effective meeting; involve people from the outset, align towards the most important topics, and make better use of your precious time together.
 
-If the group is new to Loomio, begin with [Introducing Loomio to your group](/en/user_manual/groups/introducing_loomio), then use this meeting process as a practical first recurring workflow.
+If the group is new to Loomio, begin with [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio), then use this meeting process as a practical first recurring workflow.
 
 There are several things you can do to make your next board or committee meeting effective...
 

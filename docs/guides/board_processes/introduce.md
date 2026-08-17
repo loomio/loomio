@@ -2,7 +2,7 @@
 
 Loomio can become the online place where your board or committee meet, discuss, decide and build an auditable record for your organization.
 
-Start with the general sequence in [Introducing Loomio to your group](/en/user_manual/groups/introducing_loomio). This page adds considerations specific to boards and committees.
+Start with the general sequence in [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio). This page adds considerations specific to boards and committees.
 
 However Loomio will be of little value if only some of your board participate.  Information and communication will likely remain scattered over multiple tools, lost in email inboxes and the confusion will waste everyone's time.
 

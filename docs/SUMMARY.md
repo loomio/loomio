@@ -4,10 +4,10 @@
   - [Getting around Loomio](user_manual/overview/orientation.md)
   - [How to participate](user_manual/overview/how-to-participate.md)
   - [Finding content](user_manual/overview/finding-content.md)
+  - [Introducing Loomio to your group](user_manual/overview/introducing_loomio/index.md)
 
 - [Groups](user_manual/groups/index.md)
   - [Starting a group](user_manual/groups/starting_a_group/index.md)
-  - [Introducing Loomio to your group](user_manual/groups/introducing_loomio/index.md)
   - [Group settings](user_manual/groups/settings/index.md)
   - [Inviting people](user_manual/groups/inviting_people/index.md)
   - [Member management](user_manual/groups/member_management/index.md)

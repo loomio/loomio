@@ -14,6 +14,7 @@
 /user_manual/getting_started/orientation.html: /en/user_manual/overview/orientation.html
 /user_manual/getting_started/write-a-comment.html: /en/user_manual/discussions/comments/index.html
 /user_manual/groups/intro_to_groups/index.html: /en/user_manual/groups/index.html
+/user_manual/groups/introducing_loomio/index.html: /en/user_manual/overview/introducing_loomio
 /user_manual/getting_started/decisions/index.html: /en/guides/making_decisions
 /user_manual/polls/decisions/index.html: /en/guides/making_decisions/simple_decision_process
 /user_manual/polls/starting_proposals/index.html: /en/user_manual/polls/settings
