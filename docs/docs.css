@@ -107,7 +107,7 @@ a:hover {
   font-size: 16px;
 }
 
-.sidebar-logo {
+.sidebar a.sidebar-logo {
   display: block;
   margin-bottom: 16px;
 }
@@ -115,6 +115,10 @@ a:hover {
 .sidebar-logo img {
   display: block;
   max-width: 170px;
+}
+
+.sidebar-logo-label {
+  display: block;
 }
 
 .sidebar-search,
@@ -136,11 +140,15 @@ a:hover {
 }
 
 .sidebar-search {
-  margin-bottom: 22px;
+  margin: 24px 0 0;
 }
 
 .sidebar-search pagefind-modal-trigger {
   display: block;
+}
+
+.sidebar-search .pf-trigger-shortcut {
+  display: none !important;
 }
 
 .pagefind-search-modal .pf-heading-chip,
@@ -148,12 +156,18 @@ a:hover {
   font-size: 14px !important;
 }
 
-.sidebar h2 {
+.sidebar h2,
+.sidebar-logo-label {
   color: var(--foreground-muted);
   font-size: 12px;
   letter-spacing: 0.08em;
   margin: 28px 0 8px;
   text-transform: uppercase;
+}
+
+.sidebar-logo-label {
+  font-weight: 700;
+  margin: 6px 0 0;
 }
 
 .sidebar ul {
@@ -202,6 +216,10 @@ a:hover {
   content: "▶";
   flex: 0 0 14px;
   font-size: 12px;
+}
+
+.sidebar li li details > summary::before {
+  transform: translateX(6px);
 }
 
 .sidebar details[open] > summary::before {

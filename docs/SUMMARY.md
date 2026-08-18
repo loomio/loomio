@@ -1,5 +1,6 @@
 # Help
 
+# User manual
 - [Getting started](user_manual/overview/index.md)
   - [Quick tour](user_manual/overview/orientation.md)
   - [How to participate](user_manual/overview/how-to-participate.md)
