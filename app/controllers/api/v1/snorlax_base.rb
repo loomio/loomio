@@ -1,6 +1,7 @@
 class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_access_denied e }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
+  rescue_from(Subscription::MaxThreadsExceeded)        { respond_with_thread_limit_reached }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
@@ -279,6 +280,13 @@ class Api::V1::SnorlaxBase < ActionController::Base
     render json: {
       flash: { error: I18n.t('errors.invitation_rate_limit_reached_contact_support') }
     }, root: false, status: :too_many_requests
+  end
+
+  def respond_with_thread_limit_reached
+    render json: {
+      error: I18n.t('errors.subscription_thread_limit_reached'),
+      action: 'upgrade'
+    }, root: false, status: :forbidden
   end
 
   def respond_with_access_denied(error)

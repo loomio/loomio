@@ -51,6 +51,7 @@ v-snackbar.flash-root(
     role="status"
     aria-live="assertive") {{flash.text}}
   v-progress-linear.mt-2(v-if="flash.level == 'wait'" :value="seconds")
-  .flash-root__action(v-if="flash.actionFn")
-    a(@click="flash.actionFn()", v-t="flash.action")
+  .flash-root__action(v-if="flash.actionFn || flash.actionUrl")
+    a(v-if="flash.actionUrl" :href="flash.actionUrl" v-t="flash.action")
+    a(v-else @click="flash.actionFn()" v-t="flash.action")
 </template>

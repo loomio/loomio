@@ -105,24 +105,12 @@ const titlePlaceholder = computed(() => {
   }
 });
 
-const maxThreads = computed(() => {
-  return subscription.value.max_threads;
-});
-
-const threadCount = computed(() => {
-  return props.discussion.group().parentOrSelf().orgDiscussionsCount;
-});
-
-const maxThreadsReached = computed(() => {
-  return maxThreads.value && (threadCount.value >= maxThreads.value);
-});
-
 const subscriptionActive = computed(() => {
   return subscription.value.active;
 });
 
 const canStartThread = computed(() => {
-  return subscriptionActive.value && !maxThreadsReached.value;
+  return subscriptionActive.value;
 });
 
 const showUpgradeMessage = computed(() => {
@@ -220,7 +208,6 @@ v-form(ref="form" @submit.prevent="submit")
       v-alert.mb-4(v-if="!discussion.groupId && !discussionTemplate && !discussion.id" type="info" variant="tonal" density="compact") {{ $t('discussion_form.direct_discussion_hint') }}
 
       div(v-if="showUpgradeMessage")
-        p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
         p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
       .discussion-form__group-selected(v-if='!showUpgradeMessage')

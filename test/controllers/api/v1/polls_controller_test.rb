@@ -188,6 +188,8 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Create tests
   test "create creates a poll in discussion" do
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))
     sign_in @admin
 
     assert_difference 'Poll.count', 1 do
@@ -210,6 +212,29 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal @discussion.topic, poll.topic
     assert_equal @admin, poll.author
     assert_includes poll.admins, @admin
+  end
+
+  test "create standalone poll returns the subscription thread limit message" do
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))
+    sign_in @admin
+
+    assert_no_difference [ 'Poll.count', 'Topic.count' ] do
+      post :create, params: {
+        poll: {
+          title: 'over the limit',
+          poll_type: 'proposal',
+          group_id: @group.id,
+          options: %w[agree disagree],
+          closing_at: 3.days.from_now.at_beginning_of_hour
+        }
+      }
+    end
+
+    assert_response :forbidden
+    response_json = JSON.parse(response.body)
+    assert_equal I18n.t('errors.subscription_thread_limit_reached'), response_json['error']
+    assert_equal 'upgrade', response_json['action']
   end
 
   # Discard tests

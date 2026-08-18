@@ -382,6 +382,7 @@ en:
       all: You must upgrade your Loomio subscription to add guests. Alternatively, you can invite them to be members of your group.
   errors:
     invitation_rate_limit_reached_contact_support: Daily invitation limit reached. Contact support immediately.
+    subscription_thread_limit_reached: This organization has reached its thread limit. Please upgrade to continue using Loomio.
     new_account_trial_group_limit: New accounts are limited to one group. Please contact support if you need more.
     clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
     direct_thread_anonymous_poll: A thread containing an anonymous poll cannot be converted to a direct thread

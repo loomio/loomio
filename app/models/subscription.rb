@@ -1,5 +1,6 @@
 class Subscription < ApplicationRecord
   class MaxMembersExceeded < StandardError; end
+  class MaxThreadsExceeded < StandardError; end
   class NotActive < StandardError; end
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 

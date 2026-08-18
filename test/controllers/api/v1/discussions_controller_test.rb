@@ -25,6 +25,22 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_equal 0, discussion.created_event.notifications.count
   end
 
+  test "create returns the subscription thread limit message" do
+    @discussion.topic.update!(discarded_at: Time.current)
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @user, max_threads: thread_count))
+    sign_in @user
+
+    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
+      post :create, params: { discussion: { title: 'over the limit', group_id: @group.id } }
+    end
+
+    assert_response :forbidden
+    response_json = JSON.parse(response.body)
+    assert_equal I18n.t('errors.subscription_thread_limit_reached'), response_json['error']
+    assert_equal 'upgrade', response_json['action']
+  end
+
   test "create discussion without group" do
     sign_in @user
 

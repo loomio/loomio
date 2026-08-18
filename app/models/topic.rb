@@ -65,11 +65,25 @@ class Topic < ApplicationRecord
 
   validate :privacy_is_permitted_by_group
 
+  before_create :enforce_subscription_thread_limit!
   after_destroy :drop_sequence_id_sequence
 
   normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
 
   delegate :members_can_raise_motions, to: :group, allow_nil: true
+
+  def enforce_subscription_thread_limit!
+    return if group_id.blank?
+
+    parent_group = group.parent_or_self
+    subscription = parent_group.subscription
+    return if subscription&.max_threads.nil?
+
+    subscription.with_lock do
+      thread_count = Topic.where(group_id: parent_group.id_and_subgroup_ids).count
+      raise Subscription::MaxThreadsExceeded if thread_count >= subscription.max_threads
+    end
+  end
 
   def replies_count
     items_count - 1
