@@ -229,6 +229,26 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal "Updated", template.process_name
   end
 
+  test "update saves task items in a discussion template" do
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @admin,
+      process_name: "Original",
+      process_subtitle: "subtitle"
+    )
+    description = "<li data-uid='123' data-type='taskItem' data-checked='false' data-author-id='#{@admin.id}'>do the thing</li>"
+
+    sign_in @admin
+    put :update, params: {
+      id: template.id,
+      discussion_template: { description: description }
+    }
+
+    assert_response :success
+    assert_equal "do the thing", template.reload.tasks.sole.name
+    assert_empty template.tasks.sole.users
+  end
+
   # === DESTROY ===
 
   test "destroy deletes a discussion template" do
