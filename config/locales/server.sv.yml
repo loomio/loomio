@@ -151,6 +151,7 @@ sv:
     new_account_trial_group_limit: Nya konton är begränsade till en grupp. Kontakta supporten om du behöver fler.
     direct_thread_anonymous_poll: En tråd som innehåller en anonym omröstning kan inte konverteras till en direkt tråd
     invitation_rate_limit_reached_contact_support: Daglig inbjudningsgräns har nåtts. Kontakta supporten omedelbart.
+    subscription_thread_limit_reached: Den här organisationen har nått sin trådgräns. Uppgradera för att fortsätta använda Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-

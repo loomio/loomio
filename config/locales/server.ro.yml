@@ -151,6 +151,7 @@ ro:
     new_account_trial_group_limit: Conturile noi sunt limitate la un singur grup. Vă rugăm să contactați serviciul de asistență dacă aveți nevoie de mai multe.
     direct_thread_anonymous_poll: Un fir de discuție care conține un sondaj anonim nu poate fi convertit într-un fir de discuție direct
     invitation_rate_limit_reached_contact_support: Limita zilnică de invitații a fost atinsă. Contactați imediat serviciul de asistență.
+    subscription_thread_limit_reached: Această organizație a atins limita de fire de discuție. Treci la un plan superior pentru a continua să folosești Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-

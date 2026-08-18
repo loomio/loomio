@@ -151,6 +151,7 @@ he:
     new_account_trial_group_limit: חשבונות חדשים מוגבלים לקבוצה אחת. אנא צרו קשר עם התמיכה אם אתם זקוקים ליותר.
     direct_thread_anonymous_poll: לא ניתן להמיר שרשור המכיל סקר אנונימי לשרשור ישיר
     invitation_rate_limit_reached_contact_support: הגעת למגבלת ההזמנות היומית. צור קשר עם התמיכה באופן מיידי.
+    subscription_thread_limit_reached: ארגון זה הגיע למגבלת השרשורים שלו. אנא שדרג כדי להמשיך להשתמש ב-Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-

@@ -151,6 +151,7 @@ fi:
     new_account_trial_group_limit: Uusia tilejä voi luoda vain yhteen ryhmään. Jos tarvitset lisää tilejä, ota yhteyttä tukeen.
     direct_thread_anonymous_poll: Anonyymin kyselyn sisältävää ketjua ei voida muuntaa suoraksi ketjuksi.
     invitation_rate_limit_reached_contact_support: Päivittäinen kutsujen raja saavutettu. Ota välittömästi yhteyttä tukeen.
+    subscription_thread_limit_reached: Tämä organisaatio on saavuttanut ketjurajan. Päivitä, jotta voit jatkaa Loomion käyttöä.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-

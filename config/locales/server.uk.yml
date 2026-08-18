@@ -151,6 +151,7 @@ uk:
     new_account_trial_group_limit: Нові облікові записи обмежені однією групою. Зверніться до служби підтримки, якщо вам потрібно більше.
     direct_thread_anonymous_poll: Гілку, що містить анонімне опитування, не можна перетворити на пряму гілку
     invitation_rate_limit_reached_contact_support: Досягнуто денного ліміту запрошень. Негайно зверніться до служби підтримки.
+    subscription_thread_limit_reached: Ця організація досягла ліміту обговорень. Перейдіть на інший тарифний план, щоб продовжити користуватися Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Має починатись з %{parent_handle}-

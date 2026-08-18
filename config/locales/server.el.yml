@@ -151,6 +151,7 @@ el:
     new_account_trial_group_limit: Οι νέοι λογαριασμοί περιορίζονται σε μία ομάδα. Επικοινωνήστε με την υποστήριξη εάν χρειάζεστε περισσότερα.
     direct_thread_anonymous_poll: Ένα νήμα που περιέχει μια ανώνυμη δημοσκόπηση δεν μπορεί να μετατραπεί σε άμεσο νήμα
     invitation_rate_limit_reached_contact_support: Συμπληρώθηκε το ημερήσιο όριο προσκλήσεων. Επικοινωνήστε αμέσως με την υποστήριξη.
+    subscription_thread_limit_reached: Αυτός ο οργανισμός έχει φτάσει στο όριο των νημάτων του. Παρακαλούμε αναβαθμίστε για να συνεχίσετε να χρησιμοποιείτε το Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Πρέπει να ξεκινά με %{parent_handle}-

@@ -151,6 +151,7 @@ sl:
     new_account_trial_group_limit: Novi računi so omejeni na eno skupino. Če jih potrebujete več, se obrnite na podporo.
     direct_thread_anonymous_poll: Niti, ki vsebuje anonimno anketo, ni mogoče pretvoriti v neposredno nit
     invitation_rate_limit_reached_contact_support: Dosežena je dnevna omejitev povabil. Takoj se obrnite na podporo.
+    subscription_thread_limit_reached: Ta organizacija je dosegla omejitev števila niti. Prosimo, nadgradite, če želite še naprej uporabljati Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-

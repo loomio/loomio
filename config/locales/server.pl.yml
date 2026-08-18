@@ -155,6 +155,7 @@ pl:
     new_account_trial_group_limit: Nowe konta są ograniczone do jednej grupy. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej.
     direct_thread_anonymous_poll: Wątku zawierającego anonimową ankietę nie można przekształcić w wątek bezpośredni
     invitation_rate_limit_reached_contact_support: Osiągnięto dzienny limit zaproszeń. Skontaktuj się z pomocą techniczną natychmiast.
+    subscription_thread_limit_reached: Ta organizacja osiągnęła limit wątków. Zaktualizuj, aby nadal korzystać z Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-

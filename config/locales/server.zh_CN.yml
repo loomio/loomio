@@ -418,6 +418,7 @@ zh_CN:
     new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
     direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为直接帖子。
     invitation_rate_limit_reached_contact_support: 每日邀请名额已满，请立即联系客服。
+    subscription_thread_limit_reached: 此组织已达到帖子上限。请升级以继续使用 Loomio。
   group:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头

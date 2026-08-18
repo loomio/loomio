@@ -155,6 +155,7 @@ it:
     new_account_trial_group_limit: I nuovi account sono limitati a un solo gruppo. Contatta l'assistenza se hai bisogno di più gruppi.
     direct_thread_anonymous_poll: Un thread contenente un sondaggio anonimo non può essere convertito in un thread diretto
     invitation_rate_limit_reached_contact_support: Limite giornaliero di inviti raggiunto. Contatta immediatamente l'assistenza.
+    subscription_thread_limit_reached: Questa organizzazione ha raggiunto il limite di thread. Esegui l'aggiornamento per continuare a utilizzare Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Deve iniziare con%{parent_handle}-

@@ -275,6 +275,14 @@ languages in the Nov 2025 pass.
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.more` | `更多的` | `更多` | The menu label is the standalone action “More”; the generated translation was an attributive adjective requiring a noun. |
 | `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | `chatbot.no_chat_integrations_yet`, `chatbot.delete_chat_integration_helptext` | Single-sentence UI strings with final full stops | Removed final full stops | Single-sentence UI strings do not use final full stops. |
 
+## 2026-08-18 — Subscription thread limit
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml`, `server.es.yml`, `server.fr.yml`, `server.nl_NL.yml`, `server.pt_BR.yml`, `server.ro.yml` | `errors.subscription_thread_limit_reached` | Formal address, polite filler, or wording about updating software, an account, or a profile | Informal direct address and wording about upgrading the subscription plan | The action changes the Loomio subscription plan; these locales use concise informal UI copy |
+| `config/locales/server.ru.yml`, `server.uk.yml` | `errors.subscription_thread_limit_reached` | Update an account or system | Move to another subscription plan | “Upgrade” refers to the Loomio subscription, not software or account details |
+| `config/locales/server.tr.yml`, `server.zh_CN.yml`, `server.zh_TW.yml` | `errors.subscription_thread_limit_reached` | Software-execution-thread terminology | Established discussion-thread terminology | Thread means a Loomio discussion, not a software thread |
+
 ## 2026-08-07 — Vote reasons when disagreeing
 
 | File | Key | Before | After | Why it was wrong |
