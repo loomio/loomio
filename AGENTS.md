@@ -30,9 +30,10 @@
 - Take selective lessons from [TigerStyle](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md), especially naming:
   - Put the most significant word first, then qualifiers/units in descending significance. Prefer names like `comment_length_max` over `max_comment_length`, so related names group together.
   - Choose related names with the same length where practical, especially pairs like `min` and `max`, so code lines up and comparisons are easier to scan.
-  - Name state markers for what they mean: use past-tense names such as `was_legacy_anonymous` when a boolean records historical origin, rather than implying it is the current mode. Name event predicates in past tense, such as `did_close_legacy_anonymous_voting?`, when they detect a completed change.
+  - Name state markers for what they mean: use past-tense names such as `was_imported` when a boolean records historical origin, rather than implying it is the current mode. Name event predicates in past tense, such as `did_close_legacy_anonymous_voting?`, when they detect a completed change.
 - **Fix invariants at the shared method, not at each call site.** If several callers guard a shared method the same way (e.g. `TagService.authorize_create_tag_names!(discussion.group, ...)` from `discussion_service.rb`, `poll_service.rb`, and `topic_service.rb` all need to no-op for group-less/direct records), add the guard inside the shared method (`return if group.blank?`) instead of repeating it at every call site. Only reach for a call-site guard when the condition is truly specific to that one caller.
 - **Prefer coercion over presence guards when the callee already handles the empty case.** If a method already treats `nil`/`[]` as a no-op, call it unconditionally with `Array(value)` rather than wrapping the call in `if params.key?(:x)`. Only add a conditional when the callee can't safely handle the absent/empty case itself.
+- **Document complex methods that are more than framework boilerplate.** Add a concise high-level comment explaining the problem, important invariants, and non-obvious decisions or phases. Comment decision points where the reason is not evident from the code. Do not narrate straightforward Ruby or Rails operations line by line.
 
 ## Writing voice for user-facing content
 
