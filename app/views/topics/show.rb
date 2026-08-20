@@ -97,7 +97,10 @@ class Views::Topics::Show < Views::Application::Layout
       end
 
       if (@pagination[:offset] + @pagination[:limit]) < total
-        a(href: "?offset=#{@pagination[:offset] + @pagination[:limit]}&limit=#{@pagination[:limit]}&export=1") do
+        a(
+          href: "?offset=#{@pagination[:offset] + @pagination[:limit]}&limit=#{@pagination[:limit]}&export=1",
+          rel: "nofollow"
+        ) do
           plain t("common.action.load_more")
         end
       end

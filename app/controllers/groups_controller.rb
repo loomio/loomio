@@ -39,7 +39,8 @@ class GroupsController < ApplicationController
         format.html do
           render Views::Groups::Show.new(
             group: @group, recipient: @recipient,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?
+            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+            canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
           )
         end
         format.xml
@@ -66,7 +67,8 @@ class GroupsController < ApplicationController
         format.html do
           render Views::Groups::Show.new(
             group: @group, recipient: @recipient,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?
+            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+            canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
           )
         end
         format.xml

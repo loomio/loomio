@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Views::Application::Layout < Views::Application::Component
-  def initialize(metadata: nil, export: false, bot: false)
+  def initialize(metadata: nil, export: false, bot: false, canonical_url: nil, robots: nil)
     @metadata = metadata
     @export = export
     @bot = bot
+    @canonical_url = canonical_url
+    @robots = robots
   end
 
   def around_template(&)
@@ -41,6 +43,9 @@ class Views::Application::Layout < Views::Application::Component
     meta name: "viewport", content: "width=device-width, initial-scale=1.0"
     meta content: meta_hash[:title], property: "og:title"
     meta content: meta_hash[:description], name: "description", property: "og:description"
+    meta name: "robots", content: @robots if @robots
+    link rel: "canonical", href: @canonical_url if @canonical_url
+    meta content: @canonical_url, property: "og:url" if @canonical_url
     Array(meta_hash[:image_urls]).each do |image_url|
       meta content: image_url, property: "og:image"
     end
@@ -63,7 +68,7 @@ class Views::Application::Layout < Views::Application::Component
         div(class: "v-toolbar__title") { plain AppConfig.theme[:site_name] }
         div(class: "spacer")
         div(class: "v-toolbar__items")
-        a(class: "navbar__sign-in v-btn v-btn--flat v-btn--text theme--auto v-size--default", href: "?sign_in=1") do
+        a(class: "navbar__sign-in v-btn v-btn--flat v-btn--text theme--auto v-size--default", href: "/dashboard") do
           plain t(:"navbar.sign_in")
         end
       end

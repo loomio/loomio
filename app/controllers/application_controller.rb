@@ -113,6 +113,23 @@ class ApplicationController < ActionController::Base
     response.headers['X-Robots-Tag'] = 'noindex'
   end
 
+  def canonical_url_for(resource)
+    case resource
+    when Discussion
+      discussion_url(resource)
+    when Group
+      group_url(resource)
+    when Poll
+      poll_url(resource)
+    end
+  end
+
+  def robots_directive_for(resource)
+    return 'noindex,follow' if params[:export].present?
+    return 'noindex,follow' if resource.respond_to?(:private) && resource.private
+    return 'noindex,follow' if resource.is_a?(Group) && resource.group_privacy == 'secret'
+  end
+
   def prevent_caching
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
     response.headers['Pragma'] = 'no-cache' # HTTP 1.0.

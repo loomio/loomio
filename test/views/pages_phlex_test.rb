@@ -35,6 +35,19 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, @discussion.author.name
   end
 
+  test "discussion pagination link is nofollow" do
+    2.times do |index|
+      comment = Comment.create!(body: "Pagination comment #{index}", body_format: "md", parent: @discussion, author: @user)
+      comment.events.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
+    end
+
+    output = render_phlex(Views::Topics::Show.new(
+      topic: @discussion.topic, recipient: @recipient, pagination: { limit: 1, offset: 0 }
+    ))
+
+    assert_match(/<a[^>]+href="\?offset=1&limit=1&export=1"[^>]+rel="nofollow"/, output)
+  end
+
   test "discussion show excludes hidden identified stances before pagination without excluding legacy anonymous stances" do
     @discussion.topic.update!(allow_concurrent_polls: true)
     anonymous_poll = PollService.create(params: {
