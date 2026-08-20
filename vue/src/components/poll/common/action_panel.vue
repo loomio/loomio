@@ -151,20 +151,12 @@ export default
     )
       span(v-t="'poll_common_action_panel.anonymous_voting_participant_notice'")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.detachedAnonymousVoting() && !poll.legacyAnonymous && !isScheduled'
+      v-else-if='poll.detachedAnonymousVoting() && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
     )
       span(v-t="'poll_common_action_panel.anonymous_votes_are_stored_separately_from_voter_identities'")
-    v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.usesLegacyAnonymousVotingFormat() && !isScheduled'
-      density="compact"
-      variant="tonal"
-      type="info"
-    )
-      span(v-t="'poll_common_action_panel.legacy_anonymous_voting_format'")
-
     .poll-common-vote-form(
       v-if="stance && !stance.castAt && !poll.anonymousBallotSubmitted"
       :class="{'poll-common-vote-form--preview': isScheduled}"

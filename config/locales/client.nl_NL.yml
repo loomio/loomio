@@ -2149,7 +2149,6 @@ nl_NL:
     voting_opens_at: Deze %{poll_type} opent voor stemming %{time}
     unable_to_vote: U bent niet uitgenodigd om te stemmen over deze %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Anonieme stemmen worden apart van de identiteit van de kiezers opgeslagen. De resultaten worden bekendgemaakt nadat de stemming is gesloten.
-    legacy_anonymous_voting_format: Deze peiling maakt gebruik van het traditionele anonieme stemformaat.
     anonymous_vote_cannot_be_changed: Je kunt je stem niet meer herzien of wijzigen nadat je deze hebt uitgebracht.
     anonymous_vote_recorded: Je stem is geregistreerd
     legacy_vote_reasons: Redenen bij eerdere stemmen
@@ -2408,7 +2407,6 @@ nl_NL:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread verplaatst van <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad gesloten"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad opnieuw geopend"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een fork van deze thread gemaakt: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een uitkomst gedeeld"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} heropend"

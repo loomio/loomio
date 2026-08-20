@@ -88,7 +88,7 @@ export default class PollModel extends BaseModel {
       tags: [],
       hideResults: 'off',
       votingSystem: 'stance',
-      legacyAnonymous: false,
+      legacyAnonymousVoteReasonsCount: 0,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
       stanceCounts: [],
@@ -279,10 +279,6 @@ export default class PollModel extends BaseModel {
 
   detachedAnonymousVoting() {
     return this.anonymous && this.votingSystem === 'anonymous_ballot';
-  }
-
-  usesLegacyAnonymousVotingFormat() {
-    return this.anonymous && (this.votingSystem === 'stance' || this.legacyAnonymous);
   }
 
   showResults() {

@@ -98,6 +98,39 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal 0, created_event.sequence_id
   end
 
+  test "repair excludes children from another topic from child counts" do
+    target = DiscussionService.create(
+      params: {title: "Target discussion", group_id: @group.id},
+      actor: @user
+    )
+    Event.create!(
+      kind: "discussion_edited",
+      eventable: @discussion,
+      topic: target.topic,
+      parent: @discussion_event,
+      user: @user
+    )
+
+    TopicService.repair(@topic.id)
+    TopicService.verify_integrity!(@topic.id)
+
+    expected_count = Event.where(
+      parent_id: @discussion_event.id,
+      topic_id: @topic.id
+    ).count
+    assert_equal expected_count, @discussion_event.reload.child_count
+  end
+
+  test "verify_integrity raises for an invalid event tree" do
+    @discussion_event.update_columns(child_count: 999)
+
+    error = assert_raises(TopicService::IntegrityError) do
+      TopicService.verify_integrity!(@topic.id)
+    end
+
+    assert_match(/event #{@discussion_event.id} child_count/, error.message)
+  end
+
   # -- Move --
 
   test "move moves discussion to a public_only group" do

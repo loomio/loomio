@@ -5,7 +5,7 @@ class PollSerializer < ApplicationSerializer
              :agree_target,
              :author_id,
              :anonymous,
-             :legacy_anonymous,
+             :legacy_anonymous_vote_reasons_count,
              :voting_system,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,
@@ -168,6 +168,12 @@ class PollSerializer < ApplicationSerializer
 
   def anonymous_ballot_submitted
     anonymous_voter&.ballot_submitted? || false
+  end
+
+  def legacy_anonymous_vote_reasons_count
+    return 0 unless object.closed? && object.detached_anonymous?
+
+    object.legacy_anonymous_vote_reasons.count
   end
 
   def include_anonymous_voter_eligible?

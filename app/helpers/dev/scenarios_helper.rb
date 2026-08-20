@@ -81,7 +81,6 @@ module Dev::ScenariosHelper
     poll.update_columns(
       anonymous: true,
       voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
-      legacy_anonymous: true,
       voters_count: 1,
       undecided_voters_count: 0
     )
@@ -97,12 +96,6 @@ module Dev::ScenariosHelper
     option.update_counts!
     poll.reload
 
-    scenario
-  end
-
-  def poll_legacy_anonymous_stance_scenario(params)
-    scenario = poll_closed_scenario(params.merge(anonymous: false))
-    scenario[:poll].update_columns(anonymous: true)
     scenario
   end
 

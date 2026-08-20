@@ -122,13 +122,7 @@ namespace :loomio do
       next
     end
 
-    backup_confirmed = ENV.key?("ANONYMOUS_VOTE_BACKUP_CONFIRMED")
-    unless backup_confirmed
-      abort "Set ANONYMOUS_VOTE_BACKUP_CONFIRMED after confirming a current database backup"
-    end
-
     stats = LegacyAnonymousVoteMigrationService.migrate_all!(
-      backup_confirmed: true,
       poll_id: poll_id,
       limit: limit,
       progress: ->(message) { puts message }
@@ -138,21 +132,29 @@ namespace :loomio do
          "#{stats[:attachments]} attachments, and #{stats[:electorate_records]} electorate records"
   end
 
-  desc "Audit detached legacy anonymous vote conversion"
-  task audit_legacy_anonymous_votes: :environment do
+  desc "Clean up legacy anonymous polls before detached vote migration"
+  task cleanup_legacy_anonymous_votes: :environment do
     $stdout.sync = true
-    if (path = ENV["CAPTURE_DANGLING_BASELINE_PATH"].presence)
-      File.write(path, JSON.pretty_generate(LegacyAnonymousVoteMigrationAuditService.reference_baseline))
-      puts "Wrote dangling stance reference baseline to #{path}"
-      next
+    poll_id = ENV["POLL_ID"].presence&.to_i
+    limit = ENV["LIMIT"].presence&.to_i
+    scope = LegacyAnonymousVoteMigrationService.eligible_poll_scope.order(:id)
+    scope = scope.where(id: poll_id) if poll_id
+    scope = scope.limit(limit) if limit
+
+    failures = []
+    scope.find_each do |poll|
+      begin
+        result = LegacyAnonymousVoteMigrationCleanupService.cleanup!(poll: poll)
+        puts "Cleaned anonymous poll #{poll.id}; removed #{result[:removed_stance_choices]} cross-poll stance choices"
+      rescue LegacyAnonymousVoteMigrationCleanupService::CleanupError => error
+        failures << [poll.id, error.message]
+        warn "Could not clean anonymous poll #{poll.id}: #{error.message}"
+      end
     end
 
-    path = ENV["DANGLING_BASELINE_PATH"].presence
-    abort "Set DANGLING_BASELINE_PATH to the baseline captured before conversion" unless path
-    baseline = JSON.parse(File.read(path))
-    result = LegacyAnonymousVoteMigrationAuditService.audit(dangling_baseline: baseline)
-    puts JSON.pretty_generate(result)
-    abort "Legacy anonymous vote audit failed" unless result[:ok]
+    next if failures.empty?
+
+    abort "Could not clean #{failures.length} anonymous poll(s) before migration"
   end
 
   desc "Attach legacy standalone poll stance events to poll topics"

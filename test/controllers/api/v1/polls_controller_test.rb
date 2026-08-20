@@ -59,12 +59,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       closing_at: 3.days.from_now,
       anonymous: true
     }, actor: @admin)
-    poll.update_columns(closed_at: Time.current)
+    poll.update_columns(closed_at: Time.current, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
     sign_in @user
     get :legacy_vote_reasons, params: {id: poll.key}
     assert_response :not_found
 
-    poll.update_columns(legacy_anonymous: true)
     ballot = poll.anonymous_ballots.create!(
       anonymous_ballot_choices_attributes: [
         {poll_option_id: poll.poll_options.first.id, score: 1}
@@ -98,7 +97,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     get :show, params: {id: poll.key}
     serialized_poll = JSON.parse(response.body).fetch("polls").first
-    assert_equal true, serialized_poll["legacy_anonymous"]
+    assert_equal 1, serialized_poll["legacy_anonymous_vote_reasons_count"]
 
     sign_in @alien
     get :legacy_vote_reasons, params: {id: poll.key}

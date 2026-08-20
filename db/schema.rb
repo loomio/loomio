@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -20,47 +20,47 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   enable_extension "pgcrypto"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
-    t.integer "status", default: 0, null: false
-    t.string "message_id", null: false
-    t.string "message_checksum", null: false
     t.datetime "created_at", null: false
+    t.string "message_checksum", null: false
+    t.string "message_id", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.string "author_type"
     t.bigint "author_id"
+    t.string "author_type"
+    t.text "body"
     t.datetime "created_at", precision: nil, null: false
+    t.string "namespace"
+    t.bigint "resource_id"
+    t.string "resource_type"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.integer "group_id"
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["group_id"], name: "index_active_storage_attachments_on_group_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", precision: nil, null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
     t.string "service_name", null: false
     t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -82,17 +82,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "anonymous_ballots", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "poll_id", null: false
     t.boolean "none_of_the_above", default: false, null: false
+    t.bigint "poll_id", null: false
     t.index ["poll_id"], name: "index_anonymous_ballots_on_poll_id"
   end
 
   create_table "anonymous_poll_voters", force: :cascade do |t|
+    t.boolean "ballot_submitted", default: false, null: false
+    t.boolean "group_member", default: false
+    t.bigint "inviter_id"
     t.bigint "poll_id", null: false
     t.bigint "voter_id", null: false
-    t.bigint "inviter_id"
-    t.boolean "group_member", default: false
-    t.boolean "ballot_submitted", default: false, null: false
     t.index ["inviter_id"], name: "index_anonymous_poll_voters_on_inviter_id"
     t.index ["poll_id", "voter_id"], name: "index_anonymous_poll_voters_on_poll_id_and_voter_id", unique: true
     t.index ["poll_id"], name: "index_anonymous_poll_voters_on_poll_id"
@@ -100,76 +100,76 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.string "filename", limit: 255
-    t.text "location"
-    t.integer "comment_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "filesize"
-    t.string "file_file_name"
-    t.string "file_content_type"
-    t.integer "file_file_size"
-    t.datetime "file_updated_at", precision: nil
     t.integer "attachable_id"
     t.string "attachable_type"
+    t.integer "comment_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "file_content_type"
+    t.string "file_file_name"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at", precision: nil
+    t.string "filename", limit: 255
+    t.integer "filesize"
+    t.text "location"
     t.boolean "migrated_to_document", default: false, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "user_id"
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
   end
 
   create_table "blazer_audits", force: :cascade do |t|
-    t.bigint "user_id"
+    t.datetime "created_at", precision: nil
+    t.string "data_source"
     t.bigint "query_id"
     t.text "statement"
-    t.string "data_source"
-    t.datetime "created_at", precision: nil
+    t.bigint "user_id"
     t.index ["query_id"], name: "index_blazer_audits_on_query_id"
     t.index ["user_id"], name: "index_blazer_audits_on_user_id"
   end
 
   create_table "blazer_checks", force: :cascade do |t|
-    t.bigint "creator_id"
-    t.bigint "query_id"
-    t.string "state"
-    t.string "schedule"
-    t.text "emails"
-    t.text "slack_channels"
     t.string "check_type"
-    t.text "message"
-    t.datetime "last_run_at", precision: nil
     t.datetime "created_at", null: false
+    t.bigint "creator_id"
+    t.text "emails"
+    t.datetime "last_run_at", precision: nil
+    t.text "message"
+    t.bigint "query_id"
+    t.string "schedule"
+    t.text "slack_channels"
+    t.string "state"
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
     t.index ["query_id"], name: "index_blazer_checks_on_query_id"
   end
 
   create_table "blazer_dashboard_queries", force: :cascade do |t|
-    t.bigint "dashboard_id"
-    t.bigint "query_id"
-    t.integer "position"
     t.datetime "created_at", null: false
+    t.bigint "dashboard_id"
+    t.integer "position"
+    t.bigint "query_id"
     t.datetime "updated_at", null: false
     t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
     t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
   end
 
   create_table "blazer_dashboards", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "creator_id"
     t.string "name"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
   end
 
   create_table "blazer_queries", force: :cascade do |t|
-    t.bigint "creator_id"
-    t.string "name"
-    t.text "description"
-    t.text "statement"
-    t.string "data_source"
-    t.string "status"
     t.datetime "created_at", null: false
+    t.bigint "creator_id"
+    t.string "data_source"
+    t.text "description"
+    t.string "name"
+    t.text "statement"
+    t.string "status"
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
@@ -180,12 +180,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "bookmarkable_type", null: false
     t.bigint "bookmarkable_id", null: false
+    t.string "bookmarkable_type", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "discarded_at"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_bookmarkable"
     t.index ["discarded_at"], name: "index_bookmarks_on_discarded_at"
     t.index ["user_id", "bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_user_and_bookmarkable", unique: true
@@ -193,50 +193,50 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "chatbots", force: :cascade do |t|
-    t.string "kind"
-    t.string "server"
-    t.string "channel"
     t.string "access_token"
     t.integer "author_id"
-    t.integer "group_id"
+    t.string "channel"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "event_kinds", array: true
+    t.integer "group_id"
+    t.string "kind"
     t.string "name"
     t.boolean "notification_only", default: false, null: false
+    t.string "server"
+    t.datetime "updated_at", null: false
     t.string "webhook_kind"
-    t.string "event_kinds", array: true
     t.index ["group_id"], name: "index_chatbots_on_group_id"
   end
 
   create_table "cohorts", id: :serial, force: :cascade do |t|
-    t.date "start_on"
     t.date "end_on"
+    t.date "start_on"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
-    t.text "body", default: ""
-    t.integer "user_id", default: 0
-    t.integer "parent_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "comment_votes_count", default: 0, null: false
-    t.integer "attachments_count", default: 0, null: false
-    t.datetime "edited_at", precision: nil
-    t.integer "versions_count", default: 0
-    t.string "body_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.integer "attachments_count", default: 0, null: false
+    t.text "body", default: ""
+    t.string "body_format", limit: 10, default: "md", null: false
+    t.integer "comment_votes_count", default: 0, null: false
+    t.string "content_locale"
+    t.datetime "created_at", precision: nil
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "content_locale"
+    t.datetime "edited_at", precision: nil
     t.jsonb "link_previews", default: [], null: false
+    t.integer "parent_id"
     t.string "parent_type", null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id", default: 0
+    t.integer "versions_count", default: 0
     t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
-    t.string "cover_photo_file_name"
     t.string "cover_photo_content_type"
+    t.string "cover_photo_file_name"
     t.integer "cover_photo_file_size"
     t.datetime "cover_photo_updated_at", precision: nil
     t.datetime "created_at", precision: nil
@@ -245,75 +245,75 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
 
   create_table "demos", force: :cascade do |t|
     t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.string "demo_handle"
+    t.string "description"
     t.integer "group_id", null: false
     t.string "name", null: false
-    t.string "description"
-    t.datetime "recorded_at", precision: nil, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "priority", default: 0, null: false
-    t.string "demo_handle"
+    t.datetime "recorded_at", precision: nil, null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_demos_on_author_id"
   end
 
   create_table "discussion_templates", force: :cascade do |t|
-    t.integer "source_discussion_id"
-    t.string "key"
-    t.integer "group_id"
-    t.integer "position"
+    t.boolean "allow_comments", default: true, null: false
+    t.boolean "allow_concurrent_polls", default: false, null: false
+    t.boolean "allow_reactions", default: true, null: false
+    t.jsonb "attachments", default: [], null: false
     t.integer "author_id"
-    t.string "title"
+    t.integer "comment_length_max"
+    t.string "content_locale"
+    t.datetime "created_at", null: false
+    t.boolean "default_to_direct_discussion", default: false, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "html", null: false
-    t.string "process_name"
-    t.string "process_subtitle"
-    t.string "process_introduction"
-    t.string "process_introduction_format", default: "html", null: false
-    t.jsonb "attachments", default: [], null: false
-    t.integer "max_depth", default: 2, null: false
-    t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "content_locale"
+    t.integer "group_id"
+    t.string "key"
     t.jsonb "link_previews", default: [], null: false
-    t.string "tags", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "max_depth", default: 2, null: false
+    t.boolean "newest_first", default: false, null: false
     t.jsonb "poll_template_keys_or_ids", default: [], null: false
-    t.string "title_placeholder"
+    t.integer "position"
+    t.string "process_introduction"
+    t.string "process_introduction_format", default: "html", null: false
+    t.string "process_name"
+    t.string "process_subtitle"
     t.boolean "public", default: false, null: false
     t.string "recipient_audience"
-    t.boolean "default_to_direct_discussion", default: false, null: false
-    t.boolean "allow_concurrent_polls", default: false, null: false
-    t.boolean "allow_comments", default: true, null: false
-    t.boolean "allow_reactions", default: true, null: false
-    t.integer "comment_length_max"
+    t.integer "source_discussion_id"
+    t.string "tags", default: [], array: true
+    t.string "title"
+    t.string "title_placeholder"
+    t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
   end
 
   create_table "discussions", id: :serial, force: :cascade do |t|
-    t.integer "author_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "title", limit: 255
-    t.datetime "last_comment_at", precision: nil
-    t.text "description"
-    t.string "key", limit: 255
-    t.string "iframe_src", limit: 255
-    t.integer "versions_count", default: 0
-    t.integer "importance", default: 0, null: false
-    t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.jsonb "info", default: {}, null: false
-    t.datetime "discarded_at", precision: nil
+    t.integer "author_id"
     t.string "content_locale"
-    t.jsonb "link_previews", default: [], null: false
+    t.datetime "created_at", precision: nil
+    t.text "description"
+    t.string "description_format", limit: 10, default: "md", null: false
+    t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.boolean "template", default: false, null: false
-    t.string "tags", default: [], array: true
     t.integer "discussion_template_id"
     t.string "discussion_template_key"
+    t.string "iframe_src", limit: 255
+    t.integer "importance", default: 0, null: false
+    t.jsonb "info", default: {}, null: false
+    t.string "key", limit: 255
+    t.datetime "last_comment_at", precision: nil
+    t.jsonb "link_previews", default: [], null: false
+    t.string "tags", default: [], array: true
+    t.boolean "template", default: false, null: false
+    t.string "title", limit: 255
     t.integer "topic_id"
+    t.datetime "updated_at", precision: nil
+    t.integer "versions_count", default: 0
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -324,25 +324,27 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
-    t.string "kind", limit: 255
+    t.boolean "announcement", default: false, null: false
+    t.integer "child_count", default: 0, null: false
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.jsonb "custom_fields", default: {}, null: false
+    t.integer "depth", default: 0, null: false
     t.integer "eventable_id"
     t.string "eventable_type", limit: 255
-    t.integer "user_id"
-    t.integer "topic_id"
-    t.integer "sequence_id"
-    t.boolean "announcement", default: false, null: false
-    t.jsonb "custom_fields", default: {}, null: false
-    t.integer "parent_id"
-    t.integer "position", default: 0, null: false
-    t.integer "child_count", default: 0, null: false
-    t.integer "depth", default: 0, null: false
-    t.boolean "pinned", default: false, null: false
-    t.string "position_key"
     t.integer "eventable_version_id"
+    t.string "kind", limit: 255
+    t.integer "parent_id"
+    t.boolean "pinned", default: false, null: false
+    t.integer "position", default: 0, null: false
+    t.string "position_key"
+    t.integer "sequence_id"
+    t.integer "topic_id"
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
+    t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_discussion_created_event", unique: true, where: "(((eventable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
+    t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_poll_created_event", unique: true, where: "(((eventable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["position_key"], name: "index_events_on_position_key"
@@ -354,14 +356,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "forward_email_rules", force: :cascade do |t|
-    t.citext "handle", null: false
     t.string "email"
+    t.citext "handle", null: false
   end
 
   create_table "group_handle_redirects", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "group_id", null: false
     t.citext "handle", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id", "handle"], name: "index_group_handle_redirects_on_group_id_and_handle", unique: true
     t.index ["group_id"], name: "index_group_handle_redirects_on_group_id"
@@ -369,104 +371,104 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
+    t.jsonb "custom_fields", default: {}, null: false
     t.integer "group_id", null: false
     t.integer "identity_id", null: false
-    t.jsonb "custom_fields", default: {}, null: false
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_group_identities_on_group_id"
     t.index ["identity_id"], name: "index_group_identities_on_identity_id"
   end
 
   create_table "group_surveys", force: :cascade do |t|
-    t.integer "group_id", null: false
     t.string "category"
-    t.string "location"
-    t.string "size"
+    t.datetime "created_at", precision: nil, null: false
     t.string "declaration"
+    t.string "desired_feature"
+    t.integer "group_id", null: false
+    t.string "location"
+    t.text "misc"
     t.text "purpose"
-    t.string "usage"
     t.string "referrer"
     t.string "role"
-    t.string "website"
-    t.text "misc"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "desired_feature"
     t.string "segment"
+    t.string "size"
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "usage"
+    t.string "website"
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
   end
 
   create_table "groups", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "parent_id"
-    t.text "description"
-    t.integer "memberships_count", default: 0, null: false
-    t.datetime "archived_at", precision: nil
-    t.integer "discussions_count", default: 0, null: false
-    t.string "full_name", limit: 255
-    t.boolean "parent_members_can_see_discussions", default: false, null: false
-    t.string "key", limit: 255
-    t.integer "category_id"
-    t.citext "handle"
-    t.integer "theme_id"
-    t.boolean "is_visible_to_public", default: true, null: false
-    t.boolean "is_visible_to_parent_members", default: false, null: false
-    t.string "discussion_privacy_options", default: "private_only", null: false
-    t.boolean "members_can_add_members", default: false, null: false
-    t.string "membership_granted_upon", default: "approval", null: false
-    t.boolean "members_can_edit_discussions", default: true, null: false
-    t.string "cover_photo_file_name", limit: 255
-    t.string "cover_photo_content_type", limit: 255
-    t.integer "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at", precision: nil
-    t.string "logo_file_name", limit: 255
-    t.string "logo_content_type", limit: 255
-    t.integer "logo_file_size"
-    t.datetime "logo_updated_at", precision: nil
-    t.boolean "members_can_edit_comments", default: true
-    t.boolean "members_can_raise_motions", default: true, null: false
-    t.boolean "members_can_vote", default: true, null: false
-    t.boolean "members_can_start_discussions", default: true, null: false
-    t.boolean "members_can_create_subgroups", default: false, null: false
-    t.integer "creator_id"
-    t.boolean "is_referral", default: false, null: false
-    t.integer "cohort_id"
-    t.integer "default_group_cover_id"
-    t.integer "subscription_id"
-    t.integer "invitations_count", default: 0, null: false
     t.integer "admin_memberships_count", default: 0, null: false
-    t.string "country"
-    t.string "region"
+    t.string "admin_tags"
+    t.boolean "admins_can_edit_user_content", default: true, null: false
+    t.datetime "archived_at", precision: nil
+    t.jsonb "attachments", default: [], null: false
+    t.string "category"
+    t.integer "category_id"
     t.string "city"
     t.integer "closed_motions_count", default: 0, null: false
-    t.integer "proposal_outcomes_count", default: 0, null: false
-    t.integer "pending_memberships_count", default: 0, null: false
     t.integer "closed_polls_count", default: 0, null: false
-    t.integer "polls_count", default: 0, null: false
-    t.integer "subgroups_count", default: 0, null: false
-    t.string "token"
-    t.string "admin_tags"
-    t.boolean "members_can_announce", default: true, null: false
-    t.string "description_format", limit: 10, default: "md", null: false
-    t.jsonb "attachments", default: [], null: false
-    t.jsonb "info", default: {}, null: false
-    t.boolean "admins_can_edit_user_content", default: true, null: false
-    t.boolean "listed_in_explore", default: false, null: false
+    t.integer "cohort_id"
     t.string "content_locale"
-    t.boolean "members_can_add_guests", default: true, null: false
-    t.boolean "members_can_delete_comments", default: true, null: false
-    t.jsonb "link_previews", default: [], null: false
-    t.integer "discussion_templates_count", default: 0, null: false
-    t.integer "poll_templates_count", default: 0, null: false
-    t.string "request_to_join_prompt"
+    t.string "country"
+    t.string "cover_photo_content_type", limit: 255
+    t.string "cover_photo_file_name", limit: 255
+    t.integer "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.integer "creator_id"
+    t.integer "default_group_cover_id"
     t.integer "delegates_count", default: 0, null: false
-    t.string "category"
-    t.boolean "members_can_create_templates", default: false, null: false
-    t.integer "org_members_count", default: 0, null: false
+    t.text "description"
+    t.string "description_format", limit: 10, default: "md", null: false
+    t.string "discussion_privacy_options", default: "private_only", null: false
+    t.integer "discussion_templates_count", default: 0, null: false
+    t.integer "discussions_count", default: 0, null: false
+    t.string "full_name", limit: 255
+    t.citext "handle"
+    t.jsonb "info", default: {}, null: false
+    t.integer "invitations_count", default: 0, null: false
+    t.boolean "is_referral", default: false, null: false
+    t.boolean "is_visible_to_parent_members", default: false, null: false
+    t.boolean "is_visible_to_public", default: true, null: false
+    t.string "key", limit: 255
+    t.jsonb "link_previews", default: [], null: false
+    t.boolean "listed_in_explore", default: false, null: false
+    t.string "logo_content_type", limit: 255
+    t.string "logo_file_name", limit: 255
+    t.integer "logo_file_size"
+    t.datetime "logo_updated_at", precision: nil
+    t.boolean "members_can_add_guests", default: true, null: false
+    t.boolean "members_can_add_members", default: false, null: false
+    t.boolean "members_can_announce", default: true, null: false
+    t.boolean "members_can_create_subgroups", default: false, null: false
     t.boolean "members_can_create_tags", default: true, null: false
+    t.boolean "members_can_create_templates", default: false, null: false
+    t.boolean "members_can_delete_comments", default: true, null: false
+    t.boolean "members_can_edit_comments", default: true
+    t.boolean "members_can_edit_discussions", default: true, null: false
+    t.boolean "members_can_raise_motions", default: true, null: false
+    t.boolean "members_can_start_discussions", default: true, null: false
+    t.boolean "members_can_vote", default: true, null: false
+    t.string "membership_granted_upon", default: "approval", null: false
+    t.integer "memberships_count", default: 0, null: false
+    t.string "name", limit: 255
+    t.integer "org_members_count", default: 0, null: false
+    t.integer "parent_id"
+    t.boolean "parent_members_can_see_discussions", default: false, null: false
+    t.integer "pending_memberships_count", default: 0, null: false
+    t.integer "poll_templates_count", default: 0, null: false
+    t.integer "polls_count", default: 0, null: false
+    t.integer "proposal_outcomes_count", default: 0, null: false
+    t.string "region"
+    t.string "request_to_join_prompt"
+    t.integer "subgroups_count", default: 0, null: false
+    t.integer "subscription_id"
+    t.integer "theme_id"
+    t.string "token"
+    t.datetime "updated_at", precision: nil
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -483,64 +485,64 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "login_tokens", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.string "token"
-    t.boolean "used", default: false, null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "redirect"
     t.integer "code", null: false
-    t.boolean "is_reactivation", default: false, null: false
+    t.datetime "created_at", precision: nil
     t.integer "failed_attempts", default: 0, null: false
+    t.boolean "is_reactivation", default: false, null: false
+    t.string "redirect"
+    t.string "token"
+    t.datetime "updated_at", precision: nil
+    t.boolean "used", default: false, null: false
+    t.integer "user_id"
     t.index ["token"], name: "index_login_tokens_on_token"
   end
 
   create_table "member_email_aliases", force: :cascade do |t|
-    t.citext "email", null: false
-    t.boolean "require_dkim", default: true, null: false
-    t.boolean "require_spf", default: true, null: false
-    t.integer "user_id"
-    t.integer "group_id", null: false
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
+    t.citext "email", null: false
+    t.integer "group_id", null: false
+    t.boolean "require_dkim", default: true, null: false
+    t.boolean "require_spf", default: true, null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["email", "group_id"], name: "index_member_email_aliases_on_email_and_group_id", unique: true
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "email", limit: 255
-    t.text "introduction"
-    t.integer "group_id"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "email", limit: 255
+    t.integer "group_id"
+    t.text "introduction"
+    t.string "name", limit: 255
     t.integer "requestor_id"
+    t.datetime "responded_at", precision: nil
     t.integer "responder_id"
     t.string "response", limit: 255
-    t.datetime "responded_at", precision: nil
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"
     t.index ["responder_id"], name: "index_membership_requests_on_responder_id"
   end
 
   create_table "memberships", id: :serial, force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.datetime "accepted_at", precision: nil
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.boolean "delegate", default: false, null: false
+    t.jsonb "experiences", default: {}, null: false
+    t.integer "group_id"
+    t.integer "inbox_position", default: 0
+    t.integer "invitation_id"
     t.integer "inviter_id"
     t.datetime "revoked_at", precision: nil
-    t.integer "inbox_position", default: 0
-    t.boolean "admin", default: false, null: false
-    t.integer "volume"
-    t.jsonb "experiences", default: {}, null: false
-    t.integer "invitation_id"
-    t.string "token"
-    t.datetime "accepted_at", precision: nil
-    t.string "title"
-    t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
-    t.boolean "delegate", default: false, null: false
+    t.datetime "saml_session_expires_at", precision: nil
+    t.string "title"
+    t.string "token"
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id"
+    t.integer "volume"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -551,117 +553,117 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "notifications", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "event_id"
-    t.boolean "viewed", default: false, null: false
-    t.jsonb "translation_values", default: {}, null: false
     t.integer "actor_id"
+    t.datetime "created_at", precision: nil
+    t.integer "event_id"
+    t.jsonb "translation_values", default: {}, null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id"
+    t.boolean "viewed", default: false, null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
-    t.integer "resource_owner_id", null: false
     t.integer "application_id", null: false
-    t.string "token", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
-    t.datetime "created_at", precision: nil, null: false
+    t.integer "resource_owner_id", null: false
     t.datetime "revoked_at", precision: nil
     t.string "scopes"
+    t.string "token", null: false
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
   create_table "oauth_access_tokens", id: :serial, force: :cascade do |t|
-    t.integer "resource_owner_id"
     t.integer "application_id"
-    t.string "token", null: false
-    t.string "refresh_token"
-    t.integer "expires_in"
-    t.datetime "revoked_at", precision: nil
     t.datetime "created_at", precision: nil, null: false
+    t.integer "expires_in"
+    t.string "refresh_token"
+    t.integer "resource_owner_id"
+    t.datetime "revoked_at", precision: nil
     t.string "scopes"
+    t.string "token", null: false
     t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
     t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
     t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
   end
 
   create_table "oauth_applications", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "uid", null: false
-    t.string "secret", null: false
-    t.text "redirect_uri", null: false
-    t.string "scopes", default: "", null: false
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "owner_id"
-    t.string "owner_type"
-    t.string "logo_file_name"
     t.string "logo_content_type"
+    t.string "logo_file_name"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at", precision: nil
+    t.string "name", null: false
+    t.integer "owner_id"
+    t.string "owner_type"
+    t.text "redirect_uri", null: false
+    t.string "scopes", default: "", null: false
+    t.string "secret", null: false
+    t.string "uid", null: false
+    t.datetime "updated_at", precision: nil
     t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
   create_table "omniauth_identities", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.string "email", limit: 255
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "identity_type", limit: 255
-    t.string "uid", limit: 255
-    t.string "name", limit: 255
     t.string "access_token", default: ""
-    t.string "logo"
+    t.datetime "created_at", precision: nil, null: false
     t.jsonb "custom_fields", default: {}, null: false
+    t.string "email", limit: 255
+    t.string "identity_type", limit: 255
+    t.string "logo"
+    t.string "name", limit: 255
+    t.string "uid", limit: 255
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "user_id"
     t.index ["email"], name: "index_personas_on_email"
     t.index ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", unique: true
     t.index ["user_id"], name: "index_personas_on_user_id"
   end
 
   create_table "outcomes", id: :serial, force: :cascade do |t|
-    t.integer "poll_id"
-    t.text "statement", null: false
-    t.integer "author_id", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.boolean "latest", default: true, null: false
-    t.integer "poll_option_id"
-    t.jsonb "custom_fields", default: {}, null: false
-    t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.integer "versions_count", default: 0, null: false
-    t.date "review_on"
+    t.integer "author_id", null: false
     t.string "content_locale"
+    t.datetime "created_at", precision: nil
+    t.jsonb "custom_fields", default: {}, null: false
+    t.boolean "latest", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
+    t.integer "poll_id"
+    t.integer "poll_option_id"
+    t.date "review_on"
+    t.text "statement", null: false
+    t.string "statement_format", limit: 10, default: "md", null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "versions_count", default: 0, null: false
     t.index ["created_at"], name: "index_outcomes_on_created_at"
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
   create_table "partition_sequences", primary_key: ["key", "id"], force: :cascade do |t|
-    t.text "key", null: false
-    t.integer "id", null: false
     t.integer "counter", default: 0
+    t.integer "id", null: false
+    t.text "key", null: false
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.tsvector "ts_content"
     t.bigint "author_id"
-    t.bigint "group_id"
-    t.bigint "discussion_id"
-    t.bigint "poll_id"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "authored_at"
-    t.bigint "topic_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.bigint "discussion_id"
+    t.bigint "group_id"
+    t.bigint "poll_id"
+    t.bigint "searchable_id"
+    t.string "searchable_type"
     t.string "tags", default: [], array: true
+    t.bigint "topic_id"
+    t.tsvector "ts_content"
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_pg_search_documents_on_author_id"
     t.index ["discussion_id"], name: "index_pg_search_documents_on_discussion_id"
     t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
@@ -673,146 +675,145 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "pg_search_words", id: false, force: :cascade do |t|
-    t.text "word", null: false
     t.integer "document_count", null: false
+    t.text "word", null: false
     t.index ["word"], name: "index_pg_search_words_on_word", unique: true
     t.index ["word"], name: "index_pg_search_words_on_word_trigram", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.string "icon"
+    t.string "meaning"
     t.string "name", null: false
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
-    t.jsonb "score_counts", default: {}, null: false
-    t.jsonb "voter_scores", default: {}, null: false
-    t.integer "total_score", default: 0, null: false
-    t.integer "voter_count", default: 0, null: false
-    t.string "icon"
-    t.string "meaning"
     t.string "prompt"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.jsonb "score_counts", default: {}, null: false
+    t.string "test_against"
     t.string "test_operator"
     t.integer "test_percent"
-    t.string "test_against"
+    t.integer "total_score", default: 0, null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "voter_count", default: 0, null: false
+    t.jsonb "voter_scores", default: {}, null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
   create_table "poll_templates", force: :cascade do |t|
-    t.string "key"
-    t.integer "group_id", null: false
-    t.integer "position", default: 0, null: false
-    t.integer "author_id", null: false
-    t.string "poll_type", null: false
-    t.string "process_name"
-    t.string "process_subtitle"
-    t.string "title"
-    t.text "details"
-    t.string "details_format", limit: 10, default: "md", null: false
-    t.boolean "anonymous", default: false, null: false
-    t.boolean "specified_voters_only", default: false, null: false
-    t.integer "notify_on_closing_soon", default: 0, null: false
-    t.string "content_locale"
-    t.boolean "shuffle_options", default: false, null: false
-    t.integer "hide_results", default: 0, null: false
-    t.string "chart_type"
-    t.integer "min_score"
-    t.integer "max_score"
-    t.integer "minimum_stance_choices"
-    t.integer "maximum_stance_choices"
-    t.integer "dots_per_person"
-    t.string "reason_prompt"
-    t.jsonb "poll_options", default: [], null: false
-    t.integer "stance_reason_required", default: 1, null: false
-    t.boolean "limit_reason_length", default: true, null: false
-    t.integer "default_duration_in_days", default: 7, null: false
     t.integer "agree_target"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "meeting_duration"
-    t.boolean "can_respond_maybe", default: true, null: false
-    t.string "poll_option_name_format", default: "plain", null: false
-    t.jsonb "link_previews", default: [], null: false
-    t.jsonb "atttachments", default: [], null: false
-    t.string "tags", default: [], array: true
-    t.datetime "discarded_at"
-    t.string "process_introduction"
-    t.string "process_introduction_format", default: "md", null: false
-    t.string "title_placeholder"
-    t.string "outcome_statement"
-    t.string "outcome_statement_format", default: "html", null: false
-    t.integer "outcome_review_due_in_days"
-    t.boolean "public", default: false, null: false
-    t.boolean "show_none_of_the_above", default: false, null: false
-    t.integer "quorum_pct"
-    t.boolean "notify_on_open", default: true, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.boolean "anonymous", default: false, null: false
+    t.jsonb "atttachments", default: [], null: false
+    t.integer "author_id", null: false
+    t.boolean "can_respond_maybe", default: true, null: false
+    t.string "chart_type"
     t.integer "comment_length_max"
+    t.string "content_locale"
+    t.datetime "created_at", null: false
+    t.integer "default_duration_in_days", default: 7, null: false
+    t.text "details"
+    t.string "details_format", limit: 10, default: "md", null: false
+    t.datetime "discarded_at"
+    t.integer "dots_per_person"
+    t.integer "group_id", null: false
+    t.integer "hide_results", default: 0, null: false
+    t.string "key"
+    t.boolean "limit_reason_length", default: true, null: false
+    t.jsonb "link_previews", default: [], null: false
+    t.integer "max_score"
+    t.integer "maximum_stance_choices"
+    t.integer "meeting_duration"
+    t.integer "min_score"
+    t.integer "minimum_stance_choices"
+    t.integer "notify_on_closing_soon", default: 0, null: false
+    t.boolean "notify_on_open", default: true, null: false
+    t.integer "outcome_review_due_in_days"
+    t.string "outcome_statement"
+    t.string "outcome_statement_format", default: "html", null: false
+    t.string "poll_option_name_format", default: "plain", null: false
+    t.jsonb "poll_options", default: [], null: false
+    t.string "poll_type", null: false
+    t.integer "position", default: 0, null: false
+    t.string "process_introduction"
+    t.string "process_introduction_format", default: "md", null: false
+    t.string "process_name"
+    t.string "process_subtitle"
+    t.boolean "public", default: false, null: false
+    t.integer "quorum_pct"
+    t.string "reason_prompt"
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.boolean "shuffle_options", default: false, null: false
+    t.boolean "specified_voters_only", default: false, null: false
+    t.integer "stance_reason_required", default: 1, null: false
+    t.string "tags", default: [], array: true
+    t.string "title"
+    t.string "title_placeholder"
+    t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|
-    t.integer "author_id", null: false
-    t.string "title", null: false
-    t.text "details"
-    t.datetime "closing_at", precision: nil
-    t.datetime "closed_at", precision: nil
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "topic_id"
-    t.string "key", null: false
-    t.string "poll_type", null: false
-    t.jsonb "stance_data", default: {}
-    t.integer "voters_count", default: 0, null: false
-    t.boolean "multiple_choice", default: false, null: false
-    t.jsonb "custom_fields", default: {}, null: false
-    t.jsonb "stance_counts", default: [], null: false
-    t.jsonb "matrix_counts", default: [], null: false
-    t.integer "undecided_voters_count", default: 0, null: false
-    t.boolean "voter_can_add_options", default: false, null: false
+    t.integer "agree_target"
     t.boolean "anonymous", default: false, null: false
-    t.integer "versions_count", default: 0
-    t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
+    t.integer "author_id", null: false
+    t.string "chart_type"
+    t.datetime "closed_at", precision: nil
+    t.datetime "closing_at", precision: nil
+    t.string "content_locale"
+    t.datetime "created_at", precision: nil
+    t.jsonb "custom_fields", default: {}, null: false
+    t.integer "default_duration_in_days"
+    t.text "details"
+    t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.boolean "specified_voters_only", default: false, null: false
-    t.integer "notify_on_closing_soon", default: 0, null: false
-    t.string "content_locale"
-    t.jsonb "link_previews", default: [], null: false
-    t.boolean "shuffle_options", default: false, null: false
-    t.integer "hide_results", default: 0, null: false
-    t.string "chart_type"
-    t.integer "min_score"
-    t.integer "max_score"
-    t.integer "minimum_stance_choices"
-    t.integer "maximum_stance_choices"
     t.integer "dots_per_person"
-    t.string "process_name"
-    t.boolean "template", default: false, null: false
-    t.string "reason_prompt"
-    t.string "poll_option_name_format"
-    t.integer "stance_reason_required", default: 1, null: false
+    t.integer "hide_results", default: 0, null: false
+    t.string "key", null: false
     t.boolean "limit_reason_length", default: true, null: false
-    t.integer "default_duration_in_days"
-    t.integer "agree_target"
-    t.string "process_subtitle"
-    t.string "process_url"
-    t.string "tags", default: [], array: true
+    t.jsonb "link_previews", default: [], null: false
+    t.jsonb "matrix_counts", default: [], null: false
+    t.integer "max_score"
+    t.integer "maximum_stance_choices"
+    t.integer "min_score"
+    t.integer "minimum_stance_choices"
+    t.boolean "multiple_choice", default: false, null: false
+    t.integer "none_of_the_above_count", default: 0, null: false
+    t.integer "notify_on_closing_soon", default: 0, null: false
+    t.boolean "notify_on_open", default: true, null: false
+    t.datetime "opened_at"
+    t.datetime "opening_at"
+    t.string "poll_option_name_format"
     t.integer "poll_template_id"
     t.string "poll_template_key"
-    t.boolean "show_none_of_the_above", default: false, null: false
-    t.integer "none_of_the_above_count", default: 0, null: false
+    t.string "poll_type", null: false
+    t.string "process_name"
+    t.string "process_subtitle"
+    t.string "process_url"
     t.integer "quorum_pct"
-    t.datetime "opening_at"
-    t.datetime "opened_at"
-    t.boolean "notify_on_open", default: true, null: false
-    t.integer "stv_seats"
+    t.string "reason_prompt"
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.boolean "shuffle_options", default: false, null: false
+    t.boolean "specified_voters_only", default: false, null: false
+    t.jsonb "stance_counts", default: [], null: false
+    t.jsonb "stance_data", default: {}
+    t.integer "stance_reason_required", default: 1, null: false
     t.string "stv_method"
     t.string "stv_quota"
+    t.integer "stv_seats"
+    t.string "tags", default: [], array: true
+    t.boolean "template", default: false, null: false
+    t.string "title", null: false
+    t.integer "topic_id"
+    t.integer "undecided_voters_count", default: 0, null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "versions_count", default: 0
+    t.boolean "voter_can_add_options", default: false, null: false
+    t.integer "voters_count", default: 0, null: false
     t.integer "voting_system", default: 0, null: false
-    t.boolean "legacy_anonymous", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -822,98 +823,98 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
-    t.integer "reactable_id"
-    t.integer "user_id"
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "reaction", default: "+1", null: false
+    t.integer "reactable_id"
     t.string "reactable_type", default: "Comment", null: false
+    t.string "reaction", default: "+1", null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id"
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "received_emails", force: :cascade do |t|
+    t.string "body_html"
+    t.string "body_text"
+    t.datetime "created_at", null: false
+    t.boolean "dkim_valid", default: false, null: false
     t.integer "group_id"
     t.hstore "headers", default: {}, null: false
-    t.string "body_text"
-    t.string "body_html"
-    t.boolean "spf_valid", default: false, null: false
-    t.boolean "dkim_valid", default: false, null: false
-    t.boolean "released", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "message_id"
+    t.boolean "released", default: false, null: false
+    t.boolean "spf_valid", default: false, null: false
+    t.datetime "updated_at", null: false
     t.index ["message_id"], name: "index_received_emails_on_message_id", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "ip_address"
-    t.string "user_agent"
     t.datetime "created_at", null: false
+    t.string "ip_address"
     t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "solid_cable_messages", force: :cascade do |t|
     t.binary "channel", null: false
-    t.binary "payload", null: false
-    t.datetime "created_at", null: false
     t.bigint "channel_hash", null: false
+    t.datetime "created_at", null: false
+    t.binary "payload", null: false
     t.index ["channel"], name: "index_solid_cable_messages_on_channel"
     t.index ["channel_hash"], name: "index_solid_cable_messages_on_channel_hash"
     t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
   end
 
   create_table "solid_cache_entries", force: :cascade do |t|
-    t.binary "key", null: false
-    t.binary "value", null: false
-    t.datetime "created_at", null: false
-    t.bigint "key_hash", null: false
     t.integer "byte_size", null: false
+    t.datetime "created_at", null: false
+    t.binary "key", null: false
+    t.bigint "key_hash", null: false
+    t.binary "value", null: false
     t.index ["byte_size"], name: "index_solid_cache_entries_on_byte_size"
     t.index ["key_hash", "byte_size"], name: "index_solid_cache_entries_on_key_hash_and_byte_size"
     t.index ["key_hash"], name: "index_solid_cache_entries_on_key_hash", unique: true
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
     t.string "concurrency_key", null: false
-    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
     t.index ["concurrency_key", "priority", "job_id"], name: "index_solid_queue_blocked_executions_for_release"
     t.index ["expires_at", "concurrency_key"], name: "index_solid_queue_blocked_executions_for_maintenance"
     t.index ["job_id"], name: "index_solid_queue_blocked_executions_on_job_id", unique: true
   end
 
   create_table "solid_queue_claimed_executions", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "job_id", null: false
     t.bigint "process_id"
-    t.datetime "created_at", null: false
     t.index ["job_id"], name: "index_solid_queue_claimed_executions_on_job_id", unique: true
     t.index ["process_id", "job_id"], name: "index_solid_queue_claimed_executions_on_process_id_and_job_id"
   end
 
   create_table "solid_queue_failed_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.text "error"
     t.datetime "created_at", null: false
+    t.text "error"
+    t.bigint "job_id", null: false
     t.index ["job_id"], name: "index_solid_queue_failed_executions_on_job_id", unique: true
   end
 
   create_table "solid_queue_jobs", force: :cascade do |t|
-    t.string "queue_name", null: false
-    t.string "class_name", null: false
-    t.text "arguments"
-    t.integer "priority", default: 0, null: false
     t.string "active_job_id"
-    t.datetime "scheduled_at"
-    t.datetime "finished_at"
+    t.text "arguments"
+    t.string "class_name", null: false
     t.string "concurrency_key"
     t.datetime "created_at", null: false
+    t.datetime "finished_at"
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
+    t.datetime "scheduled_at"
     t.datetime "updated_at", null: false
     t.index ["active_job_id"], name: "index_solid_queue_jobs_on_active_job_id"
     t.index ["class_name"], name: "index_solid_queue_jobs_on_class_name"
@@ -923,123 +924,123 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "solid_queue_pauses", force: :cascade do |t|
-    t.string "queue_name", null: false
     t.datetime "created_at", null: false
+    t.string "queue_name", null: false
     t.index ["queue_name"], name: "index_solid_queue_pauses_on_queue_name", unique: true
   end
 
   create_table "solid_queue_processes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "hostname"
     t.string "kind", null: false
     t.datetime "last_heartbeat_at", null: false
-    t.bigint "supervisor_id"
-    t.integer "pid", null: false
-    t.string "hostname"
     t.text "metadata"
-    t.datetime "created_at", null: false
     t.string "name", null: false
+    t.integer "pid", null: false
+    t.bigint "supervisor_id"
     t.index ["last_heartbeat_at"], name: "index_solid_queue_processes_on_last_heartbeat_at"
     t.index ["name", "supervisor_id"], name: "index_solid_queue_processes_on_name_and_supervisor_id", unique: true
     t.index ["supervisor_id"], name: "index_solid_queue_processes_on_supervisor_id"
   end
 
   create_table "solid_queue_ready_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
     t.index ["job_id"], name: "index_solid_queue_ready_executions_on_job_id", unique: true
     t.index ["priority", "job_id"], name: "index_solid_queue_poll_all"
     t.index ["queue_name", "priority", "job_id"], name: "index_solid_queue_poll_by_queue"
   end
 
   create_table "solid_queue_recurring_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "task_key", null: false
-    t.datetime "run_at", null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.datetime "run_at", null: false
+    t.string "task_key", null: false
     t.index ["job_id"], name: "index_solid_queue_recurring_executions_on_job_id", unique: true
     t.index ["task_key", "run_at"], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
   end
 
   create_table "solid_queue_recurring_tasks", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "schedule", null: false
-    t.string "command", limit: 2048
-    t.string "class_name"
     t.text "arguments"
-    t.string "queue_name"
-    t.integer "priority", default: 0
-    t.boolean "static", default: true, null: false
-    t.text "description"
+    t.string "class_name"
+    t.string "command", limit: 2048
     t.datetime "created_at", null: false
+    t.text "description"
+    t.string "key", null: false
+    t.integer "priority", default: 0
+    t.string "queue_name"
+    t.string "schedule", null: false
+    t.boolean "static", default: true, null: false
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_solid_queue_recurring_tasks_on_key", unique: true
     t.index ["static"], name: "index_solid_queue_recurring_tasks_on_static"
   end
 
   create_table "solid_queue_scheduled_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
-    t.datetime "scheduled_at", null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
+    t.datetime "scheduled_at", null: false
     t.index ["job_id"], name: "index_solid_queue_scheduled_executions_on_job_id", unique: true
     t.index ["scheduled_at", "priority", "job_id"], name: "index_solid_queue_dispatch_all"
   end
 
   create_table "solid_queue_semaphores", force: :cascade do |t|
-    t.string "key", null: false
-    t.integer "value", default: 1, null: false
-    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "key", null: false
     t.datetime "updated_at", null: false
+    t.integer "value", default: 1, null: false
     t.index ["expires_at"], name: "index_solid_queue_semaphores_on_expires_at"
     t.index ["key", "value"], name: "index_solid_queue_semaphores_on_key_and_value"
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
-    t.integer "stance_id"
+    t.datetime "created_at", precision: nil
     t.integer "poll_option_id"
     t.integer "score", default: 1, null: false
-    t.datetime "created_at", precision: nil
+    t.integer "stance_id"
     t.datetime "updated_at", precision: nil
     t.index ["poll_option_id"], name: "index_stance_choices_on_poll_option_id"
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
 
   create_table "stance_receipts", force: :cascade do |t|
-    t.bigint "poll_id"
-    t.bigint "voter_id"
-    t.bigint "inviter_id"
-    t.datetime "invited_at"
-    t.boolean "vote_cast"
     t.datetime "created_at", null: false
+    t.datetime "invited_at"
+    t.bigint "inviter_id"
+    t.bigint "poll_id"
     t.datetime "updated_at", null: false
+    t.boolean "vote_cast"
+    t.bigint "voter_id"
   end
 
   create_table "stances", id: :serial, force: :cascade do |t|
-    t.integer "poll_id", null: false
-    t.integer "participant_id"
-    t.string "reason"
-    t.boolean "latest", default: true, null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "versions_count", default: 0
-    t.string "reason_format", limit: 10, default: "md", null: false
+    t.datetime "accepted_at", precision: nil
     t.jsonb "attachments", default: [], null: false
     t.datetime "cast_at", precision: nil
-    t.string "token"
-    t.datetime "revoked_at", precision: nil
-    t.integer "inviter_id"
-    t.datetime "accepted_at", precision: nil
     t.string "content_locale"
+    t.datetime "created_at", precision: nil
+    t.integer "inviter_id"
+    t.boolean "latest", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.jsonb "option_scores", default: {}, null: false
-    t.integer "revoker_id"
     t.boolean "none_of_the_above", default: false, null: false
+    t.jsonb "option_scores", default: {}, null: false
+    t.integer "participant_id"
+    t.integer "poll_id", null: false
+    t.string "reason"
+    t.string "reason_format", limit: 10, default: "md", null: false
     t.datetime "redacted_at"
     t.integer "redactor_id"
+    t.datetime "revoked_at", precision: nil
+    t.integer "revoker_id"
+    t.string "token"
+    t.datetime "updated_at", precision: nil
+    t.integer "versions_count", default: 0
     t.index ["cast_at", "id"], name: "index_stances_on_cast_at_and_id_for_relay", where: "((cast_at IS NOT NULL) AND (redacted_at IS NULL))"
     t.index ["created_at"], name: "index_stances_on_created_at"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
@@ -1050,50 +1051,50 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
-    t.datetime "expires_at", precision: nil
+    t.datetime "activated_at", precision: nil
+    t.boolean "allow_guests", default: true, null: false
+    t.boolean "allow_subgroups", default: true, null: false
+    t.datetime "canceled_at", precision: nil
     t.integer "chargify_subscription_id"
-    t.string "plan", default: "free"
-    t.string "payment_method", default: "none", null: false
-    t.integer "owner_id"
-    t.integer "max_threads"
+    t.datetime "created_at", precision: nil
+    t.datetime "expires_at", precision: nil
+    t.jsonb "info"
+    t.string "lead_status"
     t.integer "max_members"
     t.integer "max_orgs"
-    t.string "state", default: "active", null: false
+    t.integer "max_threads"
     t.integer "members_count"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.jsonb "info"
-    t.datetime "canceled_at", precision: nil
-    t.datetime "activated_at", precision: nil
-    t.datetime "renews_at", precision: nil
+    t.integer "owner_id"
+    t.string "payment_method", default: "none", null: false
+    t.string "plan", default: "free"
     t.datetime "renewed_at", precision: nil
-    t.boolean "allow_subgroups", default: true, null: false
-    t.boolean "allow_guests", default: true, null: false
-    t.string "lead_status"
+    t.datetime "renews_at", precision: nil
+    t.string "state", default: "active", null: false
+    t.datetime "updated_at", precision: nil
     t.index ["expires_at", "id"], name: "index_subscriptions_on_trial_expiry_for_relay", where: "(((plan)::text = 'trial'::text) AND (expires_at IS NOT NULL))"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
     t.integer "tag_id", null: false
     t.integer "taggable_id", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
     t.string "taggable_type", null: false
+    t.datetime "updated_at", precision: nil
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|
-    t.integer "group_id"
-    t.citext "name", null: false
     t.string "color"
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "taggings_count", default: 0, null: false
-    t.integer "priority", default: 0, null: false
+    t.integer "group_id"
+    t.citext "name", null: false
     t.integer "org_taggings_count", default: 0, null: false
+    t.integer "priority", default: 0, null: false
+    t.integer "taggings_count", default: 0, null: false
+    t.datetime "updated_at", precision: nil
     t.integer "used_group_ids", default: [], null: false, array: true
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_tags_on_group_id"
@@ -1102,20 +1103,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "record_type"
-    t.bigint "record_id"
     t.bigint "author_id", null: false
-    t.integer "uid", null: false
-    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "discarded_at", precision: nil
+    t.integer "doer_id"
     t.boolean "done", null: false
     t.datetime "done_at", precision: nil
     t.date "due_on"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "discarded_at", precision: nil
-    t.integer "doer_id"
+    t.string "name", null: false
+    t.bigint "record_id"
+    t.string "record_type"
     t.integer "remind"
     t.datetime "remind_at", precision: nil
+    t.integer "uid", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["done"], name: "index_tasks_on_done"
@@ -1125,31 +1126,31 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "tasks_users", force: :cascade do |t|
-    t.bigint "task_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
+    t.bigint "task_id"
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["task_id"], name: "index_tasks_users_on_task_id"
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
   create_table "topic_readers", id: :serial, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "topic_id", null: false
-    t.datetime "last_read_at", precision: nil
-    t.integer "volume", default: 2, null: false
-    t.boolean "participating", default: false, null: false
-    t.datetime "dismissed_at", precision: nil
-    t.string "read_ranges_string"
-    t.integer "inviter_id"
-    t.string "token"
-    t.datetime "revoked_at", precision: nil
-    t.boolean "admin", default: false, null: false
     t.datetime "accepted_at", precision: nil
-    t.integer "revoker_id"
+    t.boolean "admin", default: false, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "dismissed_at", precision: nil
     t.boolean "guest", default: false, null: false
+    t.integer "inviter_id"
+    t.datetime "last_read_at", precision: nil
+    t.boolean "participating", default: false, null: false
+    t.string "read_ranges_string"
+    t.datetime "revoked_at", precision: nil
+    t.integer "revoker_id"
+    t.string "token"
+    t.integer "topic_id", null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id", null: false
+    t.integer "volume", default: 2, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
@@ -1158,32 +1159,32 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string "topicable_type", null: false
-    t.integer "topicable_id", null: false
-    t.integer "group_id"
-    t.integer "items_count", default: 0, null: false
-    t.string "ranges_string"
-    t.integer "max_depth", default: 3, null: false
-    t.boolean "newest_first", default: false, null: false
-    t.boolean "private", default: true, null: false
-    t.datetime "locked_at", precision: nil
-    t.integer "locker_id"
-    t.datetime "pinned_at", precision: nil
-    t.datetime "last_activity_at", precision: nil
-    t.integer "seen_by_count", default: 0, null: false
-    t.integer "members_count"
-    t.integer "closed_polls_count", default: 0, null: false
-    t.integer "anonymous_polls_count", default: 0, null: false
-    t.datetime "discarded_at"
-    t.integer "discarded_by"
-    t.string "tags", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "allow_concurrent_polls", default: false, null: false
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
+    t.boolean "allow_concurrent_polls", default: false, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.integer "anonymous_polls_count", default: 0, null: false
+    t.integer "closed_polls_count", default: 0, null: false
     t.integer "comment_length_max"
+    t.datetime "created_at", null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
+    t.integer "group_id"
+    t.integer "items_count", default: 0, null: false
+    t.datetime "last_activity_at", precision: nil
+    t.datetime "locked_at", precision: nil
+    t.integer "locker_id"
+    t.integer "max_depth", default: 3, null: false
+    t.integer "members_count"
+    t.boolean "newest_first", default: false, null: false
+    t.datetime "pinned_at", precision: nil
+    t.boolean "private", default: true, null: false
+    t.string "ranges_string"
+    t.integer "seen_by_count", default: 0, null: false
+    t.string "tags", default: [], array: true
+    t.integer "topicable_id", null: false
+    t.string "topicable_type", null: false
+    t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
@@ -1194,82 +1195,82 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "translations", id: :serial, force: :cascade do |t|
-    t.integer "translatable_id"
-    t.string "translatable_type", limit: 255
+    t.datetime "created_at", precision: nil, null: false
     t.hstore "fields"
     t.string "language", limit: 255
-    t.datetime "created_at", precision: nil, null: false
+    t.integer "translatable_id"
+    t.string "translatable_type", limit: 255
     t.datetime "updated_at", precision: nil, null: false
     t.index ["language"], name: "index_translations_on_language"
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 
   create_table "user_deactivation_responses", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
     t.text "body"
+    t.integer "user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.citext "email"
-    t.string "password_digest", limit: 128, default: ""
-    t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "name", limit: 255
-    t.datetime "deactivated_at", precision: nil
-    t.boolean "is_admin", default: false
-    t.string "avatar_kind", limit: 255, default: "initials", null: false
-    t.string "uploaded_avatar_file_name", limit: 255
-    t.string "uploaded_avatar_content_type", limit: 255
-    t.integer "uploaded_avatar_file_size"
-    t.datetime "uploaded_avatar_updated_at", precision: nil
+    t.string "api_key", null: false
+    t.jsonb "attachments", default: [], null: false
+    t.boolean "auto_translate", default: false, null: false
+    t.boolean "autodetect_time_zone", default: true, null: false
     t.string "avatar_initials", limit: 255
-    t.string "username", limit: 255
-    t.boolean "email_when_proposal_closing_soon", default: false, null: false
-    t.string "unsubscribe_token", limit: 255, null: false
-    t.integer "memberships_count", default: 0, null: false
-    t.string "selected_locale", limit: 255
-    t.string "time_zone", limit: 255
-    t.string "key", limit: 255
-    t.string "detected_locale", limit: 255
-    t.boolean "email_catch_up", default: true, null: false
-    t.string "email_api_key", limit: 255, null: false
-    t.boolean "email_when_mentioned", default: true, null: false
-    t.boolean "email_on_participation", default: false, null: false
-    t.integer "default_membership_volume", default: 2, null: false
-    t.string "country"
-    t.string "region"
+    t.string "avatar_kind", limit: 255, default: "initials", null: false
+    t.boolean "bot", default: false, null: false
+    t.integer "bounces_count", default: 0, null: false
     t.string "city"
+    t.integer "complaints_count", default: 0, null: false
+    t.string "content_locale"
+    t.string "country"
+    t.datetime "created_at", precision: nil
+    t.datetime "current_sign_in_at", precision: nil
+    t.inet "current_sign_in_ip"
+    t.string "date_time_pref"
+    t.datetime "deactivated_at", precision: nil
+    t.integer "deactivator_id"
+    t.integer "default_membership_volume", default: 2, null: false
+    t.string "detected_locale", limit: 255
+    t.citext "email"
+    t.string "email_api_key", limit: 255, null: false
+    t.boolean "email_catch_up", default: true, null: false
+    t.integer "email_catch_up_day"
+    t.boolean "email_newsletter", default: false, null: false
+    t.boolean "email_on_participation", default: false, null: false
+    t.string "email_sha256"
+    t.boolean "email_verified", default: false, null: false
+    t.boolean "email_when_mentioned", default: true, null: false
+    t.boolean "email_when_proposal_closing_soon", default: false, null: false
     t.jsonb "experiences", default: {}, null: false
     t.integer "facebook_community_id"
-    t.integer "slack_community_id"
-    t.string "short_bio", default: "", null: false
-    t.boolean "email_verified", default: false, null: false
-    t.string "location", default: "", null: false
-    t.datetime "last_seen_at", precision: nil
-    t.datetime "legal_accepted_at", precision: nil
-    t.boolean "email_newsletter", default: false, null: false
     t.integer "failed_attempts", default: 0, null: false
-    t.datetime "locked_at", precision: nil
-    t.string "short_bio_format", limit: 10, default: "md", null: false
-    t.jsonb "attachments", default: [], null: false
-    t.inet "current_sign_in_ip"
+    t.boolean "is_admin", default: false
+    t.string "key", limit: 255
+    t.datetime "last_seen_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "last_sign_in_ip"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }, null: false
-    t.string "content_locale"
-    t.boolean "bot", default: false, null: false
+    t.datetime "legal_accepted_at", precision: nil
     t.jsonb "link_previews", default: [], null: false
-    t.integer "email_catch_up_day"
-    t.string "date_time_pref"
-    t.string "api_key", null: false
-    t.integer "deactivator_id"
-    t.boolean "autodetect_time_zone", default: true, null: false
-    t.string "email_sha256"
-    t.integer "complaints_count", default: 0, null: false
-    t.boolean "auto_translate", default: false, null: false
-    t.integer "bounces_count", default: 0, null: false
+    t.string "location", default: "", null: false
+    t.datetime "locked_at", precision: nil
+    t.integer "memberships_count", default: 0, null: false
+    t.string "name", limit: 255
+    t.string "password_digest", limit: 128, default: ""
+    t.string "region"
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }, null: false
+    t.string "selected_locale", limit: 255
+    t.string "short_bio", default: "", null: false
+    t.string "short_bio_format", limit: 10, default: "md", null: false
+    t.integer "sign_in_count", default: 0
+    t.integer "slack_community_id"
+    t.string "time_zone", limit: 255
+    t.string "unsubscribe_token", limit: 255, null: false
+    t.datetime "updated_at", precision: nil
+    t.string "uploaded_avatar_content_type", limit: 255
+    t.string "uploaded_avatar_file_name", limit: 255
+    t.integer "uploaded_avatar_file_size"
+    t.datetime "uploaded_avatar_updated_at", precision: nil
+    t.string "username", limit: 255
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1279,31 +1280,31 @@ ActiveRecord::Schema[8.0].define(version: 2026_08_13_000000) do
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
-    t.string "item_type", limit: 255, null: false
-    t.integer "item_id", null: false
-    t.string "event", limit: 255, null: false
-    t.integer "whodunnit"
     t.datetime "created_at", precision: nil
+    t.string "event", limit: 255, null: false
+    t.integer "item_id", null: false
+    t.string "item_type", limit: 255, null: false
     t.jsonb "object_changes"
+    t.integer "whodunnit"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   create_table "webhooks", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.string "name", null: false
-    t.string "url"
-    t.jsonb "event_kinds", default: [], null: false
+    t.integer "actor_id"
+    t.integer "author_id"
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.jsonb "event_kinds", default: [], null: false
     t.string "format", default: "markdown"
+    t.integer "group_id", null: false
     t.boolean "include_body", default: false
     t.boolean "include_subgroups", default: false, null: false
     t.boolean "is_broken", default: false, null: false
-    t.string "token"
-    t.integer "author_id"
-    t.integer "actor_id"
-    t.string "permissions", default: [], null: false, array: true
     t.datetime "last_used_at"
+    t.string "name", null: false
+    t.string "permissions", default: [], null: false, array: true
+    t.string "token"
+    t.datetime "updated_at", precision: nil
+    t.string "url"
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 

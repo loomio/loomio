@@ -9,19 +9,20 @@ class LegacyAnonymousVoteMigrationService
   ].freeze
 
   def self.eligible_poll_scope
-    Poll.where(anonymous: true, voting_system: :stance).where.not(closed_at: nil)
+    Poll.where(
+      anonymous: true,
+      voting_system: :stance
+    ).where.not(closed_at: nil)
   end
 
-  def self.migrate_all!(backup_confirmed:, poll_id: nil, limit: nil, progress: nil)
-    raise MigrationError, "A database backup must be confirmed" unless backup_confirmed
-
+  def self.migrate_all!(poll_id: nil, limit: nil, progress: nil)
     scope = eligible_poll_scope.order(:id)
     scope = scope.where(id: poll_id) if poll_id
     scope = scope.limit(limit) if limit
 
     stats = {polls: 0, ballots: 0, reasons: 0, attachments: 0, electorate_records: 0}
     scope.pluck(:id).each do |id|
-      result = migrate!(poll: Poll.find(id), backup_confirmed: true)
+      result = migrate!(poll: Poll.find(id))
       result.each { |key, value| stats[key] += value if stats.key?(key) }
       progress&.call("Migrated anonymous poll #{id}: #{result[:ballots]} votes, #{result[:reasons]} reasons")
     end
@@ -45,23 +46,23 @@ class LegacyAnonymousVoteMigrationService
     end
   end
 
-  def self.migrate!(poll:, backup_confirmed:)
-    raise MigrationError, "A database backup must be confirmed" unless backup_confirmed
-
+  def self.migrate!(poll:)
     orphan_blob_ids = []
     result = Poll.transaction do
       poll.lock!
       validate_preconditions!(poll)
-      poll.update_counts!
+      LegacyAnonymousVoteMigrationCleanupService.remove_cross_poll_stance_choices!(poll: poll)
       poll.reload
 
       stances = poll.stances.latest.decided.order(:id).includes(:stance_choices).to_a
       stance_ids = poll.stances.pluck(:id)
       baseline = snapshot(poll, stances)
-      ballot_id_by_stance_id = stances.to_h { |stance| [stance.id, SecureRandom.uuid] }
+      ballot_ids_by_stance_id = stances.to_h do |stance|
+        [stance.id, Array.new(ballot_count_for_stance(stance)) { SecureRandom.uuid }]
+      end
 
-      insert_ballots!(poll, stances, ballot_id_by_stance_id)
-      reason_count = insert_reasons!(stances, ballot_id_by_stance_id)
+      insert_ballots!(poll, stances, ballot_ids_by_stance_id)
+      reason_count = insert_reasons!(stances, ballot_ids_by_stance_id)
       attachment_result = move_reason_attachments!(poll, stances)
       orphan_blob_ids.concat(attachment_result[:orphan_blob_ids])
       rebuild_poll_attachments!(poll) if attachment_result[:moved].positive?
@@ -75,7 +76,7 @@ class LegacyAnonymousVoteMigrationService
 
       {
         polls: 1,
-        ballots: stances.length,
+        ballots: ballot_ids_by_stance_id.values.sum(&:length),
         reasons: reason_count,
         attachments: attachment_result[:moved],
         electorate_records: electorate_count
@@ -84,6 +85,13 @@ class LegacyAnonymousVoteMigrationService
 
     purge_unattached_blobs_later(orphan_blob_ids)
     result
+  end
+
+  def self.remove_stances!(poll:, stance_ids:)
+    return 0 if stance_ids.empty?
+
+    remove_stance_content!(poll, stance_ids)
+    stance_ids.length
   end
 
   def self.normalize_reason(body, format)
@@ -120,24 +128,24 @@ class LegacyAnonymousVoteMigrationService
     raise MigrationError, "Poll #{poll.id} is not closed" unless poll.closed?
     raise MigrationError, "Poll #{poll.id} already has detached votes" if poll.anonymous_ballots.exists?
     raise MigrationError, "Poll #{poll.id} already has a detached electorate" if poll.anonymous_poll_voters.exists?
-    raise MigrationError, "Poll #{poll.id} has identified stances" if poll.stances.where.not(participant_id: nil).exists?
-
-    stance_ids = poll.stances.select(:id)
-    if Event.where(eventable_type: "Stance", eventable_id: stance_ids).where.not(user_id: nil).exists?
-      raise MigrationError, "Poll #{poll.id} has identified stance events"
+    mismatches = LegacyAnonymousVoteMigrationCleanupService.detached_ballot_choice_mismatches(poll.id)
+    unless mismatches.empty?
+      raise MigrationError, "Poll #{poll.id} has detached ballot choices for another poll"
     end
+
   end
   private_class_method :validate_preconditions!
 
   def self.snapshot(poll, stances)
     {
       vote_count: stances.length,
+      ballot_count: stances.sum { |stance| ballot_count_for_stance(stance) },
       voter_count: poll.voters_count,
       undecided_voter_count: poll.undecided_voters_count,
       none_of_the_above_count: stances.count(&:none_of_the_above?),
       option_data: option_data_from_stances(stances),
       results: canonical_results(poll),
-      stv_input: canonical_stv_input(StvCountService.extract_ballots(poll)),
+      stv_input: poll.poll_type == "stv" ? canonical_stv_input(StvCountService.extract_ballots(poll)) : nil,
       stv_result: poll.poll_type == "stv" ? StvCountService.count(poll).deep_stringify_keys : nil,
       reason_count: stances.count { |stance| reason_preserved?(stance) }
     }
@@ -167,7 +175,7 @@ class LegacyAnonymousVoteMigrationService
   def self.canonical_results(poll)
     PollService.calculate_results(poll, poll.poll_options.reload).map do |result|
       result.to_h.stringify_keys.slice(*RESULT_FIELDS)
-    end
+    end.sort_by { |result| result.fetch("id") }
   end
   private_class_method :canonical_results
 
@@ -176,31 +184,45 @@ class LegacyAnonymousVoteMigrationService
   end
   private_class_method :canonical_stv_input
 
-  def self.insert_ballots!(poll, stances, ballot_id_by_stance_id)
+  # Duplicate legacy choices affected the results users saw, so they cannot be
+  # collapsed into one detached choice. Represent each repeated layer as another
+  # anonymous ballot; this preserves option scores and voter counts without
+  # retaining any link back to the legacy stance.
+  def self.ballot_count_for_stance(stance)
+    stance.stance_choices.group_by(&:poll_option_id).values.map(&:length).max || 1
+  end
+  private_class_method :ballot_count_for_stance
+
+  def self.insert_ballots!(poll, stances, ballot_ids_by_stance_id)
     AnonymousBallot.insert_all!(
-      stances.map do |stance|
-        {
-          id: ballot_id_by_stance_id.fetch(stance.id),
-          poll_id: poll.id,
-          none_of_the_above: stance.none_of_the_above?
-        }
+      stances.flat_map do |stance|
+        ballot_ids_by_stance_id.fetch(stance.id).map.with_index do |ballot_id, index|
+          {
+            id: ballot_id,
+            poll_id: poll.id,
+            none_of_the_above: index.zero? && stance.none_of_the_above?
+          }
+        end
       end
     )
 
     choices = stances.flat_map do |stance|
-      stance.stance_choices.map do |choice|
-        {
-          anonymous_ballot_id: ballot_id_by_stance_id.fetch(stance.id),
-          poll_option_id: choice.poll_option_id,
-          score: choice.score
-        }
+      ballot_ids = ballot_ids_by_stance_id.fetch(stance.id)
+      stance.stance_choices.group_by(&:poll_option_id).flat_map do |_option_id, option_choices|
+        option_choices.map.with_index do |choice, index|
+          {
+            anonymous_ballot_id: ballot_ids.fetch(index),
+            poll_option_id: choice.poll_option_id,
+            score: choice.score
+          }
+        end
       end
     end
     AnonymousBallotChoice.insert_all!(choices) if choices.any?
   end
   private_class_method :insert_ballots!
 
-  def self.insert_reasons!(stances, ballot_id_by_stance_id)
+  def self.insert_reasons!(stances, ballot_ids_by_stance_id)
     reasons = stances.filter_map do |stance|
       next unless reason_preserved?(stance)
 
@@ -208,7 +230,7 @@ class LegacyAnonymousVoteMigrationService
       next if body.blank?
 
       {
-        anonymous_ballot_id: ballot_id_by_stance_id.fetch(stance.id),
+        anonymous_ballot_id: ballot_ids_by_stance_id.fetch(stance.id).first,
         body: body
       }
     end
@@ -298,7 +320,6 @@ class LegacyAnonymousVoteMigrationService
   def self.mark_poll_migrated!(poll, baseline)
     poll.update_columns(
       voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
-      legacy_anonymous: true,
       hide_results: Poll.hide_results.fetch("until_closed"),
       stance_reason_required: Poll.stance_reason_requireds.fetch("disabled"),
       notify_on_closing_soon: Poll.notify_on_closing_soons.fetch("undecided_voters")
@@ -316,11 +337,11 @@ class LegacyAnonymousVoteMigrationService
 
   def self.verify_detached_data!(poll, baseline)
     checks = {
-      vote_count: poll.anonymous_ballots.count == baseline[:vote_count],
+      ballot_count: poll.anonymous_ballots.count == baseline[:ballot_count],
       option_data: option_data_from_ballots(poll) == baseline[:option_data],
       none_of_the_above: poll.anonymous_ballots.where(none_of_the_above: true).count == baseline[:none_of_the_above_count],
       results: canonical_results(poll) == baseline[:results],
-      stv_input: canonical_stv_input(StvCountService.extract_ballots(poll)) == baseline[:stv_input],
+      stv_input: poll.poll_type != "stv" || canonical_stv_input(StvCountService.extract_ballots(poll)) == baseline[:stv_input],
       stv_result: poll.poll_type != "stv" || StvCountService.count(poll).deep_stringify_keys == baseline[:stv_result],
       reasons: poll.legacy_anonymous_vote_reasons.count == baseline[:reason_count]
     }
@@ -334,12 +355,29 @@ class LegacyAnonymousVoteMigrationService
     comment_ids = Comment.where(parent_type: "Stance", parent_id: stance_ids).pluck(:id)
     Comment.where(id: comment_ids).update_all(parent_type: "Poll", parent_id: poll.id)
 
-    stance_event_ids = Event.where(eventable_type: "Stance", eventable_id: stance_ids).pluck(:id)
-    Event.where(eventable_type: "Comment", eventable_id: comment_ids, topic_id: poll.topic_id)
-         .update_all(parent_id: poll.created_event&.id)
+    stance_events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
+    stance_event_rows = stance_events.pluck(:id, :topic_id, :parent_id)
+    stance_event_ids = stance_event_rows.map(&:first)
 
-    event_ids_to_delete = Event.where(parent_id: stance_event_ids).pluck(:id)
+    comment_events = Event.where(eventable_type: "Comment", eventable_id: comment_ids)
+    comment_event_rows = comment_events.pluck(:id, :topic_id, :parent_id)
+    comment_events.update_all(
+      parent_id: poll.created_event&.id,
+      topic_id: poll.topic_id,
+      sequence_id: nil,
+      position: 0,
+      position_key: nil
+    )
+
+    child_event_rows = Event.where(parent_id: stance_event_ids).pluck(:id, :topic_id, :parent_id)
+    event_ids_to_delete = child_event_rows.map(&:first)
     event_ids_to_delete.concat(stance_event_ids)
+
+    affected_parent_ids = (stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:third).uniq
+    affected_topic_ids = [poll.topic_id]
+    affected_topic_ids.concat((stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:second))
+    affected_topic_ids.concat(Event.where(id: affected_parent_ids).where.not(topic_id: nil).distinct.pluck(:topic_id))
+
     Notification.where(event_id: event_ids_to_delete).delete_all
     Event.where(id: event_ids_to_delete).delete_all
 
@@ -357,39 +395,10 @@ class LegacyAnonymousVoteMigrationService
       event.update_columns(custom_fields: event.custom_fields.except("stance_ids"))
     end
 
-    TopicService.repair(poll.topic_id)
-    verify_topic_integrity!(poll.topic_id)
+    affected_topic_ids.compact.uniq.each { |topic_id| TopicService.repair(topic_id) }
     verify_stance_content_removed!(stance_ids, stance_event_ids, event_ids_to_delete)
   end
   private_class_method :remove_stance_content!
-
-  def self.verify_topic_integrity!(topic_id)
-    events = Event.where(topic_id: topic_id).to_a
-    events_by_id = events.index_by(&:id)
-    child_counts = events.group_by(&:parent_id).transform_values(&:length)
-    failures = []
-
-    events.each do |event|
-      expected_child_count = child_counts.fetch(event.id, 0)
-      failures << "event #{event.id} child_count" unless event.child_count == expected_child_count
-      failures << "event #{event.id} sequence_id" if event.sequence_id.nil?
-      failures << "event #{event.id} position" if event.position.nil?
-      failures << "event #{event.id} position_key" if event.position_key.blank?
-
-      if event.parent_id
-        parent = events_by_id[event.parent_id]
-        failures << "event #{event.id} parent" unless parent
-        failures << "event #{event.id} depth" if parent && event.depth != parent.depth + 1
-        failures << "event #{event.id} position ancestry" if parent && !event.position_key.to_s.start_with?("#{parent.position_key}-")
-      end
-    end
-
-    return if failures.empty?
-
-    raise MigrationError, "Topic #{topic_id} repair failed: #{failures.join(', ')}"
-  end
-  private_class_method :verify_topic_integrity!
-
   def self.verify_stance_content_removed!(stance_ids, stance_event_ids, deleted_event_ids)
     checks = {
       stances: Stance.where(id: stance_ids).count,

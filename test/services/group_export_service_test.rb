@@ -46,9 +46,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       ]
     )
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: voter)
-    poll.update_column(:legacy_anonymous, true)
-    LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "A plain text legacy reason")
-    PollService.close(poll: poll, actor: admin) if close
+    if close
+      PollService.close(poll: poll, actor: admin)
+      LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "A plain text legacy reason")
+    end
 
     [poll, ballot]
   end

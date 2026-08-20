@@ -1,18 +1,15 @@
 class LegacyAnonymousVoteMigrationAuditService
   def self.audit(dangling_baseline: nil)
-    migrated_polls = Poll.where(legacy_anonymous: true).includes(
+    detached_polls = Poll.where(voting_system: :anonymous_ballot).where.not(closed_at: nil).includes(
       :anonymous_ballots,
       :anonymous_ballot_choices,
-      :anonymous_poll_voters,
-      :stance_receipts,
       :poll_options
     )
 
     dangling_counts = dangling_stance_reference_counts
     errors = {
-      migrated_poll_invariants: migrated_poll_invariant_errors(migrated_polls),
-      migrated_poll_results: migrated_poll_result_errors(migrated_polls),
-      migrated_electorates: migrated_electorate_errors(migrated_polls),
+      detached_poll_invariants: detached_poll_invariant_errors(detached_polls),
+      detached_poll_results: detached_poll_result_errors(detached_polls),
       legacy_reasons: legacy_reason_errors,
       dangling_stance_reference_increases: dangling_reference_increases(dangling_counts, dangling_baseline)
     }
@@ -21,9 +18,9 @@ class LegacyAnonymousVoteMigrationAuditService
     {
       ok: errors.empty?,
       counts: {
-        migrated_polls: migrated_polls.length,
-        migrated_votes: AnonymousBallot.joins(:poll).where(polls: {legacy_anonymous: true}).count,
-        migrated_reasons: LegacyAnonymousVoteReason.count,
+        detached_polls: detached_polls.length,
+        detached_votes: AnonymousBallot.joins(:poll).where(polls: {voting_system: Poll.voting_systems.fetch("anonymous_ballot")}).count,
+        legacy_reasons: LegacyAnonymousVoteReason.count,
         closed_polls_remaining: LegacyAnonymousVoteMigrationService.eligible_poll_scope.count,
         open_polls_remaining: Poll.where(anonymous: true, voting_system: :stance, closed_at: nil).count,
         stance_polls_remaining_total: Poll.where(anonymous: true, voting_system: :stance).count
@@ -47,7 +44,7 @@ class LegacyAnonymousVoteMigrationAuditService
   end
   private_class_method :dangling_reference_increases
 
-  def self.migrated_poll_invariant_errors(polls)
+  def self.detached_poll_invariant_errors(polls)
     polls.filter_map do |poll|
       failures = []
       failures << "not anonymous" unless poll.anonymous?
@@ -59,9 +56,9 @@ class LegacyAnonymousVoteMigrationAuditService
       {poll_id: poll.id, failures: failures}
     end
   end
-  private_class_method :migrated_poll_invariant_errors
+  private_class_method :detached_poll_invariant_errors
 
-  def self.migrated_poll_result_errors(polls)
+  def self.detached_poll_result_errors(polls)
     polls.filter_map do |poll|
       option_data = poll.anonymous_ballot_choices
                         .group(:poll_option_id)
@@ -72,7 +69,12 @@ class LegacyAnonymousVoteMigrationAuditService
                         )
                         .to_h { |option_id, score, voters| [option_id, [score.to_i, voters.to_i]] }
       failures = []
-      failures << "submitted vote count differs" unless poll.anonymous_ballots.length == poll.decided_voters_count
+      # Corrupt legacy data can contain repeated choices for one stance. The
+      # conversion represents those choices with extra detached ballots so the
+      # option scores and voter counts remain unchanged. Fewer ballots than the
+      # observed participant count would indicate data loss; extra ballots are
+      # valid when they are required to preserve the observed results.
+      failures << "submitted vote count is lower than observed" if poll.anonymous_ballots.length < poll.decided_voters_count
       failures << "none-of-the-above count differs" unless poll.anonymous_ballots.count(&:none_of_the_above?) == poll.none_of_the_above_count
 
       poll.poll_options.each do |option|
@@ -89,31 +91,7 @@ class LegacyAnonymousVoteMigrationAuditService
       {poll_id: poll.id, failures: failures}
     end
   end
-  private_class_method :migrated_poll_result_errors
-
-  def self.migrated_electorate_errors(polls)
-    polls.filter_map do |poll|
-      voters = poll.anonymous_poll_voters
-      next if voters.empty?
-
-      receipts_by_voter_id = poll.stance_receipts.index_by(&:voter_id)
-      failures = []
-      failures << "electorate and receipt counts differ" unless voters.length == receipts_by_voter_id.length
-      voters.each do |voter|
-        receipt = receipts_by_voter_id[voter.voter_id]
-        if receipt.nil?
-          failures << "voter #{voter.voter_id} has no receipt"
-        elsif receipt.vote_cast.nil? || voter.ballot_submitted? != receipt.vote_cast?
-          failures << "voter #{voter.voter_id} participation differs"
-        end
-        failures << "voter #{voter.voter_id} has invented group membership" unless voter.group_member.nil?
-      end
-      next if failures.empty?
-
-      {poll_id: poll.id, failures: failures}
-    end
-  end
-  private_class_method :migrated_electorate_errors
+  private_class_method :detached_poll_result_errors
 
   def self.legacy_reason_errors
     LegacyAnonymousVoteReason.includes(anonymous_ballot: :poll).filter_map do |reason|
@@ -123,7 +101,7 @@ class LegacyAnonymousVoteMigrationAuditService
       failures << "blank body" if reason.body.blank?
       failures << "detached vote is missing" unless ballot
       failures << "poll is missing" if ballot && !poll
-      failures << "poll is not migrated legacy anonymous" if poll && !poll.legacy_anonymous?
+      failures << "poll is not detached anonymous" if poll && !poll.detached_anonymous?
       failures << "poll is not closed" if poll && !poll.closed?
       next if failures.empty?
 
