@@ -22,7 +22,7 @@ class StanceTest < ActiveSupport::TestCase
     assert stance.valid?
   end
 
-  test "does not allow a stance for detached anonymous voting" do
+  test "does not allow a stance for an anonymous poll" do
     poll = PollService.create(params: poll_params(anonymous: true), actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin)
 

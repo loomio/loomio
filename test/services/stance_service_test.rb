@@ -151,8 +151,9 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_equal 'Still in the original poll', stance.reason
 
     stance.poll = target_poll
-    refute stance.save
-    assert stance.errors[:poll_id].present?
+    error = assert_raises(RuntimeError) { stance.save! }
+    assert_equal "Stance poll_id cannot change", error.message
+    assert_equal @poll.id, stance.reload.poll_id
   end
 
   # -- Redeem --

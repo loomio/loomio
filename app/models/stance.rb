@@ -106,8 +106,8 @@ class Stance < ApplicationRecord
   validate :valid_require_all_choices
   validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
-  validate :poll_uses_identified_voting
-  validate :poll_options_must_match_stance_poll
+  validate :poll_is_not_anonymous
+  validate :poll_options_are_unique
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -225,35 +225,17 @@ class Stance < ApplicationRecord
 
   private
 
-  def poll_uses_identified_voting
-    return unless poll
-    return if poll.stance? && !poll.anonymous?
-
-    errors.add(:poll, :invalid)
-  end
-
   def poll_id_cannot_change
-    errors.add(:poll_id, :invalid) if will_save_change_to_poll_id?
+    raise "Stance poll_id cannot change" if will_save_change_to_poll_id?
   end
 
-  def poll_options_must_match_stance_poll
-    invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
-    end
+  def poll_is_not_anonymous
+    errors.add(:poll, :invalid) if poll.anonymous?
+  end
 
-    if invalid_choices.any?
-      errors.add(:base, I18n.t(:"poll.error.poll_options_dont_match"))
-      Sentry.capture_message(
-        "Invalid Stance: mismatched poll_options",
-        level: :error,
-        extra: {
-          stance_id: id,
-          poll_id: poll_id,
-          invalid_choice_ids: invalid_choices.map(&:id),
-          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
-        }
-      )
-    end
+  def poll_options_are_unique
+    option_ids = stance_choices.map(&:poll_option_id)
+    raise "Stance poll options must be unique" if option_ids.uniq.length != option_ids.length
   end
 
   def valid_none_of_the_above

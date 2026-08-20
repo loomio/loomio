@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -686,7 +686,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
     t.string "icon"
     t.string "meaning"
     t.string "name", null: false
-    t.integer "poll_id"
+    t.integer "poll_id", null: false
     t.integer "priority", default: 0, null: false
     t.string "prompt"
     t.jsonb "score_counts", default: {}, null: false
@@ -1002,11 +1002,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.datetime "created_at", precision: nil
-    t.integer "poll_option_id"
+    t.integer "poll_option_id", null: false
     t.integer "score", default: 1, null: false
-    t.integer "stance_id"
+    t.integer "stance_id", null: false
     t.datetime "updated_at", precision: nil
     t.index ["poll_option_id"], name: "index_stance_choices_on_poll_option_id"
+    t.index ["stance_id", "poll_option_id"], name: "index_stance_choices_on_stance_id_and_poll_option_id", unique: true
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
 
@@ -1320,6 +1321,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -1328,4 +1330,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
+  add_foreign_key "stance_choices", "stances", on_delete: :cascade
 end

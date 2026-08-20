@@ -11,8 +11,10 @@ module CleanupService
     "Outcome.missing_poll" => :outcomes_missing_poll,
     "Topic.missing_group" => :topics_missing_group,
     "TopicReader.missing_topic_or_user" => :topic_readers_missing_topic_or_user,
-    "Comment.missing_event" => :comments_missing_event,
-    "Comment.missing_parent" => :comments_missing_parent_not_missing_event,
+    # A missing comment event is not proof that the comment is orphaned. Some
+    # live comments need their event reconstructed, while comments whose real
+    # polymorphic parent is gone can be deleted safely.
+    "Comment.missing_parent" => :comments_missing_parent,
     "Event.missing_topic" => :events_missing_topic,
     "Notification.missing_event_or_user" => :notifications_missing_event_or_user,
     "Subscription.missing_group" => :subscriptions_missing_group
@@ -70,6 +72,47 @@ module CleanupService
     {
       dangling_records: dangling_record_scopes.transform_values { |scope| unique_count(scope) },
       orphan_versions: orphan_version_scopes.transform_values(&:count)
+    }
+  end
+
+  # These categories need more than the original destroy-in-scope loop: some
+  # records must be repaired, some deleted in dependency order, and topic trees
+  # rebuilt afterward. Keep this report side-effect free so operators can review
+  # the complete plan before running any cleanup.
+  def self.reference_integrity_audit
+    missing_parent_events = events_missing_parent
+    invalid_root_events = events_invalid_root
+    affected_topic_ids = (
+      events_missing_stance.where.not(topic_id: nil).distinct.pluck(:topic_id) +
+      missing_parent_events.where.not(topic_id: nil).distinct.pluck(:topic_id) +
+      invalid_root_events.distinct.pluck(:topic_id) +
+      Event.where(eventable_type: "Comment", eventable_id: comments_missing_parent.select(:id))
+           .where.not(topic_id: nil)
+           .distinct
+           .pluck(:topic_id)
+    ).uniq
+
+    {
+      comments_missing_event: unique_count(comments_missing_event),
+      comments_missing_event_with_existing_parent: unique_count(
+        comments_missing_event.where.not(id: comments_missing_parent.select(:id))
+      ),
+      comments_missing_parent: unique_count(comments_missing_parent),
+      events_missing_stance: unique_count(events_missing_stance),
+      events_missing_parent: unique_count(missing_parent_events),
+      events_invalid_root: unique_count(invalid_root_events),
+      events_referencing_missing_topic: unique_count(events_missing_topic),
+      notifications_missing_event_or_user: unique_count(notifications_missing_event_or_user),
+      reactions_missing_stance: unique_count(reactions_missing_stance),
+      tasks_users_missing_task: unique_count(tasks_users_missing_task),
+      translations_missing_stance: unique_count(translations_missing_stance),
+      versions_missing_stance: orphan_version_scope_for("Stance").count,
+      search_documents_missing_stance: unique_count(search_documents_missing_stance),
+      attachments_missing_stance: unique_count(attachments_missing_stance),
+      announcement_missing_stance_ids: announcement_missing_stance_ids_count,
+      announcements_with_missing_stance_ids: announcements_with_missing_stance_ids_count,
+      topics_affected: affected_topic_ids.length,
+      topic_ids_sample: affected_topic_ids.sort.first(20)
     }
   end
 
@@ -159,11 +202,16 @@ module CleanupService
     Comment
       .joins("LEFT JOIN discussions parent_discussions ON comments.parent_type = 'Discussion' AND parent_discussions.id = comments.parent_id")
       .joins("LEFT JOIN comments parent_comments ON comments.parent_type = 'Comment' AND parent_comments.id = comments.parent_id")
-      .where("(comments.parent_type = 'Discussion' AND parent_discussions.id IS NULL) OR (comments.parent_type = 'Comment' AND parent_comments.id IS NULL)")
-  end
-
-  def self.comments_missing_parent_not_missing_event
-    comments_missing_parent.where.not(id: comments_missing_event.select(:id))
+      .joins("LEFT JOIN outcomes parent_outcomes ON comments.parent_type = 'Outcome' AND parent_outcomes.id = comments.parent_id")
+      .joins("LEFT JOIN polls parent_polls ON comments.parent_type = 'Poll' AND parent_polls.id = comments.parent_id")
+      .joins("LEFT JOIN stances parent_stances ON comments.parent_type = 'Stance' AND parent_stances.id = comments.parent_id")
+      .where(<<~SQL.squish)
+        (comments.parent_type = 'Discussion' AND parent_discussions.id IS NULL) OR
+        (comments.parent_type = 'Comment' AND parent_comments.id IS NULL) OR
+        (comments.parent_type = 'Outcome' AND parent_outcomes.id IS NULL) OR
+        (comments.parent_type = 'Poll' AND parent_polls.id IS NULL) OR
+        (comments.parent_type = 'Stance' AND parent_stances.id IS NULL)
+      SQL
   end
 
   def self.events_missing_topic
@@ -172,10 +220,84 @@ module CleanupService
       .where('events.topic_id IS NOT NULL AND topics.id IS NULL')
   end
 
+  def self.events_missing_stance
+    Event
+      .joins("LEFT JOIN stances ON events.eventable_type = 'Stance' AND stances.id = events.eventable_id")
+      .where(eventable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.events_missing_parent
+    Event
+      .joins("LEFT JOIN events parent_events ON parent_events.id = events.parent_id")
+      .where.not(parent_id: nil)
+      .where(parent_events: { id: nil })
+  end
+
+  def self.events_invalid_root
+    Event
+      .where.not(topic_id: nil)
+      .where(parent_id: nil)
+      .where.not(kind: %w[new_discussion poll_created])
+  end
+
   def self.notifications_missing_event_or_user
     Notification
       .joins('LEFT JOIN events e ON notifications.event_id = e.id LEFT JOIN users u ON u.id = notifications.user_id')
       .where('e.id IS NULL OR u.id IS NULL')
+  end
+
+  def self.reactions_missing_stance
+    Reaction
+      .joins("LEFT JOIN stances ON reactions.reactable_type = 'Stance' AND stances.id = reactions.reactable_id")
+      .where(reactable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.tasks_users_missing_task
+    TasksUser
+      .joins("LEFT JOIN tasks ON tasks.id = tasks_users.task_id")
+      .where(tasks: { id: nil })
+  end
+
+  def self.translations_missing_stance
+    Translation
+      .joins("LEFT JOIN stances ON translations.translatable_type = 'Stance' AND stances.id = translations.translatable_id")
+      .where(translatable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.search_documents_missing_stance
+    PgSearch::Document
+      .joins("LEFT JOIN stances ON pg_search_documents.searchable_type = 'Stance' AND stances.id = pg_search_documents.searchable_id")
+      .where(searchable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.attachments_missing_stance
+    ActiveStorage::Attachment
+      .joins("LEFT JOIN stances ON active_storage_attachments.record_type = 'Stance' AND stances.id = active_storage_attachments.record_id")
+      .where(record_type: "Stance", stances: { id: nil })
+  end
+
+  def self.announcement_missing_stance_ids_count
+    ActiveRecord::Base.connection.select_value(<<~SQL.squish).to_i
+      SELECT COUNT(*)
+      FROM events
+      CROSS JOIN LATERAL jsonb_array_elements_text(
+        COALESCE(events.custom_fields -> 'stance_ids', '[]'::jsonb)
+      ) stance_id
+      LEFT JOIN stances ON stances.id = stance_id::bigint
+      WHERE stances.id IS NULL
+    SQL
+  end
+
+  def self.announcements_with_missing_stance_ids_count
+    ActiveRecord::Base.connection.select_value(<<~SQL.squish).to_i
+      SELECT COUNT(DISTINCT events.id)
+      FROM events
+      CROSS JOIN LATERAL jsonb_array_elements_text(
+        COALESCE(events.custom_fields -> 'stance_ids', '[]'::jsonb)
+      ) stance_id
+      LEFT JOIN stances ON stances.id = stance_id::bigint
+      WHERE stances.id IS NULL
+    SQL
   end
 
   def self.subscriptions_missing_group

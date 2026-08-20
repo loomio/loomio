@@ -4,8 +4,8 @@ class StanceChoice < ApplicationRecord
   has_one :poll, through: :poll_option
   delegate :has_variable_score, to: :poll, allow_nil: true
 
-  validates_presence_of :poll_option
   validate :total_score_is_valid
+  validate :poll_option_belongs_to_stance_poll
   validates :score, numericality: { equal_to: 1 }, if: Proc.new { |sc| sc.stance && !sc.stance.cast_at && sc.poll && !sc.has_variable_score }
 
   scope :latest, -> { joins(:stance).where('stances.latest': true).where('stances.revoked_at': nil) }
@@ -28,6 +28,10 @@ class StanceChoice < ApplicationRecord
   end
 
   private
+
+  def poll_option_belongs_to_stance_poll
+    raise "Stance choice poll_option must belong to the stance poll" unless stance.poll == poll_option.poll
+  end
 
   def total_score_is_valid
     return unless poll # when we are cloning records and poll is not saved yet

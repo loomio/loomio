@@ -73,6 +73,15 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert_not Event.exists?(event.id)
   end
 
+  test "delete_orphan_records preserves a comment with a valid parent when its event is missing" do
+    comment = comments(:public_discussion_comment)
+    comment.events.delete_all
+
+    CleanupService.delete_orphan_records
+
+    assert Comment.exists?(comment.id)
+  end
+
   test "audit_orphan_records reports comments with missing parents separately" do
     comment = comments(:public_discussion_comment)
     Discussion.where(id: comment.parent_id).delete_all
@@ -80,7 +89,29 @@ class CleanupServiceTest < ActiveSupport::TestCase
     audit = CleanupService.audit_orphan_records
 
     assert_equal 1, audit[:dangling_records]["Comment.missing_parent"]
-    assert_equal 0, audit[:dangling_records]["Comment.missing_event"]
+    assert_not audit[:dangling_records].key?("Comment.missing_event")
+    assert Comment.exists?(comment.id)
+  end
+
+  test "audit_orphan_records recognizes a missing stance parent" do
+    poll = PollService.create(
+      params: {
+        poll_type: "poll",
+        title: "Stance parent cleanup",
+        poll_option_names: %w[Yes No],
+        closing_at: 1.day.from_now,
+        group_id: groups(:group).id,
+        notify_on_open: false
+      },
+      actor: @user
+    )
+    stance = poll.stances.find_by!(participant: @user)
+    comment = Comment.create!(parent: stance, user: @user, body: "Stance reply")
+    Stance.where(id: stance.id).delete_all
+
+    audit = CleanupService.audit_orphan_records
+
+    assert_equal 1, audit[:dangling_records]["Comment.missing_parent"]
     assert Comment.exists?(comment.id)
   end
 
