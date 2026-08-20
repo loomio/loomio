@@ -26,8 +26,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert @poll.anonymous_poll_voters.exists?(voter_id: @voter.id)
   end
 
-  test "legacy anonymous polls remain stance based" do
-    legacy_poll = Poll.create!(
+  test "the model rejects anonymous stance polls" do
+    legacy_poll = Poll.new(
       title: "Legacy anonymous poll",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
@@ -37,11 +37,11 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       poll_option_names: ["Agree", "Disagree"]
     )
 
-    assert legacy_poll.stance?
-    refute legacy_poll.detached_anonymous?
+    assert_not legacy_poll.valid?
+    assert legacy_poll.errors.added?(:voting_system, :invalid)
   end
 
-  test "the poll update API cannot enable legacy anonymous voting" do
+  test "the poll update API cannot convert identified voting to anonymous voting" do
     identified_poll = PollService.create(
       params: {
         title: "Identified poll",

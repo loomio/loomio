@@ -30,36 +30,6 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
-  test "legacy anonymous stance events hide timestamps from index and timeline" do
-    poll = PollService.create(params: {
-      title: 'Anonymous poll',
-      poll_type: 'proposal',
-      topic_id: @discussion.topic_id,
-      poll_option_names: %w[agree disagree],
-      closing_at: 1.day.from_now
-    }, actor: @admin)
-    poll.update_column(:anonymous, true)
-    stance = poll.stances.find_by!(participant_id: @user.id)
-    published_event = Events::StanceCreated.publish!(stance)
-    assert_nil published_event.user_id
-
-    event = Event.create!(kind: 'stance_created', eventable: stance, topic: @discussion.topic, user: @user)
-
-    sign_in @user
-    get :index, params: { discussion_id: @discussion.id }, format: :json
-    serialized_event = JSON.parse(response.body)['events'].find { |record| record['id'] == event.id }
-    assert_not serialized_event.key?('actor_id')
-    assert_not serialized_event.key?('created_at')
-    assert_equal stance.id, serialized_event['eventable_id']
-    assert_equal event.sequence_id, serialized_event['sequence_id']
-    assert_equal event.position_key, serialized_event['position_key']
-
-    get :timeline, params: { discussion_id: @discussion.id }, format: :json
-    timeline_record = JSON.parse(response.body).find { |record| record[1] == event.sequence_id }
-    assert_nil timeline_record[2]
-    assert_nil timeline_record[3]
-  end
-
   test "discussion moved events do not expose a legacy source group" do
     source_group = Group.create!(name: 'Secret source', group_privacy: 'secret', is_visible_to_public: false)
     event = Event.create!(

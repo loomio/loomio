@@ -17,7 +17,7 @@
 
 ## Security review
 
-- Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests.
+- Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests. Conduct the review directly unless the user explicitly requests a security-review plugin or tool.
 - For anonymous polls, review the complete data flow rather than only the primary serializer. Check API responses, nested serializers, events and timelines, search indexes, live updates, notifications, mailers, CSV/JSON exports, backups, and background jobs.
 - Review each access boundary separately: signed-out/public users, ordinary members, poll participants, coordinators/group administrators, instance administrators, and operators with database or backup access. Do not assume that authorization at one endpoint protects related endpoints or exports.
 - Test both direct disclosure and composition attacks. Individually harmless endpoints can reveal sensitive information when records are joined by IDs, timestamps, ordering, or shared events.

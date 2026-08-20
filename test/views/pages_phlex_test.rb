@@ -48,16 +48,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_match(/<a[^>]+href="\?offset=1&limit=1&export=1"[^>]+rel="nofollow"/, output)
   end
 
-  test "discussion show excludes hidden identified stances before pagination without excluding legacy anonymous stances" do
+  test "discussion show excludes hidden stances before pagination" do
     @discussion.topic.update!(allow_concurrent_polls: true)
-    anonymous_poll = PollService.create(params: {
-      title: 'Anonymous SSR poll',
-      poll_type: 'proposal',
-      topic_id: @discussion.topic_id,
-      poll_option_names: %w[agree disagree],
-      closing_at: 1.day.from_now
-    }, actor: users(:admin))
-    anonymous_poll.update_column(:anonymous, true)
     hidden_poll = PollService.create(params: {
       title: 'Hidden SSR poll',
       poll_type: 'proposal',
@@ -75,7 +67,6 @@ class PagesPhlexTest < ActiveSupport::TestCase
     hidden_ids = component.send(:stance_ids_hidden_from_activity).pluck(:id)
 
     assert_includes hidden_ids, hidden_poll.stances.find_by!(participant_id: @user.id).id
-    assert_not_includes hidden_ids, anonymous_poll.stances.find_by!(participant_id: @user.id).id
   end
 
   test "discussion show renders comment thread items" do
@@ -412,28 +403,6 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Comments"
     assert_includes output, "Polls"
     assert_includes output, "Stances"
-  end
-
-  test "group exports hide legacy anonymous stance identity and timestamps" do
-    poll = PollService.create(params: {
-      title: 'Anonymous export poll',
-      poll_type: 'proposal',
-      topic_id: @discussion.topic_id,
-      poll_option_names: %w[agree disagree],
-      closing_at: 1.day.from_now
-    }, actor: @user)
-    poll.update_column(:anonymous, true)
-    stance = poll.stances.find_by!(participant_id: @user.id)
-
-    rows = CSV.parse(GroupExporter.new(@group).to_csv)
-    stances_index = rows.index { |row| row.first&.start_with?('Stances') }
-    headers = rows[stances_index + 1]
-    stance_row = rows[(stances_index + 2)..].find { |row| row[headers.index('Id')] == stance.id.to_s }
-
-    assert_nil stance_row[headers.index('Participant')]
-    assert_nil stance_row[headers.index('Author name')]
-    assert_nil stance_row[headers.index('Created at')]
-    assert_nil stance_row[headers.index('Updated at')]
   end
 
   test "group csv export uses topic ids for topicable records" do

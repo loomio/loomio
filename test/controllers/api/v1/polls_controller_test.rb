@@ -411,12 +411,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
     }, actor: @admin)
-    Stance.create!(
+    AnonymousPollVoter.create!(
       poll: poll,
-      participant: @alien,
+      voter: @alien,
       inviter: @admin,
-      latest: true,
-      reason_format: @alien.default_format
+      group_member: false
     )
 
     sign_in @alien

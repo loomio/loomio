@@ -30,22 +30,6 @@ class StanceSerializer < ApplicationSerializer
     object.cast_at || object.created_at
   end
 
-  def include_cast_at?
-    !poll.anonymous?
-  end
-
-  def include_created_at?
-    !poll.anonymous?
-  end
-
-  def include_updated_at?
-    !poll.anonymous?
-  end
-
-  def include_order_at?
-    !poll.anonymous?
-  end
-
   def option_scores
     if ENV['JIT_POLL_COUNTS'] && object.option_scores == {} && object.cast_at
       object.update_option_scores!
@@ -66,12 +50,10 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def participant
-    return nil if poll.anonymous?
     cache_fetch(:users_by_id, object.participant_id) { object.participant }
   end
 
   def participant_id
-    return nil if poll.anonymous?
     object.participant_id
   end
 
@@ -84,7 +66,6 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def current_user_voted?
-    return true if poll.anonymous?
     return false unless scope[:current_user_id]
 
     stance = cache_fetch(:my_stances_by_poll_id, poll.id) do

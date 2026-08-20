@@ -104,59 +104,6 @@ namespace :loomio do
     puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:readers_updated]} topic readers"
   end
 
-  desc "Migrate closed legacy anonymous stance votes to detached votes"
-  task migrate_legacy_anonymous_votes: :environment do
-    $stdout.sync = true
-    poll_id = ENV["POLL_ID"].presence&.to_i
-    limit = ENV["LIMIT"].presence&.to_i
-    scope = LegacyAnonymousVoteMigrationService.eligible_poll_scope.order(:id)
-    scope = scope.where(id: poll_id) if poll_id
-    scope = scope.limit(limit) if limit
-
-    if ENV.key?("DRY_RUN")
-      scope.find_each do |poll|
-        audit = LegacyAnonymousVoteMigrationService.audit(poll: poll)
-        puts "Would migrate anonymous poll #{poll.id}: #{audit[:votes]} votes, #{audit[:reasons]} reasons, " \
-             "#{audit[:attachments]} attachments, and #{audit[:receipts]} receipts"
-      end
-      next
-    end
-
-    stats = LegacyAnonymousVoteMigrationService.migrate_all!(
-      poll_id: poll_id,
-      limit: limit,
-      progress: ->(message) { puts message }
-    )
-
-    puts "Migrated #{stats[:polls]} polls, #{stats[:ballots]} votes, #{stats[:reasons]} reasons, " \
-         "#{stats[:attachments]} attachments, and #{stats[:electorate_records]} electorate records"
-  end
-
-  desc "Clean up legacy anonymous polls before detached vote migration"
-  task cleanup_legacy_anonymous_votes: :environment do
-    $stdout.sync = true
-    poll_id = ENV["POLL_ID"].presence&.to_i
-    limit = ENV["LIMIT"].presence&.to_i
-    scope = LegacyAnonymousVoteMigrationService.eligible_poll_scope.order(:id)
-    scope = scope.where(id: poll_id) if poll_id
-    scope = scope.limit(limit) if limit
-
-    failures = []
-    scope.find_each do |poll|
-      begin
-        result = LegacyAnonymousVoteMigrationCleanupService.cleanup!(poll: poll)
-        puts "Cleaned anonymous poll #{poll.id}; removed #{result[:removed_stance_choices]} cross-poll stance choices"
-      rescue LegacyAnonymousVoteMigrationCleanupService::CleanupError => error
-        failures << [poll.id, error.message]
-        warn "Could not clean anonymous poll #{poll.id}: #{error.message}"
-      end
-    end
-
-    next if failures.empty?
-
-    abort "Could not clean #{failures.length} anonymous poll(s) before migration"
-  end
-
   desc "Attach legacy standalone poll stance events to poll topics"
   task backfill_standalone_poll_stance_thread_items: :environment do
     $stdout.sync = true

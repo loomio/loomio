@@ -214,6 +214,7 @@ class Poll < ApplicationRecord
   validate :opening_at_before_closing_at
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
+  validate :anonymous_matches_voting_system
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
@@ -242,20 +243,6 @@ class Poll < ApplicationRecord
     :attachments]
 
   after_commit :update_group_counter_caches
-  after_commit :enqueue_legacy_anonymous_vote_migration, if: :did_close_legacy_anonymous_voting?
-
-  def legacy_anonymous_voting?
-    anonymous? && voting_system == "stance"
-  end
-
-  def did_close_legacy_anonymous_voting?
-    saved_change_to_closed_at? && closed_at.present? && legacy_anonymous_voting?
-  end
-
-  def enqueue_legacy_anonymous_vote_migration
-    MigrateLegacyAnonymousVotesWorker.perform_later(topic_id)
-  end
-
   def update_group_counter_caches
     return unless (g = topic.group) && g.id
     return if g.destroyed? # group teardown cascaded to this poll — nothing to recount
@@ -354,14 +341,6 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
-  def undecided_voters
-    anonymous? ? User.none : super
-  end
-
-  def decided_voters
-    anonymous? ? User.none : super
-  end
-
   def unmasked_voters
     return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
 
@@ -387,13 +366,7 @@ class Poll < ApplicationRecord
   def participation_status_visible?
     return true unless anonymous?
 
-    votes = if detached_anonymous?
-      anonymous_ballots
-    else
-      stances.latest.decided
-    end
-
-    votes.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
+    anonymous_ballots.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
   end
 
   def body
@@ -556,6 +529,12 @@ class Poll < ApplicationRecord
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
+  end
+
+  def anonymous_matches_voting_system
+    return if anonymous? == anonymous_ballot?
+
+    errors.add(:voting_system, :invalid)
   end
 
   def voting_system_cannot_change_after_opening

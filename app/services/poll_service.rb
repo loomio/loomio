@@ -63,11 +63,6 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    if poll.stance? && !poll.anonymous? && ActiveModel::Type::Boolean.new.cast(params[:anonymous])
-      poll.errors.add(:anonymous, :cannot_enable_legacy_anonymous_voting)
-      return false
-    end
-
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
       emails: params[:recipient_emails],
@@ -624,12 +619,6 @@ class PollService
       StanceReceipt.where(poll_id: poll.id).delete_all
       StanceReceipt.insert_all build_receipts(poll)
 
-      if poll.anonymous
-        stance_ids = poll.stances.select(:id)
-        Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
-        poll.stances.update_all(participant_id: nil)
-      end
-
       if poll.topic && poll.hide_results == 'until_closed'
         stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
         Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
@@ -664,15 +653,13 @@ class PollService
       end
     end
 
-    return [] if poll.anonymous && poll.closed_at
-
     poll.stances.latest.map do |stance|
       {
         poll_id: poll.id,
         voter_id: stance.participant_id,
         inviter_id: stance.inviter_id,
         invited_at: stance.created_at,
-        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+        vote_cast: !!stance.cast_at
       }
     end
   end

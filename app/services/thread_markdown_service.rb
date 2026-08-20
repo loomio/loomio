@@ -126,7 +126,7 @@ class ThreadMarkdownService
     return unless stance_visible?(stance)
 
     poll = stance.poll
-    voter = poll.anonymous? ? "Anonymous participant" : author_name(stance)
+    voter = author_name(stance)
     response = stance_response(stance)
     metadata = [
       "- **Submitted:** #{timestamp(event.created_at)}",
@@ -181,8 +181,7 @@ class ThreadMarkdownService
     when Comment then "comment by #{author_name(record)}"
     when Poll then "poll “#{inline(record.title)}”"
     when Stance
-      voter = record.poll.anonymous? ? "anonymous participant" : author_name(record)
-      "vote by #{voter} on “#{inline(record.poll.title)}”"
+      "vote by #{author_name(record)} on “#{inline(record.poll.title)}”"
     when Outcome then "outcome for “#{inline(record.poll.title)}”"
     end
   end

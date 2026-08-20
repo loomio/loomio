@@ -73,33 +73,6 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not identify voters in legacy anonymous polls" do
-    travel_to Time.zone.parse('2026-07-15 10:00:00 UTC') do
-      discussion = create_discussion
-      poll = PollService.create(
-        params: {
-          topic_id: discussion.topic_id,
-          title: 'Anonymous check',
-          poll_type: 'proposal',
-          poll_option_names: ['Agree', 'Disagree'],
-          closing_at: 3.days.from_now
-        },
-        actor: @admin
-      )
-      poll.update_column(:anonymous, true)
-      stance = poll.stances.latest.find_by!(participant_id: @member.id)
-      stance.choice = 'Disagree'
-      stance.reason = 'I have a concern.'
-      StanceService.create(stance: stance, actor: @member)
-
-      markdown = render(discussion.topic)
-
-      assert_includes markdown, "### Vote — Anonymous participant — Anonymous check"
-      assert_includes markdown, "I have a concern."
-      refute_includes markdown, @member.name
-    end
-  end
-
   test "detached anonymous polls render aggregate results without individual votes" do
     discussion = create_discussion
     poll = PollService.create(

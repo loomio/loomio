@@ -24,9 +24,7 @@ class AttachmentQuery
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
-    visible_stance_poll_ids = PollQuery.visible_to(user: user, group_ids: group_ids).select do |poll|
-      next true if poll.anonymous?
-
+    visible_stance_poll_ids = PollQuery.visible_to(user: user, group_ids: group_ids).reject(&:anonymous?).select do |poll|
       voted = poll.stances.latest.decided.exists?(participant_id: user.id)
       poll.show_results?(voted: voted)
     end.map(&:id)

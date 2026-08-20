@@ -58,54 +58,6 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
-  test "does not return author or timestamp metadata for anonymous stances" do
-    @poll.update!(anonymous: true)
-    stance = @poll.stances.build(participant: @user, latest: true)
-    stance.reason = 'findanonymousstance'
-    stance.cast_at = 2.days.ago
-    stance.stance_choices.build(poll_option: @poll.poll_options.first)
-    stance.save!
-    Stance.rebuild_pg_search_documents
-
-    sign_in @user
-    get :index, params: { query: 'findanonymousstance' }
-
-    result = JSON.parse(response.body)['search_results'].find { |record| record['searchable_id'] == stance.id }
-    result ||= JSON.parse(response.body)['search_results'].find { |record| record['poll_id'] == @poll.id }
-    assert_not_nil result
-    assert_equal stance.id, result['searchable_id']
-    assert_not result.key?('author_id')
-    assert_not result.key?('author_name')
-    assert_not result.key?('authored_at')
-
-    get :index, params: { query: @user.name }
-    name_results = JSON.parse(response.body)['search_results']
-    assert name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
-  end
-
-  test "does not fuzzy match anonymous stances by participant name" do
-    @poll.update!(anonymous: true)
-    stance = @poll.stances.build(participant: @user, latest: true)
-    stance.reason = 'anonymous vote reason'
-    stance.cast_at = 2.days.ago
-    stance.stance_choices.build(poll_option: @poll.poll_options.first)
-    stance.save!
-    stance.update_pg_search_document
-
-    name = @user.name.downcase.scan(/[\p{L}\p{N}]{4,}/).first
-    PgSearch::Document.connection.execute <<~SQL
-      INSERT INTO pg_search_words (word, document_count)
-      VALUES (#{PgSearch::Document.connection.quote(name)}, 100)
-      ON CONFLICT (word) DO UPDATE SET document_count = EXCLUDED.document_count
-    SQL
-
-    sign_in @user
-    get :index, params: { query: "#{name}x" }
-
-    results = JSON.parse(response.body)['search_results']
-    refute results.any? { |record| record['searchable_type'] == 'Stance' && record['searchable_id'] == stance.id }
-  end
-
   test "does not return stale documents for a legacy discarded discussion" do
     @discussion.update_columns(discarded_at: Time.current)
     assert PgSearch::Document.where(discussion_id: @discussion.id).exists?

@@ -34,8 +34,8 @@ class Stance < ApplicationRecord
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
         t.tags AS tags,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.participant_id END AS author_id,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.cast_at END AS authored_at,
+        stances.participant_id AS author_id,
+        stances.cast_at AS authored_at,
         #{content_str} AS content,
         to_tsvector('simple', #{content_str}) as ts_content,
         now() AS created_at,
@@ -47,7 +47,6 @@ class Stance < ApplicationRecord
       WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
         AND stances.redacted_at IS NULL
-        AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
         #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
         #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
@@ -107,6 +106,7 @@ class Stance < ApplicationRecord
   validate :valid_require_all_choices
   validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
+  validate :poll_uses_identified_voting
   validate :poll_options_must_match_stance_poll
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
@@ -134,7 +134,7 @@ class Stance < ApplicationRecord
   def create_missing_created_event!
     events.create(
       kind: created_event_kind,
-      user_id: (poll.anonymous? ? nil: author_id),
+      user_id: author_id,
       created_at: created_at,
       topic: (add_to_thread? ? poll.topic : nil)
     )
@@ -181,7 +181,7 @@ class Stance < ApplicationRecord
   end
 
   def shared_update_visible?
-    poll.anonymous? || poll.show_results?(voted: false)
+    poll.show_results?(voted: false)
   end
 
   def body
@@ -215,12 +215,8 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
-  end
-
   def real_participant
-    User.find_by(id: participant_id)
+    participant
   end
 
   def score_for(option)
@@ -228,6 +224,13 @@ class Stance < ApplicationRecord
   end
 
   private
+
+  def poll_uses_identified_voting
+    return unless poll
+    return if poll.stance? && !poll.anonymous?
+
+    errors.add(:poll, :invalid)
+  end
 
   def poll_id_cannot_change
     errors.add(:poll_id, :invalid) if will_save_change_to_poll_id?

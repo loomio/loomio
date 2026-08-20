@@ -316,15 +316,7 @@ class GroupExportService
   def self.export_record(record, table)
     json = record.as_json(JSON_PARAMS[table])
 
-    case record
-    when Stance
-      json.merge!('participant_id' => nil, 'cast_at' => nil, 'created_at' => nil, 'updated_at' => nil, 'revoked_at' => nil, 'redacted_at' => nil) if record.poll.anonymous?
-    when StanceChoice
-      json.merge!('created_at' => nil, 'updated_at' => nil) if record.poll.anonymous?
-    when Event
-      if record.eventable.is_a?(Stance) && record.eventable.poll.anonymous?
-        json.merge!('user_id' => nil, 'created_at' => nil, 'updated_at' => nil)
-      end
+    if record.is_a?(Event)
       json['custom_fields'] = record.custom_fields.except('source_group_id') if record.kind == 'discussion_moved'
     end
 

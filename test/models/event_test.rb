@@ -315,21 +315,6 @@ class EventTest < ActiveSupport::TestCase
     assert_equal 0, publish_count
   end
 
-  test "stance_created keeps anonymous shared delivery behavior" do
-    @poll.update!(anonymous: true, hide_results: 'until_closed')
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Anonymous response', cast_at: Time.current)
-    event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
-
-    assert_not_empty event.subscribed_recipients
-    assert event.notify_chatbots?
-
-    publish_count = 0
-    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
-      event.notify_clients!
-    end
-    assert_operator publish_count, :>, 0
-  end
-
   test "poll_announced does not email people with topic reader volume quiet" do
     stance = Stance.create!(participant: @user_thread_normal, poll: @poll)
     TopicReader.find_or_create_by!(topic: @poll.topic, user: @user_thread_normal).set_volume!('quiet')

@@ -490,11 +490,14 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
   test "history returns 403 when topic has an anonymous poll" do
     sign_in @user
-    poll = Poll.new(title: "Secret vote", poll_type: "proposal", topic: @topic,
-                    anonymous: true, opened_at: Time.now, closing_at: 1.day.from_now, author: @admin)
-    poll.poll_options.build(name: 'agree')
-    poll.poll_options.build(name: 'disagree')
-    poll.save!
+    PollService.create(params: {
+      title: "Secret vote",
+      poll_type: "proposal",
+      topic_id: @topic.id,
+      anonymous: true,
+      poll_option_names: %w[agree disagree],
+      closing_at: 1.day.from_now
+    }, actor: @admin)
 
     get :history, params: { id: @topic.id }
 
