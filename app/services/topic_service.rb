@@ -1,4 +1,6 @@
 class TopicService
+  class IntegrityError < StandardError; end
+
   def self.private_default(group_id:)
     group = Group.find_by(id: group_id)
     group ? !group.public_discussions_only? : true
@@ -316,9 +318,14 @@ class TopicService
     end
 
     created_event = topicable.created_event
-    Event.where(eventable: topicable, kind: topicable.created_event_kind.to_s)
-         .where.not(id: created_event.id)
-         .destroy_all
+    duplicate_created_events = Event.where(
+      eventable: topicable,
+      kind: topicable.created_event_kind.to_s,
+      topic_id: topic.id
+    )
+                                    .where.not(id: created_event.id)
+    Event.where(parent_id: duplicate_created_events.select(:id)).update_all(parent_id: created_event.id)
+    duplicate_created_events.destroy_all
     Event.where(topic_id: topic.id, sequence_id: 0).where.not(id: created_event.id).update_all(sequence_id: nil, position: 0, position_key: nil)
     created_event.update_columns(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
@@ -341,11 +348,13 @@ class TopicService
       "UPDATE events
        SET child_count = (
         SELECT count(children.id) FROM events children
-        WHERE children.parent_id = events.id AND children.topic_id IS NOT NULL
+        WHERE children.parent_id = events.id AND children.topic_id = events.topic_id
       )
       WHERE topic_id = #{topic.id.to_i}")
 
-    created_event.reload.update_columns(child_count: created_event.children.count)
+    created_event.reload.update_columns(
+      child_count: created_event.children.where(topic_id: topic.id).count
+    )
     topic.update_sequence_info!
 
     # ensure all the topic_readers have valid read_ranges values
@@ -356,6 +365,32 @@ class TopicService
         )
       )
     end
+  end
+
+  def self.verify_integrity!(topic_id)
+    events = Event.where(topic_id: topic_id).to_a
+    events_by_id = events.index_by(&:id)
+    child_counts = events.group_by(&:parent_id).transform_values(&:length)
+    failures = []
+
+    events.each do |event|
+      expected_child_count = child_counts.fetch(event.id, 0)
+      failures << "event #{event.id} child_count" unless event.child_count == expected_child_count
+      failures << "event #{event.id} sequence_id" if event.sequence_id.nil?
+      failures << "event #{event.id} position" if event.position.nil?
+      failures << "event #{event.id} position_key" if event.position_key.blank?
+
+      if event.parent_id
+        parent = events_by_id[event.parent_id]
+        failures << "event #{event.id} parent" unless parent
+        failures << "event #{event.id} depth" if parent && event.depth != parent.depth + 1
+        failures << "event #{event.id} position ancestry" if parent && !event.position_key.to_s.start_with?("#{parent.position_key}-")
+      end
+    end
+
+    return if failures.empty?
+
+    raise IntegrityError, "Topic #{topic_id} repair failed: #{failures.join(', ')}"
   end
 
   def self.reset_child_positions(parent_id, parent_position_key)

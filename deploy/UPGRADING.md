@@ -1,12 +1,5 @@
 # Upgrading Loomio
 
-Patch releases within the configured release series do not require changes to `.env`:
-
-```sh
-docker compose pull
-docker compose up -d
-```
-
 Before upgrading to a new minor or major release series, read its notes below and change `LOOMIO_CONTAINER_TAG` in `.env`. Then run:
 
 ```sh
@@ -36,6 +29,15 @@ docker compose run --rm -v "./drain_sidekiq_before_job_cutover.rb:/tmp/drain_sid
 The script executes queued and scheduled jobs, removing each one after it succeeds. Scheduled jobs run immediately, even when their scheduled time has not arrived. Retry and dead jobs are reported but are not executed.
 
 After reviewing the output, change `LOOMIO_CONTAINER_TAG` to `3.1` and run the upgrade commands above. The new `worker` service starts Solid Queue through `bin/jobs start`.
+
+## 3.2.0 anonymous-voting transition
+
+Loomio 3.2.0 introduces detached anonymous voting. Existing legacy anonymous
+polls continue normally while open. Closed polls are converted by delayed
+background jobs; a poll that closes later queues its own conversion.
+
+Allow the anonymous-poll conversion jobs to finish before upgrading beyond
+3.2. The next release's notes will describe that upgrade.
 
 ## Upgrading an older install
 

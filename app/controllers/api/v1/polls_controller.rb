@@ -42,7 +42,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   def legacy_vote_reasons
     poll = load_and_authorize(:poll)
-    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.legacy_anonymous?
+    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.detached_anonymous? && poll.legacy_anonymous_vote_reasons.exists?
 
     reasons = poll.legacy_anonymous_vote_reasons
                   .joins(:anonymous_ballot)

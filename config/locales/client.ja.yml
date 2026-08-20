@@ -2123,7 +2123,6 @@ ja:
     voting_opens_at: この %{poll_type} は %{time} に投票開始となります
     unable_to_vote: あなたは、この%{poll_type}への投票に招待されていません。
     anonymous_votes_are_stored_separately_from_voter_identities: 匿名投票は投票者の身元情報とは別に保存されます。投票結果は投票終了後に表示されます。
-    legacy_anonymous_voting_format: この投票では、従来の匿名投票形式を使用します。
     anonymous_vote_cannot_be_changed: 投票を送信した後は、投票内容を確認したり変更したりすることはできません。
     anonymous_vote_recorded: あなたの投票は記録されました
     legacy_vote_reasons: 過去の投票理由
@@ -2382,7 +2381,6 @@ ja:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを<strong>%{title}</strong>から移動しました"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを閉じました"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを再開しました"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>このスレッドのフォークを作成しました: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>結果を共有しました"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を再開しました"

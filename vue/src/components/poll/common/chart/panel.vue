@@ -33,13 +33,6 @@ export default {
 
 <template lang="pug">
 .poll-common-chart-panel.mt-8
-  v-alert.mb-4(
-    v-if="poll.usesLegacyAnonymousVotingFormat()"
-    density="compact"
-    variant="tonal"
-    type="info"
-  )
-    span(v-t="'poll_common_action_panel.legacy_anonymous_voting_format'")
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
       v-if='!!poll.closingAt && poll.hideResults == "until_closed" && !poll.detachedAnonymousVoting()'
@@ -79,7 +72,7 @@ export default {
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
-    template(v-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && poll.legacyAnonymous")
+    template(v-if="poll.legacyAnonymousVoteReasonsCount > 0 && !hideViewAllVotes")
       mid-dot
       router-link.poll-common-chart-panel__view-legacy-vote-reasons.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
         span(v-t="'poll_common_action_panel.legacy_vote_reasons'")

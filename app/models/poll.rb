@@ -242,6 +242,20 @@ class Poll < ApplicationRecord
     :attachments]
 
   after_commit :update_group_counter_caches
+  after_commit :enqueue_legacy_anonymous_vote_migration, if: :did_close_legacy_anonymous_voting?
+
+  def legacy_anonymous_voting?
+    anonymous? && voting_system == "stance"
+  end
+
+  def did_close_legacy_anonymous_voting?
+    saved_change_to_closed_at? && closed_at.present? && legacy_anonymous_voting?
+  end
+
+  def enqueue_legacy_anonymous_vote_migration
+    MigrateLegacyAnonymousVotesWorker.perform_later(topic_id)
+  end
+
   def update_group_counter_caches
     return unless (g = topic.group) && g.id
     return if g.destroyed? # group teardown cascaded to this poll — nothing to recount
@@ -542,7 +556,6 @@ class Poll < ApplicationRecord
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
-    errors.add(:legacy_anonymous, :invalid) if legacy_anonymous? && !closed?
   end
 
   def voting_system_cannot_change_after_opening
@@ -556,7 +569,7 @@ class Poll < ApplicationRecord
     return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
 
     protected_attributes = %w[
-      anonymous voting_system legacy_anonymous hide_results stance_reason_required poll_type
+      anonymous voting_system hide_results stance_reason_required poll_type
       min_score max_score minimum_stance_choices maximum_stance_choices
       dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
     ]

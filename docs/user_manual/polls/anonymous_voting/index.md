@@ -96,25 +96,6 @@ The result itself may also reveal information. A small electorate, a unanimous r
 
 Consider the size of the electorate and the sensitivity of the decision when deciding whether application-level anonymous voting is suitable.
 
-## Older anonymous polls
-
-Older anonymous polls used a legacy format in which votes were stored using the same records as identified votes. These polls display:
-
-> This poll uses the legacy anonymous voting format
-
-The stronger protections described above apply to anonymous polls created with the detached voting format, not to activity that occurred under the legacy format.
-
-When an older closed poll is migrated:
-
-- its choices are preserved and used to calculate the same aggregate results;
-- historical reasons are converted from formatted content to plain text;
-- those reasons appear together in a read-only **Legacy vote reasons** section below the results;
-- attachments from historical reasons are moved to the poll;
-- reactions, replies, revisions, translations, mentions, and other rich interactions attached to historical votes are not retained as vote features; and
-- names, timestamps, identifiers, and submission order are not displayed with the migrated votes or reasons.
-
-A historical reason may identify its author through what they chose to write. That is information the voter supplied, rather than a system-created link between their name and vote. New anonymous votes do not allow reasons.
-
 ## Questions
 
 ### Can a coordinator see how I voted?

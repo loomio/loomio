@@ -2,7 +2,7 @@
 
 ## Scope
 
-This review covers the detached anonymous voting implementation and the migration of closed legacy anonymous polls described in `anonymous_voting.md`. Active legacy anonymous polls remain stance-based until they close. Migrated legacy polls retain a marker and notice because activity created under the old format is outside the stronger native detached-voting guarantee.
+This review covers the detached anonymous voting implementation and the migration of closed legacy anonymous polls described in `anonymous_voting.md`. Active legacy anonymous polls remain stance-based until they close. Historical reasons are visible only when a converted poll contains them; the application does not retain a separate migrated-poll marker.
 
 ## Storage boundary
 
@@ -33,7 +33,7 @@ This review covers the detached anonymous voting implementation and the migratio
 - After closing, charts and CSV exports use aggregate option totals. BLT ballot-pattern export is denied.
 - JSON group and direct-topic portability archives preserve detached ballots, choices, participant state, and legacy reasons as an operational restore exception. Ballots and the named ledger have no shared identifier or timestamp, ballot UUIDs are randomized independently for each archive, and imports assign another fresh set of UUIDs.
 - Ballots are not side-loaded through stance, event, topic, notification, search, thread, group, or chatbot serializers.
-- Migrated legacy reasons are available only for closed marked polls through a dedicated endpoint. The response contains plain text, choices, and `none_of_the_above`; it omits vote and reason record IDs, names, timestamps, submission ordering, and invitation metadata. Choice entries use poll-option IDs already present in ordinary poll serialization.
+- Migrated legacy reasons are available only for closed detached anonymous polls that contain them, through a dedicated endpoint. The response contains plain text, choices, and `none_of_the_above`; it omits vote and reason record IDs, names, timestamps, submission ordering, and invitation metadata. Choice entries use poll-option IDs already present in ordinary poll serialization.
 - Legacy reasons are returned in random-UUID order rather than former stance or submission order.
 
 ## Notifications and reminders
@@ -57,22 +57,23 @@ This review covers the detached anonymous voting implementation and the migratio
 
 ## Legacy migration boundary
 
-Operational rollout, canary conversion, batch auditing, and removal of stance-specific anonymity code must follow the two-release plan in `anonymous_voting.md`.
+Operational rollout and removal of stance-specific anonymity code must follow the two-release plan in `anonymous_voting.md`.
 
-- The Rails schema migration creates storage only. It does not convert polls, enqueue conversion jobs, or register recurring migration work.
-- Legacy stance conversion can start only through the manually invoked operator task.
-- The operator task requires explicit confirmation that a current database backup exists. `DRY_RUN` audits eligible polls without changing them.
+- Before enqueuing conversion jobs, the Rails schema migration sequentially removes invalid cross-poll and duplicate-option stances from every closed legacy anonymous poll. This prevents one topic's cleanup from changing another poll's counts during result verification.
+- The schema migration then schedules one delayed, low-priority conversion job for each topic containing legacy anonymous polls. Each job converts that topic's closed polls in sequence; open polls are skipped, and closing one enqueues its topic's conversion job. Solid Queue permits only one conversion job per topic to run at a time.
+- The conversion task remains available for a dry run or an operator-requested retry of a failed poll. Site owners follow their normal backup procedure; no application-level backup confirmation is required.
 - Only closed anonymous stance-based polls are eligible. Polls with a remaining stance participant ID or named stance-event actor fail before conversion.
 - Each poll is locked and migrated in its own database transaction. A random vote UUID is assigned in transaction memory; no stance ID or participant value is copied to detached storage.
 - Current submitted votes are converted. Undecided, revoked, and superseded stances are excluded. Redacted current votes retain their choices but not their reasons.
 - Result verification compares submitted-vote count, option scores and voter counts, none-of-the-above count, calculated results, STV input and output, and preserved-reason count before stance deletion. Any mismatch rolls back the poll.
 - Complete receipt sets may populate the named electorate without vote identifiers. Incomplete receipts create no named electorate records, and existing aggregate participation counts are retained.
+- Electorate-to-receipt equivalence is verified during each conversion. It is not a global post-migration invariant because the migrated-poll marker is not retained and native detached polls do not use legacy stance receipts.
 - Files belonging to preserved reasons are moved to the poll with no vote or author association. Other stance attachments are detached, and blobs are purged only when unreferenced.
-- Direct replies in the poll topic are reparented to the poll before stance events are deleted. Stance events, notifications, reactions, bookmarks, tasks, translations, versions, search documents, choices, and stances are removed.
-- The complete topic event tree is repaired after stance-event deletion. The poll transaction verifies parent membership, depth, sequence and position metadata, position-key ancestry, and cached child counts before it can commit.
-- Before conversion, the operator captures counts of pre-existing dangling stance references. The post-conversion audit fails if any category increases. Independently, each poll transaction verifies zero remaining references to the exact stance and event IDs it deletes before committing.
+- Replies are moved to the poll's topic and reparented to the poll before stance events are deleted. Stance events, notifications, reactions, bookmarks, tasks, translations, versions, search documents, choices, and stances are removed.
+- Every topic affected by moved or deleted events is repaired after stance-event deletion. The poll transaction verifies parent membership, depth, sequence and position metadata, position-key ancestry, and cached child counts before it can commit.
+- The poll transaction verifies zero remaining references to the exact stance and event IDs it deletes before committing; a mismatch rolls back that poll.
 - Poll announcement events have obsolete stance ID lists removed. Source receipts remain as the historical participation-verification record and contain no vote identifier.
-- The poll is marked as migrated legacy anonymous, remains closed, and cannot be presented as a native detached anonymous poll.
+- The poll remains closed and its detached voting configuration is immutable.
 
 ## Residual risks
 
@@ -84,12 +85,47 @@ On 2026-07-27:
 
 - the cross-boundary anonymous-voting regression suite passed 364 tests and 1,329 assertions; the only skipped case is the pre-existing optional chatbot comparison render;
 - the native anonymous-poll browser scenario passed against a fresh Rails test server and production Vue build;
-- the legacy browser scenario passed against a production Vue build and verified the legacy-format notice, plain-text reason and choice, and absence of voter-name and avatar elements;
-- locale YAML parsed successfully and both legacy-reason strings were present in every supported client locale;
-- four representative polls in the local development dataset passed dry-run preconditions and rollback-only conversion: an ordinary count poll, a proposal with two reasons and one attachment, a dot vote, and an STV election with an incomplete receipt ledger;
-- the rollback-only conversions produced 149 detached votes and 11 plain-text reasons, passed the full baseline-aware post-conversion audit, and left all four source polls unchanged; and
-- the operator baseline capture and unchanged-database audit commands completed successfully.
+- the legacy-reason browser scenario passed against a production Vue build and verified the plain-text reason and choice, and absence of voter-name and avatar elements;
+- locale YAML parsed successfully and the legacy-reason strings were present in every supported client locale;
+- four representative polls in the local development dataset passed conversion
+  preconditions and rollback-only conversion: an ordinary count poll, a
+  proposal with two reasons and one attachment, a dot vote, and an STV election
+  with an incomplete receipt ledger; and
+- the rollback-only conversions produced 149 detached votes and 11 plain-text
+  reasons, passed the per-poll invariant checks, and left all four source polls
+  unchanged.
 
-The rollback-only run does not replace the deployment checklist requirement to restore a current backup into a disposable database and perform persistent canary conversions there. That operational exercise, manual interface inspection, and independent security/code review remain approval gates before production conversion.
+The rollback-only run does not replace the deployment checklist requirement to
+follow the site's normal backup and restore procedure before production
+conversion. Manual interface inspection and independent security/code review
+remain approval gates.
 
-On 2026-07-28, development poll 182764 was persistently converted with an existing operator-confirmed backup. It produced three detached votes, two plain-text reasons, and one poll-level attachment. The repaired topic had no missing parents or cached child-count mismatches. Focused browser scenarios passed for the legacy-format notice both before migration and for migrated legacy reasons afterward. This development conversion is implementation evidence; it does not replace the production deployment gate requiring a restored current backup in a disposable database.
+On 2026-07-28, development poll 182764 was persistently converted. It
+produced three detached votes, two plain-text reasons, and one poll-level
+attachment. The repaired topic had no missing parents or cached child-count
+mismatches. A focused browser scenario passed for migrated legacy reasons.
+This development conversion is implementation evidence; it does not replace
+production review.
+
+On 2026-08-20, after removing the migrated-poll marker and extending repair to
+every topic affected by moved or deleted stance events:
+
+- 339 anonymous-voting, poll-lifecycle, API, attachment, event, export, mail,
+  worker, and topic-repair Rails tests passed with 1,244 assertions and one
+  pre-existing optional skip;
+- a rollback-only Solid Queue integration check confirmed that two conversion jobs for the same topic become one ready execution and one PostgreSQL-semaphore-blocked execution;
+- the poll browser suite passed 217 assertions against freshly built Vue assets,
+  including native detached voting and migrated legacy reasons without voter
+  names;
+- every locale YAML file parsed after removal of the obsolete notice key; and
+- the Rails 8.1 schema dump was compared as a line multiset with the previous
+  schema. The only semantic changes were removal of `polls.legacy_anonymous`
+  and unique root-event indexes for discussions and polls.
+
+A restored production database completed the migration chain in 4 minutes 50
+seconds. Its 3,914 topic conversion jobs were then run with four workers, and
+every job completed without error. The
+post-conversion audit found 4,875 detached polls, 51,313 detached votes, 8,143
+retained legacy reasons, no closed legacy anonymous polls, and all 195 open
+legacy anonymous polls unchanged. No dangling-reference category increased;
+dangling event parents fell from 380 to 229 after orphan event cleanup.

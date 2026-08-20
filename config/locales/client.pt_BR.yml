@@ -2170,7 +2170,6 @@ pt_BR:
     voting_opens_at: Esta %{poll_type} abre para votação %{time}
     unable_to_vote: Você não foi convidado(a) a votar nesta %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Os votos anônimos são armazenados separadamente das identidades dos eleitores. Os resultados são divulgados após o encerramento da votação.
-    legacy_anonymous_voting_format: Esta pesquisa utiliza o formato de votação anônima tradicional.
     anonymous_vote_cannot_be_changed: Você não poderá revisar ou alterar seu voto após enviá-lo.
     anonymous_vote_recorded: Seu voto foi registrado.
     legacy_vote_reasons: Justificativas de votos anteriores
@@ -2429,7 +2428,6 @@ pt_BR:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> moveu o tópico de <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a>  fechou o tópico"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reabriu o tópico"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>criou uma bifurcação deste tópico: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> compartilhou uma conclusão"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reabriu o %{polltype}"

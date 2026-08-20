@@ -68,7 +68,7 @@ function findRecords() {
 }
 
 function fetchNow() {
-  if (poll.legacyAnonymous) {
+  if (poll.legacyAnonymousVoteReasonsCount > 0) {
     legacyReasonsLoading.value = true;
     Records.fetch({path: `polls/${poll.id}/legacy_vote_reasons`})
       .then(data => { legacyReasons.value = data; })
@@ -131,7 +131,7 @@ fetchNow();
 
 <template lang="pug">
 .poll-common-votes-panel
-  template(v-if="poll.legacyAnonymous")
+  template(v-if="poll.legacyAnonymousVoteReasonsCount > 0")
     h2.text-headline-small.my-2#votes(v-t="'poll_common_action_panel.legacy_vote_reasons'")
     p.text-medium-emphasis(v-t="'poll_common_action_panel.legacy_vote_reasons_description'")
     loading(:until="!legacyReasonsLoading")

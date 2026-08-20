@@ -2296,7 +2296,6 @@ en:
     anonymous: Votes are anonymous
     anonymous_votes_are_stored_separately_from_voter_identities: Anonymous votes are stored separately from voter identities. Results appear after voting closes
     anonymous_voting_participant_notice: Voting is anonymous. You cannot review or change your vote after submitting it. Results are not available until voting has closed.
-    legacy_anonymous_voting_format: This poll uses the legacy anonymous voting format
     legacy_vote_reasons: Legacy vote reasons
     legacy_vote_reasons_description: Reasons from votes cast using the legacy anonymous voting format are shown as plain text
     anonymous_vote_cannot_be_changed: You cannot review or change your vote after submitting it
@@ -2778,7 +2777,6 @@ en:
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> locked the thread"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> unlocked the thread"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a fork of this thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"

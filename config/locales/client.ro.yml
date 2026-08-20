@@ -2124,7 +2124,6 @@ ro:
     voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
     unable_to_vote: Nu ați fost invitat să votați pentru acest %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării.
-    legacy_anonymous_voting_format: Acest sondaj folosește formatul vechi de vot anonim
     anonymous_vote_cannot_be_changed: Nu puteți revizui sau modifica votul după ce l-ați trimis.
     anonymous_vote_recorded: Votul dumneavoastră a fost înregistrat
     legacy_vote_reasons: Motivele voturilor anterioare
@@ -2383,7 +2382,6 @@ ro:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a mutat firul din <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis firul"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis firul"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a creat un furk al acestui thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit un rezultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis %{polltype}"

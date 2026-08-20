@@ -302,7 +302,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
-    page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
     test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
     page.click('.poll-common-chart-panel__view-legacy-vote-reasons')
     page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
@@ -310,15 +309,6 @@ module.exports = {
     page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
     test.expect.element('.poll-common-votes-panel__stance-name-and-option').to.not.be.present
     test.expect.element('.poll-common-votes-panel__avatar').to.not.be.present
-  },
-
-  'shows_legacy_anonymous_format_before_migration': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous_stance&poll_type=proposal')
-    page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.be.present
-    test.expect.element('.poll-common-chart-panel__view-legacy-vote-reasons').to.not.be.present
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {

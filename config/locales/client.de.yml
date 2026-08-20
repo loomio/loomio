@@ -2157,7 +2157,6 @@ de:
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
     unable_to_vote: Du wurdest nicht zur Abstimmung über diesen %{poll_type} eingeladen.
     anonymous_votes_are_stored_separately_from_voter_identities: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht.
-    legacy_anonymous_voting_format: Diese Umfrage verwendet das herkömmliche anonyme Abstimmungsformat.
     anonymous_vote_cannot_be_changed: Du kannst deine Stimme nach dem Absenden nicht mehr überprüfen oder ändern
     anonymous_vote_recorded: Deine Stimme wurde erfasst
     legacy_vote_reasons: Begründungen früherer Stimmen
@@ -2416,7 +2415,6 @@ de:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die Diskussion <strong>%{title}</strong> verschoben"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die Diskussion geschlossen"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die Diskussion wiedereröffnet"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat eine Abspaltung dieser Diskussion erstellt: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat ein Ergebnis geteilt "
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die/das %{polltype} wieder geöffnet"

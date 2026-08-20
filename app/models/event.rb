@@ -26,7 +26,7 @@ class Event < ApplicationRecord
   after_create  :update_sequence_info!, if: :topic_id
   after_destroy :update_sequence_info!, if: :topic_id
 
-  define_counter_cache(:child_count) { |e| e.children.count  }
+  define_counter_cache(:child_count) { |e| e.children.where(topic_id: e.topic_id).count }
   update_counter_cache :parent, :child_count
 
   validates :kind, presence: true
@@ -196,7 +196,6 @@ class Event < ApplicationRecord
   def find_parent_event
     case kind
     when 'discussion_closed'   then discussion_created_event
-    when 'discussion_forked'   then discussion_created_event
     when 'discussion_moved'    then discussion_created_event
     when 'discussion_edited'   then discussion_created_event
     when 'discussion_reopened' then discussion_created_event
