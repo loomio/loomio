@@ -67,6 +67,21 @@ class GroupsControllerTest < ActionController::TestCase
     get :show, params: { key: @group.key }
     assert_response 200
     assert_equal @group, assigns(:group)
+    assert_select "link[rel='canonical'][href=?]", group_url(@group)
+    assert_select "meta[property='og:url'][content=?]", group_url(@group)
+  end
+
+  test "secret group is noindex and canonicalized for a member" do
+    @group.update!(group_privacy: 'secret')
+    @group.add_member!(@user)
+    sign_in @user
+
+    get :show, params: { key: @group.key, sign_in: 1 }
+
+    assert_response 200
+    assert_select "link[rel='canonical'][href=?]", group_url(@group)
+    assert_select "meta[name='robots'][content='noindex,follow']"
+    assert_select "a.navbar__sign-in[href='/dashboard']"
   end
 
   test "show closed group 200 for non-member" do
