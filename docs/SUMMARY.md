@@ -96,6 +96,14 @@
   - [Record keeping](guides/board_processes/admin.md)
   - [Introducing Loomio to your board](guides/board_processes/introduce.md)
 
+- [Sociocracy on Loomio](guides/sociocracy/index.md)
+  - [Set up circles and roles](guides/sociocracy/circles_and_roles.md)
+  - [Run consent decisions](guides/sociocracy/consent_decisions.md)
+  - [Copy and adapt the templates](guides/sociocracy/templates.md)
+  - [Follow a worked consent example](guides/sociocracy/worked_example.md)
+  - [Connect Loomio with meetings and other tools](guides/sociocracy/meetings_and_tools.md)
+  - [Introduce and sustain the practice](guides/sociocracy/adoption.md)
+
 ---
 
 # Customer information
