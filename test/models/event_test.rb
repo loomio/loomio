@@ -127,7 +127,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_created notifies mentioned users and loud subscribers" do
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
-      Events::PollCreated.publish!(@poll, @poll.author)
+      PublishEventWorker.perform_now(@poll.created_event.id)
     end
     assert_equal 1, @poll.mentioned_users.length
     assert_includes Events::UserMentioned.last.custom_fields['user_ids'], @mentioned_user.id
@@ -136,13 +136,13 @@ class EventTest < ActiveSupport::TestCase
   test "poll_created notifies webhook" do
     # Webhook delivery now resolves + IP-pins the host (SSRF guard), so stub DNS.
     Resolv.stub(:getaddresses, ->(_host) { ['93.184.216.34'] }) do
-      Events::PollCreated.publish!(@poll, @poll.author)
+      PublishEventWorker.perform_now(@poll.created_event.id)
     end
     assert_requested :post, @webhook_url, at_least_times: 1
   end
 
   test "poll_edited notifies newly mentioned users" do
-    Events::PollCreated.publish!(@poll, @poll.author)
+    PublishEventWorker.perform_now(@poll.created_event.id)
     @poll.update!(details: "#{@poll.details} and @#{@user_thread_loud.username}")
     assert_not Notification.joins(:event).where('notifications.user_id': @user_thread_loud.id).exists?
     assert_difference -> { Events::UserMentioned.where(kind: :user_mentioned).count }, 1 do
