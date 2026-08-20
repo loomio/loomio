@@ -3,7 +3,7 @@ class EnqueueLegacyAnonymousVoteMigrations < ActiveRecord::Migration[8.0]
     LegacyAnonymousVoteMigrationService
       .eligible_poll_scope
       .find_each(order: :asc) do |poll|
-        LegacyAnonymousVoteMigrationCleanupService.remove_invalid_stances!(poll: poll)
+        LegacyAnonymousVoteMigrationCleanupService.remove_cross_poll_stance_choices!(poll: poll)
       end
 
     queue_adapter = MigrateLegacyAnonymousVotesWorker.queue_adapter

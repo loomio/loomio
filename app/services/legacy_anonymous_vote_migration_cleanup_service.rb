@@ -1,7 +1,7 @@
 # Some legacy anonymous polls contain stance choices for an option belonging to a
-# different poll, or contain the same option more than once in one stance. Those
-# stances could never represent valid votes and cannot be converted safely. This
-# service removes each invalid stance in full, refreshes affected poll counts,
+# different poll. Those choices did not contribute to the results of the poll the
+# stance belonged to, but other choices on the same stance did. This service
+# removes only the foreign choices, preserves the source poll's observed results,
 # repairs its topic timeline, and refuses to continue if existing detached ballot
 # data has ambiguous cross-poll ownership.
 class LegacyAnonymousVoteMigrationCleanupService
@@ -14,9 +14,9 @@ class LegacyAnonymousVoteMigrationCleanupService
       poll.lock!
       validate_poll!(poll)
 
-      # Old bugs allowed impossible stance-choice combinations. Such stances were
-      # never valid votes, so remove the complete stance before copying results.
-      removed_stances = remove_invalid_stances!(poll: poll)
+      # Old bugs allowed a choice to point at another poll's option. Remove only
+      # that choice so valid choices and the source poll's results are retained.
+      removed_stance_choices = remove_cross_poll_stance_choices!(poll: poll)
 
       # Detached data may already exist after an interrupted attempt. Never delete
       # a cross-poll detached choice automatically because ownership is ambiguous.
@@ -34,7 +34,7 @@ class LegacyAnonymousVoteMigrationCleanupService
         poll_id: poll.id,
         topic_id: poll.topic_id,
         detached_ballot_choice_mismatches: 0,
-        removed_stances: removed_stances
+        removed_stance_choices: removed_stance_choices
       }
     end
   rescue LegacyAnonymousVoteMigrationService::MigrationError, TopicService::IntegrityError => error
@@ -56,44 +56,26 @@ class LegacyAnonymousVoteMigrationCleanupService
       )
   end
 
-  def self.invalid_stance_ids(poll_id)
-    # A stance is invalid if any choice points at another poll's option, or if the
-    # same option was recorded more than once for that stance.
-    cross_poll_ids = Stance
-      .joins(stance_choices: :poll_option)
-      .where(poll_id: poll_id)
-      .where.not(poll_options: { poll_id: poll_id })
-      .distinct
-      .pluck(:id)
+  def self.remove_cross_poll_stance_choices!(poll:)
+    choices = StanceChoice
+      .joins(:stance, :poll_option)
+      .where(stances: { poll_id: poll.id })
+      .where.not(poll_options: { poll_id: poll.id })
+    choice_ids = choices.ids
+    return 0 if choice_ids.empty?
 
-    duplicate_option_ids = StanceChoice
-      .joins(:stance)
-      .where(stances: { poll_id: poll_id })
-      .group(:stance_id, :poll_option_id)
-      .having("COUNT(*) > 1")
-      .pluck(:stance_id)
-
-    cross_poll_ids | duplicate_option_ids
-  end
-
-  def self.remove_invalid_stances!(poll:)
-    stance_ids = invalid_stance_ids(poll.id)
-    return 0 if stance_ids.empty?
-
-    # Cross-poll choices may have contributed to cached counts on both polls.
-    # Capture every affected poll before dependent choices are destroyed.
-    affected_poll_ids = StanceChoice
+    # The foreign options may have counted these rows even though their stances
+    # belong to this poll. Recalculate those polls after deleting the choices.
+    affected_poll_ids = choices
       .joins(:poll_option)
-      .where(stance_id: stance_ids)
       .distinct
       .pluck("poll_options.poll_id")
+    affected_stance_ids = choices.distinct.pluck(:stance_id)
 
-    removed_stances = LegacyAnonymousVoteMigrationService.remove_stances!(
-      poll: poll,
-      stance_ids: stance_ids
-    )
-    Poll.where(id: affected_poll_ids | [ poll.id ]).find_each(&:update_counts!)
-    removed_stances
+    StanceChoice.where(id: choice_ids).delete_all
+    Stance.where(id: affected_stance_ids).find_each(&:update_option_scores!)
+    Poll.where(id: affected_poll_ids).find_each(&:update_counts!)
+    choice_ids.length
   end
 
   def self.validate_poll!(poll)

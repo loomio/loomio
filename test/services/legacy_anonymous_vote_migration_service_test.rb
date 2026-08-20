@@ -94,38 +94,47 @@ class LegacyAnonymousVoteMigrationServiceTest < ActiveSupport::TestCase
     assert_equal @poll.id, result[:poll_id]
     assert_equal @poll.topic_id, result[:topic_id]
     assert_equal 0, result[:detached_ballot_choice_mismatches]
-    assert_equal 0, result[:removed_stances]
+    assert_equal 0, result[:removed_stance_choices]
   end
 
-  test "cleanup removes stances whose choices belong to another poll" do
+  test "cleanup removes only choices belonging to another poll" do
     other_poll = build_legacy_poll
     stance = cast_vote(user: @admin, option: @poll.poll_options.first)
-    stance.stance_choices.first.update_columns(poll_option_id: other_poll.poll_options.first.id)
+    StanceChoice.insert_all!([{
+      stance_id: stance.id,
+      poll_option_id: other_poll.poll_options.first.id,
+      score: 1
+    }])
     close_legacy_poll
+    results_before = canonical_results(@poll.reload)
 
     result = LegacyAnonymousVoteMigrationCleanupService.cleanup!(poll: @poll)
 
-    assert_equal 1, result[:removed_stances]
-    assert_not Stance.exists?(stance.id)
-    assert_empty StanceChoice.where(stance_id: stance.id)
+    assert_equal 1, result[:removed_stance_choices]
+    assert Stance.exists?(stance.id)
+    assert_equal [@poll.poll_options.first.id], stance.stance_choices.reload.pluck(:poll_option_id)
+    assert_equal results_before, canonical_results(@poll.reload)
   end
 
-  test "migration removes stances whose choices belong to another poll" do
+  test "migration preserves source poll results when removing a foreign choice" do
     other_poll = build_legacy_poll
     valid_stance = cast_vote(user: @admin, option: @poll.poll_options.first)
     invalid_stance = cast_vote(user: @voter, option: @poll.poll_options.second)
     invalid_stance.stance_choices.first.update_columns(poll_option_id: other_poll.poll_options.first.id)
     close_legacy_poll
+    @poll.update_counts!
+    results_before = canonical_results(@poll.reload)
 
     result = LegacyAnonymousVoteMigrationService.migrate!(poll: @poll)
 
-    assert_equal 1, result[:ballots]
+    assert_equal 2, result[:ballots]
     assert_not Stance.exists?(invalid_stance.id)
     assert_not Stance.exists?(valid_stance.id)
     assert_equal [@poll.poll_options.first.id], @poll.anonymous_ballot_choices.pluck(:poll_option_id)
+    assert_equal results_before, canonical_results(@poll.reload)
   end
 
-  test "migration removes stances with duplicate choices for one option" do
+  test "migration preserves results containing duplicate choices" do
     valid_stance = cast_vote(user: @admin, option: @poll.poll_options.first)
     invalid_stance = cast_vote(user: @voter, option: @poll.poll_options.second)
     StanceChoice.insert_all!([{
@@ -134,13 +143,36 @@ class LegacyAnonymousVoteMigrationServiceTest < ActiveSupport::TestCase
       score: 1
     }])
     close_legacy_poll
+    @poll.update_counts!
+    results_before = canonical_results(@poll.reload)
 
     result = LegacyAnonymousVoteMigrationService.migrate!(poll: @poll)
 
-    assert_equal 1, result[:ballots]
+    assert_equal 3, result[:ballots]
     assert_not Stance.exists?(invalid_stance.id)
     assert_not Stance.exists?(valid_stance.id)
-    assert_equal [@poll.poll_options.first.id], @poll.anonymous_ballot_choices.pluck(:poll_option_id)
+    assert_equal(
+      [@poll.poll_options.first.id, @poll.poll_options.second.id, @poll.poll_options.second.id],
+      @poll.anonymous_ballot_choices.order(:poll_option_id).pluck(:poll_option_id)
+    )
+    assert_equal results_before, canonical_results(@poll.reload)
+  end
+
+  test "rolls back rather than replacing observed results with inconsistent choice rows" do
+    stance = cast_vote(user: @admin, option: @poll.poll_options.first)
+    close_legacy_poll
+    results_before = canonical_results(@poll.reload)
+    stance.stance_choices.first.update_columns(score: 2)
+
+    error = assert_raises(LegacyAnonymousVoteMigrationService::MigrationError) do
+      LegacyAnonymousVoteMigrationService.migrate!(poll: @poll)
+    end
+
+    assert_match(/verification failed: results/, error.message)
+    assert @poll.reload.stance?
+    assert Stance.exists?(stance.id)
+    assert_empty @poll.anonymous_ballots
+    assert_equal results_before, canonical_results(@poll)
   end
 
   test "migration detaches identified late votes and removes their identified events" do
@@ -434,6 +466,24 @@ class LegacyAnonymousVoteMigrationServiceTest < ActiveSupport::TestCase
     assert_equal 1, result.dig(:counts, :detached_polls)
     assert_equal 1, result.dig(:counts, :detached_votes)
     assert_equal 1, result.dig(:counts, :legacy_reasons)
+  end
+
+  test "post-migration audit accepts extra ballots used to preserve duplicate legacy choices" do
+    baseline = LegacyAnonymousVoteMigrationAuditService.reference_baseline
+    stance = cast_vote(user: @admin, option: @poll.poll_options.first)
+    StanceChoice.insert_all!([{
+      stance_id: stance.id,
+      poll_option_id: @poll.poll_options.first.id,
+      score: 1
+    }])
+    close_legacy_poll
+    @poll.update_counts!
+
+    LegacyAnonymousVoteMigrationService.migrate!(poll: @poll)
+
+    assert_operator @poll.reload.anonymous_ballots.count, :>, @poll.decided_voters_count
+    result = LegacyAnonymousVoteMigrationAuditService.audit(dangling_baseline: baseline)
+    assert result[:ok], result[:errors].inspect
   end
 
   test "post-migration audit accepts native detached electorates" do

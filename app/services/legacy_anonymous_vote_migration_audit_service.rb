@@ -69,7 +69,12 @@ class LegacyAnonymousVoteMigrationAuditService
                         )
                         .to_h { |option_id, score, voters| [option_id, [score.to_i, voters.to_i]] }
       failures = []
-      failures << "submitted vote count differs" unless poll.anonymous_ballots.length == poll.decided_voters_count
+      # Corrupt legacy data can contain repeated choices for one stance. The
+      # conversion represents those choices with extra detached ballots so the
+      # option scores and voter counts remain unchanged. Fewer ballots than the
+      # observed participant count would indicate data loss; extra ballots are
+      # valid when they are required to preserve the observed results.
+      failures << "submitted vote count is lower than observed" if poll.anonymous_ballots.length < poll.decided_voters_count
       failures << "none-of-the-above count differs" unless poll.anonymous_ballots.count(&:none_of_the_above?) == poll.none_of_the_above_count
 
       poll.poll_options.each do |option|

@@ -11,7 +11,7 @@ class EnqueueLegacyAnonymousVoteMigrationsTest < ActiveSupport::TestCase
 
     assert_enqueued_jobs 3, only: MigrateLegacyAnonymousVotesWorker do
       LegacyAnonymousVoteMigrationService.stub(:eligible_poll_scope, cleanup_relation) do
-        LegacyAnonymousVoteMigrationCleanupService.stub(:remove_invalid_stances!, ->(poll:) { operations << poll.id }) do
+        LegacyAnonymousVoteMigrationCleanupService.stub(:remove_cross_poll_stance_choices!, ->(poll:) { operations << poll.id }) do
           Poll.stub(:where, relation) do
             EnqueueLegacyAnonymousVoteMigrations.new.up
           end
@@ -33,7 +33,7 @@ class EnqueueLegacyAnonymousVoteMigrationsTest < ActiveSupport::TestCase
     assert_no_enqueued_jobs only: MigrateLegacyAnonymousVotesWorker do
       assert_raises(LegacyAnonymousVoteMigrationCleanupService::CleanupError) do
         LegacyAnonymousVoteMigrationService.stub(:eligible_poll_scope, cleanup_relation) do
-          LegacyAnonymousVoteMigrationCleanupService.stub(:remove_invalid_stances!, ->(poll:) { raise error }) do
+          LegacyAnonymousVoteMigrationCleanupService.stub(:remove_cross_poll_stance_choices!, ->(poll:) { raise error }) do
             EnqueueLegacyAnonymousVoteMigrations.new.up
           end
         end

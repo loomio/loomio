@@ -145,7 +145,7 @@ namespace :loomio do
     scope.find_each do |poll|
       begin
         result = LegacyAnonymousVoteMigrationCleanupService.cleanup!(poll: poll)
-        puts "Cleaned anonymous poll #{poll.id}; removed #{result[:removed_stances]} invalid stances"
+        puts "Cleaned anonymous poll #{poll.id}; removed #{result[:removed_stance_choices]} cross-poll stance choices"
       rescue LegacyAnonymousVoteMigrationCleanupService::CleanupError => error
         failures << [poll.id, error.message]
         warn "Could not clean anonymous poll #{poll.id}: #{error.message}"

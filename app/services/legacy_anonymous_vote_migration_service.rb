@@ -51,17 +51,18 @@ class LegacyAnonymousVoteMigrationService
     result = Poll.transaction do
       poll.lock!
       validate_preconditions!(poll)
-      LegacyAnonymousVoteMigrationCleanupService.remove_invalid_stances!(poll: poll)
-      poll.update_counts!
+      LegacyAnonymousVoteMigrationCleanupService.remove_cross_poll_stance_choices!(poll: poll)
       poll.reload
 
       stances = poll.stances.latest.decided.order(:id).includes(:stance_choices).to_a
       stance_ids = poll.stances.pluck(:id)
       baseline = snapshot(poll, stances)
-      ballot_id_by_stance_id = stances.to_h { |stance| [stance.id, SecureRandom.uuid] }
+      ballot_ids_by_stance_id = stances.to_h do |stance|
+        [stance.id, Array.new(ballot_count_for_stance(stance)) { SecureRandom.uuid }]
+      end
 
-      insert_ballots!(poll, stances, ballot_id_by_stance_id)
-      reason_count = insert_reasons!(stances, ballot_id_by_stance_id)
+      insert_ballots!(poll, stances, ballot_ids_by_stance_id)
+      reason_count = insert_reasons!(stances, ballot_ids_by_stance_id)
       attachment_result = move_reason_attachments!(poll, stances)
       orphan_blob_ids.concat(attachment_result[:orphan_blob_ids])
       rebuild_poll_attachments!(poll) if attachment_result[:moved].positive?
@@ -75,7 +76,7 @@ class LegacyAnonymousVoteMigrationService
 
       {
         polls: 1,
-        ballots: stances.length,
+        ballots: ballot_ids_by_stance_id.values.sum(&:length),
         reasons: reason_count,
         attachments: attachment_result[:moved],
         electorate_records: electorate_count
@@ -138,6 +139,7 @@ class LegacyAnonymousVoteMigrationService
   def self.snapshot(poll, stances)
     {
       vote_count: stances.length,
+      ballot_count: stances.sum { |stance| ballot_count_for_stance(stance) },
       voter_count: poll.voters_count,
       undecided_voter_count: poll.undecided_voters_count,
       none_of_the_above_count: stances.count(&:none_of_the_above?),
@@ -182,31 +184,45 @@ class LegacyAnonymousVoteMigrationService
   end
   private_class_method :canonical_stv_input
 
-  def self.insert_ballots!(poll, stances, ballot_id_by_stance_id)
+  # Duplicate legacy choices affected the results users saw, so they cannot be
+  # collapsed into one detached choice. Represent each repeated layer as another
+  # anonymous ballot; this preserves option scores and voter counts without
+  # retaining any link back to the legacy stance.
+  def self.ballot_count_for_stance(stance)
+    stance.stance_choices.group_by(&:poll_option_id).values.map(&:length).max || 1
+  end
+  private_class_method :ballot_count_for_stance
+
+  def self.insert_ballots!(poll, stances, ballot_ids_by_stance_id)
     AnonymousBallot.insert_all!(
-      stances.map do |stance|
-        {
-          id: ballot_id_by_stance_id.fetch(stance.id),
-          poll_id: poll.id,
-          none_of_the_above: stance.none_of_the_above?
-        }
+      stances.flat_map do |stance|
+        ballot_ids_by_stance_id.fetch(stance.id).map.with_index do |ballot_id, index|
+          {
+            id: ballot_id,
+            poll_id: poll.id,
+            none_of_the_above: index.zero? && stance.none_of_the_above?
+          }
+        end
       end
     )
 
     choices = stances.flat_map do |stance|
-      stance.stance_choices.map do |choice|
-        {
-          anonymous_ballot_id: ballot_id_by_stance_id.fetch(stance.id),
-          poll_option_id: choice.poll_option_id,
-          score: choice.score
-        }
+      ballot_ids = ballot_ids_by_stance_id.fetch(stance.id)
+      stance.stance_choices.group_by(&:poll_option_id).flat_map do |_option_id, option_choices|
+        option_choices.map.with_index do |choice, index|
+          {
+            anonymous_ballot_id: ballot_ids.fetch(index),
+            poll_option_id: choice.poll_option_id,
+            score: choice.score
+          }
+        end
       end
     end
     AnonymousBallotChoice.insert_all!(choices) if choices.any?
   end
   private_class_method :insert_ballots!
 
-  def self.insert_reasons!(stances, ballot_id_by_stance_id)
+  def self.insert_reasons!(stances, ballot_ids_by_stance_id)
     reasons = stances.filter_map do |stance|
       next unless reason_preserved?(stance)
 
@@ -214,7 +230,7 @@ class LegacyAnonymousVoteMigrationService
       next if body.blank?
 
       {
-        anonymous_ballot_id: ballot_id_by_stance_id.fetch(stance.id),
+        anonymous_ballot_id: ballot_ids_by_stance_id.fetch(stance.id).first,
         body: body
       }
     end
@@ -321,7 +337,7 @@ class LegacyAnonymousVoteMigrationService
 
   def self.verify_detached_data!(poll, baseline)
     checks = {
-      vote_count: poll.anonymous_ballots.count == baseline[:vote_count],
+      ballot_count: poll.anonymous_ballots.count == baseline[:ballot_count],
       option_data: option_data_from_ballots(poll) == baseline[:option_data],
       none_of_the_above: poll.anonymous_ballots.where(none_of_the_above: true).count == baseline[:none_of_the_above_count],
       results: canonical_results(poll) == baseline[:results],
