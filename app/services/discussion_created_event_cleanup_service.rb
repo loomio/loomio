@@ -1,6 +1,14 @@
+# Historical data can contain discussions without a new_discussion event, or
+# new_discussion events whose discussion has been deleted. A discussion needs one
+# new_discussion event to anchor its topic timeline. This service creates missing
+# events, removes event families that no longer have a discussion, then repairs
+# the affected topic timelines.
 class DiscussionCreatedEventCleanupService
   def self.normalize!
     connection = ActiveRecord::Base.connection
+
+    # Remember affected topics before creating the missing new_discussion events
+    # so their timeline metadata can be rebuilt after the raw SQL changes.
     topic_ids = connection.select_values(<<~SQL)
       SELECT discussions.topic_id
       FROM discussions
@@ -15,6 +23,8 @@ class DiscussionCreatedEventCleanupService
       ORDER BY discussions.topic_id
     SQL
 
+    # A discussion with a topic must have one new_discussion event. Use the
+    # discussion's original author and timestamp when reconstructing it.
     connection.execute(<<~SQL)
       INSERT INTO events (
         kind,
@@ -54,6 +64,9 @@ class DiscussionCreatedEventCleanupService
       )
     SQL
 
+    # If the discussion has gone, none of its events can be rendered or repaired.
+    # Delete the whole event family, including notifications, rather than leaving
+    # records whose polymorphic eventable no longer exists.
     orphan_discussion_ids = <<~SQL.squish
       SELECT events.eventable_id
       FROM events
@@ -77,6 +90,8 @@ class DiscussionCreatedEventCleanupService
     connection.execute("DELETE FROM notifications WHERE event_id IN (#{orphan_event_ids})")
     connection.execute("DELETE FROM events WHERE id IN (#{orphan_event_ids})")
 
+    # Raw SQL bypasses Active Record and the callbacks that maintain topic order,
+    # parentage and cached counts, so explicitly restore those invariants.
     connection.clear_cache!
     Topic.where(id: topic_ids, discarded_at: nil).pluck(:id).each do |topic_id|
       TopicService.repair(topic_id)

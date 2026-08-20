@@ -1,3 +1,9 @@
+# Historical data can contain polls with no poll_created event, multiple
+# poll_created events, a poll_created event in the wrong topic, or events for a
+# Poll that has been deleted. These states make parent links and topic sequences
+# ambiguous. This service creates missing poll_created events, selects one
+# canonical event per poll, moves its children into the correct event tree,
+# removes duplicate and orphan event families, then repairs affected topics.
 class PollCreatedEventCleanupService
   TABLE_NORMALIZATION = "poll_created_event_normalization"
   TABLE_REPAIR = "poll_created_topic_repair"
@@ -5,6 +11,9 @@ class PollCreatedEventCleanupService
 
   def self.normalize!
     connection = ActiveRecord::Base.connection
+
+    # Temporary tables hold the decisions made from the original event graph.
+    # Keeping that snapshot stable lets later updates safely move and delete rows.
     [ TABLE_NORMALIZATION, TABLE_REPAIR, TABLE_REFRESH ].each do |table|
       connection.execute("DROP TABLE IF EXISTS #{table}")
     end
@@ -15,6 +24,8 @@ class PollCreatedEventCleanupService
     normalize_events(connection)
     refresh_topics(connection)
 
+    # Raw SQL bypasses the model callbacks, so run the full repair algorithm for
+    # every topic whose event tree may have changed.
     connection.clear_cache!
     repair_topic_ids = connection.select_values(
       "SELECT topic_id FROM #{TABLE_REPAIR} ORDER BY topic_id"
@@ -28,12 +39,15 @@ class PollCreatedEventCleanupService
       repaired_topics: repair_topic_ids.length
     }
   ensure
+    # Also remove the working tables when normalization raises part-way through.
     [ TABLE_NORMALIZATION, TABLE_REPAIR, TABLE_REFRESH ].each do |table|
       connection&.execute("DROP TABLE IF EXISTS #{table}")
     end
   end
 
   def self.insert_missing_events(connection)
+    # Create a missing poll_created event for every existing poll. Leave its topic
+    # placement empty until normalization determines where the poll belongs.
     connection.execute(<<~SQL)
       INSERT INTO events (
         kind,
@@ -62,6 +76,9 @@ class PollCreatedEventCleanupService
   end
 
   def self.create_normalization_table(connection)
+    # Rank every poll_created event so exactly one survives for each poll. Prefer
+    # the event already in the poll's topic, then the one owning the most timeline
+    # children, then the earliest sequence/id as deterministic tie-breakers.
     connection.execute(<<~SQL)
       CREATE TEMPORARY TABLE #{TABLE_NORMALIZATION} ON COMMIT DROP AS
       WITH child_counts AS (
@@ -117,11 +134,16 @@ class PollCreatedEventCleanupService
   end
 
   def self.create_topic_tables(connection)
+    # A full repair is required wherever changing the canonical root can alter an
+    # event tree: the old topic, the correct topic, or a topic containing children
+    # of a duplicate or orphan root.
     connection.execute(<<~SQL)
       CREATE TEMPORARY TABLE #{TABLE_REPAIR} (
         topic_id BIGINT PRIMARY KEY
       ) ON COMMIT DROP
     SQL
+    # Collect every topic whose event tree may be affected by a moved, duplicate,
+    # or orphan poll_created event. TopicService.repair processes this set later.
     connection.execute(<<~SQL)
       INSERT INTO #{TABLE_REPAIR} (topic_id)
       SELECT DISTINCT topic_id
@@ -174,6 +196,8 @@ class PollCreatedEventCleanupService
       ON CONFLICT DO NOTHING
     SQL
 
+    # Keep a smaller set for direct cache refreshes needed immediately after roots
+    # move or disappear. Some of these topics also receive a full repair afterward.
     connection.execute(<<~SQL)
       CREATE TEMPORARY TABLE #{TABLE_REFRESH} ON COMMIT DROP AS
       SELECT DISTINCT event_topic_id AS topic_id
@@ -197,6 +221,8 @@ class PollCreatedEventCleanupService
   end
 
   def self.normalize_events(connection)
+    # Preserve timeline events attached to duplicate poll_created events by moving
+    # them onto the selected canonical event before deleting the duplicates.
     connection.execute(<<~SQL)
       UPDATE events children
       SET parent_id = normalization.canonical_id
@@ -205,6 +231,8 @@ class PollCreatedEventCleanupService
         AND children.parent_id = normalization.event_id
     SQL
 
+    # Notifications refer directly to the duplicate root, so remove them before
+    # the event row to avoid dangling references.
     connection.execute(<<~SQL)
       DELETE FROM notifications
       WHERE event_id IN (
@@ -213,6 +241,8 @@ class PollCreatedEventCleanupService
         WHERE event_rank > 1
       )
     SQL
+    # Children and notifications no longer reference the duplicate poll_created
+    # events, so those duplicate rows can now be removed.
     connection.execute(<<~SQL)
       DELETE FROM events
       WHERE id IN (
@@ -222,6 +252,9 @@ class PollCreatedEventCleanupService
       )
     SQL
 
+    # Place the surviving poll_created event in the poll's actual topic. A poll
+    # that owns its topic starts the timeline at sequence 0; a poll inside another
+    # topic receives its sequence and parent later from TopicService.repair.
     connection.execute(<<~SQL)
       UPDATE events
       SET
@@ -248,6 +281,9 @@ class PollCreatedEventCleanupService
         AND topics.id = normalization.poll_topic_id
     SQL
 
+    # An event whose Poll no longer exists has no valid eventable. Remove every
+    # event in that poll family, not only poll_created, and detach any unrelated
+    # surviving child before deleting its missing parent.
     orphan_poll_ids = <<~SQL.squish
       SELECT DISTINCT events.eventable_id
       FROM events
@@ -272,6 +308,8 @@ class PollCreatedEventCleanupService
   end
 
   def self.refresh_topics(connection)
+    # Reparenting changes cached child_count values on both the removed event and
+    # its former parent. Recalculate those counts from surviving children.
     connection.execute(<<~SQL)
       WITH parent_ids AS (
         SELECT canonical_id AS id
@@ -296,6 +334,8 @@ class PollCreatedEventCleanupService
       WHERE parents.id = parent_ids.id
     SQL
 
+    # Rebuild the topic caches used to page timelines. This is sufficient for the
+    # refresh-only topics because their surviving events keep their existing order.
     connection.execute(<<~SQL)
       WITH ordered AS (
         SELECT

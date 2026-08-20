@@ -1,18 +1,32 @@
+# Some legacy anonymous polls contain stance choices for an option belonging to a
+# different poll, or contain the same option more than once in one stance. Those
+# stances could never represent valid votes and cannot be converted safely. This
+# service removes each invalid stance in full, refreshes affected poll counts,
+# repairs its topic timeline, and refuses to continue if existing detached ballot
+# data has ambiguous cross-poll ownership.
 class LegacyAnonymousVoteMigrationCleanupService
   class CleanupError < LegacyAnonymousVoteMigrationService::MigrationError; end
 
   def self.cleanup!(poll:)
     Poll.transaction(requires_new: true) do
+      # Serialize cleanup with voting/closing work and make all cleanup changes
+      # atomic for this poll.
       poll.lock!
       validate_poll!(poll)
 
+      # Old bugs allowed impossible stance-choice combinations. Such stances were
+      # never valid votes, so remove the complete stance before copying results.
       removed_stances = remove_invalid_stances!(poll: poll)
 
+      # Detached data may already exist after an interrupted attempt. Never delete
+      # a cross-poll detached choice automatically because ownership is ambiguous.
       mismatches = detached_ballot_choice_mismatches(poll.id)
       unless mismatches.empty?
         raise CleanupError, "Poll #{poll.id} has detached ballot choices for another poll: #{format_mismatches(mismatches)}"
       end
 
+      # Removing stance events can change the event tree. Repair it now and verify
+      # it before the migration service creates detached ballots.
       TopicService.repair(poll.topic_id)
       TopicService.verify_integrity!(poll.topic_id)
 
@@ -43,6 +57,8 @@ class LegacyAnonymousVoteMigrationCleanupService
   end
 
   def self.invalid_stance_ids(poll_id)
+    # A stance is invalid if any choice points at another poll's option, or if the
+    # same option was recorded more than once for that stance.
     cross_poll_ids = Stance
       .joins(stance_choices: :poll_option)
       .where(poll_id: poll_id)
@@ -64,6 +80,8 @@ class LegacyAnonymousVoteMigrationCleanupService
     stance_ids = invalid_stance_ids(poll.id)
     return 0 if stance_ids.empty?
 
+    # Cross-poll choices may have contributed to cached counts on both polls.
+    # Capture every affected poll before dependent choices are destroyed.
     affected_poll_ids = StanceChoice
       .joins(:poll_option)
       .where(stance_id: stance_ids)
