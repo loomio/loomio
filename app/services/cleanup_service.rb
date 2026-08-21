@@ -26,7 +26,8 @@
 # them: polymorphic comment parents and eventables; polymorphic reactions,
 # bookmarks, tasks, translations, search documents and attachments; comments
 # whose inverse timeline event is missing; invalid topic event roots; orphan
-# PaperTrail versions; and subscriptions which are no longer used by a group.
+# PaperTrail versions; retired polymorphic types left by removed models; and
+# subscriptions which are no longer used by a group.
 module CleanupService
   DELETE_BATCH_SIZE = 1_000
 
@@ -41,6 +42,15 @@ module CleanupService
     "Task" => %i[record_type record_id],
     "Topic" => %i[topicable_type topicable_id],
     "Translation" => %i[translatable_type translatable_id]
+  }.freeze
+
+  # These models and their tables have been removed. Their polymorphic rows
+  # cannot refer to a live application record and are safe to delete. Deleting
+  # a legacy Document attachment must not purge its blob because the document
+  # migration may have attached that same blob to its current parent record.
+  POLYMORPHIC_TYPES_RETIRED = {
+    "ActiveStorage::Attachment" => %w[Document],
+    "Event" => %w[GroupIdentity Invitation]
   }.freeze
 
   DANGLING_RECORD_SCOPES = {
@@ -77,6 +87,8 @@ module CleanupService
 
     puts "Dangling records:"
     print_audit_counts(audit[:dangling_records])
+    puts "Retired polymorphic types (will be deleted):"
+    print_audit_counts(audit[:retired_polymorphic_types])
     puts "Unresolved polymorphic types (not deleted):"
     print_audit_counts(audit[:unresolved_polymorphic_types])
 
@@ -104,6 +116,7 @@ module CleanupService
   def self.orphan_record_audit
     {
       dangling_records: dangling_record_scopes.transform_values { |scope| unique_count(scope) },
+      retired_polymorphic_types: retired_polymorphic_type_counts,
       unresolved_polymorphic_types: unresolved_polymorphic_type_counts
     }
   end
@@ -428,8 +441,10 @@ module CleanupService
   end
 
   def self.orphan_polymorphic_scope(record_class, type_column, id_column, record_type)
-    target_class = polymorphic_target_class(record_type)
     scope = record_class.where(type_column => record_type)
+    return scope if polymorphic_type_retired?(record_class.name, record_type)
+
+    target_class = polymorphic_target_class(record_type)
 
     return scope.none unless target_class
 
@@ -446,11 +461,28 @@ module CleanupService
       record_class = class_name.constantize
 
       record_class.group(type_column).count.each do |record_type, count|
-        next if record_type.blank? || polymorphic_target_class(record_type)
+        next if record_type.blank?
+        next if polymorphic_type_retired?(class_name, record_type)
+        next if polymorphic_target_class(record_type)
 
         counts["#{class_name}.#{record_type}"] = count
       end
     end
+  end
+
+  def self.retired_polymorphic_type_counts
+    POLYMORPHIC_TYPES_RETIRED.each_with_object({}) do |(class_name, record_types), counts|
+      record_class = class_name.constantize
+      type_column = POLYMORPHIC_REFERENCES.fetch(class_name).first
+
+      record_types.each do |record_type|
+        counts["#{class_name}.#{record_type}"] = record_class.where(type_column => record_type).count
+      end
+    end
+  end
+
+  def self.polymorphic_type_retired?(class_name, record_type)
+    POLYMORPHIC_TYPES_RETIRED.fetch(class_name, []).include?(record_type)
   end
 
   def self.polymorphic_target_class(record_type)

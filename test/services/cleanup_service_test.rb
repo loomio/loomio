@@ -153,7 +153,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
     live_version = PaperTrail::Version.create!(item_type: 'Group', item_id: group.id, event: 'update')
     orphan_version = PaperTrail::Version.create!(item_type: 'Group', item_id: Group.maximum(:id) + 100, event: 'update')
     removed_model_version_id = PaperTrail::Version.insert_all!(
-      [{ item_type: 'Motion', item_id: 1, event: 'update', created_at: Time.current }],
+      [ { item_type: 'Motion', item_id: 1, event: 'update', created_at: Time.current } ],
       returning: %w[id]
     ).rows.first.first
 
@@ -162,6 +162,40 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert PaperTrail::Version.exists?(live_version.id)
     assert_not PaperTrail::Version.exists?(orphan_version.id)
     assert_not PaperTrail::Version.exists?(removed_model_version_id)
+  end
+
+  test "delete_orphan_records deletes references to retired polymorphic types" do
+    blob = ActiveStorage::Blob.create!(
+      key: "retired-document-#{@hex}",
+      filename: "retired.txt",
+      service_name: ActiveStorage::Blob.service.name,
+      byte_size: 0,
+      checksum: "1B2M2Y8AsgTpgAmY7PhCfg==",
+      created_at: Time.current
+    )
+    attachment_id = ActiveStorage::Attachment.insert_all!([ {
+      blob_id: blob.id,
+      created_at: Time.current,
+      name: "file",
+      record_id: 1,
+      record_type: "Document"
+    } ], returning: %w[id]).rows.first.first
+    event_ids = Event.insert_all!([
+      { eventable_id: 1, eventable_type: "GroupIdentity", kind: "legacy", created_at: Time.current, updated_at: Time.current },
+      { eventable_id: 1, eventable_type: "Invitation", kind: "legacy", created_at: Time.current, updated_at: Time.current }
+    ], returning: %w[id]).rows.flatten
+
+    audit = CleanupService.audit_orphan_records
+
+    assert_equal 1, audit[:retired_polymorphic_types]["ActiveStorage::Attachment.Document"]
+    assert_equal 1, audit[:retired_polymorphic_types]["Event.GroupIdentity"]
+    assert_equal 1, audit[:retired_polymorphic_types]["Event.Invitation"]
+
+    CleanupService.delete_orphan_records
+
+    assert_not ActiveStorage::Attachment.exists?(attachment_id)
+    assert_not Event.exists?(id: event_ids)
+    assert ActiveStorage::Blob.exists?(blob.id)
   end
 
   test "destroy_orphan_users deletes long-inactive users with no durable references" do

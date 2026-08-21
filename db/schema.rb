@@ -346,6 +346,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_000003) do
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_discussion_created_event", unique: true, where: "(((eventable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_poll_created_event", unique: true, where: "(((eventable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
+    t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
