@@ -40,8 +40,8 @@ class ReactionQuery
     stance_ids_visible = Stance.joins(:poll)
                                .where(id: ids_requested[:stance_ids], poll_id: poll_ids_visible)
                                .where(
-                                 "polls.anonymous = TRUE OR polls.hide_results != :until_closed OR " \
-                                 "polls.closed_at IS NOT NULL OR stances.participant_id = :user_id",
+                                 "polls.hide_results != :until_closed OR polls.closed_at IS NOT NULL OR " \
+                                 "stances.participant_id = :user_id",
                                  until_closed: Poll.hide_results[:until_closed],
                                  user_id: user.id || 0
                                )

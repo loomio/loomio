@@ -180,6 +180,12 @@ class DiscussionTest < ActiveSupport::TestCase
     assert_includes discussion.mentioned_usernames, @alien.username
   end
 
+  test "can extract usernames containing underscores and hyphens" do
+    discussion = Discussion.new(description: "Hello @first_name-last!", description_format: 'md', author: @admin)
+
+    assert_equal ['first_name-last'], discussion.mentioned_usernames
+  end
+
   test "does not duplicate usernames" do
     discussion = Discussion.new(description: "Hello @#{@alien.username}! Goodbye @#{@alien.username}!", description_format: 'md', author: @admin)
     assert_equal [@alien.username], discussion.mentioned_usernames

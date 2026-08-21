@@ -1,17 +1,19 @@
 class StanceService
   def self.create(stance:, actor:)
-    raise CanCan::AccessDenied if stance.poll&.detached_anonymous?
-
     actor.ability.authorize!(:vote_in, stance.poll)
 
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.revoker_id = nil
-    stance.save!
-    stance.poll.update_counts!
+    event = Stance.transaction do
+      stance.save!
+      stance.poll.update_counts!
+      Events::StanceCreated.publish!(stance)
+    end
+
     Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
-    Events::StanceCreated.publish!(stance)
+    event
   end
 
   def self.uncast(stance:, actor:)
@@ -27,8 +29,6 @@ class StanceService
   end
 
   def self.update(stance: , actor: , params: )
-    raise CanCan::AccessDenied if stance.poll&.detached_anonymous?
-
     actor.ability.authorize!(:update, stance)
     params = params.to_h.with_indifferent_access.except(:poll_id)
     is_update = !!stance.cast_at
@@ -38,38 +38,37 @@ class StanceService
 
     event = Event.where(eventable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
 
-    if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
-      # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
+    stance_to_publish = nil
+    metric_name = nil
+    result = Stance.transaction do
+      if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
+        # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
-      new_stance.cast_at = Time.zone.now
-
-      Stance.transaction do
+        new_stance.cast_at = Time.zone.now
         stance.update_columns(latest: false)
         new_stance.save!
-      end
-
-      new_stance.poll.update_counts!
-      if stance.shared_update_visible?
-        MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
-      end
-      Sentry.metrics.count("stance.update", attributes: { poll_type: stance.poll.poll_type })
-      Events::StanceCreated.publish!(new_stance)
-    else
-      stance.stance_choices = []
-      stance.assign_attributes_and_files(params)
-      stance.cast_at ||= Time.zone.now
-      stance.revoked_at = nil
-      stance.revoker_id = nil
-      stance.save!
-      stance.poll.update_counts!
-      if is_update
-        Sentry.metrics.count("stance.update", attributes: { poll_type: stance.poll.poll_type })
-        Events::StanceUpdated.publish!(stance)
+        new_stance.poll.update_counts!
+        stance_to_publish = stance if stance.shared_update_visible?
+        metric_name = "stance.update"
+        Events::StanceCreated.publish!(new_stance)
       else
-        Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
-        Events::StanceCreated.publish!(stance)
+        stance.stance_choices = []
+        stance.assign_attributes_and_files(params)
+        stance.cast_at ||= Time.zone.now
+        stance.revoked_at = nil
+        stance.revoker_id = nil
+        stance.save!
+        stance.poll.update_counts!
+        metric_name = is_update ? "stance.update" : "stance.create"
+        is_update ? Events::StanceUpdated.publish!(stance) : Events::StanceCreated.publish!(stance)
       end
     end
+
+    if stance_to_publish
+      MessageChannelService.publish_models([stance_to_publish], group_id: stance.poll.group_id)
+    end
+    Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })
+    result
   end
 
   def self.redeem(stance:, actor:)

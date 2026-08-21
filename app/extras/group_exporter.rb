@@ -27,8 +27,6 @@ class GroupExporter
   end
 
   def value_for(model, field)
-    return nil if model.is_a?(Stance) && model.poll.anonymous? && %w[participant_id author_name created_at updated_at].include?(field)
-
     model.send(field)
   end
 

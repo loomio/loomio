@@ -18,6 +18,7 @@ class EventTest < ActiveSupport::TestCase
     }, actor: @admin)
 
     @discussion.save!
+    @discussion.create_missing_created_event!
 
     @user_thread_loud = create_unique_user("tloud")
     @user_thread_normal = create_unique_user("tnorm")
@@ -103,7 +104,16 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "database rejects a missing parent event" do
+    event = events(:public_discussion_comment_event)
+
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      event.update_columns(parent_id: Event.maximum(:id) + 100)
+    end
+  end
+
   test "user_mentioned notifies mentioned user" do
+    @mentioned_user.update!(username: 'mentioned-user')
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
     event = Events::UserMentioned.where(kind: :user_mentioned).last
@@ -117,8 +127,9 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "new_discussion notifies mentioned users" do
+    event = Events::NewDiscussion.find(@discussion.created_event.id)
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
-      event = Events::NewDiscussion.publish!(discussion: @discussion)
+      PublishEventWorker.perform_now(event.id)
       assert_equal 1, @discussion.mentioned_users.length
       assert_equal 2, event.subscribed_recipients.length
     end
@@ -313,21 +324,6 @@ class EventTest < ActiveSupport::TestCase
       event.notify_clients!
     end
     assert_equal 0, publish_count
-  end
-
-  test "stance_created keeps anonymous shared delivery behavior" do
-    @poll.update!(anonymous: true, hide_results: 'until_closed')
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Anonymous response', cast_at: Time.current)
-    event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
-
-    assert_not_empty event.subscribed_recipients
-    assert event.notify_chatbots?
-
-    publish_count = 0
-    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
-      event.notify_clients!
-    end
-    assert_operator publish_count, :>, 0
   end
 
   test "poll_announced does not email people with topic reader volume quiet" do

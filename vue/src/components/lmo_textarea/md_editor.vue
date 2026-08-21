@@ -51,7 +51,7 @@ const textarea = computed(() => {
 });
 
 const mentionHandles = computed(() => {
-  const handles = String(props.model[props.field]).matchAll(/(?:^|[^\w])@([a-z0-9_-]+)/gi);
+  const handles = String(props.model[props.field]).matchAll(/(?:^|[^\w])@([a-z0-9_]+(?:-[a-z0-9_]+)*)/gi);
   return Array.from(new Set(Array.from(handles, match => match[1].toLowerCase())));
 });
 const editorEmpty = computed(() => String(props.model[props.field]).trim().length === 0);
@@ -211,7 +211,7 @@ div(style="position: relative")
   .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
     v-btn(icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
-    v-btn(variant="text" size="small" @click="convertToHtmlHandler" v-t="'formatting.wysiwyg'")
+    v-btn.e2e-wysiwyg-btn(variant="text" size="small" @click="convertToHtmlHandler" v-t="'formatting.wysiwyg'")
     v-spacer
     v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")

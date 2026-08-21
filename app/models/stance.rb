@@ -34,8 +34,8 @@ class Stance < ApplicationRecord
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
         t.tags AS tags,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.participant_id END AS author_id,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.cast_at END AS authored_at,
+        stances.participant_id AS author_id,
+        stances.cast_at AS authored_at,
         #{content_str} AS content,
         to_tsvector('simple', #{content_str}) as ts_content,
         now() AS created_at,
@@ -47,7 +47,6 @@ class Stance < ApplicationRecord
       WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
         AND stances.redacted_at IS NULL
-        AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
         #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
         #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
@@ -107,7 +106,8 @@ class Stance < ApplicationRecord
   validate :valid_require_all_choices
   validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
-  validate :poll_options_must_match_stance_poll
+  validate :poll_is_not_anonymous
+  validate :poll_options_are_unique
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -134,7 +134,7 @@ class Stance < ApplicationRecord
   def create_missing_created_event!
     events.create(
       kind: created_event_kind,
-      user_id: (poll.anonymous? ? nil: author_id),
+      user_id: author_id,
       created_at: created_at,
       topic: (add_to_thread? ? poll.topic : nil)
     )
@@ -181,7 +181,7 @@ class Stance < ApplicationRecord
   end
 
   def shared_update_visible?
-    poll.anonymous? || poll.show_results?(voted: false)
+    poll.show_results?(voted: false)
   end
 
   def body
@@ -215,12 +215,8 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
-  end
-
   def real_participant
-    User.find_by(id: participant_id)
+    participant
   end
 
   def score_for(option)
@@ -230,27 +226,16 @@ class Stance < ApplicationRecord
   private
 
   def poll_id_cannot_change
-    errors.add(:poll_id, :invalid) if will_save_change_to_poll_id?
+    raise "Stance poll_id cannot change" if will_save_change_to_poll_id?
   end
 
-  def poll_options_must_match_stance_poll
-    invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
-    end
+  def poll_is_not_anonymous
+    errors.add(:poll, :invalid) if poll.anonymous?
+  end
 
-    if invalid_choices.any?
-      errors.add(:base, I18n.t(:"poll.error.poll_options_dont_match"))
-      Sentry.capture_message(
-        "Invalid Stance: mismatched poll_options",
-        level: :error,
-        extra: {
-          stance_id: id,
-          poll_id: poll_id,
-          invalid_choice_ids: invalid_choices.map(&:id),
-          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
-        }
-      )
-    end
+  def poll_options_are_unique
+    option_ids = stance_choices.map(&:poll_option_id)
+    raise "Stance poll options must be unique" if option_ids.uniq.length != option_ids.length
   end
 
   def valid_none_of_the_above

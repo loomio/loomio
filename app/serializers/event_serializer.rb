@@ -12,18 +12,6 @@ class EventSerializer < ApplicationSerializer
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
   end
 
-  def include_actor?
-    !anonymous_stance_event?
-  end
-
-  def include_actor_id?
-    !anonymous_stance_event?
-  end
-
-  def include_created_at?
-    !anonymous_stance_event?
-  end
-
   def include_eventable?
     !(object.kind == "new_discussion" && exclude_type?('discussion'))
   end
@@ -56,11 +44,5 @@ class EventSerializer < ApplicationSerializer
 
   def include_custom_fields?
     ["poll_edited", "discussion_edited", "discussion_moved"].include? object.kind
-  end
-
-  private
-
-  def anonymous_stance_event?
-    eventable.is_a?(Stance) && eventable.poll.anonymous?
   end
 end

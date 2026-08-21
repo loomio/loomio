@@ -45,7 +45,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def index
     instantiate_collection do |collection|
-      if !@poll.anonymous && name = params[:name].presence
+      if name = params[:name].presence
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
           where(latest: true, revoked_at: nil).
@@ -63,20 +63,16 @@ class Api::V1::StancesController < Api::V1::RestfulController
         collection = collection.undecided
       end
 
-      voted = @poll.anonymous? || @poll.stances.latest.decided.exists?(participant_id: current_user.id)
+      voted = @poll.stances.latest.decided.exists?(participant_id: current_user.id)
       if @poll.show_results?(voted: voted)
         if poll_option_id = params[:poll_option_id].presence
           collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
         end
-      elsif !@poll.anonymous?
+      else
         collection = collection.where(participant_id: current_user.id)
       end
 
-      if @poll.anonymous?
-        collection.order(:id)
-      else
-        collection.order('cast_at DESC NULLS LAST, created_at DESC')
-      end
+      collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
     respond_with_collection
   end
@@ -164,7 +160,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
     ).where("child_count > 0").pluck('eventable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
     MessageChannelService.publish_models(stances, user_id: current_user.id)
-    if poll.anonymous? || poll.show_results?(voted: false)
+    if poll.show_results?(voted: false)
       MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id)
     end
   end

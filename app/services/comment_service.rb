@@ -2,10 +2,13 @@ class CommentService
   def self.create(comment:, actor:)
     comment.author = actor
     actor.ability.authorize! :create, comment
-    comment.save!
-    comment.update_pg_search_document
-    Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
-    Events::NewComment.publish!(comment)
+
+    Comment.transaction do
+      comment.save!
+      comment.update_pg_search_document
+      Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
+      Events::NewComment.publish!(comment)
+    end
   end
 
   def self.discard(comment:, actor:)
@@ -34,9 +37,11 @@ class CommentService
     actor.ability.authorize!(:destroy, comment)
     Sentry.metrics.count("comment.destroy")
     topic_id = comment.topic.id
-    Comment.where(parent_type: 'Comment', parent_id: comment.id)
-           .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
-    comment.destroy
+    Comment.transaction do
+      Comment.where(parent_type: 'Comment', parent_id: comment.id)
+             .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
+      comment.destroy!
+    end
     RepairTopicWorker.perform_later(topic_id)
   end
 
@@ -49,10 +54,14 @@ class CommentService
       Sentry.metrics.count("comment.update_failed", attributes: { columns: comment.errors.attribute_names.join(',') })
       return false
     end
-    comment.save!
-    comment.update_versions_count
-    Sentry.metrics.count("comment.update")
+    event = Comment.transaction do
+      comment.save!
+      comment.update_versions_count
+      Sentry.metrics.count("comment.update")
+      Events::CommentEdited.publish!(comment, actor)
+    end
+
     EventBus.broadcast('comment_update', comment, actor)
-    Events::CommentEdited.publish!(comment, actor)
+    event
   end
 end

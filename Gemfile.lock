@@ -6,13 +6,6 @@ GIT
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
 
-GIT
-  remote: https://github.com/loomio/twitter-text.git
-  revision: 94340cce07304a7b9e5e59357dd1432de1627543
-  specs:
-    twitter-text (1.14.7)
-      unf (~> 0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -653,9 +646,6 @@ GEM
     tzinfo-data (1.2026.3)
       tzinfo (>= 1.0.0)
     uber (0.1.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.9.1)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
@@ -759,7 +749,6 @@ DEPENDENCIES
   stackprof
   terminal-table
   thruster
-  twitter-text!
   tzinfo-data
   uri (= 1.1.1)
   uuidtools

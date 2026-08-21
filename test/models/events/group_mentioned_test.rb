@@ -4,7 +4,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
   inline_jobs
   setup do
     hex = SecureRandom.hex(4)
-    @group = Group.create!(name: "GM Group #{hex}", handle: "gmgroup#{hex}", group_privacy: 'secret',
+    @group = Group.create!(name: "GM Group #{hex}", handle: "gm-group-#{hex}", group_privacy: 'secret',
                            members_can_announce: true)
     @actor = User.create!(name: "GM Actor #{SecureRandom.hex(4)}", email: "gmactor_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     @volume_quiet_member = User.create!(name: "Quiet #{SecureRandom.hex(4)}", email: "gmquiet_#{SecureRandom.hex(4)}@test.com", email_verified: true)

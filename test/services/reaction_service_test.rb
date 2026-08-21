@@ -26,6 +26,16 @@ class ReactionServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "rolls back reaction creation when event creation fails" do
+    assert_raises RuntimeError do
+      Events::ReactionCreated.stub(:publish!, ->(*) { raise "event failed" }) do
+        ReactionService.update(reaction: @reaction, params: { reaction: 'smiley' }, actor: @user)
+      end
+    end
+
+    assert_not Reaction.exists?(reactable: @comment, user: @user)
+  end
+
   test "does not notify if the user is no longer in the group" do
     @group.memberships.find_by(user: @user).destroy
 

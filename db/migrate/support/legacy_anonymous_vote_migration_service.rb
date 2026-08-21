@@ -1,3 +1,5 @@
+# This is the final 3.2 conversion implementation preserved as migration-only
+# code so 3.3 can safely support direct upgrades after removing runtime support.
 require "set"
 
 class LegacyAnonymousVoteMigrationService
@@ -20,7 +22,7 @@ class LegacyAnonymousVoteMigrationService
     scope = scope.where(id: poll_id) if poll_id
     scope = scope.limit(limit) if limit
 
-    stats = {polls: 0, ballots: 0, reasons: 0, attachments: 0, electorate_records: 0}
+    stats = { polls: 0, ballots: 0, reasons: 0, attachments: 0, electorate_records: 0 }
     scope.pluck(:id).each do |id|
       result = migrate!(poll: Poll.find(id))
       result.each { |key, value| stats[key] += value if stats.key?(key) }
@@ -58,7 +60,7 @@ class LegacyAnonymousVoteMigrationService
       stance_ids = poll.stances.pluck(:id)
       baseline = snapshot(poll, stances)
       ballot_ids_by_stance_id = stances.to_h do |stance|
-        [stance.id, Array.new(ballot_count_for_stance(stance)) { SecureRandom.uuid }]
+        [ stance.id, Array.new(ballot_count_for_stance(stance)) { SecureRandom.uuid } ]
       end
 
       insert_ballots!(poll, stances, ballot_ids_by_stance_id)
@@ -132,7 +134,6 @@ class LegacyAnonymousVoteMigrationService
     unless mismatches.empty?
       raise MigrationError, "Poll #{poll.id} has detached ballot choices for another poll"
     end
-
   end
   private_class_method :validate_preconditions!
 
@@ -153,7 +154,7 @@ class LegacyAnonymousVoteMigrationService
   private_class_method :snapshot
 
   def self.option_data_from_stances(stances)
-    data = Hash.new { |hash, option_id| hash[option_id] = {score: 0, voters: 0} }
+    data = Hash.new { |hash, option_id| hash[option_id] = { score: 0, voters: 0 } }
     stances.each do |stance|
       stance.stance_choices.each do |choice|
         data[choice.poll_option_id][:score] += choice.score
@@ -168,7 +169,7 @@ class LegacyAnonymousVoteMigrationService
     poll.anonymous_ballot_choices
         .group(:poll_option_id)
         .pluck(:poll_option_id, Arel.sql("SUM(score)"), Arel.sql("COUNT(DISTINCT anonymous_ballot_id)"))
-        .to_h { |option_id, score, voters| [option_id, {score: score.to_i, voters: voters.to_i}] }
+        .to_h { |option_id, score, voters| [ option_id, { score: score.to_i, voters: voters.to_i } ] }
   end
   private_class_method :option_data_from_ballots
 
@@ -279,7 +280,7 @@ class LegacyAnonymousVoteMigrationService
       end
     end
 
-    {moved: moved, orphan_blob_ids: orphan_blob_ids}
+    { moved: moved, orphan_blob_ids: orphan_blob_ids }
   end
   private_class_method :move_reason_attachments!
 
@@ -301,7 +302,7 @@ class LegacyAnonymousVoteMigrationService
                User.where(id: voter_ids).count == voter_ids.length
     return 0 unless complete
 
-    existing_user_ids = User.where(id: receipts.flat_map { |receipt| [receipt.voter_id, receipt.inviter_id] }.compact).pluck(:id).to_set
+    existing_user_ids = User.where(id: receipts.flat_map { |receipt| [ receipt.voter_id, receipt.inviter_id ] }.compact).pluck(:id).to_set
     AnonymousPollVoter.insert_all!(
       receipts.map do |receipt|
         {
@@ -374,7 +375,7 @@ class LegacyAnonymousVoteMigrationService
     event_ids_to_delete.concat(stance_event_ids)
 
     affected_parent_ids = (stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:third).uniq
-    affected_topic_ids = [poll.topic_id]
+    affected_topic_ids = [ poll.topic_id ]
     affected_topic_ids.concat((stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:second))
     affected_topic_ids.concat(Event.where(id: affected_parent_ids).where.not(topic_id: nil).distinct.pluck(:topic_id))
 

@@ -71,6 +71,22 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
+  test "database rejects anonymous stance voting" do
+    poll = create_poll
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch("stance"))
+    end
+  end
+
+  test "database rejects identified anonymous-ballot voting" do
+    poll = create_poll
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
+    end
+  end
+
   test "validates correctly if no poll option changes have been made" do
     poll = create_poll(poll_option_names: ["agree"])
     assert poll.valid?

@@ -450,6 +450,7 @@ zh_CN:
       sign_in_required_html: 您必须登录才能继续。请<a href="/dashboard" target="_blank">登录</a>后重新加载此页面以继续。
       bad_login: 抱歉，您提供的密码与我们存档的密码不符。
       username_must_be_alphanumeric: 用户名必须仅包含小写字母和数字。
+      username_must_use_valid_characters: 用户名只能包含小写字母、数字、下划线和内部连字符
   poll:
     error:
       cannot_add_options: 无法向此投票添加选项

@@ -5,17 +5,22 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.ensureSidebar()
-    page.click('.sidebar__user-dropdown')
-    page.click('.user-dropdown__list-item-button--profile')
+    page.goTo('profile')
+    page.waitFor('.profile-page__name-input input')
 
+    page.clearField('.profile-page__name-input input')
     page.fillIn('.profile-page__name-input input', 'Ferris Bueller')
-    page.fillIn('.profile-page__username-input input', 'ferrisbueller')
+    page.clearField('.profile-page__username-input input')
+    page.fillIn('.profile-page__username-input input', 'ferris_bueller-jr')
+    page.click('.profile-page .e2e-wysiwyg-btn')
+    page.waitFor('.profile-page .lmo-textarea div[contenteditable=true]')
+    page.fillIn('.profile-page .lmo-textarea div[contenteditable=true]', 'Save Ferris')
     page.click('.profile-page__update-button')
+    page.expectFlash('Profile updated')
 
-    page.ensureSidebar()
-    page.click('.sidebar-close-settings');
-    page.expectText('.sidebar__user-dropdown .v-list-item-title', 'Ferris Bueller')
+    page.goTo('u/ferris_bueller-jr')
+    page.expectText('.user-page__content', 'Ferris Bueller')
+    page.expectText('.user-page__content', 'Save Ferris')
   },
 
   'displays_a_user_and_their_non-secret_groups': (test) => {

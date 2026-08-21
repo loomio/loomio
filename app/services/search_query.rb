@@ -78,7 +78,7 @@ class SearchQuery
       candidates.reorder(rank.desc, :id)
     end
     candidates = candidates.limit(FUZZY_CANDIDATES_MAX)
-    candidate_ids = candidate_ids_without_anonymous_stances(candidates)
+    candidate_ids = candidates.pluck(:id)
 
     rel = relation.where(id: candidate_ids)
     rel = rel.where.not(id: excluding) if excluding.any?
@@ -131,16 +131,6 @@ class SearchQuery
 
   def documents
     PgSearch::Document.arel_table
-  end
-
-  def candidate_ids_without_anonymous_stances(candidates)
-    rows = candidates.reselect(:id, :searchable_type, :poll_id).to_a
-    stance_poll_ids = rows.filter_map { |row| row.poll_id if row.searchable_type == 'Stance' }
-    anonymous_poll_ids = Poll.where(id: stance_poll_ids, anonymous: true).pluck(:id)
-
-    rows.filter_map do |row|
-      row.id unless row.searchable_type == 'Stance' && anonymous_poll_ids.include?(row.poll_id)
-    end
   end
 
   def fuzzy_search?

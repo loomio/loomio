@@ -184,6 +184,7 @@ sv:
       recaptcha: Vi kunde inte verifiera att du inte är en robot. Var god försök igen!
       bad_login: Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat
       username_must_be_alphanumeric: Användarnamn får endast vara små bokstäver och siffror
+      username_must_use_valid_characters: Användarnamn får endast innehålla små bokstäver, siffror, understreck och interna bindestreck
   poll:
     error:
       cannot_add_options: Det går inte att lägga till alternativ i denna omröstning

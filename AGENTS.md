@@ -17,7 +17,7 @@
 
 ## Security review
 
-- Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests.
+- Treat voting, anonymous polls, permissions, authentication, and sessions as high-risk parts of Loomio. Changes touching these areas require an explicit security review and focused regression tests. Conduct the review directly unless the user explicitly requests a security-review plugin or tool.
 - For anonymous polls, review the complete data flow rather than only the primary serializer. Check API responses, nested serializers, events and timelines, search indexes, live updates, notifications, mailers, CSV/JSON exports, backups, and background jobs.
 - Review each access boundary separately: signed-out/public users, ordinary members, poll participants, coordinators/group administrators, instance administrators, and operators with database or backup access. Do not assume that authorization at one endpoint protects related endpoints or exports.
 - Test both direct disclosure and composition attacks. Individually harmless endpoints can reveal sensitive information when records are joined by IDs, timestamps, ordering, or shared events.
@@ -33,6 +33,7 @@
   - Name state markers for what they mean: use past-tense names such as `was_imported` when a boolean records historical origin, rather than implying it is the current mode. Name event predicates in past tense, such as `did_close_legacy_anonymous_voting?`, when they detect a completed change.
 - **Fix invariants at the shared method, not at each call site.** If several callers guard a shared method the same way (e.g. `TagService.authorize_create_tag_names!(discussion.group, ...)` from `discussion_service.rb`, `poll_service.rb`, and `topic_service.rb` all need to no-op for group-less/direct records), add the guard inside the shared method (`return if group.blank?`) instead of repeating it at every call site. Only reach for a call-site guard when the condition is truly specific to that one caller.
 - **Prefer coercion over presence guards when the callee already handles the empty case.** If a method already treats `nil`/`[]` as a no-op, call it unconditionally with `Array(value)` rather than wrapping the call in `if params.key?(:x)`. Only add a conditional when the callee can't safely handle the absent/empty case itself.
+- **Keep model service operations atomic.** When a service operation changes domain records and creates a corresponding event, wrap the model changes, dependent records, derived database state, and event creation in one database transaction. Publish realtime messages and perform other non-database side effects only after the transaction commits, so failed event creation cannot leave partial records or broadcast rolled-back state.
 - **Document complex methods that are more than framework boilerplate.** Add a concise high-level comment explaining the problem, important invariants, and non-obvious decisions or phases. Comment decision points where the reason is not evident from the code. Do not narrate straightforward Ruby or Rails operations line by line.
 
 ## Writing voice for user-facing content
@@ -138,6 +139,10 @@ Register-grooming completed so far:
 - When adding a method to `User` or `Group`, also add the corresponding method to the null object (`LoggedOutUser` or `NullGroup`) so logged-out and nil-group paths do not raise `NoMethodError`.
 
 ## Running Tests
+
+**Do not add tests that only restate documented Rails behaviour.** These tests
+do not establish the correctness of Loomio's application behaviour. Test the
+Loomio-specific invariant, integration, or user-visible outcome instead.
 
 **Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
 

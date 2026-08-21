@@ -32,6 +32,7 @@ class DiscussionCreatedEventCleanupServiceTest < ActiveSupport::TestCase
       topic: @discussion.topic,
       user: @user
     )
+    child.update_columns(parent_id: nil)
     root.delete
 
     result = DiscussionCreatedEventCleanupService.normalize!

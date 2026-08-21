@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_21_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -346,6 +346,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_discussion_created_event", unique: true, where: "(((eventable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_poll_created_event", unique: true, where: "(((eventable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
+    t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
@@ -555,10 +556,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "actor_id"
     t.datetime "created_at", precision: nil
-    t.integer "event_id"
+    t.integer "event_id", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", precision: nil
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.boolean "viewed", default: false, null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
@@ -686,7 +687,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
     t.string "icon"
     t.string "meaning"
     t.string "name", null: false
-    t.integer "poll_id"
+    t.integer "poll_id", null: false
     t.integer "priority", default: 0, null: false
     t.string "prompt"
     t.jsonb "score_counts", default: {}, null: false
@@ -820,6 +821,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
+    t.check_constraint "anonymous = true AND voting_system = 1 OR anonymous = false AND voting_system = 0", name: "polls_anonymous_voting_system"
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -1001,11 +1003,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.datetime "created_at", precision: nil
-    t.integer "poll_option_id"
+    t.integer "poll_option_id", null: false
     t.integer "score", default: 1, null: false
-    t.integer "stance_id"
+    t.integer "stance_id", null: false
     t.datetime "updated_at", precision: nil
     t.index ["poll_option_id"], name: "index_stance_choices_on_poll_option_id"
+    t.index ["stance_id", "poll_option_id"], name: "index_stance_choices_on_stance_id_and_poll_option_id", unique: true
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
 
@@ -1127,9 +1130,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
 
   create_table "tasks_users", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.bigint "task_id"
+    t.bigint "task_id", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["task_id"], name: "index_tasks_users_on_task_id"
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
@@ -1317,8 +1320,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "events", "events", column: "parent_id", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "notifications", "events", on_delete: :cascade
+  add_foreign_key "notifications", "users", on_delete: :cascade
+  add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -1327,4 +1334,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_000003) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
+  add_foreign_key "stance_choices", "stances", on_delete: :cascade
+  add_foreign_key "tasks_users", "tasks", on_delete: :cascade
+  add_foreign_key "tasks_users", "users", on_delete: :cascade
 end

@@ -108,7 +108,7 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def stance_ids_hidden_from_activity
-    polls = @topic.polls.reject(&:anonymous?)
+    polls = @topic.polls
     voted_poll_ids = Stance.latest.decided.where(
       poll_id: polls.map(&:id), participant_id: @recipient.id
     ).pluck(:poll_id)

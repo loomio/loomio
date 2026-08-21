@@ -32,6 +32,21 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_equal 0, reader.unread_items_count
   end
 
+  test "rolls back stance creation when event creation fails" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance.choice = @poll.poll_option_names.first
+
+    assert_raises RuntimeError do
+      Events::StanceCreated.stub(:publish!, ->(*) { raise "event failed" }) do
+        StanceService.create(stance: stance, actor: @user)
+      end
+    end
+
+    stance.reload
+    assert_nil stance.cast_at
+    assert_empty stance.stance_choices
+  end
+
   test "does not create an invalid stance" do
     invalid_stance = Stance.new(poll: @poll)
 
@@ -151,8 +166,9 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_equal 'Still in the original poll', stance.reason
 
     stance.poll = target_poll
-    refute stance.save
-    assert stance.errors[:poll_id].present?
+    error = assert_raises(RuntimeError) { stance.save! }
+    assert_equal "Stance poll_id cannot change", error.message
+    assert_equal @poll.id, stance.reload.poll_id
   end
 
   # -- Redeem --

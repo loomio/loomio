@@ -57,16 +57,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal results_off_poll.except('hide_results'), until_vote_poll.except('hide_results')
   end
 
-  test "users action returns participants for anonymous polls" do
-    @poll.update!(anonymous: true)
-    sign_in @admin
-    get :users, params: {poll_id: @poll.id}
-    assert_response :success
-
-    user_ids = JSON.parse(response.body).fetch('users').map { |user| user['id'] }
-    assert_includes user_ids, @admin.id
-  end
-
   test "users action returns the named electorate for detached anonymous polls with an empty query" do
     poll = create_detached_anonymous_poll
     sign_in @admin
@@ -178,49 +168,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     serialized_victim = JSON.parse(response.body).fetch('users').find { |user| user['id'] == victim.id }
     assert_not_nil serialized_victim
     assert_not serialized_victim.key?('email')
-  end
-
-  test "index hides identifying metadata for anonymous polls" do
-    @poll.update!(anonymous: true)
-    # Another user's stance exists from auto-creation
-    sign_in @admin
-    get :index, params: { poll_id: @poll.id }
-    assert_response :success
-
-    json = JSON.parse(response.body)
-    participant_ids = json['stances'].map { |s| s['participant_id'] }
-    # In anonymous polls, participant_ids should be nil
-    participant_ids.each do |pid|
-      assert_nil pid, "participant_id should be nil in anonymous poll"
-    end
-
-    json['stances'].each do |stance|
-      assert_not stance.key?('cast_at')
-      assert_not stance.key?('created_at')
-      assert_not stance.key?('updated_at')
-      assert_not stance.key?('order_at')
-    end
-  end
-
-  test "index does not reveal anonymous choices or voting order before results are visible" do
-    @poll.update!(anonymous: true, hide_results: 'until_closed')
-    @poll.stances.first.update_columns(cast_at: 1.minute.ago)
-    @poll.stances.last.update_columns(cast_at: 2.minutes.ago)
-    own_id = @poll.stances.find_by(participant_id: @admin.id).id
-
-    sign_in @admin
-    get :index, params: { poll_id: @poll.id }
-    assert_response :success
-
-    stances = JSON.parse(response.body)['stances']
-
-    assert_equal @poll.stances.latest.order(:id).pluck(:id), stances.map { |stance| stance['id'] }
-
-    # Other voters' choices stay hidden until results are visible.
-    stances.reject { |stance| stance['id'] == own_id }.each do |stance|
-      assert_not stance.key?('none_of_the_above')
-      assert_not stance.key?('option_scores')
-    end
   end
 
   # -- Revoke actions --
@@ -517,18 +464,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
-  test "index returns anonymous stances with their database ids in id order" do
-    anon = anon_poll_with_voters(4)
-    poll = anon[:poll]
-    sign_in anon[:voters].first
-
-    get :index, params: {poll_id: poll.id}
-    assert_response :success
-
-    exposed = JSON.parse(response.body)['stances'].map { |stance| stance['id'] }
-    assert_equal poll.stances.latest.order(:id).pluck(:id), exposed
-  end
-
   private
 
   def create_detached_anonymous_poll
@@ -545,33 +480,4 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     )
   end
 
-  def anon_poll_with_voters(count)
-    hex = SecureRandom.hex(4)
-    group = Group.new(name: "Anon#{hex}", group_privacy: 'secret', handle: "anon#{hex}")
-    group.creator = (creator = mk_voter("creator", hex))
-    group.save!
-    Membership.create!(user: creator, group: group, accepted_at: Time.current, admin: true)
-
-    voters = count.times.map { |i| v = mk_voter("v#{i}", hex); Membership.create!(user: v, group: group, accepted_at: Time.current); v }
-
-    poll = PollService.create(params: {
-      title: "Anon #{hex}", poll_type: "proposal", group_id: group.id,
-      hide_results: 'off', specified_voters_only: false,
-      poll_option_names: %w[agree disagree abstain], closing_at: 5.days.from_now
-    }, actor: creator)
-    poll.update!(anonymous: true)
-
-    voters.each_with_index do |v, i|
-      stance = poll.stances.undecided.find_by(participant_id: v.id, latest: true)
-      option = poll.poll_options[i % 2]
-      StanceService.update(stance: stance, actor: v, params: { stance_choices_attributes: [{ poll_option_id: option.id }] })
-    end
-
-    { poll: poll, group: group, voters: voters }
-  end
-
-  def mk_voter(name, hex)
-    uname = "#{name}#{hex}".delete('_')
-    User.create!(name: "#{name}#{hex}", email: "#{name}#{hex}@example.com", username: uname, email_verified: true)
-  end
 end

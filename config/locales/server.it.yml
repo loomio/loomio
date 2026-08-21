@@ -190,6 +190,7 @@ it:
       recaptcha: Non siamo stati in grado di verificare che tu non sia un robot. Riprova.
       bad_login: Spiacente, ma la password non corrisponde con quella che abbiamo archiviato.
       username_must_be_alphanumeric: I nomi utente devono avere solo lettere minuscole e numeri
+      username_must_use_valid_characters: I nomi utente possono contenere solo lettere minuscole, numeri, trattini bassi e trattini interni
   poll:
     error:
       cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio

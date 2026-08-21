@@ -26,6 +26,24 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_equal "My body is ready", comment.body
   end
 
+  test "rolls back comment creation when event creation fails" do
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "Do not leave this behind",
+      body_format: "md"
+    )
+
+    error = assert_raises RuntimeError do
+      Events::NewComment.stub(:publish!, ->(*) { raise "event failed" }) do
+        CommentService.create(comment: comment, actor: @user)
+      end
+    end
+
+    assert_equal "event failed", error.message
+    assert_not Comment.exists?(body: "Do not leave this behind")
+  end
+
   test "marks created comment as read for the author" do
     reader = TopicReader.for(user: @user, topic: @discussion.topic)
     reader.viewed!(@discussion.topic.ranges)
@@ -264,6 +282,30 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_difference "Comment.count", -1 do
       CommentService.destroy(comment: comment, actor: @user)
     end
+  end
+
+  test "destroying an event reparents its timeline children" do
+    comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
+    event = CommentService.create(comment: comment, actor: @user)
+    reply = Comment.new(parent: comment, author: @user, body: "Reply")
+    reply_event = CommentService.create(comment: reply, actor: @user)
+
+    event.destroy!
+
+    assert_equal event.parent_id, reply_event.reload.parent_id
+    assert_not CleanupService.events_missing_parent.exists?(id: reply_event.id)
+  end
+
+  test "destroying a topic root destroys its complete event tree" do
+    comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
+    event = CommentService.create(comment: comment, actor: @user)
+    reply = Comment.new(parent: comment, author: @user, body: "Reply")
+    reply_event = CommentService.create(comment: reply, actor: @user)
+
+    @discussion.created_event.destroy!
+
+    assert_not Event.exists?(event.id)
+    assert_not Event.exists?(reply_event.id)
   end
 
   test "does not destroy comment when unauthorized" do

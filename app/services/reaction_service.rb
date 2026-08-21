@@ -9,10 +9,14 @@ class ReactionService
       Sentry.metrics.count("reaction.create_failed", attributes: { columns: reaction.errors.attribute_names.join(',') })
       return false
     end
-    reaction.save!
+    event = Reaction.transaction do
+      reaction.save!
+      Events::ReactionCreated.publish!(reaction)
+    end
+
     Sentry.metrics.count("reaction.create", attributes: { reaction: reaction.reaction })
     EventBus.broadcast 'reaction_create', reaction, actor
-    Events::ReactionCreated.publish!(reaction)
+    event
   end
 
   def self.destroy(reaction:, actor:)

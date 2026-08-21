@@ -192,21 +192,8 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not_nil poll.reload.closed_at
   end
 
-  test "closing an anonymous poll removes voter identity from stances and events" do
-    poll = create_poll
-    poll.update!(anonymous: true)
-    stance = poll.stances.find_by!(participant_id: @user.id)
-    event = Event.create!(kind: 'stance_created', eventable: stance, user: @user)
-
-    PollService.close(poll: poll, actor: @user)
-
-    assert_nil stance.reload.participant_id
-    assert_nil event.reload.user_id
-  end
-
   test "does not allow change from anonymous to normal" do
-    poll = create_poll
-    poll.update!(anonymous: true)
+    poll = create_poll(anonymous: true)
     poll.anonymous = false
     assert_not poll.save
   end
@@ -508,26 +495,6 @@ class PollServiceTest < ActiveSupport::TestCase
 
     assert_nil event.reload.topic_id
     assert_equal({ events: 0, topics: 0, repair_topics: 0 }, stats)
-  end
-
-  test "backfill_standalone_poll_stance_thread_items repairs partially attached stance events" do
-    poll = create_poll(specified_voters_only: true)
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
-    stance = poll.stances.latest.find_by!(participant_id: @user.id)
-    stance.reason = "I agree"
-    stance.choice = "Agree"
-    stance.save!
-    event = Events::StanceCreated.publish!(stance)
-    event.update_columns(topic_id: poll.topic_id, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
-
-    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
-
-    event.reload
-    assert_equal 0, stats[:events]
-    assert_equal 0, stats[:topics]
-    assert_equal 1, stats[:repair_topics]
-    assert_equal poll.created_event.id, event.parent_id
-    assert_operator event.sequence_id, :>, 0
   end
 
   test "backfill_standalone_poll_stance_thread_items marks closed poll topics totally read" do

@@ -184,6 +184,7 @@ fi:
       recaptcha: Emme voineet vahvistaa, että et ole robotti. Yritä uudelleen!
       bad_login: Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa
       username_must_be_alphanumeric: Käyttäjänimien tulee olla vain pieniä kirjaimia ja numeroita
+      username_must_use_valid_characters: Käyttäjänimissä saa olla vain pieniä kirjaimia, numeroita, alaviivoja ja sisäisiä yhdysmerkkejä
   poll:
     error:
       cannot_add_options: Vaihtoehtoja ei voi lisätä tähän kyselyyn

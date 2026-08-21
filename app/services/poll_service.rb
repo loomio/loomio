@@ -53,21 +53,16 @@ class PollService
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
-      EventBus.broadcast('poll_create', poll, actor)
-      event = Events::PollCreated.publish!(poll, actor)
+      Events::PollCreated.publish!(poll, actor)
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
-      publish_topic_if_active(poll) if poll.opened_at
-      poll
     end
+    EventBus.broadcast('poll_create', poll, actor)
+    publish_topic_if_active(poll) if poll.opened_at
+    poll
   end
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    if poll.stance? && !poll.anonymous? && ActiveModel::Type::Boolean.new.cast(params[:anonymous])
-      poll.errors.add(:anonymous, :cannot_enable_legacy_anonymous_voting)
-      return false
-    end
-
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
       emails: params[:recipient_emails],
@@ -78,7 +73,6 @@ class PollService
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).except(:group_id, :topic_id)
     TagService.authorize_create_tag_names!(poll.group, topic_params[:tags], actor) if topic_params.key?(:tags)
-    poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
@@ -91,11 +85,13 @@ class PollService
       return false
     end
 
-    Poll.transaction do
+    was_opened = false
+    event = Poll.transaction do
+      poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
       poll.save!
       poll.update_counts!
 
-      open_poll_if_ready(poll)
+      was_opened = open_poll_if_ready(poll)
 
       ReindexPollWorker.perform_later(poll.id)
 
@@ -110,7 +106,6 @@ class PollService
       )
 
       Sentry.metrics.count("poll.update", attributes: { poll_type: poll.poll_type })
-      EventBus.broadcast('poll_update', poll, actor)
 
       Events::PollEdited.publish!(
         poll: poll,
@@ -121,6 +116,9 @@ class PollService
         recipient_message: params[:recipient_message]
       )
     end
+    EventBus.broadcast('poll_update', poll, actor)
+    publish_topic_if_active(poll) if was_opened
+    event
   end
 
   def self.invite(poll:, actor:, params:)
@@ -317,10 +315,10 @@ class PollService
     Poll.transaction do
       poll.save!
 
-      EventBus.broadcast('poll_reopen', poll, actor)
       Events::PollReopened.publish!(poll, actor)
       announce_poll_opened(poll) if poll.notify_on_open
     end
+    EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
   end
 
@@ -354,7 +352,9 @@ class PollService
     Poll.kept
         .where(opened_at: nil)
         .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
-        .each { |poll| open_poll_if_ready(poll) }
+        .each do |poll|
+          publish_topic_if_active(poll) if open_poll_if_ready(poll)
+        end
   end
 
   def self.group_members_added(group_id)
@@ -480,10 +480,10 @@ class PollService
         UPDATE events
         SET topic_id = candidate_events.topic_id,
             sequence_id = NULL,
-            parent_id = NULL,
+            parent_id = candidate_events.parent_id,
             position = 0,
             position_key = NULL,
-            depth = 0,
+            depth = 1,
             updated_at = CURRENT_TIMESTAMP
         FROM candidate_events
         WHERE events.id = candidate_events.event_id
@@ -546,7 +546,8 @@ class PollService
     <<~SQL.squish
       SELECT DISTINCT ON (events.eventable_id)
              events.id AS event_id,
-             polls.topic_id AS topic_id
+             polls.topic_id AS topic_id,
+             root_events.id AS parent_id
       FROM events
       INNER JOIN stances
         ON stances.id = events.eventable_id
@@ -557,6 +558,11 @@ class PollService
         ON topics.id = polls.topic_id
        AND topics.topicable_type = 'Poll'
        AND topics.topicable_id = polls.id
+      INNER JOIN events root_events
+        ON root_events.eventable_type = 'Poll'
+       AND root_events.eventable_id = polls.id
+       AND root_events.kind = 'poll_created'
+       AND root_events.topic_id = polls.topic_id
       WHERE events.kind IN ('stance_created', 'stance_updated')
         AND events.topic_id IS NULL
         AND stances.latest = TRUE
@@ -624,12 +630,6 @@ class PollService
       StanceReceipt.where(poll_id: poll.id).delete_all
       StanceReceipt.insert_all build_receipts(poll)
 
-      if poll.anonymous
-        stance_ids = poll.stances.select(:id)
-        Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
-        poll.stances.update_all(participant_id: nil)
-      end
-
       if poll.topic && poll.hide_results == 'until_closed'
         stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
         Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
@@ -664,15 +664,13 @@ class PollService
       end
     end
 
-    return [] if poll.anonymous && poll.closed_at
-
     poll.stances.latest.map do |stance|
       {
         poll_id: poll.id,
         voter_id: stance.participant_id,
         inviter_id: stance.inviter_id,
         invited_at: stance.created_at,
-        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+        vote_cast: !!stance.cast_at
       }
     end
   end
@@ -833,13 +831,15 @@ class PollService
   end
 
   def self.open_poll_if_ready(poll)
-    return if poll.opened_at
-    return unless poll.closing_at
-    return if poll.opening_at.present? && poll.opening_at > Time.now
+    return false if poll.opened_at
+    return false unless poll.closing_at
+    return false if poll.opening_at.present? && poll.opening_at > Time.now
 
-    poll.update(opened_at: Time.now)
-    announce_poll_opened(poll) if poll.notify_on_open
-    publish_topic_if_active(poll)
+    Poll.transaction do
+      poll.update!(opened_at: Time.now)
+      announce_poll_opened(poll) if poll.notify_on_open
+    end
+    true
   end
 
   def self.publish_topic_if_active(poll)

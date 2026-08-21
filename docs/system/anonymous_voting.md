@@ -4,15 +4,17 @@
 
 This document specifies the design and security guarantees for Loomio's anonymous voting system. It is the normative reference for implementation, review, testing, user documentation, and interface copy.
 
-Anonymous polls use detached ballots. Closed polls created under the legacy stance-based system are migrated according to the migration section in this document. Vote choices and readable reason text are preserved. Obsolete stance records and their rich-content features are removed only after per-poll verification.
+Anonymous polls use detached ballots. Loomio 3.2 migrated closed polls created
+under the legacy stance-based system after per-poll verification. Loomio 3.3
+requires that conversion to be complete and prevents anonymous stance polls
+from being stored. Vote choices and readable reason text remain preserved.
 
 The implementation distinguishes between identified polls, which use `Stance`,
 and anonymous polls, which use detached `AnonymousBallot` records. Anonymous
 polls converted from the legacy stance-based system may also contain read-only
 plain-text historical reasons.
 
-The voting system must be immutable after voting opens except for the verified,
-closed-poll legacy migration defined below.
+The voting system is immutable after voting opens.
 
 ## Purpose
 
@@ -30,7 +32,9 @@ A response to an identified poll. It is represented by `Stance` and may include 
 
 ### Legacy anonymous stance
 
-A `Stance` belonging to an anonymous poll created under the previous voting system. Legacy records retain their existing behavior and do not receive the guarantees in this document.
+A historical `Stance` belonging to an anonymous poll created under the previous
+voting system. Loomio 3.2 converted these records to detached ballots. Loomio
+3.3 refuses to migrate while any remain and does not support them at runtime.
 
 ### Anonymous poll voter
 
@@ -521,10 +525,10 @@ A regression test must demonstrate that no application-visible value can join an
 
 ## Legacy transition
 
-The transition is divided across two releases so active and scheduled legacy
-polls can finish normally.
+The transition was divided across two releases so active and scheduled legacy
+polls could finish normally.
 
-The conversion release retains stance-based anonymous voting only for existing
+Loomio 3.2 retained stance-based anonymous voting only for existing
 legacy polls. It cleans invalid legacy stances sequentially, then schedules one
 delayed, low-priority conversion job per topic. Each job converts the closed
 legacy polls in its topic; open and scheduled polls are skipped. Closing a
@@ -535,10 +539,10 @@ Each poll conversion is transactional and verifies its results, event tree, and
 deleted references before committing. Repeated jobs are harmless because a
 converted poll is no longer eligible.
 
-The removal release must refuse to migrate while any anonymous stance-based
+Loomio 3.3 refuses to migrate while any anonymous stance-based
 poll remains, including active, scheduled, closed, discarded, or archived
-records. Once none remain, it must prevent the legacy combination at the
-database and model boundaries and remove stance-specific anonymous behavior
+records. Once none remain, it prevents the legacy combination at the database
+and model boundaries and removes stance-specific anonymous behavior
 from application code. Detached ballots, legacy reasons, source receipts, and
 poll-level attachments remain available.
 

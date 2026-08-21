@@ -190,6 +190,7 @@ pl:
       recaptcha: Nie byliśmy w stanie zweryfikować, czy nie jesteś robotem. Proszę spróbuj ponownie!
       bad_login: Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane
       username_must_be_alphanumeric: Nazwy użytkowników muszą składać się wyłącznie z małych liter i cyfr
+      username_must_use_valid_characters: Nazwy użytkowników mogą zawierać wyłącznie małe litery, cyfry, podkreślenia i wewnętrzne łączniki
   poll:
     error:
       cannot_add_options: Nie można dodać opcji do tej ankiety

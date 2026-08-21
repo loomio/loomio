@@ -229,8 +229,8 @@ class TopicService
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
-      EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
+    EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     topicable
   end
 

@@ -184,6 +184,7 @@ sl:
       recaptcha: Nismo mogli preveriti, da niste robot. Prosim poskusite ponovno!
       bad_login: Žal se to geslo ne ujema s tistim, ki ga imamo v arhivu
       username_must_be_alphanumeric: Uporabniška imena morajo biti sestavljena samo iz malih črk in številk
+      username_must_use_valid_characters: Uporabniška imena lahko vsebujejo samo male črke, številke, podčrtaje in notranje vezaje
   poll:
     error:
       cannot_add_options: V to anketo ni mogoče dodati možnosti
