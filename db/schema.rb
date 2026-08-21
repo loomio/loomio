@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_21_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -555,10 +555,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "actor_id"
     t.datetime "created_at", precision: nil
-    t.integer "event_id"
+    t.integer "event_id", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", precision: nil
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.boolean "viewed", default: false, null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
@@ -1129,9 +1129,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
 
   create_table "tasks_users", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.bigint "task_id"
+    t.bigint "task_id", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["task_id"], name: "index_tasks_users_on_task_id"
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
@@ -1319,8 +1319,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "events", "events", column: "parent_id", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "notifications", "events", on_delete: :cascade
+  add_foreign_key "notifications", "users", on_delete: :cascade
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "sessions", "users"
@@ -1332,4 +1335,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_000002) do
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
+  add_foreign_key "tasks_users", "tasks", on_delete: :cascade
+  add_foreign_key "tasks_users", "users", on_delete: :cascade
 end

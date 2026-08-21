@@ -480,10 +480,10 @@ class PollService
         UPDATE events
         SET topic_id = candidate_events.topic_id,
             sequence_id = NULL,
-            parent_id = NULL,
+            parent_id = candidate_events.parent_id,
             position = 0,
             position_key = NULL,
-            depth = 0,
+            depth = 1,
             updated_at = CURRENT_TIMESTAMP
         FROM candidate_events
         WHERE events.id = candidate_events.event_id
@@ -546,7 +546,8 @@ class PollService
     <<~SQL.squish
       SELECT DISTINCT ON (events.eventable_id)
              events.id AS event_id,
-             polls.topic_id AS topic_id
+             polls.topic_id AS topic_id,
+             root_events.id AS parent_id
       FROM events
       INNER JOIN stances
         ON stances.id = events.eventable_id
@@ -557,6 +558,11 @@ class PollService
         ON topics.id = polls.topic_id
        AND topics.topicable_type = 'Poll'
        AND topics.topicable_id = polls.id
+      INNER JOIN events root_events
+        ON root_events.eventable_type = 'Poll'
+       AND root_events.eventable_id = polls.id
+       AND root_events.kind = 'poll_created'
+       AND root_events.topic_id = polls.topic_id
       WHERE events.kind IN ('stance_created', 'stance_updated')
         AND events.topic_id IS NULL
         AND stances.latest = TRUE

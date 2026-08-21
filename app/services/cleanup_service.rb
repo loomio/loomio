@@ -1,4 +1,48 @@
+# CleanupService repairs records which are already outside application
+# invariants. Its deletes must be callbackless and explicitly ordered: normal
+# callbacks can publish events, enqueue work, update counters, or traverse a
+# broken association graph. Application services and model callbacks remain
+# responsible for normal record lifecycle behavior.
+#
+# The following audits are temporary and should be removed after the named
+# foreign keys have been deployed and validated:
+# - groups_missing_parent: groups.parent_id -> groups.id
+# - memberships_missing_group: memberships.group_id -> groups.id
+# - membership_requests_missing_group: membership_requests.group_id -> groups.id
+# - discussions_missing_group and polls_missing_group: the topics.group_id key
+#   plus cascading topicable lifecycle keys
+# - poll_options_missing_poll: deployed poll_options.poll_id -> polls.id
+# - stances_missing_poll: stances.poll_id -> polls.id
+# - stance_choices_missing_stance: deployed stance_choices.stance_id -> stances.id
+# - outcomes_missing_poll: outcomes.poll_id -> polls.id
+# - topics_missing_group: topics.group_id -> groups.id
+# - topic_readers_missing_topic_or_user: topic_readers.topic_id/user_id
+# - events_missing_topic: events.topic_id -> topics.id
+# - events_missing_parent: deployed events.parent_id -> events.id
+# - notifications_missing_event_or_user: deployed notifications.event_id/user_id
+# - tasks_users_missing_task_or_user: deployed tasks_users.task_id/user_id keys
+#
+# These checks remain necessary because an ordinary foreign key cannot enforce
+# them: polymorphic comment parents and eventables; polymorphic reactions,
+# bookmarks, tasks, translations, search documents and attachments; comments
+# whose inverse timeline event is missing; invalid topic event roots; orphan
+# PaperTrail versions; and subscriptions which are no longer used by a group.
 module CleanupService
+  DELETE_BATCH_SIZE = 1_000
+
+  POLYMORPHIC_REFERENCES = {
+    "ActiveStorage::Attachment" => %i[record_type record_id],
+    "Bookmark" => %i[bookmarkable_type bookmarkable_id],
+    "Comment" => %i[parent_type parent_id],
+    "Event" => %i[eventable_type eventable_id],
+    "PgSearch::Document" => %i[searchable_type searchable_id],
+    "Reaction" => %i[reactable_type reactable_id],
+    "Tagging" => %i[taggable_type taggable_id],
+    "Task" => %i[record_type record_id],
+    "Topic" => %i[topicable_type topicable_id],
+    "Translation" => %i[translatable_type translatable_id]
+  }.freeze
+
   DANGLING_RECORD_SCOPES = {
     "Group.missing_parent" => :groups_missing_parent,
     "Membership.missing_group" => :memberships_missing_group,
@@ -11,74 +55,62 @@ module CleanupService
     "Outcome.missing_poll" => :outcomes_missing_poll,
     "Topic.missing_group" => :topics_missing_group,
     "TopicReader.missing_topic_or_user" => :topic_readers_missing_topic_or_user,
-    # A missing comment event is not proof that the comment is orphaned. Some
-    # live comments need their event reconstructed, while comments whose real
-    # polymorphic parent is gone can be deleted safely.
+    "Comment.missing_event" => :comments_missing_event,
     "Comment.missing_parent" => :comments_missing_parent,
+    "Event.missing_stance" => :events_missing_stance,
     "Event.missing_topic" => :events_missing_topic,
     "Notification.missing_event_or_user" => :notifications_missing_event_or_user,
+    "Reaction.missing_stance" => :reactions_missing_stance,
+    "Bookmark.missing_stance" => :bookmarks_missing_stance,
+    "Task.missing_stance" => :tasks_missing_stance,
+    "TasksUser.missing_task_or_user" => :tasks_users_missing_task_or_user,
+    "Translation.missing_stance" => :translations_missing_stance,
+    "PgSearch::Document.missing_stance" => :search_documents_missing_stance,
+    "ActiveStorage::Attachment.missing_stance" => :attachments_missing_stance,
     "Subscription.missing_group" => :subscriptions_missing_group
   }.freeze
 
-  ORPHAN_USER_REFERENCES = {
-    chatbots: %i[author_id],
-    comments: %i[user_id discarded_by],
-    demos: %i[author_id],
-    discussion_templates: %i[author_id discarded_by],
-    discussions: %i[author_id discarded_by],
-    events: %i[user_id],
-    groups: %i[creator_id],
-    member_email_aliases: %i[user_id author_id],
-    membership_requests: %i[requestor_id responder_id],
-    memberships: %i[user_id inviter_id revoker_id],
-    notifications: %i[user_id actor_id],
-    outcomes: %i[author_id],
-    poll_templates: %i[author_id],
-    polls: %i[author_id discarded_by],
-    reactions: %i[user_id],
-    stance_receipts: %i[voter_id inviter_id],
-    stances: %i[participant_id inviter_id revoker_id],
-    tasks: %i[author_id doer_id],
-    tasks_users: %i[user_id],
-    topic_readers: %i[user_id inviter_id revoker_id],
-    user_deactivation_responses: %i[user_id],
-    webhooks: %i[author_id actor_id]
-  }.freeze
-
   def self.audit_orphan_records
-
     audit = orphan_record_audit
 
     return audit if Rails.env.test?
 
     puts "Dangling records:"
     print_audit_counts(audit[:dangling_records])
-    puts "Orphan PaperTrail versions:"
-    print_audit_counts(audit[:orphan_versions])
+    puts "Unresolved polymorphic types (not deleted):"
+    print_audit_counts(audit[:unresolved_polymorphic_types])
 
     audit
   end
 
   def self.delete_orphan_records
-    dangling_record_scopes.each do |label, scope|
-      count = destroy_records(scope)
-      puts "destroyed #{count} dangling #{label} records" unless Rails.env.test?
+    loop do
+      count = dangling_record_scopes.sum do |label, scope|
+        next 0 if scope.klass == Comment
+
+        deleted = delete_records(scope)
+        puts "deleted #{deleted} dangling #{label} records" unless Rails.env.test?
+        deleted
+      end
+      count += delete_orphan_comments
+      count += delete_orphan_polymorphic_records
+      break if count.zero?
     end
 
+    cleanup_event_parent_references!
     delete_orphan_versions
   end
 
   def self.orphan_record_audit
     {
       dangling_records: dangling_record_scopes.transform_values { |scope| unique_count(scope) },
-      orphan_versions: orphan_version_scopes.transform_values(&:count)
+      unresolved_polymorphic_types: unresolved_polymorphic_type_counts
     }
   end
 
   # These categories need more than the original destroy-in-scope loop: some
-  # records must be repaired, some deleted in dependency order, and topic trees
-  # rebuilt afterward. Keep this report side-effect free so operators can review
-  # the complete plan before running any cleanup.
+  # records must be repaired and some deleted in dependency order. Keep this
+  # report side-effect free so operators can review the complete plan first.
   def self.reference_integrity_audit
     missing_parent_events = events_missing_parent
     invalid_root_events = events_invalid_root
@@ -104,24 +136,71 @@ module CleanupService
       events_referencing_missing_topic: unique_count(events_missing_topic),
       notifications_missing_event_or_user: unique_count(notifications_missing_event_or_user),
       reactions_missing_stance: unique_count(reactions_missing_stance),
-      tasks_users_missing_task: unique_count(tasks_users_missing_task),
+      bookmarks_missing_stance: unique_count(bookmarks_missing_stance),
+      tasks_missing_stance: unique_count(tasks_missing_stance),
+      tasks_users_missing_task_or_user: unique_count(tasks_users_missing_task_or_user),
       translations_missing_stance: unique_count(translations_missing_stance),
-      versions_missing_stance: orphan_version_scope_for("Stance").count,
       search_documents_missing_stance: unique_count(search_documents_missing_stance),
       attachments_missing_stance: unique_count(attachments_missing_stance),
-      announcement_missing_stance_ids: announcement_missing_stance_ids_count,
-      announcements_with_missing_stance_ids: announcements_with_missing_stance_ids_count,
       topics_affected: affected_topic_ids.length,
       topic_ids_sample: affected_topic_ids.sort.first(20)
     }
   end
 
-  def self.dangling_record_scopes
-    DANGLING_RECORD_SCOPES.transform_values { |method_name| public_send(method_name) }
+  def self.cleanup_event_parent_references!
+    Event.transaction do
+      events_missing_parent.find_each do |event|
+        if event.topic_id
+          parent = event.find_parent_event
+          raise "Event #{event.id} has no valid parent" unless parent&.topic_id == event.topic_id
+
+          event.update_columns(parent_id: parent.id, depth: parent.depth + 1)
+        elsif event.eventable
+          event.update_columns(parent_id: nil, depth: 0)
+        else
+          Event.where(id: event.id).delete_all
+        end
+      end
+
+      events_invalid_root.find_each do |event|
+        parent = event.find_parent_event
+        raise "Event #{event.id} has no valid parent" unless parent&.topic_id == event.topic_id
+
+        event.update_columns(parent_id: parent.id, depth: parent.depth + 1)
+      end
+    end
   end
 
-  def self.cleanup_tables
-    (dangling_record_scopes.values.map { |scope| scope.klass.table_name } + [PaperTrail::Version.table_name]).uniq.sort
+  # Delete comments which could not have appeared in a topic because either
+  # their polymorphic parent or their timeline event is gone. Repeat because
+  # deleting one such comment can expose its replies as another orphan layer.
+  def self.cleanup_comment_references!
+    Comment.transaction do
+      delete_orphan_comments
+      delete_orphan_polymorphic_records
+      cleanup_event_parent_references!
+    end
+  end
+
+  def self.delete_orphan_comments
+    count = 0
+
+    loop do
+      ids = (
+        comments_missing_parent.limit(1_000).pluck(:id) +
+        comments_missing_event.limit(1_000).pluck(:id)
+      ).uniq
+      break if ids.empty?
+
+      count += Comment.where(id: ids).delete_all
+    end
+
+    puts "deleted #{count} dangling Comment records" unless Rails.env.test?
+    count
+  end
+
+  def self.dangling_record_scopes
+    DANGLING_RECORD_SCOPES.transform_values { |method_name| public_send(method_name) }
   end
 
   def self.groups_missing_parent
@@ -252,10 +331,22 @@ module CleanupService
       .where(reactable_type: "Stance", stances: { id: nil })
   end
 
-  def self.tasks_users_missing_task
+  def self.bookmarks_missing_stance
+    Bookmark
+      .joins("LEFT JOIN stances ON bookmarks.bookmarkable_type = 'Stance' AND stances.id = bookmarks.bookmarkable_id")
+      .where(bookmarkable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.tasks_missing_stance
+    Task
+      .joins("LEFT JOIN stances ON tasks.record_type = 'Stance' AND stances.id = tasks.record_id")
+      .where(record_type: "Stance", stances: { id: nil })
+  end
+
+  def self.tasks_users_missing_task_or_user
     TasksUser
-      .joins("LEFT JOIN tasks ON tasks.id = tasks_users.task_id")
-      .where(tasks: { id: nil })
+      .joins("LEFT JOIN tasks ON tasks.id = tasks_users.task_id LEFT JOIN users ON users.id = tasks_users.user_id")
+      .where("tasks.id IS NULL OR users.id IS NULL")
   end
 
   def self.translations_missing_stance
@@ -274,30 +365,6 @@ module CleanupService
     ActiveStorage::Attachment
       .joins("LEFT JOIN stances ON active_storage_attachments.record_type = 'Stance' AND stances.id = active_storage_attachments.record_id")
       .where(record_type: "Stance", stances: { id: nil })
-  end
-
-  def self.announcement_missing_stance_ids_count
-    ActiveRecord::Base.connection.select_value(<<~SQL.squish).to_i
-      SELECT COUNT(*)
-      FROM events
-      CROSS JOIN LATERAL jsonb_array_elements_text(
-        COALESCE(events.custom_fields -> 'stance_ids', '[]'::jsonb)
-      ) stance_id
-      LEFT JOIN stances ON stances.id = stance_id::bigint
-      WHERE stances.id IS NULL
-    SQL
-  end
-
-  def self.announcements_with_missing_stance_ids_count
-    ActiveRecord::Base.connection.select_value(<<~SQL.squish).to_i
-      SELECT COUNT(DISTINCT events.id)
-      FROM events
-      CROSS JOIN LATERAL jsonb_array_elements_text(
-        COALESCE(events.custom_fields -> 'stance_ids', '[]'::jsonb)
-      ) stance_id
-      LEFT JOIN stances ON stances.id = stance_id::bigint
-      WHERE stances.id IS NULL
-    SQL
   end
 
   def self.subscriptions_missing_group
@@ -325,17 +392,73 @@ module CleanupService
     orphan_version_scope_for(item_type).delete_all
   end
 
-  def self.destroy_records(scope)
+  def self.delete_records(scope)
+    record_class = scope.klass
+    primary_key = record_class.primary_key
+    primary_key_column = record_class.arel_table[primary_key]
     count = 0
 
-    PaperTrail.request(enabled: false) do
-      scope.find_each do |record|
-        record.destroy!
-        count += 1
-      end
+    loop do
+      ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
+      break if ids.empty?
+
+      count += record_class.where(primary_key => ids).delete_all
     end
 
     count
+  end
+
+  def self.delete_orphan_polymorphic_records
+    POLYMORPHIC_REFERENCES.sum do |class_name, (type_column, id_column)|
+      record_class = class_name.constantize
+
+      record_class.distinct.pluck(type_column).compact.sum do |record_type|
+        count = delete_records(
+          orphan_polymorphic_scope(
+            record_class,
+            type_column,
+            id_column,
+            record_type
+          )
+        )
+        puts "deleted #{count} orphan #{class_name} #{record_type} records" unless Rails.env.test?
+        count
+      end
+    end
+  end
+
+  def self.orphan_polymorphic_scope(record_class, type_column, id_column, record_type)
+    target_class = polymorphic_target_class(record_type)
+    scope = record_class.where(type_column => record_type)
+
+    return scope.none unless target_class
+
+    record_table = record_class.quoted_table_name
+    target_table = target_class.quoted_table_name
+    record_id = record_class.connection.quote_column_name(id_column)
+    target_id = target_class.connection.quote_column_name(target_class.primary_key)
+
+    scope.where("NOT EXISTS (SELECT 1 FROM #{target_table} WHERE #{target_table}.#{target_id} = #{record_table}.#{record_id})")
+  end
+
+  def self.unresolved_polymorphic_type_counts
+    POLYMORPHIC_REFERENCES.each_with_object({}) do |(class_name, (type_column, _id_column)), counts|
+      record_class = class_name.constantize
+
+      record_class.group(type_column).count.each do |record_type, count|
+        next if record_type.blank? || polymorphic_target_class(record_type)
+
+        counts["#{class_name}.#{record_type}"] = count
+      end
+    end
+  end
+
+  def self.polymorphic_target_class(record_type)
+    target_class = record_type.safe_constantize
+    return unless target_class.is_a?(Class) && target_class < ActiveRecord::Base
+    return unless target_class.table_exists? && target_class.primary_key
+
+    target_class
   end
 
   def self.orphan_version_scope_for(item_type)
@@ -352,34 +475,6 @@ module CleanupService
     PaperTrail::Version
       .where(item_type: item_type)
       .where("NOT EXISTS (SELECT 1 FROM #{item_table} WHERE #{item_table}.#{primary_key} = #{version_table}.item_id)")
-  end
-
-  def self.destroy_orphan_users
-    user_ids = orphan_user_ids
-
-    if user_ids.empty?
-      puts "No orphan users to delete"
-      return
-    end
-
-    User.where(id: user_ids).find_each do |user|
-      PaperTrail::Version.where(item_type: 'User', item_id: user.id).delete_all
-      PgSearch::Document.where(author_id: user.id).delete_all
-
-      PaperTrail.request(enabled: false) do
-        user.destroy!
-      end
-    end
-
-    puts "Deleted #{user_ids.size} orphan users" unless Rails.env.test?
-  end
-
-  def self.orphan_user_ids
-    ORPHAN_USER_REFERENCES.reduce(User.where(deactivated_at: nil).where("last_sign_in_at < ?", 1.year.ago)) do |scope, (table, columns)|
-      columns.reduce(scope) do |column_scope, column|
-        column_scope.where("NOT EXISTS (SELECT 1 FROM #{table} WHERE #{table}.#{column} = users.id)")
-      end
-    end.pluck(:id)
   end
 
   def self.unique_count(scope)

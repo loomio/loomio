@@ -18,6 +18,7 @@ class EventTest < ActiveSupport::TestCase
     }, actor: @admin)
 
     @discussion.save!
+    @discussion.create_missing_created_event!
 
     @user_thread_loud = create_unique_user("tloud")
     @user_thread_normal = create_unique_user("tnorm")
@@ -103,6 +104,14 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "database rejects a missing parent event" do
+    event = events(:public_discussion_comment_event)
+
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      event.update_columns(parent_id: Event.maximum(:id) + 100)
+    end
+  end
+
   test "user_mentioned notifies mentioned user" do
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
@@ -117,8 +126,9 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "new_discussion notifies mentioned users" do
+    event = Events::NewDiscussion.find(@discussion.created_event.id)
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
-      event = Events::NewDiscussion.publish!(discussion: @discussion)
+      PublishEventWorker.perform_now(event.id)
       assert_equal 1, @discussion.mentioned_users.length
       assert_equal 2, event.subscribed_recipients.length
     end

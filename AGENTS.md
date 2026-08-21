@@ -140,6 +140,10 @@ Register-grooming completed so far:
 
 ## Running Tests
 
+**Do not add tests that only restate documented Rails behaviour.** These tests
+do not establish the correctness of Loomio's application behaviour. Test the
+Loomio-specific invariant, integration, or user-visible outcome instead.
+
 **Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
 
 ## Running E2E Tests

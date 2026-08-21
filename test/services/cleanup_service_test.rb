@@ -62,24 +62,53 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
-  test "delete_orphan_records does not delete comments only because their event topic is missing" do
+  test "delete_orphan_records deletes comments whose event topic is missing" do
     comment = comments(:public_discussion_comment)
     event = events(:public_discussion_comment_event)
     Topic.where(id: event.topic_id).delete_all
 
     CleanupService.delete_orphan_records
 
-    assert Comment.exists?(comment.id)
+    assert_not Comment.exists?(comment.id)
     assert_not Event.exists?(event.id)
   end
 
-  test "delete_orphan_records preserves a comment with a valid parent when its event is missing" do
+  test "delete_orphan_records deletes a comment when its event is missing" do
     comment = comments(:public_discussion_comment)
     comment.events.delete_all
 
     CleanupService.delete_orphan_records
 
-    assert Comment.exists?(comment.id)
+    assert_not Comment.exists?(comment.id)
+  end
+
+  test "delete_orphan_records deletes missing-parent comment forests" do
+    comment = comments(:public_discussion_comment)
+    Discussion.where(id: comment.parent_id).delete_all
+
+    CleanupService.delete_orphan_records
+
+    assert_not Comment.exists?(comment.id)
+  end
+
+  test "cleanup_comment_references deletes each layer of a missing-parent comment forest" do
+    comment = comments(:public_discussion_comment)
+    reply = Comment.create!(parent: comment, user: @user, body: "Reply to orphan")
+    Discussion.where(id: comment.parent_id).delete_all
+
+    CleanupService.cleanup_comment_references!
+
+    assert_not Comment.exists?(comment.id)
+    assert_not Comment.exists?(reply.id)
+  end
+
+  test "cleanup_comment_references deletes comments which have no timeline event" do
+    comment = comments(:public_discussion_comment)
+    comment.events.destroy_all
+
+    CleanupService.cleanup_comment_references!
+
+    assert_not Comment.exists?(comment.id)
   end
 
   test "audit_orphan_records reports comments with missing parents separately" do
@@ -89,7 +118,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
     audit = CleanupService.audit_orphan_records
 
     assert_equal 1, audit[:dangling_records]["Comment.missing_parent"]
-    assert_not audit[:dangling_records].key?("Comment.missing_event")
+    assert_equal 0, audit[:dangling_records]["Comment.missing_event"]
     assert Comment.exists?(comment.id)
   end
 
@@ -139,7 +168,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
     user = build_inactive_user
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
 
-    CleanupService.destroy_orphan_users
+    InactiveUserCleanupService.destroy_orphan_users
 
     assert_not User.exists?(user.id)
     assert_not PaperTrail::Version.exists?(item_type: 'User', item_id: user.id)
@@ -153,6 +182,6 @@ class CleanupServiceTest < ActiveSupport::TestCase
       group_privacy: 'secret'
     )
 
-    assert_not_includes CleanupService.orphan_user_ids, user.id
+    assert_not_includes InactiveUserCleanupService.orphan_user_ids, user.id
   end
 end

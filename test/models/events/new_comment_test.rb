@@ -23,6 +23,24 @@ class Events::NewCommentTest < ActiveSupport::TestCase
     assert_equal parent_event.id, child_event.parent_id
   end
 
+  test "does not attach a timeline comment to a topicless stance event" do
+    poll = PollService.create(params: {
+      poll_type: "poll",
+      title: "Topicless stance event",
+      poll_option_names: %w[Yes No],
+      closing_at: 1.day.from_now,
+      group_id: groups(:group).id,
+      notify_on_open: false
+    }, actor: @user)
+    stance = poll.stances.find_by!(participant: @user)
+    Event.create!(kind: "stance_created", eventable: stance, user: @user)
+    comment = Comment.create!(parent: stance, user: @user, body: "Stance comment")
+
+    event = Events::NewComment.publish!(comment)
+
+    assert_equal poll.created_event.id, event.parent_id
+  end
+
   test "returns an event" do
     comment = Comment.new(parent: @discussion, body: "Yet another", author: @user)
     result = Events::NewComment.publish!(comment)

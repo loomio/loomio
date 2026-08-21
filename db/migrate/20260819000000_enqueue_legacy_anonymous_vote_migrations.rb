@@ -1,12 +1,8 @@
 class EnqueueLegacyAnonymousVoteMigrations < ActiveRecord::Migration[8.0]
   def up
-    # The 3.2 conversion classes no longer exist in 3.3. Empty databases can
-    # continue, but installations with poll data must complete this migration
-    # while running 3.2 rather than attempting a direct upgrade.
-    return unless select_value("SELECT EXISTS (SELECT 1 FROM polls LIMIT 1)")
-
-    raise ActiveRecord::MigrationError,
-          "Existing installations must upgrade to Loomio 3.2 and complete the anonymous-poll conversion before upgrading to 3.3"
+    # Loomio 3.2 shipped this migration with its asynchronous conversion code.
+    # Direct 3.3 upgrades no longer load that runtime code; the later blocking
+    # migration completes the same conversion synchronously.
   end
 
   def down

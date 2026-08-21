@@ -21,6 +21,7 @@ class Event < ApplicationRecord
   before_create :set_parent_and_depth, if: :topic_id
   before_create :set_sequences, if: :topic_id
   after_rollback :reset_sequences, if: :topic_id
+  before_destroy :reparent_children
   before_destroy :reset_sequences, if: :topic_id
 
   after_create  :update_sequence_info!, if: :topic_id
@@ -165,6 +166,10 @@ class Event < ApplicationRecord
     TopicService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
   end
 
+  def reparent_children
+    Event.where(parent_id: id).update_all(parent_id: parent_id, depth: depth) if parent_id
+  end
+
   def next_sequence_id!
     unless SequenceService.seq_present?('topic_sequence_id', topic_id)
       val = Event.
@@ -202,7 +207,8 @@ class Event < ApplicationRecord
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'
       p = eventable.parent
-      p.is_a?(Event) ? p : (p&.topic_event || p&.created_event || topic&.topicable&.created_event)
+      candidate = p.is_a?(Event) ? p : p&.topic_event
+      candidate&.topic_id == topic_id ? candidate : topic&.topicable&.created_event
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
     when 'poll_created'

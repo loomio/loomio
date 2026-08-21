@@ -284,6 +284,30 @@ class CommentServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "destroying an event reparents its timeline children" do
+    comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
+    event = CommentService.create(comment: comment, actor: @user)
+    reply = Comment.new(parent: comment, author: @user, body: "Reply")
+    reply_event = CommentService.create(comment: reply, actor: @user)
+
+    event.destroy!
+
+    assert_equal event.parent_id, reply_event.reload.parent_id
+    assert_not CleanupService.events_missing_parent.exists?(id: reply_event.id)
+  end
+
+  test "destroying a topic root destroys its complete event tree" do
+    comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
+    event = CommentService.create(comment: comment, actor: @user)
+    reply = Comment.new(parent: comment, author: @user, body: "Reply")
+    reply_event = CommentService.create(comment: reply, actor: @user)
+
+    @discussion.created_event.destroy!
+
+    assert_not Event.exists?(event.id)
+    assert_not Event.exists?(reply_event.id)
+  end
+
   test "does not destroy comment when unauthorized" do
     comment = Comment.new(
       parent: @discussion,

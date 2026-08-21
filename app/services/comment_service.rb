@@ -37,9 +37,11 @@ class CommentService
     actor.ability.authorize!(:destroy, comment)
     Sentry.metrics.count("comment.destroy")
     topic_id = comment.topic.id
-    Comment.where(parent_type: 'Comment', parent_id: comment.id)
-           .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
-    comment.destroy
+    Comment.transaction do
+      Comment.where(parent_type: 'Comment', parent_id: comment.id)
+             .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
+      comment.destroy!
+    end
     RepairTopicWorker.perform_later(topic_id)
   end
 

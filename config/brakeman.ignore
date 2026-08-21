@@ -77,8 +77,8 @@
       "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:370)"
     },
     {
-      "fingerprint": "84f8776861c11b22f82bb4b287c74ba805c4c6360ad50246325e2bc21cd9d499",
-      "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:374)"
+      "fingerprint": "0f26078b37f774f110116889a3db2ee93bf3057821e9d9b8be1700f59e5e9958",
+      "note": "False positive 2026-08-21 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:479)"
     },
     {
       "fingerprint": "021d7026f913f6997626231b957fa3735439209627726fafc3dc88fcbfdc63c8",

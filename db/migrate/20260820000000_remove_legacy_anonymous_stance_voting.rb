@@ -22,7 +22,7 @@ class RemoveLegacyAnonymousStanceVoting < ActiveRecord::Migration[8.1]
         LIMIT 20
       SQL
       raise ActiveRecord::MigrationError,
-            "Loomio 3.3 requires every legacy anonymous poll to be converted by Loomio 3.2 first. " \
+            "Loomio 3.3 could not complete the legacy anonymous poll conversion. " \
             "Found #{legacy_poll_count} remaining poll(s); first IDs: #{legacy_poll_ids.join(', ')}"
     end
 
