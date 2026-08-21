@@ -85,7 +85,7 @@ export function useCommonMentioning(model) {
 export function useMdMentioning(model, field, textarea, query, mentions, navigatedUserIndex, suggestionListStyles, fetchMentionable, updateMentions) {
   const onKeyUp = (event) => {
     if ([38, 40, 13, 9].includes(event.keyCode)) { return; }
-    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@(\w*)$/);
+    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@([a-z0-9_-]*)$/i);
     if (res) {
       query.value = res[1].toLowerCase();
       fetchMentionable();

@@ -453,6 +453,7 @@ en:
         Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
       bad_login: Sorry, that password doesn't match the one we have on file
       username_must_be_alphanumeric: Usernames must be lower case letters and numbers only
+      username_must_use_valid_characters: Usernames must contain lower case letters, numbers, underscores, and internal hyphens only
   poll:
     error:
       cannot_add_options: Cannot add options to this poll

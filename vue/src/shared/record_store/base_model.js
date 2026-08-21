@@ -261,10 +261,14 @@ export default class BaseModel {
 
   beforeSave() { return true; }
 
-  save() {
-    reactive(this).processing = true;
+  prepareForSave() {
     this.beforeSave();
     this.beforeSaves.forEach(f => f());
+  }
+
+  save() {
+    reactive(this).processing = true;
+    this.prepareForSave();
 
     if (this.isNew()) {
       return Records[this.constructor.plural].remote.create(this.serialize())

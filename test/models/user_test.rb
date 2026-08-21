@@ -125,10 +125,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires username not have special characters" do
-    %w[username? username/ user_name user-name].each do |bad_username|
+    %w[username? username/ user.name].each do |bad_username|
       @user.username = bad_username
       @user.valid?
       assert @user.errors[:username].any?, "Expected errors for username '#{bad_username}'"
+    end
+  end
+
+  test "allows underscores and internal hyphens in usernames" do
+    %w[user_name user-name user_name-part].each do |username|
+      @user.username = username
+      assert @user.valid?, "Expected '#{username}' to be valid"
+    end
+  end
+
+  test "does not allow leading, trailing, or repeated hyphens in usernames" do
+    %w[-username username- user--name].each do |username|
+      @user.username = username
+      assert_not @user.valid?, "Expected '#{username}' to be invalid"
     end
   end
 

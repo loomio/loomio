@@ -113,6 +113,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "user_mentioned notifies mentioned user" do
+    @mentioned_user.update!(username: 'mentioned-user')
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
     event = Events::UserMentioned.where(kind: :user_mentioned).last

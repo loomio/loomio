@@ -32,7 +32,7 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
 
   updateProfile(user) {
     user.processing = true;
-    user.beforeSave();
+    user.prepareForSave();
     return this.remote.post('update_profile', merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken }))
     .catch(data => {
       if (data.errors) { user.setErrors(data.errors); }

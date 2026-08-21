@@ -50,7 +50,7 @@ class User < ApplicationRecord
   validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
-  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
+  validates_format_of :username, with: MentionParser::USERNAME_PATTERN, message: I18n.t(:'user.error.username_must_use_valid_characters')
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
