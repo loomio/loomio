@@ -189,6 +189,7 @@ pt_BR:
       recaptcha: Não pudemos verificar que você não é um robô, por favor tente novamente.
       bad_login: Desculpe, essa senha não confere com a que temos em arquivo
       username_must_be_alphanumeric: Nomes de usuário devem conter apenas letras minúsculas e números
+      username_must_use_valid_characters: Os nomes de usuário podem conter apenas letras minúsculas, números, sublinhados e hífens internos
   poll:
     error:
       cannot_add_options: Não é permitido adicionar opções a essa enquete

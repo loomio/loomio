@@ -190,6 +190,7 @@ nl_NL:
       recaptcha: We waren niet in staat om te verifiëren dat je geen robot bent. Probeer het nog eens!
       bad_login: Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben
       username_must_be_alphanumeric: Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan
+      username_must_use_valid_characters: Gebruikersnamen mogen alleen kleine letters, cijfers, underscores en interne koppeltekens bevatten
   poll:
     error:
       cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden

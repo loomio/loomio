@@ -179,6 +179,7 @@ ja:
       recaptcha: あなたがロボットではないことを確認できませんでした。もう一度試してください。
       bad_login: 申し訳ありませんが、そのパスワードはファイルにあるパスワードと一致しません
       username_must_be_alphanumeric: ユーザー名は小文字と数字のみである必要があります
+      username_must_use_valid_characters: ユーザー名には、小文字、数字、アンダースコア、および内部のハイフンのみ使用できます
   poll:
     error:
       cannot_add_options: この投票にオプションを追加できません

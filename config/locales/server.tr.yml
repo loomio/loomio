@@ -184,6 +184,7 @@ tr:
       recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!
       bad_login: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
       username_must_be_alphanumeric: Kullanıcı adları yalnızca küçük harf ve rakamlardan oluşmalıdır
+      username_must_use_valid_characters: Kullanıcı adları yalnızca küçük harfler, rakamlar, alt çizgiler ve iç kısa çizgiler içerebilir
   poll:
     error:
       cannot_add_options: Bu ankete seçenekler eklenemiyor

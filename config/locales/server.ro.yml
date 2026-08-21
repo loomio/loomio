@@ -184,6 +184,7 @@ ro:
       recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
       bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
       username_must_be_alphanumeric: Numele de utilizator trebuie să fie doar cu litere mici și cifre
+      username_must_use_valid_characters: Numele de utilizator pot conține numai litere mici, cifre, caractere de subliniere și cratime interne
   poll:
     error:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta

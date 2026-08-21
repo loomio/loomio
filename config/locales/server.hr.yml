@@ -184,6 +184,7 @@ hr:
       recaptcha: Nismo uspjeli potvrditi da niste robot. Molim te pokušaj ponovno!
       bad_login: Nažalost, ta lozinka ne odgovara onoj koju imamo u evidenciji
       username_must_be_alphanumeric: Korisnička imena moraju biti samo mala slova i brojke
+      username_must_use_valid_characters: Korisnička imena smiju sadržavati samo mala slova, brojeve, podvlake i unutarnje crtice
   poll:
     error:
       cannot_add_options: Ne mogu dodati opcije ovoj anketi

@@ -184,6 +184,7 @@ ca:
       recaptcha: No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!
       bad_login: Les contrasenyes no concorden
       username_must_be_alphanumeric: Els noms d'usuari només han de ser minúscules i números
+      username_must_use_valid_characters: Els noms d'usuari només poden contenir lletres minúscules, números, guions baixos i guions interns
   poll:
     error:
       cannot_add_options: No es poden afegir opcions a aquesta enquesta

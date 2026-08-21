@@ -184,6 +184,7 @@ da:
       recaptcha: Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!
       bad_login: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
       username_must_be_alphanumeric: Brugernavne må kun være små bogstaver og tal
+      username_must_use_valid_characters: Brugernavne må kun indeholde små bogstaver, tal, understregninger og interne bindestreger
   poll:
     error:
       cannot_add_options: Kan ikke tilføje valgmuligheder til denne afstemning

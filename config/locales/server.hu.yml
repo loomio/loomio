@@ -186,6 +186,7 @@ hu:
       recaptcha: Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!
       bad_login: Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal.
       username_must_be_alphanumeric: A felhasználónevek csak kisbetűsek és számok lehetnek
+      username_must_use_valid_characters: A felhasználónevek csak kisbetűket, számokat, aláhúzásjeleket és belső kötőjeleket tartalmazhatnak
   poll:
     error:
       cannot_add_options: Nem lehet lehetőségeket hozzáadni ehhez a szavazáshoz

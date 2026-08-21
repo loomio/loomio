@@ -185,6 +185,7 @@ es:
       recaptcha: No pudimos verificar que no eres un robot. Inténtalo de nuevo
       bad_login: Lo lamentamos, esa contraseña no coincide con la que tenemos archivada
       username_must_be_alphanumeric: 'El nombre de usuario debe contener solamente letras y dígitos en minúscula '
+      username_must_use_valid_characters: Los nombres de usuario solo pueden contener letras minúsculas, números, guiones bajos y guiones internos
   poll:
     error:
       cannot_add_options: No puedes añadir opciones en esta encuesta
