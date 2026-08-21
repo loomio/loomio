@@ -284,19 +284,16 @@ class PollCreatedEventCleanupService
     # An event whose Poll no longer exists has no valid eventable. Remove every
     # event in that poll family, not only poll_created, and detach any unrelated
     # surviving child before deleting its missing parent.
-    orphan_poll_ids = <<~SQL.squish
-      SELECT DISTINCT events.eventable_id
-      FROM events
-      WHERE events.eventable_type = 'Poll'
-        AND NOT EXISTS (
-          SELECT 1 FROM polls WHERE polls.id = events.eventable_id
-        )
-    SQL
     orphan_event_ids = <<~SQL.squish
       SELECT events.id
       FROM events
       WHERE events.eventable_type = 'Poll'
-        AND events.eventable_id IN (#{orphan_poll_ids})
+        AND (
+          events.eventable_id IS NULL
+          OR NOT EXISTS (
+            SELECT 1 FROM polls WHERE polls.id = events.eventable_id
+          )
+        )
     SQL
     connection.execute(<<~SQL)
       UPDATE events

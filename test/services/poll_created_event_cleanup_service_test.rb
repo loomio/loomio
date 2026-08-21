@@ -180,4 +180,25 @@ class PollCreatedEventCleanupServiceTest < ActiveSupport::TestCase
     assert_not Event.exists?(event_id)
     TopicService.verify_integrity!(@poll.topic_id)
   end
+
+  test "deletes poll events with a nil eventable id" do
+    event_id = Event.insert_all!([ {
+      kind: "poll_created",
+      eventable_type: "Poll",
+      eventable_id: nil,
+      topic_id: @poll.topic_id,
+      parent_id: @poll.created_event.id,
+      sequence_id: 1,
+      position: 1,
+      position_key: "00000-00001",
+      depth: 1,
+      created_at: Time.current,
+      updated_at: Time.current
+    } ]).rows.first.first
+
+    PollCreatedEventCleanupService.normalize!
+
+    assert_not Event.exists?(event_id)
+    TopicService.verify_integrity!(@poll.topic_id)
+  end
 end
