@@ -45,6 +45,19 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     assert_equal 0, reader.unread_items_count
   end
 
+  test "rolls back outcome creation when event creation fails" do
+    current_outcome = @poll.current_outcome
+
+    assert_raises RuntimeError do
+      Events::OutcomeCreated.stub(:publish!, ->(**) { raise "event failed" }) do
+        OutcomeService.create(outcome: @new_outcome, actor: @user)
+      end
+    end
+
+    assert_not Outcome.exists?(statement: @new_outcome.statement)
+    assert_equal current_outcome, @poll.reload.current_outcome
+  end
+
   test "does not create an invalid outcome" do
     @new_outcome.statement = ""
 

@@ -52,7 +52,6 @@ class DiscussionService
       )
 
       Sentry.metrics.count("discussion.create")
-      EventBus.broadcast('discussion_create', discussion, actor)
 
       Events::NewDiscussion.publish!(
         discussion: discussion,
@@ -61,6 +60,7 @@ class DiscussionService
         recipient_audience: params[:recipient_audience]
       )
     end
+    EventBus.broadcast('discussion_create', discussion, actor)
     discussion
   end
 

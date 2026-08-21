@@ -121,6 +121,26 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal initial_count + 1, group.memberships.count
   end
 
+  test "rolls back invitations when event creation fails" do
+    group = Group.create!(
+      name: 'Atomic invitations',
+      handle: "atomic-invitations-#{SecureRandom.hex(4)}",
+      creator: @user
+    )
+    group.add_admin!(@user)
+    email = "atomic-invite-#{SecureRandom.hex(4)}@example.com"
+
+    assert_raises RuntimeError do
+      Events::MembershipCreated.stub(:publish!, ->(**) { raise "event failed" }) do
+        GroupService.invite(group: group, actor: @user, params: { recipient_emails: [email] })
+      end
+    end
+
+    invited_user = User.find_by(email: email)
+    assert_nil invited_user
+    assert_not Membership.joins(:user).exists?(group: group, users: { email: email })
+  end
+
   test "does not mark membership as accepted if user doesnt belong to group already" do
     new_user = User.create!(
       name: 'Jim',

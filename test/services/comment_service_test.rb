@@ -26,6 +26,24 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_equal "My body is ready", comment.body
   end
 
+  test "rolls back comment creation when event creation fails" do
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "Do not leave this behind",
+      body_format: "md"
+    )
+
+    error = assert_raises RuntimeError do
+      Events::NewComment.stub(:publish!, ->(*) { raise "event failed" }) do
+        CommentService.create(comment: comment, actor: @user)
+      end
+    end
+
+    assert_equal "event failed", error.message
+    assert_not Comment.exists?(body: "Do not leave this behind")
+  end
+
   test "marks created comment as read for the author" do
     reader = TopicReader.for(user: @user, topic: @discussion.topic)
     reader.viewed!(@discussion.topic.ranges)

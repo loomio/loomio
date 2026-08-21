@@ -38,46 +38,49 @@ module GroupService
       actor: actor
     )
 
-    users = UserInviter.where_or_create!(
-      actor: actor,
-      model: group,
-      emails: params[:recipient_emails],
-      user_ids: params[:recipient_user_ids]
-    )
-
-    Group.where(id: group_ids).each do |g|
-      revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
-      revoked_memberships.update_all(
-        inviter_id: actor.id,
-        accepted_at: nil,
-        revoked_at: nil,
-        revoker_id: nil,
-        admin: false,
+    users = nil
+    Group.transaction do
+      users = UserInviter.where_or_create!(
+        actor: actor,
+        model: group,
+        emails: params[:recipient_emails],
+        user_ids: params[:recipient_user_ids]
       )
 
-      new_memberships = users.map do |user|
-        Membership.new(inviter: actor, user: user, group: g, volume: user.default_membership_volume)
+      Group.where(id: group_ids).each do |g|
+        revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
+        revoked_memberships.update_all(
+          inviter_id: actor.id,
+          accepted_at: nil,
+          revoked_at: nil,
+          revoker_id: nil,
+          admin: false,
+        )
+
+        new_memberships = users.map do |user|
+          Membership.new(inviter: actor, user: user, group: g, volume: user.default_membership_volume)
+        end
+
+        Membership.import(new_memberships, on_duplicate_key_ignore: true)
+
+        # mark as accepted all invitiations to people who are already part of the org.
+        other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+        existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
+        Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
+
+        g.update_pending_memberships_count
+        g.update_memberships_count
+        PollGroupMembersAddedWorker.perform_later(g.id)
       end
+      Group.update_org_members_count_for_group_ids(group_ids)
 
-      Membership.import(new_memberships, on_duplicate_key_ignore: true)
-
-      # mark as accepted all invitiations to people who are already part of the org.
-      other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
-      existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
-      Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
-
-      g.update_pending_memberships_count
-      g.update_memberships_count
-      PollGroupMembersAddedWorker.perform_later(g.id)
+      Events::MembershipCreated.publish!(
+        group: group,
+        actor: actor,
+        recipient_user_ids: users.pluck(:id),
+        recipient_message: params[:recipient_message]
+      )
     end
-    Group.update_org_members_count_for_group_ids(group_ids)
-
-    Events::MembershipCreated.publish!(
-      group: group,
-      actor: actor,
-      recipient_user_ids: users.pluck(:id),
-      recipient_message: params[:recipient_message]
-    )
 
     Sentry.metrics.count("membership.invite", attributes: { recipient_count: users.size })
     Membership.active.where(group_id: group.id, user_id: users.pluck(:id))

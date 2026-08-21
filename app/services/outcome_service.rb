@@ -8,14 +8,17 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
-    users = UserInviter.where_or_create!(actor: actor,
-                                         model: outcome,
-                                         emails: params[:recipient_emails],
-                                         user_ids: params[:recipient_user_ids],
-                                         audience: params[:recipient_audience],
-                                         include_actor: params[:include_actor].present?)
+    users = nil
+    Outcome.transaction do
+      users = UserInviter.where_or_create!(actor: actor,
+                                           model: outcome,
+                                           emails: params[:recipient_emails],
+                                           user_ids: params[:recipient_user_ids],
+                                           audience: params[:recipient_audience],
+                                           include_actor: params[:include_actor].present?)
 
-    Events::OutcomeAnnounced.publish!(outcome, actor, users.pluck(:id), params[:recipient_audience])
+      Events::OutcomeAnnounced.publish!(outcome, actor, users.pluck(:id), params[:recipient_audience])
+    end
     users
   end
 
@@ -33,24 +36,26 @@ class OutcomeService
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
       return false
     end
-    outcome.poll.outcomes.update_all(latest: false)
+    event = Outcome.transaction do
+      outcome.poll.outcomes.update_all(latest: false)
+      outcome.save!
 
-    outcome.save!
+      users = UserInviter.where_or_create!(actor: actor,
+                                           emails: params[:recipient_emails],
+                                           user_ids: params[:recipient_user_ids],
+                                           model: outcome,
+                                           audience: params[:recipient_audience],
+                                           include_actor: params[:include_actor].present?)
 
-    users = UserInviter.where_or_create!(actor: actor,
-                                         emails: params[:recipient_emails],
-                                         user_ids: params[:recipient_user_ids],
-                                         model: outcome,
-                                         audience: params[:recipient_audience],
-                                         include_actor: params[:include_actor].present?)
+      Events::OutcomeCreated.publish!(outcome: outcome,
+                                      recipient_user_ids: users.pluck(:id),
+                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                      recipient_audience: params[:recipient_audience])
+    end
 
     Sentry.metrics.count("outcome.create")
     EventBus.broadcast 'outcome_create', outcome, actor
-
-    Events::OutcomeCreated.publish!(outcome: outcome,
-                                    recipient_user_ids: users.pluck(:id),
-                                    recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                    recipient_audience: params[:recipient_audience])
+    event
   end
 
   def self.update(outcome:, actor:, params: {})
@@ -68,24 +73,27 @@ class OutcomeService
       return false
     end
 
-    outcome.save!
-    outcome.update_versions_count
+    event = Outcome.transaction do
+      outcome.save!
+      outcome.update_versions_count
 
-    users = UserInviter.where_or_create!(actor: actor,
-                                         emails: params[:recipient_emails],
-                                         user_ids: params[:recipient_user_ids],
-                                         model: outcome,
-                                         audience: params[:recipient_audience],
-                                         include_actor: params[:include_actor].present?)
+      users = UserInviter.where_or_create!(actor: actor,
+                                           emails: params[:recipient_emails],
+                                           user_ids: params[:recipient_user_ids],
+                                           model: outcome,
+                                           audience: params[:recipient_audience],
+                                           include_actor: params[:include_actor].present?)
+
+      Events::OutcomeUpdated.publish!(outcome: outcome,
+                                      actor: actor,
+                                      recipient_user_ids: users.pluck(:id),
+                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                      recipient_audience: params[:recipient_audience])
+    end
 
     Sentry.metrics.count("outcome.update")
     EventBus.broadcast 'outcome_update', outcome, actor
-
-    Events::OutcomeUpdated.publish!(outcome: outcome,
-                                    actor: actor,
-                                    recipient_user_ids: users.pluck(:id),
-                                    recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                    recipient_audience: params[:recipient_audience])
+    event
   end
 
   def self.publish_review_due

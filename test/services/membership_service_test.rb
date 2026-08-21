@@ -65,6 +65,23 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_nil membership.reload.accepted_at
   end
 
+  test "redeem rolls back acceptance when event creation fails" do
+    membership = Membership.create!(
+      user: @user,
+      group: @group,
+      inviter: @admin,
+      accepted_at: nil
+    )
+
+    assert_raises RuntimeError do
+      Events::InvitationAccepted.stub(:publish!, ->(*) { raise "event failed" }) do
+        MembershipService.redeem(membership: membership, actor: @user)
+      end
+    end
+
+    assert_nil membership.reload.accepted_at
+  end
+
   test "redeem handles simple case with inviter" do
     new_membership = Membership.create!(
       user_id: @user.id,
