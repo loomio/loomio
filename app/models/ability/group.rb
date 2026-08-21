@@ -36,6 +36,10 @@ module Ability::Group
       user.email_verified? && group.members.exists?(user.id)
     end
 
+    can :report, ::Group do |group|
+      !group.archived_at && (user.is_admin? || group.members.exists?(user.id))
+    end
+
     can [:move_discussions_to], ::Group do |group|
       user.email_verified? &&
       (group.admins.exists?(user.id) ||

@@ -2613,6 +2613,12 @@ fi:
     tags_per_interval: Tagit per %{interval}
     all_groups_and_direct_threads: Kaikki ryhmät ja suorat ketjut
     custom_selection: Mukautettu valinta
+    whole_server: Koko palvelin
+    whole_server_help: Tämä raportti sisältää aktiviteetin jokaiselta ryhmältä ja suoralta ketjulta tällä palvelimella.
+    group_and_subgroups: "%{group} ja alaryhmät"
+    group_and_subgroups_help: Tämä raportti sisältää toiminnan ryhmästä %{group} ja sen käytettävissä olevista aliryhmistä. Salaiset aliryhmät sisällytetään vain, jos kuulut niihin.
+    group_only: Vain %{group}
+    group_only_help: Tämä raportti sisältää vain %{group}:n toiminnan. Yläryhmän ylläpitäjät voivat myös raportoida yläryhmästä ja sen saavutettavista aliryhmistä.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Olet suorittanut kaikki vaiheet!"
     getting_started_checklist: Aloittamisen tarkistuslista

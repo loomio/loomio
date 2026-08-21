@@ -1287,6 +1287,12 @@ zh_CN:
     tags_per_interval: 每%{interval}的标签数量
     all_groups_and_direct_threads: 所有群组和直接讨论串
     custom_selection: 自定义选择
+    whole_server: 整个服务器
+    whole_server_help: 本报告包含此服务器上所有群组和直接讨论串的活动。
+    group_and_subgroups: "%{group} 和子组"
+    group_and_subgroups_help: 本报告包含 %{group} 及其可访问子群组的活动。只有当您属于某个秘密子群组时，才会包含这些子群组的活动。
+    group_only: 仅限 %{group}
+    group_only_help: 本报告仅包含 %{group} 的活动。父组管理员还可以报告父组及其可访问的子组的活动。
   group_page:
     stats: 子群组统计数据
     participation_report: 参与报告

@@ -97,9 +97,9 @@ export default new class GroupService {
         icon: 'mdi-chart-bar',
         menu: true,
         canPerform() {
-          return membership && group.membersInclude(Session.user());
+          return Session.user().isAdmin || (membership && group.membersInclude(Session.user()));
         },
-        to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
+        to() { return `/report/?group_id=${group.id}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
       },
 
       edit_tags: {

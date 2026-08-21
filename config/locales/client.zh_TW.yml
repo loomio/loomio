@@ -2641,6 +2641,12 @@ zh_TW:
     tags_per_interval: 每%{interval}的標籤數量
     all_groups_and_direct_threads: 所有群組和直接討論串
     custom_selection: 自訂選擇
+    whole_server: 整個伺服器
+    whole_server_help: 本報告包含此伺服器上所有群組和直接討論串的活動。
+    group_and_subgroups: "%{group} 和子群組"
+    group_and_subgroups_help: 本報告包含 %{group} 及其可存取子群組的活動。只有當您屬於某個秘密子群組時，才會包含這些子群組的活動。
+    group_only: 僅限 %{group}
+    group_only_help: 本報告僅包含 %{group} 的活動。父組管理員也可以報告父組及其可存取的子組的活動。
   tips:
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
     getting_started_checklist: 入門清單

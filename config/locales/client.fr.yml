@@ -2657,6 +2657,12 @@ fr:
     tags_per_interval: Étiquettes par %{interval}
     all_groups_and_direct_threads: Tous les groupes et les discussions directes
     custom_selection: Sélection personnalisée
+    whole_server: Serveur entier
+    whole_server_help: Ce rapport inclut l'activité de chaque groupe et de chaque fil de discussion direct sur ce serveur.
+    group_and_subgroups: "%{group} et sous-groupes"
+    group_and_subgroups_help: Ce rapport inclut l'activité du groupe %{group} et de ses sous-groupes accessibles. Les sous-groupes secrets ne sont inclus que si vous en êtes membre.
+    group_only: "%{group} uniquement"
+    group_only_help: Ce rapport inclut uniquement l'activité du groupe %{group}. Les administrateurs du groupe parent peuvent également générer des rapports sur le groupe parent et ses sous-groupes accessibles.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tu as terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage

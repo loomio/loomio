@@ -2661,6 +2661,12 @@ pt_BR:
     tags_per_interval: Tags por %{interval}
     all_groups_and_direct_threads: Todos os grupos e tópicos diretos
     custom_selection: Seleção personalizada
+    whole_server: Servidor inteiro
+    whole_server_help: Este relatório inclui a atividade de todos os grupos e tópicos diretos neste servidor.
+    group_and_subgroups: "%{group} e subgrupos"
+    group_and_subgroups_help: Este relatório inclui a atividade de %{group} e seus subgrupos acessíveis. Subgrupos secretos são incluídos somente se você pertencer a eles.
+    group_only: "%{group} apenas"
+    group_only_help: Este relatório inclui apenas a atividade do grupo %{group}. Os administradores do grupo principal também podem gerar relatórios sobre o grupo principal e seus subgrupos acessíveis.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Você concluiu todas as etapas!"
     getting_started_checklist: Lista de verificação para começar

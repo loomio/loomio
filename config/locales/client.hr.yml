@@ -2613,6 +2613,12 @@ hr:
     tags_per_interval: Oznake po %{interval}
     all_groups_and_direct_threads: Sve grupe i izravne teme
     custom_selection: Prilagođeni odabir
+    whole_server: Cijeli poslužitelj
+    whole_server_help: Ovo izvješće uključuje aktivnosti iz svake grupe i izravne niti na ovom poslužitelju
+    group_and_subgroups: "%{group} i podskupine"
+    group_and_subgroups_help: Ovo izvješće uključuje aktivnost iz %{group} i njezinih dostupnih podgrupa. Tajne podgrupe su uključene samo kada im pripadate.
+    group_only: Samo %{group}
+    group_only_help: Ovo izvješće uključuje aktivnost samo iz %{group}. Administratori nadređene grupe također mogu izvještavati o nadređenoj grupi i njezinim dostupnim podgrupama.
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak

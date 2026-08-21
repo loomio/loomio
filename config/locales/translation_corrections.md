@@ -93,6 +93,9 @@ languages in the Nov 2025 pass.
 | `config/locales/client.pt_BR.yml`, `server.pt_BR.yml` | Multiple direct-address UI and template strings | Overly formal/Google-ish `Por favor ...` phrasing and a few awkward Brazilian Portuguese direct-address strings | Concise Brazilian Portuguese using `você` register and direct imperatives like `preencha`, `entre`, `atualize`, `responda` | Keep Brazilian Portuguese consistent and concise; avoid mechanical polite filler in UI actions |
 | `config/locales/client.ru.yml` | `thread_item.discussion_moved_without_source` | `%{автор}` | `%{author}` | Interpolation placeholder names must remain unchanged |
 | `config/locales/client.tr.yml` | `thread_item.discussion_moved_without_source` | `%{yazar}` | `%{author}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.{de,es,fr,it,ja,nl_NL,pt_BR,ru,tr}.yml` | `report.group_and_subgroups`, `report.group_only`, `report.group_only_help` | Translated placeholders such as `%{grupo}`, `%{groupe}`, `%{Gruppe}`, `%{группа}` | Preserved `%{group}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.nl_NL.yml` | `report.group_and_subgroups_help` | Formal address such as `Sie`, `usted`, `u` | Informal `du`, `tú`, `je` forms | These locales use informal direct address throughout Loomio |
+| `config/locales/client.es.yml` | `report.whole_server_help` | `subprocesos directos` | `hilos directos` | Thread means a conversation thread, not a computing subprocess |
 
 ## 2026-07-26 — Anonymous voting notices
 
