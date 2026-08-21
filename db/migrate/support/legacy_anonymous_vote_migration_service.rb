@@ -145,6 +145,7 @@ class LegacyAnonymousVoteMigrationService
       undecided_voter_count: poll.undecided_voters_count,
       none_of_the_above_count: stances.count(&:none_of_the_above?),
       option_data: option_data_from_stances(stances),
+      option_voter_counts: poll.poll_options.to_h { |option| [ option.id, option.voter_count ] },
       results: canonical_results(poll),
       stv_input: poll.poll_type == "stv" ? canonical_stv_input(StvCountService.extract_ballots(poll)) : nil,
       stv_result: poll.poll_type == "stv" ? StvCountService.count(poll).deep_stringify_keys : nil,
@@ -326,7 +327,10 @@ class LegacyAnonymousVoteMigrationService
       notify_on_closing_soon: Poll.notify_on_closing_soons.fetch("undecided_voters")
     )
     poll.reload
-    poll.poll_options.each(&:update_counts!)
+    poll.poll_options.each do |option|
+      option.update_counts!
+      option.update_columns(voter_count: baseline[:option_voter_counts].fetch(option.id))
+    end
     poll.update_columns(
       stance_counts: poll.poll_options.reload.map(&:total_score),
       voters_count: baseline[:voter_count],

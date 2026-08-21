@@ -33,6 +33,35 @@ class CompleteLegacyAnonymousVoteMigrationTest < ActiveSupport::TestCase
     end
   end
 
+  test "preserves historical option voter counts while detaching votes" do
+    without_anonymous_storage_constraint do
+      poll = create_identified_poll
+      stance = Stance.create!(
+        poll: poll,
+        participant: users(:user),
+        cast_at: Time.current,
+        stance_choices_attributes: [ { poll_option_id: poll.poll_options.first.id, score: 1 } ]
+      )
+      poll.update_counts!
+      poll.update_columns(
+        anonymous: true,
+        closed_at: Time.current
+      )
+      stance.update_columns(participant_id: nil)
+      poll.poll_options.update_all(voter_count: 0)
+      results_before = canonical_results(poll.reload)
+
+      CompleteLegacyAnonymousVoteMigration.new.up
+
+      poll.reload
+      assert_equal results_before, canonical_results(poll)
+      assert_equal 1, poll.anonymous_ballots.count
+      assert_equal 1, poll.anonymous_ballot_choices.count
+      assert poll.poll_options.all? { |option| option.voter_scores.empty? }
+      refute Stance.exists?(stance.id)
+    end
+  end
+
   private
 
   def create_identified_poll
@@ -51,5 +80,11 @@ class CompleteLegacyAnonymousVoteMigrationTest < ActiveSupport::TestCase
     connection = ActiveRecord::Base.connection
     connection.remove_check_constraint(:polls, name: CONSTRAINT_NAME)
     yield
+  end
+
+  def canonical_results(poll)
+    PollService.calculate_results(poll, poll.poll_options.reload).map do |result|
+      result.to_h.stringify_keys.slice(*LegacyAnonymousVoteMigrationService::RESULT_FIELDS)
+    end.sort_by { |result| result.fetch("id") }
   end
 end
