@@ -257,6 +257,22 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "retrying poll_expired does not notify or email the author again" do
+    @poll.author = @user_thread_loud
+    @poll.save!
+    event = nil
+
+    assert_difference -> { Notification.count }, 1 do
+      assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do
+        event = Events::PollExpired.publish!(@poll)
+        event.trigger!
+      end
+    end
+
+    notification = Notification.find_by!(event: event, user: @poll.author)
+    assert_equal "event:#{event.id}", notification.deduplication_key
+  end
+
   test "stance_created notifies author if volume loud" do
     @poll.stances.create!(participant: @poll.author)
     TopicReader.find_or_create_by!(topic: @poll.topic, user: @poll.author).set_volume!('loud')

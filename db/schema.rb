@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_21_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_22_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -556,12 +556,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_000003) do
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "actor_id"
     t.datetime "created_at", precision: nil
+    t.string "deduplication_key"
     t.integer "event_id", null: false
+    t.string "kind"
+    t.bigint "subject_id"
+    t.string "subject_type"
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", precision: nil
     t.integer "user_id", null: false
     t.boolean "viewed", default: false, null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["user_id", "deduplication_key"], name: "index_notifications_on_user_id_and_deduplication_key", unique: true, where: "(deduplication_key IS NOT NULL)"
     t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end

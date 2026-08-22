@@ -6,8 +6,16 @@ module Events::Notify::InApp
 
   # send event notifications
   def notify_users!
-    notifications.import(built_notifications)
-    built_notifications.each { |n| MessageChannelService.publish_models(Array(n), user_id: n.user_id) }
+    @notification_user_ids_attempted = built_notifications.map(&:user_id)
+    notifications_created = NotificationService.create_for_event!(
+      event: self,
+      notifications: built_notifications
+    )
+    @notification_user_ids_created = notifications_created.map(&:user_id)
+    notifications_created.each do |notification|
+      MessageChannelService.publish_models([ notification ], user_id: notification.user_id)
+    end
+    notifications_created
   end
 
   private
@@ -48,5 +56,15 @@ module Events::Notify::InApp
 
   def notification_poll_type
     eventable.poll_type if eventable.respond_to?(:poll_type)
+  end
+
+  # Email-only recipients have no in-app identity to gate yet. For recipients
+  # covered by this notification attempt, permit email only when its row was
+  # newly inserted.
+  def did_create_in_app_notification_for?(user_id)
+    return true unless defined?(@notification_user_ids_attempted)
+    return true unless @notification_user_ids_attempted.include?(user_id)
+
+    @notification_user_ids_created.include?(user_id)
   end
 end

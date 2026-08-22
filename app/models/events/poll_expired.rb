@@ -13,8 +13,12 @@ class Events::PollExpired < Event
   # email the author and create an in-app notification
   def email_author!
     return unless eventable.present?
-    super
-    notification_for(author).save
+
+    notifications_created = NotificationService.create_for_event!(
+      event: self,
+      notifications: [ notification_for(author) ]
+    )
+    EventMailer.event(author, self).deliver_later if notify_author? && notifications_created.any?
   end
 
   def notify_author?

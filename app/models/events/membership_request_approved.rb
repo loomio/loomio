@@ -9,6 +9,8 @@ class Events::MembershipRequestApproved < Event
   private
   def email_users!
     email_recipients.active.uniq.pluck(:id).each do |recipient_id|
+      next unless did_create_in_app_notification_for?(recipient_id)
+
       EventMailer.event(recipient_id, self.id).deliver_later
     end
   end

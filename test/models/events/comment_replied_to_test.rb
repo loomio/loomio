@@ -36,6 +36,26 @@ class Events::CommentRepliedToTest < ActiveSupport::TestCase
     end
   end
 
+  test "retrying the event does not repeat notification delivery" do
+    event = nil
+    publish_count = 0
+
+    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
+      assert_difference -> { Notification.count }, 1 do
+        assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do
+          event = Events::CommentRepliedTo.publish!(@comment)
+          event.trigger!
+        end
+      end
+    end
+
+    notification = Notification.find_by!(event: event, user: @user)
+    assert_equal "comment_replied_to", notification.kind
+    assert_equal @comment, notification.subject
+    assert_equal "event:#{event.id}", notification.deduplication_key
+    assert_equal 1, publish_count
+  end
+
   test "does not notify when comment and reply author are the same" do
     @parent.update!(author: @comment.author)
     assert_no_difference -> { Notification.count } do
