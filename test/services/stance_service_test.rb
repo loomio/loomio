@@ -138,7 +138,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.reason = "Create a timeline item"
 
     assert_raises RuntimeError do
-      TopicItems::StanceCreated.stub(:publish!, ->(*) { raise "topic_item failed" }) do
+      TopicItems::StanceCreated.stub(:create!, ->(**) { raise "topic_item failed" }) do
         StanceService.create(stance: stance, actor: @user)
       end
     end

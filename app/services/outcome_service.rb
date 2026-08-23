@@ -53,7 +53,7 @@ class OutcomeService
                                            include_actor: params[:include_actor].present?)
 
       audience_values = mention_audience_values(outcome)
-      topic_item = TopicItems::OutcomeCreated.publish!(outcome: outcome)
+      topic_item = TopicItems::OutcomeCreated.create!(itemable: outcome)
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "outcome_created",

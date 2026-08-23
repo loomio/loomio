@@ -49,7 +49,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     current_outcome = @poll.current_outcome
 
     assert_raises RuntimeError do
-      TopicItems::OutcomeCreated.stub(:publish!, ->(**) { raise "topic_item failed" }) do
+      TopicItems::OutcomeCreated.stub(:create!, ->(**) { raise "topic_item failed" }) do
         OutcomeService.create(outcome: @new_outcome, actor: @user)
       end
     end

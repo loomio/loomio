@@ -92,7 +92,11 @@ class TopicService
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
       ReindexDiscussionWorker.perform_later(topic.id)
-      TopicItems::DiscussionMoved.publish!(topic.topicable, actor)
+      TopicItems::DiscussionMoved.create!(
+        itemable: topic.topicable,
+        user: actor,
+        created_at: Time.current
+      )
     end
   end
 

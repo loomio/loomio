@@ -4,30 +4,26 @@ class TopicItem < ApplicationRecord
   include PrettyUrlHelper
 
   belongs_to :itemable, polymorphic: true
-  # topic_id marks this topic_item as a thread item: when set, the topic_item has a
-  # sequence_id/position_key/parent_id and appears in the topic timeline. New
-  # operational notifications no longer create null-topic topic_items, but the
-  # association remains optional while historical rows are migrated. The
-  # callbacks below must therefore continue to gate on topic_id until cutover.
   belongs_to :topic
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
-  has_many :children, (-> { where("topic_id is not null") }), class_name: "TopicItem", foreign_key: :parent_id
+  has_many :children, class_name: "TopicItem", foreign_key: :parent_id
   has_one :notification, dependent: :nullify
-  before_create :set_parent_and_depth, if: :topic_id
-  before_create :set_sequences, if: :topic_id
-  after_rollback :reset_sequences, if: :topic_id
+  before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
+  before_create :set_parent_and_depth
+  before_create :set_sequences
+  after_rollback :reset_sequences
   before_destroy :reparent_children
-  before_destroy :reset_sequences, if: :topic_id
+  before_destroy :reset_sequences
 
-  after_create  :update_sequence_info!, if: :topic_id
-  after_destroy :update_sequence_info!, if: :topic_id
+  after_create  :update_sequence_info!
+  after_create  :mark_actor_as_read!
+  after_destroy :update_sequence_info!
 
-  define_counter_cache(:child_count) { |e| e.children.where(topic_id: e.topic_id).count }
+  define_counter_cache(:child_count) do |topic_item|
+    topic_item.children.where(topic_id: topic_item.topic_id).count
+  end
   update_counter_cache :parent, :child_count
-
-  validates :kind, presence: true
-  validates :itemable, presence: true
 
   before_save :sync_itemable_foreign_key
 
@@ -36,34 +32,19 @@ class TopicItem < ApplicationRecord
   delegate :group, to: :itemable, allow_nil: true
   delegate :poll, to: :itemable, allow_nil: true
   delegate :groups, to: :itemable, allow_nil: true
-  delegate :update_sequence_info!, to: :topic, allow_nil: true
-
-  def self.publish!(itemable, **args)
-    topic_item = build(itemable, **args)
-    topic_item.save!
-    mark_actor_as_read!(topic_item)
-    topic_item
-  end
-
-  def self.build(itemable, **args)
-    new({
-      kind:       name.demodulize.underscore,
-      itemable:  itemable,
-      itemable_version_id: ((itemable.respond_to?(:versions) && itemable.versions.last&.id) || nil)
-    }.merge(args))
-  end
+  delegate :update_sequence_info!, to: :topic
 
   # A topic item's actor should not acquire unread state for their own action.
   # Detached anonymous stances use their real participant for this bookkeeping.
-  def self.mark_actor_as_read!(topic_item)
-    reader = topic_item.real_user
+  def mark_actor_as_read!
+    reader = real_user
     return unless reader&.is_logged_in?
-    return unless topic_item.topic_id && topic_item.sequence_id
+    return unless sequence_id
 
-    TopicReader.for(topic: topic_item.topic, user: reader)
-               .update_reader(ranges: topic_item.sequence_id, volume: :loud)
+    TopicReader.for(topic: topic, user: reader)
+               .update_reader(ranges: sequence_id, volume: :loud)
   end
-  private_class_method :mark_actor_as_read!
+  private :mark_actor_as_read!
 
   def user
     super || AnonymousUser.new
@@ -87,13 +68,6 @@ class TopicItem < ApplicationRecord
             else itemable
             end
     polymorphic_path(model)
-  end
-
-
-  def active_model_serializer
-    "TopicItems::#{itemable.class.to_s.split('::').last}Serializer".constantize
-  rescue NameError
-    TopicItemSerializer
   end
 
   def set_parent_and_depth
@@ -155,7 +129,7 @@ class TopicItem < ApplicationRecord
   end
 
   def next_position!
-    return 0 unless (topic_id and parent_id)
+    return 0 unless parent_id
     unless SequenceService.seq_present?('events_position', parent_id)
       val = TopicItem.where(parent_id: parent_id,
                        topic_id: topic_id).
@@ -180,7 +154,7 @@ class TopicItem < ApplicationRecord
     when 'new_comment'
       p = itemable.parent
       candidate = p.is_a?(TopicItem) ? p : p&.created_topic_item
-      candidate&.topic_id == topic_id ? candidate : topic&.topicable&.created_topic_item
+      candidate&.topic_id == topic_id ? candidate : topic.topicable&.created_topic_item
     when 'poll_closed_by_user' then itemable.created_topic_item
     when 'poll_created'
       if itemable.topic.topicable == itemable
@@ -198,13 +172,13 @@ class TopicItem < ApplicationRecord
   end
 
   def self_and_parents
-    [self, (parent && parent.topic_id && parent.self_and_parents)].flatten.compact
+    [self, parent&.self_and_parents].flatten.compact
   end
 
   def max_depth_adjusted_parent
     original_parent = find_parent_topic_item
     return nil unless original_parent
-    if topic && topic.max_depth == original_parent.depth
+    if topic.max_depth == original_parent.depth
       original_parent.parent
     else
       original_parent
@@ -214,12 +188,30 @@ class TopicItem < ApplicationRecord
   def discussion_created_topic_item
     if itemable.respond_to?(:created_topic_item)
       itemable.created_topic_item
-    elsif topic&.topicable.respond_to?(:created_topic_item)
+    elsif topic.topicable.respond_to?(:created_topic_item)
       topic.topicable.created_topic_item
     end
   end
 
   private
+
+  def set_kind
+    self.kind ||= self.class.name.demodulize.underscore
+  end
+
+  def set_itemable_version_id
+    return if itemable_version_id || !itemable.respond_to?(:versions)
+
+    self.itemable_version_id = itemable.versions.last&.id
+  end
+
+  def set_topic
+    self.topic ||= itemable&.topic
+  end
+
+  def set_user_from_itemable
+    self.user_id ||= itemable&.author_id
+  end
 
   # When an topic_item's itemable is assigned but saved by a different association path
   # (e.g., in RecordCloner), the FK may be nil even though the target is persisted.

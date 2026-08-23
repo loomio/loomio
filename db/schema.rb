@@ -1140,10 +1140,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.integer "child_count", default: 0, null: false
     t.datetime "created_at", precision: nil
     t.integer "depth", default: 0, null: false
-    t.integer "itemable_id"
-    t.string "itemable_type", limit: 255
+    t.integer "itemable_id", null: false
+    t.string "itemable_type", limit: 255, null: false
     t.integer "itemable_version_id"
-    t.string "kind", limit: 255
+    t.string "kind", limit: 255, null: false
     t.integer "parent_id"
     t.boolean "pinned", default: false, null: false
     t.text "pinned_title"
@@ -1166,6 +1166,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
     t.index ["topic_id"], name: "index_topic_items_on_topic_id"
     t.index ["user_id"], name: "index_topic_items_on_user_id"
+    t.check_constraint "btrim((itemable_type)::text) <> ''::text", name: "topic_items_itemable_type_present"
+    t.check_constraint "btrim((kind)::text) <> ''::text", name: "topic_items_kind_present"
   end
 
   create_table "topic_readers", id: :serial, force: :cascade do |t|

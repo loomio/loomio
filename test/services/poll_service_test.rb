@@ -215,7 +215,7 @@ class PollServiceTest < ActiveSupport::TestCase
     poll = PollService.build(params: poll_params(topic_id: discussion.topic_id), actor: @user)
     poll.save!
 
-    TopicItems::PollEdited.stub(:publish!, nil) do
+    TopicItems::PollEdited.stub(:create!, nil) do
       PollService.update(
         poll: poll,
         params: { details: 'Updated poll details', tags: [] },

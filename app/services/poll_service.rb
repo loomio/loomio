@@ -53,7 +53,10 @@ class PollService
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
-      TopicItems::PollCreated.publish!(poll, actor)
+      TopicItems::PollCreated.create!(
+        itemable: poll,
+        pinned: true
+      )
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
@@ -117,9 +120,9 @@ class PollService
       Sentry.metrics.count("poll.update", attributes: { poll_type: poll.poll_type })
 
       if params[:recipient_message].present?
-        topic_item = TopicItems::PollEdited.publish!(
-          poll: poll,
-          actor: actor
+        topic_item = TopicItems::PollEdited.create!(
+          itemable: poll,
+          user: actor
         )
       end
       if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
@@ -327,7 +330,11 @@ class PollService
     actor.ability.authorize! :close, poll
     topic_item = Poll.transaction do
       do_closing_work(poll: poll)
-      TopicItems::PollClosedByUser.publish!(poll, actor)
+      TopicItems::PollClosedByUser.create!(
+        itemable: poll,
+        user: actor,
+        created_at: poll.closed_at
+      )
     end
     publish_topic_if_active(poll)
     topic_item
@@ -346,7 +353,10 @@ class PollService
     topic_item = Poll.transaction do
       poll.save!
 
-      topic_item = TopicItems::PollReopened.publish!(poll, actor)
+      topic_item = TopicItems::PollReopened.create!(
+        itemable: poll,
+        user: actor
+      )
       announce_poll_opened(poll) if poll.notify_on_open
       topic_item
     end
@@ -463,10 +473,8 @@ class PollService
           itemable_id: stance_ids
         ).pluck(:itemable_id)
         Stance.where(id: stance_ids - stance_ids_with_items).find_each do |stance|
-          TopicItems::StanceCreated.build(
-            stance,
-            user: stance.participant,
-            topic: poll.topic,
+          TopicItems::StanceCreated.new(
+            itemable: stance,
             created_at: stance.cast_at || stance.created_at
           ).save!
         end

@@ -55,7 +55,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
 
     error = assert_raises RuntimeError do
-      TopicItems::NewComment.stub(:publish!, ->(*) { raise "topic_item failed" }) do
+      TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
         CommentService.create(comment: comment, actor: @user)
       end
     end

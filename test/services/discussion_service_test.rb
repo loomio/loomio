@@ -162,7 +162,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     discussion.topic.update!(tags: [ 'literature' ])
 
     discussion.stub(:update_versions_count, nil) do
-      TopicItems::DiscussionEdited.stub(:publish!, nil) do
+      TopicItems::DiscussionEdited.stub(:create!, nil) do
         DiscussionService.update(
           discussion: discussion,
           actor: @user,

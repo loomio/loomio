@@ -102,7 +102,10 @@ class GroupMentionedNotificationTest < ActiveSupport::TestCase
   private
 
   def publish_new_comment_with_mentions(comment)
-    topic_item = TopicItems::NewComment.publish!(comment)
+    topic_item = TopicItems::NewComment.create!(
+      itemable: comment,
+      pinned: comment.should_pin
+    )
     publish_mentions(comment, source_event: topic_item)
     topic_item
   end

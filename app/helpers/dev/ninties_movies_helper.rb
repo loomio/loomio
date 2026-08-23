@@ -250,29 +250,46 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    TopicItems::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author)
+    TopicItems::DiscussionEdited.create!(
+      itemable: create_discussion,
+      user: create_discussion.author
+    )
 
     # discussion_moved
-    TopicItems::DiscussionMoved.publish!(create_discussion, patrick)
+    TopicItems::DiscussionMoved.create!(
+      itemable: create_discussion,
+      user: patrick,
+      created_at: Time.current
+    )
 
     # new_comment
-    TopicItems::NewComment.publish!(create_comment)
+    TopicItems::NewComment.create!(itemable: create_comment, pinned: create_comment.should_pin)
 
     # poll_created
-    TopicItems::PollCreated.publish!(create_poll, patrick)
+    TopicItems::PollCreated.create!(
+      itemable: create_poll,
+      pinned: true
+    )
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    TopicItems::PollEdited.publish!(poll: create_poll, actor: patrick)
+    TopicItems::PollEdited.create!(
+      itemable: create_poll,
+      user: patrick
+    )
 
     # stance_created
-    TopicItems::StanceCreated.publish!(create_stance)
+    TopicItems::StanceCreated.create!(itemable: create_stance)
 
     # poll_closed_by_user
-    TopicItems::PollClosedByUser.publish!(create_poll, patrick)
+    TopicItems::PollClosedByUser.create!(
+      itemable: create_poll,
+      user: patrick,
+      created_at: create_poll.closed_at
+    )
 
     # outcome_created
-    TopicItems::OutcomeCreated.publish!(outcome: create_outcome)
+    TopicItems::OutcomeCreated.create!(itemable: create_outcome)
   end
 
 

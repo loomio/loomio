@@ -7,7 +7,10 @@ class CommentService
       comment.save!
       comment.update_pg_search_document
       Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
-      topic_item = TopicItems::NewComment.publish!(comment)
+      topic_item = TopicItems::NewComment.create!(
+        itemable: comment,
+        pinned: comment.should_pin
+      )
       MentionNotificationService.create!(
         subject: comment,
         actor: actor,

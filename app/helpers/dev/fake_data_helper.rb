@@ -122,16 +122,13 @@ module Dev::FakeDataHelper
 
   def fake_new_comment_event(comment = fake_comment)
     TopicItems::NewComment.new(
-      user: comment.author,
       kind: 'new_comment',
-      itemable: comment,
-      topic: comment.topic
+      itemable: comment
     )
   end
 
   def fake_new_discussion_event(discussion = fake_discussion)
     TopicItems::NewDiscussion.new(
-      user: discussion.author,
       kind: 'new_discussion',
       itemable: discussion
     )
@@ -139,28 +136,22 @@ module Dev::FakeDataHelper
 
   def fake_poll_created_topic_item(poll = fake_poll)
     TopicItems::PollCreated.new(
-      user: poll.author,
       kind: 'poll_created',
-      itemable: poll,
-      topic: poll.topic
+      itemable: poll
     )
   end
 
   def fake_stance_created_topic_item(stance = fake_stance)
     TopicItems::StanceCreated.new(
-      user_id: stance[:participant_id],
       kind: 'stance_created',
-      itemable: stance,
-      topic: stance.poll.topic
+      itemable: stance
     )
   end
 
   def fake_outcome_created_topic_item(outcome = fake_outcome)
     TopicItems::OutcomeCreated.new(
-      user_id: outcome.author_id,
       kind: 'outcome_created',
-      itemable: outcome,
-      topic: outcome.poll.topic
+      itemable: outcome
     )
   end
 

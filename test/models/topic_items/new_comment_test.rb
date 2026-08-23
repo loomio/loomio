@@ -13,7 +13,10 @@ class TopicItems::NewCommentTest < ActiveSupport::TestCase
   test "creates an topic_item" do
     comment = Comment.new(parent: @discussion, body: "Another", author: @user)
     assert_difference -> { TopicItem.where(kind: 'new_comment').count }, 1 do
-      TopicItems::NewComment.publish!(comment)
+      TopicItems::NewComment.create!(
+        itemable: comment,
+        pinned: comment.should_pin
+      )
     end
   end
 
@@ -25,7 +28,13 @@ class TopicItems::NewCommentTest < ActiveSupport::TestCase
 
   test "returns an topic_item" do
     comment = Comment.new(parent: @discussion, body: "Yet another", author: @user)
-    result = TopicItems::NewComment.publish!(comment)
+    result = TopicItems::NewComment.create!(
+      itemable: comment,
+      pinned: comment.should_pin
+    )
     assert_kind_of TopicItems::NewComment, result
+    assert_equal "new_comment", result.kind
+    assert_equal comment.topic, result.topic
+    assert_equal comment.author, result.user
   end
 end

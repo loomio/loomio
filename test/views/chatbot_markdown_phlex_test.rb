@@ -121,7 +121,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
     stance = poll.stances.build(participant: @user)
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    topic_item = TopicItems::StanceCreated.create!(kind: 'stance_created', itemable: stance, user: @user, topic: poll.topic)
+    topic_item = TopicItems::StanceCreated.create!(itemable: stance)
 
     component = Views::Chatbot::Markdown::Notification.new(topic_item: topic_item, poll: poll, recipient: @recipient)
     output = render_phlex(component)

@@ -90,7 +90,9 @@ class StanceService
     topic_item_class = kind == "stance_created" ? TopicItems::StanceCreated : TopicItems::StanceUpdated
     was_shared_update_visible = stance.shared_update_visible?
     MarkNotificationsAsReadWorker.perform_later("Poll", stance.poll_id, stance.participant_id)
-    topic_item = topic_item_class.publish!(stance) if stance.add_to_thread?
+    if stance.add_to_thread?
+      topic_item = topic_item_class.create!(itemable: stance)
+    end
     MentionNotificationService.create!(
       subject: stance,
       actor: stance.participant,

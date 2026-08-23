@@ -60,7 +60,7 @@ class DiscussionService
 
       Sentry.metrics.count("discussion.create")
 
-      topic_item = TopicItems::NewDiscussion.publish!(discussion: discussion)
+      topic_item = TopicItems::NewDiscussion.create!(itemable: discussion)
 
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
@@ -122,9 +122,9 @@ class DiscussionService
 
       Sentry.metrics.count("discussion.update")
       if params[:recipient_message].present?
-        topic_item = TopicItems::DiscussionEdited.publish!(
-          discussion: discussion,
-          actor: actor
+        topic_item = TopicItems::DiscussionEdited.create!(
+          itemable: discussion,
+          user: actor
         )
       end
       if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?

@@ -32,11 +32,20 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
 
     execute "DELETE FROM events WHERE topic_id IS NULL"
     change_column_null :events, :topic_id, false
+    change_column_null :events, :kind, false
+    change_column_null :events, :eventable_type, false
+    change_column_null :events, :eventable_id, false
     remove_column :events, :announcement
     rename_column :events, :eventable_type, :itemable_type
     rename_column :events, :eventable_id, :itemable_id
     rename_column :events, :eventable_version_id, :itemable_version_id
     rename_table :events, :topic_items
+    add_check_constraint :topic_items,
+                         "btrim(kind) <> ''",
+                         name: "topic_items_kind_present"
+    add_check_constraint :topic_items,
+                         "btrim(itemable_type) <> ''",
+                         name: "topic_items_itemable_type_present"
 
     add_index :notifications,
               :topic_item_id,
