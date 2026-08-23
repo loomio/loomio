@@ -197,11 +197,6 @@ class Poll < ApplicationRecord
      active
     .distinct
     .where(closing_at: timeframe)
-    .where("NOT EXISTS (SELECT 1 FROM topic_items
-                WHERE topic_items.created_at    >= polls.closing_at - INTERVAL '25 hours' AND
-                      topic_items.itemable_id   = polls.id AND
-                      topic_items.itemable_type = 'Poll' AND
-                      topic_items.kind           = 'poll_closing_soon')")
     .where("NOT EXISTS (SELECT 1 FROM notifications
                 WHERE notifications.created_at   >= polls.closing_at - INTERVAL '25 hours' AND
                       notifications.subject_id   = polls.id AND

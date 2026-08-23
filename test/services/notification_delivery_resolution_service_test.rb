@@ -2,6 +2,7 @@ require "test_helper"
 
 class NotificationDeliveryResolverTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
+  include ActionMailer::TestHelper
 
   setup do
     @author = users(:user)
@@ -231,7 +232,13 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 
-    assert_includes topic_item.subscribed_recipients, recipient
+    assert_enqueued_email_with(
+      NotificationMailer,
+      :topic_item,
+      args: [ recipient.id, topic_item.id ]
+    ) do
+      PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
+    end
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
   end
 
