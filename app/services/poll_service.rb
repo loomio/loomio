@@ -53,7 +53,7 @@ class PollService
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
-      topic_item = TopicItems::PollCreated.publish!(poll, actor)
+      TopicItems::PollCreated.publish!(poll, actor)
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
@@ -348,14 +348,16 @@ class PollService
       return false
     end
 
-    Poll.transaction do
+    topic_item = Poll.transaction do
       poll.save!
 
-      TopicItems::PollReopened.publish!(poll, actor)
+      topic_item = TopicItems::PollReopened.publish!(poll, actor)
       announce_poll_opened(poll) if poll.notify_on_open
+      topic_item
     end
     EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
+    topic_item
   end
 
   def self.publish_closing_soon(now: Time.current)

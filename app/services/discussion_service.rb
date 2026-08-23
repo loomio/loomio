@@ -59,7 +59,7 @@ class DiscussionService
 
       Sentry.metrics.count("discussion.create")
 
-      topic_item = TopicItems::NewDiscussion.publish!(
+      TopicItems::NewDiscussion.publish!(
         discussion: discussion,
         recipient_user_ids: users.pluck(:id),
         recipient_chatbot_ids: params[:recipient_chatbot_ids],

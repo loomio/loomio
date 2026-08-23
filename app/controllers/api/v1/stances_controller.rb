@@ -12,7 +12,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
   def latest_stance_topic_items
     stances = Stance.where(
       participant_id: current_user.id,
-      poll_id: @topic_item.itemable.poll_id
+      poll_id: resource.poll_id
     ).order(id: :desc).limit(5)
     TopicItem.where(itemable: stances).order(id: :desc).limit(5)
   end
@@ -166,7 +166,6 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def respond_with_recent_stances
-    @topic_item = nil
     @stances = @stance.poll.stances.where(revoked_at: nil, participant_id: current_user.id).order('id desc').limit(10)
     respond_with_collection
   end

@@ -9,7 +9,7 @@ class StanceService
     publication = Stance.transaction do
       stance.save!
       stance.poll.update_counts!
-      publish_stance_event!(stance: stance, kind: "stance_created")
+      publish_stance_change!(stance: stance, kind: "stance_created")
     end
 
     publish_stance_directly!(stance, publication)
@@ -37,8 +37,6 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
-    topic_item = TopicItem.where(itemable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
-
     stance_to_publish = nil
     stance_changed = nil
     metric_name = nil
@@ -53,7 +51,7 @@ class StanceService
         stance_to_publish = stance if stance.shared_update_visible?
         stance_changed = new_stance
         metric_name = "stance.update"
-        publish_stance_event!(stance: new_stance, kind: "stance_created")
+        publish_stance_change!(stance: new_stance, kind: "stance_created")
       else
         stance.stance_choices = []
         stance.assign_attributes_and_files(params)
@@ -64,7 +62,7 @@ class StanceService
         stance.poll.update_counts!
         stance_changed = stance
         metric_name = is_update ? "stance.update" : "stance.create"
-        publish_stance_event!(
+        publish_stance_change!(
           stance: stance,
           kind: is_update ? "stance_updated" : "stance_created"
         )
@@ -88,11 +86,11 @@ class StanceService
   # Create a topic item only when the response belongs in the timeline. Direct
   # mention notifications share the transaction, while subscriber delivery and
   # chatbot publication remain responsibilities of the topic item itself.
-  def self.publish_stance_event!(stance:, kind:)
-    event_class = kind == "stance_created" ? TopicItems::StanceCreated : TopicItems::StanceUpdated
+  def self.publish_stance_change!(stance:, kind:)
+    topic_item_class = kind == "stance_created" ? TopicItems::StanceCreated : TopicItems::StanceUpdated
     was_shared_update_visible = stance.shared_update_visible?
     MarkNotificationsAsReadWorker.perform_later("Poll", stance.poll_id, stance.participant_id)
-    topic_item = event_class.publish!(stance) if stance.add_to_thread?
+    topic_item = topic_item_class.publish!(stance) if stance.add_to_thread?
     MentionNotificationService.create!(
       subject: stance,
       actor: stance.participant,
@@ -100,7 +98,7 @@ class StanceService
     )
     { topic_item: topic_item, was_shared_update_visible: was_shared_update_visible }
   end
-  private_class_method :publish_stance_event!
+  private_class_method :publish_stance_change!
 
   def self.publish_stance_directly!(stance, publication)
     return if publication[:topic_item]

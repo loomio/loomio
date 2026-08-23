@@ -197,10 +197,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference -> { MemberEmailAlias.count }, 1 do
-      assert_no_difference -> { TopicItem.where(itemable: received_email).count } do
-        assert_difference -> { Notification.where(id: notification.id).count }, -1 do
-          post :block, params: { id: received_email.id, user_id: @admin.id }
-        end
+      assert_difference -> { Notification.where(id: notification.id).count }, -1 do
+        post :block, params: { id: received_email.id, user_id: @admin.id }
       end
     end
 

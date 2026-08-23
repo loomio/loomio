@@ -43,11 +43,11 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def create_action
-    @topic_item = service.create(**{resource_symbol => resource, actor: current_user})
+    capture_topic_item(service.create(**{resource_symbol => resource, actor: current_user}))
   end
 
   def update_action
-    @topic_item = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user})
+    capture_topic_item(service.update(**{resource_symbol => resource, params: resource_params, actor: current_user}))
   end
 
   def destroy_action
@@ -93,7 +93,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   # prefer this
   def records_to_serialize
-    if @topic_item.is_a?(TopicItem)
+    if @topic_item
       Array(@topic_item)
     else
       collection || Array(resource)
@@ -135,12 +135,6 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   # phase this out
-  def events_to_serialize
-    return [] unless @topic_item.is_a?(TopicItem)
-    Array(@topic_item)
-  end
-
-  # phase this out
   def resources_to_serialize
     collection || Array(resource)
   end
@@ -159,6 +153,10 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def collection=(value)
     instance_variable_set :"@#{resource_name.pluralize}", value
+  end
+
+  def capture_topic_item(result)
+    @topic_item = result if result.is_a?(TopicItem)
   end
 
   def instantiate_resource
