@@ -4,7 +4,7 @@ class UserInviter
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     chatbot_ids = Array(chatbot_ids).uniq.compact.map(&:to_i)
 
-    audience_ids = NotificationAudienceService.resolve(
+    audience_user_ids = NotificationAudienceService.resolve(
       model: model,
       kind: audience,
       actor: actor,
@@ -16,7 +16,7 @@ class UserInviter
     users = User.active.where(
       'email in (:emails) or id in (:user_ids)',
       emails: emails,
-      user_ids: user_ids.concat(audience_ids)
+      user_ids: user_ids.concat(audience_user_ids)
     )
     users = users.where.not(id: model.voter_ids) if exclude_members && model.respond_to?(:voter_ids)
     email_count + users.count + chatbot_ids.length
@@ -121,19 +121,19 @@ class UserInviter
 
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    audience_ids = NotificationAudienceService.resolve(
+    audience_user_ids = NotificationAudienceService.resolve(
       model: model,
       kind: audience,
       actor: actor
     ).pluck(:id)
-    model.members.where('users.id': user_ids + audience_ids)
+    model.members.where('users.id': user_ids + audience_user_ids)
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:, include_actor: false)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).uniq.compact
 
-    audience_ids = if audience
+    audience_user_ids = if audience
       NotificationAudienceService.resolve(
         model: model,
         kind: audience,
@@ -151,7 +151,7 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
+    ids = member_ids.concat(guest_ids).concat(audience_user_ids).uniq
 
     invitations_limit_max = actor.invitations_rate_limit
     if invitations_limit_max
