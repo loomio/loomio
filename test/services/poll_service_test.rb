@@ -209,6 +209,23 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal "A new description", poll.reload.details
   end
 
+  test "updating a poll preserves its discussion topic tags" do
+    discussion = discussions(:discussion)
+    discussion.topic.update!(tags: [ 'literature' ])
+    poll = PollService.build(params: poll_params(topic_id: discussion.topic_id), actor: @user)
+    poll.save!
+
+    TopicItems::PollEdited.stub(:publish!, nil) do
+      PollService.update(
+        poll: poll,
+        params: { details: 'Updated poll details', tags: [] },
+        actor: @admin
+      )
+    end
+
+    assert_equal [ 'literature' ], discussion.topic.reload.tags
+  end
+
   test "does not transfer poll topic group on update" do
     poll = create_poll
     original_group_id = poll.topic.group_id

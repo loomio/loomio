@@ -157,6 +157,23 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal 'New Title', discussion.reload.title
   end
 
+  test "updating a discussion preserves its topic tags" do
+    discussion = discussions(:discussion)
+    discussion.topic.update!(tags: [ 'literature' ])
+
+    discussion.stub(:update_versions_count, nil) do
+      TopicItems::DiscussionEdited.stub(:publish!, nil) do
+        DiscussionService.update(
+          discussion: discussion,
+          actor: @user,
+          params: { description: 'Updated context', tags: [] }
+        )
+      end
+    end
+
+    assert_equal [ 'literature' ], discussion.topic.reload.tags
+  end
+
   test "update does not allow unauthorized user" do
     discussion = discussions(:discussion)
 

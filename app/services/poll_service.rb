@@ -75,8 +75,7 @@ class PollService
       actor: actor
     )
     params = params.to_h.with_indifferent_access
-    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).except(:group_id, :topic_id)
-    TagService.authorize_create_tag_names!(poll.group, topic_params[:tags], actor) if topic_params.key?(:tags)
+    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).slice(*DiscussionService::TOPIC_ATTRS_UPDATE)
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group

@@ -1,5 +1,6 @@
 class DiscussionService
   TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls allow_comments allow_reactions comment_length_max locked_at pinned_at tags].freeze
+  TOPIC_ATTRS_UPDATE = (TOPIC_ATTRS - %w[group_id tags]).freeze
 
   def self.build(params:, actor:)
     params = params.to_h.with_indifferent_access
@@ -96,7 +97,7 @@ class DiscussionService
 
 
     params = params.to_h.with_indifferent_access
-    topic_params = params.extract!(*TOPIC_ATTRS).except(:group_id)
+    topic_params = params.extract!(*TOPIC_ATTRS).slice(*TOPIC_ATTRS_UPDATE)
     discussion.assign_attributes_and_files(params)
     unless discussion.valid?
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
@@ -104,7 +105,6 @@ class DiscussionService
     end
     topic_item = nil
     Discussion.transaction do
-      TagService.authorize_create_tag_names!(discussion.group, Array(topic_params[:tags]), actor)
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
 
