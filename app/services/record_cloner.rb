@@ -326,7 +326,7 @@ class RecordCloner
       position_key
       child_count
       pinned
-      custom_fields
+      pinned_title
       created_at
     ]
     new_clone(topic_item, copy_fields)

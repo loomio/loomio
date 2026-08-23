@@ -224,6 +224,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal "discussion_edited", topic_item.kind
     assert_equal discussion.topic_id, topic_item.topic_id
     assert_not_respond_to topic_item, :recipient_message
+    assert_equal topic_item.id, notification.topic_item_id
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal "Please review the changes", notification.recipient_message
     assert_equal 1, Notification.where(kind: "discussion_edited", subject: discussion).count

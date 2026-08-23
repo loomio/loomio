@@ -21,6 +21,9 @@ class Views::NotificationMailer::TopicItems::PollEdited < Views::ApplicationMail
               poll_type: t("poll_types.#{@poll.poll_type}"),
               title: @poll.title)
           end
+          if @item.notification&.recipient_message.present?
+            p { raw MarkdownService.render_plain_text(@item.notification.recipient_message) }
+          end
         end
       end
     end

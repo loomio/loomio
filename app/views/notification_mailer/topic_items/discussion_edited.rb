@@ -15,6 +15,9 @@ class Views::NotificationMailer::TopicItems::DiscussionEdited < Views::Applicati
         end
         td(class: "content") do
           i { plain t(:"discussion_mailer.discussion_edited.inline", actor: @item.actor.name) }
+          if @item.notification&.recipient_message.present?
+            p { raw MarkdownService.render_plain_text(@item.notification.recipient_message) }
+          end
         end
       end
     end

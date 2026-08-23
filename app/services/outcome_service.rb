@@ -61,7 +61,8 @@ class OutcomeService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          audience_values: audience_values
+          audience_values: audience_values,
+          topic_item: topic_item
         )
       end
       MentionNotificationService.create!(
@@ -128,7 +129,7 @@ class OutcomeService
   end
 
   def self.publish_review_due
-    Outcome.review_due_not_published(Date.today).each do |outcome|
+    Outcome.review_due_not_published(Time.zone.today).each do |outcome|
       NotificationService.create!(
         kind: "outcome_review_due",
         subject: outcome,

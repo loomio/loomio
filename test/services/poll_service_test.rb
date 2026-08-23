@@ -101,7 +101,7 @@ class PollServiceTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params, actor: @user)
     TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(:loud)
     ActionMailer::Base.deliveries.clear
-    TopicItems::PollCreated.find(poll.created_topic_item.id).send_subscriber_emails!
+    PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
     assert_not Notification.exists?(kind: "poll_created", subject: poll)
@@ -289,6 +289,7 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal "poll_edited", topic_item.kind
     assert_equal poll.topic_id, topic_item.topic_id
     assert_not_respond_to topic_item, :recipient_message
+    assert_equal topic_item.id, notification.topic_item_id
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal "Please review the poll changes", notification.recipient_message
     assert_equal 1, Notification.where(kind: "poll_edited", subject: poll).count

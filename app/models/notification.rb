@@ -3,6 +3,7 @@ class Notification < ApplicationRecord
 
   belongs_to :actor, class_name: "User", optional: true
   belongs_to :subject, polymorphic: true
+  belongs_to :topic_item, optional: true
   has_many :notification_deliveries, dependent: :destroy
 
   validates :kind, :subject, presence: true

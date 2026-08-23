@@ -10,7 +10,19 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
     rename_column :notification_deliveries,
                   :notification_occurrence_id,
                   :notification_id
-    remove_column :notifications, :legacy_event_id
+    rename_column :notifications, :legacy_event_id, :topic_item_id
+    change_column_null :notifications, :topic_item_id, true
+    # Only a same-kind occurrence represents the timeline item itself. Mention
+    # and other notifications may share its legacy event but remain independent.
+    execute <<~SQL.squish
+      UPDATE notifications
+      SET topic_item_id = NULL
+      FROM events
+      WHERE notifications.topic_item_id = events.id
+        AND (events.topic_id IS NULL OR notifications.kind IS DISTINCT FROM events.kind)
+    SQL
+    remove_index :notifications,
+                 name: "index_notification_occurrences_on_legacy_event_and_kind"
     rename_index_if_present :notification_deliveries,
                             "index_notification_deliveries_on_occurrence_identity",
                             "index_notification_deliveries_on_identity"
@@ -25,6 +37,16 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
     rename_column :events, :eventable_id, :itemable_id
     rename_column :events, :eventable_version_id, :itemable_version_id
     rename_table :events, :topic_items
+
+    add_index :notifications,
+              :topic_item_id,
+              unique: true,
+              where: "topic_item_id IS NOT NULL",
+              name: "index_notifications_on_topic_item_id"
+    add_foreign_key :notifications,
+                    :topic_items,
+                    column: :topic_item_id,
+                    on_delete: :nullify
 
     rename_index_if_present :topic_items, "index_events_on_created_at", "index_topic_items_on_created_at"
     rename_index_if_present :topic_items, "index_events_on_eventable_id_and_kind", "index_topic_items_on_itemable_id_and_kind"

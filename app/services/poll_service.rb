@@ -122,7 +122,7 @@ class PollService
           actor: actor
         )
       end
-      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+      if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "poll_edited",
           subject: poll,
@@ -130,7 +130,8 @@ class PollService
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          audience_values: mention_audience,
+          topic_item: topic_item
         )
       end
       MentionNotificationService.create!(

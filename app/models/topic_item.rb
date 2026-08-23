@@ -13,6 +13,7 @@ class TopicItem < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, (-> { where("topic_id is not null") }), class_name: "TopicItem", foreign_key: :parent_id
+  has_one :notification, dependent: :nullify
   before_create :set_parent_and_depth, if: :topic_id
   before_create :set_sequences, if: :topic_id
   after_rollback :reset_sequences, if: :topic_id

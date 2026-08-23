@@ -4,9 +4,12 @@ class NotificationService
   # implied audiences are derived by the same kind-specific resolver.
   def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
-                   recipient_message: nil, audience_values: {})
+                   recipient_message: nil, audience_values: {}, topic_item: nil)
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
+    if topic_item && (!topic_item.persisted? || topic_item.kind != kind || topic_item.itemable != subject)
+      raise ArgumentError, "topic_item must be persisted and match the notification kind and subject"
+    end
 
     resolver_class = NotificationDeliveryResolver.class_for(kind)
     resolver_class.validate_subject!(subject)
@@ -16,6 +19,7 @@ class NotificationService
       actor: actor,
       kind: kind,
       subject: subject,
+      topic_item: topic_item,
       translation_values: translation_values,
       recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
       recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,

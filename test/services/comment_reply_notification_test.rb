@@ -43,7 +43,7 @@ class CommentReplyNotificationTest < ActiveSupport::TestCase
     topic_item = CommentService.create(comment: comment, actor: @reply_author)
 
     assert_no_difference [ "Notification.count", "NotificationDelivery.count" ] do
-      TopicItems::NewComment.find(topic_item.id).send_subscriber_emails!
+      PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
     end
   end
 

@@ -95,12 +95,24 @@ class EventTest < ActiveSupport::TestCase
     assert_not Notification.exists?(kind: "new_comment", subject: comment)
   end
 
+  test "topic item publication side effects are enqueued after commit" do
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
+    comment = Comment.new(body: "queued publication", parent: @discussion)
+
+    assert_enqueued_with(job: PublishLiveUpdateTopicItemWorker) do
+      assert_enqueued_with(job: PublishSubscriberEmailsTopicItemWorker) do
+        CommentService.create(comment: comment, actor: @admin)
+      end
+    end
+  end
+
   test "live updates are skipped when itemable has been deleted" do
-    topic_item = TopicItems::NewDiscussion.new(kind: "new_discussion")
+    topic_item = @discussion.created_topic_item
+    @discussion.delete
 
     assert_nothing_raised do
       MessageChannelService.stub(:publish_models, ->(*) { raise "should not publish" }) do
-        topic_item.publish_live_update!
+        PublishLiveUpdateTopicItemWorker.perform_now(topic_item.id)
       end
     end
   end
@@ -141,7 +153,7 @@ class EventTest < ActiveSupport::TestCase
             mentioned_group_user_ids: @discussion.mentioned_group_users.pluck(:id)
           }
         )
-        topic_item.send_subscriber_emails!
+        PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
       end
       assert_equal 1, @discussion.mentioned_users.length
     end
@@ -155,7 +167,7 @@ class EventTest < ActiveSupport::TestCase
       subject: @poll,
       actor: @admin,
     )
-    topic_item.send_subscriber_emails!
+    PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
     assert_equal 1, @poll.mentioned_users.length
     notification = Notification.find_by!(kind: "user_mentioned", subject: @poll)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
@@ -316,7 +328,7 @@ class EventTest < ActiveSupport::TestCase
 
     publish_count = 0
     MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
-      topic_item.publish_live_update!
+      PublishLiveUpdateTopicItemWorker.perform_now(topic_item.id)
     end
     assert_operator publish_count, :>, 0
   end

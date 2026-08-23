@@ -558,9 +558,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.integer "recipient_user_ids", default: [], null: false, array: true
     t.bigint "subject_id", null: false
     t.string "subject_type", null: false
+    t.bigint "topic_item_id"
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
+    t.index ["topic_item_id"], name: "index_notifications_on_topic_item_id", unique: true, where: "(topic_item_id IS NOT NULL)"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
@@ -1352,6 +1354,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
+  add_foreign_key "notifications", "topic_items", on_delete: :nullify
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
