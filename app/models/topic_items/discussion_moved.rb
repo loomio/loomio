@@ -1,5 +1,5 @@
 class TopicItems::DiscussionMoved < TopicItem
-  include TopicItems::LiveUpdate
+  include TopicItems::Publish::LiveUpdate
 
   def self.publish!(discussion, actor)
     super discussion,

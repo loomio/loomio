@@ -141,20 +141,6 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['reactions'].length
   end
 
-  test "destroy removes the reaction topic_item" do
-    user = users(:admin)
-    comment = Comment.new(body: 'Reactable comment', parent: discussions(:discussion), author: user)
-    CommentService.create(comment: comment, actor: user)
-    reaction = Reaction.create!(user: user, reactable: comment, reaction: '👍')
-    topic_item = TopicItem.create!(kind: 'reaction_created', itemable: reaction, user: user, topic: comment.topic)
-
-    sign_in user
-    delete :destroy, params: { id: reaction.id }
-
-    assert_response :success
-    refute TopicItem.exists?(topic_item.id)
-  end
-
   test "create denied when allow_reactions is false" do
     user = users(:admin)
     discussion = discussions(:discussion)

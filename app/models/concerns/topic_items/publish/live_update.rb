@@ -1,11 +1,11 @@
-module TopicItems::LiveUpdate
+module TopicItems::Publish::LiveUpdate
   def trigger!
     super
-    notify_clients!
+    publish_live_update!
   end
 
   # send client live updates
-  def notify_clients!
+  def publish_live_update!
     return unless itemable
     return if hidden_stance_event?
 

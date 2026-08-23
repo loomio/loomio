@@ -1,6 +1,6 @@
 class TopicItems::DiscussionEdited < TopicItem
-  include TopicItems::Notify::Chatbots
-  include TopicItems::LiveUpdate
+  include TopicItems::Publish::Chatbots
+  include TopicItems::Publish::LiveUpdate
 
   def self.publish!(
     discussion:,

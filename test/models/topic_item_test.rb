@@ -100,7 +100,7 @@ class EventTest < ActiveSupport::TestCase
 
     assert_nothing_raised do
       MessageChannelService.stub(:publish_models, ->(*) { raise "should not publish" }) do
-        topic_item.notify_clients!
+        topic_item.publish_live_update!
       end
     end
   end
@@ -317,7 +317,7 @@ class EventTest < ActiveSupport::TestCase
 
     publish_count = 0
     MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
-      topic_item.notify_clients!
+      topic_item.publish_live_update!
     end
     assert_operator publish_count, :>, 0
   end

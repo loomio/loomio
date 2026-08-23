@@ -23,10 +23,6 @@ class TopicItemSerializer < ApplicationSerializer
     when 'Comment' then cache_fetch(:comments_by_id, object.itemable_id) { object.itemable }
     when 'Stance' then cache_fetch(:stances_by_id, object.itemable_id) { object.itemable }
     when 'Outcome' then cache_fetch(:outcomes_by_id, object.itemable_id) { object.itemable }
-    when 'Reaction' then cache_fetch(:reactions_by_id, object.itemable_id) { object.itemable }
-    when 'Membership' then cache_fetch(:memberships_by_id, object.itemable_id) { object.itemable }
-    when 'Group' then cache_fetch(:groups_by_id, object.itemable_id) { object.itemable }
-    when 'MembershipRequest' then cache_fetch(:membership_requests_by_id, object.itemable_id) { object.itemable }
     else
       object.itemable
     end

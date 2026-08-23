@@ -1,4 +1,4 @@
-module TopicItems::Notify::Subscribers
+module TopicItems::Publish::SubscriberEmails
   def trigger!
     super
     send_subscriber_emails!

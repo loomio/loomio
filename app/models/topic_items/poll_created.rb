@@ -1,7 +1,7 @@
 class TopicItems::PollCreated < TopicItem
-  include TopicItems::Notify::Chatbots
-  include TopicItems::Notify::Subscribers
-  include TopicItems::LiveUpdate
+  include TopicItems::Publish::Chatbots
+  include TopicItems::Publish::SubscriberEmails
+  include TopicItems::Publish::LiveUpdate
 
   def self.publish!(poll, actor)
     publish_and_mark_read!(poll,

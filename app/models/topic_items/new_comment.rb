@@ -1,8 +1,7 @@
 class TopicItems::NewComment < TopicItem
-  include TopicItems::Notify::ByEmail
-  include TopicItems::Notify::Chatbots
-  include TopicItems::Notify::Subscribers
-  include TopicItems::LiveUpdate
+  include TopicItems::Publish::Chatbots
+  include TopicItems::Publish::SubscriberEmails
+  include TopicItems::Publish::LiveUpdate
 
   def self.publish!(comment)
     if comment.parent.present?

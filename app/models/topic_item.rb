@@ -98,8 +98,7 @@ class TopicItem < ApplicationRecord
 
   def notification_url
     model = case kind
-            when 'stance_created'      then itemable.poll
-            when 'invitation_accepted' then itemable.group
+            when 'stance_created' then itemable.poll
             else itemable
             end
     polymorphic_path(model)
@@ -204,7 +203,6 @@ class TopicItem < ApplicationRecord
       candidate = p.is_a?(TopicItem) ? p : p&.created_topic_item
       candidate&.topic_id == topic_id ? candidate : topic&.topicable&.created_topic_item
     when 'poll_closed_by_user' then itemable.created_topic_item
-    when 'poll_closing_soon'   then itemable.created_topic_item
     when 'poll_created'
       if itemable.topic.topicable == itemable
         itemable.created_topic_item == self ? nil : itemable.created_topic_item
@@ -212,8 +210,6 @@ class TopicItem < ApplicationRecord
         itemable.topic.topicable.created_topic_item
       end
     when 'poll_edited'         then itemable.created_topic_item
-    when 'poll_expired'        then itemable.created_topic_item
-    when 'poll_option_added'   then itemable.created_topic_item
     when 'poll_reopened'       then itemable.created_topic_item
     when 'stance_created'      then itemable.parent_topic_item
     when 'stance_updated'      then itemable.parent_topic_item
@@ -234,22 +230,6 @@ class TopicItem < ApplicationRecord
     else
       original_parent
     end
-  end
-
-  def notification_model
-    topic || (itemable.respond_to?(:topic) && itemable.topic) || itemable
-  end
-
-  def email_recipients
-    notification_model.volume_gte_normal_members.where(id: all_recipient_user_ids)
-  end
-
-  def notification_recipients
-    notification_model.volume_gte_quiet_members.where(id: all_recipient_user_ids).where.not(id: user.id || 0)
-  end
-
-  def all_recipients
-    User.active.where(id: all_recipient_user_ids)
   end
 
   def all_recipient_user_ids
