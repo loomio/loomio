@@ -49,7 +49,7 @@ class Dev::PollsController < Dev::NightwatchController
       poll = scenario[:poll]
       recipient = scenario[:observer]
 
-      event_key = DeliveryMailer.event_key_for(topic_item, recipient)
+      event_key = NotificationMailer.event_key_for(topic_item, recipient)
       subject_params = {
         title: poll.title,
         poll_type: I18n.t("decision_tools_card.#{poll.poll_type}_title"),
@@ -61,7 +61,7 @@ class Dev::PollsController < Dev::NightwatchController
       render Views::Dev::Polls::Compare.new(
         email_subject: email_subject,
         print: Views::Polls::Export.new(poll: poll, exporter: PollExporter.new(poll), recipient: recipient),
-        email: DeliveryMailer.build_component(topic_item: topic_item, recipient: recipient),
+        email: NotificationMailer.build_component(topic_item: topic_item, recipient: recipient),
         matrix: Views::Chatbot::Matrix::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient),
         markdown: Views::Chatbot::Markdown::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient),
         slack: Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient)

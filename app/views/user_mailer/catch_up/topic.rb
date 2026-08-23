@@ -6,10 +6,10 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
   THREAD_ITEM_KINDS = %w[new_comment stance_created discussion_edited poll_edited].freeze
 
   THREAD_COMPONENTS = {
-    'new_comment' => Views::DeliveryMailer::Thread::NewComment,
-    'stance_created' => Views::DeliveryMailer::Thread::StanceCreated,
-    'discussion_edited' => Views::DeliveryMailer::Thread::DiscussionEdited,
-    'poll_edited' => Views::DeliveryMailer::Thread::PollEdited
+    'new_comment' => Views::NotificationMailer::Thread::NewComment,
+    'stance_created' => Views::NotificationMailer::Thread::StanceCreated,
+    'discussion_edited' => Views::NotificationMailer::Thread::DiscussionEdited,
+    'poll_edited' => Views::NotificationMailer::Thread::PollEdited
   }.freeze
 
   def initialize(topic:, recipient:, time_start:, utm_hash:)
@@ -57,11 +57,11 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     end
 
     polls.each do |poll|
-      render Views::DeliveryMailer::Common::Title.new(itemable: poll, recipient: @recipient)
-      render Views::DeliveryMailer::Common::Tags.new(itemable: poll)
-      render Views::DeliveryMailer::Poll::Summary.new(poll: poll, recipient: @recipient)
-      render Views::DeliveryMailer::Poll::Vote.new(poll: poll, recipient: @recipient)
-      render Views::DeliveryMailer::Poll::ResultsPanel.new(poll: poll, current_user: @recipient)
+      render Views::NotificationMailer::Common::Title.new(itemable: poll, recipient: @recipient)
+      render Views::NotificationMailer::Common::Tags.new(itemable: poll)
+      render Views::NotificationMailer::Poll::Summary.new(poll: poll, recipient: @recipient)
+      render Views::NotificationMailer::Poll::Vote.new(poll: poll, recipient: @recipient)
+      render Views::NotificationMailer::Poll::ResultsPanel.new(poll: poll, current_user: @recipient)
     end
   end
 

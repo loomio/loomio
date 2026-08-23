@@ -170,7 +170,7 @@ class ReceivedEmailService
       /^On.*<\r?\n?.*>.*\r?\n?wrote:\r?\n?$/,
       /On.*wrote:/,
       (author_name ? /^[[:space:]]*#{author_name}[[:space:]]*$/ : nil), # signature that starts with author name
-      /#{DeliveryMailer::REPLY_DELIMITER}/,
+      /#{NotificationMailer::REPLY_DELIMITER}/,
       /\*?From:.*$/i,
       /^[[:space:]]*\d{4}[-\/]\d{1,2}[-\/]\d{1,2}[[:space:]].*[[:space:]]<.*>?$/i,
       /(_)*\n[[:space:]]*De :.*\n[[:space:]]*Envoyé :.*\n[[:space:]]*À :.*\n[[:space:]]*Objet :.*\n$/i, # French Outlook

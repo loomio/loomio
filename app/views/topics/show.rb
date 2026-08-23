@@ -47,7 +47,7 @@ class Views::Topics::Show < Views::Application::Layout
   def render_details
     div(class: "context-panel__details my-2 text-body-2 align-center d-flex text-medium-emphasis") do
       span(class: "mr-2") do
-        render Views::DeliveryMailer::Common::Avatar.new(user: @topic.topicable.author)
+        render Views::NotificationMailer::Common::Avatar.new(user: @topic.topicable.author)
       end
       span(class: "text-medium-emphasis") do
         a(href: user_url(@topic.topicable.author)) { plain @topic.topicable.author.name }

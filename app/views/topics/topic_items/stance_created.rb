@@ -15,7 +15,7 @@ class Views::Topics::TopicItems::StanceCreated < Views::Application::Component
       div(class: "thread-item #{@kind == :created ? 'pl-2' : 'px-3'} pb-1") do
         div(class: "#{@kind == :created ? 'v-layout' : 'layout'} lmo-action-dock-wrapper ml-5") do
           div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::DeliveryMailer::Common::Avatar.new(user: voter, size: 24)
+            render Views::NotificationMailer::Common::Avatar.new(user: voter, size: 24)
           end
           div(class: "#{@kind == :updated ? 'layout ' : ''}thread-item__body#{' column' if @kind == :updated}") do
             if stance.revoked_at

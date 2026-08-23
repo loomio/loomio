@@ -6,7 +6,7 @@ module TopicItems::Notify::Subscribers
 
   def send_subscriber_emails!
     subscribed_recipients.active.no_spam_complaints.pluck(:id).each do |recipient_id|
-      DeliveryMailer.topic_item(recipient_id, id).deliver_later
+      NotificationMailer.topic_item(recipient_id, id).deliver_later
     end
   end
 

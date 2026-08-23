@@ -8,7 +8,7 @@ class DeliverNotificationEmailWorker < ApplicationJob
     delivery = claim(notification_delivery_id)
     return unless delivery
 
-    DeliveryMailer.notification(delivery.id).deliver_now
+    NotificationMailer.notification(delivery.id).deliver_now
     delivery.update!(status: "delivered", delivered_at: Time.current, last_error: nil)
   rescue StandardError => error
     delivery&.update!(status: "failed", last_error: error.message)

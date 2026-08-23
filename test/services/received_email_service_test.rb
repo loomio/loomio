@@ -42,7 +42,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
   end
 
   test "splits on reply delimiter" do
-    input_body = "Hi I'm the bit you want\n      #{DeliveryMailer::REPLY_DELIMITER}\n      This is the bit that you don't want"
+    input_body = "Hi I'm the bit you want\n      #{NotificationMailer::REPLY_DELIMITER}\n      This is the bit that you don't want"
     output_body = ReceivedEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end

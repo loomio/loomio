@@ -187,7 +187,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score desc").each do |stance_choice|
         tr do
-          td { render Views::DeliveryMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::NotificationMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end
@@ -210,7 +210,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score asc").each do |stance_choice|
         tr do
-          td { render Views::DeliveryMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::NotificationMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end

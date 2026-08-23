@@ -12,7 +12,7 @@ class Views::Topics::TopicItems::NewComment < Views::Application::Component
       div(class: "thread-item px-3 pb-1") do
         div(id: "sequence-2", class: "d-flex lmo-action-dock-wrapper", style: "margin-left: 0px;") do
           div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::DeliveryMailer::Common::Avatar.new(user: comment.author)
+            render Views::NotificationMailer::Common::Avatar.new(user: comment.author)
           end
           div(class: "layout thread-item__body column") do
             div(class: "layout align-center wrap") do

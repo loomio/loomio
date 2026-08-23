@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::ReceivedEmailMailer < Views::DeliveryMailer::Layout
+class Views::ReceivedEmailMailer < Views::NotificationMailer::Layout
 
   def initialize(topic_item:, recipient:, event_key:)
     @topic_item = topic_item
@@ -12,8 +12,8 @@ class Views::ReceivedEmailMailer < Views::DeliveryMailer::Layout
     group = @topic_item.itemable.group
     url = group_emails_url(@topic_item.itemable.group.key)
 
-    render Views::DeliveryMailer::Group::CoverAndLogo.new(group: group)
-    render Views::DeliveryMailer::Common::Notification.new(
+    render Views::NotificationMailer::Group::CoverAndLogo.new(group: group)
+    render Views::NotificationMailer::Common::Notification.new(
       topic_item: @topic_item,
       recipient: @recipient,
       event_key: @event_key,
@@ -23,7 +23,7 @@ class Views::ReceivedEmailMailer < Views::DeliveryMailer::Layout
     )
 
     div(class: "text-center") do
-      render Views::DeliveryMailer::Common::Button.new(
+      render Views::NotificationMailer::Common::Button.new(
         url: url,
         text: t(:"email_to_group.review_email")
       )
@@ -31,7 +31,7 @@ class Views::ReceivedEmailMailer < Views::DeliveryMailer::Layout
 
     raw t('event_mailer.received_email.explaination_html', group: group.full_name)
 
-    render Views::DeliveryMailer::Common::Footer.new(
+    render Views::NotificationMailer::Common::Footer.new(
       topic_item: @topic_item,
       recipient: @recipient,
       event_key: @event_key
