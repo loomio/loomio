@@ -11,8 +11,6 @@ class Membership < ApplicationRecord
   include HasTimeframe
   include HasExperiences
   include HasNotifications
-  scope :in_organisation, -> (group) { includes(:user).where(group_id: group.id_and_subgroup_ids).active }
-
   extend FriendlyId
   extend HasTokens
   friendly_id :token

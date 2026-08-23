@@ -84,7 +84,6 @@ class Stance < ApplicationRecord
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
-  scope :in_organisation, ->(group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   scope :decided, -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided, -> { where("stances.cast_at IS NULL") }
   scope :revoked, -> { where("revoked_at IS NOT NULL") }

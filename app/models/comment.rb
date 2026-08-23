@@ -74,13 +74,6 @@ class Comment < ApplicationRecord
   alias_method :author, :user
   alias_method :author=, :user=
 
-  scope :in_organisation, ->(group) {
-    includes(:user)
-    .joins("INNER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
-    .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
-    .where("topics.group_id IN (?)", group.id_and_subgroup_ids)
-  }
-
   delegate :name, to: :user, prefix: :author
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :topic, :topic_id, :group, :group_id, :members, :guests, to: :parent

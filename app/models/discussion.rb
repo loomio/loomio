@@ -51,7 +51,6 @@ class Discussion < ApplicationRecord
     SQL
   end
 
-  scope :in_organisation, ->(group) { includes(:author).joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }) }
   scope :last_activity_after, ->(time) { joins(:topic).where('topics.last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { joins(:topic).order('topics.last_activity_at DESC') }
   scope :order_by_pinned_then_latest_activity, -> { joins(:topic).order('topics.pinned_at, topics.last_activity_at DESC') }

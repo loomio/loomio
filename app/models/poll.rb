@@ -189,10 +189,6 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
-  scope :in_organisation, ->(group) {
-    kept.joins(:topic).where("topics.group_id IN (?)", group.id_and_subgroup_ids)
-  }
-
   scope :closing_soon_not_published, ->(timeframe) do
      active
     .distinct
