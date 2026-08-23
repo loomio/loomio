@@ -14,7 +14,6 @@ class NotificationRenderingContext
   end
 
   alias actor user
-  alias real_user user
 
   # Mail and chatbot views render topic publications and notifications through
   # one interface. A notification's subject occupies the itemable slot without

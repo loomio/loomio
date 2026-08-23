@@ -8,7 +8,7 @@ module Ability::Stance
 
     can [:update], ::Stance do |stance|
       can?(:vote_in, stance.poll) &&
-      stance.real_participant == user &&
+      stance.participant == user &&
       stance.latest?
     end
 

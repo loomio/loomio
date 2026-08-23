@@ -35,9 +35,8 @@ class TopicItem < ApplicationRecord
   delegate :update_sequence_info!, to: :topic
 
   # A topic item's actor should not acquire unread state for their own action.
-  # Detached anonymous stances use their real participant for this bookkeeping.
   def mark_actor_as_read!
-    reader = real_user
+    reader = actor
     return unless reader&.is_logged_in?
     return unless sequence_id
 
@@ -48,10 +47,6 @@ class TopicItem < ApplicationRecord
 
   def user
     super || AnonymousUser.new
-  end
-
-  def real_user
-    user
   end
 
   def actor

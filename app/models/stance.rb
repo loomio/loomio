@@ -217,10 +217,6 @@ class Stance < ApplicationRecord
     end
   end
 
-  def real_participant
-    participant
-  end
-
   def score_for(option)
     option_scores[option.id] || 0
   end

@@ -23,7 +23,7 @@ class Views::NotificationMailer::Poll::Stance < Views::ApplicationMailer::Compon
         end
       end
 
-      if @stance.real_participant == @recipient && @stance.poll.active?
+      if @stance.participant == @recipient && @stance.poll.active?
         a(href: tracked_url(@stance.poll, recipient: @recipient, args: { change_vote: @stance.poll.id })) do
           plain t(:"poll_common.change_vote")
         end

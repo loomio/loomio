@@ -12,13 +12,17 @@ module NotificationDeliveryResolvers
       end
 
       recipients = explicit_users.active
+      email_explicit = discussion.topic.volume_gte_normal_members
+                                 .where("users.id": recipients.no_spam_complaints.select(:id))
+                                 .where.not(id: audience_ids("newly_mentioned_user_ids"))
+      if notification.recipient_message.present?
+        email_explicit = email_explicit.where.not(id: discussion.topic.volume_loud_members.select(:id))
+      end
       {
         "in_app" => discussion.topic.volume_gte_quiet_members
                               .where("users.id": recipients.select(:id))
                               .where.not(id: notification.actor_id).to_a,
-        "email" => discussion.topic.volume_gte_normal_members
-                             .where("users.id": recipients.no_spam_complaints.select(:id))
-                             .where.not(id: audience_ids("newly_mentioned_user_ids")).to_a,
+        "email" => email_explicit.to_a,
         "chatbot" => (discussion.group&.chatbots || Chatbot.none)
                        .where(id: notification.recipient_chatbot_ids).to_a
       }

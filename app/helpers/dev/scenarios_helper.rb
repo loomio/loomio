@@ -237,7 +237,7 @@ module Dev::ScenariosHelper
       actor: actor)
     create_fake_stances(poll: poll)
 
-    voter      = poll.stances.last.real_participant
+    voter      = poll.stances.last.participant
     discussion.add_guest! voter, discussion.author
     PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon

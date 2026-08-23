@@ -242,6 +242,33 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
   end
 
+  test "a loud explicit discussion edit recipient receives one subscription email path" do
+    discussion = discussions(:discussion)
+    recipient = users(:member)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:loud)
+
+    topic_item = DiscussionService.update(
+      discussion: discussion,
+      actor: @author,
+      params: {
+        recipient_user_ids: [ recipient.id ],
+        recipient_message: "Please review this edit"
+      }
+    )
+    notification = Notification.find_by!(kind: "discussion_edited", subject: discussion)
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_enqueued_email_with(
+      NotificationMailer,
+      :topic_item,
+      args: [ recipient.id, topic_item.id ]
+    ) do
+      PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
+    end
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+  end
+
   test "poll closing soon resolves voter channels with recipient-localized values" do
     normal_user = users(:member)
     @poll.update!(notify_on_closing_soon: "voters")

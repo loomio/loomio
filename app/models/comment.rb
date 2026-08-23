@@ -99,10 +99,6 @@ class Comment < ApplicationRecord
     user_id
   end
 
-  def real_participant
-    author
-  end
-
   def user
     super || AnonymousUser.new
   end

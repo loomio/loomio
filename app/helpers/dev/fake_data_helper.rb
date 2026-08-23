@@ -122,35 +122,30 @@ module Dev::FakeDataHelper
 
   def fake_new_comment_event(comment = fake_comment)
     TopicItems::NewComment.new(
-      kind: 'new_comment',
       itemable: comment
     )
   end
 
   def fake_new_discussion_event(discussion = fake_discussion)
     TopicItems::NewDiscussion.new(
-      kind: 'new_discussion',
       itemable: discussion
     )
   end
 
   def fake_poll_created_topic_item(poll = fake_poll)
     TopicItems::PollCreated.new(
-      kind: 'poll_created',
       itemable: poll
     )
   end
 
   def fake_stance_created_topic_item(stance = fake_stance)
     TopicItems::StanceCreated.new(
-      kind: 'stance_created',
       itemable: stance
     )
   end
 
   def fake_outcome_created_topic_item(outcome = fake_outcome)
     TopicItems::OutcomeCreated.new(
-      kind: 'outcome_created',
       itemable: outcome
     )
   end
