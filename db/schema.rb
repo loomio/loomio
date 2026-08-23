@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_23_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1137,7 +1137,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000002) do
   create_table "topic_items", id: :serial, force: :cascade do |t|
     t.integer "child_count", default: 0, null: false
     t.datetime "created_at", precision: nil
-    t.jsonb "custom_fields", default: {}, null: false
     t.integer "depth", default: 0, null: false
     t.integer "itemable_id"
     t.string "itemable_type", limit: 255
@@ -1145,6 +1144,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000002) do
     t.string "kind", limit: 255
     t.integer "parent_id"
     t.boolean "pinned", default: false, null: false
+    t.text "pinned_title"
     t.integer "position", default: 0, null: false
     t.string "position_key"
     t.integer "sequence_id"

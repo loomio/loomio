@@ -53,7 +53,6 @@ module GroupExportRelations
     has_many :reader_users,               through: :topic_readers,                  source: :user
 
     # topic_items
-    has_many :membership_topic_items,         through: :memberships,         source: :topic_items
     has_many :discussion_topic_items,         through: :discussions,         source: :topic_items
     has_many :comment_topic_items,            through: :comments,            source: :topic_items
     has_many :exportable_poll_topic_items,    through: :exportable_polls,    source: :topic_items
@@ -104,7 +103,6 @@ module GroupExportRelations
 
   def all_topic_items
     Queries::UnionQuery.for(:topic_items, [
-      self.membership_topic_items,
       self.discussion_topic_items,
       self.comment_topic_items,
       self.exportable_poll_topic_items,

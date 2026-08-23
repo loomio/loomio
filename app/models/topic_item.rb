@@ -2,7 +2,6 @@ class TopicItem < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
   include CustomCounterCache::Model
   include PrettyUrlHelper
-  extend HasCustomFields
 
   belongs_to :itemable, polymorphic: true
   # topic_id marks this topic_item as a thread item: when set, the topic_item has a
@@ -14,8 +13,6 @@ class TopicItem < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, (-> { where("topic_id is not null") }), class_name: "TopicItem", foreign_key: :parent_id
-  set_custom_fields :pinned_title
-
   before_create :set_parent_and_depth, if: :topic_id
   before_create :set_sequences, if: :topic_id
   after_rollback :reset_sequences, if: :topic_id

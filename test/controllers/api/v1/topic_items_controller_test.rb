@@ -17,10 +17,11 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     comment = Comment.new(parent: @discussion, body: "Test comment")
     topic_item = CommentService.create(comment: comment, actor: @user)
 
-    patch :pin, params: { id: topic_item.id }
+    patch :pin, params: { id: topic_item.id, pinned_title: "Pinned context" }
 
     assert_response :success
     assert topic_item.reload.pinned
+    assert_equal "Pinned context", topic_item.pinned_title
   end
 
   test "index returns topic_items for a discussion" do
@@ -28,24 +29,6 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     get :index, params: { discussion_id: @discussion.id }, format: :json
     json = JSON.parse(response.body)
     assert_includes json.keys, 'topic_items'
-  end
-
-  test "discussion moved topic_items do not expose a legacy source group" do
-    source_group = Group.create!(name: 'Secret source', group_privacy: 'secret', is_visible_to_public: false)
-    topic_item = TopicItem.create!(
-      kind: 'discussion_moved',
-      itemable: @public_discussion,
-      topic: @public_discussion.topic,
-      user: @admin,
-      custom_fields: { source_group_id: source_group.id }
-    )
-
-    get :index, params: { discussion_id: @public_discussion.id }, format: :json
-
-    payload = JSON.parse(response.body)
-    serialized_event = payload['topic_items'].find { |record| record['id'] == topic_item.id }
-    assert_not serialized_event['custom_fields'].key?('source_group_id')
-    refute_includes payload.fetch('groups', []).map { |group| group['id'] }, source_group.id
   end
 
   test "index serializes without record cache fallbacks" do

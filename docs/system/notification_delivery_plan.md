@@ -57,7 +57,8 @@ Not every publication is a notification:
 
 Explicit recipients, chatbot IDs, audience snapshots and recipient messages
 belong only to `Notification`. They are real notification columns and are not
-copied into `TopicItem.custom_fields` or exposed on the timeline item.
+copied onto topic items or exposed on the timeline item. `TopicItem` has a real
+`pinned_title` column and no generic `custom_fields` payload.
 
 Topic-item publication is declared by its `TopicItems::Publish` concerns. Each
 concern performs or enqueues its own work after commit; there is no generic

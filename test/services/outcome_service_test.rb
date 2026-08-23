@@ -70,7 +70,6 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     notification = Notification.find_by!(kind: "outcome_created", subject: @new_outcome)
 
     assert_equal @poll.topic_id, topic_item.topic_id
-    assert_empty topic_item.custom_fields
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal 1, Notification.where(kind: "outcome_created", subject: @new_outcome).count
 

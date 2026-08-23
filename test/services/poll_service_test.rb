@@ -288,7 +288,6 @@ class PollServiceTest < ActiveSupport::TestCase
 
     assert_equal "poll_edited", topic_item.kind
     assert_equal poll.topic_id, topic_item.topic_id
-    assert_empty topic_item.custom_fields
     assert_not_respond_to topic_item, :recipient_message
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal "Please review the poll changes", notification.recipient_message

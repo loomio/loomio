@@ -180,7 +180,6 @@ class TopicServiceTest < ActiveSupport::TestCase
 
     moved_event = discussion.topic_items.where(kind: 'discussion_moved').order(:id).last!
     assert_equal admin.id, moved_event.user_id
-    assert_not moved_event.custom_fields.key?('source_group_id')
   end
 
   test "move converts a group discussion to a direct thread for its participants" do

@@ -64,13 +64,12 @@ module HasMentions
   end
 
   def already_mentioned_group_ids
-    legacy_group_ids = topic_items.where(kind: "group_mentioned")
-                             .flat_map { |topic_item| topic_item.custom_fields["group_ids"] }
-    notification_group_ids = Notification.where(
+    notifications = Notification.where(
       kind: "group_mentioned",
       subject: self
-    ).flat_map { |notification| notification.audience_values["group_ids"] }
-    (legacy_group_ids + notification_group_ids).compact.map(&:to_i).uniq
+    )
+    notifications.flat_map { |notification| notification.audience_values["group_ids"] }
+                 .compact.map(&:to_i).uniq
   end
 
   private

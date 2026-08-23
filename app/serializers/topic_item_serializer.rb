@@ -1,6 +1,6 @@
 class TopicItemSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
-    :topic_id, :created_at, :itemable_id, :itemable_type, :custom_fields,
+    :topic_id, :created_at, :itemable_id, :itemable_type,
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key
 
   has_one :actor, serializer: AuthorSerializer, root: :users
@@ -26,19 +26,5 @@ class TopicItemSerializer < ApplicationSerializer
     else
       object.itemable
     end
-  end
-
-  def pinned_title
-    object.custom_fields['pinned_title']
-  end
-
-  def custom_fields
-    return object.custom_fields unless object.kind == "discussion_moved"
-
-    object.custom_fields.except('source_group_id')
-  end
-
-  def include_custom_fields?
-    object.kind == "discussion_moved"
   end
 end

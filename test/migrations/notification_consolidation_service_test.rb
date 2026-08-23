@@ -13,10 +13,12 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
         LIMIT 1
       SQL
       recipient_message = "Historical direct message"
+      mentioned_group_id = groups(:group).id
       connection.execute(<<~SQL.squish)
         UPDATE events
         SET custom_fields = custom_fields || jsonb_build_object(
-          'recipient_message', #{connection.quote(recipient_message)}
+          'recipient_message', #{connection.quote(recipient_message)},
+          'group_ids', jsonb_build_array(#{connection.quote(mentioned_group_id)})
         )
         WHERE id = #{connection.quote(topic_item.fetch('id'))}
       SQL
@@ -54,6 +56,12 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
         WHERE legacy_event_id = #{connection.quote(topic_item.fetch('id'))}
       SQL
       assert_equal recipient_message, occurrence_message
+      occurrence_audience = connection.select_value(<<~SQL.squish)
+        SELECT audience_values
+        FROM notification_occurrences
+        WHERE legacy_event_id = #{connection.quote(topic_item.fetch('id'))}
+      SQL
+      assert_equal({ "group_ids" => [ mentioned_group_id ] }, JSON.parse(occurrence_audience))
       assert_not_nil stats.dig(:state, :completed_at)
       assert_not_nil stats.dig(:state, :repair_completed_at)
     end
@@ -89,6 +97,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
 
   def with_preparation_schema
     connection = ActiveRecord::Base.connection
+    had_custom_fields = connection.column_exists?(:topic_items, :custom_fields)
     NotificationDelivery.delete_all
     Notification.delete_all
 
@@ -96,6 +105,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     connection.rename_column(:events, :itemable_type, :eventable_type)
     connection.rename_column(:events, :itemable_id, :eventable_id)
     connection.rename_column(:events, :itemable_version_id, :eventable_version_id)
+    connection.add_column(:events, :custom_fields, :jsonb, null: false, default: {}) unless had_custom_fields
     connection.change_column_null(:events, :topic_id, true)
     connection.rename_table(:notifications, :notification_occurrences)
     connection.add_column(:notification_occurrences, :legacy_event_id, :bigint, null: false)
@@ -136,6 +146,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
       connection.rename_column(:events, :eventable_type, :itemable_type)
       connection.rename_column(:events, :eventable_id, :itemable_id)
       connection.rename_column(:events, :eventable_version_id, :itemable_version_id)
+      connection.remove_column(:events, :custom_fields) unless had_custom_fields
       connection.rename_table(:events, :topic_items)
       TopicItem.reset_column_information
       Notification.reset_column_information

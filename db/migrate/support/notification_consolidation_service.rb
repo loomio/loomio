@@ -124,6 +124,7 @@ class NotificationConsolidationService
           subject_type,
           subject_id,
           recipient_message,
+          audience_values,
           created_at,
           updated_at
         FROM receipt_values
@@ -134,11 +135,11 @@ class NotificationConsolidationService
       )
       INSERT INTO notification_occurrences
         (legacy_event_id, actor_id, kind, subject_type, subject_id,
-         recipient_message, translation_values, deliveries_generated_at,
+         recipient_message, audience_values, translation_values, deliveries_generated_at,
          created_at, updated_at)
       SELECT
         legacy_event_id, actor_id, effective_kind, subject_type, subject_id,
-        recipient_message, '{}'::jsonb, CURRENT_TIMESTAMP, created_at, updated_at
+        recipient_message, audience_values, '{}'::jsonb, CURRENT_TIMESTAMP, created_at, updated_at
       FROM occurrence_values source_values
       WHERE NOT EXISTS (
         SELECT 1 FROM notification_occurrences occurrences
@@ -292,7 +293,7 @@ class NotificationConsolidationService
         )
         INSERT INTO notification_occurrences
           (legacy_event_id, actor_id, kind, subject_type, subject_id,
-           recipient_message, translation_values, deliveries_generated_at,
+           recipient_message, audience_values, translation_values, deliveries_generated_at,
            created_at, updated_at)
         SELECT DISTINCT ON (event_id, effective_kind)
           event_id,
@@ -301,6 +302,7 @@ class NotificationConsolidationService
           subject_type,
           subject_id,
           recipient_message,
+          audience_values,
           '{}'::jsonb,
           CURRENT_TIMESTAMP,
           created_at,
@@ -423,6 +425,11 @@ class NotificationConsolidationService
         events.eventable_type AS subject_type,
         events.eventable_id AS subject_id,
         events.custom_fields ->> 'recipient_message' AS recipient_message,
+        CASE
+          WHEN events.custom_fields ? 'group_ids' THEN
+            jsonb_build_object('group_ids', events.custom_fields -> 'group_ids')
+          ELSE '{}'::jsonb
+        END AS audience_values,
         CASE
           WHEN events.kind = 'announcement_created' THEN
             COALESCE(events.custom_fields ->> 'kind', 'group_announced')

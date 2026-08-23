@@ -37,10 +37,12 @@ class LegacyEventMigrationServiceTest < ActiveSupport::TestCase
   # this test cannot accidentally pass through today's TopicItem associations.
   def with_legacy_event_schema
     connection = ActiveRecord::Base.connection
+    had_custom_fields = connection.column_exists?(:topic_items, :custom_fields)
     connection.rename_table(:topic_items, :events)
     connection.rename_column(:events, :itemable_type, :eventable_type)
     connection.rename_column(:events, :itemable_id, :eventable_id)
     connection.rename_column(:events, :itemable_version_id, :eventable_version_id)
+    connection.add_column(:events, :custom_fields, :jsonb, null: false, default: {}) unless had_custom_fields
     LegacyMigratedEventRecord.reset_column_information
 
     yield
@@ -49,6 +51,7 @@ class LegacyEventMigrationServiceTest < ActiveSupport::TestCase
       connection.rename_column(:events, :eventable_type, :itemable_type)
       connection.rename_column(:events, :eventable_id, :itemable_id)
       connection.rename_column(:events, :eventable_version_id, :itemable_version_id)
+      connection.remove_column(:events, :custom_fields) unless had_custom_fields
       connection.rename_table(:events, :topic_items)
       LegacyMigratedEventRecord.reset_column_information
       TopicItem.reset_column_information

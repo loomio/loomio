@@ -122,21 +122,6 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     }
   end
 
-  test "discussion moved exports do not expose the source group id" do
-    source_group = groups(:alien_group)
-    discussion = discussions(:discussion)
-    topic_item = TopicItem.create!(
-      kind: 'discussion_moved',
-      itemable: discussion,
-      topic: discussion.topic,
-      custom_fields: { source_group_id: source_group.id }
-    )
-
-    event_json = GroupExportService.export_record(topic_item, 'topic_items')
-
-    assert_not event_json['custom_fields'].key?('source_group_id')
-  end
-
   test "group export and import preserve detached anonymous polls with fresh ballot ids" do
     group, admin, voter = create_detached_export_group
     poll, ballot = create_detached_export_poll(

@@ -211,7 +211,6 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
     assert_equal "Please review this discussion", notification.recipient_message
-    assert_empty topic_item.custom_fields
     assert_equal 1, Notification.where(kind: "new_discussion", subject: discussion).count
     assert_equal %w[chatbot email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end

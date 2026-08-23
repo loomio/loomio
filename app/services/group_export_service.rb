@@ -330,13 +330,7 @@ class GroupExportService
   end
 
   def self.export_record(record, table)
-    json = record.as_json(JSON_PARAMS[table])
-
-    if record.is_a?(TopicItem)
-      json['custom_fields'] = record.custom_fields.except('source_group_id') if record.kind == 'discussion_moved'
-    end
-
-    json
+    record.as_json(JSON_PARAMS[table])
   end
 
   def self.import(filename_or_url, reset_keys: false)
