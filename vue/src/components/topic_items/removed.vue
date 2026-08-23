@@ -20,8 +20,8 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item__removed
-  h3.strand-item__headline.text-body-medium.pb-1.d-flex.align-center.text-medium-emphasis
+section.topic-item__removed
+  h3.topic-item__headline.text-body-medium.pb-1.d-flex.align-center.text-medium-emphasis
     span(v-t="'thread_item.removed'")
     mid-dot
     time-ago(:date='itemable.discardedAt')

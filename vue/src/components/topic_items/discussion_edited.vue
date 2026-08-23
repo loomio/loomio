@@ -8,6 +8,6 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item__discussion-edited
-  strand-item-headline(:topic_item="topic_item" :itemable="itemable", :dateTime="topic_item.createdAt")
+section.topic-item__discussion-edited
+  topic-item-headline(:topic_item="topic_item" :itemable="itemable", :dateTime="topic_item.createdAt")
 </template>

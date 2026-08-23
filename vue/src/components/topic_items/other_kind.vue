@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-strand-item-headline(:topic_item="topic_item" :itemable="itemable")
+topic-item-headline(:topic_item="topic_item" :itemable="itemable")
 </template>
 
 <style>

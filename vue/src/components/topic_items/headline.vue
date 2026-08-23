@@ -39,9 +39,9 @@ export default {
 </script>
 
 <template lang="pug">
-h3.strand-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
+h3.topic-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
   div.d-flex.align-center
-    span.strand-item__headline.text-medium-emphasis.text-decoration-none(v-html='headline')
+    span.topic-item__headline.text-medium-emphasis.text-decoration-none(v-html='headline')
     space(v-if="isDelegate")
     v-chip(v-if="isDelegate" size="x-small" variant="tonal" label :title="$t('members_panel.delegate_popover')")
       span(v-t="'members_panel.delegate'")
@@ -54,14 +54,14 @@ h3.strand-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
 
 </template>
 <style>
-.strand-item__headline strong {
+.topic-item__headline strong {
   font-weight: 400;
 }
-.strand-item__headline .actor-link {
+.topic-item__headline .actor-link {
   text-decoration: none;
   color: inherit;
 }
-.strand-item__headline .actor-link:hover {
+.topic-item__headline .actor-link:hover {
   text-decoration: underline;
 }
 </style>

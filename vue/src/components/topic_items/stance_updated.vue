@@ -1,5 +1,5 @@
 <script lang="js">
-import StanceUpdated from '@/components/strand/item/stance_created.vue';
+import StanceUpdated from '@/components/topic_items/stance_created.vue';
 
 export default {
   components: {StanceUpdated},

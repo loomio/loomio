@@ -33,8 +33,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     page.loadPath('setup_manual_oatmilk_discussion');
-    page.waitFor('.strand-page');
-    page.expectText('.strand-page', 'Returnable bottles for cafe customers');
+    page.waitFor('.topic-page');
+    page.expectText('.topic-page', 'Returnable bottles for cafe customers');
     page.waitFor('.thread-sidebar .action-dock__button--export_thread');
     page.expectText('.thread-sidebar .action-dock__button--export_thread', 'Print');
     screenshot.capture('groups/data_export/discussion_print_discussion', {

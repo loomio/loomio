@@ -2,9 +2,9 @@
 import { ref, computed } from 'vue';
 import StrandLoadMore from '@/components/strand/load_more.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
-import IntersectionWrapper from '@/components/strand/item/intersection_wrapper';
-import StemWrapper from '@/components/strand/item/stem_wrapper';
-import Collapsed from '@/components/strand/item/collapsed';
+import IntersectionWrapper from '@/components/topic_items/intersection_wrapper';
+import StemWrapper from '@/components/topic_items/stem_wrapper';
+import Collapsed from '@/components/topic_items/collapsed';
 const props = defineProps({
   loader: Object,
   collection: {
@@ -25,84 +25,84 @@ const isFocused = (topic_item) => {
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj, index in collection" :key="obj.topic_item.id" :class="{'strand-item--deep': obj.topic_item.depth > 1}")
-    .strand-item__row(v-if="obj.missingEarlier")
+  .topic-item(v-for="obj, index in collection" :key="obj.topic_item.id" :class="{'topic-item--deep': obj.topic_item.depth > 1}")
+    .topic-item__row(v-if="obj.missingEarlier")
       strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
     v-expand-transition
-      .strand-item__row(v-if="loader.collapsed[obj.topic_item.id]")
+      .topic-item__row(v-if="loader.collapsed[obj.topic_item.id]")
         collapsed(:obj="obj" :loader="loader")
     v-expand-transition
-      .strand-item__row(v-if="!loader.collapsed[obj.topic_item.id]")
-        .strand-item__gutter(v-if="obj.topic_item.depth > 0")
+      .topic-item__row(v-if="!loader.collapsed[obj.topic_item.id]")
+        .topic-item__gutter(v-if="obj.topic_item.depth > 0")
           .d-flex.justify-center
             template(v-if="loader.topic.selectedTopicItemIds && loader.topic.selectedTopicItemIds.length")
               v-checkbox-btn.thread-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
               v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
             template(v-else)
-              .strand-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
-                user-avatar.strand-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
-                .strand-item__gutter-collapse
+              .topic-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
+                user-avatar.topic-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
+                .topic-item__gutter-collapse
                   common-icon(name="mdi-unfold-less-horizontal")
           stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
-        .strand-item__main
-          .strand-item__main--content
+        .topic-item__main
+          .topic-item__main--content
             intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
           .strand-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
             strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
             strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
           reply-form(:topicItemId="obj.topic_item.id")
 
-    .strand-item__row(v-if="obj.missingAfter" )
+    .topic-item__row(v-if="obj.missingAfter" )
       strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
 
-    //.strand-item__row(v-if="obj.missingAfterCount && obj.topic_item.depth == 1" )
+    //.topic-item__row(v-if="obj.missingAfterCount && obj.topic_item.depth == 1" )
     //  v-btn(:to="endUrl + '?end'") Jump to end
 
 </template>
 
 <style>
-.strand-item--deep .strand-item__gutter {
+.topic-item--deep .topic-item__gutter {
   width: 28px;
 }
-.strand-item--deep .strand-item__stem {
+.topic-item--deep .topic-item__stem {
   margin-left: 14px;
   margin-right: 14px;
 }
-.strand-item--deep .strand-item__circle {
+.topic-item--deep .topic-item__circle {
   width: 28px;
   height: 28px;
 }
-.strand-item--deep .strand-item__load-more {
+.topic-item--deep .topic-item__load-more {
   min-height: 28px;
 }
 
-.strand-item__row {
+.topic-item__row {
   display: flex;
   padding-top: 4px;
 }
 
-.strand-item__gutter {
+.topic-item__gutter {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 32px;
 }
 
-.strand-item__main {
+.topic-item__main {
   flex-grow: 1;
   padding-left: 8px;
   overflow: hidden;
   max-width: 100%;
 }
 
-.strand-item__stem-wrapper {
+.topic-item__stem-wrapper {
   width: 32px;
   height: 100%;
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-.strand-item__stem {
+.topic-item__stem {
   width: 0;
   height: 100%;
   padding: 0 1px;
@@ -110,21 +110,21 @@ const isFocused = (topic_item) => {
   margin: 0px 16px;
 }
 
-.strand-item__gutter:hover .strand-item__stem {
+.topic-item__gutter:hover .topic-item__stem {
   background-color: #d0d0d0;
 }
 
-.v-theme--dark .strand-item__gutter:hover .strand-item__stem {
+.v-theme--dark .topic-item__gutter:hover .topic-item__stem {
   background-color: rgb(var(--v-theme-surface-bright));
 }
 
-.strand-item__stem--broken {
+.topic-item__stem--broken {
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%);
   background-size: 16px 16px;
   background-repeat: repeat-y;
 }
 
-.strand-item__circle {
+.topic-item__circle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,14 +136,14 @@ const isFocused = (topic_item) => {
   cursor: pointer;
 }
 
-.strand-item__gutter-toggle {
+.topic-item__gutter-toggle {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.strand-item__gutter-collapse {
+.topic-item__gutter-collapse {
   display: none;
   align-items: center;
   justify-content: center;
@@ -151,15 +151,15 @@ const isFocused = (topic_item) => {
   height: 32px;
 }
 
-.strand-item--deep .strand-item__gutter-collapse {
+.topic-item--deep .topic-item__gutter-collapse {
   width: 28px;
   height: 28px;
 }
 
-.strand-item__gutter:hover .strand-item__gutter-avatar {
+.topic-item__gutter:hover .topic-item__gutter-avatar {
   display: none;
 }
-.strand-item__gutter:hover .strand-item__gutter-collapse {
+.topic-item__gutter:hover .topic-item__gutter-collapse {
   display: flex;
 }
 </style>

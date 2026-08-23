@@ -39,7 +39,7 @@ function markOptions(page) {
 function openPoll(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
+  page.execute("document.querySelector('.topic-item__load-more button')?.click()");
   page.waitFor('.poll-created');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
 }

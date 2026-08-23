@@ -19,8 +19,8 @@ function removeDefaultAudience(page) {
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Returnable bottles for cafe customers');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Returnable bottles for cafe customers');
   page.waitFor('.comment-form .ProseMirror');
   page.pause(1000);
 }
@@ -28,8 +28,8 @@ function openDiscussion(page) {
 function openMentionDiscussion(page) {
   page.resizeWindow(1000, 1200);
   page.loadPath('setup_manual_oatmilk_discussion_intro');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Improve the cafe bottle return process');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Improve the cafe bottle return process');
   page.waitFor('.comment-form .ProseMirror');
   page.pause(1000);
 }
@@ -55,13 +55,13 @@ function postMentionComment(page) {
   page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
   page.click('.comment-form__submit-button');
   page.pause(800);
-  page.expectText('.strand-page', 'Could you confirm the cafe collection dates');
+  page.expectText('.topic-page', 'Could you confirm the cafe collection dates');
   page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('Could you confirm the cafe collection dates')).classList.add('manual-mention-comment')");
 }
 
 function revealPoll(page) {
   openDiscussion(page);
-  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
+  page.execute("document.querySelector('.topic-item__load-more button')?.click()");
   page.waitFor('.poll-created');
 }
 
@@ -179,8 +179,8 @@ module.exports = {
 
     page.resizeWindow(1100, 1400);
     page.loadPath('setup_manual_oatmilk_discussion_intro');
-    page.waitFor('.strand-page');
-    page.expectText('.strand-page', 'Improve the cafe bottle return process');
+    page.waitFor('.topic-page');
+    page.expectText('.topic-page', 'Improve the cafe bottle return process');
     page.waitFor('.strand-new-discussion .emoji-picker__toggle');
     page.click('.strand-new-discussion .emoji-picker__toggle');
     page.waitFor('.emoji-picker');
@@ -188,10 +188,10 @@ module.exports = {
       document.querySelector('.v-app-bar')?.remove();
       document.querySelector('.thread-sidebar')?.style.setProperty('visibility', 'hidden');
       document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
-      document.querySelectorAll('.strand-item__gutter').forEach((gutter) => {
+      document.querySelectorAll('.topic-item__gutter').forEach((gutter) => {
         gutter.style.visibility = 'hidden';
       });
-      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
+      document.querySelectorAll('.topic-item__intersection-container').forEach((item) => {
         if (!item.querySelector('.strand-new-discussion')) item.style.visibility = 'hidden';
       });
     `);
@@ -279,25 +279,25 @@ module.exports = {
       'We will record return rates, cleaning time, damaged bottles, and transport costs before reviewing the result.'
     ]));
     page.click('.discussion-form__submit');
-    page.waitFor('.strand-item__discussion-edited');
-    page.expectText('.strand-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
+    page.waitFor('.topic-item__discussion-edited');
+    page.expectText('.topic-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
     page.execute(`
-      const target = document.querySelector('.strand-item__discussion-edited');
+      const target = document.querySelector('.topic-item__discussion-edited');
       document.querySelector('.v-app-bar')?.remove();
       document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
-      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
+      document.querySelectorAll('.topic-item__intersection-container').forEach((item) => {
         if (!item.contains(target)) item.style.visibility = 'hidden';
       });
     `);
     screenshot.captureRegion(
       'discussions/notifying_people/thread_edit_comment',
-      ['.strand-item__discussion-edited'],
+      ['.topic-item__discussion-edited'],
       {
         width: 1100,
         height: 1200,
         padding: 16,
         includeThreadGutters: true,
-        scrollSelector: '.strand-item__discussion-edited'
+        scrollSelector: '.topic-item__discussion-edited'
       }
     );
   },

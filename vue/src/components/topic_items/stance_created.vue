@@ -37,7 +37,7 @@ export default {
 
 <template lang="pug">
 
-section.strand-item__stance-created.stance-created
+section.topic-item__stance-created.stance-created
   template(v-if="itemable.castAt && !itemable.revokedAt")
     template(v-if="itemable.hasOptionIcon()")
       .d-flex.text-body-medium.align-center.pb-1
@@ -54,7 +54,7 @@ section.strand-item__stance-created.stance-created
           v-badge(inline location="right" :content="$t('poll_common.superseded')")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!itemable.hasOptionIcon()" wrap align-center)
-        strand-item-headline.text-medium-emphasis(:topic_item="topic_item" :itemable="itemable" :dateTime="itemable.updatedAt || itemable.castAt" :unread="unread")
+        topic-item-headline.text-medium-emphasis(:topic_item="topic_item" :itemable="itemable" :dateTime="itemable.updatedAt || itemable.castAt" :unread="unread")
       poll-common-stance-choices(:stance="itemable")
       .text-medium-emphasis(v-if="itemable.redactedAt" v-t="'poll_common_votes_panel.reason_redacted'")
       template(v-else)

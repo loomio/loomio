@@ -3,7 +3,7 @@ import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
-import StrandActionsPanel from './actions_panel';
+import StrandActionsPanel from '@/components/strand/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
@@ -315,9 +315,9 @@ function shouldSettleAnchorScroll() {
 </script>
 
 <template lang="pug">
-.strand-page
+.topic-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topic")
+    v-container.max-width-800.px-0.px-sm-3#topic-page(v-if="topic")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded-lg
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")

@@ -3,7 +3,7 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 
 function openExample(page, kind) {
   page.loadPath(`setup_manual_oatmilk_example?kind=${kind}`);
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.context-panel__heading');
 }
 
@@ -32,7 +32,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openExample(page, 'meeting_focus');
-    page.expectText('.strand-page', 'bottle-return rates');
+    page.expectText('.topic-page', 'bottle-return rates');
     captureThread(screenshot, 'meeting_focus_2');
   },
 
@@ -56,7 +56,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openExample(page, 'document_introduce');
-    page.expectText('.strand-page', 'damaged or missing bottles');
+    page.expectText('.topic-page', 'damaged or missing bottles');
     captureThread(screenshot, 'document_introduce');
   },
 
@@ -92,7 +92,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openExample(page, 'thread_raise_issue');
-    page.expectText('.strand-page', 'request capacity and water-use figures');
+    page.expectText('.topic-page', 'request capacity and water-use figures');
     captureThread(screenshot, 'thread_raise_issue');
   }
 };

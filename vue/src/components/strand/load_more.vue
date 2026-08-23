@@ -103,7 +103,7 @@ const size = () => {
 </script>
 
 <template lang="pug">
-.strand-item__load-more
+.topic-item__load-more
   v-btn.text-none(block variant="tonal" color="primary" @click="loadAndScrollTo" :loading="loading" :size="size()")
     v-icon.mr-2(v-if="direction === 'before'" :icon="mdiArrowExpandUp")
     v-icon.mr-2(v-if="direction === 'after'" :icon="mdiArrowExpandDown")
@@ -112,7 +112,7 @@ const size = () => {
 </template>
 
 <style>
-.strand-item__load-more {
+.topic-item__load-more {
   width: 100%;
   padding: 8px 0;
 }

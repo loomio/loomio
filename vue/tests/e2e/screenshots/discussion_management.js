@@ -19,7 +19,7 @@ function openThreadMenu(page) {
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.new-comment');
 }
 
@@ -201,7 +201,7 @@ module.exports = {
     page.expectText('.context-panel__heading', 'Cafe return tracking follow-up');
     page.click('.discussion-form .dismiss-modal-button');
     page.pause(500);
-    page.expectText('.strand-page', 'I can ask three cafes to track');
+    page.expectText('.topic-page', 'I can ask three cafes to track');
     page.execute("document.querySelectorAll('.flash-root').forEach(el => el.remove())");
     screenshot.capture('discussions/using_discussions/new_thread', {
       width: 1280,

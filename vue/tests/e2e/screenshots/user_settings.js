@@ -254,10 +254,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_translated_comment');
-    page.waitFor('.strand-item__new-comment', 15000);
+    page.waitFor('.topic-item__new-comment', 15000);
     screenshot.captureRegion(
       'users/translation/content_translation',
-      ['.strand-item__new-comment'],
+      ['.topic-item__new-comment'],
       {
         width: 1100,
         height: 1200,
@@ -267,10 +267,10 @@ module.exports = {
       }
     );
     page.click('.action-dock__button--translate_comment');
-    page.expectText('.strand-item__new-comment', 'I can ask three cafes to track how many bottles are returned each week.');
+    page.expectText('.topic-item__new-comment', 'I can ask three cafes to track how many bottles are returned each week.');
     screenshot.captureRegion(
       'users/translation/content_translated',
-      ['.strand-item__new-comment'],
+      ['.topic-item__new-comment'],
       {width: 1100, height: 1200, padding: 4, includeThreadGutters: true}
     );
   },

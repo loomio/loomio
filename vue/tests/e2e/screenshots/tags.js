@@ -145,7 +145,7 @@ module.exports = {
     openGroup(page);
     page.execute("Array.from(document.querySelectorAll('.thread-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-thread')");
     page.clickElement('.manual-thread');
-    page.waitFor('.strand-page');
+    page.waitFor('.topic-page');
     page.click('.topic-tags-menu__button');
     page.waitFor('.topic-tags-menu__popover');
     screenshot.captureRegion('discussions/tags/tags_thread_edit', [

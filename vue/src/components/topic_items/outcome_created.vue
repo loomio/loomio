@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template lang="pug">
-section.outcome-created.strand-item__outcome-created(id="'outcome-'+ itemable.id")
-  strand-item-headline(:topic_item="topic_item" :itemable="itemable")
+section.outcome-created.topic-item__outcome-created(id="'outcome-'+ itemable.id")
+  topic-item-headline(:topic_item="topic_item" :itemable="itemable")
   //- formatted-text.thread-item__body.new-comment__body(:model="itemable" field="body")
   //- link-previews(:model="poll")
   //- attachment-list(:attachments="itemable.attachments")

@@ -89,7 +89,7 @@ module.exports = function(test) {
       const targetBottom = Math.max(...targetRects.map((rect) => rect.bottom));
       const threadGutterRects = includeThreadGutters
         ? targets.flatMap((target) => {
-          const gutter = target.closest('.strand-item__row')?.querySelector(':scope > .strand-item__gutter');
+          const gutter = target.closest('.topic-item__row')?.querySelector(':scope > .topic-item__gutter');
           const avatar = gutter?.querySelector('.user-avatar');
 
           if (!gutter || !avatar) {

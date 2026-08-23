@@ -8,15 +8,15 @@ function openGroup(page) {
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.thread-sidebar .action-dock__button--seen_by');
   page.pause(1000);
 }
 
 function openCommentDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_comment_discussion');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Improve the cafe bottle collection process');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Improve the cafe bottle collection process');
   page.waitFor('#add-comment .comment-form .ProseMirror');
 }
 

@@ -63,8 +63,8 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item__new-comment.new-comment(:id="'comment-'+ itemable.id" v-intersect.once="{handler: viewed}")
-  strand-item-headline(:topic_item="topic_item" :itemable="itemable" :focused="focused" :unread="unread")
+section.topic-item__new-comment.new-comment(:id="'comment-'+ itemable.id" v-intersect.once="{handler: viewed}")
+  topic-item-headline(:topic_item="topic_item" :itemable="itemable" :focused="focused" :unread="unread")
   formatted-text.thread-item__body.new-comment__body(:model="itemable" field="body")
   //link-previews(:model="itemable")
   attachment-list(:attachments="itemable.attachments")

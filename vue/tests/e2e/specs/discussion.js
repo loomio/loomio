@@ -315,11 +315,11 @@ module.exports = {
     page.click('.action-dock__button--discard_comment')
     page.expectNoText('.thread-card', 'original comment right thur')
     page.expectText('.thread-card', 'Item removed')
-    page.click('.strand-item__removed .action-menu')
+    page.click('.topic-item__removed .action-menu')
     page.click('.action-dock__button--undiscard_comment')
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
-    page.click('.strand-item__removed .action-menu')
+    page.click('.topic-item__removed .action-menu')
     page.click('.action-dock__button--delete_comment')
     page.click('.confirm-modal__submit')
   },

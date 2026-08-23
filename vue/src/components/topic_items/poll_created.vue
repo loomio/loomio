@@ -71,7 +71,7 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
+section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
   strand-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
   .d-flex.justify-space-between(v-if="!poll.isTopicable()")
     .poll-common-card__title.text-title-large.pb-1(tabindex="-1")

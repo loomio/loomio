@@ -3,13 +3,13 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.context-panel');
 }
 
 function openAdviceDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_advice_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.new-comment');
   page.expectText('.strand-card', 'updated comparison after the warehouse visit');
 }
