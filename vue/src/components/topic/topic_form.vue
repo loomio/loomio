@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.thread_settings')")
+v-card.topic-arrangement-form(:title="$t('thread_arrangement_form.thread_settings')")
   template(v-slot:append)
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text

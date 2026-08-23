@@ -218,8 +218,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openPoll(page);
-    page.waitFor('.thread-sidebar .action-dock__button--export_thread');
-    page.click('.thread-sidebar .action-dock__button--export_thread');
+    page.waitFor('.topic-sidebar .action-dock__button--export_thread');
+    page.click('.topic-sidebar .action-dock__button--export_thread');
     page.waitForUrlToContain('export=1');
     page.waitFor('body');
     screenshot.capture('polls/settings/proposal_print', {

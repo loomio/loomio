@@ -9,12 +9,12 @@ class Views::Topics::TopicItems::PollCreated < Views::Application::Component
   def view_template
     poll = @item.itemable
     div(class: "poll-created") do
-      div(class: "thread-item px-3 pb-1") do
+      div(class: "topic-item px-3 pb-1") do
         div(id: "sequence-3", class: "v-layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
-          div(class: "thread-item__avatar mr-3 mt-0") do
+          div(class: "topic-item__avatar mr-3 mt-0") do
             render Views::NotificationMailer::Common::Avatar.new(user: poll.user)
           end
-          div(class: "thread-item__body") do
+          div(class: "topic-item__body") do
             h1(class: "poll-common-card__title text-h5 pb-1") do
               span { plain poll.title }
             end

@@ -263,7 +263,7 @@ div.discussions-panel(v-if="group")
       common-icon.mr-1(name="mdiMagnify")
       span(v-t="'common.action.search'")
     v-spacer
-    v-btn.discussions-panel__new-thread-button(
+    v-btn.discussions-panel__new-topic-button(
       variant="elevated"
       v-if='canStartThread'
       :to="'/discussion_templates/?group_id='+group.id"
@@ -289,9 +289,9 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_discussions'")
-        .discussions-panel__list.thread-preview-collection__container(v-if="topics.length")
-          v-list.thread-previews(lines="two")
-            thread-preview(
+        .discussions-panel__list.topic-preview-collection__container(v-if="topics.length")
+          v-list.topic-previews(lines="two")
+            topic-preview(
               v-for="topic in topics"
               :show-group-name="topic.groupId != group.id"
               :key="topic.id"
@@ -303,7 +303,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.text-medium-emphasis.text-decoration-none.underline-on-hover.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
+          router-link.text-medium-emphasis.text-decoration-none.underline-on-hover.discussions-panel__view-locked-topics.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

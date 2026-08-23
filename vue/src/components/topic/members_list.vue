@@ -143,7 +143,7 @@ watchRecords({
 </script>
 
 <template lang="pug">
-v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.title')")
+v-card.topic-members-list(:title="$t('announcement.form.discussion_announced.title')")
   template(v-slot:append)
     dismiss-modal-button
 
@@ -174,7 +174,7 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
 
     .d-flex
       v-spacer
-      v-btn.strand-members-list__submit(
+      v-btn.topic-members-list__submit(
         color="primary"
         :disabled="!recipients.length"
         :loading="saving"

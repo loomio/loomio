@@ -43,7 +43,7 @@ function titleVisible(visible) {
 </script>
 
 <template lang="pug">
-.strand-header
+.topic-header
   .d-flex.flex-wrap.align-center.text-body-medium
     v-breadcrumbs.ml-n3.context-panel__breadcrumbs.flex-grow-1(color="anchor" :items="breadcrumbs")
       template(v-slot:divider)
@@ -56,7 +56,7 @@ function titleVisible(visible) {
 </template>
 
 <style>
-.strand-header .v-breadcrumbs {
+.topic-header .v-breadcrumbs {
   padding: 4px 10px 4px 10px;
 }
 </style>

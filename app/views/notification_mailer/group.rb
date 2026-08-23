@@ -48,7 +48,7 @@ class Views::NotificationMailer::Group < Views::NotificationMailer::Layout
       image_tag(
         AppConfig.theme[:email_footer_logo_src],
         alt: "#{AppConfig.theme[:site_name]} logo",
-        class: "thread-mailer__footer-logo"
+        class: "topic-mailer__footer-logo"
       )
       p(class: "text-caption") { plain t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name]) }
     end

@@ -36,7 +36,7 @@ const canPerformAny = computed(() => some(menuActions.value, action => action.ca
 </script>
 
 <template lang="pug">
-v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
+v-list-item.topic-preview.topic-preview__link(:to='urlFor(topic)')
   template(v-slot:prepend)
     v-avatar(v-if="isPoll" :size="36" style="overflow: visible")
       poll-common-icon-panel(:poll="topicable" show-my-stance :size="36")
@@ -44,16 +44,16 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
   v-list-item-title(style="align-items: center")
     span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
-    plain-text.thread-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
+    plain-text.topic-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
     v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.lockedAt')
       span(v-t="'discussions_panel.locked'")
     tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")
   v-list-item-subtitle
-    span.thread-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
+    span.topic-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
     mid-dot(v-if="showGroupName")
-    span.thread-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
+    span.topic-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
     space
-    span.thread-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
+    span.topic-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
     mid-dot
     template(v-if="isPoll")
       poll-common-closing-at(:poll="topicable" approximate)
@@ -65,7 +65,7 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
 </template>
 
 <style>
-.thread-preview .v-list-item__avatar {
+.topic-preview .v-list-item__avatar {
   overflow: visible;
 }
 
@@ -73,28 +73,28 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
   margin-left: 0;
 }
 
-.thread-preview__status-icon {
+.topic-preview__status-icon {
   padding: 4px 8px;
 }
 
-.thread-preview__pin {
+.topic-preview__pin {
   width: 32px;
   font-size: 20px;
   text-align: center;
 }
 
-.thread-preview--unread {
+.topic-preview--unread {
   font-weight: 500;
 }
 
-.thread-preview__position-icon {
+.topic-preview__position-icon {
   background-repeat: no-repeat;
   height: 21px;
   margin: 1px 0 0 1px;
   width: 21px;
 }
 
-.thread-preview__undecided-icon {
+.topic-preview__undecided-icon {
   font-size: 14px;
   line-height: 24px;
   text-align: center;

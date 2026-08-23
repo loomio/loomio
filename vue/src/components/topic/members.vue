@@ -30,7 +30,7 @@ export default {
   methods: {
     openInviteModal() {
       EventBus.$emit('openModal', {
-        component: 'StrandMembersList',
+        component: 'TopicMembersList',
         props: { topic: this.discussion.topic() }
       });
     }
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-members.d-flex
+.topic-members.d-flex
   //- mid-dot
   //- span(v-show='discussion.seenByCount > 0')
   //-   a.context-panel__seen_by_count(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")

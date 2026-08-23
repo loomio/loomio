@@ -28,7 +28,7 @@ topic-item-headline(:topic_item="topic_item" :itemable="itemable")
 </template>
 
 <style>
-.strand-other-kind .actor-link {
+.topic-other-kind .actor-link {
 
 }
 

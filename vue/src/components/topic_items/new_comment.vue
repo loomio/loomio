@@ -65,7 +65,7 @@ export default {
 <template lang="pug">
 section.topic-item__new-comment.new-comment(:id="'comment-'+ itemable.id" v-intersect.once="{handler: viewed}")
   topic-item-headline(:topic_item="topic_item" :itemable="itemable" :focused="focused" :unread="unread")
-  formatted-text.thread-item__body.new-comment__body(:model="itemable" field="body")
+  formatted-text.topic-item__body.new-comment__body(:model="itemable" field="body")
   //link-previews(:model="itemable")
   attachment-list(:attachments="itemable.attachments")
   action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' size="small" left)

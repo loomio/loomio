@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template lang="pug">
-h3.topic-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
+h3.topic-item__headline.topic-item__title.text-body-medium.pb-1(tabindex="-1")
   div.d-flex.align-center
     span.topic-item__headline.text-medium-emphasis.text-decoration-none(v-html='headline')
     space(v-if="isDelegate")

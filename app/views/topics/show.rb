@@ -9,10 +9,10 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def view_template
-    div(class: "thread-page mt-12") do
+    div(class: "topic-page mt-12") do
       main(class: "v-main") do
-        div(class: "v-container thread-page max-width-800 px-0 px-sm-3 v-locale--is-ltr") do
-          div(class: "thread-card v-sheet theme--auto v-sheet--outlined elevation-1 rounded") do
+        div(class: "v-container topic-page max-width-800 px-0 px-sm-3 v-locale--is-ltr") do
+          div(class: "topic-card v-sheet theme--auto v-sheet--outlined elevation-1 rounded") do
             render_context_panel
             render_activity_panel
           end

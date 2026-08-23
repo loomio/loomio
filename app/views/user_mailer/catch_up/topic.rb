@@ -3,13 +3,13 @@
 class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
   include PrettyUrlHelper
 
-  THREAD_ITEM_KINDS = %w[new_comment stance_created discussion_edited poll_edited].freeze
+  TOPIC_ITEM_KINDS = %w[new_comment stance_created discussion_edited poll_edited].freeze
 
-  THREAD_COMPONENTS = {
-    'new_comment' => Views::NotificationMailer::Thread::NewComment,
-    'stance_created' => Views::NotificationMailer::Thread::StanceCreated,
-    'discussion_edited' => Views::NotificationMailer::Thread::DiscussionEdited,
-    'poll_edited' => Views::NotificationMailer::Thread::PollEdited
+  TOPIC_ITEM_COMPONENTS = {
+    'new_comment' => Views::NotificationMailer::TopicItems::NewComment,
+    'stance_created' => Views::NotificationMailer::TopicItems::StanceCreated,
+    'discussion_edited' => Views::NotificationMailer::TopicItems::DiscussionEdited,
+    'poll_edited' => Views::NotificationMailer::TopicItems::PollEdited
   }.freeze
 
   def initialize(topic:, recipient:, time_start:, utm_hash:)
@@ -71,9 +71,9 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
 
     div(class: "activity-feed") do
       @topic.items.where('created_at > ?', since).order('created_at').each do |item|
-        next unless THREAD_ITEM_KINDS.include?(item.kind)
+        next unless TOPIC_ITEM_KINDS.include?(item.kind)
 
-        component_class = THREAD_COMPONENTS[item.kind]
+        component_class = TOPIC_ITEM_COMPONENTS[item.kind]
         next unless component_class
 
         render component_class.new(item: item, recipient: @recipient)

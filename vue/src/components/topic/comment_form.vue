@@ -68,12 +68,12 @@ export default {
 
 <template lang="pug">
 .d-flex.comment-form
-  .thread-item__avatar.mr-3
+  .topic-item__avatar.mr-3
     user-avatar(
       :user='comment.author() || actor'
       :size='comment.parentId ? 28 : 32'
     )
-  form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+  form.topic-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     lmo-textarea.ml-n1(
       :model='comment'
       @is-uploading="handleIsUploading"

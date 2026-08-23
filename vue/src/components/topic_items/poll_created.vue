@@ -72,7 +72,7 @@ export default {
 
 <template lang="pug">
 section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
-  strand-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
+  topic-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
   .d-flex.justify-space-between(v-if="!poll.isTopicable()")
     .poll-common-card__title.text-title-large.pb-1(tabindex="-1")
       plain-text(:model="poll" field="title")

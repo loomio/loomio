@@ -12,14 +12,14 @@ function revealPoll(page) {
 }
 
 function captureThread(screenshot, name) {
-  screenshot.captureElement(`discussions/examples/${name}`, '.strand-card', {
+  screenshot.captureElement(`discussions/examples/${name}`, '.topic-card', {
     width: 1100,
     height: 1600
   });
 }
 
 function capturePoll(screenshot, name) {
-  screenshot.captureElement(`discussions/examples/${name}`, '.strand-card', {
+  screenshot.captureElement(`discussions/examples/${name}`, '.topic-card', {
     width: 1100,
     height: 1800
   });

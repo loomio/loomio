@@ -27,8 +27,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
-    page.expectNoElement('.thread-preview__dismiss')
-    page.expectNoElement('.thread-preview__mute')
+    page.expectNoElement('.topic-preview__dismiss')
+    page.expectNoElement('.topic-preview__mute')
   },
 
   'join_an_open_group': (test) => {
@@ -264,7 +264,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-panel__new-thread-button')
+    page.click('.discussions-panel__new-topic-button')
     page.click('.discussion-templates--template')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")

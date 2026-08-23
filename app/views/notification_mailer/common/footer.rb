@@ -11,7 +11,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   end
 
   def view_template
-    div(class: "thread-mailer__footer") do
+    div(class: "topic-mailer__footer") do
       render_tracking_pixels
       render_footer_links if @recipient.is_logged_in?
       render_logo
@@ -23,7 +23,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   def render_tracking_pixels
     if @notification
       img(
-        class: "thread-mailer__footer-image",
+        class: "topic-mailer__footer-image",
         src: mark_notification_as_read_pixel_src(@notification, recipient: @recipient),
         alt: "",
         width: 1,
@@ -33,7 +33,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
 
     if @recipient.is_logged_in? && @topic && @topic_item.is_a?(TopicItem)
       img(
-        class: "thread-mailer__footer-image",
+        class: "topic-mailer__footer-image",
         src: pixel_src(@topic_item, recipient: @recipient),
         alt: "",
         width: 1,
@@ -43,7 +43,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   end
 
   def render_footer_links
-    p(class: "thread-mailer__footer-links") do
+    p(class: "topic-mailer__footer-links") do
       plain "\u2014"
       br
       span(class: "reply-or-view-online") do
@@ -86,7 +86,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
       AppConfig.theme[:email_footer_logo_src],
       height: 24,
       alt: "Logo",
-      class: "thread-mailer__footer-logo"
+      class: "topic-mailer__footer-logo"
     )
   end
 end

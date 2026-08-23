@@ -23,12 +23,12 @@ const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group
 const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/page'));
 const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
 const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
-const ThreadFormPage = wrapAsyncLoader(() => import('./components/discussion/form_page'));
+const DiscussionFormPage = wrapAsyncLoader(() => import('./components/discussion/form_page'));
 const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
 const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
 const DiscussionTemplateBrowsePage = wrapAsyncLoader(() => import('./components/discussion_template/browse_page'));
 const UserPage = wrapAsyncLoader(() => import('./components/user/page'));
-const ThreadsPage = wrapAsyncLoader(() => import('./components/threads/page'));
+const TopicsPage = wrapAsyncLoader(() => import('./components/topics/page'));
 const StartTrialPage = wrapAsyncLoader(() => import('./components/start_trial/page.vue'));
 const ReportPage = wrapAsyncLoader(() => import('./components/report/page.vue'));
 
@@ -71,7 +71,7 @@ const router = createRouter({
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
     {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/dashboard/direct_discussions', component: ThreadsPage},
+    {path: '/dashboard/direct_discussions', component: TopicsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},
@@ -89,8 +89,8 @@ const router = createRouter({
     {path: '/poll_templates/new', component: PollTemplateFormPage},
     {path: '/poll_templates/:id/edit', component: PollTemplateFormPage},
     {path: '/u/:key/:stub?', component: UserPage },
-    {path: '/d/new', component: ThreadFormPage },
-    {path: '/d/:key/edit', component: ThreadFormPage },
+    {path: '/d/new', component: DiscussionFormPage },
+    {path: '/d/:key/edit', component: DiscussionFormPage },
     {path: '/discussion_templates/browse', component: DiscussionTemplateBrowsePage },
     {path: '/discussion_templates/new', component: DiscussionTemplateFormPage },
     {path: '/discussion_templates/:id', component: DiscussionTemplateFormPage },

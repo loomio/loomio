@@ -2,7 +2,7 @@
 import {slice, orderBy} from 'lodash-es';
 export default {
   props: {
-    threads: Array,
+    topics: Array,
     limit: {
       type: Number,
       default: 25
@@ -13,14 +13,14 @@ export default {
     }
   },
   computed: {
-    orderedThreads() {
-      return slice(orderBy(this.threads, this.order), 0, this.limit);
+    orderedTopics() {
+      return slice(orderBy(this.topics, this.order), 0, this.limit);
     }
   }
 };
 </script>
 
 <template lang="pug">
-v-list.thread-previews(lines="two")
-  thread-preview(v-for="topic in orderedThreads", :key="topic.id", :topic="topic")
+v-list.topic-previews(lines="two")
+  topic-preview(v-for="topic in orderedTopics", :key="topic.id", :topic="topic")
 </template>

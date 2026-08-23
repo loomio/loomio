@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::NotificationMailer::Thread::PollEdited < Views::ApplicationMailer::Component
+class Views::NotificationMailer::TopicItems::PollEdited < Views::ApplicationMailer::Component
 
   def initialize(item:, recipient:)
     @item = item

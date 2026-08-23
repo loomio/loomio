@@ -190,17 +190,17 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
-    page.waitFor('.thread-sidebar');
+    page.waitFor('.topic-sidebar');
     page.execute(`
-      const item = Array.from(document.querySelectorAll('.thread-sidebar .v-list-item'))
+      const item = Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
         .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'));
-      if (item) item.classList.add('manual-thread-subscribe');
+      if (item) item.classList.add('manual-topic-subscribe');
     `);
-    page.waitFor('.manual-thread-subscribe');
-    screenshot.captureElement('users/email_settings/thread_subscribe', '.thread-sidebar', {
+    page.waitFor('.manual-topic-subscribe');
+    screenshot.captureElement('users/email_settings/thread_subscribe', '.topic-sidebar', {
       width: 1100,
       height: 1500,
-      spotlight: '.manual-thread-subscribe'
+      spotlight: '.manual-topic-subscribe'
     });
   },
 
@@ -208,9 +208,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
-    page.waitFor('.thread-sidebar');
+    page.waitFor('.topic-sidebar');
     page.execute(`
-      Array.from(document.querySelectorAll('.thread-sidebar .v-list-item'))
+      Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
         .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'))?.click();
     `);
     page.waitFor('.change-volume-form');

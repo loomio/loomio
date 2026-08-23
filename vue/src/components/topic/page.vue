@@ -3,7 +3,7 @@ import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
-import StrandActionsPanel from '@/components/strand/actions_panel';
+import TopicActionsPanel from '@/components/topic/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
@@ -110,7 +110,7 @@ function routeCommentId() {
   return parseInt(route.query.comment_id || route.params.comment_id) || null;
 }
 
-// Thread loading strategy:
+// Topic loading strategy:
 // 1. If a specific focus is given (a poll key for a non-topical poll, a sequence_id, or a comment_id),
 //    load topic_items around that item and scroll to it.
 // 2. Otherwise, load unread-or-newest topic_items, then scroll to:
@@ -175,7 +175,7 @@ function fetchInitialContent() {
 
     EventBus.$emit('currentComponent', {
       focusHeading: false,
-      page: 'discussionPage',
+      page: 'topicPage',
       topic: topic.value,
       group: topic.value.group(),
       title: topic.value.topicable().title
@@ -183,7 +183,7 @@ function fetchInitialContent() {
 
     let scrolledToUnread = false;
     watchRecords({
-      key: 'strand' + topic.value.id,
+      key: 'topic' + topic.value.id,
       collections: ['topic_items'],
       query: () => {
         if (!loader.value) { return; }
@@ -319,8 +319,8 @@ function shouldSettleAnchorScroll() {
   v-main
     v-container.max-width-800.px-0.px-sm-3#topic-page(v-if="topic")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
-      v-sheet.strand-card.thread-card.mb-8.pb-4.rounded-lg
-        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
-        strand-actions-panel(:topic="topic")
-  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
+      v-sheet.topic-card.mb-8.pb-4.rounded-lg
+        topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+        topic-actions-panel(:topic="topic")
+  topic-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
 </template>

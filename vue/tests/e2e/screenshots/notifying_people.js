@@ -4,7 +4,7 @@ const richText = require('../helpers/oatmilkRichText');
 
 function openNewDiscussionForm(page) {
   page.loadPath('setup_manual_oatmilk_new_discussion');
-  page.click('.discussions-panel__new-thread-button');
+  page.click('.discussions-panel__new-topic-button');
   page.waitFor('.discussion-templates--template');
   page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
   page.waitFor('.discussion-form');
@@ -181,22 +181,22 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_discussion_intro');
     page.waitFor('.topic-page');
     page.expectText('.topic-page', 'Improve the cafe bottle return process');
-    page.waitFor('.strand-new-discussion .emoji-picker__toggle');
-    page.click('.strand-new-discussion .emoji-picker__toggle');
+    page.waitFor('.topic-new-discussion .emoji-picker__toggle');
+    page.click('.topic-new-discussion .emoji-picker__toggle');
     page.waitFor('.emoji-picker');
     page.execute(`
       document.querySelector('.v-app-bar')?.remove();
-      document.querySelector('.thread-sidebar')?.style.setProperty('visibility', 'hidden');
+      document.querySelector('.topic-sidebar')?.style.setProperty('visibility', 'hidden');
       document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
       document.querySelectorAll('.topic-item__gutter').forEach((gutter) => {
         gutter.style.visibility = 'hidden';
       });
       document.querySelectorAll('.topic-item__intersection-container').forEach((item) => {
-        if (!item.querySelector('.strand-new-discussion')) item.style.visibility = 'hidden';
+        if (!item.querySelector('.topic-new-discussion')) item.style.visibility = 'hidden';
       });
     `);
     screenshot.captureRegion('discussions/notifying_people/reaction', [
-      '.strand-new-discussion',
+      '.topic-new-discussion',
       '.emoji-picker'
     ], {
       padding: 32,
@@ -211,14 +211,14 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-sidebar .action-dock__button--announce_thread');
     screenshot.capture('discussions/notifying_people/thread_invite_icon', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--announce_thread',
+        selector: '.topic-sidebar .action-dock__button--announce_thread',
         padding: 12,
         radius: 14
       },
-      scrollSelector: '.thread-sidebar .action-dock__button--announce_thread',
+      scrollSelector: '.topic-sidebar .action-dock__button--announce_thread',
       width: 1280,
       height: 1000
     });
@@ -229,10 +229,10 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--announce_thread');
-    page.waitFor('.strand-members-list');
-    page.execute("document.querySelector('.strand-members-list > .v-list').style.display = 'none'");
-    screenshot.captureElement('discussions/notifying_people/thread_invite', '.strand-members-list', {
+    page.click('.topic-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-members-list');
+    page.execute("document.querySelector('.topic-members-list > .v-list').style.display = 'none'");
+    screenshot.captureElement('discussions/notifying_people/thread_invite', '.topic-members-list', {
       width: 1100,
       height: 1200
     });
@@ -243,15 +243,15 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--announce_thread');
-    page.waitFor('.strand-members-list');
-    page.fillIn('.strand-members-list .recipients-autocomplete input', 'guest@cafecircle.example');
+    page.click('.topic-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-members-list');
+    page.fillIn('.topic-members-list .recipients-autocomplete input', 'guest@cafecircle.example');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.click('.v-overlay--active .recipients-autocomplete-suggestion');
-    page.waitFor('.strand-members-list textarea');
-    page.click('.strand-members-list textarea');
-    page.execute("document.querySelector('.strand-members-list > .v-list').style.display = 'none'");
-    screenshot.captureElement('discussions/notifying_people/invite_guest', '.strand-members-list', {
+    page.waitFor('.topic-members-list textarea');
+    page.click('.topic-members-list textarea');
+    page.execute("document.querySelector('.topic-members-list > .v-list').style.display = 'none'");
+    screenshot.captureElement('discussions/notifying_people/invite_guest', '.topic-members-list', {
       width: 1100,
       height: 1200
     });
@@ -307,13 +307,13 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--seen_by');
-    page.waitFor('.thread-sidebar .action-dock__button--users_notified');
+    page.waitFor('.topic-sidebar .action-dock__button--seen_by');
+    page.waitFor('.topic-sidebar .action-dock__button--users_notified');
     screenshot.capture('discussions/notifying_people/thread_engagement', {
       spotlight: {
         selectors: [
-          '.thread-sidebar .action-dock__button--seen_by',
-          '.thread-sidebar .action-dock__button--users_notified'
+          '.topic-sidebar .action-dock__button--seen_by',
+          '.topic-sidebar .action-dock__button--users_notified'
         ],
         padding: 12,
         radius: 14
@@ -328,7 +328,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--seen_by');
+    page.click('.topic-sidebar .action-dock__button--seen_by');
     page.waitFor('.v-overlay--active .v-card');
     page.expectText('.v-overlay--active .v-card', 'Seen by');
     page.expectText('.v-overlay--active .v-card', 'Jamie Chen');
@@ -343,7 +343,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--users_notified');
+    page.click('.topic-sidebar .action-dock__button--users_notified');
     page.waitFor('.v-overlay--active .v-card');
     page.expectText('.v-overlay--active .v-card', 'Thread notification history');
     screenshot.captureElement('discussions/notifying_people/thread_notified', '.v-overlay--active .v-card', {
@@ -357,10 +357,10 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--users_notified');
+    page.waitFor('.topic-sidebar .action-dock__button--users_notified');
     screenshot.capture('discussions/notifying_people/thread_notification_history', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--users_notified',
+        selector: '.topic-sidebar .action-dock__button--users_notified',
         padding: 12,
         radius: 14
       },
@@ -446,11 +446,11 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.execute("Array.from(document.querySelectorAll('.thread-sidebar .v-list-item')).find(el => el.textContent.includes('Email when notified') || el.textContent.includes('Email notifications')).classList.add('manual-volume-control')");
-    page.waitFor('.thread-sidebar .manual-volume-control');
+    page.execute("Array.from(document.querySelectorAll('.topic-sidebar .v-list-item')).find(el => el.textContent.includes('Email when notified') || el.textContent.includes('Email notifications')).classList.add('manual-volume-control')");
+    page.waitFor('.topic-sidebar .manual-volume-control');
     screenshot.capture('discussions/notifying_people/thread_interact', {
       spotlight: {
-        selector: '.thread-sidebar .manual-volume-control',
+        selector: '.topic-sidebar .manual-volume-control',
         padding: 12,
         radius: 14
       },

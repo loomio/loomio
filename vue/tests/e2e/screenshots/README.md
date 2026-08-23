@@ -62,7 +62,7 @@ the defaults.
 
 Framing defaults:
 
-- Capture the full central strand card for discussions, proposals, comments,
+- Capture the full central topic card for discussions, proposals, comments,
   replies, reactions, unread items, and moved-item states; omit app and thread
   drawers unless they are instructional context.
 - Omit the application toolbar or title bar unless an application drawer is

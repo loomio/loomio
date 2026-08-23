@@ -22,9 +22,9 @@ module.exports = {
 
     page.loadPath('view_open_group_as_visitor')
     page.expectText('.group-page__name', 'Open Dirty Dancing Shoes')
-    page.expectText('.thread-preview-collection__container', 'I carried a watermelon')
+    page.expectText('.topic-preview-collection__container', 'I carried a watermelon')
     page.expectText('.navbar__sign-in', 'Sign in')
-    page.click('.thread-preview__link')
+    page.click('.topic-preview__link')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
   },
 
@@ -32,8 +32,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_non_member')
-    page.expectElement('.thread-previews')
-    page.click('.thread-preview__link')
+    page.expectElement('.topic-previews')
+    page.click('.topic-preview__link')
     page.expectElement('.time-ago')
   },
 
@@ -41,14 +41,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
-    page.expectText('.thread-preview', 'What star sign are you?')
+    page.expectText('.topic-preview', 'What star sign are you?')
     page.click('.discussions-panel__filters')
     page.click('.discussions-panel__filters-locked')
-    page.expectText('.thread-preview', 'This thread is old and closed')
+    page.expectText('.topic-preview', 'This thread is old and closed')
     page.click('.discussions-panel__filters')
     page.click('.discussions-panel__filters-all')
-    page.click('.thread-preview')
-    page.click('.thread-sidebar .action-dock__button--lock_thread')
+    page.click('.topic-preview')
+    page.click('.topic-sidebar .action-dock__button--lock_thread')
     page.expectFlash('Thread locked')
     // page.click('.flash-root__action')
     // page.expectFlash('Thread unlocked')
@@ -70,12 +70,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.thread-sidebar .action-dock__button--move_thread')
-    page.click('.move-thread-form__group-dropdown .v-field')
+    page.click('.topic-sidebar .action-dock__button--move_thread')
+    page.click('.move-topic-form__group-dropdown .v-field')
     page.expectText('.v-overlay-container', 'Direct thread')
     test.useXpath().click("//div[contains(@class, 'v-list-item-title') and normalize-space()='Direct thread']").useCss()
-    page.expectText('.move-thread-form', 'Everyone who has participated will retain access')
-    page.click('.move-thread-form__submit')
+    page.expectText('.move-topic-form', 'Everyone who has participated will retain access')
+    page.click('.move-topic-form__submit')
     page.expectText('.context-panel__breadcrumbs', 'Direct')
   },
 
@@ -101,7 +101,7 @@ module.exports = {
   //
   //   page.loadPath('setup_unread_discussion')
   //   page.debug()
-  //   page.expectElement('.thread-item--unread')
+  //   page.expectElement('.topic-item--unread')
   // },
 
   // 'marks_a_discussion_as_seen': (test) => {
@@ -116,7 +116,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.thread-sidebar .action-dock__button--discard_thread')
+    page.click('.topic-sidebar .action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Discussion deleted')
@@ -129,7 +129,7 @@ module.exports = {
 
     page.loadPath('view_open_group_as_non_member')
 
-    page.click('.thread-preview__link', 500)
+    page.click('.topic-preview__link', 500)
     page.click('.join-group-button')
     page.expectFlash('You are now a member of Open Dirty Dancing Shoes')
 
@@ -149,7 +149,7 @@ module.exports = {
     page.ensureSidebar()
 
     page.click('.sidebar__list-item-button--recent')
-    page.expectText('.thread-preview', 'Dirty Dancing Shoes')
+    page.expectText('.topic-preview', 'Dirty Dancing Shoes')
   },
 
   'adds_a_comment': (test) => {
@@ -169,7 +169,7 @@ module.exports = {
   //   page.click('.comment-form .emoji-picker__toggle')
   //   page.click('.emoji-picker__emojis img[alt="heart"]')
   //   page.click('.comment-form__submit-button')
-  //   page.expectText('.new-comment .thread-item__body','Here is a heart!❤️')
+  //   page.expectText('.new-comment .topic-item__body','Here is a heart!❤️')
   // },
 
   'replies_to_a_comment': (test) => {
@@ -187,7 +187,7 @@ module.exports = {
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'hi this is my comment')
     page.click('.comment-form__submit-button')
 
-    page.expectText('.strand-list', 'hi this is my comment')
+    page.expectText('.topic-list', 'hi this is my comment')
     // page.expectFlash('Patrick Swayze notified of reply')
   },
 
@@ -288,7 +288,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.strand-new-discussion .action-dock__button--show_history')
+    page.click('.topic-new-discussion .action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
   },
@@ -301,8 +301,8 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
-    page.expectNoText('.thread-card', 'original comment right thur')
-    page.expectText('.thread-card', 'Item removed')
+    page.expectNoText('.topic-card', 'original comment right thur')
+    page.expectText('.topic-card', 'Item removed')
   },
 
   'discards_restores_deletes_a_comment': (test) => {
@@ -313,8 +313,8 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--discard_comment')
-    page.expectNoText('.thread-card', 'original comment right thur')
-    page.expectText('.thread-card', 'Item removed')
+    page.expectNoText('.topic-card', 'original comment right thur')
+    page.expectText('.topic-card', 'Item removed')
     page.click('.topic-item__removed .action-menu')
     page.click('.action-dock__button--undiscard_comment')
     page.click('.new-comment .action-menu')
@@ -329,14 +329,14 @@ module.exports = {
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
     page.expectText('.base-mailer__event-headline', "invited you to a discussion")
-    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.expectText('.topic-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.notification-mailer__title a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
     page.click('.comment-form__submit-button')
-    page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
-    page.expectText('.thread-item__body', 'Hello world!')
+    page.expectText('.topic-item__title', 'Jennifer Grey', 10000)
+    page.expectText('.topic-item__body', 'Hello world!')
     page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
   },
 
@@ -345,7 +345,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
     page.expectText('.base-mailer__event-headline', "invited you to a discussion")
-    page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.expectText('.topic-mailer__body', "A description for this discussion. Should this be rich?")
     page.expectText('body', 'Should we go to the moon?')
     page.expectText('.poll-mailer-common-summary', 'Poll details for the invitation email.')
     page.expectText('.poll-mailer__vote', 'Please vote')
@@ -363,8 +363,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_forkable_discussion')
-    page.expectText('.strand-list', 'totally on topic')
-    page.expectText('.strand-list', 'totally off topic')
+    page.expectText('.topic-list', 'totally on topic')
+    page.expectText('.topic-list', 'totally off topic')
     page.click('.new-comment .action-menu')
     page.click('.action-dock__button--move_event')
     page.expectElement('.discussion-fork-actions')
@@ -381,7 +381,7 @@ module.exports = {
     page.refresh()
     page.pause(3000)
     // The moved comment should be in the target thread
-    page.expectText('.strand-list', 'totally on topic')
+    page.expectText('.topic-list', 'totally on topic')
   },
 
   'can_add_topical_poll_to_discussion': (test) => {
@@ -389,7 +389,7 @@ module.exports = {
 
     page.loadPath('setup_topical_poll_to_add_to_discussion')
     page.expectText('.context-panel__heading', 'Topical proposal to move')
-    page.expectText('.strand-list', 'A comment on the topical poll')
+    page.expectText('.topic-list', 'A comment on the topical poll')
     page.execute("Array.from(document.querySelectorAll('.poll-created .action-menu--btn')).find(el => el.offsetParent).click()")
     page.execute("Array.from(document.querySelectorAll('.action-dock__button--add_to_discussion')).find(el => el.offsetParent).click()")
     page.expectText('.modal-launcher .v-card', 'Add to Discussion')
@@ -401,12 +401,12 @@ module.exports = {
     page.pause(3000)
 
     page.expectText('.context-panel__heading', 'Waking Up in Reno')
-    page.expectText('.strand-list', 'Topical proposal to move')
-    page.expectText('.strand-list', 'A comment on the topical poll')
+    page.expectText('.topic-list', 'Topical proposal to move')
+    page.expectText('.topic-list', 'A comment on the topical poll')
     page.refresh()
     page.expectText('.context-panel__heading', 'Waking Up in Reno')
-    page.expectText('.strand-list', 'Topical proposal to move')
-    page.expectText('.strand-list', 'A comment on the topical poll')
+    page.expectText('.topic-list', 'Topical proposal to move')
+    page.expectText('.topic-list', 'A comment on the topical poll')
   },
 
   'private_thread': (test) => {
@@ -414,7 +414,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--private')
-    page.click('.threads-page__new-thread-button')
+    page.click('.topics-page__new-topic-button')
     page.click('.discussion-templates--direct-discussion')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')

@@ -83,22 +83,22 @@ watchRecords({
 </script>
 
 <template lang="pug">
-v-card.move-thread-form(:title="$t('move_discussion_form.move_thread_title')")
+v-card.move-topic-form(:title="$t('move_discussion_form.move_thread_title')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
-    v-select#group-dropdown.move-thread-form__group-dropdown(
+    v-select#group-dropdown.move-topic-form__group-dropdown(
       v-model="destinationId"
       :required="true"
       :items="destinationItems"
       :label="$t('move_discussion_form.destination')")
-    v-alert.move-thread-form__direct-hint(
+    v-alert.move-topic-form__direct-hint(
       v-if="isDirect"
       type="info"
       variant="tonal"
       density="compact")
       span(v-t="'move_discussion_form.direct_thread_hint'")
-    v-alert.move-thread-form__direct-anonymous-warning(
+    v-alert.move-topic-form__direct-anonymous-warning(
       v-if="!directAllowed"
       type="warning"
       variant="tonal"
@@ -106,7 +106,7 @@ v-card.move-thread-form(:title="$t('move_discussion_form.move_thread_title')")
       span(v-t="'move_discussion_form.direct_thread_anonymous_poll'")
   v-card-actions
     v-spacer
-    v-btn.move-thread-form__submit(
+    v-btn.move-topic-form__submit(
       :disabled="!destinationId || (!isDirect && topic.groupId == destinationId)"
       :loading="loading"
       color="primary"

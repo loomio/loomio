@@ -1,7 +1,7 @@
 <script setup lang="js">
 import { ref, computed } from 'vue';
-import StrandLoadMore from '@/components/strand/load_more.vue';
-import ReplyForm from '@/components/strand/reply_form.vue';
+import TopicLoadMore from '@/components/topic/load_more.vue';
+import ReplyForm from '@/components/topic/reply_form.vue';
 import IntersectionWrapper from '@/components/topic_items/intersection_wrapper';
 import StemWrapper from '@/components/topic_items/stem_wrapper';
 import Collapsed from '@/components/topic_items/collapsed';
@@ -24,10 +24,10 @@ const isFocused = (topic_item) => {
 </script>
 
 <template lang="pug">
-.strand-list
+.topic-list
   .topic-item(v-for="obj, index in collection" :key="obj.topic_item.id" :class="{'topic-item--deep': obj.topic_item.depth > 1}")
     .topic-item__row(v-if="obj.missingEarlier")
-      strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
+      topic-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
     v-expand-transition
       .topic-item__row(v-if="loader.collapsed[obj.topic_item.id]")
         collapsed(:obj="obj" :loader="loader")
@@ -36,8 +36,8 @@ const isFocused = (topic_item) => {
         .topic-item__gutter(v-if="obj.topic_item.depth > 0")
           .d-flex.justify-center
             template(v-if="loader.topic.selectedTopicItemIds && loader.topic.selectedTopicItemIds.length")
-              v-checkbox-btn.thread-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
-              v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
+              v-checkbox-btn.topic-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
+              v-checkbox-btn.topic-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
             template(v-else)
               .topic-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
                 user-avatar.topic-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
@@ -47,13 +47,13 @@ const isFocused = (topic_item) => {
         .topic-item__main
           .topic-item__main--content
             intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
-          .strand-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
-            strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
-            strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
+          .topic-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
+            topic-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
+            topic-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
           reply-form(:topicItemId="obj.topic_item.id")
 
     .topic-item__row(v-if="obj.missingAfter" )
-      strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
+      topic-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
 
     //.topic-item__row(v-if="obj.missingAfterCount && obj.topic_item.depth == 1" )
     //  v-btn(:to="endUrl + '?end'") Jump to end

@@ -1,5 +1,5 @@
 <script lang="js">
-import LinkPreview from '@/components/thread/link_preview';
+import LinkPreview from '@/components/topic/link_preview';
 
 export default {
   components: {LinkPreview},

@@ -130,10 +130,10 @@ module.exports = function(test, browser) {
       //   else
       //     console.log 'not there'
 
-    ensureThreadNav() {
-      return test.isVisible('.thread-nav__add-people' , function(result) {
+    ensureTopicNav() {
+      return test.isVisible('.topic-nav__add-people' , function(result) {
         if (!result.value) {
-          return test.click('.thread-page__open-thread-nav');
+          return test.click('.topic-page__open-topic-nav');
         }
       });
     },

@@ -9,7 +9,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
-    page.expectNoElement('.discussions-panel__new-thread-button')
+    page.expectNoElement('.discussions-panel__new-topic-button')
     page.click('.group-page-members-tab')
     page.expectText('.members-panel', 'You do not have permission to do this.')
   },
@@ -19,7 +19,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.group-page__description', 'An FBI agent goes undercover')
-    page.expectText('.thread-previews', "The name's Johnny Utah!")
+    page.expectText('.topic-previews', "The name's Johnny Utah!")
     // page.ensureSidebar()
     // page.expectText('.sidebar__groups', 'Johnny Utah')
   },

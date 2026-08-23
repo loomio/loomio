@@ -25,7 +25,7 @@ export default {
 <template lang="pug">
 section.outcome-created.topic-item__outcome-created(id="'outcome-'+ itemable.id")
   topic-item-headline(:topic_item="topic_item" :itemable="itemable")
-  //- formatted-text.thread-item__body.new-comment__body(:model="itemable" field="body")
+  //- formatted-text.topic-item__body.new-comment__body(:model="itemable" field="body")
   //- link-previews(:model="poll")
   //- attachment-list(:attachments="itemable.attachments")
   //- action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' icons)

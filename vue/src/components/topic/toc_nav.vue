@@ -89,7 +89,7 @@ onMounted(() => {
   topicActions.value = TopicService.actions(props.topic);
   props.topic.fetchUsersNotifiedCount();
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
-  EventBus.$on('toggleThreadNav', () => { open.value = !open.value; });
+  EventBus.$on('toggleTopicNav', () => { open.value = !open.value; });
 
   Records.topicItems.fetch({
     params: {
@@ -101,7 +101,7 @@ onMounted(() => {
   });
 
   watchRecords({
-    key: 'thread-nav' + props.topic.id,
+    key: 'topic-nav' + props.topic.id,
     collections: ['topic_items', 'discussions', 'polls', 'topics', 'memberships'],
     query: () => {
       topicActions.value = TopicService.actions(props.topic);
@@ -128,7 +128,7 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp" app fixed location="right" clipped :color="drawerColor" floating)
+v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp" app fixed location="right" clipped :color="drawerColor" floating)
   v-list(nav slim density="compact" :lines="false")
     v-list-subheader(v-t="'strand_nav.jump_to'")
     v-list-item(color="info" value="toc-start" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
@@ -172,29 +172,29 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
 </template>
 
 <style>
-.thread-sidebar .v-list {
+.topic-sidebar .v-list {
   background: inherit;
 }
 
-.thread-sidebar .v-list-item-title {
+.topic-sidebar .v-list-item-title {
   white-space: normal !important;
 }
 
-.strand-nav__stance-icon-container {
+.topic-nav__stance-icon-container {
   display: inline-block;
 }
 
-.strand-nav__toc {
+.topic-nav__toc {
   display: flex;
   flex-direction: column;
   min-height: 70%;
 }
 
-.strand-nav__entry:empty {
+.topic-nav__entry:empty {
   flex-grow: 1;
 }
 
-.strand-nav__entry {
+.topic-nav__entry {
   display: block;
   border-left: 2px solid #ccc;
   padding-left: 8px;
@@ -203,22 +203,22 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   min-height: 2px;
 }
 
-.strand-nav__entry--selected {
+.topic-nav__entry--selected {
   border-color: rgb(var(--v-theme-primary)) !important;
 }
 
-.strand-nav__entry:hover {
+.topic-nav__entry:hover {
   border-color: rgb(var(--v-theme-primary)) !important;
 }
 
-.strand-nav__entry:hover, .strand-nav__entry--visible {
+.topic-nav__entry:hover, .topic-nav__entry--visible {
   background-color: #f8f8f8;
 }
 
-.v-theme--dark .strand-nav__entry {
+.v-theme--dark .topic-nav__entry {
   border-left: 2px solid #999;
 }
-.v-theme--dark .strand-nav__entry:hover, .v-theme--dark .strand-nav__entry--visible {
+.v-theme--dark .topic-nav__entry:hover, .v-theme--dark .topic-nav__entry--visible {
   background-color: rgb(var(--v-theme-surface));
 }
 </style>

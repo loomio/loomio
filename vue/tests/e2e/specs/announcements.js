@@ -20,7 +20,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-panel__new-thread-button')
+    page.click('.discussions-panel__new-topic-button')
     page.click('.discussion-templates--template')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
@@ -34,22 +34,22 @@ module.exports = {
     // page.expectFlash('2 notifications sent')
   },
 
-  // strand members list
+  // topic members list
   'announcement_created': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.pause(500)
     page.click('.action-dock__button--announce_thread')
-    page.expectElement('.strand-members-list')
+    page.expectElement('.topic-members-list')
     page.pause(500)
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()
     // page.expectElement('.text-h5')
-    page.click('.strand-members-list__submit')
-    page.expectText('.strand-members-list', 'test@example.com')
+    page.click('.topic-members-list__submit')
+    page.expectText('.topic-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
   },
 
@@ -58,7 +58,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-dock__button--announce_thread')
-    page.expectElement('.strand-members-list')
+    page.expectElement('.topic-members-list')
     page.fillIn('.recipients-autocomplete input', 'Emilio')
     page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
   },

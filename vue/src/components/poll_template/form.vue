@@ -258,7 +258,7 @@ export default {
           :label="$t('poll_common_form.process_introduction')"
         )
 
-        v-text-field.thread-template-form-fields__title(
+        v-text-field.topic-template-form-fields__title(
           :label="$t('discussion_template.default_title_label')"
           :hint="$t('discussion_template.default_title_hint')"
           v-model='pollTemplate.title'

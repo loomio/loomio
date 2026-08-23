@@ -60,7 +60,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    screenshot.captureRegion('discussions/using_discussions/thread_context', ['.strand-new-discussion'], {
+    screenshot.captureRegion('discussions/using_discussions/thread_context', ['.topic-new-discussion'], {
       padding: 32,
       width: 1100,
       height: 1000
@@ -87,11 +87,11 @@ module.exports = {
 
     page.loadPath('setup_manual_oatmilk_thread_navigation');
     page.waitFor('.topic-page');
-    page.waitFor('.thread-sidebar');
-    page.expectText('.thread-sidebar', 'New to you');
+    page.waitFor('.topic-sidebar');
+    page.expectText('.topic-sidebar', 'New to you');
     screenshot.capture('discussions/using_discussions/thread_timeline_1', {
       spotlight: {
-        selector: '.thread-sidebar',
+        selector: '.topic-sidebar',
         padding: 0,
         radius: 0
       },
@@ -384,14 +384,14 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--thread_settings');
+    page.waitFor('.topic-sidebar .action-dock__button--thread_settings');
     screenshot.capture('discussions/using_discussions/thread_display', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--thread_settings',
+        selector: '.topic-sidebar .action-dock__button--thread_settings',
         padding: 10,
         radius: 12
       },
-      scrollSelector: '.thread-sidebar .action-dock__button--thread_settings',
+      scrollSelector: '.topic-sidebar .action-dock__button--thread_settings',
       width: 1280,
       height: 1000
     });
@@ -402,9 +402,9 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--thread_settings');
-    page.waitFor('.thread-arrangement-form');
-    screenshot.captureElement('discussions/using_discussions/thread_layout_options', '.thread-arrangement-form', {
+    page.click('.topic-sidebar .action-dock__button--thread_settings');
+    page.waitFor('.topic-arrangement-form');
+    screenshot.captureElement('discussions/using_discussions/thread_layout_options', '.topic-arrangement-form', {
       width: 1100,
       height: 1200
     });
@@ -417,11 +417,11 @@ module.exports = {
     openDiscussion(page);
     screenshot.capture('discussions/using_discussions/thread_admin', {
       spotlight: {
-        selector: '.thread-sidebar .v-list:last-child',
+        selector: '.topic-sidebar .v-list:last-child',
         padding: 8,
         radius: 12
       },
-      scrollSelector: '.thread-sidebar .v-list:last-child',
+      scrollSelector: '.topic-sidebar .v-list:last-child',
       width: 1280,
       height: 1000
     });
@@ -432,14 +432,14 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--export_thread');
+    page.waitFor('.topic-sidebar .action-dock__button--export_thread');
     screenshot.capture('discussions/using_discussions/thread_print_thread', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--export_thread',
+        selector: '.topic-sidebar .action-dock__button--export_thread',
         padding: 10,
         radius: 12
       },
-      scrollSelector: '.thread-sidebar .action-dock__button--export_thread',
+      scrollSelector: '.topic-sidebar .action-dock__button--export_thread',
       width: 1280,
       height: 1000
     });

@@ -44,8 +44,8 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
-  strand-header.pt-3(:topicable="discussion")
+.topic-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
+  topic-header.pt-3(:topicable="discussion")
   .mb-4.text-body-medium
     user-avatar.mr-2(:user='author')
     router-link.text-medium-emphasis.text-decoration-none(:to="urlFor(author)") {{authorName}}

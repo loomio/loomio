@@ -5,15 +5,15 @@ const richText = require('../helpers/oatmilkRichText');
 function openGroup(page) {
   page.loadPath('setup_manual_oatmilk_group');
   page.waitFor('.group-page');
-  page.waitFor('.thread-preview');
-  page.execute("Array.from(document.querySelectorAll('.thread-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-thread')");
-  page.waitFor('.manual-thread');
+  page.waitFor('.topic-preview');
+  page.execute("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')");
+  page.waitFor('.manual-topic');
 }
 
 function openThreadMenu(page) {
   page.resizeWindow(1200, 1200);
   openGroup(page);
-  page.click('.manual-thread .action-menu');
+  page.click('.manual-topic .action-menu');
   page.waitFor('.v-overlay--active .v-list');
 }
 
@@ -29,7 +29,7 @@ function selectCommentForMove(page) {
   page.waitFor('.v-overlay--active .action-dock__button--move_event');
   page.click('.v-overlay--active .action-dock__button--move_event');
   page.waitFor('.discussion-fork-actions');
-  page.waitFor('.thread-item__is-forking');
+  page.waitFor('.topic-item__is-forking');
   page.click('.context-panel__heading');
 }
 
@@ -48,7 +48,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openThreadMenu(page);
     screenshot.captureRegion('discussions/discussion_management/thread_management', [
-      '.manual-thread',
+      '.manual-topic',
       '.v-overlay--active .v-list'
     ], {padding: 16, width: 1200, height: 1200});
   },
@@ -77,7 +77,7 @@ module.exports = {
     screenshot.captureRegion('discussions/discussion_management/pin_thread', [
       '.group-page .v-tabs',
       '.discussions-panel > .d-flex',
-      '.manual-thread',
+      '.manual-topic',
       '.v-overlay--active .v-list'
     ], {
       spotlight: {selector: '.v-overlay--active .action-dock__button--pin_thread', padding: 8, radius: 12},
@@ -104,7 +104,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openThreadMenu(page);
     screenshot.captureRegion('discussions/discussion_management/thread_move_group', [
-      '.manual-thread',
+      '.manual-topic',
       '.v-overlay--active .v-list'
     ], {
       spotlight: {selector: '.v-overlay--active .action-dock__button--move_thread', padding: 8, radius: 12},
@@ -119,11 +119,11 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openThreadMenu(page);
     page.clickElement('.v-overlay--active .action-dock__button--move_thread');
-    page.waitFor('.move-thread-form');
-    page.click('.move-thread-form__group-dropdown .v-field');
+    page.waitFor('.move-topic-form');
+    page.click('.move-topic-form__group-dropdown .v-field');
     page.waitFor('.v-overlay--active .v-list');
     screenshot.captureRegion('discussions/discussion_management/move_thread_select', [
-      '.move-thread-form',
+      '.move-topic-form',
       '.v-overlay--active .v-list'
     ], {padding: 12, width: 1100, height: 1200});
   },
@@ -159,7 +159,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     selectCommentForMove(page);
-    screenshot.captureElement('discussions/using_discussions/move_items', '.strand-card', {
+    screenshot.captureElement('discussions/using_discussions/move_items', '.topic-card', {
       width: 1100,
       height: 1600
     });
@@ -213,13 +213,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--copy_thread_for_ai');
+    page.waitFor('.topic-sidebar .action-dock__button--copy_thread_for_ai');
     screenshot.capture('discussions/discussion_management/copy_markdown_action', {
       width: 1280,
       height: 1000,
-      scrollSelector: '.thread-sidebar .action-dock__button--copy_thread_for_ai',
+      scrollSelector: '.topic-sidebar .action-dock__button--copy_thread_for_ai',
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--copy_thread_for_ai',
+        selector: '.topic-sidebar .action-dock__button--copy_thread_for_ai',
         padding: 16,
         radius: 16,
         opacity: 0.4,
@@ -232,7 +232,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--copy_thread_for_ai');
+    page.click('.topic-sidebar .action-dock__button--copy_thread_for_ai');
     page.waitFor('.modal-launcher .v-card');
     page.expectText('.modal-launcher .v-card', 'Copy Markdown');
     page.waitFor('.modal-launcher .v-card-actions .v-btn:not([disabled])');

@@ -17,7 +17,7 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
 
   def render_link_previews
     h4(class: "text-subtitle-2") { plain t(:'common.links') }
-    ul(class: "thread-mailer__list") do
+    ul(class: "topic-mailer__list") do
       @resource.link_previews.each do |preview|
         div(style: "margin-bottom: 8px") do
           if preview['image'].present?
@@ -36,13 +36,13 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
 
   def render_file_attachments
     h4(class: "text-subtitle-2") { plain t(:'common.attachments') }
-    ul(class: "thread-mailer__list") do
+    ul(class: "topic-mailer__list") do
       @resource.files.each do |file|
         download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
         div(style: "margin-bottom: 8px") do
           span { plain "\u{1F4CE}" }
-          a(class: "thread-mailer__file-attachment", href: download_url, target: "_blank") do
-            span(class: "thread-mailer__file-attachment-filername") { plain file.blob.filename.to_s }
+          a(class: "topic-mailer__file-attachment", href: download_url, target: "_blank") do
+            span(class: "topic-mailer__file-attachment-filername") { plain file.blob.filename.to_s }
           end
           span { plain number_to_human_size(file.byte_size) }
           if file.representable?

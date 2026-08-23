@@ -170,7 +170,7 @@ module.exports = {
     page.execute("document.querySelector('.v-app-bar').style.visibility = 'hidden'");
     screenshot.captureRegion(
       'discussions/discussion-example',
-      ['.strand-new-discussion', '.topic-item__new-comment', '.actions-panel'],
+      ['.topic-new-discussion', '.topic-item__new-comment', '.actions-panel'],
       {width: 1100, height: 1400, padding: 32, includeThreadGutters: true}
     );
   }
