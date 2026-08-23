@@ -12,6 +12,9 @@ module NotificationDeliveryResolvers
       email_explicit = outcome.topic.volume_gte_normal_members
                               .where("users.id": explicit_scope.no_spam_complaints.select(:id))
                               .where.not(id: audience_ids("newly_mentioned_user_ids"))
+      if notification.kind == "outcome_created"
+        email_explicit = email_explicit.where.not(id: outcome.topic.volume_loud_members.select(:id))
+      end
       {
         "in_app" => outcome.topic.volume_gte_quiet_members
                            .where("users.id": explicit_scope.select(:id))

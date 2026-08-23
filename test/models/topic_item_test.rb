@@ -141,7 +141,7 @@ class EventTest < ActiveSupport::TestCase
             mentioned_group_user_ids: @discussion.mentioned_group_users.pluck(:id)
           }
         )
-        PublishTopicItemWorker.perform_now(topic_item.id)
+        topic_item.send_subscriber_emails!
       end
       assert_equal 1, @discussion.mentioned_users.length
     end
@@ -155,7 +155,7 @@ class EventTest < ActiveSupport::TestCase
       subject: @poll,
       actor: @admin,
     )
-    PublishTopicItemWorker.perform_now(topic_item.id)
+    topic_item.send_subscriber_emails!
     assert_equal 1, @poll.mentioned_users.length
     notification = Notification.find_by!(kind: "user_mentioned", subject: @poll)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
@@ -167,14 +167,13 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_created notifies webhook" do
     Resolv.stub(:getaddresses, ->(_host) { ['93.184.216.34'] }) do
-      PublishTopicItemWorker.perform_now(@poll.created_topic_item.id)
+      ChatbotService.publish_topic_item!(@poll.created_topic_item.id)
     end
     assert_requested :post, @webhook_url, at_least_times: 1
     assert_not Notification.exists?(kind: "poll_created", subject: @poll)
   end
 
   test "poll_edited notifies newly mentioned users" do
-    PublishTopicItemWorker.perform_now(@poll.created_topic_item.id)
     @poll.update!(details: "#{@poll.details} and @#{@user_thread_loud.username}")
     assert_not Notification.where(kind: "user_mentioned", subject: @poll)
                            .where("? = ANY(recipient_user_ids)", @user_thread_loud.id).exists?

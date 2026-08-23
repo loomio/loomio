@@ -3,17 +3,10 @@ class TopicItems::NewDiscussion < TopicItem
   include TopicItems::Publish::SubscriberEmails
   include TopicItems::Publish::LiveUpdate
 
-  def self.publish!(
-    discussion:,
-    recipient_user_ids: [],
-    recipient_chatbot_ids: [],
-    recipient_audience: nil)
+  def self.publish!(discussion:)
     super(discussion,
           user: discussion.author,
-          topic: discussion.topic,
-          recipient_user_ids: recipient_user_ids,
-          recipient_chatbot_ids: recipient_chatbot_ids,
-          recipient_audience: recipient_audience.presence)
+          topic: discussion.topic)
   end
 
   def discussion

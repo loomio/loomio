@@ -1,7 +1,8 @@
 module TopicItems::Publish::SubscriberEmails
-  def trigger!
-    super
-    send_subscriber_emails!
+  extend ActiveSupport::Concern
+
+  included do
+    after_create_commit :send_subscriber_emails!
   end
 
   def send_subscriber_emails!
@@ -15,7 +16,6 @@ module TopicItems::Publish::SubscriberEmails
                                .where.not(id: itemable.author)
                                .where.not(id: itemable.mentioned_users)
                                .where.not(id: itemable.mentioned_group_users)
-                               .where.not(id: all_recipient_user_ids)
                                .distinct
   end
 end

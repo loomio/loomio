@@ -123,6 +123,7 @@ class NotificationConsolidationService
           effective_kind,
           subject_type,
           subject_id,
+          recipient_message,
           created_at,
           updated_at
         FROM receipt_values
@@ -133,10 +134,11 @@ class NotificationConsolidationService
       )
       INSERT INTO notification_occurrences
         (legacy_event_id, actor_id, kind, subject_type, subject_id,
-         translation_values, deliveries_generated_at, created_at, updated_at)
+         recipient_message, translation_values, deliveries_generated_at,
+         created_at, updated_at)
       SELECT
         legacy_event_id, actor_id, effective_kind, subject_type, subject_id,
-        '{}'::jsonb, CURRENT_TIMESTAMP, created_at, updated_at
+        recipient_message, '{}'::jsonb, CURRENT_TIMESTAMP, created_at, updated_at
       FROM occurrence_values source_values
       WHERE NOT EXISTS (
         SELECT 1 FROM notification_occurrences occurrences
@@ -290,13 +292,15 @@ class NotificationConsolidationService
         )
         INSERT INTO notification_occurrences
           (legacy_event_id, actor_id, kind, subject_type, subject_id,
-           translation_values, deliveries_generated_at, created_at, updated_at)
+           recipient_message, translation_values, deliveries_generated_at,
+           created_at, updated_at)
         SELECT DISTINCT ON (event_id, effective_kind)
           event_id,
           actor_id,
           effective_kind,
           subject_type,
           subject_id,
+          recipient_message,
           '{}'::jsonb,
           CURRENT_TIMESTAMP,
           created_at,
@@ -418,6 +422,7 @@ class NotificationConsolidationService
         actor_users.id AS actor_id,
         events.eventable_type AS subject_type,
         events.eventable_id AS subject_id,
+        events.custom_fields ->> 'recipient_message' AS recipient_message,
         CASE
           WHEN events.kind = 'announcement_created' THEN
             COALESCE(events.custom_fields ->> 'kind', 'group_announced')

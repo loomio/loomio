@@ -75,7 +75,10 @@ class Views::NotificationMailer::Common::Notification < Views::ApplicationMailer
   end
 
   def message
-    @explicit_message.nil? ? @topic_item.recipient_message : @explicit_message
+    return @explicit_message unless @explicit_message.nil?
+    return unless @topic_item.is_a?(NotificationRenderingContext)
+
+    @topic_item.recipient_message
   end
 
   def title_link_html

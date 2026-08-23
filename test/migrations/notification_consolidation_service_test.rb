@@ -12,6 +12,14 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
         ORDER BY id
         LIMIT 1
       SQL
+      recipient_message = "Historical direct message"
+      connection.execute(<<~SQL.squish)
+        UPDATE events
+        SET custom_fields = custom_fields || jsonb_build_object(
+          'recipient_message', #{connection.quote(recipient_message)}
+        )
+        WHERE id = #{connection.quote(topic_item.fetch('id'))}
+      SQL
       receipt_id = connection.select_value(<<~SQL.squish).to_i
         INSERT INTO notifications
           (event_id, user_id, actor_id, translation_values, viewed, created_at, updated_at)
@@ -40,6 +48,12 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
       assert_equal 1, stats.dig(:repair, :deliveries_inserted)
       assert_equal 0, stats.dig(:after, :missing_notifications)
       assert_equal 0, stats.dig(:after, :missing_deliveries)
+      occurrence_message = connection.select_value(<<~SQL.squish)
+        SELECT recipient_message
+        FROM notification_occurrences
+        WHERE legacy_event_id = #{connection.quote(topic_item.fetch('id'))}
+      SQL
+      assert_equal recipient_message, occurrence_message
       assert_not_nil stats.dig(:state, :completed_at)
       assert_not_nil stats.dig(:state, :repair_completed_at)
     end

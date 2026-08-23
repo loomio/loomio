@@ -60,19 +60,16 @@ class DiscussionService
 
       Sentry.metrics.count("discussion.create")
 
-      TopicItems::NewDiscussion.publish!(
-        discussion: discussion,
-        recipient_user_ids: users.pluck(:id),
-        recipient_chatbot_ids: params[:recipient_chatbot_ids],
-        recipient_audience: params[:recipient_audience]
-      )
+      TopicItems::NewDiscussion.publish!(discussion: discussion)
 
-      if users.any?
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "new_discussion",
           subject: discussion,
           actor: actor,
           recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_message: params[:recipient_message],
           audience_values: mention_audience
         )
       end
@@ -126,15 +123,10 @@ class DiscussionService
       if params[:recipient_message].present?
         topic_item = TopicItems::DiscussionEdited.publish!(
           discussion: discussion,
-          actor: actor,
-          recipient_user_ids: users.pluck(:id),
-          recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          recipient_audience: params[:recipient_audience],
-          recipient_message: params[:recipient_message]
+          actor: actor
         )
       end
-      has_direct_chatbots = topic_item.nil? && Array(params[:recipient_chatbot_ids]).compact.any?
-      if users.any? || has_direct_chatbots
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "discussion_edited",
           subject: discussion,

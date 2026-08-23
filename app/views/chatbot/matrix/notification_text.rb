@@ -9,7 +9,7 @@ class Views::Chatbot::Matrix::NotificationText < Views::Chatbot::Base
 
   def view_template
     url = polymorphic_url(@topic_item.itemable)
-    message = @topic_item.recipient_message
+    message = @topic_item.recipient_message if @topic_item.is_a?(NotificationRenderingContext)
     title = capture { link_to(TranslationService.plain_text(@topic_item.itemable.title_model, :title, @recipient), url) }
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 

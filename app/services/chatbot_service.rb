@@ -38,8 +38,7 @@ class ChatbotService
 
     chatbots = topic_item.itemable.topic.group.chatbots
 
-    chatbots.where(id: topic_item.recipient_chatbot_ids).
-                or(chatbots.where("? = ANY(chatbots.event_kinds)", topic_item.kind)).each do |chatbot|
+    chatbots.where("? = ANY(chatbots.event_kinds)", topic_item.kind).each do |chatbot|
       publish_to_chatbot!(topic_item: topic_item, chatbot: chatbot)
     end
   end

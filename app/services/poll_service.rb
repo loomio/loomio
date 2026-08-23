@@ -119,15 +119,10 @@ class PollService
       if params[:recipient_message].present?
         topic_item = TopicItems::PollEdited.publish!(
           poll: poll,
-          actor: actor,
-          recipient_user_ids: users.pluck(:id),
-          recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          recipient_audience: params[:recipient_audience],
-          recipient_message: params[:recipient_message]
+          actor: actor
         )
       end
-      has_direct_chatbots = topic_item.nil? && Array(params[:recipient_chatbot_ids]).compact.any?
-      if users.any? || has_direct_chatbots
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "poll_edited",
           subject: poll,

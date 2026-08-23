@@ -250,7 +250,7 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    TopicItems::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author, recipient_message: "Updated discussion")
+    TopicItems::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author)
 
     # discussion_moved
     TopicItems::DiscussionMoved.publish!(create_discussion, patrick)
@@ -263,7 +263,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    TopicItems::PollEdited.publish!(poll: create_poll, actor: patrick, recipient_message: "Updated poll")
+    TopicItems::PollEdited.publish!(poll: create_poll, actor: patrick)
 
     # stance_created
     TopicItems::StanceCreated.publish!(create_stance)

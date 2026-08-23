@@ -5,7 +5,7 @@ module Views::Chatbot::Markdown::Concerns
 
   def render_notification_text(topic_item, poll)
     url = polymorphic_url(topic_item.itemable)
-    message = topic_item.recipient_message
+    message = topic_item.recipient_message if topic_item.is_a?(NotificationRenderingContext)
     poll_type = poll ? t("poll_types.#{poll.poll_type}") : nil
     title = topic_item.itemable.title_model.title
 

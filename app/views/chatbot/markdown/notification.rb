@@ -9,7 +9,7 @@ class Views::Chatbot::Markdown::Notification < Views::Chatbot::Markdown::Base
 
   def view_template
     url = polymorphic_url(@topic_item.itemable)
-    message = @topic_item.recipient_message
+    message = @topic_item.recipient_message if @topic_item.is_a?(NotificationRenderingContext)
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
     md t("notifications.with_title.#{@topic_item.kind}",

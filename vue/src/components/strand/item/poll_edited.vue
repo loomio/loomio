@@ -10,5 +10,4 @@ export default {
 <template lang="pug">
 section.strand-item__poll-edited
   strand-item-headline(:topic_item="topic_item" :itemable="itemable", :dateTime="topic_item.createdAt")
-  p {{topic_item.recipientMessage}}
 </template>

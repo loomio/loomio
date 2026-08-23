@@ -194,22 +194,46 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       params: {
         title: "Direct notification discussion",
         group_id: groups(:group).id,
-        recipient_user_ids: [ recipient.id ]
+        recipient_user_ids: [ recipient.id ],
+        recipient_chatbot_ids: [ @chatbot.id ],
+        recipient_message: "Please review this discussion"
       },
       actor: @author
     )
-    topic_item = discussion.created_topic_item
+    topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
     notification = Notification.find_by!(
       kind: "new_discussion",
       subject: discussion
     )
 
-    PublishTopicItemWorker.perform_now(topic_item.id)
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ recipient.id ], notification.recipient_user_ids
+    assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
+    assert_equal "Please review this discussion", notification.recipient_message
+    assert_empty topic_item.custom_fields
     assert_equal 1, Notification.where(kind: "new_discussion", subject: discussion).count
-    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+    assert_equal %w[chatbot email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+  end
+
+  test "a loud explicit discussion recipient receives one subscription email path" do
+    recipient = users(:member)
+    recipient.memberships.find_by!(group: groups(:group)).update!(volume: :loud)
+    discussion = DiscussionService.create(
+      params: {
+        title: "Loud recipient discussion",
+        group_id: groups(:group).id,
+        recipient_user_ids: [ recipient.id ]
+      },
+      actor: @author
+    )
+    topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
+    notification = Notification.find_by!(kind: "new_discussion", subject: discussion)
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_includes topic_item.subscribed_recipients, recipient
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
   end
 
   test "poll closing soon resolves voter channels with recipient-localized values" do

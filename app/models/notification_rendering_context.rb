@@ -39,11 +39,7 @@ class NotificationRenderingContext
     notification.subject_type
   end
 
-  delegate :recipient_message, :recipient_user_ids, to: :notification
-
-  def all_recipient_user_ids
-    recipient_user_ids
-  end
+  delegate :recipient_message, to: :notification
 
   def notification_url
     notification.notification_url

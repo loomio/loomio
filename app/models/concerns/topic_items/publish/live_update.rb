@@ -1,7 +1,8 @@
 module TopicItems::Publish::LiveUpdate
-  def trigger!
-    super
-    publish_live_update!
+  extend ActiveSupport::Concern
+
+  included do
+    after_create_commit :publish_live_update!
   end
 
   # send client live updates

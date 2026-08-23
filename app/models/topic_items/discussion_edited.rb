@@ -2,22 +2,10 @@ class TopicItems::DiscussionEdited < TopicItem
   include TopicItems::Publish::Chatbots
   include TopicItems::Publish::LiveUpdate
 
-  def self.publish!(
-    discussion:,
-    actor:,
-    recipient_user_ids: [],
-    recipient_chatbot_ids: [],
-    recipient_audience: nil,
-    recipient_message: nil)
-    raise ArgumentError, "recipient_message is required" if recipient_message.blank?
-
+  def self.publish!(discussion:, actor:)
     super(discussion,
           user: actor,
-          topic: discussion.topic,
-          recipient_user_ids: recipient_user_ids,
-          recipient_chatbot_ids: recipient_chatbot_ids,
-          recipient_audience: recipient_audience,
-          recipient_message: recipient_message)
+          topic: discussion.topic)
   end
 
   def discussion

@@ -14,7 +14,7 @@ class TopicItem < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, (-> { where("topic_id is not null") }), class_name: "TopicItem", foreign_key: :parent_id
-  set_custom_fields :pinned_title, :recipient_user_ids, :recipient_chatbot_ids, :recipient_message, :recipient_audience, :stance_ids
+  set_custom_fields :pinned_title
 
   before_create :set_parent_and_depth, if: :topic_id
   before_create :set_sequences, if: :topic_id
@@ -40,27 +40,10 @@ class TopicItem < ApplicationRecord
   delegate :groups, to: :itemable, allow_nil: true
   delegate :update_sequence_info!, to: :topic, allow_nil: true
 
-  def self.sti_find(id)
-    e = self.find(id)
-    e.kind_class.find(id)
-  end
-
-  def kind_class
-    ("TopicItems::"+kind.classify).constantize
-  end
-
   def self.publish!(itemable, **args)
     topic_item = build(itemable, **args)
     topic_item.save!
-    PublishTopicItemWorker.perform_later(topic_item.id)
-    topic_item
-  end
-
-  def self.publish_and_mark_read!(itemable, reader:, **args)
-    topic_item = build(itemable, **args)
-    topic_item.save!
-    mark_created_topic_item_as_read_for(topic_item, reader)
-    PublishTopicItemWorker.perform_later(topic_item.id)
+    mark_actor_as_read!(topic_item)
     topic_item
   end
 
@@ -72,13 +55,17 @@ class TopicItem < ApplicationRecord
     }.merge(args))
   end
 
-  def self.mark_created_topic_item_as_read_for(topic_item, reader)
+  # A topic item's actor should not acquire unread state for their own action.
+  # Detached anonymous stances use their real participant for this bookkeeping.
+  def self.mark_actor_as_read!(topic_item)
+    reader = topic_item.real_user
     return unless reader&.is_logged_in?
     return unless topic_item.topic_id && topic_item.sequence_id
 
-    TopicReader.for(user: reader, topic: topic_item.topic).viewed!(topic_item.sequence_id)
-    MessageChannelService.publish_models([topic_item], user_id: reader.id)
+    TopicReader.for(topic: topic_item.topic, user: reader)
+               .update_reader(ranges: topic_item.sequence_id, volume: :loud)
   end
+  private_class_method :mark_actor_as_read!
 
   def user
     super || AnonymousUser.new
@@ -104,12 +91,6 @@ class TopicItem < ApplicationRecord
     polymorphic_path(model)
   end
 
-
-  # this is called after create, and calls methods defined by the topic_item concerns
-  # included per topic_item type
-  def trigger!
-    EventBus.broadcast("#{kind}_event", self)
-  end
 
   def active_model_serializer
     "TopicItems::#{itemable.class.to_s.split('::').last}Serializer".constantize
@@ -230,10 +211,6 @@ class TopicItem < ApplicationRecord
     else
       original_parent
     end
-  end
-
-  def all_recipient_user_ids
-    (recipient_user_ids || []).uniq.compact #.without(actor_id)
   end
 
   def discussion_created_topic_item

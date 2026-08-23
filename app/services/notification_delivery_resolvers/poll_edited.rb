@@ -12,6 +12,9 @@ module NotificationDeliveryResolvers
       email_explicit = poll.topic.volume_gte_normal_members
                            .where("users.id": explicit_scope.no_spam_complaints.select(:id))
                            .where.not(id: audience_ids("newly_mentioned_user_ids"))
+      if notification.recipient_message.present?
+        email_explicit = email_explicit.where.not(id: poll.topic.volume_loud_members.select(:id))
+      end
       {
         "in_app" => poll.topic.volume_gte_quiet_members
                         .where("users.id": explicit_scope.select(:id))

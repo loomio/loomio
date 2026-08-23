@@ -24,7 +24,8 @@ TopicItem
 
 Notification
   kind, subject, actor
-  occurrence-wide rendering and audience snapshot
+  recipient_user_ids, recipient_chatbot_ids
+  recipient_message, audience_values
 
 NotificationDelivery
   notification_id
@@ -53,6 +54,14 @@ Not every publication is a notification:
 - topic live update is publication of a topic item, not notification delivery;
 - a chatbot subscribed to topic activity is also a topic-item publication;
 - a chatbot explicitly selected for a notification is a notification delivery.
+
+Explicit recipients, chatbot IDs, audience snapshots and recipient messages
+belong only to `Notification`. They are real notification columns and are not
+copied into `TopicItem.custom_fields` or exposed on the timeline item.
+
+Topic-item publication is declared by its `TopicItems::Publish` concerns. Each
+concern performs or enqueues its own work after commit; there is no generic
+topic-item dispatcher worker or STI-style reload step.
 
 Stances and other domain records are committed independently of notification
 resolution. The domain operation, its required topic item and database-derived

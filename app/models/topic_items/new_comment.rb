@@ -8,10 +8,9 @@ class TopicItems::NewComment < TopicItem
       MarkNotificationsAsReadWorker.perform_later(comment.parent_type, comment.parent_id, comment.author_id)
     end
 
-    publish_and_mark_read!(comment,
-                           reader: comment.author,
-                           user: comment.author,
-                           topic: comment.topic,
-                           pinned: comment.should_pin)
+    super(comment,
+          user: comment.author,
+          topic: comment.topic,
+          pinned: comment.should_pin)
   end
 end

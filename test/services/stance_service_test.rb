@@ -44,7 +44,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     ActionMailer::Base.deliveries.clear
     topic_item = StanceService.create(stance: stance, actor: @user)
-    PublishTopicItemWorker.perform_now(topic_item.id)
+    TopicItems::StanceCreated.find(topic_item.id).send_subscriber_emails!
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
     assert_not Notification.exists?(kind: "stance_created", subject: stance)

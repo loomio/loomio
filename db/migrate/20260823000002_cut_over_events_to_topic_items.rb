@@ -26,6 +26,23 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
     rename_column :events, :eventable_version_id, :itemable_version_id
     rename_table :events, :topic_items
 
+    execute <<~SQL.squish
+      UPDATE topic_items
+      SET custom_fields = custom_fields
+        - 'recipient_user_ids'
+        - 'recipient_chatbot_ids'
+        - 'recipient_message'
+        - 'recipient_audience'
+        - 'stance_ids'
+      WHERE custom_fields ?| ARRAY[
+        'recipient_user_ids',
+        'recipient_chatbot_ids',
+        'recipient_message',
+        'recipient_audience',
+        'stance_ids'
+      ]
+    SQL
+
     rename_index_if_present :topic_items, "index_events_on_created_at", "index_topic_items_on_created_at"
     rename_index_if_present :topic_items, "index_events_on_eventable_id_and_kind", "index_topic_items_on_itemable_id_and_kind"
     rename_index_if_present :topic_items, "index_events_on_eventable_type_and_eventable_id", "index_topic_items_on_itemable"

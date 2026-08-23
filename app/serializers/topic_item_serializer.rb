@@ -1,7 +1,7 @@
 class TopicItemSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
     :topic_id, :created_at, :itemable_id, :itemable_type, :custom_fields,
-    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
@@ -39,6 +39,6 @@ class TopicItemSerializer < ApplicationSerializer
   end
 
   def include_custom_fields?
-    ["poll_edited", "discussion_edited", "discussion_moved"].include? object.kind
+    object.kind == "discussion_moved"
   end
 end
