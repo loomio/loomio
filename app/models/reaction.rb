@@ -1,4 +1,6 @@
 class Reaction < ApplicationRecord
+  include HasNotifications
+
   belongs_to :reactable, polymorphic: true
   belongs_to :user
   has_many :topic_items, as: :itemable, dependent: :destroy

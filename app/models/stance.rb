@@ -4,7 +4,7 @@ class Stance < ApplicationRecord
   include Reactable
   include Bookmarkable
   include HasTopicItems
-  include HasCreatedTopicItem
+  include HasNotifications
   include Searchable
 
   extend HasTokens

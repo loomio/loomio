@@ -1,4 +1,6 @@
 class ReceivedEmail < ApplicationRecord
+  include HasNotifications
+
   has_many_attached :attachments
   belongs_to :group
 

@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
-  include HasTopicItems
+  include HasNotifications
   include Translatable
 
   extend HasTokens

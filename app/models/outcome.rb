@@ -2,12 +2,11 @@ class Outcome < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
   include HasTopicItems
+  include HasNotifications
   include HasMentions
   include Reactable
   include Bookmarkable
   include Translatable
-  include HasCreatedTopicItem
-  include HasTopicItems
   include HasRichText
   include Searchable
 

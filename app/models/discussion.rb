@@ -6,9 +6,9 @@ class Discussion < ApplicationRecord
   include Bookmarkable
   include HasTimeframe
   include HasTopicItems
+  include HasNotifications
   include HasMentions
   include SelfReferencing
-  include HasCreatedTopicItem
   include HasRichText
   include Discard::Model
 

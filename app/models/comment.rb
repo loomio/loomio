@@ -5,8 +5,8 @@ class Comment < ApplicationRecord
   include Reactable
   include Bookmarkable
   include HasMentions
-  include HasCreatedTopicItem
   include HasTopicItems
+  include HasNotifications
   include HasRichText
   include Searchable
 

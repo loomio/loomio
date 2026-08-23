@@ -5,11 +5,11 @@ class Poll < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include HasTopicItems
+  include HasNotifications
   include HasMentions
   include SelfReferencing
   include Reactable
   include Bookmarkable
-  include HasCreatedTopicItem
   include HasRichText
   include Discard::Model
   include Searchable

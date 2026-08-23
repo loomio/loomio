@@ -1,5 +1,5 @@
 class MembershipRequest < ApplicationRecord
-  include HasTopicItems
+  include HasNotifications
 
   validate :validate_not_in_group_already
   validate :validate_unique_membership_request

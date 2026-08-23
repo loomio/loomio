@@ -1,6 +1,5 @@
 module HasMentions
   extend ActiveSupport::Concern
-  include HasTopicItems
 
   module ClassMethods
     def is_mentionable(on: [])
