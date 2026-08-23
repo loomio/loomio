@@ -26,6 +26,34 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert @poll.anonymous_poll_voters.exists?(voter_id: @voter.id)
   end
 
+  test "notified specified-voter invitation rolls back when notification creation fails" do
+    poll = PollService.create(
+      params: {
+        title: "Atomic anonymous invitation",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: [ "Agree", "Disagree" ]
+      },
+      actor: @admin
+    )
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        PollService.invite(
+          poll: poll,
+          actor: @admin,
+          params: { recipient_user_ids: [ @voter.id ], notify_recipients: true }
+        )
+      end
+    end
+
+    assert_not poll.anonymous_poll_voters.exists?(voter_id: @voter.id)
+    assert_empty poll.stances
+  end
+
   test "the model rejects anonymous stance polls" do
     legacy_poll = Poll.new(
       title: "Legacy anonymous poll",
@@ -59,26 +87,75 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
 
   test "automatic reminders select only voters who have not submitted" do
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
-    event = Events::PollClosingSoon.new(eventable: @poll)
-    recipient_ids = event.send(:raw_recipients).pluck(:id)
+    recipient_ids = @poll.unmasked_undecided_voters.pluck(:id)
 
     assert_equal "undecided_voters", @poll.notify_on_closing_soon
     assert_not_includes recipient_ids, @voter.id
     assert_includes recipient_ids, @admin.id
   end
 
+  test "anonymous-ballot reminders use the direct notification producer" do
+    notification = nil
+    assert_no_difference -> { TopicItem.where(kind: "poll_closing_soon", itemable: @poll).count } do
+      notification = NotificationService.create!(
+        kind: "poll_closing_soon",
+        subject: @poll,
+        actor: @admin
+      )
+    end
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    recipient_ids = notification.notification_deliveries.where(recipient_type: "User").pluck(:recipient_id)
+    assert_includes recipient_ids, @admin.id
+  end
+
+  test "the delivery resolver accepts an anonymous-ballot notification" do
+    notification = Notification.create!(
+      actor: @admin,
+      kind: "poll_closing_soon",
+      subject: @poll,
+      deduplication_key: "poll_closing_soon:anonymous-security-test"
+    )
+
+    NotificationDeliveryResolver.for(notification).resolve!
+
+    assert_not_nil notification.reload.deliveries_generated_at
+    assert notification.notification_deliveries.exists?(recipient: @admin)
+  end
+
+  test "anonymous-ballot expiry is eventless and idempotent" do
+    @poll.update_column(:closing_at, 1.hour.ago)
+
+    assert_no_difference -> { TopicItem.where(kind: "poll_expired", itemable: @poll).count } do
+      assert_difference -> { Notification.where(kind: "poll_expired").count }, 1 do
+        CloseExpiredPollWorker.perform_now(@poll.id)
+      end
+    end
+
+    assert_no_difference "Notification.count" do
+      CloseExpiredPollWorker.perform_now(@poll.id)
+    end
+  end
+
+  test "manual anonymous poll close creates no user or stance delivery identity" do
+    PollService.close(poll: @poll, actor: @admin)
+
+    assert_empty @poll.stances
+    assert_not Notification.exists?(kind: "poll_closed_by_user", subject: @poll)
+  end
+
   test "hourly reminder publishes once when a long poll enters its final 24 hours" do
     travel_to(@poll.closing_at - 24.hours - 1.minute) do
-      assert_no_difference("Events::PollClosingSoon.count") do
+      assert_no_difference(-> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }) do
         PollService.publish_closing_soon
       end
     end
 
     travel_to(@poll.closing_at - 24.hours + 1.minute) do
-      assert_difference("Events::PollClosingSoon.count", 1) do
+      assert_difference(-> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }, 1) do
         PollService.publish_closing_soon
       end
-      assert_no_difference("Events::PollClosingSoon.count") do
+      assert_no_difference(-> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }) do
         PollService.publish_closing_soon
       end
     end
@@ -98,7 +175,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
 
     assert short_poll.detached_anonymous?
-    assert_no_difference("Events::PollClosingSoon.count") do
+    assert_no_difference(-> { Notification.where(kind: "poll_closing_soon", subject: short_poll).count }) do
       PollService.publish_closing_soon
     end
   end
@@ -108,13 +185,13 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     @poll.update!(closing_at: original_closing_at + 2.days)
 
     travel_to(original_closing_at - 24.hours + 1.minute) do
-      assert_no_difference("Events::PollClosingSoon.count") do
+      assert_no_difference(-> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }) do
         PollService.publish_closing_soon
       end
     end
 
     travel_to(@poll.closing_at - 24.hours + 1.minute) do
-      assert_difference("Events::PollClosingSoon.count", 1) do
+      assert_difference(-> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }, 1) do
         PollService.publish_closing_soon
       end
     end
@@ -126,7 +203,9 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       job[:job] == ActionMailer::MailDeliveryJob
     end
 
-    assert AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    assert_no_difference -> { Notification.where(kind: %w[stance_created stance_updated]).count } do
+      assert AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    end
 
     ballot.reload
     mail_jobs_after = ActiveJob::Base.queue_adapter.enqueued_jobs.count do |job|
@@ -136,7 +215,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_equal mail_jobs_before, mail_jobs_after
     assert @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
     assert_empty @poll.stances
-    assert_empty Event.where(eventable_type: "AnonymousBallot", eventable_id: ballot.id)
+    assert_empty TopicItem.where(itemable_type: "AnonymousBallot", itemable_id: ballot.id)
     assert_not ballot.attributes.key?("created_at")
     assert_not ballot.attributes.key?("updated_at")
     assert_not ballot.attributes.key?("voter_id")
@@ -219,9 +298,11 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_equal 1, poll.reload.voters_count
     assert_equal 1, poll.undecided_voters_count
     assert_empty poll.stances
-    event = Events::PollAnnounced.order(:id).last
-    assert_equal [@voter.id], event.recipient_user_ids
-    assert_empty event.stance_ids
+    notification = Notification.find_by!(kind: "poll_announced", subject: poll)
+    assert_equal [ @voter.id ], notification.recipient_user_ids
+    assert_no_difference -> { TopicItem.where(kind: "poll_announced", itemable: poll).count } do
+      ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    end
 
     AnonymousBallotService.create(
       anonymous_ballot: poll.anonymous_ballots.build(

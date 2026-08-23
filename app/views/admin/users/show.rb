@@ -96,8 +96,12 @@ class Views::Admin::Users::Show < Views::Admin::Layout
   def render_notifications
     panel("Recent notifications") do
       ul(class: "admin-list") do
-        Notification.includes(:event).where(user_id: @user.id).order(id: :desc).limit(30).each do |notification|
-          li { "##{notification.id} · #{value(notification.event&.kind)} · #{notification.created_at}" }
+        Notification.joins(:notification_deliveries)
+                    .where(notification_deliveries: { recipient: @user, channel: "in_app" })
+                    .order(id: :desc)
+                    .limit(30)
+                    .each do |notification|
+          li { "##{notification.id} · #{value(notification.kind)} · #{notification.created_at}" }
         end
       end
     end

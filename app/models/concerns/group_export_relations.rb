@@ -52,13 +52,13 @@ module GroupExportRelations
     has_many :exportable_anonymous_voter_inviters, through: :exportable_anonymous_poll_voters, source: :inviter
     has_many :reader_users,               through: :topic_readers,                  source: :user
 
-    # events
-    has_many :membership_events,          through: :memberships,          source: :events
-    has_many :discussion_events,          through: :discussions,          source: :events
-    has_many :comment_events,             through: :comments,             source: :events
-    has_many :exportable_poll_events,     through: :exportable_polls,     source: :events
-    has_many :exportable_outcome_events,  through: :exportable_outcomes,  source: :events
-    has_many :exportable_stance_events,   through: :exportable_stances,   source: :events
+    # topic_items
+    has_many :membership_topic_items,         through: :memberships,         source: :topic_items
+    has_many :discussion_topic_items,         through: :discussions,         source: :topic_items
+    has_many :comment_topic_items,            through: :comments,            source: :topic_items
+    has_many :exportable_poll_topic_items,    through: :exportable_polls,    source: :topic_items
+    has_many :exportable_outcome_topic_items, through: :exportable_outcomes, source: :topic_items
+    has_many :exportable_stance_topic_items,  through: :exportable_stances,  source: :topic_items
   end
 
   def all_users
@@ -102,19 +102,39 @@ module GroupExportRelations
   end
 
 
-  def all_events
-    Queries::UnionQuery.for(:events, [
-      self.membership_events,
-      self.discussion_events,
-      self.comment_events,
-      self.exportable_poll_events,
-      self.exportable_outcome_events,
-      self.exportable_stance_events
+  def all_topic_items
+    Queries::UnionQuery.for(:topic_items, [
+      self.membership_topic_items,
+      self.discussion_topic_items,
+      self.comment_topic_items,
+      self.exportable_poll_topic_items,
+      self.exportable_outcome_topic_items,
+      self.exportable_stance_topic_items
     ])
   end
 
   def all_notifications
-    Notification.where(event_id: all_events.pluck(:id))
+    scope = Notification.none
+    {
+      "Comment" => comments.select(:id),
+      "Discussion" => discussions.select(:id),
+      "Group" => Group.where(id: id_and_subgroup_ids).select(:id),
+      "Membership" => Membership.where(group_id: id_and_subgroup_ids).select(:id),
+      "Outcome" => exportable_outcomes.select(:id),
+      "Poll" => exportable_polls.select(:id),
+      "Reaction" => all_reactions.select(:id),
+      "Stance" => exportable_stances.select(:id)
+    }.each_pair do |subject_type, subject_ids|
+      scope = scope.or(Notification.where(subject_type: subject_type, subject_id: subject_ids))
+    end
+    scope
+  end
+
+  def all_notification_deliveries
+    NotificationDelivery.where(
+      notification_id: all_notifications.select(:id),
+      recipient_type: "User"
+    )
   end
 
   def all_reactions

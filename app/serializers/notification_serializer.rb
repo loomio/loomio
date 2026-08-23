@@ -5,7 +5,6 @@ class NotificationSerializer < ApplicationSerializer
              :url,
              :kind,
              :actor_id,
-             :event_id,
              :name,
              :title,
              :poll_type,
@@ -13,7 +12,11 @@ class NotificationSerializer < ApplicationSerializer
              :model
 
   def url
-    event.notification_url
+    object.notification_url
+  end
+
+  def viewed
+    object.viewed_for?(scope[:current_user_id])
   end
 
   has_one :actor, serializer: AuthorSerializer, root: :users
@@ -39,7 +42,7 @@ class NotificationSerializer < ApplicationSerializer
   end
 
   def tv(key)
-    object.translation_values[key.to_s]
+    object.translation_values_for(scope[:current_user_id])[key.to_s]
   end
 
   def kind

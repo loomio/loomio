@@ -1,37 +1,40 @@
 class Notification < ApplicationRecord
-  belongs_to :user
-  belongs_to :actor, class_name: "User"
-  belongs_to :event
-  belongs_to :subject, polymorphic: true, optional: true
+  include PrettyUrlHelper
 
-  validates_presence_of :user, :event
+  belongs_to :actor, class_name: "User", optional: true
+  belongs_to :subject, polymorphic: true
+  has_many :notification_deliveries, dependent: :destroy
 
-  delegate :locale, to: :user
+  validates :kind, :subject, :deduplication_key, presence: true
 
-  def kind
-    self[:kind] || kind_from_event
+  def notification_url
+    return polymorphic_path(subject.group) if kind == "invitation_accepted"
+
+    polymorphic_path(subject)
   end
 
-  def eventable
-    subject || event&.eventable
-  end
-
-  scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
-
-  private
-
-  def kind_from_event
-    return unless event
-
-    if event.kind == "announcement_created"
-      event.custom_fields["kind"] || "group_announced"
-    elsif event.kind == "user_mentioned" &&
-          event.eventable.respond_to?(:parent) &&
-          event.eventable.parent.present? &&
-          event.eventable.parent.author == user
-      "comment_replied_to"
-    else
-      event.kind
+  def viewed_for?(recipient_id)
+    notification_deliveries.any? do |delivery|
+      delivery.channel == "in_app" &&
+        delivery.recipient_type == "User" &&
+        delivery.recipient_id == recipient_id &&
+        delivery.viewed?
     end
   end
+
+  def translation_values_for(recipient_id)
+    delivery = notification_deliveries.find do |candidate|
+      candidate.recipient_type == "User" &&
+        candidate.recipient_id == recipient_id &&
+        candidate.channel == "in_app"
+    end
+    delivery&.translation_values.presence || translation_values
+  end
+
+  scope :user_mentions, lambda {
+    where(kind: %w[user_mentioned comment_replied_to])
+  }
+  scope :pending_delivery_resolution, lambda {
+    where(deliveries_generated_at: nil)
+  }
 end

@@ -3,7 +3,7 @@ import PollService    from '@/shared/services/poll_service';
 import Session    from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
-import EventService from '@/shared/services/event_service';
+import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
@@ -11,9 +11,9 @@ import UrlFor from '@/mixins/url_for';
 export default {
   mixins: [WatchRecords, UrlFor],
   props: {
-    event: Object,
+    topic_item: Object,
     collapsed: Boolean,
-    eventable: Object
+    itemable: Object
   },
 
   data() {
@@ -41,13 +41,13 @@ export default {
 
   methods: {
     rebuildActions() {
-      let pollActions = PollService.actions(this.poll, this, this.event);
+      let pollActions = PollService.actions(this.poll, this, this.topic_item);
       this.editStanceAction = pollActions["edit_stance"]
       if (this.poll.pollType != 'meeting') {
         pollActions = omit(pollActions, "edit_stance");
       }
       const topic = this.poll.topic();
-      const eventActions = (topic && topic.topicableType === 'Discussion') ? {} : EventService.actions(this.event, this);
+      const eventActions = (topic && topic.topicableType === 'Discussion') ? {} : TopicItemService.actions(this.topic_item, this);
       this.myStance = this.poll.myStance();
       this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
       this.dockActions = pickBy(pollActions, v => v.dock);
@@ -64,7 +64,7 @@ export default {
   },
 
   computed: {
-    poll() { return this.eventable; },
+    poll() { return this.itemable; },
   }
 };
 

@@ -6,14 +6,15 @@ class StanceService
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.revoker_id = nil
-    event = Stance.transaction do
+    publication = Stance.transaction do
       stance.save!
       stance.poll.update_counts!
-      Events::StanceCreated.publish!(stance)
+      publish_stance_event!(stance: stance, kind: "stance_created")
     end
 
+    publish_stance_directly!(stance, publication)
     Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
-    event
+    publication[:topic_item] || stance
   end
 
   def self.uncast(stance:, actor:)
@@ -36,11 +37,12 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
-    event = Event.where(eventable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
+    topic_item = TopicItem.where(itemable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
 
     stance_to_publish = nil
+    stance_changed = nil
     metric_name = nil
-    result = Stance.transaction do
+    publication = Stance.transaction do
       if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
         # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
@@ -49,8 +51,9 @@ class StanceService
         new_stance.save!
         new_stance.poll.update_counts!
         stance_to_publish = stance if stance.shared_update_visible?
+        stance_changed = new_stance
         metric_name = "stance.update"
-        Events::StanceCreated.publish!(new_stance)
+        publish_stance_event!(stance: new_stance, kind: "stance_created")
       else
         stance.stance_choices = []
         stance.assign_attributes_and_files(params)
@@ -59,16 +62,21 @@ class StanceService
         stance.revoker_id = nil
         stance.save!
         stance.poll.update_counts!
+        stance_changed = stance
         metric_name = is_update ? "stance.update" : "stance.create"
-        is_update ? Events::StanceUpdated.publish!(stance) : Events::StanceCreated.publish!(stance)
+        publish_stance_event!(
+          stance: stance,
+          kind: is_update ? "stance_updated" : "stance_created"
+        )
       end
     end
 
     if stance_to_publish
       MessageChannelService.publish_models([stance_to_publish], group_id: stance.poll.group_id)
     end
+    publish_stance_directly!(stance_changed, publication)
     Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })
-    result
+    publication[:topic_item] || stance_changed
   end
 
   def self.redeem(stance:, actor:)
@@ -76,6 +84,33 @@ class StanceService
     return unless Stance.redeemable_by(actor).where(id: stance.id).exists?
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end
+
+  # Create a topic item only when the response belongs in the timeline. Direct
+  # mention notifications share the transaction, while subscriber delivery and
+  # chatbot publication remain responsibilities of the topic item itself.
+  def self.publish_stance_event!(stance:, kind:)
+    event_class = kind == "stance_created" ? TopicItems::StanceCreated : TopicItems::StanceUpdated
+    was_shared_update_visible = stance.shared_update_visible?
+    MarkNotificationsAsReadWorker.perform_later("Poll", stance.poll_id, stance.participant_id)
+    topic_item = event_class.publish!(stance) if stance.add_to_thread?
+    occurrence_key = topic_item ? "event_#{topic_item.id}" : "updated_at_#{stance.updated_at.utc.iso8601(6)}"
+    MentionNotificationService.create!(
+      subject: stance,
+      actor: stance.participant,
+      occurrence_key: occurrence_key,
+      notify: was_shared_update_visible
+    )
+    { topic_item: topic_item, was_shared_update_visible: was_shared_update_visible }
+  end
+  private_class_method :publish_stance_event!
+
+  def self.publish_stance_directly!(stance, publication)
+    return if publication[:topic_item]
+    return unless publication[:was_shared_update_visible]
+
+    MessageChannelService.publish_topic_model(stance)
+  end
+  private_class_method :publish_stance_directly!
 
   def self.redact(stance:, actor:)
     actor.ability.authorize!(:redact, stance)

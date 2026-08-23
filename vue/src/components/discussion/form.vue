@@ -118,7 +118,7 @@ const showUpgradeMessage = computed(() => {
 });
 
 const isMovingItems = computed(() => {
-  return props.discussion.forkedEventIds.length;
+  return props.discussion.selectedTopicItemIds.length;
 });
 
 // Watcher

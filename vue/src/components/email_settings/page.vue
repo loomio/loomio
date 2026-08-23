@@ -236,7 +236,7 @@ v-main
   width: 12px;
   height: 12px;
   transform: translateY(-50%);
-  pointer-events: none;
+  pointer-topic_items: none;
 
   background-color: currentColor;
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='black' fill='none' stroke-width='2.25' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");

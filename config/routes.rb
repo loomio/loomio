@@ -227,7 +227,7 @@ Rails.application.routes.draw do
 
       resources :login_tokens, only: [:create]
 
-      resources :events, only: :index do
+      resources :topic_items, only: :index do
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
@@ -417,7 +417,7 @@ Rails.application.routes.draw do
     put :set_group_volume
     put :set_discussion_volume
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
-    get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+    get 'mark_discussion_as_read/:discussion_id/:topic_item_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
   end
 

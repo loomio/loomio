@@ -16,7 +16,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     @comment2 = Comment.new(body: "comment2", parent: @comment1)
     @comment3 = Comment.new(body: "comment3", parent: @comment2)
 
-    @discussion_event = @discussion.created_event
+    @discussion_event = @discussion.created_topic_item
     @comment1_event = CommentService.create(comment: @comment1, actor: @user)
     @comment2_event = CommentService.create(comment: @comment2, actor: @user)
     @comment3_event = CommentService.create(comment: @comment3, actor: @user)
@@ -29,14 +29,14 @@ class TopicServiceTest < ActiveSupport::TestCase
       group_id: @group.id,
       topic_id: @topic.id
     }, actor: @user)
-    @poll_created_event = poll.created_event
+    @poll_created_topic_item = poll.created_topic_item
   end
 
-  test "flattens events to max_depth 1" do
+  test "flattens topic_items to max_depth 1" do
     @topic.update!(max_depth: 1)
     TopicService.repair(@topic.id)
 
-    [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
+    [@comment1_event, @comment2_event, @comment3_event, @poll_created_topic_item].each(&:reload)
 
     assert_equal 1, @comment1_event.depth
     assert_equal 1, @comment2_event.depth
@@ -45,14 +45,14 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @comment1_event.parent_id
     assert_equal @discussion_event.id, @comment2_event.parent_id
     assert_equal @discussion_event.id, @comment3_event.parent_id
-    assert_equal @discussion_event.id, @poll_created_event.parent_id
+    assert_equal @discussion_event.id, @poll_created_topic_item.parent_id
   end
 
-  test "branches events at max_depth 2" do
+  test "branches topic_items at max_depth 2" do
     @topic.update!(max_depth: 2)
     TopicService.repair(@topic.id)
 
-    [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
+    [@comment1_event, @comment2_event, @comment3_event, @poll_created_topic_item].each(&:reload)
 
     assert_equal 1, @comment1_event.depth
     assert_equal 2, @comment2_event.depth
@@ -61,14 +61,14 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @comment1_event.parent_id
     assert_equal @comment1_event.id, @comment2_event.parent_id
     assert_equal @comment1_event.id, @comment3_event.parent_id
-    assert_equal @discussion_event.id, @poll_created_event.parent_id
+    assert_equal @discussion_event.id, @poll_created_topic_item.parent_id
   end
 
-  test "branches events at max_depth 3" do
+  test "branches topic_items at max_depth 3" do
     @topic.update!(max_depth: 3)
     TopicService.repair(@topic.id)
 
-    [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
+    [@comment1_event, @comment2_event, @comment3_event, @poll_created_topic_item].each(&:reload)
 
     assert_equal 1, @comment1_event.depth
     assert_equal 2, @comment2_event.depth
@@ -77,11 +77,11 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @discussion_event.id, @comment1_event.parent_id
     assert_equal @comment1_event.id, @comment2_event.parent_id
     assert_equal @comment2_event.id, @comment3_event.parent_id
-    assert_equal @discussion_event.id, @poll_created_event.parent_id
+    assert_equal @discussion_event.id, @poll_created_topic_item.parent_id
   end
 
 
-  test "repair clears stale parent from root event" do
+  test "repair clears stale parent from root topic_item" do
     poll = PollService.create(params: {
       title: "Standalone Poll",
       poll_type: "proposal",
@@ -89,13 +89,21 @@ class TopicServiceTest < ActiveSupport::TestCase
       closing_at: 5.days.from_now,
       group_id: @group.id
     }, actor: @user)
-    created_event = poll.created_event
-    created_event.update_columns(parent_id: created_event.id)
+    created_topic_item = poll.created_topic_item
+    created_topic_item.update_columns(parent_id: created_topic_item.id)
 
     TopicService.repair(poll.topic_id)
 
-    assert_nil created_event.reload.parent_id
-    assert_equal 0, created_event.sequence_id
+    assert_nil created_topic_item.reload.parent_id
+    assert_equal 0, created_topic_item.sequence_id
+  end
+
+  test "repair ignores a topic whose topicable was concurrently removed" do
+    Topic.stub(:find_by, @topic) do
+      @topic.stub(:topicable, nil) do
+        assert_nothing_raised { TopicService.repair(@topic.id) }
+      end
+    end
   end
 
   test "repair excludes children from another topic from child counts" do
@@ -103,9 +111,9 @@ class TopicServiceTest < ActiveSupport::TestCase
       params: {title: "Target discussion", group_id: @group.id},
       actor: @user
     )
-    Event.create!(
+    TopicItem.create!(
       kind: "discussion_edited",
-      eventable: @discussion,
+      itemable: @discussion,
       topic: target.topic,
       parent: @discussion_event,
       user: @user
@@ -114,21 +122,21 @@ class TopicServiceTest < ActiveSupport::TestCase
     TopicService.repair(@topic.id)
     TopicService.verify_integrity!(@topic.id)
 
-    expected_count = Event.where(
+    expected_count = TopicItem.where(
       parent_id: @discussion_event.id,
       topic_id: @topic.id
     ).count
     assert_equal expected_count, @discussion_event.reload.child_count
   end
 
-  test "verify_integrity raises for an invalid event tree" do
+  test "verify_integrity raises for an invalid topic_item tree" do
     @discussion_event.update_columns(child_count: 999)
 
     error = assert_raises(TopicService::IntegrityError) do
       TopicService.verify_integrity!(@topic.id)
     end
 
-    assert_match(/event #{@discussion_event.id} child_count/, error.message)
+    assert_match(/topic_item #{@discussion_event.id} child_count/, error.message)
   end
 
   # -- Move --
@@ -155,7 +163,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal true, discussion.topic.reload.private
   end
 
-  test "move versions the topic group without recording it on the event" do
+  test "move versions the topic group without recording it on the topic_item" do
     admin = users(:admin)
     alien_group = groups(:alien_group)
     alien_group.add_member!(admin)
@@ -170,7 +178,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal alien_group.id, discussion.topic.reload.group_id
     assert_equal [source_group_id, alien_group.id], discussion.topic.versions.last.changeset['group_id']
 
-    moved_event = discussion.events.where(kind: 'discussion_moved').order(:id).last!
+    moved_event = discussion.topic_items.where(kind: 'discussion_moved').order(:id).last!
     assert_equal admin.id, moved_event.user_id
     assert_not moved_event.custom_fields.key?('source_group_id')
   end

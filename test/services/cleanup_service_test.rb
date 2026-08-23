@@ -62,20 +62,20 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
-  test "delete_orphan_records deletes comments whose event topic is missing" do
+  test "delete_orphan_records deletes comments whose topic_item topic is missing" do
     comment = comments(:public_discussion_comment)
-    event = events(:public_discussion_comment_event)
-    Topic.where(id: event.topic_id).delete_all
+    topic_item = topic_items(:public_discussion_comment_topic_item)
+    Topic.where(id: topic_item.topic_id).delete_all
 
     CleanupService.delete_orphan_records
 
     assert_not Comment.exists?(comment.id)
-    assert_not Event.exists?(event.id)
+    assert_not TopicItem.exists?(topic_item.id)
   end
 
-  test "delete_orphan_records deletes a comment when its event is missing" do
+  test "delete_orphan_records deletes a comment when its topic_item is missing" do
     comment = comments(:public_discussion_comment)
-    comment.events.delete_all
+    comment.topic_items.delete_all
 
     CleanupService.delete_orphan_records
 
@@ -102,9 +102,9 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert_not Comment.exists?(reply.id)
   end
 
-  test "cleanup_comment_references deletes comments which have no timeline event" do
+  test "cleanup_comment_references deletes comments which have no timeline topic_item" do
     comment = comments(:public_discussion_comment)
-    comment.events.destroy_all
+    comment.topic_items.destroy_all
 
     CleanupService.cleanup_comment_references!
 
@@ -180,21 +180,12 @@ class CleanupServiceTest < ActiveSupport::TestCase
       record_id: 1,
       record_type: "Document"
     } ], returning: %w[id]).rows.first.first
-    event_ids = Event.insert_all!([
-      { eventable_id: 1, eventable_type: "GroupIdentity", kind: "legacy", created_at: Time.current, updated_at: Time.current },
-      { eventable_id: 1, eventable_type: "Invitation", kind: "legacy", created_at: Time.current, updated_at: Time.current }
-    ], returning: %w[id]).rows.flatten
-
     audit = CleanupService.audit_orphan_records
 
     assert_equal 1, audit[:retired_polymorphic_types]["ActiveStorage::Attachment.Document"]
-    assert_equal 1, audit[:retired_polymorphic_types]["Event.GroupIdentity"]
-    assert_equal 1, audit[:retired_polymorphic_types]["Event.Invitation"]
-
     CleanupService.delete_orphan_records
 
     assert_not ActiveStorage::Attachment.exists?(attachment_id)
-    assert_not Event.exists?(id: event_ids)
     assert ActiveStorage::Blob.exists?(blob.id)
   end
 

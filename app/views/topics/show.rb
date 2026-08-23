@@ -47,7 +47,7 @@ class Views::Topics::Show < Views::Application::Layout
   def render_details
     div(class: "context-panel__details my-2 text-body-2 align-center d-flex text-medium-emphasis") do
       span(class: "mr-2") do
-        render Views::EventMailer::Common::Avatar.new(user: @topic.topicable.author)
+        render Views::DeliveryMailer::Common::Avatar.new(user: @topic.topicable.author)
       end
       span(class: "text-medium-emphasis") do
         a(href: user_url(@topic.topicable.author)) { plain @topic.topicable.author.name }
@@ -83,17 +83,17 @@ class Views::Topics::Show < Views::Application::Layout
   def render_activity_panel
     div(class: "activity-panel") do
       scope = @topic.items
-        .includes(:eventable, :user)
+        .includes(:itemable, :user)
         .order("position_key #{@topic.newest_first ? 'desc' : 'asc'}")
         .where(kind: %w[new_comment poll_created stance_created stance_updated])
-        .where.not(eventable_type: 'Stance', eventable_id: stance_ids_hidden_from_activity)
+        .where.not(itemable_type: 'Stance', itemable_id: stance_ids_hidden_from_activity)
 
       total = scope.count
       items = scope.limit(@pagination[:limit]).offset(@pagination[:offset]).to_a
       preload_item_avatars(items)
 
       items.each do |item|
-        render Views::Topics::TopicItem.new(item: item, current_user: @recipient) if item.eventable.present?
+        render Views::Topics::TopicItem.new(item: item, current_user: @recipient) if item.itemable.present?
       end
 
       if (@pagination[:offset] + @pagination[:limit]) < total
@@ -121,8 +121,8 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def preload_item_avatars(items)
-    comments = items.filter_map { |i| i.eventable if i.kind == 'new_comment' }
-    stances  = items.filter_map { |i| i.eventable if i.kind.in?(%w[stance_created stance_updated]) }
+    comments = items.filter_map { |i| i.itemable if i.kind == 'new_comment' }
+    stances  = items.filter_map { |i| i.itemable if i.kind.in?(%w[stance_created stance_updated]) }
     ActiveRecord::Associations::Preloader.new(records: comments, associations: {user: {uploaded_avatar_attachment: :blob}}).call if comments.any?
     ActiveRecord::Associations::Preloader.new(records: stances, associations: {participant: {uploaded_avatar_attachment: :blob}}).call if stances.any?
   end

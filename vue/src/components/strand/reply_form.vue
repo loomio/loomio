@@ -6,7 +6,7 @@ import { startCase } from 'lodash-es';
 
 export default {
   props: {
-    eventId: Number
+    topicItemId: Number
   },
 
   data() {
@@ -17,13 +17,13 @@ export default {
   },
 
   created() {
-    EventBus.$on('toggle-reply', (eventable, eventId) => {
-      if (eventId === this.eventId) {
+    EventBus.$on('toggle-reply', (itemable, topicItemId) => {
+      if (topicItemId === this.topicItemId) {
         if (this.show) {
           this.show = false;
         } else {
           let body = ""; 
-          const op = eventable.author();
+          const op = itemable.author();
           if (op.id !== Session.user().id) {
             if (Session.defaultFormat() === 'html') {
               body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span>&thinsp;</p>`;
@@ -36,9 +36,9 @@ export default {
             bodyFormat: Session.defaultFormat(),
             body,
             authorId: Session.user().id,
-            topicId: eventable.topic().id,
-            parentId: eventable.id,
-            parentType: startCase(eventable.constructor.singular)
+            topicId: itemable.topic().id,
+            parentId: itemable.id,
+            parentType: startCase(itemable.constructor.singular)
           });
           this.show = true;
         }
@@ -52,7 +52,7 @@ export default {
 
 <template lang="pug">
 .reply-form(v-if="show")
-  //- p reply formwrapper {{eventable.constructor.singular}}
+  //- p reply formwrapper {{itemable.constructor.singular}}
 
   comment-form(
     :comment="newComment"

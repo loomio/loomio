@@ -15,6 +15,6 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)" :key="obj.event.id")
+.strand-item__stem-wrapper(@click.stop="loader.collapse(obj.topic_item)" :key="obj.topic_item.id")
   .strand-item__stem(:class="{'strand-item__stem--unread': (isSignedIn && obj.isUnread), 'strand-item__stem--focused': focused}")
 </template>

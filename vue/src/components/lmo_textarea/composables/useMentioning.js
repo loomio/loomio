@@ -83,43 +83,43 @@ export function useCommonMentioning(model) {
 }
 
 export function useMdMentioning(model, field, textarea, query, mentions, navigatedUserIndex, suggestionListStyles, fetchMentionable, updateMentions) {
-  const onKeyUp = (event) => {
-    if ([38, 40, 13, 9].includes(event.keyCode)) { return; }
+  const onKeyUp = (topic_item) => {
+    if ([38, 40, 13, 9].includes(topic_item.keyCode)) { return; }
     const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@([a-z0-9_-]*)$/i);
     if (res) {
       query.value = res[1].toLowerCase();
       fetchMentionable();
       updateMentions();
-      respondToKey(event);
+      respondToKey(topic_item);
       return updatePopup();
     } else {
       return query.value = null;
     }
   };
 
-  const onKeyDown = (event) => {
-    if (query.value !== null) { return respondToKey(event); }
+  const onKeyDown = (topic_item) => {
+    if (query.value !== null) { return respondToKey(topic_item); }
   };
 
-  const respondToKey = (event) => {
-    if (event.keyCode === 38) {
+  const respondToKey = (topic_item) => {
+    if (topic_item.keyCode === 38) {
       navigatedUserIndex.value = ((navigatedUserIndex.value + mentions.value.length) - 1) % mentions.value.length;
-      event.preventDefault();
+      topic_item.preventDefault();
     }
 
     // down
-    if (event.keyCode === 40) {
+    if (topic_item.keyCode === 40) {
       navigatedUserIndex.value = (navigatedUserIndex.value + 1) % mentions.value.length;
-      event.preventDefault();
+      topic_item.preventDefault();
     }
 
     // enter or tab
-    if ([13, 9].includes(event.keyCode)) {
+    if ([13, 9].includes(topic_item.keyCode)) {
       let user;
       if (user = mentions.value[navigatedUserIndex.value]) {
         selectRow(user);
         query.value = null;
-        event.preventDefault();
+        topic_item.preventDefault();
       }
     }
   };
@@ -232,19 +232,19 @@ export function getMentionPluginConfig(context) {
 
           onKeyDown: props => {
             // pressing up arrow
-            if (props.event.keyCode === 38) {
+            if (props.topic_item.keyCode === 38) {
               context.upHandler();
               return true;
             }
 
             // pressing down arrow
-            if (props.event.keyCode === 40) {
+            if (props.topic_item.keyCode === 40) {
               context.downHandler();
               return true;
             }
 
             // pressing enter or tab
-            if ([13, 9].includes(props.event.keyCode)) {
+            if ([13, 9].includes(props.topic_item.keyCode)) {
               context.enterHandler();
               return true;
             }

@@ -1,7 +1,7 @@
 class Reaction < ApplicationRecord
   belongs_to :reactable, polymorphic: true
   belongs_to :user
-  has_many :events, as: :eventable, dependent: :destroy
+  has_many :topic_items, as: :itemable, dependent: :destroy
 
   # TODO: ensure one reaction per reactable
   # validates_uniqueness_of :user_id, scope: :reactable

@@ -178,9 +178,9 @@ export function installRouterChunkErrorHandler(router, { confirmMessage = DEFAUL
 }
 
 export function installVitePreloadErrorHandler({ confirmMessage = DEFAULT_CONFIRM_MESSAGE } = {}) {
-  window.addEventListener('vite:preloadError', (event) => {
-    const { reloading } = handleChunkError(event.payload, { confirmMessage })
-    if (reloading) event.preventDefault()
+  window.addEventListener('vite:preloadError', (topic_item) => {
+    const { reloading } = handleChunkError(topic_item.payload, { confirmMessage })
+    if (reloading) topic_item.preventDefault()
   })
 }
 

@@ -6,10 +6,10 @@ class Topic < ApplicationRecord
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true
   belongs_to :locker, foreign_key: 'locker_id', class_name: 'User', optional: true
-  has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
+  has_many :items, -> { includes(:user) }, class_name: 'TopicItem', dependent: :destroy
   has_many :topic_readers, dependent: :destroy
   has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
-  has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
+  has_many :comments, through: :items, source: :itemable, source_type: 'Comment'
   has_many :polls, dependent: :destroy
   has_many :discussions, dependent: :destroy
 

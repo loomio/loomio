@@ -5,10 +5,10 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     current_user.ability.authorize! :members_autocomplete, recipient_target
 
     render json: {
-      audiences: AnnouncementService.available_audiences(
-        target_model,
-        current_user,
-        params[:include_actor].present?
+      audiences: NotificationAudienceService.available(
+        model: target_model,
+        actor: current_user,
+        include_actor: params[:include_actor].present?
       )
     }, root: false
   end
@@ -16,12 +16,12 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def audience
     current_user.ability.authorize! :members_autocomplete, recipient_target
 
-    self.collection = AnnouncementService.audience_users(
-      target_model,
-      params[:recipient_audience],
-      current_user,
-      params[:exclude_members],
-      params[:include_actor].present?
+    self.collection = NotificationAudienceService.resolve(
+      model: target_model,
+      kind: params[:recipient_audience],
+      actor: current_user,
+      exclude_members: params[:exclude_members],
+      include_actor: params[:include_actor].present?
     )
     respond_with_collection
   end
@@ -82,8 +82,8 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Topic)
-      event = TopicService.invite(topic: target_model, actor: current_user, params: params)
-      self.collection = TopicReader.where(topic_id: target_model.id, user_id: event.recipient_user_ids)
+      notification = TopicService.invite(topic: target_model, actor: current_user, params: params)
+      self.collection = TopicReader.where(topic_id: target_model.id, user_id: notification.recipient_user_ids)
       respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
@@ -103,20 +103,18 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     # returns a count of users notified about this thing
     current_user.ability.authorize! :show, target_model
 
-    count = Notification.
-            joins(:event).
-            where("events.id": target_event_ids).
-            count("DISTINCT notifications.user_id")
+    notifications = target_notification_scope
+    user_ids = NotificationDelivery.where(
+      notification_id: notifications.select(:id),
+      recipient_type: "User",
+      channel: "in_app"
+    ).distinct.pluck(:recipient_id)
 
-    render json: {count: count}
+    render json: { count: user_ids.uniq.count }
   end
 
   def history
     authorize_history!
-
-    notifications = {}
-
-    events = Event.where(kind: notification_kinds, id: target_event_ids).order('id desc').limit(1000)
 
     allow_viewed = true
 
@@ -132,19 +130,29 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       allow_viewed = false
     end
 
-    Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
-      next unless notification.user
-      notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
-      notifications[notification.event_id] << {id: notification.id, user_id: notification.user_id, viewed: allow_viewed && notification.viewed }
-    end
+    scoped_notifications = target_notification_scope
+      .includes(:notification_deliveries)
+      .order(id: :desc)
+      .limit(1000)
 
-    res = events.map do |event|
-      {id: event.id,
-       created_at: event.created_at,
-       author_id: event.user_id,
-       kind: event.kind,
-       notifications: notifications[event.id] || [] }
-    end.filter {|e| e[:notifications].size > 0}
+    # A notification is one occurrence. Its in-app deliveries contain the
+    # recipient-specific history state.
+    res = scoped_notifications.group_by(&:deduplication_key).filter_map do |_key, occurrence|
+      notification = occurrence.first
+      recipient_states = occurrence.flat_map do |item|
+        history_recipient_states(item, allow_viewed: allow_viewed)
+      end
+      next if recipient_states.empty?
+
+      {
+        id: "notification_#{notification.id}",
+        created_at: notification.created_at,
+        author_id: notification.actor_id,
+        kind: notification.kind,
+        notifications: recipient_states
+      }
+    end
+    res.sort_by! { |entry| entry[:created_at] }.reverse!
 
     user_ids = res.flat_map { |e| [e[:author_id]] + e[:notifications].map { |n| n[:user_id] } }.uniq.compact
     users = User.where(id: user_ids).map { |u| AuthorSerializer.new(u).as_json(root: false) }
@@ -153,29 +161,54 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   private
 
-  def target_event_ids
-    if target_model.is_a?(Topic)
-      # topic_id on events identifies thread items only. Notification/edit
-      # events (poll_announced, discussion_edited, user_mentioned, etc.) link
-      # via eventable, so we match by topicable + in-thread polls + their
-      # outcomes. For comments we match both thread-item events (topic_id = :t)
-      # and notification events like user_mentioned whose eventable is a comment
-      # in the thread but whose topic_id is NULL.
-      discussion_ids = target_model.topicable_type == 'Discussion' ? [target_model.topicable_id] : []
-      poll_ids       = Poll.where(topic_id: target_model.id).pluck(:id)
-      outcome_ids    = Outcome.where(poll_id: poll_ids).pluck(:id)
-      comment_ids    = Event.where(topic_id: target_model.id, eventable_type: 'Comment').pluck(:eventable_id)
+  def target_notification_scope
+    scope = Notification.where(kind: notification_kinds)
 
-      Event.where(kind: notification_kinds).where(<<~SQL, d: discussion_ids, p: poll_ids, o: outcome_ids, t: target_model.id, c: comment_ids).pluck(:id)
-        (eventable_type = 'Discussion' AND eventable_id IN (:d)) OR
-        (eventable_type = 'Poll'       AND eventable_id IN (:p)) OR
-        (eventable_type = 'Outcome'    AND eventable_id IN (:o)) OR
-        (eventable_type = 'Comment'    AND topic_id = :t) OR
-        (eventable_type = 'Comment'    AND eventable_id IN (:c))
+    scope = if target_model.is_a?(Topic)
+      discussion_ids = target_model.topicable_type == "Discussion" ? [ target_model.topicable_id ] : []
+      poll_ids = Poll.where(topic_id: target_model.id).pluck(:id)
+      outcome_ids = Outcome.where(poll_id: poll_ids).pluck(:id)
+      comment_ids = TopicItem.where(topic_id: target_model.id, itemable_type: "Comment").pluck(:itemable_id)
+      scope.where(<<~SQL.squish, d: discussion_ids, p: poll_ids, o: outcome_ids, c: comment_ids)
+        (subject_type = 'Discussion' AND subject_id IN (:d)) OR
+        (subject_type = 'Poll'       AND subject_id IN (:p)) OR
+        (subject_type = 'Outcome'    AND subject_id IN (:o)) OR
+        (subject_type = 'Comment'    AND subject_id IN (:c))
       SQL
     else
-      Event.where(kind: notification_kinds, eventable: [target_model]).pluck(:id)
+      scope.where(subject: target_model)
     end
+
+    # Recipient identities for an anonymous poll's derived closing reminder
+    # reveal participation or non-participation. Do not expose that composition
+    # through announcement history or its recipient count, even without viewed
+    # state. Explicit poll announcements and reminders remain visible.
+    anonymous_poll_ids = case target_model
+    when Topic
+      Poll.where(topic_id: target_model.id, anonymous: true).pluck(:id)
+    when Poll
+      target_model.anonymous? ? [ target_model.id ] : []
+    when Outcome
+      target_model.poll&.anonymous? ? [ target_model.poll_id ] : []
+    else
+      []
+    end
+    return scope if anonymous_poll_ids.empty?
+
+    scope.where.not(
+      kind: "poll_closing_soon",
+      subject_type: "Poll",
+      subject_id: anonymous_poll_ids
+    )
+  end
+
+  def history_recipient_states(notification, allow_viewed:)
+    states = notification.notification_deliveries.filter_map do |delivery|
+      next unless delivery.channel == "in_app" && delivery.recipient_type == "User"
+
+      { id: notification.id, user_id: delivery.recipient_id, viewed: delivery.viewed? }
+    end
+    states.map { |state| state.merge(viewed: allow_viewed && state[:viewed]) }
   end
 
   def notification_kinds

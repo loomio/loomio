@@ -65,14 +65,14 @@ class Api::V1::SearchController < Api::V1::RestfulController
     polls = access_by_id(Poll.where(id: results.map(&:poll_id)))
     authors = access_by_id(User.where(id: results.map(&:author_id)))
 
-    poll_events = access_by_id(
-      Event.where("topic_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
-      :eventable_id
+    poll_topic_items = access_by_id(
+      TopicItem.where("topic_id is not null").where(itemable_type: "Poll", itemable_id: results.map(&:poll_id)),
+      :itemable_id
     )
 
-    stance_events = access_by_id(
-      Event.where("topic_id is not null").where(eventable_type: "Stance", eventable_id: results.filter { |r| r.searchable_type == 'Stance' }.map(&:searchable_id)),
-      :eventable_id
+    stance_topic_items = access_by_id(
+      TopicItem.where("topic_id is not null").where(itemable_type: "Stance", itemable_id: results.filter { |r| r.searchable_type == 'Stance' }.map(&:searchable_id)),
+      :itemable_id
     )
 
     self.collection = results.map do |res|
@@ -80,7 +80,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
       discussion = discussions[res.discussion_id]
       group = groups[res.group_id]
       author = authors[res.author_id]
-      sequence_id = ((res.searchable_type == "Stance" && stance_events[res.searchable_id]) || poll_events[res.poll_id] || nil)&.sequence_id
+      sequence_id = ((res.searchable_type == "Stance" && stance_topic_items[res.searchable_id]) || poll_topic_items[res.poll_id] || nil)&.sequence_id
       SearchResult.new(
         id: res.id,
         searchable_type: res.searchable_type,
@@ -117,7 +117,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
   end
 
   def exclude_types
-    'group membership discussion outcome event'.split(' ')
+    'group membership discussion outcome topic_item'.split(' ')
   end
 
   def group_ids

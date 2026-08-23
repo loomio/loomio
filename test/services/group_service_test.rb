@@ -121,7 +121,42 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal initial_count + 1, group.memberships.count
   end
 
-  test "rolls back invitations when event creation fails" do
+  test "inviting a user creates direct deliveries without an topic_item" do
+    group = Group.create!(
+      name: "Direct notification invitations",
+      handle: "direct-notification-invitations-#{SecureRandom.hex(4)}",
+      creator: @user
+    )
+    group.add_admin!(@user)
+    email = "direct-invite-#{SecureRandom.hex(4)}@example.com"
+
+    assert_no_difference -> { TopicItem.where(kind: "membership_created").count } do
+      GroupService.invite(
+        group: group,
+        actor: @user,
+        params: { recipient_emails: [ email ], recipient_message: "Welcome" }
+      )
+    end
+
+    recipient = User.find_by!(email: email)
+    notification = Notification.find_by!(
+      kind: "membership_created",
+      subject: group
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal "Welcome", notification.recipient_message
+    assert_equal [ recipient.id ], notification.recipient_user_ids
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+
+    delivery = notification.notification_deliveries.find_by!(channel: "email")
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      DeliverNotificationEmailWorker.perform_now(delivery.id)
+    end
+    assert_includes ActionMailer::Base.deliveries.last.to, email
+  end
+
+  test "rolls back invitations when notification creation fails" do
     group = Group.create!(
       name: 'Atomic invitations',
       handle: "atomic-invitations-#{SecureRandom.hex(4)}",
@@ -131,7 +166,7 @@ class GroupServiceTest < ActiveSupport::TestCase
     email = "atomic-invite-#{SecureRandom.hex(4)}@example.com"
 
     assert_raises RuntimeError do
-      Events::MembershipCreated.stub(:publish!, ->(**) { raise "event failed" }) do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
         GroupService.invite(group: group, actor: @user, params: { recipient_emails: [email] })
       end
     end

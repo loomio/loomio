@@ -77,7 +77,7 @@ const openIfPinned = () => {
     (user.value.experiences['sidebar'] === undefined || user.value.experiences['sidebar'] === true);
 };
 
-// Event listeners setup
+// TopicItem listeners setup
 EventBus.$on('toggleSidebar', () => {
   open.value = !open.value;
   Records.users.saveExperience('sidebar', open.value);

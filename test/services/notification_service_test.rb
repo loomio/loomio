@@ -5,148 +5,86 @@ class NotificationServiceTest < ActiveSupport::TestCase
     @user = users(:user)
     @admin = users(:admin)
     @discussion = discussions(:discussion)
-    @event = events(:discussion_created_event)
+    @topic_item = topic_items(:discussion_created_topic_item)
   end
 
   test "mark_as_read marks matching unviewed notifications as viewed" do
-    notification = Notification.create!(
-      user: @user,
-      actor: @admin,
-      event: @event,
-      viewed: false
-    )
+    notification, delivery = create_notification_delivery(user: @user, subject: @discussion)
 
     MessageChannelService.stub(:publish_models, ->(*) { }) do
       NotificationService.mark_as_read(@discussion.class.to_s, @discussion.id, @user.id)
     end
 
-    assert notification.reload.viewed
+    assert_predicate delivery.reload, :viewed?
   end
 
-  test "mark_as_read does not touch notifications for a different eventable" do
+  test "mark_as_read does not touch notifications for a different itemable" do
     other_discussion = discussions(:public_discussion)
-    other_event = events(:public_discussion_created_event)
-
-    notification = Notification.create!(
-      user: @user,
-      actor: @admin,
-      event: other_event,
-      viewed: false
-    )
+    _notification, delivery = create_notification_delivery(user: @user, subject: other_discussion)
 
     MessageChannelService.stub(:publish_models, ->(*) { }) do
       NotificationService.mark_as_read(@discussion.class.to_s, @discussion.id, @user.id)
     end
 
-    refute notification.reload.viewed
+    assert_not_predicate delivery.reload, :viewed?
   end
 
   test "mark_as_read does not touch notifications for a different user" do
     other_user = users(:alien)
 
-    notification = Notification.create!(
-      user: other_user,
-      actor: @admin,
-      event: @event,
-      viewed: false
-    )
+    _notification, delivery = create_notification_delivery(user: other_user, subject: @discussion)
 
     MessageChannelService.stub(:publish_models, ->(*) { }) do
       NotificationService.mark_as_read(@discussion.class.to_s, @discussion.id, @user.id)
     end
 
-    refute notification.reload.viewed
+    assert_not_predicate delivery.reload, :viewed?
   end
 
   test "mark_as_read does not touch already-viewed notifications" do
-    notification = Notification.create!(
+    _notification, delivery = create_notification_delivery(
       user: @user,
-      actor: @admin,
-      event: @event,
-      viewed: true
+      subject: @discussion,
+      viewed_at: Time.current
     )
 
-    updated_at_before = notification.reload.updated_at
+    updated_at_before = delivery.reload.updated_at
 
     MessageChannelService.stub(:publish_models, ->(*) { }) do
       NotificationService.mark_as_read(@discussion.class.to_s, @discussion.id, @user.id)
     end
 
-    assert_equal updated_at_before, notification.reload.updated_at
+    assert_equal updated_at_before, delivery.reload.updated_at
   end
 
   test "viewed marks all unviewed notifications as viewed" do
-    notification = Notification.create!(
-      user: @user,
-      actor: @admin,
-      event: @event,
-      viewed: false
-    )
+    _notification, delivery = create_notification_delivery(user: @user, subject: @discussion)
 
     MessageChannelService.stub(:publish_models, ->(*) { }) do
       NotificationService.viewed(user: @user)
     end
 
-    assert notification.reload.viewed
+    assert_predicate delivery.reload, :viewed?
   end
 
-  test "create_for_event stores compatibility fields and inserts each recipient once" do
-    first = Notification.new(
-      event: @event,
-      user: @user,
+  private
+
+  def create_notification_delivery(user:, subject:, viewed_at: nil)
+    notification = Notification.create!(
       actor: @admin,
-      translation_values: { title: "Discussion" }
+      kind: "discussion_edited",
+      subject: subject,
+      deduplication_key: "discussion_edited:service-test:#{SecureRandom.uuid}"
     )
-
-    created = NotificationService.create_for_event!(event: @event, notifications: [ first ])
-    retried = NotificationService.create_for_event!(event: @event, notifications: [ first ])
-
-    assert_equal 1, created.length
-    assert_empty retried
-    notification = created.first
-    assert_equal "new_discussion", notification.kind
-    assert_equal @discussion, notification.subject
-    assert_equal @discussion, notification.eventable
-    assert_equal "event:#{@event.id}", notification.deduplication_key
-    assert_equal({ "title" => "Discussion" }, notification.translation_values)
-    assert_equal 1, Notification.where(user: @user, deduplication_key: notification.deduplication_key).count
-  end
-
-  test "create_for_event adopts a legacy event-backed notification without redelivering it" do
-    legacy = Notification.create!(event: @event, user: @user, actor: @admin)
-    candidate = Notification.new(event: @event, user: @user, actor: @admin)
-
-    created = NotificationService.create_for_event!(event: @event, notifications: [ candidate ])
-
-    assert_empty created
-    assert_equal "new_discussion", legacy.reload.kind
-    assert_equal @discussion, legacy.subject
-    assert_equal "event:#{@event.id}", legacy.deduplication_key
-    assert_equal 1, Notification.where(event: @event, user: @user).count
-  end
-
-  test "create_for_event rejects a notification built for another event" do
-    notification = Notification.new(
-      event: events(:public_discussion_created_event),
-      user: @user,
-      actor: @admin
+    delivery = NotificationDelivery.create!(
+      notification: notification,
+      recipient: user,
+      channel: "in_app",
+      status: "delivered",
+      delivered_at: Time.current,
+      viewed_at: viewed_at
     )
-
-    assert_raises(ArgumentError) do
-      NotificationService.create_for_event!(event: @event, notifications: [ notification ])
-    end
+    [ notification, delivery ]
   end
 
-  test "create_for_event preserves event-backed insertion before delivery fields exist" do
-    notification = Notification.new(event: @event, user: @user, actor: @admin)
-
-    NotificationService.stub(:delivery_fields_available?, false) do
-      created = NotificationService.create_for_event!(event: @event, notifications: [ notification ])
-
-      assert_equal [ notification ], created
-    end
-
-    assert notification.persisted?
-    assert_nil notification.deduplication_key
-  end
 end

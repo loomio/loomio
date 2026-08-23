@@ -78,6 +78,16 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal "User comment", @user_comment.body
   end
 
+  test "destroy removes a discarded comment and serializes its reparented siblings" do
+    sign_in @user
+    CommentService.discard(comment: @user_comment, actor: @user)
+
+    delete :destroy, params: { id: @user_comment.id }
+
+    assert_response :success
+    refute Comment.exists?(@user_comment.id)
+  end
+
   test "create success" do
     sign_in @user
     comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
@@ -143,7 +153,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     sign_in @user
     @group.add_member!(@alien) unless @group.members.include?(@alien)
     comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "Hello, @#{@alien.username}!" }
-    assert_difference 'Event.where(kind: :user_mentioned).count', 1 do
+    assert_difference 'Notification.where(kind: "user_mentioned").count', 1 do
       post :create, params: { comment: comment_params }, format: :json
     end
   end

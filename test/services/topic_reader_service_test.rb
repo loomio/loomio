@@ -20,7 +20,7 @@ class TopicReaderServiceTest < ActiveSupport::TestCase
       inviter: @discussion.author
     )
 
-    @discussion.created_event
+    @discussion.created_topic_item
   end
 
   test "redeems a guest topic_reader" do

@@ -6,15 +6,15 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import { computed, onMounted, ref } from 'vue';
 
 const props = defineProps({
-  event: Object,
-  eventable: Object,
+  topic_item: Object,
+  itemable: Object,
   collapsed: Boolean
 });
 
 const actions = ref([]);
 
-const discussion = computed(() => props.eventable);
-const topic = computed(() => props.eventable.topic());
+const discussion = computed(() => props.itemable);
+const topic = computed(() => props.itemable.topic());
 const author = computed(() => discussion.value.author());
 const authorName = computed(() => discussion.value.authorName());
 const dockActions = computed(() => pickBy(actions.value, v => v.dock));
@@ -25,7 +25,7 @@ function urlFor(model, action, params) {
 }
 
 function rebuildActions() {
-  actions.value = DiscussionService.actions(props.eventable);
+  actions.value = DiscussionService.actions(props.itemable);
 }
 
 function viewed(viewed) {

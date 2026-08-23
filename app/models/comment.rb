@@ -5,8 +5,8 @@ class Comment < ApplicationRecord
   include Reactable
   include Bookmarkable
   include HasMentions
-  include HasCreatedEvent
-  include HasEvents
+  include HasCreatedTopicItem
+  include HasTopicItems
   include HasRichText
   include Searchable
 
@@ -30,7 +30,7 @@ class Comment < ApplicationRecord
         comments.id AS searchable_id,
         topics.group_id as group_id,
         CASE WHEN topics.topicable_type = 'Discussion' THEN topics.topicable_id ELSE NULL END AS discussion_id,
-        events.topic_id AS topic_id,
+        topic_items.topic_id AS topic_id,
         COALESCE(topics.tags, ARRAY[]::varchar[]) AS tags,
         comments.user_id AS author_id,
         comments.created_at AS authored_at,
@@ -39,8 +39,8 @@ class Comment < ApplicationRecord
         now() AS created_at,
         now() AS updated_at
       FROM comments
-        LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-        LEFT JOIN topics ON topics.id = events.topic_id
+        LEFT JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+        LEFT JOIN topics ON topics.id = topic_items.topic_id
         LEFT JOIN discussions ON discussions.id = topics.topicable_id AND topics.topicable_type = 'Discussion'
         LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
@@ -52,7 +52,7 @@ class Comment < ApplicationRecord
         )
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
-        #{topic_id ? " AND events.topic_id = #{topic_id.to_i}" : ""}
+        #{topic_id ? " AND topic_items.topic_id = #{topic_id.to_i}" : ""}
     SQL
   end
 
@@ -76,8 +76,8 @@ class Comment < ApplicationRecord
 
   scope :in_organisation, ->(group) {
     includes(:user)
-    .joins("INNER JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id")
-    .joins("INNER JOIN topics ON topics.id = events.topic_id")
+    .joins("INNER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
+    .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
     .where("topics.group_id IN (?)", group.id_and_subgroup_ids)
   }
 
@@ -112,15 +112,15 @@ class Comment < ApplicationRecord
     Nokogiri::HTML(self.body).css("h1,h2,h3").length > 0
   end
 
-  def parent_event
+  def parent_topic_item
     if parent.is_a? Stance
-      Event.where(eventable_type: parent_type, eventable_id: parent_id).where('topic_id is not null').first
+      TopicItem.where(itemable_type: parent_type, itemable_id: parent_id).where('topic_id is not null').first
     else
-      parent.created_event
+      parent.created_topic_item
     end
   end
 
-  def created_event_kind
+  def created_topic_item_kind
     :new_comment
   end
 

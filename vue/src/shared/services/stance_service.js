@@ -25,7 +25,7 @@ export default new class StanceService {
     }
   };
 
-  actions(stance, vm, event) {
+  actions(stance, vm, topic_item) {
     return {
       save_bookmark: {
         icon: 'mdi-bookmark-outline',
@@ -78,10 +78,10 @@ export default new class StanceService {
         perform() {
           const topic = stance.poll() ? stance.poll().topic() : null;
           const maxDepth = topic ? topic.maxDepth : 2;
-          if (event.depth === maxDepth) {
-            return EventBus.$emit('toggle-reply', stance, event.parentId);
+          if (topic_item.depth === maxDepth) {
+            return EventBus.$emit('toggle-reply', stance, topic_item.parentId);
           } else {
-            return EventBus.$emit('toggle-reply', stance, event.id);
+            return EventBus.$emit('toggle-reply', stance, topic_item.id);
           }
         }
       },

@@ -1,8 +1,9 @@
 class GroupExportService
   RELATIONS = %w[
     all_users
-    all_events
+    all_topic_items
     all_notifications
+    all_notification_deliveries
     all_reactions
     all_tags
     poll_templates
@@ -35,35 +36,47 @@ class GroupExportService
 
   BACK_REFERENCES = {
     outcomes: {
-      events: %w[eventable]
+      topic_items: %w[itemable],
+      notifications: %w[subject]
     },
     comments: {
       comments: %w[parent],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     discussions: {
       topics: %w[topicable],
       comments: %w[parent],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     topics: {
       discussions: %w[topic_id],
       polls: %w[topic_id],
-      events: %w[topic_id],
+      topic_items: %w[topic_id],
       topic_readers: %w[topic_id]
     },
-    events: {
-      events: %w[parent_id],
-      notifications: %w[event_id]
+    topic_items: {
+      topic_items: %w[parent_id]
+    },
+    notifications: {
+      notification_deliveries: %w[notification_id]
+    },
+    memberships: {
+      notifications: %w[subject]
+    },
+    reactions: {
+      notifications: %w[subject]
     },
     groups: {
       memberships: %w[group_id],
       topics: %w[group_id],
       tags: %w[group_id],
       webhooks: %w[group_id],
-      events: %w[eventable],
+      topic_items: %w[itemable],
+      notifications: %w[subject],
       groups: %w[parent_id],
       poll_templates: %w[group_id],
       discussion_templates: %w[group_id]
@@ -71,7 +84,7 @@ class GroupExportService
     poll_options: {
       stance_choices: %w[poll_option_id],
       anonymous_ballot_choices: %w[poll_option_id],
-      events: %w[eventable]
+      topic_items: %w[itemable]
     },
     anonymous_ballots: {
       anonymous_ballot_choices: %w[anonymous_ballot_id],
@@ -80,12 +93,13 @@ class GroupExportService
     stances: {
       comments: %w[parent],
       stance_choices: %w[stance_id],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     tasks: {
       tasks_users: %w[task_id],
-      events: %w[eventable]
+      topic_items: %w[itemable]
     },
     polls: {
       anonymous_ballots: %w[poll_id],
@@ -96,13 +110,14 @@ class GroupExportService
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     users: {
       anonymous_poll_voters: %w[voter_id inviter_id],
       stance_receipts: %w[voter_id inviter_id],
-      events: %w[eventable user_id],
+      topic_items: %w[itemable user_id],
       discussions: %w[author_id discarded_by],
       discussion_templates: %w[author_id],
       poll_templates: %w[author_id],
@@ -112,7 +127,8 @@ class GroupExportService
       groups: %w[creator_id],
       membership_requests: %w[requestor_id responder_id],
       memberships: %w[user_id inviter_id],
-      notifications: %w[user_id],
+      notifications: %w[actor_id],
+      notification_deliveries: %w[recipient],
       outcomes: %w[author_id],
       polls: %w[author_id discarded_by],
       reactions: %w[user_id],
@@ -135,7 +151,7 @@ class GroupExportService
 
   # Polymorphic association columns: their target table is resolved at runtime from
   # the record's stored "<column>_type", not from FORWARD_REFERENCES' target_table.
-  POLYMORPHIC_COLUMNS = %w[eventable reactable topicable parent].freeze
+  POLYMORPHIC_COLUMNS = %w[itemable reactable topicable parent recipient subject].freeze
 
   def self.export_direct_topics(group_id)
     group = Group.find(group_id)
@@ -316,7 +332,7 @@ class GroupExportService
   def self.export_record(record, table)
     json = record.as_json(JSON_PARAMS[table])
 
-    if record.is_a?(Event)
+    if record.is_a?(TopicItem)
       json['custom_fields'] = record.custom_fields.except('source_group_id') if record.kind == 'discussion_moved'
     end
 
@@ -352,6 +368,7 @@ class GroupExportService
           attrs = data['record'].deep_dup
           translate_foreign_keys!(attrs, table, migrate_ids)
           attrs[pk] = new_id if pk
+          translate_notification_payload!(attrs, new_id, migrate_ids) if table == 'notifications'
           record = klass.new(attrs)
           prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
           klass.import([record], validate: false)
@@ -484,6 +501,36 @@ class GroupExportService
         attrs[column] = map[old_id] if map&.has_key?(old_id)
       end
     end
+  end
+
+  # Global notification identities are installation-local because their keys
+  # contain source record IDs. Re-key imported rows and translate snapshotted
+  # user/group audiences so mention history and any recovery resolution refer
+  # only to imported records.
+  def self.translate_notification_payload!(attrs, new_id, migrate_ids)
+    attrs['recipient_user_ids'] = translate_ids(attrs['recipient_user_ids'], migrate_ids['users'])
+
+    audience_values = attrs['audience_values'] || {}
+    %w[
+      already_notified_user_ids
+      mentioned_group_user_ids
+      mentioned_user_ids
+      newly_mentioned_user_ids
+    ].each do |key|
+      audience_values[key] = translate_ids(audience_values[key], migrate_ids['users']) if audience_values.key?(key)
+    end
+    if audience_values.key?('group_ids')
+      audience_values['group_ids'] = translate_ids(audience_values['group_ids'], migrate_ids['groups'])
+    end
+    attrs['audience_values'] = audience_values
+
+    attrs['deduplication_key'] = "imported:notification_#{new_id}"
+  end
+
+  def self.translate_ids(ids, id_map)
+    Array(ids).filter_map do |id|
+      id_map&.has_key?(id) ? id_map[id] : id
+    end.map(&:to_i).uniq
   end
 
   def self.prepare_record_for_import!(record, table, original_attrs, klass, reset_keys)

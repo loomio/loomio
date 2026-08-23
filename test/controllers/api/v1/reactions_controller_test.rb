@@ -129,10 +129,10 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     discussion = discussions(:discussion)
     comment = Comment.new(body: "Test comment", parent: discussion, author: user)
     CommentService.create(comment: comment, actor: user)
-    Events::CommentEdited.publish!(comment, user)
+    CommentService.update(comment: comment, params: { body: "Edited comment" }, actor: user)
     Reaction.create!(user: user, reactable: comment, reaction: '👍')
 
-    assert comment.events.where(topic_id: nil).exists?
+    assert_not comment.topic_items.where(kind: "comment_edited").exists?
 
     sign_in user
     get :index, params: { comment_ids: comment.id }
@@ -141,18 +141,18 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['reactions'].length
   end
 
-  test "destroy removes the reaction event" do
+  test "destroy removes the reaction topic_item" do
     user = users(:admin)
     comment = Comment.new(body: 'Reactable comment', parent: discussions(:discussion), author: user)
     CommentService.create(comment: comment, actor: user)
     reaction = Reaction.create!(user: user, reactable: comment, reaction: '👍')
-    event = Event.create!(kind: 'reaction_created', eventable: reaction, user: user)
+    topic_item = TopicItem.create!(kind: 'reaction_created', itemable: reaction, user: user, topic: comment.topic)
 
     sign_in user
     delete :destroy, params: { id: reaction.id }
 
     assert_response :success
-    refute Event.exists?(event.id)
+    refute TopicItem.exists?(topic_item.id)
   end
 
   test "create denied when allow_reactions is false" do

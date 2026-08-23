@@ -5,10 +5,10 @@ class Discussion < ApplicationRecord
   include Reactable
   include Bookmarkable
   include HasTimeframe
-  include HasEvents
+  include HasTopicItems
   include HasMentions
   include SelfReferencing
-  include HasCreatedEvent
+  include HasCreatedTopicItem
   include HasRichText
   include Discard::Model
 
@@ -128,7 +128,7 @@ class Discussion < ApplicationRecord
     author_id
   end
 
-  def created_event_kind
+  def created_topic_item_kind
     :new_discussion
   end
 

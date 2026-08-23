@@ -1,21 +1,21 @@
 class Api::V1::CommentsController < Api::V1::RestfulController
   def discard
     load_resource
-    @event = service.discard(comment: resource, actor: current_user)
+    @topic_item = service.discard(comment: resource, actor: current_user)
     respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user]))
   end
 
   def undiscard
     load_resource
-    @event = service.undiscard(comment: resource, actor: current_user)
+    @topic_item = service.undiscard(comment: resource, actor: current_user)
     respond_with_resource(scope: {exclude_types: %w[discussion group user]})
   end
 
   def destroy
     load_resource
-    @event = @comment.created_event.parent
+    @topic_item = @comment.created_topic_item.parent
     destroy_action
-    @event.reload
-    render json: MessageChannelService.serialize_models(@event.children.compact, scope: default_scope)
+    @topic_item.reload
+    render json: MessageChannelService.serialize_models(@topic_item.children.compact, scope: default_scope)
   end
 end

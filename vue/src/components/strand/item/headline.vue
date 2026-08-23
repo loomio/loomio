@@ -4,8 +4,8 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 
 export default {
   props: {
-    event: Object,
-    eventable: Object,
+    topic_item: Object,
+    itemable: Object,
     collapsed: Boolean,
     dateTime: Date,
     focused: Boolean,
@@ -14,24 +14,24 @@ export default {
 
   computed: {
     isDelegate() {
-      const actor = this.event.actor();
-      const group = this.eventable.group();
+      const actor = this.topic_item.actor();
+      const group = this.itemable.group();
       return actor && group && actor.delegates && actor.delegates[group.id]
     },
-    datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
+    datetime() { return this.dateTime || this.itemable.castAt || this.itemable.createdAt; },
     headline() {
-      const actor = this.event.actor();
-      return this.$t(eventHeadline(this.event, true ), { // useNesting
-        author:   actor.nameWithTitle(this.eventable.group()),
+      const actor = this.topic_item.actor();
+      return this.$t(eventHeadline(this.topic_item, true ), { // useNesting
+        author:   actor.nameWithTitle(this.itemable.group()),
         username: actor.username,
-        key:      this.event.model().key,
-        title:    eventTitle(this.event),
-        polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
+        key:      this.topic_item.model().key,
+        title:    eventTitle(this.topic_item),
+        polltype: this.topic_item.isPollTopicItem() ? this.$t(eventPollType(this.topic_item)).toLowerCase() : null
       });
     },
 
     link() {
-      return LmoUrlService.event(this.event);
+      return LmoUrlService.topic_item(this.topic_item);
     }
   }
 };
@@ -49,8 +49,8 @@ h3.strand-item__headline.thread-item__title.text-body-medium.pb-1(tabindex="-1")
     router-link.actor-link(:to='link')
       time-ago.text-medium-emphasis(:date='datetime')
     v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
-    mid-dot(v-if="event.pinned")
-    common-icon.text--disabled(v-if="event.pinned" name="mdi-pin-outline")
+    mid-dot(v-if="topic_item.pinned")
+    common-icon.text--disabled(v-if="topic_item.pinned" name="mdi-pin-outline")
 
 </template>
 <style>

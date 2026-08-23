@@ -1,4 +1,4 @@
-document.addEventListener("submit", (event) => {
-  const message = event.target.dataset.confirm;
-  if (message && !window.confirm(message)) event.preventDefault();
+document.addEventListener("submit", (topic_item) => {
+  const message = topic_item.target.dataset.confirm;
+  if (message && !window.confirm(message)) topic_item.preventDefault();
 });

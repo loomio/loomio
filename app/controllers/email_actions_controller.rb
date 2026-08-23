@@ -13,7 +13,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def set_group_volume
     load_models_or_404
     membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
-    MembershipService.set_volume(membership: membership, actor: current_user, params: {volume: params[:value]})
+    MembershipService.set_volume(membership: membership, actor: current_user, params: { volume: params[:value] })
     redirect_to_unsubscribe
   end
 
@@ -25,15 +25,20 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_discussion_as_read
-    MarkDiscussionAsReadWorker.perform_later(discussion.id, event.sequence_id || [], current_user.id)
-    event.notifications.where(user: current_user).update_all(viewed: true)
+    MarkDiscussionAsReadWorker.perform_later(discussion.id, topic_item.sequence_id || [], current_user.id)
+    NotificationService.mark_as_read(topic_item.itemable_type, topic_item.itemable_id, current_user.id)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
   end
 
   def mark_notification_as_read
-    Notification.find_by!(id: params[:id], user_id: current_user.id).update(viewed: true)
+    notification = Notification.find(params[:id])
+    NotificationDelivery.find_by!(
+      notification: notification,
+      recipient: current_user,
+      channel: "in_app"
+    ).update!(viewed_at: Time.current)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
@@ -76,7 +81,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     @discussion ||= current_user.discussions.find(params[:discussion_id])
   end
 
-  def event
-    @event ||= Event.find params[:event_id]
+  def topic_item
+    @topic_item ||= TopicItem.find params[:topic_item_id]
   end
 end

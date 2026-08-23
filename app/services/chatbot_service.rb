@@ -30,48 +30,29 @@ class ChatbotService
     chatbot.destroy
   end
 
-  def self.publish_event!(event_id)
-    return unless event = Event.find_by(id: event_id)
-    event.reload
-    return if event.eventable.nil?
-    return if event.eventable.is_a?(Stance) && !event.eventable.shared_update_visible?
+  def self.publish_topic_item!(topic_item_id)
+    return unless topic_item = TopicItem.find_by(id: topic_item_id)
+    topic_item.reload
+    return if topic_item.itemable.nil?
+    return if topic_item.itemable.is_a?(Stance) && !topic_item.itemable.shared_update_visible?
 
-    chatbots = event.eventable.topic.group.chatbots
+    chatbots = topic_item.itemable.topic.group.chatbots
 
-    chatbots.where(id: event.recipient_chatbot_ids).
-                or(chatbots.where("? = ANY(chatbots.event_kinds)", event.kind)).each do |chatbot|
-      template_name = event.eventable_type.tableize.singularize
-      template_name = 'poll' if event.eventable_type == 'Outcome'
-      template_name = 'group' if event.eventable_type == 'Membership'
-      template_name = 'notification' if chatbot.notification_only
-
-      if %w[Poll Stance Outcome].include? event.eventable_type
-        poll = event.eventable.poll
-      end
-
-      example_user = chatbot.author || chatbot.group.creator
-
-      recipient = LoggedOutUser.new(locale: example_user.locale,
-                                    time_zone: example_user.time_zone,
-                                    date_time_pref: example_user.date_time_pref)
-
-      Sentry.metrics.count("chatbot.notify", attributes: { kind: chatbot.kind, event_kind: event.kind })
-      I18n.with_locale(recipient.locale) do
-        if chatbot.kind == "webhook"
-          serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
-          payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
-          response = deliver_webhook(chatbot.server, payload)
-          unless response.is_a?(Net::HTTPSuccess)
-            Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{response&.code} body: #{response&.body}")
-          end
-        else
-          component = matrix_component(template_name, event: event, poll: poll, recipient: recipient)
-          html = ApplicationController.renderer.render(component, layout: false)
-          matrix_client = Clients::Matrix.new(server: chatbot.server, access_token: chatbot.access_token)
-          matrix_client.send_html(chatbot.channel, html)
-        end
-      end
+    chatbots.where(id: topic_item.recipient_chatbot_ids).
+                or(chatbots.where("? = ANY(chatbots.event_kinds)", topic_item.kind)).each do |chatbot|
+      publish_to_chatbot!(topic_item: topic_item, chatbot: chatbot)
     end
+  end
+
+  def self.publish_notification_delivery!(notification_delivery_id)
+    delivery = NotificationDelivery.find_by!(
+      id: notification_delivery_id,
+      channel: "chatbot",
+      recipient_type: "Chatbot"
+    )
+    topic_item = NotificationRenderingContext.new(delivery.notification)
+
+    publish_to_chatbot!(topic_item: topic_item, chatbot: delivery.recipient)
   end
 
   MATRIX_COMPONENTS = {
@@ -97,27 +78,65 @@ class ChatbotService
     'notification' => Views::Chatbot::Slack::Notification
   }.freeze
 
-  def self.matrix_component(template_name, event:, poll:, recipient:)
+  def self.matrix_component(template_name, topic_item:, poll:, recipient:)
     klass = MATRIX_COMPONENTS[template_name] || MATRIX_COMPONENTS['notification']
-    klass.new(event: event, poll: poll, recipient: recipient)
+    klass.new(topic_item: topic_item, poll: poll, recipient: recipient)
   end
 
-  def self.markdown_component(template_name, event:, poll:, recipient:)
+  def self.markdown_component(template_name, topic_item:, poll:, recipient:)
     klass = MARKDOWN_COMPONENTS[template_name] || MARKDOWN_COMPONENTS['notification']
-    klass.new(event: event, poll: poll, recipient: recipient)
+    klass.new(topic_item: topic_item, poll: poll, recipient: recipient)
   end
 
-  def self.slack_component(template_name, event:, poll:, recipient:)
+  def self.slack_component(template_name, topic_item:, poll:, recipient:)
     klass = SLACK_COMPONENTS[template_name] || SLACK_COMPONENTS['notification']
-    klass.new(event: event, poll: poll, recipient: recipient)
+    klass.new(topic_item: topic_item, poll: poll, recipient: recipient)
   end
+
+  def self.publish_to_chatbot!(topic_item:, chatbot:)
+    template_name = topic_item.itemable_type.tableize.singularize
+    template_name = 'poll' if topic_item.itemable_type == 'Outcome'
+    template_name = 'group' if topic_item.itemable_type == 'Membership'
+    template_name = 'notification' if chatbot.notification_only
+
+    poll = topic_item.itemable.poll if %w[Poll Stance Outcome].include? topic_item.itemable_type
+    example_user = chatbot.author || chatbot.group.creator
+    recipient = LoggedOutUser.new(locale: example_user.locale,
+                                  time_zone: example_user.time_zone,
+                                  date_time_pref: example_user.date_time_pref)
+
+    Sentry.metrics.count("chatbot.notify", attributes: { kind: chatbot.kind, event_kind: topic_item.kind })
+    I18n.with_locale(recipient.locale) do
+      if chatbot.kind == "webhook"
+        serializer = "Webhook::#{chatbot.webhook_kind.classify}::TopicItemSerializer".constantize
+        payload = serializer.new(
+          topic_item,
+          root: false,
+          scope: { template_name: template_name, recipient: recipient }
+        ).as_json
+        response = deliver_webhook(chatbot.server, payload)
+        unless response.is_a?(Net::HTTPSuccess)
+          Sentry.capture_message(
+            "chatbot id #{chatbot.id} post #{topic_item.class.name} id #{topic_item.id} failed: " \
+            "code: #{response&.code} body: #{response&.body}"
+          )
+        end
+      else
+        component = matrix_component(template_name, topic_item: topic_item, poll: poll, recipient: recipient)
+        html = ApplicationController.renderer.render(component, layout: false)
+        matrix_client = Clients::Matrix.new(server: chatbot.server, access_token: chatbot.access_token)
+        matrix_client.send_html(chatbot.channel, html)
+      end
+    end
+  end
+  private_class_method :publish_to_chatbot!
 
   def self.publish_test!(params)
     validate_public_server!(params[:server])
 
     case params[:kind]
     when 'slack_webhook'
-      deliver_webhook(params[:server], {text: I18n.t('chatbot.connection_test_successful')})
+      deliver_webhook(params[:server], { text: I18n.t('chatbot.connection_test_successful') })
     else
       matrix_client = Clients::Matrix.new(server: params[:server], access_token: params[:access_token])
       message = I18n.t('chatbot.connection_test_successful', group: params[:group_name])

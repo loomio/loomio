@@ -22,38 +22,38 @@ class Dev::PollsController < Dev::NightwatchController
       last_email to: scenario[:observer]
     when 'matrix'
       if scenario[:outcome]
-        event = scenario[:outcome].events.last
+        topic_item = scenario[:outcome].topic_items.last
       else
-        event = scenario[:poll].events.last
+        topic_item = scenario[:poll].topic_items.last
       end
       poll = scenario[:poll]
       recipient = scenario[:observer]
-      component = Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient)
+      component = Views::Chatbot::Matrix::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient)
       render component, layout: false
     when 'markdown'
       if scenario[:outcome]
-        event = scenario[:outcome].events.last
+        topic_item = scenario[:outcome].topic_items.last
       else
-        event = scenario[:poll].events.last
+        topic_item = scenario[:poll].topic_items.last
       end
       poll = scenario[:poll]
       recipient = scenario[:observer]
-      component = Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient)
+      component = Views::Chatbot::Markdown::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient)
       render component, layout: false, content_type: 'text/plain'
     when 'compare'
       if scenario[:outcome]
-        event = scenario[:outcome].events.last
+        topic_item = scenario[:outcome].topic_items.last
       else
-        event = scenario[:poll].events.last
+        topic_item = scenario[:poll].topic_items.last
       end
       poll = scenario[:poll]
       recipient = scenario[:observer]
 
-      event_key = EventMailer.event_key_for(event, recipient)
+      event_key = DeliveryMailer.event_key_for(topic_item, recipient)
       subject_params = {
         title: poll.title,
         poll_type: I18n.t("decision_tools_card.#{poll.poll_type}_title"),
-        actor: event.user.name,
+        actor: topic_item.user.name,
         site_name: AppConfig.theme[:site_name]
       }
       email_subject = I18n.t("notifications.email_subject.#{event_key}", **subject_params)
@@ -61,10 +61,10 @@ class Dev::PollsController < Dev::NightwatchController
       render Views::Dev::Polls::Compare.new(
         email_subject: email_subject,
         print: Views::Polls::Export.new(poll: poll, exporter: PollExporter.new(poll), recipient: recipient),
-        email: EventMailer.build_component(event: event, recipient: recipient),
-        matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient),
-        markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient),
-        slack: Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: recipient)
+        email: DeliveryMailer.build_component(topic_item: topic_item, recipient: recipient),
+        matrix: Views::Chatbot::Matrix::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient),
+        markdown: Views::Chatbot::Markdown::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient),
+        slack: Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: poll, recipient: recipient)
       ), layout: false
     when 'print'
       render Views::Polls::Export.new(

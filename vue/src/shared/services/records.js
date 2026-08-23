@@ -7,7 +7,7 @@ import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interfa
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface';
 import DiscussionTemplateRecordsInterface from '@/shared/interfaces/discussion_template_records_interface';
 import TopicReaderRecordsInterface from '@/shared/interfaces/topic_reader_records_interface';
-import EventRecordsInterface from '@/shared/interfaces/event_records_interface';
+import TopicItemRecordsInterface from '@/shared/interfaces/topic_item_records_interface';
 import GroupRecordsInterface from '@/shared/interfaces/group_records_interface';
 import MembershipRecordsInterface from '@/shared/interfaces/membership_records_interface';
 import MembershipRequestRecordsInterface from '@/shared/interfaces/membership_request_records_interface';
@@ -42,7 +42,7 @@ records.addRecordsInterface(ChatbotRecordsInterface);
 records.addRecordsInterface(DiscussionRecordsInterface);
 records.addRecordsInterface(DiscussionTemplateRecordsInterface);
 records.addRecordsInterface(TopicReaderRecordsInterface);
-records.addRecordsInterface(EventRecordsInterface);
+records.addRecordsInterface(TopicItemRecordsInterface);
 records.addRecordsInterface(GroupRecordsInterface);
 records.addRecordsInterface(MembershipRecordsInterface);
 records.addRecordsInterface(MembershipRequestRecordsInterface);

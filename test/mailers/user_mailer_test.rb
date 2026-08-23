@@ -12,62 +12,6 @@ class UserMailerTest < ActionMailer::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
-  # Membership request approved
-  test "membership_request_approved renders receiver email" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_equal [@user.email], mail.to
-  end
-
-  test "membership_request_approved renders sender email" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_includes mail.from, ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS
-  end
-
-  test "membership_request_approved assigns correct reply_to" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_equal [@group.admin_email], mail.reply_to
-  end
-
-  test "membership_request_approved renders the subject" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_equal "Your request to join #{@group.full_name} has been approved", mail.subject
-  end
-
-  test "membership_request_approved body contains group handle" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_match @group.handle, mail.body.encoded
-  end
-
-  test "html emails support light and dark color schemes" do
-    membership = @group.add_member!(@user)
-    event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
-    mail = UserMailer.membership_request_approved(@user.id, event.id)
-    html = mail.html_part&.decoded || mail.body.decoded
-
-    assert_includes html, '<meta name="color-scheme" content="light dark">'
-    assert_includes html, '<meta name="supported-color-schemes" content="light dark">'
-    assert_includes html, 'color-scheme: light dark'
-  end
-
-  # User added to group
-  test "user_added_to_group renders the subject" do
-    membership = @group.add_member!(@user)
-    membership.update_columns(inviter_id: @inviter.id)
-    event = Events::UserAddedToGroup.create!(kind: 'user_added_to_group', user: @inviter, eventable: membership)
-    mail = UserMailer.user_added_to_group(@user.id, event.id)
-    assert_equal "#{@inviter.name} has added you to #{@group.full_name} on #{AppConfig.theme[:site_name]}", mail.subject
-  end
-
   # Catch up
   test "sends a catch up email when there is unread content" do
     @user.update!(email_catch_up_day: 7)

@@ -219,37 +219,37 @@ export const CustomImage = Image.extend({
       new Plugin({
         props: {
           handleDOMEvents: {
-            paste(view, event) {
-              const items = Array.from(event.clipboardData.items)
+            paste(view, topic_item) {
+              const items = Array.from(topic_item.clipboardData.items)
 
               if (items.filter(item => item.getAsFile()).length == 0) {
                 return
               }
 
-              event.preventDefault()
+              topic_item.preventDefault()
               const files = items.map(item =>
                 new File([item.getAsFile()],
-                         event.clipboardData.getData('text/plain') || Date.now(),
+                         topic_item.clipboardData.getData('text/plain') || Date.now(),
                          {lastModified: Date.now(), type: item.type})
               )
               const coordinates = null;
               handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },
-            drop(view, event) {
+            drop(view, topic_item) {
               // first -> upload the file and callback with progress and when it's done
               // display an uploading image, and when the upload is complete, replace the src with the url.
-              const hasFiles = event.dataTransfer
-              && event.dataTransfer.files
-              && event.dataTransfer.files.length
+              const hasFiles = topic_item.dataTransfer
+              && topic_item.dataTransfer.files
+              && topic_item.dataTransfer.files.length
 
               if (!hasFiles) {
                 return
               }
-              event.preventDefault()
+              topic_item.preventDefault()
 
-              const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
+              const coordinates = view.posAtCoords({ left: topic_item.clientX, top: topic_item.clientY })
 
-              handleUploads({files: event.dataTransfer.files, view, attachFile, attachImageFile, coordinates})
+              handleUploads({files: topic_item.dataTransfer.files, view, attachFile, attachImageFile, coordinates})
             },
           },
         },

@@ -4,12 +4,12 @@ class Poll < ApplicationRecord
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include HasEvents
+  include HasTopicItems
   include HasMentions
   include SelfReferencing
   include Reactable
   include Bookmarkable
-  include HasCreatedEvent
+  include HasCreatedTopicItem
   include HasRichText
   include Discard::Model
   include Searchable
@@ -118,9 +118,9 @@ class Poll < ApplicationRecord
     return nil
   end
 
-  def create_missing_created_event!
-    self.events.create(
-      kind: created_event_kind,
+  def create_missing_created_topic_item!
+    self.topic_items.create(
+      kind: created_topic_item_kind,
       user_id: author_id,
       created_at: created_at,
       topic: topic)
@@ -197,11 +197,11 @@ class Poll < ApplicationRecord
      active
     .distinct
     .where(closing_at: timeframe)
-    .where("NOT EXISTS (SELECT 1 FROM events
-                WHERE events.created_at     > ? AND
-                      events.eventable_id   = polls.id AND
-                      events.eventable_type = 'Poll' AND
-                      events.kind           = 'poll_closing_soon')", recency_threshold)
+    .where("NOT EXISTS (SELECT 1 FROM topic_items
+                WHERE topic_items.created_at     > ? AND
+                      topic_items.itemable_id   = polls.id AND
+                      topic_items.itemable_type = 'Poll' AND
+                      topic_items.kind           = 'poll_closing_soon')", recency_threshold)
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }

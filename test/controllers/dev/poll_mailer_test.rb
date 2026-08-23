@@ -54,8 +54,8 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     }.merge(poll_extra_config(poll_type)).merge(overrides)
   end
 
-  # Cast stance via service (triggers events/emails, requires open poll)
-  # Returns the event from StanceService.update
+  # Cast stance via service (triggers topic_items/emails, requires open poll)
+  # Returns the topic_item from StanceService.update
   def cast_stance(poll, user)
     if poll.detached_anonymous?
       ballot = poll.anonymous_ballots.build(
@@ -69,9 +69,9 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
-    event = StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll))
+    topic_item = StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll))
     stance.reload
-    event
+    topic_item
   end
 
   # Save stance directly (no authorization check, for closed polls / display purposes)
@@ -128,7 +128,11 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll.update_counts!
     outcome = Outcome.new(poll: @poll, author: @actor, statement: "The outcome statement", review_on: Date.today)
     outcome.save!
-    Events::OutcomeReviewDue.publish!(outcome)
+    NotificationService.create!(
+      kind: "outcome_review_due",
+      subject: outcome,
+      actor: outcome.author
+    )
     @scenario_observer = @actor
     @scenario_actor = @actor
     @email = find_email_for(@actor)
@@ -139,10 +143,19 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     topic = @poll.topic
     TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!('loud') if topic
-    event = cast_stance(@poll, @voter)
+    topic_item = if @poll.detached_anonymous?
+      cast_stance(@poll, @voter)
+    else
+      stance = @poll.stances.find_by!(participant_id: @voter.id, latest: true)
+      StanceService.update(
+        stance: stance,
+        actor: @voter,
+        params: cast_stance_params(@poll).merge(reason: "I support this proposal")
+      )
+    end
     @scenario_observer = @actor
-    # Use the event's user for actor (AnonymousUser for anonymous polls)
-    @scenario_actor = event.is_a?(Event) ? event.user : @voter
+    # Use the topic_item's user for actor (AnonymousUser for anonymous polls)
+    @scenario_actor = topic_item.is_a?(TopicItem) ? topic_item.user : @voter
     @email = find_email_for(@actor)
     @parsed_body = parse_email(@email)
   end
@@ -381,14 +394,14 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       skip "way tooo slow for regular test runs. but keep incase you want to test the chatbot views?"
       @poll = PollService.create(params: build_poll_params(poll_type: poll_type, notify_on_open: true), actor: @actor)
 
-      event = @poll.events.last
+      topic_item = @poll.topic_items.last
       recipient = @observer
 
-      event_key = EventMailer.event_key_for(event, recipient)
+      event_key = DeliveryMailer.event_key_for(topic_item, recipient)
       subject_params = {
         title: @poll.title,
         poll_type: I18n.t("decision_tools_card.#{@poll.poll_type}_title"),
-        actor: event.user.name,
+        actor: topic_item.user.name,
         site_name: AppConfig.theme[:site_name]
       }
       email_subject = I18n.t("notifications.email_subject.#{event_key}", **subject_params)
@@ -396,10 +409,10 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       component = Views::Dev::Polls::Compare.new(
         email_subject: email_subject,
         print: Views::Polls::Export.new(poll: @poll, exporter: PollExporter.new(@poll), recipient: recipient),
-        email: EventMailer.build_component(event: event, recipient: recipient),
-        matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: @poll, recipient: recipient),
-        markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: @poll, recipient: recipient),
-        slack: Views::Chatbot::Slack::Poll.new(event: event, poll: @poll, recipient: recipient)
+        email: DeliveryMailer.build_component(topic_item: topic_item, recipient: recipient),
+        matrix: Views::Chatbot::Matrix::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient),
+        markdown: Views::Chatbot::Markdown::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient),
+        slack: Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient)
       )
 
       html = ApplicationController.renderer.render(component, layout: false)

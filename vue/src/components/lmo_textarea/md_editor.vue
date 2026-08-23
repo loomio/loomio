@@ -96,15 +96,15 @@ const convertToHtmlHandler = () => {
   Records.users.saveExperience('html-editor.uses-markdown', false);
 };
 
-const onPaste = (event) => {
-  const items = Array.from(event.clipboardData.items);
+const onPaste = (topic_item) => {
+  const items = Array.from(topic_item.clipboardData.items);
 
   if (items.filter(item => item.getAsFile()).length === 0) { return; }
 
-  event.preventDefault();
+  topic_item.preventDefault();
   handleUploads(items.map(item => {
     return new File([item.getAsFile()],
-             event.clipboardData.getData('text/plain') || Date.now(),
+             topic_item.clipboardData.getData('text/plain') || Date.now(),
              {lastModified: Date.now(), type: item.type});
   }));
 };
@@ -152,14 +152,14 @@ const insertImage = (file) => {
   });
 };
 
-const onDrop = (event) => {
-  if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
-  event.preventDefault();
-  handleUploads(event.dataTransfer.files);
+const onDrop = (topic_item) => {
+  if (!topic_item.dataTransfer || !topic_item.dataTransfer.files || !topic_item.dataTransfer.files.length) { return; }
+  topic_item.preventDefault();
+  handleUploads(topic_item.dataTransfer.files);
 };
 
-const onDragOver = (event) => { 
-  return false; 
+const onDragOver = (topic_item) => {
+  return false;
 };
 
 const fileSelected = () => {

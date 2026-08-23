@@ -82,8 +82,8 @@ export default {
     importTemplate() {
       this.$refs.templateFileInput.click();
     },
-    async templateFileSelected(event) {
-      const file = event.target.files[0];
+    async templateFileSelected(topic_item) {
+      const file = topic_item.target.files[0];
       if (!file) { return; }
 
       this.importing = true;
@@ -100,7 +100,7 @@ export default {
         }
       } finally {
         this.importing = false;
-        event.target.value = '';
+        topic_item.target.value = '';
       }
     },
     fetch() {

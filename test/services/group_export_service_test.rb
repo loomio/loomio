@@ -27,6 +27,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       poll_type: "proposal",
       anonymous: true,
       closing_at: 1.day.from_now,
+      notify_on_open: false,
       specified_voters_only: topic_id.present?,
       poll_option_names: %w[Agree Disagree]
     }
@@ -105,8 +106,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     PollService.close(poll: sub_poll, actor: admin)
     PollService.close(poll: topic_poll, actor: admin)
 
-    # Services already created events and topic readers
-    discussion_event = discussion.created_event
+    # Services already created topic_items and topic readers
+    discussion_event = discussion.created_topic_item
 
     Reaction.create!(reactable: discussion, user: member)
     Reaction.create!(reactable: poll, user: member)
@@ -124,13 +125,14 @@ class GroupExportServiceTest < ActiveSupport::TestCase
   test "discussion moved exports do not expose the source group id" do
     source_group = groups(:alien_group)
     discussion = discussions(:discussion)
-    event = Event.create!(
+    topic_item = TopicItem.create!(
       kind: 'discussion_moved',
-      eventable: discussion,
+      itemable: discussion,
+      topic: discussion.topic,
       custom_fields: { source_group_id: source_group.id }
     )
 
-    event_json = GroupExportService.export_record(event, 'events')
+    event_json = GroupExportService.export_record(topic_item, 'topic_items')
 
     assert_not event_json['custom_fields'].key?('source_group_id')
   end
@@ -162,6 +164,23 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     second_archived_ballot = second_archive.find { |item| item["table"] == "anonymous_ballots" }.fetch("record")
     refute_equal archived_ballot.fetch("id"), second_archived_ballot.fetch("id")
 
+    subscriber = voter
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(:loud)
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: admin,
+      occurrence_key: SecureRandom.uuid,
+      recipient_user_ids: [ subscriber.id ]
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal [ subscriber.id ], notification.notification_deliveries
+                                                .where(channel: "email", recipient_type: "User")
+                                                .pluck(:recipient_id)
+    filename = GroupExportService.export(group.all_groups, group.name)
+    delivery_archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    assert delivery_archive.any? { |item| item["table"] == "notification_deliveries" && item.dig("record", "notification_id") == notification.id }
+
     GroupExportService.import(filename, reset_keys: true)
 
     imported_poll = Poll.where(title: poll.title).where.not(id: poll.id).order(:id).last!
@@ -175,6 +194,13 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       imported_poll.anonymous_poll_voters.includes(:voter).to_h { |record| [record.voter.email, record.ballot_submitted?] }
     )
     assert_empty imported_poll.stances
+
+    imported_notification = Notification.find_by!(kind: "poll_announced", subject: imported_poll)
+    imported_recipient_ids = imported_notification.notification_deliveries
+                                                    .where(channel: "email", recipient_type: "User")
+                                                    .pluck(:recipient_id)
+    assert_equal [ User.find_by!(email: subscriber.email).id ], imported_recipient_ids
+    assert_match(/\Aimported:notification_\d+\z/, imported_notification.deduplication_key)
   end
 
   test "group export excludes active detached anonymous polls and their records" do
@@ -284,12 +310,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
 
     group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
-    comment_ids = Event.where(topic_id: group_topic_ids, eventable_type: 'Comment').pluck(:eventable_id)
+    comment_ids = TopicItem.where(topic_id: group_topic_ids, itemable_type: 'Comment').pluck(:itemable_id)
 
     StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
-    Notification.where(user_id: [admin_id, member_id]).delete_all
-    Event.where(topic_id: group_topic_ids).delete_all
+    NotificationDelivery.where(
+      recipient_type: "User",
+      recipient_id: [ admin_id, member_id ]
+    ).delete_all
+    TopicItem.where(topic_id: group_topic_ids).delete_all
     TopicReader.where(topic_id: group_topic_ids).delete_all
     StanceChoice.where(stance: Stance.where(poll_id: group_poll_ids)).delete_all
     Stance.where(poll_id: group_poll_ids).delete_all

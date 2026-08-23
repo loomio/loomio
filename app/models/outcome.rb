@@ -1,13 +1,13 @@
 class Outcome < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
-  include HasEvents
+  include HasTopicItems
   include HasMentions
   include Reactable
   include Bookmarkable
   include Translatable
-  include HasCreatedEvent
-  include HasEvents
+  include HasCreatedTopicItem
+  include HasTopicItems
   include HasRichText
   include Searchable
 
@@ -72,12 +72,16 @@ class Outcome < ApplicationRecord
   validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 
-  scope :review_due_not_published, -> (due_date) do
+  scope :review_due_not_published, ->(due_date) do
     where(review_on: due_date).where("NOT EXISTS (
-              SELECT 1 FROM events
-              WHERE events.eventable_id   = outcomes.id AND
-                    events.eventable_type = 'Outcome' AND
-                    events.kind           = 'outcome_review_due')")
+              SELECT 1 FROM topic_items
+              WHERE topic_items.itemable_id   = outcomes.id AND
+                    topic_items.itemable_type = 'Outcome' AND
+                    topic_items.kind           = 'outcome_review_due')").where("NOT EXISTS (
+              SELECT 1 FROM notifications
+              WHERE notifications.subject_id   = outcomes.id AND
+                    notifications.subject_type = 'Outcome' AND
+                    notifications.kind         = 'outcome_review_due')")
   end
 
   def title_model
@@ -104,8 +108,8 @@ class Outcome < ApplicationRecord
     statement_format
   end
 
-  def parent_event
-    poll.created_event
+  def parent_topic_item
+    poll.created_topic_item
   end
 
   def attendee_emails

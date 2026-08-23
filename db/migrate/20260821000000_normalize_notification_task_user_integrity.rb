@@ -1,15 +1,10 @@
+require_relative "support/notification_task_user_integrity_cleanup"
+
 class NormalizeNotificationTaskUserIntegrity < ActiveRecord::Migration[8.1]
   disable_ddl_transaction!
 
   def up
-    CleanupService.reactions_missing_stance.delete_all
-    CleanupService.bookmarks_missing_stance.delete_all
-    CleanupService.tasks_missing_stance.delete_all
-    CleanupService.notifications_missing_event_or_user.delete_all
-    CleanupService.tasks_users_missing_task_or_user.delete_all
-    CleanupService.translations_missing_stance.delete_all
-    CleanupService.search_documents_missing_stance.delete_all
-    CleanupService.attachments_missing_stance.delete_all
+    NotificationTaskUserIntegrityCleanup.run!(connection)
 
     add_foreign_key :notifications,
                     :events,

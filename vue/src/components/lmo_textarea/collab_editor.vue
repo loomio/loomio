@@ -170,11 +170,11 @@ const shouldPromptDiscardDraft = () => {
          !undoAvailable();
 };
 
-const handleUndoKeyDown = (event) => {
-  const isUndoShortcut = (event.metaKey || event.ctrlKey) && !event.shiftKey && (event.key || '').toLowerCase() === 'z';
+const handleUndoKeyDown = (topic_item) => {
+  const isUndoShortcut = (topic_item.metaKey || topic_item.ctrlKey) && !topic_item.shiftKey && (topic_item.key || '').toLowerCase() === 'z';
   if (!isUndoShortcut || !shouldPromptDiscardDraft()) return false;
 
-  event.preventDefault();
+  topic_item.preventDefault();
   if (confirm(I18n.global.t('formatting.confirm_discard'))) {
     resetDraft(props.model[props.field]);
   }
@@ -402,7 +402,7 @@ onMounted(() => {
     editorProps: {
       scrollThreshold: 100,
       scrollMargin: 100,
-      handleKeyDown: (_view, event) => handleUndoKeyDown(event)
+      handleKeyDown: (_view, topic_item) => handleUndoKeyDown(topic_item)
     },
     autofocus: props.autofocus,
     extensions: [
@@ -721,7 +721,7 @@ img.collaboration-cursor__avatar {
   border-left: 1px solid #333;
   margin-left: -1px;
   margin-right: -1px;
-  pointer-events: none;
+  pointer-topic_items: none;
   position: relative !important;
   word-break: normal;
   z-index: 100;
@@ -783,7 +783,7 @@ img.collaboration-cursor__avatar {
   content: attr(data-placeholder);
   float: left;
   color: rgba(0, 0, 0, 0.25);
-  pointer-events: none;
+  pointer-topic_items: none;
   height: 0;
 }
 

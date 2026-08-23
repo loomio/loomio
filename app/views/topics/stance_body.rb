@@ -143,7 +143,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_score
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2", id: "event-1473") do
+      h3(class: "thread-item__title text-body-2", id: "topic_item-1473") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -187,7 +187,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score desc").each do |stance_choice|
         tr do
-          td { render Views::EventMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::DeliveryMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end
@@ -210,7 +210,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score asc").each do |stance_choice|
         tr do
-          td { render Views::EventMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::DeliveryMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end

@@ -72,40 +72,6 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def membership_request_approved(recipient_id, event_id)
-    user = User.find_by(id: recipient_id)
-    group = Event.find_by(id: event_id).eventable.group
-
-    component = Views::UserMailer::MembershipRequestApproved.new(
-      group: group, utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: user.locale, component: component,
-               reply_to: group.admin_email) {
-      I18n.t("email.group_membership_approved.subject", group_name: group.full_name)
-    }
-  end
-
-  def user_added_to_group(recipient_id, event_id)
-    user    = User.find_by!(id: recipient_id)
-    event   = Event.find_by!(id: event_id)
-    group   = event.eventable.group
-    inviter = event.eventable.inviter || group.admins.first
-
-    component = Views::UserMailer::UserAddedToGroup.new(
-      group: group, inviter: inviter, utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: [user.locale, inviter.locale], component: component,
-               from: from_user_via_loomio(inviter),
-               reply_to: inviter.try(:name_and_email)) {
-      I18n.t("email.user_added_to_group.subject",
-        which_group: group.full_name,
-        who: inviter.name,
-        site_name: AppConfig.theme[:site_name])
-    }
-  end
-
   def group_export_ready(recipient_id, group_name, blob_signed_id)
     user = User.find(recipient_id)
     blob = ActiveStorage::Blob.find_signed!(blob_signed_id)

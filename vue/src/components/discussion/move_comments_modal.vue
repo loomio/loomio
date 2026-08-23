@@ -65,14 +65,14 @@ export default {
       this.fetchTopics();
     },
 
-    resetForkedEvents() {
-      this.topic.forkedEventIds = [];
+    resetSelectedTopicItems() {
+      this.topic.selectedTopicItemIds = [];
     },
 
     startNewThread() {
       const newDiscussion = Records.discussions.build({groupId: this.groupId});
-      newDiscussion.forkedEventIds = this.topic.forkedEventIds;
-      this.resetForkedEvents();
+      newDiscussion.selectedTopicItemIds = this.topic.selectedTopicItemIds;
+      this.resetSelectedTopicItems();
       EventBus.$emit('openModal', {
         component: 'DiscussionForm',
         props: {
@@ -83,9 +83,9 @@ export default {
 
     submit() {
       this.loading = true;
-      this.selectedTopic.moveComments(this.topic.forkedEventIds).then(() => {
+      this.selectedTopic.moveComments(this.topic.selectedTopicItemIds).then(() => {
         this.loading = false;
-        this.resetForkedEvents();
+        this.resetSelectedTopicItems();
         EventBus.$emit('closeModal');
         Flash.success("discussion_fork_actions.moved");
         this.$router.push(this.urlFor(this.selectedTopic));

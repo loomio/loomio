@@ -40,7 +40,8 @@ class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
         email: @received_email.sender_email,
         group_id: @received_email.group_id
       ).update!(user_id: nil, author_id: current_user.id)
-      Event.where(eventable: @received_email).destroy_all
+      TopicItem.where(itemable: @received_email).destroy_all
+      Notification.where(subject: @received_email).destroy_all
       @received_email.update!(group_id: nil)
     end
     respond_with_resource

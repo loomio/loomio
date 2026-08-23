@@ -55,11 +55,11 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    event = CommentService.create(comment: comment, actor: @admin)
+    topic_item = CommentService.create(comment: comment, actor: @admin)
 
-    @reader.viewed!(event.sequence_id)
+    @reader.viewed!(topic_item.sequence_id)
     assert_equal 1, @reader.read_items_count
-    @reader.viewed!(event.sequence_id)
+    @reader.viewed!(topic_item.sequence_id)
     assert_equal 1, @reader.read_items_count
   end
 

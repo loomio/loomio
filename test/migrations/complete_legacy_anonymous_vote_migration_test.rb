@@ -5,7 +5,7 @@ class CompleteLegacyAnonymousVoteMigrationTest < ActiveSupport::TestCase
   CONSTRAINT_NAME = "polls_anonymous_voting_system"
 
   test "direct 3.3 upgrade closes and converts an open legacy anonymous poll" do
-    without_anonymous_storage_constraint do
+    with_legacy_event_schema do
       poll = create_identified_poll
       stance = Stance.create!(
         poll: poll,
@@ -28,13 +28,13 @@ class CompleteLegacyAnonymousVoteMigrationTest < ActiveSupport::TestCase
       assert_equal 1, poll.anonymous_ballots.count
       assert_equal [ [ poll.poll_options.first.id, 1 ] ], poll.anonymous_ballot_choices.pluck(:poll_option_id, :score)
       refute Stance.exists?(stance.id)
-      assert Event.exists?(kind: "poll_expired", eventable: poll)
+      assert LegacyEventRecord.exists?(kind: "poll_expired", eventable: poll)
       assert_equal 0, Poll.where(anonymous: true, voting_system: :stance).count
     end
   end
 
   test "preserves historical option voter counts while detaching votes" do
-    without_anonymous_storage_constraint do
+    with_legacy_event_schema do
       poll = create_identified_poll
       stance = Stance.create!(
         poll: poll,
@@ -76,10 +76,39 @@ class CompleteLegacyAnonymousVoteMigrationTest < ActiveSupport::TestCase
     )
   end
 
-  def without_anonymous_storage_constraint
+  def with_legacy_event_schema
     connection = ActiveRecord::Base.connection
     connection.remove_check_constraint(:polls, name: CONSTRAINT_NAME)
+    connection.rename_table(:topic_items, :events)
+    connection.rename_column(:events, :itemable_type, :eventable_type)
+    connection.rename_column(:events, :itemable_id, :eventable_id)
+    connection.rename_column(:events, :itemable_version_id, :eventable_version_id)
+    connection.change_column_null(:events, :topic_id, true)
+    connection.rename_table(:notifications, :notification_occurrences)
+    connection.create_table(:notifications) do |t|
+      t.bigint :event_id, null: false
+      t.bigint :user_id, null: false
+      t.bigint :actor_id
+      t.jsonb :translation_values, null: false, default: {}
+      t.boolean :viewed, null: false, default: false
+      t.timestamps
+    end
+    LegacyEventRecord.reset_column_information
+    LegacyNotificationRecord.reset_column_information
     yield
+  ensure
+    if connection.data_source_exists?(:events)
+      connection.drop_table(:notifications, if_exists: true)
+      connection.rename_table(:notification_occurrences, :notifications)
+      connection.execute("DELETE FROM events WHERE topic_id IS NULL")
+      connection.change_column_null(:events, :topic_id, false)
+      connection.rename_column(:events, :eventable_type, :itemable_type)
+      connection.rename_column(:events, :eventable_id, :itemable_id)
+      connection.rename_column(:events, :eventable_version_id, :itemable_version_id)
+      connection.rename_table(:events, :topic_items)
+      TopicItem.reset_column_information
+      Notification.reset_column_information
+    end
   end
 
   def canonical_results(poll)

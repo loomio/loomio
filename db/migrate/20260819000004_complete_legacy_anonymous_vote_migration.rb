@@ -1,5 +1,6 @@
 require_relative "support/legacy_anonymous_vote_migration_service"
 require_relative "support/legacy_anonymous_vote_migration_cleanup_service"
+require_relative "support/legacy_event_record"
 
 # Complete the anonymous-voting transition before 3.3 removes its runtime
 # compatibility code. This migration deliberately uses the 3.2 close semantics
@@ -46,7 +47,7 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
       poll.topic.update_active_polls_count
 
       ReindexPollWorker.perform_later(poll.id)
-      Events::PollExpired.publish!(poll)
+      publish_poll_expired!(poll)
     end
 
     PollService.publish_topic_if_active(poll)
@@ -66,9 +67,42 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
     StanceReceipt.insert_all(rows) if rows.any?
   end
 
+  # Preserve the 3.2 poll-close notification using migration-owned table models.
+  # Direct upgrades may run before or after the self-contained notification
+  # fields have been introduced, so populate those fields when they exist while
+  # retaining event_id until the cutover migration verifies the backfill.
+  def publish_poll_expired!(poll)
+    event = LegacyEventRecord.create!(
+      kind: "poll_expired",
+      eventable_type: "Poll",
+      eventable_id: poll.id,
+      user_id: poll.author_id,
+      created_at: poll.closed_at,
+      updated_at: poll.closed_at
+    )
+
+    attributes = {
+      event_id: event.id,
+      user_id: poll.author_id,
+      actor_id: poll.author_id,
+      viewed: false,
+      created_at: poll.closed_at,
+      updated_at: poll.closed_at
+    }
+    if LegacyNotificationRecord.column_names.include?("deduplication_key")
+      attributes.merge!(
+        kind: "poll_expired",
+        subject_type: "Poll",
+        subject_id: poll.id,
+        deduplication_key: "event:#{event.id}"
+      )
+    end
+    LegacyNotificationRecord.create!(attributes)
+  end
+
   def anonymize_stances!(poll)
     stance_ids = poll.stances.select(:id)
-    Event.where(eventable_type: "Stance", eventable_id: stance_ids).update_all(user_id: nil)
+    LegacyEventRecord.where(eventable_type: "Stance", eventable_id: stance_ids).update_all(user_id: nil)
     poll.stances.update_all(participant_id: nil)
   end
 
@@ -76,7 +110,7 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
     return unless poll.topic && poll.hide_results == "until_closed"
 
     stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-    Event.where(kind: "stance_created", eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
-    TopicService.repair(poll.topic_id)
+    LegacyEventRecord.where(kind: "stance_created", eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
+    LegacyTopicEventRepairService.repair!(poll.topic_id)
   end
 end

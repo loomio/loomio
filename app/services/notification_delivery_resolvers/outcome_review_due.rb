@@ -1,0 +1,26 @@
+module NotificationDeliveryResolvers
+  class OutcomeReviewDue < NotificationDeliveryResolver
+    def self.deduplication_key(outcome, occurrence_key: nil)
+      "outcome_review_due:outcome_#{outcome.id}:#{outcome.review_on.iso8601}"
+    end
+
+    private
+
+    def recipients_by_channel
+      outcome = notification.subject
+      unless outcome.is_a?(Outcome)
+        raise ArgumentError, "outcome_review_due subject must be an Outcome"
+      end
+
+      author_scope = User.active.where(id: outcome.author_id)
+      topic = outcome.poll.topic
+      {
+        "in_app" => topic.volume_gte_quiet_members.where("users.id": author_scope.select(:id)).to_a,
+        "email" => topic.volume_gte_normal_members
+                        .where("users.id": author_scope.no_spam_complaints.select(:id)).to_a,
+        "chatbot" => outcome.group.chatbots
+                            .where("? = ANY(chatbots.event_kinds)", notification.kind).to_a
+      }
+    end
+  end
+end

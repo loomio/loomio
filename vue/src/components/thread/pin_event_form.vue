@@ -4,7 +4,7 @@ import EventBus from '@/shared/services/event_bus';
 
 export default {
   props: {
-    event: Object
+    topic_item: Object
   },
 
   data() {
@@ -15,14 +15,14 @@ export default {
   },
 
   mounted() {
-    this.title = (window.getSelection() && window.getSelection().toString()) || this.event.pinnedTitle || this.event.suggestedTitle();
+    this.title = (window.getSelection() && window.getSelection().toString()) || this.topic_item.pinnedTitle || this.topic_item.suggestedTitle();
     this.$nextTick(() => this.$refs.focus.focus());
   },
 
   methods: {
     submit() {
       this.loading = true;
-      this.event.pin(this.title).then(() => {
+      this.topic_item.pin(this.title).then(() => {
         Flash.success('activity_card.event_pinned');
         EventBus.$emit('closeModal');
       });
@@ -32,14 +32,14 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.pin-event-form(:title="$t('pin_event_form.title')")
+v-card.pin-topic_item-form(:title="$t('pin_event_form.title')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
-    v-form#pin-event-form(@submit.prevent="submit()")
+    v-form#pin-topic_item-form(@submit.prevent="submit()")
       v-text-field(:disabled="loading" ref="focus" v-model="title" :label="$t('pin_event_form.title_label')")
   v-card-actions
     v-spacer
-    v-btn(color="primary" type="submit" form="pin-event-form" :loading="loading")
+    v-btn(color="primary" type="submit" form="pin-topic_item-form" :loading="loading")
       span(v-t="'common.action.save'")
 </template>

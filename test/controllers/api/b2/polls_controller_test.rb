@@ -296,7 +296,7 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     get :index, params: { group_id: @group.id }
     assert_response 200
     body = response.body
-    %w[polls discussions groups users events stances outcomes poll_options].each do |key|
+    %w[polls discussions groups users topic_items stances outcomes poll_options].each do |key|
       count = body.scan(/"#{key}":/).size
       assert count <= 1, "Expected '#{key}' key to appear at most once in response body, got #{count}"
     end

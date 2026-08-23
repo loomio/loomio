@@ -16,46 +16,46 @@ const props = defineProps({
 
 const parentChecked = ref(true);
 
-const isFocused = (event) => {
-  return props.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
-    (event.eventableType === 'Comment' && props.focusSelector == `.comment-${event.eventableId || 0}`);
+const isFocused = (topic_item) => {
+  return props.focusSelector == `.sequenceId-${topic_item.sequenceId || 0}` ||
+    (topic_item.itemableType === 'Comment' && props.focusSelector == `.comment-${topic_item.itemableId || 0}`);
 };
 
 </script>
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+  .strand-item(v-for="obj, index in collection" :key="obj.topic_item.id" :class="{'strand-item--deep': obj.topic_item.depth > 1}")
     .strand-item__row(v-if="obj.missingEarlier")
       strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
     v-expand-transition
-      .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+      .strand-item__row(v-if="loader.collapsed[obj.topic_item.id]")
         collapsed(:obj="obj" :loader="loader")
     v-expand-transition
-      .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
-        .strand-item__gutter(v-if="obj.event.depth > 0")
+      .strand-item__row(v-if="!loader.collapsed[obj.topic_item.id]")
+        .strand-item__gutter(v-if="obj.topic_item.depth > 0")
           .d-flex.justify-center
-            template(v-if="loader.topic.forkedEventIds && loader.topic.forkedEventIds.length")
-              v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
-              v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.forkedEventIds" :value="obj.event.id" )
+            template(v-if="loader.topic.selectedTopicItemIds && loader.topic.selectedTopicItemIds.length")
+              v-checkbox-btn.thread-item__is-forking( v-if="obj.topic_item.moveSelectionDisabled()" disabled v-model="parentChecked" )
+              v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.selectedTopicItemIds" :value="obj.topic_item.id" )
             template(v-else)
-              .strand-item__gutter-toggle(@click="loader.collapse(obj.event)")
-                user-avatar.strand-item__gutter-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
+              .strand-item__gutter-toggle(@click="loader.collapse(obj.topic_item)")
+                user-avatar.strand-item__gutter-avatar( :user="obj.topic_item.actor()" :size="(obj.topic_item.depth > 1) ? 28 : 32" no-link )
                 .strand-item__gutter-collapse
                   common-icon(name="mdi-unfold-less-horizontal")
-          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
         .strand-item__main
           .strand-item__main--content
-            intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
-          .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
+            intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.topic_item)")
+          .strand-list__children(v-if="obj.topic_item.childCount && (!obj.itemable.isA('stance') || obj.itemable.poll().showResults())")
             strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
             strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
-          reply-form(:eventId="obj.event.id")
+          reply-form(:topicItemId="obj.topic_item.id")
 
     .strand-item__row(v-if="obj.missingAfter" )
       strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
 
-    //.strand-item__row(v-if="obj.missingAfterCount && obj.event.depth == 1" )
+    //.strand-item__row(v-if="obj.missingAfterCount && obj.topic_item.depth == 1" )
     //  v-btn(:to="endUrl + '?end'") Jump to end
 
 </template>

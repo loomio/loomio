@@ -65,7 +65,69 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_nil membership.reload.accepted_at
   end
 
-  test "redeem rolls back acceptance when event creation fails" do
+  test "adding a user creates direct notification deliveries without an topic_item" do
+    assert_no_difference -> { TopicItem.where(kind: "user_added_to_group").count } do
+      MembershipService.add_users_to_group(
+        users: [ @user ],
+        group: @group,
+        inviter: @admin
+      )
+    end
+
+    membership = Membership.find_by!(group: @group, user: @user)
+    notification = Notification.find_by!(
+      kind: "user_added_to_group",
+      subject: membership
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+    assert_equal [ @user.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
+
+    delivery = notification.notification_deliveries.find_by!(channel: "email")
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      DeliverNotificationEmailWorker.perform_now(delivery.id)
+    end
+    assert_includes ActionMailer::Base.deliveries.last.to, @user.email
+  end
+
+  test "adding a user rolls back when notification creation fails" do
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        MembershipService.add_users_to_group(
+          users: [ @user ],
+          group: @group,
+          inviter: @admin
+        )
+      end
+    end
+
+    assert_not Membership.exists?(group: @group, user: @user)
+  end
+
+  test "resending an invitation creates an eventless email delivery" do
+    recipient = create_unverified_user("resend")
+    membership = pending_membership_for(recipient, @group)
+
+    assert_no_difference -> { TopicItem.where(kind: "membership_resent").count } do
+      MembershipService.resend(membership: membership, actor: @admin)
+    end
+
+    notification = Notification.find_by!(
+      kind: "membership_resent",
+      subject: membership
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ "email" ], notification.notification_deliveries.pluck(:channel)
+    delivery = notification.notification_deliveries.first
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      DeliverNotificationEmailWorker.perform_now(delivery.id)
+    end
+    assert_includes ActionMailer::Base.deliveries.last.to, recipient.email
+  end
+
+  test "redeem rolls back acceptance when notification creation fails" do
     membership = Membership.create!(
       user: @user,
       group: @group,
@@ -74,7 +136,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     )
 
     assert_raises RuntimeError do
-      Events::InvitationAccepted.stub(:publish!, ->(*) { raise "event failed" }) do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
         MembershipService.redeem(membership: membership, actor: @user)
       end
     end
@@ -172,7 +234,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_nil existing_membership.reload.revoked_at
   end
 
-  test "redeem notifies inviter of acceptance" do
+  test "redeem notifies inviter of acceptance without an topic_item" do
     unverified_user = User.create!(
       name: 'Unverified',
       email: 'unverified4@example.com',
@@ -187,9 +249,20 @@ class MembershipServiceTest < ActiveSupport::TestCase
       accepted_at: nil
     )
 
-    MembershipService.redeem(membership: membership, actor: @user)
+    assert_no_difference -> { TopicItem.where(kind: "invitation_accepted").count } do
+      MembershipService.redeem(membership: membership, actor: @user)
+    end
 
-    assert_equal 'invitation_accepted', Event.last.kind
+    accepted_membership = Membership.find_by!(group: @group, user: @user)
+    notification = Notification.find_by!(
+      kind: "invitation_accepted",
+      subject: accepted_membership
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ @admin.id ], notification.notification_deliveries.pluck(:recipient_id)
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal notification.polymorphic_path(@group), notification.notification_url
   end
 
   test "redeem clears guest topic reader access in invited groups" do

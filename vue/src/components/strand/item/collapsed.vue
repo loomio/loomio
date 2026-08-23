@@ -12,18 +12,18 @@ const userIds = ref([]);
 const users = computed(() => userIds.value.map(id => Records.users.find(id)).filter(Boolean));
 
 onMounted(() => {
-  Records.fetch({path: `events/${props.obj.event.id}/descendant_authors`}).then(data => {
+  Records.fetch({path: `topic_items/${props.obj.topic_item.id}/descendant_authors`}).then(data => {
     userIds.value = (data.users || []).map(u => u.id);
   });
 });
 </script>
 
 <template lang="pug">
-.d-flex.align-center(:class="[`positionKey-${obj.event.positionKey}`, `sequenceId-${obj.event.sequenceId}`]")
-  .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
+.d-flex.align-center(:class="[`positionKey-${obj.topic_item.positionKey}`, `sequenceId-${obj.topic_item.sequenceId}`]")
+  .strand-item__circle.mr-2(v-if="loader.collapsed[obj.topic_item.id]" @click.stop="loader.expand(obj.topic_item)")
     common-icon(name="mdi-unfold-more-horizontal")
-  .strand-item__collapsed-headline(@click="loader.expand(obj.event)")
-    strand-item-headline.text-medium-emphasis(:event="obj.event" :eventable="obj.eventable" collapsed)
+  .strand-item__collapsed-headline(@click="loader.expand(obj.topic_item)")
+    strand-item-headline.text-medium-emphasis(:topic_item="obj.topic_item" :itemable="obj.itemable" collapsed)
   .strand-item__descendant-avatars(v-if="users.length")
     user-avatar.strand-item__descendant-avatar(v-for="user in users" :key="user.id" :user="user" :size="24" no-link)
 </template>
@@ -34,7 +34,7 @@ onMounted(() => {
   cursor: pointer;
 }
 .strand-item__collapsed-headline a {
-  pointer-events: none;
+  pointer-topic_items: none;
 }
 
 .strand-item__descendant-avatars {

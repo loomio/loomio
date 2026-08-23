@@ -42,38 +42,38 @@ export default class ThreadLoader {
     return (last(this.ranges) || [])[1];
   }
 
-  setVisible(isVisible, event) {
+  setVisible(isVisible, topic_item) {
     this.readTimers = this.readTimers || {};
     if (isVisible && Session.isSignedIn()) {
-      this.readTimers[event.sequenceId] = setTimeout(() => {
-        this.topic.markAsRead(event.sequenceId);
-        delete this.readTimers[event.sequenceId];
+      this.readTimers[topic_item.sequenceId] = setTimeout(() => {
+        this.topic.markAsRead(topic_item.sequenceId);
+        delete this.readTimers[topic_item.sequenceId];
       }, 500);
-    } else if (this.readTimers[event.sequenceId]) {
-      clearTimeout(this.readTimers[event.sequenceId]);
-      delete this.readTimers[event.sequenceId];
+    } else if (this.readTimers[topic_item.sequenceId]) {
+      clearTimeout(this.readTimers[topic_item.sequenceId]);
+      delete this.readTimers[topic_item.sequenceId];
     }
-    this.visibleKeys[event.positionKey] = isVisible;
+    this.visibleKeys[topic_item.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }
 
-  collapse(event) {
+  collapse(topic_item) {
     Object.keys(this.visibleKeys).forEach(key => {
-      if (key.startsWith(event.positionKey)) { return this.visibleKeys[key] = false; }
+      if (key.startsWith(topic_item.positionKey)) { return this.visibleKeys[key] = false; }
     });
-    return this.collapsed[event.id] = true;
+    return this.collapsed[topic_item.id] = true;
   }
 
-  isUnread(event) {
-    return !RangeSet.includesValue(this.readRanges, event.sequenceId);
+  isUnread(topic_item) {
+    return !RangeSet.includesValue(this.readRanges, topic_item.sequenceId);
   }
 
   sequenceIdIsUnread(id) {
     return !RangeSet.includesValue(this.readRanges, id);
   }
 
-  expand(event) {
-    return this.collapsed[event.id] = false;
+  expand(topic_item) {
+    return this.collapsed[topic_item.id] = false;
   }
 
   addLoadArgsRule(args) {
@@ -145,7 +145,7 @@ export default class ThreadLoader {
         find: {
           topicId: this.topic.id,
           kind: 'poll_created',
-          eventableType: 'Poll'
+          itemableType: 'Poll'
         },
         pollsNotClosed: true
       },
@@ -163,8 +163,8 @@ export default class ThreadLoader {
       local: {
         find: {
           topicId: this.topic.id,
-          eventableId: commentId,
-          eventableType: 'Comment'
+          itemableId: commentId,
+          itemableType: 'Comment'
         }
       },
       remote: {
@@ -304,7 +304,7 @@ export default class ThreadLoader {
                      .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
       const params = Object.assign({}, rule.remote, this.isFirstLoad ? {exclude_types: 'reaction'} : {exclude_types: 'topic reaction'});
-      return Records.events.fetch({params});
+      return Records.topicItems.fetch({params});
     });
 
     return Promise.all(promises).finally(() => {
@@ -317,11 +317,11 @@ export default class ThreadLoader {
   updateCollection() {
     this.records = [];
     this.rules.forEach(rule => {
-      let chain = Records.events.collection.chain().find(rule.local.find);
+      let chain = Records.topicItems.collection.chain().find(rule.local.find);
 
       if (rule.local.pollsNotClosed) {
-        chain = chain.where(event => {
-          const poll = Records.polls.find(event.eventableId);
+        chain = chain.where(topic_item => {
+          const poll = Records.polls.find(topic_item.itemableId);
           return poll && !poll.discardedAt && poll.closedAt == null;
         });
       }
@@ -355,20 +355,20 @@ export default class ThreadLoader {
     this.records = uniq(this.records.concat(parentsd1).concat(parentsd2).concat(parentsd3));
     this.records = orderBy(this.records, 'positionKey');
 
-    const eventIds = this.records.map(event => event.id);
+    const topicItemIds = this.records.map(topic_item => topic_item.id);
 
-    const orphans = this.records.filter(event => (event.parentId === null) || !eventIds.includes(event.parentId));
+    const orphans = this.records.filter(topic_item => (topic_item.parentId === null) || !topicItemIds.includes(topic_item.parentId));
 
     const eventsByParentId = {};
-    this.records.forEach(event => {
-      eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event]);
+    this.records.forEach(topic_item => {
+      eventsByParentId[topic_item.parentId] = (eventsByParentId[topic_item.parentId] || []).concat([topic_item]);
     });
 
     var nest = function(records) {
-      return records.map(event => ({
-        event,
-        children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || [],
-        eventable: event.model()
+      return records.map(topic_item => ({
+        topic_item,
+        children: (eventsByParentId[topic_item.id] && nest(eventsByParentId[topic_item.id])) || [],
+        itemable: topic_item.model()
       }));
     };
 
@@ -384,20 +384,20 @@ export default class ThreadLoader {
   addMetaData(collection) {
     if (collection.length == 0) return;
 
-    const ranges = RangeSet.arrayToRanges(collection.map(e => e.event.position));
-    const parentEvent = collection[0].event.parent();
-    const lastPosition = (parentEvent && parentEvent.childCount) || 0;
+    const ranges = RangeSet.arrayToRanges(collection.map(e => e.topic_item.position));
+    const parentTopicItem = collection[0].topic_item.parent();
+    const lastPosition = (parentTopicItem && parentTopicItem.childCount) || 0;
 
     for (let i = 0; i < collection.length; i++) {
       const obj = collection[i];
-      const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
-      const isLastInRange = some(ranges, range => range[1] === obj.event.position);
-      const isLastInLastRange = last(ranges)[1] === obj.event.position;
+      const isFirstInRange = some(ranges, range => range[0] === obj.topic_item.position);
+      const isLastInRange = some(ranges, range => range[1] === obj.topic_item.position);
+      const isLastInLastRange = last(ranges)[1] === obj.topic_item.position;
 
-      obj.isUnread = this.lastReadAt && this.isUnread(obj.event);
-      obj.missingEarlier = isFirstInRange && obj.event.position > 1;
-      obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
-      obj.missingChildCount = obj.event.childCount - obj.children.length;
+      obj.isUnread = this.lastReadAt && this.isUnread(obj.topic_item);
+      obj.missingEarlier = isFirstInRange && obj.topic_item.position > 1;
+      obj.missingAfter = isLastInLastRange && obj.topic_item.position !== lastPosition;
+      obj.missingChildCount = obj.topic_item.childCount - obj.children.length;
 
       if (obj.children.length) { this.addMetaData(obj.children); }
     }

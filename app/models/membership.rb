@@ -24,7 +24,7 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :inviter, class_name: 'User'
   belongs_to :revoker, class_name: 'User'
-  has_many :events, as: :eventable, dependent: :destroy
+  has_many :topic_items, as: :itemable, dependent: :destroy
 
   scope :active,        -> { where(revoked_at: nil) }
   scope :pending,       -> { active.where(accepted_at: nil) }

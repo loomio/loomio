@@ -1,6 +1,6 @@
 # CleanupService repairs records which are already outside application
 # invariants. Its deletes must be callbackless and explicitly ordered: normal
-# callbacks can publish events, enqueue work, update counters, or traverse a
+# callbacks can publish topic_items, enqueue work, update counters, or traverse a
 # broken association graph. Application services and model callbacks remain
 # responsible for normal record lifecycle behavior.
 #
@@ -17,15 +17,14 @@
 # - outcomes_missing_poll: outcomes.poll_id -> polls.id
 # - topics_missing_group: topics.group_id -> groups.id
 # - topic_readers_missing_topic_or_user: topic_readers.topic_id/user_id
-# - events_missing_topic: events.topic_id -> topics.id
-# - events_missing_parent: deployed events.parent_id -> events.id
-# - notifications_missing_event_or_user: deployed notifications.event_id/user_id
+# - events_missing_topic: topic_items.topic_id -> topics.id
+# - events_missing_parent: deployed topic_items.parent_id -> topic_items.id
 # - tasks_users_missing_task_or_user: deployed tasks_users.task_id/user_id keys
 #
 # These checks remain necessary because an ordinary foreign key cannot enforce
-# them: polymorphic comment parents and eventables; polymorphic reactions,
+# them: polymorphic comment parents and itemables; polymorphic reactions,
 # bookmarks, tasks, translations, search documents and attachments; comments
-# whose inverse timeline event is missing; invalid topic event roots; orphan
+# whose inverse timeline topic_item is missing; invalid topic topic_item roots; orphan
 # PaperTrail versions; retired polymorphic types left by removed models; and
 # subscriptions which are no longer used by a group.
 module CleanupService
@@ -35,7 +34,8 @@ module CleanupService
     "ActiveStorage::Attachment" => %i[record_type record_id],
     "Bookmark" => %i[bookmarkable_type bookmarkable_id],
     "Comment" => %i[parent_type parent_id],
-    "Event" => %i[eventable_type eventable_id],
+    "Notification" => %i[subject_type subject_id],
+    "TopicItem" => %i[itemable_type itemable_id],
     "PgSearch::Document" => %i[searchable_type searchable_id],
     "Reaction" => %i[reactable_type reactable_id],
     "Tagging" => %i[taggable_type taggable_id],
@@ -49,8 +49,7 @@ module CleanupService
   # a legacy Document attachment must not purge its blob because the document
   # migration may have attached that same blob to its current parent record.
   POLYMORPHIC_TYPES_RETIRED = {
-    "ActiveStorage::Attachment" => %w[Document],
-    "Event" => %w[GroupIdentity Invitation]
+    "ActiveStorage::Attachment" => %w[Document]
   }.freeze
 
   DANGLING_RECORD_SCOPES = {
@@ -67,9 +66,8 @@ module CleanupService
     "TopicReader.missing_topic_or_user" => :topic_readers_missing_topic_or_user,
     "Comment.missing_event" => :comments_missing_event,
     "Comment.missing_parent" => :comments_missing_parent,
-    "Event.missing_stance" => :events_missing_stance,
-    "Event.missing_topic" => :events_missing_topic,
-    "Notification.missing_event_or_user" => :notifications_missing_event_or_user,
+    "TopicItem.missing_stance" => :events_missing_stance,
+    "TopicItem.missing_topic" => :events_missing_topic,
     "Reaction.missing_stance" => :reactions_missing_stance,
     "Bookmark.missing_stance" => :bookmarks_missing_stance,
     "Task.missing_stance" => :tasks_missing_stance,
@@ -125,13 +123,13 @@ module CleanupService
   # records must be repaired and some deleted in dependency order. Keep this
   # report side-effect free so operators can review the complete plan first.
   def self.reference_integrity_audit
-    missing_parent_events = events_missing_parent
-    invalid_root_events = events_invalid_root
+    missing_parent_topic_items = events_missing_parent
+    invalid_root_topic_items = events_invalid_root
     affected_topic_ids = (
       events_missing_stance.where.not(topic_id: nil).distinct.pluck(:topic_id) +
-      missing_parent_events.where.not(topic_id: nil).distinct.pluck(:topic_id) +
-      invalid_root_events.distinct.pluck(:topic_id) +
-      Event.where(eventable_type: "Comment", eventable_id: comments_missing_parent.select(:id))
+      missing_parent_topic_items.where.not(topic_id: nil).distinct.pluck(:topic_id) +
+      invalid_root_topic_items.distinct.pluck(:topic_id) +
+      TopicItem.where(itemable_type: "Comment", itemable_id: comments_missing_parent.select(:id))
            .where.not(topic_id: nil)
            .distinct
            .pluck(:topic_id)
@@ -144,10 +142,9 @@ module CleanupService
       ),
       comments_missing_parent: unique_count(comments_missing_parent),
       events_missing_stance: unique_count(events_missing_stance),
-      events_missing_parent: unique_count(missing_parent_events),
-      events_invalid_root: unique_count(invalid_root_events),
+      events_missing_parent: unique_count(missing_parent_topic_items),
+      events_invalid_root: unique_count(invalid_root_topic_items),
       events_referencing_missing_topic: unique_count(events_missing_topic),
-      notifications_missing_event_or_user: unique_count(notifications_missing_event_or_user),
       reactions_missing_stance: unique_count(reactions_missing_stance),
       bookmarks_missing_stance: unique_count(bookmarks_missing_stance),
       tasks_missing_stance: unique_count(tasks_missing_stance),
@@ -161,31 +158,31 @@ module CleanupService
   end
 
   def self.cleanup_event_parent_references!
-    Event.transaction do
-      events_missing_parent.find_each do |event|
-        if event.topic_id
-          parent = event.find_parent_event
-          raise "Event #{event.id} has no valid parent" unless parent&.topic_id == event.topic_id
+    TopicItem.transaction do
+      events_missing_parent.find_each do |topic_item|
+        if topic_item.topic_id
+          parent = topic_item.find_parent_topic_item
+          raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
 
-          event.update_columns(parent_id: parent.id, depth: parent.depth + 1)
-        elsif event.eventable
-          event.update_columns(parent_id: nil, depth: 0)
+          topic_item.update_columns(parent_id: parent.id, depth: parent.depth + 1)
+        elsif topic_item.itemable
+          topic_item.update_columns(parent_id: nil, depth: 0)
         else
-          Event.where(id: event.id).delete_all
+          TopicItem.where(id: topic_item.id).delete_all
         end
       end
 
-      events_invalid_root.find_each do |event|
-        parent = event.find_parent_event
-        raise "Event #{event.id} has no valid parent" unless parent&.topic_id == event.topic_id
+      events_invalid_root.find_each do |topic_item|
+        parent = topic_item.find_parent_topic_item
+        raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
 
-        event.update_columns(parent_id: parent.id, depth: parent.depth + 1)
+        topic_item.update_columns(parent_id: parent.id, depth: parent.depth + 1)
       end
     end
   end
 
   # Delete comments which could not have appeared in a topic because either
-  # their polymorphic parent or their timeline event is gone. Repeat because
+  # their polymorphic parent or their timeline topic_item is gone. Repeat because
   # deleting one such comment can expose its replies as another orphan layer.
   def self.cleanup_comment_references!
     Comment.transaction do
@@ -286,8 +283,8 @@ module CleanupService
 
   def self.comments_missing_event
     Comment
-      .joins("LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id")
-      .where('events.id IS NULL')
+      .joins("LEFT JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
+      .where('topic_items.id IS NULL')
   end
 
   def self.comments_missing_parent
@@ -307,35 +304,29 @@ module CleanupService
   end
 
   def self.events_missing_topic
-    Event
-      .joins('LEFT JOIN topics ON events.topic_id = topics.id')
-      .where('events.topic_id IS NOT NULL AND topics.id IS NULL')
+    TopicItem
+      .joins('LEFT JOIN topics ON topic_items.topic_id = topics.id')
+      .where('topic_items.topic_id IS NOT NULL AND topics.id IS NULL')
   end
 
   def self.events_missing_stance
-    Event
-      .joins("LEFT JOIN stances ON events.eventable_type = 'Stance' AND stances.id = events.eventable_id")
-      .where(eventable_type: "Stance", stances: { id: nil })
+    TopicItem
+      .joins("LEFT JOIN stances ON topic_items.itemable_type = 'Stance' AND stances.id = topic_items.itemable_id")
+      .where(itemable_type: "Stance", stances: { id: nil })
   end
 
   def self.events_missing_parent
-    Event
-      .joins("LEFT JOIN events parent_events ON parent_events.id = events.parent_id")
+    TopicItem
+      .joins("LEFT JOIN topic_items parent_topic_items ON parent_topic_items.id = topic_items.parent_id")
       .where.not(parent_id: nil)
-      .where(parent_events: { id: nil })
+      .where(parent_topic_items: { id: nil })
   end
 
   def self.events_invalid_root
-    Event
+    TopicItem
       .where.not(topic_id: nil)
       .where(parent_id: nil)
       .where.not(kind: %w[new_discussion poll_created])
-  end
-
-  def self.notifications_missing_event_or_user
-    Notification
-      .joins('LEFT JOIN events e ON notifications.event_id = e.id LEFT JOIN users u ON u.id = notifications.user_id')
-      .where('e.id IS NULL OR u.id IS NULL')
   end
 
   def self.reactions_missing_stance

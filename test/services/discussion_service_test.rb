@@ -94,7 +94,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   test "notifies mentioned users in discussion description" do
     @admin.update!(username: "mentionme#{SecureRandom.hex(4)}")
 
-    assert_difference "Event.where(kind: 'user_mentioned').count", 1 do
+    assert_difference "Notification.where(kind: 'user_mentioned').count", 1 do
       DiscussionService.create(params: {
         title: 'Test Discussion',
         description: "A mention for @#{@admin.username}!",
@@ -104,8 +104,30 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "create excludes a newly mentioned explicit recipient from the discussion email" do
+    recipient = users(:member)
+    recipient.update!(username: "createmention#{SecureRandom.hex(4)}")
+
+    discussion = DiscussionService.create(
+      params: {
+        title: "Mention notification",
+        description: "Please review this, @#{recipient.username}",
+        description_format: "md",
+        group_id: @group.id,
+        recipient_user_ids: [ recipient.id ]
+      },
+      actor: @user
+    )
+    notification = Notification.find_by!(kind: "new_discussion", subject: discussion)
+
+    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert Notification.exists?(kind: "user_mentioned", subject: discussion)
+  end
+
   test "does not notify users outside the group" do
-    assert_no_difference "Event.where(kind: 'user_mentioned').count" do
+    assert_no_difference "Notification.where(kind: 'user_mentioned').count" do
       DiscussionService.create(params: {
         title: 'Test Discussion',
         description: "A mention for @#{@alien.username}!",
@@ -161,6 +183,74 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     assert_equal @group.id, discussion.reload.group_id
     assert_equal 'Safe update', discussion.title
+  end
+
+  test "update keeps its history topic_item and creates one logical notification" do
+    discussion = discussions(:discussion)
+    recipient = users(:member)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+
+    topic_item = DiscussionService.update(
+      discussion: discussion,
+      actor: @user,
+      params: {
+        title: "Notification-backed edit",
+        recipient_user_ids: [ recipient.id ],
+        recipient_message: "Please review the changes"
+      }
+    )
+    notification = Notification.find_by!(
+      kind: "discussion_edited",
+      subject: discussion
+    )
+
+    assert_equal "discussion_edited", topic_item.kind
+    assert_equal discussion.topic_id, topic_item.topic_id
+    assert_equal [ recipient.id ], notification.recipient_user_ids
+    assert_equal "Please review the changes", notification.recipient_message
+    assert_equal 1, Notification.where(kind: "discussion_edited", subject: discussion).count
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+  end
+
+  test "update excludes a newly mentioned explicit recipient from the edit email" do
+    discussion = discussions(:discussion)
+    recipient = users(:member)
+    recipient.update!(username: "editmention#{SecureRandom.hex(4)}")
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+
+    DiscussionService.update(
+      discussion: discussion,
+      actor: @user,
+      params: {
+        description: "Please review this, @#{recipient.username}",
+        description_format: "md",
+        recipient_user_ids: [ recipient.id ]
+      }
+    )
+    notification = Notification.find_by!(kind: "discussion_edited", subject: discussion)
+
+    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert Notification.exists?(kind: "user_mentioned", subject: discussion)
+  end
+
+  test "eventless update without a direct audience does not create a notification" do
+    discussion = discussions(:discussion)
+
+    assert_no_difference "TopicItem.where(kind: 'discussion_edited').count" do
+      NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+        DiscussionService.update(
+          discussion: discussion,
+          actor: @user,
+          params: { title: "Saved without a notification" }
+        )
+      end
+    end
+
+    assert_equal "Saved without a notification", discussion.reload.title
   end
 
   # -- Discard --

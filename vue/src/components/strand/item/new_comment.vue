@@ -2,12 +2,12 @@
 import Session from '@/shared/services/session';
 import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
-import EventService from '@/shared/services/event_service';
+import TopicItemService from '@/shared/services/topic_item_service';
 
 export default {
   props: {
-    event: Object,
-    eventable: Object,
+    topic_item: Object,
+    itemable: Object,
     focused: Boolean,
     unread: Boolean
   },
@@ -26,8 +26,8 @@ export default {
 
   methods: {
     rebuildActions() {
-      this.commentActions = CommentService.actions(this.eventable, this, this.event);
-      this.eventActions = EventService.actions(this.event, this);
+      this.commentActions = CommentService.actions(this.itemable, this, this.topic_item);
+      this.eventActions = TopicItemService.actions(this.topic_item, this);
     },
 
     viewed(seen) {
@@ -63,10 +63,10 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id" v-intersect.once="{handler: viewed}")
-  strand-item-headline(:event="event" :eventable="eventable" :focused="focused" :unread="unread")
-  formatted-text.thread-item__body.new-comment__body(:model="eventable" field="body")
-  //link-previews(:model="eventable")
-  attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' size="small" left)
+section.strand-item__new-comment.new-comment(:id="'comment-'+ itemable.id" v-intersect.once="{handler: viewed}")
+  strand-item-headline(:topic_item="topic_item" :itemable="itemable" :focused="focused" :unread="unread")
+  formatted-text.thread-item__body.new-comment__body(:model="itemable" field="body")
+  //link-previews(:model="itemable")
+  attachment-list(:attachments="itemable.attachments")
+  action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' size="small" left)
 </template>

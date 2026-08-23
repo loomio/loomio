@@ -12,11 +12,11 @@ class ReactionQuery
       stance_ids:     Array(params[:stance_ids])
     }
 
-    comment_topic_ids = Comment.joins(:events)
+    comment_topic_ids = Comment.joins(:topic_items)
                                .where(comments: { id: ids_requested[:comment_ids] })
-                               .where.not(events: { topic_id: nil })
+                               .where.not(topic_items: { topic_id: nil })
                                .distinct
-                               .pluck('events.topic_id')
+                               .pluck('topic_items.topic_id')
     topic_ids_visible = TopicQuery.visible_to(user: user)
                                   .where(id: comment_topic_ids)
                                   .except(:includes)
@@ -48,9 +48,9 @@ class ReactionQuery
                                .ids
 
     unsafe_where(
-      comment_ids: Comment.joins(:events)
+      comment_ids: Comment.joins(:topic_items)
                           .where(comments: { id: ids_requested[:comment_ids] })
-                          .where(events: { topic_id: topic_ids_visible })
+                          .where(topic_items: { topic_id: topic_ids_visible })
                           .distinct
                           .ids,
       discussion_ids: discussion_ids_visible,

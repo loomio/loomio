@@ -34,8 +34,8 @@ export default {
         zIndex: 1
       };
     },
-    event() {
-      return this.poll && this.poll.createdEvent();
+    topic_item() {
+      return this.poll && this.poll.createdTopicItem();
     }
   }
 };
@@ -43,13 +43,13 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3" :aria-label="$t('discussion_context.current_poll_type_banner', {pollType: poll.translatedPollType()})")
+v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="topic_item && $route.params.sequence_id != topic_item.sequenceId" :elevation="3" :aria-label="$t('discussion_context.current_poll_type_banner', {pollType: poll.translatedPollType()})")
   v-avatar.mr-4(:size="32" tile)
     poll-common-icon-panel(:poll='poll' :size="32")
   .current-poll-banner__title.mr-4
     span {{poll.title}}
   v-spacer
-  v-btn(variant="tonal" :to="urlFor(event)")
+  v-btn(variant="tonal" :to="urlFor(topic_item)")
     span(v-t="'common.view'")
 </template>
 

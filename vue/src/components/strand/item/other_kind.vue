@@ -4,19 +4,19 @@ import Records        from '@/shared/services/records';
 
 export default {
   props: {
-    event: Object,
-    eventable: Object
+    topic_item: Object,
+    itemable: Object
   },
 
   computed: {
     headline() {
-      const actor = this.event.actor();
-      return this.$t(eventHeadline(this.event, true ), { // useNesting
-        author:   actor.nameWithTitle(this.eventable.group()),
+      const actor = this.topic_item.actor();
+      return this.$t(eventHeadline(this.topic_item, true ), { // useNesting
+        author:   actor.nameWithTitle(this.itemable.group()),
         username: actor.username,
-        key:      this.event.model().key,
-        title:    eventTitle(this.event),
-        polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
+        key:      this.topic_item.model().key,
+        title:    eventTitle(this.topic_item),
+        polltype: this.topic_item.isPollTopicItem() ? this.$t(eventPollType(this.topic_item)).toLowerCase() : null
       });
     }
   }
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-strand-item-headline(:event="event" :eventable="eventable")
+strand-item-headline(:topic_item="topic_item" :itemable="itemable")
 </template>
 
 <style>

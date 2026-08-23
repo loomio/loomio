@@ -90,7 +90,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       description_format: "html"
     }, actor: public_author)
     discussion.save(validate: false)
-    discussion.create_missing_created_event!
+    discussion.create_missing_created_topic_item!
 
     sign_in @alien
     get :index
@@ -435,7 +435,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     dr = TopicReader.last
     assert_equal discussion, dr.topic.topicable
     assert_not_nil dr.last_read_at
-    assert_equal 1, dr.read_items_count  # root event (sequence_id 0) is marked as read
+    assert_equal 1, dr.read_items_count  # root topic_item (sequence_id 0) is marked as read
   end
 
   test "does not allow non-users to mark topics as seen" do

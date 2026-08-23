@@ -44,7 +44,7 @@ function scrollToEnd() {
   props.loader.addLoadArgsRule({ order_by: 'position_key', order_desc: true });
   props.loader.fetch().then(() => {
     props.loader.updateCollection();
-    const endEvent = Records.events.collection.chain()
+    const endEvent = Records.topicItems.collection.chain()
       .find({ topicId: props.topic.id })
       .simplesort('positionKey', true)
       .limit(1)
@@ -91,7 +91,7 @@ onMounted(() => {
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
   EventBus.$on('toggleThreadNav', () => { open.value = !open.value; });
 
-  Records.events.fetch({
+  Records.topicItems.fetch({
     params: {
       exclude_types: 'topic',
       topic_id: props.topic.id,
@@ -102,24 +102,24 @@ onMounted(() => {
 
   watchRecords({
     key: 'thread-nav' + props.topic.id,
-    collections: ['events', 'discussions', 'polls', 'topics', 'memberships'],
+    collections: ['topic_items', 'discussions', 'polls', 'topics', 'memberships'],
     query: () => {
       topicActions.value = TopicService.actions(props.topic);
-      pinnedItems.value = Records.events.collection.chain()
+      pinnedItems.value = Records.topicItems.collection.chain()
         .find({ topicId: props.topic.id, pinned: true })
         .simplesort('positionKey')
         .data()
         .filter(e => !e.model()?.discardedAt)
-        .map(event => {
-          const model = event.model();
-          const isPoll = event.kind === 'poll_created';
+        .map(topic_item => {
+          const model = topic_item.model();
+          const isPoll = topic_item.kind === 'poll_created';
           const poll = isPoll ? model.poll() : null;
           return {
-            key: event.positionKey,
-            sequenceId: event.sequenceId,
-            title: (model && model.title) || event.pinnedTitle || event.fillPinnedTitle(),
+            key: topic_item.positionKey,
+            sequenceId: topic_item.sequenceId,
+            title: (model && model.title) || topic_item.pinnedTitle || topic_item.fillPinnedTitle(),
             poll,
-            user: !isPoll && event.actor() || null
+            user: !isPoll && topic_item.actor() || null
           };
         });
     }

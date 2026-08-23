@@ -11,7 +11,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   end
 
   # Test create action
-  test "create discussion in group with no notifications" do
+  test "create discussion in group with no recipient notification" do
     sign_in @user
 
     post :create, params: { discussion: { title: 'test', group_id: @group.id } }
@@ -22,7 +22,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     assert_equal 1, discussion.topic_readers.count
     assert_equal @user.id, discussion.topic_readers.first.user_id
-    assert_equal 0, discussion.created_event.notifications.count
+    assert_not Notification.exists?(kind: "new_discussion", subject: discussion)
   end
 
   test "create returns the subscription thread limit message" do

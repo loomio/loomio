@@ -100,11 +100,12 @@ class User < ApplicationRecord
 
   has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
-  has_many :notifications, dependent: :destroy
+  has_many :notification_deliveries, as: :recipient, dependent: :destroy
+  has_many :notifications, through: :notification_deliveries
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
   has_many :sessions, dependent: :destroy
-  has_many :events, dependent: :destroy
+  has_many :topic_items, dependent: :destroy
 
   has_many :tags, through: :groups
 

@@ -3,8 +3,8 @@ class Stance < ApplicationRecord
   include HasMentions
   include Reactable
   include Bookmarkable
-  include HasEvents
-  include HasCreatedEvent
+  include HasTopicItems
+  include HasCreatedTopicItem
   include Searchable
 
   extend HasTokens
@@ -131,12 +131,14 @@ class Stance < ApplicationRecord
   end
 
 
-  def create_missing_created_event!
-    events.create(
-      kind: created_event_kind,
+  def create_missing_created_topic_item!
+    return unless add_to_thread?
+
+    topic_items.create(
+      kind: created_topic_item_kind,
       user_id: author_id,
       created_at: created_at,
-      topic: (add_to_thread? ? poll.topic : nil)
+      topic: poll.topic
     )
   end
 
@@ -175,7 +177,7 @@ class Stance < ApplicationRecord
   def add_to_thread?
     poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
-    !Event.where(eventable: self,
+    !TopicItem.where(itemable: self,
                  topic_id: poll.topic_id,
                  kind: ['stance_created', 'stance_updated']).exists?
   end
@@ -192,8 +194,8 @@ class Stance < ApplicationRecord
     reason_format
   end
 
-  def parent_event
-    poll.created_event
+  def parent_topic_item
+    poll.created_topic_item
   end
 
   def discarded?

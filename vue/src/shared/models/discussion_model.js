@@ -27,7 +27,7 @@ export default class DiscussionModel extends BaseModel {
       title: '',
       description: '',
       descriptionFormat: 'html',
-      forkedEventIds: [],
+      selectedTopicItemIds: [],
       ranges: [],
       readRanges: [],
       newestFirst: false,
@@ -59,7 +59,7 @@ export default class DiscussionModel extends BaseModel {
     clone.title = I18n.global.t('templates.copy_of_title', {title: clone.title});
     clone.authorId = Session.user().id;
     clone.pinnedAt = null;
-    clone.forkedEventIds = [];
+    clone.selectedTopicItemIds = [];
     clone.groupId = null;
     clone.lockedAt = null;
     clone.lockerId = null;
@@ -103,12 +103,12 @@ export default class DiscussionModel extends BaseModel {
     return ((this.id && this) || (this.groupId && this.group()) || {namedId() {}}).namedId();
   }
 
-  createdEvent() {
+  createdTopicItem() {
     if (this.topicId) {
-      const res = Records.events.find({topicId: this.topicId, sequenceId: 0});
+      const res = Records.topicItems.find({topicId: this.topicId, sequenceId: 0});
       if (!isEmpty(res)) { return res[0]; }
     }
-    const res = Records.events.find({kind: 'new_discussion', eventableId: this.id});
+    const res = Records.topicItems.find({kind: 'new_discussion', itemableId: this.id});
     if (!isEmpty(res)) { return res[0]; }
   }
 

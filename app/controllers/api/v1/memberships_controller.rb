@@ -31,8 +31,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   end
 
   def join_group
-    event = service.join_group group: load_and_authorize(:group), actor: current_user
-    @membership = event.eventable
+    @membership = service.join_group group: load_and_authorize(:group), actor: current_user
     respond_with_resource
   end
 

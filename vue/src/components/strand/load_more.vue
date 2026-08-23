@@ -20,7 +20,7 @@ const loadAndScrollTo = () => {
     // anchorSelector/anchorOffset so that after the new items are inserted above,
     // ScrollService can restore the viewport to the same visual position (preventing
     // the page from jumping).
-    const selector = `.positionKey-${collection[index].event.positionKey}`
+    const selector = `.positionKey-${collection[index].topic_item.positionKey}`
     const el = document.querySelector(selector);
     if (el) {
       EventBus.$emit('setAnchor', selector, el.getBoundingClientRect().top);
@@ -38,41 +38,41 @@ const positionKeyPlusOne = (positionKey) => {
 
 const nextSiblingPositionKey = () => {
   // skipping any child positions
-  const event = collection[index].event;
-  let strs = event.positionKey.split("-")
-  let num = event.position + 1
+  const topic_item = collection[index].topic_item;
+  let strs = topic_item.positionKey.split("-")
+  let num = topic_item.position + 1
   strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
   return strs.join("-")
 }
 
 const positionKeyParent = () => {
-  return collection[index].event.positionKey.split('-').slice(0, -1).join('-');
+  return collection[index].topic_item.positionKey.split('-').slice(0, -1).join('-');
 }
 
 const params = () => {
-  const event = collection[index].event;
+  const topic_item = collection[index].topic_item;
   switch (direction) {
     case 'before':
       return pickBy({
-        position_key_gte: (collection[index - 1] && positionKeyPlusOne(collection[index - 1].event.positionKey)),
+        position_key_gte: (collection[index - 1] && positionKeyPlusOne(collection[index - 1].topic_item.positionKey)),
         position_key_gt: positionKeyParent(),
-        position_key_lt: event.positionKey,
-        depth_lte: event.depth,
+        position_key_lt: topic_item.positionKey,
+        depth_lte: topic_item.depth,
         order_by: 'position_key',
         order_desc: 1,
       });
     case 'after':
       return pickBy({
         position_key_sw: positionKeyParent(),
-        position_key_gte: positionKeyPlusOne(collection[index].event.positionKey),
-        position_key_lt: collection[index + 1] ? collection[index + 1].event.positionKey : null,
-        depth_lte: collection[index].event.depth + 1,
+        position_key_gte: positionKeyPlusOne(collection[index].topic_item.positionKey),
+        position_key_lt: collection[index + 1] ? collection[index + 1].topic_item.positionKey : null,
+        depth_lte: collection[index].topic_item.depth + 1,
         order_by: 'position_key'
       });
     case 'children':
       return pickBy({
-        position_key_sw: event.positionKey,
-        position_key_gt: event.positionKey,
+        position_key_sw: topic_item.positionKey,
+        position_key_gt: topic_item.positionKey,
         order_by: 'position_key'
       });
   }
@@ -88,13 +88,13 @@ const load = () => {
 const count = ref("~");
 watch(() => collection.length, () => {
   Records.fetch({
-    path: 'events/count',
+    path: 'topic_items/count',
     params: Object.assign({}, { topic_id: loader.topic.id }, params())
   }).then((val) => count.value = val );
 }, { immediate: true })
 
 const size = () => {
-  switch (collection[index].event.depth) {
+  switch (collection[index].topic_item.depth) {
     case 1: return 'x-large';
     case 2: return 'default';
     case 3: return 'default';

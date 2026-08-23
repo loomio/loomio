@@ -99,7 +99,7 @@ node-view-wrapper(as="li")
   content: attr(data-placeholder);
   float: left;
   color: #ced4da;
-  pointer-events: none;
+  pointer-topic_items: none;
   height: 0;
 }
 

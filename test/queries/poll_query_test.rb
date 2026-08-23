@@ -16,7 +16,7 @@ class PollQueryTest < ActiveSupport::TestCase
       }
       p = PollService.build(params: defaults.merge(attrs), actor: attrs[:author] || @user)
       p.save!
-      p.create_missing_created_event!
+      p.create_missing_created_topic_item!
       p
     end
 

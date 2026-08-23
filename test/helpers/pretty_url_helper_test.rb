@@ -34,8 +34,8 @@ class PrettyUrlHelperTest < ActionView::TestCase
   end
 
   test "returns nil for a received email whose group has been cleared" do
-    event = Event.new(kind: "unknown_sender", eventable: ReceivedEmail.new)
+    topic_item = TopicItem.new(kind: "unknown_sender", itemable: ReceivedEmail.new)
 
-    assert_nil event.notification_url
+    assert_nil topic_item.notification_url
   end
 end

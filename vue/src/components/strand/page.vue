@@ -73,9 +73,9 @@ function onVisibleKeys(keys) {
   if (!match) { return true; }
 
   const sequenceId = parseInt(match[1]);
-  const event = Records.events.find({ topicId: topic.value.id, sequenceId })[0];
-  if (!event) { return false; }
-  focusedItemVisible.value = keys.includes(event.positionKey);
+  const topic_item = Records.topicItems.find({ topicId: topic.value.id, sequenceId })[0];
+  if (!topic_item) { return false; }
+  focusedItemVisible.value = keys.includes(topic_item.positionKey);
 }
 
 function init() {
@@ -112,8 +112,8 @@ function routeCommentId() {
 
 // Thread loading strategy:
 // 1. If a specific focus is given (a poll key for a non-topical poll, a sequence_id, or a comment_id),
-//    load events around that item and scroll to it.
-// 2. Otherwise, load unread-or-newest events, then scroll to:
+//    load topic_items around that item and scroll to it.
+// 2. Otherwise, load unread-or-newest topic_items, then scroll to:
 //    a. The first unread item (if the user has read before and there is unread), or
 //    b. The last item by position_key (if everything is read), or
 //    c. The top (if nothing has been read yet — first visit).
@@ -155,10 +155,10 @@ function fetchInitialContent() {
   const key = route.params.key;
   const params = initialFetchParams();
 
-  return Records.events.fetch({ params }).then(data => {
+  return Records.topicItems.fetch({ params }).then(data => {
     if (route.params.key !== key) { return; }
 
-    const topicId = (data.topics || [])[0]?.id || (data.events || [])[0]?.topic_id;
+    const topicId = (data.topics || [])[0]?.id || (data.topic_items || [])[0]?.topic_id;
     const t = Records.topics.find(topicId);
     if (!t) { return; }
 
@@ -184,7 +184,7 @@ function fetchInitialContent() {
     let scrolledToUnread = false;
     watchRecords({
       key: 'strand' + topic.value.id,
-      collections: ['events'],
+      collections: ['topic_items'],
       query: () => {
         if (!loader.value) { return; }
         loader.value.updateCollection();
@@ -193,7 +193,7 @@ function fetchInitialContent() {
           if (firstUnread) {
             anchorSelector.value = `.sequenceId-${firstUnread}`;
           } else {
-            const lastEvent = Records.events.collection.chain()
+            const lastEvent = Records.topicItems.collection.chain()
               .find({ topicId: topic.value.id })
               .simplesort('positionKey', true)
               .limit(1)
@@ -238,10 +238,10 @@ function loadContent(remoteTopicParams = null) {
   if (route.path.startsWith('/p/')) {
     const poll = Records.polls.findByKey(route.params.key);
     if (poll && !(topic.value.topicableType === 'Poll' && topic.value.topicableId === poll.id)) {
-      const event = Records.events.find({ topicId: topic.value.id, eventableType: 'Poll', eventableId: poll.id, kind: 'poll_created' })[0];
-      if (event) {
-        loader.value.addLoadSequenceIdRule(event.sequenceId, remoteTopicParams);
-        focusSelector.value = `.sequenceId-${event.sequenceId}`;
+      const topic_item = Records.topicItems.find({ topicId: topic.value.id, itemableType: 'Poll', itemableId: poll.id, kind: 'poll_created' })[0];
+      if (topic_item) {
+        loader.value.addLoadSequenceIdRule(topic_item.sequenceId, remoteTopicParams);
+        focusSelector.value = `.sequenceId-${topic_item.sequenceId}`;
         return;
       }
     }

@@ -1,131 +1,104 @@
 class NotificationService
-  INDEX_DEDUPLICATION = "index_notifications_on_user_id_and_deduplication_key"
+  INDEX_IDENTITY = "index_notifications_on_deduplication_key"
 
-  # Insert event-backed notifications at the database idempotency boundary.
-  # Existing event rows remain authoritative for rendering during migration;
-  # the copied fields make each new notification independently renderable later.
-  # Return only rows inserted by this attempt so retries do not repeat realtime
-  # or email side effects.
-  def self.create_for_event!(event:, notifications:)
-    notifications = Array(notifications)
-    return [] if notifications.empty?
-    raise ArgumentError, "event must be persisted" unless event.persisted?
-    unless notifications.all? { |notification| notification.event_id == event.id }
-      raise ArgumentError, "notifications must belong to the delivery event"
+  # Commit one logical occurrence, then resolve all channel deliveries in the
+  # background. Explicit audiences are snapshotted on the notification while
+  # implied audiences are derived by the same kind-specific resolver.
+  def self.create!(kind:, subject:, actor:, occurrence_key: nil,
+                   recipient_user_ids: [], recipient_chatbot_ids: [],
+                   recipient_message: nil, audience_values: {})
+    raise ArgumentError, "subject must be persisted" unless subject&.persisted?
+    raise ArgumentError, "kind is required" if kind.blank?
+
+    resolver_class = NotificationDeliveryResolver.class_for(kind)
+    resolver_class.validate_subject!(subject)
+    deduplication_key = resolver_class.deduplication_key(subject, occurrence_key: occurrence_key)
+    translation_values = resolver_class.translation_values(subject, actor)
+
+    now = Time.current
+    result = Notification.insert_all(
+      [ {
+        actor_id: actor&.id,
+        kind: kind,
+        subject_type: subject.class.base_class.name,
+        subject_id: subject.id,
+        deduplication_key: deduplication_key,
+        translation_values: translation_values,
+        recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
+        recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
+        recipient_message: recipient_message.presence,
+        audience_values: audience_values,
+        created_at: now,
+        updated_at: now
+      } ],
+      unique_by: INDEX_IDENTITY,
+      returning: [ :id ]
+    )
+
+    notification = if result.rows.any?
+      Notification.find(result.rows.first.first)
+    else
+      Notification.find_by!(deduplication_key: deduplication_key)
     end
 
-    # Older migrations can publish events before the additive delivery columns
-    # exist. Preserve the original event-backed insertion path until that schema
-    # checkpoint has been crossed.
-    unless delivery_fields_available?
-      Notification.import(notifications)
-      return notifications
+    if notification.deliveries_generated_at.nil?
+      ResolveNotificationDeliveriesWorker.perform_later(notification.id)
     end
-
-    deduplication_key = "event:#{event.id}"
-    created_at = Time.current
-    notification_ids_inserted = []
-
-    Notification.transaction do
-      notifications_by_user_id = notifications.index_by(&:user_id)
-      existing_by_user_id = Notification
-        .where(event_id: event.id, user_id: notifications_by_user_id.keys)
-        .where(deduplication_key: [ nil, deduplication_key ])
-        .order(:id)
-        .lock
-        .group_by(&:user_id)
-
-      # A retry may encounter a notification created before dual-writing was
-      # deployed. Adopt that row without treating it as a new delivery.
-      existing_by_user_id.each do |user_id, existing_notifications|
-        notification = notifications_by_user_id.delete(user_id)
-        existing = existing_notifications.find { |record| record.deduplication_key == deduplication_key }
-        existing ||= existing_notifications.first
-        next if existing.deduplication_key == deduplication_key
-
-        existing.update_columns(
-          kind: notification.kind,
-          subject_type: event.eventable_type,
-          subject_id: event.eventable_id,
-          deduplication_key: deduplication_key
-        )
-      end
-
-      rows = notifications_by_user_id.values.map do |notification|
-        {
-          user_id: notification.user_id,
-          actor_id: notification.actor_id,
-          event_id: event.id,
-          kind: notification.kind,
-          subject_type: event.eventable_type,
-          subject_id: event.eventable_id,
-          deduplication_key: deduplication_key,
-          translation_values: notification.translation_values,
-          viewed: notification.viewed,
-          created_at: created_at,
-          updated_at: created_at
-        }
-      end
-
-      if rows.any?
-        result = Notification.insert_all(
-          rows,
-          unique_by: INDEX_DEDUPLICATION,
-          returning: [ :id ]
-        )
-        notification_ids_inserted = result.rows.flatten
-      end
-    end
-
-    Notification.where(id: notification_ids_inserted).order(:id).to_a
+    notification
   end
 
-  def self.delivery_fields_available?
-    Notification.connection.column_exists?(:notifications, :deduplication_key)
-  end
-  private_class_method :delivery_fields_available?
-
-  def self.mark_as_read(eventable_type, eventable_id, actor_id)
-    ids = Notification.joins(:event)
-      .where(user_id: actor_id, viewed: false)
-      .where('events.eventable_type': eventable_type, 'events.eventable_id': eventable_id).pluck(:id)
-
-    notifications = Notification.where(user_id: actor_id, id: ids, 'viewed': false)
-    notifications.update_all(viewed: true)
-    notifications.reload
+  def self.mark_as_read(itemable_type, itemable_id, actor_id)
+    deliveries = NotificationDelivery
+                        .joins(:notification)
+                        .where(
+                          channel: "in_app",
+                          recipient_type: "User",
+                          recipient_id: actor_id,
+                          viewed_at: nil,
+                          notifications: {
+                            subject_type: itemable_type,
+                            subject_id: itemable_id
+                          }
+                        )
+    notification_ids = deliveries.distinct.pluck(:notification_id)
+    deliveries.update_all(viewed_at: Time.current, updated_at: Time.current)
+    notifications = Notification.where(id: notification_ids).to_a
+    notifications.each(&:reload)
     MessageChannelService.publish_models(notifications, user_id: actor_id)
   end
 
-  def self.viewed_events(actor_id:, topic_id:, sequence_ids:)
-    event_ids = []
+  def self.viewed_topic_items(actor_id:, topic_id:, sequence_ids:)
+    topic_items = TopicItem.includes(:itemable).where(topic_id: topic_id, sequence_id: sequence_ids)
+    reactions = Reaction.where(reactable: topic_items.map(&:itemable))
+    itemable_ids = Hash.new { |h, k| h[k] = [] }
+    topic_items.each { |topic_item| itemable_ids[topic_item.itemable_type] << topic_item.itemable_id }
+    reactions.each { |reaction| itemable_ids["Reaction"] << reaction.id }
 
-    events = Event.includes(:eventable).where(topic_id: topic_id, sequence_id: sequence_ids)
-
-    reactions = Reaction.where(reactable: events.map(&:eventable))
-    event_ids.concat Event.where(eventable: reactions).pluck(:id)
-
-    eventable_ids = Hash.new { |h, k| h[k] = [] }
-    Event.where(topic_id: topic_id, sequence_id: sequence_ids)
-         .pluck(:eventable_type, :eventable_id)
-         .each { |type, id| eventable_ids[type] << id }
-
-    eventable_ids.each_pair do |type, ids|
-      event_ids.concat Notification.joins(:event).where(
-        user_id: actor_id,
-        viewed: false,
-        'events.eventable_type': type,
-        'events.eventable_id': ids).pluck('events.id')
+    notification_scope = Notification.none
+    itemable_ids.each_pair do |type, ids|
+      notification_scope = notification_scope.or(Notification.where(subject_type: type, subject_id: ids))
     end
-
-    notifications = Notification.where(user_id: actor_id, event_id: event_ids.uniq, viewed: false)
-    notifications.update_all(viewed: true)
-    notifications.reload
+    deliveries = NotificationDelivery.where(
+      notification_id: notification_scope.select(:id),
+      recipient_type: "User",
+      recipient_id: actor_id,
+      channel: "in_app",
+      viewed_at: nil
+    )
+    notification_ids = deliveries.distinct.pluck(:notification_id)
+    deliveries.update_all(viewed_at: Time.current, updated_at: Time.current)
+    notifications = Notification.where(id: notification_ids).to_a
     MessageChannelService.publish_models(notifications, user_id: actor_id)
   end
 
   def self.viewed(user:)
-    user.notifications.where(viewed: false).update_all(viewed: true)
-    notifications = user.notifications.includes(:actor, :user).order(created_at: :desc).limit(30)
+    NotificationDelivery.where(
+      recipient: user,
+      channel: "in_app",
+      status: "delivered",
+      viewed_at: nil
+    ).update_all(viewed_at: Time.current, updated_at: Time.current)
+    notifications = user.notifications.includes(:actor).order(created_at: :desc).limit(30)
 
     # alert clients (say, user's other tabs) that notifications have been read
     MessageChannelService.publish_models(notifications, user_id: user.id)

@@ -10,6 +10,21 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "join group responds with the created membership" do
+    group = Group.create!(
+      name: "Open group #{SecureRandom.hex(4)}",
+      group_privacy: "open",
+      membership_granted_upon: "request"
+    )
+    sign_in @alien
+
+    post :join_group, params: { group_id: group.id }
+
+    assert_response :success
+    membership = Membership.find_by!(group: group, user: @alien)
+    assert_equal membership.id, JSON.parse(response.body).fetch("memberships").first.fetch("id")
+  end
+
   # ===== Membership Creation Tests =====
 
   test 'sets the membership volume to user default' do

@@ -2,290 +2,226 @@
 
 ## Objective
 
-Separate topic timelines from notification delivery. Records which appear in a
-topic become `TopicItem` records with a required `topic_id`. Operational work
-such as poll expiry creates durable, idempotent notifications directly instead
-of creating an `Event` solely to drive delivery.
+Give each persisted concept one meaning:
 
-## Current architecture
+- `TopicItem` is an occurrence on a topic timeline and always has a `topic_id`.
+- `Notification` is one logical notification occurrence, independent of its
+  audience and channels.
+- `NotificationDelivery` is one channel-specific delivery to one recipient and
+  owns delivery and read state.
 
-- `Topic#items` is an association to `Event`; there is no `TopicItem` model or
-  table.
-- `events.topic_id` distinguishes timeline rows from notification-only rows.
-- `Notification` requires an event and derives its kind, subject and rendering
-  context through that event.
-- `PublishEventWorker` retries the complete notification pipeline. In-app
-  notifications have no database uniqueness constraint, so a retry after a
-  partial success can create duplicates.
-- Solid Queue is an execution mechanism, not a durable delivery ledger.
-  Finished jobs are cleared hourly.
+The historical schema used `Event` for both timeline occurrences and
+notification operations, while `Notification` meant one user's in-app receipt.
+The migration must not rename those legacy rows in place and pretend they have
+the new meanings.
 
-The production-shaped database contains both clear categories and historical
-overlap. Timeline-only kinds include `new_comment`, `new_discussion` and
-`poll_created`. Large notification-only kinds include `user_mentioned`,
-`reaction_created`, `comment_replied_to` and `invitation_accepted`. Historically
-mixed kinds include `poll_expired`, `poll_closing_soon`, `discussion_edited` and
-stance events. Migration must classify individual rows by `topic_id`, not assume
-that every row of a kind has the same role.
+## Target model
 
-The production-shaped database has 11,207,411 notifications. It contains 73,750
-duplicate `(user_id, event_id)` groups representing 133,875 additional rows.
-`poll_closing_soon` accounts for 121,639 of those rows. This is existing evidence
-that queue retry or repeated publication needs a database idempotency boundary.
+```text
+TopicItem
+  topic_id (required)
+  kind, itemable, actor, position, parent
+
+Notification
+  kind, subject, actor
+  deduplication_key (unique)
+  occurrence-wide rendering and audience snapshot
+
+NotificationDelivery
+  notification_id
+  channel: in_app | email | push | chatbot
+  recipient: User | Chatbot | future push endpoint
+  status, scheduling, attempts, provider state
+  viewed_at and recipient-localized translation values
+  unique(notification_id, channel, recipient_type, recipient_id)
+```
+
+One notification can therefore have many deliveries. Historical duplicate
+per-user receipts consolidate into the same in-app delivery identity; they do
+not require deleting data from the live legacy table first.
+
+One old event can produce more than one effective notification kind. In
+particular, a `user_mentioned` event is rendered as `comment_replied_to` for the
+parent author and `user_mentioned` for other recipients. Historical occurrence
+identity must therefore include both the old event ID and effective kind.
+
+## Boundaries
+
+Not every publication is a notification:
+
+- loud-volume comment email is a subscription delivery from the comment's
+  topic item and does not create a notification;
+- topic live update is publication of a topic item, not notification delivery;
+- a chatbot subscribed to topic activity is also a topic-item publication;
+- a chatbot explicitly selected for a notification is a notification delivery.
+
+Stances and other domain records are committed independently of notification
+resolution. The domain operation, its required topic item and database-derived
+state remain one transaction. Notification creation is deliberately small and
+durable; background work resolves and delivers its audience.
 
 ## Invariants
 
-1. A topic item always has a valid `topic_id`.
+1. Every topic item has a valid topic.
 2. Root topic items remain unique for `new_discussion` and `poll_created`.
-3. A notification contains the kind, subject, actor and translation values
-   required to render it without loading an event.
-4. Each logical notification has a deterministic deduplication key. The
-   database prevents more than one notification for the same user and key.
-5. Solid Queue may schedule and retry delivery work, but queue rows are not the
-   source of truth for whether a notification was created.
-6. Email and live-update work is enqueued only for notifications newly inserted
-   by an attempt. Retrying notification creation is safe.
-7. Existing event-backed notifications remain readable throughout the staged
-   migration.
+3. Every notification has the kind, subject, actor context and deterministic
+   identity needed without a topic item.
+4. Every recipient/channel pair is unique within a notification.
+5. In-app read state belongs to the delivery, never the notification.
+6. Queue jobs schedule work; notification and delivery rows are the durable
+   source of truth.
+7. Retrying occurrence creation, audience resolution or delivery dispatch is
+   safe at database uniqueness boundaries.
+8. Loud subscription delivery and topic live updates remain independent of the
+   notification ledger.
 
-## Delivery identity
+## Corrected migration sequence
 
-The initial durable delivery record remains `Notification`; a separate
-`NotificationDelivery` table is not required merely to remove operational
-events. A deterministic key identifies the logical occurrence, for example:
+### Release A: additive preparation
 
-```text
-poll_closing_soon:poll_123:2026-08-22T10:00:00Z
-```
+This release preserves the existing event-backed application path unchanged.
+It does not reinterpret or mutate the legacy `notifications` table.
 
-The database uniqueness boundary is `(user_id, deduplication_key)`, allowing
-one logical occurrence to notify many users while making retries idempotent for
-each recipient.
+1. Create `notification_occurrences` with the complete target notification row
+   shape and a unique occurrence key.
+2. Create `notification_deliveries` referencing
+   `notification_occurrences`, including in-app read and localized rendering
+   state.
+3. Create a small `notification_consolidation_states` table with a durable
+   legacy-notification ID cursor and high-water mark.
+4. Deploy this schema while the old application continues to create Event rows
+   and per-user Notification receipts.
+5. Run the resumable consolidation task in bounded notification-ID batches:
 
-A separate channel-delivery table is not required for the behavior-preserving
-refactor below. The follow-on delivery project will need durable per-channel
-and per-batch state for email, push, provider message IDs and retry history.
+   ```sh
+   bin/rails loomio:consolidate_notifications
+   APPLY=1 BATCH_SIZE=250000 bin/rails loomio:consolidate_notifications
+   ```
 
-## Implementation sequence
+   Each batch:
 
-### 1. Self-contained notifications
+   - reads legacy notifications joined to their event;
+   - derives the recipient's effective kind;
+   - inserts one occurrence keyed by `event:<id>:<effective-kind>`;
+   - inserts or merges one delivered in-app delivery per user;
+   - preserves the earliest delivery time, any viewed state, and the retained
+     recipient translation values; and
+   - advances the cursor in the same transaction.
 
-- Add notification kind and polymorphic subject columns.
-- Add a deterministic deduplication key.
-- Create the partial unique `(user_id, deduplication_key)` index with the new
-  columns. It permits historical null keys and begins enforcing identity as
-  rows are dual-written or backfilled.
-- Normalize historical `(user_id, event_id)` duplicates before backfilling
-  event-based keys. Retain the earliest notification, preserve `viewed = true`
-  if any duplicate was viewed, and retain the latest `updated_at`.
-- Make event-backed creation populate the self-contained fields before starting
-  the historical backfill. This dual-write closes the boundary behind the
-  backfill while serializers and mailers continue to use the event-backed path.
-- Wait until the dual-writing application version is fully deployed and old
-  notification writers have drained, then run duplicate normalization again.
-  This catches null-key rows created between the first normalization and the
-  deployment cutover.
-- Backfill event-backed notifications from their events in bounded notification
-  ID ranges. Each short transaction writes only rows whose deduplication key is
-  null and whose ID is no greater than the starting high-water mark. Populate:
-  - `kind` with the effective notification kind currently returned by the
-    serializer, including announcement-kind and comment-reply special cases;
-  - `subject_type` and `subject_id` from the eventable used to render the
-    notification;
-  - the existing `actor_id` only when it is missing and the event supplies an
-    actor; and
-  - `deduplication_key` as `event:<event_id>`.
-- Record the high-water notification ID when the backfill begins, process up to
-  that ID, then sweep remaining null keys left by any pre-cutover writer. A
-  batch is safe to retry because it does not overwrite populated fields and the
-  unique index rejects a second `(user_id, deduplication_key)` row.
-- Verify after the sweep that event-backed notifications have non-null kind,
-  subject and deduplication key values, and that no duplicate `(user_id,
-  event_id)` or `(user_id, deduplication_key)` groups remain.
-- Keep `event_id` required initially so the existing application remains
-  compatible during deployment.
+Batching by notification ID is important. A delayed receipt attached to an old
+event is still above the cursor and will be caught. The legacy table remains
+authoritative throughout this warm-up, so no compatibility reader or dual
+writer is required in the final application.
 
-### 2. Idempotent creation boundary
+### Release B: drain, verify and cut over
 
-- Centralize notification insertion in one shared service method.
-- Insert all recipients with conflict handling against the unique index.
-- Return only newly inserted notifications for live updates and email enqueue.
-- Move serializers and mailers to the notification's own kind and subject,
-  while retaining an event fallback during migration.
+1. Put the old application in maintenance mode and drain notification writers.
+2. Run the consolidation task again with repair enabled. It extends the
+   high-water mark to the current maximum notification ID, processes the
+   catch-up range, then repairs any lower ID that committed after the warm
+   cursor passed it:
 
-### 3. Pilot a notification-only operation
+   ```sh
+   APPLY=1 REPAIR=1 BATCH_SIZE=250000 bin/rails loomio:consolidate_notifications
+   ```
+3. Verify zero blocked, missing or extra notification/delivery identities and a
+   completed cursor at the current maximum legacy notification ID. The repair
+   sweep records its own completion marker; the cutover refuses to run without
+   it, even when an earlier warm pass reached the same high-water mark.
+4. Deploy the cutover application and migration:
 
-- Convert `outcome_review_due` first because it has one simple recipient path
-  and no timeline role.
-- Schedule a Solid Queue job containing the subject and occurrence identity.
-- Create notifications directly and verify repeated jobs create no duplicate
-  records or email work.
+   - drop the legacy per-user `notifications` receipts table;
+   - rename `notification_occurrences` to `notifications`;
+   - rename `notification_deliveries.notification_occurrence_id` to
+     `notification_id`;
+   - delete only Event rows whose `topic_id` is null;
+   - require `topic_id` on every remaining Event row; and
+   - rename `events` to `topic_items` and `eventable` to `itemable`.
 
-### 4. Convert remaining operational delivery
+The cutover refuses to run unless the completed high-water mark covers every
+legacy notification row. It is irreversible because the consolidated delivery
+model intentionally does not reconstruct duplicate legacy receipts.
 
-- Convert poll closing-soon and poll-expired delivery.
-- Convert mentions, replies, reactions, announcements, membership notices and
-  the remaining notification-only kinds in bounded groups.
-- Delete notification-only event rows only after their notifications are fully
-  self-contained and verified.
-- Handle historically mixed kinds per row: retain rows with `topic_id` and
-  remove only rows without it.
+## Production-shaped rehearsal
 
-### 5. Introduce topic items
+Rehearsed on the 2026-08-22 production backup restored directly into
+`loomio_development` with `pg_restore -j 10`.
 
-- Once notification delivery no longer depends on operational events, migrate
-  the remaining timeline event rows to `TopicItem`.
-- Require `topic_id` and preserve sequence, position, parent and root uniqueness
-  invariants.
-- Update topic APIs, serializers, search, exports, live updates and integrity
-  tools to use `TopicItem`.
-- Remove the old event-only compatibility paths after all installations have
-  crossed the migration boundary.
+Baseline after prerequisite integrity migrations:
 
-### Refactor verification
+- 11,482,625 legacy notification receipts;
+- 11,348,748 distinct effective in-app delivery identities;
+- 8,138,990 Event rows: 4,160,198 operational and 3,978,792 timeline rows.
 
-- Retry each pilot job before and after notification insertion.
-- Verify one notification per `(user_id, deduplication_key)`.
-- Verify email/live-update enqueue happens only for newly inserted records.
-- Verify existing event-backed notifications still render during transition.
-- Verify public, private, group and direct topics retain the same visibility.
-- Audit counts by both kind and `topic_id` before deleting historical events.
-- Run production-shaped migration timing against `loomio_development` before
-  deploying each destructive phase.
+Consolidated result:
 
-### Current migration checkpoint
+- 2,560,309 Notifications;
+- 11,348,748 in-app NotificationDeliveries;
+- zero blocked, missing or extra notification and delivery identities.
 
-- The additive notification fields and partial unique delivery-key index are in
-  place on the branch.
-- Historical duplicate normalization retains the earliest event-backed row,
-  merges viewed state and the latest update time, and removes later rows in
-  bounded event-ID batches.
-- Event-backed in-app creation now dual-writes the compatibility fields through
-  a conflict-safe shared insertion method. Retries publish realtime updates and
-  enqueue overlapping in-app/email delivery only for newly inserted rows.
-- Serializers and access checks still retain their event-backed fallback. Email
-  recipients without an in-app notification identity continue through the
-  existing event path until channel delivery records are introduced.
-- The production-scale timing rehearsal is complete. The next migration
-  checkpoint is deployment and worker drain, followed by the bounded historical
-  field backfill described in phase 1. Use the index-rebuild mode only if the
-  deployment can provide a fully quiesced notification maintenance window.
+The indexed, resumable warm backfill processed 11,482,622 remaining receipts in
+about 17 minutes after a three-row smoke batch. The original per-group anti-join
+audit was cancelled after five minutes and replaced with deterministic expected
+and actual set counts. The optimized full audit took 197 seconds. The final
+table swap, operational Event deletion and TopicItem rename took 35.8 seconds.
 
-After deploying dual-writing and draining old workers, audit the high-water
-backfill without changing data:
+These timings are development-machine measurements, not production promises.
+The warm backfill is designed to run before the maintenance window; only the
+final catch-up, verification and roughly 36-second cutover belong in it.
 
-```bash
-bundle exec rake loomio:backfill_notification_delivery_fields
-```
+## Notification creation and resolution
 
-Review the duplicate, missing-key and blocked-row counts. Apply it only after
-the audit is clean enough to proceed:
+All notification kinds use one initiation method. A resolver class per kind
+owns subject validation, occurrence identity, translation context and recipient
+rules. The shared service owns atomic occurrence insertion, delivery insertion
+and dispatch scheduling.
 
-```bash
-APPLY=1 bundle exec rake loomio:backfill_notification_delivery_fields
-```
+Audience timing depends on semantics:
 
-For a quiesced maintenance window, stop every process that can create a
-notification and run the faster no-index path:
+- explicit audiences such as mentions, replies, invitations and
+  administrator-selected recipients are snapshotted when the notification is
+  created;
+- broad derived audiences such as closing-soon voters are resolved in the
+  background using current membership and preferences.
 
-```bash
-APPLY=1 REBUILD_INDEX=1 bundle exec rake loomio:backfill_notification_delivery_fields
-```
+`deliveries_generated_at` distinguishes an unresolved notification from one
+whose resolver legitimately found no recipients. A partial index makes lost
+resolution jobs recoverable. Delivery workers claim ledger rows and retry them;
+provider-specific idempotency keys should be used where available.
 
-This mode normalizes duplicates while the index is still present, removes the
-partial unique index, writes the historical fields, then recreates and validates
-the index. The task attempts to recreate the index after an ordinary error or
-interrupt. Do not use this mode while web, job or console processes can write
-notifications; without the index, concurrent writers could create duplicate
-delivery identities and make the unique rebuild fail.
+Detached anonymous polls resolve recipients only through `AnonymousPollVoter`.
+Notifications, serializers, mailers, exports, live updates and background jobs
+must never reintroduce a ballot-to-user link.
 
-The task captures its high-water notification ID, normalizes duplicates again,
-updates short notification-ID batches and fails if any row within the boundary
-is not self-contained afterward. Duplicate normalization covers the entire
-table so a group cannot straddle the high-water boundary; `HIGH_WATER_ID` bounds
-only field updates. `BATCH_SIZE` and `HIGH_WATER_ID` can be set for a timed
-rehearsal on a production-shaped database copy.
+## Verification
 
-The 2026-08-22 dry-run audit of `loomio_development` captured notification ID
-16,482,028 as its high-water mark and independently confirmed 11,207,411 missing
-keys, 73,750 duplicate `(user_id, event_id)` groups, 133,875 removable duplicate
-rows and no rows blocked by missing event metadata. The audit did not mutate
-data.
+- Run producer, resolver and dispatcher retries and verify stable occurrence
+  and delivery counts.
+- Verify in-app queries join through delivered `NotificationDelivery` rows and
+  read actions can only update the authenticated user's delivery.
+- Verify public, private, group and direct topic visibility independently of
+  notification possession.
+- Verify timeline counts, sequence, position, parent and root uniqueness before
+  and after the Event-to-TopicItem rename.
+- Verify loud comment email and chatbot topic subscriptions still publish from
+  topic items without creating notifications.
+- Run focused anonymous-poll privacy regression tests across reminders, expiry,
+  serializers, mailers, exports and jobs.
 
-An indexed rehearsal was interrupted after updating 6.3 million rows in
-1,006.8 seconds (about 6,300 rows per second) so the no-index maintenance path
-could be measured from a clean restore. This is a partial timing result, not a
-completed backfill benchmark.
+## Next phase: delivery products and preferences
 
-The completed no-index rehearsal used the 2026-08-22 production snapshot. It
-started with 11,482,468 notifications, normalized 73,752 duplicate groups by
-removing 133,877 rows, backfilled all 11,348,591 retained rows, rebuilt the
-partial unique index and passed independent completeness, uniqueness and index
-validity checks. Total wall time was 1,291.86 seconds (21 minutes 31.86 seconds),
-including duplicate normalization and concurrent index creation. That is about
-8,785 retained rows per second end to end. The newer snapshot was about 2.5%
-larger than the indexed rehearsal snapshot, and the indexed run was incomplete,
-so treat the apparent throughput improvement as deployment guidance rather than
-a controlled benchmark result. The cold duplicate-normalization scan was a
-material part of the maintenance window and should be timed separately in the
-deployment rehearsal.
+After this refactor ships with existing user-visible behavior unchanged:
 
-## Follow-on: delivery channels and preferences
+1. Add push as a delivery channel with endpoint lifecycle and provider
+   idempotency.
+2. Add batch email records which claim several email deliveries and render
+   them in one message without changing notification identity.
+3. Add per-user delivery throttling and scheduling policy.
+4. Add daily summary emails per group rather than one cross-group summary.
+5. Let group administrators choose default email preferences when inviting new
+   users. Store the applied preference explicitly so later administrator
+   changes do not silently rewrite an existing member's choice.
 
-Start this work only after the notification and topic-item refactor is complete
-and existing notification behavior has been verified. Treat `Notification` as
-the durable record of one logical notification for one recipient. Add separate
-delivery records so scheduling, batching and provider retries do not change the
-notification's identity or create another notification.
-
-### Delivery invariants
-
-1. Push delivery is an additional channel; enabling it does not implicitly
-   disable in-app or email delivery.
-2. One email or push attempt may cover several notifications, but each included
-   notification is claimed durably so a worker retry cannot deliver it twice.
-3. User throttling controls when channel work is released. It does not delay
-   creation of the in-app notification or weaken notification deduplication.
-4. Preference resolution is explicit about user, group and instance defaults.
-   A user's saved choice takes precedence over a group invitation default.
-5. A daily summary is scoped to one group. It must not combine private content
-   or membership information from different groups in one email.
-6. Direct-topic and instance-level notifications have an explicit fallback
-   policy when no group preference applies.
-
-### Implementation sequence
-
-1. Introduce durable channel-delivery and delivery-batch records with statuses,
-   attempt counts, scheduled times, provider identifiers and idempotency keys.
-   Define how a batch claims notifications and how failed attempts are safely
-   released or retried.
-2. Add user delivery schedules and throttle settings. Support immediate email
-   and batched email in which several eligible notifications are rendered in a
-   single message.
-3. Add push subscriptions and push delivery using the same durable attempt and
-   retry boundary as email. Keep channel-specific provider data out of
-   `Notification`.
-4. Make daily-summary email preferences group-specific and generate one summary
-   per user and group. Apply the same visibility checks used by the underlying
-   notifications when selecting and rendering summary content.
-5. Allow authorized group administrators to choose the default email preference
-   offered when inviting new users. Snapshot that default when the invitation
-   or initial membership preference is created; later administrator changes must
-   not overwrite an existing user's explicit choice.
-6. Add operator reporting for queued, throttled, delivered and failed channel
-   work, including batch membership and retry history.
-
-### Follow-on verification
-
-- Verify immediate and batched email attempts cannot include or send the same
-  notification twice, including worker crashes before and after provider calls.
-- Verify push and email can both deliver the same logical notification without
-  creating duplicate in-app notifications.
-- Verify throttle windows, timezone boundaries and preference changes while a
-  delivery is queued.
-- Verify daily summaries remain separated by group for public, private and
-  direct topics, and omit content the recipient can no longer access.
-- Verify invitation defaults for new and existing accounts, reinvitations,
-  revoked invitations and users who already saved a preference.
-- Verify only the intended group administrator roles can change invitation
-  defaults and that changing a default does not rewrite member preferences.
+Batching and throttling belong above `NotificationDelivery`: they decide when
+and with which other deliveries a row is sent, while the delivery ledger keeps
+one durable channel/recipient identity for auditing and retry.

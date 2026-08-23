@@ -9,17 +9,17 @@ class Api::V1::StancesController < Api::V1::RestfulController
     update_response
   end
 
-  def latest_stance_events
+  def latest_stance_topic_items
     stances = Stance.where(
       participant_id: current_user.id,
-      poll_id: @event.eventable.poll_id
+      poll_id: @topic_item.itemable.poll_id
     ).order(id: :desc).limit(5)
-    Event.where(eventable: stances).order(id: :desc).limit(5)
+    TopicItem.where(itemable: stances).order(id: :desc).limit(5)
   end
 
   def update_response
     if resource.errors.empty?
-      render json: latest_stance_events, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
+      render json: latest_stance_topic_items, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
     else
       respond_with_errors
     end
@@ -155,9 +155,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
     # want to find stances with comments
     stance_ids = poll.topic.items.where(
-      eventable_type: 'Stance',
-      eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
-    ).where("child_count > 0").pluck('eventable_id')
+      itemable_type: 'Stance',
+      itemable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
+    ).where("child_count > 0").pluck('itemable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
     MessageChannelService.publish_models(stances, user_id: current_user.id)
     if poll.show_results?(voted: false)
@@ -166,7 +166,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   def respond_with_recent_stances
-    @event = nil
+    @topic_item = nil
     @stances = @stance.poll.stances.where(revoked_at: nil, participant_id: current_user.id).order('id desc').limit(10)
     respond_with_collection
   end

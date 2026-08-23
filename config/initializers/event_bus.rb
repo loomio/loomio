@@ -8,13 +8,13 @@ EventBus.configure do |config|
                 'poll_edited_event',
                 'stance_created_event',
                 'outcome_created_event',
-                'poll_closed_by_user_event') do |event|
-    reader_user = event.user.presence
-    reader_user ||= event.eventable.real_participant if event.eventable.respond_to?(:real_participant)
+                'poll_closed_by_user_event') do |topic_item|
+    reader_user = topic_item.user.presence
+    reader_user ||= topic_item.itemable.real_participant if topic_item.itemable.respond_to?(:real_participant)
 
-    if event.topic && reader_user
-      TopicReader.for(topic: event.topic, user: reader_user)
-                 .update_reader(ranges: event.sequence_id, volume: :loud)
+    if topic_item.topic && reader_user
+      TopicReader.for(topic: topic_item.topic, user: reader_user)
+                 .update_reader(ranges: topic_item.sequence_id, volume: :loud)
     end
   end
 end

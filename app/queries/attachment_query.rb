@@ -9,8 +9,8 @@ class AttachmentQuery
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN comments ON active_storage_attachments.record_type = 'Comment' AND active_storage_attachments.record_id = comments.id").
-      joins("LEFT OUTER JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id").
-      joins("LEFT OUTER JOIN topics ON topics.id = events.topic_id").
+      joins("LEFT OUTER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id").
+      joins("LEFT OUTER JOIN topics ON topics.id = topic_items.topic_id").
       joins("LEFT OUTER JOIN discussions comments_discussions ON topics.topicable_type = 'Discussion' AND comments_discussions.id = topics.topicable_id").
       where('topics.group_id IN (:group_ids) AND comments_discussions.discarded_at IS NULL AND comments.discarded_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
