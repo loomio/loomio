@@ -1,13 +1,5 @@
 module NotificationDeliveryResolvers
   class MembershipCreated < NotificationDeliveryResolver
-    def self.deduplication_key(group, occurrence_key: nil)
-      if occurrence_key.blank?
-        raise ArgumentError, "membership_created occurrence_key is required"
-      end
-
-      "membership_created:group_#{group.id}:#{occurrence_key}"
-    end
-
     private
 
     def recipients_by_channel

@@ -106,8 +106,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: @author,
       kind: "new_discussion",
-      subject: @discussion,
-      deduplication_key: "new_discussion:discarded-topic:#{SecureRandom.uuid}"
+      subject: @discussion
     )
     delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
     TopicService.discard(topic: @topic, actor: @author)
@@ -138,8 +137,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: @author,
       kind: "new_discussion",
-      subject: @discussion,
-      deduplication_key: "new_discussion:email-action:#{SecureRandom.uuid}"
+      subject: @discussion
     )
     delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
     get :mark_notification_as_read, params: { id: notification.id, unsubscribe_token: @user.unsubscribe_token }
@@ -150,8 +148,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: @author,
       kind: "discussion_edited",
-      subject: @discussion,
-      deduplication_key: "discussion_edited:discussion_#{@discussion.id}:email-pixel-test"
+      subject: @discussion
     )
     user_delivery = NotificationDelivery.create!(
       notification: notification,

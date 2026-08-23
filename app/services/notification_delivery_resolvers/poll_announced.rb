@@ -1,11 +1,5 @@
 module NotificationDeliveryResolvers
   class PollAnnounced < NotificationDeliveryResolver
-    def self.deduplication_key(poll, occurrence_key: nil)
-      raise ArgumentError, "poll_announced occurrence_key is required" if occurrence_key.blank?
-
-      "poll_announced:poll_#{poll.id}:#{occurrence_key}"
-    end
-
     private
 
     def recipients_by_channel

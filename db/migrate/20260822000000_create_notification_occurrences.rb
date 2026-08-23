@@ -8,7 +8,7 @@ class CreateNotificationOccurrences < ActiveRecord::Migration[8.1]
       t.string :kind, null: false
       t.string :subject_type, null: false
       t.bigint :subject_id, null: false
-      t.string :deduplication_key, null: false
+      t.bigint :legacy_event_id, null: false
       t.jsonb :translation_values, null: false, default: {}
       t.datetime :deliveries_generated_at
       t.integer :recipient_user_ids, array: true, null: false, default: []
@@ -19,9 +19,9 @@ class CreateNotificationOccurrences < ActiveRecord::Migration[8.1]
     end
 
     add_index :notification_occurrences,
-              :deduplication_key,
+              %i[legacy_event_id kind],
               unique: true,
-              name: "index_notification_occurrences_on_deduplication_key"
+              name: "index_notification_occurrences_on_legacy_event_and_kind"
     add_index :notification_occurrences,
               :id,
               where: "deliveries_generated_at IS NULL",

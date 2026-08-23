@@ -11,7 +11,6 @@ class CommentService
       MentionNotificationService.create!(
         subject: comment,
         actor: actor,
-        occurrence_key: "event_#{topic_item.id}",
       )
       topic_item
     end
@@ -67,7 +66,6 @@ class CommentService
       MentionNotificationService.create!(
         subject: comment,
         actor: actor,
-        occurrence_key: "edited_at_#{comment.edited_at.utc.iso8601(6)}"
       )
     end
 

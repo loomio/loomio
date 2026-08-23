@@ -78,7 +78,6 @@ module GroupService
         kind: "membership_created",
         subject: group,
         actor: actor,
-        occurrence_key: SecureRandom.uuid,
         recipient_user_ids: users.pluck(:id),
         recipient_message: params[:recipient_message]
       )

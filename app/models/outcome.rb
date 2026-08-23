@@ -73,15 +73,22 @@ class Outcome < ApplicationRecord
   validate :has_valid_poll_option
 
   scope :review_due_not_published, ->(due_date) do
+    review_period = due_date.in_time_zone.all_day
     where(review_on: due_date).where("NOT EXISTS (
               SELECT 1 FROM topic_items
-              WHERE topic_items.itemable_id   = outcomes.id AND
+              WHERE topic_items.created_at BETWEEN :review_start AND :review_finish AND
+                    topic_items.itemable_id   = outcomes.id AND
                     topic_items.itemable_type = 'Outcome' AND
-                    topic_items.kind           = 'outcome_review_due')").where("NOT EXISTS (
+                    topic_items.kind           = 'outcome_review_due')",
+              review_start: review_period.begin,
+              review_finish: review_period.end).where("NOT EXISTS (
               SELECT 1 FROM notifications
-              WHERE notifications.subject_id   = outcomes.id AND
+              WHERE notifications.created_at BETWEEN :review_start AND :review_finish AND
+                    notifications.subject_id   = outcomes.id AND
                     notifications.subject_type = 'Outcome' AND
-                    notifications.kind         = 'outcome_review_due')")
+                    notifications.kind         = 'outcome_review_due')",
+              review_start: review_period.begin,
+              review_finish: review_period.end)
   end
 
   def title_model

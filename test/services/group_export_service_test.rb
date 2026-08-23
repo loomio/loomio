@@ -170,7 +170,6 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       kind: "poll_announced",
       subject: poll,
       actor: admin,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: [ subscriber.id ]
     )
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
@@ -200,7 +199,6 @@ class GroupExportServiceTest < ActiveSupport::TestCase
                                                     .where(channel: "email", recipient_type: "User")
                                                     .pluck(:recipient_id)
     assert_equal [ User.find_by!(email: subscriber.email).id ], imported_recipient_ids
-    assert_match(/\Aimported:notification_\d+\z/, imported_notification.deduplication_key)
   end
 
   test "group export excludes active detached anonymous polls and their records" do

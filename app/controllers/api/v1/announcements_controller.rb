@@ -137,11 +137,8 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
     # A notification is one occurrence. Its in-app deliveries contain the
     # recipient-specific history state.
-    res = scoped_notifications.group_by(&:deduplication_key).filter_map do |_key, occurrence|
-      notification = occurrence.first
-      recipient_states = occurrence.flat_map do |item|
-        history_recipient_states(item, allow_viewed: allow_viewed)
-      end
+    res = scoped_notifications.filter_map do |notification|
+      recipient_states = history_recipient_states(notification, allow_viewed: allow_viewed)
       next if recipient_states.empty?
 
       {

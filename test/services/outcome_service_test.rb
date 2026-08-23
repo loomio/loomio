@@ -200,6 +200,19 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     assert_includes last_email.to, @outcome.author.email
   end
 
+  test "publishes another review when the review date changes" do
+    first_review_on = Date.today
+    @outcome.update!(review_on: first_review_on)
+    OutcomeService.publish_review_due
+
+    travel_to(1.day.from_now) do
+      @outcome.update!(review_on: Date.today)
+      assert_difference -> { Notification.where(kind: "outcome_review_due", subject: @outcome).count }, 1 do
+        OutcomeService.publish_review_due
+      end
+    end
+  end
+
   test "does not publish null review_on" do
     @outcome.update(review_on: nil)
 

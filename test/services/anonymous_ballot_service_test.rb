@@ -113,8 +113,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     notification = Notification.create!(
       actor: @admin,
       kind: "poll_closing_soon",
-      subject: @poll,
-      deduplication_key: "poll_closing_soon:anonymous-security-test"
+      subject: @poll
     )
 
     NotificationDeliveryResolver.for(notification).resolve!

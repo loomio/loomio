@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class MembershipRequested < NotificationDeliveryResolver
-    def self.deduplication_key(membership_request, occurrence_key: nil)
-      "membership_requested:membership_request_#{membership_request.id}"
-    end
-
     def self.translation_values(membership_request, actor, locale: actor.locale)
       I18n.with_locale(locale) do
         {

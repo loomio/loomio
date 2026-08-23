@@ -206,9 +206,6 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
     assert_not email.reload.released
     assert_equal group.id, email.group_id
-    assert_no_difference -> { Notification.where(kind: "unknown_sender", subject: email).count } do
-      ReceivedEmailService.route(email)
-    end
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end

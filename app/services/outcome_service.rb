@@ -21,7 +21,6 @@ class OutcomeService
         kind: "outcome_announced",
         subject: outcome,
         actor: actor,
-        occurrence_key: SecureRandom.uuid,
         recipient_user_ids: users.pluck(:id)
       )
     end
@@ -63,7 +62,6 @@ class OutcomeService
           kind: "outcome_created",
           subject: outcome,
           actor: actor,
-          occurrence_key: "event_#{topic_item.id}",
           recipient_user_ids: users.pluck(:id),
           audience_values: audience_values
         )
@@ -71,7 +69,6 @@ class OutcomeService
       MentionNotificationService.create!(
         subject: outcome,
         actor: actor,
-        occurrence_key: "event_#{topic_item.id}",
         already_notified_user_ids: users.pluck(:id)
       )
       topic_item
@@ -109,13 +106,11 @@ class OutcomeService
                                            include_actor: params[:include_actor].present?)
 
       audience_values = mention_audience_values(outcome)
-      occurrence_key = "updated_at_#{outcome.updated_at.utc.iso8601(6)}"
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "outcome_updated",
           subject: outcome,
           actor: actor,
-          occurrence_key: occurrence_key,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           audience_values: audience_values
@@ -124,7 +119,6 @@ class OutcomeService
       MentionNotificationService.create!(
         subject: outcome,
         actor: actor,
-        occurrence_key: occurrence_key,
         already_notified_user_ids: users.pluck(:id)
       )
     end

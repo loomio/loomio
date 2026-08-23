@@ -215,7 +215,6 @@ module Dev::Scenarios::Discussion
       kind: "discussion_announced",
       subject: discussion,
       actor: patrick,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: [ jennifer.id ]
     )
     last_email
@@ -240,7 +239,6 @@ module Dev::Scenarios::Discussion
       kind: "discussion_announced",
       subject: discussion,
       actor: patrick,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: users.pluck(:id)
     )
     last_email

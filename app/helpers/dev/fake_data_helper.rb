@@ -12,7 +12,6 @@ module Dev::FakeDataHelper
       kind: kind,
       subject: subject,
       actor: actor,
-      deduplication_key: "dev:#{SecureRandom.uuid}",
       translation_values: translation_values,
       recipient_user_ids: [ recipient.id ],
       deliveries_generated_at: created_at,

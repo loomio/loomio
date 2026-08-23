@@ -5,7 +5,7 @@ class Notification < ApplicationRecord
   belongs_to :subject, polymorphic: true
   has_many :notification_deliveries, dependent: :destroy
 
-  validates :kind, :subject, :deduplication_key, presence: true
+  validates :kind, :subject, presence: true
 
   def notification_url
     return polymorphic_path(subject.group) if kind == "invitation_accepted"

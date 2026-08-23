@@ -111,7 +111,6 @@ class GroupMentionedNotificationTest < ActiveSupport::TestCase
     MentionNotificationService.create!(
       subject: comment,
       actor: comment.author,
-      occurrence_key: source_event ? "event_#{source_event.id}" : SecureRandom.uuid,
     )
   end
 end

@@ -78,7 +78,6 @@ class DiscussionService
       MentionNotificationService.create!(
         subject: discussion,
         actor: actor,
-        occurrence_key: "event_#{topic_item.id}",
         already_notified_user_ids: users.pluck(:id)
       )
     end
@@ -134,14 +133,12 @@ class DiscussionService
           recipient_message: params[:recipient_message]
         )
       end
-      occurrence_key = topic_item ? "event_#{topic_item.id}" : "updated_at_#{discussion.updated_at.utc.iso8601(6)}"
       has_direct_chatbots = topic_item.nil? && Array(params[:recipient_chatbot_ids]).compact.any?
       if users.any? || has_direct_chatbots
         NotificationService.create!(
           kind: "discussion_edited",
           subject: discussion,
           actor: actor,
-          occurrence_key: occurrence_key,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
@@ -151,7 +148,6 @@ class DiscussionService
       MentionNotificationService.create!(
         subject: discussion,
         actor: actor,
-        occurrence_key: occurrence_key,
         already_notified_user_ids: users.pluck(:id)
       )
       topic_item

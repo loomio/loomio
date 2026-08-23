@@ -8,8 +8,7 @@ class InvitationReminderService
       NotificationService.create!(
         kind: "membership_resent",
         subject: membership,
-        actor: membership.inviter,
-        occurrence_key: "automatic_#{membership.created_at.utc.iso8601(6)}"
+        actor: membership.inviter
       )
     end
   end

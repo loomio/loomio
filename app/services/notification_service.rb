@@ -1,10 +1,8 @@
 class NotificationService
-  INDEX_IDENTITY = "index_notifications_on_deduplication_key"
-
   # Commit one logical occurrence, then resolve all channel deliveries in the
   # background. Explicit audiences are snapshotted on the notification while
   # implied audiences are derived by the same kind-specific resolver.
-  def self.create!(kind:, subject:, actor:, occurrence_key: nil,
+  def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
                    recipient_message: nil, audience_values: {})
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
@@ -12,38 +10,20 @@ class NotificationService
 
     resolver_class = NotificationDeliveryResolver.class_for(kind)
     resolver_class.validate_subject!(subject)
-    deduplication_key = resolver_class.deduplication_key(subject, occurrence_key: occurrence_key)
     translation_values = resolver_class.translation_values(subject, actor)
 
-    now = Time.current
-    result = Notification.insert_all(
-      [ {
-        actor_id: actor&.id,
-        kind: kind,
-        subject_type: subject.class.base_class.name,
-        subject_id: subject.id,
-        deduplication_key: deduplication_key,
-        translation_values: translation_values,
-        recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
-        recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
-        recipient_message: recipient_message.presence,
-        audience_values: audience_values,
-        created_at: now,
-        updated_at: now
-      } ],
-      unique_by: INDEX_IDENTITY,
-      returning: [ :id ]
+    notification = Notification.create!(
+      actor: actor,
+      kind: kind,
+      subject: subject,
+      translation_values: translation_values,
+      recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
+      recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
+      recipient_message: recipient_message.presence,
+      audience_values: audience_values
     )
 
-    notification = if result.rows.any?
-      Notification.find(result.rows.first.first)
-    else
-      Notification.find_by!(deduplication_key: deduplication_key)
-    end
-
-    if notification.deliveries_generated_at.nil?
-      ResolveNotificationDeliveriesWorker.perform_later(notification.id)
-    end
+    ResolveNotificationDeliveriesWorker.perform_later(notification.id)
     notification
   end
 

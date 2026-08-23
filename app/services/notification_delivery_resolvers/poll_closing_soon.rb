@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class PollClosingSoon < NotificationDeliveryResolver
-    def self.deduplication_key(poll, occurrence_key: nil)
-      "poll_closing_soon:poll_#{poll.id}:#{poll.closing_at.iso8601}"
-    end
-
     private
 
     def recipients_by_channel

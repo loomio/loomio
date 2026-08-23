@@ -73,8 +73,7 @@ class NotificationServiceTest < ActiveSupport::TestCase
     notification = Notification.create!(
       actor: @admin,
       kind: "discussion_edited",
-      subject: subject,
-      deduplication_key: "discussion_edited:service-test:#{SecureRandom.uuid}"
+      subject: subject
     )
     delivery = NotificationDelivery.create!(
       notification: notification,

@@ -1,10 +1,10 @@
 # Defines the common lifecycle for turning one logical notification occurrence
 # into channel-specific deliveries. Each notification kind owns only its
-# audience and occurrence rules in a subclass; insertion, retry safety, and
+# audience rules in a subclass; insertion, retry safety, and
 # dispatch remain consistent across all kinds.
 class NotificationDeliveryResolver
   RESOLVERS = {
-    "comment_replied_to" => "NotificationDeliveryResolvers::CommentRepliedTo",
+    "comment_replied_to" => "NotificationDeliveryResolvers::UserMentioned",
     "discussion_announced" => "NotificationDeliveryResolvers::DiscussionAnnounced",
     "discussion_edited" => "NotificationDeliveryResolvers::DiscussionEdited",
     "group_mentioned" => "NotificationDeliveryResolvers::GroupMentioned",
@@ -17,9 +17,9 @@ class NotificationDeliveryResolver
     "new_delegate" => "NotificationDeliveryResolvers::NewDelegate",
     "new_discussion" => "NotificationDeliveryResolvers::NewDiscussion",
     "outcome_announced" => "NotificationDeliveryResolvers::OutcomeAnnounced",
-    "outcome_created" => "NotificationDeliveryResolvers::OutcomeCreated",
+    "outcome_created" => "NotificationDeliveryResolvers::OutcomeChange",
     "outcome_review_due" => "NotificationDeliveryResolvers::OutcomeReviewDue",
-    "outcome_updated" => "NotificationDeliveryResolvers::OutcomeUpdated",
+    "outcome_updated" => "NotificationDeliveryResolvers::OutcomeChange",
     "poll_closing_soon" => "NotificationDeliveryResolvers::PollClosingSoon",
     "poll_edited" => "NotificationDeliveryResolvers::PollEdited",
     "poll_expired" => "NotificationDeliveryResolvers::PollExpired",
@@ -42,10 +42,6 @@ class NotificationDeliveryResolver
 
   def self.for(notification)
     class_for(notification.kind).new(notification)
-  end
-
-  def self.deduplication_key(_subject, occurrence_key: nil)
-    raise NotImplementedError
   end
 
   def self.validate_subject!(_subject)

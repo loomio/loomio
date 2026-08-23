@@ -1,11 +1,5 @@
 module NotificationDeliveryResolvers
   class PollEdited < NotificationDeliveryResolver
-    def self.deduplication_key(poll, occurrence_key: nil)
-      raise ArgumentError, "poll_edited occurrence_key is required" if occurrence_key.blank?
-
-      "poll_edited:poll_#{poll.id}:#{occurrence_key}"
-    end
-
     private
 
     # Explicit recipients receive in-app and normal-volume email delivery.

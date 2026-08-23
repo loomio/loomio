@@ -181,8 +181,7 @@ class MembershipService
     NotificationService.create!(
       kind: "membership_resent",
       subject: membership,
-      actor: actor,
-      occurrence_key: SecureRandom.uuid
+      actor: actor
     )
   end
 

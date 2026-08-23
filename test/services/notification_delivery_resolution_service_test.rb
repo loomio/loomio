@@ -53,12 +53,11 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal %w[pending pending], deliveries.where.not(channel: "in_app").pluck(:status)
   end
 
-  test "producer and resolver retries preserve one notification and one delivery identity" do
+  test "resolver retries preserve one delivery identity" do
     notification = create_notification
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 
-    assert_no_difference [ "Notification.count", "NotificationDelivery.count" ] do
-      assert_equal notification, create_notification
+    assert_no_difference "NotificationDelivery.count" do
       ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     end
   end
@@ -152,7 +151,6 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       kind: "discussion_announced",
       subject: discussion,
       actor: @author,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: [ recipient.id ],
       recipient_chatbot_ids: [ @chatbot.id ],
       recipient_message: "Please review this thread"
@@ -266,6 +264,24 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
+  test "an extended poll gets a closing reminder for the new deadline" do
+    first_closing_at = 1.day.from_now.beginning_of_hour
+    @poll.update!(closing_at: first_closing_at, notify_on_closing_soon: "author")
+
+    travel_to(first_closing_at - 1.day) do
+      PollService.publish_closing_soon
+    end
+
+    second_closing_at = first_closing_at + 2.days
+    @poll.update!(closing_at: second_closing_at)
+
+    travel_to(second_closing_at - 1.day) do
+      assert_difference -> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }, 1 do
+        PollService.publish_closing_soon
+      end
+    end
+  end
+
   test "poll expiry always creates in-app for the author and applies email volume" do
     TopicReader.for(user: @author, topic: @poll.topic).set_volume!(:quiet)
     SafeHttpService.stub(:safe_to_fetch?, true) do
@@ -295,9 +311,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       end
     end
 
-    notification = Notification.find_by!(kind: "poll_expired", subject: @poll)
-    assert_equal @poll.reload.closed_at.iso8601,
-                 notification.deduplication_key.split(":", 3).last
+    assert Notification.exists?(kind: "poll_expired", subject: @poll)
 
     assert_no_difference [ "Notification.count", -> { TopicItem.where(kind: "poll_expired").count } ] do
       CloseExpiredPollWorker.perform_now(@poll.id)
@@ -313,6 +327,21 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
 
     assert_difference "Notification.count", 1 do
       CloseExpiredPollWorker.perform_now(@poll.id)
+    end
+  end
+
+  test "a reopened poll gets an expiry notification for its new closing" do
+    first_closing_at = 1.hour.ago
+    @poll.update_column(:closing_at, first_closing_at)
+    CloseExpiredPollWorker.perform_now(@poll.id)
+
+    second_closing_at = 1.hour.from_now
+    @poll.update_columns(closed_at: nil, closing_at: second_closing_at)
+
+    travel_to(second_closing_at + 1.minute) do
+      assert_difference -> { Notification.where(kind: "poll_expired", subject: @poll).count }, 1 do
+        CloseExpiredPollWorker.perform_now(@poll.id)
+      end
     end
   end
 

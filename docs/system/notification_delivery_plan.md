@@ -24,7 +24,6 @@ TopicItem
 
 Notification
   kind, subject, actor
-  deduplication_key (unique)
   occurrence-wide rendering and audience snapshot
 
 NotificationDelivery
@@ -64,14 +63,14 @@ durable; background work resolves and delivers its audience.
 
 1. Every topic item has a valid topic.
 2. Root topic items remain unique for `new_discussion` and `poll_created`.
-3. Every notification has the kind, subject, actor context and deterministic
-   identity needed without a topic item.
+3. Every notification has the kind, subject and actor context needed without a
+   topic item.
 4. Every recipient/channel pair is unique within a notification.
 5. In-app read state belongs to the delivery, never the notification.
 6. Queue jobs schedule work; notification and delivery rows are the durable
    source of truth.
-7. Retrying occurrence creation, audience resolution or delivery dispatch is
-   safe at database uniqueness boundaries.
+7. Retrying audience resolution or delivery dispatch is safe at database
+   uniqueness boundaries.
 8. Loud subscription delivery and topic live updates remain independent of the
    notification ledger.
 
@@ -83,7 +82,7 @@ This release preserves the existing event-backed application path unchanged.
 It does not reinterpret or mutate the legacy `notifications` table.
 
 1. Create `notification_occurrences` with the complete target notification row
-   shape and a unique occurrence key.
+   shape plus migration-only `legacy_event_id`.
 2. Create `notification_deliveries` referencing
    `notification_occurrences`, including in-app read and localized rendering
    state.
@@ -102,7 +101,7 @@ It does not reinterpret or mutate the legacy `notifications` table.
 
    - reads legacy notifications joined to their event;
    - derives the recipient's effective kind;
-   - inserts one occurrence keyed by `event:<id>:<effective-kind>`;
+   - inserts one occurrence identified by `(legacy_event_id, kind)`;
    - inserts or merges one delivered in-app delivery per user;
    - preserves the earliest delivery time, any viewed state, and the retained
      recipient translation values; and
@@ -132,6 +131,7 @@ writer is required in the final application.
 
    - drop the legacy per-user `notifications` receipts table;
    - rename `notification_occurrences` to `notifications`;
+   - drop the migration-only `legacy_event_id` mapping;
    - rename `notification_deliveries.notification_occurrence_id` to
      `notification_id`;
    - delete only Event rows whose `topic_id` is null;
@@ -172,9 +172,8 @@ final catch-up, verification and roughly 36-second cutover belong in it.
 ## Notification creation and resolution
 
 All notification kinds use one initiation method. A resolver class per kind
-owns subject validation, occurrence identity, translation context and recipient
-rules. The shared service owns atomic occurrence insertion, delivery insertion
-and dispatch scheduling.
+owns subject validation, translation context and recipient rules. The shared
+service owns notification creation, delivery insertion and dispatch scheduling.
 
 Audience timing depends on semantics:
 
@@ -195,8 +194,11 @@ must never reintroduce a ballot-to-user link.
 
 ## Verification
 
-- Run producer, resolver and dispatcher retries and verify stable occurrence
-  and delivery counts.
+- For scheduled producers, repeat the same domain occurrence and verify stable
+  notification counts; then change its domain timestamp (for example
+  `closing_at` or `review_on`) and verify a new notification is created.
+- Retry resolver and dispatcher jobs and verify stable delivery counts.
+- Repeat explicit user actions and verify they create distinct notifications.
 - Verify in-app queries join through delivered `NotificationDelivery` rows and
   read actions can only update the authenticated user's delivery.
 - Verify public, private, group and direct topic visibility independently of

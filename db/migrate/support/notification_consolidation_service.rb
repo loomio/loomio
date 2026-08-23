@@ -117,32 +117,33 @@ class NotificationConsolidationService
       WITH receipt_values AS (
         #{values_sql}
       ), occurrence_values AS (
-        SELECT DISTINCT ON (occurrence_key)
+        SELECT DISTINCT ON (event_id, effective_kind)
+          event_id AS legacy_event_id,
           actor_id,
           effective_kind,
           subject_type,
           subject_id,
-          occurrence_key,
           created_at,
           updated_at
         FROM receipt_values
         WHERE effective_kind IS NOT NULL
           AND subject_type IS NOT NULL
           AND subject_id IS NOT NULL
-        ORDER BY occurrence_key, notification_id
+        ORDER BY event_id, effective_kind, notification_id
       )
       INSERT INTO notification_occurrences
-        (actor_id, kind, subject_type, subject_id, deduplication_key,
+        (legacy_event_id, actor_id, kind, subject_type, subject_id,
          translation_values, deliveries_generated_at, created_at, updated_at)
       SELECT
-        actor_id, effective_kind, subject_type, subject_id, occurrence_key,
+        legacy_event_id, actor_id, effective_kind, subject_type, subject_id,
         '{}'::jsonb, CURRENT_TIMESTAMP, created_at, updated_at
       FROM occurrence_values source_values
       WHERE NOT EXISTS (
         SELECT 1 FROM notification_occurrences occurrences
-        WHERE occurrences.deduplication_key = source_values.occurrence_key
+        WHERE occurrences.legacy_event_id = source_values.legacy_event_id
+          AND occurrences.kind = source_values.effective_kind
       )
-      ON CONFLICT (deduplication_key) DO NOTHING
+      ON CONFLICT (legacy_event_id, kind) DO NOTHING
     SQL
 
     deliveries_inserted = connection.execute(<<~SQL).cmd_tuples
@@ -150,7 +151,8 @@ class NotificationConsolidationService
         #{values_sql}
       ), grouped_receipts AS (
         SELECT
-          occurrence_key,
+          event_id AS legacy_event_id,
+          effective_kind,
           user_id,
           (array_agg(translation_values ORDER BY notification_id))[1] AS translation_values,
           MIN(created_at) AS created_at,
@@ -160,7 +162,7 @@ class NotificationConsolidationService
         WHERE effective_kind IS NOT NULL
           AND subject_type IS NOT NULL
           AND subject_id IS NOT NULL
-        GROUP BY occurrence_key, user_id
+        GROUP BY event_id, effective_kind, user_id
       )
       INSERT INTO notification_deliveries
         (notification_occurrence_id, recipient_type, recipient_id, channel,
@@ -173,7 +175,8 @@ class NotificationConsolidationService
         grouped_receipts.created_at, grouped_receipts.updated_at
       FROM grouped_receipts
       INNER JOIN notification_occurrences occurrences
-        ON occurrences.deduplication_key = grouped_receipts.occurrence_key
+        ON occurrences.legacy_event_id = grouped_receipts.legacy_event_id
+       AND occurrences.kind = grouped_receipts.effective_kind
       WHERE NOT EXISTS (
         SELECT 1 FROM notification_deliveries deliveries
         WHERE deliveries.notification_occurrence_id = occurrences.id
@@ -199,7 +202,7 @@ class NotificationConsolidationService
       WITH receipt_values AS (
         #{receipt_values_sql(connection, notification_id_after: 0, notification_id_finish: high_water_id)}
       ), delivery_groups AS (
-        SELECT DISTINCT occurrence_key, user_id
+        SELECT DISTINCT event_id, effective_kind, user_id
         FROM receipt_values
         WHERE effective_kind IS NOT NULL
           AND subject_type IS NOT NULL
@@ -210,7 +213,7 @@ class NotificationConsolidationService
         (SELECT COUNT(*) FROM receipt_values
           WHERE effective_kind IS NULL OR subject_type IS NULL OR subject_id IS NULL
         ) AS blocked_receipts,
-        (SELECT COUNT(DISTINCT occurrence_key) FROM receipt_values
+        (SELECT COUNT(DISTINCT (event_id, effective_kind)) FROM receipt_values
           WHERE effective_kind IS NOT NULL
             AND subject_type IS NOT NULL
             AND subject_id IS NOT NULL
@@ -225,7 +228,7 @@ class NotificationConsolidationService
       FROM notification_occurrences occurrences
       INNER JOIN notification_deliveries deliveries
         ON deliveries.notification_occurrence_id = occurrences.id
-      WHERE occurrences.deduplication_key LIKE 'event:%'
+      WHERE occurrences.legacy_event_id IS NOT NULL
         AND deliveries.channel = 'in_app'
         AND deliveries.recipient_type = 'User'
     SQL
@@ -286,14 +289,14 @@ class NotificationConsolidationService
           #{values_sql}
         )
         INSERT INTO notification_occurrences
-          (actor_id, kind, subject_type, subject_id, deduplication_key,
+          (legacy_event_id, actor_id, kind, subject_type, subject_id,
            translation_values, deliveries_generated_at, created_at, updated_at)
-        SELECT DISTINCT ON (occurrence_key)
+        SELECT DISTINCT ON (event_id, effective_kind)
+          event_id,
           actor_id,
           effective_kind,
           subject_type,
           subject_id,
-          occurrence_key,
           '{}'::jsonb,
           CURRENT_TIMESTAMP,
           created_at,
@@ -302,8 +305,8 @@ class NotificationConsolidationService
         WHERE effective_kind IS NOT NULL
           AND subject_type IS NOT NULL
           AND subject_id IS NOT NULL
-        ORDER BY occurrence_key, notification_id
-        ON CONFLICT (deduplication_key) DO NOTHING
+        ORDER BY event_id, effective_kind, notification_id
+        ON CONFLICT (legacy_event_id, kind) DO NOTHING
       SQL
 
       connection.execute(<<~SQL)
@@ -311,7 +314,8 @@ class NotificationConsolidationService
           #{values_sql}
         ), grouped_receipts AS (
           SELECT
-            occurrence_key,
+            event_id AS legacy_event_id,
+            effective_kind,
             user_id,
             (array_agg(translation_values ORDER BY notification_id))[1] AS translation_values,
             MIN(created_at) AS created_at,
@@ -322,7 +326,7 @@ class NotificationConsolidationService
           WHERE effective_kind IS NOT NULL
             AND subject_type IS NOT NULL
             AND subject_id IS NOT NULL
-          GROUP BY occurrence_key, user_id
+          GROUP BY event_id, effective_kind, user_id
         )
         INSERT INTO notification_deliveries
           (notification_occurrence_id, recipient_type, recipient_id, channel,
@@ -342,7 +346,8 @@ class NotificationConsolidationService
           grouped_receipts.updated_at
         FROM grouped_receipts
         INNER JOIN notification_occurrences occurrences
-          ON occurrences.deduplication_key = grouped_receipts.occurrence_key
+          ON occurrences.legacy_event_id = grouped_receipts.legacy_event_id
+         AND occurrences.kind = grouped_receipts.effective_kind
         ON CONFLICT (notification_occurrence_id, channel, recipient_type, recipient_id)
         DO UPDATE SET
           viewed_at = COALESCE(notification_deliveries.viewed_at, EXCLUDED.viewed_at),
@@ -404,6 +409,7 @@ class NotificationConsolidationService
     <<~SQL
       SELECT
         notifications.id AS notification_id,
+        events.id AS event_id,
         notifications.user_id,
         notifications.translation_values,
         notifications.viewed,
@@ -423,20 +429,7 @@ class NotificationConsolidationService
             (mentioned_comments.parent_type = 'Stance' AND parent_stances.participant_id = notifications.user_id)
           ) THEN 'comment_replied_to'
           ELSE events.kind
-        END AS effective_kind,
-        'event:' || events.id || ':' ||
-          CASE
-            WHEN events.kind = 'announcement_created' THEN
-              COALESCE(events.custom_fields ->> 'kind', 'group_announced')
-            WHEN events.kind = 'user_mentioned' AND (
-              (mentioned_comments.parent_type = 'Discussion' AND parent_discussions.author_id = notifications.user_id) OR
-              (mentioned_comments.parent_type = 'Comment' AND parent_comments.user_id = notifications.user_id) OR
-              (mentioned_comments.parent_type = 'Outcome' AND parent_outcomes.author_id = notifications.user_id) OR
-              (mentioned_comments.parent_type = 'Poll' AND parent_polls.author_id = notifications.user_id) OR
-              (mentioned_comments.parent_type = 'Stance' AND parent_stances.participant_id = notifications.user_id)
-            ) THEN 'comment_replied_to'
-            ELSE events.kind
-          END AS occurrence_key
+        END AS effective_kind
       FROM notifications
       INNER JOIN events ON events.id = notifications.event_id
       LEFT JOIN users actor_users ON actor_users.id = events.user_id

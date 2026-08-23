@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class NewDiscussion < NotificationDeliveryResolver
-    def self.deduplication_key(discussion, occurrence_key: nil)
-      "new_discussion:discussion_#{discussion.id}"
-    end
-
     private
 
     # Topic subscriptions and chatbot publication belong to the discussion's

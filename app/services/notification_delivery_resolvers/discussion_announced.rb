@@ -1,13 +1,5 @@
 module NotificationDeliveryResolvers
   class DiscussionAnnounced < NotificationDeliveryResolver
-    def self.deduplication_key(discussion, occurrence_key: nil)
-      if occurrence_key.blank?
-        raise ArgumentError, "discussion_announced occurrence_key is required"
-      end
-
-      "discussion_announced:discussion_#{discussion.id}:#{occurrence_key}"
-    end
-
     private
 
     def recipients_by_channel

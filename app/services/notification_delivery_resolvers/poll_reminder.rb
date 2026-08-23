@@ -1,11 +1,5 @@
 module NotificationDeliveryResolvers
   class PollReminder < NotificationDeliveryResolver
-    def self.deduplication_key(poll, occurrence_key: nil)
-      raise ArgumentError, "poll_reminder occurrence_key is required" if occurrence_key.blank?
-
-      "poll_reminder:poll_#{poll.id}:#{occurrence_key}"
-    end
-
     private
 
     def recipients_by_channel

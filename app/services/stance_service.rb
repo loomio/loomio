@@ -93,11 +93,9 @@ class StanceService
     was_shared_update_visible = stance.shared_update_visible?
     MarkNotificationsAsReadWorker.perform_later("Poll", stance.poll_id, stance.participant_id)
     topic_item = event_class.publish!(stance) if stance.add_to_thread?
-    occurrence_key = topic_item ? "event_#{topic_item.id}" : "updated_at_#{stance.updated_at.utc.iso8601(6)}"
     MentionNotificationService.create!(
       subject: stance,
       actor: stance.participant,
-      occurrence_key: occurrence_key,
       notify: was_shared_update_visible
     )
     { topic_item: topic_item, was_shared_update_visible: was_shared_update_visible }

@@ -30,7 +30,6 @@ class TopicService
           kind: "discussion_announced",
           subject: topic.topicable,
           actor: actor,
-          occurrence_key: SecureRandom.uuid,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message]

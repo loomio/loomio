@@ -551,7 +551,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000002) do
     t.integer "actor_id"
     t.jsonb "audience_values", default: {}, null: false
     t.datetime "created_at", null: false
-    t.string "deduplication_key", null: false
     t.datetime "deliveries_generated_at"
     t.string "kind", null: false
     t.integer "recipient_chatbot_ids", default: [], null: false, array: true
@@ -561,7 +560,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000002) do
     t.string "subject_type", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
-    t.index ["deduplication_key"], name: "index_notifications_on_deduplication_key", unique: true
     t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
   end
 

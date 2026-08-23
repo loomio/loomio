@@ -84,6 +84,13 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     connection.rename_column(:events, :itemable_version_id, :eventable_version_id)
     connection.change_column_null(:events, :topic_id, true)
     connection.rename_table(:notifications, :notification_occurrences)
+    connection.add_column(:notification_occurrences, :legacy_event_id, :bigint, null: false)
+    connection.add_index(
+      :notification_occurrences,
+      %i[legacy_event_id kind],
+      unique: true,
+      name: "index_notification_occurrences_on_legacy_event_and_kind"
+    )
     connection.rename_column(:notification_deliveries, :notification_id, :notification_occurrence_id)
     connection.create_table(:notifications) do |t|
       t.bigint :event_id, null: false
@@ -107,6 +114,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     if connection&.data_source_exists?(:events)
       connection.drop_table(:notifications, if_exists: true)
       connection.drop_table(:notification_consolidation_states, if_exists: true)
+      connection.remove_column(:notification_occurrences, :legacy_event_id)
       connection.rename_table(:notification_occurrences, :notifications)
       connection.rename_column(:notification_deliveries, :notification_occurrence_id, :notification_id)
       connection.execute("DELETE FROM events WHERE topic_id IS NULL")

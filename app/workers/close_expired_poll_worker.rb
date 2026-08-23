@@ -9,9 +9,13 @@ class CloseExpiredPollWorker < ApplicationJob
 
   private
 
-  # A retry after the poll transaction committed must still repair a missing
-  # notification. Direct notification identity makes this idempotent.
+  # A poll can be reopened and expire again. Treat an expiry notification made
+  # after the current closing_at as belonging to this closing.
   def publish_expiry(poll)
+    return if Notification.where(kind: "poll_expired", subject: poll)
+                          .where(created_at: poll.closing_at..)
+                          .exists?
+
     NotificationService.create!(
       kind: "poll_expired",
       subject: poll,

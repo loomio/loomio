@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class UnknownSender < NotificationDeliveryResolver
-    def self.deduplication_key(received_email, occurrence_key: nil)
-      "unknown_sender:received_email_#{received_email.id}"
-    end
-
     def self.translation_values(received_email, _actor, locale: I18n.default_locale)
       I18n.with_locale(locale) do
         { title: received_email.group.full_name }

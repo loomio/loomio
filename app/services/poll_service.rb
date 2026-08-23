@@ -57,7 +57,6 @@ class PollService
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
-        occurrence_key: "event_#{topic_item.id}",
       )
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
     end
@@ -128,14 +127,12 @@ class PollService
           recipient_message: params[:recipient_message]
         )
       end
-      occurrence_key = topic_item ? "event_#{topic_item.id}" : "updated_at_#{poll.updated_at.utc.iso8601(6)}"
       has_direct_chatbots = topic_item.nil? && Array(params[:recipient_chatbot_ids]).compact.any?
       if users.any? || has_direct_chatbots
         NotificationService.create!(
           kind: "poll_edited",
           subject: poll,
           actor: actor,
-          occurrence_key: occurrence_key,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
@@ -145,7 +142,6 @@ class PollService
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
-        occurrence_key: occurrence_key,
         already_notified_user_ids: users.pluck(:id)
       )
       topic_item
@@ -268,7 +264,6 @@ class PollService
         kind: "poll_reminder",
         subject: poll,
         actor: actor,
-        occurrence_key: SecureRandom.uuid,
         recipient_user_ids: users.pluck(:id),
         recipient_chatbot_ids: params[:recipient_chatbot_ids],
         recipient_message: params[:recipient_message]
@@ -375,17 +370,8 @@ class PollService
       )
     end
 
-    reminded_poll_ids = TopicItem.where(kind: "poll_closing_soon", itemable_type: "Poll").select(:itemable_id)
-    notified_poll_ids = Notification.where(
-      kind: "poll_closing_soon",
-      subject_type: "Poll"
-    ).select(:subject_id)
-
-    Poll.active
+    Poll.closing_soon_not_published(now..(now + 24.hours))
         .where(voting_system: Poll.voting_systems[:anonymous_ballot])
-        .where(closing_at: now..(now + 24.hours))
-        .where.not(id: reminded_poll_ids)
-        .where.not(id: notified_poll_ids)
         .find_each do |poll|
       opening_at = poll.opening_at || poll.opened_at
       next unless opening_at && poll.closing_at - opening_at >= 24.hours
@@ -716,7 +702,6 @@ class PollService
         actor: poll.author,
         stances: [],
         recipient_user_ids: recipient_user_ids,
-        occurrence_key: "opened_at_#{poll.opened_at.iso8601(6)}"
       )
       return
     end
@@ -728,20 +713,18 @@ class PollService
       poll: poll,
       actor: poll.author,
       stances: stances,
-      occurrence_key: "opened_at_#{poll.opened_at.iso8601(6)}"
     )
   end
 
   def self.create_poll_announced_notification!(poll:, actor:, stances: [],
                                                recipient_user_ids: [], recipient_chatbot_ids: [],
-                                               recipient_message: nil, occurrence_key: SecureRandom.uuid,
+                                               recipient_message: nil,
                                                **)
     stance_recipient_ids = Array(stances).filter_map(&:participant_id)
     NotificationService.create!(
       kind: "poll_announced",
       subject: poll,
       actor: actor,
-      occurrence_key: occurrence_key,
       recipient_user_ids: (stance_recipient_ids + Array(recipient_user_ids)).uniq,
       recipient_chatbot_ids: recipient_chatbot_ids,
       recipient_message: recipient_message

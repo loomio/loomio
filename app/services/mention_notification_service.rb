@@ -3,8 +3,7 @@
 # mention discovery is atomic with both the edited content and any timeline
 # item, while channel delivery remains background work.
 class MentionNotificationService
-  def self.create!(subject:, actor:, occurrence_key:,
-                   already_notified_user_ids: [], notify: true)
+  def self.create!(subject:, actor:, already_notified_user_ids: [], notify: true)
     return [] unless notify
 
     mentioned_users = subject.newly_mentioned_users.to_a
@@ -16,7 +15,6 @@ class MentionNotificationService
         kind: "group_mentioned",
         subject: subject,
         actor: actor,
-        occurrence_key: occurrence_key,
         audience_values: {
           group_ids: mentioned_groups.map(&:id),
           mentioned_user_ids: mentioned_users.map(&:id),
@@ -35,7 +33,6 @@ class MentionNotificationService
         kind: "comment_replied_to",
         subject: subject,
         actor: actor,
-        occurrence_key: occurrence_key,
         recipient_user_ids: [ reply_recipient_id ]
       )
     end
@@ -46,7 +43,6 @@ class MentionNotificationService
         kind: "user_mentioned",
         subject: subject,
         actor: actor,
-        occurrence_key: occurrence_key,
         recipient_user_ids: user_recipient_ids
       )
     end
@@ -54,13 +50,11 @@ class MentionNotificationService
     notifications
   end
 
-  def self.create_user_notification!(kind:, subject:, actor:, occurrence_key:,
-                                     recipient_user_ids:)
+  def self.create_user_notification!(kind:, subject:, actor:, recipient_user_ids:)
     NotificationService.create!(
       kind: kind,
       subject: subject,
       actor: actor,
-      occurrence_key: occurrence_key,
       recipient_user_ids: recipient_user_ids
     )
   end

@@ -368,7 +368,7 @@ class GroupExportService
           attrs = data['record'].deep_dup
           translate_foreign_keys!(attrs, table, migrate_ids)
           attrs[pk] = new_id if pk
-          translate_notification_payload!(attrs, new_id, migrate_ids) if table == 'notifications'
+          translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'
           record = klass.new(attrs)
           prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
           klass.import([record], validate: false)
@@ -503,11 +503,9 @@ class GroupExportService
     end
   end
 
-  # Global notification identities are installation-local because their keys
-  # contain source record IDs. Re-key imported rows and translate snapshotted
-  # user/group audiences so mention history and any recovery resolution refer
-  # only to imported records.
-  def self.translate_notification_payload!(attrs, new_id, migrate_ids)
+  # Translate snapshotted user/group audiences so mention history and any
+  # recovery resolution refer only to imported records.
+  def self.translate_notification_payload!(attrs, migrate_ids)
     attrs['recipient_user_ids'] = translate_ids(attrs['recipient_user_ids'], migrate_ids['users'])
 
     audience_values = attrs['audience_values'] || {}
@@ -523,8 +521,6 @@ class GroupExportService
       audience_values['group_ids'] = translate_ids(audience_values['group_ids'], migrate_ids['groups'])
     end
     attrs['audience_values'] = audience_values
-
-    attrs['deduplication_key'] = "imported:notification_#{new_id}"
   end
 
   def self.translate_ids(ids, id_map)

@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class PollExpired < NotificationDeliveryResolver
-    def self.deduplication_key(poll, occurrence_key: nil)
-      "poll_expired:poll_#{poll.id}:#{poll.closed_at.iso8601}"
-    end
-
     private
 
     def recipients_by_channel

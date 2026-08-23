@@ -303,8 +303,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       kind: "user_mentioned",
       subject: comment,
-      actor: @admin,
-      deduplication_key: "user_mentioned:history:#{SecureRandom.uuid}"
+      actor: @admin
     )
     NotificationDelivery.create!(
       notification: notification,
@@ -330,7 +329,6 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       kind: "poll_announced",
       subject: poll,
       actor: @admin,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: [ member.id ]
     )
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
@@ -351,7 +349,6 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       kind: "poll_announced",
       subject: poll,
       actor: @admin,
-      occurrence_key: SecureRandom.uuid,
       recipient_user_ids: [ member.id ]
     )
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)

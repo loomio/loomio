@@ -193,15 +193,20 @@ class Poll < ApplicationRecord
     kept.joins(:topic).where("topics.group_id IN (?)", group.id_and_subgroup_ids)
   }
 
-  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
+  scope :closing_soon_not_published, ->(timeframe) do
      active
     .distinct
     .where(closing_at: timeframe)
     .where("NOT EXISTS (SELECT 1 FROM topic_items
-                WHERE topic_items.created_at     > ? AND
+                WHERE topic_items.created_at    >= polls.closing_at - INTERVAL '25 hours' AND
                       topic_items.itemable_id   = polls.id AND
                       topic_items.itemable_type = 'Poll' AND
-                      topic_items.kind           = 'poll_closing_soon')", recency_threshold)
+                      topic_items.kind           = 'poll_closing_soon')")
+    .where("NOT EXISTS (SELECT 1 FROM notifications
+                WHERE notifications.created_at   >= polls.closing_at - INTERVAL '25 hours' AND
+                      notifications.subject_id   = polls.id AND
+                      notifications.subject_type = 'Poll' AND
+                      notifications.kind         = 'poll_closing_soon')")
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }

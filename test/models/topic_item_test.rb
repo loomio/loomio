@@ -128,7 +128,6 @@ class EventTest < ActiveSupport::TestCase
     MentionNotificationService.create!(
       subject: @discussion,
       actor: @admin,
-      occurrence_key: "event_#{topic_item.id}",
     )
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       Resolv.stub(:getaddresses, [ "93.184.216.34" ]) do
@@ -155,7 +154,6 @@ class EventTest < ActiveSupport::TestCase
     MentionNotificationService.create!(
       subject: @poll,
       actor: @admin,
-      occurrence_key: "event_#{topic_item.id}",
     )
     PublishTopicItemWorker.perform_now(topic_item.id)
     assert_equal 1, @poll.mentioned_users.length
@@ -184,7 +182,6 @@ class EventTest < ActiveSupport::TestCase
       MentionNotificationService.create!(
         subject: @poll,
         actor: @poll.author,
-        occurrence_key: SecureRandom.uuid
       )
     end
     notification = Notification.where(kind: "user_mentioned", subject: @poll)
@@ -274,22 +271,6 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-  test "retrying poll_expired does not notify or email the author again" do
-    @poll.update_column(:closed_at, Time.current)
-    @poll.author = @user_thread_loud
-    @poll.save!
-    assert_difference -> { Notification.count }, 1 do
-      assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do
-        2.times do
-          NotificationService.create!(kind: "poll_expired", subject: @poll, actor: @poll.author)
-        end
-      end
-    end
-
-    notification = Notification.find_by!(kind: "poll_expired", subject: @poll)
-    assert_match "poll_expired:poll_#{@poll.id}:", notification.deduplication_key
-  end
-
   test "stance_created notifies author if volume loud" do
     @poll.stances.create!(participant: @poll.author)
     TopicReader.find_or_create_by!(topic: @poll.topic, user: @poll.author).set_volume!('loud')
@@ -364,7 +345,6 @@ class EventTest < ActiveSupport::TestCase
         kind: "poll_announced",
         subject: @poll,
         actor: @poll.author,
-        occurrence_key: SecureRandom.uuid,
         recipient_user_ids: [ stance.participant_id ]
       )
     end
@@ -377,7 +357,6 @@ class EventTest < ActiveSupport::TestCase
         kind: "poll_announced",
         subject: @poll,
         actor: @poll.author,
-        occurrence_key: SecureRandom.uuid,
         recipient_user_ids: [ stance.participant_id ]
       )
     end

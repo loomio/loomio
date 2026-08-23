@@ -1,13 +1,5 @@
 module NotificationDeliveryResolvers
   class GroupMentioned < NotificationDeliveryResolver
-    def self.deduplication_key(subject, occurrence_key: nil)
-      if occurrence_key.blank?
-        raise ArgumentError, "group_mentioned occurrence_key is required"
-      end
-
-      "group_mentioned:#{subject.class.base_class.name}_#{subject.id}:#{occurrence_key}"
-    end
-
     private
 
     def recipients_by_channel

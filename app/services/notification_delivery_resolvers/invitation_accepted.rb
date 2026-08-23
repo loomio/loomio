@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class InvitationAccepted < NotificationDeliveryResolver
-    def self.deduplication_key(membership, occurrence_key: nil)
-      "invitation_accepted:membership_#{membership.id}"
-    end
-
     private
 
     def recipients_by_channel

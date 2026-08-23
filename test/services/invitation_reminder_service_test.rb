@@ -41,11 +41,4 @@ class InvitationReminderServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "retrying the reminder window preserves one notification and delivery" do
-    InvitationReminderService.resend_pending
-
-    assert_no_difference [ "Notification.count", "NotificationDelivery.count", "ActionMailer::Base.deliveries.count" ] do
-      InvitationReminderService.resend_pending
-    end
-  end
 end

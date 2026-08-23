@@ -5,8 +5,7 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
     @notification = Notification.create!(
       actor: users(:admin),
       kind: "new_discussion",
-      subject: discussions(:discussion),
-      deduplication_key: "new_discussion:delivery-test:#{SecureRandom.uuid}"
+      subject: discussions(:discussion)
     )
     SafeHttpService.stub(:safe_to_fetch?, true) do
       @chatbot = Chatbot.create!(
@@ -72,8 +71,7 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
     notification = Notification.create!(
       actor: users(:admin),
       kind: "discussion_edited",
-      subject: subject,
-      deduplication_key: "discussion_edited:discussion_#{subject.id}:2026-08-22"
+      subject: subject
     )
     viewed_delivery = NotificationDelivery.create!(
       notification: notification,
@@ -97,25 +95,6 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
 
     notification.update!(deliveries_generated_at: Time.current)
     assert_not_includes Notification.pending_delivery_resolution, notification
-  end
-
-  test "the database rejects a duplicate global notification identity" do
-    subject = topic_items(:discussion_created_topic_item).itemable
-    attributes = {
-      actor_id: users(:admin).id,
-      kind: "discussion_edited",
-      subject_type: subject.class.base_class.name,
-      subject_id: subject.id,
-      deduplication_key: "discussion_edited:discussion_#{subject.id}:2026-08-23",
-      translation_values: {},
-      created_at: Time.current,
-      updated_at: Time.current
-    }
-    Notification.insert_all!([ attributes ])
-
-    assert_raises(ActiveRecord::RecordNotUnique) do
-      Notification.insert_all!([ attributes ])
-    end
   end
 
   test "a notification must be self-contained" do

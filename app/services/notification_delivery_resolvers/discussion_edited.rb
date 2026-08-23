@@ -1,11 +1,5 @@
 module NotificationDeliveryResolvers
   class DiscussionEdited < NotificationDeliveryResolver
-    def self.deduplication_key(discussion, occurrence_key: nil)
-      raise ArgumentError, "discussion_edited occurrence_key is required" if occurrence_key.blank?
-
-      "discussion_edited:discussion_#{discussion.id}:#{occurrence_key}"
-    end
-
     private
 
     # Discussion edits notify only the explicitly selected audience. Mention

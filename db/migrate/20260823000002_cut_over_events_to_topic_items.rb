@@ -10,12 +10,10 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
     rename_column :notification_deliveries,
                   :notification_occurrence_id,
                   :notification_id
+    remove_column :notifications, :legacy_event_id
     rename_index_if_present :notification_deliveries,
                             "index_notification_deliveries_on_occurrence_identity",
                             "index_notification_deliveries_on_identity"
-    rename_index_if_present :notifications,
-                            "index_notification_occurrences_on_deduplication_key",
-                            "index_notifications_on_deduplication_key"
     rename_index_if_present :notifications,
                             "index_notification_occurrences_pending_resolution",
                             "index_notifications_on_pending_delivery_resolution"

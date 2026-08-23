@@ -40,8 +40,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: @admin,
       kind: "discussion_edited",
-      subject: subject,
-      deduplication_key: "discussion_edited:discussion_#{subject.id}:global-access-test"
+      subject: subject
     )
     NotificationDelivery.create!(
       notification: notification,
@@ -72,8 +71,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: @admin,
       kind: "discussion_edited",
-      subject: subject,
-      deduplication_key: "discussion_edited:discussion_#{subject.id}:global-viewed-test"
+      subject: subject
     )
     user_delivery = NotificationDelivery.create!(
       notification: notification,
@@ -103,8 +101,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     inaccessible_notification = Notification.create!(
       actor: users(:alien),
       kind: "discussion_edited",
-      subject: inaccessible_subject,
-      deduplication_key: "discussion_edited:discussion_#{inaccessible_subject.id}:global-inaccessible-test"
+      subject: inaccessible_subject
     )
     NotificationDelivery.create!(
       notification: inaccessible_notification,
@@ -118,8 +115,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     pending_notification = Notification.create!(
       actor: @admin,
       kind: "discussion_edited",
-      subject: accessible_subject,
-      deduplication_key: "discussion_edited:discussion_#{accessible_subject.id}:global-pending-test"
+      subject: accessible_subject
     )
     NotificationDelivery.create!(
       notification: pending_notification,
@@ -143,8 +139,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notification = Notification.create!(
       actor: actor,
       kind: "discussion_edited",
-      subject: subject,
-      deduplication_key: "discussion_edited:controller-test:#{SecureRandom.uuid}"
+      subject: subject
     )
     NotificationDelivery.create!(
       notification: notification,

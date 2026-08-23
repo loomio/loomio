@@ -68,9 +68,6 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
   end
 
   # Preserve the 3.2 poll-close notification using migration-owned table models.
-  # Direct upgrades may run before or after the self-contained notification
-  # fields have been introduced, so populate those fields when they exist while
-  # retaining event_id until the cutover migration verifies the backfill.
   def publish_poll_expired!(poll)
     event = LegacyEventRecord.create!(
       kind: "poll_expired",
@@ -89,14 +86,6 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
       created_at: poll.closed_at,
       updated_at: poll.closed_at
     }
-    if LegacyNotificationRecord.column_names.include?("deduplication_key")
-      attributes.merge!(
-        kind: "poll_expired",
-        subject_type: "Poll",
-        subject_id: poll.id,
-        deduplication_key: "event:#{event.id}"
-      )
-    end
     LegacyNotificationRecord.create!(attributes)
   end
 

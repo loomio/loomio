@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class NewDelegate < NotificationDeliveryResolver
-    def self.deduplication_key(membership, occurrence_key: nil)
-      "new_delegate:membership_#{membership.id}:#{membership.updated_at.iso8601(6)}"
-    end
-
     private
 
     def recipients_by_channel

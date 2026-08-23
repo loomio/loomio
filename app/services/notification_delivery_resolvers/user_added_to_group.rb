@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class UserAddedToGroup < NotificationDeliveryResolver
-    def self.deduplication_key(membership, occurrence_key: nil)
-      "user_added_to_group:membership_#{membership.id}:#{membership.updated_at.iso8601(6)}"
-    end
-
     private
 
     def recipients_by_channel

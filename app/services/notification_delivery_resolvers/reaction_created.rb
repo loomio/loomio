@@ -1,9 +1,5 @@
 module NotificationDeliveryResolvers
   class ReactionCreated < NotificationDeliveryResolver
-    def self.deduplication_key(reaction, occurrence_key: nil)
-      "reaction_created:reaction_#{reaction.id}:#{reaction.updated_at.iso8601(6)}"
-    end
-
     def self.translation_values(reaction, actor, locale: actor.locale)
       I18n.with_locale(locale) do
         {
