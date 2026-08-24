@@ -130,6 +130,7 @@ class EventTest < ActiveSupport::TestCase
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
     notification = Notification.find_by!(kind: "user_mentioned", subject: comment)
+    assert_equal comment.created_topic_item, notification.topic_item
     assert_equal [ @mentioned_user.id ], notification.recipient_user_ids
     assert_equal [ @mentioned_user.id ], notification.notification_deliveries.where(channel: "email").pluck(:recipient_id)
     assert_equal [ @mentioned_user.id ], notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id)

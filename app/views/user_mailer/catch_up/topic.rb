@@ -70,7 +70,7 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     since = [reader.last_read_at, @time_start].compact.max
 
     div(class: "activity-feed") do
-      @topic.items.includes(:notification).where('created_at > ?', since).order('created_at').each do |item|
+      @topic.items.includes(:notifications).where('created_at > ?', since).order('created_at').each do |item|
         next unless TOPIC_ITEM_KINDS.include?(item.kind)
 
         component_class = TOPIC_ITEM_COMPONENTS[item.kind]

@@ -93,6 +93,20 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "cutover consolidation performs the repair pass automatically" do
+    migration = CutOverEventsToTopicItems.new
+    options = nil
+
+    NotificationConsolidationService.stub(:run!, ->(**value) { options = value }) do
+      migration.send(:consolidate_notifications!)
+    end
+
+    assert_equal false, options[:dry_run]
+    assert_equal CutOverEventsToTopicItems::BATCH_SIZE, options[:batch_size]
+    assert_equal true, options[:repair]
+    assert_kind_of Proc, options[:progress]
+  end
+
   private
 
   def with_preparation_schema

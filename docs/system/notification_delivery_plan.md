@@ -100,7 +100,8 @@ It does not reinterpret or mutate the legacy `notifications` table.
    legacy-notification ID cursor and high-water mark.
 4. Deploy this schema while the old application continues to create Event rows
    and per-user Notification receipts.
-5. Run the resumable consolidation task in bounded notification-ID batches:
+5. Large installations may optionally warm the resumable consolidation in
+   bounded notification-ID batches before deploying the cutover:
 
    ```sh
    bin/rails loomio:consolidate_notifications
@@ -120,19 +121,18 @@ It does not reinterpret or mutate the legacy `notifications` table.
 Batching by notification ID is important. A delayed receipt attached to an old
 event is still above the cursor and will be caught. The legacy table remains
 authoritative throughout this warm-up, so no compatibility reader or dual
-writer is required in the final application.
+writer is required in the final application. This warm-up is an optimization,
+not a required upgrade step; the cutover migration runs or resumes the same
+bounded consolidation automatically.
 
 ### Release B: drain, verify and cut over
 
 1. Put the old application in maintenance mode and drain notification writers.
-2. Run the consolidation task again with repair enabled. It extends the
-   high-water mark to the current maximum notification ID, processes the
-   catch-up range, then repairs any lower ID that committed after the warm
-   cursor passed it:
-
-   ```sh
-   APPLY=1 REPAIR=1 BATCH_SIZE=250000 bin/rails loomio:consolidate_notifications
-   ```
+2. Run the normal application update. The cutover migration automatically
+   extends the high-water mark to the current maximum notification ID,
+   processes or resumes the catch-up range in bounded transactions, then
+   repairs any lower ID that committed after an earlier cursor passed it.
+   `./update.sh` requires no separate backfill command.
 3. Verify zero blocked, missing or extra notification/delivery identities and a
    completed cursor at the current maximum legacy notification ID. The repair
    sweep records its own completion marker; the cutover refuses to run without

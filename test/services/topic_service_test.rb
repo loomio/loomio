@@ -106,27 +106,31 @@ class TopicServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "repair excludes children from another topic from child counts" do
+  test "repair repairs a discarded topic when explicitly given" do
+    @topic.update_columns(discarded_at: Time.current)
+    @discussion_event.update_columns(child_count: 999)
+
+    TopicService.repair(@topic.id)
+
+    TopicService.verify_integrity!(@topic.id)
+    refute_equal 999, @discussion_event.reload.child_count
+  end
+
+  test "database rejects a child whose parent belongs to another topic" do
     target = DiscussionService.create(
       params: {title: "Target discussion", group_id: @group.id},
       actor: @user
     )
-    TopicItem.create!(
-      kind: "discussion_edited",
-      itemable: @discussion,
-      topic: target.topic,
-      parent: @discussion_event,
-      user: @user
-    )
 
-    TopicService.repair(@topic.id)
-    TopicService.verify_integrity!(@topic.id)
-
-    expected_count = TopicItem.where(
-      parent_id: @discussion_event.id,
-      topic_id: @topic.id
-    ).count
-    assert_equal expected_count, @discussion_event.reload.child_count
+    assert_raises ActiveRecord::InvalidForeignKey do
+      TopicItem.create!(
+        kind: "discussion_edited",
+        itemable: @discussion,
+        topic: target.topic,
+        parent: @discussion_event,
+        user: @user
+      )
+    end
   end
 
   test "verify_integrity raises for an invalid topic_item tree" do

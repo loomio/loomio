@@ -14,6 +14,7 @@ class CommentService
       MentionNotificationService.create!(
         subject: comment,
         actor: actor,
+        topic_item: topic_item,
       )
       topic_item
     end

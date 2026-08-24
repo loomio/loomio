@@ -311,7 +311,7 @@ class TopicService
 
   def self.repair(topic_id)
     topic = Topic.find_by(id: topic_id)
-    return if !topic || topic.discarded_at
+    return unless topic
     topicable = topic.topicable
     return unless topicable
 
@@ -357,12 +357,12 @@ class TopicService
       "UPDATE topic_items
        SET child_count = (
         SELECT count(children.id) FROM topic_items children
-        WHERE children.parent_id = topic_items.id AND children.topic_id = topic_items.topic_id
+        WHERE children.parent_id = topic_items.id
       )
       WHERE topic_id = #{topic.id.to_i}")
 
     created_topic_item.reload.update_columns(
-      child_count: created_topic_item.children.where(topic_id: topic.id).count
+      child_count: created_topic_item.children.count
     )
     topic.update_sequence_info!
 
@@ -416,7 +416,6 @@ class TopicService
           SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
           FROM topic_items
           WHERE parent_id = #{parent_id}
-          AND   topic_id IS NOT NULL
         ) AS t
       WHERE topic_items.id = t.id and
             topic_items.position is distinct from t.seq")

@@ -68,7 +68,8 @@ class OutcomeService
       MentionNotificationService.create!(
         subject: outcome,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id)
+        already_notified_user_ids: users.pluck(:id),
+        topic_item: topic_item
       )
       topic_item
     end

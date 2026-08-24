@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_24_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -562,7 +562,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
-    t.index ["topic_item_id"], name: "index_notifications_on_topic_item_id", unique: true, where: "(topic_item_id IS NOT NULL)"
+    t.index ["topic_item_id"], name: "index_notifications_on_topic_item_id"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
@@ -1154,6 +1154,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
     t.index ["created_at"], name: "index_topic_items_on_created_at"
+    t.index ["id", "topic_id"], name: "index_topic_items_on_id_and_topic_id", unique: true
     t.index ["itemable_id", "kind"], name: "index_topic_items_on_itemable_id_and_kind"
     t.index ["itemable_type", "itemable_id", "kind"], name: "index_topic_items_on_unique_discussion_root", unique: true, where: "(((itemable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
     t.index ["itemable_type", "itemable_id", "kind"], name: "index_topic_items_on_unique_poll_root", unique: true, where: "(((itemable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
@@ -1371,5 +1372,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
   add_foreign_key "tasks_users", "tasks", on_delete: :cascade
   add_foreign_key "tasks_users", "users", on_delete: :cascade
-  add_foreign_key "topic_items", "topic_items", column: "parent_id", on_delete: :cascade
+  add_foreign_key "topic_items", "topic_items", column: ["parent_id", "topic_id"], primary_key: ["id", "topic_id"], name: "topic_items_parent_same_topic", on_delete: :cascade
 end

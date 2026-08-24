@@ -53,13 +53,14 @@ class PollService
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
-      TopicItems::PollCreated.create!(
+      topic_item = TopicItems::PollCreated.create!(
         itemable: poll,
         pinned: true
       )
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
+        topic_item: topic_item,
       )
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
     end
@@ -140,7 +141,8 @@ class PollService
       MentionNotificationService.create!(
         subject: poll,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id)
+        already_notified_user_ids: users.pluck(:id),
+        topic_item: topic_item
       )
       topic_item
     end

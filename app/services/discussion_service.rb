@@ -77,7 +77,8 @@ class DiscussionService
       MentionNotificationService.create!(
         subject: discussion,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id)
+        already_notified_user_ids: users.pluck(:id),
+        topic_item: topic_item
       )
     end
     EventBus.broadcast('discussion_create', discussion, actor)
@@ -142,7 +143,8 @@ class DiscussionService
       MentionNotificationService.create!(
         subject: discussion,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id)
+        already_notified_user_ids: users.pluck(:id),
+        topic_item: topic_item
       )
       topic_item
     end

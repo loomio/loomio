@@ -6,6 +6,7 @@ class Views::NotificationMailer::TopicItems::PollEdited < Views::ApplicationMail
     @item = item
     @recipient = recipient
     @poll = item.itemable
+    @notification = item.notifications.detect { |notification| notification.kind == item.kind }
   end
 
   def view_template
@@ -21,8 +22,8 @@ class Views::NotificationMailer::TopicItems::PollEdited < Views::ApplicationMail
               poll_type: t("poll_types.#{@poll.poll_type}"),
               title: @poll.title)
           end
-          if @item.notification&.recipient_message.present?
-            p { raw MarkdownService.render_plain_text(@item.notification.recipient_message) }
+          if @notification&.recipient_message.present?
+            p { raw MarkdownService.render_plain_text(@notification.recipient_message) }
           end
         end
       end

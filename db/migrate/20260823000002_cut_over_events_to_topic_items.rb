@@ -1,77 +1,96 @@
 class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
+  disable_ddl_transaction!
+
+  BATCH_SIZE = 250_000
+
   def up
+    consolidate_notifications!
     assert_notification_consolidation_complete!
 
-    # The preparation release leaves this table under its legacy meaning: one
-    # in-app receipt per user. Replace it only after the catch-up high-water mark
-    # proves every receipt has been represented by a delivery.
-    drop_table :notifications
-    rename_table :notification_occurrences, :notifications
-    rename_column :notification_deliveries,
-                  :notification_occurrence_id,
-                  :notification_id
-    rename_column :notifications, :legacy_event_id, :topic_item_id
-    change_column_null :notifications, :topic_item_id, true
-    # Only a same-kind occurrence represents the timeline item itself. Mention
-    # and other notifications may share its legacy event but remain independent.
-    execute <<~SQL.squish
-      UPDATE notifications
-      SET topic_item_id = NULL
-      FROM events
-      WHERE notifications.topic_item_id = events.id
-        AND (events.topic_id IS NULL OR notifications.kind IS DISTINCT FROM events.kind)
-    SQL
-    remove_index :notifications,
-                 name: "index_notification_occurrences_on_legacy_event_and_kind"
-    rename_index_if_present :notification_deliveries,
-                            "index_notification_deliveries_on_occurrence_identity",
-                            "index_notification_deliveries_on_identity"
-    rename_index_if_present :notifications,
-                            "index_notification_occurrences_pending_resolution",
-                            "index_notifications_on_pending_delivery_resolution"
+    transaction do
+      topic_ids_to_repair = topic_ids_affected_by_unpublishable_events
 
-    execute "DELETE FROM events WHERE topic_id IS NULL"
-    change_column_null :events, :topic_id, false
-    change_column_null :events, :kind, false
-    change_column_null :events, :eventable_type, false
-    change_column_null :events, :eventable_id, false
-    remove_column :events, :announcement
-    rename_column :events, :eventable_type, :itemable_type
-    rename_column :events, :eventable_id, :itemable_id
-    rename_column :events, :eventable_version_id, :itemable_version_id
-    rename_table :events, :topic_items
-    add_check_constraint :topic_items,
-                         "btrim(kind) <> ''",
-                         name: "topic_items_kind_present"
-    add_check_constraint :topic_items,
-                         "btrim(itemable_type) <> ''",
-                         name: "topic_items_itemable_type_present"
+      # The preparation release leaves this table under its legacy meaning: one
+      # in-app receipt per user. Replace it only after the catch-up high-water mark
+      # proves every receipt has been represented by a delivery.
+      drop_table :notifications
+      rename_table :notification_occurrences, :notifications
+      rename_column :notification_deliveries,
+                    :notification_occurrence_id,
+                    :notification_id
+      rename_column :notifications, :legacy_event_id, :topic_item_id
+      change_column_null :notifications, :topic_item_id, true
+      link_comment_notifications_to_topic_items!
+      # Every notification derived from a publishable event retains that topic
+      # context, including mentions whose kind differs from the topic item.
+      execute <<~SQL.squish
+        UPDATE notifications
+        SET topic_item_id = NULL
+        FROM events
+        WHERE notifications.topic_item_id = events.id
+          AND (#{unpublishable_event_condition('events')})
+      SQL
+      remove_index :notifications,
+                   name: "index_notification_occurrences_on_legacy_event_and_kind"
+      rename_index_if_present :notification_deliveries,
+                              "index_notification_deliveries_on_occurrence_identity",
+                              "index_notification_deliveries_on_identity"
+      rename_index_if_present :notifications,
+                              "index_notification_occurrences_pending_resolution",
+                              "index_notifications_on_pending_delivery_resolution"
 
-    add_index :notifications,
-              :topic_item_id,
-              unique: true,
-              where: "topic_item_id IS NOT NULL",
-              name: "index_notifications_on_topic_item_id"
-    add_foreign_key :notifications,
-                    :topic_items,
-                    column: :topic_item_id,
-                    on_delete: :nullify
+      # Preserve valid descendants if an old malformed event was used as their
+      # parent. Topic repair reconstructs their ancestry from itemable records.
+      execute <<~SQL.squish
+        UPDATE events children
+        SET parent_id = NULL, depth = 0
+        FROM events parents
+        WHERE children.parent_id = parents.id
+          AND (#{unpublishable_event_condition('parents')})
+      SQL
+      execute "DELETE FROM events WHERE #{unpublishable_event_condition('events')}"
+      change_column_null :events, :topic_id, false
+      change_column_null :events, :kind, false
+      change_column_null :events, :eventable_type, false
+      change_column_null :events, :eventable_id, false
+      remove_column :events, :announcement
+      rename_column :events, :eventable_type, :itemable_type
+      rename_column :events, :eventable_id, :itemable_id
+      rename_column :events, :eventable_version_id, :itemable_version_id
+      rename_table :events, :topic_items
+      TopicItem.reset_column_information
+      add_check_constraint :topic_items,
+                           "btrim(kind) <> ''",
+                           name: "topic_items_kind_present"
+      add_check_constraint :topic_items,
+                           "btrim(itemable_type) <> ''",
+                           name: "topic_items_itemable_type_present"
 
-    rename_index_if_present :topic_items, "index_events_on_created_at", "index_topic_items_on_created_at"
-    rename_index_if_present :topic_items, "index_events_on_eventable_id_and_kind", "index_topic_items_on_itemable_id_and_kind"
-    rename_index_if_present :topic_items, "index_events_on_eventable_type_and_eventable_id", "index_topic_items_on_itemable"
-    rename_index_if_present :topic_items, "index_events_on_parent_id_and_topic_id", "index_topic_items_on_parent_id_and_topic_id"
-    rename_index_if_present :topic_items, "index_events_on_parent_id", "index_topic_items_on_parent_id"
-    rename_index_if_present :topic_items, "index_events_on_position_key", "index_topic_items_on_position_key"
-    rename_index_if_present :topic_items, "index_events_on_topic_id_depth_sequence_id", "index_topic_items_on_topic_id_depth_sequence_id"
-    rename_index_if_present :topic_items, "index_events_on_topic_id_and_sequence_id", "index_topic_items_on_topic_id_and_sequence_id"
-    rename_index_if_present :topic_items, "index_events_on_topic_id_sequence_id_pinned", "index_topic_items_on_topic_id_sequence_id_pinned"
-    rename_index_if_present :topic_items, "index_events_on_topic_id", "index_topic_items_on_topic_id"
-    rename_index_if_present :topic_items, "index_events_on_user_id", "index_topic_items_on_user_id"
-    rename_index_if_present :topic_items, "index_events_on_unique_discussion_created_event", "index_topic_items_on_unique_discussion_root"
-    rename_index_if_present :topic_items, "index_events_on_unique_poll_created_event", "index_topic_items_on_unique_poll_root"
+      add_index :notifications,
+                :topic_item_id,
+                name: "index_notifications_on_topic_item_id"
+      add_foreign_key :notifications,
+                      :topic_items,
+                      column: :topic_item_id,
+                      on_delete: :nullify
 
-    drop_table :notification_consolidation_states
+      rename_index_if_present :topic_items, "index_events_on_created_at", "index_topic_items_on_created_at"
+      rename_index_if_present :topic_items, "index_events_on_eventable_id_and_kind", "index_topic_items_on_itemable_id_and_kind"
+      rename_index_if_present :topic_items, "index_events_on_eventable_type_and_eventable_id", "index_topic_items_on_itemable"
+      rename_index_if_present :topic_items, "index_events_on_parent_id_and_topic_id", "index_topic_items_on_parent_id_and_topic_id"
+      rename_index_if_present :topic_items, "index_events_on_parent_id", "index_topic_items_on_parent_id"
+      rename_index_if_present :topic_items, "index_events_on_position_key", "index_topic_items_on_position_key"
+      rename_index_if_present :topic_items, "index_events_on_topic_id_depth_sequence_id", "index_topic_items_on_topic_id_depth_sequence_id"
+      rename_index_if_present :topic_items, "index_events_on_topic_id_and_sequence_id", "index_topic_items_on_topic_id_and_sequence_id"
+      rename_index_if_present :topic_items, "index_events_on_topic_id_sequence_id_pinned", "index_topic_items_on_topic_id_sequence_id_pinned"
+      rename_index_if_present :topic_items, "index_events_on_topic_id", "index_topic_items_on_topic_id"
+      rename_index_if_present :topic_items, "index_events_on_user_id", "index_topic_items_on_user_id"
+      rename_index_if_present :topic_items, "index_events_on_unique_discussion_created_event", "index_topic_items_on_unique_discussion_root"
+      rename_index_if_present :topic_items, "index_events_on_unique_poll_created_event", "index_topic_items_on_unique_poll_root"
+
+      topic_ids_to_repair.each { |topic_id| TopicService.repair(topic_id) }
+      drop_table :notification_consolidation_states
+    end
   end
 
   def down
@@ -80,6 +99,21 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
   end
 
   private
+
+  # Keep the normal upgrade path self-contained. Batches commit independently,
+  # so rerunning db:migrate resumes after an interrupted deployment.
+  def consolidate_notifications!
+    require Rails.root.join("db/migrate/support/notification_consolidation_service")
+
+    say_with_time "consolidating legacy notification receipts" do
+      NotificationConsolidationService.run!(
+        dry_run: false,
+        batch_size: BATCH_SIZE,
+        repair: true,
+        progress: ->(cursor, high_water, _) { say "processed through #{cursor} of #{high_water}", true }
+      )
+    end
+  end
 
   def assert_notification_consolidation_complete!
     legacy_notification_id_max = select_value("SELECT COALESCE(MAX(id), 0) FROM notifications").to_i
@@ -100,6 +134,48 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
        state.fetch("notification_id_high_water").to_i < legacy_notification_id_max
       raise "cannot cut over notifications: legacy receipts were written after the last catch-up sweep"
     end
+  end
+
+  def topic_ids_affected_by_unpublishable_events
+    select_values(<<~SQL.squish).map(&:to_i)
+      SELECT DISTINCT topic_id
+      FROM (
+        SELECT events.topic_id
+        FROM events
+        WHERE #{unpublishable_event_condition('events')}
+        UNION ALL
+        SELECT children.topic_id
+        FROM events children
+        INNER JOIN events parents ON parents.id = children.parent_id
+        WHERE #{unpublishable_event_condition('parents')}
+      ) affected
+      WHERE topic_id IS NOT NULL
+    SQL
+  end
+
+  # Legacy mention and reply receipts referenced their own topicless events.
+  # Their durable timeline context is the subject comment's new_comment item.
+  def link_comment_notifications_to_topic_items!
+    execute <<~SQL.squish
+      UPDATE notifications
+      SET topic_item_id = comment_items.id
+      FROM events comment_items
+      WHERE notifications.kind IN ('user_mentioned', 'comment_replied_to')
+        AND notifications.subject_type = 'Comment'
+        AND comment_items.kind = 'new_comment'
+        AND comment_items.eventable_type = 'Comment'
+        AND comment_items.eventable_id = notifications.subject_id
+        AND comment_items.topic_id IS NOT NULL
+    SQL
+  end
+
+  def unpublishable_event_condition(table)
+    <<~SQL.squish
+      #{table}.topic_id IS NULL OR
+      #{table}.kind IS NULL OR btrim(#{table}.kind) = '' OR
+      #{table}.eventable_type IS NULL OR btrim(#{table}.eventable_type) = '' OR
+      #{table}.eventable_id IS NULL
+    SQL
   end
 
   def rename_index_if_present(table, old_name, new_name)

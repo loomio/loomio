@@ -7,8 +7,8 @@ class NotificationService
                    recipient_message: nil, audience_values: {}, topic_item: nil)
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
-    if topic_item && (!topic_item.persisted? || topic_item.kind != kind || topic_item.itemable != subject)
-      raise ArgumentError, "topic_item must be persisted and match the notification kind and subject"
+    if topic_item && (!topic_item.persisted? || topic_item.itemable != subject)
+      raise ArgumentError, "topic_item must be persisted and match the notification subject"
     end
 
     resolver_class = NotificationDeliveryResolver.class_for(kind)

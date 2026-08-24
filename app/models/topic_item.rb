@@ -8,7 +8,7 @@ class TopicItem < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
-  has_one :notification, dependent: :nullify
+  has_many :notifications, dependent: :nullify
   before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
   before_create :set_parent_and_depth
   before_create :set_sequences
@@ -20,9 +20,7 @@ class TopicItem < ApplicationRecord
   after_create  :mark_actor_as_read!
   after_destroy :update_sequence_info!
 
-  define_counter_cache(:child_count) do |topic_item|
-    topic_item.children.where(topic_id: topic_item.topic_id).count
-  end
+  define_counter_cache(:child_count) { |topic_item| topic_item.children.count }
   update_counter_cache :parent, :child_count
 
   before_save :sync_itemable_foreign_key

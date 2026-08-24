@@ -96,7 +96,8 @@ class StanceService
     MentionNotificationService.create!(
       subject: stance,
       actor: stance.participant,
-      notify: was_shared_update_visible
+      notify: was_shared_update_visible,
+      topic_item: topic_item
     )
     { topic_item: topic_item, was_shared_update_visible: was_shared_update_visible }
   end
