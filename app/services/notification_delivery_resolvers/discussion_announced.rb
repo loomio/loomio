@@ -3,7 +3,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      discussion = notification.subject
+      discussion = notification.subject_model
       unless discussion.is_a?(Discussion)
         raise ArgumentError, "discussion_announced subject must be a Discussion"
       end

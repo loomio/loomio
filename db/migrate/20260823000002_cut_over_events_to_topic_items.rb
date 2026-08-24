@@ -18,26 +18,30 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
       rename_column :notification_deliveries,
                     :notification_occurrence_id,
                     :notification_id
-      rename_column :notifications, :legacy_event_id, :topic_item_id
-      change_column_null :notifications, :topic_item_id, true
-      link_comment_notifications_to_topic_items!
-      # Every notification derived from a publishable event retains that topic
-      # context, including mentions whose kind differs from the topic item.
-      execute <<~SQL.squish
-        UPDATE notifications
-        SET topic_item_id = NULL
-        FROM events
-        WHERE notifications.topic_item_id = events.id
-          AND (#{unpublishable_event_condition('events')})
-      SQL
       remove_index :notifications,
                    name: "index_notification_occurrences_on_legacy_event_and_kind"
+      # A publishable legacy Event becomes the notification's subject directly;
+      # its itemable remains available through TopicItem#itemable.
+      execute <<~SQL.squish
+        UPDATE notifications
+        SET subject_type = 'TopicItem',
+            subject_id = events.id
+        FROM events
+        WHERE notifications.legacy_event_id = events.id
+          AND NOT (#{unpublishable_event_condition('events')})
+      SQL
+      link_group_mentions_to_parent_topic_item_subjects!
+      link_comment_notifications_to_topic_item_subjects!
+      remove_column :notifications, :legacy_event_id
       rename_index_if_present :notification_deliveries,
                               "index_notification_deliveries_on_occurrence_identity",
                               "index_notification_deliveries_on_identity"
       rename_index_if_present :notifications,
                               "index_notification_occurrences_pending_resolution",
                               "index_notifications_on_pending_delivery_resolution"
+      rename_index_if_present :notifications,
+                              "index_notification_occurrences_on_subject",
+                              "index_notifications_on_subject"
 
       # Preserve valid descendants if an old malformed event was used as their
       # parent. Topic repair reconstructs their ancestry from itemable records.
@@ -65,14 +69,6 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
       add_check_constraint :topic_items,
                            "btrim(itemable_type) <> ''",
                            name: "topic_items_itemable_type_present"
-
-      add_index :notifications,
-                :topic_item_id,
-                name: "index_notifications_on_topic_item_id"
-      add_foreign_key :notifications,
-                      :topic_items,
-                      column: :topic_item_id,
-                      on_delete: :nullify
 
       rename_index_if_present :topic_items, "index_events_on_created_at", "index_topic_items_on_created_at"
       rename_index_if_present :topic_items, "index_events_on_eventable_id_and_kind", "index_topic_items_on_itemable_id_and_kind"
@@ -154,18 +150,34 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
   end
 
   # Legacy mention and reply receipts referenced their own topicless events.
-  # Their durable timeline context is the subject comment's new_comment item.
-  def link_comment_notifications_to_topic_items!
+  # Point them directly at the subject comment's durable new_comment item.
+  def link_comment_notifications_to_topic_item_subjects!
     execute <<~SQL.squish
       UPDATE notifications
-      SET topic_item_id = comment_items.id
+      SET subject_type = 'TopicItem',
+          subject_id = comment_items.id
       FROM events comment_items
-      WHERE notifications.kind IN ('user_mentioned', 'comment_replied_to')
+      WHERE notifications.kind IN ('user_mentioned', 'comment_replied_to', 'group_mentioned')
         AND notifications.subject_type = 'Comment'
         AND comment_items.kind = 'new_comment'
         AND comment_items.eventable_type = 'Comment'
         AND comment_items.eventable_id = notifications.subject_id
         AND comment_items.topic_id IS NOT NULL
+    SQL
+  end
+
+  # Group-mention events retained the exact initiating event as their parent.
+  # Preserve that occurrence when the parent is a publishable timeline item.
+  def link_group_mentions_to_parent_topic_item_subjects!
+    execute <<~SQL.squish
+      UPDATE notifications
+      SET subject_type = 'TopicItem',
+          subject_id = parent_events.id
+      FROM events mention_events
+      INNER JOIN events parent_events ON parent_events.id = mention_events.parent_id
+      WHERE notifications.kind = 'group_mentioned'
+        AND notifications.legacy_event_id = mention_events.id
+        AND NOT (#{unpublishable_event_condition('parent_events')})
     SQL
   end
 

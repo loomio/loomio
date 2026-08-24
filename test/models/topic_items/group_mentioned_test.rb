@@ -106,14 +106,14 @@ class GroupMentionedNotificationTest < ActiveSupport::TestCase
       itemable: comment,
       pinned: comment.should_pin
     )
-    publish_mentions(comment, source_event: topic_item)
+    publish_mentions(comment)
     topic_item
   end
 
-  def publish_mentions(comment, source_event: nil)
+  def publish_mentions(comment)
     MentionNotificationService.create!(
       subject: comment,
-      actor: comment.author,
+      actor: comment.author
     )
   end
 end

@@ -22,7 +22,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     assert_equal 1, discussion.topic_readers.count
     assert_equal @user.id, discussion.topic_readers.first.user_id
-    assert_not Notification.exists?(kind: "new_discussion", subject: discussion)
+    assert_not Notification.about(discussion).exists?(kind: "new_discussion")
   end
 
   test "create returns the subscription thread limit message" do

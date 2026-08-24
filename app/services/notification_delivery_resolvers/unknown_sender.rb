@@ -9,7 +9,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      received_email = notification.subject
+      received_email = notification.subject_model
       unless received_email.is_a?(ReceivedEmail)
         raise ArgumentError, "unknown_sender subject must be a ReceivedEmail"
       end

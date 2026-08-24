@@ -189,7 +189,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
                                              .pluck(:recipient_id)
   end
 
-  test "new discussions retain their timeline topic_item without using it for delivery" do
+  test "new discussion notifications use their timeline topic item as the subject" do
     recipient = users(:member)
     discussion = DiscussionService.create(
       params: {
@@ -202,17 +202,14 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       actor: @author
     )
     topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
-    notification = Notification.find_by!(
-      kind: "new_discussion",
-      subject: discussion
-    )
+    notification = Notification.find_by!(kind: "new_discussion", subject: topic_item)
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
     assert_equal "Please review this discussion", notification.recipient_message
-    assert_equal 1, Notification.where(kind: "new_discussion", subject: discussion).count
+    assert_equal 1, Notification.where(kind: "new_discussion", subject: topic_item).count
     assert_equal %w[chatbot email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
@@ -228,7 +225,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       actor: @author
     )
     topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
-    notification = Notification.find_by!(kind: "new_discussion", subject: discussion)
+    notification = Notification.find_by!(kind: "new_discussion", subject: topic_item)
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 
@@ -255,7 +252,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
         recipient_message: "Please review this edit"
       }
     )
-    notification = Notification.find_by!(kind: "discussion_edited", subject: discussion)
+    notification = Notification.find_by!(kind: "discussion_edited", subject: topic_item)
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
 

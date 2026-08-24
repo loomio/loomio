@@ -28,7 +28,7 @@ class TopicService
       if topic.topicable_type == "Discussion"
         NotificationService.create!(
           kind: "discussion_announced",
-          subject: topic.topicable,
+          subject: topic.topicable.created_topic_item,
           actor: actor,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],

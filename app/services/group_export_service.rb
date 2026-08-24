@@ -59,7 +59,8 @@ class GroupExportService
       topic_readers: %w[topic_id]
     },
     topic_items: {
-      topic_items: %w[parent_id]
+      topic_items: %w[parent_id],
+      notifications: %w[subject]
     },
     notifications: {
       notification_deliveries: %w[notification_id]

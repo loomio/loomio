@@ -51,7 +51,7 @@ module HasMentions
 
   # users mentioned on a previous edit of this model
   def already_mentioned_user_ids
-    mention_notifications = Notification.user_mentions.where(subject: self)
+    mention_notifications = Notification.about(self).user_mentions
     snapshotted_user_ids = mention_notifications.pluck(:recipient_user_ids).flatten
     delivery_user_ids = NotificationDelivery
                         .where(
@@ -64,10 +64,7 @@ module HasMentions
   end
 
   def already_mentioned_group_ids
-    notifications = Notification.where(
-      kind: "group_mentioned",
-      subject: self
-    )
+    notifications = Notification.about(self).where(kind: "group_mentioned")
     notifications.flat_map { |notification| notification.audience_values["group_ids"] }
                  .compact.map(&:to_i).uniq
   end

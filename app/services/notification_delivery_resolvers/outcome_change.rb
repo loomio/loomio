@@ -5,7 +5,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      outcome = notification.subject
+      outcome = notification.subject_model
       raise ArgumentError, "outcome notification subject must be an Outcome" unless outcome.is_a?(Outcome)
 
       explicit_scope = explicit_users.active

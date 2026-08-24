@@ -93,7 +93,7 @@ class PollServiceTest < ActiveSupport::TestCase
     reader = TopicReader.for(user: @user, topic: poll.topic)
     assert reader.reload.has_read?(poll.created_topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
-    assert_not Notification.exists?(kind: "poll_created", subject: poll)
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
   end
 
   test "poll topic item sends loud subscriber email without a notification row" do
@@ -104,7 +104,7 @@ class PollServiceTest < ActiveSupport::TestCase
     PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
-    assert_not Notification.exists?(kind: "poll_created", subject: poll)
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
   end
 
   test "anonymous poll creation does not use voter records as poll-created recipients" do
@@ -121,7 +121,7 @@ class PollServiceTest < ActiveSupport::TestCase
     assert poll.detached_anonymous?
     assert poll.anonymous_poll_voters.exists?(voter: voter)
     assert_not Stance.exists?(poll: poll, participant: voter)
-    assert_not Notification.exists?(kind: "poll_created", subject: poll)
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
   end
 
   test "anonymous poll creation does not depend on notification creation" do
@@ -172,13 +172,13 @@ class PollServiceTest < ActiveSupport::TestCase
   test "poll_created creates poll_announced notification when notify_on_open is true" do
     poll = PollService.create(params: poll_params(notify_on_open: true), actor: @user)
     assert poll.opened?
-    assert Notification.where(kind: "poll_announced", subject: poll).exists?
+    assert Notification.about(poll).exists?(kind: "poll_announced")
   end
 
   test "poll_created does not publish poll_announced when notify_on_open is false" do
     poll = PollService.create(params: poll_params(notify_on_open: false), actor: @user)
     assert poll.opened?
-    refute Notification.where(kind: "poll_announced", subject: poll).exists?
+    refute Notification.about(poll).exists?(kind: "poll_announced")
   end
 
   test "publish_topic_if_active excludes group records from topic broadcasts" do
@@ -284,15 +284,16 @@ class PollServiceTest < ActiveSupport::TestCase
       },
       actor: @user
     )
-    notification = Notification.find_by!(kind: "poll_edited", subject: poll)
+    notification = Notification.find_by!(kind: "poll_edited", subject: topic_item)
 
     assert_equal "poll_edited", topic_item.kind
     assert_equal poll.topic_id, topic_item.topic_id
     assert_not_respond_to topic_item, :recipient_message
-    assert_equal topic_item.id, notification.topic_item_id
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal topic_item.id, notification.subject_id
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal "Please review the poll changes", notification.recipient_message
-    assert_equal 1, Notification.where(kind: "poll_edited", subject: poll).count
+    assert_equal 1, Notification.where(kind: "poll_edited", subject: topic_item).count
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
@@ -313,12 +314,12 @@ class PollServiceTest < ActiveSupport::TestCase
       },
       actor: @user
     )
-    notification = Notification.find_by!(kind: "poll_edited", subject: poll)
+    notification = Notification.about(poll).find_by!(kind: "poll_edited")
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
-    assert Notification.exists?(kind: "user_mentioned", subject: poll)
+    assert Notification.about(poll).exists?(kind: "user_mentioned")
   end
 
   test "eventless poll edit without a direct audience does not create a notification" do
@@ -344,7 +345,7 @@ class PollServiceTest < ActiveSupport::TestCase
     topic_item = PollService.close(poll: poll, actor: @user)
     assert_not_nil poll.reload.closed_at
     assert_equal poll.topic_id, topic_item.topic_id
-    assert_not Notification.exists?(kind: "poll_closed_by_user", subject: poll)
+    assert_not Notification.about(poll).exists?(kind: "poll_closed_by_user")
   end
 
   test "poll close resolves subscribed chatbot delivery without a per-user notification" do
@@ -369,7 +370,7 @@ class PollServiceTest < ActiveSupport::TestCase
     end
 
     assert_requested :post, chatbot.server, times: 1
-    assert_not Notification.exists?(kind: "poll_closed_by_user", subject: poll)
+    assert_not Notification.about(poll).exists?(kind: "poll_closed_by_user")
   end
 
   test "poll close does not depend on notification creation" do
@@ -437,7 +438,7 @@ class PollServiceTest < ActiveSupport::TestCase
       notify_on_open: true
     ), actor: @user)
     refute poll.opened?, "poll should not be opened when opening_at is in the future"
-    refute Notification.where(kind: "poll_announced", subject: poll).exists?,
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
       "no poll_announced notification should be created for scheduled poll at create time"
   end
 
@@ -454,7 +455,7 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.open_scheduled_polls
     poll.reload
     assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
-    assert Notification.where(kind: "poll_announced", subject: poll).exists?,
+    assert Notification.about(poll).exists?(kind: "poll_announced"),
       "poll_announced notification should be created when notify_on_open is true"
   end
 
@@ -469,7 +470,7 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.open_scheduled_polls
     poll.reload
     assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
-    refute Notification.where(kind: "poll_announced", subject: poll).exists?,
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
       "no poll_announced topic_item when notify_on_open is false"
   end
 
@@ -491,13 +492,13 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
-    announced_count_before = Notification.where(kind: "poll_announced", subject: poll).count
+    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
     PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
     poll.reload
 
     assert poll.opened?, "poll should be opened after reopen"
     assert_nil poll.opening_at, "opening_at should be nil after reopen"
-    assert_operator Notification.where(kind: "poll_announced", subject: poll).count, :>, announced_count_before,
+    assert_operator Notification.about(poll).where(kind: "poll_announced").count, :>, announced_count_before,
       "poll_announced notification should be created on reopen with notify_on_open=true"
   end
 
@@ -506,12 +507,12 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
-    announced_count_before = Notification.where(kind: "poll_announced", subject: poll).count
+    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
     PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
     poll.reload
 
     assert poll.opened?, "poll should be opened after reopen"
-    assert_equal announced_count_before, Notification.where(kind: "poll_announced", subject: poll).count,
+    assert_equal announced_count_before, Notification.about(poll).where(kind: "poll_announced").count,
       "no poll_announced topic_item on reopen when notify_on_open is false"
   end
 
@@ -536,7 +537,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     assert Stance.where(participant_id: member.id, poll: poll).exists?,
       "stance should be created for invited user"
-    refute Notification.where(kind: "poll_announced", subject: poll).exists?,
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
       "no poll_announced when inviting to scheduled poll without notify_recipients"
   end
 

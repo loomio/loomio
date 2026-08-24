@@ -179,7 +179,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     )
     assert_empty imported_poll.stances
 
-    imported_notification = Notification.find_by!(kind: "poll_announced", subject: imported_poll)
+    imported_notification = Notification.about(imported_poll).find_by!(kind: "poll_announced")
     imported_recipient_ids = imported_notification.notification_deliveries
                                                     .where(channel: "email", recipient_type: "User")
                                                     .pluck(:recipient_id)

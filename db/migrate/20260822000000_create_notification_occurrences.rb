@@ -26,5 +26,8 @@ class CreateNotificationOccurrences < ActiveRecord::Migration[8.1]
               :id,
               where: "deliveries_generated_at IS NULL",
               name: "index_notification_occurrences_pending_resolution"
+    add_index :notification_occurrences,
+              %i[subject_type subject_id],
+              name: "index_notification_occurrences_on_subject"
   end
 end

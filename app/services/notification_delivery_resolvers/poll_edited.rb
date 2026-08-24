@@ -5,7 +5,7 @@ module NotificationDeliveryResolvers
     # Explicit recipients receive in-app and normal-volume email delivery.
     # Mentions are separate notifications and are excluded from the edit email.
     def recipients_by_channel
-      poll = notification.subject
+      poll = notification.subject_model
       raise ArgumentError, "poll_edited subject must be a Poll" unless poll.is_a?(Poll)
 
       explicit_scope = explicit_users.active

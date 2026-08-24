@@ -3,7 +3,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      poll = notification.subject
+      poll = notification.subject_model
       unless poll.is_a?(Poll)
         raise ArgumentError, "poll_expired subject must be a Poll"
       end

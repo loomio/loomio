@@ -13,7 +13,7 @@ class CommentReplyNotificationTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
-  test "an explicit reply mention creates direct deliveries without an topic_item" do
+  test "an explicit reply mention uses the source new_comment topic item" do
     comment = Comment.new(
       body: "Replying to @#{@parent_author.username}",
       body_format: "md",
@@ -26,9 +26,9 @@ class CommentReplyNotificationTest < ActiveSupport::TestCase
 
     notification = Notification.find_by!(
       kind: "comment_replied_to",
-      subject: comment
+      subject: comment.created_topic_item
     )
-    assert_equal comment, notification.subject
+    assert_equal comment.created_topic_item, notification.subject
     assert_equal [ @parent_author.id ], notification.recipient_user_ids
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_includes ActionMailer::Base.deliveries.last.to, @parent_author.email

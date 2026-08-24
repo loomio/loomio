@@ -12,9 +12,8 @@ class CommentService
         pinned: comment.should_pin
       )
       MentionNotificationService.create!(
-        subject: comment,
-        actor: actor,
-        topic_item: topic_item,
+        subject: topic_item,
+        actor: actor
       )
       topic_item
     end

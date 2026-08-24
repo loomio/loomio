@@ -12,7 +12,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      membership_request = notification.subject
+      membership_request = notification.subject_model
       unless membership_request.is_a?(MembershipRequest)
         raise ArgumentError, "membership_requested subject must be a MembershipRequest"
       end

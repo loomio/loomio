@@ -3,7 +3,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      membership = notification.subject
+      membership = notification.subject_model
       unless membership.is_a?(Membership)
         raise ArgumentError, "user_added_to_group subject must be a Membership"
       end

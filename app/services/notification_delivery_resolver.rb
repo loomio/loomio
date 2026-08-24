@@ -114,7 +114,7 @@ class NotificationDeliveryResolver
     return notification.translation_values unless recipient.is_a?(User)
 
     self.class.translation_values(
-      notification.subject,
+      notification.subject_model,
       notification.actor,
       locale: recipient.locale
     )

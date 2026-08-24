@@ -92,7 +92,7 @@ class EventTest < ActiveSupport::TestCase
     assert_not_includes recipient_emails, @user_thread_quiet.email
     assert_not_includes recipient_emails, @user_membership_mute.email
     assert_not_includes recipient_emails, @user_thread_mute.email
-    assert_not Notification.exists?(kind: "new_comment", subject: comment)
+    assert_not Notification.about(comment).exists?(kind: "new_comment")
   end
 
   test "topic item publication side effects are enqueued after commit" do
@@ -129,18 +129,35 @@ class EventTest < ActiveSupport::TestCase
     @mentioned_user.update!(username: 'mentioned-user')
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
-    notification = Notification.find_by!(kind: "user_mentioned", subject: comment)
-    assert_equal comment.created_topic_item, notification.topic_item
+    notification = Notification.find_by!(kind: "user_mentioned", subject: comment.created_topic_item)
+    assert_equal comment.created_topic_item, notification.subject
     assert_equal [ @mentioned_user.id ], notification.recipient_user_ids
     assert_equal [ @mentioned_user.id ], notification.notification_deliveries.where(channel: "email").pluck(:recipient_id)
     assert_equal [ @mentioned_user.id ], notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id)
+  end
+
+  test "new mentions from a comment edit create a separate notification for the same topic item" do
+    comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
+    CommentService.create(comment: comment, actor: @admin)
+
+    CommentService.update(
+      comment: comment,
+      params: { body: "#{comment.body} and @#{@user_thread_normal.username}" },
+      actor: @admin
+    )
+
+    notifications = Notification.where(kind: "user_mentioned", subject: comment.created_topic_item).order(:id)
+    assert_equal 2, notifications.count
+    assert_equal [ comment.created_topic_item.id ], notifications.pluck(:subject_id).uniq
+    assert_equal [ @mentioned_user.id ], notifications.first.recipient_user_ids
+    assert_equal [ @user_thread_normal.id ], notifications.second.recipient_user_ids
   end
 
   test "new_discussion notifies mentioned users" do
     topic_item = TopicItems::NewDiscussion.find(@discussion.created_topic_item.id)
     MentionNotificationService.create!(
       subject: @discussion,
-      actor: @admin,
+      actor: @admin
     )
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       Resolv.stub(:getaddresses, [ "93.184.216.34" ]) do
@@ -158,7 +175,7 @@ class EventTest < ActiveSupport::TestCase
       end
       assert_equal 1, @discussion.mentioned_users.length
     end
-    notification = Notification.find_by!(kind: "user_mentioned", subject: @discussion)
+    notification = Notification.find_by!(kind: "user_mentioned", subject: @discussion.created_topic_item)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
   end
 
@@ -166,16 +183,16 @@ class EventTest < ActiveSupport::TestCase
     topic_item = TopicItems::PollCreated.find(@poll.created_topic_item.id)
     MentionNotificationService.create!(
       subject: @poll,
-      actor: @admin,
+      actor: @admin
     )
     PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
     assert_equal 1, @poll.mentioned_users.length
-    notification = Notification.find_by!(kind: "user_mentioned", subject: @poll)
+    notification = Notification.find_by!(kind: "user_mentioned", subject: @poll.created_topic_item)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
     recipient_emails = ActionMailer::Base.deliveries.flat_map(&:to)
     assert_includes recipient_emails, @user_thread_loud.email
     assert_includes recipient_emails, @user_membership_loud.email
-    assert_not Notification.exists?(kind: "poll_created", subject: @poll)
+    assert_not Notification.about(@poll).exists?(kind: "poll_created")
   end
 
   test "poll_created notifies webhook" do
@@ -183,20 +200,20 @@ class EventTest < ActiveSupport::TestCase
       ChatbotService.publish_topic_item!(@poll.created_topic_item.id)
     end
     assert_requested :post, @webhook_url, at_least_times: 1
-    assert_not Notification.exists?(kind: "poll_created", subject: @poll)
+    assert_not Notification.about(@poll).exists?(kind: "poll_created")
   end
 
   test "poll_edited notifies newly mentioned users" do
     @poll.update!(details: "#{@poll.details} and @#{@user_thread_loud.username}")
-    assert_not Notification.where(kind: "user_mentioned", subject: @poll)
-                           .where("? = ANY(recipient_user_ids)", @user_thread_loud.id).exists?
-    assert_difference -> { Notification.where(kind: "user_mentioned", subject: @poll).count }, 1 do
+    mention_scope = Notification.where(kind: "user_mentioned", subject: @poll.created_topic_item)
+    assert_not mention_scope.where("? = ANY(recipient_user_ids)", @user_thread_loud.id).exists?
+    assert_difference -> { mention_scope.count }, 1 do
       MentionNotificationService.create!(
         subject: @poll,
-        actor: @poll.author,
+        actor: @poll.author
       )
     end
-    notification = Notification.where(kind: "user_mentioned", subject: @poll)
+    notification = Notification.where(kind: "user_mentioned", subject: @poll.created_topic_item)
                                .find_by!("? = ANY(recipient_user_ids)", @user_thread_loud.id)
     assert_includes notification.recipient_user_ids, @user_thread_loud.id
     assert_includes notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id), @user_thread_loud.id
@@ -293,7 +310,7 @@ class EventTest < ActiveSupport::TestCase
     assert_includes recipient_emails, @poll.author.email
     assert_includes recipient_emails, @user_thread_loud.email
     assert_includes recipient_emails, @user_membership_loud.email
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "stance_created does not notify author if volume normal" do
@@ -305,7 +322,7 @@ class EventTest < ActiveSupport::TestCase
     assert_not_includes recipient_emails, @poll.author.email
     assert_includes recipient_emails, @user_thread_loud.email
     assert_includes recipient_emails, @user_membership_loud.email
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "stance_created does not notify deactivated users" do
@@ -314,7 +331,7 @@ class EventTest < ActiveSupport::TestCase
     stance = @poll.stances.create!(participant: @user_thread_normal, inviter: @admin, latest: true)
     stance.choice = @poll.poll_option_names.first
     StanceService.create(stance: stance, actor: @user_thread_normal)
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
     assert_empty ActionMailer::Base.deliveries
   end
 
@@ -325,7 +342,7 @@ class EventTest < ActiveSupport::TestCase
     topic_item = StanceService.create(stance: stance, actor: @user_thread_normal)
 
     assert_equal @poll.topic_id, topic_item.topic_id
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
 
     publish_count = 0
     MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
@@ -345,7 +362,7 @@ class EventTest < ActiveSupport::TestCase
     end
 
     assert_equal stance, result
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
     assert_equal 0, publish_count
   end
 
@@ -388,9 +405,9 @@ class EventTest < ActiveSupport::TestCase
       actor: @admin,
       params: { recipient_user_ids: [ @admin.id ] }
     )
-    notification = Notification.find_by!(kind: "user_mentioned", subject: outcome)
+    notification = Notification.find_by!(kind: "user_mentioned", subject: outcome.created_topic_item)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
-    parent_notification = Notification.find_by!(kind: "outcome_created", subject: outcome)
+    parent_notification = Notification.find_by!(kind: "outcome_created", subject: outcome.created_topic_item)
     delivery_recipient_ids = parent_notification.notification_deliveries.where(channel: "email").pluck(:recipient_id)
     assert_equal [ @admin.id ], delivery_recipient_ids
     recipients = ActionMailer::Base.deliveries.map(&:to).flatten

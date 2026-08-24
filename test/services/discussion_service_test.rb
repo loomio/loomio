@@ -118,12 +118,12 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       },
       actor: @user
     )
-    notification = Notification.find_by!(kind: "new_discussion", subject: discussion)
+    notification = Notification.find_by!(kind: "new_discussion", subject: discussion.created_topic_item)
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
-    assert Notification.exists?(kind: "user_mentioned", subject: discussion)
+    assert Notification.exists?(kind: "user_mentioned", subject: discussion.created_topic_item)
   end
 
   test "does not notify users outside the group" do
@@ -216,18 +216,16 @@ class DiscussionServiceTest < ActiveSupport::TestCase
         recipient_message: "Please review the changes"
       }
     )
-    notification = Notification.find_by!(
-      kind: "discussion_edited",
-      subject: discussion
-    )
+    notification = Notification.find_by!(kind: "discussion_edited", subject: topic_item)
 
     assert_equal "discussion_edited", topic_item.kind
     assert_equal discussion.topic_id, topic_item.topic_id
     assert_not_respond_to topic_item, :recipient_message
-    assert_equal topic_item.id, notification.topic_item_id
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal topic_item.id, notification.subject_id
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal "Please review the changes", notification.recipient_message
-    assert_equal 1, Notification.where(kind: "discussion_edited", subject: discussion).count
+    assert_equal 1, Notification.where(kind: "discussion_edited", subject: topic_item).count
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
@@ -248,12 +246,12 @@ class DiscussionServiceTest < ActiveSupport::TestCase
         recipient_user_ids: [ recipient.id ]
       }
     )
-    notification = Notification.find_by!(kind: "discussion_edited", subject: discussion)
+    notification = Notification.about(discussion).find_by!(kind: "discussion_edited")
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
-    assert Notification.exists?(kind: "user_mentioned", subject: discussion)
+    assert Notification.about(discussion).exists?(kind: "user_mentioned")
   end
 
   test "eventless update without a direct audience does not create a notification" do

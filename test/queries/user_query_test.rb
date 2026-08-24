@@ -38,7 +38,9 @@ class UserQueryTest < ActiveSupport::TestCase
     @other_group.add_member!(@actor)
     @other_group.add_member!(@other_member)
 
-    @discussion.topic.topic_readers.create!(user_id: @actor.id, inviter_id: @actor.id)
+    @discussion.topic.topic_readers.find_or_create_by!(user_id: @actor.id) do |reader|
+      reader.inviter_id = @actor.id
+    end
     @discussion.topic.topic_readers.create!(user_id: @guest.id, guest: true, inviter_id: @actor.id)
 
     ActionMailer::Base.deliveries.clear

@@ -3,7 +3,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      poll = notification.subject
+      poll = notification.subject_model
       raise ArgumentError, "poll_announced subject must be a Poll" unless poll.is_a?(Poll)
 
       recipients = explicit_users.active

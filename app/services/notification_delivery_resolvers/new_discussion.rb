@@ -5,7 +5,7 @@ module NotificationDeliveryResolvers
     # Loud subscribers receive the topic publication email, while this
     # notification carries the explicit user and chatbot audience.
     def recipients_by_channel
-      discussion = notification.subject
+      discussion = notification.subject_model
       unless discussion.is_a?(Discussion)
         raise ArgumentError, "new_discussion subject must be a Discussion"
       end

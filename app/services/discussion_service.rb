@@ -65,20 +65,18 @@ class DiscussionService
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "new_discussion",
-          subject: discussion,
+          subject: topic_item,
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience,
-          topic_item: topic_item
+          audience_values: mention_audience
         )
       end
       MentionNotificationService.create!(
-        subject: discussion,
+        subject: topic_item,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id),
-        topic_item: topic_item
+        already_notified_user_ids: users.pluck(:id)
       )
     end
     EventBus.broadcast('discussion_create', discussion, actor)
@@ -131,20 +129,18 @@ class DiscussionService
       if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "discussion_edited",
-          subject: discussion,
+          subject: topic_item || discussion,
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience,
-          topic_item: topic_item
+          audience_values: mention_audience
         )
       end
       MentionNotificationService.create!(
-        subject: discussion,
+        subject: topic_item || discussion,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id),
-        topic_item: topic_item
+        already_notified_user_ids: users.pluck(:id)
       )
       topic_item
     end

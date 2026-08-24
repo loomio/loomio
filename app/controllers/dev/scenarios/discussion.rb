@@ -213,7 +213,7 @@ module Dev::Scenarios::Discussion
     TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: [jennifer.id], emails: nil, audience: nil)
     NotificationService.create!(
       kind: "discussion_announced",
-      subject: discussion,
+      subject: discussion.created_topic_item,
       actor: patrick,
       recipient_user_ids: [ jennifer.id ]
     )
@@ -237,7 +237,7 @@ module Dev::Scenarios::Discussion
     users = TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: nil, emails: 'jen@example.com', audience: nil)
     NotificationService.create!(
       kind: "discussion_announced",
-      subject: discussion,
+      subject: discussion.created_topic_item,
       actor: patrick,
       recipient_user_ids: users.pluck(:id)
     )

@@ -24,7 +24,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_kind_of TopicItem, topic_item
     assert comment.persisted?
     assert_equal "My body is ready", comment.body
-    assert_not Notification.exists?(kind: "new_comment", subject: comment)
+    assert_not Notification.about(comment).exists?(kind: "new_comment")
   end
 
   test "unmentioned comment does not create a notification record" do
@@ -43,7 +43,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
     assert_predicate comment, :persisted?
     assert_equal comment, topic_item.itemable
-    assert_not Notification.exists?(subject: comment)
+    assert_not Notification.about(comment).exists?
   end
 
   test "rolls back comment creation when topic_item creation fails" do
@@ -213,7 +213,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     end
 
     assert_includes comment.mentioned_users, @admin
-    notification = Notification.find_by!(kind: "comment_replied_to", subject: comment)
+    notification = Notification.about(comment).find_by!(kind: "comment_replied_to")
     assert_equal [ @admin.id ], notification.recipient_user_ids
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
@@ -229,7 +229,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
     CommentService.create(comment: mention_comment, actor: @admin)
 
-    notification = Notification.find_by!(kind: "user_mentioned", subject: mention_comment)
+    notification = Notification.about(mention_comment).find_by!(kind: "user_mentioned")
     delivery = notification.notification_deliveries.find_by!(channel: "in_app", recipient: @user)
     assert_nil delivery.viewed_at
 
@@ -318,12 +318,12 @@ class CommentServiceTest < ActiveSupport::TestCase
     CommentService.create(comment: comment, actor: @user)
 
     # First mention should create notification
-    assert_difference -> { Notification.where(kind: "comment_replied_to", subject: comment).count }, 1 do
+    assert_difference -> { Notification.about(comment).where(kind: "comment_replied_to").count }, 1 do
       CommentService.update(comment: comment, params: { body: "A mention for @#{@admin.username}!" }, actor: @user)
     end
 
     # Second update with same mention should not create new notification
-    assert_no_difference -> { Notification.where(kind: "comment_replied_to", subject: comment).count } do
+    assert_no_difference -> { Notification.about(comment).where(kind: "comment_replied_to").count } do
       CommentService.update(comment: comment, params: { body: "Hello again @#{@admin.username}" }, actor: @user)
     end
   end

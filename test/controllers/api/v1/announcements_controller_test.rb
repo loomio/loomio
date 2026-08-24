@@ -693,10 +693,13 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal member.id, json['topic_readers'][0]['user_id']
+    notification = Notification.where(kind: "discussion_announced").order(:id).last
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal @discussion.created_topic_item.id, notification.subject_id
     assert_equal 1, NotificationDelivery.where(
       recipient: member,
       channel: "in_app",
-      notification: Notification.where(kind: "discussion_announced")
+      notification: notification
     ).count
     assert_includes @discussion.readers, member
   end

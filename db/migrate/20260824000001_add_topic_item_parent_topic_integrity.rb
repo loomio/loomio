@@ -20,6 +20,7 @@ class AddTopicItemParentTopicIntegrity < ActiveRecord::Migration[8.1]
                     primary_key: [ :id, :topic_id ],
                     name: FOREIGN_KEY_NAME,
                     on_delete: :cascade,
+                    deferrable: :immediate,
                     validate: false
   end
 

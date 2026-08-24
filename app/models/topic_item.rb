@@ -8,7 +8,7 @@ class TopicItem < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
-  has_many :notifications, dependent: :nullify
+  has_many :notifications, as: :subject, dependent: :destroy
   before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
   before_create :set_parent_and_depth
   before_create :set_sequences

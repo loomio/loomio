@@ -112,7 +112,10 @@ module GroupExportRelations
   end
 
   def all_notifications
-    scope = Notification.none
+    scope = Notification.where(
+      subject_type: "TopicItem",
+      subject_id: all_topic_items.select(:id)
+    )
     {
       "Comment" => comments.select(:id),
       "Discussion" => discussions.select(:id),

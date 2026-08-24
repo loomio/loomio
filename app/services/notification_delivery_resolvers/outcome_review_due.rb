@@ -3,7 +3,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      outcome = notification.subject
+      outcome = notification.subject_model
       unless outcome.is_a?(Outcome)
         raise ArgumentError, "outcome_review_due subject must be an Outcome"
       end

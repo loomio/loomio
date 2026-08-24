@@ -165,15 +165,17 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       discussion_ids = target_model.topicable_type == "Discussion" ? [ target_model.topicable_id ] : []
       poll_ids = Poll.where(topic_id: target_model.id).pluck(:id)
       outcome_ids = Outcome.where(poll_id: poll_ids).pluck(:id)
-      comment_ids = TopicItem.where(topic_id: target_model.id, itemable_type: "Comment").pluck(:itemable_id)
-      scope.where(<<~SQL.squish, d: discussion_ids, p: poll_ids, o: outcome_ids, c: comment_ids)
+      topic_items = TopicItem.where(topic_id: target_model.id)
+      comment_ids = topic_items.where(itemable_type: "Comment").pluck(:itemable_id)
+      scope.where(<<~SQL.squish, d: discussion_ids, p: poll_ids, o: outcome_ids, c: comment_ids, ti: topic_items.select(:id))
         (subject_type = 'Discussion' AND subject_id IN (:d)) OR
         (subject_type = 'Poll'       AND subject_id IN (:p)) OR
         (subject_type = 'Outcome'    AND subject_id IN (:o)) OR
-        (subject_type = 'Comment'    AND subject_id IN (:c))
+        (subject_type = 'Comment'    AND subject_id IN (:c)) OR
+        (subject_type = 'TopicItem'  AND subject_id IN (:ti))
       SQL
     else
-      scope.where(subject: target_model)
+      scope.merge(Notification.about(target_model))
     end
 
     # Recipient identities for an anonymous poll's derived closing reminder

@@ -32,7 +32,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_kind_of TopicItem, topic_item
     assert reader.reload.has_read?(topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "visible stance topic item sends loud subscriber email without a notification row" do
@@ -47,7 +47,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "visible blank stance is eventless and does not create subscription notification" do
@@ -61,7 +61,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     assert_equal stance, result
     assert_not TopicItem.exists?(itemable: stance, kind: "stance_created")
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
     assert_not_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
   end
 
@@ -78,7 +78,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     assert_equal stance, result
     assert TopicItem.exists?(itemable: stance, kind: "stance_created", topic: @poll.topic)
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "a hidden stance reason becomes a topic item only when the poll closes" do
@@ -94,7 +94,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     topic_item = TopicItem.find_by!(itemable: stance, kind: "stance_created")
     assert_equal @poll.topic_id, topic_item.topic_id
-    assert_not Notification.exists?(kind: "stance_created", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
 
   test "eventless stance creation does not depend on notification creation" do
@@ -129,7 +129,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     assert_equal stance, result
     assert_not TopicItem.exists?(itemable: stance, kind: "stance_updated")
-    assert_not Notification.exists?(kind: "stance_updated", subject: stance)
+    assert_not Notification.about(stance).exists?(kind: "stance_updated")
   end
 
   test "rolls back stance creation when topic_item creation fails" do

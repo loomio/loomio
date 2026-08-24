@@ -14,7 +14,7 @@ module NotificationDeliveryResolvers
     private
 
     def recipients_by_channel
-      reaction = notification.subject
+      reaction = notification.subject_model
       unless reaction.is_a?(Reaction)
         raise ArgumentError, "reaction_created subject must be a Reaction"
       end

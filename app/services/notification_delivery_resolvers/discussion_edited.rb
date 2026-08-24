@@ -6,7 +6,7 @@ module NotificationDeliveryResolvers
     # notifications are separate logical occurrences, so exclude users newly
     # mentioned by this edit from the edit email to avoid duplicate mail.
     def recipients_by_channel
-      discussion = notification.subject
+      discussion = notification.subject_model
       unless discussion.is_a?(Discussion)
         raise ArgumentError, "discussion_edited subject must be a Discussion"
       end

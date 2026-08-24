@@ -19,7 +19,7 @@ class OutcomeService
 
       NotificationService.create!(
         kind: "outcome_announced",
-        subject: outcome,
+        subject: outcome.created_topic_item || outcome,
         actor: actor,
         recipient_user_ids: users.pluck(:id)
       )
@@ -57,19 +57,17 @@ class OutcomeService
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "outcome_created",
-          subject: outcome,
+          subject: topic_item,
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          audience_values: audience_values,
-          topic_item: topic_item
+          audience_values: audience_values
         )
       end
       MentionNotificationService.create!(
-        subject: outcome,
+        subject: topic_item,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id),
-        topic_item: topic_item
+        already_notified_user_ids: users.pluck(:id)
       )
       topic_item
     end

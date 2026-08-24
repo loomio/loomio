@@ -58,9 +58,8 @@ class PollService
         pinned: true
       )
       MentionNotificationService.create!(
-        subject: poll,
-        actor: actor,
-        topic_item: topic_item,
+        subject: topic_item,
+        actor: actor
       )
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
     end
@@ -129,20 +128,18 @@ class PollService
       if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "poll_edited",
-          subject: poll,
+          subject: topic_item || poll,
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience,
-          topic_item: topic_item
+          audience_values: mention_audience
         )
       end
       MentionNotificationService.create!(
-        subject: poll,
+        subject: topic_item || poll,
         actor: actor,
-        already_notified_user_ids: users.pluck(:id),
-        topic_item: topic_item
+        already_notified_user_ids: users.pluck(:id)
       )
       topic_item
     end
@@ -730,7 +727,7 @@ class PollService
     stance_recipient_ids = Array(stances).filter_map(&:participant_id)
     NotificationService.create!(
       kind: "poll_announced",
-      subject: poll,
+      subject: poll.created_topic_item || poll,
       actor: actor,
       recipient_user_ids: (stance_recipient_ids + Array(recipient_user_ids)).uniq,
       recipient_chatbot_ids: recipient_chatbot_ids,

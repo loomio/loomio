@@ -3,7 +3,8 @@ class Api::V1::NotificationsController < Api::V1::RestfulController
     notifications = accessible_records.limit(50).to_a
 
     topic_ids = notifications.filter_map do |notification|
-      notification.subject.topic&.id if notification.subject.respond_to?(:topic)
+      subject = notification.subject_model
+      subject.topic&.id if subject.respond_to?(:topic)
     end.uniq
     accessible_topic_ids = TopicQuery.visible_to(user: current_user)
                                      .unscope(:includes)
@@ -12,7 +13,7 @@ class Api::V1::NotificationsController < Api::V1::RestfulController
                                      .to_set
 
     self.collection = notifications.select do |notification|
-      subject = notification.subject
+      subject = notification.subject_model
       topic_id = subject.respond_to?(:topic) ? subject.topic&.id : nil
       next false if topic_id && !accessible_topic_ids.include?(topic_id)
 

@@ -4,22 +4,20 @@ class NotificationService
   # implied audiences are derived by the same kind-specific resolver.
   def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
-                   recipient_message: nil, audience_values: {}, topic_item: nil)
+                   recipient_message: nil, audience_values: {})
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
-    if topic_item && (!topic_item.persisted? || topic_item.itemable != subject)
-      raise ArgumentError, "topic_item must be persisted and match the notification subject"
-    end
+
+    subject_model = subject.is_a?(TopicItem) ? subject.itemable : subject
 
     resolver_class = NotificationDeliveryResolver.class_for(kind)
-    resolver_class.validate_subject!(subject)
-    translation_values = resolver_class.translation_values(subject, actor)
+    resolver_class.validate_subject!(subject_model)
+    translation_values = resolver_class.translation_values(subject_model, actor)
 
     notification = Notification.create!(
       actor: actor,
       kind: kind,
       subject: subject,
-      topic_item: topic_item,
       translation_values: translation_values,
       recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
       recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
@@ -33,17 +31,13 @@ class NotificationService
 
   def self.mark_as_read(itemable_type, itemable_id, actor_id)
     deliveries = NotificationDelivery
-                        .joins(:notification)
-                        .where(
-                          channel: "in_app",
-                          recipient_type: "User",
-                          recipient_id: actor_id,
-                          viewed_at: nil,
-                          notifications: {
-                            subject_type: itemable_type,
-                            subject_id: itemable_id
-                          }
-                        )
+      .where(
+        notification_id: Notification.about_identity(itemable_type, itemable_id).select(:id),
+        channel: "in_app",
+        recipient_type: "User",
+        recipient_id: actor_id,
+        viewed_at: nil
+      )
     notification_ids = deliveries.distinct.pluck(:notification_id)
     deliveries.update_all(viewed_at: Time.current, updated_at: Time.current)
     notifications = Notification.where(id: notification_ids).to_a
@@ -58,7 +52,10 @@ class NotificationService
     topic_items.each { |topic_item| itemable_ids[topic_item.itemable_type] << topic_item.itemable_id }
     reactions.each { |reaction| itemable_ids["Reaction"] << reaction.id }
 
-    notification_scope = Notification.none
+    notification_scope = Notification.where(
+      subject_type: "TopicItem",
+      subject_id: topic_items.select(:id)
+    )
     itemable_ids.each_pair do |type, ids|
       notification_scope = notification_scope.or(Notification.where(subject_type: type, subject_id: ids))
     end

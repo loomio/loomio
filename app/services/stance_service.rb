@@ -94,10 +94,9 @@ class StanceService
       topic_item = topic_item_class.create!(itemable: stance)
     end
     MentionNotificationService.create!(
-      subject: stance,
+      subject: topic_item || stance,
       actor: stance.participant,
-      notify: was_shared_update_visible,
-      topic_item: topic_item
+      notify: was_shared_update_visible
     )
     { topic_item: topic_item, was_shared_update_visible: was_shared_update_visible }
   end

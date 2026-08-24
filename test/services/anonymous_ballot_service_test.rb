@@ -297,7 +297,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_equal 1, poll.reload.voters_count
     assert_equal 1, poll.undecided_voters_count
     assert_empty poll.stances
-    notification = Notification.find_by!(kind: "poll_announced", subject: poll)
+    notification = Notification.about(poll).find_by!(kind: "poll_announced")
     assert_equal [ @voter.id ], notification.recipient_user_ids
     assert_no_difference -> { TopicItem.where(kind: "poll_announced", itemable: poll).count } do
       ResolveNotificationDeliveriesWorker.perform_now(notification.id)

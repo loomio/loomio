@@ -60,6 +60,13 @@ belong only to `Notification`. They are real notification columns and are not
 copied onto topic items or exposed on the timeline item. `TopicItem` has a real
 `pinned_title` column and no generic `custom_fields` payload.
 
+`subject` is the notification's single authoritative reference. A notification
+initiated by a topic item points directly to that `TopicItem`; resolvers and
+renderers reach the Discussion, Comment, Poll, Stance or Outcome through its
+`itemable`. A genuinely topicless notification points directly to its domain
+record. Notifications do not duplicate this relationship with a second
+`topic_item_id`.
+
 Topic-item publication is declared by its `TopicItems::Publish` concerns. Each
 concern performs or enqueues its own work after commit; there is no generic
 topic-item dispatcher worker or STI-style reload step.
@@ -73,8 +80,8 @@ durable; background work resolves and delivers its audience.
 
 1. Every topic item has a valid topic.
 2. Root topic items remain unique for `new_discussion` and `poll_created`.
-3. Every notification has the kind, subject and actor context needed without a
-   topic item.
+3. Every notification has one subject: its initiating topic item when one
+   exists, otherwise the relevant domain record.
 4. Every recipient/channel pair is unique within a notification.
 5. In-app read state belongs to the delivery, never the notification.
 6. Queue jobs schedule work; notification and delivery rows are the durable

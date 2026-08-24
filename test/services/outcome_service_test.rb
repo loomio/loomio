@@ -67,11 +67,11 @@ class OutcomeServiceTest < ActiveSupport::TestCase
       actor: @user,
       params: { recipient_user_ids: [ recipient.id ] }
     )
-    notification = Notification.find_by!(kind: "outcome_created", subject: @new_outcome)
+    notification = Notification.find_by!(kind: "outcome_created", subject: topic_item)
 
     assert_equal @poll.topic_id, topic_item.topic_id
     assert_equal [ recipient.id ], notification.recipient_user_ids
-    assert_equal 1, Notification.where(kind: "outcome_created", subject: @new_outcome).count
+    assert_equal 1, Notification.where(kind: "outcome_created", subject: topic_item).count
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)

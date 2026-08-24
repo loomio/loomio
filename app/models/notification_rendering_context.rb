@@ -16,10 +16,10 @@ class NotificationRenderingContext
   alias actor user
 
   # Mail and chatbot views render topic publications and notifications through
-  # one interface. A notification's subject occupies the itemable slot without
-  # making Notification itself pretend to be a timeline record.
+  # one interface. TopicItem subjects unwrap to their itemable while operational
+  # notification subjects are already domain records.
   def itemable
-    notification.subject
+    notification.subject_model
   end
 
   def group
@@ -35,7 +35,7 @@ class NotificationRenderingContext
   end
 
   def itemable_type
-    notification.subject_type
+    itemable.class.base_class.name
   end
 
   delegate :recipient_message, to: :notification
