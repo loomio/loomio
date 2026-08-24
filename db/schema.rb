@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_24_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -543,8 +543,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000002) do
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
     t.index ["status", "available_at"], name: "index_notification_deliveries_on_status_and_available_at"
     t.check_constraint "attempt_count >= 0", name: "notification_deliveries_attempt_count"
-    t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying::text, 'email'::character varying::text, 'push'::character varying::text, 'chatbot'::character varying::text])", name: "notification_deliveries_channel"
-    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying::text, 'claimed'::character varying::text, 'delivered'::character varying::text, 'failed'::character varying::text, 'cancelled'::character varying::text])", name: "notification_deliveries_status"
+    t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying, 'email'::character varying, 'push'::character varying, 'chatbot'::character varying]::text[])", name: "notification_deliveries_channel"
+    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying, 'claimed'::character varying, 'delivered'::character varying, 'failed'::character varying, 'cancelled'::character varying]::text[])", name: "notification_deliveries_status"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -1166,8 +1166,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000002) do
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
     t.index ["topic_id"], name: "index_topic_items_on_topic_id"
     t.index ["user_id"], name: "index_topic_items_on_user_id"
-    t.check_constraint "btrim((itemable_type)::text) <> ''::text", name: "topic_items_itemable_type_present"
-    t.check_constraint "btrim((kind)::text) <> ''::text", name: "topic_items_kind_present"
+    t.check_constraint "btrim(itemable_type::text) <> ''::text", name: "topic_items_itemable_type_present"
+    t.check_constraint "btrim(kind::text) <> ''::text", name: "topic_items_kind_present"
   end
 
   create_table "topic_readers", id: :serial, force: :cascade do |t|

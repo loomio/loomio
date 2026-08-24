@@ -1,4 +1,5 @@
 require 'test_helper'
+require Rails.root.join('db/migrate/20260824000000_rotate_exposed_user_api_keys')
 
 class Api::B2::ThreadsControllerTest < ActionController::TestCase
   setup do
@@ -47,5 +48,19 @@ class Api::B2::ThreadsControllerTest < ActionController::TestCase
     get :index, params: { api_key: @user.api_key }
 
     assert_response :forbidden
+  end
+
+  test 'rejects an API key after the exposed keys are rotated' do
+    api_key_before = @user.api_key
+
+    RotateExposedUserApiKeys.new.migrate(:up)
+
+    @request.headers['Authorization'] = "Bearer #{api_key_before}"
+    get :index
+    assert_response :forbidden
+
+    @request.headers['Authorization'] = "Bearer #{@user.reload.api_key}"
+    get :index
+    assert_response :success
   end
 end

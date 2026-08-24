@@ -176,6 +176,14 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_discussion_with_unsafe_title_version
+    create_discussion
+    create_discussion.update(title: '<img src=x onerror=alert(document.domain)>')
+    create_discussion.update_versions_count
+    sign_in patrick
+    redirect_to discussion_path(create_discussion)
+  end
+
   # discussion mailer emails
 
   def setup_discussion_mailer_discussion_created_email

@@ -122,6 +122,24 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     }
   end
 
+  test "group export excludes user credentials" do
+    group, admin, member = create_detached_export_group
+
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    exported_users = archive.select { |item| item['table'] == 'users' }.index_by { |item| item.dig('record', 'id') }
+
+    [admin, member].each do |user|
+      record = exported_users.fetch(user.id).fetch('record')
+
+      assert_equal user.email, record['email']
+      assert_equal user.name, record['name']
+      %w[api_key email_api_key password_digest secret_token unsubscribe_token].each do |credential|
+        assert_not record.key?(credential), "expected #{credential} to be excluded"
+      end
+    end
+  end
+
   test "group export and import preserve detached anonymous polls with fresh ballot ids" do
     group, admin, voter = create_detached_export_group
     poll, ballot = create_detached_export_poll(
