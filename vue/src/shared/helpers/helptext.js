@@ -6,7 +6,7 @@ export var eventHeadline = function(topic_item) {
     case 'new_comment':       return 'new_comment';
     case 'stance_created':    return 'new_comment';
     case 'stance_updated':    return 'new_comment';
-    case 'discussion_edited': return discussionEditedKey(topic_item);
+    case 'discussion_edited': return 'discussion_edited';
     case 'discussion_moved':  return 'discussion_moved_without_source';
     case 'discussion_closed': return 'thread_locked';
     case 'discussion_reopened': return 'thread_unlocked';
@@ -89,18 +89,5 @@ export var groupPrivacyConfirm = function(group) {
     if (group.discussionPrivacyOptions === 'private_only') {
       return 'group_form.confirm_change_to_private_discussions_only';
     }
-  }
-};
-
-var discussionEditedKey = function(topic_item) {
-  const changes = topic_item.customFields.changed_keys;
-  if (includes(changes, 'title')) {
-    return 'discussion_title_edited';
-  } else if (includes(changes, 'private')) {
-    return 'discussion_privacy_edited';
-  } else if (includes(changes, 'description')) {
-    return 'discussion_context_edited';
-  } else {
-    return 'discussion_edited';
   }
 };
