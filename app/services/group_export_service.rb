@@ -1,3 +1,7 @@
+# Security boundary: group coordinators can export records for other users.
+# Never include bearer credentials or authentication secrets in those records.
+# When adding a User credential column, exclude it below and update the export
+# credential regression in GroupExportServiceTest.
 class GroupExportService
   RELATIONS = %w[
     all_users
