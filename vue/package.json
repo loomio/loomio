@@ -78,7 +78,7 @@
     "pagefind": "1.5.2",
     "pug": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "8.2.1",
+    "vite": "8.2.2",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "yaml": "^2.9.0"
