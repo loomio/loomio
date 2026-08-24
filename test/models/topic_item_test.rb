@@ -125,6 +125,23 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "direct stance notification links to its poll in the discussion" do
+    stance = Stance.new(poll: @poll, participant: @mentioned_user)
+    notification = Notification.new(kind: "stance_created", subject: stance, actor: @admin)
+
+    assert_includes notification.notification_url, "/d/#{@discussion.key}"
+    assert notification.notification_url.end_with?("/#{@poll.created_topic_item.sequence_id}")
+  end
+
+  test "topic item notification links to its exact sequence" do
+    topic_item = TopicItem.create!(kind: "poll_edited", itemable: @poll, user: @admin)
+    notification = Notification.new(kind: "poll_edited", subject: topic_item, actor: @admin)
+
+    assert_includes notification.notification_url, "/d/#{@discussion.key}"
+    assert notification.notification_url.end_with?("/#{topic_item.sequence_id}")
+    refute_equal @poll.created_topic_item.sequence_id, topic_item.sequence_id
+  end
+
   test "user_mentioned notifies mentioned user" do
     @mentioned_user.update!(username: 'mentioned-user')
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)

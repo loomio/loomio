@@ -51,6 +51,8 @@ Not every publication is a notification:
 
 - loud-volume comment email is a subscription delivery from the comment's
   topic item and does not create a notification;
+- a stance without a reason has no topic item and is silent; stance activity
+  reaches subscribers only when the stance is published on the topic;
 - topic live update is publication of a topic item, not notification delivery;
 - a chatbot subscribed to topic activity is also a topic-item publication;
 - a chatbot explicitly selected for a notification is a notification delivery.
@@ -151,6 +153,8 @@ bounded consolidation automatically.
    - drop the migration-only `legacy_event_id` mapping;
    - rename `notification_deliveries.notification_occurrence_id` to
      `notification_id`;
+   - discard legacy `stance_created` receipts whose stance activity had no
+     topic item;
    - delete only Event rows whose `topic_id` is null;
    - require `topic_id` on every remaining Event row; and
    - rename `events` to `topic_items` and `eventable` to `itemable`.

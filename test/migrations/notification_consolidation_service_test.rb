@@ -107,7 +107,46 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     assert_kind_of Proc, options[:progress]
   end
 
+  test "cutover discards only topicless stance activity notifications" do
+    direct_notification = insert_notification!(kind: "stance_created", subject_type: "Stance")
+    topic_notification = insert_notification!(
+      kind: "stance_created",
+      subject_type: "TopicItem",
+      subject_id: topic_items(:public_discussion_comment_topic_item).id
+    )
+    direct_delivery = NotificationDelivery.create!(
+      notification: direct_notification,
+      recipient: users(:user),
+      channel: "in_app",
+      status: "delivered"
+    )
+    topic_delivery = NotificationDelivery.create!(
+      notification: topic_notification,
+      recipient: users(:user),
+      channel: "in_app",
+      status: "delivered"
+    )
+
+    CutOverEventsToTopicItems.new.send(:delete_topicless_stance_notifications!)
+
+    assert_not Notification.exists?(direct_notification.id)
+    assert_not NotificationDelivery.exists?(direct_delivery.id)
+    assert Notification.exists?(topic_notification.id)
+    assert NotificationDelivery.exists?(topic_delivery.id)
+  end
+
   private
+
+  def insert_notification!(kind:, subject_type:, subject_id: 2_147_483_647)
+    Notification.insert!({
+      kind: kind,
+      subject_type: subject_type,
+      subject_id: subject_id,
+      created_at: Time.current,
+      updated_at: Time.current
+    })
+    Notification.find_by!(kind: kind, subject_type: subject_type, subject_id: subject_id)
+  end
 
   def with_preparation_schema
     connection = ActiveRecord::Base.connection

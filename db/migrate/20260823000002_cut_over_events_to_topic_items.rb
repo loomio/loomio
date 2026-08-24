@@ -32,6 +32,7 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
       SQL
       link_group_mentions_to_parent_topic_item_subjects!
       link_comment_notifications_to_topic_item_subjects!
+      delete_topicless_stance_notifications!
       remove_column :notifications, :legacy_event_id
       rename_index_if_present :notification_deliveries,
                               "index_notification_deliveries_on_occurrence_identity",
@@ -178,6 +179,17 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
       WHERE notifications.kind = 'group_mentioned'
         AND notifications.legacy_event_id = mention_events.id
         AND NOT (#{unpublishable_event_condition('parent_events')})
+    SQL
+  end
+
+  # A stance without a timeline item is intentionally silent in the new model.
+  # Topic-backed stance activity was rewritten to a TopicItem above and remains;
+  # discard only legacy subscriber receipts for topicless stance activity.
+  def delete_topicless_stance_notifications!
+    execute <<~SQL.squish
+      DELETE FROM notifications
+      WHERE kind = 'stance_created'
+        AND subject_type = 'Stance'
     SQL
   end
 

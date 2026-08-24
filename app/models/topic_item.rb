@@ -60,6 +60,8 @@ class TopicItem < ApplicationRecord
             when 'stance_created' then itemable.poll
             else itemable
             end
+    return discussion_path(topic.discussion, sequence_id: sequence_id) if topic&.discussion
+
     polymorphic_path(model)
   end
 
