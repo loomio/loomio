@@ -92,6 +92,26 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
+  test "every poll type declares a complete ballot policy without validation switches" do
+    expected_rules = {
+      "count" => "bounded",
+      "check" => "bounded",
+      "question" => "reason_only",
+      "proposal" => "bounded",
+      "meeting" => "bounded",
+      "poll" => "bounded",
+      "dot_vote" => "dot_vote",
+      "score" => "bounded",
+      "ranked_choice" => "ranked_points",
+      "stv" => "ranked_preferences"
+    }
+
+    assert_equal expected_rules, AppConfig.poll_types.transform_values { |config| config["ballot_rule"] }
+    AppConfig.poll_types.each_value do |config|
+      assert_empty config.keys.grep(/^validate_/)
+    end
+  end
+
   test "does not allow changing poll options if the template does not allow" do
     poll = create_poll(poll_option_names: ["agree"])
     poll.poll_options.build

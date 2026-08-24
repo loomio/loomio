@@ -35,11 +35,16 @@ class StanceChoiceTest < ActiveSupport::TestCase
     assert choice.valid?
   end
 
-  test "does not allow scores greater than 1 if poll disallows it" do
+  test "cast ballot does not allow scores greater than the poll maximum" do
     poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin)
-    choice = StanceChoice.new(poll: poll, stance: stance, poll_option: poll.poll_options.first, score: 4)
-    assert_not choice.valid?
+    stance = Stance.new(
+      poll: poll,
+      participant: @admin,
+      cast_at: Time.zone.now,
+      stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id, score: 4 }]
+    )
+
+    assert_not stance.valid?
   end
 
   test "poll option must belong to the stance poll" do

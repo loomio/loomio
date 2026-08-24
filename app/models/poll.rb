@@ -88,17 +88,13 @@ class Poll < ApplicationRecord
   end
 
   TEMPLATE_VALUES = %w(has_option_icon
+                       ballot_rule
                        order_results_by
                        prevent_anonymous
                        vote_method
                        material_icon
                        require_all_choices
-                       validate_minimum_stance_choices
-                       validate_maximum_stance_choices
-                       validate_min_score
-                       validate_max_score
-                       has_options
-                       validate_dots_per_person).freeze
+                       has_options).freeze
 
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }

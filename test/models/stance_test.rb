@@ -50,6 +50,61 @@ class StanceTest < ActiveSupport::TestCase
     assert_not stance.valid?
   end
 
+  test "proposal ballots contain exactly one choice with a score of one" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree abstain disagree block]
+    ), actor: @admin)
+
+    [-1, 0, 2].each do |score|
+      stance = cast_stance(poll, [[poll.poll_options.first, score]])
+      assert_not stance.valid?, "expected proposal score #{score} to be invalid"
+    end
+
+    stance = cast_stance(poll, poll.poll_options.first(2).map { |option| [option, 1] })
+    assert_not stance.valid?, "expected multiple proposal choices to be invalid"
+    assert cast_stance(poll, [[poll.poll_options.first, 1]]).valid?
+  end
+
+  test "dot vote ballots reject negative scores and totals above the dot limit" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "dot_vote",
+      dots_per_person: 3,
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+
+    assert_not cast_stance(poll, [[poll.poll_options.first, -1]]).valid?
+    assert_not cast_stance(poll, poll.poll_options.map { |option| [option, 2] }).valid?
+    assert cast_stance(poll, [[poll.poll_options.first, 3]]).valid?
+  end
+
+  test "rank ballots require the configured number of contiguous unique scores" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "ranked_choice",
+      minimum_stance_choices: 3,
+      poll_option_names: %w[apple orange banana]
+    ), actor: @admin)
+    options = poll.poll_options
+
+    assert cast_stance(poll, options.zip([3, 2, 1])).valid?
+    assert_not cast_stance(poll, options.zip([9999, 2, 1])).valid?
+    assert_not cast_stance(poll, options.zip([3, 3, 1])).valid?
+    assert_not cast_stance(poll, options.first(2).zip([2, 1])).valid?
+  end
+
+  test "STV ballots allow partial rankings with contiguous unique scores" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "stv",
+      poll_option_names: %w[apple orange banana]
+    ), actor: @admin)
+    options = poll.poll_options
+
+    assert cast_stance(poll, options.first(2).zip([1, 2])).valid?
+    assert cast_stance(poll, []).valid?
+    assert_not cast_stance(poll, options.first(2).zip([1, 9999])).valid?
+    assert_not cast_stance(poll, options.first(2).zip([1, 1])).valid?
+  end
+
   test "reason has a length validation" do
     poll = PollService.create(params: poll_params, actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin, reason: "a" * 505, cast_at: Time.zone.now)
@@ -147,6 +202,17 @@ class StanceTest < ActiveSupport::TestCase
   end
 
   private
+
+  def cast_stance(poll, option_scores)
+    Stance.new(
+      poll: poll,
+      participant: @admin,
+      cast_at: Time.zone.now,
+      stance_choices_attributes: option_scores.map do |option, score|
+        { poll_option_id: option.id, score: score }
+      end
+    )
+  end
 
   def stance_for(poll, icon:, reason: nil)
     Stance.new(

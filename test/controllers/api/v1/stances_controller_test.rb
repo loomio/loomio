@@ -464,6 +464,26 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
+  test "rejects contradictory proposal choices and negative scores" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: @poll.poll_options.map do |option|
+          { poll_option_id: option.id, score: option == @poll.poll_options.first ? 1 : -2 }
+        end
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
+  end
+
   private
 
   def create_detached_anonymous_poll

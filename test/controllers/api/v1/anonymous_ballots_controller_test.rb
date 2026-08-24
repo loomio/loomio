@@ -80,4 +80,20 @@ class Api::V1::AnonymousBallotsControllerTest < ActionController::TestCase
     assert_response :bad_request
     assert_empty @poll.anonymous_ballots
   end
+
+  test "create rejects invalid scores without consuming the ballot" do
+    sign_in @voter
+    post :create, params: {
+      anonymous_ballot: {
+        poll_id: @poll.id,
+        anonymous_ballot_choices_attributes: [
+          { poll_option_id: @poll.poll_options.first.id, score: -1 }
+        ]
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_empty @poll.anonymous_ballots
+    refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+  end
 end
