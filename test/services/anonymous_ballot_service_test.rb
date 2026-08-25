@@ -26,6 +26,55 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert @poll.anonymous_poll_voters.exists?(voter_id: @voter.id)
   end
 
+  test "safe voter relations never expose detached anonymous participation identities" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+    @poll.reload
+
+    assert_empty @poll.voters
+    assert_empty @poll.voter_ids
+    assert_empty @poll.decided_voters
+    assert_empty @poll.undecided_voters
+    assert_includes @poll.unmasked_voters, @voter
+    assert_includes @poll.unmasked_decided_voters, @voter
+    assert_includes @poll.unmasked_undecided_voters, @admin
+
+    PollService.close(poll: @poll, actor: @admin)
+
+    assert_empty @poll.reload.voters
+    assert_empty @poll.decided_voters
+    assert_empty @poll.undecided_voters
+  end
+
+  test "identified polls return the same voters through safe and unmasked relations" do
+    poll = PollService.create(
+      params: {
+        title: "Identified voter relations",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        poll_option_names: [ "Agree", "Disagree" ]
+      },
+      actor: @admin
+    )
+
+    assert_equal poll.voters.ids.sort, poll.unmasked_voters.ids.sort
+    assert_equal poll.voter_ids.sort, poll.unmasked_voters.ids.sort
+    assert_equal poll.decided_voters.ids.sort, poll.unmasked_decided_voters.ids.sort
+    assert_equal poll.undecided_voters.ids.sort, poll.unmasked_undecided_voters.ids.sort
+  end
+
+  test "anonymous results include undecided counts without voter identities" do
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+    @poll.reload
+
+    undecided_result = PollService.calculate_results(@poll, @poll.poll_options)
+                                  .find { |result| result[:id] == -1 }
+
+    assert_equal @poll.undecided_voters_count, undecided_result[:voter_count]
+    assert_predicate undecided_result[:voter_count], :positive?
+    assert_empty undecided_result[:voter_ids]
+  end
+
   test "notified specified-voter invitation rolls back when notification creation fails" do
     poll = PollService.create(
       params: {

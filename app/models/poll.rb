@@ -179,9 +179,9 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
-  has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :stance_voters, -> { merge(Stance.latest) }, through: :stances, source: :participant
+  has_many :stance_undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :stance_decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :anonymous_poll_voters, dependent: :destroy
@@ -350,22 +350,41 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
+  # General-purpose voter relations must not reveal participation identities for
+  # detached anonymous ballots. Callers that intentionally need the named
+  # electorate, such as authorization and reminder delivery, use unmasked_*.
+  def voters
+    detached_anonymous? ? User.none : stance_voters
+  end
+
+  def voter_ids
+    voters.ids
+  end
+
+  def undecided_voters
+    detached_anonymous? ? User.none : stance_undecided_voters
+  end
+
+  def decided_voters
+    detached_anonymous? ? User.none : stance_decided_voters
+  end
+
   def unmasked_voters
     return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.pluck(:participant_id))
+    voters
   end
 
   def unmasked_undecided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.undecided.pluck(:participant_id))
+    undecided_voters
   end
 
   def unmasked_decided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.decided.pluck(:participant_id))
+    decided_voters
   end
 
   def detached_anonymous?
