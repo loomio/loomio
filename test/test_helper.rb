@@ -12,6 +12,8 @@ Minitest.parallel_executor = Minitest::Parallel::Executor.new(1)
 # Configure WebMock
 WebMock.disable_net_connect!(allow_localhost: true)
 
+# Migration tests invoke migrations directly; keep their progress output out of test results.
+ActiveRecord::Migration.verbose = false
 
 
 module ActiveSupport
