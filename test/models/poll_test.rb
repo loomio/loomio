@@ -27,7 +27,6 @@ class PollTest < ActiveSupport::TestCase
       poll_type: "ranked_choice",
       title: "Ranked choice",
       poll_option_names: %w[apple banana orange],
-      custom_fields: { minimum_stance_choices: 2 },
       **overrides
     ), actor: @admin)
   end
@@ -159,20 +158,32 @@ class PollTest < ActiveSupport::TestCase
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
   end
 
-  test "reads persisted stance choice bounds from JSON custom fields" do
-    ranked_choice = create_ranked_choice
-    ranked_choice.update_columns(
+  test "ballot configuration ignores JSON custom fields" do
+    poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
+    poll.update_columns(
+      min_score: nil,
+      max_score: nil,
+      dots_per_person: nil,
       minimum_stance_choices: nil,
       maximum_stance_choices: nil,
-      custom_fields: ranked_choice.custom_fields.merge(
+      custom_fields: poll.custom_fields.merge(
+        "min_score" => 3,
+        "max_score" => 3,
+        "dots_per_person" => 1,
         "minimum_stance_choices" => 2,
-        "maximum_stance_choices" => 4
+        "maximum_stance_choices" => 2
       )
     )
 
-    ranked_choice.reload
-    assert_equal 2, ranked_choice.minimum_stance_choices
-    assert_equal 4, ranked_choice.maximum_stance_choices
+    poll.reload
+    assert_equal 0, poll.min_score
+    assert_nil poll.max_score
+    assert_equal 8, poll.dots_per_person
+    assert_equal 0, poll.minimum_stance_choices
+    assert_equal 3, poll.maximum_stance_choices
+
+    poll.update!(min_score: 2)
+    assert_equal 3, poll.reload.custom_fields["min_score"]
   end
 
   test "allows closing dates in the future" do

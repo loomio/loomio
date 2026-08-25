@@ -64,12 +64,15 @@ class Poll < ApplicationRecord
 
   TEMPLATE_DEFAULT_FIELDS = %w[
     poll_option_name_format
+    chart_type
+    default_duration_in_days
+  ].freeze
+
+  BALLOT_DEFAULT_FIELDS = %w[
     max_score
     min_score
     dots_per_person
-    chart_type
-    default_duration_in_days
-  ]
+  ].freeze
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
     define_method field, -> {
@@ -78,6 +81,21 @@ class Poll < ApplicationRecord
 
     define_method :"#{field}=", ->(value) {
       self[:custom_fields].delete(field)
+      if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+        self[field] = nil
+      else
+        self[field] = value
+      end
+      value
+    }
+  end
+
+  BALLOT_DEFAULT_FIELDS.each do |field|
+    define_method field, -> {
+      self[field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+    }
+
+    define_method :"#{field}=", ->(value) {
       if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
         self[field] = nil
       else
@@ -127,8 +145,6 @@ class Poll < ApplicationRecord
       poll_options.length
     else
       self[:minimum_stance_choices] ||
-      self[:custom_fields]["minimum_stance_choices"] ||
-      self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
@@ -136,8 +152,6 @@ class Poll < ApplicationRecord
 
   def maximum_stance_choices
     self[:maximum_stance_choices] ||
-    self[:custom_fields]["maximum_stance_choices"] ||
-    self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
     poll_options.length
   end

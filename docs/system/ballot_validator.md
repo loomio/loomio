@@ -42,9 +42,11 @@ it must never mean that validation is skipped.
 Scalar defaults such as `min_score`, `max_score`,
 `minimum_stance_choices`, `maximum_stance_choices`, and `dots_per_person`
 remain under the poll type's `defaults` section. The validator reads the
-effective values from the instantiated poll, so saved poll configuration and
-legacy `custom_fields` values take precedence over type defaults according to
-the accessors on `Poll`.
+effective values from first-class columns on the instantiated poll, falling
+back to the poll-type defaults. Legacy values in `custom_fields` are ignored for
+all ballot validation properties. The ballot-configuration backfill migration
+copies valid legacy integers into empty columns, preserves existing column
+values, and leaves the now-ignored JSON unchanged.
 
 The built-in poll templates are constructed by applying the defaults from
 `poll_types.yml` and then the overrides from `poll_templates.yml`. A selected
