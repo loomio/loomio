@@ -8,6 +8,7 @@ module.exports = {
     page.ensureSidebar()
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--email-settings')
+    page.expectElement('.email-settings-page__deactivate-card')
     testUpdate(page)
   },
 
@@ -15,6 +16,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('email_settings_as_restricted_user')
+    page.expectNoElement('.email-settings-page__deactivate-card')
     testUpdate(page)
   },
 
@@ -22,6 +24,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('email_settings_as_restricted_user')
+    page.expectNoElement('.email-settings-page__deactivate-card')
     testUpdate(page)
   }
 }
