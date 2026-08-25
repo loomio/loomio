@@ -35,6 +35,275 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
+  test "every supported notification kind has an explicit resolver contract" do
+    expected = {
+      "comment_replied_to" => NotificationDeliveryResolvers::UserMentioned,
+      "discussion_announced" => NotificationDeliveryResolvers::DiscussionAnnounced,
+      "discussion_edited" => NotificationDeliveryResolvers::DiscussionEdited,
+      "group_mentioned" => NotificationDeliveryResolvers::GroupMentioned,
+      "invitation_accepted" => NotificationDeliveryResolvers::InvitationAccepted,
+      "membership_created" => NotificationDeliveryResolvers::MembershipCreated,
+      "membership_resent" => NotificationDeliveryResolvers::MembershipResent,
+      "membership_request_approved" => NotificationDeliveryResolvers::MembershipRequestApproved,
+      "membership_requested" => NotificationDeliveryResolvers::MembershipRequested,
+      "new_coordinator" => NotificationDeliveryResolvers::NewCoordinator,
+      "new_delegate" => NotificationDeliveryResolvers::NewDelegate,
+      "new_discussion" => NotificationDeliveryResolvers::NewDiscussion,
+      "outcome_announced" => NotificationDeliveryResolvers::OutcomeAnnounced,
+      "outcome_created" => NotificationDeliveryResolvers::OutcomeChange,
+      "outcome_review_due" => NotificationDeliveryResolvers::OutcomeReviewDue,
+      "outcome_updated" => NotificationDeliveryResolvers::OutcomeChange,
+      "poll_announced" => NotificationDeliveryResolvers::PollAnnounced,
+      "poll_closing_soon" => NotificationDeliveryResolvers::PollClosingSoon,
+      "poll_edited" => NotificationDeliveryResolvers::PollEdited,
+      "poll_expired" => NotificationDeliveryResolvers::PollExpired,
+      "poll_reminder" => NotificationDeliveryResolvers::PollReminder,
+      "reaction_created" => NotificationDeliveryResolvers::ReactionCreated,
+      "unknown_sender" => NotificationDeliveryResolvers::UnknownSender,
+      "user_added_to_group" => NotificationDeliveryResolvers::UserAddedToGroup,
+      "user_mentioned" => NotificationDeliveryResolvers::UserMentioned
+    }
+
+    assert_equal expected.keys.sort, NotificationDeliveryResolver::RESOLVERS.keys.sort
+    expected.each do |kind, resolver_class|
+      assert_equal resolver_class, NotificationDeliveryResolver.class_for(kind), kind
+    end
+  end
+
+  test "typed resolvers reject a subject from the wrong domain" do
+    wrong_subjects = {
+      "discussion_announced" => @poll,
+      "discussion_edited" => @poll,
+      "invitation_accepted" => @poll,
+      "membership_created" => @poll,
+      "membership_resent" => @poll,
+      "membership_request_approved" => @poll,
+      "membership_requested" => @poll,
+      "new_coordinator" => @poll,
+      "new_delegate" => @poll,
+      "new_discussion" => @poll,
+      "outcome_announced" => @poll,
+      "outcome_created" => @poll,
+      "outcome_review_due" => @poll,
+      "outcome_updated" => @poll,
+      "poll_announced" => @outcome,
+      "poll_closing_soon" => @outcome,
+      "poll_edited" => @outcome,
+      "poll_expired" => @outcome,
+      "poll_reminder" => @outcome,
+      "reaction_created" => @poll,
+      "unknown_sender" => @poll,
+      "user_added_to_group" => @poll
+    }
+
+    wrong_subjects.each do |kind, subject|
+      error = assert_raises(ArgumentError, kind) do
+        resolve_notification(kind: kind, subject: subject)
+      end
+      assert_match(/subject must be/, error.message, kind)
+    end
+  end
+
+  test "explicit audience resolvers deliver to a normal-volume eligible user" do
+    recipient = users(:member)
+    recipient.update!(deactivated_at: nil, email_verified: true, email_when_mentioned: true, complaints_count: 0)
+    TopicReader.for(user: recipient, topic: discussions(:discussion).topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+
+    scenarios = {
+      "comment_replied_to" => discussions(:discussion),
+      "discussion_announced" => discussions(:discussion),
+      "discussion_edited" => discussions(:discussion),
+      "membership_created" => groups(:group),
+      "new_discussion" => discussions(:discussion),
+      "outcome_announced" => @outcome,
+      "outcome_created" => @outcome,
+      "outcome_updated" => @outcome,
+      "poll_announced" => @poll,
+      "poll_edited" => @poll,
+      "poll_reminder" => @poll,
+      "user_mentioned" => discussions(:discussion)
+    }
+
+    scenarios.each do |kind, subject|
+      notification = resolve_notification(
+        kind: kind,
+        subject: subject,
+        recipient_user_ids: [ recipient.id ]
+      )
+
+      assert_equal %w[email in_app], channels_for(notification, recipient), kind
+    end
+  end
+
+  test "direct operational resolvers preserve their recipient and channel rules" do
+    recipient = users(:member)
+    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    membership = memberships(:member_membership)
+    membership.update!(inviter: @author, volume: :normal)
+
+    scenarios = {
+      "invitation_accepted" => [ membership, @author, %w[in_app] ],
+      "membership_request_approved" => [ membership, recipient, %w[email in_app] ],
+      "membership_resent" => [ membership, recipient, %w[email] ],
+      "new_coordinator" => [ membership, recipient, %w[in_app] ],
+      "new_delegate" => [ membership, recipient, %w[email in_app] ],
+      "user_added_to_group" => [ membership, recipient, %w[email in_app] ]
+    }
+
+    scenarios.each do |kind, (subject, expected_recipient, expected_channels)|
+      notification = resolve_notification(kind: kind, subject: subject)
+      assert_equal expected_channels, channels_for(notification, expected_recipient), kind
+    end
+  end
+
+  test "derived audience resolvers cover requests, reactions, unknown senders and group mentions" do
+    admin = users(:admin)
+    admin.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    groups(:group).membership_for(admin).update!(volume: :normal)
+
+    requestor = users(:alien)
+    request = MembershipRequest.create!(
+      group: groups(:group),
+      requestor: requestor,
+      introduction: "Please add me"
+    )
+    requested = resolve_notification(kind: "membership_requested", subject: request, actor: requestor)
+    assert_equal %w[email in_app], channels_for(requested, admin)
+
+    reaction = Reaction.create!(
+      reactable: discussions(:discussion),
+      user: @author,
+      reaction: "smiley"
+    )
+    reacted = resolve_notification(kind: "reaction_created", subject: reaction)
+    assert_equal %w[in_app], channels_for(reacted, discussions(:discussion).author)
+
+    received_email = ReceivedEmail.create!(group: groups(:group), headers: {})
+    unknown_sender = resolve_notification(kind: "unknown_sender", subject: received_email)
+    assert_equal %w[in_app], channels_for(unknown_sender, admin)
+
+    member = users(:member)
+    member.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    groups(:group).membership_for(member).update!(volume: :normal)
+    group_mentioned = resolve_notification(
+      kind: "group_mentioned",
+      subject: discussions(:discussion),
+      audience_values: {
+        "group_ids" => [ groups(:group).id ],
+        "mentioned_user_ids" => [],
+        "already_notified_user_ids" => []
+      }
+    )
+    assert_equal %w[email in_app], channels_for(group_mentioned, member)
+    assert_empty channels_for(group_mentioned, @author)
+  end
+
+  test "scheduled resolver matrix preserves author and voter delivery rules" do
+    TopicReader.for(user: @author, topic: @poll.topic).set_volume!(:normal)
+    @author.update!(deactivated_at: nil, complaints_count: 0)
+
+    review_due = resolve_notification(kind: "outcome_review_due", subject: @outcome)
+    assert_equal %w[email in_app], channels_for(review_due, @author)
+
+    @poll.update!(notify_on_closing_soon: "author")
+    closing_for_author = resolve_notification(kind: "poll_closing_soon", subject: @poll)
+    assert_equal %w[email], channels_for(closing_for_author, @author)
+
+    voter = users(:member)
+    voter.update!(deactivated_at: nil, complaints_count: 0)
+    TopicReader.for(user: voter, topic: @poll.topic).set_volume!(:normal)
+    stance = Stance.latest.find_or_initialize_by(poll: @poll, participant: voter)
+    stance.update!(choice: "Yes", cast_at: Time.current)
+    @poll.update!(notify_on_closing_soon: "voters")
+    closing_for_voters = resolve_notification(kind: "poll_closing_soon", subject: @poll)
+    assert_equal %w[email in_app], channels_for(closing_for_voters, voter)
+
+    expired = resolve_notification(kind: "poll_expired", subject: @poll)
+    assert_equal %w[email in_app], channels_for(expired, @author)
+  end
+
+  test "topic audience boundaries filter volume, account state, complaints and duplicate email paths" do
+    discussion = discussions(:discussion)
+    recipient_attributes = {
+      normal: { volume: :normal },
+      quiet: { volume: :quiet },
+      muted: { volume: :mute },
+      complained: { volume: :normal, complaints_count: 1 },
+      inactive: { volume: :normal, deactivated_at: Time.current },
+      mentioned: { volume: :normal },
+      loud: { volume: :loud }
+    }
+    recipients = recipient_attributes.transform_values do |attributes|
+      volume = attributes.delete(:volume)
+      user = create_resolver_user(**attributes)
+      groups(:group).add_member!(user)
+      TopicReader.for(user: user, topic: discussion.topic).set_volume!(volume)
+      user
+    end
+
+    notification = resolve_notification(
+      kind: "discussion_edited",
+      subject: discussion,
+      recipient_user_ids: recipients.values.map(&:id),
+      recipient_message: "Please review",
+      audience_values: { "newly_mentioned_user_ids" => [ recipients[:mentioned].id ] }
+    )
+
+    assert_equal %w[email in_app], channels_for(notification, recipients[:normal])
+    assert_equal %w[in_app], channels_for(notification, recipients[:quiet])
+    assert_empty channels_for(notification, recipients[:muted])
+    assert_equal %w[in_app], channels_for(notification, recipients[:complained])
+    assert_empty channels_for(notification, recipients[:inactive])
+    assert_equal %w[in_app], channels_for(notification, recipients[:mentioned])
+    assert_equal %w[in_app], channels_for(notification, recipients[:loud])
+  end
+
+  test "chatbot resolver matrix distinguishes implicit subscriptions from explicit selection" do
+    implicit_kinds = %w[
+      discussion_announced outcome_review_due poll_announced poll_closing_soon
+      poll_expired poll_reminder
+    ]
+    explicit_kinds = %w[
+      discussion_edited new_discussion outcome_created outcome_updated poll_edited
+    ]
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      @chatbot.update!(event_kinds: implicit_kinds)
+    end
+    @poll.update!(notify_on_closing_soon: "author")
+
+    subjects = {
+      "discussion_announced" => discussions(:discussion),
+      "discussion_edited" => discussions(:discussion),
+      "new_discussion" => discussions(:discussion),
+      "outcome_created" => @outcome,
+      "outcome_review_due" => @outcome,
+      "outcome_updated" => @outcome,
+      "poll_announced" => @poll,
+      "poll_closing_soon" => @poll,
+      "poll_edited" => @poll,
+      "poll_expired" => @poll,
+      "poll_reminder" => @poll
+    }
+
+    implicit_kinds.each do |kind|
+      notification = resolve_notification(kind: kind, subject: subjects.fetch(kind))
+      assert_equal %w[chatbot], channels_for(notification, @chatbot), kind
+    end
+
+    explicit_kinds.each do |kind|
+      without_selection = resolve_notification(kind: kind, subject: subjects.fetch(kind))
+      assert_empty channels_for(without_selection, @chatbot), kind
+
+      with_selection = resolve_notification(
+        kind: kind,
+        subject: subjects.fetch(kind),
+        recipient_chatbot_ids: [ @chatbot.id ]
+      )
+      assert_equal %w[chatbot], channels_for(with_selection, @chatbot), kind
+    end
+  end
+
   test "a newly committed notification resolves user and chatbot deliveries in the background" do
     notification = nil
     assert_enqueued_with(job: ResolveNotificationDeliveriesWorker) do
@@ -400,6 +669,39 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
   end
 
   private
+
+  def resolve_notification(kind:, subject:, actor: @author, recipient_user_ids: [],
+                           recipient_chatbot_ids: [], recipient_message: nil, audience_values: {})
+    notification = Notification.create!(
+      kind: kind,
+      subject: subject,
+      actor: actor,
+      recipient_user_ids: recipient_user_ids,
+      recipient_chatbot_ids: recipient_chatbot_ids,
+      recipient_message: recipient_message,
+      audience_values: audience_values
+    )
+    NotificationDeliveryResolver.for(notification).resolve!
+    notification
+  end
+
+  def channels_for(notification, recipient)
+    notification.notification_deliveries
+                .where(recipient: recipient)
+                .order(:channel)
+                .pluck(:channel)
+  end
+
+  def create_resolver_user(complaints_count: 0, deactivated_at: nil)
+    token = SecureRandom.hex(5)
+    User.create!(
+      name: "Resolver #{token}",
+      email: "resolver-#{token}@example.test",
+      email_verified: true,
+      complaints_count: complaints_count,
+      deactivated_at: deactivated_at
+    )
+  end
 
   def create_notification
     NotificationService.create!(
