@@ -6,6 +6,7 @@ class Stance < ApplicationRecord
   include HasTopicItems
   include HasNotifications
   include Searchable
+  include ValidatesBallot
 
   extend HasTokens
   initialized_with_token :token
@@ -95,18 +96,10 @@ class Stance < ApplicationRecord
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
   }
 
-  validate :valid_minimum_stance_choices
-  validate :valid_maximum_stance_choices
-  validate :valid_max_score
-  validate :valid_min_score
-  validate :valid_dots_per_person
   validate :valid_reason_length
   validate :valid_reason_required
-  validate :valid_require_all_choices
-  validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
   validate :poll_is_not_anonymous
-  validate :poll_options_are_unique
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -230,72 +223,6 @@ class Stance < ApplicationRecord
     errors.add(:poll, :invalid) if poll.anonymous?
   end
 
-  def poll_options_are_unique
-    option_ids = stance_choices.map(&:poll_option_id)
-    raise "Stance poll options must be unique" if option_ids.uniq.length != option_ids.length
-  end
-
-  def valid_none_of_the_above
-    return if !cast_at
-    return unless none_of_the_above
-    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
-    errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
-  end
-
-  def valid_min_score
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_min_score
-    return if (stance_choices.map(&:score).compact.min || 0) >= poll.min_score
-
-    errors.add(:stance_choices, "min_score validation failure")
-  end
-
-  def valid_max_score
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_max_score
-    return if (stance_choices.map(&:score).compact.max || 0) <= poll.max_score
-    errors.add(:stance_choices, "max_score validation failure")
-  end
-
-  def valid_dots_per_person
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_dots_per_person
-    return if stance_choices.map(&:score).compact.sum <= poll.dots_per_person.to_i
-
-    errors.add(:dots_per_person, "Too many dots")
-  end
-
-  def valid_minimum_stance_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_minimum_stance_choices
-    return if stance_choices.length >= poll.minimum_stance_choices
-
-    errors.add(:stance_choices, "too few stance choices")
-  end
-
-  def valid_maximum_stance_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_maximum_stance_choices
-    return if stance_choices.length <= poll.maximum_stance_choices
-
-    errors.add(:stance_choices, "too many stance choices")
-  end
-
-  def valid_require_all_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.require_all_choices
-    return if poll.poll_options.length == 0
-    return if stance_choices.length == poll.poll_options.length
-
-    errors.add(:stance_choices, "require_all_stance_choices")
-  end
-
   def valid_reason_length
     return if !cast_at
     return if !poll.limit_reason_length
@@ -324,5 +251,17 @@ class Stance < ApplicationRecord
                             end
 
     stance_choices.any? { |choice| icons_reason_required.include?(choice.poll_option.icon) }
+  end
+
+  def ballot_validation_required?
+    cast_at.present?
+  end
+
+  def ballot_choices_for_validation
+    stance_choices
+  end
+
+  def ballot_choices_error_attribute
+    :stance_choices
   end
 end

@@ -27,6 +27,13 @@ Loomio supports "Reply by email" and to enable this you need an MX record so mai
 MX loomio.example.com, loomio.example.com, priority 0
 ```
 
+`REPLY_HOSTNAME` must resolve to this server and ports 80, 443, and 25 must be
+reachable from the internet. The deployment automatically requests a Let's
+Encrypt certificate for that hostname. Haraka mounts the certificate read-only,
+advertises STARTTLS when it becomes available, and reloads it after renewal.
+Certificate provisioning does not interrupt inbound mail: Haraka starts without
+STARTTLS while the first ACME request is pending.
+
 Additionally, create a CNAME record for the collaborative editing server.
 
 ```

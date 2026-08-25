@@ -25,6 +25,15 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_select "a.navbar__sign-in[href='/dashboard']"
   end
 
+  test "public discussion clamps invalid pagination values" do
+    discussion = discussions(:public_discussion)
+
+    get :show, params: { key: discussion.key, offset: -1, limit: -1, export: 1 }
+
+    assert_response :success
+    assert_equal({ limit: 1, offset: 0 }, assigns(:pagination))
+  end
+
   test "show 404 for non-existent discussion" do
     get :show, params: { key: 'doesnotexist' }
     assert_response 404

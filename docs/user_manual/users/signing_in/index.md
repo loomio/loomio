@@ -33,7 +33,7 @@ Either:
 
 ![](sign_in_token.png)
 
-Sign-in links and codes normally expire after one hour and cannot be reused.
+Sign-in links and codes normally expire after 24 hours and cannot be reused.
 If one expires, request another sign-in email. Check your spam folder if the
 message does not arrive, and make sure you entered the address associated with
 your account.

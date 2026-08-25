@@ -35,11 +35,16 @@ class StanceChoiceTest < ActiveSupport::TestCase
     assert choice.valid?
   end
 
-  test "does not allow scores greater than 1 if poll disallows it" do
+  test "cast ballot does not allow scores greater than the poll maximum" do
     poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin)
-    choice = StanceChoice.new(poll: poll, stance: stance, poll_option: poll.poll_options.first, score: 4)
-    assert_not choice.valid?
+    stance = Stance.new(
+      poll: poll,
+      participant: @admin,
+      cast_at: Time.zone.now,
+      stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id, score: 4 }]
+    )
+
+    assert_not stance.valid?
   end
 
   test "poll option must belong to the stance poll" do
@@ -48,12 +53,11 @@ class StanceChoiceTest < ActiveSupport::TestCase
     stance = Stance.new(poll: poll, participant: @admin)
     choice = StanceChoice.new(stance: stance, poll_option: other_poll.poll_options.first, score: 1)
 
-    error = assert_raises(RuntimeError) { choice.valid? }
-
-    assert_equal "Stance choice poll_option must belong to the stance poll", error.message
+    assert_not choice.valid?
+    assert choice.errors.added?(:poll_option, :invalid)
   end
 
-  test "nested stance validation raises for an option from another poll" do
+  test "nested stance validation rejects an option from another poll" do
     poll = PollService.create(params: poll_params, actor: @admin)
     other_poll = PollService.create(params: poll_params(title: "Other nested poll"), actor: @admin)
     stance = Stance.new(
@@ -62,7 +66,8 @@ class StanceChoiceTest < ActiveSupport::TestCase
       stance_choices_attributes: [{ poll_option_id: other_poll.poll_options.first.id, score: 1 }]
     )
 
-    assert_raises(RuntimeError) { stance.valid? }
+    assert_not stance.valid?
+    assert stance.stance_choices.first.errors.added?(:poll_option, :invalid)
   end
 
   test "stance cannot contain the same poll option twice" do
@@ -77,9 +82,8 @@ class StanceChoiceTest < ActiveSupport::TestCase
       ]
     )
 
-    error = assert_raises(RuntimeError) { stance.valid? }
-
-    assert_equal "Stance poll options must be unique", error.message
+    assert_not stance.valid?
+    assert stance.errors.added?(:stance_choices, :invalid)
   end
 
   test "database rejects the same poll option twice for one stance" do
@@ -105,6 +109,19 @@ class StanceChoiceTest < ActiveSupport::TestCase
         stance_id: stance.id,
         poll_option_id: PollOption.maximum(:id) + 100,
         score: 1
+      }])
+    end
+  end
+
+  test "database rejects a negative score" do
+    poll = PollService.create(params: poll_params, actor: @admin)
+    stance = poll.stances.find_by!(participant: @admin)
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      StanceChoice.insert_all!([{
+        stance_id: stance.id,
+        poll_option_id: poll.poll_options.first.id,
+        score: -1
       }])
     end
   end

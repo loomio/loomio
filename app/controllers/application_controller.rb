@@ -106,7 +106,9 @@ class ApplicationController < ActionController::Base
 
   def pagination_params
     default_limit = params[:export] ? 2000 : 10
-    { limit: params.fetch(:limit, default_limit).to_i, offset: params.fetch(:offset, 0).to_i }
+    limit = params.fetch(:limit, default_limit).to_i.clamp(1, default_limit)
+    offset = [params.fetch(:offset, 0).to_i, 0].max
+    { limit: limit, offset: offset }
   end
 
   def set_noindex_header

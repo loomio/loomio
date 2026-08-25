@@ -123,11 +123,18 @@ export default {
     },
 
     fetchAvailableAudiences() {
+      const targetParams = this.model.bestNamedId();
+      if (!Object.keys(targetParams).length) {
+        this.availableAudiences = [];
+        this.updateSuggestions();
+        return;
+      }
+
       Records.fetch({
         path: 'announcements/available_audiences',
         params: {
           include_actor: (this.includeActor && 1) || null,
-          ...this.model.bestNamedId()
+          ...targetParams
         }
       }).then(data => {
         this.availableAudiences = data.audiences || [];

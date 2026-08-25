@@ -47,7 +47,7 @@ export default new class UserService {
         icon: 'mdi-pause-circle',
         name: 'profile_page.deactivate_account',
         subtitle: 'profile_page.deactivate_account_subtitle',
-        canPerform() { return !user.deactivatedAt; },
+        canPerform() { return !user.deactivatedAt && !user.restricted; },
         perform() {
           return EventBus.$emit('openModal', {
             component: 'ConfirmModal',

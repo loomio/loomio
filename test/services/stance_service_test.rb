@@ -156,6 +156,26 @@ class StanceServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "invalid ballot update preserves the previous vote and result counts" do
+    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    agree = @poll.poll_options.find_by!(name: "Agree")
+    StanceService.create(stance: stance.tap { |record| record.choice = "Agree" }, actor: @user)
+    counts_before = @poll.reload.stance_counts
+    events_before = Event.count
+
+    assert_raises ActiveRecord::RecordInvalid do
+      StanceService.update(
+        stance: stance,
+        actor: @user,
+        params: { stance_choices_attributes: [{ poll_option_id: agree.id, score: -1 }] }
+      )
+    end
+
+    assert_equal({ agree.id.to_s => 1 }, stance.reload.option_scores)
+    assert_equal counts_before, @poll.reload.stance_counts
+    assert_equal events_before, Event.count
+  end
+
   test "does not allow an unauthorized member to create a stance" do
     agree = @poll.poll_options.find_by(name: 'Agree')
     new_stance = Stance.new(poll: @poll, reason: 'trying to vote')

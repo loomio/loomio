@@ -34,6 +34,19 @@ module.exports = {
     // page.expectFlash('2 notifications sent')
   },
 
+  'new_direct_discussion_autocompletes_recipients_without_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.ensureSidebar()
+    page.click('.sidebar__list-item-button--private')
+    page.click('.threads-page__new-thread-button')
+    page.click('.discussion-templates--direct-discussion')
+    page.waitFor('.discussion-form')
+    page.fillIn('.recipients-autocomplete input', 'Emilio')
+    page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
+  },
+
   // topic members list
   'announcement_created': (test) => {
     page = pageHelper(test)

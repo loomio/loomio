@@ -46,8 +46,8 @@ services:
       - 3000
     env_file: ./.env
     environment:
-      - VIRTUAL_HOST=${CANONICAL_HOST}
-      - ACME_HOST=${CANONICAL_HOST}
+      - VIRTUAL_HOST=${CANONICAL_HOST},${REPLY_HOSTNAME}
+      - ACME_HOST=${CANONICAL_HOST},${REPLY_HOSTNAME}
     volumes:
       - ./uploads:/loomio/public/system
       - ./storage:/loomio/storage
@@ -119,10 +119,15 @@ services:
     image: ${HARAKA_CONTAINER_IMAGE}:${HARAKA_CONTAINER_TAG}
     restart: unless-stopped
     env_file: ./.env
+    environment:
+      - HARAKA_TLS_KEY_PATH=/etc/nginx/certs/${REPLY_HOSTNAME}.key
+      - HARAKA_TLS_CERT_PATH=/etc/nginx/certs/${REPLY_HOSTNAME}.crt
     networks:
       - main
     ports:
       - "25:25"
+    volumes:
+      - certs:/etc/nginx/certs:ro
 
   hocuspocus:
     container_name: loomio-hocuspocus

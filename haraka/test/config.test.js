@@ -23,6 +23,38 @@ test('explicitly cleans sender-supplied authentication results', () => {
   assert.match(connectionConfig, /^clean_auth_results=true$/m);
 });
 
+test('records reverse DNS results without rejecting legitimate relays', () => {
+  const fcrdnsConfig = fs.readFileSync(path.join(configPath, 'fcrdns.ini'), 'utf8');
+
+  assert.match(fcrdnsConfig, /^no_rdns\s*=\s*false$/m);
+  assert.match(fcrdnsConfig, /^no_fcrdns\s*=\s*false$/m);
+  assert.match(fcrdnsConfig, /^invalid_tld\s*=\s*false$/m);
+  assert.match(fcrdnsConfig, /^generic_rdns\s*=\s*false$/m);
+});
+
+test('enables and reloads TLS when deployment certificates become readable', () => {
+  const entrypoint = fs.readFileSync(
+    path.join(__dirname, '..', 'haraka', 'docker-entrypoint.sh'),
+    'utf8',
+  );
+
+  assert.match(entrypoint, /HARAKA_TLS_KEY_PATH/);
+  assert.match(entrypoint, /HARAKA_TLS_CERT_PATH/);
+  assert.match(entrypoint, /sed -i 's\/\^# tls\$\/tls\/'/);
+  assert.match(entrypoint, /minVersion=TLSv1\.2/);
+  assert.match(entrypoint, /TLS certificate files are not readable yet; starting without STARTTLS/);
+  assert.match(entrypoint, /TLS certificate appeared or changed; gracefully reloading Haraka/);
+  assert.match(entrypoint, /watch_tls "\$tls_fingerprint"/);
+  assert.match(entrypoint, /--graceful/);
+  assert.doesNotMatch(entrypoint, /TLS certificate files are not readable[^\n]+\n\s*exit 1/);
+});
+
+test('generates TLS parameters at image build time rather than SMTP startup', () => {
+  const dockerfile = fs.readFileSync(path.join(__dirname, '..', 'Dockerfile'), 'utf8');
+
+  assert.match(dockerfile, /openssl dhparam -out \/haraka\/config\/dhparams\.pem 2048/);
+});
+
 test('accepts legacy Loomio reply addresses with long local parts', () => {
   const connectionConfig = fs.readFileSync(path.join(configPath, 'connection.ini'), 'utf8');
   const postel = /^postel\s*=\s*true$/m.test(connectionConfig);

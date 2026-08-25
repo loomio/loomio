@@ -264,6 +264,23 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     refute @poll.poll_options.first.update(name: "Changed")
   end
 
+  test "database rejects a negative detached anonymous score" do
+    ballot_id = SecureRandom.uuid
+    AnonymousBallot.insert_all!([{
+      id: ballot_id,
+      poll_id: @poll.id,
+      none_of_the_above: false
+    }])
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      AnonymousBallotChoice.insert_all!([{
+        anonymous_ballot_id: ballot_id,
+        poll_option_id: @poll.poll_options.first.id,
+        score: -1
+      }])
+    end
+  end
+
   test "aggregate-only policy blocks ballot-pattern exports" do
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
     PollService.close(poll: @poll, actor: @admin)
@@ -477,6 +494,48 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
 
     refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
     assert_empty @poll.reload.anonymous_ballots
+  end
+
+  test "rejects malformed fixed-score ballots without consuming the vote" do
+    ballot = @poll.anonymous_ballots.build(
+      anonymous_ballot_choices_attributes: @poll.poll_options.map do |option|
+        { poll_option_id: option.id, score: option == @poll.poll_options.first ? 1 : -1 }
+      end
+    )
+
+    assert_raises(ActiveRecord::RecordInvalid) do
+      AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    end
+
+    refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+    assert_empty @poll.reload.anonymous_ballots
+  end
+
+  test "rejects malformed anonymous ranked ballots" do
+    poll = PollService.create(
+      params: {
+        title: "Anonymous ranked poll",
+        poll_type: "ranked_choice",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        minimum_stance_choices: 3,
+        poll_option_names: %w[Apple Orange Banana]
+      },
+      actor: @admin
+    )
+    ballot = poll.anonymous_ballots.build(
+      anonymous_ballot_choices_attributes: poll.poll_options.zip([9999, 2, 1]).map do |option, score|
+        { poll_option_id: option.id, score: score }
+      end
+    )
+
+    assert_raises(ActiveRecord::RecordInvalid) do
+      AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    end
+
+    refute poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
+    assert_empty poll.reload.anonymous_ballots
   end
 
   test "results remain hidden before close and use detached choices after close" do

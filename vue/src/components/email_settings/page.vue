@@ -189,7 +189,7 @@ v-main
                   option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volume == volume")
                     span(v-t="'change_volume_form.'+volume+'_desc'")
 
-    v-card(:title="$t('email_settings_page.deactivate_header')")
+    v-card.email-settings-page__deactivate-card(v-if="actions.length" :title="$t('email_settings_page.deactivate_header')")
       v-card-text
         p(v-t="'email_settings_page.deactivate_description'")
         v-list

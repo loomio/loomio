@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -80,6 +80,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000003) do
     t.index ["anonymous_ballot_id"], name: "index_anonymous_ballot_choices_on_anonymous_ballot_id"
     t.index ["poll_option_id"], name: "index_anonymous_ballot_choices_on_poll_option_id"
   end
+
+  add_check_constraint "anonymous_ballot_choices", "score >= 0", name: "anonymous_ballot_choices_score_nonnegative", validate: false
 
   create_table "anonymous_ballots", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "none_of_the_above", default: false, null: false
@@ -1009,6 +1011,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000003) do
     t.index ["stance_id", "poll_option_id"], name: "index_stance_choices_on_stance_id_and_poll_option_id", unique: true
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
+
+  add_check_constraint "stance_choices", "score >= 0", name: "stance_choices_score_nonnegative", validate: false
 
   create_table "stance_receipts", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -27,7 +27,6 @@ class PollTest < ActiveSupport::TestCase
       poll_type: "ranked_choice",
       title: "Ranked choice",
       poll_option_names: %w[apple banana orange],
-      custom_fields: { minimum_stance_choices: 2 },
       **overrides
     ), actor: @admin)
   end
@@ -92,6 +91,60 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
+  test "every poll type declares a complete ballot policy without validation switches" do
+    expected_rules = {
+      "count" => "bounded",
+      "check" => "bounded",
+      "question" => "reason_only",
+      "proposal" => "bounded",
+      "meeting" => "bounded",
+      "poll" => "bounded",
+      "dot_vote" => "dot_vote",
+      "score" => "bounded",
+      "ranked_choice" => "ranked_points",
+      "stv" => "ranked_preferences"
+    }
+
+    assert_equal expected_rules, AppConfig.poll_types.transform_values { |config| config["ballot_rule"] }
+    AppConfig.poll_types.each_value do |config|
+      assert_empty config.keys.grep(/^validate_/)
+    end
+  end
+
+  test "score bounds must be nonnegative and ordered" do
+    assert_raises(ActiveRecord::RecordInvalid) do
+      create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+    end
+
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+
+    poll.min_score = -1
+    refute poll.valid?
+    assert poll.errors.added?(:min_score, :invalid)
+
+    poll.min_score = 5
+    poll.max_score = 4
+    refute poll.valid?
+    assert poll.errors.added?(:max_score, :invalid)
+  end
+
+  test "a legacy negative-score poll can be discarded" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_column(:min_score, -1)
+
+    PollService.discard(poll: poll, actor: @admin)
+
+    assert poll.reload.discarded?
+  end
+
+  test "an existing negative scale does not validate again for unrelated edits" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_columns(min_score: -1, closed_at: Time.current)
+
+    assert poll.update(title: "Edited historical score poll")
+    assert_equal(-1, poll.reload.min_score)
+  end
+
   test "does not allow changing poll options if the template does not allow" do
     poll = create_poll(poll_option_names: ["agree"])
     poll.poll_options.build
@@ -103,6 +156,34 @@ class PollTest < ActiveSupport::TestCase
     ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
     ranked_choice.valid?
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
+  end
+
+  test "ballot configuration ignores JSON custom fields" do
+    poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
+    poll.update_columns(
+      min_score: nil,
+      max_score: nil,
+      dots_per_person: nil,
+      minimum_stance_choices: nil,
+      maximum_stance_choices: nil,
+      custom_fields: poll.custom_fields.merge(
+        "min_score" => 3,
+        "max_score" => 3,
+        "dots_per_person" => 1,
+        "minimum_stance_choices" => 2,
+        "maximum_stance_choices" => 2
+      )
+    )
+
+    poll.reload
+    assert_equal 0, poll.min_score
+    assert_nil poll.max_score
+    assert_equal 8, poll.dots_per_person
+    assert_equal 0, poll.minimum_stance_choices
+    assert_equal 3, poll.maximum_stance_choices
+
+    poll.update!(min_score: 2)
+    assert_equal 3, poll.reload.custom_fields["min_score"]
   end
 
   test "allows closing dates in the future" do

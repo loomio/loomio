@@ -27,6 +27,15 @@ class LocalesHelperTest < ActiveSupport::TestCase
     assert_equal :fr, preferred_locale.to_sym
   end
 
+  test "preferred locale is scoped to the request block" do
+    locale_before = I18n.locale
+    @params = { locale: "fr" }
+
+    use_preferred_locale { assert_equal :fr, I18n.locale }
+
+    assert_equal locale_before, I18n.locale
+  end
+
   test "does not set a bad locale via query param" do
     @params = { lang: 'notagoodone' }
     assert_equal I18n.default_locale, preferred_locale.to_sym
