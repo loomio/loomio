@@ -2,11 +2,9 @@ class StanceChoice < ApplicationRecord
   belongs_to :poll_option
   belongs_to :stance
   has_one :poll, through: :poll_option
-  delegate :has_variable_score, to: :poll, allow_nil: true
 
-  validate :total_score_is_valid
   validate :poll_option_belongs_to_stance_poll
-  validates :score, numericality: { equal_to: 1 }, if: Proc.new { |sc| sc.stance && !sc.stance.cast_at && sc.poll && !sc.has_variable_score }
+  validates :score, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :latest, -> { joins(:stance).where('stances.latest': true).where('stances.revoked_at': nil) }
   scope :reasons_first, -> {
@@ -30,18 +28,8 @@ class StanceChoice < ApplicationRecord
   private
 
   def poll_option_belongs_to_stance_poll
-    raise "Stance choice poll_option must belong to the stance poll" unless stance.poll == poll_option.poll
-  end
+    return unless stance && poll_option
 
-  def total_score_is_valid
-    return unless poll # when we are cloning records and poll is not saved yet
-
-    if poll.custom_fields['min_score'] && score < poll.custom_fields['min_score'].to_i
-      errors.add(:score, "Score lower than permitted min")
-    end
-
-    if poll.custom_fields['max_score'] && score > poll.custom_fields['max_score'].to_i
-      errors.add(:score, "Score higher than permitted max")
-    end
+    errors.add(:poll_option, :invalid) unless stance.poll == poll_option.poll
   end
 end

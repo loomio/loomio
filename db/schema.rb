@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -80,6 +80,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.index ["anonymous_ballot_id"], name: "index_anonymous_ballot_choices_on_anonymous_ballot_id"
     t.index ["poll_option_id"], name: "index_anonymous_ballot_choices_on_poll_option_id"
   end
+
+  add_check_constraint "anonymous_ballot_choices", "score >= 0", name: "anonymous_ballot_choices_score_nonnegative", validate: false
 
   create_table "anonymous_ballots", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "none_of_the_above", default: false, null: false
@@ -346,8 +348,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_discussion_created_event", unique: true, where: "(((eventable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
     t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_poll_created_event", unique: true, where: "(((eventable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
-    t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
+    t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
     t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_and_sequence_id", unique: true
@@ -1011,6 +1013,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_000000) do
     t.index ["stance_id", "poll_option_id"], name: "index_stance_choices_on_stance_id_and_poll_option_id", unique: true
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
+
+  add_check_constraint "stance_choices", "score >= 0", name: "stance_choices_score_nonnegative", validate: false
 
   create_table "stance_receipts", force: :cascade do |t|
     t.datetime "created_at", null: false

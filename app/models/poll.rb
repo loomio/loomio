@@ -64,12 +64,15 @@ class Poll < ApplicationRecord
 
   TEMPLATE_DEFAULT_FIELDS = %w[
     poll_option_name_format
+    chart_type
+    default_duration_in_days
+  ].freeze
+
+  BALLOT_DEFAULT_FIELDS = %w[
     max_score
     min_score
     dots_per_person
-    chart_type
-    default_duration_in_days
-  ]
+  ].freeze
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
     define_method field, -> {
@@ -87,18 +90,29 @@ class Poll < ApplicationRecord
     }
   end
 
+  BALLOT_DEFAULT_FIELDS.each do |field|
+    define_method field, -> {
+      self[field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+    }
+
+    define_method :"#{field}=", ->(value) {
+      if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+        self[field] = nil
+      else
+        self[field] = value
+      end
+      value
+    }
+  end
+
   TEMPLATE_VALUES = %w(has_option_icon
+                       ballot_rule
                        order_results_by
                        prevent_anonymous
                        vote_method
                        material_icon
                        require_all_choices
-                       validate_minimum_stance_choices
-                       validate_maximum_stance_choices
-                       validate_min_score
-                       validate_max_score
-                       has_options
-                       validate_dots_per_person).freeze
+                       has_options).freeze
 
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
@@ -131,7 +145,6 @@ class Poll < ApplicationRecord
       poll_options.length
     else
       self[:minimum_stance_choices] ||
-      self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
@@ -139,7 +152,6 @@ class Poll < ApplicationRecord
 
   def maximum_stance_choices
     self[:maximum_stance_choices] ||
-    self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
     poll_options.length
   end
@@ -218,6 +230,7 @@ class Poll < ApplicationRecord
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
+  validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
   alias_method :user, :author
@@ -503,6 +516,19 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def score_bounds_validation_required?
+    new_record? || will_save_change_to_min_score? || will_save_change_to_max_score?
+  end
+
+  def score_bounds_are_valid
+    score_min = Integer(min_score, exception: false)
+    score_max = Integer(max_score, exception: false)
+
+    errors.add(:min_score, :invalid) if min_score.present? && (score_min.nil? || score_min.negative?)
+    errors.add(:max_score, :invalid) if max_score.present? && (score_max.nil? || score_max.negative?)
+    errors.add(:max_score, :invalid) if score_min && score_max && score_max < score_min
+  end
 
   def title_if_not_discarded
     if !discarded_at && title.to_s.empty?

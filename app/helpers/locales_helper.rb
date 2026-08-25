@@ -4,9 +4,10 @@ module LocalesHelper
   end
 
   def use_preferred_locale
-    I18n.locale = preferred_locale
-    yield if block_given?
-    save_detected_locale
+    I18n.with_locale(preferred_locale) do
+      yield if block_given?
+      save_detected_locale
+    end
   end
 
   def preferred_locale
