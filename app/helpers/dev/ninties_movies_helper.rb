@@ -223,10 +223,11 @@ module Dev::NintiesMoviesHelper
         poll_option_names: %w[agree abstain disagree block],
         title: "Let's go to the moon!",
         closing_at: 10.days.from_now,
-        group_id: create_discussion.group_id
+        group_id: create_discussion.group_id,
+        topic_id: create_discussion.topic_id
       },
       actor: patrick
-    ).tap { |p| p.update!(topic: create_discussion.topic) }
+    )
   end
 
   def create_stance
@@ -294,6 +295,8 @@ module Dev::NintiesMoviesHelper
 
 
   def create_all_notifications
+    create_discussion.topic.update!(allow_concurrent_polls: true)
+
     create_delivered_notification(
       kind: "group_announced",
       subject: create_another_group,
@@ -360,13 +363,13 @@ module Dev::NintiesMoviesHelper
         title: "Invitation poll",
         poll_option_names: %w[agree abstain disagree block],
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         closing_at: 24.hours.from_now,
         notify_on_closing_soon: 'voters',
         specified_voters_only: true
       },
       actor: jennifer
     )
-    poll.update!(topic: create_discussion.topic)
     PollService.invite(
       poll: poll,
       params: { recipient_user_ids: [patrick.id], notify_recipients: true },
@@ -383,11 +386,11 @@ module Dev::NintiesMoviesHelper
         title: "Outcome poll",
         poll_option_names: %w[agree abstain disagree block],
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         closing_at: 3.days.from_now
       },
       actor: jennifer
     )
-    poll.update!(topic: create_discussion.topic)
     poll.update_columns(closed_at: 1.day.ago, closing_at: 1.day.ago)
     outcome = Outcome.new(poll: poll, author: jennifer, statement: "Let's do it!")
     OutcomeService.create(
@@ -405,10 +408,10 @@ module Dev::NintiesMoviesHelper
         poll_option_names: %w[agree abstain disagree block],
         closing_at: 4.days.from_now,
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         voter_can_add_options: true
       },
       actor: patrick
     )
-    poll.update!(topic: create_discussion.topic)
   end
 end

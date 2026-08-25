@@ -297,7 +297,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_unsafe_title_version')
-    page.click('.strand-new-discussion .action-dock__button--show_history')
+    page.click('.topic-new-discussion .action-dock__button--show_history')
     page.expectText('.revision-history-content ins', '<img src=x onerror=alert(document.domain)>')
     page.expectNoElement('.revision-history-content img')
   },
