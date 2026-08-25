@@ -15,13 +15,25 @@ forwarders and mailing lists do not need to rewrite the visible `To` header.
 Custom relays that provide this header must remove sender-supplied copies
 before stamping their own.
 
-It rejects messages that:
-
-- Fail fcrdns
-- Have unresolveable MAIL FROM
-- Are not addressed to REPLY_HOSTNAME
+It records forward-confirmed reverse DNS results without rejecting solely on
+PTR quality. It rejects messages that have an unresolvable MAIL FROM or are not
+addressed to REPLY_HOSTNAME. Loomio then uses SPF, DKIM, DMARC, and signed reply
+routes when deciding whether a received message may create content.
 
 It passes accepted messages to the app via `RAILS_INBOUND_EMAIL_URL`.
+
+## SMTP TLS certificates
+
+The standard Loomio deployment requests an ACME certificate for
+`REPLY_HOSTNAME` and mounts the shared nginx-proxy certificate volume read-only
+in Haraka. Haraka starts without STARTTLS while the first certificate is being
+issued, enables it when the files appear, and gracefully reloads after ACME
+renewals change the certificate.
+
+Custom deployments can use the same lifecycle by setting
+`HARAKA_TLS_KEY_PATH` and `HARAKA_TLS_CERT_PATH` to readable PEM files. If the
+variables are omitted, Haraka continues to accept SMTP without advertising
+STARTTLS.
 
 You need to set the following ENV's
 

@@ -12,6 +12,7 @@ RUN apk add --no-cache ca-certificates
 RUN update-ca-certificates
 RUN apk add --no-cache --virtual .build-deps python3 g++ make openssl
 RUN npm ci --omit=dev
+RUN openssl dhparam -out /haraka/config/dhparams.pem 2048
 RUN chmod +x /haraka/docker-entrypoint.sh
 RUN apk del .build-deps && rm -rf /var/cache/apk/* /root/.npm/* /tmp/*
 
