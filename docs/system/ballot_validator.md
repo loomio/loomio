@@ -23,6 +23,12 @@ prevents their score and choice-count rules from drifting apart. Choice models
 also require scores to be integers and ensure that each option belongs to the
 ballot's poll.
 
+`ValidatesBallot` owns shared parent-record integrity: options must be unique,
+every option must belong to the ballot's poll, and `none_of_the_above` cannot be
+combined with choices. The concern also applies configured score, choice-count,
+dot-budget, and ranking rules to the complete ballot. Voting-system eligibility,
+stance reasons, and record lifecycle checks remain on their respective models.
+
 An undecided `Stance` is allowed to have no choices. The complete ballot is
 validated once `cast_at` is present. An `AnonymousBallot` is always a submitted
 ballot and is validated whenever it is saved.

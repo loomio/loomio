@@ -99,10 +99,8 @@ class Stance < ApplicationRecord
 
   validate :valid_reason_length
   validate :valid_reason_required
-  validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
   validate :poll_is_not_anonymous
-  validate :poll_options_are_unique
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -226,18 +224,6 @@ class Stance < ApplicationRecord
 
   def poll_is_not_anonymous
     errors.add(:poll, :invalid) if poll.anonymous?
-  end
-
-  def poll_options_are_unique
-    option_ids = stance_choices.map(&:poll_option_id)
-    errors.add(:stance_choices, :invalid) if option_ids.uniq.length != option_ids.length
-  end
-
-  def valid_none_of_the_above
-    return if !cast_at
-    return unless none_of_the_above
-    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
-    errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
   end
 
   def valid_reason_length

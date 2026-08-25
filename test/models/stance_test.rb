@@ -88,11 +88,7 @@ class StanceTest < ActiveSupport::TestCase
     stance = cast_stance(poll.reload, [[poll.poll_options.first, -1]])
 
     assert_not stance.valid?
-    assert_includes BallotValidator.new(
-      poll: poll,
-      choices: stance.stance_choices,
-      none_of_the_above: false
-    ).reasons, :score_negative
+    assert stance.errors.added?(:stance_choices, :invalid)
   end
 
   test "legacy numeric string ballot configuration is normalized" do

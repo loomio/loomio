@@ -165,10 +165,10 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_closing_soon notify_on_closing_soon voters" do
     @poll.update!(notify_on_closing_soon: 'voters')
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_loud, cast_at: Time.current)
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_normal, cast_at: Time.current)
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_quiet, cast_at: Time.current)
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_mute, cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: proposal_choice_name, participant: @user_thread_loud, cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: proposal_choice_name, participant: @user_thread_normal, cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: proposal_choice_name, participant: @user_thread_quiet, cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: proposal_choice_name, participant: @user_thread_mute, cast_at: Time.current)
 
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       Events::PollClosingSoon.publish!(@poll)
@@ -191,7 +191,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_closing_soon notify_on_closing_soon undecided_voters" do
     @poll.update!(notify_on_closing_soon: 'undecided_voters')
-    Stance.create!(poll: @poll, cast_at: Time.current, choice: 'Agree', participant: @user_thread_loud)
+    Stance.create!(poll: @poll, cast_at: Time.current, choice: proposal_choice_name, participant: @user_thread_loud)
     Stance.create!(poll: @poll, participant: @user_thread_normal)
 
     assert_difference -> { ActionMailer::Base.deliveries.count } do
@@ -219,7 +219,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_closing_soon notify_on_closing_soon nobody" do
     @poll.update!(notify_on_closing_soon: 'nobody')
-    Stance.create!(poll: @poll, cast_at: Time.current, choice: 'Agree', participant: @user_thread_loud)
+    Stance.create!(poll: @poll, cast_at: Time.current, choice: proposal_choice_name, participant: @user_thread_loud)
     Stance.create!(poll: @poll, participant: @user_thread_normal)
 
     assert_no_difference -> { ActionMailer::Base.deliveries.count } do
@@ -260,7 +260,7 @@ class EventTest < ActiveSupport::TestCase
   test "stance_created notifies author if volume loud" do
     @poll.stances.create!(participant: @poll.author)
     TopicReader.find_or_create_by!(topic: @poll.topic, user: @poll.author).set_volume!('loud')
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: "I agree", cast_at: Time.current)
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: proposal_choice_name, reason: "I agree", cast_at: Time.current)
     event = nil
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
       event = Events::StanceCreated.publish!(stance)
@@ -274,7 +274,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "stance_created does not notify author if volume normal" do
     @poll.stances.create!(participant: @poll.author)
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: "I agree", cast_at: Time.current)
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: proposal_choice_name, reason: "I agree", cast_at: Time.current)
     event = nil
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       event = Events::StanceCreated.publish!(stance)
@@ -288,7 +288,7 @@ class EventTest < ActiveSupport::TestCase
   test "stance_created does not notify deactivated users" do
     [@user_thread_loud, @user_membership_loud].each { |u| u.update!(deactivated_at: Time.current) }
     @poll.stances.create!(participant: @poll.author)
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', cast_at: Time.current)
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: proposal_choice_name, cast_at: Time.current)
     event = nil
     assert_no_difference -> { ActionMailer::Base.deliveries.count } do
       event = Events::StanceCreated.publish!(stance)
@@ -298,7 +298,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "stance_created uses shared delivery when results are hidden until vote" do
     @poll.update!(hide_results: 'until_vote')
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Response', cast_at: Time.current)
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: proposal_choice_name, reason: 'Response', cast_at: Time.current)
     event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
 
     assert_not_empty event.subscribed_recipients
@@ -313,7 +313,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "stance_created suppresses shared delivery while results are hidden until close" do
     @poll.update!(hide_results: 'until_closed')
-    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', reason: 'Hidden response', cast_at: Time.current)
+    stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: proposal_choice_name, reason: 'Hidden response', cast_at: Time.current)
     event = Events::StanceCreated.new(kind: 'stance_created', eventable: stance)
 
     assert_empty event.subscribed_recipients
@@ -364,6 +364,10 @@ class EventTest < ActiveSupport::TestCase
   end
 
   private
+
+  def proposal_choice_name
+    @poll.poll_options.first.name
+  end
 
   def create_unique_user(prefix)
     User.create!(
