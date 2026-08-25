@@ -186,6 +186,23 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     refute @poll.poll_options.first.update(name: "Changed")
   end
 
+  test "database rejects a negative detached anonymous score" do
+    ballot_id = SecureRandom.uuid
+    AnonymousBallot.insert_all!([{
+      id: ballot_id,
+      poll_id: @poll.id,
+      none_of_the_above: false
+    }])
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      AnonymousBallotChoice.insert_all!([{
+        anonymous_ballot_id: ballot_id,
+        poll_option_id: @poll.poll_options.first.id,
+        score: -1
+      }])
+    end
+  end
+
   test "aggregate-only policy blocks ballot-pattern exports" do
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
     PollService.close(poll: @poll, actor: @admin)

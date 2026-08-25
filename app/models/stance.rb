@@ -230,7 +230,7 @@ class Stance < ApplicationRecord
 
   def poll_options_are_unique
     option_ids = stance_choices.map(&:poll_option_id)
-    raise "Stance poll options must be unique" if option_ids.uniq.length != option_ids.length
+    errors.add(:stance_choices, :invalid) if option_ids.uniq.length != option_ids.length
   end
 
   def valid_none_of_the_above

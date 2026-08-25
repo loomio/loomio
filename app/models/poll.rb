@@ -127,6 +127,7 @@ class Poll < ApplicationRecord
       poll_options.length
     else
       self[:minimum_stance_choices] ||
+      self[:custom_fields]["minimum_stance_choices"] ||
       self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
@@ -135,6 +136,7 @@ class Poll < ApplicationRecord
 
   def maximum_stance_choices
     self[:maximum_stance_choices] ||
+    self[:custom_fields]["maximum_stance_choices"] ||
     self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
     poll_options.length
@@ -214,6 +216,7 @@ class Poll < ApplicationRecord
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
+  validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
   alias_method :user, :author
@@ -499,6 +502,19 @@ class Poll < ApplicationRecord
   end
 
   private
+
+  def score_bounds_validation_required?
+    new_record? || will_save_change_to_min_score? || will_save_change_to_max_score?
+  end
+
+  def score_bounds_are_valid
+    score_min = Integer(min_score, exception: false)
+    score_max = Integer(max_score, exception: false)
+
+    errors.add(:min_score, :invalid) if min_score.present? && (score_min.nil? || score_min.negative?)
+    errors.add(:max_score, :invalid) if max_score.present? && (score_max.nil? || score_max.negative?)
+    errors.add(:max_score, :invalid) if score_min && score_max && score_max < score_min
+  end
 
   def title_if_not_discarded
     if !discarded_at && title.to_s.empty?

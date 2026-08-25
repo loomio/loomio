@@ -112,6 +112,40 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
+  test "score bounds must be nonnegative and ordered" do
+    assert_raises(ActiveRecord::RecordInvalid) do
+      create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+    end
+
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+
+    poll.min_score = -1
+    refute poll.valid?
+    assert poll.errors.added?(:min_score, :invalid)
+
+    poll.min_score = 5
+    poll.max_score = 4
+    refute poll.valid?
+    assert poll.errors.added?(:max_score, :invalid)
+  end
+
+  test "a legacy negative-score poll can be discarded" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_column(:min_score, -1)
+
+    PollService.discard(poll: poll, actor: @admin)
+
+    assert poll.reload.discarded?
+  end
+
+  test "an existing negative scale does not validate again for unrelated edits" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_columns(min_score: -1, closed_at: Time.current)
+
+    assert poll.update(title: "Edited historical score poll")
+    assert_equal(-1, poll.reload.min_score)
+  end
+
   test "does not allow changing poll options if the template does not allow" do
     poll = create_poll(poll_option_names: ["agree"])
     poll.poll_options.build
@@ -123,6 +157,22 @@ class PollTest < ActiveSupport::TestCase
     ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
     ranked_choice.valid?
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
+  end
+
+  test "reads persisted stance choice bounds from JSON custom fields" do
+    ranked_choice = create_ranked_choice
+    ranked_choice.update_columns(
+      minimum_stance_choices: nil,
+      maximum_stance_choices: nil,
+      custom_fields: ranked_choice.custom_fields.merge(
+        "minimum_stance_choices" => 2,
+        "maximum_stance_choices" => 4
+      )
+    )
+
+    ranked_choice.reload
+    assert_equal 2, ranked_choice.minimum_stance_choices
+    assert_equal 4, ranked_choice.maximum_stance_choices
   end
 
   test "allows closing dates in the future" do

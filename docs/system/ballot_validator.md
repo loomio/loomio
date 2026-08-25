@@ -71,9 +71,11 @@ Proposal, count, check, and ordinary fixed-score poll choices have an effective
 minimum and maximum score of 1. A selected option must therefore have score 1;
 zero is not an alternative representation of a selected option.
 
-Meeting and score polls legitimately use zero. Dot votes also permit zero, but
-never a negative score. The validator must use the poll's effective bounds
-rather than applying a global positive-only rule.
+Meeting, score, and dot-vote polls may legitimately use zero. No poll type
+permits a negative score. A score poll that needs a bipolar scale must translate
+it to nonnegative values; for example, `-5..5` becomes `0..10`, with 5 as the
+neutral value. The global nonnegative rule is applied before the poll's more
+specific effective bounds.
 
 ## Ranked ballots
 
@@ -114,22 +116,21 @@ the displayed result disagree with the stored ballot. Integrity must be
 enforced before storage.
 
 Direct SQL writes and APIs such as `insert_all!` can bypass model validation.
-Database constraints should enforce invariants that are independent of a poll,
-such as non-negative scores. Poll-relative bounds and ranked sequences remain
-model-level rules.
+Both choice tables therefore have a database check constraint enforcing
+`score >= 0`. Poll-relative bounds, dot budgets, and ranked sequences cannot be
+expressed by that row-local constraint and remain shared ballot-level rules.
 
-## Existing invalid data
+## Existing nonconforming data
 
-Changing validation prevents new malformed ballots but does not repair
-historical records. A cleanup operation must report affected polls before
-mutation and use the same policy definitions as new ballot validation.
+Historical negative-scale polls and ballots remain stored and their closed
+results continue to display the original values. The two `score_nonnegative`
+database constraints intentionally remain `NOT VALID`: PostgreSQL enforces them
+for every new or updated choice without revisiting historical rows.
 
-Do not silently clamp or normalize a malformed historical ballot. Its intended
-meaning cannot be inferred reliably. Invalidate the complete ballot, preserve
-an audit trail where the voting system permits it, rebuild all derived counts,
-and provide an explicit process for affected participants or poll coordinators.
-Detached anonymous ballots cannot be linked back to voters, so their cleanup
-requires separate operational handling.
+Historical poll records are not revalidated merely because another attribute
+is saved. Score-bound validation runs when a poll is created or its first-class
+minimum or maximum score changes. This keeps the new-write rule independent of
+legacy records that Loomio has no reason to rewrite.
 
 ## Adding or changing a poll type
 

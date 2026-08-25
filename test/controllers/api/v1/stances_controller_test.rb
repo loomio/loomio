@@ -484,6 +484,55 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal [0, 0], @poll.reload.stance_counts
   end
 
+  test "rejects duplicate options as invalid ballot input" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    option = @poll.poll_options.first
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [
+          { poll_option_id: option.id, score: 1 },
+          { poll_option_id: option.id, score: 1 }
+        ]
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
+  end
+
+  test "rejects options belonging to another poll as invalid ballot input" do
+    other_poll = PollService.create(params: {
+      title: "Other proposal",
+      poll_type: "proposal",
+      group_id: @group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [
+          { poll_option_id: other_poll.poll_options.first.id, score: 1 }
+        ]
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
+  end
+
   private
 
   def create_detached_anonymous_poll

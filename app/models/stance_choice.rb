@@ -4,7 +4,7 @@ class StanceChoice < ApplicationRecord
   has_one :poll, through: :poll_option
 
   validate :poll_option_belongs_to_stance_poll
-  validates :score, numericality: { only_integer: true }
+  validates :score, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :latest, -> { joins(:stance).where('stances.latest': true).where('stances.revoked_at': nil) }
   scope :reasons_first, -> {
@@ -28,6 +28,8 @@ class StanceChoice < ApplicationRecord
   private
 
   def poll_option_belongs_to_stance_poll
-    raise "Stance choice poll_option must belong to the stance poll" unless stance.poll == poll_option.poll
+    return unless stance && poll_option
+
+    errors.add(:poll_option, :invalid) unless stance.poll == poll_option.poll
   end
 end

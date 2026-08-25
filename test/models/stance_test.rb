@@ -78,6 +78,58 @@ class StanceTest < ActiveSupport::TestCase
     assert cast_stance(poll, [[poll.poll_options.first, 3]]).valid?
   end
 
+  test "score polls reject negative scores even when legacy configuration allowed them" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "score",
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+    poll.update_column(:min_score, -10)
+
+    stance = cast_stance(poll.reload, [[poll.poll_options.first, -1]])
+
+    assert_not stance.valid?
+    assert_includes BallotValidator.new(
+      poll: poll,
+      choices: stance.stance_choices,
+      none_of_the_above: false
+    ).reasons, :score_negative
+  end
+
+  test "legacy numeric string ballot configuration is normalized" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "score",
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+    poll.update_columns(
+      min_score: nil,
+      max_score: nil,
+      minimum_stance_choices: nil,
+      maximum_stance_choices: nil,
+      custom_fields: poll.custom_fields.merge(
+        "min_score" => "0",
+        "max_score" => "9",
+        "minimum_stance_choices" => "0",
+        "maximum_stance_choices" => "2"
+      )
+    )
+
+    assert cast_stance(poll.reload, [[poll.poll_options.first, 5]]).valid?
+  end
+
+  test "malformed ballot configuration fails validation without raising" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "score",
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+    poll.update_columns(
+      min_score: nil,
+      custom_fields: poll.custom_fields.merge("min_score" => "invalid")
+    )
+
+    stance = cast_stance(poll.reload, [[poll.poll_options.first, 1]])
+    assert_nothing_raised { assert_not stance.valid? }
+  end
+
   test "rank ballots require the configured number of contiguous unique scores" do
     poll = PollService.create(params: poll_params(
       poll_type: "ranked_choice",
