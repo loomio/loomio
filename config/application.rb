@@ -5,6 +5,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
+require_relative '../lib/test_database_url'
 
 def lmo_asset_host(path = nil)
   parts = []
@@ -20,6 +21,12 @@ end
 
 module Loomio
   class Application < Rails::Application
+    # Dotenv has loaded by the time this class body runs. Keep explicit database
+    # configuration, otherwise isolate linked worktrees from the main test DB.
+    if Rails.env.test?
+      ENV["DATABASE_URL"] ||= ENV["TEST_DATABASE_URL"] || TestDatabaseUrl.resolve(root: Rails.root)
+    end
+
     config.load_defaults 6.0
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
