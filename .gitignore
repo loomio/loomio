@@ -2,7 +2,8 @@
 .claude
 .agents/
 skills-lock.json
-.zed/
+.zed/*
+!.zed/tasks.json
 
 # loomio.com marketing injections
 public/about/
