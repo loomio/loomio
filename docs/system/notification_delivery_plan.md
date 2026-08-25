@@ -93,75 +93,44 @@ durable; background work resolves and delivers its audience.
 8. Loud subscription delivery and topic live updates remain independent of the
    notification ledger.
 
-## Corrected migration sequence
+## Migration sequence
 
-### Release A: additive preparation
+The preparation migrations create `notification_occurrences`,
+`notification_deliveries`, and a durable consolidation cursor without changing
+the legacy application tables. loomio.com used this schema to warm the target
+tables before cutover.
 
-This release preserves the existing event-backed application path unchanged.
-It does not reinterpret or mutate the legacy `notifications` table.
+The cutover release supports both prepared and direct upgrades through the
+normal `db:migrate` command. No separate task or operator-managed backfill is
+required:
 
-1. Create `notification_occurrences` with the complete target notification row
-   shape plus migration-only `legacy_event_id`.
-2. Create `notification_deliveries` referencing
-   `notification_occurrences`, including in-app read and localized rendering
-   state.
-3. Create a small `notification_consolidation_states` table with a durable
-   legacy-notification ID cursor and high-water mark.
-4. Deploy this schema while the old application continues to create Event rows
-   and per-user Notification receipts.
-5. Large installations may optionally warm the resumable consolidation in
-   bounded notification-ID batches before deploying the cutover:
+1. If target tables are already warmed, the migration resumes from their durable
+   notification ID cursor and processes receipts created since the warm pass.
+2. If no warm pass ran, the cursor starts at zero and the same migration
+   consolidates every legacy receipt automatically.
+3. Once legacy writers have stopped, the migration performs a complete low-ID
+   repair sweep. This catches a receipt whose sequence ID was allocated before
+   the warm cursor passed it but committed afterwards.
+4. The migration verifies zero blocked, missing, or extra notification and
+   delivery identities and records completion at the current legacy high-water
+   mark.
+5. Only after that proof succeeds, the cutover transaction:
 
-   ```sh
-   bin/rails loomio:consolidate_notifications
-   APPLY=1 BATCH_SIZE=250000 bin/rails loomio:consolidate_notifications
-   ```
-
-   Each batch:
-
-   - reads legacy notifications joined to their event;
-   - derives the recipient's effective kind;
-   - inserts one occurrence identified by `(legacy_event_id, kind)`;
-   - inserts or merges one delivered in-app delivery per user;
-   - preserves the earliest delivery time, any viewed state, and the retained
-     recipient translation values; and
-   - advances the cursor in the same transaction.
-
-Batching by notification ID is important. A delayed receipt attached to an old
-event is still above the cursor and will be caught. The legacy table remains
-authoritative throughout this warm-up, so no compatibility reader or dual
-writer is required in the final application. This warm-up is an optimization,
-not a required upgrade step; the cutover migration runs or resumes the same
-bounded consolidation automatically.
-
-### Release B: drain, verify and cut over
-
-1. Put the old application in maintenance mode and drain notification writers.
-2. Run the normal application update. The cutover migration automatically
-   extends the high-water mark to the current maximum notification ID,
-   processes or resumes the catch-up range in bounded transactions, then
-   repairs any lower ID that committed after an earlier cursor passed it.
-   `./update.sh` requires no separate backfill command.
-3. Verify zero blocked, missing or extra notification/delivery identities and a
-   completed cursor at the current maximum legacy notification ID. The repair
-   sweep records its own completion marker; the cutover refuses to run without
-   it, even when an earlier warm pass reached the same high-water mark.
-4. Deploy the cutover application and migration:
-
-   - drop the legacy per-user `notifications` receipts table;
-   - rename `notification_occurrences` to `notifications`;
-   - drop the migration-only `legacy_event_id` mapping;
-   - rename `notification_deliveries.notification_occurrence_id` to
+   - drops the legacy per-user `notifications` receipts table;
+   - renames `notification_occurrences` to `notifications`;
+   - drops the migration-only `legacy_event_id` mapping;
+   - renames `notification_deliveries.notification_occurrence_id` to
      `notification_id`;
-   - discard legacy `stance_created` receipts whose stance activity had no
+   - discards legacy `stance_created` receipts whose stance activity had no
      topic item;
-   - delete only Event rows whose `topic_id` is null;
-   - require `topic_id` on every remaining Event row; and
-   - rename `events` to `topic_items` and `eventable` to `itemable`.
+   - deletes only Event rows whose `topic_id` is null;
+   - requires `topic_id` on every remaining Event row; and
+   - renames `events` to `topic_items` and `eventable` to `itemable`.
 
-The cutover refuses to run unless the completed high-water mark covers every
-legacy notification row. It is irreversible because the consolidated delivery
-model intentionally does not reconstruct duplicate legacy receipts.
+Consolidation batches commit independently, so an interrupted direct upgrade can
+resume when `db:migrate` is rerun. The table swap is transactional and the
+migration is irreversible because consolidated deliveries do not reconstruct
+duplicate legacy receipts.
 
 ## Production-shaped rehearsal
 
@@ -180,15 +149,11 @@ Consolidated result:
 - 11,348,748 in-app NotificationDeliveries;
 - zero blocked, missing or extra notification and delivery identities.
 
-The indexed, resumable warm backfill processed 11,482,622 remaining receipts in
-about 17 minutes after a three-row smoke batch. The original per-group anti-join
-audit was cancelled after five minutes and replaced with deterministic expected
-and actual set counts. The optimized full audit took 197 seconds. The final
-table swap, operational Event deletion and TopicItem rename took 35.8 seconds.
-
-These timings are development-machine measurements, not production promises.
-The warm backfill is designed to run before the maintenance window; only the
-final catch-up, verification and roughly 36-second cutover belong in it.
+The indexed warm pass processed 11,482,622 remaining receipts in about 17
+minutes after a three-row smoke batch. The optimized full audit took 197 seconds.
+The final table swap, operational Event deletion, and TopicItem rename took 35.8
+seconds. A direct upgrade without warmed tables performs the consolidation and
+audit during `db:migrate`, so its maintenance window includes that work.
 
 ## Notification creation and resolution
 

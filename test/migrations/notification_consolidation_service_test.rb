@@ -3,6 +3,52 @@ require Rails.root.join("db/migrate/support/notification_consolidation_service")
 require Rails.root.join("db/migrate/20260823000002_cut_over_events_to_topic_items")
 
 class NotificationConsolidationServiceTest < ActiveSupport::TestCase
+  test "cutover automatically consolidates an empty preparation schema" do
+    with_preparation_schema do |connection|
+      event = first_publishable_event(connection)
+      insert_legacy_receipt!(connection, event: event, user: users(:user))
+      insert_legacy_receipt!(connection, event: event, user: users(:member))
+
+      assert_equal 0, connection.select_value("SELECT COUNT(*) FROM notification_occurrences").to_i
+      assert_equal 0, connection.select_value("SELECT COUNT(*) FROM notification_deliveries").to_i
+
+      CutOverEventsToTopicItems.new.send(:consolidate_notifications!)
+
+      assert_equal 1, occurrence_count(connection, event.fetch("id"))
+      assert_equal 2, delivery_count(connection, event.fetch("id"))
+      state = NotificationConsolidationService.state(connection)
+      assert_not_nil state[:completed_at]
+      assert_not_nil state[:repair_completed_at]
+    end
+  end
+
+  test "cutover resumes warmed data and catches later receipts" do
+    with_preparation_schema do |connection|
+      event = first_publishable_event(connection)
+      insert_legacy_receipt!(connection, event: event, user: users(:user))
+      NotificationConsolidationService.run!(dry_run: false, batch_size: 1)
+      occurrence_id = connection.select_value(<<~SQL.squish).to_i
+        SELECT id
+        FROM notification_occurrences
+        WHERE legacy_event_id = #{connection.quote(event.fetch('id'))}
+      SQL
+
+      insert_legacy_receipt!(connection, event: event, user: users(:member))
+      CutOverEventsToTopicItems.new.send(:consolidate_notifications!)
+
+      assert_equal occurrence_id, connection.select_value(<<~SQL.squish).to_i
+        SELECT id
+        FROM notification_occurrences
+        WHERE legacy_event_id = #{connection.quote(event.fetch('id'))}
+      SQL
+      assert_equal 1, occurrence_count(connection, event.fetch("id"))
+      assert_equal 2, delivery_count(connection, event.fetch("id"))
+      state = NotificationConsolidationService.state(connection)
+      assert_not_nil state[:completed_at]
+      assert_not_nil state[:repair_completed_at]
+    end
+  end
+
   test "repair recovers a legacy receipt that committed below the cursor" do
     with_preparation_schema do |connection|
       topic_item = connection.select_one(<<~SQL.squish)
@@ -136,6 +182,45 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
   end
 
   private
+
+  def first_publishable_event(connection)
+    connection.select_one(<<~SQL.squish)
+      SELECT id, user_id, created_at, updated_at
+      FROM events
+      WHERE eventable_type IS NOT NULL AND eventable_id IS NOT NULL
+      ORDER BY id
+      LIMIT 1
+    SQL
+  end
+
+  def insert_legacy_receipt!(connection, event:, user:)
+    connection.execute(<<~SQL.squish)
+      INSERT INTO notifications
+        (event_id, user_id, actor_id, translation_values, viewed, created_at, updated_at)
+      VALUES
+        (#{connection.quote(event.fetch('id'))}, #{connection.quote(user.id)},
+         #{connection.quote(event.fetch('user_id'))}, '{}'::jsonb, FALSE,
+         #{connection.quote(event.fetch('created_at'))}, #{connection.quote(event.fetch('updated_at'))})
+    SQL
+  end
+
+  def occurrence_count(connection, event_id)
+    connection.select_value(<<~SQL.squish).to_i
+      SELECT COUNT(*)
+      FROM notification_occurrences
+      WHERE legacy_event_id = #{connection.quote(event_id)}
+    SQL
+  end
+
+  def delivery_count(connection, event_id)
+    connection.select_value(<<~SQL.squish).to_i
+      SELECT COUNT(*)
+      FROM notification_deliveries deliveries
+      INNER JOIN notification_occurrences occurrences
+        ON occurrences.id = deliveries.notification_occurrence_id
+      WHERE occurrences.legacy_event_id = #{connection.quote(event_id)}
+    SQL
+  end
 
   def insert_notification!(kind:, subject_type:, subject_id: 2_147_483_647)
     Notification.insert!({
