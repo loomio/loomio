@@ -1,12 +1,4 @@
 class BackfillPollBallotConfiguration < ActiveRecord::Migration[8.1]
-  FIELD_NAMES = %w[
-    min_score
-    max_score
-    dots_per_person
-    minimum_stance_choices
-    maximum_stance_choices
-  ].freeze
-
   INTEGER_PATTERN = "^[[:space:]]*[+-]?[0-9]+[[:space:]]*$"
   INTEGER_MIN = -2_147_483_648
   INTEGER_MAX = 2_147_483_647
@@ -53,7 +45,11 @@ class BackfillPollBallotConfiguration < ActiveRecord::Migration[8.1]
           dots_per_person = COALESCE(dots_per_person, NULLIF(BTRIM(custom_fields ->> 'dots_per_person'), '')::integer),
           minimum_stance_choices = COALESCE(minimum_stance_choices, NULLIF(BTRIM(custom_fields ->> 'minimum_stance_choices'), '')::integer),
           maximum_stance_choices = COALESCE(maximum_stance_choices, NULLIF(BTRIM(custom_fields ->> 'maximum_stance_choices'), '')::integer)
-      WHERE custom_fields ?| ARRAY[#{FIELD_NAMES.map { |name| connection.quote(name) }.join(', ')}]::text[]
+      WHERE (min_score IS NULL AND NULLIF(BTRIM(custom_fields ->> 'min_score'), '') IS NOT NULL)
+         OR (max_score IS NULL AND NULLIF(BTRIM(custom_fields ->> 'max_score'), '') IS NOT NULL)
+         OR (dots_per_person IS NULL AND NULLIF(BTRIM(custom_fields ->> 'dots_per_person'), '') IS NOT NULL)
+         OR (minimum_stance_choices IS NULL AND NULLIF(BTRIM(custom_fields ->> 'minimum_stance_choices'), '') IS NOT NULL)
+         OR (maximum_stance_choices IS NULL AND NULLIF(BTRIM(custom_fields ->> 'maximum_stance_choices'), '') IS NOT NULL)
     SQL
   end
 
