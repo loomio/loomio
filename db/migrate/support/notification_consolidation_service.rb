@@ -73,7 +73,7 @@ class NotificationConsolidationService
       WHERE name = #{connection.quote(STATE_NAME)}
     SQL
 
-    stats[:repair] = repair_missing!(connection, high_water_id) if repair
+    stats[:repair] = repair_differences!(connection, high_water_id) if repair
 
     stats[:after] = report(connection: connection, high_water_id: high_water_id)
     audit_failures = %i[
@@ -103,15 +103,53 @@ class NotificationConsolidationService
   end
 
   # A sequence ID can be allocated before the warm cursor passes it and commit
-  # afterwards. Once old writers are drained, repair the set difference across
-  # the complete high-water range rather than assuming ID visibility order was
-  # commit order. Only missing identities are inserted.
-  def self.repair_missing!(connection, high_water_id)
+  # afterwards. Once old writers are drained, reconcile the set difference
+  # across the complete high-water range rather than assuming ID visibility
+  # order was commit order. Legacy receipts remain authoritative, including
+  # when a receipt was deleted after its dual-written delivery was prepared.
+  def self.repair_differences!(connection, high_water_id)
     values_sql = receipt_values_sql(
       connection,
       notification_id_after: 0,
       notification_id_finish: high_water_id
     )
+
+    occurrences_deleted = connection.execute(<<~SQL).cmd_tuples
+      WITH receipt_values AS (
+        #{values_sql}
+      )
+      DELETE FROM notification_occurrences occurrences
+      WHERE occurrences.legacy_event_id IS NOT NULL
+        AND NOT EXISTS (
+          SELECT 1
+          FROM receipt_values
+          WHERE receipt_values.event_id = occurrences.legacy_event_id
+            AND receipt_values.effective_kind = occurrences.kind
+            AND receipt_values.subject_type IS NOT NULL
+            AND receipt_values.subject_id IS NOT NULL
+        )
+    SQL
+
+    deliveries_deleted = connection.execute(<<~SQL).cmd_tuples
+      WITH receipt_values AS (
+        #{values_sql}
+      )
+      DELETE FROM notification_deliveries deliveries
+      USING notification_occurrences occurrences
+      WHERE deliveries.notification_occurrence_id = occurrences.id
+        AND occurrences.legacy_event_id IS NOT NULL
+        AND deliveries.channel = 'in_app'
+        AND deliveries.recipient_type = 'User'
+        AND NOT EXISTS (
+          SELECT 1
+          FROM receipt_values
+          WHERE receipt_values.event_id = occurrences.legacy_event_id
+            AND receipt_values.effective_kind = occurrences.kind
+            AND receipt_values.user_id = deliveries.recipient_id
+            AND receipt_values.subject_type IS NOT NULL
+            AND receipt_values.subject_id IS NOT NULL
+        )
+    SQL
 
     occurrences_inserted = connection.execute(<<~SQL).cmd_tuples
       WITH receipt_values AS (
@@ -192,11 +230,13 @@ class NotificationConsolidationService
     SQL
 
     {
+      occurrences_deleted: occurrences_deleted,
+      deliveries_deleted: deliveries_deleted,
       occurrences_inserted: occurrences_inserted,
       deliveries_inserted: deliveries_inserted
     }
   end
-  private_class_method :repair_missing!
+  private_class_method :repair_differences!
 
   def self.report(connection: ActiveRecord::Base.connection, high_water_id: nil)
     ensure_preparation_schema!(connection)

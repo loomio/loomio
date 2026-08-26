@@ -113,6 +113,42 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "repair removes prepared rows after their legacy receipts are deleted" do
+    with_preparation_schema do |connection|
+      stale_event = first_publishable_event(connection)
+      retained_event = connection.select_one(<<~SQL.squish)
+        SELECT id, user_id, created_at, updated_at
+        FROM events
+        WHERE eventable_type IS NOT NULL
+          AND eventable_id IS NOT NULL
+          AND id <> #{connection.quote(stale_event.fetch('id'))}
+        ORDER BY id
+        LIMIT 1
+      SQL
+      insert_legacy_receipt!(connection, event: stale_event, user: users(:user))
+      insert_legacy_receipt!(connection, event: retained_event, user: users(:user))
+      insert_legacy_receipt!(connection, event: retained_event, user: users(:member))
+      NotificationConsolidationService.run!(dry_run: false)
+
+      connection.execute(<<~SQL.squish)
+        DELETE FROM notifications
+        WHERE event_id = #{connection.quote(stale_event.fetch('id'))}
+           OR (event_id = #{connection.quote(retained_event.fetch('id'))}
+               AND user_id = #{connection.quote(users(:member).id)})
+      SQL
+
+      stats = NotificationConsolidationService.run!(dry_run: false, repair: true)
+
+      assert_equal 1, stats.dig(:repair, :occurrences_deleted)
+      assert_equal 1, stats.dig(:repair, :deliveries_deleted)
+      assert_equal 0, occurrence_count(connection, stale_event.fetch("id"))
+      assert_equal 1, occurrence_count(connection, retained_event.fetch("id"))
+      assert_equal 1, delivery_count(connection, retained_event.fetch("id"))
+      assert_equal 0, stats.dig(:after, :extra_notifications)
+      assert_equal 0, stats.dig(:after, :extra_deliveries)
+    end
+  end
+
   test "cutover requires a completed low-ID repair sweep" do
     with_preparation_schema do |connection|
       NotificationConsolidationService.state(connection)
