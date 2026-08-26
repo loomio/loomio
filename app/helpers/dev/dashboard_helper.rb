@@ -45,10 +45,11 @@ module Dev::DashboardHelper
         poll_option_names: ["Apple", "Banana"],
         title: name,
         closing_at: 3.days.from_now,
-        group_id: discussion.group_id
+        group_id: discussion.group_id,
+        topic_id: discussion.topic_id
       },
       actor: actor
-    ).tap { |p| p.update!(topic: discussion.topic) }
+    )
   end
 
 end

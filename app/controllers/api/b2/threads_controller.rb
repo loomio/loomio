@@ -14,7 +14,7 @@ class Api::B2::ThreadsController < Api::B2::BaseController
 
   def items
     self.collection = thread.items.order(:sequence_id)
-    respond_with_collection serializer: EventSerializer, root: :items
+    respond_with_collection serializer: TopicItemSerializer, root: :items
   end
 
   def markdown

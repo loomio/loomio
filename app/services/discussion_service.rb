@@ -52,13 +52,31 @@ class DiscussionService
         actor: actor
       )
 
+      mention_audience = {
+        newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
+        mentioned_user_ids: discussion.mentioned_users.pluck(:id),
+        mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
+      }
+
       Sentry.metrics.count("discussion.create")
 
-      Events::NewDiscussion.publish!(
-        discussion: discussion,
-        recipient_user_ids: users.pluck(:id),
-        recipient_chatbot_ids: params[:recipient_chatbot_ids],
-        recipient_audience: params[:recipient_audience]
+      topic_item = TopicItems::NewDiscussion.create!(itemable: discussion)
+
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+        NotificationService.create!(
+          kind: "new_discussion",
+          subject: topic_item,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_message: params[:recipient_message],
+          audience_values: mention_audience
+        )
+      end
+      MentionNotificationService.create!(
+        subject: topic_item,
+        actor: actor,
+        already_notified_user_ids: users.pluck(:id)
       )
     end
     EventBus.broadcast('discussion_create', discussion, actor)
@@ -82,6 +100,7 @@ class DiscussionService
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
       return false
     end
+    topic_item = nil
     Discussion.transaction do
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
@@ -94,14 +113,39 @@ class DiscussionService
                                      emails: params[:recipient_emails],
                                      audience: params[:recipient_audience])
 
+      mention_audience = {
+        newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
+        mentioned_user_ids: discussion.mentioned_users.pluck(:id),
+        mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
+      }
+
       Sentry.metrics.count("discussion.update")
-      Events::DiscussionEdited.publish!(discussion: discussion,
-                                        actor: actor,
-                                        recipient_user_ids: users.pluck(:id),
-                                        recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                        recipient_audience: params[:recipient_audience],
-                                        recipient_message: params[:recipient_message])
+      if params[:recipient_message].present?
+        topic_item = TopicItems::DiscussionEdited.create!(
+          itemable: discussion,
+          user: actor
+        )
+      end
+      if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+        NotificationService.create!(
+          kind: "discussion_edited",
+          subject: topic_item || discussion,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_message: params[:recipient_message],
+          audience_values: mention_audience
+        )
+      end
+      MentionNotificationService.create!(
+        subject: topic_item || discussion,
+        actor: actor,
+        already_notified_user_ids: users.pluck(:id)
+      )
+      topic_item
     end
+    MessageChannelService.publish_topic_model(discussion) unless topic_item
+    topic_item || discussion
   end
 
   def self.discard(discussion:, actor:)
@@ -109,6 +153,6 @@ class DiscussionService
     TopicService.discard_without_authorization(topic: discussion.topic, actor: actor)
     discussion.reload
     Sentry.metrics.count("discussion.discard")
-    discussion.created_event
+    discussion.created_topic_item
   end
 end

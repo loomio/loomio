@@ -5,7 +5,7 @@ const richText = require('../helpers/oatmilkRichText');
 function openGroup(page) {
   page.loadPath('setup_manual_oatmilk_tags');
   page.waitFor('.group-page');
-  page.waitFor('.thread-preview');
+  page.waitFor('.topic-preview');
 }
 
 function openTagsFilter(page) {
@@ -22,7 +22,7 @@ function openTagsManager(page) {
 
 function openNewDiscussion(page) {
   openGroup(page);
-  page.click('.discussions-panel__new-thread-button');
+  page.click('.discussions-panel__new-topic-button');
   page.waitFor('.discussion-templates--template');
   page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
   page.waitFor('.discussion-form');
@@ -143,9 +143,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openGroup(page);
-    page.execute("Array.from(document.querySelectorAll('.thread-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-thread')");
-    page.clickElement('.manual-thread');
-    page.waitFor('.strand-page');
+    page.execute("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')");
+    page.clickElement('.manual-topic');
+    page.waitFor('.topic-page');
     page.click('.topic-tags-menu__button');
     page.waitFor('.topic-tags-menu__popover');
     screenshot.captureRegion('discussions/tags/tags_thread_edit', [

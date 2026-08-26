@@ -7,14 +7,14 @@ class Views::Topics::TopicItems::PollCreated < Views::Application::Component
   end
 
   def view_template
-    poll = @item.eventable
+    poll = @item.itemable
     div(class: "poll-created") do
-      div(class: "thread-item px-3 pb-1") do
+      div(class: "topic-item px-3 pb-1") do
         div(id: "sequence-3", class: "v-layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
-          div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::EventMailer::Common::Avatar.new(user: poll.user)
+          div(class: "topic-item__avatar mr-3 mt-0") do
+            render Views::NotificationMailer::Common::Avatar.new(user: poll.user)
           end
-          div(class: "thread-item__body") do
+          div(class: "topic-item__body") do
             h1(class: "poll-common-card__title text-h5 pb-1") do
               span { plain poll.title }
             end
@@ -55,7 +55,7 @@ class Views::Topics::TopicItems::PollCreated < Views::Application::Component
             div(class: "lmo-markdown-wrapper text-body-1 poll-common-details-panel__details pb-1") do
               p { raw MarkdownService.render_rich_text(poll.details, poll.details_format) }
             end
-            render Views::EventMailer::Poll::ResultsPanel.new(poll: poll, current_user: @current_user)
+            render Views::NotificationMailer::Poll::ResultsPanel.new(poll: poll, current_user: @current_user)
           end
         end
       end

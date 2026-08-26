@@ -235,7 +235,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
-     :forked_event_ids, {forked_event_ids: []},
+     :selected_topic_item_ids, {selected_topic_item_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

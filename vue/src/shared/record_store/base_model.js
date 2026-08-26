@@ -8,7 +8,7 @@ export default class BaseModel {
   static singular = 'undefinedSingular';
   static plural = 'undefinedPlural';
 
-  static eventTypeMap = {
+  static itemTypeMap = {
     Group: 'groups',
     Discussion: 'discussions',
     Poll: 'polls',
@@ -194,7 +194,7 @@ export default class BaseModel {
     this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
-      return Records[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
+      return Records[BaseModel.itemTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
 

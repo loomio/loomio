@@ -59,12 +59,12 @@ class RecordCache
       if discussion_ids.any?
         discussions = discussion_topics.map(&:topicable).compact
         obj.add_discussions(discussions)
-        obj.add_reactions_for_eventables(discussions)
+        obj.add_reactions_for_itemables(discussions)
       end
       if poll_ids.any?
         polls = Poll.where(id: poll_ids)
         obj.add_polls_options_stances_outcomes(polls)
-        obj.add_reactions_for_eventables(polls)
+        obj.add_reactions_for_itemables(polls)
       end
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id).compact))
 
@@ -75,14 +75,13 @@ class RecordCache
       obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id).compact))
       obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: topic_ids)
-      obj.add_reactions_for_eventables(records)
+      obj.add_reactions_for_itemables(records)
 
     when 'Reaction'
       obj.add_reactions(records)
 
     when 'Notification'
-      obj.add_events_complete Event.includes(:eventable, :topic).where(id: records.map(&:event_id))
-      obj.user_ids.concat records.map(&:user_id)
+      obj.user_ids.concat records.filter_map(&:actor_id)
 
     when 'Group'
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:id)))
@@ -98,18 +97,18 @@ class RecordCache
       obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
       obj.add_discussions(Discussion.where(topic_id: topic_ids))
       obj.add_polls_options_stances_outcomes records
-      obj.add_reactions_for_eventables(records)
+      obj.add_reactions_for_itemables(records)
       obj.add_inline_translations
 
     when 'Outcome'
       obj.add_polls Poll.where(id: records.map(&:poll_id))
       obj.user_ids.concat records.map(&:author_id)
-      obj.add_reactions_for_eventables(records)
+      obj.add_reactions_for_itemables(records)
 
     when 'Stance'
       obj.add_stances(records)
       obj.add_polls_options_stances_outcomes Poll.kept.where(id: records.map(&:poll_id))
-      obj.add_reactions_for_eventables(records)
+      obj.add_reactions_for_itemables(records)
 
     when 'User'
       # do nothing
@@ -119,7 +118,7 @@ class RecordCache
 
     when 'Comment'
       obj.add_comments(records)
-      obj.add_reactions_for_eventables(records)
+      obj.add_reactions_for_itemables(records)
 
     when 'MembershipRequest'
       obj.user_ids.concat records.map(&:requestor_id).concat(records.map(&:responder_id)).compact.uniq
@@ -128,8 +127,8 @@ class RecordCache
       obj.user_ids.concat records.map(&:author_id).compact
       obj.add_polls_options_stances_outcomes Poll.kept.where(id: records.map(&:poll_id))
 
-    when 'Event'
-      obj.add_events_complete(records)
+    when 'TopicItem'
+      obj.add_topic_items_complete(records)
     end
 
     obj.add_users User.with_attached_uploaded_avatar.where(id: obj.user_ids.compact.uniq)
@@ -152,66 +151,66 @@ class RecordCache
     ids.compact.each { |id| scope[key][id] = nil }
   end
 
-  def add_events_complete(collection)
-    events = Event.includes(:eventable, :topic).where(id: collection.map(&:id))
-    topics = events.map(&:topic).compact.uniq
-    eventables = events.map(&:eventable).compact.uniq
+  def add_topic_items_complete(collection)
+    topic_items = TopicItem.includes(:itemable, :topic).where(id: collection.map(&:id))
+    topics = topic_items.map(&:topic).compact.uniq
+    itemables = topic_items.map(&:itemable).compact.uniq
 
     unless exclude_types.include?('reaction')
-      reactions = eventables.select { |e| e.is_a?(Reaction) }
+      reactions = itemables.select { |e| e.is_a?(Reaction) }
       if reactions.any?
         ActiveRecord::Associations::Preloader.new(records: reactions, associations: :reactable).call
-        add_eventables(reactions.map(&:reactable).compact)
+        add_itemables(reactions.map(&:reactable).compact)
       end
     end
 
     topic_readers = TopicReader.where(topic_id: topics.map(&:id), user_id: current_user_id)
-    poll_ids = poll_ids_from_eventables(eventables)
+    poll_ids = poll_ids_from_itemables(itemables)
     group_ids = topics.map(&:group_id).compact.uniq
 
-    user_ids.concat events.map(&:user_id).compact
-    add_events(events)
-    add_eventables(eventables)
+    user_ids.concat topic_items.map(&:user_id).compact
+    add_topic_items(topic_items)
+    add_itemables(itemables)
     add_topics(topics)
     add_topic_readers(topic_readers, topic_ids: topics.map(&:id))
     add_polls_options_stances_outcomes(Poll.where(id: poll_ids)) if poll_ids.any?
-    add_reactions_for_eventables(eventables)
+    add_reactions_for_itemables(itemables)
     add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: group_ids)
   end
 
-  def add_events(collection)
-    return [] if exclude_types.include?('event')
-    scope[:events_by_id] ||= {}
-    scope[:events_by_kind_and_eventable_id] ||= {}
+  def add_topic_items(collection)
+    return [] if exclude_types.include?('topic_item')
+    scope[:topic_items_by_id] ||= {}
+    scope[:topic_items_by_kind_and_itemable_id] ||= {}
 
-    collection.each do |event|
-      @user_ids.push event.user_id if event.user_id
-      scope[:events_by_id][event.id] = event
-      scope[:events_by_kind_and_eventable_id][event.kind] ||= {}
-      scope[:events_by_kind_and_eventable_id][event.kind][event.eventable_id] = event
+    collection.each do |topic_item|
+      @user_ids.push topic_item.user_id if topic_item.user_id
+      scope[:topic_items_by_id][topic_item.id] = topic_item
+      scope[:topic_items_by_kind_and_itemable_id][topic_item.kind] ||= {}
+      scope[:topic_items_by_kind_and_itemable_id][topic_item.kind][topic_item.itemable_id] = topic_item
     end
   end
 
-  def add_eventables(collection)
-    collection.each do |eventable|
-      @user_ids.push eventable.user_id if eventable.respond_to?(:user_id)
-      scope["#{eventable.class.to_s.underscore.pluralize}_by_id"] ||= {}
-      scope["#{eventable.class.to_s.underscore.pluralize}_by_id"][eventable.id] = eventable
+  def add_itemables(collection)
+    collection.each do |itemable|
+      @user_ids.push itemable.user_id if itemable.respond_to?(:user_id)
+      scope["#{itemable.class.to_s.underscore.pluralize}_by_id"] ||= {}
+      scope["#{itemable.class.to_s.underscore.pluralize}_by_id"][itemable.id] = itemable
     end
   end
 
-  def poll_ids_from_eventables(collection)
-    collection.filter_map { |eventable| poll_id_for_eventable(eventable) }.uniq
+  def poll_ids_from_itemables(collection)
+    collection.filter_map { |itemable| poll_id_for_itemable(itemable) }.uniq
   end
 
-  def poll_id_for_eventable(eventable)
-    case eventable
+  def poll_id_for_itemable(itemable)
+    case itemable
     when Poll
-      eventable.id
+      itemable.id
     when Stance, Outcome, PollOption
-      eventable.poll_id
+      itemable.poll_id
     when Reaction
-      poll_id_for_eventable(eventable.reactable)
+      poll_id_for_itemable(itemable.reactable)
     end
   end
 
@@ -318,15 +317,15 @@ class RecordCache
     scope[:outcomes_by_poll_id] ||= {}
     add_known_missing(:outcomes_by_poll_id, options.fetch(:poll_ids, []))
     scope[:outcomes_by_poll_id].merge!(collection.select(&:latest).index_by(&:poll_id))
-    add_reactions_for_eventables(collection)
+    add_reactions_for_itemables(collection)
   end
 
-  def add_reactions_for_eventables(collection)
+  def add_reactions_for_itemables(collection)
     return [] if exclude_types.include?('reaction')
 
-    reactables = collection.flat_map do |eventable|
-      eventable.is_a?(Reaction) ? eventable.reactable : eventable
-    end.compact.select { |eventable| eventable.respond_to?(:reactions) }.uniq
+    reactables = collection.flat_map do |itemable|
+      itemable.is_a?(Reaction) ? itemable.reactable : itemable
+    end.compact.select { |itemable| itemable.respond_to?(:reactions) }.uniq
 
     scope[:reactions_by_reactable_type_and_id] ||= {}
     reactables.each do |reactable|
@@ -334,14 +333,14 @@ class RecordCache
       scope[:reactions_by_reactable_type_and_id][reactable.class.to_s][reactable.id] = []
     end
 
-    reaction_query_for_eventables(reactables).includes(:user).each do |reaction|
+    reaction_query_for_itemables(reactables).includes(:user).each do |reaction|
       add_reaction(reaction)
     end
   end
 
-  def reaction_query_for_eventables(collection)
-    relations = collection.group_by { |eventable| eventable.class.to_s }.map do |reactable_type, eventables|
-      Reaction.where(reactable_type: reactable_type, reactable_id: eventables.map(&:id))
+  def reaction_query_for_itemables(collection)
+    relations = collection.group_by { |itemable| itemable.class.to_s }.map do |reactable_type, itemables|
+      Reaction.where(reactable_type: reactable_type, reactable_id: itemables.map(&:id))
     end
 
     relations.reduce { |relation, next_relation| relation.or(next_relation) } || Reaction.none
@@ -387,7 +386,7 @@ class RecordCache
         scope[:my_stances_by_poll_id][stance.poll_id] = stance
       end
     end
-    add_reactions_for_eventables(collection)
+    add_reactions_for_itemables(collection)
   end
 
 
@@ -424,7 +423,7 @@ class RecordCache
     return if exclude_types.include?('discussion')
     @user_ids.concat collection.map(&:author_id)
     merge_index(:discussions_by_id, collection)
-    add_reactions_for_eventables(collection)
+    add_reactions_for_itemables(collection)
   end
 
   def add_topic_readers(collection, options = {})

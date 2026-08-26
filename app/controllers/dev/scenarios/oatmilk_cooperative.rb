@@ -144,14 +144,14 @@ module Dev::Scenarios::OatmilkCooperative
     [
       {
         kind: 'new_discussion',
-        eventable: schedule_discussion,
+        subject: schedule_discussion,
         actor: coordinator,
         title: schedule_discussion.title,
         created_at: 2.hours.ago
       },
       {
         kind: 'poll_announced',
-        eventable: poll,
+        subject: poll,
         actor: coordinator,
         title: poll.title,
         poll_type: I18n.t('poll_types.proposal'),
@@ -159,22 +159,17 @@ module Dev::Scenarios::OatmilkCooperative
       },
       {
         kind: 'user_mentioned',
-        eventable: mention_comment,
+        subject: mention_comment,
         actor: production_lead,
         title: discussion.title,
         created_at: 5.minutes.ago
       }
     ].each do |attributes|
-      event = Event.create!(
+      create_delivered_notification(
         kind: attributes.fetch(:kind),
-        eventable: attributes.fetch(:eventable),
-        user: attributes.fetch(:actor),
-        created_at: attributes.fetch(:created_at)
-      )
-      Notification.create!(
-        user: sales_lead,
+        subject: attributes.fetch(:subject),
         actor: attributes.fetch(:actor),
-        event: event,
+        recipient: sales_lead,
         created_at: attributes.fetch(:created_at),
         translation_values: {
           name: attributes.fetch(:actor).name,

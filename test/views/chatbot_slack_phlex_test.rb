@@ -31,10 +31,10 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
-    poll.create_missing_created_event!
-    event = poll.created_event
+    poll.create_missing_created_topic_item!
+    topic_item = poll.created_topic_item
 
-    component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "created a proposal"
@@ -53,7 +53,7 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     agree_option = poll.poll_options.find_by!(name: I18n.t('poll_proposal_options.agree'))
     stance = poll.stances.build(participant: @user)
@@ -62,9 +62,9 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
 
     poll.update!(closed_at: Time.current, closing_at: Time.current)
     poll.reload
-    event = poll.created_event
+    topic_item = poll.created_topic_item
 
-    component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Closed Proposal"
@@ -72,9 +72,9 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
   end
 
   test "discussion component renders" do
-    event = @discussion.created_event
+    topic_item = @discussion.created_topic_item
 
-    component = Views::Chatbot::Slack::Discussion.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Slack::Discussion.new(topic_item: topic_item, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Chatbot Test Discussion"
@@ -82,9 +82,9 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
   end
 
   test "notification component renders" do
-    event = @discussion.created_event
+    topic_item = @discussion.created_topic_item
 
-    component = Views::Chatbot::Slack::Notification.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Slack::Notification.new(topic_item: topic_item, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Chatbot Test Discussion"
@@ -99,10 +99,10 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
-    poll.create_missing_created_event!
-    event = poll.created_event
+    poll.create_missing_created_topic_item!
+    topic_item = poll.created_topic_item
 
-    component = Views::Chatbot::Slack::Notification.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Slack::Notification.new(topic_item: topic_item, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Test Proposal"
@@ -118,15 +118,15 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     agree_option = poll.poll_options.find_by!(name: I18n.t('poll_proposal_options.agree'))
     stance = poll.stances.build(participant: @user)
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    event = Events::StanceCreated.create!(kind: 'stance_created', eventable: stance, user: @user)
+    topic_item = TopicItems::StanceCreated.create!(itemable: stance)
 
-    component = Views::Chatbot::Slack::Notification.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Slack::Notification.new(topic_item: topic_item, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Stance Notification Poll"
@@ -140,10 +140,10 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
       parent: @discussion,
       author: @user
     )
-    comment.create_missing_created_event!
-    event = comment.created_event
+    comment.create_missing_created_topic_item!
+    topic_item = comment.created_topic_item
 
-    component = Views::Chatbot::Slack::Comment.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Slack::Comment.new(topic_item: topic_item, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Test comment body"
@@ -151,15 +151,15 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
   end
 
   test "slack_component class method returns correct components" do
-    event = @discussion.created_event
+    topic_item = @discussion.created_topic_item
 
-    component = ChatbotService.slack_component('discussion', event: event, poll: nil, recipient: @recipient)
+    component = ChatbotService.slack_component('discussion', topic_item: topic_item, poll: nil, recipient: @recipient)
     assert_instance_of Views::Chatbot::Slack::Discussion, component
 
-    component = ChatbotService.slack_component('notification', event: event, poll: nil, recipient: @recipient)
+    component = ChatbotService.slack_component('notification', topic_item: topic_item, poll: nil, recipient: @recipient)
     assert_instance_of Views::Chatbot::Slack::Notification, component
 
-    component = ChatbotService.slack_component('unknown', event: event, poll: nil, recipient: @recipient)
+    component = ChatbotService.slack_component('unknown', topic_item: topic_item, poll: nil, recipient: @recipient)
     assert_instance_of Views::Chatbot::Slack::Notification, component
   end
 end

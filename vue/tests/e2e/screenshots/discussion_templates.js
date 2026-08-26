@@ -23,6 +23,8 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_discussion_template_form');
     page.waitFor('.discussion-template-form');
     page.expectValue('.discussion-template-form-fields__title input', 'Returnable bottle trial review');
+    page.expectElement('.discussion-template-form-fields__title-placeholder input');
+    page.expectElement('.discussion-template-form__submit');
     screenshot.captureElement(
       'discussions/templates/form',
       '.discussion-template-form',

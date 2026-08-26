@@ -11,7 +11,7 @@ class MembershipService
     # they may be accepting memberships send to a different email (unverified_user)
     invited_group_ids = []
     accepted_membership = nil
-    accepted_event = nil
+    accepted_notification = nil
 
     Membership.transaction do
       accepted_at = DateTime.now
@@ -56,17 +56,25 @@ class MembershipService
 
       accepted_membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id) unless existing_accepted_group_ids.include?(invited_group_id)
       if notify && accepted_membership&.accepted_at
-        accepted_event = Events::InvitationAccepted.publish!(accepted_membership)
+        accepted_notification = NotificationService.create!(
+          kind: "invitation_accepted",
+          subject: accepted_membership,
+          actor: actor
+        )
       end
     end
 
+    MessageChannelService.publish_models(
+      [ accepted_membership ],
+      group_id: accepted_membership.group_id
+    ) if accepted_membership
     invited_group_ids.each do |group_id|
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
     Group.update_org_members_count_for_group_ids(invited_group_ids)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
-    accepted_event
+    accepted_notification
   end
 
   def self.revoke(membership:, actor:, revoked_at: DateTime.now)
@@ -141,7 +149,7 @@ class MembershipService
     user.experiences['delegates'] = delegates
 
     user.save!
-    MessageChannelService.publish_models([user], serializer: AuthorSerializer, group_id: group.id)
+    MessageChannelService.publish_models([ user ], serializer: AuthorSerializer, group_id: group.id)
   end
 
   def self.set_volume(membership:, params:, actor:)
@@ -170,15 +178,24 @@ class MembershipService
   def self.resend(membership:, actor:)
     actor.ability.authorize! :resend, membership
     EventBus.broadcast 'membership_resend', membership, actor
-    Events::MembershipResent.publish!(membership, actor)
+    NotificationService.create!(
+      kind: "membership_resent",
+      subject: membership,
+      actor: actor
+    )
   end
 
   def self.make_admin(membership:, actor:)
     actor.ability.authorize! :make_admin, membership
     Membership.transaction do
       membership.update!(admin: true)
-      Events::NewCoordinator.publish!(membership, actor)
+      NotificationService.create!(
+        kind: "new_coordinator",
+        subject: membership,
+        actor: actor
+      )
     end
+    membership
   end
 
   def self.remove_admin(membership:, actor:)
@@ -188,13 +205,17 @@ class MembershipService
 
   def self.make_delegate(membership:, actor:)
     actor.ability.authorize! :make_delegate, membership
-    event = Membership.transaction do
+    Membership.transaction do
       membership.update!(delegate: true)
-      Events::NewDelegate.publish!(membership, actor)
+      NotificationService.create!(
+        kind: "new_delegate",
+        subject: membership,
+        actor: actor
+      )
     end
 
     update_user_titles_and_broadcast(membership.id)
-    event
+    membership
   end
 
   def self.remove_delegate(membership:, actor:)
@@ -205,21 +226,24 @@ class MembershipService
 
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
-    event = Membership.transaction do
-      membership = group.add_member!(actor)
-      Events::UserJoinedGroup.publish!(membership)
-    end
+    membership = Membership.transaction { group.add_member!(actor) }
 
     Sentry.metrics.count("membership.join")
     EventBus.broadcast('membership_join_group', group, actor)
-    event
+    membership
   end
 
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
     memberships = Membership.transaction do
       group.add_members!(users, inviter: inviter).tap do |created_memberships|
-        Events::UserAddedToGroup.bulk_publish!(created_memberships, user: inviter)
+        created_memberships.each do |membership|
+          NotificationService.create!(
+            kind: "user_added_to_group",
+            subject: membership,
+            actor: inviter
+          )
+        end
       end
     end
 

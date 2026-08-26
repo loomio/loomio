@@ -1,3 +1,5 @@
+require_relative "support/discussion_created_event_cleanup_service"
+
 class NormalizeDiscussionCreatedEvents < ActiveRecord::Migration[8.0]
   INDEX_NAME = "index_events_on_unique_discussion_created_event"
 

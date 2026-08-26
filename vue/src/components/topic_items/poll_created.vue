@@ -1,0 +1,89 @@
+<script lang="js">
+import PollService    from '@/shared/services/poll_service';
+import Session    from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import EventBus       from '@/shared/services/event_bus';
+import TopicItemService from '@/shared/services/topic_item_service';
+import { pickBy, assign, omit } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
+
+export default {
+  mixins: [WatchRecords, UrlFor],
+  props: {
+    topic_item: Object,
+    collapsed: Boolean,
+    itemable: Object
+  },
+
+  data() {
+    return {
+      buttonPressed: false,
+      myStance: null,
+      dockActions: [],
+      menuActions: []
+    };
+  },
+
+  created() {
+    EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
+    this.watchRecords({
+      collections: ["stances", "polls"],
+      query: () => {
+        this.rebuildActions();
+      }
+    });
+  },
+
+  beforeDestroy() {
+    EventBus.$off('stanceSaved');
+  },
+
+  methods: {
+    rebuildActions() {
+      let pollActions = PollService.actions(this.poll, this, this.topic_item);
+      this.editStanceAction = pollActions["edit_stance"]
+      if (this.poll.pollType != 'meeting') {
+        pollActions = omit(pollActions, "edit_stance");
+      }
+      const topic = this.poll.topic();
+      const eventActions = (topic && topic.topicableType === 'Discussion') ? {} : TopicItemService.actions(this.topic_item, this);
+      this.myStance = this.poll.myStance();
+      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
+      this.dockActions = pickBy(pollActions, v => v.dock);
+    },
+
+    viewed(seen) {
+      if (seen &&
+          Session.isSignedIn() &&
+          Session.user().autoTranslate &&
+          this.dockActions['translate_poll'].canPerform()) {
+        this.dockActions['translate_poll'].perform().then(() => this.rebuildActions());
+      }
+    },
+  },
+
+  computed: {
+    poll() { return this.itemable; },
+  }
+};
+
+</script>
+
+<template lang="pug">
+section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
+  topic-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
+  .d-flex.justify-space-between(v-if="!poll.isTopicable()")
+    .poll-common-card__title.text-title-large.pb-1(tabindex="-1")
+      plain-text(:model="poll" field="title")
+  div(v-if="!collapsed")
+    poll-common-details-meta(:poll="poll")
+    poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
+    poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
+    formatted-text.poll-common-details-panel__details(:model="poll" field="details")
+    link-previews(:model="poll")
+    attachment-list(:attachments="poll.attachments")
+    poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal")
+    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
+</template>

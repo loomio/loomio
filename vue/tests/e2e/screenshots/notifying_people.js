@@ -4,7 +4,7 @@ const richText = require('../helpers/oatmilkRichText');
 
 function openNewDiscussionForm(page) {
   page.loadPath('setup_manual_oatmilk_new_discussion');
-  page.click('.discussions-panel__new-thread-button');
+  page.click('.discussions-panel__new-topic-button');
   page.waitFor('.discussion-templates--template');
   page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
   page.waitFor('.discussion-form');
@@ -19,8 +19,8 @@ function removeDefaultAudience(page) {
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Returnable bottles for cafe customers');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Returnable bottles for cafe customers');
   page.waitFor('.comment-form .ProseMirror');
   page.pause(1000);
 }
@@ -28,8 +28,8 @@ function openDiscussion(page) {
 function openMentionDiscussion(page) {
   page.resizeWindow(1000, 1200);
   page.loadPath('setup_manual_oatmilk_discussion_intro');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Improve the cafe bottle return process');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Improve the cafe bottle return process');
   page.waitFor('.comment-form .ProseMirror');
   page.pause(1000);
 }
@@ -55,13 +55,13 @@ function postMentionComment(page) {
   page.clickElement('.suggestion-list [data-mention-handle="samirapatel"] .v-list-item-title');
   page.click('.comment-form__submit-button');
   page.pause(800);
-  page.expectText('.strand-page', 'Could you confirm the cafe collection dates');
+  page.expectText('.topic-page', 'Could you confirm the cafe collection dates');
   page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('Could you confirm the cafe collection dates')).classList.add('manual-mention-comment')");
 }
 
 function revealPoll(page) {
   openDiscussion(page);
-  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
+  page.execute("document.querySelector('.topic-item__load-more button')?.click()");
   page.waitFor('.poll-created');
 }
 
@@ -179,24 +179,24 @@ module.exports = {
 
     page.resizeWindow(1100, 1400);
     page.loadPath('setup_manual_oatmilk_discussion_intro');
-    page.waitFor('.strand-page');
-    page.expectText('.strand-page', 'Improve the cafe bottle return process');
-    page.waitFor('.strand-new-discussion .emoji-picker__toggle');
-    page.click('.strand-new-discussion .emoji-picker__toggle');
+    page.waitFor('.topic-page');
+    page.expectText('.topic-page', 'Improve the cafe bottle return process');
+    page.waitFor('.topic-new-discussion .emoji-picker__toggle');
+    page.click('.topic-new-discussion .emoji-picker__toggle');
     page.waitFor('.emoji-picker');
     page.execute(`
       document.querySelector('.v-app-bar')?.remove();
-      document.querySelector('.thread-sidebar')?.style.setProperty('visibility', 'hidden');
+      document.querySelector('.topic-sidebar')?.style.setProperty('visibility', 'hidden');
       document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
-      document.querySelectorAll('.strand-item__gutter').forEach((gutter) => {
+      document.querySelectorAll('.topic-item__gutter').forEach((gutter) => {
         gutter.style.visibility = 'hidden';
       });
-      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
-        if (!item.querySelector('.strand-new-discussion')) item.style.visibility = 'hidden';
+      document.querySelectorAll('.topic-item__intersection-container').forEach((item) => {
+        if (!item.querySelector('.topic-new-discussion')) item.style.visibility = 'hidden';
       });
     `);
     screenshot.captureRegion('discussions/notifying_people/reaction', [
-      '.strand-new-discussion',
+      '.topic-new-discussion',
       '.emoji-picker'
     ], {
       padding: 32,
@@ -211,14 +211,14 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-sidebar .action-dock__button--announce_thread');
     screenshot.capture('discussions/notifying_people/thread_invite_icon', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--announce_thread',
+        selector: '.topic-sidebar .action-dock__button--announce_thread',
         padding: 12,
         radius: 14
       },
-      scrollSelector: '.thread-sidebar .action-dock__button--announce_thread',
+      scrollSelector: '.topic-sidebar .action-dock__button--announce_thread',
       width: 1280,
       height: 1000
     });
@@ -229,10 +229,10 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--announce_thread');
-    page.waitFor('.strand-members-list');
-    page.execute("document.querySelector('.strand-members-list > .v-list').style.display = 'none'");
-    screenshot.captureElement('discussions/notifying_people/thread_invite', '.strand-members-list', {
+    page.click('.topic-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-members-list');
+    page.execute("document.querySelector('.topic-members-list > .v-list').style.display = 'none'");
+    screenshot.captureElement('discussions/notifying_people/thread_invite', '.topic-members-list', {
       width: 1100,
       height: 1200
     });
@@ -243,15 +243,15 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--announce_thread');
-    page.waitFor('.strand-members-list');
-    page.fillIn('.strand-members-list .recipients-autocomplete input', 'guest@cafecircle.example');
+    page.click('.topic-sidebar .action-dock__button--announce_thread');
+    page.waitFor('.topic-members-list');
+    page.fillIn('.topic-members-list .recipients-autocomplete input', 'guest@cafecircle.example');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.click('.v-overlay--active .recipients-autocomplete-suggestion');
-    page.waitFor('.strand-members-list textarea');
-    page.click('.strand-members-list textarea');
-    page.execute("document.querySelector('.strand-members-list > .v-list').style.display = 'none'");
-    screenshot.captureElement('discussions/notifying_people/invite_guest', '.strand-members-list', {
+    page.waitFor('.topic-members-list textarea');
+    page.click('.topic-members-list textarea');
+    page.execute("document.querySelector('.topic-members-list > .v-list').style.display = 'none'");
+    screenshot.captureElement('discussions/notifying_people/invite_guest', '.topic-members-list', {
       width: 1100,
       height: 1200
     });
@@ -279,25 +279,25 @@ module.exports = {
       'We will record return rates, cleaning time, damaged bottles, and transport costs before reviewing the result.'
     ]));
     page.click('.discussion-form__submit');
-    page.waitFor('.strand-item__discussion-edited');
-    page.expectText('.strand-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
+    page.waitFor('.topic-item__discussion-edited');
+    page.expectText('.topic-item__discussion-edited', 'Added cafe collection details and clarified the proposed trial.');
     page.execute(`
-      const target = document.querySelector('.strand-item__discussion-edited');
+      const target = document.querySelector('.topic-item__discussion-edited');
       document.querySelector('.v-app-bar')?.remove();
       document.querySelector('.actions-panel')?.style.setProperty('visibility', 'hidden');
-      document.querySelectorAll('.strand-item__intersection-container').forEach((item) => {
+      document.querySelectorAll('.topic-item__intersection-container').forEach((item) => {
         if (!item.contains(target)) item.style.visibility = 'hidden';
       });
     `);
     screenshot.captureRegion(
       'discussions/notifying_people/thread_edit_comment',
-      ['.strand-item__discussion-edited'],
+      ['.topic-item__discussion-edited'],
       {
         width: 1100,
         height: 1200,
         padding: 16,
         includeThreadGutters: true,
-        scrollSelector: '.strand-item__discussion-edited'
+        scrollSelector: '.topic-item__discussion-edited'
       }
     );
   },
@@ -307,13 +307,13 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--seen_by');
-    page.waitFor('.thread-sidebar .action-dock__button--users_notified');
+    page.waitFor('.topic-sidebar .action-dock__button--seen_by');
+    page.waitFor('.topic-sidebar .action-dock__button--users_notified');
     screenshot.capture('discussions/notifying_people/thread_engagement', {
       spotlight: {
         selectors: [
-          '.thread-sidebar .action-dock__button--seen_by',
-          '.thread-sidebar .action-dock__button--users_notified'
+          '.topic-sidebar .action-dock__button--seen_by',
+          '.topic-sidebar .action-dock__button--users_notified'
         ],
         padding: 12,
         radius: 14
@@ -328,7 +328,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--seen_by');
+    page.click('.topic-sidebar .action-dock__button--seen_by');
     page.waitFor('.v-overlay--active .v-card');
     page.expectText('.v-overlay--active .v-card', 'Seen by');
     page.expectText('.v-overlay--active .v-card', 'Jamie Chen');
@@ -343,7 +343,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.click('.thread-sidebar .action-dock__button--users_notified');
+    page.click('.topic-sidebar .action-dock__button--users_notified');
     page.waitFor('.v-overlay--active .v-card');
     page.expectText('.v-overlay--active .v-card', 'Thread notification history');
     screenshot.captureElement('discussions/notifying_people/thread_notified', '.v-overlay--active .v-card', {
@@ -357,10 +357,10 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.waitFor('.thread-sidebar .action-dock__button--users_notified');
+    page.waitFor('.topic-sidebar .action-dock__button--users_notified');
     screenshot.capture('discussions/notifying_people/thread_notification_history', {
       spotlight: {
-        selector: '.thread-sidebar .action-dock__button--users_notified',
+        selector: '.topic-sidebar .action-dock__button--users_notified',
         padding: 12,
         radius: 14
       },
@@ -446,11 +446,11 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDiscussion(page);
-    page.execute("Array.from(document.querySelectorAll('.thread-sidebar .v-list-item')).find(el => el.textContent.includes('Email when notified') || el.textContent.includes('Email notifications')).classList.add('manual-volume-control')");
-    page.waitFor('.thread-sidebar .manual-volume-control');
+    page.execute("Array.from(document.querySelectorAll('.topic-sidebar .v-list-item')).find(el => el.textContent.includes('Email when notified') || el.textContent.includes('Email notifications')).classList.add('manual-volume-control')");
+    page.waitFor('.topic-sidebar .manual-volume-control');
     screenshot.capture('discussions/notifying_people/thread_interact', {
       spotlight: {
-        selector: '.thread-sidebar .manual-volume-control',
+        selector: '.topic-sidebar .manual-volume-control',
         padding: 12,
         radius: 14
       },

@@ -117,7 +117,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 428; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "7fb420e221280b9f840682183b0ce7dcc22f443943c49114e2415011da8568ef",
+      "fingerprint": "745b461ed7cfee9913d6aeef5fcfa6a02d29e1bc29d76cdb219e78340f346bbf",
       "note": "Baselined 2026-06-25 — report_service.rb line 84; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -125,7 +125,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 400; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "975d752ae19a69fea15cbfd053ec80fdf64895fbe7b91eac18cc6cc00884e614",
+      "fingerprint": "41069eafcaaab4e06aa4a334296881617c3147c59975d6b16cce591a3714d385",
       "note": "Baselined 2026-06-25 — report_service.rb line 319; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -169,7 +169,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 145; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "e3ebbb4c1924d354c5071af8818f87eac77adf5e3154319dfc3eb9c3e6f6f9dd",
+      "fingerprint": "c02fe153dd4b72789f3f21f55c140386b8c5787ba77f31518bd578171d1fa8a4",
       "note": "Baselined 2026-06-25 — report_service.rb line 415; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -181,10 +181,14 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 387; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "ffd18dd7beb515ce80aa18e3b80105d6d6f5779098b8bf0de578c8b39e711111",
+      "fingerprint": "511fad2eda6634e8f5a66c1fb00483d8a62a588523678d880ce8c8ae3319438b",
       "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "10941958cec5e61af479aff8152eefc7d3cbc203922f4d687344086e70401664",
+      "note": "False positive 2026-08-23 — table and column identifiers come only from the frozen USER_REFERENCES constant; no request data reaches the SQL (SQL Injection @ app/services/inactive_user_cleanup_service.rb:50)"
     }
   ],
-  "updated": "2026-06-25",
-  "brakeman_version": "8.0.5"
+  "updated": "2026-08-23",
+  "brakeman_version": "8.0.6"
 }

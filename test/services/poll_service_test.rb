@@ -2,7 +2,8 @@ require 'test_helper'
 
 class PollServiceTest < ActiveSupport::TestCase
   inline_jobs "expires a lapsed poll",
-              "open_scheduled_polls delivers emails to voters when notify_on_open is true"
+              "open_scheduled_polls delivers emails to voters when notify_on_open is true",
+              "poll topic item sends loud subscriber email without a notification row"
   setup do
     @user = users(:user)
     @admin = users(:admin)
@@ -63,6 +64,24 @@ class PollServiceTest < ActiveSupport::TestCase
     assert Stance.where(participant_id: member.id, poll: poll).exists?
   end
 
+  test "notified invitation rolls back its stance when notification creation fails" do
+    poll = create_poll(specified_voters_only: true)
+    member = create_unique_user("atomicpollinvite")
+    @group.add_member!(member)
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        PollService.invite(
+          poll: poll,
+          actor: @user,
+          params: { recipient_user_ids: [ member.id ], notify_recipients: true }
+        )
+      end
+    end
+
+    assert_not Stance.exists?(poll: poll, participant: member)
+  end
+
   # -- create --
 
   test "creates a new poll" do
@@ -72,8 +91,58 @@ class PollServiceTest < ActiveSupport::TestCase
     end
 
     reader = TopicReader.for(user: @user, topic: poll.topic)
-    assert reader.reload.has_read?(poll.created_event.sequence_id)
+    assert reader.reload.has_read?(poll.created_topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
+  end
+
+  test "poll topic item sends loud subscriber email without a notification row" do
+    subscriber = users(:member)
+    poll = PollService.create(params: poll_params, actor: @user)
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(:loud)
+    ActionMailer::Base.deliveries.clear
+    PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
+
+    assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
+  end
+
+  test "anonymous poll creation does not use voter records as poll-created recipients" do
+    voter = users(:member)
+    poll = PollService.create(
+      params: poll_params(
+        anonymous: true,
+        specified_voters_only: true,
+        recipient_user_ids: [ voter.id ],
+        notify_on_open: false
+      ),
+      actor: @user
+    )
+    assert poll.detached_anonymous?
+    assert poll.anonymous_poll_voters.exists?(voter: voter)
+    assert_not Stance.exists?(poll: poll, participant: voter)
+    assert_not Notification.about(poll).exists?(kind: "poll_created")
+  end
+
+  test "anonymous poll creation does not depend on notification creation" do
+    voter = users(:member)
+
+    poll = nil
+    NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+      poll = PollService.create(
+        params: poll_params(
+          anonymous: true,
+          specified_voters_only: true,
+          recipient_user_ids: [ voter.id ],
+          notify_on_open: false
+        ),
+        actor: @user
+      )
+    end
+
+    assert_predicate poll, :persisted?
+    assert poll.anonymous_poll_voters.exists?(voter: voter)
+    assert poll.created_topic_item
   end
 
   test "populates custom poll options" do
@@ -100,16 +169,16 @@ class PollServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "poll_created publishes poll_announced when notify_on_open is true" do
+  test "poll_created creates poll_announced notification when notify_on_open is true" do
     poll = PollService.create(params: poll_params(notify_on_open: true), actor: @user)
     assert poll.opened?
-    assert Event.where(kind: 'poll_announced', eventable: poll).exists?
+    assert Notification.about(poll).exists?(kind: "poll_announced")
   end
 
   test "poll_created does not publish poll_announced when notify_on_open is false" do
     poll = PollService.create(params: poll_params(notify_on_open: false), actor: @user)
     assert poll.opened?
-    refute Event.where(kind: 'poll_announced', eventable: poll).exists?
+    refute Notification.about(poll).exists?(kind: "poll_announced")
   end
 
   test "publish_topic_if_active excludes group records from topic broadcasts" do
@@ -146,7 +215,7 @@ class PollServiceTest < ActiveSupport::TestCase
     poll = PollService.build(params: poll_params(topic_id: discussion.topic_id), actor: @user)
     poll.save!
 
-    Events::PollEdited.stub(:publish!, nil) do
+    TopicItems::PollEdited.stub(:create!, nil) do
       PollService.update(
         poll: poll,
         params: { details: 'Updated poll details', tags: [] },
@@ -187,26 +256,133 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal old_title, poll.reload.title
   end
 
-  test "creates poll edited event for title change" do
+  test "does not create a poll edited topic_item for a title change without a message" do
     poll = create_poll
-    assert_difference "Events::PollEdited.where(kind: :poll_edited).count", 1 do
+    assert_no_difference "TopicItems::PollEdited.where(kind: :poll_edited).count" do
       PollService.update(poll: poll, params: { title: "BIG CHANGES!" }, actor: @user)
     end
   end
 
-  test "creates poll edited event for poll option changes" do
+  test "does not create a poll edited topic_item for option changes without a message" do
     poll = create_poll
-    assert_difference "Events::PollEdited.where(kind: :poll_edited).count", 1 do
+    assert_no_difference "TopicItems::PollEdited.where(kind: :poll_edited).count" do
       PollService.update(poll: poll, params: { poll_option_names: ["new_option"] }, actor: @user)
     end
+  end
+
+  test "poll edit keeps its history topic_item and creates one logical notification" do
+    poll = create_poll
+    recipient = users(:member)
+    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(:normal)
+
+    topic_item = PollService.update(
+      poll: poll,
+      params: {
+        title: "Notification-backed poll edit",
+        recipient_user_ids: [ recipient.id ],
+        recipient_message: "Please review the poll changes"
+      },
+      actor: @user
+    )
+    notification = Notification.find_by!(kind: "poll_edited", subject: topic_item)
+
+    assert_equal "poll_edited", topic_item.kind
+    assert_equal poll.topic_id, topic_item.topic_id
+    assert_not_respond_to topic_item, :recipient_message
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal topic_item.id, notification.subject_id
+    assert_equal [ recipient.id ], notification.recipient_user_ids
+    assert_equal "Please review the poll changes", notification.recipient_message
+    assert_equal 1, Notification.where(kind: "poll_edited", subject: topic_item).count
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+  end
+
+  test "poll edit separates a newly mentioned recipient from edit email delivery" do
+    poll = create_poll
+    recipient = users(:member)
+    recipient.update!(username: "pollmention#{SecureRandom.hex(4)}")
+    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(:normal)
+
+    PollService.update(
+      poll: poll,
+      params: {
+        details: "Please review this, @#{recipient.username}",
+        details_format: "md",
+        recipient_user_ids: [ recipient.id ]
+      },
+      actor: @user
+    )
+    notification = Notification.about(poll).find_by!(kind: "poll_edited")
+
+    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert Notification.about(poll).exists?(kind: "user_mentioned")
+  end
+
+  test "eventless poll edit without a direct audience does not create a notification" do
+    poll = create_poll
+
+    assert_no_difference "TopicItem.where(kind: 'poll_edited').count" do
+      NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+        PollService.update(
+          poll: poll,
+          params: { title: "Saved without a notification" },
+          actor: @user
+        )
+      end
+    end
+
+    assert_equal "Saved without a notification", poll.reload.title
   end
 
   # -- close --
 
   test "closes a poll" do
     poll = create_poll
-    PollService.close(poll: poll, actor: @user)
+    topic_item = PollService.close(poll: poll, actor: @user)
     assert_not_nil poll.reload.closed_at
+    assert_equal poll.topic_id, topic_item.topic_id
+    assert_not Notification.about(poll).exists?(kind: "poll_closed_by_user")
+  end
+
+  test "poll close resolves subscribed chatbot delivery without a per-user notification" do
+    poll = create_poll
+    chatbot = nil
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      chatbot = Chatbot.create!(
+        group: @group,
+        author: @user,
+        name: "Poll close chatbot",
+        server: "https://poll-close.example.test/hook",
+        webhook_kind: "markdown",
+        kind: "webhook",
+        event_kinds: [ "poll_closed_by_user" ]
+      )
+    end
+
+    stub_request(:post, chatbot.server).to_return(status: 200)
+    topic_item = PollService.close(poll: poll, actor: @user)
+    Resolv.stub(:getaddresses, [ "93.184.216.34" ]) do
+      PublishChatbotTopicItemWorker.perform_now(topic_item.id)
+    end
+
+    assert_requested :post, chatbot.server, times: 1
+    assert_not Notification.about(poll).exists?(kind: "poll_closed_by_user")
+  end
+
+  test "poll close does not depend on notification creation" do
+    poll = create_poll
+
+    topic_item = nil
+    NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+      topic_item = PollService.close(poll: poll, actor: @user)
+    end
+
+    assert_not_nil poll.reload.closed_at
+    assert_equal topic_item.id, TopicItem.find_by!(kind: "poll_closed_by_user", itemable: poll).id
   end
 
   test "does not allow change from anonymous to normal" do
@@ -262,8 +438,8 @@ class PollServiceTest < ActiveSupport::TestCase
       notify_on_open: true
     ), actor: @user)
     refute poll.opened?, "poll should not be opened when opening_at is in the future"
-    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
-      "no poll_announced event should be created for scheduled poll at create time"
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
+      "no poll_announced notification should be created for scheduled poll at create time"
   end
 
   test "open_scheduled_polls opens scheduled polls and sends poll_announced when notify_on_open is true" do
@@ -279,8 +455,8 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.open_scheduled_polls
     poll.reload
     assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
-    assert Event.where(kind: 'poll_announced', eventable: poll).exists?,
-      "poll_announced event should be created when notify_on_open is true"
+    assert Notification.about(poll).exists?(kind: "poll_announced"),
+      "poll_announced notification should be created when notify_on_open is true"
   end
 
   test "open_scheduled_polls opens scheduled polls without poll_announced when notify_on_open is false" do
@@ -294,8 +470,8 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.open_scheduled_polls
     poll.reload
     assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
-    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
-      "no poll_announced event when notify_on_open is false"
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
+      "no poll_announced topic_item when notify_on_open is false"
   end
 
   test "open_scheduled_polls does not open polls whose opening_at is still in the future" do
@@ -316,14 +492,14 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
-    announced_count_before = Event.where(kind: 'poll_announced', eventable: poll).count
+    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
     PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
     poll.reload
 
     assert poll.opened?, "poll should be opened after reopen"
     assert_nil poll.opening_at, "opening_at should be nil after reopen"
-    assert_operator Event.where(kind: 'poll_announced', eventable: poll).count, :>, announced_count_before,
-      "poll_announced event should be created on reopen with notify_on_open=true"
+    assert_operator Notification.about(poll).where(kind: "poll_announced").count, :>, announced_count_before,
+      "poll_announced notification should be created on reopen with notify_on_open=true"
   end
 
   test "reopen does not send poll_announced when notify_on_open is false" do
@@ -331,13 +507,13 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
-    announced_count_before = Event.where(kind: 'poll_announced', eventable: poll).count
+    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
     PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
     poll.reload
 
     assert poll.opened?, "poll should be opened after reopen"
-    assert_equal announced_count_before, Event.where(kind: 'poll_announced', eventable: poll).count,
-      "no poll_announced event on reopen when notify_on_open is false"
+    assert_equal announced_count_before, Notification.about(poll).where(kind: "poll_announced").count,
+      "no poll_announced topic_item on reopen when notify_on_open is false"
   end
 
   # -- invite to scheduled poll --
@@ -361,7 +537,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     assert Stance.where(participant_id: member.id, poll: poll).exists?,
       "stance should be created for invited user"
-    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
+    refute Notification.about(poll).exists?(kind: "poll_announced"),
       "no poll_announced when inviting to scheduled poll without notify_recipients"
   end
 
@@ -448,102 +624,6 @@ class PollServiceTest < ActiveSupport::TestCase
     Membership.create!(user: bot, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
     assert_equal count, poll.voters.count
-  end
-
-  test "mark_closed_poll_topics_read creates missing group member readers and marks them read" do
-    member = create_unique_user("closedpollreader")
-    Membership.create!(user: member, group: @group, accepted_at: Time.current)
-    poll = create_poll(specified_voters_only: false)
-    PollService.close(poll: poll, actor: @user)
-    poll.topic.topic_readers.where(user: member).delete_all
-
-    stats = PollService.mark_closed_poll_topics_read
-
-    reader = TopicReader.find_by!(topic: poll.topic, user: member)
-    assert_equal poll.topic.reload.ranges, reader.read_ranges
-    assert_not_nil reader.last_read_at
-    assert_equal 0, reader.unread_items_count
-    assert_operator stats[:readers_created], :>=, 1
-  end
-
-  test "mark_closed_poll_topics_read ignores active polls" do
-    member = create_unique_user("activepollreader")
-    Membership.create!(user: member, group: @group, accepted_at: Time.current)
-    poll = create_poll(specified_voters_only: false)
-
-    PollService.mark_closed_poll_topics_read
-
-    assert_nil TopicReader.find_by(topic: poll.topic, user: member)
-  end
-
-  test "backfill_standalone_poll_stance_thread_items attaches visible stance events to standalone poll topics" do
-    poll = create_poll(specified_voters_only: true)
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
-    stance = poll.stances.latest.find_by!(participant_id: @user.id)
-    stance.reason = "I agree"
-    stance.choice = "Agree"
-    stance.save!
-    event = Events::StanceCreated.publish!(stance)
-
-    event.update_columns(topic_id: nil, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
-    TopicService.repair(poll.topic_id)
-    poll.topic.reload
-
-    assert_equal [poll.created_event.id], poll.topic.items.order(:sequence_id).pluck(:id)
-
-    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
-
-    event.reload
-    assert_equal poll.topic_id, event.topic_id
-    assert_equal poll.created_event.id, event.parent_id
-    assert_operator event.sequence_id, :>, 0
-    assert_equal({ events: 1, topics: 1, repair_topics: 1 }, stats)
-  end
-
-  test "backfill_standalone_poll_stance_thread_items ignores blank stance events" do
-    poll = create_poll(specified_voters_only: true)
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
-    stance = poll.stances.latest.find_by!(participant_id: @user.id)
-    stance.choice = "Agree"
-    stance.save!
-    event = Events::StanceCreated.publish!(stance)
-
-    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
-
-    assert_nil event.reload.topic_id
-    assert_equal({ events: 0, topics: 0, repair_topics: 0 }, stats)
-  end
-
-  test "backfill_standalone_poll_stance_thread_items marks closed poll topics totally read" do
-    poll = create_poll(specified_voters_only: true)
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
-    stance = poll.stances.latest.find_by!(participant_id: @user.id)
-    stance.reason = "I agree"
-    stance.choice = "Agree"
-    stance.save!
-    event = Events::StanceCreated.publish!(stance)
-    event.update_columns(topic_id: nil, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
-    TopicService.repair(poll.topic_id)
-    PollService.close(poll: poll, actor: @user)
-
-    reader = TopicReader.for(topic: poll.topic, user: @user)
-    reader.viewed!([[0, 0]])
-
-    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: true)
-
-    assert_equal 0, reader.reload.unread_items_count
-    assert_equal poll.topic.reload.ranges, reader.read_ranges
-    assert_equal 1, stats[:repair_topics]
-    assert_equal 1, stats[:closed_read][:topics]
-    assert_operator stats[:closed_read][:readers_updated], :>=, 1
-  end
-
-  test "standalone_poll_topic_ids_newest_first orders newest polls first" do
-    older_poll = create_poll(created_at: 2.days.ago)
-    newer_poll = create_poll(created_at: 1.day.ago)
-
-    assert_equal [newer_poll.topic_id, older_poll.topic_id],
-      PollService.standalone_poll_topic_ids_newest_first([older_poll.topic_id, newer_poll.topic_id])
   end
 
   test "creates public topic when group requires public discussions" do

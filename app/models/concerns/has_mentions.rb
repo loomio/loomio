@@ -1,6 +1,5 @@
 module HasMentions
   extend ActiveSupport::Concern
-  include HasEvents
 
   module ClassMethods
     def is_mentionable(on: [])
@@ -52,11 +51,22 @@ module HasMentions
 
   # users mentioned on a previous edit of this model
   def already_mentioned_user_ids
-    notifications.user_mentions.pluck(:user_id)
+    mention_notifications = Notification.about(self).user_mentions
+    snapshotted_user_ids = mention_notifications.pluck(:recipient_user_ids).flatten
+    delivery_user_ids = NotificationDelivery
+                        .where(
+                          notification_id: mention_notifications.select(:id),
+                          recipient_type: "User",
+                          channel: "in_app"
+                        )
+                        .pluck(:recipient_id)
+    (snapshotted_user_ids + delivery_user_ids).compact.map(&:to_i).uniq
   end
 
   def already_mentioned_group_ids
-    events.where(kind: 'group_mentioned').map { |event| event.custom_fields['group_ids'] }.flatten.uniq
+    notifications = Notification.about(self).where(kind: "group_mentioned")
+    notifications.flat_map { |notification| notification.audience_values["group_ids"] }
+                 .compact.map(&:to_i).uniq
   end
 
   private

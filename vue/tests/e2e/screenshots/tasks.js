@@ -8,7 +8,7 @@ let scenarioKey = 100;
 function openTaskEditor(page) {
   scenarioKey += 1;
   page.loadPath(`setup_manual_oatmilk_formatting?key=${scenarioKey}`);
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor(proseMirror);
   page.execute("const el = document.querySelector('.comment-form .ProseMirror'); el.focus(); el.innerHTML = '<p><br class=\"ProseMirror-trailingBreak\"></p>'; el.dispatchEvent(new InputEvent('input', {bubbles: true, inputType: 'deleteContentBackward'}))");
   page.click(`${editor} .html-editor__expand`);

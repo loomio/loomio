@@ -6,11 +6,11 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import EventBus      from '@/shared/services/event_bus';
 import ThreadFilter  from '@/shared/services/thread_filter';
-import ThreadPreviewCollection from '@/components/thread/preview_collection';
+import TopicPreviewCollection from '@/components/topic/preview_collection';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
-const threadLimit = 50;
+const topicLimit = 50;
 const filters = [
   'only_threads_in_my_groups',
   'show_unread',
@@ -76,12 +76,12 @@ fetchInbox();
 
 <template lang="pug">
 v-main
-  v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
+  v-container.inbox-page.topic-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
-      .thread-previews-container
-        loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
-    section.inbox-page__threads(v-if='unreadCount > 0 || !loading')
+      .topic-previews-container
+        loading-content.topic-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
+    section.inbox-page__topics(v-if='unreadCount > 0 || !loading')
       v-card.mb-3(v-show='unreadCount == 0')
         v-card-text
           span(v-t="'inbox_page.no_discussions'")
@@ -99,8 +99,7 @@ v-main
           v-list
             v-list-subheader
               router-link.inbox-page__group-link(:to="'/g/' + group.key") {{group.name}}
-            thread-preview-collection(:threads="viewsByGroup[group.key]", :limit="threadLimit")
-        //- strand-wall(:threads="viewsByGroup[group.key]")
+            topic-preview-collection(:topics="viewsByGroup[group.key]", :limit="topicLimit")
       p.text-body-small.text-medium-emphasis.text-center.mt-4(v-t="'inbox_page.recent_activity_notice'")
 </template>
 

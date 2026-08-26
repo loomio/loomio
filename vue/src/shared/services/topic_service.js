@@ -95,7 +95,7 @@ export default new class TopicService {
         },
         perform() {
           return EventBus.$emit('openModal', {
-            component: 'StrandMembersList',
+            component: 'TopicMembersList',
             props: { topic }
           });
         }
@@ -244,7 +244,7 @@ export default new class TopicService {
         canPerform() { return AbilityService.canMoveTopic(topic); },
         perform() {
           return openModal({
-            component: 'MoveThreadForm',
+            component: 'MoveTopicForm',
             props: { topic: topic.clone() }
           });
         }

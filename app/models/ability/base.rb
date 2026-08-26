@@ -16,7 +16,7 @@ module Ability
     prepend Ability::Stance
     prepend Ability::User
     prepend Ability::Tag
-    prepend Ability::Event
+    prepend Ability::TopicItem
     prepend Ability::Chatbot
     prepend Ability::Attachment
     prepend Ability::Task

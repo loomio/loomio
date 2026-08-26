@@ -59,7 +59,6 @@ const logoUrl = computed(() => AppConfig.theme.app_logo_src);
 const logoInline = computed(() => logoUrl.value === '/brand/logo-current-color.svg');
 const logoSvg = ref('');
 const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
-const showNewThreadButton = computed(() => AppConfig.features.app.new_thread_button);
 
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
@@ -77,7 +76,7 @@ const openIfPinned = () => {
     (user.value.experiences['sidebar'] === undefined || user.value.experiences['sidebar'] === true);
 };
 
-// Event listeners setup
+// TopicItem listeners setup
 EventBus.$on('toggleSidebar', () => {
   open.value = !open.value;
   Records.users.saveExperience('sidebar', open.value);

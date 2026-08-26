@@ -1,3 +1,5 @@
+require_relative "support/poll_created_event_cleanup_service"
+
 class NormalizePollCreatedEvents < ActiveRecord::Migration[8.0]
   INDEX_NAME = "index_events_on_unique_poll_created_event"
 

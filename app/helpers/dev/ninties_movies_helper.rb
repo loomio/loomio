@@ -223,10 +223,11 @@ module Dev::NintiesMoviesHelper
         poll_option_names: %w[agree abstain disagree block],
         title: "Let's go to the moon!",
         closing_at: 10.days.from_now,
-        group_id: create_discussion.group_id
+        group_id: create_discussion.group_id,
+        topic_id: create_discussion.topic_id
       },
       actor: patrick
-    ).tap { |p| p.update!(topic: create_discussion.topic) }
+    )
   end
 
   def create_stance
@@ -250,46 +251,57 @@ module Dev::NintiesMoviesHelper
     # discussion_edited
     create_discussion
     create_discussion.update(title: "another discussion title")
-    Events::DiscussionEdited.publish!(discussion: create_discussion, actor: create_discussion.author)
+    TopicItems::DiscussionEdited.create!(
+      itemable: create_discussion,
+      user: create_discussion.author
+    )
 
     # discussion_moved
-    Events::DiscussionMoved.publish!(create_discussion, patrick)
+    TopicItems::DiscussionMoved.create!(
+      itemable: create_discussion,
+      user: patrick,
+      created_at: Time.current
+    )
 
     # new_comment
-    Events::NewComment.publish!(create_comment)
+    TopicItems::NewComment.create!(itemable: create_comment, pinned: create_comment.should_pin)
 
     # poll_created
-    Events::PollCreated.publish!(create_poll, patrick)
+    TopicItems::PollCreated.create!(
+      itemable: create_poll,
+      pinned: true
+    )
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(poll: create_poll, actor: patrick)
+    TopicItems::PollEdited.create!(
+      itemable: create_poll,
+      user: patrick
+    )
 
     # stance_created
-    Events::StanceCreated.publish!(create_stance)
-
-    # poll_expired
-    Events::PollExpired.publish!(create_poll)
+    TopicItems::StanceCreated.create!(itemable: create_stance)
 
     # poll_closed_by_user
-    Events::PollClosedByUser.publish!(create_poll, patrick)
+    TopicItems::PollClosedByUser.create!(
+      itemable: create_poll,
+      user: patrick,
+      created_at: create_poll.closed_at
+    )
 
     # outcome_created
-    Events::OutcomeCreated.publish!(outcome: create_outcome)
+    TopicItems::OutcomeCreated.create!(itemable: create_outcome)
   end
 
 
   def create_all_notifications
-    group_announced_event = Event.create!(
-      kind: 'announcement_created',
-      eventable: create_another_group,
-      user: jennifer,
-      custom_fields: { kind: 'group_announced' }
-    )
-    Notification.create!(
-      user: patrick,
+    create_discussion.topic.update!(allow_concurrent_polls: true)
+
+    create_delivered_notification(
+      kind: "group_announced",
+      subject: create_another_group,
       actor: jennifer,
-      event: group_announced_event,
+      recipient: patrick,
       translation_values: { name: jennifer.name }
     )
 
@@ -297,7 +309,7 @@ module Dev::NintiesMoviesHelper
     patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: "❤️")
     new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
-    reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: '🙂'}, actor: jennifer)
+    ReactionService.update(reaction: reaction, params: {reaction: '🙂'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
@@ -319,13 +331,13 @@ module Dev::NintiesMoviesHelper
 
     #'membership_requested',
     membership_request = MembershipRequest.new(group: create_group)
-    event = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
+    topic_item = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
 
     #'membership_request_approved',
     another_group = Group.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
     GroupService.create(group: another_group, actor: jennifer)
     membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
-    event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
+    topic_item = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
     approval_event = MembershipRequestService.approve(membership_request: membership_request, actor: jennifer)
 
     #'user_added_to_group',
@@ -338,7 +350,7 @@ module Dev::NintiesMoviesHelper
     #'new_coordinator',
     #notify patrick that jennifer has made him a coordinator
     membership = Membership.find_by(user_id: patrick.id, group_id: another_group.id)
-    new_coordinator_event = MembershipService.make_admin(membership: membership, actor: jennifer)
+    MembershipService.make_admin(membership: membership, actor: jennifer)
 
     #'invitation_accepted',
     #notify patrick that his invitation to emilio has been accepted
@@ -351,13 +363,13 @@ module Dev::NintiesMoviesHelper
         title: "Invitation poll",
         poll_option_names: %w[agree abstain disagree block],
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         closing_at: 24.hours.from_now,
         notify_on_closing_soon: 'voters',
         specified_voters_only: true
       },
       actor: jennifer
     )
-    poll.update!(topic: create_discussion.topic)
     PollService.invite(
       poll: poll,
       params: { recipient_user_ids: [patrick.id], notify_recipients: true },
@@ -374,11 +386,11 @@ module Dev::NintiesMoviesHelper
         title: "Outcome poll",
         poll_option_names: %w[agree abstain disagree block],
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         closing_at: 3.days.from_now
       },
       actor: jennifer
     )
-    poll.update!(topic: create_discussion.topic)
     poll.update_columns(closed_at: 1.day.ago, closing_at: 1.day.ago)
     outcome = Outcome.new(poll: poll, author: jennifer, statement: "Let's do it!")
     OutcomeService.create(
@@ -396,10 +408,10 @@ module Dev::NintiesMoviesHelper
         poll_option_names: %w[agree abstain disagree block],
         closing_at: 4.days.from_now,
         group_id: create_group.id,
+        topic_id: create_discussion.topic_id,
         voter_can_add_options: true
       },
       actor: patrick
     )
-    poll.update!(topic: create_discussion.topic)
   end
 end

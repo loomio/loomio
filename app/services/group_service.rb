@@ -74,8 +74,9 @@ module GroupService
       end
       Group.update_org_members_count_for_group_ids(group_ids)
 
-      Events::MembershipCreated.publish!(
-        group: group,
+      NotificationService.create!(
+        kind: "membership_created",
+        subject: group,
         actor: actor,
         recipient_user_ids: users.pluck(:id),
         recipient_message: params[:recipient_message]

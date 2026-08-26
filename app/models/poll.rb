@@ -4,12 +4,12 @@ class Poll < ApplicationRecord
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include HasEvents
+  include HasTopicItems
+  include HasNotifications
   include HasMentions
   include SelfReferencing
   include Reactable
   include Bookmarkable
-  include HasCreatedEvent
   include HasRichText
   include Discard::Model
   include Searchable
@@ -132,9 +132,9 @@ class Poll < ApplicationRecord
     return nil
   end
 
-  def create_missing_created_event!
-    self.events.create(
-      kind: created_event_kind,
+  def create_missing_created_topic_item!
+    self.topic_items.create(
+      kind: created_topic_item_kind,
       user_id: author_id,
       created_at: created_at,
       topic: topic)
@@ -179,9 +179,9 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
-  has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :stance_voters, -> { merge(Stance.latest) }, through: :stances, source: :participant
+  has_many :stance_undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :stance_decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :anonymous_poll_voters, dependent: :destroy
@@ -201,19 +201,15 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
-  scope :in_organisation, ->(group) {
-    kept.joins(:topic).where("topics.group_id IN (?)", group.id_and_subgroup_ids)
-  }
-
-  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
+  scope :closing_soon_not_published, ->(timeframe) do
      active
     .distinct
     .where(closing_at: timeframe)
-    .where("NOT EXISTS (SELECT 1 FROM events
-                WHERE events.created_at     > ? AND
-                      events.eventable_id   = polls.id AND
-                      events.eventable_type = 'Poll' AND
-                      events.kind           = 'poll_closing_soon')", recency_threshold)
+    .where("NOT EXISTS (SELECT 1 FROM notifications
+                WHERE notifications.created_at   >= polls.closing_at - INTERVAL '25 hours' AND
+                      notifications.subject_id   = polls.id AND
+                      notifications.subject_type = 'Poll' AND
+                      notifications.kind         = 'poll_closing_soon')")
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
@@ -354,22 +350,41 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
+  # General-purpose voter relations must not reveal participation identities for
+  # detached anonymous ballots. Callers that intentionally need the named
+  # electorate, such as authorization and reminder delivery, use unmasked_*.
+  def voters
+    detached_anonymous? ? User.none : stance_voters
+  end
+
+  def voter_ids
+    voters.ids
+  end
+
+  def undecided_voters
+    detached_anonymous? ? User.none : stance_undecided_voters
+  end
+
+  def decided_voters
+    detached_anonymous? ? User.none : stance_decided_voters
+  end
+
   def unmasked_voters
     return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.pluck(:participant_id))
+    voters
   end
 
   def unmasked_undecided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.undecided.pluck(:participant_id))
+    undecided_voters
   end
 
   def unmasked_decided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.decided.pluck(:participant_id))
+    decided_voters
   end
 
   def detached_anonymous?

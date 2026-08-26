@@ -51,7 +51,7 @@ export default class LmoUrlService {
     if (params == null) { params = {}; }
     if (options == null) { options = {}; }
     if (!p.isTopicable()) {
-      return this.event(p.createdEvent());
+      return this.topic_item(p.createdTopicItem());
     } else {
       return this.buildModelRoute('p', p.key, options.action || p.title, params, options);
     }
@@ -105,7 +105,7 @@ export default class LmoUrlService {
     return this.route({model: mr.group(), action: 'membership_requests', params});
   }
 
-  static event(e, params, options) {
+  static topic_item(e, params, options) {
     if (params == null) { params = {}; }
     if (options == null) { options = {}; }
     const topic = e.topic();

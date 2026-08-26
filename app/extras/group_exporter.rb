@@ -49,7 +49,34 @@ class GroupExporter
   private
 
   def models_for(model)
-    model.to_s.classify.constantize.in_organisation(@group).order(created_at: :asc)
+    group_ids = @group.id_and_subgroup_ids
+    relation = case model
+               when :groups
+                 Group.where(id: group_ids)
+               when :memberships
+                 Membership.includes(:user).active.where(group_id: group_ids)
+               when :discussions
+                 Discussion.includes(:author).joins(:topic).where(topics: { group_id: group_ids })
+               when :comments
+                 Comment.includes(:user)
+                        .joins("INNER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
+                        .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
+                        .where(topics: { group_id: group_ids })
+               when :polls
+                 Poll.kept.joins(:topic).where(topics: { group_id: group_ids })
+               when :stances
+                 Stance.joins(:poll)
+                       .joins("LEFT JOIN topics ON topics.id = polls.topic_id")
+                       .where(topics: { group_id: group_ids })
+               when :outcomes
+                 Outcome.joins(:poll)
+                        .joins("LEFT JOIN topics ON topics.id = polls.topic_id")
+                        .where(topics: { group_id: group_ids })
+               else
+                 raise ArgumentError, "Unsupported export model: #{model}"
+               end
+
+    relation.order(relation.klass.arel_table[:created_at].asc)
   end
 
   def csv_append(csv:, fields:, models:, title:)

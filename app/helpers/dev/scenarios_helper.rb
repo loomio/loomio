@@ -1,9 +1,9 @@
 module Dev::ScenariosHelper
   include Dev::FakeDataHelper
 
-  def saved_discussion_with_created_event(group:)
+  def saved_discussion_with_created_topic_item(group:)
     saved(fake_discussion(group: group)).tap do |discussion|
-      discussion.create_missing_created_event! unless discussion.created_event
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
     end
   end
 
@@ -129,9 +129,9 @@ module Dev::ScenariosHelper
     TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!('loud') if topic
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
-    event = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))
-    scenario[:stance] = event.eventable
-    scenario[:actor] = event.eventable.participant
+    topic_item = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))
+    scenario[:stance] = topic_item.itemable
+    scenario[:actor] = topic_item.itemable.participant
     scenario[:real_actor] = voter
 
     scenario.merge(observer: scenario[:poll].author, voter: voter)
@@ -223,7 +223,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_closing_soon_with_vote_scenario(params)
-    discussion = saved_discussion_with_created_event(group: create_group_with_members)
+    discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     actor      = discussion.group.admins.first
     poll = PollService.create(
       params: fake_poll_params(
@@ -237,7 +237,7 @@ module Dev::ScenariosHelper
       actor: actor)
     create_fake_stances(poll: poll)
 
-    voter      = poll.stances.last.real_participant
+    voter      = poll.stances.last.participant
     discussion.add_guest! voter, discussion.author
     PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
@@ -258,7 +258,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_expired_author_scenario(params)
-    discussion = saved_discussion_with_created_event(group: create_group_with_members)
+    discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     actor      = discussion.group.admins.first
     params[:discussion] = discussion
     poll = PollService.create(
@@ -283,7 +283,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_created_scenario(params)
-    discussion = saved_discussion_with_created_event(group: create_group_with_members)
+    discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
@@ -318,7 +318,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_review_due_scenario(params)
-    discussion = saved_discussion_with_created_event(group: create_group_with_members)
+    discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
@@ -341,7 +341,11 @@ module Dev::ScenariosHelper
 
     outcome    = fake_outcome(poll: poll, author: poll.author, review_on: Date.today)
 
-    Events::OutcomeReviewDue.publish!(outcome)
+    NotificationService.create!(
+      kind: "outcome_review_due",
+      subject: outcome,
+      actor: outcome.author
+    )
     # OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
 
     { discussion: discussion,
@@ -354,7 +358,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_catch_up_scenario(params)
-    discussion = saved_discussion_with_created_event(group: create_group_with_members)
+    discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     scenario  = poll_expired_scenario(params)
     observer = fake_user.tap(&:save!)
     observer.email_catch_up_day = 7

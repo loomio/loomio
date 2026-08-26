@@ -1,6 +1,7 @@
 # This is the final 3.2 conversion implementation preserved as migration-only
 # code so 3.3 can safely support direct upgrades after removing runtime support.
 require "set"
+require_relative "legacy_topic_event_repair_service"
 
 class LegacyAnonymousVoteMigrationService
   class MigrationError < StandardError; end
@@ -356,35 +357,35 @@ class LegacyAnonymousVoteMigrationService
   private_class_method :verify_detached_data!
 
   def self.remove_stance_content!(poll, stance_ids)
-    poll.create_missing_created_event! unless poll.created_event
+    created_event = poll_created_event(poll) || create_poll_created_event!(poll)
     comment_ids = Comment.where(parent_type: "Stance", parent_id: stance_ids).pluck(:id)
     Comment.where(id: comment_ids).update_all(parent_type: "Poll", parent_id: poll.id)
 
-    stance_events = Event.where(eventable_type: "Stance", eventable_id: stance_ids)
+    stance_events = LegacyEventRecord.where(eventable_type: "Stance", eventable_id: stance_ids)
     stance_event_rows = stance_events.pluck(:id, :topic_id, :parent_id)
     stance_event_ids = stance_event_rows.map(&:first)
 
-    comment_events = Event.where(eventable_type: "Comment", eventable_id: comment_ids)
+    comment_events = LegacyEventRecord.where(eventable_type: "Comment", eventable_id: comment_ids)
     comment_event_rows = comment_events.pluck(:id, :topic_id, :parent_id)
     comment_events.update_all(
-      parent_id: poll.created_event&.id,
+      parent_id: created_event.id,
       topic_id: poll.topic_id,
       sequence_id: nil,
       position: 0,
       position_key: nil
     )
 
-    child_event_rows = Event.where(parent_id: stance_event_ids).pluck(:id, :topic_id, :parent_id)
+    child_event_rows = LegacyEventRecord.where(parent_id: stance_event_ids).pluck(:id, :topic_id, :parent_id)
     event_ids_to_delete = child_event_rows.map(&:first)
     event_ids_to_delete.concat(stance_event_ids)
 
     affected_parent_ids = (stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:third).uniq
     affected_topic_ids = [ poll.topic_id ]
     affected_topic_ids.concat((stance_event_rows + comment_event_rows + child_event_rows).filter_map(&:second))
-    affected_topic_ids.concat(Event.where(id: affected_parent_ids).where.not(topic_id: nil).distinct.pluck(:topic_id))
+    affected_topic_ids.concat(LegacyEventRecord.where(id: affected_parent_ids).where.not(topic_id: nil).distinct.pluck(:topic_id))
 
     Notification.where(event_id: event_ids_to_delete).delete_all
-    Event.where(id: event_ids_to_delete).delete_all
+    LegacyEventRecord.where(id: event_ids_to_delete).delete_all
 
     task_ids = Task.where(record_type: "Stance", record_id: stance_ids).pluck(:id)
     TasksUser.where(task_id: task_ids).delete_all
@@ -396,21 +397,44 @@ class LegacyAnonymousVoteMigrationService
     PgSearch::Document.where(searchable_type: "Stance", searchable_id: stance_ids).delete_all
     StanceChoice.where(stance_id: stance_ids).delete_all
     Stance.where(id: stance_ids).delete_all
-    poll.events.where(kind: "poll_announced").find_each do |event|
+    LegacyEventRecord.where(eventable_type: "Poll", eventable_id: poll.id, kind: "poll_announced").find_each do |event|
       event.update_columns(custom_fields: event.custom_fields.except("stance_ids"))
     end
 
-    affected_topic_ids.compact.uniq.each { |topic_id| TopicService.repair(topic_id) }
+    affected_topic_ids.compact.uniq.each { |topic_id| LegacyTopicEventRepairService.repair!(topic_id) }
     verify_stance_content_removed!(stance_ids, stance_event_ids, event_ids_to_delete)
   end
   private_class_method :remove_stance_content!
+
+  def self.poll_created_event(poll)
+    LegacyEventRecord.where(
+      eventable_type: "Poll",
+      eventable_id: poll.id,
+      kind: "poll_created"
+    ).order(:id).first
+  end
+  private_class_method :poll_created_event
+
+  def self.create_poll_created_event!(poll)
+    LegacyEventRecord.create!(
+      kind: "poll_created",
+      eventable_type: "Poll",
+      eventable_id: poll.id,
+      user_id: poll.author_id,
+      topic_id: poll.topic_id,
+      created_at: poll.created_at,
+      updated_at: poll.created_at
+    )
+  end
+  private_class_method :create_poll_created_event!
+
   def self.verify_stance_content_removed!(stance_ids, stance_event_ids, deleted_event_ids)
     checks = {
       stances: Stance.where(id: stance_ids).count,
       choices: StanceChoice.where(stance_id: stance_ids).count,
       comments: Comment.where(parent_type: "Stance", parent_id: stance_ids).count,
-      events: Event.where(eventable_type: "Stance", eventable_id: stance_ids).count,
-      event_children: Event.where(parent_id: stance_event_ids).count,
+      events: LegacyEventRecord.where(eventable_type: "Stance", eventable_id: stance_ids).count,
+      event_children: LegacyEventRecord.where(parent_id: stance_event_ids).count,
       notifications: Notification.where(event_id: deleted_event_ids).count,
       reactions: Reaction.where(reactable_type: "Stance", reactable_id: stance_ids).count,
       bookmarks: Bookmark.where(bookmarkable_type: "Stance", bookmarkable_id: stance_ids).count,

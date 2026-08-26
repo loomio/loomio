@@ -7,16 +7,16 @@ class Views::Topics::TopicItems::NewComment < Views::Application::Component
   end
 
   def view_template
-    comment = @item.eventable
+    comment = @item.itemable
     div(class: "new-comment", id: "comment-#{comment.id}") do
-      div(class: "thread-item px-3 pb-1") do
+      div(class: "topic-item px-3 pb-1") do
         div(id: "sequence-2", class: "d-flex lmo-action-dock-wrapper", style: "margin-left: 0px;") do
-          div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::EventMailer::Common::Avatar.new(user: comment.author)
+          div(class: "topic-item__avatar mr-3 mt-0") do
+            render Views::NotificationMailer::Common::Avatar.new(user: comment.author)
           end
-          div(class: "layout thread-item__body column") do
+          div(class: "layout topic-item__body column") do
             div(class: "layout align-center wrap") do
-              h3(class: "thread-item__title text-body-2", id: "event-#{@item.id}") do
+              h3(class: "topic-item__title text-body-2", id: "topic_item-#{@item.id}") do
                 span do
                   strong do
                     a(href: user_url(comment.author)) { plain comment.author.name }
@@ -31,7 +31,7 @@ class Views::Topics::TopicItems::NewComment < Views::Application::Component
               end
             end
             div(class: "default-slot") do
-              div(class: "lmo-markdown-wrapper text-body-1 text--primary thread-item__body new-comment__body") do
+              div(class: "lmo-markdown-wrapper text-body-1 text--primary topic-item__body new-comment__body") do
                 raw MarkdownService.render_rich_text(comment.body, comment.body_format)
               end
             end

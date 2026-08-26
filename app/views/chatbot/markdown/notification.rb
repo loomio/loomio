@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 class Views::Chatbot::Markdown::Notification < Views::Chatbot::Markdown::Base
-  def initialize(event:, poll: nil, recipient:)
-    @event = event
+  def initialize(topic_item:, poll: nil, recipient:)
+    @topic_item = topic_item
     @poll = poll
     @recipient = recipient
   end
 
   def view_template
-    url = polymorphic_url(@event.eventable)
-    message = @event.recipient_message
+    url = polymorphic_url(@topic_item.itemable)
+    message = @topic_item.recipient_message if @topic_item.is_a?(NotificationRenderingContext)
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
-    md t("notifications.with_title.#{@event.kind}",
-         actor: @event.user.name,
-         title: "[#{@event.eventable.title_model.title}](#{url})",
+    md t("notifications.with_title.#{@topic_item.kind}",
+         actor: @topic_item.user.name,
+         title: "[#{@topic_item.itemable.title_model.title}](#{url})",
          poll_type: poll_type,
          site_name: AppConfig.theme[:site_name])
     md "\n"

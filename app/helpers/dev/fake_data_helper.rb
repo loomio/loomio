@@ -5,6 +5,33 @@ module Dev::FakeDataHelper
     obj.tap(&:save!)
   end
 
+  # Seed final-shape notification data without invoking audience resolution or
+  # delivery workers. Dev scenarios use this for exact historical examples.
+  def create_delivered_notification(kind:, subject:, actor:, recipient:, translation_values: {}, created_at: Time.current)
+    notification = Notification.create!(
+      kind: kind,
+      subject: subject,
+      actor: actor,
+      translation_values: translation_values,
+      recipient_user_ids: [ recipient.id ],
+      deliveries_generated_at: created_at,
+      created_at: created_at,
+      updated_at: created_at
+    )
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: recipient,
+      channel: "in_app",
+      status: "delivered",
+      available_at: created_at,
+      delivered_at: created_at,
+      translation_values: translation_values,
+      created_at: created_at,
+      updated_at: created_at
+    )
+    notification
+  end
+
   # only return new'd objects
   def fake_user(args = {})
     u = User.new({
@@ -94,46 +121,32 @@ module Dev::FakeDataHelper
 
 
   def fake_new_comment_event(comment = fake_comment)
-    Events::NewComment.new(
-      user: comment.author,
-      kind: 'new_comment',
-      eventable: comment,
-      topic: comment.topic
+    TopicItems::NewComment.new(
+      itemable: comment
     )
   end
 
   def fake_new_discussion_event(discussion = fake_discussion)
-    Events::NewDiscussion.new(
-      user: discussion.author,
-      kind: 'new_discussion',
-      eventable: discussion
+    TopicItems::NewDiscussion.new(
+      itemable: discussion
     )
   end
 
-  def fake_poll_created_event(poll = fake_poll)
-    Events::PollCreated.new(
-      user: poll.author,
-      kind: 'poll_created',
-      eventable: poll,
-      topic: poll.topic
+  def fake_poll_created_topic_item(poll = fake_poll)
+    TopicItems::PollCreated.new(
+      itemable: poll
     )
   end
 
-  def fake_stance_created_event(stance = fake_stance)
-    Events::StanceCreated.new(
-      user_id: stance[:participant_id],
-      kind: 'stance_created',
-      eventable: stance,
-      topic: stance.poll.topic
+  def fake_stance_created_topic_item(stance = fake_stance)
+    TopicItems::StanceCreated.new(
+      itemable: stance
     )
   end
 
-  def fake_outcome_created_event(outcome = fake_outcome)
-    Events::OutcomeCreated.new(
-      user_id: outcome.author_id,
-      kind: 'outcome_created',
-      eventable: outcome,
-      topic: outcome.poll.topic
+  def fake_outcome_created_topic_item(outcome = fake_outcome)
+    TopicItems::OutcomeCreated.new(
+      itemable: outcome
     )
   end
 
@@ -231,7 +244,7 @@ module Dev::FakeDataHelper
       poll.group.add_member!(u) if poll.group
       stance = fake_stance(poll: poll)
       stance.save!
-      stance.create_missing_created_event!
+      stance.create_missing_created_topic_item!
     end
     poll.update_counts!
   end

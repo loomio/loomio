@@ -70,6 +70,6 @@ export default class MembershipModel extends BaseModel {
   }
 
   beforeRemove() {
-    return invokeMap(Records.events.find({'eventableType': 'membership', 'eventableId': this.id}), 'remove');
+    return invokeMap(Records.topicItems.find({'itemableType': 'membership', 'itemableId': this.id}), 'remove');
   }
 };

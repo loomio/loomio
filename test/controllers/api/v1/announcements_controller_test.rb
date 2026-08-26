@@ -239,7 +239,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   # History tests
-  test "history responds with event history" do
+  test "history responds with topic_item history" do
     get :history, params: { group_id: @group.id }
     assert_response :success
   end
@@ -247,8 +247,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "history for topic includes users in response" do
     member = users(:user)
     topic = @discussion.topic
-    Events::DiscussionAnnounced.publish!(discussion: @discussion, actor: @admin,
-      recipient_user_ids: [member.id], recipient_chatbot_ids: [])
+    TopicService.invite(
+      topic: topic,
+      actor: @admin,
+      params: { recipient_user_ids: [ member.id ] }
+    )
 
     get :history, params: { topic_id: topic.id }
 
@@ -294,20 +297,96 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "history for topic includes user_mentioned notifications" do
     member = users(:user)
     topic = @discussion.topic
-    parent_event = Event.find_by(kind: 'new_discussion', topic: @discussion.topic)
-    comment = Comment.create!(body: "hello", parent: parent_event, user: @admin)
-    comment.create_missing_created_event!
-    mention_event = Event.create!(kind: 'user_mentioned', eventable: comment, user: @admin,
-                                  custom_fields: { user_ids: [member.id] })
-    Notification.create!(event: mention_event, user: member)
+    parent_topic_item = TopicItem.find_by(kind: 'new_discussion', topic: @discussion.topic)
+    comment = Comment.create!(body: "hello", parent: parent_topic_item, user: @admin)
+    comment.create_missing_created_topic_item!
+    notification = Notification.create!(
+      kind: "user_mentioned",
+      subject: comment,
+      actor: @admin
+    )
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: member,
+      channel: "in_app",
+      status: "delivered",
+      delivered_at: Time.current
+    )
 
     get :history, params: { topic_id: topic.id }
 
     assert_response :success
     json = JSON.parse(response.body)
-    mention_event = json['data'].find { |e| e['kind'] == 'user_mentioned' }
-    assert mention_event, "expected user_mentioned event in history"
-    assert_includes mention_event['notifications'].map { |n| n['user_id'] }, member.id
+    mention_notification = json['data'].find { |e| e['kind'] == 'user_mentioned' }
+    assert mention_notification, "expected user_mentioned notification in history"
+    assert_includes mention_notification['notifications'].map { |n| n['user_id'] }, member.id
+  end
+
+  test "history includes eventless poll announcements" do
+    member = users(:user)
+    poll = create_test_poll
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: @admin,
+      recipient_user_ids: [ member.id ]
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+
+    get :history, params: { poll_id: poll.id }
+
+    assert_response :success
+    entry = JSON.parse(response.body)["data"].find { |item| item["id"] == "notification_#{notification.id}" }
+    assert entry
+    assert_equal "poll_announced", entry["kind"]
+    assert_equal [ member.id ], entry["notifications"].map { |state| state["user_id"] }
+  end
+
+  test "anonymous poll history hides viewed state for eventless announcements" do
+    member = users(:user)
+    poll = create_test_poll(anonymous: true)
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: @admin,
+      recipient_user_ids: [ member.id ]
+    )
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    notification.notification_deliveries.find_by!(channel: "in_app", recipient: member)
+                .update!(viewed_at: Time.current)
+
+    get :history, params: { poll_id: poll.id }
+
+    body = JSON.parse(response.body)
+    entry = body["data"].find { |item| item["id"] == "notification_#{notification.id}" }
+    assert_response :success
+    assert_equal false, body["allow_viewed"]
+    assert_equal false, entry["notifications"].first["viewed"]
+  end
+
+  test "anonymous poll history and counts do not expose closing-reminder recipients" do
+    member = users(:user)
+    poll = create_test_poll(anonymous: true)
+    notification = NotificationService.create!(
+      kind: "poll_closing_soon",
+      subject: poll,
+      actor: @admin
+    )
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: member,
+      channel: "in_app",
+      status: "delivered",
+      delivered_at: Time.current
+    )
+
+    get :history, params: { poll_id: poll.id }
+    assert_response :success
+    assert_empty JSON.parse(response.body)["data"]
+
+    get :users_notified_count, params: { poll_id: poll.id }
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)["count"]
   end
 
   test "search existing only filters target members" do
@@ -530,7 +609,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
     assert_equal member.id, json['stances'][0]['participant_id']
-    assert_equal 1, member.reload.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "poll_announced" }
+    ).count
     assert_includes poll.voters, member
   end
 
@@ -547,7 +630,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "poll_announced" }
+    ).count
   end
 
   # -- Topic announcement tests --
@@ -606,7 +693,14 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal member.id, json['topic_readers'][0]['user_id']
-    assert_equal 1, member.notifications.count
+    notification = Notification.where(kind: "discussion_announced").order(:id).last
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal @discussion.created_topic_item.id, notification.subject_id
+    assert_equal 1, NotificationDelivery.where(
+      recipient: member,
+      channel: "in_app",
+      notification: notification
+    ).count
     assert_includes @discussion.readers, member
   end
 
@@ -637,7 +731,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal member.id, json['topic_readers'][0]['user_id']
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.where(
+      recipient: member,
+      channel: "in_app",
+      notification: Notification.where(kind: "discussion_announced")
+    ).count
     assert_includes @discussion.readers, member
   end
 
@@ -785,7 +883,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     post :create, params: { outcome_id: outcome.id, recipient_user_ids: [member.id] }
     assert_response :success
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "outcome_announced" }
+    ).count
   end
 
   test "outcome create member cannot add guests when permission disabled" do
@@ -878,7 +980,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     post :create, params: { group_id: @group.id, recipient_user_ids: [member.id] }
     assert_response :success
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "membership_created" }
+    ).count
     assert_includes @group.members, member
   end
 
@@ -931,6 +1037,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     member.reload
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "membership_created" }
+    ).count
   end
 end

@@ -275,8 +275,7 @@ v-form(ref="form" @submit.prevent="submit")
       //      span(v-t="'thread_arrangement_form.nested_twice_description'")
 
 
-      //- .d-flex.justify-space-between.my-4.mt-4.discussion-template-form-actions
-    v-card-actions
+    v-card-actions.discussion-template-form-actions
       v-spacer
       v-btn.discussion-template-form__submit(
         variant="elevated"

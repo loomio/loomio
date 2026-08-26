@@ -166,11 +166,11 @@ module.exports = {
 
     page.loadPath('setup_manual_oatmilk_discussion_intro');
     page.expectText('.context-panel__heading', 'Improve the cafe bottle return process');
-    page.waitFor('.strand-item__new-comment');
+    page.waitFor('.topic-item__new-comment');
     page.execute("document.querySelector('.v-app-bar').style.visibility = 'hidden'");
     screenshot.captureRegion(
       'discussions/discussion-example',
-      ['.strand-new-discussion', '.strand-item__new-comment', '.actions-panel'],
+      ['.topic-new-discussion', '.topic-item__new-comment', '.actions-panel'],
       {width: 1100, height: 1400, padding: 32, includeThreadGutters: true}
     );
   }

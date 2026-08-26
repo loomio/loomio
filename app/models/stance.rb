@@ -3,8 +3,8 @@ class Stance < ApplicationRecord
   include HasMentions
   include Reactable
   include Bookmarkable
-  include HasEvents
-  include HasCreatedEvent
+  include HasTopicItems
+  include HasNotifications
   include Searchable
   include ValidatesBallot
 
@@ -85,7 +85,6 @@ class Stance < ApplicationRecord
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
-  scope :in_organisation, ->(group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   scope :decided, -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided, -> { where("stances.cast_at IS NULL") }
   scope :revoked, -> { where("revoked_at IS NOT NULL") }
@@ -124,12 +123,14 @@ class Stance < ApplicationRecord
   end
 
 
-  def create_missing_created_event!
-    events.create(
-      kind: created_event_kind,
+  def create_missing_created_topic_item!
+    return unless add_to_thread?
+
+    topic_items.create(
+      kind: created_topic_item_kind,
       user_id: author_id,
       created_at: created_at,
-      topic: (add_to_thread? ? poll.topic : nil)
+      topic: poll.topic
     )
   end
 
@@ -168,7 +169,7 @@ class Stance < ApplicationRecord
   def add_to_thread?
     poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
-    !Event.where(eventable: self,
+    !TopicItem.where(itemable: self,
                  topic_id: poll.topic_id,
                  kind: ['stance_created', 'stance_updated']).exists?
   end
@@ -185,8 +186,8 @@ class Stance < ApplicationRecord
     reason_format
   end
 
-  def parent_event
-    poll.created_event
+  def parent_topic_item
+    poll.created_topic_item
   end
 
   def discarded?
@@ -206,10 +207,6 @@ class Stance < ApplicationRecord
         {poll_option_id: option.id}
       end
     end
-  end
-
-  def real_participant
-    participant
   end
 
   def score_for(option)

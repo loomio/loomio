@@ -11,10 +11,10 @@ module.exports = {
 
     page.loadPath('setup_manual_oatmilk_new_discussion');
     page.expectText('.group-page__name', 'Oatmilk Cooperative');
-    page.expectText('.discussions-panel__new-thread-button', 'New discussion');
+    page.expectText('.discussions-panel__new-topic-button', 'New discussion');
     screenshot.capture('discussions/starting_a_discussion/new-discussion-button', {
       spotlight: {
-        selector: '.discussions-panel__new-thread-button',
+        selector: '.discussions-panel__new-topic-button',
         padding: 14,
         radius: 14,
         opacity: 0.4,
@@ -28,7 +28,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     page.loadPath('setup_manual_oatmilk_new_discussion');
-    page.click('.discussions-panel__new-thread-button');
+    page.click('.discussions-panel__new-topic-button');
     page.waitFor('.discussion-templates--template');
     page.execute("Array.from(document.querySelectorAll('.discussion-templates--template')).find(el => el.textContent.includes('Blank')).click()");
     page.waitFor('.discussion-form');

@@ -190,17 +190,17 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
-    page.waitFor('.thread-sidebar');
+    page.waitFor('.topic-sidebar');
     page.execute(`
-      const item = Array.from(document.querySelectorAll('.thread-sidebar .v-list-item'))
+      const item = Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
         .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'));
-      if (item) item.classList.add('manual-thread-subscribe');
+      if (item) item.classList.add('manual-topic-subscribe');
     `);
-    page.waitFor('.manual-thread-subscribe');
-    screenshot.captureElement('users/email_settings/thread_subscribe', '.thread-sidebar', {
+    page.waitFor('.manual-topic-subscribe');
+    screenshot.captureElement('users/email_settings/thread_subscribe', '.topic-sidebar', {
       width: 1100,
       height: 1500,
-      spotlight: '.manual-thread-subscribe'
+      spotlight: '.manual-topic-subscribe'
     });
   },
 
@@ -208,9 +208,9 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
-    page.waitFor('.thread-sidebar');
+    page.waitFor('.topic-sidebar');
     page.execute(`
-      Array.from(document.querySelectorAll('.thread-sidebar .v-list-item'))
+      Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
         .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'))?.click();
     `);
     page.waitFor('.change-volume-form');
@@ -254,10 +254,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_translated_comment');
-    page.waitFor('.strand-item__new-comment', 15000);
+    page.waitFor('.topic-item__new-comment', 15000);
     screenshot.captureRegion(
       'users/translation/content_translation',
-      ['.strand-item__new-comment'],
+      ['.topic-item__new-comment'],
       {
         width: 1100,
         height: 1200,
@@ -267,10 +267,10 @@ module.exports = {
       }
     );
     page.click('.action-dock__button--translate_comment');
-    page.expectText('.strand-item__new-comment', 'I can ask three cafes to track how many bottles are returned each week.');
+    page.expectText('.topic-item__new-comment', 'I can ask three cafes to track how many bottles are returned each week.');
     screenshot.captureRegion(
       'users/translation/content_translated',
-      ['.strand-item__new-comment'],
+      ['.topic-item__new-comment'],
       {width: 1100, height: 1200, padding: 4, includeThreadGutters: true}
     );
   },

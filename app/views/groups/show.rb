@@ -39,19 +39,19 @@ class Views::Groups::Show < Views::Application::Layout
       div(class: "discussions-panel v-card v-card--outlined v-sheet theme--auto mt-2") do
         div do
           div(class: "discussions-panel__content") do
-            div(class: "discussions-panel__list thread-preview-collection__container") do
-              div(class: "v-list thread-previews v-sheet v-sheet--tile theme--auto v-list--two-line", role: "list") do
+            div(class: "discussions-panel__list topic-preview-collection__container") do
+              div(class: "v-list topic-previews v-sheet v-sheet--tile theme--auto v-list--two-line", role: "list") do
                 @group.discussions.kept.joins(:topic).where(topics: { private: false }).order("topics.last_activity_at desc nulls last").limit(50).each do |discussion|
-                  a(class: "thread-preview thread-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
+                  a(class: "topic-preview topic-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
                     div(class: "v-list-item__avatar") do
-                      render Views::EventMailer::Common::Avatar.new(user: discussion.author)
+                      render Views::NotificationMailer::Common::Avatar.new(user: discussion.author)
                     end
                     div(class: "v-list-item__content") do
                       div(class: "v-list-item__title", style: "align-items: center;") do
-                        span(class: "thread-preview__title") { plain discussion.title }
+                        span(class: "topic-preview__title") { plain discussion.title }
                       end
                       div(class: "v-list-item__subtitle") do
-                        span(class: "thread-preview__items-count") { plain t("thread_preview.items_count", count: discussion.topic.items_count) }
+                        span(class: "topic-preview__items-count") { plain t("thread_preview.items_count", count: discussion.topic.items_count) }
                         span
                         comment { "/" }
                         span do

@@ -3,15 +3,15 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.context-panel');
 }
 
 function openAdviceDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_advice_discussion');
-  page.waitFor('.strand-page');
+  page.waitFor('.topic-page');
   page.waitFor('.new-comment');
-  page.expectText('.strand-card', 'updated comparison after the warehouse visit');
+  page.expectText('.topic-card', 'updated comparison after the warehouse visit');
 }
 
 function openPoll(page, template, mode) {
@@ -19,7 +19,7 @@ function openPoll(page, template, mode) {
   page.waitFor('.poll-common-card__title');
 }
 
-function captureDiscussion(screenshot, name, selector = '.strand-card') {
+function captureDiscussion(screenshot, name, selector = '.topic-card') {
   screenshot.captureElement(`guides/making_decisions/${name}`, selector, {width: 1280, height: 2000});
 }
 
@@ -43,7 +43,7 @@ module.exports = {
   },
   'discussion_comments_advice_process_new_computer': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openAdviceDiscussion(page); captureDiscussion(screenshot, 'discussion_comments_advice_process_new_computer', '.strand-card');
+    openAdviceDiscussion(page); captureDiscussion(screenshot, 'discussion_comments_advice_process_new_computer', '.topic-card');
   },
   'decision_outcome_advice_process_new_computer': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
@@ -85,7 +85,7 @@ module.exports = {
   },
   'proposal_reply_health_and_safety': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
-    openDiscussion(page); page.waitFor('.new-comment'); captureDiscussion(screenshot, 'proposal_reply_health_and_safety', '.strand-card');
+    openDiscussion(page); page.waitFor('.new-comment'); captureDiscussion(screenshot, 'proposal_reply_health_and_safety', '.topic-card');
   },
   'proposal_reaction_round_health_and_safety': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);

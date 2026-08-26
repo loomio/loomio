@@ -90,13 +90,13 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_equal users(:alien), cache.scope[:users_by_id][users(:alien).id] if cache.scope[:users_by_id]
   end
 
-  test 'for event collection caches eventables' do
-    event = events(:discussion_created_event)
+  test 'for topic_item collection caches itemables' do
+    topic_item = topic_items(:discussion_created_topic_item)
     discussion = discussions(:discussion)
 
-    cache = RecordCache.for_collection([event], users(:admin).id)
+    cache = RecordCache.for_collection([topic_item], users(:admin).id)
 
-    assert_equal event, cache.scope[:events_by_id][event.id]
+    assert_equal topic_item, cache.scope[:topic_items_by_id][topic_item.id]
     assert_equal discussion, cache.scope[:discussions_by_id][discussion.id]
   end
 end

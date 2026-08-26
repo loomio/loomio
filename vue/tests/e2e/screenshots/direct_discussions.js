@@ -4,8 +4,8 @@ const richText = require('../helpers/oatmilkRichText');
 
 function openDirectDiscussions(page) {
   page.loadPath('setup_manual_oatmilk_direct_discussions');
-  page.waitFor('.threads-page');
-  page.expectText('.threads-page', 'Cafe bottle collection check-in');
+  page.waitFor('.topics-page');
+  page.expectText('.topics-page', 'Cafe bottle collection check-in');
 }
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openDirectDiscussions(page);
-    page.click('.threads-page__new-thread-button');
+    page.click('.topics-page__new-topic-button');
     page.waitFor('.discussion-templates--direct-discussion');
     page.click('.discussion-templates--direct-discussion');
     page.waitFor('.discussion-form');

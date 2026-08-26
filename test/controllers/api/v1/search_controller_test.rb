@@ -28,7 +28,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     )
     OutcomeService.create(outcome: @outcome, actor: @user)
 
-    # Rebuild search documents after events are created
+    # Rebuild search documents after topic_items are created
     PgSearch::Document.delete_all
     [ Discussion, Comment, Poll, Outcome ].each(&:rebuild_pg_search_documents)
     PgSearch::Document.connection.execute <<~SQL
@@ -119,7 +119,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
       actor: users(:admin)
     )
     discussion.save!(validate: false)
-    discussion.create_missing_created_event!
+    discussion.create_missing_created_topic_item!
     discussion.add_guest!(@user, discussion.author)
     discussion.update_pg_search_document
 

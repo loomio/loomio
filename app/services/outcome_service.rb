@@ -17,7 +17,12 @@ class OutcomeService
                                            audience: params[:recipient_audience],
                                            include_actor: params[:include_actor].present?)
 
-      Events::OutcomeAnnounced.publish!(outcome, actor, users.pluck(:id), params[:recipient_audience])
+      NotificationService.create!(
+        kind: "outcome_announced",
+        subject: outcome.created_topic_item || outcome,
+        actor: actor,
+        recipient_user_ids: users.pluck(:id)
+      )
     end
     users
   end
@@ -36,7 +41,7 @@ class OutcomeService
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
       return false
     end
-    event = Outcome.transaction do
+    topic_item = Outcome.transaction do
       outcome.poll.outcomes.update_all(latest: false)
       outcome.save!
 
@@ -47,15 +52,29 @@ class OutcomeService
                                            audience: params[:recipient_audience],
                                            include_actor: params[:include_actor].present?)
 
-      Events::OutcomeCreated.publish!(outcome: outcome,
-                                      recipient_user_ids: users.pluck(:id),
-                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                      recipient_audience: params[:recipient_audience])
+      audience_values = mention_audience_values(outcome)
+      topic_item = TopicItems::OutcomeCreated.create!(itemable: outcome)
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+        NotificationService.create!(
+          kind: "outcome_created",
+          subject: topic_item,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          audience_values: audience_values
+        )
+      end
+      MentionNotificationService.create!(
+        subject: topic_item,
+        actor: actor,
+        already_notified_user_ids: users.pluck(:id)
+      )
+      topic_item
     end
 
     Sentry.metrics.count("outcome.create")
     EventBus.broadcast 'outcome_create', outcome, actor
-    event
+    topic_item
   end
 
   def self.update(outcome:, actor:, params: {})
@@ -73,7 +92,7 @@ class OutcomeService
       return false
     end
 
-    event = Outcome.transaction do
+    Outcome.transaction do
       outcome.save!
       outcome.update_versions_count
 
@@ -84,22 +103,46 @@ class OutcomeService
                                            audience: params[:recipient_audience],
                                            include_actor: params[:include_actor].present?)
 
-      Events::OutcomeUpdated.publish!(outcome: outcome,
-                                      actor: actor,
-                                      recipient_user_ids: users.pluck(:id),
-                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                      recipient_audience: params[:recipient_audience])
+      audience_values = mention_audience_values(outcome)
+      if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+        NotificationService.create!(
+          kind: "outcome_updated",
+          subject: outcome,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          audience_values: audience_values
+        )
+      end
+      MentionNotificationService.create!(
+        subject: outcome,
+        actor: actor,
+        already_notified_user_ids: users.pluck(:id)
+      )
     end
 
     Sentry.metrics.count("outcome.update")
     EventBus.broadcast 'outcome_update', outcome, actor
-    event
+    MessageChannelService.publish_topic_model(outcome)
+    outcome
   end
 
   def self.publish_review_due
-    Outcome.review_due_not_published(Date.today).each do |outcome|
-      Events::OutcomeReviewDue.publish!(outcome)
+    Outcome.review_due_not_published(Time.zone.today).each do |outcome|
+      NotificationService.create!(
+        kind: "outcome_review_due",
+        subject: outcome,
+        actor: outcome.author
+      )
     end
   end
 
+  def self.mention_audience_values(outcome)
+    {
+      newly_mentioned_user_ids: outcome.newly_mentioned_users.pluck(:id),
+      mentioned_user_ids: outcome.mentioned_users.pluck(:id),
+      mentioned_group_user_ids: outcome.mentioned_group_users.pluck(:id)
+    }
+  end
+  private_class_method :mention_audience_values
 end

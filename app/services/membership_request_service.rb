@@ -6,19 +6,30 @@ class MembershipRequestService
 
     MembershipRequest.transaction do
       membership_request.save!
-      Events::MembershipRequested.publish!(membership_request)
+      NotificationService.create!(
+        kind: "membership_requested",
+        subject: membership_request,
+        actor: actor
+      )
     end
+    membership_request
   end
 
-  def self.approve(membership_request:, actor: )
+  def self.approve(membership_request:, actor:)
     actor.ability.authorize! :approve, membership_request
     MembershipRequest.transaction do
       membership_request.approve!(actor)
-      Events::MembershipRequestApproved.publish!(membership_request.convert_to_membership!, actor)
+      membership = membership_request.convert_to_membership!
+      NotificationService.create!(
+        kind: "membership_request_approved",
+        subject: membership,
+        actor: actor
+      )
     end
+    membership_request
   end
 
-  def self.ignore(membership_request: , actor: )
+  def self.ignore(membership_request:, actor:)
     actor.ability.authorize! :ignore, membership_request
     membership_request.ignore!(actor)
   end

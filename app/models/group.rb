@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
-  include HasEvents
+  include HasNotifications
   include Translatable
 
   extend HasTokens
@@ -83,8 +83,6 @@ class Group < ApplicationRecord
     where("groups.name ilike :first OR groups.name ilike :other OR groups.handle ilike :first",
           first: "#{q}%", other: "% #{q}%")
   }
-  scope :in_organisation, ->(group) { where(id: group.id_and_subgroup_ids) }
-
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   scope :by_slack_team, ->(team_id) {

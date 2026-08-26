@@ -86,19 +86,19 @@ export default new class AbilityService {
     return group && group.parentOrSelf().adminsInclude(Session.user());
   }
 
-  canPinEvent(event) {
-    const topic = event.topic();
-    return (event.depth === 1) &&
-    !event.model().discardedAt &&
-    !event.pinned &&
+  canPinEvent(topic_item) {
+    const topic = topic_item.topic();
+    return (topic_item.depth === 1) &&
+    !topic_item.model().discardedAt &&
+    !topic_item.pinned &&
     topic && !topic.lockedAt &&
     topic.adminsInclude(Session.user());
   }
 
-  canUnpinEvent(event) {
-    const topic = event.topic();
+  canUnpinEvent(topic_item) {
+    const topic = topic_item.topic();
     return topic && !topic.lockedAt &&
-    event.pinned && topic.adminsInclude(Session.user());
+    topic_item.pinned && topic.adminsInclude(Session.user());
   }
 
   canMoveTopic(topic) {

@@ -43,11 +43,11 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def create_action
-    @event = service.create(**{resource_symbol => resource, actor: current_user})
+    capture_topic_item(service.create(**{resource_symbol => resource, actor: current_user}))
   end
 
   def update_action
-    @event = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user})
+    capture_topic_item(service.update(**{resource_symbol => resource, params: resource_params, actor: current_user}))
   end
 
   def destroy_action
@@ -93,8 +93,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   # prefer this
   def records_to_serialize
-    if @event.is_a?(Event)
-      Array(@event)
+    if @topic_item
+      Array(@topic_item)
     else
       collection || Array(resource)
     end
@@ -103,9 +103,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def serializer_class
     record = records_to_serialize.first
     if record.nil?
-      EventSerializer
-    elsif record.is_a? Event
-      EventSerializer
+      TopicItemSerializer
+    elsif record.is_a? TopicItem
+      TopicItemSerializer
     else
       "#{record.class}Serializer".constantize
     end
@@ -115,8 +115,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
     record = records_to_serialize.first
     if record.nil?
       controller_name.to_sym
-    elsif record.is_a? Event
-      :events
+    elsif record.is_a? TopicItem
+      :topic_items
     else
       record.class.to_s.underscore.pluralize.to_sym
     end
@@ -132,12 +132,6 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def exclude_types
     params[:exclude_types].to_s.split(' ')
-  end
-
-  # phase this out
-  def events_to_serialize
-    return [] unless @event.is_a?(Event)
-    Array(@event)
   end
 
   # phase this out
@@ -159,6 +153,10 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def collection=(value)
     instance_variable_set :"@#{resource_name.pluralize}", value
+  end
+
+  def capture_topic_item(result)
+    @topic_item = result if result.is_a?(TopicItem)
   end
 
   def instantiate_resource

@@ -100,22 +100,22 @@ class ReceivedEmailService
     # Group by handle
     if group = group_from_route_path(email.route_path)
       unless address_is_blocked(email, group)
-        email.update(group_id: group.id)
         # This route authenticates the actor solely from the (spoofable) From:
         # header — so refuse to auto-author when the relay says the sender
         # domain failed SPF/DKIM/DMARC. Treat as an unrecognised sender.
         if email.sender_authentication_failed?
           Rails.logger.info("rejecting unauthenticated sender for route: #{email.sender_email}, #{email.route_path}")
-          Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
+          assign_group_and_notify_unknown_sender!(email, group)
           return
         end
         if actor = actor_from_email_and_group(email, group)
+          email.update!(group: group)
           Rails.logger.info("creating discussion from email: #{email.route_path}")
           DiscussionService.create(params: discussion_params(email), actor: actor)
           return email.update_attribute(:released, true)
         else
           Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
-          Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
+          assign_group_and_notify_unknown_sender!(email, group)
           return
         end
       else
@@ -149,6 +149,17 @@ class ReceivedEmailService
 
   private
 
+  def self.assign_group_and_notify_unknown_sender!(email, group)
+    ReceivedEmail.transaction do
+      email.update!(group: group)
+      NotificationService.create!(
+        kind: "unknown_sender",
+        subject: email,
+        actor: nil
+      )
+    end
+  end
+
   def self.reply_split_points(author_name = nil)
     [
       /^[[:space:]]*[-]+[[:space:]]*Original Message[[:space:]]*[-]+[[:space:]]*$/i,
@@ -159,7 +170,7 @@ class ReceivedEmailService
       /^On.*<\r?\n?.*>.*\r?\n?wrote:\r?\n?$/,
       /On.*wrote:/,
       (author_name ? /^[[:space:]]*#{author_name}[[:space:]]*$/ : nil), # signature that starts with author name
-      /#{EventMailer::REPLY_DELIMITER}/,
+      /#{NotificationMailer::REPLY_DELIMITER}/,
       /\*?From:.*$/i,
       /^[[:space:]]*\d{4}[-\/]\d{1,2}[-\/]\d{1,2}[[:space:]].*[[:space:]]<.*>?$/i,
       /(_)*\n[[:space:]]*De :.*\n[[:space:]]*Envoyé :.*\n[[:space:]]*À :.*\n[[:space:]]*Objet :.*\n$/i, # French Outlook

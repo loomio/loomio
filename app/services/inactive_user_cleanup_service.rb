@@ -7,12 +7,12 @@ module InactiveUserCleanupService
     demos: %i[author_id],
     discussion_templates: %i[author_id discarded_by],
     discussions: %i[author_id discarded_by],
-    events: %i[user_id],
+    topic_items: %i[user_id],
     groups: %i[creator_id],
     member_email_aliases: %i[user_id author_id],
     membership_requests: %i[requestor_id responder_id],
     memberships: %i[user_id inviter_id revoker_id],
-    notifications: %i[user_id actor_id],
+    notifications: %i[actor_id],
     outcomes: %i[author_id],
     poll_templates: %i[author_id],
     polls: %i[author_id discarded_by],
@@ -45,10 +45,17 @@ module InactiveUserCleanupService
   end
 
   def self.orphan_user_ids
-    USER_REFERENCES.reduce(User.where(deactivated_at: nil).where("last_sign_in_at < ?", 1.year.ago)) do |scope, (table, columns)|
+    scope = USER_REFERENCES.reduce(User.where(deactivated_at: nil).where("last_sign_in_at < ?", 1.year.ago)) do |scope, (table, columns)|
       columns.reduce(scope) do |column_scope, column|
         column_scope.where("NOT EXISTS (SELECT 1 FROM #{table} WHERE #{table}.#{column} = users.id)")
       end
-    end.pluck(:id)
+    end
+    scope.where(<<~SQL.squish).pluck(:id)
+      NOT EXISTS (
+        SELECT 1 FROM notification_deliveries
+        WHERE notification_deliveries.recipient_type = 'User'
+          AND notification_deliveries.recipient_id = users.id
+      )
+    SQL
   end
 end

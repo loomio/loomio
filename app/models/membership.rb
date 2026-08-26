@@ -10,8 +10,7 @@ class Membership < ApplicationRecord
   include HasVolume
   include HasTimeframe
   include HasExperiences
-  scope :in_organisation, -> (group) { includes(:user).where(group_id: group.id_and_subgroup_ids).active }
-
+  include HasNotifications
   extend FriendlyId
   extend HasTokens
   friendly_id :token
@@ -24,8 +23,6 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :inviter, class_name: 'User'
   belongs_to :revoker, class_name: 'User'
-  has_many :events, as: :eventable, dependent: :destroy
-
   scope :active,        -> { where(revoked_at: nil) }
   scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }

@@ -67,11 +67,11 @@ const fetchTopics = debounce(() => {
 }, 500);
 
 const submit = () => {
-  const event = props.poll.createdEvent();
-  if (!event) { return; }
+  const topic_item = props.poll.createdTopicItem();
+  if (!topic_item) { return; }
 
   loading.value = true;
-  selectedTopic.value.moveComments([event.id]).then(() => {
+  selectedTopic.value.moveComments([topic_item.id]).then(() => {
     loading.value = false;
     Flash.success("add_poll_to_discussion_modal.success", {pollType: props.poll.translatedPollType()});
     router.push(urlFor(selectedTopic.value)).then(() => {

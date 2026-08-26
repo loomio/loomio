@@ -1,7 +1,9 @@
+require_relative "support/legacy_event_migration_service"
+
 class RewriteActiveStorageLinks < ActiveRecord::Migration[6.1]
   def change
     return if ENV['CANONICAL_HOST'] == 'www.loomio.org'
-    MigrateEventsService.rewrite_inline_images
-    MigrateEventsService.rewrite_attachment_links
+    LegacyEventMigrationService.rewrite_inline_images
+    LegacyEventMigrationService.rewrite_attachment_links
   end
 end

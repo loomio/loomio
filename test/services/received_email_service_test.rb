@@ -2,6 +2,19 @@ require 'test_helper'
 
 class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
+  test "unknown sender assignment rolls back when notification creation fails" do
+    group = Group.create!(name: "Atomic unknown sender #{SecureRandom.hex(4)}")
+    email = ReceivedEmail.create!(headers: {}, body_text: "Unknown sender")
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        ReceivedEmailService.send(:assign_group_and_notify_unknown_sender!, email, group)
+      end
+    end
+
+    assert_nil email.reload.group_id
+  end
+
   # -- Splitting replies --
 
   test "splits spanish text reply" do
@@ -29,7 +42,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
   end
 
   test "splits on reply delimiter" do
-    input_body = "Hi I'm the bit you want\n      #{EventMailer::REPLY_DELIMITER}\n      This is the bit that you don't want"
+    input_body = "Hi I'm the bit you want\n      #{NotificationMailer::REPLY_DELIMITER}\n      This is the bit that you don't want"
     output_body = ReceivedEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end
@@ -186,7 +199,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     )
 
     assert_no_difference 'Discussion.count' do
-      assert_difference -> { Event.where(kind: 'unknown_sender').count }, 1 do
+      assert_difference -> { Notification.where(kind: "unknown_sender").count }, 1 do
         ReceivedEmailService.route(email)
       end
     end

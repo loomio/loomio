@@ -24,11 +24,11 @@ class TopicQueryTest < ActiveSupport::TestCase
 
     pub_disc = DiscussionService.build(params: { title: "Pub", group_id: pub_group.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc.save(validate: false)
-    pub_disc.create_missing_created_event!
+    pub_disc.create_missing_created_topic_item!
 
     priv_disc = DiscussionService.build(params: { title: "Priv", group_id: priv_group.id, private: true, description_format: "html" }, actor: pub_author)
     priv_disc.save(validate: false)
-    priv_disc.create_missing_created_event!
+    priv_disc.create_missing_created_topic_item!
 
     query = TopicQuery.visible_to
     assert_includes query, pub_disc.topic
@@ -43,7 +43,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     pub_group.add_admin!(pub_author)
     pub_disc = DiscussionService.build(params: { title: "PubDisc", group_id: pub_group.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc.save(validate: false)
-    pub_disc.create_missing_created_event!
+    pub_disc.create_missing_created_topic_item!
 
     refute_includes TopicQuery.relevant_to, pub_disc.topic
     assert_includes TopicQuery.relevant_to(group_ids: [pub_group.id]), pub_disc.topic
@@ -224,7 +224,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
     disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
-    disc.create_missing_created_event!
+    disc.create_missing_created_topic_item!
     disc.add_guest!(@user, guest_author)
     assert_includes TopicQuery.visible_to(user: @user), disc.topic
   end
@@ -234,7 +234,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
     disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
-    disc.create_missing_created_event!
+    disc.create_missing_created_topic_item!
     refute_includes TopicQuery.visible_to(user: @user), disc.topic
   end
 

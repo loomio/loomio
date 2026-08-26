@@ -35,6 +35,9 @@ function markPollOptions(page, root = '.poll-common-form') {
 function openTemplateForm(page, custom = false) {
   page.loadPath(custom ? 'setup_manual_oatmilk_custom_poll_template?view=edit' : 'setup_manual_oatmilk_poll_template_form');
   page.waitFor('.poll-template-form');
+  page.waitFor('.poll-template-form-fields__title input');
+  page.waitFor('.poll-template-form-fields__title-placeholder input');
+  page.waitFor('.poll-template-form__submit');
 }
 
 function markTemplateField(page, label, className) {

@@ -7,7 +7,15 @@ class CommentService
       comment.save!
       comment.update_pg_search_document
       Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
-      Events::NewComment.publish!(comment)
+      topic_item = TopicItems::NewComment.create!(
+        itemable: comment,
+        pinned: comment.should_pin
+      )
+      MentionNotificationService.create!(
+        subject: topic_item,
+        actor: actor
+      )
+      topic_item
     end
   end
 
@@ -16,21 +24,21 @@ class CommentService
     Sentry.metrics.count("comment.discard")
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
-      comment.created_event.update(pinned: false)
+      comment.created_topic_item.update(pinned: false)
     end
     comment.topic.update_sequence_info!
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_event
+    comment.created_topic_item
   end
 
   def self.undiscard(comment:, actor:)
     actor.ability.authorize!(:undiscard, comment)
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: nil, discarded_by: nil)
-      comment.created_event.update(user_id: comment.user_id)
+      comment.created_topic_item.update(user_id: comment.user_id)
     end
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_event
+    comment.created_topic_item
   end
 
   def self.destroy(comment:, actor:)
@@ -54,14 +62,18 @@ class CommentService
       Sentry.metrics.count("comment.update_failed", attributes: { columns: comment.errors.attribute_names.join(',') })
       return false
     end
-    event = Comment.transaction do
+    Comment.transaction do
       comment.save!
       comment.update_versions_count
       Sentry.metrics.count("comment.update")
-      Events::CommentEdited.publish!(comment, actor)
+      MentionNotificationService.create!(
+        subject: comment,
+        actor: actor,
+      )
     end
 
     EventBus.broadcast('comment_update', comment, actor)
-    event
+    MessageChannelService.publish_topic_model(comment)
+    comment
   end
 end

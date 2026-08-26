@@ -8,15 +8,15 @@ function openGroup(page) {
 
 function openDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
-  page.waitFor('.strand-page');
-  page.waitFor('.thread-sidebar .action-dock__button--seen_by');
+  page.waitFor('.topic-page');
+  page.waitFor('.topic-sidebar .action-dock__button--seen_by');
   page.pause(1000);
 }
 
 function openCommentDiscussion(page) {
   page.loadPath('setup_manual_oatmilk_comment_discussion');
-  page.waitFor('.strand-page');
-  page.expectText('.strand-page', 'Improve the cafe bottle collection process');
+  page.waitFor('.topic-page');
+  page.expectText('.topic-page', 'Improve the cafe bottle collection process');
   page.waitFor('#add-comment .comment-form .ProseMirror');
 }
 
@@ -51,16 +51,16 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion_intro');
-    page.waitFor('.strand-card');
+    page.waitFor('.topic-card');
     screenshot.captureRegion('overview/orientation_discussion', [
-      '.strand-header',
+      '.topic-header',
       '.context-panel__description',
       '.new-comment'
     ], {
       width: 1100,
       height: 1500,
       padding: 24,
-      scrollSelector: '.strand-card',
+      scrollSelector: '.topic-card',
       scrollBlock: 'start'
     });
   },
@@ -145,7 +145,7 @@ module.exports = {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openCommentDiscussion(page);
     page.fillIn('#add-comment .comment-form .ProseMirror', 'I can help document the cleaning time during the trial.');
-    screenshot.captureElement('overview/comment_add', '.strand-card', {
+    screenshot.captureElement('overview/comment_add', '.topic-card', {
       width: 1100,
       height: 1600,
       spotlight: {selector: '#add-comment .comment-form', padding: 12, radius: 14}

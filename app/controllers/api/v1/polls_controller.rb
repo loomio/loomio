@@ -71,8 +71,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def remind
-    event = service.remind(poll: load_and_authorize(:poll), actor: current_user, params: resource_params)
-    render json: {count: event.recipient_user_ids.count}
+    notification = service.remind(poll: load_and_authorize(:poll), actor: current_user, params: resource_params)
+    render json: {count: notification.recipient_user_ids.count}
   end
 
   def index
@@ -83,18 +83,18 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def close
-    @event = service.close(poll: load_resource, actor: current_user)
+    capture_topic_item(service.close(poll: load_resource, actor: current_user))
     respond_with_resource
   end
 
   def reopen
-    @event = service.reopen(poll: load_resource, params: resource_params, actor: current_user)
+    capture_topic_item(service.reopen(poll: load_resource, params: resource_params, actor: current_user))
     respond_with_resource
   end
 
   def discard
     load_resource
-    @event = service.discard(poll: resource, actor: current_user)
+    capture_topic_item(service.discard(poll: resource, actor: current_user))
     respond_with_resource
   end
 

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CommentServiceTest < ActiveSupport::TestCase
-  inline_jobs "creates user_mentioned event when mentioning a user",
+  inline_jobs "creates user_mentioned notification when mentioning a user",
               "marks notification as read on reply",
               "does not renotify old mentions on update"
   setup do
@@ -11,7 +11,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     @discussion = discussions(:discussion)
   end
 
-  test "creates a comment and returns an event" do
+  test "creates a comment and returns an topic_item" do
     comment = Comment.new(
       parent: @discussion,
       author: @user,
@@ -19,14 +19,34 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = CommentService.create(comment: comment, actor: @user)
 
-    assert_kind_of Event, event
+    assert_kind_of TopicItem, topic_item
     assert comment.persisted?
     assert_equal "My body is ready", comment.body
+    assert_not Notification.about(comment).exists?(kind: "new_comment")
   end
 
-  test "rolls back comment creation when event creation fails" do
+  test "unmentioned comment does not create a notification record" do
+    subscriber = @admin
+    TopicReader.for(user: subscriber, topic: @discussion.topic).set_volume!(:loud)
+    comment = Comment.new(
+      parent: @discussion,
+      body: "Subscriber delivery",
+      body_format: "md"
+    )
+
+    topic_item = nil
+    NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+      topic_item = CommentService.create(comment: comment, actor: @user)
+    end
+
+    assert_predicate comment, :persisted?
+    assert_equal comment, topic_item.itemable
+    assert_not Notification.about(comment).exists?
+  end
+
+  test "rolls back comment creation when topic_item creation fails" do
     comment = Comment.new(
       parent: @discussion,
       author: @user,
@@ -35,13 +55,31 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
 
     error = assert_raises RuntimeError do
-      Events::NewComment.stub(:publish!, ->(*) { raise "event failed" }) do
+      TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
         CommentService.create(comment: comment, actor: @user)
       end
     end
 
-    assert_equal "event failed", error.message
+    assert_equal "topic_item failed", error.message
     assert_not Comment.exists?(body: "Do not leave this behind")
+  end
+
+  test "rolls back comment and topic_item when mention notification creation fails" do
+    @admin.update!(username: "atomicmention#{SecureRandom.hex(4)}")
+    comment = Comment.new(
+      parent: @discussion,
+      body: "Mention @#{@admin.username}",
+      body_format: "md"
+    )
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        CommentService.create(comment: comment, actor: @user)
+      end
+    end
+
+    assert_not comment.persisted?
+    assert_not TopicItem.exists?(itemable: comment)
   end
 
   test "marks created comment as read for the author" do
@@ -55,9 +93,9 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = CommentService.create(comment: comment, actor: @user)
 
-    assert reader.reload.has_read?(event.sequence_id)
+    assert reader.reload.has_read?(topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
   end
 
@@ -161,7 +199,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     assert_equal 80, poll.topic.comment_length_max
   end
 
-  test "creates user_mentioned event when mentioning a user" do
+  test "creates user_mentioned notification when mentioning a user" do
     @admin.update!(username: "mentionme#{SecureRandom.hex(4)}")
     comment = Comment.new(
       parent: @discussion,
@@ -170,11 +208,14 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    assert_difference "Event.where(kind: 'user_mentioned').count", 1 do
+    assert_no_difference -> { TopicItem.where(kind: "user_mentioned").count } do
       CommentService.create(comment: comment, actor: @user)
     end
 
     assert_includes comment.mentioned_users, @admin
+    notification = Notification.about(comment).find_by!(kind: "comment_replied_to")
+    assert_equal [ @admin.id ], notification.recipient_user_ids
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
   test "marks notification as read on reply" do
@@ -188,8 +229,9 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
     CommentService.create(comment: mention_comment, actor: @admin)
 
-    notifications = Notification.joins(:event).where('events.kind': 'user_mentioned', viewed: false, user_id: @user)
-    assert_equal 1, notifications.count
+    notification = Notification.about(mention_comment).find_by!(kind: "user_mentioned")
+    delivery = notification.notification_deliveries.find_by!(channel: "in_app", recipient: @user)
+    assert_nil delivery.viewed_at
 
     reply_comment = Comment.new(
       parent: mention_comment,
@@ -199,7 +241,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
     CommentService.create(comment: reply_comment, actor: @user)
 
-    assert_equal 0, notifications.count
+    assert_not_nil delivery.reload.viewed_at
   end
 
   test "updates a comment" do
@@ -211,9 +253,39 @@ class CommentServiceTest < ActiveSupport::TestCase
     )
     CommentService.create(comment: comment, actor: @user)
 
-    CommentService.update(comment: comment, params: { body: "Updated body" }, actor: @user)
+    published_models = []
+    assert_no_difference -> { TopicItem.where(kind: "comment_edited").count } do
+      MessageChannelService.stub(:publish_topic_model, ->(model) { published_models << model }) do
+        CommentService.update(comment: comment, params: { body: "Updated body" }, actor: @user)
+      end
+    end
 
     assert_equal "Updated body", comment.reload.body
+    assert_equal [ comment ], published_models
+  end
+
+  test "rolls back an edited comment when mention notification creation fails" do
+    @admin.update!(username: "rollbackmention#{SecureRandom.hex(4)}")
+    comment = Comment.new(
+      parent: @discussion,
+      author: @user,
+      body: "Original body",
+      body_format: "md"
+    )
+    CommentService.create(comment: comment, actor: @user)
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        CommentService.update(
+          comment: comment,
+          params: { body: "Hello @#{@admin.username}" },
+          actor: @user
+        )
+      end
+    end
+
+    assert_equal "Original body", comment.reload.body
+    assert_not TopicItem.exists?(kind: "comment_edited", itemable: comment)
   end
 
   test "does not allow update to reparent a comment" do
@@ -246,12 +318,12 @@ class CommentServiceTest < ActiveSupport::TestCase
     CommentService.create(comment: comment, actor: @user)
 
     # First mention should create notification
-    assert_difference "@admin.notifications.count", 1 do
+    assert_difference -> { Notification.about(comment).where(kind: "comment_replied_to").count }, 1 do
       CommentService.update(comment: comment, params: { body: "A mention for @#{@admin.username}!" }, actor: @user)
     end
 
     # Second update with same mention should not create new notification
-    assert_no_difference "@admin.notifications.count" do
+    assert_no_difference -> { Notification.about(comment).where(kind: "comment_replied_to").count } do
       CommentService.update(comment: comment, params: { body: "Hello again @#{@admin.username}" }, actor: @user)
     end
   end
@@ -284,28 +356,28 @@ class CommentServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "destroying an event reparents its timeline children" do
+  test "destroying an topic_item reparents its timeline children" do
     comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = CommentService.create(comment: comment, actor: @user)
     reply = Comment.new(parent: comment, author: @user, body: "Reply")
     reply_event = CommentService.create(comment: reply, actor: @user)
 
-    event.destroy!
+    topic_item.destroy!
 
-    assert_equal event.parent_id, reply_event.reload.parent_id
+    assert_equal topic_item.parent_id, reply_event.reload.parent_id
     assert_not CleanupService.events_missing_parent.exists?(id: reply_event.id)
   end
 
-  test "destroying a topic root destroys its complete event tree" do
+  test "destroying a topic root destroys its complete topic_item tree" do
     comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = CommentService.create(comment: comment, actor: @user)
     reply = Comment.new(parent: comment, author: @user, body: "Reply")
     reply_event = CommentService.create(comment: reply, actor: @user)
 
-    @discussion.created_event.destroy!
+    @discussion.created_topic_item.destroy!
 
-    assert_not Event.exists?(event.id)
-    assert_not Event.exists?(reply_event.id)
+    assert_not TopicItem.exists?(topic_item.id)
+    assert_not TopicItem.exists?(reply_event.id)
   end
 
   test "does not destroy comment when unauthorized" do

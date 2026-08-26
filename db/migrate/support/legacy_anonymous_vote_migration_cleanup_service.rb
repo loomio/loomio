@@ -27,8 +27,8 @@ class LegacyAnonymousVoteMigrationCleanupService
 
       # Removing stance events can change the event tree. Repair it now and verify
       # it before the migration service creates detached ballots.
-      TopicService.repair(poll.topic_id)
-      TopicService.verify_integrity!(poll.topic_id)
+      LegacyTopicEventRepairService.repair!(poll.topic_id)
+      LegacyTopicEventRepairService.verify!(poll.topic_id)
 
       {
         poll_id: poll.id,
@@ -37,7 +37,7 @@ class LegacyAnonymousVoteMigrationCleanupService
         removed_stance_choices: removed_stance_choices
       }
     end
-  rescue LegacyAnonymousVoteMigrationService::MigrationError, TopicService::IntegrityError => error
+  rescue LegacyAnonymousVoteMigrationService::MigrationError, LegacyTopicEventRepairService::IntegrityError => error
     raise error if error.is_a?(CleanupError)
 
     raise CleanupError, error.message

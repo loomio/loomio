@@ -45,7 +45,7 @@ export default class TopicModel extends BaseModel {
       recipientChatbotIds: [],
       recipientEmails: [],
       tags: [],
-      forkedEventIds: [],
+      selectedTopicItemIds: [],
       discardedAt: null,
       lockedAt: null,
       lockerId: null,
@@ -86,8 +86,8 @@ export default class TopicModel extends BaseModel {
     return this.dismissedAt != null && this.dismissedAt >= this.lastActivityAt;
   }
 
-  createdEvent() {
-    return this.topicable().createdEvent();
+  createdTopicItem() {
+    return this.topicable().createdTopicItem();
   }
 
   hasRead(id) {
@@ -222,9 +222,9 @@ export default class TopicModel extends BaseModel {
     return this.volume() === 'mute';
   }
 
-  moveComments(forkedEventIds) {
+  moveComments(selectedTopicItemIds) {
     this.processing = true;
-    return Records.topics.remote.patchMember(this.id, 'move_comments', { forked_event_ids: forkedEventIds }).finally(() => { this.processing = false; });
+    return Records.topics.remote.patchMember(this.id, 'move_comments', { selected_topic_item_ids: selectedTopicItemIds }).finally(() => { this.processing = false; });
   }
 
   discard() {

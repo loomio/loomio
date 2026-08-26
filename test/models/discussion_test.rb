@@ -104,13 +104,13 @@ class DiscussionTest < ActiveSupport::TestCase
   test "creating a comment increments correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment = Comment.new(parent: discussion, body: "A comment")
-    event = CommentService.create(comment: comment, actor: @admin)
-    event.reload
+    topic_item = CommentService.create(comment: comment, actor: @admin)
+    topic_item.reload
     topic = discussion.topic.reload
     assert_equal 2, topic.items_count
-    assert_equal event.created_at, topic.last_activity_at
+    assert_equal topic_item.created_at, topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
-    assert_equal event.sequence_id, topic.last_sequence_id
+    assert_equal topic_item.sequence_id, topic.last_sequence_id
   end
 
   test "deleting only comment decrements correctly" do

@@ -329,8 +329,8 @@ export default class PollModel extends BaseModel {
     return Records.outcomes.find({pollId: this.id, latest: true})[0];
   }
 
-  createdEvent() {
-    return Records.events.find({eventableId: this.id, kind: 'poll_created'})[0];
+  createdTopicItem() {
+    return Records.topicItems.find({itemableId: this.id, kind: 'poll_created'})[0];
   }
 
   latestStances(order, limit) {

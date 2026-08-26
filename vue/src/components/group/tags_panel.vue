@@ -69,11 +69,11 @@ export default
       div(v-if="topicsLoader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
-        .discussions-panel__list.thread-preview-collection__container(
+        .discussions-panel__list.topic-preview-collection__container(
           v-if="topics.length"
         )
-          v-list.thread-previews(lines="two")
-            thread-preview(
+          v-list.topic-previews(lines="two")
+            topic-preview(
               v-for="topic in topics"
               :key="topic.id"
               :topic="topic"

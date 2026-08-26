@@ -62,8 +62,8 @@ module Dev::Scenarios::Discussion
     create_another_discussion
     sign_in patrick
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally on topic!"), actor: jennifer)
-    event = CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
-    CommentService.create(comment: Comment.new(parent: event.eventable, body: "This is a reply to the off-topic thing!"), actor: emilio)
+    topic_item = CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
+    CommentService.create(comment: Comment.new(parent: topic_item.itemable, body: "This is a reply to the off-topic thing!"), actor: emilio)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is also off-topic"), actor: emilio)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally back on topic!"), actor: patrick)
 
@@ -89,14 +89,14 @@ module Dev::Scenarios::Discussion
   def setup_thread_catch_up
     jennifer.update(email_catch_up_day: 7)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
-    event = CommentService.create(comment: Comment.new(parent: create_discussion, body: "removed comment"), actor: patrick)
-    CommentService.discard(comment: event.eventable, actor: event.user)
+    topic_item = CommentService.create(comment: Comment.new(parent: create_discussion, body: "removed comment"), actor: patrick)
+    CommentService.discard(comment: topic_item.itemable, actor: topic_item.user)
     DiscussionService.update(discussion: create_discussion,
                              params: {recipient_message: 'this is an edit message'},
                              actor: patrick)
     poll = fake_poll(discussion: create_discussion, author: patrick)
     poll.save!
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
     create_fake_stances(poll: poll)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     TopicService.lock(topic: create_discussion.topic, actor: patrick)
@@ -219,7 +219,12 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     discussion = DiscussionService.create(params: {group_id: @group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?"}, actor: patrick)
     TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: [jennifer.id], emails: nil, audience: nil)
-    Events::DiscussionAnnounced.publish!(discussion: discussion, actor: patrick, recipient_user_ids: [jennifer.id], recipient_chatbot_ids: [])
+    NotificationService.create!(
+      kind: "discussion_announced",
+      subject: discussion.created_topic_item,
+      actor: patrick,
+      recipient_user_ids: [ jennifer.id ]
+    )
     last_email
   end
 
@@ -238,7 +243,12 @@ module Dev::Scenarios::Discussion
     comment = Comment.new(parent: discussion, body: "body of the comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     users = TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: nil, emails: 'jen@example.com', audience: nil)
-    Events::DiscussionAnnounced.publish!(discussion: discussion, actor: patrick, recipient_user_ids: users.pluck(:id), recipient_chatbot_ids: [])
+    NotificationService.create!(
+      kind: "discussion_announced",
+      subject: discussion.created_topic_item,
+      actor: patrick,
+      recipient_user_ids: users.pluck(:id)
+    )
     last_email
   end
 

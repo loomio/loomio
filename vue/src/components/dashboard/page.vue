@@ -97,13 +97,13 @@ v-main
       section.dashboard-page__loaded
         .dashboard-page__empty(v-if='topics.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
-          .dashboard-page__no-threads(v-if='!noGroups')
+          .dashboard-page__no-topics(v-if='!noGroups')
             span(v-t="'dashboard_page.no_threads.show_all'")
         .dashboard-page__collections(v-if='topics.length')
-          v-card.mb-3.thread-preview-collection__container.thread-previews-container(variant="flat")
-            v-list.thread-previews(lines="two")
+          v-card.mb-3.topic-preview-collection__container.topic-previews-container(variant="flat")
+            v-list.topic-previews(lines="two")
               v-list-subheader(v-t="'dashboard_page.recent_threads'")
-              thread-preview(
+              topic-preview(
                 v-for="topic in topics"
                 :key="topic.id"
                 :topic="topic")

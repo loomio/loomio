@@ -184,10 +184,10 @@ v-app.app-is-booted(:style="themeBackgroundStyle")
     display: block;
     overflow: visible !important;
   }
-  .thread-page .group-theme__header--compact {
+  .topic-page .group-theme__header--compact {
     margin: 0 0 15px 0;
   }
-  .thread-page a[href]:after {
+  .topic-page a[href]:after {
     content: "" !important;
   }
 }

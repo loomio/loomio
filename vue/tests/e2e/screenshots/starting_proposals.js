@@ -39,7 +39,7 @@ function markOptions(page) {
 function openPoll(page) {
   page.loadPath('setup_manual_oatmilk_discussion');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  page.execute("document.querySelector('.strand-item__load-more button')?.click()");
+  page.execute("document.querySelector('.topic-item__load-more button')?.click()");
   page.waitFor('.poll-created');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
 }
@@ -218,8 +218,8 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openPoll(page);
-    page.waitFor('.thread-sidebar .action-dock__button--export_thread');
-    page.click('.thread-sidebar .action-dock__button--export_thread');
+    page.waitFor('.topic-sidebar .action-dock__button--export_thread');
+    page.click('.topic-sidebar .action-dock__button--export_thread');
     page.waitForUrlToContain('export=1');
     page.waitFor('body');
     screenshot.capture('polls/settings/proposal_print', {

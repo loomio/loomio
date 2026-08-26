@@ -84,21 +84,21 @@ pre {
   text-align: center;
 }
 
-.thread-mailer__list {
+.topic-mailer__list {
   margin-top: 0;
   padding: 0;
 }
 
-.thread-mailer__body img {
+.topic-mailer__body img {
   margin-top: 15px;
 }
 
-.thread-mailer__footer {
+.topic-mailer__footer {
   clear: both;
   font-size: small;
 }
 
-.thread-mailer__footer-logo {
+.topic-mailer__footer-logo {
   height: 24px;
 }
 

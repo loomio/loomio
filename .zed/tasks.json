@@ -1,0 +1,10 @@
+[
+  {
+    "label": "Set up Loomio worktree",
+    "command": "./bin/worktree-setup",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "hooks": ["create_worktree"],
+    "reveal": "no_focus",
+    "hide": "on_success"
+  }
+]

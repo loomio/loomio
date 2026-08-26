@@ -1,8 +1,8 @@
 class Reaction < ApplicationRecord
+  include HasNotifications
+
   belongs_to :reactable, polymorphic: true
   belongs_to :user
-  has_many :events, as: :eventable, dependent: :destroy
-
   # TODO: ensure one reaction per reactable
   # validates_uniqueness_of :user_id, scope: :reactable
   validates_presence_of :user, :reactable

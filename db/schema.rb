@@ -325,39 +325,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["topic_id"], name: "index_discussions_on_topic_id"
   end
 
-  create_table "events", id: :serial, force: :cascade do |t|
-    t.boolean "announcement", default: false, null: false
-    t.integer "child_count", default: 0, null: false
-    t.datetime "created_at", precision: nil
-    t.jsonb "custom_fields", default: {}, null: false
-    t.integer "depth", default: 0, null: false
-    t.integer "eventable_id"
-    t.string "eventable_type", limit: 255
-    t.integer "eventable_version_id"
-    t.string "kind", limit: 255
-    t.integer "parent_id"
-    t.boolean "pinned", default: false, null: false
-    t.integer "position", default: 0, null: false
-    t.string "position_key"
-    t.integer "sequence_id"
-    t.integer "topic_id"
-    t.datetime "updated_at", precision: nil
-    t.integer "user_id"
-    t.index ["created_at"], name: "index_events_on_created_at"
-    t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
-    t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_discussion_created_event", unique: true, where: "(((eventable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
-    t.index ["eventable_type", "eventable_id", "kind"], name: "index_events_on_unique_poll_created_event", unique: true, where: "(((eventable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
-    t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
-    t.index ["parent_id", "topic_id"], name: "index_events_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
-    t.index ["parent_id"], name: "index_events_on_parent_id"
-    t.index ["position_key"], name: "index_events_on_position_key"
-    t.index ["topic_id", "depth", "sequence_id"], name: "index_events_on_topic_id_depth_sequence_id"
-    t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_and_sequence_id", unique: true
-    t.index ["topic_id", "sequence_id"], name: "index_events_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
-    t.index ["topic_id"], name: "index_events_on_topic_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
   create_table "forward_email_rules", force: :cascade do |t|
     t.string "email"
     t.citext "handle", null: false
@@ -555,15 +522,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["volume"], name: "index_memberships_on_volume"
   end
 
-  create_table "notification_consolidation_states", primary_key: "name", id: :string, force: :cascade do |t|
-    t.datetime "completed_at"
-    t.datetime "created_at", null: false
-    t.bigint "notification_id_cursor", default: 0, null: false
-    t.bigint "notification_id_high_water", default: 0, null: false
-    t.datetime "repair_completed_at"
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notification_deliveries", force: :cascade do |t|
     t.integer "attempt_count", default: 0, null: false
     t.datetime "available_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
@@ -574,7 +532,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.datetime "last_attempt_at"
     t.text "last_error"
     t.datetime "next_attempt_at"
-    t.bigint "notification_occurrence_id", null: false
+    t.bigint "notification_id", null: false
     t.string "provider_message_id"
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
@@ -582,8 +540,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
-    t.index ["notification_occurrence_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_occurrence_identity", unique: true
-    t.index ["notification_occurrence_id"], name: "index_notification_deliveries_on_notification_occurrence_id"
+    t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
+    t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
     t.index ["status", "available_at"], name: "index_notification_deliveries_on_status_and_available_at"
     t.check_constraint "attempt_count >= 0", name: "notification_deliveries_attempt_count"
@@ -591,13 +549,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.check_constraint "status::text = ANY (ARRAY['pending'::character varying, 'claimed'::character varying, 'delivered'::character varying, 'failed'::character varying, 'cancelled'::character varying]::text[])", name: "notification_deliveries_status"
   end
 
-  create_table "notification_occurrences", force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
     t.integer "actor_id"
     t.jsonb "audience_values", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "deliveries_generated_at"
     t.string "kind", null: false
-    t.bigint "legacy_event_id", null: false
     t.integer "recipient_chatbot_ids", default: [], null: false, array: true
     t.text "recipient_message"
     t.integer "recipient_user_ids", default: [], null: false, array: true
@@ -605,22 +562,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.string "subject_type", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_notification_occurrences_pending_resolution", where: "(deliveries_generated_at IS NULL)"
-    t.index ["legacy_event_id", "kind"], name: "index_notification_occurrences_on_legacy_event_and_kind", unique: true
-    t.index ["subject_type", "subject_id"], name: "index_notification_occurrences_on_subject"
-  end
-
-  create_table "notifications", id: :serial, force: :cascade do |t|
-    t.integer "actor_id"
-    t.datetime "created_at", precision: nil
-    t.integer "event_id", null: false
-    t.jsonb "translation_values", default: {}, null: false
-    t.datetime "updated_at", precision: nil
-    t.integer "user_id", null: false
-    t.boolean "viewed", default: false, null: false
-    t.index ["event_id"], name: "index_notifications_on_event_id"
-    t.index ["user_id", "id"], name: "notifications_user_id_id_idx"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
+    t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
@@ -1196,6 +1139,41 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
+  create_table "topic_items", id: :serial, force: :cascade do |t|
+    t.integer "child_count", default: 0, null: false
+    t.datetime "created_at", precision: nil
+    t.integer "depth", default: 0, null: false
+    t.integer "itemable_id", null: false
+    t.string "itemable_type", limit: 255, null: false
+    t.integer "itemable_version_id"
+    t.string "kind", limit: 255, null: false
+    t.integer "parent_id"
+    t.boolean "pinned", default: false, null: false
+    t.text "pinned_title"
+    t.integer "position", default: 0, null: false
+    t.string "position_key"
+    t.integer "sequence_id"
+    t.integer "topic_id", null: false
+    t.datetime "updated_at", precision: nil
+    t.integer "user_id"
+    t.index ["created_at"], name: "index_topic_items_on_created_at"
+    t.index ["id", "topic_id"], name: "index_topic_items_on_id_and_topic_id", unique: true
+    t.index ["itemable_id", "kind"], name: "index_topic_items_on_itemable_id_and_kind"
+    t.index ["itemable_type", "itemable_id", "kind"], name: "index_topic_items_on_unique_discussion_root", unique: true, where: "(((itemable_type)::text = 'Discussion'::text) AND ((kind)::text = 'new_discussion'::text))"
+    t.index ["itemable_type", "itemable_id", "kind"], name: "index_topic_items_on_unique_poll_root", unique: true, where: "(((itemable_type)::text = 'Poll'::text) AND ((kind)::text = 'poll_created'::text))"
+    t.index ["itemable_type", "itemable_id"], name: "index_topic_items_on_itemable_type_and_itemable_id"
+    t.index ["parent_id", "topic_id"], name: "index_topic_items_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
+    t.index ["parent_id"], name: "index_topic_items_on_parent_id"
+    t.index ["position_key"], name: "index_topic_items_on_position_key"
+    t.index ["topic_id", "depth", "sequence_id"], name: "index_topic_items_on_topic_id_depth_sequence_id"
+    t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_and_sequence_id", unique: true
+    t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
+    t.index ["topic_id"], name: "index_topic_items_on_topic_id"
+    t.index ["user_id"], name: "index_topic_items_on_user_id"
+    t.check_constraint "btrim(itemable_type::text) <> ''::text", name: "topic_items_itemable_type_present"
+    t.check_constraint "btrim(kind::text) <> ''::text", name: "topic_items_kind_present"
+  end
+
   create_table "topic_readers", id: :serial, force: :cascade do |t|
     t.datetime "accepted_at", precision: nil
     t.boolean "admin", default: false, null: false
@@ -1379,13 +1357,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
-  add_foreign_key "events", "events", column: "parent_id", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
-  add_foreign_key "notification_deliveries", "notification_occurrences", on_delete: :cascade
-  add_foreign_key "notification_occurrences", "users", column: "actor_id", on_delete: :nullify
-  add_foreign_key "notifications", "events", on_delete: :cascade
-  add_foreign_key "notifications", "users", on_delete: :cascade
+  add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
+  add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "sessions", "users"
@@ -1399,4 +1374,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
   add_foreign_key "tasks_users", "tasks", on_delete: :cascade
   add_foreign_key "tasks_users", "users", on_delete: :cascade
+  add_foreign_key "topic_items", "topic_items", column: ["parent_id", "topic_id"], primary_key: ["id", "topic_id"], name: "topic_items_parent_same_topic", on_delete: :cascade, deferrable: :immediate
 end

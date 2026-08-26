@@ -158,8 +158,8 @@ const onDrop = (event) => {
   handleUploads(event.dataTransfer.files);
 };
 
-const onDragOver = (event) => { 
-  return false; 
+const onDragOver = (event) => {
+  return false;
 };
 
 const fileSelected = () => {

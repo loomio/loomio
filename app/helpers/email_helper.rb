@@ -43,9 +43,9 @@ module EmailHelper
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
-  def tracked_url(model, recipient: nil, event: nil, args: {}, **extra_args)
+  def tracked_url(model, recipient: nil, topic_item: nil, args: {}, **extra_args)
     args = args.merge(extra_args)
-    args.merge!(utm_medium: 'email', utm_campaign: event&.kind)
+    args.merge!(utm_medium: 'email', utm_campaign: topic_item&.kind)
 
     if recipient
       if model.is_a?(Poll) or model.is_a?(Outcome)
@@ -68,16 +68,16 @@ module EmailHelper
     email_preferences_url(unsubscribe_token: recipient.unsubscribe_token)
   end
 
-  def unsubscribe_url(eventable, recipient:)
-    email_actions_unsubscribe_url(eventable.named_id.merge({unsubscribe_token: recipient.unsubscribe_token}))
+  def unsubscribe_url(itemable, recipient:)
+    email_actions_unsubscribe_url(itemable.named_id.merge({unsubscribe_token: recipient.unsubscribe_token}))
   end
 
-  def pixel_src(event, recipient:)
-    topic = event.topic
+  def pixel_src(topic_item, recipient:)
+    topic = topic_item.topic
     return nil unless topic&.topicable_type == 'Discussion'
     email_actions_mark_discussion_as_read_url(
       discussion_id: topic.topicable_id,
-      event_id: event.id,
+      topic_item_id: topic_item.id,
       unsubscribe_token: recipient.unsubscribe_token,
       format: 'gif'
     )

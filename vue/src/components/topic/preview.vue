@@ -1,0 +1,102 @@
+<script setup lang="js">
+import TopicService from '@/shared/services/topic_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import { pick, some, pull } from 'lodash-es';
+import { computed } from 'vue';
+import { useDisplay } from 'vuetify';
+
+const props = defineProps({
+  topic: Object,
+  groupPage: { type: Boolean, default: false },
+  showGroupName: { type: Boolean, default: true }
+});
+
+const { smAndDown, mdAndUp } = useDisplay();
+
+const urlFor = (model) => LmoUrlService.route({ model });
+
+const topicable = props.topic.topicable();
+const isPoll = props.topic.topicableType === 'Poll';
+const isUnread = computed(() => props.topic.isUnread());
+
+const dockActions = computed(() =>
+  pick(TopicService.actions(props.topic), ['dismiss_thread'])
+);
+
+const menuActions = computed(() => {
+  // if screen is ver smmal include dismiss
+  // if group page add lock. pin and unpin
+  let actions = ['dismiss_thread', 'pin_thread', 'unpin_thread', 'lock_thread', 'unlock_thread', 'edit_tags', 'edit_discussion', 'edit_poll', 'move_thread', 'discard_thread']
+  if (!smAndDown.value) { pull(actions, 'dismiss_thread') };
+  if (!props.groupPage) { pull(actions, 'pin_thread', 'unpin_thread') };
+  return pick(TopicService.actions(props.topic), actions);
+});
+
+const canPerformAny = computed(() => some(menuActions.value, action => action.canPerform()));
+</script>
+
+<template lang="pug">
+v-list-item.topic-preview.topic-preview__link(:to='urlFor(topic)')
+  template(v-slot:prepend)
+    v-avatar(v-if="isPoll" :size="36" style="overflow: visible")
+      poll-common-icon-panel(:poll="topicable" show-my-stance :size="36")
+    user-avatar(v-else :user='topic.author()' :size='36' no-link)
+  v-list-item-title(style="align-items: center")
+    span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
+      common-icon(size="x-small" name="mdi-pin-outline")
+    plain-text.topic-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
+    v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.lockedAt')
+      span(v-t="'discussions_panel.locked'")
+    tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")
+  v-list-item-subtitle
+    span.topic-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
+    mid-dot(v-if="showGroupName")
+    span.topic-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
+    space
+    span.topic-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
+    mid-dot
+    template(v-if="isPoll")
+      poll-common-closing-at(:poll="topicable" approximate)
+    template(v-else)
+      active-time-ago(:date="topic.lastActivityAt")
+  template(v-slot:append)
+    action-dock(v-if='mdAndUp' :actions="dockActions")
+    action-menu(v-if='canPerformAny' :actions="menuActions" icon)
+</template>
+
+<style>
+.topic-preview .v-list-item__avatar {
+  overflow: visible;
+}
+
+.v-list-item__action:last-of-type:not(:only-child), .v-list-item__icon:last-of-type:not(:only-child) {
+  margin-left: 0;
+}
+
+.topic-preview__status-icon {
+  padding: 4px 8px;
+}
+
+.topic-preview__pin {
+  width: 32px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.topic-preview--unread {
+  font-weight: 500;
+}
+
+.topic-preview__position-icon {
+  background-repeat: no-repeat;
+  height: 21px;
+  margin: 1px 0 0 1px;
+  width: 21px;
+}
+
+.topic-preview__undecided-icon {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+}
+</style>

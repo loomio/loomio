@@ -7,7 +7,7 @@ class Views::Topics::TopicItem < Views::Application::Component
   end
 
   def view_template
-    if @item.eventable.discarded?
+    if @item.itemable.discarded?
       render Views::Topics::TopicItems::Removed.new(item: @item, current_user: @current_user)
     else
       case @item.kind

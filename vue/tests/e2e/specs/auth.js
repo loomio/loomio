@@ -215,7 +215,7 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
     page.expectText('.group-page__name', 'Closed Dirty Dancing Shoes')
-    page.expectText('.thread-previews', 'This thread is private')
+    page.expectText('.topic-previews', 'This thread is private')
   },
 
   'can_login_from_a_secret_group_page': (test) => {

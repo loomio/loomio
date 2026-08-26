@@ -33,7 +33,7 @@ class ReportServiceTest < ActiveSupport::TestCase
       actor: author
     )
     poll.save!
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
     poll
   end
 

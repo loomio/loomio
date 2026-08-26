@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EmailActionsControllerTest < ActionController::TestCase
-  inline_jobs "marks the discussion as read at event created_at",
+  inline_jobs "marks the discussion as read at topic_item created_at",
               "marks a comment as read"
   setup do
     hex = SecureRandom.hex(4)
@@ -16,7 +16,7 @@ class EmailActionsControllerTest < ActionController::TestCase
 
     @discussion = DiscussionService.create(params: { title: "Discussion #{hex}", group_id: @group.id }, actor: @author)
     @topic = @discussion.topic
-    @event = @discussion.created_event
+    @topic_item = @discussion.created_topic_item
     @topic_reader = TopicReader.for(user: @user, topic: @topic)
     ActionMailer::Base.deliveries.clear
   end
@@ -91,29 +91,34 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   # mark_discussion_as_read tests
-  test "marks the discussion as read at event created_at" do
-    get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
+  test "marks the discussion as read at topic_item created_at" do
+    get :mark_discussion_as_read, params: { discussion_id: @discussion.id, topic_item_id: @topic_item.id, unsubscribe_token: @user.unsubscribe_token }
     reader = TopicReader.for(user: @user, topic: @topic)
-    assert_in_delta @event.created_at.to_f, reader.last_read_at.to_f, 1.0
+    assert_in_delta @topic_item.created_at.to_f, reader.last_read_at.to_f, 1.0
   end
 
   test "does not error when discussion not found" do
-    get :mark_discussion_as_read, params: { discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
+    get :mark_discussion_as_read, params: { discussion_id: :notathing, topic_item_id: @topic_item.id, unsubscribe_token: @user.unsubscribe_token }
     assert_response 200
   end
 
   test "does not error when discussion has since been discarded" do
-    notification = Notification.create!(event: @event, user: @user, viewed: false)
+    notification = Notification.create!(
+      actor: @author,
+      kind: "new_discussion",
+      subject: @discussion
+    )
+    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
     TopicService.discard(topic: @topic, actor: @author)
 
     get :mark_discussion_as_read, params: {
       discussion_id: @discussion.id,
-      event_id: @event.id,
+      topic_item_id: @topic_item.id,
       unsubscribe_token: @user.unsubscribe_token
     }
 
     assert_response 200
-    assert notification.reload.viewed
+    assert_predicate delivery.reload, :viewed?
   end
 
   test "marks a comment as read" do
@@ -121,7 +126,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     reader = TopicReader.for(user: @user, topic: @topic)
     refute reader.has_read?(comment_event.sequence_id)
 
-    get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: comment_event.id, unsubscribe_token: @user.unsubscribe_token }
+    get :mark_discussion_as_read, params: { discussion_id: @discussion.id, topic_item_id: comment_event.id, unsubscribe_token: @user.unsubscribe_token }
     reader = TopicReader.for(user: @user, topic: @topic)
     assert_in_delta Time.now.to_f, reader.last_read_at.to_f, 2.0
     assert reader.has_read?(comment_event.sequence_id)
@@ -129,9 +134,45 @@ class EmailActionsControllerTest < ActionController::TestCase
 
   # mark_notification_as_read test
   test "marks notification as viewed" do
-    notification = Notification.create!(event_id: @event.id, user_id: @user.id, viewed: false)
+    notification = Notification.create!(
+      actor: @author,
+      kind: "new_discussion",
+      subject: @discussion
+    )
+    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
     get :mark_notification_as_read, params: { id: notification.id, unsubscribe_token: @user.unsubscribe_token }
-    assert notification.reload.viewed
+    assert_predicate delivery.reload, :viewed?
+  end
+
+  test "marks only the authenticated recipient's global in-app delivery as viewed" do
+    notification = Notification.create!(
+      actor: @author,
+      kind: "discussion_edited",
+      subject: @discussion
+    )
+    user_delivery = NotificationDelivery.create!(
+      notification: notification,
+      recipient: @user,
+      channel: "in_app",
+      status: "delivered",
+      delivered_at: Time.current
+    )
+    author_delivery = NotificationDelivery.create!(
+      notification: notification,
+      recipient: @author,
+      channel: "in_app",
+      status: "delivered",
+      delivered_at: Time.current
+    )
+
+    get :mark_notification_as_read, params: {
+      id: notification.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_response :success
+    assert_not_nil user_delivery.reload.viewed_at
+    assert_nil author_delivery.reload.viewed_at
   end
 
   # mark_summary_email_as_read test

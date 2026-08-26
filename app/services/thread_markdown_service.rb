@@ -46,44 +46,44 @@ class ThreadMarkdownService
   end
 
   def activity
-    content = events.filter_map { |event| event_markdown(event) }
+    content = topic_items.filter_map { |topic_item| event_markdown(topic_item) }
     content = ["_No comments, polls, votes, or outcomes yet._"] if content.empty?
     "## Activity\n\n#{content.join("\n\n")}"
   end
 
-  def events
-    topic.items.includes(:eventable, :user, parent: [:eventable, :user]).order(:sequence_id)
+  def topic_items
+    topic.items.includes(:itemable, :user, parent: [:itemable, :user]).order(:sequence_id)
   end
 
-  def event_markdown(event)
-    eventable = event.eventable
-    return if eventable == topic.topicable
-    return if eventable.respond_to?(:discarded?) && eventable.discarded?
+  def event_markdown(topic_item)
+    itemable = topic_item.itemable
+    return if itemable == topic.topicable
+    return if itemable.respond_to?(:discarded?) && itemable.discarded?
 
-    case eventable
-    when Comment then comment_markdown(event, eventable)
-    when Poll then poll_markdown(eventable, heading: "### Poll — #{inline(eventable.title)}", event: event)
-    when Stance then stance_markdown(event, eventable)
-    when Outcome then outcome_markdown(event, eventable)
+    case itemable
+    when Comment then comment_markdown(topic_item, itemable)
+    when Poll then poll_markdown(itemable, heading: "### Poll — #{inline(itemable.title)}", topic_item: topic_item)
+    when Stance then stance_markdown(topic_item, itemable)
+    when Outcome then outcome_markdown(topic_item, itemable)
     end
   end
 
-  def comment_markdown(event, comment)
+  def comment_markdown(topic_item, comment)
     content = body(comment, heading_offset: 3)
     return if content.blank?
 
     metadata = [
-      "- **Posted:** #{timestamp(event.created_at)}",
-      reply_to(event).present? && "- **In reply to:** #{reply_to(event)}"
+      "- **Posted:** #{timestamp(topic_item.created_at)}",
+      reply_to(topic_item).present? && "- **In reply to:** #{reply_to(topic_item)}"
     ].compact_blank.join("\n")
 
     "### Comment — #{author_name(comment)}\n\n#{metadata}\n\n#{content}"
   end
 
-  def poll_markdown(poll, heading:, event: nil, include_author: true)
+  def poll_markdown(poll, heading:, topic_item: nil, include_author: true)
     metadata = []
     metadata << "- **Opened by:** #{author_name(poll)}" if include_author
-    metadata << "- **Opened:** #{timestamp(event&.created_at || poll.opened_at || poll.created_at)}"
+    metadata << "- **Opened:** #{timestamp(topic_item&.created_at || poll.opened_at || poll.created_at)}"
     metadata << "- **Type:** #{poll.poll_type.humanize}"
     metadata << "- **Status:** #{poll_status(poll)}"
     metadata << "- **Anonymous voting:** #{poll.anonymous? ? 'Yes' : 'No'}"
@@ -122,14 +122,14 @@ class ThreadMarkdownService
     "#### Current results\n\n#{results.join("\n")}"
   end
 
-  def stance_markdown(event, stance)
+  def stance_markdown(topic_item, stance)
     return unless stance_visible?(stance)
 
     poll = stance.poll
     voter = author_name(stance)
     response = stance_response(stance)
     metadata = [
-      "- **Submitted:** #{timestamp(event.created_at)}",
+      "- **Submitted:** #{timestamp(topic_item.created_at)}",
       "- **Response:** #{response}"
     ].join("\n")
     reason = body(stance, heading_offset: 3)
@@ -155,10 +155,10 @@ class ThreadMarkdownService
     choices.presence&.join('; ') || "No option selected"
   end
 
-  def outcome_markdown(event, outcome)
+  def outcome_markdown(topic_item, outcome)
     metadata = [
       "- **Announced by:** #{author_name(outcome)}",
-      "- **Announced:** #{timestamp(event.created_at)}",
+      "- **Announced:** #{timestamp(topic_item.created_at)}",
       "- **Status:** #{outcome.latest? ? 'Current' : 'Superseded'}",
       outcome.review_on.present? && "- **Review date:** #{outcome.review_on.iso8601}"
     ].compact_blank.join("\n")
@@ -175,8 +175,8 @@ class ThreadMarkdownService
     @poll_results_visible[poll.id] = poll.show_results?(voted: voted)
   end
 
-  def reply_to(event)
-    record = event.parent&.eventable
+  def reply_to(topic_item)
+    record = topic_item.parent&.itemable
     case record
     when Comment then "comment by #{author_name(record)}"
     when Poll then "poll “#{inline(record.title)}”"
