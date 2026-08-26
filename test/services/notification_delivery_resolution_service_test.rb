@@ -362,33 +362,6 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal "delivered", delivery.reload.status
   end
 
-  test "the pending dispatcher recovers channel deliveries after an enqueue gap" do
-    notification = create_notification
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    clear_enqueued_jobs
-
-    DispatchPendingNotificationDeliveriesWorker.perform_now
-
-    email_delivery = notification.notification_deliveries.find_by!(channel: "email")
-    chatbot_delivery = notification.notification_deliveries.find_by!(channel: "chatbot")
-    assert_enqueued_with(job: DeliverNotificationEmailWorker, args: [ email_delivery.id ])
-    assert_enqueued_with(job: DeliverNotificationChatbotWorker, args: [ chatbot_delivery.id ])
-  end
-
-  test "the pending dispatcher releases and re-enqueues a stale claim" do
-    notification = create_notification
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    delivery = notification.notification_deliveries.find_by!(channel: "email")
-    delivery.update!(status: "claimed", claimed_at: 16.minutes.ago)
-    clear_enqueued_jobs
-
-    DispatchPendingNotificationDeliveriesWorker.perform_now
-
-    assert_equal "pending", delivery.reload.status
-    assert_nil delivery.claimed_at
-    assert_enqueued_with(job: DeliverNotificationEmailWorker, args: [ delivery.id ])
-  end
-
   test "the global creator requires a persisted occurrence identity" do
     assert_raises(ArgumentError) do
       NotificationService.create!(

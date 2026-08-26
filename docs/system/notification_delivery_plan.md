@@ -183,7 +183,7 @@ must never reintroduce a ballot-to-user link.
 - For scheduled producers, repeat the same domain occurrence and verify stable
   notification counts; then change its domain timestamp (for example
   `closing_at` or `review_on`) and verify a new notification is created.
-- Retry resolver and dispatcher jobs and verify stable delivery counts.
+- Retry resolver and delivery jobs and verify stable delivery counts.
 - Repeat explicit user actions and verify they create distinct notifications.
 - Verify in-app queries join through delivered `NotificationDelivery` rows and
   read actions can only update the authenticated user's delivery.
