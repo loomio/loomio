@@ -40,7 +40,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--private')
-    page.click('.threads-page__new-thread-button')
+    page.click('.topics-page__new-topic-button')
     page.click('.discussion-templates--direct-discussion')
     page.waitFor('.discussion-form')
     page.fillIn('.recipients-autocomplete input', 'Emilio')

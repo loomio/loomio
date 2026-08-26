@@ -161,7 +161,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     agree = @poll.poll_options.find_by!(name: "Agree")
     StanceService.create(stance: stance.tap { |record| record.choice = "Agree" }, actor: @user)
     counts_before = @poll.reload.stance_counts
-    events_before = Event.count
+    topic_items_before = TopicItem.count
 
     assert_raises ActiveRecord::RecordInvalid do
       StanceService.update(
@@ -173,7 +173,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     assert_equal({ agree.id.to_s => 1 }, stance.reload.option_scores)
     assert_equal counts_before, @poll.reload.stance_counts
-    assert_equal events_before, Event.count
+    assert_equal topic_items_before, TopicItem.count
   end
 
   test "does not allow an unauthorized member to create a stance" do
