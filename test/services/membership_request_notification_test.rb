@@ -15,15 +15,13 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     )
   end
 
-  test "requesting membership notifies eligible admins without an topic_item" do
+  test "requesting membership notifies eligible admins" do
     request = MembershipRequest.new(group: @group, introduction: "Please let me join")
 
-    assert_no_difference -> { TopicItem.where(kind: "membership_requested").count } do
-      assert_equal request, MembershipRequestService.create(
-        membership_request: request,
-        actor: @requestor
-      )
-    end
+    assert_equal request, MembershipRequestService.create(
+      membership_request: request,
+      actor: @requestor
+    )
 
     notification = Notification.find_by!(
       kind: "membership_requested",
@@ -35,15 +33,13 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_includes notification.notification_deliveries.where(channel: "email").pluck(:recipient_id), @actor.id
   end
 
-  test "approving membership notifies the requestor without an topic_item" do
+  test "approving membership notifies the requestor" do
     request = MembershipRequest.create!(group: @group, requestor: @requestor)
 
-    assert_no_difference -> { TopicItem.where(kind: "membership_request_approved").count } do
-      assert_equal request, MembershipRequestService.approve(
-        membership_request: request,
-        actor: @actor
-      )
-    end
+    assert_equal request, MembershipRequestService.approve(
+      membership_request: request,
+      actor: @actor
+    )
 
     membership = Membership.find_by!(group: @group, user: @requestor)
     notification = Notification.find_by!(

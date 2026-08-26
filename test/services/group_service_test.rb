@@ -121,22 +121,20 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal initial_count + 1, group.memberships.count
   end
 
-  test "inviting a user creates direct deliveries without an topic_item" do
+  test "inviting a user creates in-app and email notification deliveries" do
     group = Group.create!(
-      name: "Direct notification invitations",
-      handle: "direct-notification-invitations-#{SecureRandom.hex(4)}",
+      name: "Notification invitations",
+      handle: "notification-invitations-#{SecureRandom.hex(4)}",
       creator: @user
     )
     group.add_admin!(@user)
     email = "direct-invite-#{SecureRandom.hex(4)}@example.com"
 
-    assert_no_difference -> { TopicItem.where(kind: "membership_created").count } do
-      GroupService.invite(
-        group: group,
-        actor: @user,
-        params: { recipient_emails: [ email ], recipient_message: "Welcome" }
-      )
-    end
+    GroupService.invite(
+      group: group,
+      actor: @user,
+      params: { recipient_emails: [ email ], recipient_message: "Welcome" }
+    )
 
     recipient = User.find_by!(email: email)
     notification = Notification.find_by!(

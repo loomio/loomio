@@ -332,7 +332,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "an outcome review email renders and completes without an topic_item" do
+  test "an outcome review email renders once and completes delivery" do
     notification = create_notification
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     delivery = notification.notification_deliveries.find_by!(channel: "email")
@@ -346,7 +346,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_includes ActionMailer::Base.deliveries.last.to, @author.email
   end
 
-  test "an outcome review chatbot delivery renders and completes without an topic_item" do
+  test "an outcome review chatbot renders once and completes delivery" do
     notification = create_notification
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     delivery = notification.notification_deliveries.find_by!(channel: "chatbot")
@@ -462,7 +462,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     recipient = users(:member)
     discussion = DiscussionService.create(
       params: {
-        title: "Direct notification discussion",
+        title: "Notification delivery discussion",
         group_id: groups(:group).id,
         recipient_user_ids: [ recipient.id ],
         recipient_chatbot_ids: [ @chatbot.id ],

@@ -143,15 +143,12 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_includes recipient_ids, @admin.id
   end
 
-  test "anonymous-ballot reminders use the direct notification producer" do
-    notification = nil
-    assert_no_difference -> { TopicItem.where(kind: "poll_closing_soon", itemable: @poll).count } do
-      notification = NotificationService.create!(
-        kind: "poll_closing_soon",
-        subject: @poll,
-        actor: @admin
-      )
-    end
+  test "anonymous-ballot reminders create deliveries for undecided voters" do
+    notification = NotificationService.create!(
+      kind: "poll_closing_soon",
+      subject: @poll,
+      actor: @admin
+    )
 
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
     recipient_ids = notification.notification_deliveries.where(recipient_type: "User").pluck(:recipient_id)

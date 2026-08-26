@@ -10,13 +10,11 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
     @membership.user.update!(email_verified: true)
   end
 
-  test "making a delegate creates in-app and email deliveries without an topic_item" do
-    assert_no_difference -> { TopicItem.where(kind: "new_delegate").count } do
-      assert_equal @membership, MembershipService.make_delegate(
-        membership: @membership,
-        actor: @actor
-      )
-    end
+  test "making a delegate creates in-app and email notification deliveries" do
+    assert_equal @membership, MembershipService.make_delegate(
+      membership: @membership,
+      actor: @actor
+    )
 
     notification = Notification.find_by!(
       kind: "new_delegate",

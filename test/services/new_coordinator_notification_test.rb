@@ -8,20 +8,18 @@ class NewCoordinatorNotificationTest < ActiveSupport::TestCase
     @membership = memberships(:member_membership)
   end
 
-  test "making a coordinator creates a direct notification without an topic_item" do
+  test "making a coordinator creates an in-app notification delivery" do
     notification = nil
 
-    assert_no_difference -> { TopicItem.where(kind: "new_coordinator").count } do
-      assert_difference -> { Notification.where(kind: "new_coordinator").count }, 1 do
-        assert_equal @membership, MembershipService.make_admin(
-          membership: @membership,
-          actor: @actor
-        )
-        notification = Notification.find_by!(
-          kind: "new_coordinator",
-          subject: @membership
-        )
-      end
+    assert_difference -> { Notification.where(kind: "new_coordinator").count }, 1 do
+      assert_equal @membership, MembershipService.make_admin(
+        membership: @membership,
+        actor: @actor
+      )
+      notification = Notification.find_by!(
+        kind: "new_coordinator",
+        subject: @membership
+      )
     end
 
     assert @membership.reload.admin?

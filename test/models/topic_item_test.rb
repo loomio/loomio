@@ -125,7 +125,7 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-  test "direct stance notification links to its poll in the discussion" do
+  test "stance notification links to its poll in the discussion" do
     stance = Stance.new(poll: @poll, participant: @mentioned_user)
     notification = Notification.new(kind: "stance_created", subject: stance, actor: @admin)
 

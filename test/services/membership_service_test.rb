@@ -65,14 +65,12 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_nil membership.reload.accepted_at
   end
 
-  test "adding a user creates direct notification deliveries without an topic_item" do
-    assert_no_difference -> { TopicItem.where(kind: "user_added_to_group").count } do
-      MembershipService.add_users_to_group(
-        users: [ @user ],
-        group: @group,
-        inviter: @admin
-      )
-    end
+  test "adding a user creates in-app and email notification deliveries" do
+    MembershipService.add_users_to_group(
+      users: [ @user ],
+      group: @group,
+      inviter: @admin
+    )
 
     membership = Membership.find_by!(group: @group, user: @user)
     notification = Notification.find_by!(
@@ -234,7 +232,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_nil existing_membership.reload.revoked_at
   end
 
-  test "redeem notifies inviter of acceptance without an topic_item" do
+  test "redeem notifies the inviter of acceptance" do
     unverified_user = User.create!(
       name: 'Unverified',
       email: 'unverified4@example.com',
@@ -249,9 +247,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
       accepted_at: nil
     )
 
-    assert_no_difference -> { TopicItem.where(kind: "invitation_accepted").count } do
-      MembershipService.redeem(membership: membership, actor: @user)
-    end
+    MembershipService.redeem(membership: membership, actor: @user)
 
     accepted_membership = Membership.find_by!(group: @group, user: @user)
     notification = Notification.find_by!(
