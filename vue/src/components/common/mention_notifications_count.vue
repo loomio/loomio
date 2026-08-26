@@ -83,7 +83,7 @@ p.mention-notifications-count.text-medium-emphasis.text-body-small(
   bottom: 9px;
   margin: 0;
   padding-left: 8px;
-  pointer-topic_items: none;
+  pointer-events: none;
   background: rgb(var(--v-theme-surface));
 }
 </style>

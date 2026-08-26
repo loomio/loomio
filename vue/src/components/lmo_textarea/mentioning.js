@@ -53,43 +53,43 @@ export var MdMentioning = {
       return this.$refs.field.$el.querySelector('textarea');
     },
 
-    onKeyUp(topic_item) {
-      if ([38, 40, 13, 9].includes(topic_item.keyCode)) { return }
+    onKeyUp(event) {
+      if ([38, 40, 13, 9].includes(event.keyCode)) { return }
       const res = this.textarea().value.slice(0, this.textarea().selectionStart).match(/@(\w+)$/);
       if (res) {
         this.query = res[1].toLowerCase();
         this.fetchMentionable();
         this.updateMentions();
-        this.respondToKey(topic_item);
+        this.respondToKey(event);
         return this.updatePopup();
       } else {
         return this.query = '';
       }
     },
 
-    onKeyDown(topic_item) {
-      if (this.query) { return this.respondToKey(topic_item); }
+    onKeyDown(event) {
+      if (this.query) { return this.respondToKey(event); }
     },
 
-    respondToKey(topic_item) {
-      if (topic_item.keyCode === 38) {
+    respondToKey(event) {
+      if (event.keyCode === 38) {
         this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentions.length) - 1) % this.mentions.length;
-        topic_item.preventDefault();
+        event.preventDefault();
       }
 
       // down
-      if (topic_item.keyCode === 40) {
+      if (event.keyCode === 40) {
         this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentions.length;
-        topic_item.preventDefault();
+        event.preventDefault();
       }
 
       // enter or tab
-      if ([13,9].includes(topic_item.keyCode)) {
+      if ([13,9].includes(event.keyCode)) {
         let user;
         if (user = this.mentions[this.navigatedUserIndex]) {
           this.selectRow(user);
           this.query = '';
-          topic_item.preventDefault();
+          event.preventDefault();
         }
       }
     },
@@ -195,22 +195,22 @@ export var MentionPluginConfig = function() {
             this.navigatedUserIndex = 0;
           },
 
-          // is called on every keyDown topic_item while a suggestion is active
+          // is called on every keyDown event while a suggestion is active
           onKeyDown: props => {
             // pressing up arrow
-            if (props.topic_item.keyCode === 38) {
+            if (props.event.keyCode === 38) {
               this.upHandler();
               return true;
             }
 
             // pressing down arrow
-            if (props.topic_item.keyCode === 40) {
+            if (props.event.keyCode === 40) {
               this.downHandler();
               return true;
             }
 
             // pressing enter or tab
-            if ([13,9].includes(props.topic_item.keyCode)) {
+            if ([13,9].includes(props.event.keyCode)) {
               this.enterHandler();
               return true;
             }

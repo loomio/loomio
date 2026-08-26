@@ -96,15 +96,15 @@ const convertToHtmlHandler = () => {
   Records.users.saveExperience('html-editor.uses-markdown', false);
 };
 
-const onPaste = (topic_item) => {
-  const items = Array.from(topic_item.clipboardData.items);
+const onPaste = (event) => {
+  const items = Array.from(event.clipboardData.items);
 
   if (items.filter(item => item.getAsFile()).length === 0) { return; }
 
-  topic_item.preventDefault();
+  event.preventDefault();
   handleUploads(items.map(item => {
     return new File([item.getAsFile()],
-             topic_item.clipboardData.getData('text/plain') || Date.now(),
+             event.clipboardData.getData('text/plain') || Date.now(),
              {lastModified: Date.now(), type: item.type});
   }));
 };
@@ -152,13 +152,13 @@ const insertImage = (file) => {
   });
 };
 
-const onDrop = (topic_item) => {
-  if (!topic_item.dataTransfer || !topic_item.dataTransfer.files || !topic_item.dataTransfer.files.length) { return; }
-  topic_item.preventDefault();
-  handleUploads(topic_item.dataTransfer.files);
+const onDrop = (event) => {
+  if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
+  event.preventDefault();
+  handleUploads(event.dataTransfer.files);
 };
 
-const onDragOver = (topic_item) => {
+const onDragOver = (event) => {
   return false;
 };
 

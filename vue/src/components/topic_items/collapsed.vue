@@ -34,7 +34,7 @@ onMounted(() => {
   cursor: pointer;
 }
 .topic-item__collapsed-headline a {
-  pointer-topic_items: none;
+  pointer-events: none;
 }
 
 .topic-item__descendant-avatars {
