@@ -12,7 +12,7 @@ class Views::Subscriptions::ChooseGroup < Views::BasicLayout
       p { "Select the organization whose subscription you want to manage." }
       ul do
         @groups.each do |group|
-          li { a(href: upgrade_group_path(group.id)) { group.full_name } }
+          li { a(href: subscription_portal_group_path(group.id)) { group.full_name } }
         end
       end
     end

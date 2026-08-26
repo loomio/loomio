@@ -36,6 +36,19 @@ class SubscriptionPortalControllerTest < ActionController::TestCase
     assert_redirected_to "https://subscriptions.example/session/grant"
   end
 
+  test "lists subscription links when the coordinator administers several organizations" do
+    other_group = Group.new(name: "Other Cooperative", group_privacy: "secret")
+    other_group.creator = @user
+    other_group.save!
+    other_group.add_admin!(@user)
+
+    get :index
+
+    assert_response :success
+    assert_select "a[href='#{subscription_portal_group_path(@group.id)}']", @group.full_name
+    assert_select "a[href='#{subscription_portal_group_path(other_group.id)}']", other_group.full_name
+  end
+
   test "does not send a non-coordinator to the subscription service" do
     suffix = SecureRandom.hex(4)
     other = User.create!(name: "Member", email: "member-#{suffix}@example.com",
