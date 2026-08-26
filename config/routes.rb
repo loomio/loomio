@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 
     namespace :s1 do
       post 'webhook', to: 'webhook#create'
+      post 'subscriptions/verify', to: 'subscriptions#verify'
     end
 
     namespace :b2 do
@@ -522,12 +523,8 @@ Rails.application.routes.draw do
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
 
-  constraints(lambda do |_request|
-    ENV['LOOMIO_SUBSCRIPTIONS_URL'].present? && ENV['LOOMIO_SUBSCRIPTIONS_API_TOKEN'].present?
-  end) do
-    get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
-    get '/subscriptions/:group_id', to: 'subscription_portal#show', as: :subscription_portal_group
-  end
+  get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
+  get '/subscriptions/:group_id', to: 'subscription_portal#show', as: :subscription_portal_group
 
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 

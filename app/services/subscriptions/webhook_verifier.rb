@@ -7,7 +7,7 @@ module Subscriptions
 
     AGE_MAX = 5.minutes
 
-    def initialize(request, secret: ENV["LOOMIO_SUBSCRIPTIONS_CALLBACK_SECRET"])
+    def initialize(request, secret: Identity.webhook_secret)
       @request = request
       @secret = secret
     end

@@ -59,7 +59,7 @@ module Subscriptions
     private
 
     def validate_installation!
-      expected = ENV["LOOMIO_INSTALLATION_ID"].presence || ENV["CANONICAL_HOST"]
+      expected = Identity.installation_id
       raise InvalidUpdate if expected.blank? || @payload["installation_id"] != expected
     end
 

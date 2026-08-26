@@ -102,6 +102,7 @@ class Rack::Attack
     '/api/v1/contact_requests' => 10,
     '/api/v1/demos/clone' => 10,
     '/api/v1/discussion_readers' => 500,
+    '/api/s1/subscriptions/verify' => 30,
     '/rails/active_storage/direct_uploads' => 20,
     # The app's real upload route (the stock path is shadowed to the same
     # controller); throttle it too or it falls through to only the global cap.

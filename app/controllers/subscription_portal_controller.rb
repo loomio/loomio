@@ -10,13 +10,14 @@ class SubscriptionPortalController < ApplicationController
 
   def show
     group = current_user.adminable_groups.published.parents_only.find(params[:group_id])
+    Subscriptions::Registration.new.register!
     redirect_to Subscriptions::Client.new.create_session(
       group: group,
       user: current_user,
       callback_url: api_s1_webhook_url,
       return_url: group_url(group)
     ), allow_other_host: true
-  rescue Subscriptions::Client::Error
+  rescue Subscriptions::Client::Error, Subscriptions::Registration::Error
     render Views::Subscriptions::Unavailable.new, status: :bad_gateway
   end
 end

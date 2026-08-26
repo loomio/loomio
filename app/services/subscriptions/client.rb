@@ -6,7 +6,7 @@ module Subscriptions
   class Client
     class Error < StandardError; end
 
-    def initialize(base_url: ENV["LOOMIO_SUBSCRIPTIONS_URL"], api_token: ENV["LOOMIO_SUBSCRIPTIONS_API_TOKEN"])
+    def initialize(base_url: Identity.service_url, api_token: Identity.api_token)
       @base_url = URI.parse(base_url.to_s)
       @api_token = api_token
       validate_configuration!
