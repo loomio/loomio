@@ -15,6 +15,19 @@ module.exports = {
     page.expectFlash('1 notifications sent')
   },
 
+  'expand_parent_group_members_when_inviting_to_a_subgroup': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_subgroup_invitation_audiences')
+    page.click('.group-page-members-tab')
+    page.click('.membership-card__invite', 1000)
+    page.click('.recipients-autocomplete input')
+    page.expectText('.v-autocomplete__content', 'Point Break')
+    page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Point Break')).click()")
+    page.click('.recipients-autocomplete .chip--select-multi')
+    page.expectText('.recipients-autocomplete', 'Max Von Sydow')
+    page.expectNoText('.recipients-autocomplete', 'Jennifer Grey')
+  },
+
   // discussion form
   'new_discussion': (test) => {
     page = pageHelper(test)
@@ -91,6 +104,8 @@ module.exports = {
     page.pause(500)
 
     page.expectElement('.poll-members-form')
+    page.click('.recipients-autocomplete input')
+    page.expectText('.v-autocomplete__content', 'Everyone in the thread')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')

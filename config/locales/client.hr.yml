@@ -935,7 +935,7 @@ hr:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Svi u grupi
-      discussion_group: Svi u temi
+      topic: Svi u temi
       voters: Svi pozvani da glasaju
       decided_voters: Svi koji su glasali
       undecided_voters: Neodlučni glasači

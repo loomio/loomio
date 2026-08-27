@@ -935,7 +935,7 @@ ro:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Toți cei din grup
-      discussion_group: Toată lumea din fir
+      topic: Toată lumea din fir
       voters: Toți sunt invitați la vot
       decided_voters: Toți cei care au votat
       undecided_voters: Alegători nehotărâți

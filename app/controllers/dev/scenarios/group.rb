@@ -116,6 +116,14 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_subgroup)
   end
 
+  def setup_subgroup_invitation_audiences
+    sign_in jennifer
+    create_another_group.add_admin! jennifer
+    create_subgroup.add_admin! jennifer
+    another_create_subgroup
+    redirect_to group_path(create_subgroup)
+  end
+
   def setup_subgroup_with_parent_member_visibility
     sign_in patrick
     @group = Group.new(name: 'Closed Dirty Dancing Shoes',

@@ -938,7 +938,7 @@ uk:
     audiences:
       group: Учасник %{name}
       everyone_in_the_group: Всі в групі
-      discussion_group: Усім в темі
+      topic: Усім в темі
       voters: Усім запрошеним до голосування
       decided_voters: Усім, хто голосував
       undecided_voters: Виборцям, які не визначилися

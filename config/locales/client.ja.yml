@@ -934,7 +934,7 @@ ja:
     audiences:
       group: "%{name}"
       everyone_in_the_group: グループの全員が
-      discussion_group: スレッド内の全員
+      topic: スレッド内の全員
       voters: 投票に招待された全員
       decided_voters: 投票してくださった皆様
       undecided_voters: 未決定の有権者

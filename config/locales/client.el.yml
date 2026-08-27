@@ -935,7 +935,7 @@ el:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Όλοι στην ομάδα
-      discussion_group: Όλοι στο νήμα
+      topic: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
       decided_voters: Όλοι όσοι ψήφισαν
       undecided_voters: Αναποφάσιστοι ψηφοφόροι

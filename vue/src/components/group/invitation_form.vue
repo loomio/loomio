@@ -156,6 +156,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :reset="reset"
       :model="group"
       :hide-count="tooManyInvitations"
+      exclude-members
       @new-query="newQuery"
       @new-recipients="newRecipients")
     div.text-medium-emphasis(v-if="subscription.max_members")

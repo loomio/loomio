@@ -4,12 +4,13 @@
 class NotificationAudienceService
   class UnknownAudienceKindError < StandardError; end
 
-  def self.available(model:, actor:, include_actor: false)
+  def self.available(model:, actor:, exclude_members: false, include_actor: false)
     audience_candidates(model).filter_map do |audience|
       users = resolve(
         model: model,
         kind: audience[:id],
         actor: actor,
+        exclude_members: exclude_members,
         include_actor: include_actor
       )
       size = users.count
@@ -22,19 +23,22 @@ class NotificationAudienceService
   def self.resolve(model:, kind:, actor:, exclude_members: false, include_actor: false)
     poll = poll_for(model)
     users = case kind
-    when /group-\d+/
-      id = kind.match(/group-(\d+)/)[1].to_i
-      group = model.group.parent_or_self.self_and_subgroups.find(id)
-      raise CanCan::AccessDenied unless actor.can?(:notify, group)
+    when /\Agroup-(\d+)\z/
+      id = Regexp.last_match(1).to_i
+      group = group_audience_scope(model).find(id)
+      action = model.is_a?(Group) ? :members_autocomplete : :notify
+      raise CanCan::AccessDenied unless actor.can?(action, group)
       group.members
-    when /delegates-\d+/
-      id = kind.match(/delegates-(\d+)/)[1].to_i
-      group = model.group.parent_or_self.self_and_subgroups.find(id)
+    when /\Adelegates-(\d+)\z/
+      id = Regexp.last_match(1).to_i
+      group = group_audience_scope(model).find(id)
       raise CanCan::AccessDenied unless actor.can?(:notify, group)
       group.delegates
-    when "group" then model.group.members
-    when "discussion_group"
-      actor.ability.authorize!(:announce, model)
+    when "group"
+      authorize_notify!(model: model, actor: actor)
+      group_for(model).members
+    when "topic"
+      authorize_notify!(model: model, actor: actor)
       topic = topic_for(model)
       raise CanCan::AccessDenied unless topic&.readers&.exists?
       topic.readers
@@ -56,9 +60,23 @@ class NotificationAudienceService
       raise UnknownAudienceKindError
     end.active
 
-    users = users.where.not(id: (poll || NullPoll.new).voter_ids) if exclude_members
+    if exclude_members
+      member_ids = model.is_a?(Group) ? model.member_ids : (poll || NullPoll.new).voter_ids
+      users = users.where.not(id: member_ids)
+    end
 
     include_actor ? users.active.humans : users.active.humans.where.not(id: actor.id)
+  end
+
+  # Group-backed audiences share the group's notification permission regardless
+  # of whether their members come from the group or the current topic.
+  def self.authorize_notify!(model:, actor:)
+    group = group_for(model)
+    if group.present?
+      actor.ability.authorize!(:notify, group)
+    else
+      actor.ability.authorize!(:announce, model)
+    end
   end
 
   def self.audience_candidates(model)
@@ -66,7 +84,7 @@ class NotificationAudienceService
     topic = topic_for(model)
     poll = poll_for(model)
 
-    candidates << { id: "discussion_group", kind: "discussion_group" } if topic&.readers&.exists?
+    candidates << { id: "topic", kind: "topic" } if topic&.readers&.exists?
 
     if poll&.persisted? && poll.voters_count.to_i.positive?
       candidates << { id: "voters", kind: "voters" }
@@ -76,17 +94,19 @@ class NotificationAudienceService
       end
     end
 
-    unless model.is_a?(Group)
-      group = model.group if model.respond_to?(:group)
-      if group.present? && group.persisted?
-        groups = [ group, group.parent, *group.parent_or_self.subgroups ].compact.uniq
-        groups.each do |candidate_group|
-          if candidate_group.members.exists?
-            candidates << { id: "group-#{candidate_group.id}", kind: "group", name: candidate_group.name }
-          end
-          if candidate_group.delegates.exists?
-            candidates << { id: "delegates-#{candidate_group.id}", kind: "delegates", name: candidate_group.name }
-          end
+    group = group_for(model)
+    if group.present? && group.persisted?
+      groups = if model.is_a?(Group)
+        group_audience_scope(model).to_a
+      else
+        [ group, group.parent, *group.parent_or_self.subgroups ].compact.uniq
+      end
+      groups.each do |candidate_group|
+        if candidate_group.members.exists?
+          candidates << { id: "group-#{candidate_group.id}", kind: "group", name: candidate_group.name }
+        end
+        if !model.is_a?(Group) && candidate_group.delegates.exists?
+          candidates << { id: "delegates-#{candidate_group.id}", kind: "delegates", name: candidate_group.name }
         end
       end
     end
@@ -108,6 +128,17 @@ class NotificationAudienceService
     model.poll if model.respond_to?(:poll)
   end
 
+  def self.group_for(model)
+    return model if model.is_a?(Group)
+
+    model.group if model.respond_to?(:group)
+  end
+
+  def self.group_audience_scope(model)
+    scope = group_for(model).parent_or_self.self_and_subgroups
+    model.is_a?(Group) ? scope.where.not(id: model.id) : scope
+  end
+
   def self.topic_for(model)
     return model if model.is_a?(Topic)
 
@@ -116,6 +147,8 @@ class NotificationAudienceService
 
   private_class_method :audience_candidates,
                        :authorize_voter_status_audience!,
+                       :group_audience_scope,
+                       :group_for,
                        :poll_for,
                        :topic_for
 end

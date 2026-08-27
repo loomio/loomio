@@ -134,6 +134,7 @@ export default {
         path: 'announcements/available_audiences',
         params: {
           include_actor: (this.includeActor && 1) || null,
+          exclude_members: (this.excludeMembers && 1) || null,
           ...targetParams
         }
       }).then(data => {
@@ -209,8 +210,8 @@ export default {
           return this.$t('announcement.audiences.group', {name: audience.name});
         case 'delegates':
           return this.$t('announcement.audiences.delegates_of_group', {name: audience.name});
-        case 'discussion_group':
-          return this.$t('announcement.audiences.discussion_group');
+        case 'topic':
+          return this.$t('announcement.audiences.topic');
         case 'voters':
           return this.$t('announcement.audiences.voters');
         case 'decided_voters':
