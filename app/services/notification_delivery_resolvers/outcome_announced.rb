@@ -8,7 +8,7 @@ module NotificationDeliveryResolvers
 
       recipients = explicit_users.active
       {
-        "in_app" => outcome.topic.volume_gte_quiet_members
+        "in_app" => outcome.topic.app_notification_members
                            .where("users.id": recipients.select(:id))
                            .where.not(id: notification.actor_id).to_a,
         "email" => outcome.topic.volume_gte_normal_members

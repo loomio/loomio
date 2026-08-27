@@ -319,7 +319,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     recipient_attributes = {
       normal: { volume_email: :normal },
       quiet: { volume_email: :quiet },
-      muted: { volume_email: :quiet },
+      muted: { volume_email: :mute },
       complained: { volume_email: :normal, complaints_count: 1 },
       inactive: { volume_email: :normal, deactivated_at: Time.current },
       mentioned: { volume_email: :normal },

@@ -9,7 +9,7 @@ module NotificationDeliveryResolvers
       recipients = explicit_users.active
       chatbots = poll.group.chatbots
       {
-        "in_app" => poll.topic.volume_gte_quiet_members
+        "in_app" => poll.topic.app_notification_members
                        .where("users.id": recipients.select(:id))
                        .where.not(id: notification.actor_id).to_a,
         "email" => poll.topic.volume_gte_normal_members

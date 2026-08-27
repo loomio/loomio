@@ -45,7 +45,6 @@ class Api::V1::MentionsController < ApplicationController
     group_user_ids = Membership
       .active
       .accepted
-      .app_notifications
       .where(group_id: group_ids)
       .where.not(user_id: current_user.id)
       .pluck(:user_id)

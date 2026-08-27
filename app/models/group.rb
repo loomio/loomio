@@ -219,10 +219,8 @@ class Group < ApplicationRecord
         .where(volume_condition, levels: levels)
   end
 
-  def volume_gte_quiet_members
-    email_members = members_by_volume(Membership.volume_emails.values_at(:quiet, :normal, :loud), channel: :email)
-    push_members = members_by_volume(Membership.volume_pushes.values_at(:quiet, :normal, :loud), channel: :push)
-    User.where(id: email_members.select(:id)).or(User.where(id: push_members.select(:id)))
+  def app_notification_members
+    members.active
   end
 
   def volume_gte_normal_members

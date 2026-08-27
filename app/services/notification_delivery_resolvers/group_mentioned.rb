@@ -10,7 +10,7 @@ module NotificationDeliveryResolvers
                               .where.not(user_id: audience_ids("already_notified_user_ids"))
       users = User.active.verified
       {
-        "in_app" => users.where(id: memberships.app_notifications.select(:user_id)).to_a,
+        "in_app" => users.where(id: memberships.select(:user_id)).to_a,
         "email" => users.no_spam_complaints
                         .where(id: memberships.email_notifications.select(:user_id)).to_a
       }

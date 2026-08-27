@@ -21,7 +21,7 @@ module NotificationDeliveryResolvers
       end
 
       {
-        "in_app" => poll.topic.volume_gte_quiet_members
+        "in_app" => poll.topic.app_notification_members
                         .where("users.id": raw_recipients.active.select(:id)).to_a,
         "email" => email_recipients.to_a,
         "chatbot" => (poll.group&.chatbots || Chatbot.none)

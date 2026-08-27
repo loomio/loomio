@@ -8,9 +8,9 @@ class Queries::UsersByVolumeQuery
   end
 
   def self.app_notifications(topic)
-    email_users = users_by_volume(topic, TopicReader.volume_emails.values_at(:quiet, :normal, :loud), channel: :email)
-    push_users = users_by_volume(topic, TopicReader.volume_pushes.values_at(:quiet, :normal, :loud), channel: :push)
-    User.where(id: email_users.select(:id)).or(User.where(id: push_users.select(:id)))
+    return User.none if topic.nil?
+
+    topic.app_notification_members
   end
 
   %w[mute quiet normal loud].map(&:to_sym).each do |level|

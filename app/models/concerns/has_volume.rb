@@ -9,7 +9,6 @@ module HasVolume
     scope :volume_push_at_least, ->(level) { where('volume_push >= ?', volume_pushes[level]) }
     scope :email_notifications, -> { where(volume_email: volume_emails[:normal]..) }
     scope :push_notifications, -> { where(volume_push: volume_pushes[:normal]..) }
-    scope :app_notifications, -> { where('GREATEST(volume_email, volume_push) >= ?', volume_emails[:quiet]) }
   end
 
   # Email and push are independent delivery volumes. A muted channel is not
