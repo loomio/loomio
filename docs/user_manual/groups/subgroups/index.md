@@ -58,7 +58,7 @@ Open the sidebar menu, and click your group name to see it's subgroups.
 
 ## Invite to a subgroup
 
-Invite people to a subgroup as you invite them into a group. If they're already in your parent group you can just type their name. You can also quickly select everyone from the parent group.
+Invite people to a subgroup as you invite them into a group. If they already belong to a parent group or another subgroup in the same organization that you also belong to, you can type their name or select that group as an audience. Select the audience chip to expand it into individual people, then remove anyone you do not want to invite.
 
 ### Simultaneously invite people to subgroups and parent group
 

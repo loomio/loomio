@@ -943,7 +943,7 @@ de:
     audiences:
       group: Mitglieder von %{name}
       everyone_in_the_group: Jeder in der Gruppe
-      discussion_group: Jeder in der Diskussion
+      topic: Jeder in der Diskussion
       voters: Alle zur Abstimmung Eingeladenen
       decided_voters: Alle, die abgestimmt haben
       undecided_voters: Unentschlossene

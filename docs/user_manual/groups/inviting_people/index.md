@@ -18,6 +18,8 @@ If the recipient already has a Loomio user account they can still accept the inv
 
 You can send invitations by email to up to 100 people at a time by entering (or copy/pasting) multiple email addresses into the "Who would you like to invite" box. Separate email addresses by comma or space.
 
+When inviting people to a group within an organization, the parent group and related subgroups you belong to appear as audience suggestions. Select a group, then select its chip to expand the audience into individual people. You can remove anyone you do not want to invite before sending the invitations. People who already belong to the destination group are excluded.
+
 >[!Tip]
 >Copy email addresses from a column in a Google or Excel spreadsheet, and paste into the invitation box.
 

@@ -935,7 +935,7 @@ sv:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Alla i gruppen
-      discussion_group: Alla i tråden
+      topic: Alla i tråden
       voters: Alla inbjudna att rösta
       decided_voters: Alla som röstade
       undecided_voters: Obestämda väljare

@@ -937,7 +937,7 @@ hu:
     audiences:
       group: A(z) %{name} tagjai
       everyone_in_the_group: Mindenki a csoportban
-      discussion_group: Mindenki ebben a témában
+      topic: Mindenki ebben a témában
       voters: Mindenki, aki szavazhat
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott

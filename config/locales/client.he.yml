@@ -935,7 +935,7 @@ he:
     audiences:
       group: משתתפי ה%{name}
       everyone_in_the_group: כולם בקבוצה
-      discussion_group: כולם בשרשור
+      topic: כולם בשרשור
       voters: כולם מוזמנים להצביע
       decided_voters: כל מי שהצביע
       undecided_voters: מצביעים מתלבטים

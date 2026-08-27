@@ -8,6 +8,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       audiences: NotificationAudienceService.available(
         model: target_model,
         actor: current_user,
+        exclude_members: params[:exclude_members].present?,
         include_actor: params[:include_actor].present?
       )
     }, root: false
@@ -20,7 +21,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       model: target_model,
       kind: params[:recipient_audience],
       actor: current_user,
-      exclude_members: params[:exclude_members],
+      exclude_members: params[:exclude_members].present?,
       include_actor: params[:include_actor].present?
     )
     respond_with_collection

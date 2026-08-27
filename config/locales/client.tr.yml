@@ -935,7 +935,7 @@ tr:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Gruptaki herkes
-      discussion_group: Konudaki herkes
+      topic: Konudaki herkes
       voters: Herkes oy kullanmaya davet edildi
       decided_voters: Oy veren herkes
       undecided_voters: Kararsız seçmen
