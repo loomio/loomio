@@ -51,6 +51,11 @@ class LocalesHelperTest < ActiveSupport::TestCase
     assert_equal :fr, preferred_locale.to_sym
   end
 
+  test "uses Belarusian for a Belarus browser locale" do
+    @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'be-BY' }
+    assert_equal :be, preferred_locale.to_sym
+  end
+
   test "does not set a bad locale via http header" do
     @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'notagoodone' }
     assert_equal I18n.default_locale, preferred_locale.to_sym
