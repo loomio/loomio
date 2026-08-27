@@ -32,6 +32,11 @@ class ThrottleServiceTest < ActiveSupport::TestCase
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
   end
 
+  test "supports per-minute throttles" do
+    assert ThrottleService.can?(key: 'jump', max: 1, per: 'minute')
+    assert_not ThrottleService.can?(key: 'jump', max: 1, per: 'minute')
+  end
+
   test "does not reset all throttles" do
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)

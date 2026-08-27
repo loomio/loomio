@@ -1,5 +1,6 @@
 module ThrottleService
   PERIODS = {
+    'minute' => 1.minute,
     'hour' => 1.hour,
     'day' => 1.day
   }.freeze
@@ -43,7 +44,7 @@ module ThrottleService
 
   def self.normalize_period(per)
     per.to_s.tap do |period|
-      raise "Throttle per is not hour or day: #{per}" unless PERIODS.key?(period)
+      raise "Unsupported throttle period: #{per}" unless PERIODS.key?(period)
     end
   end
 end
