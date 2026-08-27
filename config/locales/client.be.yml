@@ -991,11 +991,11 @@ be:
       group: "%{name}"
       delegates_of_group: Дэлегаты %{name}
       everyone_in_the_group: Усе ў групе
-      discussion_group: Усе ў трэдзе
       voters: Усіх запрашаюць галасаваць
       decided_voters: Усе, хто галасаваў
       undecided_voters: Выбаршчыкі, якія не вызначыліся
       non_voters: Удзельнікі %{name} пакуль не запрошаны
+      topic: Усе ў трэдзе
     form:
       group_has_no_members_yet: Вы адзіны ўдзельнік вашай групы. Перш чым пачынаць абмеркаванне або прымаць рашэнне, магчыма, варта запрасіць у групу некалькіх людзей.
       invite_people_to_evaluate_loomio: Запрасіце некалькіх людзей у сваю групу Loomio, каб разам прыняць рашэнне
