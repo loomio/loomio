@@ -148,6 +148,8 @@ Register-grooming completed so far:
 
 ## Running Tests
 
+**Run Rails tests with escalated sandbox permissions on the first attempt.** The local PostgreSQL test database is not reachable from the filesystem sandbox. Use the existing approved `bin/rails test` permission instead of first running the command in the sandbox and reporting the predictable connection failure.
+
 **Do not add tests that only restate documented Rails behaviour.** These tests
 do not establish the correctness of Loomio's application behaviour. Test the
 Loomio-specific invariant, integration, or user-visible outcome instead.
