@@ -151,7 +151,7 @@ v-main
         //-     strong(v-t="'email_settings_page.daily_summary_label'")
         //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
       v-card-actions
-        help-btn(path="en/user_manual/users/email_settings#user-email-settings")
+        help-btn(path="en/user_manual/users/email_settings#notification-settings")
         v-spacer
         v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
           span(v-t="'email_settings_page.update_settings'")

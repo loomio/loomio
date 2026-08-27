@@ -21,17 +21,6 @@ The bell icon in the top-right is where notifications are accessed within the ap
 
 The notification list tells you when someone mentions you, invites you to vote, starts a discussion, or shares other activity that needs your attention. Select a notification to open the related discussion or poll.
 
-## How access and notifications fit together
-
-Being able to see something does not mean you will receive an immediate notification about it.
-
-- **Access** controls which groups, discussions, and polls you are allowed to open.
-- **Invitations, mentions, and replies** ask for your attention and normally create an immediate in-app notification and send it through your selected channel.
-- **All activity** sends an email or push message for each new activity in a group or thread.
-- The **Catch-up summary** collects unread activity into one scheduled email.
-
-For example, a group member can find a discussion without being invited to it. Inviting them sends it to their attention immediately. Mentioning them later asks for a specific response without changing their access.
-
 ## Push notifications
 
 Push notifications display new activity through your browser or operating system, including when Loomio is not open. Go to **Notification settings** and choose **Enable on this browser**. Your browser will ask for permission.
@@ -58,9 +47,7 @@ When a discussion email says that replies are accepted, you can reply directly f
 
 Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The Catch-up summary cannot accept replies; open the linked discussion or poll first.
 
-## User email settings
-
-### Notification settings
+## Notification settings
 
 To see and change notification settings, go to **Notification settings** under your user profile on the sidebar menu.
 
@@ -68,7 +55,7 @@ If the sidebar is closed, click on the menu icon (**☰**) to open it.
 
 ![](sidebar_notification_settings.png)
 
-There are three settings that apply to every group you belong to.
+The page contains settings for push notification devices, notification emails, the Catch-up summary, and email and push delivery for each group.
 
 ![email settings](email_settings.png)
 
