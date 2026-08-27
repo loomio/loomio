@@ -37,6 +37,15 @@ class ThrottleServiceTest < ActiveSupport::TestCase
     assert_not ThrottleService.can?(key: 'jump', max: 1, per: 'minute')
   end
 
+  test "normalizes throttle keys for environment overrides" do
+    ENV['THROTTLE_MAX_JUMP_HIGH'] = '1'
+
+    assert ThrottleService.can?(key: 'JumpHigh')
+    assert_not ThrottleService.can?(key: 'JumpHigh')
+  ensure
+    ENV.delete('THROTTLE_MAX_JUMP_HIGH')
+  end
+
   test "does not reset all throttles" do
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)

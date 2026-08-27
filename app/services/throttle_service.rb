@@ -15,7 +15,7 @@ module ThrottleService
 
   def self.can?(key: 'default-key', id: 1, max: 100, inc: 1, per: 'hour')
     per = normalize_period(per)
-    limit = ENV.fetch('THROTTLE_MAX_' + key, max).to_i
+    limit = ENV.fetch(env_key(key), max).to_i
     count = Rails.cache.increment(cache_key(key: key, id: id, per: per), inc, initial: 0, expires_in: PERIODS.fetch(per))
 
     count.to_i <= limit
@@ -36,6 +36,10 @@ module ThrottleService
 
   def self.namespace_cache_key(per)
     "THROTTLE-#{per.upcase}-NAMESPACE"
+  end
+
+  def self.env_key(key)
+    "THROTTLE_MAX_#{key.to_s.underscore.upcase}"
   end
 
   def self.namespace(per)
