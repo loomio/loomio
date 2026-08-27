@@ -53,6 +53,24 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "safe_to_fetch? rejects IPv4-mapped private addresses" do
+    with_dns(
+      'loopback-mapped.attacker.test' => ['::ffff:127.0.0.1'],
+      'metadata-mapped.attacker.test' => ['::ffff:169.254.169.254'],
+      'private-mapped.attacker.test'  => ['::ffff:10.0.0.1']
+    ) do
+      refute SafeHttpService.safe_to_fetch?('http://loopback-mapped.attacker.test/')
+      refute SafeHttpService.safe_to_fetch?('http://metadata-mapped.attacker.test/')
+      refute SafeHttpService.safe_to_fetch?('http://private-mapped.attacker.test/')
+    end
+  end
+
+  test "safe_to_fetch? accepts an IPv4-mapped public address" do
+    with_dns('public-mapped.test' => ['::ffff:93.184.216.34']) do
+      assert SafeHttpService.safe_to_fetch?('https://public-mapped.test/')
+    end
+  end
+
   test "safe_to_fetch? accepts a public IPv6 address outside transition ranges" do
     with_dns('public-ipv6.test' => ['2001:4860:4860::8888']) do
       assert SafeHttpService.safe_to_fetch?('https://public-ipv6.test/')

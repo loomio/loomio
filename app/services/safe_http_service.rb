@@ -173,6 +173,7 @@ module SafeHttpService
 
   def self.blocked_ip?(ip_str)
     ip = IPAddr.new(ip_str)
+    ip = ip.native if ip.ipv4_mapped?
     BLOCKED_IP_RANGES.any? { |range| range.include?(ip) }
   rescue IPAddr::InvalidAddressError
     true
