@@ -26,6 +26,51 @@ namespace :loomio do
     paths
   end
 
+  # Translation imports can contain thousands of strings. Batch requests and
+  # retry transient connection and service-capacity failures without changing
+  # result ordering.
+  def translate_strings(google, source_strings, google_locale)
+    retry_count = 0
+
+    begin
+      Array(google.translate(*source_strings, to: google_locale)).map do |translation|
+        CGI.unescapeHTML(translation.text)
+      end
+    rescue Faraday::ConnectionFailed,
+           Faraday::SSLError,
+           Faraday::TimeoutError,
+           Google::Cloud::ResourceExhaustedError
+      retry_count += 1
+      raise if retry_count > 5
+
+      sleep(2**(retry_count - 1))
+      retry
+    end
+  end
+
+  # Stay below Google's per-request limits of 128 strings and 30,000 codepoints,
+  # with margin for request encoding and future source-string growth.
+  def translation_batches(paths, source, batch_size_max: 100, batch_length_max: 20_000)
+    batches = []
+    batch = []
+    batch_length = 0
+
+    paths.each do |path|
+      source_string = (source.dig(*path.split('.')) || "").strip
+      if batch.any? && (batch.length >= batch_size_max || batch_length + source_string.length > batch_length_max)
+        batches << batch
+        batch = []
+        batch_length = 0
+      end
+
+      batch << [ path, source_string ]
+      batch_length += source_string.length
+    end
+
+    batches << batch if batch.any?
+    batches
+  end
+
   def delete_keys(hash, keys)
     # Dotted keys are exact paths; undotted keys match any key (leaf or subtree) whose last segment equals the key.
     exact_paths = keys.select { |k| k.include?('.') }
@@ -173,28 +218,40 @@ namespace :loomio do
           source_paths = source_data[:paths]
           filename = "config/locales/#{source_name}.#{file_locale}.yml"
 
+          file_was_new = !File.exist?(filename)
           foreign = {}
           foreign_paths = []
-          if File.exist?(filename)
+          unless file_was_new
             foreign = YAML.load_file(filename)[file_locale]
             foreign_paths = list_paths(foreign, [])
           end
 
-          write_file = false
-          (source_paths - foreign_paths).each do |path|
-            source_string = (source.dig(*path.split('.')) || "").strip
-            next if source_string.blank?
-
-            output_mutex.synchronize do
-              puts "#{file_locale}: #{path}, #{source_string}"
-            end
-
-            write_file = true
-            translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
-            foreign.bury(*path.split('.'), translated_string)
+          paths_missing = source_paths - foreign_paths
+          paths_blank, paths_translate = paths_missing.partition do |path|
+            (source.dig(*path.split('.')) || "").strip.blank?
           end
 
-          File.write(filename, {file_locale => foreign}.to_yaml(line_width: 2000)) if write_file
+          if file_was_new
+            paths_blank.each { |path| foreign.bury(*path.split('.'), "") }
+            File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000)) if paths_blank.any?
+          end
+
+          translation_batches(paths_translate, source).each do |batch|
+            paths, source_strings = batch.transpose
+
+            output_mutex.synchronize do
+              puts "#{file_locale}: translating #{source_name} strings #{paths.first} to #{paths.last}"
+            end
+
+            translated_strings = translate_strings(google, source_strings, google_locale)
+            raise "translation count mismatch" unless translated_strings.length == paths.length
+
+            paths.zip(translated_strings).each do |path, translated_string|
+              foreign.bury(*path.split('.'), translated_string)
+            end
+
+            File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000))
+          end
         end
       rescue => e
         errors << [file_locale, e]
