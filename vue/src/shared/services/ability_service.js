@@ -141,6 +141,7 @@ export default new class AbilityService {
   }
 
   canAnnounce(model) {
+    if (model.isA('group')) { return this.canNotifyGroup(model); }
     if (model.isA('poll')) { return this.canAnnouncePoll(model); }
     if (model.isA('topic')) { return this.canAnnounceTopic(model); }
     return this.canAnnounceDiscussion(model);
