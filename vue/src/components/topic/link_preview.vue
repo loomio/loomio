@@ -24,7 +24,7 @@ export default {
     return {editing: false};
   },
 
-  methods: { truncate },
+  methods: { truncate, unescape },
 
   computed: {
     imageUrl() {
@@ -109,11 +109,11 @@ div
           )
           div
             v-card-title.text-medium-emphasis
-              span(v-html="preview.title")
+              span(v-text="unescape(preview.title)")
             v-card-subtitle
               span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
-              span.link-preview__hostname(v-else v-html="truncate(preview.hostname, {length: 240})")
-            v-card-text.text-medium-emphasis(v-if="preview.description" v-html="truncate(preview.description, {length: 240})")
+              span.link-preview__hostname(v-else v-text="truncate(unescape(preview.hostname), {length: 240})")
+            v-card-text.text-medium-emphasis(v-if="preview.description" v-text="truncate(unescape(preview.description), {length: 240})")
 </template>
 
 <style>

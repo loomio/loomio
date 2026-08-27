@@ -120,4 +120,25 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
       assert_nil SafeHttpService.fetch('http://a.test/')
     end
   end
+
+  test "fetch returns link preview metadata as plain text" do
+    with_dns('preview.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'http://preview.test/').to_return(
+        status: 200,
+        body: <<~HTML
+          <html>
+            <head>
+              <meta property="og:title" content="&lt;img src=x onerror=alert(1)&gt;Quarterly update">
+              <meta property="og:description" content="Fish &amp; Chips — 2 &lt; 3; read &lt;strong&gt;the report&lt;/strong&gt;">
+            </head>
+          </html>
+        HTML
+      )
+
+      preview = SafeHttpService.fetch('http://preview.test/')
+
+      assert_equal 'Quarterly update', preview[:title]
+      assert_equal 'Fish & Chips — 2 < 3; read the report', preview[:description]
+    end
+  end
 end

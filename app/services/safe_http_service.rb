@@ -50,6 +50,7 @@ module SafeHttpService
     title = [doc.css('meta[property="og:title"]').attr('content')&.text,
              doc.css('title').first&.text,
              doc.css('h1').first&.text].reject(&:blank?).first
+    title = sanitize_preview_text(title)
 
     bad_titles = [/Google \w+: Sign-in/]
 
@@ -58,6 +59,7 @@ module SafeHttpService
 
     description = [doc.css('meta[property="og:description"]').attr('content')&.text,
                    doc.css('meta[name="description"]').attr('content')&.text].reject(&:blank?).first
+    description = sanitize_preview_text(description)
 
     image = [doc.css('meta[property="og:image"]').attr('content')&.text,
              doc.css('meta[name="og:image"]').attr('content')&.text,
@@ -177,5 +179,10 @@ module SafeHttpService
     BLOCKED_IP_RANGES.any? { |range| range.include?(ip) }
   rescue IPAddr::InvalidAddressError
     true
+  end
+
+  def self.sanitize_preview_text(value)
+    sanitized = Rails::Html::FullSanitizer.new.sanitize(String(value))
+    Nokogiri::HTML5::DocumentFragment.parse(sanitized).text.truncate(240)
   end
 end
