@@ -328,10 +328,6 @@ GEM
     highline (3.0.1)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
-    httparty (0.24.2)
-      csv
-      mini_mime (>= 1.0.0)
-      multi_xml (>= 0.5.2)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-timezones (2.3.0)
@@ -400,8 +396,6 @@ GEM
       turbo-rails
     msgpack (1.8.4)
     multi_json (1.21.1)
-    multi_xml (0.8.1)
-      bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -758,6 +752,7 @@ DEPENDENCIES
   byebug
   cancancan
   cld
+  csv
   custom_counter_cache
   discard (~> 2.0)
   discriminator (~> 0.1.1)
@@ -765,12 +760,13 @@ DEPENDENCIES
   drb
   factory_bot_rails
   faker
+  faraday (~> 2.14)
+  faraday-follow_redirects (~> 0.5)
   friendly_id (~> 5.7.0)
   google-cloud-storage (~> 1.62)
   google-cloud-translate
   gravtastic
   http_accept_language
-  httparty (~> 0.24.2)
   i18n-timezones
   icalendar
   image_processing (~> 2.0)
