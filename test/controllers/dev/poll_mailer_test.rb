@@ -142,7 +142,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   def build_poll_stance_created(poll_type:, anonymous: false, hide_results: :off)
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     topic = @poll.topic
-    TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!(email: 'loud', push: 'mute') if topic
+    TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!(email: 'loud', push: 'quiet') if topic
     topic_item = if @poll.detached_anonymous?
       cast_stance(@poll, @voter)
     else

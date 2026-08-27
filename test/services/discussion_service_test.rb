@@ -205,7 +205,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   test "update keeps its history topic_item and creates one logical notification" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :mute)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
 
     topic_item = DiscussionService.update(
       discussion: discussion,
@@ -235,7 +235,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     discussion = discussions(:discussion)
     recipient = users(:member)
     recipient.update!(username: "editmention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :mute)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
 
     DiscussionService.update(
       discussion: discussion,

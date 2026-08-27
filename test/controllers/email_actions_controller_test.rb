@@ -23,7 +23,7 @@ class EmailActionsControllerTest < ActionController::TestCase
 
   # unsubscribe page rendering
   test "unsubscribe renders with topic reader" do
-    @topic_reader.set_volume!(email: :loud, push: :mute)
+    @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     get :unsubscribe, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token }
     assert_response :success
@@ -49,8 +49,8 @@ class EmailActionsControllerTest < ActionController::TestCase
 
   # set_volume tests
   test "unsubscribes membership" do
-    @membership.set_volume!(email: :loud, push: :mute)
-    @topic_reader.set_volume!(email: :loud, push: :mute)
+    @membership.set_volume!(email: :loud, push: :quiet)
+    @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     put :set_group_volume, params: {
       group_id: @group.id,
@@ -64,15 +64,15 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @topic_reader.reload
 
-    assert_equal 'mute', @membership.volume_email
-    assert_equal 'mute', @topic_reader.volume_email
+    assert_equal 'quiet', @membership.volume_email
+    assert_equal 'quiet', @topic_reader.volume_email
     assert_equal 'normal', @membership.volume_push
     assert_equal 'normal', @topic_reader.volume_push
   end
 
   test "quiets membership" do
-    @membership.set_volume!(email: :loud, push: :mute)
-    @topic_reader.set_volume!(email: :loud, push: :mute)
+    @membership.set_volume!(email: :loud, push: :quiet)
+    @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :quiet }
     assert_response 302
@@ -85,8 +85,8 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   test "unsubscribes discussion" do
-    @membership.set_volume!(email: :normal, push: :mute)
-    @topic_reader.set_volume!(email: :loud, push: :mute)
+    @membership.set_volume!(email: :normal, push: :quiet)
+    @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     put :set_discussion_volume, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302

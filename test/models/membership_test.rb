@@ -34,6 +34,15 @@ class MembershipTest < ActiveSupport::TestCase
     assert_equal :normal, membership.volume_email.to_sym
   end
 
+  test "delivery channels use the quiet normal loud volume scale" do
+    levels = { "quiet" => 1, "normal" => 2, "loud" => 3 }
+
+    assert_equal levels, Membership.volume_emails
+    assert_equal levels, Membership.volume_pushes
+    assert_equal levels, User.default_membership_volume_emails
+    assert_equal levels, User.default_membership_volume_pushes
+  end
+
   test "can change its volume" do
     @group.add_member!(@user)
     membership = @user.memberships.find_by(group: @group)

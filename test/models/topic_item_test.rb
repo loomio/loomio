@@ -32,25 +32,25 @@ class EventTest < ActiveSupport::TestCase
 
     # User who left group
     m = @group.add_member!(@user_left_group)
-    TopicReader.for(user: @user_left_group, topic: @discussion.topic).set_volume!(email: :loud, push: :mute)
+    TopicReader.for(user: @user_left_group, topic: @discussion.topic).set_volume!(email: :loud, push: :quiet)
     m.update_columns(revoked_at: Time.now, revoker_id: @user_left_group.id)
 
     # Thread volume users (membership muted, thread overrides)
     [@user_thread_loud, @user_thread_normal, @user_thread_quiet, @user_thread_mute].each do |u|
-      @group.add_member!(u).set_volume!(email: :quiet, push: :mute)
+      @group.add_member!(u).set_volume!(email: :quiet, push: :quiet)
     end
-    @group.membership_for(@mentioned_user).set_volume!(email: :quiet, push: :mute)
+    @group.membership_for(@mentioned_user).set_volume!(email: :quiet, push: :quiet)
 
-    TopicReader.for(user: @user_thread_loud, topic: @discussion.topic).set_volume!(email: :loud, push: :mute)
-    TopicReader.for(user: @user_thread_normal, topic: @discussion.topic).set_volume!(email: :normal, push: :mute)
-    TopicReader.for(user: @user_thread_quiet, topic: @discussion.topic).set_volume!(email: :quiet, push: :mute)
-    TopicReader.for(user: @user_thread_mute, topic: @discussion.topic).set_volume!(email: :quiet, push: :mute)
+    TopicReader.for(user: @user_thread_loud, topic: @discussion.topic).set_volume!(email: :loud, push: :quiet)
+    TopicReader.for(user: @user_thread_normal, topic: @discussion.topic).set_volume!(email: :normal, push: :quiet)
+    TopicReader.for(user: @user_thread_quiet, topic: @discussion.topic).set_volume!(email: :quiet, push: :quiet)
+    TopicReader.for(user: @user_thread_mute, topic: @discussion.topic).set_volume!(email: :quiet, push: :quiet)
 
     # Membership volume users
-    @group.add_member!(@user_membership_loud).set_volume!(email: :loud, push: :mute)
-    @group.add_member!(@user_membership_normal).set_volume!(email: :normal, push: :mute)
-    @group.add_member!(@user_membership_quiet).set_volume!(email: :quiet, push: :mute)
-    @group.add_member!(@user_membership_mute).set_volume!(email: :quiet, push: :mute)
+    @group.add_member!(@user_membership_loud).set_volume!(email: :loud, push: :quiet)
+    @group.add_member!(@user_membership_normal).set_volume!(email: :normal, push: :quiet)
+    @group.add_member!(@user_membership_quiet).set_volume!(email: :quiet, push: :quiet)
+    @group.add_member!(@user_membership_mute).set_volume!(email: :quiet, push: :quiet)
 
     # Webhook
     @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
@@ -349,7 +349,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "stance_created notifies author if volume loud" do
     @poll.stances.create!(participant: @poll.author)
-    TopicReader.find_or_create_by!(topic: @poll.topic, user: @poll.author).set_volume!(email: 'loud', push: 'mute')
+    TopicReader.find_or_create_by!(topic: @poll.topic, user: @poll.author).set_volume!(email: 'loud', push: 'quiet')
     stance = @poll.stances.create!(participant: @user_thread_normal, inviter: @admin, latest: true, reason: "I agree")
     stance.choice = @poll.poll_option_names.first
     StanceService.create(stance: stance, actor: @user_thread_normal)
@@ -415,7 +415,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "poll_announced does not email people with topic reader volume quiet" do
     stance = Stance.create!(participant: @user_thread_normal, poll: @poll)
-    TopicReader.find_or_create_by!(topic: @poll.topic, user: @user_thread_normal).set_volume!(email: 'quiet', push: 'mute')
+    TopicReader.find_or_create_by!(topic: @poll.topic, user: @user_thread_normal).set_volume!(email: 'quiet', push: 'quiet')
     assert_no_difference -> { ActionMailer::Base.deliveries.count } do
       NotificationService.create!(
         kind: "poll_announced",

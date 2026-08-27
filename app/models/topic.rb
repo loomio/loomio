@@ -170,7 +170,7 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(guest: true, inviter: inviter)
     else
-      topic_readers.create!(user: user, inviter: inviter, guest: true, volume_email: :normal, volume_push: :mute)
+      topic_readers.create!(user: user, inviter: inviter, guest: true, volume_email: :normal, volume_push: :quiet)
     end
   end
 
@@ -178,7 +178,7 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(inviter: inviter, admin: true)
     else
-      topic_readers.create!(user: user, inviter: inviter, admin: true, volume_email: :normal, volume_push: :mute)
+      topic_readers.create!(user: user, inviter: inviter, admin: true, volume_email: :normal, volume_push: :quiet)
     end
   end
 
@@ -211,7 +211,7 @@ class Topic < ApplicationRecord
     volume_condition =
       case channel
       when :email then 'coalesce(tr.volume_email, m.volume_email, 2) IN (:levels)'
-      when :push then 'coalesce(tr.volume_push, m.volume_push, 0) IN (:levels)'
+      when :push then 'coalesce(tr.volume_push, m.volume_push, 1) IN (:levels)'
       else raise ArgumentError, "Unknown volume channel: #{channel}"
       end
 

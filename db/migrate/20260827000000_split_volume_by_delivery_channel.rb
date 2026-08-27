@@ -4,21 +4,26 @@ class SplitVolumeByDeliveryChannel < ActiveRecord::Migration[8.1]
     rename_column :topic_readers, :volume, :volume_email
     rename_column :users, :default_membership_volume, :default_membership_volume_email
 
-    # Preserve existing email behaviour and leave push off until each person
-    # explicitly enables it for a group or thread.
-    add_column :memberships, :volume_push, :integer, default: 0, null: false
-    add_column :topic_readers, :volume_push, :integer, default: 0, null: false
-    add_column :users, :default_membership_volume_push, :integer, default: 0, null: false
+    # Quiet now represents a channel that is off. Collapse the legacy mute value
+    # into quiet before enforcing the shared three-level scale.
+    execute "UPDATE memberships SET volume_email = 1 WHERE volume_email = 0"
+    execute "UPDATE topic_readers SET volume_email = 1 WHERE volume_email = 0"
+    execute "UPDATE users SET default_membership_volume_email = 1 WHERE default_membership_volume_email = 0"
+
+    # Leave push quiet until each person explicitly enables it.
+    add_column :memberships, :volume_push, :integer, default: 1, null: false
+    add_column :topic_readers, :volume_push, :integer, default: 1, null: false
+    add_column :users, :default_membership_volume_push, :integer, default: 1, null: false
 
     add_index :memberships, :volume_push
-    add_index :memberships, [:user_id, :volume_push]
+    add_index :memberships, [ :user_id, :volume_push ]
 
-    add_check_constraint :memberships, "volume_email IN (0, 1, 2, 3)", name: "memberships_volume_email"
-    add_check_constraint :memberships, "volume_push IN (0, 1, 2, 3)", name: "memberships_volume_push"
-    add_check_constraint :topic_readers, "volume_email IN (0, 1, 2, 3)", name: "topic_readers_volume_email"
-    add_check_constraint :topic_readers, "volume_push IN (0, 1, 2, 3)", name: "topic_readers_volume_push"
-    add_check_constraint :users, "default_membership_volume_email IN (0, 1, 2, 3)", name: "users_default_membership_volume_email"
-    add_check_constraint :users, "default_membership_volume_push IN (0, 1, 2, 3)", name: "users_default_membership_volume_push"
+    add_check_constraint :memberships, "volume_email IN (1, 2, 3)", name: "memberships_volume_email"
+    add_check_constraint :memberships, "volume_push IN (1, 2, 3)", name: "memberships_volume_push"
+    add_check_constraint :topic_readers, "volume_email IN (1, 2, 3)", name: "topic_readers_volume_email"
+    add_check_constraint :topic_readers, "volume_push IN (1, 2, 3)", name: "topic_readers_volume_push"
+    add_check_constraint :users, "default_membership_volume_email IN (1, 2, 3)", name: "users_default_membership_volume_email"
+    add_check_constraint :users, "default_membership_volume_push IN (1, 2, 3)", name: "users_default_membership_volume_push"
   end
 
   def down
@@ -29,7 +34,7 @@ class SplitVolumeByDeliveryChannel < ActiveRecord::Migration[8.1]
     remove_check_constraint :memberships, name: "memberships_volume_push"
     remove_check_constraint :memberships, name: "memberships_volume_email"
 
-    remove_index :memberships, [:user_id, :volume_push]
+    remove_index :memberships, [ :user_id, :volume_push ]
     remove_index :memberships, :volume_push
 
     remove_column :users, :default_membership_volume_push

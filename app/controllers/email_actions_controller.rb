@@ -67,8 +67,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     email = params[:volume_email] || params[:value] || record.volume_email
     push = params[:volume_push] || record.volume_push
     case params[:delivery_channel]
-    when "email" then push = "mute"
-    when "push" then email = "mute"
+    when "email" then push = "quiet"
+    when "push" then email = "quiet"
     end
     { volume_email: email, volume_push: push }
   end

@@ -513,7 +513,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
     t.integer "volume_email"
-    t.integer "volume_push", default: 0, null: false
+    t.integer "volume_push", default: 1, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -523,8 +523,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.index ["user_id", "volume_push"], name: "index_memberships_on_user_id_and_volume_push"
     t.index ["volume_email"], name: "index_memberships_on_volume_email"
     t.index ["volume_push"], name: "index_memberships_on_volume_push"
-    t.check_constraint "volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "memberships_volume_email"
-    t.check_constraint "volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "memberships_volume_push"
+    t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_email"
+    t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_push"
   end
 
   create_table "notification_deliveries", force: :cascade do |t|
@@ -1216,14 +1216,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.datetime "updated_at", precision: nil
     t.integer "user_id", null: false
     t.integer "volume_email", default: 2, null: false
-    t.integer "volume_push", default: 0, null: false
+    t.integer "volume_push", default: 1, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
     t.index ["user_id", "topic_id"], name: "index_topic_readers_guest_user_id", where: "(guest = true)"
-    t.check_constraint "volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "topic_readers_volume_email"
-    t.check_constraint "volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "topic_readers_volume_push"
+    t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "topic_readers_volume_email"
+    t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "topic_readers_volume_push"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -1298,7 +1298,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.datetime "deactivated_at", precision: nil
     t.integer "deactivator_id"
     t.integer "default_membership_volume_email", default: 2, null: false
-    t.integer "default_membership_volume_push", default: 0, null: false
+    t.integer "default_membership_volume_push", default: 1, null: false
     t.string "detected_locale", limit: 255
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false
@@ -1346,8 +1346,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-    t.check_constraint "default_membership_volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "users_default_membership_volume_email"
-    t.check_constraint "default_membership_volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "users_default_membership_volume_push"
+    t.check_constraint "default_membership_volume_email = ANY (ARRAY[1, 2, 3])", name: "users_default_membership_volume_email"
+    t.check_constraint "default_membership_volume_push = ANY (ARRAY[1, 2, 3])", name: "users_default_membership_volume_push"
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|

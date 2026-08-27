@@ -68,7 +68,7 @@ export default class MembershipModel extends BaseModel {
   }
 
   isMuted() {
-    return ['mute', 'quiet'].includes(this.volumeEmail) && ['mute', 'quiet'].includes(this.volumePush);
+    return this.volumeEmail === 'quiet' && this.volumePush === 'quiet';
   }
 
   beforeRemove() {

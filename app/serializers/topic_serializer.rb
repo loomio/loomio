@@ -82,7 +82,7 @@ class TopicSerializer < ApplicationSerializer
       m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
       TopicReader.find_or_initialize_by(user_id: scope[:current_user_id], topic_id: object.id) do |tr|
         tr.volume_email = m&.volume_email || 'normal'
-        tr.volume_push = m&.volume_push || 'mute'
+        tr.volume_push = m&.volume_push || 'quiet'
       end
     end
 
@@ -93,7 +93,7 @@ class TopicSerializer < ApplicationSerializer
       user_id: scope[:current_user_id],
       topic_id: object.id,
       volume_email: m&.volume_email || 'normal',
-      volume_push: m&.volume_push || 'mute'
+      volume_push: m&.volume_push || 'quiet'
     )
   end
 

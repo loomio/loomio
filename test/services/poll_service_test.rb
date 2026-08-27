@@ -99,7 +99,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "poll topic item sends loud subscriber email without a notification row" do
     subscriber = users(:member)
     poll = PollService.create(params: poll_params, actor: @user)
-    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :mute)
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :quiet)
     ActionMailer::Base.deliveries.clear
     PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
 
@@ -273,7 +273,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "poll edit keeps its history topic_item and creates one logical notification" do
     poll = create_poll
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(email: :normal, push: :mute)
+    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(email: :normal, push: :quiet)
 
     topic_item = PollService.update(
       poll: poll,
@@ -303,7 +303,7 @@ class PollServiceTest < ActiveSupport::TestCase
     poll = create_poll
     recipient = users(:member)
     recipient.update!(username: "pollmention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(email: :normal, push: :mute)
+    TopicReader.for(user: recipient, topic: poll.topic).set_volume!(email: :normal, push: :quiet)
 
     PollService.update(
       poll: poll,

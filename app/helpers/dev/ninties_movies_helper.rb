@@ -134,7 +134,7 @@ module Dev::NintiesMoviesHelper
                                         discussion_privacy_options: 'public_or_private', creator: patrick)
       GroupService.create(group: @muted_group, actor: @muted_group.creator)
       @muted_group.add_admin! patrick
-      Membership.find_by(group: @muted_group, user: patrick).set_volume! :mute
+      Membership.find_by(group: @muted_group, user: patrick).set_volume!(email: :quiet, push: :quiet)
     end
     @muted_group
   end

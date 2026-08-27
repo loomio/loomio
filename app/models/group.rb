@@ -209,7 +209,7 @@ class Group < ApplicationRecord
     volume_condition =
       case channel
       when :email then 'coalesce(m.volume_email, 2) IN (:levels)'
-      when :push then 'coalesce(m.volume_push, 0) IN (:levels)'
+      when :push then 'coalesce(m.volume_push, 1) IN (:levels)'
       else raise ArgumentError, "Unknown volume channel: #{channel}"
       end
 

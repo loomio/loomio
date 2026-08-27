@@ -67,7 +67,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       user: @user,
       topic: secret_discussion.topic,
       volume_email: "normal",
-      volume_push: "mute",
+      volume_push: "quiet",
       guest: true,
       revoked_at: 1.minute.ago
     )
@@ -449,7 +449,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "sets the volume of a topic" do
     sign_in @user
     reader = TopicReader.for(user: @user, topic: @topic)
-    reader.update(volume_email: :loud, volume_push: :mute)
+    reader.update(volume_email: :loud, volume_push: :quiet)
 
     patch :set_volume, params: { id: @topic.id, volume_email: :quiet, volume_push: :normal }
 
@@ -461,7 +461,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "does not update volume for unauthorized topic" do
     sign_in @user
 
-    patch :set_volume, params: { id: discussions(:alien_discussion).topic.id, volume_email: :quiet, volume_push: :mute }
+    patch :set_volume, params: { id: discussions(:alien_discussion).topic.id, volume_email: :quiet, volume_push: :quiet }
 
     refute_equal 200, response.status
   end

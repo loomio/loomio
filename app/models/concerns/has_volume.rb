@@ -2,8 +2,8 @@ module HasVolume
   extend ActiveSupport::Concern
 
   included do
-    enum :volume_email, { mute: 0, quiet: 1, normal: 2, loud: 3 }, prefix: :email
-    enum :volume_push, { mute: 0, quiet: 1, normal: 2, loud: 3 }, prefix: :push
+    enum :volume_email, { quiet: 1, normal: 2, loud: 3 }, prefix: :email
+    enum :volume_push, { quiet: 1, normal: 2, loud: 3 }, prefix: :push
 
     scope :volume_email_at_least, ->(level) { where('volume_email >= ?', volume_emails[level]) }
     scope :volume_push_at_least, ->(level) { where('volume_push >= ?', volume_pushes[level]) }

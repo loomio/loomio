@@ -86,7 +86,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
       setting_select(
         "volume_#{channel}",
         %w[quiet normal loud].map { |value| [ t(:"change_volume_form.#{volume_level_key(value)}"), value ] },
-        selected: volume == "mute" ? "normal" : volume,
+        selected: volume,
         id: id
       )
     end

@@ -81,10 +81,10 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   test 'updates volume for single membership' do
     membership = @test_group.membership_for(@user)
-    membership.set_volume!(email: 'quiet', push: 'mute')
+    membership.set_volume!(email: 'quiet', push: 'quiet')
 
     second_membership = @subgroup.membership_for(@user)
-    second_membership.set_volume!(email: 'quiet', push: 'mute')
+    second_membership.set_volume!(email: 'quiet', push: 'quiet')
 
     put :set_volume, params: { id: membership.id, volume_email: 'loud', volume_push: 'normal' }
 
@@ -98,10 +98,10 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   test 'updates volume for all memberships when apply_to_all is true' do
     membership = @test_group.membership_for(@user)
-    membership.set_volume!(email: 'quiet', push: 'mute')
+    membership.set_volume!(email: 'quiet', push: 'quiet')
 
     second_membership = @subgroup.membership_for(@user)
-    second_membership.set_volume!(email: 'quiet', push: 'mute')
+    second_membership.set_volume!(email: 'quiet', push: 'quiet')
 
     put :set_volume, params: { id: membership.id, volume_email: 'loud', volume_push: 'normal', apply_to_all: true }
 
@@ -116,9 +116,9 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   test 'rejects a missing volume without changing topic readers' do
     membership = @test_group.membership_for(@user)
-    membership.set_volume!(email: 'quiet', push: 'mute')
+    membership.set_volume!(email: 'quiet', push: 'quiet')
     topic_reader = TopicReader.for(user: @user, topic: topics(:discussion_topic))
-    topic_reader.set_volume!(email: 'quiet', push: 'mute')
+    topic_reader.set_volume!(email: 'quiet', push: 'quiet')
 
     put :set_volume, params: { id: membership.id }
 

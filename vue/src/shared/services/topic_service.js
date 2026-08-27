@@ -332,8 +332,8 @@ export default new class TopicService {
           confirm: {
             submit() {
               return topic.saveVolume(
-                topic.readerVolumeEmail === 'mute' ? 'mute' : 'quiet',
-                topic.readerVolumePush === 'mute' ? 'mute' : 'quiet',
+                'quiet',
+                'quiet',
                 true
               );
             },
@@ -348,8 +348,8 @@ export default new class TopicService {
     } else {
       const previousVolumes = { email: topic.readerVolumeEmail, push: topic.readerVolumePush };
       return topic.saveVolume(
-        topic.readerVolumeEmail === 'mute' ? 'mute' : 'quiet',
-        topic.readerVolumePush === 'mute' ? 'mute' : 'quiet'
+        'quiet',
+        'quiet'
       ).then(() => {
         return Flash.success("discussion.volume.mute_message",
           {name: topic.topicable().title}
@@ -359,7 +359,7 @@ export default new class TopicService {
   }
 
   unmute(topic, previousVolumes) {
-    previousVolumes ||= { email: 'normal', push: 'mute' };
+    previousVolumes ||= { email: 'normal', push: 'quiet' };
     return topic.saveVolume(previousVolumes.email, previousVolumes.push).then(() => {
       return Flash.success("discussion.volume.unmute_message",
         {name: topic.topicable().title}

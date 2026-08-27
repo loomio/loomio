@@ -17,8 +17,8 @@ const initialPush = defaultVolumePush();
 const volumeEmail = ref(initialEmail);
 const volumePush = ref(initialPush);
 const deliveryChannel = ref(defaultDeliveryChannel());
-const previousEmail = ref(initialEmail === 'mute' ? 'normal' : initialEmail);
-const previousPush = ref(initialPush === 'mute' ? 'normal' : initialPush);
+const previousEmail = ref(initialEmail === 'quiet' ? 'normal' : initialEmail);
+const previousPush = ref(initialPush === 'quiet' ? 'normal' : initialPush);
 const applyToAll = ref(model.isA('user'));
 const saving = ref(false);
 
@@ -43,16 +43,16 @@ const requiresPush = computed(() => ['normal', 'loud'].includes(volumePush.value
 
 watch(deliveryChannel, channel => {
   if (channel === 'email') {
-    if (volumePush.value !== 'mute') previousPush.value = volumePush.value;
-    volumeEmail.value = volumeEmail.value === 'mute' ? previousEmail.value : volumeEmail.value;
-    volumePush.value = 'mute';
+    if (volumePush.value !== 'quiet') previousPush.value = volumePush.value;
+    volumeEmail.value = volumeEmail.value === 'quiet' ? previousEmail.value : volumeEmail.value;
+    volumePush.value = 'quiet';
   } else if (channel === 'push') {
-    if (volumeEmail.value !== 'mute') previousEmail.value = volumeEmail.value;
-    volumeEmail.value = 'mute';
-    volumePush.value = volumePush.value === 'mute' ? previousPush.value : volumePush.value;
+    if (volumeEmail.value !== 'quiet') previousEmail.value = volumeEmail.value;
+    volumeEmail.value = 'quiet';
+    volumePush.value = volumePush.value === 'quiet' ? previousPush.value : volumePush.value;
   } else {
-    volumeEmail.value = volumeEmail.value === 'mute' ? previousEmail.value : volumeEmail.value;
-    volumePush.value = volumePush.value === 'mute' ? previousPush.value : volumePush.value;
+    volumeEmail.value = volumeEmail.value === 'quiet' ? previousEmail.value : volumeEmail.value;
+    volumePush.value = volumePush.value === 'quiet' ? previousPush.value : volumePush.value;
   }
 });
 
@@ -70,7 +70,7 @@ function defaultVolumePush() {
   case 'topic':      return model.readerVolumePush;
   case 'membership': return model.volumePush;
   case 'user':       return model.defaultMembershipVolumePush;
-  default:           return 'mute';
+  default:           return 'quiet';
   }
 }
 

@@ -135,11 +135,11 @@ export default class TopicModel extends BaseModel {
   }
 
   volume() {
-    const rank = { mute: 0, quiet: 1, normal: 2, loud: 3 };
+    const rank = { quiet: 1, normal: 2, loud: 3 };
     const volume = rank[this.readerVolumePush] > rank[this.readerVolumeEmail]
       ? this.readerVolumePush
       : this.readerVolumeEmail;
-    return volume === 'mute' ? 'quiet' : volume;
+    return volume;
   }
 
   membersInclude(user) {
@@ -228,7 +228,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isMuted() {
-    return ['mute', 'quiet'].includes(this.readerVolumeEmail) && ['mute', 'quiet'].includes(this.readerVolumePush);
+    return this.readerVolumeEmail === 'quiet' && this.readerVolumePush === 'quiet';
   }
 
   moveComments(selectedTopicItemIds) {
