@@ -66,6 +66,10 @@ for. No adjectives doing the work that a fact could do. This is consistent
 with the existing i18n guidance below (calm tone, no exclamation marks on
 success messages).
 
+## Markdown formatting
+
+- Do not hard-wrap prose in Markdown documents. Keep each paragraph and list item on one source line so the files remain easy to edit and render naturally on GitHub. Keep deliberate line breaks only where Markdown syntax or the content requires them, such as code blocks.
+
 ## User manual
 
 - Loomio publishes `docs/user_manual/` with its own documentation site builder
@@ -82,8 +86,10 @@ success messages).
 ## Release notes
 
 - Store release notes under `docs/release_notes/` using an ISO date followed by the Git tag version, for example `2026-07-22_v3.1.0.md`.
+- Name the GitHub release exactly after its tag, for example `v3.1.0`. Do not prefix the release name with `Loomio`.
+- Start the release-notes body with its opening paragraph. Do not add an H1 that repeats the GitHub release title.
 - When drafting a release, update `lib/version.rb` to the same version number without the `v` prefix.
-- After the release title, start with a paragraph describing any significant changes. Follow it with one-line summary bullets prefixed with `**Fix:**` or `**New:**`, then add detailed sections describing each change.
+- Start with a paragraph describing any significant changes. Follow it with one-line summary bullets prefixed with `**Fix:**` or `**New:**`, then add detailed sections describing each change.
 - Summarize changes that affect users, permissions, security, performance, deployment, APIs, or operator workflows. Omit routine dependency updates and purely internal refactors unless they require action or materially affect reliability.
 - Include required migration and upgrade steps, exact commands, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
 - Verify release-note claims against merged code, tests, pull requests, and user-manual changelog entries. Resolve placeholder links before publishing the release.
