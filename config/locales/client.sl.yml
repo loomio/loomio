@@ -516,6 +516,16 @@ sl:
     normal_option: Ko nekdo želi mojo pozornost (ko je o tem obveščen)
     quiet_option: Ni e-poštnih sporočil o tej temi (Izklopljeno)
     quiet_explained: Ne boste prejeli e-poštnega sporočila, tudi če vas bo kdo poskušal obvestiti.
+    volume_email_label: E-pošta
+    volume_push_label: Potisni
+    all_activity_option: Vse dejavnosti
+    when_notified_option: Ko je obveščen
+    muted_option: Utišano
+    volume_channel_label: Kako naj vas obvestimo?
+    email_channel: E-pošta
+    push_channel: Potisni
+    email_and_push_channel: E-pošta in potisna sporočila
+    off_option: Izklopljeno
   inbox:
     clear: Počisti
     latest: Zadnje
@@ -1645,6 +1655,8 @@ sl:
     daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
     never: Nikoli
     send_email: Pošlji e-pošto
+    group_notifications: Obvestila skupine
+    group_notifications_description: Spremenite raven aktivnosti in kanal za svoje skupine
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
@@ -3000,3 +3012,18 @@ sl:
     nobody_will_be_notified: Nihče ne bo obveščen
     one_person_will_be_notified: Obveščena bo 1 oseba
     x_people_will_be_notified: Obveščenih bo %{count} oseb
+  push_notifications:
+    title: Potisna obvestila
+    subtitle: Prejemajte obvestila v tem brskalniku
+    not_supported: Potisna obvestila niso na voljo v tem brskalniku
+    permission_denied: Potisna obvestila so blokirana v nastavitvah brskalnika
+    manage_devices: Upravljanje naprav za potisna obvestila
+    enabled: Potisna obvestila omogočena za ta brskalnik
+    disabled: Potisna obvestila so za ta brskalnik onemogočena
+    device_removed: Naprava za potisna obvestila je bila odstranjena
+    enable_device: Omogoči v tem brskalniku
+    disable_device: Onemogoči v tem brskalniku
+    devices: Omogočeni brskalniki
+    browser_device: Brskalnik
+    remove_device: Odstrani brskalnik
+    enable_from_loomio: Omogočite potisna obvestila v nastavitvah obvestil, ko ste prijavljeni v Loomio

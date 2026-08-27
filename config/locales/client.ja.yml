@@ -515,6 +515,16 @@ ja:
     normal_option: 誰かが私の注意を引こうとしているとき（通知を受けたとき）
     quiet_option: このスレッドに関するメールは受信しません（オフ）
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。
+    volume_email_label: メール
+    volume_push_label: 押す
+    all_activity_option: すべてのアクティビティ
+    when_notified_option: 通知を受けた場合
+    muted_option: ミュート
+    volume_channel_label: どのように最新情報をお伝えすればよろしいでしょうか？
+    email_channel: メール
+    push_channel: 押す
+    email_and_push_channel: メールとプッシュ通知
+    off_option: オフ
   inbox:
     clear: クリア
     latest: 最新
@@ -1644,6 +1654,8 @@ ja:
     daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
     never: 一度もない
     send_email: メールを送信
+    group_notifications: グループ通知
+    group_notifications_description: グループの活動レベルとチャンネルを変更する
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
@@ -2999,3 +3011,18 @@ ja:
     nobody_will_be_notified: 誰にも通知されません
     one_person_will_be_notified: 1名に通知されます
     x_people_will_be_notified: "%{count}人に通知されます"
+  push_notifications:
+    title: プッシュ通知
+    subtitle: このブラウザで通知を受け取る
+    not_supported: このブラウザではプッシュ通知は利用できません
+    permission_denied: ブラウザの設定でプッシュ通知がブロックされています
+    manage_devices: プッシュ通知デバイスを管理する
+    enabled: このブラウザではプッシュ通知が有効になっています
+    disabled: このブラウザではプッシュ通知が無効になっています
+    device_removed: プッシュ通知デバイスが削除されました
+    enable_device: このブラウザで有効にする
+    disable_device: このブラウザで無効にする
+    devices: 有効なブラウザ
+    browser_device: ブラウザ
+    remove_device: ブラウザを削除
+    enable_from_loomio: Loomioにサインインした状態で、通知設定からプッシュ通知を有効にしてください

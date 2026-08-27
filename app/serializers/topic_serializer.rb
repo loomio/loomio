@@ -25,7 +25,8 @@ class TopicSerializer < ApplicationSerializer
 
   # Reader attributes
   attributes :topic_reader_id,
-             :reader_volume,
+             :reader_volume_email,
+             :reader_volume_push,
              :last_read_at,
              :dismissed_at,
              :read_ranges,
@@ -80,14 +81,20 @@ class TopicSerializer < ApplicationSerializer
     @reader = cache_fetch(:topic_readers_by_topic_id, object.id) do
       m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
       TopicReader.find_or_initialize_by(user_id: scope[:current_user_id], topic_id: object.id) do |tr|
-        tr.volume = m&.volume || 'normal'
+        tr.volume_email = m&.volume_email || 'normal'
+        tr.volume_push = m&.volume_push || 'mute'
       end
     end
 
     return @reader if @reader.present?
 
     m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
-    @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: m&.volume || 'normal')
+    @reader = TopicReader.new(
+      user_id: scope[:current_user_id],
+      topic_id: object.id,
+      volume_email: m&.volume_email || 'normal',
+      volume_push: m&.volume_push || 'mute'
+    )
   end
 
   def topic_reader_id
@@ -98,11 +105,19 @@ class TopicSerializer < ApplicationSerializer
     reader.present? && reader.persisted?
   end
 
-  def reader_volume
-    reader&.volume
+  def reader_volume_email
+    reader&.computed_volume_email
   end
 
-  def include_reader_volume?
+  def include_reader_volume_email?
+    reader.present?
+  end
+
+  def reader_volume_push
+    reader&.computed_volume_push
+  end
+
+  def include_reader_volume_push?
     reader.present?
   end
 

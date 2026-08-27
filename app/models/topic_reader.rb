@@ -27,16 +27,23 @@ class TopicReader < ApplicationRecord
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
         m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
-        tr.volume = (m && m.volume) || 'normal'
+        tr.volume_email = m&.volume_email || user.default_membership_volume_email
+        tr.volume_push = m&.volume_push || user.default_membership_volume_push
       end
     else
       new(topic: topic)
     end
   end
 
-  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
+  def update_reader(ranges: nil, volume_email: nil, volume_push: nil, participate: false, dismiss: false)
     viewed!(ranges, persist: false)     if ranges
-    set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
+    if (volume_email || volume_push) && (volume_email.nil? || volume_email.to_sym != :loud || user.email_on_participation?)
+      set_volume!(
+        email: volume_email || self.volume_email || computed_volume_email,
+        push: volume_push || self.volume_push || computed_volume_push,
+        persist: false
+      )
+    end
     dismiss!(persist: false)            if dismiss
     save!                               if changed?
     self
@@ -69,16 +76,28 @@ class TopicReader < ApplicationRecord
     save if persist
   end
 
-  def computed_volume
+  def computed_volume_email
     if persisted?
-      volume || membership&.volume || 'normal'
+      volume_email || membership&.volume_email || user.default_membership_volume_email
     else
-      membership.volume
+      membership&.volume_email || user.default_membership_volume_email
     end
   end
 
-  def topic_reader_volume
-    self[:volume]
+  def computed_volume_push
+    if persisted?
+      volume_push || membership&.volume_push || user.default_membership_volume_push
+    else
+      membership&.volume_push || user.default_membership_volume_push
+    end
+  end
+
+  def topic_reader_volume_email
+    self[:volume_email]
+  end
+
+  def topic_reader_volume_push
+    self[:volume_push]
   end
 
   def topic_reader_user_id

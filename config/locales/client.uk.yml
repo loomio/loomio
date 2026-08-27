@@ -519,6 +519,16 @@ uk:
     normal_option: Коли хтось хоче моєї уваги (коли мене повідомляють)
     quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
     quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
+    volume_email_label: Електронна пошта
+    volume_push_label: Натисніть
+    all_activity_option: Вся активність
+    when_notified_option: Коли буде повідомлено
+    muted_option: Вимкнено
+    volume_channel_label: Як нам слід вас оновлювати?
+    email_channel: Електронна пошта
+    push_channel: Натисніть
+    email_and_push_channel: Електронна пошта та push-повідомлення
+    off_option: Вимкнено
   inbox:
     clear: Очистити
     latest: Останній
@@ -1662,6 +1672,8 @@ uk:
     daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
     never: Ніколи
     send_email: Надіслати електронного листа
+    group_notifications: Групові сповіщення
+    group_notifications_description: Змініть рівень активності та канал для своїх груп
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
@@ -3030,3 +3042,18 @@ uk:
     nobody_will_be_notified: Нікого не повідомлять
     one_person_will_be_notified: 1 особа отримає сповіщення
     x_people_will_be_notified: "%{count} людей отримають сповіщення"
+  push_notifications:
+    title: Push-сповіщення
+    subtitle: Отримувати сповіщення в цьому браузері
+    not_supported: Push-сповіщення недоступні в цьому браузері
+    permission_denied: Push-сповіщення заблоковано в налаштуваннях вашого браузера
+    manage_devices: Керування пристроями push-сповіщень
+    enabled: Push-сповіщення ввімкнено для цього браузера
+    disabled: Push-сповіщення вимкнено для цього браузера
+    device_removed: Пристрій для push-сповіщень видалено
+    enable_device: Увімкнути в цьому браузері
+    disable_device: Вимкнути в цьому браузері
+    devices: Увімкнені браузери
+    browser_device: Браузер
+    remove_device: Видалити браузер
+    enable_from_loomio: Увімкніть push-сповіщення в налаштуваннях сповіщень, коли ви ввійшли в Loomio

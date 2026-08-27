@@ -526,6 +526,16 @@ pt_BR:
     normal_option: Quando alguém quer minha atenção (Quando notificado)
     quiet_option: Nenhum e-mail sobre esta conversa (Desativado)
     quiet_explained: Você não receberá e-mails, mesmo que alguém tente notificá-lo.
+    volume_email_label: E-mail
+    volume_push_label: Empurrar
+    all_activity_option: Todas as atividades
+    when_notified_option: Quando notificado
+    muted_option: Silenciado
+    volume_channel_label: Como devemos mantê-lo(a) informado(a)?
+    email_channel: E-mail
+    push_channel: Empurrar
+    email_and_push_channel: Enviar e-mail e notificações
+    off_option: Desligado
   inbox:
     clear: Limpar
     latest: Último
@@ -1680,6 +1690,8 @@ pt_BR:
     mentioned_description: Quando alguém {'@'}menciona você em um comentário, você receberá um e-mail de notificação
     daily_summary_description: Escolha quando receber o e-mail com o resumo das atualizações. Este e-mail contém todas as novas atividades que você ainda não viu. Uma ótima maneira de se manter atualizado se você não for um usuário regular.
     send_email: Enviar e-mail
+    group_notifications: Notificações de grupo
+    group_notifications_description: Altere o nível de atividade e o canal para seus grupos
   thread_preview:
     replies_count: "%{count} respostas"
     unread_count: "%{count} Não lida"
@@ -3048,3 +3060,18 @@ pt_BR:
     nobody_will_be_notified: Ninguém será notificado
     one_person_will_be_notified: Uma pessoa será notificada
     x_people_will_be_notified: "%{count} pessoas serão notificadas"
+  push_notifications:
+    title: notificações push
+    subtitle: Receba notificações neste navegador
+    not_supported: As notificações push não estão disponíveis neste navegador
+    permission_denied: As notificações push estão bloqueadas nas configurações do seu navegador
+    manage_devices: Gerenciar dispositivos de notificação push
+    enabled: Notificações push ativadas para este navegador
+    disabled: Notificações push desativadas para este navegador
+    device_removed: Dispositivo de notificação push removido
+    enable_device: Ativar neste navegador
+    disable_device: Desativar neste navegador
+    devices: Navegadores habilitados
+    browser_device: Navegador
+    remove_device: Remover navegador
+    enable_from_loomio: Ative as notificações push nas configurações de notificações enquanto estiver conectado ao Loomio

@@ -90,17 +90,28 @@ export default class UserModel extends BaseModel {
     if (this.name) { return head(this.name.split(' ')); }
   }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(volumeEmail, volumePush, applyToAll) {
     this.processing = true;
-    return Records[this.constructor.plural].remote.post('set_volume', {
-      volume,
+    const params = {
       apply_to_all: applyToAll,
       unsubscribe_token: this.unsubscribeToken
-    }
-    ).then(() => {
+    };
+    if (volumeEmail != null) params.volume_email = volumeEmail;
+    if (volumePush != null) params.volume_push = volumePush;
+    return Records[this.constructor.plural].remote.post('set_volume', params).then(() => {
       if (!applyToAll) { return; }
-      this.allThreads().forEach(thread => thread.update({discussionReaderVolume: null}));
-      return this.memberships().forEach(membership => membership.update({volume}));
+      const topicAttributes = {};
+      const membershipAttributes = {};
+      if (volumeEmail != null) {
+        topicAttributes.readerVolumeEmail = null;
+        membershipAttributes.volumeEmail = volumeEmail;
+      }
+      if (volumePush != null) {
+        topicAttributes.readerVolumePush = null;
+        membershipAttributes.volumePush = volumePush;
+      }
+      this.allThreads().forEach(thread => thread.topic().update(topicAttributes));
+      return this.memberships().forEach(membership => membership.update(membershipAttributes));
     }).finally(() => {
       return this.processing = false;
     });

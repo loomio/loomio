@@ -518,6 +518,16 @@ nl_NL:
     normal_option: Wanneer iemand mijn aandacht nodig heeft (wanneer ik een melding ontvang)
     quiet_option: Geen e-mails over dit onderwerp (Uitgeschakeld)
     quiet_explained: Je ontvangt geen e-mail, zelfs niet wanneer iemand probeert je op de hoogte te stellen.
+    volume_email_label: E-mail
+    volume_push_label: Push
+    all_activity_option: Alle activiteiten
+    when_notified_option: Wanneer je een melding krijgt
+    muted_option: Gedempt
+    volume_channel_label: Hoe wil je op de hoogte blijven?
+    email_channel: E-mail
+    push_channel: Push
+    email_and_push_channel: E-mail en push
+    off_option: Uit
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -1659,6 +1669,8 @@ nl_NL:
     daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
     never: Nooit
     send_email: E-mail verzenden
+    group_notifications: Groepsmeldingen
+    group_notifications_description: Wijzig het activiteitsniveau en het kanaal voor je groepen
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
@@ -3027,3 +3039,18 @@ nl_NL:
     nobody_will_be_notified: Niemand zal op de hoogte worden gesteld
     one_person_will_be_notified: 1 persoon wordt op de hoogte gesteld
     x_people_will_be_notified: "%{count} personen zullen op de hoogte worden gesteld"
+  push_notifications:
+    title: Pushmeldingen
+    subtitle: Ontvang meldingen in deze browser
+    not_supported: Pushmeldingen zijn niet beschikbaar in deze browser
+    permission_denied: Pushmeldingen zijn geblokkeerd in je browserinstellingen
+    manage_devices: Pushnotificatieapparaten beheren
+    enabled: Pushmeldingen zijn ingeschakeld voor deze browser
+    disabled: Pushmeldingen zijn voor deze browser uitgeschakeld
+    device_removed: Pushnotificatieapparaat verwijderd
+    enable_device: Inschakelen in deze browser
+    disable_device: Uitschakelen in deze browser
+    devices: Ingeschakelde browsers
+    browser_device: Browser
+    remove_device: Browser verwijderen
+    enable_from_loomio: Schakel pushmeldingen in via de meldingsinstellingen terwijl je bent ingelogd bij Loomio

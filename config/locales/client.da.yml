@@ -516,6 +516,16 @@ da:
     normal_option: Når nogen vil have min opmærksomhed (når jeg får besked)
     quiet_option: Ingen e-mails om denne tråd (Fra)
     quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
+    volume_email_label: E-mail
+    volume_push_label: Skubbe
+    all_activity_option: Al aktivitet
+    when_notified_option: Når du får besked
+    muted_option: Slået fra
+    volume_channel_label: Hvordan skal vi opdatere jer?
+    email_channel: E-mail
+    push_channel: Skubbe
+    email_and_push_channel: E-mail og push
+    off_option: Slukket
   inbox:
     clear: Ryd
     latest: Seneste
@@ -1645,6 +1655,8 @@ da:
     daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
     never: Aldrig
     send_email: Send e-mail
+    group_notifications: Gruppemeddelelser
+    group_notifications_description: Skift aktivitetsniveau og kanal for dine grupper
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -3000,3 +3012,18 @@ da:
     nobody_will_be_notified: Ingen vil blive underrettet
     one_person_will_be_notified: 1 person vil blive underrettet
     x_people_will_be_notified: "%{count} personer vil blive underrettet"
+  push_notifications:
+    title: Push-notifikationer
+    subtitle: Modtag notifikationer i denne browser
+    not_supported: Push-notifikationer er ikke tilgængelige i denne browser
+    permission_denied: Push-notifikationer er blokeret i dine browserindstillinger
+    manage_devices: Administrer push-notifikationsenheder
+    enabled: Push-notifikationer aktiveret for denne browser
+    disabled: Push-notifikationer er deaktiveret for denne browser
+    device_removed: Enhed til push-notifikationer fjernet
+    enable_device: Aktivér i denne browser
+    disable_device: Deaktiver i denne browser
+    devices: Aktiverede browsere
+    browser_device: Browser
+    remove_device: Fjern browser
+    enable_from_loomio: Aktivér push-notifikationer fra notifikationsindstillingerne, mens du er logget ind på Loomio

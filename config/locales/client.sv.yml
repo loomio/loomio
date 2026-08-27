@@ -516,6 +516,16 @@ sv:
     normal_option: När någon vill ha min uppmärksamhet (när jag får besked)
     quiet_option: Inga e-postmeddelanden om den här tråden (Av)
     quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig.
+    volume_email_label: E-post
+    volume_push_label: Tryck
+    all_activity_option: All aktivitet
+    when_notified_option: När du meddelas
+    muted_option: Ljudlös
+    volume_channel_label: Hur ska vi uppdatera er?
+    email_channel: E-post
+    push_channel: Tryck
+    email_and_push_channel: E-post och push
+    off_option: Av
   inbox:
     clear: Klar
     latest: Senaste
@@ -1645,6 +1655,8 @@ sv:
     daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
     never: Aldrig
     send_email: Skicka e-post
+    group_notifications: Gruppmeddelanden
+    group_notifications_description: Ändra aktivitetsnivå och kanal för dina grupper
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
@@ -3000,3 +3012,18 @@ sv:
     nobody_will_be_notified: Ingen kommer att bli underrättad
     one_person_will_be_notified: 1 person kommer att meddelas
     x_people_will_be_notified: "%{count} personer kommer att meddelas"
+  push_notifications:
+    title: Push-meddelanden
+    subtitle: Få aviseringar i den här webbläsaren
+    not_supported: Push-meddelanden är inte tillgängliga i den här webbläsaren
+    permission_denied: Push-notiser är blockerade i dina webbläsarinställningar
+    manage_devices: Hantera enheter med push-meddelanden
+    enabled: Push-notiser aktiverade för den här webbläsaren
+    disabled: Push-notiser inaktiverade för den här webbläsaren
+    device_removed: Push-notifieringsenhet borttagen
+    enable_device: Aktivera i den här webbläsaren
+    disable_device: Inaktivera i den här webbläsaren
+    devices: Aktiverade webbläsare
+    browser_device: Webbläsare
+    remove_device: Ta bort webbläsaren
+    enable_from_loomio: Aktivera push-notiser från aviseringsinställningarna när du är inloggad på Loomio

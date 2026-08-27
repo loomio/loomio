@@ -297,3 +297,11 @@ languages in the Nov 2025 pass.
 | Multiple `config/locales/client.*.yml` files | `poll_common_form.stance_reason_required_for_block` | Building-block, module, or political-bloc nouns | Wording for the voting action of blocking | Block is a proposal response, not a physical block, software module, or political bloc |
 | `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels ending with a full stop | Removed the final full stop | Single-sentence UI labels do not use final full stops |
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels omitted that the reason is required | Restored the required meaning | The labels must state both the triggering responses and that a reason is required |
+
+## 2026-08-27 — Web Push settings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs meaning physically push (`Drücken`, `Empujar`, `Pousser`, `Duw`) | `Push` | Push is the established notification channel name, not an imperative action |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | New Web Push direct-address strings | Formal `Sie/usted/vous/u` forms | Informal `du/tú/tu/je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | New Web Push status and help strings | Single-sentence UI strings with final full stops | Removed final full stops where reviewed | Single-sentence UI strings do not use final full stops |

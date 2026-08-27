@@ -25,6 +25,12 @@ PRIVATE_APP_URL=http://app:3000
 # email address of admin of the server for LetsEncrypt. eg: you@gmail.com
 SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
 
+# Web push notifications are enabled when all three VAPID settings are present.
+# Generate one key pair for this Loomio installation and keep the private key secret.
+# VAPID_PUBLIC_KEY=
+# VAPID_PRIVATE_KEY=
+# VAPID_SUBJECT=mailto:REPLACE_WITH_CONTACT_EMAIL
+
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
 

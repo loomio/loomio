@@ -516,6 +516,16 @@ el:
     normal_option: Όταν κάποιος θέλει την προσοχή μου (Όταν ειδοποιηθεί)
     quiet_option: Δεν υπάρχουν μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το νήμα (Απενεργοποιημένο)
     quiet_explained: Δεν θα λάβετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει.
+    volume_email_label: E-mail
+    volume_push_label: Σπρώξτε
+    all_activity_option: Όλη η δραστηριότητα
+    when_notified_option: Όταν ειδοποιηθεί
+    muted_option: Σε σίγαση
+    volume_channel_label: Πώς πρέπει να σας ενημερώσουμε;
+    email_channel: E-mail
+    push_channel: Σπρώξτε
+    email_and_push_channel: Αποστολή email και προώθηση
+    off_option: Μακριά από
   inbox:
     clear: Καθάρισμα
     latest: Τελευταία
@@ -1645,6 +1655,8 @@ el:
     daily_summary_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
     never: Ποτέ
     send_email: Αποστολή email
+    group_notifications: Ειδοποιήσεις ομάδας
+    group_notifications_description: Αλλάξτε το επίπεδο δραστηριότητας και το κανάλι για τις ομάδες σας
   thread_preview:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"
@@ -3000,3 +3012,18 @@ el:
     nobody_will_be_notified: Κανείς δεν θα ειδοποιηθεί
     one_person_will_be_notified: 1 άτομο θα ειδοποιηθεί
     x_people_will_be_notified: "%{count} άτομα θα ειδοποιηθούν"
+  push_notifications:
+    title: Ειδοποιήσεις push
+    subtitle: Λήψη ειδοποιήσεων σε αυτό το πρόγραμμα περιήγησης
+    not_supported: Οι ειδοποιήσεις push δεν είναι διαθέσιμες σε αυτό το πρόγραμμα περιήγησης
+    permission_denied: Οι ειδοποιήσεις push αποκλείονται στις ρυθμίσεις του προγράμματος περιήγησής σας
+    manage_devices: Διαχείριση συσκευών push notification
+    enabled: Οι ειδοποιήσεις push ενεργοποιήθηκαν για αυτό το πρόγραμμα περιήγησης
+    disabled: Οι ειδοποιήσεις push είναι απενεργοποιημένες για αυτό το πρόγραμμα περιήγησης
+    device_removed: Η συσκευή push notification αφαιρέθηκε
+    enable_device: Ενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    disable_device: Απενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    devices: Ενεργοποιημένα προγράμματα περιήγησης
+    browser_device: Πρόγραμμα περιήγησης
+    remove_device: Κατάργηση προγράμματος περιήγησης
+    enable_from_loomio: Ενεργοποίηση ειδοποιήσεων push από τις ρυθμίσεις ειδοποιήσεων ενώ είστε συνδεδεμένοι στο Loomio

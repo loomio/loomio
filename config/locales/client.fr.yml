@@ -526,6 +526,16 @@ fr:
     normal_option: Quand quelqu'un souhaite attirer mon attention (lorsqu'il est notifié)
     quiet_option: Aucun e-mail concernant cette discussion (Désactivé)
     quiet_explained: Tu ne recevras pas d'e-mail, même si quelqu'un tente de te contacter.
+    volume_email_label: E-mail
+    volume_push_label: Push
+    all_activity_option: Toute activité
+    when_notified_option: Lors d'une notification
+    muted_option: En sourdine
+    volume_channel_label: Comment souhaites-tu être informé ?
+    email_channel: E-mail
+    push_channel: Push
+    email_and_push_channel: E-mail et push
+    off_option: Désactivé
   inbox:
     clear: Vider
     latest: Dernier
@@ -1680,6 +1690,8 @@ fr:
     daily_summary_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
     never: Jamais
     send_email: Envoyer un courriel
+    group_notifications: Notifications de groupe
+    group_notifications_description: Modifie le niveau d'activité et le canal de tes groupes
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
@@ -3044,3 +3056,18 @@ fr:
     nobody_will_be_notified: Personne ne sera averti
     one_person_will_be_notified: Une personne sera avertie
     x_people_will_be_notified: "%{count} personnes seront notifiées"
+  push_notifications:
+    title: Notifications push
+    subtitle: Recevez des notifications dans ce navigateur
+    not_supported: Les notifications push ne sont pas disponibles dans ce navigateur
+    permission_denied: Les notifications push sont bloquées dans les paramètres de ton navigateur
+    manage_devices: Gérer les appareils de notification push
+    enabled: Notifications push activées pour ce navigateur
+    disabled: Les notifications push sont désactivées pour ce navigateur
+    device_removed: Dispositif de notification push supprimé
+    enable_device: Activer sur ce navigateur
+    disable_device: Désactiver sur ce navigateur
+    devices: Navigateurs activés
+    browser_device: Navigateur
+    remove_device: Supprimer le navigateur
+    enable_from_loomio: Active les notifications push depuis les paramètres de notification lorsque tu es connecté à Loomio

@@ -20,7 +20,8 @@ export default {
       groups: [],
       memberships: [],
       loading: false,
-      allGroupsVolume: null
+      allGroupsVolumeEmail: null,
+      allGroupsVolumePush: null
     };
   },
   created() {
@@ -58,7 +59,7 @@ export default {
     },
 
     groupVolume(group) {
-      return group.membershipFor(Session.user()).volume;
+      return group.membershipFor(Session.user()).volumeEmail;
     },
 
     changeDefaultMembershipVolume() {
@@ -70,18 +71,21 @@ export default {
 
     membershipVolumeChanged(membership) {
       this.loading = true
-      membership.saveVolume(membership.volume, false).finally(() => {
+      membership.saveVolume(membership.volumeEmail, membership.volumePush, false).finally(() => {
         Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
         this.loading = false
       });
     },
-    allGroupsVolumeChanged(){
-      if (this.allGroupsVolume == null) return;
+    allGroupsVolumeChanged(channel){
+      const volumeEmail = channel === 'email' ? this.allGroupsVolumeEmail : null;
+      const volumePush = channel === 'push' ? this.allGroupsVolumePush : null;
+      if (volumeEmail == null && volumePush == null) return;
 
       this.loading = true
-      Session.user().saveVolume(this.allGroupsVolume, true).finally(() => {
+      Session.user().saveVolume(volumeEmail, volumePush, true).finally(() => {
         Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
-        this.allGroupsVolume = null;
+        if (channel === 'email') this.allGroupsVolumeEmail = null;
+        if (channel === 'push') this.allGroupsVolumePush = null;
         this.loading = false
       });
     }
@@ -104,7 +108,7 @@ export default {
     actions() { return filter(pick(UserService.actions(Session.user(), this), ['deactivate_user']), action => action.canPerform()); },
 
     defaultSettingsDescription() {
-      return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;
+      return `email_settings_page.default_settings.${Session.user().defaultMembershipVolumeEmail}_description`;
     }
   }
 };
@@ -113,6 +117,8 @@ export default {
 <template lang="pug">
 v-main
   v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
+
+    push-notifications-settings-card
 
     v-card.mb-4(v-if="user.deactivatedAt")
       v-card-text
@@ -150,7 +156,7 @@ v-main
         v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
           span(v-t="'email_settings_page.update_settings'")
 
-    v-card.mb-4(title="Group notifications" subtitle="Change when you get emailed about activity in your groups")
+    v-card.mb-4(:title="$t('email_settings_page.group_notifications')" :subtitle="$t('email_settings_page.group_notifications_description')")
       v-card-text
         .text-body-large.pb-2(v-t="'change_volume_form.what_the_options_mean'")
 
@@ -170,14 +176,21 @@ v-main
         thead
           tr
             th.text-left(v-t="'common.group'")
-            th.text-left(v-t="'email_settings_page.send_email'")
+            th.text-left(v-t="'change_volume_form.email_channel'")
+            th.text-left(v-t="'change_volume_form.push_channel'")
         tbody
           tr
             td
               span(v-t="'sidebar.all_groups'")
             td.text-left
               .my-select-wrapper
-                select.my-select(:disabled="loading" v-model="allGroupsVolume" @change="allGroupsVolumeChanged()")
+                select.my-select(:disabled="loading" v-model="allGroupsVolumeEmail" @change="allGroupsVolumeChanged('email')")
+                  option(:value="null")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume")
+                    span(v-t="'change_volume_form.'+volume+'_desc'")
+            td.text-left
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="allGroupsVolumePush" @change="allGroupsVolumeChanged('push')")
                   option(:value="null")
                   option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume")
                     span(v-t="'change_volume_form.'+volume+'_desc'")
@@ -185,8 +198,13 @@ v-main
             td {{membership.group().fullName}}
             td.text-left
               .my-select-wrapper
-                select.my-select(:disabled="loading" v-model="membership.volume" @change="membershipVolumeChanged(membership)")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volume == volume")
+                select.my-select(:disabled="loading" v-model="membership.volumeEmail" @change="membershipVolumeChanged(membership)")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volumeEmail == volume")
+                    span(v-t="'change_volume_form.'+volume+'_desc'")
+            td.text-left
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="membership.volumePush" @change="membershipVolumeChanged(membership)")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume")
                     span(v-t="'change_volume_form.'+volume+'_desc'")
 
     v-card.email-settings-page__deactivate-card(v-if="actions.length" :title="$t('email_settings_page.deactivate_header')")

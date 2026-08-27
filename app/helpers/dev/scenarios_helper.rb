@@ -126,7 +126,7 @@ module Dev::ScenariosHelper
 
     # Ensure author gets email notifications by setting topic reader volume to loud
     topic = scenario[:poll].topic
-    TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!('loud') if topic
+    TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!(email: 'loud', push: 'mute') if topic
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
     topic_item = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))

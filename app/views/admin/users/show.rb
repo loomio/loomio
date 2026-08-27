@@ -61,7 +61,7 @@ class Views::Admin::Users::Show < Views::Admin::Layout
                   plain "Missing group"
                 end
               end
-              td { value(membership.volume) }
+              td { value(membership.volume_email) }
               td { membership.admin? ? "Yes" : "No" }
               td { value(membership.accepted_at&.to_date) }
               td { value(membership.revoked_at&.to_date) }

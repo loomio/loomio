@@ -516,6 +516,16 @@ ru:
     normal_option: Когда кто-то хочет привлечь мое внимание (после получения уведомления)
     quiet_option: Электронные письма по этой теме не принимаются (выключено)
     quiet_explained: Вам не будут присылать электронные письма, даже если кто-то попытается вас уведомить.
+    volume_email_label: Электронная почта
+    volume_push_label: Толкать
+    all_activity_option: Вся деятельность
+    when_notified_option: При получении уведомления
+    muted_option: Приглушенный
+    volume_channel_label: Как нам следует вас информировать?
+    email_channel: Электронная почта
+    push_channel: Толкать
+    email_and_push_channel: Электронная почта и push-уведомления
+    off_option: Выключенный
   inbox:
     clear: Очистить
     latest: Последний
@@ -1645,6 +1655,8 @@ ru:
     daily_summary_description: Выберите, когда получать электронное письмо с обзором. В этом письме будут указаны все новые действия, которые вы ещё не видели. Хороший способ оставаться в курсе событий, если вы не являетесь постоянным пользователем.
     never: Никогда
     send_email: Отправить электронное письмо
+    group_notifications: Групповые уведомления
+    group_notifications_description: Измените уровень активности и канал для ваших групп
   thread_preview:
     replies_count: "%{count} ответов"
     unread_count: "%{count} непрочитано"
@@ -3000,3 +3012,18 @@ ru:
     nobody_will_be_notified: Никто не будет уведомлен
     one_person_will_be_notified: Уведомление получит 1 человек
     x_people_will_be_notified: "%{count} человек будут уведомлены"
+  push_notifications:
+    title: Push-уведомления
+    subtitle: Получать уведомления в этом браузере
+    not_supported: В этом браузере push-уведомления недоступны
+    permission_denied: В настройках вашего браузера заблокированы push-уведомления
+    manage_devices: Управление устройствами push-уведомлений
+    enabled: В этом браузере включены push-уведомления
+    disabled: Push-уведомления для этого браузера отключены
+    device_removed: Устройство push-уведомлений удалено
+    enable_device: Включить в этом браузере
+    disable_device: Отключить в этом браузере
+    devices: Включенные браузеры
+    browser_device: Браузер
+    remove_device: Удалить браузер
+    enable_from_loomio: Включите push-уведомления в настройках уведомлений, войдя в Loomio

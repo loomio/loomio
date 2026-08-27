@@ -110,6 +110,16 @@ Edit `.env` and replace every `REPLACE_WITH_...` placeholder. Replace the corres
 
 The template documents SSO, themes, file storage, and other optional features.
 
+### Enable web push notifications
+
+Generate one VAPID key pair for the installation:
+
+```sh
+docker compose run --rm --no-deps app bundle exec ruby -rweb-push -e 'key = WebPush.generate_key; puts "VAPID_PUBLIC_KEY=#{key.public_key}"; puts "VAPID_PRIVATE_KEY=#{key.private_key}"'
+```
+
+Add the two generated values to `.env`, then add `VAPID_SUBJECT` as a `mailto:` contact address or an HTTPS URL controlled by the installation. Web push is enabled only when `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `VAPID_SUBJECT` are all present. Keep the same key pair across deployments; changing it invalidates existing browser subscriptions.
+
 ### Set up SMTP
 
 You need to bring your own SMTP server for Loomio to send emails.

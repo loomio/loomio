@@ -516,6 +516,16 @@ hr:
     normal_option: Kad netko želi moju pažnju (Kad je obaviješten)
     quiet_option: Nema e-poruka o ovoj temi (Isključeno)
     quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti.
+    volume_email_label: E-pošta
+    volume_push_label: Gurnuti
+    all_activity_option: Sve aktivnosti
+    when_notified_option: Kada je obaviješten
+    muted_option: Prigušen
+    volume_channel_label: Kako bismo vas trebali ažurirati?
+    email_channel: E-pošta
+    push_channel: Gurnuti
+    email_and_push_channel: E-pošta i slanje poruka
+    off_option: Isključeno
   inbox:
     clear: Obriši
     latest: Najnoviji
@@ -1645,6 +1655,8 @@ hr:
     daily_summary_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
     never: Nikada
     send_email: Pošalji e-poštu
+    group_notifications: Grupne obavijesti
+    group_notifications_description: Promijenite razinu aktivnosti i kanal za svoje grupe
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
@@ -3000,3 +3012,18 @@ hr:
     nobody_will_be_notified: Nitko neće biti obaviješten
     one_person_will_be_notified: 1 osoba će biti obaviještena
     x_people_will_be_notified: "%{count} osoba će biti obaviješteno"
+  push_notifications:
+    title: Push obavijesti
+    subtitle: Primajte obavijesti u ovom pregledniku
+    not_supported: Push obavijesti nisu dostupne u ovom pregledniku
+    permission_denied: Push obavijesti su blokirane u postavkama vašeg preglednika
+    manage_devices: Upravljanje uređajima za push obavijesti
+    enabled: Push obavijesti omogućene za ovaj preglednik
+    disabled: Push obavijesti onemogućene za ovaj preglednik
+    device_removed: Uređaj za push obavijesti uklonjen
+    enable_device: Omogući u ovom pregledniku
+    disable_device: Onemogući u ovom pregledniku
+    devices: Omogućeni preglednici
+    browser_device: Preglednik
+    remove_device: Ukloni preglednik
+    enable_from_loomio: Omogućite push obavijesti iz postavki obavijesti dok ste prijavljeni na Loomio

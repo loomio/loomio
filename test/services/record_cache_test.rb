@@ -45,7 +45,7 @@ class RecordCacheTest < ActiveSupport::TestCase
   test 'add topic readers stores readers by topic id' do
     cache = RecordCache.new
     topic = topics(:discussion_topic)
-    reader = TopicReader.new(topic: topic, user: users(:admin), volume: 'normal')
+    reader = TopicReader.new(topic: topic, user: users(:admin), volume_email: 'normal')
 
     cache.add_topic_readers([reader])
 

@@ -254,7 +254,7 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_new_comment_email
     @group = Group.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!(patrick).set_volume!(:loud)
+    @group.add_admin!(patrick).set_volume!(email: :loud, push: :mute)
     @group.add_member! jennifer
 
     @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
@@ -265,11 +265,11 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_new_comment_thread_subscribed_email
       @group = Group.create!(name: 'Dirty Dancing Shoes')
-      @group.add_admin!(patrick).set_volume!(:normal)
+      @group.add_admin!(patrick).set_volume!(email: :normal, push: :mute)
       @group.add_member! jennifer
 
       @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
-      TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(:loud)
+      TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(email: :loud, push: :mute)
       @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
       CommentService.create(comment: @comment, actor: jennifer)
       last_email

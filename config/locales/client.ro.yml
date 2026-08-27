@@ -516,6 +516,16 @@ ro:
     normal_option: Când cineva dorește atenția mea (Când sunt notificat)
     quiet_option: Niciun e-mail despre acest subiect (Dezactivat)
     quiet_explained: Nu veți primi e-mailuri, chiar dacă cineva încearcă să vă anunțe.
+    volume_email_label: E-mail
+    volume_push_label: Apăsaţi
+    all_activity_option: Toată activitatea
+    when_notified_option: Când este notificat
+    muted_option: Dezactivat
+    volume_channel_label: Cum ar trebui să vă ținem la curent?
+    email_channel: E-mail
+    push_channel: Apăsaţi
+    email_and_push_channel: E-mail și push
+    off_option: Dezactivat
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -1645,6 +1655,8 @@ ro:
     daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
     never: Nu
     send_email: Trimiteți e-mail
+    group_notifications: Notificări de grup
+    group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -3000,3 +3012,18 @@ ro:
     nobody_will_be_notified: Nimeni nu va fi notificat
     one_person_will_be_notified: O persoană va fi notificată
     x_people_will_be_notified: "%{count} persoane vor fi notificate"
+  push_notifications:
+    title: Notificări push
+    subtitle: Primește notificări în acest browser
+    not_supported: Notificările push nu sunt disponibile în acest browser
+    permission_denied: Notificările push sunt blocate în setările browserului tău
+    manage_devices: Gestionați dispozitivele de notificare push
+    enabled: Notificări push activate pentru acest browser
+    disabled: Notificările push sunt dezactivate pentru acest browser
+    device_removed: Dispozitivul de notificare push a fost eliminat
+    enable_device: Activează pe acest browser
+    disable_device: Dezactivați pe acest browser
+    devices: Browsere activate
+    browser_device: Browser
+    remove_device: Eliminați browserul
+    enable_from_loomio: Activează notificările push din setările de notificare când ești conectat la Loomio

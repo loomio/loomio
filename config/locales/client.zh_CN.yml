@@ -533,6 +533,16 @@ zh_CN:
     normal_option: 当有人想引起我的注意时（收到通知时）
     quiet_option: 关于此主题的邮件已关闭
     quiet_explained: 即使有人试图通知您，您也不会收到电子邮件。
+    volume_email_label: 电子邮件
+    volume_push_label: 推
+    all_activity_option: 所有活动
+    when_notified_option: 收到通知时
+    muted_option: 静音
+    volume_channel_label: 我们应该如何向您汇报最新情况？
+    email_channel: 电子邮件
+    push_channel: 推
+    email_and_push_channel: 电子邮件和推送
+    off_option: 离开
   inbox:
     clear: 清除
     latest: 最新的
@@ -1713,6 +1723,8 @@ zh_CN:
     messages:
       updated: 电子邮件设置已更新
     learn_more: 了解更多关于电子邮件设置的信息……
+    group_notifications: 群组通知
+    group_notifications_description: 更改群组的活动级别和频道
   thread_preview:
     replies_count: "%{count} 条回复"
     unread_count: "%{count} 未读"
@@ -2919,3 +2931,18 @@ zh_CN:
     nobody_will_be_notified: 不会通知任何人
     one_person_will_be_notified: 将会通知1人
     x_people_will_be_notified: "%{count} 人将收到通知"
+  push_notifications:
+    title: 推送通知
+    subtitle: 在此浏览器中接收通知
+    not_supported: 此浏览器不支持推送通知
+    permission_denied: 您的浏览器设置中已阻止推送通知
+    manage_devices: 管理推送通知设备
+    enabled: 此浏览器已启用推送通知
+    disabled: 此浏览器已禁用推送通知
+    device_removed: 已移除推送通知设备
+    enable_device: 在此浏览器上启用
+    disable_device: 在此浏览器上禁用
+    devices: 已启用浏览器
+    browser_device: 浏览器
+    remove_device: 移除浏览器
+    enable_from_loomio: 登录 Loomio 后，请在通知设置中启用推送通知

@@ -38,6 +38,26 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "email and push defaults can be applied independently" do
+    sign_in @user
+    membership = @group.membership_for(@user)
+    membership.update!(volume_email: :normal, volume_push: :loud)
+
+    post :set_volume, params: { volume_email: :quiet, apply_to_all: true }
+
+    assert_response :success
+    assert_equal "quiet", @user.reload.default_membership_volume_email
+    assert_equal "quiet", membership.reload.volume_email
+    assert_equal "loud", membership.volume_push
+
+    post :set_volume, params: { volume_push: :normal, apply_to_all: true }
+
+    assert_response :success
+    assert_equal "normal", @user.reload.default_membership_volume_push
+    assert_equal "quiet", membership.reload.volume_email
+    assert_equal "normal", membership.volume_push
+  end
+
   test "groups uses record cache for serialized associations" do
     sign_in @user
     @group.add_member!(@user) unless @group.members.include?(@user)

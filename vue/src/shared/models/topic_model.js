@@ -53,7 +53,8 @@ export default class TopicModel extends BaseModel {
       private: this.group().discussionPrivacyOptions !== 'public_only',
       // reader state
       topicReaderId: null,
-      readerVolume: null,
+      readerVolumeEmail: null,
+      readerVolumePush: null,
       lastReadAt: null,
       dismissedAt: null,
       readerInviterId: null,
@@ -134,7 +135,11 @@ export default class TopicModel extends BaseModel {
   }
 
   volume() {
-    return this.readerVolume;
+    const rank = { mute: 0, quiet: 1, normal: 2, loud: 3 };
+    const volume = rank[this.readerVolumePush] > rank[this.readerVolumeEmail]
+      ? this.readerVolumePush
+      : this.readerVolumeEmail;
+    return volume === 'mute' ? 'quiet' : volume;
   }
 
   membersInclude(user) {
@@ -185,14 +190,18 @@ export default class TopicModel extends BaseModel {
     return Records.topics.remote.patchMember(this.id, 'recall').finally(() => { this.processing = false; });
   }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(volumeEmail, volumePush, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     if (applyToAll) {
-      return this.membership().saveVolume(volume).finally(() => { this.processing = false; });
+      return this.membership().saveVolume(volumeEmail, volumePush).finally(() => { this.processing = false; });
     } else {
-      if (volume != null) { this.readerVolume = volume; }
-      return Records.topics.remote.patchMember(this.id, 'set_volume', { volume: this.readerVolume }).finally(() => {
+      this.readerVolumeEmail = volumeEmail;
+      this.readerVolumePush = volumePush;
+      return Records.topics.remote.patchMember(this.id, 'set_volume', {
+        volume_email: this.readerVolumeEmail,
+        volume_push: this.readerVolumePush
+      }).finally(() => {
         this.processing = false;
       });
     }
@@ -219,7 +228,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isMuted() {
-    return this.volume() === 'mute';
+    return ['mute', 'quiet'].includes(this.readerVolumeEmail) && ['mute', 'quiet'].includes(this.readerVolumePush);
   }
 
   moveComments(selectedTopicItemIds) {

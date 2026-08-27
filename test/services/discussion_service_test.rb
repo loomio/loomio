@@ -146,7 +146,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     reader = TopicReader.for(user: @user, topic: discussion.topic)
     assert_not_nil reader
-    assert_includes ['normal', 'loud'], reader.volume
+    assert_includes ['normal', 'loud'], reader.volume_email
   end
 
   # -- Update --
@@ -205,7 +205,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   test "update keeps its history topic_item and creates one logical notification" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :mute)
 
     topic_item = DiscussionService.update(
       discussion: discussion,
@@ -235,7 +235,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     discussion = discussions(:discussion)
     recipient = users(:member)
     recipient.update!(username: "editmention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :mute)
 
     DiscussionService.update(
       discussion: discussion,

@@ -176,7 +176,7 @@ class TopicService
   def self.update_reader(topic:, params:, actor:)
     actor.ability.authorize! :show, topic
     reader = TopicReader.for(topic: topic, user: actor)
-    reader.update(params.slice(:volume))
+    reader.set_volume!(email: params[:volume_email], push: params[:volume_push])
   end
 
   def self.mark_as_seen(topic:, actor:)
@@ -445,12 +445,15 @@ class TopicService
                                          model: topic,
                                          audience: audience)
 
-    volumes = {}
+    volume_by_user_id = {}
 
     if topic.group_id
       Membership.where(group_id: topic.group_id,
                       user_id: users.pluck(:id)).find_each do |m|
-        volumes[m.user_id] = m.volume
+        volume_by_user_id[m.user_id] = [
+          m.volume_email || m.user.default_membership_volume_email,
+          m.volume_push || m.user.default_membership_volume_push
+        ]
       end
     end
 
@@ -459,12 +462,17 @@ class TopicService
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
 
     new_topic_readers = users.map do |user|
+      email, push = volume_by_user_id.fetch(
+        user.id,
+        [user.default_membership_volume_email, user.default_membership_volume_push]
+      )
       TopicReader.new(user: user,
                       topic: topic,
                       inviter: actor,
-                      guest: !volumes.has_key?(user.id),
+                      guest: !volume_by_user_id.key?(user.id),
                       admin: false,
-                      volume: volumes[user.id] || user.default_membership_volume)
+                      volume_email: email,
+                      volume_push: push)
     end
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)

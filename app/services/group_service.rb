@@ -58,7 +58,13 @@ module GroupService
         )
 
         new_memberships = users.map do |user|
-          Membership.new(inviter: actor, user: user, group: g, volume: user.default_membership_volume)
+          Membership.new(
+            inviter: actor,
+            user: user,
+            group: g,
+            volume_email: user.default_membership_volume_email,
+            volume_push: user.default_membership_volume_push
+          )
         end
 
         Membership.import(new_memberships, on_duplicate_key_ignore: true)

@@ -6,7 +6,7 @@ module NotificationDeliveryResolvers
       recipients = explicit_users.active.verified
       {
         "in_app" => recipients.to_a,
-        "email" => recipients.where(email_when_mentioned: true).no_spam_complaints.to_a
+        "email" => email_users_for(recipients.where(email_when_mentioned: true)).no_spam_complaints.to_a
       }
     end
   end

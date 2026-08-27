@@ -6,6 +6,7 @@ import EventBus      from '@/shared/services/event_bus';
 import { hardReload } from '@/shared/helpers/window';
 import { compact } from 'lodash-es';
 import { I18n, loadLocaleMessages } from '@/i18n';
+import PushSubscriptionService from '@/shared/services/push_subscription_service';
 
 export default new class Session {
   returnTo() {
@@ -40,7 +41,8 @@ export default new class Session {
     return user;
   }
 
-  signOut() {
+  async signOut() {
+    await PushSubscriptionService.disable().catch(() => {});
     AppConfig.currentUserId = null;
     return Records.sessions.remote.destroy('').then(() => hardReload('/'));
   }

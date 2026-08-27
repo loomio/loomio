@@ -519,6 +519,16 @@ zh_TW:
     normal_option: 當有人想引起我的注意（收到通知時）
     quiet_option: 關於此主題的郵件已關閉
     quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
+    volume_email_label: 電子郵件
+    volume_push_label: 推
+    all_activity_option: 所有活動
+    when_notified_option: 收到通知時
+    muted_option: 靜音
+    volume_channel_label: 我們該如何向您報告最新情況？
+    email_channel: 電子郵件
+    push_channel: 推
+    email_and_push_channel: 電子郵件和推播
+    off_option: 離開
   inbox:
     clear: 清除
     latest: 最新
@@ -1662,6 +1672,8 @@ zh_TW:
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
     send_email: 傳送電子郵件
+    group_notifications: 群組通知
+    group_notifications_description: 更改群組的活動等級和頻道
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -3028,3 +3040,18 @@ zh_TW:
     nobody_will_be_notified: 不會通知任何人
     one_person_will_be_notified: 將會通知1人
     x_people_will_be_notified: "%{count} 人將會收到通知"
+  push_notifications:
+    title: 推播通知
+    subtitle: 在此瀏覽器中接收通知
+    not_supported: 此瀏覽器不支援推播通知
+    permission_denied: 您的瀏覽器設定中已封鎖推播通知
+    manage_devices: 管理推播通知設備
+    enabled: 此瀏覽器已啟用推播通知
+    disabled: 此瀏覽器已停用推播通知
+    device_removed: 已移除推播通知設備
+    enable_device: 在此瀏覽器上啟用
+    disable_device: 在此瀏覽器上停用
+    devices: 已啟用瀏覽器
+    browser_device: 瀏覽器
+    remove_device: 移除瀏覽器
+    enable_from_loomio: 登入 Loomio 後，請在通知設定中啟用推播通知

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -512,14 +512,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.string "token"
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
-    t.integer "volume"
+    t.integer "volume_email"
+    t.integer "volume_push", default: 0, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
     t.index ["revoked_at", "id"], name: "index_memberships_on_revoked_at_and_id_for_relay", where: "(revoked_at IS NOT NULL)"
     t.index ["token"], name: "index_memberships_on_token", unique: true
-    t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
-    t.index ["volume"], name: "index_memberships_on_volume"
+    t.index ["user_id", "volume_email"], name: "index_memberships_on_user_id_and_volume_email"
+    t.index ["user_id", "volume_push"], name: "index_memberships_on_user_id_and_volume_push"
+    t.index ["volume_email"], name: "index_memberships_on_volume_email"
+    t.index ["volume_push"], name: "index_memberships_on_volume_push"
+    t.check_constraint "volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "memberships_volume_email"
+    t.check_constraint "volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "memberships_volume_push"
   end
 
   create_table "notification_deliveries", force: :cascade do |t|
@@ -545,8 +550,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
     t.index ["status", "available_at"], name: "index_notification_deliveries_on_status_and_available_at"
     t.check_constraint "attempt_count >= 0", name: "notification_deliveries_attempt_count"
-    t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying, 'email'::character varying, 'push'::character varying, 'chatbot'::character varying]::text[])", name: "notification_deliveries_channel"
-    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying, 'claimed'::character varying, 'delivered'::character varying, 'failed'::character varying, 'cancelled'::character varying]::text[])", name: "notification_deliveries_status"
+    t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying::text, 'email'::character varying::text, 'push'::character varying::text, 'chatbot'::character varying::text])", name: "notification_deliveries_channel"
+    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying::text, 'claimed'::character varying::text, 'delivered'::character varying::text, 'failed'::character varying::text, 'cancelled'::character varying::text])", name: "notification_deliveries_status"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -822,6 +827,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
     t.check_constraint "anonymous = true AND voting_system = 1 OR anonymous = false AND voting_system = 0", name: "polls_anonymous_voting_system"
+  end
+
+  create_table "push_subscriptions", force: :cascade do |t|
+    t.string "auth_key", null: false
+    t.datetime "created_at", null: false
+    t.text "endpoint", null: false
+    t.string "endpoint_digest", null: false
+    t.datetime "expires_at"
+    t.integer "failure_count", default: 0, null: false
+    t.datetime "last_seen_at"
+    t.string "name"
+    t.string "p256dh_key", null: false
+    t.datetime "revoked_at"
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.bigint "user_id", null: false
+    t.index ["endpoint_digest"], name: "index_active_push_subscriptions_on_endpoint_digest", unique: true, where: "(revoked_at IS NULL)"
+    t.index ["user_id", "revoked_at"], name: "index_push_subscriptions_on_user_id_and_revoked_at"
+    t.index ["user_id"], name: "index_push_subscriptions_on_user_id"
+    t.check_constraint "failure_count >= 0", name: "push_subscriptions_failure_count"
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -1190,12 +1215,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.integer "topic_id", null: false
     t.datetime "updated_at", precision: nil
     t.integer "user_id", null: false
-    t.integer "volume", default: 2, null: false
+    t.integer "volume_email", default: 2, null: false
+    t.integer "volume_push", default: 0, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
     t.index ["user_id", "topic_id"], name: "index_topic_readers_guest_user_id", where: "(guest = true)"
+    t.check_constraint "volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "topic_readers_volume_email"
+    t.check_constraint "volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "topic_readers_volume_push"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -1269,7 +1297,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.string "date_time_pref"
     t.datetime "deactivated_at", precision: nil
     t.integer "deactivator_id"
-    t.integer "default_membership_volume", default: 2, null: false
+    t.integer "default_membership_volume_email", default: 2, null: false
+    t.integer "default_membership_volume_push", default: 0, null: false
     t.string "detected_locale", limit: 255
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false
@@ -1317,6 +1346,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.check_constraint "default_membership_volume_email = ANY (ARRAY[0, 1, 2, 3])", name: "users_default_membership_volume_email"
+    t.check_constraint "default_membership_volume_push = ANY (ARRAY[0, 1, 2, 3])", name: "users_default_membership_volume_push"
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
@@ -1363,6 +1394,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
+  add_foreign_key "push_subscriptions", "users", on_delete: :cascade
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

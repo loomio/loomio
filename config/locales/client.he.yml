@@ -516,6 +516,16 @@ he:
     normal_option: כשמישהו רוצה את תשומת ליבי (כאשר מקבל הודעה)
     quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
     quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
+    volume_email_label: אֶלֶקטרוֹנִי
+    volume_push_label: לִדחוֹף
+    all_activity_option: כל הפעילות
+    when_notified_option: כאשר יקבלו הודעה
+    muted_option: מושתק
+    volume_channel_label: איך עלינו לעדכן אותך?
+    email_channel: אֶלֶקטרוֹנִי
+    push_channel: לִדחוֹף
+    email_and_push_channel: דוא"ל ודחיפה
+    off_option: כבוי
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -1657,6 +1667,8 @@ he:
     daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
     never: לְעוֹלָם לֹא
     send_email: שלח אימייל
+    group_notifications: התראות קבוצתיות
+    group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -3019,3 +3031,18 @@ he:
     nobody_will_be_notified: אף אחד לא יקבל הודעה
     one_person_will_be_notified: אדם אחד יקבל הודעה
     x_people_will_be_notified: "%{count} אנשים יקבלו הודעה"
+  push_notifications:
+    title: התראות דחיפה
+    subtitle: קבל התראות בדפדפן זה
+    not_supported: התראות דחיפה אינן זמינות בדפדפן זה
+    permission_denied: התראות דחיפה חסומות בהגדרות הדפדפן שלך
+    manage_devices: ניהול מכשירי הודעות דחיפה
+    enabled: התראות דחיפה מופעלות עבור דפדפן זה
+    disabled: התראות דחיפה מושבתות עבור דפדפן זה
+    device_removed: מכשיר התראות דחיפה הוסר
+    enable_device: הפעל בדפדפן זה
+    disable_device: השבת בדפדפן זה
+    devices: דפדפנים מופעלים
+    browser_device: דפדפן
+    remove_device: הסר את הדפדפן
+    enable_from_loomio: הפעלת הודעות דחיפה מהגדרות ההתראות כשאתה מחובר ל-Loomio

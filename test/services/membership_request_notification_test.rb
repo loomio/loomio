@@ -5,7 +5,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     @actor = users(:admin)
     @group = groups(:group)
     @group.update!(is_visible_to_public: true)
-    memberships(:admin_membership).update!(volume: "normal")
+    memberships(:admin_membership).update!(volume_email: "normal")
     hex = SecureRandom.hex(4)
     @requestor = User.create!(
       name: "Requestor #{hex}",

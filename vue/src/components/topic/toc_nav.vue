@@ -11,7 +11,7 @@ import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
 const props = defineProps({
   topic:             Object,
@@ -38,6 +38,21 @@ const drawerColor        = computed(() =>
 const memberActions      = computed(() => Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())).map(([key, action]) => ({ key, action })));
 const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
+});
+const volumeSummaries = computed(() => {
+  const label = volume => `change_volume_form.${{
+    quiet: 'muted_option',
+    normal: 'when_notified_option',
+    loud: 'all_activity_option'
+  }[volume]}`;
+  const summaries = [];
+  if (['normal', 'loud'].includes(props.topic.readerVolumeEmail)) {
+    summaries.push({ channel: 'email_channel', icon: mdiEmailOutline, label: label(props.topic.readerVolumeEmail) });
+  }
+  if (['normal', 'loud'].includes(props.topic.readerVolumePush)) {
+    summaries.push({ channel: 'push_channel', icon: mdiCellphone, label: label(props.topic.readerVolumePush) });
+  }
+  return summaries;
 });
 
 function scrollToEnd() {
@@ -145,7 +160,12 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")
+      v-list-item(@click="openVolumeForm")
+        v-list-item-title(v-if="volumeSummaries.length")
+          .d-flex.align-center(v-for="summary in volumeSummaries" :key="summary.channel")
+            v-icon.mr-2(:icon="summary.icon" size="small")
+            span {{ $t(`change_volume_form.${summary.channel}`) }} · {{ $t(summary.label) }}
+        v-list-item-title(v-else v-t="'change_volume_form.off_option'")
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")

@@ -180,7 +180,6 @@ namespace :loomio do
             foreign_paths = list_paths(foreign, [])
           end
 
-          write_file = false
           (source_paths - foreign_paths).each do |path|
             source_string = (source.dig(*path.split('.')) || "").strip
             next if source_string.blank?
@@ -189,24 +188,28 @@ namespace :loomio do
               puts "#{file_locale}: #{path}, #{source_string}"
             end
 
-            write_file = true
-            translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
-            foreign.bury(*path.split('.'), translated_string)
+            # Persist each string immediately so one failed request does not
+            # discard successful translations from the same locale.
+            begin
+              translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
+              foreign.bury(*path.split('.'), translated_string)
+              File.write(filename, {file_locale => foreign}.to_yaml(line_width: 2000))
+            rescue => e
+              errors << [file_locale, "#{source_name}.#{path}", e]
+            end
           end
-
-          File.write(filename, {file_locale => foreign}.to_yaml(line_width: 2000)) if write_file
         end
       rescue => e
-        errors << [file_locale, e]
+        errors << [file_locale, nil, e]
       end
     end.each(&:join)
 
     unless errors.empty?
       messages = []
-      messages << "Translation failed for #{errors.length} locale(s):"
+      messages << "Translation failed for #{errors.length} string(s):"
       messages.concat(errors.size.times.map do
-        file_locale, error = errors.pop
-        "#{file_locale}: #{error.class}: #{error.message}"
+        file_locale, path, error = errors.pop
+        "#{file_locale}#{path ? ": #{path}" : nil}: #{error.class}: #{error.message}"
       end)
       raise messages.join("\n")
     end

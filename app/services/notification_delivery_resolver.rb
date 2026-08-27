@@ -65,6 +65,7 @@ class NotificationDeliveryResolver
     return [] if notification.deliveries_generated_at?
 
     recipients = recipients_by_channel
+    recipients["push"] = push_subscriptions_for(recipients.fetch("in_app", []))
     now = Time.current
     deliveries = []
 
@@ -111,6 +112,7 @@ class NotificationDeliveryResolver
   end
 
   def translation_values_for(recipient)
+    recipient = recipient.user if recipient.is_a?(PushSubscription)
     return notification.translation_values unless recipient.is_a?(User)
 
     self.class.translation_values(
@@ -138,7 +140,58 @@ class NotificationDeliveryResolver
         DeliverNotificationEmailWorker.perform_later(delivery.id)
       when "chatbot"
         DeliverNotificationChatbotWorker.perform_later(delivery.id)
+      when "push"
+        DeliverNotificationPushWorker.perform_later(delivery.id)
       end
     end
+  end
+
+  # Push follows the same directed audience as in-app delivery, filtered by
+  # the recipient's effective push volume for the notification's scope.
+  # Each active browser is a distinct delivery recipient.
+  def push_subscriptions_for(in_app_recipients)
+    user_ids = Array(in_app_recipients).map(&:id)
+    return [] if user_ids.empty?
+
+    eligible_user_ids = if (topic = notification_topic)
+      topic.volume_push_notification_members.where(id: user_ids).select(:id)
+    elsif (group = notification_group)
+      group.volume_push_notification_members.where(id: user_ids).select(:id)
+    else
+      User.where(id: user_ids)
+          .where(default_membership_volume_push: User.default_membership_volume_pushes.values_at("normal", "loud"))
+          .select(:id)
+    end
+
+    PushSubscription.active.includes(:user).where(user_id: eligible_user_ids).to_a
+  end
+
+  def email_users_for(recipients)
+    user_ids = Array(recipients).map(&:id)
+    return User.none if user_ids.empty?
+
+    if (topic = notification_topic)
+      topic.volume_gte_normal_members.where(id: user_ids)
+    elsif (group = notification_group)
+      group.volume_gte_normal_members.where(id: user_ids)
+    else
+      User.where(id: user_ids)
+          .where(default_membership_volume_email: User.default_membership_volume_emails.values_at("normal", "loud"))
+    end
+  end
+
+  def notification_topic
+    subject = notification.subject
+    return subject.topic if subject.is_a?(TopicItem)
+
+    model = notification.subject_model
+    return model.topic if model.respond_to?(:topic) && model.topic
+    return model.reactable.topic if model.respond_to?(:reactable) && model.reactable.respond_to?(:topic)
+    model.reactable.parent.topic if model.respond_to?(:reactable) && model.reactable.respond_to?(:parent)
+  end
+
+  def notification_group
+    model = notification.subject_model
+    model.group if model.respond_to?(:group)
   end
 end

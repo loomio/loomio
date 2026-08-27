@@ -7,18 +7,19 @@ class TopicReaderTest < ActiveSupport::TestCase
 
     @discussion = discussions(:discussion)
     @membership = @admin.memberships.find_by(group: @group)
-    @membership.update!(volume: :normal)
+    @membership.update!(volume_email: :normal)
     @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
   end
 
   # Computed volume
   test "can change its volume" do
-    @reader.set_volume!(:loud)
-    assert_equal :loud, @reader.reload.volume.to_sym
+    @reader.set_volume!(email: :loud, push: :normal)
+    assert_equal :loud, @reader.reload.volume_email.to_sym
   end
 
   test "defaults to the memberships volume when nil" do
-    assert_equal @membership.volume, @reader.computed_volume
+    assert_equal @membership.volume_email, @reader.computed_volume_email
+    assert_equal @membership.volume_push, @reader.computed_volume_push
   end
 
   # Viewed

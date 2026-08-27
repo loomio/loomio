@@ -483,6 +483,16 @@ en:
     title_label: Title
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
+    volume_email_label: Email
+    volume_push_label: Push
+    all_activity_option: All activity
+    when_notified_option: When notified
+    muted_option: Muted
+    off_option: 'Off'
+    volume_channel_label: How should we update you?
+    email_channel: Email
+    push_channel: Push
+    email_and_push_channel: Email and push
     when_do_you_want_to_be_emailed: When do you want to be emailed?
     when_do_you_want_to_be_emailed_thread: When do you want to be emailed about this thread?
     change_your_email_settings: Change your email settings
@@ -562,6 +572,21 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
+  push_notifications:
+    title: Push notifications
+    subtitle: Receive notifications in this browser
+    not_supported: Push notifications are not available in this browser
+    permission_denied: Push notifications are blocked in your browser settings
+    manage_devices: Manage push notification devices
+    enabled: Push notifications enabled for this browser
+    disabled: Push notifications disabled for this browser
+    device_removed: Push notification device removed
+    enable_device: Enable on this browser
+    disable_device: Disable on this browser
+    devices: Enabled browsers
+    browser_device: Browser
+    remove_device: Remove browser
+    enable_from_loomio: Enable push notifications from Notification settings while signed in to Loomio
   lock_thread_modal:
     body: Lock threads to remove them from the list of open threads and prevent people from commenting.
     explanation: Lock threads to prevent people from commenting or making further changes
@@ -1764,6 +1789,8 @@ en:
     every_second_day: Every second day
     never: Never
     header: Notification settings
+    group_notifications: Group notifications
+    group_notifications_description: Change the activity level and channel for your groups
     send_email: Send email
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever

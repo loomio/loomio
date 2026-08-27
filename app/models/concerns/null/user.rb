@@ -11,7 +11,7 @@ module Null::User
 
   def nil_methods
     [:id, :key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at,
-     :default_membership_volume, :unsubscribe_token, :location, :email_catch_up_day,
+     :default_membership_volume_email, :default_membership_volume_push, :unsubscribe_token, :location, :email_catch_up_day,
      :password_digest, :update_attribute, :last_seen_at, :legal_accepted_at, :api_key]
   end
 

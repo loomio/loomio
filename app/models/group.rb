@@ -204,23 +204,41 @@ class Group < ApplicationRecord
     members.exists?(user.id)
   end
 
-  def members_by_volume(operator, volume)
-    User.active.distinct
+  # Select exact delivery modes because channel policies are not totally ordered.
+  def members_by_volume(levels, channel: :email)
+    volume_condition =
+      case channel
+      when :email then 'coalesce(m.volume_email, 2) IN (:levels)'
+      when :push then 'coalesce(m.volume_push, 0) IN (:levels)'
+      else raise ArgumentError, "Unknown volume channel: #{channel}"
+      end
+
+    scope = User.active.distinct
         .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
         .where('m.revoked_at IS NULL')
-        .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
+        .where(volume_condition, levels: levels)
   end
 
   def volume_gte_quiet_members
-    members_by_volume('>=', Membership.volumes[:quiet])
+    email_members = members_by_volume(Membership.volume_emails.values_at(:quiet, :normal, :loud), channel: :email)
+    push_members = members_by_volume(Membership.volume_pushes.values_at(:quiet, :normal, :loud), channel: :push)
+    User.where(id: email_members.select(:id)).or(User.where(id: push_members.select(:id)))
   end
 
   def volume_gte_normal_members
-    members_by_volume('>=', Membership.volumes[:normal])
+    members_by_volume(Membership.volume_emails.values_at(:normal, :loud))
   end
 
   def volume_loud_members
-    members_by_volume('=', Membership.volumes[:loud])
+    members_by_volume([ Membership.volume_emails[:loud] ])
+  end
+
+  def volume_push_notification_members
+    members_by_volume(Membership.volume_pushes.values_at(:normal, :loud), channel: :push)
+  end
+
+  def volume_loud_push_members
+    members_by_volume([ Membership.volume_pushes[:loud] ], channel: :push)
   end
 
   def author_id

@@ -518,6 +518,16 @@ pl:
     normal_option: Kiedy ktoś chce mojej uwagi (gdy zostanie powiadomiony)
     quiet_option: Brak wiadomości e-mail dotyczących tego wątku (Wyłączone)
     quiet_explained: Nie będziesz otrzymywać wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić.
+    volume_email_label: E-mail
+    volume_push_label: Naciskać
+    all_activity_option: Cała aktywność
+    when_notified_option: Po powiadomieniu
+    muted_option: Wyciszony
+    volume_channel_label: W jaki sposób mamy Cię informować?
+    email_channel: E-mail
+    push_channel: Naciskać
+    email_and_push_channel: E-mail i push
+    off_option: Wyłączony
   inbox:
     clear: Wyczyść
     latest: Najnowsze
@@ -1659,6 +1669,8 @@ pl:
     daily_summary_description: Wybierz, kiedy chcesz otrzymywać e-maile z podsumowaniem. Ten e-mail zawiera wszystkie nowe aktywności, których nie zauważyłeś. To dobry sposób, aby być na bieżąco, jeśli nie korzystasz regularnie z aplikacji.
     never: Nigdy
     send_email: Wyślij e-mail
+    group_notifications: Powiadomienia grupowe
+    group_notifications_description: Zmień poziom aktywności i kanał dla swoich grup
   thread_preview:
     replies_count: "%{count} odpowiedzi"
     unread_count: "%{count} nieprzeczytanych"
@@ -3027,3 +3039,18 @@ pl:
     nobody_will_be_notified: Nikt nie zostanie powiadomiony
     one_person_will_be_notified: 1 osoba zostanie powiadomiona
     x_people_will_be_notified: "%{count} osób zostanie powiadomionych"
+  push_notifications:
+    title: Powiadomienia push
+    subtitle: Otrzymuj powiadomienia w tej przeglądarce
+    not_supported: Powiadomienia push nie są dostępne w tej przeglądarce
+    permission_denied: Powiadomienia push są zablokowane w ustawieniach Twojej przeglądarki
+    manage_devices: Zarządzaj urządzeniami do powiadomień push
+    enabled: Powiadomienia push włączone dla tej przeglądarki
+    disabled: Powiadomienia push są wyłączone dla tej przeglądarki
+    device_removed: Usunięto urządzenie do powiadomień push
+    enable_device: Włącz w tej przeglądarce
+    disable_device: Wyłącz w tej przeglądarce
+    devices: Włączone przeglądarki
+    browser_device: Przeglądarka
+    remove_device: Usuń przeglądarkę
+    enable_from_loomio: Włącz powiadomienia push w ustawieniach powiadomień po zalogowaniu się do Loomio

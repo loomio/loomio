@@ -17,26 +17,21 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     @user_membership_normal = new_user("membership_normal")
     @user_reader_quiet = new_user("reader_quiet")
     @user_membership_quiet = new_user("membership_quiet")
-    @user_reader_mute = new_user("reader_mute")
-    @user_membership_mute = new_user("membership_mute")
     @user_revoked = new_user("revoked")
 
-    @group.add_member!(@user_membership_loud).set_volume!(:loud)
-    @group.add_member!(@user_membership_normal).set_volume!(:normal)
-    @group.add_member!(@user_membership_quiet).set_volume!(:quiet)
-    @group.add_member!(@user_membership_mute).set_volume!(:mute)
-    @group.add_member!(@user_revoked).set_volume!(:normal)
+    @group.add_member!(@user_membership_loud).set_volume!(email: :loud, push: :mute)
+    @group.add_member!(@user_membership_normal).set_volume!(email: :normal, push: :mute)
+    @group.add_member!(@user_membership_quiet).set_volume!(email: :quiet, push: :mute)
+    @group.add_member!(@user_revoked).set_volume!(email: :normal, push: :mute)
     @group.membership_for(@user_revoked).update!(revoked_at: 1.day.ago)
 
-    @group.add_member!(@user_reader_loud).set_volume!(:mute)
-    @group.add_member!(@user_reader_normal).set_volume!(:mute)
-    @group.add_member!(@user_reader_quiet).set_volume!(:mute)
-    @group.add_member!(@user_reader_mute).set_volume!(:mute)
+    @group.add_member!(@user_reader_loud).set_volume!(email: :quiet, push: :mute)
+    @group.add_member!(@user_reader_normal).set_volume!(email: :quiet, push: :mute)
+    @group.add_member!(@user_reader_quiet).set_volume!(email: :quiet, push: :mute)
 
-    TopicReader.for(user: @user_reader_loud, topic: @discussion.topic).set_volume!(:loud)
-    TopicReader.for(user: @user_reader_normal, topic: @discussion.topic).set_volume!(:normal)
-    TopicReader.for(user: @user_reader_quiet, topic: @discussion.topic).set_volume!(:quiet)
-    TopicReader.for(user: @user_reader_mute, topic: @discussion.topic).set_volume!(:mute)
+    TopicReader.for(user: @user_reader_loud, topic: @discussion.topic).set_volume!(email: :loud, push: :mute)
+    TopicReader.for(user: @user_reader_normal, topic: @discussion.topic).set_volume!(email: :normal, push: :mute)
+    TopicReader.for(user: @user_reader_quiet, topic: @discussion.topic).set_volume!(email: :quiet, push: :mute)
 
     ActionMailer::Base.deliveries.clear
   end
@@ -47,10 +42,8 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     assert_includes users, @user_membership_loud
     refute_includes users, @user_membership_normal
     refute_includes users, @user_membership_quiet
-    refute_includes users, @user_membership_mute
     refute_includes users, @user_reader_normal
     refute_includes users, @user_reader_quiet
-    refute_includes users, @user_reader_mute
     refute_includes users, @user_revoked
   end
 
@@ -61,22 +54,18 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     assert_includes users, @user_membership_loud
     assert_includes users, @user_membership_normal
     refute_includes users, @user_membership_quiet
-    refute_includes users, @user_membership_mute
     refute_includes users, @user_reader_quiet
-    refute_includes users, @user_reader_mute
     refute_includes users, @user_revoked
   end
 
-  test "mute returns only muted users" do
-    users = Queries::UsersByVolumeQuery.mute(@discussion.topic)
-    assert_includes users, @user_membership_mute
-    assert_includes users, @user_reader_mute
+  test "quiet returns only quiet users" do
+    users = Queries::UsersByVolumeQuery.quiet(@discussion.topic)
+    assert_includes users, @user_membership_quiet
+    assert_includes users, @user_reader_quiet
     refute_includes users, @user_reader_loud
     refute_includes users, @user_membership_loud
     refute_includes users, @user_membership_normal
-    refute_includes users, @user_membership_quiet
     refute_includes users, @user_reader_normal
-    refute_includes users, @user_reader_quiet
     refute_includes users, @user_revoked
   end
 
@@ -87,9 +76,7 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     refute_includes users, @user_reader_loud
     refute_includes users, @user_reader_normal
     refute_includes users, @user_reader_quiet
-    refute_includes users, @user_reader_mute
     refute_includes users, @user_membership_quiet
-    refute_includes users, @user_membership_mute
     refute_includes users, @user_revoked
   end
 

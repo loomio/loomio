@@ -516,6 +516,16 @@ fi:
     normal_option: Kun joku haluaa huomioni (kun hänelle ilmoitetaan)
     quiet_option: Ei sähköposteja tästä keskusteluketjusta (Pois päältä)
     quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle.
+    volume_email_label: Sähköposti
+    volume_push_label: Työnnä
+    all_activity_option: Kaikki toiminta
+    when_notified_option: Kun ilmoitetaan
+    muted_option: Mykistetty
+    volume_channel_label: Miten meidän tulisi tiedottaa teille?
+    email_channel: Sähköposti
+    push_channel: Työnnä
+    email_and_push_channel: Sähköposti ja push-viestit
+    off_option: Pois
   inbox:
     clear: Asia selvä
     latest: Uusin
@@ -1645,6 +1655,8 @@ fi:
     daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
     never: Ei koskaan
     send_email: Lähetä sähköpostia
+    group_notifications: Ryhmäilmoitukset
+    group_notifications_description: Muuta ryhmiesi aktiivisuustasoa ja kanavaa
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
@@ -3000,3 +3012,18 @@ fi:
     nobody_will_be_notified: Ketään ei ilmoiteta
     one_person_will_be_notified: 1 henkilölle ilmoitetaan
     x_people_will_be_notified: "%{count} henkilöä ilmoitetaan"
+  push_notifications:
+    title: Push-ilmoitukset
+    subtitle: Vastaanota ilmoituksia tässä selaimessa
+    not_supported: Push-ilmoitukset eivät ole käytettävissä tässä selaimessa
+    permission_denied: Push-ilmoitukset on estetty selaimesi asetuksissa
+    manage_devices: Push-ilmoituslaitteiden hallinta
+    enabled: Push-ilmoitukset käytössä tässä selaimessa
+    disabled: Push-ilmoitukset poistettu käytöstä tässä selaimessa
+    device_removed: Push-ilmoituslaite poistettu
+    enable_device: Ota käyttöön tässä selaimessa
+    disable_device: Poista käytöstä tässä selaimessa
+    devices: Käytössä olevat selaimet
+    browser_device: Selain
+    remove_device: Poista selain
+    enable_from_loomio: Ota push-ilmoitukset käyttöön ilmoitusasetuksista, kun olet kirjautuneena Loomioon

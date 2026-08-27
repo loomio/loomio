@@ -518,6 +518,16 @@ es:
     normal_option: Cuando alguien quiere mi atención (Cuando se me notifica)
     quiet_option: No se recibirán correos electrónicos sobre este hilo (Desactivado).
     quiet_explained: No recibirás ningún correo electrónico, incluso si alguien intenta notificarte.
+    volume_email_label: Correo electrónico
+    volume_push_label: Push
+    all_activity_option: Toda actividad
+    when_notified_option: Cuando te notifiquen
+    muted_option: Silenciado
+    volume_channel_label: "¿Cómo quieres mantenerte al día?"
+    email_channel: Correo electrónico
+    push_channel: Push
+    email_and_push_channel: Correo electrónico y push
+    off_option: Desactivado
   inbox:
     clear: Limpiar
     latest: Últimos
@@ -1668,6 +1678,8 @@ es:
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
     never: Nunca
     send_email: Enviar correo electrónico
+    group_notifications: Notificaciones de grupo
+    group_notifications_description: Cambia el nivel de actividad y el canal para tus grupos
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"
@@ -3036,3 +3048,18 @@ es:
     nobody_will_be_notified: Nadie será notificado
     one_person_will_be_notified: Se notificará a 1 persona
     x_people_will_be_notified: Se notificará a %{count} personas
+  push_notifications:
+    title: Notificaciones push
+    subtitle: Recibe notificaciones en este navegador
+    not_supported: Las notificaciones push no están disponibles en este navegador
+    permission_denied: Las notificaciones push están bloqueadas en la configuración de tu navegador
+    manage_devices: Administrar dispositivos de notificaciones push
+    enabled: Las notificaciones push están habilitadas para este navegador
+    disabled: Las notificaciones push están desactivadas para este navegador
+    device_removed: Dispositivo de notificaciones push eliminado
+    enable_device: Habilitar en este navegador
+    disable_device: Desactivar en este navegador
+    devices: Navegadores habilitados
+    browser_device: Navegador
+    remove_device: Eliminar navegador
+    enable_from_loomio: Habilita las notificaciones push desde la configuración de notificaciones cuando hayas iniciado sesión en Loomio

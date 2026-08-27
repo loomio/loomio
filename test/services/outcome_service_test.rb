@@ -60,7 +60,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
   test "outcome creation keeps its topic topic_item and creates one logical notification" do
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :mute)
 
     topic_item = OutcomeService.create(
       outcome: @new_outcome,
@@ -79,7 +79,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
   test "outcome update creates an eventless logical notification" do
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :mute)
 
     assert_no_difference -> { TopicItem.where(kind: "outcome_updated").count } do
       OutcomeService.update(
@@ -102,7 +102,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
   test "outcome update separates a newly mentioned recipient from update email delivery" do
     recipient = users(:member)
     recipient.update!(username: "outcomemention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :mute)
 
     OutcomeService.update(
       outcome: @outcome,

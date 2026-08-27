@@ -74,9 +74,9 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
       [ "event_mailer.notification_reason.user_mentioned", preferences_url(recipient: @recipient) ]
     elsif @notification&.recipient_user_ids&.include?(@recipient.id)
       [ "event_mailer.notification_reason.notified", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
-    elsif @membership&.volume == 'loud'
+    elsif @membership&.volume_email == 'loud'
       [ "event_mailer.notification_reason.group_subscribed", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
-    elsif @topic && TopicReader.for(user: @recipient, topic: @topic).volume == 'loud'
+    elsif @topic && TopicReader.for(user: @recipient, topic: @topic).volume_email == 'loud'
       [ "event_mailer.notification_reason.thread_subscribed", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
     end
   end

@@ -526,6 +526,16 @@ it:
     normal_option: Quando qualcuno vuole la mia attenzione (quando viene avvisato)
     quiet_option: Nessuna email relativa a questa discussione (Disattivata)
     quiet_explained: Non riceverai alcuna email, nemmeno se qualcuno tenterà di avvisarti.
+    volume_email_label: E-mail
+    volume_push_label: Spingere
+    all_activity_option: Tutte le attività
+    when_notified_option: Quando viene notificato
+    muted_option: Attutito
+    volume_channel_label: Come preferiremmo tenervi aggiornati?
+    email_channel: E-mail
+    push_channel: Spingere
+    email_and_push_channel: E-mail e notifica push
+    off_option: Spento
   inbox:
     clear: Pulisci
     latest: Più recente
@@ -1671,6 +1681,8 @@ it:
     daily_summary_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
     never: Mai
     send_email: Invia email
+    group_notifications: Notifiche di gruppo
+    group_notifications_description: Modifica il livello di attività e il canale per i tuoi gruppi
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
@@ -3028,3 +3040,18 @@ it:
     nobody_will_be_notified: Nessuno verrà avvisato
     one_person_will_be_notified: Una persona verrà avvisata
     x_people_will_be_notified: "%{count} persone riceveranno una notifica"
+  push_notifications:
+    title: Notifiche push
+    subtitle: Ricevi notifiche in questo browser
+    not_supported: Le notifiche push non sono disponibili in questo browser
+    permission_denied: Le notifiche push sono bloccate nelle impostazioni del tuo browser
+    manage_devices: Gestisci i dispositivi di notifica push
+    enabled: Notifiche push abilitate per questo browser
+    disabled: Notifiche push disabilitate per questo browser
+    device_removed: Dispositivo di notifica push rimosso
+    enable_device: Abilita in questo browser
+    disable_device: Disabilita in questo browser
+    devices: Browser abilitati
+    browser_device: Sito web
+    remove_device: Rimuovi il browser
+    enable_from_loomio: Attiva le notifiche push dalle impostazioni di notifica mentre sei connesso a Loomio

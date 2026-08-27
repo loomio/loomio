@@ -39,7 +39,7 @@ class TopicItem < ApplicationRecord
     return unless sequence_id
 
     TopicReader.for(topic: topic, user: reader)
-               .update_reader(ranges: sequence_id, volume: :loud)
+               .update_reader(ranges: sequence_id, volume_email: :loud)
   end
   private :mark_actor_as_read!
 

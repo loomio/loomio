@@ -36,7 +36,7 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
-  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :revoked_at, :revoker_id, :volume, :accepted_at]
+  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :revoked_at, :revoker_id, :volume_email, :volume_push, :accepted_at]
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group
@@ -92,7 +92,10 @@ class Membership < ApplicationRecord
   private
 
   def set_volume
-    self.volume = user.default_membership_volume if id.nil?
+    return unless id.nil?
+
+    self.volume_email = user.default_membership_volume_email
+    self.volume_push = user.default_membership_volume_push
   end
 
   def update_org_members_count

@@ -18,9 +18,9 @@ class GroupMentionedNotificationTest < ActiveSupport::TestCase
     end
     @group.add_admin!(@actor)
 
-    @group.membership_for(@volume_quiet_member).update!(volume: :quiet)
-    @group.membership_for(@volume_normal_member).update!(volume: :normal)
-    @group.membership_for(@volume_loud_member).update!(volume: :loud)
+    @group.membership_for(@volume_quiet_member).update!(volume_email: :quiet)
+    @group.membership_for(@volume_normal_member).update!(volume_email: :normal)
+    @group.membership_for(@volume_loud_member).update!(volume_email: :loud)
 
     @discussion = DiscussionService.create(params: { group_id: @group.id, title: "GM Test #{SecureRandom.hex(4)}" }, actor: @actor)
     ActionMailer::Base.deliveries.clear
@@ -38,7 +38,7 @@ class GroupMentionedNotificationTest < ActiveSupport::TestCase
   end
 
   test "does not notify the actor when they mention the group" do
-    @group.membership_for(@actor).update!(volume: :loud)
+    @group.membership_for(@actor).update!(volume_email: :loud)
     comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}", body_format: 'md')
     publish_new_comment_with_mentions(comment)

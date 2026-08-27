@@ -13,14 +13,19 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def set_group_volume
     load_models_or_404
     membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
-    MembershipService.set_volume(membership: membership, actor: current_user, params: { volume: params[:value] })
+    MembershipService.set_volume(
+      membership: membership,
+      actor: current_user,
+      params: volume_attributes(membership)
+    )
     redirect_to_unsubscribe
   end
 
   def set_discussion_volume
     load_models_or_404
     topic_reader = TopicReader.find_by!(topic_id: @topic.id, user_id: current_user.id)
-    topic_reader.set_volume!(params[:value])
+    attributes = volume_attributes(topic_reader)
+    topic_reader.set_volume!(email: attributes[:volume_email], push: attributes[:volume_push])
     redirect_to_unsubscribe
   end
 
@@ -57,6 +62,16 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   private
+
+  def volume_attributes(record)
+    email = params[:volume_email] || params[:value] || record.volume_email
+    push = params[:volume_push] || record.volume_push
+    case params[:delivery_channel]
+    when "email" then push = "mute"
+    when "push" then email = "mute"
+    end
+    { volume_email: email, volume_push: push }
+  end
 
   def redirect_to_unsubscribe
     args = params.permit!.slice(:topic_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])

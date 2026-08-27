@@ -59,10 +59,35 @@ class UserService
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.update!(default_membership_volume: params[:volume])
+    membership_attributes = {}
+    user_attributes = {}
+
+    if params[:volume_email].present?
+      email = params[:volume_email].to_s
+      unless User.default_membership_volume_emails.key?(email)
+        user.errors.add :default_membership_volume_email, I18n.t(:"activerecord.errors.messages.invalid")
+        raise ActiveRecord::RecordInvalid, user
+      end
+      membership_attributes[:volume_email] = Membership.volume_emails.fetch(email)
+      user_attributes[:default_membership_volume_email] = email
+    end
+
+    if params[:volume_push].present?
+      push = params[:volume_push].to_s
+      unless User.default_membership_volume_pushes.key?(push)
+        user.errors.add :default_membership_volume_push, I18n.t(:"activerecord.errors.messages.invalid")
+        raise ActiveRecord::RecordInvalid, user
+      end
+      membership_attributes[:volume_push] = Membership.volume_pushes.fetch(push)
+      user_attributes[:default_membership_volume_push] = push
+    end
+
+    raise ActionController::ParameterMissing, :volume if user_attributes.empty?
+
+    user.update!(user_attributes)
     if params[:apply_to_all]
-      user.memberships.update_all(volume: Membership.volumes[params[:volume]])
-      user.topic_readers.update_all(volume: Membership.volumes[params[:volume]])
+      user.memberships.update_all(membership_attributes)
+      user.topic_readers.update_all(membership_attributes)
     end
     EventBus.broadcast('user_set_volume', user, actor, params)
   end

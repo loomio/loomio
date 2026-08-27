@@ -168,7 +168,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     refute_equal archived_ballot.fetch("id"), second_archived_ballot.fetch("id")
 
     subscriber = voter
-    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :mute)
     notification = NotificationService.create!(
       kind: "poll_announced",
       subject: poll,

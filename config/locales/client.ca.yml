@@ -518,6 +518,16 @@ ca:
     normal_option: Quan algú vol la meva atenció (Quan se m'avisa)
     quiet_option: No hi ha correus electrònics sobre aquest fil (Desactivat)
     quiet_explained: No rebràs cap correu electrònic, fins i tot quan algú intenti notificar-te.
+    volume_email_label: Correu electrònic
+    volume_push_label: Empènyer
+    all_activity_option: Tota l'activitat
+    when_notified_option: Quan es notifiqui
+    muted_option: Silenciat
+    volume_channel_label: Com us hem d'actualitzar?
+    email_channel: Correu electrònic
+    push_channel: Empènyer
+    email_and_push_channel: Correu electrònic i push
+    off_option: Desactivat
   inbox:
     clear: Esborra
     latest: Últim
@@ -1659,6 +1669,8 @@ ca:
     daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
     never: Mai
     send_email: Enviar correu electrònic
+    group_notifications: Notificacions de grup
+    group_notifications_description: Canvieu el nivell d'activitat i el canal dels vostres grups
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
@@ -3027,3 +3039,18 @@ ca:
     nobody_will_be_notified: Ningú serà notificat
     one_person_will_be_notified: S'avisarà a 1 persona
     x_people_will_be_notified: "%{count} persones seran notificades"
+  push_notifications:
+    title: Notificacions push
+    subtitle: Rebre notificacions en aquest navegador
+    not_supported: Les notificacions push no estan disponibles en aquest navegador
+    permission_denied: Les notificacions push estan bloquejades a la configuració del navegador
+    manage_devices: Gestiona els dispositius de notificacions push
+    enabled: Notificacions push activades per a aquest navegador
+    disabled: Notificacions push desactivades per a aquest navegador
+    device_removed: Dispositiu de notificacions push eliminat
+    enable_device: Activa en aquest navegador
+    disable_device: Desactiva en aquest navegador
+    devices: Navegadors activats
+    browser_device: Navegador
+    remove_device: Elimina el navegador
+    enable_from_loomio: Activa les notificacions push des de la configuració de notificacions mentre inicies la sessió a Loomio

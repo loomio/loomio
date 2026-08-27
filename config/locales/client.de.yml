@@ -524,6 +524,16 @@ de:
     normal_option: Wenn jemand meine Aufmerksamkeit möchte (Bei Benachrichtigung)
     quiet_option: Keine E-Mails zu diesem Thread (Aus)
     quiet_explained: Du erhältst keine E-Mail, auch nicht, wenn jemand versucht, dich zu benachrichtigen.
+    volume_email_label: E-Mail
+    volume_push_label: Push
+    all_activity_option: Alle Aktivitäten
+    when_notified_option: Bei Benachrichtigung
+    muted_option: Stummgeschaltet
+    volume_channel_label: Wie möchtest du informiert werden?
+    email_channel: E-Mail
+    push_channel: Push
+    email_and_push_channel: E-Mail und Push
+    off_option: Aus
   inbox:
     clear: 'Löschen '
     latest: Letzte
@@ -1667,6 +1677,8 @@ de:
     daily_summary_description: Wähle, wann du die E-Mail mit der Zusammenfassung erhalten möchtest. Diese E-Mail enthält alle neuen Aktivitäten, die du noch nicht gesehen hast. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn du kein regelmäßiger Benutzer bist.
     never: Niemals
     send_email: E-Mail senden
+    group_notifications: Gruppenbenachrichtigungen
+    group_notifications_description: Ändere die Aktivitätsstufe und den Kanal für deine Gruppen
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
@@ -3035,3 +3047,18 @@ de:
     nobody_will_be_notified: Niemand wird benachrichtigt
     one_person_will_be_notified: Eine Person wird benachrichtigt
     x_people_will_be_notified: "%{count} Personen werden benachrichtigt"
+  push_notifications:
+    title: Push-Benachrichtigungen
+    subtitle: Benachrichtigungen in diesem Browser empfangen
+    not_supported: Push-Benachrichtigungen sind in diesem Browser nicht verfügbar
+    permission_denied: Push-Benachrichtigungen sind in deinen Browsereinstellungen blockiert
+    manage_devices: Push-Benachrichtigungsgeräte verwalten
+    enabled: Push-Benachrichtigungen sind für diesen Browser aktiviert
+    disabled: Push-Benachrichtigungen sind für diesen Browser deaktiviert
+    device_removed: Push-Benachrichtigungsgerät entfernt
+    enable_device: In diesem Browser aktivieren
+    disable_device: In diesem Browser deaktivieren
+    devices: Aktivierte Browser
+    browser_device: Browser
+    remove_device: Browser entfernen
+    enable_from_loomio: Aktiviere Push-Benachrichtigungen in den Benachrichtigungseinstellungen, während du bei Loomio angemeldet bist
