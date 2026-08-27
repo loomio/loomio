@@ -5,7 +5,7 @@ import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
 import './removeServiceWorker';
 import { pick } from 'lodash-es';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 import PlausibleService from '@/shared/services/plausible_service';
 import { installVitePreloadErrorHandler } from '@/shared/services/chunk_error_handling';
 
