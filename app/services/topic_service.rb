@@ -448,8 +448,8 @@ class TopicService
     volumes = {}
 
     if topic.group_id
-      Membership.where(group_id: topic.group_id,
-                      user_id: users.pluck(:id)).find_each do |m|
+      Membership.active.where(group_id: topic.group_id,
+                              user_id: users.pluck(:id)).find_each do |m|
         volumes[m.user_id] = m.volume
       end
     end

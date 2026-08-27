@@ -82,6 +82,78 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not Stance.exists?(poll: poll, participant: member)
   end
 
+  test "private anonymous poll invitation gives a former group member guest access" do
+    former_member = create_unique_user("formeranonymousvoter")
+    membership = @group.add_member!(former_member)
+    unrelated_discussion = DiscussionService.create(
+      params: { title: "Unrelated private discussion", group_id: @group.id, private: true },
+      actor: @admin
+    )
+    MembershipService.revoke(membership: membership, actor: @admin)
+    poll = PollService.create(
+      params: poll_params(
+        anonymous: true,
+        specified_voters_only: true,
+        private: true,
+        notify_on_open: false
+      ),
+      actor: @admin
+    )
+
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_emails: [ former_member.email ] }
+    )
+
+    reader = TopicReader.active.find_by!(topic: poll.topic, user: former_member)
+    assert membership.reload.revoked_at
+    assert poll.unmasked_voters.exists?(former_member.id)
+    assert reader.guest
+    assert former_member.can?(:show, poll)
+    assert former_member.can?(:vote_in, poll)
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [ { poll_option_id: poll.poll_options.first.id, score: 1 } ]
+      ),
+      actor: former_member
+    )
+    assert poll.unmasked_decided_voters.exists?(former_member.id)
+    assert_not former_member.can?(:show, unrelated_discussion)
+    assert_not users(:alien).can?(:show, poll)
+    assert_not users(:alien).can?(:vote_in, poll)
+    assert_not LoggedOutUser.new.can?(:show, poll)
+    assert_not LoggedOutUser.new.can?(:vote_in, poll)
+  end
+
+  test "private identified poll invitation gives a former group member guest access" do
+    former_member = create_unique_user("formeridentifiedvoter")
+    membership = @group.add_member!(former_member)
+    MembershipService.revoke(membership: membership, actor: @admin)
+    poll = PollService.create(
+      params: poll_params(
+        anonymous: false,
+        specified_voters_only: true,
+        private: true,
+        notify_on_open: false
+      ),
+      actor: @admin
+    )
+
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_emails: [ former_member.email ] }
+    )
+
+    reader = TopicReader.active.find_by!(topic: poll.topic, user: former_member)
+    assert membership.reload.revoked_at
+    assert poll.voters.exists?(former_member.id)
+    assert reader.guest
+    assert former_member.can?(:show, poll)
+    assert former_member.can?(:vote_in, poll)
+  end
+
   # -- create --
 
   test "creates a new poll" do
