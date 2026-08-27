@@ -48,7 +48,16 @@ module MarkdownService
   def self.replace_videos(str)
     doc = Nokogiri::HTML5::DocumentFragment.parse(str)
     doc.search("video[src]").each do |node|
-      node.replace("<p><a href='#{node['src']}'><img src='#{node['poster']}'><br>#{I18n.t('record_modal.watch_video')}</a></p>")
+      paragraph = Nokogiri::XML::Node.new('p', doc.document)
+      link = Nokogiri::XML::Node.new('a', doc.document)
+      image = Nokogiri::XML::Node.new('img', doc.document)
+      link['href'] = node['src']
+      image['src'] = node['poster'].to_s
+      link.add_child(image)
+      link.add_child(Nokogiri::XML::Node.new('br', doc.document))
+      link.add_child(Nokogiri::XML::Text.new(I18n.t('record_modal.watch_video'), doc.document))
+      paragraph.add_child(link)
+      node.replace(paragraph)
     end
     doc.to_s
   end
@@ -56,7 +65,12 @@ module MarkdownService
   def self.replace_audios(str)
     doc = Nokogiri::HTML5::DocumentFragment.parse(str)
     doc.search("audio[src]").each do |node|
-      node.replace("<p><a href='#{node['src']}'>#{I18n.t('record_modal.listen_to_audio')}</a></p>")
+      paragraph = Nokogiri::XML::Node.new('p', doc.document)
+      link = Nokogiri::XML::Node.new('a', doc.document)
+      link['href'] = node['src']
+      link.add_child(Nokogiri::XML::Text.new(I18n.t('record_modal.listen_to_audio'), doc.document))
+      paragraph.add_child(link)
+      node.replace(paragraph)
     end
     doc.to_s
   end
@@ -66,9 +80,19 @@ module MarkdownService
     doc.search("iframe[src]").each do |node|
       begin
         vi = VideoInfo.new(node['src'])
-        node.replace("<div><a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a></div>")
+        container = Nokogiri::XML::Node.new('div', doc.document)
+        link = Nokogiri::XML::Node.new('a', doc.document)
+        image = Nokogiri::XML::Node.new('img', doc.document)
+        link['href'] = vi.url.to_s
+        image['src'] = vi.thumbnail.to_s
+        link.add_child(image)
+        container.add_child(link)
+        node.replace(container)
       rescue
-        node.replace("<a href='#{node['src']}'>#{node['src']}</a>")
+        link = Nokogiri::XML::Node.new('a', doc.document)
+        link['href'] = node['src']
+        link.add_child(Nokogiri::XML::Text.new(node['src'], doc.document))
+        node.replace(link)
       end
     end
     doc.to_s
@@ -84,7 +108,10 @@ module MarkdownService
       end
 
       if node['data-due-on']
-        node.add_child '<span class="mailer-tag">📅 '+node['data-due-on']+'</div>'
+        due_on = Nokogiri::XML::Node.new('span', frag.document)
+        due_on['class'] = 'mailer-tag'
+        due_on.add_child(Nokogiri::XML::Text.new("📅 #{node['data-due-on']}", frag.document))
+        node.add_child(due_on)
       end
     end
     frag.to_s
