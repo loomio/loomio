@@ -28,6 +28,7 @@ class ThrottleServiceTest < ActiveSupport::TestCase
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
     assert_equal false, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
     ThrottleService.reset!('hour')
+    assert_match(/\A[0-9a-f-]{36}\z/, ThrottleService.namespace('hour'))
     assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
   end
 

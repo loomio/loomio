@@ -9,7 +9,7 @@ module ThrottleService
 
   def self.reset!(per)
     per = normalize_period(per)
-    Rails.cache.increment(namespace_cache_key(per), 1, initial: 0)
+    Rails.cache.write(namespace_cache_key(per), SecureRandom.uuid)
   end
 
   def self.can?(key: 'default-key', id: 1, max: 100, inc: 1, per: 'hour')
