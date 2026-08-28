@@ -5,8 +5,6 @@ module HasVolume
     enum :volume_email, { quiet: 1, normal: 2, loud: 3 }, prefix: :email
     enum :volume_push, { quiet: 1, normal: 2, loud: 3 }, prefix: :push
 
-    scope :volume_email_at_least, ->(level) { where('volume_email >= ?', volume_emails[level]) }
-    scope :volume_push_at_least, ->(level) { where('volume_push >= ?', volume_pushes[level]) }
     scope :email_notifications, -> { where(volume_email: volume_emails[:normal]..) }
     scope :push_notifications, -> { where(volume_push: volume_pushes[:normal]..) }
   end
@@ -28,11 +26,11 @@ module HasVolume
     persist ? save : true
   end
 
-  def email_volume_is_normal_or_loud?
+  def email_enabled?
     email_normal? || email_loud?
   end
 
-  def push_volume_is_normal_or_loud?
+  def push_enabled?
     push_normal? || push_loud?
   end
 end

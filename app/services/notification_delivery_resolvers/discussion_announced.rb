@@ -14,7 +14,7 @@ module NotificationDeliveryResolvers
         "in_app" => discussion.topic.app_notification_members
                               .where("users.id": user_scope.select(:id))
                               .where.not(id: notification.actor_id).to_a,
-        "email" => discussion.topic.volume_gte_normal_members
+        "email" => discussion.topic.email_notification_members
                              .where("users.id": user_scope.no_spam_complaints.select(:id)).to_a,
         "chatbot" => chatbots.where(id: notification.recipient_chatbot_ids)
                              .or(chatbots.where("? = ANY(chatbots.event_kinds)", notification.kind)).to_a

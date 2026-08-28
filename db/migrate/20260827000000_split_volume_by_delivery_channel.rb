@@ -9,11 +9,22 @@ class SplitVolumeByDeliveryChannel < ActiveRecord::Migration[8.1]
     execute "UPDATE memberships SET volume_email = 1 WHERE volume_email = 0"
     execute "UPDATE topic_readers SET volume_email = 1 WHERE volume_email = 0"
     execute "UPDATE users SET default_membership_volume_email = 1 WHERE default_membership_volume_email = 0"
+    execute <<~SQL
+      UPDATE memberships
+      SET volume_email = coalesce(
+        (SELECT users.default_membership_volume_email FROM users WHERE users.id = memberships.user_id),
+        2
+      )
+      WHERE volume_email IS NULL
+    SQL
+    change_column_default :memberships, :volume_email, from: nil, to: 2
+    change_column_null :memberships, :volume_email, false
 
-    # Leave push quiet until each person explicitly enables it.
-    add_column :memberships, :volume_push, :integer, default: 1, null: false
-    add_column :topic_readers, :volume_push, :integer, default: 1, null: false
-    add_column :users, :default_membership_volume_push, :integer, default: 1, null: false
+    # Push delivery still requires an active browser subscription. Normal allows
+    # directed notifications once a person explicitly enables a browser.
+    add_column :memberships, :volume_push, :integer, default: 2, null: false
+    add_column :topic_readers, :volume_push, :integer, default: 2, null: false
+    add_column :users, :default_membership_volume_push, :integer, default: 2, null: false
 
     add_index :memberships, :volume_push
     add_index :memberships, [ :user_id, :volume_push ]
@@ -40,6 +51,9 @@ class SplitVolumeByDeliveryChannel < ActiveRecord::Migration[8.1]
     remove_column :users, :default_membership_volume_push
     remove_column :topic_readers, :volume_push
     remove_column :memberships, :volume_push
+
+    change_column_null :memberships, :volume_email, true
+    change_column_default :memberships, :volume_email, from: 2, to: nil
 
     rename_column :users, :default_membership_volume_email, :default_membership_volume
     rename_column :topic_readers, :volume_email, :volume

@@ -8,7 +8,7 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "poll_expired subject must be a Poll"
       end
       author = User.where(id: poll.author_id)
-      email_author = poll.topic.volume_gte_normal_members.where("users.id": author.active.select(:id))
+      email_author = poll.topic.email_notification_members.where("users.id": author.active.select(:id))
       {
         "in_app" => author.to_a,
         "email" => email_author.to_a,

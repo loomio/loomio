@@ -512,8 +512,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.string "token"
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
-    t.integer "volume_email"
-    t.integer "volume_push", default: 1, null: false
+    t.integer "volume_email", default: 2, null: false
+    t.integer "volume_push", default: 2, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -1216,7 +1216,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.datetime "updated_at", precision: nil
     t.integer "user_id", null: false
     t.integer "volume_email", default: 2, null: false
-    t.integer "volume_push", default: 1, null: false
+    t.integer "volume_push", default: 2, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
@@ -1298,7 +1298,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.datetime "deactivated_at", precision: nil
     t.integer "deactivator_id"
     t.integer "default_membership_volume_email", default: 2, null: false
-    t.integer "default_membership_volume_push", default: 1, null: false
+    t.integer "default_membership_volume_push", default: 2, null: false
     t.string "detected_locale", limit: 255
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false

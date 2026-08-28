@@ -9,7 +9,7 @@ module NotificationDeliveryResolvers
       end
 
       recipient = User.active.where(id: membership.user_id)
-      email_recipient = if membership.email_volume_is_normal_or_loud?
+      email_recipient = if membership.email_enabled?
         recipient.no_spam_complaints.to_a
       else
         []

@@ -9,11 +9,11 @@ module NotificationDeliveryResolvers
       raise ArgumentError, "outcome notification subject must be an Outcome" unless outcome.is_a?(Outcome)
 
       explicit_scope = explicit_users.active
-      email_explicit = outcome.topic.volume_gte_normal_members
+      email_explicit = outcome.topic.email_notification_members
                               .where("users.id": explicit_scope.no_spam_complaints.select(:id))
                               .where.not(id: audience_ids("newly_mentioned_user_ids"))
       if notification.kind == "outcome_created"
-        email_explicit = email_explicit.where.not(id: outcome.topic.volume_loud_members.select(:id))
+        email_explicit = email_explicit.where.not(id: outcome.topic.email_loud_members.select(:id))
       end
       {
         "in_app" => outcome.topic.app_notification_members

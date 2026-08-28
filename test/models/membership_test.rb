@@ -43,6 +43,15 @@ class MembershipTest < ActiveSupport::TestCase
     assert_equal levels, User.default_membership_volume_pushes
   end
 
+  test "delivery preferences default to normal across records" do
+    assert_predicate User.new, :default_email_normal?
+    assert_predicate User.new, :default_push_normal?
+    assert_predicate Membership.new, :email_normal?
+    assert_predicate Membership.new, :push_normal?
+    assert_predicate TopicReader.new, :email_normal?
+    assert_predicate TopicReader.new, :push_normal?
+  end
+
   test "can change its volume" do
     @group.add_member!(@user)
     membership = @user.memberships.find_by(group: @group)

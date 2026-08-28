@@ -170,7 +170,7 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(guest: true, inviter: inviter)
     else
-      topic_readers.create!(user: user, inviter: inviter, guest: true, volume_email: :normal, volume_push: :quiet)
+      topic_readers.create!(user: user, inviter: inviter, guest: true, volume_email: :normal, volume_push: :normal)
     end
   end
 
@@ -178,7 +178,7 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(inviter: inviter, admin: true)
     else
-      topic_readers.create!(user: user, inviter: inviter, admin: true, volume_email: :normal, volume_push: :quiet)
+      topic_readers.create!(user: user, inviter: inviter, admin: true, volume_email: :normal, volume_push: :normal)
     end
   end
 
@@ -205,43 +205,49 @@ class Topic < ApplicationRecord
     Array(ranges.last).last.to_i
   end
 
-  # Select exact delivery modes because channel policies are not totally ordered.
-  def members_by_volume(levels, channel: :email)
+  # Build the active member relation once so delivery wrappers only add their
+  # channel-specific volume condition.
+  private def members_by_volume
     return User.none unless persisted?
-    volume_condition =
-      case channel
-      when :email then 'coalesce(tr.volume_email, m.volume_email, 2) IN (:levels)'
-      when :push then 'coalesce(tr.volume_push, m.volume_push, 1) IN (:levels)'
-      else raise ArgumentError, "Unknown volume channel: #{channel}"
-      end
 
-    scope = User.active.distinct
+    User.active.distinct
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
         .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                 (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL) OR
                 (m.id IS NULL and tr.id IS NULL)')
-        .where(volume_condition, levels: levels)
   end
 
   def app_notification_members
     members
   end
 
-  def volume_gte_normal_members
-    members_by_volume(TopicReader.volume_emails.values_at(:normal, :loud))
+  def email_notification_members
+    members_by_volume.where(
+      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) IN (:levels)',
+      levels: TopicReader.volume_emails.values_at(:normal, :loud)
+    )
   end
 
-  def volume_loud_members
-    members_by_volume([ TopicReader.volume_emails[:loud] ])
+  def email_loud_members
+    members_by_volume.where(
+      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) = :level',
+      level: TopicReader.volume_emails[:loud]
+    )
   end
 
-  def volume_push_notification_members
-    members_by_volume(TopicReader.volume_pushes.values_at(:normal, :loud), channel: :push)
+  def push_notification_members
+    members_by_volume.where(
+      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) IN (:levels)',
+      levels: TopicReader.volume_pushes.values_at(:normal, :loud)
+    )
   end
 
-  def volume_loud_push_members
-    members_by_volume([ TopicReader.volume_pushes[:loud] ], channel: :push)
+  def push_loud_members
+    members_by_volume.where(
+      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) = :level',
+      level: TopicReader.volume_pushes[:loud]
+    )
   end
 
   def public?

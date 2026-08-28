@@ -204,39 +204,44 @@ class Group < ApplicationRecord
     members.exists?(user.id)
   end
 
-  # Select exact delivery modes because channel policies are not totally ordered.
-  def members_by_volume(levels, channel: :email)
-    volume_condition =
-      case channel
-      when :email then 'coalesce(m.volume_email, 2) IN (:levels)'
-      when :push then 'coalesce(m.volume_push, 1) IN (:levels)'
-      else raise ArgumentError, "Unknown volume channel: #{channel}"
-      end
-
-    scope = User.active.distinct
+  # Build the active member relation once so delivery wrappers only add their
+  # channel-specific volume condition.
+  private def members_by_volume
+    User.active.distinct
         .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
         .where('m.revoked_at IS NULL')
-        .where(volume_condition, levels: levels)
   end
 
   def app_notification_members
     members.active
   end
 
-  def volume_gte_normal_members
-    members_by_volume(Membership.volume_emails.values_at(:normal, :loud))
+  def email_notification_members
+    members_by_volume.where(
+      'm.volume_email IN (:levels)',
+      levels: Membership.volume_emails.values_at(:normal, :loud)
+    )
   end
 
-  def volume_loud_members
-    members_by_volume([ Membership.volume_emails[:loud] ])
+  def email_loud_members
+    members_by_volume.where(
+      'm.volume_email = :level',
+      level: Membership.volume_emails[:loud]
+    )
   end
 
-  def volume_push_notification_members
-    members_by_volume(Membership.volume_pushes.values_at(:normal, :loud), channel: :push)
+  def push_notification_members
+    members_by_volume.where(
+      'm.volume_push IN (:levels)',
+      levels: Membership.volume_pushes.values_at(:normal, :loud)
+    )
   end
 
-  def volume_loud_push_members
-    members_by_volume([ Membership.volume_pushes[:loud] ], channel: :push)
+  def push_loud_members
+    members_by_volume.where(
+      'm.volume_push = :level',
+      level: Membership.volume_pushes[:loud]
+    )
   end
 
   def author_id

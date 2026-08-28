@@ -93,8 +93,8 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
   end
 
   def delivery_channel(record)
-    email = record.email_volume_is_normal_or_loud?
-    push = record.push_volume_is_normal_or_loud?
+    email = record.email_enabled?
+    push = record.push_enabled?
     return "email_and_push" if email && push
     return "push" if push
 

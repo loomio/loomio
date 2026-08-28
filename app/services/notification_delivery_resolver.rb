@@ -154,9 +154,9 @@ class NotificationDeliveryResolver
     return [] if user_ids.empty?
 
     eligible_user_ids = if (topic = notification_topic)
-      topic.volume_push_notification_members.where(id: user_ids).select(:id)
+      topic.push_notification_members.where(id: user_ids).select(:id)
     elsif (group = notification_group)
-      group.volume_push_notification_members.where(id: user_ids).select(:id)
+      group.push_notification_members.where(id: user_ids).select(:id)
     else
       User.where(id: user_ids)
           .where(default_membership_volume_push: User.default_membership_volume_pushes.values_at("normal", "loud"))
@@ -171,9 +171,9 @@ class NotificationDeliveryResolver
     return User.none if user_ids.empty?
 
     if (topic = notification_topic)
-      topic.volume_gte_normal_members.where(id: user_ids)
+      topic.email_notification_members.where(id: user_ids)
     elsif (group = notification_group)
-      group.volume_gte_normal_members.where(id: user_ids)
+      group.email_notification_members.where(id: user_ids)
     else
       User.where(id: user_ids)
           .where(default_membership_volume_email: User.default_membership_volume_emails.values_at("normal", "loud"))

@@ -18,7 +18,7 @@ module NotificationDeliveryResolvers
       end
 
       admins = membership_request.admins.active
-      email_admins = membership_request.group.volume_gte_normal_members
+      email_admins = membership_request.group.email_notification_members
                                          .where(id: admins.select(:id))
                                          .no_spam_complaints
       {

@@ -12,7 +12,7 @@ module NotificationDeliveryResolvers
       topic = outcome.poll.topic
       {
         "in_app" => topic.app_notification_members.where("users.id": author_scope.select(:id)).to_a,
-        "email" => topic.volume_gte_normal_members
+        "email" => topic.email_notification_members
                         .where("users.id": author_scope.no_spam_complaints.select(:id)).to_a,
         "chatbot" => outcome.group.chatbots
                             .where("? = ANY(chatbots.event_kinds)", notification.kind).to_a
