@@ -17,6 +17,6 @@ class AnonymousBallotService
       poll.update_counts!
     end
 
-    true
+    anonymous_ballot
   end
 end

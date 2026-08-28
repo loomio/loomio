@@ -75,7 +75,7 @@ class UserService
     user.assign_attributes_and_files(params)
     unless user.valid?
       Sentry.metrics.count("user.update_failed", attributes: { columns: user.errors.attribute_names.join(',') })
-      return false
+      return user
     end
     password_changed = user.password_digest_changed?
     user.save!
@@ -85,6 +85,7 @@ class UserService
     end
     EventBus.broadcast('user_update', user, actor, params)
     ReindexAuthorWorker.perform_later(user.id) if user.name_previously_changed?
+    user
   end
 
   def self.disable_edit_user_profile?

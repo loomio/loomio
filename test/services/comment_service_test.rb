@@ -11,7 +11,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     @discussion = discussions(:discussion)
   end
 
-  test "creates a comment and returns an topic_item" do
+  test "creates a comment, returns it, and yields its topic item" do
     comment = Comment.new(
       parent: @discussion,
       author: @user,
@@ -19,8 +19,10 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    created_comment = CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
+    assert_equal comment, created_comment
     assert_kind_of TopicItem, topic_item
     assert comment.persisted?
     assert_equal "My body is ready", comment.body
@@ -38,7 +40,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
     topic_item = nil
     NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
-      topic_item = CommentService.create(comment: comment, actor: @user)
+      CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     end
 
     assert_predicate comment, :persisted?
@@ -93,13 +95,14 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     assert reader.reload.has_read?(topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
   end
 
-  test "raises when creating invalid comment" do
+  test "returns an invalid comment without creating it" do
     comment = Comment.new(
       parent: @discussion,
       author: @user,
@@ -107,9 +110,10 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    assert_raises ActiveRecord::RecordInvalid do
-      CommentService.create(comment: comment, actor: @user)
-    end
+    created_comment = CommentService.create(comment: comment, actor: @user)
+
+    assert_same comment, created_comment
+    assert_predicate created_comment, :invalid?
     assert_not comment.persisted?
   end
 
@@ -122,9 +126,9 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    assert_raises ActiveRecord::RecordInvalid do
-      CommentService.create(comment: comment, actor: @user)
-    end
+    created_comment = CommentService.create(comment: comment, actor: @user)
+
+    assert_same comment, created_comment
     assert_not comment.persisted?
     assert_includes comment.errors[:body], "Comment must be 10 characters or less"
   end
@@ -138,9 +142,9 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    assert_raises ActiveRecord::RecordInvalid do
-      CommentService.create(comment: comment, actor: @user)
-    end
+    created_comment = CommentService.create(comment: comment, actor: @user)
+
+    assert_same comment, created_comment
     assert_includes comment.errors[:body], "Comment must be 1 characters or less"
   end
 
@@ -168,9 +172,9 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "html"
     )
 
-    assert_raises ActiveRecord::RecordInvalid do
-      CommentService.create(comment: comment, actor: @user)
-    end
+    created_comment = CommentService.create(comment: comment, actor: @user)
+
+    assert_same comment, created_comment
     assert_includes comment.errors[:body], "Comment must be 4 characters or less"
   end
 
@@ -296,12 +300,14 @@ class CommentServiceTest < ActiveSupport::TestCase
       actor: @user
     )
 
-    refute CommentService.update(
+    updated_comment = CommentService.update(
       comment: comment,
       params: { parent_type: 'Discussion', parent_id: other_discussion.id },
       actor: @user
     )
 
+    assert_same comment, updated_comment
+    assert_predicate updated_comment, :invalid?
     comment.reload
     assert_equal @discussion, comment.parent
   end
@@ -358,9 +364,11 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "destroying an topic_item reparents its timeline children" do
     comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     reply = Comment.new(parent: comment, author: @user, body: "Reply")
-    reply_event = CommentService.create(comment: reply, actor: @user)
+    reply_event = nil
+    CommentService.create(comment: reply, actor: @user) { |created_topic_item| reply_event = created_topic_item }
 
     topic_item.destroy!
 
@@ -370,9 +378,11 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "destroying a topic root destroys its complete topic_item tree" do
     comment = Comment.new(parent: @discussion, author: @user, body: "Parent")
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     reply = Comment.new(parent: comment, author: @user, body: "Reply")
-    reply_event = CommentService.create(comment: reply, actor: @user)
+    reply_event = nil
+    CommentService.create(comment: reply, actor: @user) { |created_topic_item| reply_event = created_topic_item }
 
     @discussion.created_topic_item.destroy!
 

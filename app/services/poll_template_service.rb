@@ -68,7 +68,7 @@ class PollTemplateService
 
     poll_template.assign_attributes(author: actor)
 
-    return false unless poll_template.valid?
+    return poll_template unless poll_template.valid?
 
     if poll_template.key
       poll_template.group.hidden_poll_templates += Array(poll_template.key)
@@ -84,7 +84,7 @@ class PollTemplateService
     actor.ability.authorize! :update, poll_template
 
     poll_template.assign_attributes_and_files(params.except(:group_id))
-    return false unless poll_template.valid?
+    return poll_template unless poll_template.valid?
     poll_template.save!
 
     poll_template

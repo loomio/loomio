@@ -42,12 +42,18 @@ class Api::V1::SnorlaxBase < ActionController::Base
     self.resource = resource_class.find(params[:id])
   end
 
+  # Mutation services return their domain model, including an invalid model on
+  # validation failure. Authorization and persistence failures still raise.
+  # Operations that add a timeline entry may also yield the persisted topic item
+  # after their transaction commits.
   def create_action
-    capture_topic_item(service.create(**{resource_symbol => resource, actor: current_user}))
+    model = service.create(**{resource_symbol => resource, actor: current_user}) { |topic_item| @topic_item = topic_item }
+    self.resource = model
   end
 
   def update_action
-    capture_topic_item(service.update(**{resource_symbol => resource, params: resource_params, actor: current_user}))
+    model = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user}) { |topic_item| @topic_item = topic_item }
+    self.resource = model
   end
 
   def destroy_action
@@ -153,10 +159,6 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def collection=(value)
     instance_variable_set :"@#{resource_name.pluralize}", value
-  end
-
-  def capture_topic_item(result)
-    @topic_item = result if result.is_a?(TopicItem)
   end
 
   def instantiate_resource

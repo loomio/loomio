@@ -356,7 +356,8 @@ class EventTest < ActiveSupport::TestCase
     @poll.update!(hide_results: 'until_vote')
     stance = @poll.stances.create!(participant: @user_thread_normal, inviter: @admin, latest: true, reason: "Response")
     stance.choice = @poll.poll_option_names.first
-    topic_item = StanceService.create(stance: stance, actor: @user_thread_normal)
+    topic_item = nil
+    StanceService.create(stance: stance, actor: @user_thread_normal) { |created_topic_item| topic_item = created_topic_item }
 
     assert_equal @poll.topic_id, topic_item.topic_id
     assert_not Notification.about(stance).exists?(kind: "stance_created")
@@ -373,12 +374,12 @@ class EventTest < ActiveSupport::TestCase
     stance = @poll.stances.create!(participant: @user_thread_normal, inviter: @admin, latest: true, reason: "Hidden response")
     stance.choice = @poll.poll_option_names.first
     publish_count = 0
-    result = nil
+    created_stance = nil
     MessageChannelService.stub(:publish_topic_model, ->(*) { publish_count += 1 }) do
-      result = StanceService.create(stance: stance, actor: @user_thread_normal)
+      created_stance = StanceService.create(stance: stance, actor: @user_thread_normal)
     end
 
-    assert_equal stance, result
+    assert_equal stance, created_stance
     assert_not Notification.about(stance).exists?(kind: "stance_created")
     assert_equal 0, publish_count
   end

@@ -1,9 +1,10 @@
 class CommentService
-  def self.create(comment:, actor:)
+  def self.create(comment:, actor:, &on_topic_item)
     comment.author = actor
     actor.ability.authorize! :create, comment
+    return comment unless comment.valid?
 
-    Comment.transaction do
+    topic_item = Comment.transaction do
       comment.save!
       comment.update_pg_search_document
       Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
@@ -17,9 +18,11 @@ class CommentService
       )
       topic_item
     end
+    on_topic_item&.call(topic_item)
+    comment
   end
 
-  def self.discard(comment:, actor:)
+  def self.discard(comment:, actor:, &on_topic_item)
     actor.ability.authorize!(:discard, comment)
     Sentry.metrics.count("comment.discard")
     ActiveRecord::Base.transaction do
@@ -28,17 +31,19 @@ class CommentService
     end
     comment.topic.update_sequence_info!
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_topic_item
+    on_topic_item&.call(comment.created_topic_item)
+    comment
   end
 
-  def self.undiscard(comment:, actor:)
+  def self.undiscard(comment:, actor:, &on_topic_item)
     actor.ability.authorize!(:undiscard, comment)
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: nil, discarded_by: nil)
       comment.created_topic_item.update(user_id: comment.user_id)
     end
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_topic_item
+    on_topic_item&.call(comment.created_topic_item)
+    comment
   end
 
   def self.destroy(comment:, actor:)
@@ -60,7 +65,7 @@ class CommentService
     comment.assign_attributes_and_files(params)
     unless comment.valid?
       Sentry.metrics.count("comment.update_failed", attributes: { columns: comment.errors.attribute_names.join(',') })
-      return false
+      return comment
     end
     Comment.transaction do
       comment.save!

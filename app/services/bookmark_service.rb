@@ -5,7 +5,7 @@ class BookmarkService
     bookmark.user = actor
     bookmark.discarded_at = nil # re-bookmarking an item that was removed
 
-    return false unless bookmark.valid?
+    return bookmark unless bookmark.valid?
     bookmark.save!
 
     MessageChannelService.publish_models([bookmark], user_id: actor.id)

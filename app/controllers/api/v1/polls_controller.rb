@@ -83,18 +83,18 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def close
-    capture_topic_item(service.close(poll: load_resource, actor: current_user))
+    service.close(poll: load_resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 
   def reopen
-    capture_topic_item(service.reopen(poll: load_resource, params: resource_params, actor: current_user))
+    service.reopen(poll: load_resource, params: resource_params, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 
   def discard
     load_resource
-    capture_topic_item(service.discard(poll: resource, actor: current_user))
+    service.discard(poll: resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 

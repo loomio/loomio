@@ -28,7 +28,9 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.choice = @poll.poll_option_names.first
     stance.reason = "I agree"
 
-    topic_item = StanceService.create(stance: stance, actor: @user)
+    topic_item = nil
+    created_stance = StanceService.create(stance: stance, actor: @user) { |created_topic_item| topic_item = created_topic_item }
+    assert_equal stance, created_stance
     assert_kind_of TopicItem, topic_item
     assert reader.reload.has_read?(topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
@@ -43,7 +45,8 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.reason = "Visible response"
 
     ActionMailer::Base.deliveries.clear
-    topic_item = StanceService.create(stance: stance, actor: @user)
+    topic_item = nil
+    StanceService.create(stance: stance, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
@@ -57,9 +60,9 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.choice = @poll.poll_option_names.first
 
     ActionMailer::Base.deliveries.clear
-    result = StanceService.create(stance: stance, actor: @user)
+    created_stance = StanceService.create(stance: stance, actor: @user)
 
-    assert_equal stance, result
+    assert_equal stance, created_stance
     assert_not TopicItem.exists?(itemable: stance, kind: "stance_created")
     assert_not Notification.about(stance).exists?(kind: "stance_created")
     assert_not_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
@@ -73,10 +76,10 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Hidden response"
 
-    result = StanceService.create(stance: stance, actor: @user)
+    created_stance = StanceService.create(stance: stance, actor: @user)
     PollService.close(poll: @poll, actor: @admin)
 
-    assert_equal stance, result
+    assert_equal stance, created_stance
     assert TopicItem.exists?(itemable: stance, kind: "stance_created", topic: @poll.topic)
     assert_not Notification.about(stance).exists?(kind: "stance_created")
   end
@@ -118,16 +121,18 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance.reason = "Initial response"
     StanceService.create(stance: stance, actor: @user)
 
-    result = StanceService.update(
+    topic_item_was_yielded = false
+    updated_stance = StanceService.update(
       stance: stance,
       actor: @user,
       params: {
         reason: "Edited response",
         stance_choices_attributes: [ { poll_option_id: option.id } ]
       }
-    )
+    ) { topic_item_was_yielded = true }
 
-    assert_equal stance, result
+    assert_equal stance, updated_stance
+    assert_not topic_item_was_yielded
     assert_not TopicItem.exists?(itemable: stance, kind: "stance_updated")
     assert_not Notification.about(stance).exists?(kind: "stance_updated")
   end
@@ -151,9 +156,11 @@ class StanceServiceTest < ActiveSupport::TestCase
   test "does not create an invalid stance" do
     invalid_stance = Stance.new(poll: @poll)
 
-    assert_raises ActiveRecord::RecordInvalid do
-      StanceService.create(stance: invalid_stance, actor: @user)
-    end
+    created_stance = StanceService.create(stance: invalid_stance, actor: @user)
+
+    assert_same invalid_stance, created_stance
+    assert_predicate created_stance, :invalid?
+    assert_not created_stance.persisted?
   end
 
   test "invalid ballot update preserves the previous vote and result counts" do
@@ -163,14 +170,14 @@ class StanceServiceTest < ActiveSupport::TestCase
     counts_before = @poll.reload.stance_counts
     topic_items_before = TopicItem.count
 
-    assert_raises ActiveRecord::RecordInvalid do
-      StanceService.update(
-        stance: stance,
-        actor: @user,
-        params: { stance_choices_attributes: [{ poll_option_id: agree.id, score: -1 }] }
-      )
-    end
+    updated_stance = StanceService.update(
+      stance: stance,
+      actor: @user,
+      params: { stance_choices_attributes: [{ poll_option_id: agree.id, score: -1 }] }
+    )
 
+    assert_same stance, updated_stance
+    assert_predicate updated_stance, :invalid?
     assert_equal({ agree.id.to_s => 1 }, stance.reload.option_scores)
     assert_equal counts_before, @poll.reload.stance_counts
     assert_equal topic_items_before, TopicItem.count
@@ -192,7 +199,8 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "hello"
-    topic_item = StanceService.create(stance: stance, actor: @user)
+    topic_item = nil
+    StanceService.create(stance: stance, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     assert_equal poll_created_topic_item.id, topic_item.parent.id
   end

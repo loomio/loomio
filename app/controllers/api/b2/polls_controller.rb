@@ -6,17 +6,14 @@ class Api::B2::PollsController < Api::B2::BaseController
 
   def create
     self.resource = PollService.create(params: resource_params, actor: current_user)
-    PollService.invite(poll: resource, actor: current_user, params: params)
+    PollService.invite(poll: resource, actor: current_user, params: params) if resource.errors.empty?
     respond_with_resource
   end
 
   def update
     load_resource
-    if PollService.update(poll: resource, params: resource_params, actor: current_user)
-      respond_with_resource
-    else
-      respond_with_errors
-    end
+    self.resource = PollService.update(poll: resource, params: resource_params, actor: current_user)
+    respond_with_resource
   end
 
   def destroy

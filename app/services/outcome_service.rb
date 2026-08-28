@@ -27,7 +27,7 @@ class OutcomeService
     users
   end
 
-  def self.create(outcome:, actor:, params: {})
+  def self.create(outcome:, actor:, params: {}, &on_topic_item)
     actor.ability.authorize! :create, outcome
 
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
@@ -39,7 +39,7 @@ class OutcomeService
     outcome.assign_attributes(author: actor)
     unless outcome.valid?
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
-      return false
+      return outcome
     end
     topic_item = Outcome.transaction do
       outcome.poll.outcomes.update_all(latest: false)
@@ -74,7 +74,8 @@ class OutcomeService
 
     Sentry.metrics.count("outcome.create")
     EventBus.broadcast 'outcome_create', outcome, actor
-    topic_item
+    on_topic_item&.call(topic_item)
+    outcome
   end
 
   def self.update(outcome:, actor:, params: {})
@@ -89,7 +90,7 @@ class OutcomeService
     outcome.assign_attributes_and_files(params.slice(:review_on, :statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews, :poll_option_id))
     unless outcome.valid?
       Sentry.metrics.count("outcome.update_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
-      return false
+      return outcome
     end
 
     Outcome.transaction do

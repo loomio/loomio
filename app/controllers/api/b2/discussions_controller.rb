@@ -11,11 +11,8 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
 
   def update
     load_resource
-    if DiscussionService.update(discussion: resource, params: resource_params, actor: current_user)
-      respond_with_resource
-    else
-      respond_with_errors
-    end
+    self.resource = DiscussionService.update(discussion: resource, params: resource_params, actor: current_user)
+    respond_with_resource
   end
 
   def destroy

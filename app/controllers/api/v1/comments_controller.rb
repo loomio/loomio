@@ -1,13 +1,13 @@
 class Api::V1::CommentsController < Api::V1::RestfulController
   def discard
     load_resource
-    capture_topic_item(service.discard(comment: resource, actor: current_user))
+    service.discard(comment: resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource(scope: default_scope.merge(exclude_types: %w[discussion group user]))
   end
 
   def undiscard
     load_resource
-    capture_topic_item(service.undiscard(comment: resource, actor: current_user))
+    service.undiscard(comment: resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource(scope: {exclude_types: %w[discussion group user]})
   end
 
