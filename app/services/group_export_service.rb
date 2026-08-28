@@ -504,7 +504,7 @@ class GroupExportService
   end
 
   # Translate snapshotted user/group audiences so mention history and any
-  # recovery resolution refer only to imported records.
+  # recovery routing refer only to imported records.
   def self.translate_notification_payload!(attrs, migrate_ids)
     attrs['recipient_user_ids'] = translate_ids(attrs['recipient_user_ids'], migrate_ids['users'])
 

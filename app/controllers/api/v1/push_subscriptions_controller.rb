@@ -8,7 +8,7 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
 
   def create
     self.resource = PushSubscriptionService.create_or_update!(
-      user: current_user,
+      session: Current.session,
       params: subscription_params,
       user_agent: request.user_agent
     )
@@ -17,7 +17,7 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
 
   def destroy
     subscription = PushSubscriptionService.revoke!(
-      user: current_user,
+      session: Current.session,
       endpoint: params[:endpoint],
       id: params[:id]
     )

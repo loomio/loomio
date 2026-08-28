@@ -57,7 +57,7 @@ class Notification < ApplicationRecord
   scope :user_mentions, lambda {
     where(kind: %w[user_mentioned comment_replied_to])
   }
-  scope :pending_delivery_resolution, lambda {
+  scope :pending_delivery_routing, lambda {
     where(deliveries_generated_at: nil)
   }
 end

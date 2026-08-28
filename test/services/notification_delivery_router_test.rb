@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NotificationDeliveryResolverTest < ActiveSupport::TestCase
+class NotificationDeliveryRouterTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
   include ActionMailer::TestHelper
 
@@ -8,7 +8,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     @author = users(:user)
     @poll = PollService.create(
       params: {
-        title: "Resolution test poll",
+        title: "Routing test poll",
         poll_type: "proposal",
         poll_option_names: [ "Yes", "No" ],
         closing_at: 3.days.from_now,
@@ -19,15 +19,15 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     @outcome = Outcome.create!(
       poll: @poll,
       author: @author,
-      statement: "Resolution test outcome",
+      statement: "Routing test outcome",
       review_on: Date.current
     )
     SafeHttpService.stub(:safe_to_fetch?, true) do
       @chatbot = Chatbot.create!(
         group: @outcome.group,
         author: users(:admin),
-        name: "Resolution test chatbot",
-        server: "https://resolution-test.example.test/hook",
+        name: "Routing test chatbot",
+        server: "https://routing-test.example.test/hook",
         webhook_kind: "markdown",
         kind: "webhook",
         event_kinds: [ "outcome_review_due" ]
@@ -35,45 +35,47 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "every supported notification kind has an explicit resolver contract" do
+  test "every supported notification kind has a router" do
     expected = {
-      "comment_replied_to" => NotificationDeliveryResolvers::UserMentioned,
-      "discussion_announced" => NotificationDeliveryResolvers::DiscussionEvent,
-      "discussion_edited" => NotificationDeliveryResolvers::DiscussionEvent,
-      "group_mentioned" => NotificationDeliveryResolvers::GroupMentioned,
-      "invitation_accepted" => NotificationDeliveryResolvers::InvitationAccepted,
-      "membership_created" => NotificationDeliveryResolvers::MembershipCreated,
-      "membership_resent" => NotificationDeliveryResolvers::MembershipResent,
-      "membership_request_approved" => NotificationDeliveryResolvers::MembershipRequestApproved,
-      "membership_requested" => NotificationDeliveryResolvers::MembershipRequested,
-      "new_coordinator" => NotificationDeliveryResolvers::NewCoordinator,
-      "new_delegate" => NotificationDeliveryResolvers::NewDelegate,
-      "new_discussion" => NotificationDeliveryResolvers::DiscussionEvent,
-      "outcome_announced" => NotificationDeliveryResolvers::OutcomeAnnounced,
-      "outcome_created" => NotificationDeliveryResolvers::OutcomeChange,
-      "outcome_review_due" => NotificationDeliveryResolvers::OutcomeReviewDue,
-      "outcome_updated" => NotificationDeliveryResolvers::OutcomeChange,
-      "poll_announced" => NotificationDeliveryResolvers::PollAnnounced,
-      "poll_closing_soon" => NotificationDeliveryResolvers::PollClosingSoon,
-      "poll_edited" => NotificationDeliveryResolvers::PollEdited,
-      "poll_expired" => NotificationDeliveryResolvers::PollExpired,
-      "poll_reminder" => NotificationDeliveryResolvers::PollReminder,
-      "reaction_created" => NotificationDeliveryResolvers::ReactionCreated,
-      "unknown_sender" => NotificationDeliveryResolvers::UnknownSender,
-      "user_added_to_group" => NotificationDeliveryResolvers::UserAddedToGroup,
-      "user_mentioned" => NotificationDeliveryResolvers::UserMentioned
+      "comment_replied_to" => NotificationDeliveryRouters::UserMentioned,
+      "discussion_announced" => NotificationDeliveryRouters::DiscussionEvent,
+      "discussion_edited" => NotificationDeliveryRouters::DiscussionEvent,
+      "group_mentioned" => NotificationDeliveryRouters::GroupMentioned,
+      "invitation_accepted" => NotificationDeliveryRouters::InvitationAccepted,
+      "membership_created" => NotificationDeliveryRouters::MembershipCreated,
+      "membership_resent" => NotificationDeliveryRouters::MembershipResent,
+      "membership_request_approved" => NotificationDeliveryRouters::MembershipRequestApproved,
+      "membership_requested" => NotificationDeliveryRouters::MembershipRequested,
+      "new_coordinator" => NotificationDeliveryRouters::NewCoordinator,
+      "new_delegate" => NotificationDeliveryRouters::NewDelegate,
+      "new_discussion" => NotificationDeliveryRouters::DiscussionEvent,
+      "outcome_announced" => NotificationDeliveryRouters::OutcomeAnnounced,
+      "outcome_created" => NotificationDeliveryRouters::OutcomeChange,
+      "outcome_review_due" => NotificationDeliveryRouters::OutcomeReviewDue,
+      "outcome_updated" => NotificationDeliveryRouters::OutcomeChange,
+      "poll_announced" => NotificationDeliveryRouters::PollAnnounced,
+      "poll_closing_soon" => NotificationDeliveryRouters::PollClosingSoon,
+      "poll_edited" => NotificationDeliveryRouters::PollEdited,
+      "poll_expired" => NotificationDeliveryRouters::PollExpired,
+      "poll_reminder" => NotificationDeliveryRouters::PollReminder,
+      "reaction_created" => NotificationDeliveryRouters::ReactionCreated,
+      "unknown_sender" => NotificationDeliveryRouters::UnknownSender,
+      "user_added_to_group" => NotificationDeliveryRouters::UserAddedToGroup,
+      "user_mentioned" => NotificationDeliveryRouters::UserMentioned
     }
 
-    assert_equal expected.keys.sort, NotificationDeliveryResolver::RESOLVERS.keys.sort
-    expected.each do |kind, resolver_class|
-      assert_equal resolver_class, NotificationDeliveryResolver.class_for(kind), kind
+    assert_equal expected.keys.sort, NotificationDeliveryRouter::ROUTERS.keys.sort
+    expected.each do |kind, router_class|
+      assert_equal router_class, NotificationDeliveryRouter.class_for(kind), kind
+      assert router_class.subject_model_class, kind
     end
   end
 
-  test "typed resolvers reject a subject from the wrong domain" do
+  test "typed routers reject a subject from the wrong domain" do
     wrong_subjects = {
       "discussion_announced" => @poll,
       "discussion_edited" => @poll,
+      "group_mentioned" => memberships(:member_membership),
       "invitation_accepted" => @poll,
       "membership_created" => @poll,
       "membership_resent" => @poll,
@@ -93,20 +95,22 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       "poll_reminder" => @outcome,
       "reaction_created" => @poll,
       "unknown_sender" => @poll,
-      "user_added_to_group" => @poll
+      "user_added_to_group" => @poll,
+      "user_mentioned" => memberships(:member_membership),
+      "comment_replied_to" => memberships(:member_membership)
     }
 
     wrong_subjects.each do |kind, subject|
       error = assert_raises(ArgumentError, kind) do
-        resolve_notification(kind: kind, subject: subject)
+        route_notification(kind: kind, subject: subject)
       end
       assert_match(/subject must be/, error.message, kind)
     end
   end
 
-  test "explicit audience resolvers deliver to a normal-volume eligible user" do
+  test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, email_when_mentioned: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic).set_volume!(email: :normal, push: :quiet)
     TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
@@ -126,7 +130,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     }
 
     scenarios.each do |kind, subject|
-      notification = resolve_notification(
+      notification = route_notification(
         kind: kind,
         subject: subject,
         recipient_user_ids: [ recipient.id ]
@@ -141,14 +145,14 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     recipient.update!(deactivated_at: nil, complaints_count: 0)
     reader = TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
     reader.set_volume!(email: :quiet, push: :normal)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/resolver-token",
+      endpoint: "https://fcm.googleapis.com/fcm/send/router-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
 
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "discussion_edited",
       subject: discussions(:discussion),
       recipient_user_ids: [ recipient.id ],
@@ -158,7 +162,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal %w[in_app], channels_for(notification, recipient)
     assert_equal [ "push" ], channels_for(notification, subscription)
 
-    mention = resolve_notification(
+    mention = route_notification(
       kind: "user_mentioned",
       subject: discussions(:discussion),
       recipient_user_ids: [ recipient.id ]
@@ -167,7 +171,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ "push" ], channels_for(mention, subscription)
 
     reader.set_volume!(email: :normal, push: :quiet)
-    next_notification = resolve_notification(
+    next_notification = route_notification(
       kind: "discussion_edited",
       subject: discussions(:discussion),
       recipient_user_ids: [ recipient.id ],
@@ -177,45 +181,38 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_empty channels_for(next_notification, subscription)
   end
 
-  test "the base resolver consumes the explicit push audience" do
+  test "volume scopes cannot add recipients outside the in-app recipients" do
     discussion = discussions(:discussion)
-    in_app_recipient = users(:admin)
-    push_recipient = users(:member)
-    [ in_app_recipient, push_recipient ].each do |recipient|
-      recipient.update!(deactivated_at: nil)
-      TopicReader.for(user: recipient, topic: discussion.topic)
-                 .set_volume!(email: :quiet, push: :normal)
+    recipient = users(:member)
+    outside_recipient = users(:admin)
+    [ recipient, outside_recipient ].each do |user|
+      user.update!(deactivated_at: nil)
+      TopicReader.for(user: user, topic: discussion.topic)
+                 .set_volume!(email: :normal, push: :normal)
     end
-    in_app_subscription = PushSubscription.create!(
-      user: in_app_recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/in-app-only-token",
+    recipient_subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/audience-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
-    push_subscription = PushSubscription.create!(
-      user: push_recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/push-only-token",
+    outside_subscription = create_push_subscription(
+      user: outside_recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/outside-recipient-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
-    notification = Notification.create!(
-      kind: "user_mentioned",
+
+    notification = route_notification(
+      kind: "discussion_edited",
       subject: discussion,
-      actor: @author
+      recipient_user_ids: [ recipient.id ]
     )
-    resolver = NotificationDeliveryResolver.for(notification)
 
-    resolver.stub(
-      :recipients_by_channel,
-      { "in_app" => [ in_app_recipient ], "email" => [], "push" => [ push_recipient ] }
-    ) do
-      resolver.resolve!
-    end
-
-    assert_equal [ "in_app" ], channels_for(notification, in_app_recipient)
-    assert_empty channels_for(notification, in_app_subscription)
-    assert_empty channels_for(notification, push_recipient)
-    assert_equal [ "push" ], channels_for(notification, push_subscription)
+    assert_equal %w[email in_app], channels_for(notification, recipient)
+    assert_equal [ "push" ], channels_for(notification, recipient_subscription)
+    assert_empty channels_for(notification, outside_recipient)
+    assert_empty channels_for(notification, outside_subscription)
   end
 
   test "notification push delivery rechecks the recipient before sending" do
@@ -223,13 +220,13 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     recipient.update!(deactivated_at: nil, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :quiet, push: :normal)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/policy-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "discussion_edited",
       subject: discussions(:discussion),
       recipient_user_ids: [ recipient.id ]
@@ -244,18 +241,44 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal "cancelled", delivery.reload.status
   end
 
+  test "notification push delivery cancels when its session has been revoked" do
+    recipient = users(:member)
+    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
+               .set_volume!(email: :quiet, push: :normal)
+    subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/revoked-session-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    notification = route_notification(
+      kind: "discussion_edited",
+      subject: discussions(:discussion),
+      recipient_user_ids: [ recipient.id ]
+    )
+    delivery = notification.notification_deliveries.find_by!(recipient: subscription, channel: "push")
+    subscription.session.destroy!
+
+    WebPushService.stub(:deliver!, ->(**) { flunk "push should not be sent" }) do
+      DeliverNotificationPushWorker.perform_now(delivery.id)
+    end
+
+    assert_equal "cancelled", delivery.reload.status
+  end
+
   test "notification push delivery cancels an expired subscription" do
     recipient = users(:member)
     recipient.update!(deactivated_at: nil, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :quiet, push: :normal)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/expiry-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "discussion_edited",
       subject: discussions(:discussion),
       recipient_user_ids: [ recipient.id ]
@@ -268,7 +291,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal "cancelled", delivery.reload.status
   end
 
-  test "direct operational resolvers preserve their recipient and channel rules" do
+  test "direct operational routers preserve their recipient and channel rules" do
     recipient = users(:member)
     recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
     membership = memberships(:member_membership)
@@ -276,7 +299,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
 
     scenarios = {
       "invitation_accepted" => [ membership, @author, %w[in_app] ],
-      "membership_request_approved" => [ membership, recipient, %w[email in_app] ],
+      "membership_request_approved" => [ membership, recipient, %w[in_app] ],
       "membership_resent" => [ membership, recipient, %w[email] ],
       "new_coordinator" => [ membership, recipient, %w[in_app] ],
       "new_delegate" => [ membership, recipient, %w[email in_app] ],
@@ -284,15 +307,53 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     }
 
     scenarios.each do |kind, (subject, expected_recipient, expected_channels)|
-      notification = resolve_notification(kind: kind, subject: subject)
+      notification = route_notification(kind: kind, subject: subject)
       assert_equal expected_channels, channels_for(notification, expected_recipient), kind
     end
   end
 
-  test "derived audience resolvers cover requests, reactions, unknown senders and group mentions" do
+  test "in-app-only routers do not opt into email or push" do
+    membership = memberships(:member_membership)
+    recipient = membership.user
+    membership.update!(inviter: @author, volume_email: :normal, volume_push: :normal)
+    membership.group.membership_for(@author).update!(volume_email: :normal, volume_push: :normal)
+    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    @author.update!(deactivated_at: nil, complaints_count: 0)
+    recipient_subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/approved-in-app-only-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    inviter_subscription = create_push_subscription(
+      user: @author,
+      endpoint: "https://fcm.googleapis.com/fcm/send/accepted-in-app-only-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    approved = route_notification(kind: "membership_request_approved", subject: membership)
+    accepted = route_notification(kind: "invitation_accepted", subject: membership)
+    coordinator = route_notification(kind: "new_coordinator", subject: membership)
+
+    assert_equal [ "in_app" ], channels_for(approved, recipient)
+    assert_empty channels_for(approved, recipient_subscription)
+    assert_equal [ "in_app" ], channels_for(accepted, @author)
+    assert_empty channels_for(accepted, inviter_subscription)
+    assert_equal [ "in_app" ], channels_for(coordinator, recipient)
+    assert_empty channels_for(coordinator, recipient_subscription)
+  end
+
+  test "derived-recipient routers cover requests, reactions, unknown senders and group mentions" do
     admin = users(:admin)
     admin.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
-    groups(:group).membership_for(admin).update!(volume_email: :normal)
+    groups(:group).membership_for(admin).update!(volume_email: :normal, volume_push: :normal)
+    admin_subscription = create_push_subscription(
+      user: admin,
+      endpoint: "https://fcm.googleapis.com/fcm/send/derived-admin-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
 
     requestor = users(:alien)
     request = MembershipRequest.create!(
@@ -300,7 +361,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       requestor: requestor,
       introduction: "Please add me"
     )
-    requested = resolve_notification(kind: "membership_requested", subject: request, actor: requestor)
+    requested = route_notification(kind: "membership_requested", subject: request, actor: requestor)
     assert_equal %w[email in_app], channels_for(requested, admin)
 
     reaction = Reaction.create!(
@@ -308,17 +369,29 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       user: @author,
       reaction: "smiley"
     )
-    reacted = resolve_notification(kind: "reaction_created", subject: reaction)
-    assert_equal %w[in_app], channels_for(reacted, discussions(:discussion).author)
+    reaction_recipient = discussions(:discussion).author
+    reaction_recipient.update!(deactivated_at: nil, complaints_count: 0)
+    TopicReader.for(user: reaction_recipient, topic: discussions(:discussion).topic)
+               .set_volume!(email: :normal, push: :normal)
+    reaction_subscription = create_push_subscription(
+      user: reaction_recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/reaction-volume-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    reacted = route_notification(kind: "reaction_created", subject: reaction)
+    assert_equal [ "in_app" ], channels_for(reacted, reaction_recipient)
+    assert_empty channels_for(reacted, reaction_subscription)
 
     received_email = ReceivedEmail.create!(group: groups(:group), headers: {})
-    unknown_sender = resolve_notification(kind: "unknown_sender", subject: received_email)
-    assert_equal %w[in_app], channels_for(unknown_sender, admin)
+    unknown_sender = route_notification(kind: "unknown_sender", subject: received_email)
+    assert_equal [ "in_app" ], channels_for(unknown_sender, admin)
+    assert_empty channels_for(unknown_sender, admin_subscription)
 
     member = users(:member)
     member.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
     groups(:group).membership_for(member).update!(volume_email: :normal)
-    group_mentioned = resolve_notification(
+    group_mentioned = route_notification(
       kind: "group_mentioned",
       subject: discussions(:discussion),
       audience_values: {
@@ -337,14 +410,14 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
     groups(:group).membership_for(recipient).update!(volume_email: :normal, volume_push: :normal)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :quiet, push: :quiet)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/group-mention-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
 
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "group_mentioned",
       subject: discussion,
       audience_values: {
@@ -358,14 +431,14 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ "push" ], channels_for(notification, subscription)
   end
 
-  test "scheduled resolver matrix preserves author and voter delivery rules" do
+  test "scheduled router matrix preserves author and voter delivery rules" do
     TopicReader.for(user: @author, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
     @author.update!(deactivated_at: nil, complaints_count: 0)
 
-    review_due = resolve_notification(kind: "outcome_review_due", subject: @outcome)
+    review_due = route_notification(kind: "outcome_review_due", subject: @outcome)
     assert_equal %w[email in_app], channels_for(review_due, @author)
 
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: @author,
       endpoint: "https://fcm.googleapis.com/fcm/send/scheduled-author-token",
       p256dh_key: "p256dh-key",
@@ -373,7 +446,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     )
     TopicReader.for(user: @author, topic: @poll.topic).set_volume!(email: :normal, push: :normal)
     @poll.update!(notify_on_closing_soon: "author")
-    closing_for_author = resolve_notification(kind: "poll_closing_soon", subject: @poll)
+    closing_for_author = route_notification(kind: "poll_closing_soon", subject: @poll)
     assert_equal %w[email in_app], channels_for(closing_for_author, @author)
     assert_equal [ "push" ], channels_for(closing_for_author, subscription)
 
@@ -383,10 +456,10 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     stance = Stance.latest.find_or_initialize_by(poll: @poll, participant: voter)
     stance.update!(choice: "Yes", cast_at: Time.current)
     @poll.update!(notify_on_closing_soon: "voters")
-    closing_for_voters = resolve_notification(kind: "poll_closing_soon", subject: @poll)
+    closing_for_voters = route_notification(kind: "poll_closing_soon", subject: @poll)
     assert_equal %w[email in_app], channels_for(closing_for_voters, voter)
 
-    expired = resolve_notification(kind: "poll_expired", subject: @poll)
+    expired = route_notification(kind: "poll_expired", subject: @poll)
     assert_equal %w[email in_app], channels_for(expired, @author)
   end
 
@@ -402,13 +475,13 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     }
     recipients = recipient_attributes.transform_values do |attributes|
       volume_email = attributes.delete(:volume_email)
-      user = create_resolver_user(**attributes)
+      user = create_router_user(**attributes)
       groups(:group).add_member!(user)
       TopicReader.for(user: user, topic: discussion.topic).set_volume!(email: volume_email, push: :quiet)
       user
     end
 
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "discussion_edited",
       subject: discussion,
       recipient_user_ids: recipients.values.map(&:id),
@@ -424,26 +497,53 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], channels_for(notification, recipients[:loud])
   end
 
-  test "a mention occurrence owns every channel for a newly mentioned explicit recipient" do
+  test "mentions use the same topic volume source for email and push" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, email_when_mentioned: true, complaints_count: 0)
+    recipient.update!(
+      deactivated_at: nil,
+      email_verified: true,
+      complaints_count: 0
+    )
+    TopicReader.for(user: recipient, topic: discussion.topic)
+               .set_volume!(email: :normal, push: :normal)
+    subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/symmetric-mention-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    notification = route_notification(
+      kind: "user_mentioned",
+      subject: discussion,
+      recipient_user_ids: [ recipient.id ]
+    )
+
+    assert_equal %w[email in_app], channels_for(notification, recipient)
+    assert_equal [ "push" ], channels_for(notification, subscription)
+  end
+
+  test "a mention occurrence owns every channel for a newly mentioned selected recipient" do
+    discussion = discussions(:discussion)
+    recipient = users(:member)
+    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :normal)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/mention-owner-token",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
 
-    direct = resolve_notification(
+    direct = route_notification(
       kind: "discussion_edited",
       subject: discussion,
       recipient_user_ids: [ recipient.id ],
       recipient_message: "Please review",
       audience_values: { "newly_mentioned_user_ids" => [ recipient.id ] }
     )
-    mention = resolve_notification(
+    mention = route_notification(
       kind: "user_mentioned",
       subject: discussion,
       recipient_user_ids: [ recipient.id ]
@@ -455,7 +555,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ "push" ], channels_for(mention, subscription)
   end
 
-  test "user-initiated resolvers exclude their actor from every user channel" do
+  test "user-initiated routers exclude their actor from every user channel" do
     scenarios = {
       "discussion_announced" => discussions(:discussion),
       "discussion_edited" => discussions(:discussion),
@@ -466,7 +566,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     }
 
     scenarios.each do |kind, subject|
-      notification = resolve_notification(
+      notification = route_notification(
         kind: kind,
         subject: subject,
         actor: @author,
@@ -476,9 +576,9 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "outcome resolvers honor an explicitly included actor across channels" do
+  test "outcome routers honor an included actor across channels" do
     TopicReader.for(user: @author, topic: @outcome.topic).set_volume!(email: :normal, push: :normal)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: @author,
       endpoint: "https://fcm.googleapis.com/fcm/send/outcome-actor-token",
       p256dh_key: "p256dh-key",
@@ -486,7 +586,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     )
 
     %w[outcome_announced outcome_created outcome_updated].each do |kind|
-      notification = resolve_notification(
+      notification = route_notification(
         kind: kind,
         subject: @outcome,
         actor: @author,
@@ -497,7 +597,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "chatbot resolver matrix distinguishes implicit subscriptions from explicit selection" do
+  test "chatbot router matrix distinguishes implicit subscriptions from explicit selection" do
     implicit_kinds = %w[
       outcome_review_due poll_announced poll_closing_soon poll_expired poll_reminder
     ]
@@ -525,15 +625,15 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     }
 
     implicit_kinds.each do |kind|
-      notification = resolve_notification(kind: kind, subject: subjects.fetch(kind))
+      notification = route_notification(kind: kind, subject: subjects.fetch(kind))
       assert_equal %w[chatbot], channels_for(notification, @chatbot), kind
     end
 
     explicit_kinds.each do |kind|
-      without_selection = resolve_notification(kind: kind, subject: subjects.fetch(kind))
+      without_selection = route_notification(kind: kind, subject: subjects.fetch(kind))
       assert_empty channels_for(without_selection, @chatbot), kind
 
-      with_selection = resolve_notification(
+      with_selection = route_notification(
         kind: kind,
         subject: subjects.fetch(kind),
         recipient_chatbot_ids: [ @chatbot.id ]
@@ -542,15 +642,15 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "a newly committed notification resolves user and chatbot deliveries in the background" do
+  test "a newly committed notification routes user and chatbot deliveries in the background" do
     notification = nil
-    assert_enqueued_with(job: ResolveNotificationDeliveriesWorker) do
+    assert_enqueued_with(job: RouteNotificationDeliveriesWorker) do
       notification = create_notification
     end
 
     assert_nil notification.deliveries_generated_at
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     deliveries = notification.reload.notification_deliveries
     assert_not_nil notification.deliveries_generated_at
@@ -561,18 +661,18 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal %w[pending pending], deliveries.where.not(channel: "in_app").pluck(:status)
   end
 
-  test "resolver retries preserve one delivery identity" do
+  test "router retries preserve one delivery identity" do
     notification = create_notification
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_no_difference "NotificationDelivery.count" do
-      ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+      RouteNotificationDeliveriesWorker.perform_now(notification.id)
     end
   end
 
   test "an outcome review email renders once and completes delivery" do
     notification = create_notification
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     delivery = notification.notification_deliveries.find_by!(channel: "email")
 
     assert_difference "ActionMailer::Base.deliveries.count", 1 do
@@ -586,7 +686,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
 
   test "an outcome review chatbot renders once and completes delivery" do
     notification = create_notification
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     delivery = notification.notification_deliveries.find_by!(channel: "chatbot")
     webhook_url = @chatbot.server
     WebMock.stub_request(:post, webhook_url).to_return(status: 200)
@@ -610,7 +710,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "the shared creator snapshots an explicit audience for its resolver" do
+  test "the shared creator snapshots selected recipients for its router" do
     notification = NotificationService.create!(
       kind: "outcome_review_due",
       subject: @outcome,
@@ -623,7 +723,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
   end
 
-  test "discussion announcements use the shared creator with an explicit audience" do
+  test "discussion announcements use the shared creator with selected recipients" do
     discussion = discussions(:discussion)
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
@@ -636,7 +736,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       recipient_chatbot_ids: [ @chatbot.id ],
       recipient_message: "Please review this thread"
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal "Please review this thread", notification.recipient_message
     assert_equal %w[chatbot email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
@@ -662,7 +762,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
 
     notification = Notification.find_by!(kind: "discussion_edited", subject: discussion)
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ @chatbot.id ], notification.notification_deliveries
                                              .where(channel: "chatbot")
@@ -684,7 +784,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
     notification = Notification.find_by!(kind: "new_discussion", subject: topic_item)
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
@@ -693,10 +793,10 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     assert_equal %w[chatbot email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "a loud explicit discussion recipient receives the direct path for both channels" do
+  test "a loud selected discussion recipient receives the direct path for both channels" do
     recipient = users(:member)
     recipient.memberships.find_by!(group: groups(:group)).update!(volume_email: :loud, volume_push: :loud)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/loud-discussion-token",
       p256dh_key: "p256dh-key",
@@ -713,7 +813,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     topic_item = TopicItems::NewDiscussion.find(discussion.created_topic_item.id)
     notification = Notification.find_by!(kind: "new_discussion", subject: topic_item)
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal %w[email in_app], channels_for(notification, recipient)
     assert_equal [ "push" ], channels_for(notification, subscription)
@@ -730,7 +830,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     discussion = discussions(:discussion)
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :loud, push: :loud)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/loud-announcement-token",
       p256dh_key: "p256dh-key",
@@ -738,7 +838,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     )
     normalize_other_subscribers(discussion.topic, recipient)
     topic_item = discussion.created_topic_item
-    notification = resolve_notification(
+    notification = route_notification(
       kind: "discussion_announced",
       subject: topic_item,
       recipient_user_ids: [ recipient.id ]
@@ -754,11 +854,11 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "a loud explicit discussion edit recipient receives the direct path for both channels" do
+  test "a loud selected discussion edit recipient receives the direct path for both channels" do
     discussion = discussions(:discussion)
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :loud, push: :loud)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/loud-discussion-edit-token",
       p256dh_key: "p256dh-key",
@@ -775,7 +875,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     )
     notification = Notification.find_by!(kind: "discussion_edited", subject: topic_item)
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal %w[email in_app], channels_for(notification, recipient)
     assert_equal [ "push" ], channels_for(notification, subscription)
@@ -788,7 +888,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
     end
   end
 
-  test "poll closing soon resolves voter channels with recipient-localized values" do
+  test "poll closing soon routes voter channels with recipient-localized values" do
     normal_user = users(:member)
     @poll.update!(notify_on_closing_soon: "voters")
     TopicReader.for(user: @author, topic: @poll.topic).set_volume!(email: :quiet, push: :quiet)
@@ -805,7 +905,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       subject: @poll,
       actor: @poll.author
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     deliveries = notification.notification_deliveries
     in_app_recipient_ids = deliveries.where(channel: "in_app").pluck(:recipient_id)
@@ -870,7 +970,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       subject: @poll,
       actor: @poll.author
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     deliveries = notification.notification_deliveries
     assert_equal [ @author.id ], deliveries.where(channel: "in_app").pluck(:recipient_id)
@@ -923,8 +1023,8 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
 
   private
 
-  def resolve_notification(kind:, subject:, actor: @author, recipient_user_ids: [],
-                           recipient_chatbot_ids: [], recipient_message: nil, audience_values: {})
+  def route_notification(kind:, subject:, actor: @author, recipient_user_ids: [],
+                         recipient_chatbot_ids: [], recipient_message: nil, audience_values: {})
     notification = Notification.create!(
       kind: kind,
       subject: subject,
@@ -934,7 +1034,7 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
       recipient_message: recipient_message,
       audience_values: audience_values
     )
-    NotificationDeliveryResolver.for(notification).resolve!
+    NotificationDeliveryRouter.for(notification).route!
     notification
   end
 
@@ -945,11 +1045,11 @@ class NotificationDeliveryResolverTest < ActiveSupport::TestCase
                 .pluck(:channel)
   end
 
-  def create_resolver_user(complaints_count: 0, deactivated_at: nil)
+  def create_router_user(complaints_count: 0, deactivated_at: nil)
     token = SecureRandom.hex(5)
     User.create!(
-      name: "Resolver #{token}",
-      email: "resolver-#{token}@example.test",
+      name: "Router #{token}",
+      email: "router-#{token}@example.test",
       email_verified: true,
       complaints_count: complaints_count,
       deactivated_at: deactivated_at

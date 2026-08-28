@@ -122,7 +122,7 @@ class EventTest < ActiveSupport::TestCase
   test "new comments push to loud push subscribers without creating notifications" do
     reader = TopicReader.for(user: @user_thread_loud, topic: @discussion.topic)
     reader.set_volume!(email: :quiet, push: :loud)
-    subscription = PushSubscription.create!(
+    subscription = create_push_subscription(
       user: @user_thread_loud,
       endpoint: "https://fcm.googleapis.com/fcm/send/topic-item-token",
       p256dh_key: "p256dh-key",
@@ -145,6 +145,27 @@ class EventTest < ActiveSupport::TestCase
 
     assert_equal [subscription], deliveries.map { |delivery| delivery[:subscription] }
     assert_equal topic_item.notification_url, deliveries.first.dig(:payload, :data, :url)
+  end
+
+  test "subscriber push delivery stops when its session has been revoked" do
+    reader = TopicReader.for(user: @user_thread_loud, topic: @discussion.topic)
+    reader.set_volume!(email: :quiet, push: :loud)
+    subscription = create_push_subscription(
+      user: @user_thread_loud,
+      endpoint: "https://fcm.googleapis.com/fcm/send/revoked-topic-item-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
+    comment = Comment.new(body: "do not push this activity", parent: @discussion)
+    topic_item = CommentService.create(comment: comment, actor: @admin)
+    clear_enqueued_jobs
+    subscription.session.destroy!
+    refute PushSubscription.exists?(subscription.id)
+
+    WebPushService.stub(:deliver!, ->(**) { flunk "push should not be sent" }) do
+      DeliverSubscriberPushTopicItemWorker.perform_now(subscription.id, topic_item.id)
+    end
   end
 
   test "live updates are skipped when itemable has been deleted" do

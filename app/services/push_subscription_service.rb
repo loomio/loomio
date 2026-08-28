@@ -1,7 +1,8 @@
 class PushSubscriptionService
   ACTIVE_COUNT_MAX = 20
 
-  def self.create_or_update!(user:, params:, user_agent:)
+  def self.create_or_update!(session:, params:, user_agent:)
+    user = session.user
     digest = Digest::SHA256.hexdigest(params.fetch(:endpoint))
     subscription = nil
     attempts = 0
@@ -14,7 +15,8 @@ class PushSubscriptionService
           subscription.revoke!
           subscription = nil
         end
-        subscription ||= user.push_subscriptions.build(endpoint_digest: digest)
+        subscription ||= session.push_subscriptions.build(endpoint_digest: digest)
+        subscription.session = session
 
         if subscription.new_record? && user.push_subscriptions.active.count >= ACTIVE_COUNT_MAX
           user.push_subscriptions.active.order(last_seen_at: :asc, id: :asc).first.revoke!
@@ -41,8 +43,8 @@ class PushSubscriptionService
     subscription
   end
 
-  def self.revoke!(user:, endpoint: nil, id: nil)
-    scope = user.push_subscriptions.active
+  def self.revoke!(session:, endpoint: nil, id: nil)
+    scope = session.user.push_subscriptions.active
     subscription = if endpoint.present?
       scope.find_by(endpoint_digest: Digest::SHA256.hexdigest(endpoint))
     else

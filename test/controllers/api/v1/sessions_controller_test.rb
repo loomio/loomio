@@ -183,10 +183,19 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
     assert_response :success
 
-    assert_difference 'Session.count', -1 do
+    subscription = create_push_subscription(
+      user: user,
+      session: Current.session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/logout-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    assert_difference [ "Session.count", "PushSubscription.count" ], -1 do
       delete :destroy
     end
     assert_response :success
+    refute PushSubscription.exists?(subscription.id)
   end
 
   test "does not sign in a blank password" do

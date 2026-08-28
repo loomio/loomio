@@ -56,7 +56,7 @@ class TopicItem < ApplicationRecord
   end
 
   # A direct notification owns external delivery for its selected users, so
-  # topic subscriber publication excludes the snapshotted direct audience.
+  # topic subscriber publication excludes those snapshotted recipients.
   def notification_recipient_user_ids
     notifications.flat_map(&:recipient_user_ids)
                  .compact

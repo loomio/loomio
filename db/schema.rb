@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_28_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_29_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -840,10 +840,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_28_000000) do
     t.string "name"
     t.string "p256dh_key", null: false
     t.datetime "revoked_at"
+    t.bigint "session_id", null: false
     t.datetime "updated_at", null: false
     t.string "user_agent"
     t.bigint "user_id", null: false
     t.index ["endpoint_digest"], name: "index_active_push_subscriptions_on_endpoint_digest", unique: true, where: "(revoked_at IS NULL)"
+    t.index ["session_id"], name: "index_push_subscriptions_on_session_id"
     t.index ["user_id", "revoked_at"], name: "index_push_subscriptions_on_user_id_and_revoked_at"
     t.index ["user_id"], name: "index_push_subscriptions_on_user_id"
     t.check_constraint "failure_count >= 0", name: "push_subscriptions_failure_count"
@@ -1305,8 +1307,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_28_000000) do
     t.boolean "email_newsletter", default: false, null: false
     t.string "email_sha256"
     t.boolean "email_verified", default: false, null: false
-    t.boolean "email_when_mentioned", default: true, null: false
-    t.boolean "email_when_proposal_closing_soon", default: false, null: false
     t.jsonb "experiences", default: {}, null: false
     t.integer "facebook_community_id"
     t.integer "failed_attempts", default: 0, null: false
@@ -1393,6 +1393,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_28_000000) do
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
+  add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

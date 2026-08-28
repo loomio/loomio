@@ -61,7 +61,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
       kind: "reaction_created",
       subject: reactor_reaction
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_empty notification.notification_deliveries
   end

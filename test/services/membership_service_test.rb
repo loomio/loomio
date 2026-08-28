@@ -77,7 +77,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
       kind: "user_added_to_group",
       subject: membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @user.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
@@ -87,6 +87,29 @@ class MembershipServiceTest < ActiveSupport::TestCase
       DeliverNotificationEmailWorker.perform_now(delivery.id)
     end
     assert_includes ActionMailer::Base.deliveries.last.to, @user.email
+  end
+
+  test "adding a user respects membership volume for external channels" do
+    MembershipService.add_users_to_group(
+      users: [ @user ],
+      group: @group,
+      inviter: @admin
+    )
+
+    membership = Membership.find_by!(group: @group, user: @user)
+    membership.update!(volume_email: :quiet, volume_push: :quiet)
+    subscription = create_push_subscription(
+      user: @user,
+      endpoint: "https://fcm.googleapis.com/fcm/send/quiet-membership-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    notification = Notification.find_by!(kind: "user_added_to_group", subject: membership)
+
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries.where(recipient: subscription)
   end
 
   test "adding a user rolls back when notification creation fails" do
@@ -106,6 +129,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
   test "resending an invitation creates an eventless email delivery" do
     recipient = create_unverified_user("resend")
     membership = pending_membership_for(recipient, @group)
+    membership.update!(volume_email: :quiet)
 
     assert_no_difference -> { TopicItem.where(kind: "membership_resent").count } do
       MembershipService.resend(membership: membership, actor: @admin)
@@ -115,7 +139,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
       kind: "membership_resent",
       subject: membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ "email" ], notification.notification_deliveries.pluck(:channel)
     delivery = notification.notification_deliveries.first
@@ -123,6 +147,18 @@ class MembershipServiceTest < ActiveSupport::TestCase
       DeliverNotificationEmailWorker.perform_now(delivery.id)
     end
     assert_includes ActionMailer::Base.deliveries.last.to, recipient.email
+  end
+
+  test "resending an invitation still honors email complaints" do
+    recipient = create_unverified_user("complained-resend")
+    recipient.update!(complaints_count: 1)
+    membership = pending_membership_for(recipient, @group)
+
+    MembershipService.resend(membership: membership, actor: @admin)
+    notification = Notification.find_by!(kind: "membership_resent", subject: membership)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_empty notification.notification_deliveries
   end
 
   test "redeem rolls back acceptance when notification creation fails" do
@@ -254,7 +290,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
       kind: "invitation_accepted",
       subject: accepted_membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ @admin.id ], notification.notification_deliveries.pluck(:recipient_id)
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)

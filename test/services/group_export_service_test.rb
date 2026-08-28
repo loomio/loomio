@@ -175,7 +175,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       actor: admin,
       recipient_user_ids: [ subscriber.id ]
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal [ subscriber.id ], notification.notification_deliveries
                                                 .where(channel: "email", recipient_type: "User")
                                                 .pluck(:recipient_id)

@@ -2,7 +2,7 @@ require "test_helper"
 
 class WebPushServiceTest < ActiveSupport::TestCase
   setup do
-    @subscription = PushSubscription.create!(
+    @subscription = create_push_subscription(
       user: users(:user),
       endpoint: "https://fcm.googleapis.com/fcm/send/service-token",
       p256dh_key: "p256dh-key",

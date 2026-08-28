@@ -89,12 +89,12 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
       delivered_at: Time.current
     )
 
-    assert_includes Notification.pending_delivery_resolution, notification
+    assert_includes Notification.pending_delivery_routing, notification
     assert_predicate viewed_delivery, :viewed?
     assert_not_predicate unviewed_delivery, :viewed?
 
     notification.update!(deliveries_generated_at: Time.current)
-    assert_not_includes Notification.pending_delivery_resolution, notification
+    assert_not_includes Notification.pending_delivery_routing, notification
   end
 
   test "a notification must be self-contained" do

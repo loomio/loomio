@@ -18,10 +18,9 @@ class PermittedParams < Struct.new(:params)
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
-     :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned,
+     :autodetect_time_zone, :time_zone, :selected_locale,
      :volume_email_default, :volume_push_default,
-     :email_catch_up_day,
-     :email_when_proposal_closing_soon, :email_newsletter,
+     :email_catch_up_day, :email_newsletter,
      :date_time_pref, :bot, :auto_translate,
      :legal_accepted,
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}

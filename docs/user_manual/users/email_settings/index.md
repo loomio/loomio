@@ -54,14 +54,7 @@ If the sidebar is closed, click on the menu icon (**☰**) to open it.
 
 ![](sidebar_notification_settings.png)
 
-The page contains settings for push notification devices, notification emails, the Catch-up summary, and email and push delivery for each group.
-
-![email settings](email_settings.png)
-
-### Mentions & Replies
-
-Enabling this setting means when someone wants to get your attention, they can @mention your name in a comment, which will notify you. We recommend you leave this setting on, so you'll get an email when this happens. The default setting is 'on'.
-
+The page contains settings for push notification devices, the Catch-up summary, and email and push delivery for each group.
 
 ### Catch-up summary email
 

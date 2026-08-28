@@ -332,7 +332,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       actor: @admin,
       recipient_user_ids: [ member.id ]
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     get :history, params: { poll_id: poll.id }
 
@@ -352,7 +352,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       actor: @admin,
       recipient_user_ids: [ member.id ]
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     notification.notification_deliveries.find_by!(channel: "in_app", recipient: member)
                 .update!(viewed_at: Time.current)
 

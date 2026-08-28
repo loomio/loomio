@@ -73,7 +73,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal 1, Notification.where(kind: "outcome_created", subject: topic_item).count
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
@@ -95,7 +95,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.recipient_user_ids
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
@@ -116,7 +116,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     notification = Notification.find_by!(kind: "outcome_updated", subject: @outcome)
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: @outcome)
   end

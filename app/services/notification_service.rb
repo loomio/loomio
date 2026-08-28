@@ -1,7 +1,7 @@
 class NotificationService
-  # Commit one logical occurrence, then resolve all channel deliveries in the
-  # background. Explicit audiences are snapshotted on the notification while
-  # implied audiences are derived by the same kind-specific resolver.
+  # Commit one logical occurrence, then route its channel deliveries in the
+  # background. Selected recipients and expansion metadata are snapshotted on
+  # the notification; each kind-specific router applies its recipient rules.
   def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
                    recipient_message: nil, audience_values: {})
@@ -10,9 +10,9 @@ class NotificationService
 
     subject_model = subject.is_a?(TopicItem) ? subject.itemable : subject
 
-    resolver_class = NotificationDeliveryResolver.class_for(kind)
-    resolver_class.validate_subject!(subject_model)
-    translation_values = resolver_class.translation_values(subject_model, actor)
+    router_class = NotificationDeliveryRouter.class_for(kind)
+    router_class.validate_subject!(subject_model)
+    translation_values = router_class.translation_values(subject_model, actor)
 
     notification = Notification.create!(
       actor: actor,
@@ -25,7 +25,7 @@ class NotificationService
       audience_values: audience_values
     )
 
-    ResolveNotificationDeliveriesWorker.perform_later(notification.id)
+    RouteNotificationDeliveriesWorker.perform_later(notification.id)
     notification
   end
 

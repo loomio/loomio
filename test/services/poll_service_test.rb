@@ -298,7 +298,7 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal "Please review the poll changes", notification.recipient_message
     assert_equal 1, Notification.where(kind: "poll_edited", subject: topic_item).count
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
@@ -320,7 +320,7 @@ class PollServiceTest < ActiveSupport::TestCase
     notification = Notification.about(poll).find_by!(kind: "poll_edited")
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(poll).exists?(kind: "user_mentioned")
   end

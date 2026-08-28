@@ -147,13 +147,6 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
-  scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
-
-  scope :email_proposal_closing_soon_for, -> (group) {
-     email_when_proposal_closing_soon
-    .joins(:memberships)
-    .where('memberships.group_id': group.id)
-  }
 
   def default_format
     if experiences['html-editor.uses-markdown']

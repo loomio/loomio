@@ -1,6 +1,6 @@
 class PushDeliveryPolicy
   def self.allowed?(user:, subject:)
-    return false unless user&.is_logged_in? && user.deactivated_at.nil?
+    return false unless user&.active_for_authentication?
 
     model = if subject.is_a?(TopicItem)
       subject.topic

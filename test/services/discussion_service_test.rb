@@ -121,7 +121,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     notification = Notification.find_by!(kind: "new_discussion", subject: discussion.created_topic_item)
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: discussion.created_topic_item)
   end
@@ -227,7 +227,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal "Please review the changes", notification.recipient_message
     assert_equal 1, Notification.where(kind: "discussion_edited", subject: topic_item).count
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
@@ -249,7 +249,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     notification = Notification.about(discussion).find_by!(kind: "discussion_edited")
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
   end

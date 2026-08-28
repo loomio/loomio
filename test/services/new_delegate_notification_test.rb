@@ -20,7 +20,7 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
       kind: "new_delegate",
       subject: @membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert @membership.reload.delegate?
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
@@ -40,7 +40,7 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
       subject: @membership
     )
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
   end

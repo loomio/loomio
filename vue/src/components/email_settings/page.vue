@@ -126,12 +126,7 @@ v-main
 
     v-card.mb-4(v-if="!user.deactivatedAt")
       v-card-text
-        v-checkbox#mentioned-email.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-          template(v-slot:label)
-            div
-              span(v-t="'email_settings_page.mentioned_label'")
-              br
-              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.mentioned_description'")
+
         .text-body-large
           span(v-t="'email_settings_page.email_catch_up_day'")
         p.text-medium-emphasis.pb-4(v-t="'email_settings_page.daily_summary_description'")

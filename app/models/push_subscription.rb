@@ -6,7 +6,9 @@ class PushSubscription < ApplicationRecord
   ].freeze
 
   belongs_to :user
+  belongs_to :session
 
+  before_validation :set_user_from_session
   before_validation :set_endpoint_digest
 
   validates :endpoint, :endpoint_digest, :p256dh_key, :auth_key, presence: true
@@ -31,6 +33,11 @@ class PushSubscription < ApplicationRecord
   end
 
   private
+
+  # user_id is denormalized for recipient lookups; session remains the ownership source.
+  def set_user_from_session
+    self.user = session.user if session
+  end
 
   def set_endpoint_digest
     self.endpoint_digest = Digest::SHA256.hexdigest(endpoint.to_s) if endpoint.present?
