@@ -75,6 +75,78 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_empty undecided_result[:voter_ids]
   end
 
+  test "expanded invitations return and notify only newly added anonymous voters" do
+    poll = PollService.create(
+      params: {
+        title: "Incremental anonymous electorate",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: [ "Agree", "Disagree" ]
+      },
+      actor: @admin
+    )
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [ @voter.id ] }
+    )
+    expected_voter_ids = @group.members.humans.where.not(id: [ @admin.id, @voter.id ]).pluck(:id)
+    assert_not_empty expected_voter_ids
+
+    voters = PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_audience: "group", notify_recipients: true }
+    )
+
+    assert_equal expected_voter_ids.sort, voters.pluck(:voter_id).sort
+    assert_equal [ @voter.id, *expected_voter_ids ].sort, poll.anonymous_poll_voters.pluck(:voter_id).sort
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: @voter.id).count
+
+    notification = Notification.about(poll).where(kind: "poll_announced").order(:id).last!
+    assert_equal expected_voter_ids.sort, notification.recipient_user_ids.sort
+
+    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal expected_voter_ids.sort,
+                 notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id).sort
+    assert_empty poll.stances
+    assert_empty poll.anonymous_ballots
+  end
+
+  test "inviting only existing anonymous voters creates no announcement" do
+    poll = PollService.create(
+      params: {
+        title: "Existing anonymous electorate",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        group_id: @group.id,
+        anonymous: true,
+        specified_voters_only: true,
+        poll_option_names: [ "Agree", "Disagree" ]
+      },
+      actor: @admin
+    )
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [ @voter.id ] }
+    )
+
+    assert_no_difference -> { Notification.about(poll).where(kind: "poll_announced").count } do
+      voters = PollService.invite(
+        poll: poll,
+        actor: @admin,
+        params: { recipient_user_ids: [ @voter.id ], notify_recipients: true }
+      )
+      assert_empty voters
+    end
+
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: @voter.id).count
+  end
+
   test "notified specified-voter invitation rolls back when notification creation fails" do
     poll = PollService.create(
       params: {
