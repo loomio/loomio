@@ -12,10 +12,8 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   # The only user fields update_profile may change for a restricted user.
   RESTRICTED_USER_UPDATABLE_FIELDS = %i[
     email_when_mentioned email_when_proposal_closing_soon
-    email_new_discussions_and_proposals
     email_newsletter email_catch_up_day volume_email_default volume_push_default
     selected_locale autodetect_time_zone time_zone date_time_pref
-    email_new_discussions_and_proposals_group_ids
   ].freeze
 
   before_action :require_current_user, except: [:email_status]
