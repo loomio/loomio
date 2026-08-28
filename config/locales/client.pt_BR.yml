@@ -1672,8 +1672,6 @@ pt_BR:
     email_newsletter: Boletim de Notícias Loomio
     email_newsletter_description: Receba atualizações sobre novas funcionalidades, treinamento, eventos em sua cidade e o futuro do Loomio. Geralmente 2 a 3 emails por ano.
     email_catch_up_day: E-mail de resumo de atualização
-    on_participation_label: Assinar ao se participar
-    on_participation_description: Quando você participar de uma conversa, todas as atividades serão enviadas por e-mail para você imediatamente.
     announcement_label: Anúncios
     announcement_description: Você receberá um email sobre todo o conteúdo que foi anunciado pelas pessoas no seus grupos
     mentioned_label: Menções & Respostas

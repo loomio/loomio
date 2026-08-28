@@ -1659,8 +1659,6 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
-    on_participation_label: 'Suscribirte a la participación '
-    on_participation_description: 'Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. '
     announcement_label: Anuncios
     announcement_description: Recibirás notificaciones por correo electrónico sobre todos los contenidos anunciados por personas en tus grupos.
     mentioned_label: 'Menciones y Respuestas '

@@ -1636,8 +1636,6 @@ da:
     email_newsletter: Loomio nyhedsbrev
     email_newsletter_description: Få opdateringer om nye funktioner, træning, begivenheder i din by og fremtiden for Loomio. Normalt 2 eller 3 e-mails om året.
     email_catch_up_day: Opsummerende e-mail
-    on_participation_label: Abonnér ved deltagelse
-    on_participation_description: Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme.
     announcement_label: Normal
     announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
     mentioned_label: Omtaler og svar

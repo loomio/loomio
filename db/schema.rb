@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_28_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1303,7 +1303,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.boolean "email_catch_up", default: true, null: false
     t.integer "email_catch_up_day"
     t.boolean "email_newsletter", default: false, null: false
-    t.boolean "email_on_participation", default: false, null: false
     t.string "email_sha256"
     t.boolean "email_verified", default: false, null: false
     t.boolean "email_when_mentioned", default: true, null: false

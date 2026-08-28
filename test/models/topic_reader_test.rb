@@ -11,6 +11,19 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
   end
 
+  test "guest and admin readers use user delivery defaults" do
+    guest = User.create!(name: "Guest defaults", email: "guest-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :quiet, volume_push_default: :loud)
+    admin = User.create!(name: "Admin defaults", email: "admin-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :loud, volume_push_default: :quiet)
+
+    guest_reader = @discussion.topic.add_guest!(guest, @admin)
+    admin_reader = @discussion.topic.add_admin!(admin, @admin)
+
+    assert_predicate guest_reader, :email_quiet?
+    assert_predicate guest_reader, :push_loud?
+    assert_predicate admin_reader, :email_loud?
+    assert_predicate admin_reader, :push_quiet?
+  end
+
   # Computed volume
   test "can change its volume" do
     @reader.set_volume!(email: :loud, push: :normal)

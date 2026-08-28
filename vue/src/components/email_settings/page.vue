@@ -132,12 +132,6 @@ v-main
               span(v-t="'email_settings_page.mentioned_label'")
               br
               span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.mentioned_description'")
-        v-checkbox#on-participation-email.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-          template(v-slot:label)
-            div
-              span(v-t="'email_settings_page.on_participation_label'")
-              br
-              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.on_participation_description'")
         .text-body-large
           span(v-t="'email_settings_page.email_catch_up_day'")
         p.text-medium-emphasis.pb-4(v-t="'email_settings_page.daily_summary_description'")

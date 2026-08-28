@@ -1636,8 +1636,6 @@ hr:
     email_newsletter: Loomio bilten
     email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
     email_catch_up_day: Sažetak e-pošte za nadoknadu
-    on_participation_label: Pretplatite se na sudjelovanje
-    on_participation_description: Kada sudjelujete u niti, sve daljnje aktivnosti bit će vam odmah poslane e-poštom.
     announcement_label: Obavijesti
     announcement_description: Primit ćete e-poruku o svim sadržajima koje su najavili ljudi u vašim grupama
     mentioned_label: Spominjanja i odgovori

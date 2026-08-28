@@ -1636,8 +1636,6 @@ ro:
     email_newsletter: Buletinul informativ Loomio
     email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
     email_catch_up_day: E-mail cu rezumat de recuperare
-    on_participation_label: Abonați-vă la participare
-    on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
     announcement_label: Anunturi
     announcement_description: Veți primi un e-mail despre tot conținutul care a fost anunțat de persoanele din grupurile dvs
     mentioned_label: Mențiuni și răspunsuri

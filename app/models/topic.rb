@@ -170,7 +170,13 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(guest: true, inviter: inviter)
     else
-      topic_readers.create!(user: user, inviter: inviter, guest: true, volume_email: :normal, volume_push: :normal)
+      topic_readers.create!(
+        user: user,
+        inviter: inviter,
+        guest: true,
+        volume_email: user.volume_email_default,
+        volume_push: user.volume_push_default
+      )
     end
   end
 
@@ -178,7 +184,13 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(inviter: inviter, admin: true)
     else
-      topic_readers.create!(user: user, inviter: inviter, admin: true, volume_email: :normal, volume_push: :normal)
+      topic_readers.create!(
+        user: user,
+        inviter: inviter,
+        admin: true,
+        volume_email: user.volume_email_default,
+        volume_push: user.volume_push_default
+      )
     end
   end
 

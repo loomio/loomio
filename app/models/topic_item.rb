@@ -38,8 +38,7 @@ class TopicItem < ApplicationRecord
     return unless reader&.is_logged_in?
     return unless sequence_id
 
-    TopicReader.for(topic: topic, user: reader)
-               .update_reader(ranges: sequence_id, volume_email: :loud)
+    TopicReader.for(topic: topic, user: reader).viewed!(sequence_id)
   end
   private :mark_actor_as_read!
 

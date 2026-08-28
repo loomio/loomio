@@ -35,19 +35,6 @@ class TopicReader < ApplicationRecord
     end
   end
 
-  def update_reader(ranges: nil, volume_email: nil, volume_push: nil, participate: false, dismiss: false)
-    viewed!(ranges, persist: false)     if ranges
-    if (volume_email || volume_push) && (volume_email.nil? || volume_email.to_sym != :loud || user.email_on_participation?)
-      set_volume!(
-        email: volume_email || self.volume_email || computed_volume_email,
-        push: volume_push || self.volume_push || computed_volume_push,
-        persist: false
-      )
-    end
-    dismiss!(persist: false)            if dismiss
-    save!                               if changed?
-    self
-  end
 
   def viewed!(ranges = [], persist: true)
     mark_as_read(ranges) unless has_read?(ranges)

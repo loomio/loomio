@@ -1671,8 +1671,6 @@ fr:
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans ta ville et du futur de Loomio. 2 à 3 e-mails par an.
     email_catch_up_day: e-mail de synthèse de rattrapage
-    on_participation_label: Notification sur les discussions auxquelles je participe
-    on_participation_description: Lorsque tu participes à une discussion, toute activité ultérieure te sera immédiatement envoyée par courriel.
     announcement_label: Nouvelles discussions et décisions
     announcement_description: Tu recevras un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de tes groupes.
     mentioned_label: Mentions et réponses

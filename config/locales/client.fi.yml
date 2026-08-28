@@ -1636,8 +1636,6 @@ fi:
     email_newsletter: Loomio-uutiskirje
     email_newsletter_description: Saat päivityksiä uusista ominaisuuksista, koulutuksesta, kaupungissasi tapahtuvista tapahtumista ja Loomion tulevaisuudesta. Yleensä 2-3 sähköpostia vuodessa.
     email_catch_up_day: Yhteenveto sähköpostilla
-    on_participation_label: Ilmoittaudu osallistumiseen
-    on_participation_description: Kun osallistut ketjuun, kaikki muut tapahtumat lähetetään sinulle välittömästi sähköpostitse.
     announcement_label: Ilmoitukset
     announcement_description: Saat sähköpostin kaikesta sisällöstä, josta ryhmäsi ihmiset ovat ilmoittaneet
     mentioned_label: Maininnat & vastaukset

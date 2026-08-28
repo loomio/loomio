@@ -1658,8 +1658,6 @@ de:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Neuigkeiten zu neuen Funktionen, Schulungsangeboten und Veranstaltungen in deiner Stadt und zur zukünftigen Entwicklung von Loomio erhalten (ca. 2-3 E-Mails pro Jahr).
     email_catch_up_day: Zusammenfassung der Nachhol-E-Mail
-    on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
-    on_participation_description: Wenn du an einem Thread teilnimmst, werden dir alle weiteren Aktivitäten sofort per E-Mail zugesendet.
     announcement_label: Nur Ankündigungen
     announcement_description: Du erhälst eine E-Mail über alle Inhalte, die von Personen in deinen Gruppen angekündigt wurden
     mentioned_label: Erwähnungen und Antworten

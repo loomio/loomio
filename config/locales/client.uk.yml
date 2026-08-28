@@ -1653,8 +1653,6 @@ uk:
     email_newsletter: Розсилка Loomio
     email_newsletter_description: Отримуйте повідомлення про нові функції, навчання, події у вашому місті та щодо майбутнього Loomio. Зазвичай це 2 або 3 листи на рік.
     email_catch_up_day: Підсумковий електронний лист
-    on_participation_label: Підписатися на участь
-    on_participation_description: Коли ви берете участь в темі, вся подальші оновлення будуть одразу надсилатись вам електронною поштою.
     announcement_label: Оголошення
     announcement_description: Ви отримаєте лист про весь вміст, який було оголошено у ваших групах
     mentioned_label: Згадки та відповіді

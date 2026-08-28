@@ -1,7 +1,7 @@
 class Restricted::UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :restricted, :username, :email, :email_when_proposal_closing_soon, :email_catch_up_day, :email_newsletter,
-             :email_when_mentioned, :email_on_participation, :volume_email_default,
+             :email_when_mentioned, :volume_email_default,
              :volume_push_default, :locale, :deactivated_at
   has_many :memberships, serializer: Restricted::MembershipSerializer, root: :memberships
 

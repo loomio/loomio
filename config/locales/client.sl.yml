@@ -1636,8 +1636,6 @@ sl:
     email_newsletter: Glasilo Loomio
     email_newsletter_description: Prejemajte posodobitve o novih funkcijah, usposabljanju, dogodkih v vašem mestu in prihodnosti Loomio. Običajno 2 ali 3 e-poštna sporočila na leto.
     email_catch_up_day: E-poštno sporočilo s povzetkom
-    on_participation_label: Prijavite se na sodelovanje
-    on_participation_description: Ko sodelujete v niti, vam bodo vse nadaljnje dejavnosti takoj poslane po e-pošti.
     announcement_label: Obvestila
     announcement_description: Prejeli boste e-poštno sporočilo o vsej vsebini, ki so jo objavili ljudje v vaših skupinah
     mentioned_label: Omembe in odgovori

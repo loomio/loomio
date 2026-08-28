@@ -1650,8 +1650,6 @@ ca:
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
     email_catch_up_day: Correu electrònic de resum de posada al dia
-    on_participation_label: Subscriure sota participació
-    on_participation_description: Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat.
     announcement_label: Avisos
     announcement_description: Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups
     mentioned_label: Mencions i respostes

@@ -41,7 +41,6 @@ Emails we send out include:
 
 - Invitations to discussions and notification of polls or proposals. If someone wants to notify the group about a new decision or discussion, they can select everyone or just some people in the group to notify. Also be aware of **poll closing soon** and **outcome** notifications.
 
-- Discussion updates. If **subscribe on participation** is checked, then after you comment or vote within a discussion, you'll be emailed any further activity.
 
 When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
 
@@ -63,9 +62,6 @@ The page contains settings for push notification devices, notification emails, t
 
 Enabling this setting means when someone wants to get your attention, they can @mention your name in a comment, which will notify you. We recommend you leave this setting on, so you'll get an email when this happens. The default setting is 'on'.
 
-### Subscribe on participation
-
-Enabling this setting means when you participate in a thread, all further activity will be emailed to you immediately.  If it is an active thread, you may receive many emails. The default setting is off.
 
 ### Catch-up summary email
 

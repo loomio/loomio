@@ -1653,8 +1653,6 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
-    on_participation_label: 參與時訂閱
-    on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
     announcement_label: 公告
     announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆

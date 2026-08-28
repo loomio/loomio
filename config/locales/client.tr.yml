@@ -1636,8 +1636,6 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
-    on_participation_label: Katılıma abone olun
-    on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
     announcement_label: Duyurular
     announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
     mentioned_label: Bahsetmeler ve Yanıtlar

@@ -1635,8 +1635,6 @@ ja:
     email_newsletter: Loomio ニュースレター
     email_newsletter_description: 新機能、トレーニング、あなたの街のイベント、Loomio の将来に関する最新情報を入手します。メールは年に2～3通程度です。
     email_catch_up_day: 近況概要メール
-    on_participation_label: 参加時に購読する
-    on_participation_description: スレッドに参加すると、その後のすべてのアクティビティがすぐに電子メールで送信されます。
     announcement_label: お知らせ
     announcement_description: グループ内のメンバーによって発表されたすべてのコンテンツに関する電子メールが届きます
     mentioned_label: メンションと返信

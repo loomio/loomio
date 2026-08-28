@@ -1636,8 +1636,6 @@ el:
     email_newsletter: Ενημερωτικό δελτίο Loomio
     email_newsletter_description: Λάβετε ενημερώσεις σχετικά με νέες δυνατότητες, εκπαίδευση, εκδηλώσεις στην πόλη σας και το μέλλον του Loomio. Συνήθως 2 ή 3 email το χρόνο.
     email_catch_up_day: Ενημερωτικό email σύνοψης
-    on_participation_label: Εγγραφείτε για συμμετοχή
-    on_participation_description: Όταν συμμετέχετε σε ένα νήμα, όλη η περαιτέρω δραστηριότητα θα σας αποσταλεί αμέσως μέσω email.
     announcement_label: Ανακοινώσεις
     announcement_description: Θα λάβετε ένα email για όλο το περιεχόμενο που έχει ανακοινωθεί από άτομα στις ομάδες σας
     mentioned_label: Αναφορές & Απαντήσεις

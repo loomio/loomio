@@ -1640,8 +1640,6 @@ hu:
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
-    on_participation_label: Feliratkozás a részvételre
-    on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat

@@ -79,6 +79,17 @@ class EventTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "creating an item marks it read for the actor without changing delivery volume" do
+    reader = TopicReader.for(user: @admin, topic: @discussion.topic)
+    reader.set_volume!(email: :normal, push: :normal)
+
+    item = CommentService.create(comment: Comment.new(body: "hello", parent: @discussion), actor: @admin)
+
+    assert reader.reload.has_read?(item.sequence_id)
+    assert_predicate reader, :email_normal?
+    assert_predicate reader, :push_normal?
+  end
+
   test "new_comment sends emails to loud subscribers" do
     comment = Comment.new(body: "hello", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
