@@ -66,6 +66,8 @@ export default
       });
 
       this.refresh();
+    }).catch(() => {
+      // GroupPage owns route-level group fetch error handling.
     });
   },
 

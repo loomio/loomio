@@ -58,6 +58,30 @@ module.exports = {
     page.expectText('.error-page__forbidden', 'You may be signed in to the wrong account')
   },
 
+  'cached secret group becomes forbidden when access is revoked': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_secret_group_with_access')
+    page.expectText('.group-page__name', 'Secret Dirty Dancing Shoes')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Secret Dirty Dancing Shoes')
+
+    test.executeAsync((done) => {
+      fetch('/dev/revoke_secret_group_access')
+        .then((response) => done(response.status))
+        .catch(() => done(0))
+    }, [], ({ value }) => test.assert.strictEqual(value, 200))
+
+    page.click('.sidebar__list-item-button--recent')
+    page.waitFor('.dashboard-page')
+    page.ensureSidebar()
+    page.pause(300)
+    page.clickElement('.sidebar__groups a')
+    page.expectElement('.error-page__forbidden.v-alert')
+    page.expectText('.error-page__forbidden', 'You do not have permission to view this')
+    page.expectNoElement('.group-page__name')
+  },
+
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
     page = pageHelper(test)
 

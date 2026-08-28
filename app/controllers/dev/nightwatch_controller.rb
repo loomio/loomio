@@ -25,6 +25,7 @@ class Dev::NightwatchController < Dev::BaseController
     :use_last_login_token,
     :index,
     :accept_last_invitation,
+    :revoke_secret_group_access,
   ]
   before_action :reset_database, except: [
     :last_email,
@@ -32,6 +33,7 @@ class Dev::NightwatchController < Dev::BaseController
     :use_last_login_token,
     :index,
     :accept_last_invitation,
+    :revoke_secret_group_access,
   ]
 
 

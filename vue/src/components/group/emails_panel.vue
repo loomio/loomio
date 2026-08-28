@@ -31,6 +31,8 @@ export default
           this.emails = store.receivedEmails.find({groupId: this.group.id, released: false})
         }
       });
+    }).catch(() => {
+      // GroupPage owns route-level group fetch error handling.
     });
   },
 
