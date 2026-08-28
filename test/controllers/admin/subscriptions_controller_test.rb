@@ -48,11 +48,40 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     assert_equal SubscriptionService::PLANS.keys.map(&:to_s), select_values(document, "subscription_plan")
     assert_equal Subscription::PAYMENT_METHODS, select_values(document, "subscription_payment_method")
     assert_equal Subscription::STATES, select_values(document, "subscription_state")
+    assert_includes response.body, "Save and refresh from Chargify"
 
     put :update, params: { id: @subscription.id, subscription: { plan: "community", max_members: 200 } }
     assert_redirected_to admin_subscription_path(@subscription)
     assert_equal "community", @subscription.reload.plan
     assert_equal 200, @subscription.max_members
+  end
+
+  test "admin can update the Chargify ID and refresh in one action" do
+    sign_in @admin
+    payload = { "subscription" => { "state" => "active" } }
+    fetched_id = nil
+    updated = nil
+
+    service = Object.new
+    service.define_singleton_method(:chargify_get) do |id|
+      fetched_id = id
+      payload
+    end
+    service.define_singleton_method(:update) { |subscription:, params:| updated = [ subscription, params ] }
+
+    @controller.stub(:subscription_service, service) do
+      put :update, params: {
+        id: @subscription.id,
+        subscription: { chargify_subscription_id: 67890 },
+        refresh_from_chargify: "1"
+      }
+    end
+
+    assert_equal 67890, @subscription.reload.chargify_subscription_id
+    assert_equal 67890, fetched_id
+    assert_equal [ @subscription, payload ], updated
+    assert_redirected_to admin_subscription_path(@subscription)
+    assert_equal "Subscription updated and refreshed from Chargify", flash[:notice]
   end
 
   test "subscription update rejects unpermitted attributes" do
@@ -84,13 +113,13 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
 
     service = Object.new
     service.define_singleton_method(:chargify_get) { |_id| payload }
-    service.define_singleton_method(:update) { |subscription:, params:| updated = [subscription, params] }
+    service.define_singleton_method(:update) { |subscription:, params:| updated = [ subscription, params ] }
 
     @controller.stub(:subscription_service, service) do
       post :refresh, params: { id: @subscription.id }
     end
 
-    assert_equal [@subscription, payload], updated
+    assert_equal [ @subscription, payload ], updated
     assert_redirected_to admin_subscription_path(@subscription)
   end
 

@@ -22,6 +22,7 @@ class Views::Admin::Subscriptions::Edit < Views::Admin::Layout
       field(form, :chargify_subscription_id)
       field(form, :owner_id, type: :number_field)
       form.submit("Save subscription", class: "admin-button")
+      form.button("Save and refresh from Chargify", name: "refresh_from_chargify", value: "1", class: "admin-button")
     end
   end
 end
