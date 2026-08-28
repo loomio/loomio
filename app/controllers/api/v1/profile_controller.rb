@@ -13,7 +13,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   RESTRICTED_USER_UPDATABLE_FIELDS = %i[
     email_when_mentioned email_when_proposal_closing_soon
     email_new_discussions_and_proposals email_on_participation
-    email_newsletter email_catch_up_day default_membership_volume_email default_membership_volume_push
+    email_newsletter email_catch_up_day volume_email_default volume_push_default
     selected_locale autodetect_time_zone time_zone date_time_pref
     email_new_discussions_and_proposals_group_ids
   ].freeze

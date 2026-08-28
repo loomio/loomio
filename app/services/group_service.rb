@@ -62,8 +62,8 @@ module GroupService
             inviter: actor,
             user: user,
             group: g,
-            volume_email: user.default_membership_volume_email,
-            volume_push: user.default_membership_volume_push
+            volume_email: user.volume_email_default,
+            volume_push: user.volume_push_default
           )
         end
 

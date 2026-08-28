@@ -94,8 +94,8 @@ class Membership < ApplicationRecord
   def set_volume
     return unless id.nil?
 
-    self.volume_email = user.default_membership_volume_email
-    self.volume_push = user.default_membership_volume_push
+    self.volume_email = user.volume_email_default
+    self.volume_push = user.volume_push_default
   end
 
   def update_org_members_count

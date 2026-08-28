@@ -108,7 +108,7 @@ export default {
     actions() { return filter(pick(UserService.actions(Session.user(), this), ['deactivate_user']), action => action.canPerform()); },
 
     defaultSettingsDescription() {
-      return `email_settings_page.default_settings.${Session.user().defaultMembershipVolumeEmail}_description`;
+      return `email_settings_page.default_settings.${Session.user().volumeEmailDefault}_description`;
     }
   }
 };

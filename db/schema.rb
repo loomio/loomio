@@ -1297,8 +1297,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.string "date_time_pref"
     t.datetime "deactivated_at", precision: nil
     t.integer "deactivator_id"
-    t.integer "default_membership_volume_email", default: 2, null: false
-    t.integer "default_membership_volume_push", default: 2, null: false
     t.string "detected_locale", limit: 255
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false
@@ -1340,14 +1338,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_27_000001) do
     t.integer "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at", precision: nil
     t.string "username", limit: 255
+    t.integer "volume_email_default", default: 2, null: false
+    t.integer "volume_push_default", default: 2, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-    t.check_constraint "default_membership_volume_email = ANY (ARRAY[1, 2, 3])", name: "users_default_membership_volume_email"
-    t.check_constraint "default_membership_volume_push = ANY (ARRAY[1, 2, 3])", name: "users_default_membership_volume_push"
+    t.check_constraint "volume_email_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_email_default"
+    t.check_constraint "volume_push_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_push_default"
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|

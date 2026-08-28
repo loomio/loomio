@@ -60,7 +60,7 @@ function defaultVolumeEmail() {
   switch (model.constructor.singular) {
   case 'topic':      return model.readerVolumeEmail;
   case 'membership': return model.volumeEmail;
-  case 'user':       return model.defaultMembershipVolumeEmail;
+  case 'user':       return model.volumeEmailDefault;
   default:           return 'normal';
   }
 }
@@ -69,8 +69,8 @@ function defaultVolumePush() {
   switch (model.constructor.singular) {
   case 'topic':      return model.readerVolumePush;
   case 'membership': return model.volumePush;
-  case 'user':       return model.defaultMembershipVolumePush;
-  default:           return 'quiet';
+  case 'user':       return model.volumePushDefault;
+  default:           return 'normal';
   }
 }
 

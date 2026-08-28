@@ -27,8 +27,8 @@ class TopicReader < ApplicationRecord
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
         m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
-        tr.volume_email = m&.volume_email || user.default_membership_volume_email
-        tr.volume_push = m&.volume_push || user.default_membership_volume_push
+        tr.volume_email = m&.volume_email || user.volume_email_default
+        tr.volume_push = m&.volume_push || user.volume_push_default
       end
     else
       new(topic: topic)
@@ -78,17 +78,17 @@ class TopicReader < ApplicationRecord
 
   def computed_volume_email
     if persisted?
-      volume_email || membership&.volume_email || user.default_membership_volume_email
+      volume_email || membership&.volume_email || user.volume_email_default
     else
-      membership&.volume_email || user.default_membership_volume_email
+      membership&.volume_email || user.volume_email_default
     end
   end
 
   def computed_volume_push
     if persisted?
-      volume_push || membership&.volume_push || user.default_membership_volume_push
+      volume_push || membership&.volume_push || user.volume_push_default
     else
-      membership&.volume_push || user.default_membership_volume_push
+      membership&.volume_push || user.volume_push_default
     end
   end
 

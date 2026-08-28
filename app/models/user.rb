@@ -117,8 +117,8 @@ class User < ApplicationRecord
   initialized_with_token :api_key
   initialized_with_token :secret_token
 
-  enum :default_membership_volume_email, {quiet: 1, normal: 2, loud: 3}, prefix: :default_email
-  enum :default_membership_volume_push, {quiet: 1, normal: 2, loud: 3}, prefix: :default_push
+  enum :volume_email_default, {quiet: 1, normal: 2, loud: 3}, prefix: :email_default
+  enum :volume_push_default, {quiet: 1, normal: 2, loud: 3}, prefix: :push_default
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }

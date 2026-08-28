@@ -64,22 +64,22 @@ class UserService
 
     if params[:volume_email].present?
       email = params[:volume_email].to_s
-      unless User.default_membership_volume_emails.key?(email)
-        user.errors.add :default_membership_volume_email, I18n.t(:"activerecord.errors.messages.invalid")
+      unless User.volume_email_defaults.key?(email)
+        user.errors.add :volume_email_default, I18n.t(:"activerecord.errors.messages.invalid")
         raise ActiveRecord::RecordInvalid, user
       end
       membership_attributes[:volume_email] = Membership.volume_emails.fetch(email)
-      user_attributes[:default_membership_volume_email] = email
+      user_attributes[:volume_email_default] = email
     end
 
     if params[:volume_push].present?
       push = params[:volume_push].to_s
-      unless User.default_membership_volume_pushes.key?(push)
-        user.errors.add :default_membership_volume_push, I18n.t(:"activerecord.errors.messages.invalid")
+      unless User.volume_push_defaults.key?(push)
+        user.errors.add :volume_push_default, I18n.t(:"activerecord.errors.messages.invalid")
         raise ActiveRecord::RecordInvalid, user
       end
       membership_attributes[:volume_push] = Membership.volume_pushes.fetch(push)
-      user_attributes[:default_membership_volume_push] = push
+      user_attributes[:volume_push_default] = push
     end
 
     raise ActionController::ParameterMissing, :volume if user_attributes.empty?

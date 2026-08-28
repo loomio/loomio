@@ -19,7 +19,7 @@ class PermittedParams < Struct.new(:params)
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
      :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned,
-     :default_membership_volume_email, :default_membership_volume_push,
+     :volume_email_default, :volume_push_default,
      :email_catch_up_day,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
      :date_time_pref, :bot, :auto_translate,

@@ -46,14 +46,14 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     post :set_volume, params: { volume_email: :quiet, apply_to_all: true }
 
     assert_response :success
-    assert_equal "quiet", @user.reload.default_membership_volume_email
+    assert_equal "quiet", @user.reload.volume_email_default
     assert_equal "quiet", membership.reload.volume_email
     assert_equal "loud", membership.volume_push
 
     post :set_volume, params: { volume_push: :normal, apply_to_all: true }
 
     assert_response :success
-    assert_equal "normal", @user.reload.default_membership_volume_push
+    assert_equal "normal", @user.reload.volume_push_default
     assert_equal "quiet", membership.reload.volume_email
     assert_equal "normal", membership.volume_push
   end

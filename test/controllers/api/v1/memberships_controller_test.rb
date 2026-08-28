@@ -33,7 +33,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
       handle: 'newgroup',
       is_visible_to_public: false
     )
-    @user.update(default_membership_volume_email: 'quiet', default_membership_volume_push: 'normal')
+    @user.update(volume_email_default: 'quiet', volume_push_default: 'normal')
 
     membership = Membership.create!(user: @user, group: new_group)
 

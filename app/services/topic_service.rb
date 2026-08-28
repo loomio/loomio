@@ -451,8 +451,8 @@ class TopicService
       Membership.where(group_id: topic.group_id,
                       user_id: users.pluck(:id)).find_each do |m|
         volume_by_user_id[m.user_id] = [
-          m.volume_email || m.user.default_membership_volume_email,
-          m.volume_push || m.user.default_membership_volume_push
+          m.volume_email || m.user.volume_email_default,
+          m.volume_push || m.user.volume_push_default
         ]
       end
     end
@@ -464,7 +464,7 @@ class TopicService
     new_topic_readers = users.map do |user|
       email, push = volume_by_user_id.fetch(
         user.id,
-        [user.default_membership_volume_email, user.default_membership_volume_push]
+        [user.volume_email_default, user.volume_push_default]
       )
       TopicReader.new(user: user,
                       topic: topic,

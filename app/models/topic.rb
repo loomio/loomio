@@ -220,35 +220,35 @@ class Topic < ApplicationRecord
 
   def email_enabled_members
     members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) != :level',
+      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) != :level',
       level: TopicReader.volume_emails[:quiet]
     )
   end
 
   def email_normal_members
     members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) = :level',
+      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) = :level',
       level: TopicReader.volume_emails[:normal]
     )
   end
 
   def email_loud_members
     members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) = :level',
+      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) = :level',
       level: TopicReader.volume_emails[:loud]
     )
   end
 
   def push_enabled_members
     members_by_volume.where(
-      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) != :level',
+      'coalesce(tr.volume_push, m.volume_push, users.volume_push_default) != :level',
       level: TopicReader.volume_pushes[:quiet]
     )
   end
 
   def push_loud_members
     members_by_volume.where(
-      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) = :level',
+      'coalesce(tr.volume_push, m.volume_push, users.volume_push_default) = :level',
       level: TopicReader.volume_pushes[:loud]
     )
   end

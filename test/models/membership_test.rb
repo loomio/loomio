@@ -39,13 +39,13 @@ class MembershipTest < ActiveSupport::TestCase
 
     assert_equal levels, Membership.volume_emails
     assert_equal levels, Membership.volume_pushes
-    assert_equal levels, User.default_membership_volume_emails
-    assert_equal levels, User.default_membership_volume_pushes
+    assert_equal levels, User.volume_email_defaults
+    assert_equal levels, User.volume_push_defaults
   end
 
   test "delivery preferences default to normal across records" do
-    assert_predicate User.new, :default_email_normal?
-    assert_predicate User.new, :default_push_normal?
+    assert_predicate User.new, :email_default_normal?
+    assert_predicate User.new, :push_default_normal?
     assert_predicate Membership.new, :email_normal?
     assert_predicate Membership.new, :push_normal?
     assert_predicate TopicReader.new, :email_normal?

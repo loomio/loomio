@@ -171,7 +171,7 @@ class NotificationDeliveryResolver
       group.push_enabled_members.where(id: user_ids).select(:id)
     else
       User.where(id: user_ids)
-          .where(default_membership_volume_push: User.default_membership_volume_pushes.values_at("normal", "loud"))
+          .where(volume_push_default: User.volume_push_defaults.values_at("normal", "loud"))
           .select(:id)
     end
 
@@ -188,7 +188,7 @@ class NotificationDeliveryResolver
       group.email_enabled_members.where(id: user_ids)
     else
       User.where(id: user_ids)
-          .where(default_membership_volume_email: User.default_membership_volume_emails.values_at("normal", "loud"))
+          .where(volume_email_default: User.volume_email_defaults.values_at("normal", "loud"))
     end
   end
 

@@ -213,32 +213,19 @@ class Group < ApplicationRecord
   end
 
   def email_enabled_members
-    members_by_volume.where(
-      'm.volume_email != :level',
-      level: Membership.volume_emails[:quiet]
-    )
+    members_by_volume.where.not('m.volume_email': Membership.volume_emails[:quiet])
   end
 
-
   def email_loud_members
-    members_by_volume.where(
-      'm.volume_email = :level',
-      level: Membership.volume_emails[:loud]
-    )
+    members_by_volume.where('m.volume_email': Membership.volume_emails[:loud])
   end
 
   def push_enabled_members
-    members_by_volume.where(
-      'm.volume_push != :level',
-      level: Membership.volume_pushes[:quiet]
-    )
+    members_by_volume.where.not('m.volume_push': Membership.volume_pushes[:quiet])
   end
 
   def push_loud_members
-    members_by_volume.where(
-      'm.volume_push = :level',
-      level: Membership.volume_pushes[:loud]
-    )
+    members_by_volume.where('m.volume_push': Membership.volume_pushes[:loud])
   end
 
   def author_id
