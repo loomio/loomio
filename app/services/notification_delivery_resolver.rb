@@ -99,6 +99,8 @@ class NotificationDeliveryResolver
 
   private
 
+  # Subclasses select direct channel audiences. Directed push shares the in-app
+  # audience, then applies push volume and browser subscription requirements.
   def recipients_by_channel
     raise NotImplementedError
   end

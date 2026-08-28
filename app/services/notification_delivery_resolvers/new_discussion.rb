@@ -3,7 +3,8 @@ module NotificationDeliveryResolvers
     private
 
     # Loud subscribers receive the topic publication email, while this
-    # notification carries the explicit user and chatbot audience.
+    # notification carries the explicit in-app, email, and chatbot audience.
+    # The base resolver derives directed push from the in-app recipients.
     def recipients_by_channel
       discussion = notification.subject_model
       unless discussion.is_a?(Discussion)
