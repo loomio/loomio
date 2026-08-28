@@ -92,7 +92,7 @@ module GroupService
 
     unless group.valid?
       Sentry.metrics.count("group.create_failed", attributes: { columns: group.errors.attribute_names.join(',') })
-      return false
+      return group
     end
 
     if group.is_parent?
@@ -111,6 +111,7 @@ module GroupService
 
     Sentry.metrics.count("group.create", attributes: { is_subgroup: !group.is_parent? })
     EventBus.broadcast('group_create', group, actor)
+    group
   end
 
   def self.update(group:, params:, actor:)
@@ -123,7 +124,7 @@ module GroupService
 
     unless group.valid?
       Sentry.metrics.count("group.update_failed", attributes: { columns: group.errors.attribute_names.join(',') })
-      return false
+      return group
     end
 
     Group.transaction do
@@ -140,6 +141,7 @@ module GroupService
 
     Sentry.metrics.count("group.update")
     EventBus.broadcast('group_update', group, params, actor)
+    group
   end
 
   def self.destroy(group:, actor:)

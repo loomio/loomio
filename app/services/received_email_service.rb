@@ -77,7 +77,9 @@ class ReceivedEmailService
     when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
-        DiscussionService.create(params: discussion_params(email), actor: actor_from_email(email))
+        discussion = DiscussionService.create(params: discussion_params(email), actor: actor_from_email(email))
+        raise ActiveRecord::RecordInvalid, discussion if discussion.invalid?
+
         email.update_attribute(:released, true)
         return
       end
@@ -111,7 +113,9 @@ class ReceivedEmailService
         if actor = actor_from_email_and_group(email, group)
           email.update!(group: group)
           Rails.logger.info("creating discussion from email: #{email.route_path}")
-          DiscussionService.create(params: discussion_params(email), actor: actor)
+          discussion = DiscussionService.create(params: discussion_params(email), actor: actor)
+          raise ActiveRecord::RecordInvalid, discussion if discussion.invalid?
+
           return email.update_attribute(:released, true)
         else
           Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
@@ -270,7 +274,12 @@ class ReceivedEmailService
   end
 
   def self.create_comment_from_email(email)
-    CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+    comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+    return comment if comment.errors.empty?
+
+    Rails.logger.info("email comment invalid: #{comment.errors.full_messages.join(', ')}")
+    send_comment_rejected_email(email, comment)
+    nil
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.info("email comment invalid: #{e.record.errors.full_messages.join(', ')}")
     send_comment_rejected_email(email, e.record)

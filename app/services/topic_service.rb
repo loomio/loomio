@@ -6,6 +6,15 @@ class TopicService
     group ? !group.public_discussions_only? : true
   end
 
+  def self.validate_topicable(topicable)
+    topicable_valid = topicable.valid?
+    topic_valid = topicable.topic.valid?
+    topicable.topic.errors.each do |error|
+      topicable.errors.add(error.attribute, error.message)
+    end
+    topicable_valid && topic_valid
+  end
+
   def self.invite(topic:, actor:, params:)
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                            emails: params[:recipient_emails],
@@ -53,8 +62,11 @@ class TopicService
     actor.ability.authorize! :update, topic
     topic.assign_attributes(params)
     rearrange = topic.max_depth_changed?
+    return topic unless topic.valid?
+
     topic.save!
     RepairTopicWorker.perform_later(topic.id) if rearrange
+    topic
   end
 
   def self.update_tags(topic:, tags:, actor:)

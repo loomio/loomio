@@ -227,11 +227,15 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "does not create an invalid poll" do
+    topic_item_was_yielded = false
+
     assert_no_difference 'Poll.count' do
-      assert_raises ActiveRecord::RecordInvalid do
-        PollService.create(params: poll_params(title: ""), actor: @user)
-      end
+      poll = PollService.create(params: poll_params(title: ""), actor: @user) { topic_item_was_yielded = true }
+
+      assert_predicate poll, :invalid?
+      assert_not poll.persisted?
     end
+    assert_not topic_item_was_yielded
   end
 
   test "does not allow unauthorized users to create polls" do
@@ -324,7 +328,12 @@ class PollServiceTest < ActiveSupport::TestCase
   test "does not save an invalid poll on update" do
     poll = create_poll
     old_title = poll.title
-    PollService.update(poll: poll, params: { title: "" }, actor: @user)
+    topic_item_was_yielded = false
+    updated_poll = PollService.update(poll: poll, params: { title: "" }, actor: @user) { topic_item_was_yielded = true }
+
+    assert_same poll, updated_poll
+    assert_predicate updated_poll, :invalid?
+    assert_not topic_item_was_yielded
     assert_equal old_title, poll.reload.title
   end
 
@@ -347,7 +356,8 @@ class PollServiceTest < ActiveSupport::TestCase
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: poll.topic).set_volume!(:normal)
 
-    topic_item = PollService.update(
+    topic_item = nil
+    updated_poll = PollService.update(
       poll: poll,
       params: {
         title: "Notification-backed poll edit",
@@ -355,7 +365,8 @@ class PollServiceTest < ActiveSupport::TestCase
         recipient_message: "Please review the poll changes"
       },
       actor: @user
-    )
+    ) { |created_topic_item| topic_item = created_topic_item }
+    assert_equal poll, updated_poll
     notification = Notification.find_by!(kind: "poll_edited", subject: topic_item)
 
     assert_equal "poll_edited", topic_item.kind
@@ -414,7 +425,8 @@ class PollServiceTest < ActiveSupport::TestCase
 
   test "closes a poll" do
     poll = create_poll
-    topic_item = PollService.close(poll: poll, actor: @user)
+    topic_item = nil
+    PollService.close(poll: poll, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     assert_not_nil poll.reload.closed_at
     assert_equal poll.topic_id, topic_item.topic_id
     assert_not Notification.about(poll).exists?(kind: "poll_closed_by_user")
@@ -436,7 +448,8 @@ class PollServiceTest < ActiveSupport::TestCase
     end
 
     stub_request(:post, chatbot.server).to_return(status: 200)
-    topic_item = PollService.close(poll: poll, actor: @user)
+    topic_item = nil
+    PollService.close(poll: poll, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     Resolv.stub(:getaddresses, [ "93.184.216.34" ]) do
       PublishChatbotTopicItemWorker.perform_now(topic_item.id)
     end
@@ -450,7 +463,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     topic_item = nil
     NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
-      topic_item = PollService.close(poll: poll, actor: @user)
+      PollService.close(poll: poll, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     end
 
     assert_not_nil poll.reload.closed_at

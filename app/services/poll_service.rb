@@ -34,13 +34,13 @@ class PollService
     poll
   end
 
-  def self.create(params:, actor:)
+  def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
+    actor.ability.authorize!(:create, poll)
+    TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
+    return poll unless TopicService.validate_topicable(poll)
 
-    Poll.transaction do
-      actor.ability.authorize!(:create, poll)
-      TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
-
+    topic_item = Poll.transaction do
       poll.save!
       if poll.detached_anonymous?
         create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
@@ -62,13 +62,15 @@ class PollService
         actor: actor
       )
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
+      topic_item
     end
     EventBus.broadcast('poll_create', poll, actor)
     publish_topic_if_active(poll) if poll.opened_at
+    on_topic_item&.call(topic_item)
     poll
   end
 
-  def self.update(poll:, params:, actor:)
+  def self.update(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :update, poll
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
@@ -88,7 +90,7 @@ class PollService
 
     unless poll.valid?
       Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return false
+      return poll
     end
 
     was_opened = false
@@ -146,7 +148,8 @@ class PollService
     EventBus.broadcast('poll_update', poll, actor)
     MessageChannelService.publish_topic_model(poll) unless topic_item
     publish_topic_if_active(poll) if was_opened
-    topic_item || poll
+    on_topic_item&.call(topic_item) if topic_item
+    poll
   end
 
   def self.invite(poll:, actor:, params:)
@@ -305,7 +308,7 @@ class PollService
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end
 
-  def self.discard(poll:, actor:)
+  def self.discard(poll:, actor:, &on_topic_item)
     actor.ability.authorize!(:destroy, poll)
 
     Sentry.metrics.count("poll.discard", attributes: { poll_type: poll.poll_type })
@@ -322,10 +325,11 @@ class PollService
 
     ReindexPollWorker.perform_later(poll.id)
     MessageChannelService.publish_models([poll.created_topic_item], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
-    poll.created_topic_item
+    on_topic_item&.call(poll.created_topic_item)
+    poll
   end
 
-  def self.close(poll:, actor:)
+  def self.close(poll:, actor:, &on_topic_item)
     actor.ability.authorize! :close, poll
     topic_item = Poll.transaction do
       do_closing_work(poll: poll)
@@ -336,10 +340,11 @@ class PollService
       )
     end
     publish_topic_if_active(poll)
-    topic_item
+    on_topic_item&.call(topic_item)
+    poll
   end
 
-  def self.reopen(poll:, params:, actor:)
+  def self.reopen(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :reopen, poll
 
     poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
@@ -361,7 +366,8 @@ class PollService
     end
     EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
-    topic_item
+    on_topic_item&.call(topic_item)
+    poll
   end
 
   def self.publish_closing_soon(now: Time.current)

@@ -1,8 +1,8 @@
 class MembershipRequestService
   def self.create(membership_request:, actor:)
     membership_request.requestor = actor
-    return false unless membership_request.valid?
     actor.ability.authorize!(:create, membership_request)
+    return membership_request unless membership_request.valid?
 
     MembershipRequest.transaction do
       membership_request.save!

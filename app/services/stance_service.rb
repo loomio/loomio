@@ -1,11 +1,13 @@
 class StanceService
-  def self.create(stance:, actor:)
+  def self.create(stance:, actor:, &on_topic_item)
     actor.ability.authorize!(:vote_in, stance.poll)
 
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.revoker_id = nil
+    return stance unless stance.valid?
+
     publication = Stance.transaction do
       stance.save!
       stance.poll.update_counts!
@@ -14,7 +16,8 @@ class StanceService
 
     publish_stance_directly!(stance, publication)
     Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
-    publication[:topic_item] || stance
+    on_topic_item&.call(publication[:topic_item]) if publication[:topic_item]
+    stance
   end
 
   def self.uncast(stance:, actor:)
@@ -29,7 +32,7 @@ class StanceService
     new_stance.poll.update_counts!
   end
 
-  def self.update(stance: , actor: , params: )
+  def self.update(stance: , actor: , params: , &on_topic_item)
     actor.ability.authorize!(:update, stance)
     params = params.to_h.with_indifferent_access.except(:poll_id)
     is_update = !!stance.cast_at
@@ -37,11 +40,21 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
+    creates_replacement = is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? || stance.updated_at < 15.minutes.ago)
+    stance_changed = creates_replacement ? new_stance : stance
+    unless creates_replacement
+      stance.stance_choices = []
+      stance.assign_attributes_and_files(params)
+      stance.cast_at ||= Time.zone.now
+      stance.revoked_at = nil
+      stance.revoker_id = nil
+    end
+    return stance_changed unless stance_changed.valid?
+
     stance_to_publish = nil
-    stance_changed = nil
     metric_name = nil
     publication = Stance.transaction do
-      if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
+      if creates_replacement
         # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
         new_stance.cast_at = Time.zone.now
@@ -53,11 +66,6 @@ class StanceService
         metric_name = "stance.update"
         publish_stance_change!(stance: new_stance, kind: "stance_created")
       else
-        stance.stance_choices = []
-        stance.assign_attributes_and_files(params)
-        stance.cast_at ||= Time.zone.now
-        stance.revoked_at = nil
-        stance.revoker_id = nil
         stance.save!
         stance.poll.update_counts!
         stance_changed = stance
@@ -74,7 +82,8 @@ class StanceService
     end
     publish_stance_directly!(stance_changed, publication)
     Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })
-    publication[:topic_item] || stance_changed
+    on_topic_item&.call(publication[:topic_item]) if publication[:topic_item]
+    stance_changed
   end
 
   def self.redeem(stance:, actor:)
