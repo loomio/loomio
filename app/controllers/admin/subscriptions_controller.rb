@@ -18,17 +18,19 @@ class Admin::SubscriptionsController < Admin::BaseController
 
   def update
     if @subscription.update(subscription_params)
-      redirect_to admin_subscription_path(@subscription), notice: "Subscription updated"
+      if params[:refresh_from_chargify].present?
+        refresh_from_chargify
+        redirect_to admin_subscription_path(@subscription), notice: "Subscription updated and refreshed from Chargify"
+      else
+        redirect_to admin_subscription_path(@subscription), notice: "Subscription updated"
+      end
     else
       render Views::Admin::Subscriptions::Edit.new(subscription: @subscription), status: :unprocessable_entity
     end
   end
 
   def refresh
-    subscription_service.update(
-      subscription: @subscription,
-      params: subscription_service.chargify_get(@subscription.chargify_subscription_id)
-    )
+    refresh_from_chargify
     redirect_to admin_subscription_path(@subscription), notice: "Subscription refreshed"
   end
 
@@ -65,5 +67,12 @@ class Admin::SubscriptionsController < Admin::BaseController
 
   def subscription_service
     SubscriptionService
+  end
+
+  def refresh_from_chargify
+    subscription_service.update(
+      subscription: @subscription,
+      params: subscription_service.chargify_get(@subscription.chargify_subscription_id)
+    )
   end
 end
