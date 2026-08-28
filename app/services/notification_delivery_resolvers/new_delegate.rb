@@ -10,7 +10,7 @@ module NotificationDeliveryResolvers
 
       recipient = User.active.where(id: membership.user_id)
       email_recipient = if membership.email_enabled?
-        recipient.no_spam_complaints.to_a
+        recipient.to_a
       else
         []
       end

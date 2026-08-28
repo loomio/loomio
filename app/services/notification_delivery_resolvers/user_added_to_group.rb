@@ -11,7 +11,7 @@ module NotificationDeliveryResolvers
       recipient = User.active.where(id: membership.user_id)
       {
         "in_app" => recipient.to_a,
-        "email" => recipient.no_spam_complaints.to_a
+        "email" => recipient.to_a
       }
     end
   end

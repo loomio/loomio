@@ -10,8 +10,8 @@ module NotificationDeliveryResolvers
       chatbots = poll.group.chatbots
       {
         "in_app" => recipients.to_a,
-        "email" => poll.topic.email_notification_members
-                       .where("users.id": recipients.no_spam_complaints.select(:id)).to_a,
+        "email" => poll.topic.email_enabled_members
+                       .where("users.id": recipients.select(:id)).to_a,
         "chatbot" => chatbots.where(id: notification.recipient_chatbot_ids)
                              .or(chatbots.where("? = ANY(chatbots.event_kinds)", notification.kind)).to_a
       }

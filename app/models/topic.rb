@@ -218,10 +218,17 @@ class Topic < ApplicationRecord
                 (m.id IS NULL and tr.id IS NULL)')
   end
 
-  def email_notification_members
+  def email_enabled_members
     members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) IN (:levels)',
-      levels: TopicReader.volume_emails.values_at(:normal, :loud)
+      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) != :level',
+      level: TopicReader.volume_emails[:quiet]
+    )
+  end
+
+  def email_normal_members
+    members_by_volume.where(
+      'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) = :level',
+      level: TopicReader.volume_emails[:normal]
     )
   end
 
@@ -232,10 +239,10 @@ class Topic < ApplicationRecord
     )
   end
 
-  def push_notification_members
+  def push_enabled_members
     members_by_volume.where(
-      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) IN (:levels)',
-      levels: TopicReader.volume_pushes.values_at(:normal, :loud)
+      'coalesce(tr.volume_push, m.volume_push, users.default_membership_volume_push) != :level',
+      level: TopicReader.volume_pushes[:quiet]
     )
   end
 

@@ -18,9 +18,8 @@ module NotificationDeliveryResolvers
       end
 
       admins = membership_request.admins.active
-      email_admins = membership_request.group.email_notification_members
+      email_admins = membership_request.group.email_enabled_members
                                          .where(id: admins.select(:id))
-                                         .no_spam_complaints
       {
         "in_app" => admins.to_a,
         "email" => email_admins.to_a

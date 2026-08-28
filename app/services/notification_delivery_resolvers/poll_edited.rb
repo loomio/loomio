@@ -9,12 +9,14 @@ module NotificationDeliveryResolvers
       raise ArgumentError, "poll_edited subject must be a Poll" unless poll.is_a?(Poll)
 
       explicit_scope = explicit_users.active
-      email_explicit = poll.topic.email_notification_members
-                           .where("users.id": explicit_scope.no_spam_complaints.select(:id))
-                           .where.not(id: audience_ids("newly_mentioned_user_ids"))
-      if notification.recipient_message.present?
-        email_explicit = email_explicit.where.not(id: poll.topic.email_loud_members.select(:id))
+      email_members = if notification.recipient_message.present?
+        poll.topic.email_normal_members
+      else
+        poll.topic.email_enabled_members
       end
+      email_explicit = email_members
+                         .where("users.id": explicit_scope.select(:id))
+                         .where.not(id: audience_ids("newly_mentioned_user_ids"))
       {
         "in_app" => poll.topic.members
                         .where("users.id": explicit_scope.select(:id))

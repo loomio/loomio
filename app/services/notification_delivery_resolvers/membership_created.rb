@@ -13,8 +13,8 @@ module NotificationDeliveryResolvers
         "in_app" => group.members
                          .where("users.id": user_scope.select(:id))
                          .where.not(id: notification.actor_id).to_a,
-        "email" => group.email_notification_members
-                        .where("users.id": user_scope.no_spam_complaints.select(:id)).to_a
+        "email" => group.email_enabled_members
+                        .where("users.id": user_scope.select(:id)).to_a
       }
     end
   end

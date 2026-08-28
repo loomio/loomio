@@ -11,7 +11,7 @@ module NotificationDeliveryResolvers
       users = User.active.verified
       {
         "in_app" => users.where(id: memberships.select(:user_id)).to_a,
-        "email" => users.no_spam_complaints
+        "email" => users
                         .where(id: memberships.email_enabled.select(:user_id)).to_a
       }
     end

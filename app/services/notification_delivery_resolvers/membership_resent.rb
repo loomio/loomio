@@ -9,7 +9,7 @@ module NotificationDeliveryResolvers
       end
 
       {
-        "email" => User.active.no_spam_complaints.where(id: membership.user_id).to_a
+        "email" => User.active.where(id: membership.user_id).to_a
       }
     end
   end

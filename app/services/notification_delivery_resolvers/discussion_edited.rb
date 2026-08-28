@@ -12,12 +12,14 @@ module NotificationDeliveryResolvers
       end
 
       recipients = explicit_users.active
-      email_explicit = discussion.topic.email_notification_members
-                                 .where("users.id": recipients.no_spam_complaints.select(:id))
-                                 .where.not(id: audience_ids("newly_mentioned_user_ids"))
-      if notification.recipient_message.present?
-        email_explicit = email_explicit.where.not(id: discussion.topic.email_loud_members.select(:id))
+      email_members = if notification.recipient_message.present?
+        discussion.topic.email_normal_members
+      else
+        discussion.topic.email_enabled_members
       end
+      email_explicit = email_members
+                         .where("users.id": recipients.select(:id))
+                         .where.not(id: audience_ids("newly_mentioned_user_ids"))
       {
         "in_app" => discussion.topic.members
                               .where("users.id": recipients.select(:id))

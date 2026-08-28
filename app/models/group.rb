@@ -212,12 +212,13 @@ class Group < ApplicationRecord
         .where('m.revoked_at IS NULL')
   end
 
-  def email_notification_members
+  def email_enabled_members
     members_by_volume.where(
-      'm.volume_email IN (:levels)',
-      levels: Membership.volume_emails.values_at(:normal, :loud)
+      'm.volume_email != :level',
+      level: Membership.volume_emails[:quiet]
     )
   end
+
 
   def email_loud_members
     members_by_volume.where(
@@ -226,10 +227,10 @@ class Group < ApplicationRecord
     )
   end
 
-  def push_notification_members
+  def push_enabled_members
     members_by_volume.where(
-      'm.volume_push IN (:levels)',
-      levels: Membership.volume_pushes.values_at(:normal, :loud)
+      'm.volume_push != :level',
+      level: Membership.volume_pushes[:quiet]
     )
   end
 

@@ -12,9 +12,8 @@ module NotificationDeliveryResolvers
       end
 
       explicit_scope = explicit_users.active
-      email_explicit = discussion.topic.email_notification_members
-                                 .where("users.id": explicit_scope.no_spam_complaints.select(:id))
-                                 .where.not(id: discussion.topic.email_loud_members.select(:id))
+      email_explicit = discussion.topic.email_normal_members
+                                 .where("users.id": explicit_scope.select(:id))
                                  .where.not(id: audience_ids("newly_mentioned_user_ids"))
 
       {

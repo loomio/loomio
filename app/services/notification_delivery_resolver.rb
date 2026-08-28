@@ -65,6 +65,7 @@ class NotificationDeliveryResolver
     return [] if notification.deliveries_generated_at?
 
     recipients = recipients_by_channel
+    recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))
     recipients["push"] = push_subscriptions_for(recipients.fetch("in_app", []))
     now = Time.current
     deliveries = []
@@ -148,6 +149,15 @@ class NotificationDeliveryResolver
     end
   end
 
+  # Filter the completed email audience once before creating delivery rows.
+  # ApplicationMailer repeats this check in case a complaint arrives later.
+  def email_recipients_without_complaints(email_recipients)
+    user_ids = Array(email_recipients).map(&:id)
+    return [] if user_ids.empty?
+
+    User.no_spam_complaints.where(id: user_ids).to_a
+  end
+
   # Push follows the same directed audience as in-app delivery, filtered by
   # the recipient's effective push volume for the notification's scope.
   # Each active browser is a distinct delivery recipient.
@@ -156,9 +166,9 @@ class NotificationDeliveryResolver
     return [] if user_ids.empty?
 
     eligible_user_ids = if (topic = notification_topic)
-      topic.push_notification_members.where(id: user_ids).select(:id)
+      topic.push_enabled_members.where(id: user_ids).select(:id)
     elsif (group = notification_group)
-      group.push_notification_members.where(id: user_ids).select(:id)
+      group.push_enabled_members.where(id: user_ids).select(:id)
     else
       User.where(id: user_ids)
           .where(default_membership_volume_push: User.default_membership_volume_pushes.values_at("normal", "loud"))
@@ -173,9 +183,9 @@ class NotificationDeliveryResolver
     return User.none if user_ids.empty?
 
     if (topic = notification_topic)
-      topic.email_notification_members.where(id: user_ids)
+      topic.email_enabled_members.where(id: user_ids)
     elsif (group = notification_group)
-      group.email_notification_members.where(id: user_ids)
+      group.email_enabled_members.where(id: user_ids)
     else
       User.where(id: user_ids)
           .where(default_membership_volume_email: User.default_membership_volume_emails.values_at("normal", "loud"))

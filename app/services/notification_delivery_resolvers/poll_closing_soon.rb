@@ -16,8 +16,8 @@ module NotificationDeliveryResolvers
       email_recipients = if poll.notify_on_closing_soon == "author"
         User.active.where(id: poll.author_id)
       else
-        poll.topic.email_notification_members
-            .where("users.id": raw_recipients.active.no_spam_complaints.select(:id))
+        poll.topic.email_enabled_members
+            .where("users.id": raw_recipients.active.select(:id))
       end
 
       {
