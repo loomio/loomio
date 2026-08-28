@@ -145,7 +145,7 @@ GEM
     css_parser (3.0.0)
       addressable
       ssrf_filter (~> 1.5)
-    csv (3.3.5)
+    csv (3.3.6)
     custom_counter_cache (0.3.1)
       rails (>= 7.2, < 9.0)
     date (3.5.1)
