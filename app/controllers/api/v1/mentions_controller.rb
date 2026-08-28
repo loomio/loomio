@@ -70,7 +70,7 @@ class Api::V1::MentionsController < ApplicationController
 
   def mentionable_users
     return @topic.members if @topic
-    return @group.members.active if @group
+    return @group.members if @group
 
     User.none
   end

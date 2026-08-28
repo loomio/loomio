@@ -11,7 +11,7 @@ module NotificationDeliveryResolvers
       author_scope = User.active.where(id: outcome.author_id)
       topic = outcome.poll.topic
       {
-        "in_app" => topic.app_notification_members.where("users.id": author_scope.select(:id)).to_a,
+        "in_app" => topic.members.where("users.id": author_scope.select(:id)).to_a,
         "email" => topic.email_notification_members
                         .where("users.id": author_scope.no_spam_complaints.select(:id)).to_a,
         "chatbot" => outcome.group.chatbots

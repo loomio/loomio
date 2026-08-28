@@ -5,8 +5,8 @@ module HasVolume
     enum :volume_email, { quiet: 1, normal: 2, loud: 3 }, prefix: :email
     enum :volume_push, { quiet: 1, normal: 2, loud: 3 }, prefix: :push
 
-    scope :email_notifications, -> { where(volume_email: volume_emails[:normal]..) }
-    scope :push_notifications, -> { where(volume_push: volume_pushes[:normal]..) }
+    scope :email_enabled, -> { where.not(volume_email: volume_emails[:quiet]) }
+    scope :push_enabled, -> { where.not(volume_push: volume_pushes[:quiet]) }
   end
 
   # Email and push are independent delivery volumes. A muted channel is not

@@ -19,7 +19,7 @@ module NotificationDeliveryResolvers
         email_explicit = email_explicit.where.not(id: discussion.topic.email_loud_members.select(:id))
       end
       {
-        "in_app" => discussion.topic.app_notification_members
+        "in_app" => discussion.topic.members
                               .where("users.id": recipients.select(:id))
                               .where.not(id: notification.actor_id).to_a,
         "email" => email_explicit.to_a,

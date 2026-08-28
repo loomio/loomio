@@ -11,7 +11,7 @@ module NotificationDeliveryResolvers
       user_scope = explicit_users.active
       chatbots = discussion.group&.chatbots || Chatbot.none
       {
-        "in_app" => discussion.topic.app_notification_members
+        "in_app" => discussion.topic.members
                               .where("users.id": user_scope.select(:id))
                               .where.not(id: notification.actor_id).to_a,
         "email" => discussion.topic.email_notification_members

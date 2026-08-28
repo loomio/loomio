@@ -40,6 +40,14 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.members, @user
   end
 
+  test "members excludes deactivated users but all_members retains them" do
+    @group.add_member!(@user)
+    @user.update!(deactivated_at: Time.current)
+
+    assert_not_includes @group.members, @user
+    assert_includes @group.all_members, @user
+  end
+
   test "updates the memberships_count" do
     group = Group.create!(name: "Count Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
     assert_difference -> { group.reload.memberships_count }, 1 do

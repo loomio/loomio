@@ -218,10 +218,6 @@ class Topic < ApplicationRecord
                 (m.id IS NULL and tr.id IS NULL)')
   end
 
-  def app_notification_members
-    members
-  end
-
   def email_notification_members
     members_by_volume.where(
       'coalesce(tr.volume_email, m.volume_email, users.default_membership_volume_email) IN (:levels)',

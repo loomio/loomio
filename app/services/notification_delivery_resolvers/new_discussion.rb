@@ -18,7 +18,7 @@ module NotificationDeliveryResolvers
                                  .where.not(id: audience_ids("newly_mentioned_user_ids"))
 
       {
-        "in_app" => discussion.topic.app_notification_members
+        "in_app" => discussion.topic.members
                               .where("users.id": explicit_scope.select(:id))
                               .where.not(id: discussion.author_id).to_a,
         "email" => email_explicit.to_a,

@@ -35,7 +35,7 @@ class Group < ApplicationRecord
   has_many :all_members, through: :all_memberships, source: :user
 
   has_many :memberships, -> { active }
-  has_many :members, through: :memberships, source: :user
+  has_many :members, -> { active }, through: :memberships, source: :user
 
   has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
   has_many :delegates, through: :delegate_memberships, source: :user
@@ -210,10 +210,6 @@ class Group < ApplicationRecord
     User.active.distinct
         .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
         .where('m.revoked_at IS NULL')
-  end
-
-  def app_notification_members
-    members.active
   end
 
   def email_notification_members
