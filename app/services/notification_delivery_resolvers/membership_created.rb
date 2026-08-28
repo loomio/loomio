@@ -9,13 +9,14 @@ module NotificationDeliveryResolvers
       end
 
       user_scope = explicit_users.active
-      {
-        "in_app" => group.members
-                         .where("users.id": user_scope.select(:id))
-                         .where.not(id: notification.actor_id).to_a,
-        "email" => group.email_enabled_members
-                        .where("users.id": user_scope.select(:id)).to_a
-      }
+      in_app_scope = group.members
+                          .where("users.id": user_scope.select(:id))
+                          .where.not(id: notification.actor_id)
+      user_recipients_by_channel(
+        in_app_scope,
+        email: group.email_enabled_members,
+        push: group.push_enabled_members
+      )
     end
   end
 end

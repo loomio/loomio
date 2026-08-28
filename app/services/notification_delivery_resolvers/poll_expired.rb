@@ -7,14 +7,16 @@ module NotificationDeliveryResolvers
       unless poll.is_a?(Poll)
         raise ArgumentError, "poll_expired subject must be a Poll"
       end
-      author = User.where(id: poll.author_id)
-      email_author = poll.topic.email_enabled_members.where("users.id": author.active.select(:id))
-      {
-        "in_app" => author.to_a,
-        "email" => email_author.to_a,
+      recipient_scope = poll.topic.members
+                            .where("users.id": User.active.where(id: poll.author_id).select(:id))
+      user_recipients_by_channel(
+        recipient_scope,
+        email: poll.topic.email_enabled_members,
+        push: poll.topic.push_enabled_members
+      ).merge(
         "chatbot" => (poll.group&.chatbots || Chatbot.none)
-                           .where("? = ANY(chatbots.event_kinds)", notification.kind).to_a
-      }
+                           .where("? = ANY(chatbots.event_kinds)", notification.kind)
+      )
     end
   end
 end

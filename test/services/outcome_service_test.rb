@@ -99,7 +99,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "outcome update separates a newly mentioned recipient from update email delivery" do
+  test "outcome update leaves a newly mentioned explicit recipient to the mention notification" do
     recipient = users(:member)
     recipient.update!(username: "outcomemention#{SecureRandom.hex(4)}")
     TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
@@ -117,7 +117,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: @outcome)
   end
 

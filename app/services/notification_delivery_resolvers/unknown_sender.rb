@@ -14,7 +14,11 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "unknown_sender subject must be a ReceivedEmail"
       end
 
-      { "in_app" => received_email.group.admins.active.to_a }
+      user_recipients_by_channel(
+        received_email.group.admins.active,
+        email: User.none,
+        push: received_email.group.push_enabled_members
+      )
     end
   end
 end

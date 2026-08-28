@@ -10,13 +10,15 @@ module NotificationDeliveryResolvers
 
       author_scope = User.active.where(id: outcome.author_id)
       topic = outcome.poll.topic
-      {
-        "in_app" => topic.members.where("users.id": author_scope.select(:id)).to_a,
-        "email" => topic.email_enabled_members
-                        .where("users.id": author_scope.select(:id)).to_a,
+      in_app_scope = topic.members.where("users.id": author_scope.select(:id))
+      user_recipients_by_channel(
+        in_app_scope,
+        email: topic.email_enabled_members,
+        push: topic.push_enabled_members
+      ).merge(
         "chatbot" => outcome.group.chatbots
-                            .where("? = ANY(chatbots.event_kinds)", notification.kind).to_a
-      }
+                            .where("? = ANY(chatbots.event_kinds)", notification.kind)
+      )
     end
   end
 end

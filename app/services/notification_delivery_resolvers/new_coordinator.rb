@@ -8,7 +8,11 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "new_coordinator subject must be a Membership"
       end
 
-      { "in_app" => User.active.where(id: membership.user_id).to_a }
+      user_recipients_by_channel(
+        User.active.where(id: membership.user_id),
+        email: User.none,
+        push: membership.group.push_enabled_members
+      )
     end
   end
 end

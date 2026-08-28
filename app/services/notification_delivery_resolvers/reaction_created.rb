@@ -20,15 +20,24 @@ module NotificationDeliveryResolvers
       end
 
       reactable = reaction.reactable
-      recipient = if reactable &&
-                     reactable.author != reaction.user &&
-                     reactable.group.memberships.exists?(user: reactable.author)
-        User.active.where(id: reactable.author_id).to_a
+      recipient_scope = if reactable &&
+                           reactable.author != reaction.user &&
+                           reactable.group.memberships.exists?(user: reactable.author)
+        User.active.where(id: reactable.author_id)
       else
-        []
+        User.none
+      end
+      push_scope = if recipient_scope.none?
+        User.none
+      elsif (topic = notification_topic)
+        topic.push_enabled_members
+      elsif (group = notification_group)
+        group.push_enabled_members
+      else
+        User.where(volume_push_default: User.volume_push_defaults.values_at("normal", "loud"))
       end
 
-      { "in_app" => recipient }
+      user_recipients_by_channel(recipient_scope, email: User.none, push: push_scope)
     end
   end
 end

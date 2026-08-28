@@ -27,6 +27,7 @@ class TopicItem < ApplicationRecord
 
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
+
   delegate :group, to: :itemable, allow_nil: true
   delegate :poll, to: :itemable, allow_nil: true
   delegate :groups, to: :itemable, allow_nil: true
@@ -54,11 +55,20 @@ class TopicItem < ApplicationRecord
     user_id
   end
 
+  # A direct notification owns external delivery for its selected users, so
+  # topic subscriber publication excludes the snapshotted direct audience.
+  def notification_recipient_user_ids
+    notifications.flat_map(&:recipient_user_ids)
+                 .compact
+                 .map(&:to_i)
+                 .uniq
+  end
+
   def notification_url
     model = case kind
             when 'stance_created' then itemable.poll
             else itemable
-            end
+    end
     return discussion_path(topic.discussion, sequence_id: sequence_id) if topic&.discussion
 
     polymorphic_path(model)

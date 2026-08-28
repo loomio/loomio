@@ -8,9 +8,11 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "invitation_accepted subject must be a Membership"
       end
 
-      {
-        "in_app" => User.active.where(id: membership.inviter_id).to_a
-      }
+      user_recipients_by_channel(
+        User.active.where(id: membership.inviter_id),
+        email: User.none,
+        push: membership.group.push_enabled_members
+      )
     end
   end
 end

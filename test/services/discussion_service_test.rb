@@ -104,7 +104,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "create excludes a newly mentioned explicit recipient from the discussion email" do
+  test "create leaves a newly mentioned explicit recipient to the mention notification" do
     recipient = users(:member)
     recipient.update!(username: "createmention#{SecureRandom.hex(4)}")
 
@@ -122,7 +122,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: discussion.created_topic_item)
   end
 
@@ -231,7 +231,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "update excludes a newly mentioned explicit recipient from the edit email" do
+  test "update leaves a newly mentioned explicit recipient to the mention notification" do
     discussion = discussions(:discussion)
     recipient = users(:member)
     recipient.update!(username: "editmention#{SecureRandom.hex(4)}")
@@ -250,7 +250,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
   end
 

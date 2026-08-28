@@ -3,7 +3,7 @@ require 'test_helper'
 class PollServiceTest < ActiveSupport::TestCase
   inline_jobs "expires a lapsed poll",
               "open_scheduled_polls delivers emails to voters when notify_on_open is true",
-              "poll topic item sends loud subscriber email without a notification row"
+              "poll opening notification owns loud recipient email over topic publication"
   setup do
     @user = users(:user)
     @admin = users(:admin)
@@ -96,14 +96,17 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not Notification.about(poll).exists?(kind: "poll_created")
   end
 
-  test "poll topic item sends loud subscriber email without a notification row" do
+  test "poll opening notification owns loud recipient email over topic publication" do
     subscriber = users(:member)
-    poll = PollService.create(params: poll_params, actor: @user)
-    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :quiet)
+    subscriber.memberships.find_by!(group: @group).update!(volume_email: :loud, volume_push: :quiet)
     ActionMailer::Base.deliveries.clear
-    PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
+
+    poll = PollService.create(params: poll_params, actor: @user)
 
     assert_includes ActionMailer::Base.deliveries.flat_map(&:to), subscriber.email
+    delivery_count = ActionMailer::Base.deliveries.count
+    PublishSubscriberEmailsTopicItemWorker.perform_now(poll.created_topic_item.id)
+    assert_equal delivery_count, ActionMailer::Base.deliveries.count
     assert_not Notification.about(poll).exists?(kind: "poll_created")
   end
 
@@ -299,7 +302,7 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "poll edit separates a newly mentioned recipient from edit email delivery" do
+  test "poll edit leaves a newly mentioned explicit recipient to the mention notification" do
     poll = create_poll
     recipient = users(:member)
     recipient.update!(username: "pollmention#{SecureRandom.hex(4)}")
@@ -318,7 +321,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
     ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries
     assert Notification.about(poll).exists?(kind: "user_mentioned")
   end
 

@@ -9,7 +9,8 @@ module NotificationDeliveryResolvers
       end
 
       {
-        "email" => User.active.where(id: membership.user_id).to_a
+        "email" => User.active.where(id: membership.user_id),
+        "push" => []
       }
     end
   end

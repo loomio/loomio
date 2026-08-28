@@ -17,13 +17,11 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "membership_requested subject must be a MembershipRequest"
       end
 
-      admins = membership_request.admins.active
-      email_admins = membership_request.group.email_enabled_members
-                                         .where(id: admins.select(:id))
-      {
-        "in_app" => admins.to_a,
-        "email" => email_admins.to_a
-      }
+      user_recipients_by_channel(
+        membership_request.admins.active,
+        email: membership_request.group.email_enabled_members,
+        push: membership_request.group.push_enabled_members
+      )
     end
   end
 end

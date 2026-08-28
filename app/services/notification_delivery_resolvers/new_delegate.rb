@@ -8,17 +8,12 @@ module NotificationDeliveryResolvers
         raise ArgumentError, "new_delegate subject must be a Membership"
       end
 
-      recipient = User.active.where(id: membership.user_id)
-      email_recipient = if membership.email_enabled?
-        recipient.to_a
-      else
-        []
-      end
-
-      {
-        "in_app" => recipient.to_a,
-        "email" => email_recipient
-      }
+      email_scope = membership.email_enabled? ? User.all : User.none
+      user_recipients_by_channel(
+        User.active.where(id: membership.user_id),
+        email: email_scope,
+        push: membership.group.push_enabled_members
+      )
     end
   end
 end

@@ -5,8 +5,8 @@
 class NotificationDeliveryResolver
   RESOLVERS = {
     "comment_replied_to" => "NotificationDeliveryResolvers::UserMentioned",
-    "discussion_announced" => "NotificationDeliveryResolvers::DiscussionAnnounced",
-    "discussion_edited" => "NotificationDeliveryResolvers::DiscussionEdited",
+    "discussion_announced" => "NotificationDeliveryResolvers::DiscussionEvent",
+    "discussion_edited" => "NotificationDeliveryResolvers::DiscussionEvent",
     "group_mentioned" => "NotificationDeliveryResolvers::GroupMentioned",
     "invitation_accepted" => "NotificationDeliveryResolvers::InvitationAccepted",
     "membership_created" => "NotificationDeliveryResolvers::MembershipCreated",
@@ -15,7 +15,7 @@ class NotificationDeliveryResolver
     "membership_requested" => "NotificationDeliveryResolvers::MembershipRequested",
     "new_coordinator" => "NotificationDeliveryResolvers::NewCoordinator",
     "new_delegate" => "NotificationDeliveryResolvers::NewDelegate",
-    "new_discussion" => "NotificationDeliveryResolvers::NewDiscussion",
+    "new_discussion" => "NotificationDeliveryResolvers::DiscussionEvent",
     "outcome_announced" => "NotificationDeliveryResolvers::OutcomeAnnounced",
     "outcome_created" => "NotificationDeliveryResolvers::OutcomeChange",
     "outcome_review_due" => "NotificationDeliveryResolvers::OutcomeReviewDue",
@@ -64,9 +64,9 @@ class NotificationDeliveryResolver
   def resolve!
     return [] if notification.deliveries_generated_at?
 
-    recipients = recipients_by_channel
+    recipients = recipients_by_channel.transform_values(&:to_a)
     recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))
-    recipients["push"] = push_subscriptions_for(recipients.fetch("in_app", []))
+    recipients["push"] = active_push_subscriptions(recipients.fetch("push"))
     now = Time.current
     deliveries = []
 
@@ -100,14 +100,30 @@ class NotificationDeliveryResolver
 
   private
 
-  # Subclasses select direct channel audiences. Directed push shares the in-app
-  # audience, then applies push volume and browser subscription requirements.
+  # Subclasses select the logical user audience for every channel. This base
+  # class applies delivery mechanics such as complaint filtering and expanding
+  # push users into their active browser subscriptions.
   def recipients_by_channel
     raise NotImplementedError
   end
 
+  # Intersect one event-level audience with independently eligible email and
+  # push scopes so both external channels preserve the same recipient policy.
+  def user_recipients_by_channel(recipients, email:, push:)
+    recipient_ids = recipients.select(:id)
+    {
+      "in_app" => recipients,
+      "email" => email.where("users.id": recipient_ids),
+      "push" => push.where("users.id": recipient_ids)
+    }
+  end
+
   def explicit_users
     User.where(id: notification.recipient_user_ids)
+  end
+
+  def audience_ids(key)
+    Array(notification.audience_values[key]).map(&:to_i)
   end
 
   def explicit_chatbots
@@ -158,38 +174,13 @@ class NotificationDeliveryResolver
     User.no_spam_complaints.where(id: user_ids).to_a
   end
 
-  # Push follows the same directed audience as in-app delivery, filtered by
-  # the recipient's effective push volume for the notification's scope.
-  # Each active browser is a distinct delivery recipient.
-  def push_subscriptions_for(in_app_recipients)
-    user_ids = Array(in_app_recipients).map(&:id)
+  # Expand each eligible user into one delivery recipient per active browser
+  # subscription.
+  def active_push_subscriptions(push_recipients)
+    user_ids = Array(push_recipients).map(&:id)
     return [] if user_ids.empty?
 
-    eligible_user_ids = if (topic = notification_topic)
-      topic.push_enabled_members.where(id: user_ids).select(:id)
-    elsif (group = notification_group)
-      group.push_enabled_members.where(id: user_ids).select(:id)
-    else
-      User.where(id: user_ids)
-          .where(volume_push_default: User.volume_push_defaults.values_at("normal", "loud"))
-          .select(:id)
-    end
-
-    PushSubscription.active.includes(:user).where(user_id: eligible_user_ids).to_a
-  end
-
-  def email_users_for(recipients)
-    user_ids = Array(recipients).map(&:id)
-    return User.none if user_ids.empty?
-
-    if (topic = notification_topic)
-      topic.email_enabled_members.where(id: user_ids)
-    elsif (group = notification_group)
-      group.email_enabled_members.where(id: user_ids)
-    else
-      User.where(id: user_ids)
-          .where(volume_email_default: User.volume_email_defaults.values_at("normal", "loud"))
-    end
+    PushSubscription.active.includes(:user).where(user_id: user_ids).to_a
   end
 
   def notification_topic

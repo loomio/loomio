@@ -6,6 +6,7 @@ class PublishSubscriberEmailsTopicItemWorker < ApplicationJob
     topic = topic_item.topic || topic_item.itemable.topic
     topic.email_loud_members
          .where.not(id: topic_item.actor_id)
+         .where.not(id: topic_item.notification_recipient_user_ids)
          .where.not(id: topic_item.itemable.mentioned_users)
          .where.not(id: topic_item.itemable.mentioned_group_users)
          .active

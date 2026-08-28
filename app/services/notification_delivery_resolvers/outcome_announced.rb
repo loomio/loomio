@@ -7,13 +7,13 @@ module NotificationDeliveryResolvers
       raise ArgumentError, "outcome_announced subject must be an Outcome" unless outcome.is_a?(Outcome)
 
       recipients = explicit_users.active
-      {
-        "in_app" => outcome.topic.members
-                           .where("users.id": recipients.select(:id))
-                           .where.not(id: notification.actor_id).to_a,
-        "email" => outcome.topic.email_enabled_members
-                          .where("users.id": recipients.select(:id)).to_a
-      }
+      in_app_scope = outcome.topic.members
+                            .where("users.id": recipients.select(:id))
+      user_recipients_by_channel(
+        in_app_scope,
+        email: outcome.topic.email_enabled_members,
+        push: outcome.topic.push_enabled_members
+      )
     end
   end
 end
