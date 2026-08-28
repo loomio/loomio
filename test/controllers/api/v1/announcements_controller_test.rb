@@ -4,6 +4,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   inline_jobs "history for topic includes users in response",
               "poll create as admin can add group member",
               "poll create as admin can add group member with notification",
+              "anonymous poll create returns and notifies only newly added voters",
               "topic create as admin can add member",
               "topic create as admin can add multiple members",
               "outcome create member can add members when permission enabled",
@@ -506,6 +507,41 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
+  end
+
+  test "anonymous poll create returns and notifies only newly added voters" do
+    poll = create_test_poll(anonymous: true)
+    existing_voter = users(:user)
+    new_voter = @group.members.humans.where.not(id: [ @admin.id, existing_voter.id ]).first!
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [ existing_voter.id ] }
+    )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: existing_voter
+    )
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_user_ids: [ existing_voter.id, new_voter.id ],
+      notify_recipients: true
+    }
+
+    assert_response :success
+    assert_equal [ new_voter.id ], JSON.parse(response.body).fetch("users").pluck("id")
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: existing_voter.id).count
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: new_voter.id).count
+
+    notification = Notification.about(poll).where(kind: "poll_announced").order(:id).last!
+    assert_equal [ new_voter.id ], notification.recipient_user_ids
+    assert_equal [ new_voter.id ], notification.notification_deliveries
+                                                  .where(channel: "in_app")
+                                                  .pluck(:recipient_id)
+    assert_not notification.notification_deliveries.exists?(recipient: existing_voter)
   end
 
   test "poll create can invite a voter after an anonymous ballot is submitted" do

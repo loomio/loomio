@@ -196,7 +196,7 @@ class PollService
           recipient_audience: params[:recipient_audience],
           recipient_message:  params[:recipient_message],
         )
-      elsif params[:notify_recipients] && poll.detached_anonymous?
+      elsif params[:notify_recipients] && poll.detached_anonymous? && voters.any?
         create_poll_announced_notification!(
           poll: poll,
           actor: actor,
@@ -232,6 +232,8 @@ class PollService
       poll.members.humans
     end
 
+    existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
+    users = users.where.not(id: existing_voter_ids)
     group_member_ids = poll.group ? poll.group.members.where(id: users.select(:id)).pluck(:id).to_set : Set.new
     rows = users.map do |user|
       {
