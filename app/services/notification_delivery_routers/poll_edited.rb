@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class PollEdited < NotificationDeliveryRouter
-    subject_model_class Poll
-
     # Poll edits notify only selected users other than the actor. A separate
     # mention occurrence owns every channel for newly mentioned users.
     def recipients_by_channel

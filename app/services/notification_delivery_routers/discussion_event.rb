@@ -4,8 +4,6 @@ module NotificationDeliveryRouters
   # channel for newly mentioned users. Announcements have no new mentions, so
   # their snapshotted exclusion is empty.
   class DiscussionEvent < NotificationDeliveryRouter
-    subject_model_class Discussion
-
     def recipients_by_channel
       discussion = subject_model
       users = discussion.topic.members

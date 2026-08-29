@@ -67,7 +67,6 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal expected.keys.sort, NotificationDeliveryRouter::ROUTERS.keys.sort
     expected.each do |kind, router_class|
       assert_equal router_class, NotificationDeliveryRouter.class_for(kind), kind
-      assert router_class.subject_model_class, kind
     end
   end
 
@@ -137,42 +136,6 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
-  test "typed routers reject a subject from the wrong domain" do
-    wrong_subjects = {
-      "discussion_announced" => @poll,
-      "discussion_edited" => @poll,
-      "group_mentioned" => memberships(:member_membership),
-      "invitation_accepted" => @poll,
-      "membership_created" => @poll,
-      "membership_resent" => @poll,
-      "membership_request_approved" => @poll,
-      "membership_requested" => @poll,
-      "new_coordinator" => @poll,
-      "new_delegate" => @poll,
-      "new_discussion" => @poll,
-      "outcome_announced" => @poll,
-      "outcome_created" => @poll,
-      "outcome_review_due" => @poll,
-      "outcome_updated" => @poll,
-      "poll_announced" => @outcome,
-      "poll_closing_soon" => @outcome,
-      "poll_edited" => @outcome,
-      "poll_expired" => @outcome,
-      "poll_reminder" => @outcome,
-      "reaction_created" => @poll,
-      "unknown_sender" => @poll,
-      "user_added_to_group" => @poll,
-      "user_mentioned" => memberships(:member_membership),
-      "comment_replied_to" => memberships(:member_membership)
-    }
-
-    wrong_subjects.each do |kind, subject|
-      error = assert_raises(ArgumentError, kind) do
-        route_notification(kind: kind, subject: subject)
-      end
-      assert_match(/subject must be/, error.message, kind)
-    end
-  end
 
   test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)

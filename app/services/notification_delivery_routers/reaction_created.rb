@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class ReactionCreated < NotificationDeliveryRouter
-    subject_model_class Reaction
-
     def translation_values
       {
         name: notification.actor.name,

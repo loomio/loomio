@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class OutcomeReviewDue < NotificationDeliveryRouter
-    subject_model_class Outcome
-
     def recipients_by_channel
       outcome = subject_model
       author_scope = User.active.where(id: outcome.author_id)

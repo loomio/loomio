@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class MembershipCreated < NotificationDeliveryRouter
-    subject_model_class Group
-
     def recipients_by_channel
       group = subject_model
       users = group.members

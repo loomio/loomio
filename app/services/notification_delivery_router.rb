@@ -44,20 +44,9 @@ class NotificationDeliveryRouter
     class_for(notification.kind).new(notification)
   end
 
-  def self.subject_model_class(model_class = nil)
-    @subject_model_class = model_class if model_class
-    @subject_model_class || raise(NotImplementedError, "#{name} must declare subject_model_class")
-  end
-
-  def self.validate_subject!(subject_model)
-    return subject_model if subject_model.is_a?(subject_model_class)
-
-    raise ArgumentError, "#{name.demodulize} subject must be a #{subject_model_class.name}"
-  end
-
   def initialize(notification)
     @notification = notification
-    @subject_model = self.class.validate_subject!(notification.subject_model)
+    @subject_model = notification.subject_model
   end
 
   def translated_values(locale:)

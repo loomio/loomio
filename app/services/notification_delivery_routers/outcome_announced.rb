@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class OutcomeAnnounced < NotificationDeliveryRouter
-    subject_model_class Outcome
-
     def recipients_by_channel
       outcome = subject_model
       users = outcome.topic.members

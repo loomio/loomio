@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class PollAnnounced < NotificationDeliveryRouter
-    subject_model_class Poll
-
     def recipients_by_channel
       poll = subject_model
       chatbots = poll.group.chatbots

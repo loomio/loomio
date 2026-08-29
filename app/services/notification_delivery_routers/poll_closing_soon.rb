@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class PollClosingSoon < NotificationDeliveryRouter
-    subject_model_class Poll
-
     # Author and voter modes choose different recipients, but every selected user
     # receives the same in-app occurrence with email and push filtered by their
     # effective topic settings.

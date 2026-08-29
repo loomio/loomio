@@ -1,7 +1,5 @@
 module NotificationDeliveryRouters
   class PollReminder < NotificationDeliveryRouter
-    subject_model_class Poll
-
     def recipients_by_channel
       poll = subject_model
       users = poll.topic.members
