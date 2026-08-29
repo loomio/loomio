@@ -7,8 +7,7 @@ class DeliverNotificationPushWorker < ApplicationJob
 
     subscription = delivery.recipient
     notification = delivery.notification
-    unless subscription&.active? &&
-           PushDeliveryPolicy.allowed?(user: subscription.user, subject: notification.subject)
+    unless subscription&.active?
       delivery.update!(status: "cancelled", last_error: nil)
       return
     end

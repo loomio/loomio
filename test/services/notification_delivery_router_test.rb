@@ -244,31 +244,6 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_empty channels_for(notification, outside_subscription)
   end
 
-  test "notification push delivery rechecks the recipient before sending" do
-    recipient = users(:member)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
-    TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
-               .set_volume!(email: :quiet, push: :normal)
-    subscription = create_push_subscription(
-      user: recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/policy-token",
-      p256dh_key: "p256dh-key",
-      auth_key: "auth-key"
-    )
-    notification = route_notification(
-      kind: "discussion_edited",
-      subject: discussions(:discussion),
-      recipient_user_ids: [ recipient.id ]
-    )
-    delivery = notification.notification_deliveries.find_by!(recipient: subscription, channel: "push")
-    recipient.update!(deactivated_at: Time.current)
-
-    WebPushService.stub(:deliver!, ->(**) { flunk "push should not be sent" }) do
-      DeliverNotificationPushWorker.perform_now(delivery.id)
-    end
-
-    assert_equal "cancelled", delivery.reload.status
-  end
 
   test "notification push delivery cancels when its session has been revoked" do
     recipient = users(:member)

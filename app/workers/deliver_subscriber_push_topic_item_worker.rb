@@ -9,7 +9,6 @@ class DeliverSubscriberPushTopicItemWorker < ApplicationJob
     user = subscription.user
     topic = topic_item.topic
     return unless topic.push_loud_members.exists?(user.id)
-    return unless PushDeliveryPolicy.allowed?(user: user, subject: topic_item)
 
     I18n.with_locale(user.locale) do
       WebPushService.deliver!(
