@@ -1,104 +1,77 @@
-<script lang="js">
-import Records  from '@/shared/services/records';
-import EventBus from "@/shared/services/event_bus";
-import Flash from "@/shared/services/flash";
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+<script setup>
+import { onMounted, ref } from 'vue';
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash from '@/shared/services/flash';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [WatchRecords, UrlFor],
-  data() {
-    return {
-      requests: [],
-      group: null,
-      emails: [],
-      aliases: []
-    };
-  },
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const emails = ref([]);
+const aliases = ref([]);
+const { watchRecords } = useWatchRecords();
 
-  mounted() {
-    Records.groups.findOrFetch(this.$route.params.key).then(group => {
-      this.group = group;
+function fetchAliases() {
+  Records.fetch({path: 'received_emails/aliases', params: {group_id: group.id}}).then(data => {
+    aliases.value = data.aliases;
+  });
+}
 
-      this.fetchEmails();
-      this.fetchAliases();
+function fetchEmails() {
+  return Records.fetch({path: 'received_emails', params: {group_id: group.id}});
+}
 
-      this.watchRecords({
-        key: "receivedEmails#{group.id}",
-        collections: ['receivedEmails'],
-        query: store => {
-          this.emails = store.receivedEmails.find({groupId: this.group.id, released: false})
-        }
-      });
-    }).catch(() => {
-      // GroupPage owns route-level group fetch error handling.
-    });
-  },
+function userById(id) {
+  return Records.users.find(id);
+}
 
-  methods: {
-    fetchAliases() {
-      Records.fetch({path: 'received_emails/aliases', params: {group_id: this.group.id}}).then(data => {
-        this.aliases = data.aliases
-      })
-    },
+function allow(email) {
+  EventBus.$emit('openModal', {
+    component: 'MemberEmailAliasModal',
+    props: {receivedEmail: email, group, callbackFn: fetchAliases}
+  });
+}
 
-    fetchEmails() {
-      Records.fetch({path: 'received_emails', params: {group_id: this.group.id }})
-    },
+function block(email) {
+  EventBus.$emit('openModal', {
+    component: 'ConfirmModal',
+    props: {
+      confirm: {
+        submit: () => Records.receivedEmails.remote.postMember(email.id, 'block').then(() => {
+          EventBus.$emit('closeModal');
+          Flash.success('email_to_group.email_blocked');
+          fetchAliases();
+        }),
+        text: {
+          title: 'email_to_group.confirm_block',
+          helptext: 'email_to_group.confirm_block_body',
+          submit: 'email_to_group.block_email'
+        },
+        textArgs: {sender: email.senderEmail}
+      }
+    }
+  });
+}
 
-    userById(id) {
-      return Records.users.find(id)
-    },
+function destroyAlias(alias) {
+  Records.remote.destroy('received_emails/destroy_alias', {id: alias.id}).then(() => {
+    fetchAliases();
+    fetchEmails();
+  });
+}
 
-    allow(email) {
-      EventBus.$emit('openModal', {
-        component: 'MemberEmailAliasModal',
-        props: {
-          receivedEmail: email,
-          group: this.group,
-          callbackFn: () => {
-            this.fetchAliases();
-          }
-        }
-      });
-    },
-
-    block(email) {
-      EventBus.$emit('openModal', {
-        component: 'ConfirmModal',
-        props: {
-          confirm: {
-            submit: () => {
-              return Records.receivedEmails.remote.postMember(email.id, 'block').then(() => {
-                EventBus.$emit('closeModal');
-                Flash.success('email_to_group.email_blocked')
-                this.fetchAliases();
-              });
-            },
-            text: {
-              title:    'email_to_group.confirm_block',
-              helptext: 'email_to_group.confirm_block_body',
-              submit:   'email_to_group.block_email'
-            },
-            textArgs: {
-              sender: email.senderEmail
-            }
-
-          }
-        }
-      });
-    },
-
-    destroyAlias(alias) {
-      Records.remote.destroy('received_emails/destroy_alias', {id: alias.id}).then(() => {
-        this.fetchAliases();
-        this.fetchEmails();
-      })
-    },
-  }
-
-};
+onMounted(() => {
+  fetchEmails();
+  fetchAliases();
+  watchRecords({
+    key: `receivedEmails${group.id}`,
+    collections: ['receivedEmails'],
+    query: () => {
+      emails.value = Records.receivedEmails.find({groupId: group.id, released: false});
+    }
+  });
+});
 </script>
 <template lang="pug">
 .group-emails-panel

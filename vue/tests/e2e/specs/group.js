@@ -82,6 +82,28 @@ module.exports = {
     page.expectNoElement('.group-page__name')
   },
 
+  'loads each routed panel from the parent group': (test) => {
+    page = pageHelper(test)
+
+    const openPanel = (path, selector) => {
+      test.execute((panelPath) => {
+        const parts = window.location.pathname.split('/').filter(Boolean)
+        const groupPath = parts[0] === 'g' ? `/g/${parts[1]}` : `/${parts[0]}`
+        window.location.href = `${groupPath}/${panelPath}`
+      }, [path])
+      test.waitForElementVisible(selector, 20000)
+    }
+
+    page.loadPath('setup_group')
+    page.expectElement('.discussions-panel')
+    openPanel('polls', '.polls-panel')
+    openPanel('members', '.members-panel')
+    openPanel('files', '.group-files-panel')
+    openPanel('tags', '.tags-panel')
+    openPanel('membership_requests', '.requests-panel')
+    openPanel('emails', '.group-emails-panel')
+  },
+
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
     page = pageHelper(test)
 
