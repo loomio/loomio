@@ -604,6 +604,23 @@ class PollServiceTest < ActiveSupport::TestCase
       "no poll_announced topic_item on reopen when notify_on_open is false"
   end
 
+  test "reopen returns an invalid poll without yielding a topic item" do
+    poll = create_poll
+    PollService.close(poll: poll, actor: @user)
+    poll.reload
+    topic_item_was_yielded = false
+
+    reopened_poll = PollService.reopen(
+      poll: poll,
+      params: { closing_at: 1.day.ago },
+      actor: @user
+    ) { topic_item_was_yielded = true }
+
+    assert_same poll, reopened_poll
+    assert_predicate reopened_poll, :invalid?
+    assert_not topic_item_was_yielded
+  end
+
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do

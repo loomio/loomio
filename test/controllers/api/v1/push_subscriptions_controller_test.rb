@@ -67,6 +67,12 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
+  test "returns not found when revoking an unknown subscription" do
+    delete :destroy, params: { endpoint: subscription_params[:endpoint] }
+
+    assert_response :not_found
+  end
+
   private
 
   def subscription_params

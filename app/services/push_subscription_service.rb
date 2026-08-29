@@ -46,11 +46,11 @@ class PushSubscriptionService
   def self.revoke!(session:, endpoint: nil, id: nil)
     scope = session.user.push_subscriptions.active
     subscription = if endpoint.present?
-      scope.find_by(endpoint_digest: Digest::SHA256.hexdigest(endpoint))
+      scope.find_by!(endpoint_digest: Digest::SHA256.hexdigest(endpoint))
     else
-      scope.find_by(id: id)
+      scope.find_by!(id: id)
     end
-    subscription&.revoke!
+    subscription.revoke!
     subscription
   end
 end

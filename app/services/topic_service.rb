@@ -89,13 +89,13 @@ class TopicService
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
-  def self.move(topic:, params:, actor:)
+  def self.move(topic:, params:, actor:, &on_topic_item)
     direct = ActiveModel::Type::Boolean.new.cast(params[:make_direct])
     destination = direct ? NullGroup.new : ModelLocator.new(:group, params).locate!
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    Topic.transaction do
+    topic_item = Topic.transaction do
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
@@ -112,6 +112,8 @@ class TopicService
         created_at: Time.current
       )
     end
+    on_topic_item&.call(topic_item)
+    topic
   end
 
   def self.direct_participant_ids(topic:, actor:)

@@ -83,7 +83,11 @@ class EventTest < ActiveSupport::TestCase
     reader = TopicReader.for(user: @admin, topic: @discussion.topic)
     reader.set_volume!(email: :normal, push: :normal)
 
-    item = CommentService.create(comment: Comment.new(body: "hello", parent: @discussion), actor: @admin)
+    item = nil
+    CommentService.create(
+      comment: Comment.new(body: "hello", parent: @discussion),
+      actor: @admin
+    ) { |created_topic_item| item = created_topic_item }
 
     assert reader.reload.has_read?(item.sequence_id)
     assert_predicate reader, :email_normal?
@@ -130,7 +134,10 @@ class EventTest < ActiveSupport::TestCase
     )
     ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
     comment = Comment.new(body: "push this activity", parent: @discussion)
-    topic_item = CommentService.create(comment: comment, actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) do |created_topic_item|
+      topic_item = created_topic_item
+    end
     clear_enqueued_jobs
     deliveries = []
 
@@ -158,7 +165,10 @@ class EventTest < ActiveSupport::TestCase
     )
     ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
     comment = Comment.new(body: "do not push this activity", parent: @discussion)
-    topic_item = CommentService.create(comment: comment, actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) do |created_topic_item|
+      topic_item = created_topic_item
+    end
     clear_enqueued_jobs
     subscription.session.destroy!
     refute PushSubscription.exists?(subscription.id)

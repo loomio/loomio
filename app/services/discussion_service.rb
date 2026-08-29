@@ -154,11 +154,12 @@ class DiscussionService
     discussion
   end
 
-  def self.discard(discussion:, actor:)
+  def self.discard(discussion:, actor:, &on_topic_item)
     actor.ability.authorize!(:discard, discussion)
     TopicService.discard_without_authorization(topic: discussion.topic, actor: actor)
     discussion.reload
     Sentry.metrics.count("discussion.discard")
-    discussion.created_topic_item
+    on_topic_item&.call(discussion.created_topic_item)
+    discussion
   end
 end

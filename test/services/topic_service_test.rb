@@ -151,8 +151,15 @@ class TopicServiceTest < ActiveSupport::TestCase
     public_group.add_member!(admin)
 
     discussion = discussions(:discussion)
-    TopicService.move(topic: discussion.topic, params: { group_id: public_group.id }, actor: admin)
-    assert_equal false, discussion.topic.reload.private
+    topic = discussion.topic
+    topic_item = nil
+    moved_topic = TopicService.move(topic: topic, params: { group_id: public_group.id }, actor: admin) do |moved_topic_item|
+      topic_item = moved_topic_item
+    end
+
+    assert_same topic, moved_topic
+    assert_equal "discussion_moved", topic_item.kind
+    assert_equal false, topic.reload.private
   end
 
   test "move updates privacy for private_only groups" do

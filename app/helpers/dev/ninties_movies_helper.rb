@@ -308,8 +308,7 @@ module Dev::NintiesMoviesHelper
     #'reaction_created'
     patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: "❤️")
-    new_comment_event = nil
-    CommentService.create(comment: patrick_comment, actor: patrick) { |created_topic_item| new_comment_event = created_topic_item }
+    CommentService.create(comment: patrick_comment, actor: patrick)
     ReactionService.update(reaction: reaction, params: {reaction: '🙂'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
@@ -332,14 +331,14 @@ module Dev::NintiesMoviesHelper
 
     #'membership_requested',
     membership_request = MembershipRequest.new(group: create_group)
-    topic_item = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
+    MembershipRequestService.create(membership_request: membership_request, actor: rudd)
 
     #'membership_request_approved',
     another_group = Group.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
     GroupService.create(group: another_group, actor: jennifer)
     membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
-    topic_item = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
-    approval_event = MembershipRequestService.approve(membership_request: membership_request, actor: jennifer)
+    MembershipRequestService.create(membership_request: membership_request, actor: patrick)
+    MembershipRequestService.approve(membership_request: membership_request, actor: jennifer)
 
     #'user_added_to_group',
     #notify patrick that he has been added to jens group

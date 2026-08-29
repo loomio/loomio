@@ -301,8 +301,13 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       poll_option_names: ['agree', 'disagree']
     }, actor: @admin)
 
-    DiscussionService.discard(discussion: discussion, actor: @admin)
+    topic_item = nil
+    discarded_discussion = DiscussionService.discard(discussion: discussion, actor: @admin) do |discarded_topic_item|
+      topic_item = discarded_topic_item
+    end
 
+    assert_same discussion, discarded_discussion
+    assert_equal discussion.created_topic_item, topic_item
     assert_not_nil discussion.reload.discarded_at
     assert_not_nil discussion.topic.reload.discarded_at
     assert_not_nil poll.reload.discarded_at

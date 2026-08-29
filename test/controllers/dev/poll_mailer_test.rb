@@ -144,19 +144,20 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     topic = @poll.topic
     TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!(email: 'loud', push: 'quiet') if topic
-    topic_item = if @poll.detached_anonymous?
-      cast_stance(@poll, @voter)
+    topic_item = nil
+    if @poll.detached_anonymous?
+      topic_item = cast_stance(@poll, @voter)
     else
       stance = @poll.stances.find_by!(participant_id: @voter.id, latest: true)
       StanceService.update(
         stance: stance,
         actor: @voter,
         params: cast_stance_params(@poll).merge(reason: "I support this proposal")
-      )
+      ) { |created_topic_item| topic_item = created_topic_item }
     end
     @scenario_observer = @actor
-    # Use the topic_item's user for actor (AnonymousUser for anonymous polls)
-    @scenario_actor = topic_item.is_a?(TopicItem) ? topic_item.user : @voter
+    # Anonymous ballots have no topic item, so use the voter as their actor.
+    @scenario_actor = topic_item&.user || @voter
     @email = find_email_for(@actor)
     @parsed_body = parse_email(@email)
   end

@@ -16,13 +16,11 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
   end
 
   def destroy
-    subscription = PushSubscriptionService.revoke!(
+    PushSubscriptionService.revoke!(
       session: Current.session,
       endpoint: params[:endpoint],
       id: params[:id]
     )
-    raise ActiveRecord::RecordNotFound unless subscription
-
     respond_ok
   end
 

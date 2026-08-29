@@ -324,7 +324,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
 
     assert_no_difference -> { Notification.where(kind: %w[stance_created stance_updated]).count } do
-      assert AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+      assert_same ballot, AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
     end
 
     ballot.reload

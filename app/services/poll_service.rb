@@ -355,7 +355,7 @@ class PollService
     poll.stv_results = nil if poll.poll_type == 'stv'
     unless poll.valid?
       Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return false
+      return poll
     end
 
     topic_item = Poll.transaction do
