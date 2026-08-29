@@ -58,15 +58,22 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal "normal", membership.volume_push
   end
 
-  test "groups uses record cache for serialized associations" do
+  test "groups includes the current user's notification volumes" do
     sign_in @user
     @group.add_member!(@user) unless @group.members.include?(@user)
+    membership = @group.membership_for(@user)
+    membership.update!(volume_email: :normal, volume_push: :loud)
 
     assert_no_record_cache_fallbacks do
       get :groups, format: :json
     end
 
     assert_response :success
+    serialized_membership = JSON.parse(response.body).fetch("memberships").find do |attributes|
+      attributes.fetch("id") == membership.id
+    end
+    assert_equal "normal", serialized_membership.fetch("volume_email")
+    assert_equal "loud", serialized_membership.fetch("volume_push")
   end
 
   test "destroy deactivates the users account" do
