@@ -1,114 +1,78 @@
-<script lang="js">
-import Records           from '@/shared/services/records';
-import RecordLoader      from '@/shared/services/record_loader';
-import EventBus          from '@/shared/services/event_bus';
-import AbilityService    from '@/shared/services/ability_service';
-
+<script setup>
+import { computed, onUnmounted, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import Records from '@/shared/services/records';
+import RecordLoader from '@/shared/services/record_loader';
+import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
 import { mdiMagnify } from '@mdi/js';
 import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
-import FormatDate from '@/mixins/format_date';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [WatchRecords, UrlFor, FormatDate],
-  data() {
-    return {
-      group: null,
-      attachmentLoader: null,
-      searchQuery: '',
-      items: [],
-      attachmentIds: [],
-      per: 25,
-      from: 0,
-      mdiMagnify
-    };
-  },
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const route = useRoute();
+const router = useRouter();
+const { t } = useI18n();
+const { watchRecords } = useWatchRecords();
+const attachmentLoader = ref(new RecordLoader({
+  collection: 'attachments',
+  params: {group_id: group.id, per: 25, from: 0}
+}));
+const searchQuery = ref(route.query.q || '');
+const items = ref([]);
+const attachmentIds = ref([]);
+const loading = computed(() => attachmentLoader.value.loading);
+const canAdminister = computed(() => AbilityService.canAdminister(group));
+const onQueryInput = debounce(value => router.replace({query: {q: value}}), 400);
 
-  created() {
-    this.onQueryInput = debounce(val => {
-      return this.$router.replace({ query: { q: val } });
-    } , 400);
+function query() {
+  const attachments = Records.attachments.collection.chain()
+    .find({id: {$in: attachmentIds.value}})
+    .find({filename: {$regex: new RegExp(escapeRegExp(searchQuery.value), 'i')}})
+    .data();
+  items.value = orderBy(attachments, 'createdAt', 'desc');
+}
 
-    this.group = Records.groups.fuzzyFind(this.$route.params.key);
+function fetch() {
+  return attachmentLoader.value.fetchRecords({q: searchQuery.value}).then(data => {
+    attachmentIds.value = uniq(attachmentIds.value.concat((data.attachments || []).map(attachment => attachment.id)));
+  }).then(query);
+}
 
-    EventBus.$emit('currentComponent', {
-      page: 'groupPage',
-      title: this.group.name,
-      group: this.group,
-      search: {
-        placeholder: this.$t('navbar.search_files', {name: this.group.parentOrSelf().name})
-      }
-    });
-
-    this.attachmentLoader = new RecordLoader({
-      collection: 'attachments',
-      params: {
-        group_id: this.group.id,
-        per: this.per,
-        from: this.from
-      }
-    });
-
-    this.watchRecords({
-      collections: ['attachments'],
-      query: () => this.query()
-    });
-
-    this.searchQuery = this.$route.query.q || '';
-    this.fetch();
-  },
-
-  watch: {
-    '$route.query.q'(val) {
-      this.searchQuery = val || '';
-      this.fetch();
-      this.query();
-    }
-  },
-
-  methods: {
-    query() {
-      const attachments = Records.attachments.collection.chain().
-                     find({id: {$in: this.attachmentIds}}).
-                     find({filename: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
-                     data();
-
-      this.items = orderBy(attachments, 'createdAt', 'desc');
-    },
-
-    fetch() {
-      this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
-        this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
-      }).then(() => this.query());
-    },
-
-    deleteAttachment(item) {
-      EventBus.$emit('openModal', {
-        component: 'ConfirmModal',
-        props: {
-          confirm: {
-            submit: item.destroy,
-            text: {
-              title: 'comment_form.attachments.remove_attachment',
-              helptext: 'group_files_panel.delete_confirmation',
-              submit: 'common.action.delete',
-              flash: 'poll_common_delete_modal.success'
-            }
-          }
+function deleteAttachment(item) {
+  EventBus.$emit('openModal', {
+    component: 'ConfirmModal',
+    props: {
+      confirm: {
+        submit: item.destroy,
+        text: {
+          title: 'comment_form.attachments.remove_attachment',
+          helptext: 'group_files_panel.delete_confirmation',
+          submit: 'common.action.delete',
+          flash: 'poll_common_delete_modal.success'
         }
-      });
+      }
     }
-  },
+  });
+}
 
-  computed: {
-    showLoadMore() { return !this.attachmentLoader.exhausted; },
-    loading() { return this.attachmentLoader.loading; },
-    canAdminister() { return AbilityService.canAdminister(this.group); }
-  }
-};
-
+EventBus.$emit('currentComponent', {
+  page: 'groupPage',
+  title: group.name,
+  group,
+  search: {placeholder: t('navbar.search_files', {name: group.parentOrSelf().name})}
+});
+watchRecords({collections: ['attachments'], query});
+watch(() => route.query.q, value => {
+  searchQuery.value = value || '';
+  fetch();
+  query();
+});
+onUnmounted(() => onQueryInput.cancel());
+fetch();
 </script>
 
 <template lang="pug">

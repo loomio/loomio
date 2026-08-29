@@ -117,5 +117,16 @@ export default defineConfig({
     renderBuiltUrl(filename) {
       return '/client3/' + filename;
     }
+  },
+
+  test: {
+    environment: 'jsdom',
+    include: ['tests/component/**/*.test.js'],
+    restoreMocks: true,
+    server: {
+      deps: {
+        inline: [/vuetify/]
+      }
+    }
   }
 });

@@ -1,184 +1,138 @@
-<script lang="js">
+<script setup>
+import { computed, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import AppConfig from '@/shared/services/app_config';
 import AbilityService from '@/shared/services/ability_service';
 import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
-import EventBus       from '@/shared/services/event_bus';
-import Session       from '@/shared/services/session';
-import { intersection, uniq } from 'lodash-es';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import { identity, intersection, pickBy, uniq } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import TagsFilterMenu from '@/components/tags/filter_menu';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  components: { TagsFilterMenu },
-  mixins: [WatchRecords, UrlFor],
-  data() {
-    return {
-      mdiMagnify,
-      group: null,
-      polls: [],
-      loader: null,
-      pollTypes: AppConfig.pollTypes,
-      per: 25,
-      dummyQuery: null
-    };
-  },
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const route = useRoute();
+const router = useRouter();
+const { watchRecords } = useWatchRecords();
+const polls = ref([]);
+const loader = ref(null);
+const pollTypes = AppConfig.pollTypes;
+const per = 25;
+const dummyQuery = ref(null);
+const page = computed({
+  get: () => parseInt(route.query.page) || 1,
+  set: value => router.replace({query: {...route.query, page: value}})
+});
+const totalPages = computed(() => Math.max(1, Math.ceil((loader.value?.total || 0) / per)));
+const canStartPoll = computed(() => AbilityService.canStartPoll(group));
 
-  created() {
-    this.group = Records.groups.find(this.$route.params.key);
+function mergeQuery(values) {
+  return {query: pickBy({...route.query, ...values}, identity)};
+}
 
-    this.initLoader();
+function startNewPoll() {
+  router.push(`/p/new?group_id=${group.id}`);
+}
 
-    this.watchRecords({
-      collections: ['polls', 'groups', 'stances'],
-      query: () => this.findRecords()
-    });
+function selectTag(tag) {
+  router.replace(mergeQuery({tag, page: null}));
+}
 
-    this.fetch().then(() => {
-      EventBus.$emit('currentComponent', {
-        page: 'groupPage',
-        title: this.group.name,
-        group: this.group
-      });
-    });
-  },
+function openSearchModal() {
+  const initialOrgId = group.isParent() ? group.id : group.parentId;
+  const initialGroupId = group.isParent() ? null : group.id;
 
-  methods: {
-    startNewPoll() {
-      this.$router.push('/p/new?group_id=' + this.group.id);
-    },
-
-    selectTag(tag) {
-      this.$router.replace(this.mergeQuery({tag, page: null}));
-    },
-
-    openSearchModal() {
-      let initialOrgId = null;
-      let initialGroupId = null;
-
-      if (this.group.isParent()) {
-        initialOrgId = this.group.id;
-      } else {
-        initialOrgId = this.group.parentId;
-        initialGroupId = this.group.id;
-      }
-
-      EventBus.$emit('openModal', {
-        component: 'SearchModal',
-        persistent: false,
-        maxWidth: 900,
-        props: {
-          initialType: 'Poll',
-          initialOrgId,
-          initialGroupId,
-          initialQuery: this.dummyQuery
-        }
-      });
-    },
-
-    initLoader() {
-      return this.loader = new PageLoader({
-        path: 'polls',
-        order: 'createdAt',
-        params: {
-          exclude_types: 'group reaction',
-          group_key: this.$route.params.key,
-          status: this.$route.query.status,
-          poll_type: this.$route.query.poll_type,
-          tags: this.$route.query.tag,
-          subgroups: this.$route.query.subgroups,
-          per: this.per
-        }
-      });
-    },
-
-    fetch() {
-      return this.loader.fetch(this.page).then(() => this.findRecords());
-    },
-
-    findRecords() {
-      const groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
-        case 'all': return this.group.organisationIds();
-        case 'none': return [this.group.id];
-        case 'mine': return uniq([this.group.id].concat(intersection(this.group.organisationIds(), Session.user().groupIds())));
-      } })();
-
-      let chain = Records.polls.collection.chain();
-      chain = chain.find({groupId: {$in: groupIds}});
-      chain = chain.find({discardedAt: null});
-
-      switch (this.$route.query.status) {
-        case 'active':
-          chain = chain.find({'closedAt': null});
-          break;
-        case 'closed':
-          chain = chain.find({'closedAt': {$ne: null}});
-          break;
-        case 'vote':
-          chain = chain.find({'closedAt': null}).where(p => p.iCanVote() && !p.iHaveVoted());
-          break;
-      }
-
-      if (this.$route.query.poll_type) {
-        chain = chain.find({'pollType': this.$route.query.poll_type});
-      }
-
-      if (this.$route.query.tag) {
-        const tagName = this.$route.query.tag;
-        chain = chain.where(poll => poll.topic().tags.includes(tagName));
-      }
-
-      if (this.loader.pageWindow[this.page]) {
-        if (this.page === 1) {
-          chain = chain.find({createdAt: {$gte: this.loader.pageWindow[this.page][0]}});
-        } else {
-          chain = chain.find({createdAt: {$jbetween: this.loader.pageWindow[this.page]}});
-        }
-        this.polls = chain.simplesort('createdAt', true).data();
-      } else {
-        this.polls = [];
-      }
+  EventBus.$emit('openModal', {
+    component: 'SearchModal',
+    persistent: false,
+    maxWidth: 900,
+    props: {
+      initialType: 'Poll',
+      initialOrgId,
+      initialGroupId,
+      initialQuery: dummyQuery.value
     }
-  },
+  });
+}
 
-  watch: {
-    '$route.query.status'() {
-      this.initLoader();
-      this.fetch();
-    },
-    '$route.query.poll_type'() {
-      this.initLoader();
-      this.fetch();
-    },
-    '$route.query.tag'() {
-      this.initLoader();
-      this.fetch();
-    },
-    '$route.query.subgroups'() {
-      this.initLoader();
-      this.fetch();
-    },
-    '$route.query.page'() {
-      this.fetch();
+function initLoader() {
+  loader.value = new PageLoader({
+    path: 'polls',
+    order: 'createdAt',
+    params: {
+      exclude_types: 'group reaction',
+      group_key: route.params.key,
+      status: route.query.status,
+      poll_type: route.query.poll_type,
+      tags: route.query.tag,
+      subgroups: route.query.subgroups,
+      per
     }
-  },
+  });
+}
 
-  computed: {
-    totalPages() {
-      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
-    },
-    canStartPoll() { return AbilityService.canStartPoll(this.group); },
-    page: {
-      get() { return parseInt(this.$route.query.page) || 1; },
-      set(val) {
-        return this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
-      }
+function fetch() {
+  return loader.value.fetch(page.value).then(findRecords);
+}
+
+function findRecords() {
+  const groupIds = (() => {
+    switch (route.query.subgroups || 'mine') {
+      case 'all': return group.organisationIds();
+      case 'none': return [group.id];
+      case 'mine': return uniq([group.id].concat(intersection(group.organisationIds(), Session.user().groupIds())));
     }
+  })();
+
+  let chain = Records.polls.collection.chain()
+    .find({groupId: {$in: groupIds}})
+    .find({discardedAt: null});
+
+  switch (route.query.status) {
+    case 'active': chain = chain.find({closedAt: null}); break;
+    case 'closed': chain = chain.find({closedAt: {$ne: null}}); break;
+    case 'vote': chain = chain.find({closedAt: null}).where(poll => poll.iCanVote() && !poll.iHaveVoted()); break;
   }
-};
+
+  if (route.query.poll_type) chain = chain.find({pollType: route.query.poll_type});
+  if (route.query.tag) chain = chain.where(poll => poll.topic().tags.includes(route.query.tag));
+
+  const pageWindow = loader.value.pageWindow[page.value];
+  if (!pageWindow) {
+    polls.value = [];
+    return;
+  }
+
+  chain = page.value === 1
+    ? chain.find({createdAt: {$gte: pageWindow[0]}})
+    : chain.find({createdAt: {$jbetween: pageWindow}});
+  polls.value = chain.simplesort('createdAt', true).data();
+}
+
+initLoader();
+watchRecords({
+  collections: ['polls', 'groups', 'stances'],
+  query: findRecords
+});
+watch(
+  () => [route.query.status, route.query.poll_type, route.query.tag, route.query.subgroups],
+  () => {
+    initLoader();
+    fetch();
+  }
+);
+watch(() => route.query.page, fetch);
+fetch().then(() => {
+  EventBus.$emit('currentComponent', {
+    page: 'groupPage',
+    title: group.name,
+    group
+  });
+});
 </script>
 
 <template lang="pug">

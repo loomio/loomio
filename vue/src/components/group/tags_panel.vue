@@ -1,62 +1,41 @@
-<script lang="js">
-import AppConfig from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
+<script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
-import EventBus from '@/shared/services/event_bus';
-import Session from '@/shared/services/session';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [WatchRecords],
-  data() {
-    return {
-      group: null,
-      topicsLoader: null,
-      topics: []
-    };
-  },
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const route = useRoute();
+const topicsLoader = ref(null);
+const topics = ref([]);
+const { watchRecords } = useWatchRecords();
 
-  created() {
-    this.init();
+function findRecords() {
+  topics.value = Records.topics.collection.chain()
+    .find({groupId: {$in: group.selfAndSubgroupIds()}})
+    .find({tags: {$contains: route.params.tag}})
+    .simplesort('lastActivityAt', true)
+    .data();
+}
 
-    return this.watchRecords({
-      collections: ['topics', 'groups', 'discussions', 'polls'],
-      query: () => this.findRecords()
-    });
-  },
+function init() {
+  topicsLoader.value = new RecordLoader({
+    collection: 'topics',
+    params: {filter: 'all', tags: route.params.tag, group_id: group.id}
+  });
+  topicsLoader.value.fetchRecords();
+  findRecords();
+}
 
-  watch: {
-    '$route.params.tag': 'init'
-  },
-
-  methods: {
-    init() {
-      this.group = Records.groups.find(this.$route.params.key);
-
-      this.topicsLoader = new RecordLoader({
-        collection: 'topics',
-        params: {
-          filter: 'all',
-          tags: this.$route.params.tag,
-          group_id: this.group.id
-        }
-      });
-
-      this.topicsLoader.fetchRecords();
-      this.findRecords();
-    },
-
-    findRecords() {
-      this.topics = Records.topics.collection.chain().
-        find({groupId: {$in: this.group.selfAndSubgroupIds()}}).
-        find({tags: {$contains: this.$route.params.tag}}).
-        simplesort('lastActivityAt', true).data();
-    }
-  }
-};
-
+watchRecords({
+  collections: ['topics', 'groups', 'discussions', 'polls'],
+  query: findRecords
+});
+watch(() => route.params.tag, init);
+init();
 </script>
 
 <template lang="pug">

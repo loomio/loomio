@@ -1,207 +1,145 @@
-<script lang="js">
-import Records        from '@/shared/services/records';
+<script setup>
+import { computed, onUnmounted, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
-import RecordLoader   from '@/shared/services/record_loader';
-import Session        from '@/shared/services/session';
-import EventBus       from '@/shared/services/event_bus';
-import { intersection, debounce, map } from 'lodash-es';
+import RecordLoader from '@/shared/services/record_loader';
+import Session from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import { debounce, identity, intersection, map, pickBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiMagnify } from '@mdi/js';
-import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [UrlFor, WatchRecords],
-  data() {
-    return {
-      mdiMagnify,
-      loader: null,
-      group: null,
-      per: 25,
-      order: 'created_at desc',
-      orders: [
-        {title: this.$t('members_panel.order_by_name'),  value:'users.name' },
-        {title: this.$t('members_panel.order_by_created'), value:'memberships.created_at' },
-        {title: this.$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
-        {title: this.$t('members_panel.order_by_admin_desc'), value:'admin desc' }
-      ],
-      memberships: []
-    };
-  },
-
-  created() {
-    this.onQueryInput = debounce(val => {
-      return this.$router.replace(this.mergeQuery({q: val}));
-    }
-    , 500);
-
-    Records.groups.findOrFetch(this.$route.params.key).then(group => {
-      this.group = group;
-
-      EventBus.$emit('currentComponent', {
-        page: 'groupPage',
-        title: this.group.name,
-        group: this.group,
-        search: {
-          placeholder: this.$t('navbar.search_members', {name: this.group.parentOrSelf().name})
-        }
-      });
-
-      this.loader = new RecordLoader({
-        collection: 'memberships',
-        params: {
-          exclude_types: 'group',
-          group_id: this.group.id,
-          per: this.per,
-          order: this.order,
-          subgroups: this.$route.query.subgroups
-        }
-      });
-
-      this.watchRecords({
-        collections: ['memberships', 'groups'],
-        query: this.query
-      });
-
-      this.refresh();
-    }).catch(() => {
-      // GroupPage owns route-level group fetch error handling.
-    });
-  },
-
-  methods: {
-    exact,
-    approximate,
-
-    query() {
-      let chain = Records.memberships.collection.chain();
-      switch (this.$route.query.subgroups) {
-        case 'mine':
-          chain = chain.find({groupId: {$in: intersection(this.group.organisationIds(), Session.user().groupIds())}});
-          break;
-        case 'all':
-          chain = chain.find({groupId: {$in: this.group.organisationIds()}});
-          break;
-        default:
-          chain = chain.find({groupId: this.group.id});
-      }
-
-      chain = chain.sort((a, b) => {
-        if (a.groupId === this.group.id) { return -1; }
-        if (b.groupId === this.group.id) { return 1; }
-        return 0;
-      });
-
-      const userIds = [];
-      const membershipIds = [];
-      chain.data().forEach(function(m) {
-        if (!userIds.includes(m.userId)) {
-          userIds.push(m.userId);
-          return membershipIds.push(m.id);
-        }
-      });
-
-      // @memberships = Records.memberships.collection.find(id: {$in: membershipIds})
-
-      // drop the chain, get a new one
-
-      chain = Records.memberships.collection.chain().find({id: {$in: membershipIds}});
-
-      if (this.$route.query.q) {
-        const query = this.$route.query.q;
-        const users = Records.users.collection.find({
-          $or: [
-            {name: {'$regex': [`^${query}`, "i"]}},
-            {email: {'$regex': [`${query}`, "i"]}},
-            {username: {'$regex': [`^${query}`, "i"]}},
-            {name: {'$regex': [` ${query}`, "i"]}}
-          ]});
-        const userIds = map(users, 'id');
-
-        chain = chain.where(membership => {
-          return userIds.includes(membership.userId) ||
-                 (membership.title || '').toLowerCase().includes(query.toLowerCase());
-        });
-      }
-
-      switch (this.$route.query.filter) {
-        case 'admin':
-          chain = chain.find({admin: true});
-          break;
-        case 'delegate':
-          chain = chain.find({delegate: true});
-          break;
-        case 'accepted':
-          chain = chain.find({acceptedAt: { $ne: null }});
-          break;
-        case 'pending':
-          chain = chain.find({acceptedAt: null});
-          break;
-      }
-
-      chain = chain.simplesort('id', true);
-
-      this.memberships = chain.data();
-    },
-
-    refresh() {
-      this.loader.fetchRecords({
-        from: 0,
-        q: this.$route.query.q,
-        order: this.order,
-        filter: this.$route.query.filter,
-        subgroups: this.$route.query.subgroups
-      });
-      this.query();
-    },
-    openShareableLinkForm() {
-      EventBus.$emit('openModal', {
-        component: 'GroupShareableLinkForm',
-        props: {
-          group: this.group
-        }
-      });
-    },
-    invite() {
-      EventBus.$emit('openModal', {
-        component: 'GroupInvitationForm',
-        props: {
-          group: this.group
-        }
-      });
-    }
-  },
-
-  computed: {
-    membershipRequestsPath() { return LmoUrlService.membershipRequest(this.group); },
-    showLoadMore() { return !this.loader.exhausted; },
-    totalRecords() {
-      if (this.$route.query.filter == 'pending') {
-        return this.group.pendingMembershipsCount;
-      } else {
-        return this.group.membershipsCount - this.group.pendingMembershipsCount;
-      }
-    },
-
-    canAddMembers() {
-      return AbilityService.canAddMembersToGroup(this.group);
-    },
-
-    showAdminWarning() {
-      return this.group.adminsInclude(Session.user()) &&
-      (this.group.adminMembershipsCount < 2) &&
-      ((this.group.membershipsCount - this.group.adminMembershipsCount) > 0);
-    }
-  },
-
-  watch: {
-    '$route.query': 'refresh'
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const route = useRoute();
+const router = useRouter();
+const { t } = useI18n();
+const { watchRecords } = useWatchRecords();
+const per = 25;
+const order = 'created_at desc';
+const memberships = ref([]);
+const loader = ref(new RecordLoader({
+  collection: 'memberships',
+  params: {
+    exclude_types: 'group',
+    group_id: group.id,
+    per,
+    order,
+    subgroups: route.query.subgroups
   }
-};
+}));
+const canAddMembers = computed(() => AbilityService.canAddMembersToGroup(group));
+const showAdminWarning = computed(() =>
+  group.adminsInclude(Session.user()) &&
+  group.adminMembershipsCount < 2 &&
+  group.membershipsCount - group.adminMembershipsCount > 0
+);
 
+function mergeQuery(values) {
+  return {query: pickBy({...route.query, ...values}, identity)};
+}
 
+function routeFor(model, action, params) {
+  return LmoUrlService.route({model, action, params});
+}
+
+const onQueryInput = debounce(value => router.replace(mergeQuery({q: value})), 500);
+
+function query() {
+  let chain = Records.memberships.collection.chain();
+  switch (route.query.subgroups) {
+    case 'mine':
+      chain = chain.find({groupId: {$in: intersection(group.organisationIds(), Session.user().groupIds())}});
+      break;
+    case 'all':
+      chain = chain.find({groupId: {$in: group.organisationIds()}});
+      break;
+    default:
+      chain = chain.find({groupId: group.id});
+  }
+
+  chain = chain.sort((a, b) => {
+    if (a.groupId === group.id) return -1;
+    if (b.groupId === group.id) return 1;
+    return 0;
+  });
+
+  const userIdsSeen = [];
+  const membershipIds = [];
+  chain.data().forEach(membership => {
+    if (!userIdsSeen.includes(membership.userId)) {
+      userIdsSeen.push(membership.userId);
+      membershipIds.push(membership.id);
+    }
+  });
+  chain = Records.memberships.collection.chain().find({id: {$in: membershipIds}});
+
+  if (route.query.q) {
+    const searchQuery = route.query.q;
+    const users = Records.users.collection.find({
+      $or: [
+        {name: {$regex: [`^${searchQuery}`, 'i']}},
+        {email: {$regex: [`${searchQuery}`, 'i']}},
+        {username: {$regex: [`^${searchQuery}`, 'i']}},
+        {name: {$regex: [` ${searchQuery}`, 'i']}}
+      ]
+    });
+    const userIds = map(users, 'id');
+    chain = chain.where(membership =>
+      userIds.includes(membership.userId) ||
+      (membership.title || '').toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
+  switch (route.query.filter) {
+    case 'admin': chain = chain.find({admin: true}); break;
+    case 'delegate': chain = chain.find({delegate: true}); break;
+    case 'accepted': chain = chain.find({acceptedAt: {$ne: null}}); break;
+    case 'pending': chain = chain.find({acceptedAt: null}); break;
+  }
+
+  memberships.value = chain.simplesort('id', true).data();
+}
+
+function refresh() {
+  loader.value.fetchRecords({
+    from: 0,
+    q: route.query.q,
+    order,
+    filter: route.query.filter,
+    subgroups: route.query.subgroups
+  });
+  query();
+}
+
+function openShareableLinkForm() {
+  EventBus.$emit('openModal', {
+    component: 'GroupShareableLinkForm',
+    props: {group}
+  });
+}
+
+function invite() {
+  EventBus.$emit('openModal', {
+    component: 'GroupInvitationForm',
+    props: {group}
+  });
+}
+
+EventBus.$emit('currentComponent', {
+  page: 'groupPage',
+  title: group.name,
+  group,
+  search: {placeholder: t('navbar.search_members', {name: group.parentOrSelf().name})}
+});
+watchRecords({collections: ['memberships', 'groups'], query});
+watch(() => route.query, refresh);
+onUnmounted(() => onQueryInput.cancel());
+refresh();
 </script>
 
 <template lang="pug">
@@ -251,7 +189,7 @@ export default
         span(v-t="'members_panel.sharable_link'")
       v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
         v-if='group.isVisibleToPublic && canAddMembers'
-        :to="urlFor(group, 'membership_requests')"
+        :to="routeFor(group, 'membership_requests')"
         variant="text"
       )
         span(v-t="'members_panel.requests'")
@@ -267,7 +205,7 @@ export default
               user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title
               template(v-if="membership.acceptedAt")
-                router-link.text-medium-emphasis.text-decoration-none(:to="urlFor(membership.user())") {{ membership.user().name }}
+                router-link.text-medium-emphasis.text-decoration-none(:to="routeFor(membership.user())") {{ membership.user().name }}
                 span.text-medium-emphasis(v-if="membership.acceptedAt && membership.userEmail")
                   space
                   span &lt;{{membership.userEmail}}&gt;

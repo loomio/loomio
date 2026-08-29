@@ -1,53 +1,34 @@
-<script lang="js">
-import Records        from '@/shared/services/records';
+<script setup>
+import { computed, ref } from 'vue';
+import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
-import RecordLoader   from '@/shared/services/record_loader';
-import Session        from '@/shared/services/session';
 import { orderBy } from 'lodash-es';
-import LmoUrlService from '@/shared/services/lmo_url_service';
-import { exact, approximate } from '@/shared/helpers/format_time';
-import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [UrlFor, WatchRecords],
-  data() {
-    return {
-      requests: [],
-      group: null
-    };
-  },
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const requests = ref([]);
+const { watchRecords } = useWatchRecords();
 
-  created() {
-    Records.groups.findOrFetch(this.$route.params.key).then(group => {
-      this.group = group;
+const unapprovedRequestsByOldestFirst = computed(() => {
+  const unapproved = requests.value.filter(request => !request.respondedAt);
+  return orderBy(unapproved, ['createdAt'], ['asc']);
+});
 
-      if (AbilityService.canManageMembershipRequests(this.group)) {
-        Records.membershipRequests.fetchPendingByGroup(this.group.key, {per: 100});
-        Records.membershipRequests.fetchPreviousByGroup(this.group.key, {per: 100});
-        this.watchRecords({
-          collections: ['membershipRequests'],
-          query: store => {this.requests = this.group.membershipRequests(); }
-        });
-      }
-    }).catch(() => {
-      // GroupPage owns route-level group fetch error handling.
-    });
-  },
+const approvedRequestsByNewestFirst = computed(() => {
+  const approved = requests.value.filter(request => request.respondedAt);
+  return orderBy(approved, ['respondedAt'], ['desc']);
+});
 
-  computed: {
-    unapprovedRequestsByOldestFirst() {
-      const unapproved = this.requests.filter(request => !request.respondedAt);
-      return orderBy(unapproved, ['createdAt'], ['asc']);
-    },
-
-    approvedRequestsByNewestFirst() {
-      const approved = this.requests.filter(request => request.respondedAt);
-      return orderBy(approved, ['respondedAt'], ['desc']);
-    }
-  }
-};
+if (AbilityService.canManageMembershipRequests(group)) {
+  Records.membershipRequests.fetchPendingByGroup(group.key, {per: 100});
+  Records.membershipRequests.fetchPreviousByGroup(group.key, {per: 100});
+  watchRecords({
+    collections: ['membershipRequests'],
+    query: () => { requests.value = group.membershipRequests(); }
+  });
+}
 </script>
 <template lang="pug">
 .requests-panel
