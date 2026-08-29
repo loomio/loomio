@@ -25,7 +25,7 @@ The notification list tells you when someone mentions you, invites you to vote, 
 
 Push notifications display new activity through your browser or operating system, including when Loomio is not open. Go to **Notification settings** and choose **Enable on this browser**. Your browser will ask for permission.
 
-Permission applies separately to each browser and device. The Notification settings page lists enabled browsers so you can remove one that you no longer use. Signing out disables push notifications for the current browser.
+Permission applies separately to each browser and device. After enabling push, select **Test connection** to send a notification through Loomio to every enabled browser. The Notification settings page lists enabled browsers so you can remove one that you no longer use. Signing out disables push notifications for the current browser.
 
 If you previously blocked notifications, use your browser's site settings to allow them before enabling push in Loomio. Push notifications require HTTPS and may not be available in every browser.
 

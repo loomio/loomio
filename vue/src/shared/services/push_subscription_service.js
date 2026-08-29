@@ -73,4 +73,8 @@ export default new class PushSubscriptionService {
       await subscription.unsubscribe();
     }
   }
+
+  sendTest() {
+    return client.post('send_test', {});
+  }
 };

@@ -24,6 +24,13 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
     respond_ok
   end
 
+  def send_test
+    current_user.push_subscriptions.active.pluck(:id).each do |subscription_id|
+      DeliverTestPushWorker.perform_later(subscription_id)
+    end
+    respond_ok
+  end
+
   private
 
   def subscription_params

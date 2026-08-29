@@ -28,6 +28,17 @@ class PushPayloadService
     ).payload
   end
 
+  def self.for_test
+    {
+      title: I18n.t("push_notifications.title"),
+      body: I18n.t("push_notifications.enabled"),
+      icon: AppConfig.theme[:icon192_src],
+      badge: AppConfig.theme[:favicon32_src],
+      tag: "push-notification-test",
+      data: { url: "/email_preferences" }
+    }
+  end
+
   def initialize(kind:, actor:, values:, url:, tag:)
     @kind = kind
     @actor = actor

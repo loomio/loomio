@@ -8,6 +8,7 @@ import AppConfig from '@/shared/services/app_config';
 const client = new RestfulClient('push_subscriptions');
 const browserEnabled = ref(false);
 const loading = ref(true);
+const testing = ref(false);
 const subscriptions = ref([]);
 const configured = computed(() => AppConfig.webPushEnabled);
 
@@ -67,15 +68,26 @@ async function remove(subscription) {
     loading.value = false;
   }
 }
+
+async function sendTest() {
+  testing.value = true;
+  try {
+    await PushSubscriptionService.sendTest();
+  } catch (_error) {
+    Flash.error('common.something_went_wrong');
+  } finally {
+    testing.value = false;
+  }
+}
 </script>
 
 <template lang="pug">
 v-card.mb-4(v-if="configured" :title="$t('push_notifications.title')" :subtitle="$t('push_notifications.subtitle')")
   v-card-text
     v-alert.mb-4(v-if="!supported" type="info" variant="tonal")
-      span(v-t="'push_notifications.not_supported'")
+      span {{ $t('push_notifications.not_supported') }}
     v-alert.mb-4(v-else-if="denied" type="warning" variant="tonal")
-      span(v-t="'push_notifications.permission_denied'")
+      span {{ $t('push_notifications.permission_denied') }}
 
     v-btn(
       v-if="supported && !browserEnabled"
@@ -84,17 +96,25 @@ v-card.mb-4(v-if="configured" :title="$t('push_notifications.title')" :subtitle=
       prepend-icon="mdi-bell-plus-outline"
       :loading="loading"
       @click="enable")
-      span(v-t="'push_notifications.enable_device'")
+      span {{ $t('push_notifications.enable_device') }}
     v-btn(
       v-else-if="supported"
       variant="tonal"
       prepend-icon="mdi-bell-off-outline"
       :loading="loading"
       @click="disable")
-      span(v-t="'push_notifications.disable_device'")
+      span {{ $t('push_notifications.disable_device') }}
+    v-btn.ml-2(
+      v-if="subscriptions.length"
+      variant="tonal"
+      prepend-icon="mdi-send-outline"
+      :disabled="loading"
+      :loading="testing"
+      @click="sendTest")
+      span {{ $t('chatbot.test_connection') }}
 
     v-list.mt-4(v-if="subscriptions.length" lines="two")
-      v-list-subheader(v-t="'push_notifications.devices'")
+      v-list-subheader {{ $t('push_notifications.devices') }}
       v-list-item(v-for="subscription in subscriptions" :key="subscription.id")
         template(v-slot:prepend)
           common-icon(name="mdi-monitor-cellphone")
