@@ -164,6 +164,14 @@ class AppConfig
     }
   end
 
+  def self.user_manual
+    {
+      title: ENV['LOOMIO_HELP_TITLE'].presence,
+      subtitle: ENV['LOOMIO_HELP_SUBTITLE'].presence,
+      url: ENV['LOOMIO_HELP_URL'].presence
+    }
+  end
+
   def self.json_parse_or_false(name)
     if ENV[name]
       JSON.parse(ENV[name])

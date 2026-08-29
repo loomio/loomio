@@ -16,6 +16,7 @@ module Boot
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
         theme:               AppConfig.theme,
+        userManual:          AppConfig.user_manual,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         plausible_src:       ENV['PLAUSIBLE_SRC'],
         plausible_site:      ENV['PLAUSIBLE_SITE'],
