@@ -1,5 +1,6 @@
 module ThrottleService
   PERIODS = {
+    'minute' => 1.minute,
     'hour' => 1.hour,
     'day' => 1.day
   }.freeze
@@ -14,7 +15,7 @@ module ThrottleService
 
   def self.can?(key: 'default-key', id: 1, max: 100, inc: 1, per: 'hour')
     per = normalize_period(per)
-    limit = ENV.fetch('THROTTLE_MAX_' + key, max).to_i
+    limit = ENV.fetch(env_key(key), max).to_i
     count = Rails.cache.increment(cache_key(key: key, id: id, per: per), inc, initial: 0, expires_in: PERIODS.fetch(per))
 
     count.to_i <= limit
@@ -37,13 +38,17 @@ module ThrottleService
     "THROTTLE-#{per.upcase}-NAMESPACE"
   end
 
+  def self.env_key(key)
+    "THROTTLE_MAX_#{key.to_s.underscore.upcase}"
+  end
+
   def self.namespace(per)
     Rails.cache.fetch(namespace_cache_key(per)) { 0 }
   end
 
   def self.normalize_period(per)
     per.to_s.tap do |period|
-      raise "Throttle per is not hour or day: #{per}" unless PERIODS.key?(period)
+      raise "Unsupported throttle period: #{per}" unless PERIODS.key?(period)
     end
   end
 end

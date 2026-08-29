@@ -4,7 +4,7 @@ class DiscussionTemplateService
 
     discussion_template.assign_attributes(author: actor)
 
-    return false unless discussion_template.valid?
+    return discussion_template unless discussion_template.valid?
 
     discussion_template.key = nil if discussion_template.key
     discussion_template.save!
@@ -17,7 +17,7 @@ class DiscussionTemplateService
     actor.ability.authorize! :update, discussion_template
 
     discussion_template.assign_attributes_and_files(params.except(:group_id))
-    return false unless discussion_template.valid?
+    return discussion_template unless discussion_template.valid?
     discussion_template.save!
 
     discussion_template

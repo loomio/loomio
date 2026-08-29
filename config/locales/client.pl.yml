@@ -947,7 +947,7 @@ pl:
     audiences:
       group: Członkowie %{name}
       everyone_in_the_group: Wszyscy w grupie
-      discussion_group: Wszyscy w wątku
+      topic: Wszyscy w wątku
       voters: Wszyscy zaproszeni do głosowania
       decided_voters: Wszyscy, którzy zagłosowali
       undecided_voters: Niezdecydowani głosujący

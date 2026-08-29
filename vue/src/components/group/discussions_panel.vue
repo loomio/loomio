@@ -76,6 +76,8 @@ export default
 
         this.fetch();
         this.query();
+      }).catch(() => {
+        // GroupPage owns route-level group fetch error handling.
       });
     },
 

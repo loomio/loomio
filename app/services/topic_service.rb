@@ -6,6 +6,15 @@ class TopicService
     group ? !group.public_discussions_only? : true
   end
 
+  def self.validate_topicable(topicable)
+    topicable_valid = topicable.valid?
+    topic_valid = topicable.topic.valid?
+    topicable.topic.errors.each do |error|
+      topicable.errors.add(error.attribute, error.message)
+    end
+    topicable_valid && topic_valid
+  end
+
   def self.invite(topic:, actor:, params:)
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                            emails: params[:recipient_emails],
@@ -55,8 +64,11 @@ class TopicService
     actor.ability.authorize! :update, topic
     topic.assign_attributes(params)
     rearrange = topic.max_depth_changed?
+    return topic unless topic.valid?
+
     topic.save!
     RepairTopicWorker.perform_later(topic.id) if rearrange
+    topic
   end
 
   def self.update_tags(topic:, tags:, actor:)
@@ -450,11 +462,11 @@ class TopicService
     volume_by_user_id = {}
 
     if topic.group_id
-      Membership.where(group_id: topic.group_id,
-                      user_id: users.pluck(:id)).find_each do |m|
-        volume_by_user_id[m.user_id] = [
-          m.volume_email || m.user.volume_email_default,
-          m.volume_push || m.user.volume_push_default
+      Membership.active.where(group_id: topic.group_id,
+                              user_id: users.pluck(:id)).find_each do |membership|
+        volume_by_user_id[membership.user_id] = [
+          membership.volume_email || membership.user.volume_email_default,
+          membership.volume_push || membership.user.volume_push_default
         ]
       end
     end
@@ -466,7 +478,7 @@ class TopicService
     new_topic_readers = users.map do |user|
       email, push = volume_by_user_id.fetch(
         user.id,
-        [user.volume_email_default, user.volume_push_default]
+        [ user.volume_email_default, user.volume_push_default ]
       )
       TopicReader.new(user: user,
                       topic: topic,

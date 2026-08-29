@@ -96,7 +96,7 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
   end
 
   test "fetch short-circuits on unsafe URL without making a request" do
-    # If HTTParty.get were called, WebMock would raise (net connect disallowed).
+    # If an HTTP request were made, WebMock would raise (net connect disallowed).
     assert_nil SafeHttpService.fetch('http://169.254.169.254/latest/meta-data/')
   end
 

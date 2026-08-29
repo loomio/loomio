@@ -1,6 +1,6 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 const getCSRF = () => decodeURIComponent(document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/)?.[1] || '');
 

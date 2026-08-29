@@ -17,9 +17,9 @@ class TopicServiceTest < ActiveSupport::TestCase
     @comment3 = Comment.new(body: "comment3", parent: @comment2)
 
     @discussion_event = @discussion.created_topic_item
-    @comment1_event = CommentService.create(comment: @comment1, actor: @user)
-    @comment2_event = CommentService.create(comment: @comment2, actor: @user)
-    @comment3_event = CommentService.create(comment: @comment3, actor: @user)
+    CommentService.create(comment: @comment1, actor: @user) { |created_topic_item| @comment1_event = created_topic_item }
+    CommentService.create(comment: @comment2, actor: @user) { |created_topic_item| @comment2_event = created_topic_item }
+    CommentService.create(comment: @comment3, actor: @user) { |created_topic_item| @comment3_event = created_topic_item }
 
     poll = PollService.create(params: {
       title: "Test Poll",

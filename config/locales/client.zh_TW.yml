@@ -948,7 +948,7 @@ zh_TW:
     audiences:
       group: "%{name} 的成員"
       everyone_in_the_group: 小組中的每個人
-      discussion_group: 在討論串中的每個人
+      topic: 在討論串中的每個人
       voters: 被邀請投票的每個人
       decided_voters: 已經投票的每個人
       undecided_voters: 未決定的選民

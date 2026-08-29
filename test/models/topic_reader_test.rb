@@ -40,10 +40,12 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    older_event = CommentService.create(comment: comment1, actor: @admin)
+    older_event = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| older_event = created_topic_item }
 
     comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
-    newer_event = CommentService.create(comment: comment2, actor: @admin)
+    newer_event = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| newer_event = created_topic_item }
 
     @reader.viewed!([newer_event, older_event].map(&:sequence_id))
     assert_equal 2, @reader.read_items_count
@@ -54,10 +56,12 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    older_event = CommentService.create(comment: comment1, actor: @admin)
+    older_event = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| older_event = created_topic_item }
 
     comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
-    newer_event = CommentService.create(comment: comment2, actor: @admin)
+    newer_event = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| newer_event = created_topic_item }
 
     @reader.viewed!(newer_event.sequence_id)
     assert_not @reader.has_read?(older_event.sequence_id)
@@ -69,7 +73,8 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    topic_item = CommentService.create(comment: comment, actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) { |created_topic_item| topic_item = created_topic_item }
 
     @reader.viewed!(topic_item.sequence_id)
     assert_equal 1, @reader.read_items_count

@@ -945,7 +945,7 @@ sl:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Vsi v skupini
-      discussion_group: Vsi v temi
+      topic: Vsi v temi
       voters: K glasovanju vabljeni vsi
       decided_voters: Vsi, ki so glasovali
       undecided_voters: Neopredeljeni volivci

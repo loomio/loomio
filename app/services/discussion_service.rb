@@ -20,12 +20,13 @@ class DiscussionService
     discussion
   end
 
-  def self.create(params:, actor:)
+  def self.create(params:, actor:, &on_topic_item)
     discussion = build(params: params, actor: actor)
+    actor.ability.authorize!(:create, discussion)
+    TagService.authorize_create_tag_names!(discussion.group, discussion.topic.tags, actor)
+    return discussion unless TopicService.validate_topicable(discussion)
 
-    Discussion.transaction do
-      actor.ability.authorize!(:create, discussion)
-      TagService.authorize_create_tag_names!(discussion.group, discussion.topic.tags, actor)
+    topic_item = Discussion.transaction do
       discussion.save!
       discussion.topic.save!
       discussion.topic.update_sequence_info!
@@ -79,12 +80,14 @@ class DiscussionService
         actor: actor,
         already_notified_user_ids: users.pluck(:id)
       )
+      topic_item
     end
     EventBus.broadcast('discussion_create', discussion, actor)
+    on_topic_item&.call(topic_item)
     discussion
   end
 
-  def self.update(discussion:, actor:, params:)
+  def self.update(discussion:, actor:, params:, &on_topic_item)
     actor.ability.authorize! :update, discussion
 
     UserInviter.authorize!(user_ids: params[:recipient_user_ids],
@@ -99,7 +102,7 @@ class DiscussionService
     discussion.assign_attributes_and_files(params)
     unless discussion.valid?
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
-      return false
+      return discussion
     end
     topic_item = nil
     Discussion.transaction do
@@ -147,7 +150,8 @@ class DiscussionService
       topic_item
     end
     MessageChannelService.publish_topic_model(discussion) unless topic_item
-    topic_item || discussion
+    on_topic_item&.call(topic_item) if topic_item
+    discussion
   end
 
   def self.discard(discussion:, actor:)

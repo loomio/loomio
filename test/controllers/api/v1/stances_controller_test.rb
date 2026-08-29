@@ -379,6 +379,37 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "in-place update returns the existing topic item with the updated stance" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    option = @poll.poll_options.first
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: option.id } ],
+        reason: "Initial response"
+      }
+    }
+    assert_response :success
+    topic_item = TopicItem.find_by!(itemable: stance, kind: "stance_created")
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: option.id } ],
+        reason: "Edited response"
+      }
+    }
+
+    assert_response :success
+    payload = JSON.parse(response.body)
+    assert_equal [ topic_item.id ], payload.fetch("topic_items").pluck("id")
+    assert_equal "Edited response", payload.fetch("stances").find { |record| record["id"] == stance.id }.fetch("reason")
+  end
+
   test "update requires a reason when disagreeing" do
     @poll.update!(stance_reason_required: "required_for_disagree_or_block")
     stance = @poll.stances.find_by!(participant_id: @user.id)

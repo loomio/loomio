@@ -36,7 +36,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
     topic_item = nil
     assert_difference 'Outcome.count', 1 do
-      topic_item = OutcomeService.create(outcome: @new_outcome, actor: @user)
+      OutcomeService.create(outcome: @new_outcome, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     end
 
     assert_equal @new_outcome.statement, @poll.reload.current_outcome.statement
@@ -62,11 +62,13 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
-    topic_item = OutcomeService.create(
+    topic_item = nil
+    created_outcome = OutcomeService.create(
       outcome: @new_outcome,
       actor: @user,
       params: { recipient_user_ids: [ recipient.id ] }
-    )
+    ) { |created_topic_item| topic_item = created_topic_item }
+    assert_equal @new_outcome, created_outcome
     notification = Notification.find_by!(kind: "outcome_created", subject: topic_item)
 
     assert_equal @poll.topic_id, topic_item.topic_id
@@ -153,10 +155,25 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
   test "does not create an invalid outcome" do
     @new_outcome.statement = ""
+    topic_item_was_yielded = false
 
     assert_difference 'Outcome.count', 0 do
-      OutcomeService.create(outcome: @new_outcome, actor: @user)
+      created_outcome = OutcomeService.create(outcome: @new_outcome, actor: @user) { topic_item_was_yielded = true }
+
+      assert_same @new_outcome, created_outcome
+      assert_predicate created_outcome, :invalid?
     end
+    assert_not topic_item_was_yielded
+  end
+
+  test "returns an invalid outcome without updating it" do
+    original_statement = @outcome.statement
+
+    updated_outcome = OutcomeService.update(outcome: @outcome, actor: @user, params: { statement: "" })
+
+    assert_same @outcome, updated_outcome
+    assert_predicate updated_outcome, :invalid?
+    assert_equal original_statement, @outcome.reload.statement
   end
 
   test "invitation rolls back a newly created recipient when notification creation fails" do

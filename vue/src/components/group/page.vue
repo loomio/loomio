@@ -60,6 +60,7 @@ export default
 
   methods: {
     init() {
+      this.group = null;
       Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
         if (this.group.newHost) { window.location.host = this.group.newHost; }

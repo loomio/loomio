@@ -112,9 +112,10 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "score bounds must be nonnegative and ordered" do
-    assert_raises(ActiveRecord::RecordInvalid) do
-      create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
-    end
+    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+
+    assert_predicate invalid_poll, :invalid?
+    assert_not invalid_poll.persisted?
 
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
 

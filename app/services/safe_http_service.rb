@@ -86,7 +86,7 @@ module SafeHttpService
     end
     threads.each { |t| t.join }
     previews.compact
-  rescue SocketError, URI::InvalidURIError, HTTParty::UnsupportedURIScheme, HTTParty::RedirectionTooDeep
+  rescue SocketError, URI::InvalidURIError
     []
   end
 

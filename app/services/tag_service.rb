@@ -6,7 +6,7 @@ class TagService
     tag.name = clean_tag_name(tag.name)
     actor.ability.authorize! :create, tag
 
-    return false unless tag.valid?
+    return tag unless tag.valid?
     tag.save!
     EventBus.broadcast 'tag_create', tag, actor
     MessageChannelService.publish_models([tag], group_id: tag.group.id)

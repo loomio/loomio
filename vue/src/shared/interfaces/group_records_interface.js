@@ -21,14 +21,8 @@ export default class GroupRecordsInterface extends BaseRecordsInterface {
 
   findOrFetch(id, options) {
     if (options == null) { options = {}; }
-    const record = this.fuzzyFind(id);
-    if (record) {
-      this.remote.fetchById(id, options);
-      return Promise.resolve(record);
-    } else {
-      return this.remote.fetchById(id, options)
+    return this.remote.fetchById(id, options)
       .then(() => this.fuzzyFind(id));
-    }
   }
 
   fetchByParent(parentGroup) {

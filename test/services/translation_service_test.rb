@@ -92,4 +92,43 @@ class TranslationServiceTest < ActiveSupport::TestCase
     assert_equal 'fr', translate_options[:to]
     assert_equal :text, translate_options[:format]
   end
+
+  test "charges source characters to minute and daily application limits" do
+    calls = []
+
+    ThrottleService.stub(:can?, ->(**args) { calls << args; true }) do
+      TranslationService.translation_limit!('four')
+    end
+
+    assert_equal [
+      { key: 'TranslationCharactersMinute', id: 'application', max: 10_000, inc: 4, per: 'minute' },
+      { key: 'TranslationCharactersDay', id: 'application', max: 50_000, inc: 4, per: 'day' }
+    ], calls
+  end
+
+  test "stops before calling Google when the application limit is reached" do
+    google_service = Object.new
+    google_service.define_singleton_method(:translate) do |*, **|
+      raise "Google Translate should not be called after reaching the limit"
+    end
+
+    Google::Cloud::Translate.stub(:translation_v2_service, google_service) do
+      ThrottleService.stub(:can?, false) do
+        error = assert_raises(TranslationService::LimitReached) do
+          TranslationService.translated_fields_for(discussions(:discussion), to: 'fr')
+        end
+        assert_equal "Google Translation application character limit reached", error.message
+      end
+    end
+  end
+
+  test "plain text falls back to source content when the application limit is reached" do
+    discussion = discussions(:discussion)
+
+    TranslationService.stub(:show_translation, true) do
+      TranslationService.stub(:create, ->(**) { raise TranslationService::LimitReached }) do
+        assert_equal discussion.title, TranslationService.plain_text(discussion, :title, @user)
+      end
+    end
+  end
 end

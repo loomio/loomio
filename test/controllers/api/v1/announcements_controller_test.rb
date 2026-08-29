@@ -224,9 +224,97 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     get :available_audiences, params: { discussion_id: discussion.id, include_actor: 1 }
 
     assert_response :success
-    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
-    assert_includes audience_ids, "discussion_group"
+    audiences = JSON.parse(response.body).fetch("audiences")
+    audience_ids = audiences.pluck("id")
+    topic_audience = audiences.find { |audience| audience["id"] == "topic" }
+
+    assert_includes audience_ids, "topic"
+    assert_equal "topic", topic_audience.fetch("kind")
     refute audience_ids.any? { |id| id.start_with?("group-") }
+  end
+
+  test "available audiences for a subgroup include parent members who are not already in the subgroup" do
+    subgroup = groups(:subgroup)
+
+    get :available_audiences, params: { group_id: subgroup.id, exclude_members: 1 }
+
+    assert_response :success
+    audiences = JSON.parse(response.body).fetch("audiences")
+    parent_audience = audiences.find { |audience| audience["id"] == "group-#{@group.id}" }
+
+    assert_equal @group.name, parent_audience.fetch("name")
+    assert_equal 1, parent_audience.fetch("size")
+    refute audiences.any? { |audience| audience["id"] == "group-#{subgroup.id}" }
+
+    get :audience, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{@group.id}",
+      exclude_members: 1
+    }
+
+    assert_response :success
+    assert_equal [ users(:member).id ], JSON.parse(response.body).fetch("users").pluck("id")
+  end
+
+  test "available audiences for a parent group include members of its subgroups" do
+    subgroup = groups(:subgroup)
+
+    get :available_audiences, params: { group_id: @group.id, exclude_members: 1 }
+
+    assert_response :success
+    audiences = JSON.parse(response.body).fetch("audiences")
+    subgroup_audience = audiences.find { |audience| audience["id"] == "group-#{subgroup.id}" }
+
+    assert_equal subgroup.name, subgroup_audience.fetch("name")
+    assert_equal 1, subgroup_audience.fetch("size")
+    refute audiences.any? { |audience| audience["id"] == "group-#{@group.id}" }
+  end
+
+  test "group audiences do not expose a related group whose members the actor cannot browse" do
+    hex = SecureRandom.hex(4)
+    sibling = Group.create!(
+      name: "Private sibling #{hex}",
+      parent: @group,
+      handle: "testgroup-private-sibling-#{hex}",
+      group_privacy: "secret"
+    )
+    sibling.add_member!(@alien)
+
+    get :available_audiences, params: { group_id: groups(:subgroup).id, exclude_members: 1 }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    refute_includes audience_ids, "group-#{sibling.id}"
+
+    get :audience, params: {
+      group_id: groups(:subgroup).id,
+      recipient_audience: "group-#{sibling.id}",
+      exclude_members: 1
+    }
+
+    assert_response :forbidden
+  end
+
+  test "group audiences cannot resolve a group from another organization" do
+    get :audience, params: {
+      group_id: groups(:subgroup).id,
+      recipient_audience: "group-#{groups(:alien_group).id}",
+      exclude_members: 1
+    }
+
+    assert_response :not_found
+  end
+
+  test "group audiences cannot resolve the destination group" do
+    subgroup = groups(:subgroup)
+
+    get :audience, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{subgroup.id}",
+      exclude_members: 1
+    }
+
+    assert_response :not_found
   end
 
   test "count ignores obsolete recipient usernames" do
@@ -446,12 +534,12 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal member.id, json['stances'][0]['participant_id']
   end
 
-  test "count supports discussion audience for polls" do
+  test "count supports topic audience for polls" do
     poll = create_test_poll
 
     get :count, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 
@@ -459,26 +547,40 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['count']
   end
 
-  test "poll create with discussion audience requires announcement permission" do
+  test "poll create with topic audience requires group notification permission" do
     poll = create_test_poll
     @group.update!(members_can_announce: false)
     Membership.find_by!(user_id: @admin.id, group_id: @group.id).update!(admin: false)
 
     post :create, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 
     assert_response :forbidden
   end
 
-  test "poll create supports discussion audience" do
+  test "poll create with topic audience permits a group member who can notify the group" do
+    poll = create_test_poll
+    @group.update!(members_can_announce: true)
+    sign_in users(:user)
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_audience: 'topic',
+      include_actor: '1'
+    }
+
+    assert_response :success
+  end
+
+  test "poll create supports topic audience" do
     poll = create_test_poll
 
     post :create, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 

@@ -130,7 +130,8 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   test "marks a comment as read" do
-    comment_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "hello"), actor: @author)
+    comment_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "hello"), actor: @author) { |created_topic_item| comment_event = created_topic_item }
     reader = TopicReader.for(user: @user, topic: @topic)
     refute reader.has_read?(comment_event.sequence_id)
 

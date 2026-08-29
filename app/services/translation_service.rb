@@ -3,6 +3,12 @@ require "google/cloud/translate"
 class TranslationService
   extend LocalesHelper
 
+  CHARACTERS_MINUTE_MAX = 10_000
+  CHARACTERS_DAY_MAX = 50_000
+
+  class LimitReached < StandardError
+  end
+
   GOOGLE_LOCALES = %w[af sq am ar hy as ay az bm eu be bn bho bs bg ca ceb zh-CN zh zh-TW co hr cs da dv doi nl en eo et ee fil fi fr fy gl ka de el gn gu ht ha haw he iw hi hmn hu is ig ilo id ga it ja jv jw kn kk km rw gom ko kri ku ckb ky lo la lv ln lt lg lb mk mai mg ms ml mt mi mr mni-Mtei lus mn my ne no ny or om ps fa pl pt pa qu ro ru sm sa gd nso sr st sn sd si sk sl so es su sw sv tl tg ta tt te th ti ts tr tk ak uk ur ug uz vi cy xh yi yo zu]
 
   KNOWN_I18N_LABEL_KEYS = %w[
@@ -26,6 +32,8 @@ class TranslationService
     else
       model.send(field)
     end
+  rescue LimitReached
+    model.send(field)
   end
 
   def self.formatted_text(model, field, recipient)
@@ -41,6 +49,9 @@ class TranslationService
     end
 
     MarkdownService.render_rich_text(content, content_format)
+  rescue LimitReached
+    content_format = model.send("#{field}_format") == "md" ? 'md' : 'html'
+    MarkdownService.render_rich_text(model.send(field), content_format)
   end
 
 
@@ -131,6 +142,7 @@ class TranslationService
         end
       end
 
+      translation_limit!(content)
       fields[field.to_s] = service.translate(content, **translate_options)
     end
 
@@ -163,6 +175,24 @@ class TranslationService
       translation.save!
       MessageChannelService.publish_models([translation], group_id: model.group_id)
     end
+  rescue LimitReached => error
+    Rails.logger.warn("Translation update skipped: #{error.message}")
+  end
+
+  # Charge only text sent to Google. Locale-file imports use their own rake task
+  # and intentionally bypass this application runtime spend guard.
+  def self.translation_limit!(content)
+    characters = content.to_s.length
+    limits = [
+      { key: 'TranslationCharactersMinute', max: CHARACTERS_MINUTE_MAX, per: 'minute' },
+      { key: 'TranslationCharactersDay', max: CHARACTERS_DAY_MAX, per: 'day' }
+    ]
+
+    return if limits.all? do |limit|
+      ThrottleService.can?(**limit, id: 'application', inc: characters)
+    end
+
+    raise LimitReached, "Google Translation application character limit reached"
   end
 
   def self.available?

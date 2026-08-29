@@ -308,7 +308,8 @@ module Dev::NintiesMoviesHelper
     #'reaction_created'
     patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: "❤️")
-    new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
+    new_comment_event = nil
+    CommentService.create(comment: patrick_comment, actor: patrick) { |created_topic_item| new_comment_event = created_topic_item }
     ReactionService.update(reaction: reaction, params: {reaction: '🙂'}, actor: jennifer)
     create_another_group.add_member! jennifer
 

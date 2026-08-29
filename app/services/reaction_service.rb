@@ -7,7 +7,7 @@ class ReactionService
 
     unless reaction.valid?
       Sentry.metrics.count("reaction.create_failed", attributes: { columns: reaction.errors.attribute_names.join(',') })
-      return false
+      return reaction
     end
     Reaction.transaction do
       reaction.save!

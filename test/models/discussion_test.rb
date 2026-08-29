@@ -104,7 +104,8 @@ class DiscussionTest < ActiveSupport::TestCase
   test "creating a comment increments correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment = Comment.new(parent: discussion, body: "A comment")
-    topic_item = CommentService.create(comment: comment, actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) { |created_topic_item| topic_item = created_topic_item }
     topic_item.reload
     topic = discussion.topic.reload
     assert_equal 2, topic.items_count
@@ -130,10 +131,12 @@ class DiscussionTest < ActiveSupport::TestCase
   test "deleting first comment of two decrements correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment1 = Comment.new(parent: discussion, body: "First")
-    event1 = CommentService.create(comment: comment1, actor: @admin)
+    event1 = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| event1 = created_topic_item }
 
     comment2 = Comment.new(parent: discussion, body: "Second")
-    event2 = CommentService.create(comment: comment2, actor: @admin)
+    event2 = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| event2 = created_topic_item }
 
     event1.reload
     event2.reload
@@ -151,10 +154,12 @@ class DiscussionTest < ActiveSupport::TestCase
   test "deleting last comment of two decrements correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment1 = Comment.new(parent: discussion, body: "First")
-    event1 = CommentService.create(comment: comment1, actor: @admin)
+    event1 = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| event1 = created_topic_item }
 
     comment2 = Comment.new(parent: discussion, body: "Second")
-    event2 = CommentService.create(comment: comment2, actor: @admin)
+    event2 = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| event2 = created_topic_item }
 
     event1.reload
     comment2.reload

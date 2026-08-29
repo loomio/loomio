@@ -916,14 +916,15 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       auth_key: "auth-key"
     )
 
-    topic_item = DiscussionService.update(
+    topic_item = nil
+    DiscussionService.update(
       discussion: discussion,
       actor: @author,
       params: {
         recipient_user_ids: [ recipient.id ],
         recipient_message: "Please review this edit"
       }
-    )
+    ) { |created_topic_item| topic_item = created_topic_item }
     notification = Notification.find_by!(kind: "discussion_edited", subject: topic_item)
 
     RouteNotificationDeliveriesWorker.perform_now(notification.id)

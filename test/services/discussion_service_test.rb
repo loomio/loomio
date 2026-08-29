@@ -40,22 +40,20 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal false, discussion.topic.private
   end
 
-  test "raises a validation error when discussion privacy is not permitted by the group" do
+  test "returns an invalid discussion when its privacy is not permitted by the group" do
     group = Group.create!(
       name: "Open Group #{SecureRandom.hex(4)}",
       group_privacy: 'open'
     )
     Membership.create!(user: @user, group: group, accepted_at: Time.current, admin: true)
 
-    error = assert_raises ActiveRecord::RecordInvalid do
-      DiscussionService.create(
-        params: { title: 'Private Discussion', group_id: group.id, private: true },
-        actor: @user
-      )
-    end
+    discussion = DiscussionService.create(
+      params: { title: 'Private Discussion', group_id: group.id, private: true },
+      actor: @user
+    )
 
-    assert_equal ['must be public'], error.record.errors[:private]
-    assert_not error.record.persisted?
+    assert_equal ['must be public'], discussion.errors[:private]
+    assert_not discussion.persisted?
   end
 
   test "does not allow unauthorized user to create discussion" do
@@ -157,6 +155,23 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal 'New Title', discussion.reload.title
   end
 
+  test "returns an invalid discussion without updating it" do
+    discussion = discussions(:discussion)
+    original_title = discussion.title
+    topic_item_was_yielded = false
+
+    updated_discussion = DiscussionService.update(
+      discussion: discussion,
+      actor: @user,
+      params: { title: '' }
+    ) { topic_item_was_yielded = true }
+
+    assert_same discussion, updated_discussion
+    assert_predicate updated_discussion, :invalid?
+    assert_not topic_item_was_yielded
+    assert_equal original_title, discussion.reload.title
+  end
+
   test "updating a discussion preserves its topic tags" do
     discussion = discussions(:discussion)
     discussion.topic.update!(tags: [ 'literature' ])
@@ -207,7 +222,8 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
 
-    topic_item = DiscussionService.update(
+    topic_item = nil
+    updated_discussion = DiscussionService.update(
       discussion: discussion,
       actor: @user,
       params: {
@@ -215,7 +231,8 @@ class DiscussionServiceTest < ActiveSupport::TestCase
         recipient_user_ids: [ recipient.id ],
         recipient_message: "Please review the changes"
       }
-    )
+    ) { |created_topic_item| topic_item = created_topic_item }
+    assert_equal discussion, updated_discussion
     notification = Notification.find_by!(kind: "discussion_edited", subject: topic_item)
 
     assert_equal "discussion_edited", topic_item.kind

@@ -118,12 +118,13 @@ class MembershipService
     actor.ability.authorize! :update, membership
 
     membership.assign_attributes(params.slice(:title))
-    return false unless membership.valid?
+    return membership unless membership.valid?
     membership.save!
 
     update_user_titles_and_broadcast(membership.id)
 
     EventBus.broadcast 'membership_update', membership, params, actor
+    membership
   end
 
   def self.update_user_titles_and_broadcast(membership_id)

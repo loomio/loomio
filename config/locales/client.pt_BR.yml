@@ -955,7 +955,7 @@ pt_BR:
     audiences:
       group: Membros de %{name}
       everyone_in_the_group: Todos no grupo
-      discussion_group: Todos no tópico
+      topic: Todos no tópico
       voters: Todos convidados a votar
       decided_voters: Todos que votaram
       undecided_voters: Eleitores indecisos

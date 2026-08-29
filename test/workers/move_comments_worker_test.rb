@@ -13,7 +13,8 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "moves a top-level comment to target thread" do
     comment = Comment.new(parent: @source, body: "move me", author: @user)
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
@@ -26,10 +27,12 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "moves a comment and its reply together" do
     c1 = Comment.new(parent: @source, body: "parent comment", author: @user)
-    e1 = CommentService.create(comment: c1, actor: @user)
+    e1 = nil
+    CommentService.create(comment: c1, actor: @user) { |created_topic_item| e1 = created_topic_item }
 
     c2 = Comment.new(parent: c1, body: "reply", author: @user)
-    e2 = CommentService.create(comment: c2, actor: @user)
+    e2 = nil
+    CommentService.create(comment: c2, actor: @user) { |created_topic_item| e2 = created_topic_item }
 
     MoveCommentsWorker.new.perform([e1.id], @source.topic_id, @target.topic_id)
 
@@ -47,10 +50,12 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "reparents reply whose parent comment was not moved" do
     c1 = Comment.new(parent: @source, body: "stays behind", author: @user)
-    e1 = CommentService.create(comment: c1, actor: @user)
+    e1 = nil
+    CommentService.create(comment: c1, actor: @user) { |created_topic_item| e1 = created_topic_item }
 
     c2 = Comment.new(parent: c1, body: "gets moved", author: @user)
-    e2 = CommentService.create(comment: c2, actor: @user)
+    e2 = nil
+    CommentService.create(comment: c2, actor: @user) { |created_topic_item| e2 = created_topic_item }
 
     # Only move the reply, not the parent
     MoveCommentsWorker.new.perform([e2.id], @source.topic_id, @target.topic_id)
@@ -78,7 +83,8 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     StanceService.create(stance: stance, actor: @user)
 
     comment = Comment.new(parent: stance, body: "comment on stance", author: @user)
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
@@ -117,7 +123,8 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     source_topic_id = poll.topic_id
     poll_event = poll.created_topic_item
     comment = Comment.new(parent: poll, body: "poll comment", author: @user)
-    comment_event = CommentService.create(comment: comment, actor: @user)
+    comment_event = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| comment_event = created_topic_item }
 
     MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
 
@@ -135,7 +142,8 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
   test "does not move topic_items from another topic" do
     other = DiscussionService.create(params: { title: "Other #{SecureRandom.hex(4)}", group_id: @group.id }, actor: @admin)
     comment = Comment.new(parent: other, body: "wrong thread", author: @user)
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
@@ -146,7 +154,8 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "repairs both source and target threads" do
     comment = Comment.new(parent: @source, body: "move me", author: @user)
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     source_items_before = @source.topic.reload.items_count
     target_items_before = @target.topic.reload.items_count

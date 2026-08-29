@@ -5,11 +5,12 @@ class ChatbotService
     actor.ability.authorize! :create, chatbot
     unless chatbot.valid?
       Sentry.metrics.count("chatbot.create_failed", attributes: { columns: chatbot.errors.attribute_names.join(',') })
-      return false
+      return chatbot
     end
     chatbot.author = actor
     chatbot.save!
     Sentry.metrics.count("chatbot.create", attributes: { kind: chatbot.kind })
+    chatbot
   end
 
   def self.update(chatbot:, params:, actor:)
@@ -18,10 +19,11 @@ class ChatbotService
     chatbot.assign_attributes(params.except(:group_id))
     unless chatbot.valid?
       Sentry.metrics.count("chatbot.update_failed", attributes: { columns: chatbot.errors.attribute_names.join(',') })
-      return false
+      return chatbot
     end
     chatbot.save!
     Sentry.metrics.count("chatbot.update", attributes: { kind: chatbot.kind })
+    chatbot
   end
 
   def self.destroy(chatbot:, actor:)

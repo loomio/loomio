@@ -202,7 +202,10 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       actor: @admin
     )
 
-    refute PollService.update(poll: identified_poll, params: { anonymous: true }, actor: @admin)
+    updated_poll = PollService.update(poll: identified_poll, params: { anonymous: true }, actor: @admin)
+
+    assert_same identified_poll, updated_poll
+    assert_predicate updated_poll, :invalid?
     refute identified_poll.reload.anonymous?
   end
 

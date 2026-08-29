@@ -15,7 +15,7 @@ import defaultLocale from 'date-fns/locale/en-US';
 const en = enData.en
 const loadedLocales = ['en'];
 export var dateLocale = defaultLocale
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 const fixCase = function(locale) {
   const splits = locale.replace('-', '_').split('_');

@@ -73,9 +73,8 @@ class UserInviter
     authorize_recipient_discovery!(model: model, actor: actor)
     auth_target = model.respond_to?(:topic) ? model.topic : model
 
-    if %w[group discussion_group].include?(audience)
-      action = model.is_a?(Group) ? :notify : :announce
-      actor.ability.authorize!(action, model)
+    if %w[group topic].include?(audience)
+      NotificationAudienceService.authorize_notify!(model: model, actor: actor)
     end
 
     emails = Array(emails).map(&:presence).compact
@@ -113,7 +112,9 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    actor.ability.authorize!(:announce, model) if %w[group discussion_group].include?(audience)
+    if %w[group topic].include?(audience)
+      NotificationAudienceService.authorize_notify!(model: model, actor: actor)
+    end
     auth_target = model.respond_to?(:topic) ? model.topic : model
     actor.ability.authorize!(:add_members, auth_target) if member_ids.any?
     actor.ability.authorize!(:add_guests, auth_target)  if emails.any? or guest_ids.any?

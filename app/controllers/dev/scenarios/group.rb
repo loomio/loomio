@@ -1,4 +1,19 @@
 module Dev::Scenarios::Group
+  def setup_secret_group_with_access
+    sign_in patrick
+    group = Group.create!(name: 'Secret Dirty Dancing Shoes', group_privacy: 'secret')
+    group.add_member! patrick
+    redirect_to group_path(group)
+  end
+
+  # Leave the browser's group record untouched while access changes on the
+  # server, reproducing a stale client cache after membership revocation.
+  def revoke_secret_group_access
+    group = Group.find_by!(name: 'Secret Dirty Dancing Shoes')
+    group.membership_for(current_user).update!(revoked_at: Time.current)
+    head :ok
+  end
+
   def setup_group_super_admin
     patrick.update(is_admin: true)
     sign_in patrick
@@ -112,6 +127,14 @@ module Dev::Scenarios::Group
     create_another_group.add_admin! jennifer
     create_subgroup.add_member! jennifer
     create_subgroup.add_member! fake_user name: 'only in subgroup'
+    another_create_subgroup
+    redirect_to group_path(create_subgroup)
+  end
+
+  def setup_subgroup_invitation_audiences
+    sign_in jennifer
+    create_another_group.add_admin! jennifer
+    create_subgroup.add_admin! jennifer
     another_create_subgroup
     redirect_to group_path(create_subgroup)
   end

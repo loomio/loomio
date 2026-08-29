@@ -114,6 +114,11 @@ ACTIVE_STORAGE_SERVICE=local
 # FEATURES_DISABLE_EMAIL_LOGIN=1     # Disable login via email (usually when you have enabled SSO of some kind)
 # FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
 
+# Replace any part of the user manual link in the sidebar
+# LOOMIO_HELP_TITLE=Documentation
+# LOOMIO_HELP_SUBTITLE=A detailed guide to this service
+# LOOMIO_HELP_URL=https://docs.example.com/
+
 # Restrict explore page to signed-in users only
 # LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS=1
 

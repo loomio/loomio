@@ -62,7 +62,8 @@ module Dev::Scenarios::Discussion
     create_another_discussion
     sign_in patrick
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally on topic!"), actor: jennifer)
-    topic_item = CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
+    topic_item = nil
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally **off** topic!"), actor: jennifer) { |created_topic_item| topic_item = created_topic_item }
     CommentService.create(comment: Comment.new(parent: topic_item.itemable, body: "This is a reply to the off-topic thing!"), actor: emilio)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is also off-topic"), actor: emilio)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally back on topic!"), actor: patrick)
@@ -89,7 +90,8 @@ module Dev::Scenarios::Discussion
   def setup_thread_catch_up
     jennifer.update(email_catch_up_day: 7)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
-    topic_item = CommentService.create(comment: Comment.new(parent: create_discussion, body: "removed comment"), actor: patrick)
+    topic_item = nil
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "removed comment"), actor: patrick) { |created_topic_item| topic_item = created_topic_item }
     CommentService.discard(comment: topic_item.itemable, actor: topic_item.user)
     DiscussionService.update(discussion: create_discussion,
                              params: {recipient_message: 'this is an edit message'},

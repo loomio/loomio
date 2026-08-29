@@ -19,7 +19,11 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def update_response
     if resource.errors.empty?
-      render json: latest_stance_topic_items, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
+      render json: latest_stance_topic_items,
+             scope: default_scope,
+             each_serializer: TopicItemSerializer,
+             root: :topic_items,
+             meta: meta.merge(root: :topic_items)
     else
       respond_with_errors
     end

@@ -15,7 +15,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
   test "pin topic_item pins an topic_item" do
     sign_in @admin
     comment = Comment.new(parent: @discussion, body: "Test comment")
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     patch :pin, params: { id: topic_item.id, pinned_title: "Pinned context" }
 
@@ -45,7 +46,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
   test "index filters by discussion" do
     sign_in @user
     comment = Comment.new(parent: @discussion, body: "Test comment")
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     get :index, params: { discussion_id: @discussion.id }, format: :json
     json = JSON.parse(response.body)
@@ -58,7 +60,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
   test "comment returns topic_items from a comment" do
     sign_in @user
     comment = Comment.new(parent: @discussion, body: "Test comment")
-    topic_item = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     get :comment, params: { discussion_id: @discussion.id, comment_id: topic_item.itemable.id }
     json = JSON.parse(response.body)
@@ -76,7 +79,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
   test "comment does not leak a comment from a different topic (IDOR)" do
     # A comment lives in a discussion the actor is NOT allowed to see...
     secret_comment = Comment.new(parent: discussions(:alien_discussion), body: "secret")
-    secret_event = CommentService.create(comment: secret_comment, actor: users(:alien))
+    secret_event = nil
+    CommentService.create(comment: secret_comment, actor: users(:alien)) { |created_topic_item| secret_event = created_topic_item }
 
     # ...and the actor supplies a topic they CAN see plus the foreign comment id.
     sign_in @user
@@ -89,7 +93,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index does not use a comment from another topic as its starting point" do
     secret_comment = Comment.new(parent: discussions(:alien_discussion), body: "secret")
-    secret_event = CommentService.create(comment: secret_comment, actor: users(:alien))
+    secret_event = nil
+    CommentService.create(comment: secret_comment, actor: users(:alien)) { |created_topic_item| secret_event = created_topic_item }
     sign_in @user
 
     get :index, params: {
@@ -122,8 +127,10 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index unread_or_newest returns unread topic_items by discussion key" do
     sign_in @user
-    read_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Read comment"), actor: @admin)
-    unread_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+    read_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Read comment"), actor: @admin) { |created_topic_item| read_event = created_topic_item }
+    unread_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin) { |created_topic_item| unread_event = created_topic_item }
     TopicReader.for(user: @user, topic: @discussion.topic).viewed!([0, read_event.sequence_id])
 
     get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
@@ -136,7 +143,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index unread_or_newest includes root topic_item when unread" do
     sign_in @user
-    topic_item = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin) { |created_topic_item| topic_item = created_topic_item }
 
     get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
     json = JSON.parse(response.body)
@@ -147,9 +155,12 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index unread_or_newest returns newest topic_items when fully read" do
     sign_in @user
-    first_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "First comment"), actor: @admin)
-    second_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Second comment"), actor: @admin)
-    third_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Third comment"), actor: @admin)
+    first_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "First comment"), actor: @admin) { |created_topic_item| first_event = created_topic_item }
+    second_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Second comment"), actor: @admin) { |created_topic_item| second_event = created_topic_item }
+    third_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "Third comment"), actor: @admin) { |created_topic_item| third_event = created_topic_item }
     TopicReader.for(user: @user, topic: @discussion.topic).viewed!(@discussion.topic.reload.items.pluck(:sequence_id))
 
     get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 2 }, format: :json
@@ -170,7 +181,8 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree],
       closing_at: 3.days.from_now
     }, actor: @admin)
-    later_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "After poll"), actor: @admin)
+    later_event = nil
+    CommentService.create(comment: Comment.new(parent: @discussion, body: "After poll"), actor: @admin) { |created_topic_item| later_event = created_topic_item }
 
     get :index, params: { poll_key: poll.key, unread_or_newest: 1, per: 10 }, format: :json
     json = JSON.parse(response.body)
@@ -224,10 +236,11 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree],
       closing_at: 3.days.from_now
     }, actor: @admin)
-    unread_event = CommentService.create(
+    unread_event = nil
+    CommentService.create(
       comment: Comment.new(parent: @discussion, body: 'Unread comment'),
       actor: @admin
-    )
+    ) { |created_topic_item| unread_event = created_topic_item }
     TopicReader.for(user: @user, topic: @discussion.topic).viewed!([0, poll.created_topic_item.sequence_id])
 
     get :index, params: {
@@ -251,13 +264,16 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
   test "index handles parent_id parameter with correct filtering" do
     sign_in @user
     parent_comment = Comment.new(parent: @discussion, body: "Parent comment")
-    parent_topic_item = CommentService.create(comment: parent_comment, actor: @user)
+    parent_topic_item = nil
+    CommentService.create(comment: parent_comment, actor: @user) { |created_topic_item| parent_topic_item = created_topic_item }
 
     child_comment = Comment.new(body: "Child comment", parent: parent_comment)
-    child_topic_item = CommentService.create(comment: child_comment, actor: @user)
+    child_topic_item = nil
+    CommentService.create(comment: child_comment, actor: @user) { |created_topic_item| child_topic_item = created_topic_item }
 
     unrelated_comment = Comment.new(parent: @discussion, body: "Unrelated comment")
-    unrelated_event = CommentService.create(comment: unrelated_comment, actor: @user)
+    unrelated_event = nil
+    CommentService.create(comment: unrelated_comment, actor: @user) { |created_topic_item| unrelated_event = created_topic_item }
 
     get :index, params: { discussion_id: @discussion.id, parent_id: parent_topic_item.id }
     json = JSON.parse(response.body)
@@ -272,10 +288,11 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "logged out user can see topic_items for public discussion" do
     @public_group.add_member!(@user)
-    topic_item = CommentService.create(
+    topic_item = nil
+    CommentService.create(
       comment: Comment.new(body: "Public comment", parent: @public_discussion),
       actor: @user
-    )
+    ) { |created_topic_item| topic_item = created_topic_item }
 
     get :index, params: { discussion_id: @public_discussion.id }, format: :json
     assert_response :success
@@ -297,14 +314,16 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     other_discussion = discussions(:discussion_in_subgroup)
 
     sign_in @user
-    event1 = CommentService.create(
+    event1 = nil
+    CommentService.create(
       comment: Comment.new(body: "In first discussion", parent: @discussion),
       actor: @user
-    )
-    event2 = CommentService.create(
+    ) { |created_topic_item| event1 = created_topic_item }
+    event2 = nil
+    CommentService.create(
       comment: Comment.new(body: "In other discussion", parent: other_discussion),
       actor: @user
-    )
+    ) { |created_topic_item| event2 = created_topic_item }
 
     get :index, params: { discussion_id: @discussion.id }, format: :json
     json = JSON.parse(response.body)

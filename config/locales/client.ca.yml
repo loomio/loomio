@@ -947,7 +947,7 @@ ca:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Tothom del grup
-      discussion_group: Tothom que sigui part del fil
+      topic: Tothom que sigui part del fil
       voters: Tothom que estigui convidat a la votació
       decided_voters: Tothom que ja hagi votat
       undecided_voters: Votants indecisos

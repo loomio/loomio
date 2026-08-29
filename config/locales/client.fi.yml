@@ -945,7 +945,7 @@ fi:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Kaikki ryhmässä
-      discussion_group: Kaikki ketjussa
+      topic: Kaikki ketjussa
       voters: Kaikki kutsuttiin äänestämään
       decided_voters: Kaikki äänestäneet
       undecided_voters: Epävarmat äänestäjät

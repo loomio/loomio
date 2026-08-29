@@ -955,7 +955,7 @@ fr:
     audiences:
       group: Membres de %{name}
       everyone_in_the_group: Tout le monde dans le groupe
-      discussion_group: Participants à la discussion
+      topic: Participants à la discussion
       voters: Participants invités à voter
       decided_voters: Tous ceux qui ont voté
       undecided_voters: Votants indécis

@@ -992,7 +992,7 @@ zh_CN:
       group: "%{name}"
       delegates_of_group: "%{name} 的代表"
       everyone_in_the_group: 子群组中的每个人
-      discussion_group: 帖子里的所有人
+      topic: 帖子里的所有人
       voters: 所有受邀投票的人
       decided_voters: 所有投票的人
       undecided_voters: 未决投票者

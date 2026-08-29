@@ -69,7 +69,8 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
-    topic_item = StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll))
+    topic_item = nil
+    StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll)) { |created_topic_item| topic_item = created_topic_item }
     stance.reload
     topic_item
   end

@@ -129,7 +129,8 @@ module Dev::ScenariosHelper
     TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!(email: 'loud', push: 'quiet') if topic
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
-    topic_item = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))
+    topic_item = nil
+    StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll])) { |created_topic_item| topic_item = created_topic_item }
     scenario[:stance] = topic_item.itemable
     scenario[:actor] = topic_item.itemable.participant
     scenario[:real_actor] = voter

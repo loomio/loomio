@@ -19,7 +19,9 @@ gem 'paper_trail', '~> 17.0.0'
 gem 'solid_queue'
 gem 'mission_control-jobs'
 gem 'friendly_id', '~> 5.7.0'
-gem 'httparty', '~> 0.24.2'
+gem 'faraday', '~> 2.14'
+gem 'faraday-follow_redirects', '~> 0.5'
+gem 'csv'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"

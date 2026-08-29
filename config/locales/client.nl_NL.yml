@@ -947,7 +947,7 @@ nl_NL:
     audiences:
       group: Leden van %{name}
       everyone_in_the_group: Iedereen in de groep
-      discussion_group: Iedereen in het bord
+      topic: Iedereen in het bord
       voters: Iedereen die uitgenodigd is om te stemmen
       decided_voters: Iedereen die gestemd heeft
       undecided_voters: Twijfelende stemmers

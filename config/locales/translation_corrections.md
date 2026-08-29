@@ -93,6 +93,9 @@ languages in the Nov 2025 pass.
 | `config/locales/client.pt_BR.yml`, `server.pt_BR.yml` | Multiple direct-address UI and template strings | Overly formal/Google-ish `Por favor ...` phrasing and a few awkward Brazilian Portuguese direct-address strings | Concise Brazilian Portuguese using `você` register and direct imperatives like `preencha`, `entre`, `atualize`, `responda` | Keep Brazilian Portuguese consistent and concise; avoid mechanical polite filler in UI actions |
 | `config/locales/client.ru.yml` | `thread_item.discussion_moved_without_source` | `%{автор}` | `%{author}` | Interpolation placeholder names must remain unchanged |
 | `config/locales/client.tr.yml` | `thread_item.discussion_moved_without_source` | `%{yazar}` | `%{author}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.be.yml` | Multiple interpolation keys | Translated placeholder names such as `%{назва}`, `%{аўтар}`, and `%{спасылка}` | Restored source placeholders such as `%{title}`, `%{author}`, and `%{link}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.be.yml`, `server.be.yml` | STV method, quota, tie, and validation labels | Translated proper names and ambiguous literal senses such as `Мік`, `заяц`, and `Галстук`; `(a-z)` collapsed to `(az)` | Preserved `Meek`, `Droop`, and `Hare`; used equal-result wording; restored `(a-z)` | STV names are proper nouns, tie means equal results, and ASCII character ranges are literal guidance |
+| `config/locales/client.be.yml`, `server.be.yml` | Loomio `outcome` noun and actions | `вынік` and a literal message-noun translation for “Post outcome” | `выснова` with publish/share action wording | Distinguish the author's closing conclusion from the poll's vote result |
 
 ## 2026-07-26 — Anonymous voting notices
 

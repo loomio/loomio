@@ -945,7 +945,7 @@ da:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Alle i gruppen
-      discussion_group: Alle i tråden
+      topic: Alle i tråden
       voters: Alle inviterede til at stemme
       decided_voters: Alle der har stemt
       undecided_voters: Ubeslutsomme vælgere

@@ -945,7 +945,7 @@ ru:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Все в группе
-      discussion_group: Все в теме
+      topic: Все в теме
       voters: Приглашаем всех голосовать
       decided_voters: Все, кто голосовал
       undecided_voters: Неопределившиеся избиратели
