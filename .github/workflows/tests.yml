@@ -82,6 +82,7 @@ jobs:
         rm -rf node_modules
         npm install
         npm run test:unit
+        npm run test:component
         npm run build
     - name: run e2es
       env:

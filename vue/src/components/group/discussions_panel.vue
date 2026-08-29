@@ -78,11 +78,8 @@ function query() {
   if (route.query.tag) chain = chain.where(topic => topic.tags.includes(route.query.tag));
 
   let pageTopics = [];
-  if (loader.value.pageWindow[page.value]) {
-    chain = page.value === 1
-      ? chain.find({lastActivityAt: {$gte: loader.value.pageWindow[page.value][0]}})
-      : chain.find({lastActivityAt: {$jbetween: loader.value.pageWindow[page.value]}});
-    pageTopics = chain.data();
+  if (loader.value.pageIds[page.value]) {
+    pageTopics = chain.find({id: {$in: loader.value.pageIds[page.value]}}).data();
   }
   topics.value = pinnedTopics.concat(pageTopics);
 

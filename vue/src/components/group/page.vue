@@ -8,11 +8,13 @@ import AbilityService from '@/shared/services/ability_service';
 import GroupService from '@/shared/services/group_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
 const group = ref(null);
 const groupLoadVersion = ref(0);
 const activeTab = ref('');
+const { watchRecords } = useWatchRecords();
 let groupLoadRequestId = 0;
 
 const dockActions = computed(() => pickBy(GroupService.actions(group.value), action => action.dock));
@@ -37,19 +39,26 @@ function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
 }
 
-// Only the latest authorization response may populate the page. Successful
-// refreshes remount the routed panel so it initializes from the verified group.
+function refreshGroup() {
+  const loadedGroup = Records.groups.fuzzyFind(route.params.key);
+  if (!loadedGroup) return;
+
+  group.value = loadedGroup;
+  if (loadedGroup.newHost) window.location.host = loadedGroup.newHost;
+}
+
+// Render cached group data immediately, then authorize and refresh it from the
+// server. Only the latest request may report an error or remount its panel.
 async function loadGroup() {
   const requestId = ++groupLoadRequestId;
-  group.value = null;
+  group.value = Records.groups.fuzzyFind(route.params.key) || null;
 
   try {
-    const loadedGroup = await Records.groups.findOrFetch(route.params.key);
+    await Records.groups.remote.fetchById(route.params.key);
     if (requestId !== groupLoadRequestId) return;
 
-    group.value = loadedGroup;
+    refreshGroup();
     groupLoadVersion.value += 1;
-    if (loadedGroup.newHost) window.location.host = loadedGroup.newHost;
   } catch (error) {
     if (requestId !== groupLoadRequestId) return;
 
@@ -58,6 +67,7 @@ async function loadGroup() {
   }
 }
 
+watchRecords({collections: ['groups'], query: refreshGroup});
 watch(() => route.params.key, loadGroup, {immediate: true});
 
 onMounted(() => {
