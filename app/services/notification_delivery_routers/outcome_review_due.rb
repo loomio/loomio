@@ -5,12 +5,7 @@ module NotificationDeliveryRouters
       author_scope = User.active.where(id: outcome.author_id)
       topic = outcome.poll.topic
       users = topic.members.where("users.id": author_scope.select(:id))
-      recipients(
-        users,
-        volume: topic,
-        chatbots: outcome.group.chatbots
-                         .where("? = ANY(chatbots.event_kinds)", notification.kind)
-      )
+      recipients(users, volume: topic)
     end
   end
 end

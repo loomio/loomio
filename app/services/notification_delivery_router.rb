@@ -122,14 +122,21 @@ class NotificationDeliveryRouter
   end
 
   # Selected users always receive in-app delivery. One optional volume source
-  # narrows them for both external channels, while chatbot recipients remain separate.
-  def recipients(users, volume: nil, chatbots: Chatbot.none)
+  # narrows them for both external channels. Chatbots are selected independently
+  # from explicit recipients and subscriptions to this notification kind.
+  def recipients(users, volume: nil)
     {
       "in_app" => users,
       "email" => recipients_with_volume(users, volume, :email),
       "push" => recipients_with_volume(users, volume, :push),
-      "chatbot" => chatbots
+      "chatbot" => chatbot_recipients
     }
+  end
+
+  def chatbot_recipients
+    chatbots = subject_group&.chatbots || Chatbot.none
+    chatbots.where(id: notification.recipient_chatbot_ids)
+            .or(chatbots.where("? = ANY(chatbots.event_kinds)", notification.kind))
   end
 
   def recipients_with_volume(users, volume, channel)

@@ -8,12 +8,7 @@ module NotificationDeliveryRouters
               .where("users.id": user_recipients.active.select(:id))
               .where.not(id: notification.actor_id)
               .where.not(id: recipient_context_ids("newly_mentioned_user_ids"))
-      recipients(
-        users,
-        volume: poll.topic,
-        chatbots: (poll.group&.chatbots || Chatbot.none)
-                    .where(id: notification.recipient_chatbot_ids)
-      )
+      recipients(users, volume: poll.topic)
     end
   end
 end

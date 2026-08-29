@@ -642,19 +642,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
-  test "chatbot router matrix distinguishes implicit subscriptions from explicit selection" do
-    implicit_kinds = %w[
-      outcome_review_due poll_announced poll_closing_soon poll_expired poll_reminder
-    ]
-    explicit_kinds = %w[
-      discussion_announced discussion_edited new_discussion outcome_created
-      outcome_updated poll_edited
-    ]
-    SafeHttpService.stub(:safe_to_fetch?, true) do
-      @chatbot.update!(event_kinds: implicit_kinds)
-    end
-    @poll.update!(notify_on_closing_soon: "author")
-
+  test "chatbot routing combines explicit recipients and notification subscriptions" do
     subjects = {
       "discussion_announced" => discussions(:discussion),
       "discussion_edited" => discussions(:discussion),
@@ -668,23 +656,50 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       "poll_expired" => @poll,
       "poll_reminder" => @poll
     }
+    @poll.update!(notify_on_closing_soon: "author")
 
-    implicit_kinds.each do |kind|
-      notification = route_notification(kind: kind, subject: subjects.fetch(kind))
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      @chatbot.update!(event_kinds: subjects.keys)
+    end
+    subjects.each do |kind, subject|
+      notification = route_notification(kind: kind, subject: subject)
       assert_equal %w[chatbot], channels_for(notification, @chatbot), kind
     end
 
-    explicit_kinds.each do |kind|
-      without_selection = route_notification(kind: kind, subject: subjects.fetch(kind))
-      assert_empty channels_for(without_selection, @chatbot), kind
-
-      with_selection = route_notification(
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      @chatbot.update!(event_kinds: [])
+    end
+    subjects.each do |kind, subject|
+      notification = route_notification(
         kind: kind,
-        subject: subjects.fetch(kind),
+        subject: subject,
         recipient_chatbot_ids: [ @chatbot.id ]
       )
-      assert_equal %w[chatbot], channels_for(with_selection, @chatbot), kind
+      assert_equal %w[chatbot], channels_for(notification, @chatbot), kind
     end
+  end
+
+  test "chatbot routing cannot select a chatbot from another group" do
+    outside_chatbot = nil
+    SafeHttpService.stub(:safe_to_fetch?, true) do
+      outside_chatbot = Chatbot.create!(
+        group: groups(:alien_group),
+        author: users(:alien),
+        name: "Outside routing test chatbot",
+        server: "https://outside-routing-test.example.test/hook",
+        webhook_kind: "markdown",
+        kind: "webhook",
+        event_kinds: [ "discussion_announced" ]
+      )
+    end
+
+    notification = route_notification(
+      kind: "discussion_announced",
+      subject: discussions(:discussion),
+      recipient_chatbot_ids: [ outside_chatbot.id ]
+    )
+
+    assert_empty channels_for(notification, outside_chatbot)
   end
 
   test "a newly committed notification routes user and chatbot deliveries in the background" do

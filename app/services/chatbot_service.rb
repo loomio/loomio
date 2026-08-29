@@ -35,6 +35,7 @@ class ChatbotService
     topic_item.reload
     return if topic_item.itemable.nil?
     return if topic_item.itemable.is_a?(Stance) && !topic_item.itemable.shared_update_visible?
+    return if Notification.exists?(subject: topic_item, kind: topic_item.kind)
 
     chatbots = topic_item.itemable.topic.group.chatbots
 

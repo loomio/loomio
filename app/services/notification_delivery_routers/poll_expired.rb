@@ -4,12 +4,7 @@ module NotificationDeliveryRouters
       poll = subject_model
       users = poll.topic.members
               .where("users.id": User.active.where(id: poll.author_id).select(:id))
-      recipients(
-        users,
-        volume: poll.topic,
-        chatbots: (poll.group&.chatbots || Chatbot.none)
-                    .where("? = ANY(chatbots.event_kinds)", notification.kind)
-      )
+      recipients(users, volume: poll.topic)
     end
   end
 end

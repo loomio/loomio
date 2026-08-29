@@ -42,6 +42,11 @@ class ChatbotServiceTest < ActiveSupport::TestCase
 
     assert_requested :post, matching_url, times: 1
     assert_not_requested :post, non_matching_url
+
+    Notification.create!(kind: @topic_item.kind, subject: @topic_item, actor: @topic_item.actor)
+    ChatbotService.publish_topic_item!(@topic_item.id)
+
+    assert_requested :post, matching_url, times: 1
   end
 
   test "publish_topic_item does not deliver to a webhook host that resolves to a blocked internal IP (SSRF guard)" do
