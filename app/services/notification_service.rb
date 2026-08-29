@@ -8,23 +8,20 @@ class NotificationService
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
 
-    subject_model = subject.is_a?(TopicItem) ? subject.itemable : subject
-
-    router_class = NotificationDeliveryRouter.class_for(kind)
-    router_class.validate_subject!(subject_model)
-    translation_values = router_class.translation_values(subject_model, actor)
-
-    notification = Notification.create!(
+    notification = Notification.new(
       actor: actor,
       kind: kind,
       subject: subject,
-      translation_values: translation_values,
       recipient_audience: recipient_audience.presence,
       recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
       recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
       recipient_message: recipient_message.presence,
       recipient_context: recipient_context
     )
+    router = NotificationDeliveryRouter.for(notification)
+    locale = actor&.locale || I18n.default_locale
+    notification.translation_values = router.translated_values(locale: locale)
+    notification.save!
 
     RouteNotificationDeliveriesWorker.perform_later(notification.id)
     notification

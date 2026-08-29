@@ -71,6 +71,72 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
+  test "every supported notification kind satisfies its translation interpolation contract" do
+    membership = memberships(:member_membership)
+    membership_request = MembershipRequest.create!(
+      group: groups(:group),
+      requestor: users(:alien),
+      introduction: "Please add me"
+    )
+    reaction = Reaction.create!(
+      reactable: discussions(:discussion),
+      user: @author,
+      reaction: "smiley"
+    )
+    received_email = ReceivedEmail.create!(group: groups(:group), headers: {})
+    subjects = {
+      "comment_replied_to" => discussions(:discussion),
+      "discussion_announced" => discussions(:discussion),
+      "discussion_edited" => discussions(:discussion),
+      "group_mentioned" => discussions(:discussion),
+      "invitation_accepted" => membership,
+      "membership_created" => groups(:group),
+      "membership_resent" => membership,
+      "membership_request_approved" => membership,
+      "membership_requested" => membership_request,
+      "new_coordinator" => membership,
+      "new_delegate" => membership,
+      "new_discussion" => discussions(:discussion),
+      "outcome_announced" => @outcome,
+      "outcome_created" => @outcome,
+      "outcome_review_due" => @outcome,
+      "outcome_updated" => @outcome,
+      "poll_announced" => @poll,
+      "poll_closing_soon" => @poll,
+      "poll_edited" => @poll,
+      "poll_expired" => @poll,
+      "poll_reminder" => @poll,
+      "reaction_created" => reaction,
+      "unknown_sender" => received_email,
+      "user_added_to_group" => membership,
+      "user_mentioned" => discussions(:discussion)
+    }
+
+    assert_equal NotificationDeliveryRouter::ROUTERS.keys.sort, subjects.keys.sort
+    subjects.each do |kind, subject|
+      notification = Notification.new(kind: kind, subject: subject, actor: @author)
+      values = NotificationDeliveryRouter.for(notification).translated_values(locale: :en)
+      assert_kind_of Hash, values, kind
+    end
+  end
+
+  test "translation interpolation raises when a router omits a required value" do
+    reaction = Reaction.create!(
+      reactable: discussions(:discussion),
+      user: @author,
+      reaction: "smiley"
+    )
+    notification = Notification.new(kind: "reaction_created", subject: reaction, actor: @author)
+    router = NotificationDeliveryRouter.for(notification)
+    incomplete_values = router.translated_values(locale: :en).except(:reaction)
+
+    router.stub(:translation_values, incomplete_values) do
+      assert_raises(I18n::MissingInterpolationArgument) do
+        router.translated_values(locale: :en)
+      end
+    end
+  end
+
   test "typed routers reject a subject from the wrong domain" do
     wrong_subjects = {
       "discussion_announced" => @poll,

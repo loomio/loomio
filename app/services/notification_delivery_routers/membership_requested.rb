@@ -1,15 +1,13 @@
 module NotificationDeliveryRouters
   class MembershipRequested < NotificationDeliveryRouter
-    def self.translation_values(membership_request, actor, locale: actor.locale)
-      I18n.with_locale(locale) do
-        {
-          name: membership_request.requestor&.name || membership_request.name,
-          title: membership_request.group.full_name
-        }
-      end
-    end
-
     subject_model_class MembershipRequest
+
+    def translation_values
+      {
+        name: subject_model.requestor&.name || subject_model.name,
+        title: subject_model.group.full_name
+      }
+    end
 
     def recipients_by_channel
       membership_request = subject_model

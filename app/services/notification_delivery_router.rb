@@ -55,19 +55,17 @@ class NotificationDeliveryRouter
     raise ArgumentError, "#{name.demodulize} subject must be a #{subject_model_class.name}"
   end
 
-  def self.translation_values(subject, actor, locale: actor.locale)
-    I18n.with_locale(locale) do
-      {
-        name: actor.name,
-        title: TranslationService.plain_text(subject.title_model, :title, actor),
-        poll_type: (I18n.t("poll_types.#{subject.poll_type}") if subject.respond_to?(:poll_type))
-      }.compact
-    end
-  end
-
   def initialize(notification)
     @notification = notification
     @subject_model = self.class.validate_subject!(notification.subject_model)
+  end
+
+  def translated_values(locale:)
+    I18n.with_locale(locale) do
+      values = translation_values.compact
+      validate_translation_values!(values)
+      values
+    end
   end
 
   def route!
@@ -108,6 +106,24 @@ class NotificationDeliveryRouter
   end
 
   private
+
+  def translation_values
+    actor = notification.actor
+    {
+      name: actor.name,
+      title: TranslationService.plain_text(subject_model.title_model, :title, actor),
+      poll_type: (I18n.t("poll_types.#{subject_model.poll_type}") if subject_model.respond_to?(:poll_type))
+    }
+  end
+
+  # Render the same translation selected by notification consumers so missing
+  # router values fail when the notification is created, not during delivery.
+  def validate_translation_values!(values)
+    interpolation = values.merge(site_name: AppConfig.theme[:site_name])
+    interpolation[:actor] = values[:name] if values.key?(:name)
+    title_key = values[:title].present? ? "with_title" : "without_title"
+    I18n.t("notifications.#{title_key}.#{notification.kind}", **interpolation)
+  end
 
   # Subclasses select users and an optional volume source. This base class
   # applies channel filtering, complaint handling, and push subscription
@@ -164,11 +180,7 @@ class NotificationDeliveryRouter
     recipient = recipient.user if recipient.is_a?(PushSubscription)
     return notification.translation_values unless recipient.is_a?(User)
 
-    self.class.translation_values(
-      subject_model,
-      notification.actor,
-      locale: recipient.locale
-    )
+    translated_values(locale: recipient.locale)
   end
 
   def delivery_state(channel, now)

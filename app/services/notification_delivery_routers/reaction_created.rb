@@ -1,17 +1,15 @@
 module NotificationDeliveryRouters
   class ReactionCreated < NotificationDeliveryRouter
-    def self.translation_values(reaction, actor, locale: actor.locale)
-      I18n.with_locale(locale) do
-        {
-          name: actor.name,
-          title: TranslationService.plain_text(reaction.title_model, :title, actor),
-          reaction: reaction.reaction.downcase,
-          model: I18n.t("notification_models.#{reaction.reactable.class.to_s.downcase}")
-        }
-      end
-    end
-
     subject_model_class Reaction
+
+    def translation_values
+      {
+        name: notification.actor.name,
+        title: TranslationService.plain_text(subject_model.title_model, :title, notification.actor),
+        reaction: subject_model.reaction.downcase,
+        model: I18n.t("notification_models.#{subject_model.reactable.class.to_s.downcase}")
+      }
+    end
 
     def recipients_by_channel
       reaction = subject_model
