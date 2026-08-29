@@ -6,7 +6,7 @@ import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
 
-export default class ThreadLoader {
+export default class TopicLoader {
   constructor(topic) {
     this.topic = topic;
     this.reset();
