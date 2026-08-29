@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class GroupMentioned < NotificationDeliveryRouter
+    handles :group_mentioned
+
     # A group mention uses the mentioned memberships to select recipients and
     # determine email/push volume, independent of topic-level overrides.
     def recipients_by_channel

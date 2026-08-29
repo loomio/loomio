@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class UnknownSender < NotificationDeliveryRouter
+    handles :unknown_sender
+
     def translation_values
       { title: subject_model.group.full_name }
     end

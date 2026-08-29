@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class PollExpired < NotificationDeliveryRouter
+    handles :poll_expired
+
     def recipients_by_channel
       poll = subject_model
       users = poll.topic.members

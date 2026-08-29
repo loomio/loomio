@@ -3,42 +3,36 @@
 # recipient rules in a subclass; insertion, retry safety, and dispatch remain
 # consistent across all kinds.
 class NotificationDeliveryRouter
-  ROUTERS = {
-    "comment_replied_to" => "NotificationDeliveryRouters::UserMentioned",
-    "discussion_announced" => "NotificationDeliveryRouters::DiscussionEvent",
-    "discussion_edited" => "NotificationDeliveryRouters::DiscussionEvent",
-    "group_mentioned" => "NotificationDeliveryRouters::GroupMentioned",
-    "invitation_accepted" => "NotificationDeliveryRouters::InvitationAccepted",
-    "membership_created" => "NotificationDeliveryRouters::MembershipCreated",
-    "membership_resent" => "NotificationDeliveryRouters::MembershipResent",
-    "membership_request_approved" => "NotificationDeliveryRouters::MembershipRequestApproved",
-    "membership_requested" => "NotificationDeliveryRouters::MembershipRequested",
-    "new_coordinator" => "NotificationDeliveryRouters::NewCoordinator",
-    "new_delegate" => "NotificationDeliveryRouters::NewDelegate",
-    "new_discussion" => "NotificationDeliveryRouters::DiscussionEvent",
-    "outcome_announced" => "NotificationDeliveryRouters::OutcomeAnnounced",
-    "outcome_created" => "NotificationDeliveryRouters::OutcomeChange",
-    "outcome_review_due" => "NotificationDeliveryRouters::OutcomeReviewDue",
-    "outcome_updated" => "NotificationDeliveryRouters::OutcomeChange",
-    "poll_closing_soon" => "NotificationDeliveryRouters::PollClosingSoon",
-    "poll_edited" => "NotificationDeliveryRouters::PollEdited",
-    "poll_expired" => "NotificationDeliveryRouters::PollExpired",
-    "poll_announced" => "NotificationDeliveryRouters::PollAnnounced",
-    "poll_reminder" => "NotificationDeliveryRouters::PollReminder",
-    "reaction_created" => "NotificationDeliveryRouters::ReactionCreated",
-    "unknown_sender" => "NotificationDeliveryRouters::UnknownSender",
-    "user_added_to_group" => "NotificationDeliveryRouters::UserAddedToGroup",
-    "user_mentioned" => "NotificationDeliveryRouters::UserMentioned"
-  }.freeze
+  class_attribute :registered_routers, instance_accessor: false, default: {}
 
   attr_reader :notification, :subject_model
 
-  def self.class_for(kind)
-    router_name = ROUTERS[kind.to_s]
-    raise ArgumentError, "no delivery router for #{kind.inspect}" unless router_name
+  def self.handles(*kinds)
+    kinds.each do |kind|
+      key = kind.to_s
+      existing_router = registered_routers[key]
+      if existing_router && existing_router != self
+        raise ArgumentError, "#{key.inspect} is already handled by #{existing_router.name}"
+      end
 
-    router_name.constantize
+      registered_routers[key] = self
+    end
   end
+
+  def self.class_for(kind)
+    load_router_classes!
+    registered_routers[kind.to_s] || raise(ArgumentError, "no delivery router for #{kind.inspect}")
+  end
+
+  def self.registered_kinds
+    load_router_classes!
+    registered_routers.keys
+  end
+
+  def self.load_router_classes!
+    Rails.autoloaders.main.eager_load_dir(Rails.root.join("app/services/notification_delivery_routers"))
+  end
+  private_class_method :registered_routers, :registered_routers=, :load_router_classes!
 
   def self.for(notification)
     class_for(notification.kind).new(notification)

@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class ReactionCreated < NotificationDeliveryRouter
+    handles :reaction_created
+
     def translation_values
       {
         name: notification.actor.name,

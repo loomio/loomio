@@ -64,7 +64,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       "user_mentioned" => NotificationDeliveryRouters::UserMentioned
     }
 
-    assert_equal expected.keys.sort, NotificationDeliveryRouter::ROUTERS.keys.sort
+    assert_equal expected.keys.sort, NotificationDeliveryRouter.registered_kinds.sort
     expected.each do |kind, router_class|
       assert_equal router_class, NotificationDeliveryRouter.class_for(kind), kind
     end
@@ -111,7 +111,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       "user_mentioned" => discussions(:discussion)
     }
 
-    assert_equal NotificationDeliveryRouter::ROUTERS.keys.sort, subjects.keys.sort
+    assert_equal NotificationDeliveryRouter.registered_kinds.sort, subjects.keys.sort
     subjects.each do |kind, subject|
       notification = Notification.new(kind: kind, subject: subject, actor: @author)
       values = NotificationDeliveryRouter.for(notification).translated_values(locale: :en)

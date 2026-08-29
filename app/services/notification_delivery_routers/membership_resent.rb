@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class MembershipResent < NotificationDeliveryRouter
+    handles :membership_resent
+
     def recipients_by_channel
       membership = subject_model
       transactional_email_only(

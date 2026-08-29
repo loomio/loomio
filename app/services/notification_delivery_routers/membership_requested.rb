@@ -1,5 +1,7 @@
 module NotificationDeliveryRouters
   class MembershipRequested < NotificationDeliveryRouter
+    handles :membership_requested
+
     def translation_values
       {
         name: subject_model.requestor&.name || subject_model.name,
