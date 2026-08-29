@@ -328,7 +328,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
     scenarios = {
       "invitation_accepted" => [ membership, @author, %w[in_app] ],
-      "membership_request_approved" => [ membership, recipient, %w[in_app] ],
+      "membership_request_approved" => [ membership, recipient, %w[email in_app] ],
       "membership_resent" => [ membership, recipient, %w[email] ],
       "new_coordinator" => [ membership, recipient, %w[email in_app] ],
       "new_delegate" => [ membership, recipient, %w[email in_app] ],
@@ -341,19 +341,11 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
-  test "in-app-only routers do not opt into email or push" do
+  test "invitation acceptance remains in-app only" do
     membership = memberships(:member_membership)
-    recipient = membership.user
-    membership.update!(inviter: @author, volume_email: :normal, volume_push: :normal)
+    membership.update!(inviter: @author)
     membership.group.membership_for(@author).update!(volume_email: :normal, volume_push: :normal)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
     @author.update!(deactivated_at: nil, complaints_count: 0)
-    recipient_subscription = create_push_subscription(
-      user: recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/approved-in-app-only-token",
-      p256dh_key: "p256dh-key",
-      auth_key: "auth-key"
-    )
     inviter_subscription = create_push_subscription(
       user: @author,
       endpoint: "https://fcm.googleapis.com/fcm/send/accepted-in-app-only-token",
@@ -361,16 +353,13 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       auth_key: "auth-key"
     )
 
-    approved = route_notification(kind: "membership_request_approved", subject: membership)
     accepted = route_notification(kind: "invitation_accepted", subject: membership)
 
-    assert_equal [ "in_app" ], channels_for(approved, recipient)
-    assert_empty channels_for(approved, recipient_subscription)
     assert_equal [ "in_app" ], channels_for(accepted, @author)
     assert_empty channels_for(accepted, inviter_subscription)
   end
 
-  test "coordinator and delegate role changes share email and push volume behavior" do
+  test "group-volume operational notifications share email and push behavior" do
     membership = memberships(:member_membership)
     recipient = membership.user
     membership.update!(volume_email: :normal, volume_push: :normal)
@@ -382,7 +371,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       auth_key: "auth-key"
     )
 
-    %w[new_coordinator new_delegate].each do |kind|
+    %w[membership_request_approved new_coordinator new_delegate].each do |kind|
       notification = route_notification(kind: kind, subject: membership)
       assert_equal %w[email in_app], channels_for(notification, recipient), kind
       assert_equal [ "push" ], channels_for(notification, subscription), kind

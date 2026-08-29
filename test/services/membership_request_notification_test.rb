@@ -48,7 +48,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     )
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
   end
 
