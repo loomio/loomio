@@ -25,7 +25,7 @@ TopicItem
 Notification
   kind, subject, actor
   recipient_user_ids, recipient_chatbot_ids
-  recipient_message, audience_values
+  recipient_audience, recipient_message, recipient_context
 
 NotificationDelivery
   notification_id

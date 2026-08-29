@@ -4,7 +4,7 @@ class NotificationService
   # the notification; each kind-specific router applies its recipient rules.
   def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
-                   recipient_message: nil, audience_values: {})
+                   recipient_audience: nil, recipient_message: nil, recipient_context: {})
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
 
@@ -19,10 +19,11 @@ class NotificationService
       kind: kind,
       subject: subject,
       translation_values: translation_values,
+      recipient_audience: recipient_audience.presence,
       recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
       recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
       recipient_message: recipient_message.presence,
-      audience_values: audience_values
+      recipient_context: recipient_context
     )
 
     RouteNotificationDeliveriesWorker.perform_later(notification.id)

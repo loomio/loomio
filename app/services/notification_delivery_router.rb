@@ -109,28 +109,28 @@ class NotificationDeliveryRouter
 
   private
 
-  # Subclasses select the authoritative in-app recipients and optional volume
-  # source. This base class applies channel filtering, complaint handling, and
-  # push subscription expansion consistently for every notification kind.
+  # Subclasses select users and an optional volume source. This base class
+  # applies channel filtering, complaint handling, and push subscription
+  # expansion consistently for every notification kind.
   def recipients_by_channel
     raise NotImplementedError
   end
 
-  # In-app recipients are authoritative. One optional volume source narrows
-  # them for both external channels, while chatbot recipients remain separate.
-  def recipients(user_recipients, volume: nil, chatbots: Chatbot.none)
+  # Selected users always receive in-app delivery. One optional volume source
+  # narrows them for both external channels, while chatbot recipients remain separate.
+  def recipients(users, volume: nil, chatbots: Chatbot.none)
     {
-      "in_app" => user_recipients,
-      "email" => recipients_with_volume(user_recipients, volume, :email),
-      "push" => recipients_with_volume(user_recipients, volume, :push),
+      "in_app" => users,
+      "email" => recipients_with_volume(users, volume, :email),
+      "push" => recipients_with_volume(users, volume, :push),
       "chatbot" => chatbots
     }
   end
 
-  def recipients_with_volume(user_recipients, volume, channel)
+  def recipients_with_volume(users, volume, channel)
     return User.none unless volume
 
-    volume_enabled_users(volume, channel).where("users.id": user_recipients.select(:id))
+    volume_enabled_users(volume, channel).where("users.id": users.select(:id))
   end
 
   # Topics and groups expose effective user volumes. Membership relations are
@@ -156,8 +156,8 @@ class NotificationDeliveryRouter
     User.where(id: notification.recipient_user_ids)
   end
 
-  def audience_value_ids(key)
-    Array(notification.audience_values[key]).map(&:to_i)
+  def recipient_context_ids(key)
+    Array(notification.recipient_context[key]).map(&:to_i)
   end
 
   def translation_values_for(recipient)

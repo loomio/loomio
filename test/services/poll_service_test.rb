@@ -319,13 +319,13 @@ class PollServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.about(poll).find_by!(kind: "poll_edited")
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(poll).exists?(kind: "user_mentioned")
   end
 
-  test "eventless poll edit without a direct audience does not create a notification" do
+  test "eventless poll edit without a direct recipients does not create a notification" do
     poll = create_poll
 
     assert_no_difference "TopicItem.where(kind: 'poll_edited').count" do

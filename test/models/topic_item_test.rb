@@ -244,7 +244,7 @@ class EventTest < ActiveSupport::TestCase
           kind: "new_discussion",
           subject: @discussion,
           actor: @admin,
-          audience_values: {
+          recipient_context: {
             newly_mentioned_user_ids: @discussion.newly_mentioned_users.pluck(:id),
             mentioned_user_ids: @discussion.mentioned_users.pluck(:id),
             mentioned_group_user_ids: @discussion.mentioned_group_users.pluck(:id)

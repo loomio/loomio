@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_29_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_29_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -556,11 +556,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_29_000001) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "actor_id"
-    t.jsonb "audience_values", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "deliveries_generated_at"
     t.string "kind", null: false
+    t.string "recipient_audience"
     t.integer "recipient_chatbot_ids", default: [], null: false, array: true
+    t.jsonb "recipient_context", default: {}, null: false
     t.text "recipient_message"
     t.integer "recipient_user_ids", default: [], null: false, array: true
     t.bigint "subject_id", null: false

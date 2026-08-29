@@ -32,6 +32,7 @@ class TopicService
           actor: actor,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message]
         )
       elsif topic.topicable_type == "Poll"
@@ -41,6 +42,7 @@ class TopicService
           stances: stances_by_poll_id[topic.topicable_id] || [],
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message]
         )
       else

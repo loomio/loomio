@@ -13,11 +13,11 @@ module NotificationDeliveryRouters
       when "voters" then poll.unmasked_voters.active
       else User.none
       end
-      in_app_recipients = poll.topic.members
-                                  .where("users.id": selected_recipients.select(:id))
+      users = poll.topic.members
+              .where("users.id": selected_recipients.select(:id))
 
       recipients(
-        in_app_recipients,
+        users,
         volume: poll.topic,
         chatbots: (poll.group&.chatbots || Chatbot.none)
                     .where("? = ANY(chatbots.event_kinds)", notification.kind)

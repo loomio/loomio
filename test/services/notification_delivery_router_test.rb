@@ -301,7 +301,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       "invitation_accepted" => [ membership, @author, %w[in_app] ],
       "membership_request_approved" => [ membership, recipient, %w[in_app] ],
       "membership_resent" => [ membership, recipient, %w[email] ],
-      "new_coordinator" => [ membership, recipient, %w[in_app] ],
+      "new_coordinator" => [ membership, recipient, %w[email in_app] ],
       "new_delegate" => [ membership, recipient, %w[email in_app] ],
       "user_added_to_group" => [ membership, recipient, %w[email in_app] ]
     }
@@ -334,14 +334,30 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
     approved = route_notification(kind: "membership_request_approved", subject: membership)
     accepted = route_notification(kind: "invitation_accepted", subject: membership)
-    coordinator = route_notification(kind: "new_coordinator", subject: membership)
 
     assert_equal [ "in_app" ], channels_for(approved, recipient)
     assert_empty channels_for(approved, recipient_subscription)
     assert_equal [ "in_app" ], channels_for(accepted, @author)
     assert_empty channels_for(accepted, inviter_subscription)
-    assert_equal [ "in_app" ], channels_for(coordinator, recipient)
-    assert_empty channels_for(coordinator, recipient_subscription)
+  end
+
+  test "coordinator and delegate role changes share email and push volume behavior" do
+    membership = memberships(:member_membership)
+    recipient = membership.user
+    membership.update!(volume_email: :normal, volume_push: :normal)
+    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/role-change-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    %w[new_coordinator new_delegate].each do |kind|
+      notification = route_notification(kind: kind, subject: membership)
+      assert_equal %w[email in_app], channels_for(notification, recipient), kind
+      assert_equal [ "push" ], channels_for(notification, subscription), kind
+    end
   end
 
   test "derived-recipient routers cover requests, reactions, unknown senders and group mentions" do
@@ -394,7 +410,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     group_mentioned = route_notification(
       kind: "group_mentioned",
       subject: discussions(:discussion),
-      audience_values: {
+      recipient_context: {
         "group_ids" => [ groups(:group).id ],
         "mentioned_user_ids" => [],
         "already_notified_user_ids" => []
@@ -420,7 +436,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     notification = route_notification(
       kind: "group_mentioned",
       subject: discussion,
-      audience_values: {
+      recipient_context: {
         "group_ids" => [ groups(:group).id ],
         "mentioned_user_ids" => [],
         "already_notified_user_ids" => []
@@ -463,7 +479,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], channels_for(expired, @author)
   end
 
-  test "topic audience boundaries filter volume, account state, complaints and mentions" do
+  test "topic recipient boundaries filter volume, account state, complaints and mentions" do
     discussion = discussions(:discussion)
     recipient_attributes = {
       normal: { volume_email: :normal },
@@ -486,7 +502,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       subject: discussion,
       recipient_user_ids: recipients.values.map(&:id),
       recipient_message: "Please review",
-      audience_values: { "newly_mentioned_user_ids" => [ recipients[:mentioned].id ] }
+      recipient_context: { "newly_mentioned_user_ids" => [ recipients[:mentioned].id ] }
     )
 
     assert_equal %w[email in_app], channels_for(notification, recipients[:normal])
@@ -541,7 +557,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       subject: discussion,
       recipient_user_ids: [ recipient.id ],
       recipient_message: "Please review",
-      audience_values: { "newly_mentioned_user_ids" => [ recipient.id ] }
+      recipient_context: { "newly_mentioned_user_ids" => [ recipient.id ] }
     )
     mention = route_notification(
       kind: "user_mentioned",
@@ -716,11 +732,13 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       subject: @outcome,
       actor: @author,
       recipient_user_ids: [ @author.id, @author.id ],
-      recipient_chatbot_ids: [ @chatbot.id ]
+      recipient_chatbot_ids: [ @chatbot.id ],
+      recipient_audience: "group-#{@outcome.group_id}"
     )
 
     assert_equal [ @author.id ], notification.recipient_user_ids
     assert_equal [ @chatbot.id ], notification.recipient_chatbot_ids
+    assert_equal "group-#{@outcome.group_id}", notification.recipient_audience
   end
 
   test "discussion announcements use the shared creator with selected recipients" do
@@ -1024,7 +1042,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
   private
 
   def route_notification(kind:, subject:, actor: @author, recipient_user_ids: [],
-                         recipient_chatbot_ids: [], recipient_message: nil, audience_values: {})
+                         recipient_chatbot_ids: [], recipient_message: nil, recipient_context: {})
     notification = Notification.create!(
       kind: kind,
       subject: subject,
@@ -1032,7 +1050,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       recipient_user_ids: recipient_user_ids,
       recipient_chatbot_ids: recipient_chatbot_ids,
       recipient_message: recipient_message,
-      audience_values: audience_values
+      recipient_context: recipient_context
     )
     NotificationDeliveryRouter.for(notification).route!
     notification

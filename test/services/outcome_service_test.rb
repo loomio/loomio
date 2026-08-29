@@ -115,13 +115,13 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.find_by!(kind: "outcome_updated", subject: @outcome)
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: @outcome)
   end
 
-  test "outcome update without a direct audience does not create a notification" do
+  test "outcome update without a direct recipients does not create a notification" do
     NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
       OutcomeService.update(
         outcome: @outcome,

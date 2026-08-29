@@ -120,7 +120,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.find_by!(kind: "new_discussion", subject: discussion.created_topic_item)
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: discussion.created_topic_item)
@@ -248,13 +248,13 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.about(discussion).find_by!(kind: "discussion_edited")
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
   end
 
-  test "eventless update without a direct audience does not create a notification" do
+  test "eventless update without a direct recipients does not create a notification" do
     discussion = discussions(:discussion)
 
     assert_no_difference "TopicItem.where(kind: 'discussion_edited').count" do

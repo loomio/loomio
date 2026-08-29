@@ -16,14 +16,14 @@ module NotificationDeliveryRouters
     def recipients_by_channel
       reaction = subject_model
       reactable = reaction.reactable
-      in_app_recipients = if reactable &&
-                           reactable.author != reaction.user &&
-                           reactable.group.memberships.exists?(user: reactable.author)
+      users = if reactable &&
+                 reactable.author != reaction.user &&
+                 reactable.group.memberships.exists?(user: reactable.author)
         User.active.where(id: reactable.author_id)
       else
         User.none
       end
-      recipients(in_app_recipients)
+      recipients(users)
     end
   end
 end

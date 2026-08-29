@@ -1,6 +1,22 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test "notification recipient audiences remap embedded group ids" do
+    migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
+
+    %w[group delegates].each do |kind|
+      attrs = {
+        "recipient_user_ids" => [],
+        "recipient_audience" => "#{kind}-42",
+        "recipient_context" => {}
+      }
+
+      GroupExportService.translate_notification_payload!(attrs, migrate_ids)
+
+      assert_equal "#{kind}-84", attrs["recipient_audience"]
+    end
+  end
+
   def create_detached_export_group
     admin = User.create!(
       email: "anonymous-export-admin-#{SecureRandom.hex(4)}@example.com",

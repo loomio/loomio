@@ -52,7 +52,7 @@ class DiscussionService
         actor: actor
       )
 
-      mention_audience = {
+      recipient_context = {
         newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: discussion.mentioned_users.pluck(:id),
         mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
@@ -69,8 +69,9 @@ class DiscussionService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -113,7 +114,7 @@ class DiscussionService
                                      emails: params[:recipient_emails],
                                      audience: params[:recipient_audience])
 
-      mention_audience = {
+      recipient_context = {
         newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: discussion.mentioned_users.pluck(:id),
         mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
@@ -133,8 +134,9 @@ class DiscussionService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(

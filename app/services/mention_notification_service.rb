@@ -25,7 +25,7 @@ class MentionNotificationService
         kind: "group_mentioned",
         subject: notification_subject,
         actor: actor,
-        audience_values: {
+        recipient_context: {
           group_ids: mentioned_groups.map(&:id),
           mentioned_user_ids: mentioned_users.map(&:id),
           already_notified_user_ids: Array(already_notified_user_ids).map(&:to_i).uniq

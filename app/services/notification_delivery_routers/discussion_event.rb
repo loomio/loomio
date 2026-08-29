@@ -8,13 +8,13 @@ module NotificationDeliveryRouters
 
     def recipients_by_channel
       discussion = subject_model
-      in_app_recipients = discussion.topic.members
-                                        .where("users.id": user_recipients.active.select(:id))
-                                        .where.not(id: notification.actor_id)
-                                        .where.not(id: audience_value_ids("newly_mentioned_user_ids"))
+      users = discussion.topic.members
+              .where("users.id": user_recipients.active.select(:id))
+              .where.not(id: notification.actor_id)
+              .where.not(id: recipient_context_ids("newly_mentioned_user_ids"))
 
       recipients(
-        in_app_recipients,
+        users,
         volume: discussion.topic,
         chatbots: (discussion.group&.chatbots || Chatbot.none)
                     .where(id: notification.recipient_chatbot_ids)

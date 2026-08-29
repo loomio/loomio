@@ -102,12 +102,12 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
         WHERE legacy_event_id = #{connection.quote(topic_item.fetch('id'))}
       SQL
       assert_equal recipient_message, occurrence_message
-      occurrence_audience = connection.select_value(<<~SQL.squish)
+      occurrence_context = connection.select_value(<<~SQL.squish)
         SELECT audience_values
         FROM notification_occurrences
         WHERE legacy_event_id = #{connection.quote(topic_item.fetch('id'))}
       SQL
-      assert_equal({ "group_ids" => [ mentioned_group_id ] }, JSON.parse(occurrence_audience))
+      assert_equal({ "group_ids" => [ mentioned_group_id ] }, JSON.parse(occurrence_context))
       assert_not_nil stats.dig(:state, :completed_at)
       assert_not_nil stats.dig(:state, :repair_completed_at)
     end
@@ -282,6 +282,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
     connection.add_column(:events, :custom_fields, :jsonb, null: false, default: {}) unless had_custom_fields
     connection.change_column_null(:events, :topic_id, true)
     connection.rename_table(:notifications, :notification_occurrences)
+    connection.rename_column(:notification_occurrences, :recipient_context, :audience_values)
     connection.add_column(:notification_occurrences, :legacy_event_id, :bigint, null: false)
     connection.add_index(
       :notification_occurrences,
@@ -313,6 +314,7 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
       connection.drop_table(:notifications, if_exists: true)
       connection.drop_table(:notification_consolidation_states, if_exists: true)
       connection.remove_column(:notification_occurrences, :legacy_event_id)
+      connection.rename_column(:notification_occurrences, :audience_values, :recipient_context)
       connection.rename_table(:notification_occurrences, :notifications)
       connection.rename_column(:notification_deliveries, :notification_occurrence_id, :notification_id)
       connection.execute("DELETE FROM events WHERE topic_id IS NULL")
