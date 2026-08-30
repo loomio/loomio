@@ -6,10 +6,6 @@ The default notification settings alert you to important activity in your groups
 
 The default settings work for most people.  Change notification settings to suit the way you work. 
 
-## Overview video
-
-<iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/0Mb2_D74ktM?start=2?rel=0" frameborder="0" allowfullscreen></iframe>
-
 
 ## Notifications in Loomio
 
@@ -23,11 +19,32 @@ The notification list tells you when someone mentions you, invites you to vote, 
 
 ## Push notifications
 
-Push notifications display new activity through your browser or operating system, including when Loomio is not open. Go to **Notification settings** and choose **Enable on this browser**. Your browser will ask for permission.
+Push notifications are short messages displayed by your browser or operating system. They can alert you to activity that needs your attention when Loomio is open in another tab or is not open.
 
-Permission applies separately to each browser and device. After enabling push, select **Test connection** to send a notification through Loomio to every enabled browser. The Notification settings page lists enabled browsers so you can remove one that you no longer use. Signing out disables push notifications for the current browser.
+### How push delivery works
 
-If you previously blocked notifications, use your browser's site settings to allow them before enabling push in Loomio. Push notifications require HTTPS and may not be available in every browser.
+Each browser uses a push service to receive messages: Mozilla for Firefox, Google for Chromium-based browsers, and Apple for Safari. Loomio encrypts the notification for your browser subscription before sending it through that service. Delivery is usually prompt, but the browser, operating system, network connection, or push service can delay a message.
+
+A push subscription belongs to one signed-in browser profile on one device. Private browsing windows and normal browsing windows use separate profiles. Enabling push on one does not enable it on the other.
+
+### Enable push on a browser
+
+1. Open **Notification settings** from your user menu.
+2. In **Push notifications**, select **Enable on this browser**.
+3. Allow notifications when your browser asks for permission.
+4. Select **Test connection**. Loomio sends a test notification to every browser currently listed under **Enabled browsers**.
+
+If you previously blocked notifications, open your browser's site settings and allow them before trying again. Push notifications require HTTPS and a browser that supports web push.
+
+The Notification settings page lists every active browser subscription. Select **Remove browser** to stop delivery to a browser you no longer use. **Disable on this browser** removes the current browser, and signing out also disables push for the current browser.
+
+![](push_notification_settings.png)
+
+### Choose which activity is pushed
+
+After at least one browser is enabled, group and thread notification forms show a **Delivery method** dropdown with **Email**, **Push**, and **Email and push**. The push setting applies to all enabled browsers on your account, not only the browser where you change it.
+
+For example, choose **Email and push**, set Email to **Catch-up only**, and set Push to **When notified** to receive immediate push notifications when someone asks for your attention while leaving other activity for your catch-up email.
 
 ## Email notifications
 
@@ -35,7 +52,7 @@ Loomio sends emails to keep you updated on the activity in your groups. The defa
 
 Emails we send out include:
 
-- A **Catch-up summary email** containing recent activity you have not read. Its subject is **Yesterday on Loomio**, **Recently on Loomio**, or **Last week on Loomio**, depending on your chosen schedule.
+- A **Catch-up email** containing unseen notifications followed by recent activity you have not read. When action is needed, its subject highlights votes you still need to cast, people who mentioned you, or polls closing soon. Otherwise it uses **Yesterday on Loomio**, **Recently on Loomio**, or **Last week on Loomio**, depending on your chosen schedule.
 
 - **Mention** and **Reply** notifications. If someone replies to a comment you wrote, or they write a comment and mention you in it, you'll get an email with what they wrote.
 
@@ -44,7 +61,9 @@ Emails we send out include:
 
 When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
 
-Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The Catch-up summary cannot accept replies; open the linked discussion or poll first.
+Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up email cannot accept replies; open the linked discussion or poll first.
+
+![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)
 
 ## Notification settings
 
@@ -54,17 +73,17 @@ If the sidebar is closed, click on the menu icon (**☰**) to open it.
 
 ![](sidebar_notification_settings.png)
 
-The page contains settings for push notification devices, the Catch-up summary, and email and push delivery for each group.
+The page contains settings for push notification devices, the catch-up email, and email and push delivery for each group.
 
-### Catch-up summary email
+### Catch-up email
 
-The Catch-up summary email provides a regular overview of unread activity without emailing you about every event or requiring you to check Loomio each day.
+The catch-up email provides a regular overview of activity without emailing you about every event or requiring you to check Loomio each day.
 
-It groups discussions and standalone polls by group, and can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
+It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Each notification includes its related comment, discussion description, poll details, outcome, or shared vote when available. The unread section can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
 
-Loomio does not send a summary when there is no unread activity from the relevant period.
+Loomio does not send a summary when there are no unseen notifications or unread threads from the relevant period.
 
-Choose how often you want to receive it:
+New accounts start with a daily catch-up. Choose how often you want to receive it:
 
 - **Never** to turn off the summary
 - **Every day** for activity from approximately the previous 24 hours
@@ -73,11 +92,13 @@ Choose how often you want to receive it:
 
 The summary is sent in the morning according to the time zone in your Loomio profile.
 
-Opening the email normally marks the activity included in it as read in Loomio. Some email clients block the small image used to do this; in that case, the activity remains unread until you open it in Loomio.
+Select **Mark catch-up as read** in the email to mark its notifications and topic activity as read in Loomio. Opening or previewing the email does not mark anything as read.
 
-The Catch-up summary is not a discussion-specific email, so do not reply to it. Open a discussion or poll from the summary before commenting or replying.
+The catch-up email is not a discussion-specific email, so do not reply to it. Open a discussion or poll from the summary before commenting or replying.
 
-![catchup summary email setting](catchup_summary_email_setting.png)
+![A catch-up email with unseen notifications and unread thread activity from one group](digest_email_example.png)
+
+![Catch-up email setting](digest_email_setting.png)
 
 ## Group notification settings
 
@@ -90,11 +111,13 @@ Notification settings for each specific group are found in your Loomio group. To
 
 ![](group_notifications.png)
 
-First choose **Email**, **Push**, or **Email and push**. Then choose how much activity to receive through each selected channel:
+The form is titled **Group notification settings** and asks **How do you want to stay updated?** If push is enabled on at least one browser, use the **Delivery method** dropdown to choose **Email**, **Push**, or **Email and push**, then choose a setting for each selected channel. Otherwise, the form shows email choices only. When you enable push for the first time, it starts at **When notified**:
 
-- **All activity** sends every new comment, vote, thread, poll, and outcome
-- **When notified** sends activity when someone asks for your attention, such as an invitation or group mention; this is the default
-- **Muted** sends no messages through that channel; notifications that record important activity remain available in Loomio
+- **Catch-up only** includes activity from the group in your catch-up rather than sending an immediate email or push
+- **When notified** sends an email or push when someone asks for your attention and includes the rest in your catch-up; this is the default
+- **All activity** sends an email or push for every new comment, vote, thread, poll, and outcome
+
+If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
 
 When Email and push is selected, email and push can use different settings.
 
@@ -110,14 +133,14 @@ To change notification settings for an individual thread, open the notification 
 
 ![](thread_notifications.png)
 
-Choose **Email**, **Push**, or **Email and push**, then set each selected channel to **All activity**, **When notified**, or **Muted**. Thread settings override your group settings for that thread. The thread sidebar lists the effective email and push settings separately, or shows **Off** when both are muted.
+The form is titled **Thread notification settings** and uses the same **Catch-up only**, **When notified**, and **All activity** choices. Thread settings override your group settings for that thread. Push choices appear after push is enabled on at least one browser. When the catch-up is disabled, the form uses **No email updates**, and the thread sidebar shows **In-app only** when email is not enabled.
 
 >[!Note]
 >The settings changes in Thread notifications are only for the particular thread you have open.  Click **Change notifications for group** to change the default settings for all threads.
 
 ## Turn off external notifications
 
-To stop email and push messages for group and thread activity, go to [Notification settings](/email_preferences) and set both channels to **Muted**. Important activity can still create notifications inside Loomio, and the Catch-up summary remains a separate setting.
+To stop email and push messages for group and thread activity, go to [Notification settings](/email_preferences), set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Activity remains available when you open the app.
 
 ![](turn_off_all_emails_1.png)
 

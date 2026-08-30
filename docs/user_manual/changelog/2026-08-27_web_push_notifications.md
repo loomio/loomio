@@ -4,4 +4,4 @@ Loomio can now send notifications through supported web browsers. Enable push fo
 
 The group and thread form asks for the delivery channel first. Email and Push each have their own setting: All activity, When notified, or Muted. When both channels are selected, their settings can be different. Push defaults to When notified but only sends after you enable it in a supported browser.
 
-Muting a channel prevents messages through that channel. Notifications that record important activity remain visible inside Loomio, and the Catch-up summary continues to be configured separately.
+Muting a channel prevents messages through that channel. Notifications that record important activity remain visible inside Loomio, and the catch-up email continues to be configured separately.

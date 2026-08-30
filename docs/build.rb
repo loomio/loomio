@@ -348,6 +348,7 @@ module Docs
       fragment.xpath("//comment()").remove
       render_alerts(fragment)
       rewrite_links(fragment, page, pages_by_source, pages_by_url)
+      mark_high_density_screenshots(fragment)
       wrap_tables(fragment)
 
       page.title = fragment.at_css("h1")&.text&.strip || page.navigation_title
@@ -436,6 +437,20 @@ module Docs
         value = absolute_source_url(value, page) if page.index? && relative_url?(value)
         value = clean_internal_url(value) if internal_url?(value)
         element[attribute] = value
+      end
+    end
+
+    # Documentation screenshots are captured at 2× device scale. A density
+    # descriptor preserves that sharp source while giving it half-size intrinsic
+    # CSS dimensions; max-width still shrinks it for narrow viewports.
+    def mark_high_density_screenshots(fragment)
+      fragment.css("img[src]").each do |image|
+        source = image["src"]
+        path, = split_url(source)
+        next unless internal_url?(source) && path.downcase.end_with?(".png")
+
+        image["class"] = [image["class"], "screenshot-2x"].compact.join(" ")
+        image["srcset"] = "#{source} 2x"
       end
     end
 

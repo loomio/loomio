@@ -30,9 +30,8 @@ Notification
 NotificationDelivery
   notification_id
   channel: in_app | email | push | chatbot
-  recipient: User | Chatbot | future push endpoint
-  status, scheduling, attempts, provider state
-  viewed_at and recipient-localized translation values
+  recipient: User | Chatbot | PushSubscription
+  delivered_at, viewed_at and recipient-localized translation values
   unique(notification_id, channel, recipient_type, recipient_id)
 ```
 
@@ -169,10 +168,7 @@ Audience timing depends on semantics:
 - broad derived audiences such as closing-soon voters are resolved in the
   background using current membership and preferences.
 
-`deliveries_generated_at` distinguishes an unresolved notification from one
-whose resolver legitimately found no recipients. A partial index makes lost
-resolution jobs recoverable. Delivery workers claim ledger rows and retry them;
-provider-specific idempotency keys should be used where available.
+`deliveries_generated_at` distinguishes an unresolved notification from one whose resolver legitimately found no recipients. A partial index makes lost resolution jobs recoverable. The router directly enqueues one Active Job for each external delivery. A worker sets `delivered_at` only after successful channel delivery; a nil timestamp means no successful delivery, including a push subscription that became inactive before the job ran. Solid Queue owns attempt counts, retry scheduling and terminal failure details, with up to four retries for each delivery job. There is no recurring unsent-delivery sweep or separate delivery status.
 
 Detached anonymous polls resolve recipients only through `AnonymousPollVoter`.
 Notifications, serializers, mailers, exports, live updates and background jobs
@@ -202,8 +198,7 @@ After this refactor ships with existing user-visible behavior unchanged:
 
 1. Add push as a delivery channel with endpoint lifecycle and provider
    idempotency.
-2. Add batch email records which claim several email deliveries and render
-   them in one message without changing notification identity.
+2. Add batch email records which reference several email deliveries and render them in one message without changing notification identity.
 3. Add per-user delivery throttling and scheduling policy.
 4. Add daily summary emails per group rather than one cross-group summary.
 5. Let group administrators choose default email preferences when inviting new
