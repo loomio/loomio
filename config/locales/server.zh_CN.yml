@@ -572,6 +572,21 @@ zh_CN:
     unsubscribe: 取消订阅或更改您的电子邮件偏好设置：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消订阅或更改您的电子邮件偏好设置。"
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
       daily_subject: 昨天在 %{site_name}
       weekly_subject: 上周在 %{site_name}
       other_subject: 最近在 %{site_name}
@@ -582,6 +597,18 @@ zh_CN:
       click_here: 点击这里
 
     digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: 昨天在 %{site_name}
       weekly_subject: 上周在 %{site_name}
       other_subject: 最近在 %{site_name}

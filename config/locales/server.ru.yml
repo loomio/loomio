@@ -313,6 +313,21 @@ ru:
     unsubscribe: 'Отписаться или изменить почтовые предпочтения:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, чтобы отписаться или изменить почтовые предпочтения."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
       daily_subject: Вчера на сайте %{site_name}
       weekly_subject: Прошлая неделя на сайте %{site_name}
       other_subject: Недавно на %{site_name}
@@ -323,6 +338,18 @@ ru:
       click_here: Кликните здесь
 
     digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Вчера на сайте %{site_name}
       weekly_subject: Прошлая неделя на сайте %{site_name}
       other_subject: Недавно на %{site_name}

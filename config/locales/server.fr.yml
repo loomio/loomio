@@ -328,6 +328,21 @@ fr:
     unsubscribe: 'Se désabonner ou modifier tes préférences de notification par courriel :'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou modifier tes préférences de notification par courriel."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
       daily_subject: Hier sur %{site_name}
       weekly_subject: La semaine dernière sur %{site_name}
       other_subject: Récemment sur %{site_name}
@@ -338,6 +353,18 @@ fr:
       click_here: Cliquer ici
 
     digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Hier sur %{site_name}
       weekly_subject: La semaine dernière sur %{site_name}
       other_subject: Récemment sur %{site_name}
