@@ -369,7 +369,7 @@ module Dev::ScenariosHelper
     choices =  [{poll_option_id: poll.poll_option_ids[0]}]
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
-    UserMailer.digest(observer.id).deliver_now
+    DigestMailer.digest(observer.id).deliver_now
 
     scenario.merge(observer: observer)
   end

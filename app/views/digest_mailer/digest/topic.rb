@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Digest::Topic < Views::ApplicationMailer::Component
+class Views::DigestMailer::Digest::Topic < Views::ApplicationMailer::Component
   include PrettyUrlHelper
 
   TOPIC_ITEM_KINDS = %w[new_comment stance_created discussion_edited poll_edited].freeze

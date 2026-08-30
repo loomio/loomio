@@ -2,10 +2,16 @@
 
 The notifications you receive from Loomio help you stay in touch with activity in your Loomio groups, be alerted to new discussions, polls, outcomes and when someone wants to get your attention.
 
-The default notification settings alert you to important activity in your groups by email. You can instead receive push notifications, or use both channels.
+## Default settings
 
-The default settings work for most people.  Change notification settings to suit the way you work. 
+New accounts start with these notification settings:
 
+- **Email — When notified:** Loomio sends an immediate email when someone asks for your attention, such as by mentioning you, replying to you, or inviting you to participate
+- **Catch-up email — Every day:** unseen notifications and unread activity that you have not already seen are collected into a daily catch-up
+- **Push — When notified:** this is ready to use, but Loomio cannot send push notifications until you enable push in at least one browser
+- **Newsletter — Off:** you only receive the newsletter if you choose to subscribe
+
+These defaults apply when you join a group, and threads initially inherit their group's settings. You can change the defaults for future groups, override them for a particular group or thread, and choose different settings for email and push. Existing accounts keep their current settings.
 
 ## Notifications in Loomio
 

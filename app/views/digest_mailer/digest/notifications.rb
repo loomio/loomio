@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Digest::Notifications < Views::ApplicationMailer::Component
+class Views::DigestMailer::Digest::Notifications < Views::ApplicationMailer::Component
   def initialize(notifications:, recipient:)
     @notifications = notifications
     @recipient = recipient
@@ -17,7 +17,7 @@ class Views::UserMailer::Digest::Notifications < Views::ApplicationMailer::Compo
         translation_values = notification.translation_values_for(@recipient.id)
 
         article do
-          content = Views::UserMailer::Digest::NotificationContent.new(
+          content = Views::DigestMailer::Digest::NotificationContent.new(
             notification: notification,
             recipient: @recipient
           )

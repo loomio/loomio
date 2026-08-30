@@ -102,7 +102,7 @@ module Dev::Scenarios::Discussion
     create_fake_stances(poll: poll)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     TopicService.lock(topic: create_discussion.topic, actor: patrick)
-    UserMailer.digest(jennifer.id, 1.hour.ago).deliver_now
+    DigestMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 
@@ -121,7 +121,7 @@ module Dev::Scenarios::Discussion
       group_id: create_group.id
     }, actor: patrick)
 
-    UserMailer.digest(jennifer.id, 1.hour.ago).deliver_now
+    DigestMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 

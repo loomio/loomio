@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Digest::Footer < Views::ApplicationMailer::Component
+class Views::DigestMailer::Digest::Footer < Views::ApplicationMailer::Component
   def initialize(recipient:)
     @recipient = recipient
   end

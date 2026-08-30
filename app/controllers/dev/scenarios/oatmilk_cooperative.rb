@@ -231,7 +231,7 @@ module Dev::Scenarios::OatmilkCooperative
       )
     end
 
-    UserMailer.digest(coordinator.id, 1.hour.ago).deliver_now
+    DigestMailer.digest(coordinator.id, 1.hour.ago).deliver_now
     last_email(to: coordinator)
   end
 

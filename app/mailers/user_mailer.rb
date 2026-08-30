@@ -30,41 +30,6 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def digest(user_id, time_since = nil, frequency = 'daily')
-    user = User.find(user_id)
-    return unless user.email_catch_up_day
-
-    if frequency == 'daily'
-      time_start = time_since || 24.hours.ago
-    elsif frequency == 'other'
-      time_start = time_since || 48.hours.ago
-    else
-      time_start = time_since || 1.week.ago
-    end
-
-    time_finish = Time.zone.now
-
-    digest = DigestQuery.new(user: user, time_start: time_start, time_finish: time_finish)
-    return if digest.empty?
-
-    subject = I18n.with_locale(first_supported_locale(user.locale)) do
-      digest.subject(frequency: frequency, site_name: AppConfig.theme[:site_name])
-    end
-    component = Views::UserMailer::Digest.new(
-      user: user,
-      recipient: user,
-      notifications: digest.notifications,
-      topics_by_group_id: digest.topics.group_by(&:group_id),
-      time_start: time_start,
-      time_finish: time_finish,
-      utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: user.locale, component: component) { subject }
-  end
-
-  # Compatibility for mail jobs enqueued before the digest terminology rename.
-  alias_method :catch_up, :digest
 
   def group_export_ready(recipient_id, group_name, blob_signed_id)
     user = User.find(recipient_id)

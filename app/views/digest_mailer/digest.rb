@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Digest < Views::NotificationMailer::Layout
+class Views::DigestMailer::Digest < Views::NotificationMailer::Layout
   include PrettyUrlHelper
 
   def initialize(user:, recipient:, notifications:, topics_by_group_id:, time_start:, time_finish:, utm_hash:)
@@ -19,7 +19,7 @@ class Views::UserMailer::Digest < Views::NotificationMailer::Layout
     h1 { plain t(:"email.catch_up.catch_up_heading", site_name: AppConfig.theme[:site_name]) }
 
     if @notifications.any?
-      render Views::UserMailer::Digest::Notifications.new(
+      render Views::DigestMailer::Digest::Notifications.new(
         notifications: @notifications,
         recipient: @recipient
       )
@@ -36,7 +36,7 @@ class Views::UserMailer::Digest < Views::NotificationMailer::Layout
             h3 { link_to group.full_name, group.id ? group_url(group) : direct_discussions_url }
 
             @topics_by_group_id[group.id].each do |topic|
-              render Views::UserMailer::Digest::Topic.new(
+              render Views::DigestMailer::Digest::Topic.new(
                 topic: topic,
                 recipient: @recipient,
                 time_start: @time_start,
@@ -55,7 +55,7 @@ class Views::UserMailer::Digest < Views::NotificationMailer::Layout
         text: t(:"email.catch_up.mark_catch_up_as_read")
       )
     end
-    render Views::UserMailer::Digest::Footer.new(recipient: @recipient)
+    render Views::DigestMailer::Digest::Footer.new(recipient: @recipient)
   end
 
   private

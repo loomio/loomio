@@ -3,7 +3,7 @@
 # Renders the notified record beneath its notification headline without pulling
 # in the full standalone-mail layout, group banner, footer, or reply controls.
 # Each model type is mapped explicitly so unsupported records remain headline-only.
-class Views::UserMailer::Digest::NotificationContent < Views::ApplicationMailer::Component
+class Views::DigestMailer::Digest::NotificationContent < Views::ApplicationMailer::Component
   def initialize(notification:, recipient:)
     @recipient = recipient
     @itemable = notification.subject_model

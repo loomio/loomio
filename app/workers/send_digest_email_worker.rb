@@ -12,7 +12,7 @@ class SendDigestEmailWorker < ApplicationJob
               else
                 'weekly'
               end
-            UserMailer.digest(user.id, nil, period).deliver_now
+            DigestMailer.digest(user.id, nil, period).deliver_now
           end
         end
       end
