@@ -74,6 +74,12 @@ export default new class PushSubscriptionService {
     }
   }
 
+  async subscriptions() {
+    if (!AppConfig.webPushEnabled) return [];
+    const data = await client.get('');
+    return data.push_subscriptions || [];
+  }
+
   sendTest() {
     return client.post('send_test', {});
   }

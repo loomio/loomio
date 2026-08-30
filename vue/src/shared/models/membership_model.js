@@ -43,18 +43,28 @@ export default class MembershipModel extends BaseModel {
   saveVolume(volumeEmail, volumePush, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
-    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
-      volume_email: volumeEmail,
-      volume_push: volumePush,
+    const params = {
       apply_to_all: applyToAll,
       unsubscribe_token: this.user().unsubscribeToken
-    }
-    ).then(() => {
+    };
+    if (volumeEmail != null) params.volume_email = volumeEmail;
+    if (volumePush != null) params.volume_push = volumePush;
+    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', params).then(() => {
+      const topicAttributes = {};
+      const membershipAttributes = {};
+      if (volumeEmail != null) {
+        topicAttributes.readerVolumeEmail = null;
+        membershipAttributes.volumeEmail = volumeEmail;
+      }
+      if (volumePush != null) {
+        topicAttributes.readerVolumePush = null;
+        membershipAttributes.volumePush = volumePush;
+      }
       if (applyToAll) {
-        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.topic().update({readerVolumeEmail: null, readerVolumePush: null}));
-        return each(this.user().memberships(), membership => membership.update({volumeEmail, volumePush}));
+        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.topic().update(topicAttributes));
+        return each(this.user().memberships(), membership => membership.update(membershipAttributes));
       } else {
-        return each(this.group().discussions(), discussion => discussion.topic().update({readerVolumeEmail: null, readerVolumePush: null}));
+        return each(this.group().discussions(), discussion => discussion.topic().update(topicAttributes));
       }
   }).finally(() => {
       return this.processing = false;

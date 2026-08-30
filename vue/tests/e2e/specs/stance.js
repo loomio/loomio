@@ -5,7 +5,7 @@ module.exports = {
   'invite_guest_to_vote': (test) => {
     page = pageHelper(test)
     page.loadPathNoApp('polls/test_invite_to_poll?guest=1')
-    page.click('.notification-mailer__title a')
+    page.click('main h1 a')
     page.pause(1000)
     page.signUpViaInvitation()
     page.click('.poll-common-vote-form__button')
@@ -17,7 +17,7 @@ module.exports = {
   'invite_member_to_vote': (test) => {
     page = pageHelper(test)
     page.loadPathNoApp('polls/test_invite_to_poll')
-    page.click('.notification-mailer__title a')
+    page.click('main h1 a')
     page.pause(1000)
     page.signInViaPassword(null, 'password')
     page.click('.poll-common-vote-form__button')

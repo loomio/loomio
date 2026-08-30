@@ -82,7 +82,11 @@ async function sendTest() {
 </script>
 
 <template lang="pug">
-v-card.mb-4(v-if="configured" :title="$t('push_notifications.title')" :subtitle="$t('push_notifications.subtitle')")
+v-card.push-notifications-settings-card.mb-4(
+  v-if="configured"
+  :class="{ 'push-notifications-settings-card--loaded': !loading }"
+  :title="$t('push_notifications.title')"
+  :subtitle="$t('push_notifications.subtitle')")
   v-card-text
     v-alert.mb-4(v-if="!supported" type="info" variant="tonal")
       span {{ $t('push_notifications.not_supported') }}
@@ -122,8 +126,8 @@ v-card.mb-4(v-if="configured" :title="$t('push_notifications.title')" :subtitle=
         v-list-item-subtitle {{ subscription.user_agent }}
         template(v-slot:append)
           v-btn(
-            icon="mdi-delete-outline"
+            prepend-icon="mdi-delete-outline"
             variant="text"
-            :aria-label="$t('push_notifications.remove_device')"
             @click="remove(subscription)")
+            span(v-t="'push_notifications.remove_device'")
 </template>

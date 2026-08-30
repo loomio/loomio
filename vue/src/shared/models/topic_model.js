@@ -196,12 +196,16 @@ export default class TopicModel extends BaseModel {
     if (applyToAll) {
       return this.membership().saveVolume(volumeEmail, volumePush).finally(() => { this.processing = false; });
     } else {
-      this.readerVolumeEmail = volumeEmail;
-      this.readerVolumePush = volumePush;
-      return Records.topics.remote.patchMember(this.id, 'set_volume', {
-        volume_email: this.readerVolumeEmail,
-        volume_push: this.readerVolumePush
-      }).finally(() => {
+      const params = {};
+      if (volumeEmail != null) {
+        this.readerVolumeEmail = volumeEmail;
+        params.volume_email = volumeEmail;
+      }
+      if (volumePush != null) {
+        this.readerVolumePush = volumePush;
+        params.volume_push = volumePush;
+      }
+      return Records.topics.remote.patchMember(this.id, 'set_volume', params).finally(() => {
         this.processing = false;
       });
     }

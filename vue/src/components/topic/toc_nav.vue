@@ -6,6 +6,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
+import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -39,18 +40,26 @@ const memberActions      = computed(() => Object.entries(pickBy(topicActions.val
 const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
 });
+const catchUpEnabled = computed(() => Session.user().emailCatchUpDay != null);
+const volumeFallbackLabel = computed(() => catchUpEnabled.value
+  ? 'change_volume_form.catch_up_only_option'
+  : 'change_volume_form.in_app_only_option'
+);
 const volumeSummaries = computed(() => {
-  const label = volume => `change_volume_form.${{
-    quiet: 'muted_option',
-    normal: 'when_notified_option',
-    loud: 'all_activity_option'
-  }[volume]}`;
   const summaries = [];
   if (['normal', 'loud'].includes(props.topic.readerVolumeEmail)) {
-    summaries.push({ channel: 'email_channel', icon: mdiEmailOutline, label: label(props.topic.readerVolumeEmail) });
+    summaries.push({
+      channel: 'email_channel',
+      icon: mdiEmailOutline,
+      label: notificationVolumeOptionTitleKey(props.topic.readerVolumeEmail, 'email', catchUpEnabled.value)
+    });
   }
   if (['normal', 'loud'].includes(props.topic.readerVolumePush)) {
-    summaries.push({ channel: 'push_channel', icon: mdiCellphone, label: label(props.topic.readerVolumePush) });
+    summaries.push({
+      channel: 'push_channel',
+      icon: mdiCellphone,
+      label: notificationVolumeOptionTitleKey(props.topic.readerVolumePush, 'push', catchUpEnabled.value)
+    });
   }
   return summaries;
 });
@@ -160,12 +169,12 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item(@click="openVolumeForm")
+      v-list-item.topic-sidebar__notification-settings(@click="openVolumeForm")
         v-list-item-title(v-if="volumeSummaries.length")
           .d-flex.align-center(v-for="summary in volumeSummaries" :key="summary.channel")
             v-icon.mr-2(:icon="summary.icon" size="small")
             span {{ $t(`change_volume_form.${summary.channel}`) }} · {{ $t(summary.label) }}
-        v-list-item-title(v-else v-t="'change_volume_form.off_option'")
+        v-list-item-title(v-else v-t="volumeFallbackLabel")
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")

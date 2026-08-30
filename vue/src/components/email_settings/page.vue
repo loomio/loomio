@@ -10,6 +10,7 @@ import Flash from '@/shared/services/flash';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import PushNotificationsSettingsCard from '@/components/push_notifications/settings_card';
+import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 
 const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
@@ -19,6 +20,8 @@ const memberships = ref([]);
 const loading = ref(false);
 const allGroupsVolumeEmail = ref(null);
 const allGroupsVolumePush = ref(null);
+
+const catchUpEnabled = computed(() => user.value?.emailCatchUpDay != null);
 
 const emailDays = computed(() => [
   {value: null, title: I18n.global.t('email_settings_page.never')},
@@ -49,6 +52,10 @@ function init() {
   loadGroups();
   Session.user().attributeNames.push('unsubscribeToken');
   user.value = Session.user().clone();
+}
+
+function volumeOptionLabel(volume, channel) {
+  return I18n.global.t(notificationVolumeOptionTitleKey(volume, channel, catchUpEnabled.value));
 }
 
 function membershipVolumeChanged(membership) {
@@ -103,16 +110,16 @@ v-main
       v-card-text
         p {{ $t('email_settings_page.account_deactivated') }}
 
-    v-card.mb-4(v-if="!user.deactivatedAt")
+    v-card.email-settings-page__digest-card.mb-4(v-if="!user.deactivatedAt")
       v-card-text
 
         .text-body-large
-          span {{ $t('email_settings_page.email_catch_up_day') }}
-        p.text-medium-emphasis.pb-4 {{ $t('email_settings_page.daily_summary_description') }}
-        v-select#email-catch-up-day(
+          span {{ $t('email_settings_page.catch_up_email') }}
+        p.text-medium-emphasis.pb-4 {{ $t('email_settings_page.catch_up_email_description') }}
+        v-select#digest-email-day(
           solo
           :items="emailDays"
-          :label="$t('email_settings_page.email_catch_up_day')"
+          :label="$t('email_settings_page.catch_up_email')"
           v-model="user.emailCatchUpDay")
 
       v-card-actions
@@ -121,18 +128,10 @@ v-main
         v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
           span {{ $t('email_settings_page.update_settings') }}
 
-    v-card.mb-4(:title="$t('email_settings_page.group_notifications')" :subtitle="$t('email_settings_page.group_notifications_description')")
+    v-card.email-settings-page__group-notifications-card.mb-4(:title="$t('email_settings_page.group_notifications')" :subtitle="$t('email_settings_page.group_notifications_description')")
       v-card-text
-        .text-body-large.pb-2 {{ $t('change_volume_form.what_the_options_mean') }}
-
-        .text-title-small.pb-1 {{ $t('change_volume_form.quiet_desc') }}
-        .text-body-medium.pb-4.text-medium-emphasis {{ $t('change_volume_form.quiet_explained') }}
-
-        .text-title-small.pb-1 {{ $t('change_volume_form.normal_desc') }}
-        .text-body-medium.pb-4.text-medium-emphasis {{ $t('change_volume_form.normal_explained') }}
-
-        .text-title-small.pb-1 {{ $t('change_volume_form.loud_desc') }}
-        .text-body-medium.pb-4.text-medium-emphasis {{ $t('change_volume_form.loud_explained') }}
+        .text-body-large.pb-1 {{ $t('change_volume_form.how_do_you_want_to_stay_updated') }}
+        .text-body-medium.text-medium-emphasis {{ $t('email_settings_page.choose_email_and_push_updates') }}
       v-overlay(persistent :model-value="loading" class="align-center justify-center")
         v-progress-circular(color="primary" size="64" indeterminate)
 
@@ -151,22 +150,22 @@ v-main
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="allGroupsVolumeEmail" @change="allGroupsVolumeChanged('email')")
                   option(:value="null")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ $t('change_volume_form.' + volume + '_desc') }}
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'email') }}
             td.text-left
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="allGroupsVolumePush" @change="allGroupsVolumeChanged('push')")
                   option(:value="null")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ $t('change_volume_form.' + volume + '_desc') }}
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'push') }}
           tr(v-for="membership in memberships" :key="membership.id")
             td {{membership.group().fullName}}
             td.text-left
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="membership.volumeEmail" @change="membershipVolumeChanged(membership)")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volumeEmail == volume") {{ $t('change_volume_form.' + volume + '_desc') }}
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volumeEmail == volume") {{ volumeOptionLabel(volume, 'email') }}
             td.text-left
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="membership.volumePush" @change="membershipVolumeChanged(membership)")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ $t('change_volume_form.' + volume + '_desc') }}
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'push') }}
 
     v-card.email-settings-page__deactivate-card(v-if="actions.length" :title="$t('email_settings_page.deactivate_header')")
       v-card-text
