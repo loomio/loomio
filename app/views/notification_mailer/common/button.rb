@@ -11,7 +11,7 @@ class Views::NotificationMailer::Common::Button < Views::ApplicationMailer::Comp
     fgcolor = AppConfig.theme[:text_on_primary_color]
 
     a(
-      class: "base-mailer__button base-mailer__button--primary",
+      class: "email-button email-button-primary",
       href: @url,
       style: "background-color: #{bgcolor}; font-size: 18px; font-weight: bold; text-decoration: none; padding: 12px 24px; color: #{fgcolor}; border-radius: 5px; display: inline-block; mso-padding-alt: 0;"
     ) do

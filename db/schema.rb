@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_29_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -528,30 +528,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_29_000003) do
   end
 
   create_table "notification_deliveries", force: :cascade do |t|
-    t.integer "attempt_count", default: 0, null: false
-    t.datetime "available_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "channel", null: false
-    t.datetime "claimed_at"
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
-    t.datetime "last_attempt_at"
-    t.text "last_error"
-    t.datetime "next_attempt_at"
     t.bigint "notification_id", null: false
-    t.string "provider_message_id"
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
-    t.string "status", default: "pending", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
     t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
     t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
-    t.index ["status", "available_at"], name: "index_notification_deliveries_on_status_and_available_at"
-    t.check_constraint "attempt_count >= 0", name: "notification_deliveries_attempt_count"
     t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying::text, 'email'::character varying::text, 'push'::character varying::text, 'chatbot'::character varying::text])", name: "notification_deliveries_channel"
-    t.check_constraint "status::text = ANY (ARRAY['pending'::character varying::text, 'claimed'::character varying::text, 'delivered'::character varying::text, 'failed'::character varying::text, 'cancelled'::character varying::text])", name: "notification_deliveries_status"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -1304,7 +1293,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_29_000003) do
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false
     t.boolean "email_catch_up", default: true, null: false
-    t.integer "email_catch_up_day"
+    t.integer "email_catch_up_day", default: 7
     t.boolean "email_newsletter", default: false, null: false
     t.string "email_sha256"
     t.boolean "email_verified", default: false, null: false

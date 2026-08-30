@@ -480,6 +480,21 @@ class Poll < ApplicationRecord
     kept? && (closing_at && closing_at > Time.now) && !closed_at && opened?
   end
 
+  # A pending vote is current user state, not merely the absence of any stance.
+  # Recheck access and electorate rules so stale notifications cannot disclose or
+  # request action on polls the user can no longer see or participate in.
+  def vote_needed_from?(user)
+    return false unless active?
+    return false unless user.can?(:show, self)
+    return false unless user.can?(:vote_in, self)
+
+    if detached_anonymous?
+      anonymous_poll_voters.exists?(voter_id: user.id, ballot_submitted: false)
+    else
+      !stances.latest.decided.exists?(participant_id: user.id)
+    end
+  end
+
   def scheduled?
     opening_at.present? && !opened?
   end

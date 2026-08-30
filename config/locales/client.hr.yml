@@ -1636,6 +1636,7 @@ hr:
     email_newsletter: Loomio bilten
     email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
     email_catch_up_day: Sažetak e-pošte za nadoknadu
+    digest_email: Sažetak e-pošte za nadoknadu
     announcement_label: Obavijesti
     announcement_description: Primit ćete e-poruku o svim sadržajima koje su najavili ljudi u vašim grupama
     mentioned_label: Spominjanja i odgovori
@@ -1651,6 +1652,7 @@ hr:
     learn_more: Saznajte više o postavkama e-pošte...
     mentioned_description: Kada vas netko {'@'}spomene u komentaru, dobit ćete obavijest e-poštom
     daily_summary_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
+    digest_email_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
     never: Nikada
     send_email: Pošalji e-poštu
     group_notifications: Grupne obavijesti

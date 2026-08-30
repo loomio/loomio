@@ -336,6 +336,16 @@ fr:
       thanks_for_reading: Merci pour ta lecture, passe une bonne journée !
       marked_as_read_success: Tout le contenu de ce courriel a été marqué comme lu
       click_here: Cliquer ici
+
+    digest:
+      daily_subject: Hier sur %{site_name}
+      weekly_subject: La semaine dernière sur %{site_name}
+      other_subject: Récemment sur %{site_name}
+      do_not_reply: Merci de ne pas répondre à ce courriel.
+      mark_as_read: Marquer comme lu
+      thanks_for_reading: Merci pour ta lecture, passe une bonne journée !
+      marked_as_read_success: Tout le contenu de ce courriel a été marqué comme lu
+      click_here: Cliquer ici
     group_membership_approved:
       intro: Ta demande d'accès au groupe %{group_name} a été acceptée.
       intro_html: Ta demande d'accès au groupe <strong>%{group_name}</strong>  a été acceptée.

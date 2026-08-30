@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
+class Views::UserMailer::Digest::Topic < Views::ApplicationMailer::Component
   include PrettyUrlHelper
 
   TOPIC_ITEM_KINDS = %w[new_comment stance_created discussion_edited poll_edited].freeze
@@ -12,16 +12,17 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     'poll_edited' => Views::NotificationMailer::TopicItems::PollEdited
   }.freeze
 
-  def initialize(topic:, recipient:, time_start:, utm_hash:)
+  def initialize(topic:, recipient:, time_start:, time_finish:, utm_hash:)
     @topic = topic
     @topicable = topic.topicable
     @recipient = recipient
     @time_start = time_start
+    @time_finish = time_finish
     @utm_hash = utm_hash
   end
 
   def view_template
-    div(class: "light-discussion", id: @topicable.respond_to?(:key) ? @topicable.key : "topic-#{@topic.id}") do
+    article(class: "email-thread", id: @topicable.respond_to?(:key) ? @topicable.key : "topic-#{@topic.id}") do
       render_title
       render_new_content
       render_polls
@@ -33,17 +34,17 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
   private
 
   def render_title
-    h2 { link_to TranslationService.plain_text(@topicable, :title, @recipient), topicable_url }
+    h4 { link_to TranslationService.plain_text(@topicable, :title, @recipient), topicable_url }
   end
 
   def render_new_content
     return unless @topicable.created_at >= @time_start
 
     if @topicable.is_a?(Discussion)
-      p { em { plain "by #{@topicable.author.name}" } }
-      div(class: "description") { raw TranslationService.formatted_text(@topicable, :description, @recipient) }
+      p(class: "email-meta") { plain "by #{@topicable.author.name}" }
+      div(class: "email-thread-context email-user-content") { raw TranslationService.formatted_text(@topicable, :description, @recipient) }
     elsif @topicable.is_a?(Poll)
-      p { em { plain "by #{@topicable.author.name}" } }
+      p(class: "email-meta") { plain "by #{@topicable.author.name}" }
     end
   end
 
@@ -57,7 +58,11 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     end
 
     polls.each do |poll|
-      render Views::NotificationMailer::Common::Title.new(itemable: poll, recipient: @recipient)
+      render Views::NotificationMailer::Common::Title.new(
+        itemable: poll,
+        recipient: @recipient,
+        heading_tag: :h5
+      )
       render Views::NotificationMailer::Common::Tags.new(itemable: poll)
       render Views::NotificationMailer::Poll::Summary.new(poll: poll, recipient: @recipient)
       render Views::NotificationMailer::Poll::Vote.new(poll: poll, recipient: @recipient)
@@ -69,8 +74,10 @@ class Views::UserMailer::CatchUp::Topic < Views::ApplicationMailer::Component
     reader = TopicReader.for(user: @recipient, topic: @topic)
     since = [reader.last_read_at, @time_start].compact.max
 
-    div(class: "activity-feed") do
-      @topic.items.includes(:notifications).where('created_at > ?', since).order('created_at').each do |item|
+    div(class: "email-thread-activity") do
+      @topic.items.includes(:notifications)
+            .where("created_at > ? AND created_at <= ?", since, @time_finish)
+            .order("created_at").each do |item|
         next unless TOPIC_ITEM_KINDS.include?(item.kind)
 
         component_class = TOPIC_ITEM_COMPONENTS[item.kind]

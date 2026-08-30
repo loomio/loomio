@@ -318,6 +318,16 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
+
+    digest:
+      daily_subject: I går på %{site_name}
+      weekly_subject: Sidste uge på %{site_name}
+      other_subject: For nylig på %{site_name}
+      do_not_reply: Svar venligst ikke på denne e-mail.
+      mark_as_read: Marker som læst
+      thanks_for_reading: Tak fordi du læste, hav en god dag!
+      marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
+      click_here: Klik her
     group_membership_approved:
       intro: Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt.
       intro_html: Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt.

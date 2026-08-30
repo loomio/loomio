@@ -582,6 +582,16 @@ be:
       thanks_for_reading: Дзякуй за чытанне, добрага дня!
       marked_as_read_success: Усё ў электронным лісце пазначана як прачытанае
       click_here: Націсніце тут
+
+    digest:
+      daily_subject: Учора на %{site_name}
+      weekly_subject: На мінулым тыдні на %{site_name}
+      other_subject: Нядаўна на %{site_name}
+      do_not_reply: Калі ласка, не адказвайце на гэты ліст.
+      mark_as_read: Адзначыць як прачытанае
+      thanks_for_reading: Дзякуй за чытанне, добрага дня!
+      marked_as_read_success: Усё ў электронным лісце пазначана як прачытанае
+      click_here: Націсніце тут
     group_membership_approved:
       intro: Ваш запыт на доступ да групы %{group_name} быў ухвалены.
       intro_html: Ваш запыт на доступ да групы <strong>%{group_name}</strong> быў ухвалены.

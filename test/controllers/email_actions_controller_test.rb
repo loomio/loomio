@@ -2,7 +2,8 @@ require 'test_helper'
 
 class EmailActionsControllerTest < ActionController::TestCase
   inline_jobs "marks the discussion as read at topic_item created_at",
-              "marks a comment as read"
+              "marks a comment as read",
+              "marks digest notifications as viewed"
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "eauser#{hex}", email: "eauser#{hex}@example.com", username: "eauser#{hex}", email_verified: true)
@@ -116,7 +117,7 @@ class EmailActionsControllerTest < ActionController::TestCase
       kind: "new_discussion",
       subject: @discussion
     )
-    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
+    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", delivered_at: notification.created_at)
     TopicService.discard(topic: @topic, actor: @author)
 
     get :mark_discussion_as_read, params: {
@@ -148,7 +149,7 @@ class EmailActionsControllerTest < ActionController::TestCase
       kind: "new_discussion",
       subject: @discussion
     )
-    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", status: "delivered")
+    delivery = NotificationDelivery.create!(notification: notification, recipient: @user, channel: "in_app", delivered_at: notification.created_at)
     get :mark_notification_as_read, params: { id: notification.id, unsubscribe_token: @user.unsubscribe_token }
     assert_predicate delivery.reload, :viewed?
   end
@@ -163,14 +164,12 @@ class EmailActionsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: @user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
     author_delivery = NotificationDelivery.create!(
       notification: notification,
       recipient: @author,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 
@@ -184,13 +183,59 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_nil author_delivery.reload.viewed_at
   end
 
-  # mark_summary_email_as_read test
+  test "marks digest notifications as viewed" do
+    time_start = 1.hour.ago
+    time_finish = Time.current
+    included_notification = Notification.create!(
+      actor: @author,
+      kind: "discussion_edited",
+      subject: @discussion,
+      created_at: 30.minutes.ago
+    )
+    included_delivery = NotificationDelivery.create!(
+      notification: included_notification,
+      recipient: @user,
+      channel: "in_app",
+      delivered_at: included_notification.created_at
+    )
+    other_recipient_delivery = NotificationDelivery.create!(
+      notification: included_notification,
+      recipient: @author,
+      channel: "in_app",
+      delivered_at: included_notification.created_at
+    )
+    old_notification = Notification.create!(
+      actor: @author,
+      kind: "discussion_edited",
+      subject: @discussion,
+      created_at: 2.hours.ago
+    )
+    old_delivery = NotificationDelivery.create!(
+      notification: old_notification,
+      recipient: @user,
+      channel: "in_app",
+      delivered_at: old_notification.created_at
+    )
+
+    get :mark_digest_as_read, params: {
+      time_start: time_start.to_i,
+      time_finish: time_finish.to_i,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_response :redirect
+    assert_predicate included_delivery.reload, :viewed?
+    assert_not_predicate other_recipient_delivery.reload, :viewed?
+    assert_not_predicate old_delivery.reload, :viewed?
+  end
+
+  # mark_digest_as_read test
   test "marks content as read" do
     time_start = 1.hour.ago
     comment = Comment.new(parent: @discussion, body: "summary test", created_at: time_start)
     CommentService.create(comment: comment, actor: @author)
 
-    get :mark_summary_email_as_read, params: {
+    get :mark_digest_as_read, params: {
       time_start: time_start.to_i,
       time_finish: 30.minutes.ago.to_i,
       unsubscribe_token: @user.unsubscribe_token,

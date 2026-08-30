@@ -307,6 +307,16 @@ ja:
       thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
       marked_as_read_success: メールのすべてが既読としてマークされています
       click_here: ここをクリック
+
+    digest:
+      daily_subject: 昨日の %{site_name}
+      weekly_subject: 先週の %{site_name}
+      other_subject: 最近 %{site_name} で
+      do_not_reply: このメールには返信しないでください。
+      mark_as_read: 既読にする
+      thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
+      marked_as_read_success: メールのすべてが既読としてマークされています
+      click_here: ここをクリック
     group_membership_approved:
       intro: グループ %{group_name} へのアクセス要求が承認されました。
       intro_html: グループ<strong>%{group_name}</strong>へのアクセス要求が承認されました。

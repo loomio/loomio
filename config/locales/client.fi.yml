@@ -1636,6 +1636,7 @@ fi:
     email_newsletter: Loomio-uutiskirje
     email_newsletter_description: Saat päivityksiä uusista ominaisuuksista, koulutuksesta, kaupungissasi tapahtuvista tapahtumista ja Loomion tulevaisuudesta. Yleensä 2-3 sähköpostia vuodessa.
     email_catch_up_day: Yhteenveto sähköpostilla
+    digest_email: Yhteenveto sähköpostilla
     announcement_label: Ilmoitukset
     announcement_description: Saat sähköpostin kaikesta sisällöstä, josta ryhmäsi ihmiset ovat ilmoittaneet
     mentioned_label: Maininnat & vastaukset
@@ -1651,6 +1652,7 @@ fi:
     learn_more: Lisätietoja sähköpostiasetuksista...
     mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
     daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
+    digest_email_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
     never: Ei koskaan
     send_email: Lähetä sähköpostia
     group_notifications: Ryhmäilmoitukset

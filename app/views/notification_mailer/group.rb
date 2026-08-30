@@ -22,35 +22,33 @@ class Views::NotificationMailer::Group < Views::NotificationMailer::Layout
     )
     render Views::NotificationMailer::Group::CoverAndLogo.new(group: @group)
 
-    h1(class: "text-h5") { plain @group.full_name }
+    h1 { plain @group.full_name }
 
-    div(class: "group-mailer__description") do
+    div do
       raw sanitize(
         MarkdownService.render_plain_text(@group.description, @group.description_format).truncate(280),
         tags: %w[p br strong em]
       )
     end
 
-    div(class: "px-2 py-1") do
-      div(class: "text-center") do
-        render Views::NotificationMailer::Common::Button.new(
-          url: url,
-          text: t(:"email.to_join_group.accept_invitation")
-        )
-      end
+    div(class: "email-actions") do
+      render Views::NotificationMailer::Common::Button.new(
+        url: url,
+        text: t(:"email.to_join_group.accept_invitation")
+      )
     end
 
     unless @recipient.email_verified
       p { plain t(:"email.to_join_group.accepting_is_important") }
     end
 
-    div(class: "pt-4") do
+    div(class: "email-branding") do
       image_tag(
         AppConfig.theme[:email_footer_logo_src],
         alt: "#{AppConfig.theme[:site_name]} logo",
-        class: "topic-mailer__footer-logo"
+        class: "email-footer-logo"
       )
-      p(class: "text-caption") { plain t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name]) }
+      p(class: "email-caption") { plain t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name]) }
     end
   end
 end

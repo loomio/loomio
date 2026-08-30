@@ -312,6 +312,16 @@ sv:
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
       click_here: Klicka här
+
+    digest:
+      daily_subject: Igår på %{site_name}
+      weekly_subject: Förra veckan på %{site_name}
+      other_subject: Nyligen på %{site_name}
+      do_not_reply: Var god och svara ej på detta mail.
+      mark_as_read: Markera som läst
+      thanks_for_reading: Tack för läsning, ha en bra dag!
+      marked_as_read_success: Allt från mail har markerats som läst
+      click_here: Klicka här
     group_membership_approved:
       intro: Din begäran om åtkomst till gruppen %{group_name} har godkänts.
       intro_html: Din begäran om åtkomst till gruppen <strong>%{group_name}</strong> har godkänts.

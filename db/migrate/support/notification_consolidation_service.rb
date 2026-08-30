@@ -207,12 +207,11 @@ class NotificationConsolidationService
       )
       INSERT INTO notification_deliveries
         (notification_occurrence_id, recipient_type, recipient_id, channel,
-         status, available_at, delivered_at, viewed_at, translation_values,
-         created_at, updated_at)
+         delivered_at, viewed_at, translation_values, created_at, updated_at)
       SELECT
         occurrences.id, 'User', grouped_receipts.user_id, 'in_app',
-        'delivered', grouped_receipts.created_at, grouped_receipts.created_at,
-        grouped_receipts.viewed_at, grouped_receipts.translation_values,
+        grouped_receipts.created_at, grouped_receipts.viewed_at,
+        grouped_receipts.translation_values,
         grouped_receipts.created_at, grouped_receipts.updated_at
       FROM grouped_receipts
       INNER JOIN notification_occurrences occurrences
@@ -376,15 +375,12 @@ class NotificationConsolidationService
         )
         INSERT INTO notification_deliveries
           (notification_occurrence_id, recipient_type, recipient_id, channel,
-           status, available_at, delivered_at, viewed_at, translation_values,
-           created_at, updated_at)
+           delivered_at, viewed_at, translation_values, created_at, updated_at)
         SELECT
           occurrences.id,
           'User',
           grouped_receipts.user_id,
           'in_app',
-          'delivered',
-          grouped_receipts.created_at,
           grouped_receipts.created_at,
           grouped_receipts.viewed_at,
           grouped_receipts.translation_values,

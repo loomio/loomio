@@ -109,7 +109,7 @@ module MarkdownService
 
       if node['data-due-on']
         due_on = Nokogiri::XML::Node.new('span', frag.document)
-        due_on['class'] = 'mailer-tag'
+        due_on['class'] = 'email-tag'
         due_on.add_child(Nokogiri::XML::Text.new("📅 #{node['data-due-on']}", frag.document))
         node.add_child(due_on)
       end

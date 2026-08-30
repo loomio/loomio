@@ -265,7 +265,7 @@ class TopicService
     end
   end
 
-  def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
+  def self.mark_digest_as_read(user_id, time_start_i, time_finish_i)
     user = User.find_by!(id: user_id)
     time_start  = Time.at(time_start_i).utc
     time_finish = Time.at(time_finish_i).utc

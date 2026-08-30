@@ -11,7 +11,7 @@ class Views::NotificationMailer::Poll::ShareOutcome < Views::ApplicationMailer::
   def view_template
     return unless @poll.closed_at && !@poll.current_outcome
 
-    p(class: "poll-mailer__create_outcome text-center") do
+    p(class: "email-actions") do
       render Views::NotificationMailer::Common::Button.new(
         url: tracked_url(@poll, recipient: @recipient, args: { set_outcome: @poll.id }),
         text: t('poll_mailer.common.create_outcome')

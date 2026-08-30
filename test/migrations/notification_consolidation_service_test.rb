@@ -200,13 +200,13 @@ class NotificationConsolidationServiceTest < ActiveSupport::TestCase
       notification: direct_notification,
       recipient: users(:user),
       channel: "in_app",
-      status: "delivered"
+      delivered_at: direct_notification.created_at
     )
     topic_delivery = NotificationDelivery.create!(
       notification: topic_notification,
       recipient: users(:user),
       channel: "in_app",
-      status: "delivered"
+      delivered_at: topic_notification.created_at
     )
 
     CutOverEventsToTopicItems.new.send(:delete_topicless_stance_notifications!)

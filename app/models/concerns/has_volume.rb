@@ -9,20 +9,25 @@ module HasVolume
     scope :push_enabled, -> { where.not(volume_push: volume_pushes[:quiet]) }
   end
 
-  # Email and push are independent delivery volumes. A muted channel is not
-  # delivered; normal sends directed notifications and loud sends all activity.
-  def set_volume!(email:, push:, persist: true)
-    unless self.class.volume_emails.key?(email.to_s)
+  # Email and push are independent immediate-delivery volumes. Quiet leaves
+  # activity for the app and digest; normal sends directed notifications and
+  # loud sends all activity.
+  def set_volume!(email: nil, push: nil, persist: true)
+    if email.nil? && push.nil?
       errors.add :volume_email, I18n.t(:"activerecord.errors.messages.invalid")
       return false
     end
-    unless self.class.volume_pushes.key?(push.to_s)
+    if email && !self.class.volume_emails.key?(email.to_s)
+      errors.add :volume_email, I18n.t(:"activerecord.errors.messages.invalid")
+      return false
+    end
+    if push && !self.class.volume_pushes.key?(push.to_s)
       errors.add :volume_push, I18n.t(:"activerecord.errors.messages.invalid")
       return false
     end
 
-    self.volume_email = email
-    self.volume_push = push
+    self.volume_email = email if email
+    self.volume_push = push if push
     persist ? save : true
   end
 

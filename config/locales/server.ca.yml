@@ -314,6 +314,16 @@ ca:
       thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
+
+    digest:
+      daily_subject: Ahir a %{site_name}
+      weekly_subject: La setmana passada a %{site_name}
+      other_subject: Recentment a %{site_name}
+      do_not_reply: Si us plau, no respongueu a aquest correu electrònic.
+      mark_as_read: Marca com a llegit
+      thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
+      marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
+      click_here: Fes click aquí
     group_membership_approved:
       intro: La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat.
       intro_html: La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat.

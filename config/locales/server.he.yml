@@ -322,6 +322,16 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+
+    digest:
+      daily_subject: אתמול ב%{site_name}
+      weekly_subject: בשבוע שעבר ב%{site_name}
+      other_subject: לאחרונה ב-%{site_name}
+      do_not_reply: נא לא להגיב למייל זה.
+      mark_as_read: סמן כנקרא
+      thanks_for_reading: תודה שקראת. יום טוב!
+      marked_as_read_success: כל הדברים במייל סומנו כנקראו
+      click_here: הקליקו כאן
     group_membership_approved:
       intro: בקשתך להכנס לקבוצה %{group_name} אושרה.
       intro_html: בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה.

@@ -312,6 +312,16 @@ el:
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
       click_here: Πατήστε εδώ
+
+    digest:
+      daily_subject: Χθες στο %{site_name}
+      weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
+      other_subject: Πρόσφατα στο %{site_name}
+      do_not_reply: Παρακαλώ μην απαντήσετε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου.
+      mark_as_read: Σημείωσε ως διαβασμένα
+      thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
+      marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
+      click_here: Πατήστε εδώ
     group_membership_approved:
       intro: Το αίτημά σας για πρόσβαση στην ομάδα %{group_name} έχει εγκριθεί.
       intro_html: Το αίτημά σας για πρόσβαση στην ομάδα <strong>%{group_name}</strong> έχει εγκριθεί.

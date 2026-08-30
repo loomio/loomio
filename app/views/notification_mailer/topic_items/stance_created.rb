@@ -12,14 +12,12 @@ class Views::NotificationMailer::TopicItems::StanceCreated < Views::ApplicationM
   def view_template
     table do
       tr do
-        td(class: "icon") do
+        td(class: "email-activity-avatar") do
           a(href: user_url(@participant)) do
-            div(class: "medium-user-avatar #{@participant.avatar_kind}-user-avatar avatar-canvas") do
-              render Views::NotificationMailer::Common::Avatar.new(user: @participant)
-            end
+            render Views::NotificationMailer::Common::Avatar.new(user: @participant)
           end
         end
-        td { plain @participant.name }
+        td(class: "email-meta") { plain @participant.name }
         td do
           render Views::NotificationMailer::Poll::StanceChoices.new(
             stance: @stance,
@@ -30,6 +28,6 @@ class Views::NotificationMailer::TopicItems::StanceCreated < Views::ApplicationM
       end
     end
 
-    p { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
+    div(class: "email-user-content") { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
   end
 end

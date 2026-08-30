@@ -22,7 +22,7 @@ class Views::ReceivedEmailMailer < Views::NotificationMailer::Layout
       message: @topic_item.itemable.title
     )
 
-    div(class: "text-center") do
+    div(class: "email-actions") do
       render Views::NotificationMailer::Common::Button.new(
         url: url,
         text: t(:"email_to_group.review_email")

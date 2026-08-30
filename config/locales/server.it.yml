@@ -323,6 +323,16 @@ it:
       thanks_for_reading: Grazie per aver letto, buona giornata!
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
       click_here: Clicca qui
+
+    digest:
+      daily_subject: Ieri su %{site_name}
+      weekly_subject: La scorsa settimana su %{site_name}
+      other_subject: Di recente su %{site_name}
+      do_not_reply: Non rispondere a questa email
+      mark_as_read: Contrassegnato come letto
+      thanks_for_reading: Grazie per aver letto, buona giornata!
+      marked_as_read_success: Tutte le email sono state contrassegnate come lette
+      click_here: Clicca qui
     group_membership_approved:
       intro: La tua richiesta di accesso al gruppo %{group_name} è stata approvata.
       intro_html: La tua richiesta di accesso al gruppo <strong>%{group_name}</strong> è stata approvata.

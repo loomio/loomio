@@ -10,7 +10,7 @@ class Views::NotificationMailer::Poll::Stance < Views::ApplicationMailer::Compon
   def view_template
     return unless @stance.shared_update_visible?
 
-    div(class: "poll-mailer__stance") do
+    div do
       table do
         poll = @stance.poll
         @stance.stance_choices.order('score desc').each do |choice|
@@ -29,7 +29,7 @@ class Views::NotificationMailer::Poll::Stance < Views::ApplicationMailer::Compon
         end
       end
 
-      p { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
+      div(class: "email-user-content") { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
     end
   end
 end

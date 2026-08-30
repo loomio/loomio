@@ -245,7 +245,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
   end
 
 
-  test "notification push delivery cancels when its session has been revoked" do
+  test "notification push delivery remains undelivered when its session has been revoked" do
     recipient = users(:member)
     recipient.update!(deactivated_at: nil, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
@@ -268,10 +268,10 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       DeliverNotificationPushWorker.perform_now(delivery.id)
     end
 
-    assert_equal "cancelled", delivery.reload.status
+    assert_nil delivery.reload.delivered_at
   end
 
-  test "notification push delivery cancels an expired subscription" do
+  test "notification push delivery remains undelivered for an expired subscription" do
     recipient = users(:member)
     recipient.update!(deactivated_at: nil, complaints_count: 0)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
@@ -292,7 +292,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
     DeliverNotificationPushWorker.perform_now(delivery.id)
 
-    assert_equal "cancelled", delivery.reload.status
+    assert_nil delivery.reload.delivered_at
   end
 
   test "direct operational routers preserve their recipient and channel rules" do
@@ -682,8 +682,8 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal %w[chatbot email in_app], deliveries.order(:channel).pluck(:channel)
     assert_equal [ @author.id ], deliveries.where(channel: %w[email in_app]).distinct.pluck(:recipient_id)
     assert_equal [ @chatbot.id ], deliveries.where(channel: "chatbot").pluck(:recipient_id)
-    assert_equal "delivered", deliveries.find_by!(channel: "in_app").status
-    assert_equal %w[pending pending], deliveries.where.not(channel: "in_app").pluck(:status)
+    assert_not_nil deliveries.find_by!(channel: "in_app").delivered_at
+    assert_equal [ nil, nil ], deliveries.where.not(channel: "in_app").pluck(:delivered_at)
   end
 
   test "router retries preserve one delivery identity" do
@@ -705,7 +705,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       DeliverNotificationEmailWorker.perform_now(delivery.id)
     end
 
-    assert_equal "delivered", delivery.reload.status
+    assert_not_nil delivery.reload.delivered_at
     assert_includes ActionMailer::Base.deliveries.last.to, @author.email
   end
 
@@ -722,7 +722,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
 
     assert_requested :post, webhook_url, times: 1
-    assert_equal "delivered", delivery.reload.status
+    assert_not_nil delivery.reload.delivered_at
   end
 
   test "the global creator requires a persisted occurrence identity" do

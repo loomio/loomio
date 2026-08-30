@@ -1653,6 +1653,7 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
+    digest_email: 追蹤摘要電子郵件
     announcement_label: 公告
     announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆
@@ -1668,6 +1669,7 @@ zh_TW:
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
+    digest_email_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
     send_email: 傳送電子郵件
     group_notifications: 群組通知

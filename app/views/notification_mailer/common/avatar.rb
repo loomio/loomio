@@ -16,7 +16,7 @@ class Views::NotificationMailer::Common::Avatar < Views::ApplicationMailer::Comp
       img(
         src: avatar_url,
         alt: user.name,
-        class: "base-mailer__avatar-image rounded-circle",
+        class: "email-avatar",
         style: "width: #{@size}px; height: #{@size}px",
         width: @size,
         height: @size
@@ -25,7 +25,7 @@ class Views::NotificationMailer::Common::Avatar < Views::ApplicationMailer::Comp
       img(
         src: user.avatar_initials_url(64),
         alt: user.name,
-        class: "base-mailer__avatar-image rounded-circle",
+        class: "email-avatar",
         style: "width: #{@size}px; height: #{@size}px",
         width: @size,
         height: @size

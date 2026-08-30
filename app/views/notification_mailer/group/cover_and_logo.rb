@@ -12,9 +12,7 @@ class Views::NotificationMailer::Group::CoverAndLogo < Views::ApplicationMailer:
     logo_url = base_url.chomp('/') + (@group.self_or_parent_logo_url(128) || '')
 
     table(
-      style: "padding: 0; margin-bottom: 8px",
-      class: "container",
-      role: "presentation",
+      class: "email-group-cover",
       cellpadding: 0,
       cellspacing: 0,
       border: 0,
@@ -23,7 +21,7 @@ class Views::NotificationMailer::Group::CoverAndLogo < Views::ApplicationMailer:
     ) do
       tr do
         td(
-          class: "rounded",
+          class: "email-group-cover-image",
           valign: "bottom",
           style: "background-image: url(#{cover_url}); background-position: center; background-size: cover"
         ) do
@@ -31,7 +29,7 @@ class Views::NotificationMailer::Group::CoverAndLogo < Views::ApplicationMailer:
           raw "<!--[if !mso]><!-->".html_safe
           if @group.logo_url
             img(
-              class: "rounded",
+              class: "email-group-logo",
               style: "width: 64px; height: 64px; margin-left: 8px; margin-bottom: 4px",
               src: logo_url,
               height: 64,
@@ -47,7 +45,6 @@ class Views::NotificationMailer::Group::CoverAndLogo < Views::ApplicationMailer:
   private
 
   def base_url
-    host = ENV.fetch('CANONICAL_HOST', 'localhost:3000')
-    host =~ /^http/ ? host : "https://#{host}"
+    Rails.application.config.action_mailer.asset_host.to_s
   end
 end

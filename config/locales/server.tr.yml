@@ -312,6 +312,16 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
+
+    digest:
+      daily_subject: Dün %{site_name}'de
+      weekly_subject: Geçen hafta %{site_name}'de
+      other_subject: Son zamanlarda %{site_name}'de
+      do_not_reply: lütfen bu emaile cevap vermeyiniz.
+      mark_as_read: Okundu olarak işaretle
+      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
+      click_here: Buraya tıkla
     group_membership_approved:
       intro: "%{group_name} grubuna erişim talebiniz onaylandı."
       intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."

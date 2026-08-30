@@ -1650,6 +1650,7 @@ ca:
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
     email_catch_up_day: Correu electrònic de resum de posada al dia
+    digest_email: Correu electrònic de resum de posada al dia
     announcement_label: Avisos
     announcement_description: Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups
     mentioned_label: Mencions i respostes
@@ -1665,6 +1666,7 @@ ca:
     learn_more: Més informació sobre la configuració del correu electrònic...
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
     daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
+    digest_email_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
     never: Mai
     send_email: Enviar correu electrònic
     group_notifications: Notificacions de grup

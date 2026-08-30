@@ -312,6 +312,16 @@ ro:
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
       click_here: Apasa aici
+
+    digest:
+      daily_subject: Ieri pe %{site_name}
+      weekly_subject: Săptămâna trecută pe %{site_name}
+      other_subject: Recent pe %{site_name}
+      do_not_reply: Te rugam nu raspunde acestui email.
+      mark_as_read: Marcheaza ca citit
+      thanks_for_reading: Multumesc pentru lectura, o zi buna!
+      marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
+      click_here: Apasa aici
     group_membership_approved:
       intro: Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată.
       intro_html: Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată.

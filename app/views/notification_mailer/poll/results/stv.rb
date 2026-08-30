@@ -26,11 +26,11 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
       h4 { plain t('poll_stv_results.elected') }
       table(cellspacing: 0, style: "border-collapse: collapse; margin-bottom: 16px") do
         tr do
-          th(class: "email-table__header text-left") { plain t('poll_stv_results.candidate') }
-          th(class: "email-table__header text-right") { plain t('poll_stv_results.round_elected') }
-          th(class: "email-table__header text-right") { plain t('poll_stv_results.first_preferences') }
-          th(class: "email-table__header text-right") { plain t('poll_stv_results.final_tally') }
-          th(class: "email-table__header text-right") { plain t('poll_stv_results.quota_surplus') }
+          th(class: "email-table__header email-table-left") { plain t('poll_stv_results.candidate') }
+          th(class: "email-table__header email-table-right") { plain t('poll_stv_results.round_elected') }
+          th(class: "email-table__header email-table-right") { plain t('poll_stv_results.first_preferences') }
+          th(class: "email-table__header email-table-right") { plain t('poll_stv_results.final_tally') }
+          th(class: "email-table__header email-table-right") { plain t('poll_stv_results.quota_surplus') }
         end
         elected.each do |e|
           cid = e['poll_option_id'].to_s
@@ -40,10 +40,10 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
           surplus = final_tally && quota_val ? final_tally - quota_val : nil
           tr do
             td(class: "email-table__cell email-status--elected") { plain e['name'] }
-            td(class: "email-table__cell text-right") { plain e['round_elected'].to_s }
-            td(class: "email-table__cell text-right") { plain first_pref ? format_tally(first_pref) : '-' }
-            td(class: "email-table__cell text-right") { plain final_tally ? format_tally(final_tally) : '-' }
-            td(class: "email-table__cell text-right") { plain surplus ? format_tally(surplus) : '-' }
+            td(class: "email-table__cell email-table-right") { plain e['round_elected'].to_s }
+            td(class: "email-table__cell email-table-right") { plain first_pref ? format_tally(first_pref) : '-' }
+            td(class: "email-table__cell email-table-right") { plain final_tally ? format_tally(final_tally) : '-' }
+            td(class: "email-table__cell email-table-right") { plain surplus ? format_tally(surplus) : '-' }
           end
         end
       end
@@ -55,15 +55,15 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
       h4 { plain t('poll_stv_results.tied') }
       table(cellspacing: 0, style: "border-collapse: collapse; margin-bottom: 16px") do
         tr do
-          th(class: "email-table__header text-left") { plain t('poll_stv_results.candidate') }
-          th(class: "email-table__header text-right") { plain t('poll_stv_results.first_preferences') }
+          th(class: "email-table__header email-table-left") { plain t('poll_stv_results.candidate') }
+          th(class: "email-table__header email-table-right") { plain t('poll_stv_results.first_preferences') }
         end
         tied.each do |e|
           cid = e['poll_option_id'].to_s
           first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
           tr do
             td(class: "email-table__cell email-status--tied") { plain e['name'] }
-            td(class: "email-table__cell text-right") { plain first_pref ? format_tally(first_pref) : '-' }
+            td(class: "email-table__cell email-table-right") { plain first_pref ? format_tally(first_pref) : '-' }
           end
         end
       end
@@ -77,15 +77,15 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
     all_eliminated_ids = rounds.flat_map { |r| r['eliminated'] || [] }
     all_tied_ids = tied.map { |e| e['poll_option_id'] }
 
-    table(class: "v-table", style: "border-collapse: collapse", cellspacing: 0) do
+    table(class: "email-results-table", style: "border-collapse: collapse", cellspacing: 0) do
       tbody do
         # Header row: Candidate, Round 1, Round 2, ...
         tr do
-          th(class: "email-table__header text-left") do
+          th(class: "email-table__header email-table-left") do
             plain t('poll_stv_results.candidate')
           end
           rounds.each do |round|
-            th(class: "email-table__header text-right") do
+            th(class: "email-table__header email-table-right") do
               plain round['round'].to_s
             end
           end
@@ -115,7 +115,7 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
               was_elected = i > 0 && round_state[i - 1][:elected_so_far].include?(c.id)
               was_eliminated = i > 0 && round_state[i - 1][:eliminated_so_far].include?(c.id)
 
-              cell_classes = ["email-table__cell", "text-right"]
+              cell_classes = ["email-table__cell", "email-table-right"]
               if elected_this_round
                 cell_classes << "email-status--elected"
               elsif eliminated_this_round
@@ -139,7 +139,7 @@ class Views::NotificationMailer::Poll::Results::Stv < Views::ApplicationMailer::
             plain "Quota"
           end
           rounds.each do
-            td(class: "email-table__quota text-right") do
+            td(class: "email-table__quota email-table-right") do
               plain format_quota(stv['quota'])
             end
           end

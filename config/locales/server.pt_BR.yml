@@ -336,6 +336,16 @@ pt_BR:
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       marked_as_read_success: Tudo no e-mail foi marcado como lido
       click_here: Clique aqui
+
+    digest:
+      daily_subject: Ontem no %{site_name}
+      weekly_subject: Semana passada no %{site_name}
+      other_subject: Recentemente em %{site_name}
+      do_not_reply: Por favor não responda a esse email.
+      mark_as_read: Marcar como lida
+      thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
+      marked_as_read_success: Tudo no e-mail foi marcado como lido
+      click_here: Clique aqui
     group_membership_approved:
       intro: Sua solicitação para ter acesso ao grupo %{group_name} foi aprovada.
       intro_html: Sua solicitação para ter acesso ao grupo <strong>%{group_name}</strong> foi aprovada.

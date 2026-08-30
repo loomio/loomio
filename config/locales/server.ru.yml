@@ -321,6 +321,16 @@ ru:
       thanks_for_reading: Спасибо, что прочли и удачного дня!
       marked_as_read_success: Все в этом письме отмечено прочитанным
       click_here: Кликните здесь
+
+    digest:
+      daily_subject: Вчера на сайте %{site_name}
+      weekly_subject: Прошлая неделя на сайте %{site_name}
+      other_subject: Недавно на %{site_name}
+      do_not_reply: Не отвечайте, пожалуйста, на это письмо.
+      mark_as_read: Отметить прочитанным
+      thanks_for_reading: Спасибо, что прочли и удачного дня!
+      marked_as_read_success: Все в этом письме отмечено прочитанным
+      click_here: Кликните здесь
     group_membership_approved:
       intro: Ваш запрос на доступ к группе %{group_name} одобрен.
       intro_html: Ваш запрос на доступ к группе <strong>%{group_name}</strong> одобрен.

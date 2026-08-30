@@ -312,6 +312,16 @@ sl:
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
+
+    digest:
+      daily_subject: Včeraj na %{site_name}
+      weekly_subject: Prejšnji teden na %{site_name}
+      other_subject: Pred kratkim na %{site_name}
+      do_not_reply: Prosim, ne odgovarjajte na to e-pošto.
+      mark_as_read: Označi kot prebrano
+      thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
+      marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
+      click_here: Klikni sem
     group_membership_approved:
       intro: Vaša zahteva za dostop do skupine %{group_name} je bila odobrena.
       intro_html: Vaša zahteva za dostop do skupine <strong>%{group_name}</strong> je bila odobrena.

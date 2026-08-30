@@ -337,6 +337,16 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
+
+    digest:
+      daily_subject: Gisteren op %{site_name}
+      weekly_subject: Afgelopen week op %{site_name}
+      other_subject: Onlangs op %{site_name}
+      do_not_reply: Gelieve niet te antwoorden op deze e-mail.
+      mark_as_read: Markeer als gelezen
+      thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
+      marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
+      click_here: Klik hier
     group_membership_approved:
       intro: Je verzoek om toegang tot de groep %{group_name} is goedgekeurd.
       intro_html: Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd.

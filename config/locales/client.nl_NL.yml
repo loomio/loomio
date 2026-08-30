@@ -1650,6 +1650,7 @@ nl_NL:
     email_newsletter: Loomio Nieuwsbrief
     email_newsletter_description: Ontvang updates over nieuwe features, training, evenementen in jouw stad en de toekomst van Loomio. Meestal 2 of 3 e-mails per jaar.
     email_catch_up_day: Inhaaloverzicht e-mail
+    digest_email: Inhaaloverzicht e-mail
     announcement_label: Aankondigingen
     announcement_description: Je zult een e-mail ontvangen over alle inhoud die door personen werden aangekondigd in jouw groepen.
     mentioned_label: Vermeldingen & Antwoorden
@@ -1665,6 +1666,7 @@ nl_NL:
     learn_more: Leer meer over e-mailinstellingen...
     mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
     daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
+    digest_email_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
     never: Nooit
     send_email: E-mail verzenden
     group_notifications: Groepsmeldingen

@@ -12,10 +12,10 @@ class Views::NotificationMailer::TopicItems::PollEdited < Views::ApplicationMail
   def view_template
     table do
       tr do
-        td(class: "icon") do
+        td(class: "email-activity-avatar") do
           render Views::NotificationMailer::Common::Avatar.new(user: @item.actor)
         end
-        td(class: "content") do
+        td(class: "email-activity-content") do
           i do
             plain t(:"poll_mailer.subject.poll_edited",
               actor: @item.actor.name,

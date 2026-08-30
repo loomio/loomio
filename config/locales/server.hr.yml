@@ -312,6 +312,16 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
+
+    digest:
+      daily_subject: Jučer na %{site_name}
+      weekly_subject: Prošli tjedan na %{site_name}
+      other_subject: Nedavno na %{site_name}
+      do_not_reply: Molimo ne odgovarajte na ovaj email.
+      mark_as_read: Označi kao pročitano
+      thanks_for_reading: Hvala na čitanju, ugodan dan!
+      marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
+      click_here: Kliknite ovdje
     group_membership_approved:
       intro: Vaš zahtjev za pristup grupi %{group_name} je odobren.
       intro_html: Vaš zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.

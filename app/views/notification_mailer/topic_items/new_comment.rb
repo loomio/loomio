@@ -11,15 +11,15 @@ class Views::NotificationMailer::TopicItems::NewComment < Views::ApplicationMail
   def view_template
     table do
       tr do
-        td(class: "icon") do
+        td(class: "email-activity-avatar") do
           render Views::NotificationMailer::Common::Avatar.new(user: @comment.author)
         end
-        td(class: "content") do
+        td(class: "email-activity-content") do
           if @comment.discarded?
             plain t(:"thread_item.removed")
           else
-            b { plain @comment.author.name_or_username }
-            p { raw TranslationService.formatted_text(@comment, :body, @recipient) }
+            div(class: "email-meta") { plain @comment.author.name_or_username }
+            div(class: "email-user-content") { raw TranslationService.formatted_text(@comment, :body, @recipient) }
             render Views::NotificationMailer::Common::Attachments.new(resource: @comment)
           end
         end

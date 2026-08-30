@@ -39,6 +39,19 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
   end
 
+  test "new users default to a daily digest and normal delivery volumes" do
+    user = User.create!(
+      name: "Default Notifications User",
+      email: "default-notifications-#{SecureRandom.hex(4)}@test.com",
+      email_verified: true,
+      password: "a_good_password"
+    )
+
+    assert_equal 7, user.email_catch_up_day
+    assert_predicate user, :email_default_normal?
+    assert_predicate user, :push_default_normal?
+  end
+
   test "new records are still assigned tokens on initialization" do
     user = User.new(name: "Token User", email: "token_#{SecureRandom.hex(4)}@test.com")
     assert user.new_record?

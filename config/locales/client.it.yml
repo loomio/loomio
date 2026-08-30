@@ -1662,6 +1662,7 @@ it:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno.
     email_catch_up_day: Email di riepilogo recupero
+    digest_email: Email di riepilogo recupero
     announcement_label: Annunci
     announcement_description: Riceverai un'e-mail su tutti i contenuti che sono stati annunciati dalle persone nei tuoi gruppi
     mentioned_label: Notifica menzioni e risposte
@@ -1677,6 +1678,7 @@ it:
     learn_more: Impara di più sulle impostazioni email...
     mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
     daily_summary_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
+    digest_email_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
     never: Mai
     send_email: Invia email
     group_notifications: Notifiche di gruppo

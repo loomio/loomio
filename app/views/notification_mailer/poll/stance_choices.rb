@@ -49,19 +49,19 @@ class Views::NotificationMailer::Poll::StanceChoices < Views::ApplicationMailer:
       end
     when 'score', 'dot_vote'
       if score
-        div(class: "text-h6") { plain score.to_s }
+        div(class: "email-poll-score") { plain score.to_s }
       else
         selection_indicator("☐")
       end
     when 'ranked_choice'
       if score
-        div(class: "text-h6") { plain "##{@poll.minimum_stance_choices - score + 1}" }
+        div(class: "email-poll-score") { plain "##{@poll.minimum_stance_choices - score + 1}" }
       else
         selection_indicator("☐")
       end
     when 'stv'
       if score
-        div(class: "text-h6") { plain "##{score}" }
+        div(class: "email-poll-score") { plain "##{score}" }
       else
         selection_indicator("☐")
       end
@@ -76,6 +76,6 @@ class Views::NotificationMailer::Poll::StanceChoices < Views::ApplicationMailer:
   end
 
   def selection_indicator(character)
-    span(class: "poll-mailer__option-indicator", style: "font-size: 24px; line-height: 24px") { plain character }
+    span(class: "email-poll-option-indicator", style: "font-size: 24px; line-height: 24px") { plain character }
   end
 end

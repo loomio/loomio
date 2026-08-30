@@ -11,7 +11,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   end
 
   def view_template
-    div(class: "topic-mailer__footer") do
+    div(class: "email-footer") do
       render_tracking_pixels
       render_footer_links if @recipient.is_logged_in?
       render_logo
@@ -23,7 +23,6 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   def render_tracking_pixels
     if @notification
       img(
-        class: "topic-mailer__footer-image",
         src: mark_notification_as_read_pixel_src(@notification, recipient: @recipient),
         alt: "",
         width: 1,
@@ -33,7 +32,6 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
 
     if @recipient.is_logged_in? && @topic && @topic_item.is_a?(TopicItem)
       img(
-        class: "topic-mailer__footer-image",
         src: pixel_src(@topic_item, recipient: @recipient),
         alt: "",
         width: 1,
@@ -43,10 +41,10 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
   end
 
   def render_footer_links
-    p(class: "topic-mailer__footer-links") do
+    p do
       plain "\u2014"
       br
-      span(class: "reply-or-view-online") do
+      span do
         raw t(
           :'discussion_mailer.reply_or_view_online_html',
           url: tracked_url(@topic_item.itemable, recipient: @recipient),
@@ -62,9 +60,9 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
     reason_key, unsub_link = determine_unsubscribe_info
     return unless reason_key
 
-    span(class: "notification-reason") { plain t(reason_key) }
+    span { plain t(reason_key) }
     whitespace
-    a(class: "unsubscribe-link", href: unsub_link) { plain t(:"common.action.unsubscribe") }
+    a(href: unsub_link) { plain t(:"common.action.unsubscribe") }
   end
 
   def determine_unsubscribe_info
@@ -86,7 +84,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
       AppConfig.theme[:email_footer_logo_src],
       height: 24,
       alt: "Logo",
-      class: "topic-mailer__footer-logo"
+      class: "email-footer-logo"
     )
   end
 end

@@ -22,8 +22,6 @@ module Dev::FakeDataHelper
       notification: notification,
       recipient: recipient,
       channel: "in_app",
-      status: "delivered",
-      available_at: created_at,
       delivered_at: created_at,
       translation_values: translation_values,
       created_at: created_at,

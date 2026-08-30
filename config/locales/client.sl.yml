@@ -1636,6 +1636,7 @@ sl:
     email_newsletter: Glasilo Loomio
     email_newsletter_description: Prejemajte posodobitve o novih funkcijah, usposabljanju, dogodkih v vašem mestu in prihodnosti Loomio. Običajno 2 ali 3 e-poštna sporočila na leto.
     email_catch_up_day: E-poštno sporočilo s povzetkom
+    digest_email: E-poštno sporočilo s povzetkom
     announcement_label: Obvestila
     announcement_description: Prejeli boste e-poštno sporočilo o vsej vsebini, ki so jo objavili ljudje v vaših skupinah
     mentioned_label: Omembe in odgovori
@@ -1651,6 +1652,7 @@ sl:
     learn_more: Več o nastavitvah e-pošte ...
     mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
     daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
+    digest_email_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
     never: Nikoli
     send_email: Pošlji e-pošto
     group_notifications: Obvestila skupine

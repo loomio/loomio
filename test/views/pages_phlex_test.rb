@@ -456,7 +456,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
     ))
 
     assert_includes output, "Export Test Proposal"
-    assert_includes output, "poll-created"
+    assert_includes output, "email-body"
+    assert_not_includes output, "v-card"
   end
 
   # ── ExportTable ─────────────────────────────────────────────────

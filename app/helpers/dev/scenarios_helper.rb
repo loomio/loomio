@@ -358,7 +358,7 @@ module Dev::ScenariosHelper
       poll: poll}
   end
 
-  def poll_catch_up_scenario(params)
+  def poll_digest_scenario(params)
     discussion = saved_discussion_with_created_topic_item(group: create_group_with_members)
     scenario  = poll_expired_scenario(params)
     observer = fake_user.tap(&:save!)
@@ -369,7 +369,7 @@ module Dev::ScenariosHelper
     choices =  [{poll_option_id: poll.poll_option_ids[0]}]
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
-    UserMailer.catch_up(observer.id).deliver_now
+    UserMailer.digest(observer.id).deliver_now
 
     scenario.merge(observer: observer)
   end

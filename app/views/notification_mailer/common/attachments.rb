@@ -7,7 +7,7 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
   end
 
   def view_template
-    div(class: "max-width-600") do
+    div(class: "email-attachments") do
       render_link_previews if @resource.link_previews.any?
       render_file_attachments if @resource.attachments.any?
     end
@@ -16,16 +16,16 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
   private
 
   def render_link_previews
-    h4(class: "text-subtitle-2") { plain t(:'common.links') }
-    ul(class: "topic-mailer__list") do
+    h4 { plain t(:'common.links') }
+    ul(class: "email-list") do
       @resource.link_previews.each do |preview|
         div(style: "margin-bottom: 8px") do
           if preview['image'].present?
             a(href: preview['url']) do
-              div(class: "link-preview__image", style: "height: 128px; overflow: none; background: url('#{preview['image']}') center / cover no-repeat)")
+              div(style: "height: 128px; overflow: none; background: url('#{preview['image']}') center / cover no-repeat")
             end
           end
-          a(class: "text-h6", href: preview['url']) { plain preview['title'] }
+          a(class: "email-attachment-title", href: preview['url']) { plain preview['title'] }
           if preview['description'].present?
             p { plain preview['description'] }
           end
@@ -35,14 +35,14 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
   end
 
   def render_file_attachments
-    h4(class: "text-subtitle-2") { plain t(:'common.attachments') }
-    ul(class: "topic-mailer__list") do
+    h4 { plain t(:'common.attachments') }
+    ul(class: "email-list") do
       @resource.files.each do |file|
         download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
         div(style: "margin-bottom: 8px") do
           span { plain "\u{1F4CE}" }
-          a(class: "topic-mailer__file-attachment", href: download_url, target: "_blank") do
-            span(class: "topic-mailer__file-attachment-filername") { plain file.blob.filename.to_s }
+          a(href: download_url, target: "_blank") do
+            span { plain file.blob.filename.to_s }
           end
           span { plain number_to_human_size(file.byte_size) }
           if file.representable?
@@ -53,8 +53,7 @@ class Views::NotificationMailer::Common::Attachments < Views::ApplicationMailer:
             )
             a(href: download_url, target: "_blank") do
               div(
-                class: "link-preview__image",
-                style: "height: 128px; overflow: none; background: url('#{preview_url}') center / contain no-repeat)"
+                style: "height: 128px; overflow: none; background: url('#{preview_url}') center / contain no-repeat"
               )
             end
           end

@@ -12,8 +12,6 @@ class NotificationDeliveryService
       recipient_id: recipient.id,
       channel: channel,
       translation_values: translation_values,
-      status: "pending",
-      available_at: now,
       created_at: now,
       updated_at: now
     }

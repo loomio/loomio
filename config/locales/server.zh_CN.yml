@@ -580,6 +580,16 @@ zh_CN:
       thanks_for_reading: 感谢阅读，祝您度过美好的一天！
       marked_as_read_success: 邮件中的所有内容均已标记为已读
       click_here: 点击这里
+
+    digest:
+      daily_subject: 昨天在 %{site_name}
+      weekly_subject: 上周在 %{site_name}
+      other_subject: 最近在 %{site_name}
+      do_not_reply: 请勿回复此邮件。
+      mark_as_read: 标记为已读
+      thanks_for_reading: 感谢阅读，祝您度过美好的一天！
+      marked_as_read_success: 邮件中的所有内容均已标记为已读
+      click_here: 点击这里
     group_membership_approved:
       intro: 您申请加入群组 %{group_name} 的请求已获批准。
       intro_html: 您申请加入群组<strong>%{group_name} 的</strong>请求已获批准。

@@ -322,6 +322,16 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
+
+    digest:
+      daily_subject: Tegnap itt:%{site_name}
+      weekly_subject: A múlt héten a(z) %{site_name}oldalon
+      other_subject: 'Nemrég itt: %{site_name}'
+      do_not_reply: Ne válaszolj erre az e-mailre.
+      mark_as_read: Megjelölés olvasottként
+      thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
+      marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
+      click_here: Kattints ide
     group_membership_approved:
       intro: A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták.
       intro_html: Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed.

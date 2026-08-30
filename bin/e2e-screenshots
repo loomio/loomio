@@ -11,9 +11,15 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 export NIGHTWATCH_DEVICE_SCALE_FACTOR="${NIGHTWATCH_DEVICE_SCALE_FACTOR:-2}"
 export NIGHTWATCH_SRC_FOLDERS="tests/e2e/screenshots"
+export CANONICAL_HOST="${CANONICAL_HOST:-localhost}"
+export CANONICAL_PORT="${CANONICAL_PORT:-3001}"
 # Screenshot scenarios seed cached translations, so enabling the feature here
 # never makes an external translation request.
 export TRANSLATE_CREDENTIALS="${TRANSLATE_CREDENTIALS:-cached-screenshot-translations}"
+# Push screenshots exercise configured UI without sending web push requests.
+export VAPID_PUBLIC_KEY="${VAPID_PUBLIC_KEY:-screenshot-public-key}"
+export VAPID_PRIVATE_KEY="${VAPID_PRIVATE_KEY:-screenshot-private-key}"
+export VAPID_SUBJECT="${VAPID_SUBJECT:-mailto:screenshots@example.com}"
 
 if [[ "${1:-}" == *.js ]]; then
   SPEC_FILE="${1##*/}"

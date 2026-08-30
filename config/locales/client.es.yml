@@ -1659,6 +1659,7 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
+    digest_email: Correo electrónico de resumen diario
     announcement_label: Anuncios
     announcement_description: Recibirás notificaciones por correo electrónico sobre todos los contenidos anunciados por personas en tus grupos.
     mentioned_label: 'Menciones y Respuestas '
@@ -1674,6 +1675,7 @@ es:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
+    digest_email_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
     never: Nunca
     send_email: Enviar correo electrónico
     group_notifications: Notificaciones de grupo

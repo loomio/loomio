@@ -46,7 +46,6 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: @user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current,
       translation_values: { title: "Recipient-specific title" }
     )
@@ -77,14 +76,12 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: @user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
     admin_delivery = NotificationDelivery.create!(
       notification: notification,
       recipient: @admin,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 
@@ -96,7 +93,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     assert_nil admin_delivery.reload.viewed_at
   end
 
-  test "index excludes pending and inaccessible global deliveries" do
+  test "index excludes undelivered and inaccessible global deliveries" do
     inaccessible_subject = topic_items(:alien_discussion_created_topic_item).itemable
     inaccessible_notification = Notification.create!(
       actor: users(:alien),
@@ -107,22 +104,21 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
       notification: inaccessible_notification,
       recipient: @user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 
     accessible_subject = topic_items(:discussion_created_topic_item).itemable
-    pending_notification = Notification.create!(
+    undelivered_notification = Notification.create!(
       actor: @admin,
       kind: "discussion_edited",
       subject: accessible_subject
     )
-    NotificationDelivery.create!(
-      notification: pending_notification,
+    undelivered_delivery = NotificationDelivery.create!(
+      notification: undelivered_notification,
       recipient: @user,
-      channel: "in_app",
-      status: "pending"
+      channel: "in_app"
     )
+    assert_nil undelivered_delivery.delivered_at
 
     sign_in @user
     get :index
@@ -130,7 +126,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     assert_response :success
     ids = JSON.parse(response.body)["notifications"].map { |record| record["id"] }
     assert_not_includes ids, inaccessible_notification.id
-    assert_not_includes ids, pending_notification.id
+    assert_not_includes ids, undelivered_notification.id
   end
 
   private
@@ -145,7 +141,6 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
     notification

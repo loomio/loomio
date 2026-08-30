@@ -330,6 +330,16 @@ es:
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
       click_here: Haz clic aquí
+
+    digest:
+      daily_subject: Ayer en %{site_name}
+      weekly_subject: Última semana en %{site_name}
+      other_subject: Recientemente en%{site_name}
+      do_not_reply: No respondas a este email
+      mark_as_read: Marcar como leído
+      thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
+      marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
+      click_here: Haz clic aquí
     group_membership_approved:
       intro: Tu solicitud para acceder al grupo %{group_name} ha sido aprobada.
       intro_html: Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada.

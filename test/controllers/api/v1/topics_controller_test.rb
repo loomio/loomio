@@ -458,6 +458,18 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal :normal, reader.volume_push.to_sym
   end
 
+  test "sets email volume without changing push volume when push is omitted" do
+    sign_in @user
+    reader = TopicReader.for(user: @user, topic: @topic)
+    reader.update!(volume_email: :loud, volume_push: :normal)
+
+    patch :set_volume, params: { id: @topic.id, volume_email: :quiet }
+
+    assert_response :success
+    assert_equal :quiet, reader.reload.volume_email.to_sym
+    assert_equal :normal, reader.volume_push.to_sym
+  end
+
   test "does not update volume for unauthorized topic" do
     sign_in @user
 

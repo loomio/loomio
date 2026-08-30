@@ -11,8 +11,8 @@ class Views::NotificationMailer::Discussion::CurrentPolls < Views::ApplicationMa
     polls = @discussion.polls.active.order('closing_at asc')
     return unless polls.any?
 
-    h3(class: "text-h6 mb-2") { plain t('dashboard_page.current_polls') }
-    table(style: "padding: 0; margin-bottom: 8px") do
+    h3 { plain t('dashboard_page.current_polls') }
+    table(class: "email-current-polls") do
       polls.each do |poll|
         stance = recipient_stance(@recipient, poll)
         tr do

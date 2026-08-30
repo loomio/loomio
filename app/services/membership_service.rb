@@ -164,10 +164,9 @@ class MembershipService
       raise ActiveRecord::RecordInvalid, membership
     end
 
-    attributes = {
-      volume_email: membership[:volume_email],
-      volume_push: membership[:volume_push]
-    }
+    attributes = {}
+    attributes[:volume_email] = membership[:volume_email] if params[:volume_email].present?
+    attributes[:volume_push] = membership[:volume_push] if params[:volume_push].present?
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
       actor.memberships.where(group_id: group_ids).update_all(attributes)

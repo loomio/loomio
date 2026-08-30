@@ -174,9 +174,7 @@ class NotificationDeliveryRouter
   end
 
   def delivery_state(channel, now)
-    return { status: "pending", delivered_at: nil } unless channel == "in_app"
-
-    { status: "delivered", delivered_at: now }
+    { delivered_at: (now if channel == "in_app") }
   end
 
   def dispatch!(deliveries)

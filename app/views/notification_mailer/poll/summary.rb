@@ -8,14 +8,14 @@ class Views::NotificationMailer::Poll::Summary < Views::ApplicationMailer::Compo
   end
 
   def view_template
-    div(class: "poll-mailer-common-summary") do
+    div do
       if @poll.current_outcome
-        h2(class: "text-subtitle-2") { plain t(:"poll_common.outcome") }
-        p { raw TranslationService.formatted_text(@poll.current_outcome, :statement, @recipient) }
-        h2(class: "text-subtitle-2") { plain t(:"decision_tools_card.#{@poll.poll_type}_title") }
+        p { strong { plain t(:"poll_common.outcome") } }
+        div(class: "email-user-content") { raw TranslationService.formatted_text(@poll.current_outcome, :statement, @recipient) }
+        p { strong { plain t(:"decision_tools_card.#{@poll.poll_type}_title") } }
       end
 
-      p { raw TranslationService.formatted_text(@poll, :details, @recipient) }
+      div(class: "email-user-content") { raw TranslationService.formatted_text(@poll, :details, @recipient) }
 
       render Views::NotificationMailer::Common::Attachments.new(resource: @poll)
     end

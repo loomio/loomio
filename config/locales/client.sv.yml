@@ -1636,6 +1636,7 @@ sv:
     email_newsletter: Loomio nyhetsbrev
     email_newsletter_description: Få uppdateringar om nya funktioner, utbildning, evenemang i din stad och framtiden för Loomio. Vanligtvis 2 eller 3 e-postmeddelanden per år.
     email_catch_up_day: E-post med sammanfattning
+    digest_email: E-post med sammanfattning
     announcement_label: Meddelanden
     announcement_description: Du kommer att få ett e-postmeddelande om allt innehåll som har annonserats av personer i dina grupper
     mentioned_label: Omnämnanden och svar
@@ -1651,6 +1652,7 @@ sv:
     learn_more: Läs mer om e-postinställningar...
     mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
     daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
+    digest_email_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
     never: Aldrig
     send_email: Skicka e-post
     group_notifications: Gruppmeddelanden

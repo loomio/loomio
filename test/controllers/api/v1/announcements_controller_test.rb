@@ -398,7 +398,6 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: member,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 
@@ -465,7 +464,6 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       notification: notification,
       recipient: member,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 

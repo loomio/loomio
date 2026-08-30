@@ -1706,7 +1706,9 @@ zh_CN:
     deactivate_description: 如果您不想再收到我们的任何电子邮件，您可以停用您的用户帐户。
     email_newsletter: Loomio 新闻简报
     email_catch_up_day: 进度摘要邮件
+    digest_email: 进度摘要邮件
     daily_summary_description: 选择何时接收最新动态汇总邮件。此邮件包含您尚未查看的所有新动态。如果您不是经常使用，这是了解最新动态的好方法。
+    digest_email_description: 选择何时接收最新动态汇总邮件。此邮件包含您尚未查看的所有新动态。如果您不是经常使用，这是了解最新动态的好方法。
     announcement_label: 公告
     announcement_description: 您将收到一封电子邮件，其中包含您所在群组成员发布的所有内容。
     mentioned_label: 提及与回复

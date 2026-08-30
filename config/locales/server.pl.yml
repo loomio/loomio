@@ -337,6 +337,16 @@ pl:
       thanks_for_reading: Dziękujemy za przeczytanie, miłego dnia!
       marked_as_read_success: Wszystko z wiadomości e-mail zostało oznaczone jako przeczytane
       click_here: Kliknij tutaj
+
+    digest:
+      daily_subject: Wczoraj na %{site_name}
+      weekly_subject: W zeszłym tygodniu na %{site_name}
+      other_subject: Ostatnio w %{site_name}
+      do_not_reply: Proszę nie odpowiadać na tę wiadomość e-mail.
+      mark_as_read: Oznacz jako przeczytane
+      thanks_for_reading: Dziękujemy za przeczytanie, miłego dnia!
+      marked_as_read_success: Wszystko z wiadomości e-mail zostało oznaczone jako przeczytane
+      click_here: Kliknij tutaj
     group_membership_approved:
       intro: Twoja prośba o dostęp do grupy %{group_name} została zaakceptowana.
       intro_html: Twoja prośba o dostęp do grupy <strong>%{group_name}</strong> została zaakceptowana.

@@ -67,6 +67,40 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
+  test "lists only the current user's active subscriptions" do
+    current_subscription = create_push_subscription(user: @user, **subscription_params)
+    other_user = users(:member)
+    create_push_subscription(
+      user: other_user,
+      **subscription_params.merge(endpoint: "https://fcm.googleapis.com/fcm/send/other-user-token")
+    )
+
+    get :index
+
+    assert_response :success
+    assert_equal [current_subscription.id], response.parsed_body.fetch("push_subscriptions").pluck("id")
+  end
+
+  test "does not revoke another user's subscription" do
+    other_user = users(:member)
+    subscription = create_push_subscription(user: other_user, **subscription_params)
+
+    delete :destroy, params: { id: subscription.id }
+
+    assert_response :not_found
+    assert_nil subscription.reload.revoked_at
+  end
+
+  test "requires sign in to revoke a subscription" do
+    subscription = create_push_subscription(user: @user, **subscription_params)
+    sign_out @user
+
+    delete :destroy, params: { id: subscription.id }
+
+    assert_response :unauthorized
+    assert_nil subscription.reload.revoked_at
+  end
+
   test "returns not found when revoking an unknown subscription" do
     delete :destroy, params: { endpoint: subscription_params[:endpoint] }
 

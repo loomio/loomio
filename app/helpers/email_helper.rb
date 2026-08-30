@@ -4,34 +4,34 @@ module EmailHelper
   def email_theme_css
     <<~CSS
       :root { color-scheme: light dark; supported-color-schemes: light dark; }
-      .base-mailer__button--primary {
+      .email-button-primary {
         background-color: #{AppConfig.theme[:primary_color]};
         color: #{AppConfig.theme[:text_on_primary_color]};
       }
-      .base-mailer__button--accent {
+      .email-button-accent {
         background-color: #{AppConfig.theme[:accent_color]};
         color: #{AppConfig.theme[:text_on_accent_color]};
       }
-      .poll-mailer__poll-option-container {
+      .email-poll-option-standard {
         border: 1px solid #{AppConfig.theme[:primary_color]};
       }
-      .poll-mailer__option-indicator { color: #{AppConfig.theme[:primary_color]}; }
-      .poll-mailer__result-bar { background-color: #{AppConfig.theme[:primary_color]}; }
+      .email-poll-option-indicator { color: #{AppConfig.theme[:primary_color]}; }
+      .email-result-bar { background-color: #{AppConfig.theme[:primary_color]}; }
       @media (prefers-color-scheme: dark) {
-        .poll-mailer__poll-option-container {
+        .email-poll-option-standard {
           border-color: #{AppConfig.theme[:dark_primary_color]} !important;
         }
-        .poll-mailer__option-indicator {
+        .email-poll-option-indicator {
           color: #{AppConfig.theme[:dark_primary_color]} !important;
         }
-        .poll-mailer__result-bar {
+        .email-result-bar {
           background-color: #{AppConfig.theme[:dark_primary_color]} !important;
         }
-        .base-mailer__button--primary {
+        .email-button-primary {
           background-color: #{AppConfig.theme[:dark_primary_color]} !important;
           color: #{AppConfig.theme[:dark_text_on_primary_color]} !important;
         }
-        .base-mailer__button--accent {
+        .email-button-accent {
           background-color: #{AppConfig.theme[:dark_accent_color]} !important;
           color: #{AppConfig.theme[:dark_text_on_accent_color]} !important;
         }
@@ -40,6 +40,8 @@ module EmailHelper
   end
 
   def recipient_stance(recipient, poll)
+    return Stance.new(poll: poll.poll) unless recipient.is_a?(User)
+
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
 
@@ -109,11 +111,11 @@ module EmailHelper
     [address, ENV['REPLY_HOSTNAME']].join('@')
   end
 
-  def mark_summary_as_read_url_for(user, time_start:, time_finish:, format: nil)
-    email_actions_mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
-                                                 time_start: time_start.utc.to_i,
-                                                 time_finish: time_finish.utc.to_i,
-                                                 format: format)
+  def mark_digest_as_read_url_for(user, time_start:, time_finish:, format: nil)
+    email_actions_mark_digest_as_read_url(unsubscribe_token: user.unsubscribe_token,
+                                          time_start: time_start.utc.to_i,
+                                          time_finish: time_finish.utc.to_i,
+                                          format: format)
   end
 
   def google_pie_chart_url(poll)

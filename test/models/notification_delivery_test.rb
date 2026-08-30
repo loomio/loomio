@@ -38,8 +38,6 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
       recipient_type: "Chatbot",
       recipient_id: @chatbot.id,
       channel: "chatbot",
-      status: "pending",
-      available_at: Time.current,
       created_at: Time.current,
       updated_at: Time.current
     }
@@ -77,7 +75,6 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
       notification: notification,
       recipient: users(:user),
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current,
       viewed_at: Time.current
     )
@@ -85,7 +82,6 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
       notification: notification,
       recipient: users(:member),
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current
     )
 
@@ -114,29 +110,6 @@ class NotificationDeliveryTest < ActiveSupport::TestCase
         updated_at: Time.current
       } ])
     end
-  end
-
-  test "available excludes claimed, cancelled and future retry deliveries" do
-    available = NotificationDelivery.create!(
-      notification: @notification,
-      recipient: users(:user),
-      channel: "email"
-    )
-    NotificationDelivery.create!(
-      notification: @notification,
-      recipient: @chatbot,
-      channel: "chatbot",
-      status: "claimed"
-    )
-    NotificationDelivery.create!(
-      notification: @notification,
-      recipient: users(:member),
-      channel: "push",
-      status: "failed",
-      next_attempt_at: 1.hour.from_now
-    )
-
-    assert_equal [ available ], NotificationDelivery.available.to_a
   end
 
   test "deleting a notification cascades to deliveries" do

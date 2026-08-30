@@ -1636,6 +1636,7 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
+    digest_email: Yakalama özeti e-postası
     announcement_label: Duyurular
     announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
     mentioned_label: Bahsetmeler ve Yanıtlar
@@ -1651,6 +1652,7 @@ tr:
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
     daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
+    digest_email_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
     never: Asla
     send_email: E-posta gönder
     group_notifications: Grup bildirimleri

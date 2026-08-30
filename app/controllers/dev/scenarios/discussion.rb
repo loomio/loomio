@@ -87,7 +87,7 @@ module Dev::Scenarios::Discussion
     redirect_to poll_path(poll)
   end
 
-  def setup_thread_catch_up
+  def setup_thread_digest
     jennifer.update(email_catch_up_day: 7)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
     topic_item = nil
@@ -102,11 +102,11 @@ module Dev::Scenarios::Discussion
     create_fake_stances(poll: poll)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     TopicService.lock(topic: create_discussion.topic, actor: patrick)
-    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
+    UserMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 
-  def setup_thread_catch_up_with_standalone_poll
+  def setup_thread_digest_with_standalone_poll
     jennifer.update(email_catch_up_day: 7)
 
     # Discussion thread with a comment
@@ -121,7 +121,7 @@ module Dev::Scenarios::Discussion
       group_id: create_group.id
     }, actor: patrick)
 
-    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
+    UserMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 

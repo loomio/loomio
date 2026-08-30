@@ -96,6 +96,21 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_not_equal 'loud', second_membership.volume_email
   end
 
+  test 'updates email volume without changing push volume when push is omitted' do
+    membership = @test_group.membership_for(@user)
+    membership.set_volume!(email: 'quiet', push: 'normal')
+    topic_reader = TopicReader.for(user: @user, topic: topics(:discussion_topic))
+    topic_reader.set_volume!(email: 'quiet', push: 'normal')
+
+    put :set_volume, params: { id: membership.id, volume_email: 'loud' }
+
+    assert_response :success
+    assert_equal 'loud', membership.reload.volume_email
+    assert_equal 'normal', membership.volume_push
+    assert_equal 'loud', topic_reader.reload.volume_email
+    assert_equal 'normal', topic_reader.volume_push
+  end
+
   test 'updates volume for all memberships when apply_to_all is true' do
     membership = @test_group.membership_for(@user)
     membership.set_volume!(email: 'quiet', push: 'quiet')

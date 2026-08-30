@@ -28,7 +28,7 @@ class NewCoordinatorNotificationTest < ActiveSupport::TestCase
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     delivery = notification.notification_deliveries.find_by!(channel: "in_app")
     assert_equal @membership.user, delivery.recipient
-    assert_equal "delivered", delivery.status
+    assert_not_nil delivery.delivered_at
   end
 
   test "quiet coordinators retain in-app delivery without email" do

@@ -8,8 +8,8 @@ class Views::NotificationMailer::Common::Body < Views::ApplicationMailer::Compon
   end
 
   def view_template
-    div(class: "topic-mailer__body") do
-      p { raw TranslationService.formatted_text(@itemable, :body, @recipient) }
+    div(class: "email-user-content") do
+      raw TranslationService.formatted_text(@itemable, :body, @recipient)
       render Views::NotificationMailer::Common::Attachments.new(resource: @itemable)
     end
   end

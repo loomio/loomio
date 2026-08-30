@@ -312,6 +312,16 @@ fi:
       thanks_for_reading: Kiitos kun luit, mukavaa päivää!
       marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
       click_here: Klikkaa tästä
+
+    digest:
+      daily_subject: Eilen %{site_name}
+      weekly_subject: Viime viikolla %{site_name}
+      other_subject: Äskettäin %{site_name}
+      do_not_reply: Ole hyvä ja älä vastaa tähän sähköpostiin.
+      mark_as_read: Merkitse luetuksi
+      thanks_for_reading: Kiitos kun luit, mukavaa päivää!
+      marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
+      click_here: Klikkaa tästä
     group_membership_approved:
       intro: Pyyntösi päästä ryhmään %{group_name} on hyväksytty.
       intro_html: Pyyntösi päästä ryhmään <strong>%{group_name}</strong> on hyväksytty.

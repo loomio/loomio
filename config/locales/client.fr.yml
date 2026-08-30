@@ -1671,6 +1671,7 @@ fr:
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans ta ville et du futur de Loomio. 2 à 3 e-mails par an.
     email_catch_up_day: e-mail de synthèse de rattrapage
+    digest_email: e-mail de synthèse de rattrapage
     announcement_label: Nouvelles discussions et décisions
     announcement_description: Tu recevras un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de tes groupes.
     mentioned_label: Mentions et réponses
@@ -1686,6 +1687,7 @@ fr:
     learn_more: En savoir plus sur les paramètres d’e-mail…
     mentioned_description: Lorsque quelqu'un {'@'}te mentionne dans un commentaire, tu recevras un e-mail de notification
     daily_summary_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
+    digest_email_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
     never: Jamais
     send_email: Envoyer un courriel
     group_notifications: Notifications de groupe

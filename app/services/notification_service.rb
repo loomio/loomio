@@ -71,10 +71,9 @@ class NotificationService
   end
 
   def self.viewed(user:)
-    NotificationDelivery.where(
+    NotificationDelivery.delivered.where(
       recipient: user,
       channel: "in_app",
-      status: "delivered",
       viewed_at: nil
     ).update_all(viewed_at: Time.current, updated_at: Time.current)
     notifications = user.notifications.includes(:actor).order(created_at: :desc).limit(30)
