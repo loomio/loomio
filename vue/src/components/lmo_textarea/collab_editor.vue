@@ -35,6 +35,7 @@ import {Iframe} from './extension_iframe';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import { getEmbedLink } from '@/shared/helpers/embed_link';
+import { registerBeforeSaveCallback } from '@/shared/helpers/before_save_callback.mjs';
 
 import SuggestionList from './suggestion_list';
 import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
@@ -96,6 +97,7 @@ let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
 let syncFallbackTimeout = null;
+let unregisterBeforeSave = () => {};
 
 const btnProps = ref({
   size: 'small',
@@ -200,10 +202,8 @@ watch(() => props.model, (newModel, oldModel) => {
       deleteDraft();
     }
 
-    // Register callback on new model instance
-    if (newModel && newModel.beforeSaves && !newModel.beforeSaves.includes(updateModel)) {
-      newModel.beforeSaves.push(updateModel);
-    }
+    unregisterBeforeSave();
+    unregisterBeforeSave = registerBeforeSaveCallback(newModel, updateModel);
   }
 });
 
@@ -295,7 +295,7 @@ const emojiPicked = (shortcode, unicode) => {
 };
 
 const updateModel = () => {
-  if (!editor.value || format.value !== 'html') return;
+  if (!editor.value || editor.value.isDestroyed || format.value !== 'html') return;
   props.model[props.field] = editor.value.getHTML();
   updateFiles();
 };
@@ -381,8 +381,7 @@ onMounted(() => {
 
   expanded.value = Session.user().experiences['html-editor.expanded'];
 
-  // Register beforeSave callback - it persists across model instances since it's on the array
-  props.model.beforeSaves.push(updateModel);
+  unregisterBeforeSave = registerBeforeSaveCallback(props.model, updateModel);
 
   const mentionContext = {
     query,
@@ -516,6 +515,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
+  unregisterBeforeSave();
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
