@@ -80,7 +80,9 @@ class Api::V1::SearchController < Api::V1::RestfulController
       discussion = discussions[res.discussion_id]
       group = groups[res.group_id]
       author = authors[res.author_id]
-      sequence_id = ((res.searchable_type == "Stance" && stance_topic_items[res.searchable_id]) || poll_topic_items[res.poll_id] || nil)&.sequence_id
+      sequence_id = if discussion
+        ((res.searchable_type == "Stance" && stance_topic_items[res.searchable_id]) || poll_topic_items[res.poll_id] || nil)&.sequence_id
+      end
       SearchResult.new(
         id: res.id,
         searchable_type: res.searchable_type,
