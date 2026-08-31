@@ -1,10 +1,13 @@
 class Api::V1::NotificationsController < Api::V1::RestfulController
   def index
     notifications = accessible_records.limit(50).to_a
+    topic_items = notifications.filter_map do |notification|
+      notification.subject if notification.subject.is_a?(TopicItem)
+    end
+    ActiveRecord::Associations::Preloader.new(records: topic_items, associations: :itemable).call if topic_items.any?
 
     topic_ids = notifications.filter_map do |notification|
-      subject = notification.subject_model
-      subject.topic&.id if subject.respond_to?(:topic)
+      notification_topic_id(notification)
     end.uniq
     accessible_topic_ids = TopicQuery.visible_to(user: current_user)
                                      .unscope(:includes)
@@ -12,10 +15,22 @@ class Api::V1::NotificationsController < Api::V1::RestfulController
                                      .pluck(:id)
                                      .to_set
 
+    poll_ids = notifications.filter_map do |notification|
+      notification_poll_id(notification.subject_model)
+    end.uniq
+    accessible_poll_ids = PollQuery.visible_to(user: current_user)
+                                   .unscope(:includes)
+                                   .where(id: poll_ids)
+                                   .pluck(:id)
+                                   .to_set
+
     self.collection = notifications.select do |notification|
       subject = notification.subject_model
-      topic_id = subject.respond_to?(:topic) ? subject.topic&.id : nil
+      topic_id = notification_topic_id(notification)
       next false if topic_id && !accessible_topic_ids.include?(topic_id)
+
+      poll_id = notification_poll_id(subject)
+      next accessible_poll_ids.include?(poll_id) if poll_id
 
       current_user.can?(:show, subject)
     end
@@ -38,5 +53,21 @@ class Api::V1::NotificationsController < Api::V1::RestfulController
       .where(id: notification_ids)
       .includes(:actor, :subject, :notification_deliveries)
       .order(id: :desc)
+  end
+
+  private
+
+  def notification_topic_id(notification)
+    return notification.subject.topic_id if notification.subject.is_a?(TopicItem)
+
+    subject = notification.subject_model
+    subject.topic_id if subject.respond_to?(:topic_id)
+  end
+
+  def notification_poll_id(subject)
+    case subject
+    when Poll then subject.id
+    when Outcome, Stance then subject.poll_id
+    end
   end
 end
