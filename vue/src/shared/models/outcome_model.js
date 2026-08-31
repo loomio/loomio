@@ -87,6 +87,7 @@ export default class OutcomeModel extends BaseModel {
   }
 
   bestNamedId() {
-    return ((this.id && this) || (this.pollId && this.poll()) || (this.groupId && this.group()) || {namedId() {}}).namedId();
+    const target = (this.id && this) || (this.pollId && this.poll()) || (this.groupId && this.group());
+    return target ? target.namedId() : {};
   }
 };

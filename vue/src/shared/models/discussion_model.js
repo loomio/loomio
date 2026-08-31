@@ -100,7 +100,8 @@ export default class DiscussionModel extends BaseModel {
   }
 
   bestNamedId() {
-    return ((this.id && this) || (this.groupId && this.group()) || {namedId() {}}).namedId();
+    const target = (this.id && this) || (this.groupId && this.group());
+    return target ? target.namedId() : {};
   }
 
   createdTopicItem() {

@@ -228,7 +228,8 @@ export default class PollModel extends BaseModel {
   }
 
   bestNamedId() {
-    return ((this.id && this) || (this.discusionId && this.discussion()) || (this.groupId && this.group()) || {namedId() {}}).namedId();
+    const target = (this.id && this) || (this.discussionId && this.discussion()) || (this.groupId && this.group());
+    return target ? target.namedId() : {};
   }
 
   voters() {
