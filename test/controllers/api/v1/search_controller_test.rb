@@ -58,6 +58,37 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
+  test "standalone poll results do not advertise a discussion sequence" do
+    poll = PollService.create(params: {
+      title: "standalonefindme poll",
+      poll_type: "proposal",
+      group_id: @group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: [ "agree", "disagree" ]
+    }, actor: @user)
+    poll.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: "standalonefindme" }
+
+    result = JSON.parse(response.body).fetch('search_results').find do |record|
+      record['searchable_type'] == 'Poll' && record['searchable_id'] == poll.id
+    end
+    assert_not_nil result
+    assert_nil result['discussion_key']
+    assert_nil result['discussion_title']
+    assert_nil result['sequence_id']
+    assert_equal poll.key, result['poll_key']
+    assert_equal poll.title, result['poll_title']
+
+    sign_in users(:alien)
+    get :index, params: { query: "standalonefindme" }
+
+    inaccessible_results = JSON.parse(response.body).fetch('search_results')
+    refute inaccessible_results.any? { |record| record['searchable_id'] == poll.id }
+  end
+
   test "does not return stale documents for a legacy discarded discussion" do
     @discussion.update_columns(discarded_at: Time.current)
     assert PgSearch::Document.where(discussion_id: @discussion.id).exists?

@@ -5,6 +5,7 @@ import EventBus        from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import { mdiMagnify, mdiClose } from '@mdi/js';
+import { urlForSearchResult } from '@/shared/helpers/search_result_url.mjs';
 
 export default {
   props: {
@@ -104,24 +105,7 @@ export default {
     },
 
     urlForResult(result) {
-      switch (result.searchable_type) {
-        case 'Discussion':
-          return `/d/${result.discussion_key}/${this.stub(result.discussion_title)}`;
-        case 'Comment':
-          return `/d/${result.discussion_key}/comment/${result.searchable_id}`;
-        case 'Poll': case 'Outcome': case 'Stance':
-          if (result.sequence_id) {
-            return `/d/${result.discussion_key}/${this.stub(result.discussion_title)}/${result.sequence_id}`;
-          } else {
-            return `/p/${result.poll_key}/${this.stub(result.poll_title)}`;
-          }
-        default:
-          return '/notdefined';
-      }
-    },
-
-    stub(name) {
-      return name.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase();
+      return urlForSearchResult(result);
     },
 
     closeModal() {
