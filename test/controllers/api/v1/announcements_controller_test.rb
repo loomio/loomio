@@ -453,6 +453,38 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal false, entry["notifications"].first["viewed"]
   end
 
+  test "users notified count is calculated as a distinct database aggregate" do
+    member = users(:user)
+    poll = create_test_poll
+    2.times do
+      notification = Notification.create!(
+        kind: "poll_announced",
+        subject: poll,
+        actor: @admin
+      )
+      NotificationDelivery.create!(
+        notification: notification,
+        recipient: member,
+        channel: "in_app"
+      )
+    end
+
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      queries << payload[:sql] unless payload[:name].in?([ "SCHEMA", "TRANSACTION" ]) || payload[:cached]
+    end
+
+    get :users_notified_count, params: { poll_id: poll.id }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)["count"]
+    count_query = queries.find { |sql| sql.match?(/COUNT\(DISTINCT .*recipient_id.*\)/) }
+    assert count_query, "expected the recipient count to use COUNT(DISTINCT ...)"
+    refute_match(/IN \(SELECT .*notifications/, count_query)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   test "anonymous poll history and counts do not expose closing-reminder recipients" do
     member = users(:user)
     poll = create_test_poll(anonymous: true)

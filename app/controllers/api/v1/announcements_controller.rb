@@ -104,14 +104,14 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     # returns a count of users notified about this thing
     current_user.ability.authorize! :show, target_model
 
-    notifications = target_notification_scope
-    user_ids = NotificationDelivery.where(
-      notification_id: notifications.select(:id),
+    notification_ids = target_notification_scope.pluck(:id)
+    count = NotificationDelivery.where(
+      notification_id: notification_ids,
       recipient_type: "User",
       channel: "in_app"
-    ).distinct.pluck(:recipient_id)
+    ).distinct.count(:recipient_id)
 
-    render json: { count: user_ids.uniq.count }
+    render json: { count: count }
   end
 
   def history
