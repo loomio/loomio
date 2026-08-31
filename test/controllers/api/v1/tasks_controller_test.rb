@@ -41,6 +41,25 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     assert_equal 1, tasks.size
   end
 
+  test "index includes the containing topic needed to label comment tasks" do
+    comment = comments(:public_discussion_comment)
+    Task.create!(
+      record: comment,
+      author: @doer,
+      doer: @doer,
+      done: false,
+      name: "Follow up on the comment",
+      uid: "comment-task"
+    )
+
+    get :index
+
+    assert_response :success
+    body = JSON.parse(response.body)
+    assert_includes body.fetch("comments").map { |record| record.fetch("id") }, comment.id
+    assert_includes body.fetch("topics").map { |record| record.fetch("id") }, comment.topic_id
+  end
+
   test "does not fetch tasks when record access is revoked" do
     Membership.where(group_id: @group.id, user_id: @doer.id).update_all(revoked_at: Time.current)
     @doer.reload
