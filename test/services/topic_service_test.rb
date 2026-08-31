@@ -116,30 +116,6 @@ class TopicServiceTest < ActiveSupport::TestCase
     refute_equal 999, @discussion_event.reload.child_count
   end
 
-  test "repair restores parents and positions for legacy poll lifecycle topic_items" do
-    legacy_topic_items = %w[poll_closing_soon poll_expired poll_option_added].map do |kind|
-      TopicItem.create!(
-        kind: kind,
-        itemable: @poll_created_topic_item.itemable,
-        topic: @topic,
-        user: @user
-      ).tap do |topic_item|
-        topic_item.update_columns(parent_id: nil, position: 0, position_key: nil, depth: 0)
-      end
-    end
-
-    TopicService.repair(@topic.id)
-
-    legacy_topic_items.each do |topic_item|
-      topic_item.reload
-      assert_equal @poll_created_topic_item.id, topic_item.parent_id
-      assert_equal @poll_created_topic_item.depth + 1, topic_item.depth
-      assert topic_item.position.positive?
-      assert topic_item.position_key.start_with?("#{@poll_created_topic_item.position_key}-")
-    end
-    assert_nothing_raised { TopicService.verify_integrity!(@topic.id) }
-  end
-
   test "database rejects a child whose parent belongs to another topic" do
     target = DiscussionService.create(
       params: {title: "Target discussion", group_id: @group.id},

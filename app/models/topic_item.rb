@@ -150,19 +150,15 @@ class TopicItem < ApplicationRecord
       p = itemable.parent
       candidate = p.is_a?(TopicItem) ? p : p&.created_topic_item
       candidate&.topic_id == topic_id ? candidate : topic.topicable&.created_topic_item
-    when 'poll_closed_by_user',
-         'poll_closing_soon',
-         'poll_edited',
-         'poll_expired',
-         'poll_option_added',
-         'poll_reopened'
-      itemable.created_topic_item
+    when 'poll_closed_by_user' then itemable.created_topic_item
     when 'poll_created'
       if itemable.topic.topicable == itemable
         itemable.created_topic_item == self ? nil : itemable.created_topic_item
       else
         itemable.topic.topicable.created_topic_item
       end
+    when 'poll_edited'         then itemable.created_topic_item
+    when 'poll_reopened'       then itemable.created_topic_item
     when 'stance_created'      then itemable.parent_topic_item
     when 'stance_updated'      then itemable.parent_topic_item
     else
