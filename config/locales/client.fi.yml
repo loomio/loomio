@@ -553,6 +553,7 @@ fi:
     push_channel: Työnnä
     email_and_push_channel: Sähköposti ja push-viestit
     off_option: Pois
+    apply_to_all_threads_in_group: Käytä näitä asetuksia kaikkiin ketjuihin ryhmässä %{group}
   inbox:
     clear: Asia selvä
     latest: Uusin

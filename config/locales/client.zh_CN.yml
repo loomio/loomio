@@ -570,6 +570,7 @@ zh_CN:
     push_channel: 推
     email_and_push_channel: 电子邮件和推送
     off_option: 离开
+    apply_to_all_threads_in_group: 将这些设置应用于 %{group} 中的所有讨论主题
   inbox:
     clear: 清除
     latest: 最新的

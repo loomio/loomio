@@ -556,6 +556,7 @@ zh_TW:
     push_channel: 推
     email_and_push_channel: 電子郵件和推播
     off_option: 離開
+    apply_to_all_threads_in_group: 將這些設定套用至 %{group} 中的所有討論串
   inbox:
     clear: 清除
     latest: 最新

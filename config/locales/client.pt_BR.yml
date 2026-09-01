@@ -563,6 +563,7 @@ pt_BR:
     push_channel: Empurrar
     email_and_push_channel: Enviar e-mail e notificações
     off_option: Desligado
+    apply_to_all_threads_in_group: Aplique essas configurações a todas as discussões em %{group}
   inbox:
     clear: Limpar
     latest: Último

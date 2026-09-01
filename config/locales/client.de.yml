@@ -561,6 +561,7 @@ de:
     push_channel: Push
     email_and_push_channel: E-Mail und Push
     off_option: Aus
+    apply_to_all_threads_in_group: Wende diese Einstellungen auf alle Threads in %{group} an
   inbox:
     clear: 'Löschen '
     latest: Letzte

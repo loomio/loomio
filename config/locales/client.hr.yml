@@ -553,6 +553,7 @@ hr:
     push_channel: Gurnuti
     email_and_push_channel: E-pošta i slanje poruka
     off_option: Isključeno
+    apply_to_all_threads_in_group: Primijeni ove postavke na sve niti u %{group}
   inbox:
     clear: Obriši
     latest: Najnoviji

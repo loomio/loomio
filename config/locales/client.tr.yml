@@ -553,6 +553,7 @@ tr:
     push_channel: İtmek
     email_and_push_channel: E-posta ve bildirimler
     off_option: Kapalı
+    apply_to_all_threads_in_group: Bu ayarları %{group} içindeki tüm konulara uygula
   inbox:
     clear: Temizle
     latest: En yeniler

@@ -553,6 +553,7 @@ el:
     push_channel: Σπρώξτε
     email_and_push_channel: Αποστολή email και προώθηση
     off_option: Μακριά από
+    apply_to_all_threads_in_group: Εφαρμογή αυτών των ρυθμίσεων σε όλα τα νήματα στην %{group}
   inbox:
     clear: Καθάρισμα
     latest: Τελευταία

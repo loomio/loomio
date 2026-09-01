@@ -553,6 +553,7 @@ ru:
     push_channel: Толкать
     email_and_push_channel: Электронная почта и push-уведомления
     off_option: Выключенный
+    apply_to_all_threads_in_group: Применить эти настройки ко всем обсуждениям в %{group}
   inbox:
     clear: Очистить
     latest: Последний

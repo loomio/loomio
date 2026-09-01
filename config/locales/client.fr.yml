@@ -563,6 +563,7 @@ fr:
     push_channel: Push
     email_and_push_channel: E-mail et push
     off_option: Désactivé
+    apply_to_all_threads_in_group: Applique ces paramètres à tous les fils de discussion de %{group}
   inbox:
     clear: Vider
     latest: Dernier

@@ -527,6 +527,7 @@ en:
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
     when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
     changes_all_discussions_and_polls_in_group: This changes the setting for all discussions and polls in the group.
+    apply_to_all_threads_in_group: Apply these settings to all threads in %{group}
     what_do_the_options_mean: What do the options mean?
     what_the_options_mean: What the options mean
     loud_desc: Every time someone participates

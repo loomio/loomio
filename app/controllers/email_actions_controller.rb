@@ -6,7 +6,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     render Views::EmailActions::Unsubscribe.new(
       topic_reader: topic_reader,
       membership: membership,
-      unsubscribe_token: params[:unsubscribe_token]
+      unsubscribe_token: params[:unsubscribe_token],
+      push_enabled: current_user.push_subscriptions.active.exists?,
+      email_catch_up_day: current_user.email_catch_up_day
     )
   end
 
@@ -25,7 +27,12 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     load_models_or_404
     topic_reader = TopicReader.find_by!(topic_id: @topic.id, user_id: current_user.id)
     attributes = volume_attributes(topic_reader)
-    topic_reader.set_volume!(email: attributes[:volume_email], push: attributes[:volume_push])
+    if params[:apply_to_group].present? && @group
+      membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
+      MembershipService.set_volume(membership: membership, actor: current_user, params: attributes)
+    else
+      topic_reader.set_volume!(email: attributes[:volume_email], push: attributes[:volume_push])
+    end
     redirect_to_unsubscribe
   end
 

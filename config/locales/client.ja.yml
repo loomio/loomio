@@ -552,6 +552,7 @@ ja:
     push_channel: 押す
     email_and_push_channel: メールとプッシュ通知
     off_option: オフ
+    apply_to_all_threads_in_group: これらの設定を%{group}内のすべてのスレッドに適用します
   inbox:
     clear: クリア
     latest: 最新

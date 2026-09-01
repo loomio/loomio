@@ -553,6 +553,7 @@ da:
     push_channel: Skubbe
     email_and_push_channel: E-mail og push
     off_option: Slukket
+    apply_to_all_threads_in_group: Anvend disse indstillinger på alle tråde i %{group}
   inbox:
     clear: Ryd
     latest: Seneste

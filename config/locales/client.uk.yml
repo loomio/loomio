@@ -556,6 +556,7 @@ uk:
     push_channel: Натисніть
     email_and_push_channel: Електронна пошта та push-повідомлення
     off_option: Вимкнено
+    apply_to_all_threads_in_group: Застосувати ці налаштування до всіх тем у %{group}
   inbox:
     clear: Очистити
     latest: Останній

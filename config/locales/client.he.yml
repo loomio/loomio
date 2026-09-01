@@ -553,6 +553,7 @@ he:
     push_channel: לִדחוֹף
     email_and_push_channel: דוא"ל ודחיפה
     off_option: כבוי
+    apply_to_all_threads_in_group: החל הגדרות אלו על כל השרשורים ב-%{group}
   inbox:
     clear: נקה/י
     latest: אחרונים

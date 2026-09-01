@@ -555,6 +555,7 @@ hu:
     push_channel: Nyomás
     email_and_push_channel: E-mail és push
     off_option: Le
+    apply_to_all_threads_in_group: Alkalmazd ezeket a beállításokat a(z) %{group} összes szálára
   inbox:
     clear: Töröl
     latest: Legutóbbi

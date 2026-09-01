@@ -553,6 +553,7 @@ sv:
     push_channel: Tryck
     email_and_push_channel: E-post och push
     off_option: Av
+    apply_to_all_threads_in_group: Tillämpa dessa inställningar på alla trådar i %{group}
   inbox:
     clear: Klar
     latest: Senaste

@@ -563,6 +563,7 @@ it:
     push_channel: Spingere
     email_and_push_channel: E-mail e notifica push
     off_option: Spento
+    apply_to_all_threads_in_group: Applica queste impostazioni a tutti i thread in %{group}
   inbox:
     clear: Pulisci
     latest: Più recente

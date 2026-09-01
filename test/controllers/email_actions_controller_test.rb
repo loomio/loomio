@@ -28,8 +28,31 @@ class EmailActionsControllerTest < ActionController::TestCase
 
     get :unsubscribe, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token }
     assert_response :success
-    assert_select "input[name=delivery_channel][value=email][checked]"
-    assert_select "select[name=volume_email] option[value=loud][selected]"
+    assert_select "select[name=delivery_channel]", count: 0
+    assert_select "input[type=radio][name=volume_email]", count: 3
+    assert_select "input[type=radio][name=volume_email][value=loud][checked]"
+    assert_select "input[type=checkbox][name=apply_to_group]:not([checked])"
+    assert_select "label[for=apply_to_group]", text: "Apply these settings to all threads in #{@group.full_name}"
+    assert_select ".volume-choice-title", text: I18n.t("change_volume_form.all_activity_option")
+    assert_select ".volume-choice-description", text: I18n.t("change_volume_form.email_all_activity_description", context: I18n.t("change_volume_form.context.thread"))
+  end
+
+  test "unsubscribe renders delivery method and push levels for a user with a registered device" do
+    session = @user.sessions.create!(user_agent: "test browser", ip_address: "127.0.0.2")
+    create_push_subscription(
+      user: @user,
+      session: session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/email-actions-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    get :unsubscribe, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token }
+
+    assert_response :success
+    assert_select "select[name=delivery_channel]", count: 1
+    assert_select "select[name=delivery_channel] option", count: 3
+    assert_select "input[type=radio][name=volume_push]", count: 3
   end
 
   test "unsubscribe renders with stance and topic reader" do
@@ -150,6 +173,34 @@ class EmailActionsControllerTest < ActionController::TestCase
 
     assert_equal 'normal', @membership.volume_email
     assert_equal 'normal', @topic_reader.volume_email
+  end
+
+  test "applies discussion settings to every topic in its group" do
+    another_discussion = DiscussionService.create(
+      params: {title: "Another discussion #{SecureRandom.hex(4)}", group_id: @group.id},
+      actor: @author
+    )
+    another_reader = TopicReader.for(user: @user, topic: another_discussion.topic)
+    @membership.set_volume!(email: :normal, push: :quiet)
+    @topic_reader.set_volume!(email: :loud, push: :normal)
+    another_reader.set_volume!(email: :loud, push: :normal)
+
+    put :set_discussion_volume, params: {
+      topic_id: @topic.id,
+      unsubscribe_token: @user.unsubscribe_token,
+      delivery_channel: :email,
+      volume_email: :quiet,
+      volume_push: :normal,
+      apply_to_group: "1"
+    }
+
+    assert_response :redirect
+    assert_equal "quiet", @membership.reload.volume_email
+    assert_equal "quiet", @topic_reader.reload.volume_email
+    assert_equal "quiet", another_reader.reload.volume_email
+    assert_equal "quiet", @membership.volume_push
+    assert_equal "quiet", @topic_reader.volume_push
+    assert_equal "quiet", another_reader.volume_push
   end
 
   # mark_discussion_as_read tests

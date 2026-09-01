@@ -555,6 +555,7 @@ ca:
     push_channel: Empènyer
     email_and_push_channel: Correu electrònic i push
     off_option: Desactivat
+    apply_to_all_threads_in_group: Aplica aquesta configuració a tots els fils de %{group}
   inbox:
     clear: Esborra
     latest: Últim
