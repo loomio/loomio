@@ -663,6 +663,9 @@ sv:
     push_when_notified: Pushnotis när du får ett meddelande
     daily_catch_up_email: Dagligt sammanfattningsmejl
     in_app_only: Endast i appen
+    email_and_device_when_notified: E-post- och enhetsaviseringar vid avisering
+    device_notification_when_notified: Enhetsmeddelande vid meddelande
+    no_notifications: Inga aviseringar
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

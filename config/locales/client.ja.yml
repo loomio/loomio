@@ -662,6 +662,9 @@ ja:
     push_when_notified: 通知時にプッシュ通知
     daily_catch_up_email: 毎日のまとめメール
     in_app_only: アプリ内限定
+    email_and_device_when_notified: 通知があった際にメールとデバイスに通知が届く
+    device_notification_when_notified: 通知があった際のデバイス通知
+    no_notifications: 通知なし
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ

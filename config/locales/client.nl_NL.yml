@@ -665,6 +665,9 @@ nl_NL:
     push_when_notified: Pushmelding wanneer je een melding ontvangt
     daily_catch_up_email: Dagelijkse samenvattingsmail
     in_app_only: Alleen in de app
+    email_and_device_when_notified: E-mail- en apparaatmeldingen wanneer je een melding ontvangt
+    device_notification_when_notified: Apparaatmelding wanneer je een melding ontvangt
+    no_notifications: Geen meldingen
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst

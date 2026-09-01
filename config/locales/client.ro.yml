@@ -663,6 +663,9 @@ ro:
     push_when_notified: Notificare push când primești o notificare
     daily_catch_up_email: E-mail zilnic cu rezumat
     in_app_only: Numai în aplicație
+    email_and_device_when_notified: E-mail și notificare pe dispozitiv când primești o notificare
+    device_notification_when_notified: Notificare pe dispozitiv când primești o notificare
+    no_notifications: Nicio notificare
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire

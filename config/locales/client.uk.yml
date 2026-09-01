@@ -666,6 +666,9 @@ uk:
     push_when_notified: Push-повідомлення після отримання сповіщення
     daily_catch_up_email: Щоденний електронний лист зі зведенням
     in_app_only: Тільки в додатку
+    email_and_device_when_notified: Електронна пошта та сповіщення на пристрій при отриманні сповіщення
+    device_notification_when_notified: Сповіщення на пристрій при отриманні сповіщення
+    no_notifications: Немає сповіщень
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч

@@ -675,6 +675,9 @@ be:
     push_when_notified: Push-паведамленне пры атрыманні апавяшчэння
     daily_catch_up_email: Штодзённы ліст з абнаўленнямі
     in_app_only: Толькі ў дадатку
+    email_and_device_when_notified: Апавяшчэнні па электроннай пошце і прыладзе пры атрыманні апавяшчэнняў
+    device_notification_when_notified: Апавяшчэнне на прыладзе пры атрыманні апавяшчэння
+    no_notifications: Няма апавяшчэнняў
   search_modal:
     all_content: Увесь кантэнт
     best_match: Найлепшае супадзенне

@@ -663,6 +663,9 @@ sl:
     push_when_notified: Potisno obvestilo ob prejemu obvestila
     daily_catch_up_email: Dnevno e-poštno sporočilo s povzetkom
     in_app_only: Samo v aplikaciji
+    email_and_device_when_notified: Obvestila po e-pošti in v napravi ob prejemu obvestila
+    device_notification_when_notified: Obvestilo v napravi ob prejemu obvestila
+    no_notifications: Brez obvestil
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

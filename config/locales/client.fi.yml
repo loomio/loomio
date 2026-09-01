@@ -663,6 +663,9 @@ fi:
     push_when_notified: Push-ilmoitus, kun saat ilmoituksen
     daily_catch_up_email: Päivittäinen yhteenvetosähköposti
     in_app_only: Vain sovelluksessa
+    email_and_device_when_notified: Sähköposti- ja laiteilmoitukset, kun ilmoitus on annettu
+    device_notification_when_notified: Laiteilmoitus, kun ilmoitus annetaan
+    no_notifications: Ei ilmoituksia
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

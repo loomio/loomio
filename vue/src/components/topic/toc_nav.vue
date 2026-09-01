@@ -11,7 +11,7 @@ import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiArrowUpThin, mdiArrowDownThin, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
 const props = defineProps({
   topic:             Object,
@@ -40,15 +40,20 @@ const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
 });
 const catchUpEnabled = computed(() => Session.user().emailCatchUpDay != null);
-const volumeSummaryKey = computed(() => {
-  const emailEnabled = ['normal', 'loud'].includes(props.topic.readerVolumeEmail);
-  const pushEnabled = ['normal', 'loud'].includes(props.topic.readerVolumePush);
-
-  if (emailEnabled && pushEnabled) return 'strand_nav.email_and_push_when_notified';
-  if (emailEnabled) return 'strand_nav.email_when_notified';
-  if (pushEnabled) return 'strand_nav.push_when_notified';
+const volumeEmailEnabled = computed(() => ['normal', 'loud'].includes(props.topic.readerVolumeEmail));
+const volumeDeviceEnabled = computed(() => ['normal', 'loud'].includes(props.topic.readerVolumePush));
+const volumeNotificationEnabled = computed(() => volumeEmailEnabled.value || volumeDeviceEnabled.value);
+const volumeEmailIconVisible = computed(() => volumeEmailEnabled.value || (!volumeNotificationEnabled.value && catchUpEnabled.value));
+const volumeVisibleLabelKey = computed(() => {
+  if (volumeNotificationEnabled.value) return 'change_volume_form.when_notified_option';
   if (catchUpEnabled.value) return 'strand_nav.daily_catch_up_email';
-  return 'strand_nav.in_app_only';
+  return 'strand_nav.no_notifications';
+});
+const volumeSummaryKey = computed(() => {
+  if (volumeEmailEnabled.value && volumeDeviceEnabled.value) return 'strand_nav.email_and_device_when_notified';
+  if (volumeEmailEnabled.value) return 'strand_nav.email_when_notified';
+  if (volumeDeviceEnabled.value) return 'strand_nav.device_notification_when_notified';
+  return volumeVisibleLabelKey.value;
 });
 
 function scrollToEnd() {
@@ -156,7 +161,13 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item.topic-sidebar__notification-settings(:title="$t(volumeSummaryKey)" @click="openVolumeForm")
+      v-list-item.topic-sidebar__notification-settings(:aria-label="$t(volumeSummaryKey)" @click="openVolumeForm")
+        v-list-item-title
+          .d-flex.align-center
+            .d-flex.align-center.ga-1.mr-2(v-if="volumeEmailIconVisible || volumeDeviceEnabled" aria-hidden="true")
+              v-icon(v-if="volumeEmailIconVisible" :icon="mdiEmailOutline" size="small")
+              v-icon(v-if="volumeDeviceEnabled" :icon="mdiCellphone" size="small")
+            span {{ $t(volumeVisibleLabelKey) }}
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")

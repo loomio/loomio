@@ -713,6 +713,9 @@ en:
     push_when_notified: Push when notified
     daily_catch_up_email: Daily catch-up email
     in_app_only: In-app only
+    email_and_device_when_notified: Email & device - when notified
+    device_notification_when_notified: Device notification when notified
+    no_notifications: No notifications
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest

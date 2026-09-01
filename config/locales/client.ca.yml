@@ -665,6 +665,9 @@ ca:
     push_when_notified: Notificació push quan es rebi una notificació
     daily_catch_up_email: Correu electrònic de resum diari
     in_app_only: Només a l'aplicació
+    email_and_device_when_notified: Notificacions per correu electrònic i dispositiu quan es notifiqui
+    device_notification_when_notified: Notificació del dispositiu quan es notifica
+    no_notifications: Sense notificacions
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

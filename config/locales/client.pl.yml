@@ -665,6 +665,9 @@ pl:
     push_when_notified: Powiadomienie push po otrzymaniu powiadomienia
     daily_catch_up_email: Codzienny e-mail z podsumowaniem
     in_app_only: Tylko w aplikacji
+    email_and_device_when_notified: Powiadomienia e-mail i urządzenia po otrzymaniu powiadomienia
+    device_notification_when_notified: Powiadomienie na urządzeniu po otrzymaniu powiadomienia
+    no_notifications: Brak powiadomień
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz

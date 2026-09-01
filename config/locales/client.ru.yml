@@ -663,6 +663,9 @@ ru:
     push_when_notified: Push-уведомление при получении уведомления
     daily_catch_up_email: Ежедневное письмо со сводкой
     in_app_only: Только в приложении
+    email_and_device_when_notified: Уведомления по электронной почте и на устройство при получении уведомления
+    device_notification_when_notified: Уведомление на устройство при получении уведомления
+    no_notifications: Нет уведомлений
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч

@@ -663,6 +663,9 @@ da:
     push_when_notified: Pushbesked, når du får besked
     daily_catch_up_email: Daglig opsummeringsmail
     in_app_only: Kun i appen
+    email_and_device_when_notified: E-mail- og enhedsnotifikationer ved meddelelse
+    device_notification_when_notified: Enhedsnotifikation ved meddelelse
+    no_notifications: Ingen notifikationer
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match

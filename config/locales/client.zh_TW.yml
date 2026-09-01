@@ -666,6 +666,9 @@ zh_TW:
     push_when_notified: 收到通知時發送推播通知
     daily_catch_up_email: 每日簡報郵件
     in_app_only: 限應用程式內使用
+    email_and_device_when_notified: 收到通知時發送電子郵件和裝置通知
+    device_notification_when_notified: 收到通知時發送裝置通知
+    no_notifications: 無通知
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配

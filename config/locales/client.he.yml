@@ -663,6 +663,9 @@ he:
     push_when_notified: התראת Push בעת קבלת התראה
     daily_catch_up_email: אימייל סיכום יומי
     in_app_only: בתוך האפליקציה בלבד
+    email_and_device_when_notified: התראות בדוא"ל ובמכשיר לאחר קבלת הודעה
+    device_notification_when_notified: התראה במכשיר בעת קבלת התראה
+    no_notifications: אין התראות
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר

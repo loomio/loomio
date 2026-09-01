@@ -672,6 +672,9 @@ zh_CN:
     push_when_notified: 收到通知时发送推送通知
     daily_catch_up_email: 每日简报邮件
     in_app_only: 仅限应用内使用
+    email_and_device_when_notified: 收到通知时发送电子邮件和设备通知
+    device_notification_when_notified: 收到通知时发送设备通知
+    no_notifications: 无通知
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配

@@ -663,6 +663,9 @@ tr:
     push_when_notified: Bildirim aldığında anlık bildirim
     daily_catch_up_email: Günlük özet e-postası
     in_app_only: Sadece uygulama içinde
+    email_and_device_when_notified: Bildirim aldığında e-posta ve cihaz bildirimi
+    device_notification_when_notified: Bildirim aldığında cihaz bildirimi
+    no_notifications: Bildirim yok
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

@@ -663,6 +663,9 @@ hr:
     push_when_notified: Push obavijest kada dobiješ obavijest
     daily_catch_up_email: Dnevni e-mail sa sažetkom
     in_app_only: Samo u aplikaciji
+    email_and_device_when_notified: Obavijesti e-poštom i uređajem kada se obavijest primi
+    device_notification_when_notified: Obavijest na uređaju kada primiš obavijest
+    no_notifications: Nema obavijesti
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj

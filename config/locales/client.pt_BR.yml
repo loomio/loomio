@@ -673,6 +673,9 @@ pt_BR:
     push_when_notified: Notificação push quando houver aviso
     daily_catch_up_email: E-mail de resumo diário
     in_app_only: Somente no aplicativo
+    email_and_device_when_notified: E-mail e notificação no dispositivo ao receber uma notificação
+    device_notification_when_notified: Notificação no dispositivo ao receber uma notificação
+    no_notifications: Nenhuma notificação
   search_modal:
     all_content: Todo o conteúdo
     best_match: Melhor resultado

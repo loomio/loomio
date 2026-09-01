@@ -665,6 +665,9 @@ hu:
     push_when_notified: Push értesítés értesítéskor
     daily_catch_up_email: Napi összefoglaló e-mail
     in_app_only: Csak az alkalmazásban
+    email_and_device_when_notified: E-mail és eszközértesítés értesítéskor
+    device_notification_when_notified: Eszközértesítés értesítéskor
+    no_notifications: Nincsenek értesítések
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat

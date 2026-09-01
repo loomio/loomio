@@ -663,6 +663,9 @@ el:
     push_when_notified: Ειδοποίηση push όταν λαμβάνεις ειδοποίηση
     daily_catch_up_email: Ημερήσιο email σύνοψης
     in_app_only: Μόνο εντός εφαρμογής
+    email_and_device_when_notified: Email και ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    device_notification_when_notified: Ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    no_notifications: Δεν υπάρχουν ειδοποιήσεις
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα
