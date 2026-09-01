@@ -71,7 +71,15 @@ module EmailHelper
   end
 
   def unsubscribe_url(itemable, recipient:)
-    email_actions_unsubscribe_url(itemable.named_id.merge({unsubscribe_token: recipient.unsubscribe_token}))
+    target = if itemable.respond_to?(:topic)
+      itemable.topic
+    elsif itemable.respond_to?(:poll)
+      itemable.poll.topic
+    elsif itemable.respond_to?(:group)
+      itemable.group
+    end
+
+    email_actions_unsubscribe_url((target || itemable).named_id.merge(unsubscribe_token: recipient.unsubscribe_token))
   end
 
   def pixel_src(topic_item, recipient:)

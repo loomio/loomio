@@ -78,12 +78,15 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     redirect_to email_actions_unsubscribe_path(args), notice: t(:'change_volume_form.saved')
   end
 
+  # Resolve current topic/group links and legacy email links through an authorized model so old messages remain usable without widening access.
   def load_models_or_404
-    if @topic = load_and_authorize(:topic, :show, optional: true)
-      @group = @topic.group
-    else
-      @group = load_and_authorize(:group, :show, optional: true)
-    end
+    @topic = load_and_authorize(:topic, :show, optional: true)
+    @topic ||= load_and_authorize(:discussion, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:comment, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:poll, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:stance, :show, optional: true)&.poll&.topic
+    @topic ||= load_and_authorize(:outcome, :show, optional: true)&.topic
+    @group = @topic&.group || load_and_authorize(:group, :show, optional: true)
 
     raise ActiveRecord::RecordNotFound unless @group || @topic
   end

@@ -81,6 +81,22 @@ class EmailHelperTest < ActiveSupport::TestCase
     assert_match "/p/#{poll.key}?sequence_id=12", send(:poll_url, poll, no_slug: true, sequence_id: 12)
   end
 
+  test "unsubscribe_url identifies a poll by its topic" do
+    poll = PollService.create(params: {
+      poll_type: "poll",
+      title: "Test poll",
+      poll_option_names: ["agree"],
+      closing_at: 5.days.from_now,
+      group_id: @group.id,
+      notify_on_open: false
+    }, actor: @author)
+
+    url = unsubscribe_url(poll, recipient: @user)
+
+    assert_includes url, "topic_id=#{poll.topic_id}"
+    refute_includes url, "poll_id="
+  end
+
   test "polymorphic_url can accept a utm hash" do
     comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)

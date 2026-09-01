@@ -48,6 +48,59 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "unsubscribe resolves a legacy poll link through its topic" do
+    poll = PollService.create(params: {
+      title: "Unsub Poll #{SecureRandom.hex(4)}",
+      poll_type: 'proposal',
+      topic_id: @topic.id,
+      closing_at: 3.days.from_now,
+      poll_option_names: %w[agree disagree abstain]
+    }, actor: @author)
+
+    get :unsubscribe, params: {
+      poll_id: poll.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_response :success
+    assert_select "input[name=topic_id][value='#{@topic.id}']"
+  end
+
+  test "unsubscribe resolves a legacy comment link through its topic" do
+    comment = CommentService.create(
+      comment: Comment.new(parent: @discussion, body: "Legacy unsubscribe link"),
+      actor: @author
+    )
+
+    get :unsubscribe, params: {
+      comment_id: comment.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_response :success
+    assert_select "input[name=topic_id][value='#{@topic.id}']"
+  end
+
+  test "unsubscribe rejects a legacy poll link when the token user cannot access its topic" do
+    group = Group.create!(name: "Private group #{SecureRandom.hex(4)}", group_privacy: "secret", creator: @author)
+    group.add_admin!(@author)
+    poll = PollService.create(params: {
+      title: "Private poll #{SecureRandom.hex(4)}",
+      poll_type: 'proposal',
+      group_id: group.id,
+      closing_at: 3.days.from_now,
+      poll_option_names: %w[agree disagree abstain],
+      notify_on_open: false
+    }, actor: @author)
+
+    get :unsubscribe, params: {
+      poll_id: poll.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+
+    assert_redirected_to dashboard_path
+  end
+
   # set_volume tests
   test "unsubscribes membership" do
     @membership.set_volume!(email: :loud, push: :quiet)
