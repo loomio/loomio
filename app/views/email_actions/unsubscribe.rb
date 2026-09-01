@@ -58,10 +58,10 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
         .apply-to-group input { margin-top: 4px; }
         .notification-settings-form .volume-settings { display: none; }
         .notification-settings-form.push-disabled .volume-email,
-        .notification-settings-form:has(.delivery-method-select option[value="email"]:checked) .volume-email,
-        .notification-settings-form:has(.delivery-method-select option[value="push"]:checked) .volume-push,
-        .notification-settings-form:has(.delivery-method-select option[value="email_and_push"]:checked) .volume-email,
-        .notification-settings-form:has(.delivery-method-select option[value="email_and_push"]:checked) .volume-push { display: block; }
+        .notification-settings-form:has(.delivery-method-select option[value=email]:checked) .volume-email,
+        .notification-settings-form:has(.delivery-method-select option[value=push]:checked) .volume-push,
+        .notification-settings-form:has(.delivery-method-select option[value=email_and_push]:checked) .volume-email,
+        .notification-settings-form:has(.delivery-method-select option[value=email_and_push]:checked) .volume-push { display: block; }
       CSS
     end
   end

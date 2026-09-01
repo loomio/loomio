@@ -53,6 +53,8 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_select "select[name=delivery_channel]", count: 1
     assert_select "select[name=delivery_channel] option", count: 3
     assert_select "input[type=radio][name=volume_push]", count: 3
+    assert_includes response.body, "option[value=email]:checked"
+    refute_includes response.body, "option[value=&quot;email&quot;]:checked"
   end
 
   test "unsubscribe renders with stance and topic reader" do
