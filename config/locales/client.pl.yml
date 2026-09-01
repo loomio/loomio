@@ -668,6 +668,8 @@ pl:
     email_and_device_when_notified: Powiadomienia e-mail i urządzenia po otrzymaniu powiadomienia
     device_notification_when_notified: Powiadomienie na urządzeniu po otrzymaniu powiadomienia
     no_notifications: Brak powiadomień
+    catch_up_email_every_second_day: E-maile z odpowiedziami co drugi dzień
+    weekly_catch_up_email: Tygodniowy e-mail z podsumowaniem
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz

@@ -5,13 +5,26 @@ import TopicService  from '@/shared/services/topic_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
+import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
+import { notificationCatchUpTitleKey } from '@/shared/helpers/notification_volume_options';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
 import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+
+const volumeDisplayByState = {
+  email_and_device_all_activity: { email: true,  device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  email_all_activity:            { email: true,  device: false, labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  device_all_activity:           { email: false, device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  email_and_device:              { email: true,  device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_and_device_when_notified' },
+  email:                         { email: true,  device: false, labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_when_notified' },
+  device:                        { email: false, device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.device_notification_when_notified' },
+  catch_up:                      { email: true,  device: false, labelKey: 'strand_nav.daily_catch_up_email', summaryKey: 'strand_nav.daily_catch_up_email' },
+  none:                          { email: false, device: false, labelKey: 'strand_nav.no_notifications', summaryKey: 'strand_nav.no_notifications' },
+};
 
 const props = defineProps({
   topic:             Object,
@@ -25,6 +38,7 @@ const theme = useTheme();
 const { watchRecords } = useWatchRecords();
 
 const open        = ref(null);
+const deviceNotificationsAvailable = ref(false);
 const pinnedItems = ref([]);
 const baseUrl     = ref('');
 const topicActions = ref({});
@@ -39,21 +53,16 @@ const memberActions      = computed(() => Object.entries(pickBy(topicActions.val
 const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
 });
-const catchUpEnabled = computed(() => Session.user().emailCatchUpDay != null);
-const volumeEmailEnabled = computed(() => ['normal', 'loud'].includes(props.topic.readerVolumeEmail));
-const volumeDeviceEnabled = computed(() => ['normal', 'loud'].includes(props.topic.readerVolumePush));
-const volumeNotificationEnabled = computed(() => volumeEmailEnabled.value || volumeDeviceEnabled.value);
-const volumeEmailIconVisible = computed(() => volumeEmailEnabled.value || (!volumeNotificationEnabled.value && catchUpEnabled.value));
-const volumeVisibleLabelKey = computed(() => {
-  if (volumeNotificationEnabled.value) return 'change_volume_form.when_notified_option';
-  if (catchUpEnabled.value) return 'strand_nav.daily_catch_up_email';
-  return 'strand_nav.no_notifications';
-});
-const volumeSummaryKey = computed(() => {
-  if (volumeEmailEnabled.value && volumeDeviceEnabled.value) return 'strand_nav.email_and_device_when_notified';
-  if (volumeEmailEnabled.value) return 'strand_nav.email_when_notified';
-  if (volumeDeviceEnabled.value) return 'strand_nav.device_notification_when_notified';
-  return volumeVisibleLabelKey.value;
+const volumeDisplay = computed(() => {
+  const emailCatchUpDay = Session.user().emailCatchUpDay;
+  const state = props.topic.notificationVolumeState(
+    emailCatchUpDay != null,
+    deviceNotificationsAvailable.value
+  );
+  if (state !== 'catch_up') return volumeDisplayByState[state];
+
+  const labelKey = notificationCatchUpTitleKey(emailCatchUpDay);
+  return { ...volumeDisplayByState[state], labelKey, summaryKey: labelKey };
 });
 
 function scrollToEnd() {
@@ -102,6 +111,10 @@ function scrollToSequenceId(id) {
 }
 
 onMounted(() => {
+  PushSubscriptionService.subscriptions()
+    .then(subscriptions => { deviceNotificationsAvailable.value = subscriptions.length > 0; })
+    .catch(() => {});
+
   topicActions.value = TopicService.actions(props.topic);
   props.topic.fetchUsersNotifiedCount();
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
@@ -161,13 +174,11 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item.topic-sidebar__notification-settings(:aria-label="$t(volumeSummaryKey)" @click="openVolumeForm")
-        v-list-item-title
-          .d-flex.align-center
-            .d-flex.align-center.ga-1.mr-2(v-if="volumeEmailIconVisible || volumeDeviceEnabled" aria-hidden="true")
-              v-icon(v-if="volumeEmailIconVisible" :icon="mdiEmailOutline" size="small")
-              v-icon(v-if="volumeDeviceEnabled" :icon="mdiCellphone" size="small")
-            span {{ $t(volumeVisibleLabelKey) }}
+      v-list-item.topic-sidebar__notification-settings(:aria-label="$t(volumeDisplay.summaryKey)" @click="openVolumeForm")
+        template(v-slot:prepend)
+          v-icon.topic-sidebar__notification-email-icon.text-medium-emphasis(v-if="volumeDisplay.email" :icon="mdiEmailOutline" aria-hidden="true")
+          v-icon.topic-sidebar__notification-device-icon.text-medium-emphasis(v-if="volumeDisplay.device" :icon="mdiCellphone" aria-hidden="true")
+        v-list-item-title {{ $t(volumeDisplay.labelKey) }}
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")

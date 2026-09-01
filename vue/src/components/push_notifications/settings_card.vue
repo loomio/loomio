@@ -5,6 +5,8 @@ import RestfulClient from '@/shared/record_store/restful_client';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import AppConfig from '@/shared/services/app_config';
 
+const emit = defineEmits(['subscriptionsChanged']);
+
 const client = new RestfulClient('push_subscriptions');
 const browserEnabled = ref(false);
 const loading = ref(true);
@@ -19,6 +21,7 @@ onMounted(refresh);
 
 async function refresh() {
   if (!configured.value) {
+    emit('subscriptionsChanged', false);
     loading.value = false;
     return;
   }
@@ -28,6 +31,7 @@ async function refresh() {
     const data = await client.get('');
     subscriptions.value = data.push_subscriptions || [];
   } finally {
+    emit('subscriptionsChanged', subscriptions.value.length > 0);
     loading.value = false;
   }
 }

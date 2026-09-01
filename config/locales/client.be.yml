@@ -678,6 +678,8 @@ be:
     email_and_device_when_notified: Апавяшчэнні па электроннай пошце і прыладзе пры атрыманні апавяшчэнняў
     device_notification_when_notified: Апавяшчэнне на прыладзе пры атрыманні апавяшчэння
     no_notifications: Няма апавяшчэнняў
+    catch_up_email_every_second_day: Электронная пошта для дапаўнення праз дзень
+    weekly_catch_up_email: Штотыднёвы электронны ліст з абнаўленнямі
   search_modal:
     all_content: Увесь кантэнт
     best_match: Найлепшае супадзенне
@@ -1485,7 +1487,7 @@ be:
     organization_name_placeholder: Як называецца ваша арганізацыя?
     description: Апісанне
     description_placeholder: Апішыце мэту вашай групы, каб яе ўдзельнікі ведалі, чаму яны тут.
-    new_description_html: ""
+    new_description_html: ''
     new_description_placeholder: Чым займаецца ваша арганізацыя? Якія рашэнні вам трэба прымаць разам?
     secret_by_default: Да вашай групы будуць мець доступ толькі тыя, хто атрымаў запрашэнне далучыцца. Вы можаце змяніць гэта пазней.
     privacy_statement:

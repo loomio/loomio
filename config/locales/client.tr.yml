@@ -666,6 +666,8 @@ tr:
     email_and_device_when_notified: Bildirim aldığında e-posta ve cihaz bildirimi
     device_notification_when_notified: Bildirim aldığında cihaz bildirimi
     no_notifications: Bildirim yok
+    catch_up_email_every_second_day: İki günde bir özet e-postası
+    weekly_catch_up_email: Haftalık özet e-postası
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

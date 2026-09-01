@@ -8,6 +8,12 @@ export function notificationVolumeTitleKey(model) {
   return `change_volume_form.context_title.${notificationVolumeContext(model)}`;
 }
 
+export function notificationCatchUpTitleKey(emailCatchUpDay) {
+  if (emailCatchUpDay === 7) return 'strand_nav.daily_catch_up_email';
+  if (emailCatchUpDay === 8) return 'strand_nav.catch_up_email_every_second_day';
+  return 'strand_nav.weekly_catch_up_email';
+}
+
 export function notificationVolumeOptionTitleKey(volume, channel, emailCatchUpEnabled) {
   if (volume === 'quiet') {
     if (channel === 'email' && emailCatchUpEnabled) return 'change_volume_form.catch_up_only_option';

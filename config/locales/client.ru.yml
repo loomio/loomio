@@ -666,6 +666,8 @@ ru:
     email_and_device_when_notified: Уведомления по электронной почте и на устройство при получении уведомления
     device_notification_when_notified: Уведомление на устройство при получении уведомления
     no_notifications: Нет уведомлений
+    catch_up_email_every_second_day: Письмо со сводкой через день
+    weekly_catch_up_email: Еженедельное письмо со сводкой
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч

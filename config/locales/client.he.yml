@@ -666,6 +666,8 @@ he:
     email_and_device_when_notified: התראות בדוא"ל ובמכשיר לאחר קבלת הודעה
     device_notification_when_notified: התראה במכשיר בעת קבלת התראה
     no_notifications: אין התראות
+    catch_up_email_every_second_day: אימייל השלמה כל יומיים
+    weekly_catch_up_email: אימייל שבועי לעדכון
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר

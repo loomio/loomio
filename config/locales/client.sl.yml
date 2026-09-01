@@ -666,6 +666,8 @@ sl:
     email_and_device_when_notified: Obvestila po e-pošti in v napravi ob prejemu obvestila
     device_notification_when_notified: Obvestilo v napravi ob prejemu obvestila
     no_notifications: Brez obvestil
+    catch_up_email_every_second_day: E-poštno sporočilo za nadoknaditev zamujenega vsak drugi dan
+    weekly_catch_up_email: Tedensko e-poštno sporočilo za nadoknaditev
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

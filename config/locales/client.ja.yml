@@ -665,6 +665,8 @@ ja:
     email_and_device_when_notified: 通知があった際にメールとデバイスに通知が届く
     device_notification_when_notified: 通知があった際のデバイス通知
     no_notifications: 通知なし
+    catch_up_email_every_second_day: 2日おきに最新情報をメールでお知らせします
+    weekly_catch_up_email: 毎週の近況報告メール
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ

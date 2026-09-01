@@ -669,6 +669,8 @@ uk:
     email_and_device_when_notified: Електронна пошта та сповіщення на пристрій при отриманні сповіщення
     device_notification_when_notified: Сповіщення на пристрій при отриманні сповіщення
     no_notifications: Немає сповіщень
+    catch_up_email_every_second_day: Електронна пошта для надолуження зведень через день
+    weekly_catch_up_email: Щотижневий електронний лист із пропущеними оновленнями
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч

@@ -205,6 +205,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_email_settings_with_push');
     page.waitFor('.push-notifications-settings-card--loaded');
+    page.expectElement('.email-settings-page__push-column');
     screenshot.captureElement('users/email_settings/push_notification_settings', '.push-notifications-settings-card', {width: 1100, height: 1400});
   },
 
@@ -280,6 +281,8 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
+    page.waitFor('.email-settings-page__push-status-loaded');
+    page.expectNoElement('.email-settings-page__push-column');
     screenshot.captureElement('users/email_settings/turn_off_all_emails_2', '.email-settings-page__group-notifications-card', {
       width: 1100,
       height: 1800,

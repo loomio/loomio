@@ -676,6 +676,8 @@ fr:
     email_and_device_when_notified: E-mail et notification sur l'appareil en cas de notification
     device_notification_when_notified: Notification sur l'appareil en cas de notification
     no_notifications: Aucune notification
+    catch_up_email_every_second_day: Courriel de rattrapage tous les deux jours
+    weekly_catch_up_email: Courriel de récapitulation hebdomadaire
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance

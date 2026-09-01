@@ -666,6 +666,8 @@ ro:
     email_and_device_when_notified: E-mail și notificare pe dispozitiv când primești o notificare
     device_notification_when_notified: Notificare pe dispozitiv când primești o notificare
     no_notifications: Nicio notificare
+    catch_up_email_every_second_day: Recuperarea e-mailurilor o dată la două zile
+    weekly_catch_up_email: E-mail săptămânal de recuperare
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire

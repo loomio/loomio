@@ -666,6 +666,8 @@ da:
     email_and_device_when_notified: E-mail- og enhedsnotifikationer ved meddelelse
     device_notification_when_notified: Enhedsnotifikation ved meddelelse
     no_notifications: Ingen notifikationer
+    catch_up_email_every_second_day: Opfølgningsmail hver anden dag
+    weekly_catch_up_email: Ugentlig e-mail med opfølgning
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match

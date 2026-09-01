@@ -54,6 +54,29 @@ module.exports = {
     // page.expectFlash('Thread unlocked')
   },
 
+  'updates_thread_notification_status_after_saving': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_manual_oatmilk_discussion')
+    page.waitFor('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form--push-disabled')
+    page.click('.volume-loud label')
+    page.click('.change-volume-form__submit')
+    page.expectFlash('Notification settings updated')
+    page.expectElement('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.expectText('.topic-sidebar__notification-settings', 'All activity')
+    page.expectNoElement('.change-volume-form', 8000)
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form--push-disabled')
+    page.click('.volume-quiet label')
+    page.click('.change-volume-form__submit')
+    page.expectFlash('Notification settings updated')
+    page.expectElement('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.expectText('.topic-sidebar__notification-settings', 'Daily catch-up email')
+  },
+
   'lets_you_edit_title_and_context': (test) => {
     page = pageHelper(test)
 

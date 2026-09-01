@@ -674,6 +674,8 @@ de:
     email_and_device_when_notified: E-Mail- und Gerätebenachrichtigungen bei Benachrichtigung
     device_notification_when_notified: Gerätebenachrichtigung bei Benachrichtigung
     no_notifications: Keine Benachrichtigungen
+    catch_up_email_every_second_day: E-Mail-Update alle zwei Tage
+    weekly_catch_up_email: Wöchentliche Zusammenfassungs-E-Mail
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer

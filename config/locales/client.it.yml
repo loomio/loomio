@@ -676,6 +676,8 @@ it:
     email_and_device_when_notified: Email e notifica sul dispositivo quando ricevi una notifica
     device_notification_when_notified: Notifica sul dispositivo quando ricevi una notifica
     no_notifications: Nessuna notifica
+    catch_up_email_every_second_day: Email di riepilogo ogni due giorni
+    weekly_catch_up_email: E-mail di aggiornamento settimanale
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento

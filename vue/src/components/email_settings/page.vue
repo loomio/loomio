@@ -18,6 +18,8 @@ const { loadGroups } = useCurrentUserGroups();
 const user = ref(null);
 const memberships = ref([]);
 const loading = ref(false);
+const pushEnabled = ref(false);
+const pushStatusLoaded = ref(false);
 const allGroupsVolumeEmail = ref(null);
 const allGroupsVolumePush = ref(null);
 
@@ -40,6 +42,11 @@ const actions = computed(() => filter(
   pick(UserService.actions(Session.user(), { $t: I18n.global.t }), ['deactivate_user']),
   action => action.canPerform()
 ));
+
+function setPushEnabled(enabled) {
+  pushEnabled.value = enabled;
+  pushStatusLoaded.value = true;
+}
 
 function submit() {
   Records.users.updateProfile(user.value).then(() => {
@@ -104,7 +111,7 @@ onUnmounted(() => {
 v-main
   v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
 
-    push-notifications-settings-card
+    push-notifications-settings-card(@subscriptions-changed="setPushEnabled")
 
     v-card.mb-4(v-if="user.deactivatedAt")
       v-card-text
@@ -128,10 +135,13 @@ v-main
         v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
           span {{ $t('email_settings_page.update_settings') }}
 
-    v-card.email-settings-page__group-notifications-card.mb-4(:title="$t('email_settings_page.group_notifications')" :subtitle="$t('email_settings_page.group_notifications_description')")
+    v-card.email-settings-page__group-notifications-card.mb-4(
+      :class="{ 'email-settings-page__push-status-loaded': pushStatusLoaded }"
+      :title="$t('email_settings_page.group_notifications')"
+      :subtitle="$t('email_settings_page.group_notifications_description')")
       v-card-text
         .text-body-large.pb-1 {{ $t('change_volume_form.how_do_you_want_to_stay_updated') }}
-        .text-body-medium.text-medium-emphasis {{ $t('email_settings_page.choose_email_and_push_updates') }}
+        .text-body-medium.text-medium-emphasis(v-if="pushEnabled") {{ $t('email_settings_page.choose_email_and_push_updates') }}
       v-overlay(persistent :model-value="loading" class="align-center justify-center")
         v-progress-circular(color="primary" size="64" indeterminate)
 
@@ -141,7 +151,7 @@ v-main
           tr
             th.text-left {{ $t('common.group') }}
             th.text-left {{ $t('change_volume_form.email_channel') }}
-            th.text-left {{ $t('change_volume_form.push_channel') }}
+            th.email-settings-page__push-column.text-left(v-if="pushEnabled") {{ $t('change_volume_form.push_channel') }}
         tbody
           tr
             td
@@ -151,7 +161,7 @@ v-main
                 select.my-select(:disabled="loading" v-model="allGroupsVolumeEmail" @change="allGroupsVolumeChanged('email')")
                   option(:value="null")
                   option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'email') }}
-            td.text-left
+            td.email-settings-page__push-column.text-left(v-if="pushEnabled")
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="allGroupsVolumePush" @change="allGroupsVolumeChanged('push')")
                   option(:value="null")
@@ -162,7 +172,7 @@ v-main
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="membership.volumeEmail" @change="membershipVolumeChanged(membership)")
                   option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volumeEmail == volume") {{ volumeOptionLabel(volume, 'email') }}
-            td.text-left
+            td.email-settings-page__push-column.text-left(v-if="pushEnabled")
               .my-select-wrapper
                 select.my-select(:disabled="loading" v-model="membership.volumePush" @change="membershipVolumeChanged(membership)")
                   option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'push') }}

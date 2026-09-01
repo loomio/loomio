@@ -668,6 +668,8 @@ nl_NL:
     email_and_device_when_notified: E-mail- en apparaatmeldingen wanneer je een melding ontvangt
     device_notification_when_notified: Apparaatmelding wanneer je een melding ontvangt
     no_notifications: Geen meldingen
+    catch_up_email_every_second_day: Samenvattingsmail om de dag
+    weekly_catch_up_email: Wekelijkse samenvattingsmail
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst

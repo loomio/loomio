@@ -712,6 +712,8 @@ en:
     email_when_notified: Email when notified
     push_when_notified: Push when notified
     daily_catch_up_email: Daily catch-up email
+    catch_up_email_every_second_day: Catch-up email every second day
+    weekly_catch_up_email: Weekly catch-up email
     in_app_only: In-app only
     email_and_device_when_notified: Email & device - when notified
     device_notification_when_notified: Device notification when notified

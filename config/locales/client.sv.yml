@@ -666,6 +666,8 @@ sv:
     email_and_device_when_notified: E-post- och enhetsaviseringar vid avisering
     device_notification_when_notified: Enhetsmeddelande vid meddelande
     no_notifications: Inga aviseringar
+    catch_up_email_every_second_day: Mejl om uppföljning varannan dag
+    weekly_catch_up_email: Veckovis e-postmeddelande med uppföljning
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

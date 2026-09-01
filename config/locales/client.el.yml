@@ -666,6 +666,8 @@ el:
     email_and_device_when_notified: Email και ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
     device_notification_when_notified: Ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
     no_notifications: Δεν υπάρχουν ειδοποιήσεις
+    catch_up_email_every_second_day: Ενημερωτικό email κάθε δεύτερη μέρα
+    weekly_catch_up_email: Εβδομαδιαίο ενημερωτικό email
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα

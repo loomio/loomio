@@ -142,6 +142,17 @@ export default class TopicModel extends BaseModel {
     return volume;
   }
 
+  notificationVolumeState(emailCatchUpEnabled = false, deviceNotificationsAvailable = true) {
+    const emailEnabled = ['normal', 'loud'].includes(this.readerVolumeEmail);
+    const deviceEnabled = deviceNotificationsAvailable && ['normal', 'loud'].includes(this.readerVolumePush);
+    const allActivity = this.readerVolumeEmail === 'loud' || (deviceNotificationsAvailable && this.readerVolumePush === 'loud');
+
+    if (emailEnabled && deviceEnabled) return allActivity ? 'email_and_device_all_activity' : 'email_and_device';
+    if (emailEnabled) return allActivity ? 'email_all_activity' : 'email';
+    if (deviceEnabled) return allActivity ? 'device_all_activity' : 'device';
+    return emailCatchUpEnabled ? 'catch_up' : 'none';
+  }
+
   membersInclude(user) {
     if (this.readerGuest && AppConfig.currentUserId === user.id) { return true; }
     const group = this.group();
@@ -196,15 +207,17 @@ export default class TopicModel extends BaseModel {
     if (applyToAll) {
       return this.membership().saveVolume(volumeEmail, volumePush).finally(() => { this.processing = false; });
     } else {
+      const attributes = {};
       const params = {};
       if (volumeEmail != null) {
-        this.readerVolumeEmail = volumeEmail;
+        attributes.readerVolumeEmail = volumeEmail;
         params.volume_email = volumeEmail;
       }
       if (volumePush != null) {
-        this.readerVolumePush = volumePush;
+        attributes.readerVolumePush = volumePush;
         params.volume_push = volumePush;
       }
+      this.update(attributes);
       return Records.topics.remote.patchMember(this.id, 'set_volume', params).finally(() => {
         this.processing = false;
       });

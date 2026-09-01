@@ -668,6 +668,8 @@ ca:
     email_and_device_when_notified: Notificacions per correu electrònic i dispositiu quan es notifiqui
     device_notification_when_notified: Notificació del dispositiu quan es notifica
     no_notifications: Sense notificacions
+    catch_up_email_every_second_day: Correu electrònic de posada al dia cada dos dies
+    weekly_catch_up_email: Correu electrònic setmanal de posada al dia
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

@@ -666,6 +666,8 @@ fi:
     email_and_device_when_notified: Sähköposti- ja laiteilmoitukset, kun ilmoitus on annettu
     device_notification_when_notified: Laiteilmoitus, kun ilmoitus annetaan
     no_notifications: Ei ilmoituksia
+    catch_up_email_every_second_day: Päivityssähköposti joka toinen päivä
+    weekly_catch_up_email: Viikoittainen sähköposti-ilmoitus
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

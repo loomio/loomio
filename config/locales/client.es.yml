@@ -668,6 +668,8 @@ es:
     email_and_device_when_notified: Correo electrónico y notificación del dispositivo cuando recibas una notificación
     device_notification_when_notified: Notificación del dispositivo cuando recibas una notificación
     no_notifications: Sin notificaciones
+    catch_up_email_every_second_day: Correo electrónico de resumen cada dos días
+    weekly_catch_up_email: Correo electrónico de resumen semanal
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido

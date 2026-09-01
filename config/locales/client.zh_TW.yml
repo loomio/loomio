@@ -669,6 +669,8 @@ zh_TW:
     email_and_device_when_notified: 收到通知時發送電子郵件和裝置通知
     device_notification_when_notified: 收到通知時發送裝置通知
     no_notifications: 無通知
+    catch_up_email_every_second_day: 每隔一天發送一次進度郵件
+    weekly_catch_up_email: 每週簡報郵件
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
