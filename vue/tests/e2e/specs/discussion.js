@@ -360,7 +360,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
-    page.expectText('h2', "invited you to a discussion")
+    page.expectText('.email-notification-text', "invited you to a discussion")
     page.expectText('.email-user-content', "A description for this discussion. Should this be rich?")
     page.click('main h1 a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
@@ -376,7 +376,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
-    page.expectText('h2', "invited you to a discussion")
+    page.expectText('.email-notification-text', "invited you to a discussion")
     page.expectText('.email-user-content', "A description for this discussion. Should this be rich?")
     page.expectText('body', 'Should we go to the moon?')
     page.expectText('main', 'Poll details for the invitation email.')

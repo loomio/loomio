@@ -89,11 +89,11 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
-    page.waitFor('.base-mailer__button');
+    page.waitFor('.email-button');
     screenshot.captureRegion(
       'users/merge_accounts/merge_accounts_email',
       ['.mailer__header', 'body > div:last-of-type'],
-      {width: 1100, height: 1200, padding: 24, spotlight: '.base-mailer__button'}
+      {width: 1100, height: 1200, padding: 24, spotlight: '.email-button'}
     );
   },
 
@@ -101,8 +101,8 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
-    page.waitFor('.base-mailer__button');
-    page.click('.base-mailer__button');
+    page.waitFor('.email-button');
+    page.click('.email-button');
     page.waitFor('main.sistema');
     screenshot.captureElement(
       'users/merge_accounts/merge_accounts_confirm',

@@ -39,7 +39,9 @@ module.exports = {
 }
 
 testUpdate = (page) => {
-  page.click('.email-settings-page__mentioned label')
+  page.click('.email-settings-page__digest-card .v-select .v-field')
+  page.waitFor('.v-overlay--active .v-list')
+  page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Monday')).click()")
   page.click('.email-settings-page__update-button')
   page.expectFlash('Email settings updated')
 }

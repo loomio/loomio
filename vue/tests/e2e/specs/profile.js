@@ -139,7 +139,7 @@ module.exports = {
   //   page.click('.confirm-modal__submit')
   //   page.expectFlash('Verification email sent!')
   //   page.loadLastEmail()
-  //   page.click('.base-mailer__button')
+  //   page.click('.email-button')
   //   page.pause()
   //   page.click('.btn--accent--raised')
   //   page.expectText('.header', "Merge successful!")
@@ -150,7 +150,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_merge_verification_email')
     page.loadLastEmail()
-    page.click('.base-mailer__button')
+    page.click('.email-button')
     page.pause(500)
     page.expectElement('.btn--accent--raised')
     page.click('.btn--accent--raised')
