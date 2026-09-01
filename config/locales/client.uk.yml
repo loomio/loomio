@@ -661,6 +661,11 @@ uk:
     email_notifications: Електронна пошта при отриманні сповіщення
     email_none: Без електронних листів
     new_to_you: Новий для тебе
+    email_and_push_when_notified: Електронна пошта та push-повідомлення після отримання сповіщення
+    email_when_notified: Електронна пошта після отримання сповіщення
+    push_when_notified: Push-повідомлення після отримання сповіщення
+    daily_catch_up_email: Щоденний електронний лист зі зведенням
+    in_app_only: Тільки в додатку
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч

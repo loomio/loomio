@@ -308,3 +308,12 @@ languages in the Nov 2025 pass.
 | `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs meaning physically push (`Drücken`, `Empujar`, `Pousser`, `Duw`) | `Push` | Push is the established notification channel name, not an imperative action |
 | `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | New Web Push direct-address strings | Formal `Sie/usted/vous/u` forms | Informal `du/tú/tu/je` forms | These locales address users informally throughout |
 | Multiple `config/locales/client.*.yml` files | New Web Push status and help strings | Single-sentence UI strings with final full stops | Removed final full stops where reviewed | Single-sentence UI strings do not use final full stops |
+
+## 2026-09-01 — Thread notification summaries
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `strand_nav.email_and_push_when_notified`, `strand_nav.push_when_notified`; Belarusian `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Imperatives meaning physically press or push, such as `Націсніце`, `Empènyer`, `Tryk`, `Πιέστε`, `Paina`, `Pritisni`, `Naciśnij`, `Apăsați`, and `Натиснути` | Notification-channel noun phrases using Push, push notification, or the locale's established technical term | Push is the notification delivery channel, not an instruction to press a control |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `strand_nav.email_and_push_when_notified`, `strand_nav.email_when_notified`, `strand_nav.push_when_notified` | Formal `se le`, `vous`, and `u` forms | Informal `recibas`, `tu`, and `je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | `strand_nav.daily_catch_up_email` | Literal missed-activity wording such as neglected, make up for lost time, or catch up socially | Daily summary email wording | Catch-up names an email digest here, not neglect, social news, or recovering lost time |
+| `config/locales/client.el.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New `strand_nav.*` notification summary labels | Single-sentence UI labels with final full stops | Removed final full stops | Single-sentence UI labels do not use final full stops |

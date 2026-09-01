@@ -658,6 +658,11 @@ fi:
     email_notifications: Sähköposti, kun saat ilmoituksen
     email_none: Ei sähköposteja
     new_to_you: Uusi sinulle
+    email_and_push_when_notified: Sähköposti ja push-ilmoitus, kun saat ilmoituksen
+    email_when_notified: Sähköposti, kun saat ilmoituksen
+    push_when_notified: Push-ilmoitus, kun saat ilmoituksen
+    daily_catch_up_email: Päivittäinen yhteenvetosähköposti
+    in_app_only: Vain sovelluksessa
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

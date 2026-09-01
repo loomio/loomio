@@ -660,6 +660,11 @@ nl_NL:
     email_notifications: E-mail wanneer ik een melding ontvang
     email_none: Geen e-mails
     new_to_you: Nieuw voor jou
+    email_and_push_when_notified: E-mail en pushmelding wanneer je een melding ontvangt
+    email_when_notified: E-mail wanneer je een melding ontvangt
+    push_when_notified: Pushmelding wanneer je een melding ontvangt
+    daily_catch_up_email: Dagelijkse samenvattingsmail
+    in_app_only: Alleen in de app
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst

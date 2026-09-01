@@ -658,6 +658,11 @@ da:
     email_notifications: E-mail når du får besked
     email_none: Ingen e-mails
     new_to_you: Ny for dig
+    email_and_push_when_notified: E-mail og pushbesked, når du får besked
+    email_when_notified: E-mail, når du får besked
+    push_when_notified: Pushbesked, når du får besked
+    daily_catch_up_email: Daglig opsummeringsmail
+    in_app_only: Kun i appen
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match

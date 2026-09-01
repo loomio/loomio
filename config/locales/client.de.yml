@@ -666,6 +666,11 @@ de:
     email_notifications: E-Mail bei Benachrichtigung
     email_none: Keine E-Mails
     new_to_you: Neu für dich
+    email_and_push_when_notified: E-Mail und Push bei Benachrichtigungen
+    email_when_notified: E-Mail bei Benachrichtigungen
+    push_when_notified: Push bei Benachrichtigungen
+    daily_catch_up_email: Tägliche Zusammenfassungs-E-Mail
+    in_app_only: Nur in der App
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer

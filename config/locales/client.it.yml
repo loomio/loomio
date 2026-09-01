@@ -668,6 +668,11 @@ it:
     email_notifications: E-mail quando ricevi una notifica
     email_none: Nessuna email
     new_to_you: Nuovo per te
+    email_and_push_when_notified: Email e notifica push quando ricevi una notifica
+    email_when_notified: Email quando ricevi una notifica
+    push_when_notified: Notifica push quando ricevi una notifica
+    daily_catch_up_email: Email di riepilogo giornaliera
+    in_app_only: Solo in-app
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento

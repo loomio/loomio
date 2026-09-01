@@ -361,12 +361,11 @@ class PollService
     topic_item = Poll.transaction do
       poll.save!
 
-      topic_item = TopicItems::PollReopened.create!(
+      # Reopening remains visible in the timeline but never repeats poll opening notifications.
+      TopicItems::PollReopened.create!(
         itemable: poll,
         user: actor
       )
-      announce_poll_opened(poll) if poll.notify_on_open
-      topic_item
     end
     EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)

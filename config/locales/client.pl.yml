@@ -660,6 +660,11 @@ pl:
     email_notifications: Wyślij e-mail po powiadomieniu
     email_none: Brak e-maili
     new_to_you: Nowe dla Ciebie
+    email_and_push_when_notified: E-mail i powiadomienie push po otrzymaniu powiadomienia
+    email_when_notified: E-mail po otrzymaniu powiadomienia
+    push_when_notified: Powiadomienie push po otrzymaniu powiadomienia
+    daily_catch_up_email: Codzienny e-mail z podsumowaniem
+    in_app_only: Tylko w aplikacji
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz

@@ -658,6 +658,11 @@ el:
     email_notifications: Email όταν ειδοποιηθείτε
     email_none: Χωρίς email
     new_to_you: Νέο για εσάς
+    email_and_push_when_notified: Email και ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    email_when_notified: Email όταν λαμβάνεις ειδοποίηση
+    push_when_notified: Ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    daily_catch_up_email: Ημερήσιο email σύνοψης
+    in_app_only: Μόνο εντός εφαρμογής
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα

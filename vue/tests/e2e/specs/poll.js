@@ -203,6 +203,17 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
   },
 
+  'opens_reminder_form_after_reopening_a_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.execute("Array.from(document.querySelectorAll('.poll-created .action-menu--btn')).find(el => el.offsetParent).click()")
+    page.waitFor('.action-dock__button--reopen_poll')
+    page.execute("Array.from(document.querySelectorAll('.action-dock__button--reopen_poll')).find(el => el.offsetParent).click()")
+    page.clickAndWait('.poll-common-reopen-form__submit', '.poll-remind')
+    page.expectText('.poll-remind', 'Remind to vote')
+  },
+
   // 'can_close_and_reopen_a_poll': (test) => {
   //   page = pageHelper(test)
   //

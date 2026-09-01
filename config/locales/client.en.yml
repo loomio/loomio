@@ -708,6 +708,11 @@ en:
     email_all_activity: Email all activity
     email_notifications: Email when notified
     email_none: No emails
+    email_and_push_when_notified: Email & Push when notified
+    email_when_notified: Email when notified
+    push_when_notified: Push when notified
+    daily_catch_up_email: Daily catch-up email
+    in_app_only: In-app only
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest

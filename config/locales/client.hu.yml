@@ -660,6 +660,11 @@ hu:
     email_notifications: E-mail értesítés esetén
     email_none: Nincsenek e-mailek
     new_to_you: Új számodra
+    email_and_push_when_notified: E-mail és push értesítés értesítéskor
+    email_when_notified: E-mail értesítéskor
+    push_when_notified: Push értesítés értesítéskor
+    daily_catch_up_email: Napi összefoglaló e-mail
+    in_app_only: Csak az alkalmazásban
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat

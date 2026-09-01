@@ -575,33 +575,24 @@ class PollServiceTest < ActiveSupport::TestCase
 
   # -- reopen --
 
-  test "reopen sends poll_announced when notify_on_open is true" do
+  test "reopen does not send notifications when notify_on_open is true" do
     poll = create_poll(notify_on_open: true)
     PollService.close(poll: poll, actor: @user)
     poll.reload
+    notification_count_before = Notification.about(poll).count
+    topic_item = nil
 
-    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
-    PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
+    NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
+      PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user) do |created_topic_item|
+        topic_item = created_topic_item
+      end
+    end
     poll.reload
 
     assert poll.opened?, "poll should be opened after reopen"
     assert_nil poll.opening_at, "opening_at should be nil after reopen"
-    assert_operator Notification.about(poll).where(kind: "poll_announced").count, :>, announced_count_before,
-      "poll_announced notification should be created on reopen with notify_on_open=true"
-  end
-
-  test "reopen does not send poll_announced when notify_on_open is false" do
-    poll = create_poll(notify_on_open: false)
-    PollService.close(poll: poll, actor: @user)
-    poll.reload
-
-    announced_count_before = Notification.about(poll).where(kind: "poll_announced").count
-    PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
-    poll.reload
-
-    assert poll.opened?, "poll should be opened after reopen"
-    assert_equal announced_count_before, Notification.about(poll).where(kind: "poll_announced").count,
-      "no poll_announced topic_item on reopen when notify_on_open is false"
+    assert_equal "poll_reopened", topic_item.kind
+    assert_equal notification_count_before, Notification.about(poll).count
   end
 
   test "reopen returns an invalid poll without yielding a topic item" do

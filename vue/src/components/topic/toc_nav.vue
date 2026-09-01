@@ -6,13 +6,12 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
-import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
 const props = defineProps({
   topic:             Object,
@@ -41,27 +40,15 @@ const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
 });
 const catchUpEnabled = computed(() => Session.user().emailCatchUpDay != null);
-const volumeFallbackLabel = computed(() => catchUpEnabled.value
-  ? 'change_volume_form.catch_up_only_option'
-  : 'change_volume_form.in_app_only_option'
-);
-const volumeSummaries = computed(() => {
-  const summaries = [];
-  if (['normal', 'loud'].includes(props.topic.readerVolumeEmail)) {
-    summaries.push({
-      channel: 'email_channel',
-      icon: mdiEmailOutline,
-      label: notificationVolumeOptionTitleKey(props.topic.readerVolumeEmail, 'email', catchUpEnabled.value)
-    });
-  }
-  if (['normal', 'loud'].includes(props.topic.readerVolumePush)) {
-    summaries.push({
-      channel: 'push_channel',
-      icon: mdiCellphone,
-      label: notificationVolumeOptionTitleKey(props.topic.readerVolumePush, 'push', catchUpEnabled.value)
-    });
-  }
-  return summaries;
+const volumeSummaryKey = computed(() => {
+  const emailEnabled = ['normal', 'loud'].includes(props.topic.readerVolumeEmail);
+  const pushEnabled = ['normal', 'loud'].includes(props.topic.readerVolumePush);
+
+  if (emailEnabled && pushEnabled) return 'strand_nav.email_and_push_when_notified';
+  if (emailEnabled) return 'strand_nav.email_when_notified';
+  if (pushEnabled) return 'strand_nav.push_when_notified';
+  if (catchUpEnabled.value) return 'strand_nav.daily_catch_up_email';
+  return 'strand_nav.in_app_only';
 });
 
 function scrollToEnd() {
@@ -169,12 +156,7 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item.topic-sidebar__notification-settings(@click="openVolumeForm")
-        v-list-item-title(v-if="volumeSummaries.length")
-          .d-flex.align-center(v-for="summary in volumeSummaries" :key="summary.channel")
-            v-icon.mr-2(:icon="summary.icon" size="small")
-            span {{ $t(`change_volume_form.${summary.channel}`) }} · {{ $t(summary.label) }}
-        v-list-item-title(v-else v-t="volumeFallbackLabel")
+      v-list-item.topic-sidebar__notification-settings(:title="$t(volumeSummaryKey)" @click="openVolumeForm")
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")
@@ -207,6 +189,10 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
 .topic-sidebar .v-list-item-title {
   white-space: normal !important;
+}
+
+.topic-sidebar .topic-sidebar__notification-settings .v-list-item-title {
+  white-space: nowrap !important;
 }
 
 .topic-nav__stance-icon-container {

@@ -658,6 +658,11 @@ sl:
     email_notifications: E-pošta ob obvestilu
     email_none: Brez e-poštnih sporočil
     new_to_you: Novo zate
+    email_and_push_when_notified: E-pošta in potisno obvestilo ob prejemu obvestila
+    email_when_notified: E-pošta ob prejemu obvestila
+    push_when_notified: Potisno obvestilo ob prejemu obvestila
+    daily_catch_up_email: Dnevno e-poštno sporočilo s povzetkom
+    in_app_only: Samo v aplikaciji
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

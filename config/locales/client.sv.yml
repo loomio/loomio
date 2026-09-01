@@ -658,6 +658,11 @@ sv:
     email_notifications: E-posta när du får meddelande
     email_none: Inga e-postmeddelanden
     new_to_you: Nytt för dig
+    email_and_push_when_notified: E-post och pushnotis när du får ett meddelande
+    email_when_notified: E-post när du får ett meddelande
+    push_when_notified: Pushnotis när du får ett meddelande
+    daily_catch_up_email: Dagligt sammanfattningsmejl
+    in_app_only: Endast i appen
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

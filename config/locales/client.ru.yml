@@ -658,6 +658,11 @@ ru:
     email_notifications: Письмо при уведомлении
     email_none: Нет электронных писем
     new_to_you: Новое для вас
+    email_and_push_when_notified: Электронная почта и push-уведомление при получении уведомления
+    email_when_notified: Электронная почта при получении уведомления
+    push_when_notified: Push-уведомление при получении уведомления
+    daily_catch_up_email: Ежедневное письмо со сводкой
+    in_app_only: Только в приложении
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч

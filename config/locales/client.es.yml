@@ -660,6 +660,11 @@ es:
     email_notifications: Correo electrónico cuando se me notifique
     email_none: Sin correos electrónicos
     new_to_you: Nuevo para ti
+    email_and_push_when_notified: Correo electrónico y notificación push cuando recibas una notificación
+    email_when_notified: Correo electrónico cuando recibas una notificación
+    push_when_notified: Notificación push cuando recibas una notificación
+    daily_catch_up_email: Correo electrónico de resumen diario
+    in_app_only: Solo dentro de la aplicación
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido

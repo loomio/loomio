@@ -658,6 +658,11 @@ tr:
     email_notifications: Bildirim aldığımda e-posta gönder
     email_none: E-posta yok
     new_to_you: Sizin için yeni
+    email_and_push_when_notified: Bildirim aldığında e-posta ve anlık bildirim
+    email_when_notified: Bildirim aldığında e-posta
+    push_when_notified: Bildirim aldığında anlık bildirim
+    daily_catch_up_email: Günlük özet e-postası
+    in_app_only: Sadece uygulama içinde
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

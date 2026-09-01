@@ -660,6 +660,11 @@ ca:
     email_notifications: Correu electrònic quan es notifiqui
     email_none: Sense correus electrònics
     new_to_you: Nou per a tu
+    email_and_push_when_notified: Correu electrònic i notificació push quan es rebi una notificació
+    email_when_notified: Correu electrònic quan es rebi una notificació
+    push_when_notified: Notificació push quan es rebi una notificació
+    daily_catch_up_email: Correu electrònic de resum diari
+    in_app_only: Només a l'aplicació
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

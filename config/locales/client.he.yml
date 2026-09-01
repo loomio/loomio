@@ -658,6 +658,11 @@ he:
     email_notifications: דוא"ל לאחר הודעה
     email_none: אין אימיילים
     new_to_you: חדש לך
+    email_and_push_when_notified: דוא"ל והתראת Push בעת קבלת התראה
+    email_when_notified: דוא"ל בעת קבלת התראה
+    push_when_notified: התראת Push בעת קבלת התראה
+    daily_catch_up_email: אימייל סיכום יומי
+    in_app_only: בתוך האפליקציה בלבד
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
