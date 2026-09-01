@@ -146,6 +146,14 @@ function tagVisibleInCurrentGroup(tag) {
     (tag.usedGroupIds || []).includes(tagGroup.value.id);
 }
 
+const hasMoreTags = computed(() => {
+  if (!usableGroup(tagGroup.value)) { return false; }
+
+  return orgTags.value.some(tag =>
+    !isSelected(tag) && !(tag.usedGroupIds || []).includes(tagGroup.value.id)
+  );
+});
+
 const allTags = computed(() => {
   const tags = usableGroup(tagGroup.value) ? orgTags.value.filter(tagVisibleInCurrentGroup) : orgTags.value;
   const tagKeys = tags.map(tag => cleanTagName(tag.name).toLowerCase());
@@ -213,7 +221,7 @@ function submitNewTag() {
       .topic-tags-picker__tag-content
         .tag-color-dot(:style="tagDotStyle(tag)")
         span {{ tag.name }}
-    v-list-item.topic-tags-picker__all-tags(v-if="usableGroup(tagGroup) && orgTags.length" density="compact" @click="showAllTags = !showAllTags")
+    v-list-item.topic-tags-picker__all-tags(v-if="hasMoreTags" density="compact" @click="showAllTags = !showAllTags")
       template(v-slot:prepend)
         common-icon.text-medium-emphasis(name="mdi-unfold-more-horizontal")
       v-list-item-title(v-if="showAllTags" v-t="'common.action.show_fewer'")
