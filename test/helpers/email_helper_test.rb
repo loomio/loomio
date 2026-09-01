@@ -81,6 +81,25 @@ class EmailHelperTest < ActiveSupport::TestCase
     assert_match "/p/#{poll.key}?sequence_id=12", send(:poll_url, poll, no_slug: true, sequence_id: 12)
   end
 
+  test "tracked_url includes a topic reader token for an invited guest" do
+    guest = User.create!(name: "Invited guest", email: "invited-guest-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @author)
+
+    url = tracked_url(@discussion, recipient: guest)
+
+    assert_includes url, "topic_reader_token=#{reader.token}"
+  end
+
+  test "tracked_url omits a topic reader token when the invited guest is a group member" do
+    guest = User.create!(name: "Guest member", email: "guest-member-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @author)
+    @group.add_member!(guest)
+
+    assert_includes TopicReader.where(id: reader.id), reader
+    refute_includes TopicReader.redeemable, reader
+    refute_includes tracked_url(@discussion, recipient: guest), "topic_reader_token="
+  end
+
   test "unsubscribe_url identifies a poll by its topic" do
     poll = PollService.create(params: {
       poll_type: "poll",

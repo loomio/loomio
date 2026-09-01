@@ -14,7 +14,21 @@ class TopicReader < ApplicationRecord
   scope :guests, -> { active.where('topic_readers.guest': true) }
   scope :admins, -> { active.where('topic_readers.admin': true) }
 
-  scope :redeemable, -> { guests.where('topic_readers.accepted_at IS NULL') }
+  # Group members already have membership-based topic access, so stale guest readers must not remain bearer-token invitations.
+  scope :redeemable, -> {
+    guests
+      .where('topic_readers.accepted_at IS NULL')
+      .where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1
+          FROM memberships
+          INNER JOIN topics ON topics.group_id = memberships.group_id
+          WHERE topics.id = topic_readers.topic_id
+            AND memberships.user_id = topic_readers.user_id
+            AND memberships.revoked_at IS NULL
+        )
+      SQL
+  }
 
   scope :redeemable_by, lambda { |user_id|
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)

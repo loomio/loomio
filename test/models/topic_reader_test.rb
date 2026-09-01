@@ -24,6 +24,17 @@ class TopicReaderTest < ActiveSupport::TestCase
     assert_predicate admin_reader, :push_quiet?
   end
 
+  test "guest invitation is not redeemable after the user joins the topic group" do
+    guest = User.create!(name: "Guest becoming member", email: "guest-member-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @admin)
+
+    assert_includes TopicReader.redeemable, reader
+
+    @group.add_member!(guest)
+
+    refute_includes TopicReader.redeemable, reader
+  end
+
   # Computed volume
   test "can change its volume" do
     @reader.set_volume!(email: :loud, push: :normal)
