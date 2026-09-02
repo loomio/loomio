@@ -5,12 +5,12 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionService from '@/shared/services/discussion_service';
 import { compact } from 'lodash-es';
-import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import SubscriptionService from '@/shared/services/subscription_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionTemplateHelpPanel from '@/components/discussion_template/help_panel';
 import { useWatchRecords } from '@/composables/useWatchRecords';
@@ -37,7 +37,7 @@ const form = ref(null);
 
 // Data
 const tab = ref(0);
-const upgradeUrl = AppConfig.baseUrl + 'upgrade';
+const upgradeUrl = SubscriptionService.upgradeUrl();
 const submitIsDisabled = ref(false);
 const searchResults = ref([]);
 const subscription = ref(props.discussion.group().parentOrSelf().subscription);

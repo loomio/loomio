@@ -138,9 +138,12 @@ class AppConfig
   end
 
   def self.app_features
+    loomio_subscriptions = ENV['LOOMIO_SUBSCRIPTIONS'].present?
+
     {
       env: Rails.env,
-      subscriptions: ENV['CHARGIFY_API_KEY'].present?,
+      subscriptions: ENV['CHARGIFY_API_KEY'].present? || loomio_subscriptions,
+      loomio_subscriptions: loomio_subscriptions,
       demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),

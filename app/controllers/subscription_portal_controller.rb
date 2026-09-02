@@ -9,7 +9,27 @@ class SubscriptionPortalController < ApplicationController
   end
 
   def show
-    group = current_user.adminable_groups.published.parents_only.find(params[:group_id])
+    redirect_to_service(adminable_group)
+  rescue Subscriptions::Client::Error, Subscriptions::Registration::Error
+    render Views::Subscriptions::Unavailable.new, status: :bad_gateway
+  end
+
+  def manage
+    group = adminable_group
+    return redirect_to "/upgrade/#{group.id}" unless group.subscription&.payment_method == "loomio_subscriptions"
+
+    redirect_to_service(group)
+  rescue Subscriptions::Client::Error, Subscriptions::Registration::Error
+    render Views::Subscriptions::Unavailable.new, status: :bad_gateway
+  end
+
+  private
+
+  def adminable_group
+    current_user.adminable_groups.published.parents_only.find(params[:group_id])
+  end
+
+  def redirect_to_service(group)
     Subscriptions::Registration.new.register!
     redirect_to Subscriptions::Client.new.create_session(
       group: group,
@@ -17,7 +37,5 @@ class SubscriptionPortalController < ApplicationController
       callback_url: api_s1_webhook_url,
       return_url: group_url(group)
     ), allow_other_host: true
-  rescue Subscriptions::Client::Error, Subscriptions::Registration::Error
-    render Views::Subscriptions::Unavailable.new, status: :bad_gateway
   end
 end

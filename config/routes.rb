@@ -524,6 +524,7 @@ Rails.application.routes.draw do
   end
 
   get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
+  get '/subscriptions/manage/:group_id', to: 'subscription_portal#manage', as: :manage_subscription
   get '/subscriptions/:group_id', to: 'subscription_portal#show', as: :subscription_portal_group
 
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
