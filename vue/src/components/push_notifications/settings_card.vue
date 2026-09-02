@@ -101,24 +101,27 @@ v-card.push-notifications-settings-card.mb-4(
       v-if="supported && !browserEnabled"
       color="primary"
       variant="tonal"
-      prepend-icon="mdi-bell-plus-outline"
       :loading="loading"
       @click="enable")
+      template(v-slot:prepend)
+        common-icon(name="mdi-bell-plus-outline")
       span {{ $t('push_notifications.enable_device') }}
     v-btn(
       v-else-if="supported"
       variant="tonal"
-      prepend-icon="mdi-bell-off-outline"
       :loading="loading"
       @click="disable")
+      template(v-slot:prepend)
+        common-icon(name="mdi-bell-off-outline")
       span {{ $t('push_notifications.disable_device') }}
     v-btn.ml-2(
       v-if="subscriptions.length"
       variant="tonal"
-      prepend-icon="mdi-send-outline"
       :disabled="loading"
       :loading="testing"
       @click="sendTest")
+      template(v-slot:prepend)
+        common-icon(name="mdi-send-outline")
       span {{ $t('chatbot.test_connection') }}
 
     v-list.mt-4(v-if="subscriptions.length" lines="two")
@@ -130,8 +133,9 @@ v-card.push-notifications-settings-card.mb-4(
         v-list-item-subtitle {{ subscription.user_agent }}
         template(v-slot:append)
           v-btn(
-            prepend-icon="mdi-delete-outline"
             variant="text"
             @click="remove(subscription)")
+            template(v-slot:prepend)
+              common-icon(name="mdi-delete-outline")
             span(v-t="'push_notifications.remove_device'")
 </template>

@@ -40,10 +40,14 @@ export default new class PushSubscriptionService {
   }
 
   enable(name = null) {
-    return this.enqueueMutation(async () => {
-      if (!this.supported()) throw new Error('push_not_supported');
+    if (!this.supported()) return Promise.reject(new Error('push_not_supported'));
 
-      const permission = await Notification.requestPermission();
+    // Safari requires the permission prompt to begin directly within the click's
+    // user activation. Do not defer this call through the mutation queue.
+    const permissionPromise = Notification.requestPermission();
+
+    return this.enqueueMutation(async () => {
+      const permission = await permissionPromise;
       if (permission !== 'granted') throw new Error('push_permission_denied');
 
       const registration = await this.registration();

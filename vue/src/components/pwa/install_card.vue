@@ -22,8 +22,9 @@ v-card.pwa-install-card.mb-4(
     v-spacer
     v-btn(
       color="primary"
-      prepend-icon="mdi-download"
       variant="tonal"
       @click="install")
+      template(v-slot:prepend)
+        common-icon(name="mdi-download")
       span {{ $t('install_app.install_button') }}
 </template>
