@@ -17,10 +17,10 @@ import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLig
 
 const volumeDisplayByState = {
   email_and_device_all_activity: { email: true,  device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
-  email_all_activity:            { email: true,  device: false, labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  email_all_activity:            { email: true,  device: false, labelKey: 'strand_nav.email_all_activity', summaryKey: 'strand_nav.email_all_activity' },
   device_all_activity:           { email: false, device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
   email_and_device:              { email: true,  device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_and_device_when_notified' },
-  email:                         { email: true,  device: false, labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_when_notified' },
+  email:                         { email: true,  device: false, labelKey: 'strand_nav.email_when_notified', summaryKey: 'strand_nav.email_when_notified' },
   device:                        { email: false, device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.device_notification_when_notified' },
   catch_up:                      { email: true,  device: false, labelKey: 'strand_nav.daily_catch_up_email', summaryKey: 'strand_nav.daily_catch_up_email' },
   none:                          { email: false, device: false, labelKey: 'strand_nav.no_notifications', summaryKey: 'strand_nav.no_notifications' },
