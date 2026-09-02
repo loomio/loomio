@@ -1,5 +1,10 @@
 ---
 pt_BR:
+  install_app:
+    install_title: Instalar %{site_name}
+    install_description: Adicione %{site_name} à tela de início para acessar mais rapidamente
+    install_button: Instalar
+    ios_install_description: No Safari, abra Compartilhar e selecione Adicionar à Tela de Início
   start_trial:
     title: Comece uma avaliação gratuita do Loomio
     intro: Obrigado pelo seu interesse no Loomio. Temos o prazer de oferecer a você um teste gratuito de %{day} dias para que você possa ver se o Loomio é adequado para sua organização.

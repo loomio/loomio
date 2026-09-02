@@ -1,5 +1,10 @@
 ---
 ro:
+  install_app:
+    install_title: Instalează %{site_name}
+    install_description: Adaugă %{site_name} pe ecranul principal pentru acces mai rapid
+    install_button: Instalează
+    ios_install_description: În Safari, deschide meniul de partajare și selectează Adăugați la ecranul principal
   start_trial:
     title: Începeți o încercare gratuită a Loomio
     intro: Vă mulțumim pentru interesul manifestat față de Loomio. Suntem încântați să vă oferim o perioadă de încercare gratuită de %{day} zile, astfel încât să puteți vedea dacă Loomio este potrivit pentru organizația dvs.

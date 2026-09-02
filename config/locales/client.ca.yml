@@ -1,5 +1,10 @@
 ---
 ca:
+  install_app:
+    install_title: Instal·la %{site_name}
+    install_description: Afegeix %{site_name} a la pantalla d’inici per accedir-hi més ràpidament
+    install_button: Instal·la
+    ios_install_description: A Safari, obre Compartir i selecciona Afegeix a la pantalla d’inici
   start_trial:
     title: Inicieu una prova gratuïta de Loomio
     intro: Gràcies pel teu interès en Loomio. Estem encantats d'oferir-vos una prova gratuïta de %{day} dies perquè pugueu veure si Loomio s'adapta bé a la vostra organització.

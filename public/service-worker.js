@@ -1,3 +1,23 @@
+self.addEventListener('install', () => {
+  // Updated workers intentionally wait until the user accepts the reload notice.
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    event.waitUntil(self.skipWaiting());
+  }
+  if (event.data?.type === 'UNSUBSCRIBE_PUSH') {
+    const unsubscribe = self.registration.pushManager
+      ? self.registration.pushManager.getSubscription().then(subscription => subscription?.unsubscribe())
+      : Promise.resolve();
+    event.waitUntil(unsubscribe);
+  }
+});
+
 self.addEventListener('push', event => {
   if (!event.data) return;
 
@@ -24,10 +44,8 @@ self.addEventListener('notificationclick', event => {
   const targetUrl = requestedUrl.origin === self.location.origin ? requestedUrl.href : self.location.origin;
 
   event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clients => {
-    const existing = clients.find(client => new URL(client.url).origin === self.location.origin);
-    if (existing) {
-      return existing.navigate(targetUrl).then(client => client.focus());
-    }
+    const existing = clients.find(client => client.url === targetUrl);
+    if (existing) return existing.focus();
     return self.clients.openWindow(targetUrl);
   }));
 });

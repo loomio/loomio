@@ -1,5 +1,10 @@
 ---
 hu:
+  install_app:
+    install_title: "%{site_name} telepítése"
+    install_description: "%{site_name} hozzáadása a kezdőképernyőhöz a gyorsabb elérésért"
+    install_button: Telepítés
+    ios_install_description: A Safariban nyisd meg a Megosztás menüt, és válaszd a Hozzáadás a Főképernyőhöz lehetőséget
   start_trial:
     title: Kezdje el a Loomio ingyenes próbaverzióját
     intro: Köszönjük érdeklődését Loomio iránt. Örömmel kínálunk Önnek egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodjon arról, hogy a Loomio megfelelő-e az Ön szervezete számára.

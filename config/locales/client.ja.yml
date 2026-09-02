@@ -1,5 +1,10 @@
 ---
 ja:
+  install_app:
+    install_title: "%{site_name}をインストール"
+    install_description: "%{site_name}をホーム画面に追加して、すばやくアクセスできます"
+    install_button: インストール
+    ios_install_description: Safariで共有を開き、「ホーム画面に追加」を選択してください
   start_trial:
     your_name: あなたの名前
     title: Loomioの無料トライアルを始める

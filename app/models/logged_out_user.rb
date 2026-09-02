@@ -9,6 +9,10 @@ class LoggedOutUser
     Tag.none
   end
 
+  def push_subscription_removals
+    PushSubscriptionRemoval.none
+  end
+
   def initialize(name: nil, email: nil, token: nil, locale: I18n.locale, time_zone: 'UTC', date_time_pref: 'day_abbr', params: {}, session: {})
     @name = name
     @email = email

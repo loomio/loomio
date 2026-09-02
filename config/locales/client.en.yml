@@ -1,5 +1,10 @@
 ---
 en:
+  install_app:
+    install_title: Install %{site_name}
+    install_description: Add %{site_name} to your home screen for quicker access
+    install_button: Install
+    ios_install_description: In Safari, open Share and select Add to Home Screen
   start_trial:
     title: Start a free trial of Loomio
     intro: Thank you for your interest in Loomio. We're delighted to offer you a %{day}-day free trial so you can see if Loomio is a good fit for you organization.

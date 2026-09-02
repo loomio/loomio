@@ -1,5 +1,10 @@
 ---
 zh_CN:
+  install_app:
+    install_title: 安装 %{site_name}
+    install_description: 将 %{site_name} 添加到主屏幕，以便更快访问
+    install_button: 安装
+    ios_install_description: 在 Safari 中，打开“共享”并选择“添加到主屏幕”
   hello: 您好！
   start_trial:
     title: 开始 Loomio 的免费试用

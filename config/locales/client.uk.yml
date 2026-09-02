@@ -1,5 +1,10 @@
 ---
 uk:
+  install_app:
+    install_title: Встановити %{site_name}
+    install_description: Додайте %{site_name} на початковий екран для швидшого доступу
+    install_button: Встановити
+    ios_install_description: У Safari відкрийте меню «Поширити» й виберіть «На початковий екран»
   start_trial:
     title: Почніть безкоштовну пробну версію Loomio
     intro: Дякуємо за інтерес до Loomio. Ми раді запропонувати вам %{day}-денну безкоштовну пробну версію, щоб ви могли перевірити, чи Loomio добре підходить для вашої організації.

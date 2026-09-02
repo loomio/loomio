@@ -57,6 +57,87 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
     assert_equal "new-auth", subscription.auth_key
   end
 
+  test "reconciles an unknown browser subscription without prompting again" do
+    assert_difference "PushSubscription.count", 1 do
+      post :reconcile, params: { push_subscription: subscription_params }
+    end
+
+    assert_response :success
+    subscription = @user.push_subscriptions.active.find_by!(endpoint: subscription_params[:endpoint])
+    assert_equal Current.session, subscription.session
+  end
+
+  test "reconciliation does not reactivate an explicitly removed browser subscription" do
+    subscription = create_push_subscription(user: @user, **subscription_params)
+    delete :destroy, params: { id: subscription.id }
+
+    assert_response :success
+    assert @user.push_subscription_removals.exists?(endpoint_digest: subscription.endpoint_digest)
+    assert_no_difference "PushSubscription.count" do
+      post :reconcile, params: { push_subscription: subscription_params.merge(auth_key: "new-auth") }
+    end
+
+    assert_response :success
+    assert_equal true, response.parsed_body["revoked"]
+    assert subscription.reload.revoked_at
+    assert_nil @user.push_subscriptions.active.find_by(endpoint_digest: subscription.endpoint_digest)
+  end
+
+  test "automatic revocation does not prevent startup reconciliation" do
+    subscription = create_push_subscription(user: @user, **subscription_params)
+    subscription.revoke!
+
+    assert_difference "PushSubscription.count", 1 do
+      post :reconcile, params: { push_subscription: subscription_params.merge(auth_key: "new-auth") }
+    end
+
+    assert_response :success
+    reconciled = @user.push_subscriptions.active.find_by!(endpoint_digest: subscription.endpoint_digest)
+    assert_equal "new-auth", reconciled.auth_key
+  end
+
+  test "explicit enable clears a browser removal marker" do
+    subscription = create_push_subscription(user: @user, **subscription_params)
+    delete :destroy, params: { id: subscription.id }
+
+    assert_difference "PushSubscription.count", 1 do
+      post :create, params: { push_subscription: subscription_params }
+    end
+
+    assert_response :success
+    assert_nil @user.push_subscription_removals.find_by(endpoint_digest: subscription.endpoint_digest)
+    assert @user.push_subscriptions.active.exists?(endpoint_digest: subscription.endpoint_digest)
+  end
+
+  test "reconciliation preserves the device name while refreshing its keys and session" do
+    old_session = @user.sessions.create!(user_agent: "old browser", ip_address: "127.0.0.2")
+    subscription = create_push_subscription(
+      user: @user,
+      session: old_session,
+      name: "Laptop browser",
+      **subscription_params
+    )
+
+    post :reconcile, params: { push_subscription: subscription_params.merge(auth_key: "new-auth") }
+
+    assert_response :success
+    assert_equal Current.session, subscription.reload.session
+    assert_equal "new-auth", subscription.auth_key
+    assert_equal "Laptop browser", subscription.name
+  end
+
+  test "reconciliation moves an active browser subscription to the signed-in account" do
+    old_user = users(:member)
+    old_subscription = create_push_subscription(user: old_user, **subscription_params)
+
+    post :reconcile, params: { push_subscription: subscription_params }
+
+    assert_response :success
+    assert old_subscription.reload.revoked_at
+    new_subscription = @user.push_subscriptions.active.find_by!(endpoint_digest: old_subscription.endpoint_digest)
+    assert_equal Current.session, new_subscription.session
+  end
+
   test "rejects an arbitrary delivery endpoint" do
     assert_no_difference "PushSubscription.count" do
       post :create, params: {

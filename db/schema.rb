@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_31_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_02_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -819,6 +819,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_31_000001) do
     t.check_constraint "anonymous = true AND voting_system = 1 OR anonymous = false AND voting_system = 0", name: "polls_anonymous_voting_system"
   end
 
+  create_table "push_subscription_removals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "endpoint_digest", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "endpoint_digest"], name: "index_push_subscription_removals_on_user_and_endpoint", unique: true
+    t.index ["user_id"], name: "index_push_subscription_removals_on_user_id"
+  end
+
   create_table "push_subscriptions", force: :cascade do |t|
     t.string "auth_key", null: false
     t.datetime "created_at", null: false
@@ -1383,6 +1392,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_31_000001) do
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
+  add_foreign_key "push_subscription_removals", "users", on_delete: :cascade
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
   add_foreign_key "sessions", "users"

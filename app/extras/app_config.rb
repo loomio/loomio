@@ -95,6 +95,7 @@ class AppConfig
     {
       brand_colors: brand_colors,
       site_name: ENV.fetch('SITE_NAME', 'Loomio'),
+      site_short_name: ENV.fetch('SITE_SHORT_NAME', ENV.fetch('SITE_NAME', 'Loomio')),
       site_description: ENV.fetch('SITE_DESCRIPTION', I18n.t('email.loomio_app_description')),
       hocuspocus_url: ENV.fetch('HOCUSPOCUS_URL', default_hocuspocus_url),
       terms_url: ENV['TERMS_URL'],
@@ -108,6 +109,8 @@ class AppConfig
       touch_icon_src: ENV.fetch('THEME_TOUCH_ICON_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-256.png")),
       icon192_src: ENV.fetch('THEME_ICON_192_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-192.png")),
       icon512_src: ENV.fetch('THEME_ICON_512_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-512.png")),
+      icon_maskable192_src: ENV['THEME_ICON_MASKABLE_192_SRC'].presence || ("/brand/icon-maskable-192.png" if ENV['THEME_ICON_192_SRC'].blank? && ENV['THEME_ICON_SRC'].blank?),
+      icon_maskable512_src: ENV['THEME_ICON_MASKABLE_512_SRC'].presence || ("/brand/icon-maskable-512.png" if ENV['THEME_ICON_512_SRC'].blank? && ENV['THEME_ICON_SRC'].blank?),
       app_logo_src: ENV.fetch('THEME_APP_LOGO_SRC', "/brand/logo-current-color.svg"),
       saml_login_provider_name: ENV.fetch('SAML_LOGIN_PROVIDER_NAME', 'SAML'),
       oauth_login_provider_name: ENV.fetch('OAUTH_LOGIN_PROVIDER_NAME', 'OAUTH'),

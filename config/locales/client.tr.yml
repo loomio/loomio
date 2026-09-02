@@ -1,5 +1,10 @@
 ---
 tr:
+  install_app:
+    install_title: "%{site_name} uygulamasını yükle"
+    install_description: Daha hızlı erişmek için %{site_name} uygulamasını ana ekranınıza ekleyin
+    install_button: Yükle
+    ios_install_description: Safari'de Paylaş'ı açın ve Ana Ekrana Ekle'yi seçin
   start_trial:
     title: Loomio'nun ücretsiz deneme sürümünü başlatın
     intro: Loomio'ya gösterdiğiniz ilgi için teşekkür ederiz. Loomio'nun kuruluşunuza uygun olup olmadığını görebilmeniz için size %{day} günlük ücretsiz deneme olanağı sunmaktan mutluluk duyuyoruz.

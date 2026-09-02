@@ -1,5 +1,10 @@
 ---
 sv:
+  install_app:
+    install_title: Installera %{site_name}
+    install_description: Lägg till %{site_name} på hemskärmen för snabbare åtkomst
+    install_button: Installera
+    ios_install_description: Öppna Dela i Safari och välj Lägg till på hemskärmen
   start_trial:
     title: Starta en gratis provperiod av Loomio
     intro: Tack för ditt intresse för Loomio. Vi är glada över att kunna erbjuda dig en %{day}-dagars kostnadsfri provperiod så att du kan se om Loomio passar din organisation.

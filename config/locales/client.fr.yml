@@ -1,5 +1,10 @@
 ---
 fr:
+  install_app:
+    install_title: Installer %{site_name}
+    install_description: Ajoute %{site_name} à ton écran d’accueil pour y accéder plus rapidement
+    install_button: Installer
+    ios_install_description: Dans Safari, ouvre Partager et sélectionne Ajouter à l’écran d’accueil
   start_trial:
     title: Commence un essai gratuit de Loomio
     intro: Merci de ton intérêt pour Loomio. Nous sommes ravis de t'offrir un essai gratuit de %{day} jours afin que tu puisses voir si Loomio convient bien à ton organisation.

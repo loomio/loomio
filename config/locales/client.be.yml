@@ -1,5 +1,10 @@
 ---
 be:
+  install_app:
+    install_title: Усталяваць %{site_name}
+    install_description: Дадайце %{site_name} на галоўны экран для хутчэйшага доступу
+    install_button: Усталяваць
+    ios_install_description: У Safari адкрыйце меню «Падзяліцца» і выберыце «Дадаць на галоўны экран»
   start_trial:
     title: Пачніце бясплатную пробную версію Loomio
     intro: Дзякуй за цікавасць да Loomio. Мы рады прапанаваць вам бясплатную пробную версію на %{day} дзён, каб вы маглі пераканацца, што Loomio падыходзіць вашай арганізацыі.

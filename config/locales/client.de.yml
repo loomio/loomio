@@ -1,5 +1,10 @@
 ---
 de:
+  install_app:
+    install_title: "%{site_name} installieren"
+    install_description: Füge %{site_name} deinem Startbildschirm hinzu, um schneller darauf zuzugreifen
+    install_button: Installieren
+    ios_install_description: Öffne in Safari „Teilen“ und wähle „Zum Home-Bildschirm“
   start_trial:
     title: Starte eine kostenlose Testversion von Loomio
     intro: Vielen Dank für dein Interesse an Loomio. Wir freuen uns, dir eine %{day}-tägige kostenlose Testversion anbieten zu können, damit du sehen kannst, ob Loomio für deine Organisation geeignet ist.

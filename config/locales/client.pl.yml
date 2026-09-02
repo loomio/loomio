@@ -1,5 +1,10 @@
 ---
 pl:
+  install_app:
+    install_title: Zainstaluj %{site_name}
+    install_description: Dodaj %{site_name} do ekranu początkowego, aby uzyskać szybszy dostęp
+    install_button: Zainstaluj
+    ios_install_description: W Safari otwórz menu Udostępnij i wybierz Dodaj do ekranu początkowego
   start_trial:
     title: Rozpocznij bezpłatny okres próbny Loomio
     intro: Dziękujemy za zainteresowanie Loomio. Z przyjemnością oferujemy Ci %{day}-dniowy bezpłatny okres próbny, dzięki któremu możesz sprawdzić, czy Loomio jest dobrym rozwiązaniem dla Twojej organizacji.

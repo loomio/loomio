@@ -126,6 +126,7 @@ Rails.application.routes.draw do
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :push_subscriptions, only: [:index, :create, :destroy] do
         delete :destroy, on: :collection
+        post :reconcile, on: :collection
         post :send_test, on: :collection
       end
       resources :chatbots, only: [:create, :destroy, :index, :update] do

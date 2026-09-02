@@ -107,6 +107,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :topic_items, dependent: :destroy
   has_many :push_subscriptions, dependent: :destroy
+  has_many :push_subscription_removals, dependent: :destroy
 
   has_many :tags, through: :groups
 

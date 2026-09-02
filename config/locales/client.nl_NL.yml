@@ -1,5 +1,10 @@
 ---
 nl_NL:
+  install_app:
+    install_title: "%{site_name} installeren"
+    install_description: Voeg %{site_name} toe aan je beginscherm voor snellere toegang
+    install_button: Installeren
+    ios_install_description: Open in Safari Delen en selecteer Zet op beginscherm
   start_trial:
     title: Start een gratis proefperiode van Loomio
     intro: Bedankt voor uw interesse in Loomio. We bieden u graag een gratis proefperiode van %{day} dagen aan, zodat u kunt zien of Loomio goed bij uw organisatie past.

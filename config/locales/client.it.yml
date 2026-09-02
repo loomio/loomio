@@ -1,5 +1,10 @@
 ---
 it:
+  install_app:
+    install_title: Installa %{site_name}
+    install_description: Aggiungi %{site_name} alla schermata Home per accedervi più rapidamente
+    install_button: Installa
+    ios_install_description: In Safari, apri Condividi e seleziona Aggiungi alla schermata Home
   start_trial:
     title: Inizia una prova gratuita di Loomio
     intro: Grazie per il tuo interesse per Loomio. Siamo lieti di offrirti una prova gratuita di %{day} giorni in modo che tu possa vedere se Loomio è adatto alla tua organizzazione.

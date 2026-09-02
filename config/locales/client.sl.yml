@@ -1,5 +1,10 @@
 ---
 sl:
+  install_app:
+    install_title: Namesti %{site_name}
+    install_description: Dodaj %{site_name} na začetni zaslon za hitrejši dostop
+    install_button: Namesti
+    ios_install_description: V Safariju odpri Deljenje in izberi Dodaj na začetni zaslon
   start_trial:
     title: Začnite brezplačno preskusno različico Loomio
     intro: Hvala za vaše zanimanje za Loomio. Z veseljem vam ponujamo %{day}-dnevno brezplačno preskusno različico, da boste lahko videli, ali je Loomio primeren za vašo organizacijo.

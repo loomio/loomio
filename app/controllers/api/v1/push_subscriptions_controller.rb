@@ -15,6 +15,15 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def reconcile
+    self.resource = PushSubscriptionService.reconcile!(
+      session: Current.session,
+      params: subscription_params,
+      user_agent: request.user_agent
+    )
+    resource ? respond_with_resource : render(json: { revoked: true })
+  end
+
   def destroy
     PushSubscriptionService.revoke!(
       session: Current.session,

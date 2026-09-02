@@ -270,10 +270,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
+    page.click('.email-settings-page__digest-card .v-select .v-field');
+    page.waitFor('.v-overlay--active .v-list');
+    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Never')).click()");
     screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page__digest-card', {
       width: 1100,
       height: 1500,
-      spotlight: {selectors: ['#mentioned-email', '#on-participation-email', '#digest-email-day']}
+      spotlight: '#digest-email-day'
     });
   },
 

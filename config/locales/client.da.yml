@@ -1,5 +1,10 @@
 ---
 da:
+  install_app:
+    install_title: Installer %{site_name}
+    install_description: Føj %{site_name} til din hjemmeskærm for hurtigere adgang
+    install_button: Installer
+    ios_install_description: Åbn Del i Safari, og vælg Føj til hjemmeskærm
   start_trial:
     title: Start en gratis prøveversion af Loomio
     intro: Tak for din interesse i Loomio. Vi er glade for at kunne tilbyde dig en %{day}-dages gratis prøveperiode, så du kan se, om Loomio passer godt til din organisation.

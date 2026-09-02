@@ -1,5 +1,10 @@
 ---
 zh_TW:
+  install_app:
+    install_title: 安裝 %{site_name}
+    install_description: 將 %{site_name} 加入主畫面，以便更快存取
+    install_button: 安裝
+    ios_install_description: 在 Safari 中，打開「分享」並選擇「加入主畫面」
   hello: 您好
   start_trial:
     title: 開始免費試用 Loomio

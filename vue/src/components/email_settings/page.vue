@@ -10,6 +10,7 @@ import Flash from '@/shared/services/flash';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import PushNotificationsSettingsCard from '@/components/push_notifications/settings_card';
+import PwaInstallCard from '@/components/pwa/install_card';
 import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 
 const { watchRecords } = useWatchRecords();
@@ -111,6 +112,7 @@ onUnmounted(() => {
 v-main
   v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
 
+    pwa-install-card
     push-notifications-settings-card(@subscriptions-changed="setPushEnabled")
 
     v-card.mb-4(v-if="user.deactivatedAt")

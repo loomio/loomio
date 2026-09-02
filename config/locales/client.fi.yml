@@ -1,5 +1,10 @@
 ---
 fi:
+  install_app:
+    install_title: Asenna %{site_name}
+    install_description: Lisää %{site_name} Koti-valikkoon, niin pääset siihen nopeammin
+    install_button: Asenna
+    ios_install_description: Avaa Safarissa Jaa ja valitse Lisää Koti-valikkoon
   start_trial:
     title: Aloita ilmainen Loomio-kokeilu
     intro: Kiitos mielenkiinnostasi Loomiota kohtaan. Meillä on ilo tarjota sinulle %{day} päivän ilmainen kokeilu, jotta voit nähdä, sopiiko Loomio organisaatiollesi.
