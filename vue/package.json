@@ -64,7 +64,7 @@
     "vue": "3.5.42",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "^11.4.0",
-    "vue-router": "^5.2.0",
+    "vue-router": "^5.3.0",
     "vue-slicksort": "^2.0.5",
     "vuetify": "^4.1.12",
     "y-indexeddb": "^9.0.12",
