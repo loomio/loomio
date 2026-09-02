@@ -12,19 +12,19 @@ class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Com
     my_stance = @recipient && ::Stance.latest.find_by(poll_id: poll.id, participant_id: @recipient.id)
 
     if poll.show_results?(voted: my_stance && my_stance.cast_at)
-      div(class: "poll-mailer-common-responses") do
+      div do
         if poll.anonymous?
           p { plain t(:"poll_common_action_panel.anonymous") }
         end
       end
 
-      table(class: "v-layout-table", cellspacing: 0) do
+      table(class: "email-layout-table", cellspacing: 0) do
         poll.stances.latest.with_reason.each do |stance|
           tr do
             td(valign: "top", style: "width: 36px; height: 36px") do
               render Views::NotificationMailer::Common::Avatar.new(user: stance.participant)
             end
-            td(class: "poll-mailer-common-responses__reason pl-2") do
+            td(class: "email-response-content") do
               table do
                 tr do
                   td(valign: "top") do
@@ -39,7 +39,7 @@ class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Com
                   end
                 end
               end
-              raw TranslationService.formatted_text(stance, :reason, @recipient)
+              div(class: "email-user-content") { raw TranslationService.formatted_text(stance, :reason, @recipient) }
             end
           end
         end

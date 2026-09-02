@@ -431,6 +431,7 @@ GEM
       ast
       ruby-ll (~> 2.1)
     open3 (0.2.1)
+    openssl (4.0.2)
     os (1.1.4)
     ostruct (0.6.3)
     paper_trail (17.0.0)
@@ -710,6 +711,9 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
+    web-push (3.1.0)
+      jwt (~> 3.0)
+      openssl (>= 3.0)
     webmock (3.26.3)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -812,6 +816,7 @@ DEPENDENCIES
   victor
   video_info
   web-console
+  web-push
   webmock
 
 RUBY VERSION

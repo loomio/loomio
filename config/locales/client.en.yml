@@ -1,5 +1,10 @@
 ---
 en:
+  install_app:
+    install_title: Install %{site_name}
+    install_description: Add %{site_name} to your home screen for quicker access
+    install_button: Install
+    ios_install_description: In Safari, open Share and select Add to Home Screen
   start_trial:
     title: Start a free trial of Loomio
     intro: Thank you for your interest in Loomio. We're delighted to offer you a %{day}-day free trial so you can see if Loomio is a good fit for you organization.
@@ -483,6 +488,43 @@ en:
     title_label: Title
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
+    volume_email_label: Email
+    volume_push_label: Push
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+    all_activity_option: All activity
+    when_notified_option: When notified
+    muted_option: Muted
+    off_option: 'Off'
+    volume_channel_label: How should we update you?
+    email_channel: Email
+    push_channel: Push
+    email_and_push_channel: Email and push
     when_do_you_want_to_be_emailed: When do you want to be emailed?
     when_do_you_want_to_be_emailed_thread: When do you want to be emailed about this thread?
     change_your_email_settings: Change your email settings
@@ -490,6 +532,7 @@ en:
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
     when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
     changes_all_discussions_and_polls_in_group: This changes the setting for all discussions and polls in the group.
+    apply_to_all_threads_in_group: Apply these settings to all threads in %{group}
     what_do_the_options_mean: What do the options mean?
     what_the_options_mean: What the options mean
     loud_desc: Every time someone participates
@@ -562,6 +605,21 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
+  push_notifications:
+    title: Push notifications
+    subtitle: Receive notifications in this browser
+    not_supported: Push notifications are not available in this browser
+    permission_denied: Push notifications are blocked in your browser settings
+    manage_devices: Manage push notification devices
+    enabled: Push notifications enabled for this browser
+    disabled: Push notifications disabled for this browser
+    device_removed: Push notification device removed
+    enable_device: Enable on this browser
+    disable_device: Disable on this browser
+    devices: Enabled browsers
+    browser_device: Browser
+    remove_device: Remove browser
+    enable_from_loomio: Enable push notifications from Notification settings while signed in to Loomio
   lock_thread_modal:
     body: Lock threads to remove them from the list of open threads and prevent people from commenting.
     explanation: Lock threads to prevent people from commenting or making further changes
@@ -656,6 +714,16 @@ en:
     email_all_activity: Email all activity
     email_notifications: Email when notified
     email_none: No emails
+    email_and_push_when_notified: Email & Push when notified
+    email_when_notified: Email when notified
+    push_when_notified: Push when notified
+    daily_catch_up_email: Daily catch-up email
+    catch_up_email_every_second_day: Catch-up email every second day
+    weekly_catch_up_email: Weekly catch-up email
+    in_app_only: In-app only
+    email_and_device_when_notified: Email & device - when notified
+    device_notification_when_notified: Device notification when notified
+    no_notifications: No notifications
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
@@ -1764,6 +1832,9 @@ en:
     every_second_day: Every second day
     never: Never
     header: Notification settings
+    group_notifications: Group notifications
+    group_notifications_description: Change the activity level and channel for your groups
+    choose_email_and_push_updates: Choose separate settings for email and push
     send_email: Send email
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
@@ -1771,8 +1842,10 @@ en:
     email_newsletter: Loomio Newsletter
     email_catch_up_day: Catch-up summary email
     daily_summary_description: 'Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you''re not a regular user.'
-    on_participation_label: Subscribe on participation
-    on_participation_description: When you participate in a thread, all further activity will be emailed to you as it happens.
+    digest_email: Digest email
+    digest_email_description: Choose when to receive a digest of unseen notifications and unread activity
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     announcement_label: Announcements
     announcement_description: You will receive an email about all content that has been announced by people in your groups
     mentioned_label: Mentions & Replies

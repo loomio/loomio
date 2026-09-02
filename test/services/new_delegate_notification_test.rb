@@ -6,7 +6,7 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
   setup do
     @actor = users(:admin)
     @membership = memberships(:member_membership)
-    @membership.update!(volume: "normal")
+    @membership.update!(volume_email: "normal")
     @membership.user.update!(email_verified: true)
   end
 
@@ -20,7 +20,7 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
       kind: "new_delegate",
       subject: @membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert @membership.reload.delegate?
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
@@ -33,14 +33,14 @@ class NewDelegateNotificationTest < ActiveSupport::TestCase
   end
 
   test "quiet delegates retain in-app delivery without email" do
-    @membership.update!(volume: "quiet")
+    @membership.update!(volume_email: "quiet")
     MembershipService.make_delegate(membership: @membership, actor: @actor)
     notification = Notification.find_by!(
       kind: "new_delegate",
       subject: @membership
     )
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
   end

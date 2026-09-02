@@ -1,5 +1,10 @@
 ---
 zh_CN:
+  install_app:
+    install_title: 安装 %{site_name}
+    install_description: 将 %{site_name} 添加到主屏幕，以便更快访问
+    install_button: 安装
+    ios_install_description: 在 Safari 中，打开“共享”并选择“添加到主屏幕”
   hello: 您好！
   start_trial:
     title: 开始 Loomio 的免费试用
@@ -454,6 +459,33 @@ zh_CN:
     title_label: 标题
     hint: 下次提示：点击“固定”之前，请先选中一些文本。
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     when_do_you_want_to_be_emailed: 您希望何时收到邮件？
     change_your_email_settings: 更改您的电子邮件设置
     when_would_you_like_to_be_emailed_discussion: 您希望何时收到关于此次讨论的电子邮件？
@@ -533,6 +565,17 @@ zh_CN:
     normal_option: 当有人想引起我的注意时（收到通知时）
     quiet_option: 关于此主题的邮件已关闭
     quiet_explained: 即使有人试图通知您，您也不会收到电子邮件。
+    volume_email_label: 电子邮件
+    volume_push_label: 推
+    all_activity_option: 所有活动
+    when_notified_option: 收到通知时
+    muted_option: 静音
+    volume_channel_label: 我们应该如何向您汇报最新情况？
+    email_channel: 电子邮件
+    push_channel: 推
+    email_and_push_channel: 电子邮件和推送
+    off_option: 离开
+    apply_to_all_threads_in_group: 将这些设置应用于 %{group} 中的所有讨论主题
   inbox:
     clear: 清除
     latest: 最新的
@@ -630,6 +673,16 @@ zh_CN:
     email_notifications: 收到通知时发送电子邮件
     email_none: 不发送电子邮件
     new_to_you: 对你来说是新的
+    email_and_push_when_notified: 收到通知时发送电子邮件和推送通知
+    email_when_notified: 收到通知时发送电子邮件
+    push_when_notified: 收到通知时发送推送通知
+    daily_catch_up_email: 每日简报邮件
+    in_app_only: 仅限应用内使用
+    email_and_device_when_notified: 收到通知时发送电子邮件和设备通知
+    device_notification_when_notified: 收到通知时发送设备通知
+    no_notifications: 无通知
+    catch_up_email_every_second_day: 每隔一天发送一次进度邮件
+    weekly_catch_up_email: 每周简报邮件
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配
@@ -1679,6 +1732,9 @@ zh_CN:
     submit_delete: 立即删除我的帐户
     submit_deactivate: 立即停用我的帐户
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: 周一
     tuesday: 周二
     wednesday: 周三
@@ -1696,9 +1752,9 @@ zh_CN:
     deactivate_description: 如果您不想再收到我们的任何电子邮件，您可以停用您的用户帐户。
     email_newsletter: Loomio 新闻简报
     email_catch_up_day: 进度摘要邮件
+    digest_email: 进度摘要邮件
     daily_summary_description: 选择何时接收最新动态汇总邮件。此邮件包含您尚未查看的所有新动态。如果您不是经常使用，这是了解最新动态的好方法。
-    on_participation_label: 订阅参与
-    on_participation_description: 当您参与讨论时，所有后续活动都会通过电子邮件及时发送给您。
+    digest_email_description: 选择何时接收最新动态汇总邮件。此邮件包含您尚未查看的所有新动态。如果您不是经常使用，这是了解最新动态的好方法。
     announcement_label: 公告
     announcement_description: 您将收到一封电子邮件，其中包含您所在群组成员发布的所有内容。
     mentioned_label: 提及与回复
@@ -1713,6 +1769,8 @@ zh_CN:
     messages:
       updated: 电子邮件设置已更新
     learn_more: 了解更多关于电子邮件设置的信息……
+    group_notifications: 群组通知
+    group_notifications_description: 更改群组的活动级别和频道
   thread_preview:
     replies_count: "%{count} 条回复"
     unread_count: "%{count} 未读"
@@ -2919,3 +2977,18 @@ zh_CN:
     nobody_will_be_notified: 不会通知任何人
     one_person_will_be_notified: 将会通知1人
     x_people_will_be_notified: "%{count} 人将收到通知"
+  push_notifications:
+    title: 推送通知
+    subtitle: 在此浏览器中接收通知
+    not_supported: 此浏览器不支持推送通知
+    permission_denied: 您的浏览器设置中已阻止推送通知
+    manage_devices: 管理推送通知设备
+    enabled: 此浏览器已启用推送通知
+    disabled: 此浏览器已禁用推送通知
+    device_removed: 已移除推送通知设备
+    enable_device: 在此浏览器上启用
+    disable_device: 在此浏览器上禁用
+    devices: 已启用浏览器
+    browser_device: 浏览器
+    remove_device: 移除浏览器
+    enable_from_loomio: 登录 Loomio 后，请在通知设置中启用推送通知

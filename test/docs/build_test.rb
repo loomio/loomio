@@ -22,6 +22,16 @@ class DocsBuildTest < Minitest::Test
     refute_includes fragment.text, "[!WARNING]"
   end
 
+  def test_renders_local_png_screenshots_at_their_2x_intrinsic_density
+    fragment = render_markdown("![Sidebar](sidebar.png)\n\n![External](https://example.com/diagram.png)\n\n![Animation](animation.gif)\n")
+
+    screenshot = fragment.at_css('img[src="sidebar.png"]')
+    assert_includes screenshot["class"].split, "screenshot-2x"
+    assert_equal "sidebar.png 2x", screenshot["srcset"]
+    assert_nil fragment.at_css('img[src="https://example.com/diagram.png"]')["srcset"]
+    assert_nil fragment.at_css('img[src="animation.gif"]')["srcset"]
+  end
+
   def test_leaves_ordinary_blockquotes_unchanged
     fragment = render_markdown("> This is a quotation.\n")
 
@@ -36,7 +46,9 @@ class DocsBuildTest < Minitest::Test
     renderer = Docs::MarkdownRenderer.new
     rendered = Redcarpet::Markdown.new(renderer, Docs::MARKDOWN_OPTIONS).render(markdown)
     fragment = Nokogiri::HTML5.fragment(rendered)
-    Docs::Builder.new.send(:render_alerts, fragment)
+    builder = Docs::Builder.new
+    builder.send(:render_alerts, fragment)
+    builder.send(:mark_high_density_screenshots, fragment)
     fragment
   end
 end

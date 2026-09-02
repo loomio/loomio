@@ -3,6 +3,7 @@ import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
+import PwaService from '@/shared/services/pwa_service';
 import md5 from 'md5';
 import { I18n } from '@/i18n';
 
@@ -12,7 +13,8 @@ export default {
       notice: false,
       showNotice: false,
       showDismiss: false,
-      reload: false
+      reload: false,
+      serviceWorkerReload: false
     };
   },
 
@@ -27,22 +29,30 @@ export default {
         }}).then(this.eatData, () => {}); // transient network errors on this background poll aren't actionable
     } , 1000 * 60 * 5);
     EventBus.$on('systemNotice', this.eatData);
+    EventBus.$on('serviceWorkerUpdate', this.serviceWorkerUpdate);
     EventBus.$on('signedIn', () => { return this.showNotice = false; });
     this.eatData({version: AppConfig.version, notice: AppConfig.systemNotice});
+    if (PwaService.state.workerUpdateAvailable) this.serviceWorkerUpdate();
   },
 
   methods: {
     eatData(data) {
-      this.reload = data.reload;
+      this.reload = !!(data.reload || this.serviceWorkerReload);
       this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.global.t("powered_by.this_is_loomio_md"));
       this.showNotice = this.reload || (this.notice && !Session.user().hasExperienced(md5(this.notice)));
-      this.showDismiss = data.reload || data.notice;
+      this.showDismiss = this.reload || data.notice;
     },
 
-    accept() {
+    serviceWorkerUpdate() {
+      this.serviceWorkerReload = true;
+      this.eatData({ reload: true });
+    },
+
+    async accept() {
       this.showNotice = false;
       this.notice && Records.users.saveExperience(md5(this.notice));
       if (this.reload) {
+        if (this.serviceWorkerReload && PwaService.activateUpdate()) return;
         setTimeout(() => location.reload() , 100);
       }
     }

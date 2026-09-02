@@ -328,6 +328,43 @@ zh_TW:
     unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: 昨日 %{site_name}
+      weekly_subject: 上週在 %{site_name}
+      other_subject: 最近於 %{site_name}
+      do_not_reply: 請不要回覆此封電子郵件。
+      mark_as_read: 設為已讀
+      thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
+      marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
+      click_here: 點這邊
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: 昨日 %{site_name}
       weekly_subject: 上週在 %{site_name}
       other_subject: 最近於 %{site_name}

@@ -53,7 +53,8 @@ export default class TopicModel extends BaseModel {
       private: this.group().discussionPrivacyOptions !== 'public_only',
       // reader state
       topicReaderId: null,
-      readerVolume: null,
+      readerVolumeEmail: null,
+      readerVolumePush: null,
       lastReadAt: null,
       dismissedAt: null,
       readerInviterId: null,
@@ -134,7 +135,22 @@ export default class TopicModel extends BaseModel {
   }
 
   volume() {
-    return this.readerVolume;
+    const rank = { quiet: 1, normal: 2, loud: 3 };
+    const volume = rank[this.readerVolumePush] > rank[this.readerVolumeEmail]
+      ? this.readerVolumePush
+      : this.readerVolumeEmail;
+    return volume;
+  }
+
+  notificationVolumeState(emailCatchUpEnabled = false, deviceNotificationsAvailable = true) {
+    const emailEnabled = ['normal', 'loud'].includes(this.readerVolumeEmail);
+    const deviceEnabled = deviceNotificationsAvailable && ['normal', 'loud'].includes(this.readerVolumePush);
+    const allActivity = this.readerVolumeEmail === 'loud' || (deviceNotificationsAvailable && this.readerVolumePush === 'loud');
+
+    if (emailEnabled && deviceEnabled) return allActivity ? 'email_and_device_all_activity' : 'email_and_device';
+    if (emailEnabled) return allActivity ? 'email_all_activity' : 'email';
+    if (deviceEnabled) return allActivity ? 'device_all_activity' : 'device';
+    return emailCatchUpEnabled ? 'catch_up' : 'none';
   }
 
   membersInclude(user) {
@@ -185,14 +201,24 @@ export default class TopicModel extends BaseModel {
     return Records.topics.remote.patchMember(this.id, 'recall').finally(() => { this.processing = false; });
   }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(volumeEmail, volumePush, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     if (applyToAll) {
-      return this.membership().saveVolume(volume).finally(() => { this.processing = false; });
+      return this.membership().saveVolume(volumeEmail, volumePush).finally(() => { this.processing = false; });
     } else {
-      if (volume != null) { this.readerVolume = volume; }
-      return Records.topics.remote.patchMember(this.id, 'set_volume', { volume: this.readerVolume }).finally(() => {
+      const attributes = {};
+      const params = {};
+      if (volumeEmail != null) {
+        attributes.readerVolumeEmail = volumeEmail;
+        params.volume_email = volumeEmail;
+      }
+      if (volumePush != null) {
+        attributes.readerVolumePush = volumePush;
+        params.volume_push = volumePush;
+      }
+      this.update(attributes);
+      return Records.topics.remote.patchMember(this.id, 'set_volume', params).finally(() => {
         this.processing = false;
       });
     }
@@ -219,7 +245,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isMuted() {
-    return this.volume() === 'mute';
+    return this.readerVolumeEmail === 'quiet' && this.readerVolumePush === 'quiet';
   }
 
   moveComments(selectedTopicItemIds) {

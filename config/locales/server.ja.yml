@@ -299,6 +299,43 @@ ja:
     unsubscribe: 購読をやめる、またはEメール設定を変更する：
     unsubscribe_html: 購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: 昨日の %{site_name}
+      weekly_subject: 先週の %{site_name}
+      other_subject: 最近 %{site_name} で
+      do_not_reply: このメールには返信しないでください。
+      mark_as_read: 既読にする
+      thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
+      marked_as_read_success: メールのすべてが既読としてマークされています
+      click_here: ここをクリック
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: 昨日の %{site_name}
       weekly_subject: 先週の %{site_name}
       other_subject: 最近 %{site_name} で

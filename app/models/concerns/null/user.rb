@@ -11,14 +11,14 @@ module Null::User
 
   def nil_methods
     [:id, :key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at,
-     :default_membership_volume, :unsubscribe_token, :location, :email_catch_up_day,
+     :volume_email_default, :volume_push_default, :unsubscribe_token, :location, :email_catch_up_day,
      :password_digest, :update_attribute, :last_seen_at, :legal_accepted_at, :api_key]
   end
 
   def false_methods
     [:auto_translate, :is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :api_key_changed?,
-     :email_when_proposal_closing_soon, :has_password, :bot, :bot?, :is_paying?, :is_paying,
-     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
+     :has_password, :bot, :bot?, :is_paying?, :is_paying,
+     :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
   end
 
   def empty_methods

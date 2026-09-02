@@ -304,6 +304,43 @@ sl:
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Včeraj na %{site_name}
+      weekly_subject: Prejšnji teden na %{site_name}
+      other_subject: Pred kratkim na %{site_name}
+      do_not_reply: Prosim, ne odgovarjajte na to e-pošto.
+      mark_as_read: Označi kot prebrano
+      thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
+      marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
+      click_here: Klikni sem
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Včeraj na %{site_name}
       weekly_subject: Prejšnji teden na %{site_name}
       other_subject: Pred kratkim na %{site_name}

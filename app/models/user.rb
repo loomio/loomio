@@ -106,6 +106,7 @@ class User < ApplicationRecord
   has_many :login_tokens, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :topic_items, dependent: :destroy
+  has_many :push_subscriptions, dependent: :destroy
 
   has_many :tags, through: :groups
 
@@ -116,7 +117,8 @@ class User < ApplicationRecord
   initialized_with_token :api_key
   initialized_with_token :secret_token
 
-  enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
+  enum :volume_email_default, {quiet: 1, normal: 2, loud: 3}, prefix: :email_default
+  enum :volume_push_default, {quiet: 1, normal: 2, loud: 3}, prefix: :push_default
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }
@@ -145,13 +147,6 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
-  scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
-
-  scope :email_proposal_closing_soon_for, -> (group) {
-     email_when_proposal_closing_soon
-    .joins(:memberships)
-    .where('memberships.group_id': group.id)
-  }
 
   def default_format
     if experiences['html-editor.uses-markdown']

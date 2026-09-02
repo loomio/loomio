@@ -60,7 +60,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
   test "outcome creation keeps its topic topic_item and creates one logical notification" do
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
     topic_item = nil
     created_outcome = OutcomeService.create(
@@ -75,13 +75,13 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     assert_equal [ recipient.id ], notification.recipient_user_ids
     assert_equal 1, Notification.where(kind: "outcome_created", subject: topic_item).count
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
   test "outcome update creates an eventless logical notification" do
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
     assert_no_difference -> { TopicItem.where(kind: "outcome_updated").count } do
       OutcomeService.update(
@@ -97,14 +97,14 @@ class OutcomeServiceTest < ActiveSupport::TestCase
 
     assert_equal [ recipient.id ], notification.recipient_user_ids
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "outcome update separates a newly mentioned recipient from update email delivery" do
+  test "outcome update leaves a newly mentioned explicit recipient to the mention notification" do
     recipient = users(:member)
     recipient.update!(username: "outcomemention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
     OutcomeService.update(
       outcome: @outcome,
@@ -117,13 +117,13 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.find_by!(kind: "outcome_updated", subject: @outcome)
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: @outcome)
   end
 
-  test "outcome update without a direct audience does not create a notification" do
+  test "outcome update without a direct recipients does not create a notification" do
     NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
       OutcomeService.update(
         outcome: @outcome,

@@ -306,6 +306,43 @@ ca:
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Ahir a %{site_name}
+      weekly_subject: La setmana passada a %{site_name}
+      other_subject: Recentment a %{site_name}
+      do_not_reply: Si us plau, no respongueu a aquest correu electrònic.
+      mark_as_read: Marca com a llegit
+      thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
+      marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
+      click_here: Fes click aquí
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Ahir a %{site_name}
       weekly_subject: La setmana passada a %{site_name}
       other_subject: Recentment a %{site_name}

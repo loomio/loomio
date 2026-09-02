@@ -330,7 +330,13 @@ export default new class TopicService {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit() { return topic.saveVolume('mute', true); },
+            submit() {
+              return topic.saveVolume(
+                'quiet',
+                'quiet',
+                true
+              );
+            },
             text: {
               title: 'mute_explanation_modal.mute_thread',
               flash: 'discussion.volume.mute_message',
@@ -340,18 +346,21 @@ export default new class TopicService {
         }
       }));
     } else {
-      const previousVolume = topic.volume();
-      return topic.saveVolume('mute').then(() => {
+      const previousVolumes = { email: topic.readerVolumeEmail, push: topic.readerVolumePush };
+      return topic.saveVolume(
+        'quiet',
+        'quiet'
+      ).then(() => {
         return Flash.success("discussion.volume.mute_message",
           {name: topic.topicable().title}
-        , 'undo', () => this.unmute(topic, previousVolume));
+        , 'undo', () => this.unmute(topic, previousVolumes));
       });
     }
   }
 
-  unmute(topic, previousVolume) {
-    if (previousVolume == null) { previousVolume = 'normal'; }
-    return topic.saveVolume(previousVolume).then(() => {
+  unmute(topic, previousVolumes) {
+    previousVolumes ||= { email: 'normal', push: 'quiet' };
+    return topic.saveVolume(previousVolumes.email, previousVolumes.push).then(() => {
       return Flash.success("discussion.volume.unmute_message",
         {name: topic.topicable().title}
       , 'undo', () => this.mute(topic));

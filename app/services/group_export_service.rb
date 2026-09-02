@@ -503,24 +503,34 @@ class GroupExportService
     end
   end
 
-  # Translate snapshotted user/group audiences so mention history and any
-  # recovery resolution refer only to imported records.
+  # Translate snapshotted recipient context so mention history and any recovery
+  # routing refer only to imported records.
   def self.translate_notification_payload!(attrs, migrate_ids)
     attrs['recipient_user_ids'] = translate_ids(attrs['recipient_user_ids'], migrate_ids['users'])
+    attrs['recipient_audience'] = translate_recipient_audience(attrs['recipient_audience'], migrate_ids['groups'])
 
-    audience_values = attrs['audience_values'] || {}
+    recipient_context = attrs['recipient_context'] || {}
     %w[
       already_notified_user_ids
       mentioned_group_user_ids
       mentioned_user_ids
       newly_mentioned_user_ids
     ].each do |key|
-      audience_values[key] = translate_ids(audience_values[key], migrate_ids['users']) if audience_values.key?(key)
+      recipient_context[key] = translate_ids(recipient_context[key], migrate_ids['users']) if recipient_context.key?(key)
     end
-    if audience_values.key?('group_ids')
-      audience_values['group_ids'] = translate_ids(audience_values['group_ids'], migrate_ids['groups'])
+    if recipient_context.key?('group_ids')
+      recipient_context['group_ids'] = translate_ids(recipient_context['group_ids'], migrate_ids['groups'])
     end
-    attrs['audience_values'] = audience_values
+    attrs['recipient_context'] = recipient_context
+  end
+
+  def self.translate_recipient_audience(audience, group_ids)
+    match = audience.to_s.match(/\A(group|delegates)-(\d+)\z/)
+    return audience unless match
+
+    group_id_old = match[2].to_i
+    group_id_new = group_ids&.fetch(group_id_old, group_id_old) || group_id_old
+    "#{match[1]}-#{group_id_new}"
   end
 
   def self.translate_ids(ids, id_map)

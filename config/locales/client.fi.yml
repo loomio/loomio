@@ -1,5 +1,10 @@
 ---
 fi:
+  install_app:
+    install_title: Asenna %{site_name}
+    install_description: Lisää %{site_name} Koti-valikkoon, niin pääset siihen nopeammin
+    install_button: Asenna
+    ios_install_description: Avaa Safarissa Jaa ja valitse Lisää Koti-valikkoon
   start_trial:
     title: Aloita ilmainen Loomio-kokeilu
     intro: Kiitos mielenkiinnostasi Loomiota kohtaan. Meillä on ilo tarjota sinulle %{day} päivän ilmainen kokeilu, jotta voit nähdä, sopiiko Loomio organisaatiollesi.
@@ -434,6 +439,33 @@ fi:
     title_label: Otsikko
     hint: 'Vihje seuraavaa kertaa varten: Yritä korostaa tekstiä ennen kuin napsautat "Kiinnitä".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Tämä muuttuu, kun saat ilmoituksen tästä viestiketjusta
       group: Tämä muuttuu, kun saat ilmoituksen kaikista ryhmän säikeistä
@@ -516,6 +548,17 @@ fi:
     normal_option: Kun joku haluaa huomioni (kun hänelle ilmoitetaan)
     quiet_option: Ei sähköposteja tästä keskusteluketjusta (Pois päältä)
     quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle.
+    volume_email_label: Sähköposti
+    volume_push_label: Työnnä
+    all_activity_option: Kaikki toiminta
+    when_notified_option: Kun ilmoitetaan
+    muted_option: Mykistetty
+    volume_channel_label: Miten meidän tulisi tiedottaa teille?
+    email_channel: Sähköposti
+    push_channel: Työnnä
+    email_and_push_channel: Sähköposti ja push-viestit
+    off_option: Pois
+    apply_to_all_threads_in_group: Käytä näitä asetuksia kaikkiin ketjuihin ryhmässä %{group}
   inbox:
     clear: Asia selvä
     latest: Uusin
@@ -621,6 +664,16 @@ fi:
     email_notifications: Sähköposti, kun saat ilmoituksen
     email_none: Ei sähköposteja
     new_to_you: Uusi sinulle
+    email_and_push_when_notified: Sähköposti ja push-ilmoitus, kun saat ilmoituksen
+    email_when_notified: Sähköposti, kun saat ilmoituksen
+    push_when_notified: Push-ilmoitus, kun saat ilmoituksen
+    daily_catch_up_email: Päivittäinen yhteenvetosähköposti
+    in_app_only: Vain sovelluksessa
+    email_and_device_when_notified: Sähköposti- ja laiteilmoitukset, kun ilmoitus on annettu
+    device_notification_when_notified: Laiteilmoitus, kun ilmoitus annetaan
+    no_notifications: Ei ilmoituksia
+    catch_up_email_every_second_day: Päivityssähköposti joka toinen päivä
+    weekly_catch_up_email: Viikoittainen sähköposti-ilmoitus
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu
@@ -1610,6 +1663,9 @@ fi:
     submit_delete: Poista tilini nyt
     submit_deactivate: Poista tilini käytöstä nyt
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: maanantai
     tuesday: tiistai
     wednesday: keskiviikko
@@ -1626,8 +1682,7 @@ fi:
     email_newsletter: Loomio-uutiskirje
     email_newsletter_description: Saat päivityksiä uusista ominaisuuksista, koulutuksesta, kaupungissasi tapahtuvista tapahtumista ja Loomion tulevaisuudesta. Yleensä 2-3 sähköpostia vuodessa.
     email_catch_up_day: Yhteenveto sähköpostilla
-    on_participation_label: Ilmoittaudu osallistumiseen
-    on_participation_description: Kun osallistut ketjuun, kaikki muut tapahtumat lähetetään sinulle välittömästi sähköpostitse.
+    digest_email: Yhteenveto sähköpostilla
     announcement_label: Ilmoitukset
     announcement_description: Saat sähköpostin kaikesta sisällöstä, josta ryhmäsi ihmiset ovat ilmoittaneet
     mentioned_label: Maininnat & vastaukset
@@ -1643,8 +1698,11 @@ fi:
     learn_more: Lisätietoja sähköpostiasetuksista...
     mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
     daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
+    digest_email_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
     never: Ei koskaan
     send_email: Lähetä sähköpostia
+    group_notifications: Ryhmäilmoitukset
+    group_notifications_description: Muuta ryhmiesi aktiivisuustasoa ja kanavaa
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
@@ -3000,3 +3058,18 @@ fi:
     nobody_will_be_notified: Ketään ei ilmoiteta
     one_person_will_be_notified: 1 henkilölle ilmoitetaan
     x_people_will_be_notified: "%{count} henkilöä ilmoitetaan"
+  push_notifications:
+    title: Push-ilmoitukset
+    subtitle: Vastaanota ilmoituksia tässä selaimessa
+    not_supported: Push-ilmoitukset eivät ole käytettävissä tässä selaimessa
+    permission_denied: Push-ilmoitukset on estetty selaimesi asetuksissa
+    manage_devices: Push-ilmoituslaitteiden hallinta
+    enabled: Push-ilmoitukset käytössä tässä selaimessa
+    disabled: Push-ilmoitukset poistettu käytöstä tässä selaimessa
+    device_removed: Push-ilmoituslaite poistettu
+    enable_device: Ota käyttöön tässä selaimessa
+    disable_device: Poista käytöstä tässä selaimessa
+    devices: Käytössä olevat selaimet
+    browser_device: Selain
+    remove_device: Poista selain
+    enable_from_loomio: Ota push-ilmoitukset käyttöön ilmoitusasetuksista, kun olet kirjautuneena Loomioon

@@ -11,19 +11,19 @@ class Views::UserMailer::UserReactivated < Views::ApplicationMailer::Component
   def view_template
     name = @user[:name] || @user.email
 
-    div(class: "center") do
-      p(class: "user-mailer__context") do
+    div(class: "email-login") do
+      p do
         plain t(:"email.reactivate.intro", name: name, site_name: AppConfig.theme[:site_name])
       end
-      p(class: "user-mailer__message-container") do
+      p(class: "email-login-action") do
         link_to t(:"email.reactivate.login", name: name, site_name: AppConfig.theme[:site_name]),
           login_token_url(@token.token, @utm_hash),
           data: { "skip-click": true },
-          class: "base-mailer__button base-mailer__button--primary"
+          class: "email-button email-button-primary"
       end
-      p(class: "user-mailer__code-helptext") { plain t(:"email.common.or_enter_code") }
-      p(class: "user-mailer__code") { plain @token.code }
-      p(class: "user-mailer__resend") do
+      p { plain t(:"email.common.or_enter_code") }
+      p(class: "email-login-code") { plain @token.code }
+      p do
         span { plain t(:"email.common.resend") }
       end
     end

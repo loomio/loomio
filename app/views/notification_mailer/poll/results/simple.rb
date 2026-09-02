@@ -10,8 +10,8 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
   def view_template
     results = @poll.results
 
-    div(class: "poll-mailer-common-results") do
-      table(class: "v-table", style: "min-width: 600px", cellspacing: 0) do
+    div do
+      table(class: "email-results-table", style: "min-width: 600px", cellspacing: 0) do
         tbody do
           # Header row
           tr do
@@ -38,33 +38,33 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
   def render_header_cell(col)
     case col
     when 'chart'
-      th(class: "text-left text-subtitle-2") do
+      th(class: "email-table-left") do
         plain(@poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results"))
       end
     when 'name'
-      th(class: "text-left text-subtitle-2") { plain t('common.option') }
+      th(class: "email-table-left") { plain t('common.option') }
     when 'votes_cast_percent'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.pct_of_votes_cast') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_votes_cast') }
     when 'score_percent'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.pct_of_points') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_points') }
     when 'voter_percent'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.pct_of_voters') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.pct_of_voters') }
     when 'target_percent'
-      th(class: "text-right text-subtitle-2") { plain t('poll_count_form.pct_of_target') }
+      th(class: "email-table-right") { plain t('poll_count_form.pct_of_target') }
     when 'rank'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.rank') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.rank') }
     when 'score'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.points') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.points') }
     when 'average'
-      th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.mean') }
+      th(class: "email-table-right") { plain t('poll_ranked_choice_form.mean') }
     when 'votes'
-      th(class: "text-right text-subtitle-2") { plain t('poll_common.votes') }
+      th(class: "email-table-right") { plain t('poll_common.votes') }
     when 'stv_status'
-      th(class: "text-right text-subtitle-2") { plain t('poll_common.status') }
+      th(class: "email-table-right") { plain t('poll_common.status') }
     when 'voter_count'
-      th(class: "text-right text-subtitle-2") { plain t('membership_card.voters') }
+      th(class: "email-table-right") { plain t('membership_card.voters') }
     when 'voters'
-      th(class: "text-left text-subtitle-2")
+      th(class: "email-table-left")
     end
   end
 
@@ -91,27 +91,27 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
                      when 'not_elected' then "email-status--eliminated"
                      end
       label = status ? t("poll_stv_results.#{status}") : ''
-      td(class: ["text-right", status_class].compact.join(" ")) { plain label }
+      td(class: ["email-table-right", status_class].compact.join(" ")) { plain label }
     when 'rank'
-      td(class: "text-right") { plain option[:rank].to_s }
+      td(class: "email-table-right") { plain option[:rank].to_s }
     when 'score'
-      td(class: "text-right") { plain option[:score].to_s }
+      td(class: "email-table-right") { plain option[:score].to_s }
     when 'voter_count', 'votes'
-      td(class: "text-right") { plain option[:voter_count].to_s }
+      td(class: "email-table-right") { plain option[:voter_count].to_s }
     when 'average'
-      td(class: "text-right") { plain option[:average].round.to_s }
+      td(class: "email-table-right") { plain option[:average].round.to_s }
     when 'target_percent'
-      td(class: "text-right") do
+      td(class: "email-table-right") do
         if option[:icon] == 'agree'
           plain "#{option[:target_percent].round}%"
         end
       end
     when 'voter_percent'
-      td(class: "text-right") { plain option[:voter_percent].round.to_s }
+      td(class: "email-table-right") { plain option[:voter_percent].round.to_s }
     when 'score_percent', 'votes_cast_percent'
-      td(class: "text-right") { plain(option[:score_percent].nil? ? '' : option[:score_percent].round.to_s) }
+      td(class: "email-table-right") { plain(option[:score_percent].nil? ? '' : option[:score_percent].round.to_s) }
     when 'voters'
-      td(class: "text-left") do
+      td(class: "email-table-left") do
         User.where(id: option[:voter_ids]).limit(20).each do |user|
           render Views::NotificationMailer::Common::Avatar.new(user: user, size: 24)
         end
@@ -124,10 +124,10 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
 
   def render_chart_cell(option, index, results)
     if @poll.chart_type == 'pie' && index == 0
-      td(class: "pr-2 py-2", rowspan: results.size) do
-        div(class: "poll-mailer-proposal__chart poll-mailer__results-chart text-center") do
+      td(class: "email-result-chart-cell", rowspan: results.size) do
+        div(class: "email-result-chart") do
           img(
-            class: "poll-mailer-proposal__chart-image",
+
             style: "height: auto; width: 128px",
             src: google_pie_chart_url(@poll),
             width: 128
@@ -137,17 +137,17 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
     end
 
     if @poll.chart_type == 'bar'
-      td(class: "pr-2 py-2", style: "width: 128px") do
+      td(class: "email-result-chart-cell", style: "width: 128px") do
         if option[@poll.chart_column] > 0
           table(cellspacing: 0, cellpadding: 0, width: "100%", height: "100%") do
             tr do
               td(
-                class: "poll-mailer__result-bar no-border rounded",
+                class: "email-result-bar",
                 style: "height: 24px",
                 height: 24,
                 width: "#{option[@poll.chart_column].clamp(0, 100)}%"
               )
-              td(class: "no-border")
+              td(class: "email-result-bar-rest")
             end
           end
         end

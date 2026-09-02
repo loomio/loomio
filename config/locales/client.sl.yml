@@ -1,5 +1,10 @@
 ---
 sl:
+  install_app:
+    install_title: Namesti %{site_name}
+    install_description: Dodaj %{site_name} na začetni zaslon za hitrejši dostop
+    install_button: Namesti
+    ios_install_description: V Safariju odpri Deljenje in izberi Dodaj na začetni zaslon
   start_trial:
     title: Začnite brezplačno preskusno različico Loomio
     intro: Hvala za vaše zanimanje za Loomio. Z veseljem vam ponujamo %{day}-dnevno brezplačno preskusno različico, da boste lahko videli, ali je Loomio primeren za vašo organizacijo.
@@ -434,6 +439,33 @@ sl:
     title_label: Naslov
     hint: 'Namig za naslednjič: Poskusite označiti nekaj besedila, preden kliknete »Pripni«.'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: To se spremeni, ko boste obveščeni o tej niti
       group: To se spremeni, ko boste obveščeni o vseh nitih v skupini
@@ -516,6 +548,17 @@ sl:
     normal_option: Ko nekdo želi mojo pozornost (ko je o tem obveščen)
     quiet_option: Ni e-poštnih sporočil o tej temi (Izklopljeno)
     quiet_explained: Ne boste prejeli e-poštnega sporočila, tudi če vas bo kdo poskušal obvestiti.
+    volume_email_label: E-pošta
+    volume_push_label: Potisni
+    all_activity_option: Vse dejavnosti
+    when_notified_option: Ko je obveščen
+    muted_option: Utišano
+    volume_channel_label: Kako naj vas obvestimo?
+    email_channel: E-pošta
+    push_channel: Potisni
+    email_and_push_channel: E-pošta in potisna sporočila
+    off_option: Izklopljeno
+    apply_to_all_threads_in_group: Uporabi te nastavitve za vse niti v %{group}
   inbox:
     clear: Počisti
     latest: Zadnje
@@ -621,6 +664,16 @@ sl:
     email_notifications: E-pošta ob obvestilu
     email_none: Brez e-poštnih sporočil
     new_to_you: Novo zate
+    email_and_push_when_notified: E-pošta in potisno obvestilo ob prejemu obvestila
+    email_when_notified: E-pošta ob prejemu obvestila
+    push_when_notified: Potisno obvestilo ob prejemu obvestila
+    daily_catch_up_email: Dnevno e-poštno sporočilo s povzetkom
+    in_app_only: Samo v aplikaciji
+    email_and_device_when_notified: Obvestila po e-pošti in v napravi ob prejemu obvestila
+    device_notification_when_notified: Obvestilo v napravi ob prejemu obvestila
+    no_notifications: Brez obvestil
+    catch_up_email_every_second_day: E-poštno sporočilo za nadoknaditev zamujenega vsak drugi dan
+    weekly_catch_up_email: Tedensko e-poštno sporočilo za nadoknaditev
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje
@@ -1610,6 +1663,9 @@ sl:
     submit_delete: Izbriši moj račun zdaj
     submit_deactivate: Deaktiviraj moj račun zdaj
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Ponedeljek
     tuesday: Torek
     wednesday: Sreda
@@ -1626,8 +1682,7 @@ sl:
     email_newsletter: Glasilo Loomio
     email_newsletter_description: Prejemajte posodobitve o novih funkcijah, usposabljanju, dogodkih v vašem mestu in prihodnosti Loomio. Običajno 2 ali 3 e-poštna sporočila na leto.
     email_catch_up_day: E-poštno sporočilo s povzetkom
-    on_participation_label: Prijavite se na sodelovanje
-    on_participation_description: Ko sodelujete v niti, vam bodo vse nadaljnje dejavnosti takoj poslane po e-pošti.
+    digest_email: E-poštno sporočilo s povzetkom
     announcement_label: Obvestila
     announcement_description: Prejeli boste e-poštno sporočilo o vsej vsebini, ki so jo objavili ljudje v vaših skupinah
     mentioned_label: Omembe in odgovori
@@ -1643,8 +1698,11 @@ sl:
     learn_more: Več o nastavitvah e-pošte ...
     mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
     daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
+    digest_email_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
     never: Nikoli
     send_email: Pošlji e-pošto
+    group_notifications: Obvestila skupine
+    group_notifications_description: Spremenite raven aktivnosti in kanal za svoje skupine
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
@@ -3000,3 +3058,18 @@ sl:
     nobody_will_be_notified: Nihče ne bo obveščen
     one_person_will_be_notified: Obveščena bo 1 oseba
     x_people_will_be_notified: Obveščenih bo %{count} oseb
+  push_notifications:
+    title: Potisna obvestila
+    subtitle: Prejemajte obvestila v tem brskalniku
+    not_supported: Potisna obvestila niso na voljo v tem brskalniku
+    permission_denied: Potisna obvestila so blokirana v nastavitvah brskalnika
+    manage_devices: Upravljanje naprav za potisna obvestila
+    enabled: Potisna obvestila omogočena za ta brskalnik
+    disabled: Potisna obvestila so za ta brskalnik onemogočena
+    device_removed: Naprava za potisna obvestila je bila odstranjena
+    enable_device: Omogoči v tem brskalniku
+    disable_device: Onemogoči v tem brskalniku
+    devices: Omogočeni brskalniki
+    browser_device: Brskalnik
+    remove_device: Odstrani brskalnik
+    enable_from_loomio: Omogočite potisna obvestila v nastavitvah obvestil, ko ste prijavljeni v Loomio

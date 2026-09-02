@@ -22,6 +22,16 @@ class PollTest < ActiveSupport::TestCase
     PollService.create(params: poll_params(**overrides), actor: @admin)
   end
 
+  def create_voter(prefix)
+    hex = SecureRandom.hex(4)
+    User.create!(
+      name: "#{prefix} #{hex}",
+      email: "#{prefix}#{hex}@example.com",
+      username: "#{prefix}#{hex}",
+      email_verified: true
+    )
+  end
+
   def create_ranked_choice(**overrides)
     PollService.create(params: poll_params(
       poll_type: "ranked_choice",
@@ -84,6 +94,61 @@ class PollTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::StatementInvalid) do
       poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
     end
+  end
+
+  test "vote is needed from an eligible identified voter until their current stance is cast" do
+    voter = create_voter("identifiedpendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant: voter)
+
+    assert poll.vote_needed_from?(voter)
+
+    stance.update_column(:cast_at, Time.current)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is not needed when poll access has been revoked" do
+    voter = create_voter("revokedpendingvote")
+    membership = @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id, private: true)
+
+    assert poll.vote_needed_from?(voter)
+
+    membership.update!(revoked_at: Time.current)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is needed from an anonymous voter until their ballot is submitted" do
+    voter = create_voter("anonymouspendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(
+      group_id: @group.id,
+      anonymous: true,
+      specified_voters_only: true,
+      recipient_user_ids: [voter.id]
+    )
+    anonymous_voter = poll.anonymous_poll_voters.find_by!(voter: voter)
+
+    assert poll.vote_needed_from?(voter)
+
+    anonymous_voter.update!(ballot_submitted: true)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is not needed after the voting period expires" do
+    voter = create_voter("expiredpendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id)
+
+    assert poll.vote_needed_from?(voter)
+
+    poll.update_columns(closing_at: 1.minute.ago)
+
+    assert_not poll.vote_needed_from?(voter)
   end
 
   test "validates correctly if no poll option changes have been made" do

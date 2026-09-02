@@ -17,7 +17,8 @@ export default class MembershipModel extends BaseModel {
       groupId: null,
       archivedAt: null,
       inviterId: null,
-      volume: null
+      volumeEmail: null,
+      volumePush: null
     };
   }
 
@@ -39,20 +40,31 @@ export default class MembershipModel extends BaseModel {
     return this.group().name;
   }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(volumeEmail, volumePush, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
-    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
-      volume,
+    const params = {
       apply_to_all: applyToAll,
       unsubscribe_token: this.user().unsubscribeToken
-    }
-    ).then(() => {
+    };
+    if (volumeEmail != null) params.volume_email = volumeEmail;
+    if (volumePush != null) params.volume_push = volumePush;
+    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', params).then(() => {
+      const topicAttributes = {};
+      const membershipAttributes = {};
+      if (volumeEmail != null) {
+        topicAttributes.readerVolumeEmail = null;
+        membershipAttributes.volumeEmail = volumeEmail;
+      }
+      if (volumePush != null) {
+        topicAttributes.readerVolumePush = null;
+        membershipAttributes.volumePush = volumePush;
+      }
       if (applyToAll) {
-        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null}));
-        return each(this.user().memberships(), membership => membership.update({volume}));
+        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.topic().update(topicAttributes));
+        return each(this.user().memberships(), membership => membership.update(membershipAttributes));
       } else {
-        return each(this.group().discussions(), discussion => discussion.update({discussionReaderVolume: null}));
+        return each(this.group().discussions(), discussion => discussion.topic().update(topicAttributes));
       }
   }).finally(() => {
       return this.processing = false;
@@ -66,7 +78,7 @@ export default class MembershipModel extends BaseModel {
   }
 
   isMuted() {
-    return this.volume === 'mute';
+    return this.volumeEmail === 'quiet' && this.volumePush === 'quiet';
   }
 
   beforeRemove() {

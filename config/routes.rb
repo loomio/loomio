@@ -124,6 +124,11 @@ Rails.application.routes.draw do
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
+      resources :push_subscriptions, only: [:index, :create, :destroy] do
+        delete :destroy, on: :collection
+        post :reconcile, on: :collection
+        post :send_test, on: :collection
+      end
       resources :chatbots, only: [:create, :destroy, :index, :update] do
         post :check, on: :collection
       end
@@ -416,7 +421,8 @@ Rails.application.routes.draw do
     get :unsubscribe
     put :set_group_volume
     put :set_discussion_volume
-    get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+    get 'mark_digest_as_read', action: 'mark_digest_as_read', as: :mark_digest_as_read
+    get 'mark_summary_email_as_read', action: 'mark_digest_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:topic_item_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
   end

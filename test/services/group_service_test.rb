@@ -141,7 +141,7 @@ class GroupServiceTest < ActiveSupport::TestCase
       kind: "membership_created",
       subject: group
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal "Welcome", notification.recipient_message
     assert_equal [ recipient.id ], notification.recipient_user_ids

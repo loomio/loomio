@@ -11,10 +11,10 @@ class Views::NotificationMailer::TopicItems::DiscussionEdited < Views::Applicati
   def view_template
     table do
       tr do
-        td(class: "icon") do
+        td(class: "email-activity-avatar") do
           render Views::NotificationMailer::Common::Avatar.new(user: @item.actor)
         end
-        td(class: "content") do
+        td(class: "email-activity-content") do
           i { plain t(:"discussion_mailer.discussion_edited.inline", actor: @item.actor.name) }
           if @notification&.recipient_message.present?
             p { raw MarkdownService.render_plain_text(@notification.recipient_message) }

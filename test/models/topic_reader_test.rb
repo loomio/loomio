@@ -7,18 +7,43 @@ class TopicReaderTest < ActiveSupport::TestCase
 
     @discussion = discussions(:discussion)
     @membership = @admin.memberships.find_by(group: @group)
-    @membership.update!(volume: :normal)
+    @membership.update!(volume_email: :normal)
     @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
+  end
+
+  test "guest and admin readers use user delivery defaults" do
+    guest = User.create!(name: "Guest defaults", email: "guest-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :quiet, volume_push_default: :loud)
+    admin = User.create!(name: "Admin defaults", email: "admin-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :loud, volume_push_default: :quiet)
+
+    guest_reader = @discussion.topic.add_guest!(guest, @admin)
+    admin_reader = @discussion.topic.add_admin!(admin, @admin)
+
+    assert_predicate guest_reader, :email_quiet?
+    assert_predicate guest_reader, :push_loud?
+    assert_predicate admin_reader, :email_loud?
+    assert_predicate admin_reader, :push_quiet?
+  end
+
+  test "guest invitation is not redeemable after the user joins the topic group" do
+    guest = User.create!(name: "Guest becoming member", email: "guest-member-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @admin)
+
+    assert_includes TopicReader.redeemable, reader
+
+    @group.add_member!(guest)
+
+    refute_includes TopicReader.redeemable, reader
   end
 
   # Computed volume
   test "can change its volume" do
-    @reader.set_volume!(:loud)
-    assert_equal :loud, @reader.reload.volume.to_sym
+    @reader.set_volume!(email: :loud, push: :normal)
+    assert_equal :loud, @reader.reload.volume_email.to_sym
   end
 
   test "defaults to the memberships volume when nil" do
-    assert_equal @membership.volume, @reader.computed_volume
+    assert_equal @membership.volume_email, @reader.computed_volume_email
+    assert_equal @membership.volume_push, @reader.computed_volume_push
   end
 
   # Viewed

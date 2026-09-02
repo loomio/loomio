@@ -44,6 +44,11 @@ module ActiveSupport
     fixtures :all
 
 
+    def create_push_subscription(user:, session: nil, **attributes)
+      session ||= user.sessions.create!(user_agent: "test browser", ip_address: "127.0.0.1")
+      PushSubscription.create!(session: session, **attributes)
+    end
+
     # Email helper methods
     def emails_sent_to(address)
       ActionMailer::Base.deliveries.filter { |email| Array(email.to).include?(address) }

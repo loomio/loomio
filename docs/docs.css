@@ -287,6 +287,10 @@ main img {
   border-radius: 12px;
 }
 
+main img.screenshot-2x {
+  width: auto;
+}
+
 main iframe {
   max-width: 100%;
 }

@@ -154,25 +154,30 @@ class MembershipService
   end
 
   def self.set_volume(membership:, params:, actor:)
-    actor.ability.authorize! :update, membership
-    volume = params[:volume]
-    unless Membership.volumes.key?(volume)
-      membership.errors.add :volume, I18n.t(:"activerecord.errors.messages.invalid")
+    raise CanCan::AccessDenied unless membership.user_id == actor.id
+
+    unless membership.set_volume!(
+      email: params[:volume_email],
+      push: params[:volume_push],
+      persist: false
+    )
       raise ActiveRecord::RecordInvalid, membership
     end
 
-    val = Membership.volumes.fetch(volume)
+    attributes = {}
+    attributes[:volume_email] = membership[:volume_email] if params[:volume_email].present?
+    attributes[:volume_push] = membership[:volume_push] if params[:volume_push].present?
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-      actor.memberships.where(group_id: group_ids).update_all(volume: val)
+      actor.memberships.where(group_id: group_ids).update_all(attributes)
       TopicReader
         .joins(:topic)
         .where(user_id: actor.id)
         .where("topics.group_id IN (?)", group_ids)
-        .update_all(volume: val)
+        .update_all(attributes)
     else
-      membership.set_volume! volume
-      membership.topic_readers.update_all(volume: val)
+      membership.save!
+      membership.topic_readers.update_all(attributes)
     end
   end
 

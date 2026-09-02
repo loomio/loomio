@@ -362,7 +362,8 @@ class RecordCloner
       revoked_at
       revoker_id
       admin
-      volume
+      volume_email
+      volume_push
       experiences
       accepted_at
       title

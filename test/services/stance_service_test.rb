@@ -39,7 +39,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
   test "visible stance topic item sends loud subscriber email without a notification row" do
     subscriber = users(:member)
-    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
     stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Visible response"
@@ -55,7 +55,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
   test "visible blank stance is eventless and does not create subscription notification" do
     subscriber = users(:member)
-    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
     stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
 
@@ -70,7 +70,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
   test "a hidden stance cannot gain deliveries when the poll later closes" do
     subscriber = users(:member)
-    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
     @poll.update!(hide_results: :until_closed)
     stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first

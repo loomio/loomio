@@ -2,7 +2,7 @@
 import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
-import ThreadLoader      from '@/shared/loaders/thread_loader';
+import TopicLoader       from '@/shared/loaders/topic_loader';
 import TopicActionsPanel from '@/components/topic/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
@@ -165,7 +165,7 @@ function fetchInitialContent() {
     if (t.group() && t.group().newHost) { window.location.host = t.group().newHost; }
     topic.value = t;
     loadedKey.value = route.params.key;
-    loader.value = new ThreadLoader(t);
+    loader.value = new TopicLoader(t);
 
     loadContent(routeTopicParams());
     loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));

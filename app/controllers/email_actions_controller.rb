@@ -6,21 +6,33 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     render Views::EmailActions::Unsubscribe.new(
       topic_reader: topic_reader,
       membership: membership,
-      unsubscribe_token: params[:unsubscribe_token]
+      unsubscribe_token: params[:unsubscribe_token],
+      push_enabled: current_user.push_subscriptions.active.exists?,
+      email_catch_up_day: current_user.email_catch_up_day
     )
   end
 
   def set_group_volume
     load_models_or_404
     membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
-    MembershipService.set_volume(membership: membership, actor: current_user, params: { volume: params[:value] })
+    MembershipService.set_volume(
+      membership: membership,
+      actor: current_user,
+      params: volume_attributes(membership)
+    )
     redirect_to_unsubscribe
   end
 
   def set_discussion_volume
     load_models_or_404
     topic_reader = TopicReader.find_by!(topic_id: @topic.id, user_id: current_user.id)
-    topic_reader.set_volume!(params[:value])
+    attributes = volume_attributes(topic_reader)
+    if params[:apply_to_group].present? && @group
+      membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
+      MembershipService.set_volume(membership: membership, actor: current_user, params: attributes)
+    else
+      topic_reader.set_volume!(email: attributes[:volume_email], push: attributes[:volume_push])
+    end
     redirect_to_unsubscribe
   end
 
@@ -44,8 +56,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     respond_with_pixel
   end
 
-  def mark_summary_email_as_read
-    MarkSummaryEmailAsReadWorker.perform_later(current_user.id, params[:time_start].to_i, params[:time_finish].to_i)
+  def mark_digest_as_read
+    MarkDigestAsReadWorker.perform_later(current_user.id, params[:time_start].to_i, params[:time_finish].to_i)
 
     respond_to do |format|
       format.html do
@@ -58,17 +70,30 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   private
 
+  def volume_attributes(record)
+    email = params[:volume_email] || params[:value] || record.volume_email
+    push = params[:volume_push] || record.volume_push
+    case params[:delivery_channel]
+    when "email" then push = "quiet"
+    when "push" then email = "quiet"
+    end
+    { volume_email: email, volume_push: push }
+  end
+
   def redirect_to_unsubscribe
     args = params.permit!.slice(:topic_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])
     redirect_to email_actions_unsubscribe_path(args), notice: t(:'change_volume_form.saved')
   end
 
+  # Resolve current topic/group links and legacy email links through an authorized model so old messages remain usable without widening access.
   def load_models_or_404
-    if @topic = load_and_authorize(:topic, :show, optional: true)
-      @group = @topic.group
-    else
-      @group = load_and_authorize(:group, :show, optional: true)
-    end
+    @topic = load_and_authorize(:topic, :show, optional: true)
+    @topic ||= load_and_authorize(:discussion, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:comment, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:poll, :show, optional: true)&.topic
+    @topic ||= load_and_authorize(:stance, :show, optional: true)&.poll&.topic
+    @topic ||= load_and_authorize(:outcome, :show, optional: true)&.topic
+    @group = @topic&.group || load_and_authorize(:group, :show, optional: true)
 
     raise ActiveRecord::RecordNotFound unless @group || @topic
   end

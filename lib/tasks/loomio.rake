@@ -243,27 +243,31 @@ namespace :loomio do
               puts "#{file_locale}: translating #{source_name} strings #{paths.first} to #{paths.last}"
             end
 
-            translated_strings = translate_strings(google, source_strings, google_locale)
-            raise "translation count mismatch" unless translated_strings.length == paths.length
+            begin
+              translated_strings = translate_strings(google, source_strings, google_locale)
+              raise "translation count mismatch" unless translated_strings.length == paths.length
 
-            paths.zip(translated_strings).each do |path, translated_string|
-              foreign.bury(*path.split('.'), translated_string)
+              paths.zip(translated_strings).each do |path, translated_string|
+                foreign.bury(*path.split('.'), translated_string)
+              end
+
+              File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000))
+            rescue => error
+              errors << [file_locale, "#{source_name}.#{paths.first}..#{paths.last}", error]
             end
-
-            File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000))
           end
         end
       rescue => e
-        errors << [file_locale, e]
+        errors << [file_locale, nil, e]
       end
     end.each(&:join)
 
     unless errors.empty?
       messages = []
-      messages << "Translation failed for #{errors.length} locale(s):"
+      messages << "Translation failed for #{errors.length} batch(es):"
       messages.concat(errors.size.times.map do
-        file_locale, error = errors.pop
-        "#{file_locale}: #{error.class}: #{error.message}"
+        file_locale, path, error = errors.pop
+        "#{file_locale}#{path ? ": #{path}" : nil}: #{error.class}: #{error.message}"
       end)
       raise messages.join("\n")
     end

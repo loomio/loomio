@@ -117,7 +117,7 @@ class UserInviterTest < ActiveSupport::TestCase
     assert_equal @actor.time_zone, user.time_zone
     assert_equal @actor.date_time_pref, user.date_time_pref
     assert_equal @actor.locale, user.detected_locale
-    assert_equal Date.today.wday, user.email_catch_up_day
+    assert_equal 7, user.email_catch_up_day
     assert user.unsubscribe_token.present?
     assert user.email_api_key.present?
     assert user.api_key.present?

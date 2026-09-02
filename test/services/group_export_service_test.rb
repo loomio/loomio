@@ -1,6 +1,22 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test "notification recipient audiences remap embedded group ids" do
+    migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
+
+    %w[group delegates].each do |kind|
+      attrs = {
+        "recipient_user_ids" => [],
+        "recipient_audience" => "#{kind}-42",
+        "recipient_context" => {}
+      }
+
+      GroupExportService.translate_notification_payload!(attrs, migrate_ids)
+
+      assert_equal "#{kind}-84", attrs["recipient_audience"]
+    end
+  end
+
   def create_detached_export_group
     admin = User.create!(
       email: "anonymous-export-admin-#{SecureRandom.hex(4)}@example.com",
@@ -168,14 +184,14 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     refute_equal archived_ballot.fetch("id"), second_archived_ballot.fetch("id")
 
     subscriber = voter
-    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :quiet)
     notification = NotificationService.create!(
       kind: "poll_announced",
       subject: poll,
       actor: admin,
       recipient_user_ids: [ subscriber.id ]
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal [ subscriber.id ], notification.notification_deliveries
                                                 .where(channel: "email", recipient_type: "User")
                                                 .pluck(:recipient_id)

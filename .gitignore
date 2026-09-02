@@ -60,8 +60,6 @@ public/client3
 public/assets
 public/system
 public/uploads
-public/service-worker.js
-
 /disabled_plugins/
 /dev_plugins/
 /fetched_plugins/

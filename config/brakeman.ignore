@@ -53,10 +53,6 @@
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/migrate_events_service.rb:29)"
     },
     {
-      "fingerprint": "13647b57bcab05f8b8e9a676489941e3766a5360794c779c69c75ba4fcba99c0",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/extras/queries/users_by_volume_query.rb:30#self.users_by_volume)"
-    },
-    {
       "fingerprint": "1e978456fc895ece8b2ddec22510126a8ed01de3a999da099138a3d19e8fce46",
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/models/group.rb:208#members_by_volume)"
     },

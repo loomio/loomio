@@ -1,5 +1,10 @@
 ---
 el:
+  install_app:
+    install_title: Εγκατάσταση του %{site_name}
+    install_description: Προσθέστε το %{site_name} στην αρχική οθόνη σας για ταχύτερη πρόσβαση
+    install_button: Εγκατάσταση
+    ios_install_description: Στο Safari, ανοίξτε την Κοινοποίηση και επιλέξτε Προσθήκη στην οθόνη Αφετηρίας
   start_trial:
     title: Ξεκινήστε μια δωρεάν δοκιμή του Loomio
     intro: Σας ευχαριστούμε για το ενδιαφέρον σας για το Loomio. Είμαστε στην ευχάριστη θέση να σας προσφέρουμε μια δωρεάν δοκιμή %{day}-ημέρας, ώστε να μπορείτε να δείτε εάν το Loomio είναι κατάλληλο για τον οργανισμό σας.
@@ -434,6 +439,33 @@ el:
     title_label: Τίτλος
     hint: 'Συμβουλή για την επόμενη φορά: Δοκιμάστε να επισημάνετε κάποιο κείμενο προτού κάνετε κλικ στο "Καρφίτσωμα".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Αυτό αλλάζει όταν θα ειδοποιηθείτε για αυτό το νήμα
       group: Αυτό αλλάζει όταν θα ειδοποιηθείτε για όλα τα νήματα στην ομάδα
@@ -516,6 +548,17 @@ el:
     normal_option: Όταν κάποιος θέλει την προσοχή μου (Όταν ειδοποιηθεί)
     quiet_option: Δεν υπάρχουν μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το νήμα (Απενεργοποιημένο)
     quiet_explained: Δεν θα λάβετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει.
+    volume_email_label: E-mail
+    volume_push_label: Σπρώξτε
+    all_activity_option: Όλη η δραστηριότητα
+    when_notified_option: Όταν ειδοποιηθεί
+    muted_option: Σε σίγαση
+    volume_channel_label: Πώς πρέπει να σας ενημερώσουμε;
+    email_channel: E-mail
+    push_channel: Σπρώξτε
+    email_and_push_channel: Αποστολή email και προώθηση
+    off_option: Μακριά από
+    apply_to_all_threads_in_group: Εφαρμογή αυτών των ρυθμίσεων σε όλα τα νήματα στην %{group}
   inbox:
     clear: Καθάρισμα
     latest: Τελευταία
@@ -621,6 +664,16 @@ el:
     email_notifications: Email όταν ειδοποιηθείτε
     email_none: Χωρίς email
     new_to_you: Νέο για εσάς
+    email_and_push_when_notified: Email και ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    email_when_notified: Email όταν λαμβάνεις ειδοποίηση
+    push_when_notified: Ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    daily_catch_up_email: Ημερήσιο email σύνοψης
+    in_app_only: Μόνο εντός εφαρμογής
+    email_and_device_when_notified: Email και ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    device_notification_when_notified: Ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    no_notifications: Δεν υπάρχουν ειδοποιήσεις
+    catch_up_email_every_second_day: Ενημερωτικό email κάθε δεύτερη μέρα
+    weekly_catch_up_email: Εβδομαδιαίο ενημερωτικό email
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα
@@ -1610,6 +1663,9 @@ el:
     submit_delete: Διαγραφή του λογαριασμού μου τώρα
     submit_deactivate: Απενεργοποιήστε τον λογαριασμό μου τώρα
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Δευτέρα
     tuesday: Τρίτη
     wednesday: Τετάρτη
@@ -1626,8 +1682,7 @@ el:
     email_newsletter: Ενημερωτικό δελτίο Loomio
     email_newsletter_description: Λάβετε ενημερώσεις σχετικά με νέες δυνατότητες, εκπαίδευση, εκδηλώσεις στην πόλη σας και το μέλλον του Loomio. Συνήθως 2 ή 3 email το χρόνο.
     email_catch_up_day: Ενημερωτικό email σύνοψης
-    on_participation_label: Εγγραφείτε για συμμετοχή
-    on_participation_description: Όταν συμμετέχετε σε ένα νήμα, όλη η περαιτέρω δραστηριότητα θα σας αποσταλεί αμέσως μέσω email.
+    digest_email: Ενημερωτικό email σύνοψης
     announcement_label: Ανακοινώσεις
     announcement_description: Θα λάβετε ένα email για όλο το περιεχόμενο που έχει ανακοινωθεί από άτομα στις ομάδες σας
     mentioned_label: Αναφορές & Απαντήσεις
@@ -1643,8 +1698,11 @@ el:
     learn_more: Μάθετε περισσότερα σχετικά με τις ρυθμίσεις email...
     mentioned_description: Όταν κάποιος {'@'}σας αναφέρει σε ένα σχόλιο, θα λάβετε ένα email ειδοποίησης
     daily_summary_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
+    digest_email_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
     never: Ποτέ
     send_email: Αποστολή email
+    group_notifications: Ειδοποιήσεις ομάδας
+    group_notifications_description: Αλλάξτε το επίπεδο δραστηριότητας και το κανάλι για τις ομάδες σας
   thread_preview:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"
@@ -3000,3 +3058,18 @@ el:
     nobody_will_be_notified: Κανείς δεν θα ειδοποιηθεί
     one_person_will_be_notified: 1 άτομο θα ειδοποιηθεί
     x_people_will_be_notified: "%{count} άτομα θα ειδοποιηθούν"
+  push_notifications:
+    title: Ειδοποιήσεις push
+    subtitle: Λήψη ειδοποιήσεων σε αυτό το πρόγραμμα περιήγησης
+    not_supported: Οι ειδοποιήσεις push δεν είναι διαθέσιμες σε αυτό το πρόγραμμα περιήγησης
+    permission_denied: Οι ειδοποιήσεις push αποκλείονται στις ρυθμίσεις του προγράμματος περιήγησής σας
+    manage_devices: Διαχείριση συσκευών push notification
+    enabled: Οι ειδοποιήσεις push ενεργοποιήθηκαν για αυτό το πρόγραμμα περιήγησης
+    disabled: Οι ειδοποιήσεις push είναι απενεργοποιημένες για αυτό το πρόγραμμα περιήγησης
+    device_removed: Η συσκευή push notification αφαιρέθηκε
+    enable_device: Ενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    disable_device: Απενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    devices: Ενεργοποιημένα προγράμματα περιήγησης
+    browser_device: Πρόγραμμα περιήγησης
+    remove_device: Κατάργηση προγράμματος περιήγησης
+    enable_from_loomio: Ενεργοποίηση ειδοποιήσεων push από τις ρυθμίσεις ειδοποιήσεων ενώ είστε συνδεδεμένοι στο Loomio

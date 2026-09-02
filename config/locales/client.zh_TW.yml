@@ -1,5 +1,10 @@
 ---
 zh_TW:
+  install_app:
+    install_title: 安裝 %{site_name}
+    install_description: 將 %{site_name} 加入主畫面，以便更快存取
+    install_button: 安裝
+    ios_install_description: 在 Safari 中，打開「分享」並選擇「加入主畫面」
   hello: 您好
   start_trial:
     title: 開始免費試用 Loomio
@@ -437,6 +442,33 @@ zh_TW:
     title_label: 標題
     hint: 下次的提示：試著在您點擊「釘選」前先反白某些文字。
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: 這會在您收到此討論串通知時發生變化
       group: 這會在您收到關於此群組中的所有討論串的通知時發生變化
@@ -519,6 +551,17 @@ zh_TW:
     normal_option: 當有人想引起我的注意（收到通知時）
     quiet_option: 關於此主題的郵件已關閉
     quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
+    volume_email_label: 電子郵件
+    volume_push_label: 推
+    all_activity_option: 所有活動
+    when_notified_option: 收到通知時
+    muted_option: 靜音
+    volume_channel_label: 我們該如何向您報告最新情況？
+    email_channel: 電子郵件
+    push_channel: 推
+    email_and_push_channel: 電子郵件和推播
+    off_option: 離開
+    apply_to_all_threads_in_group: 將這些設定套用至 %{group} 中的所有討論串
   inbox:
     clear: 清除
     latest: 最新
@@ -624,6 +667,16 @@ zh_TW:
     email_notifications: 收到通知時發送電子郵件
     email_none: 不發送電子郵件
     new_to_you: 對你來說是新的
+    email_and_push_when_notified: 收到通知時發送電子郵件和推播通知
+    email_when_notified: 收到通知時發送電子郵件
+    push_when_notified: 收到通知時發送推播通知
+    daily_catch_up_email: 每日簡報郵件
+    in_app_only: 限應用程式內使用
+    email_and_device_when_notified: 收到通知時發送電子郵件和裝置通知
+    device_notification_when_notified: 收到通知時發送裝置通知
+    no_notifications: 無通知
+    catch_up_email_every_second_day: 每隔一天發送一次進度郵件
+    weekly_catch_up_email: 每週簡報郵件
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -1627,6 +1680,9 @@ zh_TW:
     submit_delete: 現在刪除我的帳號
     submit_deactivate: 立即停用我的帳戶
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: 星期一
     tuesday: 星期二
     wednesday: 星期三
@@ -1643,8 +1699,7 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
-    on_participation_label: 參與時訂閱
-    on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
+    digest_email: 追蹤摘要電子郵件
     announcement_label: 公告
     announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆
@@ -1660,8 +1715,11 @@ zh_TW:
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
+    digest_email_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
     send_email: 傳送電子郵件
+    group_notifications: 群組通知
+    group_notifications_description: 更改群組的活動等級和頻道
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -3028,3 +3086,18 @@ zh_TW:
     nobody_will_be_notified: 不會通知任何人
     one_person_will_be_notified: 將會通知1人
     x_people_will_be_notified: "%{count} 人將會收到通知"
+  push_notifications:
+    title: 推播通知
+    subtitle: 在此瀏覽器中接收通知
+    not_supported: 此瀏覽器不支援推播通知
+    permission_denied: 您的瀏覽器設定中已封鎖推播通知
+    manage_devices: 管理推播通知設備
+    enabled: 此瀏覽器已啟用推播通知
+    disabled: 此瀏覽器已停用推播通知
+    device_removed: 已移除推播通知設備
+    enable_device: 在此瀏覽器上啟用
+    disable_device: 在此瀏覽器上停用
+    devices: 已啟用瀏覽器
+    browser_device: 瀏覽器
+    remove_device: 移除瀏覽器
+    enable_from_loomio: 登入 Loomio 後，請在通知設定中啟用推播通知

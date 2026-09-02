@@ -10,16 +10,16 @@ class Views::NotificationMailer::Poll::Vote < Views::ApplicationMailer::Componen
   def view_template
     stance = recipient_stance(@recipient, @poll)
 
-    div(class: "poll-mailer__vote pb-4") do
+    div(class: "email-poll-vote") do
       if @poll.anonymous?
         p { plain t(:"poll_common_action_panel.anonymous") }
       end
 
       if stance.cast_at
-        h2(class: "text-subtitle-2") { plain t(:"poll_common.your_response") }
+        p { strong { plain t(:"poll_common.your_response") } }
         render Views::NotificationMailer::Poll::Stance.new(stance: stance, recipient: @recipient)
       elsif @poll.active?
-        h2(class: "text-subtitle-2") { plain t(:"poll_common.please_vote") }
+        p { strong { plain t(:"poll_common.please_vote") } }
 
         if @poll.poll_type == 'meeting'
           p do

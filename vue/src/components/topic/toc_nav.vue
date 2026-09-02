@@ -5,13 +5,26 @@ import TopicService  from '@/shared/services/topic_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
+import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
+import { notificationCatchUpTitleKey } from '@/shared/helpers/notification_volume_options';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
+
+const volumeDisplayByState = {
+  email_and_device_all_activity: { email: true,  device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  email_all_activity:            { email: true,  device: false, labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  device_all_activity:           { email: false, device: true,  labelKey: 'change_volume_form.all_activity_option', summaryKey: 'change_volume_form.all_activity_option' },
+  email_and_device:              { email: true,  device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_and_device_when_notified' },
+  email:                         { email: true,  device: false, labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.email_when_notified' },
+  device:                        { email: false, device: true,  labelKey: 'change_volume_form.when_notified_option', summaryKey: 'strand_nav.device_notification_when_notified' },
+  catch_up:                      { email: true,  device: false, labelKey: 'strand_nav.daily_catch_up_email', summaryKey: 'strand_nav.daily_catch_up_email' },
+  none:                          { email: false, device: false, labelKey: 'strand_nav.no_notifications', summaryKey: 'strand_nav.no_notifications' },
+};
 
 const props = defineProps({
   topic:             Object,
@@ -25,6 +38,7 @@ const theme = useTheme();
 const { watchRecords } = useWatchRecords();
 
 const open        = ref(null);
+const deviceNotificationsAvailable = ref(false);
 const pinnedItems = ref([]);
 const baseUrl     = ref('');
 const topicActions = ref({});
@@ -38,6 +52,17 @@ const drawerColor        = computed(() =>
 const memberActions      = computed(() => Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())).map(([key, action]) => ({ key, action })));
 const menuActions        = computed(() => {
   return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
+});
+const volumeDisplay = computed(() => {
+  const emailCatchUpDay = Session.user().emailCatchUpDay;
+  const state = props.topic.notificationVolumeState(
+    emailCatchUpDay != null,
+    deviceNotificationsAvailable.value
+  );
+  if (state !== 'catch_up') return volumeDisplayByState[state];
+
+  const labelKey = notificationCatchUpTitleKey(emailCatchUpDay);
+  return { ...volumeDisplayByState[state], labelKey, summaryKey: labelKey };
 });
 
 function scrollToEnd() {
@@ -86,6 +111,10 @@ function scrollToSequenceId(id) {
 }
 
 onMounted(() => {
+  PushSubscriptionService.subscriptions()
+    .then(subscriptions => { deviceNotificationsAvailable.value = subscriptions.length > 0; })
+    .catch(() => {});
+
   topicActions.value = TopicService.actions(props.topic);
   props.topic.fetchUsersNotifiedCount();
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
@@ -145,7 +174,11 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
-      v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")
+      v-list-item.topic-sidebar__notification-settings(:aria-label="$t(volumeDisplay.summaryKey)" @click="openVolumeForm")
+        template(v-slot:prepend)
+          v-icon.topic-sidebar__notification-email-icon.text-medium-emphasis(v-if="volumeDisplay.email" :icon="mdiEmailOutline" aria-hidden="true")
+          v-icon.topic-sidebar__notification-device-icon.text-medium-emphasis(v-if="volumeDisplay.device" :icon="mdiCellphone" aria-hidden="true")
+        v-list-item-title {{ $t(volumeDisplay.labelKey) }}
 
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")
@@ -178,6 +211,10 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
 .topic-sidebar .v-list-item-title {
   white-space: normal !important;
+}
+
+.topic-sidebar .topic-sidebar__notification-settings .v-list-item-title {
+  white-space: nowrap !important;
 }
 
 .topic-nav__stance-icon-container {

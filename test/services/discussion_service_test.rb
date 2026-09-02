@@ -102,7 +102,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "create excludes a newly mentioned explicit recipient from the discussion email" do
+  test "create leaves a newly mentioned explicit recipient to the mention notification" do
     recipient = users(:member)
     recipient.update!(username: "createmention#{SecureRandom.hex(4)}")
 
@@ -118,9 +118,9 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.find_by!(kind: "new_discussion", subject: discussion.created_topic_item)
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_empty notification.notification_deliveries
     assert Notification.exists?(kind: "user_mentioned", subject: discussion.created_topic_item)
   end
 
@@ -144,7 +144,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     reader = TopicReader.for(user: @user, topic: discussion.topic)
     assert_not_nil reader
-    assert_includes ['normal', 'loud'], reader.volume
+    assert_includes ['normal', 'loud'], reader.volume_email
   end
 
   # -- Update --
@@ -220,7 +220,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   test "update keeps its history topic_item and creates one logical notification" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
 
     topic_item = nil
     updated_discussion = DiscussionService.update(
@@ -244,15 +244,15 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_equal "Please review the changes", notification.recipient_message
     assert_equal 1, Notification.where(kind: "discussion_edited", subject: topic_item).count
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
   end
 
-  test "update excludes a newly mentioned explicit recipient from the edit email" do
+  test "update leaves a newly mentioned explicit recipient to the mention notification" do
     discussion = discussions(:discussion)
     recipient = users(:member)
     recipient.update!(username: "editmention#{SecureRandom.hex(4)}")
-    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(:normal)
+    TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :quiet)
 
     DiscussionService.update(
       discussion: discussion,
@@ -265,13 +265,13 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     )
     notification = Notification.about(discussion).find_by!(kind: "discussion_edited")
 
-    assert_equal [ recipient.id ], notification.audience_values["newly_mentioned_user_ids"]
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
-    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal [ recipient.id ], notification.recipient_context["newly_mentioned_user_ids"]
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
   end
 
-  test "eventless update without a direct audience does not create a notification" do
+  test "eventless update without a direct recipients does not create a notification" do
     discussion = discussions(:discussion)
 
     assert_no_difference "TopicItem.where(kind: 'discussion_edited').count" do
@@ -301,8 +301,13 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       poll_option_names: ['agree', 'disagree']
     }, actor: @admin)
 
-    DiscussionService.discard(discussion: discussion, actor: @admin)
+    topic_item = nil
+    discarded_discussion = DiscussionService.discard(discussion: discussion, actor: @admin) do |discarded_topic_item|
+      topic_item = discarded_topic_item
+    end
 
+    assert_same discussion, discarded_discussion
+    assert_equal discussion.created_topic_item, topic_item
     assert_not_nil discussion.reload.discarded_at
     assert_not_nil discussion.topic.reload.discarded_at
     assert_not_nil poll.reload.discarded_at

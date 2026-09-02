@@ -1,5 +1,10 @@
 ---
 he:
+  install_app:
+    install_title: התקנת %{site_name}
+    install_description: הוספת %{site_name} למסך הבית לגישה מהירה יותר
+    install_button: התקנה
+    ios_install_description: ב-Safari, יש לפתוח את השיתוף ולבחור באפשרות הוספה למסך הבית
   start_trial:
     title: התחל ניסיון חינם של Loomio
     intro: תודה על התעניינותך ב-Loomio. אנו שמחים להציע לך ניסיון חינם של %{day} ימים כדי שתוכל לראות אם Loomio מתאים לארגון שלך.
@@ -434,6 +439,33 @@ he:
     title_label: כותרת
     hint: 'רמז לפעם הבאה: נסה להדגיש טקסט לפני שתלחץ על "הצמד".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: זה משתנה כאשר תקבל הודעה על השרשור הזה
       group: זה משתנה כאשר תקבל הודעה על כל השרשורים בקבוצה
@@ -516,6 +548,17 @@ he:
     normal_option: כשמישהו רוצה את תשומת ליבי (כאשר מקבל הודעה)
     quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
     quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
+    volume_email_label: אֶלֶקטרוֹנִי
+    volume_push_label: לִדחוֹף
+    all_activity_option: כל הפעילות
+    when_notified_option: כאשר יקבלו הודעה
+    muted_option: מושתק
+    volume_channel_label: איך עלינו לעדכן אותך?
+    email_channel: אֶלֶקטרוֹנִי
+    push_channel: לִדחוֹף
+    email_and_push_channel: דוא"ל ודחיפה
+    off_option: כבוי
+    apply_to_all_threads_in_group: החל הגדרות אלו על כל השרשורים ב-%{group}
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -621,6 +664,16 @@ he:
     email_notifications: דוא"ל לאחר הודעה
     email_none: אין אימיילים
     new_to_you: חדש לך
+    email_and_push_when_notified: דוא"ל והתראת Push בעת קבלת התראה
+    email_when_notified: דוא"ל בעת קבלת התראה
+    push_when_notified: התראת Push בעת קבלת התראה
+    daily_catch_up_email: אימייל סיכום יומי
+    in_app_only: בתוך האפליקציה בלבד
+    email_and_device_when_notified: התראות בדוא"ל ובמכשיר לאחר קבלת הודעה
+    device_notification_when_notified: התראה במכשיר בעת קבלת התראה
+    no_notifications: אין התראות
+    catch_up_email_every_second_day: אימייל השלמה כל יומיים
+    weekly_catch_up_email: אימייל שבועי לעדכון
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -1622,6 +1675,9 @@ he:
     submit_delete: מחק את החשבון שלי עכשיו
     submit_deactivate: השבת את החשבון שלי עכשיו
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: יום שני
     tuesday: יום שלישי
     wednesday: יום רביעי
@@ -1638,8 +1694,7 @@ he:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד"כ 2-3 מיילים בשנה.
     email_catch_up_day: דוא"ל סיכום
-    on_participation_label: הרשם בהשתתפות
-    on_participation_description: כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי.
+    digest_email: דוא"ל סיכום
     announcement_label: הודעות
     announcement_description: אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע"י אנשים בקבוצות שלך
     mentioned_label: איזכורים ותגובות
@@ -1655,8 +1710,11 @@ he:
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
     daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
+    digest_email_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
     never: לְעוֹלָם לֹא
     send_email: שלח אימייל
+    group_notifications: התראות קבוצתיות
+    group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -3019,3 +3077,18 @@ he:
     nobody_will_be_notified: אף אחד לא יקבל הודעה
     one_person_will_be_notified: אדם אחד יקבל הודעה
     x_people_will_be_notified: "%{count} אנשים יקבלו הודעה"
+  push_notifications:
+    title: התראות דחיפה
+    subtitle: קבל התראות בדפדפן זה
+    not_supported: התראות דחיפה אינן זמינות בדפדפן זה
+    permission_denied: התראות דחיפה חסומות בהגדרות הדפדפן שלך
+    manage_devices: ניהול מכשירי הודעות דחיפה
+    enabled: התראות דחיפה מופעלות עבור דפדפן זה
+    disabled: התראות דחיפה מושבתות עבור דפדפן זה
+    device_removed: מכשיר התראות דחיפה הוסר
+    enable_device: הפעל בדפדפן זה
+    disable_device: השבת בדפדפן זה
+    devices: דפדפנים מופעלים
+    browser_device: דפדפן
+    remove_device: הסר את הדפדפן
+    enable_from_loomio: הפעלת הודעות דחיפה מהגדרות ההתראות כשאתה מחובר ל-Loomio

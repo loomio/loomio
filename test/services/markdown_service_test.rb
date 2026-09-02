@@ -18,7 +18,7 @@ class MarkdownServiceTest < ActiveSupport::TestCase
       assert_equal 1, fragment.css('img').length
       assert_equal 3, fragment.css('a').length
       assert_includes fragment.text, '<img src=x onerror=alert(1)>'
-      assert_includes fragment.at_css('.mailer-tag').text, '<img src=x onerror=alert(1)>'
+      assert_includes fragment.at_css('.email-tag').text, '<img src=x onerror=alert(1)>'
     end
   end
 

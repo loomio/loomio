@@ -66,7 +66,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     TopicReader.create!(
       user: @user,
       topic: secret_discussion.topic,
-      volume: "normal",
+      volume_email: "normal",
+      volume_push: "quiet",
       guest: true,
       revoked_at: 1.minute.ago
     )
@@ -298,7 +299,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "dismiss updates dismissed_at" do
     sign_in @user
     reader = TopicReader.for(user: @user, topic: @topic)
-    reader.update(volume: TopicReader.volumes[:normal])
+    reader.update(volume_email: TopicReader.volume_emails[:normal])
 
     patch :dismiss, params: { id: @topic.id }
 
@@ -310,7 +311,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "recall updates dismissed_at to be nil" do
     sign_in @user
     reader = TopicReader.for(user: @user, topic: @topic)
-    reader.update(volume: TopicReader.volumes[:normal], dismissed_at: 1.day.ago)
+    reader.update(volume_email: TopicReader.volume_emails[:normal], dismissed_at: 1.day.ago)
 
     patch :recall, params: { id: @topic.id }
 
@@ -448,18 +449,31 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "sets the volume of a topic" do
     sign_in @user
     reader = TopicReader.for(user: @user, topic: @topic)
-    reader.update(volume: :loud)
+    reader.update(volume_email: :loud, volume_push: :quiet)
 
-    patch :set_volume, params: { id: @topic.id, volume: :mute }
+    patch :set_volume, params: { id: @topic.id, volume_email: :quiet, volume_push: :normal }
 
     assert_response :success
-    assert_equal :mute, reader.reload.volume.to_sym
+    assert_equal :quiet, reader.reload.volume_email.to_sym
+    assert_equal :normal, reader.volume_push.to_sym
+  end
+
+  test "sets email volume without changing push volume when push is omitted" do
+    sign_in @user
+    reader = TopicReader.for(user: @user, topic: @topic)
+    reader.update!(volume_email: :loud, volume_push: :normal)
+
+    patch :set_volume, params: { id: @topic.id, volume_email: :quiet }
+
+    assert_response :success
+    assert_equal :quiet, reader.reload.volume_email.to_sym
+    assert_equal :normal, reader.volume_push.to_sym
   end
 
   test "does not update volume for unauthorized topic" do
     sign_in @user
 
-    patch :set_volume, params: { id: discussions(:alien_discussion).topic.id, volume: :mute }
+    patch :set_volume, params: { id: discussions(:alien_discussion).topic.id, volume_email: :quiet, volume_push: :quiet }
 
     refute_equal 200, response.status
   end
@@ -467,7 +481,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   # Test history action
   test "history returns readers and sideloaded users" do
     sign_in @admin
-    TopicReader.find_or_initialize_by(user: @user, topic: @topic).update!(last_read_at: 1.hour.ago, volume: :normal)
+    TopicReader.find_or_initialize_by(user: @user, topic: @topic).update!(last_read_at: 1.hour.ago, volume_email: :normal)
 
     get :history, params: { id: @topic.id }
 

@@ -87,7 +87,7 @@ module Dev::Scenarios::Discussion
     redirect_to poll_path(poll)
   end
 
-  def setup_thread_catch_up
+  def setup_thread_digest
     jennifer.update(email_catch_up_day: 7)
     CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
     topic_item = nil
@@ -102,11 +102,11 @@ module Dev::Scenarios::Discussion
     create_fake_stances(poll: poll)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
     TopicService.lock(topic: create_discussion.topic, actor: patrick)
-    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
+    DigestMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 
-  def setup_thread_catch_up_with_standalone_poll
+  def setup_thread_digest_with_standalone_poll
     jennifer.update(email_catch_up_day: 7)
 
     # Discussion thread with a comment
@@ -121,7 +121,7 @@ module Dev::Scenarios::Discussion
       group_id: create_group.id
     }, actor: patrick)
 
-    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
+    DigestMailer.digest(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end
 
@@ -256,7 +256,7 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_new_comment_email
     @group = Group.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!(patrick).set_volume!(:loud)
+    @group.add_admin!(patrick).set_volume!(email: :loud, push: :quiet)
     @group.add_member! jennifer
 
     @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
@@ -267,11 +267,11 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_new_comment_thread_subscribed_email
       @group = Group.create!(name: 'Dirty Dancing Shoes')
-      @group.add_admin!(patrick).set_volume!(:normal)
+      @group.add_admin!(patrick).set_volume!(email: :normal, push: :quiet)
       @group.add_member! jennifer
 
       @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
-      TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(:loud)
+      TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(email: :loud, push: :quiet)
       @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
       CommentService.create(comment: @comment, actor: jennifer)
       last_email

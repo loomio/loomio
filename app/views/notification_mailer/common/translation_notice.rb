@@ -10,7 +10,7 @@ class Views::NotificationMailer::Common::TranslationNotice < Views::ApplicationM
   def view_template
     return unless TranslationService.show_translation(@topic_item.itemable, @recipient)
 
-    p(class: "py-1") do
+    p(class: "email-translation-notice") do
       # _html suffix makes Rails return SafeBuffer
       raw t(
         :'email.content_was_translated_html',

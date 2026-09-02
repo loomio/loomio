@@ -41,6 +41,10 @@ class Views::Application::Layout < Views::Application::Component
     title { plain meta_hash[:title] }
     meta charset: "utf-8"
     meta name: "viewport", content: "width=device-width, initial-scale=1.0"
+    meta name: "theme-color", content: AppConfig.theme[:primary_color]
+    meta name: "apple-mobile-web-app-capable", content: "yes"
+    meta name: "apple-mobile-web-app-status-bar-style", content: "default"
+    meta name: "apple-mobile-web-app-title", content: AppConfig.theme[:site_short_name]
     meta content: meta_hash[:title], property: "og:title"
     meta content: meta_hash[:description], name: "description", property: "og:description"
     meta name: "robots", content: @robots if @robots
@@ -55,6 +59,7 @@ class Views::Application::Layout < Views::Application::Component
     link rel: "icon", type: "image/png", sizes: "32x32", href: AppConfig.theme[:favicon32_src]
     link rel: "icon", href: AppConfig.theme[:icon_src]
     link rel: "apple-touch-icon", href: AppConfig.theme[:touch_icon_src]
+    link rel: "manifest", href: "/manifest"
     stylesheet_link_tag "vtfy/themeauto"
     raw vue_css_includes.html_safe
     unless @export || @bot

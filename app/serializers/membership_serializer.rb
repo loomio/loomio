@@ -3,7 +3,8 @@ class MembershipSerializer < ApplicationSerializer
              :group_id,
              :user_id,
              :inviter_id,
-             :volume,
+             :volume_email,
+             :volume_push,
              :admin,
              :delegate,
              :experiences,
@@ -26,4 +27,10 @@ class MembershipSerializer < ApplicationSerializer
       Array(scope[:membership_email_group_ids]).include?(object.group_id)
     )
   end
+
+  def include_volume_email?
+    scope && object.user_id == scope[:current_user_id]
+  end
+
+  alias_method :include_volume_push?, :include_volume_email?
 end

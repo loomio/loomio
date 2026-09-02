@@ -9,9 +9,9 @@ class Views::UserMailer::MergeVerification < Views::ApplicationMailer::BaseLayou
   end
 
   def view_template
-    div(class: "invite-people-mailer") do
-      div(class: "invite-people-mailer__container") do
-        div(class: "invite-people-mailer__body") do
+    div do
+      div do
+        div do
           p do
             raw t(:"user_mailer.merge_verification.body_html",
               name: @target_user.name,
@@ -21,7 +21,7 @@ class Views::UserMailer::MergeVerification < Views::ApplicationMailer::BaseLayou
           p do
             link_to t(:"user_mailer.merge_verification.verify"),
               merge_users_confirm_url(source_id: @source_user.id, target_id: @target_user.id, hash: @hash_value),
-              class: "base-mailer__button base-mailer__button--accent"
+              class: "email-button email-button-accent"
           end
         end
       end

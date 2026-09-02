@@ -1,5 +1,10 @@
 ---
 be:
+  install_app:
+    install_title: Усталяваць %{site_name}
+    install_description: Дадайце %{site_name} на галоўны экран для хутчэйшага доступу
+    install_button: Усталяваць
+    ios_install_description: У Safari адкрыйце меню «Падзяліцца» і выберыце «Дадаць на галоўны экран»
   start_trial:
     title: Пачніце бясплатную пробную версію Loomio
     intro: Дзякуй за цікавасць да Loomio. Мы рады прапанаваць вам бясплатную пробную версію на %{day} дзён, каб вы маглі пераканацца, што Loomio падыходзіць вашай арганізацыі.
@@ -454,6 +459,33 @@ be:
     title_label: Назва
     hint: 'Падказка на наступны раз: паспрабуйце вылучыць нейкі тэкст, перш чым націснуць кнопку «Замацаваць».'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     when_do_you_want_to_be_emailed: Калі вы хочаце атрымаць электронны ліст?
     when_do_you_want_to_be_emailed_thread: Калі вы хочаце атрымаць электронны ліст па гэтай тэме?
     change_your_email_settings: Змяніце налады электроннай пошты
@@ -533,6 +565,17 @@ be:
         loud: Вы будзеце атрымліваць электронныя лісты з інфармацыяй пра ўсю актыўнасць у новых групах.
         normal: Вы будзеце атрымліваць электронныя лісты з аб'явамі ў новых групах.
         quiet: Вы не будзеце атрымліваць электронныя лісты пра новыя групы.
+    volume_email_label: Электронная пошта
+    volume_push_label: Push
+    all_activity_option: Уся актыўнасць
+    when_notified_option: Калі апавяшчэнне
+    muted_option: Адключана
+    off_option: Выключана
+    volume_channel_label: Як нам вам абнаўляць інфармацыю?
+    email_channel: Электронная пошта
+    push_channel: Push
+    email_and_push_channel: Электронная пошта і push-паведамленні
+    apply_to_all_threads_in_group: Ужыць гэтыя налады да ўсіх ланцужкоў у %{group}
   lock_thread_modal:
     body: Блакуйце тэмы, каб выдаліць іх са спісу адкрытых тэм і забараніць іншым каментаваць.
     explanation: Блакуйце тэмы, каб забараніць карыстальнікам каментаваць або ўносіць далейшыя змены
@@ -633,6 +676,16 @@ be:
     showing_unread: Паказваюцца непрачытаныя
     add_comment: Дадаць каментар
     start_decision: Пачаць рашэнне
+    email_and_push_when_notified: Электронная пошта і Push пры атрыманні апавяшчэння
+    email_when_notified: Электронная пошта пры атрыманні апавяшчэння
+    push_when_notified: Push-паведамленне пры атрыманні апавяшчэння
+    daily_catch_up_email: Штодзённы ліст з абнаўленнямі
+    in_app_only: Толькі ў дадатку
+    email_and_device_when_notified: Апавяшчэнні па электроннай пошце і прыладзе пры атрыманні апавяшчэнняў
+    device_notification_when_notified: Апавяшчэнне на прыладзе пры атрыманні апавяшчэння
+    no_notifications: Няма апавяшчэнняў
+    catch_up_email_every_second_day: Электронная пошта для дапаўнення праз дзень
+    weekly_catch_up_email: Штотыднёвы электронны ліст з абнаўленнямі
   search_modal:
     all_content: Увесь кантэнт
     best_match: Найлепшае супадзенне
@@ -1440,7 +1493,7 @@ be:
     organization_name_placeholder: Як называецца ваша арганізацыя?
     description: Апісанне
     description_placeholder: Апішыце мэту вашай групы, каб яе ўдзельнікі ведалі, чаму яны тут.
-    new_description_html: ""
+    new_description_html: ''
     new_description_placeholder: Чым займаецца ваша арганізацыя? Якія рашэнні вам трэба прымаць разам?
     secret_by_default: Да вашай групы будуць мець доступ толькі тыя, хто атрымаў запрашэнне далучыцца. Вы можаце змяніць гэта пазней.
     privacy_statement:
@@ -1701,6 +1754,9 @@ be:
     submit_delete: Выдаліць мой уліковы запіс зараз
     submit_deactivate: Дэактываваць мой уліковы запіс зараз
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Панядзелак
     tuesday: Аўторак
     wednesday: Серада
@@ -1718,7 +1774,9 @@ be:
     deactivate_description: Калі вы больш ніколі не жадаеце атрымліваць ад нас электронныя лісты, вы можаце дэактываваць свой уліковы запіс карыстальніка.
     email_newsletter: Інфармацыйны бюлетэнь Луміа
     email_catch_up_day: Электронны ліст з рэзюмэ
+    digest_email: Электронны ліст з рэзюмэ
     daily_summary_description: Выберыце, калі атрымліваць ліст з аглядам прапушчаных падзей. У гэтым лісце будуць змешчаны ўсе новыя падзеі, якіх вы не бачылі. Гэта добры спосаб быць у курсе падзей, калі вы не звычайны карыстальнік.
+    digest_email_description: Выберыце, калі атрымліваць ліст з аглядам прапушчаных падзей. У гэтым лісце будуць змешчаны ўсе новыя падзеі, якіх вы не бачылі. Гэта добры спосаб быць у курсе падзей, калі вы не звычайны карыстальнік.
     on_participation_label: Падпішыцеся на ўдзел
     on_participation_description: Калі вы ўдзельнічаеце ў дыскусіі, усе далейшыя дзеянні будуць адпраўляцца вам па электроннай пошце па меры іх з'яўлення.
     announcement_label: Аб'явы
@@ -1735,6 +1793,8 @@ be:
     messages:
       updated: Налады электроннай пошты абноўлены
     learn_more: Даведайцеся больш пра налады электроннай пошты...
+    group_notifications: Групавыя апавяшчэнні
+    group_notifications_description: Змяніце ўзровень актыўнасці і канал для вашых груп
   thread_preview:
     replies_count: "%{count} адказаў"
     items_count: "%{count} элементаў"
@@ -2903,3 +2963,18 @@ be:
       government: Урад/Мясцовае самакіраванне
       cohousing: Сумеснае пражыванне і сумеснае пражыванне
       other: Іншае
+  push_notifications:
+    title: Push-апавяшчэнні
+    subtitle: Атрымліваць апавяшчэнні ў гэтым браўзеры
+    not_supported: Push-апавяшчэнні недаступныя ў гэтым браўзеры
+    permission_denied: Push-апавяшчэнні заблакіраваны ў наладах вашага браўзера
+    manage_devices: Кіраванне прыладамі для push-апавяшчэнняў
+    enabled: Push-апавяшчэнні ўключаны для гэтага браўзера
+    disabled: Push-апавяшчэнні адключаны для гэтага браўзера
+    device_removed: Прылада push-апавяшчэнняў выдалена
+    enable_device: Уключыць у гэтым браўзеры
+    disable_device: Адключыць у гэтым браўзеры
+    devices: Уключаныя браўзеры
+    browser_device: Браўзер
+    remove_device: Выдаліць браўзер
+    enable_from_loomio: Уключыце push-апавяшчэнні ў наладах апавяшчэнняў, калі вы ўвайшлі ў Loomio

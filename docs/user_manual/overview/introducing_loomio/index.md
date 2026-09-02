@@ -108,7 +108,7 @@ When starting a discussion, notify the people whose input is needed at that stag
 
 If you create a discussion and poll together only to capture a vote, avoid sending a discussion invitation immediately followed by a poll invitation. Either start the discussion without notifying people and invite them through the poll, or run a [standalone poll](/en/user_manual/polls/intro_to_decisions#without-a-discussion).
 
-Show members the [Catch-up summary and notification settings](/en/user_manual/users/email_settings), especially if they do not expect to visit Loomio every day.
+Show members the [Catch-up and notification settings](/en/user_manual/users/email_settings), especially if they do not expect to visit Loomio every day.
 
 ## Complete the first process
 

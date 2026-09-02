@@ -6,9 +6,9 @@ class Views::NotificationMailer::Layout < Views::ApplicationMailer::Component
     doctype
     html do
       head { render_email_head }
-      body(class: "max-width-600") do
+      body(class: "email-body") do
         raw NotificationMailer::REPLY_DELIMITER.html_safe
-        main(class: "base-mailer__body") do
+        main do
           super
         end
       end

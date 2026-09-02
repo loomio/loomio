@@ -31,7 +31,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "unmentioned comment does not create a notification record" do
     subscriber = @admin
-    TopicReader.for(user: subscriber, topic: @discussion.topic).set_volume!(:loud)
+    TopicReader.for(user: subscriber, topic: @discussion.topic).set_volume!(email: :loud, push: :quiet)
     comment = Comment.new(
       parent: @discussion,
       body: "Subscriber delivery",

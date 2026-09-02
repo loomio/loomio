@@ -304,6 +304,43 @@ el:
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Χθες στο %{site_name}
+      weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
+      other_subject: Πρόσφατα στο %{site_name}
+      do_not_reply: Παρακαλώ μην απαντήσετε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου.
+      mark_as_read: Σημείωσε ως διαβασμένα
+      thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
+      marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
+      click_here: Πατήστε εδώ
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Χθες στο %{site_name}
       weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
       other_subject: Πρόσφατα στο %{site_name}

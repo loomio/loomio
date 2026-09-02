@@ -113,7 +113,7 @@ class PollService
         model: poll
       )
 
-      mention_audience = {
+      recipient_context = {
         newly_mentioned_user_ids: poll.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: poll.mentioned_users.pluck(:id),
         mentioned_group_user_ids: poll.mentioned_group_users.pluck(:id)
@@ -134,8 +134,9 @@ class PollService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -268,6 +269,7 @@ class PollService
         actor: actor,
         recipient_user_ids: users.pluck(:id),
         recipient_chatbot_ids: params[:recipient_chatbot_ids],
+        recipient_audience: params[:recipient_audience],
         recipient_message: params[:recipient_message]
       )
     end
@@ -353,18 +355,17 @@ class PollService
     poll.stv_results = nil if poll.poll_type == 'stv'
     unless poll.valid?
       Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return false
+      return poll
     end
 
     topic_item = Poll.transaction do
       poll.save!
 
-      topic_item = TopicItems::PollReopened.create!(
+      # Reopening remains visible in the timeline but never repeats poll opening notifications.
+      TopicItems::PollReopened.create!(
         itemable: poll,
         user: actor
       )
-      announce_poll_opened(poll) if poll.notify_on_open
-      topic_item
     end
     EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
@@ -730,7 +731,7 @@ class PollService
 
   def self.create_poll_announced_notification!(poll:, actor:, stances: [],
                                                recipient_user_ids: [], recipient_chatbot_ids: [],
-                                               recipient_message: nil,
+                                               recipient_audience: nil, recipient_message: nil,
                                                **)
     stance_recipient_ids = Array(stances).filter_map(&:participant_id)
     NotificationService.create!(
@@ -739,6 +740,7 @@ class PollService
       actor: actor,
       recipient_user_ids: (stance_recipient_ids + Array(recipient_user_ids)).uniq,
       recipient_chatbot_ids: recipient_chatbot_ids,
+      recipient_audience: recipient_audience,
       recipient_message: recipient_message
     )
   end

@@ -65,7 +65,7 @@ module HasMentions
 
   def already_mentioned_group_ids
     notifications = Notification.about(self).where(kind: "group_mentioned")
-    notifications.flat_map { |notification| notification.audience_values["group_ids"] }
+    notifications.flat_map { |notification| notification.recipient_context["group_ids"] }
                  .compact.map(&:to_i).uniq
   end
 

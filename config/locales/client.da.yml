@@ -1,5 +1,10 @@
 ---
 da:
+  install_app:
+    install_title: Installer %{site_name}
+    install_description: Føj %{site_name} til din hjemmeskærm for hurtigere adgang
+    install_button: Installer
+    ios_install_description: Åbn Del i Safari, og vælg Føj til hjemmeskærm
   start_trial:
     title: Start en gratis prøveversion af Loomio
     intro: Tak for din interesse i Loomio. Vi er glade for at kunne tilbyde dig en %{day}-dages gratis prøveperiode, så du kan se, om Loomio passer godt til din organisation.
@@ -434,6 +439,33 @@ da:
     title_label: Titel
     hint: 'Tip til næste gang: Prøv at fremhæve noget tekst, før du klikker på "Fastgør".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Dette ændres, når du får besked om denne tråd
       group: Dette ændres, når du får besked om alle tråde i gruppen
@@ -516,6 +548,17 @@ da:
     normal_option: Når nogen vil have min opmærksomhed (når jeg får besked)
     quiet_option: Ingen e-mails om denne tråd (Fra)
     quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
+    volume_email_label: E-mail
+    volume_push_label: Skubbe
+    all_activity_option: Al aktivitet
+    when_notified_option: Når du får besked
+    muted_option: Slået fra
+    volume_channel_label: Hvordan skal vi opdatere jer?
+    email_channel: E-mail
+    push_channel: Skubbe
+    email_and_push_channel: E-mail og push
+    off_option: Slukket
+    apply_to_all_threads_in_group: Anvend disse indstillinger på alle tråde i %{group}
   inbox:
     clear: Ryd
     latest: Seneste
@@ -621,6 +664,16 @@ da:
     email_notifications: E-mail når du får besked
     email_none: Ingen e-mails
     new_to_you: Ny for dig
+    email_and_push_when_notified: E-mail og pushbesked, når du får besked
+    email_when_notified: E-mail, når du får besked
+    push_when_notified: Pushbesked, når du får besked
+    daily_catch_up_email: Daglig opsummeringsmail
+    in_app_only: Kun i appen
+    email_and_device_when_notified: E-mail- og enhedsnotifikationer ved meddelelse
+    device_notification_when_notified: Enhedsnotifikation ved meddelelse
+    no_notifications: Ingen notifikationer
+    catch_up_email_every_second_day: Opfølgningsmail hver anden dag
+    weekly_catch_up_email: Ugentlig e-mail med opfølgning
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match
@@ -1610,6 +1663,9 @@ da:
     submit_delete: Slet min konto nu
     submit_deactivate: Deaktiver min konto nu
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Mandag
     tuesday: Tirsdag
     wednesday: Onsdag
@@ -1626,8 +1682,7 @@ da:
     email_newsletter: Loomio nyhedsbrev
     email_newsletter_description: Få opdateringer om nye funktioner, træning, begivenheder i din by og fremtiden for Loomio. Normalt 2 eller 3 e-mails om året.
     email_catch_up_day: Opsummerende e-mail
-    on_participation_label: Abonnér ved deltagelse
-    on_participation_description: Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme.
+    digest_email: Opsummerende e-mail
     announcement_label: Normal
     announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
     mentioned_label: Omtaler og svar
@@ -1643,8 +1698,11 @@ da:
     learn_more: Få mere at vide om e-mail-indstillinger...
     mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
     daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
+    digest_email_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
     never: Aldrig
     send_email: Send e-mail
+    group_notifications: Gruppemeddelelser
+    group_notifications_description: Skift aktivitetsniveau og kanal for dine grupper
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -3000,3 +3058,18 @@ da:
     nobody_will_be_notified: Ingen vil blive underrettet
     one_person_will_be_notified: 1 person vil blive underrettet
     x_people_will_be_notified: "%{count} personer vil blive underrettet"
+  push_notifications:
+    title: Push-notifikationer
+    subtitle: Modtag notifikationer i denne browser
+    not_supported: Push-notifikationer er ikke tilgængelige i denne browser
+    permission_denied: Push-notifikationer er blokeret i dine browserindstillinger
+    manage_devices: Administrer push-notifikationsenheder
+    enabled: Push-notifikationer aktiveret for denne browser
+    disabled: Push-notifikationer er deaktiveret for denne browser
+    device_removed: Enhed til push-notifikationer fjernet
+    enable_device: Aktivér i denne browser
+    disable_device: Deaktiver i denne browser
+    devices: Aktiverede browsere
+    browser_device: Browser
+    remove_device: Fjern browser
+    enable_from_loomio: Aktivér push-notifikationer fra notifikationsindstillingerne, mens du er logget ind på Loomio

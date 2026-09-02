@@ -21,7 +21,8 @@ class OutcomeService
         kind: "outcome_announced",
         subject: outcome.created_topic_item || outcome,
         actor: actor,
-        recipient_user_ids: users.pluck(:id)
+        recipient_user_ids: users.pluck(:id),
+        recipient_audience: params[:recipient_audience]
       )
     end
     users
@@ -52,7 +53,7 @@ class OutcomeService
                                            audience: params[:recipient_audience],
                                            include_actor: params[:include_actor].present?)
 
-      audience_values = mention_audience_values(outcome)
+      recipient_context = recipient_context_for(outcome)
       topic_item = TopicItems::OutcomeCreated.create!(itemable: outcome)
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
@@ -61,7 +62,8 @@ class OutcomeService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          audience_values: audience_values
+          recipient_audience: params[:recipient_audience],
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -104,7 +106,7 @@ class OutcomeService
                                            audience: params[:recipient_audience],
                                            include_actor: params[:include_actor].present?)
 
-      audience_values = mention_audience_values(outcome)
+      recipient_context = recipient_context_for(outcome)
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
           kind: "outcome_updated",
@@ -112,7 +114,8 @@ class OutcomeService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
-          audience_values: audience_values
+          recipient_audience: params[:recipient_audience],
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -138,12 +141,12 @@ class OutcomeService
     end
   end
 
-  def self.mention_audience_values(outcome)
+  def self.recipient_context_for(outcome)
     {
       newly_mentioned_user_ids: outcome.newly_mentioned_users.pluck(:id),
       mentioned_user_ids: outcome.mentioned_users.pluck(:id),
       mentioned_group_user_ids: outcome.mentioned_group_users.pluck(:id)
     }
   end
-  private_class_method :mention_audience_values
+  private_class_method :recipient_context_for
 end

@@ -109,7 +109,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     notification = Notification.about(poll).where(kind: "poll_announced").order(:id).last!
     assert_equal expected_voter_ids.sort, notification.recipient_user_ids.sort
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_equal expected_voter_ids.sort,
                  notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id).sort
     assert_empty poll.stances
@@ -225,19 +225,19 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       actor: @admin
     )
 
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
     recipient_ids = notification.notification_deliveries.where(recipient_type: "User").pluck(:recipient_id)
     assert_includes recipient_ids, @admin.id
   end
 
-  test "the delivery resolver accepts an anonymous-ballot notification" do
+  test "the delivery router accepts an anonymous-ballot notification" do
     notification = Notification.create!(
       actor: @admin,
       kind: "poll_closing_soon",
       subject: @poll
     )
 
-    NotificationDeliveryResolver.for(notification).resolve!
+    NotificationDeliveryRouter.for(notification).route!
 
     assert_not_nil notification.reload.deliveries_generated_at
     assert notification.notification_deliveries.exists?(recipient: @admin)
@@ -324,7 +324,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
 
     assert_no_difference -> { Notification.where(kind: %w[stance_created stance_updated]).count } do
-      assert AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+      assert_same ballot, AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
     end
 
     ballot.reload
@@ -438,7 +438,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     notification = Notification.about(poll).find_by!(kind: "poll_announced")
     assert_equal [ @voter.id ], notification.recipient_user_ids
     assert_no_difference -> { TopicItem.where(kind: "poll_announced", itemable: poll).count } do
-      ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+      RouteNotificationDeliveriesWorker.perform_now(notification.id)
     end
 
     AnonymousBallotService.create(

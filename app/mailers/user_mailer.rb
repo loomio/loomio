@@ -30,47 +30,6 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def catch_up(user_id, time_since = nil, frequency = 'daily')
-    user = User.find(user_id)
-    return unless user.email_catch_up_day
-
-    if frequency == 'daily'
-      time_start = time_since || 24.hours.ago
-    elsif frequency == 'other'
-      time_start = time_since || 48.hours.ago
-    else
-      time_start = time_since || 1.week.ago
-    end
-
-    time_finish = Time.zone.now
-
-    topics = TopicQuery.relevant_to(
-      user: user,
-      only_unread: true,
-      or_subgroups: false
-    ).where("topics.last_activity_at > ?", time_start)
-
-    return if topics.empty?
-
-    topics_by_group_id = topics.group_by(&:group_id)
-    subject_key = "email.catch_up.#{frequency}_subject"
-    subject_params = { site_name: AppConfig.theme[:site_name] }
-
-    component = Views::UserMailer::CatchUp.new(
-      user: user,
-      recipient: user,
-      topics_by_group_id: topics_by_group_id,
-      subject_key: subject_key,
-      subject_params: subject_params,
-      time_start: time_start,
-      time_finish: time_finish,
-      utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: user.locale, component: component) {
-      I18n.t(subject_key, **subject_params)
-    }
-  end
 
   def group_export_ready(recipient_id, group_name, blob_signed_id)
     user = User.find(recipient_id)

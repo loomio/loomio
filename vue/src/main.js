@@ -3,12 +3,15 @@ import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
-import './removeServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
 import PlausibleService from '@/shared/services/plausible_service';
 import { installVitePreloadErrorHandler } from '@/shared/services/chunk_error_handling';
+import PwaService from '@/shared/services/pwa_service';
+import PushSubscriptionService from '@/shared/services/push_subscription_service';
+import EventBus from '@/shared/services/event_bus';
 
+PwaService.captureInstallPrompt();
 installVitePreloadErrorHandler();
 
 try {
@@ -74,4 +77,10 @@ boot(function(data) {
   app.use(I18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)
   app.mount("#app")
+
+  const reconcilePushSubscription = () => PushSubscriptionService.reconcile().catch(() => {});
+  EventBus.$on('signedIn', reconcilePushSubscription);
+  PwaService.boot().then(() => {
+    if (Session.isSignedIn()) return reconcilePushSubscription();
+  }).catch(() => {}); // service-worker and push reconciliation failures must not break app boot
 });

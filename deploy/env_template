@@ -13,6 +13,9 @@ ACME_COMPANION_CONTAINER_TAG=2.8
 # human name of the app. eg: Loomio
 SITE_NAME=REPLACE_WITH_HOSTNAME
 
+# optional shorter name displayed beneath the installed app icon
+# SITE_SHORT_NAME=Loomio
+
 # hostname of your app eg: loomio.example.com
 CANONICAL_HOST=REPLACE_WITH_HOSTNAME
 
@@ -24,6 +27,12 @@ PRIVATE_APP_URL=http://app:3000
 
 # email address of admin of the server for LetsEncrypt. eg: you@gmail.com
 SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
+
+# Web push notifications are enabled when all three VAPID settings are present.
+# Generate one key pair for this Loomio installation and keep the private key secret.
+# VAPID_PUBLIC_KEY=
+# VAPID_PRIVATE_KEY=
+# VAPID_SUBJECT=mailto:REPLACE_WITH_CONTACT_EMAIL
 
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
@@ -194,8 +203,11 @@ ACTIVE_STORAGE_SERVICE=local
 
 # Theme variables
 
-# Logos. Prefer SVG for the app logo. PNG for the others
+# Logos. Prefer SVG for the app logo. PNG for the others.
+# Maskable icons should be 192x192 and 512x512 with the logo inside the central 80% safe zone.
 # THEME_ICON_SRC=/files/icon.png
+# THEME_ICON_MASKABLE_192_SRC=/files/icon-maskable-192.png
+# THEME_ICON_MASKABLE_512_SRC=/files/icon-maskable-512.png
 # THEME_APP_LOGO_SRC=/files/logo.svg
 # THEME_EMAIL_HEADER_LOGO_SRC=/files/logo_128h.png
 # THEME_EMAIL_FOOTER_LOGO_SRC=/files/logo_64h.png

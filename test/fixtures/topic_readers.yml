@@ -4,7 +4,7 @@
 #   topic: test_discussion_topic
 #   token: nureatestdiscussiontoken1234
 #   last_read_at: <%= 1.day.ago %>
-#   volume: 2
+#   volume_email: 2
 #   created_at: <%= 10.days.ago %>
 #   updated_at: <%= 1.day.ago %>
 
@@ -13,7 +13,7 @@
 #   topic: private_discussion_topic
 #   token: nureadprivdiscussiontoken12
 #   last_read_at: <%= 1.day.ago %>
-#   volume: 2
+#   volume_email: 2
 #   created_at: <%= 10.days.ago %>
 #   updated_at: <%= 1.day.ago %>
 
@@ -22,6 +22,6 @@
 #   topic: subgroup_discussion_topic
 #   token: nureadsubgrpdisctoken123456
 #   last_read_at: <%= 1.day.ago %>
-#   volume: 2
+#   volume_email: 2
 #   created_at: <%= 5.days.ago %>
 #   updated_at: <%= 1.day.ago %>

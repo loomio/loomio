@@ -328,6 +328,43 @@ pt_BR:
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Ontem no %{site_name}
+      weekly_subject: Semana passada no %{site_name}
+      other_subject: Recentemente em %{site_name}
+      do_not_reply: Por favor não responda a esse email.
+      mark_as_read: Marcar como lida
+      thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
+      marked_as_read_success: Tudo no e-mail foi marcado como lido
+      click_here: Clique aqui
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Ontem no %{site_name}
       weekly_subject: Semana passada no %{site_name}
       other_subject: Recentemente em %{site_name}

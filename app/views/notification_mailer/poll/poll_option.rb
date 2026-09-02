@@ -20,21 +20,21 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
     link = @poll.active? && tracked_url(@poll, recipient: @recipient, args: { poll_option_id: @poll_option.id })
     semantic_option = @poll.has_option_icon && @poll_option.icon
     border_color = semantic_option ? @poll_option.color : AppConfig.theme[:primary_color]
-    container_class = semantic_option ? "poll-mailer__poll-option-container--semantic" : "poll-mailer__poll-option-container"
+    container_class = semantic_option ? "email-poll-option" : "email-poll-option email-poll-option-standard"
 
     table(
-      class: "#{container_class} mb-2 pa-1",
-      style: "border: 1px solid #{border_color}; border-collapse: separate; border-radius: 4px; width: 100%; max-width: 600px"
+      class: container_class,
+      style: "border: 1px solid #{border_color}"
     ) do
-      tr(class: "poll-mailer__poll-option") do
+      tr do
         td(style: "width: 48px; height: 48px; text-align: center") do
           optional_link_wrapper(link) do
             render_icon(display_name, score)
           end
         end
-        td(class: "pl-4") do
+        td(class: "email-poll-option-content") do
           optional_link_wrapper(link) { plain display_name }
-          div(class: "text-caption") do
+          div(class: "email-caption") do
             optional_link_wrapper(link) { plain TranslationService.plain_text(@poll_option, :meaning, @recipient) }
           end
         end
@@ -46,7 +46,7 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
 
   def optional_link_wrapper(link, &block)
     if link
-      a(href: link, class: "text-decoration-none", &block)
+      a(href: link, class: "email-poll-option-link", &block)
     else
       span(&block)
     end
@@ -67,19 +67,19 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
       end
     when 'score', 'dot_vote'
       if score
-        div(class: "text-h6") { plain score.to_s }
+        div(class: "email-poll-score") { plain score.to_s }
       else
         selection_indicator("☐")
       end
     when 'ranked_choice'
       if score
-        div(class: "text-h6") { plain "##{@poll.minimum_stance_choices - score + 1}" }
+        div(class: "email-poll-score") { plain "##{@poll.minimum_stance_choices - score + 1}" }
       else
         selection_indicator("☐")
       end
     when 'stv'
       if score
-        div(class: "text-h6") { plain "##{score}" }
+        div(class: "email-poll-score") { plain "##{score}" }
       else
         selection_indicator("☐")
       end
@@ -94,6 +94,6 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
   end
 
   def selection_indicator(character)
-    span(class: "poll-mailer__option-indicator", style: "font-size: 24px; line-height: 24px") { plain character }
+    span(class: "email-poll-option-indicator", style: "font-size: 24px; line-height: 24px") { plain character }
   end
 end

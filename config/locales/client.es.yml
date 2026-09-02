@@ -1,5 +1,10 @@
 ---
 es:
+  install_app:
+    install_title: Instalar %{site_name}
+    install_description: Añade %{site_name} a tu pantalla de inicio para acceder más rápido
+    install_button: Instalar
+    ios_install_description: En Safari, abre Compartir y selecciona Añadir a pantalla de inicio
   start_trial:
     title: Iniciar una prueba gratuita de Loomio
     intro: Gracias por tu interés en Loomio. Estamos encantados de ofrecerte una prueba gratuita de %{day} días para que puedas ver si Loomio es una buena opción para tu organización.
@@ -436,6 +441,33 @@ es:
     title_label: Título
     hint: 'Indicio para la próxima vez: Intenta resaltar algo de texto antes de clicar "Pin".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Esto cambia cuando seas notificado sobre este hilo
       group: Estos cambios cuando serás notificado acerca de todos los hilos en el grupo
@@ -518,6 +550,17 @@ es:
     normal_option: Cuando alguien quiere mi atención (Cuando se me notifica)
     quiet_option: No se recibirán correos electrónicos sobre este hilo (Desactivado).
     quiet_explained: No recibirás ningún correo electrónico, incluso si alguien intenta notificarte.
+    volume_email_label: Correo electrónico
+    volume_push_label: Push
+    all_activity_option: Toda actividad
+    when_notified_option: Cuando te notifiquen
+    muted_option: Silenciado
+    volume_channel_label: "¿Cómo quieres mantenerte al día?"
+    email_channel: Correo electrónico
+    push_channel: Push
+    email_and_push_channel: Correo electrónico y push
+    off_option: Desactivado
+    apply_to_all_threads_in_group: Aplica esta configuración a todos los hilos de %{group}
   inbox:
     clear: Limpiar
     latest: Últimos
@@ -623,6 +666,16 @@ es:
     email_notifications: Correo electrónico cuando se me notifique
     email_none: Sin correos electrónicos
     new_to_you: Nuevo para ti
+    email_and_push_when_notified: Correo electrónico y notificación push cuando recibas una notificación
+    email_when_notified: Correo electrónico cuando recibas una notificación
+    push_when_notified: Notificación push cuando recibas una notificación
+    daily_catch_up_email: Correo electrónico de resumen diario
+    in_app_only: Solo dentro de la aplicación
+    email_and_device_when_notified: Correo electrónico y notificación del dispositivo cuando recibas una notificación
+    device_notification_when_notified: Notificación del dispositivo cuando recibas una notificación
+    no_notifications: Sin notificaciones
+    catch_up_email_every_second_day: Correo electrónico de resumen cada dos días
+    weekly_catch_up_email: Correo electrónico de resumen semanal
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido
@@ -1633,6 +1686,9 @@ es:
     submit_delete: Borrar mi cuenta ahora
     submit_deactivate: Desactivar mi cuenta ahora
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Lunes
     tuesday: Martes
     wednesday: Miércoles
@@ -1649,8 +1705,7 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
-    on_participation_label: 'Suscribirte a la participación '
-    on_participation_description: 'Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. '
+    digest_email: Correo electrónico de resumen diario
     announcement_label: Anuncios
     announcement_description: Recibirás notificaciones por correo electrónico sobre todos los contenidos anunciados por personas en tus grupos.
     mentioned_label: 'Menciones y Respuestas '
@@ -1666,8 +1721,11 @@ es:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
+    digest_email_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
     never: Nunca
     send_email: Enviar correo electrónico
+    group_notifications: Notificaciones de grupo
+    group_notifications_description: Cambia el nivel de actividad y el canal para tus grupos
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"
@@ -3036,3 +3094,18 @@ es:
     nobody_will_be_notified: Nadie será notificado
     one_person_will_be_notified: Se notificará a 1 persona
     x_people_will_be_notified: Se notificará a %{count} personas
+  push_notifications:
+    title: Notificaciones push
+    subtitle: Recibe notificaciones en este navegador
+    not_supported: Las notificaciones push no están disponibles en este navegador
+    permission_denied: Las notificaciones push están bloqueadas en la configuración de tu navegador
+    manage_devices: Administrar dispositivos de notificaciones push
+    enabled: Las notificaciones push están habilitadas para este navegador
+    disabled: Las notificaciones push están desactivadas para este navegador
+    device_removed: Dispositivo de notificaciones push eliminado
+    enable_device: Habilitar en este navegador
+    disable_device: Desactivar en este navegador
+    devices: Navegadores habilitados
+    browser_device: Navegador
+    remove_device: Eliminar navegador
+    enable_from_loomio: Habilita las notificaciones push desde la configuración de notificaciones cuando hayas iniciado sesión en Loomio

@@ -1,5 +1,10 @@
 ---
 uk:
+  install_app:
+    install_title: Встановити %{site_name}
+    install_description: Додайте %{site_name} на початковий екран для швидшого доступу
+    install_button: Встановити
+    ios_install_description: У Safari відкрийте меню «Поширити» й виберіть «На початковий екран»
   start_trial:
     title: Почніть безкоштовну пробну версію Loomio
     intro: Дякуємо за інтерес до Loomio. Ми раді запропонувати вам %{day}-денну безкоштовну пробну версію, щоб ви могли перевірити, чи Loomio добре підходить для вашої організації.
@@ -437,6 +442,33 @@ uk:
     title_label: Назва
     hint: 'Підказка для наступного разу: Спробуйте виділити текст, перш ніж натиснути кнопку "Закріпити".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Змінює налаштування щодо сповіщень з цієї теми
       group: Змінює налаштування щодо сповіщень з усіх тем в цій групі
@@ -519,6 +551,17 @@ uk:
     normal_option: Коли хтось хоче моєї уваги (коли мене повідомляють)
     quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
     quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
+    volume_email_label: Електронна пошта
+    volume_push_label: Натисніть
+    all_activity_option: Вся активність
+    when_notified_option: Коли буде повідомлено
+    muted_option: Вимкнено
+    volume_channel_label: Як нам слід вас оновлювати?
+    email_channel: Електронна пошта
+    push_channel: Натисніть
+    email_and_push_channel: Електронна пошта та push-повідомлення
+    off_option: Вимкнено
+    apply_to_all_threads_in_group: Застосувати ці налаштування до всіх тем у %{group}
   inbox:
     clear: Очистити
     latest: Останній
@@ -624,6 +667,16 @@ uk:
     email_notifications: Електронна пошта при отриманні сповіщення
     email_none: Без електронних листів
     new_to_you: Новий для тебе
+    email_and_push_when_notified: Електронна пошта та push-повідомлення після отримання сповіщення
+    email_when_notified: Електронна пошта після отримання сповіщення
+    push_when_notified: Push-повідомлення після отримання сповіщення
+    daily_catch_up_email: Щоденний електронний лист зі зведенням
+    in_app_only: Тільки в додатку
+    email_and_device_when_notified: Електронна пошта та сповіщення на пристрій при отриманні сповіщення
+    device_notification_when_notified: Сповіщення на пристрій при отриманні сповіщення
+    no_notifications: Немає сповіщень
+    catch_up_email_every_second_day: Електронна пошта для надолуження зведень через день
+    weekly_catch_up_email: Щотижневий електронний лист із пропущеними оновленнями
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч
@@ -1627,6 +1680,9 @@ uk:
     submit_delete: Видалити мій обліковий запис
     submit_deactivate: Деактивувати мій обліковий запис зараз
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Понеділок
     tuesday: Вівторок
     wednesday: Середа
@@ -1643,8 +1699,7 @@ uk:
     email_newsletter: Розсилка Loomio
     email_newsletter_description: Отримуйте повідомлення про нові функції, навчання, події у вашому місті та щодо майбутнього Loomio. Зазвичай це 2 або 3 листи на рік.
     email_catch_up_day: Підсумковий електронний лист
-    on_participation_label: Підписатися на участь
-    on_participation_description: Коли ви берете участь в темі, вся подальші оновлення будуть одразу надсилатись вам електронною поштою.
+    digest_email: Підсумковий електронний лист
     announcement_label: Оголошення
     announcement_description: Ви отримаєте лист про весь вміст, який було оголошено у ваших групах
     mentioned_label: Згадки та відповіді
@@ -1660,8 +1715,11 @@ uk:
     learn_more: Дізнатись більше про налаштування електронної пошти...
     mentioned_description: Коли хтось {'@'}згадує вас у коментарі, ви отримуєте сповіщення електронною поштою
     daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
+    digest_email_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
     never: Ніколи
     send_email: Надіслати електронного листа
+    group_notifications: Групові сповіщення
+    group_notifications_description: Змініть рівень активності та канал для своїх груп
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
@@ -3030,3 +3088,18 @@ uk:
     nobody_will_be_notified: Нікого не повідомлять
     one_person_will_be_notified: 1 особа отримає сповіщення
     x_people_will_be_notified: "%{count} людей отримають сповіщення"
+  push_notifications:
+    title: Push-сповіщення
+    subtitle: Отримувати сповіщення в цьому браузері
+    not_supported: Push-сповіщення недоступні в цьому браузері
+    permission_denied: Push-сповіщення заблоковано в налаштуваннях вашого браузера
+    manage_devices: Керування пристроями push-сповіщень
+    enabled: Push-сповіщення ввімкнено для цього браузера
+    disabled: Push-сповіщення вимкнено для цього браузера
+    device_removed: Пристрій для push-сповіщень видалено
+    enable_device: Увімкнути в цьому браузері
+    disable_device: Вимкнути в цьому браузері
+    devices: Увімкнені браузери
+    browser_device: Браузер
+    remove_device: Видалити браузер
+    enable_from_loomio: Увімкніть push-сповіщення в налаштуваннях сповіщень, коли ви ввійшли в Loomio

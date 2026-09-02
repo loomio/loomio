@@ -329,6 +329,43 @@ pl:
     unsubscribe: 'Anuluj subskrypcję lub zmień preferencje dotyczące poczty e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aby anulować subskrypcję lub zmienić preferencje poczty e-mail."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Wczoraj na %{site_name}
+      weekly_subject: W zeszłym tygodniu na %{site_name}
+      other_subject: Ostatnio w %{site_name}
+      do_not_reply: Proszę nie odpowiadać na tę wiadomość e-mail.
+      mark_as_read: Oznacz jako przeczytane
+      thanks_for_reading: Dziękujemy za przeczytanie, miłego dnia!
+      marked_as_read_success: Wszystko z wiadomości e-mail zostało oznaczone jako przeczytane
+      click_here: Kliknij tutaj
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Wczoraj na %{site_name}
       weekly_subject: W zeszłym tygodniu na %{site_name}
       other_subject: Ostatnio w %{site_name}

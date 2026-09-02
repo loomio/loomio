@@ -1,150 +1,131 @@
 # Notifications
 
-The notifications you receive from Loomio help you stay in touch with activity in your Loomio groups, be alerted to new discussions, polls, outcomes and when someone wants to get your attention.
+Notifications help groups maintain momentum by drawing your attention to discussions and decisions that need a response.
 
-The default notification settings are intended to alert you to important activity in your group without overwhelming your email in-box.  
+Notifications are often the starting point when you return to Loomio. They let you know when:
 
-The default settings work for most people.  Change notification settings to suit the way you work. 
+- someone mentions you or replies to something you wrote
+- a new discussion is shared with you
+- you are invited or reminded to vote
+- a poll is closing soon
+- an outcome is announced
 
-## Overview video
+Loomio's notification settings let you choose how closely you want to follow each group or thread. Notifications remain available in Loomio, so you can review what needs your attention when you are ready.
 
-<iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/0Mb2_D74ktM?start=2?rel=0" frameborder="0" allowfullscreen></iframe>
+## Two ways to begin
 
+Most people can start with one of two approaches:
+
+- **When notified** — receive an email when someone asks for your attention, and include everything else in your daily catch-up. Start here if you are still learning how your group uses Loomio.
+- **Once per day** — set Email to **Catch-up only** and keep your catch-up set to **Every day**. Your notifications and other unread activity will be delivered together in one email.
+
+New accounts start with **When notified** and a daily catch-up. This brings mentions, replies, discussions shared with you, invitations and reminders to vote, polls closing soon, and outcomes to your attention as they happen without sending an immediate update about every comment or vote.
+
+If you would rather receive your Loomio notifications all at once, move to the once-per-day approach. You can change this later as your pattern of work changes.
+
+For a group or thread that you want to follow more closely, choose **All activity** to receive every update as it happens.
+
+These defaults apply when you join a group. Threads initially inherit the settings of their group, but you can follow an important thread more closely or reduce its notifications without changing the rest of the group.
 
 ## Notifications in Loomio
 
-When you are notified, Loomio will send a notification within the app and, by default, to your email.
-
-The bell icon in the top-right is where notifications are accessed within the app; a number will display the number of notifications you have yet to read.
+The bell icon in the top-right is where notifications are accessed within the app; a number shows how many notifications you have yet to read.
 
 ![](in_app_notifications.png)
 
-The notification list tells you when someone mentions you, invites you to vote, starts a discussion, or shares other activity that needs your attention. Select a notification to open the related discussion or poll.
+Select a notification to open the related discussion or poll.
 
-## How access and notifications fit together
+## Catch-up
 
-Being able to see something does not mean you will receive an immediate notification about it.
+The catch-up provides a regular overview of activity without requiring you to follow each group throughout the day.
 
-- **Access** controls which groups, discussions, and polls you are allowed to open.
-- **Invitations, mentions, and replies** ask for your attention and normally send an immediate in-app notification and email.
-- **Subscriptions** send email for all activity in a group or thread.
-- The **Catch-up summary** collects unread activity into one scheduled email.
+It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Each notification includes its related comment, discussion description, poll details, outcome, or shared vote when available. The unread section can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
 
-For example, a group member can find a discussion without being invited to it. Inviting them sends it to their attention immediately. Mentioning them later asks for a specific response without changing their access.
+Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
 
-## Email notifications
+![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)
 
-Loomio sends emails to keep you updated on the activity in your groups. The default settings assume that you don't have a habit of using Loomio regularly so are designed to ensure you can stay up to date by checking your emails.
+### Choose your catch-up schedule
 
-Emails we send out include:
+Open **Notification settings** from your user menu to choose how often you receive a catch-up.
 
-- A **Catch-up summary email** containing recent activity you have not read. Its subject is **Yesterday on Loomio**, **Recently on Loomio**, or **Last week on Loomio**, depending on your chosen schedule.
+![Notification settings in the user menu](sidebar_notification_settings.png)
 
-- **Mention** and **Reply** notifications. If someone replies to a comment you wrote, or they write a comment and mention you in it, you'll get an email with what they wrote.
+New accounts start with a daily catch-up. The available schedules are:
 
-- Invitations to discussions and notification of polls or proposals. If someone wants to notify the group about a new decision or discussion, they can select everyone or just some people in the group to notify. Also be aware of **poll closing soon** and **outcome** notifications.
+- **Never** to turn off the catch-up
+- **Every day** for activity from approximately the previous 24 hours
+- **Every second day** for activity from approximately the previous two days
+- a weekday to receive a weekly catch-up on that day
 
-- Discussion updates. If **subscribe on participation** is checked, then after you comment or vote within a discussion, you'll be emailed any further activity.
+The catch-up is sent in the morning according to the time zone in your Loomio profile.
+
+![Catch-up schedule setting](digest_email_setting.png)
+
+### Mark a catch-up as read
+
+Select **Mark catch-up as read** to mark its notifications and topic activity as read in Loomio. Opening or previewing the catch-up does not mark anything as read.
+
+A catch-up is not specific to one discussion, so do not reply to it. Open a discussion or poll from the catch-up before commenting or replying.
+
+## Group and thread notification settings
+
+You can choose how closely to follow each group and thread. These settings belong to you; group administrators cannot change them.
+
+Change your defaults for groups you join from **Notification settings** in your user menu. You can then override the default for a particular group or thread. A thread override changes only that thread and does not affect the rest of its group.
+
+### Group notification settings
+
+To change the notification setting for a group:
+
+1. Open the group page.
+2. Open the notification settings for the group.
+
+![Notification settings on a group page](group_notifications.png)
+
+The form asks **How do you want to stay updated?** Choose **Catch-up only**, **When notified**, or **All activity**. If your catch-up is set to **Never**, **Catch-up only** is replaced by **No email updates** or **No push updates**.
+
+Select **Apply to all groups** to use the same setting for all of your groups.
+
+![Group notification settings](group_notification_settings.png)
+
+### Thread notification settings
+
+To change notification settings for an individual thread, open the notification control in the thread sidebar.
+
+![The notification control in a thread](thread_subscribe.png)
+
+![Thread notification settings](thread_notifications.png)
+
+Thread notification settings use the same **Catch-up only**, **When notified**, and **All activity** choices. A thread setting overrides the group setting for that thread.
+
+>[!Note]
+>The changes in **Thread notification settings** apply only to the thread you have open. Select **Change notifications for group** to change the setting inherited by the group's other threads.
+
+## Email delivery
+
+By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
 
 When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
 
-Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The Catch-up summary cannot accept replies; open the linked discussion or poll first.
+Poll invitation emails show the poll and its response options, but selecting an option opens Loomio in your browser to complete the vote. You may need to sign in or confirm your account. The catch-up cannot accept replies; open the linked discussion or poll first.
 
-## User email settings
+![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)
 
-### Notification settings
+## Install Loomio and enable push notifications
 
-To see and change notification settings, go to **Notification settings** under your user profile on the sidebar menu.
+Loomio can be installed from supported browsers so you can open it from your home screen or app launcher in its own window. Open **Notification settings** and select **Install** when that option is available. On an iPhone or iPad, open Loomio in Safari, select **Share**, then select **Add to Home Screen**. The installed web app still requires an internet connection.
 
-If the sidebar is closed, click on the menu icon (**☰**) to open it.
+Installing Loomio does not enable push automatically. Open **Notification settings** in each browser or installed app where you want to receive push notifications, allow notifications when asked, then select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
 
-![](sidebar_notification_settings.png)
+Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
 
-There are three settings that apply to every group you belong to.
+![Push notification settings and enabled browsers](push_notification_settings.png)
 
-![email settings](email_settings.png)
+## Turn off external notifications
 
-### Mentions & Replies
+To stop email and push messages for group and thread activity, open **Notification settings** from your user menu, set the catch-up to **Never**, and choose **No email updates** and **No push updates**. Notifications and activity remain available when you open Loomio.
 
-Enabling this setting means when someone wants to get your attention, they can @mention your name in a comment, which will notify you. We recommend you leave this setting on, so you'll get an email when this happens. The default setting is 'on'.
+![Set the catch-up to Never](turn_off_all_emails_1.png)
 
-### Subscribe on participation
-
-Enabling this setting means when you participate in a thread, all further activity will be emailed to you immediately.  If it is an active thread, you may receive many emails. The default setting is off.
-
-### Catch-up summary email
-
-The Catch-up summary email provides a regular overview of unread activity without emailing you about every event or requiring you to check Loomio each day.
-
-It groups discussions and standalone polls by group, and can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
-
-Loomio does not send a summary when there is no unread activity from the relevant period.
-
-Choose how often you want to receive it:
-
-- **Never** to turn off the summary
-- **Every day** for activity from approximately the previous 24 hours
-- **Every second day** for activity from approximately the previous two days
-- a weekday to receive a weekly summary on that day
-
-The summary is sent in the morning according to the time zone in your Loomio profile.
-
-Opening the email normally marks the activity included in it as read in Loomio. Some email clients block the small image used to do this; in that case, the activity remains unread until you open it in Loomio.
-
-The Catch-up summary is not a discussion-specific email, so do not reply to it. Open a discussion or poll from the summary before commenting or replying.
-
-![catchup summary email setting](catchup_summary_email_setting.png)
-
-## Group email settings
-
-You can configure what notification emails you get for each group you belong to.
-
-Notification settings for each specific group are found in your Loomio group. To find them
-
-- Click on your group page
-- Click on the letter envelope icon to open, **Notifications for [group name]**
-
-![](group_notifications.png)
-
-**When do you want to be notified?**
-
-1. **whenever there is activity** (subscribed)
-
- - If you want the experience of a traditional email mailing list, where you are emailed everything as it happens. You will be emailed whenever there is activity (comments, votes, new threads, proposals, and proposal outcomes) in this group.
-
-2. **when someone asks for your attention** (normal)
-
- - When someone invites you to vote or participate in a thread you'll get an email. In these cases someone in your group is choosing to notify you. This is the default setting.
-
-3. **no notifications** (ignore)
-
- - You won't get notification emails about this group. You will need to sign in to Loomio regularly or read your catch-up summary email to stay updated.
-
-You can apply a particular setting to all of your groups by checking **Apply to all groups**.
-
-![](group_notification_settings.png)
-
-## Thread email settings
-
-To change the email notification settings for an individual thread, click on **(subscribe)**.
-
-![](thread_subscribe.png)
-
-![](thread_notifications.png)
-
-To receive notifications for all activity about this thread, change the setting to **whenever there is activity (subscribed)**.
-
-To receive notifications when someone asks for your attention, select **when someone asks for your attention (normal)**.  This is the default setting.
-
-To turn off notifications for this thread, select **no notifications (ignore)**.  You will not receive email notifications about this thread, so to stay informed you will need to keep any eye on the bell icon at top right of the app, read the Catch-up summary email or sign in to Loomio regularly.
-
->[!Note]
->The settings changes in Thread notifications are only for the particular thread you have open.  Click **Change notifications for group** to change the default settings for all threads.
-
-## Turn off all notifications
-
-To turn off all email notifications go to [Notification settings](/email_preferences). First, untick all the boxes and **Save changes**. Lastly, choose **no notifications** and then **Update**.
-
-![](turn_off_all_emails_1.png)
-
-![](turn_off_all_emails_2.png)
+![Turn off updates for groups](turn_off_all_emails_2.png)

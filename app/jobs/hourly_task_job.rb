@@ -15,7 +15,7 @@ class HourlyTaskJob < ApplicationJob
     Bookmark.discarded.where("discarded_at < ?", 24.hours.ago).delete_all
     GeoLocationWorker.perform_later
 
-    SendDailyCatchUpEmailWorker.perform_later
+    SendDigestEmailWorker.perform_later
 
     if hour == 0
       ThrottleService.reset!('day')

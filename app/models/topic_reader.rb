@@ -14,7 +14,21 @@ class TopicReader < ApplicationRecord
   scope :guests, -> { active.where('topic_readers.guest': true) }
   scope :admins, -> { active.where('topic_readers.admin': true) }
 
-  scope :redeemable, -> { guests.where('topic_readers.accepted_at IS NULL') }
+  # Group members already have membership-based topic access, so stale guest readers must not remain bearer-token invitations.
+  scope :redeemable, -> {
+    guests
+      .where('topic_readers.accepted_at IS NULL')
+      .where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1
+          FROM memberships
+          INNER JOIN topics ON topics.group_id = memberships.group_id
+          WHERE topics.id = topic_readers.topic_id
+            AND memberships.user_id = topic_readers.user_id
+            AND memberships.revoked_at IS NULL
+        )
+      SQL
+  }
 
   scope :redeemable_by, lambda { |user_id|
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
@@ -27,20 +41,14 @@ class TopicReader < ApplicationRecord
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
         m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
-        tr.volume = (m && m.volume) || 'normal'
+        tr.volume_email = m&.volume_email || user.volume_email_default
+        tr.volume_push = m&.volume_push || user.volume_push_default
       end
     else
       new(topic: topic)
     end
   end
 
-  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
-    viewed!(ranges, persist: false)     if ranges
-    set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
-    dismiss!(persist: false)            if dismiss
-    save!                               if changed?
-    self
-  end
 
   def viewed!(ranges = [], persist: true)
     mark_as_read(ranges) unless has_read?(ranges)
@@ -69,16 +77,28 @@ class TopicReader < ApplicationRecord
     save if persist
   end
 
-  def computed_volume
+  def computed_volume_email
     if persisted?
-      volume || membership&.volume || 'normal'
+      volume_email || membership&.volume_email || user.volume_email_default
     else
-      membership.volume
+      membership&.volume_email || user.volume_email_default
     end
   end
 
-  def topic_reader_volume
-    self[:volume]
+  def computed_volume_push
+    if persisted?
+      volume_push || membership&.volume_push || user.volume_push_default
+    else
+      membership&.volume_push || user.volume_push_default
+    end
+  end
+
+  def topic_reader_volume_email
+    self[:volume_email]
+  end
+
+  def topic_reader_volume_push
+    self[:volume_push]
   end
 
   def topic_reader_user_id

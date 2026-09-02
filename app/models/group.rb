@@ -35,7 +35,7 @@ class Group < ApplicationRecord
   has_many :all_members, through: :all_memberships, source: :user
 
   has_many :memberships, -> { active }
-  has_many :members, through: :memberships, source: :user
+  has_many :members, -> { active }, through: :memberships, source: :user
 
   has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
   has_many :delegates, through: :delegate_memberships, source: :user
@@ -204,23 +204,28 @@ class Group < ApplicationRecord
     members.exists?(user.id)
   end
 
-  def members_by_volume(operator, volume)
+  # Build the active member relation once so delivery wrappers only add their
+  # channel-specific volume condition.
+  private def members_by_volume
     User.active.distinct
         .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
         .where('m.revoked_at IS NULL')
-        .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
   end
 
-  def volume_gte_quiet_members
-    members_by_volume('>=', Membership.volumes[:quiet])
+  def email_enabled_members
+    members_by_volume.where.not('m.volume_email': Membership.volume_emails[:quiet])
   end
 
-  def volume_gte_normal_members
-    members_by_volume('>=', Membership.volumes[:normal])
+  def email_loud_members
+    members_by_volume.where('m.volume_email': Membership.volume_emails[:loud])
   end
 
-  def volume_loud_members
-    members_by_volume('=', Membership.volumes[:loud])
+  def push_enabled_members
+    members_by_volume.where.not('m.volume_push': Membership.volume_pushes[:quiet])
+  end
+
+  def push_loud_members
+    members_by_volume.where('m.volume_push': Membership.volume_pushes[:loud])
   end
 
   def author_id

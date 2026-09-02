@@ -96,6 +96,9 @@ languages in the Nov 2025 pass.
 | `config/locales/client.be.yml` | Multiple interpolation keys | Translated placeholder names such as `%{назва}`, `%{аўтар}`, and `%{спасылка}` | Restored source placeholders such as `%{title}`, `%{author}`, and `%{link}` | Interpolation placeholder names must remain unchanged |
 | `config/locales/client.be.yml`, `server.be.yml` | STV method, quota, tie, and validation labels | Translated proper names and ambiguous literal senses such as `Мік`, `заяц`, and `Галстук`; `(a-z)` collapsed to `(az)` | Preserved `Meek`, `Droop`, and `Hare`; used equal-result wording; restored `(a-z)` | STV names are proper nouns, tie means equal results, and ASCII character ranges are literal guidance |
 | `config/locales/client.be.yml`, `server.be.yml` | Loomio `outcome` noun and actions | `вынік` and a literal message-noun translation for “Post outcome” | `выснова` with publish/share action wording | Distinguish the author's closing conclusion from the poll's vote result |
+| `config/locales/client.es.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Formal `Reciba` and inconsistent `seguimiento` / `repaso` wording | Informal-neutral `Correo electrónico de resumen ...` wording | Spanish UI uses informal `tú`; these sibling labels should use the same term as the daily summary email |
+| `config/locales/client.nl_NL.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Formal `U ontvangt` and inconsistent `update-e-mail` wording | `Samenvattingsmail om de dag`, `Wekelijkse samenvattingsmail` | Dutch UI uses informal `je/jouw`; these sibling labels should match the daily summary email |
+| `config/locales/client.ru.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Sentence-style news/notification mailing labels with final full stops | Concise `письмо со сводкой` labels without final full stops | These are summary-email UI labels, and single-sentence UI strings omit final full stops |
 
 ## 2026-07-26 — Anonymous voting notices
 
@@ -300,3 +303,39 @@ languages in the Nov 2025 pass.
 | Multiple `config/locales/client.*.yml` files | `poll_common_form.stance_reason_required_for_block` | Building-block, module, or political-bloc nouns | Wording for the voting action of blocking | Block is a proposal response, not a physical block, software module, or political bloc |
 | `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels ending with a full stop | Removed the final full stop | Single-sentence UI labels do not use final full stops |
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels omitted that the reason is required | Restored the required meaning | The labels must state both the triggering responses and that a reason is required |
+
+## 2026-08-27 — Web Push settings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs meaning physically push (`Drücken`, `Empujar`, `Pousser`, `Duw`) | `Push` | Push is the established notification channel name, not an imperative action |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | New Web Push direct-address strings | Formal `Sie/usted/vous/u` forms | Informal `du/tú/tu/je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | New Web Push status and help strings | Single-sentence UI strings with final full stops | Removed final full stops where reviewed | Single-sentence UI strings do not use final full stops |
+
+## 2026-09-01 — Thread notification summaries
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `strand_nav.email_and_push_when_notified`, `strand_nav.push_when_notified`; Belarusian `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Imperatives meaning physically press or push, such as `Націсніце`, `Empènyer`, `Tryk`, `Πιέστε`, `Paina`, `Pritisni`, `Naciśnij`, `Apăsați`, and `Натиснути` | Notification-channel noun phrases using Push, push notification, or the locale's established technical term | Push is the notification delivery channel, not an instruction to press a control |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `strand_nav.email_and_push_when_notified`, `strand_nav.email_when_notified`, `strand_nav.push_when_notified` | Formal `se le`, `vous`, and `u` forms | Informal `recibas`, `tu`, and `je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | `strand_nav.daily_catch_up_email` | Literal missed-activity wording such as neglected, make up for lost time, or catch up socially | Daily summary email wording | Catch-up names an email digest here, not neglect, social news, or recovering lost time |
+| `config/locales/client.el.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New `strand_nav.*` notification summary labels | Single-sentence UI labels with final full stops | Removed final full stops | Single-sentence UI labels do not use final full stops |
+| `config/locales/client.es.yml`, `client.nl_NL.yml` | `strand_nav.email_and_device_when_notified`, `strand_nav.device_notification_when_notified` | Formal `se reciba` / `u` forms and final full stops | Informal `recibas` / `je` forms without final full stops | Spanish and Dutch address users informally, and single-sentence UI labels do not use final full stops |
+| Multiple `config/locales/client.*.yml` files | `strand_nav.device_notification_when_notified` | Genitive or malformed wording meaning a notification about or owned by a device | Wording for a notification delivered on or to the device | Device describes the delivery channel, not the subject or sender of the notification |
+| `config/locales/client.el.yml`, `client.it.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New device-notification summary labels | Passive, formal, or full-sentence wording | Concise informal notification labels | These strings are compact status labels, not instructions or prose sentences |
+
+## 2026-09-02 — Apply notification settings to group threads
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Wenden Sie diese Einstellungen auf alle Threads in %{group} an.` | `Wende diese Einstellungen auf alle Threads in %{group} an` | Formal `Sie` imperative and final full stop; German uses informal `du`, and short UI labels omit final punctuation |
+| `config/locales/client.es.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplique esta configuración a todos los subprocesos en %{group}.` | `Aplica esta configuración a todos los hilos de %{group}` | Formal imperative, software-subprocess sense, and final full stop; Spanish uses informal `tú` and discussion-thread wording |
+| `config/locales/client.fr.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Appliquez ces paramètres à tous les threads du groupe %{group}` | `Applique ces paramètres à tous les fils de discussion de %{group}` | Formal plural imperative and borrowed technical thread term; French uses informal `tu` and discussion-thread wording |
+| `config/locales/client.ja.yml` | `change_volume_form.apply_to_all_threads_in_group` | `これらの設定を%{group}内のすべてのスレッドに適用します。` | `これらの設定を%{group}内のすべてのスレッドに適用します` | Short UI labels omit final punctuation |
+| `config/locales/client.nl_NL.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Pas deze instellingen toe op alle threads in %{group}.` | `Pas deze instellingen toe op alle threads in %{group}` | Short UI labels omit final punctuation |
+| `config/locales/client.pt_BR.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplique essas configurações a todas as threads em %{group}` | `Aplique essas configurações a todas as discussões em %{group}` | English technical thread term did not convey Loomio discussions |
+| `config/locales/client.ro.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplică aceste setări tuturor firelor de execuție din %{group}` | `Aplică aceste setări tuturor discuțiilor din %{group}` | Used software-execution-thread terminology instead of discussions |
+| `config/locales/client.ru.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Примените эти настройки ко всем потокам в %{группе}.` | `Применить эти настройки ко всем обсуждениям в %{group}` | Formal imperative, software-stream sense, translated interpolation placeholder, and final full stop |
+| `config/locales/client.tr.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Bu ayarları %{group} içindeki tüm iş parçacıklarına uygulayın.` | `Bu ayarları %{group} içindeki tüm konulara uygula` | Formal imperative, software-thread terminology, and final full stop |
+| `config/locales/client.zh_CN.yml` | `change_volume_form.apply_to_all_threads_in_group` | `将这些设置应用于 %{group} 中的所有线程` | `将这些设置应用于 %{group} 中的所有讨论主题` | Used software-execution-thread terminology instead of discussion topics |
+| `config/locales/client.zh_TW.yml` | `change_volume_form.apply_to_all_threads_in_group` | `將這些設定應用於 %{group} 中的所有線程` | `將這些設定套用至 %{group} 中的所有討論串` | Used software-execution-thread terminology instead of discussion threads |

@@ -13,7 +13,7 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
     my_stance = @current_user && ::Stance.latest.find_by(poll_id: @poll.id, participant_id: @current_user.id)
 
     if @poll.has_options && (@poll.decided_voters_count > 0 || @poll.closed_at)
-      div(class: "poll-mailer__results-chart poll-mailer-common-results") do
+      div do
         if @poll.show_results?(voted: my_stance && my_stance.cast_at)
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
           if @poll.poll_type == "meeting"

@@ -21,6 +21,8 @@ module Boot
         plausible_src:       ENV['PLAUSIBLE_SRC'],
         plausible_site:      ENV['PLAUSIBLE_SITE'],
         turnstileSiteKey:    TurnstileService.site_key,
+        webPushEnabled:      WebPushService.configured?,
+        vapidPublicKey:      (ENV['VAPID_PUBLIC_KEY'] if WebPushService.configured?),
         features: {
           app:               AppConfig.app_features
         },

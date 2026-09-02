@@ -304,6 +304,43 @@ fi:
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> peruuttaaksesi tilauksen tai muuttaaksesi sähköpostiasetuksiasi."
     catch_up:
+      catch_up_heading: Your %{site_name} catch-up
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+      daily_subject: Eilen %{site_name}
+      weekly_subject: Viime viikolla %{site_name}
+      other_subject: Äskettäin %{site_name}
+      do_not_reply: Ole hyvä ja älä vastaa tähän sähköpostiin.
+      mark_as_read: Merkitse luetuksi
+      thanks_for_reading: Kiitos kun luit, mukavaa päivää!
+      marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
+      click_here: Klikkaa tästä
+
+    digest:
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
       daily_subject: Eilen %{site_name}
       weekly_subject: Viime viikolla %{site_name}
       other_subject: Äskettäin %{site_name}

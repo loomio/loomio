@@ -183,10 +183,44 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
     assert_response :success
 
-    assert_difference 'Session.count', -1 do
+    terminated_session = Current.session
+    subscription = create_push_subscription(
+      user: user,
+      session: terminated_session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/logout-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    assert_difference [ "Session.count", "PushSubscription.count" ], -1 do
       delete :destroy
     end
     assert_response :success
+    refute PushSubscription.exists?(subscription.id)
+
+    assert_raises ActiveRecord::RecordNotFound do
+      PushSubscriptionService.create_or_update!(
+        session: terminated_session,
+        params: {
+          endpoint: subscription.endpoint,
+          p256dh_key: subscription.p256dh_key,
+          auth_key: subscription.auth_key
+        },
+        user_agent: "concurrent enable"
+      )
+    end
+
+    new_session = user.sessions.create!(user_agent: "returning browser", ip_address: "127.0.0.2")
+    reconciled = PushSubscriptionService.reconcile!(
+      session: new_session,
+      params: {
+        endpoint: subscription.endpoint,
+        p256dh_key: subscription.p256dh_key,
+        auth_key: subscription.auth_key
+      },
+      user_agent: "returning browser"
+    )
+    assert_nil reconciled
   end
 
   test "does not sign in a blank password" do

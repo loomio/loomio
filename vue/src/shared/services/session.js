@@ -6,6 +6,8 @@ import EventBus      from '@/shared/services/event_bus';
 import { hardReload } from '@/shared/helpers/window';
 import { compact } from 'lodash-es';
 import { I18n, loadLocaleMessages } from '@/i18n';
+import PushSubscriptionService from '@/shared/services/push_subscription_service';
+import { signOutSession } from '@/shared/services/session_logout.mjs';
 
 export default new class Session {
   returnTo() {
@@ -41,8 +43,12 @@ export default new class Session {
   }
 
   signOut() {
-    AppConfig.currentUserId = null;
-    return Records.sessions.remote.destroy('').then(() => hardReload('/'));
+    return signOutSession({
+      disableBrowser: () => PushSubscriptionService.disableBrowser(),
+      clearCurrentUser: () => { AppConfig.currentUserId = null; },
+      destroySession: () => Records.sessions.remote.destroy(''),
+      reload: () => hardReload('/')
+    });
   }
 
   isSignedIn() {

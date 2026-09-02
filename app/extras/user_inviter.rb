@@ -182,14 +182,12 @@ class UserInviter
   def self.users_insert_all(emails:, actor:)
     return if emails.empty?
 
-    wday = Date.today.wday
     rows = emails.map do |email|
       user = User.new(
         email: email,
         time_zone: actor.time_zone,
         date_time_pref: actor.date_time_pref,
-        detected_locale: actor.locale,
-        email_catch_up_day: wday
+        detected_locale: actor.locale
       )
       user.username = username_for_insert(email)
       user.key = key_for_insert

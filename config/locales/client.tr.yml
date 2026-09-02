@@ -1,5 +1,10 @@
 ---
 tr:
+  install_app:
+    install_title: "%{site_name} uygulamasını yükle"
+    install_description: Daha hızlı erişmek için %{site_name} uygulamasını ana ekranınıza ekleyin
+    install_button: Yükle
+    ios_install_description: Safari'de Paylaş'ı açın ve Ana Ekrana Ekle'yi seçin
   start_trial:
     title: Loomio'nun ücretsiz deneme sürümünü başlatın
     intro: Loomio'ya gösterdiğiniz ilgi için teşekkür ederiz. Loomio'nun kuruluşunuza uygun olup olmadığını görebilmeniz için size %{day} günlük ücretsiz deneme olanağı sunmaktan mutluluk duyuyoruz.
@@ -434,6 +439,33 @@ tr:
     title_label: Başlık
     hint: 'Bir sonraki sefer için ipucu: "Sabitle"ye tıklamadan önce bir metni vurgulamayı deneyin.'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Bu konu hakkında bilgilendirileceğiniz zaman bu durum değişir
       group: Bu durum, gruptaki tüm ileti dizileri hakkında bilgilendirildiğinizde değişir
@@ -516,6 +548,17 @@ tr:
     normal_option: Birisi dikkatimi istediğinde (bildirim aldığında)
     quiet_option: Bu konuyla ilgili e-posta yok (Kapalı)
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir.
+    volume_email_label: E-posta
+    volume_push_label: İtmek
+    all_activity_option: Tüm faaliyetler
+    when_notified_option: Bildirildiğinde
+    muted_option: Sessiz
+    volume_channel_label: Sizi nasıl bilgilendirmeliyiz?
+    email_channel: E-posta
+    push_channel: İtmek
+    email_and_push_channel: E-posta ve bildirimler
+    off_option: Kapalı
+    apply_to_all_threads_in_group: Bu ayarları %{group} içindeki tüm konulara uygula
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -621,6 +664,16 @@ tr:
     email_notifications: Bildirim aldığımda e-posta gönder
     email_none: E-posta yok
     new_to_you: Sizin için yeni
+    email_and_push_when_notified: Bildirim aldığında e-posta ve anlık bildirim
+    email_when_notified: Bildirim aldığında e-posta
+    push_when_notified: Bildirim aldığında anlık bildirim
+    daily_catch_up_email: Günlük özet e-postası
+    in_app_only: Sadece uygulama içinde
+    email_and_device_when_notified: Bildirim aldığında e-posta ve cihaz bildirimi
+    device_notification_when_notified: Bildirim aldığında cihaz bildirimi
+    no_notifications: Bildirim yok
+    catch_up_email_every_second_day: İki günde bir özet e-postası
+    weekly_catch_up_email: Haftalık özet e-postası
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme
@@ -1610,6 +1663,9 @@ tr:
     submit_delete: Hesabımı hemen sil
     submit_deactivate: Hesabımı şimdi devre dışı bırak
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Pazartesi
     tuesday: Salı
     wednesday: Çarşamba
@@ -1626,8 +1682,7 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
-    on_participation_label: Katılıma abone olun
-    on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
+    digest_email: Yakalama özeti e-postası
     announcement_label: Duyurular
     announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
     mentioned_label: Bahsetmeler ve Yanıtlar
@@ -1643,8 +1698,11 @@ tr:
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
     daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
+    digest_email_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
     never: Asla
     send_email: E-posta gönder
+    group_notifications: Grup bildirimleri
+    group_notifications_description: Gruplarınız için etkinlik seviyesini ve kanalı değiştirin
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
@@ -3000,3 +3058,18 @@ tr:
     nobody_will_be_notified: Kimseye bildirim yapılmayacak
     one_person_will_be_notified: 1 kişiye bildirim gönderilecektir
     x_people_will_be_notified: "%{count} kişiye bildirim gönderilecektir"
+  push_notifications:
+    title: Anlık bildirimler
+    subtitle: Bu tarayıcıda bildirimleri al
+    not_supported: Bu tarayıcıda anlık bildirimler kullanılamıyor
+    permission_denied: Tarayıcı ayarlarınızda anlık bildirimler engellenmiş durumda
+    manage_devices: Anlık bildirim cihazlarını yönetin
+    enabled: Bu tarayıcı için anlık bildirimler etkinleştirildi
+    disabled: Bu tarayıcı için anlık bildirimler devre dışı bırakıldı
+    device_removed: Anlık bildirim cihazı kaldırıldı
+    enable_device: Bu tarayıcıda etkinleştirin
+    disable_device: Bu tarayıcıda devre dışı bırak
+    devices: Etkinleştirilmiş tarayıcılar
+    browser_device: Tarayıcı
+    remove_device: Tarayıcıyı kaldır
+    enable_from_loomio: Loomio'ya giriş yaptıktan sonra Bildirim ayarlarından anlık bildirimleri etkinleştirin

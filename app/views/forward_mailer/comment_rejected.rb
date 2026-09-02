@@ -20,7 +20,7 @@ class Views::ForwardMailer::CommentRejected < Views::ApplicationMailer::BaseLayo
     p do
       link_to t(:"forward_mailer.comment_rejected.open_thread"),
         polymorphic_url(@comment.topic.topicable),
-        class: "base-mailer__button base-mailer__button--accent"
+        class: "email-button email-button-accent"
     end
   end
 end

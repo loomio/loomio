@@ -1,0 +1,1 @@
+Reopening a poll no longer sends a new poll announcement automatically. Poll coordinators can still reopen eligible polls, and the reopening remains visible in the thread timeline. After the new closing time is saved, Loomio opens the reminder form so eligible coordinators can choose recipients and send an in-app, email, or push reminder explicitly.

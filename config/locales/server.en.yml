@@ -604,11 +604,47 @@ en:
       daily_subject: Yesterday on %{site_name}
       weekly_subject: Last week on %{site_name}
       other_subject: Recently on %{site_name}
+      catch_up_heading: Your %{site_name} catch-up
       do_not_reply: Please do not reply to this email.
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
       marked_as_read_success: Everything from the email has been marked as read
       click_here: Click here
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+    digest:
+      daily_subject: Yesterday on %{site_name}
+      weekly_subject: Last week on %{site_name}
+      other_subject: Recently on %{site_name}
+      do_not_reply: Please do not reply to this email.
+      thanks_for_reading: Thanks for reading, have a great day!
+      marked_as_read_success: Everything from the email has been marked as read
+      click_here: Click here
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      mark_as_read: Mark digest as read
     group_membership_approved:
       intro: Your request for access to the group %{group_name} has been approved.
       intro_html: Your request for access to the group <strong>%{group_name}</strong> has been approved.

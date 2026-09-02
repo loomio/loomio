@@ -1,5 +1,10 @@
 ---
 ca:
+  install_app:
+    install_title: Instal·la %{site_name}
+    install_description: Afegeix %{site_name} a la pantalla d’inici per accedir-hi més ràpidament
+    install_button: Instal·la
+    ios_install_description: A Safari, obre Compartir i selecciona Afegeix a la pantalla d’inici
   start_trial:
     title: Inicieu una prova gratuïta de Loomio
     intro: Gràcies pel teu interès en Loomio. Estem encantats d'oferir-vos una prova gratuïta de %{day} dies perquè pugueu veure si Loomio s'adapta bé a la vostra organització.
@@ -436,6 +441,33 @@ ca:
     title_label: Títol
     hint: 'Pista per la propera vegada: Subratlleu part del text abans de clicar "fixa".'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Això canvia quan rebeu una notificació sobre aquest fil
       group: Això canvia quan se us notificarà sobre tots els fils del grup
@@ -518,6 +550,17 @@ ca:
     normal_option: Quan algú vol la meva atenció (Quan se m'avisa)
     quiet_option: No hi ha correus electrònics sobre aquest fil (Desactivat)
     quiet_explained: No rebràs cap correu electrònic, fins i tot quan algú intenti notificar-te.
+    volume_email_label: Correu electrònic
+    volume_push_label: Empènyer
+    all_activity_option: Tota l'activitat
+    when_notified_option: Quan es notifiqui
+    muted_option: Silenciat
+    volume_channel_label: Com us hem d'actualitzar?
+    email_channel: Correu electrònic
+    push_channel: Empènyer
+    email_and_push_channel: Correu electrònic i push
+    off_option: Desactivat
+    apply_to_all_threads_in_group: Aplica aquesta configuració a tots els fils de %{group}
   inbox:
     clear: Esborra
     latest: Últim
@@ -623,6 +666,16 @@ ca:
     email_notifications: Correu electrònic quan es notifiqui
     email_none: Sense correus electrònics
     new_to_you: Nou per a tu
+    email_and_push_when_notified: Correu electrònic i notificació push quan es rebi una notificació
+    email_when_notified: Correu electrònic quan es rebi una notificació
+    push_when_notified: Notificació push quan es rebi una notificació
+    daily_catch_up_email: Correu electrònic de resum diari
+    in_app_only: Només a l'aplicació
+    email_and_device_when_notified: Notificacions per correu electrònic i dispositiu quan es notifiqui
+    device_notification_when_notified: Notificació del dispositiu quan es notifica
+    no_notifications: Sense notificacions
+    catch_up_email_every_second_day: Correu electrònic de posada al dia cada dos dies
+    weekly_catch_up_email: Correu electrònic setmanal de posada al dia
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència
@@ -1624,6 +1677,9 @@ ca:
     submit_delete: Elimina el meu compte ara
     submit_deactivate: Desactiva el meu compte ara
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Dilluns
     tuesday: Dimarts
     wednesday: Dimecres
@@ -1640,8 +1696,7 @@ ca:
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
     email_catch_up_day: Correu electrònic de resum de posada al dia
-    on_participation_label: Subscriure sota participació
-    on_participation_description: Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat.
+    digest_email: Correu electrònic de resum de posada al dia
     announcement_label: Avisos
     announcement_description: Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups
     mentioned_label: Mencions i respostes
@@ -1657,8 +1712,11 @@ ca:
     learn_more: Més informació sobre la configuració del correu electrònic...
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
     daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
+    digest_email_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
     never: Mai
     send_email: Enviar correu electrònic
+    group_notifications: Notificacions de grup
+    group_notifications_description: Canvieu el nivell d'activitat i el canal dels vostres grups
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
@@ -3027,3 +3085,18 @@ ca:
     nobody_will_be_notified: Ningú serà notificat
     one_person_will_be_notified: S'avisarà a 1 persona
     x_people_will_be_notified: "%{count} persones seran notificades"
+  push_notifications:
+    title: Notificacions push
+    subtitle: Rebre notificacions en aquest navegador
+    not_supported: Les notificacions push no estan disponibles en aquest navegador
+    permission_denied: Les notificacions push estan bloquejades a la configuració del navegador
+    manage_devices: Gestiona els dispositius de notificacions push
+    enabled: Notificacions push activades per a aquest navegador
+    disabled: Notificacions push desactivades per a aquest navegador
+    device_removed: Dispositiu de notificacions push eliminat
+    enable_device: Activa en aquest navegador
+    disable_device: Desactiva en aquest navegador
+    devices: Navegadors activats
+    browser_device: Navegador
+    remove_device: Elimina el navegador
+    enable_from_loomio: Activa les notificacions push des de la configuració de notificacions mentre inicies la sessió a Loomio

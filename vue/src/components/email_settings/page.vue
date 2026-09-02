@@ -1,167 +1,149 @@
-<script lang="js">
+<script setup lang="js">
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
-import AppConfig      from '@/shared/services/app_config';
 import { I18n } from '@/i18n';
 import { pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
+import PushNotificationsSettingsCard from '@/components/push_notifications/settings_card';
+import PwaInstallCard from '@/components/pwa/install_card';
+import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 
-export default {
-  mixins: [WatchRecords],
+const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
-  data() {
-    return {
-      newsletterEnabled: AppConfig.newsletterEnabled,
-      user: null,
-      groups: [],
-      memberships: [],
-      loading: false,
-      allGroupsVolume: null
-    };
-  },
-  created() {
-    this.init();
-    EventBus.$on('signedIn', this.init);
-    this.watchRecords({
-      collections: ['groups', 'memberships'],
-      query: store => {
-        const user = Session.user();
-        this.memberships = user.groups().map((g) => user.membershipFor(g));
-      }
-    });
-  },
-  beforeDestroy() {
-    return EventBus.$off('signedIn', this.init);
-  },
+const user = ref(null);
+const memberships = ref([]);
+const loading = ref(false);
+const pushEnabled = ref(false);
+const pushStatusLoaded = ref(false);
+const allGroupsVolumeEmail = ref(null);
+const allGroupsVolumePush = ref(null);
 
-  mounted() {
-    return EventBus.$emit('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'});
-  },
+const catchUpEnabled = computed(() => user.value?.emailCatchUpDay != null);
 
-  methods: {
-    submit() {
-      Records.users.updateProfile(this.user).then(() => {
-        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 4000);
-      }).catch(error => true);
-    },
+const emailDays = computed(() => [
+  {value: null, title: I18n.global.t('email_settings_page.never')},
+  {value: 7, title: I18n.global.t('email_settings_page.every_day')},
+  {value: 8, title: I18n.global.t('email_settings_page.every_second_day')},
+  {value: 1, title: I18n.global.t('email_settings_page.monday')},
+  {value: 2, title: I18n.global.t('email_settings_page.tuesday')},
+  {value: 3, title: I18n.global.t('email_settings_page.wednesday')},
+  {value: 4, title: I18n.global.t('email_settings_page.thursday')},
+  {value: 5, title: I18n.global.t('email_settings_page.friday')},
+  {value: 6, title: I18n.global.t('email_settings_page.saturday')},
+  {value: 0, title: I18n.global.t('email_settings_page.sunday')}
+]);
 
-    init() {
-      if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
-      useCurrentUserGroups().loadGroups();
-      Session.user().attributeNames.push('unsubscribeToken');
-      this.originalUser = Session.user();
-      this.user = Session.user().clone();
-    },
+const actions = computed(() => filter(
+  pick(UserService.actions(Session.user(), { $t: I18n.global.t }), ['deactivate_user']),
+  action => action.canPerform()
+));
 
-    groupVolume(group) {
-      return group.membershipFor(Session.user()).volume;
-    },
+function setPushEnabled(enabled) {
+  pushEnabled.value = enabled;
+  pushStatusLoaded.value = true;
+}
 
-    changeDefaultMembershipVolume() {
-      EventBus.$emit('openModal', {
-        component: 'ChangeVolumeForm',
-        props: { model: Session.user() }
-      });
-    },
+function submit() {
+  Records.users.updateProfile(user.value).then(() => {
+    Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 4000);
+  }).catch(() => true);
+}
 
-    membershipVolumeChanged(membership) {
-      this.loading = true
-      membership.saveVolume(membership.volume, false).finally(() => {
-        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
-        this.loading = false
-      });
-    },
-    allGroupsVolumeChanged(){
-      if (this.allGroupsVolume == null) return;
+function init() {
+  if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
+  loadGroups();
+  Session.user().attributeNames.push('unsubscribeToken');
+  user.value = Session.user().clone();
+}
 
-      this.loading = true
-      Session.user().saveVolume(this.allGroupsVolume, true).finally(() => {
-        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
-        this.allGroupsVolume = null;
-        this.loading = false
-      });
-    }
-  },
-  computed: {
-    emailDays() {
-      return [
-        {value: null, title: this.$t('email_settings_page.never')},
-        {value: 7, title: this.$t('email_settings_page.every_day')},
-        {value: 8, title: this.$t('email_settings_page.every_second_day')},
-        {value: 1, title: this.$t('email_settings_page.monday')},
-        {value: 2, title: this.$t('email_settings_page.tuesday')},
-        {value: 3, title: this.$t('email_settings_page.wednesday')},
-        {value: 4, title: this.$t('email_settings_page.thursday')},
-        {value: 5, title: this.$t('email_settings_page.friday')},
-        {value: 6, title: this.$t('email_settings_page.saturday')},
-        {value: 0, title: this.$t('email_settings_page.sunday')}
-      ];
-    },
-    actions() { return filter(pick(UserService.actions(Session.user(), this), ['deactivate_user']), action => action.canPerform()); },
+function volumeOptionLabel(volume, channel) {
+  return I18n.global.t(notificationVolumeOptionTitleKey(volume, channel, catchUpEnabled.value));
+}
 
-    defaultSettingsDescription() {
-      return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;
-    }
+function membershipVolumeChanged(membership) {
+  loading.value = true;
+  membership.saveVolume(membership.volumeEmail, membership.volumePush, false).finally(() => {
+    Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
+    loading.value = false;
+  });
+}
+
+function allGroupsVolumeChanged(channel) {
+  const volumeEmail = channel === 'email' ? allGroupsVolumeEmail.value : null;
+  const volumePush = channel === 'push' ? allGroupsVolumePush.value : null;
+  if (volumeEmail == null && volumePush == null) return;
+
+  loading.value = true;
+  Session.user().saveVolume(volumeEmail, volumePush, true).finally(() => {
+    Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
+    if (channel === 'email') allGroupsVolumeEmail.value = null;
+    if (channel === 'push') allGroupsVolumePush.value = null;
+    loading.value = false;
+  });
+}
+
+init();
+EventBus.$on('signedIn', init);
+
+watchRecords({
+  collections: ['groups', 'memberships'],
+  query: () => {
+    const currentUser = Session.user();
+    memberships.value = currentUser.groups().map(group => currentUser.membershipFor(group));
   }
-};
+});
+
+onMounted(() => {
+  EventBus.$emit('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'});
+});
+
+onUnmounted(() => {
+  EventBus.$off('signedIn', init);
+});
 </script>
 
 <template lang="pug">
 v-main
   v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
 
+    pwa-install-card
+    push-notifications-settings-card(@subscriptions-changed="setPushEnabled")
+
     v-card.mb-4(v-if="user.deactivatedAt")
       v-card-text
-        p(v-t="'email_settings_page.account_deactivated'")
+        p {{ $t('email_settings_page.account_deactivated') }}
 
-    v-card.mb-4(v-if="!user.deactivatedAt")
+    v-card.email-settings-page__digest-card.mb-4(v-if="!user.deactivatedAt")
       v-card-text
-        v-checkbox#mentioned-email.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-          template(v-slot:label)
-            div
-              span(v-t="'email_settings_page.mentioned_label'")
-              br
-              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.mentioned_description'")
-        v-checkbox#on-participation-email.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-          template(v-slot:label)
-            div
-              span(v-t="'email_settings_page.on_participation_label'")
-              br
-              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.on_participation_description'")
+
         .text-body-large
-          span(v-t="'email_settings_page.email_catch_up_day'")
-        p.text-medium-emphasis.pb-4(v-t="'email_settings_page.daily_summary_description'")
-        v-select#email-catch-up-day(
+          span {{ $t('email_settings_page.catch_up_email') }}
+        p.text-medium-emphasis.pb-4 {{ $t('email_settings_page.catch_up_email_description') }}
+        v-select#digest-email-day(
           solo
           :items="emailDays"
-          :label="$t('email_settings_page.email_catch_up_day')"
+          :label="$t('email_settings_page.catch_up_email')"
           v-model="user.emailCatchUpDay")
-        //- v-checkbox#daily-summary-email.email-settings-page__daily-summary(v-model='user.emailCatchUp')
-        //-   div(slot="label")
-        //-     strong(v-t="'email_settings_page.daily_summary_label'")
-        //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
+
       v-card-actions
-        help-btn(path="en/user_manual/users/email_settings#user-email-settings")
+        help-btn(path="en/user_manual/users/email_settings#notification-settings")
         v-spacer
         v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
-          span(v-t="'email_settings_page.update_settings'")
+          span {{ $t('email_settings_page.update_settings') }}
 
-    v-card.mb-4(title="Group notifications" subtitle="Change when you get emailed about activity in your groups")
+    v-card.email-settings-page__group-notifications-card.mb-4(
+      :class="{ 'email-settings-page__push-status-loaded': pushStatusLoaded }"
+      :title="$t('email_settings_page.group_notifications')"
+      :subtitle="$t('email_settings_page.group_notifications_description')")
       v-card-text
-        .text-body-large.pb-2(v-t="'change_volume_form.what_the_options_mean'")
-
-        .text-title-small.pb-1(v-t="'change_volume_form.quiet_desc'")
-        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.quiet_explained'")
-
-        .text-title-small.pb-1(v-t="'change_volume_form.normal_desc'")
-        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.normal_explained'")
-
-        .text-title-small.pb-1(v-t="'change_volume_form.loud_desc'")
-        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.loud_explained'")
+        .text-body-large.pb-1 {{ $t('change_volume_form.how_do_you_want_to_stay_updated') }}
+        .text-body-medium.text-medium-emphasis(v-if="pushEnabled") {{ $t('email_settings_page.choose_email_and_push_updates') }}
       v-overlay(persistent :model-value="loading" class="align-center justify-center")
         v-progress-circular(color="primary" size="64" indeterminate)
 
@@ -169,34 +151,42 @@ v-main
       v-table
         thead
           tr
-            th.text-left(v-t="'common.group'")
-            th.text-left(v-t="'email_settings_page.send_email'")
+            th.text-left {{ $t('common.group') }}
+            th.text-left {{ $t('change_volume_form.email_channel') }}
+            th.email-settings-page__push-column.text-left(v-if="pushEnabled") {{ $t('change_volume_form.push_channel') }}
         tbody
           tr
             td
-              span(v-t="'sidebar.all_groups'")
+              span {{ $t('sidebar.all_groups') }}
             td.text-left
               .my-select-wrapper
-                select.my-select(:disabled="loading" v-model="allGroupsVolume" @change="allGroupsVolumeChanged()")
+                select.my-select(:disabled="loading" v-model="allGroupsVolumeEmail" @change="allGroupsVolumeChanged('email')")
                   option(:value="null")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume")
-                    span(v-t="'change_volume_form.'+volume+'_desc'")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'email') }}
+            td.email-settings-page__push-column.text-left(v-if="pushEnabled")
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="allGroupsVolumePush" @change="allGroupsVolumeChanged('push')")
+                  option(:value="null")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'push') }}
           tr(v-for="membership in memberships" :key="membership.id")
             td {{membership.group().fullName}}
             td.text-left
               .my-select-wrapper
-                select.my-select(:disabled="loading" v-model="membership.volume" @change="membershipVolumeChanged(membership)")
-                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volume == volume")
-                    span(v-t="'change_volume_form.'+volume+'_desc'")
+                select.my-select(:disabled="loading" v-model="membership.volumeEmail" @change="membershipVolumeChanged(membership)")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volumeEmail == volume") {{ volumeOptionLabel(volume, 'email') }}
+            td.email-settings-page__push-column.text-left(v-if="pushEnabled")
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="membership.volumePush" @change="membershipVolumeChanged(membership)")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume") {{ volumeOptionLabel(volume, 'push') }}
 
     v-card.email-settings-page__deactivate-card(v-if="actions.length" :title="$t('email_settings_page.deactivate_header')")
       v-card-text
-        p(v-t="'email_settings_page.deactivate_description'")
+        p {{ $t('email_settings_page.deactivate_description') }}
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" @click="action.perform()")
             template(v-slot:prepend)
               common-icon(:name="action.icon")
-            v-list-item-title(v-t="action.name")
+            v-list-item-title {{ $t(action.name) }}
 </template>
 
 <style lang="css">

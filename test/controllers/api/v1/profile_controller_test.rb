@@ -38,15 +38,42 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "groups uses record cache for serialized associations" do
+  test "email and push defaults can be applied independently" do
+    sign_in @user
+    membership = @group.membership_for(@user)
+    membership.update!(volume_email: :normal, volume_push: :loud)
+
+    post :set_volume, params: { volume_email: :quiet, apply_to_all: true }
+
+    assert_response :success
+    assert_equal "quiet", @user.reload.volume_email_default
+    assert_equal "quiet", membership.reload.volume_email
+    assert_equal "loud", membership.volume_push
+
+    post :set_volume, params: { volume_push: :normal, apply_to_all: true }
+
+    assert_response :success
+    assert_equal "normal", @user.reload.volume_push_default
+    assert_equal "quiet", membership.reload.volume_email
+    assert_equal "normal", membership.volume_push
+  end
+
+  test "groups includes the current user's notification volumes" do
     sign_in @user
     @group.add_member!(@user) unless @group.members.include?(@user)
+    membership = @group.membership_for(@user)
+    membership.update!(volume_email: :normal, volume_push: :loud)
 
     assert_no_record_cache_fallbacks do
       get :groups, format: :json
     end
 
     assert_response :success
+    serialized_membership = JSON.parse(response.body).fetch("memberships").find do |attributes|
+      attributes.fetch("id") == membership.id
+    end
+    assert_equal "normal", serialized_membership.fetch("volume_email")
+    assert_equal "loud", serialized_membership.fetch("volume_push")
   end
 
   test "destroy deactivates the users account" do
@@ -90,6 +117,20 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     original_unsubscribe_token = @user.unsubscribe_token
     current_session = Current.session
     other_session = @user.sessions.create!(user_agent: 'other browser', ip_address: '127.0.0.2')
+    current_subscription = create_push_subscription(
+      user: @user,
+      session: current_session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/current-session-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    other_subscription = create_push_subscription(
+      user: @user,
+      session: other_session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/other-session-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
     unused_login_token = @user.login_tokens.create!
 
     post :update_profile, params: {
@@ -103,6 +144,8 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @user.reload
     assert Session.exists?(current_session.id)
     refute Session.exists?(other_session.id)
+    assert PushSubscription.exists?(current_subscription.id)
+    refute PushSubscription.exists?(other_subscription.id)
     refute_equal original_api_key, @user.api_key
     refute_equal original_email_api_key, @user.email_api_key
     refute_equal original_secret_token, @user.secret_token
@@ -177,14 +220,19 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
   end
 
   test "restricted user CAN still update notification preferences" do
-    @user.update_columns(unsubscribe_token: UNSUB, email_when_mentioned: true)
+    @user.update_columns(
+      unsubscribe_token: UNSUB,
+      volume_email_default: User.volume_email_defaults[:quiet],
+      volume_push_default: User.volume_push_defaults[:quiet]
+    )
 
     post :update_profile, params: {
       unsubscribe_token: UNSUB,
-      user: { email_when_mentioned: false }
+      user: { volume_email_default: "normal", volume_push_default: "normal" }
     }, format: :json
 
     assert_response :success
-    assert_equal false, @user.reload.email_when_mentioned, "email preference update must still work"
+    assert_predicate @user.reload, :email_default_normal?
+    assert_predicate @user, :push_default_normal?
   end
 end

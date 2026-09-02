@@ -1,6 +1,12 @@
 const pageHelper = require('../helpers/pageHelper');
 const manualScreenshot = require('../helpers/manualScreenshot');
 
+function useLightTheme(test) {
+  test.chrome.sendDevToolsCommand('Emulation.setEmulatedMedia', {
+    features: [{name: 'prefers-color-scheme', value: 'light'}]
+  });
+}
+
 function openSidebar(page, settings = false) {
   page.clickAndWait('.navbar__sidenav-toggle', '.sidenav-left');
   if (settings) page.clickAndWait('.sidebar__user-dropdown', '.sidebar-close-settings');
@@ -83,11 +89,11 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
-    page.waitFor('.base-mailer__button');
+    page.waitFor('.email-button');
     screenshot.captureRegion(
       'users/merge_accounts/merge_accounts_email',
-      ['.mailer__header', '.invite-people-mailer'],
-      {width: 1100, height: 1200, padding: 24, spotlight: '.base-mailer__button'}
+      ['.mailer__header', 'body > div:last-of-type'],
+      {width: 1100, height: 1200, padding: 24, spotlight: '.email-button'}
     );
   },
 
@@ -95,8 +101,8 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     page.loadPathNoApp('setup_manual_oatmilk_merge_verification_email');
-    page.waitFor('.base-mailer__button');
-    page.click('.base-mailer__button');
+    page.waitFor('.email-button');
+    page.click('.email-button');
     page.waitFor('main.sistema');
     screenshot.captureElement(
       'users/merge_accounts/merge_accounts_confirm',
@@ -147,20 +153,60 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
-    screenshot.captureElement('users/email_settings/email_settings', '.email-settings-page > .v-card:first-of-type', {width: 1100, height: 1500});
+    screenshot.captureElement('users/email_settings/email_settings', '.email-settings-page__digest-card', {width: 1100, height: 1500});
   },
 
-  'catchup_summary_email_setting': (test) => {
+  'digest_email_setting': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
-    page.click('.email-settings-page > .v-card:first-of-type .v-select .v-field__input');
+    page.click('.email-settings-page__digest-card .v-select .v-field__input');
     page.waitFor('.v-overlay--active .v-list');
     screenshot.captureRegion(
-      'users/email_settings/catchup_summary_email_setting',
-      ['.email-settings-page > .v-card:first-of-type .v-select .v-field', '.v-overlay--active .v-list'],
+      'users/email_settings/digest_email_setting',
+      ['.email-settings-page__digest-card .v-select .v-field', '.v-overlay--active .v-list'],
       {width: 1100, height: 1400, padding: 16}
     );
+  },
+
+  'proposal_invitation_email': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    useLightTheme(test);
+    page.loadPathNoApp('setup_manual_oatmilk_proposal_invitation_email');
+    page.waitFor('main');
+    page.expectText('main', 'Run a six-week returnable bottle trial');
+    screenshot.captureElement('users/email_settings/proposal_invitation_email', 'main', {width: 1100, height: 2600});
+  },
+
+  'proposal_outcome_email': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    useLightTheme(test);
+    page.loadPathNoApp('setup_manual_oatmilk_proposal_outcome_email');
+    page.waitFor('main');
+    page.expectText('main', 'Run a six-week returnable bottle trial');
+    screenshot.captureElement('users/email_settings/proposal_outcome_email', 'main', {width: 1100, height: 2800});
+  },
+
+  'digest_email_example': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    useLightTheme(test);
+    page.loadPathNoApp('setup_manual_oatmilk_digest_email');
+    page.waitFor('main');
+    page.expectText('main', 'Notifications');
+    page.expectText('main', 'Unread threads');
+    screenshot.captureElement('users/email_settings/digest_email_example', 'main', {width: 1100, height: 2600});
+  },
+
+  'push_notification_settings': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_email_settings_with_push');
+    page.waitFor('.push-notifications-settings-card--loaded');
+    page.expectElement('.email-settings-page__push-column');
+    screenshot.captureElement('users/email_settings/push_notification_settings', '.push-notifications-settings-card', {width: 1100, height: 1400});
   },
 
   'group_notifications': (test) => {
@@ -183,6 +229,7 @@ module.exports = {
     page.waitFor('.group-page');
     page.clickAndWait('.group-page .action-menu--btn', '.v-overlay--active .v-list');
     page.clickAndWait('.v-overlay--active .action-dock__button--change_volume', '.change-volume-form');
+    page.waitFor('.change-volume-form--push-disabled');
     screenshot.captureElement('users/email_settings/group_notification_settings', '.change-volume-form', {width: 1100, height: 1300});
   },
 
@@ -191,16 +238,11 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
     page.waitFor('.topic-sidebar');
-    page.execute(`
-      const item = Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
-        .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'));
-      if (item) item.classList.add('manual-topic-subscribe');
-    `);
-    page.waitFor('.manual-topic-subscribe');
+    page.waitFor('.topic-sidebar__notification-settings');
     screenshot.captureElement('users/email_settings/thread_subscribe', '.topic-sidebar', {
       width: 1100,
       height: 1500,
-      spotlight: '.manual-topic-subscribe'
+      spotlight: '.topic-sidebar__notification-settings'
     });
   },
 
@@ -209,22 +251,32 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_discussion');
     page.waitFor('.topic-sidebar');
-    page.execute(`
-      Array.from(document.querySelectorAll('.topic-sidebar .v-list-item'))
-        .find(el => el.textContent.includes('Subscribe') || el.textContent.includes('Email when notified'))?.click();
-    `);
-    page.waitFor('.change-volume-form');
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form');
+    page.waitFor('.change-volume-form--push-disabled');
     screenshot.captureElement('users/email_settings/thread_notifications', '.change-volume-form', {width: 1100, height: 1300});
+  },
+
+  'thread_notifications_email_catch_up_push': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_discussion_with_push');
+    page.waitFor('.topic-sidebar');
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form');
+    page.waitFor('.change-volume-form--push-enabled');
+    screenshot.captureElement('users/email_settings/thread_notifications_email_catch_up_push', '.change-volume-form', {width: 1100, height: 1800});
   },
 
   'turn_off_all_emails_1': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
-    screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page > .v-card:first-of-type', {
+    page.click('.email-settings-page__digest-card .v-select .v-field');
+    page.waitFor('.v-overlay--active .v-list');
+    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Never')).click()");
+    screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page__digest-card', {
       width: 1100,
       height: 1500,
-      spotlight: {selectors: ['#mentioned-email', '#on-participation-email', '#email-catch-up-day']}
+      spotlight: '#digest-email-day'
     });
   },
 
@@ -232,10 +284,12 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadEmailSettings(page);
-    screenshot.captureElement('users/email_settings/turn_off_all_emails_2', '.email-settings-page .v-card:nth-of-type(2)', {
+    page.waitFor('.email-settings-page__push-status-loaded');
+    page.expectNoElement('.email-settings-page__push-column');
+    screenshot.captureElement('users/email_settings/turn_off_all_emails_2', '.email-settings-page__group-notifications-card', {
       width: 1100,
       height: 1800,
-      spotlight: '.email-settings-page .v-card:nth-of-type(2) tbody'
+      spotlight: '.email-settings-page__group-notifications-card tbody'
     });
   },
 

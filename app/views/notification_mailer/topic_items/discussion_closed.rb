@@ -10,10 +10,10 @@ class Views::NotificationMailer::TopicItems::DiscussionClosed < Views::Applicati
   def view_template
     table do
       tr do
-        td(class: "icon") do
+        td(class: "email-activity-avatar") do
           render Views::NotificationMailer::Common::Avatar.new(user: @item.user)
         end
-        td(class: "content") do
+        td(class: "email-activity-content") do
           i { plain t(:"discussion_mailer.discussion_closed.inline", actor: @item.user.name) }
         end
       end

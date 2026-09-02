@@ -77,7 +77,11 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
   def set_volume
     load_resource
-    TopicService.update_reader(topic: resource, params: {volume: params[:volume]}, actor: current_user)
+    TopicService.update_reader(
+      topic: resource,
+      params: params.slice(:volume_email, :volume_push),
+      actor: current_user
+    )
     respond_with_resource
   end
 

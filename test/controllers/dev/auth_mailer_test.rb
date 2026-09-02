@@ -12,7 +12,7 @@ class Dev::AuthMailerTest < ActionController::TestCase
     get :setup_invitation_email_to_visitor
 
     assert_response :success
-    description = Nokogiri::HTML(response.body).at_css('.group-mailer__description')
+    description = Nokogiri::HTML(response.body).css('h1 + div').find { |element| element.text.include?("The best place for dancing shoes") }
     assert description
     assert_includes description.text, "The best place for dancing shoes"
     refute_includes description.text, "<br>"

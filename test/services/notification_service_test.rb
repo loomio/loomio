@@ -79,7 +79,6 @@ class NotificationServiceTest < ActiveSupport::TestCase
       notification: notification,
       recipient: user,
       channel: "in_app",
-      status: "delivered",
       delivered_at: Time.current,
       viewed_at: viewed_at
     )

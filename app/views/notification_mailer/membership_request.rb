@@ -23,7 +23,7 @@ class Views::NotificationMailer::MembershipRequest < Views::NotificationMailer::
       message: @topic_item.itemable.introduction
     )
 
-    div(class: "text-center") do
+    div(class: "email-actions") do
       render Views::NotificationMailer::Common::Button.new(
         url: url,
         text: t(:"email.membership_request.button_text")

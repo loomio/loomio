@@ -1,5 +1,10 @@
 ---
 hu:
+  install_app:
+    install_title: "%{site_name} telepítése"
+    install_description: "%{site_name} hozzáadása a kezdőképernyőhöz a gyorsabb elérésért"
+    install_button: Telepítés
+    ios_install_description: A Safariban nyisd meg a Megosztás menüt, és válaszd a Hozzáadás a Főképernyőhöz lehetőséget
   start_trial:
     title: Kezdje el a Loomio ingyenes próbaverzióját
     intro: Köszönjük érdeklődését Loomio iránt. Örömmel kínálunk Önnek egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodjon arról, hogy a Loomio megfelelő-e az Ön szervezete számára.
@@ -436,6 +441,33 @@ hu:
     title_label: Cím
     hint: 'Tipp a következő alkalomra: Próbáljon meg néhány szöveget kiemelni, mielőtt a „Rögzítés” gombra kattint.'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Ez akkor változik, amikor értesítést kap erről a szálról
       group: Ez akkor változik, ha értesítést kap a csoport összes száláról
@@ -518,6 +550,17 @@ hu:
     normal_option: Amikor valaki a figyelmemet akarja (Amikor értesítenek)
     quiet_option: Nincsenek e-mailek erről a témáról (Kikapcsolva)
     quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni.
+    volume_email_label: Email
+    volume_push_label: Nyomás
+    all_activity_option: Minden tevékenység
+    when_notified_option: Értesítéskor
+    muted_option: Tompított
+    volume_channel_label: Hogyan tájékoztassunk?
+    email_channel: Email
+    push_channel: Nyomás
+    email_and_push_channel: E-mail és push
+    off_option: Le
+    apply_to_all_threads_in_group: Alkalmazd ezeket a beállításokat a(z) %{group} összes szálára
   inbox:
     clear: Töröl
     latest: Legutóbbi
@@ -623,6 +666,16 @@ hu:
     email_notifications: E-mail értesítés esetén
     email_none: Nincsenek e-mailek
     new_to_you: Új számodra
+    email_and_push_when_notified: E-mail és push értesítés értesítéskor
+    email_when_notified: E-mail értesítéskor
+    push_when_notified: Push értesítés értesítéskor
+    daily_catch_up_email: Napi összefoglaló e-mail
+    in_app_only: Csak az alkalmazásban
+    email_and_device_when_notified: E-mail és eszközértesítés értesítéskor
+    device_notification_when_notified: Eszközértesítés értesítéskor
+    no_notifications: Nincsenek értesítések
+    catch_up_email_every_second_day: Feltöltő e-mail minden második nap
+    weekly_catch_up_email: Heti összefoglaló e-mail
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -1614,6 +1667,9 @@ hu:
     submit_delete: Törölje a fiókomat most
     submit_deactivate: Inaktiválja a fiókomat most
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Hétfő
     tuesday: Kedd
     wednesday: Szerda
@@ -1630,8 +1686,7 @@ hu:
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
-    on_participation_label: Feliratkozás a részvételre
-    on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
+    digest_email: Felzárkóztató összefoglaló e-mail
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat
@@ -1647,8 +1702,11 @@ hu:
     learn_more: További információ az e-mail beállításokról ...
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
     daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
+    digest_email_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
     never: Soha
     send_email: E-mail küldése
+    group_notifications: Csoportértesítések
+    group_notifications_description: Módosítsd a csoportok aktivitási szintjét és csatornáját
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
@@ -3007,3 +3065,18 @@ hu:
     nobody_will_be_notified: Senkit sem fognak értesíteni
     one_person_will_be_notified: 1 személy értesítést kap
     x_people_will_be_notified: "%{count} embert értesítenek"
+  push_notifications:
+    title: Push értesítések
+    subtitle: Értesítések fogadása ebben a böngészőben
+    not_supported: A push értesítések nem érhetők el ebben a böngészőben
+    permission_denied: A push értesítések le vannak tiltva a böngésző beállításaiban
+    manage_devices: Push értesítési eszközök kezelése
+    enabled: Push értesítések engedélyezve ebben a böngészőben
+    disabled: Push értesítések letiltva ebben a böngészőben
+    device_removed: Push értesítési eszköz eltávolítva
+    enable_device: Engedélyezés ebben a böngészőben
+    disable_device: Letiltás ebben a böngészőben
+    devices: Engedélyezett böngészők
+    browser_device: Böngésző
+    remove_device: Böngésző eltávolítása
+    enable_from_loomio: Engedélyezze a push értesítéseket az értesítési beállításokban, miközben bejelentkezett a Loomio-ba

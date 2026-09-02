@@ -5,7 +5,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     @actor = users(:admin)
     @group = groups(:group)
     @group.update!(is_visible_to_public: true)
-    memberships(:admin_membership).update!(volume: "normal")
+    memberships(:admin_membership).update!(volume_email: "normal")
     hex = SecureRandom.hex(4)
     @requestor = User.create!(
       name: "Requestor #{hex}",
@@ -27,7 +27,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
       kind: "membership_requested",
       subject: request
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_includes notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id), @actor.id
     assert_includes notification.notification_deliveries.where(channel: "email").pluck(:recipient_id), @actor.id
@@ -46,7 +46,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
       kind: "membership_request_approved",
       subject: membership
     )
-    ResolveNotificationDeliveriesWorker.perform_now(notification.id)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)

@@ -1,5 +1,10 @@
 ---
 ja:
+  install_app:
+    install_title: "%{site_name}をインストール"
+    install_description: "%{site_name}をホーム画面に追加して、すばやくアクセスできます"
+    install_button: インストール
+    ios_install_description: Safariで共有を開き、「ホーム画面に追加」を選択してください
   start_trial:
     your_name: あなたの名前
     title: Loomioの無料トライアルを始める
@@ -433,6 +438,33 @@ ja:
     title_label: タイトル
     hint: '次回のヒント: [ピン留め] をクリックする前に、テキストを強調表示してみてください。'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: このスレッドに関する通知が届くと状況が変わります
       group: グループ内のすべてのスレッドについて通知されると、この状況が変わります。
@@ -515,6 +547,17 @@ ja:
     normal_option: 誰かが私の注意を引こうとしているとき（通知を受けたとき）
     quiet_option: このスレッドに関するメールは受信しません（オフ）
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。
+    volume_email_label: メール
+    volume_push_label: 押す
+    all_activity_option: すべてのアクティビティ
+    when_notified_option: 通知を受けた場合
+    muted_option: ミュート
+    volume_channel_label: どのように最新情報をお伝えすればよろしいでしょうか？
+    email_channel: メール
+    push_channel: 押す
+    email_and_push_channel: メールとプッシュ通知
+    off_option: オフ
+    apply_to_all_threads_in_group: これらの設定を%{group}内のすべてのスレッドに適用します
   inbox:
     clear: クリア
     latest: 最新
@@ -620,6 +663,16 @@ ja:
     email_notifications: 通知があった際にメールでお知らせします
     email_none: メールなし
     new_to_you: あなたにとって新しい
+    email_and_push_when_notified: 通知時にメールとプッシュ通知
+    email_when_notified: 通知時にメール
+    push_when_notified: 通知時にプッシュ通知
+    daily_catch_up_email: 毎日のまとめメール
+    in_app_only: アプリ内限定
+    email_and_device_when_notified: 通知があった際にメールとデバイスに通知が届く
+    device_notification_when_notified: 通知があった際のデバイス通知
+    no_notifications: 通知なし
+    catch_up_email_every_second_day: 2日おきに最新情報をメールでお知らせします
+    weekly_catch_up_email: 毎週の近況報告メール
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ
@@ -1609,6 +1662,9 @@ ja:
     no_emails: 通知メールは受信されなくなります。
     submit_deactivate: 今すぐアカウントを無効にする
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: 月曜日
     tuesday: 火曜日
     wednesday: 水曜日
@@ -1625,8 +1681,7 @@ ja:
     email_newsletter: Loomio ニュースレター
     email_newsletter_description: 新機能、トレーニング、あなたの街のイベント、Loomio の将来に関する最新情報を入手します。メールは年に2～3通程度です。
     email_catch_up_day: 近況概要メール
-    on_participation_label: 参加時に購読する
-    on_participation_description: スレッドに参加すると、その後のすべてのアクティビティがすぐに電子メールで送信されます。
+    digest_email: 近況概要メール
     announcement_label: お知らせ
     announcement_description: グループ内のメンバーによって発表されたすべてのコンテンツに関する電子メールが届きます
     mentioned_label: メンションと返信
@@ -1642,8 +1697,11 @@ ja:
     learn_more: メール設定の詳細...
     mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
     daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
+    digest_email_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
     never: 一度もない
     send_email: メールを送信
+    group_notifications: グループ通知
+    group_notifications_description: グループの活動レベルとチャンネルを変更する
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
@@ -2999,3 +3057,18 @@ ja:
     nobody_will_be_notified: 誰にも通知されません
     one_person_will_be_notified: 1名に通知されます
     x_people_will_be_notified: "%{count}人に通知されます"
+  push_notifications:
+    title: プッシュ通知
+    subtitle: このブラウザで通知を受け取る
+    not_supported: このブラウザではプッシュ通知は利用できません
+    permission_denied: ブラウザの設定でプッシュ通知がブロックされています
+    manage_devices: プッシュ通知デバイスを管理する
+    enabled: このブラウザではプッシュ通知が有効になっています
+    disabled: このブラウザではプッシュ通知が無効になっています
+    device_removed: プッシュ通知デバイスが削除されました
+    enable_device: このブラウザで有効にする
+    disable_device: このブラウザで無効にする
+    devices: 有効なブラウザ
+    browser_device: ブラウザ
+    remove_device: ブラウザを削除
+    enable_from_loomio: Loomioにサインインした状態で、通知設定からプッシュ通知を有効にしてください

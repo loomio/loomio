@@ -54,6 +54,29 @@ module.exports = {
     // page.expectFlash('Thread unlocked')
   },
 
+  'updates_thread_notification_status_after_saving': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_manual_oatmilk_discussion')
+    page.waitFor('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form--push-disabled')
+    page.click('.volume-loud label')
+    page.click('.change-volume-form__submit')
+    page.expectFlash('Notification settings updated')
+    page.expectElement('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.expectText('.topic-sidebar__notification-settings', 'All activity')
+    page.expectNoElement('.change-volume-form', 8000)
+    page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form--push-disabled')
+    page.click('.volume-quiet label')
+    page.click('.change-volume-form__submit')
+    page.expectFlash('Notification settings updated')
+    page.expectElement('.topic-sidebar__notification-email-icon')
+    page.expectNoElement('.topic-sidebar__notification-device-icon')
+    page.expectText('.topic-sidebar__notification-settings', 'Daily catch-up email')
+  },
+
   'lets_you_edit_title_and_context': (test) => {
     page = pageHelper(test)
 
@@ -337,9 +360,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
-    page.expectText('.topic-mailer__body', "A description for this discussion. Should this be rich?")
-    page.click('.notification-mailer__title a', 2000)
+    page.expectText('.email-notification-text', "invited you to a discussion")
+    page.expectText('.email-user-content', "A description for this discussion. Should this be rich?")
+    page.click('main h1 a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
@@ -353,13 +376,13 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
-    page.expectText('.topic-mailer__body', "A description for this discussion. Should this be rich?")
+    page.expectText('.email-notification-text', "invited you to a discussion")
+    page.expectText('.email-user-content', "A description for this discussion. Should this be rich?")
     page.expectText('body', 'Should we go to the moon?')
-    page.expectText('.poll-mailer-common-summary', 'Poll details for the invitation email.')
-    page.expectText('.poll-mailer__vote', 'Please vote')
-    page.expectText('.poll-mailer__vote', 'Agree')
-    page.click('.notification-mailer__title a', 2000)
+    page.expectText('main', 'Poll details for the invitation email.')
+    page.expectText('main', 'Please vote')
+    page.expectText('main', 'Agree')
+    page.click('main h1 a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
     page.expectFlash('Signed in successfully')

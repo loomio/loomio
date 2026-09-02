@@ -1,5 +1,10 @@
 ---
 ro:
+  install_app:
+    install_title: Instalează %{site_name}
+    install_description: Adaugă %{site_name} pe ecranul principal pentru acces mai rapid
+    install_button: Instalează
+    ios_install_description: În Safari, deschide meniul de partajare și selectează Adăugați la ecranul principal
   start_trial:
     title: Începeți o încercare gratuită a Loomio
     intro: Vă mulțumim pentru interesul manifestat față de Loomio. Suntem încântați să vă oferim o perioadă de încercare gratuită de %{day} zile, astfel încât să puteți vedea dacă Loomio este potrivit pentru organizația dvs.
@@ -434,6 +439,33 @@ ro:
     title_label: Titlu
     hint: 'Sfat pentru data viitoare: încercați să evidențiați un text înainte de a da clic pe „Fixați”.'
   change_volume_form:
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
     explain_scope:
       thread: Acest lucru se schimbă atunci când veți fi notificat despre acest fir
       group: Acest lucru se schimbă atunci când veți fi notificat despre toate firele din grup
@@ -516,6 +548,17 @@ ro:
     normal_option: Când cineva dorește atenția mea (Când sunt notificat)
     quiet_option: Niciun e-mail despre acest subiect (Dezactivat)
     quiet_explained: Nu veți primi e-mailuri, chiar dacă cineva încearcă să vă anunțe.
+    volume_email_label: E-mail
+    volume_push_label: Apăsaţi
+    all_activity_option: Toată activitatea
+    when_notified_option: Când este notificat
+    muted_option: Dezactivat
+    volume_channel_label: Cum ar trebui să vă ținem la curent?
+    email_channel: E-mail
+    push_channel: Apăsaţi
+    email_and_push_channel: E-mail și push
+    off_option: Dezactivat
+    apply_to_all_threads_in_group: Aplică aceste setări tuturor discuțiilor din %{group}
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -621,6 +664,16 @@ ro:
     email_notifications: Trimiteți un e-mail când primiți notificare
     email_none: Niciun e-mail
     new_to_you: Nou pentru tine
+    email_and_push_when_notified: E-mail și notificare push când primești o notificare
+    email_when_notified: E-mail când primești o notificare
+    push_when_notified: Notificare push când primești o notificare
+    daily_catch_up_email: E-mail zilnic cu rezumat
+    in_app_only: Numai în aplicație
+    email_and_device_when_notified: E-mail și notificare pe dispozitiv când primești o notificare
+    device_notification_when_notified: Notificare pe dispozitiv când primești o notificare
+    no_notifications: Nicio notificare
+    catch_up_email_every_second_day: Recuperarea e-mailurilor o dată la două zile
+    weekly_catch_up_email: E-mail săptămânal de recuperare
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire
@@ -1610,6 +1663,9 @@ ro:
     submit_delete: Ștergeți contul meu acum
     submit_deactivate: Dezactivează-mi contul acum
   email_settings_page:
+    choose_email_and_push_updates: Choose separate settings for email and push
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Luni
     tuesday: Marti
     wednesday: Miercuri
@@ -1626,8 +1682,7 @@ ro:
     email_newsletter: Buletinul informativ Loomio
     email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
     email_catch_up_day: E-mail cu rezumat de recuperare
-    on_participation_label: Abonați-vă la participare
-    on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
+    digest_email: E-mail cu rezumat de recuperare
     announcement_label: Anunturi
     announcement_description: Veți primi un e-mail despre tot conținutul care a fost anunțat de persoanele din grupurile dvs
     mentioned_label: Mențiuni și răspunsuri
@@ -1643,8 +1698,11 @@ ro:
     learn_more: Aflați mai multe despre setările de e-mail...
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
     daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
+    digest_email_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
     never: Nu
     send_email: Trimiteți e-mail
+    group_notifications: Notificări de grup
+    group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -3000,3 +3058,18 @@ ro:
     nobody_will_be_notified: Nimeni nu va fi notificat
     one_person_will_be_notified: O persoană va fi notificată
     x_people_will_be_notified: "%{count} persoane vor fi notificate"
+  push_notifications:
+    title: Notificări push
+    subtitle: Primește notificări în acest browser
+    not_supported: Notificările push nu sunt disponibile în acest browser
+    permission_denied: Notificările push sunt blocate în setările browserului tău
+    manage_devices: Gestionați dispozitivele de notificare push
+    enabled: Notificări push activate pentru acest browser
+    disabled: Notificările push sunt dezactivate pentru acest browser
+    device_removed: Dispozitivul de notificare push a fost eliminat
+    enable_device: Activează pe acest browser
+    disable_device: Dezactivați pe acest browser
+    devices: Browsere activate
+    browser_device: Browser
+    remove_device: Eliminați browserul
+    enable_from_loomio: Activează notificările push din setările de notificare când ești conectat la Loomio

@@ -41,6 +41,7 @@ class TopicService
           actor: actor,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message]
         )
       elsif topic.topicable_type == "Poll"
@@ -50,6 +51,7 @@ class TopicService
           stances: stances_by_poll_id[topic.topicable_id] || [],
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message]
         )
       else
@@ -87,13 +89,13 @@ class TopicService
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
-  def self.move(topic:, params:, actor:)
+  def self.move(topic:, params:, actor:, &on_topic_item)
     direct = ActiveModel::Type::Boolean.new.cast(params[:make_direct])
     destination = direct ? NullGroup.new : ModelLocator.new(:group, params).locate!
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    Topic.transaction do
+    topic_item = Topic.transaction do
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
@@ -110,6 +112,8 @@ class TopicService
         created_at: Time.current
       )
     end
+    on_topic_item&.call(topic_item)
+    topic
   end
 
   def self.direct_participant_ids(topic:, actor:)
@@ -188,7 +192,7 @@ class TopicService
   def self.update_reader(topic:, params:, actor:)
     actor.ability.authorize! :show, topic
     reader = TopicReader.for(topic: topic, user: actor)
-    reader.update(params.slice(:volume))
+    reader.set_volume!(email: params[:volume_email], push: params[:volume_push])
   end
 
   def self.mark_as_seen(topic:, actor:)
@@ -261,7 +265,7 @@ class TopicService
     end
   end
 
-  def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
+  def self.mark_digest_as_read(user_id, time_start_i, time_finish_i)
     user = User.find_by!(id: user_id)
     time_start  = Time.at(time_start_i).utc
     time_finish = Time.at(time_finish_i).utc
@@ -457,12 +461,15 @@ class TopicService
                                          model: topic,
                                          audience: audience)
 
-    volumes = {}
+    volume_by_user_id = {}
 
     if topic.group_id
       Membership.active.where(group_id: topic.group_id,
-                              user_id: users.pluck(:id)).find_each do |m|
-        volumes[m.user_id] = m.volume
+                              user_id: users.pluck(:id)).find_each do |membership|
+        volume_by_user_id[membership.user_id] = [
+          membership.volume_email || membership.user.volume_email_default,
+          membership.volume_push || membership.user.volume_push_default
+        ]
       end
     end
 
@@ -471,12 +478,17 @@ class TopicService
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
 
     new_topic_readers = users.map do |user|
+      email, push = volume_by_user_id.fetch(
+        user.id,
+        [ user.volume_email_default, user.volume_push_default ]
+      )
       TopicReader.new(user: user,
                       topic: topic,
                       inviter: actor,
-                      guest: !volumes.has_key?(user.id),
+                      guest: !volume_by_user_id.key?(user.id),
                       admin: false,
-                      volume: volumes[user.id] || user.default_membership_volume)
+                      volume_email: email,
+                      volume_push: push)
     end
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)

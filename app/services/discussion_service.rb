@@ -53,7 +53,7 @@ class DiscussionService
         actor: actor
       )
 
-      mention_audience = {
+      recipient_context = {
         newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: discussion.mentioned_users.pluck(:id),
         mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
@@ -70,8 +70,9 @@ class DiscussionService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -116,7 +117,7 @@ class DiscussionService
                                      emails: params[:recipient_emails],
                                      audience: params[:recipient_audience])
 
-      mention_audience = {
+      recipient_context = {
         newly_mentioned_user_ids: discussion.newly_mentioned_users.pluck(:id),
         mentioned_user_ids: discussion.mentioned_users.pluck(:id),
         mentioned_group_user_ids: discussion.mentioned_group_users.pluck(:id)
@@ -136,8 +137,9 @@ class DiscussionService
           actor: actor,
           recipient_user_ids: users.pluck(:id),
           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
           recipient_message: params[:recipient_message],
-          audience_values: mention_audience
+          recipient_context: recipient_context
         )
       end
       MentionNotificationService.create!(
@@ -152,11 +154,12 @@ class DiscussionService
     discussion
   end
 
-  def self.discard(discussion:, actor:)
+  def self.discard(discussion:, actor:, &on_topic_item)
     actor.ability.authorize!(:discard, discussion)
     TopicService.discard_without_authorization(topic: discussion.topic, actor: actor)
     discussion.reload
     Sentry.metrics.count("discussion.discard")
-    discussion.created_topic_item
+    on_topic_item&.call(discussion.created_topic_item)
+    discussion
   end
 end

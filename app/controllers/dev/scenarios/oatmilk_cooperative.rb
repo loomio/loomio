@@ -13,6 +13,15 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_discussion_with_push
+    _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    TopicReader.for(topic: discussion.topic, user: coordinator).set_volume!(email: :quiet, push: :normal)
+
+    sign_in coordinator
+    create_manual_oatmilk_push_subscription
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_discussion_intro
     group, coordinator, = create_manual_oatmilk_cooperative
     commenter = User.find_by!(email: 'alex@oatmilk.example')
@@ -126,6 +135,104 @@ module Dev::Scenarios::OatmilkCooperative
     _group, coordinator, = create_manual_oatmilk_cooperative
     sign_in coordinator
     redirect_to '/email_preferences'
+  end
+
+  def setup_manual_oatmilk_email_settings_with_push
+    _group, coordinator, = create_manual_oatmilk_cooperative
+    sign_in coordinator
+    create_manual_oatmilk_push_subscription
+    redirect_to '/email_preferences'
+  end
+
+  def setup_manual_oatmilk_proposal_invitation_email
+    _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    recipient = User.find_by!(email: 'samira@oatmilk.example')
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+
+    ActionMailer::Base.deliveries.clear
+    deliver_manual_oatmilk_notification_email(
+      kind: 'poll_announced',
+      subject: poll,
+      actor: coordinator,
+      recipient: recipient
+    )
+    last_email(to: recipient)
+  end
+
+  def setup_manual_oatmilk_proposal_outcome_email
+    _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+
+    StanceService.update(
+      stance: poll.stances.latest.find_by!(participant: production_lead),
+      actor: production_lead,
+      params: {
+        choice: {poll.poll_options.first.name => 1},
+        reason: 'The trial gives us enough time to test the return and washing process.'
+      }
+    )
+    StanceService.update(
+      stance: poll.stances.latest.find_by!(participant: sales_lead),
+      actor: sales_lead,
+      params: {
+        choice: {poll.poll_options.second.name => 1},
+        reason: 'I can support the trial once the cafe collection dates are confirmed.'
+      }
+    )
+    PollService.close(poll: poll, actor: coordinator)
+    outcome = OutcomeService.create(
+      outcome: Outcome.new(
+        poll: poll,
+        statement: 'Run the six-week bottle trial with three cafes and review the return rate, washing time, and transport cost each week.'
+      ),
+      actor: coordinator
+    )
+
+    ActionMailer::Base.deliveries.clear
+    deliver_manual_oatmilk_notification_email(
+      kind: 'outcome_created',
+      subject: outcome.created_topic_item,
+      actor: coordinator,
+      recipient: production_lead
+    )
+    last_email(to: production_lead)
+  end
+
+  def setup_manual_oatmilk_digest_email
+    group, coordinator, = create_manual_oatmilk_cooperative
+    discussion = group.discussions.find_by!(title: 'Weekly production schedule')
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+
+    Topic.where(group_id: group.id).where.not(id: discussion.topic_id).update_all(last_activity_at: 2.days.ago)
+    reader = TopicReader.for(topic: discussion.topic, user: coordinator)
+    reader.viewed!([[0, discussion.topic.reload.last_sequence_id]])
+
+    notification_items = []
+    CommentService.create(
+      comment: Comment.new(parent: discussion, body: 'Jamie, could you confirm the cafe collection schedule before the bottle trial begins?'),
+      actor: production_lead
+    ) { |topic_item| notification_items << [topic_item, production_lead, 'user_mentioned'] }
+    CommentService.create(
+      comment: Comment.new(parent: discussion, body: 'I added the latest return-rate figures and the questions from the cafe teams.'),
+      actor: sales_lead
+    ) { |topic_item| notification_items << [topic_item, sales_lead, 'comment_replied_to'] }
+
+    notification_items.each do |topic_item, actor, kind|
+      notification = Notification.create!(kind: kind, subject: topic_item, actor: actor)
+      NotificationDelivery.create!(
+        notification: notification,
+        recipient: coordinator,
+        channel: 'in_app',
+        delivered_at: Time.current,
+        translation_values: {name: actor.name, title: discussion.title}
+      )
+    end
+
+    DigestMailer.digest(coordinator.id, 1.hour.ago).deliver_now
+    last_email(to: coordinator)
   end
 
   def setup_manual_oatmilk_notifications
@@ -1512,6 +1619,30 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     user
+  end
+
+  def deliver_manual_oatmilk_notification_email(kind:, subject:, actor:, recipient:)
+    notification = Notification.create!(kind: kind, subject: subject, actor: actor)
+    delivery = NotificationDelivery.create!(
+      notification: notification,
+      recipient: recipient,
+      channel: 'email'
+    )
+    NotificationMailer.notification(delivery.id).deliver_now
+    delivery.update!(delivered_at: Time.current)
+  end
+
+  def create_manual_oatmilk_push_subscription
+    PushSubscriptionService.create_or_update!(
+      session: Current.session,
+      params: {
+        endpoint: "https://updates.push.services.mozilla.com/wpush/v2/#{SecureRandom.hex(12)}",
+        p256dh_key: SecureRandom.base64(32),
+        auth_key: SecureRandom.base64(16),
+        name: 'Firefox on laptop'
+      },
+      user_agent: 'Mozilla/5.0 Firefox/142.0'
+    )
   end
 
   def create_manual_oatmilk_merge_gmail_account
