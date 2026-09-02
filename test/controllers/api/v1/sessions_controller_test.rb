@@ -197,7 +197,6 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
     assert_response :success
     refute PushSubscription.exists?(subscription.id)
-    assert user.push_subscription_removals.exists?(endpoint_digest: subscription.endpoint_digest)
 
     assert_raises ActiveRecord::RecordNotFound do
       PushSubscriptionService.create_or_update!(
@@ -210,7 +209,6 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
         user_agent: "concurrent enable"
       )
     end
-    assert user.push_subscription_removals.exists?(endpoint_digest: subscription.endpoint_digest)
 
     new_session = user.sessions.create!(user_agent: "returning browser", ip_address: "127.0.0.2")
     reconciled = PushSubscriptionService.reconcile!(

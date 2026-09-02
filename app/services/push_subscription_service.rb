@@ -3,14 +3,14 @@ class PushSubscriptionService
 
   class << self
     def create_or_update!(session:, params:, user_agent:)
-      upsert!(session:, params:, user_agent:, explicit_enable: true, preserve_name: false)
+      update_subscription!(session:, params:, user_agent:, explicit_enable: true)
     end
 
-    # Refresh an existing browser subscription after sign-in without undoing a
-    # deliberate device removal. Only the explicit enable action clears the
-    # user's durable removal marker for this browser endpoint.
+    # Reconciliation only refreshes push that is already enabled for the current
+    # authenticated session. A browser subscription with no matching record is
+    # disabled locally and must be enabled again by the user.
     def reconcile!(session:, params:, user_agent:)
-      upsert!(session:, params:, user_agent:, explicit_enable: false, preserve_name: true)
+      update_subscription!(session:, params:, user_agent:, explicit_enable: false)
     end
 
     def revoke!(session:, endpoint: nil, id: nil)
@@ -25,37 +25,18 @@ class PushSubscriptionService
         else
           scope.find_by!(id: id)
         end
-        record_removal!(user:, endpoint_digest: subscription.endpoint_digest)
         subscription.revoke!
       end
 
       subscription
     end
 
-    # Logout must durably disable every browser endpoint owned by this session
-    # even if client-side unsubscription is delayed or cannot reach the server.
-    # Destroy the session while holding the same locks used by enable so logout
-    # wins against concurrent subscription creation in another tab.
-    def terminate_session!(session:)
-      user = session.user
-
-      PushSubscription.transaction do
-        user.lock!
-        session.lock!
-        session.push_subscriptions.active.lock.each do |subscription|
-          record_removal!(user:, endpoint_digest: subscription.endpoint_digest)
-          subscription.revoke!
-        end
-        session.destroy!
-      end
-    end
-
     private
 
-    # Browser endpoints can survive sessions and account changes. Serialize by
-    # user, preserve the endpoint's single active owner, and keep explicit user
-    # removals separate from automatic revocation caused by delivery or limits.
-    def upsert!(session:, params:, user_agent:, explicit_enable:, preserve_name:)
+    # Browser endpoints can survive session rotation. Explicit enable may create
+    # or move an endpoint, while background reconciliation can only update the
+    # subscription already owned by this exact session.
+    def update_subscription!(session:, params:, user_agent:, explicit_enable:)
       raise ActiveRecord::RecordNotFound unless session.persisted?
 
       user = session.user
@@ -67,23 +48,22 @@ class PushSubscriptionService
         PushSubscription.transaction do
           user.lock!
           session.lock!
-          subscription = PushSubscription.lock.find_by(endpoint_digest: digest, revoked_at: nil)
 
           if explicit_enable
-            user.push_subscription_removals.where(endpoint_digest: digest).delete_all
-          elsif user.push_subscription_removals.exists?(endpoint_digest: digest)
-            subscription&.revoke!
-            subscription = nil
-            next
+            subscription = PushSubscription.lock.find_by(endpoint_digest: digest, revoked_at: nil)
+            if subscription && subscription.user_id != user.id
+              subscription.revoke!
+              subscription = nil
+            end
+            subscription ||= session.push_subscriptions.build(endpoint_digest: digest)
+            subscription.session = session
+          else
+            subscription = session.push_subscriptions.active.lock.find_by(endpoint_digest: digest)
+            unless subscription
+              user.push_subscriptions.active.lock.find_by(endpoint_digest: digest)&.revoke!
+              next
+            end
           end
-
-          if subscription && subscription.user_id != user.id
-            subscription.revoke!
-            subscription = nil
-          end
-
-          subscription ||= session.push_subscriptions.build(endpoint_digest: digest)
-          subscription.session = session
 
           if subscription.new_record? && user.push_subscriptions.active.count >= ACTIVE_COUNT_MAX
             user.push_subscriptions.active.order(last_seen_at: :asc, id: :asc).first.revoke!
@@ -99,7 +79,7 @@ class PushSubscriptionService
             revoked_at: nil,
             failure_count: 0
           }
-          attributes[:name] = params[:name].presence unless preserve_name
+          attributes[:name] = params[:name].presence if explicit_enable
           subscription.assign_attributes(attributes)
           subscription.save!
         end
@@ -114,10 +94,6 @@ class PushSubscriptionService
 
     def endpoint_digest(endpoint)
       Digest::SHA256.hexdigest(endpoint)
-    end
-
-    def record_removal!(user:, endpoint_digest:)
-      user.push_subscription_removals.find_or_create_by!(endpoint_digest:)
     end
   end
 end

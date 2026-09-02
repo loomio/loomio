@@ -26,7 +26,7 @@ class Api::V1::SessionsController < ApplicationController
 
   def destroy
     current_user.update_columns(secret_token: UUIDTools::UUID.random_create.to_s) if current_user.is_logged_in?
-    PushSubscriptionService.terminate_session!(session: Current.session) if Current.session
+
     sign_out
 
     flash[:notice] = t('auth_form.signed_out')

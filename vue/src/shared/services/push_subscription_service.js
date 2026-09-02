@@ -74,7 +74,7 @@ export default new class PushSubscriptionService {
       if (!subscription) return null;
 
       const response = await client.post('reconcile', this.subscriptionParams(subscription));
-      if (response.revoked) {
+      if (response.enabled === false) {
         await subscription.unsubscribe();
         return null;
       }

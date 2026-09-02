@@ -21,7 +21,7 @@ class Api::V1::PushSubscriptionsController < Api::V1::RestfulController
       params: subscription_params,
       user_agent: request.user_agent
     )
-    resource ? respond_with_resource : render(json: { revoked: true })
+    resource ? respond_with_resource : render(json: { enabled: false })
   end
 
   def destroy
