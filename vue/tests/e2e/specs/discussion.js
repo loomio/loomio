@@ -66,7 +66,7 @@ module.exports = {
     page.expectFlash('Notification settings updated')
     page.expectElement('.topic-sidebar__notification-email-icon')
     page.expectNoElement('.topic-sidebar__notification-device-icon')
-    page.expectText('.topic-sidebar__notification-settings', 'All activity')
+    page.expectText('.topic-sidebar__notification-settings', 'Email all activity')
     page.expectNoElement('.change-volume-form', 8000)
     page.clickAndWait('.topic-sidebar__notification-settings', '.change-volume-form--push-disabled')
     page.click('.volume-quiet label')
