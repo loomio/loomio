@@ -47,6 +47,8 @@ class TopicQuery
                          only_unread:,
                          public_group_ids:,
                          topic_id: nil)
+    return chain.none if user.deactivated_at.present?
+
     group_ids = Array(group_ids).compact.map(&:to_i)
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 

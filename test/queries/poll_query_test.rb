@@ -55,6 +55,12 @@ class PollQueryTest < ActiveSupport::TestCase
     refute_includes results, @rando
   end
 
+  test "deactivated users cannot see polls" do
+    @user.update!(deactivated_at: Time.current)
+
+    assert_empty PollQuery.visible_to(user: @user)
+  end
+
   test "dashboard visibility includes polls for topic reader guests" do
     hex = SecureRandom.hex(4)
     private_group = Group.create!(name: "Guest poll group #{hex}", handle: "guestpollgroup#{hex}")

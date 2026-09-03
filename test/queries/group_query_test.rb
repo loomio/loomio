@@ -33,6 +33,12 @@ class GroupQueryTest < ActiveSupport::TestCase
     refute_includes results, @rando
   end
 
+  test "deactivated users cannot see groups" do
+    @user.update!(deactivated_at: Time.current)
+
+    assert_empty GroupQuery.visible_to(user: @user, show_public: true)
+  end
+
   test "finds groups the user can see and public groups" do
     results = GroupQuery.visible_to(user: @user, show_public: true)
     assert_includes results, @group

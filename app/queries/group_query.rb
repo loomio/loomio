@@ -4,6 +4,8 @@ class GroupQuery
   end
 
   def self.visible_to(user: LoggedOutUser.new, chain: start, show_public: false)
+    return chain.none if user.deactivated_at.present?
+
     guest_group_ids = Topic.where(id: user.guest_topic_ids).pluck(:group_id).compact
     group_ids = user.group_ids.concat(guest_group_ids)
     chain.published.

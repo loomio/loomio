@@ -19,6 +19,8 @@ class PollQuery
                          chain:,
                          group_ids:,
                          public_group_ids:)
+    return chain.none if user.deactivated_at.present?
+
     group_ids = Array(group_ids).compact.map(&:to_i)
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 

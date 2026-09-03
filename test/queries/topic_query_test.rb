@@ -11,6 +11,12 @@ class TopicQueryTest < ActiveSupport::TestCase
 
   # -- Logged out --
 
+  test "deactivated users cannot see topics" do
+    user = users(:inactive_member_loud)
+
+    assert_empty TopicQuery.visible_to(user: user)
+  end
+
   test "logged out can see public topics" do
     pub_group = Group.new(name: "PubGroup #{SecureRandom.hex(4)}", is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
     pub_group.save(validate: false)

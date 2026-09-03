@@ -33,6 +33,40 @@ class AbilityTest < ActiveSupport::TestCase
     assert @user.can?(:show, @group)
   end
 
+  test "private group and discussion visibility match the fixture access matrix" do
+    discussion = discussions(:discussion)
+    matrix_users = users(
+      :admin,
+      :user,
+      :member,
+      :member_quiet,
+      :member_normal,
+      :member_loud,
+      :guest_quiet,
+      :guest_normal,
+      :guest_admin_normal,
+      :guest_loud,
+      :alien,
+      :alien_quiet,
+      :alien_loud,
+      :non_guest_loud,
+      :former_member_loud,
+      :former_guest_loud,
+      :inactive_member_loud,
+      :inactive_guest_loud,
+      :reader_quiet,
+      :reader_normal,
+      :reader_loud,
+      :member_guest_loud,
+      :former_member_guest
+    )
+
+    matrix_users.each do |user|
+      assert_equal @group.members.exists?(user.id), user.can?(:show, @group), "group visibility for #{user.email}"
+      assert_equal discussion.topic.members.exists?(user.id), user.can?(:show, discussion), "discussion visibility for #{user.email}"
+    end
+  end
+
   # is_visible_to_parent_members
   test "subgroup visible to parent members not visible to non member" do
     subgroup = groups(:subgroup)
