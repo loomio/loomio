@@ -63,10 +63,18 @@ class TopicReaderTest < ActiveSupport::TestCase
 
       member = create_user.call(:member)
       @group.add_member!(member).update!(volume_email: level, volume_push: level)
+      member.update!(
+        volume_email_default: level == :quiet ? :loud : :quiet,
+        volume_push_default: level == :quiet ? :loud : :quiet
+      )
       users_by_access[:member][level] = member
 
       guest = create_user.call(:guest)
       @discussion.topic.add_guest!(guest, @admin).update!(volume_email: level, volume_push: level)
+      guest.update!(
+        volume_email_default: level == :quiet ? :loud : :quiet,
+        volume_push_default: level == :quiet ? :loud : :quiet
+      )
       users_by_access[:guest][level] = guest
 
       unrelated = create_user.call(:unrelated)
@@ -123,6 +131,46 @@ class TopicReaderTest < ActiveSupport::TestCase
           assert_not_includes scope, users_by_access[access][level], "#{scope_name} #{access} #{level}"
         end
       end
+    end
+  end
+
+  test "direct topic delivery volume scopes use only active guests" do
+    topic = @discussion.topic
+    topic.update!(group_id: nil)
+
+    loud_guest = User.create!(name: "Direct loud guest", email: "direct-loud-#{SecureRandom.hex(4)}@example.test")
+    topic.add_guest!(loud_guest, @admin).update!(volume_email: :loud, volume_push: :loud)
+
+    quiet_guest = User.create!(name: "Direct quiet guest", email: "direct-quiet-#{SecureRandom.hex(4)}@example.test")
+    topic.add_guest!(quiet_guest, @admin).update!(volume_email: :quiet, volume_push: :quiet)
+
+    former_guest = User.create!(name: "Direct former guest", email: "direct-former-#{SecureRandom.hex(4)}@example.test")
+    topic.add_guest!(former_guest, @admin).update!(volume_email: :loud, volume_push: :loud, revoked_at: Time.current)
+
+    non_guest_reader = User.create!(name: "Direct non-guest reader", email: "direct-reader-#{SecureRandom.hex(4)}@example.test")
+    TopicReader.create!(
+      user: non_guest_reader,
+      topic: topic,
+      inviter: @admin,
+      guest: false,
+      volume_email: :loud,
+      volume_push: :loud
+    )
+
+    unrelated = User.create!(
+      name: "Direct unrelated",
+      email: "direct-unrelated-#{SecureRandom.hex(4)}@example.test",
+      volume_email_default: :loud,
+      volume_push_default: :loud
+    )
+
+    %i[email_enabled_members email_loud_members push_enabled_members push_loud_members].each do |scope_name|
+      scope = topic.public_send(scope_name)
+      assert_includes scope, loud_guest, scope_name
+      assert_not_includes scope, quiet_guest, scope_name
+      assert_not_includes scope, former_guest, scope_name
+      assert_not_includes scope, non_guest_reader, scope_name
+      assert_not_includes scope, unrelated, scope_name
     end
   end
 

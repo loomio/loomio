@@ -217,52 +217,47 @@ class Topic < ApplicationRecord
     Array(ranges.last).last.to_i
   end
 
-  # Build the active topic audience once so every delivery channel applies its
-  # volume condition only after access has been established. A missing
-  # membership and topic-reader row means no access, not an account-default
-  # subscription; including that case would disclose private activity to
-  # unrelated users whose account default is loud.
-  private def members_by_volume
-    return User.none unless persisted?
-
-    User.active.distinct
+  # Start from the same active member/guest union used for topic authorization,
+  # then join the records that hold topic and group delivery preferences.
+  private def members_with_volumes
+    members
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL)')
   end
 
+  # Persisted membership and topic-reader volumes are non-null snapshots.
+  # Account defaults seed them at creation; account changes are not live fallbacks.
   def email_enabled_members
-    members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) != :level',
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) != :level',
       level: TopicReader.volume_emails[:quiet]
     )
   end
 
   def email_normal_members
-    members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) = :level',
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) = :level',
       level: TopicReader.volume_emails[:normal]
     )
   end
 
   def email_loud_members
-    members_by_volume.where(
-      'coalesce(tr.volume_email, m.volume_email, users.volume_email_default) = :level',
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) = :level',
       level: TopicReader.volume_emails[:loud]
     )
   end
 
   def push_enabled_members
-    members_by_volume.where(
-      'coalesce(tr.volume_push, m.volume_push, users.volume_push_default) != :level',
+    members_with_volumes.where(
+      'coalesce(tr.volume_push, m.volume_push) != :level',
       level: TopicReader.volume_pushes[:quiet]
     )
   end
 
   def push_loud_members
-    members_by_volume.where(
-      'coalesce(tr.volume_push, m.volume_push, users.volume_push_default) = :level',
+    members_with_volumes.where(
+      'coalesce(tr.volume_push, m.volume_push) = :level',
       level: TopicReader.volume_pushes[:loud]
     )
   end
