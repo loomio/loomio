@@ -113,7 +113,6 @@ const iconProps = ref({
 const modelRef = toRef(props, 'model');
 
 const {
-  mentionsCache,
   mentions,
   query,
   navigatedUserIndex,
@@ -135,7 +134,6 @@ const htmlMentioning = useHtmlMentioning(
 
 const {
   files,
-  imageFiles,
   resetFiles,
   updateFiles,
   removeFile,

@@ -35,7 +35,6 @@ const modelRef = toRef(props, 'model');
 const fieldNameRef = toRef(props, 'field');
 
 const {
-  mentionsCache,
   mentions,
   query,
   navigatedUserIndex,
@@ -74,9 +73,7 @@ const {
 
 const {
   files,
-  imageFiles,
   resetFiles,
-  updateFiles,
   removeFile,
   attachFile,
   attachImageFile,
