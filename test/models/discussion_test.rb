@@ -56,15 +56,16 @@ class DiscussionTest < ActiveSupport::TestCase
   test "returns a guest who has never been a member" do
     discussion = discussions(:discussion)
     discussion.add_guest!(@alien, @admin)
-    assert_includes discussion.guests, @alien
-    assert_equal 1, discussion.guests.length
+
+    assert_equal (fixture_guest_ids + [ @alien.id ]).sort, discussion.guests.pluck(:id).sort
   end
 
   test "does not return a member as guest" do
     discussion = discussions(:discussion)
     @group.add_member!(@alien)
     discussion.add_guest!(@alien, @admin)
-    assert_equal 0, discussion.guests.length
+
+    assert_equal fixture_guest_ids.sort, discussion.guests.pluck(:id).sort
   end
 
   test "returns a guest who was previously a member" do
@@ -72,8 +73,8 @@ class DiscussionTest < ActiveSupport::TestCase
     membership = @group.add_member!(@alien)
     MembershipService.revoke(membership: membership, actor: @admin)
     discussion.add_guest!(@alien, @admin)
-    assert_includes discussion.guests, @alien
-    assert_equal 1, discussion.guests.length
+
+    assert_equal (fixture_guest_ids + [ @alien.id ]).sort, discussion.guests.pluck(:id).sort
   end
 
   # Versioning
@@ -199,5 +200,17 @@ class DiscussionTest < ActiveSupport::TestCase
   test "does not extract the authors username" do
     discussion = Discussion.new(description: "Hello @#{@admin.username}!", description_format: 'md', author: @admin)
     assert_not_includes discussion.mentioned_usernames, @admin.username
+  end
+
+  private
+
+  def fixture_guest_ids
+    users(
+      :guest_quiet,
+      :guest_normal,
+      :guest_admin_normal,
+      :guest_loud,
+      :former_member_guest
+    ).map(&:id)
   end
 end

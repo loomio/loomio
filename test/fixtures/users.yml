@@ -80,3 +80,49 @@ alien:
   secret_token: anotherusersecrettoken123456
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+# Reusable access-control and notification matrix. Stored membership/topic
+# volumes deliberately disagree with many account defaults in the related
+# fixtures so tests detect accidental fallback to account-level preferences.
+<%
+matrix_users = {
+  member_quiet:          { email: 3, push: 3 },
+  member_normal:         { email: 1, push: 1 },
+  member_loud:           { email: 1, push: 1 },
+  guest_quiet:           { email: 3, push: 3 },
+  guest_normal:          { email: 1, push: 1 },
+  guest_admin_normal:    { email: 1, push: 1 },
+  guest_loud:            { email: 1, push: 1 },
+  alien_quiet:           { email: 1, push: 1 },
+  alien_loud:            { email: 3, push: 3 },
+  non_guest_loud:        { email: 3, push: 3 },
+  former_member_loud:    { email: 3, push: 3 },
+  former_guest_loud:     { email: 3, push: 3 },
+  inactive_member_loud:  { email: 3, push: 3, inactive: true },
+  inactive_guest_loud:   { email: 3, push: 3, inactive: true },
+  reader_quiet:          { email: 3, push: 3 },
+  reader_normal:         { email: 1, push: 1 },
+  reader_loud:           { email: 1, push: 1 },
+  member_guest_loud:     { email: 1, push: 1 },
+  former_member_guest:   { email: 1, push: 1 }
+}
+%>
+<% matrix_users.each do |fixture, attributes| %>
+<%= fixture %>:
+  key: <%= fixture %>_key
+  name: <%= fixture.to_s.humanize %>
+  email: <%= fixture %>@example.test
+  email_verified: true
+  username: <%= fixture %>
+  unsubscribe_token: <%= fixture %>_unsubscribe
+  email_api_key: <%= fixture %>_email_api
+  api_key: <%= fixture %>_api
+  volume_email_default: <%= attributes[:email] %>
+  volume_push_default: <%= attributes[:push] %>
+<% if attributes[:inactive] %>
+  deactivated_at: <%= 1.day.ago %>
+<% end %>
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+<% end %>

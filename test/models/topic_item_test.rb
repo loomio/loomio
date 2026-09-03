@@ -263,22 +263,29 @@ class EventTest < ActiveSupport::TestCase
       subject: @discussion,
       actor: @admin
     )
-    assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
-      Resolv.stub(:getaddresses, [ "93.184.216.34" ]) do
-        NotificationService.create!(
-          kind: "new_discussion",
-          subject: @discussion,
-          actor: @admin,
-          recipient_context: {
-            newly_mentioned_user_ids: @discussion.newly_mentioned_users.pluck(:id),
-            mentioned_user_ids: @discussion.mentioned_users.pluck(:id),
-            mentioned_group_user_ids: @discussion.mentioned_group_users.pluck(:id)
-          }
-        )
-        PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
-      end
-      assert_equal 1, @discussion.mentioned_users.length
+    deliveries_before = ActionMailer::Base.deliveries.count
+    ChatbotService.stub(:publish_notification_delivery!, nil) do
+      NotificationService.create!(
+        kind: "new_discussion",
+        subject: @discussion,
+        actor: @admin,
+        recipient_context: {
+          newly_mentioned_user_ids: @discussion.newly_mentioned_users.pluck(:id),
+          mentioned_user_ids: @discussion.mentioned_users.pluck(:id),
+          mentioned_group_user_ids: @discussion.mentioned_group_users.pluck(:id)
+        }
+      )
     end
+    PublishSubscriberEmailsTopicItemWorker.perform_now(topic_item.id)
+    assert_equal 1, @discussion.mentioned_users.length
+    expected_emails = [
+      users(:reader_quiet).email,
+      users(:member_loud).email,
+      @user_thread_loud.email,
+      @user_membership_loud.email
+    ]
+    delivered_emails = ActionMailer::Base.deliveries.drop(deliveries_before).flat_map(&:to)
+    assert_equal expected_emails.sort, delivered_emails.sort
     notification = Notification.find_by!(kind: "user_mentioned", subject: @discussion.created_topic_item)
     assert_includes notification.recipient_user_ids, @mentioned_user.id
   end

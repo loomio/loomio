@@ -38,3 +38,13 @@ alien_discussion:
   topic: alien_discussion_topic
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+direct_discussion:
+  key: direct_discussion_key
+  title: Direct discussion
+  description: <p>A direct discussion</p>
+  description_format: html
+  author: guest_normal
+  topic: direct_topic
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>

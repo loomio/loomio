@@ -54,3 +54,38 @@ alien_group_membership:
   accepted_at: <%= 30.days.ago %>
   admin: true
   created_at: <%= 30.days.ago %>
+
+# Membership side of the reusable access-control and notification matrix.
+<%
+matrix_memberships = {
+  member_quiet_membership:         { user: :member_quiet,         group: :group,       volume: 1 },
+  member_normal_membership:        { user: :member_normal,        group: :group,       volume: 2 },
+  member_loud_membership:          { user: :member_loud,          group: :group,       volume: 3 },
+  alien_quiet_membership:          { user: :alien_quiet,          group: :alien_group, volume: 1 },
+  alien_loud_membership:           { user: :alien_loud,           group: :alien_group, volume: 3 },
+  former_member_loud_membership:   { user: :former_member_loud,   group: :group,       volume: 3, admin: true, revoked: true },
+  inactive_member_loud_membership: { user: :inactive_member_loud, group: :group,       volume: 3, admin: true },
+  reader_quiet_membership:         { user: :reader_quiet,         group: :group,       volume: 3 },
+  reader_normal_membership:        { user: :reader_normal,        group: :group,       volume: 1 },
+  reader_loud_membership:          { user: :reader_loud,          group: :group,       volume: 1 },
+  member_guest_loud_membership:    { user: :member_guest_loud,    group: :group,       volume: 1 },
+  former_member_guest_membership:  { user: :former_member_guest,  group: :group,       volume: 1, revoked: true }
+}
+%>
+<% matrix_memberships.each do |fixture, attributes| %>
+<%= fixture %>:
+  user: <%= attributes[:user] %>
+  group: <%= attributes[:group] %>
+  token: <%= fixture %>_token
+  accepted_at: <%= 30.days.ago %>
+  admin: <%= attributes.fetch(:admin, false) %>
+  volume_email: <%= attributes[:volume] %>
+  volume_push: <%= attributes[:volume] %>
+<% if attributes[:revoked] %>
+  revoked_at: <%= 1.day.ago %>
+  revoker_id: <%= ActiveRecord::FixtureSet.identify(:admin) %>
+<% end %>
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+<% end %>

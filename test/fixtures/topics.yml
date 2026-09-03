@@ -46,3 +46,14 @@ subgroup_discussion_topic:
   last_activity_at: <%= 5.days.ago %>
   created_at: <%= 5.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+direct_topic:
+  topicable: direct_discussion (Discussion)
+  items_count: 0
+  ranges_string: ""
+  max_depth: 2
+  newest_first: false
+  private: true
+  last_activity_at: <%= 10.days.ago %>
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>

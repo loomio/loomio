@@ -103,9 +103,12 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
       private: true
     }
 
-    assert_difference 'ActionMailer::Base.deliveries.count', 1 do
-      post :create, params: { discussion: discussion_params }, format: :json
-    end
+    deliveries_before = ActionMailer::Base.deliveries.count
+    post :create, params: { discussion: discussion_params }, format: :json
+
+    expected_emails = [ @admin.email, users(:member_loud).email, users(:reader_quiet).email ]
+    delivered_emails = ActionMailer::Base.deliveries.drop(deliveries_before).flat_map(&:to)
+    assert_equal expected_emails.sort, delivered_emails.sort
   end
 
   test "responds with error when there are unpermitted params" do

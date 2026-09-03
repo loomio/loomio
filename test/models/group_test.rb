@@ -48,6 +48,49 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.all_members, @user
   end
 
+  test "members and admins match the fixture membership matrix exactly" do
+    expected_member_ids = users(
+      :admin,
+      :user,
+      :member,
+      :member_quiet,
+      :member_normal,
+      :member_loud,
+      :reader_quiet,
+      :reader_normal,
+      :reader_loud,
+      :member_guest_loud
+    ).map(&:id).sort
+
+    assert_equal expected_member_ids, @group.members.pluck(:id).sort
+    assert_equal [ users(:admin).id ], @group.admins.pluck(:id)
+  end
+
+  test "alien group membership matrix is separate from the primary group" do
+    alien_group = groups(:alien_group)
+    expected_alien_ids = users(:alien, :alien_quiet, :alien_loud).map(&:id).sort
+
+    assert_equal expected_alien_ids, alien_group.members.pluck(:id).sort
+    assert_equal [ users(:alien).id ], alien_group.admins.pluck(:id)
+    assert_empty @group.members.where(id: expected_alien_ids)
+  end
+
+  test "delivery scopes match the fixture membership volume matrix exactly" do
+    normal = users(:admin, :user, :member, :member_normal)
+    loud = users(:member_loud, :reader_quiet)
+    expectations = {
+      email_enabled_members: normal + loud,
+      email_loud_members: loud,
+      push_enabled_members: normal + loud,
+      push_loud_members: loud
+    }
+
+    expectations.each do |scope_name, expected|
+      actual_ids = @group.public_send(scope_name).pluck(:id)
+      assert_equal expected.map(&:id).sort, actual_ids.sort, scope_name
+    end
+  end
+
   test "updates the memberships_count" do
     group = Group.create!(name: "Count Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
     assert_difference -> { group.reload.memberships_count }, 1 do

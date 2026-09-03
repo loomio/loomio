@@ -241,9 +241,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     audiences = JSON.parse(response.body).fetch("audiences")
     parent_audience = audiences.find { |audience| audience["id"] == "group-#{@group.id}" }
+    expected_parent_member_ids = @group.members.where.not(id: subgroup.members.select(:id)).pluck(:id).sort
 
     assert_equal @group.name, parent_audience.fetch("name")
-    assert_equal 1, parent_audience.fetch("size")
+    assert_equal expected_parent_member_ids.length, parent_audience.fetch("size")
     refute audiences.any? { |audience| audience["id"] == "group-#{subgroup.id}" }
 
     get :audience, params: {
@@ -253,7 +254,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     }
 
     assert_response :success
-    assert_equal [ users(:member).id ], JSON.parse(response.body).fetch("users").pluck("id")
+    assert_equal expected_parent_member_ids, JSON.parse(response.body).fetch("users").pluck("id").sort
   end
 
   test "available audiences for a parent group include members of its subgroups" do
