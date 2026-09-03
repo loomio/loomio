@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repository_path=$(cd "$(dirname "$0")/../.." && pwd)
+test_path=$(mktemp -d)
+trap 'rm -rf "$test_path"' EXIT
+fake_bin="$test_path/bin"
+mkdir -p "$fake_bin" "$test_path/new" "$test_path/upgrade" "$test_path/invalid-upgrade"
+
+# Execute the Ruby passed to `docker run` with the repository's bundle and map
+# the container template path back to the checked-out template.
+cat > "$fake_bin/docker" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby_code=""
+env_file=""
+while [ "$#" -gt 0 ]; do
+  if [ "$1" = --env-file ]; then
+    env_file="$2"
+    shift 2
+    continue
+  fi
+  if [ "$1" = -e ]; then
+    ruby_code="$2"
+    shift 2
+    break
+  fi
+  shift
+done
+if [ -z "$ruby_code" ]; then
+  echo "Unexpected docker arguments" >&2
+  exit 1
+fi
+
+cd "$GENERATOR_REPOSITORY_PATH"
+if [ "$#" -eq 3 ]; then
+  hostname="$2"
+  email="$3"
+  exec bundle exec ruby -rsecurerandom -rweb-push -e "$ruby_code" deploy/env_template "$hostname" "$email"
+fi
+if [ "$#" -eq 0 ] && [ -n "$env_file" ]; then
+  while IFS='=' read -r name value; do
+    case "$name" in
+      SUPPORT_EMAIL|VAPID_PUBLIC_KEY|VAPID_PRIVATE_KEY|VAPID_SUBJECT) export "$name=$value" ;;
+    esac
+  done < "$OLDPWD/$env_file"
+  exec bundle exec ruby -rweb-push -e "$ruby_code"
+fi
+echo "Unexpected docker arguments" >&2
+exit 1
+SH
+chmod +x "$fake_bin/docker"
+
+env_file="$test_path/new/.env"
+(cd "$test_path/new" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" "$repository_path/deploy/create_env.sh" loomio.example.com admin@example.com >/dev/null < /dev/null)
+
+grep -Fxq "CANONICAL_HOST=loomio.example.com" "$env_file"
+grep -Fxq "SUPPORT_EMAIL=admin@example.com" "$env_file"
+grep -Fxq "VAPID_SUBJECT=mailto:admin@example.com" "$env_file"
+grep -Eq '^POSTGRES_PASSWORD=[0-9a-f]{64}$' "$env_file"
+grep -Eq '^DEVISE_SECRET=[0-9a-f]{64}$' "$env_file"
+grep -Eq '^SECRET_COOKIE_TOKEN=[0-9a-f]{64}$' "$env_file"
+grep -Eq '^RAILS_INBOUND_EMAIL_PASSWORD=[0-9a-f]{64}$' "$env_file"
+grep -Eq '^VAPID_PUBLIC_KEY=[A-Za-z0-9_-]{87}=$' "$env_file"
+grep -Eq '^VAPID_PRIVATE_KEY=[A-Za-z0-9_-]{43}=$' "$env_file"
+postgres_password=$(sed -n 's/^POSTGRES_PASSWORD=//p' "$env_file")
+grep -Fxq "DATABASE_URL=postgresql://postgres:${postgres_password}@db/loomio_production" "$env_file"
+if grep -q 'REPLACE_WITH_' "$env_file"; then
+  echo "create_env.sh left an unresolved placeholder" >&2
+  exit 1
+fi
+mode=$(stat -c %a "$env_file" 2>/dev/null || stat -f %Lp "$env_file")
+test "$mode" = 600
+
+checksum_before=$(cksum "$env_file")
+if (cd "$test_path/new" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" "$repository_path/deploy/create_env.sh" other.example.com other@example.com >/dev/null 2>&1); then
+  echo "create_env.sh overwrote an existing .env" >&2
+  exit 1
+fi
+test "$(cksum "$env_file")" = "$checksum_before"
+
+rm "$env_file"
+if (cd "$test_path/new" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" "$repository_path/deploy/create_env.sh" invalid-host invalid-email >/dev/null 2>&1); then
+  echo "create_env.sh accepted invalid input" >&2
+  exit 1
+fi
+test ! -e "$env_file"
+
+upgrade_command=$(awk '/^## 3\.5\.0 browser push notifications$/{ found = 1 } found && /^```sh$/{ getline; print; exit }' "$repository_path/deploy/UPGRADING.md")
+test -n "$upgrade_command"
+printf 'SUPPORT_EMAIL=upgrader@example.com\n' > "$test_path/upgrade/.env"
+(cd "$test_path/upgrade" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" eval "$upgrade_command")
+grep -Eq '^VAPID_PUBLIC_KEY=[A-Za-z0-9_-]{87}=$' "$test_path/upgrade/.env"
+grep -Eq '^VAPID_PRIVATE_KEY=[A-Za-z0-9_-]{43}=$' "$test_path/upgrade/.env"
+grep -Fxq 'VAPID_SUBJECT=mailto:upgrader@example.com' "$test_path/upgrade/.env"
+upgrade_checksum=$(cksum "$test_path/upgrade/.env")
+if (cd "$test_path/upgrade" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" eval "$upgrade_command" >/dev/null 2>&1); then
+  echo "The documented upgrade command replaced existing VAPID keys" >&2
+  exit 1
+fi
+test "$(cksum "$test_path/upgrade/.env")" = "$upgrade_checksum"
+
+printf 'SUPPORT_EMAIL=invalid-email\n' > "$test_path/invalid-upgrade/.env"
+if (cd "$test_path/invalid-upgrade" && GENERATOR_REPOSITORY_PATH="$repository_path" PATH="$fake_bin:$PATH" eval "$upgrade_command" >/dev/null 2>&1); then
+  echo "The documented upgrade command accepted an invalid support email" >&2
+  exit 1
+fi
+test "$(grep -c '^VAPID_' "$test_path/invalid-upgrade/.env")" = 0
+
+echo "Deployment environment script tests passed"
