@@ -46,6 +46,86 @@ class TopicReaderTest < ActiveSupport::TestCase
     assert_equal @membership.volume_push, @reader.computed_volume_push
   end
 
+  test "topic delivery volume scopes require current access at every level" do
+    levels = %i[quiet normal loud]
+    users_by_access = Hash.new { |hash, key| hash[key] = {} }
+
+    levels.each do |level|
+      create_user = lambda do |access|
+        token = SecureRandom.hex(5)
+        User.create!(
+          name: "#{access} #{level}",
+          email: "#{access}-#{level}-#{token}@example.test",
+          volume_email_default: level,
+          volume_push_default: level
+        )
+      end
+
+      member = create_user.call(:member)
+      @group.add_member!(member).update!(volume_email: level, volume_push: level)
+      users_by_access[:member][level] = member
+
+      guest = create_user.call(:guest)
+      @discussion.topic.add_guest!(guest, @admin).update!(volume_email: level, volume_push: level)
+      users_by_access[:guest][level] = guest
+
+      unrelated = create_user.call(:unrelated)
+      users_by_access[:unrelated][level] = unrelated
+
+      non_guest_reader = create_user.call(:non_guest_reader)
+      TopicReader.create!(
+        user: non_guest_reader,
+        topic: @discussion.topic,
+        inviter: @admin,
+        guest: false,
+        volume_email: level,
+        volume_push: level
+      )
+      users_by_access[:non_guest_reader][level] = non_guest_reader
+
+      former_member = create_user.call(:former_member)
+      @group.add_member!(former_member).update!(
+        volume_email: level,
+        volume_push: level,
+        revoked_at: Time.current
+      )
+      users_by_access[:former_member][level] = former_member
+
+      former_guest = create_user.call(:former_guest)
+      @discussion.topic.add_guest!(former_guest, @admin).update!(
+        volume_email: level,
+        volume_push: level,
+        revoked_at: Time.current
+      )
+      users_by_access[:former_guest][level] = former_guest
+    end
+
+    expectations = {
+      email_enabled_members: %i[normal loud],
+      email_normal_members: %i[normal],
+      email_loud_members: %i[loud],
+      push_enabled_members: %i[normal loud],
+      push_loud_members: %i[loud]
+    }
+
+    expectations.each do |scope_name, included_levels|
+      scope = @discussion.topic.public_send(scope_name)
+
+      %i[member guest].each do |access|
+        levels.each do |level|
+          assertion = included_levels.include?(level) ? :assert_includes : :assert_not_includes
+          public_send(assertion, scope, users_by_access[access][level], "#{scope_name} #{access} #{level}")
+        end
+      end
+
+      %i[unrelated non_guest_reader former_member former_guest].each do |access|
+        levels.each do |level|
+          assert_not_includes scope, users_by_access[access][level], "#{scope_name} #{access} #{level}"
+        end
+      end
+    end
+  end
+
   # Viewed
   test "updates counts correctly from existing last_read_at" do
     @reader.update!(last_read_at: 6.days.ago)

@@ -217,8 +217,11 @@ class Topic < ApplicationRecord
     Array(ranges.last).last.to_i
   end
 
-  # Build the active member relation once so delivery wrappers only add their
-  # channel-specific volume condition.
+  # Build the active topic audience once so every delivery channel applies its
+  # volume condition only after access has been established. A missing
+  # membership and topic-reader row means no access, not an account-default
+  # subscription; including that case would disclose private activity to
+  # unrelated users whose account default is loud.
   private def members_by_volume
     return User.none unless persisted?
 
@@ -226,8 +229,7 @@ class Topic < ApplicationRecord
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
         .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL) OR
-                (m.id IS NULL and tr.id IS NULL)')
+                (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL)')
   end
 
   def email_enabled_members

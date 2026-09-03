@@ -95,6 +95,8 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "new_comment sends emails to loud subscribers" do
+    unrelated_user = create_unique_user("unrelated")
+    unrelated_user.update!(volume_email_default: :loud)
     comment = Comment.new(body: "hello", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
     recipient_emails = ActionMailer::Base.deliveries.map(&:to).flatten
@@ -107,6 +109,7 @@ class EventTest < ActiveSupport::TestCase
     assert_not_includes recipient_emails, @user_thread_quiet.email
     assert_not_includes recipient_emails, @user_membership_mute.email
     assert_not_includes recipient_emails, @user_thread_mute.email
+    assert_not_includes recipient_emails, unrelated_user.email
     assert_not Notification.about(comment).exists?(kind: "new_comment")
   end
 
@@ -132,6 +135,14 @@ class EventTest < ActiveSupport::TestCase
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
+    unrelated_user = create_unique_user("unrelated-push")
+    unrelated_user.update!(volume_push_default: :loud)
+    unrelated_subscription = create_push_subscription(
+      user: unrelated_user,
+      endpoint: "https://fcm.googleapis.com/fcm/send/unrelated-topic-item-token",
+      p256dh_key: "unrelated-p256dh-key",
+      auth_key: "unrelated-auth-key"
+    )
     ActiveJob::Base.queue_adapter.perform_enqueued_jobs = false
     comment = Comment.new(body: "push this activity", parent: @discussion)
     topic_item = nil
@@ -145,6 +156,10 @@ class EventTest < ActiveSupport::TestCase
       assert_enqueued_with(job: DeliverSubscriberPushTopicItemWorker, args: [subscription.id, topic_item.id]) do
         PublishSubscriberPushTopicItemWorker.perform_now(topic_item.id)
       end
+      delivery_job_args = enqueued_jobs
+        .select { |job| job[:job] == DeliverSubscriberPushTopicItemWorker }
+        .map { |job| job[:args] }
+      assert_not_includes delivery_job_args, [unrelated_subscription.id, topic_item.id]
       WebPushService.stub(:deliver!, ->(**args) { deliveries << args; true }) do
         DeliverSubscriberPushTopicItemWorker.perform_now(subscription.id, topic_item.id)
       end
