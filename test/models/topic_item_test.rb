@@ -212,6 +212,49 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
+  test "destroying a topic does not reparent items from stale association objects" do
+    root = @discussion.created_topic_item
+    comments = 3.times.map do |index|
+      Comment.create!(parent: @discussion, body: "Nested #{index}", author: @admin)
+    end
+    parent, child, grandchild = comments.map do |comment|
+      TopicItem.create!(kind: "new_comment", topic: @discussion.topic, itemable: comment)
+    end
+    child.update_columns(parent_id: parent.id, depth: 2)
+    grandchild.update_columns(parent_id: child.id, depth: 3)
+
+    association = @discussion.topic.association(:items)
+    loaded_items = association.load_target
+    association.target.replace(
+      [ parent, child ] + loaded_items.reject { |item| [ parent.id, child.id ].include?(item.id) }
+    )
+    topic_id = @discussion.topic_id
+
+    assert_nothing_raised { @discussion.topic.destroy! }
+    assert_not Topic.exists?(topic_id)
+    assert_not TopicItem.where(topic_id: topic_id).exists?
+    assert_not TopicItem.exists?(root.id)
+  end
+
+  test "destroying one topic item reparents its children" do
+    parent = TopicItem.create!(
+      kind: "new_comment",
+      topic: @discussion.topic,
+      itemable: Comment.create!(parent: @discussion, body: "Parent", author: @admin)
+    )
+    child = TopicItem.create!(
+      kind: "new_comment",
+      topic: @discussion.topic,
+      itemable: Comment.create!(parent: @discussion, body: "Child", author: @admin)
+    )
+    child.update_columns(parent_id: parent.id, depth: parent.depth + 1)
+
+    parent.destroy!
+
+    assert_equal @discussion.created_topic_item.id, child.reload.parent_id
+    assert_equal parent.depth, child.depth
+  end
+
   test "stance notification links to its poll in the discussion" do
     stance = Stance.new(poll: @poll, participant: @mentioned_user)
     notification = Notification.new(kind: "stance_created", subject: stance, actor: @admin)

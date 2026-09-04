@@ -13,7 +13,7 @@ class TopicItem < ApplicationRecord
   before_create :set_parent_and_depth
   before_create :set_sequences
   after_rollback :reset_sequences
-  before_destroy :reparent_children
+  before_destroy :reparent_children, unless: :destroyed_with_topic?
   before_destroy :reset_sequences
 
   after_create  :update_sequence_info!
@@ -118,6 +118,13 @@ class TopicItem < ApplicationRecord
 
   def reparent_children
     TopicItem.where(parent_id: id).update_all(parent_id: parent_id, depth: depth) if parent_id
+  end
+
+  # A topic destroys every item in an unspecified order. Reparenting from the
+  # stale in-memory objects can point descendants at an item already deleted
+  # earlier in that cascade. Individual item deletion still reparents children.
+  def destroyed_with_topic?
+    destroyed_by_association == Topic.reflect_on_association(:items)
   end
 
   def next_sequence_id!
