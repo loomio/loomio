@@ -35,6 +35,7 @@ import {Iframe} from './extension_iframe';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import { getEmbedLink } from '@/shared/helpers/embed_link';
+import { linkPreviewTopicId } from '@/shared/helpers/link_preview_topic_id';
 import { registerBeforeSaveCallback } from '@/shared/helpers/before_save_callback.mjs';
 
 import SuggestionList from './suggestion_list';
@@ -322,7 +323,7 @@ const fetchLinkPreviews = (urls) => {
     fetchedUrls.value = uniq(fetchedUrls.value.concat(urls));
     Records.remote.post('link_previews', {
       urls,
-      topic_id: props.model.topicId || props.model.topic()?.id
+      topic_id: linkPreviewTopicId(props.model)
     }).then(data => {
       props.model.linkPreviews = uniqBy(
         props.model.linkPreviews.concat(data.previews),
