@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
+import SubscriptionService from '@/shared/services/subscription_service';
 import { I18n } from '@/i18n';
 
 export default new class GroupService {
@@ -178,7 +179,7 @@ export default new class GroupService {
         icon: 'mdi-credit-card-outline',
         menu: true,
         perform() {
-          return window.location = `/upgrade/${group.id}`;
+          return window.location = SubscriptionService.managementUrl(group);
         },
         canPerform() {
           return AppConfig.features.app.subscriptions &&

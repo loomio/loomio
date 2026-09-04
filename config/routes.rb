@@ -85,6 +85,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     post 'hocuspocus', to: 'hocuspocus#create'
 
+    namespace :s1 do
+      post 'webhook', to: 'webhook#create'
+      post 'subscriptions/verify', to: 'subscriptions#verify'
+    end
+
     namespace :b2 do
       resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
@@ -517,6 +522,10 @@ Rails.application.routes.draw do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
+
+  get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
+  get '/subscriptions/manage/:group_id', to: 'subscription_portal#manage', as: :manage_subscription
+  get '/subscriptions/:group_id', to: 'subscription_portal#show', as: :subscription_portal_group
 
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 
