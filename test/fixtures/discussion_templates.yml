@@ -1,0 +1,8 @@
+cleanup_discussion_template:
+  group: used_discussion_template_group
+  author: member_quiet
+  key: cleanup_discussion_template
+  process_name: Cleanup process
+  process_subtitle: Cleanup process subtitle
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>

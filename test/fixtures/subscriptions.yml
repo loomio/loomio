@@ -1,0 +1,29 @@
+cleanup_active_free:
+  owner: member_quiet
+  plan: free
+  state: active
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+cleanup_active_trial:
+  owner: member_quiet
+  plan: trial
+  state: active
+  expires_at: <%= 1.year.from_now %>
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+cleanup_active_paid:
+  owner: member_quiet
+  plan: 2024-starter-monthly
+  state: active
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+cleanup_canceled_free:
+  owner: member_quiet
+  plan: free
+  state: canceled
+  canceled_at: <%= 1.year.ago %>
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 1.year.ago %>

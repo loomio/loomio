@@ -16,4 +16,12 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     assert LoginToken.exists?(valid_token.id)
     assert_not LoginToken.exists?(expired_token.id)
   end
+
+  test "enqueues inactive user cleanup during midnight maintenance" do
+    travel_to Time.new(2026, 9, 5, 0, 0, 0, "+12:00") do
+      assert_enqueued_with(job: CleanupInactiveUsersWorker) do
+        HourlyTaskJob.perform_now
+      end
+    end
+  end
 end

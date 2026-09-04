@@ -104,7 +104,12 @@ matrix_users = {
   reader_normal:         { email: 1, push: 1 },
   reader_loud:           { email: 1, push: 1 },
   member_guest_loud:     { email: 1, push: 1 },
-  former_member_guest:   { email: 1, push: 1 }
+  former_member_guest:   { email: 1, push: 1 },
+  orphan_user:           { email: 1, push: 1, last_sign_in_at: 2.years.ago },
+  orphan_recent_user:    { email: 1, push: 1, last_sign_in_at: 1.year.ago + 1.day },
+  orphan_cutoff_user:    { email: 1, push: 1, last_sign_in_at: 1.year.ago },
+  orphan_never_user:     { email: 1, push: 1 },
+  orphan_deactivated_user: { email: 1, push: 1, last_sign_in_at: 2.years.ago, inactive: true }
 }
 %>
 <% matrix_users.each do |fixture, attributes| %>
@@ -121,6 +126,9 @@ matrix_users = {
   volume_push_default: <%= attributes[:push] %>
 <% if attributes[:inactive] %>
   deactivated_at: <%= 1.day.ago %>
+<% end %>
+<% if attributes[:last_sign_in_at] %>
+  last_sign_in_at: <%= attributes[:last_sign_in_at] %>
 <% end %>
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>

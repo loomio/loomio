@@ -21,7 +21,7 @@ class HourlyTaskJob < ApplicationJob
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
       CleanupOrphanRecordsWorker.perform_later
-      # GenericWorker.perform_later('InactiveUserCleanupService', 'destroy_orphan_users')
+      CleanupInactiveUsersWorker.perform_later
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
       DeleteOldReceivedEmailsWorker.perform_later

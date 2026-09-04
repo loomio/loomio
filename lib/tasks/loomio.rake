@@ -351,6 +351,32 @@ namespace :loomio do
     puts "SearchService.reindex_everything queued as background job"
   end
 
+  desc "Report untouched legacy seeded discussions and polls eligible for deletion"
+  task audit_unused_seeded_content: :environment do
+    SeededContentCleanupService.audit
+  end
+
+  desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
+  task delete_unused_seeded_content: :environment do
+    limit = ENV["LIMIT"].presence&.to_i
+    SeededContentCleanupService.delete!(
+      limit: limit,
+      content_type: ENV["SEEDED_CONTENT_TYPE"].presence,
+      shard_count: ENV.fetch("SHARD_COUNT", 1).to_i,
+      shard_index: ENV.fetch("SHARD_INDEX", 0).to_i
+    )
+  end
+
+  desc "Report old, unused group trees eligible for deletion"
+  task audit_empty_groups: :environment do
+    EmptyGroupCleanupService.audit
+  end
+
+  desc "Schedule old, unused group trees for deletion. Set LIMIT=N for a cautious run."
+  task delete_empty_groups: :environment do
+    EmptyGroupCleanupService.enqueue!(limit: ENV["LIMIT"].presence&.to_i)
+  end
+
   desc "Queue background jobs to resequence legacy topics where poll_created appears after later comments"
   task resequence_legacy_poll_created_topic_items: :environment do
     count = TopicService.enqueue_legacy_poll_created_resequence
