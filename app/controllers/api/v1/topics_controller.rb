@@ -139,7 +139,10 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
-      readers = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil)
+      readers = TopicReader.joins(:user)
+                           .preload(user: { uploaded_avatar_attachment: :blob })
+                           .where(topic_id: topic.id)
+                           .where.not(last_read_at: nil)
       data = readers.map do |reader|
         {last_read_at: reader.last_read_at,
          user_id: reader.user_id }

@@ -491,6 +491,25 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_includes json['users'].map { |u| u['id'] }, @user.id
   end
 
+  test "history returns uploaded reader avatars" do
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: StringIO.new("avatar"),
+      filename: "avatar.png",
+      content_type: "image/png"
+    )
+    @user.uploaded_avatar.attach(blob)
+    @user.update!(avatar_kind: "uploaded")
+    TopicReader.find_or_initialize_by(user: @user, topic: @topic)
+               .update!(last_read_at: 1.hour.ago, volume_email: :normal)
+    sign_in @admin
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :success
+    user = JSON.parse(response.body)["users"].find { |candidate| candidate["id"] == @user.id }
+    assert_includes user.fetch("thumb_url"), "/rails/active_storage/representations/"
+  end
+
   test "history excludes readers who have not read the topic" do
     sign_in @admin
     TopicReader.where(user: @user, topic: @topic).delete_all
