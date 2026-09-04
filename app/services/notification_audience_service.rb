@@ -102,12 +102,10 @@ class NotificationAudienceService
         [ group, group.parent, *group.parent_or_self.subgroups ].compact.uniq
       end
       groups.each do |candidate_group|
-        if candidate_group.members.exists?
-          candidates << { id: "group-#{candidate_group.id}", kind: "group", name: candidate_group.name }
-        end
-        if !model.is_a?(Group) && candidate_group.delegates.exists?
-          candidates << { id: "delegates-#{candidate_group.id}", kind: "delegates", name: candidate_group.name }
-        end
+        candidates << { id: "group-#{candidate_group.id}", kind: "group", name: candidate_group.name }
+        next if model.is_a?(Group)
+
+        candidates << { id: "delegates-#{candidate_group.id}", kind: "delegates", name: candidate_group.name }
       end
     end
 

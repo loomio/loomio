@@ -271,6 +271,22 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     refute audiences.any? { |audience| audience["id"] == "group-#{@group.id}" }
   end
 
+  test "available audiences exclude empty groups" do
+    empty_group = Group.create!(
+      name: "Empty audience group",
+      parent: @group,
+      handle: "testgroup-empty-audience-#{SecureRandom.hex(4)}",
+      group_privacy: "secret"
+    )
+
+    get :available_audiences, params: { discussion_id: @discussion.id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    refute_includes audience_ids, "group-#{empty_group.id}"
+    refute_includes audience_ids, "delegates-#{empty_group.id}"
+  end
+
   test "group audiences do not expose a related group whose members the actor cannot browse" do
     hex = SecureRandom.hex(4)
     sibling = Group.create!(
