@@ -5,5 +5,6 @@
 # See the ActiveSupport::ParameterFilter documentation for supported notations and behaviors.
 Rails.application.config.filter_parameters += [
   :anonymous_ballot,
-  :passw, :email, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
+  :passw, :email, :secret, :token, :ticket, :code, :code_verifier, :authorization,
+  :_key, :crypt, :salt, :certificate, :otp, :ssn
 ]

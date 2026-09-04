@@ -9,6 +9,7 @@ class DeactivateUserWorker < ApplicationJob
       MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
       
       user.update(deactivated_at: deactivated_at, deactivator_id: actor_id)
+      user.mobile_devices.active.find_each(&:revoke!)
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
     end
 

@@ -31,6 +31,10 @@ module CurrentUserHelper
     false
   end
 
+  def authentication_return_path(fallback: nil)
+    session.delete(:return_to_after_authenticating) || session.delete(:back_to) || fallback
+  end
+
   def deny_spam_users
     if NoSpam::SPAM_REGEX.match?(current_user.email)
       raise SpamUserDeniedError.new(current_user.email)

@@ -34,6 +34,10 @@ SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
 # VAPID_PRIVATE_KEY=
 # VAPID_SUBJECT=mailto:REPLACE_WITH_CONTACT_EMAIL
 
+# Mobile push notifications use the shared Loomio push relay. Leave this unset
+# until the relay is deployed and reachable over HTTPS.
+# PUSH_RELAY_URL=https://push.example.com
+
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
 

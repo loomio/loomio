@@ -49,14 +49,14 @@ class Identities::SamlController < ApplicationController
       sign_out
       session[:pending_identity_id] = identity.id
       flash[:notice] = t('auth.switching_accounts')
-      return redirect_to back_to || dashboard_path
+      return redirect_to session.delete(:return_to_after_authenticating) || back_to || dashboard_path
     end
 
     # Handle successful login
     sign_in(identity.user)
     flash[:notice] = t('auth_form.signed_in')
 
-    redirect_to session.delete(:back_to) || dashboard_path
+    redirect_to authentication_return_path(fallback: dashboard_path)
   end
   
   def metadata

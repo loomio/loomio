@@ -120,6 +120,19 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      namespace :mobile do
+        get :config, to: 'config#show'
+        post :token, to: 'tokens#create'
+        post 'web-session-tickets', to: 'web_session_tickets#create'
+        post 'relay-authorizations', to: 'relay_authorizations#create'
+        post 'relay-authorizations/verify', to: 'relay_authorizations#verify'
+        get 'push-registration', to: 'push_registrations#show'
+        post 'push-registration/test', to: 'push_registrations#test'
+        resources :activity, only: [:index, :update]
+        get :device, to: 'devices#show'
+        delete :device, to: 'devices#destroy'
+      end
+
       resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
@@ -398,6 +411,10 @@ Rails.application.routes.draw do
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
   delete '/users/sign_out', to: 'api/v1/sessions#destroy', as: :destroy_user_session
+
+  get '/mobile/authorize', to: 'mobile/authorizations#show', as: :mobile_authorize
+  post '/mobile/authorize', to: 'mobile/authorizations#create'
+  post '/mobile/web-session', to: 'mobile/web_sessions#create', as: :mobile_web_session
 
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection
