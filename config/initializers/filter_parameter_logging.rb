@@ -6,5 +6,6 @@
 Rails.application.config.filter_parameters += [
   :anonymous_ballot,
   :passw, :email, :secret, :token, :api_token, :webhook_secret, :registration_secret,
+  :ticket, :code, :code_verifier, :authorization,
   :_key, :crypt, :salt, :certificate, :otp, :ssn
 ]

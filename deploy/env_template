@@ -31,6 +31,10 @@ SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
 # Web push notifications are enabled when all three VAPID settings are present.
 # create_env.sh generates one key pair for this installation.
 
+# Mobile push notifications use the shared Loomio push relay. Leave this unset
+# until the relay is deployed and reachable over HTTPS.
+# PUSH_RELAY_URL=https://push.example.com
+
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
 

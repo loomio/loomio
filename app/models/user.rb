@@ -105,6 +105,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
   has_many :sessions, dependent: :destroy
+  has_many :mobile_devices, dependent: :destroy
+  has_many :mobile_push_registrations, through: :mobile_devices
   has_many :topic_items, dependent: :destroy
   has_many :push_subscriptions, dependent: :destroy
 

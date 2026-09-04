@@ -132,6 +132,17 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
   end
 
+  test "returns the server-recorded authentication destination after sign in" do
+    user = User.create!(email: "returnmobile@example.com", email_verified: true, password: "s3curepassword123")
+    session[:return_to_after_authenticating] = "/mobile/authorize?state=server-owned"
+
+    post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+
+    assert_response :success
+    assert_equal "/mobile/authorize?state=server-owned", JSON.parse(response.body)["authentication_redirect"]
+    assert_nil session[:return_to_after_authenticating]
+  end
+
   test "marks authentication cookies secure when force_ssl is enabled" do
     Rails.application.config.force_ssl = true
     user = User.create!(

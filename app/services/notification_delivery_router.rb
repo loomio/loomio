@@ -56,7 +56,7 @@ class NotificationDeliveryRouter
 
     recipients = recipients_by_channel.transform_values(&:to_a)
     recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))
-    recipients["push"] = active_push_subscriptions(recipients.fetch("push"))
+    recipients["push"] = active_push_recipients(recipients.fetch("push"))
     now = Time.current
     deliveries = []
 
@@ -167,7 +167,7 @@ class NotificationDeliveryRouter
   end
 
   def translation_values_for(recipient)
-    recipient = recipient.user if recipient.is_a?(PushSubscription)
+    recipient = recipient.user if recipient.is_a?(PushSubscription) || recipient.is_a?(MobilePushRegistration)
     return notification.translation_values unless recipient.is_a?(User)
 
     translated_values(locale: recipient.locale)
@@ -205,12 +205,14 @@ class NotificationDeliveryRouter
   end
 
   # Expand each eligible user into one delivery recipient per active browser
-  # subscription.
-  def active_push_subscriptions(push_recipients)
+  # subscription and per registered native device.
+  def active_push_recipients(push_recipients)
     user_ids = Array(push_recipients).map(&:id)
     return [] if user_ids.empty?
 
-    PushSubscription.active.includes(:user).where(user_id: user_ids).to_a
+    browser = PushSubscription.active.includes(:user).where(user_id: user_ids).to_a
+    native = MobilePushRegistration.active.includes(mobile_device: :user).where(mobile_devices: { user_id: user_ids }).to_a
+    browser + native
   end
 
   def subject_topic
