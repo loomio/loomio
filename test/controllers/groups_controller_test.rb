@@ -91,6 +91,36 @@ class GroupsControllerTest < ActionController::TestCase
     assert_equal @group, assigns(:group)
   end
 
+  test "show lists public discussions and excludes private discussions" do
+    @group.update!(discussion_privacy_options: "public_or_private")
+    @group.add_admin!(@user)
+    public_discussions = 2.times.map do |index|
+      DiscussionService.create(
+        params: {
+          title: "Public group page discussion #{index}",
+          group_id: @group.id,
+          private: false
+        },
+        actor: @user
+      )
+    end
+    private_discussion = DiscussionService.create(
+      params: {
+        title: "Private group page discussion",
+        group_id: @group.id,
+        private: true
+      },
+      actor: @user
+    )
+    sign_in @user
+
+    get :show, params: { id: @group.handle }
+
+    assert_response :success
+    public_discussions.each { |discussion| assert_includes response.body, discussion.title }
+    refute_includes response.body, private_discussion.title
+  end
+
   test "show closed group 404 for non-existent" do
     get :show, params: { key: 'doesnotexist' }
     assert_response 404

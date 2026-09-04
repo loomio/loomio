@@ -34,6 +34,15 @@ class Views::Groups::Show < Views::Application::Layout
 
   private
 
+  def public_discussions
+    @group.discussions.kept
+          .joins(:topic)
+          .preload(:topic, author: { uploaded_avatar_attachment: :blob })
+          .where(topics: { private: false })
+          .order("topics.last_activity_at desc nulls last")
+          .limit(50)
+  end
+
   def render_discussions_panel
     div(class: "discussions-panel") do
       div(class: "discussions-panel v-card v-card--outlined v-sheet theme--auto mt-2") do
@@ -41,7 +50,7 @@ class Views::Groups::Show < Views::Application::Layout
           div(class: "discussions-panel__content") do
             div(class: "discussions-panel__list topic-preview-collection__container") do
               div(class: "v-list topic-previews v-sheet v-sheet--tile theme--auto v-list--two-line", role: "list") do
-                @group.discussions.kept.joins(:topic).where(topics: { private: false }).order("topics.last_activity_at desc nulls last").limit(50).each do |discussion|
+                public_discussions.each do |discussion|
                   a(class: "topic-preview topic-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
                     div(class: "v-list-item__avatar") do
                       render Views::NotificationMailer::Common::Avatar.new(user: discussion.author)
