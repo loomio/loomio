@@ -1,10 +1,15 @@
-# Loomio is a collaborative decision-making tool
+Loomio is open-source software for making decisions together. It gives groups a dedicated place to share context, discuss proposals, gather input, vote, and record clear outcomes—across time zones and without endless meetings.
 
-It helps groups of people have discussions, make decisions and keep a record.
+Loomio is used by cooperatives, nonprofits, boards, unions, community groups, membership organizations, and distributed teams. It works for groups that want decisions to be transparent, inclusive, and easy to revisit.
 
-To learn about or try Loomio, visit [Loomio.com](https://www.loomio.com).
+Groups use Loomio to move important decisions out of scattered emails and chat threads, involve the right people, work through differences, and agree on what happens next.
 
-To set up your own Loomio server, see the [Deploy your own Loomio](deploy/README.md).
-To setup a Loomio development environment, see the [setup development environment guide](DEVSETUP.md)
+Every discussion, reason, and outcome stays together, creating a searchable record of what was decided and why.
+  
+Start a free trial, or learn more at [Loomio.com](https://www.loomio.com).
 
-If you'd like to report a bug, please open a Github issue. To contact us, send an [email](mailto:contact@loomio.com).
+Alternatively [Set up your own Loomio server](deploy/README.md) or [setup a development environment](DEVSETUP.md).
+
+If you'd like to report a bug, [open a Github issue](https://github.com/loomio/loomio/issues). 
+
+To contact us, send an [email](mailto:contact@loomio.com).
