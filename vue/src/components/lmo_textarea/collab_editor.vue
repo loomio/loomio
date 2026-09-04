@@ -38,7 +38,6 @@ import { getEmbedLink } from '@/shared/helpers/embed_link';
 import { linkPreviewTopicId } from '@/shared/helpers/link_preview_topic_id';
 import { registerBeforeSaveCallback } from '@/shared/helpers/before_save_callback.mjs';
 
-import SuggestionList from './suggestion_list';
 import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
@@ -51,7 +50,7 @@ import CollaborationCaret from '@tiptap/extension-collaboration-caret'
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { IndexeddbPersistence } from 'y-indexeddb';
 
-import { useCommonMentioning, useHtmlMentioning, getMentionPluginConfig } from './composables/useMentioning';
+import { useMentionSuggestion } from './mention_suggestion';
 import { useAttaching } from './composables/useAttaching';
 import * as Y from 'yjs'
 
@@ -113,26 +112,7 @@ const iconProps = ref({
 // Composables
 const modelRef = toRef(props, 'model');
 
-const {
-  mentionsCache,
-  mentions,
-  query,
-  navigatedUserIndex,
-  suggestionListStyles,
-  fetchingMentions,
-  fetchMentionable,
-  updateMentions
-} = useCommonMentioning(modelRef);
-
-const htmlMentioning = useHtmlMentioning(
-  editor,
-  query,
-  mentions,
-  navigatedUserIndex,
-  suggestionListStyles,
-  fetchMentionable,
-  updateMentions
-);
+const mentionOptions = useMentionSuggestion(modelRef);
 
 const {
   files,
@@ -384,20 +364,6 @@ onMounted(() => {
 
   unregisterBeforeSave = registerBeforeSaveCallback(props.model, updateModel);
 
-  const mentionContext = {
-    query,
-    suggestionRange: htmlMentioning.suggestionRange,
-    insertMention: htmlMentioning.insertMention,
-    navigatedUserIndex,
-    suggestionListStyles,
-    fetchMentionable,
-    updateMentions,
-    upHandler: htmlMentioning.upHandler,
-    downHandler: htmlMentioning.downHandler,
-    enterHandler: htmlMentioning.enterHandler,
-    updatePopup: htmlMentioning.updatePopup
-  };
-
   editor.value = new Editor({
     editorProps: {
       scrollThreshold: 100,
@@ -469,7 +435,7 @@ onMounted(() => {
       TableCell,
       CustomTaskList,
       CustomTaskItem,
-      CustomMention.configure(getMentionPluginConfig(mentionContext)),
+      CustomMention.configure(mentionOptions),
       TextStyle,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Underline
@@ -688,13 +654,6 @@ div.mb-2
       slot(name="actions")
 
   link-previews(:model="model" :remove="removeLinkPreview")
-  suggestion-list(
-    :query="query"
-    :loading="fetchingMentions"
-    :mentions="mentions"
-    :positionStyles="suggestionListStyles"
-    :navigatedUserIndex="navigatedUserIndex"
-    @select-row="htmlMentioning.selectRow")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
