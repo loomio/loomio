@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+const fs = require("node:fs");
+const path = require("node:path");
+
+const repositoryPath = path.resolve(__dirname, "../..");
+const nodeVersion = readVersion(".node-version");
+const npmVersion = readVersion(".npm-version");
+const failures = [];
+
+for (const packagePath of ["vue/package.json", "hocuspocus/package.json", "haraka/package.json"]) {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(repositoryPath, packagePath), "utf8"));
+
+  expectEqual(packagePath, "engines.node", packageJson.engines?.node, nodeVersion);
+  expectEqual(packagePath, "engines.npm", packageJson.engines?.npm, npmVersion);
+  expectEqual(packagePath, "devEngines.runtime.name", packageJson.devEngines?.runtime?.name, "node");
+  expectEqual(packagePath, "devEngines.runtime.version", packageJson.devEngines?.runtime?.version, nodeVersion);
+  expectEqual(packagePath, "devEngines.runtime.onFail", packageJson.devEngines?.runtime?.onFail, "error");
+  expectEqual(packagePath, "devEngines.packageManager.name", packageJson.devEngines?.packageManager?.name, "npm");
+  expectEqual(packagePath, "devEngines.packageManager.version", packageJson.devEngines?.packageManager?.version, npmVersion);
+  expectEqual(packagePath, "devEngines.packageManager.onFail", packageJson.devEngines?.packageManager?.onFail, "error");
+}
+
+if (failures.length > 0) {
+  console.error(failures.join("\n"));
+  process.exit(1);
+}
+
+console.log(`Node.js ${nodeVersion} and npm ${npmVersion} declarations are consistent`);
+
+function readVersion(versionPath) {
+  const version = fs.readFileSync(path.join(repositoryPath, versionPath), "utf8").trim();
+
+  const versionPattern = versionPath === ".node-version" ? /^\d+$/ : /^\d+\.\d+\.\d+$/;
+  if (!versionPattern.test(version)) throw new Error(`${versionPath} contains an invalid version`);
+
+  return version;
+}
+
+function expectEqual(packagePath, propertyPath, actual, expected) {
+  if (actual !== expected) {
+    failures.push(`${packagePath} ${propertyPath}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`);
+  }
+}

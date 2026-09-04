@@ -60,5 +60,8 @@ npm test
 Build the same image that CI publishes with:
 
 ```sh
-docker build -t loomio/haraka-rails-docker .
+docker build \
+  --build-arg NODE_VERSION="$(cat ../.node-version)" \
+  --build-arg NPM_VERSION="$(cat ../.npm-version)" \
+  -t loomio/haraka-rails-docker .
 ```

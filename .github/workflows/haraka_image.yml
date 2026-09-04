@@ -6,10 +6,16 @@ on:
       - master
     paths:
       - haraka/**
+      - .node-version
+      - .npm-version
+      - test/scripts/node_toolchain_test
       - .github/workflows/haraka_image.yml
   pull_request:
     paths:
       - haraka/**
+      - .node-version
+      - .npm-version
+      - test/scripts/node_toolchain_test
       - .github/workflows/haraka_image.yml
   release:
     types: [published]
@@ -28,9 +34,21 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version-file: .node-version
           cache: npm
           cache-dependency-path: haraka/package-lock.json
+
+      - name: Install npm
+        run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
+
+      - name: Check Node.js toolchain configuration
+        run: test/scripts/node_toolchain_test
+
+      - name: Read Node.js toolchain versions
+        id: node-toolchain
+        run: |
+          echo "node-version=$(cat .node-version)" >> "$GITHUB_OUTPUT"
+          echo "npm-version=$(cat .npm-version)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
         working-directory: haraka
@@ -70,6 +88,9 @@ jobs:
         with:
           context: haraka
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            NODE_VERSION=${{ steps.node-toolchain.outputs.node-version }}
+            NPM_VERSION=${{ steps.node-toolchain.outputs.npm-version }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           push: ${{ github.event_name != 'pull_request' && env.HAVESECRET == 'true' }}

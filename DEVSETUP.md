@@ -37,7 +37,7 @@ sudo apt-get install postgresql postgresql-contrib build-essential \
 
 ## Install mise
 
-Loomio specifies its Ruby and Node.js versions in `.ruby-version` and `.node-version`. We recommend [mise](https://mise.jdx.dev/) to install those versions and switch to them automatically when you enter the Loomio directory, but Loomio does not require mise. You can use another version manager that supports these files.
+Loomio specifies its Ruby, Node.js, and npm versions in `.ruby-version`, `.node-version`, and `.npm-version`. The repository's `mise.toml` reads those files and activates the required tools when you enter the Loomio directory.
 
 Install mise:
 
@@ -68,9 +68,9 @@ cd ~/projects # or wherever you like to keep your code
 git clone git@github.com:YOURUSERNAME/loomio.git && cd loomio
 ```
 
-## Install Ruby, Node.js, and dependencies
+## Install Ruby, Node.js, npm, and dependencies
 
-From your freshly checked out Loomio repo, trust its mise configuration and install the runtime versions specified by the project. The mise configuration reads the versions from `.ruby-version` and `.node-version` so they remain the source of truth.
+From your freshly checked out Loomio repo, trust its mise configuration and install the runtime versions specified by the project. The mise configuration reads the versions from `.ruby-version`, `.node-version`, and `.npm-version` so they remain the source of truth.
 
 ```sh
 mise trust
@@ -82,7 +82,7 @@ Then install the Ruby and Node.js dependencies:
 ```sh
 gem install bundler
 bundle install
-cd vue; npm install && cd ..
+cd vue; npm ci && cd ..
 ```
 
 ## Create database.yml

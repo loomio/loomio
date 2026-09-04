@@ -3,8 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "24.18.0",
+    "node": "24",
     "npm": "11.16.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": "11.16.0",
+      "onFail": "error"
+    }
   },
   "scripts": {
     "serve": "vite",

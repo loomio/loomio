@@ -45,6 +45,8 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version-file: .node-version
+    - name: install npm
+      run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
     - name: init db
       run: |
         createdb
@@ -53,8 +55,7 @@ jobs:
     - name: build client
       run: |
         cd vue
-        rm -rf node_modules
-        npm install
+        npm ci
         npm run build
     - name: run minitest
       run: |

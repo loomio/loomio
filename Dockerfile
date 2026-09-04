@@ -1,5 +1,9 @@
-ARG NODE_VERSION=24.18.0
+# check=skip=InvalidDefaultArgInFrom
+ARG NODE_VERSION
 FROM node:${NODE_VERSION}-slim AS nodebuild
+ARG NPM_VERSION
+
+RUN npm install --global "npm@${NPM_VERSION:?NPM_VERSION build argument is required}" --no-audit --no-fund
 
 WORKDIR /build/vue
 

@@ -1,4 +1,9 @@
-FROM node:25-alpine
+# check=skip=InvalidDefaultArgInFrom
+ARG NODE_VERSION
+FROM node:${NODE_VERSION}-alpine
+ARG NPM_VERSION
+
+RUN npm install --global "npm@${NPM_VERSION:?NPM_VERSION build argument is required}" --no-audit --no-fund
 
 WORKDIR /opt/haraka
 

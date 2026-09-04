@@ -28,6 +28,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Check Node.js toolchain configuration
+        run: test/scripts/node_toolchain_test
+
+      - name: Read Node.js toolchain versions
+        id: node-toolchain
+        run: |
+          echo "node-version=$(cat .node-version)" >> "$GITHUB_OUTPUT"
+          echo "npm-version=$(cat .npm-version)" >> "$GITHUB_OUTPUT"
+
       - name: Test client asset persistence
         run: test/scripts/sync_client_assets_test
 
@@ -55,6 +64,9 @@ jobs:
         with:
           context: .
           platforms: ${{ matrix.platform }}
+          build-args: |
+            NODE_VERSION=${{ steps.node-toolchain.outputs.node-version }}
+            NPM_VERSION=${{ steps.node-toolchain.outputs.npm-version }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha,scope=${{ matrix.arch }}

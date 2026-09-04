@@ -48,6 +48,10 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version-file: .node-version
+    - name: install npm
+      run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
+    - name: check Node.js toolchain configuration
+      run: test/scripts/node_toolchain_test
     - name: create db
       run: |
         createdb
@@ -63,7 +67,7 @@ jobs:
     - name: start hocuspocus server
       run: |
         cd hocuspocus
-        npm install
+        npm ci
         node server.mjs &
         echo $! > /tmp/hocuspocus.pid
         for i in $(seq 1 30); do
@@ -79,8 +83,7 @@ jobs:
     - name: build client
       run: |
         cd vue
-        rm -rf node_modules
-        npm install
+        npm ci
         npm run test:unit
         npm run build
     - name: run e2es
