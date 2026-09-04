@@ -4,6 +4,7 @@ import TopicPage from './components/topic/page';
 
 const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
 const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/polls_to_vote_on_page'));
+const NotificationsPage = wrapAsyncLoader(() => import('./components/notifications/page'));
 const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
 const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
 const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
@@ -70,6 +71,7 @@ const router = createRouter({
     {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
+    {path: '/notifications', component: NotificationsPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/dashboard/direct_discussions', component: TopicsPage},
     {path: '/inbox', component: InboxPage },

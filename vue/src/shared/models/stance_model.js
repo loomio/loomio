@@ -2,6 +2,7 @@ import BaseModel       from '@/shared/record_store/base_model';
 import { I18n } from '@/i18n';
 import { sumBy, map, head, compact, flatten, includes, sortBy } from 'lodash-es';
 import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
 
 const stancesBecameUpdatable = new Date("2020-08-11");
 
@@ -148,7 +149,10 @@ export default class StanceModel extends BaseModel {
 
   save() {
     if (!this.poll().detachedAnonymousVoting()) {
-      return super.save();
+      return super.save().then(data => {
+        EventBus.$emit('stanceSaved', this.pollId);
+        return data;
+      });
     }
 
     const choices = (this.stanceChoicesAttributes || []).map(choice => ({

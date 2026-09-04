@@ -1,27 +1,19 @@
-require 'test_helper'
+require "test_helper"
 
 class DemoServiceTest < ActiveSupport::TestCase
-  setup do
-    DemoService.reset_queue!
-  end
-
-  teardown do
-    DemoService.reset_queue!
-  end
-
-  test "taking a demo makes the group invitation only" do
+  test "taking a demo provisions the code-backed mobile template" do
     actor = users(:user)
-    group = Group.create!(
-      name: "Demo source #{SecureRandom.hex(4)}",
-      creator: users(:admin),
-      group_privacy: 'open',
-      membership_granted_upon: 'request'
-    )
-    DemoService.write_demo_group_ids([group.id])
+    group = groups(:group)
+    captured = nil
+    provision = lambda do |**args|
+      captured = args
+      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
+    end
 
-    demo_group = DemoService.take_demo(actor)
+    DemoGroupTemplateService.stub(:create!, provision) do
+      assert_equal group, DemoService.take_demo(actor)
+    end
 
-    assert_equal 'invitation', demo_group.membership_granted_upon
-    refute users(:alien).ability.can?(:join, demo_group)
+    assert_equal({ template_key: "mobile", user: actor }, captured)
   end
 end

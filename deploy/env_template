@@ -91,6 +91,9 @@ REDIS_MAXMEMORY=256mb
 # cloud storage options: amazon, digitalocean or s3_compatible
 ACTIVE_STORAGE_SERVICE=local
 
+# Let signed-in users create a ready-to-use demonstration group
+FEATURES_DEMO_GROUPS=1
+
 # configure amazon S3
 # AWS_ACCESS_KEY_ID=
 # AWS_SECRET_ACCESS_KEY=

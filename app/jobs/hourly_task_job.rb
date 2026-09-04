@@ -27,8 +27,6 @@ class HourlyTaskJob < ApplicationJob
       DeleteOldReceivedEmailsWorker.perform_later
     end
 
-    EnsureDemoQueueWorker.perform_later
-
     if hour == 0 && Time.now.mday == 1
       UpdateBlockedDomainsWorker.perform_later
     end

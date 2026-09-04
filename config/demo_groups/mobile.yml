@@ -1,0 +1,310 @@
+name: Oatmilk Cooperative
+description: |
+  We make oat milk for local cafes and shops. The board uses Loomio to review commercial plans, manage risk, and make accountable decisions together.
+group_privacy: closed
+membership_granted_upon: invitation
+cover_photo: vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-cover.jpg
+logo: vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-logo.png
+
+facilitator: jamie
+people:
+  - key: jamie
+    name: Jamie Chen
+    email: jamie@oatmilk.example
+    username: jamie_oatmilk
+    title: Board chair
+    avatar: vue/tests/e2e/fixtures/avatars/jamie-chen.png
+  - key: samira
+    name: Samira Patel
+    email: samira@oatmilk.example
+    username: samira_oatmilk
+    title: Production lead
+    avatar: vue/tests/e2e/fixtures/avatars/samira-patel.png
+  - key: alex
+    name: Alex Morgan
+    email: alex@oatmilk.example
+    username: alex_oatmilk
+    title: Sales lead
+    avatar: vue/tests/e2e/fixtures/avatars/alex-morgan.png
+
+discussions:
+  - key: bottle_trial
+    actor: samira
+    title: "Returnable bottle programme: from sense check to consent"
+    description: |
+      Three cafe customers have asked us to supply oat milk in returnable glass bottles. A six-week trial would test demand before we commit to new washing and transport capacity.
+
+      The team used a sense check to surface operational concerns. Those concerns have now been resolved in the final proposal, which caps spending at $18,000 and requires weekly reporting.
+
+      The board is being asked for final consent before management signs supplier agreements.
+  - key: board_meeting
+    actor: jamie
+    title: Board meeting preparation
+    description: |
+      Use this thread to prepare the next board meeting. Add agenda requests before the chair circulates a timed agenda with the final board pack.
+
+      The draft pack and previous meeting minutes are attached. Please review the minutes before voting and flag any correction in the thread.
+
+      Once we agree a meeting time, the final agenda and video link will be added here.
+    files:
+      - config/demo_groups/assets/oatmilk-board-pack.md
+      - config/demo_groups/assets/oatmilk-board-minutes.md
+  - key: strategy
+    actor: alex
+    title: Strategy and capital allocation
+    description: |
+      The board has a $120,000 growth investment envelope. We need to understand relative priorities before management turns the strategy into an operating plan.
+
+      The polls below show three useful stages: allocate a constrained budget, rank the strategic initiatives, then confirm which outcomes belong in the final plan.
+
+      Completed polls remain in the thread as a record of how the priorities developed.
+  - key: board_election
+    actor: jamie
+    title: "Board election: two member-director seats"
+    description: |
+      Nominations are closed for two member-director seats. Six candidates have supplied statements covering governance experience, commercial judgement, and their contribution to the cooperative.
+
+      The election uses Single Transferable Vote so members can rank candidates and elect two representatives proportionally.
+
+      Voting closes in ten days. The returning officer will publish the count and transfer record in this thread.
+
+comments:
+  - discussion: bottle_trial
+    actor: samira
+    body: Washing-capacity and food-safety checks are now included in the weekly operating report.
+  - discussion: bottle_trial
+    actor: alex
+    body: All three cafe partners have accepted the proposed deposit and collection terms.
+  - discussion: board_meeting
+    actor: samira
+    body: Please add a ten-minute agenda item on production capacity before the growth-plan decision.
+  - discussion: board_meeting
+    actor: alex
+    body: I have reviewed the previous meeting minutes and have no corrections.
+
+polls:
+  - key: bottle_trial_sense_check
+    discussion: bottle_trial
+    actor: jamie
+    poll_type: check
+    title: Sense check the returnable bottle trial
+    details: |
+      Check whether the trial plan is ready to move to a final consent decision.
+
+      Consider washing capacity, food-safety assurance, cafe collection terms, and the weekly reporting burden.
+    options:
+      - looks_good
+      - not_sure
+      - concerned
+    closing_in_days: 7
+    closed: true
+    outcome: The sense check identified two operational questions. Both are addressed in the revised business case and the proposal is ready for final consent.
+    votes:
+      - person: jamie
+        choice: looks_good
+        reason: The trial has clear limits, measures, and a route back to the board.
+      - person: samira
+        choice: not_sure
+        reason: I wanted the washing-capacity limit stated explicitly before final approval.
+      - person: alex
+        choice: looks_good
+        reason: Cafe demand and collection terms are sufficiently clear for a bounded trial.
+  - key: bottle_trial_consent
+    discussion: bottle_trial
+    actor: jamie
+    poll_type: proposal
+    title: Give final consent for the six-week bottle trial
+    details: |
+      Approve a six-week trial with three cafe customers and a maximum budget of $18,000.
+
+      Management will report return rate, cleaning time, product loss, and transport cost each week.
+
+      Any permanent rollout will require a separate board decision after the results are reviewed.
+    options: [agree, abstain, disagree, block]
+    closing_in_days: 7
+    votes:
+      - person: jamie
+        choice: agree
+        reason: The revised plan addresses the issues raised in the sense check.
+      - person: samira
+        choice: agree
+        reason: Production can support the trial within the agreed controls.
+
+  - key: meeting_agenda
+    discussion: board_meeting
+    actor: jamie
+    poll_type: poll
+    title: Which items need dedicated board time?
+    details: Select up to two items that need discussion rather than being handled as consent-agenda business.
+    options:
+      - Returnable bottle trial
+      - Growth investment allocation
+      - Production capacity
+      - Member engagement report
+    minimum_stance_choices: 1
+    maximum_stance_choices: 2
+    closing_in_days: 5
+    closed: true
+    outcome: The timed agenda will prioritise growth investment allocation and production capacity. Other papers will remain on the consent agenda.
+    votes:
+      - person: jamie
+        choice: {Growth investment allocation: 1, Production capacity: 1}
+        reason: These decisions have the largest effect on the cash-flow forecast.
+      - person: samira
+        choice: {Returnable bottle trial: 1, Production capacity: 1}
+        reason: Both items affect near-term production commitments.
+      - person: alex
+        choice: {Growth investment allocation: 1, Member engagement report: 1}
+        reason: The growth choice needs a clear mandate and member communication plan.
+  - key: meeting_time
+    discussion: board_meeting
+    actor: jamie
+    poll_type: meeting
+    title: Find a time for the next board meeting
+    details: Mark each time as available, if needed, or unavailable. Times are displayed in your local time zone.
+    meeting_duration: 90
+    meeting_times:
+      - {day_offset: 0, hour: 10}
+      - {day_offset: 0, hour: 14}
+      - {day_offset: 1, hour: 10}
+      - {day_offset: 2, hour: 14}
+    closing_in_days: 4
+    votes:
+      - person: jamie
+        scores: [2, 2, 1, 0]
+        reason: I can chair either session on the first day.
+      - person: samira
+        scores: [1, 2, 2, 0]
+        reason: The afternoon or following morning avoids the production handover.
+      - person: alex
+        scores: [0, 1, 2, 2]
+        reason: The later options avoid customer meetings already in the diary.
+  - key: approve_minutes
+    discussion: board_meeting
+    actor: jamie
+    poll_type: proposal
+    title: Approve the previous board meeting minutes
+    details: Review the attached minutes and approve them before the next meeting. Use your reason to record any required correction.
+    options: [agree, abstain, disagree, block]
+    closing_in_days: 5
+    votes:
+      - person: jamie
+        choice: agree
+        reason: The minutes accurately record the decisions and assigned actions.
+      - person: alex
+        choice: agree
+        reason: The commercial actions and owners are recorded correctly.
+
+  - key: strategy_allocate
+    discussion: strategy
+    actor: jamie
+    poll_type: dot_vote
+    title: Allocate the growth investment
+    details: Allocate ten points across the areas that should receive the most attention in the strategy and operating plan.
+    options:
+      - Retail distribution
+      - Production automation
+      - Returnable packaging
+      - Brand development
+      - Member capability
+    dots_per_person: 10
+    closing_in_days: 8
+    votes:
+      - person: alex
+        choice: {Retail distribution: 4, Production automation: 2, Returnable packaging: 3, Brand development: 1}
+        reason: Distribution and returnable packaging have the clearest near-term revenue case.
+      - person: samira
+        choice: {Retail distribution: 2, Production automation: 4, Returnable packaging: 2, Member capability: 2}
+        reason: Automation creates capacity while investment in member capability reduces execution risk.
+  - key: strategy_rank
+    discussion: strategy
+    actor: jamie
+    poll_type: ranked_choice
+    title: Rank the strategic initiatives
+    details: Rank all five initiatives in the order they should appear in the draft strategy.
+    options:
+      - Strengthen cafe partnerships
+      - Enter independent grocery
+      - Automate filling and packing
+      - Scale returnable packaging
+      - Build member capability
+    minimum_stance_choices: 5
+    closing_in_days: 6
+    closed: true
+    outcome: The draft strategy will lead with production automation, followed by cafe partnerships and independent grocery expansion.
+    votes:
+      - person: jamie
+        choice: {Automate filling and packing: 5, Strengthen cafe partnerships: 4, Enter independent grocery: 3, Scale returnable packaging: 2, Build member capability: 1}
+        reason: Capacity and existing customer relationships should precede new-channel expansion.
+      - person: samira
+        choice: {Automate filling and packing: 5, Build member capability: 4, Scale returnable packaging: 3, Strengthen cafe partnerships: 2, Enter independent grocery: 1}
+        reason: Operational capacity and capability are prerequisites for reliable growth.
+      - person: alex
+        choice: {Strengthen cafe partnerships: 5, Enter independent grocery: 4, Automate filling and packing: 3, Scale returnable packaging: 2, Build member capability: 1}
+        reason: Existing cafe demand provides the strongest base for entering grocery.
+  - key: strategy_confirm
+    discussion: strategy
+    actor: jamie
+    poll_type: poll
+    title: Which outcomes belong in the final strategy?
+    details: Choose up to three outcomes that should become board-level measures in the final strategy.
+    options:
+      - Positive cash flow from new channels
+      - Twenty percent production capacity increase
+      - Ninety percent bottle return rate
+      - Ten new independent grocery customers
+      - Quarterly member capability programme
+    minimum_stance_choices: 1
+    maximum_stance_choices: 3
+    closing_in_days: 6
+    closed: true
+    outcome: Cash flow, production capacity, and bottle return rate will be the board-level outcomes in the final strategy.
+    votes:
+      - person: jamie
+        choice: {Positive cash flow from new channels: 1, Twenty percent production capacity increase: 1, Ninety percent bottle return rate: 1}
+        reason: These measures balance commercial, operational, and circular-packaging performance.
+      - person: samira
+        choice: {Twenty percent production capacity increase: 1, Ninety percent bottle return rate: 1, Quarterly member capability programme: 1}
+        reason: These outcomes measure whether the operating model can deliver the strategy.
+      - person: alex
+        choice: {Positive cash flow from new channels: 1, Ninety percent bottle return rate: 1, Ten new independent grocery customers: 1}
+        reason: These measures connect channel growth to returns and cash generation.
+
+  - key: board_election_stv
+    discussion: board_election
+    actor: jamie
+    poll_type: stv
+    title: Elect two member-directors
+    details: Rank as many candidates as you wish. Two candidates will be elected using the Scottish STV method and Droop quota.
+    options:
+      - Samira Patel
+      - Alex Morgan
+      - Taylor Reed
+      - Morgan Price
+      - Riley Thompson
+      - Casey Nguyen
+    stv_seats: 2
+    stv_method: scottish
+    stv_quota: droop
+    closing_in_days: 10
+    votes:
+      - person: jamie
+        choice: {Samira Patel: 1, Morgan Price: 2, Alex Morgan: 3, Taylor Reed: 4}
+        reason: I ranked candidates by governance experience and operational judgement.
+      - person: samira
+        choice: {Morgan Price: 1, Alex Morgan: 2, Taylor Reed: 3, Riley Thompson: 4}
+        reason: I prioritised financial oversight and member-facing experience.
+      - person: alex
+        choice: {Samira Patel: 1, Riley Thompson: 2, Casey Nguyen: 3, Morgan Price: 4}
+        reason: I prioritised production knowledge, cooperative governance, and strategic finance.
+
+notifications:
+  - kind: poll_reminder
+    poll: bottle_trial_consent
+    actor: jamie
+  - kind: new_discussion
+    discussion: board_meeting
+    actor: jamie
+  - kind: poll_reminder
+    poll: board_election_stv
+    actor: jamie

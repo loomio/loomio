@@ -12,6 +12,8 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectElement('.action-dock__button--edit_stance')
+    page.expectNoElement('.poll-common-vote-form__submit')
+    page.expectElement('.poll-common-current-vote')
   },
 
   'invite_member_to_vote': (test) => {
@@ -24,5 +26,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectFlash('Vote created')
+    page.expectNoElement('.poll-common-vote-form__submit')
+    page.expectElement('.poll-common-current-vote')
   }
 }

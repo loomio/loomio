@@ -2,7 +2,6 @@
 import PollService    from '@/shared/services/poll_service';
 import Session    from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
-import EventBus       from '@/shared/services/event_bus';
 import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
@@ -26,17 +25,12 @@ export default {
   },
 
   created() {
-    EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
     this.watchRecords({
       collections: ["stances", "polls"],
       query: () => {
         this.rebuildActions();
       }
     });
-  },
-
-  beforeDestroy() {
-    EventBus.$off('stanceSaved');
   },
 
   methods: {
@@ -83,7 +77,7 @@ section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
+    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
     poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal")
-    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
 </template>
