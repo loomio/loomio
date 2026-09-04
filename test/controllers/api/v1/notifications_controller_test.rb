@@ -15,6 +15,22 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     assert_includes ids, notification.id
   end
 
+  test "index returns topic item notifications" do
+    notifications = [
+      topic_items(:discussion_created_topic_item),
+      topic_items(:public_discussion_comment_topic_item)
+    ].map do |subject|
+      create_notification(user: @user, actor: @admin, subject: subject)
+    end
+    sign_in @user
+
+    get :index
+
+    assert_response :success
+    ids = JSON.parse(response.body)["notifications"].pluck("id")
+    notifications.each { |notification| assert_includes ids, notification.id }
+  end
+
   test "index excludes notifications whose topic is not accessible" do
     notification = create_notification(user: @user, actor: users(:alien), subject: discussions(:alien_discussion))
     sign_in @user

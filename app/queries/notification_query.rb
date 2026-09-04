@@ -16,7 +16,10 @@ class NotificationQuery
     topic_items = notifications.filter_map do |notification|
       notification.subject if notification.subject.is_a?(TopicItem)
     end
-    ActiveRecord::Associations::Preloader.new(records: topic_items, associations: :itemable).call if topic_items.any?
+    ActiveRecord::Associations::Preloader.new(
+      records: topic_items,
+      associations: %i[itemable topic]
+    ).call
 
     topic_ids = notifications.filter_map do |notification|
       notification_topic_id(notification)
