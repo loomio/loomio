@@ -44,7 +44,7 @@
     "@tiptap/extensions": "3.30.2",
     "@tiptap/pm": "3.30.2",
     "@tiptap/suggestion": "3.30.2",
-    "@tiptap/vue-3": "3.30.2",
+    "@tiptap/vue-3": "3.30.6",
     "@tiptap/y-tiptap": "3.0.9",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
