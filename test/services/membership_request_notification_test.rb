@@ -33,6 +33,22 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_includes notification.notification_deliveries.where(channel: "email").pluck(:recipient_id), @actor.id
   end
 
+  test "requesting membership without an account name identifies the requestor by email" do
+    requestor = User.create!(email: "nameless-#{SecureRandom.hex(4)}@example.com", email_verified: true)
+    request = MembershipRequest.new(group: @group, introduction: "Please let me join")
+
+    assert_equal request, MembershipRequestService.create(
+      membership_request: request,
+      actor: requestor
+    )
+
+    notification = Notification.find_by!(
+      kind: "membership_requested",
+      subject: request
+    )
+    assert_equal requestor.email, notification.translation_values["name"]
+  end
+
   test "approving membership notifies the requestor" do
     request = MembershipRequest.create!(group: @group, requestor: @requestor)
 

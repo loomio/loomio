@@ -4,7 +4,10 @@ module NotificationDeliveryRouters
 
     def translation_values
       {
-        name: subject_model.requestor&.name || subject_model.name,
+        name: subject_model.requestor&.name.presence ||
+              subject_model.name.presence ||
+              subject_model.requestor&.email ||
+              subject_model.email,
         title: subject_model.group.full_name
       }
     end
