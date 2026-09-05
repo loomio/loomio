@@ -1,10 +1,12 @@
 # Removes the example discussions and polls that Loomio created for new groups
-# before automatic example content was retired in August 2023. Title matching
-# identifies the seeded records, while activity checks preserve anything that
-# members subsequently edited, commented on, voted in, or reacted to.
+# before automatic example content was retired in August 2023. The historical
+# generator used the helper account, not the newer API-account bot flag. Known
+# helper authorship and titles identify seeds, while activity checks preserve
+# anything members subsequently edited, commented on, voted in, or reacted to.
 module SeededContentCleanupService
   CREATED_BEFORE = Date.new(2023, 8, 5)
   DELETE_BATCH_SIZE = 200
+  REFERENCE_TABLES = %i[users groups topics discussions polls poll_options topic_items comments stances stance_choices anonymous_ballots anonymous_ballot_choices anonymous_poll_voters outcomes reactions versions active_storage_attachments bookmarks tasks topic_readers].freeze
 
   HELPER_BOT_EMAILS = %w[
     contact@loom.io
@@ -168,7 +170,7 @@ module SeededContentCleanupService
 
     PaperTrail.request(enabled: false) do
       discussion_ids.each_slice(batch_size) do |ids|
-        Discussion.transaction do
+        CleanupService.with_write_lock(REFERENCE_TABLES) do
           discussions_by_id = discussion_scope.where(id: ids).lock.index_by(&:id)
           ids.each do |id|
             discussion = discussions_by_id[id]
@@ -183,7 +185,7 @@ module SeededContentCleanupService
       poll_ids_remaining = Poll.where(id: poll_ids).pluck(:id)
       polls_deleted = poll_ids.length - poll_ids_remaining.length
       poll_ids_remaining.each_slice(batch_size) do |ids|
-        Poll.transaction do
+        CleanupService.with_write_lock(REFERENCE_TABLES) do
           polls_by_id = poll_scope.where(id: ids).lock.index_by(&:id)
           ids.each do |id|
             poll = polls_by_id[id]
@@ -208,7 +210,7 @@ module SeededContentCleanupService
   def self.candidate_discussions
     scope = Discussion.joins(topic: :group)
       .where("discussions.created_at < ?", CREATED_BEFORE)
-      .where(discussions: { discarded_at: nil }, topics: { discarded_at: nil })
+      .where(discussions: { author_id: helper_bot_ids, discarded_at: nil }, topics: { discarded_at: nil })
       .where(discussion_title_condition)
     scope = without_additional_topic_activity(
       scope,
@@ -223,19 +225,24 @@ module SeededContentCleanupService
     scope = without_poll_reactions(scope)
     scope = without_member_edits(scope, item_type: "Discussion", record_table: "discussions")
     scope = without_attached_poll_edits(scope)
-    scope.where(<<~SQL.squish, poll_titles: POLL_TITLES)
+    scope = without_member_comment_activity(scope)
+    scope.where(<<~SQL.squish, poll_titles: POLL_TITLES, helper_bot_ids: helper_bot_ids, created_before: CREATED_BEFORE)
       NOT EXISTS (
         SELECT 1 FROM polls attached_polls
         WHERE attached_polls.topic_id = topics.id
-          AND attached_polls.title NOT IN (:poll_titles)
+          AND (
+            attached_polls.title IS NULL OR attached_polls.title NOT IN (:poll_titles)
+            OR attached_polls.author_id IS NULL OR attached_polls.author_id NOT IN (:helper_bot_ids)
+            OR attached_polls.created_at >= :created_before
+          )
       )
     SQL
   end
 
   def self.candidate_polls
-    scope = Poll.joins(:topic)
+    scope = Poll.joins(topic: :group)
       .where("polls.created_at < ?", CREATED_BEFORE)
-      .where(polls: { title: POLL_TITLES, discarded_at: nil }, topics: { discarded_at: nil })
+      .where(polls: { author_id: helper_bot_ids, title: POLL_TITLES, discarded_at: nil }, topics: { discarded_at: nil })
     scope = without_additional_topic_activity(
       scope,
       record_type: "Poll",
@@ -248,7 +255,7 @@ module SeededContentCleanupService
     scope = without_member_reactions(scope, record_type: "Poll")
     scope = without_poll_reactions(scope)
     scope = without_member_edits(scope, item_type: "Poll", record_table: "polls")
-    scope
+    without_member_comment_activity(scope)
   end
 
   def self.discussion_title_condition
@@ -338,11 +345,11 @@ module SeededContentCleanupService
           ON reactions.reactable_type = reaction_items.itemable_type
          AND reactions.reactable_id = reaction_items.itemable_id
         WHERE reaction_items.topic_id = topics.id
-          AND reactions.user_id NOT IN (:helper_bot_ids)
+          AND (reactions.user_id IS NULL OR reactions.user_id NOT IN (:helper_bot_ids))
       )
       AND NOT EXISTS (
         SELECT 1 FROM reactions
-        WHERE reactions.user_id NOT IN (:helper_bot_ids)
+        WHERE (reactions.user_id IS NULL OR reactions.user_id NOT IN (:helper_bot_ids))
           AND reactions.reactable_type = :record_type
           AND reactions.reactable_id = RECORD_ID
       )
@@ -358,7 +365,7 @@ module SeededContentCleanupService
           ON reactions.reactable_type = 'Poll'
          AND reactions.reactable_id = activity_polls.id
         WHERE activity_polls.topic_id = topics.id
-          AND reactions.user_id NOT IN (:helper_bot_ids)
+          AND (reactions.user_id IS NULL OR reactions.user_id NOT IN (:helper_bot_ids))
       )
       AND NOT EXISTS (
         SELECT 1 FROM polls activity_polls
@@ -367,7 +374,7 @@ module SeededContentCleanupService
           ON reactions.reactable_type = 'Stance'
          AND reactions.reactable_id = stances.id
         WHERE activity_polls.topic_id = topics.id
-          AND reactions.user_id NOT IN (:helper_bot_ids)
+          AND (reactions.user_id IS NULL OR reactions.user_id NOT IN (:helper_bot_ids))
       )
       AND NOT EXISTS (
         SELECT 1 FROM polls activity_polls
@@ -376,7 +383,7 @@ module SeededContentCleanupService
           ON reactions.reactable_type = 'Outcome'
          AND reactions.reactable_id = outcomes.id
         WHERE activity_polls.topic_id = topics.id
-          AND reactions.user_id NOT IN (:helper_bot_ids)
+          AND (reactions.user_id IS NULL OR reactions.user_id NOT IN (:helper_bot_ids))
       )
     SQL
   end
@@ -393,8 +400,7 @@ module SeededContentCleanupService
         WHERE versions.item_type = :item_type
           AND versions.item_id = RECORD_ID
           AND versions.event = 'update'
-          AND versions.whodunnit IS NOT NULL
-          AND versions.whodunnit NOT IN (:helper_bot_ids)
+          AND (versions.whodunnit IS NULL OR versions.whodunnit NOT IN (:helper_bot_ids))
       )
     SQL
     scope.where(Arel.sql(condition.sub("RECORD_ID", record_id)))
@@ -409,14 +415,63 @@ module SeededContentCleanupService
          AND versions.item_id = edited_polls.id
         WHERE edited_polls.topic_id = topics.id
           AND versions.event = 'update'
-          AND versions.whodunnit IS NOT NULL
-          AND versions.whodunnit NOT IN (:helper_bot_ids)
+          AND (versions.whodunnit IS NULL OR versions.whodunnit NOT IN (:helper_bot_ids))
+      )
+    SQL
+  end
+
+  # Follow the content graph as well as the timeline: missing timeline entries
+  # must not hide member replies or edits to helper-authored comments. UNION
+  # also bounds traversal if damaged legacy comments contain a parent cycle.
+  # Separate indexed joins keep the anchor small; OR-ed parent subqueries
+  # otherwise cause full comment-table scans for each candidate topic.
+  def self.without_member_comment_activity(scope)
+    scope.where(<<~SQL.squish, helper_bot_ids: helper_bot_ids)
+      NOT EXISTS (
+        WITH RECURSIVE topic_comment_roots AS (
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN discussions ON comments.parent_type = 'Discussion' AND comments.parent_id = discussions.id
+          WHERE discussions.topic_id = topics.id
+          UNION
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN polls ON comments.parent_type = 'Poll' AND comments.parent_id = polls.id
+          WHERE polls.topic_id = topics.id
+          UNION
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN stances ON comments.parent_type = 'Stance' AND comments.parent_id = stances.id
+          JOIN polls ON polls.id = stances.poll_id
+          WHERE polls.topic_id = topics.id
+          UNION
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN outcomes ON comments.parent_type = 'Outcome' AND comments.parent_id = outcomes.id
+          JOIN polls ON polls.id = outcomes.poll_id
+          WHERE polls.topic_id = topics.id
+          UNION
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+          WHERE topic_items.topic_id = topics.id
+        ), topic_comments AS (
+          SELECT id, user_id FROM topic_comment_roots
+          UNION
+          SELECT comments.id, comments.user_id FROM comments
+          JOIN topic_comments parents ON comments.parent_type = 'Comment' AND comments.parent_id = parents.id
+        )
+        SELECT 1 FROM topic_comments
+        WHERE user_id IS NULL OR user_id NOT IN (:helper_bot_ids)
+          OR EXISTS (
+            SELECT 1 FROM versions WHERE item_type = 'Comment' AND item_id = topic_comments.id
+              AND event = 'update' AND (whodunnit IS NULL OR whodunnit NOT IN (:helper_bot_ids))
+          )
+          OR EXISTS (
+            SELECT 1 FROM reactions WHERE reactable_type = 'Comment' AND reactable_id = topic_comments.id
+              AND (user_id IS NULL OR user_id NOT IN (:helper_bot_ids))
+          )
       )
     SQL
   end
 
   def self.helper_bot_ids
-    @helper_bot_ids ||= User.where(email: HELPER_BOT_EMAILS).pluck(:id).presence || [ -1 ]
+    User.where(email: HELPER_BOT_EMAILS).pluck(:id).presence || [ -1 ]
   end
 
   def self.shard(scope, record_type:, count:, index:)
@@ -434,5 +489,6 @@ module SeededContentCleanupService
                        :without_additional_votes, :without_anonymous_votes,
                        :without_outcomes, :without_member_reactions,
                        :without_poll_reactions, :without_member_edits,
-                       :without_attached_poll_edits, :helper_bot_ids, :shard
+                       :without_attached_poll_edits, :without_member_comment_activity,
+                       :helper_bot_ids, :shard
 end

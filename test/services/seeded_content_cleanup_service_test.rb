@@ -2,14 +2,13 @@ require "test_helper"
 
 class SeededContentCleanupServiceTest < ActiveSupport::TestCase
   setup do
-    SeededContentCleanupService.instance_variable_set(:@helper_bot_ids, nil)
     @member = users(:user)
     @helper_bot = User.create!(
       name: "Loomio Helper Bot",
       email: "notifications@loomio.com",
       username: "cleanup_helper_bot",
       email_verified: true,
-      bot: true
+      bot: false
     )
     @group = Group.create!(
       name: "Legacy starter group #{SecureRandom.hex(4)}",
@@ -30,10 +29,56 @@ class SeededContentCleanupServiceTest < ActiveSupport::TestCase
     assert_includes SeededContentCleanupService.candidate_polls, poll
   end
 
-  test "does not treat creation of a member-authored seeded title as later activity" do
+  test "preserves member-authored content even when its title matches a seed" do
     discussion = create_seeded_discussion("Intro to Loomio", actor: @member)
 
-    assert_includes SeededContentCleanupService.candidate_discussions, discussion
+    assert_not_includes SeededContentCleanupService.candidate_discussions, discussion
+    SeededContentCleanupService.delete!
+    assert Discussion.exists?(discussion.id)
+  end
+
+  test "preserves helper comments edited by a member or an unknown actor" do
+    @group.add_admin!(@member)
+    @group.update!(admins_can_edit_user_content: true)
+    [ @member.id, nil ].each do |editor_id|
+      discussion = create_seeded_discussion("How to use Loomio")
+      poll = create_seeded_poll(topic_id: discussion.topic_id)
+      comment = CommentService.create(comment: Comment.new(parent: discussion, body: "Starter text"), actor: @helper_bot)
+      PaperTrail.request(whodunnit: editor_id) do
+        CommentService.update(comment: comment, params: { body: "Our working instructions" }, actor: @member)
+      end
+      assert comment.versions.where(event: "update", whodunnit: editor_id).exists?
+
+      SeededContentCleanupService.delete!
+
+      assert Discussion.exists?(discussion.id)
+      assert Poll.exists?(poll.id)
+      assert_equal "Our working instructions", comment.reload.body
+    end
+  end
+
+  test "preserves member replies even when their timeline is missing" do
+    discussion = create_seeded_discussion("How to use Loomio")
+    parent = CommentService.create(comment: Comment.new(parent: discussion, body: "Starter text"), actor: @helper_bot)
+    reply = CommentService.create(comment: Comment.new(parent: parent, body: "Actual work"), actor: @member)
+    reply.topic_items.delete_all
+
+    SeededContentCleanupService.delete!
+
+    assert Discussion.exists?(discussion.id)
+    assert Comment.exists?(reply.id)
+  end
+
+  test "preserves a seed containing a member-authored matching-title poll" do
+    discussion = create_seeded_discussion("How to use Loomio")
+    poll = create_seeded_poll(topic_id: discussion.topic_id)
+    poll.update_column(:author_id, @member.id)
+    poll.topic_items.update_all(user_id: @helper_bot.id)
+
+    SeededContentCleanupService.delete!
+
+    assert Discussion.exists?(discussion.id)
+    assert Poll.exists?(poll.id)
   end
 
   test "preserves seeded discussions with an additional member comment" do
@@ -94,6 +139,17 @@ class SeededContentCleanupServiceTest < ActiveSupport::TestCase
     assert_not_includes SeededContentCleanupService.candidate_polls, outcome_poll
     assert_not_includes SeededContentCleanupService.candidate_discussions, outcome_discussion
     assert_not_includes SeededContentCleanupService.candidate_discussions, reacted_discussion
+  end
+
+  test "preserves reactions whose historical actor is unknown" do
+    discussion = create_seeded_discussion("How to use Loomio")
+    reaction = Reaction.create!(reactable: discussion, user: @member, reaction: "+1")
+    reaction.update_column(:user_id, nil)
+
+    SeededContentCleanupService.delete!
+
+    assert Discussion.exists?(discussion.id)
+    assert Reaction.exists?(reaction.id)
   end
 
   test "preserves recent, renamed, and member-edited seeded records" do
