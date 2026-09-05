@@ -1,6 +1,8 @@
 require "test_helper"
+require_relative "../support/access_volume_matrix"
 
 class EmptyGroupCleanupServiceTest < ActiveSupport::TestCase
+  include AccessVolumeMatrix
   setup do
     @creator = users(:member_quiet)
   end
@@ -50,11 +52,13 @@ class EmptyGroupCleanupServiceTest < ActiveSupport::TestCase
 
     assert_equal [ root.id ], EmptyGroupCleanupService.candidate_groups(root_id: root.id).pluck(:id)
     groups_before = Group.pluck(:id)
+    before = access_volume_matrix
     2.times { DestroyEmptyGroupWorker.perform_now(root.id) }
 
     assert_not Group.exists?(root.id)
     assert_not Group.exists?(subgroup.id)
     assert_equal (groups_before - [ root.id, subgroup.id ]).sort, Group.pluck(:id).sort
+    assert_access_volume_matrix_unchanged(before)
   end
 
   private

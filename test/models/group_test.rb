@@ -81,8 +81,8 @@ class GroupTest < ActiveSupport::TestCase
     expectations = {
       email_enabled_members: normal + loud,
       email_loud_members: loud,
-      push_enabled_members: normal + loud,
-      push_loud_members: loud
+      push_enabled_members: normal + users(:member_loud, :reader_loud),
+      push_loud_members: users(:member_loud, :reader_loud)
     }
 
     expectations.each do |scope_name, expected|

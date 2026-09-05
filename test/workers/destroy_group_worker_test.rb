@@ -1,4 +1,5 @@
 require "test_helper"
+require_relative "../support/access_volume_matrix"
 
 class DestroyGroupWorkerTest < ActiveSupport::TestCase
   test "deletes only the archive operation that scheduled the job" do
@@ -43,11 +44,33 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
 
   test "members and topic guests cannot schedule group deletion" do
     group = topics(:discussion_topic).group
-    %i[member_quiet member_loud alien_loud guest_admin_normal former_member_loud].each do |role|
+    AccessVolumeMatrix::ROLES.excluding(:admin).each do |role|
       assert_no_enqueued_jobs(only: DestroyGroupWorker) do
         assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: users(role)) }
       end
       assert_nil group.reload.archived_at
     end
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: LoggedOutUser.new) }
+    end
+    assert_nil group.reload.archived_at
+  end
+
+  test "group coordinators can schedule the exact archive operation" do
+    group = topics(:discussion_topic).group
+    assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ group.id, group.reload.archived_at.iso8601(6) ] }) do
+      GroupService.destroy(group: group, actor: users(:admin))
+    end
+  end
+
+  test "instance administration alone does not replace group deletion authority" do
+    actor = users(:alien)
+    actor.update!(is_admin: true)
+    group = topics(:discussion_topic).group
+
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: actor) }
+    end
+    assert_nil group.reload.archived_at
   end
 end

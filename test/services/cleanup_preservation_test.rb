@@ -1,6 +1,19 @@
 require "test_helper"
+require_relative "../support/access_volume_matrix"
 
 class CleanupPreservationTest < ActiveSupport::TestCase
+  include AccessVolumeMatrix
+
+  test "orphan cleanup preserves the complete access and volume matrix" do
+    before = access_volume_matrix
+    records = [ Membership, TopicReader ].to_h { |model| [ model, model.order(:id).map(&:attributes) ] }
+
+    2.times { CleanupService.delete_orphan_records }
+
+    records.each { |model, expected| assert_equal expected, model.order(:id).map(&:attributes), model.name }
+    assert_access_volume_matrix_unchanged(before)
+  end
+
   test "a comment remains available when only its replies identify the surviving topic" do
     parent = CommentService.create(comment: Comment.new(parent: discussions(:discussion), body: "Original context"), actor: users(:admin))
     reply = CommentService.create(comment: Comment.new(parent: parent, body: "Published reply"), actor: users(:admin))

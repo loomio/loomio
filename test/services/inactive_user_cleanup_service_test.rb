@@ -1,6 +1,8 @@
 require "test_helper"
+require_relative "../support/access_volume_matrix"
 
 class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
+  include AccessVolumeMatrix
   MEMBERSHIP_MATRIX_USERS = %i[
     member_quiet
     member_normal
@@ -70,7 +72,9 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
 
   test "preserves every membership role in the reusable user matrix" do
     users = MEMBERSHIP_MATRIX_USERS.map { |name| users(name) }
-    users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil, deactivated_at: nil) }
+    users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
+    before = access_volume_matrix
+    users_before = users.to_h { |user| [ user.id, user.attributes ] }
     candidate_ids = InactiveUserCleanupService.orphan_user_ids
 
     users.each do |user|
@@ -78,6 +82,9 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
       assert_not_includes candidate_ids, user.id, user.username
     end
 
+    InactiveUserCleanupService.destroy_orphan_users
+    users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
+    assert_access_volume_matrix_unchanged(before)
 
     ALIEN_MATRIX_USERS.each do |name|
       user = users(name)
@@ -89,13 +96,18 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
   test "preserves every direct-topic participant in the reusable user matrix" do
     direct_topic = topics(:direct_topic)
     users = DIRECT_TOPIC_MATRIX_USERS.map { |name| users(name) }
-    users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil, deactivated_at: nil) }
+    users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
+    before = access_volume_matrix
+    users_before = users.to_h { |user| [ user.id, user.attributes ] }
     candidate_ids = InactiveUserCleanupService.orphan_user_ids
 
     users.each do |user|
       assert TopicReader.where(topic: direct_topic, user: user).exists?, "#{user.username} must participate in the direct topic"
       assert_not_includes candidate_ids, user.id, user.username
     end
+    InactiveUserCleanupService.destroy_orphan_users
+    users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
+    assert_access_volume_matrix_unchanged(before)
   end
 
   test "each recent activity timestamp protects an otherwise inactive account" do

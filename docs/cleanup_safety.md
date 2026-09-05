@@ -11,6 +11,10 @@ Cleanup eligibility is not permission to delete a later version of a record. Lif
 
 The guards are deliberately conservative. Audit counts for broken references include records retained for repair and are not predictions of how many rows will be deleted.
 
+## Regression coverage
+
+Cleanup tests reuse the access and volume fixtures for group topics and direct topics. Quiet/normal/loud role names describe email volume; selected roles have opposite push settings and conflicting account, membership and topic preferences. Tests compare exact access and delivery recipient sets before and after cleanup, read-range repair and merge rollback, while retaining revoked and inactive roles. Successful merge tests preserve the existing destination-wins rule for duplicate memberships and readers, including roles, revocation and channel preferences; source-only readers retain their settings when reassigned.
+
 ## Running maintenance
 
 Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Do not run multiple seeded-cleanup shards concurrently: the safety locks serialize their work, and a busy shard may skip candidates. Re-audit after a run; skipped candidates do not mean cleanup completed.

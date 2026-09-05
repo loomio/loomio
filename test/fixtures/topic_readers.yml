@@ -29,22 +29,22 @@
 # Topic-reader side of the reusable access-control and notification matrix.
 <%
 matrix_topic_readers = {
-  guest_quiet_reader:          { user: :guest_quiet,         topic: :discussion_topic,    guest: true,  volume: 1 },
+  guest_quiet_reader:          { user: :guest_quiet,         topic: :discussion_topic,    guest: true,  volume: 1, push: 3 },
   guest_normal_reader:         { user: :guest_normal,        topic: :discussion_topic,    guest: true,  volume: 2 },
   guest_admin_normal_reader:   { user: :guest_admin_normal,  topic: :discussion_topic,    guest: true,  admin: true, volume: 2 },
-  guest_loud_reader:           { user: :guest_loud,          topic: :discussion_topic,    guest: true,  volume: 3 },
+  guest_loud_reader:           { user: :guest_loud,          topic: :discussion_topic,    guest: true,  volume: 3, push: 1 },
   non_guest_loud_reader:       { user: :non_guest_loud,      topic: :discussion_topic,    guest: false, volume: 3 },
   former_guest_loud_reader:    { user: :former_guest_loud,   topic: :discussion_topic,    guest: true,  volume: 3, revoked: true },
   inactive_guest_loud_reader:  { user: :inactive_guest_loud, topic: :discussion_topic,    guest: true,  volume: 3 },
-  reader_quiet_reader:         { user: :reader_quiet,        topic: :discussion_topic,    guest: false, volume: 1 },
+  reader_quiet_reader:         { user: :reader_quiet,        topic: :discussion_topic,    guest: false, volume: 1, push: 3 },
   reader_normal_reader:        { user: :reader_normal,       topic: :discussion_topic,    guest: false, volume: 2 },
-  reader_loud_reader:          { user: :reader_loud,         topic: :discussion_topic,    guest: false, volume: 3 },
+  reader_loud_reader:          { user: :reader_loud,         topic: :discussion_topic,    guest: false, volume: 3, push: 1 },
   member_guest_loud_reader:    { user: :member_guest_loud,   topic: :discussion_topic,    guest: true,  volume: 3 },
   former_member_guest_reader:  { user: :former_member_guest, topic: :discussion_topic,    guest: true,  volume: 3 },
-  direct_guest_quiet_reader:   { user: :guest_quiet,         topic: :direct_topic, guest: true,  volume: 1 },
+  direct_guest_quiet_reader:   { user: :guest_quiet,         topic: :direct_topic, guest: true,  volume: 1, push: 3 },
   direct_guest_normal_reader:  { user: :guest_normal,        topic: :direct_topic, guest: true,  volume: 2 },
   direct_guest_admin_normal_reader: { user: :guest_admin_normal, topic: :direct_topic, guest: true, admin: true, volume: 2 },
-  direct_guest_loud_reader:    { user: :guest_loud,          topic: :direct_topic, guest: true,  volume: 3 },
+  direct_guest_loud_reader:    { user: :guest_loud,          topic: :direct_topic, guest: true,  volume: 3, push: 1 },
   direct_non_guest_reader:     { user: :non_guest_loud,      topic: :direct_topic, guest: false, volume: 3 },
   direct_former_guest_reader:  { user: :former_guest_loud,   topic: :direct_topic, guest: true,  volume: 3, revoked: true },
   direct_inactive_guest_reader: { user: :inactive_guest_loud, topic: :direct_topic, guest: true,  volume: 3 }
@@ -59,7 +59,7 @@ matrix_topic_readers = {
   guest: <%= attributes[:guest] %>
   admin: <%= attributes.fetch(:admin, false) %>
   volume_email: <%= attributes[:volume] %>
-  volume_push: <%= attributes[:volume] %>
+  volume_push: <%= attributes.fetch(:push, attributes[:volume]) %>
 <% if attributes[:revoked] %>
   revoked_at: <%= 1.day.ago %>
   revoker_id: <%= ActiveRecord::FixtureSet.identify(:admin) %>

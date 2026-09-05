@@ -1,6 +1,8 @@
 require "test_helper"
+require_relative "../support/access_volume_matrix"
 
 class SeededContentCleanupServiceTest < ActiveSupport::TestCase
+  include AccessVolumeMatrix
   setup do
     @member = users(:user)
     @helper_bot = User.create!(
@@ -174,6 +176,7 @@ class SeededContentCleanupServiceTest < ActiveSupport::TestCase
   end
 
   test "deletes eligible topics and polls while retaining engaged content" do
+    before = access_volume_matrix
     eligible_discussion = create_seeded_discussion("How to use Loomio")
     eligible_poll = create_seeded_poll(topic_id: eligible_discussion.topic_id)
     engaged_discussion = create_seeded_discussion("Welcome! Please introduce yourself")
@@ -189,6 +192,7 @@ class SeededContentCleanupServiceTest < ActiveSupport::TestCase
     assert_not Discussion.exists?(eligible_discussion.id)
     assert_not Poll.exists?(eligible_poll.id)
     assert Discussion.exists?(engaged_discussion.id)
+    assert_access_volume_matrix_unchanged(before)
   end
 
   test "deletes discussions and polls in separate sharded phases" do
