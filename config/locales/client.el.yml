@@ -1589,6 +1589,8 @@ el:
     online_field: 'Διαδικτυακό: %{value}'
     invited: Προσκλήθηκε %{value}
     message_user: Μήνυμα %{name}
+    recent_activity: Πρόσφατη δραστηριότητα
+    no_recent_activity: Δεν υπάρχει πρόσφατη δραστηριότητα
   contact_request_form:
     modal_title: email %{name}
     message_placeholder: Συστηθείτε και μοιραστείτε γιατί θέλετε να επικοινωνήσετε.

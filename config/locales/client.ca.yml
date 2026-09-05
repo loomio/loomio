@@ -1603,6 +1603,8 @@ ca:
     online_field: 'En línia:  %{value}'
     invited: 'Convidat: %{value}'
     message_user: Envia un missatge a %{name}
+    recent_activity: Activitat recent
+    no_recent_activity: Sense activitat recent
   contact_request_form:
     modal_title: Envia un correu electrònic a %{name}
     message_placeholder: Presenteu-vos i compartiu per què voleu entrar en contacte.

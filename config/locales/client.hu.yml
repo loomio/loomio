@@ -1593,6 +1593,8 @@ hu:
     online_field: 'Online: %{value}'
     invited: Meghívott %{value}
     message_user: 'Üzenet: %{name}'
+    recent_activity: Legutóbbi tevékenységek
+    no_recent_activity: Nincs friss tevékenység
   contact_request_form:
     modal_title: 'E-mail: %{name}'
     message_placeholder: Mutassa be magát és ossza meg miért szeretne kapcsolatba lépni.

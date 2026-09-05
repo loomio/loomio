@@ -1589,6 +1589,8 @@ tr:
     online_field: 'Çevrimiçi: %{value}'
     invited: Davet edildi %{value}
     message_user: Mesaj %{name}
+    recent_activity: Son etkinlikler
+    no_recent_activity: Son zamanlarda herhangi bir aktivite yok
   contact_request_form:
     modal_title: "%{name}'a e-posta gönderin"
     message_placeholder: Kendinizi tanıtın ve neden iletişim kurmak istediğinizi paylaşın.

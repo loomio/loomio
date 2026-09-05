@@ -1589,6 +1589,8 @@ fi:
     online_field: 'Online: %{value}'
     invited: Kutsuttu %{value}
     message_user: Viesti %{name}
+    recent_activity: Viimeaikainen toiminta
+    no_recent_activity: Ei viimeaikaista toimintaa
   contact_request_form:
     modal_title: Sähköposti %{name}
     message_placeholder: Esittele itsesi ja kerro, miksi haluat ottaa yhteyttä.

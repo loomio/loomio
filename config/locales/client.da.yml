@@ -1589,6 +1589,8 @@ da:
     online_field: 'Online: %{value}'
     invited: Inviteret %{value}
     message_user: Besked %{name}
+    recent_activity: Seneste aktivitet
+    no_recent_activity: Ingen nylig aktivitet
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Præsentér dig selv og del, hvorfor du gerne vil i kontakt.

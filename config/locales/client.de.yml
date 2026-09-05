@@ -1611,6 +1611,8 @@ de:
     online_field: 'Zuletzt online: %{value}'
     invited: 'Eingeladen: %{value}'
     message_user: Sende %{name} eine Nachricht
+    recent_activity: Aktuelle Aktivitäten
+    no_recent_activity: Keine aktuelle Aktivität
   contact_request_form:
     modal_title: E-Mail an %{name}
     message_placeholder: 'Stelle dich vor und beschreiben, wieso du Kontakt aufnimmst. '

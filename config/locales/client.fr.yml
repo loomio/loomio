@@ -1624,6 +1624,8 @@ fr:
     online_field: 'En ligne: %{value}'
     invited: "%{value} invité"
     message_user: Message %{name}
+    recent_activity: Activité récente
+    no_recent_activity: Aucune activité récente
   contact_request_form:
     modal_title: Envoyer un courriel à %{name}
     message_placeholder: Présente-toi et dis-nous pourquoi tu veux entrer en relation.

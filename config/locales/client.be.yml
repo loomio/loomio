@@ -1676,6 +1676,8 @@ be:
     online_field: 'У сетцы: %{value}'
     invited: Запрошаны %{value}
     message_user: Паведамленне %{name}
+    recent_activity: Нядаўняя актыўнасць
+    no_recent_activity: Няма нядаўняй актыўнасці
   contact_request_form:
     modal_title: Электронная пошта %{name}
     message_placeholder: Прадстаўцеся і раскажыце, чаму вы хочаце звязацца.

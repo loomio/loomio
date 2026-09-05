@@ -1589,6 +1589,8 @@ sl:
     online_field: 'Na spletu: %{value}'
     invited: Povabljen %{value}
     message_user: Sporočilo %{name}
+    recent_activity: Nedavna dejavnost
+    no_recent_activity: Ni nedavne dejavnosti
   contact_request_form:
     modal_title: E-pošta %{name}
     message_placeholder: Predstavite se in povejte, zakaj želite vzpostaviti stik.

@@ -1615,6 +1615,8 @@ it:
     online_field: 'Online: %{value}'
     invited: Invitato %{value}
     message_user: Messaggio %{name}
+    recent_activity: Attività recenti
+    no_recent_activity: Nessuna attività recente
   contact_request_form:
     modal_title: Email %{name}
     message_placeholder: Scrivi una introduzione su chi sei e perchè ci contatti.

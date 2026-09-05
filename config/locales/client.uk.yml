@@ -1606,6 +1606,8 @@ uk:
     online_field: 'Онлайн: %{value}'
     invited: Запрошено %{value}
     message_user: Повідомлення %{name}
+    recent_activity: Нещодавня активність
+    no_recent_activity: Немає нещодавньої активності
   contact_request_form:
     modal_title: Написати листа %{name}
     message_placeholder: Представте себе та поясніть, чому ви хотіли б зв'язатися.

@@ -1658,6 +1658,8 @@ zh_CN:
     online_field: 在线：%{value}
     invited: 受邀 %{value}
     message_user: 消息 %{name}
+    recent_activity: 近期活动
+    no_recent_activity: 近期无活动
   contact_request_form:
     modal_title: 电子邮件 %{name}
     message_placeholder: 请先自我介绍，并说明您希望联系的原因。

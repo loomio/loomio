@@ -1589,6 +1589,8 @@ ru:
     online_field: 'В сети: %{value}'
     invited: Приглашен %{value}
     message_user: Сообщение %{name}
+    recent_activity: Последние события
+    no_recent_activity: Нет недавней активности
   contact_request_form:
     modal_title: Электронная почта %{name}
     message_placeholder: Представьтесь и расскажите, почему вы хотели бы связаться.

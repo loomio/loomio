@@ -1589,6 +1589,8 @@ ro:
     online_field: 'Online: %{value}'
     invited: "%{value} invitat"
     message_user: Mesaj %{name}
+    recent_activity: Activitate recentă
+    no_recent_activity: Nicio activitate recentă
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Prezentați-vă și spuneți de ce doriți să luați legătura.
