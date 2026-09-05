@@ -261,6 +261,60 @@ module.exports = {
     page.expectText('.suggestion-list .v-list-item:nth-child(2)', 'Jerry Scott')
   },
 
+  'preserves_a_published_mention_when_copying_and_pasting_it': (test) => {
+    page = pageHelper(test)
+    const shortcutKey = process.platform === 'darwin' ? test.Keys.COMMAND : test.Keys.CONTROL
+
+    page.loadPath('setup_discussion')
+    page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
+    page.click('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title')
+    page.click('.comment-form__submit-button')
+    page.expectText('.new-comment', '@Jennifer Grey')
+
+    test.execute((mentionSelector) => {
+      const mention = document.querySelector(mentionSelector)
+      const selection = window.getSelection()
+      const range = document.createRange()
+      range.selectNodeContents(mention)
+      selection.removeAllRanges()
+      selection.addRange(range)
+    }, ['.new-comment span[data-mention-id="jennifergrey"]'])
+    page.pause(100)
+    test.perform(() => test.actions()
+      .keyDown(shortcutKey)
+      .sendKeys('c')
+      .keyUp(shortcutKey)
+      .perform())
+    test.execute((editorSelector) => {
+      const editor = document.querySelector(editorSelector)
+      const selection = window.getSelection()
+      const destination = document.createRange()
+      destination.selectNodeContents(editor.querySelector('p'))
+      destination.collapse(false)
+      selection.removeAllRanges()
+      selection.addRange(destination)
+      editor.focus()
+    }, ['.comment-form .lmo-textarea div[contenteditable=true]'])
+    page.pause(100)
+    test.perform(() => test.actions()
+      .keyDown(shortcutKey)
+      .sendKeys('v')
+      .keyUp(shortcutKey)
+      .perform())
+    page.expectText('.mention-notifications-count', '1 person will be notified')
+
+    test.execute((editorSelector) => {
+      const editor = document.querySelector(editorSelector)
+      return {
+        html: editor.innerHTML,
+        text: editor.innerText,
+        mentionCount: editor.querySelectorAll('span[data-mention-id="jennifergrey"]').length
+      }
+    }, ['.comment-form .lmo-textarea div[contenteditable=true]'], ({ value }) => {
+      test.assert.equal(value.mentionCount, 1, JSON.stringify(value))
+    })
+  },
+
   'mentions_a_user_in_markdown': (test) => {
     page = pageHelper(test)
 

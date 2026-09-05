@@ -100,10 +100,39 @@ function onClick(e) {
     }
   }
 }
+
+// Chrome serializes a selection that starts or ends inside a mention as a
+// style-only span, dropping the data-mention-id needed to recreate the node.
+// Expand mention boundary selections to the whole atomic mention and write the
+// selected HTML ourselves so pasting it into a Loomio editor preserves the ID.
+function onCopy(event) {
+  const root = event.currentTarget;
+  const selection = window.getSelection();
+  if (!event.clipboardData || !selection?.rangeCount || selection.isCollapsed) { return; }
+
+  const range = selection.getRangeAt(0).cloneRange();
+  const closestMention = node => {
+    const element = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    const mention = element?.closest('span[data-mention-id]');
+    return mention && root.contains(mention) ? mention : null;
+  };
+  const mentionStart = closestMention(range.startContainer);
+  const mentionEnd = closestMention(range.endContainer);
+  if (!mentionStart && !mentionEnd) { return; }
+
+  if (mentionStart) { range.setStartBefore(mentionStart); }
+  if (mentionEnd) { range.setEndAfter(mentionEnd); }
+
+  const container = document.createElement('div');
+  container.appendChild(range.cloneContents());
+  event.clipboardData.setData('text/html', container.innerHTML);
+  event.clipboardData.setData('text/plain', range.toString());
+  event.preventDefault();
+}
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper(@click="onClick")
+div.lmo-markdown-wrapper(@click="onClick" @copy="onCopy")
   div(v-if="format == 'md'" v-marked='content')
   div(v-if="format == 'html'" ref="htmlContent" v-html='content')
   span(v-if="format == 'none'") Format none. Use plain-text instead.
@@ -213,7 +242,10 @@ div.lmo-markdown-wrapper(@click="onClick")
   letter-spacing: normal;
 }
 .lmo-markdown-wrapper span[data-mention-id] {
+  background-color: rgba(var(--v-theme-anchor), 0.1);
+  border-radius: 0.3em;
   color: rgb(var(--v-theme-anchor));
+  padding: 0.05em 0.2em;
 }
 .lmo-markdown-wrapper blockquote, .lmo-markdown-wrapper pre {
   margin: 0.5rem 0;
