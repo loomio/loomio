@@ -32,8 +32,10 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     matrix = {
       old_orphan: { user: users(:orphan_user), eligible: true },
       recent_orphan: { user: users(:orphan_recent_user), eligible: false },
-      never_signed_in_orphan: { user: users(:orphan_never_user), eligible: false },
-      deactivated_old_orphan: { user: users(:orphan_deactivated_user), eligible: false }
+      old_former_invitee: { user: users(:orphan_former_invitee_user), eligible: true },
+      recent_former_invitee: { user: users(:orphan_recent_invitee_user), eligible: false },
+      deactivated_old_orphan: { user: users(:orphan_deactivated_user), eligible: true },
+      deactivated_recent_orphan: { user: users(:orphan_recent_deactivated_user), eligible: false }
     }
     candidate_ids = InactiveUserCleanupService.orphan_user_ids
 
@@ -47,11 +49,23 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     user = users(:orphan_cutoff_user)
     user.update_column(:last_sign_in_at, cutoff)
 
-    assert_not_includes InactiveUserCleanupService.orphan_user_ids(last_sign_in_before: cutoff), user.id
+    assert_not_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
 
     user.update_column(:last_sign_in_at, cutoff - 1.second)
 
-    assert_includes InactiveUserCleanupService.orphan_user_ids(last_sign_in_before: cutoff), user.id
+    assert_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+  end
+
+  test "uses account age for former invitees who never signed in" do
+    cutoff = Time.zone.local(2025, 9, 5, 12)
+    user = users(:orphan_recent_invitee_user)
+    user.update_column(:created_at, cutoff)
+
+    assert_not_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+
+    user.update_column(:created_at, cutoff - 1.second)
+
+    assert_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
   end
 
   test "preserves every membership role in the reusable user matrix" do

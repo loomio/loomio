@@ -44,8 +44,12 @@ module InactiveUserCleanupService
     puts "Deleted #{user_ids.size} orphan users" unless Rails.env.test?
   end
 
-  def self.orphan_user_ids(last_sign_in_before: 1.year.ago)
-    scope = USER_REFERENCES.reduce(User.where(deactivated_at: nil).where("last_sign_in_at < ?", last_sign_in_before)) do |scope, (table, columns)|
+  def self.orphan_user_ids(inactive_before: 1.year.ago)
+    inactive_users = User.where(
+      "last_sign_in_at < :cutoff OR (last_sign_in_at IS NULL AND created_at < :cutoff)",
+      cutoff: inactive_before
+    )
+    scope = USER_REFERENCES.reduce(inactive_users) do |scope, (table, columns)|
       columns.reduce(scope) do |column_scope, column|
         column_scope.where("NOT EXISTS (SELECT 1 FROM #{table} WHERE #{table}.#{column} = users.id)")
       end
