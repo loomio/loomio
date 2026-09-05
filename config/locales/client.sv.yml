@@ -1589,6 +1589,8 @@ sv:
     online_field: 'Online: %{value}'
     invited: Bjöd in %{value}
     message_user: Meddelande %{name}
+    recent_activity: Senaste aktivitet
+    no_recent_activity: Ingen aktivitet nyligen
   contact_request_form:
     modal_title: E-posta %{name}
     message_placeholder: Presentera dig själv och berätta varför du vill ta kontakt.

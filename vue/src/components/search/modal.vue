@@ -5,7 +5,6 @@ import EventBus        from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import { mdiMagnify, mdiClose } from '@mdi/js';
-import { urlForSearchResult } from '@/shared/helpers/search_result_url.mjs';
 
 export default {
   props: {
@@ -78,10 +77,6 @@ export default {
   },
 
   methods: {
-    userById(id) { return Records.users.find(id); },
-    pollById(id) { return Records.polls.find(id); },
-    groupById(id) { return Records.groups.find(id); },
-
     fetch() {
       if (!this.query) {
         this.results = [];
@@ -102,10 +97,6 @@ export default {
           this.loading = false;
         });
       }
-    },
-
-    urlForResult(result) {
-      return urlForSearchResult(result);
     },
 
     closeModal() {
@@ -180,25 +171,9 @@ v-card.search-modal(:title="$t('common.action.search')")
       v-select.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
       v-select.mr-2(variant="solo-filled" density="compact" v-model="type" :items="typeItems")
       v-select(variant="solo-filled" density="compact" v-model="order" :items="orderItems")
-    v-list(lines="two")
-      v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
-        v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
-      v-list-item(v-for="result in results" :key="result.id" :to="urlForResult(result)")
-        template(v-slot:prepend)
-          poll-common-icon-panel.mr-2(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
-          user-avatar.mr-2(v-else :user="userById(result.author_id)")
-        v-list-item-title.d-flex
-          span.text-truncate {{ result.poll_title || result.discussion_title }}
-          tags-display.ml-1(:tags="result.tags" size="x-small" :group="groupById(result.group_id)")
-          v-spacer
-          time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
-        v-list-item-subtitle.text--primary(v-html="result.highlight")
-        v-list-item-subtitle
-          span
-            span {{result.searchable_type}}
-            mid-dot
-            span {{result.author_name}}
-            mid-dot
-            span {{result.group_name || $t('discussion.direct')}}
+    search-results-list(
+      :results="results"
+      :empty-text="!loading && resultsQuery && results.length === 0 ? $t('discussions_panel.no_results_found', { search: resultsQuery }) : null"
+    )
 
 </template>

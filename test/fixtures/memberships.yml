@@ -85,6 +85,38 @@ matrix_memberships = {
   revoked_at: <%= 1.day.ago %>
   revoker_id: <%= ActiveRecord::FixtureSet.identify(:admin) %>
 <% end %>
+
+# Membership rows for the lifecycle-cleanup group matrix.
+orphan_group_tree_membership:
+  user: member_quiet
+  group: orphan_group_tree
+  token: orphan_group_tree_membership
+  accepted_at: <%= 2.years.ago %>
+
+orphan_subgroup_membership:
+  user: member_quiet
+  group: orphan_subgroup
+  token: orphan_subgroup_membership
+  accepted_at: <%= 2.years.ago %>
+
+used_revoked_membership:
+  user: former_member_loud
+  group: used_revoked_membership_subgroup
+  token: used_revoked_membership
+  accepted_at: <%= 2.years.ago %>
+  revoked_at: <%= 1.year.ago %>
+
+used_multiple_members_first:
+  user: member_quiet
+  group: used_multiple_members_group
+  token: used_multiple_members_first
+  accepted_at: <%= 2.years.ago %>
+
+used_multiple_members_second:
+  user: member_normal
+  group: used_multiple_members_group
+  token: used_multiple_members_second
+  accepted_at: <%= 2.years.ago %>
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 

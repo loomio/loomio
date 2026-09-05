@@ -1606,6 +1606,8 @@ zh_TW:
     online_field: 線上：%{value}
     invited: 已邀請 %{value}
     message_user: 訊息 %{name}
+    recent_activity: 近期活動
+    no_recent_activity: 近期無活動
   contact_request_form:
     modal_title: 電子郵件 %{name}
     message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。

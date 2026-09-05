@@ -1624,6 +1624,8 @@ pt_BR:
     online_field: 'Online: %{value}'
     invited: Convidados %{value}
     message_user: Mensagem %{name}
+    recent_activity: Atividade recente
+    no_recent_activity: Nenhuma atividade recente
   contact_request_form:
     modal_title: Email %{name}
     message_placeholder: Se apresente e compartilhe porquê você gostaria de entrar em contato.

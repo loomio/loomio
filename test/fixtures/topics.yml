@@ -57,3 +57,22 @@ direct_topic:
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+cleanup_active_topic:
+  topicable: cleanup_active_discussion (Discussion)
+  group: used_topic_group
+  items_count: 0
+  ranges_string: ""
+  private: true
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+cleanup_discarded_topic:
+  topicable: cleanup_discarded_discussion (Discussion)
+  group: used_discarded_topic_subgroup
+  items_count: 0
+  ranges_string: ""
+  private: true
+  discarded_at: <%= 1.year.ago %>
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 1.year.ago %>

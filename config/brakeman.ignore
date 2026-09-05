@@ -181,10 +181,14 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "10941958cec5e61af479aff8152eefc7d3cbc203922f4d687344086e70401664",
-      "note": "False positive 2026-08-23 — table and column identifiers come only from the frozen USER_REFERENCES constant; no request data reaches the SQL (SQL Injection @ app/services/inactive_user_cleanup_service.rb:50)"
+      "fingerprint": "d2f2a51984593d20785619e810841226004946a8cf8fe6cecec79fd42a1a57f0",
+      "note": "Reviewed 2026-09-06 — refreshed after adding the cleanup_references alias. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/inactive_user_cleanup_service.rb#orphan_users)"
+    },
+    {
+      "fingerprint": "8f74c254b8c5a6399b0de5c1b1cb9eedac1affce891bc0eeb11b4d621540f1f4",
+      "note": "Reviewed 2026-09-06 — every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/cleanup_service.rb#with_write_lock)"
     }
   ],
-  "updated": "2026-08-23",
+  "updated": "2026-09-06",
   "brakeman_version": "8.0.6"
 }

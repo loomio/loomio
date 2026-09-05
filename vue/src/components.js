@@ -108,6 +108,7 @@ export default {
   PollReminderForm: 'poll/reminder_form',
   PollScoreVoteForm: 'poll/score/vote_form',
   RevisionHistoryContent: 'revision_history/content',
+  SearchResultsList: 'search/results_list',
   HtmlDiff: 'revision_history/html_diff',
   ShareableLinkModal: 'group/shareable_link_modal',
   Space: 'common/space',

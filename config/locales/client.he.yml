@@ -1601,6 +1601,8 @@ he:
     online_field: 'אונליין: %{value}'
     invited: הוזמן %{value}
     message_user: הודעה %{name}
+    recent_activity: פעילות אחרונה
+    no_recent_activity: אין פעילות אחרונה
   contact_request_form:
     modal_title: דואר אלקטרוני %{name}
     message_placeholder: הצג את עצמך ושתף למה היית רוצה ליצור קשר

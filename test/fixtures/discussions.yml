@@ -48,3 +48,20 @@ direct_discussion:
   topic: direct_topic
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+cleanup_active_discussion:
+  key: cleanup_active_discussion
+  title: Cleanup active discussion
+  author: member_quiet
+  topic: cleanup_active_topic
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+cleanup_discarded_discussion:
+  key: cleanup_discarded_discussion
+  title: Cleanup discarded discussion
+  author: member_quiet
+  topic: cleanup_discarded_topic
+  discarded_at: <%= 1.year.ago %>
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 1.year.ago %>

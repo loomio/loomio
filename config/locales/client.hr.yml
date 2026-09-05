@@ -1589,6 +1589,8 @@ hr:
     online_field: 'Online: %{value}'
     invited: Pozvan %{value}
     message_user: Pošalji poruku %{name}
+    recent_activity: Nedavna aktivnost
+    no_recent_activity: Nema nedavnih aktivnosti
   contact_request_form:
     modal_title: Email %{name}
     message_placeholder: Predstavite se i recite zašto želite uspostaviti kontakt.

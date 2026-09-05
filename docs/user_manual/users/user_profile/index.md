@@ -31,6 +31,10 @@ You can update your personal info by changing any of the following fields:
 
 ![](user_profile.png)
 
+## Viewing another person's profile
+
+Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
+
 ## Uploading a profile photo
 When you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. 
 

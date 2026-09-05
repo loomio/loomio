@@ -1603,6 +1603,8 @@ nl_NL:
     online_field: 'Online: %{value}'
     invited: Uitgenodigd %{value}
     message_user: Bericht %{name}
+    recent_activity: Recente activiteit
+    no_recent_activity: Geen recente activiteit
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Stel jezelf voor en vertel waarom je graag contact zou maken.

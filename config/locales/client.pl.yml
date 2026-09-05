@@ -1603,6 +1603,8 @@ pl:
     online_field: 'Online: %{value}'
     invited: Zaproszono %{value}
     message_user: Wyślij wiadomość do %{name}
+    recent_activity: Ostatnia aktywność
+    no_recent_activity: Brak ostatniej aktywności
   contact_request_form:
     modal_title: Wyślij wiadomość e-mail do %{name}
     message_placeholder: Przedstaw się i powiedz, dlaczego chcesz nawiązać kontakt.

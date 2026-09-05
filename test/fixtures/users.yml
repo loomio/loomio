@@ -104,7 +104,16 @@ matrix_users = {
   reader_normal:         { email: 1, push: 1 },
   reader_loud:           { email: 1, push: 1 },
   member_guest_loud:     { email: 1, push: 1 },
-  former_member_guest:   { email: 1, push: 1 }
+  former_member_guest:   { email: 1, push: 1 },
+  orphan_user:           { email: 1, push: 1, created_at: 3.years.ago, last_sign_in_at: 2.years.ago },
+  orphan_recent_user:    { email: 1, push: 1, last_sign_in_at: 1.year.ago + 1.day },
+  orphan_cutoff_user:    { email: 1, push: 1, created_at: 3.years.ago, last_sign_in_at: 1.year.ago },
+  # These represent invite-created accounts after the inviting group and its
+  # membership have been deleted, so no association intentionally survives.
+  orphan_former_invitee_user: { email: 1, push: 1, created_at: 2.years.ago },
+  orphan_recent_invitee_user: { email: 1, push: 1 },
+  orphan_deactivated_user: { email: 1, push: 1, created_at: 3.years.ago, last_sign_in_at: 2.years.ago, inactive: true },
+  orphan_recent_deactivated_user: { email: 1, push: 1, last_sign_in_at: 1.day.ago, inactive: true }
 }
 %>
 <% matrix_users.each do |fixture, attributes| %>
@@ -122,7 +131,10 @@ matrix_users = {
 <% if attributes[:inactive] %>
   deactivated_at: <%= 1.day.ago %>
 <% end %>
-  created_at: <%= 30.days.ago %>
+<% if attributes[:last_sign_in_at] %>
+  last_sign_in_at: <%= attributes[:last_sign_in_at] %>
+<% end %>
+  created_at: <%= attributes.fetch(:created_at, 30.days.ago) %>
   updated_at: <%= 1.day.ago %>
 
 <% end %>

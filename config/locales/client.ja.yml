@@ -1588,6 +1588,8 @@ ja:
     invited: "%{value} を招待しました"
     message_user: メッセージ %{name}
     contact_user: "%{name} に連絡する"
+    recent_activity: 最近の活動
+    no_recent_activity: 最近アクティビティはありません
   contact_request_form:
     modal_title: メールアドレス %{name}
     message_placeholder: 自己紹介をして、連絡を取りたい理由を共有してください。

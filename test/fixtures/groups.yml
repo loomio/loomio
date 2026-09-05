@@ -52,3 +52,169 @@ alien_group:
   parent_members_can_see_discussions: false
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
+
+orphan_group:
+  key: orphangp
+  token: orphangrouptoken012345678901234
+  name: Orphan Group
+  is_visible_to_public: false
+  membership_granted_upon: invitation
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+# Reusable lifecycle-cleanup matrix. Every entry is old unless recency is the
+# preservation signal named by the fixture.
+orphan_free_group:
+  key: orphanfg
+  token: orphanfreegrouptoken012345678901
+  name: Orphan Free Group
+  subscription: cleanup_active_free
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+orphan_group_tree:
+  key: orphntrk
+  token: orphangrouptreetoken012345678901
+  name: Orphan Group Tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+orphan_subgroup:
+  key: orphnsgk
+  token: orphansubgrouptoken0123456789012
+  name: Orphan Subgroup
+  parent: orphan_group_tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_topic_group:
+  key: usedtpgk
+  token: usedtopicgrouptoken0123456789012
+  name: Used Topic Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_discarded_topic_tree:
+  key: useddttr
+  token: useddiscardedtopictreetoken012345
+  name: Used Discarded Topic Tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_discarded_topic_subgroup:
+  key: useddtsg
+  token: useddiscardedtopicsubgrouptoken01
+  name: Used Discarded Topic Subgroup
+  parent: used_discarded_topic_tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_revoked_membership_tree:
+  key: usedrmtr
+  token: usedrevokedmembershiptreetoken0123
+  name: Used Revoked Membership Tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_revoked_membership_subgroup:
+  key: usedrmsg
+  token: usedrevokedmembershipsubgrouptoken
+  name: Used Revoked Membership Subgroup
+  parent: used_revoked_membership_tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_multiple_members_group:
+  key: usedmmgp
+  token: usedmultiplemembersgrouptoken01234
+  name: Used Multiple Members Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_trial_group:
+  key: usedtrlk
+  token: usedtrialgrouptoken01234567890123
+  name: Used Trial Group
+  subscription: cleanup_active_trial
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_paid_group:
+  key: usedpaid
+  token: usedpaidgrouptoken012345678901234
+  name: Used Paid Group
+  subscription: cleanup_active_paid
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_canceled_free_group:
+  key: usedcfgk
+  token: usedcanceledfreegrouptoken0123456
+  name: Used Canceled Free Group
+  subscription: cleanup_canceled_free
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_discussion_template_group:
+  key: useddtgp
+  token: useddiscussiontemplategrouptoken01
+  name: Used Discussion Template Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_poll_template_group:
+  key: usedptgp
+  token: usedpolltemplategrouptoken01234567
+  name: Used Poll Template Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_membership_request_group:
+  key: usedmrqg
+  token: usedmembershiprequestgrouptoken012
+  name: Used Membership Request Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_chatbot_group:
+  key: usedcbtk
+  token: usedchatbotgrouptoken0123456789012
+  name: Used Chatbot Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_tag_group:
+  key: usedtagk
+  token: usedtaggrouptoken0123456789012345
+  name: Used Tag Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_attachment_group:
+  key: usedattk
+  token: usedattachmentgrouptoken012345678
+  name: Used Attachment Group
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_recent_group:
+  key: usedrcnt
+  token: usedrecentgrouptoken0123456789012
+  name: Used Recent Group
+  created_at: <%= 1.day.ago %>
+  updated_at: <%= 1.day.ago %>
+
+used_recent_subgroup_tree:
+  key: usedrstr
+  token: usedrecentsubgrouptreetoken012345
+  name: Used Recent Subgroup Tree
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>
+
+used_recent_subgroup:
+  key: usedrcsg
+  token: usedrecentsubgrouptoken0123456789
+  name: Used Recent Subgroup
+  parent: used_recent_subgroup_tree
+  created_at: <%= 1.day.ago %>
+  updated_at: <%= 1.day.ago %>

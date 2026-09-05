@@ -284,7 +284,7 @@ class GroupExportService
   end
 
   def self.export_filename_for(group_name)
-    "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group_name.parameterize}.json"
+    "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group_name.parameterize}_#{SecureRandom.hex(16)}.json"
   end
 
   def self.puts_attachment(attachment, file)
