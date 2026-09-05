@@ -75,13 +75,13 @@ module Ability::Poll
     end
 
     can [:update], ::Poll do |poll|
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       !poll.discarded? &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       !poll.discarded? &&
       poll.admins.exists?(user.id)
     end
@@ -94,7 +94,7 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous? &&
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       poll.admins.exists?(user.id)
     end
   end

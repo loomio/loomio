@@ -238,7 +238,7 @@ class PollService
 
     existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
     users = users.where.not(id: existing_voter_ids)
-    group_member_ids = poll.group ? poll.group.members.where(id: users.select(:id)).pluck(:id).to_set : Set.new
+    group_member_ids = poll.group.members.where(id: users.select(:id)).pluck(:id).to_set
     rows = users.map do |user|
       {
         poll_id: poll.id,

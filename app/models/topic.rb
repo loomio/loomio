@@ -70,7 +70,7 @@ class Topic < ApplicationRecord
 
   normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
 
-  delegate :members_can_raise_motions, to: :group, allow_nil: true
+  delegate :members_can_raise_motions, to: :group
 
   def enforce_subscription_thread_limit!
     return if group_id.blank?
