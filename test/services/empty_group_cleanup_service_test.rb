@@ -15,18 +15,46 @@ class EmptyGroupCleanupServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "archives the whole eligible tree and enqueues one root deletion" do
+  test "queues a cleanup recheck without archiving the tree" do
     root = create_group(name: "Scheduled root")
     subgroup = create_group(name: "Scheduled subgroup", parent: root)
 
     EmptyGroupCleanupService.stub(:candidate_groups, Group.where(id: root.id)) do
-      assert_enqueued_with(job: DestroyGroupWorker, args: [ root.id ]) do
+      assert_enqueued_with(job: DestroyEmptyGroupWorker, args: [ root.id ]) do
         assert_equal 1, EmptyGroupCleanupService.enqueue!
       end
     end
 
-    assert root.reload.archived_at
-    assert subgroup.reload.archived_at
+    assert_nil root.reload.archived_at
+    assert_nil subgroup.reload.archived_at
+  end
+
+  test "worker preserves a tree that gained content after queueing" do
+    root = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+    assert_includes candidates, root
+    subgroup.add_admin!(@creator)
+    discussion = DiscussionService.create(params: { group_id: subgroup.id, title: "New work" }, actor: @creator)
+
+    DestroyEmptyGroupWorker.perform_now(root.id)
+
+    assert Group.exists?(root.id)
+    assert Group.exists?(subgroup.id)
+    assert Discussion.exists?(discussion.id)
+    assert_nil root.reload.archived_at
+  end
+
+  test "worker deletes a still-empty tree and is safe to repeat" do
+    root = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+
+    assert_equal [ root.id ], EmptyGroupCleanupService.candidate_groups(root_id: root.id).pluck(:id)
+    groups_before = Group.pluck(:id)
+    2.times { DestroyEmptyGroupWorker.perform_now(root.id) }
+
+    assert_not Group.exists?(root.id)
+    assert_not Group.exists?(subgroup.id)
+    assert_equal (groups_before - [ root.id, subgroup.id ]).sort, Group.pluck(:id).sort
   end
 
   private
