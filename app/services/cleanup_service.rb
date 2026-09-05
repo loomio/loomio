@@ -30,6 +30,23 @@
 module CleanupService
   DELETE_BATCH_SIZE = 1_000
 
+  # Legacy associations lack foreign keys, so row locks alone cannot exclude
+  # new references during destructive eligibility checks. Keep these sections
+  # short: skip locks held by existing writers, and release promptly so new
+  # writers can proceed. These locks are for maintenance, not request paths.
+  def self.with_write_lock(tables)
+    ActiveRecord::Base.transaction(requires_new: true) do
+      names = tables.map(&:to_s).uniq.sort.map { |table| ActiveRecord::Base.connection.quote_table_name(table) }
+      begin
+        ActiveRecord::Base.connection.execute("LOCK TABLE #{names.join(', ')} IN SHARE ROW EXCLUSIVE MODE NOWAIT")
+      rescue ActiveRecord::LockWaitTimeout => error
+        Rails.logger.info("Cleanup deferred: #{error.message}")
+        raise ActiveRecord::Rollback
+      end
+      yield
+    end
+  end
+
   POLYMORPHIC_REFERENCES = {
     "ActiveStorage::Attachment" => %i[record_type record_id],
     "Bookmark" => %i[bookmarkable_type bookmarkable_id],
@@ -181,9 +198,8 @@ module CleanupService
     end
   end
 
-  # Delete comments which could not have appeared in a topic because either
-  # their polymorphic parent or their timeline topic_item is gone. Repeat because
-  # deleting one such comment can expose its replies as another orphan layer.
+  # Missing timeline entries and broken hierarchy links are repairable data,
+  # not proof that content is disposable. Keep them in the audit for repair.
   def self.cleanup_comment_references!
     Comment.transaction do
       delete_orphan_comments
@@ -193,18 +209,7 @@ module CleanupService
   end
 
   def self.delete_orphan_comments
-    count = 0
-
-    loop do
-      ids = (
-        comments_missing_parent.limit(1_000).pluck(:id) +
-        comments_missing_event.limit(1_000).pluck(:id)
-      ).uniq
-      break if ids.empty?
-
-      count += Comment.where(id: ids).delete_all
-    end
-
+    count = delete_records(comments_missing_parent)
     puts "deleted #{count} dangling Comment records" unless Rails.env.test?
     count
   end
@@ -398,6 +403,26 @@ module CleanupService
 
   def self.delete_records(scope)
     record_class = scope.klass
+    # A missing parent group says nothing about the value of its subtree.
+    return 0 if record_class == Group
+    if record_class == Comment
+      scope = scope.where(id: comments_missing_parent.select(:id)).where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1 FROM topic_items
+          JOIN topics ON topics.id = topic_items.topic_id
+          WHERE topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+        )
+        AND NOT EXISTS (
+          SELECT 1 FROM comments children
+          WHERE children.parent_type = 'Comment' AND children.parent_id = comments.id
+        )
+      SQL
+    end
+    if record_class == TopicItem
+      # Raw deletes bypass reparenting callbacks, and the self-FK cascades.
+      # Preserve damaged ancestors until their surviving children are repaired.
+      scope = scope.where("NOT EXISTS (SELECT 1 FROM topic_items children WHERE children.parent_id = topic_items.id)")
+    end
     primary_key = record_class.primary_key
     primary_key_column = record_class.arel_table[primary_key]
     count = 0
@@ -406,7 +431,16 @@ module CleanupService
       ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
       break if ids.empty?
 
-      count += record_class.where(primary_key => ids).delete_all
+      deleted = if record_class == Comment
+        with_write_lock(%i[comments topic_items topics discussions polls stances outcomes]) { scope.where(primary_key => ids).delete_all }
+      elsif record_class == TopicItem
+        with_write_lock(%i[topic_items]) { scope.where(primary_key => ids).delete_all }
+      else
+        scope.where(primary_key => ids).delete_all
+      end
+      break unless deleted&.positive?
+
+      count += deleted
     end
 
     count

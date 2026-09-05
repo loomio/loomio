@@ -13,7 +13,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
       username: "orphan#{@hex}",
       email_verified: true
     )
-    user.update_column(:last_sign_in_at, 2.years.ago)
+    user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago)
     user
   end
 
@@ -62,24 +62,24 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
-  test "delete_orphan_records deletes comments whose topic_item topic is missing" do
+  test "delete_orphan_records preserves content with a live parent when its topic is missing" do
     comment = comments(:public_discussion_comment)
     topic_item = topic_items(:public_discussion_comment_topic_item)
     Topic.where(id: topic_item.topic_id).delete_all
 
     CleanupService.delete_orphan_records
 
-    assert_not Comment.exists?(comment.id)
+    assert Comment.exists?(comment.id)
     assert_not TopicItem.exists?(topic_item.id)
   end
 
-  test "delete_orphan_records deletes a comment when its topic_item is missing" do
+  test "delete_orphan_records preserves a comment when only its timeline is missing" do
     comment = comments(:public_discussion_comment)
     comment.topic_items.delete_all
 
     CleanupService.delete_orphan_records
 
-    assert_not Comment.exists?(comment.id)
+    assert Comment.exists?(comment.id)
   end
 
   test "delete_orphan_records deletes missing-parent comment forests" do
@@ -91,24 +91,24 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert_not Comment.exists?(comment.id)
   end
 
-  test "cleanup_comment_references deletes each layer of a missing-parent comment forest" do
+  test "cleanup_comment_references preserves replies while their topic still exists" do
     comment = comments(:public_discussion_comment)
     reply = Comment.create!(parent: comment, user: @user, body: "Reply to orphan")
     Discussion.where(id: comment.parent_id).delete_all
 
     CleanupService.cleanup_comment_references!
 
-    assert_not Comment.exists?(comment.id)
-    assert_not Comment.exists?(reply.id)
+    assert Comment.exists?(comment.id)
+    assert Comment.exists?(reply.id)
   end
 
-  test "cleanup_comment_references deletes comments which have no timeline topic_item" do
+  test "cleanup_comment_references preserves comments which only lack a timeline entry" do
     comment = comments(:public_discussion_comment)
     comment.topic_items.destroy_all
 
     CleanupService.cleanup_comment_references!
 
-    assert_not Comment.exists?(comment.id)
+    assert Comment.exists?(comment.id)
   end
 
   test "audit_orphan_records reports comments with missing parents separately" do
@@ -192,6 +192,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
   test "destroy_orphan_users deletes long-inactive users with no durable references" do
     user = build_inactive_user
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
+    assert_includes InactiveUserCleanupService.orphan_user_ids, user.id
 
     InactiveUserCleanupService.destroy_orphan_users
 
