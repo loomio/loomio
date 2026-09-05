@@ -1738,6 +1738,8 @@ en:
     set_user_name: Set user name
   user_page:
     contact_user: Contact %{name}
+    recent_activity: Recent activity
+    no_recent_activity: No recent activity
     location_field: 'Location: %{value}'
     locale_field: 'Language: %{value}'
     online_field: 'Online: %{value}'

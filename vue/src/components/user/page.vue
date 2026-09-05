@@ -13,10 +13,11 @@ const { watchRecords } = useWatchRecords();
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
 const user                      = ref({});
-const isMembershipsFetchingDone = ref(false);
 const groups                    = ref([]);
 const canContactUser            = ref(false);
 const loadingGroupsForExecuting = ref(false);
+const activity                  = ref([]);
+const loadingActivity           = ref(true);
 
 const isEmptyUser = computed(() => isEmpty(user.value));
 
@@ -37,6 +38,17 @@ function init() {
   }
 }
 
+function loadActivityFor(u) {
+  return Records.remote.get('search', {
+    author_id: u.id,
+    types: 'Discussion,Comment,Poll'
+  }).then(data => {
+    activity.value = data.search_results;
+  }).finally(() => {
+    loadingActivity.value = false;
+  });
+}
+
 function loadGroupsFor(u) {
   loadingGroupsForExecuting.value = true;
   Records.memberships.fetchByUser(u).then(() => {
@@ -46,7 +58,10 @@ function loadGroupsFor(u) {
 
 onMounted(() => {
   init();
-  Records.users.findOrFetchById(route.params.key).then(init, error => EventBus.$emit('pageError', error));
+  Records.users.findOrFetchById(route.params.key).then(() => {
+    init();
+    return loadActivityFor(user.value);
+  }).catch(error => EventBus.$emit('pageError', error));
 });
 </script>
 
@@ -68,6 +83,15 @@ v-main.user-page__profile
             div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
             div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
             v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="primary" variant="elevated" :to="'/d/new?user_id=' + user.id" v-t="{ path: 'user_page.message_user', args: { name: user.firstName() } }")
+      v-card.mt-4.user-page__activity(:title="$t('user_page.recent_activity')")
+        v-card-text.pa-0
+          loading(v-if="loadingActivity && activity.length === 0")
+          search-results-list(
+            v-else
+            :results="activity"
+            :empty-text="$t('user_page.no_recent_activity')"
+            :show-author="false"
+          )
       v-card.mt-4.user-page__groups(:title="$t('common.groups')")
         v-card-text
           v-list

@@ -1,17 +1,17 @@
 class Api::V1::SearchController < Api::V1::RestfulController
+  SEARCHABLE_TYPES = %w[Discussion Comment Poll Stance Outcome].freeze
+
   def index
     guest_discussion_ids = Topic.where(id: current_user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id)
 
-    if group_or_org_id.to_i == 0
-      rel = PgSearch::Document.where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
-    end
-
-    if group_or_org_id.to_i > 0
-      rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
-    end
-
-    if group_or_org_id.blank?
+    if params[:author_id].present? && group_or_org_id.blank?
+      rel = PgSearch::Document.all
+    elsif group_or_org_id.blank?
       rel = PgSearch::Document.where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
+    elsif group_or_org_id.to_i == 0
+      rel = PgSearch::Document.where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
+    else
+      rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
     end
 
     if params[:tag]
@@ -19,9 +19,13 @@ class Api::V1::SearchController < Api::V1::RestfulController
       rel = rel.where(topic_id: tag_topic_ids)
     end
 
-    if %w[Discussion Comment Poll Stance Outcome].include?(params[:type])
+    if SEARCHABLE_TYPES.include?(params[:type])
       rel = rel.where(searchable_type: params[:type])
+    elsif params[:types].present?
+      rel = rel.where(searchable_type: params[:types].split(',') & SEARCHABLE_TYPES)
     end
+
+    rel = rel.where(author_id: params[:author_id].to_i) if params[:author_id].present?
 
     candidate_rel = rel
 
@@ -52,12 +56,16 @@ class Api::V1::SearchController < Api::V1::RestfulController
       search_documents[:discussion_id].eq(nil).or(kept_discussion.arel.exists)
     )
 
-    results = SearchQuery.new(
-      relation: rel,
-      candidate_relation: candidate_rel,
-      query: params[:query],
-      order: params[:order]
-    ).results
+    results = if params[:query].blank? && params[:author_id].present?
+      rel.order(authored_at: :desc, id: :desc).limit(SearchQuery::RESULT_LIMIT)
+    else
+      SearchQuery.new(
+        relation: rel,
+        candidate_relation: candidate_rel,
+        query: params[:query],
+        order: params[:order]
+      ).results
+    end
     # results = results.order().offset().limit()
 
     groups = access_by_id(Group.where(id: results.map(&:group_id)))
@@ -80,6 +88,10 @@ class Api::V1::SearchController < Api::V1::RestfulController
       discussion = discussions[res.discussion_id]
       group = groups[res.group_id]
       author = authors[res.author_id]
+      title = case res.searchable_type
+      when 'Discussion' then discussion&.title
+      when 'Poll' then poll&.title
+      end
       sequence_id = if discussion
         ((res.searchable_type == "Stance" && stance_topic_items[res.searchable_id]) || poll_topic_items[res.poll_id] || nil)&.sequence_id
       end
@@ -90,7 +102,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
         poll_title: poll&.title,
         discussion_title: discussion&.title,
         discussion_key: discussion&.key,
-        highlight: res.pg_search_highlight,
+        highlight: result_highlight(res, title: title, author_name: author&.name),
         poll_id: res.poll_id,
         poll_key: poll&.key,
         sequence_id: sequence_id,
@@ -110,6 +122,15 @@ class Api::V1::SearchController < Api::V1::RestfulController
 
 
   private
+  def result_highlight(result, title:, author_name:)
+    return result.pg_search_highlight if params[:query].present? || params[:author_id].blank?
+
+    content = result.content.to_s
+    content = content.delete_prefix(title.to_s).strip if title.present?
+    content = content.delete_suffix(author_name.to_s).strip if author_name.present?
+    ERB::Util.html_escape(content.truncate(240))
+  end
+
   def access_by_id(collection, id_col = 'id')
     h = {}
     collection.each do |row|
