@@ -729,6 +729,7 @@ de:
     button_label: Benutzermenü
     edit_profile: Profil bearbeiten
     email_settings: Benachrichtigungseinstellungen
+    mobile_app_settings: Mobile settings
     help: Hilfe
     contact_site_name: "%{site_name} kontaktieren"
     contact_support: Support kontaktieren

@@ -723,6 +723,7 @@ pl:
     button_label: Menu użytkownika
     edit_profile: Edytuj profil
     email_settings: Ustawienia powiadomień
+    mobile_app_settings: Mobile settings
     help: Pomoc
     contact_site_name: Kontakt z %{site_name}
     contact_support: Skontaktuj się z pomocą techniczną

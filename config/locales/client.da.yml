@@ -721,6 +721,7 @@ da:
     button_label: Brugermenu
     edit_profile: Rediger profil
     email_settings: Notifikationsindstillinger
+    mobile_app_settings: Mobile settings
     help: Hjælp
     contact_site_name: Kontakt %{site_name}
     contact_support: Kontakt support

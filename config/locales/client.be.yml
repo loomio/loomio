@@ -729,6 +729,7 @@ be:
     button_label: Меню карыстальніка
     edit_profile: Рэдагаваць профіль
     email_settings: Налады апавяшчэнняў
+    mobile_app_settings: Mobile settings
     help: Даведка
     whats_new: Што новага
     contact_site_name: Звязацца з %{site_name}

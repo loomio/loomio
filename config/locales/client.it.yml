@@ -731,6 +731,7 @@ it:
     button_label: Menu utente
     edit_profile: Modifica profilo
     email_settings: Impostazioni notifiche
+    mobile_app_settings: Mobile settings
     help: Aiuto
     contact_site_name: Contatto %{site_name}
     contact_support: Contatta l'assistenza

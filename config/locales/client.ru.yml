@@ -721,6 +721,7 @@ ru:
     button_label: Меню пользователя
     edit_profile: Редактировать профиль
     email_settings: Настройки уведомлений
+    mobile_app_settings: Mobile settings
     help: Помощь
     contact_site_name: Свяжитесь с %{site_name}
     contact_support: Контактная поддержка

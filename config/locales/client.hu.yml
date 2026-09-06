@@ -723,6 +723,7 @@ hu:
     button_label: Felhasználó menü
     edit_profile: Profil szerkesztése
     email_settings: Értesítési beállítások
+    mobile_app_settings: Mobile settings
     help: Súgó
     contact_site_name: 'Kapcsolatfelvétel vele: %{site_name}'
     contact_support: Lépjen kapcsolatba az ügyfélszolgálattal
