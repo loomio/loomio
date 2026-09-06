@@ -27,6 +27,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
           ocs: {
             data: {
               id: "nc_#{@hex}",
+              displayname: "Nextcloud User",
               email: "nc-#{@hex}@example.com"
             }
           }
@@ -61,6 +62,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
 
     user = User.find_by(email: "nc-#{@hex}@example.com")
     assert user
+    assert_equal "Nextcloud User", user.name
     assert user.email_verified?
 
     identity = Identity.find_by(identity_type: 'nextcloud', uid: "nc_#{@hex}")
