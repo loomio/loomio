@@ -29,9 +29,5 @@ class HourlyTaskJob < ApplicationJob
     end
 
     EnsureDemoQueueWorker.perform_later
-
-    if hour == 0 && now.day == 1
-      UpdateBlockedDomainsWorker.perform_later
-    end
   end
 end

@@ -118,10 +118,6 @@ namespace :loomio do
     puts Version.current
   end
 
-  task update_blocked_domains: :environment do
-    UpdateBlockedDomainsWorker.perform_later
-  end
-
   desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
   task repair_inline_image_attachments: :environment do
     if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
