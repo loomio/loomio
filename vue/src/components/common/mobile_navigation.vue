@@ -85,6 +85,7 @@ v-bottom-navigation.mobile-navigation.lmo-no-print(
   v-if="visible"
   :model-value="activeItem"
   grow
+  mode="shift"
   height="88"
   color="primary"
   bg-color="surface"
