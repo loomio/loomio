@@ -1,8 +1,9 @@
 class HourlyTaskJob < ApplicationJob
   def perform
-    hour = Time.now.hour
+    now = Time.current.utc
+    hour = now.hour
 
-    puts "#{DateTime.now.iso8601} Loomio hourly tasks"
+    puts "#{now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
     EventBus.broadcast('loomio_hourly_tick', hour)
     ExpireLapsedPollsWorker.perform_later
@@ -29,7 +30,7 @@ class HourlyTaskJob < ApplicationJob
 
     EnsureDemoQueueWorker.perform_later
 
-    if hour == 0 && Time.now.mday == 1
+    if hour == 0 && now.day == 1
       UpdateBlockedDomainsWorker.perform_later
     end
   end

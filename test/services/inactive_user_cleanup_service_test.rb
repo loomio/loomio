@@ -74,7 +74,7 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     users = MEMBERSHIP_MATRIX_USERS.map { |name| users(name) }
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
-    users_before = users.to_h { |user| [ user.id, user.attributes ] }
+    users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
     candidate_ids = InactiveUserCleanupService.orphan_user_ids
 
     users.each do |user|
@@ -98,7 +98,7 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     users = DIRECT_TOPIC_MATRIX_USERS.map { |name| users(name) }
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
-    users_before = users.to_h { |user| [ user.id, user.attributes ] }
+    users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
     candidate_ids = InactiveUserCleanupService.orphan_user_ids
 
     users.each do |user|
