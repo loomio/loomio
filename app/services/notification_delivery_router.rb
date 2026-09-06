@@ -93,10 +93,17 @@ class NotificationDeliveryRouter
   def translation_values
     actor = notification.actor
     {
-      name: actor.name,
+      name: actor_name,
       title: TranslationService.plain_text(subject_model.title_model, :title, actor),
       poll_type: (I18n.t("poll_types.#{subject_model.poll_type}") if subject_model.respond_to?(:poll_type))
     }
+  end
+
+  # Legacy and externally provisioned accounts can lack both a name and a
+  # username. Keep notification creation available without exposing the
+  # actor's email address; identity synchronization can repair the profile.
+  def actor_name
+    notification.actor&.name_or_username.presence || I18n.t(:"common.anonymous")
   end
 
   # Render the same translation selected by notification consumers so missing

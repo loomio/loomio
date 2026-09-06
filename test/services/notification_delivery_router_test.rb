@@ -136,6 +136,25 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
+  test "notification translations use a privacy-safe fallback for nameless actors" do
+    @author.update_columns(name: nil, username: nil)
+    reaction = Reaction.create!(
+      reactable: discussions(:discussion),
+      user: @author,
+      reaction: "smiley"
+    )
+
+    {
+      "user_mentioned" => discussions(:discussion),
+      "reaction_created" => reaction
+    }.each do |kind, subject|
+      notification = Notification.new(kind: kind, subject: subject, actor: @author)
+      values = NotificationDeliveryRouter.for(notification).translated_values(locale: :en)
+
+      assert_equal I18n.t(:"common.anonymous", locale: :en), values[:name], kind
+    end
+  end
+
 
   test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)
