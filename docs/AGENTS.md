@@ -17,9 +17,7 @@ Bulk Redirect CSV files for moving `help.loomio.com` to the canonical site.
 - Redirect source keys in `docs/redirects.yml` are relative to the generated
   `/en/` directory and must not start with `/en/`. Redirect targets should use
   the complete help-site path beginning with `/en/`.
-- When a public page path changes, retain its old URL in `docs/redirects.yml`.
-  The Cloudflare export includes both current and legacy help URLs; the `/docs`
-  build contains canonical pages and its landing redirect only.
+- When a public page path changes, retain its old URL in `docs/redirects.yml`. The Cloudflare export includes both current and legacy help URLs, and the `/docs` build includes static redirects for legacy paths.
 - Build and validate links, images, redirects, metadata, and the sitemap after
   changing manual pages, navigation, assets, or redirects:
 

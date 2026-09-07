@@ -40,6 +40,18 @@ class DocsBuildTest < Minitest::Test
     assert_equal "This is a quotation.", fragment.at_css("blockquote").text.strip
   end
 
+  def test_legacy_index_redirects_cover_clean_and_index_urls
+    paths = Docs::Builder.new.send(
+      :redirect_output_paths,
+      "/user_manual/polls/starting_proposals/index.html"
+    )
+
+    assert_equal [
+      Docs::OUTPUT_ROOT.join("en/user_manual/polls/starting_proposals/index.html"),
+      Docs::OUTPUT_ROOT.join("en/user_manual/polls/starting_proposals.html")
+    ], paths
+  end
+
   private
 
   def render_markdown(markdown)

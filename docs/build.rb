@@ -179,8 +179,8 @@ module Docs
       copy_page_assets(pages)
       copy_static_assets
       write_site_assets
+      write_redirects(pages_by_url)
       if legacy_redirects?
-        write_redirects(pages_by_url)
         write_page_aliases(pages)
       end
       write_landing_redirect
@@ -621,10 +621,20 @@ module Docs
     def write_redirects(pages_by_url)
       redirects = YAML.safe_load_file(SOURCE_ROOT.join("redirects.yml"))
       redirects.each do |from, target|
-        source_path = OUTPUT_ROOT.join("en", from.delete_prefix("/"))
         target_url = pages_by_url[target]&.url || (target.start_with?("/en/") ? Docs.site_path(target) : target)
-        write_redirect(source_path, target_url)
+        redirect_output_paths(from).each { |source_path| write_redirect(source_path, target_url) }
       end
+    end
+
+    # The web server resolves extensionless URLs to sibling .html files, while
+    # trailing-slash and explicit index URLs need a directory index. Emit both
+    # layouts for legacy index pages so every historical URL form redirects.
+    def redirect_output_paths(from)
+      source_path = OUTPUT_ROOT.join("en", from.delete_prefix("/"))
+      return [source_path, Pathname("#{source_path.dirname}.html")] if from.end_with?("/index.html")
+      return [source_path] if from.end_with?(".html")
+
+      [Pathname("#{source_path}.html"), source_path.join("index.html")]
     end
 
     def write_page_aliases(pages)
