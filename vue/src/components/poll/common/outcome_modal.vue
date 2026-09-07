@@ -144,7 +144,7 @@ v-card.poll-common-outcome-modal(
         hide-header
       )
 
-    lmo-textarea.poll-common-outcome-form__statement.mt-4(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+    lmo-textarea.poll-common-outcome-form__statement(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
           span(v-t="'poll_common.post_outcome'")

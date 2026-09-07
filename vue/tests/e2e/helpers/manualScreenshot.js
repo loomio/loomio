@@ -9,13 +9,13 @@ const spotlightScript = path.join(repoDir, 'bin/spotlight-screenshot');
 const cropScript = path.join(repoDir, 'bin/crop-screenshot');
 const namePattern = /^[A-Za-z0-9][A-Za-z0-9/_-]*$/;
 
-module.exports = function(test) {
+module.exports = function(test, {outputDir} = {}) {
   function imagePath(name) {
     if (!namePattern.test(name)) {
       throw new Error(`Invalid manual screenshot name: ${name}`);
     }
 
-    const imageRoot = name.startsWith('guides/') ? docsDir : manualDir;
+    const imageRoot = outputDir || (name.startsWith('guides/') ? docsDir : manualDir);
     const imagePath = path.join(imageRoot, `${name}.png`);
     fs.mkdirSync(path.dirname(imagePath), {recursive: true});
     return imagePath;

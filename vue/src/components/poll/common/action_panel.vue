@@ -192,7 +192,7 @@ export default
     span(v-t="'poll_common_action_panel.anonymous_vote_recorded'")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    v-alert.poll-common-current-vote.mb-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
+    v-alert.poll-common-current-vote.my-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
       .mt-2
         poll-common-stance-choice(
           v-if="poll.singleChoice()"

@@ -1157,6 +1157,67 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to poll_path(poll)
   end
 
+  # A single fictional story shared by the marketing tour's six captures.
+  def setup_website_tour
+    group, coordinator, discussion = create_manual_oatmilk_cooperative
+    group.update!(handle: nil)
+    group.add_admin!(User.find_by!(email: 'samira@oatmilk.example'))
+    names = ['Robin Ellis', 'Morgan Lee', 'Jess Rivera', 'Taylor Brooks', 'Casey Wilson', 'Drew Campbell', 'Avery Singh', 'Riley Moore', 'Chris Adams']
+    names.each_with_index do |name, index|
+      group.add_member!(create_manual_oatmilk_member(name: name, email: "tour#{index}@oatmilk.example"))
+    end
+    discussion.update!(
+      title: 'Should we trial returnable bottles?',
+      description: '<p>Three local cafes have asked for our oat milk in returnable glass bottles. Could we try it for six weeks?</p><p>Let’s work out collection days, washing capacity, and the deposit before we vote.</p>',
+      description_format: 'html'
+    )
+    CommentService.create(
+      comment: Comment.new(parent: discussion, body: 'Tuesday collections fit our delivery route. Each cafe will need two crates for empty bottles.'),
+      actor: User.find_by!(email: 'samira@oatmilk.example')
+    )
+    poll = discussion.polls.first!
+    if params[:stage] == 'discuss'
+      conversation = DiscussionService.create(params: {group_id: group.id, title: discussion.title, description: discussion.description, description_format: 'html', private: false}, actor: discussion.author)
+      discussion.comments.order(:id).each do |comment|
+        CommentService.create(comment: Comment.new(parent: conversation, body: comment.body), actor: comment.author)
+      end
+      sign_in coordinator
+      return redirect_to discussion_path(conversation)
+    end
+    poll.update!(
+      title: 'Approve a six-week returnable bottle trial',
+      details: '<p>Supply three cafes with returnable bottles for six weeks. Collect empties every Tuesday and track return rates, washing time, and costs.</p><p>Review the results together before deciding whether to continue.</p>',
+      details_format: 'html'
+    )
+    voters = [coordinator] + group.members.where.not(id: coordinator.id).order(:id).to_a
+    PollService.invite(poll: poll, params: {recipient_user_ids: voters.map(&:id)}, actor: coordinator)
+    if params[:stage].in?(%w[vote outcome])
+      voters.each_with_index do |voter, index|
+        option = poll.poll_options.order(:priority)[index == 10 ? 1 : (index == 11 ? 2 : 0)].name
+        reason = case index
+                 when 0 then 'A small trial makes sense. I can coordinate the Tuesday collections.'
+                 when 10 then 'I’ll leave this to the people running the trial.'
+                 when 11 then 'I’m concerned about washing capacity during our busiest weeks.'
+                 else ['The cafes are keen to try this.', 'Six weeks will give us useful return-rate data.', 'Happy to help with the washing and bottle checks.'][index % 3]
+                 end
+        stance = StanceService.update(stance: poll.stances.latest.find_by!(participant: voter), actor: voter,
+                             params: {choice: {option => 1}, reason: reason})
+        raise stance.errors.full_messages.join(', ') if stance.errors.any?
+      end
+    end
+    if params[:stage] == 'outcome'
+      PollService.close(poll: poll, actor: coordinator)
+      OutcomeService.create(outcome: Outcome.new(poll: poll,
+        statement: 'We’ll run the six-week trial with three cafes. Jamie will coordinate Tuesday collections; Samira will check washing capacity each week. We’ll review return rates and costs together before continuing.'), actor: coordinator)
+    end
+    sign_in coordinator
+    redirect_to case params[:stage]
+                when 'group', 'invite' then group_path(group)
+                when 'discuss' then discussion_path(discussion)
+                else poll_path(poll)
+                end
+  end
+
   private
 
   def create_manual_oatmilk_discussion_template(group:, coordinator:)

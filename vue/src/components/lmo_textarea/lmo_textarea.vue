@@ -27,7 +27,7 @@ export default {
 
 <template lang="pug">
 div
-  .lmo-textarea
+  .lmo-textarea(:class="{ 'pt-4': label }")
     collab-editor(
       v-if="format == 'html'"
       :focus-id="focusId"
