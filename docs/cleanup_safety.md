@@ -6,6 +6,7 @@ Cleanup eligibility is not permission to delete a later version of a record. Lif
 
 - Inactive-account cleanup removes accounts after 60 days without activity, using the most recent account-creation, current-sign-in, previous-sign-in, or last-seen timestamp. It retains instance administrators and accounts with durable ownership, content, membership, access, identity, or notification references.
 - Seeded-content cleanup requires a known historical helper email and a matching legacy title, before the retirement cutoff. The API-account `bot` flag is not historical provenance. Member-authored matching titles are retained. Member activity, edits by unknown actors, and edits or replies to helper-authored comments preserve the affected content, including comments missing their timeline entries.
+- Trial cleanup starts 60 days after the subscription expiry date. It deletes an untouched trial tree immediately; any configured group or historical activity anywhere in the tree instead triggers an administrator warning, archival, and deletion after two weeks. Free, paid, and demo groups are excluded.
 - Orphan cleanup retains comments with a surviving parent, a surviving topic link, or dependent replies. It retains damaged timeline ancestors with children and groups with missing parents. These remain visible in integrity audits; cleanup does not silently reparent a private group or grant access to a different hierarchy.
 
 The guards are deliberately conservative. Audit counts for broken references include records retained for repair and are not predictions of how many rows will be deleted.
@@ -16,7 +17,7 @@ Cleanup tests reuse the access and volume fixtures for group topics and direct t
 
 ## Running maintenance
 
-Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Do not run multiple seeded-cleanup shards concurrently: the safety locks serialize their work, and a busy shard may skip candidates. Re-audit after a run; skipped candidates do not mean cleanup completed.
+Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Do not run multiple seeded-cleanup shards concurrently: the safety locks serialize their work, and a busy shard may skip candidates. Trial cleanup uses the same locking rule and runs automatically in daily batches of 100. Re-audit after a run; skipped candidates do not mean cleanup completed.
 
 Use an isolated database copy with application workers stopped for destructive validation. Confirm the actual database connection before running a deletion task. Compare the original and resulting record identities and content, not only counts. Do not use a previously cleaned snapshot as an untouched baseline.
 
@@ -26,4 +27,4 @@ New `DestroyGroupWorker` jobs carry the exact archive timestamp recorded when de
 
 Account-merge duplicate removal, reference migration, credential revocation, and search updates are transactional. Avatar purges, newsletter changes, and email are deferred until commit. Blocklist and email-routing replacements retain the previous table contents if replacement fails. Concurrent group exports use separate temporary paths.
 
-Demo expiry is unchanged while the replacement demo system is being developed. Deployment scripts are outside this change.
+YAML-backed demo groups retain their separate seven-day expiry. Deployment scripts are outside this change.

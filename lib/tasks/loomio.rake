@@ -363,6 +363,16 @@ namespace :loomio do
     )
   end
 
+  desc "Report trial groups expired beyond the retention period"
+  task audit_trial_groups: :environment do
+    TrialCleanupService.audit
+  end
+
+  desc "Clean up trial groups expired beyond the retention period. Supports LIMIT."
+  task cleanup_trial_groups: :environment do
+    TrialCleanupService.cleanup!(limit: ENV.fetch("LIMIT", TrialCleanupService::BATCH_SIZE).to_i)
+  end
+
   desc "Queue background jobs to resequence legacy topics where poll_created appears after later comments"
   task resequence_legacy_poll_created_topic_items: :environment do
     count = TopicService.enqueue_legacy_poll_created_resequence
