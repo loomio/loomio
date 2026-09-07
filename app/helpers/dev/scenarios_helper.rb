@@ -43,6 +43,19 @@ module Dev::ScenariosHelper
     }
   end
 
+  def poll_none_of_the_above_scenario(params)
+    scenario = poll_created_scenario(params.merge(poll_type: "poll"))
+    poll = scenario[:poll]
+    poll.update!(show_none_of_the_above: true)
+    stance = poll.stances.latest.find_by!(participant: scenario[:observer])
+    StanceService.update(
+      stance: stance,
+      actor: scenario[:observer],
+      params: { none_of_the_above: true, stance_choices_attributes: [] }
+    )
+    scenario
+  end
+
   def poll_closed_scenario(params)
     observer = fake_user.tap(&:save!)
     group = create_group_with_members

@@ -195,7 +195,7 @@ export default
     v-alert.poll-common-current-vote.my-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
       .mt-2
         poll-common-stance-choice(
-          v-if="poll.singleChoice()"
+          v-if="poll.singleChoice() && stance.stanceChoice()"
           :size="28"
           :poll="poll"
           :stance-choice="stance.stanceChoice()"

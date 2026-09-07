@@ -58,6 +58,13 @@ module.exports = {
     page.expectText('.poll-common-stance-created__reason', 'A reason')
   },
 
+  'shows_none_of_the_above_as_the_current_vote': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_none_of_the_above')
+    page.expectText('.poll-common-current-vote', 'None of the above')
+  },
+
   'can_start_a_dot_vote_in_a_group': (test) => {
     page = pageHelper(test)
 
