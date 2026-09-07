@@ -249,7 +249,7 @@ class DemoGroupTemplateService
         polls.fetch(definition.fetch("poll"))
       end
       topic = subject.topic
-      TopicReader.for(user: user, topic: topic).set_volume!(email: :quiet, push: :normal)
+      TopicReader.find_or_create_for!(user: user, topic: topic).set_volume!(email: :quiet, push: :normal)
 
       notification = NotificationService.create!(
         kind: definition.fetch("kind"),

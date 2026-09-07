@@ -165,7 +165,7 @@ class TopicService
       )
 
     direct_participant_ids.each do |user_id|
-      reader = TopicReader.for(user: User.find(user_id), topic:)
+      reader = TopicReader.find_or_create_for!(user: User.find(user_id), topic:)
       reader.assign_attributes(
         admin: direct_admin_ids.include?(user_id),
         guest: true,
@@ -191,18 +191,16 @@ class TopicService
 
   def self.update_reader(topic:, params:, actor:)
     actor.ability.authorize! :show, topic
-    reader = TopicReader.for(topic: topic, user: actor)
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
     reader.set_volume!(email: params[:volume_email], push: params[:volume_push])
   end
 
   def self.mark_as_seen(topic:, actor:)
     actor.ability.authorize! :mark_as_seen, topic
-    RetryOnError.with_limit(2) do
-      reader = TopicReader.for(topic: topic, user: actor)
-      reader.viewed!([[0, 0]])
-      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
-    end
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
+    reader.viewed!([[0, 0]])
+    MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
@@ -215,26 +213,24 @@ class TopicService
 
   def self.mark_as_read(topic:, params:, actor:)
     actor.ability.authorize! :mark_as_read, topic
-    RetryOnError.with_limit(2) do
-      sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
-      NotificationService.viewed_topic_items(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
-      reader = TopicReader.for(topic: topic, user: actor)
-      reader.viewed!(params[:ranges])
-      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
-    end
+    sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
+    NotificationService.viewed_topic_items(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
+    reader.viewed!(params[:ranges])
+    MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
 
   def self.dismiss(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
-    reader = TopicReader.for(user: actor, topic: topic)
+    reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
   def self.recall(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
-    reader = TopicReader.for(user: actor, topic: topic)
+    reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.recall!
     EventBus.broadcast('discussion_recall', reader, actor)
   end
@@ -273,10 +269,8 @@ class TopicService
 
     TopicQuery.relevant_to(user: user, only_unread: true, or_subgroups: false)
       .where("topics.last_activity_at > ?", time_start).each do |topic|
-      RetryOnError.with_limit(2) do
-        sequence_ids = topic.items.where("topic_items.created_at": time_range).pluck(:sequence_id)
-        TopicReader.for(user: user, topic: topic).viewed!(sequence_ids)
-      end
+      sequence_ids = topic.items.where("topic_items.created_at": time_range).pluck(:sequence_id)
+      TopicReader.find_or_create_for!(user: user, topic: topic).viewed!(sequence_ids)
     end
   end
 

@@ -40,14 +40,30 @@ class TopicReader < ApplicationRecord
   def self.for(user:, topic:)
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
-        m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
-        tr.volume_email = m&.volume_email || user.volume_email_default
-        tr.volume_push = m&.volume_push || user.volume_push_default
+        set_delivery_defaults(tr, user, topic)
       end
     else
       new(topic: topic)
     end
   end
+
+  # Mutation paths need a persisted reader. find_or_create_by! delegates a
+  # contested insert to Rails' savepoint-safe unique-race handling, while `for`
+  # remains write-free for readers.
+  def self.find_or_create_for!(user:, topic:)
+    return new(topic: topic) unless user&.is_logged_in?
+
+    find_or_create_by!(user_id: user.id, topic_id: topic.id) do |tr|
+      set_delivery_defaults(tr, user, topic)
+    end
+  end
+
+  def self.set_delivery_defaults(reader, user, topic)
+    membership = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
+    reader.volume_email = membership&.volume_email || user.volume_email_default
+    reader.volume_push = membership&.volume_push || user.volume_push_default
+  end
+  private_class_method :set_delivery_defaults
 
 
   def viewed!(ranges = [], persist: true)
