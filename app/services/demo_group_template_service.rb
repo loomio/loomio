@@ -18,6 +18,19 @@ class DemoGroupTemplateService
     new(template_key: template_key, user: user).create!
   end
 
+  def self.prepare!(template_key:)
+    new(template_key: template_key, user: nil).prepare!
+  end
+
+  def self.claim!(group:, user:)
+    template_key = group.info.fetch("demo_group_template")
+    new(template_key: template_key, user: user).claim!(group)
+  end
+
+  def self.route_notifications!(notifications)
+    notifications.each { |notification| NotificationDeliveryRouter.for(notification).route! }
+  end
+
   def initialize(template_key:, user:)
     @template_key = template_key.to_s
     @user = user
@@ -29,21 +42,69 @@ class DemoGroupTemplateService
   def create!
     raise ArgumentError, "user must be persisted" unless user&.persisted?
 
+    result = ApplicationRecord.transaction { create_records!(recipient: user) }
+    self.class.route_notifications!(result.notifications)
+    result
+  end
+
+  # Queue entries contain all expensive demo content but no recipient-specific
+  # membership, topic readers, or notifications. The template facilitator owns
+  # the group until it is atomically claimed by a user.
+  def prepare!
+    ApplicationRecord.transaction { create_records!(recipient: nil) }
+  end
+
+  # Claim all recipient-specific database state together. Notification delivery
+  # is routed by the caller after this transaction commits.
+  def claim!(group)
+    raise ArgumentError, "user must be persisted" unless user&.persisted?
+
+    ApplicationRecord.transaction do
+      group.lock!
+      raise ArgumentError, "demo group is not queued" unless group.info["demo_group_queued"]
+
+      references = group.info.fetch("demo_group_references")
+      people = load_references!(User, references.fetch("people"))
+      discussions = load_references!(group.discussions, references.fetch("discussions"))
+      polls = load_references!(group.polls, references.fetch("polls"))
+
+      group.update!(
+        creator: user,
+        info: group.info.merge(
+          "demo_group_queued" => false,
+          "demo_group_recipient_id" => user.id
+        )
+      )
+      group.subscription.update!(owner: user)
+      group.add_admin!(user)
+      PollService.group_members_added(group.id)
+      notifications = create_notifications!(load_template.fetch("notifications"), people, discussions, polls)
+
+      Result.new(group: group, discussions: discussions, polls: polls, notifications: notifications)
+    end
+  end
+
+  private
+
+  def create_records!(recipient:)
     template = load_template
     people = create_people!(template.fetch("people"))
     facilitator = people.fetch(template.fetch("facilitator"))
-    group = create_group!(template)
+    group = create_group!(template, actor: recipient || facilitator, queued: recipient.nil?)
     add_people!(group, people, template.fetch("people"), facilitator)
 
     discussions = create_discussions!(template.fetch("discussions"), group, people)
     create_comments!(template.fetch("comments", []), discussions, people)
     polls = create_polls!(template.fetch("polls"), group, people, discussions)
-    notifications = create_notifications!(template.fetch("notifications"), people, discussions, polls)
+    store_references!(group, people: people, discussions: discussions, polls: polls)
+    notifications = if recipient
+      create_notifications!(template.fetch("notifications"), people, discussions, polls)
+    else
+      []
+    end
 
     Result.new(group: group, discussions: discussions, polls: polls, notifications: notifications)
   end
-
-  private
 
   attr_reader :template_key, :user
 
@@ -76,9 +137,7 @@ class DemoGroupTemplateService
     return if person.uploaded_avatar.attached?
 
     path = template_asset_path(relative_path)
-    File.open(path) do |file|
-      person.uploaded_avatar.attach(io: file, filename: path.basename.to_s)
-    end
+    person.uploaded_avatar.attach(io: StringIO.new(path.binread), filename: path.basename.to_s)
     person.update!(avatar_kind: "uploaded")
   end
 
@@ -91,7 +150,7 @@ class DemoGroupTemplateService
     group.add_admin!(facilitator)
   end
 
-  def create_group!(template)
+  def create_group!(template, actor:, queued:)
     group = Group.new(
       name: template.fetch("name"),
       description: template.fetch("description"),
@@ -99,27 +158,40 @@ class DemoGroupTemplateService
       group_privacy: template.fetch("group_privacy"),
       membership_granted_upon: template.fetch("membership_granted_upon"),
       discussion_privacy_options: "private_only",
-      creator: user,
+      creator: actor,
       info: {
         "demo_group_template" => template_key,
-        "demo_group_recipient_id" => user.id
+        "demo_group_queued" => queued,
+        "demo_group_recipient_id" => user&.id
       }
     )
 
-    GroupService.create(group: group, actor: user, skip_authorize: true).tap do |created_group|
+    GroupService.create(group: group, actor: actor, skip_authorize: true).tap do |created_group|
       raise ActiveRecord::RecordInvalid, created_group unless created_group.persisted?
 
-      created_group.subscription.update!(plan: "demo", owner: user)
+      created_group.subscription.update!(plan: "demo", owner: actor)
       attach_group_asset!(created_group.cover_photo, template.fetch("cover_photo"))
       attach_group_asset!(created_group.logo, template.fetch("logo"))
     end
   end
 
+  def store_references!(group, people:, discussions:, polls:)
+    references = {
+      "people" => people.transform_values(&:id),
+      "discussions" => discussions.transform_values(&:id),
+      "polls" => polls.transform_values(&:id)
+    }
+    group.update!(info: group.info.merge("demo_group_references" => references))
+  end
+
+  def load_references!(relation, references)
+    records = relation.where(id: references.values).index_by(&:id)
+    references.to_h { |key, id| [ key, records.fetch(id) ] }
+  end
+
   def attach_group_asset!(attachment, relative_path)
     path = template_asset_path(relative_path)
-    File.open(path) do |file|
-      attachment.attach(io: file, filename: path.basename.to_s)
-    end
+    attachment.attach(io: StringIO.new(path.binread), filename: path.basename.to_s)
   end
 
   def template_asset_path(relative_path)
@@ -166,10 +238,8 @@ class DemoGroupTemplateService
   def attach_files!(discussion, relative_paths)
     relative_paths.each do |relative_path|
       path = template_asset_path(relative_path)
-      File.open(path) do |file|
-        blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: path.basename.to_s)
-        ActiveStorage::Attachment.create!(name: "files", record: discussion, blob: blob)
-      end
+      blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new(path.binread), filename: path.basename.to_s)
+      ActiveStorage::Attachment.create!(name: "files", record: discussion, blob: blob)
     end
     discussion.reload.save! if relative_paths.any?
   end
@@ -257,7 +327,6 @@ class DemoGroupTemplateService
         actor: people.fetch(definition.fetch("actor")),
         recipient_user_ids: [ user.id ]
       )
-      NotificationDeliveryRouter.for(notification).route!
       notification
     end
   end

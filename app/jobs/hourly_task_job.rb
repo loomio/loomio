@@ -17,6 +17,7 @@ class HourlyTaskJob < ApplicationJob
     GeoLocationWorker.perform_later
 
     SendDigestEmailWorker.perform_later
+    EnsureDemoQueueWorker.perform_later
 
     if hour == 0
       ThrottleService.reset!('day')

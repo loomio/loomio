@@ -93,6 +93,8 @@ ACTIVE_STORAGE_SERVICE=local
 
 # Let signed-in users create a ready-to-use demonstration group
 FEATURES_DEMO_GROUPS=1
+# Number of prepared demo groups to keep in Redis (default: 3)
+# FEATURES_DEMO_GROUPS_SIZE=3
 
 # configure amazon S3
 # AWS_ACCESS_KEY_ID=

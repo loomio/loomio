@@ -22,13 +22,23 @@ class Api::V1::DemosControllerTest < ActionController::TestCase
     assert_response :too_many_requests
   end
 
+  test "clone requires a signed-in user" do
+    DemoService.stub(:take_demo, ->(*) { flunk("signed-out requests must not claim a demo") }) do
+      post :clone
+    end
+
+    assert_response :unauthorized
+  end
+
   test "clone provisions and returns a demo group" do
     user = users(:user)
     group = groups(:group)
     sign_in user
 
-    DemoService.stub(:take_demo, ->(actor) { assert_equal user, actor; group }) do
-      post :clone
+    assert_enqueued_with(job: RefillDemoQueueWorker) do
+      DemoService.stub(:take_demo, ->(actor) { assert_equal user, actor; group }) do
+        post :clone
+      end
     end
 
     assert_response :success
