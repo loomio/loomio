@@ -30,6 +30,8 @@ module.exports = {
     page.goTo('u/jennifergrey')
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
+    page.expectText('.user-page__activity', 'What star sign are you?')
+    page.expectNoText('.user-page__activity', 'Jennifer Grey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')
   },
 

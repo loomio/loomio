@@ -1,5 +1,11 @@
 # Corrected translations
 
+## 2026-09-05 — Profile recent activity
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.tr.yml` | `user_page.no_recent_activity` | `Son zamanlarda herhangi bir aktivite yok.` | `Son zamanlarda herhangi bir aktivite yok` | Single-sentence UI labels omit the final full stop |
+
 A log of hand-corrections to non-English locale files where
 `bin/rake loomio:translate_strings` (Google Translate) produced a wrong
 sense, not just a typo — Google has very little UI context, so short

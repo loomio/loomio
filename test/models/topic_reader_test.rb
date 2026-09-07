@@ -63,6 +63,18 @@ class TopicReaderTest < ActiveSupport::TestCase
   end
 
   # Computed volume
+  test "unsaved direct-topic readers use independent account defaults without a group membership" do
+    user = users(:reader_quiet)
+    topic = topics(:direct_topic)
+    reader = TopicReader.for(user: user, topic: topic)
+
+    assert_not reader.persisted?
+    assert_equal "loud", reader.computed_volume_email
+    assert_equal "quiet", reader.computed_volume_push
+    assert_not user.can?(:show, topic.topicable), "computing preferences must not grant topic access"
+    assert_not TopicReader.exists?(user: user, topic: topic)
+  end
+
   test "can change its volume" do
     @reader.set_volume!(email: :loud, push: :normal)
     assert_equal :loud, @reader.reload.volume_email.to_sym

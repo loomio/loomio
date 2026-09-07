@@ -1,0 +1,9 @@
+cleanup_group_blob:
+  key: cleanup_group_blob_key
+  filename: cleanup.txt
+  content_type: text/plain
+  metadata: "{}"
+  service_name: test
+  byte_size: 0
+  checksum: d41d8cd98f00b204e9800998ecf8427e
+  created_at: <%= 2.years.ago %>

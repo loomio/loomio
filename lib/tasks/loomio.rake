@@ -118,10 +118,6 @@ namespace :loomio do
     puts Version.current
   end
 
-  task update_blocked_domains: :environment do
-    UpdateBlockedDomainsWorker.perform_later
-  end
-
   desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
   task repair_inline_image_attachments: :environment do
     if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
@@ -349,6 +345,22 @@ namespace :loomio do
   task rebuild_search_index: :environment do
     GenericWorker.perform_later('SearchService', 'reindex_everything')
     puts "SearchService.reindex_everything queued as background job"
+  end
+
+  desc "Report untouched legacy seeded discussions and polls eligible for deletion"
+  task audit_unused_seeded_content: :environment do
+    SeededContentCleanupService.audit
+  end
+
+  desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
+  task delete_unused_seeded_content: :environment do
+    limit = ENV["LIMIT"].presence&.to_i
+    SeededContentCleanupService.delete!(
+      limit: limit,
+      content_type: ENV["SEEDED_CONTENT_TYPE"].presence,
+      shard_count: ENV.fetch("SHARD_COUNT", 1).to_i,
+      shard_index: ENV.fetch("SHARD_INDEX", 0).to_i
+    )
   end
 
   desc "Queue background jobs to resequence legacy topics where poll_created appears after later comments"

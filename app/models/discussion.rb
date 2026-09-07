@@ -108,11 +108,12 @@ class Discussion < ApplicationRecord
   after_commit :update_group_counter_caches
 
   def update_group_counter_caches
-    #TODO can this be a background job or materialized view
-    return unless (g = topic.group) && g.id
-    return if g.destroyed? # group teardown cascaded to this discussion — nothing to recount
-    g.update_discussions_count
-    g.update_closed_polls_count
+    # TODO: can this be a background job or materialized view?
+    group = topic.group
+    return unless group.id
+    return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount
+    group.update_discussions_count
+    group.update_closed_polls_count
   end
 
   def author

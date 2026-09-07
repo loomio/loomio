@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test "simultaneous same-name exports never share a temporary file" do
+    freeze_time do
+      filenames = 2.times.map { GroupExportService.export_filename_for("Same group") }
+      assert_equal 2, filenames.uniq.length
+    end
+  end
   test "notification recipient audiences remap embedded group ids" do
     migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
 

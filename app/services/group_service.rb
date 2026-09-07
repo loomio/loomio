@@ -153,21 +153,34 @@ module GroupService
   def self.destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
 
-    group.admins.each do |admin|
-      GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
+    archive_and_schedule_destruction!(group, wait: 2.weeks) do
+      group.admins.each do |admin|
+        GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
+      end
+      Sentry.metrics.count("group.destroy")
+      EventBus.broadcast('group_destroy', group, actor)
     end
-
-    group.archive!
-
-    Sentry.metrics.count("group.destroy")
-    DestroyGroupWorker.set(wait: 2.weeks).perform_later(group.id)
-    EventBus.broadcast('group_destroy', group, actor)
   end
 
   def self.destroy_without_warning!(group_id)
-    Group.find(group_id).archive!
-    DestroyGroupWorker.perform_later(group_id)
+    archive_and_schedule_destruction!(Group.find(group_id))
   end
+
+  # Capture the specific archive operation under the same lock as archival.
+  # Queue and announce only after commit so jobs cannot consume stale state.
+  def self.archive_and_schedule_destruction!(group, wait: nil)
+    Group.transaction(requires_new: true) do |transaction|
+      group.lock!
+      group.archive!
+      archived_at = group.archived_at.iso8601(6)
+      transaction.after_commit do
+        DestroyGroupWorker.set(wait: wait).perform_later(group.id, archived_at)
+        yield if block_given?
+      end
+    end
+  end
+
+  private_class_method :archive_and_schedule_destruction!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

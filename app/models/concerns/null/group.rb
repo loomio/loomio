@@ -15,6 +15,10 @@ module Null::Group
     false
   end
 
+  def membership_for(_user)
+    nil
+  end
+
   def full_name
     I18n.t('discussion.direct')
   end
@@ -38,8 +42,6 @@ module Null::Group
       update_discussions_count
       update_discussion_templates_count
       update_org_members_count
-      presence
-      present?
       content_locale
       handle
       description

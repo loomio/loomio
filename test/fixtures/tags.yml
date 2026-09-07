@@ -1,0 +1,6 @@
+cleanup_tag:
+  group: used_tag_group
+  name: cleanup
+  color: "#123456"
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>

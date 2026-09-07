@@ -239,7 +239,7 @@ module Dev::FakeDataHelper
   def create_fake_stances(poll:)
     (2..7).to_a.sample.times do
       u = fake_user
-      poll.group.add_member!(u) if poll.group
+      poll.group.add_member!(u) if poll.group.present?
       stance = fake_stance(poll: poll)
       stance.save!
       stance.create_missing_created_topic_item!

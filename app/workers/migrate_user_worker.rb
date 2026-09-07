@@ -4,12 +4,19 @@ class MigrateUserWorker < ApplicationJob
   def perform(source_id, destination_id)
     @source = User.find_by!(id: source_id)
     @destination = User.find_by!(id: destination_id)
-    delete_duplicates
-    operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
-    migrate_stances
-    update_counters
-    RedactUserWorker.perform_now(source_id, destination_id, false)
-    UserMailer.accounts_merged(destination.id).deliver_later
+    raise ArgumentError, "Cannot merge an account into itself" if source.id == destination.id
+
+    # Duplicate removal is part of the merge, not independent cleanup. Any
+    # failure must restore source access as well as all migrated references.
+    User.transaction(requires_new: true) do |transaction|
+      User.where(id: [ source_id, destination_id ]).order(:id).lock.load
+      delete_duplicates
+      operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
+      migrate_stances
+      update_counters
+      RedactUserWorker.perform_now(source_id, destination_id, false)
+      transaction.after_commit { UserMailer.accounts_merged(destination.id).deliver_later }
+    end
   end
 
   SCHEMA = {

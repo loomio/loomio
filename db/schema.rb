@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_02_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -174,11 +174,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_02_000001) do
     t.string "status"
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
-  end
-
-  create_table "blocked_domains", force: :cascade do |t|
-    t.string "name"
-    t.index ["name"], name: "index_blocked_domains_on_name", unique: true
   end
 
   create_table "bookmarks", force: :cascade do |t|

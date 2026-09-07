@@ -1,8 +1,8 @@
-# CleanupService repairs records which are already outside application
-# invariants. Its deletes must be callbackless and explicitly ordered: normal
-# callbacks can publish topic_items, enqueue work, update counters, or traverse a
-# broken association graph. Application services and model callbacks remain
-# responsible for normal record lifecycle behavior.
+# CleanupService removes records which are no longer needed. Integrity cleanup
+# repairs or deletes records outside application invariants, using callbackless
+# deletes in an explicit order so it can safely traverse broken association
+# graphs. Inactive orphan users are valid lifecycle records, so their removal
+# uses normal model destruction instead.
 #
 # The following audits are temporary and should be removed after the named
 # foreign keys have been deployed and validated:
@@ -29,6 +29,61 @@
 # subscriptions which are no longer used by a group.
 module CleanupService
   DELETE_BATCH_SIZE = 1_000
+  INACTIVE_ORPHAN_USER_RETENTION = 60.days
+
+  USER_REFERENCES = {
+    attachments: %i[user_id],
+    bookmarks: %i[user_id],
+    blazer_audits: %i[user_id],
+    blazer_checks: %i[creator_id],
+    blazer_dashboards: %i[creator_id],
+    blazer_queries: %i[creator_id],
+    chatbots: %i[author_id],
+    comments: %i[user_id discarded_by],
+    demos: %i[author_id],
+    discussion_templates: %i[author_id discarded_by],
+    discussions: %i[author_id discarded_by],
+    topic_items: %i[user_id],
+    groups: %i[creator_id],
+    member_email_aliases: %i[user_id author_id],
+    membership_requests: %i[requestor_id responder_id],
+    memberships: %i[user_id inviter_id revoker_id],
+    notifications: %i[actor_id],
+    outcomes: %i[author_id],
+    omniauth_identities: %i[user_id],
+    oauth_access_grants: %i[resource_owner_id],
+    oauth_access_tokens: %i[resource_owner_id],
+    poll_templates: %i[author_id],
+    polls: %i[author_id discarded_by],
+    reactions: %i[user_id],
+    stance_receipts: %i[voter_id inviter_id],
+    stances: %i[participant_id inviter_id revoker_id redactor_id],
+    subscriptions: %i[owner_id],
+    tasks: %i[author_id doer_id],
+    tasks_users: %i[user_id],
+    topic_readers: %i[user_id inviter_id revoker_id],
+    topics: %i[locker_id discarded_by],
+    user_deactivation_responses: %i[user_id],
+    users: %i[deactivator_id],
+    webhooks: %i[author_id actor_id]
+  }.freeze
+
+  # Legacy associations lack foreign keys, so row locks alone cannot exclude
+  # new references during destructive eligibility checks. Keep these sections
+  # short: skip locks held by existing writers, and release promptly so new
+  # writers can proceed. These locks are for maintenance, not request paths.
+  def self.with_write_lock(tables)
+    ActiveRecord::Base.transaction(requires_new: true) do
+      names = tables.map(&:to_s).uniq.sort.map { |table| ActiveRecord::Base.connection.quote_table_name(table) }
+      begin
+        ActiveRecord::Base.connection.execute("LOCK TABLE #{names.join(', ')} IN SHARE ROW EXCLUSIVE MODE NOWAIT")
+      rescue ActiveRecord::LockWaitTimeout => error
+        Rails.logger.info("Cleanup deferred: #{error.message}")
+        raise ActiveRecord::Rollback
+      end
+      yield
+    end
+  end
 
   POLYMORPHIC_REFERENCES = {
     "ActiveStorage::Attachment" => %i[record_type record_id],
@@ -111,6 +166,68 @@ module CleanupService
     delete_orphan_versions
   end
 
+  # Delete accounts outside the retention period only when they have no
+  # durable association with the application. Administrators are always kept;
+  # their removal requires an explicit administrative action.
+  def self.delete_inactive_orphan_users
+    user_ids = inactive_orphan_user_ids
+
+    if user_ids.empty?
+      puts "No inactive orphan users to delete"
+      return
+    end
+
+    count = 0
+    user_ids.each do |id|
+      with_write_lock(USER_REFERENCES.keys + %i[users sessions login_tokens push_subscriptions notification_deliveries notifications oauth_applications active_storage_attachments versions pg_search_documents]) do
+        user = inactive_orphan_users.where(id: id).first
+        next unless user
+
+        PaperTrail::Version.where(item_type: "User", item_id: user.id).delete_all
+        PgSearch::Document.where(author_id: user.id).delete_all
+        PaperTrail.request(enabled: false) { user.destroy! }
+        count += 1
+      end
+    end
+
+    puts "Deleted #{count} inactive orphan users" unless Rails.env.test?
+  end
+
+  def self.inactive_orphan_user_ids(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago)
+    inactive_orphan_users(inactive_before: inactive_before).pluck(:id)
+  end
+
+  def self.inactive_orphan_users(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago)
+    inactive_users = User.where(is_admin: false).where(
+      "GREATEST(created_at, current_sign_in_at, last_sign_in_at, last_seen_at) < :cutoff",
+      cutoff: inactive_before
+    )
+    scope = USER_REFERENCES.reduce(inactive_users) do |scope, (table, columns)|
+      columns.reduce(scope) do |column_scope, column|
+        column_scope.where("NOT EXISTS (SELECT 1 FROM #{table} cleanup_references WHERE cleanup_references.#{column} = users.id)")
+      end
+    end
+    scope.where(<<~SQL.squish)
+      NOT EXISTS (
+        SELECT 1 FROM notification_deliveries
+        WHERE notification_deliveries.recipient_type = 'User'
+          AND notification_deliveries.recipient_id = users.id
+      )
+      AND NOT EXISTS (
+        SELECT 1 FROM oauth_applications
+        WHERE owner_type = 'User' AND owner_id = users.id
+      )
+      AND NOT EXISTS (
+        SELECT 1 FROM active_storage_attachments
+        WHERE record_type = 'User' AND record_id = users.id
+      )
+      AND NOT EXISTS (
+        SELECT 1 FROM notifications
+        WHERE users.id = ANY(recipient_user_ids)
+      )
+    SQL
+  end
+
   def self.orphan_record_audit
     {
       dangling_records: dangling_record_scopes.transform_values { |scope| unique_count(scope) },
@@ -181,9 +298,8 @@ module CleanupService
     end
   end
 
-  # Delete comments which could not have appeared in a topic because either
-  # their polymorphic parent or their timeline topic_item is gone. Repeat because
-  # deleting one such comment can expose its replies as another orphan layer.
+  # Missing timeline entries and broken hierarchy links are repairable data,
+  # not proof that content is disposable. Keep them in the audit for repair.
   def self.cleanup_comment_references!
     Comment.transaction do
       delete_orphan_comments
@@ -193,18 +309,7 @@ module CleanupService
   end
 
   def self.delete_orphan_comments
-    count = 0
-
-    loop do
-      ids = (
-        comments_missing_parent.limit(1_000).pluck(:id) +
-        comments_missing_event.limit(1_000).pluck(:id)
-      ).uniq
-      break if ids.empty?
-
-      count += Comment.where(id: ids).delete_all
-    end
-
+    count = delete_records(comments_missing_parent)
     puts "deleted #{count} dangling Comment records" unless Rails.env.test?
     count
   end
@@ -398,6 +503,26 @@ module CleanupService
 
   def self.delete_records(scope)
     record_class = scope.klass
+    # A missing parent group says nothing about the value of its subtree.
+    return 0 if record_class == Group
+    if record_class == Comment
+      scope = scope.where(id: comments_missing_parent.select(:id)).where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1 FROM topic_items
+          JOIN topics ON topics.id = topic_items.topic_id
+          WHERE topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+        )
+        AND NOT EXISTS (
+          SELECT 1 FROM comments children
+          WHERE children.parent_type = 'Comment' AND children.parent_id = comments.id
+        )
+      SQL
+    end
+    if record_class == TopicItem
+      # Raw deletes bypass reparenting callbacks, and the self-FK cascades.
+      # Preserve damaged ancestors until their surviving children are repaired.
+      scope = scope.where("NOT EXISTS (SELECT 1 FROM topic_items children WHERE children.parent_id = topic_items.id)")
+    end
     primary_key = record_class.primary_key
     primary_key_column = record_class.arel_table[primary_key]
     count = 0
@@ -406,7 +531,16 @@ module CleanupService
       ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
       break if ids.empty?
 
-      count += record_class.where(primary_key => ids).delete_all
+      deleted = if record_class == Comment
+        with_write_lock(%i[comments topic_items topics discussions polls stances outcomes]) { scope.where(primary_key => ids).delete_all }
+      elsif record_class == TopicItem
+        with_write_lock(%i[topic_items]) { scope.where(primary_key => ids).delete_all }
+      else
+        scope.where(primary_key => ids).delete_all
+      end
+      break unless deleted&.positive?
+
+      count += deleted
     end
 
     count

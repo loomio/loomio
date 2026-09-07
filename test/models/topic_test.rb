@@ -1,6 +1,20 @@
 require "test_helper"
 
 class TopicTest < ActiveSupport::TestCase
+  test "tag refresh waits for a successful commit and is discarded on rollback" do
+    topic = topics(:discussion_topic)
+    assert_no_enqueued_jobs(only: UpdateGroupAndOrgTagsWorker) do
+      Topic.transaction(requires_new: true) do
+        topic.update!(tags: [ "Rolled back" ])
+        raise ActiveRecord::Rollback
+      end
+    end
+
+    assert_enqueued_with(job: UpdateGroupAndOrgTagsWorker, args: [ topic.group_id ]) do
+      topic.reload.update!(tags: [ "Committed" ])
+    end
+  end
+
   test "members match the fixture access matrix exactly" do
     matrix = {
       current_members: %i[
@@ -71,13 +85,13 @@ class TopicTest < ActiveSupport::TestCase
       email_enabled_members: normal + loud,
       email_normal_members: normal,
       email_loud_members: loud,
-      push_enabled_members: normal + loud,
-      push_loud_members: loud
+      push_enabled_members: normal + fixture_users(:member_loud, :guest_quiet, :reader_quiet, :member_guest_loud, :former_member_guest),
+      push_loud_members: fixture_users(:member_loud, :guest_quiet, :reader_quiet, :member_guest_loud, :former_member_guest)
     }
 
     assert_delivery_scope_matrix(topics(:discussion_topic), expectations)
     assert_empty topics(:discussion_topic).email_enabled_members.where(id: quiet)
-    assert_empty topics(:discussion_topic).push_enabled_members.where(id: quiet)
+    assert_empty topics(:discussion_topic).push_enabled_members.where(id: fixture_users(:member_quiet, :guest_loud, :reader_loud))
   end
 
   test "direct topic delivery scopes match the fixture access and volume matrix exactly" do
@@ -88,13 +102,13 @@ class TopicTest < ActiveSupport::TestCase
       email_enabled_members: normal + loud,
       email_normal_members: normal,
       email_loud_members: loud,
-      push_enabled_members: normal + loud,
-      push_loud_members: loud
+      push_enabled_members: normal + fixture_users(:guest_quiet),
+      push_loud_members: fixture_users(:guest_quiet)
     }
 
     assert_delivery_scope_matrix(topics(:direct_topic), expectations)
     assert_empty topics(:direct_topic).email_enabled_members.where(id: quiet)
-    assert_empty topics(:direct_topic).push_enabled_members.where(id: quiet)
+    assert_empty topics(:direct_topic).push_enabled_members.where(id: loud)
   end
 
   private

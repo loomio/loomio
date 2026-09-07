@@ -57,7 +57,7 @@ class PollExporter
       undecided_voters_count: @poll.undecided_voters_count,
       voters_count: @poll.voters_count,
       details: @poll.details,
-      group_name: @poll.group&.full_name,
+      group_name: @poll.group.full_name,
       discussion_title: @poll.topic.topicable.title,
       outcome_author_id: outcome&.author_id,
       outcome_author_name: outcome&.author&.name,

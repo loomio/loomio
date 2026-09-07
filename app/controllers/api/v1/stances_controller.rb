@@ -149,9 +149,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
   private
 
   def add_voter_role_meta(user_ids)
-    self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
-    self.add_meta :group_admin_ids, @poll.group&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
-    self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+    self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids
+    self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
+    self.add_meta :topic_admin_ids, @poll.topic.topic_readers.admins.pluck(:user_id) & user_ids
   end
 
   def live_update_outdated_stances(poll)

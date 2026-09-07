@@ -209,6 +209,81 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_equal 0, results.length
   end
 
+  test "returns recent visible activity by author without a search query" do
+    @poll.update!(details: 'Poll activity details')
+    @poll.update_pg_search_document
+    sign_in @user
+
+    get :index, params: {
+      author_id: @user.id,
+      types: "Discussion,Comment,Poll",
+      order: "authored_at_desc"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Comment' && result['searchable_id'] == @comment.id }
+    assert results.any? { |result| result['searchable_type'] == 'Poll' && result['searchable_id'] == @poll.id }
+    assert results.all? { |result| result['author_id'] == @user.id }
+    assert results.all? { |result| %w[Discussion Comment Poll].include?(result['searchable_type']) }
+    assert_equal results.map { |result| result['authored_at'] }.sort.reverse,
+                 results.map { |result| result['authored_at'] }
+    assert_equal 'findme in comment', results.find { |result| result['searchable_type'] == 'Comment' }['highlight']
+    assert_equal 'Poll activity details', results.find { |result| result['searchable_type'] == 'Poll' }['highlight']
+  end
+
+  test "filters author activity through the current user's visible topics" do
+    author = users(:alien)
+    @group.add_member!(author)
+    visible_discussion = DiscussionService.create(
+      params: { group_id: @group.id, title: 'Visible author activity', private: true },
+      actor: author
+    )
+    visible_discussion.update_pg_search_document
+
+    inaccessible_discussion = discussions(:alien_discussion)
+    inaccessible_discussion.update_pg_search_document
+    inaccessible_comment = Comment.new(parent: inaccessible_discussion, body: 'Inaccessible author comment')
+    CommentService.create(comment: inaccessible_comment, actor: author)
+    inaccessible_poll = PollService.create(params: {
+      title: 'Inaccessible author poll',
+      poll_type: 'proposal',
+      group_id: groups(:alien_group).id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: author)
+    inaccessible_poll.update_pg_search_document
+
+    sign_in @user
+    get :index, params: {
+      author_id: author.id,
+      types: "Discussion,Comment,Poll"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == visible_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == inaccessible_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Comment' && result['searchable_id'] == inaccessible_comment.id }
+    refute results.any? { |result| result['searchable_type'] == 'Poll' && result['searchable_id'] == inaccessible_poll.id }
+  end
+
+  test "only returns public author activity to signed-out users" do
+    author = users(:admin)
+    public_discussion = discussions(:public_discussion)
+    public_discussion.update_pg_search_document
+    @discussion.update_pg_search_document
+
+    sign_out
+    get :index, params: {
+      author_id: author.id,
+      types: "Discussion,Comment,Poll"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == public_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == @discussion.id }
+  end
+
   test "returns search results in json format" do
     sign_in @user
 

@@ -149,8 +149,7 @@ class TopicReader < ApplicationRecord
   private
 
   def membership
-    group = topic&.topicable&.respond_to?(:group) ? topic.topicable.group : nil
-    @membership ||= group&.membership_for(user)
+    @membership ||= topic.group.membership_for(user)
   end
 
   def update_topic_counters

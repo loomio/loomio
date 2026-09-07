@@ -25,7 +25,7 @@ class ThreadMarkdownService
     record = topic.topicable
     lines = [
       "- **Thread type:** #{record.model_name.human}",
-      topic.group&.name.present? && "- **Group:** #{inline(topic.group.name)}",
+      topic.group.name.present? && "- **Group:** #{inline(topic.group.name)}",
       "- **Started by:** #{author_name(record)}",
       "- **Created:** #{timestamp(record.created_at)}",
       topic.last_activity_at.present? && "- **Last activity:** #{timestamp(topic.last_activity_at)}",

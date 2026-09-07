@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class ReceivedEmailServiceTest < ActiveSupport::TestCase
+  test "failed routing-rule refresh preserves the previous rules" do
+    rule = ForwardEmailRule.create!(handle: "keep", email: "keep@example.com")
+    ForwardEmailRule.stub(:insert_all!, ->(*) { raise "insert failed" }) do
+      assert_raises(RuntimeError) { ReceivedEmailService.refresh_forward_email_rules }
+    end
+    assert ForwardEmailRule.exists?(rule.id)
+  end
 
   test "unknown sender assignment rolls back when notification creation fails" do
     group = Group.create!(name: "Atomic unknown sender #{SecureRandom.hex(4)}")

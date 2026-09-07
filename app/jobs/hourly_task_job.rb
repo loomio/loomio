@@ -1,8 +1,9 @@
 class HourlyTaskJob < ApplicationJob
   def perform
-    hour = Time.now.hour
+    now = Time.current.utc
+    hour = now.hour
 
-    puts "#{DateTime.now.iso8601} Loomio hourly tasks"
+    puts "#{now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
     EventBus.broadcast('loomio_hourly_tick', hour)
     ExpireLapsedPollsWorker.perform_later
@@ -21,14 +22,9 @@ class HourlyTaskJob < ApplicationJob
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
       CleanupOrphanRecordsWorker.perform_later
-      # GenericWorker.perform_later('InactiveUserCleanupService', 'destroy_orphan_users')
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
       DeleteOldReceivedEmailsWorker.perform_later
-    end
-
-    if hour == 0 && Time.now.mday == 1
-      UpdateBlockedDomainsWorker.perform_later
     end
   end
 end

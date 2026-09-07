@@ -10,8 +10,10 @@ class ReceivedEmailService
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
     end
 
-    ForwardEmailRule.delete_all
-    ForwardEmailRule.insert_all(forward_email_rules, record_timestamps: false)
+    ForwardEmailRule.transaction(requires_new: true) do
+      ForwardEmailRule.delete_all
+      ForwardEmailRule.insert_all!(forward_email_rules, record_timestamps: false)
+    end
   end
 
   def self.route_all

@@ -146,6 +146,11 @@ Register-grooming completed so far:
 ## Null objects
 
 - When adding a method to `User` or `Group`, also add the corresponding method to the null object (`LoggedOutUser` or `NullGroup`) so logged-out and nil-group paths do not raise `NoMethodError`.
+- Treat `Topic#group` as a total interface: it returns either a `Group` or `NullGroup`. Call the shared group API directly; do not add `&.`, `respond_to?`, truthiness checks, or fallback objects around `topic.group`. Use `topic.group_id`, `group.present?`, or `group.blank?` only when behavior genuinely differs between group and direct topics.
+- Created discussions, polls, and topic readers must have a topic. Trust that invariant on persisted and normal service-built records so missing topics fail visibly. Guard a missing topic only where the code explicitly handles raw unsaved/invalid records, optional controller inputs, or legacy/orphan recovery.
+- Give null-object predicates boolean results, collection methods empty relations or collections of the expected type, and lookup methods the same signature as the real object. Prefer an explicit method when its contract is important or not obvious from the generated null-method lists.
+- Do not add silent no-op mutation methods to a null object merely to make an invalid call succeed. Branch explicitly when an operation only makes sense for a real user or group.
+- Test both the real-object and null-object behavior when extending their shared interface, including the direct-topic path for `NullGroup` changes.
 
 ## Running Tests
 
