@@ -11,6 +11,7 @@ class Clients::Nextcloud < Clients::Base
     data = get('ocs/v2.php/cloud/user', params: { format: :json }).json['ocs']['data']
     {
       uid: data['id'],
+      name: data['displayname'],
       email: data['email']
     }
   end

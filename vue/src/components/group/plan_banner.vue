@@ -2,6 +2,7 @@
 import { differenceInDays, format, parseISO } from 'date-fns';
 import Session         from '@/shared/services/session';
 import AuthModalMixin      from '@/mixins/auth_modal';
+import SubscriptionService from '@/shared/services/subscription_service';
 export default
 {
   mixins: [ AuthModalMixin ],
@@ -23,6 +24,7 @@ export default
     daysRemaining() {
       return differenceInDays(parseISO(this.group.subscription.expires_at), new Date) + 1;
     },
+    upgradeUrl() { return SubscriptionService.upgradeUrl(this.group); },
     createdDate() {
       return format(new Date(this.group.createdAt), 'do LLLL yyyy');
     }
@@ -48,7 +50,7 @@ v-alert.my-4(
     v-btn(
       color="info"
       variant="elevated"
-      :href="'/upgrade/'+group.id"
+      :href="upgradeUrl"
       target="_blank"
       :title="$t('current_plan_button.tooltip')"
     )

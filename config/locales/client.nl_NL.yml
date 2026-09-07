@@ -723,6 +723,7 @@ nl_NL:
     button_label: Gebruikersmenu
     edit_profile: Profiel bewerken
     email_settings: Melding instellingen
+    mobile_app_settings: Mobile settings
     help: Hulp
     contact_site_name: Contacteer %{site_name}
     contact_support: Contact opnemen met ondersteuning

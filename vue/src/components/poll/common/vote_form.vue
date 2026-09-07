@@ -239,6 +239,13 @@ form.poll-common-vote-form(@submit.prevent="submit()" @keyup.ctrl.enter="submit(
   z-index: 1;
 }
 
+.poll-common-vote-form__option-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .poll-common-vote-form__button label input {
   position: absolute;
   opacity: 0;

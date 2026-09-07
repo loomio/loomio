@@ -1,5 +1,5 @@
-import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
+import SubscriptionService from '@/shared/services/subscription_service';
 
 const createFlashLevel = (level, duration) => (function(translateKey, translateValues, actionKey, actionFn) {
   if (translateKey) { return EventBus.$emit("flashMessage", {
@@ -41,7 +41,7 @@ export default class Flash {
 
   static serverError(error, inlineFields = []) {
     if (error.error) {
-      const actionUrl = error.action === 'upgrade' ? AppConfig.baseUrl + 'upgrade' : null;
+      const actionUrl = error.action === 'upgrade' ? SubscriptionService.upgradeUrl() : null;
       const action = actionUrl ? 'current_plan_button.upgrade' : null;
       Flash.custom(error.error, 'error', null, action, actionUrl);
     } else if (error.errors) {

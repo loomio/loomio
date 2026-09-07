@@ -723,6 +723,7 @@ ca:
     button_label: Menú d'usuari
     edit_profile: Edita el perfil
     email_settings: Preferències de notificacions
+    mobile_app_settings: Mobile settings
     help: Ajuda
     contact_site_name: Contacta %{site_name}
     contact_support: Contacte de suport

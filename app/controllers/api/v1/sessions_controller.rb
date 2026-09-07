@@ -14,8 +14,9 @@ class Api::V1::SessionsController < ApplicationController
       method = resource_params[:code].present? ? "login_code" : (session[:pending_login_token].present? ? "magic_link" : "password")
       Sentry.metrics.count("auth.sign_in", attributes: { method: method })
       render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
-        signed_in_via_login_code: resource_params[:code].present?
-      )
+        signed_in_via_login_code: resource_params[:code].present?,
+        authentication_redirect: authentication_return_path
+      ).compact
       EventBus.broadcast('session_create', user)
     else
       Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: failure_reason })

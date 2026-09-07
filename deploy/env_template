@@ -31,6 +31,10 @@ SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
 # Web push notifications are enabled when all three VAPID settings are present.
 # create_env.sh generates one key pair for this installation.
 
+# Mobile push notifications use the shared Loomio push relay. Leave this unset
+# until the relay is deployed and reachable over HTTPS.
+# PUSH_RELAY_URL=https://push.example.com
+
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
 
@@ -86,6 +90,9 @@ REDIS_MAXMEMORY=256mb
 # local will keep attachments on the server's disk under ./storage
 # cloud storage options: amazon, digitalocean or s3_compatible
 ACTIVE_STORAGE_SERVICE=local
+
+# Let signed-in users create a ready-to-use demonstration group
+FEATURES_DEMO_GROUPS=1
 
 # configure amazon S3
 # AWS_ACCESS_KEY_ID=

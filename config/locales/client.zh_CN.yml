@@ -726,6 +726,7 @@ zh_CN:
     button_label: 用户菜单
     edit_profile: 编辑个人资料
     email_settings: 通知设置
+    mobile_app_settings: Mobile settings
     help: 帮助
     contact_site_name: 联系 %{site_name}
     contact_support: 联系客服

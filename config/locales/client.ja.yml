@@ -720,6 +720,7 @@ ja:
     button_label: ユーザーメニュー
     edit_profile: プロファイル編集
     email_settings: 通知設定
+    mobile_app_settings: Mobile settings
     help: ヘルプ
     contact_site_name: "%{site_name} に問い合わせる"
     contact_support: サポート問い合わせ先

@@ -30,6 +30,7 @@ export default new class AuthService {
     EventBus.$emit('closeModal');
     Flash.fromServer(data.flash);
     if (data.signed_in_via_login_code) { PasswordPromptService.maybeOpen(); }
+    if (data.authentication_redirect) { window.location.assign(data.authentication_redirect); }
     return user;
   }
 

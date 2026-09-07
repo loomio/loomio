@@ -522,6 +522,102 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
     t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_push"
   end
 
+  create_table "mobile_access_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.uuid "mobile_device_id", null: false
+    t.datetime "revoked_at"
+    t.text "scopes", null: false
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_mobile_access_tokens_on_expires_at"
+    t.index ["mobile_device_id"], name: "index_mobile_access_tokens_on_mobile_device_id"
+    t.index ["token_digest"], name: "index_mobile_access_tokens_on_token_digest", unique: true
+  end
+
+  create_table "mobile_authorization_codes", force: :cascade do |t|
+    t.string "client_id", null: false
+    t.string "code_challenge", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "redirect_uri", null: false
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "used_at"
+    t.bigint "user_id", null: false
+    t.index ["expires_at"], name: "index_mobile_authorization_codes_on_expires_at"
+    t.index ["token_digest"], name: "index_mobile_authorization_codes_on_token_digest", unique: true
+    t.index ["user_id"], name: "index_mobile_authorization_codes_on_user_id"
+  end
+
+  create_table "mobile_devices", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "last_seen_at", null: false
+    t.string "name", null: false
+    t.string "platform", default: "ios", null: false
+    t.integer "protocol_version", default: 1, null: false
+    t.uuid "refresh_family_id", default: -> { "public.gen_random_uuid()" }, null: false
+    t.datetime "revoked_at"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "revoked_at"], name: "index_mobile_devices_on_user_id_and_revoked_at"
+    t.index ["user_id"], name: "index_mobile_devices_on_user_id"
+    t.check_constraint "protocol_version > 0", name: "mobile_devices_protocol_version"
+  end
+
+  create_table "mobile_push_registrations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "delivery_key_ciphertext", null: false
+    t.uuid "mobile_device_id", null: false
+    t.uuid "registration_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mobile_device_id"], name: "index_mobile_push_registrations_on_mobile_device_id", unique: true
+    t.index ["registration_id"], name: "index_mobile_push_registrations_on_registration_id", unique: true
+  end
+
+  create_table "mobile_refresh_tokens", force: :cascade do |t|
+    t.datetime "consumed_at"
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.uuid "family_id", null: false
+    t.datetime "idle_expires_at", null: false
+    t.uuid "mobile_device_id", null: false
+    t.bigint "parent_id"
+    t.datetime "revoked_at"
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id", "revoked_at"], name: "index_mobile_refresh_tokens_on_family_id_and_revoked_at"
+    t.index ["mobile_device_id"], name: "index_mobile_refresh_tokens_on_mobile_device_id"
+    t.index ["parent_id"], name: "index_mobile_refresh_tokens_on_parent_id"
+    t.index ["token_digest"], name: "index_mobile_refresh_tokens_on_token_digest", unique: true
+  end
+
+  create_table "mobile_relay_authorizations", force: :cascade do |t|
+    t.datetime "consumed_at"
+    t.datetime "created_at", null: false
+    t.text "delivery_key_ciphertext", null: false
+    t.datetime "expires_at", null: false
+    t.uuid "mobile_device_id", null: false
+    t.uuid "registration_id", null: false
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_mobile_relay_authorizations_on_expires_at"
+    t.index ["mobile_device_id"], name: "index_mobile_relay_authorizations_on_mobile_device_id"
+    t.index ["token_digest"], name: "index_mobile_relay_authorizations_on_token_digest", unique: true
+  end
+
+  create_table "mobile_web_session_tickets", force: :cascade do |t|
+    t.datetime "consumed_at"
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.uuid "mobile_device_id", null: false
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_mobile_web_session_tickets_on_expires_at"
+    t.index ["mobile_device_id"], name: "index_mobile_web_session_tickets_on_mobile_device_id"
+    t.index ["token_digest"], name: "index_mobile_web_session_tickets_on_token_digest", unique: true
+  end
+
   create_table "notification_deliveries", force: :cascade do |t|
     t.string "channel", null: false
     t.datetime "created_at", null: false
@@ -1067,10 +1163,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
     t.index ["token"], name: "index_stances_on_token", unique: true
   end
 
+  create_table "subscription_update_receipts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "event_id", null: false
+    t.string "payload_digest", null: false
+    t.datetime "processed_at"
+    t.bigint "subscription_id"
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_subscription_update_receipts_on_event_id", unique: true
+    t.index ["subscription_id"], name: "index_subscription_update_receipts_on_subscription_id"
+  end
+
   create_table "subscriptions", id: :serial, force: :cascade do |t|
     t.datetime "activated_at", precision: nil
     t.boolean "allow_guests", default: true, null: false
     t.boolean "allow_subgroups", default: true, null: false
+    t.string "billing_service_price_point_id"
+    t.string "billing_service_product_id"
+    t.string "billing_service_subscription_id"
+    t.datetime "billing_service_updated_at"
     t.datetime "canceled_at", precision: nil
     t.integer "chargify_subscription_id"
     t.datetime "created_at", precision: nil
@@ -1088,6 +1199,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
     t.datetime "renews_at", precision: nil
     t.string "state", default: "active", null: false
     t.datetime "updated_at", precision: nil
+    t.index ["billing_service_subscription_id"], name: "index_subscriptions_on_billing_service_id", unique: true, where: "(billing_service_subscription_id IS NOT NULL)"
     t.index ["expires_at", "id"], name: "index_subscriptions_on_trial_expiry_for_relay", where: "(((plan)::text = 'trial'::text) AND (expires_at IS NOT NULL))"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
@@ -1374,6 +1486,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "mobile_access_tokens", "mobile_devices", on_delete: :cascade
+  add_foreign_key "mobile_authorization_codes", "users", on_delete: :cascade
+  add_foreign_key "mobile_devices", "users", on_delete: :cascade
+  add_foreign_key "mobile_push_registrations", "mobile_devices", on_delete: :cascade
+  add_foreign_key "mobile_refresh_tokens", "mobile_devices", on_delete: :cascade
+  add_foreign_key "mobile_refresh_tokens", "mobile_refresh_tokens", column: "parent_id", on_delete: :nullify
+  add_foreign_key "mobile_relay_authorizations", "mobile_devices", on_delete: :cascade
+  add_foreign_key "mobile_web_session_tickets", "mobile_devices", on_delete: :cascade
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "poll_options", "polls", on_delete: :cascade
@@ -1389,6 +1509,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
+  add_foreign_key "subscription_update_receipts", "subscriptions"
   add_foreign_key "tasks_users", "tasks", on_delete: :cascade
   add_foreign_key "tasks_users", "users", on_delete: :cascade
   add_foreign_key "topic_items", "topic_items", column: ["parent_id", "topic_id"], primary_key: ["id", "topic_id"], name: "topic_items_parent_same_topic", on_delete: :cascade, deferrable: :immediate

@@ -721,6 +721,7 @@ tr:
     button_label: Kullanıcı menüsü
     edit_profile: Profili Düzenle
     email_settings: Bildirim ayarları
+    mobile_app_settings: Mobile settings
     help: Yardım
     contact_site_name: "%{site_name} ile iletişime geçin"
     contact_support: İletişim desteği

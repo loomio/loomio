@@ -136,6 +136,25 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
+  test "notification translations use a privacy-safe fallback for nameless actors" do
+    @author.update_columns(name: nil, username: nil)
+    reaction = Reaction.create!(
+      reactable: discussions(:discussion),
+      user: @author,
+      reaction: "smiley"
+    )
+
+    {
+      "user_mentioned" => discussions(:discussion),
+      "reaction_created" => reaction
+    }.each do |kind, subject|
+      notification = Notification.new(kind: kind, subject: subject, actor: @author)
+      values = NotificationDeliveryRouter.for(notification).translated_values(locale: :en)
+
+      assert_equal I18n.t(:"common.anonymous", locale: :en), values[:name], kind
+    end
+  end
+
 
   test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)
@@ -208,6 +227,38 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     )
 
     assert_empty channels_for(next_notification, subscription)
+  end
+
+  test "push routing expands an eligible user into browser and native recipients" do
+    recipient = users(:member)
+    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
+               .set_volume!(email: :quiet, push: :normal)
+    subscription = create_push_subscription(
+      user: recipient,
+      endpoint: "https://fcm.googleapis.com/fcm/send/native-routing-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    device = recipient.mobile_devices.create!(
+      name: "Native iPhone",
+      platform: "ios",
+      protocol_version: 1,
+      last_seen_at: Time.current
+    )
+    native = device.create_mobile_push_registration!(
+      registration_id: SecureRandom.uuid,
+      delivery_key_ciphertext: Mobile::RelayCredentialCipher.encrypt(SecureRandom.urlsafe_base64(32, false))
+    )
+
+    notification = route_notification(
+      kind: "discussion_edited",
+      subject: discussions(:discussion),
+      recipient_user_ids: [ recipient.id ]
+    )
+
+    assert_equal [ "push" ], channels_for(notification, subscription)
+    assert_equal [ "push" ], channels_for(notification, native)
   end
 
   test "volume scopes cannot add recipients outside the in-app recipients" do

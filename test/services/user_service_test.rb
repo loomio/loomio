@@ -2,7 +2,9 @@ require 'test_helper'
 
 class UserServiceTest < ActiveSupport::TestCase
   inline_jobs "deactivates the user",
-              "redacts user and removes personally identifying information"
+              "deactivation revokes mobile devices",
+              "redacts user and removes personally identifying information",
+              "redaction removes mobile credentials"
   setup do
     @user = users(:user)
     @group = groups(:group)
@@ -26,6 +28,14 @@ class UserServiceTest < ActiveSupport::TestCase
     UserService.deactivate(user: new_user, actor: new_user)
 
     assert_not_nil new_user.reload.deactivated_at
+  end
+
+  test "deactivation revokes mobile devices" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+
+    UserService.deactivate(user: @user, actor: @user)
+
+    assert device.reload.revoked_at
   end
 
   test "deactivation does not change email address" do
@@ -92,6 +102,37 @@ class UserServiceTest < ActiveSupport::TestCase
 
     # Verify versions removed
     assert_equal 0, PaperTrail::Version.where(item_type: 'User', item_id: user_id).count
+  end
+
+  test "redaction removes mobile credentials" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+    registration = device.create_mobile_push_registration!(
+      registration_id: SecureRandom.uuid,
+      delivery_key_ciphertext: Mobile::RelayCredentialCipher.encrypt(SecureRandom.urlsafe_base64(32, false))
+    )
+    deleted_registration_id = nil
+
+    Mobile::RelayService.stub(:delete!, ->(registration:) do
+      deleted_registration_id = registration.registration_id
+      true
+    end) do
+      UserService.redact(user: @user, actor: @user)
+    end
+
+    refute MobileDevice.exists?(device.id)
+    assert_equal registration.registration_id, deleted_registration_id
+  end
+
+  test "changing a password revokes mobile devices" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+
+    UserService.update(
+      user: @user,
+      actor: @user,
+      params: { password: "a-new-secure-password", password_confirmation: "a-new-secure-password" }
+    )
+
+    assert device.reload.revoked_at
   end
 
   test "verifies email if unique" do

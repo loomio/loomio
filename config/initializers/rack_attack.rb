@@ -98,10 +98,17 @@ class Rack::Attack
     '/api/v1/link_previews' => 100,
     '/api/v1/registrations' => 10,
     '/api/v1/sessions' => 30,
+    '/api/v1/mobile/token' => 120,
+    '/api/v1/mobile/web-session-tickets' => 300,
+    '/api/v1/mobile/relay-authorizations' => 300,
+    '/api/v1/mobile/relay-authorizations/verify' => 300,
+    '/api/v1/mobile/push-registration/test' => 60,
+    '/mobile/web-session' => 300,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
     '/api/v1/demos/clone' => 10,
     '/api/v1/discussion_readers' => 500,
+    '/api/s1/subscriptions/verify' => 30,
     '/rails/active_storage/direct_uploads' => 20,
     # The app's real upload route (the stock path is shadowed to the same
     # controller); throttle it too or it falls through to only the global cap.

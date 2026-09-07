@@ -52,16 +52,28 @@ class IdentityService
 
       if new_identity.user.nil?
         new_identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
+        require_user_name!(new_identity.user, fallback: new_identity.name)
         Sentry.set_context('identity_params', identity_params.slice(:identity_type, :uid, :email, :name))
         new_identity.user.save!
       else
-        new_identity.user.update(email_verified: true) unless new_identity.user.email_verified?
+        require_user_name!(new_identity.user, fallback: new_identity.name)
+        new_identity.user.email_verified = true
+        new_identity.user.save! if new_identity.user.changed?
       end
     end
 
     # Existing identities may have changed email, name, token, or profile image.
     identity.assign_attributes(identity_params)
-    identity.save! if identity.changed?
+    Identity.transaction do
+      if identity.user
+        # Invitations create nameless placeholder users. SSO must initialize
+        # that profile before signing in the account, even when ongoing provider
+        # profile synchronization is disabled.
+        require_user_name!(identity.user, fallback: identity.name)
+        identity.user.save! if identity.user.changed?
+      end
+      identity.save! if identity.changed?
+    end
 
     return identity unless identity.user
 
@@ -88,4 +100,15 @@ class IdentityService
       Identity.find_by(identity_type: identity_type, uid: uid)
   end
   private_class_method :find_identity
+
+  def self.require_user_name!(user, fallback:)
+    return if user.name.present?
+
+    user.name = fallback
+    return if user.name.present?
+
+    user.errors.add(:name, :blank)
+    raise ActiveRecord::RecordInvalid, user
+  end
+  private_class_method :require_user_name!
 end

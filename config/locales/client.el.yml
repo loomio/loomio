@@ -721,6 +721,7 @@ el:
     button_label: Μενού χρήστη
     edit_profile: Επεξεργασία προφίλ
     email_settings: Ρυθμίσεις ειδοποιήσεων
+    mobile_app_settings: Mobile settings
     help: Βοήθεια
     contact_site_name: Επικοινωνία με %{site_name}
     contact_support: Επικοινωνήστε με την υποστήριξη

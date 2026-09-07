@@ -39,7 +39,7 @@ class TopicItem < ApplicationRecord
     return unless reader&.is_logged_in?
     return unless sequence_id
 
-    TopicReader.for(topic: topic, user: reader).viewed!(sequence_id)
+    TopicReader.find_or_create_for!(topic: topic, user: reader).viewed!(sequence_id)
   end
   private :mark_actor_as_read!
 

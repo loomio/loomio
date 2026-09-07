@@ -56,7 +56,7 @@ class NotificationDeliveryRouter
 
     recipients = recipients_by_channel.transform_values(&:to_a)
     recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))
-    recipients["push"] = active_push_subscriptions(recipients.fetch("push"))
+    recipients["push"] = active_push_recipients(recipients.fetch("push"))
     now = Time.current
     deliveries = []
 
@@ -93,10 +93,17 @@ class NotificationDeliveryRouter
   def translation_values
     actor = notification.actor
     {
-      name: actor.name,
+      name: actor_name,
       title: TranslationService.plain_text(subject_model.title_model, :title, actor),
       poll_type: (I18n.t("poll_types.#{subject_model.poll_type}") if subject_model.respond_to?(:poll_type))
     }
+  end
+
+  # Legacy and externally provisioned accounts can lack both a name and a
+  # username. Keep notification creation available without exposing the
+  # actor's email address; identity synchronization can repair the profile.
+  def actor_name
+    notification.actor&.name_or_username.presence || I18n.t(:"common.anonymous")
   end
 
   # Render the same translation selected by notification consumers so missing
@@ -167,7 +174,7 @@ class NotificationDeliveryRouter
   end
 
   def translation_values_for(recipient)
-    recipient = recipient.user if recipient.is_a?(PushSubscription)
+    recipient = recipient.user if recipient.is_a?(PushSubscription) || recipient.is_a?(MobilePushRegistration)
     return notification.translation_values unless recipient.is_a?(User)
 
     translated_values(locale: recipient.locale)
@@ -205,12 +212,14 @@ class NotificationDeliveryRouter
   end
 
   # Expand each eligible user into one delivery recipient per active browser
-  # subscription.
-  def active_push_subscriptions(push_recipients)
+  # subscription and per registered native device.
+  def active_push_recipients(push_recipients)
     user_ids = Array(push_recipients).map(&:id)
     return [] if user_ids.empty?
 
-    PushSubscription.active.includes(:user).where(user_id: user_ids).to_a
+    browser = PushSubscription.active.includes(:user).where(user_id: user_ids).to_a
+    native = MobilePushRegistration.active.includes(mobile_device: :user).where(mobile_devices: { user_id: user_ids }).to_a
+    browser + native
   end
 
   def subject_topic

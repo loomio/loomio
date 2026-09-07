@@ -47,6 +47,7 @@ export default
         return this.stance = null;
       }
     });
+    EventBus.$on('stanceSaved', this.handleStanceSaved);
 
     this.watchRecords({
       collections: ["stances", "polls"],
@@ -87,6 +88,10 @@ export default
     });
   },
 
+  beforeUnmount() {
+    EventBus.$off('stanceSaved', this.handleStanceSaved);
+  },
+
   computed: {
     isScheduled() {
       return this.poll.openingAt && !this.poll.openedAt;
@@ -115,6 +120,11 @@ export default
 
   methods: {
     exact,
+    handleStanceSaved(pollId) {
+      if (pollId === this.poll.id && this.poll.myStance()?.castAt) {
+        this.makeCloneStance();
+      }
+    },
     makeCloneStance() {
       this.stance = this.poll.myStance().clone();
       if (this.$route.params.poll_option_id) {

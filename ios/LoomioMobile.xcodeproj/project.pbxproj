@@ -1,0 +1,131 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* LoomioMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000001 /* LoomioMobileApp.swift */; };
+		A10000000000000000000002 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* RootView.swift */; };
+		A10000000000000000000003 /* ConnectedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* ConnectedHost.swift */; };
+		A10000000000000000000004 /* NavigationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* NavigationPolicy.swift */; };
+		A10000000000000000000005 /* ConnectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000005 /* ConnectionStore.swift */; };
+		A10000000000000000000006 /* HostDataCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000006 /* HostDataCleaner.swift */; };
+		A10000000000000000000007 /* ConnectHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000007 /* ConnectHostView.swift */; };
+		A10000000000000000000008 /* AppShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000008 /* AppShellView.swift */; };
+		A10000000000000000000009 /* LoomioWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* LoomioWebView.swift */; };
+		A1000000000000000000000A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* SettingsView.swift */; };
+		A1000000000000000000000B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000B /* Assets.xcassets */; };
+		A1000000000000000000000C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000C /* PrivacyInfo.xcprivacy */; };
+		A1000000000000000000000D /* HostOriginValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* HostOriginValidatorTests.swift */; };
+		A1000000000000000000000E /* NavigationPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000E /* NavigationPolicyTests.swift */; };
+		A1000000000000000000000F /* LoomioMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000F /* LoomioMobileUITests.swift */; };
+		A10000000000000000000016 /* MobileAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000016 /* MobileAuthentication.swift */; };
+		A10000000000000000000017 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000017 /* KeychainCredentialStore.swift */; };
+		A10000000000000000000018 /* MobileAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000018 /* MobileAuthenticationService.swift */; };
+		A1000000000000000000001A /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001A /* PushNotificationManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C10000000000000000000001 = {isa = PBXContainerItemProxy; containerPortal = D10000000000000000000001 /* Project object */; proxyType = 1; remoteGlobalIDString = E10000000000000000000001; remoteInfo = LoomioMobile; };
+		C10000000000000000000002 = {isa = PBXContainerItemProxy; containerPortal = D10000000000000000000001 /* Project object */; proxyType = 1; remoteGlobalIDString = E10000000000000000000001; remoteInfo = LoomioMobile; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B10000000000000000000001 /* LoomioMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoomioMobileApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000002 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* ConnectedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedHost.swift; sourceTree = "<group>"; };
+		B10000000000000000000004 /* NavigationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPolicy.swift; sourceTree = "<group>"; };
+		B10000000000000000000005 /* ConnectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStore.swift; sourceTree = "<group>"; };
+		B10000000000000000000006 /* HostDataCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostDataCleaner.swift; sourceTree = "<group>"; };
+		B10000000000000000000007 /* ConnectHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectHostView.swift; sourceTree = "<group>"; };
+		B10000000000000000000008 /* AppShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShellView.swift; sourceTree = "<group>"; };
+		B10000000000000000000009 /* LoomioWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoomioWebView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1000000000000000000000C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		B1000000000000000000000D /* HostOriginValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOriginValidatorTests.swift; sourceTree = "<group>"; };
+		B1000000000000000000000E /* NavigationPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPolicyTests.swift; sourceTree = "<group>"; };
+		B1000000000000000000000F /* LoomioMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoomioMobileUITests.swift; sourceTree = "<group>"; };
+		B10000000000000000000010 /* LoomioMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = LoomioMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000011 /* LoomioMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LoomioMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000012 /* LoomioMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LoomioMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000013 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = "<group>"; };
+		B10000000000000000000014 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		B10000000000000000000015 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		B10000000000000000000016 /* MobileAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthentication.swift; sourceTree = "<group>"; };
+		B10000000000000000000017 /* KeychainCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStore.swift; sourceTree = "<group>"; };
+		B10000000000000000000018 /* MobileAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthenticationService.swift; sourceTree = "<group>"; };
+		B10000000000000000000019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1000000000000000000001A /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		B1000000000000000000001B /* LoomioMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoomioMobile.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F10000000000000000000001 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F10000000000000000000002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F10000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D20000000000000000000001 = {isa = PBXGroup; children = (D20000000000000000000002, D20000000000000000000008, D20000000000000000000009, D2000000000000000000000B, D2000000000000000000000A,); sourceTree = "<group>"; };
+		D20000000000000000000002 /* LoomioMobile */ = {isa = PBXGroup; children = (D20000000000000000000003, D20000000000000000000004, D20000000000000000000005, D20000000000000000000006, D20000000000000000000007,); path = LoomioMobile; sourceTree = "<group>"; };
+		D20000000000000000000003 /* App */ = {isa = PBXGroup; children = (B10000000000000000000001, B10000000000000000000002,); path = App; sourceTree = "<group>"; };
+		D20000000000000000000004 /* Models */ = {isa = PBXGroup; children = (B10000000000000000000003, B10000000000000000000004, B10000000000000000000016,); path = Models; sourceTree = "<group>"; };
+		D20000000000000000000005 /* Services */ = {isa = PBXGroup; children = (B10000000000000000000005, B10000000000000000000006, B10000000000000000000017, B10000000000000000000018, B1000000000000000000001A,); path = Services; sourceTree = "<group>"; };
+		D20000000000000000000006 /* Views */ = {isa = PBXGroup; children = (B10000000000000000000007, B10000000000000000000008, B10000000000000000000009, B1000000000000000000000A,); path = Views; sourceTree = "<group>"; };
+		D20000000000000000000007 /* Resources */ = {isa = PBXGroup; children = (B1000000000000000000000B, B1000000000000000000000C, B10000000000000000000019, B1000000000000000000001B,); path = Resources; sourceTree = "<group>"; };
+		D20000000000000000000008 /* LoomioMobileTests */ = {isa = PBXGroup; children = (B1000000000000000000000D, B1000000000000000000000E,); path = LoomioMobileTests; sourceTree = "<group>"; };
+		D20000000000000000000009 /* LoomioMobileUITests */ = {isa = PBXGroup; children = (B1000000000000000000000F,); path = LoomioMobileUITests; sourceTree = "<group>"; };
+		D2000000000000000000000A /* Products */ = {isa = PBXGroup; children = (B10000000000000000000010, B10000000000000000000011, B10000000000000000000012,); name = Products; sourceTree = "<group>"; };
+		D2000000000000000000000B /* Config */ = {isa = PBXGroup; children = (B10000000000000000000013, B10000000000000000000014, B10000000000000000000015,); path = Config; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10000000000000000000001 /* LoomioMobile */ = {isa = PBXNativeTarget; buildConfigurationList = D40000000000000000000001; buildPhases = (F20000000000000000000001, F10000000000000000000001, F30000000000000000000001,); buildRules = (); dependencies = (); name = LoomioMobile; productName = LoomioMobile; productReference = B10000000000000000000010; productType = "com.apple.product-type.application"; };
+		E10000000000000000000002 /* LoomioMobileTests */ = {isa = PBXNativeTarget; buildConfigurationList = D40000000000000000000002; buildPhases = (F20000000000000000000002, F10000000000000000000002, F30000000000000000000002,); buildRules = (); dependencies = (C20000000000000000000001,); name = LoomioMobileTests; productName = LoomioMobileTests; productReference = B10000000000000000000011; productType = "com.apple.product-type.bundle.unit-test"; };
+		E10000000000000000000003 /* LoomioMobileUITests */ = {isa = PBXNativeTarget; buildConfigurationList = D40000000000000000000003; buildPhases = (F20000000000000000000003, F10000000000000000000003, F30000000000000000000003,); buildRules = (); dependencies = (C20000000000000000000002,); name = LoomioMobileUITests; productName = LoomioMobileUITests; productReference = B10000000000000000000012; productType = "com.apple.product-type.bundle.ui-testing"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D10000000000000000000001 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2620; LastUpgradeCheck = 2620; TargetAttributes = {E10000000000000000000001 = {CreatedOnToolsVersion = 26.2;}; E10000000000000000000002 = {CreatedOnToolsVersion = 26.2; TestTargetID = E10000000000000000000001;}; E10000000000000000000003 = {CreatedOnToolsVersion = 26.2; TestTargetID = E10000000000000000000001;};};}; buildConfigurationList = D40000000000000000000004; compatibilityVersion = "Xcode 16.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base,); mainGroup = D20000000000000000000001; productRefGroup = D2000000000000000000000A; projectDirPath = ""; projectRoot = ""; targets = (E10000000000000000000001, E10000000000000000000002, E10000000000000000000003,); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F30000000000000000000001 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A1000000000000000000000B, A1000000000000000000000C,); runOnlyForDeploymentPostprocessing = 0; };
+		F30000000000000000000002 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F30000000000000000000003 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F20000000000000000000001 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008, A10000000000000000000009, A1000000000000000000000A, A10000000000000000000016, A10000000000000000000017, A10000000000000000000018, A1000000000000000000001A,); runOnlyForDeploymentPostprocessing = 0; };
+		F20000000000000000000002 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A1000000000000000000000D, A1000000000000000000000E,); runOnlyForDeploymentPostprocessing = 0; };
+		F20000000000000000000003 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A1000000000000000000000F,); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C20000000000000000000001 = {isa = PBXTargetDependency; target = E10000000000000000000001; targetProxy = C10000000000000000000001; };
+		C20000000000000000000002 = {isa = PBXTargetDependency; target = E10000000000000000000001; targetProxy = C10000000000000000000002; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D30000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000014; buildSettings = {ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_ENTITLEMENTS = LoomioMobile/Resources/LoomioMobile.entitlements; CODE_SIGN_STYLE = Automatic; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LoomioMobile/Resources/Info.plist; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; SWIFT_EMIT_LOC_STRINGS = YES; TARGETED_DEVICE_FAMILY = 1; }; name = Debug; };
+		D30000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000015; buildSettings = {ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_ENTITLEMENTS = LoomioMobile/Resources/LoomioMobile.entitlements; CODE_SIGN_STYLE = Automatic; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LoomioMobile/Resources/Info.plist; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; SWIFT_EMIT_LOC_STRINGS = YES; TARGETED_DEVICE_FAMILY = 1; }; name = Release; };
+		D30000000000000000000003 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000014; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).tests"; PRODUCT_NAME = LoomioMobileTests; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Loomio Mobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Loomio Mobile"; }; name = Debug; };
+		D30000000000000000000004 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000015; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).tests"; PRODUCT_NAME = LoomioMobileTests; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Loomio Mobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Loomio Mobile"; }; name = Release; };
+		D30000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000014; buildSettings = {GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).uitests"; PRODUCT_NAME = LoomioMobileUITests; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TEST_TARGET_NAME = LoomioMobile; }; name = Debug; };
+		D30000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000015; buildSettings = {GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).uitests"; PRODUCT_NAME = LoomioMobileUITests; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TEST_TARGET_NAME = LoomioMobile; }; name = Release; };
+		D30000000000000000000007 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000014; buildSettings = {ENABLE_USER_SCRIPT_SANDBOXING = YES;}; name = Debug; };
+		D30000000000000000000008 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = B10000000000000000000015; buildSettings = {ENABLE_USER_SCRIPT_SANDBOXING = YES;}; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D40000000000000000000001 = {isa = XCConfigurationList; buildConfigurations = (D30000000000000000000001, D30000000000000000000002,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		D40000000000000000000002 = {isa = XCConfigurationList; buildConfigurations = (D30000000000000000000003, D30000000000000000000004,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		D40000000000000000000003 = {isa = XCConfigurationList; buildConfigurations = (D30000000000000000000005, D30000000000000000000006,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		D40000000000000000000004 = {isa = XCConfigurationList; buildConfigurations = (D30000000000000000000007, D30000000000000000000008,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = D10000000000000000000001 /* Project object */;
+}

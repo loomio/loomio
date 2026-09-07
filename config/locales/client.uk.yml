@@ -724,6 +724,7 @@ uk:
     button_label: Меню користувача
     edit_profile: Редагувати профіль
     email_settings: Налаштування сповіщень
+    mobile_app_settings: Mobile settings
     help: Допомога
     contact_site_name: Зв'язатись з %{site_name}
     contact_support: Зв'язатись зі службою підтримки

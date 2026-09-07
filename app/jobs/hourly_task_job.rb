@@ -26,7 +26,5 @@ class HourlyTaskJob < ApplicationJob
       PublishReviewDueWorker.perform_later
       DeleteOldReceivedEmailsWorker.perform_later
     end
-
-    EnsureDemoQueueWorker.perform_later
   end
 end

@@ -721,6 +721,7 @@ sl:
     button_label: Uporabniški meni
     edit_profile: Uredi profil
     email_settings: Nastavitve obvestil
+    mobile_app_settings: Mobile settings
     help: Pomoč
     contact_site_name: Obrnite se na %{site_name}
     contact_support: Obrnite se na podporo

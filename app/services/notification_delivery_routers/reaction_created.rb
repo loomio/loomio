@@ -4,7 +4,7 @@ module NotificationDeliveryRouters
 
     def translation_values
       {
-        name: notification.actor.name,
+        name: actor_name,
         title: TranslationService.plain_text(subject_model.title_model, :title, notification.actor),
         reaction: subject_model.reaction.downcase,
         model: I18n.t("notification_models.#{subject_model.reactable.class.to_s.downcase}")

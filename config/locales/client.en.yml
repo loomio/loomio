@@ -773,6 +773,7 @@ en:
     button_label: User menu
     edit_profile: Edit profile
     email_settings: Notification settings
+    mobile_app_settings: Mobile settings
     help: Help
     whats_new: What's new
     contact_site_name: Contact %{site_name}

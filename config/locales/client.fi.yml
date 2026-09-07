@@ -721,6 +721,7 @@ fi:
     button_label: Käyttäjävalikko
     edit_profile: Muokkaa profiilia
     email_settings: Ilmoitusasetukset
+    mobile_app_settings: Mobile settings
     help: auta
     contact_site_name: Ota yhteyttä %{site_name}
     contact_support: Ota yhteyttä tukeen

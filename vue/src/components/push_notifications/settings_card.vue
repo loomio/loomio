@@ -4,6 +4,7 @@ import Flash from '@/shared/services/flash';
 import RestfulClient from '@/shared/record_store/restful_client';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import AppConfig from '@/shared/services/app_config';
+import NativeBridge from '@/shared/services/native_bridge.mjs';
 
 const emit = defineEmits(['subscriptionsChanged']);
 
@@ -12,6 +13,7 @@ const browserEnabled = ref(false);
 const loading = ref(true);
 const testing = ref(false);
 const subscriptions = ref([]);
+const nativeAvailable = NativeBridge.available();
 const configured = computed(() => AppConfig.webPushEnabled);
 
 const supported = computed(() => PushSubscriptionService.supported());
@@ -20,6 +22,11 @@ const denied = computed(() => PushSubscriptionService.permission() === 'denied')
 onMounted(refresh);
 
 async function refresh() {
+  if (nativeAvailable) {
+    emit('subscriptionsChanged', false);
+    loading.value = false;
+    return;
+  }
   if (!configured.value) {
     emit('subscriptionsChanged', false);
     loading.value = false;
@@ -87,7 +94,7 @@ async function sendTest() {
 
 <template lang="pug">
 v-card.push-notifications-settings-card.mb-4(
-  v-if="configured"
+  v-if="configured && !nativeAvailable"
   :class="{ 'push-notifications-settings-card--loaded': !loading }"
   :title="$t('push_notifications.title')"
   :subtitle="$t('push_notifications.subtitle')")

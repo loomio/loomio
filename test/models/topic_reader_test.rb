@@ -35,6 +35,33 @@ class TopicReaderTest < ActiveSupport::TestCase
     refute_includes TopicReader.redeemable, reader
   end
 
+  test "for leaves a missing reader unpersisted on read paths" do
+    user = User.create!(name: "Lazy reader", email: "lazy-reader-#{SecureRandom.hex(4)}@example.test")
+
+    assert_no_difference -> { TopicReader.count } do
+      assert_predicate TopicReader.for(user: user, topic: @discussion.topic), :new_record?
+    end
+  end
+
+  test "find_or_create_for reuses a reader without aborting its surrounding transaction" do
+    user = User.create!(
+      name: "Persistent reader",
+      email: "persistent-reader-#{SecureRandom.hex(4)}@example.test",
+      volume_email_default: :quiet,
+      volume_push_default: :loud
+    )
+    reader = TopicReader.find_or_create_for!(user: user, topic: @discussion.topic)
+
+    ApplicationRecord.transaction do
+      existing_reader = TopicReader.find_or_create_for!(user: user, topic: @discussion.topic)
+
+      assert_equal reader.id, existing_reader.id
+      assert_equal 1, TopicReader.where(user: user, topic: @discussion.topic).count
+      assert_predicate existing_reader, :email_quiet?
+      assert_predicate existing_reader, :push_loud?
+    end
+  end
+
   # Computed volume
   test "unsaved direct-topic readers use independent account defaults without a group membership" do
     user = users(:reader_quiet)

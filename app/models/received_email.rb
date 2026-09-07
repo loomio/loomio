@@ -123,6 +123,10 @@ class ReceivedEmail < ApplicationRecord
     sender_name_and_email
   end
 
+  def title_model
+    group
+  end
+
   def is_addressed_to_loomio?
     route_address.present? || sent_to_notifications_address?
   end

@@ -721,6 +721,7 @@ sv:
     button_label: Användarmeny
     edit_profile: Redigera profil
     email_settings: Aviseringsinställningar
+    mobile_app_settings: Mobile settings
     help: Hjälp
     contact_site_name: Kontakta %{site_name}
     contact_support: Kontakta supporten

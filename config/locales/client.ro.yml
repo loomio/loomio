@@ -721,6 +721,7 @@ ro:
     button_label: Meniul utilizatorului
     edit_profile: Editare profil
     email_settings: Setări de notificare
+    mobile_app_settings: Mobile settings
     help: Ajutor
     contact_site_name: Contacteaza %{site_name}
     contact_support: Contactați asistența

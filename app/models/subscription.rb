@@ -4,7 +4,7 @@ class Subscription < ApplicationRecord
   class NotActive < StandardError; end
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 
-  PAYMENT_METHODS = %w[barter none chargify manual paypal].freeze
+  PAYMENT_METHODS = %w[barter none chargify loomio_subscriptions manual paypal].freeze
   STATES = %w[active on_hold pending past_due canceled].freeze
   ACTIVE_STATES = %w[active on_hold pending].freeze
 

@@ -115,6 +115,28 @@ class DigestMailerTest < ActionMailer::TestCase
     refute_includes mail.body.encoded, discarded_body
   end
 
+  test "digest renders an unknown sender notification" do
+    @user.update!(email_catch_up_day: 7)
+    @group.add_admin!(@user)
+    received_email = ReceivedEmail.create!(
+      group: @group,
+      headers: { "From" => "Unknown Sender <unknown@example.com>" }
+    )
+    notification = Notification.create!(kind: "unknown_sender", subject: received_email, actor: nil)
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: @user,
+      channel: "in_app",
+      delivered_at: notification.created_at,
+      translation_values: { title: @group.full_name }
+    )
+
+    mail = DigestMailer.digest(@user.id).deliver_now
+    notification_text = mail_document(mail).at_css(".email-notification").text
+
+    assert_includes notification_text, "Please review email from unrecognised sender"
+  end
+
   test "digest notification includes the full poll summary beneath its headline" do
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
