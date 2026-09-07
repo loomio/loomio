@@ -2,6 +2,16 @@ format = require('date-fns/format')
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
+  'identified_vote_form_disappears_after_voting_without_a_reason': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_created&poll_type=proposal')
+    page.click('.poll-common-vote-form__button-text')
+    page.click('.poll-common-vote-form__submit')
+    page.expectNoElement('.poll-common-vote-form', 5000)
+    page.expectElement('.poll-common-current-vote')
+  },
+
   'can_start_a_proposal_in_a_group': (test) => {
     page = pageHelper(test)
 

@@ -379,6 +379,26 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "vote without a timeline item returns the saved stance" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: @poll.poll_options.first.id } ],
+        reason: ""
+      }
+    }
+
+    assert_response :success
+    payload = JSON.parse(response.body)
+    saved_stance = payload.fetch("stances").find { |record| record["id"] == stance.id }
+    assert saved_stance.fetch("cast_at")
+    assert_not payload.key?("topic_items")
+  end
+
   test "in-place update returns the existing topic item with the updated stance" do
     sign_in @user
     stance = @poll.stances.find_by!(participant_id: @user.id)
