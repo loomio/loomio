@@ -81,10 +81,12 @@ class DropDocumentsTable < ActiveRecord::Migration[8.0]
 
   def attach_and_finalize(parent, doc, blob)
     parent.with_lock do
+      effective_filename = doc.file_file_name.presence || blob.filename.to_s
+
       already_attached = ActiveStorage::Attachment.exists?(record: parent, blob_id: blob.id, name: 'files')
-      # Filenames are labels, not file identities. Distinct blobs with the
-      # same name must both remain attached.
-      unless already_attached
+      filename_dup = !already_attached && parent_already_has_filename?(parent, effective_filename)
+
+      unless already_attached || filename_dup
         ActiveStorage::Attachment.create!(record: parent, blob: blob, name: 'files')
       end
 
@@ -98,6 +100,13 @@ class DropDocumentsTable < ActiveRecord::Migration[8.0]
     raise "IntegrityError on doc=#{doc.id} parent=#{parent.class.name}##{parent.id} " \
           "blob=#{blob.id} key=#{blob.key.inspect} content_type=#{blob.content_type.inspect} " \
           "checksum=#{blob.checksum.inspect}: #{e.class}"
+  end
+
+  def parent_already_has_filename?(parent, filename)
+    parent.files.attachments
+      .joins(:blob)
+      .where(active_storage_blobs: { filename: filename })
+      .exists?
   end
 
   def storage_check(key)

@@ -1,9 +1,9 @@
 class CleanMalformedTopicReaderReadRanges < ActiveRecord::Migration[8.0]
   def up
-    # Read history is a cache; the reader also holds access and notification
-    # preferences. Reset only the damaged cache, preserving those records.
+    # Delete topic_readers whose read_ranges_string contains any non-'N-M'
+    # token (legacy bad data). There are very few of these.
     result = execute(<<~SQL)
-      UPDATE topic_readers SET read_ranges_string = ''
+      DELETE FROM topic_readers
       WHERE read_ranges_string IS NOT NULL
         AND read_ranges_string != ''
         AND EXISTS (
@@ -11,7 +11,7 @@ class CleanMalformedTopicReaderReadRanges < ActiveRecord::Migration[8.0]
           WHERE s !~ '^\\d+-\\d+$'
         )
     SQL
-    say "Reset #{result.cmd_tuples} malformed topic reader read ranges"
+    say "Deleted #{result.cmd_tuples} topic_readers with malformed read_ranges_string"
   end
 
   def down

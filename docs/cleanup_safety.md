@@ -25,12 +25,6 @@ Use an isolated database copy with application workers stopped for destructive v
 
 New `DestroyGroupWorker` jobs carry the exact archive timestamp recorded when deletion was requested. Restoring and subsequently archiving the group invalidates the earlier job. Jobs without this timestamp are skipped and logged; they must not be supplied with the group's current timestamp automatically. Review whether deletion is still intended, then make a fresh deletion request through the normal administrative workflow.
 
-## Historical migrations and recovery
-
-The read-range migration now resets only the malformed cache field, preserving access and notification preferences. The document migration retains distinct blobs even when their filenames match. The obsolete poll-lifecycle migration moves children to the valid topic root and repairs/verifies the affected topics in the deletion transaction; failures roll back that phase.
-
-These changes protect future executions of those migrations. They do not rerun migrations already marked applied and cannot reconstruct deleted reader rows, content, or attachment references. Investigate an untouched backup or a newly imported copy before designing a separate recovery operation. Restoring live production data requires its own reviewed plan.
-
 Account-merge duplicate removal, reference migration, credential revocation, and search updates are transactional. Avatar purges, newsletter changes, and email are deferred until commit. Blocklist and email-routing replacements retain the previous table contents if replacement fails. Concurrent group exports use separate temporary paths.
 
 Demo expiry is unchanged while the replacement demo system is being developed. Deployment scripts are outside this change.
