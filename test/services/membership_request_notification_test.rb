@@ -68,6 +68,31 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
   end
 
+  test "approving membership falls back to the group title when its translation has no title field" do
+    @actor.update!(selected_locale: "pl", auto_translate: true)
+    @group.update_columns(content_locale: "en")
+    Translation.create!(
+      translatable: @group,
+      language: "pl",
+      fields: { "name" => "Przetłumaczona nazwa grupy" }
+    )
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    TranslationService.stub(:available?, true) do
+      assert_equal request, MembershipRequestService.approve(
+        membership_request: request,
+        actor: @actor
+      )
+    end
+
+    membership = Membership.find_by!(group: @group, user: @requestor)
+    notification = Notification.find_by!(
+      kind: "membership_request_approved",
+      subject: membership
+    )
+    assert_equal @group.full_name, notification.translation_values["title"]
+  end
+
   test "notification failure rolls back request creation" do
     request = MembershipRequest.new(group: @group)
 

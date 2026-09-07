@@ -131,4 +131,15 @@ class TranslationServiceTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "plain text falls back to source content when the translated field is missing" do
+    discussion = discussions(:discussion)
+    translation = Translation.new(fields: { "description" => "Description traduite" })
+
+    TranslationService.stub(:show_translation, true) do
+      TranslationService.stub(:create, translation) do
+        assert_equal discussion.title, TranslationService.plain_text(discussion, :title, @user)
+      end
+    end
+  end
 end
