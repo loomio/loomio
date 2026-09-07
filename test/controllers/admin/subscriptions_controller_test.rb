@@ -36,6 +36,7 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
 
   test "admin can show edit and update a subscription" do
     sign_in @admin
+    @subscription.update!(expires_at: Time.zone.parse("2026-10-06T23:58:49Z"))
 
     get :show, params: { id: @subscription.id }
     assert_response :success
@@ -48,12 +49,17 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     assert_equal SubscriptionService::PLANS.keys.map(&:to_s), select_values(document, "subscription_plan")
     assert_equal Subscription::PAYMENT_METHODS, select_values(document, "subscription_payment_method")
     assert_equal Subscription::STATES, select_values(document, "subscription_state")
+    expires_at_field = document.at_css("#subscription_expires_at")
+    assert_equal "text", expires_at_field["type"]
+    assert_equal @subscription.expires_at, Time.iso8601(expires_at_field["value"])
     assert_includes response.body, "Save and refresh from Chargify"
 
-    put :update, params: { id: @subscription.id, subscription: { plan: "community", max_members: 200 } }
+    expires_at = "2026-10-07T00:59:00Z"
+    put :update, params: { id: @subscription.id, subscription: { plan: "community", max_members: 200, expires_at: expires_at } }
     assert_redirected_to admin_subscription_path(@subscription)
     assert_equal "community", @subscription.reload.plan
     assert_equal 200, @subscription.max_members
+    assert_equal Time.zone.parse(expires_at), @subscription.expires_at
   end
 
   test "admin can update the Chargify ID and refresh in one action" do
