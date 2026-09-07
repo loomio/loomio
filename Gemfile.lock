@@ -342,7 +342,7 @@ GEM
       logger
       ostruct
     ice_cube (0.17.0)
-    image_processing (2.0.3)
+    image_processing (2.1.0)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -773,7 +773,7 @@ DEPENDENCIES
   http_accept_language
   i18n-timezones
   icalendar
-  image_processing (~> 2.0)
+  image_processing (~> 2.1)
   maxminddb
   mini_magick (~> 5.4)
   minitest (~> 6.0)
