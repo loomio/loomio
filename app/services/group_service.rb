@@ -105,7 +105,7 @@ module GroupService
       url = remote_cover_photo
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))
       group.creator = actor if actor.is_logged_in?
-      group.subscription = Subscription.new
+      group.subscription ||= Subscription.new
     end
 
     group.save!

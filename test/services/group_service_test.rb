@@ -18,6 +18,21 @@ class GroupServiceTest < ActiveSupport::TestCase
     assert_equal @user, group.reload.creator
   end
 
+  test "preserves an explicitly assigned subscription when creating a parent group" do
+    subscription = Subscription.new(plan: "demo", owner: @user)
+    group = Group.new(
+      name: "Demo Group",
+      handle: "demo-group-#{SecureRandom.hex(4)}",
+      group_privacy: "closed",
+      subscription: subscription
+    )
+
+    GroupService.create(group: group, actor: @user)
+
+    assert_equal subscription, group.reload.subscription
+    assert_equal "demo", group.subscription.plan
+  end
+
   test "publishes a public subgroup to parent group members" do
     parent = create_parent_group(group_privacy: 'closed')
     subgroup = Group.new(

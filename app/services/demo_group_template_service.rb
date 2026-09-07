@@ -159,6 +159,7 @@ class DemoGroupTemplateService
       membership_granted_upon: template.fetch("membership_granted_upon"),
       discussion_privacy_options: "private_only",
       creator: actor,
+      subscription: Subscription.new(plan: "demo", owner: actor),
       info: {
         "demo_group_template" => template_key,
         "demo_group_queued" => queued,
@@ -169,7 +170,6 @@ class DemoGroupTemplateService
     GroupService.create(group: group, actor: actor, skip_authorize: true).tap do |created_group|
       raise ActiveRecord::RecordInvalid, created_group unless created_group.persisted?
 
-      created_group.subscription.update!(plan: "demo", owner: actor)
       attach_group_asset!(created_group.cover_photo, template.fetch("cover_photo"))
       attach_group_asset!(created_group.logo, template.fetch("logo"))
     end

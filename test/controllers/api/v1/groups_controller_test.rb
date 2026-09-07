@@ -150,6 +150,23 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal "newgroup", group_data['handle']
   end
 
+  test "create does not accept a client-supplied subscription" do
+    sign_in @user
+    paid_subscription = subscriptions(:cleanup_active_paid)
+
+    assert_no_difference "Group.count" do
+      post :create, params: {
+        group: {
+          name: "New Group",
+          handle: "newgroup-#{SecureRandom.hex(4)}",
+          subscription_id: paid_subscription.id
+        }
+      }
+    end
+
+    assert_response :bad_request
+  end
+
   test "create creates a group and adds creator as admin" do
     sign_in @user
 
