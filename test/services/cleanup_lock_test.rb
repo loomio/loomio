@@ -4,7 +4,7 @@ require "timeout"
 class CleanupLockTest < ActiveSupport::TestCase
   test "inactive-user deletion skips concurrent writers and leaves its transaction usable" do
     user = users(:orphan_user)
-    assert_includes InactiveUserCleanupService.orphan_user_ids, user.id
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
     acquired = Queue.new
     release = Queue.new
     # Rails pins the fixture connection across threads. Use a genuinely
@@ -26,7 +26,7 @@ class CleanupLockTest < ActiveSupport::TestCase
 
     result = Timeout.timeout(5) { acquired.pop }
     raise result if result.is_a?(Exception)
-    InactiveUserCleanupService.destroy_orphan_users
+    CleanupService.delete_inactive_orphan_users
     assert User.exists?(user.id)
   ensure
     release << true if release

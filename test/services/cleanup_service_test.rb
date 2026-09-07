@@ -189,18 +189,18 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert ActiveStorage::Blob.exists?(blob.id)
   end
 
-  test "destroy_orphan_users deletes long-inactive users with no durable references" do
+  test "delete_inactive_orphan_users deletes long-inactive users with no durable references" do
     user = build_inactive_user
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
-    assert_includes InactiveUserCleanupService.orphan_user_ids, user.id
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
 
-    InactiveUserCleanupService.destroy_orphan_users
+    CleanupService.delete_inactive_orphan_users
 
     assert_not User.exists?(user.id)
     assert_not PaperTrail::Version.exists?(item_type: 'User', item_id: user.id)
   end
 
-  test "orphan_user_ids excludes users who created groups" do
+  test "inactive_orphan_user_ids excludes users who created groups" do
     user = build_inactive_user
     Group.create!(
       name: "Created Group #{@hex}",
@@ -208,6 +208,6 @@ class CleanupServiceTest < ActiveSupport::TestCase
       group_privacy: 'secret'
     )
 
-    assert_not_includes InactiveUserCleanupService.orphan_user_ids, user.id
+    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
   end
 end

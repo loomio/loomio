@@ -3,5 +3,6 @@ class CleanupOrphanRecordsWorker < ApplicationJob
 
   def perform
     CleanupService.delete_orphan_records
+    CleanupService.delete_inactive_orphan_users
   end
 end

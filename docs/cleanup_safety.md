@@ -4,7 +4,7 @@ Cleanup eligibility is not permission to delete a later version of a record. Lif
 
 ## Preserved records
 
-- Inactive-account cleanup uses the most recent account-creation, current-sign-in, previous-sign-in, or last-seen timestamp. It retains instance administrators and accounts with durable ownership, content, membership, access, identity, or notification references.
+- Inactive-account cleanup removes accounts after 60 days without activity, using the most recent account-creation, current-sign-in, previous-sign-in, or last-seen timestamp. It retains instance administrators and accounts with durable ownership, content, membership, access, identity, or notification references.
 - Seeded-content cleanup requires a known historical helper email and a matching legacy title, before the retirement cutoff. The API-account `bot` flag is not historical provenance. Member-authored matching titles are retained. Member activity, edits by unknown actors, and edits or replies to helper-authored comments preserve the affected content, including comments missing their timeline entries.
 - Empty-group cleanup schedules a dedicated eligibility recheck without archiving the group. The worker checks the selected root's entire subtree and preserves configured groups and historical activity.
 - Orphan cleanup retains comments with a surviving parent, a surviving topic link, or dependent replies. It retains damaged timeline ancestors with children and groups with missing parents. These remain visible in integrity audits; cleanup does not silently reparent a private group or grant access to a different hierarchy.

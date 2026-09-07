@@ -1,7 +1,7 @@
 require "test_helper"
 require_relative "../support/access_volume_matrix"
 
-class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
+class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
   include AccessVolumeMatrix
   MEMBERSHIP_MATRIX_USERS = %i[
     member_quiet
@@ -39,7 +39,7 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
       deactivated_old_orphan: { user: users(:orphan_deactivated_user), eligible: true },
       deactivated_recent_orphan: { user: users(:orphan_recent_deactivated_user), eligible: false }
     }
-    candidate_ids = InactiveUserCleanupService.orphan_user_ids
+    candidate_ids = CleanupService.inactive_orphan_user_ids
 
     matrix.each do |name, entry|
       assert_equal entry[:eligible], candidate_ids.include?(entry[:user].id), name
@@ -51,11 +51,24 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     user = users(:orphan_cutoff_user)
     user.update_column(:last_sign_in_at, cutoff)
 
-    assert_not_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+    assert_not_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
 
     user.update_column(:last_sign_in_at, cutoff - 1.second)
 
-    assert_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+    assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+  end
+
+  test "uses a 60-day default retention period" do
+    travel_to Time.zone.local(2026, 9, 7, 12) do
+      user = users(:orphan_cutoff_user)
+      user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 60.days.ago)
+
+      assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+
+      user.update_column(:last_sign_in_at, 60.days.ago - 1.second)
+
+      assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    end
   end
 
   test "uses account age for former invitees who never signed in" do
@@ -63,11 +76,11 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     user = users(:orphan_recent_invitee_user)
     user.update_column(:created_at, cutoff)
 
-    assert_not_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+    assert_not_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
 
     user.update_column(:created_at, cutoff - 1.second)
 
-    assert_includes InactiveUserCleanupService.orphan_user_ids(inactive_before: cutoff), user.id
+    assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
   end
 
   test "preserves every membership role in the reusable user matrix" do
@@ -75,14 +88,14 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
     users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
-    candidate_ids = InactiveUserCleanupService.orphan_user_ids
+    candidate_ids = CleanupService.inactive_orphan_user_ids
 
     users.each do |user|
       assert Membership.where(user_id: user.id).exists?, "#{user.username} must have membership history"
       assert_not_includes candidate_ids, user.id, user.username
     end
 
-    InactiveUserCleanupService.destroy_orphan_users
+    CleanupService.delete_inactive_orphan_users
     users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
     assert_access_volume_matrix_unchanged(before)
 
@@ -99,13 +112,13 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
     users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
-    candidate_ids = InactiveUserCleanupService.orphan_user_ids
+    candidate_ids = CleanupService.inactive_orphan_user_ids
 
     users.each do |user|
       assert TopicReader.where(topic: direct_topic, user: user).exists?, "#{user.username} must participate in the direct topic"
       assert_not_includes candidate_ids, user.id, user.username
     end
-    InactiveUserCleanupService.destroy_orphan_users
+    CleanupService.delete_inactive_orphan_users
     users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
     assert_access_volume_matrix_unchanged(before)
   end
@@ -114,10 +127,10 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     user = users(:orphan_user)
     %i[current_sign_in_at last_seen_at last_sign_in_at created_at].each do |column|
       user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil)
-      assert_includes InactiveUserCleanupService.orphan_user_ids, user.id
+      assert_includes CleanupService.inactive_orphan_user_ids, user.id
       user.update_column(column, Time.current)
 
-      InactiveUserCleanupService.destroy_orphan_users
+      CleanupService.delete_inactive_orphan_users
 
       assert User.exists?(user.id), column
     end
@@ -125,10 +138,10 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
 
   test "subscription ownership alone protects an inactive account" do
     user = users(:orphan_user)
-    assert_includes InactiveUserCleanupService.orphan_user_ids, user.id
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
     subscriptions(:cleanup_active_paid).update_column(:owner_id, user.id)
 
-    InactiveUserCleanupService.destroy_orphan_users
+    CleanupService.delete_inactive_orphan_users
 
     assert User.exists?(user.id)
   end
@@ -137,18 +150,42 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
     user = users(:orphan_user)
     user.update!(is_admin: true)
 
-    InactiveUserCleanupService.destroy_orphan_users
+    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+
+    CleanupService.delete_inactive_orphan_users
 
     assert User.exists?(user.id)
   end
 
+  test "deletion revokes transient account access" do
+    user = users(:orphan_user)
+    session = Session.create!(user: user)
+    login_token = LoginToken.create!(user: user)
+    push_subscription = create_push_subscription(
+      user: user,
+      session: session,
+      endpoint: "https://fcm.googleapis.com/fcm/send/inactive-orphan-user",
+      p256dh_key: "key",
+      auth_key: "auth"
+    )
+
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+
+    CleanupService.delete_inactive_orphan_users
+
+    assert_not User.exists?(user.id)
+    assert_not Session.exists?(session.id)
+    assert_not LoginToken.exists?(login_token.id)
+    assert_not PushSubscription.exists?(push_subscription.id)
+  end
+
   test "new references after selection protect the user and their work" do
     user = users(:orphan_user)
-    ids = InactiveUserCleanupService.orphan_user_ids
+    ids = CleanupService.inactive_orphan_user_ids
     assert_includes ids, user.id
     group = Group.create!(name: "New work", creator: user, group_privacy: "secret")
 
-    InactiveUserCleanupService.stub(:orphan_user_ids, ids) { InactiveUserCleanupService.destroy_orphan_users }
+    CleanupService.stub(:inactive_orphan_user_ids, ids) { CleanupService.delete_inactive_orphan_users }
 
     assert User.exists?(user.id)
     assert Group.exists?(group.id)
@@ -161,9 +198,9 @@ class InactiveUserCleanupServiceTest < ActiveSupport::TestCase
       scope = Minitest::Mock.new
       scope.expect(:where, scope, [], id: user.id)
       scope.expect(:first, user)
-      InactiveUserCleanupService.stub(:orphan_user_ids, [ user.id ]) do
-        InactiveUserCleanupService.stub(:orphan_users, scope) do
-          assert_raises(RuntimeError) { InactiveUserCleanupService.destroy_orphan_users }
+      CleanupService.stub(:inactive_orphan_user_ids, [ user.id ]) do
+        CleanupService.stub(:inactive_orphan_users, scope) do
+          assert_raises(RuntimeError) { CleanupService.delete_inactive_orphan_users }
         end
       end
       scope.verify

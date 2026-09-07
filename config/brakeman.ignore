@@ -181,8 +181,8 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "d2f2a51984593d20785619e810841226004946a8cf8fe6cecec79fd42a1a57f0",
-      "note": "Reviewed 2026-09-06 — refreshed after adding the cleanup_references alias. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/inactive_user_cleanup_service.rb#orphan_users)"
+      "fingerprint": "f4a4793152c8bde7fb33bad9151d6b67f6f8e0911c388cc8363b7e52c5d641c6",
+      "note": "Reviewed 2026-09-07 — refreshed after moving inactive orphan-user cleanup into CleanupService. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/cleanup_service.rb#inactive_orphan_users)"
     },
     {
       "fingerprint": "8f74c254b8c5a6399b0de5c1b1cb9eedac1affce891bc0eeb11b4d621540f1f4",
