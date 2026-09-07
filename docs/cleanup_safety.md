@@ -5,8 +5,6 @@ Cleanup eligibility is not permission to delete a later version of a record. Lif
 ## Preserved records
 
 - Inactive-account cleanup removes accounts after 60 days without activity, using the most recent account-creation, current-sign-in, previous-sign-in, or last-seen timestamp. It retains instance administrators and accounts with durable ownership, content, membership, access, identity, or notification references.
-- Seeded-content cleanup requires a known historical helper email and a matching legacy title, before the retirement cutoff. The API-account `bot` flag is not historical provenance. Member-authored matching titles are retained. Member activity, edits by unknown actors, and edits or replies to helper-authored comments preserve the affected content, including comments missing their timeline entries.
-- Empty-group cleanup schedules a dedicated eligibility recheck without archiving the group. The worker checks the selected root's entire subtree and preserves configured groups and historical activity.
 - Orphan cleanup retains comments with a surviving parent, a surviving topic link, or dependent replies. It retains damaged timeline ancestors with children and groups with missing parents. These remain visible in integrity audits; cleanup does not silently reparent a private group or grant access to a different hierarchy.
 
 The guards are deliberately conservative. Audit counts for broken references include records retained for repair and are not predictions of how many rows will be deleted.
@@ -17,7 +15,7 @@ Cleanup tests reuse the access and volume fixtures for group topics and direct t
 
 ## Running maintenance
 
-Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Do not run multiple seeded-cleanup shards concurrently: the safety locks serialize their work, and a busy shard may skip candidates. Re-audit after a run; skipped candidates do not mean cleanup completed.
+Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Re-audit after a run; skipped candidates do not mean cleanup completed.
 
 Use an isolated database copy with application workers stopped for destructive validation. Confirm the actual database connection before running a deletion task. Compare the original and resulting record identities and content, not only counts. Do not use a previously cleaned snapshot as an untouched baseline.
 
