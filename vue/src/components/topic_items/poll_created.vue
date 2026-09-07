@@ -77,7 +77,7 @@ section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
-    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
     poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal")
+    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
 </template>

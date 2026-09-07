@@ -20,6 +20,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectText('.poll-common-stance-created__reason', 'A reason')
+    page.expectElement('.poll-created .poll-common-chart-panel ~ .poll-common-action-panel .poll-common-current-vote')
   },
 
   'can_start_a_poll_in_a_group': (test) => {
