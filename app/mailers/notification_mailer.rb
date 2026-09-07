@@ -92,6 +92,7 @@ class NotificationMailer < ApplicationMailer
 
   def deliver_notification(topic_item:, recipient:, notification:)
     return if topic_item.itemable.nil?
+    return if NotificationService.group_archived?(topic_item.itemable)
     return if topic_item.itemable.respond_to?(:discarded?) && topic_item.itemable.discarded?
 
     poll = if %w[Poll Stance Outcome].include? topic_item.itemable_type

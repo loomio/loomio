@@ -96,6 +96,8 @@ class ChatbotService
   end
 
   def self.publish_to_chatbot!(topic_item:, chatbot:)
+    return if NotificationService.group_archived?(chatbot)
+
     template_name = topic_item.itemable_type.tableize.singularize
     template_name = 'poll' if topic_item.itemable_type == 'Outcome'
     template_name = 'group' if topic_item.itemable_type == 'Membership'

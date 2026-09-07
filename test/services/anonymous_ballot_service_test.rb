@@ -18,6 +18,33 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
   end
 
+  test "archival rejects anonymous ballots without changing ballots or voter state" do
+    @group.archive!
+    @poll.reload
+    assert_no_difference ["AnonymousBallot.count", "AnonymousBallotChoice.count", "Notification.count"] do
+      assert_raises(CanCan::AccessDenied) do
+        AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+      end
+    end
+    assert_not @poll.anonymous_poll_voters.find_by!(voter_id: @voter.id).ballot_submitted?
+  end
+
+  test "direct anonymous polls still accept ballots after group archival" do
+    @poll = PollService.create(
+      params: {
+        title: "Direct anonymous poll", topic_id: topics(:direct_topic).id,
+        poll_type: "proposal", closing_at: 3.days.from_now, anonymous: true,
+        poll_option_names: ["Agree", "Disagree"]
+      },
+      actor: users(:guest_admin_normal)
+    )
+    @group.archive!
+    assert_difference "AnonymousBallot.count", 1 do
+      AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: users(:guest_normal))
+    end
+    assert @poll.anonymous_poll_voters.find_by!(voter_id: users(:guest_normal).id).ballot_submitted?
+  end
+
   test "new anonymous polls use detached ballots and a named electorate" do
     assert @poll.detached_anonymous?
     assert_equal "until_closed", @poll.hide_results
@@ -255,6 +282,23 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_no_difference "Notification.count" do
       CloseExpiredPollWorker.perform_now(@poll.id)
     end
+  end
+
+  test "archived anonymous polls close without reminders or expiry notifications" do
+    @group.archive!
+    travel_to(@poll.closing_at - 24.hours + 1.minute) do
+      assert_no_difference "Notification.count" do
+        PollService.publish_closing_soon
+      end
+    end
+
+    travel_to(@poll.closing_at + 1.minute) do
+      assert_no_difference "Notification.count" do
+        CloseExpiredPollWorker.perform_now(@poll.id)
+      end
+    end
+    assert_not_nil @poll.reload.closed_at
+    assert_empty @poll.stances
   end
 
   test "manual anonymous poll close creates no user or stance delivery identity" do

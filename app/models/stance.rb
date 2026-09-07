@@ -91,7 +91,10 @@ class Stance < ApplicationRecord
   scope :invited, -> { where("inviter_id is not null") }
   scope :none_of_the_above, -> { where(none_of_the_above: true) }
 
-  scope :redeemable, -> { latest.invited.undecided.where('stances.accepted_at IS NULL') }
+  scope :redeemable, -> {
+    latest.invited.undecided.where('stances.accepted_at IS NULL')
+      .where(poll_id: Poll.where(topic_id: Topic.left_joins(:group).not_archived.select(:id)).select(:id))
+  }
   scope :redeemable_by,  -> (user_id) {
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
   }

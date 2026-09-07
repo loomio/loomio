@@ -37,7 +37,8 @@ class PollQuery
                          #{public_group_ids ? public_visibility_sql(public_group_ids) : 't.private = FALSE OR'}
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                          (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id, public_group_ids: public_group_ids)
-    chain
+    # Apply archival to every caller, including custom chains and public polls.
+    chain.where(topic_id: Topic.left_joins(:group).not_archived.select(:id))
   end
 
   def self.public_visibility_sql(public_group_ids)

@@ -53,6 +53,7 @@ class NotificationDeliveryRouter
 
   def route!
     return [] if notification.deliveries_generated_at?
+    return [] if NotificationService.group_archived?(notification.subject)
 
     recipients = recipients_by_channel.transform_values(&:to_a)
     recipients["email"] = email_recipients_without_complaints(recipients.fetch("email", []))

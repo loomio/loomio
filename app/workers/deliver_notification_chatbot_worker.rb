@@ -6,6 +6,7 @@ class DeliverNotificationChatbotWorker < ApplicationJob
     delivery = NotificationDelivery.find_by(id: notification_delivery_id, channel: "chatbot")
     return unless delivery
     return if delivery.delivered_at?
+    return if NotificationService.group_archived?(delivery.notification.subject)
 
     ChatbotService.publish_notification_delivery!(delivery.id)
     delivery.update!(delivered_at: Time.current)

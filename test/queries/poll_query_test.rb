@@ -46,6 +46,31 @@ class PollQueryTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "archival excludes public private and anonymous polls from every visibility entry point" do
+    group_poll = @in_a_group
+    public_poll = make_poll(topic: topics(:public_discussion_topic), private: false)
+    anonymous_poll = make_poll(topic: topics(:discussion_topic), anonymous: true)
+    groups(:group).archive!
+    groups(:public_group).archive!
+    actors = %i[admin user member_normal guest_normal guest_admin_normal alien_loud
+                non_guest_loud former_guest_loud inactive_guest_loud].map { |role| users(role) }
+    actors << LoggedOutUser.new
+    actors << LoggedOutUser.new(params: {topic_reader_token: topic_readers(:guest_normal_reader).token})
+
+    [group_poll, public_poll, anonymous_poll].each do |poll|
+      [nil, Time.current].each do |closed_at|
+        poll.update_column(:closed_at, closed_at)
+        actors.each do |actor|
+          assert_not PollQuery.visible_to(user: actor).exists?(poll.id)
+          assert_not PollQuery.visible_to(user: actor, chain: Poll.all).exists?(poll.id)
+          assert_not PollQuery.relevant_to(user: actor, group_ids: [poll.group_id]).exists?(poll.id)
+          assert_not actor.can?(:show, poll.reload)
+        end
+      end
+    end
+    assert PollQuery.visible_to(user: @user).exists?(@authored.id)
+  end
+
   test "finds polls the user knows about" do
     results = PollQuery.visible_to(user: @user)
     assert_includes results, @participated
