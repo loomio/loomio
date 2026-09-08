@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -333,16 +333,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_06_000000) do
     t.index ["group_id", "handle"], name: "index_group_handle_redirects_on_group_id_and_handle", unique: true
     t.index ["group_id"], name: "index_group_handle_redirects_on_group_id"
     t.index ["handle"], name: "index_group_handle_redirects_on_handle", unique: true
-  end
-
-  create_table "group_identities", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.jsonb "custom_fields", default: {}, null: false
-    t.integer "group_id", null: false
-    t.integer "identity_id", null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["group_id"], name: "index_group_identities_on_group_id"
-    t.index ["identity_id"], name: "index_group_identities_on_identity_id"
   end
 
   create_table "group_surveys", force: :cascade do |t|
