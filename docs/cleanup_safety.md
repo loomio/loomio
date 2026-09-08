@@ -16,7 +16,7 @@ Cleanup tests reuse the access and volume fixtures for group topics and direct t
 
 ## Running maintenance
 
-Legacy references are not all protected by foreign keys. Destructive lifecycle rechecks use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Do not run multiple seeded-cleanup shards concurrently: the safety locks serialize their work, and a busy shard may skip candidates. Re-audit after a run; skipped candidates do not mean cleanup completed.
+Legacy references are not all protected by foreign keys. Orphan-comment, topic-item and inactive-user cleanup use transactional table locks with `NOWAIT`; they skip busy tables rather than wait for existing writers. New writers can wait while an acquired lock is held. Run large cleanup operations during maintenance, with small batches and application writers drained where practical. Seeded-content cleanup uses batch transactions and eligibility rechecks without explicit table or row locks. Re-audit seeded content after deletion to confirm no eligible records remain.
 
 Use an isolated database copy with application workers stopped for destructive validation. Confirm the actual database connection before running a deletion task. Compare the original and resulting record identities and content, not only counts. Do not use a previously cleaned snapshot as an untouched baseline.
 

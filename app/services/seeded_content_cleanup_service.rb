@@ -6,7 +6,6 @@
 module SeededContentCleanupService
   CREATED_BEFORE = Date.new(2023, 8, 5)
   DELETE_BATCH_SIZE = 200
-  REFERENCE_TABLES = %i[users groups topics discussions polls poll_options topic_items comments stances stance_choices anonymous_ballots anonymous_ballot_choices anonymous_poll_voters outcomes reactions versions active_storage_attachments bookmarks tasks topic_readers].freeze
 
   HELPER_BOT_EMAILS = %w[
     contact@loom.io
@@ -170,8 +169,8 @@ module SeededContentCleanupService
 
     PaperTrail.request(enabled: false) do
       discussion_ids.each_slice(batch_size) do |ids|
-        CleanupService.with_write_lock(REFERENCE_TABLES) do
-          discussions_by_id = discussion_scope.where(id: ids).lock.index_by(&:id)
+        ActiveRecord::Base.transaction do
+          discussions_by_id = discussion_scope.where(id: ids).index_by(&:id)
           ids.each do |id|
             discussion = discussions_by_id[id]
             next unless discussion
@@ -185,8 +184,8 @@ module SeededContentCleanupService
       poll_ids_remaining = Poll.where(id: poll_ids).pluck(:id)
       polls_deleted = poll_ids.length - poll_ids_remaining.length
       poll_ids_remaining.each_slice(batch_size) do |ids|
-        CleanupService.with_write_lock(REFERENCE_TABLES) do
-          polls_by_id = poll_scope.where(id: ids).lock.index_by(&:id)
+        ActiveRecord::Base.transaction do
+          polls_by_id = poll_scope.where(id: ids).index_by(&:id)
           ids.each do |id|
             poll = polls_by_id[id]
             next unless poll
