@@ -1,1 +1,7 @@
 # Polls are created in tests via PollService.create
+
+trial_cleanup_poll:
+  key: trclpoll
+  title: Trial cleanup standalone poll
+  poll_type: proposal
+  author: user

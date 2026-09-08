@@ -218,3 +218,65 @@ used_recent_subgroup:
   parent: used_recent_subgroup_tree
   created_at: <%= 1.day.ago %>
   updated_at: <%= 1.day.ago %>
+
+# Daily empty-trial cleanup eligibility matrix.
+trial_cleanup_recent:
+  name: Trial cleanup recent
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_recent
+
+trial_cleanup_no_expiry:
+  name: Trial cleanup no_expiry
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_no_expiry
+
+trial_cleanup_discarded:
+  name: Trial cleanup discarded
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_discarded
+  discarded_at: <%= 1.day.ago %>
+
+trial_cleanup_poll:
+  name: Trial cleanup poll
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_poll
+
+trial_cleanup_billing:
+  name: Trial cleanup billing
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_billing
+
+trial_cleanup_chargify:
+  name: Trial cleanup chargify
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_chargify
+
+trial_cleanup_shared:
+  name: Trial cleanup shared
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_shared
+
+trial_cleanup_shared_other:
+  name: Trial cleanup shared_other
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_shared
+
+trial_cleanup_child_subscription:
+  name: Trial cleanup child_subscription
+  creator: user
+  created_at: <%= 2.years.ago %>
+  subscription: trial_cleanup_child_subscription
+
+trial_cleanup_subscribed_child:
+  name: Trial cleanup subscribed_child
+  parent: trial_cleanup_child_subscription
+  creator: user
+  subscription: cleanup_active_paid

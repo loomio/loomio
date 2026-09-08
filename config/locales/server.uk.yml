@@ -320,7 +320,7 @@ uk:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -339,12 +339,11 @@ uk:
       thanks_for_reading: Дякуємо за читання, гарного дня!
       marked_as_read_success: Все в листі було позначено як прочитане
       click_here: Натисніть тут
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -427,6 +426,19 @@ uk:
     trial_expired:
       subject: Вашу групу Loomio буде видалено через неактивність.
       body: Ваша група Loomio "%{group}" була неактивною та буде видалена через 2 тижні. Якщо ви не хочете, щоб вашу групу видалили, будь ласка, дайте відповідь на цей електронний лист.
+    destroy_warning_with_usage:
+      subject: Вашу групу Loomio заплановано на видалення
+      requested: Вашу групу Loomio "%{group}" було заплановано на видалення користувачем %{requester}. Її буде видалено назавжди через 2 тижні.
+      trial_expired: Ваша група Loomio "%{group}" перебуває на пробній версії, термін дії якої закінчився, щонайменше 60 днів. Її буде остаточно видалено через 2 тижні.
+      usage_heading: 'Зведена інформація про групу:'
+      subgroups: Підгрупи
+      members: Поточні члени
+      discussions: Обговорення
+      polls: Опитування
+      comments: Коментарі
+      export: Щоб зберегти групу або експортувати копію її даних, дайте відповідь на цей електронний лист протягом 2 тижнів. Ми можемо відновити доступ до видалення.
+      export_link: Дізнайтеся про експорт даних групи
+      group_key: 'Ключ групи: %{key}'
   poll_mailer:
     common:
       why_send_this: Ви отримали цей лист, тому що %{reason}

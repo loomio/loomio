@@ -22,6 +22,8 @@ class HourlyTaskJob < ApplicationJob
     if hour == 0
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
+      CleanupEmptyTrialsWorker.perform_later
+      WarnExpiredTrialGroupsWorker.perform_later
       CleanupOrphanRecordsWorker.perform_later
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later

@@ -317,7 +317,7 @@ ru:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -336,12 +336,11 @@ ru:
       thanks_for_reading: Спасибо, что прочли и удачного дня!
       marked_as_read_success: Все в этом письме отмечено прочитанным
       click_here: Кликните здесь
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -424,6 +423,19 @@ ru:
     trial_expired:
       subject: Ваша группа в Loomio будет удалена из-за неактивности.
       body: Ваша группа Loomio "%{group}" неактивна и будет удалена через 2 недели. Если вы не хотите, чтобы ваша группа была удалена, пожалуйста, ответьте на это письмо.
+    destroy_warning_with_usage:
+      subject: Ваша группа в Loomio запланирована к удалению.
+      requested: Ваша группа Loomio "%{group}" была запланирована к удалению пользователем %{requester}. Она будет безвозвратно удалена через 2 недели.
+      trial_expired: Ваша группа Loomio "%{group}" находится в режиме истекшего пробного периода как минимум 60 дней. Она будет безвозвратно удалена через 2 недели.
+      usage_heading: 'Сводные данные по группе:'
+      subgroups: Подгруппы
+      members: Действующие члены
+      discussions: Обсуждения
+      polls: Опросы
+      comments: Комментарии
+      export: Чтобы сохранить группу или экспортировать копию ее данных, ответьте на это письмо в течение 2 недель. Мы сможем восстановить доступ до удаления.
+      export_link: Узнайте об экспорте групповых данных.
+      group_key: 'Ключ группы: %{key}'
   poll_mailer:
     common:
       why_send_this: Вы получили это письмо, потому что %{reason}

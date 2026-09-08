@@ -1,16 +1,20 @@
 class GroupMailer < ApplicationMailer
-  def destroy_warning(group_id, recipient_id, deletor_id)
+  def destroy_warning(group_id, recipient_id, requester_id = nil, reason = nil)
     group = Group.find(group_id)
     recipient = User.find(recipient_id)
-    deletor = User.find(deletor_id)
+    requester = User.find(requester_id) if requester_id
 
     component = Views::GroupMailer::DestroyWarning.new(
-      group: group, recipient: recipient, deletor: deletor
+      group: group,
+      recipient: recipient,
+      requester: requester,
+      reason: reason,
+      usage: GroupUsageSummary.for(group)
     )
 
     send_email(to: recipient.name_and_email, locale: recipient.locale, component: component,
                reply_to: ENV['SUPPORT_EMAIL']) {
-      I18n.t("group_mailer.destroy_warning.subject")
+      I18n.t("group_mailer.destroy_warning_with_usage.subject")
     }
   end
 

@@ -76,3 +76,8 @@ cleanup_discarded_topic:
   discarded_at: <%= 1.year.ago %>
   created_at: <%= 2.years.ago %>
   updated_at: <%= 1.year.ago %>
+
+trial_cleanup_poll:
+  topicable: trial_cleanup_poll (Poll)
+  group: trial_cleanup_poll
+  private: true

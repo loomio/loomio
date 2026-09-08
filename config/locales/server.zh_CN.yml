@@ -576,7 +576,7 @@ zh_CN:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -595,12 +595,11 @@ zh_CN:
       thanks_for_reading: 感谢阅读，祝您度过美好的一天！
       marked_as_read_success: 邮件中的所有内容均已标记为已读
       click_here: 点击这里
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -677,6 +676,19 @@ zh_CN:
     trial_expired:
       subject: 由于长时间未活动，您的 Loomio 群组将被删除。
       body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
+    destroy_warning_with_usage:
+      subject: 您的 Loomio 群组已被安排删除
+      requested: 您的 Loomio 群组“%{group}”已被 %{requester} 安排删除。该群组将在 2 周后永久删除。
+      trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 2 周后被永久删除。
+      usage_heading: 组数据汇总：
+      subgroups: 亚组
+      members: 现任成员
+      discussions: 讨论
+      polls: 民意调查
+      comments: 评论
+      export: 如需保留该群组或导出其数据副本，请在两周内回复此邮件。我们可以在删除前恢复访问权限。
+      export_link: 了解如何导出群组数据
+      group_key: 组键：%{key}
   forward_mailer:
     bounce:
       subject: 您发送给 Loomio 的消息未送达

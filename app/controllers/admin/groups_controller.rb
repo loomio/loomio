@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update move handle discard undiscard delete_group export_group]
+  before_action :load_group, only: %i[show edit update move handle undiscard warn_then_destroy destroy_immediately export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -75,19 +75,19 @@ class Admin::GroupsController < Admin::BaseController
     redirect_to admin_group_path(@group), notice: notice
   end
 
-  def discard
-    @group.discard!(actor: current_user)
-    redirect_to admin_group_path(@group), notice: "Group discarded"
-  end
-
   def undiscard
     @group.undiscard!(actor: current_user)
     redirect_to admin_group_path(@group), notice: "Group restored"
   end
 
-  def delete_group
-    GroupService.destroy_without_warning!(@group.id, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group deletion scheduled"
+  def warn_then_destroy
+    GroupService.warn_then_destroy(group: @group, actor: current_user)
+    redirect_to admin_groups_path, notice: "Group administrators warned; deletion scheduled in 2 weeks"
+  end
+
+  def destroy_immediately
+    GroupService.destroy_immediately!(@group.id, actor: current_user)
+    redirect_to admin_groups_path, notice: "Group deletion scheduled immediately"
   end
 
   def export_group

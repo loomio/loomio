@@ -345,3 +345,11 @@ languages in the Nov 2025 pass.
 | `config/locales/client.tr.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Bu ayarları %{group} içindeki tüm iş parçacıklarına uygulayın.` | `Bu ayarları %{group} içindeki tüm konulara uygula` | Formal imperative, software-thread terminology, and final full stop |
 | `config/locales/client.zh_CN.yml` | `change_volume_form.apply_to_all_threads_in_group` | `将这些设置应用于 %{group} 中的所有线程` | `将这些设置应用于 %{group} 中的所有讨论主题` | Used software-execution-thread terminology instead of discussion topics |
 | `config/locales/client.zh_TW.yml` | `change_volume_form.apply_to_all_threads_in_group` | `將這些設定應用於 %{group} 中的所有線程` | `將這些設定套用至 %{group} 中的所有討論串` | Used software-execution-thread terminology instead of discussion threads |
+
+## 2026-09-09 — Group deletion warnings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.it.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{chiave}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |
+| `config/locales/server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{sleutel}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |
+| `config/locales/server.ru.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{ключ}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |

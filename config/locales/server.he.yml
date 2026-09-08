@@ -318,7 +318,7 @@ he:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -337,12 +337,11 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -425,6 +424,19 @@ he:
     trial_expired:
       subject: קבוצת Loomio שלך תימחק עקב חוסר פעילות.
       body: קבוצת Loomio שלך "%{group}" אינה פעילה ותימחק בעוד שבועיים. אם אינך מעוניין שהקבוצה שלך תימחק, אנא השב למייל זה.
+    destroy_warning_with_usage:
+      subject: קבוצת Loomio שלך מתוכננת למחיקה
+      requested: קבוצת Loomio שלך "%{group}" תוכננה למחיקה על ידי %{requester}. היא תימחק לצמיתות בעוד שבועיים.
+      trial_expired: קבוצת ה-Loomio שלך "%{group}" נמצאת בתקופת ניסיון שפג תוקפה במשך 60 יום לפחות. היא תימחק לצמיתות בעוד שבועיים.
+      usage_heading: 'סיכום נתוני הקבוצה:'
+      subgroups: תת-קבוצות
+      members: חברים נוכחיים
+      discussions: דיונים
+      polls: סקרים
+      comments: הערות
+      export: כדי לשמור את הקבוצה או לייצא עותק של הנתונים שלה, יש להשיב לאימייל זה תוך שבועיים. נוכל לשחזר את הגישה לפני המחיקה.
+      export_link: למד על ייצוא נתוני קבוצה
+      group_key: 'מפתח קבוצה: %{key}'
   poll_mailer:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}

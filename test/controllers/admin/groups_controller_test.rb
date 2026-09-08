@@ -44,7 +44,8 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
     assert_includes response.body, "Parent group ID or key"
-    assert_includes response.body, "Discard group"
+    assert_includes response.body, "Warn then delete"
+    assert_includes response.body, "Delete immediately"
     assert_includes response.body, "all of its subgroups"
     assert_includes response.body, "memberships and membership requests"
     assert_includes response.body, "User accounts and subscriptions are retained"
@@ -149,18 +150,25 @@ class Admin::GroupsControllerTest < ActionController::TestCase
   test "admin group operations call the group service" do
     sign_in @admin
     moved = false
-    destroyed_id = nil
+    warned = false
+    destroyed_immediately = false
 
     GroupService.stub(:move, ->(group:, parent:, actor:) { moved = group == @group && parent == groups(:public_group) && actor == @admin }) do
       post :move, params: { id: @group.id, parent_id: groups(:public_group).id }
     end
     assert moved
 
-    GroupService.stub(:destroy_without_warning!, ->(id, actor:) { destroyed_id = id if actor == @admin }) do
-      post :delete_group, params: { id: @group.id }
+    GroupService.stub(:warn_then_destroy, ->(group:, actor:) { warned = group == @group && actor == @admin }) do
+      post :warn_then_destroy, params: { id: @group.id }
     end
-    assert_equal @group.id, destroyed_id
-    assert_equal "Group deletion scheduled", flash[:notice]
+    assert warned
+    assert_equal "Group administrators warned; deletion scheduled in 2 weeks", flash[:notice]
+
+    GroupService.stub(:destroy_immediately!, ->(id, actor:) { destroyed_immediately = id == @group.id && actor == @admin }) do
+      post :destroy_immediately, params: { id: @group.id }
+    end
+    assert destroyed_immediately
+    assert_equal "Group deletion scheduled immediately", flash[:notice]
   end
 
   test "admin can schedule trial groups for spam deletion" do

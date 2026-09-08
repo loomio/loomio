@@ -333,7 +333,7 @@ pl:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -352,12 +352,11 @@ pl:
       thanks_for_reading: Dziękujemy za przeczytanie, miłego dnia!
       marked_as_read_success: Wszystko z wiadomości e-mail zostało oznaczone jako przeczytane
       click_here: Kliknij tutaj
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -440,6 +439,19 @@ pl:
     trial_expired:
       subject: Twoja grupa Loomio zostanie usunięta z powodu braku aktywności.
       body: Twoja grupa Loomio „%{group}” jest nieaktywna i zostanie usunięta za 2 tygodnie. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tego e-maila.
+    destroy_warning_with_usage:
+      subject: Twoja grupa Loomio jest przeznaczona do usunięcia
+      requested: Twoja grupa Loomio „%{group}” została zaplanowana do usunięcia przez %{requester}. Zostanie trwale usunięta za 2 tygodnie.
+      trial_expired: Twoja grupa Loomio „%{group}” jest na okresie próbnym, który wygasł od co najmniej 60 dni. Zostanie trwale usunięta za 2 tygodnie.
+      usage_heading: 'Podsumowanie danych grupowych:'
+      subgroups: Podgrupy
+      members: Obecni członkowie
+      discussions: Dyskusje
+      polls: Ankiety
+      comments: Uwagi
+      export: Aby zachować grupę lub wyeksportować kopię jej danych, odpowiedz na tego e-maila w ciągu 2 tygodni. Możemy przywrócić dostęp przed usunięciem.
+      export_link: Dowiedz się więcej o eksportowaniu danych grupowych
+      group_key: 'Klucz grupy: %{key}'
   poll_mailer:
     common:
       why_send_this: Otrzymujesz tę wiadomość e-mail, ponieważ %{reason}

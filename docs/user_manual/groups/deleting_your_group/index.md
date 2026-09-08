@@ -12,6 +12,8 @@ Groups awaiting deletion and their subgroups are unavailable for viewing, partic
 
 Scheduling the group for deletion stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
 
+The warning email includes counts for the group's subgroups, members, discussions, polls and comments. If you need to keep the group or [export its data](/en/user_manual/groups/data_export/), reply within two weeks so access can be restored before deletion.
+
 Deleting your group will also cancel your Loomio subscription.
 
 ![Delete group action in the Oatmilk Cooperative menu](group_delete_group.png)

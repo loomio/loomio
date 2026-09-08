@@ -314,7 +314,7 @@ da:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -333,12 +333,11 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -419,6 +418,19 @@ da:
     trial_expired:
       subject: Din Loomio-gruppe vil blive slettet på grund af inaktivitet.
       body: Din Loomio-gruppe "%{group}" har været inaktiv og vil blive slettet om 2 uger. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail.
+    destroy_warning_with_usage:
+      subject: Din Loomio-gruppe er planlagt til sletning
+      requested: Din Loomio-gruppe "%{group}" blev planlagt til sletning af %{requester}. Den vil blive permanent slettet om 2 uger.
+      trial_expired: Din Loomio-gruppe "%{group}" har haft en udløbet prøveperiode i mindst 60 dage. Den vil blive slettet permanent om 2 uger.
+      usage_heading: 'Oversigt over gruppedata:'
+      subgroups: Undergrupper
+      members: Nuværende medlemmer
+      discussions: Diskussioner
+      polls: Afstemninger
+      comments: Kommentarer
+      export: For at beholde gruppen eller eksportere en kopi af dens data, bedes du besvare denne e-mail inden for 2 uger. Vi kan gendanne adgangen før sletning.
+      export_link: Lær om eksport af gruppedata
+      group_key: 'Gruppenøgle: %{key}'
   poll_mailer:
     common:
       why_send_this: Du modtager denne email fordi %{reason}

@@ -308,7 +308,7 @@ sl:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ sl:
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,19 @@ sl:
     trial_expired:
       subject: Vaša skupina Loomio bo izbrisana zaradi neaktivnosti.
       body: Vaša skupina Loomio »%{group}« je bila neaktivna in bo izbrisana čez 2 tedna. Če ne želite, da se vaša skupina izbriše, odgovorite na to e-poštno sporočilo.
+    destroy_warning_with_usage:
+      subject: Vaša skupina Loomio je načrtovana za brisanje
+      requested: Vaša skupina Loomio »%{group}« je bila načrtovana za brisanje s strani %{requester}. Trajno bo izbrisana čez 2 tedna.
+      trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Čez 2 tedna bo trajno izbrisana.
+      usage_heading: 'Povzetek podatkov skupine:'
+      subgroups: Podskupine
+      members: Trenutni člani
+      discussions: Razprave
+      polls: Ankete
+      comments: Komentarji
+      export: Če želite obdržati skupino ali izvoziti kopijo njenih podatkov, odgovorite na to e-poštno sporočilo v dveh tednih. Dostop lahko obnovimo pred izbrisom.
+      export_link: Več o izvozu podatkov skupine
+      group_key: 'Ključ skupine: %{key}'
   poll_mailer:
     common:
       why_send_this: To e-pošto ste prejeli, ker %{reason}
