@@ -1291,6 +1291,7 @@ fr:
       Il est recommandé d’exporter les données du groupe et de télécharger manuellement tous les fichiers importants avant de continuer.
     confirm: Saisis '%{name}' pour confirmer que tu veux supprimer ce groupe.
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
+    scheduled_for_deletion: Ce groupe sera supprimé définitivement dans deux semaines.
   group_page:
     stats: Statistiques du groupe
     threads: Discussions

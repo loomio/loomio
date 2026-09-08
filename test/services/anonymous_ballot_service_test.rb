@@ -18,8 +18,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
   end
 
-  test "archival rejects anonymous ballots without changing ballots or voter state" do
-    @group.archive!
+  test "inactivity rejects anonymous ballots without changing ballots or voter state" do
+    @group.discard!
     @poll.reload
     assert_no_difference ["AnonymousBallot.count", "AnonymousBallotChoice.count", "Notification.count"] do
       assert_raises(CanCan::AccessDenied) do
@@ -29,7 +29,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_not @poll.anonymous_poll_voters.find_by!(voter_id: @voter.id).ballot_submitted?
   end
 
-  test "direct anonymous polls still accept ballots after group archival" do
+  test "direct anonymous polls still accept ballots after group inactivity" do
     @poll = PollService.create(
       params: {
         title: "Direct anonymous poll", topic_id: topics(:direct_topic).id,
@@ -38,7 +38,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
       },
       actor: users(:guest_admin_normal)
     )
-    @group.archive!
+    @group.discard!
     assert_difference "AnonymousBallot.count", 1 do
       AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: users(:guest_normal))
     end
@@ -284,8 +284,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "archived anonymous polls close without reminders or expiry notifications" do
-    @group.archive!
+  test "inactive anonymous polls close without reminders or expiry notifications" do
+    @group.discard!
     travel_to(@poll.closing_at - 24.hours + 1.minute) do
       assert_no_difference "Notification.count" do
         PollService.publish_closing_soon

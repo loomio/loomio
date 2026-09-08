@@ -1273,6 +1273,7 @@ zh_TW:
     body: 您確定要刪除該子群組嗎？所有話題、投票、文件和其他群組內容都將永久刪除。建議您匯出群組資料並手動下載所有重要文件，然後再繼續。
     confirm: 輸入「%{name}」以確認您想要刪除此群組。
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
+    scheduled_for_deletion: 該群組計劃在兩週後永久刪除。
   group_page:
     stats: 群組統計
     threads: 討論串

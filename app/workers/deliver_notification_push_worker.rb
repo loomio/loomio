@@ -5,7 +5,7 @@ class DeliverNotificationPushWorker < ApplicationJob
     delivery = NotificationDelivery.find_by(id: notification_delivery_id, channel: "push")
     return unless delivery
     return if delivery.delivered_at?
-    return if NotificationService.group_archived?(delivery.notification.subject)
+    return if NotificationService.group_unavailable?(delivery.notification.subject)
 
     recipient = delivery.recipient
     notification = delivery.notification

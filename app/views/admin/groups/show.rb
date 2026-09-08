@@ -92,13 +92,13 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
       div(class: "admin-operation-list") do
         operation_form("Parent group ID or key", move_admin_group_path(@group), "parent_id", @group.parent_id, "Move group")
         operation_form("Change handle", handle_admin_group_path(@group), "handle", @group.handle, "Change handle")
-        if @group.archived_at
-          button_to "Unarchive group", unarchive_admin_group_path(@group), method: :post, class: "admin-button"
+        if @group.discarded?
+          button_to "Restore group", undiscard_admin_group_path(@group), method: :post, class: "admin-button"
         else
-          button_to "Archive group", archive_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Archive #{@group.name} and all of its subgroups? Their content will be retained, but the groups will be hidden from normal use until they are unarchived." } }
+          button_to "Discard group", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups? Their content will be retained, but the groups will be unavailable until they are restored." } }
         end
         button_to "Export group", export_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary"
-        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@group.name} and all of its subgroups? This permanently deletes their memberships and membership requests, topics and discussions, polls, votes and outcomes, topic_items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are not deleted. This cannot be undone." } }
+        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@group.name} and all of its subgroups? This permanently deletes their memberships and membership requests, topics and discussions, polls, votes and outcomes, topic items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are retained. This cannot be undone." } }
       end
     end
   end
@@ -112,6 +112,6 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
   end
 
   def group_attribute_keys
-    %i[id key name handle full_name created_at updated_at parent_id creator_id archived_at memberships_count admin_memberships_count discussions_count membership_granted_upon is_visible_to_public is_visible_to_parent_members parent_members_can_see_discussions discussion_privacy_options members_can_add_members members_can_edit_discussions members_can_edit_comments members_can_raise_motions members_can_start_discussions members_can_create_subgroups members_can_create_tags subscription_id theme_id]
+    %i[id key name handle full_name created_at updated_at parent_id creator_id discarded_at discarded_by memberships_count admin_memberships_count discussions_count membership_granted_upon is_visible_to_public is_visible_to_parent_members parent_members_can_see_discussions discussion_privacy_options members_can_add_members members_can_edit_discussions members_can_edit_comments members_can_raise_motions members_can_start_discussions members_can_create_subgroups members_can_create_tags subscription_id theme_id]
   end
 end

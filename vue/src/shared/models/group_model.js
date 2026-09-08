@@ -1,6 +1,6 @@
 import BaseModel    from '@/shared/record_store/base_model';
 import Records from '@/shared/services/records';
-import {filter, some, map, each, compact, sortBy} from 'lodash-es';
+import {filter, some, map, compact, sortBy} from 'lodash-es';
 
 export default class GroupModel extends BaseModel {
   static singular = 'group';
@@ -10,7 +10,6 @@ export default class GroupModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
-    this.archive = this.archive.bind(this);
     this.export = this.export.bind(this);
     this.exportCSV = this.exportCSV.bind(this);
     this.uploadLogo = this.uploadLogo.bind(this);
@@ -44,6 +43,7 @@ export default class GroupModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       subscription: {},
+      available: false,
       specifiedVotersOnly: false,
       recipientMessage: null,
       recipientAudience: null,
@@ -223,19 +223,16 @@ export default class GroupModel extends BaseModel {
     return this.groupPrivacy === 'secret';
   }
 
-  isArchived() {
-    return (this.archivedAt != null);
+  isDiscarded() {
+    return (this.discardedAt != null);
+  }
+
+  isAvailable() {
+    return this.available;
   }
 
   isParent() {
     return (this.parentId == null);
-  }
-
-  archive() {
-    return Records.groups.remote.patchMember(this.key, 'archive').then(() => {
-      this.remove();
-      return each(this.memberships(), m => m.remove());
-    });
   }
 
   export() {

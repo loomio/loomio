@@ -30,6 +30,7 @@ export default class NullGroupModel {
       attachments: [],
       linkPreviews: [],
       subscription: {active: true},
+      available: true,
       specifiedVotersOnly: false,
       isNullGroup: true,
       categorizePollTemplates: true
@@ -69,7 +70,8 @@ export default class NullGroupModel {
   privacyIsOpen() { return false; }
   privacyIsClosed() { return false; }
   privacyIsSecret() { return true; }
-  isArchived() { return false; }
+  isDiscarded() { return false; }
+  isAvailable() { return true; }
   isParent() { return true; }
   hasSubscription() { return false; }
   isSubgroupOfSecretParent() { return false; }

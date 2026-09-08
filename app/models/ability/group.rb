@@ -3,7 +3,7 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      !group.archived_at &&
+      group.available? &&
       (
         group.is_visible_to_public? or
         group.members.exists?(user.id) or
@@ -14,7 +14,7 @@ module Ability::Group
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
-      !group.archived_at && (
+      group.available? && (
         group.group_privacy == 'open' or
         group.members.exists?(user.id) or
         (group.is_visible_to_parent_members? and group.parent_or_self.members.exists?(user.id)))
@@ -22,12 +22,14 @@ module Ability::Group
 
     can [:update,
          :email_members,
-         :archive,
-         :destroy,
          :publish,
          :export,
          :view_pending_invitations], ::Group do |group|
       group.admins.exists?(user.id)
+    end
+
+    can :destroy, ::Group do |group|
+      user.is_admin? || group.admins.exists?(user.id)
     end
 
     can [:members_autocomplete,
@@ -43,7 +45,7 @@ module Ability::Group
     end
 
     can [:add_guests], ::Group do |group|
-      user.email_verified? && Subscription.for(group).is_active? &&
+      user.email_verified? && group.subscription_active? &&
       ((group.members_can_add_guests && group.members.exists?(user.id)) || group.admins.exists?(user.id))
     end
 

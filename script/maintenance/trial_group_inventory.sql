@@ -1,6 +1,6 @@
 -- Inventory for manual review, not deletion eligibility.
 -- Run seeded-content cleanup first; this query counts all remaining content.
--- Counts organisations recursively, including archived descendants.
+-- Counts organisations recursively, including discarded descendants.
 -- Run with psql -X -qAt -v ON_ERROR_STOP=1 -v as_of=2026-09-07
 --   -d loomio_production -f script/maintenance/trial_group_inventory.sql
 -- Redirect the JSON output outside the repository: it contains production IDs.
@@ -34,7 +34,7 @@ tree AS (
 ),
 group_counts AS (
   SELECT t.root_id, count(*) AS groups_count,
-         count(*) FILTER (WHERE g.archived_at IS NOT NULL) AS archived_groups_count,
+         count(*) FILTER (WHERE g.discarded_at IS NOT NULL) AS discarded_groups_count,
          count(*) FILTER (
            WHERE g.id != t.root_id AND g.subscription_id IS NOT NULL
              AND g.subscription_id IS DISTINCT FROM root.subscription_id
@@ -83,7 +83,7 @@ subscription_sharing AS (
   FROM groups WHERE parent_id IS NULL AND subscription_id IS NOT NULL GROUP BY subscription_id
 ),
 inventory AS (
-  SELECT g.id AS root_id, g.created_at, g.archived_at, g.subscription_id,
+  SELECT g.id AS root_id, g.created_at, g.discarded_at, g.subscription_id,
          s.plan, s.state, s.expires_at, s.payment_method,
          s.chargify_subscription_id IS NOT NULL OR s.billing_service_subscription_id IS NOT NULL AS has_billing_reference,
          CASE WHEN s.id IS NULL THEN 'missing'
@@ -95,7 +95,7 @@ inventory AS (
               WHEN s.expires_at > p.as_of - interval '3 years' THEN '1 to 3 years'
               WHEN s.expires_at > p.as_of - interval '5 years' THEN '3 to 5 years'
               ELSE '5 years or more' END AS expiry_age,
-         gc.groups_count, gc.archived_groups_count, gc.different_child_subscriptions_count, gc.groups_with_legacy_uploads,
+         gc.groups_count, gc.discarded_groups_count, gc.different_child_subscriptions_count, gc.groups_with_legacy_uploads,
          COALESCE(ss.subscription_roots_count, 0) AS subscription_roots_count,
          COALESCE(tc.topics_count, 0) AS topics_count,
          COALESCE(tc.discarded_topics_count, 0) AS discarded_topics_count,
@@ -114,7 +114,7 @@ inventory AS (
   WHERE g.parent_id IS NULL
 ),
 cohorts AS (
-  SELECT plan_cohort, state, archived_at IS NOT NULL AS archived, expiry_age,
+  SELECT plan_cohort, state, discarded_at IS NOT NULL AS discarded, expiry_age,
          count(*) AS organisations, sum(groups_count) AS groups,
          sum(topics_count) AS topics,
          count(*) FILTER (WHERE topics_count = 0) AS organisations_without_topics,
@@ -136,11 +136,11 @@ SELECT jsonb_build_object(
   'groups_total', (SELECT count(*) FROM groups),
   'groups_not_reachable_from_root', (SELECT count(*) FROM groups) - (SELECT count(DISTINCT group_id) FROM tree),
   'roots_total', (SELECT count(*) FROM inventory),
-  'cohorts', (SELECT jsonb_agg(to_jsonb(c) ORDER BY plan_cohort, state, archived, expiry_age) FROM cohorts c),
+  'cohorts', (SELECT jsonb_agg(to_jsonb(c) ORDER BY plan_cohort, state, discarded, expiry_age) FROM cohorts c),
   'expired_trial_and_free_review', (
     SELECT jsonb_agg(to_jsonb(i) ORDER BY expires_at, root_id)
     FROM inventory i, parameters p
-    WHERE plan_cohort IN ('trial', 'free') AND archived_at IS NULL AND expires_at < p.as_of
+    WHERE plan_cohort IN ('trial', 'free') AND discarded_at IS NULL AND expires_at < p.as_of
   )
 );
 ROLLBACK;

@@ -50,8 +50,8 @@ class PollQueryTest < ActiveSupport::TestCase
     group_poll = @in_a_group
     public_poll = make_poll(topic: topics(:public_discussion_topic), private: false)
     anonymous_poll = make_poll(topic: topics(:discussion_topic), anonymous: true)
-    groups(:group).archive!
-    groups(:public_group).archive!
+    groups(:group).discard!
+    groups(:public_group).discard!
     actors = %i[admin user member_normal guest_normal guest_admin_normal alien_loud
                 non_guest_loud former_guest_loud inactive_guest_loud].map { |role| users(role) }
     actors << LoggedOutUser.new

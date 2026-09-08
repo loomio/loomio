@@ -1266,6 +1266,7 @@ sl:
     body: Ali ste prepričani, da želite izbrisati to podskupino? Vse niti, ankete, datoteke in druga vsebina skupine bo trajno izbrisana. Priporočamo, da izvozite podatke skupine in ročno prenesete vse pomembne datoteke, preden nadaljujete.
     confirm: Vnesite '%{name}', da potrdite, da želite izbrisati to skupino.
     success: Ta skupina je bila arhivirana in je načrtovana za trajno brisanje čez 2 tedna.
+    scheduled_for_deletion: Ta skupina bo trajno izbrisana čez 2 tedna.
   group_page:
     stats: Statistika skupine
     threads: Razprave

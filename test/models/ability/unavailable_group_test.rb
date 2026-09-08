@@ -1,7 +1,38 @@
 require "test_helper"
 
-class Ability::ArchivedGroupTest < ActiveSupport::TestCase
-  test "archival denies new content and voting across the access matrix" do
+class Ability::UnavailableGroupTest < ActiveSupport::TestCase
+  test "discarded and subscription-inactive groups have the same access boundary" do
+    group = groups(:group)
+    topic = topics(:discussion_topic)
+    member = users(:member_normal)
+    direct_topic = topics(:direct_topic)
+    subscription = Subscription.create!(plan: "free", state: "active")
+    group.update!(subscription: subscription)
+
+    assert group.available?
+    assert member.can?(:show, topic.discussion)
+    assert member.can?(:create, Comment.new(parent: topic.discussion))
+
+    ["on_hold", "past_due", "canceled"].each do |state|
+      subscription.update!(state: state, expires_at: nil)
+      assert_not group.reload.available?, state
+      assert_not member.can?(:show, topic.discussion), state
+      assert_not member.can?(:create, Comment.new(parent: topic.discussion)), state
+      assert_empty TopicQuery.visible_to(user: member, topic_id: topic.id), state
+    end
+
+    subscription.update!(state: "active", expires_at: 1.second.ago)
+    assert_not group.reload.available?
+    assert_not member.can?(:show, topic.discussion)
+    assert_empty TopicQuery.visible_to(user: member, topic_id: topic.id)
+
+    group.update!(subscription: nil)
+    assert group.reload.available?
+    assert member.can?(:show, topic.discussion)
+    assert users(:guest_admin_normal).can?(:show, direct_topic)
+  end
+
+  test "discard denies new content and voting across the access matrix" do
     topic = topics(:discussion_topic)
     poll = PollService.create(params: poll_params(topic_id: topic.id), actor: users(:admin))
     roles = %i[admin user member_normal guest_normal guest_admin_normal alien_loud
@@ -9,13 +40,13 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     assert users(:member_normal).can?(:create, Comment.new(parent: topic.discussion))
     assert users(:guest_normal).can?(:vote_in, poll)
 
-    groups(:group).archive!
+    groups(:group).discard!
     topic.reload
     poll.reload
     actors = roles.map { |role| users(role) } + [LoggedOutUser.new]
     actors.each do |actor|
       assert_not actor.can?(:create, Comment.new(parent: topic.discussion)), actor.inspect
-      assert_not actor.can?(:create, DiscussionService.build(params: {title: "Archived", group_id: topic.group_id}, actor: users(:admin)))
+      assert_not actor.can?(:create, DiscussionService.build(params: {title: "Discarded", group_id: topic.group_id}, actor: users(:admin)))
       assert_not actor.can?(:create, PollService.build(params: poll_params(topic_id: topic.id), actor: users(:admin)))
       Poll.hide_results.keys.each do |mode|
         poll.assign_attributes(hide_results: mode, quorum_pct: 50)
@@ -24,10 +55,10 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     end
   end
 
-  test "archived content creation services reject requests without writing records" do
+  test "discarded content creation services reject requests without writing records" do
     topic = topics(:discussion_topic)
     poll = PollService.create(params: poll_params(topic_id: topic.id), actor: users(:admin))
-    groups(:group).archive!
+    groups(:group).discard!
     topic.reload
     poll.reload
     actor = users(:member_normal)
@@ -52,28 +83,28 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     end
   end
 
-  test "public groups and inherited subgroup archival block new activity" do
+  test "public groups and inherited subgroup discard block new activity" do
     %i[public_discussion_topic subgroup_discussion_topic].each do |name|
       topic = topics(name)
       actor = topic.discussion.author
       topic.group.add_admin!(actor)
       assert actor.can?(:create, Comment.new(parent: topic.discussion))
-      (name == :subgroup_discussion_topic ? groups(:group) : topic.group).archive!
+      (name == :subgroup_discussion_topic ? groups(:group) : topic.group).discard!
       topic.reload
       assert_not actor.can?(:create, Comment.new(parent: topic.discussion))
-      assert_not actor.can?(:create, DiscussionService.build(params: {title: "Archived", group_id: topic.group_id}, actor: actor))
+      assert_not actor.can?(:create, DiscussionService.build(params: {title: "Discarded", group_id: topic.group_id}, actor: actor))
     end
   end
 
-  test "direct topics retain member access and reject nonmembers after a group is archived" do
-    groups(:group).archive!
+  test "direct topics retain member access and reject nonmembers after a group is discarded" do
+    groups(:group).discard!
     topic = topics(:direct_topic)
     actor = users(:guest_admin_normal)
     comment = CommentService.create(comment: Comment.new(parent: topic.discussion, body: "Direct comment"), actor: actor)
     assert comment.persisted?
     poll = PollService.create(params: poll_params(topic_id: topic.id), actor: actor)
     assert poll.persisted?
-    assert_nil topic.group.archived_at
+    assert_nil topic.group.discarded_at
     stance = StanceService.update(
       stance: poll.stances.latest.find_by!(participant: users(:guest_normal)),
       params: {stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id, score: 1}]},
@@ -92,16 +123,16 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     end
     discussion = DiscussionService.create(params: {title: "Direct discussion"}, actor: users(:alien))
     assert discussion.persisted?
-    assert_nil discussion.group.archived_at
+    assert_nil discussion.group.discarded_at
     poll.update!(closed_at: Time.current)
     assert_not actor.can?(:vote_in, poll)
   end
 
-  test "archival suspends content management and invitations while retaining cleanup" do
+  test "discard suspends content management and invitations while retaining cleanup" do
     topic = topics(:discussion_topic)
     admin = users(:admin)
     poll = PollService.create(params: poll_params(topic_id: topic.id), actor: admin)
-    comment = CommentService.create(comment: Comment.new(parent: topic.discussion, body: "Before archival"), actor: admin)
+    comment = CommentService.create(comment: Comment.new(parent: topic.discussion, body: "Before discard"), actor: admin)
     outcome = Outcome.new(poll: poll, author: admin, statement: "Conclusion")
     membership = memberships(:member_membership)
     reader = topic_readers(:guest_normal_reader)
@@ -125,9 +156,9 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     assert admin.can?(:remind, poll)
     assert admin.can?(:make_admin, reader)
     group = topic.group
-    group.archive!
+    group.discard!
     records.each_key { |record| record.reload if record.persisted? }
-    # Unsaved records can still hold their group's pre-archive association.
+    # Unsaved records can still hold their group's pre-discard association.
     records.each_key { |record| record.group.reload if record.respond_to?(:group) && record.group.present? }
 
     [admin, users(:member_normal), users(:guest_admin_normal), LoggedOutUser.new].each do |actor|
@@ -142,7 +173,7 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
       assert_not actor.can?(:create, Group.new(parent: group))
     end
 
-    %i[archive publish export destroy].each { |action| assert admin.can?(action, group), action }
+    %i[publish export destroy].each { |action| assert admin.can?(action, group), action }
     %i[remove_admin revoke destroy remove_delegate].each { |action| assert admin.can?(action, membership), action }
     assert membership.user.can?(:update, membership)
     assert_not admin.can?(:update, membership)
@@ -153,7 +184,7 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
     assert_not users(:member_normal).can?(:export, group)
   end
 
-  test "archiving an unrelated group preserves all existing direct topic management permissions" do
+  test "discarding an unrelated group preserves all existing direct topic management permissions" do
     topic = topics(:direct_topic)
     admin = users(:guest_admin_normal)
     poll = PollService.create(params: poll_params(topic_id: topic.id), actor: admin)
@@ -170,32 +201,32 @@ class Ability::ArchivedGroupTest < ActiveSupport::TestCase
       records.flat_map { |record, actions| actions.map { |action| [actor, record, action, actor.can?(action, record)] } }
     end
     assert admin.can?(:announce, poll)
-    groups(:group).archive!
+    groups(:group).discard!
     permissions.each do |actor, record, action, allowed|
       assert_equal allowed, actor.can?(action, record), "#{actor.id}: #{action} #{record.class}"
     end
   end
 
-  test "archived relationships no longer grant contact permission while direct relationships still do" do
+  test "discarded relationships no longer grant contact permission while direct relationships still do" do
     member = users(:member_normal)
     other_member = users(:member_loud)
     guest = users(:guest_normal)
     direct_guest = users(:guest_loud)
     assert member.can?(:contact, other_member)
     assert guest.can?(:contact, direct_guest)
-    groups(:group).archive!
+    groups(:group).discard!
     member.reload
     other_member.reload
     assert_not member.can?(:contact, other_member)
     assert guest.can?(:contact, direct_guest)
   end
 
-  test "archived voter invitations cannot be redeemed" do
+  test "discarded voter invitations cannot be redeemed" do
     poll = PollService.create(params: poll_params(topic_id: topics(:discussion_topic).id), actor: users(:admin))
     stance = poll.stances.latest.find_by!(participant: users(:guest_normal))
     stance.update!(inviter: users(:admin), accepted_at: nil)
     assert Stance.redeemable.exists?(stance.id)
-    groups(:group).archive!
+    groups(:group).discard!
     assert_not Stance.redeemable.exists?(stance.id)
     StanceService.redeem(stance: stance, actor: stance.participant)
     assert_nil stance.reload.accepted_at

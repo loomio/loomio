@@ -36,7 +36,9 @@ class GroupSerializer < ApplicationSerializer
              :membership_granted_upon,
              :discussion_privacy_options,
              :admin_memberships_count,
-             :archived_at,
+             :discarded_at,
+             :discarded_by,
+             :available,
              :attachments,
              :link_previews,
              :has_custom_cover_photo,
@@ -85,11 +87,15 @@ class GroupSerializer < ApplicationSerializer
       allow_subgroups: sub.allow_subgroups,
       plan:            sub.plan,
       state:           sub.state,
-      active:          sub.is_active?,
+      active:          object.subscription_active?,
       renews_at:       sub.renews_at,
       expires_at:      sub.expires_at,
       members_count:   sub.members_count
     }
+  end
+
+  def available
+    object.available?
   end
 
   def subscription_record

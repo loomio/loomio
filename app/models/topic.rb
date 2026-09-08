@@ -30,9 +30,15 @@ class Topic < ApplicationRecord
     where(discarded_at: nil)
   }
 
-  scope :not_archived, -> {
-    where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+  scope :group_available, -> {
+    where(group_available_condition)
   }
+
+  def self.group_available_condition
+    arel_table[:group_id].eq(nil).or(
+      Group.arel_table[:discarded_at].eq(nil).and(Arel.sql(Group.subscription_active_sql))
+    )
+  end
 
   scope :locked, -> { where.not(locked_at: nil) }
   scope :not_locked, -> { where(locked_at: nil) }
@@ -47,7 +53,7 @@ class Topic < ApplicationRecord
     joins_groups
       .joins_reader(user.id)
       .not_discarded
-      .not_archived
+      .group_available
       .where("(topics.group_id IN (:user_group_ids)) OR
               (topics.private = FALSE) OR
               (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR

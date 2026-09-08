@@ -1272,6 +1272,7 @@ pl:
     body: Czy na pewno chcesz usunąć tę podgrupę? Wszystkie wątki, ankiety, pliki i inna zawartość grupy zostaną trwale usunięte. Przed kontynuowaniem zaleca się wyeksportowanie danych grupy i ręczne pobranie wszystkich ważnych plików.
     confirm: Wpisz '%{name}', by potwierdzić usunięcie tej grupy.
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
+    scheduled_for_deletion: Ta grupa zostanie trwale usunięta za 2 tygodnie
   group_page:
     stats: Statystyki grupy
     threads: Wątki

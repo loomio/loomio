@@ -24,7 +24,7 @@ module Ability
     prepend Ability::DiscussionTemplate
     prepend Ability::ReceivedEmail
     prepend Ability::Topic
-    prepend Ability::ArchivedGroup
+    prepend Ability::UnavailableGroup
 
     def initialize(user)
       @user = user

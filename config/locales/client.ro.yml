@@ -1266,6 +1266,7 @@ ro:
     body: Sigur doriți să ștergeți acest subgrup? Toate firele, sondajele, fișierele și alt conținut de grup vor fi șterse definitiv. Se recomandă să exportați datele grupului și să descărcați manual orice fișiere importante înainte de a continua.
     confirm: Tastați „%{name}” pentru a confirma că doriți să ștergeți acest grup.
     success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
+    scheduled_for_deletion: Acest grup este programat pentru ștergere permanentă în 2 săptămâni.
   group_page:
     stats: Statistici de grup
     threads: Discutii

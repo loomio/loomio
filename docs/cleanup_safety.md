@@ -22,7 +22,7 @@ Use an isolated database copy with application workers stopped for destructive v
 
 ## Existing delayed group-deletion jobs
 
-New `DestroyGroupWorker` jobs carry the exact archive timestamp recorded when deletion was requested. Restoring and subsequently archiving the group invalidates the earlier job. Jobs without this timestamp are skipped and logged; they must not be supplied with the group's current timestamp automatically. Review whether deletion is still intended, then make a fresh deletion request through the normal administrative workflow.
+New `DestroyGroupWorker` jobs carry the exact discard timestamp recorded when deletion was requested. Restoring and subsequently discarding the group invalidates the earlier job. Jobs without this timestamp are skipped and logged; they must not be supplied with the group's current timestamp automatically. Review whether deletion is still intended, then make a fresh deletion request through the normal administrative workflow. Group discard time and actor are retained in PaperTrail until permanent deletion.
 
 Account-merge duplicate removal, reference migration, credential revocation, and search updates are transactional. Avatar purges, newsletter changes, and email are deferred until commit. Blocklist and email-routing replacements retain the previous table contents if replacement fails. Concurrent group exports use separate temporary paths.
 

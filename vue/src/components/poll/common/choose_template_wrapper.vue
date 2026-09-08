@@ -36,12 +36,12 @@ function fillGroups() {
   const result = [defaultsGroup];
   const groupIds = Session.user().groupIds();
   Records.groups.collection.chain().
-               find({id: { $in: groupIds }, archivedAt: null, parentId: null}).
-               data().forEach(function(parent) {
+               find({id: { $in: groupIds }, parentId: null}).
+               data().filter(group => group.isAvailable()).forEach(function(parent) {
     if (parent.pollTemplatesCount) { result.push(parent); }
     Records.groups.collection.chain().
-               find({id: { $in: groupIds }, archivedAt: null, parentId: parent.id}).
-               data().forEach(function(subgroup) {
+               find({id: { $in: groupIds }, parentId: parent.id}).
+               data().filter(group => group.isAvailable()).forEach(function(subgroup) {
       if (subgroup.pollTemplatesCount) { result.push(subgroup); }
     });
   });

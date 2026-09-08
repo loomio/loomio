@@ -14,11 +14,11 @@ class MembershipServiceTest < ActiveSupport::TestCase
     @group.add_admin!(@admin)
   end
 
-  test "archived invitations cannot be redeemed or included in organization acceptance" do
-    subgroup = Group.create!(name: "Archived subgroup", parent: @group)
+  test "inactive invitations cannot be redeemed or included in organization acceptance" do
+    subgroup = Group.create!(name: "Inactive subgroup", parent: @group)
     parent_invite = Membership.create!(group: @group, user: @user, inviter: @admin)
     child_invite = Membership.create!(group: subgroup, user: @user, inviter: @admin)
-    subgroup.archive!
+    subgroup.discard!
 
     assert_no_difference "Notification.count" do
       MembershipService.redeem(membership: child_invite, actor: @user)
