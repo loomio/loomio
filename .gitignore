@@ -39,6 +39,7 @@ coverage
 .project
 Session.vim
 *.sql
+!script/maintenance/trial_group_inventory.sql
 *.dump
 *.log
 .idea
