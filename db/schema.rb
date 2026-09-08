@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -118,6 +118,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.integer "user_id"
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
+    t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 
   create_table "blazer_audits", force: :cascade do |t|
@@ -228,7 +229,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.integer "user_id", default: 0
     t.integer "versions_count", default: 0
     t.index ["created_at"], name: "index_comments_on_created_at"
+    t.index ["discarded_by"], name: "index_comments_on_discarded_by"
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
@@ -285,7 +288,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.string "title"
     t.string "title_placeholder"
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_discussion_templates_on_author_id"
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
+    t.index ["discarded_by"], name: "index_discussion_templates_on_discarded_by"
   end
 
   create_table "discussions", id: :serial, force: :cascade do |t|
@@ -314,6 +319,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
+    t.index ["discarded_by"], name: "index_discussions_on_discarded_by"
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
@@ -426,6 +432,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.datetime "updated_at", precision: nil
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
+    t.index ["creator_id"], name: "index_groups_on_creator_id"
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
     t.index ["key"], name: "index_groups_on_key", unique: true
@@ -503,6 +510,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
     t.index ["revoked_at", "id"], name: "index_memberships_on_revoked_at_and_id_for_relay", where: "(revoked_at IS NOT NULL)"
+    t.index ["revoker_id"], name: "index_memberships_on_revoker_id"
     t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume_email"], name: "index_memberships_on_user_id_and_volume_email"
     t.index ["user_id", "volume_push"], name: "index_memberships_on_user_id_and_volume_push"
@@ -638,7 +646,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.string "subject_type", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_notifications_on_actor_id"
     t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
+    t.index ["recipient_user_ids"], name: "index_notifications_on_recipient_user_ids", using: :gin
     t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"
   end
 
@@ -717,6 +727,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.string "statement_format", limit: 10, default: "md", null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0, null: false
+    t.index ["author_id"], name: "index_outcomes_on_author_id"
     t.index ["created_at"], name: "index_outcomes_on_created_at"
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
@@ -894,6 +905,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
+    t.index ["discarded_by"], name: "index_polls_on_discarded_by"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
@@ -1120,6 +1132,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.datetime "updated_at", null: false
     t.boolean "vote_cast"
     t.bigint "voter_id"
+    t.index ["inviter_id"], name: "index_stance_receipts_on_inviter_id"
+    t.index ["voter_id"], name: "index_stance_receipts_on_voter_id"
   end
 
   create_table "stances", id: :serial, force: :cascade do |t|
@@ -1146,10 +1160,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.integer "versions_count", default: 0
     t.index ["cast_at", "id"], name: "index_stances_on_cast_at_and_id_for_relay", where: "((cast_at IS NOT NULL) AND (redacted_at IS NULL))"
     t.index ["created_at"], name: "index_stances_on_created_at"
+    t.index ["inviter_id"], name: "index_stances_on_inviter_id"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"
     t.index ["poll_id"], name: "index_stances_on_poll_id"
+    t.index ["redactor_id"], name: "index_stances_on_redactor_id"
+    t.index ["revoker_id"], name: "index_stances_on_revoker_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
   end
 
@@ -1238,6 +1255,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
+    t.index ["doer_id"], name: "index_tasks_on_doer_id"
     t.index ["done"], name: "index_tasks_on_done"
     t.index ["due_on"], name: "index_tasks_on_due_on"
     t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
@@ -1308,9 +1326,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.integer "volume_push", default: 2, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
+    t.index ["revoker_id"], name: "index_topic_readers_on_revoker_id"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
     t.index ["user_id", "topic_id"], name: "index_topic_readers_guest_user_id", where: "(guest = true)"
+    t.index ["user_id"], name: "index_topic_readers_on_user_id"
     t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "topic_readers_volume_email"
     t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "topic_readers_volume_push"
   end
@@ -1343,10 +1363,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.string "topicable_type", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
+    t.index ["discarded_by"], name: "index_topics_on_discarded_by"
     t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["last_activity_at"], name: "index_topics_on_last_activity_at", order: :desc
     t.index ["locked_at"], name: "index_topics_on_locked_at"
+    t.index ["locker_id"], name: "index_topics_on_locker_id"
     t.index ["tags"], name: "index_topics_on_tags", using: :gin
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end
@@ -1427,6 +1449,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_000000) do
     t.integer "volume_email_default", default: 2, null: false
     t.integer "volume_push_default", default: 2, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
+    t.index ["deactivator_id"], name: "index_users_on_deactivator_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true

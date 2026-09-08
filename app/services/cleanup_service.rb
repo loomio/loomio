@@ -29,6 +29,8 @@
 # subscriptions which are no longer used by a group.
 module CleanupService
   DELETE_BATCH_SIZE = 1_000
+  DELETE_PASS_LIMIT = 3
+  INACTIVE_ORPHAN_USER_LIMIT = 1_000
   INACTIVE_ORPHAN_USER_RETENTION = 60.days
 
   # The webhook model was retired, but its table still contains group links.
@@ -159,7 +161,9 @@ module CleanupService
   end
 
   def self.delete_orphan_records
-    loop do
+    # A few bounded passes resolve dependencies exposed by earlier deletions
+    # without turning an accumulated backlog into an unbounded maintenance job.
+    DELETE_PASS_LIMIT.times do
       count = dangling_record_scopes.sum do |label, scope|
         next 0 if scope.klass == Comment
 
@@ -203,8 +207,8 @@ module CleanupService
     puts "Deleted #{count} inactive orphan users" unless Rails.env.test?
   end
 
-  def self.inactive_orphan_user_ids(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago)
-    inactive_orphan_users(inactive_before: inactive_before).pluck(:id)
+  def self.inactive_orphan_user_ids(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago, limit: INACTIVE_ORPHAN_USER_LIMIT)
+    inactive_orphan_users(inactive_before: inactive_before).order(:id).limit(limit).pluck(:id)
   end
 
   def self.inactive_orphan_users(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago)
@@ -233,7 +237,7 @@ module CleanupService
       )
       AND NOT EXISTS (
         SELECT 1 FROM notifications
-        WHERE users.id = ANY(recipient_user_ids)
+        WHERE recipient_user_ids @> ARRAY[users.id]::integer[]
       )
     SQL
   end
@@ -286,7 +290,7 @@ module CleanupService
 
   def self.cleanup_event_parent_references!
     TopicItem.transaction do
-      events_missing_parent.find_each do |topic_item|
+      events_missing_parent.limit(DELETE_BATCH_SIZE).find_each do |topic_item|
         if topic_item.topic_id
           parent = topic_item.find_parent_topic_item
           raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
@@ -299,7 +303,7 @@ module CleanupService
         end
       end
 
-      events_invalid_root.find_each do |topic_item|
+      events_invalid_root.limit(DELETE_BATCH_SIZE).find_each do |topic_item|
         parent = topic_item.find_parent_topic_item
         raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
 
@@ -522,7 +526,7 @@ module CleanupService
 
   def self.delete_orphan_versions
     orphan_version_scopes.sum do |item_type, scope|
-      count = scope.delete_all
+      count = delete_records(scope)
 
       puts "deleted #{count} orphan #{item_type} version records" unless Rails.env.test?
       count
@@ -563,25 +567,17 @@ module CleanupService
     end
     primary_key = record_class.primary_key
     primary_key_column = record_class.arel_table[primary_key]
-    count = 0
+    ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
+    return 0 if ids.empty?
 
-    loop do
-      ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
-      break if ids.empty?
-
-      deleted = if record_class == Comment
-        with_write_lock(%i[comments topic_items topics discussions polls stances outcomes]) { scope.where(primary_key => ids).delete_all }
-      elsif record_class == TopicItem
-        with_write_lock(%i[topic_items]) { scope.where(primary_key => ids).delete_all }
-      else
-        scope.where(primary_key => ids).delete_all
-      end
-      break unless deleted&.positive?
-
-      count += deleted
+    deleted = if record_class == Comment
+      with_write_lock(%i[comments topic_items topics discussions polls stances outcomes]) { scope.where(primary_key => ids).delete_all }
+    elsif record_class == TopicItem
+      with_write_lock(%i[topic_items]) { scope.where(primary_key => ids).delete_all }
+    else
+      scope.where(primary_key => ids).delete_all
     end
-
-    count
+    deleted.to_i
   end
 
   def self.delete_orphan_polymorphic_records

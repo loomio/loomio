@@ -71,6 +71,19 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     end
   end
 
+  test "limits each daily cleanup run" do
+    relation = Minitest::Mock.new
+    relation.expect(:order, relation, [ :id ])
+    relation.expect(:limit, relation, [ CleanupService::INACTIVE_ORPHAN_USER_LIMIT ])
+    relation.expect(:pluck, [ 1, 2 ], [ :id ])
+
+    CleanupService.stub(:inactive_orphan_users, relation) do
+      assert_equal [ 1, 2 ], CleanupService.inactive_orphan_user_ids
+    end
+
+    relation.verify
+  end
+
   test "uses account age for former invitees who never signed in" do
     cutoff = Time.zone.local(2025, 9, 5, 12)
     user = users(:orphan_recent_invitee_user)
@@ -144,6 +157,24 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     CleanupService.delete_inactive_orphan_users
 
     assert User.exists?(user.id)
+  end
+
+  test "notification recipient history protects an inactive account" do
+    user = users(:orphan_user)
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    notification = Notification.create!(
+      kind: "new_discussion",
+      subject: discussions(:public_discussion),
+      actor: users(:admin),
+      recipient_user_ids: [ user.id ]
+    )
+
+    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+
+    CleanupService.delete_inactive_orphan_users
+
+    assert User.exists?(user.id)
+    assert Notification.exists?(notification.id)
   end
 
   test "instance administrators are never orphan-cleanup candidates" do

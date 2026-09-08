@@ -17,6 +17,24 @@ class CleanupServiceTest < ActiveSupport::TestCase
     user
   end
 
+  test "delete_records limits one integrity category batch" do
+    missing_tag_id = Tag.maximum(:id) + 1
+    now = Time.current
+    Tagging.insert_all!(Array.new(CleanupService::DELETE_BATCH_SIZE + 1) do |index|
+      {
+        tag_id: missing_tag_id,
+        taggable_type: "Group",
+        taggable_id: Group.maximum(:id) + index + 1,
+        created_at: now,
+        updated_at: now
+      }
+    end)
+
+    assert_equal CleanupService::DELETE_BATCH_SIZE,
+                 CleanupService.delete_records(CleanupService.taggings_missing_tag)
+    assert_equal 1, CleanupService.taggings_missing_tag.count
+  end
+
   test "delete_orphan_records removes records dangling from hard-deleted groups" do
     subscription = Subscription.create!(plan: 'demo')
     group = Group.create!(
