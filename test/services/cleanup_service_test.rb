@@ -62,6 +62,43 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
+  test "orphan cleanup removes group metadata and dependent references but preserves live and unassigned records" do
+    group = groups(:group)
+    missing_group_id = Group.maximum(:id) + 1
+    models = [GroupSurvey, ReceivedEmail, CleanupService::LegacyWebhook, Tag]
+    records = models.map do |model|
+      attributes = { group_id: missing_group_id }
+      attributes[:name] = "orphan #{@hex}" if [Tag, CleanupService::LegacyWebhook].include?(model)
+      orphan = model.find(model.insert_all!([attributes]).rows.first.first)
+      live = model.create!(attributes.merge(group_id: group.id))
+      [orphan, live]
+    end
+    unassigned_email = ReceivedEmail.create!
+    email = records[1].first
+    tag = records[3].first
+    tagging_id = Tagging.insert_all!([{ tag_id: tag.id, taggable_type: 'Group', taggable_id: group.id }]).rows.first.first
+    blob = ActiveStorage::Blob.create!(key: "orphan-email-#{@hex}", filename: 'message.txt', byte_size: 0, checksum: 'empty', service_name: ActiveStorage::Blob.service.name)
+    attachment_id = ActiveStorage::Attachment.insert_all!([{ name: 'attachments', record_type: 'ReceivedEmail', record_id: email.id, blob_id: blob.id, created_at: Time.current }]).rows.first.first
+
+    audit = CleanupService.audit_orphan_records
+    %w[GroupSurvey ReceivedEmail Webhook Tag].each do |name|
+      assert_equal 1, audit[:dangling_records]["#{name}.missing_group"]
+    end
+    records.each { |orphan, _| assert orphan.class.exists?(orphan.id) }
+
+    CleanupService.delete_orphan_records
+
+    records.each do |orphan, live|
+      assert_not orphan.class.exists?(orphan.id)
+      assert live.class.exists?(live.id)
+    end
+    assert ReceivedEmail.exists?(unassigned_email.id)
+    assert_not Tagging.exists?(tagging_id)
+    assert_not ActiveStorage::Attachment.exists?(attachment_id)
+    assert ActiveStorage::Blob.exists?(blob.id)
+    assert Group.exists?(group.id)
+  end
+
   test "delete_orphan_records preserves content with a live parent when its topic is missing" do
     comment = comments(:public_discussion_comment)
     topic_item = topic_items(:public_discussion_comment_topic_item)

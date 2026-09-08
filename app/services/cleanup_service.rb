@@ -31,6 +31,11 @@ module CleanupService
   DELETE_BATCH_SIZE = 1_000
   INACTIVE_ORPHAN_USER_RETENTION = 60.days
 
+  # The webhook model was retired, but its table still contains group links.
+  class LegacyWebhook < ApplicationRecord
+    self.table_name = 'webhooks'
+  end
+
   USER_REFERENCES = {
     attachments: %i[user_id],
     bookmarks: %i[user_id],
@@ -111,6 +116,11 @@ module CleanupService
     "Group.missing_parent" => :groups_missing_parent,
     "Membership.missing_group" => :memberships_missing_group,
     "MembershipRequest.missing_group" => :membership_requests_missing_group,
+    "GroupSurvey.missing_group" => :group_surveys_missing_group,
+    "ReceivedEmail.missing_group" => :received_emails_missing_group,
+    "Webhook.missing_group" => :webhooks_missing_group,
+    "Tag.missing_group" => :tags_missing_group,
+    "Tagging.missing_tag" => :taggings_missing_tag,
     "Discussion.missing_group" => :discussions_missing_group,
     "Poll.missing_group" => :polls_missing_group,
     "PollOption.missing_poll" => :poll_options_missing_poll,
@@ -341,6 +351,34 @@ module CleanupService
       .joins(:topic)
       .joins('LEFT JOIN groups g ON topics.group_id = g.id')
       .where('topics.group_id IS NOT NULL AND g.id IS NULL')
+  end
+
+  # An unassigned email is valid. Only non-null links to deleted groups are
+  # orphans; the same rule keeps optional group links intact in these tables.
+  def self.records_missing_group(model)
+    table = model.quoted_table_name
+    model.where.not(group_id: nil)
+         .where("NOT EXISTS (SELECT 1 FROM groups WHERE groups.id = #{table}.group_id)")
+  end
+
+  def self.group_surveys_missing_group
+    records_missing_group(GroupSurvey)
+  end
+
+  def self.received_emails_missing_group
+    records_missing_group(ReceivedEmail)
+  end
+
+  def self.webhooks_missing_group
+    records_missing_group(LegacyWebhook)
+  end
+
+  def self.tags_missing_group
+    records_missing_group(Tag)
+  end
+
+  def self.taggings_missing_tag
+    Tagging.where('NOT EXISTS (SELECT 1 FROM tags WHERE tags.id = taggings.tag_id)')
   end
 
   def self.polls_missing_group
