@@ -308,7 +308,7 @@ fi:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ fi:
       thanks_for_reading: Kiitos kun luit, mukavaa päivää!
       marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
       click_here: Klikkaa tästä
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,20 @@ fi:
     trial_expired:
       subject: Loomio-ryhmäsi poistetaan käyttämättömyyden vuoksi.
       body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
+    destroy_warning_with_usage:
+      subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
+      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requester toimesta. Se poistetaan pysyvästi kahden viikon kuluttua.
+      trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi kahden viikon kuluttua.
+      subscription_canceled: Loomio-ryhmäsi "%{group}" tilaus on ollut peruutettuna vähintään 60 päivää. Se poistetaan pysyvästi kahden viikon kuluttua.
+      usage_heading: 'Ryhmätietojen yhteenveto:'
+      subgroups: Alaryhmät
+      members: Nykyiset jäsenet
+      discussions: Keskustelut
+      polls: Kyselyt
+      comments: Kommentit
+      export: Jos haluat säilyttää ryhmän tai viedä kopion sen tiedoista, vastaa tähän sähköpostiin kahden viikon kuluessa. Voimme palauttaa käyttöoikeudet ennen poistamista.
+      export_link: Lisätietoja ryhmätietojen viennistä
+      group_key: 'Ryhmän avain: %{key}'
   poll_mailer:
     common:
       why_send_this: Saat tämän sähköpostin, koska %{reason}

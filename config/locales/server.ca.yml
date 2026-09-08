@@ -310,7 +310,7 @@ ca:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -329,12 +329,11 @@ ca:
       thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -415,6 +414,20 @@ ca:
     trial_expired:
       subject: El vostre grup de Loomio s'eliminarà per inactivitat.
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
+    destroy_warning_with_usage:
+      subject: El vostre grup de Loomio està programat per a la supressió.
+      requested: '%{requester} ha programat l''eliminació del vostre grup de Loomio "%{group}". S''eliminarà permanentment en 2 setmanes.'
+      trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. S'eliminarà permanentment en 2 setmanes.
+      subscription_canceled: El vostre grup de Loomio "%{group}" ha tingut una subscripció cancel·lada durant almenys 60 dies. S'eliminarà permanentment en 2 setmanes.
+      usage_heading: 'Resum de dades del grup:'
+      subgroups: Subgrups
+      members: Membres actuals
+      discussions: Debats
+      polls: Enquestes
+      comments: Comentaris
+      export: Per conservar el grup o exportar una còpia de les seves dades, responeu a aquest correu electrònic en un termini de 2 setmanes. Podem restaurar l'accés abans de suprimir-lo.
+      export_link: Més informació sobre l'exportació de dades de grup
+      group_key: 'Clau de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}

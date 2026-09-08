@@ -334,7 +334,7 @@ de:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -353,12 +353,11 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
       click_here: Hier klicken
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -445,6 +444,20 @@ de:
     trial_expired:
       subject: Deine Loomio-Gruppe wird aufgrund von Inaktivität gelöscht.
       body: Deine Loomio-Gruppe „%{group}“ ist inaktiv und wird in zwei Wochen gelöscht. Falls du die Löschung deiner Gruppe verhindern möchtest, antworte bitte auf diese E-Mail.
+    destroy_warning_with_usage:
+      subject: Ihre Loomio-Gruppe ist zur Löschung vorgesehen.
+      requested: Ihre Loomio-Gruppe "%{group}" wurde von %{requester} zur Löschung vorgesehen. Sie wird in 2 Wochen endgültig gelöscht.
+      trial_expired: Ihre Loomio-Gruppe "%{group}" befindet sich seit mindestens 60 Tagen in der abgelaufenen Testphase. Sie wird in 2 Wochen endgültig gelöscht.
+      subscription_canceled: Ihre Loomio-Gruppe "%{group}" hat seit mindestens 60 Tagen ein gekündigtes Abonnement. Sie wird in 2 Wochen endgültig gelöscht.
+      usage_heading: 'Zusammenfassung der Gruppendaten:'
+      subgroups: Untergruppen
+      members: Aktuelle Mitglieder
+      discussions: Diskussionen
+      polls: Umfragen
+      comments: Kommentare
+      export: Um die Gruppe zu behalten oder eine Kopie ihrer Daten zu exportieren, antworten Sie bitte innerhalb von zwei Wochen auf diese E-Mail. Wir können den Zugriff vor der Löschung wiederherstellen.
+      export_link: Erfahren Sie mehr über den Export von Gruppendaten
+      group_key: 'Gruppenschlüssel: %{key}'
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}

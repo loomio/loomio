@@ -332,7 +332,7 @@ pt_BR:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -351,12 +351,11 @@ pt_BR:
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       marked_as_read_success: Tudo no e-mail foi marcado como lido
       click_here: Clique aqui
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -443,6 +442,20 @@ pt_BR:
     trial_expired:
       subject: Seu grupo no Loomio será excluído devido à inatividade.
       body: Seu grupo no Loomio "%{group}" está inativo e será excluído em 2 semanas. Se você não deseja que seu grupo seja excluído, responda a este e-mail.
+    destroy_warning_with_usage:
+      subject: Seu grupo no Loomio está programado para ser excluído.
+      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requester}. Ele será excluído permanentemente em 2 semanas.
+      trial_expired: Seu grupo no Loomio "%{group}" está em período de teste expirado há pelo menos 60 dias. Ele será excluído permanentemente em 2 semanas.
+      subscription_canceled: Seu grupo Loomio "%{group}" teve uma assinatura cancelada há pelo menos 60 dias. Ele será excluído permanentemente em 2 semanas.
+      usage_heading: 'Resumo dos dados do grupo:'
+      subgroups: Subgrupos
+      members: Membros atuais
+      discussions: Discussões
+      polls: Pesquisas
+      comments: Comentários
+      export: Para manter o grupo ou exportar uma cópia dos seus dados, responda a este e-mail dentro de 2 semanas. Podemos restaurar o acesso antes da exclusão.
+      export_link: Saiba mais sobre como exportar dados de grupo.
+      group_key: 'Chave do grupo: %{key}'
   poll_mailer:
     common:
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'

@@ -578,7 +578,7 @@ be:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -597,12 +597,11 @@ be:
       thanks_for_reading: Дзякуй за чытанне, добрага дня!
       marked_as_read_success: Усё ў электронным лісце пазначана як прачытанае
       click_here: Націсніце тут
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -679,6 +678,20 @@ be:
     trial_expired:
       subject: Ваша група Loomio будзе выдалена з-за бяздзейнасці.
       body: Ваша група Loomio "%{group}" была неактыўнай і будзе выдалена праз 2 тыдні. Калі вы не жадаеце, каб ваша група была выдалена, адкажыце на гэты ліст.
+    destroy_warning_with_usage:
+      subject: Ваша група Loomio запланавана да выдалення
+      requested: Ваша група Loomio "%{group}" была выдалена карыстальнікам %{requester}. Яна будзе канчаткова выдалена праз 2 тыдні.
+      trial_expired: Ваша група Loomio "%{group}" знаходзіцца на пробнай версіі, тэрмін дзеяння якой скончыўся, ужо як мінімум 60 дзён. Яна будзе канчаткова выдалена праз 2 тыдні.
+      subscription_canceled: Ваша група Loomio "%{group}" мае адмененую падпіску як мінімум на 60 дзён. Яна будзе канчаткова выдалена праз 2 тыдні.
+      usage_heading: 'Зводка дадзеных групы:'
+      subgroups: Падгрупы
+      members: Дзеючыя ўдзельнікі
+      discussions: Абмеркаванні
+      polls: Апытанні
+      comments: Каментарыі
+      export: Каб захаваць групу або экспартаваць копію яе дадзеных, адкажыце на гэты ліст на працягу 2 тыдняў. Мы можам аднавіць доступ да выдалення.
+      export_link: Даведайцеся пра экспарт дадзеных групы
+      group_key: 'Ключ групы: %{key}'
   forward_mailer:
     bounce:
       subject: Ваша паведамленне для Loomio не было дастаўлена

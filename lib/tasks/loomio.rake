@@ -352,6 +352,24 @@ namespace :loomio do
     SeededContentCleanupService.audit
   end
 
+  desc "Report topic-free trial trees expired at least 60 days ago (optional LIMIT)"
+  task audit_empty_expired_trials: :environment do
+    puts EmptyTrialCleanupService.audit(limit: ENV['LIMIT'].presence&.to_i).to_json
+  end
+
+  desc "Audit groups due for an expired-subscription deletion warning"
+  task audit_expired_subscription_groups: :environment do
+    limit = ENV["LIMIT"].present? ? Integer(ENV["LIMIT"], 10) : nil
+    puts JSON.pretty_generate(ExpiredSubscriptionGroupCleanupService.audit(limit: limit))
+  end
+
+  desc "Delete topic-free trial trees expired at least 60 days ago; requires a new AUDIT_PATH (optional LIMIT)"
+  task delete_empty_expired_trials: :environment do
+    File.open(ENV.fetch('AUDIT_PATH'), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
+      puts EmptyTrialCleanupService.delete!(io: io, limit: ENV['LIMIT'].presence&.to_i).to_json
+    end
+  end
+
   desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
   task delete_unused_seeded_content: :environment do
     limit = ENV["LIMIT"].presence&.to_i

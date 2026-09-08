@@ -303,7 +303,7 @@ ja:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -322,12 +322,11 @@ ja:
       thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
       marked_as_read_success: メールのすべてが既読としてマークされています
       click_here: ここをクリック
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -408,6 +407,20 @@ ja:
     trial_expired:
       subject: あなたのLoomioグループは、活動がないため削除されます。
       body: あなたのLoomioグループ「%{group}」は非アクティブ状態のため、2週間後に削除されます。グループの削除を希望されない場合は、このメールにご返信ください。
+    destroy_warning_with_usage:
+      subject: あなたのLoomioグループは削除予定です。
+      requested: あなたのLoomioグループ「%{group}」は、%{requester}によって削除予定となりました。2週間後に完全に削除されます。
+      trial_expired: あなたのLoomioグループ「%{group}」は、少なくとも60日間のトライアル期間が終了しています。2週間後に完全に削除されます。
+      subscription_canceled: あなたのLoomioグループ「%{group}」は、少なくとも60日間購読がキャンセルされています。2週間後に完全に削除されます。
+      usage_heading: グループデータの概要：
+      subgroups: サブグループ
+      members: 現在のメンバー
+      discussions: 議論
+      polls: 世論調査
+      comments: コメント
+      export: グループを維持するため、またはデータのコピーをエクスポートするためには、2週間以内にこのメールに返信してください。削除前にアクセスを復元することが可能です。
+      export_link: グループデータのエクスポートについて学ぶ
+      group_key: 'グループキー: %{key}'
   poll_mailer:
     common:
       why_send_this: このメールを受け取った理由は %{reason}

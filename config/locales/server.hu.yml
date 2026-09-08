@@ -318,7 +318,7 @@ hu:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -337,12 +337,11 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -425,6 +424,20 @@ hu:
     trial_expired:
       subject: A Loomio csoportod inaktivitás miatt törlésre kerül.
       body: A(z) „%{group}” nevű Loomio csoportod inaktív volt, és 2 hét múlva törlésre kerül. Ha nem szeretnéd, hogy a csoportodat töröljék, kérlek válaszolj erre az e-mailre.
+    destroy_warning_with_usage:
+      subject: A Loomio-csoportod törlése ütemezve van.
+      requested: A(z) „%{group}” nevű Loomio csoportodat törlésre ütemezte %{requester}. A csoport 2 hét múlva véglegesen törlésre kerül.
+      trial_expired: A(z) „%{group}” nevű Loomio csoportod legalább 60 napja lejárt próbaidőszakban van. 2 hét múlva véglegesen törlésre kerül.
+      subscription_canceled: A(z) „%{group}” nevű Loomio csoportod legalább 60 napja lemondott előfizetéssel rendelkezik. 2 hét múlva véglegesen törlésre kerül.
+      usage_heading: 'Csoportadatok összefoglalása:'
+      subgroups: Alcsoportok
+      members: Jelenlegi tagok
+      discussions: Beszélgetések
+      polls: Szavazások
+      comments: Hozzászólások
+      export: A csoport megtartásához vagy az adatainak másolatának exportálásához válaszoljon erre az e-mailre 2 héten belül. A törlés előtt vissza tudjuk állítani a hozzáférést.
+      export_link: Tudjon meg többet a csoportadatok exportálásáról
+      group_key: 'Csoportkulcs: %{key}'
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}

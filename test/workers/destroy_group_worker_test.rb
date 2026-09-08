@@ -35,11 +35,11 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert Group.exists?(group.id)
   end
 
-  test "immediate deletion schedules the discard it actually performed" do
+  test "immediate administrative deletion schedules the discard it actually performed" do
     group = groups(:orphan_group)
     actor = users(:admin)
     assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ group.id, group.reload.discarded_at.iso8601(6) ] }) do
-      GroupService.destroy_without_warning!(group.id, actor: actor)
+      GroupService.destroy_immediately!(group.id, actor: actor)
     end
     assert_equal actor.id, group.reload.discarded_by
   end
@@ -69,13 +69,13 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert_equal actor.id, group.reload.discarded_by
   end
 
-  test "instance administrators can schedule group deletion" do
+  test "instance administrators can use the warning deletion path" do
     actor = users(:alien)
     actor.update!(is_admin: true)
     group = topics(:discussion_topic).group
 
     assert_enqueued_with(job: DestroyGroupWorker) do
-      GroupService.destroy(group: group, actor: actor)
+      GroupService.warn_then_destroy(group: group, actor: actor)
     end
     assert_equal actor.id, group.reload.discarded_by
   end

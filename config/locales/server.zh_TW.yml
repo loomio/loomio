@@ -332,7 +332,7 @@ zh_TW:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -351,12 +351,11 @@ zh_TW:
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -443,6 +442,20 @@ zh_TW:
     trial_expired:
       subject: 由於長時間未活動，您的 Loomio 群組將被刪除。
       body: 您的 Loomio 群組「%{group}」已處於不活躍狀態，將在兩週後被刪除。如果您不希望您的群組被刪除，請回覆此郵件。
+    destroy_warning_with_usage:
+      subject: 您的 Loomio 群組已被安排刪除
+      requested: 您的 Loomio 群組「%{group}」已被 %{requester} 安排刪除。該群組將在 2 週後永久刪除。
+      trial_expired: 您的 Loomio 群組「%{group}」已處於試用期至少 60 天，試用期已過期。該群組將在 2 週後永久刪除。
+      subscription_canceled: 您的 Loomio 群組「%{group}」的訂閱已取消至少 60 天。它將在 2 週後永久刪除。
+      usage_heading: 群組資料匯總：
+      subgroups: 亞組
+      members: 現任成員
+      discussions: 討論
+      polls: 民調
+      comments: 評論
+      export: 如需保留該群組或匯出其資料副本，請在兩週內回覆此郵件。我們可以在刪除前恢復存取權限。
+      export_link: 了解如何匯出群組數據
+      group_key: 組鍵：%{key}
   poll_mailer:
     common:
       why_send_this: 因為 %{reason}，您收到了這封電子郵件

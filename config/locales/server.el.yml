@@ -308,7 +308,7 @@ el:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ el:
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
       click_here: Πατήστε εδώ
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,20 @@ el:
     trial_expired:
       subject: Η ομάδα σας Loomio θα διαγραφεί λόγω αδράνειας.
       body: Η ομάδα σας Loomio "%{group}" είναι ανενεργή και θα διαγραφεί σε 2 εβδομάδες. Εάν δεν θέλετε να διαγραφεί η ομάδα σας, απαντήστε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου.
+    destroy_warning_with_usage:
+      subject: Η ομάδα σας Loomio έχει προγραμματιστεί για διαγραφή
+      requested: Η ομάδα σας Loomio "%{group}" είχε προγραμματιστεί για διαγραφή από τον %{requester}. Θα διαγραφεί οριστικά σε 2 εβδομάδες.
+      trial_expired: Η ομάδα Loomio σας "%{group}" βρίσκεται σε δοκιμαστική περίοδο που έχει λήξει για τουλάχιστον 60 ημέρες. Θα διαγραφεί οριστικά σε 2 εβδομάδες.
+      subscription_canceled: Η συνδρομή της ομάδας σας Loomio "%{group}" έχει ακυρωθεί για τουλάχιστον 60 ημέρες. Θα διαγραφεί οριστικά σε 2 εβδομάδες.
+      usage_heading: 'Σύνοψη δεδομένων ομάδας:'
+      subgroups: Υποομάδες
+      members: Τρέχοντα μέλη
+      discussions: Συζητήσεις
+      polls: Δημοσκοπήσεις
+      comments: Σχόλια
+      export: Για να διατηρήσετε την ομάδα ή να εξαγάγετε ένα αντίγραφο των δεδομένων της, απαντήστε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου εντός 2 εβδομάδων. Μπορούμε να επαναφέρουμε την πρόσβαση πριν από τη διαγραφή.
+      export_link: Μάθετε σχετικά με την εξαγωγή δεδομένων ομάδας
+      group_key: 'Κλειδί ομάδας: %{key}'
   poll_mailer:
     common:
       why_send_this: Λαμβάνετε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου επειδή %{reason}

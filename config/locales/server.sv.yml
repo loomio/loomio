@@ -308,7 +308,7 @@ sv:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ sv:
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
       click_here: Klicka här
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,20 @@ sv:
     trial_expired:
       subject: Din Loomio-grupp kommer att raderas på grund av inaktivitet.
       body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
+    destroy_warning_with_usage:
+      subject: Din Loomio-grupp är schemalagd för radering
+      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requester}. Den kommer att raderas permanent om 2 veckor.
+      trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent om 2 veckor.
+      subscription_canceled: Din Loomio-grupp "%{group}" har haft en avbruten prenumeration i minst 60 dagar. Den kommer att raderas permanent om 2 veckor.
+      usage_heading: 'Sammanfattning av gruppdata:'
+      subgroups: Undergrupper
+      members: Nuvarande medlemmar
+      discussions: Diskussioner
+      polls: Opinionsundersökningar
+      comments: Kommentarer
+      export: För att behålla gruppen eller exportera en kopia av dess data, svara på det här e-postmeddelandet inom två veckor. Vi kan återställa åtkomsten innan raderingen.
+      export_link: Läs mer om att exportera gruppdata
+      group_key: 'Gruppnyckel: %{key}'
   poll_mailer:
     common:
       why_send_this: Du får det här e-postmeddelandet eftersom %{reason}

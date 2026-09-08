@@ -94,11 +94,10 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         operation_form("Change handle", handle_admin_group_path(@group), "handle", @group.handle, "Change handle")
         if @group.discarded?
           button_to "Restore group", undiscard_admin_group_path(@group), method: :post, class: "admin-button"
-        else
-          button_to "Discard group", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups? Their content will be retained, but the groups will be unavailable until they are restored." } }
         end
         button_to "Export group", export_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary"
-        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@group.name} and all of its subgroups? This permanently deletes their memberships and membership requests, topics and discussions, polls, votes and outcomes, topic items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are retained. This cannot be undone." } }
+        button_to "Warn then delete", warn_then_destroy_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name}, discard its complete group tree now, and permanently delete it in 2 weeks?" } }
+        button_to "Delete immediately", destroy_immediately_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Permanently delete #{@group.name} and all of its subgroups immediately? This deletes memberships and membership requests, topics and discussions, polls, votes and outcomes, topic items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are retained. This cannot be undone." } }
       end
     end
   end

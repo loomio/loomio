@@ -308,7 +308,7 @@ tr:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,20 @@ tr:
     trial_expired:
       subject: Loomio grubunuz, uzun süredir aktif olmamanız nedeniyle silinecektir.
       body: Loomio grubunuz "%{group}" pasif durumda ve 2 hafta içinde silinecektir. Grubunuzun silinmesini istemiyorsanız, lütfen bu e-postaya yanıt verin.
+    destroy_warning_with_usage:
+      subject: Loomio grubunuz silinmek üzere planlandı.
+      requested: Loomio grubunuz "%{group}", %{requester} tarafından silinmek üzere planlandı. 2 hafta içinde kalıcı olarak silinecektir.
+      trial_expired: Loomio grubunuz "%{group}" en az 60 gündür deneme sürümünde bulunuyor ve bu süre dolmuştur. Grup 2 hafta içinde kalıcı olarak silinecektir.
+      subscription_canceled: Loomio grubunuz "%{group}" en az 60 gündür iptal edilmiş bir aboneliğe sahip. 2 hafta içinde kalıcı olarak silinecektir.
+      usage_heading: 'Grup verilerinin özeti:'
+      subgroups: Alt gruplar
+      members: Mevcut üyeler
+      discussions: Tartışmalar
+      polls: Anketler
+      comments: Yorumlar
+      export: Grubu korumak veya verilerinin bir kopyasını dışa aktarmak için, bu e-postaya 2 hafta içinde yanıt verin. Silinmeden önce erişimi geri yükleyebiliriz.
+      export_link: Grup verilerini dışa aktarma hakkında bilgi edinin.
+      group_key: 'Grup anahtarı: %{key}'
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz

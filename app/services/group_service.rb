@@ -151,6 +151,10 @@ module GroupService
   end
 
   def self.destroy(group:, actor:)
+    warn_then_destroy(group: group, actor: actor)
+  end
+
+  def self.warn_then_destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
 
     discard_and_schedule_destruction!(group, actor: actor, wait: 2.weeks) do
@@ -162,8 +166,25 @@ module GroupService
     end
   end
 
-  def self.destroy_without_warning!(group_id, actor: nil)
-    discard_and_schedule_destruction!(Group.find(group_id), actor: actor)
+  def self.warn_then_destroy_subscription(group:, reason:)
+    raise ArgumentError, "unknown deletion reason" unless ExpiredSubscriptionGroupCleanupService::REASONS.include?(reason)
+    current_reason = ExpiredSubscriptionGroupCleanupService.deletion_reason(group.subscription, as_of: Time.current)
+    raise CanCan::AccessDenied, "group subscription is not eligible for deletion" unless group.kept? && current_reason == reason
+
+    discard_and_schedule_destruction!(group, actor: nil, wait: 2.weeks) do
+      group.admins.each do |admin|
+        GroupMailer.destroy_warning(group.id, admin.id, nil, reason).deliver_later
+      end
+      Sentry.metrics.count("group.destroy", attributes: { reason: reason })
+      EventBus.broadcast("group_destroy", group, nil)
+    end
+  end
+
+  def self.destroy_immediately!(group_id, actor:)
+    group = Group.find(group_id)
+    raise CanCan::AccessDenied unless actor.is_admin?
+
+    discard_and_schedule_destruction!(group, actor: actor)
   end
 
   # Capture the specific discard operation under the same lock as discard.

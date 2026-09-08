@@ -332,7 +332,7 @@ fr:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -351,12 +351,11 @@ fr:
       thanks_for_reading: Merci pour ta lecture, passe une bonne journée !
       marked_as_read_success: Tout le contenu de ce courriel a été marqué comme lu
       click_here: Cliquer ici
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -443,6 +442,20 @@ fr:
     trial_expired:
       subject: Ton groupe Loomio sera supprimé en raison de son inactivité.
       body: Ton groupe Loomio « %{group} » est inactif et sera supprimé dans deux semaines. Si tu ne souhaites pas qu'il soit supprimé, réponds à ce courriel.
+    destroy_warning_with_usage:
+      subject: Votre groupe Loomio est programmé pour être supprimé.
+      requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requester}. Il sera supprimé définitivement dans 2 semaines.
+      trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé dans 2 semaines.
+      subscription_canceled: Votre groupe Loomio « %{group} » a un abonnement annulé depuis au moins 60 jours. Il sera définitivement supprimé dans 2 semaines.
+      usage_heading: 'Résumé des données du groupe :'
+      subgroups: Sous-groupes
+      members: Membres actuels
+      discussions: Discussions
+      polls: Sondages
+      comments: Commentaires
+      export: Pour conserver le groupe ou exporter une copie de ses données, veuillez répondre à ce courriel dans un délai de deux semaines. Nous pouvons rétablir l'accès avant la suppression.
+      export_link: Découvrez comment exporter les données de groupe
+      group_key: 'Clé du groupe : %{key}'
   poll_mailer:
     common:
       why_send_this: Tu reçois ce courriel parce que %{reason}

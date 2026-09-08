@@ -32,4 +32,17 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "enqueues empty trial cleanup only at midnight UTC" do
+    travel_to Time.utc(2026, 9, 8) do
+      assert_enqueued_with(job: WarnExpiredSubscriptionGroupsWorker) do
+        assert_enqueued_with(job: CleanupEmptyTrialsWorker) { HourlyTaskJob.perform_now }
+      end
+    end
+    travel_to Time.utc(2026, 9, 8, 12) do
+      assert_no_enqueued_jobs(only: WarnExpiredSubscriptionGroupsWorker) do
+        assert_no_enqueued_jobs(only: CleanupEmptyTrialsWorker) { HourlyTaskJob.perform_now }
+      end
+    end
+  end
 end

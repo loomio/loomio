@@ -308,7 +308,7 @@ ro:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -327,12 +327,11 @@ ro:
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
       click_here: Apasa aici
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -413,6 +412,20 @@ ro:
     trial_expired:
       subject: Grupul tău Loomio va fi șters din cauza inactivității.
       body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
+    destroy_warning_with_usage:
+      subject: Grupul tău Loomio este programat pentru ștergere
+      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requester}. Acesta va fi șters definitiv în 2 săptămâni.
+      trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv în 2 săptămâni.
+      subscription_canceled: Grupul dvs. Loomio „%{group}” a avut un abonament anulat de cel puțin 60 de zile. Acesta va fi șters definitiv în 2 săptămâni.
+      usage_heading: 'Rezumatul datelor de grup:'
+      subgroups: Subgrupuri
+      members: Membri actuali
+      discussions: Discuții
+      polls: Sondaje
+      comments: Comentarii
+      export: Pentru a păstra grupul sau a exporta o copie a datelor sale, răspundeți la acest e-mail în termen de 2 săptămâni. Putem restabili accesul înainte de ștergere.
+      export_link: Aflați despre exportul datelor de grup
+      group_key: 'Cheie de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}

@@ -319,7 +319,7 @@ it:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -338,12 +338,11 @@ it:
       thanks_for_reading: Grazie per aver letto, buona giornata!
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
       click_here: Clicca qui
-
     digest:
       subject:
         votes_to_cast:
           one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          other: You have %{count} votes to cast
         people_mentioned:
           one: 1 person mentioned you
           other: "%{count} people mentioned you"
@@ -424,6 +423,20 @@ it:
     trial_expired:
       subject: Il tuo gruppo Loomio verrà eliminato per inattività.
       body: Il tuo gruppo Loomio "%{group}" è inattivo e verrà eliminato tra 2 settimane. Se non desideri che il gruppo venga eliminato, rispondi a questa email.
+    destroy_warning_with_usage:
+      subject: Il tuo gruppo Loomio è programmato per la cancellazione.
+      requested: Il tuo gruppo Loomio "%{group}" è stato programmato per la cancellazione da %{requester}. Verrà eliminato definitivamente tra 2 settimane.
+      trial_expired: Il tuo gruppo Loomio "%{group}" è attivo in versione di prova scaduta da almeno 60 giorni. Verrà eliminato definitivamente tra 2 settimane.
+      subscription_canceled: Il tuo gruppo Loomio "%{group}" ha un abbonamento annullato da almeno 60 giorni. Verrà eliminato definitivamente tra 2 settimane.
+      usage_heading: 'Riepilogo dei dati di gruppo:'
+      subgroups: Sottogruppi
+      members: Membri attuali
+      discussions: Discussioni
+      polls: Sondaggi
+      comments: Commenti
+      export: Per mantenere il gruppo o esportarne una copia dei dati, rispondi a questa email entro 2 settimane. Possiamo ripristinare l'accesso prima della cancellazione.
+      export_link: Scopri come esportare i dati di gruppo
+      group_key: 'Chiave del gruppo: %{key}'
   poll_mailer:
     common:
       why_send_this: Ricevi questa email perché %{reason}
