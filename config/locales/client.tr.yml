@@ -1266,6 +1266,7 @@ tr:
     body: Bu alt grubu silmek istediğinizden emin misiniz? Tüm konular, anketler, dosyalar ve diğer grup içerikleri kalıcı olarak silinecektir. Devam etmeden önce grup verilerini dışa aktarmanız ve önemli dosyaları manuel olarak indirmeniz önerilir.
     confirm: Bu grubu silmek istediğinizi onaylamak için '%{name}' yazın.
     success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
+    scheduled_for_deletion: Bu grubun 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
   group_page:
     stats: Grup istatistikleri
     threads: Müzakereler

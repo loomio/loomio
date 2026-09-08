@@ -80,14 +80,14 @@ Now a member of the subgroup, an admin of the parent group can make themselves a
 
 ![Make admin action for a parent group admin](member_make_admin.png)
 
-## Archive a subgroup
+## Keep a subgroup for your records
 
-When your subgroup has served its purpose and you want to keep the subgroup for your records, a subgroup admin can archive it with the following:
+When your subgroup has served its purpose and you want to keep its content available for reference, a subgroup admin can close it informally with the following:
 - Rename the subgroup by appending the word Archive, e.g. **Archive - subgroup name**.
-- Update the subgroup description to let everyone know the subgroup is now closed/archived.
+- Update the subgroup description to let everyone know the subgroup is now closed.
 - Remove members of the subgroup, leaving at least one person as admin.  (Only subgroup members can write new content.)
 
-If you want the archived subgroup to be visible to members of the parent group;
+If you want the closed subgroup to be visible to members of the parent group;
 - Change subgroup privacy to **Closed**
 - In **Permissions**, check the first box allowing members of the parent group to see the group.
 

@@ -26,7 +26,7 @@ const watchRecords = (options) => {
 watchRecords({
   collections: ['groups', 'memberships'],
   query: () => {
-    mine.value = props.organization.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
+    mine.value = props.organization.subgroups().filter(g => g.isAvailable() && g.membershipFor(Session.user()));
     more.value = props.organization.subgroups().filter(g => AbilityService.canViewGroup(g) && !g.membershipFor(Session.user()));
     canStartSubgroup.value = AbilityService.canCreateSubgroups(props.organization);
   }

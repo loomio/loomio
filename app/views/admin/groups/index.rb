@@ -23,7 +23,7 @@ class Views::Admin::Groups::Index < Views::Admin::Layout
               th { "Members" }
               th { "Discussions" }
               th { "Created" }
-              th { "Archived" }
+              th { "Discarded" }
               th { "Actions" }
             end
           end
@@ -37,7 +37,7 @@ class Views::Admin::Groups::Index < Views::Admin::Layout
                 td { group.memberships_count }
                 td { group.discussions_count }
                 td { group.created_at.to_date.to_s }
-                td { value(group.archived_at&.to_date) }
+                td { value(group.discarded_at&.to_date) }
                 td { link_to "Edit", edit_admin_group_path(group) }
               end
             end

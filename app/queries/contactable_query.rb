@@ -9,12 +9,12 @@ class ContactableQuery
     ids = []
     ids.concat(user.all_memberships.pluck(:group_id))
     ids.concat(user.membership_requests.pluck(:group_id))
-    Group.published.where(id: ids.flatten.compact.uniq).pluck(:id)
+    Group.available.where(id: ids.flatten.compact.uniq).pluck(:id)
   end
 
   def self.topic_ids(user)
     ids = Topic.where(group_id: user.group_ids).pluck(:id)
     ids.concat(user.guest_topic_ids)
-    Topic.left_joins(:group).not_archived.where(id: ids.uniq).pluck(:id)
+    Topic.left_joins(:group).group_available.where(id: ids.uniq).pluck(:id)
   end
 end

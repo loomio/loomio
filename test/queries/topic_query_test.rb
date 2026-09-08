@@ -215,10 +215,10 @@ class TopicQueryTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
-  # -- Archived --
+  # -- Inactive --
 
-  test "does not return topics in archived groups" do
-    @group.archive!
+  test "does not return topics in inactive groups" do
+    @group.discard!
     results = TopicQuery.visible_to(user: @user, group_ids: [@group.id])
     refute_includes results, @discussion.topic
   end

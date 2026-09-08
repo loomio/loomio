@@ -1266,6 +1266,7 @@ fi:
     body: Haluatko varmasti poistaa tämän aliryhmän? Kaikki viestiketjut, kyselyt, tiedostot ja muu ryhmän sisältö poistetaan pysyvästi. On suositeltavaa viedä ryhmätiedot ja ladata kaikki tärkeät tiedostot manuaalisesti ennen kuin jatkat.
     confirm: Kirjoita '%{name}' vahvistaaksesi, että haluat poistaa tämän ryhmän.
     success: Tämä ryhmä on arkistoitu ja se on tarkoitus poistaa pysyvästi 2 viikon kuluttua.
+    scheduled_for_deletion: Tämä ryhmä on ajoitettu poistettavaksi pysyvästi kahden viikon kuluttua.
   group_page:
     stats: Ryhmätilastot
     threads: Kierteet

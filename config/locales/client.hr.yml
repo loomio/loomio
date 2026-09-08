@@ -1266,6 +1266,7 @@ hr:
     body: Jeste li sigurni da želite izbrisati ovu podgrupu? Sve teme, ankete, datoteke i drugi sadržaj grupe bit će trajno izbrisani. Preporuča se da izvezete podatke grupe i ručno preuzmete sve važne datoteke prije nastavka.
     confirm: Upišite '%{name}' da potvrdite da želite izbrisati ovu grupu.
     success: Ova je grupa arhivirana i zakazano je za trajno brisanje za 2 tjedna.
+    scheduled_for_deletion: Trajno brisanje ove grupe planirano je za 2 tjedna
   group_page:
     stats: Grupna statistika
     threads: niti

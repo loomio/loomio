@@ -70,7 +70,7 @@ module GroupService
         Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
         # mark as accepted all invitiations to people who are already part of the org.
-        other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+        other_group_ids = Group.available.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
         existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
         Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
@@ -153,7 +153,7 @@ module GroupService
   def self.destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
 
-    archive_and_schedule_destruction!(group, wait: 2.weeks) do
+    discard_and_schedule_destruction!(group, actor: actor, wait: 2.weeks) do
       group.admins.each do |admin|
         GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
       end
@@ -162,25 +162,25 @@ module GroupService
     end
   end
 
-  def self.destroy_without_warning!(group_id)
-    archive_and_schedule_destruction!(Group.find(group_id))
+  def self.destroy_without_warning!(group_id, actor: nil)
+    discard_and_schedule_destruction!(Group.find(group_id), actor: actor)
   end
 
-  # Capture the specific archive operation under the same lock as archival.
+  # Capture the specific discard operation under the same lock as discard.
   # Queue and announce only after commit so jobs cannot consume stale state.
-  def self.archive_and_schedule_destruction!(group, wait: nil)
+  def self.discard_and_schedule_destruction!(group, actor:, wait: nil)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
-      group.archive!
-      archived_at = group.archived_at.iso8601(6)
+      group.discard!(actor: actor)
+      discarded_at = group.discarded_at.iso8601(6)
       transaction.after_commit do
-        DestroyGroupWorker.set(wait: wait).perform_later(group.id, archived_at)
+        DestroyGroupWorker.set(wait: wait).perform_later(group.id, discarded_at)
         yield if block_given?
       end
     end
   end
 
-  private_class_method :archive_and_schedule_destruction!
+  private_class_method :discard_and_schedule_destruction!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

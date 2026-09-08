@@ -1272,6 +1272,7 @@ ca:
     body: Esteu segur que voleu suprimir aquest subgrup? Tots els fils, enquestes, fitxers i altres continguts del grup se suprimiran permanentment. Es recomana exportar les dades del grup i descarregar manualment els fitxers importants abans de continuar.
     confirm: Escriviu '%{name}' per confirmar que voleu eliminar aquest grup
     success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
+    scheduled_for_deletion: Està programat que aquest grup s'elimini permanentment d'aquí a 2 setmanes.
   group_page:
     stats: Estadístiques del grup
     threads: Fils

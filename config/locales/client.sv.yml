@@ -1266,6 +1266,7 @@ sv:
     body: Är du säker på att du vill ta bort den här undergruppen? Alla trådar, omröstningar, filer och annat gruppinnehåll kommer att raderas permanent. Det rekommenderas att du exporterar gruppdata och manuellt laddar ner alla viktiga filer innan du fortsätter.
     confirm: Skriv '%{name}' för att bekräfta att du vill ta bort den här gruppen.
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
+    scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
   group_page:
     stats: Gruppstatistik
     threads: Trådar

@@ -1100,11 +1100,11 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     end
   end
 
-  test "archiving blocks queued routing for group and topic subjects but preserves direct topics" do
+  test "discarding blocks queued routing for group and topic subjects but preserves direct topics" do
     group = groups(:group)
     discussion = topics(:discussion_topic).discussion
-    discussion.group # Cache the group before archiving.
-    group.archive!
+    discussion.group # Cache the group before discarding.
+    group.discard!
 
     [group, discussion, @outcome, topics(:subgroup_discussion_topic).discussion].each do |subject|
       notification = Notification.create!(kind: "new_discussion", subject: subject, actor: @author)
@@ -1118,58 +1118,58 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_not_empty notification.notification_deliveries
   end
 
-  test "archiving stops already routed email chatbot and push deliveries" do
+  test "discarding stops already routed email chatbot and push deliveries" do
     subscription = create_push_subscription(
       user: @author,
-      endpoint: "https://fcm.googleapis.com/fcm/send/archived-group",
+      endpoint: "https://fcm.googleapis.com/fcm/send/inactive-group",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
     notification = create_notification
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     push = notification.notification_deliveries.find_by!(channel: "push", recipient: subscription)
-    groups(:group).archive!
+    groups(:group).discard!
 
     assert_no_difference "ActionMailer::Base.deliveries.count" do
       DeliverNotificationEmailWorker.perform_now(notification.notification_deliveries.find_by!(channel: "email").id)
     end
-    ChatbotService.stub(:publish_notification_delivery!, ->(*) { flunk "archived chatbot must not send" }) do
+    ChatbotService.stub(:publish_notification_delivery!, ->(*) { flunk "inactive chatbot must not send" }) do
       DeliverNotificationChatbotWorker.perform_now(notification.notification_deliveries.find_by!(channel: "chatbot").id)
     end
-    WebPushService.stub(:deliver!, ->(**) { flunk "archived push must not send" }) do
+    WebPushService.stub(:deliver!, ->(**) { flunk "inactive push must not send" }) do
       DeliverNotificationPushWorker.perform_now(push.id)
     end
     assert notification.notification_deliveries.where.not(channel: "in_app").all? { |delivery| delivery.delivered_at.nil? }
   end
 
-  test "archiving stops queued subscriber chatbot publications" do
+  test "discarding stops queued subscriber chatbot publications" do
     item = topics(:discussion_topic).items.find_by!(kind: "new_discussion")
     @chatbot.update_column(:event_kinds, ["new_discussion"])
     assert_not Notification.exists?(subject: item, kind: item.kind)
-    groups(:group).archive!
+    groups(:group).discard!
 
     ChatbotService.publish_topic_item!(item.id)
 
     assert_not_requested :post, @chatbot.server
   end
 
-  test "archiving stops queued subscriber email and push" do
+  test "discarding stops queued subscriber email and push" do
     topic = topics(:discussion_topic)
     recipient = users(:member)
     TopicReader.for(user: recipient, topic: topic).set_volume!(email: :loud, push: :loud)
     subscription = create_push_subscription(
       user: recipient,
-      endpoint: "https://fcm.googleapis.com/fcm/send/archived-subscriber",
+      endpoint: "https://fcm.googleapis.com/fcm/send/inactive-subscriber",
       p256dh_key: "p256dh-key",
       auth_key: "auth-key"
     )
     item = topic.items.find_by!(itemable: topic.discussion, kind: "new_discussion")
-    groups(:group).archive!
+    groups(:group).discard!
 
     assert_no_difference "ActionMailer::Base.deliveries.count" do
       NotificationMailer.topic_item(recipient.id, item.id).deliver_now
     end
-    WebPushService.stub(:deliver!, ->(**) { flunk "archived subscriber push must not send" }) do
+    WebPushService.stub(:deliver!, ->(**) { flunk "inactive subscriber push must not send" }) do
       DeliverSubscriberPushTopicItemWorker.perform_now(subscription.id, item.id)
     end
   end
@@ -1178,17 +1178,31 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     now = Time.current.beginning_of_hour
     @poll.topic.update!(group_id: nil)
     @poll.update!(closing_at: now + 1.day, notify_on_closing_soon: "author")
-    groups(:group).archive!
+    groups(:group).discard!
 
     assert_difference -> { Notification.where(kind: "poll_closing_soon", subject: @poll).count }, 1 do
       PollService.publish_closing_soon(now: now)
     end
   end
 
-  test "archived polls close without reminders or expiry notifications" do
+  test "an inactive subscription stops queued routing while direct topics remain eligible" do
+    group = groups(:group)
+    group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+    discussion = topics(:discussion_topic).discussion
+
+    notification = Notification.create!(kind: "new_discussion", subject: discussion, actor: @author)
+    assert_empty NotificationDeliveryRouter.for(notification).route!
+
+    direct = topics(:direct_topic).discussion
+    direct_notification = route_notification(kind: "discussion_edited", subject: direct,
+                                             recipient_user_ids: [direct.author_id])
+    assert_not_empty direct_notification.notification_deliveries
+  end
+
+  test "inactive polls close without reminders or expiry notifications" do
     now = Time.current.beginning_of_hour
     @poll.update!(closing_at: now + 1.day, notify_on_closing_soon: "author")
-    groups(:group).archive!
+    groups(:group).discard!
 
     assert_no_difference "Notification.count" do
       PollService.publish_closing_soon(now: now)

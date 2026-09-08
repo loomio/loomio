@@ -245,7 +245,7 @@ export default new class GroupService {
                   helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',
                   raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
-                  flash:    'delete_group_modal.success',
+                  flash:    'delete_group_modal.scheduled_for_deletion',
                   submit:   'delete_group_modal.title'
                 },
                 redirect:   returnUrl

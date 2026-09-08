@@ -364,7 +364,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
     t.integer "admin_memberships_count", default: 0, null: false
     t.string "admin_tags"
     t.boolean "admins_can_edit_user_content", default: true, null: false
-    t.datetime "archived_at", precision: nil
     t.jsonb "attachments", default: [], null: false
     t.string "category"
     t.integer "category_id"
@@ -384,6 +383,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
     t.integer "delegates_count", default: 0, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "md", null: false
+    t.datetime "discarded_at", precision: nil
+    t.integer "discarded_by"
     t.string "discussion_privacy_options", default: "private_only", null: false
     t.integer "discussion_templates_count", default: 0, null: false
     t.integer "discussions_count", default: 0, null: false
@@ -430,9 +431,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
     t.integer "theme_id"
     t.string "token"
     t.datetime "updated_at", precision: nil
-    t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["creator_id"], name: "index_groups_on_creator_id"
+    t.index ["discarded_at"], name: "index_groups_on_discarded_at", where: "(discarded_at IS NULL)"
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
     t.index ["key"], name: "index_groups_on_key", unique: true

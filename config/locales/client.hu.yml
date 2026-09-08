@@ -1270,6 +1270,7 @@ hu:
     body: Biztosan törli ezt az alcsoportot? Az összes szál, szavazás, fájl és egyéb csoporttartalom véglegesen törlődik. Javasoljuk, hogy a folytatás előtt exportálja a csoportadatokat, és manuálisan töltse le a fontos fájlokat.
     confirm: A csoport törlésének megerősítéséhez írja be a „%{name}” parancsot.
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
+    scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
   group_page:
     stats: Csoport statisztika
     threads: Témák

@@ -1272,6 +1272,7 @@ nl_NL:
     body: Weet u zeker dat u deze subgroep wilt verwijderen? Alle threads, polls, bestanden en andere groepsinhoud worden permanent verwijderd. Het wordt aanbevolen dat u de groepsgegevens exporteert en handmatig belangrijke bestanden downloadt voordat u doorgaat.
     confirm: Type '%{name}' om te bevestigen dat je groep wilt verwijderen.
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
+    scheduled_for_deletion: Deze groep zal over 2 weken definitief worden verwijderd.
   group_page:
     stats: Groep statistieken
     threads: Borden
