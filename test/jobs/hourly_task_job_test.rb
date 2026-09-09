@@ -17,32 +17,49 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     assert_not LoginToken.exists?(expired_token.id)
   end
 
-  test "enqueues orphan cleanup at midnight UTC" do
-    travel_to Time.utc(2026, 9, 5) do
-      assert_enqueued_with(job: CleanupOrphanRecordsWorker) do
-        HourlyTaskJob.perform_now
+  test "enqueues orphan cleanup at midnight UTC only when cleanup is enabled" do
+    begin
+      ENV.delete("CLEANUP_ENABLED")
+      travel_to Time.utc(2026, 9, 5) do
+        assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
+          HourlyTaskJob.perform_now
+        end
       end
+
+      ENV["CLEANUP_ENABLED"] = "1"
+      travel_to Time.utc(2026, 9, 5) do
+        assert_enqueued_with(job: CleanupOrphanRecordsWorker) do
+          HourlyTaskJob.perform_now
+        end
+      end
+    ensure
+      ENV.delete("CLEANUP_ENABLED")
     end
   end
 
   test "does not enqueue orphan cleanup at midnight in another time zone" do
-    travel_to Time.new(2026, 9, 5, 0, 0, 0, "+12:00") do
-      assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-        HourlyTaskJob.perform_now
+    begin
+      ENV["CLEANUP_ENABLED"] = "1"
+      travel_to Time.new(2026, 9, 5, 0, 0, 0, "+12:00") do
+        assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
+          HourlyTaskJob.perform_now
+        end
       end
+    ensure
+      ENV.delete("CLEANUP_ENABLED")
     end
   end
 
-  test "enqueues trial cleanup at midnight UTC only when enabled" do
+  test "enqueues trial cleanup at midnight UTC only when cleanup is enabled" do
     begin
-      ENV.delete("TRIAL_GROUP_CLEANUP_ENABLED")
+      ENV.delete("CLEANUP_ENABLED")
       travel_to Time.utc(2026, 9, 8) do
         assert_no_enqueued_jobs(only: CleanupTrialGroupsWorker) do
           HourlyTaskJob.perform_now
         end
       end
 
-      ENV["TRIAL_GROUP_CLEANUP_ENABLED"] = "1"
+      ENV["CLEANUP_ENABLED"] = "1"
       travel_to Time.utc(2026, 9, 8) do
         assert_enqueued_with(job: CleanupTrialGroupsWorker) { HourlyTaskJob.perform_now }
       end
@@ -52,7 +69,7 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
         end
       end
     ensure
-      ENV.delete("TRIAL_GROUP_CLEANUP_ENABLED")
+      ENV.delete("CLEANUP_ENABLED")
     end
   end
 end

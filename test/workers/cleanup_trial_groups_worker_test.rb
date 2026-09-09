@@ -1,6 +1,9 @@
 require "test_helper"
 
 class CleanupTrialGroupsWorkerTest < ActiveSupport::TestCase
+  setup { ENV["CLEANUP_ENABLED"] = "1" }
+  teardown { ENV.delete("CLEANUP_ENABLED") }
+
   test "processes a bounded daily batch" do
     called = false
     replacement = lambda do |io:, warning_limit:|
@@ -12,5 +15,16 @@ class CleanupTrialGroupsWorkerTest < ActiveSupport::TestCase
     end
 
     assert called
+  end
+
+  test "does not run cleanup when cleanup is disabled" do
+    ENV.delete("CLEANUP_ENABLED")
+    called = false
+
+    TrialGroupCleanupService.stub(:run!, ->(**) { called = true }) do
+      CleanupTrialGroupsWorker.perform_now
+    end
+
+    assert_not called
   end
 end
