@@ -3121,3 +3121,4 @@ fr:
     browser_device: Navigateur
     remove_device: Supprimer le navigateur
     enable_from_loomio: Active les notifications push depuis les paramètres de notification lorsque tu es connecté à Loomio
+    ios_add_to_home_screen_before_enabling: Sur iPhone ou iPad, utilise Partager pour ajouter Loomio à ton écran d'accueil. Ouvre Loomio depuis la nouvelle icône, puis active les notifications push ici.

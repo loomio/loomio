@@ -3112,3 +3112,4 @@ de:
     browser_device: Browser
     remove_device: Browser entfernen
     enable_from_loomio: Aktiviere Push-Benachrichtigungen in den Benachrichtigungseinstellungen, während du bei Loomio angemeldet bist
+    ios_add_to_home_screen_before_enabling: Auf iPhone oder iPad kannst du Loomio über die Teilen-Funktion zu deinem Home-Bildschirm hinzufügen. Öffne Loomio über das neue Symbol und aktiviere anschließend Push-Benachrichtigungen.

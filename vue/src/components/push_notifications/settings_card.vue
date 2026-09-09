@@ -17,6 +17,7 @@ const nativeAvailable = NativeBridge.available();
 const configured = computed(() => AppConfig.webPushEnabled);
 
 const supported = computed(() => PushSubscriptionService.supported());
+const homeScreenRequired = computed(() => PushSubscriptionService.requiresHomeScreen());
 const denied = computed(() => PushSubscriptionService.permission() === 'denied');
 
 onMounted(refresh);
@@ -99,7 +100,9 @@ v-card.push-notifications-settings-card.mb-4(
   :title="$t('push_notifications.title')"
   :subtitle="$t('push_notifications.subtitle')")
   v-card-text
-    v-alert.mb-4(v-if="!supported" type="info" variant="tonal")
+    v-alert.mb-4(v-if="homeScreenRequired" type="info" variant="tonal")
+      span {{ $t('push_notifications.ios_add_to_home_screen_before_enabling') }}
+    v-alert.mb-4(v-else-if="!supported" type="info" variant="tonal")
       span {{ $t('push_notifications.not_supported') }}
     v-alert.mb-4(v-else-if="denied" type="warning" variant="tonal")
       span {{ $t('push_notifications.permission_denied') }}

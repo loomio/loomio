@@ -3077,3 +3077,4 @@ ro:
     browser_device: Browser
     remove_device: Eliminați browserul
     enable_from_loomio: Activează notificările push din setările de notificare când ești conectat la Loomio
+    ios_add_to_home_screen_before_enabling: Pe iPhone sau iPad, folosește opțiunea Partajare pentru a adăuga Loomio pe ecranul principal. Deschide Loomio din noua pictogramă, apoi activează notificările push aici.

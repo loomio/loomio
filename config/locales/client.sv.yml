@@ -3077,3 +3077,4 @@ sv:
     browser_device: Webbläsare
     remove_device: Ta bort webbläsaren
     enable_from_loomio: Aktivera push-notiser från aviseringsinställningarna när du är inloggad på Loomio
+    ios_add_to_home_screen_before_enabling: På iPhone eller iPad, använd Dela för att lägga till Loomio på din startskärm. Öppna Loomio från den nya ikonen och aktivera sedan push-notiser här.

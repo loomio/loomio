@@ -3104,3 +3104,4 @@ pl:
     browser_device: Przeglądarka
     remove_device: Usuń przeglądarkę
     enable_from_loomio: Włącz powiadomienia push w ustawieniach powiadomień po zalogowaniu się do Loomio
+    ios_add_to_home_screen_before_enabling: Na iPhonie lub iPadzie użyj opcji Udostępnij, aby dodać Loomio do ekranu głównego. Otwórz Loomio za pomocą nowej ikony, a następnie włącz powiadomienia push tutaj.

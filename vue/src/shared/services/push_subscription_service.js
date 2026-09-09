@@ -1,6 +1,6 @@
 import AppConfig from '@/shared/services/app_config';
 import RestfulClient from '@/shared/record_store/restful_client';
-import PwaService from '@/shared/services/pwa_service';
+import { requiresHomeScreen } from '@/shared/services/push_subscription_support.mjs';
 
 const client = new RestfulClient('push_subscriptions');
 
@@ -12,9 +12,11 @@ function applicationServerKey(value) {
 
 export default new class PushSubscriptionService {
   mutationPromise = Promise.resolve();
+  registrationPromise = null;
 
   supported() {
-    return AppConfig.webPushEnabled &&
+    return !this.requiresHomeScreen() &&
+      AppConfig.webPushEnabled &&
       window.isSecureContext &&
       'Notification' in window &&
       'serviceWorker' in navigator &&
@@ -25,18 +27,31 @@ export default new class PushSubscriptionService {
     return 'Notification' in window ? Notification.permission : 'unsupported';
   }
 
-  async registration() {
-    return PwaService.registration();
+  requiresHomeScreen() {
+    return requiresHomeScreen(window, navigator);
   }
 
-  async current() {
+  async registration() {
+    if (!('serviceWorker' in navigator)) return null;
+    if (this.registrationPromise) return this.registrationPromise;
+
+    this.registrationPromise = navigator.serviceWorker.register('/service-worker.js').catch(error => {
+      // Registration can fail transiently. Allow a later push operation to retry.
+      this.registrationPromise = null;
+      throw error;
+    });
+
+    return this.registrationPromise;
+  }
+
+  async existing() {
     if (!this.supported()) return null;
-    const registration = await this.registration();
+    const registration = await navigator.serviceWorker.getRegistration();
     return registration?.pushManager.getSubscription() || null;
   }
 
   async enabled() {
-    return !!(await this.current());
+    return !!(await this.existing());
   }
 
   enable(name = null) {
@@ -74,9 +89,10 @@ export default new class PushSubscriptionService {
   reconcile() {
     return this.enqueueMutation(async () => {
       if (!this.supported()) return null;
-      const subscription = await this.current();
+      const subscription = await this.existing();
       if (!subscription) return null;
 
+      await this.registration();
       const response = await client.post('reconcile', this.subscriptionParams(subscription));
       if (response.enabled === false) {
         await subscription.unsubscribe();
@@ -89,7 +105,7 @@ export default new class PushSubscriptionService {
   disable() {
     return this.enqueueMutation(async () => {
       if (!this.supported()) return;
-      const subscription = await this.current();
+      const subscription = await this.existing();
       if (!subscription) return;
 
       try {
@@ -101,10 +117,24 @@ export default new class PushSubscriptionService {
   }
 
   async disableBrowser() {
-    PwaService.requestPushUnsubscribe();
+    this.requestWorkerUnsubscribe();
     if (!this.supported()) return;
-    const subscription = await this.current();
+    const subscription = await this.existing();
     if (subscription) await subscription.unsubscribe();
+  }
+
+  // Start cleanup through the controlling worker before logout reloads the page.
+  // Also notify a different active worker when an update changed controllers.
+  requestWorkerUnsubscribe() {
+    if (!('serviceWorker' in navigator)) return;
+
+    const controller = navigator.serviceWorker.controller;
+    controller?.postMessage({ type: 'UNSUBSCRIBE_PUSH' });
+    navigator.serviceWorker.getRegistration().then(registration => {
+      if (registration?.active && registration.active !== controller) {
+        registration.active.postMessage({ type: 'UNSUBSCRIBE_PUSH' });
+      }
+    }).catch(() => {});
   }
 
   async subscriptions() {

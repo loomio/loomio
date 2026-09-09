@@ -3077,3 +3077,4 @@ sl:
     browser_device: Brskalnik
     remove_device: Odstrani brskalnik
     enable_from_loomio: Omogočite potisna obvestila v nastavitvah obvestil, ko ste prijavljeni v Loomio
+    ios_add_to_home_screen_before_enabling: V iPhonu ali iPadu uporabite možnost Deli, da dodate Loomio na začetni zaslon. Odprite Loomio z novo ikono in nato tukaj omogočite potisna obvestila.

@@ -3104,3 +3104,4 @@ ca:
     browser_device: Navegador
     remove_device: Elimina el navegador
     enable_from_loomio: Activa les notificacions push des de la configuració de notificacions mentre inicies la sessió a Loomio
+    ios_add_to_home_screen_before_enabling: A l'iPhone o l'iPad, fes servir Comparteix per afegir Loomio a la pantalla d'inici. Obre Loomio des de la nova icona i, a continuació, activa les notificacions push aquí.

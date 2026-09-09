@@ -2982,3 +2982,4 @@ be:
     browser_device: Браўзер
     remove_device: Выдаліць браўзер
     enable_from_loomio: Уключыце push-апавяшчэнні ў наладах апавяшчэнняў, калі вы ўвайшлі ў Loomio
+    ios_add_to_home_screen_before_enabling: На iPhone або iPad выкарыстоўвайце функцыю «Падзяліцца», каб дадаць Loomio на галоўны экран. Адкрыйце Loomio з новага значка, а затым уключыце push-паведамленні тут.

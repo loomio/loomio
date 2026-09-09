@@ -112,11 +112,13 @@ Poll invitation emails show the poll and its response options, but selecting an 
 
 ![A proposal invitation email with response options and the related thread](proposal_invitation_email.png)
 
-## Install Loomio and enable push notifications
+## Enable mobile notifications with web push
 
-Loomio can be installed from supported browsers so you can open it from your home screen or app launcher in its own window. Open **Notification settings** and select **Install** when that option is available. On an iPhone or iPad, open Loomio in Safari, select **Share**, then select **Add to Home Screen**. The installed web app still requires an internet connection.
+Web push is how Loomio delivers mobile notifications today. It can notify you about Loomio activity on your phone when Loomio is not open.
 
-Installing Loomio does not enable push automatically. Open **Notification settings** in each browser or installed app where you want to receive push notifications, allow notifications when asked, then select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+On Android, open **Notification settings** in a supported browser and enable push. On an iPhone or iPad, first open Loomio in Safari, use **Share** then **Add to Home Screen**, open Loomio from the new Home Screen icon, and enable push from there. Select **Test connection** to verify delivery to every browser listed under **Enabled browsers**.
+
+Web push also works in supported desktop browsers. Enable it there if you want Loomio notifications on your computer.
 
 Once push is enabled in at least one browser, group and thread notification forms let you choose **Email**, **Push**, or **Email and push**. Email and push can use different notification settings. Push delivery can be delayed by the browser, operating system, or network connection.
 

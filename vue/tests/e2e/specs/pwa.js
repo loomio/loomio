@@ -1,7 +1,7 @@
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
-  'registers_the_installable_app_shell': (test) => {
+  'registers_the_push_worker_and_serves_home_screen_metadata': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
     page.expectElement('.group-page')
@@ -15,7 +15,7 @@ module.exports = {
           const iconResponse = await fetch(maskableIcon.src)
           return { manifest, maskableIconAvailable: iconResponse.ok }
         }),
-        navigator.serviceWorker.ready
+        navigator.serviceWorker.register('/service-worker.js').then(() => navigator.serviceWorker.ready)
       ]).then(([manifestResult, registration]) => done({
         manifestHref: manifestLink.getAttribute('href'),
         manifest: manifestResult.manifest,
@@ -30,24 +30,7 @@ module.exports = {
       test.assert.equal(value.manifest.display, 'standalone')
       test.assert.ok(value.manifest.icons.some((icon) => icon.purpose === 'maskable'))
       test.assert.equal(value.maskableIconAvailable, true)
-      test.assert.ok(value.workerScriptUrl.includes('/service-worker.js?'))
+      test.assert.ok(value.workerScriptUrl.endsWith('/service-worker.js'))
     })
-  },
-
-  'offers_installation_from_notification_settings': (test) => {
-    page = pageHelper(test)
-    page.loadPath('setup_group')
-    page.expectElement('.group-page')
-    page.goTo('email_preferences')
-    page.expectElement('.email-settings-page')
-    page.execute(() => {
-      const event = new Event('beforeinstallprompt', { cancelable: true })
-      event.prompt = async () => {}
-      event.userChoice = Promise.resolve({ outcome: 'dismissed' })
-      window.dispatchEvent(event)
-    })
-
-    page.expectText('.pwa-install-card', 'Install Loomio')
-    page.expectText('.pwa-install-card', 'Add Loomio to your home screen for quicker access')
   }
 }

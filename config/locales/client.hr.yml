@@ -3077,3 +3077,4 @@ hr:
     browser_device: Preglednik
     remove_device: Ukloni preglednik
     enable_from_loomio: Omogućite push obavijesti iz postavki obavijesti dok ste prijavljeni na Loomio
+    ios_add_to_home_screen_before_enabling: Na iPhoneu ili iPadu upotrijebite Dijeli da biste dodali Loomio na početni zaslon. Otvorite Loomio iz nove ikone, a zatim ovdje omogućite push obavijesti.

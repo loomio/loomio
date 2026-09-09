@@ -1,5 +1,6 @@
-self.addEventListener('install', () => {
-  // Updated workers intentionally wait until the user accepts the reload notice.
+self.addEventListener('install', event => {
+  // This worker does not cache application assets, so updates can activate without reloading Loomio.
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('activate', event => {
@@ -7,9 +8,6 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('message', event => {
-  if (event.data?.type === 'SKIP_WAITING') {
-    event.waitUntil(self.skipWaiting());
-  }
   if (event.data?.type === 'UNSUBSCRIBE_PUSH') {
     const unsubscribe = self.registration.pushManager
       ? self.registration.pushManager.getSubscription().then(subscription => subscription?.unsubscribe())

@@ -3084,3 +3084,4 @@ hu:
     browser_device: Böngésző
     remove_device: Böngésző eltávolítása
     enable_from_loomio: Engedélyezze a push értesítéseket az értesítési beállításokban, miközben bejelentkezett a Loomio-ba
+    ios_add_to_home_screen_before_enabling: iPhone-on vagy iPaden a Megosztás funkcióval adhatod hozzá a Loomiót a kezdőképernyőhöz. Nyisd meg a Loomiót az új ikonnal, majd engedélyezd a push értesítéseket itt.

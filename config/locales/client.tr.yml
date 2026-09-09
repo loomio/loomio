@@ -3077,3 +3077,4 @@ tr:
     browser_device: Tarayıcı
     remove_device: Tarayıcıyı kaldır
     enable_from_loomio: Loomio'ya giriş yaptıktan sonra Bildirim ayarlarından anlık bildirimleri etkinleştirin
+    ios_add_to_home_screen_before_enabling: iPhone veya iPad'inizde, Loomio'yu Ana Ekranınıza eklemek için Paylaş özelliğini kullanın. Yeni simgeden Loomio'yu açın, ardından burada anlık bildirimleri etkinleştirin.
