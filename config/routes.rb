@@ -56,9 +56,10 @@ Rails.application.routes.draw do
       member do
         post :move
         post :handle
+        post :discard
         post :undiscard
-        post :warn_then_destroy
-        post :destroy_immediately
+        post :warn_and_discard
+        post :destroy
         post :export_group
       end
     end

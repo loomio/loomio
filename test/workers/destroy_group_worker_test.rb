@@ -39,7 +39,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = groups(:orphan_group)
     actor = users(:admin)
     assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ group.id, group.reload.discarded_at.iso8601(6) ] }) do
-      GroupService.destroy_immediately!(group.id, actor: actor)
+      GroupService.destroy(group: group, actor: actor)
     end
     assert_equal actor.id, group.reload.discarded_by
   end
@@ -48,12 +48,12 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = topics(:discussion_topic).group
     AccessVolumeMatrix::ROLES.excluding(:admin).each do |role|
       assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-        assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: users(role)) }
+        assert_raises(CanCan::AccessDenied) { GroupService.warn_and_discard(group: group, actor: users(role)) }
       end
       assert_nil group.reload.discarded_at
     end
     assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-      assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: LoggedOutUser.new) }
+      assert_raises(CanCan::AccessDenied) { GroupService.warn_and_discard(group: group, actor: LoggedOutUser.new) }
     end
     assert_nil group.reload.discarded_at
   end
@@ -63,7 +63,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     actor = users(:admin)
     assert_no_enqueued_jobs(only: DestroyGroupWorker) do
       assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
-        GroupService.destroy(group: group, actor: actor)
+        GroupService.warn_and_discard(group: group, actor: actor)
       end
     end
     assert_equal actor.id, group.reload.discarded_by
@@ -75,8 +75,28 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = topics(:discussion_topic).group
 
     assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-      GroupService.warn_then_destroy(group: group, actor: actor)
+      GroupService.warn_and_discard(group: group, actor: actor)
     end
     assert_equal actor.id, group.reload.discarded_by
+  end
+
+  test "instance administrators can discard without warning or permanent deletion" do
+    actor = users(:admin)
+    group = topics(:discussion_topic).group
+
+    assert_no_enqueued_jobs(only: [ ActionMailer::MailDeliveryJob, DestroyGroupWorker ]) do
+      GroupService.discard(group: group, actor: actor)
+    end
+
+    assert_equal actor.id, group.reload.discarded_by
+  end
+
+  test "only instance administrators can discard silently or destroy" do
+    actor = users(:user)
+    group = topics(:discussion_topic).group
+
+    assert_raises(CanCan::AccessDenied) { GroupService.discard(group: group, actor: actor) }
+    assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: actor) }
+    assert group.reload.kept?
   end
 end

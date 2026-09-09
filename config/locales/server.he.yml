@@ -426,7 +426,7 @@ he:
       body: קבוצת Loomio שלך "%{group}" אינה פעילה ותימחק בעוד שבועיים. אם אינך מעוניין שהקבוצה שלך תימחק, אנא השב למייל זה.
     destroy_warning_with_usage:
       subject: קבוצת Loomio שלך מתוכננת למחיקה
-      requested: קבוצת Loomio שלך "%{group}" תוכננה למחיקה על ידי %{requester}. היא תימחק לצמיתות לאחר %{days} יום.
+      requested: קבוצת Loomio שלך "%{group}" תוכננה למחיקה על ידי %{requestor}. היא תימחק לצמיתות לאחר %{days} יום.
       trial_expired: קבוצת ה-Loomio שלך "%{group}" נמצאת בתקופת ניסיון שפג תוקפה במשך 60 יום לפחות. היא תימחק לצמיתות לאחר %{days} יום.
       usage_heading: 'סיכום נתוני הקבוצה:'
       subgroups: תת-קבוצות

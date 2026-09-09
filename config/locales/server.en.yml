@@ -710,7 +710,7 @@ en:
         Thank you.
     destroy_warning_with_usage:
       subject: Your Loomio group is scheduled for deletion
-      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requester}. It will be permanently deleted after %{days} days.
+      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requestor}. It will be permanently deleted after %{days} days.
       trial_expired: Your Loomio group "%{group}" has been on an expired trial for at least 60 days. It will be permanently deleted after %{days} days.
       usage_heading: "Group data summary:"
       subgroups: Subgroups

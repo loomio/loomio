@@ -21,12 +21,12 @@ class GroupMailerTest < ActionMailer::TestCase
     assert_includes body, "https://help.loomio.org/en/user_manual/groups/data_export/"
   end
 
-  test "requested deletion warning identifies the requester" do
+  test "requested deletion warning identifies the requestor" do
     group = groups(:group)
-    requester = users(:admin)
+    requestor = users(:admin)
 
-    email = GroupMailer.destroy_warning(group.id, requester.id, requester.id)
+    email = GroupMailer.destroy_warning(group.id, requestor.id, requestor.id)
 
-    assert_includes email.body.decoded, "scheduled for deletion by #{requester.name}"
+    assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
   end
 end

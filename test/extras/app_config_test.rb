@@ -1,8 +1,8 @@
 require "test_helper"
 
 class AppConfigTest < ActiveSupport::TestCase
-  test "group deletion grace period is thirty days" do
-    assert_equal 30, AppConfig.group_deletion_grace_days
+  test "group deletion grace period is ninety days" do
+    assert_equal 90, AppConfig.group_deletion_grace_days
   end
 
   setup do

@@ -46,6 +46,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, "Parent group ID or key"
     assert_includes response.body, "Warn then delete"
     assert_includes response.body, "Delete immediately"
+    assert_includes response.body, "Discard without warning"
     assert_includes response.body, "all of its subgroups"
     assert_includes response.body, "memberships and membership requests"
     assert_includes response.body, "User accounts and subscriptions are retained"
@@ -105,8 +106,9 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_redirected_to admin_group_path(@group)
   end
 
-  test "admin can import and export groups" do
+  test "admin can import and send a JSON group export" do
     sign_in @admin
+    recipient_email = "records@example.com"
 
     get :import
     assert_response :success
@@ -115,30 +117,62 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       post :import_json, params: { url: "https://example.com/group.json" }
     end
 
-    assert_enqueued_with(job: GroupExportWorker, args: [@group.all_groups.pluck(:id), @group.name, @admin.id]) do
-      post :export_group, params: { id: @group.id }
+    assert_enqueued_with(job: GroupExportWorker, args: [@group.all_groups.pluck(:id), @group.name, @admin.id, recipient_email]) do
+      post :export_group, params: { id: @group.id, email: recipient_email, export_format: "json" }
     end
+    assert_equal "JSON group export will be sent to #{recipient_email}", flash[:notice]
   end
 
-  test "admin must restore a discarded group before exporting it" do
+  test "admin can send a CSV export for a discarded group" do
     sign_in @admin
     @group.discard!(actor: @admin)
+    recipient_email = "records@example.com"
 
-    assert_no_enqueued_jobs(only: GroupExportWorker) do
-      post :export_group, params: { id: @group.id }
+    assert_enqueued_with(job: GroupExportCsvWorker, args: [@group.id, @admin.id, recipient_email]) do
+      post :export_group, params: { id: @group.id, email: recipient_email, export_format: "csv" }
     end
 
     assert_redirected_to admin_group_path(@group)
-    assert_equal "Restore the group before exporting it", flash[:alert]
+    assert_equal "CSV group export will be sent to #{recipient_email}", flash[:notice]
 
     get :show, params: { id: @group.id }
     assert_includes response.body, "Restore group"
-    refute_includes response.body, "Export group"
+    assert_includes response.body, "Send data export to email"
+    assert_includes response.body, "JSON"
+    assert_includes response.body, "CSV"
   end
 
-  test "admin can restore a discarded group" do
+  test "admin group export rejects invalid email and format" do
     sign_in @admin
-    @group.discard!(actor: @admin)
+
+    assert_no_enqueued_jobs(only: [ GroupExportWorker, GroupExportCsvWorker ]) do
+      post :export_group, params: { id: @group.id, email: "invalid", export_format: "json" }
+    end
+    assert_equal "Enter a valid export recipient email", flash[:alert]
+
+    assert_no_enqueued_jobs(only: [ GroupExportWorker, GroupExportCsvWorker ]) do
+      post :export_group, params: { id: @group.id, email: "records@example.com", export_format: "pdf" }
+    end
+    assert_equal "Select JSON or CSV export format", flash[:alert]
+  end
+
+  test "non-admin cannot send a group export" do
+    sign_in users(:user)
+
+    assert_no_enqueued_jobs(only: [ GroupExportWorker, GroupExportCsvWorker ]) do
+      post :export_group, params: { id: @group.id, email: "records@example.com", export_format: "json" }
+    end
+
+    assert_redirected_to dashboard_path
+  end
+
+  test "admin can discard without warning and restore a group" do
+    sign_in @admin
+    post :discard, params: { id: @group.id }
+    assert @group.reload.discarded?
+    assert_equal @admin.id, @group.discarded_by
+    assert_equal "Group discarded without warning", flash[:notice]
+
     post :undiscard, params: { id: @group.id }
     assert_nil @group.reload.discarded_at
     assert_nil @group.discarded_by
@@ -148,23 +182,23 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     sign_in @admin
     moved = false
     warned = false
-    destroyed_immediately = false
+    destroyed = false
 
     GroupService.stub(:move, ->(group:, parent:, actor:) { moved = group == @group && parent == groups(:public_group) && actor == @admin }) do
       post :move, params: { id: @group.id, parent_id: groups(:public_group).id }
     end
     assert moved
 
-    GroupService.stub(:warn_then_destroy, ->(group:, actor:) { warned = group == @group && actor == @admin }) do
-      post :warn_then_destroy, params: { id: @group.id }
+    GroupService.stub(:warn_and_discard, ->(group:, actor:) { warned = group == @group && actor == @admin }) do
+      post :warn_and_discard, params: { id: @group.id }
     end
     assert warned
     assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days", flash[:notice]
 
-    GroupService.stub(:destroy_immediately!, ->(id, actor:) { destroyed_immediately = id == @group.id && actor == @admin }) do
-      post :destroy_immediately, params: { id: @group.id }
+    GroupService.stub(:destroy, ->(group:, actor:) { destroyed = group == @group && actor == @admin }) do
+      post :destroy, params: { id: @group.id }
     end
-    assert destroyed_immediately
+    assert destroyed
     assert_equal "Group deletion scheduled immediately", flash[:notice]
   end
 

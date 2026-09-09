@@ -27,7 +27,7 @@ class AppConfig
   end
 
   def self.group_deletion_grace_days
-    30
+    90
   end
 
   def self.image_regex

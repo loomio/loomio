@@ -151,13 +151,24 @@ module GroupService
   end
 
   def self.destroy(group:, actor:)
-    warn_then_destroy(group: group, actor: actor)
+    raise CanCan::AccessDenied unless actor.is_admin?
+
+    discard_and_schedule_destruction!(group, actor: actor)
   end
 
-  def self.warn_then_destroy(group:, actor:)
+  def self.discard(group:, actor:)
+    raise CanCan::AccessDenied unless actor.is_admin?
+
+    discard_record!(group, actor: actor) do
+      Sentry.metrics.count("group.discard")
+      EventBus.broadcast("group_destroy", group, actor)
+    end
+  end
+
+  def self.warn_and_discard(group:, actor:)
     actor.ability.authorize! :destroy, group
 
-    discard_and_notify!(group, actor: actor) do
+    discard_record!(group, actor: actor) do
       group.admins.each do |admin|
         GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
       end
@@ -166,11 +177,11 @@ module GroupService
     end
   end
 
-  def self.warn_then_destroy_expired_trial(group:)
+  def self.warn_and_discard_expired_trial(group:)
     reason = TrialGroupCleanupService.deletion_reason(group.subscription, as_of: Time.current)
     raise CanCan::AccessDenied, "group trial is not eligible for deletion" unless group.kept? && reason == TrialGroupCleanupService::REASON
 
-    discard_and_notify!(group, actor: nil) do
+    discard_record!(group, actor: nil) do
       group.admins.each do |admin|
         GroupMailer.destroy_warning(group.id, admin.id, nil, reason).deliver_later
       end
@@ -179,17 +190,10 @@ module GroupService
     end
   end
 
-  def self.destroy_immediately!(group_id, actor:)
-    group = Group.find(group_id)
-    raise CanCan::AccessDenied unless actor.is_admin?
-
-    discard_and_schedule_destruction!(group, actor: actor)
-  end
-
   # Warning-based deletion makes the group unavailable immediately. Permanent
   # deletion is deliberately decoupled so a future sweep can apply one recovery
   # period to every discarded group.
-  def self.discard_and_notify!(group, actor:)
+  def self.discard_record!(group, actor:)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
       group.discard!(actor: actor)
@@ -211,7 +215,7 @@ module GroupService
     end
   end
 
-  private_class_method :discard_and_notify!, :discard_and_schedule_destruction!
+  private_class_method :discard_record!, :discard_and_schedule_destruction!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

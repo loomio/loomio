@@ -420,7 +420,7 @@ da:
       body: Din Loomio-gruppe "%{group}" har været inaktiv og vil blive slettet om 2 uger. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail.
     destroy_warning_with_usage:
       subject: Din Loomio-gruppe er planlagt til sletning
-      requested: Din Loomio-gruppe "%{group}" blev planlagt til sletning af %{requester}. Den vil blive slettet permanent efter %{days} dage.
+      requested: Din Loomio-gruppe "%{group}" blev planlagt til sletning af %{requestor}. Den vil blive slettet permanent efter %{days} dage.
       trial_expired: Din Loomio-gruppe "%{group}" har haft en udløbet prøveperiode i mindst 60 dage. Den vil blive slettet permanent efter %{days} dage.
       usage_heading: 'Oversigt over gruppedata:'
       subgroups: Undergrupper

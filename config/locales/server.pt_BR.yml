@@ -444,7 +444,7 @@ pt_BR:
       body: Seu grupo no Loomio "%{group}" está inativo e será excluído em 2 semanas. Se você não deseja que seu grupo seja excluído, responda a este e-mail.
     destroy_warning_with_usage:
       subject: Seu grupo no Loomio está programado para ser excluído.
-      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requester}. Ele será excluído permanentemente após %{days} dias.
+      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requestor}. Ele será excluído permanentemente após %{days} dias.
       trial_expired: Seu grupo no Loomio "%{group}" está em período de teste expirado há pelo menos 60 dias. Ele será excluído permanentemente após %{days} dias.
       usage_heading: 'Resumo dos dados do grupo:'
       subgroups: Subgrupos

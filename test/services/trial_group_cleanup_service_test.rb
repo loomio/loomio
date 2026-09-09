@@ -92,7 +92,7 @@ class TrialGroupCleanupServiceTest < ActiveSupport::TestCase
     [ groups(:used_paid_group), groups(:used_canceled_free_group), groups(:orphan_group) ].each do |group|
       assert_no_enqueued_jobs(only: DestroyGroupWorker) do
         assert_raises(CanCan::AccessDenied) do
-          GroupService.warn_then_destroy_expired_trial(group: group)
+          GroupService.warn_and_discard_expired_trial(group: group)
         end
       end
       assert group.reload.kept?

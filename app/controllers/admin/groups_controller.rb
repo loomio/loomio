@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update move handle undiscard warn_then_destroy destroy_immediately export_group]
+  before_action :load_group, only: %i[show edit update move handle discard undiscard warn_and_discard destroy export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -80,23 +80,38 @@ class Admin::GroupsController < Admin::BaseController
     redirect_to admin_group_path(@group), notice: "Group restored"
   end
 
-  def warn_then_destroy
-    GroupService.warn_then_destroy(group: @group, actor: current_user)
+  def discard
+    GroupService.discard(group: @group, actor: current_user)
+    redirect_to admin_group_path(@group), notice: "Group discarded without warning"
+  end
+
+  def warn_and_discard
+    GroupService.warn_and_discard(group: @group, actor: current_user)
     redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days"
   end
 
-  def destroy_immediately
-    GroupService.destroy_immediately!(@group.id, actor: current_user)
+  def destroy
+    GroupService.destroy(group: @group, actor: current_user)
     redirect_to admin_groups_path, notice: "Group deletion scheduled immediately"
   end
 
   def export_group
-    if @group.discarded?
-      return redirect_to admin_group_path(@group), alert: "Restore the group before exporting it"
+    recipient_email = params.require(:email).strip
+    export_format = params.require(:export_format)
+    unless EmailValidator::EMAIL_REGEXP.match?(recipient_email)
+      return redirect_to admin_group_path(@group), alert: "Enter a valid export recipient email"
     end
 
-    GroupExportWorker.perform_later(@group.all_groups.pluck(:id), @group.name, current_user.id)
-    redirect_to admin_group_path(@group), notice: "Group export started"
+    case export_format
+    when "json"
+      GroupExportWorker.perform_later(@group.all_groups.pluck(:id), @group.name, current_user.id, recipient_email)
+    when "csv"
+      GroupExportCsvWorker.perform_later(@group.id, current_user.id, recipient_email)
+    else
+      return redirect_to admin_group_path(@group), alert: "Select JSON or CSV export format"
+    end
+
+    redirect_to admin_group_path(@group), notice: "#{export_format.upcase} group export will be sent to #{recipient_email}"
   end
 
   def export_users

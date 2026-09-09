@@ -446,7 +446,7 @@ de:
       body: Deine Loomio-Gruppe „%{group}“ ist inaktiv und wird in zwei Wochen gelöscht. Falls du die Löschung deiner Gruppe verhindern möchtest, antworte bitte auf diese E-Mail.
     destroy_warning_with_usage:
       subject: Ihre Loomio-Gruppe ist zur Löschung vorgesehen.
-      requested: Ihre Loomio-Gruppe "%{group}" wurde von %{requester} zur Löschung vorgesehen. Sie wird nach %{days} Tagen endgültig gelöscht.
+      requested: Ihre Loomio-Gruppe "%{group}" wurde von %{requestor} zur Löschung vorgesehen. Sie wird nach %{days} Tagen endgültig gelöscht.
       trial_expired: Ihre Loomio-Gruppe "%{group}" befindet sich seit mindestens 60 Tagen in der abgelaufenen Testphase. Sie wird nach %{days} Tagen endgültig gelöscht.
       usage_heading: 'Zusammenfassung der Gruppendaten:'
       subgroups: Untergruppen

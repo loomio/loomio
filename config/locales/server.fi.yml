@@ -414,7 +414,7 @@ fi:
       body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
     destroy_warning_with_usage:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
-      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requester} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
+      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requestor} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
       trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi %{days} päivän kuluttua.
       usage_heading: 'Ryhmätietojen yhteenveto:'
       subgroups: Alaryhmät

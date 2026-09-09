@@ -414,7 +414,7 @@ sv:
       body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
     destroy_warning_with_usage:
       subject: Din Loomio-grupp är schemalagd för radering
-      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requester}. Den kommer att raderas permanent efter %{days} dagar.
+      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requestor}. Den kommer att raderas permanent efter %{days} dagar.
       trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent efter %{days} dagar.
       usage_heading: 'Sammanfattning av gruppdata:'
       subgroups: Undergrupper

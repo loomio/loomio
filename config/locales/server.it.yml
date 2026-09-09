@@ -425,7 +425,7 @@ it:
       body: Il tuo gruppo Loomio "%{group}" è inattivo e verrà eliminato tra 2 settimane. Se non desideri che il gruppo venga eliminato, rispondi a questa email.
     destroy_warning_with_usage:
       subject: Il tuo gruppo Loomio è programmato per la cancellazione.
-      requested: Il tuo gruppo Loomio "%{group}" è stato programmato per la cancellazione da %{requester}. Verrà eliminato definitivamente dopo %{days} giorni.
+      requested: Il tuo gruppo Loomio "%{group}" è stato programmato per la cancellazione da %{requestor}. Verrà eliminato definitivamente dopo %{days} giorni.
       trial_expired: Il tuo gruppo Loomio "%{group}" è attivo in versione di prova scaduta da almeno 60 giorni. Verrà eliminato definitivamente dopo %{days} giorni.
       usage_heading: 'Riepilogo dei dati di gruppo:'
       subgroups: Sottogruppi

@@ -43,7 +43,7 @@ module TrialGroupCleanupService
         next
       end
 
-      GroupService.warn_then_destroy_expired_trial(group: group)
+      GroupService.warn_and_discard_expired_trial(group: group)
       result[:warned_groups] += 1
       log(io, type: "warned", at: Time.current.iso8601, **entry)
     end

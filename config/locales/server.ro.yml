@@ -414,7 +414,7 @@ ro:
       body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
     destroy_warning_with_usage:
       subject: Grupul tău Loomio este programat pentru ștergere
-      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requester}. Acesta va fi șters definitiv după %{days} de zile.
+      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}. Acesta va fi șters definitiv după %{days} de zile.
       trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv după %{days} de zile.
       usage_heading: 'Rezumatul datelor de grup:'
       subgroups: Subgrupuri

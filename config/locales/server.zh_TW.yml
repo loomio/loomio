@@ -444,7 +444,7 @@ zh_TW:
       body: 您的 Loomio 群組「%{group}」已處於不活躍狀態，將在兩週後被刪除。如果您不希望您的群組被刪除，請回覆此郵件。
     destroy_warning_with_usage:
       subject: 您的 Loomio 群組已被安排刪除
-      requested: 您的 Loomio 群組「%{group}」已被 %{requester} 安排刪除。該群組將在 %{days} 天後被永久刪除。
+      requested: 您的 Loomio 群組「%{group}」已被 %{requestor} 安排刪除。該群組將在 %{days} 天後被永久刪除。
       trial_expired: 您的 Loomio 群組「%{group}」已處於試用期至少 60 天，試用期已過期。該群組將在 %{days} 天後被永久刪除。
       usage_heading: 群組資料匯總：
       subgroups: 亞組

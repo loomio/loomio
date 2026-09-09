@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
-  def initialize(group:, recipient:, requester:, reason:, usage:)
+  def initialize(group:, recipient:, requestor:, reason:, usage:)
     @group = group
     @recipient = recipient
-    @requester = requester
+    @requestor = requestor
     @reason = reason
     @usage = usage
   end
@@ -32,7 +32,7 @@ class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
     t(
       "group_mailer.destroy_warning_with_usage.#{key}",
       group: @group.name,
-      requester: @requester&.name,
+      requestor: @requestor&.name,
       days: AppConfig.group_deletion_grace_days
     )
   end

@@ -251,4 +251,19 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "destroy warns and discards without scheduling permanent deletion" do
+    @group.add_admin!(@user)
+    sign_in @user
+
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
+        delete :destroy, params: { id: @group.id }
+      end
+    end
+
+    assert_response :success
+    assert @group.reload.discarded?
+    assert_equal @user.id, @group.discarded_by
+  end
+
 end

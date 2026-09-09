@@ -31,13 +31,13 @@ class UserMailer < ApplicationMailer
   end
 
 
-  def group_export_ready(recipient_id, group_name, blob_signed_id)
-    user = User.find(recipient_id)
+  def group_export_ready(requestor_id, group_name, blob_signed_id, recipient_email = nil)
+    requestor = User.find(requestor_id)
     blob = ActiveStorage::Blob.find_signed!(blob_signed_id)
 
     component = Views::UserMailer::GroupExportReady.new(blob: blob)
 
-    send_email(to: user.email, locale: user.locale, component: component) {
+    send_email(to: recipient_email.presence || requestor.email, locale: requestor.locale, component: component) {
       I18n.t("user_mailer.group_export_ready.subject", group_name: group_name)
     }
   end

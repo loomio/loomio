@@ -416,7 +416,7 @@ ca:
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
     destroy_warning_with_usage:
       subject: El vostre grup de Loomio està programat per a la supressió.
-      requested: '%{requester} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
+      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
       trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
       usage_heading: 'Resum de dades del grup:'
       subgroups: Subgrups
