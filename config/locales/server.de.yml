@@ -444,6 +444,21 @@ de:
     trial_expired:
       subject: Deine Loomio-Gruppe wird aufgrund von Inaktivität gelöscht.
       body: Deine Loomio-Gruppe „%{group}“ ist inaktiv und wird in zwei Wochen gelöscht. Falls du die Löschung deiner Gruppe verhindern möchtest, antworte bitte auf diese E-Mail.
+    destroy_warning_with_usage:
+      subject: Ihre Loomio-Gruppe ist zur Löschung vorgesehen.
+      requested: Ihre Loomio-Gruppe "%{group}" wurde von %{requestor} zur Löschung vorgesehen. Sie wird nach %{days} Tagen endgültig gelöscht.
+      trial_expired_warning: Deine Loomio-Gruppe „%{group}“ ist vor %{expired_days} Tagen als Testversion abgelaufen. Sofern du uns nicht kontaktierst, wird sie in %{grace_days} Tagen gelöscht.
+      trial_expired_process: Deine Gruppe ist vorübergehend nicht verfügbar, da sie zur Löschung markiert ist. Wenn du weiterhin einen Ort für Diskussionen und Entscheidungen deiner Gruppe benötigst, kannst du die Gruppe noch reaktivieren. Antworte innerhalb von %{grace_days} Tagen auf diese E-Mail, wenn du eine Verlängerung der Testphase beantragen, auf ein kostenpflichtiges Abonnement upgraden oder mehr Zeit für den Datenexport benötigst. Danach werden die Gruppe und ihre Daten endgültig gelöscht.
+      trial_expired: Ihre Loomio-Gruppe "%{group}" befindet sich seit mindestens 60 Tagen in der abgelaufenen Testphase. Sie wird nach %{days} Tagen endgültig gelöscht.
+      usage_heading: 'Zusammenfassung der Gruppendaten:'
+      subgroups: Untergruppen
+      members: Aktuelle Mitglieder
+      discussions: Diskussionen
+      polls: Umfragen
+      comments: Kommentare
+      export: Um die Gruppe zu behalten oder eine Kopie ihrer Daten zu exportieren, antworten Sie bitte innerhalb von %{days} Tagen auf diese E-Mail. Wir können den Zugriff vor der Löschung wiederherstellen.
+      export_link: Erfahren Sie mehr über den Export von Gruppendaten
+      group_key: 'Gruppenschlüssel: %{key}'
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}

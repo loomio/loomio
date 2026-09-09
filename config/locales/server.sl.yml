@@ -412,6 +412,21 @@ sl:
     trial_expired:
       subject: Vaša skupina Loomio bo izbrisana zaradi neaktivnosti.
       body: Vaša skupina Loomio »%{group}« je bila neaktivna in bo izbrisana čez 2 tedna. Če ne želite, da se vaša skupina izbriše, odgovorite na to e-poštno sporočilo.
+    destroy_warning_with_usage:
+      subject: Vaša skupina Loomio je načrtovana za brisanje
+      requested: Vaša skupina Loomio »%{group}« je bila načrtovana za brisanje s strani %{requestor}. Po %{days} dneh bo trajno izbrisana.
+      trial_expired_warning: Vaša preizkusna različica skupine Loomio »%{group}« je potekla pred %{expired_days} dnevi. Če nas ne kontaktirate, bo izbrisana čez %{grace_days} dni.
+      trial_expired_process: Vaša skupina ni na voljo, dokler je označena za brisanje. Če še vedno želite prostor, kjer lahko vaša skupina razpravlja in sprejema odločitve, ni prepozno za ponovni zagon. Odgovorite na to e-poštno sporočilo v %{grace_days} dneh, če želite zahtevati podaljšanje poskusnega obdobja, nadgraditi na plačljivo naročnino ali potrebujete več časa za izvoz podatkov. Po tem bodo skupina in njeni podatki trajno izbrisani.
+      trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Po %{days} dneh bo trajno izbrisana.
+      usage_heading: 'Povzetek podatkov skupine:'
+      subgroups: Podskupine
+      members: Trenutni člani
+      discussions: Razprave
+      polls: Ankete
+      comments: Komentarji
+      export: Če želite obdržati skupino ali izvoziti kopijo njenih podatkov, odgovorite na to e-poštno sporočilo v %{days} dneh. Dostop lahko obnovimo pred izbrisom.
+      export_link: Več o izvozu podatkov skupine
+      group_key: 'Ključ skupine: %{key}'
   poll_mailer:
     common:
       why_send_this: To e-pošto ste prejeli, ker %{reason}

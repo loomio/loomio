@@ -423,6 +423,21 @@ it:
     trial_expired:
       subject: Il tuo gruppo Loomio verrà eliminato per inattività.
       body: Il tuo gruppo Loomio "%{group}" è inattivo e verrà eliminato tra 2 settimane. Se non desideri che il gruppo venga eliminato, rispondi a questa email.
+    destroy_warning_with_usage:
+      subject: Il tuo gruppo Loomio è programmato per la cancellazione.
+      requested: Il tuo gruppo Loomio "%{group}" è stato programmato per la cancellazione da %{requestor}. Verrà eliminato definitivamente dopo %{days} giorni.
+      trial_expired_warning: La prova gratuita del tuo gruppo Loomio "%{group}" è scaduta %{expired_days} giorni fa. Se non ci contatti, verrà eliminata tra %{grace_days} giorni.
+      trial_expired_process: Il tuo gruppo non è disponibile perché è stato contrassegnato per l'eliminazione. Se desideri comunque che il tuo gruppo continui a discutere e prendere decisioni, non è troppo tardi per riattivarlo. Rispondi a questa email entro %{grace_days} giorni se desideri richiedere un'estensione del periodo di prova, passare a un abbonamento a pagamento o hai bisogno di più tempo per esportare i dati. Trascorso tale termine, il gruppo e i relativi dati verranno eliminati definitivamente.
+      trial_expired: Il tuo gruppo Loomio "%{group}" è attivo in versione di prova scaduta da almeno 60 giorni. Verrà eliminato definitivamente dopo %{days} giorni.
+      usage_heading: 'Riepilogo dei dati di gruppo:'
+      subgroups: Sottogruppi
+      members: Membri attuali
+      discussions: Discussioni
+      polls: Sondaggi
+      comments: Commenti
+      export: Per mantenere il gruppo o esportarne una copia dei dati, rispondi a questa email entro %{days} giorni. Possiamo ripristinare l'accesso prima della cancellazione.
+      export_link: Scopri come esportare i dati di gruppo
+      group_key: 'Chiave del gruppo: %{key}'
   poll_mailer:
     common:
       why_send_this: Ricevi questa email perché %{reason}

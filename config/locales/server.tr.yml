@@ -412,6 +412,21 @@ tr:
     trial_expired:
       subject: Loomio grubunuz, uzun süredir aktif olmamanız nedeniyle silinecektir.
       body: Loomio grubunuz "%{group}" pasif durumda ve 2 hafta içinde silinecektir. Grubunuzun silinmesini istemiyorsanız, lütfen bu e-postaya yanıt verin.
+    destroy_warning_with_usage:
+      subject: Loomio grubunuz silinmek üzere planlandı.
+      requested: Loomio grubunuz "%{group}", %{requestor} tarafından silinmek üzere planlandı. %{days} gün sonra kalıcı olarak silinecektir.
+      trial_expired_warning: Loomio grubunuzun "%{group}" deneme sürümü %{expired_days} gün önce sona erdi. Bizimle iletişime geçmediğiniz takdirde, %{grace_days} gün içinde silinecektir.
+      trial_expired_process: Grubunuz silinmek üzere işaretlendiği sürece kullanılamaz. Grubunuzun tartışmak ve karar almak için bir yere sahip olmasını hala istiyorsanız, yeniden başlatmak için henüz geç değil. Deneme süresini uzatmak, ücretli aboneliğe yükseltmek veya verilerini dışa aktarmak için daha fazla zamana ihtiyacınız varsa, bu e-postaya %{grace_days} gün içinde yanıt verin. Bundan sonra, grup ve verileri kalıcı olarak silinecektir.
+      trial_expired: Loomio grubunuz "%{group}" en az 60 gündür deneme sürümünde bulunuyor ve bu süre dolmuştur. Grup en az %{days} gün boyunca kalıcı olarak silinmeyecektir.
+      usage_heading: 'Grup verilerinin özeti:'
+      subgroups: Alt gruplar
+      members: Mevcut üyeler
+      discussions: Tartışmalar
+      polls: Anketler
+      comments: Yorumlar
+      export: Grubu korumak veya verilerinin bir kopyasını dışa aktarmak için, bu e-postaya %{days} gün içinde yanıt verin. Silinmeden önce erişimi geri yükleyebiliriz.
+      export_link: Grup verilerini dışa aktarma hakkında bilgi edinin.
+      group_key: 'Grup anahtarı: %{key}'
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz

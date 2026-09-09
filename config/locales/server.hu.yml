@@ -424,6 +424,21 @@ hu:
     trial_expired:
       subject: A Loomio csoportod inaktivitás miatt törlésre kerül.
       body: A(z) „%{group}” nevű Loomio csoportod inaktív volt, és 2 hét múlva törlésre kerül. Ha nem szeretnéd, hogy a csoportodat töröljék, kérlek válaszolj erre az e-mailre.
+    destroy_warning_with_usage:
+      subject: A Loomio-csoportod törlése ütemezve van.
+      requested: A(z) „%{group}” nevű Loomio csoportodat törlésre ütemezte %{requestor}. A csoport %{days} nap múlva véglegesen törlésre kerül.
+      trial_expired_warning: A(z) „%{group}” Loomio csoportod próbaidőszaka %{expired_days} napja lejárt. Ha nem veszed fel velünk a kapcsolatot, %{grace_days} nap múlva töröljük.
+      trial_expired_process: A csoportod nem érhető el, amíg törlésre van jelölve. Ha továbbra is szeretnél egy helyet, ahol a csoportod megbeszélheti a dolgokat és döntéseket hozhat, még nem késő újrakezdeni. Válaszolj erre az e-mailre %{grace_days} napon belül, ha próbaidőszak meghosszabbítását szeretnéd kérni, fizetős előfizetésre szeretnél frissíteni, vagy több időre van szükséged az adatok exportálásához. Ezt követően a csoport és adatai véglegesen törlődnek.
+      trial_expired: A(z) „%{group}” nevű Loomio csoportod legalább 60 napja lejárt próbaidőszakban van. Legalább %{days} napig nem kerül végleges törlésre.
+      usage_heading: 'Csoportadatok összefoglalása:'
+      subgroups: Alcsoportok
+      members: Jelenlegi tagok
+      discussions: Beszélgetések
+      polls: Szavazások
+      comments: Hozzászólások
+      export: A csoport megtartásához vagy az adatainak másolatának exportálásához válaszoljon erre az e-mailre %{days} napon belül. A törlés előtt vissza tudjuk állítani a hozzáférést.
+      export_link: Tudjon meg többet a csoportadatok exportálásáról
+      group_key: 'Csoportkulcs: %{key}'
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}

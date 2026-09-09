@@ -372,3 +372,9 @@ languages in the Nov 2025 pass.
 | `config/locales/server.fi.yml` | `group_mailer.destroy_warning_with_usage.requested` | `%{requester` | `%{requestor}` | Translation dropped the interpolation variable's closing brace, and Loomio spells this role “requestor” |
 | `config/locales/server.es.yml` | `group_mailer.destroy_warning_with_usage.export` | `responda` | `responde` | Spanish user-facing copy uses the informal `tú` register |
 | `config/locales/server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.export` | `kunt u` | `kun je` | Dutch user-facing copy uses the informal `je` register |
+
+## 2026-09-10 — Group deletion warning
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml`, `server.fr.yml`, `server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.trial_expired_warning`, `group_mailer.destroy_warning_with_usage.trial_expired_process` | Formal `Sie/vous/u` forms | Informal `du/tu/je` forms | These locales address users informally throughout Loomio |

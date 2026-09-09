@@ -412,6 +412,21 @@ sv:
     trial_expired:
       subject: Din Loomio-grupp kommer att raderas på grund av inaktivitet.
       body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
+    destroy_warning_with_usage:
+      subject: Din Loomio-grupp är schemalagd för radering
+      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requestor}. Den kommer att raderas permanent efter %{days} dagar.
+      trial_expired_warning: Din provperiod för Loomio-gruppen "%{group}" gick ut för %{expired_days} dagar sedan. Om du inte kontaktar oss kommer den att raderas om %{grace_days} dagar.
+      trial_expired_process: Din grupp är inte tillgänglig medan den är markerad för radering. Om du fortfarande vill ha en plats där din grupp kan diskutera och fatta beslut är det inte för sent att starta om. Svara på det här e-postmeddelandet inom %{grace_days} dagar om du vill begära en förlängning av provperioden, uppgradera till en betald prenumeration eller behöver mer tid för att exportera dess data. Därefter kommer gruppen och dess data att raderas permanent.
+      trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent efter %{days} dagar.
+      usage_heading: 'Sammanfattning av gruppdata:'
+      subgroups: Undergrupper
+      members: Nuvarande medlemmar
+      discussions: Diskussioner
+      polls: Opinionsundersökningar
+      comments: Kommentarer
+      export: För att behålla gruppen eller exportera en kopia av dess data, svara på det här e-postmeddelandet inom %{days} dagar. Vi kan återställa åtkomsten innan raderingen.
+      export_link: Läs mer om att exportera gruppdata
+      group_key: 'Gruppnyckel: %{key}'
   poll_mailer:
     common:
       why_send_this: Du får det här e-postmeddelandet eftersom %{reason}
