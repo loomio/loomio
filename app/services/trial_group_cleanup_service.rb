@@ -1,16 +1,14 @@
 # Cleans up root groups whose trial expired before the retention cutoff.
-# Topic-free trees are deleted immediately. Groups containing topics are
-# warned and discarded, leaving permanent deletion to a later incineration
-# process.
+# Every eligible trial is warned and discarded so its administrators can
+# restart the group, extend the trial, or choose a subscription. Permanent
+# deletion is left to a later incineration process.
 module TrialGroupCleanupService
   RETENTION_PERIOD = 60.days
   REASON = "trial_expired"
 
   def self.run!(io:, as_of: Time.current, warning_limit:)
-    cutoff = as_of - RETENTION_PERIOD
-    deleted = EmptyGroupCleanupService.delete!(cohort: :trial, io: io, before: cutoff)
     warned = warn!(io: io, as_of: as_of, limit: warning_limit)
-    { deleted: deleted, warned: warned }
+    { warned: warned }
   end
 
   def self.audit(as_of: Time.current, limit: nil)
@@ -58,13 +56,11 @@ module TrialGroupCleanupService
   def self.candidate_groups(as_of:, group_id: nil)
     cutoff = as_of - RETENTION_PERIOD
     expired_trials = Subscription.where(plan: "trial", expires_at: ..cutoff)
-    empty_trial_ids = EmptyGroupCleanupService.candidate_trees(cohort: :trial, before: cutoff).keys
     eligible_trial_ids = EmptyGroupCleanupService.eligible_trees(cohort: :trial, before: cutoff).keys
 
     scope = Group.kept.parents_only.joins(:subscription)
                  .merge(expired_trials)
                  .where(id: eligible_trial_ids)
-                 .where.not(id: empty_trial_ids)
                  .order("subscriptions.expires_at", :id)
     group_id ? scope.where(id: group_id) : scope
   end

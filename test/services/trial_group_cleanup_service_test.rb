@@ -2,25 +2,26 @@ require "test_helper"
 require "stringio"
 
 class TrialGroupCleanupServiceTest < ActiveSupport::TestCase
-  test "daily run deletes empty trials before warning nonempty trials" do
-    empty_group = groups(:trial_cleanup_discarded)
+  test "daily run warns and discards empty and nonempty expired trials" do
+    empty_group = groups(:trial_cleanup_recent)
     nonempty_group = groups(:trial_cleanup_poll)
+    empty_group.subscription.update!(expires_at: 61.days.ago)
+    empty_group.add_admin!(users(:admin))
     nonempty_group.add_admin!(users(:admin))
     clear_enqueued_jobs
 
     assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-      assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
-        result = TrialGroupCleanupService.run!(io: StringIO.new, warning_limit: 1)
-        assert_operator result.dig(:deleted, :deleted_roots), :>=, 1
-        assert_equal({ warned_groups: 1, skipped_groups: 0 }, result[:warned])
+      assert_enqueued_jobs 2, only: ActionMailer::MailDeliveryJob do
+        result = TrialGroupCleanupService.run!(io: StringIO.new, warning_limit: 2)
+        assert_equal({ warned_groups: 2, skipped_groups: 0 }, result[:warned])
       end
     end
 
-    assert_not Group.exists?(empty_group.id)
+    assert empty_group.reload.discarded?
     assert nonempty_group.reload.discarded?
   end
 
-  test "fixture matrix selects old expired trials without overlapping empty trial deletion" do
+  test "fixture matrix selects old expired trials" do
     expected = [ groups(:trial_cleanup_poll).id ]
 
     plan = TrialGroupCleanupService.audit
