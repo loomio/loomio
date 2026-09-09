@@ -34,17 +34,6 @@ class Admin::UsersControllerTest < ActionController::TestCase
     refute_includes response.body, ">Edit</a>"
   end
 
-  test "show renders memberships with a missing group" do
-    membership = memberships(:user_membership)
-    missing_group_id = Group.maximum(:id) + 100
-    membership.update_columns(group_id: missing_group_id)
-
-    get :show, params: { id: @user.id }
-
-    assert_response :success
-    assert_includes response.body, "Missing group ##{missing_group_id}"
-  end
-
   test "show uses Sign in as wording and native confirmation" do
     get :show, params: { id: @user.id }
 

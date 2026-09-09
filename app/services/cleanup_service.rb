@@ -7,7 +7,6 @@
 # The following audits are temporary and should be removed after the named
 # foreign keys have been deployed and validated:
 # - groups_missing_parent: groups.parent_id -> groups.id
-# - memberships_missing_group: memberships.group_id -> groups.id
 # - membership_requests_missing_group: membership_requests.group_id -> groups.id
 # - discussions_missing_group and polls_missing_group: the topics.group_id key
 #   plus cascading topicable lifecycle keys
@@ -116,7 +115,6 @@ module CleanupService
 
   DANGLING_RECORD_SCOPES = {
     "Group.missing_parent" => :groups_missing_parent,
-    "Membership.missing_group" => :memberships_missing_group,
     "MembershipRequest.missing_group" => :membership_requests_missing_group,
     "GroupSurvey.missing_group" => :group_surveys_missing_group,
     "ReceivedEmail.missing_group" => :received_emails_missing_group,
@@ -336,12 +334,6 @@ module CleanupService
     Group
       .joins('LEFT JOIN groups parents ON parents.id = groups.parent_id')
       .where('groups.parent_id IS NOT NULL AND parents.id IS NULL')
-  end
-
-  def self.memberships_missing_group
-    Membership
-      .joins('LEFT JOIN groups g ON memberships.group_id = g.id')
-      .where('memberships.group_id IS NOT NULL AND g.id IS NULL')
   end
 
   def self.membership_requests_missing_group
