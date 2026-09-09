@@ -678,15 +678,15 @@ zh_CN:
       body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
     destroy_warning_with_usage:
       subject: 您的 Loomio 群组已被安排删除
-      requested: 您的 Loomio 群组“%{group}”已被 %{requester} 安排删除。该群组将在 2 周后永久删除。
-      trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 2 周后被永久删除。
+      requested: 您的 Loomio 群组“%{group}”已被 %{requester} 安排删除。该群组将在 %{days} 天后被永久删除。
+      trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
       usage_heading: 组数据汇总：
       subgroups: 亚组
       members: 现任成员
       discussions: 讨论
       polls: 民意调查
       comments: 评论
-      export: 如需保留该群组或导出其数据副本，请在两周内回复此邮件。我们可以在删除前恢复访问权限。
+      export: 如需保留该群组或导出其数据副本，请在 %{days} 天内回复此邮件。我们可以在删除前恢复访问权限。
       export_link: 了解如何导出群组数据
       group_key: 组键：%{key}
   forward_mailer:

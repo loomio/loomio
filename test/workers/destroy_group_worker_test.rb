@@ -58,11 +58,11 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert_nil group.reload.discarded_at
   end
 
-  test "group coordinators can schedule the exact discard operation" do
+  test "group coordinators warn and discard without enqueueing permanent deletion" do
     group = topics(:discussion_topic).group
     actor = users(:admin)
-    assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
-      assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ group.id, group.reload.discarded_at.iso8601(6) ] }) do
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
         GroupService.destroy(group: group, actor: actor)
       end
     end
@@ -74,7 +74,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     actor.update!(is_admin: true)
     group = topics(:discussion_topic).group
 
-    assert_enqueued_with(job: DestroyGroupWorker) do
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
       GroupService.warn_then_destroy(group: group, actor: actor)
     end
     assert_equal actor.id, group.reload.discarded_by

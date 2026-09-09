@@ -354,19 +354,31 @@ namespace :loomio do
 
   desc "Report topic-free trial trees expired at least 60 days ago (optional LIMIT)"
   task audit_empty_expired_trials: :environment do
-    puts EmptyTrialCleanupService.audit(limit: ENV['LIMIT'].presence&.to_i).to_json
+    puts EmptyGroupCleanupService.audit(cohort: :trial, limit: ENV["LIMIT"].presence&.to_i).to_json
+  end
+
+  desc "Report topic-free free group trees created at least 60 days ago (optional LIMIT)"
+  task audit_empty_free_groups: :environment do
+    puts EmptyGroupCleanupService.audit(cohort: :free, limit: ENV["LIMIT"].presence&.to_i).to_json
   end
 
   desc "Audit expired trial groups due for a deletion warning"
   task audit_expired_trial_groups: :environment do
     limit = ENV["LIMIT"].present? ? Integer(ENV["LIMIT"], 10) : nil
-    puts JSON.pretty_generate(ExpiredTrialGroupCleanupService.audit(limit: limit))
+    puts JSON.pretty_generate(TrialGroupCleanupService.audit(limit: limit))
   end
 
   desc "Delete topic-free trial trees expired at least 60 days ago; requires a new AUDIT_PATH (optional LIMIT)"
   task delete_empty_expired_trials: :environment do
-    File.open(ENV.fetch('AUDIT_PATH'), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
-      puts EmptyTrialCleanupService.delete!(io: io, limit: ENV['LIMIT'].presence&.to_i).to_json
+    File.open(ENV.fetch("AUDIT_PATH"), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
+      puts EmptyGroupCleanupService.delete!(cohort: :trial, io: io, limit: ENV["LIMIT"].presence&.to_i).to_json
+    end
+  end
+
+  desc "Delete topic-free free group trees created at least 60 days ago; requires a new AUDIT_PATH (optional LIMIT)"
+  task delete_empty_free_groups: :environment do
+    File.open(ENV.fetch("AUDIT_PATH"), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
+      puts EmptyGroupCleanupService.delete!(cohort: :free, io: io, limit: ENV["LIMIT"].presence&.to_i).to_json
     end
   end
 

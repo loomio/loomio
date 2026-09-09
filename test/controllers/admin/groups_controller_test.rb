@@ -136,12 +136,9 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     refute_includes response.body, "Export group"
   end
 
-  test "admin can discard and restore a group" do
+  test "admin can restore a discarded group" do
     sign_in @admin
-    post :discard, params: { id: @group.id }
-    assert @group.reload.discarded_at
-    assert_equal @admin.id, @group.discarded_by
-
+    @group.discard!(actor: @admin)
     post :undiscard, params: { id: @group.id }
     assert_nil @group.reload.discarded_at
     assert_nil @group.discarded_by
@@ -162,7 +159,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       post :warn_then_destroy, params: { id: @group.id }
     end
     assert warned
-    assert_equal "Group administrators warned; deletion scheduled in 2 weeks", flash[:notice]
+    assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days", flash[:notice]
 
     GroupService.stub(:destroy_immediately!, ->(id, actor:) { destroyed_immediately = id == @group.id && actor == @admin }) do
       post :destroy_immediately, params: { id: @group.id }

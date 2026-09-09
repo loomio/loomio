@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
-
   def initialize(group:, recipient:, requester:, reason:, usage:)
     @group = group
     @recipient = recipient
@@ -18,7 +17,7 @@ class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
         li { plain "#{t("group_mailer.destroy_warning_with_usage.#{name}")}: #{@usage.fetch(name)}" }
       end
     end
-    p { plain t(:"group_mailer.destroy_warning_with_usage.export") }
+    p { plain t(:"group_mailer.destroy_warning_with_usage.export", days: AppConfig.group_deletion_grace_days) }
     p do
       link_to t(:"group_mailer.destroy_warning_with_usage.export_link"),
               "https://help.loomio.org/en/user_manual/groups/data_export/"
@@ -30,6 +29,11 @@ class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
 
   def warning_body
     key = @reason == "trial_expired" ? :trial_expired : :requested
-    t("group_mailer.destroy_warning_with_usage.#{key}", group: @group.name, requester: @requester&.name)
+    t(
+      "group_mailer.destroy_warning_with_usage.#{key}",
+      group: @group.name,
+      requester: @requester&.name,
+      days: AppConfig.group_deletion_grace_days
+    )
   end
 end

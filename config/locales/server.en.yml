@@ -710,15 +710,15 @@ en:
         Thank you.
     destroy_warning_with_usage:
       subject: Your Loomio group is scheduled for deletion
-      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requester}. It will be permanently deleted in 2 weeks.
-      trial_expired: Your Loomio group "%{group}" has been on an expired trial for at least 60 days. It will be permanently deleted in 2 weeks.
+      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requester}. It will be permanently deleted after %{days} days.
+      trial_expired: Your Loomio group "%{group}" has been on an expired trial for at least 60 days. It will be permanently deleted after %{days} days.
       usage_heading: "Group data summary:"
       subgroups: Subgroups
       members: Current members
       discussions: Discussions
       polls: Polls
       comments: Comments
-      export: To keep the group or export a copy of its data, reply to this email within 2 weeks. We can restore access before deletion.
+      export: To keep the group or export a copy of its data, reply to this email within %{days} days. We can restore access before deletion.
       export_link: Learn about exporting group data
       group_key: "Group key: %{key}"
     trial_expired:

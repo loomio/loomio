@@ -1267,6 +1267,7 @@ ro:
     confirm: Tastați „%{name}” pentru a confirma că doriți să ștergeți acest grup.
     success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
     scheduled_for_deletion: Acest grup este programat pentru ștergere permanentă în 2 săptămâni.
+    deletion_after_grace_period: Acest grup este indisponibil și va fi șters definitiv după %{days} de zile
   group_page:
     stats: Statistici de grup
     threads: Discutii

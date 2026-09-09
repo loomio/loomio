@@ -414,15 +414,15 @@ sl:
       body: Vaša skupina Loomio »%{group}« je bila neaktivna in bo izbrisana čez 2 tedna. Če ne želite, da se vaša skupina izbriše, odgovorite na to e-poštno sporočilo.
     destroy_warning_with_usage:
       subject: Vaša skupina Loomio je načrtovana za brisanje
-      requested: Vaša skupina Loomio »%{group}« je bila načrtovana za brisanje s strani %{requester}. Trajno bo izbrisana čez 2 tedna.
-      trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Čez 2 tedna bo trajno izbrisana.
+      requested: Vaša skupina Loomio »%{group}« je bila načrtovana za brisanje s strani %{requester}. Po %{days} dneh bo trajno izbrisana.
+      trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Po %{days} dneh bo trajno izbrisana.
       usage_heading: 'Povzetek podatkov skupine:'
       subgroups: Podskupine
       members: Trenutni člani
       discussions: Razprave
       polls: Ankete
       comments: Komentarji
-      export: Če želite obdržati skupino ali izvoziti kopijo njenih podatkov, odgovorite na to e-poštno sporočilo v dveh tednih. Dostop lahko obnovimo pred izbrisom.
+      export: Če želite obdržati skupino ali izvoziti kopijo njenih podatkov, odgovorite na to e-poštno sporočilo v %{days} dneh. Dostop lahko obnovimo pred izbrisom.
       export_link: Več o izvozu podatkov skupine
       group_key: 'Ključ skupine: %{key}'
   poll_mailer:

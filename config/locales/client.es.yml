@@ -1280,6 +1280,7 @@ es:
     confirm: Escribe '%{name}' para confirmar que quieres borrar este grupo.
     success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
     scheduled_for_deletion: Este grupo será eliminado permanentemente en 2 semanas.
+    deletion_after_grace_period: Este grupo no está disponible y se eliminará permanentemente después de %{days} días
   group_page:
     stats: Estadísticas de grupo
     threads: Hilos

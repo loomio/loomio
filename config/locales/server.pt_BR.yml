@@ -444,15 +444,15 @@ pt_BR:
       body: Seu grupo no Loomio "%{group}" está inativo e será excluído em 2 semanas. Se você não deseja que seu grupo seja excluído, responda a este e-mail.
     destroy_warning_with_usage:
       subject: Seu grupo no Loomio está programado para ser excluído.
-      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requester}. Ele será excluído permanentemente em 2 semanas.
-      trial_expired: Seu grupo no Loomio "%{group}" está em período de teste expirado há pelo menos 60 dias. Ele será excluído permanentemente em 2 semanas.
+      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requester}. Ele será excluído permanentemente após %{days} dias.
+      trial_expired: Seu grupo no Loomio "%{group}" está em período de teste expirado há pelo menos 60 dias. Ele será excluído permanentemente após %{days} dias.
       usage_heading: 'Resumo dos dados do grupo:'
       subgroups: Subgrupos
       members: Membros atuais
       discussions: Discussões
       polls: Pesquisas
       comments: Comentários
-      export: Para manter o grupo ou exportar uma cópia dos seus dados, responda a este e-mail dentro de 2 semanas. Podemos restaurar o acesso antes da exclusão.
+      export: Para manter o grupo ou exportar uma cópia dos seus dados, responda a este e-mail dentro de %{days} dias. Podemos restaurar o acesso antes da exclusão.
       export_link: Saiba mais sobre como exportar dados de grupo.
       group_key: 'Chave do grupo: %{key}'
   poll_mailer:

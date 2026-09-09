@@ -1311,6 +1311,7 @@ zh_CN:
     confirm: 输入“%{name}”以确认要删除此群组。
     success: 该群组已被存档，并将于两周后永久删除。
     scheduled_for_deletion: 该群组计划在两周后永久删除。
+    deletion_after_grace_period: 该群组现已无法访问，并将在 %{days} 天后被永久删除
   report:
     start_on: 开始
     end_on: 结束

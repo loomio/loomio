@@ -1267,6 +1267,7 @@ da:
     confirm: Skriv '%{name}' for at bekræfte, at du vil slette denne gruppe.
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
     scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
+    deletion_after_grace_period: Denne gruppe er ikke tilgængelig og vil blive slettet permanent efter %{days} dage
   group_page:
     stats: Gruppestatistik
     threads: Debatter

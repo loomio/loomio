@@ -1,6 +1,10 @@
 require "test_helper"
 
 class AppConfigTest < ActiveSupport::TestCase
+  test "group deletion grace period is thirty days" do
+    assert_equal 30, AppConfig.group_deletion_grace_days
+  end
+
   setup do
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")

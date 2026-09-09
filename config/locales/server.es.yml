@@ -438,15 +438,15 @@ es:
       body: Tu grupo de Loomio "%{group}" está inactivo y se eliminará en dos semanas. Si no quieres que se elimine, responde a este correo electrónico.
     destroy_warning_with_usage:
       subject: Tu grupo de Loomio está programado para ser eliminado.
-      requested: Tu grupo de Loomio "%{group}" fue programado para ser eliminado por %{requester}. Se eliminará permanentemente en 2 semanas.
-      trial_expired: Tu grupo de Loomio "%{group}" ha estado en período de prueba caducado durante al menos 60 días. Se eliminará permanentemente en 2 semanas.
+      requested: Tu grupo de Loomio "%{group}" fue programado para ser eliminado por %{requester}. Se eliminará permanentemente después de %{days} días.
+      trial_expired: Tu grupo de Loomio "%{group}" ha estado en período de prueba caducado durante al menos 60 días. Se eliminará permanentemente después de %{days} días.
       usage_heading: 'Resumen de datos del grupo:'
       subgroups: Subgrupos
       members: Miembros actuales
       discussions: Discusiones
       polls: Centro
       comments: Comentarios
-      export: Para conservar el grupo o exportar una copia de sus datos, responda a este correo electrónico en un plazo de dos semanas. Podemos restablecer el acceso antes de su eliminación.
+      export: Para conservar el grupo o exportar una copia de sus datos, responde a este correo electrónico en un plazo de %{days} días. Podemos restablecer el acceso antes de su eliminación.
       export_link: Aprenda a exportar datos de grupo
       group_key: 'Clave de grupo: %{key}'
   poll_mailer:

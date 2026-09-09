@@ -20,9 +20,9 @@ Legacy references are not all protected by foreign keys. Orphan-comment, topic-i
 
 Use an isolated database copy with application workers stopped for destructive validation. Confirm the actual database connection before running a deletion task. Compare the original and resulting record identities and content, not only counts. Do not use a previously cleaned snapshot as an untouched baseline.
 
-## Existing delayed group-deletion jobs
+## Immediate group-deletion jobs
 
-New `DestroyGroupWorker` jobs carry the exact discard timestamp recorded when deletion was requested. Restoring and subsequently discarding the group invalidates the earlier job. Jobs without this timestamp are skipped and logged; they must not be supplied with the group's current timestamp automatically. Review whether deletion is still intended, then make a fresh deletion request through the normal administrative workflow. Group discard time and actor are retained in PaperTrail until permanent deletion.
+Instance administrators can request immediate deletion. Its `DestroyGroupWorker` job carries the exact discard timestamp recorded by that operation, so restoring and subsequently discarding the group invalidates the job. Jobs without this timestamp are skipped and logged; they must not be supplied with the group's current timestamp automatically. Warning-based deletion does not enqueue this worker. Group discard time and actor are retained in PaperTrail until permanent deletion.
 
 Account-merge duplicate removal, reference migration, credential revocation, and search updates are transactional. Avatar purges, newsletter changes, and email are deferred until commit. Blocklist and email-routing replacements retain the previous table contents if replacement fails. Concurrent group exports use separate temporary paths.
 
@@ -32,20 +32,20 @@ Daily orphan cleanup makes at most three passes of up to 1,000 rows from each in
 
 Inactive orphan-user cleanup processes at most 1,000 eligible accounts per daily run, allowing a large backlog to drain without creating an unbounded maintenance job. Its reference columns are indexed so the eligibility query and the write-locked per-account recheck do not repeatedly scan large tables. The notification recipient-array check uses the indexed containment operator rather than scanning every notification for every candidate.
 
-## Daily empty expired-trial cleanup
+## Empty free and expired-trial cleanup
 
-`HourlyTaskJob` enqueues `CleanupEmptyTrialsWorker` at midnight UTC each day, enabled by default. It deletes trial organisations whose subscription expired at least 60 days ago and whose entire group tree contains no topics. Root or subgroup discard status does not affect eligibility because expiry and emptiness independently authorize this cleanup. Actual topic rows determine emptiness, including discarded topics and topics in discarded descendants; counter caches are not used. Standalone polls count as topics. Direct topics and user accounts are preserved. Memberships, templates and uploads do not prevent deletion of a topic-free trial.
+The manual cleanup tasks delete root organisations whose entire group tree contains no topics. The trial cohort uses subscription expiry and the free cohort uses root-group creation time; each cutoff is 60 days by default. Root or subgroup discard status does not affect eligibility. Actual topic rows determine emptiness, including discarded topics and topics in discarded descendants; counter caches are not used. Standalone polls count as topics. Direct topics and user accounts are preserved. Memberships, templates and uploads do not prevent deletion.
 
 Billing references, subscriptions shared by root organisations, and descendants with a different subscription exclude the tree. Each tree is rechecked immediately before normal group destruction, without explicit table or row locks. The worker logs its candidate IDs, before/after counts and individual deletion results as JSON lines. Remaining orphan metadata is handled by orphan cleanup. This does not enable warning or scheduled deletion of trials containing topics.
 
-For a read-only inventory, run `bin/rails loomio:audit_empty_expired_trials`. For a manual run, use `AUDIT_PATH=/private/path/empty-trials.jsonl bin/rails loomio:delete_empty_expired_trials`; the audit file must not already exist. Either task accepts an optional positive `LIMIT` of root organisations. Keep audit files private and confirm the database connection before deletion. Seeded topics must be cleaned separately before they can stop counting against eligibility.
+For a read-only inventory, run `bin/rails loomio:audit_empty_expired_trials` or `bin/rails loomio:audit_empty_free_groups`. For a manual run, use `AUDIT_PATH=/private/path/empty-trials.jsonl bin/rails loomio:delete_empty_expired_trials` or `AUDIT_PATH=/private/path/empty-free-groups.jsonl bin/rails loomio:delete_empty_free_groups`; the audit file must not already exist. Each task accepts an optional positive `LIMIT` of root organisations. Keep audit files private and confirm the database connection before deletion. Seeded topics must be cleaned separately before they can stop counting against eligibility.
 
-The tests reuse the lifecycle group fixture matrix and extend it with trial expiry, billing, shared-subscription and standalone-poll cases. They compare exact surviving group, topic and user IDs after the daily worker runs.
+The tests reuse the lifecycle group fixture matrix and extend it with free and trial age, billing, shared-subscription and standalone-poll cases. They compare exact surviving group, topic and user IDs after cleanup runs.
 
-## Daily expired-trial warnings
+## Optional daily trial lifecycle
 
-`HourlyTaskJob` also enqueues `WarnExpiredTrialGroupsWorker` at midnight UTC. It processes up to 100 undiscarded root groups per day. A group becomes eligible when its trial expired at least 60 days ago. An expired trial that is eligible for immediate topic-free cleanup is excluded from the warning path, so the two daily tasks cannot act on the same group. Billing-linked trials, subscriptions shared by root organisations, and trees containing a subgroup with a different subscription are excluded from both automated paths for manual review.
+When `TRIAL_GROUP_CLEANUP_ENABLED` is present, `HourlyTaskJob` enqueues `CleanupTrialGroupsWorker` at midnight UTC. Without that environment variable, recurring trial cleanup does not run. It deletes topic-free trial trees expired for at least 60 days, then warns and discards up to 100 eligible nonempty root groups. Billing-linked trials, subscriptions shared by root organisations, and trees containing a subgroup with a different subscription are excluded for manual review.
 
-Each eligible group is discarded once, its administrators are emailed, and permanent deletion is scheduled for two weeks later using the exact discard timestamp. The email explains why deletion was scheduled, gives tree-wide counts for subgroups, current members, discussions, polls and comments, and directs the recipient to reply if they need access restored before exporting their data. The worker records the full plan, usage counts, warnings, skips and completion totals as JSON lines.
+Each nonempty eligible group is discarded once and its administrators are emailed. The email states that permanent deletion will occur after 30 days, gives tree-wide counts for subgroups, current members, discussions, polls and comments, and directs the recipient to reply if they need access restored before exporting their data. Incineration of discarded groups is intentionally deferred and is not implemented by this cleanup. The worker records the full plan, usage counts, warnings, skips and completion totals as JSON lines.
 
 Run `bin/rails loomio:audit_expired_trial_groups` for a read-only inventory. Set a positive `LIMIT` to inspect the same leading batch the worker would process.

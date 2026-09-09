@@ -157,7 +157,7 @@ module GroupService
   def self.warn_then_destroy(group:, actor:)
     actor.ability.authorize! :destroy, group
 
-    discard_and_schedule_destruction!(group, actor: actor, wait: 2.weeks) do
+    discard_and_notify!(group, actor: actor) do
       group.admins.each do |admin|
         GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
       end
@@ -167,10 +167,10 @@ module GroupService
   end
 
   def self.warn_then_destroy_expired_trial(group:)
-    reason = ExpiredTrialGroupCleanupService.deletion_reason(group.subscription, as_of: Time.current)
-    raise CanCan::AccessDenied, "group trial is not eligible for deletion" unless group.kept? && reason == ExpiredTrialGroupCleanupService::REASON
+    reason = TrialGroupCleanupService.deletion_reason(group.subscription, as_of: Time.current)
+    raise CanCan::AccessDenied, "group trial is not eligible for deletion" unless group.kept? && reason == TrialGroupCleanupService::REASON
 
-    discard_and_schedule_destruction!(group, actor: nil, wait: 2.weeks) do
+    discard_and_notify!(group, actor: nil) do
       group.admins.each do |admin|
         GroupMailer.destroy_warning(group.id, admin.id, nil, reason).deliver_later
       end
@@ -186,8 +186,19 @@ module GroupService
     discard_and_schedule_destruction!(group, actor: actor)
   end
 
-  # Capture the specific discard operation under the same lock as discard.
-  # Queue and announce only after commit so jobs cannot consume stale state.
+  # Warning-based deletion makes the group unavailable immediately. Permanent
+  # deletion is deliberately decoupled so a future sweep can apply one recovery
+  # period to every discarded group.
+  def self.discard_and_notify!(group, actor:)
+    Group.transaction(requires_new: true) do |transaction|
+      group.lock!
+      group.discard!(actor: actor)
+      transaction.after_commit { yield if block_given? }
+    end
+  end
+
+  # Immediate administrative deletion still captures the exact discard
+  # operation so a restored group cannot be deleted by a stale queued job.
   def self.discard_and_schedule_destruction!(group, actor:, wait: nil)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
@@ -200,7 +211,7 @@ module GroupService
     end
   end
 
-  private_class_method :discard_and_schedule_destruction!
+  private_class_method :discard_and_notify!, :discard_and_schedule_destruction!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

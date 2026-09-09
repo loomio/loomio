@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class BootSiteTest < ActiveSupport::TestCase
+  test "includes the group deletion grace period" do
+    AppConfig.stub(:group_deletion_grace_days, 45) do
+      assert_equal 45, Boot::Site.new.payload[:groupDeletionGraceDays]
+    end
+  end
+
   HELP_ENV_KEYS = %w[LOOMIO_HELP_TITLE LOOMIO_HELP_SUBTITLE LOOMIO_HELP_URL].freeze
 
   setup do

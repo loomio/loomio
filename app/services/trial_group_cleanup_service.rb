@@ -1,9 +1,17 @@
-# Warns and schedules deletion for root groups whose trial expired before the
-# retention cutoff. Topic-free expired trials are omitted because
-# EmptyTrialCleanupService owns their immediate deletion path.
-module ExpiredTrialGroupCleanupService
+# Cleans up root groups whose trial expired before the retention cutoff.
+# Topic-free trees are deleted immediately. Groups containing topics are
+# warned and discarded, leaving permanent deletion to a later incineration
+# process.
+module TrialGroupCleanupService
   RETENTION_PERIOD = 60.days
   REASON = "trial_expired"
+
+  def self.run!(io:, as_of: Time.current, warning_limit:)
+    cutoff = as_of - RETENTION_PERIOD
+    deleted = EmptyGroupCleanupService.delete!(cohort: :trial, io: io, before: cutoff)
+    warned = warn!(io: io, as_of: as_of, limit: warning_limit)
+    { deleted: deleted, warned: warned }
+  end
 
   def self.audit(as_of: Time.current, limit: nil)
     raise ArgumentError, "limit must be positive" if limit && limit <= 0
@@ -22,7 +30,7 @@ module ExpiredTrialGroupCleanupService
     { as_of: as_of.iso8601, retention_days: RETENTION_PERIOD.in_days.to_i, groups: entries }
   end
 
-  def self.warn_and_schedule!(io:, as_of: Time.current, limit: nil)
+  def self.warn!(io:, as_of: Time.current, limit: nil)
     plan = audit(as_of: as_of, limit: limit)
     log(io, type: "plan", at: Time.current.iso8601, **plan)
     result = { warned_groups: 0, skipped_groups: 0 }
@@ -50,8 +58,8 @@ module ExpiredTrialGroupCleanupService
   def self.candidate_groups(as_of:, group_id: nil)
     cutoff = as_of - RETENTION_PERIOD
     expired_trials = Subscription.where(plan: "trial", expires_at: ..cutoff)
-    empty_trial_ids = EmptyTrialCleanupService.candidate_trees(expires_before: cutoff).keys
-    eligible_trial_ids = EmptyTrialCleanupService.eligible_trees(expires_before: cutoff).keys
+    empty_trial_ids = EmptyGroupCleanupService.candidate_trees(cohort: :trial, before: cutoff).keys
+    eligible_trial_ids = EmptyGroupCleanupService.eligible_trees(cohort: :trial, before: cutoff).keys
 
     scope = Group.kept.parents_only.joins(:subscription)
                  .merge(expired_trials)

@@ -414,15 +414,15 @@ fi:
       body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
     destroy_warning_with_usage:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
-      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requester toimesta. Se poistetaan pysyvästi kahden viikon kuluttua.
-      trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi kahden viikon kuluttua.
+      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requester} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
+      trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi %{days} päivän kuluttua.
       usage_heading: 'Ryhmätietojen yhteenveto:'
       subgroups: Alaryhmät
       members: Nykyiset jäsenet
       discussions: Keskustelut
       polls: Kyselyt
       comments: Kommentit
-      export: Jos haluat säilyttää ryhmän tai viedä kopion sen tiedoista, vastaa tähän sähköpostiin kahden viikon kuluessa. Voimme palauttaa käyttöoikeudet ennen poistamista.
+      export: Jos haluat säilyttää ryhmän tai viedä kopion sen tiedoista, vastaa tähän sähköpostiin %{days} päivän kuluessa. Voimme palauttaa käyttöoikeudet ennen poistamista.
       export_link: Lisätietoja ryhmätietojen viennistä
       group_key: 'Ryhmän avain: %{key}'
   poll_mailer:

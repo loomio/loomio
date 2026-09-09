@@ -409,15 +409,15 @@ ja:
       body: あなたのLoomioグループ「%{group}」は非アクティブ状態のため、2週間後に削除されます。グループの削除を希望されない場合は、このメールにご返信ください。
     destroy_warning_with_usage:
       subject: あなたのLoomioグループは削除予定です。
-      requested: あなたのLoomioグループ「%{group}」は、%{requester}によって削除予定となりました。2週間後に完全に削除されます。
-      trial_expired: あなたのLoomioグループ「%{group}」は、少なくとも60日間のトライアル期間が終了しています。2週間後に完全に削除されます。
+      requested: あなたのLoomioグループ「%{group}」は、%{requester}によって削除予定となりました。%{days}日後に完全に削除されます。
+      trial_expired: あなたのLoomioグループ「%{group}」は、少なくとも60日間のトライアル期間が終了しています。%{days}日後に完全に削除されます。
       usage_heading: グループデータの概要：
       subgroups: サブグループ
       members: 現在のメンバー
       discussions: 議論
       polls: 世論調査
       comments: コメント
-      export: グループを維持するため、またはデータのコピーをエクスポートするためには、2週間以内にこのメールに返信してください。削除前にアクセスを復元することが可能です。
+      export: グループを維持するため、またはデータのコピーをエクスポートするためには、%{days}日以内にこのメールに返信してください。削除前にアクセスを復元することが可能です。
       export_link: グループデータのエクスポートについて学ぶ
       group_key: 'グループキー: %{key}'
   poll_mailer:

@@ -1267,6 +1267,7 @@ tr:
     confirm: Bu grubu silmek istediğinizi onaylamak için '%{name}' yazın.
     success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
     scheduled_for_deletion: Bu grubun 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
+    deletion_after_grace_period: Bu grup kullanılamıyor ve %{days} gün sonra kalıcı olarak silinecek
   group_page:
     stats: Grup istatistikleri
     threads: Müzakereler

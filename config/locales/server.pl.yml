@@ -441,15 +441,15 @@ pl:
       body: Twoja grupa Loomio „%{group}” jest nieaktywna i zostanie usunięta za 2 tygodnie. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tego e-maila.
     destroy_warning_with_usage:
       subject: Twoja grupa Loomio jest przeznaczona do usunięcia
-      requested: Twoja grupa Loomio „%{group}” została zaplanowana do usunięcia przez %{requester}. Zostanie trwale usunięta za 2 tygodnie.
-      trial_expired: Twoja grupa Loomio „%{group}” jest na okresie próbnym, który wygasł od co najmniej 60 dni. Zostanie trwale usunięta za 2 tygodnie.
+      requested: Twoja grupa Loomio „%{group}” została zaplanowana do usunięcia przez %{requester}. Zostanie trwale usunięta po %{days} dniach.
+      trial_expired: Twoja grupa Loomio „%{group}” jest na okresie próbnym, który wygasł od co najmniej 60 dni. Zostanie trwale usunięta po %{days} dniach.
       usage_heading: 'Podsumowanie danych grupowych:'
       subgroups: Podgrupy
       members: Obecni członkowie
       discussions: Dyskusje
       polls: Ankiety
       comments: Uwagi
-      export: Aby zachować grupę lub wyeksportować kopię jej danych, odpowiedz na tego e-maila w ciągu 2 tygodni. Możemy przywrócić dostęp przed usunięciem.
+      export: Aby zachować grupę lub wyeksportować kopię jej danych, odpowiedz na tego e-maila w ciągu %{days} dni. Możemy przywrócić dostęp przed usunięciem.
       export_link: Dowiedz się więcej o eksportowaniu danych grupowych
       group_key: 'Klucz grupy: %{key}'
   poll_mailer:

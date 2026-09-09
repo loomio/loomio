@@ -82,7 +82,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def warn_then_destroy
     GroupService.warn_then_destroy(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group administrators warned; deletion scheduled in 2 weeks"
+    redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days"
   end
 
   def destroy_immediately

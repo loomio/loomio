@@ -1388,6 +1388,7 @@ en:
     confirm: Type '%{name}' to confirm you want to delete this group.
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
     scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
+    deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
   report:
     start_on: Start on
     end_on: End on

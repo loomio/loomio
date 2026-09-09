@@ -1267,6 +1267,7 @@ sl:
     confirm: Vnesite '%{name}', da potrdite, da želite izbrisati to skupino.
     success: Ta skupina je bila arhivirana in je načrtovana za trajno brisanje čez 2 tedna.
     scheduled_for_deletion: Ta skupina bo trajno izbrisana čez 2 tedna.
+    deletion_after_grace_period: Ta skupina ni na voljo in bo po %{days} dneh trajno izbrisana
   group_page:
     stats: Statistika skupine
     threads: Razprave

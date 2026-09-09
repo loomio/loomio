@@ -1273,6 +1273,7 @@ ca:
     confirm: Escriviu '%{name}' per confirmar que voleu eliminar aquest grup
     success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
     scheduled_for_deletion: Està programat que aquest grup s'elimini permanentment d'aquí a 2 setmanes.
+    deletion_after_grace_period: Aquest grup no està disponible i se suprimirà permanentment al cap de %{days} dies
   group_page:
     stats: Estadístiques del grup
     threads: Fils

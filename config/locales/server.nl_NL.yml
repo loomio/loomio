@@ -441,15 +441,15 @@ nl_NL:
       body: Je Loomio-groep "%{group}" is inactief en wordt over 2 weken verwijderd. Als je niet wilt dat je groep wordt verwijderd, beantwoord dan deze e-mail.
     destroy_warning_with_usage:
       subject: Je Loomio-groep staat gepland om verwijderd te worden.
-      requested: Je Loomio-groep "%{group}" stond op de planning om verwijderd te worden door %{requester}. Deze wordt over 2 weken definitief verwijderd.
-      trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt over 2 weken definitief verwijderd.
+      requested: Je Loomio-groep "%{group}" stond op de planning om verwijderd te worden door %{requester}. Deze wordt na %{days} dagen definitief verwijderd.
+      trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt na %{days} dagen definitief verwijderd.
       usage_heading: 'Samenvatting van de groepsgegevens:'
       subgroups: Subgroepen
       members: Huidige leden
       discussions: Discussies
       polls: Peilingen
       comments: Opmerkingen
-      export: Om de groep te behouden of een kopie van de gegevens te exporteren, kunt u binnen twee weken op deze e-mail reageren. We kunnen de toegang herstellen voordat de groep wordt verwijderd.
+      export: Om de groep te behouden of een kopie van de gegevens te exporteren, kun je binnen %{days} dagen op deze e-mail reageren. We kunnen de toegang herstellen voordat de groep wordt verwijderd.
       export_link: Leer meer over het exporteren van groepsgegevens.
       group_key: 'Groepssleutel: %{key}'
   poll_mailer:

@@ -444,15 +444,15 @@ fr:
       body: Ton groupe Loomio « %{group} » est inactif et sera supprimé dans deux semaines. Si tu ne souhaites pas qu'il soit supprimé, réponds à ce courriel.
     destroy_warning_with_usage:
       subject: Votre groupe Loomio est programmé pour être supprimé.
-      requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requester}. Il sera supprimé définitivement dans 2 semaines.
-      trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé dans 2 semaines.
+      requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requester}. Il sera définitivement supprimé après %{days} jours.
+      trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé après %{days} jours.
       usage_heading: 'Résumé des données du groupe :'
       subgroups: Sous-groupes
       members: Membres actuels
       discussions: Discussions
       polls: Sondages
       comments: Commentaires
-      export: Pour conserver le groupe ou exporter une copie de ses données, veuillez répondre à ce courriel dans un délai de deux semaines. Nous pouvons rétablir l'accès avant la suppression.
+      export: Pour conserver le groupe ou exporter une copie de ses données, réponds à ce courriel dans les %{days} jours. Nous pouvons rétablir l'accès avant la suppression.
       export_link: Découvrez comment exporter les données de groupe
       group_key: 'Clé du groupe : %{key}'
   poll_mailer:

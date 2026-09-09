@@ -1292,6 +1292,7 @@ fr:
     confirm: Saisis '%{name}' pour confirmer que tu veux supprimer ce groupe.
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
     scheduled_for_deletion: Ce groupe sera supprimé définitivement dans deux semaines.
+    deletion_after_grace_period: Ce groupe est inaccessible et sera définitivement supprimé après %{days} jours
   group_page:
     stats: Statistiques du groupe
     threads: Discussions
