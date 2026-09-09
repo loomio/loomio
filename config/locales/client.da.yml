@@ -439,45 +439,26 @@ da:
     title_label: Titel
     hint: 'Tip til næste gang: Prøv at fremhæve noget tekst, før du klikker på "Fastgør".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Indstillinger for trådnotifikationer
+      group: Indstillinger for gruppenotifikationer
+      default: Standardindstillinger for notifikationer
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: denne tråd
+      group: denne gruppe
+      default: grupper du deltager i
     explain_scope:
       thread: Dette ændres, når du får besked om denne tråd
       group: Dette ændres, når du får besked om alle tråde i gruppen
     simple:
       label: Notifikationer
       loud: Abonneret
-      normal: Normal
       quiet: Ignorér
       question: Hvornår vil du have besked?
       loud_explain: når der er aktivitet
       normal_explain: når nogen beder om din opmærksomhed
       quiet_explain: ingen meddelelser
+      normal: Normal
     loud_label: Al aktivitet
     normal_label: Normal
     quiet_label: Ingen emails
@@ -549,16 +530,35 @@ da:
     quiet_option: Ingen e-mails om denne tråd (Fra)
     quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
     volume_email_label: E-mail
-    volume_push_label: Skubbe
+    volume_push_label: Push
     all_activity_option: Al aktivitet
     when_notified_option: Når du får besked
     muted_option: Slået fra
     volume_channel_label: Hvordan skal vi opdatere jer?
     email_channel: E-mail
-    push_channel: Skubbe
+    push_channel: Push
     email_and_push_channel: E-mail og push
     off_option: Slukket
     apply_to_all_threads_in_group: Anvend disse indstillinger på alle tråde i %{group}
+    delivery_method: Leveringsmetode
+    how_do_you_want_to_stay_updated: Hvordan vil du holde dig opdateret?
+    catch_up_daily_hint: Din "catch-tap" er en daglig e-mail med usete notifikationer og ulæst aktivitet
+    catch_up_every_second_day_hint: Din "catch-tap" er en e-mail, der sendes hver anden dag med usete notifikationer og ulæst aktivitet
+    catch_up_weekly_hint: Din "catch-up" er en ugentlig e-mail med usete notifikationer og ulæst aktivitet
+    catch_up_only_option: Kun catch-up
+    no_email_updates_option: Ingen e-mailopdateringer
+    no_push_updates_option: Ingen push-opdateringer
+    in_app_only_option: Kun i appen
+    catch_up_only_description: Inkluder aktivitet fra %{context} i min opdatering
+    catch_up_only_with_notifications_description: Inkluder notifikationer og anden aktivitet fra %{context} i min opdatering
+    no_email_updates_description: Send mig ikke e-mails om aktivitet i %{context}
+    no_push_updates_description: Send ikke push-notifikationer om aktivitet i %{context}
+    email_when_notified_description: Send mig en e-mail, når jeg får besked
+    email_when_notified_with_catch_up_description: Send mig en e-mail, når jeg får besked, og inkluder resten i min opdatering
+    push_when_notified_description: Send en push-besked, når jeg får besked
+    push_when_notified_with_catch_up_description: Send en push-notifikation, når jeg får besked, og inkluder resten i min "catch-up"-funktion.
+    email_all_activity_description: Send mig en e-mail, når der er aktivitet i %{context}
+    push_all_activity_description: Send en push-besked, når der er aktivitet i %{context}
   inbox:
     clear: Ryd
     latest: Seneste
@@ -721,7 +721,6 @@ da:
     button_label: Brugermenu
     edit_profile: Rediger profil
     email_settings: Notifikationsindstillinger
-    mobile_app_settings: Mobile settings
     help: Hjælp
     contact_site_name: Kontakt %{site_name}
     contact_support: Kontakt support
@@ -734,6 +733,7 @@ da:
     light_blue: Lyseblå
     dark_blue: Mørkeblå
     whats_new: Hvad er nyt?
+    mobile_app_settings: Mobilindstillinger
   membership_card:
     group_members: Gruppemedlemmer
     poll_members: "%{pollType} medlemmer"
@@ -1667,9 +1667,6 @@ da:
     submit_delete: Slet min konto nu
     submit_deactivate: Deaktiver min konto nu
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Mandag
     tuesday: Tirsdag
     wednesday: Onsdag
@@ -1707,6 +1704,9 @@ da:
     send_email: Send e-mail
     group_notifications: Gruppemeddelelser
     group_notifications_description: Skift aktivitetsniveau og kanal for dine grupper
+    choose_email_and_push_updates: Vælg separate indstillinger for e-mail og push
+    catch_up_email: Indhentningsmail
+    catch_up_email_description: Vælg, hvornår du vil modtage en opdatering med usete notifikationer og ulæst aktivitet
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -3021,9 +3021,6 @@ da:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: stemmer
     candidate: Kandidat
     round_elected: Valgt runde
@@ -3033,6 +3030,9 @@ da:
     round_details: Detaljer runde for runde
     view_full_results: Se alle resultater
     results_available_when_closed: Resultaterne vil være tilgængelige, når afstemningen slutter
+    elected_in_round: Valgt i runde %{round}
+    eliminated_in_round: Elimineret i runde %{round}
+    tied_in_round: Uafgjort i runde %{round}
   lock_thread_modal:
     body: Lås tråde for at fjerne dem fra listen over åbne tråde og forhindre folk i at kommentere.
     explanation: Lås tråde for at forhindre folk i at kommentere eller foretage yderligere ændringer

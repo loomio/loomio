@@ -439,33 +439,14 @@ sl:
     title_label: Naslov
     hint: 'Namig za naslednjič: Poskusite označiti nekaj besedila, preden kliknete »Pripni«.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Nastavitve obveščanja o nitih
+      group: Nastavitve obvestil skupine
+      default: Privzete nastavitve obvestil
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: ta nit
+      group: ta skupina
+      default: skupine, ki se jim pridružite
     explain_scope:
       thread: To se spremeni, ko boste obveščeni o tej niti
       group: To se spremeni, ko boste obveščeni o vseh nitih v skupini
@@ -481,7 +462,6 @@ sl:
     loud_label: Vsa dejavnost
     normal_label: Obvestila
     quiet_label: Brez e-pošte
-    mute_label: Mute
     saved: Nastavitve obvestil posodobljene
     discussion:
       loud_description: O vseh dejavnostih v tej niti boste prejeli e-poštno sporočilo.
@@ -549,16 +529,36 @@ sl:
     quiet_option: Ni e-poštnih sporočil o tej temi (Izklopljeno)
     quiet_explained: Ne boste prejeli e-poštnega sporočila, tudi če vas bo kdo poskušal obvestiti.
     volume_email_label: E-pošta
-    volume_push_label: Potisni
+    volume_push_label: Push
     all_activity_option: Vse dejavnosti
     when_notified_option: Ko je obveščen
     muted_option: Utišano
     volume_channel_label: Kako naj vas obvestimo?
     email_channel: E-pošta
-    push_channel: Potisni
+    push_channel: Push
     email_and_push_channel: E-pošta in potisna sporočila
     off_option: Izklopljeno
     apply_to_all_threads_in_group: Uporabi te nastavitve za vse niti v %{group}
+    delivery_method: Način dostave
+    how_do_you_want_to_stay_updated: Kako želite ostati na tekočem?
+    catch_up_daily_hint: Vaše dnevno e-poštno sporočilo z neprebranimi obvestili in neprebrano dejavnostjo
+    catch_up_every_second_day_hint: Vaše poročilo o zamujenem je e-poštno sporočilo, ki ga pošljete vsak drugi dan, z neprebranimi obvestili in neprebrano dejavnostjo.
+    catch_up_weekly_hint: Vaše tedensko e-poštno sporočilo z neprebranimi obvestili in neprebrano aktivnostjo
+    catch_up_only_option: Samo nadoknaditev zamujenega
+    no_email_updates_option: Ni posodobitev po e-pošti
+    no_push_updates_option: Brez potisnih posodobitev
+    in_app_only_option: Samo v aplikaciji
+    catch_up_only_description: Vključi aktivnost iz %{context} v moj pregled
+    catch_up_only_with_notifications_description: Vključi obvestila in druge dejavnosti iz %{context} v moje poročilo o zaostanku
+    no_email_updates_description: Ne pošiljaj mi e-pošte o dejavnosti v %{context}
+    no_push_updates_description: Ne pošiljaj potisnih obvestil o dejavnosti v %{context}
+    email_when_notified_description: Pošlji mi e-pošto, ko prejmem obvestilo
+    email_when_notified_with_catch_up_description: Pošlji mi e-pošto, ko prejmem obvestilo, ostalo pa vključi v moje poročilo o zamujenem
+    push_when_notified_description: Pošlji potisno obvestilo, ko prejmem obvestilo
+    push_when_notified_with_catch_up_description: Pošlji potisno obvestilo, ko prejmem obvestilo, ostalo pa vključi v moje poročilo o zamujenem
+    email_all_activity_description: Pošlji mi e-pošto, kadar koli bo v %{context} kakšna aktivnost
+    push_all_activity_description: Pošlji potisno obvestilo vsakič, ko je v %{context} aktivnost
+    mute_label: Izklopi zvok
   inbox:
     clear: Počisti
     latest: Zadnje
@@ -721,7 +721,6 @@ sl:
     button_label: Uporabniški meni
     edit_profile: Uredi profil
     email_settings: Nastavitve obvestil
-    mobile_app_settings: Mobile settings
     help: Pomoč
     contact_site_name: Obrnite se na %{site_name}
     contact_support: Obrnite se na podporo
@@ -734,6 +733,7 @@ sl:
     light_blue: Svetlo modra
     dark_blue: Temno modra
     whats_new: Kaj je novega
+    mobile_app_settings: Nastavitve za mobilne naprave
   membership_card:
     group_members: Člani skupine
     poll_members: "%{pollType} članov"
@@ -1667,9 +1667,6 @@ sl:
     submit_delete: Izbriši moj račun zdaj
     submit_deactivate: Deaktiviraj moj račun zdaj
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Ponedeljek
     tuesday: Torek
     wednesday: Sreda
@@ -1707,6 +1704,9 @@ sl:
     send_email: Pošlji e-pošto
     group_notifications: Obvestila skupine
     group_notifications_description: Spremenite raven aktivnosti in kanal za svoje skupine
+    choose_email_and_push_updates: Izberite ločene nastavitve za e-pošto in potisne sporočila
+    catch_up_email: E-poštno sporočilo za nadoknaditev zamujenega
+    catch_up_email_description: Izberite, kdaj želite prejemati obvestila o neprebranih obvestilih in neprebrani dejavnosti
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
@@ -1808,7 +1808,7 @@ sl:
     title: Videno od
     no_one: Tega še nihče ni videl
     disabled_anonymous_polls: Zgodovina gledalcev je onemogočena, ker nit vsebuje anonimne ankete
-    thread_engagement: Thread engagement
+    thread_engagement: Sodelovanje v razpravi
   activity_card:
     count_responses: "%{count} odgovorov"
     beginning: Začetek
@@ -3021,9 +3021,6 @@ sl:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: glasovi
     candidate: Kandidat
     round_elected: Izvoljen v krogu
@@ -3033,6 +3030,9 @@ sl:
     round_details: Podrobnosti po posameznih krogih
     view_full_results: Ogled vseh rezultatov
     results_available_when_closed: Rezultati bodo na voljo po zaključku glasovanja
+    elected_in_round: Izvoljen v %{round} krogu
+    eliminated_in_round: Izpad v %{round} krogu
+    tied_in_round: Izenačeno v %{round} krogu
   lock_thread_modal:
     body: Zaklenite niti, da jih odstranite s seznama odprtih niti in preprečite drugim komentiranje.
     explanation: Zaklenite niti, da preprečite komentiranje ali nadaljnje spremembe

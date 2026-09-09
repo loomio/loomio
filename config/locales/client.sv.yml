@@ -439,45 +439,26 @@ sv:
     title_label: Titel
     hint: 'Tips till nästa gång: Försök att markera lite text innan du klickar på "Fäst".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Inställningar för trådaviseringar
+      group: Inställningar för gruppmeddelanden
+      default: Standardinställningar för aviseringar
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: den här tråden
+      group: den här gruppen
+      default: grupper du går med i
     explain_scope:
       thread: Detta ändras när du får ett meddelande om den här tråden
       group: Detta ändras när du får ett meddelande om alla trådar i gruppen
     simple:
       label: Notifieringar
       loud: Prenumererade
-      normal: Normal
       quiet: Ignorera
       question: När vill du bli meddelad?
       loud_explain: närhelst det är aktivitet
       normal_explain: när någon ber om din uppmärksamhet
       quiet_explain: inga notifikationer
+      normal: Normal
     loud_label: All aktivitet
     normal_label: Meddelanden
     quiet_label: Inga e-post
@@ -549,16 +530,35 @@ sv:
     quiet_option: Inga e-postmeddelanden om den här tråden (Av)
     quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig.
     volume_email_label: E-post
-    volume_push_label: Tryck
+    volume_push_label: Push
     all_activity_option: All aktivitet
     when_notified_option: När du meddelas
     muted_option: Ljudlös
     volume_channel_label: Hur ska vi uppdatera er?
     email_channel: E-post
-    push_channel: Tryck
+    push_channel: Push
     email_and_push_channel: E-post och push
     off_option: Av
     apply_to_all_threads_in_group: Tillämpa dessa inställningar på alla trådar i %{group}
+    delivery_method: Leveransmetod
+    how_do_you_want_to_stay_updated: Hur vill du hålla dig uppdaterad?
+    catch_up_daily_hint: Din uppdatering är ett dagligt e-postmeddelande med osedda aviseringar och oläst aktivitet
+    catch_up_every_second_day_hint: Din catch-up är ett e-postmeddelande som skickas varannan dag med osedda aviseringar och oläst aktivitet
+    catch_up_weekly_hint: Din catch-up är ett veckovis e-postmeddelande med osedda aviseringar och oläst aktivitet
+    catch_up_only_option: Endast ikapp
+    no_email_updates_option: Inga e-postuppdateringar
+    no_push_updates_option: Inga push-uppdateringar
+    in_app_only_option: Endast i appen
+    catch_up_only_description: Inkludera aktivitet från %{context} i min uppdatering
+    catch_up_only_with_notifications_description: Inkludera aviseringar och annan aktivitet från %{context} i mina uppdateringar
+    no_email_updates_description: Skicka inte e-post till mig om aktivitet i %{context}
+    no_push_updates_description: Skicka inte push-meddelanden om aktivitet i %{context}
+    email_when_notified_description: Maila mig när jag får ett meddelande
+    email_when_notified_with_catch_up_description: Maila mig när jag får ett meddelande och inkludera resten i mina uppdateringar
+    push_when_notified_description: Skicka en push-notis när jag får en avisering
+    push_when_notified_with_catch_up_description: Skicka en push-notis när jag får en avisering och inkludera resten i mina uppdateringar.
+    email_all_activity_description: Maila mig när det finns aktivitet i %{context}
+    push_all_activity_description: Skicka en push-notis när det finns aktivitet i %{context}
   inbox:
     clear: Klar
     latest: Senaste
@@ -721,7 +721,6 @@ sv:
     button_label: Användarmeny
     edit_profile: Redigera profil
     email_settings: Aviseringsinställningar
-    mobile_app_settings: Mobile settings
     help: Hjälp
     contact_site_name: Kontakta %{site_name}
     contact_support: Kontakta supporten
@@ -734,6 +733,7 @@ sv:
     light_blue: Ljusblå
     dark_blue: Mörkblå
     whats_new: Nyheter
+    mobile_app_settings: Mobilinställningar
   membership_card:
     group_members: Gruppmedlemmar
     poll_members: "%{pollType} medlemmar"
@@ -1667,9 +1667,6 @@ sv:
     submit_delete: Ta bort mitt konto nu
     submit_deactivate: Inaktivera mitt konto nu
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Måndag
     tuesday: Tisdag
     wednesday: Onsdag
@@ -1707,6 +1704,9 @@ sv:
     send_email: Skicka e-post
     group_notifications: Gruppmeddelanden
     group_notifications_description: Ändra aktivitetsnivå och kanal för dina grupper
+    choose_email_and_push_updates: Välj separata inställningar för e-post och push
+    catch_up_email: Mejla om uppdateringar
+    catch_up_email_description: Välj när du vill få en uppdaterad uppdatering om osedda aviseringar och oläst aktivitet
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
@@ -3021,9 +3021,6 @@ sv:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: röster
     candidate: Kandidat
     round_elected: valde i omgången
@@ -3033,6 +3030,9 @@ sv:
     round_details: Detaljer runda för runda
     view_full_results: Visa fullständiga resultat
     results_available_when_closed: Resultaten kommer att finnas tillgängliga när omröstningen avslutas
+    elected_in_round: Vald i omgång %{round}
+    eliminated_in_round: Eliminerad i runda %{round}
+    tied_in_round: Oavgjort i rundan %{round}
   lock_thread_modal:
     body: Lås trådar för att ta bort dem från listan över öppna trådar och förhindra att folk kommenterar.
     explanation: Lås trådar för att förhindra att folk kommenterar eller gör ytterligare ändringar

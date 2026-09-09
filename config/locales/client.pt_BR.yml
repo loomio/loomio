@@ -449,45 +449,26 @@ pt_BR:
     title_label: Título
     hint: 'Dica para a próxima vez: Tente selecionar texto antes de clicar em "Fixar".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Configurações de notificação de tópicos
+      group: Configurações de notificação de grupo
+      default: Configurações de notificação padrão
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: este tópico
+      group: este grupo
+      default: grupos dos quais você participa
     explain_scope:
       thread: Isso mudará quando você será notificado sobre essa conversa
       group: Isso mudará quando você será notificado sobre todas as conversas nesse grupo
     simple:
       label: Notificações
       loud: Inscrito
-      normal: Normal
       quiet: 'Ignorar '
       question: 'Quando você quer ser notificado? '
       loud_explain: sempre que houver atividade
       normal_explain: quando alguém pedir sua atenção
       quiet_explain: nenhuma notificação
+      normal: Normal
     loud_label: Toda atividade
     normal_label: Anúncios
     quiet_label: Sem e-mails
@@ -559,16 +540,35 @@ pt_BR:
     quiet_option: Nenhum e-mail sobre esta conversa (Desativado)
     quiet_explained: Você não receberá e-mails, mesmo que alguém tente notificá-lo.
     volume_email_label: E-mail
-    volume_push_label: Empurrar
+    volume_push_label: Push
     all_activity_option: Todas as atividades
     when_notified_option: Quando notificado
     muted_option: Silenciado
     volume_channel_label: Como devemos mantê-lo(a) informado(a)?
     email_channel: E-mail
-    push_channel: Empurrar
+    push_channel: Push
     email_and_push_channel: Enviar e-mail e notificações
     off_option: Desligado
     apply_to_all_threads_in_group: Aplique essas configurações a todas as discussões em %{group}
+    delivery_method: Método de entrega
+    how_do_you_want_to_stay_updated: Como você deseja se manter atualizado?
+    catch_up_daily_hint: Seu resumo diário é um e-mail com notificações não visualizadas e atividades não lidas.
+    catch_up_every_second_day_hint: Seu resumo é um e-mail enviado a cada dois dias com notificações não visualizadas e atividades não lidas.
+    catch_up_weekly_hint: Seu resumo é um e-mail semanal com notificações não visualizadas e atividades não lidas.
+    catch_up_only_option: Apenas para assistir posteriormente
+    no_email_updates_option: Sem atualizações por e-mail
+    no_push_updates_option: Sem atualizações push
+    in_app_only_option: Somente no aplicativo
+    catch_up_only_description: Incluir atividade de %{context} no meu resumo
+    catch_up_only_with_notifications_description: Incluir notificações e outras atividades de %{context} no meu resumo.
+    no_email_updates_description: Não me envie e-mails sobre atividades em %{context}
+    no_push_updates_description: Não envie notificações push sobre atividades em %{context}
+    email_when_notified_description: Avise-me quando eu for notificado.
+    email_when_notified_with_catch_up_description: Envie-me um e-mail quando eu for notificado e inclua o restante no meu resumo.
+    push_when_notified_description: Enviar notificação push quando eu for notificado(a)
+    push_when_notified_with_catch_up_description: Envie uma notificação push quando eu for notificado e inclua o restante no meu resumo.
+    email_all_activity_description: Envie-me um e-mail sempre que houver atividade em %{context}
+    push_all_activity_description: Enviar notificação push sempre que houver atividade em %{context}
   inbox:
     clear: Limpar
     latest: Último
@@ -731,7 +731,6 @@ pt_BR:
     button_label: Menu do usuário
     edit_profile: Editar perfil
     email_settings: Configurações de notificação
-    mobile_app_settings: Mobile settings
     help: Ajuda
     contact_site_name: Contato %{site_name}
     contact_support: Contatar o suporte
@@ -744,6 +743,7 @@ pt_BR:
     light_blue: Azul claro
     dark_blue: Azul escuro
     whats_new: O que há de novo
+    mobile_app_settings: Configurações móveis
   membership_card:
     group_members: Membros do Grupo
     poll_members: "%{pollType} membros"
@@ -1702,9 +1702,6 @@ pt_BR:
     submit_delete: Deletar minha conta agora
     submit_deactivate: Desative minha conta agora
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     never: Nunca
     monday: Segunda-feira
     tuesday: Terça-feira
@@ -1742,6 +1739,9 @@ pt_BR:
     send_email: Enviar e-mail
     group_notifications: Notificações de grupo
     group_notifications_description: Altere o nível de atividade e o canal para seus grupos
+    choose_email_and_push_updates: Escolha configurações separadas para e-mail e notificações push.
+    catch_up_email: E-mail de atualização
+    catch_up_email_description: Escolha quando receber um resumo das notificações não visualizadas e das atividades não lidas.
   thread_preview:
     replies_count: "%{count} respostas"
     unread_count: "%{count} Não lida"
@@ -3069,9 +3069,6 @@ pt_BR:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: votos
     candidate: Candidato
     round_elected: Eleito para a rodada
@@ -3081,6 +3078,9 @@ pt_BR:
     round_details: Detalhes rodada a rodada
     view_full_results: Veja os resultados completos
     results_available_when_closed: Os resultados estarão disponíveis após o encerramento da votação.
+    elected_in_round: Eleito na rodada %{round}
+    eliminated_in_round: Eliminado na rodada %{round}
+    tied_in_round: Empatado em rodada %{round}
   lock_thread_modal:
     body: Bloqueie os tópicos para removê-los da lista de tópicos abertos e impedir que as pessoas comentem.
     explanation: Bloquear tópicos para impedir que as pessoas comentem ou façam mais alterações.

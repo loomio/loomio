@@ -304,21 +304,17 @@ el:
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Έχετε 1 ψήφο να ρίξετε
+          other: Έχετε %{count} ψήφους να ρίξετε
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 άτομο σας ανέφερε
+          other: "%{count} άτομα σας ανέφεραν"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 δημοσκόπηση κλείνει σύντομα
+          other: "%{count} κάλπες κλείνουν σύντομα"
+        separator: "·"
       daily_subject: Χθες στο %{site_name}
       weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
       other_subject: Πρόσφατα στο %{site_name}
@@ -327,20 +323,22 @@ el:
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
       click_here: Πατήστε εδώ
-
+      catch_up_heading: Η κάλυψη του %{site_name} σας
+      unread_topics: Μη αναγνωσμένα θέματα
+      unread_threads: Μη αναγνωσμένα νήματα
+      mark_catch_up_as_read: Σημειώστε την αναγνωσμένη ενημέρωση
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Έχετε 1 ψήφο να ρίξετε
+          other: Έχετε %{count} ψήφους να ρίξετε
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 άτομο σας ανέφερε
+          other: "%{count} άτομα σας ανέφεραν"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 δημοσκόπηση κλείνει σύντομα
+          other: "%{count} κάλπες κλείνουν σύντομα"
+        separator: "·"
       daily_subject: Χθες στο %{site_name}
       weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
       other_subject: Πρόσφατα στο %{site_name}
@@ -349,6 +347,7 @@ el:
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
       click_here: Πατήστε εδώ
+      unread_topics: Μη αναγνωσμένα θέματα
     group_membership_approved:
       intro: Το αίτημά σας για πρόσβαση στην ομάδα %{group_name} έχει εγκριθεί.
       intro_html: Το αίτημά σας για πρόσβαση στην ομάδα <strong>%{group_name}</strong> έχει εγκριθεί.

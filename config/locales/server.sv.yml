@@ -304,21 +304,17 @@ sv:
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Du har 1 röst att avge
+          other: Du har %{count} röster att avge
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 person nämnde dig
+          other: "%{count} personer nämnde dig"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 omröstning stänger snart
+          other: "%{count} vallokaler stänger snart"
+        separator: "·"
       daily_subject: Igår på %{site_name}
       weekly_subject: Förra veckan på %{site_name}
       other_subject: Nyligen på %{site_name}
@@ -327,20 +323,22 @@ sv:
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
       click_here: Klicka här
-
+      catch_up_heading: Din %{site_name}-upplevelse
+      unread_topics: Olästa ämnen
+      unread_threads: Olästa trådar
+      mark_catch_up_as_read: Markera ikapp som läst
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Du har 1 röst att avge
+          other: Du har %{count} röster att avge
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 person nämnde dig
+          other: "%{count} personer nämnde dig"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 omröstning stänger snart
+          other: "%{count} vallokaler stänger snart"
+        separator: "·"
       daily_subject: Igår på %{site_name}
       weekly_subject: Förra veckan på %{site_name}
       other_subject: Nyligen på %{site_name}
@@ -349,6 +347,7 @@ sv:
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
       click_here: Klicka här
+      unread_topics: Olästa ämnen
     group_membership_approved:
       intro: Din begäran om åtkomst till gruppen %{group_name} har godkänts.
       intro_html: Din begäran om åtkomst till gruppen <strong>%{group_name}</strong> har godkänts.

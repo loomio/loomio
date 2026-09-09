@@ -313,21 +313,17 @@ ru:
     unsubscribe: 'Отписаться или изменить почтовые предпочтения:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, чтобы отписаться или изменить почтовые предпочтения."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: У вас есть 1 голос.
+          other: Вам осталось отдать %{count} голосов.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 человек упомянул вас
+          other: "%{count} человек упомянули вас"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 голосование скоро завершится
+          other: Опросы %{count} скоро завершатся
+        separator: "·"
       daily_subject: Вчера на сайте %{site_name}
       weekly_subject: Прошлая неделя на сайте %{site_name}
       other_subject: Недавно на %{site_name}
@@ -336,20 +332,22 @@ ru:
       thanks_for_reading: Спасибо, что прочли и удачного дня!
       marked_as_read_success: Все в этом письме отмечено прочитанным
       click_here: Кликните здесь
-
+      catch_up_heading: Ваш %{site_name} наверстываете упущенное
+      unread_topics: Непрочитанные темы
+      unread_threads: Непрочитанные темы
+      mark_catch_up_as_read: Отметьте прочитанное как наверставшее упущенное.
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: У вас есть 1 голос.
+          other: Вам осталось отдать %{count} голосов.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 человек упомянул вас
+          other: "%{count} человек упомянули вас"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 голосование скоро завершится
+          other: Опросы %{count} скоро завершатся
+        separator: "·"
       daily_subject: Вчера на сайте %{site_name}
       weekly_subject: Прошлая неделя на сайте %{site_name}
       other_subject: Недавно на %{site_name}
@@ -358,6 +356,7 @@ ru:
       thanks_for_reading: Спасибо, что прочли и удачного дня!
       marked_as_read_success: Все в этом письме отмечено прочитанным
       click_here: Кликните здесь
+      unread_topics: Непрочитанные темы
     group_membership_approved:
       intro: Ваш запрос на доступ к группе %{group_name} одобрен.
       intro_html: Ваш запрос на доступ к группе <strong>%{group_name}</strong> одобрен.

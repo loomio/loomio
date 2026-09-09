@@ -314,21 +314,17 @@ he:
     unsubscribe: 'בטל את המנוי או שנה את העדפות הדוא"ל שלך:'
     unsubscribe_html: <a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא"ל שלך.
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
       other_subject: לאחרונה ב-%{site_name}
@@ -337,20 +333,22 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
-
+      catch_up_heading: השלמת הפער שלך ב-%{site_name}
+      unread_topics: נושאים שלא נקראו
+      unread_threads: שרשורים שלא נקראו
+      mark_catch_up_as_read: סמן את ההשלמה כנקרא
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
       other_subject: לאחרונה ב-%{site_name}
@@ -359,6 +357,7 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+      unread_topics: נושאים שלא נקראו
     group_membership_approved:
       intro: בקשתך להכנס לקבוצה %{group_name} אושרה.
       intro_html: בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה.

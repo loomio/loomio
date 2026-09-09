@@ -439,33 +439,14 @@ hr:
     title_label: Titula
     hint: 'Savjet za sljedeći put: pokušajte označiti tekst prije nego što kliknete "Prikvači".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Postavke obavijesti o temama
+      group: Postavke grupnih obavijesti
+      default: Zadane postavke obavijesti
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: ova nit
+      group: ova grupa
+      default: grupe kojima se pridružujete
     explain_scope:
       thread: Ovo se mijenja kada ćete biti obaviješteni o ovoj niti
       group: Ovo se mijenja kada ćete biti obaviješteni o svim nitima u grupi
@@ -549,16 +530,35 @@ hr:
     quiet_option: Nema e-poruka o ovoj temi (Isključeno)
     quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti.
     volume_email_label: E-pošta
-    volume_push_label: Gurnuti
+    volume_push_label: Push
     all_activity_option: Sve aktivnosti
     when_notified_option: Kada je obaviješten
     muted_option: Prigušen
     volume_channel_label: Kako bismo vas trebali ažurirati?
     email_channel: E-pošta
-    push_channel: Gurnuti
+    push_channel: Push
     email_and_push_channel: E-pošta i slanje poruka
     off_option: Isključeno
     apply_to_all_threads_in_group: Primijeni ove postavke na sve niti u %{group}
+    delivery_method: Način dostave
+    how_do_you_want_to_stay_updated: Kako želite ostati u toku?
+    catch_up_daily_hint: Vaš izvještaj o propuštenom je dnevna e-pošta s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_every_second_day_hint: Vaš izvještaj je e-poruka koja se šalje svaki drugi dan s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_weekly_hint: Vaš tjedni izvještaj je e-poruka s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_only_option: Samo nadoknađivanje propuštenog
+    no_email_updates_option: Nema ažuriranja putem e-pošte
+    no_push_updates_option: Nema push ažuriranja
+    in_app_only_option: Samo u aplikaciji
+    catch_up_only_description: Uključi aktivnost iz %{context} u moj pregled
+    catch_up_only_with_notifications_description: Uključi obavijesti i ostale aktivnosti iz %{context} u moj pregled
+    no_email_updates_description: Ne šalji mi e-poštu o aktivnostima u %{context}
+    no_push_updates_description: Ne šalji push obavijesti o aktivnosti u %{context}
+    email_when_notified_description: Pošalji mi e-poštu kada dobijem obavijest
+    email_when_notified_with_catch_up_description: Pošalji mi e-poštu kada dobijem obavijest, a ostatak uključi u moju nadolazeću stranicu
+    push_when_notified_description: Pošalji push obavijest kada primim obavijest
+    push_when_notified_with_catch_up_description: Pošalji push obavijest kada primim obavijest, a ostatak uključi u moj pregled
+    email_all_activity_description: Pošalji mi e-poštu kad god bude aktivnosti u %{context}
+    push_all_activity_description: Pošalji push obavijest kad god postoji aktivnost u %{context}
   inbox:
     clear: Obriši
     latest: Najnoviji
@@ -721,7 +721,6 @@ hr:
     button_label: Korisnički izbornik
     edit_profile: Uredi profil
     email_settings: Postavke obavijesti
-    mobile_app_settings: Mobile settings
     help: Pomozite
     contact_site_name: Kontaktirajte %{site_name}
     contact_support: Kontaktirajte podršku
@@ -734,6 +733,7 @@ hr:
     light_blue: Svijetloplava
     dark_blue: Tamnoplava
     whats_new: Što je novo
+    mobile_app_settings: Postavke za mobilne uređaje
   membership_card:
     group_members: Članovi grupe
     poll_members: "%{pollType} članova"
@@ -1667,9 +1667,6 @@ hr:
     submit_delete: Izbriši moj račun sada
     submit_deactivate: Sada deaktiviraj moj račun
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: ponedjeljak
     tuesday: utorak
     wednesday: srijeda
@@ -1707,6 +1704,9 @@ hr:
     send_email: Pošalji e-poštu
     group_notifications: Grupne obavijesti
     group_notifications_description: Promijenite razinu aktivnosti i kanal za svoje grupe
+    choose_email_and_push_updates: Odaberite zasebne postavke za e-poštu i push poruke
+    catch_up_email: E-pošta za nadoknađivanje propuštenog
+    catch_up_email_description: Odaberite kada želite primati obavijesti o nepročitanim obavijestima i nepročitanim aktivnostima
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
@@ -1808,7 +1808,7 @@ hr:
     title: vidio od
     no_one: Ovo još nitko nije vidio
     disabled_anonymous_polls: Povijest gledatelja je onemogućena jer nit sadrži anonimne ankete
-    thread_engagement: Thread engagement
+    thread_engagement: Sudjelovanje u raspravi
   activity_card:
     count_responses: "%{count} odgovora"
     beginning: Početak
@@ -3021,9 +3021,6 @@ hr:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: glasova
     candidate: Kandidat
     round_elected: Izabrani krug
@@ -3033,6 +3030,9 @@ hr:
     round_details: Detalji rundu po rundu
     view_full_results: Pogledajte sve rezultate
     results_available_when_closed: Rezultati će biti dostupni nakon završetka glasanja
+    elected_in_round: Izabran u %{round} krugu
+    eliminated_in_round: Eliminiran u %{round} rundi
+    tied_in_round: Neriješeno u rundi %{round}
   lock_thread_modal:
     body: Zaključajte teme kako biste ih uklonili s popisa otvorenih tema i spriječili ljude da komentiraju.
     explanation: Zaključajte teme kako biste spriječili ljude da komentiraju ili unose daljnje promjene
