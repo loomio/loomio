@@ -27,7 +27,7 @@ class Admin::DashboardControllerTest < ActionController::TestCase
       "Deactivated users",
       "Users joined in 30 days",
       "Total groups",
-      "Available groups",
+      "Enabled groups",
       "Discarded groups",
       "Groups created in 30 days",
       "Active memberships",
