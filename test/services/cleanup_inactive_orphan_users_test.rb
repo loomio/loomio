@@ -189,7 +189,14 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
   end
 
   test "deletion revokes transient account access" do
-    user = users(:orphan_user)
+    user = User.create!(
+      name: "Transient orphan",
+      email: "transient-orphan@example.test",
+      username: "transient_orphan",
+      email_verified: true,
+      created_at: 3.years.ago,
+      last_sign_in_at: 2.years.ago
+    )
     session = Session.create!(user: user)
     login_token = LoginToken.create!(user: user)
     push_subscription = create_push_subscription(
@@ -202,7 +209,11 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
 
     assert_includes CleanupService.inactive_orphan_user_ids, user.id
 
-    CleanupService.delete_inactive_orphan_users
+    # Lock contention is covered separately; this test verifies that deleting an
+    # eligible account revokes each transient access record.
+    with_cleanup_transaction do
+      CleanupService.delete_inactive_orphan_users
+    end
 
     assert_not User.exists?(user.id)
     assert_not Session.exists?(session.id)
@@ -231,12 +242,23 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       scope.expect(:first, user)
       CleanupService.stub(:inactive_orphan_user_ids, [ user.id ]) do
         CleanupService.stub(:inactive_orphan_users, scope) do
-          assert_raises(RuntimeError) { CleanupService.delete_inactive_orphan_users }
+          with_cleanup_transaction do
+            assert_raises(RuntimeError) { CleanupService.delete_inactive_orphan_users }
+          end
         end
       end
       scope.verify
     end
     assert User.exists?(user.id)
     assert PaperTrail::Version.exists?(version.id)
+  end
+
+  private
+
+  def with_cleanup_transaction(&test_block)
+    transaction = ->(_tables, &cleanup_block) do
+      ActiveRecord::Base.transaction(requires_new: true, &cleanup_block)
+    end
+    CleanupService.stub(:with_write_lock, transaction, &test_block)
   end
 end
