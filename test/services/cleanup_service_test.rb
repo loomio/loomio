@@ -74,9 +74,9 @@ class CleanupServiceTest < ActiveSupport::TestCase
 
     audit = CleanupService.audit_orphan_records
 
-    assert_equal 1, audit[:dangling_records]["Membership.missing_group"]
+    assert_not_includes audit[:dangling_records], "Membership.missing_group"
     assert_equal 1, audit[:dangling_records]["Subscription.missing_group"]
-    assert Membership.exists?(membership.id)
+    assert_not Membership.exists?(membership.id)
     assert Subscription.exists?(subscription.id)
   end
 

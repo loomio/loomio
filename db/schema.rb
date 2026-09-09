@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -493,7 +493,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
     t.datetime "created_at", precision: nil
     t.boolean "delegate", default: false, null: false
     t.jsonb "experiences", default: {}, null: false
-    t.integer "group_id"
+    t.integer "group_id", null: false
     t.integer "inbox_position", default: 0
     t.integer "invitation_id"
     t.integer "inviter_id"
@@ -503,7 +503,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
     t.string "title"
     t.string "token"
     t.datetime "updated_at", precision: nil
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "volume_email", default: 2, null: false
     t.integer "volume_push", default: 2, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
@@ -1499,6 +1499,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000000) do
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "memberships", "groups", on_delete: :cascade
+  add_foreign_key "memberships", "users", on_delete: :cascade
   add_foreign_key "mobile_access_tokens", "mobile_devices", on_delete: :cascade
   add_foreign_key "mobile_authorization_codes", "users", on_delete: :cascade
   add_foreign_key "mobile_devices", "users", on_delete: :cascade
