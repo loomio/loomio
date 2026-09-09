@@ -330,21 +330,17 @@ de:
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Sie haben 1 Stimme abzugeben.
+          other: Sie haben %{count} Stimmen zur Verfügung.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: Eine Person hat dich erwähnt
+          other: "%{count} Personen haben dich erwähnt"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1. Wahllokal schließt in Kürze
+          other: "%{count} Wahllokale schließen bald"
+        separator: "·"
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
       other_subject: Kürzlich auf %{site_name}
@@ -353,20 +349,22 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
       click_here: Hier klicken
-
+      catch_up_heading: Ihr %{site_name}-Update
+      unread_topics: Ungelesene Themen
+      unread_threads: Ungelesene Threads
+      mark_catch_up_as_read: Markiere die gelesenen Texte
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Sie haben 1 Stimme abzugeben.
+          other: Sie haben %{count} Stimmen zur Verfügung.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: Eine Person hat dich erwähnt
+          other: "%{count} Personen haben dich erwähnt"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1. Wahllokal schließt in Kürze
+          other: "%{count} Wahllokale schließen bald"
+        separator: "·"
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
       other_subject: Kürzlich auf %{site_name}
@@ -375,6 +373,7 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
       click_here: Hier klicken
+      unread_topics: Ungelesene Themen
     group_membership_approved:
       intro: Deine Anfrage der Gruppe %{group_name} beizutreten wurde angenommen.
       intro_html: Deine Anfrage der Gruppe <strong>%{group_name}</strong> beizutreten wurde angenommen.

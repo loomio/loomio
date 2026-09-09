@@ -441,45 +441,26 @@ ca:
     title_label: Títol
     hint: 'Pista per la propera vegada: Subratlleu part del text abans de clicar "fixa".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Configuració de notificacions de fils
+      group: Configuració de notificacions de grup
+      default: Configuració de notificacions predeterminada
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: aquest fil
+      group: aquest grup
+      default: grups als quals t'uneixes
     explain_scope:
       thread: Això canvia quan rebeu una notificació sobre aquest fil
       group: Això canvia quan se us notificarà sobre tots els fils del grup
     simple:
       label: Notificacions
       loud: Esteu subscrit
-      normal: Normal
       quiet: Ignora
       question: Quan voleu rebre notificacions?
       loud_explain: Quan hi hagi alguna activitat
       normal_explain: Quan algú demani la teva atenció
       quiet_explain: No hi ha notificacions
+      normal: Normal
     loud_label: Tota l'activitat
     normal_label: Avisos
     quiet_label: No hi ha correus electrònics
@@ -551,16 +532,35 @@ ca:
     quiet_option: No hi ha correus electrònics sobre aquest fil (Desactivat)
     quiet_explained: No rebràs cap correu electrònic, fins i tot quan algú intenti notificar-te.
     volume_email_label: Correu electrònic
-    volume_push_label: Empènyer
+    volume_push_label: Push
     all_activity_option: Tota l'activitat
     when_notified_option: Quan es notifiqui
     muted_option: Silenciat
     volume_channel_label: Com us hem d'actualitzar?
     email_channel: Correu electrònic
-    push_channel: Empènyer
+    push_channel: Push
     email_and_push_channel: Correu electrònic i push
     off_option: Desactivat
     apply_to_all_threads_in_group: Aplica aquesta configuració a tots els fils de %{group}
+    delivery_method: Mètode de lliurament
+    how_do_you_want_to_stay_updated: Com vols mantenir-te al dia?
+    catch_up_daily_hint: La teva actualització és un correu electrònic diari amb notificacions no vistes i activitat no llegida.
+    catch_up_every_second_day_hint: La teva actualització és un correu electrònic que s'envia cada dos dies amb notificacions no vistes i activitat no llegida.
+    catch_up_weekly_hint: El teu correu electrònic de posada al dia és setmanal amb notificacions no vistes i activitat no llegida.
+    catch_up_only_option: Només per posar-se al dia
+    no_email_updates_option: No hi ha actualitzacions per correu electrònic
+    no_push_updates_option: Sense actualitzacions push
+    in_app_only_option: Només a l'aplicació
+    catch_up_only_description: Inclou l'activitat de %{context} a la meva actualització
+    catch_up_only_with_notifications_description: Inclou notificacions i altra activitat de %{context} a la meva actualització
+    no_email_updates_description: No m'enviïs correus electrònics sobre l'activitat a %{context}
+    no_push_updates_description: No enviïs notificacions push sobre l'activitat a %{context}
+    email_when_notified_description: Envia'm un correu electrònic quan rebi una notificació
+    email_when_notified_with_catch_up_description: Envia'm un correu electrònic quan rebi una notificació i inclou la resta a la meva actualització.
+    push_when_notified_description: Envia una notificació push quan rebi una notificació
+    push_when_notified_with_catch_up_description: Envia una notificació push quan rebi una notificació i inclou la resta a la meva actualització
+    email_all_activity_description: Envia'm un correu electrònic sempre que hi hagi activitat a %{context}
+    push_all_activity_description: Envia una notificació push sempre que hi hagi activitat a %{context}
   inbox:
     clear: Esborra
     latest: Últim
@@ -723,7 +723,6 @@ ca:
     button_label: Menú d'usuari
     edit_profile: Edita el perfil
     email_settings: Preferències de notificacions
-    mobile_app_settings: Mobile settings
     help: Ajuda
     contact_site_name: Contacta %{site_name}
     contact_support: Contacte de suport
@@ -736,6 +735,7 @@ ca:
     light_blue: Blau clar
     dark_blue: Blau fosc
     whats_new: Què hi ha de nou?
+    mobile_app_settings: Configuració mòbil
   membership_card:
     group_members: Membres del grup
     poll_members: "%{pollType} membres"
@@ -1681,9 +1681,6 @@ ca:
     submit_delete: Elimina el meu compte ara
     submit_deactivate: Desactiva el meu compte ara
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Dilluns
     tuesday: Dimarts
     wednesday: Dimecres
@@ -1721,6 +1718,9 @@ ca:
     send_email: Enviar correu electrònic
     group_notifications: Notificacions de grup
     group_notifications_description: Canvieu el nivell d'activitat i el canal dels vostres grups
+    choose_email_and_push_updates: Trieu configuracions separades per al correu electrònic i el push
+    catch_up_email: Correu electrònic de posada al dia
+    catch_up_email_description: Tria quan vols rebre una actualització de les notificacions no vistes i l'activitat no llegida
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
@@ -3048,9 +3048,6 @@ ca:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: vots
     candidate: Candidat/da
     round_elected: Ronda elegida
@@ -3060,6 +3057,9 @@ ca:
     round_details: Detalls ronda a ronda
     view_full_results: Veure els resultats complets
     results_available_when_closed: Els resultats estaran disponibles quan es tanqui la votació
+    elected_in_round: Elegit a la ronda %{round}
+    eliminated_in_round: Eliminat a la ronda %{round}
+    tied_in_round: Empatat a la ronda %{round}
   lock_thread_modal:
     body: Bloqueja els fils per eliminar-los de la llista de fils oberts i evitar que la gent comenti.
     explanation: Bloqueja els fils de discussió per evitar que la gent comenti o faci més canvis

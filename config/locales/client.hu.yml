@@ -441,33 +441,14 @@ hu:
     title_label: Cím
     hint: 'Tipp a következő alkalomra: Próbáljon meg néhány szöveget kiemelni, mielőtt a „Rögzítés” gombra kattint.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Téma értesítési beállításai
+      group: Csoportértesítési beállítások
+      default: Alapértelmezett értesítési beállítások
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: ez a szál
+      group: ez a csoport
+      default: csoportok, amelyekhez csatlakozol
     explain_scope:
       thread: Ez akkor változik, amikor értesítést kap erről a szálról
       group: Ez akkor változik, ha értesítést kap a csoport összes száláról
@@ -550,17 +531,36 @@ hu:
     normal_option: Amikor valaki a figyelmemet akarja (Amikor értesítenek)
     quiet_option: Nincsenek e-mailek erről a témáról (Kikapcsolva)
     quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni.
-    volume_email_label: Email
-    volume_push_label: Nyomás
+    volume_push_label: Push
     all_activity_option: Minden tevékenység
     when_notified_option: Értesítéskor
     muted_option: Tompított
     volume_channel_label: Hogyan tájékoztassunk?
-    email_channel: Email
-    push_channel: Nyomás
+    push_channel: Push
     email_and_push_channel: E-mail és push
     off_option: Le
     apply_to_all_threads_in_group: Alkalmazd ezeket a beállításokat a(z) %{group} összes szálára
+    volume_email_label: Email
+    delivery_method: Szállítási mód
+    how_do_you_want_to_stay_updated: Hogyan szeretnél naprakész maradni?
+    catch_up_daily_hint: A napi bepótló e-mailed egy látatlan értesítés és olvasatlan tevékenység.
+    catch_up_every_second_day_hint: A bepótolt e-mail egy minden második nap kiküldött e-mail, amelyen nem látott értesítések és olvasatlan tevékenységek szerepelnek.
+    catch_up_weekly_hint: A bepótló egy heti e-mail, amelyen nem látott értesítések és olvasatlan tevékenységek szerepelnek.
+    catch_up_only_option: Csak felzárkózás
+    no_email_updates_option: Nincsenek e-mail értesítések
+    no_push_updates_option: Nincsenek push frissítések
+    in_app_only_option: Csak alkalmazáson belüli
+    catch_up_only_description: "%{context} tevékenységének belefoglalása a bepótlódásomba"
+    catch_up_only_with_notifications_description: Értesítések és egyéb tevékenységek hozzáadása a(z) %{context} oldalról a frissítéseimhez
+    no_email_updates_description: Ne írjanak nekem e-mailt a(z) %{context} tevékenységeiről
+    no_push_updates_description: Ne küldjön push értesítéseket a(z) %{context} aktivitásáról
+    email_when_notified_description: E-mailben értesítenek, ha értesítést kapok
+    email_when_notified_with_catch_up_description: E-mailben értesítenek, ha értesítést kapok, és a többit is mellékelem a póthírlevelembe.
+    push_when_notified_description: Push értesítés küldése, amikor értesítést kapok
+    push_when_notified_with_catch_up_description: Küldjön push értesítést, amikor értesítést kapok, és a többit is vegye fel a felzárkóztató értesítésembe
+    email_all_activity_description: E-mailt küldök, valahányszor aktivitás történik a(z) %{context}-ben
+    push_all_activity_description: Push értesítés küldése, amikor aktivitás van a(z) %{context} mappában
+    email_channel: Email
   inbox:
     clear: Töröl
     latest: Legutóbbi
@@ -723,7 +723,6 @@ hu:
     button_label: Felhasználó menü
     edit_profile: Profil szerkesztése
     email_settings: Értesítési beállítások
-    mobile_app_settings: Mobile settings
     help: Súgó
     contact_site_name: 'Kapcsolatfelvétel vele: %{site_name}'
     contact_support: Lépjen kapcsolatba az ügyfélszolgálattal
@@ -736,6 +735,7 @@ hu:
     light_blue: Világoskék
     dark_blue: Sötétkék
     whats_new: Újdonságok
+    mobile_app_settings: Mobil beállítások
   membership_card:
     group_members: Csoporttagok
     poll_members: "%{pollType} tagjai"
@@ -1671,9 +1671,6 @@ hu:
     submit_delete: Törölje a fiókomat most
     submit_deactivate: Inaktiválja a fiókomat most
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Hétfő
     tuesday: Kedd
     wednesday: Szerda
@@ -1711,6 +1708,9 @@ hu:
     send_email: E-mail küldése
     group_notifications: Csoportértesítések
     group_notifications_description: Módosítsd a csoportok aktivitási szintjét és csatornáját
+    choose_email_and_push_updates: Válasszon külön beállításokat az e-mailhez és a push üzenethez
+    catch_up_email: Felzárkóztató e-mail
+    catch_up_email_description: Válassza ki, mikor szeretne értesítést kapni a látatlan értesítésekről és az olvasatlan tevékenységekről
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
@@ -1812,7 +1812,7 @@ hu:
     title: Látta
     no_one: Még senki sem látta
     disabled_anonymous_polls: A megtekintési előzmények le vannak tiltva, mert a szál névtelen szavazásokat tartalmaz
-    thread_engagement: Thread engagement
+    thread_engagement: Részvétel a beszélgetésben
   activity_card:
     count_responses: "%{count} válasz"
     beginning: Kezdet
@@ -3028,9 +3028,6 @@ hu:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: szavazatok
     candidate: Jelölt
     round_elected: Megválasztott forduló
@@ -3040,6 +3037,9 @@ hu:
     round_details: Körről körre részletek
     view_full_results: Teljes eredmények megtekintése
     results_available_when_closed: Az eredmények a szavazás lezárultával lesznek elérhetők
+    elected_in_round: Megválasztva a(z) %{round}. fordulóban
+    eliminated_in_round: Kiesett a(z) %{round}. körben
+    tied_in_round: Döntetlen a %{round} körben
   lock_thread_modal:
     body: Zárold a témákat, hogy eltávolítsd őket a megnyitott témák listájából, és megakadályozd, hogy mások hozzászóljanak.
     explanation: Zárold a témákat, hogy megakadályozd a felhasználók hozzászólását vagy további módosításokat

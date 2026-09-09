@@ -574,21 +574,17 @@ be:
     unsubscribe: 'Адпісацца або змяніць налады электроннай пошты:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> , каб адпісацца або змяніць налады электроннай пошты."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: У вас ёсць 1 голас
+          other: Вам трэба аддаць %{count} галасоў
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 чалавек згадаў вас
+          other: Вас згадалі %{count} чалавек
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 апытанне хутка зачыніцца
+          other: "%{count} апытанняў хутка закрыюцца"
+        separator: "·"
       daily_subject: Учора на %{site_name}
       weekly_subject: На мінулым тыдні на %{site_name}
       other_subject: Нядаўна на %{site_name}
@@ -597,20 +593,22 @@ be:
       thanks_for_reading: Дзякуй за чытанне, добрага дня!
       marked_as_read_success: Усё ў электронным лісце пазначана як прачытанае
       click_here: Націсніце тут
-
+      catch_up_heading: Ваша падборка %{site_name}
+      unread_topics: Непрачытаныя тэмы
+      unread_threads: Непрачытаныя тэмы
+      mark_catch_up_as_read: Адзначыць паведамленне як прачытанае
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: У вас ёсць 1 голас
+          other: Вам трэба аддаць %{count} галасоў
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 чалавек згадаў вас
+          other: Вас згадалі %{count} чалавек
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 апытанне хутка зачыніцца
+          other: "%{count} апытанняў хутка закрыюцца"
+        separator: "·"
       daily_subject: Учора на %{site_name}
       weekly_subject: На мінулым тыдні на %{site_name}
       other_subject: Нядаўна на %{site_name}
@@ -619,6 +617,7 @@ be:
       thanks_for_reading: Дзякуй за чытанне, добрага дня!
       marked_as_read_success: Усё ў электронным лісце пазначана як прачытанае
       click_here: Націсніце тут
+      unread_topics: Непрачытаныя тэмы
     group_membership_approved:
       intro: Ваш запыт на доступ да групы %{group_name} быў ухвалены.
       intro_html: Ваш запыт на доступ да групы <strong>%{group_name}</strong> быў ухвалены.

@@ -438,33 +438,14 @@ ja:
     title_label: タイトル
     hint: '次回のヒント: [ピン留め] をクリックする前に、テキストを強調表示してみてください。'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: スレッド通知設定
+      group: グループ通知設定
+      default: デフォルトの通知設定
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: このスレッド
+      group: このグループ
+      default: 参加するグループ
     explain_scope:
       thread: このスレッドに関する通知が届くと状況が変わります
       group: グループ内のすべてのスレッドについて通知されると、この状況が変わります。
@@ -548,16 +529,35 @@ ja:
     quiet_option: このスレッドに関するメールは受信しません（オフ）
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。
     volume_email_label: メール
-    volume_push_label: 押す
+    volume_push_label: Push
     all_activity_option: すべてのアクティビティ
     when_notified_option: 通知を受けた場合
     muted_option: ミュート
     volume_channel_label: どのように最新情報をお伝えすればよろしいでしょうか？
     email_channel: メール
-    push_channel: 押す
+    push_channel: Push
     email_and_push_channel: メールとプッシュ通知
     off_option: オフ
     apply_to_all_threads_in_group: これらの設定を%{group}内のすべてのスレッドに適用します
+    delivery_method: 配送方法
+    how_do_you_want_to_stay_updated: 最新情報をどのように入手したいですか？
+    catch_up_daily_hint: あなたの最新情報は、未読の通知や未読のアクティビティをまとめた毎日のメールです。
+    catch_up_every_second_day_hint: 未読の通知や未読のアクティビティをまとめたメールが2日おきに送信されます。
+    catch_up_weekly_hint: 見逃した通知や未読のアクティビティをまとめた週刊メール「キャッチアップ」をお届けします。
+    catch_up_only_option: 見逃し配信のみ
+    no_email_updates_option: メールによる更新はありません
+    no_push_updates_option: プッシュアップデートなし
+    in_app_only_option: アプリ内限定
+    catch_up_only_description: "%{context} のアクティビティを私のキャッチアップに含める"
+    catch_up_only_with_notifications_description: "%{context}からの通知やその他のアクティビティを私のキャッチアップに含める"
+    no_email_updates_description: "%{context}での活動について私にメールしないでください"
+    no_push_updates_description: "%{context} でのアクティビティに関するプッシュ通知を送信しない"
+    email_when_notified_description: 通知があったらメールで知らせてください
+    email_when_notified_with_catch_up_description: 通知があったらメールで知らせてください。残りの情報は私の近況報告に含めてください。
+    push_when_notified_description: 通知を受け取ったらプッシュ通知を送信する
+    push_when_notified_with_catch_up_description: 通知を受け取ったらプッシュ通知を送信し、残りは私のキャッチアップに含めてください。
+    email_all_activity_description: "%{context}で活動があった場合は、私にメールを送ってください。"
+    push_all_activity_description: "%{context} でアクティビティが発生したときにプッシュ通知を送信する"
   inbox:
     clear: クリア
     latest: 最新
@@ -720,7 +720,6 @@ ja:
     button_label: ユーザーメニュー
     edit_profile: プロファイル編集
     email_settings: 通知設定
-    mobile_app_settings: Mobile settings
     help: ヘルプ
     contact_site_name: "%{site_name} に問い合わせる"
     contact_support: サポート問い合わせ先
@@ -733,6 +732,7 @@ ja:
     light_blue: 水色
     dark_blue: ダークブルー
     whats_new: 新着情報
+    mobile_app_settings: モバイル設定
   membership_card:
     group_members: グループの人（仲間）たち
     poll_members: "%{pollType} メンバー"
@@ -1666,9 +1666,6 @@ ja:
     no_emails: 通知メールは受信されなくなります。
     submit_deactivate: 今すぐアカウントを無効にする
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: 月曜日
     tuesday: 火曜日
     wednesday: 水曜日
@@ -1706,6 +1703,9 @@ ja:
     send_email: メールを送信
     group_notifications: グループ通知
     group_notifications_description: グループの活動レベルとチャンネルを変更する
+    choose_email_and_push_updates: メールとプッシュ通知で個別の設定を選択してください
+    catch_up_email: 追いつきメール
+    catch_up_email_description: 未読の通知や未読のアクティビティをまとめて通知するタイミングを選択してください。
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
@@ -1807,7 +1807,7 @@ ja:
     title: で見られる
     no_one: まだ誰もこれを見ていません
     disabled_anonymous_polls: スレッドに匿名の投票が含まれているため、閲覧履歴は無効になっています
-    thread_engagement: Thread engagement
+    thread_engagement: ディスカッションへの参加
   activity_card:
     count_responses: "%{count} 件の回答"
     beginning: 始まり
@@ -3020,9 +3020,6 @@ ja:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候補者
     round_elected: ラウンド選出
@@ -3032,6 +3029,9 @@ ja:
     round_details: ラウンドごとの詳細
     view_full_results: 全結果を表示
     results_available_when_closed: 投票締め切り後、結果が発表されます。
+    elected_in_round: "%{round}ラウンドで当選"
+    eliminated_in_round: "%{round}ラウンドで脱落"
+    tied_in_round: 同点ラウンド%{round}
   lock_thread_modal:
     body: スレッドをロックすると、未解決のスレッド一覧から削除され、他のユーザーによるコメントができなくなります。
     explanation: スレッドをロックして、コメントや変更を禁止します。

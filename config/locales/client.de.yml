@@ -447,45 +447,26 @@ de:
     title_label: Titel
     hint: 'Hinweis für nächstes Mal: Versuche etwas Text auszuwählen, bevor du auf "Anheften" klickst.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Thread-Benachrichtigungseinstellungen
+      group: Gruppenbenachrichtigungseinstellungen
+      default: Standardbenachrichtigungseinstellungen
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: dieser Thread
+      group: diese Gruppe
+      default: Gruppen, denen Sie beitreten
     explain_scope:
       thread: Dies wird sich ändern wenn du benachrichtigt wirst über diese Diskussion
       group: Dies wird sich ändern wenn du benachrichtigt wirst über alle Diskussionen in der Gruppe
     simple:
       label: Benachrichtigungen
       loud: Abonniert
-      normal: Normal
       quiet: Ignorieren
       question: Wann willst du benachrichtigt werden?
       loud_explain: wenn Aktivitäten stattfinden
       normal_explain: wenn jemand nach deiner Aufmerksamkeit fragt
       quiet_explain: 'keine Benachrichtigungen '
+      normal: Normal
     loud_label: Alle Aktivitäten
     normal_label: Ankündigungen
     quiet_label: Keine E-Mails
@@ -557,16 +538,35 @@ de:
     quiet_option: Keine E-Mails zu diesem Thread (Aus)
     quiet_explained: Du erhältst keine E-Mail, auch nicht, wenn jemand versucht, dich zu benachrichtigen.
     volume_email_label: E-Mail
-    volume_push_label: Push
     all_activity_option: Alle Aktivitäten
     when_notified_option: Bei Benachrichtigung
     muted_option: Stummgeschaltet
     volume_channel_label: Wie möchtest du informiert werden?
     email_channel: E-Mail
-    push_channel: Push
     email_and_push_channel: E-Mail und Push
     off_option: Aus
     apply_to_all_threads_in_group: Wende diese Einstellungen auf alle Threads in %{group} an
+    volume_push_label: Push
+    delivery_method: Liefermethode
+    how_do_you_want_to_stay_updated: Wie möchtest du auf dem Laufenden bleiben?
+    catch_up_daily_hint: Deine Zusammenfassung ist eine tägliche E-Mail mit ungesehenen Benachrichtigungen und ungelesenen Aktivitäten
+    catch_up_every_second_day_hint: Deine Zusammenfassung ist eine E-Mail, die jeden zweiten Tag mit ungesehenen Benachrichtigungen und ungelesenen Aktivitäten versendet wird
+    catch_up_weekly_hint: Deine Zusammenfassung ist eine wöchentliche E-Mail mit ungesehenen Benachrichtigungen und ungelesenen Aktivitäten
+    catch_up_only_option: Nur zum Aufholen
+    no_email_updates_option: Keine E-Mail-Updates
+    no_push_updates_option: Keine Push-Updates
+    in_app_only_option: Nur in der App
+    catch_up_only_description: Aktivitäten aus %{context} in meine Nachverfolgung einbeziehen
+    catch_up_only_with_notifications_description: Benachrichtigungen und andere Aktivitäten von %{context} in meine Nachschlagetabelle einbeziehen
+    no_email_updates_description: Sende mir keine E-Mails über Aktivitäten in %{context}
+    no_push_updates_description: Sende keine Push-Benachrichtigungen über Aktivitäten in %{context}
+    email_when_notified_description: Schick mir eine E-Mail, sobald ich benachrichtigt werde.
+    email_when_notified_with_catch_up_description: Schick mir eine E-Mail, sobald ich benachrichtigt werde, und füge den Rest zu meiner Zusammenfassung hinzu
+    push_when_notified_description: Sende eine Push-Benachrichtigung, wenn ich benachrichtigt werde
+    push_when_notified_with_catch_up_description: Sende mir eine Push-Benachrichtigung, wenn ich benachrichtigt werde, und füge den Rest meiner Benachrichtigung hinzu.
+    email_all_activity_description: Schick mir eine E-Mail, sobald es Aktivitäten in %{context} gibt
+    push_all_activity_description: Sende eine Push-Benachrichtigung, sobald in %{context} Aktivität stattfindet.
+    push_channel: Push
   inbox:
     clear: 'Löschen '
     latest: Letzte
@@ -729,7 +729,6 @@ de:
     button_label: Benutzermenü
     edit_profile: Profil bearbeiten
     email_settings: Benachrichtigungseinstellungen
-    mobile_app_settings: Mobile settings
     help: Hilfe
     contact_site_name: "%{site_name} kontaktieren"
     contact_support: Support kontaktieren
@@ -742,6 +741,7 @@ de:
     light_blue: Hellblau
     dark_blue: Dunkelblau
     whats_new: Was ist neu
+    mobile_app_settings: Mobile Einstellungen
   membership_card:
     group_members: Mitglieder der Gruppe
     poll_members: "%{pollType} Mitglieder"
@@ -1689,9 +1689,6 @@ de:
     submit_delete: Lösche meinen Account jetzt
     submit_deactivate: Mein Konto jetzt deaktivieren
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Montag
     tuesday: Dienstag
     wednesday: Mittwoch
@@ -1729,6 +1726,9 @@ de:
     send_email: E-Mail senden
     group_notifications: Gruppenbenachrichtigungen
     group_notifications_description: Ändere die Aktivitätsstufe und den Kanal für deine Gruppen
+    choose_email_and_push_updates: Wählen Sie separate Einstellungen für E-Mail und Push-Benachrichtigungen.
+    catch_up_email: E-Mail-Benachrichtigung
+    catch_up_email_description: Wählen Sie aus, wann Sie über ungesehene Benachrichtigungen und ungelesene Aktivitäten informiert werden möchten.
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
@@ -3056,9 +3056,6 @@ de:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: Stimmen
     candidate: Kandidat
     round_elected: Runde gewählt
@@ -3068,6 +3065,9 @@ de:
     round_details: Details zu jeder Runde
     view_full_results: Vollständige Ergebnisse anzeigen
     results_available_when_closed: Die Ergebnisse werden nach Schließung der Abstimmungsrunde verfügbar sein.
+    elected_in_round: Gewählt in Runde %{round}
+    eliminated_in_round: Ausgeschieden in Runde %{round}
+    tied_in_round: Unentschieden in Runde %{round}
   lock_thread_modal:
     body: Durch Sperren von Threads werden diese aus der Liste der offenen Threads entfernt und verhindert, dass Nutzer Kommentare abgeben.
     explanation: Threads sperren, um zu verhindern, dass Nutzer Kommentare abgeben oder weitere Änderungen vornehmen.

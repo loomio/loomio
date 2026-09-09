@@ -328,21 +328,17 @@ zh_TW:
     unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: 您有 1 票可投。
+          other: 您有 %{count} 票可以投出。
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 人提到了你
+          other: "%{count} 人們提到了你"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 投票即將結束
+          other: "%{count} 項投票即將結束"
+        separator: "·"
       daily_subject: 昨日 %{site_name}
       weekly_subject: 上週在 %{site_name}
       other_subject: 最近於 %{site_name}
@@ -351,20 +347,22 @@ zh_TW:
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
-
+      catch_up_heading: 您的 %{site_name} 追趕
+      unread_topics: 未讀主題
+      unread_threads: 未讀貼文
+      mark_catch_up_as_read: 標記為已讀
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: 您有 1 票可投。
+          other: 您有 %{count} 票可以投出。
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 人提到了你
+          other: "%{count} 人們提到了你"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 投票即將結束
+          other: "%{count} 項投票即將結束"
+        separator: "·"
       daily_subject: 昨日 %{site_name}
       weekly_subject: 上週在 %{site_name}
       other_subject: 最近於 %{site_name}
@@ -373,6 +371,7 @@ zh_TW:
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
+      unread_topics: 未讀主題
     group_membership_approved:
       intro: 您加入「%{group_name}」群組的申請已獲批准。
       intro_html: 您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。

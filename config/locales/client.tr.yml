@@ -439,45 +439,26 @@ tr:
     title_label: Başlık
     hint: 'Bir sonraki sefer için ipucu: "Sabitle"ye tıklamadan önce bir metni vurgulamayı deneyin.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Konu bildirim ayarları
+      group: Grup bildirim ayarları
+      default: Varsayılan bildirim ayarları
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: bu konu
+      group: bu grup
+      default: katıldığınız gruplar
     explain_scope:
       thread: Bu konu hakkında bilgilendirileceğiniz zaman bu durum değişir
       group: Bu durum, gruptaki tüm ileti dizileri hakkında bilgilendirildiğinizde değişir
     simple:
       label: Bildirimler
       loud: Abone olundu
-      normal: Normal
       quiet: Yok say
       question: Ne zaman bilgilendirilmek istiyorsunuz?
       loud_explain: ne zaman aktivite olsa
       normal_explain: birisi ilginizi istediğinde
       quiet_explain: bildirim yok
+      normal: Normal
     loud_label: Tüm aktiviteler
     normal_label: Duyurular
     quiet_label: E-posta yok
@@ -549,16 +530,35 @@ tr:
     quiet_option: Bu konuyla ilgili e-posta yok (Kapalı)
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir.
     volume_email_label: E-posta
-    volume_push_label: İtmek
+    volume_push_label: Push
     all_activity_option: Tüm faaliyetler
     when_notified_option: Bildirildiğinde
     muted_option: Sessiz
     volume_channel_label: Sizi nasıl bilgilendirmeliyiz?
     email_channel: E-posta
-    push_channel: İtmek
+    push_channel: Push
     email_and_push_channel: E-posta ve bildirimler
     off_option: Kapalı
     apply_to_all_threads_in_group: Bu ayarları %{group} içindeki tüm konulara uygula
+    delivery_method: Teslimat yöntemi
+    how_do_you_want_to_stay_updated: Güncel kalmak için ne yapmak istersiniz?
+    catch_up_daily_hint: Günlük özetiniz, okunmamış bildirimler ve etkinlikler hakkında bilgi içeren bir e-postadır.
+    catch_up_every_second_day_hint: Size gönderilen özet e-postada, görüntülenmemiş bildirimler ve okunmamış etkinlikler yer almaktadır.
+    catch_up_weekly_hint: Özetiniz, okunmamış bildirimler ve değerlendirilmemiş etkinlikler içeren haftalık bir e-postadır.
+    catch_up_only_option: Sadece geçmişe dönük izleme
+    no_email_updates_option: E-posta güncellemeleri yok.
+    no_push_updates_option: Bildirim yok
+    in_app_only_option: Sadece uygulama içinde
+    catch_up_only_description: "%{context}'ten gelen etkinlikleri takip listeme dahil et."
+    catch_up_only_with_notifications_description: "%{context} adresinden gelen bildirimleri ve diğer etkinlikleri özet bilgilerime dahil et."
+    no_email_updates_description: "%{context} içindeki etkinliklerle ilgili bana e-posta göndermeyin."
+    no_push_updates_description: "%{context} içindeki etkinlikler hakkında anlık bildirim göndermeyin."
+    email_when_notified_description: Bildirim aldığımda bana e-posta gönder.
+    email_when_notified_with_catch_up_description: Bildirim aldığımda bana e-posta gönderin ve geri kalanını da özetime ekleyin.
+    push_when_notified_description: Bana bildirim geldiğinde anlık bildirim gönder
+    push_when_notified_with_catch_up_description: Bildirim aldığımda anlık bildirim gönder, geri kalanını ise özet bildirimime dahil et.
+    email_all_activity_description: "%{context} içinde herhangi bir etkinlik olduğunda bana e-posta gönder."
+    push_all_activity_description: "%{context} içinde herhangi bir etkinlik olduğunda anlık bildirim gönder"
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -721,7 +721,6 @@ tr:
     button_label: Kullanıcı menüsü
     edit_profile: Profili Düzenle
     email_settings: Bildirim ayarları
-    mobile_app_settings: Mobile settings
     help: Yardım
     contact_site_name: "%{site_name} ile iletişime geçin"
     contact_support: İletişim desteği
@@ -734,6 +733,7 @@ tr:
     light_blue: Açık mavi
     dark_blue: Koyu mavi
     whats_new: Ne var ne yok
+    mobile_app_settings: Mobil ayarlar
   membership_card:
     group_members: Grup üyeleri
     poll_members: "%{pollType} üye"
@@ -1667,9 +1667,6 @@ tr:
     submit_delete: Hesabımı hemen sil
     submit_deactivate: Hesabımı şimdi devre dışı bırak
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Pazartesi
     tuesday: Salı
     wednesday: Çarşamba
@@ -1707,6 +1704,9 @@ tr:
     send_email: E-posta gönder
     group_notifications: Grup bildirimleri
     group_notifications_description: Gruplarınız için etkinlik seviyesini ve kanalı değiştirin
+    choose_email_and_push_updates: E-posta ve anlık bildirimler için ayrı ayarlar seçin.
+    catch_up_email: Güncel bilgi e-postası
+    catch_up_email_description: Görülmemiş bildirimler ve okunmamış etkinliklerle ilgili özet bilgileri ne zaman almak istediğinizi seçin.
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
@@ -1808,7 +1808,7 @@ tr:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
     disabled_anonymous_polls: Konu başlığı anonim anketler içerdiğinden görüntüleme geçmişi devre dışı bırakıldı
-    thread_engagement: Thread engagement
+    thread_engagement: Tartışmaya katılım
   activity_card:
     count_responses: "%{count} yanıt"
     beginning: Başlangıç
@@ -3021,9 +3021,6 @@ tr:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: oylar
     candidate: Aday
     round_elected: Turda seçilenler
@@ -3033,6 +3030,9 @@ tr:
     round_details: Tur tur detayları
     view_full_results: Tüm sonuçları görüntüle
     results_available_when_closed: Oy verme işlemi sona erdiğinde sonuçlar açıklanacaktır.
+    elected_in_round: "%{round} turunda seçildi"
+    eliminated_in_round: "%{round} turunda elendi."
+    tied_in_round: Beraberlik %{round} turunda
   lock_thread_modal:
     body: Konuları kilitleyerek açık konular listesinden kaldırın ve insanların yorum yapmasını engelleyin.
     explanation: Konuları kilitleyerek kişilerin yorum yapmasını veya daha fazla değişiklik yapmasını engelleyin.

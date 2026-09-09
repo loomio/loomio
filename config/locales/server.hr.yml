@@ -304,21 +304,17 @@ hr:
     unsubscribe: 'Otkažite pretplatu ili promijenite postavke e-pošte:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> da biste otkazali pretplatu ili promijenili svoje postavke e-pošte."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
       daily_subject: Jučer na %{site_name}
       weekly_subject: Prošli tjedan na %{site_name}
       other_subject: Nedavno na %{site_name}
@@ -327,20 +323,22 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
-
+      catch_up_heading: Vaše nadoknađivanje propuštenog %{site_name}
+      unread_topics: Nepročitane teme
+      unread_threads: Nepročitane teme
+      mark_catch_up_as_read: Označi nadoknađivanje kao pročitano
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: "You have %{count} votes to cast"
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
       daily_subject: Jučer na %{site_name}
       weekly_subject: Prošli tjedan na %{site_name}
       other_subject: Nedavno na %{site_name}
@@ -349,6 +347,7 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
+      unread_topics: Nepročitane teme
     group_membership_approved:
       intro: Vaš zahtjev za pristup grupi %{group_name} je odobren.
       intro_html: Vaš zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.
