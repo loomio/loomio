@@ -4,9 +4,9 @@ class NotificationService
   def self.group_unavailable?(subject)
     model = subject.is_a?(TopicItem) ? subject.itemable : subject
     group = model.is_a?(Group) ? model : (model.group if model.respond_to?(:group))
-    return false if group.nil?
+    return false if group.blank?
 
-    !group.available?
+    !Group.available.exists?(id: group.id)
   end
 
   # Commit one logical occurrence, then route its channel deliveries in the

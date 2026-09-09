@@ -87,7 +87,7 @@ class GroupSerializer < ApplicationSerializer
       allow_subgroups: sub.allow_subgroups,
       plan:            sub.plan,
       state:           sub.state,
-      active:          object.subscription_active?,
+      active:          subscription_active?,
       renews_at:       sub.renews_at,
       expires_at:      sub.expires_at,
       members_count:   sub.members_count
@@ -95,7 +95,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def available
-    object.available?
+    object.kept? && subscription_active?
   end
 
   def subscription_record
@@ -103,6 +103,10 @@ class GroupSerializer < ApplicationSerializer
     @subscription_record ||= cache_fetch(:subscriptions_by_group_id, group.id) do
       group.subscription || Subscription.new
     end
+  end
+
+  def subscription_active?
+    subscription_record.is_active?
   end
 
   def logo_url
