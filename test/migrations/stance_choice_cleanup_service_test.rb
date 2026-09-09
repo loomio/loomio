@@ -1,4 +1,5 @@
 require "test_helper"
+require Rails.root.join("db/migrate/support/stance_choice_cleanup_service")
 
 class StanceChoiceCleanupServiceTest < ActiveSupport::TestCase
   setup do

@@ -1,3 +1,5 @@
+require_relative "support/stance_choice_cleanup_service"
+
 class NormalizeStanceChoiceIntegrity < ActiveRecord::Migration[8.1]
   disable_ddl_transaction!
 
