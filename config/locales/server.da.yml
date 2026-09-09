@@ -310,21 +310,17 @@ da:
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Du har 1 stemme at afgive
+          other: Du har %{count} stemmer at afgive
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 person nævnte dig
+          other: "%{count} personer nævnte dig"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 afstemning lukker snart
+          other: "%{count} afstemninger lukker snart"
+        separator: "·"
       daily_subject: I går på %{site_name}
       weekly_subject: Sidste uge på %{site_name}
       other_subject: For nylig på %{site_name}
@@ -333,19 +329,22 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
+      catch_up_heading: Din %{site_name}-indhentning
+      unread_topics: Ulæste emner
+      unread_threads: Ulæste tråde
+      mark_catch_up_as_read: Markér indhentning som læst
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Du har 1 stemme at afgive
+          other: Du har %{count} stemmer at afgive
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 person nævnte dig
+          other: "%{count} personer nævnte dig"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 afstemning lukker snart
+          other: "%{count} afstemninger lukker snart"
+        separator: "·"
       daily_subject: I går på %{site_name}
       weekly_subject: Sidste uge på %{site_name}
       other_subject: For nylig på %{site_name}
@@ -354,6 +353,7 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
+      unread_topics: Ulæste emner
     group_membership_approved:
       intro: Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt.
       intro_html: Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt.
@@ -418,19 +418,6 @@ da:
     trial_expired:
       subject: Din Loomio-gruppe vil blive slettet på grund af inaktivitet.
       body: Din Loomio-gruppe "%{group}" har været inaktiv og vil blive slettet om 2 uger. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail.
-    destroy_warning_with_usage:
-      subject: Din Loomio-gruppe er planlagt til sletning
-      requested: Din Loomio-gruppe "%{group}" blev planlagt til sletning af %{requestor}. Den vil blive slettet permanent efter %{days} dage.
-      trial_expired: Din Loomio-gruppe "%{group}" har haft en udløbet prøveperiode i mindst 60 dage. Den vil blive slettet permanent efter %{days} dage.
-      usage_heading: 'Oversigt over gruppedata:'
-      subgroups: Undergrupper
-      members: Nuværende medlemmer
-      discussions: Diskussioner
-      polls: Afstemninger
-      comments: Kommentarer
-      export: For at beholde gruppen eller eksportere en kopi af dens data, bedes du besvare denne e-mail inden for %{days} dage. Vi kan gendanne adgangen før sletning.
-      export_link: Lær om eksport af gruppedata
-      group_key: 'Gruppenøgle: %{key}'
   poll_mailer:
     common:
       why_send_this: Du modtager denne email fordi %{reason}

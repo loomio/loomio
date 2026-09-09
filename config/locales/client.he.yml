@@ -439,33 +439,14 @@ he:
     title_label: כותרת
     hint: 'רמז לפעם הבאה: נסה להדגיש טקסט לפני שתלחץ על "הצמד".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: הגדרות התראות שרשור
+      group: הגדרות התראות קבוצתיות
+      default: הגדרות ברירת מחדל של התראות
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: השרשור הזה
+      group: הקבוצה הזו
+      default: קבוצות שאתה מצטרף אליהן
     explain_scope:
       thread: זה משתנה כאשר תקבל הודעה על השרשור הזה
       group: זה משתנה כאשר תקבל הודעה על כל השרשורים בקבוצה
@@ -549,16 +530,35 @@ he:
     quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
     quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
     volume_email_label: אֶלֶקטרוֹנִי
-    volume_push_label: לִדחוֹף
+    volume_push_label: Push
     all_activity_option: כל הפעילות
     when_notified_option: כאשר יקבלו הודעה
     muted_option: מושתק
     volume_channel_label: איך עלינו לעדכן אותך?
     email_channel: אֶלֶקטרוֹנִי
-    push_channel: לִדחוֹף
+    push_channel: Push
     email_and_push_channel: דוא"ל ודחיפה
     off_option: כבוי
     apply_to_all_threads_in_group: החל הגדרות אלו על כל השרשורים ב-%{group}
+    delivery_method: שיטת משלוח
+    how_do_you_want_to_stay_updated: איך אתם רוצים להישאר מעודכנים?
+    catch_up_daily_hint: העדכון שלך הוא אימייל יומי עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_every_second_day_hint: העדכון שלך הוא אימייל שנשלח כל יומיים עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_weekly_hint: העדכון שלך הוא אימייל שבועי עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_only_option: רק השלמה
+    no_email_updates_option: אין עדכוני דוא"ל
+    no_push_updates_option: אין עדכוני דחיפה
+    in_app_only_option: בתוך האפליקציה בלבד
+    catch_up_only_description: כלול פעילות מ-%{context} בעדכון שלי
+    catch_up_only_with_notifications_description: כלול התראות ופעילות אחרת מ-%{context} בעדכון שלי
+    no_email_updates_description: אל תשלחו לי אימייל על פעילות ב-%{context}
+    no_push_updates_description: אל תשלח התראות דחיפה על פעילות ב-%{context}
+    email_when_notified_description: שלח לי אימייל כשאני מקבל הודעה
+    email_when_notified_with_catch_up_description: שלחו לי אימייל כשאני מקבל הודעה, ואת השאר כללו בעדכון שלי
+    push_when_notified_description: שלח הודעת דחיפה כשאני מקבל הודעה
+    push_when_notified_with_catch_up_description: שלח הודעת דחיפה כשאני מקבל הודעה, וכלול את השאר בעדכון שלי
+    email_all_activity_description: שלח לי אימייל בכל פעם שיש פעילות ב-%{context}
+    push_all_activity_description: שלח הודעת דחיפה בכל פעם שיש פעילות ב-%{context}
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -721,7 +721,6 @@ he:
     button_label: תפריט משתמש
     edit_profile: עריכת פרופיל
     email_settings: הגדרות התראות
-    mobile_app_settings: Mobile settings
     help: עזרה
     contact_site_name: צור קשר עם %{site_name}
     contact_support: צור קשר עם תמיכה
@@ -734,6 +733,7 @@ he:
     light_blue: תכלת
     dark_blue: כחול כהה
     whats_new: מה חדש
+    mobile_app_settings: הגדרות ניידות
   membership_card:
     group_members: חברי הקבוצה
     poll_members: חברי %{pollType}
@@ -1680,9 +1680,6 @@ he:
     submit_delete: מחק את החשבון שלי עכשיו
     submit_deactivate: השבת את החשבון שלי עכשיו
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: יום שני
     tuesday: יום שלישי
     wednesday: יום רביעי
@@ -1720,6 +1717,9 @@ he:
     send_email: שלח אימייל
     group_notifications: התראות קבוצתיות
     group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
+    choose_email_and_push_updates: בחר הגדרות נפרדות עבור דוא"ל ודחיפה
+    catch_up_email: אימייל השלמה
+    catch_up_email_description: בחרו מתי לקבל עדכונים על התראות שלא נראו ופעילות שלא נקראה
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -1823,7 +1823,7 @@ he:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין
     disabled_anonymous_polls: היסטוריית הצופים מושבתת מכיוון שהשרשור מכיל סקרים אנונימיים
-    thread_engagement: Thread engagement
+    thread_engagement: מעורבות בדיון
   activity_card:
     count_responses: "%{count} תגובות"
     beginning: התחלה
@@ -3041,9 +3041,6 @@ he:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: קולות
     candidate: מוּעֲמָד
     round_elected: נבחר בסיבוב
@@ -3053,6 +3050,9 @@ he:
     round_details: פרטים סיבוב אחר סיבוב
     view_full_results: הצג את התוצאות המלאות
     results_available_when_closed: התוצאות יהיו זמינות עם סגירת ההצבעה
+    elected_in_round: נבחר בסיבוב %{round}
+    eliminated_in_round: הודח בסיבוב %{round}
+    tied_in_round: תיקו בסיבוב %{round}
   lock_thread_modal:
     body: נעל שרשורים כדי להסיר אותם מרשימת השרשורים הפתוחים ולמנוע מאנשים להגיב.
     explanation: נעילת שרשורים כדי למנוע מאנשים להגיב או לבצע שינויים נוספים

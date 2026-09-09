@@ -304,21 +304,17 @@ hr:
     unsubscribe: 'Otkažite pretplatu ili promijenite postavke e-pošte:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> da biste otkazali pretplatu ili promijenili svoje postavke e-pošte."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
       daily_subject: Jučer na %{site_name}
       weekly_subject: Prošli tjedan na %{site_name}
       other_subject: Nedavno na %{site_name}
@@ -327,19 +323,22 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
+      catch_up_heading: Vaše nadoknađivanje propuštenog %{site_name}
+      unread_topics: Nepročitane teme
+      unread_threads: Nepročitane teme
+      mark_catch_up_as_read: Označi nadoknađivanje kao pročitano
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
       daily_subject: Jučer na %{site_name}
       weekly_subject: Prošli tjedan na %{site_name}
       other_subject: Nedavno na %{site_name}
@@ -348,6 +347,7 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
+      unread_topics: Nepročitane teme
     group_membership_approved:
       intro: Vaš zahtjev za pristup grupi %{group_name} je odobren.
       intro_html: Vaš zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.
@@ -412,19 +412,6 @@ hr:
     trial_expired:
       subject: Vaša Loomio grupa bit će izbrisana zbog neaktivnosti.
       body: Vaša Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
-    destroy_warning_with_usage:
-      subject: Vaša Loomio grupa je planirana za brisanje
-      requested: Vaša Loomio grupa "%{group}" je zakazana za brisanje od strane %{requestor}. Bit će trajno izbrisana nakon %{days} dana.
-      trial_expired: Vaša Loomio grupa "%{group}" je na istekloj probnoj verziji najmanje 60 dana. Bit će trajno izbrisana nakon %{days} dana.
-      usage_heading: 'Sažetak podataka grupe:'
-      subgroups: Podgrupe
-      members: Trenutni članovi
-      discussions: Rasprave
-      polls: Ankete
-      comments: Komentari
-      export: Da biste zadržali grupu ili izvezli kopiju njezinih podataka, odgovorite na ovu e-poruku u roku od %{days} dana. Možemo vratiti pristup prije brisanja.
-      export_link: Saznajte više o izvozu podataka grupe
-      group_key: 'Grupni ključ: %{key}'
   poll_mailer:
     common:
       why_send_this: Primili ste ovu e-poruku jer %{reason}

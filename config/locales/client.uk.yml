@@ -442,33 +442,14 @@ uk:
     title_label: Назва
     hint: 'Підказка для наступного разу: Спробуйте виділити текст, перш ніж натиснути кнопку "Закріпити".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Налаштування сповіщень про теми
+      group: Налаштування групових сповіщень
+      default: Налаштування сповіщень за замовчуванням
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: ця тема
+      group: ця група
+      default: групи, до яких ви приєднуєтесь
     explain_scope:
       thread: Змінює налаштування щодо сповіщень з цієї теми
       group: Змінює налаштування щодо сповіщень з усіх тем в цій групі
@@ -552,16 +533,35 @@ uk:
     quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
     quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
     volume_email_label: Електронна пошта
-    volume_push_label: Натисніть
+    volume_push_label: Push
     all_activity_option: Вся активність
     when_notified_option: Коли буде повідомлено
     muted_option: Вимкнено
     volume_channel_label: Як нам слід вас оновлювати?
     email_channel: Електронна пошта
-    push_channel: Натисніть
+    push_channel: Push
     email_and_push_channel: Електронна пошта та push-повідомлення
     off_option: Вимкнено
     apply_to_all_threads_in_group: Застосувати ці налаштування до всіх тем у %{group}
+    delivery_method: Спосіб доставки
+    how_do_you_want_to_stay_updated: Як ви хочете бути в курсі подій?
+    catch_up_daily_hint: Ваш щоденний електронний лист із невидимими сповіщеннями та непрочитаною активністю
+    catch_up_every_second_day_hint: Ваш звіт про згаяне – це електронний лист, який надсилається через день, з невидимими сповіщеннями та непрочитаною активністю
+    catch_up_weekly_hint: Ваш звіт – це щотижневий електронний лист із невидимими сповіщеннями та непрочитаною активністю
+    catch_up_only_option: Тільки надолуження згаяне
+    no_email_updates_option: Немає оновлень електронною поштою
+    no_push_updates_option: Немає push-оновлень
+    in_app_only_option: Тільки в додатку
+    catch_up_only_description: Включити активність з %{context} у мій звіт
+    catch_up_only_with_notifications_description: Включати сповіщення та іншу активність з %{context} у мої зведення
+    no_email_updates_description: Не надсилати мені електронні листи про активність у %{context}
+    no_push_updates_description: Не надсилати push-сповіщення про активність у %{context}
+    email_when_notified_description: Надіслати мені електронного листа, коли я отримаю сповіщення
+    email_when_notified_with_catch_up_description: Надіслати мені електронного листа, коли я отримаю сповіщення, а решту включити до мого звіту
+    push_when_notified_description: Надсилати push-сповіщення, коли я отримую сповіщення
+    push_when_notified_with_catch_up_description: Надсилати push-сповіщення, коли я отримую сповіщення, та включати решту в мій звіт
+    email_all_activity_description: Напишіть мені електронного листа, коли буде активність у %{context}
+    push_all_activity_description: Надсилати push-сповіщення щоразу, коли відбувається активність у %{context}
   inbox:
     clear: Очистити
     latest: Останній
@@ -724,7 +724,6 @@ uk:
     button_label: Меню користувача
     edit_profile: Редагувати профіль
     email_settings: Налаштування сповіщень
-    mobile_app_settings: Mobile settings
     help: Допомога
     contact_site_name: Зв'язатись з %{site_name}
     contact_support: Зв'язатись зі службою підтримки
@@ -737,6 +736,7 @@ uk:
     light_blue: Світло-блакитний
     dark_blue: Темно-синій
     whats_new: Що нового
+    mobile_app_settings: Мобільні налаштування
   membership_card:
     group_members: Учасники групи
     poll_members: учасники %{pollType}
@@ -1685,9 +1685,6 @@ uk:
     submit_delete: Видалити мій обліковий запис
     submit_deactivate: Деактивувати мій обліковий запис зараз
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Понеділок
     tuesday: Вівторок
     wednesday: Середа
@@ -1725,6 +1722,9 @@ uk:
     send_email: Надіслати електронного листа
     group_notifications: Групові сповіщення
     group_notifications_description: Змініть рівень активності та канал для своїх груп
+    choose_email_and_push_updates: Виберіть окремі налаштування для електронної пошти та push-повідомлень
+    catch_up_email: Електронна пошта для надолуження зниклих подій
+    catch_up_email_description: Виберіть, коли отримувати сповіщення про непереглянуті сповіщення та непрочитану активність
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
@@ -1830,7 +1830,7 @@ uk:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
     disabled_anonymous_polls: Історія перегляду вимкнена, оскільки ланцюжок містить анонімні опитування
-    thread_engagement: Thread engagement
+    thread_engagement: Участь в обговоренні
   activity_card:
     count_responses: "%{count} відповідей"
     beginning: Початок
@@ -3052,9 +3052,6 @@ uk:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: голоси
     candidate: Кандидат
     round_elected: Обраний у раунді
@@ -3064,6 +3061,9 @@ uk:
     round_details: Деталі по кожному раунду
     view_full_results: Переглянути повні результати
     results_available_when_closed: Результати будуть доступні після завершення голосування
+    elected_in_round: Обраний у %{round} раунді
+    eliminated_in_round: Вибув у %{round} раунді
+    tied_in_round: Нічия в раунді %{round}
   lock_thread_modal:
     body: Блокуйте теми, щоб видалити їх зі списку відкритих тем і заборонити іншим коментувати.
     explanation: Блокуйте теми, щоб запобігти коментуванню або внесенню подальших змін

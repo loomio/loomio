@@ -439,45 +439,26 @@ ro:
     title_label: Titlu
     hint: 'Sfat pentru data viitoare: încercați să evidențiați un text înainte de a da clic pe „Fixați”.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Setări de notificare pentru firele de discuție
+      group: Setări de notificare de grup
+      default: Setări implicite de notificare
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: acest fir de discuție
+      group: acest grup
+      default: grupuri la care vă alăturați
     explain_scope:
       thread: Acest lucru se schimbă atunci când veți fi notificat despre acest fir
       group: Acest lucru se schimbă atunci când veți fi notificat despre toate firele din grup
     simple:
       label: Notificari
       loud: Abonat
-      normal: Normal
       quiet: 'Ignora '
       question: Când vrei să fii notificat?
       loud_explain: ori de câte ori există activitate
       normal_explain: când cineva îți cere atenția
       quiet_explain: nicio notificare
+      normal: Normal
     loud_label: Toate activitatile
     normal_label: Anunturi
     quiet_label: Nici un email
@@ -549,16 +530,35 @@ ro:
     quiet_option: Niciun e-mail despre acest subiect (Dezactivat)
     quiet_explained: Nu veți primi e-mailuri, chiar dacă cineva încearcă să vă anunțe.
     volume_email_label: E-mail
-    volume_push_label: Apăsaţi
+    volume_push_label: Push
     all_activity_option: Toată activitatea
     when_notified_option: Când este notificat
     muted_option: Dezactivat
     volume_channel_label: Cum ar trebui să vă ținem la curent?
     email_channel: E-mail
-    push_channel: Apăsaţi
+    push_channel: Push
     email_and_push_channel: E-mail și push
     off_option: Dezactivat
     apply_to_all_threads_in_group: Aplică aceste setări tuturor discuțiilor din %{group}
+    delivery_method: Metoda de livrare
+    how_do_you_want_to_stay_updated: Cum vrei să fii la curent?
+    catch_up_daily_hint: Notificările tale de recuperare sunt un e-mail zilnic cu notificări nevăzute și activitate necitită.
+    catch_up_every_second_day_hint: Notificările tale de recuperare sunt un e-mail trimis o dată la două zile, cu notificări nevăzute și activitate necitită.
+    catch_up_weekly_hint: Notificările tale de recuperare sunt un e-mail săptămânal cu notificări nevăzute și activitate necitită.
+    catch_up_only_option: Doar recuperare
+    no_email_updates_option: Fără actualizări prin e-mail
+    no_push_updates_option: Fără actualizări push
+    in_app_only_option: Numai în aplicație
+    catch_up_only_description: Include activitatea din %{context} în actualizarea mea
+    catch_up_only_with_notifications_description: Include notificări și alte activități de la %{context} în știrile mele de recuperare
+    no_email_updates_description: Nu-mi trimiteți e-mailuri despre activitatea din %{context}
+    no_push_updates_description: Nu trimite notificări push despre activitatea din %{context}
+    email_when_notified_description: Trimite-mi un e-mail când sunt notificat/ă
+    email_when_notified_with_catch_up_description: Trimite-mi un e-mail când primesc notificare și include restul în sesiunea mea de recuperare.
+    push_when_notified_description: Trimite o notificare push când sunt notificat/ă
+    push_when_notified_with_catch_up_description: Trimite o notificare push când primesc notificare și include restul în actualizarea mea.
+    email_all_activity_description: Trimite-mi un e-mail ori de câte ori există activitate în %{context}
+    push_all_activity_description: Trimite o notificare push ori de câte ori există activitate în %{context}
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -721,7 +721,6 @@ ro:
     button_label: Meniul utilizatorului
     edit_profile: Editare profil
     email_settings: Setări de notificare
-    mobile_app_settings: Mobile settings
     help: Ajutor
     contact_site_name: Contacteaza %{site_name}
     contact_support: Contactați asistența
@@ -734,6 +733,7 @@ ro:
     light_blue: Albastru deschis
     dark_blue: Albastru închis
     whats_new: Ce este nou
+    mobile_app_settings: Setări mobile
   membership_card:
     group_members: Membrii grupului
     poll_members: "%{pollType} membri"
@@ -1668,9 +1668,6 @@ ro:
     submit_delete: Ștergeți contul meu acum
     submit_deactivate: Dezactivează-mi contul acum
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Luni
     tuesday: Marti
     wednesday: Miercuri
@@ -1708,6 +1705,9 @@ ro:
     send_email: Trimiteți e-mail
     group_notifications: Notificări de grup
     group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
+    choose_email_and_push_updates: Alegeți setări separate pentru e-mail și push
+    catch_up_email: E-mail de recuperare
+    catch_up_email_description: Alege când vrei să primești o actualizare cu notificări nevăzute și activitate necitită
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -1809,7 +1809,7 @@ ro:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă
     disabled_anonymous_polls: Istoricul spectatorilor este dezactivat deoarece firul conține sondaje anonime
-    thread_engagement: Thread engagement
+    thread_engagement: Implicare în discuție
   activity_card:
     count_responses: "%{count} răspunsuri"
     beginning: Început
@@ -3022,9 +3022,6 @@ ro:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: voturi
     candidate: Candidat
     round_elected: Runda aleasă
@@ -3034,6 +3031,9 @@ ro:
     round_details: Detalii rundă cu rundă
     view_full_results: Vedeți rezultatele complete
     results_available_when_closed: Rezultatele vor fi disponibile la închiderea votului
+    elected_in_round: Ales în runda %{round}
+    eliminated_in_round: Eliminat în runda %{round}
+    tied_in_round: Egal în runda %{round}
   lock_thread_modal:
     body: Blochează firele de discuție pentru a le elimina din lista de fire de discuție deschise și pentru a împiedica alte persoane să comenteze.
     explanation: Blocați firele de discuție pentru a împiedica alte persoane să comenteze sau să facă modificări suplimentare

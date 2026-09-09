@@ -439,33 +439,14 @@ fi:
     title_label: Otsikko
     hint: 'Vihje seuraavaa kertaa varten: Yritä korostaa tekstiä ennen kuin napsautat "Kiinnitä".'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Keskusteluilmoitusten asetukset
+      group: Ryhmäilmoitusten asetukset
+      default: Ilmoitusten oletusasetukset
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: tämä ketju
+      group: tämä ryhmä
+      default: ryhmät, joihin liityt
     explain_scope:
       thread: Tämä muuttuu, kun saat ilmoituksen tästä viestiketjusta
       group: Tämä muuttuu, kun saat ilmoituksen kaikista ryhmän säikeistä
@@ -549,16 +530,35 @@ fi:
     quiet_option: Ei sähköposteja tästä keskusteluketjusta (Pois päältä)
     quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle.
     volume_email_label: Sähköposti
-    volume_push_label: Työnnä
+    volume_push_label: Push
     all_activity_option: Kaikki toiminta
     when_notified_option: Kun ilmoitetaan
     muted_option: Mykistetty
     volume_channel_label: Miten meidän tulisi tiedottaa teille?
     email_channel: Sähköposti
-    push_channel: Työnnä
+    push_channel: Push
     email_and_push_channel: Sähköposti ja push-viestit
     off_option: Pois
     apply_to_all_threads_in_group: Käytä näitä asetuksia kaikkiin ketjuihin ryhmässä %{group}
+    delivery_method: Toimitustapa
+    how_do_you_want_to_stay_updated: Miten haluat pysyä ajan tasalla?
+    catch_up_daily_hint: Päivittäinen sähköposti, joka sisältää lukemattomia ilmoituksia ja toimintaa, on uusintaversio.
+    catch_up_every_second_day_hint: Päivitysviestisi on joka toinen päivä lähetettävä sähköposti, joka sisältää lukemattomia ilmoituksia ja lukemattomia tapahtumia.
+    catch_up_weekly_hint: Päivitys on viikoittainen sähköposti, joka sisältää lukemattomia ilmoituksia ja lukemattomia tapahtumia.
+    catch_up_only_option: Vain kertaus
+    no_email_updates_option: Ei sähköposti-päivityksiä
+    no_push_updates_option: Ei push-päivityksiä
+    in_app_only_option: Vain sovelluksen sisäinen
+    catch_up_only_description: Sisällytä %{context} -tapahtuman aktiviteetti yhteenvetoon
+    catch_up_only_with_notifications_description: Sisällytä ilmoitukset ja muu toiminta käyttäjältä %{context} ajantasaiseen viestiin
+    no_email_updates_description: Älä lähetä minulle sähköpostia toiminnasta kohteessa %{context}
+    no_push_updates_description: Älä lähetä push-ilmoituksia toiminnasta kohteessa %{context}
+    email_when_notified_description: Lähetä minulle sähköpostia, kun saan ilmoituksen
+    email_when_notified_with_catch_up_description: Lähetä minulle sähköpostia, kun saan ilmoituksen, ja lisää loput päivitysviestiini
+    push_when_notified_description: Lähetä push-ilmoitus, kun saan ilmoituksen
+    push_when_notified_with_catch_up_description: Lähetä push-ilmoitus, kun saan ilmoituksen, ja sisällytä loput päivitysviestiini
+    email_all_activity_description: Lähetä minulle sähköpostia aina, kun %{context}-sivustolla on toimintaa
+    push_all_activity_description: Lähetä push-ilmoitus aina, kun %{context}-kohdassa on toimintaa
   inbox:
     clear: Asia selvä
     latest: Uusin
@@ -721,7 +721,6 @@ fi:
     button_label: Käyttäjävalikko
     edit_profile: Muokkaa profiilia
     email_settings: Ilmoitusasetukset
-    mobile_app_settings: Mobile settings
     help: auta
     contact_site_name: Ota yhteyttä %{site_name}
     contact_support: Ota yhteyttä tukeen
@@ -734,6 +733,7 @@ fi:
     light_blue: Vaaleansininen
     dark_blue: Tummansininen
     whats_new: Mitä uutta
+    mobile_app_settings: Mobiiliasetukset
   membership_card:
     group_members: Ryhmän jäsenet
     poll_members: "%{pollType} jäsentä"
@@ -1668,9 +1668,6 @@ fi:
     submit_delete: Poista tilini nyt
     submit_deactivate: Poista tilini käytöstä nyt
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: maanantai
     tuesday: tiistai
     wednesday: keskiviikko
@@ -1708,6 +1705,9 @@ fi:
     send_email: Lähetä sähköpostia
     group_notifications: Ryhmäilmoitukset
     group_notifications_description: Muuta ryhmiesi aktiivisuustasoa ja kanavaa
+    choose_email_and_push_updates: Valitse erilliset asetukset sähköpostille ja push-viestille
+    catch_up_email: Sähköposti ajantasaiseen yhteydenottoon
+    catch_up_email_description: Valitse, milloin haluat saada tilannekatsauksen lukemattomista ilmoituksista ja lukemattomista toiminnoista
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
@@ -1809,7 +1809,7 @@ fi:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä
     disabled_anonymous_polls: Katsojahistoria on poistettu käytöstä, koska viestiketju sisältää anonyymejä kyselyjä
-    thread_engagement: Thread engagement
+    thread_engagement: Osallistuminen keskusteluun
   activity_card:
     count_responses: "%{count} vastausta"
     beginning: Alku
@@ -3022,9 +3022,6 @@ fi:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: äänet
     candidate: Ehdokas
     round_elected: Kierros valittu
@@ -3034,6 +3031,9 @@ fi:
     round_details: Kierros kierrokselta yksityiskohdat
     view_full_results: Näytä kaikki tulokset
     results_available_when_closed: Tulokset ovat saatavilla äänestyksen päätyttyä
+    elected_in_round: Valittiin kierroksella %{round}
+    eliminated_in_round: Putosi kierroksella %{round}
+    tied_in_round: Tasapeli kierroksella %{round}
   lock_thread_modal:
     body: Lukitse ketjut poistaaksesi ne avointen ketjujen luettelosta ja estääksesi ihmisiä kommentoimasta.
     explanation: Lukitse ketjut estääksesi muita kommentoimasta tai tekemästä lisämuutoksia

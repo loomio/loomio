@@ -316,21 +316,17 @@ uk:
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Ви маєте 1 голос
+          other: Ви можете віддати %{count} голосів
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 людина згадала вас
+          other: "%{count} людей згадали вас"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 опитування скоро закриється
+          other: "%{count} опитувань скоро закриються"
+        separator: "·"
       daily_subject: Вчора на %{site_name}
       weekly_subject: Минулого тижня на %{site_name}
       other_subject: Нещодавно на %{site_name}
@@ -339,19 +335,22 @@ uk:
       thanks_for_reading: Дякуємо за читання, гарного дня!
       marked_as_read_success: Все в листі було позначено як прочитане
       click_here: Натисніть тут
+      catch_up_heading: Ваше оновлення %{site_name}
+      unread_topics: Непрочитані теми
+      unread_threads: Непрочитані теми
+      mark_catch_up_as_read: Позначити дочитане як прочитане
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Ви маєте 1 голос
+          other: Ви можете віддати %{count} голосів
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 людина згадала вас
+          other: "%{count} людей згадали вас"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 опитування скоро закриється
+          other: "%{count} опитувань скоро закриються"
+        separator: "·"
       daily_subject: Вчора на %{site_name}
       weekly_subject: Минулого тижня на %{site_name}
       other_subject: Нещодавно на %{site_name}
@@ -360,6 +359,7 @@ uk:
       thanks_for_reading: Дякуємо за читання, гарного дня!
       marked_as_read_success: Все в листі було позначено як прочитане
       click_here: Натисніть тут
+      unread_topics: Непрочитані теми
     group_membership_approved:
       intro: Ваш запит на участь у групі %{group_name} було схвалено.
       intro_html: Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено.
@@ -426,19 +426,6 @@ uk:
     trial_expired:
       subject: Вашу групу Loomio буде видалено через неактивність.
       body: Ваша група Loomio "%{group}" була неактивною та буде видалена через 2 тижні. Якщо ви не хочете, щоб вашу групу видалили, будь ласка, дайте відповідь на цей електронний лист.
-    destroy_warning_with_usage:
-      subject: Вашу групу Loomio заплановано на видалення
-      requested: Вашу групу Loomio "%{group}" було заплановано на видалення користувачем %{requestor}. Її буде остаточно видалено через %{days} днів.
-      trial_expired: Ваша група Loomio "%{group}" перебуває на пробній версії, термін дії якої закінчився, щонайменше 60 днів. Її буде остаточно видалено через %{days} днів.
-      usage_heading: 'Зведена інформація про групу:'
-      subgroups: Підгрупи
-      members: Поточні члени
-      discussions: Обговорення
-      polls: Опитування
-      comments: Коментарі
-      export: Щоб зберегти групу або експортувати копію її даних, дайте відповідь на цей електронний лист протягом %{days} днів. Ми можемо відновити доступ до видалення.
-      export_link: Дізнайтеся про експорт даних групи
-      group_key: 'Ключ групи: %{key}'
   poll_mailer:
     common:
       why_send_this: Ви отримали цей лист, тому що %{reason}

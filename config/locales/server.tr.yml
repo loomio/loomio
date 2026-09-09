@@ -304,21 +304,17 @@ tr:
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Kullanabileceğiniz 1 oy hakkınız var.
+          other: Kullanabileceğiniz %{count} oy var.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 kişi senden bahsetti
+          other: "%{count} kişi sizden bahsetti"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 anket yakında kapanıyor
+          other: "%{count} anket yakında kapanıyor"
+        separator: "·"
       daily_subject: Dün %{site_name}'de
       weekly_subject: Geçen hafta %{site_name}'de
       other_subject: Son zamanlarda %{site_name}'de
@@ -327,19 +323,22 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
+      catch_up_heading: "%{site_name} güncellemeniz"
+      unread_topics: Okunmamış konular
+      unread_threads: Okunmamış konular
+      mark_catch_up_as_read: Mark, okuduğu bilgileri güncelle
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Kullanabileceğiniz 1 oy hakkınız var.
+          other: Kullanabileceğiniz %{count} oy var.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 kişi senden bahsetti
+          other: "%{count} kişi sizden bahsetti"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 anket yakında kapanıyor
+          other: "%{count} anket yakında kapanıyor"
+        separator: "·"
       daily_subject: Dün %{site_name}'de
       weekly_subject: Geçen hafta %{site_name}'de
       other_subject: Son zamanlarda %{site_name}'de
@@ -348,6 +347,7 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
+      unread_topics: Okunmamış konular
     group_membership_approved:
       intro: "%{group_name} grubuna erişim talebiniz onaylandı."
       intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."
@@ -412,19 +412,6 @@ tr:
     trial_expired:
       subject: Loomio grubunuz, uzun süredir aktif olmamanız nedeniyle silinecektir.
       body: Loomio grubunuz "%{group}" pasif durumda ve 2 hafta içinde silinecektir. Grubunuzun silinmesini istemiyorsanız, lütfen bu e-postaya yanıt verin.
-    destroy_warning_with_usage:
-      subject: Loomio grubunuz silinmek üzere planlandı.
-      requested: Loomio grubunuz "%{group}", %{requestor} tarafından silinmek üzere planlandı. %{days} gün sonra kalıcı olarak silinecektir.
-      trial_expired: Loomio grubunuz "%{group}" en az 60 gündür deneme sürümünde bulunuyor ve bu süre dolmuştur. Grup en az %{days} gün boyunca kalıcı olarak silinmeyecektir.
-      usage_heading: 'Grup verilerinin özeti:'
-      subgroups: Alt gruplar
-      members: Mevcut üyeler
-      discussions: Tartışmalar
-      polls: Anketler
-      comments: Yorumlar
-      export: Grubu korumak veya verilerinin bir kopyasını dışa aktarmak için, bu e-postaya %{days} gün içinde yanıt verin. Silinmeden önce erişimi geri yükleyebiliriz.
-      export_link: Grup verilerini dışa aktarma hakkında bilgi edinin.
-      group_key: 'Grup anahtarı: %{key}'
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz

@@ -314,21 +314,17 @@ he:
     unsubscribe: 'בטל את המנוי או שנה את העדפות הדוא"ל שלך:'
     unsubscribe_html: <a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא"ל שלך.
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
       other_subject: לאחרונה ב-%{site_name}
@@ -337,19 +333,22 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+      catch_up_heading: השלמת הפער שלך ב-%{site_name}
+      unread_topics: נושאים שלא נקראו
+      unread_threads: שרשורים שלא נקראו
+      mark_catch_up_as_read: סמן את ההשלמה כנקרא
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
       other_subject: לאחרונה ב-%{site_name}
@@ -358,6 +357,7 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+      unread_topics: נושאים שלא נקראו
     group_membership_approved:
       intro: בקשתך להכנס לקבוצה %{group_name} אושרה.
       intro_html: בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה.
@@ -424,19 +424,6 @@ he:
     trial_expired:
       subject: קבוצת Loomio שלך תימחק עקב חוסר פעילות.
       body: קבוצת Loomio שלך "%{group}" אינה פעילה ותימחק בעוד שבועיים. אם אינך מעוניין שהקבוצה שלך תימחק, אנא השב למייל זה.
-    destroy_warning_with_usage:
-      subject: קבוצת Loomio שלך מתוכננת למחיקה
-      requested: קבוצת Loomio שלך "%{group}" תוכננה למחיקה על ידי %{requestor}. היא תימחק לצמיתות לאחר %{days} יום.
-      trial_expired: קבוצת ה-Loomio שלך "%{group}" נמצאת בתקופת ניסיון שפג תוקפה במשך 60 יום לפחות. היא תימחק לצמיתות לאחר %{days} יום.
-      usage_heading: 'סיכום נתוני הקבוצה:'
-      subgroups: תת-קבוצות
-      members: חברים נוכחיים
-      discussions: דיונים
-      polls: סקרים
-      comments: הערות
-      export: כדי לשמור את הקבוצה או לייצא עותק של הנתונים שלה, יש להשיב לאימייל זה תוך %{days} יום. נוכל לשחזר את הגישה לפני המחיקה.
-      export_link: למד על ייצוא נתוני קבוצה
-      group_key: 'מפתח קבוצה: %{key}'
   poll_mailer:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}

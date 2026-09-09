@@ -336,6 +336,16 @@ languages in the Nov 2025 pass.
 | Multiple `config/locales/client.*.yml` files | `strand_nav.device_notification_when_notified` | Genitive or malformed wording meaning a notification about or owned by a device | Wording for a notification delivered on or to the device | Device describes the delivery channel, not the subject or sender of the notification |
 | `config/locales/client.el.yml`, `client.it.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New device-notification summary labels | Passive, formal, or full-sentence wording | Concise informal notification labels | These strings are compact status labels, not instructions or prose sentences |
 
+## 2026-09-10 — Re-translated copied English strings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs for physically pushing, pressing, or shoving | `Push` | Push is the notification delivery channel name |
+| Multiple `config/locales/client.*.yml` files | `discussion_last_seen_by.thread_engagement` | Mechanical screw, fibre, or software-thread wording | Discussion-engagement wording | Thread refers to a Loomio discussion |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.nl_NL.yml`, `server.nl_NL.yml` | Notification settings and summary-email strings | Formal address or literal catch-up wording | Informal address and summary-email wording | Spanish, French, and Dutch use informal address; catch-up means a summary email |
+| `config/locales/client.pl.yml`, `client.it.yml` | `poll_stv_results.tied_in_round` | Literal physical tying wording | Equal-result wording | A tie is an equal election result |
+| `config/locales/client.nl_NL.yml`, `client.pl.yml`, `client.ru.yml`, `client.uk.yml` | Notification and STV interpolation strings | Translated interpolation variable names | Source variable names such as `%{context}` and `%{round}` | Interpolation variable names are program syntax and must not be translated |
+
 ## 2026-09-02 — Apply notification settings to group threads
 
 | File | Key | Before | After | Why it was wrong |

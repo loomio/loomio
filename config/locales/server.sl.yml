@@ -304,21 +304,17 @@ sl:
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Imate 1 glas za oddati
+          other: Imate %{count} glasov za oddati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 oseba vas je omenila
+          other: "%{count} ljudi vas je omenilo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 anketa se kmalu zapre
+          other: "%{count} anket se kmalu zapre"
+        separator: "·"
       daily_subject: Včeraj na %{site_name}
       weekly_subject: Prejšnji teden na %{site_name}
       other_subject: Pred kratkim na %{site_name}
@@ -327,19 +323,22 @@ sl:
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
+      catch_up_heading: Vaše nadoknaditev zamujenega %{site_name}
+      unread_topics: Neprebrane teme
+      unread_threads: Neprebrane niti
+      mark_catch_up_as_read: Označi nadoknaditev kot prebrano
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Imate 1 glas za oddati
+          other: Imate %{count} glasov za oddati
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 oseba vas je omenila
+          other: "%{count} ljudi vas je omenilo"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 anketa se kmalu zapre
+          other: "%{count} anket se kmalu zapre"
+        separator: "·"
       daily_subject: Včeraj na %{site_name}
       weekly_subject: Prejšnji teden na %{site_name}
       other_subject: Pred kratkim na %{site_name}
@@ -348,6 +347,7 @@ sl:
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
+      unread_topics: Neprebrane teme
     group_membership_approved:
       intro: Vaša zahteva za dostop do skupine %{group_name} je bila odobrena.
       intro_html: Vaša zahteva za dostop do skupine <strong>%{group_name}</strong> je bila odobrena.
@@ -412,19 +412,6 @@ sl:
     trial_expired:
       subject: Vaša skupina Loomio bo izbrisana zaradi neaktivnosti.
       body: Vaša skupina Loomio »%{group}« je bila neaktivna in bo izbrisana čez 2 tedna. Če ne želite, da se vaša skupina izbriše, odgovorite na to e-poštno sporočilo.
-    destroy_warning_with_usage:
-      subject: Vaša skupina Loomio je načrtovana za brisanje
-      requested: Vaša skupina Loomio »%{group}« je bila načrtovana za brisanje s strani %{requestor}. Po %{days} dneh bo trajno izbrisana.
-      trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Po %{days} dneh bo trajno izbrisana.
-      usage_heading: 'Povzetek podatkov skupine:'
-      subgroups: Podskupine
-      members: Trenutni člani
-      discussions: Razprave
-      polls: Ankete
-      comments: Komentarji
-      export: Če želite obdržati skupino ali izvoziti kopijo njenih podatkov, odgovorite na to e-poštno sporočilo v %{days} dneh. Dostop lahko obnovimo pred izbrisom.
-      export_link: Več o izvozu podatkov skupine
-      group_key: 'Ključ skupine: %{key}'
   poll_mailer:
     common:
       why_send_this: To e-pošto ste prejeli, ker %{reason}

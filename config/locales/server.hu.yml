@@ -314,21 +314,17 @@ hu:
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások módosítása:'
     unsubscribe_html: Kattints ide<a href='%{link_path}'>%{link_text}</a> leiratkozáshoz vagy az e-mail beállítások megváltoztatásához.
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: 1 szavazatod van
+          other: "%{count} szavazatod van hátra"
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 személy említett téged
+          other: "%{count} ember említett téged"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 szavazás hamarosan lezárul
+          other: "%{count} szavazás hamarosan zár"
+        separator: "·"
       daily_subject: Tegnap itt:%{site_name}
       weekly_subject: A múlt héten a(z) %{site_name}oldalon
       other_subject: 'Nemrég itt: %{site_name}'
@@ -337,19 +333,22 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
+      catch_up_heading: A(z) %{site_name} webhelyen elért legfrissebb eredményeid
+      unread_topics: Olvasatlan témák
+      unread_threads: Olvasatlan beszélgetések
+      mark_catch_up_as_read: Bepótolás megjelölése olvasottként
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: 1 szavazatod van
+          other: "%{count} szavazatod van hátra"
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 személy említett téged
+          other: "%{count} ember említett téged"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 szavazás hamarosan lezárul
+          other: "%{count} szavazás hamarosan zár"
+        separator: "·"
       daily_subject: Tegnap itt:%{site_name}
       weekly_subject: A múlt héten a(z) %{site_name}oldalon
       other_subject: 'Nemrég itt: %{site_name}'
@@ -358,6 +357,7 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
+      unread_topics: Olvasatlan témák
     group_membership_approved:
       intro: A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták.
       intro_html: Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed.
@@ -424,19 +424,6 @@ hu:
     trial_expired:
       subject: A Loomio csoportod inaktivitás miatt törlésre kerül.
       body: A(z) „%{group}” nevű Loomio csoportod inaktív volt, és 2 hét múlva törlésre kerül. Ha nem szeretnéd, hogy a csoportodat töröljék, kérlek válaszolj erre az e-mailre.
-    destroy_warning_with_usage:
-      subject: A Loomio-csoportod törlése ütemezve van.
-      requested: A(z) „%{group}” nevű Loomio csoportodat törlésre ütemezte %{requestor}. A csoport %{days} nap múlva véglegesen törlésre kerül.
-      trial_expired: A(z) „%{group}” nevű Loomio csoportod legalább 60 napja lejárt próbaidőszakban van. Legalább %{days} napig nem kerül végleges törlésre.
-      usage_heading: 'Csoportadatok összefoglalása:'
-      subgroups: Alcsoportok
-      members: Jelenlegi tagok
-      discussions: Beszélgetések
-      polls: Szavazások
-      comments: Hozzászólások
-      export: A csoport megtartásához vagy az adatainak másolatának exportálásához válaszoljon erre az e-mailre %{days} napon belül. A törlés előtt vissza tudjuk állítani a hozzáférést.
-      export_link: Tudjon meg többet a csoportadatok exportálásáról
-      group_key: 'Csoportkulcs: %{key}'
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}

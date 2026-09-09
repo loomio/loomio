@@ -439,33 +439,14 @@ ru:
     title_label: Название
     hint: 'Совет на следующий раз: попробуйте выделить текст, прежде чем нажать «Закрепить».'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Настройки уведомлений в ветке обсуждения
+      group: Настройки групповых уведомлений
+      default: Настройки уведомлений по умолчанию
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: эта ветка
+      group: эта группа
+      default: группы, к которым вы присоединяетесь
     explain_scope:
       thread: Это изменится, когда вы получите уведомление об этой теме.
       group: Это изменится, когда вы будете получать уведомления обо всех обсуждениях в группе.
@@ -549,16 +530,35 @@ ru:
     quiet_option: Электронные письма по этой теме не принимаются (выключено)
     quiet_explained: Вам не будут присылать электронные письма, даже если кто-то попытается вас уведомить.
     volume_email_label: Электронная почта
-    volume_push_label: Толкать
+    volume_push_label: Push
     all_activity_option: Вся деятельность
     when_notified_option: При получении уведомления
     muted_option: Приглушенный
     volume_channel_label: Как нам следует вас информировать?
     email_channel: Электронная почта
-    push_channel: Толкать
+    push_channel: Push
     email_and_push_channel: Электронная почта и push-уведомления
     off_option: Выключенный
     apply_to_all_threads_in_group: Применить эти настройки ко всем обсуждениям в %{group}
+    delivery_method: способ доставки
+    how_do_you_want_to_stay_updated: Как вы предпочитаете оставаться в курсе событий?
+    catch_up_daily_hint: Ваша ежедневная рассылка включает уведомления о непрочитанных сообщениях и информацию о непрочитанной информации.
+    catch_up_every_second_day_hint: В рамках программы "Наверстывание упущенного" вы получаете электронное письмо каждые два дня с непрочитанными уведомлениями и информацией о неотчитанных сообщениях.
+    catch_up_weekly_hint: Ваша еженедельная рассылка содержит уведомления о непрочитанных сообщениях и информацию о непрочитанной информации.
+    catch_up_only_option: Только для просмотра пропущенных материалов.
+    no_email_updates_option: Нет обновлений по электронной почте.
+    no_push_updates_option: Нет push-уведомлений об обновлениях
+    in_app_only_option: Только в приложении
+    catch_up_only_description: Включить активность из %{context} в мой отчет о пропущенных событиях
+    catch_up_only_with_notifications_description: Включать уведомления и другую активность из %{context} в мой список дел.
+    no_email_updates_description: Не пишите мне по электронной почте о действиях в %{context}
+    no_push_updates_description: Не отправляйте push-уведомления об активности в %{context}
+    email_when_notified_description: Сообщите мне по электронной почте, когда я получу уведомление.
+    email_when_notified_with_catch_up_description: Сообщите мне по электронной почте, когда я получу уведомление, а остальную информацию включите в мой краткий отчет.
+    push_when_notified_description: Отправить push-уведомление, когда я получу уведомление.
+    push_when_notified_with_catch_up_description: Отправьте мне push-уведомление, когда я получу сообщение, а остальное включите в мой краткий обзор.
+    email_all_activity_description: Присылайте мне электронные письма всякий раз, когда в %{context} появляется активность.
+    push_all_activity_description: Отправлять push-уведомления при каждой активности в %{context}
   inbox:
     clear: Очистить
     latest: Последний
@@ -721,7 +721,6 @@ ru:
     button_label: Меню пользователя
     edit_profile: Редактировать профиль
     email_settings: Настройки уведомлений
-    mobile_app_settings: Mobile settings
     help: Помощь
     contact_site_name: Свяжитесь с %{site_name}
     contact_support: Контактная поддержка
@@ -734,6 +733,7 @@ ru:
     light_blue: светло-голубой
     dark_blue: Темно-синий
     whats_new: Что нового
+    mobile_app_settings: Настройки мобильного устройства
   membership_card:
     group_members: Участники группы
     poll_members: "%{pollType} участников"
@@ -1668,9 +1668,6 @@ ru:
     submit_delete: Удалить мою учетную запись сейчас
     submit_deactivate: Деактивируйте мою учетную запись сейчас
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Понедельник
     tuesday: Вторник
     wednesday: Среда
@@ -1708,6 +1705,9 @@ ru:
     send_email: Отправить электронное письмо
     group_notifications: Групповые уведомления
     group_notifications_description: Измените уровень активности и канал для ваших групп
+    choose_email_and_push_updates: Выберите отдельные настройки для электронной почты и push-уведомлений.
+    catch_up_email: Электронное письмо с наверстыванием упущенного
+    catch_up_email_description: Выберите, когда получать уведомления о непрочитанных сообщениях и информацию о непрочитанной активности.
   thread_preview:
     replies_count: "%{count} ответов"
     unread_count: "%{count} непрочитано"
@@ -1809,7 +1809,7 @@ ru:
     title: Виденный
     no_one: Этого еще никто не видел
     disabled_anonymous_polls: История просмотров отключена, поскольку ветка содержит анонимные опросы.
-    thread_engagement: Thread engagement
+    thread_engagement: Участие в обсуждении
   activity_card:
     count_responses: "%{count} ответов"
     beginning: Начало
@@ -3022,9 +3022,6 @@ ru:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: голоса
     candidate: Кандидат
     round_elected: Раунд избран
@@ -3034,6 +3031,9 @@ ru:
     round_details: Подробности по каждому раунду
     view_full_results: Посмотреть полные результаты
     results_available_when_closed: Результаты будут доступны после закрытия голосования.
+    elected_in_round: Избран в раунде %{round}
+    eliminated_in_round: Устранен в раунде %{round}
+    tied_in_round: Ничья в раунде %{round}
   lock_thread_modal:
     body: Блокировка тем позволяет удалить их из списка открытых тем и предотвратить комментирование.
     explanation: Блокировка тем позволяет предотвратить комментирование и внесение дальнейших изменений.

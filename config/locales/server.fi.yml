@@ -304,21 +304,17 @@ fi:
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> peruuttaaksesi tilauksen tai muuttaaksesi sähköpostiasetuksiasi."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Sinulla on yksi ääni annettavana
+          other: Sinulla on %{count} ääntä annettavana
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 henkilö mainitsi sinut
+          other: "%{count} ihmistä mainitsi sinut"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 äänestys sulkeutuu pian
+          other: "%{count} äänestystä sulkeutuu pian"
+        separator: "·"
       daily_subject: Eilen %{site_name}
       weekly_subject: Viime viikolla %{site_name}
       other_subject: Äskettäin %{site_name}
@@ -327,19 +323,22 @@ fi:
       thanks_for_reading: Kiitos kun luit, mukavaa päivää!
       marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
       click_here: Klikkaa tästä
+      catch_up_heading: Sinun %{site_name} -päivityksesi
+      unread_topics: Lukemattomat aiheet
+      unread_threads: Lukemattomat ketjut
+      mark_catch_up_as_read: Merkitse kertaus luetuksi
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Sinulla on yksi ääni annettavana
+          other: Sinulla on %{count} ääntä annettavana
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 henkilö mainitsi sinut
+          other: "%{count} ihmistä mainitsi sinut"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 äänestys sulkeutuu pian
+          other: "%{count} äänestystä sulkeutuu pian"
+        separator: "·"
       daily_subject: Eilen %{site_name}
       weekly_subject: Viime viikolla %{site_name}
       other_subject: Äskettäin %{site_name}
@@ -348,6 +347,7 @@ fi:
       thanks_for_reading: Kiitos kun luit, mukavaa päivää!
       marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
       click_here: Klikkaa tästä
+      unread_topics: Lukemattomat aiheet
     group_membership_approved:
       intro: Pyyntösi päästä ryhmään %{group_name} on hyväksytty.
       intro_html: Pyyntösi päästä ryhmään <strong>%{group_name}</strong> on hyväksytty.
@@ -412,19 +412,6 @@ fi:
     trial_expired:
       subject: Loomio-ryhmäsi poistetaan käyttämättömyyden vuoksi.
       body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
-    destroy_warning_with_usage:
-      subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
-      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requestor} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
-      trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi %{days} päivän kuluttua.
-      usage_heading: 'Ryhmätietojen yhteenveto:'
-      subgroups: Alaryhmät
-      members: Nykyiset jäsenet
-      discussions: Keskustelut
-      polls: Kyselyt
-      comments: Kommentit
-      export: Jos haluat säilyttää ryhmän tai viedä kopion sen tiedoista, vastaa tähän sähköpostiin %{days} päivän kuluessa. Voimme palauttaa käyttöoikeudet ennen poistamista.
-      export_link: Lisätietoja ryhmätietojen viennistä
-      group_key: 'Ryhmän avain: %{key}'
   poll_mailer:
     common:
       why_send_this: Saat tämän sähköpostin, koska %{reason}

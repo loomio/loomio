@@ -306,21 +306,17 @@ ca:
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Tens 1 vot per emetre
+          other: Tens %{count} vots per emetre
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persona t'ha mencionat
+          other: "%{count} persones t'han mencionat"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: 1 enquesta es tanca aviat
+          other: "%{count} enquestes tanquen aviat"
+        separator: "·"
       daily_subject: Ahir a %{site_name}
       weekly_subject: La setmana passada a %{site_name}
       other_subject: Recentment a %{site_name}
@@ -329,19 +325,22 @@ ca:
       thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
+      catch_up_heading: El vostre punt de vista de %{site_name}
+      unread_topics: Temes no llegits
+      unread_threads: Fils no llegits
+      mark_catch_up_as_read: Marca la posada al dia com a llegida
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Tens 1 vot per emetre
+          other: Tens %{count} vots per emetre
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persona t'ha mencionat
+          other: "%{count} persones t'han mencionat"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: 1 enquesta es tanca aviat
+          other: "%{count} enquestes tanquen aviat"
+        separator: "·"
       daily_subject: Ahir a %{site_name}
       weekly_subject: La setmana passada a %{site_name}
       other_subject: Recentment a %{site_name}
@@ -350,6 +349,7 @@ ca:
       thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
+      unread_topics: Temes no llegits
     group_membership_approved:
       intro: La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat.
       intro_html: La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat.
@@ -414,19 +414,6 @@ ca:
     trial_expired:
       subject: El vostre grup de Loomio s'eliminarà per inactivitat.
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
-    destroy_warning_with_usage:
-      subject: El vostre grup de Loomio està programat per a la supressió.
-      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
-      trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
-      usage_heading: 'Resum de dades del grup:'
-      subgroups: Subgrups
-      members: Membres actuals
-      discussions: Debats
-      polls: Enquestes
-      comments: Comentaris
-      export: Per conservar el grup o exportar una còpia de les seves dades, responeu a aquest correu electrònic en un termini de %{days} dies. Podem restaurar l'accés abans de suprimir-lo.
-      export_link: Més informació sobre l'exportació de dades de grup
-      group_key: 'Clau de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}

@@ -441,33 +441,14 @@ nl_NL:
     title_label: Titel
     hint: 'Tip voor de volgende keer: Probeer wat tekst te selecteren voor je op "Pin" klikt.'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Instellingen voor threadmeldingen
+      group: Groepsmeldingsinstellingen
+      default: Standaard meldingsinstellingen
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: deze thread
+      group: deze groep
+      default: groepen waar je lid van wordt
     explain_scope:
       thread: Dit veranderd zodra je een melding krijgt over dit bord
       group: Dit veranderd zodra je een melding krijgt over alle borden in de groep
@@ -551,16 +532,35 @@ nl_NL:
     quiet_option: Geen e-mails over dit onderwerp (Uitgeschakeld)
     quiet_explained: Je ontvangt geen e-mail, zelfs niet wanneer iemand probeert je op de hoogte te stellen.
     volume_email_label: E-mail
-    volume_push_label: Push
     all_activity_option: Alle activiteiten
     when_notified_option: Wanneer je een melding krijgt
     muted_option: Gedempt
     volume_channel_label: Hoe wil je op de hoogte blijven?
     email_channel: E-mail
-    push_channel: Push
     email_and_push_channel: E-mail en push
     off_option: Uit
     apply_to_all_threads_in_group: Pas deze instellingen toe op alle threads in %{group}
+    volume_push_label: Push
+    delivery_method: Leveringsmethode
+    how_do_you_want_to_stay_updated: Hoe wil je op de hoogte blijven?
+    catch_up_daily_hint: Je 'catch-up' is een dagelijkse e-mail met ongelezen meldingen en ongelezen activiteiten.
+    catch_up_every_second_day_hint: Je 'catch-up' is een e-mail die je om de twee dagen ontvangt met ongelezen meldingen en informatie over ongelezen activiteiten.
+    catch_up_weekly_hint: Je ontvangt wekelijks een e-mail met een overzicht van ongelezen meldingen en activiteiten die je nog niet hebt gezien.
+    catch_up_only_option: Alleen inhalen
+    no_email_updates_option: Geen e-mailupdates
+    no_push_updates_option: Geen push-updates
+    in_app_only_option: Alleen beschikbaar via de app
+    catch_up_only_description: Neem de activiteit van %{context} op in mijn inhaaloverzicht.
+    catch_up_only_with_notifications_description: Neem meldingen en andere activiteiten van %{context} op in mijn overzicht.
+    no_email_updates_description: Stuur me geen e-mails over activiteiten in %{context}
+    no_push_updates_description: Verzend geen pushmeldingen over activiteit in %{context}
+    email_when_notified_description: Stuur me een e-mail zodra ik een melding heb ontvangen.
+    email_when_notified_with_catch_up_description: Stuur me een e-mail zodra ik bericht krijg, en voeg de rest toe aan mijn inhaalbericht.
+    push_when_notified_description: Stuur een pushmelding wanneer ik een melding ontvang.
+    push_when_notified_with_catch_up_description: Stuur me een pushmelding wanneer ik een bericht ontvang en voeg de rest toe aan mijn update.
+    email_all_activity_description: Stuur me een e-mail zodra er activiteit is in %{context}.
+    push_all_activity_description: Verzend een pushmelding wanneer er activiteit is in %{context}.
+    push_channel: Push
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -723,7 +723,6 @@ nl_NL:
     button_label: Gebruikersmenu
     edit_profile: Profiel bewerken
     email_settings: Melding instellingen
-    mobile_app_settings: Mobile settings
     help: Hulp
     contact_site_name: Contacteer %{site_name}
     contact_support: Contact opnemen met ondersteuning
@@ -736,6 +735,7 @@ nl_NL:
     light_blue: Lichtblauw
     dark_blue: Donkerblauw
     whats_new: Wat is er nieuw?
+    mobile_app_settings: Mobiele instellingen
   membership_card:
     group_members: Groepsleden
     poll_members: "%{pollType} gebruikers"
@@ -1682,9 +1682,6 @@ nl_NL:
     submit_delete: Verwijder mijn account nu
     submit_deactivate: Deactiveer nu mijn account
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: maandag
     tuesday: dinsdag
     wednesday: woensdag
@@ -1722,6 +1719,9 @@ nl_NL:
     send_email: E-mail verzenden
     group_notifications: Groepsmeldingen
     group_notifications_description: Wijzig het activiteitsniveau en het kanaal voor je groepen
+    choose_email_and_push_updates: Kies aparte instellingen voor e-mail en pushmeldingen.
+    catch_up_email: Samenvattingsmail
+    catch_up_email_description: Kies wanneer je een overzicht wilt ontvangen van ongelezen meldingen en activiteiten.
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
@@ -1827,7 +1827,7 @@ nl_NL:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
     disabled_anonymous_polls: Kijkgeschiedenis is uitgeschakeld omdat thread anonieme opiniepeilingen bevat
-    thread_engagement: Threadbetrokkenheid
+    thread_engagement: Betrokkenheid bij de discussie
   activity_card:
     count_responses: "%{count} reacties"
     beginning: Eerste
@@ -3049,9 +3049,6 @@ nl_NL:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: stemmen
     candidate: Kandidaat
     round_elected: Ronde gekozen
@@ -3061,6 +3058,9 @@ nl_NL:
     round_details: Details per ronde
     view_full_results: Bekijk de volledige resultaten
     results_available_when_closed: De uitslagen worden bekendgemaakt zodra de stemming is gesloten.
+    elected_in_round: Gekozen in ronde %{round}
+    eliminated_in_round: Uitgeschakeld in ronde %{round}
+    tied_in_round: Gelijkspel in ronde %{round}
   lock_thread_modal:
     body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.
     explanation: Vergrendel discussies om te voorkomen dat mensen reageren of verdere wijzigingen aanbrengen.

@@ -329,21 +329,17 @@ nl_NL:
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Je hebt 1 stem om uit te brengen
+          other: Je hebt %{count} stemmen om uit te brengen
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persoon heeft je genoemd.
+          other: "%{count} mensen hebben je genoemd"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: De poll sluit binnenkort.
+          other: "%{count} stembussen sluiten binnenkort"
+        separator: "·"
       daily_subject: Gisteren op %{site_name}
       weekly_subject: Afgelopen week op %{site_name}
       other_subject: Onlangs op %{site_name}
@@ -352,19 +348,22 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
+      catch_up_heading: Je samenvatting van %{site_name}
+      unread_topics: Ongelezen onderwerpen
+      unread_threads: Ongelezen berichten
+      mark_catch_up_as_read: Markeer de samenvatting als gelezen
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Je hebt 1 stem om uit te brengen
+          other: Je hebt %{count} stemmen om uit te brengen
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persoon heeft je genoemd.
+          other: "%{count} mensen hebben je genoemd"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: De poll sluit binnenkort.
+          other: "%{count} stembussen sluiten binnenkort"
+        separator: "·"
       daily_subject: Gisteren op %{site_name}
       weekly_subject: Afgelopen week op %{site_name}
       other_subject: Onlangs op %{site_name}
@@ -373,6 +372,7 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
+      unread_topics: Ongelezen onderwerpen
     group_membership_approved:
       intro: Je verzoek om toegang tot de groep %{group_name} is goedgekeurd.
       intro_html: Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd.
@@ -439,19 +439,6 @@ nl_NL:
     trial_expired:
       subject: Je Loomio-groep wordt verwijderd vanwege inactiviteit.
       body: Je Loomio-groep "%{group}" is inactief en wordt over 2 weken verwijderd. Als je niet wilt dat je groep wordt verwijderd, beantwoord dan deze e-mail.
-    destroy_warning_with_usage:
-      subject: Je Loomio-groep staat gepland om verwijderd te worden.
-      requested: Je Loomio-groep "%{group}" stond op de planning om verwijderd te worden door %{requestor}. Deze wordt na %{days} dagen definitief verwijderd.
-      trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt na %{days} dagen definitief verwijderd.
-      usage_heading: 'Samenvatting van de groepsgegevens:'
-      subgroups: Subgroepen
-      members: Huidige leden
-      discussions: Discussies
-      polls: Peilingen
-      comments: Opmerkingen
-      export: Om de groep te behouden of een kopie van de gegevens te exporteren, kun je binnen %{days} dagen op deze e-mail reageren. We kunnen de toegang herstellen voordat de groep wordt verwijderd.
-      export_link: Leer meer over het exporteren van groepsgegevens.
-      group_key: 'Groepssleutel: %{key}'
   poll_mailer:
     common:
       why_send_this: Je ontvangt deze e-mail omdat %{reason}

@@ -442,33 +442,14 @@ zh_TW:
     title_label: 標題
     hint: 下次的提示：試著在您點擊「釘選」前先反白某些文字。
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: 執行緒通知設定
+      group: 群組通知設定
+      default: 預設通知設定
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: 本帖
+      group: 這個群體
+      default: 你加入的群組
     explain_scope:
       thread: 這會在您收到此討論串通知時發生變化
       group: 這會在您收到關於此群組中的所有討論串的通知時發生變化
@@ -552,16 +533,35 @@ zh_TW:
     quiet_option: 關於此主題的郵件已關閉
     quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
     volume_email_label: 電子郵件
-    volume_push_label: 推
+    volume_push_label: Push
     all_activity_option: 所有活動
     when_notified_option: 收到通知時
     muted_option: 靜音
     volume_channel_label: 我們該如何向您報告最新情況？
     email_channel: 電子郵件
-    push_channel: 推
+    push_channel: Push
     email_and_push_channel: 電子郵件和推播
     off_option: 離開
     apply_to_all_threads_in_group: 將這些設定套用至 %{group} 中的所有討論串
+    delivery_method: 配送方式
+    how_do_you_want_to_stay_updated: 您希望如何取得最新資訊？
+    catch_up_daily_hint: 您的每日郵件摘要包含未讀通知和未讀活動。
+    catch_up_every_second_day_hint: 您的「未讀通知」郵件每隔一天發送一次，其中包含未讀通知和未讀活動資訊。
+    catch_up_weekly_hint: 您的進度匯總是一封每週電子郵件，其中包含未讀通知和未讀活動。
+    catch_up_only_option: 僅限補課
+    no_email_updates_option: 沒有電子郵件更新
+    no_push_updates_option: 沒有推送更新
+    in_app_only_option: 限應用程式內使用
+    catch_up_only_description: 將 %{context} 中的活動納入我的進度統計中
+    catch_up_only_with_notifications_description: 將來自 %{context} 的通知和其他活動添加到我的進度追蹤中
+    no_email_updates_description: 請勿就 %{context} 中的活動給我發郵件
+    no_push_updates_description: 不要發送關於 %{context} 中活動的推播通知
+    email_when_notified_description: 收到通知後請寄電子郵件給我。
+    email_when_notified_with_catch_up_description: 收到通知後請給我發郵件，其餘內容將在我的後續工作中跟進。
+    push_when_notified_description: 當我收到通知時，發送推播通知
+    push_when_notified_with_catch_up_description: 當我收到通知時，發送推播通知，並將其餘內容新增到我的待辦事項清單中。
+    email_all_activity_description: 當 %{context} 中有活動時，請給我發送電子郵件。
+    push_all_activity_description: 當 %{context} 中有活動時，發送推播通知
   inbox:
     clear: 清除
     latest: 最新
@@ -724,7 +724,6 @@ zh_TW:
     button_label: 使用者選單
     edit_profile: 編輯簡歷
     email_settings: 通知設定
-    mobile_app_settings: Mobile settings
     help: 教學文件
     contact_site_name: 聯絡 %{site_name}
     contact_support: 聯絡支援
@@ -737,6 +736,7 @@ zh_TW:
     light_blue: 淺藍色
     dark_blue: 深藍色
     whats_new: 什麼是新的
+    mobile_app_settings: 移動設定
   membership_card:
     group_members: 群組成員
     poll_members: "%{pollType} 成員"
@@ -1685,9 +1685,6 @@ zh_TW:
     submit_delete: 現在刪除我的帳號
     submit_deactivate: 立即停用我的帳戶
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: 星期一
     tuesday: 星期二
     wednesday: 星期三
@@ -1725,6 +1722,9 @@ zh_TW:
     send_email: 傳送電子郵件
     group_notifications: 群組通知
     group_notifications_description: 更改群組的活動等級和頻道
+    choose_email_and_push_updates: 為電子郵件和推送分別設定。
+    catch_up_email: 補發郵件
+    catch_up_email_description: 選擇何時接收未讀通知和未讀活動清單的更新訊息
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -1830,7 +1830,7 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
     disabled_anonymous_polls: 由於線程包含匿名民意調查，查看者歷史記錄被禁用
-    thread_engagement: Thread engagement
+    thread_engagement: 話題互動
   activity_card:
     count_responses: "%{count} 個回應"
     beginning: 開始
@@ -3050,9 +3050,6 @@ zh_TW:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候選人
     round_elected: 輪次選舉
@@ -3062,6 +3059,9 @@ zh_TW:
     round_details: 逐輪詳情
     view_full_results: 看完整結果
     results_available_when_closed: 投票結束後將公佈結果。
+    elected_in_round: 在第 %{round} 輪當選
+    eliminated_in_round: 在第 %{round} 輪被淘汰
+    tied_in_round: 並列回合 %{round}
   lock_thread_modal:
     body: 鎖定帖子，將其從開放帖子列表中移除，並阻止他人評論。
     explanation: 鎖定貼文以防止他人評論或進行進一步修改

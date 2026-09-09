@@ -459,33 +459,14 @@ be:
     title_label: Назва
     hint: 'Падказка на наступны раз: паспрабуйце вылучыць нейкі тэкст, перш чым націснуць кнопку «Замацаваць».'
   change_volume_form:
-    delivery_method: Delivery method
-    how_do_you_want_to_stay_updated: How do you want to stay updated?
-    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
-    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
-    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
     context_title:
-      thread: Thread notification settings
-      group: Group notification settings
-      default: Default notification settings
+      thread: Налады апавяшчэнняў аб ланцужках паведамленняў
+      group: Налады групавых апавяшчэнняў
+      default: Налады апавяшчэнняў па змаўчанні
     context:
-      thread: this thread
-      group: this group
-      default: groups you join
-    catch_up_only_option: Catch-up only
-    no_email_updates_option: No email updates
-    no_push_updates_option: No push updates
-    in_app_only_option: In-app only
-    catch_up_only_description: Include activity from %{context} in my catch-up
-    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
-    no_email_updates_description: Don't email me about activity in %{context}
-    no_push_updates_description: Don't send push notifications about activity in %{context}
-    email_when_notified_description: Email me when I'm notified
-    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
-    push_when_notified_description: Send a push notification when I'm notified
-    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
-    email_all_activity_description: Email me whenever there is activity in %{context}
-    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+      thread: гэтая тэма
+      group: гэтая група
+      default: групы, да якіх вы далучаецеся
     when_do_you_want_to_be_emailed: Калі вы хочаце атрымаць электронны ліст?
     when_do_you_want_to_be_emailed_thread: Калі вы хочаце атрымаць электронны ліст па гэтай тэме?
     change_your_email_settings: Змяніце налады электроннай пошты
@@ -566,16 +547,35 @@ be:
         normal: Вы будзеце атрымліваць электронныя лісты з аб'явамі ў новых групах.
         quiet: Вы не будзеце атрымліваць электронныя лісты пра новыя групы.
     volume_email_label: Электронная пошта
-    volume_push_label: Push
     all_activity_option: Уся актыўнасць
     when_notified_option: Калі апавяшчэнне
     muted_option: Адключана
     off_option: Выключана
     volume_channel_label: Як нам вам абнаўляць інфармацыю?
     email_channel: Электронная пошта
-    push_channel: Push
     email_and_push_channel: Электронная пошта і push-паведамленні
     apply_to_all_threads_in_group: Ужыць гэтыя налады да ўсіх ланцужкоў у %{group}
+    volume_push_label: Push
+    delivery_method: Спосаб дастаўкі
+    how_do_you_want_to_stay_updated: Як вы хочаце быць у курсе падзей?
+    catch_up_daily_hint: Ваш штодзённы ліст з нябачнымі апавяшчэннямі і непрачытанай актыўнасцю — гэта ваша паведамленне
+    catch_up_every_second_day_hint: Вашы паведамленні — гэта электронны ліст, які адпраўляецца праз дзень, з нябачнымі апавяшчэннямі і непрачытанай актыўнасцю
+    catch_up_weekly_hint: Ваша штотыднёвая электронная пошта з апавяшчэннямі, якія вы не бачылі, і непрачытанай актыўнасцю
+    catch_up_only_option: Толькі даганянне
+    no_email_updates_option: Няма абнаўленняў па электроннай пошце
+    no_push_updates_option: Няма push-абнаўленняў
+    in_app_only_option: Толькі ў дадатку
+    catch_up_only_description: Уключыць актыўнасць з %{context} у мой агляд
+    catch_up_only_with_notifications_description: Уключаць апавяшчэнні і іншую актыўнасць з %{context} у мае навіны
+    no_email_updates_description: Не пісаць мне пра актыўнасць у %{context}
+    no_push_updates_description: Не адпраўляць push-апавяшчэнні аб актыўнасці ў %{context}
+    email_when_notified_description: Даслаць мне апавяшчэнне па электроннай пошце
+    email_when_notified_with_catch_up_description: Дасылаць мне апавяшчэнне па электроннай пошце і ўключаць астатняе ў мой агляд
+    push_when_notified_description: Адпраўляць push-апавяшчэнне, калі я атрымліваю апавяшчэнне
+    push_when_notified_with_catch_up_description: Адпраўляць push-апавяшчэнне, калі я атрымліваю апавяшчэнне, і ўключаць астатняе ў мой агляд
+    email_all_activity_description: Паведамляць мне пра актыўнасць у %{context}
+    push_all_activity_description: Адпраўляць push-апавяшчэнне кожны раз, калі ёсць актыўнасць у %{context}
+    push_channel: Push
   lock_thread_modal:
     body: Блакуйце тэмы, каб выдаліць іх са спісу адкрытых тэм і забараніць іншым каментаваць.
     explanation: Блакуйце тэмы, каб забараніць карыстальнікам каментаваць або ўносіць далейшыя змены
@@ -729,7 +729,6 @@ be:
     button_label: Меню карыстальніка
     edit_profile: Рэдагаваць профіль
     email_settings: Налады апавяшчэнняў
-    mobile_app_settings: Mobile settings
     help: Даведка
     whats_new: Што новага
     contact_site_name: Звязацца з %{site_name}
@@ -737,6 +736,7 @@ be:
     sign_out: Выйсці
     beta_collab: "\U0001F9EA Бэта-функцыі ўключаны!"
     outcomes: Высновы
+    mobile_app_settings: Мабільныя налады
   strand_members_list:
     notify_members_or_invite_guests_info: Паведамляць удзельнікам групы па імені або запрашаць тых, хто не з'яўляецца ўдзельнікамі, па адрасе электроннай пошты. Запрошаныя госці могуць удзельнічаць у гэтай тэме, але не будуць мець доступу да іншых тэм групы.
     notify_members_info: Увядзіце імёны ўдзельнікаў групы, каб паведаміць ім пра гэтую тэму.
@@ -1759,9 +1759,6 @@ be:
     submit_delete: Выдаліць мой уліковы запіс зараз
     submit_deactivate: Дэактываваць мой уліковы запіс зараз
   email_settings_page:
-    choose_email_and_push_updates: Choose separate settings for email and push
-    catch_up_email: Catch-up email
-    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     monday: Панядзелак
     tuesday: Аўторак
     wednesday: Серада
@@ -1800,6 +1797,9 @@ be:
     learn_more: Даведайцеся больш пра налады электроннай пошты...
     group_notifications: Групавыя апавяшчэнні
     group_notifications_description: Змяніце ўзровень актыўнасці і канал для вашых груп
+    choose_email_and_push_updates: Выберыце асобныя налады для электроннай пошты і push-паведамленняў
+    catch_up_email: Электронная пошта для даганяння
+    catch_up_email_description: Выберыце, калі атрымліваць апавяшчэнні аб нябачных паведамленнях і непрачытанай актыўнасці
   thread_preview:
     replies_count: "%{count} адказаў"
     items_count: "%{count} элементаў"

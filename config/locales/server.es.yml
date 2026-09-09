@@ -322,21 +322,17 @@ es:
     unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     catch_up:
-      catch_up_heading: Your %{site_name} catch-up
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Tienes 1 voto para emitir.
+          other: Tienes %{count} votos para emitir.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persona te mencionó
+          other: "%{count} personas te mencionaron"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
-      unread_threads: Unread threads
-      mark_catch_up_as_read: Mark catch-up as read
+          one: Una encuesta cierra pronto
+          other: "%{count} encuestas cierran pronto"
+        separator: "·"
       daily_subject: Ayer en %{site_name}
       weekly_subject: Última semana en %{site_name}
       other_subject: Recientemente en%{site_name}
@@ -345,19 +341,22 @@ es:
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
       click_here: Haz clic aquí
+      catch_up_heading: Tu resumen en %{site_name}
+      unread_topics: Temas no leídos
+      unread_threads: Hilos no leídos
+      mark_catch_up_as_read: Marcar el resumen como leído
     digest:
       subject:
         votes_to_cast:
-          one: You have 1 vote to cast
-          other: You have %{count} votes to cast
+          one: Tienes 1 voto para emitir.
+          other: Tienes %{count} votos para emitir.
         people_mentioned:
-          one: 1 person mentioned you
-          other: "%{count} people mentioned you"
+          one: 1 persona te mencionó
+          other: "%{count} personas te mencionaron"
         polls_closing_soon:
-          one: 1 poll closes soon
-          other: "%{count} polls close soon"
-        separator: " · "
-      unread_topics: Unread topics
+          one: Una encuesta cierra pronto
+          other: "%{count} encuestas cierran pronto"
+        separator: "·"
       daily_subject: Ayer en %{site_name}
       weekly_subject: Última semana en %{site_name}
       other_subject: Recientemente en%{site_name}
@@ -366,6 +365,7 @@ es:
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
       click_here: Haz clic aquí
+      unread_topics: Temas no leídos
     group_membership_approved:
       intro: Tu solicitud para acceder al grupo %{group_name} ha sido aprobada.
       intro_html: Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada.
@@ -436,19 +436,6 @@ es:
     trial_expired:
       subject: Tu grupo de Loomio será eliminado por inactividad.
       body: Tu grupo de Loomio "%{group}" está inactivo y se eliminará en dos semanas. Si no quieres que se elimine, responde a este correo electrónico.
-    destroy_warning_with_usage:
-      subject: Tu grupo de Loomio está programado para ser eliminado.
-      requested: Tu grupo de Loomio "%{group}" fue programado para ser eliminado por %{requestor}. Se eliminará permanentemente después de %{days} días.
-      trial_expired: Tu grupo de Loomio "%{group}" ha estado en período de prueba caducado durante al menos 60 días. Se eliminará permanentemente después de %{days} días.
-      usage_heading: 'Resumen de datos del grupo:'
-      subgroups: Subgrupos
-      members: Miembros actuales
-      discussions: Discusiones
-      polls: Centro
-      comments: Comentarios
-      export: Para conservar el grupo o exportar una copia de sus datos, responde a este correo electrónico en un plazo de %{days} días. Podemos restablecer el acceso antes de su eliminación.
-      export_link: Aprenda a exportar datos de grupo
-      group_key: 'Clave de grupo: %{key}'
   poll_mailer:
     common:
       why_send_this: Recibes este correo porque %{reason}
