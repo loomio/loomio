@@ -33,6 +33,24 @@ admin:
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
+# Server administrator with no group, membership, or topic-reader relationships.
+server_admin:
+  key: serveradminky
+  name: Server Admin
+  email: server-admin@example.com
+  is_admin: true
+  legal_accepted_at: <%= 30.days.ago %>
+  password_digest: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
+  time_zone: Pacific/Tarawa
+  email_verified: true
+  username: server_admin
+  unsubscribe_token: serveradminunsubtoken12345678
+  email_api_key: serveradminemailapikey1234567
+  api_key: serveradminapikey1234567890123
+  secret_token: serveradminsecrettoken1234567
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
 subgroup_user:
   key: subusrky
   name: Subgroup User

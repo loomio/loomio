@@ -12,7 +12,7 @@ class CloseExpiredPollWorker < ApplicationJob
   # A poll can be reopened and expire again. Treat an expiry notification made
   # after the current closing_at as belonging to this closing.
   def publish_expiry(poll)
-    return if NotificationService.group_unavailable?(poll)
+    return unless NotificationService.group_enabled?(poll)
     return if Notification.where(kind: "poll_expired", subject: poll)
                           .where(created_at: poll.closing_at..)
                           .exists?

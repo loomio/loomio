@@ -2,7 +2,7 @@ class TopicQuery
   def self.start
     Topic
       .joins('LEFT JOIN groups ON topics.group_id = groups.id')
-      .where(Topic.group_available_condition)
+      .where(Topic.group_kept_condition)
       .where('topics.discarded_at': nil)
       .includes(:topicable)
   end
@@ -79,7 +79,7 @@ class TopicQuery
     arm1 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
       .joins(topic_reader_join)
-      .where(Topic.group_available_condition)
+      .where(Topic.group_kept_condition)
       .where(discarded_at: nil)
       .where(member_visibility.join(" OR "), member_params)
 
@@ -88,7 +88,7 @@ class TopicQuery
     arm2 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
       .joins(guest_topic_reader_join)
-      .where(Topic.group_available_condition)
+      .where(Topic.group_kept_condition)
       .where(discarded_at: nil)
 
     arms = [arm1, arm2].map do |arm|

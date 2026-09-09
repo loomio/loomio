@@ -164,7 +164,7 @@ module Null::Group
     self
   end
 
-  def available?
+  def enabled?
     true
   end
 

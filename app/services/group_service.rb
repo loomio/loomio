@@ -70,7 +70,7 @@ module GroupService
         Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
         # mark as accepted all invitiations to people who are already part of the org.
-        other_group_ids = Group.available.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+        other_group_ids = Group.enabled.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
         existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
         Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 

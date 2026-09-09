@@ -1,12 +1,12 @@
 class NotificationService
   # Read current group and subscription state so queued work also stops after
   # discard, expiry, cancellation, or hold.
-  def self.group_unavailable?(subject)
+  def self.group_enabled?(subject)
     model = subject.is_a?(TopicItem) ? subject.itemable : subject
     group = model.is_a?(Group) ? model : (model.group if model.respond_to?(:group))
-    return false if group.blank?
+    return true if group.blank?
 
-    !Group.available.exists?(id: group.id)
+    Group.enabled.exists?(id: group.id)
   end
 
   # Commit one logical occurrence, then route its channel deliveries in the

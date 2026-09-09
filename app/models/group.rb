@@ -68,7 +68,7 @@ class Group < ApplicationRecord
   belongs_to :subscription
 
   has_many :subgroups,
-           -> { merge(Group.available) },
+           -> { merge(Group.kept) },
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
@@ -76,9 +76,9 @@ class Group < ApplicationRecord
 
   scope :with_serializer_includes, -> { includes(:subscription) }
   scope :parents_only, -> { where(parent_id: nil) }
-  scope :available, -> { kept.where(subscription_active_sql) }
-  scope :visible_to_public, -> { available.where(is_visible_to_public: true) }
-  scope :hidden_from_public, -> { available.where(is_visible_to_public: false) }
+  scope :enabled, -> { kept.where(subscription_active_sql) }
+  scope :visible_to_public, -> { kept.where(is_visible_to_public: true) }
+  scope :hidden_from_public, -> { kept.where(is_visible_to_public: false) }
   scope :mention_search, lambda { |q|
     where("groups.name ilike :first OR groups.name ilike :other OR groups.handle ilike :first",
           first: "#{q}%", other: "% #{q}%")
@@ -268,10 +268,10 @@ class Group < ApplicationRecord
     subscription_record.nil? || subscription_record.is_active?
   end
 
-  def available?
+  def enabled?
     return kept? && subscription_active? unless persisted?
 
-    Group.available.exists?(id: id)
+    Group.enabled.exists?(id: id)
   end
 
   def self_and_subgroups
@@ -339,17 +339,17 @@ class Group < ApplicationRecord
     reload
   end
 
-  # Shared SQL form of subscription_active? for visibility and access scopes.
+  # Shared SQL form of subscription_active? for scopes that require an enabled group.
   # Loomio subscriptions live on root groups; a subgroup inherits its parent.
   def self.subscription_active_sql
     subscription_id = "COALESCE(groups.subscription_id, " \
                       "(SELECT parent.subscription_id FROM groups parent WHERE parent.id = groups.parent_id))"
     sanitize_sql_array([ <<~SQL.squish, { states: Subscription::ACTIVE_STATES, now: Time.current } ])
       (#{subscription_id} IS NULL OR EXISTS (
-        SELECT 1 FROM subscriptions availability_subscriptions
-        WHERE availability_subscriptions.id = #{subscription_id}
-          AND availability_subscriptions.state IN (:states)
-          AND (availability_subscriptions.expires_at IS NULL OR availability_subscriptions.expires_at > :now)
+        SELECT 1 FROM subscriptions enabled_subscriptions
+        WHERE enabled_subscriptions.id = #{subscription_id}
+          AND enabled_subscriptions.state IN (:states)
+          AND (enabled_subscriptions.expires_at IS NULL OR enabled_subscriptions.expires_at > :now)
       ))
     SQL
   end

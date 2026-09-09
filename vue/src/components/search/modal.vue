@@ -120,7 +120,7 @@ export default {
           {title: I18n.global.t('search_modal.parent_only'), value: this.orgId},
         ];
         this.updateTagItems(this.group);
-        this.groupItems = base.concat(this.group.subgroups().filter(g => g.isAvailable() && g.membershipFor(Session.user())).map(g => ({
+        this.groupItems = base.concat(this.group.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user())).map(g => ({
           title: g.name,
           value: g.id
         })));

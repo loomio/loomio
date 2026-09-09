@@ -20,7 +20,7 @@ export default
     isMember() { return this.group.membersInclude(Session.user()) },
     isFree() {return this.group.subscription.plan === 'free' },
     isTrial() { return this.group.subscription.plan === 'trial' },
-    isExpired() { return !this.group.subscription.active },
+    isDisabled() { return !this.group.isEnabled() },
     daysRemaining() {
       return differenceInDays(parseISO(this.group.subscription.expires_at), new Date) + 1;
     },
@@ -34,21 +34,21 @@ export default
 <template lang="pug">
 v-alert.my-4(
   variant="tonal"
-  color="info"
+  :color="isDisabled ? 'warning' : 'info'"
   density="compact"
-  v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)"
+  v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isDisabled)"
 )
   .d-flex.align-center
     div.pr-1(v-if="isTrial")
-      span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
-      span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
+      span(v-if="!isDisabled" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
+      span(v-if="isDisabled" v-t="'current_plan_button.trial_expired'")
     div.pr-1(v-if="isFree")
       span(v-html="$t('current_plan_button.was_gift_expired_or_mistake')")
     div.pr-1(v-if="!isFree && !isTrial")
       span(v-html="$t('current_plan_button.subscription_ended')")
     v-spacer
     v-btn(
-      color="info"
+      :color="isDisabled ? 'warning' : 'info'"
       variant="elevated"
       :href="upgradeUrl"
       target="_blank"

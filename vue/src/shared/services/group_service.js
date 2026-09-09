@@ -124,7 +124,7 @@ export default new class GroupService {
         icon: 'mdi-shield-star',
         menu: true,
         canPerform() {
-          return membership && (membership.admin === false) &&
+          return group.isEnabled() && membership && (membership.admin === false) &&
             ((group.adminMembershipsCount === 0) || group.parentOrSelf().adminsInclude(Session.user()));
         },
         perform() {
@@ -137,7 +137,7 @@ export default new class GroupService {
         icon: 'mdi-connection',
         menu: true,
         canPerform() {
-          return group.adminsInclude(Session.user());
+          return group.isEnabled() && group.adminsInclude(Session.user());
         },
         perform() {
           return openModal({

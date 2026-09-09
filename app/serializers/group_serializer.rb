@@ -38,7 +38,7 @@ class GroupSerializer < ApplicationSerializer
              :admin_memberships_count,
              :discarded_at,
              :discarded_by,
-             :available,
+             :enabled,
              :attachments,
              :link_previews,
              :has_custom_cover_photo,
@@ -94,7 +94,7 @@ class GroupSerializer < ApplicationSerializer
     }
   end
 
-  def available
+  def enabled
     object.kept? && subscription_active?
   end
 

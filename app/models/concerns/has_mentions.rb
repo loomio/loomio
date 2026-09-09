@@ -37,7 +37,7 @@ module HasMentions
 
   def mentioned_groups
     # for now, we only allow mentioning the current group, if the actor is permitted
-    group_ids = Group.available.where(id: topic.group_id).where(handle: mentioned_usernames).filter { |group| author.can? :notify, group }.map(&:id)
+    group_ids = Group.enabled.where(id: topic.group_id).where(handle: mentioned_usernames).filter { |group| author.can? :notify, group }.map(&:id)
     Group.where(id: group_ids)
   end
 

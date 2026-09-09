@@ -26,16 +26,17 @@ export default new class AbilityService {
   }
 
   canAddComment(topic) {
-    return !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
+    return topic.group().isEnabled() && !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
   }
 
   canAddReaction(topic) {
-    return !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
+    return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 
   canRespondToComment(comment) {
     const topic = comment.topic();
     return topic &&
+    topic.group().isEnabled() &&
     !topic.lockedAt &&
     !comment.discardedAt &&
     topic.membersInclude(Session.user());
@@ -51,13 +52,14 @@ export default new class AbilityService {
   }
 
   canEditStance(stance) {
-    return Session.user() === stance.author();
+    return stance.poll().group().isEnabled() && Session.user() === stance.author();
   }
 
   canRedactStance(stance) {
     const poll = stance.poll();
     const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
     return poll &&
+    poll.group().isEnabled() &&
     hasContent &&
     !stance.redactedAt &&
     !stance.revokedAt &&
@@ -67,28 +69,30 @@ export default new class AbilityService {
   canUnredactStance(stance) {
     const poll = stance.poll();
     return poll &&
+    poll.group().isEnabled() &&
     !!stance.redactedAt &&
     poll.adminsInclude(Session.user());
   }
 
   canEditDiscussion(discussion) {
     const topic = discussion.topic();
-    return topic.adminsInclude(Session.user()) ||
-    (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
+    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
+    (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user())));
   }
 
   canEditTags(topic) {
-    return this.canEdit(topic.topicable());
+    return topic.group().isEnabled() && this.canEdit(topic.topicable());
   }
 
   canAdminTags(topic) {
     const group = topic.group();
-    return group && group.parentOrSelf().adminsInclude(Session.user());
+    return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
   }
 
   canPinEvent(topic_item) {
     const topic = topic_item.topic();
     return (topic_item.depth === 1) &&
+    topic.group().isEnabled() &&
     !topic_item.model().discardedAt &&
     !topic_item.pinned &&
     topic && !topic.lockedAt &&
@@ -97,15 +101,15 @@ export default new class AbilityService {
 
   canUnpinEvent(topic_item) {
     const topic = topic_item.topic();
-    return topic && !topic.lockedAt &&
+    return topic && topic.group().isEnabled() && !topic.lockedAt &&
     topic_item.pinned && topic.adminsInclude(Session.user());
   }
 
   canMoveTopic(topic) {
-    return topic.adminsInclude(Session.user()) || (
+    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) || (
       topic.membersInclude(Session.user()) &&
       topic.group().membersCanEditDiscussions
-    )
+    ))
   }
 
   canChangeGroupVolume(group) {
@@ -114,30 +118,30 @@ export default new class AbilityService {
 
   canAdminister(model) {
     if (model.constructor.singular == 'group') {
-      return model.adminsInclude(Session.user());
+      return model.isEnabled() && model.adminsInclude(Session.user());
     } else {
-      return model.topic().adminsInclude(Session.user());
+      return model.topic().group().isEnabled() && model.topic().adminsInclude(Session.user());
     }
   }
 
   canStartThread(group) {
-    return group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions);
+    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
+    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions));
   }
 
   canAnnounceDiscussion(discussion) {
     if (discussion.discardedAt || discussion.closedAt) { return false; }
     if (discussion.groupId) {
-      return discussion.group().adminsInclude(Session.user()) ||
-      (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user()));
+      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
+      (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user())));
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
   }
 
   canNotifyGroup(model) {
-    return model.adminsInclude(Session.user()) ||
-    (model.membersCanAnnounce && model.membersInclude(Session.user()));
+    return model.isEnabled() && (model.adminsInclude(Session.user()) ||
+    (model.membersCanAnnounce && model.membersInclude(Session.user())));
   }
 
   canAnnounce(model) {
@@ -156,8 +160,8 @@ export default new class AbilityService {
 
   canAddGuestsDiscussion(discussion) {
     if (discussion.groupId) {
-      return discussion.group().adminsInclude(Session.user()) ||
-      (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user()));
+      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
+      (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user())));
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
@@ -167,8 +171,8 @@ export default new class AbilityService {
     user = Session.user();
     if (poll.discardedAt) { return false; }
     if (poll.groupId) {
-      return poll.group().adminsInclude(user) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user))
+      return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user)))
     } else {
       return poll.adminsInclude(user) ||
       (!poll.specifiedVotersOnly && poll.membersInclude(user));
@@ -176,13 +180,13 @@ export default new class AbilityService {
   }
 
   canAddMembersPoll(poll) {
-    return poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && poll.adminsInclude(Session.user());
   }
 
   canAddGuestsPoll(poll) {
     if (poll.groupId) {
-      return poll.group().adminsInclude(Session.user()) ||
-      (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user()));
+      return poll.group().isEnabled() && (poll.group().adminsInclude(Session.user()) ||
+      (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user())));
     } else {
       return poll.adminsInclude(Session.user());
     }
@@ -191,8 +195,8 @@ export default new class AbilityService {
   canAnnounceTopic(topic) {
     if (topic.lockedAt) { return false; }
     if (topic.groupId) {
-      return topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAnnounce && topic.membersInclude(Session.user()));
+      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAnnounce && topic.membersInclude(Session.user())));
     } else {
       return topic.adminsInclude(Session.user());
     }
@@ -200,26 +204,26 @@ export default new class AbilityService {
 
   canAddGuestsTopic(topic) {
     if (topic.groupId) {
-      return topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAddGuests && topic.membersInclude(Session.user()));
+      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAddGuests && topic.membersInclude(Session.user())));
     } else {
       return topic.adminsInclude(Session.user());
     }
   }
 
   canAddMembersToGroup(group) {
-    return group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanAddMembers);
+    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
+    (group.membersInclude(Session.user()) && group.membersCanAddMembers));
   }
 
   canCreateSubgroups(group) {
-    return group.isParent() &&
+    return group.isEnabled() && group.isParent() &&
     (group.adminsInclude(Session.user()) ||
     (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
   }
 
   canEditGroup(group) {
-    return group.adminsInclude(Session.user());
+    return group.isEnabled() && group.adminsInclude(Session.user());
   }
 
   canLeaveGroup(group) {
@@ -236,7 +240,7 @@ export default new class AbilityService {
 
   canEditComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.lockedAt && !comment.discardedAt && (
+    return topic && topic.group().isEnabled() && !topic.lockedAt && !comment.discardedAt && (
       (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
       (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
     );
@@ -246,7 +250,7 @@ export default new class AbilityService {
     const topic = comment.topic();
     return (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) &&
     comment.discardedAt &&
-    topic &&
+    topic && topic.group().isEnabled() &&
     (
       topic.adminsInclude(Session.user()) ||
       (comment.group() && comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
@@ -255,7 +259,7 @@ export default new class AbilityService {
 
   canDiscardComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.lockedAt &&
+    return topic && topic.group().isEnabled() && !topic.lockedAt &&
     !comment.discardedAt &&
     (
       comment.authorIs(Session.user()) ||
@@ -265,7 +269,7 @@ export default new class AbilityService {
 
   canUndiscardComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.lockedAt &&
+    return topic && topic.group().isEnabled() && !topic.lockedAt &&
     comment.discardedAt && (
       (comment.authorIs(Session.user()) && comment.discardedBy === Session.user().id) ||
       topic.adminsInclude(Session.user())
@@ -274,19 +278,19 @@ export default new class AbilityService {
 
   canRemoveMembership(membership) {
     return membership &&
-    ((membership.user() === Session.user()) || this.canAdminister(membership.group()));
+    ((membership.user() === Session.user()) || membership.group().adminsInclude(Session.user()));
   }
 
   canSetMembershipTitle(membership) {
-    return (Session.user() === membership.user()) || this.canAdminister(membership.group());
+    return membership.group().isEnabled() && ((Session.user() === membership.user()) || this.canAdminister(membership.group()));
   }
 
   canResendMembership(membership) {
-    return membership && !membership.acceptedAt && this.canAdminister(membership.group());
+    return membership && membership.group().isEnabled() && !membership.acceptedAt && this.canAdminister(membership.group());
   }
 
   canManageMembershipRequests(group) {
-    return (group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user());
+    return group.isEnabled() && ((group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user()));
   }
 
   canStartGroups() {
@@ -294,7 +298,7 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return group.isAvailable() && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
+    return !group.isDiscarded() && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
   }
 
   canViewPrivateContent(group) {
@@ -302,12 +306,13 @@ export default new class AbilityService {
   }
 
   canJoinGroup(group) {
-    if (!this.canViewGroup(group) || group.membersInclude(Session.user())) { return false; }
+    if (!group.isEnabled() || !this.canViewGroup(group) || group.membersInclude(Session.user())) { return false; }
     return (group.membershipGrantedUpon === 'request') || group.parentOrSelf().adminsInclude(Session.user());
   }
 
   canRequestMembership(group) {
-    return (group.membershipGrantedUpon === 'approval') &&
+    return group.isEnabled() &&
+    (group.membershipGrantedUpon === 'approval') &&
     this.canViewGroup(group) &&
     !group.membersInclude(Session.user()) &&
     !this.canJoinGroup(group);
@@ -330,23 +335,24 @@ export default new class AbilityService {
   canStartPoll(topic) {
     if (topic.topicableType === 'Poll') { return false; }
     if (topic.activePollsCount > 0 && !topic.allowConcurrentPolls) { return false; }
-    return topic.adminsInclude(Session.user()) ||
+    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
            (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
+    )
   }
 
   canParticipateInPoll(poll) {
     if (!poll) { return false; }
     if (poll.closedAt) { return false; }
-    return poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user()));
+    return poll.group().isEnabled() && (poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user())));
   }
 
   canEditPoll(poll) {
-    return !poll.topic().closedAt &&
+    return poll.group().isEnabled() && !poll.topic().closedAt &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;
   }
 
   canDeletePoll(poll) {
-    return !poll.topic().closedAt &&
+    return poll.group().isEnabled() && !poll.topic().closedAt &&
     !poll.discardedAt && poll.adminsInclude(Session.user());
   }
 
@@ -355,7 +361,7 @@ export default new class AbilityService {
   }
 
   canSetPollOutcome(poll) {
-    return !poll.topic().closedAt &&
+    return poll.group().isEnabled() && !poll.topic().closedAt &&
     !poll.discardedAt &&
     poll.closedAt &&
     poll.adminsInclude(Session.user());
@@ -366,6 +372,6 @@ export default new class AbilityService {
   }
 
   canReopenPoll(poll) {
-    return !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

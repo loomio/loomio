@@ -318,6 +318,7 @@ function shouldSettleAnchorScroll() {
 .topic-page
   v-main
     v-container.max-width-800.px-0.px-sm-3#topic-page(v-if="topic")
+      plan-banner(v-if="topic.groupId" :group="topic.group()")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.topic-card.mb-8.pb-4.rounded-lg
         topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")

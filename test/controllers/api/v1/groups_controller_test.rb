@@ -103,6 +103,19 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert group_data['subscription'].present?
   end
 
+  test "show returns a disabled group and its subscription warning state to a member" do
+    @public_group.add_member!(@user)
+    @public_group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+    sign_in @user
+
+    get :show, params: { id: @public_group.id }, format: :json
+
+    assert_response :success
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
+    assert_equal false, group_data['enabled']
+    assert_equal false, group_data.dig('subscription', 'active')
+  end
+
   test "show returns parent subscription details to a subgroup member" do
     subscription = Subscription.create!(owner: @user, plan: 'trial', max_members: 321)
     @group.update!(subscription: subscription)

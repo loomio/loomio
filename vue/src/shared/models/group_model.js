@@ -43,7 +43,7 @@ export default class GroupModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       subscription: {},
-      available: false,
+      enabled: false,
       specifiedVotersOnly: false,
       recipientMessage: null,
       recipientAudience: null,
@@ -227,8 +227,8 @@ export default class GroupModel extends BaseModel {
     return (this.discardedAt != null);
   }
 
-  isAvailable() {
-    return this.available;
+  isEnabled() {
+    return this.enabled;
   }
 
   isParent() {

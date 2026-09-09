@@ -15,7 +15,7 @@ class Admin::DashboardController < Admin::BaseController
       ["Deactivated users", User.deactivated.count],
       ["Users joined in 30 days", User.where(created_at: since..).count],
       ["Total groups", Group.count],
-      ["Available groups", Group.available.count],
+      ["Enabled groups", Group.enabled.count],
       ["Discarded groups", Group.discarded.count],
       ["Groups created in 30 days", Group.where(created_at: since..).count],
       ["Active memberships", Membership.active.accepted.count],

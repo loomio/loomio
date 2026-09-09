@@ -7,7 +7,7 @@ class ApiAccessController < ApplicationController
 
     groups = current_user.memberships.accepted.includes(:group).filter_map do |membership|
       group = membership.group
-      group if group&.available?
+      group if group&.enabled?
     end.sort_by { |group| [group.name.downcase, group.id] }
 
     render Views::Profile::ApiAccess.new(

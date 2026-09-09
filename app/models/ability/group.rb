@@ -3,7 +3,7 @@ module Ability::Group
     super(user)
 
     can [:show], ::Group do |group|
-      group.available? &&
+      group.kept? &&
       (
         group.is_visible_to_public? or
         group.members.exists?(user.id) or
@@ -14,7 +14,7 @@ module Ability::Group
     end
 
     can [:see_private_content, :subscribe_to], ::Group do |group|
-      group.available? && (
+      group.kept? && (
         group.group_privacy == 'open' or
         group.members.exists?(user.id) or
         (group.is_visible_to_parent_members? and group.parent_or_self.members.exists?(user.id)))

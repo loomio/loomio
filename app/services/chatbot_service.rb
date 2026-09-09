@@ -96,7 +96,7 @@ class ChatbotService
   end
 
   def self.publish_to_chatbot!(topic_item:, chatbot:)
-    return if NotificationService.group_unavailable?(chatbot)
+    return unless NotificationService.group_enabled?(chatbot)
 
     template_name = topic_item.itemable_type.tableize.singularize
     template_name = 'poll' if topic_item.itemable_type == 'Outcome'

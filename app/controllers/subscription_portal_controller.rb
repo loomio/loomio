@@ -2,7 +2,7 @@ class SubscriptionPortalController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    groups = current_user.adminable_groups.available.parents_only.order(:full_name)
+    groups = current_user.adminable_groups.enabled.parents_only.order(:full_name)
     return redirect_to subscription_portal_group_path(groups.first.id) if groups.one?
 
     render Views::Subscriptions::ChooseGroup.new(groups: groups)
@@ -26,7 +26,7 @@ class SubscriptionPortalController < ApplicationController
   private
 
   def adminable_group
-    current_user.adminable_groups.available.parents_only.find(params[:group_id])
+    current_user.adminable_groups.enabled.parents_only.find(params[:group_id])
   end
 
   def redirect_to_service(group)
