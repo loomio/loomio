@@ -229,7 +229,7 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
 
     assert server_admin.can?(:move, group)
     assert server_admin.can?(:merge, group)
-    assert_not server_admin.can?(:add_members, group)
+    assert server_admin.can?(:add_members, group)
 
     group.subscription.update!(state: "active")
     group.discard!

@@ -83,7 +83,7 @@ module Ability::GroupState
   end
 
   def disabled_group?(group)
-    group.present? && group.kept? && !group.subscription_active?
+    group.present? && group.kept? && !group.subscription_active? && !@user.is_admin?
   end
 
   def group_for_record(record)
