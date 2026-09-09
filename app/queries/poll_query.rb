@@ -37,8 +37,8 @@ class PollQuery
                          #{public_group_ids ? public_visibility_sql(public_group_ids) : 't.private = FALSE OR'}
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                          (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id, public_group_ids: public_group_ids)
-    # Apply group availability to every caller, including custom chains and public polls.
-    chain.where(topic_id: Topic.left_joins(:group).group_available.select(:id))
+    # Apply group visibility to every caller, including custom chains and public polls.
+    chain.where(topic_id: Topic.left_joins(:group).group_kept.select(:id))
   end
 
   def self.public_visibility_sql(public_group_ids)
@@ -50,7 +50,7 @@ class PollQuery
 
   def self.filter(chain: , params: )
     # how to do this....
-    if group = Group.find_by(key: params[:group_key])
+    if params[:group_key].present? && (group = Group.find_by(key: params[:group_key]))
       group_ids = (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
       chain = chain.joins(:topic).where("topics.group_id": group_ids)
     end

@@ -1,49 +1,67 @@
 require "test_helper"
 
-class Ability::UnavailableGroupTest < ActiveSupport::TestCase
-  test "discarded and subscription-inactive groups have the same access boundary" do
+class Ability::GroupStateTest < ActiveSupport::TestCase
+  test "disabled groups remain readable but reject new activity" do
     group = groups(:group)
     topic = topics(:discussion_topic)
     member = users(:member_normal)
-    admin = group.admins.first
+    coordinator = users(:user)
+    group.add_admin!(coordinator)
     direct_topic = topics(:direct_topic)
     subscription = Subscription.create!(plan: "free", state: "active")
     group.update!(subscription: subscription)
+    poll = PollService.create(params: poll_params(topic_id: topic.id), actor: coordinator)
+    reaction = Reaction.new(reactable: topic.discussion, user: member)
+    task = Task.new(record: topic.discussion, author: member, doer: member)
 
-    assert group.available?
-    assert admin.can?(:export, group)
+    assert group.enabled?
+    assert coordinator.can?(:export, group)
     assert member.can?(:show, topic.discussion)
     assert member.can?(:create, Comment.new(parent: topic.discussion))
+    assert member.can?(:update, reaction)
+    assert member.can?(:update, task)
 
     ["on_hold", "past_due", "canceled"].each do |state|
       subscription.update!(state: state, expires_at: nil)
-      assert_not group.reload.available?, state
-      assert admin.can?(:export, group), state
-      assert_not member.can?(:show, topic.discussion), state
+      assert_not group.reload.enabled?, state
+      assert coordinator.can?(:export, group), state
+      assert member.can?(:show, group), state
+      assert member.can?(:show, topic.discussion), state
+      assert member.can?(:show, poll), state
       assert_not member.can?(:create, Comment.new(parent: topic.discussion)), state
-      assert_empty TopicQuery.visible_to(user: member, topic_id: topic.id), state
+      assert_not member.can?(:update, reaction), state
+      assert_not member.can?(:update, task), state
+      assert_not member.can?(:vote_in, poll), state
+      assert_not coordinator.can?(:update, group), state
+      assert_not member.can?(:join, group), state
+      assert_not member.can?(:create, MembershipRequest.new(group: group, requestor: member)), state
+      assert_includes member.groups, group, state
+      assert_includes GroupQuery.visible_to(user: member), group, state
+      assert_includes TopicQuery.visible_to(user: member, topic_id: topic.id), topic, state
     end
 
     subscription.update!(state: "active", expires_at: 1.second.ago)
-    assert_not group.reload.available?
-    assert_not member.can?(:show, topic.discussion)
-    assert_empty TopicQuery.visible_to(user: member, topic_id: topic.id)
+    assert_not group.reload.enabled?
+    assert member.can?(:show, topic.discussion)
+    assert_not member.can?(:create, Comment.new(parent: topic.discussion))
+    assert_includes TopicQuery.visible_to(user: member, topic_id: topic.id), topic
 
     group.update!(subscription: nil)
-    assert group.reload.available?
+    assert group.reload.enabled?
     assert member.can?(:show, topic.discussion)
     assert users(:guest_admin_normal).can?(:show, direct_topic)
   end
 
   test "group admins must export before discarding a group" do
     group = groups(:group)
-    admin = group.admins.first
+    coordinator = users(:user)
+    group.add_admin!(coordinator)
 
-    assert admin.can?(:export, group)
+    assert coordinator.can?(:export, group)
 
     group.discard!
 
-    assert_not admin.can?(:export, group.reload)
+    assert_not coordinator.can?(:export, group.reload)
   end
 
   test "discard denies new content and voting across the access matrix" do
@@ -197,13 +215,28 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
     assert admin.can?(:destroy, Chatbot.new(group: group))
   end
 
-  test "instance admins can move and merge unavailable groups" do
-    admin = users(:admin)
+  test "server admins can move or merge disabled but not discarded groups" do
+    server_admin = users(:server_admin)
     group = groups(:group)
+
+    assert_empty server_admin.all_memberships
+
+    assert server_admin.can?(:move, group)
+    assert server_admin.can?(:merge, group)
+    assert server_admin.can?(:add_members, group)
+
+    group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+
+    assert server_admin.can?(:move, group)
+    assert server_admin.can?(:merge, group)
+    assert_not server_admin.can?(:add_members, group)
+
+    group.subscription.update!(state: "active")
     group.discard!
 
-    assert admin.can?(:move, group)
-    assert admin.can?(:merge, group)
+    assert_not server_admin.can?(:move, group)
+    assert_not server_admin.can?(:merge, group)
+    assert_not server_admin.can?(:add_members, group)
   end
 
   test "discarding an unrelated group preserves all existing direct topic management permissions" do

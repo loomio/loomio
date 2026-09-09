@@ -37,11 +37,11 @@ function fillGroups() {
   const groupIds = Session.user().groupIds();
   Records.groups.collection.chain().
                find({id: { $in: groupIds }, parentId: null}).
-               data().filter(group => group.isAvailable()).forEach(function(parent) {
+               data().filter(group => group.isEnabled()).forEach(function(parent) {
     if (parent.pollTemplatesCount) { result.push(parent); }
     Records.groups.collection.chain().
                find({id: { $in: groupIds }, parentId: parent.id}).
-               data().filter(group => group.isAvailable()).forEach(function(subgroup) {
+               data().filter(group => group.isEnabled()).forEach(function(subgroup) {
       if (subgroup.pollTemplatesCount) { result.push(subgroup); }
     });
   });

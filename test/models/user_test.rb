@@ -89,6 +89,15 @@ class UserTest < ActiveSupport::TestCase
     restore_env('PAID_INVITATIONS_RATE_LIMIT', paid_limit)
   end
 
+  test "disabled paid groups do not make a user paying" do
+    @group.update!(subscription: Subscription.create!(plan: "standard", state: "active"))
+    assert_predicate @user, :is_paying?
+
+    @group.subscription.update!(state: "on_hold")
+
+    assert_not_predicate @user.reload, :is_paying?
+  end
+
   # Regression for the Sentry error from Api::V1::SessionsController#create:
   # loading a persisted user whose token columns are NULL used to dirty the
   # record via initialized_with_token, then increment_failed_attempts! /

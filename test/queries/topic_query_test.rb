@@ -217,10 +217,18 @@ class TopicQueryTest < ActiveSupport::TestCase
 
   # -- Inactive --
 
-  test "does not return topics in inactive groups" do
+  test "does not return topics in discarded groups" do
     @group.discard!
     results = TopicQuery.visible_to(user: @user, group_ids: [@group.id])
     refute_includes results, @discussion.topic
+  end
+
+  test "returns topics when the group is disabled" do
+    @group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+
+    results = TopicQuery.visible_to(user: @user, group_ids: [@group.id])
+
+    assert_includes results, @discussion.topic
   end
 
   # -- Guest access --

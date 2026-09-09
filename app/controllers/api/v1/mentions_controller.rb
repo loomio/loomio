@@ -9,7 +9,7 @@ class Api::V1::MentionsController < ApplicationController
 
     if group_id
       Group
-        .available
+        .enabled
         .where(id: group_id)
         .where.not(handle: nil)
         .mention_search(params_query)
@@ -37,7 +37,7 @@ class Api::V1::MentionsController < ApplicationController
       .pluck(:id)
 
     group_ids = Group
-      .available
+      .enabled
       .where(id: group_id, handle: params_handles)
       .select { |group| current_user.can?(:notify, group) }
       .map(&:id)

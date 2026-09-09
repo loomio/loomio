@@ -64,7 +64,7 @@ class User < ApplicationRecord
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
 
   has_many :adminable_groups,
-           -> { where(discarded_at: nil).where(Group.subscription_active_sql) },
+           -> { where(discarded_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
@@ -74,7 +74,7 @@ class User < ApplicationRecord
            dependent: :destroy
 
   has_many :groups,
-           -> { where(discarded_at: nil).where(Group.subscription_active_sql) },
+           -> { where(discarded_at: nil) },
            through: :memberships
 
   has_many :discussions, through: :groups
@@ -168,7 +168,7 @@ class User < ApplicationRecord
 
   def is_paying?
     group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
-    Group.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
+    Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
   def is_paying

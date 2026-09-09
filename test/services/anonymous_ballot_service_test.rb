@@ -18,10 +18,22 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
   end
 
-  test "inactivity rejects anonymous ballots without changing ballots or voter state" do
+  test "discard rejects anonymous ballots without changing ballots or voter state" do
     @group.discard!
     @poll.reload
     assert_no_difference ["AnonymousBallot.count", "AnonymousBallotChoice.count", "Notification.count"] do
+      assert_raises(CanCan::AccessDenied) do
+        AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+      end
+    end
+    assert_not @poll.anonymous_poll_voters.find_by!(voter_id: @voter.id).ballot_submitted?
+  end
+
+  test "disabled groups keep anonymous polls readable but reject ballots" do
+    @group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+
+    assert @voter.can?(:show, @poll)
+    assert_no_difference [ "AnonymousBallot.count", "AnonymousBallotChoice.count", "Notification.count" ] do
       assert_raises(CanCan::AccessDenied) do
         AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
       end

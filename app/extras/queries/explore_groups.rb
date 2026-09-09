@@ -2,7 +2,7 @@ class Queries::ExploreGroups < Delegator
   def initialize
     @relation = Group.where(listed_in_explore: true)
                      .parents_only
-                     .available
+                     .enabled
     @relation
   end
 

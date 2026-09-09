@@ -30,11 +30,19 @@ class Topic < ApplicationRecord
     where(discarded_at: nil)
   }
 
-  scope :group_available, -> {
-    where(group_available_condition)
+  scope :group_kept, -> {
+    where(group_kept_condition)
   }
 
-  def self.group_available_condition
+  scope :group_enabled, -> {
+    where(group_enabled_condition)
+  }
+
+  def self.group_kept_condition
+    arel_table[:group_id].eq(nil).or(Group.arel_table[:discarded_at].eq(nil))
+  end
+
+  def self.group_enabled_condition
     arel_table[:group_id].eq(nil).or(
       Group.arel_table[:discarded_at].eq(nil).and(Arel.sql(Group.subscription_active_sql))
     )
@@ -53,7 +61,7 @@ class Topic < ApplicationRecord
     joins_groups
       .joins_reader(user.id)
       .not_discarded
-      .group_available
+      .group_kept
       .where("(topics.group_id IN (:user_group_ids)) OR
               (topics.private = FALSE) OR
               (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR

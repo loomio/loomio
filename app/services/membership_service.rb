@@ -4,7 +4,7 @@ class MembershipService
   end
 
   def self.redeem(membership:, actor:, notify: true)
-    return unless membership.group.available?
+    return unless membership.group.enabled?
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
     # so we want to accept all the pending invitations this person has been sent within this org
@@ -20,7 +20,7 @@ class MembershipService
       invited_group_id = membership.group_id
       existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
       existing_accepted_group_ids = Membership.active.accepted.where(user_id: actor.id).pluck(:group_id)
-      invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: Group.available.where(id: membership.group.parent_or_self.id_and_subgroup_ids).select(:id)).pluck(:group_id)
+      invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: Group.enabled.where(id: membership.group.parent_or_self.id_and_subgroup_ids).select(:id)).pluck(:group_id)
 
       # unrevoke any memberships the actor was just invited to
       Membership.revoked

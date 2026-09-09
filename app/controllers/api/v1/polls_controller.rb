@@ -121,6 +121,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def poll_group_ids
+    return [] if params[:group_key].blank?
     return [] unless group = Group.find_by(key: params[:group_key])
 
     (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
