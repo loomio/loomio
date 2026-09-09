@@ -5,17 +5,20 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
     group = groups(:group)
     topic = topics(:discussion_topic)
     member = users(:member_normal)
+    admin = group.admins.first
     direct_topic = topics(:direct_topic)
     subscription = Subscription.create!(plan: "free", state: "active")
     group.update!(subscription: subscription)
 
     assert group.available?
+    assert admin.can?(:export, group)
     assert member.can?(:show, topic.discussion)
     assert member.can?(:create, Comment.new(parent: topic.discussion))
 
     ["on_hold", "past_due", "canceled"].each do |state|
       subscription.update!(state: state, expires_at: nil)
       assert_not group.reload.available?, state
+      assert admin.can?(:export, group), state
       assert_not member.can?(:show, topic.discussion), state
       assert_not member.can?(:create, Comment.new(parent: topic.discussion)), state
       assert_empty TopicQuery.visible_to(user: member, topic_id: topic.id), state
@@ -30,6 +33,17 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
     assert group.reload.available?
     assert member.can?(:show, topic.discussion)
     assert users(:guest_admin_normal).can?(:show, direct_topic)
+  end
+
+  test "group admins must export before discarding a group" do
+    group = groups(:group)
+    admin = group.admins.first
+
+    assert admin.can?(:export, group)
+
+    group.discard!
+
+    assert_not admin.can?(:export, group.reload)
   end
 
   test "discard denies new content and voting across the access matrix" do
@@ -165,7 +179,7 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
       records.each do |record, actions|
         actions.each { |action| assert_not actor.can?(action, record), "#{actor.id}: #{action} #{record.class}" }
       end
-      %i[update email_members view_pending_invitations members_autocomplete show_chatbots
+      %i[update publish export email_members view_pending_invitations members_autocomplete show_chatbots
          move_discussions_to add_guests add_members invite_people announce manage_membership_requests
          notify add_subgroup].each do |action|
         assert_not actor.can?(action, group), action
@@ -173,7 +187,7 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
       assert_not actor.can?(:create, Group.new(parent: group))
     end
 
-    %i[publish export destroy].each { |action| assert admin.can?(action, group), action }
+    assert admin.can?(:destroy, group)
     %i[remove_admin revoke destroy remove_delegate].each { |action| assert admin.can?(action, membership), action }
     assert membership.user.can?(:update, membership)
     assert_not admin.can?(:update, membership)
@@ -181,7 +195,6 @@ class Ability::UnavailableGroupTest < ActiveSupport::TestCase
     assert admin.can?(:remove_admin, reader)
     assert reader.user.can?(:update, reader)
     assert admin.can?(:destroy, Chatbot.new(group: group))
-    assert_not users(:member_normal).can?(:export, group)
   end
 
   test "instance admins can move and merge unavailable groups" do

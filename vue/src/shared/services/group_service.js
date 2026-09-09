@@ -227,7 +227,7 @@ export default new class GroupService {
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
-          return AbilityService.canArchiveGroup(group);
+          return AbilityService.canDeleteGroup(group);
         },
         perform() {
           const confirmText = group.handle || group.name.trim();

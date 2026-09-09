@@ -235,4 +235,20 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal "open", @group.group_privacy
   end
 
+  test "discarded groups cannot be exported" do
+    @group.add_admin!(@user)
+    @group.discard!
+    sign_in @user
+
+    assert_no_enqueued_jobs(only: GroupExportWorker) do
+      post :export, params: { id: @group.id }
+    end
+    assert_response :forbidden
+
+    assert_no_enqueued_jobs(only: GroupExportCsvWorker) do
+      post :export_csv, params: { id: @group.id }
+    end
+    assert_response :forbidden
+  end
+
 end

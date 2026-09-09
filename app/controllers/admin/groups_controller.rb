@@ -91,6 +91,10 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def export_group
+    if @group.discarded?
+      return redirect_to admin_group_path(@group), alert: "Restore the group before exporting it"
+    end
+
     GroupExportWorker.perform_later(@group.all_groups.pluck(:id), @group.name, current_user.id)
     redirect_to admin_group_path(@group), notice: "Group export started"
   end

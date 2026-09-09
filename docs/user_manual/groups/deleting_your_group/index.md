@@ -8,9 +8,9 @@ Open the group drop down menu by clicking on the three dots, and select the **De
 
 When you delete a group, it is removed from view immediately and scheduled for permanent deletion in 2 weeks. You and group members immediately lose access to the group. If a mistake was made, you can contact us within two weeks of deleting your group to request restoration.
 
-Groups awaiting deletion and their subgroups are unavailable for viewing or participation, including polls opened from saved links. Members cannot create or edit content, vote, send announcements or reminders, or accept invitations. Existing permissions to restore, export, or permanently delete a group remain available, as do access removal and personal notification preferences. Direct discussions and polls are unaffected.
+Groups awaiting deletion and their subgroups are unavailable for viewing, participation, or export, including polls opened from saved links. Members cannot create or edit content, vote, send announcements or reminders, or accept invitations. Export the group and download important files before confirming deletion. Direct discussions and polls are unaffected.
 
-Discarding the group stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
+Scheduling the group for deletion stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
 
 Deleting your group will also cancel your Loomio subscription.
 

@@ -4,17 +4,23 @@ module Ability::UnavailableGroup
 
     # Register these denials after all ordinary grants. Discard or an inactive
     # subscription suspends content access and activity without removing the
-    # roles needed to restore, export, delete, or clean up personal records.
+    # roles needed to restore, permanently delete, or clean up personal records.
     cannot :manage, [::Discussion, ::Comment, ::Poll, ::Outcome, ::Topic,
                      ::TopicItem, ::PollTemplate, ::DiscussionTemplate, ::Tag] do |record|
       unavailable_group?(record.group)
     end
 
-    cannot [:update, :email_members, :view_pending_invitations, :members_autocomplete,
+    cannot [:update, :publish, :email_members, :view_pending_invitations, :members_autocomplete,
             :show_chatbots, :move_discussions_to, :add_guests, :add_members,
             :invite_people, :announce, :manage_membership_requests, :notify,
             :add_subgroup], ::Group do |group|
       unavailable_group?(group)
+    end
+
+    # Group admins are warned to export before deletion is scheduled. Once a
+    # group is discarded, restoring it is the only way to regain export access.
+    cannot :export, ::Group do |group|
+      group.discarded?
     end
 
     cannot :create, ::Group do |group|

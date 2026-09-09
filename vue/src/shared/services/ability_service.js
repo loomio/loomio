@@ -226,7 +226,7 @@ export default new class AbilityService {
     return (Session.user().membershipFor(group) != null);
   }
 
-  canArchiveGroup(group) {
+  canDeleteGroup(group) {
     return group.adminsInclude(Session.user());
   }
 

@@ -119,6 +119,22 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     end
   end
 
+  test "admin must restore a discarded group before exporting it" do
+    sign_in @admin
+    @group.discard!(actor: @admin)
+
+    assert_no_enqueued_jobs(only: GroupExportWorker) do
+      post :export_group, params: { id: @group.id }
+    end
+
+    assert_redirected_to admin_group_path(@group)
+    assert_equal "Restore the group before exporting it", flash[:alert]
+
+    get :show, params: { id: @group.id }
+    assert_includes response.body, "Restore group"
+    refute_includes response.body, "Export group"
+  end
+
   test "admin can discard and restore a group" do
     sign_in @admin
     post :discard, params: { id: @group.id }

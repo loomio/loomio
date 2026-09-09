@@ -164,6 +164,16 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response 302
   end
 
+  test "does not allow admins to export a discarded group" do
+    sign_in @user
+    @group.add_admin!(@user)
+    @group.discard!
+
+    get :export, params: { key: @group.key }, format: :html
+
+    assert_response 302
+  end
+
   # Handle redirects
   test "show renders group by current handle" do
     @group.update!(handle: "current-handle-#{SecureRandom.hex(4)}")
