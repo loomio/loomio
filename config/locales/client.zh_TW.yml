@@ -3106,3 +3106,4 @@ zh_TW:
     browser_device: 瀏覽器
     remove_device: 移除瀏覽器
     enable_from_loomio: 登入 Loomio 後，請在通知設定中啟用推播通知
+    ios_add_to_home_screen_before_enabling: 在 iPhone 或 iPad 上，使用「分享」功能將 Loomio 新增至主畫面。從新出現的圖示開啟 Loomio，然後在此處啟用推播通知。

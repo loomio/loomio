@@ -3078,3 +3078,4 @@ ru:
     browser_device: Браузер
     remove_device: Удалить браузер
     enable_from_loomio: Включите push-уведомления в настройках уведомлений, войдя в Loomio
+    ios_add_to_home_screen_before_enabling: На iPhone или iPad используйте функцию «Поделиться», чтобы добавить Loomio на главный экран. Откройте Loomio по новой иконке, затем включите push-уведомления здесь.

@@ -3105,3 +3105,4 @@ nl_NL:
     browser_device: Browser
     remove_device: Browser verwijderen
     enable_from_loomio: Schakel pushmeldingen in via de meldingsinstellingen terwijl je bent ingelogd bij Loomio
+    ios_add_to_home_screen_before_enabling: Gebruik op je iPhone of iPad de deelfunctie om Loomio aan je startscherm toe te voegen. Open Loomio via het nieuwe pictogram en schakel hier pushmeldingen in.

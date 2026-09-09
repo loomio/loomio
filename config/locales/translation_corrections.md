@@ -1,5 +1,11 @@
 # Corrected translations
 
+## 2026-09-10 — iOS push guidance
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml` | `push_notifications.ios_add_to_home_screen_before_enabling` | `utilisez`, `votre`, `Ouvrez`, `activez` | `utilise`, `ton`, `Ouvre`, `active` | French UI uses the informal `tu` register throughout |
+
 ## 2026-09-05 — Profile recent activity
 
 | File | Key | Before | After | Why it was wrong |

@@ -609,6 +609,7 @@ en:
     title: Push notifications
     subtitle: Receive notifications in this browser
     not_supported: Push notifications are not available in this browser
+    ios_add_to_home_screen_before_enabling: On iPhone or iPad, use Share to add Loomio to your Home Screen. Open Loomio from the new icon, then enable push notifications here.
     permission_denied: Push notifications are blocked in your browser settings
     manage_devices: Manage push notification devices
     enabled: Push notifications enabled for this browser

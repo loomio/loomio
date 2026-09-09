@@ -3106,3 +3106,4 @@ it:
     browser_device: Sito web
     remove_device: Rimuovi il browser
     enable_from_loomio: Attiva le notifiche push dalle impostazioni di notifica mentre sei connesso a Loomio
+    ios_add_to_home_screen_before_enabling: Su iPhone o iPad, usa Condividi per aggiungere Loomio alla schermata Home. Apri Loomio dalla nuova icona, quindi abilita le notifiche push.
