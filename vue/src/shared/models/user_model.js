@@ -54,8 +54,8 @@ export default class UserModel extends BaseModel {
 
   groups() {
     return Records.groups.collection.chain().
-      find({id: { $in: this.groupIds() }, archivedAt: null}).
-      simplesort('fullName').data();
+      find({id: { $in: this.groupIds() }}).
+      simplesort('fullName').data().filter(group => group.isAvailable());
   }
 
   parentGroups() {

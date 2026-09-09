@@ -1278,6 +1278,7 @@ de:
     body: Bist du sicher, dass du diese Untergruppe löschen möchtest? Alle Threads, Umfragen, Dateien und andere Gruppeninhalte werden dauerhaft gelöscht. Es wird empfohlen, die Gruppendaten zu exportieren und alle wichtigen Dateien manuell herunterzuladen, bevor du fortfährst.
     confirm: Drücke '%{name}' um zu bestätigen, dass Du diese Gruppe löschen willst
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
+    scheduled_for_deletion: Diese Gruppe wird in 2 Wochen endgültig gelöscht.
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen

@@ -379,7 +379,7 @@ module.exports = {
 
     page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')
-    page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
+    page.expectFlash("This group is scheduled for permanent deletion in 2 weeks")
   },
 
   'removes_group_logo_and_cover_photo': (test) => {

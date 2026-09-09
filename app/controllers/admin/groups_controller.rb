@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update move handle archive unarchive delete_group export_group]
+  before_action :load_group, only: %i[show edit update move handle discard undiscard delete_group export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -75,22 +75,26 @@ class Admin::GroupsController < Admin::BaseController
     redirect_to admin_group_path(@group), notice: notice
   end
 
-  def archive
-    @group.archive!
-    redirect_to admin_group_path(@group), notice: "Group archived"
+  def discard
+    @group.discard!(actor: current_user)
+    redirect_to admin_group_path(@group), notice: "Group discarded"
   end
 
-  def unarchive
-    @group.unarchive!
-    redirect_to admin_group_path(@group), notice: "Group unarchived"
+  def undiscard
+    @group.undiscard!(actor: current_user)
+    redirect_to admin_group_path(@group), notice: "Group restored"
   end
 
   def delete_group
-    GroupService.destroy_without_warning!(@group.id)
+    GroupService.destroy_without_warning!(@group.id, actor: current_user)
     redirect_to admin_groups_path, notice: "Group deletion scheduled"
   end
 
   def export_group
+    if @group.discarded?
+      return redirect_to admin_group_path(@group), alert: "Restore the group before exporting it"
+    end
+
     GroupExportWorker.perform_later(@group.all_groups.pluck(:id), @group.name, current_user.id)
     redirect_to admin_group_path(@group), notice: "Group export started"
   end

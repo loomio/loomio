@@ -5,7 +5,7 @@ class DeliverSubscriberPushTopicItemWorker < ApplicationJob
     subscription = PushSubscription.active.find_by(id: push_subscription_id)
     topic_item = TopicItem.find_by(id: topic_item_id)
     return unless subscription && topic_item&.itemable
-    return if NotificationService.group_archived?(topic_item)
+    return if NotificationService.group_unavailable?(topic_item)
 
     user = subscription.user
     topic = topic_item.topic

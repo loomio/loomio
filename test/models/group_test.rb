@@ -144,18 +144,42 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal 1, group.discussions_count
   end
 
-  # Archival
-  test "archive sets archived_at on the group" do
+  test "discard records its time and actor in PaperTrail" do
     @group.add_member!(@user)
-    @group.archive!
-    assert @group.archived_at.present?
+    assert_difference "@group.versions.count", 1 do
+      @group.discard!(actor: @user)
+    end
+    assert @group.discarded_at.present?
+    assert_equal @user.id, @group.discarded_by
+    assert_equal @user.id, @group.versions.last.whodunnit
   end
 
-  test "unarchive restores archived_at to nil" do
+  test "discard records the time and actor for every group in the tree" do
+    subgroup = Group.create!(name: "Discarded child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
+
+    assert_difference -> { PaperTrail::Version.where(item_type: "Group", item_id: [@group.id, subgroup.id]).count }, 2 do
+      @group.discard!(actor: @user)
+    end
+
+    [@group.reload, subgroup.reload].each do |group|
+      assert_equal @group.discarded_at, group.discarded_at
+      assert_equal @user.id, group.discarded_by
+      assert_equal @user.id, group.versions.last.whodunnit
+    end
+  end
+
+  test "undiscard restores the group and records the actor" do
+    subgroup = Group.create!(name: "Restored child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
     @group.add_member!(@user)
-    @group.archive!
-    @group.unarchive!
-    assert_nil @group.reload.archived_at
+    @group.discard!(actor: @user)
+    assert_difference -> { PaperTrail::Version.where(item_type: "Group", item_id: [@group.id, subgroup.id]).count }, 2 do
+      @group.undiscard!(actor: users(:admin))
+    end
+    [@group.reload, subgroup.reload].each do |group|
+      assert_nil group.discarded_at
+      assert_nil group.discarded_by
+      assert_equal users(:admin).id, group.versions.last.whodunnit
+    end
   end
 
   # id_and_subgroup_ids

@@ -48,7 +48,7 @@ You must be an admin of the group to export it. The JSON export includes:
 The JSON export does not include:
 
 - Secret subgroups you do not belong to, including their membership and content
-- Archived subgroups
+- Subgroups awaiting deletion
 - Anonymous polls that have not closed
 - Direct threads and polls that do not belong to the group
 

@@ -55,7 +55,8 @@ module Null::Group
       cover_url
       logo_url
       category
-      archived_at
+      discarded_at
+      discarded_by
       request_to_join_prompt
     )
   end
@@ -161,6 +162,22 @@ module Null::Group
 
   def parent_or_self
     self
+  end
+
+  def available?
+    true
+  end
+
+  def kept?
+    true
+  end
+
+  def discarded?
+    false
+  end
+
+  def subscription_active?
+    true
   end
 
   def self_or_parent_logo_url(size = 512)

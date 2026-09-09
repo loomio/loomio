@@ -23,10 +23,10 @@ class TopicReaderServiceTest < ActiveSupport::TestCase
     @discussion.created_topic_item
   end
 
-  test "archived invitations cannot be redeemed but direct invitations can" do
+  test "inactive invitations cannot be redeemed but direct invitations can" do
     direct_reader = topic_readers(:direct_guest_normal_reader)
     assert TopicReader.redeemable.exists?(@guest_reader.id)
-    @group.archive!
+    @group.discard!
     assert_not TopicReader.redeemable.exists?(@guest_reader.id)
     TopicReaderService.redeem(topic_reader: @guest_reader, actor: @admin)
     assert_nil @guest_reader.reload.accepted_at

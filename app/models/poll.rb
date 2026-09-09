@@ -203,7 +203,7 @@ class Poll < ApplicationRecord
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
   scope :closing_soon_not_published, ->(timeframe) do
      active
-    .where(topic_id: Topic.left_joins(:group).not_archived.select(:id))
+    .where(topic_id: Topic.left_joins(:group).group_available.select(:id))
     .distinct
     .where(closing_at: timeframe)
     .where("NOT EXISTS (SELECT 1 FROM notifications

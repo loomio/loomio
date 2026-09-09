@@ -41,7 +41,7 @@ module Ability::Poll
       topic = poll.topic
       group = topic.group
       (topic.topicable_type != 'Poll' || topic.topicable_id.nil?) &&
-      !group.archived_at &&
+      group.available? &&
       !topic.locked_at &&
       (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&

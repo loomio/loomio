@@ -44,10 +44,10 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
     assert_includes response.body, "Parent group ID or key"
-    assert_includes response.body, "Their content will be retained"
+    assert_includes response.body, "Discard group"
     assert_includes response.body, "all of its subgroups"
     assert_includes response.body, "memberships and membership requests"
-    assert_includes response.body, "User accounts and subscriptions are not deleted"
+    assert_includes response.body, "User accounts and subscriptions are retained"
 
     get :edit, params: { id: @group.id }
     assert_response :success
@@ -119,14 +119,31 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     end
   end
 
-  test "admin can archive and unarchive a group" do
+  test "admin must restore a discarded group before exporting it" do
     sign_in @admin
+    @group.discard!(actor: @admin)
 
-    post :archive, params: { id: @group.id }
-    assert @group.reload.archived_at
+    assert_no_enqueued_jobs(only: GroupExportWorker) do
+      post :export_group, params: { id: @group.id }
+    end
 
-    post :unarchive, params: { id: @group.id }
-    assert_nil @group.reload.archived_at
+    assert_redirected_to admin_group_path(@group)
+    assert_equal "Restore the group before exporting it", flash[:alert]
+
+    get :show, params: { id: @group.id }
+    assert_includes response.body, "Restore group"
+    refute_includes response.body, "Export group"
+  end
+
+  test "admin can discard and restore a group" do
+    sign_in @admin
+    post :discard, params: { id: @group.id }
+    assert @group.reload.discarded_at
+    assert_equal @admin.id, @group.discarded_by
+
+    post :undiscard, params: { id: @group.id }
+    assert_nil @group.reload.discarded_at
+    assert_nil @group.discarded_by
   end
 
   test "admin group operations call the group service" do
@@ -139,7 +156,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     end
     assert moved
 
-    GroupService.stub(:destroy_without_warning!, ->(id) { destroyed_id = id }) do
+    GroupService.stub(:destroy_without_warning!, ->(id, actor:) { destroyed_id = id if actor == @admin }) do
       post :delete_group, params: { id: @group.id }
     end
     assert_equal @group.id, destroyed_id

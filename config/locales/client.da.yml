@@ -1266,6 +1266,7 @@ da:
     body: Er du sikker på, at du vil slette denne undergruppe? Alle tråde, afstemninger, filer og andet gruppeindhold slettes permanent. Det anbefales, at du eksporterer gruppedataene og manuelt downloader vigtige filer, før du fortsætter.
     confirm: Skriv '%{name}' for at bekræfte, at du vil slette denne gruppe.
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
+    scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
   group_page:
     stats: Gruppestatistik
     threads: Debatter

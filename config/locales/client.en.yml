@@ -1387,6 +1387,7 @@ en:
       It is recommended that you export the group data and manually download any important files before you continue.
     confirm: Type '%{name}' to confirm you want to delete this group.
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
+    scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
   report:
     start_on: Start on
     end_on: End on

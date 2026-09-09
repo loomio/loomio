@@ -19,18 +19,18 @@ class Queries::ExploreGroupsTest < ActiveSupport::TestCase
     @second_group.update_attribute(:memberships_count, 4)
     @second_group.update_attribute(:discussions_count, 1)
 
-    @archived_group = Group.create!(name: "Archived Explore #{SecureRandom.hex(4)}", handle: "explore3_#{SecureRandom.hex(4)}", archived_at: 1.day.ago)
-    @archived_group.subscription = Subscription.create(plan: 'trial', state: 'active')
-    @archived_group.save(validate: false)
-    @archived_group.update_attribute(:is_visible_to_public, true)
-    @archived_group.update_attribute(:memberships_count, 5)
-    @archived_group.update_attribute(:discussions_count, 3)
+    @inactive_group = Group.create!(name: "Inactive Explore #{SecureRandom.hex(4)}", handle: "explore3_#{SecureRandom.hex(4)}", discarded_at: 1.day.ago)
+    @inactive_group.subscription = Subscription.create(plan: 'trial', state: 'active')
+    @inactive_group.save(validate: false)
+    @inactive_group.update_attribute(:is_visible_to_public, true)
+    @inactive_group.update_attribute(:memberships_count, 5)
+    @inactive_group.update_attribute(:discussions_count, 3)
   end
 
   test "shows groups on the explore page" do
     results = Queries::ExploreGroups.new
     assert_includes results, @group
-    refute_includes results, @archived_group
+    refute_includes results, @inactive_group
   end
 
   test "only shows groups that are listed_in_explore" do

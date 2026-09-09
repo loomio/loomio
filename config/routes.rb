@@ -56,8 +56,8 @@ Rails.application.routes.draw do
       member do
         post :move
         post :handle
-        post :archive
-        post :unarchive
+        post :discard
+        post :undiscard
         post :delete_group
         post :export_group
       end

@@ -64,7 +64,7 @@ class User < ApplicationRecord
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
 
   has_many :adminable_groups,
-           -> { where(archived_at: nil) },
+           -> { where(discarded_at: nil).where(Group.subscription_active_sql) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
@@ -74,7 +74,7 @@ class User < ApplicationRecord
            dependent: :destroy
 
   has_many :groups,
-           -> { where archived_at: nil },
+           -> { where(discarded_at: nil).where(Group.subscription_active_sql) },
            through: :memberships
 
   has_many :discussions, through: :groups

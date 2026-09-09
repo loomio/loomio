@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  include Discard::Model
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -67,18 +68,17 @@ class Group < ApplicationRecord
   belongs_to :subscription
 
   has_many :subgroups,
-           -> { where(archived_at: nil) },
+           -> { merge(Group.available) },
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
   include GroupExportRelations
 
   scope :with_serializer_includes, -> { includes(:subscription) }
-  scope :archived, -> { where('archived_at IS NOT NULL') }
-  scope :published, -> { where(archived_at: nil) }
   scope :parents_only, -> { where(parent_id: nil) }
-  scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
-  scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
+  scope :available, -> { kept.where(subscription_active_sql) }
+  scope :visible_to_public, -> { available.where(is_visible_to_public: true) }
+  scope :hidden_from_public, -> { available.where(is_visible_to_public: false) }
   scope :mention_search, lambda { |q|
     where("groups.name ilike :first OR groups.name ilike :other OR groups.handle ilike :first",
           first: "#{q}%", other: "% #{q}%")
@@ -116,7 +116,7 @@ class Group < ApplicationRecord
   define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
-  define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
+  define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
   update_counter_cache(:parent, :subgroups_count)
 
   delegate :include?, to: :users, prefix: true
@@ -130,7 +130,8 @@ class Group < ApplicationRecord
                          :description,
                          :description_format,
                          :handle,
-                         :archived_at,
+                         :discarded_at,
+                         :discarded_by,
                          :parent_members_can_see_discussions,
                          :key,
                          :is_visible_to_public,
@@ -258,6 +259,21 @@ class Group < ApplicationRecord
     parent || self
   end
 
+  # A missing subscription is the permanent free tier. Subgroups inherit the
+  # organisation subscription rather than requiring a subscription of their own.
+  def subscription_active?
+    return Group.where(id: id).where(self.class.subscription_active_sql).exists? if persisted?
+
+    subscription_record = parent_or_self.subscription
+    subscription_record.nil? || subscription_record.is_active?
+  end
+
+  def available?
+    return kept? && subscription_active? unless persisted?
+
+    Group.available.exists?(id: id)
+  end
+
   def self_and_subgroups
     Group.where(id: [id].concat(subgroup_ids))
   end
@@ -299,14 +315,43 @@ class Group < ApplicationRecord
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def archive!
-    Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+  def discard!(actor: nil, at: Time.current)
+    Group.transaction do
+      PaperTrail.request(whodunnit: actor&.id) do
+        Group.where(id: id_and_subgroup_ids).find_each do |group|
+          group.assign_attributes(discarded_at: at, discarded_by: actor&.id)
+          group.save!(validate: false)
+        end
+      end
+    end
     reload
   end
 
-  def unarchive!
-    Group.where(id: id_and_subgroup_ids).update_all(archived_at: nil)
+  def undiscard!(actor: nil)
+    Group.transaction do
+      PaperTrail.request(whodunnit: actor&.id) do
+        Group.where(id: id_and_subgroup_ids).find_each do |group|
+          group.assign_attributes(discarded_at: nil, discarded_by: nil)
+          group.save!(validate: false)
+        end
+      end
+    end
     reload
+  end
+
+  # Shared SQL form of subscription_active? for visibility and access scopes.
+  # Loomio subscriptions live on root groups; a subgroup inherits its parent.
+  def self.subscription_active_sql
+    subscription_id = "COALESCE(groups.subscription_id, " \
+                      "(SELECT parent.subscription_id FROM groups parent WHERE parent.id = groups.parent_id))"
+    sanitize_sql_array([ <<~SQL.squish, { states: Subscription::ACTIVE_STATES, now: Time.current } ])
+      (#{subscription_id} IS NULL OR EXISTS (
+        SELECT 1 FROM subscriptions availability_subscriptions
+        WHERE availability_subscriptions.id = #{subscription_id}
+          AND availability_subscriptions.state IN (:states)
+          AND (availability_subscriptions.expires_at IS NULL OR availability_subscriptions.expires_at > :now)
+      ))
+    SQL
   end
 
   def org_accepted_members_count
@@ -352,7 +397,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    subgroup_ids.concat([id]).compact.uniq
+    all_subgroup_ids.concat([id]).compact.uniq
   end
 
   def self.update_org_members_count_for_group_ids(group_ids)

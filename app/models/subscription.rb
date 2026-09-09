@@ -6,7 +6,7 @@ class Subscription < ApplicationRecord
 
   PAYMENT_METHODS = %w[barter none chargify loomio_subscriptions manual paypal].freeze
   STATES = %w[active on_hold pending past_due canceled].freeze
-  ACTIVE_STATES = %w[active on_hold pending].freeze
+  ACTIVE_STATES = %w[active pending].freeze
 
   scope :active, -> { where(state: ACTIVE_STATES).where("expires_at is null OR expires_at > ?", Time.current) }
   scope :expired, -> { where(state: ACTIVE_STATES).where("expires_at < ?", Time.current) }

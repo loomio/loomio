@@ -1291,6 +1291,7 @@ pt_BR:
       É recomendável que você exporte os dados do grupo e baixe manualmente todos os arquivos importantes antes de continuar.
     confirm: Digite %{name} para confirmar que deseja excluir este grupo.
     success: Este grupo foi arquivado e está agendado para exclusão permanente em 2 semanas.
+    scheduled_for_deletion: Este grupo está programado para ser excluído permanentemente em 2 semanas.
   group_page:
     stats: Estatísticas do grupo
     threads: Conversas

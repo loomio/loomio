@@ -115,7 +115,7 @@ class RecordCloner
     clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
-    clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
+    clone_group.subgroups = group.subgroups.available.map { |g| new_clone_group(g, clone_group) }
 
     # Store cloned discussions and polls for deferred save via save_cloned_content!.
     # These connect to the group through topics, so they must be saved after the group.

@@ -1,10 +1,12 @@
 class NotificationService
-  # Read current archive state so queued work also stops after archival, even
-  # when the caller loaded its subject or group before the archive operation.
-  def self.group_archived?(subject)
+  # Read current group and subscription state so queued work also stops after
+  # discard, expiry, cancellation, or hold.
+  def self.group_unavailable?(subject)
     model = subject.is_a?(TopicItem) ? subject.itemable : subject
     group = model.is_a?(Group) ? model : (model.group if model.respond_to?(:group))
-    group.present? && Group.archived.exists?(id: group.id)
+    return false if group.blank?
+
+    !Group.available.exists?(id: group.id)
   end
 
   # Commit one logical occurrence, then route its channel deliveries in the

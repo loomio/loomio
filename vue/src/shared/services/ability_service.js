@@ -226,7 +226,7 @@ export default new class AbilityService {
     return (Session.user().membershipFor(group) != null);
   }
 
-  canArchiveGroup(group) {
+  canDeleteGroup(group) {
     return group.adminsInclude(Session.user());
   }
 
@@ -294,7 +294,7 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return !group.archivedAt && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
+    return group.isAvailable() && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
   }
 
   canViewPrivateContent(group) {
