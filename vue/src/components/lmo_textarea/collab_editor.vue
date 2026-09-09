@@ -15,7 +15,6 @@ import HardBreak from '@tiptap/extension-hard-break';
 import Heading from '@tiptap/extension-heading';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import Italic from '@tiptap/extension-italic';
-import Link from '@tiptap/extension-link';
 import Paragraph from '@tiptap/extension-paragraph';
 import Strike from '@tiptap/extension-strike';
 import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
@@ -27,6 +26,7 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import Text from '@tiptap/extension-text';
 import Underline from '@tiptap/extension-underline';
 import {CustomMention} from './extension_mention';
+import {CustomLink} from './extension_link';
 import {CustomImage} from './extension_image';
 import {Video} from './extension_image';
 import {Audio} from './extension_image';
@@ -252,7 +252,7 @@ const toggleExpanded = () => {
 const setLinkUrl = () => {
   if (linkUrl.value) {
     if (!linkUrl.value.includes("://")) {
-      linkUrl.value = "http://".concat(linkUrl.value);
+      linkUrl.value = "https://".concat(linkUrl.value);
     }
     editor.value.chain().setLink({href: linkUrl.value}).focus().run();
     fetchLinkPreviews([linkUrl.value]);
@@ -424,7 +424,7 @@ onMounted(() => {
       HorizontalRule,
       Italic,
       Iframe,
-      Link,
+      CustomLink,
       Paragraph,
       Placeholder.configure({placeholder: () => props.placeholder}),
       Strike,
