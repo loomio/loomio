@@ -6,7 +6,6 @@ class GroupMailer < ApplicationMailer
 
     component = Views::GroupMailer::AdminDeletionWarning.new(
       group: group,
-      recipient: recipient,
       requestor: requestor,
       usage: GroupUsageSummary.for(group)
     )
@@ -23,7 +22,6 @@ class GroupMailer < ApplicationMailer
 
     component = Views::GroupMailer::ExpiredTrialDeletionWarning.new(
       group: group,
-      recipient: recipient,
       usage: GroupUsageSummary.for(group)
     )
 
