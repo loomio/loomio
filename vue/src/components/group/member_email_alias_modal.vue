@@ -50,7 +50,7 @@ export default {
           exclude_types: 'group'
         }
       }).then((data) => {
-        this.users = Records.users.find(data.users.map(u => u.id))
+        this.users = Records.users.find(Array(data.memberships).map(membership => membership.user_id))
       });
     }, 250)
   }
