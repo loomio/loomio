@@ -38,6 +38,12 @@ async function refresh() {
     browserEnabled.value = await PushSubscriptionService.enabled();
     const data = await client.get('');
     subscriptions.value = data.push_subscriptions || [];
+  } catch (error) {
+    // The page can remain open after the server session expires. Treat that
+    // expected 401 as signed-out state instead of an unhandled Vue error.
+    if (error.status !== 401) throw error;
+    browserEnabled.value = false;
+    subscriptions.value = [];
   } finally {
     emit('subscriptionsChanged', subscriptions.value.length > 0);
     loading.value = false;
