@@ -39,7 +39,7 @@ class CleanupReferenceIntegrityTest < ActiveSupport::TestCase
       else
         MembershipRequest.create!(group: groups(:group), requestor: users(:alien))
       end
-      attributes = record.attributes
+      attributes = record.reload.attributes
       assert_raises(ActiveRecord::NotNullViolation) do
         model.transaction(requires_new: true) { record.update_column(:group_id, nil) }
       end
