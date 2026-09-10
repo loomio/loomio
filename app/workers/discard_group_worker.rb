@@ -5,6 +5,6 @@ class DiscardGroupWorker < ApplicationJob
     return unless ENV["CLEANUP_ENABLED"].present?
 
     group = Group.kept.find_by(id: group_id)
-    GroupService.discard(group: group) if group
+    group.discard! if group
   end
 end

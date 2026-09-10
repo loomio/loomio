@@ -82,7 +82,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert_equal actor.id, group.reload.discarded_by
   end
 
-  test "only instance administrators can discard silently" do
+  test "unauthorized users cannot discard silently" do
     actor = users(:user)
     group = topics(:discussion_topic).group
 

@@ -150,39 +150,20 @@ module GroupService
     group
   end
 
-  def self.discard(group:, actor: nil)
-    raise CanCan::AccessDenied if actor && !actor.is_admin?
+  def self.discard(group:, actor:)
+    actor.ability.authorize! :destroy, group
 
-    discard_record!(group, actor: actor) do
-      Sentry.metrics.count("group.discard")
-      EventBus.broadcast("group_destroy", group, actor)
-    end
+    group.discard!(actor: actor)
+    Sentry.metrics.count("group.discard")
+    EventBus.broadcast("group_destroy", group, actor)
   end
 
   def self.warn_and_discard(group:, actor:)
-    actor.ability.authorize! :destroy, group
-
-    discard_record!(group, actor: actor) do
-      group.admins.each do |admin|
-        GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
-      end
-      Sentry.metrics.count("group.destroy")
-      EventBus.broadcast('group_destroy', group, actor)
+    group.admins.each do |admin|
+      GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
     end
+    discard(group: group, actor: actor)
   end
-
-  # Warning-based deletion makes the group unavailable immediately. Permanent
-  # deletion is deliberately decoupled so a future sweep can apply one recovery
-  # period to every discarded group.
-  def self.discard_record!(group, actor:)
-    Group.transaction(requires_new: true) do |transaction|
-      group.lock!
-      group.discard!(actor: actor)
-      transaction.after_commit { yield if block_given? }
-    end
-  end
-
-  private_class_method :discard_record!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
