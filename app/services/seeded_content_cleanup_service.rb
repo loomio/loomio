@@ -202,7 +202,7 @@ module SeededContentCleanupService
     end
 
     result = { discussions: discussions_deleted, polls: polls_deleted }
-    puts "Deleted #{result[:discussions]} seeded discussions and #{result[:polls]} seeded polls"
+    puts "Deleted #{result[:discussions]} seeded discussions and #{result[:polls]} seeded polls" if result.values.any?(&:positive?)
     result
   end
 

@@ -144,10 +144,7 @@ module CleanupService
   def self.delete_inactive_orphan_users
     user_ids = inactive_orphan_user_ids
 
-    if user_ids.empty?
-      puts "No inactive orphan users to delete"
-      return
-    end
+    return if user_ids.empty?
 
     count = 0
     user_ids.each do |id|
@@ -162,7 +159,7 @@ module CleanupService
       end
     end
 
-    puts "Deleted #{count} inactive orphan users" unless Rails.env.test?
+    puts "Deleted #{count} inactive orphan users" if count.positive? && !Rails.env.test?
   end
 
   def self.inactive_orphan_user_ids(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago, limit: INACTIVE_ORPHAN_USER_LIMIT)
