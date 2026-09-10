@@ -15,6 +15,12 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Group deletion worker configuration
+
+Restart `bin/jobs` processes when deploying the dedicated `group_destruction` queue. The bundled `config/queue.yml` gives that queue one process with one thread; `JOB_CONCURRENCY` scales only the general worker pool. Custom queue configurations must serve `group_destruction` separately and exclude it from general workers. Run only one destruction worker across the deployment if you run multiple job containers. Jobs queued before this change retain their original queue assignment.
+
+Permanent group deletion jobs now require `CLEANUP_ENABLED` to be present when they run and recheck the current `GROUP_DELETION_DELAY_DAYS` against the group's discard timestamp. Apply environment changes by restarting workers. Removing `CLEANUP_ENABLED` stops subsequent jobs from deleting groups; it does not interrupt a deletion already in progress. Skipped jobs finish without deleting and need to be queued again once eligible. Automatic scheduling of discarded-group destruction remains disabled.
+
 ## 3.5.0 browser push notifications
 
 New installations receive VAPID keys from `create_env.sh`. For an existing installation, first confirm that `.env` has a valid `SUPPORT_EMAIL` and does not contain any `VAPID_` settings, then run this one line from the deployment directory:

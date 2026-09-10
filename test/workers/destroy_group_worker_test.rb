@@ -2,10 +2,23 @@ require "test_helper"
 require_relative "../support/access_volume_matrix"
 
 class DestroyGroupWorkerTest < ActiveSupport::TestCase
+  setup do
+    @cleanup_enabled_before = ENV["CLEANUP_ENABLED"]
+    ENV["CLEANUP_ENABLED"] = "1"
+  end
+
+  teardown do
+    if @cleanup_enabled_before.nil?
+      ENV.delete("CLEANUP_ENABLED")
+    else
+      ENV["CLEANUP_ENABLED"] = @cleanup_enabled_before
+    end
+  end
+
   test "deletes only the discard operation that scheduled the job" do
     group = groups(:orphan_group_tree)
     subgroup = groups(:orphan_subgroup)
-    group.discard!
+    group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
 
     2.times { DestroyGroupWorker.perform_now(group.id, discarded_at) }
@@ -16,11 +29,11 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
 
   test "an old job preserves a restored then rediscarded group" do
     group = groups(:orphan_group_tree)
-    group.discard!
+    group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
     group.undiscard!
     travel 1.minute do
-      group.discard!
+      group.discard!(at: 91.days.ago)
       DestroyGroupWorker.perform_now(group.id, discarded_at)
     end
 
@@ -30,9 +43,49 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
 
   test "legacy jobs without a discard timestamp cannot delete a group" do
     group = groups(:orphan_group)
-    group.discard!
+    group.discard!(at: 91.days.ago)
     DestroyGroupWorker.perform_now(group.id)
     assert Group.exists?(group.id)
+  end
+
+  test "disabling cleanup preserves a group whose deletion was queued" do
+    group = groups(:orphan_group_tree)
+    group.discard!(at: 91.days.ago)
+    discarded_at = group.discarded_at.iso8601(6)
+    ENV.delete("CLEANUP_ENABLED")
+
+    DestroyGroupWorker.perform_now(group.id, discarded_at)
+
+    assert Group.exists?(group.id)
+    assert Group.exists?(groups(:orphan_subgroup).id)
+  end
+
+  test "increasing the deletion delay protects already queued groups" do
+    group = groups(:orphan_group_tree)
+    group.discard!(at: 91.days.ago)
+    discarded_at = group.discarded_at.iso8601(6)
+
+    AppConfig.stub(:group_deletion_delay_days, 120) do
+      DestroyGroupWorker.perform_now(group.id, discarded_at)
+    end
+
+    assert Group.exists?(group.id)
+    assert Group.exists?(groups(:orphan_subgroup).id)
+  end
+
+  test "deletion starts only when the full delay has elapsed" do
+    travel_to Time.current.change(usec: 0) do
+      group = groups(:orphan_group_tree)
+      group.discard!(at: 90.days.ago + 1.second)
+      discarded_at = group.discarded_at.iso8601(6)
+
+      DestroyGroupWorker.perform_now(group.id, discarded_at)
+      assert Group.exists?(group.id)
+
+      travel 1.second
+      DestroyGroupWorker.perform_now(group.id, discarded_at)
+      assert_not Group.exists?(group.id)
+    end
   end
 
   test "members and topic guests cannot schedule group deletion" do
