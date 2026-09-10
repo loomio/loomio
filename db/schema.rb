@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -121,62 +121,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 
-  create_table "blazer_audits", force: :cascade do |t|
-    t.datetime "created_at", precision: nil
-    t.string "data_source"
-    t.bigint "query_id"
-    t.text "statement"
-    t.bigint "user_id"
-    t.index ["query_id"], name: "index_blazer_audits_on_query_id"
-    t.index ["user_id"], name: "index_blazer_audits_on_user_id"
-  end
-
-  create_table "blazer_checks", force: :cascade do |t|
-    t.string "check_type"
-    t.datetime "created_at", null: false
-    t.bigint "creator_id"
-    t.text "emails"
-    t.datetime "last_run_at", precision: nil
-    t.text "message"
-    t.bigint "query_id"
-    t.string "schedule"
-    t.text "slack_channels"
-    t.string "state"
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
-    t.index ["query_id"], name: "index_blazer_checks_on_query_id"
-  end
-
-  create_table "blazer_dashboard_queries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.bigint "dashboard_id"
-    t.integer "position"
-    t.bigint "query_id"
-    t.datetime "updated_at", null: false
-    t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
-    t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
-  end
-
-  create_table "blazer_dashboards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.bigint "creator_id"
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
-  end
-
-  create_table "blazer_queries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.bigint "creator_id"
-    t.string "data_source"
-    t.text "description"
-    t.string "name"
-    t.text "statement"
-    t.string "status"
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
-  end
-
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "bookmarkable_id", null: false
     t.string "bookmarkable_type", null: false
@@ -206,11 +150,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.index ["group_id"], name: "index_chatbots_on_group_id"
   end
 
-  create_table "cohorts", id: :serial, force: :cascade do |t|
-    t.date "end_on"
-    t.date "start_on"
-  end
-
   create_table "comments", id: :serial, force: :cascade do |t|
     t.jsonb "attachments", default: [], null: false
     t.integer "attachments_count", default: 0, null: false
@@ -232,15 +171,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.index ["discarded_by"], name: "index_comments_on_discarded_by"
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "default_group_covers", id: :serial, force: :cascade do |t|
-    t.string "cover_photo_content_type"
-    t.string "cover_photo_file_name"
-    t.integer "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at", precision: nil
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
   end
 
   create_table "demos", force: :cascade do |t|
@@ -341,25 +271,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.index ["handle"], name: "index_group_handle_redirects_on_handle", unique: true
   end
 
-  create_table "group_surveys", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "declaration"
-    t.string "desired_feature"
-    t.integer "group_id", null: false
-    t.string "location"
-    t.text "misc"
-    t.text "purpose"
-    t.string "referrer"
-    t.string "role"
-    t.string "segment"
-    t.string "size"
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "usage"
-    t.string "website"
-    t.index ["group_id"], name: "index_group_surveys_on_group_id"
-  end
-
   create_table "groups", id: :serial, force: :cascade do |t|
     t.integer "admin_memberships_count", default: 0, null: false
     t.string "admin_tags"
@@ -370,7 +281,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.string "city"
     t.integer "closed_motions_count", default: 0, null: false
     t.integer "closed_polls_count", default: 0, null: false
-    t.integer "cohort_id"
     t.string "content_locale"
     t.string "country"
     t.string "cover_photo_content_type", limit: 255
@@ -379,7 +289,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.datetime "cover_photo_updated_at", precision: nil
     t.datetime "created_at", precision: nil
     t.integer "creator_id"
-    t.integer "default_group_cover_id"
     t.integer "delegates_count", default: 0, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "md", null: false
@@ -651,50 +560,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
     t.index ["id"], name: "index_notifications_on_pending_delivery_resolution", where: "(deliveries_generated_at IS NULL)"
     t.index ["recipient_user_ids"], name: "index_notifications_on_recipient_user_ids", using: :gin
     t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"
-  end
-
-  create_table "oauth_access_grants", id: :serial, force: :cascade do |t|
-    t.integer "application_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.integer "expires_in", null: false
-    t.text "redirect_uri", null: false
-    t.integer "resource_owner_id", null: false
-    t.datetime "revoked_at", precision: nil
-    t.string "scopes"
-    t.string "token", null: false
-    t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
-  end
-
-  create_table "oauth_access_tokens", id: :serial, force: :cascade do |t|
-    t.integer "application_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.integer "expires_in"
-    t.string "refresh_token"
-    t.integer "resource_owner_id"
-    t.datetime "revoked_at", precision: nil
-    t.string "scopes"
-    t.string "token", null: false
-    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
-    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
-    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
-  end
-
-  create_table "oauth_applications", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", precision: nil
-    t.string "logo_content_type"
-    t.string "logo_file_name"
-    t.integer "logo_file_size"
-    t.datetime "logo_updated_at", precision: nil
-    t.string "name", null: false
-    t.integer "owner_id"
-    t.string "owner_type"
-    t.text "redirect_uri", null: false
-    t.string "scopes", default: "", null: false
-    t.string "secret", null: false
-    t.string "uid", null: false
-    t.datetime "updated_at", precision: nil
-    t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
-    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
   create_table "omniauth_identities", id: :serial, force: :cascade do |t|
@@ -1500,7 +1365,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
-  add_foreign_key "group_surveys", "groups", on_delete: :cascade
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
   add_foreign_key "membership_requests", "groups", on_delete: :cascade

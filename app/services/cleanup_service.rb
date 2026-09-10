@@ -32,10 +32,6 @@ module CleanupService
   USER_REFERENCES = {
     attachments: %i[user_id],
     bookmarks: %i[user_id],
-    blazer_audits: %i[user_id],
-    blazer_checks: %i[creator_id],
-    blazer_dashboards: %i[creator_id],
-    blazer_queries: %i[creator_id],
     chatbots: %i[author_id],
     comments: %i[user_id discarded_by],
     demos: %i[author_id],
@@ -49,8 +45,6 @@ module CleanupService
     notifications: %i[actor_id],
     outcomes: %i[author_id],
     omniauth_identities: %i[user_id],
-    oauth_access_grants: %i[resource_owner_id],
-    oauth_access_tokens: %i[resource_owner_id],
     poll_templates: %i[author_id],
     polls: %i[author_id discarded_by],
     reactions: %i[user_id],
@@ -166,7 +160,7 @@ module CleanupService
 
     count = 0
     user_ids.each do |id|
-      with_write_lock(USER_REFERENCES.keys + %i[users sessions login_tokens push_subscriptions notification_deliveries notifications oauth_applications active_storage_attachments versions pg_search_documents]) do
+      with_write_lock(USER_REFERENCES.keys + %i[users sessions login_tokens push_subscriptions notification_deliveries notifications active_storage_attachments versions pg_search_documents]) do
         user = inactive_orphan_users.where(id: id).first
         next unless user
 
@@ -199,10 +193,6 @@ module CleanupService
         SELECT 1 FROM notification_deliveries
         WHERE notification_deliveries.recipient_type = 'User'
           AND notification_deliveries.recipient_id = users.id
-      )
-      AND NOT EXISTS (
-        SELECT 1 FROM oauth_applications
-        WHERE owner_type = 'User' AND owner_id = users.id
       )
       AND NOT EXISTS (
         SELECT 1 FROM active_storage_attachments
