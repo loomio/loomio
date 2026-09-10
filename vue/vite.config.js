@@ -108,6 +108,9 @@ export default defineConfig({
   },
 
   build: {
+    // Vite's default baseline starts at Safari 16.4. Loomio still supports
+    // iOS 16.3, so transpile syntax that its module parser cannot load.
+    target: 'safari16',
     sourcemap: true,
     emptyOutDir: true,
     outDir: '../public/client3',
