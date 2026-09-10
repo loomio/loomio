@@ -1271,6 +1271,7 @@ hu:
     confirm: A csoport törlésének megerősítéséhez írja be a „%{name}” parancsot.
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
     scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
+    deletion_after_grace_period: Ez a csoport nem érhető el, és %{days} nap múlva véglegesen törlésre kerül
   group_page:
     stats: Csoport statisztika
     threads: Témák

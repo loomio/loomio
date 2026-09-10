@@ -1273,6 +1273,7 @@ pl:
     confirm: Wpisz '%{name}', by potwierdzić usunięcie tej grupy.
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
     scheduled_for_deletion: Ta grupa zostanie trwale usunięta za 2 tygodnie
+    deletion_after_grace_period: Ta grupa jest niedostępna i zostanie trwale usunięta po %{days} dniach
   group_page:
     stats: Statystyki grupy
     threads: Wątki

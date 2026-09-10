@@ -27,3 +27,37 @@ cleanup_canceled_free:
   canceled_at: <%= 1.year.ago %>
   created_at: <%= 2.years.ago %>
   updated_at: <%= 1.year.ago %>
+
+# Daily empty-trial cleanup eligibility matrix.
+trial_cleanup_recent:
+  plan: trial
+  expires_at: <%= 59.days.ago %>
+
+trial_cleanup_no_expiry:
+  plan: trial
+
+trial_cleanup_discarded:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>
+
+trial_cleanup_poll:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>
+
+trial_cleanup_billing:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>
+  billing_service_subscription_id: trial-cleanup-billing
+
+trial_cleanup_chargify:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>
+  chargify_subscription_id: 123456
+
+trial_cleanup_shared:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>
+
+trial_cleanup_child_subscription:
+  plan: trial
+  expires_at: <%= 60.days.ago.beginning_of_day %>

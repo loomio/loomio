@@ -26,6 +26,10 @@ class AppConfig
     @release ||= `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
   end
 
+  def self.group_deletion_delay_days
+    ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end

@@ -414,6 +414,21 @@ ca:
     trial_expired:
       subject: El vostre grup de Loomio s'eliminarà per inactivitat.
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
+    destroy_warning_with_usage:
+      subject: El vostre grup de Loomio està programat per a la supressió.
+      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
+      trial_expired_warning: La prova del vostre grup de Loomio "%{group}" va caducar fa %{expired_days} dies. Si no us poseu en contacte amb nosaltres, s'eliminarà en %{grace_days} dies.
+      trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon a aquest correu electrònic en un termini de %{grace_days} dies si voleu sol·licitar una extensió de prova, actualitzar a una subscripció de pagament o necessiteu més temps per exportar les seves dades. Després d'això, el grup i les seves dades s'eliminaran permanentment.
+      trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
+      usage_heading: 'Resum de dades del grup:'
+      subgroups: Subgrups
+      members: Membres actuals
+      discussions: Debats
+      polls: Enquestes
+      comments: Comentaris
+      export: Per conservar el grup o exportar una còpia de les seves dades, responeu a aquest correu electrònic en un termini de %{days} dies. Podem restaurar l'accés abans de suprimir-lo.
+      export_link: Més informació sobre l'exportació de dades de grup
+      group_key: 'Clau de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}

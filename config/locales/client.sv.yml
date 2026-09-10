@@ -1267,6 +1267,7 @@ sv:
     confirm: Skriv '%{name}' för att bekräfta att du vill ta bort den här gruppen.
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
     scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
+    deletion_after_grace_period: Den här gruppen är inte tillgänglig och kommer att raderas permanent efter %{days} dagar
   group_page:
     stats: Gruppstatistik
     threads: Trådar

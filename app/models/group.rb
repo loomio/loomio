@@ -21,7 +21,6 @@ class Group < ApplicationRecord
 
   belongs_to :parent, class_name: 'Group'
   scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
-  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('subscriptions.expires_at < ?', 12.months.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
@@ -318,7 +317,7 @@ class Group < ApplicationRecord
   def discard!(actor: nil, at: Time.current)
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
-        Group.where(id: id_and_subgroup_ids).find_each do |group|
+        Group.kept.where(id: id_and_subgroup_ids).find_each do |group|
           group.assign_attributes(discarded_at: at, discarded_by: actor&.id)
           group.save!(validate: false)
         end
@@ -328,9 +327,13 @@ class Group < ApplicationRecord
   end
 
   def undiscard!(actor: nil)
+    discarded_at = self.discarded_at
+    return reload unless discarded_at
+
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
-        Group.where(id: id_and_subgroup_ids).find_each do |group|
+        # Preserve subgroups that were already discarded before this tree was.
+        Group.where(id: id_and_subgroup_ids, discarded_at: discarded_at).find_each do |group|
           group.assign_attributes(discarded_at: nil, discarded_by: nil)
           group.save!(validate: false)
         end

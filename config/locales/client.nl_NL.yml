@@ -1273,6 +1273,7 @@ nl_NL:
     confirm: Type '%{name}' om te bevestigen dat je groep wilt verwijderen.
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
     scheduled_for_deletion: Deze groep zal over 2 weken definitief worden verwijderd.
+    deletion_after_grace_period: Deze groep is niet beschikbaar en wordt na %{days} dagen definitief verwijderd
   group_page:
     stats: Groep statistieken
     threads: Borden

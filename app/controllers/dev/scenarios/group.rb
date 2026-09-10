@@ -78,6 +78,21 @@ module Dev::Scenarios::Group
     redirect_to group_emails_path(create_group)
   end
 
+  def setup_group_mailer_expired_trial_deletion_warning
+    group = create_group
+    create_discussion
+    group.subscription.update!(plan: "trial", expires_at: 60.days.ago)
+    GroupMailer.expired_trial_deletion_warning(group.id, patrick.id).deliver_now
+    last_email(to: patrick)
+  end
+
+  def setup_group_mailer_deletion_warning
+    group = create_group
+    create_discussion
+    GroupMailer.admin_deletion_warning(group.id, patrick.id, jennifer.id).deliver_now
+    last_email(to: patrick)
+  end
+
   def setup_user_no_group
     sign_in patrick
     redirect_to dashboard_path

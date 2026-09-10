@@ -676,6 +676,21 @@ zh_CN:
     trial_expired:
       subject: 由于长时间未活动，您的 Loomio 群组将被删除。
       body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
+    destroy_warning_with_usage:
+      subject: 您的 Loomio 群组已被安排删除
+      requested: 您的 Loomio 群组“%{group}”已被 %{requestor} 安排删除。该群组将在 %{days} 天后被永久删除。
+      trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。除非您联系我们，否则它将在 %{grace_days} 天内被删除。
+      trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请在 %{grace_days} 天内回复此邮件。逾期后，群组及其数据将被永久删除。
+      trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
+      usage_heading: 组数据汇总：
+      subgroups: 亚组
+      members: 现任成员
+      discussions: 讨论
+      polls: 民意调查
+      comments: 评论
+      export: 如需保留该群组或导出其数据副本，请在 %{days} 天内回复此邮件。我们可以在删除前恢复访问权限。
+      export_link: 了解如何导出群组数据
+      group_key: 组键：%{key}
   forward_mailer:
     bounce:
       subject: 您发送给 Loomio 的消息未送达

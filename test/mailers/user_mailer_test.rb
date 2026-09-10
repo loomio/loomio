@@ -27,4 +27,21 @@ class UserMailerTest < ActionMailer::TestCase
     ), mail.subject
     assert_match "/rails/active_storage/blobs/", mail.body.encoded
   end
+
+  test "group_export_ready can send to an address without a Loomio account" do
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: StringIO.new("csv,data"),
+      filename: "export.csv",
+      content_type: "text/csv"
+    )
+
+    mail = UserMailer.group_export_ready(@user.id, @group.full_name, blob.signed_id, "records@example.com")
+
+    assert_equal [ "records@example.com" ], mail.to
+    assert_equal I18n.t(
+      "user_mailer.group_export_ready.subject",
+      group_name: @group.full_name,
+      locale: @user.locale
+    ), mail.subject
+  end
 end

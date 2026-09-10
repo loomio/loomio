@@ -1266,6 +1266,7 @@ ja:
     confirm: "「%{name}」と入力して、このグループの削除を確認します。"
     success: このグループはアーカイブされており、2 週間以内に完全に削除される予定です。
     scheduled_for_deletion: このグループは2週間後に完全に削除される予定です
+    deletion_after_grace_period: このグループは利用できず、%{days}日後に完全に削除されます
   group_page:
     stats: グループ統計
     threads: ディスカッション

@@ -1267,6 +1267,7 @@ fi:
     confirm: Kirjoita '%{name}' vahvistaaksesi, että haluat poistaa tämän ryhmän.
     success: Tämä ryhmä on arkistoitu ja se on tarkoitus poistaa pysyvästi 2 viikon kuluttua.
     scheduled_for_deletion: Tämä ryhmä on ajoitettu poistettavaksi pysyvästi kahden viikon kuluttua.
+    deletion_after_grace_period: Tämä ryhmä ei ole käytettävissä, ja se poistetaan pysyvästi %{days} päivän kuluttua
   group_page:
     stats: Ryhmätilastot
     threads: Kierteet

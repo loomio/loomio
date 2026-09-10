@@ -83,6 +83,10 @@ class Api::V1::GroupsController < Api::V1::RestfulController
 
   private
 
+  def destroy_action
+    service.warn_and_discard(group: resource, actor: current_user)
+  end
+
   def enforce_trial_group_limit
     return if params.dig(:group, :parent_id).present?
     return if current_user.is_paying?

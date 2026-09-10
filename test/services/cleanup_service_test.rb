@@ -249,7 +249,12 @@ class CleanupServiceTest < ActiveSupport::TestCase
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
     assert_includes CleanupService.inactive_orphan_user_ids, user.id
 
-    CleanupService.delete_inactive_orphan_users
+    transaction = ->(_tables, &cleanup_block) do
+      ActiveRecord::Base.transaction(requires_new: true, &cleanup_block)
+    end
+    CleanupService.stub(:with_write_lock, transaction) do
+      CleanupService.delete_inactive_orphan_users
+    end
 
     assert_not User.exists?(user.id)
     assert_not PaperTrail::Version.exists?(item_type: 'User', item_id: user.id)

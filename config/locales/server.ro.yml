@@ -412,6 +412,21 @@ ro:
     trial_expired:
       subject: Grupul tău Loomio va fi șters din cauza inactivității.
       body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
+    destroy_warning_with_usage:
+      subject: Grupul tău Loomio este programat pentru ștergere
+      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}. Acesta va fi șters definitiv după %{days} de zile.
+      trial_expired_warning: Perioada de probă a grupului dvs. Loomio „%{group}” a expirat acum %{expired_days} zile. Dacă nu ne contactați, acesta va fi șters în %{grace_days} zile.
+      trial_expired_process: Grupul dvs. nu este disponibil cât timp este marcat pentru ștergere. Dacă doriți în continuare un loc în care grupul dvs. să discute și să ia decizii, nu este prea târziu să reporniți. Răspundeți la acest e-mail în termen de %{grace_days} zile dacă doriți să solicitați o prelungire a perioadei de probă, să faceți upgrade la un abonament plătit sau dacă aveți nevoie de mai mult timp pentru a exporta datele. După aceea, grupul și datele sale vor fi șterse definitiv.
+      trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv după %{days} de zile.
+      usage_heading: 'Rezumatul datelor de grup:'
+      subgroups: Subgrupuri
+      members: Membri actuali
+      discussions: Discuții
+      polls: Sondaje
+      comments: Comentarii
+      export: Pentru a păstra grupul sau a exporta o copie a datelor sale, răspundeți la acest e-mail în termen de %{days} de zile. Putem restabili accesul înainte de ștergere.
+      export_link: Aflați despre exportul datelor de grup
+      group_key: 'Cheie de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}

@@ -1279,6 +1279,7 @@ de:
     confirm: Drücke '%{name}' um zu bestätigen, dass Du diese Gruppe löschen willst
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
     scheduled_for_deletion: Diese Gruppe wird in 2 Wochen endgültig gelöscht.
+    deletion_after_grace_period: Diese Gruppe ist nicht verfügbar und wird nach %{days} Tagen endgültig gelöscht
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen

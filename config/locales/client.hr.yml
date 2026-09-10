@@ -1267,6 +1267,7 @@ hr:
     confirm: Upišite '%{name}' da potvrdite da želite izbrisati ovu grupu.
     success: Ova je grupa arhivirana i zakazano je za trajno brisanje za 2 tjedna.
     scheduled_for_deletion: Trajno brisanje ove grupe planirano je za 2 tjedna
+    deletion_after_grace_period: Ova grupa nije dostupna i bit će trajno izbrisana nakon %{days} dana
   group_page:
     stats: Grupna statistika
     threads: niti

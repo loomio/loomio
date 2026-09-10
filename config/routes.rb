@@ -58,7 +58,7 @@ Rails.application.routes.draw do
         post :handle
         post :discard
         post :undiscard
-        post :delete_group
+        post :warn_and_discard
         post :export_group
       end
     end

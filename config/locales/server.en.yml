@@ -708,6 +708,20 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
+    destroy_warning_with_usage:
+      subject: Your Loomio group is scheduled for deletion
+      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requestor}. It will be permanently deleted after %{days} days.
+      trial_expired_warning: Your Loomio group "%{group}" trial expired %{expired_days} days ago. Unless you contact us, it will be deleted in %{grace_days} days.
+      trial_expired_process: Your group is unavailable while it is marked for deletion. If you still want a place for your group to discuss and make decisions, it is not too late to restart. Reply to this email within %{grace_days} days if you want to request a trial extension, upgrade to a paid subscription, or need more time to export its data. After that, the group and its data will be permanently deleted.
+      usage_heading: "Group data summary:"
+      subgroups: Subgroups
+      members: Current members
+      discussions: Discussions
+      polls: Polls
+      comments: Comments
+      export: To keep the group or export a copy of its data, reply to this email within %{days} days. We can restore access before deletion.
+      export_link: Learn about exporting group data
+      group_key: "Group key: %{key}"
     trial_expired:
       subject: Your Loomio group will be deleted due to inactivity.
       body: |

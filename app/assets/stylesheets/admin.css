@@ -130,6 +130,7 @@ input, select, textarea {
 .admin-form-errors p { margin: 8px 0 0; }
 .admin-form-errors a { color: inherit; font-weight: 600; }
 .admin-inline-form { align-items: end; display: grid; gap: 8px; grid-template-columns: minmax(180px, 1fr) auto; }
+.admin-inline-form--export { grid-template-columns: minmax(220px, 1fr) minmax(90px, max-content) auto; }
 .admin-inline-form label { grid-column: 1 / -1; }
 .admin-inline-form__help { color: var(--admin-muted); font-size: .8rem; grid-column: 1 / -1; margin: 0; }
 .admin-operation-list { display: flex; flex-direction: column; gap: 12px; max-width: 720px; }
@@ -157,4 +158,5 @@ input, select, textarea {
   .admin-menu-toggle:checked ~ .admin-sidebar { transform: translateX(0); }
   .admin-main { padding: 20px 16px 48px; }
   .admin-flash { margin-left: 16px; margin-right: 16px; }
+  .admin-inline-form--export { grid-template-columns: 1fr; }
 }

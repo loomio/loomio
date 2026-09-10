@@ -150,37 +150,49 @@ module GroupService
     group
   end
 
-  def self.destroy(group:, actor:)
+  def self.discard(group:, actor:)
     actor.ability.authorize! :destroy, group
+    discard_and_notify(group: group, actor: actor)
+  end
 
-    discard_and_schedule_destruction!(group, actor: actor, wait: 2.weeks) do
+  def self.warn_and_discard(group:, actor:)
+    actor.ability.authorize! :destroy, group
+    discard_and_notify(group: group, actor: actor) do
       group.admins.each do |admin|
-        GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
+        GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
       end
-      Sentry.metrics.count("group.destroy")
-      EventBus.broadcast('group_destroy', group, actor)
     end
   end
 
-  def self.destroy_without_warning!(group_id, actor: nil)
-    discard_and_schedule_destruction!(Group.find(group_id), actor: actor)
+  def self.warn_and_discard_expired_trial(group_id:)
+    group = CleanupService.expired_trial_groups.find_by(id: group_id)
+    return unless group
+
+    discard_and_notify(group: group, actor: nil, reason: "trial_expired") do
+      group.admins.each do |admin|
+        GroupMailer.expired_trial_deletion_warning(group.id, admin.id).deliver_later
+      end
+    end
   end
 
-  # Capture the specific discard operation under the same lock as discard.
-  # Queue and announce only after commit so jobs cannot consume stale state.
-  def self.discard_and_schedule_destruction!(group, actor:, wait: nil)
+  # All ordinary discard paths share one locked transition. Authorization or
+  # automatic eligibility belongs to the entry point; warnings and broadcasts
+  # happen only after commit, and repeated requests do not repeat notifications.
+  def self.discard_and_notify(group:, actor:, reason: "requested")
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
+      next unless group.kept?
+
       group.discard!(actor: actor)
-      discarded_at = group.discarded_at.iso8601(6)
       transaction.after_commit do
-        DestroyGroupWorker.set(wait: wait).perform_later(group.id, discarded_at)
         yield if block_given?
+        Sentry.metrics.count("group.discard", attributes: { reason: reason })
+        EventBus.broadcast("group_destroy", group, actor)
       end
     end
+    group
   end
-
-  private_class_method :discard_and_schedule_destruction!
+  private_class_method :discard_and_notify
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

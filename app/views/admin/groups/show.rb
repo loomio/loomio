@@ -95,11 +95,24 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         if @group.discarded?
           button_to "Restore group", undiscard_admin_group_path(@group), method: :post, class: "admin-button"
         else
-          button_to "Discard group", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups? Their content will be retained, but the groups will be unavailable until they are restored." } }
-          button_to "Export group", export_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary"
+          button_to "Discard without warning", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups without warning their administrators? The group tree will be unavailable until restored." } }
         end
-        button_to "Delete group", delete_group_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Delete #{@group.name} and all of its subgroups? This permanently deletes their memberships and membership requests, topics and discussions, polls, votes and outcomes, topic items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are retained. This cannot be undone." } }
+        export_form
+        button_to "Warn then delete", warn_and_discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name} and discard its complete group tree now? It will be permanently deleted after #{AppConfig.group_deletion_delay_days} days." } }
       end
+    end
+  end
+
+  def export_form
+    form_with(url: export_group_admin_group_path(@group), method: :post, class: "admin-inline-form admin-inline-form--export") do
+      label(for: "export-email-#{@group.id}") { "Send data export to email" }
+      input(id: "export-email-#{@group.id}", name: "email", type: "email", required: true, placeholder: "Recipient email")
+      select(name: "export_format", aria: { label: "Export format" }) do
+        option(value: "json") { "JSON" }
+        option(value: "csv") { "CSV" }
+      end
+      button(type: "submit", class: "admin-button admin-button--secondary") { "Send export" }
+      p(class: "admin-inline-form__help") { "JSON is a complete Loomio archive. CSV is a readable summary of groups, memberships, discussions, comments, polls, votes and outcomes." }
     end
   end
 
