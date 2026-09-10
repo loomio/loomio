@@ -14,7 +14,7 @@ class WarnAndDiscardGroupWorker < ApplicationJob
         group.admins.each do |admin|
           GroupMailer.expired_trial_deletion_warning(group.id, admin.id).deliver_later
         end
-        Sentry.metrics.count("group.destroy", attributes: { reason: CleanupService::EXPIRED_TRIAL_REASON })
+        Sentry.metrics.count("group.destroy", attributes: { reason: "trial_expired" })
         EventBus.broadcast("group_destroy", group, nil)
       end
     end
