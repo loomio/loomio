@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_10_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -475,7 +475,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   create_table "membership_requests", id: :serial, force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "email", limit: 255
-    t.integer "group_id"
+    t.integer "group_id", null: false
     t.text "introduction"
     t.string "name", limit: 255
     t.integer "requestor_id"
@@ -721,7 +721,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
     t.jsonb "custom_fields", default: {}, null: false
     t.boolean "latest", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.integer "poll_id"
+    t.integer "poll_id", null: false
     t.integer "poll_option_id"
     t.date "review_on"
     t.text "statement", null: false
@@ -958,6 +958,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
     t.boolean "released", default: false, null: false
     t.boolean "spf_valid", default: false, null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_received_emails_on_group_id"
     t.index ["message_id"], name: "index_received_emails_on_message_id", unique: true
   end
 
@@ -1226,7 +1227,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   create_table "tags", id: :serial, force: :cascade do |t|
     t.string "color"
     t.datetime "created_at", precision: nil
-    t.integer "group_id"
+    t.integer "group_id", null: false
     t.citext "name", null: false
     t.integer "org_taggings_count", default: 0, null: false
     t.integer "priority", default: 0, null: false
@@ -1499,7 +1500,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "group_handle_redirects", "groups"
+  add_foreign_key "group_surveys", "groups", on_delete: :cascade
+  add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
+  add_foreign_key "membership_requests", "groups", on_delete: :cascade
   add_foreign_key "memberships", "groups", on_delete: :cascade
   add_foreign_key "memberships", "users", on_delete: :cascade
   add_foreign_key "mobile_access_tokens", "mobile_devices", on_delete: :cascade
@@ -1512,10 +1516,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   add_foreign_key "mobile_web_session_tickets", "mobile_devices", on_delete: :cascade
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
+  add_foreign_key "outcomes", "polls"
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
+  add_foreign_key "received_emails", "groups", on_delete: :cascade
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -1525,8 +1531,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_09_000002) do
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
+  add_foreign_key "stances", "polls"
   add_foreign_key "subscription_update_receipts", "subscriptions"
+  add_foreign_key "taggings", "tags", on_delete: :cascade
+  add_foreign_key "tags", "groups", on_delete: :cascade
   add_foreign_key "tasks_users", "tasks", on_delete: :cascade
   add_foreign_key "tasks_users", "users", on_delete: :cascade
   add_foreign_key "topic_items", "topic_items", column: ["parent_id", "topic_id"], primary_key: ["id", "topic_id"], name: "topic_items_parent_same_topic", on_delete: :cascade, deferrable: :immediate
+  add_foreign_key "topic_items", "topics"
+  add_foreign_key "topic_readers", "topics", on_delete: :cascade
+  add_foreign_key "topic_readers", "users", on_delete: :cascade
+  add_foreign_key "topics", "groups"
+  add_foreign_key "webhooks", "groups", on_delete: :cascade
 end

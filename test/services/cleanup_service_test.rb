@@ -18,11 +18,11 @@ class CleanupServiceTest < ActiveSupport::TestCase
   end
 
   test "delete_records limits one integrity category batch" do
-    missing_tag_id = Tag.maximum(:id) + 1
+    tag = tags(:cleanup_tag)
     now = Time.current
     Tagging.insert_all!(Array.new(CleanupService::DELETE_BATCH_SIZE + 1) do |index|
       {
-        tag_id: missing_tag_id,
+        tag_id: tag.id,
         taggable_type: "Group",
         taggable_id: Group.maximum(:id) + index + 1,
         created_at: now,
@@ -30,12 +30,12 @@ class CleanupServiceTest < ActiveSupport::TestCase
       }
     end)
 
-    assert_equal CleanupService::DELETE_BATCH_SIZE,
-                 CleanupService.delete_records(CleanupService.taggings_missing_tag)
-    assert_equal 1, CleanupService.taggings_missing_tag.count
+    scope = CleanupService.orphan_polymorphic_scope(Tagging, :taggable_type, :taggable_id, "Group")
+    assert_equal CleanupService::DELETE_BATCH_SIZE, CleanupService.delete_records(scope)
+    assert_equal 1, scope.count
   end
 
-  test "delete_orphan_records removes records dangling from hard-deleted groups" do
+  test "content blocks callbackless group deletion and survives cleanup" do
     subscription = Subscription.create!(plan: 'demo')
     group = Group.create!(
       name: "Dangling Cleanup #{SecureRandom.hex(4)}",
@@ -50,14 +50,16 @@ class CleanupServiceTest < ActiveSupport::TestCase
     )
     topic = discussion.topic
 
-    Group.where(id: group.id).delete_all
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      Group.transaction(requires_new: true) { Group.where(id: group.id).delete_all }
+    end
 
     CleanupService.delete_orphan_records
 
-    assert_not Membership.exists?(membership.id)
-    assert_not Discussion.exists?(discussion.id)
-    assert_not Topic.exists?(topic.id)
-    assert_not Subscription.exists?(subscription.id)
+    assert Membership.exists?(membership.id)
+    assert Discussion.exists?(discussion.id)
+    assert Topic.exists?(topic.id)
+    assert Subscription.exists?(subscription.id)
   end
 
   test "audit_orphan_records reports candidates without deleting them" do
@@ -80,12 +82,12 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
-  test "orphan cleanup removes group metadata and dependent references but preserves live and unassigned records" do
+  test "group deletion cascades metadata while preserving live and unassigned records" do
     group = groups(:group)
-    missing_group_id = Group.maximum(:id) + 1
+    removed_group = Group.create!(name: "Removed group", creator: @user, group_privacy: 'secret')
     models = [GroupSurvey, ReceivedEmail, CleanupService::LegacyWebhook, Tag]
     records = models.map do |model|
-      attributes = { group_id: missing_group_id }
+      attributes = { group_id: removed_group.id }
       attributes[:name] = "orphan #{@hex}" if [Tag, CleanupService::LegacyWebhook].include?(model)
       orphan = model.find(model.insert_all!([attributes]).rows.first.first)
       live = model.create!(attributes.merge(group_id: group.id))
@@ -98,11 +100,9 @@ class CleanupServiceTest < ActiveSupport::TestCase
     blob = ActiveStorage::Blob.create!(key: "orphan-email-#{@hex}", filename: 'message.txt', byte_size: 0, checksum: 'empty', service_name: ActiveStorage::Blob.service.name)
     attachment_id = ActiveStorage::Attachment.insert_all!([{ name: 'attachments', record_type: 'ReceivedEmail', record_id: email.id, blob_id: blob.id, created_at: Time.current }]).rows.first.first
 
-    audit = CleanupService.audit_orphan_records
-    %w[GroupSurvey ReceivedEmail Webhook Tag].each do |name|
-      assert_equal 1, audit[:dangling_records]["#{name}.missing_group"]
-    end
-    records.each { |orphan, _| assert orphan.class.exists?(orphan.id) }
+    removed_group.destroy!
+    records.each { |orphan, _| assert_not orphan.class.exists?(orphan.id) }
+    assert_not Tagging.exists?(tagging_id)
 
     CleanupService.delete_orphan_records
 
@@ -117,15 +117,17 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Group.exists?(group.id)
   end
 
-  test "delete_orphan_records preserves content with a live parent when its topic is missing" do
+  test "timeline content blocks callbackless topic deletion" do
     comment = comments(:public_discussion_comment)
     topic_item = topic_items(:public_discussion_comment_topic_item)
-    Topic.where(id: topic_item.topic_id).delete_all
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      Topic.transaction(requires_new: true) { Topic.where(id: topic_item.topic_id).delete_all }
+    end
 
     CleanupService.delete_orphan_records
 
     assert Comment.exists?(comment.id)
-    assert_not TopicItem.exists?(topic_item.id)
+    assert TopicItem.exists?(topic_item.id)
   end
 
   test "delete_orphan_records preserves a comment when only its timeline is missing" do
@@ -137,13 +139,15 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Comment.exists?(comment.id)
   end
 
-  test "delete_orphan_records deletes missing-parent comment forests" do
+  test "delete_orphan_records preserves a missing-root topic with surviving comments" do
     comment = comments(:public_discussion_comment)
+    topic_id = comment.topic.id
     Discussion.where(id: comment.parent_id).delete_all
 
     CleanupService.delete_orphan_records
 
-    assert_not Comment.exists?(comment.id)
+    assert Comment.exists?(comment.id)
+    assert Topic.exists?(topic_id)
   end
 
   test "cleanup_comment_references preserves replies while their topic still exists" do

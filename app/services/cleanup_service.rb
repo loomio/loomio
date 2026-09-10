@@ -4,21 +4,8 @@
 # graphs. Inactive orphan users are valid lifecycle records, so their removal
 # uses normal model destruction instead.
 #
-# The following audits are temporary and should be removed after the named
-# foreign keys have been deployed and validated:
-# - groups_missing_parent: groups.parent_id -> groups.id
-# - membership_requests_missing_group: membership_requests.group_id -> groups.id
-# - discussions_missing_group and polls_missing_group: the topics.group_id key
-#   plus cascading topicable lifecycle keys
-# - poll_options_missing_poll: deployed poll_options.poll_id -> polls.id
-# - stances_missing_poll: stances.poll_id -> polls.id
-# - stance_choices_missing_stance: deployed stance_choices.stance_id -> stances.id
-# - outcomes_missing_poll: outcomes.poll_id -> polls.id
-# - topics_missing_group: topics.group_id -> groups.id
-# - topic_readers_missing_topic_or_user: topic_readers.topic_id/user_id
-# - events_missing_topic: topic_items.topic_id -> topics.id
-# - events_missing_parent: deployed topic_items.parent_id -> topic_items.id
-# - tasks_users_missing_task_or_user: deployed tasks_users.task_id/user_id keys
+# Ordinary parent references are protected by validated foreign keys and required
+# columns. Deploy the reference-integrity migrations before running this version.
 #
 # These checks remain necessary because an ordinary foreign key cannot enforce
 # them: polymorphic comment parents and itemables; polymorphic reactions,
@@ -119,29 +106,12 @@ module CleanupService
   }.freeze
 
   DANGLING_RECORD_SCOPES = {
-    "Group.missing_parent" => :groups_missing_parent,
-    "MembershipRequest.missing_group" => :membership_requests_missing_group,
-    "GroupSurvey.missing_group" => :group_surveys_missing_group,
-    "ReceivedEmail.missing_group" => :received_emails_missing_group,
-    "Webhook.missing_group" => :webhooks_missing_group,
-    "Tag.missing_group" => :tags_missing_group,
-    "Tagging.missing_tag" => :taggings_missing_tag,
-    "Discussion.missing_group" => :discussions_missing_group,
-    "Poll.missing_group" => :polls_missing_group,
-    "PollOption.missing_poll" => :poll_options_missing_poll,
-    "Stance.missing_poll" => :stances_missing_poll,
-    "StanceChoice.missing_stance" => :stance_choices_missing_stance,
-    "Outcome.missing_poll" => :outcomes_missing_poll,
-    "Topic.missing_group" => :topics_missing_group,
-    "TopicReader.missing_topic_or_user" => :topic_readers_missing_topic_or_user,
     "Comment.missing_event" => :comments_missing_event,
     "Comment.missing_parent" => :comments_missing_parent,
     "TopicItem.missing_stance" => :events_missing_stance,
-    "TopicItem.missing_topic" => :events_missing_topic,
     "Reaction.missing_stance" => :reactions_missing_stance,
     "Bookmark.missing_stance" => :bookmarks_missing_stance,
     "Task.missing_stance" => :tasks_missing_stance,
-    "TasksUser.missing_task_or_user" => :tasks_users_missing_task_or_user,
     "Translation.missing_stance" => :translations_missing_stance,
     "PgSearch::Document.missing_stance" => :search_documents_missing_stance,
     "ActiveStorage::Attachment.missing_stance" => :attachments_missing_stance,
@@ -257,11 +227,9 @@ module CleanupService
   # records must be repaired and some deleted in dependency order. Keep this
   # report side-effect free so operators can review the complete plan first.
   def self.reference_integrity_audit
-    missing_parent_topic_items = events_missing_parent
     invalid_root_topic_items = events_invalid_root
     affected_topic_ids = (
       events_missing_stance.where.not(topic_id: nil).distinct.pluck(:topic_id) +
-      missing_parent_topic_items.where.not(topic_id: nil).distinct.pluck(:topic_id) +
       invalid_root_topic_items.distinct.pluck(:topic_id) +
       TopicItem.where(itemable_type: "Comment", itemable_id: comments_missing_parent.select(:id))
            .where.not(topic_id: nil)
@@ -276,13 +244,10 @@ module CleanupService
       ),
       comments_missing_parent: unique_count(comments_missing_parent),
       events_missing_stance: unique_count(events_missing_stance),
-      events_missing_parent: unique_count(missing_parent_topic_items),
       events_invalid_root: unique_count(invalid_root_topic_items),
-      events_referencing_missing_topic: unique_count(events_missing_topic),
       reactions_missing_stance: unique_count(reactions_missing_stance),
       bookmarks_missing_stance: unique_count(bookmarks_missing_stance),
       tasks_missing_stance: unique_count(tasks_missing_stance),
-      tasks_users_missing_task_or_user: unique_count(tasks_users_missing_task_or_user),
       translations_missing_stance: unique_count(translations_missing_stance),
       search_documents_missing_stance: unique_count(search_documents_missing_stance),
       attachments_missing_stance: unique_count(attachments_missing_stance),
@@ -293,19 +258,6 @@ module CleanupService
 
   def self.cleanup_event_parent_references!
     TopicItem.transaction do
-      events_missing_parent.limit(DELETE_BATCH_SIZE).find_each do |topic_item|
-        if topic_item.topic_id
-          parent = topic_item.find_parent_topic_item
-          raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
-
-          topic_item.update_columns(parent_id: parent.id, depth: parent.depth + 1)
-        elsif topic_item.itemable
-          topic_item.update_columns(parent_id: nil, depth: 0)
-        else
-          TopicItem.where(id: topic_item.id).delete_all
-        end
-      end
-
       events_invalid_root.limit(DELETE_BATCH_SIZE).find_each do |topic_item|
         parent = topic_item.find_parent_topic_item
         raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
@@ -335,96 +287,6 @@ module CleanupService
     DANGLING_RECORD_SCOPES.transform_values { |method_name| public_send(method_name) }
   end
 
-  def self.groups_missing_parent
-    Group
-      .joins('LEFT JOIN groups parents ON parents.id = groups.parent_id')
-      .where('groups.parent_id IS NOT NULL AND parents.id IS NULL')
-  end
-
-  def self.membership_requests_missing_group
-    MembershipRequest
-      .joins('LEFT JOIN groups ON groups.id = group_id')
-      .where('groups.id IS NULL')
-  end
-
-  def self.discussions_missing_group
-    Discussion
-      .joins(:topic)
-      .joins('LEFT JOIN groups g ON topics.group_id = g.id')
-      .where('topics.group_id IS NOT NULL AND g.id IS NULL')
-  end
-
-  # An unassigned email is valid. Only non-null links to deleted groups are
-  # orphans; the same rule keeps optional group links intact in these tables.
-  def self.records_missing_group(model)
-    table = model.quoted_table_name
-    model.where.not(group_id: nil)
-         .where("NOT EXISTS (SELECT 1 FROM groups WHERE groups.id = #{table}.group_id)")
-  end
-
-  def self.group_surveys_missing_group
-    records_missing_group(GroupSurvey)
-  end
-
-  def self.received_emails_missing_group
-    records_missing_group(ReceivedEmail)
-  end
-
-  def self.webhooks_missing_group
-    records_missing_group(LegacyWebhook)
-  end
-
-  def self.tags_missing_group
-    records_missing_group(Tag)
-  end
-
-  def self.taggings_missing_tag
-    Tagging.where('NOT EXISTS (SELECT 1 FROM tags WHERE tags.id = taggings.tag_id)')
-  end
-
-  def self.polls_missing_group
-    Poll
-      .joins('LEFT JOIN topics t ON t.id = polls.topic_id')
-      .joins('LEFT JOIN groups g ON g.id = t.group_id')
-      .where('t.group_id IS NOT NULL AND g.id IS NULL')
-  end
-
-  def self.poll_options_missing_poll
-    PollOption
-      .joins('LEFT JOIN polls ON polls.id = poll_id')
-      .where('polls.id IS NULL')
-  end
-
-  def self.stances_missing_poll
-    Stance
-      .joins('LEFT JOIN polls ON polls.id = poll_id')
-      .where('polls.id IS NULL')
-  end
-
-  def self.stance_choices_missing_stance
-    StanceChoice
-      .joins('LEFT JOIN stances ON stances.id = stance_id')
-      .where('stances.id': nil)
-  end
-
-  def self.outcomes_missing_poll
-    Outcome
-      .joins('LEFT JOIN polls ON polls.id = poll_id')
-      .where('polls.id IS NULL')
-  end
-
-  def self.topics_missing_group
-    Topic
-      .joins_groups
-      .where('topics.group_id IS NOT NULL AND groups.id IS NULL')
-  end
-
-  def self.topic_readers_missing_topic_or_user
-    TopicReader
-      .joins('LEFT JOIN topics ON topics.id = topic_id LEFT JOIN users ON users.id = user_id')
-      .where('topics.id IS NULL OR users.id IS NULL')
-  end
-
   def self.comments_missing_event
     Comment
       .joins("LEFT JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
@@ -447,23 +309,10 @@ module CleanupService
       SQL
   end
 
-  def self.events_missing_topic
-    TopicItem
-      .joins('LEFT JOIN topics ON topic_items.topic_id = topics.id')
-      .where('topic_items.topic_id IS NOT NULL AND topics.id IS NULL')
-  end
-
   def self.events_missing_stance
     TopicItem
       .joins("LEFT JOIN stances ON topic_items.itemable_type = 'Stance' AND stances.id = topic_items.itemable_id")
       .where(itemable_type: "Stance", stances: { id: nil })
-  end
-
-  def self.events_missing_parent
-    TopicItem
-      .joins("LEFT JOIN topic_items parent_topic_items ON parent_topic_items.id = topic_items.parent_id")
-      .where.not(parent_id: nil)
-      .where(parent_topic_items: { id: nil })
   end
 
   def self.events_invalid_root
@@ -489,12 +338,6 @@ module CleanupService
     Task
       .joins("LEFT JOIN stances ON tasks.record_type = 'Stance' AND stances.id = tasks.record_id")
       .where(record_type: "Stance", stances: { id: nil })
-  end
-
-  def self.tasks_users_missing_task_or_user
-    TasksUser
-      .joins("LEFT JOIN tasks ON tasks.id = tasks_users.task_id LEFT JOIN users ON users.id = tasks_users.user_id")
-      .where("tasks.id IS NULL OR users.id IS NULL")
   end
 
   def self.translations_missing_stance
@@ -561,6 +404,14 @@ module CleanupService
       # Raw deletes bypass reparenting callbacks, and the self-FK cascades.
       # Preserve damaged ancestors until their surviving children are repaired.
       scope = scope.where("NOT EXISTS (SELECT 1 FROM topic_items children WHERE children.parent_id = topic_items.id)")
+    end
+    if record_class == Topic
+      # A missing polymorphic root does not make surviving content disposable.
+      # Keep the topic for repair; its FKs also prevent concurrent child inserts
+      # from being orphaned if an otherwise empty topic is deleted here.
+      %w[topic_items polls discussions].each do |table|
+        scope = scope.where("NOT EXISTS (SELECT 1 FROM #{table} children WHERE children.topic_id = topics.id)")
+      end
     end
     primary_key = record_class.primary_key
     primary_key_column = record_class.arel_table[primary_key]

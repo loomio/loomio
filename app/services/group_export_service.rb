@@ -348,6 +348,12 @@ class GroupExportService
 
     datas_by_table = datas.group_by { |data| data['table'] }
     tables = datas_by_table.keys - ['attachments']
+    # Archives list timeline items before topics. Restore their ownership rows
+    # first so required references are valid even during the import transaction.
+    parents = %w[users groups topics]
+    tables = (parents & tables) + (tables - parents)
+    # Group hierarchies have two levels, but archive row order is unspecified.
+    datas_by_table.fetch('groups', []).sort_by! { |data| data.dig('record', 'parent_id').nil? ? 0 : 1 }
 
     ActiveRecord::Base.transaction do
       migrate_ids = build_migrate_ids(datas_by_table, tables)

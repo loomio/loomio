@@ -320,6 +320,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     member = data[:member]
 
     filename = GroupExportService.export(group.all_groups, group.name)
+    # Exercise archives that list subgroups before their parent organization.
+    archive = File.readlines(filename).map { |line| JSON.parse(line) }
+    archive.sort_by! { |data| data['table'] == 'groups' && data.dig('record', 'parent_id') ? 0 : 1 }
+    File.write(filename, archive.map(&:to_json).join("\n") + "\n")
 
     # Delete just the records we created (not all tables, to preserve fixtures)
     group_ids = group.all_groups.pluck(:id)

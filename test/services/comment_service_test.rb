@@ -373,7 +373,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     topic_item.destroy!
 
     assert_equal topic_item.parent_id, reply_event.reload.parent_id
-    assert_not CleanupService.events_missing_parent.exists?(id: reply_event.id)
+    assert TopicItem.exists?(reply_event.parent_id)
   end
 
   test "destroying a topic root destroys its complete topic_item tree" do

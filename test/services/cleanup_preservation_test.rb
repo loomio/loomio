@@ -56,13 +56,16 @@ class CleanupPreservationTest < ActiveSupport::TestCase
     assert TopicItem.exists?(dangling.id), "damaged ancestors remain available for explicit repair"
   end
 
-  test "a missing parent group does not make a populated private subgroup disposable" do
+  test "a populated private subgroup prevents callbackless deletion of its parent" do
     actor = users(:admin)
     root = Group.create!(name: "Missing parent", creator: actor, group_privacy: "secret")
     subgroup = Group.create!(name: "Working subgroup", creator: actor, parent: root, group_privacy: "secret")
     membership = subgroup.add_admin!(actor)
     discussion = DiscussionService.create(params: { group_id: subgroup.id, title: "Actual work" }, actor: actor)
-    Group.where(id: root.id).delete_all
+    before = access_volume_matrix
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      Group.transaction(requires_new: true) { Group.where(id: root.id).delete_all }
+    end
 
     2.times { CleanupService.delete_orphan_records }
 
@@ -71,5 +74,6 @@ class CleanupPreservationTest < ActiveSupport::TestCase
     assert Membership.exists?(membership.id)
     assert_equal "secret", subgroup.reload.group_privacy
     assert_equal root.id, subgroup.parent_id, "cleanup must not silently change the access hierarchy"
+    assert_access_volume_matrix_unchanged(before)
   end
 end

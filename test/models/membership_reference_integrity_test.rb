@@ -37,7 +37,8 @@ class MembershipReferenceIntegrityTest < ActiveSupport::TestCase
   end
 
   test "database cascades remove memberships with deleted users and groups" do
-    group_membership = memberships(:member_membership)
+    group = Group.create!(name: "Membership lifecycle", creator: users(:admin), group_privacy: "secret")
+    group_membership = group.add_member!(users(:member))
     user_membership = memberships(:admin_membership)
 
     Group.where(id: group_membership.group_id).delete_all
