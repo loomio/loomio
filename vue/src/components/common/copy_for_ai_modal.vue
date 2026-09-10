@@ -5,16 +5,17 @@ import { ref, onMounted } from 'vue';
 const { topic } = defineProps({ topic: Object, close: Function });
 const markdown = ref('');
 const loading = ref(true);
+const copying = ref(false);
 
 async function loadThread() {
   const response = await fetch(`/api/v1/topics/${topic.id}/markdown`);
   if (!response.ok) throw new Error('Could not load thread Markdown');
-  markdown.value = (await response.json()).markdown;
+  return (await response.json()).markdown;
 }
 
 onMounted(async () => {
   try {
-    await loadThread();
+    markdown.value = await loadThread();
   } catch (error) {
     console.error(error);
     Flash.error('common.something_went_wrong');
@@ -24,8 +25,16 @@ onMounted(async () => {
 });
 
 async function copyThread() {
-  await navigator.clipboard.writeText(markdown.value);
-  Flash.success('action_dock.thread_markdown_copied');
+  try {
+    copying.value = true;
+    await navigator.clipboard.writeText(markdown.value);
+    Flash.success('action_dock.thread_markdown_copied');
+  } catch (error) {
+    console.error(error);
+    Flash.error('common.something_went_wrong');
+  } finally {
+    copying.value = false;
+  }
 }
 </script>
 
@@ -36,6 +45,6 @@ v-card(:title="$t('action_dock.copy_markdown')")
   v-card-text.pb-2
     p.text-body-2(v-t="'action_dock.copy_markdown_description'")
   v-card-actions.justify-center
-    v-btn(color="primary" variant="elevated" :disabled="loading || !markdown" :loading="loading" @click="copyThread")
-      span(v-t="'action_dock.copy_thread'")
+    v-btn(color="primary" variant="elevated" :disabled="loading || !markdown" :loading="loading || copying" @click="copyThread")
+      span(v-t="'action_dock.copy_markdown'")
 </template>

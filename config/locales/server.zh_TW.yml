@@ -759,3 +759,34 @@ zh_TW:
     file_too_large: 文件過大。最大上傳大小為 %{limit}。
   merge_users:
     not_target_user: 您必須以目標帳戶身分登入才能確認合併。
+  thread_markdown:
+    poll: 輪詢
+    no_activity: 目前尚無評論、投票或結果
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: 評論 · %{author} %{timestamp}
+    comment_reply: 回覆 %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**狀態：** %{value}"
+    anonymous_voting: "**匿名投票：** %{value}"
+    options: "**選項：** %{value}"
+    'yes': 是的
+    closed: 已關閉 %{value}
+    scheduled_to_open: 計劃於 %{value} 開放
+    open_until: 開啟；關閉 %{value}
+    open: 打開
+    current_results: 目前結果
+    hidden_until_closed: 投票結束前隱藏
+    hidden_until_voted: 隱藏，直到觀眾投票。
+    voters: 選民
+    target: 目標
+    available: 可用的
+    available_if_needed: 如有需要可提供
+    unavailable: 不可用
+    anonymous: 匿名的
+    no_voters: 沒有投票者
+    score: 得分：%{value}
+    vote: 投票：%{response} · %{author} %{timestamp}
+    none_of_the_above: 以上皆非
+    no_option_selected: 未選擇任何選項
+    outcome: 結果 · %{author} %{timestamp}
+    review_date: "**審核日期：** %{value}"

@@ -134,11 +134,79 @@ Select **Print** to generate a page suitable for printing. Use your browser's pr
 
 ### Copy Markdown
 
-Select **Copy Markdown**, then **Copy thread**, to copy the complete thread as structured Markdown. You can paste it into a document, an AI assistant, or another tool that supports Markdown.
+Select **Copy Markdown**, then **Copy Markdown**, to copy the complete thread as structured Markdown. You can paste it into meeting minutes, a document, an AI assistant, or another tool that supports Markdown.
 
 ![](../discussion_management/copy_markdown_dialog.png)
 
-The copied document includes the discussion context, timestamps, replies, polls, visible results, vote reasons, and outcomes. Loomio applies the same visibility rules as the thread: results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls.
+The copied document begins with YAML front matter containing the group, creation date, last activity date, and tags. It then includes the discussion context, replies, polls, visible results, voter names, vote reasons, reactions, and outcomes. Poll results use a table so each option's count and voters can be read together. Loomio applies the same visibility rules as the thread: results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls.
+
+For example, a discussion containing a comment, reactions, a proposal, two votes, and an outcome produces Markdown with this structure:
+
+```markdown
+---
+group: "Oatmilk Cooperative"
+created: "2026-09-10T23:28:30Z"
+last_activity: "2026-09-10T23:28:30Z"
+---
+
+# Discussion: Returnable bottles for cafe customers · Samira Patel 2026-09-10 23:28
+
+Several cafe customers have asked whether we can supply oat milk in returnable glass bottles. This thread is for working through the practical questions before we decide whether to run a trial. 🥛
+
+**We need a plan that cafe staff can explain easily** , including the deposit, collection days, and what happens when a bottle is damaged or not returned.
+
+Please read the [draft bottle return guide](https://example.com/oatmilk-bottle-return-guide) and add any questions about washing capacity, food-safety checks, transport costs, or weekly reporting.
+
+## Comment · Alex Morgan 2026-09-10 23:28
+
+I can ask three cafes to track how many bottles are returned each week.
+
+- 👍 Jamie Chen, Samira Patel
+
+## Proposal: Run a six-week returnable bottle trial · Jamie Chen 2026-09-10 23:28
+
+- **Status:** Closed 2026-09-10T23:28:30Z
+- **Options:** Agree; Abstain; Disagree
+
+Supply returnable glass bottles to three cafe customers for six weeks, with one collection from each cafe every week.
+
+<mark>Before launch, confirm the deposit guidance and the food-safety record for every washed batch.</mark>
+
+| Measure | Review |
+| --- | --- |
+| Return rate | Weekly |
+| Cleaning time | Each batch |
+| Transport cost | End of trial |
+
+### Current results
+
+| Option | Votes | % of votes cast | % of eligible voters | Voters |
+| --- | --- | --- | --- | --- |
+| Agree | 1 | 50% | 33% | Samira Patel |
+| Abstain | 1 | 50% | 33% | Alex Morgan |
+| Disagree | 0 | 0% | 0% | No voters |
+| Undecided | 1 |  | 33% | Jamie Chen |
+
+## Vote: Agree · Samira Patel 2026-09-10 23:28
+
+The six-week trial gives us enough time to test collections and washing capacity.
+
+- ❤️ Jamie Chen
+
+## Reply to Samira Patel · Alex Morgan 2026-09-10 23:28
+
+Could we confirm which cafes will participate before the trial starts?
+
+## Vote: Abstain · Alex Morgan 2026-09-10 23:28
+
+I can support the trial once the collection dates are confirmed with each cafe.
+
+## Outcome · Jamie Chen 2026-09-10 23:28
+
+Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
+```
+
+The copied headings and labels use your selected language. Content written by participants remains in its original language.
 
 ### Thread settings and display
 

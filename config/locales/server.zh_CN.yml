@@ -724,3 +724,34 @@ zh_CN:
     file_too_large: 文件过大。最大上传大小为 %{limit}。
   merge_users:
     not_target_user: 您必须以目标帐户身份登录才能确认合并。
+  thread_markdown:
+    poll: 轮询
+    no_activity: 目前尚无评论、投票或结果
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: 评论 · %{author} %{timestamp}
+    comment_reply: 回复 %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**状态：** %{value}"
+    anonymous_voting: "**匿名投票：** %{value}"
+    options: "**选项：** %{value}"
+    'yes': 是的
+    closed: 已关闭 %{value}
+    scheduled_to_open: 计划于 %{value} 开放
+    open_until: 打开；关闭 %{value}
+    open: 打开
+    current_results: 当前结果
+    hidden_until_closed: 投票结束前隐藏
+    hidden_until_voted: 隐藏，直到观众投票。
+    voters: 选民
+    target: 目标
+    available: 可用的
+    available_if_needed: 如有需要可提供
+    unavailable: 不可用
+    anonymous: 匿名的
+    no_voters: 没有投票者
+    score: 得分：%{value}
+    vote: 投票：%{response} · %{author} %{timestamp}
+    none_of_the_above: 以上皆非
+    no_option_selected: 未选择任何选项
+    outcome: 结果 · %{author} %{timestamp}
+    review_date: "**审核日期：** %{value}"

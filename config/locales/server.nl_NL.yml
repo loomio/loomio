@@ -756,3 +756,34 @@ nl_NL:
     file_too_large: Het bestand is te groot. De maximale uploadgrootte is %{limit}.
   merge_users:
     not_target_user: Je moet ingelogd zijn met het doelaccount om een samenvoeging te bevestigen.
+  thread_markdown:
+    poll: Peiling
+    no_activity: Nog geen reacties, peilingen, stemmen of uitslagen.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Reactie · %{author} %{timestamp}
+    comment_reply: Antwoord op %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anoniem stemmen:** %{value}"
+    options: "**Opties:** %{value}"
+    'yes': Ja
+    closed: Gesloten %{value}
+    scheduled_to_open: Gepland om te openen %{value}
+    open_until: Open; sluit %{value}
+    open: Open
+    current_results: Huidige resultaten
+    hidden_until_closed: Verborgen tot de stemming sluit.
+    hidden_until_voted: Verborgen totdat de kijker stemt
+    voters: Kiezers
+    target: Doel
+    available: Beschikbaar
+    available_if_needed: Beschikbaar indien nodig
+    unavailable: Niet beschikbaar
+    anonymous: Anoniem
+    no_voters: Geen kiezers
+    score: 'score: %{value}'
+    vote: 'Stem: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Geen van bovenstaande
+    no_option_selected: Geen optie geselecteerd
+    outcome: Resultaat · %{author} %{timestamp}
+    review_date: "**Reviewdatum:** %{value}"

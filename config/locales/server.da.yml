@@ -735,3 +735,34 @@ da:
     file_too_large: Filen er for stor. Maksimal uploadstørrelse er %{limit}.
   merge_users:
     not_target_user: Du skal være logget ind som målkontoen for at bekræfte en fletning.
+  thread_markdown:
+    poll: Afstemning
+    no_activity: Ingen kommentarer, afstemninger, stemmer eller resultater endnu
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Kommentar · %{author} %{timestamp}
+    comment_reply: Svar til %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonym afstemning:** %{value}"
+    options: "**Valgmuligheder:** %{value}"
+    'yes': Ja
+    closed: Lukket %{value}
+    scheduled_to_open: Planlagt åbning %{value}
+    open_until: Åbner; lukker %{value}
+    open: Åben
+    current_results: Nuværende resultater
+    hidden_until_closed: Skjult indtil afstemningen lukker
+    hidden_until_voted: Skjult indtil seeren stemmer
+    voters: vælgere
+    target: Mål
+    available: Tilgængelig
+    available_if_needed: Tilgængelig hvis nødvendigt
+    unavailable: Ikke tilgængelig
+    anonymous: Anonym
+    no_voters: Ingen vælgere
+    score: 'score: %{value}'
+    vote: 'Stemme: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Ingen af ovenstående
+    no_option_selected: Ingen valgmulighed valgt
+    outcome: Resultat · %{author} %{timestamp}
+    review_date: "**Gennemgangsdato:** %{value}"

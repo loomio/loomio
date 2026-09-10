@@ -13,6 +13,56 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_copy_markdown
+    _group, coordinator, discussion = create_manual_oatmilk_cooperative
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    comment = discussion.comments.first
+    poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+
+    Reaction.create!(reactable: comment, user: coordinator, reaction: '👍')
+    Reaction.create!(reactable: comment, user: production_lead, reaction: '👍')
+
+    production_stance = poll.stances.latest.find_by!(participant: production_lead)
+    StanceService.update(
+      stance: production_stance,
+      actor: production_lead,
+      params: {
+        choice: {poll.poll_options.first.name => 1},
+        reason: 'The six-week trial gives us enough time to test collections and washing capacity.'
+      }
+    )
+    Reaction.create!(reactable: production_stance, user: coordinator, reaction: '❤️')
+    CommentService.create(
+      comment: Comment.new(
+        parent: production_stance,
+        body: 'Could we confirm which cafes will participate before the trial starts?'
+      ),
+      actor: sales_lead
+    )
+
+    StanceService.update(
+      stance: poll.stances.latest.find_by!(participant: sales_lead),
+      actor: sales_lead,
+      params: {
+        choice: {poll.poll_options.second.name => 1},
+        reason: 'I can support the trial once the collection dates are confirmed with each cafe.'
+      }
+    )
+
+    PollService.close(poll: poll, actor: coordinator)
+    OutcomeService.create(
+      outcome: Outcome.new(
+        poll: poll,
+        statement: 'Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.'
+      ),
+      actor: coordinator
+    )
+
+    sign_in coordinator
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_discussion_with_push
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     TopicReader.for(topic: discussion.topic, user: coordinator).set_volume!(email: :quiet, push: :normal)

@@ -1,5 +1,36 @@
 ---
 en:
+  thread_markdown:
+    poll: Poll
+    no_activity: No comments, polls, votes, or outcomes yet
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: "Comment · %{author} %{timestamp}"
+    comment_reply: "Reply to %{reply_author} · %{author} %{timestamp}"
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonymous voting:** %{value}"
+    options: "**Options:** %{value}"
+    "yes": "Yes"
+    closed: "Closed %{value}"
+    scheduled_to_open: "Scheduled to open %{value}"
+    open_until: "Open; closes %{value}"
+    open: Open
+    current_results: Current results
+    hidden_until_closed: Hidden until the poll closes
+    hidden_until_voted: Hidden until the viewer votes
+    voters: Voters
+    target: Target
+    available: Available
+    available_if_needed: Available if needed
+    unavailable: Unavailable
+    anonymous: Anonymous
+    no_voters: No voters
+    score: "score: %{value}"
+    vote: "Vote: %{response} · %{author} %{timestamp}"
+    none_of_the_above: None of the above
+    no_option_selected: No option selected
+    outcome: "Outcome · %{author} %{timestamp}"
+    review_date: "**Review date:** %{value}"
   locale_names:
     en: English
     "be-BY": Belarusian

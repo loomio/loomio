@@ -753,3 +753,34 @@ es:
     file_too_large: El archivo es demasiado grande. El tamaño máximo de carga es %{limit}.
   merge_users:
     not_target_user: Debes iniciar sesión con la cuenta de destino para confirmar la fusión.
+  thread_markdown:
+    poll: Encuesta
+    no_activity: Aún no hay comentarios, encuestas, votos ni resultados.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentario · %{author} %{timestamp}
+    comment_reply: Responder a %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Estado:** %{value}"
+    anonymous_voting: "**Votación anónima:** %{value}"
+    options: "**Opciones:** %{value}"
+    'yes': Sí
+    closed: Cerrado %{value}
+    scheduled_to_open: Programado para abrir %{value}
+    open_until: Abierto; cierra %{value}
+    open: Abierto
+    current_results: Resultados actuales
+    hidden_until_closed: Oculto hasta que cierren las urnas.
+    hidden_until_voted: Oculto hasta que el espectador vote.
+    voters: Votantes
+    target: Objetivo
+    available: Disponible
+    available_if_needed: Disponible si es necesario
+    unavailable: Indisponible
+    anonymous: Anónimo
+    no_voters: No hay votantes
+    score: 'Puntuación: %{value}'
+    vote: 'Voto: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Ninguna de las anteriores
+    no_option_selected: No se ha seleccionado ninguna opción.
+    outcome: Resultado · %{author} %{timestamp}
+    review_date: "**Fecha de revisión:** %{value}"

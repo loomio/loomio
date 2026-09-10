@@ -729,3 +729,34 @@ ro:
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
+  thread_markdown:
+    poll: Sondaj
+    no_activity: Niciun comentariu, sondaj, vot sau rezultat încă
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentariu · %{author} %{timestamp}
+    comment_reply: Răspuns către %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Stare:** %{value}"
+    anonymous_voting: "**Vot anonim:** %{value}"
+    options: "**Opțiuni:** %{value}"
+    'yes': Da
+    closed: Închis %{value}
+    scheduled_to_open: Programat să deschidă %{value}
+    open_until: Deschide; închide %{value}
+    open: Deschide
+    current_results: Rezultate actuale
+    hidden_until_closed: Ascuns până la închiderea sondajului
+    hidden_until_voted: Ascuns până când spectatorul votează
+    voters: Alegătorii
+    target: Ţintă
+    available: Disponibil
+    available_if_needed: Disponibil dacă este nevoie
+    unavailable: Indisponibil
+    anonymous: Anonim
+    no_voters: Niciun alegător
+    score: 'scor: %{value}'
+    vote: 'Vot: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nici una dintre cele de mai sus
+    no_option_selected: Nicio opțiune selectată
+    outcome: Rezultat · %{author} %{timestamp}
+    review_date: "**Data revizuirii:** %{value}"

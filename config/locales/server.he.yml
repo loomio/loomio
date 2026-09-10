@@ -741,3 +741,34 @@ he:
     file_too_large: הקובץ גדול מדי. גודל ההעלאה המרבי הוא %{limit}.
   merge_users:
     not_target_user: עליך להיות מחובר כחשבון היעד כדי לאשר מיזוג.
+  thread_markdown:
+    poll: מִשׁאָל
+    no_activity: אין עדיין תגובות, סקרים, הצבעות או תוצאות
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: תגובה · %{author} %{timestamp}
+    comment_reply: תשובה ל-%{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**סטטוס:** %{value}"
+    anonymous_voting: "**הצבעה אנונימית:** %{value}"
+    options: "**אפשרויות:** %{value}"
+    'yes': כֵּן
+    closed: סגור %{value}
+    scheduled_to_open: מתוכנן לפתוח %{value}
+    open_until: פתיחה; סגירה %{value}
+    open: לִפְתוֹחַ
+    current_results: תוצאות נוכחיות
+    hidden_until_closed: מוסתר עד לסגירת הסקר
+    hidden_until_voted: מוסתר עד שהצופה מצביע
+    voters: מצביעים
+    target: יַעַד
+    available: זָמִין
+    available_if_needed: זמין במידת הצורך
+    unavailable: לא זמין
+    anonymous: אֲנוֹנִימִי
+    no_voters: אין מצביעים
+    score: 'ציון: %{value}'
+    vote: 'הצבעה: %{response} · %{author} %{timestamp}'
+    none_of_the_above: אף אחד מהנ"ל
+    no_option_selected: לא נבחרה אפשרות
+    outcome: תוצאה · %{author} %{timestamp}
+    review_date: "**תאריך סקירה:** %{value}"

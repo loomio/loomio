@@ -378,3 +378,9 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/server.de.yml`, `server.fr.yml`, `server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.trial_expired_warning`, `group_mailer.destroy_warning_with_usage.trial_expired_process` | Formal `Sie/vous/u` forms | Informal `du/tu/je` forms | These locales address users informally throughout Loomio |
+
+## 2026-09-11 — Copy Markdown document labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/server.*.yml` files | `thread_markdown.*` interpolation variables | Translated or dropped placeholders such as `%{autor}`, `%{valor}`, and `%{marca de tiempo}` | Canonical placeholders such as `%{author}`, `%{value}`, and `%{timestamp}` | Interpolation variable names are application contracts and must not be translated or omitted |

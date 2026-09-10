@@ -729,3 +729,34 @@ el:
     file_too_large: Το αρχείο είναι πολύ μεγάλο. Το μέγιστο μέγεθος μεταφόρτωσης είναι %{limit}.
   merge_users:
     not_target_user: Πρέπει να είστε συνδεδεμένοι ως ο λογαριασμός-στόχος για να επιβεβαιώσετε μια συγχώνευση.
+  thread_markdown:
+    poll: Ψηφοφορία
+    no_activity: Δεν υπάρχουν σχόλια, δημοσκοπήσεις, ψήφοι ή αποτελέσματα ακόμα
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Σχόλιο · %{author} %{timestamp}
+    comment_reply: Απάντηση στον %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Κατάσταση:** %{value}"
+    anonymous_voting: "**Ανώνυμη ψήφος:** %{value}"
+    options: "**Επιλογές:** %{value}"
+    'yes': Ναί
+    closed: Κλειστό %{value}
+    scheduled_to_open: Προγραμματισμένο για άνοιγμα %{value}
+    open_until: Άνοιγμα· κλείνει %{value}
+    open: Ανοιχτό
+    current_results: Τρέχοντα αποτελέσματα
+    hidden_until_closed: Κρυφό μέχρι το κλείσιμο της δημοσκόπησης
+    hidden_until_voted: Κρυφό μέχρι να ψηφίσει ο θεατής
+    voters: Ψηφοφόροι
+    target: Στόχος
+    available: Διαθέσιμος
+    available_if_needed: Διαθέσιμο εάν χρειαστεί
+    unavailable: Δυσεύρετος
+    anonymous: Ανώνυμος
+    no_voters: Δεν υπάρχουν ψηφοφόροι
+    score: 'βαθμολογία: %{value}'
+    vote: 'Ψηφοφορία: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Κανένα από τα παραπάνω
+    no_option_selected: Δεν έχει επιλεγεί καμία επιλογή
+    outcome: Αποτέλεσμα · %{author} %{timestamp}
+    review_date: "**Ημερομηνία αξιολόγησης:** %{value}"
