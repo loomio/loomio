@@ -28,7 +28,6 @@ module CleanupService
     bookmarks: %i[user_id],
     chatbots: %i[author_id],
     comments: %i[user_id discarded_by],
-    demos: %i[author_id],
     discussion_templates: %i[author_id discarded_by],
     discussions: %i[author_id discarded_by],
     topic_items: %i[user_id],
