@@ -56,8 +56,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
       search_documents[:discussion_id].eq(nil).or(kept_discussion.arel.exists)
     )
 
-    results = if params[:query].blank? && params[:author_id].present?
-      rel.order(authored_at: :desc, id: :desc).limit(SearchQuery::RESULT_LIMIT)
+    results = if params[:query].blank?
+      if params[:author_id].present?
+        rel.order(authored_at: :desc, id: :desc).limit(SearchQuery::RESULT_LIMIT)
+      else
+        []
+      end
     else
       SearchQuery.new(
         relation: rel,

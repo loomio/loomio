@@ -209,6 +209,15 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_equal 0, results.length
   end
 
+  test "handles an order without a search query" do
+    sign_in @user
+
+    get :index, params: { order: "f" }
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('search_results')
+  end
+
   test "returns recent visible activity by author without a search query" do
     @poll.update!(details: 'Poll activity details')
     @poll.update_pg_search_document
