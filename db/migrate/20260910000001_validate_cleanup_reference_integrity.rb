@@ -2,13 +2,23 @@ class ValidateCleanupReferenceIntegrity < ActiveRecord::Migration[8.1]
   disable_ddl_transaction!
 
   # Validation is separate from installation so scans do not retain the stronger
-  # ADD CONSTRAINT locks. Fail on legacy damage; never delete or reparent content.
+  # ADD CONSTRAINT locks. Keep NOT VALID constraints when legacy damage exists:
+  # they still protect new writes without making deployments depend on cleanup.
   def up
     references.each do |table, target, column|
+      unless reference_valid?(table, target, column)
+        say "Skipping validation of #{table}.#{column}: legacy orphaned rows exist"
+        next
+      end
+
       validate_foreign_key table, target, column: column
     end
     required_references.each do |table, column|
       next unless check_constraint_exists?(table, name: "#{table}_#{column}_not_null")
+      if column_has_nulls?(table, column)
+        say "Skipping NOT NULL promotion of #{table}.#{column}: legacy NULL rows exist"
+        next
+      end
 
       validate_check_constraint table, name: "#{table}_#{column}_not_null"
       transaction do
@@ -26,6 +36,31 @@ class ValidateCleanupReferenceIntegrity < ActiveRecord::Migration[8.1]
   end
 
   private
+
+  def reference_valid?(table, target, column)
+    !select_value(<<~SQL.squish)
+      SELECT EXISTS (
+        SELECT 1
+        FROM #{quote_table_name(table)} source
+        WHERE source.#{quote_column_name(column)} IS NOT NULL
+          AND NOT EXISTS (
+            SELECT 1
+            FROM #{quote_table_name(target)} target
+            WHERE target.id = source.#{quote_column_name(column)}
+          )
+      )
+    SQL
+  end
+
+  def column_has_nulls?(table, column)
+    select_value(<<~SQL.squish)
+      SELECT EXISTS (
+        SELECT 1
+        FROM #{quote_table_name(table)}
+        WHERE #{quote_column_name(column)} IS NULL
+      )
+    SQL
+  end
 
   def references
     [

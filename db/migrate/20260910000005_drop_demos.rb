@@ -1,6 +1,6 @@
 class DropDemos < ActiveRecord::Migration[8.1]
   def change
-    drop_table :demos do |t|
+    drop_table :demos, if_exists: true do |t|
       t.integer :author_id, null: false
       t.string :demo_handle
       t.string :description
