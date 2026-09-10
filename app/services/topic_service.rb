@@ -298,25 +298,27 @@ class TopicService
     topic = Topic.find_by(id: topic_id)
     return unless topic
 
-    repair(topic.id)
-    topic.reload
+    Topic.transaction do
+      repair(topic.id)
+      topic.reload
 
-    root_topic_item = topic.topicable.created_topic_item
-    return unless root_topic_item
+      root_topic_item = topic.topicable.created_topic_item
+      next unless root_topic_item
 
-    topic_item_ids = TopicItem.where(topic_id: topic.id)
-                     .where.not(id: root_topic_item.id)
-                     .order(:created_at, :id)
-                     .pluck(:id)
+      topic_item_ids = TopicItem.where(topic_id: topic.id)
+                       .where.not(id: root_topic_item.id)
+                       .order(:created_at, :id)
+                       .pluck(:id)
 
-    TopicItem.where(topic_id: topic.id).update_all(sequence_id: nil, position: 0, position_key: nil)
-    TopicItem.where(id: root_topic_item.id).update_all(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
+      TopicItem.where(topic_id: topic.id).update_all(sequence_id: nil, position: 0, position_key: nil)
+      TopicItem.where(id: root_topic_item.id).update_all(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
-    topic_item_ids.each.with_index(1) do |topic_item_id, sequence_id|
-      TopicItem.where(id: topic_item_id).update_all(sequence_id: sequence_id)
+      topic_item_ids.each.with_index(1) do |topic_item_id, sequence_id|
+        TopicItem.where(id: topic_item_id).update_all(sequence_id: sequence_id)
+      end
+
+      repair(topic.id)
     end
-
-    repair(topic.id)
   end
 
   def self.repair(topic_id)
@@ -325,6 +327,10 @@ class TopicService
     topicable = topic.topicable
     return unless topicable
 
+    Topic.transaction { repair_topic(topic, topicable) }
+  end
+
+  def self.repair_topic(topic, topicable)
     # ensure topicable.created_topic_item exists
     unless topicable.created_topic_item
       TopicItem.import [TopicItem.new(kind: topicable.created_topic_item_kind.to_s,
@@ -385,6 +391,8 @@ class TopicService
       )
     end
   end
+
+  private_class_method :repair_topic
 
   def self.verify_integrity!(topic_id)
     topic_items = TopicItem.where(topic_id: topic_id).to_a

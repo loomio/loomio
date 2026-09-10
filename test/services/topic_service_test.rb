@@ -116,6 +116,16 @@ class TopicServiceTest < ActiveSupport::TestCase
     refute_equal 999, @discussion_event.reload.child_count
   end
 
+  test "repair does not retain a partially rebuilt topic tree" do
+    original_positions = @topic.items.order(:id).pluck(:id, :parent_id, :position, :position_key, :depth)
+
+    TopicService.stub(:reset_child_positions, ->(*) { raise "repair interrupted" }) do
+      assert_raises(RuntimeError) { TopicService.repair(@topic.id) }
+    end
+
+    assert_equal original_positions, @topic.items.reload.order(:id).pluck(:id, :parent_id, :position, :position_key, :depth)
+  end
+
   test "database rejects a child whose parent belongs to another topic" do
     target = DiscussionService.create(
       params: {title: "Target discussion", group_id: @group.id},
