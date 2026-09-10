@@ -1,6 +1,6 @@
 require "test_helper"
 
-class WarnAndDiscardGroupWorkerTest < ActiveSupport::TestCase
+class WarnAndDiscardExpiredTrialGroupWorkerTest < ActiveSupport::TestCase
   setup { ENV["CLEANUP_ENABLED"] = "1" }
   teardown { ENV.delete("CLEANUP_ENABLED") }
 
@@ -9,7 +9,7 @@ class WarnAndDiscardGroupWorkerTest < ActiveSupport::TestCase
     group.add_admin!(users(:admin))
 
     assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
-      WarnAndDiscardGroupWorker.perform_now(group.id)
+      WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id)
     end
 
     assert group.reload.discarded?
@@ -21,7 +21,7 @@ class WarnAndDiscardGroupWorkerTest < ActiveSupport::TestCase
     ENV.delete("CLEANUP_ENABLED")
 
     assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
-      WarnAndDiscardGroupWorker.perform_now(group.id)
+      WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id)
     end
 
     assert group.reload.kept?

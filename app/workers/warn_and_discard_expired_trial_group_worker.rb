@@ -1,4 +1,4 @@
-class WarnAndDiscardGroupWorker < ApplicationJob
+class WarnAndDiscardExpiredTrialGroupWorker < ApplicationJob
   queue_as :low
 
   def perform(group_id)

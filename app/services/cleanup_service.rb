@@ -693,7 +693,7 @@ module CleanupService
 
   def self.warn_and_discard_expired_trial_groups(now: Time.current)
     group_ids = expired_trial_groups(now: now).limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
-    group_ids.each { |group_id| WarnAndDiscardGroupWorker.perform_later(group_id) }
+    group_ids.each { |group_id| WarnAndDiscardExpiredTrialGroupWorker.perform_later(group_id) }
     { queued_groups: group_ids.size }
   end
 

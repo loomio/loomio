@@ -7,7 +7,7 @@ class CleanupExpiredTrialsTest < ActiveSupport::TestCase
     empty_group.subscription.update!(expires_at: 61.days.ago)
     clear_enqueued_jobs
 
-    assert_enqueued_jobs 2, only: WarnAndDiscardGroupWorker do
+    assert_enqueued_jobs 2, only: WarnAndDiscardExpiredTrialGroupWorker do
       result = nil
       CleanupService.stub(:expired_trial_groups, ->(now:) { Group.where(id: [empty_group.id, nonempty_group.id]) }) do
         result = CleanupService.warn_and_discard_expired_trial_groups
