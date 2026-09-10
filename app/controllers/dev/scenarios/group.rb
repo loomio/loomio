@@ -27,6 +27,56 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_poll_filters
+    group = create_group
+    group.tags.create!(name: 'Important', color: '#1565c0')
+    group.tags.create!(name: 'Other', color: '#2e7d32')
+
+    PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'proposal',
+        poll_option_names: %w[agree abstain disagree block],
+        title: 'Open important proposal needing a vote',
+        tags: ['Important'],
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+
+    voted_poll = PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'poll',
+        poll_option_names: %w[Red Blue],
+        title: 'Open other poll already voted on',
+        tags: ['Other'],
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+    StanceService.update(
+      stance: voted_poll.stances.latest.find_by!(participant: patrick),
+      actor: patrick,
+      params: {choice: {'Red' => 1}}
+    )
+
+    closed_poll = PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'poll',
+        poll_option_names: %w[Yes No],
+        title: 'Closed untagged poll',
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+    PollService.close(poll: closed_poll, actor: patrick)
+
+    sign_in patrick
+    redirect_to group_path(group)
+  end
+
   def setup_group_with_photos
     sign_in patrick
     group = create_group

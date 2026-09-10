@@ -82,6 +82,71 @@ module.exports = {
     page.expectNoElement('.group-page__name')
   },
 
+  'filters_group_polls_by_status_type_and_tag': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_poll_filters')
+    page.click('.group-page-polls-tab')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote', 20000)
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-active')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-vote')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-closed')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+    page.expectNoText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-any')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__type-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__type-option[data-poll-type="proposal"]')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__type-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__type-any')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.tags-filter-menu__button')
+    page.pause(200)
+    page.click('.v-overlay--active .tags-filter-menu__tag[data-tag-name="Important"]')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.tags-filter-menu__button')
+    page.pause(200)
+    page.click('.v-overlay--active .tags-filter-menu__all-tags')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+  },
+
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
     page = pageHelper(test)
 
