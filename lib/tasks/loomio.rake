@@ -364,13 +364,13 @@ namespace :loomio do
     puts JSON.pretty_generate(plan_counts)
   end
 
-  desc "Queue silent discard of topic-free free groups and expired trials older than 60 days; requires CLEANUP_ENABLED (optional LIMIT)"
+  desc "Silently discard topic-free free groups and expired trials older than 60 days; requires CLEANUP_ENABLED (optional LIMIT)"
   task discard_empty_groups: :environment do
     abort "CLEANUP_ENABLED must be set" unless ENV["CLEANUP_ENABLED"].present?
 
     limit = ENV["LIMIT"].presence&.to_i
     result = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
-      CleanupService.enqueue_empty_group_discard!(plan: plan, limit: limit)
+      CleanupService.discard_empty_groups!(plan: plan, limit: limit)
     end
     puts result.to_json
   end

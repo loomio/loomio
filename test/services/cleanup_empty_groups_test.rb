@@ -42,14 +42,11 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
     end
   end
 
-  test 'manual cleanup queues bounded background jobs' do
+  test 'manual cleanup silently discards bounded group roots' do
     plan = CleanupService.audit_empty_groups(plan: :trial, before: @cutoff, limit: 1)
-    result = nil
-    assert_enqueued_with(job: DiscardGroupWorker, args: ->(args) { args == [ plan[:root_ids].first ] }) do
-      result = CleanupService.enqueue_empty_group_discard!(plan: :trial, before: @cutoff, limit: 1)
-    end
-    assert_equal({ queued_roots: 1 }, result)
-    assert Group.exists?(plan[:root_ids].first)
+    result = CleanupService.discard_empty_groups!(plan: :trial, before: @cutoff, limit: 1)
+    assert_equal({ discarded_roots: 1 }, result)
+    assert Group.find(plan[:root_ids].first).discarded?
     assert_raises(ArgumentError) { CleanupService.audit_empty_groups(plan: :trial, limit: 0) }
   end
 

@@ -682,16 +682,14 @@ module CleanupService
     }
   end
 
-  # Each background job repeats the eligibility check before silently
-  # discarding its tree, so a group that gains a topic is left alone.
-  def self.enqueue_empty_group_discard!(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
+  def self.discard_empty_groups!(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
     audit = audit_empty_groups(plan: plan, before: before, limit: limit)
 
-    audit[:root_ids].each do |root_id|
-      DiscardGroupWorker.perform_later(root_id)
-    end
+    # These dormant trees have already been selected by the audit query. A bulk
+    # update keeps the manual cleanup practical and deliberately has no audit trail.
+    Group.kept.where(id: audit[:group_ids]).update_all(discarded_at: Time.current, discarded_by: nil)
 
-    { queued_roots: audit[:root_ids].size }
+    { discarded_roots: audit[:root_ids].size }
   end
 
   def self.warn_and_discard_expired_trial_groups(now: Time.current)

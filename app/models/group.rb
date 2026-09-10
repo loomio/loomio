@@ -318,7 +318,7 @@ class Group < ApplicationRecord
   def discard!(actor: nil, at: Time.current)
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
-        Group.where(id: id_and_subgroup_ids).find_each do |group|
+        Group.kept.where(id: id_and_subgroup_ids).find_each do |group|
           group.assign_attributes(discarded_at: at, discarded_by: actor&.id)
           group.save!(validate: false)
         end
@@ -328,9 +328,13 @@ class Group < ApplicationRecord
   end
 
   def undiscard!(actor: nil)
+    discarded_at = self.discarded_at
+    return reload unless discarded_at
+
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
-        Group.where(id: id_and_subgroup_ids).find_each do |group|
+        # Preserve subgroups that were already discarded before this tree was.
+        Group.where(id: id_and_subgroup_ids, discarded_at: discarded_at).find_each do |group|
           group.assign_attributes(discarded_at: nil, discarded_by: nil)
           group.save!(validate: false)
         end

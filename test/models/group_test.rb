@@ -182,6 +182,21 @@ class GroupTest < ActiveSupport::TestCase
     end
   end
 
+  test "undiscard preserves a subgroup discarded independently" do
+    subgroup = Group.create!(name: "Independently discarded child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
+    subgroup.discard!(actor: users(:admin), at: 2.days.ago)
+    subgroup_discarded_at = subgroup.reload.discarded_at
+    subgroup_discarded_by = subgroup.discarded_by
+
+    @group.discard!(actor: @user)
+    @group.undiscard!(actor: users(:admin))
+
+    assert @group.reload.kept?
+    assert subgroup.reload.discarded?
+    assert_equal subgroup_discarded_at, subgroup.discarded_at
+    assert_equal subgroup_discarded_by, subgroup.discarded_by
+  end
+
   # id_and_subgroup_ids
   test "returns empty for new group" do
     assert Group.new.id_and_subgroup_ids.empty?
