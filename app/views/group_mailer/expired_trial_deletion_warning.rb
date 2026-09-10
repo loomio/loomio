@@ -8,8 +8,8 @@ class Views::GroupMailer::ExpiredTrialDeletionWarning < Views::ApplicationMailer
   end
 
   def view_template
-    p { plain t("group_mailer.destroy_warning_with_usage.trial_expired_warning", group: @group.name, expired_days: expired_days, grace_days: AppConfig.group_deletion_grace_days) }
-    p { plain t(:"group_mailer.destroy_warning_with_usage.trial_expired_process", grace_days: AppConfig.group_deletion_grace_days) }
+    p { plain t("group_mailer.destroy_warning_with_usage.trial_expired_warning", group: @group.name, expired_days: expired_days, grace_days: AppConfig.group_deletion_delay_days) }
+    p { plain t(:"group_mailer.destroy_warning_with_usage.trial_expired_process", grace_days: AppConfig.group_deletion_delay_days) }
     p { plain t(:"group_mailer.destroy_warning_with_usage.usage_heading") }
     usage_list
     p { plain t(:"group_mailer.destroy_warning_with_usage.group_key", key: @group.key) }

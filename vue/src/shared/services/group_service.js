@@ -248,7 +248,7 @@ export default new class GroupService {
                   flash:    'delete_group_modal.deletion_after_grace_period',
                   submit:   'delete_group_modal.title'
                 },
-                textArgs: {days: AppConfig.groupDeletionGraceDays},
+                textArgs: {days: AppConfig.groupDeletionDelayDays},
                 redirect:   returnUrl
               }
             }

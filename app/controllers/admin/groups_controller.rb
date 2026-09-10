@@ -87,7 +87,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def warn_and_discard
     GroupService.warn_and_discard(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days"
+    redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_delay_days} days"
   end
 
   def export_group

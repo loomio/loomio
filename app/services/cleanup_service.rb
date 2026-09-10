@@ -699,7 +699,7 @@ module CleanupService
   end
 
   def self.destroy_discarded_groups(now: Time.current)
-    discarded_before = now - AppConfig.group_deletion_grace_days.days
+    discarded_before = now - AppConfig.group_deletion_delay_days.days
     groups = Group.discarded.parents_only.where(discarded_at: ..discarded_before)
                   .order(:discarded_at, :id)
                   .limit(DISCARDED_GROUP_DESTRUCTION_LIMIT)

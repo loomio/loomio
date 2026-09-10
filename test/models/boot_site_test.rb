@@ -2,8 +2,8 @@ require 'test_helper'
 
 class BootSiteTest < ActiveSupport::TestCase
   test "includes the group deletion grace period" do
-    AppConfig.stub(:group_deletion_grace_days, 45) do
-      assert_equal 45, Boot::Site.new.payload[:groupDeletionGraceDays]
+    AppConfig.stub(:group_deletion_delay_days, 45) do
+      assert_equal 45, Boot::Site.new.payload[:groupDeletionDelayDays]
     end
   end
 

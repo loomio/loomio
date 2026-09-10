@@ -188,7 +188,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       post :warn_and_discard, params: { id: @group.id }
     end
     assert warned
-    assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days", flash[:notice]
+    assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_delay_days} days", flash[:notice]
 
   end
 

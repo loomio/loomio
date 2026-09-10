@@ -98,7 +98,7 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
           button_to "Discard without warning", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups without warning their administrators? The group tree will be unavailable until restored." } }
         end
         export_form
-        button_to "Warn then delete", warn_and_discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name} and discard its complete group tree now? It will be permanently deleted after #{AppConfig.group_deletion_grace_days} days." } }
+        button_to "Warn then delete", warn_and_discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name} and discard its complete group tree now? It will be permanently deleted after #{AppConfig.group_deletion_delay_days} days." } }
       end
     end
   end

@@ -7,7 +7,7 @@ class GroupMailerTest < ActionMailer::TestCase
     usage = GroupUsageSummary.for(group)
 
     email = GroupMailer.expired_trial_deletion_warning(group.id, recipient.id)
-    body = AppConfig.stub(:group_deletion_grace_days, 45) { email.body.decoded }
+    body = AppConfig.stub(:group_deletion_delay_days, 45) { email.body.decoded }
 
     assert_equal "Your Loomio group is scheduled for deletion", email.subject
     assert_includes body, "trial expired 60 days ago"
