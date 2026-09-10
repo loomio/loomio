@@ -24,29 +24,58 @@ class PollQuery
     group_ids = Array(group_ids).compact.map(&:to_i)
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 
-    if user.topic_reader_token
-      or_topic_reader_token = "OR tr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
+    uid = (user.id || 0).to_i
+    membership_join = Poll.sanitize_sql_array([
+      "LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = ?",
+      uid
+    ])
+    topic_reader_join = if user.topic_reader_token
+      Poll.sanitize_sql_array([
+        "LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (tr.user_id = ? OR tr.token = ?)",
+        uid,
+        user.topic_reader_token
+      ])
+    else
+      Poll.sanitize_sql_array([
+        "LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND tr.user_id = ?",
+        uid
+      ])
     end
 
     chain = chain.joins("LEFT OUTER JOIN topics t ON t.id = polls.topic_id")
+                 .joins("LEFT OUTER JOIN groups g ON g.id = t.group_id")
     chain = chain.where('t.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-    chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = #{user.id || 0}")
-                 .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (tr.user_id = #{user.id || 0} #{or_topic_reader_token})")
+    chain = chain.joins(membership_join).joins(topic_reader_join)
 
-    chain = chain.where("polls.author_id = :user_id OR
-                         #{public_group_ids ? public_visibility_sql(public_group_ids) : 't.private = FALSE OR'}
-                         (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                         (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id, public_group_ids: public_group_ids)
+    # Parent members may open these polls directly, but they only belong in a
+    # relevance feed when the caller is explicitly browsing the subgroup.
+    polls = Poll.arel_table
+    topics = Topic.arel_table.alias("t")
+    groups = Group.arel_table.alias("g")
+    memberships = Membership.arel_table.alias("m")
+    topic_readers = TopicReader.arel_table.alias("tr")
+    visibility = polls[:author_id].eq(uid)
+    visibility = visibility.or(topics[:private].eq(false)) if public_group_ids.nil?
+    if public_group_ids&.any?
+      visibility = visibility.or(topics[:private].eq(false).and(topics[:group_id].in(public_group_ids)))
+    end
+    visibility = visibility.or(memberships[:id].not_eq(nil).and(memberships[:revoked_at].eq(nil)))
+    visibility = visibility.or(
+      topic_readers[:id].not_eq(nil)
+        .and(topic_readers[:revoked_at].eq(nil))
+        .and(topic_readers[:guest].eq(true))
+    )
+    if public_group_ids.nil? || group_ids.any?
+      visibility = visibility.or(
+        groups[:parent_members_can_see_discussions].eq(true)
+          .and(groups[:parent_id].in(user.group_ids))
+      )
+    end
+
+    chain = chain.where(visibility)
     # Apply group visibility to every caller, including custom chains and public polls.
     chain.where(topic_id: Topic.left_joins(:group).group_kept.select(:id))
   end
-
-  def self.public_visibility_sql(public_group_ids)
-    return "" unless public_group_ids.any?
-
-    "t.private = FALSE AND t.group_id IN (:public_group_ids) OR"
-  end
-
 
   def self.filter(chain: , params: )
     # how to do this....

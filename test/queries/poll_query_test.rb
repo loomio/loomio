@@ -138,4 +138,110 @@ class PollQueryTest < ActiveSupport::TestCase
     refute_includes PollQuery.relevant_to(user: @user), public_poll
     assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
   end
+
+  test "subgroup poll visibility matches the fixture access matrix for parent members" do
+    child, poll = create_subgroup_poll(parent_members_can_see_discussions: true)
+
+    subgroup_poll_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      assert user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    parent_only_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      refute user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    denied_poll_viewers.each do |user|
+      label = user.is_logged_in? ? user.email : "signed-out user"
+      refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
+      refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
+      refute user.can?(:show, poll), "show permission for #{label}"
+      refute user.can?(:vote_in, poll), "vote permission for #{label}"
+    end
+
+  end
+
+  test "parent members cannot see subgroup polls when parent member access is false" do
+    child, poll = create_subgroup_poll(parent_members_can_see_discussions: false)
+
+    subgroup_poll_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      assert user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    (parent_only_members + denied_poll_viewers).each do |user|
+      label = user.is_logged_in? ? user.email : "signed-out user"
+      refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
+      refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
+      refute user.can?(:show, poll), "show permission for #{label}"
+      refute user.can?(:vote_in, poll), "vote permission for #{label}"
+    end
+  end
+
+  private
+
+  def create_subgroup_poll(parent_members_can_see_discussions:)
+    child = groups(:subgroup)
+    child.update_columns(
+      is_visible_to_public: false,
+      is_visible_to_parent_members: true,
+      parent_members_can_see_discussions: parent_members_can_see_discussions
+    )
+    poll = PollService.create(params: {
+      title: "Subgroup poll #{SecureRandom.hex(4)}",
+      poll_type: "poll",
+      private: true,
+      group_id: child.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: [ "engage" ]
+    }, actor: users(:admin))
+    [ child, poll ]
+  end
+
+  def subgroup_poll_members
+    users(:admin, :user, :subgroup_user)
+  end
+
+  def parent_only_members
+    users(
+      :member,
+      :member_quiet,
+      :member_normal,
+      :member_loud,
+      :reader_quiet,
+      :reader_normal,
+      :reader_loud,
+      :member_guest_loud
+    )
+  end
+
+  def denied_poll_viewers
+    users(
+      :guest_quiet,
+      :guest_normal,
+      :guest_admin_normal,
+      :guest_loud,
+      :alien,
+      :alien_quiet,
+      :alien_loud,
+      :non_guest_loud,
+      :former_member_loud,
+      :former_guest_loud,
+      :inactive_member_loud,
+      :inactive_guest_loud,
+      :former_member_guest
+    ) + [ LoggedOutUser.new ]
+  end
 end
