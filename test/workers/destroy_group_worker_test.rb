@@ -38,12 +38,12 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
   test "members and topic guests cannot schedule group deletion" do
     group = topics(:discussion_topic).group
     AccessVolumeMatrix::ROLES.excluding(:admin).each do |role|
-      assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_no_enqueued_jobs(only: [ ActionMailer::MailDeliveryJob, DestroyGroupWorker ]) do
         assert_raises(CanCan::AccessDenied) { GroupService.warn_and_discard(group: group, actor: users(role)) }
       end
       assert_nil group.reload.discarded_at
     end
-    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+    assert_no_enqueued_jobs(only: [ ActionMailer::MailDeliveryJob, DestroyGroupWorker ]) do
       assert_raises(CanCan::AccessDenied) { GroupService.warn_and_discard(group: group, actor: LoggedOutUser.new) }
     end
     assert_nil group.reload.discarded_at
@@ -87,6 +87,30 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = topics(:discussion_topic).group
 
     assert_raises(CanCan::AccessDenied) { GroupService.discard(group: group, actor: actor) }
+    assert group.reload.kept?
+  end
+
+  test "repeated requests preserve the discard timestamp and do not warn again" do
+    group = topics(:discussion_topic).group
+    GroupService.warn_and_discard(group: group, actor: users(:admin))
+    discarded_at = group.reload.discarded_at
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      GroupService.warn_and_discard(group: group, actor: users(:admin))
+    end
+    assert_equal discarded_at, group.reload.discarded_at
+  end
+
+  test "a rolled back discard does not warn or broadcast" do
+    group = topics(:discussion_topic).group
+    EventBus.stub(:broadcast, ->(*) { flunk "Rolled back discard was broadcast" }) do
+      assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+        Group.transaction(requires_new: true) do
+          GroupService.warn_and_discard(group: group, actor: users(:admin))
+          raise ActiveRecord::Rollback
+        end
+      end
+    end
     assert group.reload.kept?
   end
 end

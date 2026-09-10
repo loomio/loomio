@@ -152,18 +152,47 @@ module GroupService
 
   def self.discard(group:, actor:)
     actor.ability.authorize! :destroy, group
-
-    group.discard!(actor: actor)
-    Sentry.metrics.count("group.discard")
-    EventBus.broadcast("group_destroy", group, actor)
+    discard_and_notify(group: group, actor: actor)
   end
 
   def self.warn_and_discard(group:, actor:)
-    group.admins.each do |admin|
-      GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
+    actor.ability.authorize! :destroy, group
+    discard_and_notify(group: group, actor: actor) do
+      group.admins.each do |admin|
+        GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
+      end
     end
-    discard(group: group, actor: actor)
   end
+
+  def self.warn_and_discard_expired_trial(group_id:)
+    group = CleanupService.expired_trial_groups.find_by(id: group_id)
+    return unless group
+
+    discard_and_notify(group: group, actor: nil, reason: "trial_expired") do
+      group.admins.each do |admin|
+        GroupMailer.expired_trial_deletion_warning(group.id, admin.id).deliver_later
+      end
+    end
+  end
+
+  # All ordinary discard paths share one locked transition. Authorization or
+  # automatic eligibility belongs to the entry point; warnings and broadcasts
+  # happen only after commit, and repeated requests do not repeat notifications.
+  def self.discard_and_notify(group:, actor:, reason: "requested")
+    Group.transaction(requires_new: true) do |transaction|
+      group.lock!
+      next unless group.kept?
+
+      group.discard!(actor: actor)
+      transaction.after_commit do
+        yield if block_given?
+        Sentry.metrics.count("group.discard", attributes: { reason: reason })
+        EventBus.broadcast("group_destroy", group, actor)
+      end
+    end
+    group
+  end
+  private_class_method :discard_and_notify
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

@@ -26,4 +26,25 @@ class WarnAndDiscardExpiredTrialGroupWorkerTest < ActiveSupport::TestCase
 
     assert group.reload.kept?
   end
+
+  test "rechecks eligibility when a queued trial has been extended" do
+    group = groups(:trial_cleanup_poll)
+    group.subscription.update!(expires_at: 1.week.from_now)
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id)
+    end
+
+    assert group.reload.kept?
+  end
+
+  test "repeated jobs do not warn again" do
+    group = groups(:trial_cleanup_poll)
+    group.add_admin!(users(:admin))
+    WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id)
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id)
+    end
+  end
 end

@@ -279,4 +279,16 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal @user.id, @group.discarded_by
   end
 
+  test "outsiders cannot trigger deletion warnings" do
+    group = topics(:discussion_topic).group
+    sign_in @alien
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      delete :destroy, params: { id: group.id }
+    end
+
+    assert_response :forbidden
+    assert group.reload.kept?
+  end
+
 end

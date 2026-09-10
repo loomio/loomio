@@ -33,6 +33,7 @@ module CleanupService
   INACTIVE_ORPHAN_USER_RETENTION = 60.days
   EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
   EMPTY_GROUP_RETENTION = 60.days
+  EXPIRED_TRIAL_RETENTION = 60.days
   EXPIRED_TRIAL_WARNING_LIMIT = 100
   DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
@@ -710,25 +711,24 @@ module CleanupService
 
   def self.expired_trial_groups(now: Time.current)
     Group.kept.parents_only.joins(:subscription)
-         .where(subscriptions: { plan: "trial", expires_at: ..(now - EMPTY_GROUP_RETENTION) })
+         .where(subscriptions: { plan: "trial", expires_at: ..(now - EXPIRED_TRIAL_RETENTION) })
          .order("subscriptions.expires_at", :id)
   end
 
-  def self.empty_group_trees(plan:, before:, root_id: nil)
+  def self.empty_group_trees(plan:, before:)
     plan = plan.to_s
     validate_empty_group_plan!(plan: plan)
     lifecycle_condition = case plan
     when "free" then "s.plan = 'free' AND g.created_at <= :before"
     when "trial" then "s.plan = 'trial' AND s.expires_at <= :before"
     end
-    sql = Group.sanitize_sql_array([ <<~SQL, { before: before, root_id: root_id } ])
+    sql = Group.sanitize_sql_array([ <<~SQL, { before: before } ])
       WITH RECURSIVE roots AS (
         SELECT g.id, g.subscription_id FROM groups g
         JOIN subscriptions s ON s.id = g.subscription_id
         WHERE g.parent_id IS NULL AND g.discarded_at IS NULL
           AND #{lifecycle_condition}
           AND s.chargify_subscription_id IS NULL AND s.billing_service_subscription_id IS NULL
-          AND (:root_id IS NULL OR g.id = :root_id)
           AND NOT EXISTS (SELECT 1 FROM groups other WHERE other.parent_id IS NULL
             AND other.subscription_id = s.id AND other.id != g.id)
       ), tree AS (
