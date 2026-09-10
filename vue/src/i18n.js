@@ -74,15 +74,28 @@ export async function loadLocaleMessages(i18n, locale) {
       dateLocales[dateLocaleKey](),
       clientLocales[clientLocaleKey](),
     ])
-    const localeMessages = appMessages?.default?.[locale]
+    const localeData = appMessages.default
+
+    if (!localeData) {
+      Sentry.captureMessage(`missing default export: ${clientLocaleKey}`, {
+        level: 'warning',
+        extra: {
+          locale,
+          moduleKeys: Object.keys(appMessages),
+          documentVisibility: document.visibilityState,
+        },
+      })
+      return false
+    }
+
+    const localeMessages = localeData[locale]
 
     if (!localeMessages) {
       Sentry.captureMessage(`empty clientLocale: ${clientLocaleKey}`, {
         level: 'warning',
         extra: {
           locale,
-          moduleKeys: Object.keys(appMessages || {}),
-          moduleDefaultKeys: Object.keys(appMessages?.default || {}),
+          moduleDefaultKeys: Object.keys(localeData),
           documentVisibility: document.visibilityState,
         },
       })
