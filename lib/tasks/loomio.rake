@@ -352,34 +352,27 @@ namespace :loomio do
     SeededContentCleanupService.audit
   end
 
-  desc "Report topic-free trial trees expired at least 60 days ago (optional LIMIT)"
-  task audit_empty_expired_trials: :environment do
-    puts EmptyGroupCleanupService.audit(cohort: :trial, limit: ENV["LIMIT"].presence&.to_i).to_json
-  end
-
-  desc "Report topic-free free group trees created at least 60 days ago (optional LIMIT)"
-  task audit_empty_free_groups: :environment do
-    puts EmptyGroupCleanupService.audit(cohort: :free, limit: ENV["LIMIT"].presence&.to_i).to_json
-  end
-
-  desc "Audit expired trial groups due for a deletion warning"
-  task audit_expired_trial_groups: :environment do
-    limit = ENV["LIMIT"].present? ? Integer(ENV["LIMIT"], 10) : nil
-    puts JSON.pretty_generate(TrialGroupCleanupService.audit(limit: limit))
-  end
-
-  desc "Delete topic-free trial trees expired at least 60 days ago; requires a new AUDIT_PATH (optional LIMIT)"
-  task delete_empty_expired_trials: :environment do
-    File.open(ENV.fetch("AUDIT_PATH"), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
-      puts EmptyGroupCleanupService.delete!(cohort: :trial, io: io, limit: ENV["LIMIT"].presence&.to_i).to_json
+  desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
+  task audit_empty_groups: :environment do
+    limit = ENV["LIMIT"].presence&.to_i
+    plan_counts = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+      {
+        empty_roots: CleanupService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
+        total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
+      }
     end
+    puts JSON.pretty_generate(plan_counts)
   end
 
-  desc "Delete topic-free free group trees created at least 60 days ago; requires a new AUDIT_PATH (optional LIMIT)"
-  task delete_empty_free_groups: :environment do
-    File.open(ENV.fetch("AUDIT_PATH"), File::WRONLY | File::CREAT | File::EXCL, 0600) do |io|
-      puts EmptyGroupCleanupService.delete!(cohort: :free, io: io, limit: ENV["LIMIT"].presence&.to_i).to_json
+  desc "Queue silent discard of topic-free free groups and expired trials older than 60 days; requires CLEANUP_ENABLED (optional LIMIT)"
+  task discard_empty_groups: :environment do
+    abort "CLEANUP_ENABLED must be set" unless ENV["CLEANUP_ENABLED"].present?
+
+    limit = ENV["LIMIT"].presence&.to_i
+    result = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+      CleanupService.enqueue_empty_group_discard!(plan: plan, limit: limit)
     end
+    puts result.to_json
   end
 
   desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."

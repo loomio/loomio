@@ -45,11 +45,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
     assert_includes response.body, "Parent group ID or key"
     assert_includes response.body, "Warn then delete"
-    assert_includes response.body, "Delete immediately"
     assert_includes response.body, "Discard without warning"
-    assert_includes response.body, "all of its subgroups"
-    assert_includes response.body, "memberships and membership requests"
-    assert_includes response.body, "User accounts and subscriptions are retained"
 
     get :edit, params: { id: @group.id }
     assert_response :success
@@ -182,7 +178,6 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     sign_in @admin
     moved = false
     warned = false
-    destroyed = false
 
     GroupService.stub(:move, ->(group:, parent:, actor:) { moved = group == @group && parent == groups(:public_group) && actor == @admin }) do
       post :move, params: { id: @group.id, parent_id: groups(:public_group).id }
@@ -195,11 +190,6 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert warned
     assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days", flash[:notice]
 
-    GroupService.stub(:destroy, ->(group:, actor:) { destroyed = group == @group && actor == @admin }) do
-      post :destroy, params: { id: @group.id }
-    end
-    assert destroyed
-    assert_equal "Group deletion scheduled immediately", flash[:notice]
   end
 
   test "admin can schedule trial groups for spam deletion" do

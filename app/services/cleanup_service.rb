@@ -31,6 +31,11 @@ module CleanupService
   DELETE_PASS_LIMIT = 3
   INACTIVE_ORPHAN_USER_LIMIT = 1_000
   INACTIVE_ORPHAN_USER_RETENTION = 60.days
+  EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
+  EMPTY_GROUP_RETENTION = 60.days
+  EXPIRED_TRIAL_REASON = "trial_expired"
+  EXPIRED_TRIAL_WARNING_LIMIT = 100
+  DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
   # The webhook model was retired, but its table still contains group links.
   class LegacyWebhook < ApplicationRecord
@@ -662,6 +667,96 @@ module CleanupService
 
   def self.unique_count(scope)
     scope.unscope(:select, :order).distinct.count(scope.klass.primary_key)
+  end
+
+  def self.audit_empty_groups(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
+    validate_empty_group_plan!(plan: plan, limit: limit)
+    trees = empty_group_trees(plan: plan, before: before)
+    trees = trees.first(limit).to_h if limit
+    {
+      plan: plan.to_s,
+      before: before.iso8601,
+      root_ids: trees.keys,
+      group_ids: trees.values.flatten,
+      trees: trees
+    }
+  end
+
+  # Each background job repeats the eligibility check before silently
+  # discarding its tree, so a group that gains a topic is left alone.
+  def self.enqueue_empty_group_discard!(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
+    audit = audit_empty_groups(plan: plan, before: before, limit: limit)
+
+    audit[:root_ids].each do |root_id|
+      DiscardGroupWorker.perform_later(root_id)
+    end
+
+    { queued_roots: audit[:root_ids].size }
+  end
+
+  def self.warn_and_discard_expired_trial_groups(now: Time.current)
+    group_ids = expired_trial_groups(now: now).limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
+    group_ids.each { |group_id| WarnAndDiscardGroupWorker.perform_later(group_id) }
+    { queued_groups: group_ids.size }
+  end
+
+  def self.destroy_discarded_groups(now: Time.current)
+    discarded_before = now - AppConfig.group_deletion_grace_days.days
+    groups = Group.discarded.parents_only.where(discarded_at: ..discarded_before)
+                  .order(:discarded_at, :id)
+                  .limit(DISCARDED_GROUP_DESTRUCTION_LIMIT)
+
+    groups.find_each do |group|
+      DestroyGroupWorker.perform_later(group.id, group.discarded_at.iso8601(6))
+    end
+  end
+
+  def self.expired_trial_groups(now: Time.current)
+    Group.kept.parents_only.joins(:subscription)
+         .where(subscriptions: { plan: "trial", expires_at: ..(now - EMPTY_GROUP_RETENTION) })
+         .order("subscriptions.expires_at", :id)
+  end
+
+  def self.empty_group_trees(plan:, before:, root_id: nil)
+    plan = plan.to_s
+    validate_empty_group_plan!(plan: plan)
+    lifecycle_condition = case plan
+    when "free" then "s.plan = 'free' AND g.created_at <= :before"
+    when "trial" then "s.plan = 'trial' AND s.expires_at <= :before"
+    end
+    sql = Group.sanitize_sql_array([ <<~SQL, { before: before, root_id: root_id } ])
+      WITH RECURSIVE roots AS (
+        SELECT g.id, g.subscription_id FROM groups g
+        JOIN subscriptions s ON s.id = g.subscription_id
+        WHERE g.parent_id IS NULL AND g.discarded_at IS NULL
+          AND #{lifecycle_condition}
+          AND s.chargify_subscription_id IS NULL AND s.billing_service_subscription_id IS NULL
+          AND (:root_id IS NULL OR g.id = :root_id)
+          AND NOT EXISTS (SELECT 1 FROM groups other WHERE other.parent_id IS NULL
+            AND other.subscription_id = s.id AND other.id != g.id)
+      ), tree AS (
+        SELECT id AS root_id, id AS group_id FROM roots
+        UNION ALL
+        SELECT t.root_id, g.id FROM tree t JOIN groups g ON g.parent_id = t.group_id
+      ), used_roots AS (
+        SELECT t.root_id FROM tree t JOIN topics ON topics.group_id = t.group_id
+      ), excluded_roots AS (
+        SELECT t.root_id FROM tree t JOIN groups g ON g.id = t.group_id
+        JOIN roots r ON r.id = t.root_id
+        WHERE g.id != r.id AND g.subscription_id IS NOT NULL AND g.subscription_id != r.subscription_id
+      )
+      SELECT t.root_id, t.group_id FROM tree t
+      WHERE NOT EXISTS (SELECT 1 FROM excluded_roots e WHERE e.root_id = t.root_id)
+        AND NOT EXISTS (SELECT 1 FROM used_roots u WHERE u.root_id = t.root_id)
+      ORDER BY t.root_id, t.group_id
+    SQL
+    Group.connection.select_all(sql).to_a.group_by { |row| row["root_id"] }
+         .transform_values { |rows| rows.map { |row| row["group_id"] } }
+  end
+
+  def self.validate_empty_group_plan!(plan:, limit: nil)
+    raise ArgumentError, "plan must be free or trial" unless EMPTY_GROUP_SUBSCRIPTION_PLANS.include?(plan.to_s)
+    raise ArgumentError, "limit must be positive" if limit && limit <= 0
   end
 
   def self.print_audit_counts(counts)

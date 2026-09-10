@@ -150,14 +150,8 @@ module GroupService
     group
   end
 
-  def self.destroy(group:, actor:)
-    raise CanCan::AccessDenied unless actor.is_admin?
-
-    discard_and_schedule_destruction!(group, actor: actor)
-  end
-
-  def self.discard(group:, actor:)
-    raise CanCan::AccessDenied unless actor.is_admin?
+  def self.discard(group:, actor: nil)
+    raise CanCan::AccessDenied if actor && !actor.is_admin?
 
     discard_record!(group, actor: actor) do
       Sentry.metrics.count("group.discard")
@@ -170,23 +164,10 @@ module GroupService
 
     discard_record!(group, actor: actor) do
       group.admins.each do |admin|
-        GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
+        GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
       end
       Sentry.metrics.count("group.destroy")
       EventBus.broadcast('group_destroy', group, actor)
-    end
-  end
-
-  def self.warn_and_discard_expired_trial(group:)
-    reason = TrialGroupCleanupService.deletion_reason(group.subscription, as_of: Time.current)
-    raise CanCan::AccessDenied, "group trial is not eligible for deletion" unless group.kept? && reason == TrialGroupCleanupService::REASON
-
-    discard_record!(group, actor: nil) do
-      group.admins.each do |admin|
-        GroupMailer.destroy_warning(group.id, admin.id, nil, reason).deliver_later
-      end
-      Sentry.metrics.count("group.destroy", attributes: { reason: reason })
-      EventBus.broadcast("group_destroy", group, nil)
     end
   end
 
@@ -201,21 +182,7 @@ module GroupService
     end
   end
 
-  # Immediate administrative deletion still captures the exact discard
-  # operation so a restored group cannot be deleted by a stale queued job.
-  def self.discard_and_schedule_destruction!(group, actor:, wait: nil)
-    Group.transaction(requires_new: true) do |transaction|
-      group.lock!
-      group.discard!(actor: actor)
-      discarded_at = group.discarded_at.iso8601(6)
-      transaction.after_commit do
-        DestroyGroupWorker.set(wait: wait).perform_later(group.id, discarded_at)
-        yield if block_given?
-      end
-    end
-  end
-
-  private_class_method :discard_record!, :discard_and_schedule_destruction!
+  private_class_method :discard_record!
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

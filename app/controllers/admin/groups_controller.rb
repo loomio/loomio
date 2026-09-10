@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update move handle discard undiscard warn_and_discard destroy export_group]
+  before_action :load_group, only: %i[show edit update move handle discard undiscard warn_and_discard export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -88,11 +88,6 @@ class Admin::GroupsController < Admin::BaseController
   def warn_and_discard
     GroupService.warn_and_discard(group: @group, actor: current_user)
     redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_grace_days} days"
-  end
-
-  def destroy
-    GroupService.destroy(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group deletion scheduled immediately"
   end
 
   def export_group

@@ -99,7 +99,6 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         end
         export_form
         button_to "Warn then delete", warn_and_discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name} and discard its complete group tree now? It will be permanently deleted after #{AppConfig.group_deletion_grace_days} days." } }
-        button_to "Delete immediately", admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Permanently delete #{@group.name} and all of its subgroups immediately? This deletes memberships and membership requests, topics and discussions, polls, votes and outcomes, topic items and notifications, templates, chatbots, handle redirects, reactions, and file attachments. User accounts and subscriptions are retained. This cannot be undone." } }
       end
     end
   end

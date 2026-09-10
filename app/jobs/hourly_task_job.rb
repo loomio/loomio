@@ -24,7 +24,7 @@ class HourlyTaskJob < ApplicationJob
       DestroyExpiredDemoGroupsWorker.perform_later
       if ENV["CLEANUP_ENABLED"].present?
         CleanupOrphanRecordsWorker.perform_later
-        CleanupTrialGroupsWorker.perform_later
+        CleanupService.warn_and_discard_expired_trial_groups
       end
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later

@@ -82,14 +82,14 @@ module Dev::Scenarios::Group
     group = create_group
     create_discussion
     group.subscription.update!(plan: "trial", expires_at: 60.days.ago)
-    GroupMailer.destroy_warning(group.id, patrick.id, nil, "trial_expired").deliver_now
+    GroupMailer.expired_trial_deletion_warning(group.id, patrick.id).deliver_now
     last_email(to: patrick)
   end
 
   def setup_group_mailer_deletion_warning
     group = create_group
     create_discussion
-    GroupMailer.destroy_warning(group.id, patrick.id, jennifer.id).deliver_now
+    GroupMailer.admin_deletion_warning(group.id, patrick.id, jennifer.id).deliver_now
     last_email(to: patrick)
   end
 

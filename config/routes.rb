@@ -59,7 +59,6 @@ Rails.application.routes.draw do
         post :discard
         post :undiscard
         post :warn_and_discard
-        post :destroy
         post :export_group
       end
     end

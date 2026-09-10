@@ -50,21 +50,29 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     end
   end
 
-  test "enqueues trial cleanup at midnight UTC only when cleanup is enabled" do
+  test "queues expired-trial warnings at midnight UTC only when cleanup is enabled" do
     begin
       ENV.delete("CLEANUP_ENABLED")
+      called = false
       travel_to Time.utc(2026, 9, 8) do
-        assert_no_enqueued_jobs(only: CleanupTrialGroupsWorker) do
+        CleanupService.stub(:warn_and_discard_expired_trial_groups, ->(**) { called = true }) do
           HourlyTaskJob.perform_now
         end
       end
+      assert_not called
 
       ENV["CLEANUP_ENABLED"] = "1"
+      called = false
       travel_to Time.utc(2026, 9, 8) do
-        assert_enqueued_with(job: CleanupTrialGroupsWorker) { HourlyTaskJob.perform_now }
+        CleanupService.stub(:warn_and_discard_expired_trial_groups, -> { called = true }) do
+          CleanupService.stub(:destroy_discarded_groups, -> { raise "destroying discarded groups is not enabled" }) do
+            HourlyTaskJob.perform_now
+          end
+        end
       end
+      assert called
       travel_to Time.utc(2026, 9, 8, 12) do
-        assert_no_enqueued_jobs(only: CleanupTrialGroupsWorker) do
+        CleanupService.stub(:warn_and_discard_expired_trial_groups, ->(**) { raise "should not run" }) do
           HourlyTaskJob.perform_now
         end
       end

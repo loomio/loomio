@@ -35,15 +35,6 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert Group.exists?(group.id)
   end
 
-  test "immediate administrative deletion schedules the discard it actually performed" do
-    group = groups(:orphan_group)
-    actor = users(:admin)
-    assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ group.id, group.reload.discarded_at.iso8601(6) ] }) do
-      GroupService.destroy(group: group, actor: actor)
-    end
-    assert_equal actor.id, group.reload.discarded_by
-  end
-
   test "members and topic guests cannot schedule group deletion" do
     group = topics(:discussion_topic).group
     AccessVolumeMatrix::ROLES.excluding(:admin).each do |role|
@@ -91,12 +82,11 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert_equal actor.id, group.reload.discarded_by
   end
 
-  test "only instance administrators can discard silently or destroy" do
+  test "only instance administrators can discard silently" do
     actor = users(:user)
     group = topics(:discussion_topic).group
 
     assert_raises(CanCan::AccessDenied) { GroupService.discard(group: group, actor: actor) }
-    assert_raises(CanCan::AccessDenied) { GroupService.destroy(group: group, actor: actor) }
     assert group.reload.kept?
   end
 end
