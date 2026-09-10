@@ -24,13 +24,7 @@ module CleanupService
   EXPIRED_TRIAL_WARNING_LIMIT = 100
   DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
-  # The webhook model was retired, but its table still contains group links.
-  class LegacyWebhook < ApplicationRecord
-    self.table_name = 'webhooks'
-  end
-
   USER_REFERENCES = {
-    attachments: %i[user_id],
     bookmarks: %i[user_id],
     chatbots: %i[author_id],
     comments: %i[user_id discarded_by],
@@ -55,9 +49,7 @@ module CleanupService
     tasks_users: %i[user_id],
     topic_readers: %i[user_id inviter_id revoker_id],
     topics: %i[locker_id discarded_by],
-    user_deactivation_responses: %i[user_id],
-    users: %i[deactivator_id],
-    webhooks: %i[author_id actor_id]
+    users: %i[deactivator_id]
   }.freeze
 
   # Legacy associations lack foreign keys, so row locks alone cannot exclude

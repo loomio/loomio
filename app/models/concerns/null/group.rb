@@ -143,8 +143,7 @@ module Null::Group
       poll_templates: :poll_template,
       discussion_templates: :discussion_template,
       memberships: :membership,
-      admins: :user,
-      webhooks: :webhook,
+      admins: :user
     }
   end
 

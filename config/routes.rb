@@ -141,7 +141,6 @@ Rails.application.routes.draw do
       resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
-      resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :push_subscriptions, only: [:index, :create, :destroy] do
         delete :destroy, on: :collection
         post :reconcile, on: :collection

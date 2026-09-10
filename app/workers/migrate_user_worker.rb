@@ -20,7 +20,6 @@ class MigrateUserWorker < ApplicationJob
   end
 
   SCHEMA = {
-    attachments: :user_id,
     comments: :user_id,
     reactions: :user_id,
     topic_readers: :user_id,

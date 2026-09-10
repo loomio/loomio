@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_10_000004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -26,19 +26,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
-  end
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.bigint "author_id"
-    t.string "author_type"
-    t.text "body"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "namespace"
-    t.bigint "resource_id"
-    t.string "resource_type"
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -101,26 +88,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.index ["voter_id"], name: "index_anonymous_poll_voters_on_voter_id"
   end
 
-  create_table "attachments", id: :serial, force: :cascade do |t|
-    t.integer "attachable_id"
-    t.string "attachable_type"
-    t.integer "comment_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "file_content_type"
-    t.string "file_file_name"
-    t.integer "file_file_size"
-    t.datetime "file_updated_at", precision: nil
-    t.string "filename", limit: 255
-    t.integer "filesize"
-    t.text "location"
-    t.boolean "migrated_to_document", default: false, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
-    t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
-    t.index ["comment_id"], name: "index_attachments_on_comment_id"
-    t.index ["user_id"], name: "index_attachments_on_user_id"
-  end
-
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "bookmarkable_id", null: false
     t.string "bookmarkable_type", null: false
@@ -152,10 +119,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.jsonb "attachments", default: [], null: false
-    t.integer "attachments_count", default: 0, null: false
     t.text "body", default: ""
     t.string "body_format", limit: 10, default: "md", null: false
-    t.integer "comment_votes_count", default: 0, null: false
     t.string "content_locale"
     t.datetime "created_at", precision: nil
     t.datetime "discarded_at", precision: nil
@@ -234,11 +199,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.integer "discarded_by"
     t.integer "discussion_template_id"
     t.string "discussion_template_key"
-    t.string "iframe_src", limit: 255
-    t.integer "importance", default: 0, null: false
     t.jsonb "info", default: {}, null: false
     t.string "key", limit: 255
-    t.datetime "last_comment_at", precision: nil
     t.jsonb "link_previews", default: [], null: false
     t.string "tags", default: [], array: true
     t.boolean "template", default: false, null: false
@@ -277,16 +239,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.jsonb "attachments", default: [], null: false
     t.string "category"
-    t.integer "category_id"
     t.string "city"
-    t.integer "closed_motions_count", default: 0, null: false
     t.integer "closed_polls_count", default: 0, null: false
     t.string "content_locale"
     t.string "country"
-    t.string "cover_photo_content_type", limit: 255
-    t.string "cover_photo_file_name", limit: 255
-    t.integer "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at", precision: nil
     t.datetime "created_at", precision: nil
     t.integer "creator_id"
     t.integer "delegates_count", default: 0, null: false
@@ -300,17 +256,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.string "full_name", limit: 255
     t.citext "handle"
     t.jsonb "info", default: {}, null: false
-    t.integer "invitations_count", default: 0, null: false
-    t.boolean "is_referral", default: false, null: false
     t.boolean "is_visible_to_parent_members", default: false, null: false
     t.boolean "is_visible_to_public", default: true, null: false
     t.string "key", limit: 255
     t.jsonb "link_previews", default: [], null: false
     t.boolean "listed_in_explore", default: false, null: false
-    t.string "logo_content_type", limit: 255
-    t.string "logo_file_name", limit: 255
-    t.integer "logo_file_size"
-    t.datetime "logo_updated_at", precision: nil
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_add_members", default: false, null: false
     t.boolean "members_can_announce", default: true, null: false
@@ -332,7 +282,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.integer "pending_memberships_count", default: 0, null: false
     t.integer "poll_templates_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
-    t.integer "proposal_outcomes_count", default: 0, null: false
     t.string "region"
     t.string "request_to_join_prompt"
     t.integer "subgroups_count", default: 0, null: false
@@ -404,12 +353,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.boolean "delegate", default: false, null: false
     t.jsonb "experiences", default: {}, null: false
     t.integer "group_id", null: false
-    t.integer "inbox_position", default: 0
-    t.integer "invitation_id"
     t.integer "inviter_id"
     t.datetime "revoked_at", precision: nil
     t.integer "revoker_id"
-    t.datetime "saml_session_expires_at", precision: nil
     t.string "title"
     t.string "token"
     t.datetime "updated_at", precision: nil
@@ -659,7 +605,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.boolean "anonymous", default: false, null: false
-    t.jsonb "atttachments", default: [], null: false
     t.integer "author_id", null: false
     t.boolean "can_respond_maybe", default: true, null: false
     t.string "chart_type"
@@ -729,12 +674,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.string "key", null: false
     t.boolean "limit_reason_length", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.jsonb "matrix_counts", default: [], null: false
     t.integer "max_score"
     t.integer "maximum_stance_choices"
     t.integer "min_score"
     t.integer "minimum_stance_choices"
-    t.boolean "multiple_choice", default: false, null: false
     t.integer "none_of_the_above_count", default: 0, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.boolean "notify_on_open", default: true, null: false
@@ -753,7 +696,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
     t.jsonb "stance_counts", default: [], null: false
-    t.jsonb "stance_data", default: {}
     t.integer "stance_reason_required", default: 1, null: false
     t.string "stv_method"
     t.string "stv_quota"
@@ -1094,7 +1036,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.datetime "created_at", precision: nil
     t.integer "group_id", null: false
     t.citext "name", null: false
-    t.integer "org_taggings_count", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.integer "taggings_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
@@ -1181,7 +1122,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.boolean "guest", default: false, null: false
     t.integer "inviter_id"
     t.datetime "last_read_at", precision: nil
-    t.boolean "participating", default: false, null: false
     t.string "read_ranges_string"
     t.datetime "revoked_at", precision: nil
     t.integer "revoker_id"
@@ -1251,11 +1191,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 
-  create_table "user_deactivation_responses", id: :serial, force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-  end
-
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "api_key", null: false
     t.jsonb "attachments", default: [], null: false
@@ -1278,13 +1213,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.string "detected_locale", limit: 255
     t.citext "email"
     t.string "email_api_key", limit: 255, null: false
-    t.boolean "email_catch_up", default: true, null: false
     t.integer "email_catch_up_day", default: 7
     t.boolean "email_newsletter", default: false, null: false
     t.string "email_sha256"
     t.boolean "email_verified", default: false, null: false
     t.jsonb "experiences", default: {}, null: false
-    t.integer "facebook_community_id"
     t.integer "failed_attempts", default: 0, null: false
     t.boolean "is_admin", default: false
     t.string "key", limit: 255
@@ -1304,14 +1237,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.string "short_bio", default: "", null: false
     t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "sign_in_count", default: 0
-    t.integer "slack_community_id"
     t.string "time_zone", limit: 255
     t.string "unsubscribe_token", limit: 255, null: false
     t.datetime "updated_at", precision: nil
-    t.string "uploaded_avatar_content_type", limit: 255
-    t.string "uploaded_avatar_file_name", limit: 255
-    t.integer "uploaded_avatar_file_size"
-    t.datetime "uploaded_avatar_updated_at", precision: nil
     t.string "username", limit: 255
     t.integer "volume_email_default", default: 2, null: false
     t.integer "volume_push_default", default: 2, null: false
@@ -1334,25 +1262,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
     t.jsonb "object_changes"
     t.integer "whodunnit"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
-
-  create_table "webhooks", force: :cascade do |t|
-    t.integer "actor_id"
-    t.integer "author_id"
-    t.datetime "created_at", precision: nil
-    t.jsonb "event_kinds", default: [], null: false
-    t.string "format", default: "markdown"
-    t.integer "group_id", null: false
-    t.boolean "include_body", default: false
-    t.boolean "include_subgroups", default: false, null: false
-    t.boolean "is_broken", default: false, null: false
-    t.datetime "last_used_at"
-    t.string "name", null: false
-    t.string "permissions", default: [], null: false, array: true
-    t.string "token"
-    t.datetime "updated_at", precision: nil
-    t.string "url"
-    t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -1406,5 +1315,4 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_10_000003) do
   add_foreign_key "topic_readers", "topics", on_delete: :cascade
   add_foreign_key "topic_readers", "users", on_delete: :cascade
   add_foreign_key "topics", "groups"
-  add_foreign_key "webhooks", "groups", on_delete: :cascade
 end

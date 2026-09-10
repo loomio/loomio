@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance anonymous_ballot discussion discussion_template topic_reader topic comment
-    contact_message webhook chatbot contact_request reaction bookmark tag
+    contact_message chatbot contact_request reaction bookmark tag
   )
 
   MODELS.each do |kind|
@@ -204,10 +204,6 @@ class PermittedParams < Struct.new(:params)
      :request_to_join_prompt, :listed_in_explore,
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
-  end
-
-  def webhook_attributes
-   [:group_id, :url, :name, :format, :include_body, :include_subgroups, :permissions, :event_kinds, {event_kinds: [], permissions: []}]
   end
 
   def chatbot_attributes

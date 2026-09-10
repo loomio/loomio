@@ -80,7 +80,6 @@ class GroupExportService
       memberships: %w[group_id],
       topics: %w[group_id],
       tags: %w[group_id],
-      webhooks: %w[group_id],
       topic_items: %w[itemable],
       notifications: %w[subject],
       groups: %w[parent_id],
@@ -142,8 +141,7 @@ class GroupExportService
       subscriptions: %w[owner_id],
       tasks: %w[doer_id author_id],
       tasks_users: %w[user_id],
-      versions: %w[whodunnit],
-      webhooks: %w[author_id]
+      versions: %w[whodunnit]
     }
   }.with_indifferent_access.freeze
 
