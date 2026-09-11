@@ -26,7 +26,7 @@ gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
-gem 'image_processing', '~> 2.0'
+gem 'image_processing', '~> 2.1'
 gem 'mini_magick', '~> 5.4'
 gem "ruby-vips"
 gem "stackprof"
