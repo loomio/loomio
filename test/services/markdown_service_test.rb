@@ -1,6 +1,54 @@
 require 'test_helper'
 
 class MarkdownServiceTest < ActiveSupport::TestCase
+  test "markdown replaces unsafe link and image URLs" do
+    markdown = <<~MARKDOWN
+      [javascript](javascript:alert(1))
+      [mixed case](JaVaScRiPt:alert(1))
+      [encoded colon](javascript&#58;alert(1))
+      [encoded letter](java&#x73;cript:alert(1))
+      [encoded whitespace](java&Tab;script&colon;alert(1))
+      [data](data:text/html,<script>alert(1)</script>)
+      <javascript:alert(1)>
+      ![image](javascript:alert(1))
+    MARKDOWN
+
+    fragment = Nokogiri::HTML5::DocumentFragment.parse(MarkdownService.render_html(markdown))
+
+    assert_equal ['#'] * 7, fragment.css('a').map { |link| link['href'] }
+    assert_equal ['#'], fragment.css('img').map { |image| image['src'] }
+  end
+
+  test "markdown preserves safe link and image URLs" do
+    markdown = <<~MARKDOWN
+      [https](https://example.test/path)
+      [mailto](mailto:person@example.test)
+      [telephone](tel:+123456789)
+      [ftp](ftp://example.test/file)
+      [root relative](/path?q=https://example.test)
+      [protocol relative](//example.test/path)
+      [fragment](#section)
+      [relative](../image.png)
+      <https://example.test/autolink>
+      ![image](images/example.png)
+    MARKDOWN
+
+    fragment = Nokogiri::HTML5::DocumentFragment.parse(MarkdownService.render_html(markdown))
+
+    assert_equal [
+      'https://example.test/path',
+      'mailto:person@example.test',
+      'tel:+123456789',
+      'ftp://example.test/file',
+      '/path?q=https://example.test',
+      '//example.test/path',
+      '#section',
+      '../image.png',
+      'https://example.test/autolink'
+    ], fragment.css('a').map { |link| link['href'] }
+    assert_equal ['images/example.png'], fragment.css('img').map { |image| image['src'] }
+  end
+
   test "rich text media attributes and task dates cannot become markup" do
     payload = "'>&lt;img src=x onerror=alert(1)&gt;"
     html = <<~HTML

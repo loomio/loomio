@@ -25,6 +25,21 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_select "a.navbar__sign-in[href='/dashboard']"
   end
 
+  test "public discussion SSR does not render unsafe Markdown URLs" do
+    discussion = discussions(:public_discussion)
+    discussion.update!(
+      description: "[unsafe](javascript&#58;alert(1))",
+      description_format: "md"
+    )
+
+    get :show, params: { key: discussion.key, export: 1 }
+
+    assert_response :success
+    assert_select ".context-panel__description a[href='#']", text: "unsafe"
+    assert_select "[href^='javascript:'], [src^='javascript:']", count: 0
+    assert_select "[href^='data:'], [src^='data:']", count: 0
+  end
+
   test "public discussion clamps invalid pagination values" do
     discussion = discussions(:public_discussion)
 
