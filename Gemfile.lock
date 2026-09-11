@@ -356,7 +356,7 @@ GEM
     iso8601 (0.13.0)
     jaro_winkler (1.7.0)
     jmespath (1.6.2)
-    json (3.0.2)
+    json (2.21.2)
     jwt (3.2.0)
       base64
     kramdown (2.5.2)
