@@ -352,6 +352,9 @@ class GroupExportService
     tables = (parents & tables) + (tables - parents)
     # Group hierarchies have two levels, but archive row order is unspecified.
     datas_by_table.fetch('groups', []).sort_by! { |data| data.dig('record', 'parent_id').nil? ? 0 : 1 }
+    # Topic item parents must exist before their children because the database
+    # enforces that both records belong to the same topic.
+    datas_by_table.fetch('topic_items', []).sort_by! { |data| data.dig('record', 'depth').to_i }
 
     ActiveRecord::Base.transaction do
       migrate_ids = build_migrate_ids(datas_by_table, tables)
