@@ -3,7 +3,6 @@ class HourlyTaskJob < ApplicationJob
     now = Time.current.utc
     hour = now.hour
 
-    puts "#{now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
     EventBus.broadcast('loomio_hourly_tick', hour)
     ExpireLapsedPollsWorker.perform_later
