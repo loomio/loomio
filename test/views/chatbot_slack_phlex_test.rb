@@ -90,6 +90,22 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Chatbot Test Discussion"
   end
 
+  test "notification treats actor names and titles as inline text" do
+    payload = "[click](https://evil.test) <script>alert(1)</script> *admin*\n# heading"
+    topic_item = @discussion.created_topic_item
+    topic_item.user.update!(name: payload)
+    topic_item.itemable.update_columns(title: payload)
+
+    component = Views::Chatbot::Slack::Notification.new(topic_item: topic_item, recipient: @recipient)
+    output = render_phlex(component)
+
+    refute_includes output, "<https://evil.test|click>"
+    assert_includes output, "[click](https://evil.test)"
+    assert_includes output, "&lt;script&gt;alert(1)&lt;/script&gt;"
+    assert_includes output, "*admin* # heading"
+    assert_match(/<http.*\/d\/.*\|\[click\]/, output)
+  end
+
   test "notification component renders for poll" do
     poll = Poll.create!(
       title: "Test Proposal",

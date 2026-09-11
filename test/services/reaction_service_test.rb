@@ -22,7 +22,29 @@ class ReactionServiceTest < ActiveSupport::TestCase
 
   test "creates a reaction for the current user on a comment" do
     assert_difference 'Reaction.count', 1 do
-      ReactionService.update(reaction: @reaction, params: { reaction: 'smiley' }, actor: @user)
+      ReactionService.update(reaction: @reaction, params: { reaction: '😃' }, actor: @user)
+    end
+  end
+
+  test "does not save a reaction longer than the supported emoji sequence" do
+    assert_no_difference [ -> { Reaction.count }, -> { Notification.count } ] do
+      ReactionService.update(
+        reaction: @reaction,
+        params: { reaction: "x" * (Reaction::REACTION_LENGTH_MAX + 1) },
+        actor: @user
+      )
+    end
+
+    assert_predicate @reaction, :invalid?
+    assert_includes @reaction.errors[:reaction], "is too long (maximum is #{Reaction::REACTION_LENGTH_MAX} characters)"
+  end
+
+  test "accepts a multi-codepoint emoji from the reaction picker" do
+    emoji = "🧑🏻‍❤️‍💋‍🧑🏼"
+
+    assert_operator emoji.length, :>, 8
+    assert_difference 'Reaction.count', 1 do
+      ReactionService.update(reaction: @reaction, params: { reaction: emoji }, actor: @user)
     end
   end
 
@@ -33,7 +55,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
       assert_no_difference -> { TopicItem.where(kind: "reaction_created").count } do
         assert_equal @reaction, ReactionService.update(
           reaction: @reaction,
-          params: { reaction: "smiley" },
+          params: { reaction: "😃" },
           actor: @user
         )
       end
@@ -45,7 +67,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
   test "rolls back reaction creation when notification creation fails" do
     assert_raises RuntimeError do
       NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
-        ReactionService.update(reaction: @reaction, params: { reaction: 'smiley' }, actor: @user)
+        ReactionService.update(reaction: @reaction, params: { reaction: '😃' }, actor: @user)
       end
     end
 

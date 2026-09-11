@@ -10,8 +10,8 @@ module Views::Chatbot::Markdown::Concerns
     title = topic_item.itemable.title_model.title
 
     md t("notifications.without_title.#{topic_item.kind}",
-         actor: topic_item.user.name,
-         title: "[#{title}](#{url})",
+         actor: markdown_escape(topic_item.user.name),
+         title: "[#{markdown_escape(title)}](#{url})",
          poll_type: poll_type,
          site_name: AppConfig.theme[:site_name])
     md "\n"
@@ -22,7 +22,7 @@ module Views::Chatbot::Markdown::Concerns
   end
 
   def render_title(itemable)
-    md "**[#{itemable.title}](#{polymorphic_url(itemable)})**\n"
+    md "**[#{markdown_escape(itemable.title)}](#{polymorphic_url(itemable)})**\n"
   end
 
   def render_body(itemable)

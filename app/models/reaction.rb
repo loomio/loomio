@@ -1,10 +1,13 @@
 class Reaction < ApplicationRecord
+  REACTION_LENGTH_MAX = 16
+
   include HasNotifications
 
   belongs_to :reactable, polymorphic: true
   belongs_to :user
   # TODO: ensure one reaction per reactable
   # validates_uniqueness_of :user_id, scope: :reactable
+  validates :reaction, presence: true, length: { maximum: REACTION_LENGTH_MAX }
   validates_presence_of :user, :reactable
 
   delegate :group, to: :reactable, allow_nil: true
@@ -17,6 +20,4 @@ class Reaction < ApplicationRecord
   def author_id
     user_id
   end
-
-
 end

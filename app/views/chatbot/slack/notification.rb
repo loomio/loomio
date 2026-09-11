@@ -13,8 +13,8 @@ class Views::Chatbot::Slack::Notification < Views::Chatbot::Slack::Base
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
     sd t("notifications.with_title.#{@topic_item.kind}",
-         actor: @topic_item.user.name,
-         title: "[#{@topic_item.itemable.title_model.title}](#{url})",
+         actor: markdown_escape(@topic_item.user.name),
+         title: "[#{markdown_escape(@topic_item.itemable.title_model.title)}](#{url})",
          poll_type: poll_type,
          site_name: AppConfig.theme[:site_name])
     md "\n"

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Views::NotificationMailer::Common::Notification < Views::ApplicationMailer::Component
-
   def initialize(topic_item:, recipient:, event_key:, poll: nil, url: nil, message: nil, title: nil, translation_values: {}, with_title: false, content: nil)
     @topic_item = topic_item
     @recipient = recipient
@@ -69,12 +68,17 @@ class Views::NotificationMailer::Common::Notification < Views::ApplicationMailer
     translated_name = translated_values.delete(:name)
     translated_values[:actor] = translated_name if translated_name.present?
 
-    {
+    params = {
       actor: @topic_item.user.name_or_username,
       title: title_link_html,
       poll_type: @poll ? t("poll_types.#{@poll.poll_type}") : nil,
       site_name: AppConfig.theme[:site_name]
     }.merge(translated_values).merge(title: title_link_html)
+
+    # The translated notification is rendered as trusted HTML so generated title
+    # links remain clickable. Escape every plain interpolation value;
+    # html_escape preserves links already captured as safe HTML.
+    params.transform_values { |value| ERB::Util.html_escape(value) }
   end
 
   def url

@@ -11,7 +11,13 @@ class Views::Chatbot::Matrix::Notification < Views::Chatbot::Base
     title = capture { link_to(@topic_item.itemable.title_model.title, polymorphic_url(@topic_item.itemable)) }
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
-    raw t("notifications.with_title.#{@topic_item.kind}", actor: @topic_item.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name]).html_safe
+    values = html_escape_values(
+      actor: @topic_item.user.name,
+      title: title,
+      poll_type: poll_type,
+      site_name: AppConfig.theme[:site_name]
+    )
+    raw t("notifications.with_title.#{@topic_item.kind}", **values).html_safe
 
     if @poll
       render Views::Chatbot::Matrix::Undecided.new(poll: @poll)

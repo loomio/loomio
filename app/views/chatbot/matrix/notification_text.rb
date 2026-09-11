@@ -13,7 +13,13 @@ class Views::Chatbot::Matrix::NotificationText < Views::Chatbot::Base
     title = capture { link_to(TranslationService.plain_text(@topic_item.itemable.title_model, :title, @recipient), url) }
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
-    p { raw t("notifications.without_title.#{@topic_item.kind}", actor: @topic_item.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name]).html_safe }
+    values = html_escape_values(
+      actor: @topic_item.user.name,
+      title: title,
+      poll_type: poll_type,
+      site_name: AppConfig.theme[:site_name]
+    )
+    p { raw t("notifications.without_title.#{@topic_item.kind}", **values).html_safe }
 
     if message.present?
       i { raw MarkdownService.render_plain_text(message) }

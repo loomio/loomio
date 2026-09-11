@@ -1,4 +1,6 @@
 module MarkdownService
+  MARKDOWN_PUNCTUATION = Regexp.union("\\", "`", "*", "_", "[", "]", "{", "}", "(", ")", "#", "+", "-", ".", "!", "|", "<", ">", "~")
+
   MARKDOWN_OPTIONS = [
     no_intra_emphasis:    true,
     tables:               true,
@@ -19,6 +21,13 @@ module MarkdownService
     else
       ReverseMarkdown.convert(text)
     end
+  end
+
+  # Keep a user-controlled inline label as text when it is inserted into a
+  # larger Markdown document. Newlines are collapsed so the value cannot start
+  # a new block, and Markdown punctuation loses its markup meaning.
+  def self.escape_inline(text)
+    text.to_s.gsub(/\r\n?|\n/, " ").gsub(MARKDOWN_PUNCTUATION) { |character| "\\#{character}" }
   end
 
   def self.render_html(text)

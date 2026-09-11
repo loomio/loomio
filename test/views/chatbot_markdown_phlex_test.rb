@@ -87,6 +87,21 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Chatbot Test Discussion"
   end
 
+  test "notification treats actor names and titles as inline text" do
+    payload = "[click](https://evil.test) <script>alert(1)</script> *admin*\n# heading"
+    topic_item = @discussion.created_topic_item
+    topic_item.user.update!(name: payload)
+    topic_item.itemable.update_columns(title: payload)
+
+    component = Views::Chatbot::Markdown::Notification.new(topic_item: topic_item, recipient: @recipient)
+    output = render_phlex(component)
+
+    assert_equal 2, output.scan(MarkdownService.escape_inline(payload)).length
+    refute_includes output, "[click](https://evil.test)"
+    refute_includes output, "<script>"
+    assert_match(/\]\(http.*\/d\//, output)
+  end
+
   test "notification component renders for poll" do
     poll = Poll.create!(
       title: "Test Proposal",
