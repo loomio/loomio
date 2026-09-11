@@ -729,3 +729,34 @@ tr:
     file_too_large: Dosya çok büyük. Maksimum yükleme boyutu %{limit}.
   merge_users:
     not_target_user: Birleştirme işlemini onaylamak için hedef hesapla oturum açmış olmanız gerekir.
+  thread_markdown:
+    poll: Anket
+    no_activity: Henüz hiçbir yorum, anket, oy veya sonuç yok.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Yorum · %{author} %{timestamp}
+    comment_reply: "%{reply_author} adlı kullanıcıya yanıt ver · %{author} %{timestamp}"
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Durum:** %{value}"
+    anonymous_voting: "**Anonim oylama:** %{value}"
+    options: "**Seçenekler:** %{value}"
+    'yes': Evet
+    closed: Kapalı %{value}
+    scheduled_to_open: Açılış tarihi %{value} olarak planlandı.
+    open_until: Açık; %{value} ile kapanır
+    open: Açık
+    current_results: Mevcut sonuçlar
+    hidden_until_closed: Anket kapanana kadar gizli kalacak.
+    hidden_until_voted: İzleyici oy verene kadar gizli kalır.
+    voters: Seçmenler
+    target: Hedef
+    available: Mevcut
+    available_if_needed: İhtiyaç halinde temin edilebilir.
+    unavailable: Mevcut değil
+    anonymous: Anonim
+    no_voters: Oy vermeyenler
+    score: 'puan: %{value}'
+    vote: 'Oy: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Yukarıdakilerin hiçbiri
+    no_option_selected: Hiçbir seçenek seçilmedi.
+    outcome: Sonuç · %{author} %{timestamp}
+    review_date: "**İnceleme tarihi:** %{value}"

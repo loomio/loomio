@@ -741,3 +741,34 @@ hu:
     file_too_large: A fájl túl nagy. A maximális feltöltési méret %{limit}.
   merge_users:
     not_target_user: Az egyesítés megerősítéséhez célfiókként kell bejelentkeznie.
+  thread_markdown:
+    poll: Szavazás
+    no_activity: Még nincsenek hozzászólások, szavazások, szavazatok vagy eredmények
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Hozzászólás · %{author} %{timestamp}
+    comment_reply: Válasz %{reply_author} felhasználónak · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Állapot:** %{value}"
+    anonymous_voting: "**Névtelen szavazás:** %{value}"
+    options: "**Opciók:** %{value}"
+    'yes': Igen
+    closed: Lezárva %{value}
+    scheduled_to_open: "%{value} megnyitására ütemezve"
+    open_until: Nyitás; zárás %{value}
+    open: Nyitott
+    current_results: Jelenlegi eredmények
+    hidden_until_closed: A szavazás lezárásáig rejtve
+    hidden_until_voted: Rejtve, amíg a néző nem szavaz
+    voters: Választók
+    target: Cél
+    available: Elérhető
+    available_if_needed: Szükség esetén elérhető
+    unavailable: Nem elérhető
+    anonymous: Névtelen
+    no_voters: Nincsenek szavazók
+    score: 'pontszám: %{value}'
+    vote: 'Szavazat: %{response} · %{author} %{timestamp}'
+    none_of_the_above: A fentiek egyike sem
+    no_option_selected: Nincs kiválasztva opció
+    outcome: Eredmény · %{author} %{timestamp}
+    review_date: "**Felülvizsgálat dátuma:** %{value}"

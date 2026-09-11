@@ -740,3 +740,34 @@ ru:
     file_too_large: Размер файла слишком велик. Максимальный размер загружаемого файла составляет %{limit}.
   merge_users:
     not_target_user: Для подтверждения слияния необходимо войти в систему под целевой учетной записью.
+  thread_markdown:
+    poll: Голосование
+    no_activity: Пока нет комментариев, опросов, голосов или результатов.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Комментарий · %{author} %{timestamp}
+    comment_reply: Ответить %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Статус:** %{value}"
+    anonymous_voting: "**Анонимное голосование:** %{value}"
+    options: "**Параметры:** %{value}"
+    'yes': Да
+    closed: Закрыто %{value}
+    scheduled_to_open: Планируется открытие %{value}
+    open_until: Открыто; закрывает %{value}
+    open: Открыть
+    current_results: Текущие результаты
+    hidden_until_closed: Скрыто до закрытия голосования
+    hidden_until_voted: Скрыто до тех пор, пока зритель не проголосует.
+    voters: Избиратели
+    target: Цель
+    available: Доступный
+    available_if_needed: При необходимости доступен.
+    unavailable: Недоступно
+    anonymous: Аноним
+    no_voters: Нет избирателей
+    score: 'оценка: %{value}'
+    vote: 'Голосование: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Ни один из вышеперечисленных
+    no_option_selected: Вариант не выбран
+    outcome: Результат · %{author} %{timestamp}
+    review_date: "**Дата проверки:** %{value}"

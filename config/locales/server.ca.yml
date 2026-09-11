@@ -731,3 +731,34 @@ ca:
     file_too_large: El fitxer és massa gran. La mida màxima de càrrega és %{limit}.
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.
+  thread_markdown:
+    poll: Enquesta
+    no_activity: Encara no hi ha comentaris, enquestes, vots ni resultats
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentari · %{author} %{timestamp}
+    comment_reply: Respon a %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Estat:** %{value}"
+    anonymous_voting: "**Vot anònim:** %{value}"
+    options: "**Opcions:** %{value}"
+    'yes': Sí
+    closed: Tancat %{value}
+    scheduled_to_open: Programat per obrir %{value}
+    open_until: Obre; tanca %{value}
+    open: Obre
+    current_results: Resultats actuals
+    hidden_until_closed: Amagat fins que es tanqui l'enquesta
+    hidden_until_voted: Ocult fins que l'espectador voti
+    voters: Votants
+    target: Objectiu
+    available: Disponible
+    available_if_needed: Disponible si cal
+    unavailable: No disponible
+    anonymous: Anònim
+    no_voters: Cap votant
+    score: 'puntuació: %{value}'
+    vote: 'Vot: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Cap de les anteriors
+    no_option_selected: No s'ha seleccionat cap opció
+    outcome: Resultat · %{author} %{timestamp}
+    review_date: "**Data de revisió:** %{value}"

@@ -724,3 +724,34 @@ be:
       people_have_voted: "%{nom} з %{dnom} чалавек прынялі ўдзел (%{pct}%)"
   upload:
     file_too_large: Файл занадта вялікі. Максімальны памер для загрузкі — %{limit}.
+  thread_markdown:
+    poll: Апытанне
+    no_activity: Пакуль няма каментарыяў, апытанняў, галасаванняў або вынікаў
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Каментарый · %{author} %{timestamp}
+    comment_reply: Адказ для %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Стан:** %{value}"
+    anonymous_voting: "**Ананімнае галасаванне:** %{value}"
+    options: "**Параметры:** %{value}"
+    'yes': Так
+    closed: Закрыта %{value}
+    scheduled_to_open: Запланавана адкрыццё %{value}
+    open_until: Адкрываецца; закрываецца %{value}
+    open: Адкрыта
+    current_results: Бягучыя вынікі
+    hidden_until_closed: Схавана да закрыцця апытання
+    hidden_until_voted: Схавана, пакуль гледачы не прагаласуюць
+    voters: Выбаршчыкі
+    target: Мэта
+    available: Даступна
+    available_if_needed: Даступна пры неабходнасці
+    unavailable: Недаступна
+    anonymous: Ананімны
+    no_voters: Няма выбаршчыкаў
+    score: 'бал: %{value}'
+    vote: 'Галасаванне: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Нічога з вышэйпералічанага
+    no_option_selected: Варыянт не выбраны
+    outcome: Вынік · %{author} %{timestamp}
+    review_date: "**Дата агляду:** %{value}"

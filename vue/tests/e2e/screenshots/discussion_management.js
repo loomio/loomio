@@ -23,6 +23,13 @@ function openDiscussion(page) {
   page.waitFor('.new-comment');
 }
 
+function openCopyMarkdownDiscussion(page) {
+  page.loadPath('setup_manual_oatmilk_copy_markdown');
+  page.waitFor('.topic-page');
+  page.waitFor('.new-comment');
+  page.expectText('.topic-page', 'Run the six-week bottle trial with three cafes');
+}
+
 function selectCommentForMove(page) {
   openDiscussion(page);
   page.click('.new-comment .action-menu');
@@ -212,7 +219,7 @@ module.exports = {
   'copy_markdown_action': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openDiscussion(page);
+    openCopyMarkdownDiscussion(page);
     page.waitFor('.topic-sidebar .action-dock__button--copy_thread_for_ai');
     screenshot.capture('discussions/discussion_management/copy_markdown_action', {
       width: 1280,
@@ -231,7 +238,7 @@ module.exports = {
   'copy_markdown_dialog': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openDiscussion(page);
+    openCopyMarkdownDiscussion(page);
     page.click('.topic-sidebar .action-dock__button--copy_thread_for_ai');
     page.waitFor('.modal-launcher .v-card');
     page.expectText('.modal-launcher .v-card', 'Copy Markdown');

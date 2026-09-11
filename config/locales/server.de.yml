@@ -761,3 +761,34 @@ de:
     file_too_large: Die Datei ist zu groß. Die maximale Uploadgröße beträgt %{limit}.
   merge_users:
     not_target_user: Du musst als das Zielkonto angemeldet sein, um eine Zusammenführung zu bestätigen.
+  thread_markdown:
+    poll: Umfrage
+    no_activity: Bisher keine Kommentare, Umfragen, Abstimmungen oder Ergebnisse.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Kommentar · %{author} %{timestamp}
+    comment_reply: Antwort an %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonyme Abstimmung:** %{value}"
+    options: "**Optionen:** %{value}"
+    'yes': Ja
+    closed: Geschlossen %{value}
+    scheduled_to_open: Geplante Öffnung %{value}
+    open_until: Öffnen; schließen %{value}
+    open: Offen
+    current_results: Aktuelle Ergebnisse
+    hidden_until_closed: Ausgeblendet bis zum Ende der Abstimmung
+    hidden_until_voted: Ausgeblendet bis zur Zuschauerabstimmung
+    voters: Wähler
+    target: Ziel
+    available: Verfügbar
+    available_if_needed: Bei Bedarf verfügbar
+    unavailable: Nicht verfügbar
+    anonymous: Anonym
+    no_voters: Keine Wähler
+    score: 'Punktzahl: %{value}'
+    vote: 'Abstimmung: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nichts des oben Genannten
+    no_option_selected: Keine Option ausgewählt
+    outcome: Ergebnis · %{author} %{timestamp}
+    review_date: "**Überprüfungsdatum:** %{value}"

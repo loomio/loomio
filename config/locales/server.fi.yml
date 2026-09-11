@@ -729,3 +729,34 @@ fi:
     file_too_large: Tiedosto on liian suuri. Suurin mahdollinen lähetyskoko on %{limit}.
   merge_users:
     not_target_user: Sinun on kirjauduttava sisään kohdetilillä vahvistaaksesi yhdistämisen.
+  thread_markdown:
+    poll: Kysely
+    no_activity: Ei vielä kommentteja, kyselyitä, ääniä tai tuloksia
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Kommentti · %{author} %{timestamp}
+    comment_reply: Vastaus käyttäjälle %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Tila:** %{value}"
+    anonymous_voting: "**Anonyymi äänestys:** %{value}"
+    options: "**Asetukset:** %{value}"
+    'yes': Kyllä
+    closed: Suljettu %{value}
+    scheduled_to_open: Aikataulutettu avattavaksi %{value}
+    open_until: Avaa; sulkee %{value}
+    open: Avata
+    current_results: Nykyiset tulokset
+    hidden_until_closed: Piilotettu, kunnes kysely sulkeutuu
+    hidden_until_voted: Piilotettu, kunnes katsoja äänestää
+    voters: Äänestäjät
+    target: Kohde
+    available: Saatavilla
+    available_if_needed: Saatavilla tarvittaessa
+    unavailable: Ei saatavilla
+    anonymous: Anonyymi
+    no_voters: Ei äänestäjiä
+    score: 'pisteet: %{value}'
+    vote: 'Äänestys: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Mikään yllä mainituista
+    no_option_selected: Ei valittua vaihtoehtoa
+    outcome: Lopputulos · %{author} %{timestamp}
+    review_date: "**Arviointipäivämäärä:** %{value}"

@@ -756,3 +756,34 @@ pl:
     file_too_large: Plik jest za duży. Maksymalny rozmiar przesyłanego pliku to %{limit}.
   merge_users:
     not_target_user: Aby potwierdzić scalenie, musisz zalogować się jako konto docelowe.
+  thread_markdown:
+    poll: Głosowanie
+    no_activity: Brak komentarzy, ankiet, głosów i wyników
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Komentarz · %{author} %{timestamp}
+    comment_reply: Odpowiedz %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Głosowanie anonimowe:** %{value}"
+    options: "**Opcje:** %{value}"
+    'yes': Tak
+    closed: Zamknięto %{value}
+    scheduled_to_open: Zaplanowano otwarcie %{value}
+    open_until: Otwórz; zamknij %{value}
+    open: Otwarte
+    current_results: Aktualne wyniki
+    hidden_until_closed: Ukryte do momentu zamknięcia ankiety
+    hidden_until_voted: Ukryte, dopóki widz nie zagłosuje
+    voters: Wyborcy
+    target: Cel
+    available: Dostępny
+    available_if_needed: Dostępne w razie potrzeby
+    unavailable: Nie płynny
+    anonymous: Anonimowy
+    no_voters: Brak wyborców
+    score: 'wynik: %{value}'
+    vote: 'Głos: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Żadne z powyższych
+    no_option_selected: Nie wybrano opcji
+    outcome: Wynik · %{author} %{timestamp}
+    review_date: "**Data przeglądu:** %{value}"

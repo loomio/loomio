@@ -743,3 +743,34 @@ uk:
     file_too_large: Файл занадто великий. Максимальний розмір завантаження – %{limit}.
   merge_users:
     not_target_user: Щоб підтвердити об’єднання, ви повинні ввійти як цільовий обліковий запис.
+  thread_markdown:
+    poll: Опитування
+    no_activity: Поки що немає коментарів, опитувань, голосувань чи результатів
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Коментар · %{author} %{timestamp}
+    comment_reply: Відповідь для %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Статус:** %{value}"
+    anonymous_voting: "**Анонімне голосування:** %{value}"
+    options: "**Параметри:** %{value}"
+    'yes': Так
+    closed: Закрито %{value}
+    scheduled_to_open: Заплановано відкриття %{value}
+    open_until: Відкрити; закрити %{value}
+    open: ВІДЧИНЕНО
+    current_results: Поточні результати
+    hidden_until_closed: Приховано до закриття опитування
+    hidden_until_voted: Приховано, доки глядач не проголосує
+    voters: Виборці
+    target: Ціль
+    available: Доступно
+    available_if_needed: Доступно за потреби
+    unavailable: Недоступно
+    anonymous: Анонім
+    no_voters: Немає виборців
+    score: 'оцінка: %{value}'
+    vote: 'Голос: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Жоден з перерахованих вище
+    no_option_selected: Не вибрано жодного варіанта
+    outcome: Результат · %{author} %{timestamp}
+    review_date: "**Дата перегляду:** %{value}"

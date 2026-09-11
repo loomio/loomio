@@ -729,3 +729,34 @@ sv:
     file_too_large: Filen är för stor. Maximal uppladdningsstorlek är %{limit}.
   merge_users:
     not_target_user: Du måste vara inloggad som målkonto för att bekräfta en sammanslagning.
+  thread_markdown:
+    poll: Röstning
+    no_activity: Inga kommentarer, omröstningar, röster eller resultat ännu
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Kommentar · %{author} %{timestamp}
+    comment_reply: Svara till %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonym röstning:** %{value}"
+    options: "**Alternativ:** %{value}"
+    'yes': Ja
+    closed: Stängd %{value}
+    scheduled_to_open: Schemalagd att öppna %{value}
+    open_until: Öppnar; stänger %{value}
+    open: Öppna
+    current_results: Nuvarande resultat
+    hidden_until_closed: Dold tills omröstningen stänger
+    hidden_until_voted: Dold tills tittaren röstar
+    voters: Väljare
+    target: Mål
+    available: Tillgänglig
+    available_if_needed: Tillgänglig vid behov
+    unavailable: Inte tillgänglig
+    anonymous: Anonym
+    no_voters: Inga väljare
+    score: 'poäng: %{value}'
+    vote: 'Rösta: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Inget av ovanstående
+    no_option_selected: Inget alternativ valt
+    outcome: Resultat · %{author} %{timestamp}
+    review_date: "**Granskningsdatum:** %{value}"

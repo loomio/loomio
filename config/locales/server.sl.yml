@@ -729,3 +729,34 @@ sl:
     file_too_large: Datoteka je prevelika. Največja velikost za nalaganje je %{limit}.
   merge_users:
     not_target_user: Za potrditev združitve morate biti prijavljeni kot ciljni račun.
+  thread_markdown:
+    poll: Anketa
+    no_activity: Še ni komentarjev, anket, glasov ali rezultatov
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Komentar · %{author} %{timestamp}
+    comment_reply: Odgovori na %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Stanje:** %{value}"
+    anonymous_voting: "**Anonimno glasovanje:** %{value}"
+    options: "**Možnosti:** %{value}"
+    'yes': Da
+    closed: Zaprto %{value}
+    scheduled_to_open: Načrtovano odprtje %{value}
+    open_until: Odpre; zapre %{value}
+    open: Odprto
+    current_results: Trenutni rezultati
+    hidden_until_closed: Skrito do konca ankete
+    hidden_until_voted: Skrito, dokler gledalec ne glasuje
+    voters: Volivci
+    target: Cilj
+    available: Na voljo
+    available_if_needed: Na voljo po potrebi
+    unavailable: Ni na voljo
+    anonymous: Anonimno
+    no_voters: Brez volivcev
+    score: 'rezultat: %{value}'
+    vote: 'Glas: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nič od naštetega
+    no_option_selected: Ni izbrane možnosti
+    outcome: Rezultat · %{author} %{timestamp}
+    review_date: "**Datum pregleda:** %{value}"

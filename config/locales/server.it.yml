@@ -740,3 +740,34 @@ it:
     file_too_large: Il file è troppo grande. La dimensione massima consentita per il caricamento è %{limit}.
   merge_users:
     not_target_user: Per confermare l'unione, è necessario aver effettuato l'accesso con l'account di destinazione.
+  thread_markdown:
+    poll: Sondaggio
+    no_activity: Nessun commento, sondaggio, voto o risultato ancora
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Commento · %{author} %{timestamp}
+    comment_reply: Risposta a %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Stato:** %{value}"
+    anonymous_voting: "**Voto anonimo:** %{value}"
+    options: "**Opzioni:** %{value}"
+    'yes': SÌ
+    closed: Chiuso %{value}
+    scheduled_to_open: Apertura prevista per %{value}
+    open_until: Apri; chiudi %{value}
+    open: Aprire
+    current_results: Risultati attuali
+    hidden_until_closed: Nascosto fino alla chiusura del sondaggio
+    hidden_until_voted: Nascosto fino al voto dello spettatore
+    voters: Elettori
+    target: Bersaglio
+    available: Disponibile
+    available_if_needed: Disponibile se necessario
+    unavailable: Non disponibile
+    anonymous: Anonimo
+    no_voters: Nessun elettore
+    score: 'punteggio: %{value}'
+    vote: 'Voto: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nessuna delle precedenti
+    no_option_selected: Nessuna opzione selezionata
+    outcome: Risultato · %{author} %{timestamp}
+    review_date: "**Data della revisione:** %{value}"

@@ -729,3 +729,34 @@ ja:
     file_too_large: ファイルサイズが大きすぎます。アップロードできる最大サイズは%{limit}です。
   merge_users:
     not_target_user: 統合を確定するには、対象アカウントとしてログインしている必要があります。
+  thread_markdown:
+    poll: アンケート
+    no_activity: コメント、アンケート、投票、結果はまだありません
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: コメント · %{author} %{timestamp}
+    comment_reply: "%{reply_author} · %{author} %{timestamp} への返信"
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**ステータス:** %{value}"
+    anonymous_voting: "**匿名投票:** %{value}"
+    options: "**オプション:** %{value}"
+    'yes': はい
+    closed: クローズ済み %{value}
+    scheduled_to_open: "%{value}にオープン予定"
+    open_until: 開く; 閉じる %{value}
+    open: 開ける
+    current_results: 現在の結果
+    hidden_until_closed: 投票締め切りまで非表示
+    hidden_until_voted: 視聴者の投票まで非表示
+    voters: 有権者
+    target: ターゲット
+    available: 利用可能
+    available_if_needed: 必要に応じて対応可能です
+    unavailable: 利用不可
+    anonymous: 匿名
+    no_voters: 投票者なし
+    score: 'スコア: %{value}'
+    vote: '投票: %{response} · %{author} %{timestamp}'
+    none_of_the_above: 上記のどれでもない
+    no_option_selected: オプションは選択されていません
+    outcome: 結果 · %{author} %{timestamp}
+    review_date: "**レビュー日:** %{value}"
