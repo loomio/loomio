@@ -31,7 +31,7 @@ class Api::B2::ThreadsControllerTest < ActionController::TestCase
     get :markdown, params: {id: @discussion.topic_id}
 
     assert_response 200
-    assert_includes JSON.parse(response.body)['markdown'], "# #{@discussion.title}"
+    assert_includes JSON.parse(response.body)['markdown'], "# Discussion: #{@discussion.title}"
   end
 
   test 'does not expose an inaccessible thread' do
