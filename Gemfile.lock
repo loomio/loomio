@@ -774,6 +774,7 @@ DEPENDENCIES
   i18n-timezones
   icalendar
   image_processing (~> 2.0)
+  json (< 3)
   maxminddb
   mini_magick (~> 5.4)
   minitest (~> 6.0)
