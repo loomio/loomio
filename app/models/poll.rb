@@ -217,6 +217,7 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_validation :clamp_minimum_stance_choices
+  before_validation :synchronize_ranked_choice_bounds
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
@@ -637,5 +638,11 @@ class Poll < ApplicationRecord
     if self[:minimum_stance_choices] > poll_options.length
       self.minimum_stance_choices = poll_options.length
     end
+  end
+
+  def synchronize_ranked_choice_bounds
+    return unless poll_type == "ranked_choice"
+
+    self.maximum_stance_choices = minimum_stance_choices
   end
 end

@@ -224,6 +224,19 @@ class PollTest < ActiveSupport::TestCase
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
   end
 
+  test "ranked choice keeps its maximum choices synchronized with its ranking positions" do
+    ranked_choice = create_ranked_choice(
+      minimum_stance_choices: 2,
+      maximum_stance_choices: 1
+    )
+
+    assert_equal 2, ranked_choice.maximum_stance_choices
+
+    ranked_choice.update!(minimum_stance_choices: 3)
+
+    assert_equal 3, ranked_choice.reload.maximum_stance_choices
+  end
+
   test "ballot configuration ignores JSON custom fields" do
     poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
     poll.update_columns(
