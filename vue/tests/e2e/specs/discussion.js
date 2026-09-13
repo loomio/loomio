@@ -346,9 +346,11 @@ module.exports = {
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')
     page.click('.action-dock__button--edit_comment')
-    page.fillIn('.edit-comment-form .lmo-textarea div[contenteditable=true]', 'edited comment right thur')
+    page.fillIn('.edit-comment-form .lmo-textarea div[contenteditable=true]', 'edited comment right thur @patrick')
+    page.expectElement('.suggestion-list [data-mention-handle="patrickswayze"] .v-list-item-title')
+    page.click('.suggestion-list [data-mention-handle="patrickswayze"] .v-list-item-title')
     page.click('.edit-comment-form .comment-form__submit-button', 1000)
-    page.expectText('.new-comment', 'edited comment right thur')
+    page.expectText('.new-comment', 'edited comment right thur @Patrick Swayze')
   },
 
   'lets_you_view_comment_revision_history': (test) => {

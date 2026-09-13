@@ -63,7 +63,7 @@ defineExpose({ onKeyDown });
 </script>
 
 <template lang="pug">
-v-card.suggestion-list(elevation="8" color="surface")
+v-card.suggestion-list(elevation="8" color="surface" style="z-index: 2500")
   v-list(v-if="items.length" bg-color="surface" density="compact" role="listbox")
     v-list-item(
       v-for="(row, index) in items"
@@ -98,9 +98,5 @@ v-card.suggestion-list(elevation="8" color="surface")
 .suggestion-list .v-list {
   background-color: rgb(var(--v-theme-surface)) !important;
   opacity: 1;
-}
-
-.suggestion-list {
-  z-index: 10;
 }
 </style>
