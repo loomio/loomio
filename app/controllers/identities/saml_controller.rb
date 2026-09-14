@@ -25,12 +25,13 @@ class Identities::SamlController < ApplicationController
     return respond_with_error(500, "SAML response is not valid") unless saml_response.is_valid?
 
     nameid = saml_response.nameid.to_s.strip
+    attributes = saml_attributes(saml_response.attributes)
 
     identity_params = {
       identity_type: 'saml',
       uid: nameid,
-      email: nameid,
-      name: saml_response.attributes['displayName'],
+      email: saml_email(attributes, fallback: nameid),
+      name: saml_name(attributes),
       access_token: nil
     }
 
@@ -74,6 +75,78 @@ class Identities::SamlController < ApplicationController
   end
 
   private
+
+  SAML_FULL_NAME_ATTRIBUTES = %w[
+    displayName
+    name
+    cn
+    fullName
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
+  ].freeze
+
+  SAML_EMAIL_ATTRIBUTES = %w[
+    email
+    mail
+    emailAddress
+    userPrincipalName
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress
+    urn:oid:0.9.2342.19200300.100.1.3
+  ].freeze
+
+  SAML_GIVEN_NAME_ATTRIBUTES = %w[
+    givenName
+    firstName
+    given_name
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+  ].freeze
+
+  SAML_FAMILY_NAME_ATTRIBUTES = %w[
+    sn
+    surname
+    familyName
+    family_name
+    lastName
+    http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname
+  ].freeze
+
+  def saml_attributes(attributes)
+    attributes.each_with_object({}) do |(key, value), result|
+      result[key.to_s.downcase] = Array(value).first.to_s.squish.presence
+    end
+  end
+
+  def saml_email(attributes, fallback:)
+    if ENV['SAML_ATTR_EMAIL'].present?
+      saml_attribute(attributes, [ ENV['SAML_ATTR_EMAIL'] ])
+    elsif EmailValidator::EMAIL_REGEXP.match?(fallback)
+      fallback
+    else
+      saml_attribute(attributes, SAML_EMAIL_ATTRIBUTES)
+    end
+  end
+
+  def saml_name(attributes)
+    if ENV['SAML_ATTR_NAME'].present?
+      return saml_attribute(attributes, [ ENV['SAML_ATTR_NAME'] ])
+    end
+
+    if ENV['SAML_ATTR_GIVEN_NAME'].present? || ENV['SAML_ATTR_FAMILY_NAME'].present?
+      return [
+        saml_attribute(attributes, [ ENV['SAML_ATTR_GIVEN_NAME'] ].compact),
+        saml_attribute(attributes, [ ENV['SAML_ATTR_FAMILY_NAME'] ].compact)
+      ].compact.join(' ').presence
+    end
+
+    saml_attribute(attributes, SAML_FULL_NAME_ATTRIBUTES) ||
+      [
+        saml_attribute(attributes, SAML_GIVEN_NAME_ATTRIBUTES),
+        saml_attribute(attributes, SAML_FAMILY_NAME_ATTRIBUTES)
+      ].compact.join(' ').presence
+  end
+
+  def saml_attribute(attributes, names)
+    names.filter_map { |name| attributes[name.downcase] }.first
+  end
 
   def safe_back_to
     path = (params[:back_to] || request.referrer).to_s

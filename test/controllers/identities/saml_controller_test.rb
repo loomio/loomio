@@ -3,8 +3,17 @@ require 'test_helper'
 class Identities::SamlControllerTest < ActionController::TestCase
   setup do
     @saved_env = {}
-    %w[SAML_IDP_METADATA_URL SAML_ISSUER LOOMIO_SSO_FORCE_USER_ATTRS].each do |key|
+    %w[
+      SAML_IDP_METADATA_URL
+      SAML_ISSUER
+      SAML_ATTR_EMAIL
+      SAML_ATTR_NAME
+      SAML_ATTR_GIVEN_NAME
+      SAML_ATTR_FAMILY_NAME
+      LOOMIO_SSO_FORCE_USER_ATTRS
+    ].each do |key|
       @saved_env[key] = ENV[key]
+      ENV.delete(key)
     end
     ENV['SAML_IDP_METADATA_URL'] = 'https://saml.provider.com/metadata'
     ENV['SAML_ISSUER'] = 'https://loomio.test/saml/metadata'
@@ -76,13 +85,13 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # Create tests helpers
   private
 
-  def mock_saml_response(valid: true, nameid: 'samltest@example.com', name: 'SAML User')
+  def mock_saml_response(valid: true, nameid: 'samltest@example.com', name: 'SAML User', attributes: nil)
     response = OpenStruct.new(
       nameid: nameid,
       is_valid?: valid
     )
     response.define_singleton_method(:attributes) do
-      { 'displayName' => name }
+      attributes || { 'displayName' => name }
     end
     response.define_singleton_method(:settings=) do |s|
       # no-op
@@ -141,6 +150,151 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal 'samltest@example.com', identity.user.email
 
     assert_equal identity.user, @controller.current_user
+    assert_redirected_to '/dashboard'
+  end
+
+  test "uses common full name SAML attributes" do
+    response = mock_saml_response(attributes: { 'CN' => [ '  Alternative   Name  ' ] })
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'Alternative Name', identity.name
+    assert_equal 'Alternative Name', identity.user.name
+  end
+
+  test "uses common email SAML attributes while retaining nameid as uid" do
+    response = mock_saml_response(
+      nameid: 'stable-subject-id',
+      attributes: {
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress' => [ ' samltest@example.com ' ],
+        'displayName' => 'SAML User'
+      }
+    )
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'stable-subject-id', identity.uid
+    assert_equal 'samltest@example.com', identity.email
+    assert_equal 'samltest@example.com', identity.user.email
+  end
+
+  test "prefers an email nameid when no SAML email attribute is configured" do
+    response = mock_saml_response(attributes: {
+      'email' => 'different@example.com',
+      'displayName' => 'SAML User'
+    })
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'samltest@example.com', identity.email
+    assert_equal 'samltest@example.com', identity.user.email
+  end
+
+  test "combines given and family name SAML attributes" do
+    response = mock_saml_response(attributes: {
+      'givenName' => 'SAML',
+      'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname' => 'User'
+    })
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'SAML User', identity.name
+    assert_equal 'SAML User', identity.user.name
+  end
+
+  test "uses configured SAML attribute names before built-in fallbacks" do
+    ENV['SAML_ATTR_EMAIL'] = 'custom-email'
+    ENV['SAML_ATTR_NAME'] = 'custom-name'
+    response = mock_saml_response(
+      nameid: 'stable-subject-id',
+      attributes: {
+        'custom-email' => 'custom@example.com',
+        'email' => 'fallback@example.com',
+        'custom-name' => 'Configured Name',
+        'displayName' => 'Fallback Name'
+      }
+    )
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_equal 'stable-subject-id', identity.uid
+    assert_equal 'custom@example.com', identity.email
+    assert_equal 'Configured Name', identity.name
+  end
+
+  test "uses configured given and family name SAML attributes" do
+    ENV['SAML_ATTR_GIVEN_NAME'] = 'custom-first'
+    ENV['SAML_ATTR_FAMILY_NAME'] = 'custom-last'
+    response = mock_saml_response(attributes: {
+      'custom-first' => 'Configured',
+      'custom-last' => 'Name'
+    })
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }
+    end
+
+    assert_equal 'Configured Name', Identity.where(identity_type: 'saml').last.name
+  end
+
+  test "does not use name fallbacks when a SAML name attribute is configured" do
+    ENV['SAML_ATTR_NAME'] = 'missing-custom-name'
+    response = mock_saml_response(attributes: { 'displayName' => 'Fallback Name' })
+
+    with_saml_mocks(saml_response: response) do
+      assert_no_difference 'User.count' do
+        post :create, params: { SAMLResponse: 'base64_encoded' }
+      end
+    end
+
+    assert_nil Identity.where(identity_type: 'saml').last.name
+  end
+
+  test "does not use email fallbacks when a SAML email attribute is configured" do
+    ENV['SAML_ATTR_EMAIL'] = 'missing-custom-email'
+    response = mock_saml_response(attributes: {
+      'email' => 'fallback@example.com',
+      'displayName' => 'SAML User'
+    })
+
+    with_saml_mocks(saml_response: response) do
+      post :create, params: { SAMLResponse: 'base64_encoded' }, format: :json
+    end
+
+    assert_response 422
+    assert_not Identity.where(identity_type: 'saml', email: 'fallback@example.com').exists?
+  end
+
+  test "starts account creation when SAML does not provide a name" do
+    session[:back_to] = '/dashboard'
+    response = mock_saml_response(attributes: {})
+
+    with_saml_mocks(saml_response: response) do
+      assert_difference 'Identity.where(identity_type: "saml").count', 1 do
+        assert_no_difference 'User.count' do
+          post :create, params: { SAMLResponse: 'base64_encoded' }
+        end
+      end
+    end
+
+    identity = Identity.where(identity_type: 'saml').last
+    assert_nil identity.user
+    assert_equal identity.id, session[:pending_identity_id]
     assert_redirected_to '/dashboard'
   end
 
@@ -293,6 +447,33 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     assert_equal existing_user, @controller.current_user
     assert_redirected_to '/dashboard'
+  end
+
+  test "signs in an existing linked user when SAML omits profile attributes" do
+    hex = SecureRandom.hex(4)
+    existing_user = User.create!(
+      name: 'Existing Name',
+      email: "existing#{hex}@example.com",
+      username: "samluser#{hex}",
+      email_verified: true
+    )
+    existing_identity = Identity.create!(
+      identity_type: 'saml',
+      uid: 'stable-subject-id',
+      email: existing_user.email,
+      name: existing_user.name,
+      user: existing_user
+    )
+
+    with_saml_mocks(saml_response: mock_saml_response(nameid: existing_identity.uid, attributes: {})) do
+      assert_no_difference [ 'Identity.where(identity_type: "saml").count', 'User.count' ] do
+        post :create, params: { SAMLResponse: 'base64_encoded' }
+      end
+    end
+
+    assert_equal existing_user, @controller.current_user
+    assert_equal 'Existing Name', existing_user.reload.name
+    assert_redirected_to dashboard_path
   end
 
   # Already signed in

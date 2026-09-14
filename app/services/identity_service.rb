@@ -50,6 +50,11 @@ class IdentityService
       # without also changing the documented trust model.
       new_identity.user = User.find_by(email: email)
 
+      # An SSO provider may verify an email without supplying a display name.
+      # Keep the identity pending so the existing account-creation form can ask
+      # the person for their name instead of rejecting the callback.
+      next if new_identity.name.blank? && new_identity.user.nil?
+
       if new_identity.user.nil?
         new_identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
         require_user_name!(new_identity.user, fallback: new_identity.name)

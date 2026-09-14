@@ -99,13 +99,15 @@ class IdentityServiceTest < ActiveSupport::TestCase
     assert_equal "OAuth User", user.reload.name
   end
 
-  test "does not create an SSO user without a name" do
-    assert_no_difference [ "User.count", "Identity.count" ] do
-      assert_raises ActiveRecord::RecordInvalid do
-        IdentityService.link_or_create(
+  test "creates a pending identity when an SSO user has no name" do
+    assert_difference "Identity.count", 1 do
+      assert_no_difference "User.count" do
+        identity = IdentityService.link_or_create(
           identity_params: @identity_params.except(:name),
           current_user: nil
         )
+
+        assert_nil identity.user
       end
     end
   end
