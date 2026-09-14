@@ -421,10 +421,6 @@ Rails.application.routes.draw do
   post '/mobile/authorize', to: 'mobile/authorizations#create'
   post '/mobile/web-session', to: 'mobile/web_sessions#create', as: :mobile_web_session
 
-  resources :contact_messages, only: [:new, :create] do
-    get :show, on: :collection
-  end
-
   resources :poll_templates, only: [] do
     collection do
       get :dump_i18n
