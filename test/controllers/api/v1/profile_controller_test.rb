@@ -6,6 +6,15 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @user = users(:user)
     @alien = users(:alien)
     @group = groups(:group)
+    @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
+  end
+
+  teardown do
+    if @disable_edit_user_profile_previous
+      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = @disable_edit_user_profile_previous
+    else
+      ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
+    end
   end
 
   test "show returns the user json" do
@@ -36,6 +45,56 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
   test "me returns unauthorized for visitors" do
     get :me, format: :json
     assert_response :unauthorized
+  end
+
+  test "avatar uploaded reports an available provider picture" do
+    @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
+    sign_in @user
+
+    get :avatar_uploaded, format: :json
+
+    assert_response :success
+    assert_equal({ 'provider' => 'OAUTH' }, JSON.parse(response.body).fetch('provider_picture'))
+  end
+
+  test "user can select an available provider picture" do
+    @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
+    sign_in @user
+
+    SafeHttpService.stub :safe_open, ->(_url) { File.open(Rails.root.join('public/brand/icon-yellow-on-white-192.png')) } do
+      post :use_provider_avatar, format: :json
+    end
+
+    assert_response :success
+    assert @user.reload.uploaded_avatar.attached?
+    assert_equal 'uploaded', @user.avatar_kind
+  end
+
+  test "user cannot select a provider picture when profile editing is disabled" do
+    @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+    sign_in @user
+
+    post :use_provider_avatar, format: :json
+
+    assert_response :forbidden
+  end
+
+  test "provider picture cannot be selected when none is available" do
+    sign_in @user
+
+    post :use_provider_avatar, format: :json
+
+    assert_response :not_found
+  end
+
+  test "restricted user cannot select a provider picture" do
+    @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
+    @user.update_columns(unsubscribe_token: UNSUB)
+
+    post :use_provider_avatar, params: { unsubscribe_token: UNSUB }, format: :json
+
+    assert_response :forbidden
   end
 
   test "email and push defaults can be applied independently" do

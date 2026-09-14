@@ -6,7 +6,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   # identity fields (name/email/password/username/avatar) via update_profile.
   RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
     email_api_key reset_email_api_key deactivate destroy
-    send_merge_verification_email remind upload_avatar
+    send_merge_verification_email remind upload_avatar use_provider_avatar
   ].freeze
 
   # The only user fields update_profile may change for a restricted user.
@@ -99,7 +99,21 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def avatar_uploaded
-    render json: {avatar_uploaded: current_user.uploaded_avatar_url}
+    identity = provider_picture_identity
+    render json: {
+      avatar_uploaded: current_user.uploaded_avatar_url,
+      provider_picture: identity && { provider: provider_name(identity) }
+    }
+  end
+
+  def use_provider_avatar
+    raise CanCan::AccessDenied if UserService.disable_edit_user_profile?
+
+    identity = provider_picture_identity
+    raise ActiveRecord::RecordNotFound unless identity
+
+    identity.assign_logo!
+    respond_with_resource
   end
 
   def deactivate
@@ -141,6 +155,17 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   private
+
+  def provider_picture_identity
+    current_user.identities.where.not(logo: [ nil, '' ]).first
+  end
+
+  def provider_name(identity)
+    return AppConfig.theme[:oauth_login_provider_name] if identity.identity_type == 'oauth'
+
+    identity.identity_type.titleize
+  end
+
   def current_user
     restricted_user || super
   end

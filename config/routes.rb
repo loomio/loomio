@@ -240,6 +240,7 @@ Rails.application.routes.draw do
           post :update_profile
           post :set_volume
           post :upload_avatar
+          post :use_provider_avatar
           post :save_experience
           delete :destroy
           post :deactivate
