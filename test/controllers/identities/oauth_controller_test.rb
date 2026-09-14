@@ -144,10 +144,10 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_equal existing_user, @controller.current_user
   end
 
-  test "updates user profile on login when configured" do
+  test "updates user profile when the login setting is present" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
-    ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'] = 'true'
+    ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'] = '0'
 
     get :create, params: oauth_callback_params(code: 'authorization_code_123')
 

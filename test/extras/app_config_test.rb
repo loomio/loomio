@@ -14,12 +14,16 @@ class AppConfigTest < ActiveSupport::TestCase
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")
     @group_deletion_delay_days_previous = ENV.delete("GROUP_DELETION_DELAY_DAYS")
+    @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
+    @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
   end
 
   teardown do
     restore_env("CHARGIFY_API_KEY", @chargify_api_key_previous)
     restore_env("LOOMIO_SUBSCRIPTIONS", @loomio_subscriptions_previous)
     restore_env("GROUP_DELETION_DELAY_DAYS", @group_deletion_delay_days_previous)
+    restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
+    restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)
   end
 
   test "subscriptions are available when either billing integration is configured" do
@@ -34,6 +38,14 @@ class AppConfigTest < ActiveSupport::TestCase
     ENV["LOOMIO_SUBSCRIPTIONS"] = "1"
     assert AppConfig.app_features.fetch(:subscriptions)
     assert AppConfig.app_features.fetch(:loomio_subscriptions)
+  end
+
+  test "SSO profile edit restrictions are presence-based" do
+    refute AppConfig.app_features.fetch(:sso_disable_edit_profile)
+
+    ENV["LOOMIO_DISABLE_EDIT_USER_PROFILE"] = "0"
+
+    assert AppConfig.app_features.fetch(:sso_disable_edit_profile)
   end
 
   private

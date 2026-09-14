@@ -115,7 +115,7 @@ class UserService
 
   def self.disable_edit_user_profile?
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
-      ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'])
+      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
   end
 
   def self.remove_externally_managed_profile_fields(params)

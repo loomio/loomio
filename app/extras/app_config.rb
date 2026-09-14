@@ -165,7 +165,7 @@ class AppConfig
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
-      sso_disable_edit_profile: !!ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] || ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE']),
+      sso_disable_edit_profile: ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? || ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?,
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,

@@ -5,7 +5,8 @@ class Identities::GoogleControllerTest < ActionController::TestCase
   setup do
     @hex = SecureRandom.hex(4)
     @saved_env = {}
-    %w[GOOGLE_APP_KEY GOOGLE_APP_SECRET LOOMIO_SSO_FORCE_USER_ATTRS].each do |key|
+    %w[GOOGLE_APP_KEY GOOGLE_APP_SECRET LOOMIO_SSO_FORCE_USER_ATTRS
+       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN].each do |key|
       @saved_env[key] = ENV[key]
     end
 
@@ -87,6 +88,25 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     assert_equal existing, @controller.current_user
   end
 
+  test "preserves an uploaded avatar when SSO profile updates are disabled" do
+    existing = create_user_with_uploaded_avatar
+    avatar_blob_id = existing.uploaded_avatar.blob_id
+
+    get :create, params: oauth_callback_params(code: 'google_auth_code')
+
+    assert_equal avatar_blob_id, existing.reload.uploaded_avatar.blob_id
+  end
+
+  test "replaces an uploaded avatar when SSO profile updates are enabled" do
+    existing = create_user_with_uploaded_avatar
+    avatar_blob_id = existing.uploaded_avatar.blob_id
+    ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'] = '1'
+
+    get :create, params: oauth_callback_params(code: 'google_auth_code')
+
+    assert_not_equal avatar_blob_id, existing.reload.uploaded_avatar.blob_id
+  end
+
   test "links to unverified user and verifies email" do
     unverified = User.create!(name: 'Invited', email: "google-#{@hex}@example.com", username: "ginv#{@hex}", email_verified: false)
 
@@ -98,6 +118,22 @@ class Identities::GoogleControllerTest < ActionController::TestCase
   end
 
   private
+
+  def create_user_with_uploaded_avatar
+    User.create!(
+      name: 'Existing',
+      email: "google-#{@hex}@example.com",
+      username: "gavatar#{@hex}",
+      email_verified: true,
+      avatar_kind: 'uploaded'
+    ).tap do |user|
+      user.uploaded_avatar.attach(
+        io: File.open(Rails.root.join('public/brand/icon-yellow-on-white-256.png')),
+        filename: 'existing-avatar.png'
+      )
+      user.update!(avatar_kind: 'uploaded')
+    end
+  end
 
   def oauth_callback_params(params = {})
     session[:oauth_state] = 'test-oauth-state'

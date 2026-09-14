@@ -195,10 +195,9 @@ FEATURES_DEMO_GROUPS=1
 # what OIDC refers to as the Client Secret
 # OAUTH_APP_SECRET=abc123
 
-# The following OAUTH_ATTR settings map fields from your OAuth provider's user profile response
-# to Loomio user attributes. The defaults match the standard OIDC claim names, so most
-# providers (Keycloak, Authentik, Azure AD, etc.) will work without setting these.
-# Only override if your provider uses non-standard field names.
+# Map fields from the OAuth user profile response to Loomio user attributes.
+# These defaults match the standard OIDC claim names. Only set them when your
+# provider uses different field names.
 # OAUTH_ATTR_UID=sub
 # OAUTH_ATTR_NAME=name
 # OAUTH_ATTR_EMAIL=email
@@ -207,7 +206,21 @@ FEATURES_DEMO_GROUPS=1
 # the label used for the SSO login button. The user will see this value when they're prompted to log in using SSO.
 # OAUTH_LOGIN_PROVIDER_NAME=Company auth
 
-# prevent users from editing their name, email address, or username on the profile page.
+### SSO-managed profiles (optional)
+
+# Update the user's name and email from SSO each time they log in. When the SSO
+# response includes a non-blank profile picture, update the Loomio avatar too.
+# When the response has no picture, preserve the existing Loomio avatar.
+# LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
+
+# Prevent users from editing SSO-managed fields in Loomio: name, username,
+# email address, and profile picture. Users can still edit their introduction,
+# location, language, time zone, and other Loomio-specific preferences.
+# LOOMIO_DISABLE_EDIT_USER_PROFILE=1
+
+# Legacy combined setting. When present, this enables both profile updates on
+# login and the edit restrictions above. Leave it unset and use the two explicit
+# settings above for new configurations.
 # LOOMIO_SSO_FORCE_USER_ATTRS=1
 
 # Theme variables

@@ -82,8 +82,10 @@ class IdentityService
       identity.user.update(name: identity.name, email: identity.email)
     end
 
-    # Apply the SSO provider's profile picture if the user hasn't uploaded their own
-    if identity.user && identity.logo.present? && identity.user.avatar_kind != 'uploaded'
+    # Preserve a locally uploaded avatar unless the deployment explicitly treats
+    # the SSO profile as authoritative and refreshes it on every login.
+    if identity.user && identity.logo.present? &&
+       (identity.user.avatar_kind != 'uploaded' || update_user_profile_on_login?)
       identity.assign_logo!
     end
 
@@ -92,7 +94,7 @@ class IdentityService
 
   def self.update_user_profile_on_login?
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
-      ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'])
+      ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'].present?
   end
 
   def self.find_identity(identity_type:, uid:)

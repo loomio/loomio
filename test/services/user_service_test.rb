@@ -154,8 +154,8 @@ class UserServiceTest < ActiveSupport::TestCase
     assert_equal true, verified_user.email_verified
   end
 
-  test "disable edit user profile blocks externally managed fields but allows local fields" do
-    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+  test "disable edit user profile setting is presence-based and allows local fields" do
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '0'
     original_name = @user.name
     original_email = @user.email
     original_username = @user.username
