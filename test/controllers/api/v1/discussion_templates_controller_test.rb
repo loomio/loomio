@@ -229,7 +229,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal "Updated", template.process_name
   end
 
-  test "update saves task items in a discussion template" do
+  test "update preserves task items without materializing tasks in a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @admin,
@@ -245,8 +245,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     }
 
     assert_response :success
-    assert_equal "do the thing", template.reload.tasks.sole.name
-    assert_empty template.tasks.sole.users
+    template.reload
+    assert_includes template.description, 'data-type="taskItem"'
+    assert_includes template.description, "do the thing"
+    assert_empty template.tasks
   end
 
   # === DESTROY ===

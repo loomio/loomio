@@ -29,7 +29,7 @@ module HasRichText
   end
 
   module ClassMethods
-    def is_rich_text(on: [])
+    def is_rich_text(on: [], materialize_tasks: true)
       define_singleton_method :rich_text_fields, -> { Array on }
       rich_text_fields.each do |field|
         define_method "sanitize_#{field}!" do
@@ -66,10 +66,12 @@ module HasRichText
 
         before_save :"sanitize_#{field}!"
 
-        define_method "parse_and_update_tasks_#{field}!" do
-          TaskService.parse_and_update(self, field)
+        if materialize_tasks
+          define_method "parse_and_update_tasks_#{field}!" do
+            TaskService.parse_and_update(self, field)
+          end
+          after_save :"parse_and_update_tasks_#{field}!"
         end
-        after_save :"parse_and_update_tasks_#{field}!"
 
         validates field, {length: {maximum: AppConfig.app_features[:max_message_length]}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']

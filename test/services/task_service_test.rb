@@ -117,6 +117,31 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert discussion.topic.persisted?
   end
 
+  test "materializes template task items only after creating a discussion" do
+    description = "<li data-uid='123' data-type='taskItem' data-checked='false'>do the thing</li>"
+    template = DiscussionTemplate.create!(
+      group: @group,
+      process_name: "Task template",
+      process_subtitle: "subtitle",
+      description: description
+    )
+
+    assert_empty template.tasks
+
+    discussion = DiscussionService.create(params: {
+      title: "Discussion from task template",
+      description: template.description,
+      description_format: template.description_format,
+      discussion_template_id: template.id,
+      group_id: @group.id,
+      private: true
+    }, actor: @member)
+
+    task = discussion.tasks.sole
+    assert_equal "do the thing", task.name
+    assert_equal @member, task.author
+  end
+
   test "correctly sets remind_at" do
     @member.update(time_zone: "Pacific/Auckland")
     rich_text = "<li data-uid='123' data-type='taskItem' data-due-on='2022-05-02' data-remind='1'>this is a task</li>"

@@ -3,7 +3,9 @@ class DiscussionTemplate < ApplicationRecord
   include HasRichText
   include CustomCounterCache::Model
 
-  is_rich_text on: :description
+  # Task items in a template describe future work. They become Task records only when
+  # the template body is saved as a discussion with a real author and participants.
+  is_rich_text on: :description, materialize_tasks: false
 
   belongs_to :author, class_name: "User", optional: true
   belongs_to :group, class_name: "Group"
