@@ -16,9 +16,7 @@ const route = useRoute();
 const router = useRouter();
 const { watchRecords } = useWatchRecords();
 
-const { group } = defineProps({
-  group: {type: Object, required: true}
-});
+const group = ref(Records.groups.find(route.params.key));
 const polls = ref([]);
 const loader = ref(null);
 const pollTypes = AppConfig.pollTypes;
@@ -31,14 +29,14 @@ const page = computed({
 });
 
 const totalPages = computed(() => Math.max(1, Math.ceil((loader.value.total || 0) / per)));
-const canStartPoll = computed(() => AbilityService.canStartPoll(group));
+const canStartPoll = computed(() => AbilityService.canStartPoll(group.value));
 
 const mergeQuery = (obj) => ({
   query: pickBy(Object.assign({}, route.query, obj), identity)
 });
 
 const startNewPoll = () => {
-  router.push('/p/new?group_id=' + group.id);
+  router.push('/p/new?group_id=' + group.value.id);
 };
 
 const selectTag = (tag) => {
@@ -49,11 +47,11 @@ const openSearchModal = () => {
   let initialOrgId = null;
   let initialGroupId = null;
 
-  if (group.isParent()) {
-    initialOrgId = group.id;
+  if (group.value.isParent()) {
+    initialOrgId = group.value.id;
   } else {
-    initialOrgId = group.parentId;
-    initialGroupId = group.id;
+    initialOrgId = group.value.parentId;
+    initialGroupId = group.value.id;
   }
 
   EventBus.$emit('openModal', {
@@ -75,7 +73,7 @@ const initLoader = () => {
     order: 'createdAt',
     params: {
       exclude_types: 'group reaction',
-      group_key: group.key,
+      group_key: route.params.key,
       status: route.query.status,
       poll_type: route.query.poll_type,
       tags: route.query.tag,
@@ -87,9 +85,9 @@ const initLoader = () => {
 
 const findRecords = () => {
   const groupIds = (() => { switch (route.query.subgroups || 'mine') {
-    case 'all': return group.organisationIds();
-    case 'none': return [group.id];
-    case 'mine': return uniq([group.id].concat(intersection(group.organisationIds(), Session.user().groupIds())));
+    case 'all': return group.value.organisationIds();
+    case 'none': return [group.value.id];
+    case 'mine': return uniq([group.value.id].concat(intersection(group.value.organisationIds(), Session.user().groupIds())));
   } })();
 
   let chain = Records.polls.collection.chain();
@@ -141,8 +139,8 @@ watchRecords({
 fetch().then(() => {
   EventBus.$emit('currentComponent', {
     page: 'groupPage',
-    title: group.name,
-    group
+    title: group.value.name,
+    group: group.value
   });
 });
 

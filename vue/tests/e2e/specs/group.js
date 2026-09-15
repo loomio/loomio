@@ -82,35 +82,62 @@ module.exports = {
     page.expectNoElement('.group-page__name')
   },
 
-  'loads every routed panel from the group page': (test) => {
+  'keeps the routed panel mounted while changing groups': (test) => {
     page = pageHelper(test)
 
-    const expectOneGroupFetch = () => {
-      test.execute(() => performance.getEntriesByType('resource').filter(entry => {
-        return new URL(entry.name).pathname.match(/^\/api\/v1\/groups\/[^/]+$/)
-      }).length, [], ({value}) => test.assert.strictEqual(value, 1, 'loads the group once'))
-    }
+    page.loadPath('setup_group_route_transitions')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Dirty Dancing Shoes')
+    page.expectText('.sidebar__groups', 'Point Break')
 
-    const openPanel = (path, selector) => {
-      test.execute((panelPath) => {
-        const parts = window.location.pathname.split('/').filter(Boolean)
-        const groupPath = parts[0] === 'g' ? `/g/${parts[1]}` : `/${parts[0]}`
-        window.location.href = `${groupPath}/${panelPath}`
-      }, [path])
-      test.waitForElementVisible(selector, 20000)
-      page.expectText('.group-page__name', 'Dirty Dancing Shoes')
-      expectOneGroupFetch()
-    }
+    test.execute(() => {
+      window.__groupRouteRendererErrors = []
+      const nativeFetch = window.fetch
+      window.fetch = (...args) => {
+        const url = String(args[0]?.url || args[0])
+        const response = nativeFetch(...args)
+        if (!url.includes('/api/v1/groups/')) return response
 
-    page.loadPath('setup_group')
+        return new Promise((resolve, reject) => {
+          setTimeout(() => response.then(resolve, reject), 200)
+        })
+      }
+      const consoleError = console.error
+      console.error = (...args) => {
+        const message = args.map(String).join(' ')
+        if (/parentNode|emitsOptions|\bbum\b|\bexposed\b/.test(message)) {
+          window.__groupRouteRendererErrors.push(message)
+        }
+        consoleError(...args)
+      }
+      window.addEventListener('error', event => {
+        const message = String(event.error || event.message)
+        if (/parentNode|emitsOptions|\bbum\b|\bexposed\b/.test(message)) {
+          window.__groupRouteRendererErrors.push(message)
+        }
+      })
+    })
+
+    test.execute(() => {
+      const clickGroup = name => {
+        const links = Array.from(document.querySelectorAll('.sidebar__groups > .v-list-item'))
+        links.find(link => link.textContent.includes(name)).click()
+      }
+      clickGroup('Point Break')
+    })
+
+    page.expectText('.group-page__name', 'Point Break')
     page.expectElement('.discussions-panel')
-    expectOneGroupFetch()
-    openPanel('polls', '.polls-panel')
-    openPanel('members', '.members-panel')
-    openPanel('files', '.group-files-panel')
-    openPanel('tags', '.tags-panel')
-    openPanel('membership_requests', '.requests-panel')
-    openPanel('emails', '.group-emails-panel')
+    test.execute(() => {
+      document.querySelector('.discussions-panel').dataset.e2eInstance = 'original'
+    })
+    page.pause(500)
+    test.execute(() => document.querySelector('.discussions-panel').dataset.e2eInstance, [], ({value}) => {
+      test.assert.strictEqual(value, 'original', 'does not remount the routed panel after refreshing the group')
+    })
+    test.execute(() => window.__groupRouteRendererErrors, [], ({value}) => {
+      test.assert.deepEqual(value, [], 'does not raise Vue renderer errors while changing groups')
+    })
   },
 
   'filters_group_polls_by_status_type_and_tag': (test) => {

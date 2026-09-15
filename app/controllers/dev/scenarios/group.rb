@@ -27,6 +27,13 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_route_transitions
+    create_group.add_member! jennifer
+    create_another_group.add_member! jennifer
+    sign_in jennifer
+    redirect_to group_path(create_group)
+  end
+
   def setup_group_poll_filters
     group = create_group
     group.tags.create!(name: 'Important', color: '#1565c0')

@@ -1,88 +1,77 @@
-<script setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import Session from '@/shared/services/session';
-import Records from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import GroupService from '@/shared/services/group_service';
-import LmoUrlService from '@/shared/services/lmo_url_service';
+<script lang="js">
+import Session           from '@/shared/services/session';
+import Records           from '@/shared/services/records';
+import EventBus          from '@/shared/services/event_bus';
+import AbilityService    from '@/shared/services/ability_service';
+import GroupService    from '@/shared/services/group_service';
 import { pickBy } from 'lodash-es';
-import { useWatchRecords } from '@/composables/useWatchRecords';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
-const route = useRoute();
-const group = ref(null);
-const groupLoadVersion = ref(0);
-const activeTab = ref('');
-const { watchRecords } = useWatchRecords();
-let groupLoadRequestId = 0;
+export default
+{
+  mixins: [UrlFor, FormatDate],
+  data() {
+    return {
+      group: null,
+      activeTab: '',
+      groupFetchError: null
+    };
+  },
 
-const dockActions = computed(() => pickBy(GroupService.actions(group.value), action => action.dock));
-const menuActions = computed(() => pickBy(GroupService.actions(group.value), action => action.menu));
-const canEditGroup = computed(() => AbilityService.canEditGroup(group.value));
-const tabs = computed(() => {
-  if (!group.value) return [];
+  created() {
+    this.init();
+    EventBus.$on('signedIn', this.init);
+  },
 
-  return [
-    {id: 0, name: 'discussions', route: LmoUrlService.route({model: group.value})},
-    {id: 1, name: 'polls', route: LmoUrlService.route({model: group.value, action: 'polls'})},
-    {id: 2, name: 'members', route: LmoUrlService.route({model: group.value, action: 'members'})},
-    {id: 4, name: 'files', route: LmoUrlService.route({model: group.value, action: 'files'})},
-  ];
-});
+  beforeDestroy() {
+    EventBus.$off('signedIn', this.init);
+  },
 
-function routeFor(model) {
-  return LmoUrlService.route({model});
-}
+  watch: {
+    '$route.params.key': 'init'
+  },
 
-function titleVisible(visible) {
-  EventBus.$emit('content-title-visible', visible);
-}
+  computed: {
+    dockActions() {
+      return pickBy(GroupService.actions(this.group), v => v.dock);
+    },
 
-function refreshGroup() {
-  const loadedGroup = Records.groups.fuzzyFind(route.params.key);
-  if (!loadedGroup) return;
+    menuActions() {
+      return pickBy(GroupService.actions(this.group), v => v.menu);
+    },
 
-  group.value = loadedGroup;
-  if (loadedGroup.newHost) window.location.host = loadedGroup.newHost;
-}
+    canEditGroup() {
+      return AbilityService.canEditGroup(this.group);
+    },
 
-// Render cached group data immediately, then authorize and refresh it from the
-// server. Only the latest request may report an error or remount its panel.
-async function loadGroup() {
-  const requestId = ++groupLoadRequestId;
-  group.value = Records.groups.fuzzyFind(route.params.key) || null;
+    tabs() {
+      if (!this.group) { return; }
+      let query = '';
 
-  try {
-    await Records.groups.remote.fetchById(route.params.key);
-    if (requestId !== groupLoadRequestId) return;
+      return [
+        {id: 0, name: 'discussions',   route: this.urlFor(this.group, null)+query},
+        {id: 1, name: 'polls',     route: this.urlFor(this.group, 'polls')+query},
+        {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
+        {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
+      ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
+    }
+  },
 
-    refreshGroup();
-    groupLoadVersion.value += 1;
-  } catch (error) {
-    if (requestId !== groupLoadRequestId) return;
-
-    // Cached data is useful while authorization is pending, but must stop
-    // rendering as soon as the server says this group is no longer accessible.
-    if ([403, 404].includes(error.status)) group.value = null;
-    EventBus.$emit('pageError', error);
-    if (error.status === 403 && !Session.isSignedIn()) EventBus.$emit('openAuthModal');
+  methods: {
+    init() {
+      this.group = null;
+      Records.groups.findOrFetch(this.$route.params.key).then(group => {
+        this.group = group;
+        if (this.group.newHost) { window.location.host = this.group.newHost; }
+      }).catch(error => {
+        EventBus.$emit('pageError', error);
+        if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
+      });
+    }
   }
-}
+};
 
-watchRecords({collections: ['groups'], query: refreshGroup});
-watch(() => route.params.key, loadGroup, {immediate: true});
-
-onMounted(() => {
-  EventBus.$on('signedIn', loadGroup);
-  EventBus.$on('joinedGroup', loadGroup);
-});
-
-onBeforeUnmount(() => {
-  groupLoadRequestId += 1;
-  EventBus.$off('signedIn', loadGroup);
-  EventBus.$off('joinedGroup', loadGroup);
-});
 </script>
 
 <template lang="pug">
@@ -113,7 +102,7 @@ v-main
       //  eager)
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
-        router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="routeFor(group.parent())")
+        router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())")
           plain-text(:model="group.parent()" field="name")
         space
         span.text-medium-emphasis.text--lighten-1 &gt;
@@ -150,8 +139,7 @@ v-main
       )
         //- common-icon(name="mdi-comment-multiple")
         span(v-t="'group_page.'+tab.name")
-    router-view(v-slot="{ Component }")
-      component(:is="Component" :key="groupLoadVersion" :group="group")
+    router-view
 </template>
 
 <style lang="css">
