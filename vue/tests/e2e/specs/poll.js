@@ -321,7 +321,7 @@ module.exports = {
     page.pause(500)
 
     page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').click()")
-    page.click('.recipients-autocomplete input')
+    page.click('.recipients-autocomplete input[type="text"]')
     page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
     page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
     page.expectNoText('.v-autocomplete__content', 'Undecided voters')
@@ -425,7 +425,7 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()

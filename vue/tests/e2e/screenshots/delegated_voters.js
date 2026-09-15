@@ -74,7 +74,7 @@ module.exports = {
     openProposalForm(page);
     page.click('.poll-common-form__submit');
     page.waitFor('.poll-members-form');
-    page.click('.poll-members-form .recipients-autocomplete input');
+    page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
     page.waitFor('.recipients-autocomplete-suggestion');
     page.pause(300);
     page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Delegates of Oatmilk Cooperative')).classList.add('manual-delegates-option')");

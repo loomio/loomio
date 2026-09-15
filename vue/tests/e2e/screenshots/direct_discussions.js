@@ -26,7 +26,7 @@ module.exports = {
       'Samira will check washing capacity while Jamie confirms the driver schedule and crate storage.',
       'Record any change that cafe staff need to know before the first delivery.'
     ]));
-    page.fillIn('.recipients-autocomplete input', 'Samira');
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'Samira');
     page.waitFor('.recipients-autocomplete-suggestion');
     page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Samira Patel')).click()");
     page.expectText('.recipients-autocomplete', 'Samira Patel');

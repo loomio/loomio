@@ -25,7 +25,7 @@ function openAddVoters(page, invitePoll = true) {
 }
 
 function chooseAudience(page, label) {
-  page.click('.poll-members-form .recipients-autocomplete input');
+  page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
   page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
   page.execute(`Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes(${JSON.stringify(label)})).click()`);
   page.waitFor('.poll-members-form .chip--select-multi');
@@ -72,7 +72,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openAddVoters(page);
-    page.fillIn('.poll-members-form .recipients-autocomplete input', 'advisor@cafecircle.example');
+    page.fillIn('.poll-members-form .recipients-autocomplete input[type="text"]', 'advisor@cafecircle.example');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     screenshot.captureRegion(
       'polls/inviting_people/proposal_invite_guest',
@@ -93,7 +93,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openAddVoters(page);
-    page.click('.poll-members-form .recipients-autocomplete input');
+    page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.execute("const option = Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Bottle Trial Board')); option.classList.add('manual-subgroup-option'); option.closest('.v-overlay__content').style.transform = 'translateY(-40px)'");
     screenshot.captureRegion(
@@ -129,7 +129,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openRunningPoll(page);
     page.clickAndWait('.action-dock__button--remind_poll', '.poll-remind');
-    page.click('.poll-remind .recipients-autocomplete input');
+    page.click('.poll-remind .recipients-autocomplete input[type="text"]');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Everyone invited to vote')).click()");
     page.waitFor('.poll-remind .chip--select-multi');

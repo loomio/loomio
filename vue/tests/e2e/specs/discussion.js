@@ -504,7 +504,7 @@ module.exports = {
     page.click('.sidebar__list-item-button--private')
     page.click('.topics-page__new-topic-button')
     page.click('.discussion-templates--direct-discussion')
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', "private thread")

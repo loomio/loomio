@@ -70,7 +70,7 @@ module.exports = {
   'invite_to_vote_1': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openInvite(page);
-    page.click('.poll-members-form .recipients-autocomplete input');
+    page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Oatmilk Cooperative chat')).classList.add('manual-chatbot-recipient')");
     screenshot.captureRegion(
@@ -83,7 +83,7 @@ module.exports = {
   'invite_to_vote_2': (test) => {
     const page = pageHelper(test); const screenshot = manualScreenshot(test);
     openInvite(page);
-    page.click('.poll-members-form .recipients-autocomplete input');
+    page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Oatmilk Cooperative chat')).click()");
     page.waitFor('.poll-members-form .chip--select-multi');

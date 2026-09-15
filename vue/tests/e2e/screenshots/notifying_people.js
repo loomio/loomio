@@ -42,7 +42,7 @@ function prepareDiscussionEdit(page) {
     '.discussion-form .common-notify-fields .v-text-field input',
     'Added cafe collection details and clarified the proposed trial.'
   );
-  page.click('.discussion-form .recipients-autocomplete input');
+  page.click('.discussion-form .recipients-autocomplete input[type="text"]');
   page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
   page.execute("Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Everyone in the thread')).click()");
   page.click('.discussion-form .common-notify-fields .v-text-field input');
@@ -245,7 +245,7 @@ module.exports = {
     openDiscussion(page);
     page.click('.topic-sidebar .action-dock__button--announce_thread');
     page.waitFor('.topic-members-list');
-    page.fillIn('.topic-members-list .recipients-autocomplete input', 'guest@cafecircle.example');
+    page.fillIn('.topic-members-list .recipients-autocomplete input[type="text"]', 'guest@cafecircle.example');
     page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
     page.click('.v-overlay--active .recipients-autocomplete-suggestion');
     page.waitFor('.topic-members-list textarea');
