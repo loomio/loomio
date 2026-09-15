@@ -1479,7 +1479,7 @@ he:
     remove_background: הסרת רקע
     remove_logo: להסיר את הלוגו
     members_can_create_templates: חברים יכולים ליצור תבניות
-    members_can_create_templates_help: אפשר לחברים ליצור תבניות דיון וסקר. תבניות שנוצרו על ידי חברים יוסתרו עד שמנהל יבטל את הסתרתן.
+    members_can_create_discussion_and_poll_templates_help: אפשר לחברים ליצור תבניות דיון וסקר
     members_can_start_discussions_v2: חברים יכולים להתחיל דיונים חדשים
     members_can_start_discussions_help_v2: לאפשר לחברים להתחיל דיונים חדשים בתוך הקבוצה
     members_can_edit_discussions_v2: חברים יכולים לנהל דיונים ותגובות
@@ -2766,8 +2766,6 @@ he:
     anonymous:
       title: מצביעים אנונימיים
       helptext_on: כאשר אפשרות זו נבחרת, פרטי המשתתף לא יוצגו עם כל תגובה.
-    voter_can_add_options:
-      title: הבוחרים יכולים להוסיף אפשרויות חלופיות
     can_respond_maybe:
       title: הבוחרים יכולים להגיב "במידת הצורך"
     allow_long_reason:

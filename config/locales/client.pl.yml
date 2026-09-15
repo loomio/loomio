@@ -1481,7 +1481,7 @@ pl:
     remove_background: usuń tło
     remove_logo: usuń logo
     members_can_create_templates: Członkowie mogą tworzyć szablony
-    members_can_create_templates_help: Zezwól członkom na tworzenie szablonów dyskusji i ankiet. Szablony utworzone przez członków będą ukryte, dopóki administrator ich nie odkryje.
+    members_can_create_discussion_and_poll_templates_help: Zezwól członkom na tworzenie szablonów dyskusji i ankiet
     members_can_start_discussions_v2: Członkowie mogą rozpoczynać nowe dyskusje
     members_can_start_discussions_help_v2: Zezwól członkom na rozpoczynanie nowych dyskusji w grupie
     members_can_edit_discussions_v2: Członkowie mogą zarządzać dyskusjami i komentarzami
@@ -2774,8 +2774,6 @@ pl:
     anonymous:
       title: Anonimowi wyborcy
       helptext_on: Po wybraniu tej opcji informacje o uczestniku nie będą wyświetlane przy każdej odpowiedzi.
-    voter_can_add_options:
-      title: Wyborcy mogą dodawać alternatywne opcje
     can_respond_maybe:
       title: Wyborcy mogą odpowiedzieć „jeśli zajdzie taka potrzeba”
     allow_long_reason:

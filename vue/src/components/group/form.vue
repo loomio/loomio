@@ -392,9 +392,9 @@ v-form(ref="form" @submit.prevent="submit")
           v-checkbox.group-form__members-can-create-templates(hide-details v-model='group.membersCanCreateTemplates')
             template(v-slot:label)
               div
-                span(v-t="'group_form.members_can_create_templates'")
+                span {{ $t('group_form.members_can_create_templates') }}
                 br
-                span.text-body-small(v-t="'group_form.members_can_create_templates_help'")
+                span.text-body-small {{ $t('group_form.members_can_create_discussion_and_poll_templates_help') }}
           v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group.adminsCanEditUserContent')
             template(v-slot:label)
               div

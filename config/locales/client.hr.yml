@@ -1475,7 +1475,7 @@ hr:
     remove_background: ukloni pozadinu
     remove_logo: ukloni logotip
     members_can_create_templates: Članovi mogu kreirati predloške
-    members_can_create_templates_help: Omogući članovima izradu predložaka za rasprave i ankete. Predlošci koje su izradili članovi bit će skriveni dok ih administrator ne otkrije.
+    members_can_create_discussion_and_poll_templates_help: Omogući članovima izradu predložaka za rasprave i ankete
     members_can_start_discussions_v2: Članovi mogu započeti nove rasprave
     members_can_start_discussions_help_v2: Omogućite članovima da započnu nove rasprave unutar grupe
     members_can_edit_discussions_v2: Članovi mogu upravljati raspravama i komentarima
@@ -2747,8 +2747,6 @@ hr:
     anonymous:
       title: Anonimni birači
       helptext_on: Kada je odabrano, informacije o sudioniku neće se prikazivati uz svaki odgovor.
-    voter_can_add_options:
-      title: Birači mogu dodati alternativne opcije
     can_respond_maybe:
       title: Birači mogu odgovoriti "ako bude potrebno"
     allow_long_reason:

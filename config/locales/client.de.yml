@@ -1489,7 +1489,7 @@ de:
     remove_background: Hintergrund entfernen
     remove_logo: Logo entfernen
     members_can_create_templates: Mitglieder können Vorlagen erstellen.
-    members_can_create_templates_help: Ermögliche es Mitgliedern, Diskussions- und Umfragevorlagen zu erstellen. Von Mitgliedern erstellte Vorlagen sind standardmäßig ausgeblendet, bis ein Administrator sie einblendet.
+    members_can_create_discussion_and_poll_templates_help: Ermögliche es Mitgliedern, Diskussions- und Umfragevorlagen zu erstellen
     members_can_start_discussions_v2: Mitglieder können neue Diskussionen starten.
     members_can_start_discussions_help_v2: Erlaube den Mitgliedern, neue Diskussionen innerhalb der Gruppe zu starten.
     members_can_edit_discussions_v2: Mitglieder können Diskussionen und Kommentare verwalten.
@@ -2782,8 +2782,6 @@ de:
     anonymous:
       title: Anonyme Wähler
       helptext_on: Wenn diese Option ausgewählt ist, werden die Teilnehmerinformationen nicht bei jeder Antwort angezeigt.
-    voter_can_add_options:
-      title: Wähler können alternative Optionen hinzufügen
     can_respond_maybe:
       title: Wähler können „bei Bedarf“ reagieren
     allow_long_reason:

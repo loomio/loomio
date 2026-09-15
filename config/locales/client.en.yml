@@ -1615,7 +1615,7 @@ en:
     members_can_raise_motions: Members can start polls
     members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
     members_can_create_templates: Members can create templates
-    members_can_create_templates_help: Allow members to create discussion and poll templates. Templates created by members will be hidden until an admin unhides them.
+    members_can_create_discussion_and_poll_templates_help: Allow members to create discussion and poll templates
     members_can_start_discussions_v2: Members can start new discussions
     members_can_start_discussions_help_v2: Allow members to start new discussions within the group
     members_can_edit_discussions_v2: Members can manage discussions and comments
@@ -2433,8 +2433,6 @@ en:
     anonymous:
       title: Anonymous voters
       helptext_on: When selected, participant info will not be shown with each response.
-    voter_can_add_options:
-      title: Voters can add alternative options
     can_respond_maybe:
       title: Voters can respond "if need be"
     allow_long_reason:

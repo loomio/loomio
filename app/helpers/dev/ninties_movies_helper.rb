@@ -408,8 +408,7 @@ module Dev::NintiesMoviesHelper
         poll_option_names: %w[agree abstain disagree block],
         closing_at: 4.days.from_now,
         group_id: create_group.id,
-        topic_id: create_discussion.topic_id,
-        voter_can_add_options: true
+        topic_id: create_discussion.topic_id
       },
       actor: patrick
     )

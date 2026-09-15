@@ -47,7 +47,6 @@ class PermittedParams < Struct.new(:params)
       :show_none_of_the_above,
       :notify_on_closing_soon,
       :notify_on_open,
-      :voter_can_add_options,
       :specified_voters_only,
       :allow_comments,
       :allow_reactions,

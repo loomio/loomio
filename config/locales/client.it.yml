@@ -1501,7 +1501,7 @@ it:
     remove_background: rimuovere lo sfondo
     remove_logo: rimuovere il logo
     members_can_create_templates: I membri possono creare modelli
-    members_can_create_templates_help: Consenti ai membri di creare modelli di discussione e sondaggio. I modelli creati dai membri saranno nascosti finché un amministratore non li ripristinerà.
+    members_can_create_discussion_and_poll_templates_help: Consenti ai membri di creare modelli di discussione e sondaggio
     members_can_start_discussions_v2: I membri possono avviare nuove discussioni
     members_can_start_discussions_help_v2: Consenti ai membri di avviare nuove discussioni all'interno del gruppo
     members_can_edit_discussions_v2: I membri possono gestire discussioni e commenti
@@ -2775,8 +2775,6 @@ it:
     anonymous:
       title: Elettori anonimi
       helptext_on: Se selezionata, le informazioni sui partecipanti non verranno visualizzate con ogni risposta.
-    voter_can_add_options:
-      title: Gli elettori possono aggiungere opzioni alternative
     can_respond_maybe:
       title: Gli elettori possono rispondere "se necessario"
     allow_long_reason:

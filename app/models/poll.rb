@@ -243,7 +243,6 @@ class Poll < ApplicationRecord
     :anonymous,
     :discarded_at,
     :discarded_by,
-    :voter_can_add_options,
     :specified_voters_only,
     :stance_reason_required,
     :tags,

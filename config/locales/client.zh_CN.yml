@@ -1545,7 +1545,7 @@ zh_CN:
     remove_background: 移除背景
     remove_logo: 移除徽标
     members_can_create_templates: 成员可以创建模板
-    members_can_create_templates_help: 允许成员创建讨论和投票模板。成员创建的模板将默认隐藏，直到管理员将其取消隐藏。
+    members_can_create_discussion_and_poll_templates_help: 允许成员创建讨论和投票模板
     members_can_start_discussions_v2: 成员可以发起新的讨论
     members_can_start_discussions_help_v2: 允许成员在群组内发起新的讨论。
     members_can_edit_discussions_v2: 成员可以管理讨论和评论
@@ -2328,8 +2328,6 @@ zh_CN:
     anonymous:
       title: 匿名投票者
       helptext_on: 选择此选项后，参与者信息将不会与每条回复一起显示。
-    voter_can_add_options:
-      title: 投票者可以添加其他选项
     can_respond_maybe:
       title: 投票者“如有必要”可以作出回应
     allow_long_reason:

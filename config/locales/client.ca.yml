@@ -1481,7 +1481,7 @@ ca:
     remove_background: eliminar el fons
     remove_logo: eliminar el logotip
     members_can_create_templates: Els membres poden crear plantilles
-    members_can_create_templates_help: Permet que els membres creïn plantilles de debat i enquesta. Les plantilles creades pels membres s'ocultaran fins que un administrador les mostri.
+    members_can_create_discussion_and_poll_templates_help: Permet que els membres creïn plantilles de debat i enquesta
     members_can_start_discussions_v2: Els membres poden iniciar noves discussions
     members_can_start_discussions_help_v2: Permetre que els membres iniciïn noves discussions dins del grup
     members_can_edit_discussions_v2: Els membres poden gestionar debats i comentaris
@@ -2774,8 +2774,6 @@ ca:
     anonymous:
       title: Votants anònims
       helptext_on: Quan es selecciona aquesta opció, la informació del participant no es mostrarà amb cada resposta.
-    voter_can_add_options:
-      title: Els votants poden afegir opcions alternatives
     can_respond_maybe:
       title: Els votants poden respondre "si cal"
     allow_long_reason:

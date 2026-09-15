@@ -1475,7 +1475,7 @@ tr:
     remove_background: arka planı kaldır
     remove_logo: logoyu kaldır
     members_can_create_templates: Üyeler şablon oluşturabilirler.
-    members_can_create_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin. Üyeler tarafından oluşturulan şablonlar, bir yönetici tarafından görünür hale getirilene kadar gizli kalacaktır.
+    members_can_create_discussion_and_poll_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin
     members_can_start_discussions_v2: Üyeler yeni tartışmalar başlatabilirler.
     members_can_start_discussions_help_v2: Üyelerin grup içinde yeni tartışmalar başlatmasına izin verin.
     members_can_edit_discussions_v2: Üyeler tartışmaları ve yorumları yönetebilirler.
@@ -2747,8 +2747,6 @@ tr:
     anonymous:
       title: Anonim seçmenler
       helptext_on: Seçildiğinde, her yanıtta katılımcı bilgisi gösterilmeyecektir.
-    voter_can_add_options:
-      title: Seçmenler alternatif seçenekler ekleyebilir
     can_respond_maybe:
       title: Seçmenler "gerekirse" yanıt verebilir
     allow_long_reason:

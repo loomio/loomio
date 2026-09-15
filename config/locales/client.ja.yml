@@ -1474,7 +1474,7 @@ ja:
     remove_background: 背景を削除
     remove_logo: ロゴを削除
     members_can_create_templates: メンバーはテンプレートを作成できます
-    members_can_create_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします。メンバーが作成したテンプレートは、管理者が非表示を解除するまで非表示になります。
+    members_can_create_discussion_and_poll_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします
     members_can_start_discussions_v2: メンバーは新しいディスカッションを開始できます
     members_can_start_discussions_help_v2: メンバーがグループ内で新しいディスカッションを開始できるようにする
     members_can_edit_discussions_v2: メンバーはディスカッションやコメントを管理できる
@@ -2746,8 +2746,6 @@ ja:
     anonymous:
       title: 匿名の有権者
       helptext_on: 選択すると、各回答に参加者情報が表示されなくなります。
-    voter_can_add_options:
-      title: 有権者は代替案を追加できる
     can_respond_maybe:
       title: 有権者は「必要であれば」回答できる
     allow_long_reason:

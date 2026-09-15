@@ -1484,7 +1484,7 @@ zh_TW:
     remove_background: 移除背景
     remove_logo: 移除標誌
     members_can_create_templates: 成員可以建立模板
-    members_can_create_templates_help: 允許成員建立討論和投票範本。成員建立的範本將預設為隱藏，直到管理員將其取消隱藏。
+    members_can_create_discussion_and_poll_templates_help: 允許成員建立討論和投票範本
     members_can_start_discussions_v2: 成員可以發起新的討論
     members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
     members_can_edit_discussions_v2: 會員可以管理討論和評論
@@ -2775,8 +2775,6 @@ zh_TW:
     anonymous:
       title: 匿名投票者
       helptext_on: 選擇後，參與者資訊將不會隨每個回應顯示。
-    voter_can_add_options:
-      title: 選民可以添加其他選項
     can_respond_maybe:
       title: 選民可以「在必要時」做出回應
     allow_long_reason:

@@ -1475,7 +1475,7 @@ da:
     remove_background: fjern baggrund
     remove_logo: fjern logoet
     members_can_create_templates: Medlemmer kan oprette skabeloner
-    members_can_create_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger. Skabeloner oprettet af medlemmer vil være skjult, indtil en administrator viser dem igen.
+    members_can_create_discussion_and_poll_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger
     members_can_start_discussions_v2: Medlemmer kan starte nye diskussioner
     members_can_start_discussions_help_v2: Tillad medlemmer at starte nye diskussioner i gruppen
     members_can_edit_discussions_v2: Medlemmer kan administrere diskussioner og kommentarer
@@ -2747,8 +2747,6 @@ da:
     anonymous:
       title: Anonyme vælgere
       helptext_on: Når dette er valgt, vises deltageroplysninger ikke sammen med hvert svar.
-    voter_can_add_options:
-      title: Vælgerne kan tilføje alternative muligheder
     can_respond_maybe:
       title: Vælgerne kan svare "hvis det er nødvendigt"
     allow_long_reason:

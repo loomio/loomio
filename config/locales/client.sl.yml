@@ -1475,7 +1475,7 @@ sl:
     remove_background: odstranite ozadje
     remove_logo: odstranite logotip
     members_can_create_templates: Člani lahko ustvarijo predloge
-    members_can_create_templates_help: Dovoli članom ustvarjanje predlog za razprave in ankete. Predloge, ki jih ustvarijo člani, bodo skrite, dokler jih skrbnik ne razkrije.
+    members_can_create_discussion_and_poll_templates_help: Dovoli članom ustvarjanje predlog za razprave in ankete
     members_can_start_discussions_v2: Člani lahko začnejo nove razprave
     members_can_start_discussions_help_v2: Dovoli članom, da začnejo nove razprave znotraj skupine
     members_can_edit_discussions_v2: Člani lahko upravljajo razprave in komentarje
@@ -2747,8 +2747,6 @@ sl:
     anonymous:
       title: Anonimni volivci
       helptext_on: Ko je izbrano, podatki o udeležencu ne bodo prikazani ob vsakem odgovoru.
-    voter_can_add_options:
-      title: Volivci lahko dodajo alternativne možnosti
     can_respond_maybe:
       title: Volivci se lahko odzovejo, "če je potrebno"
     allow_long_reason:

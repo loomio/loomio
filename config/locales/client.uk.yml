@@ -1484,7 +1484,7 @@ uk:
     remove_background: видалити фон
     remove_logo: видалити логотип
     members_can_create_templates: Учасники можуть створювати шаблони
-    members_can_create_templates_help: Дозволити учасникам створювати шаблони для обговорень та опитувань. Шаблони, створені учасниками, будуть приховані, доки адміністратор не відобразить їх.
+    members_can_create_discussion_and_poll_templates_help: Дозволити учасникам створювати шаблони для обговорень та опитувань
     members_can_start_discussions_v2: Учасники можуть розпочинати нові обговорення
     members_can_start_discussions_help_v2: Дозволити учасникам розпочинати нові обговорення в групі
     members_can_edit_discussions_v2: Учасники можуть керувати обговореннями та коментарями
@@ -2777,8 +2777,6 @@ uk:
     anonymous:
       title: Анонімні виборці
       helptext_on: Якщо вибрано, інформація про учасника не відображатиметься з кожною відповіддю.
-    voter_can_add_options:
-      title: Виборці можуть додавати альтернативні варіанти
     can_respond_maybe:
       title: Виборці можуть відповісти «за потреби»
     allow_long_reason:

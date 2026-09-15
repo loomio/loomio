@@ -1502,7 +1502,7 @@ pt_BR:
     remove_background: remover fundo
     remove_logo: remover logotipo
     members_can_create_templates: Os membros podem criar modelos.
-    members_can_create_templates_help: Permitir que os membros criem modelos de discussão e enquete. Os modelos criados pelos membros ficarão ocultos até que um administrador os exiba.
+    members_can_create_discussion_and_poll_templates_help: Permitir que os membros criem modelos de discussão e enquete
     members_can_start_discussions_v2: Os membros podem iniciar novas discussões.
     members_can_start_discussions_help_v2: Permitir que os membros iniciem novas discussões dentro do grupo.
     members_can_edit_discussions_v2: Os membros podem gerenciar discussões e comentários.
@@ -2795,8 +2795,6 @@ pt_BR:
     anonymous:
       title: Eleitores anônimos
       helptext_on: Quando selecionado, as informações do participante não serão exibidas com cada resposta.
-    voter_can_add_options:
-      title: Os eleitores podem adicionar opções alternativas
     can_respond_maybe:
       title: Os eleitores podem responder "se necessário"
     allow_long_reason:

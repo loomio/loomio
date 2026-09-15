@@ -1475,7 +1475,7 @@ ro:
     remove_background: eliminați fundalul
     remove_logo: eliminați sigla
     members_can_create_templates: Membrii pot crea șabloane
-    members_can_create_templates_help: Permiteți membrilor să creeze șabloane de discuții și sondaje. Șabloanele create de membri vor fi ascunse până când un administrator le va reafișa.
+    members_can_create_discussion_and_poll_templates_help: Permiteți membrilor să creeze șabloane de discuții și sondaje
     members_can_start_discussions_v2: Membrii pot începe discuții noi
     members_can_start_discussions_help_v2: Permiteți membrilor să înceapă discuții noi în cadrul grupului
     members_can_edit_discussions_v2: Membrii pot gestiona discuțiile și comentariile
@@ -2747,8 +2747,6 @@ ro:
     anonymous:
       title: Alegători anonimi
       helptext_on: Când este selectată, informațiile participanților nu vor fi afișate odată cu fiecare răspuns.
-    voter_can_add_options:
-      title: Alegătorii pot adăuga opțiuni alternative
     can_respond_maybe:
       title: Alegătorii pot răspunde „dacă este nevoie”
     allow_long_reason:

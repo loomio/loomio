@@ -384,3 +384,9 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | Multiple `config/locales/server.*.yml` files | `thread_markdown.*` interpolation variables | Translated or dropped placeholders such as `%{autor}`, `%{valor}`, and `%{marca de tiempo}` | Canonical placeholders such as `%{author}`, `%{value}`, and `%{timestamp}` | Interpolation variable names are application contracts and must not be translated or omitted |
+
+## 2026-09-15 — Member-created template visibility
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |

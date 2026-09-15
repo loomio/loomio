@@ -199,7 +199,6 @@ class RecordCloner
       poll_type
       process_name
       process_subtitle
-      voter_can_add_options
       anonymous
       details_format
       hide_results

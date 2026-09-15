@@ -1481,7 +1481,7 @@ nl_NL:
     remove_background: achtergrond verwijderen
     remove_logo: logo verwijderen
     members_can_create_templates: Leden kunnen sjablonen maken.
-    members_can_create_templates_help: Sta leden toe om sjablonen voor discussies en enquêtes te maken. Door leden gemaakte sjablonen blijven verborgen totdat een beheerder ze weer zichtbaar maakt.
+    members_can_create_discussion_and_poll_templates_help: Sta leden toe om sjablonen voor discussies en enquêtes te maken
     members_can_start_discussions_v2: Leden kunnen nieuwe discussies starten.
     members_can_start_discussions_help_v2: Sta leden toe om nieuwe discussies binnen de groep te starten.
     members_can_edit_discussions_v2: Leden kunnen discussies en reacties beheren.
@@ -2774,8 +2774,6 @@ nl_NL:
     anonymous:
       title: Anonieme kiezers
       helptext_on: Als u deze optie selecteert, worden de deelnemersgegevens niet bij elk antwoord weergegeven.
-    voter_can_add_options:
-      title: Kiezers kunnen alternatieve opties toevoegen
     can_respond_maybe:
       title: Kiezers kunnen reageren "indien nodig"
     allow_long_reason:

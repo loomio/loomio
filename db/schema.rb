@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -694,7 +694,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_000000) do
     t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.boolean "voter_can_add_options", default: false, null: false
     t.integer "voters_count", default: 0, null: false
     t.integer "voting_system", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"

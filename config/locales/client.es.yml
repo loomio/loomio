@@ -1490,7 +1490,7 @@ es:
     remove_background: eliminar el fondo
     remove_logo: eliminar logotipo
     members_can_create_templates: Los miembros pueden crear plantillas
-    members_can_create_templates_help: Permite a los miembros crear plantillas para debates y encuestas. Las plantillas creadas por los miembros permanecerán ocultas hasta que un administrador las revele.
+    members_can_create_discussion_and_poll_templates_help: Permite a los miembros crear plantillas para debates y encuestas
     members_can_start_discussions_v2: Los miembros pueden iniciar nuevas discusiones
     members_can_start_discussions_help_v2: Permitir que los miembros inicien nuevas discusiones dentro del grupo
     members_can_edit_discussions_v2: Los miembros pueden gestionar discusiones y comentarios.
@@ -2783,8 +2783,6 @@ es:
     anonymous:
       title: votantes anónimos
       helptext_on: Cuando se selecciona esta opción, la información del participante no se mostrará con cada respuesta.
-    voter_can_add_options:
-      title: Los votantes pueden agregar opciones alternativas
     can_respond_maybe:
       title: Los votantes pueden responder "si es necesario"
     allow_long_reason:

@@ -1475,7 +1475,7 @@ ru:
     remove_background: удалить фон
     remove_logo: удалить логотип
     members_can_create_templates: Участники могут создавать шаблоны.
-    members_can_create_templates_help: Разрешите участникам создавать шаблоны для обсуждений и опросов. Шаблоны, созданные участниками, будут скрыты до тех пор, пока администратор не отобразит их.
+    members_can_create_discussion_and_poll_templates_help: Разрешите участникам создавать шаблоны для обсуждений и опросов
     members_can_start_discussions_v2: Участники могут начинать новые обсуждения.
     members_can_start_discussions_help_v2: Разрешите участникам начинать новые дискуссии внутри группы.
     members_can_edit_discussions_v2: Участники могут управлять обсуждениями и комментариями.
@@ -2747,8 +2747,6 @@ ru:
     anonymous:
       title: Анонимные избиратели
       helptext_on: Если выбран этот параметр, информация об участнике не будет отображаться при каждом ответе.
-    voter_can_add_options:
-      title: Избиратели могут добавлять альтернативные варианты
     can_respond_maybe:
       title: Избиратели могут отреагировать «при необходимости»
     allow_long_reason:

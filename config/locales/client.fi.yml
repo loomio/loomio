@@ -1475,7 +1475,7 @@ fi:
     remove_background: poista tausta
     remove_logo: poista logo
     members_can_create_templates: Jäsenet voivat luoda malleja
-    members_can_create_templates_help: Salli jäsenten luoda keskustelu- ja kyselypohjia. Jäsenten luomat pohjat piilotetaan, kunnes ylläpitäjä tuo ne näkyviin.
+    members_can_create_discussion_and_poll_templates_help: Salli jäsenten luoda keskustelu- ja kyselypohjia
     members_can_start_discussions_v2: Jäsenet voivat aloittaa uusia keskusteluja
     members_can_start_discussions_help_v2: Salli jäsenten aloittaa uusia keskusteluja ryhmässä
     members_can_edit_discussions_v2: Jäsenet voivat hallita keskusteluja ja kommentteja
@@ -2747,8 +2747,6 @@ fi:
     anonymous:
       title: Anonyymit äänestäjät
       helptext_on: Kun tämä on valittu, osallistujan tietoja ei näytetä jokaisen vastauksen yhteydessä.
-    voter_can_add_options:
-      title: Äänestäjät voivat lisätä vaihtoehtoja
     can_respond_maybe:
       title: Äänestäjät voivat vastata "tarvittaessa"
     allow_long_reason:

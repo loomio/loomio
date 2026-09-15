@@ -100,7 +100,6 @@ export default {
   PollMeetingChangeYourVote: 'poll/meeting/change_your_vote',
   PollMeetingStanceIcon: 'poll/meeting/stance_icon',
   PollMeetingTime: 'poll/meeting/time',
-  PollMeetingAddOptionMenu: 'poll/meeting/add_option_menu',
   PollMeetingVoteForm: 'poll/meeting/vote_form',
   PollPollVoteForm: 'poll/poll/vote_form',
   PollRankedChoiceVoteForm: 'poll/ranked_choice/vote_form',

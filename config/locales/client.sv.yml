@@ -1475,7 +1475,7 @@ sv:
     remove_background: ta bort bakgrunden
     remove_logo: ta bort logotypen
     members_can_create_templates: Medlemmar kan skapa mallar
-    members_can_create_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar. Mallar som skapats av medlemmar kommer att döljas tills en administratör visar dem.
+    members_can_create_discussion_and_poll_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar
     members_can_start_discussions_v2: Medlemmar kan starta nya diskussioner
     members_can_start_discussions_help_v2: Tillåt medlemmar att starta nya diskussioner inom gruppen
     members_can_edit_discussions_v2: Medlemmar kan hantera diskussioner och kommentarer
@@ -2747,8 +2747,6 @@ sv:
     anonymous:
       title: Anonyma väljare
       helptext_on: När detta är valt visas inte deltagarinformation med varje svar.
-    voter_can_add_options:
-      title: Väljare kan lägga till alternativ
     can_respond_maybe:
       title: Väljarna kan svara "vid behov"
     allow_long_reason:
