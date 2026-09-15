@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { ref, computed, watch, onMounted, onBeforeUnmount, toRef } from 'vue';
+import { useDisplay } from 'vuetify';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
@@ -110,6 +111,7 @@ const iconProps = ref({
 });
 
 // Composables
+const { smAndDown } = useDisplay();
 const modelRef = toRef(props, 'model');
 
 const mentionOptions = useMentionSuggestion(modelRef);
@@ -246,7 +248,7 @@ const convertToMdHandler = () => {
 
 const toggleExpanded = () => {
   expanded.value = !expanded.value;
-  Records.users.saveExperience('html-editor.expanded', expanded.value);
+  if (!smAndDown.value) Records.users.saveExperience('html-editor.expanded', expanded.value);
 };
 
 const setLinkUrl = () => {
@@ -360,7 +362,7 @@ onMounted(() => {
     }
   }, 2000);
 
-  expanded.value = Session.user().experiences['html-editor.expanded'];
+  if (!smAndDown.value) expanded.value = Boolean(Session.user().experiences['html-editor.expanded']);
 
   unregisterBeforeSave = registerBeforeSaveCallback(props.model, updateModel);
 
