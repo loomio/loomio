@@ -6,6 +6,13 @@ GIT
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
 
+PATH
+  remote: engines/loomio_subs
+  specs:
+    loomio_subs (0.1.0)
+      faraday (~> 2.14)
+      rails (>= 7.0.4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -776,6 +783,7 @@ DEPENDENCIES
   icalendar
   image_processing (~> 2.1)
   json (< 3)
+  loomio_subs!
   maxminddb
   mini_magick (~> 5.4)
   minitest (~> 6.0)
