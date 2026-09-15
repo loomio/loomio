@@ -16,7 +16,10 @@ module Ability::Poll
     end
 
     can [:export], ::Poll do |poll|
-      user.can?(:show, poll) && poll.show_results?
+      next false unless user.can?(:show, poll)
+
+      voted = poll.stances.latest.decided.exists?(participant_id: user.id)
+      poll.results_visible?(voted: voted)
     end
 
     can :receipts, ::Poll do |poll|

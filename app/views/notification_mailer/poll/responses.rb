@@ -11,7 +11,7 @@ class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Com
     poll = @topic_item.itemable.poll
     my_stance = @recipient && ::Stance.latest.find_by(poll_id: poll.id, participant_id: @recipient.id)
 
-    if poll.show_results?(voted: my_stance && my_stance.cast_at)
+    if poll.results_visible?(voted: my_stance&.cast_at.present?)
       div do
         if poll.anonymous?
           p { plain t(:"poll_common_action_panel.anonymous") }
@@ -45,7 +45,8 @@ class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Com
         end
       end
     else
-      p { plain t(:"poll_common_action_panel.results_hidden_until_closed") }
+      key = poll.hide_results == 'until_vote' ? :"thread_markdown.hidden_until_voted" : :"poll_common_action_panel.results_hidden_until_closed"
+      p { plain t(key) }
     end
   end
 end

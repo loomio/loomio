@@ -108,7 +108,13 @@ export default {
 </script>
 
 <template lang="pug">
-v-app-bar.lmo-no-print(app clipped-right color="appbar" :class="{'navbar--scrolled': appBarScrolled}")
+v-app-bar.lmo-no-print(
+  app
+  clipped-right
+  color="appbar"
+  :class="{'navbar--scrolled': appBarScrolled}"
+  :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
+)
   v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
   v-app-bar-title(@click="scrollTo('#context')")

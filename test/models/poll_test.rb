@@ -299,20 +299,25 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
-  test "until vote results are available to the backend before voting" do
+  test "until vote results are available to clients but hidden from server rendering before voting" do
     poll = create_poll(hide_results: "until_vote")
 
-    assert poll.show_results?(voted: false)
-    assert poll.show_results?(voted: true)
+    assert poll.results_available?
+    refute poll.results_visible?(voted: false)
+    assert poll.results_visible?(voted: true)
+    poll.update!(closed_at: Time.current)
+    assert poll.results_visible?(voted: false)
   end
 
   test "until closed results remain hidden from the backend until close" do
     poll = create_poll(hide_results: "until_closed")
 
-    refute poll.show_results?(voted: false)
-    refute poll.show_results?(voted: true)
+    refute poll.results_available?
+    refute poll.results_visible?(voted: false)
+    refute poll.results_visible?(voted: true)
     poll.update!(closed_at: Time.current)
-    assert poll.show_results?(voted: false)
+    assert poll.results_available?
+    assert poll.results_visible?(voted: false)
   end
 
   test "assigns poll options" do

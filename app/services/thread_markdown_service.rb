@@ -169,7 +169,7 @@ class ThreadMarkdownService
     return @poll_results_visible[poll.id] if @poll_results_visible.key?(poll.id)
 
     voted = poll.stances.latest.decided.exists?(participant_id: user.id)
-    @poll_results_visible[poll.id] = poll.show_results?(voted: voted)
+    @poll_results_visible[poll.id] = poll.results_visible?(voted: voted)
   end
 
   def reactions_markdown(record)

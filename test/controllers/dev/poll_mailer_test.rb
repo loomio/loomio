@@ -345,6 +345,12 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       assert_text('main', "Please vote")
     end
 
+    test "until_vote #{poll_type} email hides results from a recipient who has not voted" do
+      build_poll_closing_soon(poll_type: poll_type, hide_results: 'until_vote')
+      assert_notification_headline("notifications.without_title.poll_closing_soon")
+      assert_text('main', I18n.t('thread_markdown.hidden_until_voted'))
+    end
+
     test "#{poll_type} poll_closing_soon_author email" do
       build_poll_closing_soon(poll_type: poll_type, notify_on_closing_soon: 'author')
       assert_notification_headline("notifications.without_title.poll_closing_soon_author")

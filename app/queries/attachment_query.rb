@@ -26,7 +26,7 @@ class AttachmentQuery
 
     visible_stance_poll_ids = PollQuery.visible_to(user: user, group_ids: group_ids).reject(&:anonymous?).select do |poll|
       voted = poll.stances.latest.decided.exists?(participant_id: user.id)
-      poll.show_results?(voted: voted)
+      poll.results_visible?(voted: voted)
     end.map(&:id)
 
     ids.concat ActiveStorage::Attachment.joins(:blob).

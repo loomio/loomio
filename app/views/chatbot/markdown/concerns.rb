@@ -131,7 +131,7 @@ module Views::Chatbot::Markdown::Concerns
     return if poll.scheduled?
 
     if (poll.decided_voters_count > 0) || poll.closed_at
-      if poll.show_results?
+      if poll.results_visible?
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"
         md "\n"
 
