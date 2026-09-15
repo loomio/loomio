@@ -612,10 +612,10 @@ GEM
       ffi (~> 1.12)
       logger
     securerandom (0.4.1)
-    sentry-rails (6.7.0)
+    sentry-rails (7.0.0)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.7.0)
-    sentry-ruby (6.7.0)
+      sentry-ruby (~> 7.0.0)
+    sentry-ruby (7.0.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
@@ -804,7 +804,6 @@ DEPENDENCIES
   ruby-saml
   ruby-vips
   sentry-rails
-  sentry-ruby
   solargraph
   solid_cable
   solid_cache
