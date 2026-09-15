@@ -72,8 +72,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
         collection = collection.undecided
       end
 
-      voted = @poll.stances.latest.decided.exists?(participant_id: current_user.id)
-      if @poll.show_results?(voted: voted)
+      if @poll.results_available?
         if poll_option_id = params[:poll_option_id].presence
           collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
         end
@@ -169,7 +168,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
     ).where("child_count > 0").pluck('itemable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
     MessageChannelService.publish_models(stances, user_id: current_user.id)
-    if poll.show_results?(voted: false)
+    if poll.results_available?
       MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id)
     end
   end

@@ -151,7 +151,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results_visible?
-    poll.show_results?(voted: poll.anonymous? || my_stance&.cast_at.present?)
+    poll.results_available?
   end
 
   def anonymous_voter

@@ -6,7 +6,7 @@ module Views::Chatbot::Slack::Concerns
   def render_slack_results(poll)
     return if poll.scheduled?
 
-    if poll.show_results?
+    if poll.results_visible?
       sd "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**"
       md "\n"
       md "\n"

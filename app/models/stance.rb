@@ -178,7 +178,7 @@ class Stance < ApplicationRecord
   end
 
   def shared_update_visible?
-    poll.show_results?(voted: false)
+    poll.results_available?
   end
 
   def body

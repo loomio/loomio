@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class Ability::PollTest < ActiveSupport::TestCase
+  test "until vote exports are available only after the user votes" do
+    user = users(:user)
+    poll = PollService.create(params: poll_params(group_id: groups(:group).id, hide_results: 'until_vote'), actor: users(:admin))
+
+    assert_not user.can?(:export, poll)
+    stance = poll.stances.latest.find_by!(participant_id: user.id)
+    stance.choice = poll.poll_option_names.first
+    StanceService.create(stance: stance, actor: user)
+    assert user.can?(:export, poll)
+  end
+
   # Poll without group
   test "poll without group as topic admin can vote and manage" do
     user = users(:user)

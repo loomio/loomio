@@ -200,6 +200,32 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "until vote rendering is hidden from non-voters and visible to voters" do
+    discussion = create_discussion
+    poll = PollService.create(
+      params: {
+        topic_id: discussion.topic_id,
+        title: 'Vote before viewing',
+        poll_type: 'proposal',
+        poll_option_names: ['Agree', 'Disagree'],
+        closing_at: 3.days.from_now,
+        hide_results: 'until_vote'
+      },
+      actor: @admin
+    )
+    stance = poll.stances.latest.find_by!(participant_id: @member.id)
+    stance.choice = 'Agree'
+    stance.reason = 'Visible after voting.'
+    StanceService.create(stance: stance, actor: @member)
+
+    hidden_markdown = render(discussion.topic, user: @admin)
+    visible_markdown = render(discussion.topic, user: @member)
+
+    assert_includes hidden_markdown, '_Hidden until the viewer votes._'
+    refute_includes hidden_markdown, 'Visible after voting.'
+    assert_includes visible_markdown, 'Visible after voting.'
+  end
+
   test "renders document labels in the viewer locale" do
     I18n.backend.store_translations(:es, thread_markdown: {
       current_results: "Resultados actuales",
@@ -279,7 +305,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     )
   end
 
-  def render(topic)
-    ThreadMarkdownService.render(topic: topic.reload, user: @admin)
+  def render(topic, user: @admin)
+    ThreadMarkdownService.render(topic: topic.reload, user: user)
   end
 end

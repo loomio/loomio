@@ -10,7 +10,7 @@ class Views::Chatbot::Matrix::Results < Views::Chatbot::Base
     return if @poll.scheduled?
 
     if @poll.decided_voters_count > 0 || @poll.closed_at
-      if @poll.show_results?
+      if @poll.results_visible?
         h5 { t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
         if @poll.poll_type == "meeting"
           render Views::Chatbot::Matrix::Meeting.new(poll: @poll, recipient: @recipient)

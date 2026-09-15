@@ -14,7 +14,7 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
 
     if @poll.has_options && (@poll.decided_voters_count > 0 || @poll.closed_at)
       div do
-        if @poll.show_results?(voted: my_stance && my_stance.cast_at)
+        if @poll.results_visible?(voted: my_stance&.cast_at.present?)
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
           if @poll.poll_type == "meeting"
             render Views::NotificationMailer::Poll::Results::Meeting.new(poll: @poll, recipient: @current_user)
@@ -24,7 +24,8 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
             render Views::NotificationMailer::Poll::Results::Simple.new(poll: @poll, recipient: @current_user)
           end
         else
-          h3 { plain t('poll_common_action_panel.results_hidden_until_closed') }
+          key = @poll.hide_results == 'until_vote' ? :'thread_markdown.hidden_until_voted' : :'poll_common_action_panel.results_hidden_until_closed'
+          h3 { plain t(key) }
         end
       end
     end

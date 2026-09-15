@@ -114,7 +114,7 @@ class Views::Topics::Show < Views::Application::Layout
     ).pluck(:poll_id)
 
     hidden_poll_ids = polls.reject do |poll|
-      poll.show_results?(voted: voted_poll_ids.include?(poll.id))
+      poll.results_visible?(voted: voted_poll_ids.include?(poll.id))
     end.map(&:id)
 
     Stance.where(poll_id: hidden_poll_ids).where.not(participant_id: @recipient.id).select(:id)
