@@ -47,6 +47,14 @@ function LoomioVueResolver() {
 }
 
 export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    include: ['tests/component/**/*.test.js'],
+    server: {
+      deps: {inline: ['vuetify']},
+    },
+  },
+
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],

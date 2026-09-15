@@ -22,6 +22,7 @@
     "serve": "vite",
     "build": "vite build",
     "vv": "vite --version",
+    "test:component": "vitest run",
     "test:unit": "node --test tests/unit/*.test.mjs",
     "test": "nightwatch --retries 3 --headless"
   },
@@ -85,7 +86,9 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
+    "@vue/test-utils": "^2.4.6",
     "@vitejs/plugin-vue": "^6.0.8",
+    "jsdom": "^26.1.0",
     "nightwatch": "^3.15.0",
     "pagefind": "1.5.2",
     "pug": "latest",
@@ -93,6 +96,7 @@
     "vite": "8.3.0",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
+    "vitest": "^5.0.0",
     "yaml": "^2.9.1"
   },
   "overrides": {

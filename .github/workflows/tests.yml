@@ -85,6 +85,7 @@ jobs:
         cd vue
         npm ci
         npm run test:unit
+        npm run test:component
         npm run build
     - name: run e2es
       env:

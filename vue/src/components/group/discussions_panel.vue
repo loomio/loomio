@@ -1,242 +1,148 @@
-<script lang="js">
-import Records            from '@/shared/services/records';
-import AbilityService     from '@/shared/services/ability_service';
-import EventBus           from '@/shared/services/event_bus';
-import PageLoader         from '@/shared/services/page_loader';
+<script setup>
+import { computed, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import Records from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import EventBus from '@/shared/services/event_bus';
+import PageLoader from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
-import { mdiMagnify } from '@mdi/js';
+import { identity, pickBy } from 'lodash-es';
 import TagsFilterMenu from '@/components/tags/filter_menu';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  components: { TagsFilterMenu },
-  mixins: [WatchRecords, UrlFor],
-  created() {
-    this.watchRecords({
-      key: this.$route.params.key,
-      collections: ['topics', 'groups', 'memberships'],
-      query: this.query
-    });
+const { group } = defineProps({
+  group: {type: Object, required: true}
+});
+const route = useRoute();
+const router = useRouter();
+const { t } = useI18n();
+const { watchRecords } = useWatchRecords();
+const topics = ref([]);
+const loader = ref(null);
+const isMember = ref(false);
+const dummyQuery = ref(null);
+const per = 25;
+const page = computed({
+  get: () => parseInt(route.query.page) || 1,
+  set: value => router.replace({query: {...route.query, page: value}})
+});
+const totalPages = computed(() => Math.max(1, Math.ceil((loader.value?.total || 0) / per)));
+const loading = computed(() => loader.value?.loading || false);
+const noThreads = computed(() => !loading.value && topics.value.length === 0);
+const noThreadsMatchingFilters = computed(() => noThreads.value && group.discussionsCount > 0);
+const canViewPrivateContent = computed(() => AbilityService.canViewPrivateContent(group));
+const canStartThread = computed(() => AbilityService.canStartThread(group));
+const unreadCount = computed(() => topics.value.filter(topic => topic.isUnread()).length);
+const suggestLockedThreads = computed(() =>
+  !['locked', 'unread', 'all'].includes(String(route.query.t)) &&
+  group.discussionsCount > (loader.value?.total || 0)
+);
 
-    this.refresh();
-    EventBus.$on('signedIn', this.hardRefresh);
-    EventBus.$on('joinedGroup', this.hardRefresh);
-  },
+function mergeQuery(values) {
+  return {query: pickBy({...route.query, ...values}, identity)};
+}
 
-  beforeDestroy() {
-    EventBus.$off('signedIn', this.hardRefresh);
-    EventBus.$off('joinedGroup', this.hardRefresh);
-  },
+function routeQuery(values) {
+  router.replace(mergeQuery(values));
+}
 
-  data() {
-    return {
-      group: null,
-      topics: [],
-      loader: null,
-      isMember: false,
-      per: 25,
-      dummyQuery: null,
-      mdiMagnify
-    };
-  },
+function selectTag(tag) {
+  routeQuery({tag, page: null});
+}
 
-  methods: {
-    routeQuery(o) {
-      this.$router.replace(this.mergeQuery(o));
-    },
-
-    selectTag(tag) {
-      this.routeQuery({tag, page: null});
-    },
-
-    hardRefresh() {
-      Records.groups.remote.fetchById(this.$route.params.key).then(this.refresh);
-    },
-
-    refresh() {
-      Records.groups.findOrFetch(this.$route.params.key).then(group => {
-        this.group = group;
-        this.isMember = !!Session.user().membershipFor(this.group);
-
-        this.loader = new PageLoader({
-          path: 'topics',
-          order: 'lastActivityAt',
-          params: {
-            group_id: this.group.id,
-            exclude_types: 'reaction',
-            topicable_type: 'Discussion',
-            subgroups: 'mine',
-            filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
-            tags: this.$route.query.tag,
-            per: this.per
-          }
-        });
-
-        this.fetch();
-        this.query();
-      }).catch(() => {
-        // GroupPage owns route-level group fetch error handling.
-      });
-    },
-
-    query() {
-      if (!this.group) { return }
-
-      const groupIds = this.group.organisationIds();
-
-      let pinnedTopics = [];
-      if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
-        pinnedTopics = Records.topics.collection.chain().find({
-          groupId: {$in: groupIds},
-          topicableType: 'Discussion',
-          pinnedAt: {$ne: null}
-        }).simplesort('pinnedAt', true).data();
-      }
-
-      let chain = Records.topics.collection.chain().find({
-        groupId: {$in: groupIds},
-        topicableType: 'Discussion',
-        id: {$nin: pinnedTopics.map(t => t.id)}
-      }).simplesort('lastActivityAt', true);
-
-      switch (this.$route.query.t) {
-        case 'unread':
-          chain = chain.where(topic => topic.isUnread());
-          break;
-        case 'locked':
-          chain = chain.find({lockedAt: {$ne: null}});
-          break;
-        case 'all':
-          break;
-        default: // null or 'unlocked' — show only unlocked threads
-          chain = chain.find({lockedAt: null});
-          break;
-      }
-
-      if (this.$route.query.tag) {
-        const tagName = this.$route.query.tag;
-        chain = chain.where(topic => topic.tags.includes(tagName));
-      }
-
-      let topics = [];
-      if (this.loader.pageWindow[this.page]) {
-        if (this.page === 1) {
-          chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
-        } else {
-          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
-        }
-        topics = chain.data();
-      }
-      this.topics = pinnedTopics.concat(topics);
-
-      EventBus.$emit('currentComponent', {
-        page: 'groupPage',
-        title: this.group.name,
-        group: this.group,
-        search: {
-          placeholder: this.$t('navbar.search_discussions_in_group', {name: this.group.parentOrSelf().name})
-        }
-      });
-    },
-
-    fetch() {
-      this.loader.fetch(this.page).then(this.query);
-    },
-
-    filterName(filter) {
-      switch (filter) {
-        case 'unread': return 'discussions_panel.unread';
-        case 'locked': return 'discussions_panel.locked';
-        case 'all': return 'discussions_panel.all';
-        default:
-          return 'discussions_panel.unlocked';
-      }
-    },
-
-    openSearchModal() {
-      let initialOrgId = null;
-      let initialGroupId = null;
-
-      if (this.group.isParent()) {
-        initialOrgId = this.group.id;
-      } else {
-        initialOrgId = this.group.parentId;
-        initialGroupId = this.group.id;
-      }
-
-      EventBus.$emit('openModal', {
-        component: 'SearchModal',
-        persistent: false,
-        maxWidth: 900,
-        props: {
-          initialOrgId,
-          initialGroupId,
-          initialQuery: this.dummyQuery
-        }
-      }
-      );
-    }
-  },
-
-  watch: {
-    '$route.params': 'refresh',
-    '$route.query': 'refresh',
-    'page'() {
-      this.fetch();
-      this.query();
-    }
-  },
-
-  computed: {
-    page: {
-      get() { return parseInt(this.$route.query.page) || 1; },
-      set(val) {
-        return this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
-      }
-    },
-
-    totalPages() {
-      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
-    },
-
-    loading() {
-      return this.loader.loading;
-    },
-
-    noThreads() {
-      return !this.loading && this.topics.length === 0
-    },
-
-    noThreadsMatchingFilters() {
-      return this.noThreads && this.group.discussionsCount > 0;
-    },
-
-    canViewPrivateContent() {
-      return AbilityService.canViewPrivateContent(this.group);
-    },
-
-    canStartThread() {
-      return AbilityService.canStartThread(this.group);
-    },
-
-    isLoggedIn() {
-      return Session.isSignedIn();
-    },
-
-    unreadCount() {
-      return this.topics.filter(topic => topic.isUnread()).length;
-    },
-
-    suggestLockedThreads() {
-      return !['locked', 'unread', 'all'].includes(String(this.$route.query.t)) &&
-        this.group && this.loader &&
-        this.group.discussionsCount > this.loader.total;
-    }
+function query() {
+  const groupIds = group.organisationIds();
+  let pinnedTopics = [];
+  if (page.value === 1 && !route.query.tag && !['locked', 'unread'].includes(route.query.t)) {
+    pinnedTopics = Records.topics.collection.chain().find({
+      groupId: {$in: groupIds},
+      topicableType: 'Discussion',
+      pinnedAt: {$ne: null}
+    }).simplesort('pinnedAt', true).data();
   }
-};
 
+  let chain = Records.topics.collection.chain().find({
+    groupId: {$in: groupIds},
+    topicableType: 'Discussion',
+    id: {$nin: pinnedTopics.map(topic => topic.id)}
+  }).simplesort('lastActivityAt', true);
+
+  switch (route.query.t) {
+    case 'unread': chain = chain.where(topic => topic.isUnread()); break;
+    case 'locked': chain = chain.find({lockedAt: {$ne: null}}); break;
+    case 'all': break;
+    default: chain = chain.find({lockedAt: null});
+  }
+
+  if (route.query.tag) chain = chain.where(topic => topic.tags.includes(route.query.tag));
+
+  let pageTopics = [];
+  if (loader.value.pageIds[page.value]) {
+    pageTopics = chain.find({id: {$in: loader.value.pageIds[page.value]}}).data();
+  }
+  topics.value = pinnedTopics.concat(pageTopics);
+
+  EventBus.$emit('currentComponent', {
+    page: 'groupPage',
+    title: group.name,
+    group,
+    search: {placeholder: t('navbar.search_discussions_in_group', {name: group.parentOrSelf().name})}
+  });
+}
+
+function fetch() {
+  return loader.value.fetch(page.value).then(query);
+}
+
+function refresh() {
+  isMember.value = !!Session.user().membershipFor(group);
+  loader.value = new PageLoader({
+    path: 'topics',
+    order: 'lastActivityAt',
+    params: {
+      group_id: group.id,
+      exclude_types: 'reaction',
+      topicable_type: 'Discussion',
+      subgroups: 'mine',
+      filter: route.query.t === 'all' ? undefined : (route.query.t || 'unlocked'),
+      tags: route.query.tag,
+      per
+    }
+  });
+  fetch();
+  query();
+}
+
+function filterName(filter) {
+  switch (filter) {
+    case 'unread': return 'discussions_panel.unread';
+    case 'locked': return 'discussions_panel.locked';
+    case 'all': return 'discussions_panel.all';
+    default: return 'discussions_panel.unlocked';
+  }
+}
+
+function openSearchModal() {
+  EventBus.$emit('openModal', {
+    component: 'SearchModal',
+    persistent: false,
+    maxWidth: 900,
+    props: {
+      initialOrgId: group.isParent() ? group.id : group.parentId,
+      initialGroupId: group.isParent() ? null : group.id,
+      initialQuery: dummyQuery.value
+    }
+  });
+}
+
+refresh();
+watchRecords({
+  key: route.params.key,
+  collections: ['topics', 'groups', 'memberships'],
+  query
+});
+watch(() => route.query, refresh);
 </script>
 
 <template lang="pug">

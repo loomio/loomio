@@ -82,6 +82,37 @@ module.exports = {
     page.expectNoElement('.group-page__name')
   },
 
+  'loads every routed panel from the group page': (test) => {
+    page = pageHelper(test)
+
+    const expectOneGroupFetch = () => {
+      test.execute(() => performance.getEntriesByType('resource').filter(entry => {
+        return new URL(entry.name).pathname.match(/^\/api\/v1\/groups\/[^/]+$/)
+      }).length, [], ({value}) => test.assert.strictEqual(value, 1, 'loads the group once'))
+    }
+
+    const openPanel = (path, selector) => {
+      test.execute((panelPath) => {
+        const parts = window.location.pathname.split('/').filter(Boolean)
+        const groupPath = parts[0] === 'g' ? `/g/${parts[1]}` : `/${parts[0]}`
+        window.location.href = `${groupPath}/${panelPath}`
+      }, [path])
+      test.waitForElementVisible(selector, 20000)
+      page.expectText('.group-page__name', 'Dirty Dancing Shoes')
+      expectOneGroupFetch()
+    }
+
+    page.loadPath('setup_group')
+    page.expectElement('.discussions-panel')
+    expectOneGroupFetch()
+    openPanel('polls', '.polls-panel')
+    openPanel('members', '.members-panel')
+    openPanel('files', '.group-files-panel')
+    openPanel('tags', '.tags-panel')
+    openPanel('membership_requests', '.requests-panel')
+    openPanel('emails', '.group-emails-panel')
+  },
+
   'filters_group_polls_by_status_type_and_tag': (test) => {
     page = pageHelper(test)
 
