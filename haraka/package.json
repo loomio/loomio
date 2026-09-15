@@ -21,14 +21,15 @@
     "test": "node --test"
   },
   "dependencies": {
-    "haraka": "3.3.3",
+    "haraka": "3.3.4",
     "haraka-plugin-mailauth": "1.1.1"
   },
   "overrides": {
     "haraka-plugin-mailauth": {
       "mailauth": "4.13.3"
     },
-    "nodemailer": "9.0.3",
+    "joi": "18.2.9",
+    "nodemailer": "9.1.1",
     "undici": "7.29.0"
   }
 }
