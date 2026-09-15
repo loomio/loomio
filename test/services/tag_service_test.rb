@@ -56,6 +56,29 @@ class TagServiceTest < ActiveSupport::TestCase
     assert_equal [], @group.tags.find_by!(name: 'planned').used_group_ids
   end
 
+  test "update_group_and_org_tags updates used group ids in one statement" do
+    @group.topics.update_all(tags: ['proposal', 'planned'])
+    @subgroup.topics.update_all(tags: ['proposal', 'urgent'])
+    Tag.create!(group: @group, name: 'unused', color: '#abcdef')
+
+    update_queries = []
+    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |_name, _started, _finished, _id, payload|
+      update_queries << payload[:sql] if payload[:sql].match?(/UPDATE tags\s+SET used_group_ids/)
+    end
+
+    begin
+      TagService.update_group_and_org_tags(@subgroup.id)
+    ensure
+      ActiveSupport::Notifications.unsubscribe(subscriber)
+    end
+
+    assert_equal 1, update_queries.length
+    assert_equal [@group.id, @subgroup.id].sort, @group.tags.find_by!(name: 'proposal').used_group_ids
+    assert_equal [@group.id], @group.tags.find_by!(name: 'planned').used_group_ids
+    assert_equal [@subgroup.id], @group.tags.find_by!(name: 'urgent').used_group_ids
+    assert_equal [], @group.tags.find_by!(name: 'unused').used_group_ids
+  end
+
   test "update_group_and_org_tags normalizes whitespace and dedupes names case-insensitively" do
     @group.topics.update_all(tags: ['  Community   Energy  ', 'community energy'])
 
