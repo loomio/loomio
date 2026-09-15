@@ -431,12 +431,7 @@ class Poll < ApplicationRecord
   # Result data for until-vote polls may be sent to the client, which owns that
   # presentation rule. Until-closed polls remain protected at the backend.
   def results_available?
-    !!case hide_results
-      when 'until_closed'
-        closed_at
-      else
-        true
-      end
+    hide_results != 'until_closed' || closed_at.present?
   end
 
   # Server-rendered output must apply the recipient-specific until-vote rule.
