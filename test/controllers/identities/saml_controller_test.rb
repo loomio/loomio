@@ -4,6 +4,8 @@ class Identities::SamlControllerTest < ActionController::TestCase
   setup do
     @saved_env = {}
     %w[
+      SAML_APP_KEY
+      SAML_IDP_METADATA
       SAML_IDP_METADATA_URL
       SAML_ISSUER
       SAML_ATTR_EMAIL
@@ -15,6 +17,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
       @saved_env[key] = ENV[key]
       ENV.delete(key)
     end
+    ENV['SAML_APP_KEY'] = '1'
     ENV['SAML_IDP_METADATA_URL'] = 'https://saml.provider.com/metadata'
     ENV['SAML_ISSUER'] = 'https://loomio.test/saml/metadata'
 

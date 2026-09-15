@@ -524,16 +524,20 @@ Rails.application.routes.draw do
 
 
   Identity::PROVIDERS.each do |provider|
-    scope provider do
-      get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
-      get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
-      delete '/',                           to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+    constraints ->(_request) { ENV["#{provider.upcase}_APP_KEY"].present? } do
+      scope provider do
+        get :oauth,                         to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
+        get :authorize,                     to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
+        delete '/',                         to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+      end
     end
   end
 
-  scope :saml do
-    post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
-    get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
+  constraints ->(_request) { ENV['SAML_APP_KEY'].present? } do
+    scope :saml do
+      post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
+      get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
+    end
   end
 
   get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
