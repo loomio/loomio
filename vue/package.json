@@ -93,7 +93,7 @@
     "vite": "8.2.2",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "yaml": "^2.9.0"
+    "yaml": "^2.9.1"
   },
   "overrides": {
     "form-data": "^4.0.6",
