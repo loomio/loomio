@@ -12,7 +12,6 @@ import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 import { useTheme } from 'vuetify';
 
 import SidebarPanel from '@/components/sidebar/panel';
-import MobileNavigation from '@/components/common/mobile_navigation';
 
 const themeNameNormalized = (name) => ['dark', 'darkBlue'].includes(name) ? 'dark' : 'light';
 const themeColorsApply = (theme, name, overrides) => {
@@ -30,7 +29,7 @@ const themeColorsApply = (theme, name, overrides) => {
 };
 
 export default {
-  components: { SidebarPanel, MobileNavigation },
+  components: { SidebarPanel },
   mixins: [AuthModalMixin],
 
   data() {
@@ -126,7 +125,6 @@ v-app.app-is-booted(:style="themeBackgroundStyle")
   system-notice
   sidebar-panel
   navbar
-  mobile-navigation
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer

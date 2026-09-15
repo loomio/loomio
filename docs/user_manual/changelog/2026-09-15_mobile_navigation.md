@@ -1,0 +1,1 @@
+On mobile devices, Search and Notifications are available from the sidebar rather than a bottom navigation bar. The app bar provides the sidebar button on the left and the thread menu on the right when viewing a thread, and unread notifications appear as a badge on the sidebar button.

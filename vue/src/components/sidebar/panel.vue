@@ -26,6 +26,7 @@ import { mdiCog } from '@mdi/js';
 const router = useRouter();
 const route = useRoute();
 const display = useDisplay();
+const mobile = display.smAndDown;
 const theme = useTheme();
 
 const user = ref(Session.user());
@@ -36,6 +37,7 @@ const group = ref(null);
 const organizations = ref([]);
 const unreadTopicCounts = ref({});
 const pollsToVoteOnCount = ref(0);
+const unreadNotifications = ref(0);
 const openGroups = ref([]);
 const openCounts = ref({});
 const showSettings = ref(false);
@@ -62,6 +64,16 @@ const showTemplateGallery = computed(() => AppConfig.features.app.template_galle
 
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
+};
+
+const openSearchModal = () => {
+  open.value = false;
+  EventBus.$emit('openModal', {
+    component: 'SearchModal',
+    persistent: false,
+    maxWidth: 900,
+    props: {group: group.value}
+  });
 };
 
 const updateSessionState = () => {
@@ -111,6 +123,10 @@ const fetchData = () => {
 
 const updateBookmarks = () => {
   bookmarksCount.value = Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length;
+};
+
+const updateNotifications = () => {
+  unreadNotifications.value = Records.notifications.find({viewed: {$ne: true}}).length;
 };
 
 
@@ -171,6 +187,11 @@ watchRecords({
   query: () => { updateBookmarks() }
 });
 
+watchRecords({
+  collections: ['notifications'],
+  query: () => { updateNotifications() }
+});
+
 let hasFetched = false;
 const fetchOnce = () => {
   if (hasFetched || !Session.isSignedIn()) return;
@@ -219,6 +240,14 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
 
     v-divider
     v-list(nav density="compact" :lines="false")
+      v-list-item.sidebar__search(v-if="mobile" @click="openSearchModal" :title="$t('common.action.search')")
+        template(v-slot:prepend)
+          common-icon(name="mdi-magnify")
+      v-list-item.sidebar__notifications(v-if="mobile" to="/notifications" :title="$t('notifications.header')")
+        template(v-slot:prepend)
+          v-badge(color="primary" :content="unreadNotifications" v-if="unreadNotifications")
+            common-icon(name="mdi-bell-outline")
+          common-icon(v-else name="mdi-bell-outline")
       v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.dashboard')")
       v-list-item(to="/dashboard/polls_to_vote_on")
         v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount}) }}

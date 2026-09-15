@@ -6,13 +6,15 @@ import AuthModalMixin      from '@/mixins/auth_modal';
 import Session             from '@/shared/services/session';
 import FormatDate from '@/mixins/format_date';
 import SidebarTips from '@/components/sidebar/tips';
+import WatchRecords from '@/mixins/watch_records';
+import Records from '@/shared/services/records';
 import { mergeProps } from 'vue'
 
 import { last }            from 'lodash-es';
 
 export default {
   components: { SidebarTips },
-  mixins: [ AuthModalMixin, FormatDate ],
+  mixins: [ AuthModalMixin, FormatDate, WatchRecords ],
   data() {
     return {
       title: AppConfig.theme.site_name,
@@ -25,6 +27,7 @@ export default {
       appBarScrolled: false,
       page: null,
       highlightTips: true,
+      unreadNotifications: 0,
       mergeProps: mergeProps
     };
   },
@@ -32,6 +35,9 @@ export default {
   methods: {
     toggleSidebar() { EventBus.$emit('toggleSidebar'); },
     toggleTopicNav() { EventBus.$emit('toggleTopicNav'); },
+    refreshNotifications() {
+      if (Session.isSignedIn()) Records.notifications.fetchNotifications();
+    },
     signIn() { this.openAuthModal(); },
     last,
     openSearchModal() {
@@ -49,6 +55,15 @@ export default {
   },
 
   mounted() {
+    this.refreshNotifications();
+    this.watchRecords({
+      collections: ['notifications'],
+      query: store => {
+        this.unreadNotifications = store.notifications.find({viewed: {$ne: true}}).length;
+      }
+    });
+    window.addEventListener('loomio:native-notification', this.refreshNotifications);
+
     setTimeout(() => {
       this.highlightTips = false;
     }, 5000)
@@ -58,6 +73,7 @@ export default {
 
     EventBus.$on('signedIn', user => {
       this.isLoggedIn = true;
+      this.refreshNotifications();
     });
 
     EventBus.$on('content-title-visible', val => {
@@ -85,6 +101,10 @@ export default {
         });
       }
     });
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('loomio:native-notification', this.refreshNotifications);
   },
 
   computed: {
@@ -115,9 +135,11 @@ v-app-bar.lmo-no-print(
   :class="{'navbar--scrolled': appBarScrolled}"
   :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
 )
-  v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
-    common-icon(name="mdi-menu")
-  v-app-bar-title(@click="scrollTo('#context')")
+  v-app-bar-nav-icon.navbar__sidenav-toggle(v-if="isLoggedIn" @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
+    v-badge(color="primary" :content="unreadNotifications" v-if="$vuetify.display.smAndDown && unreadNotifications")
+      common-icon(name="mdi-menu")
+    common-icon(v-else name="mdi-menu")
+  v-app-bar-title(:class="{'ms-1': $vuetify.display.smAndDown}" @click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
     sidebar-tips(v-if="!user.experiences.hideOnboarding")
