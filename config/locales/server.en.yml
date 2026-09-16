@@ -1,5 +1,7 @@
 ---
 en:
+  error:
+    access_denied: You do not have permission to do that
   thread_markdown:
     poll: Poll
     no_activity: No comments, polls, votes, or outcomes yet
