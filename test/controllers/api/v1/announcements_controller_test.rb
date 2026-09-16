@@ -501,6 +501,22 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
+  test "topic notification history keeps polymorphic subject lookups in indexed branches" do
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      queries << payload[:sql] unless payload[:name].in?([ "SCHEMA", "TRANSACTION" ]) || payload[:cached]
+    end
+
+    get :users_notified_count, params: { topic_id: @discussion.topic_id }
+
+    assert_response :success
+    notification_query = queries.find { |sql| sql.include?("UNION ALL") && sql.include?("notifications") }
+    assert notification_query, "expected notification subjects to use UNION ALL branches"
+    refute_match(/subject_type[^)]* OR /, notification_query)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   test "anonymous poll history and counts do not expose closing-reminder recipients" do
     member = users(:user)
     poll = create_test_poll(anonymous: true)

@@ -31,6 +31,37 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notifications.each { |notification| assert_includes ids, notification.id }
   end
 
+  test "index preloads direct notification topic paths" do
+    discussion = discussions(:discussion)
+    poll = PollService.create(params: {
+      title: "Notification preload poll",
+      poll_type: "poll",
+      group_id: groups(:group).id,
+      closing_at: 5.days.from_now,
+      poll_option_names: [ "Agree", "Disagree" ]
+    }, actor: @admin)
+    comment = comments(:public_discussion_comment)
+    [ discussion, discussions(:public_discussion), poll, comment ].each do |subject|
+      3.times { create_notification(user: @user, actor: @admin, subject: subject) }
+    end
+
+    record_query_counts = Hash.new(0)
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      sql = payload[:sql].to_s
+      if match = sql.match(/SELECT "(topics|groups|discussions|polls|comments)"\.\*/)
+        record_query_counts[match[1]] += 1
+      end
+    end
+
+    sign_in @user
+    get :index
+
+    assert_response :success
+    assert record_query_counts.values.all? { |count| count <= 4 }, record_query_counts.inspect
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
   test "index excludes notifications whose topic is not accessible" do
     notification = create_notification(user: @user, actor: users(:alien), subject: discussions(:alien_discussion))
     sign_in @user

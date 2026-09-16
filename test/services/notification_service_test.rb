@@ -18,6 +18,19 @@ class NotificationServiceTest < ActiveSupport::TestCase
     assert_predicate delivery.reload, :viewed?
   end
 
+  test "mark_as_read finds direct and topic item notifications through indexed subject branches" do
+    _direct_notification, direct_delivery = create_notification_delivery(user: @user, subject: @discussion)
+    _topic_item_notification, topic_item_delivery = create_notification_delivery(user: @user, subject: @topic_item)
+
+    MessageChannelService.stub(:publish_models, ->(*) { }) do
+      NotificationService.mark_as_read(@discussion.class.to_s, @discussion.id, @user.id)
+    end
+
+    assert_predicate direct_delivery.reload, :viewed?
+    assert_predicate topic_item_delivery.reload, :viewed?
+    assert_includes Notification.about(@discussion).to_sql, "UNION"
+  end
+
   test "mark_as_read does not touch notifications for a different itemable" do
     other_discussion = discussions(:public_discussion)
     _notification, delivery = create_notification_delivery(user: @user, subject: other_discussion)
@@ -84,5 +97,4 @@ class NotificationServiceTest < ActiveSupport::TestCase
     )
     [ notification, delivery ]
   end
-
 end

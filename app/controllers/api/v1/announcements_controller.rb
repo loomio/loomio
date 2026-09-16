@@ -168,13 +168,23 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       outcome_ids = Outcome.where(poll_id: poll_ids).pluck(:id)
       topic_items = TopicItem.where(topic_id: target_model.id)
       comment_ids = topic_items.where(itemable_type: "Comment").pluck(:itemable_id)
-      scope.where(<<~SQL.squish, d: discussion_ids, p: poll_ids, o: outcome_ids, c: comment_ids, ti: topic_items.select(:id))
-        (subject_type = 'Discussion' AND subject_id IN (:d)) OR
-        (subject_type = 'Poll'       AND subject_id IN (:p)) OR
-        (subject_type = 'Outcome'    AND subject_id IN (:o)) OR
-        (subject_type = 'Comment'    AND subject_id IN (:c)) OR
-        (subject_type = 'TopicItem'  AND subject_id IN (:ti))
-      SQL
+      subject_ids_by_type = {
+        "Discussion" => discussion_ids,
+        "Poll" => poll_ids,
+        "Outcome" => outcome_ids,
+        "Comment" => comment_ids,
+        "TopicItem" => topic_items.select(:id)
+      }
+      notification_id_queries = subject_ids_by_type.map do |subject_type, subject_ids|
+        scope.where(subject_type: subject_type, subject_id: subject_ids).select(:id)
+      end
+      notification_ids = notification_id_queries.map(&:arel).reduce do |left, right|
+        Arel::Nodes::UnionAll.new(left, right)
+      end
+
+      # Separate branches preserve the subject index. A single OR across the
+      # polymorphic types makes PostgreSQL scan the whole notifications table.
+      scope.where(Notification.arel_table[:id].in(notification_ids))
     else
       scope.merge(Notification.about(target_model))
     end

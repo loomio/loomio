@@ -21,19 +21,25 @@ class Notification < ApplicationRecord
     subject.is_a?(TopicItem) ? subject.itemable : subject
   end
 
-  def self.about_identity(subject_type, subject_id)
+  def self.about(record_or_type, record_id = nil)
+    subject_type, subject_id = if record_id
+      [ record_or_type, record_id ]
+    else
+      [ record_or_type.class.base_class.name, record_or_type.id ]
+    end
     topic_item_ids = TopicItem.where(
       itemable_type: subject_type,
       itemable_id: subject_id
     ).select(:id)
+    direct_ids = where(subject_type: subject_type, subject_id: subject_id).select(:id)
+    topic_item_notification_ids = where(
+      subject_type: "TopicItem",
+      subject_id: topic_item_ids
+    ).select(:id)
 
-    where(subject_type: subject_type, subject_id: subject_id).or(
-      where(subject_type: "TopicItem", subject_id: topic_item_ids)
-    )
-  end
-
-  def self.about(record)
-    about_identity(record.class.base_class.name, record.id)
+    # Keep the indexed subject lookups as separate UNION branches. PostgreSQL
+    # otherwise turns the equivalent OR into a full notifications table scan.
+    where(arel_table[:id].in(direct_ids.arel.union(topic_item_notification_ids.arel)))
   end
 
   def viewed_for?(recipient_id)

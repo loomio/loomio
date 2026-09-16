@@ -40,7 +40,7 @@ class NotificationService
   def self.mark_as_read(itemable_type, itemable_id, actor_id)
     deliveries = NotificationDelivery
       .where(
-        notification_id: Notification.about_identity(itemable_type, itemable_id).select(:id),
+        notification_id: Notification.about(itemable_type, itemable_id).select(:id),
         channel: "in_app",
         recipient_type: "User",
         recipient_id: actor_id,
