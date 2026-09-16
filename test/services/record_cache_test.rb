@@ -1,6 +1,26 @@
 require 'test_helper'
 
 class RecordCacheTest < ActiveSupport::TestCase
+  EXPECTED_LOADERS = {
+    'Translation' => RecordCache::Loaders::Translation,
+    'Topic' => RecordCache::Loaders::Topic,
+    'Discussion' => RecordCache::Loaders::Discussion,
+    'Reaction' => RecordCache::Loaders::Reaction,
+    'Notification' => RecordCache::Loaders::Notification,
+    'Group' => RecordCache::Loaders::Group,
+    'Membership' => RecordCache::Loaders::Membership,
+    'Poll' => RecordCache::Loaders::Poll,
+    'Outcome' => RecordCache::Loaders::Outcome,
+    'Stance' => RecordCache::Loaders::Stance,
+    'User' => RecordCache::Loaders::User,
+    'TopicReader' => RecordCache::Loaders::Reader,
+    'DiscussionReader' => RecordCache::Loaders::Reader,
+    'Comment' => RecordCache::Loaders::Comment,
+    'MembershipRequest' => RecordCache::Loaders::MembershipRequest,
+    'SearchResult' => RecordCache::Loaders::SearchResult,
+    'TopicItem' => RecordCache::Loaders::TopicItem
+  }.freeze
+
   def capture_sql
     queries = []
     subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |_name, _started, _finished, _id, payload|
@@ -20,6 +40,39 @@ class RecordCacheTest < ActiveSupport::TestCase
 
     assert_empty @cache.scope
     assert_empty queries
+  end
+
+  test 'every supported root record type has an explicit loader' do
+    assert_equal EXPECTED_LOADERS, RecordCache::LOADERS
+
+    EXPECTED_LOADERS.each do |class_name, loader|
+      next unless Object.const_defined?(class_name)
+
+      assert_equal loader, RecordCache.loader_for(class_name.constantize.allocate)
+    end
+  end
+
+  test 'unknown record types retain no-op loading behavior' do
+    record = Struct.new(:id).new(1)
+
+    assert_equal RecordCache::Loaders::Noop, RecordCache.loader_for(record)
+  end
+
+  test 'simple loaders preserve their cache contracts' do
+    cache = RecordCache.new
+    translation = Translation.new(id: 10)
+    notification = Notification.new(actor_id: 20)
+    reader = TopicReader.new(user_id: 30)
+    request = MembershipRequest.new(requestor_id: 40, responder_id: 41)
+
+    RecordCache::Loaders::Translation.new(cache: cache, records: [translation]).load
+    RecordCache::Loaders::Notification.new(cache: cache, records: [notification]).load
+    RecordCache::Loaders::Reader.new(cache: cache, records: [reader]).load
+    RecordCache::Loaders::MembershipRequest.new(cache: cache, records: [request]).load
+    RecordCache::Loaders::User.new(cache: cache, records: [users(:admin)]).load
+
+    assert_equal translation, cache.scope[:translations_by_id][translation.id]
+    assert_equal [20, 30, 40, 41], cache.user_ids
   end
 
   test 'fetch returns cached nil without yielding' do
@@ -205,6 +258,12 @@ class RecordCacheTest < ActiveSupport::TestCase
 
     assert_equal topic_item, cache.scope[:topic_items_by_id][topic_item.id]
     assert_equal discussion, cache.scope[:discussions_by_id][discussion.id]
+  end
+
+  test 'topic item subclasses use the topic item loader' do
+    item = TopicItems::PollClosedByUser.new
+
+    assert_equal RecordCache::Loaders::TopicItem, RecordCache.loader_for(item)
   end
 
   test 'for topic collection caches polymorphic topicables without loading associations' do
