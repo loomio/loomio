@@ -42,6 +42,9 @@ export default {
         h.key === 'user' || this.visible_tags.includes(h.title)
       );
     },
+    visiblePerUserRows() {
+      return this.delegates_only ? this.per_user_rows.filter(row => row.delegate) : this.per_user_rows;
+    },
     tagChartData() {
       if (!this.report_data) return { labels: [], datasets: [] };
       const TAG_COLORS = [
@@ -154,6 +157,7 @@ export default {
       ],
       tags_rows: [],
       tag_threads_authored_only: false,
+      delegates_only: false,
       tag_threads_by_user_rows: [],
       tag_threads_by_user_headers: [],
       visible_tags: [],
@@ -170,6 +174,14 @@ export default {
         {title: "Reactions", key: "reactions"},
       ],
       per_user_rows: [],
+      voting_record_headers: [
+        {title: "User", key: "user"},
+        {title: this.$t('report.country'), key: "country"},
+        {title: this.$t('report.votes_issued'), key: "votes_issued"},
+        {title: this.$t('report.votes_cast'), key: "votes_cast"},
+        {title: this.$t('report.votes_missed'), key: "votes_missed"},
+        {title: this.$t('report.all_votes_cast'), key: "all_votes_cast"},
+      ],
       users_per_country_rows: [],
       users_per_country_headers: [
         {title: this.$t('report.country'), key: 'country'},
@@ -222,7 +234,10 @@ export default {
       downloadCsv(this.tag_threads_by_user_headers, this.tag_threads_by_user_rows, 'tag_threads_by_user.csv');
     },
     downloadPerUserCsv() {
-      downloadCsv(this.per_user_headers, this.per_user_rows, 'activity_per_user.csv');
+      downloadCsv(this.per_user_headers, this.visiblePerUserRows, 'activity_per_user.csv');
+    },
+    downloadVotingRecordCsv() {
+      downloadCsv(this.voting_record_headers, this.visiblePerUserRows, 'voting_record_per_user.csv');
     },
     downloadUsersPerCountryCsv() {
       downloadCsv(this.users_per_country_headers, this.users_per_country_rows, 'users_per_country.csv');
@@ -343,12 +358,17 @@ export default {
       this.per_user_rows = data.users.map(user => ({
         user: user.name,
         country: user.country,
-        threads: data.discussions_per_user[user.id] || 0,
-        comments: data.comments_per_user[user.id] || 0,
-        polls: data.polls_per_user[user.id] || 0,
-        votes: data.stances_per_user[user.id] || 0,
-        outcomes: data.outcomes_per_user[user.id] || 0,
-        reactions: data.reactions_per_user[user.id] || 0,
+        delegate: user.delegate,
+        threads: user.threads,
+        comments: user.comments,
+        polls: user.polls,
+        votes: user.votes,
+        votes_issued: user.votes_issued,
+        votes_cast: user.votes_cast,
+        votes_missed: user.votes_missed,
+        all_votes_cast: user.all_votes_cast ? this.$t('report.yes') : this.$t('report.no'),
+        outcomes: user.outcomes,
+        reactions: user.reactions,
       }));
     },
     applyCountryData(data) {
@@ -393,7 +413,7 @@ export default {
 
 <template lang="pug">
 v-main
-  v-container.report-page.max-width-900
+  v-container.report-page
     h1.text-headline-large.mb-8(v-t="'group_page.participation_report'")
 
     v-select(
@@ -456,9 +476,9 @@ v-main
             td.text-center {{polls_count}}
             td.text-center {{polls_with_outcomes_count}}
 
-      bar-chart.mt-8(:chart-data="chartData")
+      bar-chart.report-activity-chart.mt-8(:chart-data="chartData")
 
-      v-card.mt-8(:title="$t('report.tags_per_interval', {interval: interval})")
+      v-card.report-tags-per-interval.mt-8(:title="$t('report.tags_per_interval', {interval: interval})")
         v-select.mx-4.mt-2(
           v-model="visible_tags"
           :label="$t('report.show_tags')"
@@ -534,25 +554,59 @@ v-main
           :search="user_name_filter"
         )
 
-      v-card.mt-8(:title="$t('report.actions_per_user')")
+      v-card.report-actions-per-user.mt-8(:title="$t('report.actions_per_user')")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadPerUserCsv")
             span(v-t="'report.download_csv'")
-        v-text-field.mx-4.mb-2(
-          v-model="user_name_filter"
-          :label="$t('report.filter_by_name')"
-          density="compact"
-          hide-details
-          clearable
-        )
+        .d-flex.align-center.flex-wrap.mx-4.mb-2
+          v-text-field.flex-grow-1(
+            v-model="user_name_filter"
+            :label="$t('report.filter_by_name')"
+            density="compact"
+            hide-details
+            clearable
+          )
+          v-checkbox.flex-grow-0.ml-4(
+            v-model="delegates_only"
+            color="primary"
+            density="compact"
+            hide-details
+            :label="$t('report.delegates_only')"
+          )
         v-data-table(
           density="compact"
           :headers="per_user_headers"
-          :items="per_user_rows"
+          :items="visiblePerUserRows"
           :search="user_name_filter"
         )
 
-      v-card.mt-8(:title="$t('report.users_per_country')")
+      v-card.report-voting-record.mt-8(:title="$t('report.voting_record_per_user')")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadVotingRecordCsv")
+            span(v-t="'report.download_csv'")
+        .d-flex.align-center.flex-wrap.mx-4.mb-2
+          v-text-field.flex-grow-1(
+            v-model="user_name_filter"
+            :label="$t('report.filter_by_name')"
+            density="compact"
+            hide-details
+            clearable
+          )
+          v-checkbox.flex-grow-0.ml-4(
+            v-model="delegates_only"
+            color="primary"
+            density="compact"
+            hide-details
+            :label="$t('report.delegates_only')"
+          )
+        v-data-table(
+          density="compact"
+          :headers="voting_record_headers"
+          :items="visiblePerUserRows"
+          :search="user_name_filter"
+        )
+
+      v-card.report-users-per-country.mt-8(:title="$t('report.users_per_country')")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadUsersPerCountryCsv")
             span(v-t="'report.download_csv'")
@@ -571,7 +625,7 @@ v-main
           :search="country_filter"
         )
 
-      v-card.mt-8(:title="$t('report.actions_per_country')")
+      v-card.report-actions-per-country.mt-8(:title="$t('report.actions_per_country')")
         template(v-slot:append)
           v-btn(variant="text" size="small" @click="downloadPerCountryCsv")
             span(v-t="'report.download_csv'")
