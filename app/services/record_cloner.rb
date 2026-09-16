@@ -90,6 +90,7 @@ class RecordCloner
       members_can_raise_motions
       members_can_vote
       members_can_start_discussions
+      non_members_can_start_discussions
       members_can_create_subgroups
       members_can_announce
       admins_can_edit_user_content

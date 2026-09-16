@@ -50,6 +50,8 @@ A member of an open group can see that a closed subgroup exists, but not secret 
 
 If you set your group privacy to **Open** or **Closed**,  additional settings appear to determine how people can find and join the group.
 
+For Open and Closed groups, admins can enable **Non-members can start discussions** under group permissions. A Loomio user can then choose one of the group's discussion templates and start a discussion. They become a guest of that discussion without becoming a group member or gaining access to the group's other private discussions. This setting is not available for Secret groups. See [Collect nominations](/en/user_manual/discussions/nominations) for an example workflow.
+
 ### Joining the group
 
 You can choose to either let anyone join (pending approval)  or have membership be invite only. 

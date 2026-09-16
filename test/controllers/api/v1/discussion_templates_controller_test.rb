@@ -67,8 +67,9 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal template.id, json['discussion_templates'][0]['id']
   end
 
-  test "index cannot find template in another user group" do
+  test "index cannot find template in a secret group" do
     other_group = Group.create!(name: "Other Group #{SecureRandom.hex(4)}", creator: @user)
+    other_group.update!(group_privacy: 'secret')
 
     template = DiscussionTemplate.create!(
       group: other_group,
@@ -94,6 +95,48 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert templates.length > 0, "should return default templates for logged-out user"
   end
 
+  test "index returns kept closed group templates to a verified nonmember" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    kept = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    discarded = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Old intake', process_subtitle: 'Unavailable', discarded_at: Time.current)
+    sign_in users(:alien)
+
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    ids = JSON.parse(response.body)['discussion_templates'].pluck('id')
+    assert_includes ids, kept.id
+    assert_not_includes ids, discarded.id
+  end
+
+  test "index does not expose templates to signed out users or secret group nonmembers" do
+    @group.update!(non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+
+    get :index, params: { group_id: @group.id }
+    assert_response :success
+    assert_not_includes JSON.parse(response.body)['discussion_templates'].pluck('id'), template.id
+
+    @group.update!(group_privacy: 'secret', non_members_can_start_discussions: true)
+    sign_in users(:alien)
+    get :index, params: { group_id: @group.id }
+    assert_response :success
+    assert_not_includes JSON.parse(response.body)['discussion_templates'].pluck('id'), template.id
+  end
+
+  test "index does not expose closed group templates to an unverified nonmember" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    alien = users(:alien)
+    alien.update!(email_verified: false)
+    sign_in alien
+
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_not_includes JSON.parse(response.body)['discussion_templates'].pluck('id'), template.id
+  end
+
   # === SHOW ===
 
   test "show returns a template in user group" do
@@ -112,8 +155,20 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal template.id, json['discussion_templates'][0]['id']
   end
 
-  test "show returns 404 for template not in user groups" do
+  test "show returns a kept closed group template to a verified nonmember" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    sign_in users(:alien)
+
+    get :show, params: { id: template.id }
+
+    assert_response :success
+    assert_equal template.id, JSON.parse(response.body).dig('discussion_templates', 0, 'id')
+  end
+
+  test "show returns 404 for template in a secret group" do
     other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @user)
+    other_group.update!(group_privacy: 'secret')
     template = DiscussionTemplate.create!(
       group: other_group,
       author: @user,

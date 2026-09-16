@@ -1618,6 +1618,8 @@ en:
     members_can_create_discussion_and_poll_templates_help: Allow members to create discussion and poll templates
     members_can_start_discussions_v2: Members can start new discussions
     members_can_start_discussions_help_v2: Allow members to start new discussions within the group
+    non_members_can_start_discussions: Non-members can start discussions
+    non_members_can_start_discussions_help: Allow non-members to start a discussion from one of this group's templates
     members_can_edit_discussions_v2: Members can manage discussions and comments
     members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
     members_can_create_tags: Members can create tags

@@ -126,7 +126,8 @@ export default new class AbilityService {
 
   canStartThread(group) {
     return group.isEnabled() && (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions));
+    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions) ||
+    (this.isEmailVerified() && !group.privacyIsSecret() && group.nonMembersCanStartDiscussions && !group.membersInclude(Session.user())));
   }
 
   canAnnounceDiscussion(discussion) {
@@ -196,7 +197,7 @@ export default new class AbilityService {
     if (topic.lockedAt) { return false; }
     if (topic.groupId) {
       return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAnnounce && topic.membersInclude(Session.user())));
+      (topic.group().membersCanAnnounce && topic.group().membersInclude(Session.user())));
     } else {
       return topic.adminsInclude(Session.user());
     }
@@ -205,7 +206,7 @@ export default new class AbilityService {
   canAddGuestsTopic(topic) {
     if (topic.groupId) {
       return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAddGuests && topic.membersInclude(Session.user())));
+      (topic.group().membersCanAddGuests && topic.group().membersInclude(Session.user())));
     } else {
       return topic.adminsInclude(Session.user());
     }
