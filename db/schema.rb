@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -263,6 +263,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
     t.string "membership_granted_upon", default: "approval", null: false
     t.integer "memberships_count", default: 0, null: false
     t.string "name", limit: 255
+    t.boolean "non_members_can_start_discussions", default: false, null: false
     t.integer "org_members_count", default: 0, null: false
     t.integer "parent_id"
     t.boolean "parent_members_can_see_discussions", default: false, null: false

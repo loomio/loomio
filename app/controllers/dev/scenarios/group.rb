@@ -27,6 +27,35 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_nonmember_nomination
+    group = create_group
+    group.update!(
+      discussion_privacy_options: 'private_only',
+      membership_granted_upon: 'invitation',
+      non_members_can_start_discussions: true
+    )
+    DiscussionTemplate.create!(
+      group: group,
+      author: patrick,
+      position: -1,
+      process_name: 'Nominate a candidate',
+      process_subtitle: 'Nominate yourself or someone else for a position',
+      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
+      process_introduction_format: 'html',
+      title_placeholder: 'Candidate name and position',
+      description: <<~HTML,
+        <p><strong>Who are you nominating, and for which position?</strong></p>
+        <p>State whether you are nominating yourself or someone else.</p>
+        <p><strong>Why is this person suitable?</strong></p>
+        <p>Describe their relevant experience and the reasons for the nomination.</p>
+      HTML
+      description_format: 'html'
+    )
+
+    sign_in max
+    redirect_to group_path(group)
+  end
+
   def setup_group_route_transitions
     create_group.add_member! jennifer
     create_another_group.add_member! jennifer

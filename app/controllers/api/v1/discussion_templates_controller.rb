@@ -58,11 +58,12 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     if params[:key]
       self.collection = DiscussionTemplateService.default_templates.select { |dt| dt.key == params[:key] }
     elsif params[:id]
-      self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
-    elsif (group = current_user.groups.find_by(id: params[:group_id]))
+      template = DiscussionTemplate.find_by(id: params[:id])
+      self.collection = template_accessible?(template) ? [ template ] : []
+    elsif (group = accessible_group(params[:group_id]))
       self.collection = DiscussionTemplateService.group_templates(group: group)
       unless group.admins.exists?(current_user.id)
-        self.collection = self.collection.reject { |t| t.discarded_at.present? }
+        self.collection = self.collection.select(&:kept?)
       end
     else
       blank = DiscussionTemplateService.default_templates.select { |dt| dt.key == 'blank' }
@@ -74,7 +75,8 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   def show
-    @discussion_template = DiscussionTemplate.where('group_id IN (?) OR public = true', current_user.group_ids).find(params[:id])
+    @discussion_template = DiscussionTemplate.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless template_accessible?(@discussion_template)
     respond_with_resource
   end
 
@@ -119,6 +121,28 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   private
+
+  def accessible_group(id)
+    group = Group.kept.find_by(id: id)
+    return unless group
+    return group if group.members.exists?(current_user.id)
+    return unless current_user.email_verified?
+    return if group.group_privacy == 'secret'
+    return unless group.non_members_can_start_discussions?
+    return unless current_user.can?(:show, group)
+
+    group
+  end
+
+  def template_accessible?(template)
+    return false unless template
+    return true if template.public?
+
+    group = accessible_group(template.group_id)
+    return false unless group
+
+    group.members.exists?(current_user.id) || template.kept?
+  end
 
   def find_template_for_author_or_admin(scope = nil)
     if params[:group_id]

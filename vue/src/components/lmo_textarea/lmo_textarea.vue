@@ -9,7 +9,11 @@ export default {
     label: String,
     placeholder: String,
     maxLength: Number,
-    autofocus: Boolean
+    autofocus: Boolean,
+    allowMentions: {
+      type: Boolean,
+      default: true
+    }
   },
 
   components: {
@@ -37,6 +41,7 @@ div
       :placeholder="placeholder"
       :maxLength="maxLength"
       :autofocus="autofocus"
+      :allow-mentions="allowMentions"
     )
       template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
         slot(v-if="slotProps" :name="name" v-bind="slotProps")
@@ -50,6 +55,7 @@ div
       :placeholder="placeholder"
       :maxLength="maxLength"
       :autofocus="autofocus"
+      :allow-mentions="allowMentions"
     )
       template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
         slot(v-if="slotProps" :name="name" v-bind="slotProps")

@@ -58,11 +58,23 @@ const validate = (field) => {
 };
 
 const updateGroupItems = () => {
-  groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(Session.user().groups().map(g => ({
+  const groups = Session.user().groups().slice();
+  const selectedGroup = props.discussion.groupId && props.discussion.group();
+  if (selectedGroup && !groups.some(group => group.id === selectedGroup.id)) {
+    groups.push(selectedGroup);
+  }
+  groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(groups.map(g => ({
     title: g.fullName,
     value: g.id
   })));
 };
+
+const isNonMemberTemplateDiscussion = computed(() => {
+  return props.discussion.isNew() &&
+    discussionTemplate.value &&
+    props.discussion.groupId &&
+    !props.discussion.group().membersInclude(Session.user());
+});
 
 const submit = () => {
   const actionName = props.discussion.id ? 'updated' : 'started';
@@ -106,6 +118,9 @@ const titlePlaceholder = computed(() => {
 });
 
 const subscriptionActive = computed(() => {
+  if (isNonMemberTemplateDiscussion.value) {
+    return props.discussion.group().isEnabled();
+  }
   return subscription.value.active;
 });
 
@@ -147,6 +162,14 @@ onMounted(() => {
     if (templatePromise) {
       templatePromise.then(template => {
         discussionTemplate.value = template;
+        if (isNonMemberTemplateDiscussion.value) {
+          props.discussion.update({
+            recipientAudience: null,
+            recipientUserIds: [],
+            recipientEmails: [],
+            recipientChatbotIds: []
+          });
+        }
         if ( props.discussion.isNew() &&
              (template.recipientAudience === 'group') &&
              props.discussion.groupId &&
@@ -198,7 +221,7 @@ v-form(ref="form" @submit.prevent="submit")
     v-card-item
       discussion-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
       v-select.pb-4(
-        :disabled="!!discussion.id"
+        :disabled="!!discussion.id || isNonMemberTemplateDiscussion"
         v-model="discussion.groupId"
         :items="groupItems"
         :label="$t('common.group')"
@@ -218,11 +241,12 @@ v-form(ref="form" @submit.prevent="submit")
           v-model='discussion.title' maxlength='255'
         )
 
-        tags-field(v-if="!discussion.id" :model="discussion")
+        tags-field(v-if="!discussion.id && !isNonMemberTemplateDiscussion" :model="discussion")
 
         lmo-textarea(
           :model='discussion'
           field="description"
+          :allow-mentions="!isNonMemberTemplateDiscussion"
           :label="$t('discussion_form.context_label')"
           :placeholder="$t('discussion_form.context_placeholder')"
         )
@@ -235,7 +259,7 @@ v-form(ref="form" @submit.prevent="submit")
               v-list-item-subtitle {{ pt.processSubtitle }}
             v-divider
 
-        common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
+        common-notify-fields(v-if="loaded && !isNonMemberTemplateDiscussion" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/discussions/starting_a_discussion')
       v-spacer
