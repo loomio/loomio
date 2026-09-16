@@ -1396,8 +1396,8 @@ en:
     votes_issued: Votes issued
     votes_missed: Votes missed
     voting_record_per_user: Voting record per user
-    yes: Yes
-    no: No
+    yes_label: Yes
+    no_label: No
     delegates_only: Delegates only
     start_on: Start on
     end_on: End on

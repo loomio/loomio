@@ -366,7 +366,7 @@ export default {
         votes_issued: user.votes_issued,
         votes_cast: user.votes_cast,
         votes_missed: user.votes_missed,
-        all_votes_cast: user.all_votes_cast ? this.$t('report.yes') : this.$t('report.no'),
+        all_votes_cast: user.all_votes_cast ? this.$t('report.yes_label') : this.$t('report.no_label'),
         outcomes: user.outcomes,
         reactions: user.reactions,
       }));
