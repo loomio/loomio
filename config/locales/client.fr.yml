@@ -1511,6 +1511,8 @@ fr:
     handle_changed_hint: Ton ancienne URL et ton adresse e-mail seront redirigées vers ton nouvelle adresse.
     members_can_create_tags: Les membres peuvent créer des tags
     members_can_create_tags_help: Autoriser les membres à créer de nouvelles étiquettes lors de l'étiquetage des sujets et des sondages.
+    non_members_can_start_discussions: Les non-membres peuvent démarrer des discussions
+    non_members_can_start_discussions_help: Autorise les non-membres à démarrer une discussion à partir de l'un des modèles de ce groupe
   group_export_modal:
     title: Exporter les données de ton groupe
     body: |

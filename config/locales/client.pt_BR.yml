@@ -1511,6 +1511,8 @@ pt_BR:
     handle_changed_hint: Seu endereço de URL e e-mail anteriores serão redirecionados para seu novo endereço.
     members_can_create_tags: Os membros podem criar etiquetas.
     members_can_create_tags_help: Permitir que os membros criem novas etiquetas ao etiquetar tópicos e enquetes.
+    non_members_can_start_discussions: Quem não é membro pode iniciar discussões.
+    non_members_can_start_discussions_help: Permitir que não membros iniciem uma discussão a partir de um dos modelos deste grupo.
   group_export_modal:
     title: Exportar data do grupo
     body: |

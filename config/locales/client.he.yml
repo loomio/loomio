@@ -1488,6 +1488,8 @@ he:
     handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
     members_can_create_tags: חברים יכולים ליצור תגיות
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
+    non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
+    non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |

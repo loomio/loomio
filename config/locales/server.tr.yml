@@ -760,3 +760,5 @@ tr:
     no_option_selected: Hiçbir seçenek seçilmedi.
     outcome: Sonuç · %{author} %{timestamp}
     review_date: "**İnceleme tarihi:** %{value}"
+  error:
+    access_denied: Bunu yapma izniniz yok.

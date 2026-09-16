@@ -762,3 +762,5 @@ ca:
     no_option_selected: No s'ha seleccionat cap opció
     outcome: Resultat · %{author} %{timestamp}
     review_date: "**Data de revisió:** %{value}"
+  error:
+    access_denied: No tens permís per fer això

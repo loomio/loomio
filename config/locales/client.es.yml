@@ -1499,6 +1499,8 @@ es:
     handle_changed_hint: Tu URL y dirección de correo electrónico anteriores se redirigirán a tu nueva dirección.
     members_can_create_tags: Los miembros pueden crear etiquetas
     members_can_create_tags_help: Permitir a los miembros crear nuevas etiquetas al etiquetar hilos y encuestas.
+    non_members_can_start_discussions: Los no miembros pueden iniciar debates
+    non_members_can_start_discussions_help: Permite que personas que no son miembros inicien un debate a partir de una de las plantillas de este grupo
   group_export_modal:
     title: Exportar la data grupal
     body: |
