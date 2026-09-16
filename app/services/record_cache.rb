@@ -1,10 +1,33 @@
 class RecordCache
+  require_relative 'record_cache/loader'
+  require_relative 'record_cache/loaders'
+
   KNOWN_MISSING_KEYS = %i[
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
     undecided_voter_ids_by_poll_id
   ].freeze
+
+  LOADERS = {
+    'Translation' => Loaders::Translation,
+    'Topic' => Loaders::Topic,
+    'Discussion' => Loaders::Discussion,
+    'Reaction' => Loaders::Reaction,
+    'Notification' => Loaders::Notification,
+    'Group' => Loaders::Group,
+    'Membership' => Loaders::Membership,
+    'Poll' => Loaders::Poll,
+    'Outcome' => Loaders::Outcome,
+    'Stance' => Loaders::Stance,
+    'User' => Loaders::User,
+    'TopicReader' => Loaders::Reader,
+    'DiscussionReader' => Loaders::Reader,
+    'Comment' => Loaders::Comment,
+    'MembershipRequest' => Loaders::MembershipRequest,
+    'SearchResult' => Loaders::SearchResult,
+    'TopicItem' => Loaders::TopicItem
+  }.freeze
 
   attr_accessor :scope
   attr_accessor :exclude_types
@@ -45,90 +68,17 @@ class RecordCache
     records = collection.to_a
     return obj if records.empty?
 
-    case records.first.class.to_s
-    when 'Translation'
-      obj.merge_index(:translations_by_id, records)
-
-    when 'Topic'
-      topic_ids = records.map(&:id)
-      discussion_ids = records.filter_map { |topic| topic.topicable_id if topic.topicable_type == 'Discussion' }
-      poll_ids = records.filter_map { |topic| topic.topicable_id if topic.topicable_type == 'Poll' }
-      obj.add_topics(records)
-      obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
-      obj.add_discussions(Discussion.where(id: discussion_ids)) if discussion_ids.any?
-      if poll_ids.any?
-        polls = Poll.where(id: poll_ids)
-        obj.add_polls_options_stances_outcomes(polls)
-        obj.add_reactions_for_itemables(polls)
-      end
-      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id).compact))
-
-    when 'Discussion'
-      topic_ids = records.map(&:topic_id)
-      obj.add_discussions(records)
-      obj.add_topics(Topic.where(id: topic_ids))
-      obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
-      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id).compact))
-      obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: topic_ids)
-
-    when 'Reaction'
-      obj.add_reactions(records)
-
-    when 'Notification'
-      obj.user_ids.concat records.filter_map(&:actor_id)
-
-    when 'Group'
-      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:id)))
-
-    when 'Membership'
-      obj.add_groups Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id)))
-      obj.user_ids.concat records.map(&:user_id).concat(records.map(&:inviter_id).compact).compact.uniq
-
-    when 'Poll'
-      topic_ids = records.map(&:topic_id)
-      topics = Topic.where(id: topic_ids).to_a
-      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, topics.map(&:group_id)))
-      obj.add_topics(topics)
-      obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
-      obj.add_discussions(Discussion.where(topic_id: topic_ids))
-      obj.add_polls_options_stances_outcomes records
-      obj.add_reactions_for_itemables(records)
-
-    when 'Outcome'
-      obj.add_polls Poll.where(id: records.map(&:poll_id))
-      obj.user_ids.concat records.map(&:author_id)
-      obj.add_reactions_for_itemables(records)
-
-    when 'Stance'
-      obj.add_stances(records)
-      obj.add_polls_options_stances_outcomes Poll.kept.where(id: records.map(&:poll_id))
-      obj.add_reactions_for_itemables(records)
-
-    when 'User'
-      # do nothing
-
-    when 'TopicReader', 'DiscussionReader'
-      obj.user_ids.concat records.map(&:user_id)
-
-    when 'Comment'
-      obj.add_comments(records)
-      obj.add_reactions_for_itemables(records)
-
-    when 'MembershipRequest'
-      obj.user_ids.concat records.map(&:requestor_id).concat(records.map(&:responder_id)).compact.uniq
-
-    when 'SearchResult'
-      obj.user_ids.concat records.map(&:author_id).compact
-      obj.add_polls_options_stances_outcomes Poll.kept.where(id: records.map(&:poll_id))
-
-    when 'TopicItem'
-      obj.add_topic_items_complete(records)
-    end
+    loader = loader_for(records.first)
+    loader.new(cache: obj, records: records).load
 
     obj.add_users User.with_attached_uploaded_avatar.where(id: obj.user_ids.compact.uniq)
     obj.add_tags_complete
     obj.add_inline_translations
     obj
+  end
+
+  def self.loader_for(record)
+    record.class.ancestors.filter_map { |ancestor| LOADERS[ancestor.to_s] }.first || Loaders::Noop
   end
 
   def merge_index(key, collection)
