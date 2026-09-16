@@ -267,7 +267,12 @@ class TopicService
     time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish
 
-    TopicQuery.relevant_to(user: user, only_unread: true, or_subgroups: false)
+    TopicQuery.relevant_to(
+      user: user,
+      public_group_ids: user.group_follows.pluck(:group_id),
+      only_unread: true,
+      or_subgroups: false
+    )
       .where("topics.last_activity_at > ?", time_start).each do |topic|
       sequence_ids = topic.items.where("topic_items.created_at": time_range).pluck(:sequence_id)
       TopicReader.find_or_create_for!(user: user, topic: topic).viewed!(sequence_ids)

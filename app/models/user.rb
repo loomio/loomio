@@ -62,6 +62,8 @@ class User < ApplicationRecord
 
   has_many :memberships, -> { active }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
+  has_many :group_follows, dependent: :destroy
+  has_many :followed_groups, through: :group_follows, source: :group
 
   has_many :adminable_groups,
            -> { where(discarded_at: nil) },

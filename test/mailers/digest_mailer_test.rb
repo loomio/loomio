@@ -177,6 +177,25 @@ class DigestMailerTest < ActionMailer::TestCase
     assert_includes ActionMailer::Base.deliveries.last.body.encoded, title
   end
 
+  test "digest email includes unread discussion and comment content from a followed group" do
+    @user.update!(email_catch_up_day: 7)
+    @group.update!(group_privacy: "open")
+    GroupFollow.create!(group: @group, user: @user)
+    discussion_body = "Followed discussion body #{SecureRandom.hex(4)}"
+    comment_body = "Followed comment body #{SecureRandom.hex(4)}"
+    discussion = DiscussionService.create(
+      params: { title: "Followed digest #{SecureRandom.hex(4)}", description: discussion_body, group_id: @group.id },
+      actor: @inviter
+    )
+    CommentService.create(comment: Comment.new(parent: discussion, body: comment_body), actor: @inviter)
+    ActionMailer::Base.deliveries.clear
+
+    mail = DigestMailer.digest(@user.id).deliver_now
+
+    assert_includes mail.body.encoded, discussion_body
+    assert_includes mail.body.encoded, comment_body
+  end
+
   test "does not send digest when there is no unread content" do
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)

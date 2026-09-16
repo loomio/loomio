@@ -36,6 +36,8 @@ class Group < ApplicationRecord
 
   has_many :memberships, -> { active }
   has_many :members, -> { active }, through: :memberships, source: :user
+  has_many :group_follows, dependent: :destroy
+  has_many :followers, through: :group_follows, source: :user
 
   has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
   has_many :delegates, through: :delegate_memberships, source: :user

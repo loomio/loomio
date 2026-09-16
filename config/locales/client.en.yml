@@ -1329,6 +1329,11 @@ en:
     membership_requested: Membership requested
     messages:
       joined_group: You are now a member of %{group}
+  group_follow:
+    follow: Follow updates
+    unfollow: Unfollow updates
+    followed: You are now following updates from this group
+    unfollowed: You are no longer following updates from this group
   membership_request_form:
     aria_label: Membership request form
     heading: Ask to join group

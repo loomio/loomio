@@ -55,6 +55,15 @@ class TopicQueryTest < ActiveSupport::TestCase
     assert_includes TopicQuery.relevant_to(group_ids: [pub_group.id]), pub_disc.topic
   end
 
+  test "public_group_ids adds public topics without filtering membership topics" do
+    public_discussion = discussions(:public_discussion)
+
+    results = TopicQuery.relevant_to(user: @user, public_group_ids: [ public_discussion.group_id ])
+
+    assert_includes results, @discussion.topic
+    assert_includes results, public_discussion.topic
+  end
+
   # -- Unread --
 
   test "unread topics includes topics with new activity" do

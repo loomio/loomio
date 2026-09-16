@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_17_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -208,6 +208,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
   create_table "forward_email_rules", force: :cascade do |t|
     t.string "email"
     t.citext "handle", null: false
+  end
+
+  create_table "group_follows", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "group_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_group_follows_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_group_follows_on_user_id_and_group_id", unique: true
+    t.index ["user_id"], name: "index_group_follows_on_user_id"
   end
 
   create_table "group_handle_redirects", force: :cascade do |t|
@@ -1259,6 +1269,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "group_follows", "groups", on_delete: :cascade
+  add_foreign_key "group_follows", "users", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade

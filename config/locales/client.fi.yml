@@ -3077,3 +3077,8 @@ fi:
     remove_device: Poista selain
     enable_from_loomio: Ota push-ilmoitukset käyttöön ilmoitusasetuksista, kun olet kirjautuneena Loomioon
     ios_add_to_home_screen_before_enabling: iPhonella tai iPadilla voit lisätä Loomion aloitusnäyttöön Jaa-toiminnolla. Avaa Loomio uudesta kuvakkeesta ja ota push-ilmoitukset käyttöön tässä.
+  group_follow:
+    follow: Seuraa päivityksiä
+    unfollow: Lopeta päivitysten seuraaminen
+    followed: Seuraat nyt tämän ryhmän päivityksiä
+    unfollowed: Et enää seuraa tämän ryhmän päivityksiä
