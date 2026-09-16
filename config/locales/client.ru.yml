@@ -2678,6 +2678,14 @@ ru:
     tags_per_interval: Теги на %{interval}
     all_groups_and_direct_threads: Все группы и прямые обсуждения
     custom_selection: Индивидуальный выбор
+    all_votes_cast: Все поданные голоса
+    votes_cast: Поданные голоса
+    votes_issued: Выданы голоса
+    votes_missed: Пропущенные голоса
+    voting_record_per_user: Результаты голосования по каждому пользователю
+    yes_label: Да
+    no_label: Нет
+    delegates_only: Только для делегатов
   tips:
     youve_completed_all_the_steps: "\U0001F389 Вы выполнили все шаги!"
     getting_started_checklist: Контрольный список для начала работы

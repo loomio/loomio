@@ -2678,6 +2678,14 @@ tr:
     tags_per_interval: Etiketler %{interval} başına
     all_groups_and_direct_threads: Tüm gruplar ve doğrudan ileti dizileri
     custom_selection: Özel seçim
+    all_votes_cast: Tüm oylar kullanıldı.
+    votes_cast: Kullanılan oylar
+    votes_issued: Verilen oylar
+    votes_missed: Oylar kaçırıldı
+    voting_record_per_user: Kullanıcı başına oy kaydı
+    yes_label: Evet
+    no_label: HAYIR
+    delegates_only: Sadece delegeler
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi

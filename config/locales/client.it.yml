@@ -2706,6 +2706,14 @@ it:
     tags_per_interval: Tag per %{interval}
     all_groups_and_direct_threads: Tutti i gruppi e le discussioni dirette
     custom_selection: Selezione personalizzata
+    all_votes_cast: Tutti i voti espressi
+    votes_cast: Voti espressi
+    votes_issued: Voti assegnati
+    votes_missed: Voti mancati
+    voting_record_per_user: Storico delle votazioni per utente
+    yes_label: SÌ
+    no_label: 'NO'
+    delegates_only: Solo delegati
   tips:
     youve_completed_all_the_steps: "\U0001F389 Hai completato tutti i passaggi!"
     getting_started_checklist: Lista di controllo per iniziare

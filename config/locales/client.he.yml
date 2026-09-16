@@ -2697,6 +2697,14 @@ he:
     tags_per_interval: תגיות לכל %{interval}
     all_groups_and_direct_threads: כל הקבוצות והשרשורים הישירים
     custom_selection: בחירה מותאמת אישית
+    all_votes_cast: כל הקולות שניתנו
+    votes_cast: קולות שהושלכו
+    votes_issued: קולות שהונפקו
+    votes_missed: קולות שהוחמצו
+    voting_record_per_user: שיא הצבעות לכל משתמש
+    yes_label: כֵּן
+    no_label: לֹא
+    delegates_only: נציגים בלבד
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה

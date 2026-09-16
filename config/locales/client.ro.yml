@@ -2678,6 +2678,14 @@ ro:
     tags_per_interval: Etichete per %{interval}
     all_groups_and_direct_threads: Toate grupurile și firele de discuție directe
     custom_selection: Selecție personalizată
+    all_votes_cast: Toate voturile exprimate
+    votes_cast: Voturi exprimate
+    votes_issued: Voturi emise
+    votes_missed: Voturi ratate
+    voting_record_per_user: Înregistrarea voturilor per utilizator
+    yes_label: Da
+    no_label: Nu
+    delegates_only: Numai pentru delegați
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ai finalizat toți pașii!"
     getting_started_checklist: Listă de verificare pentru început

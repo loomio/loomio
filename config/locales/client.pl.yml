@@ -2705,6 +2705,14 @@ pl:
     tags_per_interval: Tagi na %{interval}
     all_groups_and_direct_threads: Wszystkie grupy i wątki bezpośrednie
     custom_selection: Wybór niestandardowy
+    all_votes_cast: Wszystkie głosy oddane
+    votes_cast: Oddane głosy
+    votes_issued: Głosy oddane
+    votes_missed: Głosy nieodebrane
+    voting_record_per_user: Rekord głosowania według użytkownika
+    yes_label: Tak
+    no_label: NIE
+    delegates_only: Tylko dla delegatów
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ukończyłeś wszystkie kroki!"
     getting_started_checklist: Lista kontrolna na początek

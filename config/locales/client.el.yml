@@ -2678,6 +2678,14 @@ el:
     tags_per_interval: Ετικέτες ανά %{interval}
     all_groups_and_direct_threads: Όλες οι ομάδες και τα άμεσα νήματα
     custom_selection: Προσαρμοσμένη επιλογή
+    all_votes_cast: Όλες οι ψήφοι που δόθηκαν
+    votes_cast: Ψήφοι που έδωσαν
+    votes_issued: Ψήφοι που εκδόθηκαν
+    votes_missed: Χαμένες ψήφοι
+    voting_record_per_user: Αρχείο ψηφοφορίας ανά χρήστη
+    yes_label: Ναί
+    no_label: Οχι
+    delegates_only: Μόνο για αντιπροσώπους
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ολοκληρώσατε όλα τα βήματα!"
     getting_started_checklist: Λίστα ελέγχου για το ξεκίνημα - Λίστα ελέγχου για το ξεκίνημα
