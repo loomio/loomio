@@ -3,6 +3,7 @@ class RecordCache
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
+    undecided_voter_ids_by_poll_id
   ].freeze
 
   attr_accessor :scope
@@ -50,17 +51,11 @@ class RecordCache
 
     when 'Topic'
       topic_ids = records.map(&:id)
-      discussion_topics = records.select { |t| t.topicable_type == 'Discussion' }
-      poll_topics = records.select { |t| t.topicable_type == 'Poll' }
-      discussion_ids = discussion_topics.map(&:topicable_id)
-      poll_ids = poll_topics.map(&:topicable_id)
+      discussion_ids = records.filter_map { |topic| topic.topicable_id if topic.topicable_type == 'Discussion' }
+      poll_ids = records.filter_map { |topic| topic.topicable_id if topic.topicable_type == 'Poll' }
       obj.add_topics(records)
       obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
-      if discussion_ids.any?
-        discussions = discussion_topics.map(&:topicable).compact
-        obj.add_discussions(discussions)
-        obj.add_reactions_for_itemables(discussions)
-      end
+      obj.add_discussions(Discussion.where(id: discussion_ids)) if discussion_ids.any?
       if poll_ids.any?
         polls = Poll.where(id: poll_ids)
         obj.add_polls_options_stances_outcomes(polls)
@@ -75,7 +70,6 @@ class RecordCache
       obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id).compact))
       obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: topic_ids)
-      obj.add_reactions_for_itemables(records)
 
     when 'Reaction'
       obj.add_reactions(records)
@@ -92,13 +86,13 @@ class RecordCache
 
     when 'Poll'
       topic_ids = records.map(&:topic_id)
-      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, records.map(&:group_id)))
-      obj.add_topics(Topic.where(id: topic_ids))
+      topics = Topic.where(id: topic_ids).to_a
+      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, topics.map(&:group_id)))
+      obj.add_topics(topics)
       obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: obj.current_user_id), topic_ids: topic_ids)
       obj.add_discussions(Discussion.where(topic_id: topic_ids))
       obj.add_polls_options_stances_outcomes records
       obj.add_reactions_for_itemables(records)
-      obj.add_inline_translations
 
     when 'Outcome'
       obj.add_polls Poll.where(id: records.map(&:poll_id))
@@ -266,11 +260,24 @@ class RecordCache
 
   def add_polls_options_stances_outcomes(collection)
     return if exclude_types.include?('poll')
+    collection = collection.to_a
     collection_ids = collection.map(&:id)
     add_polls collection
     add_poll_options PollOption.where(poll_id: collection_ids)
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
+    add_undecided_voter_ids(collection)
+  end
+
+  def add_undecided_voter_ids(polls)
+    poll_ids = polls.reject(&:detached_anonymous?).select(&:results_include_undecided).map(&:id)
+    scope[:undecided_voter_ids_by_poll_id] ||= {}
+    add_known_missing(:undecided_voter_ids_by_poll_id, polls.map(&:id))
+
+    Stance.latest.undecided.where(poll_id: poll_ids).pluck(:poll_id, :participant_id).each do |poll_id, participant_id|
+      scope[:undecided_voter_ids_by_poll_id][poll_id] ||= []
+      scope[:undecided_voter_ids_by_poll_id][poll_id] << participant_id
+    end
   end
 
   def add_polls(collection)

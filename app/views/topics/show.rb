@@ -9,6 +9,8 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def view_template
+    preload_context
+
     div(class: "topic-page mt-12") do
       main(class: "v-main") do
         div(class: "v-container topic-page max-width-800 px-0 px-sm-3 v-locale--is-ltr") do
@@ -90,7 +92,7 @@ class Views::Topics::Show < Views::Application::Layout
 
       total = scope.count
       items = scope.limit(@pagination[:limit]).offset(@pagination[:offset]).to_a
-      preload_item_avatars(items)
+      preload_activity(items)
 
       items.each do |item|
         render Views::Topics::TopicItem.new(item: item, current_user: @recipient) if item.itemable.present?
@@ -120,10 +122,35 @@ class Views::Topics::Show < Views::Application::Layout
     Stance.where(poll_id: hidden_poll_ids).where.not(participant_id: @recipient.id).select(:id)
   end
 
-  def preload_item_avatars(items)
+  # The export view renders several polymorphic activity types. Preload each
+  # type's complete rendering graph so the number of queries does not grow with
+  # the number of comments, polls, outcomes, or stances on the page.
+  def preload_activity(items)
     comments = items.filter_map { |i| i.itemable if i.kind == 'new_comment' }
     stances  = items.filter_map { |i| i.itemable if i.kind.in?(%w[stance_created stance_updated]) }
+    polls    = items.filter_map { |i| i.itemable if i.kind == 'poll_created' }
+
     ActiveRecord::Associations::Preloader.new(records: comments, associations: {user: {uploaded_avatar_attachment: :blob}}).call if comments.any?
-    ActiveRecord::Associations::Preloader.new(records: stances, associations: {participant: {uploaded_avatar_attachment: :blob}}).call if stances.any?
+    ActiveRecord::Associations::Preloader.new(
+      records: stances,
+      associations: [:poll, {participant: {uploaded_avatar_attachment: :blob}}]
+    ).call if stances.any?
+    ActiveRecord::Associations::Preloader.new(
+      records: polls,
+      associations: [
+        :poll_options,
+        {author: {uploaded_avatar_attachment: :blob}},
+        {current_outcome: :author}
+      ]
+    ).call if polls.any?
+  end
+
+  def preload_context
+    ActiveRecord::Associations::Preloader.new(records: [@topic], associations: [:group, :topicable]).call
+    topicable = @topic.topicable
+    ActiveRecord::Associations::Preloader.new(
+      records: [topicable],
+      associations: {author: {uploaded_avatar_attachment: :blob}}
+    ).call
   end
 end

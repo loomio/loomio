@@ -535,7 +535,7 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.calculate_results(poll, poll_options)
+  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
     sorted_poll_options = case poll.order_results_by
@@ -629,7 +629,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.undecided_voters.map(&:id).take(50),
+          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(50),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB',
           test_result: nil

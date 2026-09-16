@@ -131,7 +131,8 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results
-    PollService.calculate_results(object, poll_options)
+    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids }
+    PollService.calculate_results(object, poll_options, undecided_voter_ids: undecided_voter_ids)
   end
 
   def include_results?
