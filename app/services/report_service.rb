@@ -361,19 +361,22 @@ class ReportService
   end
 
   def stances_issued_per_user
-    query = <<~SQL
-      SELECT count(stances.id) count, participant_id
-      FROM stances
-      JOIN polls ON stances.poll_id = polls.id
-      JOIN topics ON topics.id = polls.topic_id
-      WHERE #{topic_group_filter}
-        AND polls.anonymous = false
-        AND stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-        AND stances.latest IS true
-        AND stances.participant_id IS NOT NULL
-      group by participant_id
-    SQL
-    rows_to_hash ActiveRecord::Base.connection.execute(query), 'participant_id', 'count'
+    scope = Stance
+      .joins(poll: :topic)
+      .where(polls: { anonymous: false })
+      .where(created_at: @start_at..@end_at, latest: true)
+      .where.not(participant_id: nil)
+
+    unless @all_groups
+      group_ids = Array(@group_ids) - [0]
+      scope = if @direct_threads
+        scope.where(topics: { group_id: group_ids }).or(scope.where(topics: { group_id: nil }))
+      else
+        scope.where(topics: { group_id: group_ids })
+      end
+    end
+
+    scope.group(:participant_id).count
   end
 
   def reactions_per_user
