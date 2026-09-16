@@ -9,6 +9,7 @@ class Notification < ApplicationRecord
 
   def notification_url
     return polymorphic_path(subject_model.group) if kind == "invitation_accepted"
+    return polymorphic_path(subject_model.group) if kind == "membership_request_declined"
     return subject.notification_url if subject.is_a?(TopicItem)
 
     polymorphic_path(subject_model)

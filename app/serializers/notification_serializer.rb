@@ -9,6 +9,7 @@ class NotificationSerializer < ApplicationSerializer
              :title,
              :poll_type,
              :reaction,
+             :reason,
              :model
 
   def url
@@ -35,6 +36,10 @@ class NotificationSerializer < ApplicationSerializer
 
   def reaction
     tv :reaction
+  end
+
+  def reason
+    tv :reason
   end
 
   def model

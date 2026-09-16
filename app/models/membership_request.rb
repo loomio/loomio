@@ -16,6 +16,8 @@ class MembershipRequest < ApplicationRecord
   has_many :admins, through: :group
 
   validates :introduction, length: { maximum: AppConfig.app_features[:max_message_length] }
+  validates :response_comment, length: { maximum: 500 }
+  validates :response_comment, presence: true, if: -> { response == "declined" }
 
   scope :pending, -> { where(response: nil).order('created_at DESC') }
   scope :responded_to, -> { where('response IS NOT NULL').order('responded_at DESC') }
@@ -42,12 +44,16 @@ class MembershipRequest < ApplicationRecord
     requestor_id
   end
 
-  def approve!(responder)
-    set_response_details('approved', responder)
+  def approve!(responder, response_comment: nil)
+    set_response_details('approved', responder, response_comment)
+  end
+
+  def decline!(responder, response_comment:)
+    set_response_details('declined', responder, response_comment)
   end
 
   def ignore!(responder)
-    set_response_details('ignored', responder)
+    set_response_details('ignored', responder, nil)
   end
 
   def convert_to_membership!
@@ -94,9 +100,10 @@ class MembershipRequest < ApplicationRecord
     errors.add(:requestor, I18n.t(:'error.you_are_already_a_member_of_this_group'))
   end
 
-  def set_response_details(response, responder)
+  def set_response_details(response, responder, response_comment)
     self.response = response
     self.responder = responder
+    self.response_comment = response_comment
     self.responded_at = Time.now
     save!
   end

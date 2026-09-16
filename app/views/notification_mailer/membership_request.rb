@@ -11,7 +11,8 @@ class Views::NotificationMailer::MembershipRequest < Views::NotificationMailer::
 
   def view_template
     group = @topic_item.itemable.group
-    url = group_membership_requests_url(group, @utm_hash)
+    was_declined = @event_key.to_s == "membership_request_declined"
+    url = was_declined ? group_url(group, @utm_hash) : group_membership_requests_url(group, @utm_hash)
 
     render Views::NotificationMailer::Group::CoverAndLogo.new(group: group)
     render Views::NotificationMailer::Common::Notification.new(
@@ -20,13 +21,14 @@ class Views::NotificationMailer::MembershipRequest < Views::NotificationMailer::
       event_key: @event_key,
       with_title: true,
       url: url,
-      message: @topic_item.itemable.introduction
+      translation_values: @topic_item.notification.translation_values_for(@recipient.id),
+      message: was_declined ? nil : @topic_item.itemable.introduction
     )
 
     div(class: "email-actions") do
       render Views::NotificationMailer::Common::Button.new(
         url: url,
-        text: t(:"email.membership_request.button_text")
+        text: t(was_declined ? :"email.membership_request_declined.button_text" : :"email.membership_request.button_text")
       )
     end
 

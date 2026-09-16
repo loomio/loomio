@@ -178,7 +178,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_request_attributes
-    [:name, :email, :introduction, :group_id]
+    [:name, :email, :introduction, :group_id, :response_comment]
   end
 
   def membership_attributes

@@ -19,7 +19,8 @@ export default class NotificationModel extends BaseModel {
       model: null,
       pollType: null,
       name: null,
-      reaction: null
+      reaction: null,
+      reason: null
     };
   }
 
@@ -37,6 +38,8 @@ export default class NotificationModel extends BaseModel {
     if (!this.url) { return '/'; }
     if (this.kind === 'membership_requested') {
       return "/g/" + compact(this.url.split('/'))[1] + "/membership_requests";
+    } else if (this.kind === 'membership_request_declined') {
+      return "/g/" + compact(this.url.split('/'))[1];
     } else if (this.url.startsWith(AppConfig.baseUrl)) {
       return "/" + this.url.replace(AppConfig.baseUrl, '');
     } else if (this.url.startsWith('/')) {
@@ -57,7 +60,8 @@ export default class NotificationModel extends BaseModel {
       reaction: (this.kind === "reaction_created" ? this.reaction : undefined),
       title: this.title,
       poll_type: this.pollType,
-      model: this.model
+      model: this.model,
+      reason: this.reason
     };
   }
 

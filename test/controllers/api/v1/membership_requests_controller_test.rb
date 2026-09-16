@@ -99,18 +99,42 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
     # error details no longer exposed to clients
   end
 
-  test "ignore membership request when permitted" do
-    post :ignore, params: { id: @pending_request.id }
+  test "decline membership request with a reason when permitted" do
+    post :decline, params: { id: @pending_request.id, membership_request: { response_comment: "Please answer the join prompt" } }
+    assert_response :success
+
+    record = JSON.parse(response.body)['membership_requests'].first
+    assert_equal @user.id, record['responder_id']
+    assert_equal 'declined', record['response']
+    assert_equal 'Please answer the join prompt', record['response_comment']
+  end
+
+  test "decline requires a reason" do
+    post :decline, params: { id: @pending_request.id, membership_request: { response_comment: "" } }
+    assert_response :unprocessable_entity
+    assert_nil @pending_request.reload.response
+  end
+
+  test "decline raises access denied when not permitted" do
+    post :decline, params: { id: @other_pending_request.id, membership_request: { response_comment: "Not eligible" } }
+    assert_response :forbidden
+    # error details no longer exposed to clients
+  end
+
+  test "ignore membership request without notifying the requestor" do
+    assert_no_difference "Notification.count" do
+      post :ignore, params: { id: @pending_request.id }
+    end
     assert_response :success
 
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
     assert_equal 'ignored', record['response']
+    assert_nil record['response_comment']
   end
 
   test "ignore raises access denied when not permitted" do
     post :ignore, params: { id: @other_pending_request.id }
     assert_response :forbidden
-    # error details no longer exposed to clients
   end
 end

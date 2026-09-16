@@ -45,7 +45,7 @@ module Ability::GroupState
       group_disabled_or_discarded?(membership.group) && membership.user_id != user.id
     end
 
-    cannot [ :show, :create, :cancel, :approve, :ignore ], ::MembershipRequest do |request|
+    cannot [ :show, :create, :cancel, :approve, :decline, :ignore ], ::MembershipRequest do |request|
       group_disabled_or_discarded?(request.group)
     end
 

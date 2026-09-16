@@ -49,6 +49,8 @@ If your group's privacy is **Closed** then you can share your group URL, i.e., `
 
 You can set your privacy level in your [Group Settings](/en/user_manual/groups/settings/#privacy).
 
+Group administrators review join requests from the **Membership requests** section of the Members tab. When approving a request, you can add an optional comment. From the decline dialog, select **Ignore** to close the request without notifying the applicant, or give a reason and select **Decline** to send the reason by email and notification. A declined or ignored applicant can submit a new request with a corrected message.
+
 ## Managing invitations
 
 To manage invitations, open the filter/ drop down from the Members tab of your Group page and select **Invitations**. You can manage individual invitations by clicking the three dot menu (**⋮**) to the right of the member.

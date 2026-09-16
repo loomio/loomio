@@ -15,14 +15,28 @@ class MembershipRequestService
     membership_request
   end
 
-  def self.approve(membership_request:, actor:)
+  def self.approve(membership_request:, actor:, response_comment: nil)
     actor.ability.authorize! :approve, membership_request
     MembershipRequest.transaction do
-      membership_request.approve!(actor)
+      membership_request.approve!(actor, response_comment: response_comment)
       membership = membership_request.convert_to_membership!
       NotificationService.create!(
         kind: "membership_request_approved",
         subject: membership,
+        actor: actor,
+        recipient_message: response_comment
+      )
+    end
+    membership_request
+  end
+
+  def self.decline(membership_request:, actor:, response_comment:)
+    actor.ability.authorize! :decline, membership_request
+    MembershipRequest.transaction do
+      membership_request.decline!(actor, response_comment: response_comment)
+      NotificationService.create!(
+        kind: "membership_request_declined",
+        subject: membership_request,
         actor: actor
       )
     end

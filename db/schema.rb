@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_16_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -327,6 +327,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_000001) do
     t.datetime "responded_at", precision: nil
     t.integer "responder_id"
     t.string "response", limit: 255
+    t.text "response_comment"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"

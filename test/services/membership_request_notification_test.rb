@@ -68,6 +68,21 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
   end
 
+  test "approving membership includes the responder comment" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    MembershipRequestService.approve(
+      membership_request: request,
+      actor: @actor,
+      response_comment: "Welcome to the group"
+    )
+
+    membership = Membership.find_by!(group: @group, user: @requestor)
+    notification = Notification.find_by!(kind: "membership_request_approved", subject: membership)
+    assert_equal "Welcome to the group", notification.recipient_message
+    assert_equal "Welcome to the group", request.reload.response_comment
+  end
+
   test "approving membership falls back to the group title when its translation has no title field" do
     @actor.update!(selected_locale: "pl", auto_translate: true)
     @group.update_columns(content_locale: "en")
@@ -116,5 +131,57 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
 
     assert_nil request.reload.response
     assert_not Membership.exists?(group: @group, user: @requestor)
+  end
+
+  test "declining membership notifies the requestor with the reason" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    assert_equal request, MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      response_comment: "Please answer the join prompt"
+    )
+
+    notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal "declined", request.reload.response
+    assert_equal "Please answer the join prompt", request.response_comment
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+    assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
+
+    email_delivery = notification.notification_deliveries.find_by!(channel: "email")
+    email = NotificationMailer.notification(email_delivery.id).message
+    assert_includes email.body.encoded, "Please answer the join prompt"
+  end
+
+  test "notification failure rolls back a decline" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        MembershipRequestService.decline(
+          membership_request: request,
+          actor: @actor,
+          response_comment: "Please answer the join prompt"
+        )
+      end
+    end
+
+    assert_nil request.reload.response
+    assert_nil request.response_comment
+  end
+
+  test "requestor can apply again after being declined" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+    MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      response_comment: "Please answer the join prompt"
+    )
+
+    replacement = MembershipRequest.new(group: @group, introduction: "A corrected introduction")
+    assert_equal replacement, MembershipRequestService.create(membership_request: replacement, actor: @requestor)
+    assert replacement.persisted?
   end
 end

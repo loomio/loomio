@@ -19,7 +19,12 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
   end
 
   def approve
-    service.approve(membership_request: load_resource, actor: current_user)
+    service.approve(membership_request: load_resource, actor: current_user, response_comment: response_comment)
+    respond_with_resource
+  end
+
+  def decline
+    service.decline(membership_request: load_resource, actor: current_user, response_comment: response_comment)
     respond_with_resource
   end
 
@@ -29,6 +34,10 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
   end
 
   private
+
+  def response_comment
+    permitted_params.membership_request[:response_comment].presence if params[:membership_request]
+  end
 
   def authorize
     load_and_authorize :group
