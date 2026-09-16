@@ -205,18 +205,15 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     end
   end
 
-  test "nonmember cannot start a closed group discussion without its kept template" do
+  test "nonmember can start a closed group discussion without a template" do
     @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
-    other_template = DiscussionTemplate.create!(group: groups(:alien_group), author: @alien, process_name: 'Other group template', process_subtitle: 'Not valid for this group')
-    discarded_template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Retired template', process_subtitle: 'No longer available', discarded_at: Time.current)
     sign_in @alien
 
-    [ nil, other_template.id, discarded_template.id ].each do |template_id|
-      assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
-        post :create, params: { discussion: { title: 'Not permitted', group_id: @group.id, discussion_template_id: template_id } }
-      end
-      assert_response :forbidden
+    assert_difference [ 'Discussion.count', 'Topic.count' ], 1 do
+      post :create, params: { discussion: { title: 'A question without a template', group_id: @group.id } }
     end
+
+    assert_response :success
   end
 
   test "nonmember can start a public discussion from an open group template" do

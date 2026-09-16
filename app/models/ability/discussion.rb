@@ -22,8 +22,7 @@ module Ability::Discussion
           group.group_privacy != 'secret' &&
           group.non_members_can_start_discussions &&
           user.can?(:show, group) &&
-          !group.members.exists?(user.id) &&
-          discussion.created_from_group_template?
+          !group.members.exists?(user.id)
         )
       )
     end

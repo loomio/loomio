@@ -60,7 +60,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     elsif params[:id]
       template = DiscussionTemplate.find_by(id: params[:id])
       self.collection = template_accessible?(template) ? [ template ] : []
-    elsif (group = accessible_group(params[:group_id]))
+    elsif (group = find_accessible_group(params[:group_id]))
       self.collection = DiscussionTemplateService.group_templates(group: group)
       unless group.admins.exists?(current_user.id)
         self.collection = self.collection.select(&:kept?)
@@ -122,7 +122,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
 
   private
 
-  def accessible_group(id)
+  def find_accessible_group(id)
     group = Group.kept.find_by(id: id)
     return unless group
     return group if group.members.exists?(current_user.id)
@@ -138,7 +138,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     return false unless template
     return true if template.public?
 
-    group = accessible_group(template.group_id)
+    group = find_accessible_group(template.group_id)
     return false unless group
 
     group.members.exists?(current_user.id) || template.kept?
