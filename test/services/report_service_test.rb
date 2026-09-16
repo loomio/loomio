@@ -86,7 +86,41 @@ class ReportServiceTest < ActiveSupport::TestCase
     assert_equal 1, r.comments_per_user[@member.id]
     assert_equal 1, r.polls_per_user[@admin.id]
     assert_equal 1, r.stances_per_user[@member.id]
+    assert_equal 1, r.stances_issued_per_user[@member.id]
     assert_equal 1, r.outcomes_per_user[@admin.id]
+  end
+
+  test "counts issued identified ballots whether or not they were cast" do
+    poll = create_poll(author: @admin)
+    cast_stance(poll: poll, participant: @member)
+    Stance.create!(poll: poll, participant: @user, latest: true)
+
+    r = report
+
+    assert_equal 1, r.stances_issued_per_user[@member.id]
+    assert_equal 1, r.stances_issued_per_user[@user.id]
+    assert_equal 1, r.stances_per_user[@member.id]
+    assert_nil r.stances_per_user[@user.id]
+  end
+
+  test "excludes anonymous ballots from per-user issued and cast counts" do
+    poll = PollService.create(
+      params: {
+        poll_type: 'proposal',
+        title: "Anonymous #{SecureRandom.hex(4)}",
+        poll_option_names: %w[agree disagree abstain],
+        group_id: @group.id,
+        anonymous: true,
+        closing_at: 1.week.from_now
+      },
+      actor: @admin
+    )
+    assert poll.anonymous_poll_voters.exists?(voter_id: @member.id)
+
+    r = report
+
+    assert_nil r.stances_issued_per_user[@member.id]
+    assert_nil r.stances_per_user[@member.id]
   end
 
   test "counts activity per interval and totals" do
@@ -220,5 +254,21 @@ class ReportServiceTest < ActiveSupport::TestCase
 
     r = report(group_ids: [@group.id])
     assert_nil r.discussions_per_user[@admin.id]
+  end
+
+  test "delegate users include active delegates from any selected group" do
+    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @group.membership_for(@member).update!(delegate: true)
+    other_group.add_member!(@user).update!(delegate: true)
+
+    assert_equal Set[@member.id], report.delegate_user_ids
+    assert_equal Set[@member.id, @user.id], report(group_ids: [@group.id, other_group.id]).delegate_user_ids
+  end
+
+  test "delegate users exclude revoked memberships" do
+    membership = @group.membership_for(@member)
+    membership.update!(delegate: true, revoked_at: Time.current)
+
+    refute_includes report.delegate_user_ids, @member.id
   end
 end

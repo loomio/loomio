@@ -1391,6 +1391,14 @@ en:
     scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
     deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
   report:
+    all_votes_cast: All votes cast
+    votes_cast: Votes cast
+    votes_issued: Votes issued
+    votes_missed: Votes missed
+    voting_record_per_user: Voting record per user
+    yes: Yes
+    no: No
+    delegates_only: Delegates only
     start_on: Start on
     end_on: End on
     interval: Interval
