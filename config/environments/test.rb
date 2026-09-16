@@ -6,6 +6,8 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(IO::NULL))
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
