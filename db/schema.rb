@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_17_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -150,9 +150,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
     t.boolean "default_to_direct_discussion", default: false, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "html", null: false
-    t.datetime "discarded_at", precision: nil
+    t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.datetime "hidden_at", precision: nil
+    t.integer "hider_id"
     t.string "key"
     t.jsonb "link_previews", default: [], null: false
     t.integer "max_depth", default: 2, null: false
@@ -173,6 +175,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
     t.index ["author_id"], name: "index_discussion_templates_on_author_id"
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
     t.index ["discarded_by"], name: "index_discussion_templates_on_discarded_by"
+    t.index ["hidden_at"], name: "index_discussion_templates_on_hidden_at"
+    t.index ["hider_id"], name: "index_discussion_templates_on_hider_id"
   end
 
   create_table "discussions", id: :serial, force: :cascade do |t|
@@ -328,6 +332,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
     t.datetime "responded_at", precision: nil
     t.integer "responder_id"
     t.string "response", limit: 255
+    t.text "response_comment"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"
@@ -603,9 +608,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
     t.text "details"
     t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.integer "dots_per_person"
     t.integer "group_id", null: false
+    t.datetime "hidden_at"
     t.integer "hide_results", default: 0, null: false
+    t.integer "hider_id"
     t.string "key"
     t.boolean "limit_reason_length", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
@@ -639,6 +647,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_16_000000) do
     t.string "title_placeholder"
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
+    t.index ["discarded_by"], name: "index_poll_templates_on_discarded_by"
+    t.index ["hidden_at"], name: "index_poll_templates_on_hidden_at"
+    t.index ["hider_id"], name: "index_poll_templates_on_hider_id"
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|

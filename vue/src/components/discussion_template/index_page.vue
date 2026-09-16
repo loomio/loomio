@@ -64,7 +64,7 @@ const breadcrumbs = computed(() => {
 
 
 const queryDirect = () => {
-  const all = Records.discussionTemplates.collection.chain().find({ discardedAt: null }).simplesort('position').data();
+  const all = Records.discussionTemplates.collection.chain().find({ hiddenAt: null, discardedAt: null }).simplesort('position').data();
   const blank = all.filter(t => t.key === 'blank');
   const rest = all.filter(t => t.key !== 'blank');
   directTemplates.value = [...blank, ...rest];
@@ -76,8 +76,8 @@ const query = () => {
   group.value = Records.groups.findById(groupId.value);
   if (!group.value) { return }
 
-  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: null }).simplesort('position').data();
-  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: { $ne: null } }).simplesort('position').data();
+  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: null, discardedAt: null }).simplesort('position').data();
+  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: { $ne: null }, discardedAt: null }).simplesort('position').data();
   hasHiddenTemplates.value = hiddenTemplates.value.length > 0;
 
   actions.value = {};

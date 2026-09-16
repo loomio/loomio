@@ -134,7 +134,7 @@ class Discussion < ApplicationRecord
   end
 
   def created_from_group_template?
-    discussion_template&.kept? && discussion_template.group_id == group_id
+    discussion_template&.kept? && !discussion_template.hidden? && discussion_template.group_id == group_id
   end
 
   def tag_names_not_from_template

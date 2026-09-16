@@ -3,12 +3,12 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
     if params[:key_or_id].present? && (params[:key_or_id].to_i.to_s == params[:key_or_id].to_s)
-      @poll_template = PollTemplate.find_by(group_id: current_user.group_ids, id: params[:key_or_id])
+      @poll_template = PollTemplate.kept.find_by(group_id: current_user.group_ids, id: params[:key_or_id])
       respond_with_resource
     else
       self.collection = PollTemplateService.group_templates(group: group)
       unless group.admins.exists?(current_user.id)
-        self.collection = self.collection.reject { |t| t.discarded_at.present? }
+        self.collection = self.collection.reject(&:hidden?)
       end
       respond_with_collection
     end
@@ -33,7 +33,7 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
         group_ids = [group.id]
         group_ids << group.parent_id if group.parent_id && current_user.group_ids.include?(group.parent_id)
 
-        db_results = PollTemplate.where(group_id: group_ids, discarded_at: nil).order(:group_id, :position).map { |dt|
+        db_results = PollTemplate.kept.visible.where(group_id: group_ids).order(:group_id, :position).map { |dt|
           {
             id: dt.id,
             key: dt.key,
@@ -52,7 +52,7 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
   end
 
   def show
-    @poll_template = PollTemplate.find_by(group_id: current_user.group_ids, id: params[:id])
+    @poll_template = PollTemplate.kept.find_by(group_id: current_user.group_ids, id: params[:id])
     respond_with_resource
   end
 
@@ -110,25 +110,19 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
     end
   end
 
-  def discard
-    @poll_template = find_template_for_author_or_admin(:kept)
-    @poll_template.discard!
-    index
-  end
-
-  def undiscard
-    @poll_template = find_template_for_author_or_admin(:discarded)
-    @poll_template.undiscard!
-    index
-  end
-
   def destroy
     @poll_template = find_template_for_author_or_admin
-    @poll_template.destroy!
+    @poll_template.discard!(actor: current_user)
     destroy_response
   end
 
   def hide
+    if params[:id]
+      @poll_template = find_template_for_author_or_admin(:visible)
+      @poll_template.hide!(actor: current_user)
+      return index
+    end
+
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     if PollTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
@@ -144,6 +138,12 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
   end
 
   def unhide
+    if params[:id]
+      @poll_template = find_template_for_author_or_admin(:hidden)
+      @poll_template.unhide!
+      return index
+    end
+
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     if PollTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
@@ -162,11 +162,11 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
   def find_template_for_author_or_admin(scope = nil)
     if params[:group_id]
       group = current_user.groups.find_by!(id: params[:group_id])
-      templates = group.poll_templates
+      templates = group.poll_templates.kept
       templates = templates.send(scope) if scope
       template = templates.find_by!(id: params[:id])
     else
-      template = PollTemplate.find(params[:id])
+      template = PollTemplate.kept.find(params[:id])
       group = current_user.groups.find_by!(id: template.group_id)
     end
 

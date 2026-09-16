@@ -98,7 +98,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "index returns kept closed group templates to a verified nonmember" do
     @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
     kept = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
-    discarded = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Old intake', process_subtitle: 'Unavailable', discarded_at: Time.current)
+    hidden = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Old intake', process_subtitle: 'Unavailable', hidden_at: Time.current)
     sign_in users(:alien)
 
     get :index, params: { group_id: @group.id }
@@ -106,7 +106,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     ids = JSON.parse(response.body)['discussion_templates'].pluck('id')
     assert_includes ids, kept.id
-    assert_not_includes ids, discarded.id
+    assert_not_includes ids, hidden.id
   end
 
   test "index does not expose templates to signed out users or secret group nonmembers" do
@@ -308,7 +308,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   # === DESTROY ===
 
-  test "destroy deletes a discussion template" do
+  test "destroy discards a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @admin,
@@ -317,10 +317,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @admin
-    assert_difference 'DiscussionTemplate.count', -1 do
+    assert_no_difference 'DiscussionTemplate.count' do
       delete :destroy, params: { id: template.id }
     end
     assert_response :success
+    assert template.reload.discarded?
+    assert_equal @admin.id, template.discarded_by
   end
 
   test "destroy denies non-admin non-author" do
@@ -336,9 +338,9 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  # === DISCARD / UNDISCARD ===
+  # === HIDE / UNHIDE ===
 
-  test "discard discards a discussion template" do
+  test "hide hides a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @admin,
@@ -347,31 +349,33 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @admin
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    assert template.discarded?
+    assert template.hidden?
+    assert_equal @admin.id, template.hider_id
   end
 
-  test "undiscard restores a discarded discussion template" do
+  test "unhide restores a hidden discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @admin,
       process_name: "Restorable",
       process_subtitle: "subtitle"
     )
-    template.discard!
+    template.hide!
 
     sign_in @admin
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    refute template.discarded?
+    refute template.hidden?
+    assert_nil template.hider_id
   end
 
-  test "discard denies non-admin non-author" do
+  test "hide denies non-admin non-author" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @admin,
@@ -380,7 +384,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
@@ -427,15 +431,15 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal count, @group.discussion_templates.count
   end
 
-  test "ensure_templates_materialized marks non-visible defaults as discarded" do
+  test "ensure_templates_materialized marks non-visible defaults as hidden" do
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
     visible_keys = DiscussionTemplateService::VISIBLE_BY_DEFAULT
     @group.discussion_templates.each do |t|
       if visible_keys.include?(t.key)
-        refute t.discarded?, "#{t.key} should be visible by default"
+        refute t.hidden?, "#{t.key} should be visible by default"
       else
-        assert t.discarded?, "#{t.key} should be hidden by default"
+        assert t.hidden?, "#{t.key} should be hidden by default"
       end
     end
   end
@@ -447,10 +451,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
     blank = @group.discussion_templates.find_by(key: 'blank')
-    assert blank.discarded?, "blank should be discarded based on group info"
+    assert blank.hidden?, "blank should be hidden based on group info"
 
     practice = @group.discussion_templates.find_by(key: 'practice_thread')
-    refute practice.discarded?, "practice_thread should not be discarded"
+    refute practice.hidden?, "practice_thread should not be hidden"
   end
 
   test "ensure_templates_materialized skips if group already has templates" do
@@ -486,10 +490,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     template = DiscussionTemplate.last
     assert_equal @user.id, template.author_id
-    assert_not template.discarded?, "member-created template should not be auto-discarded"
+    assert_not template.hidden?, "member-created template should not be auto-hidden"
   end
 
-  test "admin-created template is not auto-discarded" do
+  test "admin-created template is not auto-hidden" do
     @group.update!(members_can_create_templates: true)
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
@@ -504,7 +508,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
     assert_response :success
     template = DiscussionTemplate.last
-    refute template.discarded?, "admin-created template should not be auto-discarded"
+    refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
   test "member can edit own template when setting enabled" do
@@ -545,7 +549,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "member can discard own template when setting enabled" do
+  test "member can hide own template when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
@@ -555,14 +559,14 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    assert template.discarded?
+    assert template.hidden?
   end
 
-  test "member can destroy own template when setting enabled" do
+  test "member can discard own template through delete when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
@@ -572,31 +576,33 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @user
-    assert_difference 'DiscussionTemplate.count', -1 do
+    assert_no_difference 'DiscussionTemplate.count' do
       delete :destroy, params: { id: template.id }
     end
     assert_response :success
+    assert template.reload.discarded?
+    assert_equal @user.id, template.discarded_by
   end
 
-  test "member can undiscard own template when setting enabled" do
+  test "member can unhide own template when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
       author: @user,
-      process_name: "Member Undiscardable",
+      process_name: "Member Unhideable",
       process_subtitle: "subtitle"
     )
-    template.discard!
+    template.hide!
 
     sign_in @user
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    refute template.discarded?
+    refute template.hidden?
   end
 
-  test "member cannot discard another member's template" do
+  test "member cannot hide another member's template" do
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
@@ -606,11 +612,11 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
-  test "member cannot undiscard another member's template" do
+  test "member cannot unhide another member's template" do
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
@@ -618,10 +624,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
       process_name: "Admin's Hidden Template",
       process_subtitle: "subtitle"
     )
-    template.discard!
+    template.hide!
 
     sign_in @user
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
@@ -641,7 +647,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "non-member cannot access discard" do
+  test "non-member cannot access hide" do
     other_user = User.create!(name: "Outsider #{SecureRandom.hex(4)}", email: "outsider_#{SecureRandom.hex(4)}@example.com", email_verified: true)
     template = DiscussionTemplate.create!(
       group: @group,
@@ -651,7 +657,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     )
 
     sign_in other_user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :not_found
   end
 

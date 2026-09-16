@@ -16,22 +16,23 @@ This workflow is private between submitters, but it is not anonymous. Submitters
 
 ## Set up a private submission process
 
-1. Create a [discussion template](/en/user_manual/discussions/templates) for the submission. Include the questions and information the review team needs. You can create different discussion templates in the same group for different kinds of submissions.
-2. Set the group privacy to **Closed**. If submitters should not request group membership, set membership to **Invitation only**.
-3. Add only the people who should review submissions as group members.
-4. In **Group settings** under **Permissions**, enable **Non-members can start discussions**.
-5. Share the group page with prospective submitters. They must sign in to their user account before making a submission.
+1. Create a dedicated subgroup for the submission process and set its privacy to **Closed**. A subgroup keeps the submissions separate from the parent group's other work.
+2. Add the selection panel or other people responsible for reviewing submissions as members of the subgroup. Every subgroup member can see every submission, so add only people who should have that access.
+3. Create a [discussion template](/en/user_manual/discussions/templates) in the subgroup. Include the questions and information submitters should provide. You can create different discussion templates for different kinds of submissions.
+4. If submitters should not request subgroup membership, set membership to **Invitation only**.
+5. In the subgroup's **Group settings** under **Permissions**, enable **Non-members can start discussions**.
+6. Share the subgroup page with prospective submitters. They must sign in to their user account before making a submission.
 
 ## Make a submission
 
-The submitter opens the group and selects **Start discussion**. Loomio shows the group's available discussion templates. The submitter selects the relevant discussion template, completes its questions, and starts the discussion.
+The submitter opens the subgroup and selects **Start discussion**. Loomio shows the subgroup's available discussion templates. The submitter selects the relevant discussion template, completes its questions, and starts the discussion.
 
-The discussion belongs to the group, but the submitter does not become a group member. Loomio adds them as a guest of that discussion so they can read it, receive notifications, and respond to follow-up questions.
+The discussion belongs to the subgroup, but the submitter does not become a subgroup member. Loomio adds them as a guest of their discussion thread, enabling them to see and participate in the discussion with the panel or review team. They cannot see other private discussions or submissions in the subgroup.
 
 ## Review submissions
 
-Group members can see every submission discussion in the group. They can ask follow-up questions and use comments, polls, or other discussion tools to complete their review.
+Subgroup members can see every submission discussion in the subgroup. They can ask follow-up questions and use comments, polls, or other discussion tools to complete their review.
 
-If another person needs to provide information, a group member with permission can invite them to the submission discussion. They join that discussion as a guest without gaining access to the group's other private discussions.
+If another person needs to provide information, a subgroup member with permission can invite them to the submission discussion. For example, when a nominator submits a nomination, the subgroup can invite the nominee to the thread if their participation is required. The invited person joins as a guest without gaining access to the subgroup's other private discussions.
 
-Each submitter can see their own submission but cannot see the group's other private discussions or submissions. Disable **Non-members can start discussions** when submissions close. Existing discussions and guest access are unchanged.
+Each submitter can see their own submission but cannot see the subgroup's other private discussions or submissions. Disable **Non-members can start discussions** when submissions close. Existing discussions and guest access are unchanged.

@@ -12,14 +12,14 @@ class ConvertDiscussionTemplatesWorker < ApplicationJob
           :newest_first,
           :content_locale,
           :link_previews,
-          :discarded_at,
-          :discarded_by,
           :created_at,
           :updated_at,
           :attachments))
 
       template.process_name = discussion.title
       template.source_discussion_id = discussion.id
+      template.hidden_at = discussion.discarded_at
+      template.hider_id = discussion.discarded_by
 
       template.save!
 

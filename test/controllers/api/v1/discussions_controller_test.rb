@@ -177,6 +177,12 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     post :create, params: { discussion: { title: 'Injected tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake', 'Not approved' ] } }
     assert_response :forbidden
+
+    template.hide!
+    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
+      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake' ] } }
+    end
+    assert_response :forbidden
   end
 
   test "nonmember cannot invite people while creating a group discussion" do
