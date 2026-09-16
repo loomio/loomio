@@ -818,6 +818,7 @@ de:
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
       user_reminded: "%{actor} erinnert dich daran, über Folgendes abzustimmen: %{title}"
       thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
+      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt: %{reason}'
     without_title:
       unknown_sender: Bitte überprüfe die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat dich zu einer Gruppe eingeladen"
@@ -856,6 +857,7 @@ de:
       new_comment: "%{actor} hat in einer Diskussion kommentiert"
       outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
       thread_locked: "%{actor} hat den Thread gesperrt"
+      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt: %{reason}'
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, deine Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchtest du die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -900,6 +902,7 @@ de:
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       user_reminded: "%{actor} erinnert dich daran, über Folgendes abzustimmen: %{title}"
       thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
+      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt: %{reason}'
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1526,6 +1529,13 @@ de:
     messages:
       request_approved_success: Mitgliedschaftsanfrage bestätigt
       request_ignored_success: Mitgliedschaftsanfrage ignoriert.
+      request_declined_success: Mitgliedschaftsantrag abgelehnt
+    approve_request: Mitgliedschaftsantrag genehmigen
+    decline: Ablehnen
+    decline_request: Mitgliedschaftsantrag ablehnen
+    decline_reason: Grund für die Ablehnung
+    decline_help: Bei einer Ablehnung wird dem Antragsteller der Grund per E-Mail und Benachrichtigung mitgeteilt. Er kann dann einen neuen Antrag stellen. Bei einer Ignorierung wird der Antrag ohne Benachrichtigung geschlossen.
+    response_comment: Kommentar (optional)
   invitation_form:
     group_url: Gruppen-URL
     reusable_invitation_link: Wiederverwendabrer Einladungslink

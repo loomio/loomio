@@ -387,6 +387,8 @@ pl:
     content_was_translated: Ta treść została przetłumaczona z %{source_locale}
     content_was_translated_html: Ta treść została przetłumaczona z %{source_locale}. <a href="%{profile_url}">Wyświetl ustawienia<a></a>
     loomio_app_description: Miejsce, w którym organizacje współpracujące mogą wspólnie podejmować decyzje.
+    membership_request_declined:
+      button_text: Złóż wniosek ponownie
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.

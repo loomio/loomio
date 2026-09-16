@@ -820,6 +820,7 @@ it:
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
       user_reminded: "%{actor} ti ricorda di votare su: %{title}"
       thread_locked: "%{actor} ha bloccato la discussione: %{title}"
+      membership_request_declined: 'La tua richiesta di iscrizione a %{title} è stata rifiutata: %{reason}'
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -858,6 +859,7 @@ it:
       new_comment: "%{actor} ha commentato in una discussione"
       outcome_updated: "%{actor} ha aggiornato il risultato"
       thread_locked: "%{actor} ha bloccato il thread"
+      membership_request_declined: 'La tua richiesta di iscrizione a %{title} è stata rifiutata: %{reason}'
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -902,6 +904,7 @@ it:
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       user_reminded: "%{actor} ti ricorda di votare su: %{title}"
       thread_locked: "%{actor} ha bloccato la discussione: %{title}"
+      membership_request_declined: 'La tua richiesta di iscrizione a %{title} è stata rifiutata: %{reason}'
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -1530,6 +1533,13 @@ it:
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
+      request_declined_success: Richiesta di adesione respinta
+    approve_request: Approva la richiesta di iscrizione
+    decline: Declino
+    decline_request: Rifiuta la richiesta di adesione
+    decline_reason: Motivo del rifiuto
+    decline_help: Rifiutando, invii la motivazione al richiedente tramite e-mail e notifica. Il richiedente potrà quindi presentare una nuova richiesta. Ignorando, la richiesta viene chiusa senza alcuna notifica.
+    response_comment: Commento (facoltativo)
   invitation_form:
     group_url: Gruppo URL
     reusable_invitation_link: Collegamento invito riutilizzabile

@@ -812,6 +812,7 @@ nl_NL:
       new_discussion: "%{actor} startte een discussie: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
+      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen: %{reason}'
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -850,6 +851,7 @@ nl_NL:
       new_comment: "%{actor} heeft gereageerd in een discussie"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       thread_locked: "%{actor} heeft de thread vergrendeld"
+      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen: %{reason}'
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -894,6 +896,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
+      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen: %{reason}'
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -1518,6 +1521,13 @@ nl_NL:
     messages:
       request_approved_success: Lidmaatschapsverzoek goedgekeurd
       request_ignored_success: Lidmaatschapsverzoek genegeerd
+      request_declined_success: Lidmaatschapsverzoek afgewezen
+    approve_request: Goedkeuring van het lidmaatschapsverzoek
+    decline: Afwijzen
+    decline_request: Verzoek om lidmaatschap afwijzen
+    decline_reason: Reden voor afwijzing
+    decline_help: Bij 'Afwijzen' wordt de reden voor de afwijzing per e-mail en melding naar de aanvrager gestuurd. De aanvrager kan vervolgens een nieuwe aanvraag indienen. Bij 'Negeren' wordt de aanvraag gesloten zonder de aanvrager hiervan op de hoogte te stellen.
+    response_comment: Opmerking (optioneel)
   invitation_form:
     group_url: Groep URL
     reusable_invitation_link: Herbruikbare uitnodigingslink

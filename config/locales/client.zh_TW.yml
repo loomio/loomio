@@ -813,6 +813,7 @@ zh_TW:
       new_discussion: "%{actor} 發起了一場討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕：%{reason}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -851,6 +852,7 @@ zh_TW:
       new_comment: "%{actor} 在討論中發表了評論"
       outcome_updated: "%{actor} 更新了結果"
       thread_locked: "%{actor} 鎖定了該線程"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕：%{reason}
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
@@ -895,6 +897,7 @@ zh_TW:
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕：%{reason}
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -1521,6 +1524,13 @@ zh_TW:
     messages:
       request_approved_success: 成員資格申請已批准
       request_ignored_success: 成員資格申請已忽略
+      request_declined_success: 會員申請被拒絕
+    approve_request: 核准會員申請
+    decline: 衰退
+    decline_request: 拒絕會員資格申請
+    decline_reason: 拒絕理由
+    decline_help: 拒絕會將拒絕理由透過電子郵件和通知發送給申請人。他們可以提交新的申請。忽略則會在不通知申請人的情況下關閉申請。
+    response_comment: 備註（可選）
   invitation_form:
     group_url: 群組 URL
     reusable_invitation_link: 可重複使用的邀請連結

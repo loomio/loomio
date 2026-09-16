@@ -629,6 +629,8 @@ be:
       subject: "%{who} запытаў далучэнне да %{which_group}"
       view_group: Вы можаце зацвердзіць або адхіліць запыт тут
       button_text: Праглядзець запыт
+    membership_request_declined:
+      button_text: Падаць заяўку зноў
   announcement_count_emails: "%{count} электронных лістоў"
   email_actions:
     unfollowed_discussion: Вы адключылі электронную пошту для гэтай тэмы.

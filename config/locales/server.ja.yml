@@ -357,6 +357,8 @@ ja:
     content_was_translated: このコンテンツは%{source_locale}から翻訳されました
     content_was_translated_html: このコンテンツは%{source_locale}から翻訳されました。<a href="%{profile_url}">表示設定<a></a>
     loomio_app_description: 協力的な組織が一緒に意思決定を行う場所。
+    membership_request_declined:
+      button_text: 再度申請してください
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。

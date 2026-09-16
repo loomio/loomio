@@ -386,6 +386,8 @@ fr:
     content_was_translated: Ce contenu a été traduit à partir de %{source_locale}
     content_was_translated_html: Ce contenu a été traduit depuis %{source_locale}. <a href="%{profile_url}">Afficher les paramètres<a></a>
     loomio_app_description: Un lieu où les organisations collaboratives peuvent prendre des décisions ensemble.
+    membership_request_declined:
+      button_text: Faire une nouvelle demande
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Tu as désactivé les notifications pour cette discussion.

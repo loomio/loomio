@@ -372,6 +372,8 @@ he:
     content_was_translated: תוכן זה תורגם מ-%{source_locale}
     content_was_translated_html: תוכן זה תורגם מ-%{source_locale}. <a href="%{profile_url}">הצג הגדרות<a></a>
     loomio_app_description: מקום בו ארגונים משתפי פעולה יכולים לקבל החלטות יחד.
+    membership_request_declined:
+      button_text: הגש מועמדות שוב
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.

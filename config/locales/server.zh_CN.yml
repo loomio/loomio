@@ -627,6 +627,8 @@ zh_CN:
       subject: "%{who} 已申请加入 %{which_group}"
       view_group: 您可以在这里批准或拒绝请求。
       button_text: 查看请求
+    membership_request_declined:
+      button_text: 再次申请
   announcement_count_emails: "%{count}封邮件"
   email_actions:
     unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。

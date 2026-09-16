@@ -810,6 +810,7 @@ sl:
       new_discussion: "%{actor} je začel razpravo: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
       thread_locked: "%{actor} je zaklenil nit: %{title}"
+      membership_request_declined: 'Vaša zahteva za pridružitev %{title} je bila zavrnjena: %{reason}'
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       group_announced: "%{actor} vas je povabil v skupino"
@@ -848,6 +849,7 @@ sl:
       new_comment: "%{actor} je komentiral v razpravi"
       outcome_updated: "%{actor} je posodobil rezultat"
       thread_locked: "%{actor} je zaklenil nit"
+      membership_request_declined: 'Vaša zahteva za pridružitev %{title} je bila zavrnjena: %{reason}'
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
@@ -892,6 +894,7 @@ sl:
       discussion_closed: "%{actor} je zaključil razpravo: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
       thread_locked: "%{actor} je zaklenil nit: %{title}"
+      membership_request_declined: 'Vaša zahteva za pridružitev %{title} je bila zavrnjena: %{reason}'
   discussion_fork_actions:
     move: Premakni se
     moved: Ganljivi komentarji, to lahko traja nekaj časa
@@ -1504,6 +1507,13 @@ sl:
     messages:
       request_approved_success: Zahteva za članstvo odobrena
       request_ignored_success: Zahteva za članstvo je bila prezrta
+      request_declined_success: Zahteva za članstvo zavrnjena
+    approve_request: Odobritev zahteve za članstvo
+    decline: Zavrnitev
+    decline_request: Zavrni zahtevo za članstvo
+    decline_reason: Razlog za zavrnitev
+    decline_help: Z zavrnitvijo se prosilcu vaš razlog pošlje po e-pošti in z obvestilom. Lahko odda novo zahtevo. Z prezritvijo se zahteva zapre brez obvestila.
+    response_comment: Komentar (neobvezno)
   invitation_form:
     group_url: URL skupine
     reusable_invitation_link: Povezava za povabilo za večkratno uporabo
