@@ -1490,6 +1490,8 @@ ca:
     handle_changed_hint: L'URL i l'adreça electrònica anteriors redirigiran a la nova adreça.
     members_can_create_tags: Els membres poden crear etiquetes
     members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
+    non_members_can_start_discussions: Els no membres poden iniciar debats
+    non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
   group_export_modal:
     title: Exporta dades del grup
     body: |

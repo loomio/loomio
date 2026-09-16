@@ -1,5 +1,14 @@
 # Corrected translations
 
+## 2026-09-16 — Non-member discussion setting
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `server.de.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `Sie` wording and final full stops | Informal `du` wording without final full stops | German UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.es.yml`, `server.es.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Infinitive help text and final full stops | Informal `tú` imperative wording without final full stops | Spanish UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.fr.yml`, `server.fr.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `vous` wording and final full stops | Informal `tu` wording without final full stops | French UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.nl_NL.yml`, `server.nl_NL.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `u` wording and final full stops | Informal `je` wording without final full stops | Dutch UI uses the informal register and single-sentence UI strings omit final full stops |
+
 ## 2026-09-10 — iOS push guidance
 
 | File | Key | Before | After | Why it was wrong |

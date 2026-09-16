@@ -1484,6 +1484,8 @@ tr:
     handle_changed_hint: Önceki URL'niz ve e-posta adresiniz yeni adresinize yönlendirilecektir.
     members_can_create_tags: Üyeler etiket oluşturabilir.
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
+    non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
+    non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>

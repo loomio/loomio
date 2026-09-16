@@ -1510,6 +1510,8 @@ it:
     handle_changed_hint: Il tuo precedente URL e indirizzo email verranno reindirizzati al nuovo indirizzo.
     members_can_create_tags: I membri possono creare tag
     members_can_create_tags_help: Consenti ai membri di creare nuovi tag quando etichettano discussioni e sondaggi.
+    non_members_can_start_discussions: Anche i non membri possono avviare discussioni
+    non_members_can_start_discussions_help: Consenti ai non membri di avviare una discussione utilizzando uno dei modelli di questo gruppo.
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>

@@ -1484,6 +1484,8 @@ da:
     handle_changed_hint: Din tidligere URL og e-mailadresse vil omdirigere til din nye adresse.
     members_can_create_tags: Medlemmer kan oprette tags
     members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
+    non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
+    non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>

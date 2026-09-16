@@ -1498,6 +1498,8 @@ de:
     handle_changed_hint: Deine bisherige URL und E-Mail-Adresse werden auf deine neue Adresse weitergeleitet.
     members_can_create_tags: Mitglieder können Tags erstellen
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
+    non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
+    non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
   group_export_modal:
     title: Gruppendaten exportieren
     body: |

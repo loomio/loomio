@@ -755,3 +755,5 @@ zh_CN:
     no_option_selected: 未选择任何选项
     outcome: 结果 · %{author} %{timestamp}
     review_date: "**审核日期：** %{value}"
+  error:
+    access_denied: 你没有权限这样做。
