@@ -2676,6 +2676,14 @@ hr:
     tags_per_interval: Oznake po %{interval}
     all_groups_and_direct_threads: Sve grupe i izravne teme
     custom_selection: Prilagođeni odabir
+    all_votes_cast: Svi dati glasovi
+    votes_cast: Broj glasova
+    votes_issued: Izdani glasovi
+    votes_missed: Propušteni glasovi
+    voting_record_per_user: Broj glasova po korisniku
+    yes_label: Da
+    no_label: Ne
+    delegates_only: Samo za delegate
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak

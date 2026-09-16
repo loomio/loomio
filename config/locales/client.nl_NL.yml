@@ -2703,6 +2703,14 @@ nl_NL:
     tags_per_interval: Tags per %{interval}
     all_groups_and_direct_threads: Alle groepen en directe discussies
     custom_selection: Aangepaste selectie
+    all_votes_cast: Alle uitgebrachte stemmen
+    votes_cast: Uitgebrachte stemmen
+    votes_issued: Toegewezen stemmen
+    votes_missed: Stemmen gemist
+    voting_record_per_user: Stemgeschiedenis per gebruiker
+    yes_label: Ja
+    no_label: Nee
+    delegates_only: Alleen voor afgevaardigden
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag

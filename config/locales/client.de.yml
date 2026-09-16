@@ -2711,6 +2711,14 @@ de:
     tags_per_interval: Tags pro %{interval}
     all_groups_and_direct_threads: Alle Gruppen und direkten Threads
     custom_selection: Benutzerdefinierte Auswahl
+    all_votes_cast: Alle abgegebenen Stimmen
+    votes_cast: abgegebene Stimmen
+    votes_issued: Zugewiesene Stimmen
+    votes_missed: Stimmen verpasst
+    voting_record_per_user: Abstimmungsverhalten pro Nutzer
+    yes_label: Ja
+    no_label: NEIN
+    delegates_only: Nur Delegierte
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du hast alle Schritte abgeschlossen!"
     getting_started_checklist: Checkliste für die ersten Schritte

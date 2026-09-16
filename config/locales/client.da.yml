@@ -2676,6 +2676,14 @@ da:
     tags_per_interval: Tags pr. %{interval}
     all_groups_and_direct_threads: Alle grupper og direkte tråde
     custom_selection: Brugerdefineret valg
+    all_votes_cast: Alle afgivne stemmer
+    votes_cast: Afgivne stemmer
+    votes_issued: Afgivne stemmer
+    votes_missed: Stemmer mistet
+    voting_record_per_user: Stemmehistorik pr. bruger
+    yes_label: Ja
+    no_label: Ingen
+    delegates_only: Kun delegerede
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion

@@ -2720,6 +2720,14 @@ fr:
     tags_per_interval: Étiquettes par %{interval}
     all_groups_and_direct_threads: Tous les groupes et les discussions directes
     custom_selection: Sélection personnalisée
+    all_votes_cast: Tous les votes exprimés
+    votes_cast: Votes exprimés
+    votes_issued: Bulletins attribués
+    votes_missed: Des votes ont été manqués
+    voting_record_per_user: Résultats des votes par utilisateur
+    yes_label: Oui
+    no_label: Non
+    delegates_only: Délégués seulement
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tu as terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage

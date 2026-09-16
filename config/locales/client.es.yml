@@ -2712,6 +2712,14 @@ es:
     tags_per_interval: Etiquetas por %{interval}
     all_groups_and_direct_threads: Todos los grupos y conversaciones directas
     custom_selection: Selección personalizada
+    all_votes_cast: Todos los votos emitidos
+    votes_cast: Votos emitidos
+    votes_issued: Votos asignados
+    votes_missed: Votos perdidos
+    voting_record_per_user: Registro de votación por usuario
+    yes_label: Sí
+    no_label: 'No'
+    delegates_only: Solo delegados
   tips:
     youve_completed_all_the_steps: "\U0001F389¡Has completado todos los pasos!"
     getting_started_checklist: Lista de verificación para comenzar

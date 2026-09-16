@@ -1343,6 +1343,14 @@ zh_CN:
     tags_per_interval: 每%{interval}的标签数量
     all_groups_and_direct_threads: 所有群组和直接讨论串
     custom_selection: 自定义选择
+    all_votes_cast: 所有投票
+    votes_cast: 投票
+    votes_issued: 已投票
+    votes_missed: 未投票
+    voting_record_per_user: 用户投票记录
+    yes_label: 是的
+    no_label: 不
+    delegates_only: 仅限代表
   group_page:
     stats: 子群组统计数据
     participation_report: 参与报告

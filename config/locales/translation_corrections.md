@@ -390,3 +390,14 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |
+
+## 2026-09-16 — Voting record labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `report.votes_issued` | `abgegebene Stimmen` | `Zugewiesene Stimmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.es.yml` | `report.votes_issued` | `Votos emitidos` | `Votos asignados` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.fr.yml` | `report.votes_issued` | `Votes émis` | `Bulletins attribués` | Could mean votes cast rather than ballots assigned to the person |
+| `config/locales/client.it.yml` | `report.votes_issued` | `Voti espressi` | `Voti assegnati` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.nl_NL.yml` | `report.votes_issued` | `Uitgebrachte stemmen` | `Toegewezen stemmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.pt_BR.yml` | `report.votes_issued` | `Votos emitidos` | `Votos atribuídos` | Could mean votes cast rather than ballots assigned to the person |

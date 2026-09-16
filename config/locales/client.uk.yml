@@ -2706,6 +2706,14 @@ uk:
     tags_per_interval: Теги на %{interval}
     all_groups_and_direct_threads: Усі групи та прямі обговорення
     custom_selection: Вибір на замовлення
+    all_votes_cast: Усі подані голоси
+    votes_cast: Віддані голоси
+    votes_issued: Видані голоси
+    votes_missed: Пропущені голосування
+    voting_record_per_user: Кількість голосів на користувача
+    yes_label: Так
+    no_label: Ні
+    delegates_only: Тільки для делегатів
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи

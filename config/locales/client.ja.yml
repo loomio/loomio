@@ -2675,6 +2675,14 @@ ja:
     tags_per_interval: "%{interval}別タグ数"
     all_groups_and_direct_threads: すべてのグループと直接のスレッド
     custom_selection: カスタム選択
+    all_votes_cast: 投票されたすべての票
+    votes_cast: 投票数
+    votes_issued: 投票が発行されました
+    votes_missed: 投票が欠落
+    voting_record_per_user: ユーザーごとの投票記録
+    yes_label: はい
+    no_label: いいえ
+    delegates_only: 代表者限定
   tips:
     youve_completed_all_the_steps: "\U0001F389 すべての手順が完了しました。"
     getting_started_checklist: 開始チェックリスト

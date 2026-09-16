@@ -2724,6 +2724,14 @@ pt_BR:
     tags_per_interval: Tags por %{interval}
     all_groups_and_direct_threads: Todos os grupos e tópicos diretos
     custom_selection: Seleção personalizada
+    all_votes_cast: Todos os votos foram computados.
+    votes_cast: Votos apurados
+    votes_issued: Votos atribuídos
+    votes_missed: Votos perdidos
+    voting_record_per_user: Registro de votação por usuário
+    yes_label: Sim
+    no_label: Não
+    delegates_only: Apenas para delegados
   tips:
     youve_completed_all_the_steps: "\U0001F389 Você concluiu todas as etapas!"
     getting_started_checklist: Lista de verificação para começar

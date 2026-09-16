@@ -2703,6 +2703,14 @@ ca:
     tags_per_interval: Etiquetes per %{interval}
     all_groups_and_direct_threads: Tots els grups i fils directes
     custom_selection: Selecció personalitzada
+    all_votes_cast: Tots els vots emesos
+    votes_cast: Vots emesos
+    votes_issued: Vots emesos
+    votes_missed: Vots perduts
+    voting_record_per_user: Registre de votacions per usuari
+    yes_label: Sí
+    no_label: 'No'
+    delegates_only: Només delegats
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar

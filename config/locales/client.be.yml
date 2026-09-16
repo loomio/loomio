@@ -1363,6 +1363,14 @@ be:
     month: Месяц
     year: Год
     country_disclaimer: Краіна вызначаецца на аснове IP-адраса карыстальніка і не вельмі дакладная. Лічыце гэта толькі прыблізным арыентырам.
+    all_votes_cast: Усе аддадзеныя галасы
+    votes_cast: Аддадзеныя галасы
+    votes_issued: Выдадзеныя галасы
+    votes_missed: Прапушчаныя галасы
+    voting_record_per_user: Колькасць галасаванняў на карыстальніка
+    yes_label: Так
+    no_label: Не
+    delegates_only: Толькі для дэлегатаў
   group_page:
     stats: Статыстыка групы
     participation_report: Справаздача аб удзеле
