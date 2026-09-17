@@ -834,7 +834,7 @@ en:
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
-      membership_request_declined: "Your request to join %{title} was declined: %{reason}"
+      membership_request_declined: "Your request to join %{title} was declined"
       new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
@@ -875,7 +875,7 @@ en:
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
-      membership_request_declined: "Your request to join %{title} was declined: %{reason}"
+      membership_request_declined: "Your request to join %{title} was declined"
       new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
@@ -918,7 +918,7 @@ en:
       membership_resent: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join your group"
       membership_request_approved: "%{actor} approved your request to join %{title}"
-      membership_request_declined: "Your request to join %{title} was declined: %{reason}"
+      membership_request_declined: "Your request to join %{title} was declined"
       outcome_announced: "%{actor} shared a %{poll_type} outcome"
       outcome_created: "%{actor} shared a %{poll_type} outcome"
       outcome_updated: "%{actor} updated the outcome"
@@ -1659,7 +1659,7 @@ en:
     decline: Decline
     decline_request: Decline membership request
     decline_reason: Reason for declining
-    decline_help: Decline sends your reason to the applicant by email and notification. They can submit a new request. Ignore closes the request without notifying them.
+    decline_help: Decline sends your reason to the applicant by email. They can submit a new request. Ignore closes the request without notifying them.
     ignore: Ignore
     response_comment: Comment (optional)
     no_pending_requests: There are currently no pending membership requests for this group.

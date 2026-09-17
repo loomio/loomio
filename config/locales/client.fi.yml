@@ -810,7 +810,7 @@ fi:
       new_discussion: "%{actor} aloitti keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
       thread_locked: "%{actor} lukitsi ketjun: %{title}"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin: %{reason}'
+      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       group_announced: "%{actor} kutsui sinut ryhmään"
@@ -849,7 +849,7 @@ fi:
       new_comment: "%{actor} kommentoi keskustelussa"
       outcome_updated: "%{actor} päivitti lopputuloksen"
       thread_locked: "%{actor} lukitsi ketjun"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin: %{reason}'
+      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -894,7 +894,7 @@ fi:
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
       thread_locked: "%{actor} lukitsi ketjun: %{title}"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin: %{reason}'
+      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
   discussion_fork_actions:
     move: Liikkua
     moved: Siirretään kommentteja, tämä voi kestää hetken
@@ -1512,7 +1512,7 @@ fi:
     decline: Hylkää
     decline_request: Hylkää jäsenyyspyyntö
     decline_reason: Hylkäämisen syy
-    decline_help: Hylkääminen lähettää syysi hakijalle sähköpostitse ja ilmoituksena. Hän voi lähettää uuden pyynnön. Hylkääminen sulkee pyynnön ilmoittamatta hänelle.
+    decline_help: Hylkääminen lähettää syysi hakijalle sähköpostitse. Hän voi lähettää uuden pyynnön. Hylkääminen sulkee pyynnön ilmoittamatta hänelle.
     response_comment: Kommentti (valinnainen)
   invitation_form:
     group_url: Ryhmän URL-osoite

@@ -810,7 +810,7 @@ sv:
       new_discussion: "%{actor} startade en diskussion: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
-      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs: %{reason}'
+      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs'
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -849,7 +849,7 @@ sv:
       new_comment: "%{actor} kommenterade i en diskussion"
       outcome_updated: "%{actor} uppdaterade resultatet"
       thread_locked: "%{actor} låste tråden"
-      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs: %{reason}'
+      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs'
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -894,7 +894,7 @@ sv:
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
-      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs: %{reason}'
+      membership_request_declined: 'Din begäran om att gå med i %{title} avslogs'
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -1512,7 +1512,7 @@ sv:
     decline: Nedgång
     decline_request: Avböj medlemskapsbegäran
     decline_reason: Anledning till avböjning
-    decline_help: Avslag skickar din anledning till sökanden via e-post och meddelande. De kan skicka in en ny begäran. Ignorera stänger begäran utan att meddela dem.
+    decline_help: Avslag skickar din anledning till sökanden via e-post. De kan skicka in en ny begäran. Ignorera stänger begäran utan att meddela dem.
     response_comment: Kommentar (valfritt)
   invitation_form:
     group_url: Grupp-URL

@@ -810,7 +810,7 @@ tr:
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
       thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
-      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi: %{reason}"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -849,7 +849,7 @@ tr:
       new_comment: "%{actor} bir tartışmada yorum yaptı"
       outcome_updated: "%{actor} sonucu güncelledi"
       thread_locked: "%{actor} konuyu kilitledi"
-      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi: %{reason}"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -894,7 +894,7 @@ tr:
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
       thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
-      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi: %{reason}"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -1512,7 +1512,7 @@ tr:
     decline: Reddetmek
     decline_request: Üyelik talebini reddet
     decline_reason: Reddedilme nedeni
-    decline_help: Reddet seçeneği, gerekçenizi başvuru sahibine e-posta ve bildirim yoluyla iletir. Başvuru sahibi yeni bir talep gönderebilir. Yoksay seçeneği ise başvuru sahibine bildirimde bulunmadan talebi kapatır.
+    decline_help: Reddet seçeneği, gerekçenizi başvuru sahibine e-posta yoluyla iletir. Başvuru sahibi yeni bir talep gönderebilir. Yoksay seçeneği ise başvuru sahibine bildirimde bulunmadan talebi kapatır.
     response_comment: Yorum (isteğe bağlı)
   invitation_form:
     group_url: Grup URL'si

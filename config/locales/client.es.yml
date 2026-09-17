@@ -812,7 +812,7 @@ es:
       new_discussion: "%{actor} inició una discusión: %{title}"
       user_reminded: "%{actor} te recuerda que votes por: %{title}"
       thread_locked: "%{actor} bloqueó el hilo: %{title}"
-      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada: %{reason}'
+      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada'
     without_title:
       unknown_sender: Revisa el correo electrónico del remitente no reconocido
       group_announced: "%{actor} te invitó al grupo"
@@ -851,7 +851,7 @@ es:
       new_comment: "%{actor} comentó en una discusión"
       outcome_updated: "%{actor} actualizó el resultado"
       thread_locked: "%{actor} bloqueó el hilo"
-      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada: %{reason}'
+      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada'
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desees recordar a las personas que voten o extiendan la fecha límite.
@@ -896,7 +896,7 @@ es:
       discussion_closed: "%{actor} cerró la discusión: %{title}"
       user_reminded: "%{actor} te recuerda que votes por: %{title}"
       thread_locked: "%{actor} bloqueó el hilo: %{title}"
-      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada: %{reason}'
+      membership_request_declined: 'Tu solicitud para unirte a %{title} fue rechazada'
   discussion_fork_actions:
     move: Mover
     moved: Moviendo comentarios, esto podría llevar un tiempo
@@ -1535,7 +1535,7 @@ es:
     decline: Rechazar
     decline_request: Rechazar la solicitud de membresía
     decline_reason: Motivo del rechazo
-    decline_help: Al rechazarla, se envía el motivo al solicitante por correo electrónico y mediante una notificación. Puede enviar una nueva solicitud. Ignorar cierra la solicitud sin notificarle.
+    decline_help: Al rechazarla, se envía el motivo al solicitante por correo electrónico. Puede enviar una nueva solicitud. Ignorar cierra la solicitud sin notificarle.
     response_comment: Comentario (opcional)
   invitation_form:
     group_url: Grupo URL

@@ -6,11 +6,5 @@ module NotificationDeliveryRouters
       users = User.active.where(id: subject_model.requestor_id)
       recipients(users).merge("email" => users)
     end
-
-    private
-
-    def translation_values
-      super.merge(reason: subject_model.response_comment)
-    end
   end
 end

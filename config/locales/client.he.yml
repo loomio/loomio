@@ -810,7 +810,7 @@ he:
       new_discussion: "%{actor} פתח דיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה: %{reason}'
+      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -849,7 +849,7 @@ he:
       new_comment: "%{actor} הגיב בדיון"
       outcome_updated: "%{actor} עדכן את התוצאה"
       thread_locked: "%{actor} נעל את השרשור"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה: %{reason}'
+      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -894,7 +894,7 @@ he:
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה: %{reason}'
+      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1524,7 +1524,7 @@ he:
     decline: יְרִידָה
     decline_request: דחה את בקשת החברות
     decline_reason: סיבה לדחייה
-    decline_help: '"דחייה" שולחת את הסיבה שלך למבקש בדוא"ל ובהודעה. הוא יכול להגיש בקשה חדשה. "התעלמות" סוגרת את הבקשה מבלי להודיע לו.'
+    decline_help: '"דחייה" שולחת את הסיבה שלך למבקש בדוא"ל. הוא יכול להגיש בקשה חדשה. "התעלמות" סוגרת את הבקשה מבלי להודיע לו.'
     response_comment: תגובה (אופציונלי)
   invitation_form:
     group_url: כתובת האתר של הקבוצה

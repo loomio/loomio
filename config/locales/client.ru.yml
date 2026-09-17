@@ -810,7 +810,7 @@ ru:
       new_discussion: "%{actor} начал обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
       thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
-      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен: %{reason}'
+      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен'
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -849,7 +849,7 @@ ru:
       new_comment: "%{actor} прокомментировал в обсуждении"
       outcome_updated: "%{actor} обновил результат"
       thread_locked: "%{actor} заблокировал тему"
-      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен: %{reason}'
+      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен'
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
@@ -894,7 +894,7 @@ ru:
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
       thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
-      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен: %{reason}'
+      membership_request_declined: 'Ваш запрос на присоединение к %{title} был отклонен'
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -1512,7 +1512,7 @@ ru:
     decline: Отклонить
     decline_request: Отклонить запрос на членство
     decline_reason: Причина отказа
-    decline_help: Отклонить — отправить заявителю причину отказа по электронной почте и уведомлением. Он может отправить новый запрос. Игнорировать — закрыть запрос без уведомления.
+    decline_help: Отклонить — отправить заявителю причину отказа по электронной почте. Он может отправить новый запрос. Игнорировать — закрыть запрос без уведомления.
     response_comment: Комментарий (необязательно)
   invitation_form:
     group_url: URL группы

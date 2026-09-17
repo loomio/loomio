@@ -817,7 +817,7 @@ be:
       user_mentioned: "%{actor} згадаў вас у: %{title}"
       group_mentioned: "%{actor} згадаў групу ў: %{title}"
       user_reminded: "%{actor} нагадвае вам прагаласаваць за: %{title}"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены: %{reason}'
+      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
     with_title:
       unknown_sender: Калі ласка, праглядзіце ліст ад невядомага адпраўніка
       comment_replied_to: "%{actor} адказаў вам у: %{title}"
@@ -858,7 +858,7 @@ be:
       user_mentioned: "%{actor} згадаў вас у: %{title}"
       group_mentioned: "%{actor} згадаў групу ў: %{title}"
       user_reminded: "%{actor} нагадвае вам прагаласаваць за: %{title}"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены: %{reason}'
+      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
     without_title:
       unknown_sender: Калі ласка, праглядзіце ліст ад невядомага адпраўніка
       discussion_announced: "%{actor} запрасіў вас да дыскусіі"
@@ -897,7 +897,7 @@ be:
       user_mentioned: "%{actor} згадаў вас"
       group_mentioned: "%{actor} згадаў групу"
       user_reminded: "%{actor} нагадвае вам прагаласаваць"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены: %{reason}'
+      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
     hints:
       poll_closing_soon: Зараз самы час прагаласаваць, змяніць сваё меркаванне або заахвоціць іншых да ўдзелу.
       poll_closing_soon_author: Магчыма, вы захочаце нагадаць людзям прагаласаваць або падоўжыць тэрмін.
@@ -1600,7 +1600,7 @@ be:
     decline: Адмова
     decline_request: Адхіліць запыт на сяброўства
     decline_reason: Прычына адмовы
-    decline_help: Пры адхіленні заяўніку будзе даслана прычына адмовы з паведамленнем па электроннай пошце. Ён можа адправіць новы запыт. Пры адхіленні запыт будзе закрыты без папярэджання.
+    decline_help: Пры адхіленні заяўніку будзе даслана прычына адмовы па электроннай пошце. Ён можа адправіць новы запыт. Пры адхіленні запыт будзе закрыты без папярэджання.
     response_comment: Каментарый (неабавязкова)
   invitation_form:
     group_url: URL-адрас групы

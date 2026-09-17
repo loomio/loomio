@@ -19,8 +19,7 @@ export default class NotificationModel extends BaseModel {
       model: null,
       pollType: null,
       name: null,
-      reaction: null,
-      reason: null
+      reaction: null
     };
   }
 
@@ -60,8 +59,7 @@ export default class NotificationModel extends BaseModel {
       reaction: (this.kind === "reaction_created" ? this.reaction : undefined),
       title: this.title,
       poll_type: this.pollType,
-      model: this.model,
-      reason: this.reason
+      model: this.model
     };
   }
 
