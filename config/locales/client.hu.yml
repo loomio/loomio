@@ -1488,6 +1488,8 @@ hu:
     handle_changed_hint: Az előző URL-címed és e-mail címed átirányít az új címedre.
     members_can_create_tags: A tagok címkéket hozhatnak létre
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
+    non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
+    non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2683,6 +2685,14 @@ hu:
     tags_per_interval: Cimkék per %{interval}
     all_groups_and_direct_threads: Minden csoport és közvetlen szál
     custom_selection: Egyéni kijelölés
+    all_votes_cast: Minden leadott szavazat
+    votes_cast: Leadott szavazatok
+    votes_issued: Kiadott szavazatok
+    votes_missed: Elmaradt szavazatok
+    voting_record_per_user: Szavazási rekord felhasználónként
+    yes_label: Igen
+    no_label: Nem
+    delegates_only: Csak küldöttek
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája

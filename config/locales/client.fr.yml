@@ -1511,6 +1511,8 @@ fr:
     handle_changed_hint: Ton ancienne URL et ton adresse e-mail seront redirigées vers ton nouvelle adresse.
     members_can_create_tags: Les membres peuvent créer des tags
     members_can_create_tags_help: Autoriser les membres à créer de nouvelles étiquettes lors de l'étiquetage des sujets et des sondages.
+    non_members_can_start_discussions: Les non-membres peuvent démarrer des discussions
+    non_members_can_start_discussions_help: Autorise les non-membres à démarrer une discussion à partir de l'un des modèles de ce groupe
   group_export_modal:
     title: Exporter les données de ton groupe
     body: |
@@ -2720,6 +2722,14 @@ fr:
     tags_per_interval: Étiquettes par %{interval}
     all_groups_and_direct_threads: Tous les groupes et les discussions directes
     custom_selection: Sélection personnalisée
+    all_votes_cast: Tous les votes exprimés
+    votes_cast: Votes exprimés
+    votes_issued: Bulletins attribués
+    votes_missed: Des votes ont été manqués
+    voting_record_per_user: Résultats des votes par utilisateur
+    yes_label: Oui
+    no_label: Non
+    delegates_only: Délégués seulement
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tu as terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage

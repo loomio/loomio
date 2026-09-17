@@ -74,6 +74,7 @@ class Discussion < ApplicationRecord
   belongs_to :topic
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
+  belongs_to :discussion_template, optional: true
 
   has_many :polls, primary_key: :topic_id, foreign_key: :topic_id, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
@@ -130,6 +131,14 @@ class Discussion < ApplicationRecord
 
   def created_topic_item_kind
     :new_discussion
+  end
+
+  def created_from_group_template?
+    discussion_template&.kept? && !discussion_template.hidden? && discussion_template.group_id == group_id
+  end
+
+  def tag_names_not_from_template
+    TagService.clean_tag_names(topic.tags) - TagService.clean_tag_names(discussion_template&.tags)
   end
 
   def body=(val)

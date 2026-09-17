@@ -1499,6 +1499,8 @@ es:
     handle_changed_hint: Tu URL y dirección de correo electrónico anteriores se redirigirán a tu nueva dirección.
     members_can_create_tags: Los miembros pueden crear etiquetas
     members_can_create_tags_help: Permitir a los miembros crear nuevas etiquetas al etiquetar hilos y encuestas.
+    non_members_can_start_discussions: Los no miembros pueden iniciar debates
+    non_members_can_start_discussions_help: Permite que personas que no son miembros inicien un debate a partir de una de las plantillas de este grupo
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -2712,6 +2714,14 @@ es:
     tags_per_interval: Etiquetas por %{interval}
     all_groups_and_direct_threads: Todos los grupos y conversaciones directas
     custom_selection: Selección personalizada
+    all_votes_cast: Todos los votos emitidos
+    votes_cast: Votos emitidos
+    votes_issued: Votos asignados
+    votes_missed: Votos perdidos
+    voting_record_per_user: Registro de votación por usuario
+    yes_label: Sí
+    no_label: 'No'
+    delegates_only: Solo delegados
   tips:
     youve_completed_all_the_steps: "\U0001F389¡Has completado todos los pasos!"
     getting_started_checklist: Lista de verificación para comenzar

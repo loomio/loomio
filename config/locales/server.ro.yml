@@ -760,3 +760,5 @@ ro:
     no_option_selected: Nicio opțiune selectată
     outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Data revizuirii:** %{value}"
+  error:
+    access_denied: Nu aveți permisiunea să faceți asta

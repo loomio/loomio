@@ -1488,6 +1488,8 @@ he:
     handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
     members_can_create_tags: חברים יכולים ליצור תגיות
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
+    non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
+    non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2695,6 +2697,14 @@ he:
     tags_per_interval: תגיות לכל %{interval}
     all_groups_and_direct_threads: כל הקבוצות והשרשורים הישירים
     custom_selection: בחירה מותאמת אישית
+    all_votes_cast: כל הקולות שניתנו
+    votes_cast: קולות שהושלכו
+    votes_issued: קולות שהונפקו
+    votes_missed: קולות שהוחמצו
+    voting_record_per_user: שיא הצבעות לכל משתמש
+    yes_label: כֵּן
+    no_label: לֹא
+    delegates_only: נציגים בלבד
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה

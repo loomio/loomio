@@ -100,6 +100,7 @@ Rails.application.routes.draw do
       end
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create, :update, :destroy]
+      resources :reports, only: [:index]
     end
 
     namespace :b3, only: [] do
@@ -272,8 +273,8 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :discard
-          post :undiscard
+          post :hide
+          post :unhide
           post :positions
         end
         get :export, on: :member
@@ -340,8 +341,6 @@ Rails.application.routes.draw do
           get :browse
           post :hide
           post :unhide
-          post :discard
-          post :undiscard
           post :positions
           post :settings
         end

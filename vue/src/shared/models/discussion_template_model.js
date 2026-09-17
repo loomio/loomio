@@ -31,6 +31,7 @@ export default class DiscussionTemplateModel extends BaseModel {
       pollTemplateKeysOrIds: [],
       recipientAudience: null,
       defaultToDirectDiscussion: false,
+      hiddenAt: null,
       discardedAt: null
     };
   }

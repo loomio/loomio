@@ -771,3 +771,5 @@ ru:
     no_option_selected: Вариант не выбран
     outcome: Результат · %{author} %{timestamp}
     review_date: "**Дата проверки:** %{value}"
+  error:
+    access_denied: У вас нет разрешения на это.

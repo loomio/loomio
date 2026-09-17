@@ -1483,6 +1483,8 @@ ja:
     handle_changed_hint: 以前ご利用いただいていたURLとメールアドレスは、新しいアドレスにリダイレクトされます。
     members_can_create_tags: メンバーはタグを作成できます
     members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
+    non_members_can_start_discussions: 非会員でも議論を開始できます
+    non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2675,6 +2677,14 @@ ja:
     tags_per_interval: "%{interval}別タグ数"
     all_groups_and_direct_threads: すべてのグループと直接のスレッド
     custom_selection: カスタム選択
+    all_votes_cast: 投票されたすべての票
+    votes_cast: 投票数
+    votes_issued: 投票が発行されました
+    votes_missed: 投票が欠落
+    voting_record_per_user: ユーザーごとの投票記録
+    yes_label: はい
+    no_label: いいえ
+    delegates_only: 代表者限定
   tips:
     youve_completed_all_the_steps: "\U0001F389 すべての手順が完了しました。"
     getting_started_checklist: 開始チェックリスト

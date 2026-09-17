@@ -22,6 +22,59 @@ Authorization: Bearer YOUR_API_KEY
 
 The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. Replace these with your API key, group ID, and Loomio installation URL.
 
+## Participation report
+
+Return the same aggregated participation data used by Loomio's Participation report.
+
+`GET /api/b2/reports`
+
+### Params
+
+| Name | Description |
+| --- | --- |
+| `section` | Report section: `base`, `users`, or `countries`. Use `users` for per-person activity |
+| `group_scope` | `custom`, `my`, or `all`. `all` is available only to instance administrators; other users receive their `my` scope |
+| `group_ids` | Comma-separated group IDs when `group_scope=custom`. IDs outside the API user's memberships are ignored |
+| `start_month` | First month to include in `YYYY-MM` format; defaults to 12 months ago |
+| `end_month` | Last month to include in `YYYY-MM` format; defaults to the current month |
+| `interval` | Interval for the `base` section: `day`, `week`, `month`, or `year` |
+| `member_type` | Set to `delegate` with `section=users` to return only current delegates |
+
+A person is a delegate when they have an active delegate membership in any selected group. Their counts are aggregated across all selected groups. Delegate rows are returned even when every activity count is zero. Counts cover threads, comments, polls, votes, outcomes, and reactions; they are not voting participation rates. User rows also include identified ballots issued, cast, and missed. Anonymous polls are excluded from all per-person voting counts. `all_votes_cast` is true only when at least one ballot was issued and every issued ballot was cast.
+
+The API applies the same group visibility rules as the in-product report. A user API key cannot expose report data from groups that user cannot access.
+
+### Example
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09'
+```
+
+The `users` array contains complete activity rows:
+
+```json
+{
+  "users": [
+    {
+      "id": 456,
+      "name": "Ada Lovelace",
+      "country": "NZ",
+      "delegate": true,
+      "threads": 2,
+      "comments": 8,
+      "polls": 1,
+      "votes": 5,
+      "votes_cast": 5,
+      "votes_issued": 6,
+      "votes_missed": 1,
+      "all_votes_cast": false,
+      "outcomes": 1,
+      "reactions": 4
+    }
+  ]
+}
+```
+
 ## Create Discussion
 
 Create a discussion as the API-key user.

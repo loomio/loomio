@@ -72,6 +72,10 @@ const props = defineProps({
   label: String,
   placeholder: String,
   maxLength: Number,
+  allowMentions: {
+    type: Boolean,
+    default: true
+  },
   autofocus: Boolean
 });
 
@@ -114,7 +118,7 @@ const iconProps = ref({
 const { smAndDown } = useDisplay();
 const modelRef = toRef(props, 'model');
 
-const mentionOptions = useMentionSuggestion(modelRef);
+const mentionOptions = useMentionSuggestion(modelRef, toRef(props, 'allowMentions'));
 
 const {
   files,

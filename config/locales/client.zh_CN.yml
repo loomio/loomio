@@ -1343,6 +1343,14 @@ zh_CN:
     tags_per_interval: 每%{interval}的标签数量
     all_groups_and_direct_threads: 所有群组和直接讨论串
     custom_selection: 自定义选择
+    all_votes_cast: 所有投票
+    votes_cast: 投票
+    votes_issued: 已投票
+    votes_missed: 未投票
+    voting_record_per_user: 用户投票记录
+    yes_label: 是的
+    no_label: 不
+    delegates_only: 仅限代表
   group_page:
     stats: 子群组统计数据
     participation_report: 参与报告
@@ -1554,6 +1562,8 @@ zh_CN:
     handle_changed_hint: 您之前的网址和电子邮件地址将重定向到您的新地址。
     members_can_create_tags: 成员可以创建标签
     members_can_create_tags_help: 允许成员在标记帖子和投票时创建新标签。
+    non_members_can_start_discussions: 非会员也可以发起讨论
+    non_members_can_start_discussions_help: 允许非成员使用本群组提供的模板发起讨论。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>

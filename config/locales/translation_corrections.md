@@ -1,5 +1,14 @@
 # Corrected translations
 
+## 2026-09-16 — Non-member discussion setting
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `server.de.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `Sie` wording and final full stops | Informal `du` wording without final full stops | German UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.es.yml`, `server.es.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Infinitive help text and final full stops | Informal `tú` imperative wording without final full stops | Spanish UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.fr.yml`, `server.fr.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `vous` wording and final full stops | Informal `tu` wording without final full stops | French UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.nl_NL.yml`, `server.nl_NL.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `u` wording and final full stops | Informal `je` wording without final full stops | Dutch UI uses the informal register and single-sentence UI strings omit final full stops |
+
 ## 2026-09-10 — iOS push guidance
 
 | File | Key | Before | After | Why it was wrong |
@@ -390,6 +399,16 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |
+## 2026-09-16 — Voting record labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `report.votes_issued` | `abgegebene Stimmen` | `Zugewiesene Stimmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.es.yml` | `report.votes_issued` | `Votos emitidos` | `Votos asignados` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.fr.yml` | `report.votes_issued` | `Votes émis` | `Bulletins attribués` | Could mean votes cast rather than ballots assigned to the person |
+| `config/locales/client.it.yml` | `report.votes_issued` | `Voti espressi` | `Voti assegnati` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.nl_NL.yml` | `report.votes_issued` | `Uitgebrachte stemmen` | `Toegewezen stemmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.pt_BR.yml` | `report.votes_issued` | `Votos emitidos` | `Votos atribuídos` | Could mean votes cast rather than ballots assigned to the person |
 
 ## 2026-09-17 — Follow Group updates
 

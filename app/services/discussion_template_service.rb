@@ -8,7 +8,6 @@ class DiscussionTemplateService
 
     discussion_template.key = nil if discussion_template.key
     discussion_template.save!
-    # discussion_template.discard! unless discussion_template.group.admins.exists?(actor.id)
     discussion_template
   end
 
@@ -27,14 +26,14 @@ class DiscussionTemplateService
 
   def self.group_templates(group:)
     ensure_templates_materialized(group)
-    group.discussion_templates.order(:position)
+    group.discussion_templates.kept.order(:position)
   end
 
   def self.ensure_templates_materialized(group)
-    return if group.discussion_templates.exists?
+    return if group.discussion_templates.kept.exists?
 
     group.with_lock do
-      return if group.discussion_templates.exists?
+      return if group.discussion_templates.kept.exists?
 
       hidden_keys = if group[:info].key?('hidden_discussion_templates')
         group[:info]['hidden_discussion_templates'] || []
@@ -63,7 +62,7 @@ class DiscussionTemplateService
           default_to_direct_discussion: template.default_to_direct_discussion || false,
           position: positions.fetch(template.key, 999)
         )
-        dt.discard! if hidden_keys.include?(template.key)
+        dt.hide! if hidden_keys.include?(template.key)
       end
     end
   end

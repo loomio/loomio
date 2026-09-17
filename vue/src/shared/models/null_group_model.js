@@ -23,6 +23,7 @@ export default class NullGroupModel {
       membersCanDeleteComments: true,
       membersCanRaiseMotions: true,
       membersCanStartDiscussions: true,
+      nonMembersCanStartDiscussions: false,
       membersCanCreateSubgroups: false,
       motionsCanBeEdited: false,
       files: null,

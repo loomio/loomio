@@ -1,6 +1,7 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
 
 export default {
   props: {
@@ -34,6 +35,12 @@ export default {
         props: { topic: this.discussion.topic() }
       });
     }
+  },
+
+  computed: {
+    canInvitePeople() {
+      return AbilityService.canAnnounceTopic(this.discussion.topic()) || AbilityService.canAddGuestsTopic(this.discussion.topic());
+    }
   }
 };
 
@@ -46,6 +53,6 @@ export default {
   //-   a.context-panel__seen_by_count(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
-  v-btn(size="small" icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
+  v-btn(v-if="canInvitePeople" size="small" icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
     common-icon(name="mdi-plus")
 </template>

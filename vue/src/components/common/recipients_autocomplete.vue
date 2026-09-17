@@ -79,6 +79,10 @@ export default {
   },
 
   methods: {
+    isDelegate(user) {
+      const group = this.model.isA('group') ? this.model : this.model.group();
+      return Boolean(user && group && user.delegates && user.delegates[group.id]);
+    },
     updateQuery(q) {
       this.query = q
       this.fetchAndUpdateSuggestions();
@@ -355,6 +359,13 @@ div.recipients-autocomplete
             :size="24" no-link)
           common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
         span {{ internalItem.title }}
+        v-chip.ml-2(
+          v-if="internalItem.raw.type == 'user' && isDelegate(internalItem.raw.user)"
+          variant="tonal"
+          size="x-small"
+          label
+          :title="$t('members_panel.delegate_popover')")
+          | {{ $t('members_panel.delegate') }}
         span(v-if="internalItem.raw.type == 'user' && currentUserId == internalItem.value")
           space
           span ({{ $t('common.you') }})
@@ -363,6 +374,14 @@ div.recipients-autocomplete
         template(v-slot:prepend)
           user-avatar.mr-2(v-if="internalItem.raw.type == 'user'" :user="internalItem.raw.user" no-link)
           common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
+        template(v-slot:append)
+          v-chip(
+            v-if="internalItem.raw.type == 'user' && isDelegate(internalItem.raw.user)"
+            variant="tonal"
+            size="x-small"
+            label
+            :title="$t('members_panel.delegate_popover')")
+            | {{ $t('members_panel.delegate') }}
         //- v-list-item-title
         //-   span {{props}}
         //-   span {{internalItem.raw.name}}

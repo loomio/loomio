@@ -360,6 +360,25 @@ class ReportService
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'participant_id', 'count'
   end
 
+  def stances_issued_per_user
+    scope = Stance
+      .joins(poll: :topic)
+      .where(polls: { anonymous: false })
+      .where(created_at: @start_at..@end_at, latest: true)
+      .where.not(participant_id: nil)
+
+    unless @all_groups
+      group_ids = Array(@group_ids) - [0]
+      scope = if @direct_threads
+        scope.where(topics: { group_id: group_ids }).or(scope.where(topics: { group_id: nil }))
+      else
+        scope.where(topics: { group_id: group_ids })
+      end
+    end
+
+    scope.group(:participant_id).count
+  end
+
   def reactions_per_user
     query = reaction_rows_query("SELECT count(reaction_id) count, user_id FROM reaction_rows GROUP BY user_id")
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'user_id', 'count'
@@ -372,6 +391,12 @@ class ReportService
       user_ids = Membership.where(group_id: @group_ids).pluck(:user_id).uniq
       User.where(id: user_ids)
     end
+  end
+
+  def delegate_user_ids
+    scope = Membership.active.delegates
+    scope = scope.where(group_id: @group_ids) unless @all_groups
+    scope.distinct.pluck(:user_id).to_set
   end
 
   def users_per_country

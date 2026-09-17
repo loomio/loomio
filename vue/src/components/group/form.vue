@@ -359,6 +359,16 @@ v-form(ref="form" @submit.prevent="submit")
                 span(v-t="'group_form.members_can_start_discussions_v2'")
                 br
                 span.text-body-small(v-t="'group_form.members_can_start_discussions_help_v2'")
+          v-checkbox.group-form__non-members-can-start-discussions(
+            v-if="!group.privacyIsSecret()"
+            hide-details
+            v-model="group.nonMembersCanStartDiscussions"
+          )
+            template(v-slot:label)
+              div
+                span {{ $t('group_form.non_members_can_start_discussions') }}
+                br
+                span.text-body-small {{ $t('group_form.non_members_can_start_discussions_help') }}
           v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group.membersCanEditDiscussions')
             template(v-slot:label)
               div

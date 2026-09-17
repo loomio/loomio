@@ -790,3 +790,5 @@ zh_TW:
     no_option_selected: 未選擇任何選項
     outcome: 結果 · %{author} %{timestamp}
     review_date: "**審核日期：** %{value}"
+  error:
+    access_denied: 你沒有權限這樣做。
