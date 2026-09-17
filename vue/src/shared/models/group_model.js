@@ -33,6 +33,7 @@ export default class GroupModel extends BaseModel {
       membersCanDeleteComments: true,
       membersCanRaiseMotions: true,
       membersCanStartDiscussions: true,
+      nonMembersCanStartDiscussions: false,
       membersCanCreateSubgroups: false,
       membersCanCreateTags: true,
       motionsCanBeEdited: false,

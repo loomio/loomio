@@ -41,6 +41,8 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :agree_target,
              :created_at,
              :updated_at,
+             :hidden_at,
+             :hider_id,
              :discarded_at,
              :outcome_statement,
              :outcome_statement_format,

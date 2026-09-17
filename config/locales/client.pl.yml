@@ -1490,6 +1490,8 @@ pl:
     handle_changed_hint: Twój poprzedni adres URL i adres e-mail będą przekierowywać na nowy adres.
     members_can_create_tags: Członkowie mogą tworzyć tagi
     members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
+    non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
+    non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
   group_export_modal:
     title: Eksportuj dane grupy
     body: |

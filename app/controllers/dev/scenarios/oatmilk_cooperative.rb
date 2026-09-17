@@ -1072,7 +1072,7 @@ module Dev::Scenarios::OatmilkCooperative
     group, coordinator, = create_manual_oatmilk_cooperative
     discussion = group.discussions.find_by!(title: 'Weekly production schedule')
     template = create_manual_oatmilk_poll_template(group: group, coordinator: coordinator)
-    template.discard! if params[:hidden].present?
+    template.hide! if params[:hidden].present?
     sign_in coordinator
 
     if params[:view] == 'edit'

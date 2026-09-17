@@ -24,6 +24,7 @@
   - [Using threads](user_manual/discussions/using_discussions/index.md)
   - [Comments](user_manual/discussions/comments/index.md)
   - [Discussion templates](user_manual/discussions/templates/index.md)
+  - [Collect private submissions](user_manual/discussions/private_submissions/index.md)
   - [Moving items between threads](user_manual/discussions/moving_items/index.md)
   - [Formatting](user_manual/discussions/formatting/index.md)
   - [Tasks](user_manual/discussions/tasks/index.md)

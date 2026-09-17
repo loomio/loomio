@@ -3,6 +3,16 @@
 # When adding a User credential column, exclude it below and update the export
 # credential regression in GroupExportServiceTest.
 class GroupExportService
+  IMPORT_TABLE_PRIORITY = %w[
+    users
+    groups
+    topics
+    polls
+    poll_options
+    stances
+    stance_choices
+  ].freeze
+
   RELATIONS = %w[
     all_users
     all_topic_items
@@ -124,8 +134,8 @@ class GroupExportService
       stance_receipts: %w[voter_id inviter_id],
       topic_items: %w[itemable user_id],
       discussions: %w[author_id discarded_by],
-      discussion_templates: %w[author_id],
-      poll_templates: %w[author_id],
+      discussion_templates: %w[author_id discarded_by hider_id],
+      poll_templates: %w[author_id discarded_by hider_id],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       topic_readers: %w[user_id inviter_id],
@@ -346,10 +356,9 @@ class GroupExportService
 
     datas_by_table = datas.group_by { |data| data['table'] }
     tables = datas_by_table.keys - ['attachments']
-    # Archives list timeline items before topics. Restore their ownership rows
-    # first so required references are valid even during the import transaction.
-    parents = %w[users groups topics]
-    tables = (parents & tables) + (tables - parents)
+    # Archive row order is not a dependency contract. Restore known parent tables
+    # first so required references are valid throughout the import transaction.
+    tables = (IMPORT_TABLE_PRIORITY & tables) + (tables - IMPORT_TABLE_PRIORITY)
     # Group hierarchies have two levels, but archive row order is unspecified.
     datas_by_table.fetch('groups', []).sort_by! { |data| data.dig('record', 'parent_id').nil? ? 0 : 1 }
     # Topic item parents must exist before their children because the database

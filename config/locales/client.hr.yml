@@ -1484,6 +1484,8 @@ hr:
     handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
     members_can_create_tags: Članovi mogu kreirati oznake
     members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
+    non_members_can_start_discussions: Nečlanovi mogu započeti rasprave
+    non_members_can_start_discussions_help: Dopusti osobama koje nisu članovi da započnu raspravu iz jednog od predložaka ove grupe
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>

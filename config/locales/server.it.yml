@@ -771,3 +771,5 @@ it:
     no_option_selected: Nessuna opzione selezionata
     outcome: Risultato · %{author} %{timestamp}
     review_date: "**Data della revisione:** %{value}"
+  error:
+    access_denied: Non hai il permesso di farlo

@@ -1,10 +1,10 @@
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, unref } from 'vue';
 import { uniqBy } from 'lodash-es';
 import { VueRenderer } from '@tiptap/vue-3';
 import MentionSuggestionList from './mention_suggestion_list.vue';
 import { fetchMentionItems, mentionItemsMatching } from './composables/useMentioning';
 
-export function useMentionSuggestion(model) {
+export function useMentionSuggestion(model, allowMentions = true) {
   // Prefetch the server's curated results once, filter that cache immediately
   // as the user types, then merge in debounced query results. Tiptap owns the
   // async lifecycle and popup positioning; Loomio owns ordering and matching.
@@ -19,6 +19,7 @@ export function useMentionSuggestion(model) {
   };
 
   const loadItems = async query => {
+    if (!unref(allowMentions)) { return []; }
     const rows = await fetchMentionItems(model.value, query);
     mergeItems(rows);
     return mentionItemsMatching(itemsCached, query);
@@ -34,7 +35,9 @@ export function useMentionSuggestion(model) {
     return itemsInitialPromise;
   };
 
-  onMounted(loadInitialItems);
+  onMounted(() => {
+    if (unref(allowMentions)) { loadInitialItems(); }
+  });
 
   const listProps = props => ({
     command: props.command,

@@ -90,8 +90,7 @@ export default new class TopicService {
         dock: 3,
         collection: 'members',
         canPerform() {
-          return topic.group().adminsInclude(Session.user()) ||
-          ((topic.group().membersCanAnnounce || topic.group().membersCanAddGuests) && topic.membersInclude(Session.user()));
+          return AbilityService.canAnnounceTopic(topic) || AbilityService.canAddGuestsTopic(topic);
         },
         perform() {
           return EventBus.$emit('openModal', {

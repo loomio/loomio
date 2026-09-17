@@ -16,6 +16,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_create_subgroups,
              :members_can_create_tags,
              :members_can_start_discussions,
+             :non_members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
              :members_can_delete_comments,

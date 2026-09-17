@@ -64,7 +64,7 @@ const breadcrumbs = computed(() => {
 
 
 const queryDirect = () => {
-  const all = Records.discussionTemplates.collection.chain().find({ discardedAt: null }).simplesort('position').data();
+  const all = Records.discussionTemplates.collection.chain().find({ hiddenAt: null, discardedAt: null }).simplesort('position').data();
   const blank = all.filter(t => t.key === 'blank');
   const rest = all.filter(t => t.key !== 'blank');
   directTemplates.value = [...blank, ...rest];
@@ -76,8 +76,8 @@ const query = () => {
   group.value = Records.groups.findById(groupId.value);
   if (!group.value) { return }
 
-  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: null }).simplesort('position').data();
-  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: { $ne: null } }).simplesort('position').data();
+  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: null, discardedAt: null }).simplesort('position').data();
+  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: { $ne: null }, discardedAt: null }).simplesort('position').data();
   hasHiddenTemplates.value = hiddenTemplates.value.length > 0;
 
   actions.value = {};
@@ -114,14 +114,16 @@ const titleVisible = (visible) => EventBus.$emit('content-title-visible', visibl
 onMounted(() => {
   EventBus.$emit('content-title-visible', false);
   EventBus.$emit('currentComponent', { titleKey: 'discussion_template.start_discussion', page: 'discussionTemplatesPage' });
-  loadGroups();
+  const groupsLoaded = loadGroups();
 
   if (route.query.group_id) {
-    Records.discussionTemplates.fetch({
-      params: {
-        group_id: route.query.group_id,
-        per: 50
-      }
+    groupsLoaded.then(() => Records.groups.findOrFetchById(groupId.value)).then(() => {
+      return Records.discussionTemplates.fetch({
+        params: {
+          group_id: route.query.group_id,
+          per: 50
+        }
+      });
     });
   } else {
     Records.discussionTemplates.fetch({ params: { per: 50 } }).then(() => {

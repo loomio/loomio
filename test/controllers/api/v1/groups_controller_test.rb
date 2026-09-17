@@ -248,6 +248,20 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal "open", @group.group_privacy
   end
 
+  test "admin can enable nonmember discussion creation" do
+    sign_in @user
+    @group.add_admin!(@user)
+
+    put :update, params: {
+      id: @group.id,
+      group: { non_members_can_start_discussions: true }
+    }
+
+    assert_response :success
+    assert @group.reload.non_members_can_start_discussions?
+    assert_equal true, JSON.parse(response.body).dig('groups', 0, 'non_members_can_start_discussions')
+  end
+
   test "discarded groups cannot be exported" do
     @group.add_admin!(@user)
     @group.discard!

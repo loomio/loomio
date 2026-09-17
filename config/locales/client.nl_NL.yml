@@ -1490,6 +1490,8 @@ nl_NL:
     handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
     members_can_create_tags: Leden kunnen tags aanmaken.
     members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
+    non_members_can_start_discussions: Niet-leden kunnen discussies starten
+    non_members_can_start_discussions_help: Sta niet-leden toe om een discussie te starten via een van de sjablonen van deze groep
   group_export_modal:
     title: Groepsdata exporteren
     body: |

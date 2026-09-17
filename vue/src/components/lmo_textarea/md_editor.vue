@@ -15,6 +15,10 @@ const props = defineProps({
   label: String,
   placeholder: String,
   maxLength: Number,
+  allowMentions: {
+    type: Boolean,
+    default: true
+  },
   autofocus: {
     type: Boolean,
     default: false
@@ -32,6 +36,7 @@ const filesField = ref(null);
 
 // Composables
 const modelRef = toRef(props, 'model');
+const allowMentionsRef = toRef(props, 'allowMentions');
 const fieldNameRef = toRef(props, 'field');
 
 const {
@@ -43,7 +48,7 @@ const {
   fetchingMentions,
   fetchMentionable,
   updateMentions
-} = useCommonMentioning(modelRef);
+} = useCommonMentioning(modelRef, allowMentionsRef);
 
 // Get textarea element helper
 const textarea = computed(() => {

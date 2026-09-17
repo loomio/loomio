@@ -755,3 +755,5 @@ be:
     no_option_selected: Варыянт не выбраны
     outcome: Вынік · %{author} %{timestamp}
     review_date: "**Дата агляду:** %{value}"
+  error:
+    access_denied: У вас няма дазволу на гэта
