@@ -29,6 +29,7 @@ The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. 
 | `GET` | `/api/b2/groups` | List the API-key user's groups |
 | `GET` | `/api/b2/groups/:id_or_key_or_handle` | Get a visible group |
 | `GET` | `/api/b2/reports` | Generate a participation report |
+| `GET` | `/api/b2/search` | Search visible discussions, comments, polls, votes, and outcomes |
 | `POST` | `/api/b2/discussions` | Create a discussion |
 | `GET` | `/api/b2/discussions/:id` | Get a discussion |
 | `GET` | `/api/b2/discussions` | List discussions in a group |
@@ -263,6 +264,31 @@ For example, the general Markdown format sends a body shaped like:
 ```
 
 The exact message text depends on the event, group locale, notification-only setting, and Loomio version. Consumers should rely on the selected format's documented top-level fields rather than parsing sentence wording.
+
+## Search
+
+Search discussions, comments, polls, votes, and outcomes visible to the API-key user. Results include public content even when the user is not a member of its group; private content remains subject to normal topic visibility.
+
+`GET /api/b2/search`
+
+### Params
+
+| Name | Description |
+| --- | --- |
+| `query` | Search text. Exact and fuzzy matches are supported |
+| `group_id` | Restrict results to one visible group |
+| `org_id` | Restrict results to a visible parent group and its visible subgroups. Use `0` for direct discussions |
+| `type` | Restrict results to one type: `Discussion`, `Comment`, `Poll`, `Stance`, or `Outcome` |
+| `types` | Comma-separated list of result types |
+| `tag` | Restrict results to topics with this tag |
+| `author_id` | Restrict results to content by one author. Without `query`, returns that author's recent visible activity |
+| `order` | Set to `authored_at_desc` to order matching content by authoring time |
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion'
+```
+
+The response contains a `search_results` array. Each result identifies the matched record and its visible context with fields including `searchable_type`, `searchable_id`, `highlight`, `group_id`, `group_name`, `discussion_key`, `poll_key`, `author_id`, `author_name`, `authored_at`, and `tags`. Fields that do not apply to a result are `null`.
 
 ## Participation report
 

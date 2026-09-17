@@ -455,6 +455,50 @@ paths:
                 additionalProperties: true
         default:
           $ref: "#/components/responses/Error"
+  /api/b2/search:
+    get:
+      operationId: searchContent
+      tags: [Threads]
+      summary: Search content visible to the API-key user
+      parameters:
+        - name: query
+          in: query
+          schema: {type: string}
+        - name: group_id
+          in: query
+          schema: {type: integer}
+        - name: org_id
+          in: query
+          schema: {type: integer}
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [Discussion, Comment, Poll, Stance, Outcome]
+        - name: types
+          in: query
+          description: Comma-separated result types
+          schema: {type: string}
+        - name: tag
+          in: query
+          schema: {type: string}
+        - name: author_id
+          in: query
+          schema: {type: integer}
+        - name: order
+          in: query
+          schema:
+            type: string
+            enum: [authored_at_desc]
+      responses:
+        "200":
+          description: Search results and related records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordResponse"
+        default:
+          $ref: "#/components/responses/Error"
   /api/b2/chatbots:
     get:
       operationId: listWebhooks

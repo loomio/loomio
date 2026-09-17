@@ -1,15 +1,6 @@
 class Api::B2::BaseController < Api::V1::SnorlaxBase
-  skip_before_action :verify_authenticity_token
-  before_action :authenticate_api_key!
+  include Api::B2::AuthenticatesApiKey
   include ::LoadAndAuthorize
-
-  def authenticate_api_key!
-    raise CanCan::AccessDenied unless current_user
-  end
-
-  def current_user
-    @current_user ||= User.active.find_by(api_key: bearer_token.presence || request.request_parameters[:api_key])
-  end
 
   private
 
@@ -27,10 +18,6 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
     ).where(topicable_type: resource_class.name).select(:topicable_id)
 
     resource_class.where(id: topicable_ids)
-  end
-
-  def bearer_token
-    request.authorization.to_s[/\ABearer (.+)\z/, 1].to_s
   end
 
   def permitted_params
