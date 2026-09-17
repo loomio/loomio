@@ -17,10 +17,6 @@ class Views::DigestMailer::Digest::Notifications < Views::ApplicationMailer::Com
         translation_values = notification.translation_values_for(@recipient.id)
 
         article do
-          content = Views::DigestMailer::Digest::NotificationContent.new(
-            notification: notification,
-            recipient: @recipient
-          )
           render Views::NotificationMailer::Common::Notification.new(
             topic_item: context,
             recipient: @recipient,
@@ -28,8 +24,7 @@ class Views::DigestMailer::Digest::Notifications < Views::ApplicationMailer::Com
             poll: context.poll,
             url: url,
             translation_values: translation_values,
-            with_title: translation_values["title"].present?,
-            content: content
+            with_title: translation_values["title"].present?
           )
         end
       end

@@ -65,13 +65,14 @@ class DigestMailerTest < ActionMailer::TestCase
     assert document.at_css(".email-footer-logo")
     assert document.at_css('a[href*="email_preferences"]')
     assert_operator body.index("Notifications"), :<, body.index("Unread threads")
-    assert_includes document.at_css(".email-notification-content").text, discussion_body
+    assert_nil document.at_css(".email-notification-content")
+    assert_equal 1, document.text.scan(discussion_body).count
     assert_includes body, discussion.title
     assert_includes body, "Mark catch-up as read"
     assert_not_includes body, "empty.gif"
   end
 
-  test "digest notification includes the full comment content beneath its headline" do
+  test "digest notification shows its headline while comment content appears once in the unread thread" do
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
     discussion = DiscussionService.create(
@@ -91,28 +92,8 @@ class DigestMailerTest < ActionMailer::TestCase
     notification = notification_heading.parent
 
     assert_equal @inviter.name, notification_heading.at_css(".email-avatar")["alt"]
-    assert_includes notification.at_css(".email-notification-content").text, comment_body
-  end
-
-  test "digest notification does not include discarded comment content" do
-    @user.update!(email_catch_up_day: 7)
-    @group.add_member!(@user)
-    discussion = DiscussionService.create(
-      params: { title: "Discarded digest #{SecureRandom.hex(4)}", group_id: @group.id },
-      actor: @inviter
-    )
-    discarded_body = "Removed notified comment #{SecureRandom.hex(8)}"
-    topic_item = nil
-    comment = CommentService.create(
-      comment: Comment.new(parent: discussion, body: discarded_body),
-      actor: @inviter
-    ) { |item| topic_item = item }
-    create_digest_notification(kind: "user_mentioned", subject: topic_item)
-    CommentService.discard(comment: comment, actor: @inviter)
-
-    mail = DigestMailer.digest(@user.id).deliver_now
-
-    refute_includes mail.body.encoded, discarded_body
+    assert_nil notification.at_css(".email-notification-content")
+    assert_equal 1, mail_document(mail).text.scan(comment_body).count
   end
 
   test "digest renders an unknown sender notification" do
@@ -137,7 +118,7 @@ class DigestMailerTest < ActionMailer::TestCase
     assert_includes notification_text, "Please review email from unrecognised sender"
   end
 
-  test "digest notification includes the full poll summary beneath its headline" do
+  test "digest notification shows its headline while poll details appear once in the unread thread" do
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
     poll_details = "Complete proposal details #{SecureRandom.hex(8)}"
@@ -156,9 +137,10 @@ class DigestMailerTest < ActionMailer::TestCase
     create_digest_notification(kind: "poll_announced", subject: poll.created_topic_item || poll)
 
     mail = DigestMailer.digest(@user.id).deliver_now
-    notification_content = mail_document(mail).css(".email-notification-content").find { |element| element.text.include?(poll_details) }
+    document = mail_document(mail)
 
-    assert_includes notification_content.text, poll_details
+    assert_nil document.at_css(".email-notification-content")
+    assert_equal 1, document.text.scan(poll_details).count
   end
 
   test "digest email includes discussions the user is a guest of" do
