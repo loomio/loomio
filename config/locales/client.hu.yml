@@ -2685,6 +2685,14 @@ hu:
     tags_per_interval: Cimkék per %{interval}
     all_groups_and_direct_threads: Minden csoport és közvetlen szál
     custom_selection: Egyéni kijelölés
+    all_votes_cast: Minden leadott szavazat
+    votes_cast: Leadott szavazatok
+    votes_issued: Kiadott szavazatok
+    votes_missed: Elmaradt szavazatok
+    voting_record_per_user: Szavazási rekord felhasználónként
+    yes_label: Igen
+    no_label: Nem
+    delegates_only: Csak küldöttek
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája

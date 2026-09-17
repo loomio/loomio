@@ -2678,6 +2678,14 @@ fi:
     tags_per_interval: Tagit per %{interval}
     all_groups_and_direct_threads: Kaikki ryhmät ja suorat ketjut
     custom_selection: Mukautettu valinta
+    all_votes_cast: Kaikki annetut äänet
+    votes_cast: Annetut äänet
+    votes_issued: Annetut äänet
+    votes_missed: Äänestykset menetetty
+    voting_record_per_user: Äänestysennätys käyttäjää kohden
+    yes_label: Kyllä
+    no_label: Ei
+    delegates_only: Vain edustajat
   tips:
     youve_completed_all_the_steps: "\U0001F389 Olet suorittanut kaikki vaiheet!"
     getting_started_checklist: Aloittamisen tarkistuslista

@@ -569,14 +569,18 @@ module Dev::Scenarios::OatmilkCooperative
 
   def setup_manual_oatmilk_participation_report
     group, coordinator = create_manual_oatmilk_cooperative
-    group.update_column(:created_at, 3.months.ago)
-    Topic.where(group_id: group.id).order(:id).each_with_index do |topic, index|
-      topic.update_column(:created_at, (2 - index).months.ago)
+    group.update_column(:created_at, 9.months.ago)
+    Topic.where(group_id: group.id).order(:id).each do |topic|
+      occurred_at = 1.month.ago.change(hour: 12)
+      topic.update_column(:created_at, occurred_at)
+      topic.topicable.update_column(:created_at, occurred_at)
+      Poll.where(topic_id: topic.id).update_all(created_at: occurred_at)
     end
-    group.discussions.first.comments.update_all(created_at: 1.month.ago)
+    group.discussions.first.comments.update_all(created_at: 1.month.ago.change(hour: 12))
+    add_manual_oatmilk_participation_report_data(group: group, coordinator: coordinator)
 
     sign_in coordinator
-    redirect_to "/report/?group_ids=#{group.id}&start_on=#{3.months.ago.strftime('%Y-%m')}"
+    redirect_to "/report/?group_ids=#{group.id}&start_on=#{9.months.ago.strftime('%Y-%m')}"
   end
 
   def setup_manual_oatmilk_new_discussion
@@ -1608,6 +1612,178 @@ module Dev::Scenarios::OatmilkCooperative
       'samira@oatmilk.example',
       'alex@oatmilk.example'
     ]}).update_all(delegate: true)
+  end
+
+  # Build a sizeable but deterministic history that resembles a growing working
+  # group. Recent months have more active people, while delegates retain clear
+  # high, medium, and low participation tiers. Every action and tag series is
+  # populated so this scenario can drive both manual screenshots and testing.
+  def add_manual_oatmilk_participation_report_data(group:, coordinator:)
+    production_lead = User.find_by!(email: 'samira@oatmilk.example')
+    sales_lead = User.find_by!(email: 'alex@oatmilk.example')
+    baseline_poll = group.polls.find_by!(title: 'Run a six-week returnable bottle trial')
+    baseline_stance = baseline_poll.stances.latest.find_by!(participant: production_lead)
+    StanceService.update(
+      stance: baseline_stance,
+      actor: production_lead,
+      params: {
+        choice: { baseline_poll.poll_options.first.name => 1 },
+        reason: 'The trial is ready to proceed.'
+      }
+    )
+    participant_profiles = [
+      [production_lead, 8, 'New Zealand', 'Production'],
+      [sales_lead, 8, 'Australia', 'Cafe partnerships'],
+      ['Taylor Reed', 'taylor@oatmilk.example', 7, 'United Kingdom', 'Operations'],
+      ['Morgan Price', 'morgan.price@oatmilk.example', 7, 'New Zealand', 'Finance'],
+      ['Casey Nguyen', 'casey@oatmilk.example', 6, 'Vietnam', 'Quality'],
+      ['Jordan Williams', 'jordan@oatmilk.example', 5, 'United States', 'Distribution'],
+      ['Avery Brown', 'avery@oatmilk.example', 4, 'Canada', 'Production'],
+      ['Robin Singh', 'robin.singh@oatmilk.example', 4, 'India', 'Cafe partnerships'],
+      ['Mia Thompson', 'mia@oatmilk.example', 3, 'New Zealand', 'Operations'],
+      ['Noah Wilson', 'noah@oatmilk.example', 2, 'Australia', 'Finance'],
+      ['Sofia Garcia', 'sofia@oatmilk.example', 1, 'Spain', 'Quality'],
+      ['Eli Martin', 'eli@oatmilk.example', 1, 'United Kingdom', 'Distribution']
+    ]
+    participants = participant_profiles.map do |profile|
+      user, activity_count, country, tag = if profile.first.is_a?(User)
+        profile
+      else
+        name, email, count, profile_country, profile_tag = profile
+        [create_manual_oatmilk_member(name: name, email: email), count, profile_country, profile_tag]
+      end
+      group.add_member!(user) unless group.members.include?(user)
+      { user: user, activity_count: activity_count, country: country, tag: tag }
+    end
+
+    coordinator.update_column(:country, 'New Zealand')
+    passive_profiles = [
+      ['Harper Lee', 'harper@oatmilk.example', 'New Zealand'],
+      ['Jess Rivera', 'jess@oatmilk.example', 'Australia'],
+      ['Theo Evans', 'theo@oatmilk.example', 'United Kingdom'],
+      ['Amelia King', 'amelia@oatmilk.example', 'Canada'],
+      ['Lucas Silva', 'lucas@oatmilk.example', 'Brazil'],
+      ['Isla Campbell', 'isla@oatmilk.example', 'New Zealand'],
+      ['Hugo Dubois', 'hugo@oatmilk.example', 'France'],
+      ['Zara Ahmed', 'zara@oatmilk.example', 'Pakistan'],
+      ['Oliver Smith', 'oliver@oatmilk.example', 'Australia'],
+      ['Grace Kim', 'grace@oatmilk.example', 'South Korea'],
+      ['Ben Clarke', 'ben@oatmilk.example', 'New Zealand'],
+      ['Freya Jensen', 'freya@oatmilk.example', 'Denmark']
+    ]
+    passive_profiles.each do |name, email, country|
+      member = create_manual_oatmilk_member(name: name, email: email)
+      member.update_column(:country, country)
+      group.add_member!(member)
+    end
+
+    # This data set creates many events in a short time. Keep them visible in
+    # the app without enqueueing email or push deliveries for scenario users.
+    group.members.update_all(volume_email_default: User.volume_email_defaults[:quiet], volume_push_default: User.volume_push_defaults[:quiet])
+    group.memberships.update_all(volume_email: Membership.volume_emails[:quiet], volume_push: Membership.volume_pushes[:quiet])
+    TopicReader.where(user_id: group.member_ids).update_all(
+      volume_email: TopicReader.volume_emails[:quiet],
+      volume_push: TopicReader.volume_pushes[:quiet]
+    )
+
+    tag_colors = ['#1565c0', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f', '#c62828']
+    participants.map { |profile| profile.fetch(:tag) }.uniq.zip(tag_colors).each do |tag, color|
+      group.tags.create!(name: tag, color: color)
+    end
+
+    participants.each do |profile|
+      profile.fetch(:user).update_column(:country, profile.fetch(:country))
+      group.membership_for(profile.fetch(:user)).update!(delegate: true)
+    end
+
+    authored_counts = Hash.new(0)
+    8.times.reverse_each do |index|
+      active_profiles = participants.select { |profile| profile.fetch(:activity_count) > index }
+      occurred_at = (index + 1).months.ago.change(hour: 12)
+      month_name = occurred_at.strftime('%B')
+      thread_count = if index < 2
+        3
+      elsif index < 4
+        2
+      else
+        1
+      end
+
+      thread_count.times do |thread_index|
+        author_profile = active_profiles.min_by { |profile| authored_counts[profile.fetch(:user).id] }
+        author = author_profile.fetch(:user)
+        authored_counts[author.id] += 1
+        tag = participants.fetch((index * 2 + thread_index) % participants.length).fetch(:tag)
+        month_name = occurred_at.strftime('%B')
+        discussion = DiscussionService.create(
+          params: {
+            group_id: group.id,
+            title: "#{tag} review for #{month_name}",
+            description: "Review the month's #{tag.downcase} work and agree the next practical steps.",
+            tags: [tag]
+          },
+          actor: author
+        )
+        comments = active_profiles.map do |profile|
+          CommentService.create(
+            comment: Comment.new(parent: discussion, body: "I have reviewed the #{tag.downcase} figures and added my follow-up for #{month_name}."),
+            actor: profile.fetch(:user)
+          )
+        end
+        poll = PollService.create(
+          params: {
+            topic_id: discussion.topic_id,
+            title: "Confirm the #{tag.downcase} plan for #{month_name}",
+            poll_type: 'proposal',
+            poll_option_names: %w[agree abstain disagree],
+            closing_at: 1.week.from_now
+          },
+          actor: author
+        )
+        PollService.invite(
+          poll: poll,
+          params: { recipient_user_ids: active_profiles.map { |profile| profile.fetch(:user).id } },
+          actor: coordinator
+        )
+        option = poll.poll_options.find_by!(icon: 'agree')
+        issued_stances = active_profiles.map do |profile|
+          Stance.find_by!(poll: poll, participant: profile.fetch(:user), latest: true)
+        end
+        cast_stances = active_profiles.each_with_index.filter_map do |profile, participant_index|
+          next if participant_index.positive? && (participant_index + index + thread_index).remainder(5).zero?
+
+          user = profile.fetch(:user)
+          stance = Stance.find_by!(poll: poll, participant: user, latest: true)
+          StanceService.update(
+            stance: stance,
+            actor: user,
+            params: { choice: { option.name => 1 }, reason: 'The plan is practical and ready to proceed.' }
+          )
+          stance
+        end
+        PollService.close(poll: poll, actor: author)
+        outcome = OutcomeService.create(
+          outcome: Outcome.new(poll: poll, statement: "Proceed with the agreed #{tag.downcase} actions for #{month_name}."),
+          actor: author
+        )
+        reactions = comments.zip(active_profiles).map do |comment, profile|
+          Reaction.create!(reactable: comment, user: profile.fetch(:user), reaction: '+1')
+        end
+
+        discussion.topic.update_column(:created_at, occurred_at)
+        discussion.update_column(:created_at, occurred_at)
+        Comment.where(id: comments.map(&:id)).update_all(created_at: occurred_at)
+        poll.update_column(:created_at, occurred_at)
+        Stance.where(id: issued_stances.map(&:id)).update_all(created_at: occurred_at)
+        Stance.where(id: cast_stances.map(&:id)).update_all(cast_at: occurred_at)
+        outcome.update_column(:created_at, occurred_at)
+        Reaction.where(id: reactions.map(&:id)).update_all(created_at: occurred_at)
+      end
+    end
+
+    group.memberships.order(:id).each_with_index do |membership, index|
+      membership.update_column(:created_at, (8 - (index % 8)).months.ago.change(hour: 10))
+    end
   end
 
   def create_manual_oatmilk_cooperative
