@@ -52,6 +52,19 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, "Save group"
   end
 
+  test "admin can show a subscribed group without subscription admin routes" do
+    sign_in @admin
+    @group.update!(subscription: Subscription.create!(owner: @admin, plan: "trial"))
+    const_defined = Object.method(:const_defined?)
+
+    Object.stub(:const_defined?, ->(name, inherit = true) { name.to_s == "LoomioSubs" ? false : const_defined.call(name, inherit) }) do
+      get :show, params: { id: @group.id }
+    end
+
+    assert_response :success
+    refute_includes response.body, "Subscription ##{@group.subscription_id}"
+  end
+
   test "admin can update permitted group attributes" do
     sign_in @admin
 

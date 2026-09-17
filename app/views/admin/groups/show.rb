@@ -9,7 +9,7 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
   def view_template
     page_header(@group.full_name, action_label: "Edit group", action_path: edit_admin_group_path(@group))
     render_stats
-    render_subscription if defined?(Subscription) && @group.subscription_id
+    render_subscription if Object.const_defined?("LoomioSubs") && @group.subscription_id
     render_subgroups
     render_members
     panel("Group attributes") { definition_list(@group, group_attribute_keys) }
