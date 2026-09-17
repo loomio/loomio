@@ -3135,3 +3135,8 @@ pt_BR:
     remove_device: Remover navegador
     enable_from_loomio: Ative as notificações push nas configurações de notificações enquanto estiver conectado ao Loomio
     ios_add_to_home_screen_before_enabling: No iPhone ou iPad, use a função Compartilhar para adicionar o Loomio à sua tela inicial. Abra o Loomio pelo novo ícone e ative as notificações push.
+  group_follow:
+    follow: Acompanhe as atualizações
+    unfollow: Deixar de seguir as atualizações
+    followed: Agora você está acompanhando as atualizações deste grupo
+    unfollowed: Você não está mais acompanhando as atualizações deste grupo

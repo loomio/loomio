@@ -3086,3 +3086,8 @@ ja:
     remove_device: ブラウザを削除
     enable_from_loomio: Loomioにサインインした状態で、通知設定からプッシュ通知を有効にしてください
     ios_add_to_home_screen_before_enabling: iPhoneまたはiPadでは、共有機能を使ってLoomioをホーム画面に追加します。新しいアイコンからLoomioを開き、プッシュ通知を有効にしてください。
+  group_follow:
+    follow: 最新情報をフォロー
+    unfollow: 更新情報のフォローを解除する
+    followed: あなたは現在、このグループからの最新情報をフォローしています
+    unfollowed: このグループからの最新情報はもうフォローされていません

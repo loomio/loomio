@@ -54,6 +54,7 @@ export default {
   LinkPreviews: 'topic/link_previews',
   MatrixChart: 'poll/meeting/matrix_chart',
   MembershipDropdown: 'group/membership_dropdown',
+  GroupFollowButton: 'group/follow_button',
   MembershipRequest: 'group/membership_request',
   MembershipRequestForm: 'group/membership_request_form',
   MembershipRequestsCard: 'group/membership_requests_card',

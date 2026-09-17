@@ -123,6 +123,7 @@ v-main
       menu-show-icon
       :menu-actions='menuActions')
     join-group-button(:group='group')
+    group-follow-button(:group='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(

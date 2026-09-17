@@ -25,6 +25,7 @@ class DigestQuery
   def topics
     @topics ||= TopicQuery.relevant_to(
       user: user,
+      public_group_ids: user.group_follows.pluck(:group_id),
       only_unread: true,
       or_subgroups: false
     ).where(last_activity_at: time_start..time_finish).to_a

@@ -51,6 +51,7 @@ class Membership < ApplicationRecord
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
+  after_save :remove_group_follow, if: :active_membership_saved?
   after_commit :update_org_members_count
 
   def title_model
@@ -90,6 +91,14 @@ class Membership < ApplicationRecord
   end
 
   private
+
+  def active_membership_saved?
+    revoked_at.nil? && (previous_changes.key?('id') || previous_changes.key?('revoked_at'))
+  end
+
+  def remove_group_follow
+    GroupFollow.where(group_id: group_id, user_id: user_id).delete_all
+  end
 
   def set_volume
     return unless id.nil?

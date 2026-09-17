@@ -399,7 +399,6 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |
-
 ## 2026-09-16 — Voting record labels
 
 | File | Key | Before | After | Why it was wrong |
@@ -410,3 +409,12 @@ languages in the Nov 2025 pass.
 | `config/locales/client.it.yml` | `report.votes_issued` | `Voti espressi` | `Voti assegnati` | Duplicated “votes cast” instead of ballots assigned to the person |
 | `config/locales/client.nl_NL.yml` | `report.votes_issued` | `Uitgebrachte stemmen` | `Toegewezen stemmen` | Duplicated “votes cast” instead of ballots assigned to the person |
 | `config/locales/client.pt_BR.yml` | `report.votes_issued` | `Votos emitidos` | `Votos atribuídos` | Could mean votes cast rather than ballots assigned to the person |
+
+## 2026-09-17 — Follow Group updates
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `Sie` forms | Informal `du` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.es.yml` | `group_follow.unfollow` | Infinitive `Dejar` | Informal imperative `Deja` | Spanish actions address the user in the informal `tú` register |
+| `config/locales/client.fr.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `vous` forms | Informal `tu` forms | French user-facing copy uses the informal `tu` register |
+| Multiple `config/locales/client.*.yml` files | `group_follow.followed`, `group_follow.unfollowed` | Single-sentence status messages with final punctuation | Removed final punctuation | Single-sentence UI strings do not use final punctuation |

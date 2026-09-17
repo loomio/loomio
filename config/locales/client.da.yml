@@ -3087,3 +3087,8 @@ da:
     remove_device: Fjern browser
     enable_from_loomio: Aktivér push-notifikationer fra notifikationsindstillingerne, mens du er logget ind på Loomio
     ios_add_to_home_screen_before_enabling: På iPhone eller iPad skal du bruge Del til at tilføje Loomio til din startskærm. Åbn Loomio fra det nye ikon, og aktiver derefter push-notifikationer her.
+  group_follow:
+    follow: Følg opdateringer
+    unfollow: Hold op med at følge opdateringer
+    followed: Du følger nu opdateringer fra denne gruppe
+    unfollowed: Du følger ikke længere opdateringer fra denne gruppe
