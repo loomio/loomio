@@ -1487,6 +1487,8 @@ sl:
     handle_changed_hint: Vaš prejšnji URL in e-poštni naslov bosta preusmerila na vaš novi naslov.
     members_can_create_tags: Člani lahko ustvarijo oznake
     members_can_create_tags_help: Dovoli članom ustvarjanje novih oznak pri označevanju niti in anket
+    non_members_can_start_discussions: Nečlani lahko začnejo razprave
+    non_members_can_start_discussions_help: Dovoli nečlanom, da začnejo razpravo iz ene od predlog te skupine
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -2684,6 +2686,14 @@ sl:
     tags_per_interval: Oznake na %{interval}
     all_groups_and_direct_threads: Vse skupine in neposredne niti
     custom_selection: Izbira po meri
+    all_votes_cast: Vsi oddani glasovi
+    votes_cast: Oddani glasovi
+    votes_issued: Izdani glasovi
+    votes_missed: Zgrešeni glasovi
+    voting_record_per_user: Glasovalni zapis na uporabnika
+    yes_label: Da
+    no_label: Ne
+    delegates_only: Samo za delegate
   tips:
     youve_completed_all_the_steps: "\U0001F389 Vse korake ste zaključili!"
     getting_started_checklist: Kontrolni seznam za začetek
@@ -3085,3 +3095,8 @@ sl:
     remove_device: Odstrani brskalnik
     enable_from_loomio: Omogočite potisna obvestila v nastavitvah obvestil, ko ste prijavljeni v Loomio
     ios_add_to_home_screen_before_enabling: V iPhonu ali iPadu uporabite možnost Deli, da dodate Loomio na začetni zaslon. Odprite Loomio z novo ikono in nato tukaj omogočite potisna obvestila.
+  group_follow:
+    follow: Sledite posodobitvam
+    unfollow: Ne spremljaj posodobitev
+    followed: Zdaj spremljate posodobitve te skupine
+    unfollowed: Ne spremljate več posodobitev te skupine

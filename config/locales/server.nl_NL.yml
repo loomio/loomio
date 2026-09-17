@@ -789,3 +789,5 @@ nl_NL:
     no_option_selected: Geen optie geselecteerd
     outcome: Resultaat · %{author} %{timestamp}
     review_date: "**Reviewdatum:** %{value}"
+  error:
+    access_denied: Je hebt geen toestemming om dat te doen

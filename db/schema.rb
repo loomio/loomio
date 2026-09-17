@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -150,9 +150,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
     t.boolean "default_to_direct_discussion", default: false, null: false
     t.text "description"
     t.string "description_format", limit: 10, default: "html", null: false
-    t.datetime "discarded_at", precision: nil
+    t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.datetime "hidden_at", precision: nil
+    t.integer "hider_id"
     t.string "key"
     t.jsonb "link_previews", default: [], null: false
     t.integer "max_depth", default: 2, null: false
@@ -173,6 +175,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
     t.index ["author_id"], name: "index_discussion_templates_on_author_id"
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
     t.index ["discarded_by"], name: "index_discussion_templates_on_discarded_by"
+    t.index ["hidden_at"], name: "index_discussion_templates_on_hidden_at"
+    t.index ["hider_id"], name: "index_discussion_templates_on_hider_id"
   end
 
   create_table "discussions", id: :serial, force: :cascade do |t|
@@ -208,6 +212,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
   create_table "forward_email_rules", force: :cascade do |t|
     t.string "email"
     t.citext "handle", null: false
+  end
+
+  create_table "group_follows", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "group_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_group_follows_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_group_follows_on_user_id_and_group_id", unique: true
+    t.index ["user_id"], name: "index_group_follows_on_user_id"
   end
 
   create_table "group_handle_redirects", force: :cascade do |t|
@@ -263,6 +277,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
     t.string "membership_granted_upon", default: "approval", null: false
     t.integer "memberships_count", default: 0, null: false
     t.string "name", limit: 255
+    t.boolean "non_members_can_start_discussions", default: false, null: false
     t.integer "org_members_count", default: 0, null: false
     t.integer "parent_id"
     t.boolean "parent_members_can_see_discussions", default: false, null: false
@@ -603,9 +618,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
     t.text "details"
     t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at"
+    t.integer "discarded_by"
     t.integer "dots_per_person"
     t.integer "group_id", null: false
+    t.datetime "hidden_at"
     t.integer "hide_results", default: 0, null: false
+    t.integer "hider_id"
     t.string "key"
     t.boolean "limit_reason_length", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
@@ -639,6 +657,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
     t.string "title_placeholder"
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
+    t.index ["discarded_by"], name: "index_poll_templates_on_discarded_by"
+    t.index ["hidden_at"], name: "index_poll_templates_on_hidden_at"
+    t.index ["hider_id"], name: "index_poll_templates_on_hider_id"
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|
@@ -1260,6 +1281,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000001) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "group_follows", "groups", on_delete: :cascade
+  add_foreign_key "group_follows", "users", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade

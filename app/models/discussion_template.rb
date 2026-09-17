@@ -1,5 +1,6 @@
 class DiscussionTemplate < ApplicationRecord
-  include Discard::Model
+  include Hideable
+  include DiscardableBy
   include HasRichText
   include CustomCounterCache::Model
 
@@ -30,6 +31,7 @@ class DiscussionTemplate < ApplicationRecord
     :group_id,
     :tags,
     :comment_length_max,
+    :hidden_at,
     :discarded_at,
     :attachments
   ]

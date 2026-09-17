@@ -1493,6 +1493,8 @@ nl_NL:
     handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
     members_can_create_tags: Leden kunnen tags aanmaken.
     members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
+    non_members_can_start_discussions: Niet-leden kunnen discussies starten
+    non_members_can_start_discussions_help: Sta niet-leden toe om een discussie te starten via een van de sjablonen van deze groep
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -2711,6 +2713,14 @@ nl_NL:
     tags_per_interval: Tags per %{interval}
     all_groups_and_direct_threads: Alle groepen en directe discussies
     custom_selection: Aangepaste selectie
+    all_votes_cast: Alle uitgebrachte stemmen
+    votes_cast: Uitgebrachte stemmen
+    votes_issued: Toegewezen stemmen
+    votes_missed: Stemmen gemist
+    voting_record_per_user: Stemgeschiedenis per gebruiker
+    yes_label: Ja
+    no_label: Nee
+    delegates_only: Alleen voor afgevaardigden
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag
@@ -3112,3 +3122,8 @@ nl_NL:
     remove_device: Browser verwijderen
     enable_from_loomio: Schakel pushmeldingen in via de meldingsinstellingen terwijl je bent ingelogd bij Loomio
     ios_add_to_home_screen_before_enabling: Gebruik op je iPhone of iPad de deelfunctie om Loomio aan je startscherm toe te voegen. Open Loomio via het nieuwe pictogram en schakel hier pushmeldingen in.
+  group_follow:
+    follow: Volg de updates
+    unfollow: Updates ontvolgen
+    followed: Je volgt nu updates van deze groep
+    unfollowed: Je ontvangt geen updates meer van deze groep

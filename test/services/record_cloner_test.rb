@@ -20,6 +20,7 @@ class RecordClonerTest < ActiveSupport::TestCase
       members_can_raise_motions: true,
       members_can_vote: true,
       members_can_start_discussions: true,
+      non_members_can_start_discussions: true,
       members_can_create_subgroups: true,
       subscription: Subscription.create!(plan: 'trial')
     )
@@ -80,6 +81,7 @@ class RecordClonerTest < ActiveSupport::TestCase
       members_can_raise_motions
       members_can_vote
       members_can_start_discussions
+      non_members_can_start_discussions
       members_can_create_subgroups
     ].each do |field|
       assert_equal @group.send(field), clone.send(field), "#{field} should be copied"

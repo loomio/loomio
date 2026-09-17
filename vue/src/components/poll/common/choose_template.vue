@@ -67,14 +67,14 @@ function query() {
     pollTemplates.value = Records.pollTemplates.collection.chain().
       find({groupId: props.group.id || null}).
       find({example: {$ne: true}}).
-      find({discardedAt: null}).
+      find({hiddenAt: null, discardedAt: null}).
       find(pollTypeFilter).
       simplesort('position').data();
 
     hiddenTemplates.value = Records.pollTemplates.collection.chain().
       find({groupId: props.group.id || null}).
       find({example: {$ne: true}}).
-      find({discardedAt: {$ne: null}}).
+      find({hiddenAt: {$ne: null}, discardedAt: null}).
       find(pollTypeFilter).
       simplesort('position').data();
 

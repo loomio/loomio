@@ -1496,6 +1496,8 @@ uk:
     handle_changed_hint: Ваша попередня URL-адреса та адреса електронної пошти перенаправлятимуть на вашу нову адресу.
     members_can_create_tags: Учасники можуть створювати теги
     members_can_create_tags_help: Дозволити учасникам створювати нові теги під час додавання тегів до тем та опитувань
+    non_members_can_start_discussions: Неучасники можуть розпочинати обговорення
+    non_members_can_start_discussions_help: Дозволити користувачам, які не є учасниками, розпочинати обговорення з одного з шаблонів цієї групи
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -2714,6 +2716,14 @@ uk:
     tags_per_interval: Теги на %{interval}
     all_groups_and_direct_threads: Усі групи та прямі обговорення
     custom_selection: Вибір на замовлення
+    all_votes_cast: Усі подані голоси
+    votes_cast: Віддані голоси
+    votes_issued: Видані голоси
+    votes_missed: Пропущені голосування
+    voting_record_per_user: Кількість голосів на користувача
+    yes_label: Так
+    no_label: Ні
+    delegates_only: Тільки для делегатів
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи
@@ -3115,3 +3125,8 @@ uk:
     remove_device: Видалити браузер
     enable_from_loomio: Увімкніть push-сповіщення в налаштуваннях сповіщень, коли ви ввійшли в Loomio
     ios_add_to_home_screen_before_enabling: На iPhone або iPad скористайтеся функцією «Поділитися», щоб додати Loomio на головний екран. Відкрийте Loomio з нової іконки, а потім увімкніть push-сповіщення тут.
+  group_follow:
+    follow: Слідкуйте за оновленнями
+    unfollow: Скасувати підписку на оновлення
+    followed: Тепер ви слідкуєте за оновленнями від цієї групи
+    unfollowed: Ви більше не слідкуєте за оновленнями цієї групи

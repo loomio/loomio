@@ -37,7 +37,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
         group_ids = [group.id]
         group_ids << group.parent_id if group.parent_id && current_user.group_ids.include?(group.parent_id)
 
-        db_results = DiscussionTemplate.where(group_id: group_ids, discarded_at: nil).order(:group_id, :position).map { |dt|
+        db_results = DiscussionTemplate.kept.visible.where(group_id: group_ids).order(:group_id, :position).map { |dt|
           {
             id: dt.id,
             key: dt.key,
@@ -58,15 +58,16 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     if params[:key]
       self.collection = DiscussionTemplateService.default_templates.select { |dt| dt.key == params[:key] }
     elsif params[:id]
-      self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
-    elsif (group = current_user.groups.find_by(id: params[:group_id]))
+      template = DiscussionTemplate.find_by(id: params[:id])
+      self.collection = template_accessible?(template) ? [ template ] : []
+    elsif (group = find_accessible_group(params[:group_id]))
       self.collection = DiscussionTemplateService.group_templates(group: group)
       unless group.admins.exists?(current_user.id)
-        self.collection = self.collection.reject { |t| t.discarded_at.present? }
+        self.collection = self.collection.reject(&:hidden?)
       end
     else
       blank = DiscussionTemplateService.default_templates.select { |dt| dt.key == 'blank' }
-      direct = DiscussionTemplate.where(group_id: current_user.group_ids, default_to_direct_discussion: true).where(discarded_at: nil).to_a
+      direct = DiscussionTemplate.kept.visible.where(group_id: current_user.group_ids, default_to_direct_discussion: true).to_a
       self.collection = blank + direct
     end
 
@@ -74,7 +75,8 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   def show
-    @discussion_template = DiscussionTemplate.where('group_id IN (?) OR public = true', current_user.group_ids).find(params[:id])
+    @discussion_template = DiscussionTemplate.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless template_accessible?(@discussion_template)
     respond_with_resource
   end
 
@@ -100,34 +102,57 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     index
   end
 
-  def discard
-    @discussion_template = find_template_for_author_or_admin(:kept)
-    @discussion_template.discard!
+  def hide
+    @discussion_template = find_template_for_author_or_admin(:visible)
+    @discussion_template.hide!(actor: current_user)
     index
   end
 
-  def undiscard
-    @discussion_template = find_template_for_author_or_admin(:discarded)
-    @discussion_template.undiscard!
+  def unhide
+    @discussion_template = find_template_for_author_or_admin(:hidden)
+    @discussion_template.unhide!
     index
   end
 
   def destroy
     @discussion_template = find_template_for_author_or_admin
-    @discussion_template.destroy!
+    @discussion_template.discard!(actor: current_user)
     destroy_response
   end
 
   private
 
+  def find_accessible_group(id)
+    group = Group.kept.find_by(id: id)
+    return unless group
+    return group if group.members.exists?(current_user.id)
+    return unless current_user.email_verified?
+    return if group.group_privacy == 'secret'
+    return unless group.non_members_can_start_discussions?
+    return unless current_user.can?(:show, group)
+
+    group
+  end
+
+  def template_accessible?(template)
+    return false unless template
+    return false if template.discarded?
+    return true if template.public?
+
+    group = find_accessible_group(template.group_id)
+    return false unless group
+
+    group.members.exists?(current_user.id) || !template.hidden?
+  end
+
   def find_template_for_author_or_admin(scope = nil)
     if params[:group_id]
       group = current_user.groups.find_by!(id: params[:group_id])
-      templates = group.discussion_templates
+      templates = group.discussion_templates.kept
       templates = templates.send(scope) if scope
       template = templates.find_by!(id: params[:id])
     else
-      template = DiscussionTemplate.find(params[:id])
+      template = DiscussionTemplate.kept.find(params[:id])
       group = current_user.groups.find_by!(id: template.group_id)
     end
 

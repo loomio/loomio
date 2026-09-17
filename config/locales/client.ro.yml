@@ -1487,6 +1487,8 @@ ro:
     handle_changed_hint: Adresa URL și adresa de e-mail anterioare vor redirecționa către noua adresă.
     members_can_create_tags: Membrii pot crea etichete
     members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
+    non_members_can_start_discussions: Persoanele care nu sunt membri pot începe discuții
+    non_members_can_start_discussions_help: Permiteți membrilor care nu sunt membri să înceapă o discuție dintr-unul dintre șabloanele acestui grup
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -2684,6 +2686,14 @@ ro:
     tags_per_interval: Etichete per %{interval}
     all_groups_and_direct_threads: Toate grupurile și firele de discuție directe
     custom_selection: Selecție personalizată
+    all_votes_cast: Toate voturile exprimate
+    votes_cast: Voturi exprimate
+    votes_issued: Voturi emise
+    votes_missed: Voturi ratate
+    voting_record_per_user: Înregistrarea voturilor per utilizator
+    yes_label: Da
+    no_label: Nu
+    delegates_only: Numai pentru delegați
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ai finalizat toți pașii!"
     getting_started_checklist: Listă de verificare pentru început
@@ -3085,3 +3095,8 @@ ro:
     remove_device: Eliminați browserul
     enable_from_loomio: Activează notificările push din setările de notificare când ești conectat la Loomio
     ios_add_to_home_screen_before_enabling: Pe iPhone sau iPad, folosește opțiunea Partajare pentru a adăuga Loomio pe ecranul principal. Deschide Loomio din noua pictogramă, apoi activează notificările push aici.
+  group_follow:
+    follow: Urmărește actualizările
+    unfollow: Anulează urmărirea actualizărilor
+    followed: Urmărești acum actualizările de la acest grup
+    unfollowed: Nu mai urmăriți actualizările de la acest grup

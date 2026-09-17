@@ -762,3 +762,5 @@ fi:
     no_option_selected: Ei valittua vaihtoehtoa
     outcome: Lopputulos · %{author} %{timestamp}
     review_date: "**Arviointipäivämäärä:** %{value}"
+  error:
+    access_denied: Sinulla ei ole lupaa tehdä niin

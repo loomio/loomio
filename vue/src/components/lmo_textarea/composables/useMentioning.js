@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, unref } from 'vue';
 import { sortBy, filter, uniqBy, debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
@@ -53,7 +53,7 @@ export function fetchMentionItems(model, query) {
   });
 }
 
-export function useCommonMentioning(model) {
+export function useCommonMentioning(model, allowMentions = true) {
   const mentionsCache = ref([]);
   const mentions = ref([]);
   const query = ref(null);
@@ -62,6 +62,7 @@ export function useCommonMentioning(model) {
   const fetchingMentions = ref(false);
 
   const fetchMentionableNow = () => {
+    if (!unref(allowMentions)) { return; }
     if (!query.value && mentionsCache.value.length > 0) { return; }
     fetchingMentions.value = true;
     fetchMentionItems(model.value, query.value).then(rows => {
@@ -75,7 +76,7 @@ export function useCommonMentioning(model) {
   const fetchMentionable = debounce(fetchMentionableNow, 500);
 
   onMounted(() => {
-    fetchMentionableNow();
+    if (unref(allowMentions)) { fetchMentionableNow(); }
   });
 
   const updateMentions = () => {

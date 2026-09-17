@@ -774,3 +774,5 @@ he:
     no_option_selected: לא נבחרה אפשרות
     outcome: תוצאה · %{author} %{timestamp}
     review_date: "**תאריך סקירה:** %{value}"
+  error:
+    access_denied: אין לך אישור לעשות זאת

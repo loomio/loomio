@@ -1496,6 +1496,8 @@ zh_TW:
     handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
     members_can_create_tags: 成員可以建立標籤
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
+    non_members_can_start_discussions: 非會員也可以發起討論
+    non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2712,6 +2714,14 @@ zh_TW:
     tags_per_interval: 每%{interval}的標籤數量
     all_groups_and_direct_threads: 所有群組和直接討論串
     custom_selection: 自訂選擇
+    all_votes_cast: 所有投票
+    votes_cast: 投票
+    votes_issued: 已投票
+    votes_missed: 未投票
+    voting_record_per_user: 用戶投票記錄
+    yes_label: 是的
+    no_label: 不
+    delegates_only: 僅限代表
   tips:
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
     getting_started_checklist: 入門清單
@@ -3113,3 +3123,8 @@ zh_TW:
     remove_device: 移除瀏覽器
     enable_from_loomio: 登入 Loomio 後，請在通知設定中啟用推播通知
     ios_add_to_home_screen_before_enabling: 在 iPhone 或 iPad 上，使用「分享」功能將 Loomio 新增至主畫面。從新出現的圖示開啟 Loomio，然後在此處啟用推播通知。
+  group_follow:
+    follow: 關注最新消息
+    unfollow: 取消關注更新
+    followed: 您現在正在關注此群組的更新
+    unfollowed: 您已取消追蹤此群組的更新

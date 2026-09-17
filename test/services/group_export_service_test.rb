@@ -320,9 +320,17 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     member = data[:member]
 
     filename = GroupExportService.export(group.all_groups, group.name)
-    # Exercise archives that list subgroups and topic item children before their parents.
+    # Exercise archives that list dependent records before their parents.
     archive = File.readlines(filename).map { |line| JSON.parse(line) }
-    archive.sort_by! { |data| data['table'] == 'groups' && data.dig('record', 'parent_id') ? 0 : 1 }
+    archive.sort_by! do |record|
+      if record['table'] == 'stance_choices'
+        0
+      elsif record['table'] == 'groups' && record.dig('record', 'parent_id')
+        1
+      else
+        2
+      end
+    end
     topic_item_indexes = archive.each_index.select { |index| archive[index]['table'] == 'topic_items' }
     topic_items = topic_item_indexes.map { |index| archive[index] }
                                     .sort_by { |data| data.dig('record', 'parent_id') ? 0 : 1 }

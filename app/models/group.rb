@@ -36,6 +36,8 @@ class Group < ApplicationRecord
 
   has_many :memberships, -> { active }
   has_many :members, -> { active }, through: :memberships, source: :user
+  has_many :group_follows, dependent: :destroy
+  has_many :followers, through: :group_follows, source: :user
 
   has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
   has_many :delegates, through: :delegate_memberships, source: :user
@@ -143,6 +145,7 @@ class Group < ApplicationRecord
                          :members_can_delete_comments,
                          :members_can_raise_motions,
                          :members_can_start_discussions,
+                         :non_members_can_start_discussions,
                          :members_can_create_subgroups,
                          :members_can_create_tags,
                          :creator_id,

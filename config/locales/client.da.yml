@@ -1487,6 +1487,8 @@ da:
     handle_changed_hint: Din tidligere URL og e-mailadresse vil omdirigere til din nye adresse.
     members_can_create_tags: Medlemmer kan oprette tags
     members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
+    non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
+    non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2684,6 +2686,14 @@ da:
     tags_per_interval: Tags pr. %{interval}
     all_groups_and_direct_threads: Alle grupper og direkte tråde
     custom_selection: Brugerdefineret valg
+    all_votes_cast: Alle afgivne stemmer
+    votes_cast: Afgivne stemmer
+    votes_issued: Afgivne stemmer
+    votes_missed: Stemmer mistet
+    voting_record_per_user: Stemmehistorik pr. bruger
+    yes_label: Ja
+    no_label: Ingen
+    delegates_only: Kun delegerede
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion
@@ -3085,3 +3095,8 @@ da:
     remove_device: Fjern browser
     enable_from_loomio: Aktivér push-notifikationer fra notifikationsindstillingerne, mens du er logget ind på Loomio
     ios_add_to_home_screen_before_enabling: På iPhone eller iPad skal du bruge Del til at tilføje Loomio til din startskærm. Åbn Loomio fra det nye ikon, og aktiver derefter push-notifikationer her.
+  group_follow:
+    follow: Følg opdateringer
+    unfollow: Hold op med at følge opdateringer
+    followed: Du følger nu opdateringer fra denne gruppe
+    unfollowed: Du følger ikke længere opdateringer fra denne gruppe

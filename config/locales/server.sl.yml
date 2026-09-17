@@ -762,3 +762,5 @@ sl:
     no_option_selected: Ni izbrane možnosti
     outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Datum pregleda:** %{value}"
+  error:
+    access_denied: Nimate dovoljenja za to.

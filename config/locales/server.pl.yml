@@ -789,3 +789,5 @@ pl:
     no_option_selected: Nie wybrano opcji
     outcome: Wynik · %{author} %{timestamp}
     review_date: "**Data przeglądu:** %{value}"
+  error:
+    access_denied: Nie masz uprawnień, aby to zrobić

@@ -762,3 +762,5 @@ hr:
     no_option_selected: Nije odabrana nijedna opcija
     outcome: Ishod · %{author} %{timestamp}
     review_date: "**Datum pregleda:** %{value}"
+  error:
+    access_denied: Nemate dopuštenje za to

@@ -16,6 +16,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_create_subgroups,
              :members_can_create_tags,
              :members_can_start_discussions,
+             :non_members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
              :members_can_delete_comments,
@@ -54,7 +55,8 @@ class GroupSerializer < ApplicationSerializer
              :new_host,
              :categorize_poll_templates,
              :category,
-             :request_to_join_prompt
+             :request_to_join_prompt,
+             :current_user_followed
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -63,6 +65,16 @@ class GroupSerializer < ApplicationSerializer
 
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
+  end
+
+  def current_user_followed
+    return false unless scope[:current_user_id]
+
+    followed_group_ids.include?(object.id)
+  end
+
+  def followed_group_ids
+    scope[:current_user_followed_group_ids] ||= GroupFollow.where(user_id: scope[:current_user_id]).pluck(:group_id).to_set
   end
 
   def parent

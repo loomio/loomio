@@ -762,3 +762,5 @@ el:
     no_option_selected: Δεν έχει επιλεγεί καμία επιλογή
     outcome: Αποτέλεσμα · %{author} %{timestamp}
     review_date: "**Ημερομηνία αξιολόγησης:** %{value}"
+  error:
+    access_denied: Δεν έχετε άδεια να το κάνετε αυτό

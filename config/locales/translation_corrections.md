@@ -1,5 +1,14 @@
 # Corrected translations
 
+## 2026-09-16 — Non-member discussion setting
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `server.de.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `Sie` wording and final full stops | Informal `du` wording without final full stops | German UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.es.yml`, `server.es.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Infinitive help text and final full stops | Informal `tú` imperative wording without final full stops | Spanish UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.fr.yml`, `server.fr.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `vous` wording and final full stops | Informal `tu` wording without final full stops | French UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.nl_NL.yml`, `server.nl_NL.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `u` wording and final full stops | Informal `je` wording without final full stops | Dutch UI uses the informal register and single-sentence UI strings omit final full stops |
+
 ## 2026-09-10 — iOS push guidance
 
 | File | Key | Before | After | Why it was wrong |
@@ -403,3 +412,23 @@ languages in the Nov 2025 pass.
 | `config/locales/server.es.yml` | `email.membership_request_declined.button_text` | `Vuelva a solicitarlo` | `Solicitar de nuevo` | Used the formal `usted` imperative instead of Loomio's informal register |
 | `config/locales/server.fr.yml` | `email.membership_request_declined.button_text` | `Postuler à nouveau` | `Faire une nouvelle demande` | “Postuler” suggests applying for a job rather than requesting group membership |
 | `config/locales/server.nl_NL.yml` | `email.membership_request_declined.button_text` | `Opnieuw solliciteren` | `Opnieuw aanvragen` | “Solliciteren” means applying for a job rather than requesting group membership |
+
+## 2026-09-16 — Voting record labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `report.votes_issued` | `abgegebene Stimmen` | `Zugewiesene Stimmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.es.yml` | `report.votes_issued` | `Votos emitidos` | `Votos asignados` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.fr.yml` | `report.votes_issued` | `Votes émis` | `Bulletins attribués` | Could mean votes cast rather than ballots assigned to the person |
+| `config/locales/client.it.yml` | `report.votes_issued` | `Voti espressi` | `Voti assegnati` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.nl_NL.yml` | `report.votes_issued` | `Uitgebrachte stemmen` | `Toegewezen stemmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.pt_BR.yml` | `report.votes_issued` | `Votos emitidos` | `Votos atribuídos` | Could mean votes cast rather than ballots assigned to the person |
+
+## 2026-09-17 — Follow Group updates
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `Sie` forms | Informal `du` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.es.yml` | `group_follow.unfollow` | Infinitive `Dejar` | Informal imperative `Deja` | Spanish actions address the user in the informal `tú` register |
+| `config/locales/client.fr.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `vous` forms | Informal `tu` forms | French user-facing copy uses the informal `tu` register |
+| Multiple `config/locales/client.*.yml` files | `group_follow.followed`, `group_follow.unfollowed` | Single-sentence status messages with final punctuation | Removed final punctuation | Single-sentence UI strings do not use final punctuation |

@@ -23,7 +23,14 @@ class DiscussionService
   def self.create(params:, actor:, &on_topic_item)
     discussion = build(params: params, actor: actor)
     actor.ability.authorize!(:create, discussion)
-    TagService.authorize_create_tag_names!(discussion.group, discussion.topic.tags, actor)
+    # A group template may prescribe tags the guest cannot ordinarily create. Only
+    # additional client-supplied tags pass through the normal tag authorization.
+    tag_names = if discussion.created_from_group_template? && !discussion.group.members.exists?(actor.id)
+      discussion.tag_names_not_from_template
+    else
+      discussion.topic.tags
+    end
+    TagService.authorize_create_tag_names!(discussion.group, tag_names, actor)
     return discussion unless TopicService.validate_topicable(discussion)
 
     topic_item = Discussion.transaction do
@@ -34,7 +41,9 @@ class DiscussionService
       TopicReader.for(
         user: actor, topic: discussion.topic
       ).update(
-        admin: true, guest: !discussion.group_id.present?, inviter_id: actor.id
+        admin: true,
+        guest: discussion.group.blank? || !discussion.group.members.exists?(actor.id),
+        inviter_id: actor.id
       )
 
       UserInviter.authorize!(

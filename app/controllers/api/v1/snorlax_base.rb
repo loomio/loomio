@@ -84,8 +84,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
     render json: {}, status: 200
   end
 
-  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
-    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: meta.merge({root: root, total: collection_count})
+  def respond_with_collection(records: records_to_serialize, scope: nil, serializer: serializer_class, root: serializer_root)
+    render json: records, scope: scope || default_scope(records), each_serializer: serializer, root: root, meta: meta.merge({root: root, total: collection_count})
   end
 
   def meta
@@ -128,9 +128,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
     end
   end
 
-  def default_scope
+  def default_scope(records = records_to_serialize)
     {
-      cache: RecordCache.for_collection(records_to_serialize, current_user.id, exclude_types),
+      cache: RecordCache.for_collection(records, current_user.id, exclude_types),
       current_user_id: current_user.id,
       exclude_types: exclude_types
     }

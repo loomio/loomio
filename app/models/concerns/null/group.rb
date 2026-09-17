@@ -106,6 +106,7 @@ module Null::Group
       members_can_add_members
       members_can_create_subgroups
       members_can_start_discussions
+      non_members_can_start_discussions
       admins_can_edit_user_content
       members_can_create_templates
       listed_in_explore

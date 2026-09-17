@@ -1493,6 +1493,8 @@ ca:
     handle_changed_hint: L'URL i l'adreça electrònica anteriors redirigiran a la nova adreça.
     members_can_create_tags: Els membres poden crear etiquetes
     members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
+    non_members_can_start_discussions: Els no membres poden iniciar debats
+    non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2711,6 +2713,14 @@ ca:
     tags_per_interval: Etiquetes per %{interval}
     all_groups_and_direct_threads: Tots els grups i fils directes
     custom_selection: Selecció personalitzada
+    all_votes_cast: Tots els vots emesos
+    votes_cast: Vots emesos
+    votes_issued: Vots emesos
+    votes_missed: Vots perduts
+    voting_record_per_user: Registre de votacions per usuari
+    yes_label: Sí
+    no_label: 'No'
+    delegates_only: Només delegats
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar
@@ -3112,3 +3122,8 @@ ca:
     remove_device: Elimina el navegador
     enable_from_loomio: Activa les notificacions push des de la configuració de notificacions mentre inicies la sessió a Loomio
     ios_add_to_home_screen_before_enabling: A l'iPhone o l'iPad, fes servir Comparteix per afegir Loomio a la pantalla d'inici. Obre Loomio des de la nova icona i, a continuació, activa les notificacions push aquí.
+  group_follow:
+    follow: Segueix les actualitzacions
+    unfollow: Deixa de seguir les actualitzacions
+    followed: Ara segueixes les actualitzacions d'aquest grup
+    unfollowed: Ja no segueixes les actualitzacions d'aquest grup

@@ -51,4 +51,12 @@ export default class GroupRecordsInterface extends BaseRecordsInterface {
       path: 'suggest_handle',
       params: {name, parent_handle: parentHandle}});
   }
+
+  follow(group) {
+    return this.recordStore.remote.post('group_follows', {group_id: group.id});
+  }
+
+  unfollow(group) {
+    return this.recordStore.remote.delete('group_follows/destroy', {group_id: group.id});
+  }
 };

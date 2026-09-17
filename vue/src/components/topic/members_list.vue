@@ -54,6 +54,12 @@ function isGroupAdmin(reader) {
     membershipsByUserId.value[reader.userId].admin;
 }
 
+function isDelegate(reader) {
+  return group.value &&
+    membershipsByUserId.value[reader.userId] &&
+    membershipsByUserId.value[reader.userId].delegate;
+}
+
 function inviteRecipients() {
   const count = recipients.value.length;
   saving.value = true;
@@ -191,6 +197,8 @@ v-card.topic-members-list(:title="$t('announcement.form.discussion_announced.tit
         user-avatar.mr-2(:user="reader.user()" :size="32")
       v-list-item-title
         span.mr-2 {{reader.user().nameWithTitle(group)}}
+        v-chip.mr-1(v-if="isDelegate(reader)" variant="tonal" size="x-small" label :title="$t('members_panel.delegate_popover')")
+          | {{ $t('members_panel.delegate') }}
         v-chip.mr-1(v-if="group && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
         v-chip.mr-1(v-if="reader.admin" variant="tonal" size="x-small")

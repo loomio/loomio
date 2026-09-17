@@ -774,3 +774,5 @@ hu:
     no_option_selected: Nincs kiválasztva opció
     outcome: Eredmény · %{author} %{timestamp}
     review_date: "**Felülvizsgálat dátuma:** %{value}"
+  error:
+    access_denied: Nincs engedélyed erre

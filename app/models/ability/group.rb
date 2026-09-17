@@ -20,6 +20,13 @@ module Ability::Group
         (group.is_visible_to_parent_members? and group.parent_or_self.members.exists?(user.id)))
     end
 
+    can :follow, ::Group do |group|
+      user.email_verified? &&
+        group.kept? &&
+        group.public_discussions_only? &&
+        !group.members.exists?(user.id)
+    end
+
     can [:update,
          :email_members,
          :publish,

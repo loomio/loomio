@@ -762,3 +762,5 @@ ja:
     no_option_selected: オプションは選択されていません
     outcome: 結果 · %{author} %{timestamp}
     review_date: "**レビュー日:** %{value}"
+  error:
+    access_denied: あなたにはそれを行う権限がありません

@@ -776,3 +776,5 @@ uk:
     no_option_selected: Не вибрано жодного варіанта
     outcome: Результат · %{author} %{timestamp}
     review_date: "**Дата перегляду:** %{value}"
+  error:
+    access_denied: У вас немає дозволу на це

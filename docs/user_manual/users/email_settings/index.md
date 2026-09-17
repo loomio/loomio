@@ -41,6 +41,8 @@ The catch-up provides a regular overview of activity without requiring you to fo
 
 It shows your unseen notifications first, followed by unread discussions and standalone polls grouped by group. Each notification includes its related comment, discussion description, poll details, outcome, or shared vote when available. The unread section can include new discussions, comments, votes, and edits. Direct discussions and threads you have joined as a guest are included when they contain unread activity.
 
+You can select **Follow updates** on an open Group that you have not joined. Unread discussions and polls from that Group are then included in your catch-up at your existing schedule. Reading the threads or marking the catch-up as read updates their read status in the same way as threads from Groups you belong to. Select **Unfollow updates** on the Group page to stop including them.
+
 Loomio does not send a catch-up when there are no unseen notifications or unread threads from the relevant period.
 
 ![A catch-up with unseen notifications and unread thread activity from one group](digest_email_example.png)

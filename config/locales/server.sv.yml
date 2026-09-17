@@ -762,3 +762,5 @@ sv:
     no_option_selected: Inget alternativ valt
     outcome: Resultat · %{author} %{timestamp}
     review_date: "**Granskningsdatum:** %{value}"
+  error:
+    access_denied: Du har inte tillåtelse att göra det

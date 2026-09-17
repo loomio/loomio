@@ -1501,6 +1501,8 @@ de:
     handle_changed_hint: Deine bisherige URL und E-Mail-Adresse werden auf deine neue Adresse weitergeleitet.
     members_can_create_tags: Mitglieder können Tags erstellen
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
+    non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
+    non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -2719,6 +2721,14 @@ de:
     tags_per_interval: Tags pro %{interval}
     all_groups_and_direct_threads: Alle Gruppen und direkten Threads
     custom_selection: Benutzerdefinierte Auswahl
+    all_votes_cast: Alle abgegebenen Stimmen
+    votes_cast: abgegebene Stimmen
+    votes_issued: Zugewiesene Stimmen
+    votes_missed: Stimmen verpasst
+    voting_record_per_user: Abstimmungsverhalten pro Nutzer
+    yes_label: Ja
+    no_label: NEIN
+    delegates_only: Nur Delegierte
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du hast alle Schritte abgeschlossen!"
     getting_started_checklist: Checkliste für die ersten Schritte
@@ -3120,3 +3130,8 @@ de:
     remove_device: Browser entfernen
     enable_from_loomio: Aktiviere Push-Benachrichtigungen in den Benachrichtigungseinstellungen, während du bei Loomio angemeldet bist
     ios_add_to_home_screen_before_enabling: Auf iPhone oder iPad kannst du Loomio über die Teilen-Funktion zu deinem Home-Bildschirm hinzufügen. Öffne Loomio über das neue Symbol und aktiviere anschließend Push-Benachrichtigungen.
+  group_follow:
+    follow: Folge den Aktualisierungen
+    unfollow: Updates nicht mehr folgen
+    followed: Du folgst jetzt den Aktualisierungen dieser Gruppe
+    unfollowed: Du erhältst keine Aktualisierungen mehr von dieser Gruppe

@@ -1487,6 +1487,8 @@ hr:
     handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
     members_can_create_tags: Članovi mogu kreirati oznake
     members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
+    non_members_can_start_discussions: Nečlanovi mogu započeti rasprave
+    non_members_can_start_discussions_help: Dopusti osobama koje nisu članovi da započnu raspravu iz jednog od predložaka ove grupe
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -2684,6 +2686,14 @@ hr:
     tags_per_interval: Oznake po %{interval}
     all_groups_and_direct_threads: Sve grupe i izravne teme
     custom_selection: Prilagođeni odabir
+    all_votes_cast: Svi dati glasovi
+    votes_cast: Broj glasova
+    votes_issued: Izdani glasovi
+    votes_missed: Propušteni glasovi
+    voting_record_per_user: Broj glasova po korisniku
+    yes_label: Da
+    no_label: Ne
+    delegates_only: Samo za delegate
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak
@@ -3085,3 +3095,8 @@ hr:
     remove_device: Ukloni preglednik
     enable_from_loomio: Omogućite push obavijesti iz postavki obavijesti dok ste prijavljeni na Loomio
     ios_add_to_home_screen_before_enabling: Na iPhoneu ili iPadu upotrijebite Dijeli da biste dodali Loomio na početni zaslon. Otvorite Loomio iz nove ikone, a zatim ovdje omogućite push obavijesti.
+  group_follow:
+    follow: Pratite ažuriranja
+    unfollow: Prestani pratiti ažuriranja
+    followed: Sada pratite novosti iz ove grupe
+    unfollowed: Više ne pratite novosti iz ove grupe

@@ -794,3 +794,5 @@ de:
     no_option_selected: Keine Option ausgewählt
     outcome: Ergebnis · %{author} %{timestamp}
     review_date: "**Überprüfungsdatum:** %{value}"
+  error:
+    access_denied: Du hast keine Berechtigung dazu
