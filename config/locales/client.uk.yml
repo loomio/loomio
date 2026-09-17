@@ -813,6 +813,7 @@ uk:
       new_discussion: "%{actor} розпочав обговорення: %{title}"
       user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
       thread_locked: "%{actor} заблокував тему: %{title}"
+      membership_request_declined: 'Ваш запит на приєднання до %{title} було відхилено'
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       group_announced: "%{actor} запросив вас до групи"
@@ -851,6 +852,7 @@ uk:
       new_comment: "%{actor} прокоментував в обговоренні"
       outcome_updated: "%{actor} оновив результат"
       thread_locked: "%{actor} заблокував тему"
+      membership_request_declined: 'Ваш запит на приєднання до %{title} було відхилено'
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
@@ -895,6 +897,7 @@ uk:
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
       thread_locked: "%{actor} заблокував тему: %{title}"
+      membership_request_declined: 'Ваш запит на приєднання до %{title} було відхилено'
   discussion_fork_actions:
     move: Перемістити
     moved: Переміщення коментарів може зайняти певний час
@@ -1523,6 +1526,11 @@ uk:
     messages:
       request_approved_success: Запит на приєднання схвалено
       request_ignored_success: Запит на приєднання ігноровано
+      request_declined_success: Запит на членство відхилено
+    decline: Відхилення
+    decline_request: Відхилити запит на членство
+    decline_reason: Причина відмови
+    decline_help: "«Відмова» надсилає заявнику вашу причину електронною поштою. Він може подати новий запит. «Ігнорувати» закриває запит без повідомлення."
   invitation_form:
     group_url: URL-адреса групи
     reusable_invitation_link: Посилання на багаторазове запрошення

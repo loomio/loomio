@@ -242,6 +242,7 @@ class AbilityTest < ActiveSupport::TestCase
     assert @user.can?(:invite_people, @group)
     assert @user.can?(:manage_membership_requests, @group)
     assert @user.can?(:approve, mr)
+    assert @user.can?(:decline, mr)
     assert @user.can?(:ignore, mr)
     assert_not @user.can?(:destroy, admin_membership)
   end
@@ -313,6 +314,7 @@ class AbilityTest < ActiveSupport::TestCase
     assert @admin.can?(:invite_people, @group)
     assert @admin.can?(:manage_membership_requests, @group)
     assert @admin.can?(:approve, mr)
+    assert @admin.can?(:decline, mr)
     assert @admin.can?(:ignore, mr)
   end
 

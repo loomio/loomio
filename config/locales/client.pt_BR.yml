@@ -820,6 +820,7 @@ pt_BR:
       new_discussion: "%{actor} iniciou uma discussão: %{title}"
       user_reminded: "%{actor} está te lembrando de votar em: %{title}"
       thread_locked: "%{actor} bloqueou a thread: %{title}"
+      membership_request_declined: 'Seu pedido para participar do %{title} foi recusado'
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       group_announced: "%{actor} convidou você para um grupo"
@@ -858,6 +859,7 @@ pt_BR:
       new_comment: "%{actor} comentou em uma discussão"
       outcome_updated: "%{actor} atualizou o resultado"
       thread_locked: "%{actor} bloqueou a thread"
+      membership_request_declined: 'Seu pedido para participar do %{title} foi recusado'
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
@@ -902,6 +904,7 @@ pt_BR:
       discussion_closed: "%{actor} encerrou a discussão: %{title}"
       user_reminded: "%{actor} está te lembrando de votar em: %{title}"
       thread_locked: "%{actor} bloqueou a thread: %{title}"
+      membership_request_declined: 'Seu pedido para participar do %{title} foi recusado'
   discussion_fork_actions:
     move: Mover
     moved: Mudando os comentários, isso pode demorar um pouco
@@ -1541,6 +1544,11 @@ pt_BR:
     messages:
       request_approved_success: Inclusão de membro aprovada
       request_ignored_success: Solicitação de inclusão de membro ignorada
+      request_declined_success: Pedido de adesão recusado
+    decline: Declínio
+    decline_request: Recusar pedido de adesão
+    decline_reason: Motivo da recusa
+    decline_help: Ao recusar, você envia o motivo da sua solicitação ao solicitante por e-mail. Ele poderá enviar uma nova solicitação. Ao ignorar, a solicitação é encerrada sem notificação.
   invitation_form:
     group_url: URL do Grupo
     reusable_invitation_link: Link de convite reutilizavel

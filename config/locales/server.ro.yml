@@ -362,6 +362,8 @@ ro:
     content_was_translated: Acest conținut a fost tradus din %{source_locale}
     content_was_translated_html: Acest conținut a fost tradus din %{source_locale}. <a href="%{profile_url}">Vizualizați setările<a></a>
     loomio_app_description: Un loc pentru organizațiile colaborative unde pot lua decizii împreună.
+    membership_request_declined:
+      button_text: Aplicați din nou
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.

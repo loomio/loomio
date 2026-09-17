@@ -812,6 +812,7 @@ ca:
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
       thread_locked: "%{actor} ha bloquejat el fil: %{title}"
+      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -850,6 +851,7 @@ ca:
       new_comment: "%{actor} ha comentat en una discussió"
       outcome_updated: "%{actor} ha actualitzat el resultat"
       thread_locked: "%{actor} ha bloquejat el fil"
+      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -894,6 +896,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
       thread_locked: "%{actor} ha bloquejat el fil: %{title}"
+      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -1520,6 +1523,11 @@ ca:
     messages:
       request_approved_success: Sol·licitud d'afiliació aprovada
       request_ignored_success: Sol·licitud d'afiliació ignorada
+      request_declined_success: Sol·licitud d'adhesió rebutjada
+    decline: Rebutjar
+    decline_request: Rebutjar la sol·licitud de membre
+    decline_reason: Motiu del rebuig
+    decline_help: Si rebutges, envia el motiu al sol·licitant per correu electrònic. Pot enviar una nova sol·licitud. Si ignores, tanca la sol·licitud sense notificar-li-ho.
   invitation_form:
     group_url: URL del grup
     reusable_invitation_link: Enllaç d'invitació reutilitzable

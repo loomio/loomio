@@ -27,10 +27,21 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
   }
 
   approve(membershipRequest) {
-    return this.remote.postMember(membershipRequest.id, 'approve', {group_key: membershipRequest.group().key});
+    return this.remote.postMember(membershipRequest.id, 'approve', {
+      group_key: membershipRequest.group().key
+    });
+  }
+
+  decline(membershipRequest, declineReason) {
+    return this.remote.postMember(membershipRequest.id, 'decline', {
+      group_key: membershipRequest.group().key,
+      membership_request: {decline_reason: declineReason}
+    });
   }
 
   ignore(membershipRequest) {
-    return this.remote.postMember(membershipRequest.id, 'ignore', {group_key: membershipRequest.group().key});
+    return this.remote.postMember(membershipRequest.id, 'ignore', {
+      group_key: membershipRequest.group().key
+    });
   }
 };

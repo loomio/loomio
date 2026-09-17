@@ -64,6 +64,8 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     )
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
+    assert_not_nil request.reload.approved_at
+    assert_nil request.declined_at
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
   end
@@ -114,7 +116,94 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
       end
     end
 
-    assert_nil request.reload.response
+    assert_nil request.reload.approved_at
     assert_not Membership.exists?(group: @group, user: @requestor)
+  end
+
+  test "declining membership notifies the requestor and emails the reason" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    assert_equal request, MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      decline_reason: "Please answer the join prompt"
+    )
+
+    notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_not_nil request.reload.declined_at
+    assert_equal "Please answer the join prompt", request.decline_reason
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+    assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
+    assert_not notification.translation_values.key?("reason")
+
+    email_delivery = notification.notification_deliveries.find_by!(channel: "email")
+    email = NotificationMailer.notification(email_delivery.id).message
+    assert_includes email.body.encoded, "Please answer the join prompt"
+  end
+
+  test "decline email cannot be disabled by notification preferences" do
+    @requestor.update!(volume_email_default: :quiet)
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      decline_reason: "Please answer the join prompt"
+    )
+
+    notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert notification.notification_deliveries.exists?(channel: "email", recipient: @requestor)
+  end
+
+  test "decline email sanitizes the reason" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      decline_reason: "Please try again <img src=x onerror=alert(1)>"
+    )
+
+    notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    email_delivery = notification.notification_deliveries.find_by!(channel: "email")
+    body = NotificationMailer.notification(email_delivery.id).message.body.encoded
+
+    assert_includes body, "Please try again"
+    assert_not_includes body, "onerror"
+  end
+
+  test "notification failure rolls back a decline" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        MembershipRequestService.decline(
+          membership_request: request,
+          actor: @actor,
+          decline_reason: "Please answer the join prompt"
+        )
+      end
+    end
+
+    assert_nil request.reload.declined_at
+    assert_nil request.decline_reason
+  end
+
+  test "requestor can apply again after being declined" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+    MembershipRequestService.decline(
+      membership_request: request,
+      actor: @actor,
+      decline_reason: "Please answer the join prompt"
+    )
+
+    replacement = MembershipRequest.new(group: @group, introduction: "A corrected introduction")
+    assert_equal replacement, MembershipRequestService.create(membership_request: replacement, actor: @requestor)
+    assert replacement.persisted?
   end
 end

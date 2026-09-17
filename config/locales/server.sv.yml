@@ -362,6 +362,8 @@ sv:
     content_was_translated: Detta innehåll översattes från %{source_locale}
     content_was_translated_html: Detta innehåll översattes från %{source_locale}. <a href="%{profile_url}">Visa inställningar<a></a>
     loomio_app_description: En plats för samarbetsorganisationer att fatta beslut tillsammans.
+    membership_request_declined:
+      button_text: Ansök igen
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.

@@ -810,6 +810,7 @@ zh_CN:
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
       user_reminded: 演员 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 锁定了主题：%{title}"
+      membership_request_declined: 您加入 %{title} 的请求已被拒绝
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -850,6 +851,7 @@ zh_CN:
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
       user_reminded: 演员 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 锁定了主题：%{title}"
+      membership_request_declined: 您加入 %{title} 的请求已被拒绝
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -888,6 +890,7 @@ zh_CN:
       group_mentioned: "%{actor}提到了该群"
       user_reminded: "%{actor}提醒您投票"
       thread_locked: "%{actor} 锁定了该线程"
+      membership_request_declined: 您加入 %{title} 的请求已被拒绝
     hints:
       poll_closing_soon: 现在是投票、改变主意或鼓励他人参与的好时机。
       poll_closing_soon_author: 您可以提醒人们投票或延长截止日期。
@@ -1584,6 +1587,11 @@ zh_CN:
     messages:
       request_approved_success: 会员应用已获批准
       request_ignored_success: 会员应用被忽略
+      request_declined_success: 会员申请被拒绝
+    decline: 衰退
+    decline_request: 拒绝会员资格申请
+    decline_reason: 拒绝理由
+    decline_help: 拒绝会将拒绝理由通过电子邮件发送给申请人。他们可以提交新的申请。忽略则会在不通知申请人的情况下关闭申请。
   invitation_form:
     group_url: 群组 URL
     reusable_invitation_link: 可重复使用的邀请链接

@@ -820,6 +820,7 @@ fr:
       new_discussion: "%{actor} a lancé une discussion : %{title}"
       user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
+      membership_request_declined: 'Ta demande d''adhésion à %{title} a été refusée'
     without_title:
       unknown_sender: Examine les e-mails provenant d'un expéditeur non reconnu
       group_announced: "%{actor} t'a invité dans le group"
@@ -858,6 +859,7 @@ fr:
       new_comment: "%{actor} a commenté dans une discussion"
       outcome_updated: "%{actor} a mis à jour le conclusion"
       thread_locked: "%{actor} a verrouillé la discussion"
+      membership_request_declined: 'Ta demande d''adhésion à %{title} a été refusée'
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Tu voudras peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -902,6 +904,7 @@ fr:
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
+      membership_request_declined: 'Ta demande d''adhésion à %{title} a été refusée'
   discussion_fork_actions:
     move: Déplacer
     moved: Déplacer des commentaires, cette action peut prendre un moment
@@ -1541,6 +1544,11 @@ fr:
     messages:
       request_approved_success: Demande d’ajout acceptée
       request_ignored_success: Demande d’ajout ignorée
+      request_declined_success: Demande d'adhésion refusée
+    decline: Refuser
+    decline_request: Refuser la demande d'adhésion
+    decline_reason: Motif du refus
+    decline_help: Le refus envoie la raison de votre demande au demandeur par courriel. Il peut soumettre une nouvelle demande. L'ignorance de la demande la clôture sans notification.
   invitation_form:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable

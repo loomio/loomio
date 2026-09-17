@@ -812,6 +812,7 @@ hu:
       new_discussion: "%{actor} beszélgetést indított: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
+      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -850,6 +851,7 @@ hu:
       new_comment: "%{actor} hozzászólást tett egy beszélgetésben"
       outcome_updated: "%{actor} frissítette az eredményt"
       thread_locked: "%{actor} zárolta a témát"
+      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -894,6 +896,7 @@ hu:
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
+      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -1510,6 +1513,11 @@ hu:
     messages:
       request_approved_success: A tagsági kérelem jóváhagyva
       request_ignored_success: A tagsági kérelmet figyelmen kívül hagyták
+      request_declined_success: Tagsági kérelem elutasítva
+    decline: Hanyatlás
+    decline_request: Tagsági kérelem elutasítása
+    decline_reason: Az elutasítás oka
+    decline_help: Az Elutasítás esetén az indoklás e-mailben elküldésre kerül a kérelmezőnek. A kérelmező új kérelmet nyújthat be. A Figyelmen kívül hagyás esetén a kérelem értesítés nélkül lezárásra kerül.
   invitation_form:
     group_url: Csoport URL-je
     reusable_invitation_link: Újrafelhasználható meghívó link

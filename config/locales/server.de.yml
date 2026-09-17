@@ -388,6 +388,8 @@ de:
     content_was_translated: Dieser Inhalt wurde aus %{source_locale} übersetzt.
     content_was_translated_html: Dieser Inhalt wurde aus %{source_locale} übersetzt. <a href="%{profile_url}">Einstellungen anzeigen<a></a>
     loomio_app_description: Ein Ort für kooperative Organisationen, um gemeinsam Entscheidungen zu treffen.
+    membership_request_declined:
+      button_text: Erneut beantragen
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.

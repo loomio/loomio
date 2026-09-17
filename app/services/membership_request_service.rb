@@ -29,6 +29,19 @@ class MembershipRequestService
     membership_request
   end
 
+  def self.decline(membership_request:, actor:, decline_reason:)
+    actor.ability.authorize! :decline, membership_request
+    MembershipRequest.transaction do
+      membership_request.decline!(actor, decline_reason: decline_reason)
+      NotificationService.create!(
+        kind: "membership_request_declined",
+        subject: membership_request,
+        actor: actor
+      )
+    end
+    membership_request
+  end
+
   def self.ignore(membership_request:, actor:)
     actor.ability.authorize! :ignore, membership_request
     membership_request.ignore!(actor)

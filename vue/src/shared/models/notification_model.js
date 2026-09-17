@@ -37,6 +37,8 @@ export default class NotificationModel extends BaseModel {
     if (!this.url) { return '/'; }
     if (this.kind === 'membership_requested') {
       return "/g/" + compact(this.url.split('/'))[1] + "/membership_requests";
+    } else if (this.kind === 'membership_request_declined') {
+      return "/g/" + compact(this.url.split('/'))[1];
     } else if (this.url.startsWith(AppConfig.baseUrl)) {
       return "/" + this.url.replace(AppConfig.baseUrl, '');
     } else if (this.url.startsWith('/')) {

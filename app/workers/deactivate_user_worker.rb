@@ -10,7 +10,7 @@ class DeactivateUserWorker < ApplicationJob
       
       user.update(deactivated_at: deactivated_at, deactivator_id: actor_id)
       user.mobile_devices.active.find_each(&:revoke!)
-      MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
+      MembershipRequest.pending.where(requestor_id: user_id).destroy_all
     end
 
     SearchService.reindex_by_author_id(user.id)

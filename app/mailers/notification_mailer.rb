@@ -167,6 +167,9 @@ class NotificationMailer < ApplicationMailer
       actor: topic_item.user.name,
       site_name: AppConfig.theme[:site_name]
     }
+    if topic_item.is_a?(NotificationRenderingContext)
+      subject_params.merge!(topic_item.notification.translation_values_for(recipient.id).symbolize_keys)
+    end
 
     if topic_subject_event?(topic_item)
       group_name_prefix(topic_item) + subject_params[:title]

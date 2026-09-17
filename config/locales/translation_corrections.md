@@ -399,6 +399,20 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |
+## 2026-09-16 — Membership request responses
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `notifications.*.membership_request_declined` | `Ihre Anfrage ...` | `Deine Anfrage ...` | German user-facing copy uses the informal `du/dein` register |
+| `config/locales/client.de.yml` | `membership_requests_page.decline` | `Abfall` | `Ablehnen` | Translated “decline” as waste rather than rejecting a request |
+| `config/locales/client.fr.yml` | `notifications.*.membership_request_declined` | `Votre demande ...` | `Ta demande ...` | French user-facing copy uses the informal `tu/ton/ta` register |
+| `config/locales/client.fr.yml` | `membership_requests_page.decline` | `Déclin` | `Refuser` | Used the noun for deterioration rather than the action to reject a request |
+| `config/locales/client.es.yml` | `membership_requests_page.decline_help` | `el motivo de la solicitud` | `el motivo` | Said Loomio sends the reason for applying rather than the administrator's reason for declining |
+| `config/locales/server.de.yml` | `email.membership_request_declined.button_text` | `Erneut bewerben` | `Erneut beantragen` | “Bewerben” suggests applying for a job rather than requesting group membership |
+| `config/locales/server.es.yml` | `email.membership_request_declined.button_text` | `Vuelva a solicitarlo` | `Solicitar de nuevo` | Used the formal `usted` imperative instead of Loomio's informal register |
+| `config/locales/server.fr.yml` | `email.membership_request_declined.button_text` | `Postuler à nouveau` | `Faire une nouvelle demande` | “Postuler” suggests applying for a job rather than requesting group membership |
+| `config/locales/server.nl_NL.yml` | `email.membership_request_declined.button_text` | `Opnieuw solliciteren` | `Opnieuw aanvragen` | “Solliciteren” means applying for a job rather than requesting group membership |
+
 ## 2026-09-16 — Voting record labels
 
 | File | Key | Before | After | Why it was wrong |

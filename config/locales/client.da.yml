@@ -810,6 +810,7 @@ da:
       new_discussion: "%{actor} startede en diskussion: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: 'Din anmodning om at blive medlem af %{title} blev afvist'
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -848,6 +849,7 @@ da:
       new_comment: "%{actor} kommenterede i en diskussion"
       outcome_updated: "%{actor} opdaterede resultatet"
       thread_locked: "%{actor} låste tråden"
+      membership_request_declined: 'Din anmodning om at blive medlem af %{title} blev afvist'
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -892,6 +894,7 @@ da:
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: 'Din anmodning om at blive medlem af %{title} blev afvist'
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -1506,6 +1509,11 @@ da:
     messages:
       request_approved_success: Andmodning om medlemskab godkendt
       request_ignored_success: Andmodning om medlemskab ignoréret
+      request_declined_success: Medlemskabsanmodning afvist
+    decline: Nedgang
+    decline_request: Afvis medlemsanmodning
+    decline_reason: Årsag til afslag
+    decline_help: Afslag sender din begrundelse til ansøgeren via e-mail. De kan indsende en ny anmodning. Ignorer lukker anmodningen uden at give dem besked.
   invitation_form:
     group_url: Gruppe-URL
     reusable_invitation_link: Genanvendeligt invitationslink

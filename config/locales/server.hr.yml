@@ -362,6 +362,8 @@ hr:
     content_was_translated: Ovaj sadržaj je preveden s %{source_locale}
     content_was_translated_html: Ovaj sadržaj je preveden s %{source_locale}. <a href="%{profile_url}">Prikaži postavke<a></a>
     loomio_app_description: Mjesto gdje organizacije koje surađuju mogu zajedno donositi odluke.
+    membership_request_declined:
+      button_text: Prijavi se ponovno
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.

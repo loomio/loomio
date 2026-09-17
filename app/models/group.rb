@@ -49,7 +49,7 @@ class Group < ApplicationRecord
   has_many :admins, -> { active }, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
-  has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
+  has_many :pending_membership_requests, -> { pending }, class_name: 'MembershipRequest'
 
   has_many :polls, through: :topics, source: :polls
   has_many :poll_templates, dependent: :destroy

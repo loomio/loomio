@@ -362,6 +362,8 @@ tr:
     content_was_translated: Bu içerik %{source_locale} adresinden çevrildi
     content_was_translated_html: Bu içerik %{source_locale} adresinden çevrilmiştir. <a href="%{profile_url}">Ayarları görüntüle<a></a>
     loomio_app_description: İşbirliği yapan kuruluşların birlikte karar alabileceği bir yer.
+    membership_request_declined:
+      button_text: Tekrar başvurun
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.

@@ -689,6 +689,8 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
       button_text: View request
+    membership_request_declined:
+      button_text: Apply again
   announcement_count_emails: "%{count} emails"
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.

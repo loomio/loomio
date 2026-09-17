@@ -23,12 +23,21 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def decline
+    service.decline(membership_request: load_resource, actor: current_user, decline_reason: decline_reason)
+    respond_with_resource
+  end
+
   def ignore
     service.ignore(membership_request: load_resource, actor: current_user)
     respond_with_resource
   end
 
   private
+
+  def decline_reason
+    permitted_params.membership_request[:decline_reason].presence if params[:membership_request]
+  end
 
   def authorize
     load_and_authorize :group

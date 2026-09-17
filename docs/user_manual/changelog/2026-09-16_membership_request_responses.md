@@ -1,0 +1,1 @@
+Group administrators can now add a comment when approving a membership request. From the decline dialog, administrators can ignore a request without notifying the applicant, or decline it with a required reason sent by email and notification. Applicants can submit a new request after either response.

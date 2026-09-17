@@ -3,7 +3,7 @@ class MembershipRequest < ApplicationRecord
 
   validate :validate_not_in_group_already
   validate :validate_unique_membership_request
-  validates_presence_of :responder, if: :response
+  validates_presence_of :responder, if: :responded?
 
   validates :group, presence: true
 
@@ -16,9 +16,12 @@ class MembershipRequest < ApplicationRecord
   has_many :admins, through: :group
 
   validates :introduction, length: { maximum: AppConfig.app_features[:max_message_length] }
+  validates :decline_reason, length: { maximum: 500 }
+  validates :decline_reason, presence: true, on: :decline
+  validate :validate_single_response
 
-  scope :pending, -> { where(response: nil).order('created_at DESC') }
-  scope :responded_to, -> { where('response IS NOT NULL').order('responded_at DESC') }
+  scope :pending, -> { where(approved_at: nil, declined_at: nil).order(created_at: :desc) }
+  scope :responded_to, -> { where.not(approved_at: nil).or(where.not(declined_at: nil)).order(Arel.sql('COALESCE(approved_at, declined_at) DESC')) }
   scope :requested_by, ->(user) { where requestor_id: user.id }
 
   delegate :members,              to: :group, prefix: true
@@ -43,11 +46,21 @@ class MembershipRequest < ApplicationRecord
   end
 
   def approve!(responder)
-    set_response_details('approved', responder)
+    self.responder = responder
+    self.approved_at = Time.current
+    self.declined_at = nil
+    self.decline_reason = nil
+    save!
+  end
+
+  def decline!(responder, decline_reason:)
+    set_declined_details(responder, decline_reason)
+    save!(context: :decline)
   end
 
   def ignore!(responder)
-    set_response_details('ignored', responder)
+    set_declined_details(responder, nil)
+    save!
   end
 
   def convert_to_membership!
@@ -61,6 +74,14 @@ class MembershipRequest < ApplicationRecord
   end
 
   private
+
+  def responded?
+    approved_at.present? || declined_at.present?
+  end
+
+  def validate_single_response
+    errors.add(:base, "Membership request cannot be both approved and declined") if approved_at.present? && declined_at.present?
+  end
 
   def validate_not_in_group_already
     if has_not_been_saved_yet? && already_in_group?
@@ -83,7 +104,7 @@ class MembershipRequest < ApplicationRecord
   end
 
   def pending_request_already_exists?
-    group_membership_requests.where(requestor_id: requestor.id, response: nil).exists?
+    group_membership_requests.pending.where(requestor_id: requestor.id).exists?
   end
 
   def add_already_requested_membership_error
@@ -94,10 +115,10 @@ class MembershipRequest < ApplicationRecord
     errors.add(:requestor, I18n.t(:'error.you_are_already_a_member_of_this_group'))
   end
 
-  def set_response_details(response, responder)
-    self.response = response
+  def set_declined_details(responder, decline_reason)
     self.responder = responder
-    self.responded_at = Time.now
-    save!
+    self.approved_at = nil
+    self.declined_at = Time.current
+    self.decline_reason = decline_reason
   end
 end

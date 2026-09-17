@@ -374,6 +374,8 @@ uk:
     content_was_translated: Цей контент було перекладено з %{source_locale}
     content_was_translated_html: Цей контент було перекладено з %{source_locale}. <a href="%{profile_url}">Переглянути налаштування<a></a>
     loomio_app_description: Місце для спільних організацій, де вони можуть спільно приймати рішення.
+    membership_request_declined:
+      button_text: Подати заявку ще раз
   announcement_count_emails: "%{count} листів"
   email_actions:
     unfollowed_discussion: Ви вимкнули сповіщення електронною поштою для цієї теми.

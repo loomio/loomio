@@ -362,6 +362,8 @@ el:
     content_was_translated: Αυτό το περιεχόμενο μεταφράστηκε από %{source_locale}
     content_was_translated_html: Αυτό το περιεχόμενο μεταφράστηκε από %{source_locale}. <a href="%{profile_url}">Δείτε τις ρυθμίσεις<a></a>
     loomio_app_description: Ένα μέρος για συνεργατικούς οργανισμούς ώστε να λαμβάνουν από κοινού αποφάσεις.
+    membership_request_declined:
+      button_text: Εφαρμόστε ξανά
   announcement_count_emails: "%{count} μηνύματα ηλεκτρονικού ταχυδρομείου"
   email_actions:
     unfollowed_discussion: Έχετε απενεργοποιήσει τα μηνύματα ηλεκτρονικού ταχυδρομείου για το νήμα.

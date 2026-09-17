@@ -364,6 +364,8 @@ ca:
     content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
     content_was_translated_html: Aquest contingut s'ha traduït de %{source_locale}. <a href="%{profile_url}">Veure la configuració<a></a>
     loomio_app_description: Un espai on les organitzacions col·laboradores puguin prendre decisions conjuntament.
+    membership_request_declined:
+      button_text: Sol·licita de nou
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.

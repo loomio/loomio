@@ -810,6 +810,7 @@ hr:
       new_discussion: "%{actor} je započeo raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
       thread_locked: "%{actor} je zaključao temu: %{title}"
+      membership_request_declined: 'Vaš zahtjev za pridruživanje %{title} je odbijen'
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -848,6 +849,7 @@ hr:
       new_comment: "%{actor} je komentirao/la u raspravi"
       outcome_updated: "%{actor} je ažurirao/la ishod"
       thread_locked: "%{actor} je zaključao/la nit"
+      membership_request_declined: 'Vaš zahtjev za pridruživanje %{title} je odbijen'
     hints:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
@@ -892,6 +894,7 @@ hr:
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
       thread_locked: "%{actor} je zaključao temu: %{title}"
+      membership_request_declined: 'Vaš zahtjev za pridruživanje %{title} je odbijen'
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -1506,6 +1509,11 @@ hr:
     messages:
       request_approved_success: Zahtjev za članstvo odobren
       request_ignored_success: Zahtjev za članstvo zanemaren
+      request_declined_success: Zahtjev za članstvo odbijen
+    decline: Pad
+    decline_request: Odbij zahtjev za članstvo
+    decline_reason: Razlog odbijanja
+    decline_help: Odbijanje šalje vaš razlog podnositelju zahtjeva putem e-pošte. Može poslati novi zahtjev. Ignoriranje zatvara zahtjev bez obavještavanja.
   invitation_form:
     group_url: URL grupe
     reusable_invitation_link: Pozivnica za višekratnu upotrebu

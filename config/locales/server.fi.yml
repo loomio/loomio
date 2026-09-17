@@ -362,6 +362,8 @@ fi:
     content_was_translated: Tämä sisältö on käännetty lähdekoodista %{source_locale}
     content_was_translated_html: Tämä sisältö on käännetty lähdekoodista %{source_locale}. <a href="%{profile_url}">Näytä asetukset<a></a>
     loomio_app_description: Paikka, jossa yhteistyöorganisaatiot voivat tehdä päätöksiä yhdessä.
+    membership_request_declined:
+      button_text: Hae uudelleen
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.

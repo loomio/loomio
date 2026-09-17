@@ -224,6 +224,7 @@ Rails.application.routes.draw do
           get :previous
         end
         post :approve, on: :member
+        post :decline, on: :member
         post :ignore, on: :member
       end
 
