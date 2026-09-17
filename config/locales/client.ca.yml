@@ -2157,6 +2157,7 @@ ca:
     order_by_created_desc: Més recent
     order_by_admin_desc: Admins
     loaded_of_total: "%{loaded} de %{total}"
+    topics_loaded_of_total: "%{loaded} de %{total}"
     view_requests: Veure sol·licituds
     header_name: Nom
     header_username: Nom d'usuari

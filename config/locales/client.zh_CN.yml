@@ -2238,6 +2238,7 @@ zh_CN:
     order_by_admin_desc: 管理员
     delegates: 代表们
     loaded_of_total: 已加载 %{loaded} / %{total}
+    topics_loaded_of_total: 已加载 %{loaded} / %{total}
     view_requests: 查看请求
     header_name: 名字
     header_username: 用户名

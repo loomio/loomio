@@ -2166,6 +2166,7 @@ de:
     order_by_created_desc: Neueste
     order_by_admin_desc: Administratoren
     loaded_of_total: " %{total} von %{loaded}"
+    topics_loaded_of_total: " %{total} von %{loaded}"
     view_requests: 'Anfragen anzeigen '
     header_name: Name
     header_username: Benutzername

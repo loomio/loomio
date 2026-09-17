@@ -2135,6 +2135,7 @@ sv:
     order_by_created_desc: Nyaste
     order_by_admin_desc: Administratörer
     loaded_of_total: "%{loaded} av %{total}"
+    topics_loaded_of_total: "%{loaded} av %{total}"
     view_requests: Visa förfrågningar
     header_name: Namn
     header_username: Användarnamn

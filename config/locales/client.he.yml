@@ -2154,6 +2154,7 @@ he:
     order_by_created_desc: החדש ביותר
     order_by_admin_desc: מנהלי מערכת
     loaded_of_total: "%{loaded} מתוך %{total}"
+    topics_loaded_of_total: "%{loaded} מתוך %{total}"
     view_requests: הצג בקשות
     header_name: שם
     header_username: שם משתמש

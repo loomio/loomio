@@ -2161,6 +2161,7 @@ uk:
     order_by_created_desc: Найновіші
     order_by_admin_desc: Координатори
     loaded_of_total: "%{loaded} з %{total}"
+    topics_loaded_of_total: "%{loaded} з %{total}"
     view_requests: Переглянути запити
     header_name: Ім'я
     header_username: Ім’я користувача

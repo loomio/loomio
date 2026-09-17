@@ -2161,6 +2161,7 @@ zh_TW:
     order_by_created_desc: 最新
     order_by_admin_desc: 管理員
     loaded_of_total: "%{total} 中的 %{loaded}"
+    topics_loaded_of_total: "%{total} 中的 %{loaded}"
     view_requests: 檢視請求
     header_name: 名稱
     header_username: 使用者名稱

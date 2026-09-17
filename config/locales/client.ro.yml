@@ -2135,6 +2135,7 @@ ro:
     order_by_created_desc: Cel mai nou
     order_by_admin_desc: Administratori
     loaded_of_total: "%{loaded} din %{total}"
+    topics_loaded_of_total: "%{loaded} din %{total}"
     view_requests: Vizualizați solicitările
     header_name: Nume
     header_username: Nume utilizator

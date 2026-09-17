@@ -2135,6 +2135,7 @@ ru:
     order_by_created_desc: Новейший
     order_by_admin_desc: Админы
     loaded_of_total: "%{loaded} из %{total}"
+    topics_loaded_of_total: "%{loaded} из %{total}"
     view_requests: Посмотреть запросы
     header_name: Название
     header_username: Имя пользователя

@@ -2158,6 +2158,7 @@ nl_NL:
     order_by_created_desc: Nieuwste
     order_by_admin_desc: Admins
     loaded_of_total: "%{loaded} van %{total}"
+    topics_loaded_of_total: "%{loaded} van %{total}"
     view_requests: Bekijk aanvragen
     header_name: Naam
     header_username: Gebruikersnaam

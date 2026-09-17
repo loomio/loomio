@@ -432,3 +432,9 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `group_follow.unfollow` | Infinitive `Dejar` | Informal imperative `Deja` | Spanish actions address the user in the informal `tú` register |
 | `config/locales/client.fr.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `vous` forms | Informal `tu` forms | French user-facing copy uses the informal `tu` register |
 | Multiple `config/locales/client.*.yml` files | `group_follow.followed`, `group_follow.unfollowed` | Single-sentence status messages with final punctuation | Removed final punctuation | Single-sentence UI strings do not use final punctuation |
+
+## 2026-09-18 — Direct discussion count
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml` | `members_panel.loaded_of_total` → `members_panel.topics_loaded_of_total` | `%{loaded}} de %{total}}` | `%{loaded} de %{total}` | Extra closing braces caused vue-i18n compilation errors on the direct-discussions page |

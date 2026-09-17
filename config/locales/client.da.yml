@@ -2135,6 +2135,7 @@ da:
     order_by_created_desc: Nyeste
     order_by_admin_desc: administratorer
     loaded_of_total: "%{loaded} af %{total}"
+    topics_loaded_of_total: "%{loaded} af %{total}"
     view_requests: Se anmodninger
     header_name: Navn
     header_username: Brugernavn

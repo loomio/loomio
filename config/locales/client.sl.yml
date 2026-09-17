@@ -2135,6 +2135,7 @@ sl:
     order_by_created_desc: Najnovejša
     order_by_admin_desc: Administratorji
     loaded_of_total: "%{loaded} od %{total}"
+    topics_loaded_of_total: "%{loaded} od %{total}"
     view_requests: Oglejte si zahteve
     header_name: Ime
     header_username: Uporabniško ime

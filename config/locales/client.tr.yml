@@ -2135,6 +2135,7 @@ tr:
     order_by_created_desc: En yeni
     order_by_admin_desc: Yöneticiler
     loaded_of_total: "%{loaded} / %{total}"
+    topics_loaded_of_total: "%{loaded} / %{total}"
     view_requests: İstekleri görüntüle
     header_name: İsim
     header_username: Kullanıcı adı

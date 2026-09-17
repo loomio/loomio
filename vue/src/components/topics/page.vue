@@ -1,6 +1,7 @@
 <script setup lang="js">
 import { ref, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -8,6 +9,7 @@ import RecordLoader from '@/shared/services/record_loader';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
+const { t } = useI18n();
 const topics = ref([]);
 const loader = ref({});
 
@@ -68,6 +70,6 @@ v-main
 
       .d-flex.align-center.justify-center(v-if='topics.length > 0')
         div
-          p.text-center.text-medium-emphasis(v-t="{path: 'members_panel.loaded_of_total', args: {loaded: topics.length, total: loader.total}}")
+          p.text-center.text-medium-emphasis {{ t('members_panel.topics_loaded_of_total', { loaded: topics.length, total: loader.total }) }}
           v-btn(variant="tonal" color="primary" v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")
 </template>

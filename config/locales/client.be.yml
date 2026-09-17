@@ -2258,6 +2258,7 @@ be:
     order_by_admin_desc: Адміністратары
     delegates: Дэлегаты
     loaded_of_total: "%{loaded} з %{total}"
+    topics_loaded_of_total: "%{loaded} з %{total}"
     view_requests: Праглядзець запыты
     header_name: Імя
     header_username: Імя карыстальніка

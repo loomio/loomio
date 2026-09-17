@@ -2142,6 +2142,7 @@ hu:
     order_by_created_desc: Legújabb
     order_by_admin_desc: Adminok
     loaded_of_total: "%{loaded} ennyiből %{total}"
+    topics_loaded_of_total: "%{loaded} ennyiből %{total}"
     view_requests: Kérések megtekintése
     header_name: Név
     header_username: Felhasználónév

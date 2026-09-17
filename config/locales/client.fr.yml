@@ -2177,6 +2177,7 @@ fr:
     order_by_created_desc: Les plus récents
     order_by_admin_desc: Administrateurs
     loaded_of_total: "%{loaded}} de %{total}}"
+    topics_loaded_of_total: "%{loaded} de %{total}"
     view_requests: Consulter les requêtes
     header_name: Nom
     header_username: Identifiant utilisateur

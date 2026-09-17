@@ -2343,6 +2343,7 @@ en:
     order_by_admin_desc: Admins
     delegates: Delegates
     loaded_of_total: "%{loaded} of %{total}"
+    topics_loaded_of_total: "%{loaded} of %{total}"
     view_requests: View requests
     header_name: Name
     header_username: Username
