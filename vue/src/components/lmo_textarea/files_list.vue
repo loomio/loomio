@@ -43,12 +43,14 @@ export default {
 .files-list__item {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .files-list__file-name {
   flex-grow: 1;
-  white-space: wrap;
-  word-wrap: break-word;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .files-list__progress {
