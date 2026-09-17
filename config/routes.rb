@@ -102,6 +102,9 @@ Rails.application.routes.draw do
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create, :update, :destroy]
       resources :reports, only: [:index]
+      resources :chatbots, only: [:index, :create, :update, :destroy] do
+        post :check, on: :collection
+      end
     end
 
     namespace :b3, only: [] do
