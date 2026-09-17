@@ -32,6 +32,16 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
+  test "my_stances serializes the filtered collection" do
+    sign_in @admin
+
+    get :my_stances
+
+    assert_response :success
+    stance_ids = JSON.parse(response.body).fetch('stances').pluck('id')
+    assert_includes stance_ids, @poll.stances.find_by!(participant_id: @admin.id).id
+  end
+
   test "until vote has the same backend response as results off" do
     @poll.update!(hide_results: 'until_vote')
     admin_stance = @poll.stances.find_by!(participant_id: @admin.id)

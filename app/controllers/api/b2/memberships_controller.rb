@@ -52,8 +52,8 @@ class Api::B2::MembershipsController < Api::B2::BaseController
     group
   end
 
-  def default_scope
-    super.merge(
+  def default_scope(records = records_to_serialize)
+    super(records).merge(
       include_email: true,
       membership_email_group_ids: [group.id]
     )
