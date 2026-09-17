@@ -237,6 +237,39 @@ class PollTest < ActiveSupport::TestCase
     assert_equal 3, ranked_choice.reload.maximum_stance_choices
   end
 
+  test "meeting derives required choice bounds when dates are added" do
+    meeting = create_meeting(
+      poll_option_names: %w[01-01-2015 01-02-2015],
+      minimum_stance_choices: 2,
+      maximum_stance_choices: 2
+    )
+
+    meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015])
+
+    assert_equal 3, meeting.reload.minimum_stance_choices
+    assert_equal 3, meeting.maximum_stance_choices
+
+    stance = meeting.stances.build(
+      participant: @admin,
+      cast_at: Time.current,
+      stance_choices_attributes: meeting.poll_options.map { |option| { poll_option_id: option.id, score: 2 } }
+    )
+    assert_predicate stance, :valid?
+  end
+
+  test "meeting derives required choice bounds when dates are removed" do
+    meeting = create_meeting(
+      poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015],
+      minimum_stance_choices: 3,
+      maximum_stance_choices: 3
+    )
+
+    meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015])
+
+    assert_equal 2, meeting.reload.minimum_stance_choices
+    assert_equal 2, meeting.maximum_stance_choices
+  end
+
   test "ballot configuration ignores JSON custom fields" do
     poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
     poll.update_columns(

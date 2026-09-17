@@ -142,7 +142,7 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     if require_all_choices
-      poll_options.length
+      poll_option_count
     else
       self[:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
@@ -151,9 +151,13 @@ class Poll < ApplicationRecord
   end
 
   def maximum_stance_choices
-    self[:maximum_stance_choices] ||
-    AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
-    poll_options.length
+    if require_all_choices
+      poll_option_count
+    else
+      self[:maximum_stance_choices] ||
+      AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
+      poll_option_count
+    end
   end
 
   include Translatable
@@ -636,8 +640,8 @@ class Poll < ApplicationRecord
 
   def clamp_minimum_stance_choices
     return if self[:minimum_stance_choices].nil?
-    if self[:minimum_stance_choices] > poll_options.length
-      self.minimum_stance_choices = poll_options.length
+    if self[:minimum_stance_choices] > poll_option_count
+      self.minimum_stance_choices = poll_option_count
     end
   end
 
@@ -645,5 +649,9 @@ class Poll < ApplicationRecord
     return unless poll_type == "ranked_choice"
 
     self.maximum_stance_choices = minimum_stance_choices
+  end
+
+  def poll_option_count
+    poll_options.count { |option| !option.marked_for_destruction? }
   end
 end
