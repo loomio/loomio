@@ -1508,12 +1508,10 @@ tr:
       request_approved_success: Üyelik talebi onaylandı
       request_ignored_success: Üyelik talebi yok sayıldı.
       request_declined_success: Üyelik talebi reddedildi.
-    approve_request: Üyelik talebini onaylayın
     decline: Reddetmek
     decline_request: Üyelik talebini reddet
     decline_reason: Reddedilme nedeni
     decline_help: Reddet seçeneği, gerekçenizi başvuru sahibine e-posta yoluyla iletir. Başvuru sahibi yeni bir talep gönderebilir. Yoksay seçeneği ise başvuru sahibine bildirimde bulunmadan talebi kapatır.
-    response_comment: Yorum (isteğe bağlı)
   invitation_form:
     group_url: Grup URL'si
     reusable_invitation_link: Yeniden kullanılabilir davetiye bağlantısı

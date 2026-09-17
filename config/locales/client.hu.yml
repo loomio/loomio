@@ -1512,12 +1512,10 @@ hu:
       request_approved_success: A tagsági kérelem jóváhagyva
       request_ignored_success: A tagsági kérelmet figyelmen kívül hagyták
       request_declined_success: Tagsági kérelem elutasítva
-    approve_request: Tagsági kérelem jóváhagyása
     decline: Hanyatlás
     decline_request: Tagsági kérelem elutasítása
     decline_reason: Az elutasítás oka
     decline_help: Az Elutasítás esetén az indoklás e-mailben elküldésre kerül a kérelmezőnek. A kérelmező új kérelmet nyújthat be. A Figyelmen kívül hagyás esetén a kérelem értesítés nélkül lezárásra kerül.
-    response_comment: Megjegyzés (opcionális)
   invitation_form:
     group_url: Csoport URL-je
     reusable_invitation_link: Újrafelhasználható meghívó link

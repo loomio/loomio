@@ -1508,12 +1508,10 @@ da:
       request_approved_success: Andmodning om medlemskab godkendt
       request_ignored_success: Andmodning om medlemskab ignoréret
       request_declined_success: Medlemskabsanmodning afvist
-    approve_request: Godkend medlemsanmodning
     decline: Nedgang
     decline_request: Afvis medlemsanmodning
     decline_reason: Årsag til afslag
     decline_help: Afslag sender din begrundelse til ansøgeren via e-mail. De kan indsende en ny anmodning. Ignorer lukker anmodningen uden at give dem besked.
-    response_comment: Kommentar (valgfrit)
   invitation_form:
     group_url: Gruppe-URL
     reusable_invitation_link: Genanvendeligt invitationslink

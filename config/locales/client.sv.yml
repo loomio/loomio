@@ -1508,12 +1508,10 @@ sv:
       request_approved_success: Medlemsansökan godkänd
       request_ignored_success: Medlemskapsbegäran ignoreras
       request_declined_success: Medlemskapsbegäran avvisad
-    approve_request: Godkänn medlemskapsbegäran
     decline: Nedgång
     decline_request: Avböj medlemskapsbegäran
     decline_reason: Anledning till avböjning
     decline_help: Avslag skickar din anledning till sökanden via e-post. De kan skicka in en ny begäran. Ignorera stänger begäran utan att meddela dem.
-    response_comment: Kommentar (valfritt)
   invitation_form:
     group_url: Grupp-URL
     reusable_invitation_link: Återanvändbar inbjudningslänk

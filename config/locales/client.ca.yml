@@ -1522,12 +1522,10 @@ ca:
       request_approved_success: Sol·licitud d'afiliació aprovada
       request_ignored_success: Sol·licitud d'afiliació ignorada
       request_declined_success: Sol·licitud d'adhesió rebutjada
-    approve_request: Aprova la sol·licitud d'adhesió
     decline: Rebutjar
     decline_request: Rebutjar la sol·licitud de membre
     decline_reason: Motiu del rebuig
     decline_help: Si rebutges, envia el motiu al sol·licitant per correu electrònic. Pot enviar una nova sol·licitud. Si ignores, tanca la sol·licitud sense notificar-li-ho.
-    response_comment: Comentari (opcional)
   invitation_form:
     group_url: URL del grup
     reusable_invitation_link: Enllaç d'invitació reutilitzable

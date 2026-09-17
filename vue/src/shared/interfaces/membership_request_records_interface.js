@@ -26,10 +26,9 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
     return this.remote.get('previous', options);
   }
 
-  approve(membershipRequest, responseComment) {
+  approve(membershipRequest) {
     return this.remote.postMember(membershipRequest.id, 'approve', {
-      group_key: membershipRequest.group().key,
-      membership_request: {response_comment: responseComment}
+      group_key: membershipRequest.group().key
     });
   }
 

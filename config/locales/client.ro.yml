@@ -1508,12 +1508,10 @@ ro:
       request_approved_success: Solicitarea de membru a fost aprobată
       request_ignored_success: Solicitarea de membru a fost ignorată
       request_declined_success: Cererea de abonament a fost respinsă
-    approve_request: Aprobați cererea de aderare
     decline: Declin
     decline_request: Refuză cererea de aderare
     decline_reason: Motivul refuzului
     decline_help: "„Refuz” trimite solicitantului motivul solicitării prin e-mail. Acesta poate trimite o nouă solicitare. „Ignor” închide solicitarea fără a-l notifica."
-    response_comment: Comentariu (opțional)
   invitation_form:
     group_url: Adresa URL a grupului
     reusable_invitation_link: Link de invitație reutilizabil

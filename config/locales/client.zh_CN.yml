@@ -1578,12 +1578,10 @@ zh_CN:
       request_approved_success: 会员应用已获批准
       request_ignored_success: 会员应用被忽略
       request_declined_success: 会员申请被拒绝
-    approve_request: 批准会员申请
     decline: 衰退
     decline_request: 拒绝会员资格申请
     decline_reason: 拒绝理由
     decline_help: 拒绝会将拒绝理由通过电子邮件发送给申请人。他们可以提交新的申请。忽略则会在不通知申请人的情况下关闭申请。
-    response_comment: 备注（可选）
   invitation_form:
     group_url: 群组 URL
     reusable_invitation_link: 可重复使用的邀请链接

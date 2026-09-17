@@ -1543,12 +1543,10 @@ fr:
       request_approved_success: Demande d’ajout acceptée
       request_ignored_success: Demande d’ajout ignorée
       request_declined_success: Demande d'adhésion refusée
-    approve_request: Approuver la demande d'adhésion
     decline: Refuser
     decline_request: Refuser la demande d'adhésion
     decline_reason: Motif du refus
     decline_help: Le refus envoie la raison de votre demande au demandeur par courriel. Il peut soumettre une nouvelle demande. L'ignorance de la demande la clôture sans notification.
-    response_comment: Commentaire (facultatif)
   invitation_form:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable

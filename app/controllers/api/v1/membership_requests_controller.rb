@@ -19,7 +19,7 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
   end
 
   def approve
-    service.approve(membership_request: load_resource, actor: current_user, response_comment: response_comment)
+    service.approve(membership_request: load_resource, actor: current_user)
     respond_with_resource
   end
 

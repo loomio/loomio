@@ -1520,12 +1520,10 @@ he:
       request_approved_success: בקשת מנוי אושרה
       request_ignored_success: בקשת מנוי ללא התייחסות
       request_declined_success: בקשת החברות נדחתה
-    approve_request: אישור בקשת חברות
     decline: יְרִידָה
     decline_request: דחה את בקשת החברות
     decline_reason: סיבה לדחייה
     decline_help: '"דחייה" שולחת את הסיבה שלך למבקש בדוא"ל. הוא יכול להגיש בקשה חדשה. "התעלמות" סוגרת את הבקשה מבלי להודיע לו.'
-    response_comment: תגובה (אופציונלי)
   invitation_form:
     group_url: כתובת האתר של הקבוצה
     reusable_invitation_link: קישור להזמנה לשימוש חוזר

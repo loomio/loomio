@@ -1522,12 +1522,10 @@ nl_NL:
       request_approved_success: Lidmaatschapsverzoek goedgekeurd
       request_ignored_success: Lidmaatschapsverzoek genegeerd
       request_declined_success: Lidmaatschapsverzoek afgewezen
-    approve_request: Goedkeuring van het lidmaatschapsverzoek
     decline: Afwijzen
     decline_request: Verzoek om lidmaatschap afwijzen
     decline_reason: Reden voor afwijzing
     decline_help: Bij 'Afwijzen' wordt de reden voor de afwijzing per e-mail naar de aanvrager gestuurd. De aanvrager kan vervolgens een nieuwe aanvraag indienen. Bij 'Negeren' wordt de aanvraag gesloten zonder de aanvrager hiervan op de hoogte te stellen.
-    response_comment: Opmerking (optioneel)
   invitation_form:
     group_url: Groep URL
     reusable_invitation_link: Herbruikbare uitnodigingslink

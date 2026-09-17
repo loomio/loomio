@@ -1531,12 +1531,10 @@ es:
       request_approved_success: Solicitud de ingreso aprobada
       request_ignored_success: Solicitud de ingreso ignorada
       request_declined_success: Solicitud de membresía rechazada
-    approve_request: Aprobar la solicitud de membresía
     decline: Rechazar
     decline_request: Rechazar la solicitud de membresía
     decline_reason: Motivo del rechazo
     decline_help: Al rechazarla, se envía el motivo al solicitante por correo electrónico. Puede enviar una nueva solicitud. Ignorar cierra la solicitud sin notificarle.
-    response_comment: Comentario (opcional)
   invitation_form:
     group_url: Grupo URL
     reusable_invitation_link: Enlace de invitación reutilizable

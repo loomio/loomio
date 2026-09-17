@@ -1522,12 +1522,10 @@ pl:
       request_approved_success: Prośba o dołączenie została zaakceptowana
       request_ignored_success: Prośba o dołączenie została zignorowana
       request_declined_success: Prośba o członkostwo odrzucona
-    approve_request: Zatwierdź prośbę o członkostwo
     decline: Spadek
     decline_request: Odrzuć prośbę o członkostwo
     decline_reason: Powód spadku
     decline_help: Opcja „Odrzuć” wysyła wnioskodawcy powód e-mailem. Wnioskodawca może złożyć nowy wniosek. Opcja „Zignoruj” zamyka wniosek bez powiadomienia wnioskodawcy.
-    response_comment: Komentarz (opcjonalnie)
   invitation_form:
     group_url: Adres URL grupy
     reusable_invitation_link: Link zaproszenia wielokrotnego użytku

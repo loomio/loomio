@@ -1508,12 +1508,10 @@ el:
       request_approved_success: Εγκρίθηκε το αίτημα ένταξης
       request_ignored_success: Το αίτημα συμμετοχής αγνοήθηκε
       request_declined_success: Το αίτημα εγγραφής απορρίφθηκε
-    approve_request: Έγκριση αιτήματος εγγραφής
     decline: Πτώση
     decline_request: Απόρριψη αιτήματος εγγραφής
     decline_reason: Λόγος απόρριψης
     decline_help: Η επιλογή "Απόρριψη" στέλνει τον λόγο στον αιτούντα μέσω email. Μπορεί να υποβάλει νέο αίτημα. Η επιλογή "Αγνόηση" κλείνει το αίτημα χωρίς να τον ειδοποιήσει.
-    response_comment: Σχόλιο (προαιρετικό)
   invitation_form:
     group_url: Διεύθυνση URL ομάδας
     reusable_invitation_link: Επαναχρησιμοποιήσιμος σύνδεσμος πρόσκλησης

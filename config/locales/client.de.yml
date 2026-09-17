@@ -1530,12 +1530,10 @@ de:
       request_approved_success: Mitgliedschaftsanfrage bestätigt
       request_ignored_success: Mitgliedschaftsanfrage ignoriert.
       request_declined_success: Mitgliedschaftsantrag abgelehnt
-    approve_request: Mitgliedschaftsantrag genehmigen
     decline: Ablehnen
     decline_request: Mitgliedschaftsantrag ablehnen
     decline_reason: Grund für die Ablehnung
     decline_help: Bei einer Ablehnung wird dem Antragsteller der Grund per E-Mail mitgeteilt. Er kann dann einen neuen Antrag stellen. Bei einer Ignorierung wird der Antrag ohne Benachrichtigung geschlossen.
-    response_comment: Kommentar (optional)
   invitation_form:
     group_url: Gruppen-URL
     reusable_invitation_link: Wiederverwendabrer Einladungslink

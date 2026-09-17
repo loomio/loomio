@@ -7,33 +7,37 @@ import Flash from '@/shared/services/flash';
 const { request } = defineProps({ request: Object });
 const { t } = useI18n();
 
-const action = ref(null);
+const isDeclining = ref(false);
 const responseComment = ref('');
 const submitting = ref(false);
 
-const isDeclining = computed(() => action.value === 'decline');
-const canSubmit = computed(() => !isDeclining.value || responseComment.value.trim().length > 0);
+const canSubmit = computed(() => responseComment.value.trim().length > 0);
 
-const openResponse = (nextAction) => {
-  action.value = nextAction;
+const openDecline = () => {
+  isDeclining.value = true;
   responseComment.value = '';
 };
 
-const closeResponse = () => {
-  action.value = null;
+const closeDecline = () => {
+  isDeclining.value = false;
 };
 
-const submitResponse = async () => {
+const approveRequest = async () => {
   submitting.value = true;
   try {
-    if (isDeclining.value) {
-      await Records.membershipRequests.decline(request, responseComment.value.trim());
-      Flash.success('membership_requests_page.messages.request_declined_success');
-    } else {
-      await Records.membershipRequests.approve(request, responseComment.value.trim());
-      Flash.success('membership_requests_page.messages.request_approved_success');
-    }
-    closeResponse();
+    await Records.membershipRequests.approve(request);
+    Flash.success('membership_requests_page.messages.request_approved_success');
+  } finally {
+    submitting.value = false;
+  }
+};
+
+const declineRequest = async () => {
+  submitting.value = true;
+  try {
+    await Records.membershipRequests.decline(request, responseComment.value.trim());
+    Flash.success('membership_requests_page.messages.request_declined_success');
+    closeDecline();
   } finally {
     submitting.value = false;
   }
@@ -44,7 +48,7 @@ const ignoreRequest = async () => {
   try {
     await Records.membershipRequests.ignore(request);
     Flash.success('membership_requests_page.messages.request_ignored_success');
-    closeResponse();
+    closeDecline();
   } finally {
     submitting.value = false;
   }
@@ -70,31 +74,31 @@ v-list.membership-requests(lines="two" density="compact")
     v-list-item-subtitle.membership-request__introduction {{ request.introduction }}
     p.membership-request__response-comment.mt-2(v-if="request.responseComment") {{ request.responseComment }}
     template(v-slot:append)
-      v-btn.membership-requests-page__approve(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.approve')" @click="openResponse('approve')")
+      v-btn.membership-requests-page__approve(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.approve')" :disabled="submitting" @click="approveRequest")
         common-icon(name="mdi-check")
-      v-btn.membership-requests-page__decline(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.decline')" @click="openResponse('decline')")
+      v-btn.membership-requests-page__decline(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.decline')" :disabled="submitting" @click="openDecline")
         common-icon(name="mdi-close")
 
-v-dialog(:model-value="Boolean(action)" max-width="600" @update:model-value="value => { if (!value) closeResponse(); }")
-  v-card(:title="t(isDeclining ? 'membership_requests_page.decline_request' : 'membership_requests_page.approve_request')")
+v-dialog(:model-value="isDeclining" max-width="600" @update:model-value="value => { if (!value) closeDecline(); }")
+  v-card(:title="t('membership_requests_page.decline_request')")
     v-card-text
-      p.membership-request__decline-help.mb-4.text-medium-emphasis(v-if="isDeclining") {{ t('membership_requests_page.decline_help') }}
+      p.membership-request__decline-help.mb-4.text-medium-emphasis {{ t('membership_requests_page.decline_help') }}
       v-textarea.membership-request__response-comment-input(
         v-model="responseComment"
-        :label="t(isDeclining ? 'membership_requests_page.decline_reason' : 'membership_requests_page.response_comment')"
-        :required="isDeclining"
+        :label="t('membership_requests_page.decline_reason')"
+        required
         :maxlength="500"
         autofocus
       )
     v-card-actions
-      v-btn.membership-request__ignore(v-if="isDeclining" :disabled="submitting" @click="ignoreRequest") {{ t('membership_requests_page.ignore') }}
+      v-btn.membership-request__ignore(:disabled="submitting" @click="ignoreRequest") {{ t('membership_requests_page.ignore') }}
       v-spacer
-      v-btn(@click="closeResponse") {{ t('common.action.cancel') }}
+      v-btn(@click="closeDecline") {{ t('common.action.cancel') }}
       v-btn.membership-request__response-submit(
         color="primary"
         variant="elevated"
         :disabled="!canSubmit"
         :loading="submitting"
-        @click="submitResponse"
-      ) {{ t(isDeclining ? 'membership_requests_page.decline' : 'membership_requests_page.approve') }}
+        @click="declineRequest"
+      ) {{ t('membership_requests_page.decline') }}
 </template>

@@ -1655,13 +1655,11 @@ en:
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
-    approve_request: Approve membership request
     decline: Decline
     decline_request: Decline membership request
     decline_reason: Reason for declining
     decline_help: Decline sends your reason to the applicant by email. They can submit a new request. Ignore closes the request without notifying them.
     ignore: Ignore
-    response_comment: Comment (optional)
     no_pending_requests: There are currently no pending membership requests for this group.
     no_previous_requests: There are currently no previous membership requests for this group.
     previous_requests: Previous Requests

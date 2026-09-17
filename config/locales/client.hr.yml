@@ -1508,12 +1508,10 @@ hr:
       request_approved_success: Zahtjev za članstvo odobren
       request_ignored_success: Zahtjev za članstvo zanemaren
       request_declined_success: Zahtjev za članstvo odbijen
-    approve_request: Odobri zahtjev za članstvo
     decline: Pad
     decline_request: Odbij zahtjev za članstvo
     decline_reason: Razlog odbijanja
     decline_help: Odbijanje šalje vaš razlog podnositelju zahtjeva putem e-pošte. Može poslati novi zahtjev. Ignoriranje zatvara zahtjev bez obavještavanja.
-    response_comment: Komentar (nije obavezno)
   invitation_form:
     group_url: URL grupe
     reusable_invitation_link: Pozivnica za višekratnu upotrebu

@@ -1507,12 +1507,10 @@ ja:
       request_approved_success: メンバーシップリクエストが承認されました
       request_ignored_success: メンバーシップリクエストは無視されました
       request_declined_success: 会員登録申請は却下されました
-    approve_request: 会員登録申請を承認する
     decline: 衰退
     decline_request: 会員登録申請を却下する
     decline_reason: 辞退の理由
     decline_help: 却下を選択した場合、却下理由が申請者にメールで送られます。申請者は新しい申請を提出できます。無視を選択した場合、申請者は通知を受け取らずに申請が閉じられます。
-    response_comment: コメント（任意）
   invitation_form:
     group_url: グループURL
     reusable_invitation_link: 再利用可能な招待リンク

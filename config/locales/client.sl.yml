@@ -1508,12 +1508,10 @@ sl:
       request_approved_success: Zahteva za članstvo odobrena
       request_ignored_success: Zahteva za članstvo je bila prezrta
       request_declined_success: Zahteva za članstvo zavrnjena
-    approve_request: Odobritev zahteve za članstvo
     decline: Zavrnitev
     decline_request: Zavrni zahtevo za članstvo
     decline_reason: Razlog za zavrnitev
     decline_help: Z zavrnitvijo se prosilcu vaš razlog pošlje po e-pošti. Lahko odda novo zahtevo. Z prezritvijo se zahteva zapre brez obvestila.
-    response_comment: Komentar (neobvezno)
   invitation_form:
     group_url: URL skupine
     reusable_invitation_link: Povezava za povabilo za večkratno uporabo

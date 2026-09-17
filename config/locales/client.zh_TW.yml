@@ -1525,12 +1525,10 @@ zh_TW:
       request_approved_success: 成員資格申請已批准
       request_ignored_success: 成員資格申請已忽略
       request_declined_success: 會員申請被拒絕
-    approve_request: 核准會員申請
     decline: 衰退
     decline_request: 拒絕會員資格申請
     decline_reason: 拒絕理由
     decline_help: 拒絕會將拒絕理由透過電子郵件發送給申請人。他們可以提交新的申請。忽略則會在不通知申請人的情況下關閉申請。
-    response_comment: 備註（可選）
   invitation_form:
     group_url: 群組 URL
     reusable_invitation_link: 可重複使用的邀請連結

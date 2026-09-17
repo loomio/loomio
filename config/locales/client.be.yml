@@ -1596,12 +1596,10 @@ be:
       request_approved_success: Запыт на членства ўхвалены
       request_ignored_success: Запыт на сяброўства праігнараваны
       request_declined_success: Запыт на сяброўства адхілены
-    approve_request: Зацвердзіць запыт на сяброўства
     decline: Адмова
     decline_request: Адхіліць запыт на сяброўства
     decline_reason: Прычына адмовы
     decline_help: Пры адхіленні заяўніку будзе даслана прычына адмовы па электроннай пошце. Ён можа адправіць новы запыт. Пры адхіленні запыт будзе закрыты без папярэджання.
-    response_comment: Каментарый (неабавязкова)
   invitation_form:
     group_url: URL-адрас групы
     reusable_invitation_link: Спасылка-запрашэнне шматразовага выкарыстання

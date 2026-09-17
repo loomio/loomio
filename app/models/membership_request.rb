@@ -44,8 +44,8 @@ class MembershipRequest < ApplicationRecord
     requestor_id
   end
 
-  def approve!(responder, response_comment: nil)
-    set_response_details('approved', responder, response_comment)
+  def approve!(responder)
+    set_response_details('approved', responder)
   end
 
   def decline!(responder, response_comment:)
@@ -53,7 +53,7 @@ class MembershipRequest < ApplicationRecord
   end
 
   def ignore!(responder)
-    set_response_details('ignored', responder, nil)
+    set_response_details('ignored', responder)
   end
 
   def convert_to_membership!
@@ -100,7 +100,7 @@ class MembershipRequest < ApplicationRecord
     errors.add(:requestor, I18n.t(:'error.you_are_already_a_member_of_this_group'))
   end
 
-  def set_response_details(response, responder, response_comment)
+  def set_response_details(response, responder, response_comment = nil)
     self.response = response
     self.responder = responder
     self.response_comment = response_comment

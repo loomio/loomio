@@ -1543,12 +1543,10 @@ pt_BR:
       request_approved_success: Inclusão de membro aprovada
       request_ignored_success: Solicitação de inclusão de membro ignorada
       request_declined_success: Pedido de adesão recusado
-    approve_request: Aprovar solicitação de adesão
     decline: Declínio
     decline_request: Recusar pedido de adesão
     decline_reason: Motivo da recusa
     decline_help: Ao recusar, você envia o motivo da sua solicitação ao solicitante por e-mail. Ele poderá enviar uma nova solicitação. Ao ignorar, a solicitação é encerrada sem notificação.
-    response_comment: Comentário (opcional)
   invitation_form:
     group_url: URL do Grupo
     reusable_invitation_link: Link de convite reutilizavel

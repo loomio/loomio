@@ -8,11 +8,8 @@ module.exports = {
     page.click('.group-page-members-tab')
     page.click('.group-page__requests-tab')
     page.click('.membership-requests-page__approve', 500)
-    page.fillIn('.membership-request__response-comment-input textarea', 'Welcome to the group')
-    page.click('.membership-request__response-submit', 500)
     page.expectFlash('Membership request approved')
     page.expectText('.membership-request__response', 'Approved by Patrick Swayze')
-    page.expectText('.membership-request__response-comment', 'Welcome to the group')
   },
 
   // 'adds_existing_users_to_group_upon_approval': (test) => {

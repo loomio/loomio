@@ -1508,12 +1508,10 @@ ru:
       request_approved_success: Запрос на членство одобрен
       request_ignored_success: Запрос на членство игнорируется
       request_declined_success: Запрос на членство отклонен.
-    approve_request: Одобрить запрос на членство
     decline: Отклонить
     decline_request: Отклонить запрос на членство
     decline_reason: Причина отказа
     decline_help: Отклонить — отправить заявителю причину отказа по электронной почте. Он может отправить новый запрос. Игнорировать — закрыть запрос без уведомления.
-    response_comment: Комментарий (необязательно)
   invitation_form:
     group_url: URL группы
     reusable_invitation_link: Многоразовая ссылка-приглашение

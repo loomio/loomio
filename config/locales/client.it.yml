@@ -1534,12 +1534,10 @@ it:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
       request_declined_success: Richiesta di adesione respinta
-    approve_request: Approva la richiesta di iscrizione
     decline: Declino
     decline_request: Rifiuta la richiesta di adesione
     decline_reason: Motivo del rifiuto
     decline_help: Rifiutando, invii la motivazione al richiedente tramite e-mail. Il richiedente potrà quindi presentare una nuova richiesta. Ignorando, la richiesta viene chiusa senza alcuna notifica.
-    response_comment: Commento (facoltativo)
   invitation_form:
     group_url: Gruppo URL
     reusable_invitation_link: Collegamento invito riutilizzabile

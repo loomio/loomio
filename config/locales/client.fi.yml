@@ -1508,12 +1508,10 @@ fi:
       request_approved_success: Jäsenhakemus hyväksytty
       request_ignored_success: Jäsenyyspyyntö ohitettu
       request_declined_success: Jäsenyyspyyntö hylätty
-    approve_request: Hyväksy jäsenyyspyyntö
     decline: Hylkää
     decline_request: Hylkää jäsenyyspyyntö
     decline_reason: Hylkäämisen syy
     decline_help: Hylkääminen lähettää syysi hakijalle sähköpostitse. Hän voi lähettää uuden pyynnön. Hylkääminen sulkee pyynnön ilmoittamatta hänelle.
-    response_comment: Kommentti (valinnainen)
   invitation_form:
     group_url: Ryhmän URL-osoite
     reusable_invitation_link: Uudelleen käytettävä kutsulinkki

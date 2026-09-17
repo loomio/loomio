@@ -1525,12 +1525,10 @@ uk:
       request_approved_success: Запит на приєднання схвалено
       request_ignored_success: Запит на приєднання ігноровано
       request_declined_success: Запит на членство відхилено
-    approve_request: Схвалити запит на членство
     decline: Відхилення
     decline_request: Відхилити запит на членство
     decline_reason: Причина відмови
     decline_help: "«Відмова» надсилає заявнику вашу причину електронною поштою. Він може подати новий запит. «Ігнорувати» закриває запит без повідомлення."
-    response_comment: Коментар (необов'язково)
   invitation_form:
     group_url: URL-адреса групи
     reusable_invitation_link: Посилання на багаторазове запрошення
