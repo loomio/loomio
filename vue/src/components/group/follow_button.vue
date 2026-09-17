@@ -16,8 +16,11 @@ const canFollow = computed(() =>
   Session.isSignedIn() &&
   Session.user().emailVerified &&
   !Session.user().membershipFor(group) &&
-  group.discussionPrivacyOptions === 'public_only'
+  group.discussionPrivacyOptions === 'public_only' &&
+  !group.currentUserFollowed
 );
+
+const showFollowButton = computed(() => group.currentUserFollowed || canFollow.value);
 
 const toggleFollow = () => {
   processing.value = true;
@@ -31,7 +34,7 @@ const toggleFollow = () => {
 
 <template lang="pug">
 v-btn.group-follow-button.my-4(
-  v-if="canFollow"
+  v-if="showFollowButton"
   variant="tonal"
   color="primary"
   :loading="processing"
