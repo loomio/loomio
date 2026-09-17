@@ -2,6 +2,8 @@
 
 Use the Loomio API to connect Loomio with other software and automated workflows.
 
+The [OpenAPI 3.1 contract](openapi.yaml) describes every public User API and Server API operation in a machine-readable format. Import it into an API client or use it to generate typed client code. The guides below explain workflows, permissions, and behavior that are not fully expressed by the contract.
+
 ## User API
 
 The [User API](/en/user_manual/integrations/api/user-api) performs actions as a Loomio user. It can list groups and create or manage threads, comments, polls, and group memberships according to that user's permissions.

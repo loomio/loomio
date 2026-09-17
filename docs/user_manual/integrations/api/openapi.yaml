@@ -1,0 +1,1090 @@
+openapi: 3.1.0
+info:
+  title: Loomio API
+  version: "1"
+  description: |
+    HTTP API for user-scoped integrations (`/api/b2`) and self-hosted server administration (`/api/b3`).
+    The B2 API applies the permissions of the user who owns the API key. The B3 API is enabled by the
+    server-wide `B3_API_KEY` environment variable. See the Loomio API guides for permission and workflow details.
+servers:
+  - url: https://www.loomio.com
+    description: Loomio hosted service
+  - url: https://{host}
+    description: Self-hosted Loomio installation
+    variables:
+      host:
+        default: loomio.example.org
+security:
+  - bearerAuth: []
+tags:
+  - name: Groups
+  - name: Discussions
+  - name: Threads
+  - name: Comments
+  - name: Polls
+  - name: Memberships
+  - name: Reports
+  - name: Webhooks
+  - name: Server users
+paths:
+  /api/b2/groups:
+    get:
+      operationId: listGroups
+      tags: [Groups]
+      summary: List the API-key user's groups
+      responses:
+        "200":
+          description: Groups and related records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupsResponse"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/groups/{id}:
+    parameters:
+      - $ref: "#/components/parameters/GroupIdentifier"
+    get:
+      operationId: getGroup
+      tags: [Groups]
+      summary: Get a visible group
+      responses:
+        "200":
+          description: Group and related records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupResponse"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/discussions:
+    get:
+      operationId: listDiscussions
+      tags: [Discussions]
+      summary: List discussions in a group
+      parameters:
+        - $ref: "#/components/parameters/GroupIdQuery"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [open, closed, all]
+            default: open
+      responses:
+        "200":
+          $ref: "#/components/responses/RecordCollection"
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: createDiscussion
+      tags: [Discussions]
+      summary: Create a discussion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DiscussionInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/discussions/{id}:
+    parameters:
+      - $ref: "#/components/parameters/RecordIdentifier"
+    get:
+      operationId: getDiscussion
+      tags: [Discussions]
+      summary: Get a discussion
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    patch:
+      operationId: updateDiscussion
+      tags: [Discussions]
+      summary: Update a discussion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DiscussionInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replaceDiscussion
+      deprecated: true
+      tags: [Discussions]
+      summary: Update a discussion using the Rails PUT alias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DiscussionInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deleteDiscussion
+      tags: [Discussions]
+      summary: Soft-delete a discussion
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/threads:
+    get:
+      operationId: listThreads
+      tags: [Threads]
+      summary: List visible discussion and standalone-poll threads
+      parameters:
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+      responses:
+        "200":
+          $ref: "#/components/responses/RecordCollection"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/threads/{id}:
+    parameters:
+      - $ref: "#/components/parameters/TopicId"
+    get:
+      operationId: getThread
+      tags: [Threads]
+      summary: Get a visible thread
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/threads/{id}/items:
+    parameters:
+      - $ref: "#/components/parameters/TopicId"
+    get:
+      operationId: listThreadItems
+      tags: [Threads]
+      summary: List the ordered items in a thread
+      responses:
+        "200":
+          $ref: "#/components/responses/RecordCollection"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/threads/{id}/markdown:
+    parameters:
+      - $ref: "#/components/parameters/TopicId"
+    get:
+      operationId: getThreadMarkdown
+      tags: [Threads]
+      summary: Get a complete visible thread as Markdown
+      responses:
+        "200":
+          description: Rendered thread
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [markdown]
+                properties:
+                  markdown:
+                    type: string
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/comments:
+    post:
+      operationId: createComment
+      tags: [Comments]
+      summary: Create a comment or reply
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/comments/{id}:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    patch:
+      operationId: updateComment
+      tags: [Comments]
+      summary: Update a comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replaceComment
+      deprecated: true
+      tags: [Comments]
+      summary: Update a comment using the Rails PUT alias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deleteComment
+      tags: [Comments]
+      summary: Soft-delete a comment
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/polls:
+    get:
+      operationId: listPolls
+      tags: [Polls]
+      summary: List polls in a group
+      parameters:
+        - $ref: "#/components/parameters/GroupIdQuery"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, closed, all]
+            default: active
+      responses:
+        "200":
+          $ref: "#/components/responses/RecordCollection"
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: createPoll
+      tags: [Polls]
+      summary: Create a poll
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PollInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/polls/{id}:
+    parameters:
+      - $ref: "#/components/parameters/RecordIdentifier"
+    get:
+      operationId: getPoll
+      tags: [Polls]
+      summary: Get a poll
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    patch:
+      operationId: updatePoll
+      tags: [Polls]
+      summary: Update a poll
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PollInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replacePoll
+      deprecated: true
+      tags: [Polls]
+      summary: Update a poll using the Rails PUT alias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PollInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deletePoll
+      tags: [Polls]
+      summary: Soft-delete a poll
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/memberships:
+    get:
+      operationId: listMemberships
+      tags: [Memberships]
+      summary: List a group's memberships
+      parameters:
+        - $ref: "#/components/parameters/GroupIdQuery"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+      responses:
+        "200":
+          $ref: "#/components/responses/RecordCollection"
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: manageMemberships
+      tags: [Memberships]
+      summary: Invite listed email addresses and optionally remove absent members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [group_id, emails]
+              properties:
+                group_id:
+                  type: integer
+                emails:
+                  type: array
+                  items:
+                    type: string
+                    format: email
+                remove_absent:
+                  description: Pass `1` to remove current members whose email is absent from `emails`.
+                  oneOf:
+                    - type: boolean
+                    - type: integer
+                      enum: [0, 1]
+      responses:
+        "200":
+          description: Added and removed email addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [added_emails, removed_emails]
+                properties:
+                  added_emails:
+                    type: array
+                    items: {type: string, format: email}
+                  removed_emails:
+                    type: array
+                    items: {type: string, format: email}
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/reports:
+    get:
+      operationId: getParticipationReport
+      tags: [Reports]
+      summary: Generate a participation report
+      parameters:
+        - name: section
+          in: query
+          schema:
+            type: string
+            enum: [base, users, countries]
+        - name: group_scope
+          in: query
+          schema:
+            type: string
+            enum: [custom, my, all]
+        - name: group_ids
+          in: query
+          description: Comma-separated group IDs for the custom scope
+          schema:
+            type: string
+        - name: start_month
+          in: query
+          schema:
+            type: string
+            pattern: "^[0-9]{4}-[0-9]{2}$"
+        - name: end_month
+          in: query
+          schema:
+            type: string
+            pattern: "^[0-9]{4}-[0-9]{2}$"
+        - name: interval
+          in: query
+          schema:
+            type: string
+            enum: [day, week, month, year]
+        - name: member_type
+          in: query
+          schema:
+            type: string
+            enum: [delegate]
+      responses:
+        "200":
+          description: Requested report section
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/chatbots:
+    get:
+      operationId: listWebhooks
+      tags: [Webhooks]
+      summary: List a group's chat integrations and webhooks
+      parameters:
+        - $ref: "#/components/parameters/GroupIdQuery"
+      responses:
+        "200":
+          description: Webhooks and related records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chatbots:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Webhook"
+                additionalProperties: true
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: createWebhook
+      tags: [Webhooks]
+      summary: Create a chat integration or webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/chatbots/check:
+    post:
+      operationId: checkWebhook
+      tags: [Webhooks]
+      summary: Send a webhook connection test
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [group_id, server]
+              properties:
+                group_id:
+                  type: integer
+                server:
+                  type: string
+                  format: uri
+      responses:
+        "200":
+          description: Test request delivered
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b2/chatbots/{id}:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    patch:
+      operationId: updateWebhook
+      tags: [Webhooks]
+      summary: Update a chat integration or webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replaceWebhook
+      deprecated: true
+      tags: [Webhooks]
+      summary: Update a chat integration or webhook using the Rails PUT alias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookInput"
+      responses:
+        "200":
+          $ref: "#/components/responses/Record"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deleteWebhook
+      tags: [Webhooks]
+      summary: Delete a chat integration or webhook
+      responses:
+        "200":
+          description: Webhook deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Success"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users:
+    get:
+      operationId: listServerUsers
+      tags: [Server users]
+      summary: List user accounts
+      parameters:
+        - name: is_admin
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: User accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [users]
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/{id}:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    get:
+      operationId: getServerUser
+      tags: [Server users]
+      summary: Get a user account
+      responses:
+        "200":
+          $ref: "#/components/responses/User"
+        default:
+          $ref: "#/components/responses/Error"
+    patch:
+      operationId: updateServerUser
+      tags: [Server users]
+      summary: Update a user account
+      requestBody:
+        $ref: "#/components/requestBodies/UserUpdate"
+      responses:
+        "200":
+          $ref: "#/components/responses/User"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replaceServerUser
+      deprecated: true
+      tags: [Server users]
+      summary: Update a user account using the Rails PUT alias
+      requestBody:
+        $ref: "#/components/requestBodies/UserUpdate"
+      responses:
+        "200":
+          $ref: "#/components/responses/User"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deleteServerUser
+      tags: [Server users]
+      summary: Permanently delete a user and associated records
+      responses:
+        "200":
+          $ref: "#/components/responses/Success"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/{id}/deactivate:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    post:
+      operationId: deactivateServerUser
+      tags: [Server users]
+      summary: Deactivate an active user
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/{id}/reactivate:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    post:
+      operationId: reactivateServerUser
+      tags: [Server users]
+      summary: Reactivate a deactivated user
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/{id}/redact:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    post:
+      operationId: redactServerUser
+      tags: [Server users]
+      summary: Remove identifying data while retaining contributed content
+      responses:
+        "200":
+          $ref: "#/components/responses/Success"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/identity/{identity_type}/{uid}:
+    parameters:
+      - $ref: "#/components/parameters/IdentityType"
+      - $ref: "#/components/parameters/IdentityUid"
+    get:
+      operationId: getServerUserByIdentity
+      tags: [Server users]
+      summary: Get a user by external identity
+      responses:
+        "200":
+          $ref: "#/components/responses/User"
+        default:
+          $ref: "#/components/responses/Error"
+    patch:
+      operationId: updateServerUserByIdentity
+      tags: [Server users]
+      summary: Update a user by external identity
+      requestBody:
+        $ref: "#/components/requestBodies/UserUpdate"
+      responses:
+        "200":
+          $ref: "#/components/responses/User"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: deleteServerUserByIdentity
+      tags: [Server users]
+      summary: Permanently delete a user found by external identity
+      responses:
+        "200":
+          $ref: "#/components/responses/Success"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/identity/{identity_type}/{uid}/deactivate:
+    parameters:
+      - $ref: "#/components/parameters/IdentityType"
+      - $ref: "#/components/parameters/IdentityUid"
+    post:
+      operationId: deactivateServerUserByIdentity
+      tags: [Server users]
+      summary: Deactivate a user found by external identity
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/identity/{identity_type}/{uid}/reactivate:
+    parameters:
+      - $ref: "#/components/parameters/IdentityType"
+      - $ref: "#/components/parameters/IdentityUid"
+    post:
+      operationId: reactivateServerUserByIdentity
+      tags: [Server users]
+      summary: Reactivate a user found by external identity
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/identity/{identity_type}/{uid}/redact:
+    parameters:
+      - $ref: "#/components/parameters/IdentityType"
+      - $ref: "#/components/parameters/IdentityUid"
+    post:
+      operationId: redactServerUserByIdentity
+      tags: [Server users]
+      summary: Redact a user found by external identity
+      responses:
+        "200":
+          $ref: "#/components/responses/Success"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/deactivate:
+    post:
+      operationId: deactivateServerUserLegacy
+      deprecated: true
+      tags: [Server users]
+      summary: Deactivate a user using the legacy query-ID route
+      parameters:
+        - $ref: "#/components/parameters/NumericIdQuery"
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/users/reactivate:
+    post:
+      operationId: reactivateServerUserLegacy
+      deprecated: true
+      tags: [Server users]
+      summary: Reactivate a user using the legacy query-ID route
+      parameters:
+        - $ref: "#/components/parameters/NumericIdQuery"
+      responses:
+        "200":
+          $ref: "#/components/responses/UserSuccess"
+        default:
+          $ref: "#/components/responses/Error"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use a user's API key for B2 operations or `B3_API_KEY` for B3 operations.
+  parameters:
+    NumericId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    NumericIdQuery:
+      name: id
+      in: query
+      required: true
+      schema:
+        type: integer
+    RecordIdentifier:
+      name: id
+      in: path
+      required: true
+      description: Numeric ID or stable record key
+      schema:
+        oneOf:
+          - type: integer
+          - type: string
+    GroupIdentifier:
+      name: id
+      in: path
+      required: true
+      description: Numeric ID, key, or handle
+      schema:
+        oneOf:
+          - type: integer
+          - type: string
+    TopicId:
+      name: id
+      in: path
+      required: true
+      description: Topic ID
+      schema:
+        type: integer
+    GroupIdQuery:
+      name: group_id
+      in: query
+      required: true
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 50
+    Offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    IdentityType:
+      name: identity_type
+      in: path
+      required: true
+      schema:
+        type: string
+    IdentityUid:
+      name: uid
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    UserUpdate:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                type: object
+                properties:
+                  name: {type: string}
+                  username: {type: string}
+                  email: {type: string, format: email}
+                  is_admin: {type: boolean}
+                additionalProperties: false
+  responses:
+    Record:
+      description: Serialized resource and related records
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RecordResponse"
+    RecordCollection:
+      description: Serialized resources and related records
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RecordResponse"
+    User:
+      description: User account
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                $ref: "#/components/schemas/User"
+    UserSuccess:
+      description: User account and success status
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [success, user]
+            properties:
+              success:
+                type: boolean
+                const: true
+              user:
+                $ref: "#/components/schemas/User"
+    Success:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Success"
+    Error:
+      description: Authentication, authorization, validation, or lookup error
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  schemas:
+    RecordResponse:
+      type: object
+      description: B2 serializers return the requested resource together with related records needed by API clients.
+      additionalProperties: true
+    Group:
+      type: object
+      required: [id, key, name, parent_id]
+      properties:
+        id: {type: integer}
+        key: {type: string}
+        handle:
+          type: [string, "null"]
+        name: {type: string}
+        full_name: {type: string}
+        parent_id:
+          type: [integer, "null"]
+        enabled: {type: boolean}
+        memberships_count: {type: integer}
+        accepted_memberships_count: {type: integer}
+        pending_memberships_count: {type: integer}
+        admin_memberships_count: {type: integer}
+        delegates_count: {type: integer}
+        discussions_count: {type: integer}
+        polls_count: {type: integer}
+        subgroups_count: {type: integer}
+      additionalProperties: true
+    GroupsResponse:
+      type: object
+      required: [groups]
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: "#/components/schemas/Group"
+      additionalProperties: true
+    GroupResponse:
+      type: object
+      required: [groups]
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: "#/components/schemas/Group"
+      additionalProperties: true
+    DiscussionInput:
+      type: object
+      properties:
+        group_id: {type: integer}
+        title: {type: string}
+        description: {type: string}
+        description_format:
+          type: string
+          enum: [md, html]
+        recipient_audience:
+          type: [string, "null"]
+          enum: [group, null]
+        recipient_user_ids:
+          type: array
+          items: {type: integer}
+        recipient_emails:
+          type: array
+          items: {type: string, format: email}
+        recipient_message: {type: string}
+      additionalProperties: false
+    CommentInput:
+      type: object
+      properties:
+        discussion_id: {type: integer}
+        parent_id: {type: integer}
+        body: {type: string}
+        body_format:
+          type: string
+          enum: [md, html]
+      additionalProperties: false
+    PollInput:
+      type: object
+      properties:
+        group_id: {type: integer}
+        discussion_id: {type: integer}
+        title: {type: string}
+        poll_type:
+          type: string
+          enum: [proposal, poll, count, score, ranked_choice, meeting, dot_vote]
+        details: {type: string}
+        details_format:
+          type: string
+          enum: [md, html]
+        options:
+          type: array
+          items: {type: string}
+        closing_at:
+          type: [string, "null"]
+          format: date-time
+        specified_voters_only: {type: boolean}
+        hide_results:
+          type: string
+          enum: [off, until_vote, until_closed]
+        shuffle_options: {type: boolean}
+        anonymous: {type: boolean}
+        recipient_audience:
+          type: [string, "null"]
+          enum: [group, null]
+        notify_on_closing_soon:
+          type: string
+          enum: [nobody, author, undecided_voters, voters]
+        recipient_user_ids:
+          type: array
+          items: {type: integer}
+        recipient_emails:
+          type: array
+          items: {type: string, format: email}
+        recipient_message: {type: string}
+        notify_recipients: {type: boolean}
+      additionalProperties: false
+    WebhookInput:
+      type: object
+      properties:
+        group_id: {type: integer}
+        name: {type: string}
+        kind:
+          type: string
+          enum: [webhook, matrix]
+        webhook_kind:
+          type: string
+          enum: [markdown, slack, discord, microsoft, webex]
+        server:
+          type: string
+          format: uri
+        event_kinds:
+          type: array
+          items:
+            type: string
+        notification_only: {type: boolean}
+      additionalProperties: false
+    Webhook:
+      allOf:
+        - $ref: "#/components/schemas/WebhookInput"
+        - type: object
+          required: [id, group_id, name, kind, server, event_kinds, notification_only]
+          properties:
+            id: {type: integer}
+    Identity:
+      type: object
+      required: [id, identity_type, uid]
+      properties:
+        id: {type: integer}
+        identity_type: {type: string}
+        uid: {type: string}
+        email:
+          type: [string, "null"]
+          format: email
+        name:
+          type: [string, "null"]
+    User:
+      type: object
+      required: [id, name, username, email, is_admin, active, deactivated_at, identities]
+      properties:
+        id: {type: integer}
+        name:
+          type: [string, "null"]
+        username:
+          type: [string, "null"]
+        email:
+          type: [string, "null"]
+          format: email
+        is_admin: {type: boolean}
+        active: {type: boolean}
+        deactivated_at:
+          type: [string, "null"]
+          format: date-time
+        identities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Identity"
+    Success:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+          const: true

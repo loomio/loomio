@@ -103,7 +103,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/group
 curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/groups/example-group
 ```
 
-The response contains the group in the `group` field and uses the same fields as the list endpoint. A request for a group the API-key user cannot access returns a permission error.
+The response contains the group in the `groups` array and uses the same fields as the list endpoint. A request for a group the API-key user cannot access returns a permission error.
 
 ## Webhooks
 
