@@ -118,6 +118,34 @@ module.exports = {
     screenshot.captureElement('groups/settings/group_group_settings_permissions', '.group-form', {height: 1400});
   },
 
+  'private_submissions_permission': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    page.loadPath('setup_manual_oatmilk_group');
+    page.expectText('.group-page__name', 'Oatmilk Cooperative');
+    page.click('.group-page .action-menu--btn');
+    page.waitFor('.v-overlay .action-dock__button--edit_group');
+    page.click('.v-overlay .action-dock__button--edit_group');
+    page.waitFor('.group-form');
+    page.click('.group-form__permissions-tab');
+    page.waitFor('.group-form__non-members-can-start-discussions');
+    screenshot.captureElement(
+      'discussions/private_submissions/non_members_can_start_discussions',
+      '.group-form',
+      {
+        height: 1400,
+        spotlight: {
+          selector: '.group-form__non-members-can-start-discussions',
+          padding: 14,
+          radius: 14,
+          opacity: 0.4,
+          outlineWidth: 0
+        }
+      }
+    );
+  },
+
   'group_start_new': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

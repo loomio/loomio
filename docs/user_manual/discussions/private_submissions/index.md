@@ -14,14 +14,31 @@ Other suitable purposes where submissions should not be public include:
 
 This workflow is private between submitters, but it is not anonymous. Submitters need a user account, and every member of the Closed group can see the submissions. Consider who belongs to the review group before using it for sensitive information.
 
+## Enable private submissions
+
+You must be an admin of the group or subgroup where you want to collect submissions.
+
+1. Open the group.
+2. Select **Settings** (or **More** and then **Edit group settings**).
+3. Open **Permissions**.
+4. Enable **Non-members can start discussions**.
+5. Save the group settings.
+
+![The Permissions tab in group settings, with Non-members can start discussions highlighted](non_members_can_start_discussions.png)
+
+This option is available only for **Open** and **Closed** groups. It is hidden for **Secret** groups. If you cannot see it, open **Privacy** in the group settings and change **Group privacy** to **Closed** (recommended for private submissions) or **Open**, then return to **Permissions**.
+
+Enabling this permission does not make the group's discussions public. A non-member can start a new discussion and access that discussion as a guest, but cannot see the group's other private discussions.
+
 ## Set up a private submission process
 
 1. Create a dedicated subgroup for the submission process and set its privacy to **Closed**. A subgroup keeps the submissions separate from the parent group's other work.
 2. Add the selection panel or other people responsible for reviewing submissions as members of the subgroup. Every subgroup member can see every submission, so add only people who should have that access.
 3. Create a [discussion template](/en/user_manual/discussions/templates) in the subgroup. Include the questions and information submitters should provide. You can create different discussion templates for different kinds of submissions.
 4. If submitters should not request subgroup membership, set membership to **Invitation only**.
-5. In the subgroup's **Group settings** under **Permissions**, enable **Non-members can start discussions**.
-6. Share the subgroup page with prospective submitters. They must sign in to their user account before making a submission.
+5. [Enable private submissions](#enable-private-submissions) in the subgroup's permissions.
+6. Test the process with an account that is not a member of the subgroup.
+7. Share the subgroup page with prospective submitters. They must sign in to their user account before making a submission.
 
 ## Make a submission
 
