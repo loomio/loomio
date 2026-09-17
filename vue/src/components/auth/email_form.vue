@@ -38,9 +38,8 @@ export default {
 </script>
 <template lang="pug">
 .auth-email-form.mx-auto.max-width-400.text-center(
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()")
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()")
     v-text-field.auth-email-form__email#email(
       variant="outlined"
       name='email'

@@ -95,8 +95,7 @@ export default {
 
 <template lang="pug">
 v-card.poll-common-outcome-modal(
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
+  v-submit-on-mod-enter="submit"
   :title="outcome.isNew() ? $t('poll_common_outcome_form.new_title') : $t('poll_common_outcome_form.update_title')"
 )
   template(v-slot:append)

@@ -47,9 +47,8 @@ export default {
 <template lang="pug">
 v-card.auth-complete(
   :title="$t('auth_form.check_your_email')"
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()")
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()")
   template(vslot:append)
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")

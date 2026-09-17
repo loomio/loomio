@@ -31,9 +31,8 @@ export default {
 <template lang="pug">
 v-card.change-password-form(
   :title="$t('change_password_form.set_password_title')"
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()")
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()")
   template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text

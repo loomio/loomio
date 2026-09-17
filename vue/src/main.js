@@ -3,6 +3,7 @@ import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
+import submitOnModEnterDirective from '@/submit_on_mod_enter_directive';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
 import PlausibleService from '@/shared/services/plausible_service';
@@ -74,6 +75,7 @@ boot(function(data) {
 
   app.use(I18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)
+  app.directive('submit-on-mod-enter', submitOnModEnterDirective)
   app.mount("#app")
 
   const reconcilePushSubscription = () => PushSubscriptionService.reconcile().catch(() => {});

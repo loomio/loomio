@@ -22,7 +22,7 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()").pb-2
+v-card.poll-common-modal(v-submit-on-mod-enter="submit").pb-2
   v-card-title
     h1.text-headline-small(tabindex="-1" v-t="title_key")
     v-spacer

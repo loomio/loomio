@@ -52,9 +52,8 @@ export default {
 <template lang="pug">
 v-card.auth-signup-form(
   :title="allow ? $t('auth_form.welcome', { siteName: siteName }) : $t('auth_form.invitation_required')"
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()")
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()")
   template(v-slot:append)
     v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")

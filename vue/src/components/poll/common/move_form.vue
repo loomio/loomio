@@ -44,8 +44,7 @@ export default {
 <template lang="pug">
 v-card.poll-common-move-form(
   :title="$t('poll_common_move_form.title', {poll_type: poll.translatedPollType()})"
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()")
+  v-submit-on-mod-enter="submit")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text

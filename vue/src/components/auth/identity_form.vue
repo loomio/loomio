@@ -40,9 +40,8 @@ export default {
 </script>
 <template lang="pug">
 v-card.auth-identity-form(
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()"
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()"
   :title="$t('auth_form.hello', { name: user.name || user.email })"
 )
   template(v-slot:append)

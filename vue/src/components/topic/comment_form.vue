@@ -73,7 +73,7 @@ export default {
       :user='comment.author() || actor'
       :size='comment.parentId ? 28 : 32'
     )
-  form.topic-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+  form.topic-item__body.comment-form__body(v-on:submit.prevent='submit()' v-submit-on-mod-enter="submit")
     lmo-textarea.ml-n1(
       :model='comment'
       @is-uploading="handleIsUploading"

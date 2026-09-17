@@ -199,7 +199,7 @@ onMounted(() => {
 
 <template lang="pug">
 v-form(ref="form" @submit.prevent="submit")
-  v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+  v-card.discussion-form(v-submit-on-mod-enter="submit")
     template(v-slot:title)
       span(v-intersect="{handler: titleVisible}") {{ cardTitle }}
     template(v-slot:append)
