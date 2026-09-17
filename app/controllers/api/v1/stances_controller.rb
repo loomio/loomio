@@ -189,8 +189,8 @@ class Api::V1::StancesController < Api::V1::RestfulController
     %w[group discussion]
   end
 
-  def default_scope
-    super.merge({include_email: current_user_is_admin?})
+  def default_scope(records = records_to_serialize)
+    super(records).merge(include_email: current_user_is_admin?)
   end
 
   def accessible_records

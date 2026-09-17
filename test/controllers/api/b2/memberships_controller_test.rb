@@ -12,6 +12,15 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "index serializes the filtered collection" do
+    @request.headers['Authorization'] = "Bearer #{@admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    membership_ids = JSON.parse(response.body).fetch('memberships').pluck('id')
+    assert_includes membership_ids, @group.membership_for(@admin).id
+  end
+
   test "adds members to group" do
     post :create, params: {
       group_id: @group.id,

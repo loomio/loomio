@@ -258,7 +258,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     raise CanCan::AccessDenied unless allowed
   end
 
-  def default_scope
+  def default_scope(records = records_to_serialize)
     is_admin = if target_model && target_model.respond_to?(:group_id)
                  if target_model.group_id
                    target_model.group.admins.exists?(current_user.id)
@@ -271,7 +271,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
                  false
                end
 
-    super.merge(
+    super(records).merge(
       include_email: is_admin
     )
   end

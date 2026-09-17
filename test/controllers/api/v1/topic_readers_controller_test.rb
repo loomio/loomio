@@ -10,6 +10,17 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "index serializes the filtered collection" do
+    @discussion.topic.add_guest!(@alien, @admin)
+    sign_in @admin
+
+    get :index, params: { topic_id: @discussion.topic_id }
+
+    assert_response :success
+    reader_ids = JSON.parse(response.body).fetch('topic_readers').pluck('id')
+    assert_includes reader_ids, TopicReader.find_by!(topic: @discussion.topic, user: @alien).id
+  end
+
   # -- make_admin --
 
   test "make_admin with permission makes user admin of topic" do
