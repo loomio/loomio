@@ -14,6 +14,7 @@ class AppConfigTest < ActiveSupport::TestCase
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")
     @group_deletion_delay_days_previous = ENV.delete("GROUP_DELETION_DELAY_DAYS")
+    @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
     @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
   end
@@ -22,6 +23,7 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("CHARGIFY_API_KEY", @chargify_api_key_previous)
     restore_env("LOOMIO_SUBSCRIPTIONS", @loomio_subscriptions_previous)
     restore_env("GROUP_DELETION_DELAY_DAYS", @group_deletion_delay_days_previous)
+    restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)
     restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)
   end
@@ -46,6 +48,18 @@ class AppConfigTest < ActiveSupport::TestCase
     ENV["LOOMIO_DISABLE_EDIT_USER_PROFILE"] = "0"
 
     assert AppConfig.app_features.fetch(:sso_disable_edit_profile)
+  end
+
+  test "default onboarding group id can be configured" do
+    assert_nil AppConfig.default_onboarding_group_id
+
+    ENV["DEFAULT_ONBOARDING_GROUP_ID"] = "123"
+
+    assert_equal 123, AppConfig.default_onboarding_group_id
+
+    ENV["DEFAULT_ONBOARDING_GROUP_ID"] = ""
+
+    assert_nil AppConfig.default_onboarding_group_id
   end
 
   private

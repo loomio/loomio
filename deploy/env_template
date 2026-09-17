@@ -99,6 +99,9 @@ FEATURES_DEMO_GROUPS=1
 # Days a discarded group remains marked for deletion before deletion (default: 90)
 # GROUP_DELETION_DELAY_DAYS=90
 
+# Automatically add new users to this group.
+# DEFAULT_ONBOARDING_GROUP_ID=123
+
 # configure amazon S3
 # AWS_ACCESS_KEY_ID=
 # AWS_SECRET_ACCESS_KEY=

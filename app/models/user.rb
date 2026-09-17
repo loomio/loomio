@@ -115,6 +115,7 @@ class User < ApplicationRecord
   has_many :tags, through: :groups
 
   before_save :set_avatar_initials
+  after_save :join_default_onboarding_group, if: :became_registered_user?
 
   initialized_with_token :unsubscribe_token
   initialized_with_token :email_api_key
@@ -196,6 +197,17 @@ class User < ApplicationRecord
 
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
+  end
+
+  # Deployments can place every new account in a preconfigured welcome group.
+  def join_default_onboarding_group
+    return unless AppConfig.default_onboarding_group_id
+
+    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+  end
+
+  def became_registered_user?
+    name.present? && (previously_new_record? || (saved_change_to_name? && name_before_last_save.blank?))
   end
 
   def require_legal_accepted

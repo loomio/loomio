@@ -30,6 +30,10 @@ class AppConfig
     ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
   end
 
+  def self.default_onboarding_group_id
+    ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end

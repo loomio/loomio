@@ -10,11 +10,41 @@ class UserServiceTest < ActiveSupport::TestCase
     @group = groups(:group)
     @original_disable_edit_user_profile = ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE']
     @original_sso_force_user_attrs = ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
+    @original_default_onboarding_group_id = ENV.delete('DEFAULT_ONBOARDING_GROUP_ID')
   end
 
   teardown do
     ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = @original_disable_edit_user_profile
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = @original_sso_force_user_attrs
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @original_default_onboarding_group_id
+  end
+
+  test "new users join the configured onboarding group" do
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
+
+    user = UserService.create(params: {
+      name: 'Onboarding User',
+      email: 'onboarding-user@example.com',
+      legal_accepted: true
+    })
+
+    membership = Membership.find_by!(group: @group, user: user)
+    assert membership.accepted_at
+    refute membership.admin?
+  end
+
+  test "invited placeholder users join the configured onboarding group when registration completes" do
+    invited_user = User.create!(email: 'invited-onboarding-user@example.com')
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
+
+    user = UserService.create(params: {
+      name: 'Invited Onboarding User',
+      email: invited_user.email,
+      legal_accepted: true
+    })
+
+    assert_equal invited_user, user
+    assert Membership.exists?(group: @group, user: user, accepted_at: ...Time.current)
   end
 
   test "deactivates the user" do
