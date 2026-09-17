@@ -615,7 +615,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## List Memberships
 
-List the members of a group visible to the API-key user.
+List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator or instance administrator.
 
 `GET /api/b2/memberships`
 
@@ -633,7 +633,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 ## Manage Memberships
 
-Send a list of emails. It will invite all the new email addresses to the group.
+Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator or instance-administrator permission.
 
 `POST /api/b2/memberships`
 

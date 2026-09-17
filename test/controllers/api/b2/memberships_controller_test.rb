@@ -21,6 +21,50 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
     assert_includes membership_ids, @group.membership_for(@admin).id
   end
 
+  test "group member can list names and roles without other members' email addresses" do
+    member = create_user_with_api_key!("member")
+    other_member = create_user_with_api_key!("other")
+    @group.add_member!(member)
+    @group.add_member!(other_member).update!(delegate: true, title: "Facilitator")
+
+    @request.headers['Authorization'] = "Bearer #{member.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    serialized_user = json.fetch("users").find { |user| user.fetch("id") == other_member.id }
+    serialized_membership = json.fetch("memberships").find { |membership| membership.fetch("user_id") == other_member.id }
+    assert_equal other_member.name, serialized_user.fetch("name")
+    refute serialized_user.key?("email")
+    assert_equal true, serialized_membership.fetch("delegate")
+    assert_equal "Facilitator", serialized_membership.fetch("title")
+    refute serialized_membership.key?("user_email")
+  end
+
+  test "group admin can list member email addresses" do
+    member = create_user_with_api_key!("member")
+    @group.add_member!(member)
+
+    @request.headers['Authorization'] = "Bearer #{@admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    serialized_user = json.fetch("users").find { |user| user.fetch("id") == member.id }
+    serialized_membership = json.fetch("memberships").find { |membership| membership.fetch("user_id") == member.id }
+    refute serialized_user.key?("email")
+    assert_equal member.email, serialized_membership.fetch("user_email")
+  end
+
+  test "non-member cannot list a private group's memberships" do
+    outsider = create_user_with_api_key!("outsider")
+
+    @request.headers['Authorization'] = "Bearer #{outsider.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_empty json.fetch("memberships")
+    assert_empty json.fetch("users", [])
+  end
+
   test "adds members to group" do
     post :create, params: {
       group_id: @group.id,
@@ -133,5 +177,23 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
       api_key: new_user.api_key
     }
     assert_response 403
+  end
+
+  private
+
+  def create_user_with_api_key!(prefix)
+    hex = SecureRandom.hex(4)
+    User.create!(
+      name: "#{prefix}#{hex}",
+      email: "#{prefix}#{hex}@example.com",
+      username: "#{prefix}#{hex}",
+      email_verified: true
+    ).tap do |user|
+      user.update_columns(api_key: "#{prefix}key#{SecureRandom.hex(8)}")
+    end
+  end
+
+  def json
+    JSON.parse(response.body)
   end
 end
