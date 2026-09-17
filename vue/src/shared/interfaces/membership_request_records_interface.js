@@ -32,10 +32,10 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
     });
   }
 
-  decline(membershipRequest, responseComment) {
+  decline(membershipRequest, declineReason) {
     return this.remote.postMember(membershipRequest.id, 'decline', {
       group_key: membershipRequest.group().key,
-      membership_request: {response_comment: responseComment}
+      membership_request: {decline_reason: declineReason}
     });
   }
 

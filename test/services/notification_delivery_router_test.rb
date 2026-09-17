@@ -77,7 +77,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       group: groups(:group),
       requestor: users(:alien),
       introduction: "Please add me",
-      response_comment: "Please answer the join prompt"
+      decline_reason: "Please answer the join prompt"
     )
     reaction = Reaction.create!(
       reactable: discussions(:discussion),
@@ -358,7 +358,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     scenarios = {
       "invitation_accepted" => [ membership, @author, %w[in_app] ],
       "membership_request_approved" => [ membership, recipient, %w[email in_app] ],
-      "membership_request_declined" => [ MembershipRequest.create!(group: groups(:group), requestor: users(:alien), response_comment: "Please answer the join prompt"), users(:alien), %w[email in_app] ],
+      "membership_request_declined" => [ MembershipRequest.create!(group: groups(:group), requestor: users(:alien), decline_reason: "Please answer the join prompt"), users(:alien), %w[email in_app] ],
       "membership_resent" => [ membership, recipient, %w[email] ],
       "new_coordinator" => [ membership, recipient, %w[email in_app] ],
       "new_delegate" => [ membership, recipient, %w[email in_app] ],

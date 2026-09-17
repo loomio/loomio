@@ -8,14 +8,14 @@ const { request } = defineProps({ request: Object });
 const { t } = useI18n();
 
 const isDeclining = ref(false);
-const responseComment = ref('');
+const declineReason = ref('');
 const submitting = ref(false);
 
-const canSubmit = computed(() => responseComment.value.trim().length > 0);
+const canSubmit = computed(() => declineReason.value.trim().length > 0);
 
 const openDecline = () => {
   isDeclining.value = true;
-  responseComment.value = '';
+  declineReason.value = '';
 };
 
 const closeDecline = () => {
@@ -35,7 +35,7 @@ const approveRequest = async () => {
 const declineRequest = async () => {
   submitting.value = true;
   try {
-    await Records.membershipRequests.decline(request, responseComment.value.trim());
+    await Records.membershipRequests.decline(request, declineReason.value.trim());
     Flash.success('membership_requests_page.messages.request_declined_success');
     closeDecline();
   } finally {
@@ -62,29 +62,29 @@ v-list.membership-requests(lines="two" density="compact")
       user-avatar.mr-2(:user="request.actor()" :size="40")
     v-list-item-title.membership-request__name
       span {{ request.actor().name }} &lt;{{ request.requestorEmail }}&gt;
-      span.text-body-small.text-medium-emphasis(v-if="!request.respondedAt")
+      span.text-body-small.text-medium-emphasis(v-if="request.isPending()")
         space
         mid-dot
         time-ago(:date="request.createdAt")
-      span.membership-request__response.text-body-small.text-medium-emphasis(v-if="request.respondedAt")
+      span.membership-request__response.text-body-small.text-medium-emphasis(v-if="!request.isPending()")
         space
         span {{ t('membership_requests_page.previous_request_response', { response: request.formattedResponse(), responder: request.responder().name }) }}
         mid-dot
-        time-ago(:date="request.respondedAt")
+        time-ago(:date="request.responseAt()")
     v-list-item-subtitle.membership-request__introduction {{ request.introduction }}
-    p.membership-request__response-comment.mt-2(v-if="request.responseComment") {{ request.responseComment }}
+    p.membership-request__decline-reason.mt-2(v-if="request.declineReason") {{ request.declineReason }}
     template(v-slot:append)
-      v-btn.membership-requests-page__approve(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.approve')" :disabled="submitting" @click="approveRequest")
+      v-btn.membership-requests-page__approve(v-if="request.isPending()" text icon :aria-label="t('membership_requests_page.approve')" :disabled="submitting" @click="approveRequest")
         common-icon(name="mdi-check")
-      v-btn.membership-requests-page__decline(v-if="!request.respondedAt" text icon :aria-label="t('membership_requests_page.decline')" :disabled="submitting" @click="openDecline")
+      v-btn.membership-requests-page__decline(v-if="request.isPending()" text icon :aria-label="t('membership_requests_page.decline')" :disabled="submitting" @click="openDecline")
         common-icon(name="mdi-close")
 
 v-dialog(:model-value="isDeclining" max-width="600" @update:model-value="value => { if (!value) closeDecline(); }")
   v-card(:title="t('membership_requests_page.decline_request')")
     v-card-text
       p.membership-request__decline-help.mb-4.text-medium-emphasis {{ t('membership_requests_page.decline_help') }}
-      v-textarea.membership-request__response-comment-input(
-        v-model="responseComment"
+      v-textarea.membership-request__decline-reason-input(
+        v-model="declineReason"
         :label="t('membership_requests_page.decline_reason')"
         required
         :maxlength="500"

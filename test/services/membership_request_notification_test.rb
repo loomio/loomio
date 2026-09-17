@@ -64,6 +64,8 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     )
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
+    assert_not_nil request.reload.approved_at
+    assert_nil request.declined_at
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
   end
@@ -114,7 +116,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
       end
     end
 
-    assert_nil request.reload.response
+    assert_nil request.reload.approved_at
     assert_not Membership.exists?(group: @group, user: @requestor)
   end
 
@@ -124,14 +126,14 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_equal request, MembershipRequestService.decline(
       membership_request: request,
       actor: @actor,
-      response_comment: "Please answer the join prompt"
+      decline_reason: "Please answer the join prompt"
     )
 
     notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
-    assert_equal "declined", request.reload.response
-    assert_equal "Please answer the join prompt", request.response_comment
+    assert_not_nil request.reload.declined_at
+    assert_equal "Please answer the join prompt", request.decline_reason
     assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
     assert_equal [ @requestor.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
     assert_not notification.translation_values.key?("reason")
@@ -148,7 +150,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     MembershipRequestService.decline(
       membership_request: request,
       actor: @actor,
-      response_comment: "Please answer the join prompt"
+      decline_reason: "Please answer the join prompt"
     )
 
     notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
@@ -163,7 +165,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     MembershipRequestService.decline(
       membership_request: request,
       actor: @actor,
-      response_comment: "Please try again <img src=x onerror=alert(1)>"
+      decline_reason: "Please try again <img src=x onerror=alert(1)>"
     )
 
     notification = Notification.find_by!(kind: "membership_request_declined", subject: request)
@@ -183,13 +185,13 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
         MembershipRequestService.decline(
           membership_request: request,
           actor: @actor,
-          response_comment: "Please answer the join prompt"
+          decline_reason: "Please answer the join prompt"
         )
       end
     end
 
-    assert_nil request.reload.response
-    assert_nil request.response_comment
+    assert_nil request.reload.declined_at
+    assert_nil request.decline_reason
   end
 
   test "requestor can apply again after being declined" do
@@ -197,7 +199,7 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     MembershipRequestService.decline(
       membership_request: request,
       actor: @actor,
-      response_comment: "Please answer the join prompt"
+      decline_reason: "Please answer the join prompt"
     )
 
     replacement = MembershipRequest.new(group: @group, introduction: "A corrected introduction")

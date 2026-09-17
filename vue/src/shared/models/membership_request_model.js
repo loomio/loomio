@@ -53,10 +53,14 @@ export default class MembershipRequestModel extends BaseModel {
   }
 
   isPending() {
-    return (this.respondedAt == null);
+    return !this.approvedAt && !this.declinedAt;
+  }
+
+  responseAt() {
+    return this.approvedAt || this.declinedAt;
   }
 
   formattedResponse() {
-    return capitalize(this.response);
+    return capitalize(this.approvedAt ? 'approved' : 'declined');
   }
 };

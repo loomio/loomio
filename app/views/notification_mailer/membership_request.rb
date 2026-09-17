@@ -22,7 +22,7 @@ class Views::NotificationMailer::MembershipRequest < Views::NotificationMailer::
       with_title: true,
       url: url,
       translation_values: @topic_item.notification.translation_values_for(@recipient.id),
-      message: was_declined ? @topic_item.itemable.response_comment : @topic_item.itemable.introduction
+      message: was_declined ? @topic_item.itemable.decline_reason : @topic_item.itemable.introduction
     )
 
     div(class: "email-actions") do

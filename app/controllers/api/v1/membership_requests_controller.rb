@@ -24,7 +24,7 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
   end
 
   def decline
-    service.decline(membership_request: load_resource, actor: current_user, response_comment: response_comment)
+    service.decline(membership_request: load_resource, actor: current_user, decline_reason: decline_reason)
     respond_with_resource
   end
 
@@ -35,8 +35,8 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
 
   private
 
-  def response_comment
-    permitted_params.membership_request[:response_comment].presence if params[:membership_request]
+  def decline_reason
+    permitted_params.membership_request[:decline_reason].presence if params[:membership_request]
   end
 
   def authorize

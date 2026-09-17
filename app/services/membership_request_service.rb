@@ -29,10 +29,10 @@ class MembershipRequestService
     membership_request
   end
 
-  def self.decline(membership_request:, actor:, response_comment:)
+  def self.decline(membership_request:, actor:, decline_reason:)
     actor.ability.authorize! :decline, membership_request
     MembershipRequest.transaction do
-      membership_request.decline!(actor, response_comment: response_comment)
+      membership_request.decline!(actor, decline_reason: decline_reason)
       NotificationService.create!(
         kind: "membership_request_declined",
         subject: membership_request,

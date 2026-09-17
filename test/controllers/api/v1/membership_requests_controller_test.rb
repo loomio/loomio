@@ -90,7 +90,8 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
-    assert_equal 'approved', record['response']
+    assert_not_nil record['approved_at']
+    assert_nil record['declined_at']
   end
 
   test "approve raises access denied when not permitted" do
@@ -100,23 +101,24 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   end
 
   test "decline membership request with a reason when permitted" do
-    post :decline, params: { id: @pending_request.id, membership_request: { response_comment: "Please answer the join prompt" } }
+    post :decline, params: { id: @pending_request.id, membership_request: { decline_reason: "Please answer the join prompt" } }
     assert_response :success
 
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
-    assert_equal 'declined', record['response']
-    assert_equal 'Please answer the join prompt', record['response_comment']
+    assert_nil record['approved_at']
+    assert_not_nil record['declined_at']
+    assert_equal 'Please answer the join prompt', record['decline_reason']
   end
 
   test "decline requires a reason" do
-    post :decline, params: { id: @pending_request.id, membership_request: { response_comment: "" } }
+    post :decline, params: { id: @pending_request.id, membership_request: { decline_reason: "" } }
     assert_response :unprocessable_entity
-    assert_nil @pending_request.reload.response
+    assert_nil @pending_request.reload.declined_at
   end
 
   test "decline raises access denied when not permitted" do
-    post :decline, params: { id: @other_pending_request.id, membership_request: { response_comment: "Not eligible" } }
+    post :decline, params: { id: @other_pending_request.id, membership_request: { decline_reason: "Not eligible" } }
     assert_response :forbidden
     # error details no longer exposed to clients
   end
@@ -129,8 +131,8 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
-    assert_equal 'ignored', record['response']
-    assert_nil record['response_comment']
+    assert_not_nil record['declined_at']
+    assert_nil record['decline_reason']
   end
 
   test "ignore raises access denied when not permitted" do

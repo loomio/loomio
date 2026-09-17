@@ -1,5 +1,5 @@
 class MembershipRequestSerializer < ApplicationSerializer
-  attributes :id, :group_id, :name, :email, :introduction, :responded_at, :response, :response_comment, :created_at, :updated_at, :requestor_email
+  attributes :id, :group_id, :name, :email, :introduction, :approved_at, :declined_at, :decline_reason, :created_at, :updated_at, :requestor_email
 
   has_one :responder, serializer: AuthorSerializer, root: :users
   has_one :requestor, serializer: AuthorSerializer, root: :users

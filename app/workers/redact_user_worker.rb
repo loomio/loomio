@@ -47,7 +47,7 @@ class RedactUserWorker < ApplicationJob
       # Destroy any outstanding login credentials so a redacted/merged source
       # account's pending login codes/magic links can never be redeemed.
       LoginToken.where(user_id: user_id).delete_all
-      MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
+      MembershipRequest.pending.where(requestor_id: user_id).destroy_all
       SearchService.reindex_by_author_id(user.id)
 
       transaction.after_commit do
