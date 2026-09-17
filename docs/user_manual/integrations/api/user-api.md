@@ -356,7 +356,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/discu
 
 ## List Discussions
 
-List discussions in a group. The caller must be a member of the group or a global admin.
+List discussions visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public discussions; private discussions remain restricted to users who can read them in Loomio.
 
 `GET /api/b2/discussions`
 
@@ -554,7 +554,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' https://www.loomio.com/api/b2/polls
 
 ## List Polls
 
-List polls in a group. The caller must be a member of the group or a global admin. The response includes each poll's current outcome, so you can use `status=closed` to list decided proposals.
+List polls visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list decided proposals.
 
 `GET /api/b2/polls`
 

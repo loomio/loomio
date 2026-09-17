@@ -258,12 +258,32 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     assert_equal 2, JSON.parse(response.body)['polls'].size
   end
 
-  test "index rejects non-member" do
-    hex = SecureRandom.hex(4)
-    stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true)
-    stranger.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
+  test "index lets a non-member read public polls without exposing private polls" do
+    public_group = Group.create!(
+      name: "Public Group #{SecureRandom.hex(4)}",
+      group_privacy: "closed",
+      discussion_privacy_options: "public_or_private"
+    )
+    Membership.create!(user: @admin, group: public_group, accepted_at: Time.current, admin: true)
+    public_poll = make_poll(group: public_group, title: "Public Poll", private: false)
+    private_poll = make_poll(group: public_group, title: "Private Poll", private: true)
+    stranger = create_user_with_api_key!
+
+    @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
+    get :index, params: { group_id: public_group.id, status: "all" }
+
+    assert_response :success
+    poll_ids = json.fetch("polls").pluck("id")
+    assert_equal [ public_poll.id ], poll_ids
+    refute_includes response.body, private_poll.title
+  end
+
+  test "index rejects a non-member of a private group" do
+    stranger = create_user_with_api_key!
+
     @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
     get :index, params: { group_id: @group.id }
+
     assert_response 403
   end
 
@@ -304,15 +324,24 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
 
   private
 
-  def make_poll(group:, title: "test poll #{SecureRandom.hex(4)}", closed_at: nil)
-    poll = PollService.create(params: {
+  def create_user_with_api_key!
+    hex = SecureRandom.hex(4)
+    User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true).tap do |user|
+      user.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
+    end
+  end
+
+  def make_poll(group:, title: "test poll #{SecureRandom.hex(4)}", closed_at: nil, private: nil)
+    params = {
       poll_type: 'poll',
       title: title,
       group_id: group.id,
       poll_option_names: ['engage'],
       closing_at: 3.days.from_now,
       notify_on_closing_soon: 'nobody'
-    }, actor: @admin)
+    }
+    params[:private] = private unless private.nil?
+    poll = PollService.create(params: params, actor: @admin)
     poll.update!(closed_at: closed_at) if closed_at
     poll
   end
