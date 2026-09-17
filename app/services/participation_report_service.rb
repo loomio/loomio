@@ -1,11 +1,12 @@
 class ParticipationReportService
-  def self.fetch(actor:, params:)
-    new(actor: actor, params: params).fetch
+  def self.fetch(actor:, params:, instance_admin_access: true)
+    new(actor: actor, params: params, instance_admin_access: instance_admin_access).fetch
   end
 
-  def initialize(actor:, params:)
+  def initialize(actor:, params:, instance_admin_access:)
     @actor = actor
     @params = params
+    @instance_admin_access = instance_admin_access
   end
 
   # Resolves the caller's permitted group scope once, then builds the requested
@@ -17,7 +18,7 @@ class ParticipationReportService
     interval = @params.fetch(:interval, 'month')
     group_scope = @params.fetch(:group_scope, 'custom')
     group_scope = 'custom' unless %w[all my custom].include?(group_scope)
-    group_scope = 'my' if group_scope == 'all' && !@actor.is_admin?
+    group_scope = 'my' if group_scope == 'all' && !instance_admin?
     section = @params.fetch(:section, 'base')
     member_type = @params[:member_type].presence
     raise ArgumentError, "invalid member_type value: #{member_type}" unless [ nil, 'delegate' ].include?(member_type)
@@ -34,13 +35,13 @@ class ParticipationReportService
       all_group_ids
     else
       ids = @params.fetch(:group_ids, '').split(',').map(&:to_i)
-      ids & (@actor.is_admin? ? ids : @actor.group_ids)
+      ids & (instance_admin? ? ids : @actor.group_ids)
     end
     group_ids = group_ids.uniq
     report_group_ids = group_ids.presence || [ -1 ]
 
     all_groups_list = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map { |pair| { id: pair[0], name: pair[1] } }
-    all_groups_list.unshift({ id: 0, name: I18n.t('sidebar.direct_discussions') }) if @actor.is_admin?
+    all_groups_list.unshift({ id: 0, name: I18n.t('sidebar.direct_discussions') }) if instance_admin?
 
     first_year = Group.where(id: all_group_ids).order("created_at").first&.created_at&.year || Date.today.year
     report = ReportService.new(
@@ -56,13 +57,17 @@ class ParticipationReportService
       all_groups: all_groups_list,
       group_ids: group_ids,
       group_scope: group_scope,
-      current_user_is_admin: @actor.is_admin?
+      current_user_is_admin: instance_admin?
     }
 
     meta.merge(section_data(report: report, section: section, member_type: member_type))
   end
 
   private
+
+  def instance_admin?
+    @instance_admin_access && @actor.is_admin?
+  end
 
   def section_data(report:, section:, member_type:)
     case section

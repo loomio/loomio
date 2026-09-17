@@ -352,7 +352,7 @@ paths:
       operationId: listMemberships
       tags: [Memberships]
       summary: List a group's memberships
-      description: Group members can read names, IDs, titles, and roles. Other members' email addresses are returned only to group or instance administrators.
+      description: Group members can read names, IDs, titles, and roles. Other members' email addresses are returned only to group administrators.
       parameters:
         - $ref: "#/components/parameters/GroupIdQuery"
         - $ref: "#/components/parameters/Limit"

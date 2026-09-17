@@ -287,13 +287,12 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     assert_response 403
   end
 
-  test "index allows global admin not in group" do
-    admin = users(:admin)
+  test "index does not grant an instance admin access to a private group" do
+    admin = create_user_with_api_key!
     admin.update!(is_admin: true)
-    admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
     @request.headers['Authorization'] = "Bearer #{admin.api_key}"
     get :index, params: { group_id: @group.id }
-    assert_response 200
+    assert_response :forbidden
   end
 
   test "index rejects bad api_key" do

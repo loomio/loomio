@@ -18,11 +18,7 @@ class Api::B2::BaseController < Api::V1::SnorlaxBase
   # TopicQuery prevents a non-member from seeing private topics in that group.
   def records_visible_in_group(resource_class)
     group = Group.find(params[:group_id])
-    unless current_user.is_admin? || current_user.can?(:show, group)
-      raise CanCan::AccessDenied
-    end
-
-    return resource_class.joins(:topic).where(topics: { group_id: group.id }) if current_user.is_admin?
+    raise CanCan::AccessDenied unless current_user.can?(:show, group)
 
     topicable_ids = TopicQuery.visible_to(
       user: current_user,

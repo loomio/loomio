@@ -4,7 +4,7 @@
 
 `/api/b2` is the user-oriented API for integrations with Loomio. It uses the API key of a user account, and every action is performed as that user.
 
-Group operations use the permissions of the API-key user. If the user can access or administer a group in Loomio, the same access applies through this API.
+Group operations use the memberships and group permissions of the API-key user. Instance-administrator status does not expand an API key's access to groups or content; use the Server API for instance-level administration.
 
 Use the API key from the Loomio user account that will perform the actions. A dedicated bot account is useful when an integration should not be invited to polls or receive notifications.
 
@@ -275,7 +275,7 @@ Return the same aggregated participation data used by Loomio's Participation rep
 | Name | Description |
 | --- | --- |
 | `section` | Report section: `base`, `users`, or `countries`. Use `users` for per-person activity |
-| `group_scope` | `custom`, `my`, or `all`. `all` is available only to instance administrators; other users receive their `my` scope |
+| `group_scope` | `custom` or `my`. The legacy `all` value is treated as `my` because User API keys never receive instance-wide access |
 | `group_ids` | Comma-separated group IDs when `group_scope=custom`. IDs outside the API user's memberships are ignored |
 | `start_month` | First month to include in `YYYY-MM` format; defaults to 12 months ago |
 | `end_month` | Last month to include in `YYYY-MM` format; defaults to the current month |
@@ -615,7 +615,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' -X DELETE https://www.loomio.com/ap
 
 ## List Memberships
 
-List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator or instance administrator.
+List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator.
 
 `GET /api/b2/memberships`
 
@@ -633,7 +633,7 @@ curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/memb
 
 ## Manage Memberships
 
-Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator or instance-administrator permission.
+Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator permission.
 
 `POST /api/b2/memberships`
 

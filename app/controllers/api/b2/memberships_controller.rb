@@ -40,11 +40,7 @@ class Api::B2::MembershipsController < Api::B2::BaseController
   end
 
   def accessible_records
-    if current_user.is_admin?
-      Membership.where(group_id: group.id)
-    else
-      MembershipQuery.visible_to(user: current_user).where(group_id: group.id)
-    end
+    MembershipQuery.visible_to(user: current_user).where(group_id: group.id)
   end
 
   def group
@@ -54,14 +50,14 @@ class Api::B2::MembershipsController < Api::B2::BaseController
   def default_scope(records = records_to_serialize)
     super(records).merge(
       include_inviter: true,
-      membership_email_group_ids: current_user.is_admin? ? [ group.id ] : current_user.adminable_group_ids
+      membership_email_group_ids: current_user.adminable_group_ids
     )
   end
 
   private
 
   def authorize_manage_group!
-    return if current_user.is_admin? || current_user.adminable_group_ids.include?(group.id)
+    return if current_user.adminable_group_ids.include?(group.id)
 
     raise CanCan::AccessDenied, "User is not an admin"
   end

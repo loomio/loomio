@@ -42,6 +42,25 @@ class Api::B2::ReportsControllerTest < ActionController::TestCase
     assert_empty JSON.parse(response.body).fetch('users')
   end
 
+  test "instance admin status does not expand report scope" do
+    @user.update!(is_admin: true)
+    alien_group = groups(:alien_group)
+    alien_user = users(:alien)
+    alien_group.membership_for(alien_user).update!(delegate: true)
+
+    get :index, params: {
+      section: 'users',
+      group_scope: 'custom',
+      group_ids: alien_group.id,
+      member_type: 'delegate'
+    }
+
+    assert_response :success
+    body = JSON.parse(response.body)
+    assert_empty body.fetch('users')
+    assert_equal false, body.fetch('current_user_is_admin')
+  end
+
   test "requires a valid bearer API key" do
     @request.headers['Authorization'] = 'Bearer invalid'
 

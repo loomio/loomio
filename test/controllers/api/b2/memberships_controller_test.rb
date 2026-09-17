@@ -138,33 +138,43 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
     assert_response 403
   end
 
-  test "global admin not in group can add members" do
-    new_admin = users(:admin)
-    new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
+  test "instance admin not in group cannot add members" do
+    new_admin = create_user_with_api_key!("instanceadmin")
+    new_admin.update!(is_admin: true)
     post :create, params: {
       group_id: @group.id,
       emails: ['hi@there.com'],
       api_key: new_admin.api_key
     }
-    assert_response 200
-    json = JSON.parse(response.body)
-    assert_equal ['hi@there.com'], json['added_emails']
-    assert_equal [], json['removed_emails']
+    assert_response :forbidden
+    refute @group.members.exists?(email: 'hi@there.com')
   end
 
-  test "global admin not in group can remove members" do
-    new_admin = users(:admin)
-    new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
+  test "instance admin not in group cannot remove members" do
+    new_admin = create_user_with_api_key!("instanceadmin")
+    new_admin.update!(is_admin: true)
     post :create, params: {
       group_id: @group.id,
       remove_absent: 1,
       emails: ['hey@there.com'],
       api_key: new_admin.api_key
     }
-    assert_response 200
-    json = JSON.parse(response.body)
-    assert_equal ['hey@there.com'], json['added_emails']
-    assert_equal [@admin.email], json['removed_emails']
+    assert_response :forbidden
+    assert @group.members.exists?(@admin.id)
+    refute @group.members.exists?(email: 'hey@there.com')
+  end
+
+  test "instance admin not in group cannot list memberships or email addresses" do
+    instance_admin = create_user_with_api_key!("instanceadmin")
+    instance_admin.update!(is_admin: true)
+
+    @request.headers['Authorization'] = "Bearer #{instance_admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_empty json.fetch("memberships")
+    assert_empty json.fetch("users", [])
+    refute_includes response.body, @admin.email
   end
 
   test "non-global-admin not in group cannot add members" do
