@@ -1,0 +1,1 @@
+Instance administrators can select users in search results and apply a bulk account operation. Deactivation blocks access while retaining the account and content and can be reversed. Redaction permanently removes personal and sign-in data while retaining anonymized authored content. Destroying an account deletes it and its dependent content and is intended for spam accounts.

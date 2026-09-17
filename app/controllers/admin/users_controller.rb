@@ -55,6 +55,23 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path, notice: "User scheduled for spam deletion"
   end
 
+  def bulk_action
+    users = User.where(id: selected_user_ids)
+    return redirect_back(fallback_location: admin_users_path, alert: "Select at least one user") if users.empty?
+
+    operation = params.require(:operation)
+    worker, description, extra_args = case operation
+    when "deactivate" then [ DeactivateUserWorker, "deactivation", [ current_user.id ] ]
+    when "redact" then [ RedactUserWorker, "redaction", [ current_user.id ] ]
+    when "delete_spam" then [ DestroyUserWorker, "spam deletion", [] ]
+    else
+      return redirect_back fallback_location: admin_users_path, alert: "Select a valid bulk action"
+    end
+
+    users.find_each { |user| worker.perform_later(user.id, *extra_args) }
+    redirect_back fallback_location: admin_users_path, notice: "#{users.size} users scheduled for #{description}"
+  end
+
   def delete_identity
     @user.identities.find(params.require(:identity_id)).destroy!
     redirect_to admin_user_path(@user), notice: "Identity deleted"
@@ -90,5 +107,9 @@ class Admin::UsersController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:name, :email, :username, :complaints_count, :bounces_count, :is_admin, :bot)
+  end
+
+  def selected_user_ids
+    Array(params[:user_ids]).filter_map { |id| Integer(id, exception: false) }.uniq
   end
 end

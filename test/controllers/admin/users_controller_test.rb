@@ -29,8 +29,13 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, '<option value="en">'
     refute_includes response.body, 'name="time_zone"'
     document = Nokogiri::HTML(response.body)
-    assert_equal ["Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"], document.css(".admin-table thead th").map { |header| header.text.strip }
-    assert_equal 9, document.css(".admin-table tbody tr").first.css("td").size
+    assert_equal ["", "Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"], document.css(".admin-table thead th").map { |header| header.text.strip }
+    assert_equal 10, document.css(".admin-table tbody tr").first.css("td").size
+    assert_includes response.body, "Select all users on this page"
+    assert_includes response.body, "Apply to selected users"
+    assert_includes response.body, "Blocks sign-in and revokes group memberships"
+    assert_includes response.body, "permanently removes personal and sign-in data"
+    assert_includes response.body, "Destroy / delete as spam"
     refute_includes response.body, ">Edit</a>"
   end
 
@@ -152,6 +157,52 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_enqueued_with(job: DestroyUserWorker, args: [@user.id]) do
       delete :delete_spam, params: { id: @user.id }
     end
+  end
+
+  test "admin can choose the operation for selected users" do
+    selected_users = [@user, users(:alien)]
+
+    assert_enqueued_jobs 2, only: DeactivateUserWorker do
+      post :bulk_action, params: { user_ids: selected_users.map(&:id), operation: "deactivate" }
+    end
+    deactivation_jobs = enqueued_jobs.select { |job| job[:job] == DeactivateUserWorker }
+    assert_equal selected_users.map(&:id).sort, deactivation_jobs.map { |job| job[:args].first }.sort
+
+    assert_redirected_to admin_users_path
+    assert_equal "2 users scheduled for deactivation", flash[:notice]
+
+    assert_enqueued_with(job: RedactUserWorker, args: [@user.id, @admin.id]) do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "redact" }
+    end
+
+    assert_enqueued_with(job: DestroyUserWorker, args: [@user.id]) do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "delete_spam" }
+    end
+  end
+
+  test "bulk operation requires a selected user and valid action" do
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { operation: "deactivate" }
+    end
+
+    assert_redirected_to admin_users_path
+    assert_equal "Select at least one user", flash[:alert]
+
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "unknown" }
+    end
+    assert_equal "Select a valid bulk action", flash[:alert]
+  end
+
+  test "non-admin cannot perform bulk user operations" do
+    sign_out
+    sign_in users(:member)
+
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "deactivate" }
+    end
+
+    assert_redirected_to dashboard_path
   end
 
   test "admin can only delete an identity belonging to the selected user" do

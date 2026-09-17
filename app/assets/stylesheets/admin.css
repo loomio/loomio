@@ -91,6 +91,13 @@ input, select, textarea {
 }
 .admin-checkbox { align-items: center; display: flex; gap: 7px; min-height: 38px; white-space: nowrap; }
 .admin-checkbox input { min-height: auto; width: auto; }
+.admin-bulk-actions { align-items: end; display: flex; flex-wrap: wrap; gap: 12px; }
+.admin-bulk-actions fieldset { border: 1px solid var(--admin-border); border-radius: 6px; display: grid; flex: 1 1 720px; gap: 8px; margin: 0; padding: 12px; }
+.admin-bulk-actions legend { color: var(--admin-muted); font-size: .78rem; font-weight: 600; padding: 0 4px; }
+.admin-bulk-action { align-items: start; display: flex; gap: 8px; }
+.admin-bulk-action input { flex: 0 0 auto; margin-top: 3px; min-height: auto; width: auto; }
+.admin-bulk-action span { display: grid; gap: 2px; }
+.admin-bulk-action small { color: var(--admin-muted); }
 
 .admin-button {
   background: var(--admin-primary);

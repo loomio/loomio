@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: %i[index show edit update] do
+      post :bulk_action, on: :collection
       member do
         post :login_as
         post :merge
