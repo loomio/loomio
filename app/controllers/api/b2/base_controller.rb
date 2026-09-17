@@ -1,5 +1,6 @@
 class Api::B2::BaseController < Api::V1::SnorlaxBase
   include Api::B2::AuthenticatesApiKey
+  include Api::B2::ResponseOptions
   include ::LoadAndAuthorize
 
   private

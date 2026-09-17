@@ -1,5 +1,6 @@
 class Api::B2::SearchController < Api::V1::SearchController
   include Api::B2::AuthenticatesApiKey
+  include Api::B2::ResponseOptions
 
   private
 

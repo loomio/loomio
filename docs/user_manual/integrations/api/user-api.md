@@ -22,6 +22,20 @@ Authorization: Bearer YOUR_API_KEY
 
 The examples use `YOUR_API_KEY`, group ID `123`, and `https://www.loomio.com/`. Replace these with your API key, group ID, and Loomio installation URL.
 
+## Response size and related records
+
+User API responses use a compound format: the primary records are accompanied by related records such as topics, groups, users, polls, and reactions. This lets a client populate a local record store from one request, but can include more data than a simple integration needs.
+
+Pass `compact=1` to omit bulky related topics, groups, parent groups, memberships, reactions, tags, and translations. Primary records and the related records needed to interpret their content remain present.
+
+```bash
+curl -H 'Authorization: Bearer YOUR_API_KEY' 'https://www.loomio.com/api/b2/threads/123/items?compact=1'
+```
+
+For direct control, pass `exclude_types` with space-separated singular record types. For example, `exclude_types=group reaction` omits related groups and reactions. Common values are `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, and `topic_item`. Exclusions apply to related records, not the primary resource requested by the endpoint.
+
+Collection responses include `meta.total` when an exact collection size is defined. The total is calculated before `limit` and `offset` are applied. Endpoints such as search that intentionally return a bounded result set omit `meta.total` rather than returning `null`.
+
 ## Endpoint summary
 
 | Method | Endpoint | Purpose |

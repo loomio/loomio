@@ -1,6 +1,7 @@
 class Api::B2::ChatbotsController < Api::B2::BaseController
   def index
     self.collection = group.chatbots.order(:id)
+    self.collection_count = collection.count
     respond_with_collection scope: default_scope.merge(current_user_is_admin: true)
   end
 

@@ -55,4 +55,11 @@ class Api::B2::SearchControllerTest < ActionController::TestCase
 
     assert_response :forbidden
   end
+
+  test "omits an undefined total rather than returning null" do
+    get :index, params: { query: "b2searchterm" }
+
+    assert_response :success
+    refute response.parsed_body.fetch("meta").key?("total")
+  end
 end

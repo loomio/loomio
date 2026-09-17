@@ -32,6 +32,9 @@ paths:
       operationId: listGroups
       tags: [Groups]
       summary: List the API-key user's groups
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           description: Groups and related records
@@ -48,6 +51,9 @@ paths:
       operationId: getGroup
       tags: [Groups]
       summary: Get a visible group
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           description: Group and related records
@@ -66,6 +72,8 @@ paths:
         - $ref: "#/components/parameters/GroupIdQuery"
         - $ref: "#/components/parameters/Limit"
         - $ref: "#/components/parameters/Offset"
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
         - name: status
           in: query
           schema:
@@ -99,6 +107,9 @@ paths:
       operationId: getDiscussion
       tags: [Discussions]
       summary: Get a discussion
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/Record"
@@ -152,6 +163,8 @@ paths:
       parameters:
         - $ref: "#/components/parameters/Limit"
         - $ref: "#/components/parameters/Offset"
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/RecordCollection"
@@ -164,6 +177,9 @@ paths:
       operationId: getThread
       tags: [Threads]
       summary: Get a visible thread
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/Record"
@@ -176,6 +192,9 @@ paths:
       operationId: listThreadItems
       tags: [Threads]
       summary: List the ordered items in a thread
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/RecordCollection"
@@ -269,6 +288,8 @@ paths:
         - $ref: "#/components/parameters/GroupIdQuery"
         - $ref: "#/components/parameters/Limit"
         - $ref: "#/components/parameters/Offset"
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
         - name: status
           in: query
           schema:
@@ -302,6 +323,9 @@ paths:
       operationId: getPoll
       tags: [Polls]
       summary: Get a poll
+      parameters:
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/Record"
@@ -357,6 +381,8 @@ paths:
         - $ref: "#/components/parameters/GroupIdQuery"
         - $ref: "#/components/parameters/Limit"
         - $ref: "#/components/parameters/Offset"
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           $ref: "#/components/responses/RecordCollection"
@@ -490,6 +516,8 @@ paths:
           schema:
             type: string
             enum: [authored_at_desc]
+        - $ref: "#/components/parameters/Compact"
+        - $ref: "#/components/parameters/ExcludeTypes"
       responses:
         "200":
           description: Search results and related records
@@ -816,6 +844,19 @@ components:
       scheme: bearer
       description: Use a user's API key for B2 operations or `B3_API_KEY` for B3 operations.
   parameters:
+    Compact:
+      name: compact
+      in: query
+      description: Pass `1` to omit bulky related topics, groups, parents, memberships, reactions, tags, and translations.
+      schema:
+        type: integer
+        enum: [1]
+    ExcludeTypes:
+      name: exclude_types
+      in: query
+      description: Space-separated singular related record types to omit from the compound response.
+      schema:
+        type: string
     NumericId:
       name: id
       in: path

@@ -15,6 +15,19 @@ class Api::B2::ThreadsControllerTest < ActionController::TestCase
     assert_response 200
     thread = JSON.parse(response.body)['threads'].find { |item| item['id'] == @discussion.topic_id }
     assert_equal @discussion.topic_id, thread['id']
+    assert_operator response.parsed_body.dig('meta', 'total'), :>=, response.parsed_body.fetch('threads').length
+  end
+
+  test 'compact responses omit bulky related record types' do
+    @request.headers['Authorization'] = "Bearer #{@user.api_key}"
+    get :items, params: { id: @discussion.topic_id, compact: 1 }
+
+    assert_response :success
+    body = response.parsed_body
+    assert_equal @discussion.topic.items.count, body.dig('meta', 'total')
+    %w[topics groups parent_groups memberships reactions tags translations].each do |root|
+      refute body.key?(root), "expected compact response to omit #{root}"
+    end
   end
 
   test 'returns ordered thread items' do
@@ -24,6 +37,7 @@ class Api::B2::ThreadsControllerTest < ActionController::TestCase
     assert_response 200
     sequence_ids = JSON.parse(response.body)['items'].map { |item| item['sequence_id'] }
     assert_equal sequence_ids.sort, sequence_ids
+    assert_equal @discussion.topic.items.count, response.parsed_body.dig('meta', 'total')
   end
 
   test 'returns complete thread markdown' do

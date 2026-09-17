@@ -174,10 +174,10 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_translation?
-    translation.present?
+    include_type?('translation') && translation.present?
   end
 
   def include_translation_id?
-    translation.present?
+    include_type?('translation') && translation.present?
   end
 end
