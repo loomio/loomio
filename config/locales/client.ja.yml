@@ -1224,6 +1224,8 @@ ja:
     membership_requested: メンバーリクエストが送られました
     messages:
       joined_group: あなたは現在、%{group}のメンバーです
+    membership_request_declined: 参加申請は却下されました：%{reason}
+    request_membership_again: 再度参加をリクエストする
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名

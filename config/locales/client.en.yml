@@ -1328,6 +1328,8 @@ en:
     upload_success: Logo successfully updated
   join_group_button:
     not_a_member: You're not currently a member of this group.
+    membership_request_declined: "Your request to join was declined: %{reason}"
+    request_membership_again: Ask to join again
     join_group: Join group
     membership_requested: Membership requested
     messages:

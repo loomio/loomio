@@ -19,6 +19,7 @@ class MembershipRequest < ApplicationRecord
   validates :decline_reason, length: { maximum: 500 }
   validates :decline_reason, presence: true, on: :decline
   validate :validate_single_response
+  validate :validate_response_is_final
 
   scope :pending, -> { where(approved_at: nil, declined_at: nil).order(created_at: :desc) }
   scope :responded_to, -> { where.not(approved_at: nil).or(where.not(declined_at: nil)).order(Arel.sql('COALESCE(approved_at, declined_at) DESC')) }
@@ -83,6 +84,13 @@ class MembershipRequest < ApplicationRecord
     errors.add(:base, "Membership request cannot be both approved and declined") if approved_at.present? && declined_at.present?
   end
 
+  def validate_response_is_final
+    return unless persisted? && (approved_at_was.present? || declined_at_was.present?)
+    return unless approved_at_changed? || declined_at_changed? || decline_reason_changed?
+
+    errors.add(:base, "Membership request has already been responded to")
+  end
+
   def validate_not_in_group_already
     if has_not_been_saved_yet? && already_in_group?
       add_already_in_group_error
@@ -90,7 +98,7 @@ class MembershipRequest < ApplicationRecord
   end
 
   def validate_unique_membership_request
-    if has_not_been_saved_yet? && pending_request_already_exists?
+    if has_not_been_saved_yet? && membership_request_blocks_reapplication?
       add_already_requested_membership_error
     end
   end
@@ -103,8 +111,13 @@ class MembershipRequest < ApplicationRecord
     group_members.exists?(requestor.id)
   end
 
-  def pending_request_already_exists?
-    group_membership_requests.pending.where(requestor_id: requestor.id).exists?
+  def membership_request_blocks_reapplication?
+    # A reasoned decline invites another application; a pending or silently ignored request does not.
+    request = group_membership_requests.where(requestor_id: requestor.id).order(created_at: :desc, id: :desc).first
+    return false unless request
+
+    (request.approved_at.blank? && request.declined_at.blank?) ||
+      (request.declined_at.present? && request.decline_reason.blank?)
   end
 
   def add_already_requested_membership_error

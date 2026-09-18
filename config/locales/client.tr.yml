@@ -1225,6 +1225,8 @@ tr:
     membership_requested: Üyelik talep edildi
     messages:
       joined_group: Şu an %{group} grubunun bir üyesisin.
+    membership_request_declined: 'Katılma isteğiniz reddedildi: %{reason}'
+    request_membership_again: Tekrar katılmak için talepte bulunun
   membership_request_form:
     heading: Gruba katılmak için talep gönder
     name_label: İsim

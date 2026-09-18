@@ -1,77 +1,21 @@
-# Group Settings
+# Group settings
 
-In group settings you can change the group profile, the groups visibility and methods of joining, and what members are able to do within Loomio. Only people who are 'admin' can see and edit group settings.
+Group settings control how your group is presented, who can find and join it, and what members are allowed to do. Only group administrators can edit these settings.
 
-On your group page, click the **Edit group settings** cogwheel icon to open the settings form. 
+On the group page, open the actions menu and select **Edit group settings**.
 
-![](group_settings.png)
+![Edit group settings from the group page](group_settings.png)
 
-## Group Profile
-The profile tab determines the name, description, and appearance of your group on Loomio.
+The settings form is divided into three areas:
 
-![](group_profile.png)
+<a id="group-profile"></a>
 
-### Upload a group photo
-You can upload a group photo and logo by clicking either of their images in the settings form.  The logo will appear alongside your group name in the sidebar menu.
+- [Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo.
 
-The ideal pixel resolution for the group image is 2048 x 512. But any image with aspect ratio of 4:1 will fit. 
+<a id="privacy"></a><a id="joining-the-group"></a>
 
-### Change group name
-You can edit the name for your organization or group. We recommend short names, particularly if you plan to use subgroups.
+- [Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group.
 
-### Change group handle
+<a id="permissions"></a>
 
-When you start a group, a handle is automatically created. The handle is used in the group's URL and email address, such as **loomio.com/your-group-handle** and **your-group-handle@loomio.com**. You can change the handle in these settings.
-
-When you change the handle, links that use the old handle redirect to the group's new URL. Email sent to the old group address also continues to reach the group. These redirects do not give anyone access they would not otherwise have under the group's privacy settings.
-
-Loomio keeps up to three old handles. If you change the handle more than three times, the oldest handle expires: its links no longer redirect and its email address no longer reaches the group.
-
-### Add group description
-The group description will show on the main dashboard. It is a good place to write an invitation and context for the group, .e.g., what you will use loomio for, why the work is important, who is invited into this work, and how to participate.
-
-You can richly format the text as well as attach documents, hyperlinks, and videos.
-
-## Privacy
-
-![](group_privacy_settings.png#width-90)
-
-The privacy tab lets you determine who can find your group, who can see the discussions in your group, and how people join.
-
-The recommended privacy setting for new groups is **Secret**. This means everything is private to those invited members of the group. No one will know about this group (or subgroup) unless you invite them.
-
-If you want the content of your discussions and decisions to be public and accessible by anyone on the internet, change your group privacy to **Open**. The members list will only be visible to other members.
-
-Many groups use **Closed** to allow people to find the group and request to join. The **Name** and **Group description** are publicly accessible in Closed groups, but all threads are private.
-
-Open groups may contain secret and closed subgroups.
-
-A member of an open group can see that a closed subgroup exists, but not secret subgroups.
-
-If you set your group privacy to **Open** or **Closed**,  additional settings appear to determine how people can find and join the group.
-
-For Open and Closed groups, admins can enable **Non-members can start discussions** under group permissions. Anyone with a user account can then choose one of the group's discussion templates and start a discussion. They become a guest of that discussion without becoming a group member or gaining access to the group's other private discussions. This setting is not available for Secret groups. See [Collect private submissions](/en/user_manual/discussions/private_submissions) for example workflows.
-
-### Joining the group
-
-You can choose to either let anyone join (pending approval)  or have membership be invite only. 
-
-If membership is open to anyone, then a 'join group' button will show on your group page for new visitors. Clicking this will send a membership request to the group admins for approval. 
-
-![](group_join_group.png)
-
-If membership is invite only, then new members are added through the 'Members' tab on the dashboard by users with appropriate permissions. New members can be invited either by their email address or by sending them an invite link.
-
-![](group_join_group_invite.png)
-
-## Permissions
-
-There are two levels of membership a person can have to a group: admin and member. 
-
-Admins can edit group settings, make other people admins, and perform all the actions listed in the permissions tab of your group settings.
-
-Consider carefully each of these permissions and how they apply to your group.  In general groups with trusted members experienced with Loomio will have most settings ticked. However for most new groups, communities and larger networks, where people are less familiar with Loomio, you may want to restrict permissions to keep everyone safe.  You can always open permissions as confidence and experience of the group increases.  
-
-Contact us if you have questions about the best permission settings for your group.
-
-![](group_group_settings_permissions.png)
+- [Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take.

@@ -233,6 +233,20 @@ module.exports = {
     screenshot.captureElement('users/email_settings/group_notification_settings', '.change-volume-form', {width: 1100, height: 1300});
   },
 
+  'group_follow_updates': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_join_group');
+    page.waitFor('.group-follow-button');
+    page.expectText('.group-follow-button', 'Follow updates');
+    screenshot.captureRegion('groups/settings/group_follow_updates', ['.group-page > div:first-child', '.group-follow-button'], {
+      width: 1100,
+      height: 1800,
+      padding: 0,
+      spotlight: '.group-follow-button'
+    });
+  },
+
   'thread_subscribe': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

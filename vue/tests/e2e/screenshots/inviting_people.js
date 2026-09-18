@@ -98,11 +98,74 @@ module.exports = {
     });
   },
 
+  'request_to_join_form': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    page.loadPath('setup_manual_oatmilk_join_group');
+    page.expectText('.group-page__name', 'Oatmilk Cooperative');
+    page.click('.join-group-button');
+    page.waitFor('.membership-request-form');
+    page.fillIn(
+      '.membership-request-form__introduction textarea',
+      'I coordinate deliveries for a local cafe and would like to help with the returnable bottle trial.'
+    );
+    screenshot.captureElement(
+      'groups/inviting_people/group_request_to_join',
+      '.membership-request-form',
+      {height: 900}
+    );
+  },
+
+  'review_request_to_join': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    page.loadPath('setup_manual_oatmilk_membership_request');
+    page.waitFor('.requests-panel');
+    page.expectText('.membership-request__name', 'Riley Thompson');
+    screenshot.captureElement(
+      'groups/inviting_people/group_review_request_to_join',
+      '.requests-panel',
+      {
+        height: 900,
+        spotlight: {
+          selectors: ['.membership-requests-page__approve', '.membership-requests-page__decline'],
+          padding: 12,
+          radius: 14,
+          opacity: 0.4,
+          outlineWidth: 0
+        }
+      }
+    );
+  },
+
+  'decline_request_to_join': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+
+    page.loadPath('setup_manual_oatmilk_membership_request');
+    page.waitFor('.membership-requests-page__decline');
+    page.click('.membership-requests-page__decline');
+    page.waitFor('.membership-request__decline-reason-input');
+    page.fillIn(
+      '.membership-request__decline-reason-input textarea',
+      'Please tell us which cafe you work with and how you would like to contribute.'
+    );
+    screenshot.captureElement(
+      'groups/inviting_people/group_decline_request_to_join',
+      '.v-overlay .v-card',
+      {height: 900}
+    );
+  },
+
   'invitation_filter': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
     openMembers(page);
+    page.resizeWindow(1280, 900);
+    page.pause(300);
     page.click('.members-panel__filters');
     page.waitFor('.v-overlay .members-panel__filters-invitations');
     screenshot.capture('groups/inviting_people/group_invite_members_filter', {

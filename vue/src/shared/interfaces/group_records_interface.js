@@ -57,6 +57,6 @@ export default class GroupRecordsInterface extends BaseRecordsInterface {
   }
 
   unfollow(group) {
-    return this.recordStore.remote.delete('group_follows/destroy', {group_id: group.id});
+    return this.recordStore.remote.delete(`group_follows/${group.id}`);
   }
 };

@@ -812,7 +812,7 @@ ca:
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
       thread_locked: "%{actor} ha bloquejat el fil: %{title}"
-      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
+      membership_request_declined: La teva sol·licitud per unir-te a %{title} ha estat rebutjada
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -851,7 +851,7 @@ ca:
       new_comment: "%{actor} ha comentat en una discussió"
       outcome_updated: "%{actor} ha actualitzat el resultat"
       thread_locked: "%{actor} ha bloquejat el fil"
-      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
+      membership_request_declined: La teva sol·licitud per unir-te a %{title} ha estat rebutjada
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -896,7 +896,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
       thread_locked: "%{actor} ha bloquejat el fil: %{title}"
-      membership_request_declined: 'La teva sol·licitud per unir-te a %{title} ha estat rebutjada'
+      membership_request_declined: La teva sol·licitud per unir-te a %{title} ha estat rebutjada
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -1231,6 +1231,8 @@ ca:
     membership_requested: Afiliació sol·licitada
     messages:
       joined_group: Ara sou membre de %{group}
+    membership_request_declined: 'La teva sol·licitud per unir-te ha estat rebutjada: %{reason}'
+    request_membership_again: Demana tornar a unir-te
   membership_request_form:
     heading: Demana unir-te al grup
     name_label: Nom

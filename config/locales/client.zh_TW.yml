@@ -1232,6 +1232,8 @@ zh_TW:
     membership_requested: 已申請成員資格
     messages:
       joined_group: 您現在是 %{group} 的成員了
+    membership_request_declined: 您的加入請求已被拒絕：%{reason}
+    request_membership_again: 再次申請加入
   membership_request_form:
     heading: 要求加入群組
     name_label: 名字

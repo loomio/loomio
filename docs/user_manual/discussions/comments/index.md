@@ -92,7 +92,7 @@ Select **Edited** to see what changed. Red highlighting shows removed text and g
 You can edit a comment when:
 
 - you wrote it and the group allows members to edit their comments
-- you are a group admin and [Admins can edit members' comments](/en/user_manual/groups/settings/#permissions) is enabled
+- you are a group admin and [Admins can edit members' comments](/en/user_manual/groups/settings/permissions) is enabled
 
 ### Copy a comment link
 
@@ -126,7 +126,7 @@ The location of a discarded comment is labelled **Item removed**. Open its three
 
 Deleting a comment removes it permanently. It cannot be restored.
 
-If **Members can delete their own comments** is enabled in [Group settings](/en/user_manual/groups/settings/#permissions), members can permanently delete their own discarded comments. Group admins can delete any comment.
+If **Members can delete their own comments** is enabled in [Group permissions](/en/user_manual/groups/settings/permissions), members can permanently delete their own discarded comments. Group admins can delete any comment.
 
 ![](../using_discussions/permissions_delete_comment.png)
 

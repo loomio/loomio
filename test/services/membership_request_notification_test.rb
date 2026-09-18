@@ -206,4 +206,14 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_equal replacement, MembershipRequestService.create(membership_request: replacement, actor: @requestor)
     assert replacement.persisted?
   end
+
+  test "requestor cannot apply again after being ignored" do
+    request = MembershipRequest.create!(group: @group, requestor: @requestor)
+    MembershipRequestService.ignore(membership_request: request, actor: @actor)
+
+    replacement = MembershipRequest.new(group: @group, introduction: "Another introduction")
+    assert_equal replacement, MembershipRequestService.create(membership_request: replacement, actor: @requestor)
+    assert_not replacement.persisted?
+    assert_predicate replacement.errors[:requestor], :present?
+  end
 end

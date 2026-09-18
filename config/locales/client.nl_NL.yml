@@ -812,7 +812,7 @@ nl_NL:
       new_discussion: "%{actor} startte een discussie: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
-      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen'
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -851,7 +851,7 @@ nl_NL:
       new_comment: "%{actor} heeft gereageerd in een discussie"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       thread_locked: "%{actor} heeft de thread vergrendeld"
-      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen'
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -896,7 +896,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
-      membership_request_declined: 'Je verzoek om lid te worden van %{title} is afgewezen'
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -1231,6 +1231,8 @@ nl_NL:
     membership_requested: Lidmaatschap aangevraagd
     messages:
       joined_group: Je bent nu lid van %{group}
+    membership_request_declined: 'Je verzoek om lid te worden is afgewezen: %{reason}'
+    request_membership_again: Vraag om opnieuw lid te worden
   membership_request_form:
     heading: Vraag om lid te worden van de groep
     name_label: Naam

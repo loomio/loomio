@@ -10,7 +10,7 @@ class Api::V1::GroupFollowsController < Api::V1::RestfulController
   end
 
   def destroy
-    self.resource = current_user.group_follows.find_by!(group_id: params.require(:group_id))
+    self.resource = current_user.group_follows.find_by!(group_id: params.require(:id))
     group = resource.group
     GroupFollowService.destroy(group_follow: resource, actor: current_user)
     respond_with_group(group)

@@ -812,7 +812,7 @@ pl:
       new_discussion: "%{actor} rozpoczął dyskusję: %{title}"
       user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
       thread_locked: "%{actor} zablokował wątek: %{title}"
-      membership_request_declined: 'Twoja prośba o dołączenie do %{title} została odrzucona'
+      membership_request_declined: Twoja prośba o dołączenie do %{title} została odrzucona
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       group_announced: "%{actor} zaprosił Cię do grupy"
@@ -851,7 +851,7 @@ pl:
       new_comment: "%{actor} skomentował dyskusję"
       outcome_updated: "%{actor} zaktualizował wynik"
       thread_locked: "%{actor} zablokował wątek"
-      membership_request_declined: 'Twoja prośba o dołączenie do %{title} została odrzucona'
+      membership_request_declined: Twoja prośba o dołączenie do %{title} została odrzucona
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
@@ -896,7 +896,7 @@ pl:
       discussion_closed: "%{actor} zamknął dyskusję: %{title}"
       user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
       thread_locked: "%{actor} zablokował wątek: %{title}"
-      membership_request_declined: 'Twoja prośba o dołączenie do %{title} została odrzucona'
+      membership_request_declined: Twoja prośba o dołączenie do %{title} została odrzucona
   discussion_fork_actions:
     move: Przenieś
     moved: Przenoszenie komentarzy, to może zająć chwilę
@@ -1231,6 +1231,8 @@ pl:
     membership_requested: Prośba wysłana
     messages:
       joined_group: Należysz teraz do grupy %{group}
+    membership_request_declined: 'Twoja prośba o dołączenie została odrzucona: %{reason}'
+    request_membership_again: Poproś o ponowne dołączenie
   membership_request_form:
     heading: Poproś o dołączenie do grupy
     name_label: Nazwa

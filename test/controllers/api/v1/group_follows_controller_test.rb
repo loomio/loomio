@@ -15,7 +15,7 @@ class Api::V1::GroupFollowsControllerTest < ActionController::TestCase
     assert_equal true, response.parsed_body.fetch("groups").first.fetch("current_user_followed")
 
     assert_difference "GroupFollow.count", -1 do
-      delete :destroy, params: { group_id: @group.id }
+      delete :destroy, params: { id: @group.id }
     end
     assert_response :success
     assert_equal false, response.parsed_body.fetch("groups").first.fetch("current_user_followed")

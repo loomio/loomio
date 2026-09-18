@@ -1,5 +1,13 @@
 # Corrected translations
 
+## 2026-09-18 — Membership request response
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `join_group_button.membership_request_declined`, `request_membership_again` | Formal `Ihre` / `Sie` wording and a final full stop | Informal `deine` wording and a concise action label without a final full stop | German UI uses the informal `du/dein` register, and button labels omit final full stops |
+| `config/locales/client.fr.yml` | `join_group_button.membership_request_declined` | Formal `Votre` wording | Informal `Ta` wording | French UI uses the informal `tu/ton/ta` register |
+| `config/locales/client.ru.yml` | `join_group_button.request_membership_again` | Button label with a final full stop | Removed the final full stop | Single-sentence UI labels omit final full stops |
+
 ## 2026-09-16 — Non-member discussion setting
 
 | File | Key | Before | After | Why it was wrong |

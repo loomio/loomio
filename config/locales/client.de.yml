@@ -818,7 +818,7 @@ de:
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
       user_reminded: "%{actor} erinnert dich daran, über Folgendes abzustimmen: %{title}"
       thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
-      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt'
+      membership_request_declined: Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt
     without_title:
       unknown_sender: Bitte überprüfe die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat dich zu einer Gruppe eingeladen"
@@ -857,7 +857,7 @@ de:
       new_comment: "%{actor} hat in einer Diskussion kommentiert"
       outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
       thread_locked: "%{actor} hat den Thread gesperrt"
-      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt'
+      membership_request_declined: Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, deine Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchtest du die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -902,7 +902,7 @@ de:
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       user_reminded: "%{actor} erinnert dich daran, über Folgendes abzustimmen: %{title}"
       thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
-      membership_request_declined: 'Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt'
+      membership_request_declined: Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1237,6 +1237,8 @@ de:
     membership_requested: Mitgliedschaft angefragt
     messages:
       joined_group: Du bist nun ein Mitglied von %{group}
+    membership_request_declined: 'Deine Anfrage zum Beitritt wurde abgelehnt: %{reason}'
+    request_membership_again: Erneut um Beitritt bitten
   membership_request_form:
     heading: Gruppenbeitritt anfragen
     name_label: Name

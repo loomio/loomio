@@ -488,12 +488,62 @@ module Dev::Scenarios::OatmilkCooperative
 
   def setup_manual_oatmilk_join_group
     group, = create_manual_oatmilk_cooperative
+    group.update!(discussion_privacy_options: 'public_only')
     visitor = create_manual_oatmilk_member(
       name: 'Riley Thompson',
       email: 'riley@oatmilk.example'
     )
 
     sign_in visitor
+    redirect_to group_path(group)
+  end
+
+  def setup_manual_oatmilk_membership_request
+    group, coordinator, = create_manual_oatmilk_cooperative
+    group.update!(
+      membership_granted_upon: 'approval',
+      request_to_join_prompt: 'Tell us how you are connected to local food production or cooperative work.'
+    )
+    applicant = create_manual_oatmilk_member(
+      name: 'Riley Thompson',
+      email: 'riley@oatmilk.example'
+    )
+    MembershipRequestService.create(
+      membership_request: MembershipRequest.new(
+        group: group,
+        introduction: 'I coordinate deliveries for a local cafe and would like to help with the returnable bottle trial.'
+      ),
+      actor: applicant
+    )
+
+    sign_in coordinator
+    redirect_to group_membership_requests_path(group)
+  end
+
+  def setup_manual_oatmilk_pending_membership_request
+    group, _coordinator, applicant, = create_manual_oatmilk_membership_request_state
+
+    sign_in applicant
+    redirect_to group_path(group)
+  end
+
+  def setup_manual_oatmilk_declined_membership_request
+    group, coordinator, applicant, request = create_manual_oatmilk_membership_request_state
+    MembershipRequestService.decline(
+      membership_request: request,
+      actor: coordinator,
+      decline_reason: 'Please tell us which cafe you work with and how you would like to contribute.'
+    )
+
+    sign_in applicant
+    redirect_to group_path(group)
+  end
+
+  def setup_manual_oatmilk_ignored_membership_request
+    group, coordinator, applicant, request = create_manual_oatmilk_membership_request_state
+    MembershipRequestService.ignore(membership_request: request, actor: coordinator)
+
+    sign_in applicant
     redirect_to group_path(group)
   end
 
@@ -1273,6 +1323,24 @@ module Dev::Scenarios::OatmilkCooperative
   end
 
   private
+
+  def create_manual_oatmilk_membership_request_state
+    group, coordinator, = create_manual_oatmilk_cooperative
+    group.update!(membership_granted_upon: 'approval')
+    applicant = create_manual_oatmilk_member(
+      name: 'Riley Thompson',
+      email: 'riley@oatmilk.example'
+    )
+    request = MembershipRequestService.create(
+      membership_request: MembershipRequest.new(
+        group: group,
+        introduction: 'I coordinate deliveries for a local cafe and would like to help with the returnable bottle trial.'
+      ),
+      actor: applicant
+    )
+
+    [group, coordinator, applicant, request]
+  end
 
   def create_manual_oatmilk_discussion_template(group:, coordinator:)
     DiscussionTemplateService.ensure_templates_materialized(group)

@@ -8,10 +8,10 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
     this.baseConstructor(recordStore);
   }
 
-  fetchMyPendingByGroup(groupKey, options) {
+  fetchMineByGroup(groupKey, options) {
     if (options == null) { options = {}; }
     options['group_key'] = groupKey;
-    return this.remote.get('my_pending', options);
+    return this.remote.get('mine', options);
   }
 
   fetchPendingByGroup(groupKey, options) {

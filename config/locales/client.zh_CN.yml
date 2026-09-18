@@ -1265,6 +1265,8 @@ zh_CN:
     membership_requested: 应用会员资格
     messages:
       joined_group: 您现在是 %{group} 的成员
+    membership_request_declined: 您的加入请求已被拒绝：%{reason}
+    request_membership_again: 再次申请加入
   membership_request_form:
     aria_label: 会员应用表
     heading: 应用加入群组

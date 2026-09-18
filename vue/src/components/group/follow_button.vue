@@ -33,12 +33,22 @@ const toggleFollow = () => {
 </script>
 
 <template lang="pug">
-v-btn.group-follow-button.my-4(
+v-list-item.group-follow-button.px-0(
   v-if="showFollowButton"
-  variant="tonal"
-  color="primary"
-  :loading="processing"
-  :prepend-icon="group.currentUserFollowed ? 'mdi-email-check-outline' : 'mdi-email-plus-outline'"
-  @click="toggleFollow"
-) {{ t(group.currentUserFollowed ? 'group_follow.unfollow' : 'group_follow.follow') }}
+  density="compact"
+)
+  v-list-item-title {{ t('group_follow.follow') }}
+  v-list-item-subtitle.text-wrap {{ t('change_volume_form.catch_up_only_description', { context: t('change_volume_form.context.group') }) }}
+  template(#append)
+    v-switch(
+      :model-value="group.currentUserFollowed"
+      :aria-label="t('group_follow.follow')"
+      color="primary"
+      density="compact"
+      hide-details
+      inset
+      :loading="processing"
+      :disabled="processing"
+      @update:model-value="toggleFollow"
+    )
 </template>

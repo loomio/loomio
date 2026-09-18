@@ -12,7 +12,7 @@ Subgroups work just like groups do, but are located within your "parent" group. 
 ## Add a subgroup
 
 >[!Note]
->The ability to add new subgroups is part of the group's [permission settings](/en/user_manual/groups/settings/).  By default, only admins can start new subgroups.
+>The ability to add new subgroups is part of the group's [permission settings](/en/user_manual/groups/settings/permissions). By default, only admins can start new subgroups.
 
 To add a subgroup, visit your main group page, then click **New Subgroup** from the sidebar.  
 
@@ -40,7 +40,7 @@ The privacy settings for subgroups are similar to the parent group.
 
 Closed subgroups have an additional setting that allow members of its parent group to see private threads.
 
-[Read about group privacy here](/en/user_manual/groups/settings/#privacy).
+[Read about group privacy here](/en/user_manual/groups/settings/privacy).
 
 ### Permissions
 

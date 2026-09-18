@@ -6,9 +6,9 @@ You can **Invite** particular people to your group with their email address or *
 
 ![](group_join_group_invite.png)
 
-## Invite people via their email
+## Send invitations via email
 
-Click **Invite** on the Member tab of your group page to send an email invitation with a _single-use_ link to a person's email address.  The recipient is invited to create a Loomio user account and join your group.
+Click **Invite** on the **Members** tab to send an email containing a single-use invitation link. The recipient can create a Loomio user account and join your group.
 
 If the recipient already has a Loomio user account they can still accept the invitation to join your group with their existing account.
 
@@ -41,15 +41,31 @@ Click on the "copy" icon to copy the link to your clipboard, then paste in your 
 
 If you want to stop people from joining via this link, click "Reset this link". The existing link will no longer work and a new link will be created.
 
-### Allow people to "Ask to join group"
+## Request to join group
 
-If your group's privacy is **Closed** then you can share your group URL, i.e., `https://www.loomio.com/group-name`. When people arrive at your group page, they will see the group title and description, and a **Join group** button where they can request membership.
+People can request to join an Open or Closed group. Share the group URL, such as `https://www.loomio.com/group-name`. When people arrive at the group page, they can see the public group information and select **Join group** to answer the joining prompt and send their request.
 
 ![](group_join_group.png)
 
-You can set your privacy level in your [Group Settings](/en/user_manual/groups/settings/#privacy).
+The joining prompt gives people a chance to introduce themselves and explain why they want to join.
 
-Group administrators review join requests from the **Membership requests** section of the Members tab. When approving a request, you can add an optional comment. From the decline dialog, select **Ignore** to close the request without notifying the applicant, or give a reason and select **Decline** to send the reason by email and notification. A declined or ignored applicant can submit a new request with a corrected message.
+![](group_request_to_join.png)
+
+Under [Group privacy](/en/user_manual/groups/settings/privacy#how-people-join), choose **Request approval** to require requests to be reviewed. You can also customize the joining prompt in the group settings.
+
+### Review membership requests
+
+Group administrators and members with permission to add members review requests from the **Membership requests** section of the **Members** tab. A reviewer can:
+
+![](group_review_request_to_join.png)
+
+- **Approve** the request to add the applicant as a member and notify them.
+- **Ignore** the request to close it without notifying the applicant or allowing another request.
+- **Decline** the request with a message explaining the decision. Loomio sends the message to the applicant by email and notification, and they can submit a new request.
+
+Select the decline button to write a message or ignore the request.
+
+![](group_decline_request_to_join.png)
 
 ## Managing invitations
 
@@ -66,13 +82,6 @@ Follow up on people who don't make it into the group and give them a nudge. If s
 Click on the three dots (**⋮**) next to the person you want to resend the invitation to, and then choose **Resend invitation**.
 
 ![](group_invite_resend_invitation.png)
-
-### Encourage people to participate
-
-If people join but don't begin to participate right away, you might like to welcome them to the group with an @mention, for example:
-
-> “Welcome to the group @Jane :) It's great to have you here! Would you saying a little bit about your work in this space?”
-
 
 ### Cancelling invitations
 If you entered the wrong email address, or have changed your mind about inviting someone, you can cancel an invitation from the Members tab on your Group page. Select **Cancel Invitation** from the drop down menu to the right of the member invitation (**⋮**).

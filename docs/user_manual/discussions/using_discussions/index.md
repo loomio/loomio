@@ -122,7 +122,7 @@ To remove someone, open the three-dot menu (**⋯**) beside their name and selec
 
 The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
 
-The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/#permissions).
+The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 

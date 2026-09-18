@@ -810,7 +810,7 @@ he:
       new_discussion: "%{actor} פתח דיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -849,7 +849,7 @@ he:
       new_comment: "%{actor} הגיב בדיון"
       outcome_updated: "%{actor} עדכן את התוצאה"
       thread_locked: "%{actor} נעל את השרשור"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -894,7 +894,7 @@ he:
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
-      membership_request_declined: 'בקשתך להצטרף ל- %{title} נדחתה'
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1229,6 +1229,8 @@ he:
     membership_requested: התבקשה חברות
     messages:
       joined_group: את/ה עכשיו חבר/ה ב%{group}
+    membership_request_declined: 'בקשתך להצטרף נדחתה: %{reason}'
+    request_membership_again: בקשת הצטרפות נוספת
   membership_request_form:
     heading: בקשת הצטרפות לקבוצה
     name_label: שם

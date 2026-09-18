@@ -810,7 +810,7 @@ ro:
       new_discussion: "%{actor} a început o discuție: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
       thread_locked: "%{actor} a blocat firul de discuție: %{title}"
-      membership_request_declined: 'Cererea ta de a te alătura la %{title} a fost respinsă'
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       group_announced: "%{actor} te-a invitat într-un grup"
@@ -849,7 +849,7 @@ ro:
       new_comment: "%{actor} a comentat într-o discuție"
       outcome_updated: "%{actor} a actualizat rezultatul"
       thread_locked: "%{actor} a blocat firul de discuție"
-      membership_request_declined: 'Cererea ta de a te alătura la %{title} a fost respinsă'
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
@@ -894,7 +894,7 @@ ro:
       discussion_closed: "%{actor} a închis discuția: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
       thread_locked: "%{actor} a blocat firul de discuție: %{title}"
-      membership_request_declined: 'Cererea ta de a te alătura la %{title} a fost respinsă'
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
   discussion_fork_actions:
     move: Mișcare
     moved: Comentarii în mișcare, acest lucru ar putea dura un moment
@@ -1225,6 +1225,8 @@ ro:
     membership_requested: Cerere de intrare in grup primita.
     messages:
       joined_group: Acum sunteți membru al %{group}
+    membership_request_declined: 'Cererea ta de înscriere a fost respinsă: %{reason}'
+    request_membership_again: Cere să te alături din nou
   membership_request_form:
     heading: Cere sa fi inclus in grup
     name_label: Nume

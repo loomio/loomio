@@ -810,7 +810,7 @@ fi:
       new_discussion: "%{actor} aloitti keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
       thread_locked: "%{actor} lukitsi ketjun: %{title}"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
+      membership_request_declined: Liittymispyyntösi ryhmään %{title} hylättiin
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       group_announced: "%{actor} kutsui sinut ryhmään"
@@ -849,7 +849,7 @@ fi:
       new_comment: "%{actor} kommentoi keskustelussa"
       outcome_updated: "%{actor} päivitti lopputuloksen"
       thread_locked: "%{actor} lukitsi ketjun"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
+      membership_request_declined: Liittymispyyntösi ryhmään %{title} hylättiin
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -894,7 +894,7 @@ fi:
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
       thread_locked: "%{actor} lukitsi ketjun: %{title}"
-      membership_request_declined: 'Liittymispyyntösi ryhmään %{title} hylättiin'
+      membership_request_declined: Liittymispyyntösi ryhmään %{title} hylättiin
   discussion_fork_actions:
     move: Liikkua
     moved: Siirretään kommentteja, tämä voi kestää hetken
@@ -1225,6 +1225,8 @@ fi:
     membership_requested: Jäsenyyttä pyydetty
     messages:
       joined_group: Olet nyt ryhmän %{group} jäsen
+    membership_request_declined: 'Liittymispyyntösi hylättiin: %{reason}'
+    request_membership_again: Pyydä liittymistä uudelleen
   membership_request_form:
     heading: Pyydä liittymistä ryhmään
     name_label: Nimi

@@ -1,15 +1,15 @@
 class Api::V1::MembershipRequestsController < Api::V1::RestfulController
-
-  before_action :authorize, only: [:pending, :previous]
+  before_action :require_current_user, only: :mine
+  before_action :authorize, only: [ :pending, :previous ]
 
   def pending
     @membership_requests = page_collection(@group.membership_requests.pending)
     respond_with_collection
   end
 
-  def my_pending
+  def mine
     load_and_authorize :group
-    @membership_requests = @group.membership_requests.pending.where(requestor_id: current_user.id)
+    @membership_requests = @group.membership_requests.where(requestor_id: current_user.id).order(created_at: :desc, id: :desc).limit(1)
     respond_with_collection
   end
 

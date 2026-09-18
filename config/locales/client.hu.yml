@@ -812,7 +812,7 @@ hu:
       new_discussion: "%{actor} beszélgetést indított: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
-      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -851,7 +851,7 @@ hu:
       new_comment: "%{actor} hozzászólást tett egy beszélgetésben"
       outcome_updated: "%{actor} frissítette az eredményt"
       thread_locked: "%{actor} zárolta a témát"
-      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -896,7 +896,7 @@ hu:
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
-      membership_request_declined: 'A(z) %{title} közösséghez való csatlakozási kérelmét elutasították'
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -1229,6 +1229,8 @@ hu:
     membership_requested: Felvétel kérve
     messages:
       joined_group: Most a(z) %{group} tagja vagy
+    membership_request_declined: 'Csatlakozási kérelmét elutasították: %{reason}'
+    request_membership_again: Kérj újra csatlakozást
   membership_request_form:
     heading: Kérj belépőt a csoportba
     name_label: Név

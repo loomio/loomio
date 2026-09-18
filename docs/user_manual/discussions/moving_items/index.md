@@ -2,7 +2,7 @@
 
 Move selected items when a conversation belongs in another thread, when one thread has split into separate topics, or when you want to combine related discussions. There is no separate **Merge discussions** command.
 
-The option is available to group admins and to members when **Members can manage discussions and comments** is enabled in [Group settings](/en/user_manual/groups/settings/#permissions).
+The option is available to group admins and to members when **Members can manage discussions and comments** is enabled in [Group permissions](/en/user_manual/groups/settings/permissions).
 
 Open the three-dot menu (**⋯**) on an item and select **Move item**.
 

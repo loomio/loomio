@@ -810,7 +810,7 @@ el:
       new_discussion: 'Ο/Η %{actor} ξεκίνησε μια συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
       thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
-      membership_request_declined: 'Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε'
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
@@ -849,7 +849,7 @@ el:
       new_comment: Ο %{actor} σχολίασε σε μια συζήτηση
       outcome_updated: Ο %{actor} ενημέρωσε το αποτέλεσμα
       thread_locked: Ο %{actor} κλείδωσε το νήμα
-      membership_request_declined: 'Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε'
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -894,7 +894,7 @@ el:
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
       thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
-      membership_request_declined: 'Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε'
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
   discussion_fork_actions:
     move: Κίνηση
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
@@ -1225,6 +1225,8 @@ el:
     membership_requested: Αίτηση μέλους έχει ζητηθεί.
     messages:
       joined_group: Τώρα είστε μέλος της ομάδας %{group}
+    membership_request_declined: 'Το αίτημά σας για συμμετοχή απορρίφθηκε: %{reason}'
+    request_membership_again: Αίτημα για συμμετοχή ξανά
   membership_request_form:
     heading: Δηλώστε συμμετοχή στην ομάδα
     name_label: Όνομα

@@ -817,7 +817,7 @@ be:
       user_mentioned: "%{actor} згадаў вас у: %{title}"
       group_mentioned: "%{actor} згадаў групу ў: %{title}"
       user_reminded: "%{actor} нагадвае вам прагаласаваць за: %{title}"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
+      membership_request_declined: Ваш запыт на далучэнне да %{title} быў адхілены
     with_title:
       unknown_sender: Калі ласка, праглядзіце ліст ад невядомага адпраўніка
       comment_replied_to: "%{actor} адказаў вам у: %{title}"
@@ -858,7 +858,7 @@ be:
       user_mentioned: "%{actor} згадаў вас у: %{title}"
       group_mentioned: "%{actor} згадаў групу ў: %{title}"
       user_reminded: "%{actor} нагадвае вам прагаласаваць за: %{title}"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
+      membership_request_declined: Ваш запыт на далучэнне да %{title} быў адхілены
     without_title:
       unknown_sender: Калі ласка, праглядзіце ліст ад невядомага адпраўніка
       discussion_announced: "%{actor} запрасіў вас да дыскусіі"
@@ -897,7 +897,7 @@ be:
       user_mentioned: "%{actor} згадаў вас"
       group_mentioned: "%{actor} згадаў групу"
       user_reminded: "%{actor} нагадвае вам прагаласаваць"
-      membership_request_declined: 'Ваш запыт на далучэнне да %{title} быў адхілены'
+      membership_request_declined: Ваш запыт на далучэнне да %{title} быў адхілены
     hints:
       poll_closing_soon: Зараз самы час прагаласаваць, змяніць сваё меркаванне або заахвоціць іншых да ўдзелу.
       poll_closing_soon_author: Магчыма, вы захочаце нагадаць людзям прагаласаваць або падоўжыць тэрмін.
@@ -1285,6 +1285,8 @@ be:
     membership_requested: Запыт на сяброўства
     messages:
       joined_group: Цяпер вы ўдзельнік %{group}
+    membership_request_declined: 'Ваш запыт на далучэнне быў адхілены: %{reason}'
+    request_membership_again: Запытаць дазвол на далучэнне зноў
   membership_request_form:
     aria_label: Форма заяўкі на членства
     heading: Запытаць далучэнне да групы

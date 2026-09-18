@@ -216,15 +216,11 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :group_follows, only: [:create] do
-        collection do
-          delete :destroy
-        end
-      end
+      resources :group_follows, only: [:create, :destroy]
 
       resources :membership_requests, only: [:create] do
         collection do
-          get :my_pending
+          get :mine
           get :pending
           get :previous
         end
