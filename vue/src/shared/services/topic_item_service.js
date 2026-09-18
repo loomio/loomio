@@ -20,7 +20,7 @@ export default new class TopicItemService {
           return topic &&
           !topic_item.model().discardedAt &&
           !topic.lockedAt &&
-          AbilityService.canMoveTopic(topic);
+          AbilityService.canMoveTopicItems(topic);
         }
       },
 
