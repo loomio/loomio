@@ -96,7 +96,7 @@ success messages).
 - When drafting a release, update `lib/version.rb` to the same version number without the `v` prefix.
 - Start with a paragraph describing any significant changes. Follow it with one-line summary bullets prefixed with `**Fix:**` or `**New:**`, then add detailed sections describing each change.
 - Summarize changes that affect users, permissions, security, performance, deployment, APIs, or operator workflows. Omit routine dependency updates and purely internal refactors unless they require action or materially affect reliability.
-- Include required migration and upgrade steps, exact commands, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
+- Link to the maintained [Upgrading guide](deploy/UPGRADING.md) for standard upgrade instructions. Include exact commands in release notes only when a release requires exceptional or mandatory steps beyond that guide. Still document required migrations, permission effects, compatibility notes, and links to any related security advisory or detailed feature page.
 - Verify release-note claims against merged code, tests, pull requests, and user-manual changelog entries. Resolve placeholder links before publishing the release.
 - Draft release notes locally and stop for the user to edit and explicitly approve them as a human check before committing the release notes, creating or pushing a tag, publishing a GitHub release, or deploying the release.
 
