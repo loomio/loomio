@@ -154,7 +154,7 @@ module.exports = {
     page.expectText('.date-time-picker', 'America/Los_Angeles')
     test.clearValue('.date-time-picker__time-field input')
     page.fillIn('.date-time-picker__time-field input', '07:30')
-    page.expectValue('.date-time-picker__time-field input', '07:30')
+    page.expectText('.date-time-picker', '7:30 AM')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectNoElement('.poll-common-form__submit', 8000)
