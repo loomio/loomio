@@ -112,6 +112,10 @@ export default new class AbilityService {
     ))
   }
 
+  canMoveTopicItems(topic) {
+    return topic.group().isEnabled() && topic.adminsInclude(Session.user());
+  }
+
   canChangeGroupVolume(group) {
     return group.membersInclude(Session.user());
   }
