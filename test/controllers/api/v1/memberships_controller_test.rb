@@ -422,6 +422,19 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal true, membership.delegate
   end
 
+  test 'make_delegate records the change and actor in PaperTrail' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    assert_difference -> { membership.versions.count }, 1 do
+      post :make_delegate, params: { id: membership.id }
+    end
+
+    version = membership.versions.last
+    assert_equal [false, true], version.changeset['delegate']
+    assert_equal @admin.id, version.whodunnit
+  end
+
   test 'make_delegate only works for group admins' do
     delegate_user = User.create!(
       name: 'Delegate User',
@@ -461,6 +474,20 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
     membership.reload
     assert_equal false, membership.delegate
+  end
+
+  test 'remove_delegate records the change and actor in PaperTrail' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+    membership.update!(delegate: true)
+
+    assert_difference -> { membership.versions.count }, 1 do
+      post :remove_delegate, params: { id: membership.id }
+    end
+
+    version = membership.versions.last
+    assert_equal [true, false], version.changeset['delegate']
+    assert_equal @admin.id, version.whodunnit
   end
 
   test 'remove_delegate only works for group admins' do
