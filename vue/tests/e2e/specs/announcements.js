@@ -28,6 +28,18 @@ module.exports = {
     page.expectNoText('.recipients-autocomplete', 'Jennifer Grey')
   },
 
+  'invite_parent_group_members_to_a_subgroup_without_expanding_the_audience': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_subgroup_invitation_audiences')
+    page.click('.group-page-members-tab')
+    page.click('.membership-card__invite', 1000)
+    page.click('.recipients-autocomplete input[type="text"]')
+    page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Point Break')).click()")
+    page.click('.announcement-form__submit')
+    page.expectFlash('1 notifications sent')
+    page.expectText('.members-panel', 'Max Von Sydow')
+  },
+
   // discussion form
   'new_discussion': (test) => {
     page = pageHelper(test)

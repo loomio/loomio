@@ -72,6 +72,7 @@ export default
       Records.remote.post('announcements', {
         group_id: this.group.id,
         invited_group_ids: this.groupIds,
+        recipient_audience: this.group.recipientAudience,
         recipient_emails: this.recipients.filter(r => r.type === 'email').map(r => r.id),
         recipient_user_ids: this.recipients.filter(r => r.type === 'user').map(r => r.id),
         recipient_message: this.message

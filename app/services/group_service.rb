@@ -20,6 +20,16 @@ module GroupService
   end
 
   def self.invite(group:, params:, actor:)
+    # Snapshot a selected related-group audience while applying the same target-member
+    # exclusion shown in the invitation preview.
+    audience_user_ids = NotificationAudienceService.resolve(
+      model: group,
+      kind: params[:recipient_audience],
+      actor: actor,
+      exclude_members: true
+    ).pluck(:id)
+    recipient_user_ids = Array(params[:recipient_user_ids]).map(&:to_i) | audience_user_ids
+
     group_ids = if params[:invited_group_ids]
       Array(params[:invited_group_ids]).map(&:to_i)
     else
@@ -34,7 +44,7 @@ module GroupService
       parent_group: parent_group,
       group_ids: group_ids,
       emails: Array(params[:recipient_emails]),
-      user_ids: Array(params[:recipient_user_ids]),
+      user_ids: recipient_user_ids,
       actor: actor
     )
 
@@ -44,7 +54,7 @@ module GroupService
         actor: actor,
         model: group,
         emails: params[:recipient_emails],
-        user_ids: params[:recipient_user_ids]
+        user_ids: recipient_user_ids
       )
 
       Group.where(id: group_ids).each do |g|
@@ -85,6 +95,7 @@ module GroupService
         subject: group,
         actor: actor,
         recipient_user_ids: users.pluck(:id),
+        recipient_audience: params[:recipient_audience],
         recipient_message: params[:recipient_message]
       )
     end
