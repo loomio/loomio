@@ -1244,4 +1244,41 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       notifications: { kind: "membership_created" }
     ).count
   end
+
+  test "group create invites a parent group audience to a subgroup" do
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
+    parent = Group.create!(
+      name: "Test Parent #{hex}",
+      handle: "test-parent-#{hex}-group-handle",
+      subscription: Subscription.create!(max_members: nil)
+    )
+    subgroup = Group.create!(name: "Test Sub #{hex}", parent: parent, handle: "#{parent.handle}-subgroup")
+
+    parent.add_admin!(@admin)
+    parent.add_member!(member, inviter: @admin)
+    subgroup.add_admin!(@admin)
+
+    post :create, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{parent.id}"
+    }
+
+    assert_response :success
+    assert_includes subgroup.reload.members, member
+    assert_equal [member.id], JSON.parse(response.body).fetch("memberships").pluck("user_id")
+  end
+
+  test "group create cannot invite an audience from another organization" do
+    subgroup = groups(:subgroup)
+
+    assert_no_difference -> { subgroup.memberships.count } do
+      post :create, params: {
+        group_id: subgroup.id,
+        recipient_audience: "group-#{groups(:alien_group).id}"
+      }
+    end
+
+    assert_response :not_found
+  end
 end
