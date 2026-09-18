@@ -8,14 +8,14 @@ On the group page, open the actions menu and select **Edit group settings**.
 
 The settings form is divided into three areas:
 
-<a id="group-profile"></a>
+## Group profile
 
-- [Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo.
+[Group profile](/en/user_manual/groups/settings/profile) covers the group name, handle, description, cover image, and logo.
 
-<a id="privacy"></a><a id="joining-the-group"></a>
+## Group privacy
 
-- [Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group.
+[Group privacy](/en/user_manual/groups/settings/privacy) covers who can find the group, who can read its content, how people join, directory listing, and following an Open group.
 
-<a id="permissions"></a>
+## Group permissions
 
-- [Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take.
+[Group permissions](/en/user_manual/groups/settings/permissions) controls which actions members, non-members, and administrators can take.
