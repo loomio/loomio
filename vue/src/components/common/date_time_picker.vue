@@ -1,6 +1,4 @@
 <script lang="js">
-import Records     from '@/shared/services/records';
-import FlashService   from '@/shared/services/flash';
 import AppConfig from '@/shared/services/app_config';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
@@ -36,6 +34,17 @@ export default {
   },
 
   methods: {
+    parseTime(value) {
+      return parse(value || '', 'HH:mm', new Date());
+    },
+
+    validTime(value) {
+      return isValid(this.parseTime(value)) || I18n.global.t(
+        'poll_meeting_form.use_24_hour_format',
+        {time: format(new Date(), 'HH:mm')}
+      );
+    },
+
     updateNewValue() {
       const val = parse(`${format(this.dateVal, "yyyy-MM-dd")} ${this.timeStr}`, "yyyy-MM-dd HH:mm", new Date);
       if (!isValid(val)) { return; }
@@ -52,13 +61,8 @@ export default {
   computed: {
     twelvehour() { return timeFormat() !== 'HH:mm'; },
     timeHint() {
-      try {
-        const d = parse(this.timeStr, 'HH:mm', new Date);
-        return format(d, timeFormat());
-      } catch (error) {
-        FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
-        return I18n.global.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
-      }
+      const time = this.parseTime(this.timeStr);
+      return isValid(time) ? format(time, timeFormat()) : null;
     }
   }
 };
@@ -78,5 +82,6 @@ export default {
     :persistent-hint="twelvehour"
     v-model="timeStr"
     :items="times"
+    :rules="[validTime]"
     :prepend-inner-icon="mdiClockOutline")
 </template>

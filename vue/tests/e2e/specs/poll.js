@@ -152,6 +152,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.expectText('.date-time-picker', 'America/Los_Angeles')
+    page.fillIn('.date-time-picker__time-field input', '07:30')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectNoElement('.poll-common-form__submit', 8000)
@@ -163,7 +164,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
-    page.expectText('.poll-meeting-time', '12:00')
+    page.expectText('.poll-meeting-time', '7:30AM')
 
     page.click('.poll-meeting-vote-form--box', 500)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
