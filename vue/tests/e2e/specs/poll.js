@@ -145,12 +145,13 @@ module.exports = {
   'can_start_a_time_poll_in_a_group': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_discussion')
+    page.loadPath('polls/test_discussion?time_zone=America%2FLos_Angeles')
     page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
     page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting')
     page.clickAndWait('.decision-tools-card__poll-type--meeting', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.expectText('.date-time-picker', 'America/Los_Angeles')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectNoElement('.poll-common-form__submit', 8000)
@@ -162,6 +163,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
+    page.expectText('.poll-meeting-time', '12:00')
 
     page.click('.poll-meeting-vote-form--box', 500)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')

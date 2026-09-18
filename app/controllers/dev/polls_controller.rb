@@ -106,8 +106,10 @@ class Dev::PollsController < Dev::NightwatchController
 
   def test_discussion
     group = create_group_with_members
-    sign_in group.admins.first
-    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    admin = group.admins.first
+    admin.update!(time_zone: params[:time_zone], autodetect_time_zone: false) if params[:time_zone]
+    sign_in admin
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: admin)
     redirect_to discussion_url(discussion)
   end
 

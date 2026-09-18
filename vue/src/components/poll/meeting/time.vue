@@ -1,6 +1,7 @@
 <script lang="js">
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
+import Session from '@/shared/services/session';
 
 export default {
   props: {
@@ -8,7 +9,7 @@ export default {
     zone: String
   },
   computed: {
-    time() { return exact(parseISO(this.name), this.zone); }
+    time() { return exact(parseISO(this.name), this.zone || Session.user().timeZone); }
   }
 };
 </script>
