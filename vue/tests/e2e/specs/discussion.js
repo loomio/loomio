@@ -486,9 +486,8 @@ module.exports = {
     page.click('.v-autocomplete__content .v-list-item__content')
     page.pause(500)
     page.click('.modal-launcher .v-card-actions .v-btn:last-child')
-    page.pause(3000)
 
-    page.expectText('.context-panel__heading', 'Waking Up in Reno')
+    page.expectText('.context-panel__heading', 'Waking Up in Reno', 15000)
     page.expectText('.topic-list', 'Topical proposal to move')
     page.expectText('.topic-list', 'A comment on the topical poll')
     page.refresh()
