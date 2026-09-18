@@ -24,8 +24,8 @@ const isEmptyUser = computed(() => isEmpty(user.value));
 function init() {
   user.value = (Records.users.find(route.params.key) || Records.users.find({username: route.params.key}))[0];
   if (user.value) {
-    Records.remote.get('profile/contactable', {user_id: user.value.id}).then(() => {
-      canContactUser.value = true;
+    Records.remote.get('profile/contactable', {user_id: user.value.id}).then(data => {
+      canContactUser.value = data.contactable;
     });
     loadGroupsFor(user.value);
     watchRecords({

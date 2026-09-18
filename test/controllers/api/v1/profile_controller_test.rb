@@ -159,13 +159,28 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @group.add_member!(@alien) unless @group.members.include?(@alien)
     get :contactable, params: { user_id: @alien.id }
     assert_response :success
+    assert_equal true, JSON.parse(response.body).fetch("contactable")
   end
 
-  test "contactable denies access for unrelated users" do
+  test "contactable reports false for unrelated users" do
     sign_in @user
     other_user = User.create!(name: "Other User", username: "otheruser1234", email: "other@example.com")
     get :contactable, params: { user_id: other_user.id }
-    assert_response :forbidden
+    assert_response :success
+    assert_equal false, JSON.parse(response.body).fetch("contactable")
+  end
+
+  test "contactable requires a signed in user" do
+    get :contactable, params: { user_id: @alien.id }
+    assert_response :unauthorized
+  end
+
+  test "contactable does not grant instance administrators access to unrelated users" do
+    sign_in users(:admin)
+    other_user = User.create!(name: "Unrelated User", username: "unrelateduser1234", email: "unrelated@example.com")
+    get :contactable, params: { user_id: other_user.id }
+    assert_response :success
+    assert_equal false, JSON.parse(response.body).fetch("contactable")
   end
 
   test "updating password signs out other sessions" do

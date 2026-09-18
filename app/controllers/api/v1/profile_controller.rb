@@ -150,8 +150,9 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def contactable
-    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
-    success_response
+    render json: {
+      contactable: current_user.can?(:contact, User.find(params[:user_id]))
+    }
   end
 
   private
