@@ -101,8 +101,8 @@ class TranslationServiceTest < ActiveSupport::TestCase
     end
 
     assert_equal [
-      { key: 'TranslationCharactersMinute', id: 'application', max: 10_000, inc: 4, per: 'minute' },
-      { key: 'TranslationCharactersDay', id: 'application', max: 50_000, inc: 4, per: 'day' }
+      { key: 'TranslationCharactersMinute', id: 'application', max: 100_000, inc: 4, per: 'minute' },
+      { key: 'TranslationCharactersDay', id: 'application', max: 1_000_000, inc: 4, per: 'day' }
     ], calls
   end
 

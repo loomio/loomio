@@ -36,7 +36,15 @@ class DemoService
     DemoGroupTemplateService.route_notifications!(result.notifications) if claimed_result
 
     group = result.group
-    TranslationService.translate_group_content!(group, actor.locale) if actor.locale != "en"
+    if actor.locale != "en"
+      begin
+        TranslationService.translate_group_content!(group, actor.locale)
+      rescue TranslationService::LimitReached => error
+        # Translation is an enhancement to the demo. The claimed group must
+        # still be returned when the shared Google Translate quota is spent.
+        Rails.logger.warn("Demo translation skipped: #{error.message}")
+      end
+    end
 
     Sentry.metrics.count("demo.start")
     EventBus.broadcast("demo_started", actor)

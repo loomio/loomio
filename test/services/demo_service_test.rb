@@ -29,6 +29,21 @@ class DemoServiceTest < ActiveSupport::TestCase
     assert_equal({ template_key: "mobile", user: actor }, captured)
   end
 
+  test "taking a demo succeeds in English when translation capacity is exhausted" do
+    actor = users(:user)
+    actor.selected_locale = "es"
+    group = groups(:group)
+    provision = lambda do |**|
+      DemoGroupTemplateService::Result.new(group: group, discussions: {}, polls: {}, notifications: [])
+    end
+
+    DemoGroupTemplateService.stub(:create!, provision) do
+      TranslationService.stub(:translate_group_content!, ->(*) { raise TranslationService::LimitReached, "limit reached" }) do
+        assert_equal group, DemoService.take_demo(actor)
+      end
+    end
+  end
+
   test "taking a queued demo claims its prepared content for the user" do
     actor = users(:user)
     ENV["FEATURES_DEMO_GROUPS"] = "enabled"

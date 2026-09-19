@@ -3,8 +3,8 @@ require "google/cloud/translate"
 class TranslationService
   extend LocalesHelper
 
-  CHARACTERS_MINUTE_MAX = 10_000
-  CHARACTERS_DAY_MAX = 50_000
+  CHARACTERS_MINUTE_MAX = 100_000
+  CHARACTERS_DAY_MAX = 1_000_000
 
   class LimitReached < StandardError
   end
