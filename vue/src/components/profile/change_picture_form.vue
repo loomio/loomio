@@ -26,7 +26,10 @@ function selectFile() {
   fileInput.value.click();
 }
 
-function uploadFile() {
+function uploadFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
   uploading.value = true;
   Records.users.remote.onUploadSuccess = response => {
     Records.importJSON(response);
@@ -34,7 +37,7 @@ function uploadFile() {
     EventBus.$emit('closeModal');
     uploading.value = false;
   };
-  Records.users.remote.upload('upload_avatar', fileInput.value.files[0], {}, args => { progress.value = (args.loaded / args.total) * 100; });
+  Records.users.remote.upload('upload_avatar', file, {}, args => { progress.value = (args.loaded / args.total) * 100; });
 }
 
 function useProviderPicture() {
