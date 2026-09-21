@@ -161,6 +161,87 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil u.legal_accepted_at
   end
 
+  test "signup via discussion invitation verifies and redeems the invited account" do
+    invited_user = User.create!(email: "discussion-guest@example.com", email_verified: false)
+    reader = TopicReader.create!(
+      topic: topics(:discussion_topic),
+      user: invited_user,
+      guest: true,
+      inviter: users(:admin)
+    )
+
+    post :create, params: {
+      topic_reader_token: reader.token,
+      user: { email: invited_user.email }
+    }
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body)['signed_in']
+    assert invited_user.reload.email_verified?
+    assert_not_nil reader.reload.accepted_at
+  end
+
+  test "discussion invitation does not verify a different signup email" do
+    invited_user = User.create!(email: "discussion-invite@example.com", email_verified: false)
+    reader = TopicReader.create!(
+      topic: topics(:discussion_topic),
+      user: invited_user,
+      guest: true,
+      inviter: users(:admin)
+    )
+
+    post :create, params: {
+      topic_reader_token: reader.token,
+      user: { email: "different-discussion-user@example.com" }
+    }
+
+    assert_response :success
+    assert_equal false, JSON.parse(response.body)['signed_in']
+    assert_not User.find_by!(email: "different-discussion-user@example.com").email_verified?
+    assert_nil reader.reload.accepted_at
+    assert_equal invited_user, reader.user
+  end
+
+  test "signup via vote invitation verifies the invited account and retains its stance" do
+    invited_user = User.create!(email: "vote-guest@example.com", email_verified: false)
+    stance = Stance.create!(
+      poll: invitation_poll,
+      participant: invited_user,
+      inviter: users(:admin)
+    )
+
+    post :create, params: {
+      stance_token: stance.token,
+      user: { email: invited_user.email }
+    }
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body)['signed_in']
+    assert invited_user.reload.email_verified?
+    assert_equal invited_user, stance.reload.participant
+    assert_not Stance.redeemable_by(users(:user)).exists?(stance.id)
+  end
+
+  test "vote invitation does not verify a different signup email" do
+    invited_user = User.create!(email: "vote-invite@example.com", email_verified: false)
+    stance = Stance.create!(
+      poll: invitation_poll,
+      participant: invited_user,
+      inviter: users(:admin)
+    )
+
+    post :create, params: {
+      stance_token: stance.token,
+      user: { email: "different-voter@example.com" }
+    }
+
+    assert_response :success
+    assert_equal false, JSON.parse(response.body)['signed_in']
+    assert_not User.find_by!(email: "different-voter@example.com").email_verified?
+    assert_nil stance.reload.accepted_at
+    assert_equal invited_user, stance.participant
+  end
+
   test "signup via membership of another user" do
     other_user = User.create(email: "other@example.com", email_verified: true)
     pending_membership = Membership.create!(
@@ -241,5 +322,20 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     user = User.find_by!(email: "jon@snow.com")
     assert_nil user.name
     assert_nil user.legal_accepted_at
+  end
+
+  private
+
+  def invitation_poll
+    @invitation_poll ||= PollService.create(
+      params: {
+        title: "Invitation poll",
+        poll_type: "proposal",
+        closing_at: 3.days.from_now,
+        poll_option_names: ["Agree", "Disagree"],
+        topic_id: topics(:discussion_topic).id
+      },
+      actor: users(:admin)
+    )
   end
 end

@@ -231,6 +231,31 @@ module Dev::Scenarios::Discussion
     last_email
   end
 
+  def setup_discussion_mailer_member_invitation_signed_out
+    member = User.create!(
+      email: "discussion-member@example.com",
+      name: "Discussion Member",
+      password: "password",
+      email_verified: true,
+      legal_accepted: true
+    )
+    group = Group.create!(name: "Member Invitation Group", creator: patrick)
+    group.add_admin! patrick
+    group.add_member! member
+    discussion = DiscussionService.create(
+      params: { group_id: group.id, title: "Member invitation discussion", description: "Private member discussion" },
+      actor: patrick
+    )
+    TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: [member.id], emails: nil, audience: nil)
+    NotificationService.create!(
+      kind: "discussion_announced",
+      subject: discussion.created_topic_item,
+      actor: patrick,
+      recipient_user_ids: [member.id]
+    )
+    last_email
+  end
+
   def setup_discussion_mailer_invitation_created_email
     group = Group.create!(name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
