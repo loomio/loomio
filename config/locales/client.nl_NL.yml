@@ -3166,3 +3166,6 @@ nl_NL:
     add_passkey: Passkey toevoegen
     set_password: Stel een wachtwoord in
     not_now: Nu niet
+  account_completion:
+    complete_your_account: Voltooi je account
+    continue: Doorgaan

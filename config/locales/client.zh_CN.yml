@@ -3058,3 +3058,6 @@ zh_CN:
     add_passkey: 添加密码
     set_password: 设置密码
     not_now: 现在不要
+  account_completion:
+    complete_your_account: 完善您的账户
+    continue: 继续

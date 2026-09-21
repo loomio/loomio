@@ -3183,3 +3183,6 @@ fr:
     add_passkey: Ajouter un code d'accès
     set_password: Définir un mot de passe
     not_now: Pas maintenant
+  account_completion:
+    complete_your_account: Complétez votre compte
+    continue: Continuer

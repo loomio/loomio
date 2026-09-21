@@ -3146,3 +3146,6 @@ hu:
     add_passkey: Hozzáadás egy jelszót
     set_password: Jelszó beállítása
     not_now: Most nem
+  account_completion:
+    complete_your_account: Fiókod kitöltése
+    continue: Folytatás

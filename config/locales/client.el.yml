@@ -3139,3 +3139,6 @@ el:
     add_passkey: Προσθήκη κλειδιού πρόσβασης
     set_password: Ορισμός κωδικού πρόσβασης
     not_now: Όχι τώρα
+  account_completion:
+    complete_your_account: Ολοκληρώστε τον λογαριασμό σας
+    continue: Συνεχίζω

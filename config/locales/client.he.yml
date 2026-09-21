@@ -3158,3 +3158,6 @@ he:
     add_passkey: הוסף סיסמה
     set_password: הגדר סיסמה
     not_now: לא עכשיו
+  account_completion:
+    complete_your_account: השלם את חשבונך
+    continue: לְהַמשִׁיך

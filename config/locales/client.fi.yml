@@ -3139,3 +3139,6 @@ fi:
     add_passkey: Lisää salasana
     set_password: Aseta salasana
     not_now: Ei nyt
+  account_completion:
+    complete_your_account: Viimeistele tilisi
+    continue: Jatkaa

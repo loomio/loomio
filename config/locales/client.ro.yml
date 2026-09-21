@@ -3139,3 +3139,6 @@ ro:
     add_passkey: Adăugați o cheie de acces
     set_password: Setați o parolă
     not_now: Nu acum
+  account_completion:
+    complete_your_account: Completează-ți contul
+    continue: Continua

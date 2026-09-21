@@ -3167,3 +3167,6 @@ it:
     add_passkey: Aggiungi una password
     set_password: Imposta una password
     not_now: Non adesso
+  account_completion:
+    complete_your_account: Completa il tuo account
+    continue: Continuare

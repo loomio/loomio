@@ -3174,3 +3174,6 @@ de:
     add_passkey: Fügen Sie einen Passkey hinzu
     set_password: Legen Sie ein Passwort fest
     not_now: Nicht jetzt.
+  account_completion:
+    complete_your_account: Vervollständigen Sie Ihr Konto
+    continue: Weitermachen

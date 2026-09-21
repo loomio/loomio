@@ -3139,3 +3139,6 @@ da:
     add_passkey: Tilføj en adgangsnøgle
     set_password: Indstil en adgangskode
     not_now: Ikke nu
+  account_completion:
+    complete_your_account: Færdiggør din konto
+    continue: Fortsætte

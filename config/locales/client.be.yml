@@ -3044,3 +3044,6 @@ be:
     add_passkey: Дадаць ключ доступу
     set_password: Устанавіць пароль
     not_now: Не зараз
+  account_completion:
+    complete_your_account: Запоўніце свой уліковы запіс
+    continue: Працягнуць

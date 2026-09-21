@@ -3139,3 +3139,6 @@ ru:
     add_passkey: Добавить пароль
     set_password: Установить пароль
     not_now: Не сейчас
+  account_completion:
+    complete_your_account: Завершите создание своей учетной записи
+    continue: Продолжать

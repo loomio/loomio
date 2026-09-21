@@ -3139,3 +3139,6 @@ hr:
     add_passkey: Dodajte pristupni ključ
     set_password: Postavite lozinku
     not_now: Ne sada
+  account_completion:
+    complete_your_account: Dovršite svoj račun
+    continue: Nastaviti

@@ -3139,3 +3139,6 @@ sl:
     add_passkey: Dodaj geslo
     set_password: Nastavite geslo
     not_now: Ne zdaj
+  account_completion:
+    complete_your_account: Dokončajte svoj račun
+    continue: Nadaljuj

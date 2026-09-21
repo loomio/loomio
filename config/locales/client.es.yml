@@ -3175,3 +3175,6 @@ es:
     add_passkey: Agregar una clave de acceso
     set_password: Establecer una contraseña
     not_now: Ahora no
+  account_completion:
+    complete_your_account: Completa tu cuenta
+    continue: Continuar

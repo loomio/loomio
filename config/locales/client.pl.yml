@@ -3166,3 +3166,6 @@ pl:
     add_passkey: Dodaj klucz dostępu
     set_password: Ustaw hasło
     not_now: Nie teraz
+  account_completion:
+    complete_your_account: Uzupełnij swoje konto
+    continue: Kontynuować

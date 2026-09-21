@@ -3139,3 +3139,6 @@ tr:
     add_passkey: Parola ekle
     set_password: Bir parola belirleyin
     not_now: Şimdi değil
+  account_completion:
+    complete_your_account: Hesabınızı tamamlayın
+    continue: Devam etmek

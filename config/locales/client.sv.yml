@@ -3139,3 +3139,6 @@ sv:
     add_passkey: Lägg till en lösennyckel
     set_password: Ange ett lösenord
     not_now: Inte nu
+  account_completion:
+    complete_your_account: Slutför ditt konto
+    continue: Fortsätta

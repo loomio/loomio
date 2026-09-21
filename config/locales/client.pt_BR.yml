@@ -3187,3 +3187,6 @@ pt_BR:
     add_passkey: Adicionar uma chave de acesso
     set_password: Defina uma senha
     not_now: Agora não
+  account_completion:
+    complete_your_account: Complete o cadastro da sua conta.
+    continue: Continuar

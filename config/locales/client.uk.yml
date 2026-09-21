@@ -3169,3 +3169,6 @@ uk:
     add_passkey: Додати ключ доступу
     set_password: Встановити пароль
     not_now: Не зараз
+  account_completion:
+    complete_your_account: Заповніть свій обліковий запис
+    continue: Продовжити
