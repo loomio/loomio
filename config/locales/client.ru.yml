@@ -2564,6 +2564,7 @@ ru:
     sign_in_with_code: Войдите с помощью кода.
     new_to_site: Вы здесь впервые?
     passkey_recent_authentication_required: Перед изменением паролей войдите в систему еще раз.
+    email_code_help: Введите свой адрес электронной почты, и мы вышлем вам шестизначный код для входа.
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

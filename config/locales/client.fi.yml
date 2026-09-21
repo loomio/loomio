@@ -2564,6 +2564,7 @@ fi:
     sign_in_with_code: Kirjaudu sisään koodilla
     new_to_site: Uusi täällä?
     passkey_recent_authentication_required: Kirjaudu uudelleen sisään ennen salasanojen vaihtamista
+    email_code_help: Anna sähköpostiosoitteesi, niin lähetämme sinulle kuusinumeroisen kirjautumiskoodin
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

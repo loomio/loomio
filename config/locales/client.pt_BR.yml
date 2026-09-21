@@ -2610,6 +2610,7 @@ pt_BR:
     sign_in_with_code: Faça login com um código
     new_to_site: É novo por aqui?
     passkey_recent_authentication_required: Faça login novamente antes de alterar suas senhas.
+    email_code_help: Insira seu endereço de e-mail e enviaremos um código de acesso de seis dígitos.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

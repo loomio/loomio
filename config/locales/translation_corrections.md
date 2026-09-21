@@ -458,3 +458,11 @@ languages in the Nov 2025 pass.
 | `config/locales/client.es.yml` | `auth_form.passkey_recent_authentication_required` | `contraseñas` | `claves de acceso` | The string refers to WebAuthn passkeys, not passwords |
 | `config/locales/client.sv.yml` | `passkey_settings.remove_named` | `%{namn}` | `%{name}` | Interpolation identifiers are API values and must not be translated |
 | `config/locales/client.sv.yml` | New passkey removal and recent-authentication keys | `lösenord` | `passkey` | These strings describe WebAuthn passkeys, not passwords |
+
+## 2026-09-21 — Sign-in code help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `auth_form.email_code_help` | Formal `Sie/Ihnen` forms | Informal `du/dir` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.fr.yml` | `auth_form.email_code_help` | Formal `vous/votre` forms | Informal `tu/ton` forms | French user-facing copy uses the informal `tu` register |
+| `config/locales/client.nl_NL.yml` | `auth_form.email_code_help` | Formal `u/uw` forms | Informal `je` forms | Dutch user-facing copy uses the informal `je` register |

@@ -2592,6 +2592,7 @@ it:
     sign_in_with_code: Accedi con un codice
     new_to_site: Sei nuovo qui?
     passkey_recent_authentication_required: Effettua nuovamente l'accesso prima di modificare le tue password.
+    email_code_help: Inserisci il tuo indirizzo email e ti invieremo un codice di accesso di sei cifre.
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

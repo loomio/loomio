@@ -2817,6 +2817,7 @@ zh_CN:
     sign_in_with_code: 使用验证码登录
     new_to_site: 新来的？
     passkey_recent_authentication_required: 更改密码前请重新登录
+    email_code_help: 请输入您的电子邮件地址，我们将向您发送一个六位数的登录验证码。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接

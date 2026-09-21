@@ -2564,6 +2564,7 @@ ro:
     sign_in_with_code: Conectați-vă cu un cod
     new_to_site: Nou pe aici?
     passkey_recent_authentication_required: Conectați-vă din nou înainte de a schimba cheile de acces
+    email_code_help: Introdu adresa ta de e-mail și îți vom trimite un cod de conectare din șase cifre
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

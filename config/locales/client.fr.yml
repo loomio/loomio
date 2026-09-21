@@ -2606,6 +2606,7 @@ fr:
     sign_in_with_code: Connectez-vous avec un code
     new_to_site: Nouveau ici ?
     passkey_recent_authentication_required: Veuillez vous reconnecter avant de modifier vos mots de passe.
+    email_code_help: Saisis ton adresse e-mail et nous t’enverrons un code de connexion à six chiffres
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

@@ -2583,6 +2583,7 @@ he:
     sign_in_with_code: התחברות באמצעות קוד
     new_to_site: חדש כאן?
     passkey_recent_authentication_required: היכנס שוב לפני שינוי סיסמות
+    email_code_help: הזן את כתובת הדוא"ל שלך ונשלח לך קוד כניסה בן שש ספרות
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

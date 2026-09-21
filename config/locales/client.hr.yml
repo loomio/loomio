@@ -2564,6 +2564,7 @@ hr:
     sign_in_with_code: Prijavite se s kodom
     new_to_site: Novi ovdje?
     passkey_recent_authentication_required: Prijavite se ponovno prije promjene lozinki
+    email_code_help: Unesite svoju adresu e-pošte i poslat ćemo vam šesteroznamenkasti kod za prijavu
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu

@@ -2893,6 +2893,7 @@ be:
     sign_in_with_code: Увайсці з дапамогай кода
     new_to_site: Новы тут?
     passkey_recent_authentication_required: Увайдзіце зноў, перш чым мяняць ключы доступу
+    email_code_help: Увядзіце свой адрас электроннай пошты, і мы дашлем вам шасцізначны код для ўваходу
   chatbot:
     chat_integrations: Інтэграцыі з чатам
     no_chat_integrations_yet: Адпраўляць апавяшчэнні аб актыўнасці ў Loomio ў чат вашай групы

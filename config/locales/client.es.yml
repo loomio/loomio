@@ -2598,6 +2598,7 @@ es:
     sign_in_with_code: Inicia sesión con un código
     new_to_site: "¿Eres nuevo aquí?"
     passkey_recent_authentication_required: Inicia sesión de nuevo antes de cambiar tus claves de acceso
+    email_code_help: Introduce tu dirección de correo electrónico y te enviaremos un código de acceso de seis dígitos.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba

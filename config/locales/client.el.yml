@@ -2564,6 +2564,7 @@ el:
     sign_in_with_code: Συνδεθείτε με έναν κωδικό
     new_to_site: Νέος εδώ;
     passkey_recent_authentication_required: Συνδεθείτε ξανά πριν αλλάξετε τα κλειδιά πρόσβασής σας
+    email_code_help: Εισαγάγετε τη διεύθυνση email σας και θα σας στείλουμε έναν εξαψήφιο κωδικό σύνδεσης
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

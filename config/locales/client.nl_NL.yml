@@ -2589,6 +2589,7 @@ nl_NL:
     sign_in_with_code: Aanmelden met een code
     new_to_site: Ben je hier nieuw?
     passkey_recent_authentication_required: Meld je opnieuw aan voordat je jouw passkeys wijzigt
+    email_code_help: Voer je e-mailadres in en we sturen je een zescijferige inlogcode
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

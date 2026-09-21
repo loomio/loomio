@@ -2563,6 +2563,7 @@ ja:
     sign_in_with_code: コードでサインイン
     new_to_site: ここは初めてですか？
     passkey_recent_authentication_required: パスキーを変更する前に、再度ログインしてください。
+    email_code_help: メールアドレスを入力してください。6桁のログインコードをお送りします。
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
