@@ -412,6 +412,7 @@ Rails.application.routes.draw do
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create do
         post :oauth, on: :collection
+        post :complete, on: :collection
       end
       # identities command route removed (dead code)
     end

@@ -89,6 +89,15 @@ export default new class AuthService {
     return Records.sessions.build(
       pick(user, ['email', 'name', 'password', 'code', 'turnstileToken'])
     ).save().then(data => {
+      if (data.account_completion_required) {
+        user.update({
+          errors: {},
+          name: data.name,
+          emailNewsletter: data.email_newsletter
+        });
+        AccountCompletionService.openPending(user);
+        return user;
+      }
       this.authSuccess(data);
       return data;
     }
@@ -106,11 +115,27 @@ export default new class AuthService {
     });
   }
 
+  completeAccount(user) {
+    return new RestfulClient('registrations').post('complete', {
+      user: {
+        name: user.name,
+        legal_accepted: user.legalAccepted,
+        email_newsletter: user.emailNewsletter
+      }
+    }).then(data => this.authSuccess(data), data => {
+      user.errors = data.errors || {};
+      throw data;
+    });
+  }
+
   signUp(user) {
     return Records.registrations.build(
       pick(user, ['email', 'turnstileToken'])
     ).save().then(data => {
-      if (data.signed_in) {
+      if (data.account_completion_required) {
+        user.update({ errors: {}, name: data.name, emailNewsletter: data.email_newsletter });
+        AccountCompletionService.openPending(user);
+      } else if (data.signed_in) {
         this.authSuccess(data);
       } else {
         user.update({authForm: 'complete', sentLoginLink: true});

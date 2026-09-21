@@ -1,6 +1,8 @@
 module CurrentUserHelper
   include PendingActionsHelper
 
+  ACCOUNT_COMPLETION_TTL = 15.minutes
+
   class SpamUserDeniedError < StandardError
   end
 
@@ -17,6 +19,19 @@ module CurrentUserHelper
     terminate_session
     @current_user = nil
     true
+  end
+
+  def stage_account_completion(user)
+    session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }
+  end
+
+  def pending_account_completion_user
+    pending = session[:pending_account_completion]
+    authenticated_at = pending && (pending['authenticated_at'] || pending[:authenticated_at])
+    user_id = pending && (pending['user_id'] || pending[:user_id])
+    return unless authenticated_at && Time.at(authenticated_at.to_i) >= ACCOUNT_COMPLETION_TTL.ago
+
+    User.active.find_by(id: user_id)
   end
 
   def current_user

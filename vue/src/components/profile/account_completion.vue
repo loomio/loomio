@@ -4,11 +4,13 @@ import { useI18n } from 'vue-i18n';
 import AppConfig from '@/shared/services/app_config';
 import CredentialPromptService from '@/shared/services/credential_prompt_service';
 import Records from '@/shared/services/records';
+import AuthService from '@/shared/services/auth_service';
 
-const { user, close, completed } = defineProps({
+const { user, close, completed, authenticationPending } = defineProps({
   user: Object,
   close: Function,
-  completed: Function
+  completed: Function,
+  authenticationPending: Boolean
 });
 
 const { t } = useI18n();
@@ -27,6 +29,10 @@ const submit = async () => {
   user.legalAccepted = legalAccepted.value;
   user.emailNewsletter = emailNewsletter.value;
   try {
+    if (authenticationPending) {
+      await AuthService.completeAccount(user);
+      return;
+    }
     await Records.users.updateProfile(user);
     user.legalAcceptedAt ||= new Date().toISOString();
     completed();

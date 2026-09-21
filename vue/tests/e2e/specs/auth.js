@@ -54,6 +54,7 @@ module.exports = {
 
     page.goTo('profile')
     page.expectText('.passkey-settings', 'Test passkey')
+    page.expectElement('.passkey-settings__remove')
     page.scrollClick('.passkey-settings__remove')
     page.acceptConfirm()
     page.expectFlash('Passkey removed')
@@ -416,8 +417,8 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectFlash('Signed in successfully')
     page.completeAccount('Billy Jeans')
+    page.expectFlash('Signed in successfully')
     page.click('.credential-prompt__dismiss')
   },
 

@@ -20,4 +20,13 @@ export default new class AccountCompletionService {
       });
     });
   }
+
+  openPending(user) {
+    EventBus.$emit('openModal', {
+      component: 'AccountCompletion',
+      props: { user, authenticationPending: true },
+      maxWidth: 560,
+      persistent: true
+    });
+  }
 }

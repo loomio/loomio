@@ -14,9 +14,21 @@ class Api::V1::RegistrationsController < ApplicationController
     if !resource.errors.any?
       save_detected_locale(resource)
       if @email_can_be_verified
-        sign_in resource
-        flash[:notice] = t('auth_form.signed_in')
-        render json: Boot::User.new(resource, root_url: URI(root_url).origin, flash: flash).payload.merge({ success: :ok, signed_in: true })
+        if resource.account_completion_required?
+          preserve_pending_invitation
+          stage_account_completion(resource)
+          render json: {
+            success: :ok,
+            signed_in: false,
+            account_completion_required: true,
+            name: resource.name,
+            email_newsletter: resource.email_newsletter
+          }
+        else
+          sign_in resource
+          flash[:notice] = t('auth_form.signed_in')
+          render json: Boot::User.new(resource, root_url: URI(root_url).origin, flash: flash).payload.merge({ success: :ok, signed_in: true })
+        end
       else
         LoginTokenService.create(actor: resource, uri: referrer_uri)
         render json: { success: :ok, signed_in: false }
@@ -29,6 +41,24 @@ class Api::V1::RegistrationsController < ApplicationController
     user = User.active.find_by(email: sign_up_params[:email])
     LoginTokenService.create(actor: user, uri: referrer_uri) if user
     render json: { success: :ok, signed_in: false }
+  end
+
+  def complete
+    user = pending_account_completion_user
+    return respond_with_error(401) unless user
+
+    user.require_valid_signup = true
+    user.assign_attributes(account_completion_params)
+    if user.save
+      session.delete(:pending_account_completion)
+      sign_in(user)
+      flash[:notice] = t('auth_form.signed_in')
+      Sentry.metrics.count("auth.sign_in", attributes: { method: "account_completion" })
+      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(signed_in_via_login_code: true)
+      EventBus.broadcast('session_create', user)
+    else
+      render json: { errors: user.errors }, status: :unprocessable_entity
+    end
   end
 
   private
@@ -71,5 +101,15 @@ class Api::V1::RegistrationsController < ApplicationController
 
   def sign_up_params
     params.require(:user).permit(:email, :turnstile_token)
+  end
+
+  def account_completion_params
+    params.require(:user).permit(:name, :legal_accepted, :email_newsletter)
+  end
+
+  def preserve_pending_invitation
+    session[:pending_membership_token] ||= params[:membership_token]
+    session[:pending_topic_reader_token] ||= params[:topic_reader_token]
+    session[:pending_stance_token] ||= params[:stance_token]
   end
 end

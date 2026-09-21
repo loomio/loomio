@@ -71,6 +71,48 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil u.legal_accepted_at
   end
 
+  test "completes an authenticated pending account before creating its session" do
+    user = User.create!(email: "complete-account@example.com", email_verified: false)
+    session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }
+
+    assert_difference "Session.count", 1 do
+      post :complete, params: { user: { name: "Complete Person", legal_accepted: true, email_newsletter: true } }
+    end
+
+    assert_response :success
+    assert_equal user.id, JSON.parse(response.body)['current_user_id']
+    assert user.reload.email_verified?
+    assert_equal "Complete Person", user.name
+    assert user.email_newsletter?
+    assert_nil session[:pending_account_completion]
+  end
+
+  test "does not complete an account without a pending authentication" do
+    user = User.create!(email: "unstaged-account@example.com", email_verified: false)
+
+    assert_no_difference "Session.count" do
+      post :complete, params: { user: { name: "Unstaged Person", legal_accepted: true } }
+    end
+
+    assert_response :unauthorized
+    assert_nil user.reload.name
+  end
+
+  test "does not complete an account after the pending authentication expires" do
+    user = User.create!(email: "expired-completion@example.com", email_verified: false)
+    session[:pending_account_completion] = {
+      user_id: user.id,
+      authenticated_at: (CurrentUserHelper::ACCOUNT_COMPLETION_TTL + 1.minute).ago.to_i
+    }
+
+    assert_no_difference "Session.count" do
+      post :complete, params: { user: { name: "Expired Person", legal_accepted: true } }
+    end
+
+    assert_response :unauthorized
+    assert_nil user.reload.name
+  end
+
   test "creates a new user with an invalid referrer" do
     request.env['HTTP_REFERER'] = 'http://%zz'
 
@@ -130,12 +172,13 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
 
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal true, json['signed_in']
-    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert_equal false, json['signed_in']
+    assert_equal true, json['account_completion_required']
+    complete_pending_account
 
     u = User.find_by(email: "jon@snow.com")
-    assert_nil u.name
-    assert_nil u.legal_accepted_at
+    assert_equal "New Person", u.name
+    assert_not_nil u.legal_accepted_at
   end
 
   test "signup via membership with different email address" do
@@ -176,7 +219,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     }
 
     assert_response :success
-    assert_equal true, JSON.parse(response.body)['signed_in']
+    assert_equal true, JSON.parse(response.body)['account_completion_required']
+    complete_pending_account
     assert invited_user.reload.email_verified?
     assert_not_nil reader.reload.accepted_at
   end
@@ -216,7 +260,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     }
 
     assert_response :success
-    assert_equal true, JSON.parse(response.body)['signed_in']
+    assert_equal true, JSON.parse(response.body)['account_completion_required']
+    complete_pending_account
     assert invited_user.reload.email_verified?
     assert_equal invited_user, stance.reload.participant
     assert_not Stance.redeemable_by(users(:user)).exists?(stance.id)
@@ -279,12 +324,13 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
 
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal true, json['signed_in']
-    assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert_equal false, json['signed_in']
+    assert_equal true, json['account_completion_required']
+    complete_pending_account
 
     u = User.find_by(email: "jon@snow.com")
-    assert_nil u.name
-    assert_nil u.legal_accepted_at
+    assert_equal "New Person", u.name
+    assert_not_nil u.legal_accepted_at
   end
 
   test "turnstile bypass: expired login token is not accepted" do
@@ -325,6 +371,11 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   end
 
   private
+
+  def complete_pending_account
+    post :complete, params: { user: { name: "New Person", legal_accepted: true } }
+    assert_response :success
+  end
 
   def invitation_poll
     @invitation_poll ||= PollService.create(

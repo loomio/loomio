@@ -142,6 +142,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   test "signs in with password" do
     user = User.create!(
       email: "sessionsuser@example.com",
+      name: "Session User",
+      legal_accepted_at: Time.current,
       email_verified: true,
       password: "s3curepassword123"
     )
@@ -158,7 +160,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "returns the server-recorded authentication destination after sign in" do
-    user = User.create!(email: "returnmobile@example.com", email_verified: true, password: "s3curepassword123")
+    user = User.create!(email: "returnmobile@example.com", name: "Returning User", legal_accepted_at: Time.current, email_verified: true, password: "s3curepassword123")
     session[:return_to_after_authenticating] = "/mobile/authorize?state=server-owned"
 
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
@@ -212,6 +214,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   test "sign out destroys the current session" do
     user = User.create!(
       email: "destroy-session@example.com",
+      name: "Destroy Session",
+      legal_accepted_at: Time.current,
       email_verified: true,
       password: "s3curepassword123"
     )
@@ -309,7 +313,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in a user via token" do
-    user = User.create!(email: "tokenuser@example.com", email_verified: true)
+    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true)
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
     
@@ -324,7 +328,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in a user via code and marks the token used" do
-    user = User.create!(email: "codeuser@example.com", email_verified: true)
+    user = User.create!(email: "codeuser@example.com", name: "Code User", legal_accepted_at: Time.current, email_verified: true)
     token = LoginToken.create!(user: user)
 
     post :create, params: { user: { email: user.email, code: token.code } }
@@ -335,6 +339,21 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal user.id, json['current_user_id']
     assert_equal true, json['signed_in_via_login_code']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+  end
+
+  test "valid code stages account completion without signing in an incomplete user" do
+    user = User.create!(email: "incomplete-code-user@example.com", email_verified: false)
+    token = LoginToken.create!(user: user)
+
+    assert_no_difference "Session.count" do
+      post :create, params: { user: { email: user.email, code: token.code } }
+    end
+
+    assert_response :success
+    assert token.reload.used
+    assert_nil Current.session
+    assert_equal true, JSON.parse(response.body)['account_completion_required']
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
   end
 
   test "does not sign in with an expired code" do
@@ -380,7 +399,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "finds a verified user to sign in" do
-    user = User.create!(email: "verified@example.com", email_verified: true)
+    user = User.create!(email: "verified@example.com", name: "Verified User", legal_accepted_at: Time.current, email_verified: true)
     User.create!(email: "unverified@example.com", email_verified: false)
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
@@ -393,7 +412,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in an unverified user" do
-    unverified_user = User.create!(email: "unverified2@example.com", email_verified: false)
+    unverified_user = User.create!(email: "unverified2@example.com", name: "Unverified User", legal_accepted_at: Time.current, email_verified: false)
     token = LoginToken.create!(user: unverified_user)
     session[:pending_login_token] = token.token
     
