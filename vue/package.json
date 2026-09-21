@@ -27,7 +27,6 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@github/webauthn-json": "^2.1.1",
     "@hocuspocus/provider": "^4.7.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.301",
@@ -86,8 +85,8 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
-    "@vue/test-utils": "^2.4.6",
     "@vitejs/plugin-vue": "^6.0.9",
+    "@vue/test-utils": "^2.4.6",
     "jsdom": "^30.0.1",
     "nightwatch": "^3.15.0",
     "pagefind": "1.5.2",

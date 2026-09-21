@@ -2,6 +2,8 @@
 
 The sign-in methods available on Loomio depend on how the site operator has configured authentication. Loomio.com and mixed-authentication sites can offer passkeys, email and password sign-in, emailed sign-in codes, and providers such as Google. A private site may require its organization single sign-on provider instead.
 
+![The Loomio sign-in form with passkey, email, password, and emailed-code options](sign_in_email.png)
+
 ## Sign in with a passkey
 
 Select **Sign in with a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.

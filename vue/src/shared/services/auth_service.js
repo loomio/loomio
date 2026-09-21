@@ -7,9 +7,26 @@ import CredentialPromptService from '@/shared/services/credential_prompt_service
 import { I18n } from '@/i18n';
 import {pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 import RestfulClient from '@/shared/record_store/restful_client';
-import { create as createPasskeyCredential, get as getPasskeyCredential, supported as passkeysSupported } from '@github/webauthn-json';
 
 const passkeys = new RestfulClient('passkey_credentials');
+
+const passkeysSupported = () => Boolean(
+  globalThis.PublicKeyCredential?.parseCreationOptionsFromJSON &&
+  globalThis.PublicKeyCredential?.parseRequestOptionsFromJSON &&
+  globalThis.PublicKeyCredential?.prototype?.toJSON
+);
+
+const createPasskeyCredential = async (options) => {
+  const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(options);
+  const credential = await navigator.credentials.create({ publicKey });
+  return credential.toJSON();
+};
+
+const getPasskeyCredential = async (options) => {
+  const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(options);
+  const credential = await navigator.credentials.get({ publicKey });
+  return credential.toJSON();
+};
 
 export default new class AuthService {
   applyEmailStatus(user, data) {
