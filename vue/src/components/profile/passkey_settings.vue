@@ -64,11 +64,12 @@ v-card.passkey-settings.mt-4(v-if="supported" :title="t('passkey_settings.title'
         v-list-item-subtitle {{ t('passkey_settings.created_at', { date: approximate(new Date(credential.created_at)) }) }}
         template(v-slot:append)
           v-btn.passkey-settings__remove(
-            icon="mdi-delete-outline"
+            icon
             variant="text"
             :aria-label="t('passkey_settings.remove_named', { name: credential.name })"
             :disabled="loading"
             @click="remove(credential)")
+            common-icon(name="mdi-delete-outline")
     p(v-else) {{ t('passkey_settings.none') }}
     v-text-field.passkey-settings__name.mt-4(
       v-model="name"
