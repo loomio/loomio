@@ -16,6 +16,18 @@ class StanceTest < ActiveSupport::TestCase
     }.merge(overrides)
   end
 
+  test "guest invitation is not redeemable after the user joins the poll group" do
+    guest = User.create!(name: "Invited voter", email: "invited-voter-#{SecureRandom.hex(4)}@example.test")
+    poll = PollService.create(params: poll_params(group_id: @group.id), actor: @admin)
+    stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    assert_includes Stance.redeemable, stance
+
+    @group.add_member!(guest)
+
+    refute_includes Stance.redeemable, stance
+  end
+
   test "allows no stance choices for polls" do
     poll = PollService.create(params: poll_params, actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin)

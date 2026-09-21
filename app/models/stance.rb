@@ -94,6 +94,17 @@ class Stance < ApplicationRecord
   scope :redeemable, -> {
     latest.invited.undecided.where('stances.accepted_at IS NULL')
       .where(poll_id: Poll.where(topic_id: Topic.left_joins(:group).group_enabled.select(:id)).select(:id))
+      .where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1
+          FROM memberships
+          INNER JOIN topics ON topics.group_id = memberships.group_id
+          INNER JOIN polls ON polls.topic_id = topics.id
+          WHERE polls.id = stances.poll_id
+            AND memberships.user_id = stances.participant_id
+            AND memberships.revoked_at IS NULL
+        )
+      SQL
   }
   scope :redeemable_by,  -> (user_id) {
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)

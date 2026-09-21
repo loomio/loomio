@@ -88,7 +88,7 @@ class Dev::PollsController < Dev::NightwatchController
     if params[:guest]
       user = saved fake_unverified_user
     else
-      user = saved fake_user
+      user = saved fake_user(email: 'poll-member@example.com')
       group.add_member! user
     end
 
