@@ -373,6 +373,8 @@ it:
       email_label: Altro indirizzo email dell'account
       send_verification: Invia l'email di verifica
       generic_flash_and_signout: Se un account utilizza quell'indirizzo email, è stata inviata un'email di verifica. Ora sei disconnesso e puoi continuare con l'altro account.
+      destination_helptext: Questo account (%{sourceEmail}) verrà unito all'account di destinazione. Inserisci l'indirizzo email dell'account di destinazione. Se esiste, Loomio invierà un'email a tale indirizzo per confermare l'unione.
+      destination_email_label: Indirizzo e-mail dell'account di destinazione
     email_taken: Spiacenti, quell'e-mail è già associata a un altro utente. Quell'email ti appartiene?
     find_out_more: Sappi di più
     placeholder_modal_text: |

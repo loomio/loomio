@@ -365,6 +365,8 @@ tr:
       email_label: Diğer hesap e-postası
       send_verification: Doğrulama e-postası gönder
       generic_flash_and_signout: Eğer bir hesap bu e-posta adresini kullanıyorsa, bir doğrulama e-postası gönderilmiştir. Artık oturumunuz kapatıldı, böylece diğer hesabınızla devam edebilirsiniz.
+      destination_helptext: Bu hesap (%{sourceEmail}) hedef hesaba birleştirilecektir. Hedef hesabın e-posta adresini girin. Eğer mevcutsa, Loomio birleştirmeyi onaylamak için bu adrese bir e-posta gönderecektir.
+      destination_email_label: Hedef hesap e-postası
     email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
     find_out_more: Daha fazla bilgi.
     placeholder_modal_text: <p>İki hesabı birleştirmek istiyorsanız, ilgili e-posta adresini (diğer hesaba ait olan) Profil sayfanızın e-posta alanına girmeniz ve görüntülenen talimatları izlemeniz yeterlidir.</p><p> Yardıma mı ihtiyacınız var? <a href="/contact" target="_blank">Bizimle iletişime geçin</a> .

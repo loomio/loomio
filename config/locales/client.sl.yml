@@ -365,6 +365,8 @@ sl:
       email_label: E-poštni naslov drugega računa
       send_verification: Pošlji potrditveno e-pošto
       generic_flash_and_signout: Če račun uporablja ta e-poštni naslov, je bilo poslano potrditveno e-poštno sporočilo. Zdaj ste odjavljeni, tako da lahko nadaljujete z drugim računom.
+      destination_helptext: Ta račun (%{sourceEmail}) bo združen s ciljnim računom. Vnesite e-poštni naslov ciljnega računa. Če obstaja, bo Loomio na ta naslov poslal e-poštno sporočilo za potrditev združitve.
+      destination_email_label: E-poštni naslov ciljnega računa
     email_taken: Žal je ta e-poštni naslov že povezan z drugim uporabnikom. Ali ta e-pošta pripada vam?
     find_out_more: Izvedi več.
     placeholder_modal_text: <p>Če želite združiti dva računa, preprosto vnesite ustrezni e-poštni naslov (ki pripada drugemu računu) v polje za e-pošto na strani profila in sledite navodilom, ki se prikažejo.</p><p> Rabim pomoč? <a href="/contact" target="_blank">Kontaktirajte nas</a> .

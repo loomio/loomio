@@ -365,6 +365,8 @@ sv:
       email_label: Annan konto-e-postadress
       send_verification: Skicka verifieringsmejl
       generic_flash_and_signout: Om ett konto använder den e-postadressen har ett verifieringsmejl skickats. Du är nu utloggad så att du kan fortsätta med det andra kontot.
+      destination_helptext: Detta konto (%{sourceEmail}) kommer att slås samman med destinationskontot. Ange destinationskontots e-postadress. Om den finns kommer Loomio att skicka ett e-postmeddelande till den adressen för att bekräfta sammanslagningen.
+      destination_email_label: E-postadress för målkontot
     email_taken: Tyvärr, den e-postadressen är redan kopplad till en annan användare. Tillhör det mejlet dig?
     find_out_more: Få reda på mer.
     placeholder_modal_text: <p>Om du vill slå samman två konton anger du helt enkelt respektive e-postadress (som tillhör det andra kontot) i e-postfältet på din profilsida och följer instruktionerna som visas.</p><p> Behövs hjälp? <a href="/contact" target="_blank">Kontakta oss</a> .

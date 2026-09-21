@@ -24,14 +24,7 @@ function loadEmailSettings(page) {
 
 function loadMergeAccounts(page) {
   page.loadPath('setup_manual_oatmilk_merge_accounts');
-  page.waitFor('.profile-page__email-input input');
-  page.execute(`
-    const input = document.querySelector('.profile-page__email-input input');
-    input.value = 'jamie@oatmilk.example';
-    input.dispatchEvent(new Event('input', {bubbles: true}));
-    input.dispatchEvent(new Event('keyup', {bubbles: true}));
-  `);
-  page.waitFor('.profile-page__email-taken');
+  page.waitFor('.user-page__merge_accounts');
 }
 
 module.exports = {
@@ -58,30 +51,23 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadMergeAccounts(page);
-    screenshot.captureRegion(
-      'users/merge_accounts/merge_accounts_profile',
-      [
-        '.profile-page > div > .v-card:first-of-type .v-card-title',
-        '.profile-page__details > .d-sm-flex'
-      ],
-      {
-        width: 1100,
-        height: 1200,
-        padding: 0,
-        spotlight: {selectors: ['.profile-page__email-input', '.profile-page__email-taken']}
-      }
-    );
+    screenshot.captureElement('users/merge_accounts/merge_accounts_profile', '.profile-page-card', {
+      width: 1100,
+      height: 900,
+      spotlight: '.user-page__merge_accounts'
+    });
   },
 
   'merge_accounts_verify': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadMergeAccounts(page);
-    page.clickAndWait('.email-taken-find-out-more', '.confirm-modal');
+    page.clickAndWait('.user-page__merge_accounts', '.merge-accounts-modal');
+    page.fillIn('.merge-accounts-modal__destination-email input', 'jamie@oatmilk.example');
     screenshot.captureElement(
       'users/merge_accounts/merge_accounts_verify',
-      '.confirm-modal',
-      {width: 1100, height: 1000, spotlight: '.confirm-modal__submit'}
+      '.merge-accounts-modal',
+      {width: 1100, height: 1000, spotlight: '.merge-accounts-modal__submit'}
     );
   },
 

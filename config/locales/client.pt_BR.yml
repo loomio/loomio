@@ -373,6 +373,8 @@ pt_BR:
       email_label: Outro e-mail da conta
       send_verification: Enviar e-mail de verificação
       generic_flash_and_signout: Se uma conta utiliza esse endereço de e-mail, um e-mail de verificação foi enviado. Você foi desconectado e agora pode continuar usando a outra conta.
+      destination_helptext: Esta conta (%{sourceEmail}) será mesclada com a conta de destino. Insira o endereço de e-mail da conta de destino. Se existir, o Loomio enviará um e-mail para esse endereço para confirmar a mesclagem.
+      destination_email_label: E-mail da conta de destino
     email_taken: Desculpe, esse email já está associado a outro usuário. Esse email pertence a você?
     find_out_more: Descubra mais
     placeholder_modal_text: |

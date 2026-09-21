@@ -371,6 +371,8 @@ de:
       email_label: E-Mail-Adresse des anderen Kontos
       send_verification: Bestätigungs-E-Mail senden
       generic_flash_and_signout: Wenn dieses Konto diese E-Mail-Adresse verwendet, wurde eine Bestätigungs-E-Mail versendet. Sie sind nun abgemeldet und können mit dem anderen Konto fortfahren.
+      destination_helptext: Dieses Konto (%{sourceEmail}) wird mit dem Zielkonto zusammengeführt. Geben Sie die E-Mail-Adresse des Zielkontos ein. Falls dieses existiert, sendet Loomio eine Bestätigungs-E-Mail an diese Adresse.
+      destination_email_label: E-Mail-Adresse des Zielkontos
     email_taken: Entschuldige, diese Email ist bereits mit einem anderen Nutzerkonto verbunden. Gehört diese Email zu dir?
     find_out_more: Finde mehr heraus.
     placeholder_modal_text: |

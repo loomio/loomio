@@ -49,8 +49,7 @@ export default {
         return {value: pref, title: exact(this.currentTime, this.user.timeZone, pref)};
       });
     },
-    actions() { return pickBy(UserService.actions(Session.user(), this), action => action.canPerform()) },
-    emailChanged() { return this.user.email !== this.originalUser.email; }
+    actions() { return pickBy(UserService.actions(Session.user(), this), action => action.canPerform()) }
   },
 
   watch: {
@@ -86,10 +85,6 @@ export default {
 
     changePassword() {
       this.openChangePasswordModal(this.user);
-    },
-
-    openMergeAccountsModal() {
-      openModal({ component: 'MergeAccountsModal' });
     },
 
     openDeleteUserModal() {
@@ -128,10 +123,6 @@ v-main
 
                 v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='email')
-                .profile-page__email-merge(v-if="emailChanged")
-                  span {{ $t('merge_accounts.email_may_belong_to_another_account') }}
-                  space
-                  a.email-taken-find-out-more(@click="openMergeAccountsModal") {{ $t('merge_accounts.modal.title') }}
 
               .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12.mb-4(@click="changePicture()")
                 user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")

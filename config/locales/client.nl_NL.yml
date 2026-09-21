@@ -365,6 +365,8 @@ nl_NL:
       email_label: E-mailadres van een ander account
       send_verification: Verificatie-e-mail verzenden
       generic_flash_and_signout: Als een account dat e-mailadres gebruikt, is er een verificatiemail verzonden. Je bent nu uitgelogd, zodat je verder kunt gaan met het andere account.
+      destination_helptext: Dit account (%{sourceEmail}) wordt samengevoegd met het bestemmingsaccount. Voer het e-mailadres van het bestemmingsaccount in. Als het account bestaat, stuurt Loomio een e-mail naar dat adres ter bevestiging van de samenvoeging.
+      destination_email_label: E-mailadres van het bestemmingsaccount
     email_taken: Sorry, dat e-mailadres is al in gebruik door een andere gebruiker. Is dat jouw e-mailadres?
     find_out_more: Meer informatie
     placeholder_modal_text: |

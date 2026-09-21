@@ -26,15 +26,19 @@ const sendVerification = async () => {
 </script>
 
 <template lang="pug">
-v-card
+v-card.merge-accounts-modal
   v-card-title
     h1.text-headline-small {{ t('merge_accounts.modal.title') }}
     v-spacer
     dismiss-modal-button
   v-card-text
-    p {{ t('merge_accounts.modal.generic_helptext') }}
-    v-text-field(v-model="targetEmail" type="email" :label="t('merge_accounts.modal.email_label')")
+    p {{ t('merge_accounts.modal.destination_helptext', { sourceEmail: Session.user().email }) }}
+    v-text-field.merge-accounts-modal__destination-email(
+      v-model="targetEmail"
+      type="email"
+      :label="t('merge_accounts.modal.destination_email_label')"
+      autocomplete="email")
   v-card-actions
     v-spacer
-    v-btn(color="primary" :loading="loading" :disabled="!targetEmail || Session.user().email === targetEmail" @click="sendVerification") {{ t('merge_accounts.modal.send_verification') }}
+    v-btn.merge-accounts-modal__submit(color="primary" :loading="loading" :disabled="!targetEmail || Session.user().email === targetEmail" @click="sendVerification") {{ t('merge_accounts.modal.send_verification') }}
 </template>

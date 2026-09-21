@@ -373,6 +373,8 @@ fr:
       email_label: Adresse e-mail de l'autre compte
       send_verification: Envoyer un e-mail de vérification
       generic_flash_and_signout: Si un compte utilise cette adresse e-mail, un e-mail de vérification a été envoyé. Vous êtes maintenant déconnecté(e) ; vous pouvez donc continuer avec l'autre compte.
+      destination_helptext: Ce compte (%{sourceEmail}) sera fusionné avec le compte de destination. Veuillez saisir l'adresse e-mail du compte de destination. Si elle existe, Loomio lui enverra un e-mail de confirmation de fusion.
+      destination_email_label: Adresse e-mail du compte de destination
     email_taken: Désolé, l'adresse email que tu as fournie correspond à celle d'un utilisateur existant. Est-ce ton adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |

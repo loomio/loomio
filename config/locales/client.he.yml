@@ -365,6 +365,8 @@ he:
       email_label: כתובת דוא"ל של חשבון אחר
       send_verification: שלח אימייל אימות
       generic_flash_and_signout: אם חשבון משתמש בכתובת דוא"ל זו, נשלחה הודעת אימות. כעת אינך מחובר כך שתוכל להמשיך עם החשבון האחר.
+      destination_helptext: חשבון זה (%{sourceEmail}) ימוזג לחשבון היעד. הזן את כתובת הדוא"ל של חשבון היעד. אם היא קיימת, Loomio ישלח לכתובת זו דוא"ל לאישור המיזוג.
+      destination_email_label: כתובת דוא"ל של חשבון היעד
     email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
     find_out_more: גלה עוד.
     placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .

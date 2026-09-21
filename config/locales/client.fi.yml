@@ -365,6 +365,8 @@ fi:
       email_label: Muun tilin sähköpostiosoite
       send_verification: Lähetä vahvistussähköposti
       generic_flash_and_signout: Jos tili käyttää kyseistä sähköpostiosoitetta, vahvistussähköposti on lähetetty. Olet nyt kirjautunut ulos, joten voit jatkaa toisen tilin käyttöä.
+      destination_helptext: Tämä tili (%{sourceEmail}) yhdistetään kohdetiliin. Anna kohdetilin sähköpostiosoite. Jos sellainen on olemassa, Loomio lähettää kyseiseen osoitteeseen sähköpostin vahvistaakseen yhdistämisen.
+      destination_email_label: Kohdetilin sähköpostiosoite
     email_taken: Valitettavasti tämä sähköposti on jo liitetty toiseen käyttäjään. Kuuluuko tuo sähköposti sinulle?
     find_out_more: Lue lisää.
     placeholder_modal_text: <p>Jos haluat yhdistää kaksi tiliä, kirjoita vain vastaava sähköpostiosoite (joka kuuluu toiselle tilille) Profiilisivusi sähköpostikenttään ja seuraa näkyviin tulevia ohjeita.</p><p> Tarvitsetko apua? <a href="/contact" target="_blank">Ota meihin yhteyttä</a> .

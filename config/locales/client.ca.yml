@@ -365,6 +365,8 @@ ca:
       email_label: Correu electrònic d'un altre compte
       send_verification: Enviar correu electrònic de verificació
       generic_flash_and_signout: Si un compte utilitza aquesta adreça electrònica, s'ha enviat un correu electrònic de verificació. Ara has tancat la sessió i pots continuar amb l'altre compte.
+      destination_helptext: Aquest compte (%{sourceEmail}) es fusionarà amb el compte de destinació. Introduïu l'adreça electrònica del compte de destinació. Si existeix, Loomio enviarà un correu electrònic a aquesta adreça per confirmar la fusió.
+      destination_email_label: Correu electrònic del compte de destinació
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |

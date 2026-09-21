@@ -367,6 +367,8 @@ hu:
       email_label: Egyéb fiók e-mail címe
       send_verification: Ellenőrző e-mail küldése
       generic_flash_and_signout: Ha egy másik fiók ezt az e-mail címet használja, akkor egy ellenőrző e-mailt küldtünk. Most kijelentkezett, így folytathatja a másik fiókkal.
+      destination_helptext: Ez a fiók (%{sourceEmail}) egyesülni fog a célfiókkal. Add meg a célfiók e-mail címét. Ha létezik, a Loomio e-mailt küld erre a címre az egyesítés megerősítéséhez.
+      destination_email_label: Célfiók e-mail címe
     email_taken: Sajnáljuk, ez az e-mail már társítva van egy másik felhasználóhoz. Ez az e-mail a tiéd?
     find_out_more: Tudj meg többet.
     placeholder_modal_text: <p>Ha két fiókot szeretne egyesíteni, egyszerűen írja be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesse a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vegye fel velünk a kapcsolatot</a> .

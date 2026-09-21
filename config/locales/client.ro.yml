@@ -365,6 +365,8 @@ ro:
       email_label: Adresă de e-mail a altei conturi
       send_verification: Trimiteți e-mailul de verificare
       generic_flash_and_signout: Dacă un cont folosește acea adresă de e-mail, ți s-a trimis un e-mail de verificare. Acum ești deconectat, astfel încât să poți continua cu celălalt cont.
+      destination_helptext: Acest cont (%{sourceEmail}) va fi îmbinat cu contul de destinație. Introduceți adresa de e-mail a contului de destinație. Dacă există, Loomio va trimite acelei adrese un e-mail pentru a confirma îmbinarea.
+      destination_email_label: Adresa de e-mail a contului de destinație
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .

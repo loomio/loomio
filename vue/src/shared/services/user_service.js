@@ -30,15 +30,7 @@ export default new class UserService {
         canPerform() { return true; },
         perform() {
           return EventBus.$emit('openModal', {
-            component: 'ConfirmModal',
-            props: {
-              confirm: {
-                text: {
-                  title: 'merge_accounts.modal.title',
-                  raw_helptext: vm.$t('merge_accounts.placeholder_modal_text')
-                }
-              }
-            }
+            component: 'MergeAccountsModal'
           }
           );
         }

@@ -365,6 +365,8 @@ hr:
       email_label: E-pošta drugog računa
       send_verification: Pošalji e-poruku za potvrdu
       generic_flash_and_signout: Ako račun koristi tu adresu e-pošte, poslana je e-pošta za potvrdu. Sada ste odjavljeni pa možete nastaviti s drugim računom.
+      destination_helptext: Ovaj račun (%{sourceEmail}) bit će spojen s odredišnim računom. Unesite adresu e-pošte odredišnog računa. Ako postoji, Loomio će poslati e-poštu na tu adresu kako bi potvrdio spajanje.
+      destination_email_label: E-pošta odredišnog računa
     email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
     find_out_more: Saznaj više.
     placeholder_modal_text: <p>Ako želite spojiti dva računa, jednostavno unesite odgovarajuću adresu e-pošte (koja pripada drugom računu) u polje za e-poštu na stranici profila i slijedite upute koje se pojavljuju.</p><p> Trebate pomoć? <a href="/contact" target="_blank">Kontaktirajte nas</a> .

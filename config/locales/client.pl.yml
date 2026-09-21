@@ -365,6 +365,8 @@ pl:
       email_label: Inny adres e-mail konta
       send_verification: Wyślij e-mail weryfikacyjny
       generic_flash_and_signout: Jeśli konto korzysta z tego adresu e-mail, wysłano wiadomość weryfikacyjną. Zostałeś wylogowany, więc możesz kontynuować z innego konta.
+      destination_helptext: To konto (%{sourceEmail}) zostanie połączone z kontem docelowym. Wprowadź adres e-mail konta docelowego. Jeśli istnieje, Loomio wyśle na ten adres e-mail z potwierdzeniem połączenia.
+      destination_email_label: Adres e-mail konta docelowego
     email_taken: Przepraszamy, ale ten adres e-mail jest już połączony z innym użytkownikiem. Czy należy on do Ciebie?
     find_out_more: 'Dowiedz się wiecej. '
     placeholder_modal_text: |

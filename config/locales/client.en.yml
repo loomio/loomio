@@ -418,6 +418,8 @@ en:
       email_label: Other account email
       send_verification: Send verification email
       generic_flash_and_signout: If an account uses that email address, a verification email has been sent. You are now signed out so you can continue with the other account
+      destination_helptext: This account (%{sourceEmail}) will be merged into the destination account. Enter the destination account's email address. If it exists, Loomio will send that address an email to confirm the merge.
+      destination_email_label: Destination account email
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
     find_out_more: Find out more.
     placeholder_modal_text: |

@@ -365,6 +365,8 @@ da:
       email_label: Anden kontos e-mail
       send_verification: Send bekræftelsesmail
       generic_flash_and_signout: Hvis en konto bruger den e-mailadresse, er der sendt en bekræftelsesmail. Du er nu logget ud, så du kan fortsætte med den anden konto.
+      destination_helptext: Denne konto (%{sourceEmail}) vil blive flettet ind i destinationskontoen. Indtast destinationskontoens e-mailadresse. Hvis den findes, sender Loomio en e-mail til adressen for at bekræfte fletningen.
+      destination_email_label: Destinationskontoens e-mailadresse
     email_taken: Beklager, den e-mail er allerede knyttet til en anden bruger. Tilhører den e-mail dig?
     find_out_more: Find ud af mere.
     placeholder_modal_text: <p>Hvis du gerne vil flette to konti sammen, skal du blot indtaste den respektive e-mailadresse (der hører til den anden konto) i e-mailfeltet på din profilside og følge instruktionerne, der vises.</p><p> Brug for hjælp? <a href="/contact" target="_blank">Kontakt os</a> .

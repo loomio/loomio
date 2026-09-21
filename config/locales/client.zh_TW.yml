@@ -366,6 +366,8 @@ zh_TW:
       email_label: 其他帳戶信箱
       send_verification: 發送驗證郵件
       generic_flash_and_signout: 如果該電子郵件地址用於某個帳戶，則已傳送驗證電子郵件。您現在已登出登錄，可以繼續使用其他帳戶。
+      destination_helptext: 此帳戶 (%{sourceEmail}) 將合併到目標帳戶。請輸入目標帳戶的電子郵件地址。如果該位址存在，Loomio 將向該位址發送電子郵件以確認合併。
+      destination_email_label: 目標帳號電子郵件
     email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |

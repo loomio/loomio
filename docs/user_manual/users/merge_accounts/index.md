@@ -16,9 +16,11 @@ You need access to both accounts and to the email address of the account you wan
 
 1. Sign in to the **account you want to retire**.
 2. Open the sidebar, select your name, and select **Edit profile**.
-3. In the **Email** field, enter the email address of the **account you want to keep**, then select **Merge accounts**. Loomio does not confirm whether an account exists at an address because that information is private.
+3. Select **Merge accounts**.
 
-4. Enter the address of the account you want to keep and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
+![The profile actions with Merge accounts highlighted](merge_accounts_profile.png)
+
+4. Enter the destination account's email address—the address belonging to the **account you want to keep**—and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
 
 ## Verify the account you want to keep
 

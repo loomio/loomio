@@ -387,6 +387,8 @@ zh_CN:
       email_label: 其他账户邮箱
       send_verification: 发送验证邮件
       generic_flash_and_signout: 如果该电子邮件地址用于某个帐户，则已发送验证电子邮件。您现在已退出登录，可以继续使用其他帐户。
+      destination_helptext: 此帐户 (%{sourceEmail}) 将合并到目标帐户。请输入目标帐户的电子邮件地址。如果该地址存在，Loomio 将向该地址发送电子邮件以确认合并。
+      destination_email_label: 目标帐户电子邮件
     email_taken: 抱歉，该邮箱地址已被其他用户关联。请问该邮箱地址是您本人的吗？
     find_out_more: 了解更多。
     placeholder_modal_text: <p>如果您想将两个帐户合并在一起，只需将相应的电子邮件地址（属于另一个帐户）输入到您的个人资料页面电子邮件字段中，然后按照出现的说明进行操作即可。</p><p>需要帮助？<a href="/contact" target="_blank">请联系我们</a>。
