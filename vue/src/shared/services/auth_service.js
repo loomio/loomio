@@ -35,7 +35,7 @@ export default new class AuthService {
     if (data == null) { data = {}; }
     const vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
-            'legal_accepted_at', 'auth_form'];
+            'legal_accepted_at', 'auth_form', 'account_completion_required', 'name_managed'];
     user.update(pickBy(mapKeys(pick(data, vals), (v, k) => camelCase(k)), val => !!val));
     user.update({hasToken: data.has_token});
     return user;

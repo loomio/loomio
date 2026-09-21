@@ -19,10 +19,7 @@ class Identities::BaseController < ApplicationController
     identity_params = fetch_identity_params(access_token)
     return respond_with_error(401, "Could not fetch user profile from OAuth provider") unless identity_params[:uid].present? && identity_params[:email].present?
 
-    identity = IdentityService.link_or_create(
-      identity_params: identity_params,
-      current_user: current_user
-    )
+    identity = IdentityService.link_or_create(identity_params: identity_params, current_user: current_user)
 
     # Handle pending identity flow (user is switching accounts)
     if !identity.user
@@ -33,11 +30,19 @@ class Identities::BaseController < ApplicationController
       return redirect_to session.delete(:return_to_after_authenticating) || back_to || dashboard_path
     end
 
+    if identity.user.account_completion_required?
+      stage_account_completion(identity.user, name_managed: identity.name.present?)
+      session[:pending_user_id] = identity.user.id
+      return redirect_to authentication_return_path(fallback: dashboard_path)
+    end
+
     # Handle successful login
     sign_in(identity.user)
     flash[:notice] = t('auth_form.signed_in')
 
     redirect_to authentication_return_path(fallback: dashboard_path)
+  rescue ActiveRecord::RecordInvalid => error
+    respond_with_error(422, error.record.errors.full_messages.to_sentence)
   end
 
   def destroy

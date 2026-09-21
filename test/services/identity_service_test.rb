@@ -99,17 +99,36 @@ class IdentityServiceTest < ActiveSupport::TestCase
     assert_equal "OAuth User", user.reload.name
   end
 
-  test "creates a pending identity when an SSO user has no name" do
+  test "creates an incomplete account when the provider supplies no name" do
+    identity = nil
+    assert_difference ["Identity.count", "User.count"], 1 do
+      identity = IdentityService.link_or_create(
+        identity_params: @identity_params.except(:name),
+        current_user: nil
+      )
+    end
+
+    assert_nil identity.user.name
+    assert_predicate identity.user, :account_completion_required?
+  end
+
+  test "retains an existing user's name when the provider supplies no name" do
+    user = User.create!(
+      email: @identity_params[:email],
+      name: "Existing User",
+      email_verified: true
+    )
+
     assert_difference "Identity.count", 1 do
       assert_no_difference "User.count" do
-        identity = IdentityService.link_or_create(
+        IdentityService.link_or_create(
           identity_params: @identity_params.except(:name),
           current_user: nil
         )
-
-        assert_nil identity.user
       end
     end
+
+    assert_equal "Existing User", user.reload.name
   end
 
   test "creates pending identity when user already signed in" do

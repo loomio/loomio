@@ -23,12 +23,16 @@ export default {
       titleKey: 'auth_form.sign_in_to_loomio',
       user: Records.users.build({createAccount: false, email: this.$route.query['user_email']}),
       isDisabled: false,
-      pendingProviderIdentity: Session.providerIdentity()
+      pendingProviderIdentity: Session.providerIdentity(),
+      nameManaged: Boolean(AppConfig.pendingIdentity?.name_managed)
     };
   },
 
   mounted() {
     AuthService.applyEmailStatus(this.user, AppConfig.pendingIdentity);
+    if (AppConfig.pendingIdentity?.account_completion_required) {
+      this.user.authForm = 'accountCompletion';
+    }
   },
 
   methods: {
@@ -52,4 +56,9 @@ export default {
   auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')
   auth-complete(v-if='user.authForm == "complete"' :user='user')
   auth-inactive(v-if='user.authForm == "inactive"' :user='user')
+  account-completion(
+    v-if='user.authForm == "accountCompletion"'
+    :user='user'
+    :authentication-pending='true'
+    :name-managed='nameManaged')
 </template>

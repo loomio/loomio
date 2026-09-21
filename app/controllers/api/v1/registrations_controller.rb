@@ -48,7 +48,11 @@ class Api::V1::RegistrationsController < ApplicationController
     return respond_with_error(401) unless user
 
     user.require_valid_signup = true
-    user.assign_attributes(account_completion_params)
+    completion_params = account_completion_params
+    pending_completion = session[:pending_account_completion] || {}
+    name_managed = pending_completion[:name_managed] || pending_completion['name_managed']
+    completion_params = completion_params.except(:name) if name_managed
+    user.assign_attributes(completion_params)
     if user.save
       session.delete(:pending_account_completion)
       sign_in(user)

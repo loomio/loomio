@@ -13,6 +13,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
       SAML_ATTR_GIVEN_NAME
       SAML_ATTR_FAMILY_NAME
       LOOMIO_SSO_FORCE_USER_ATTRS
+      TERMS_URL
     ].each do |key|
       @saved_env[key] = ENV[key]
       ENV.delete(key)
@@ -260,12 +261,18 @@ class Identities::SamlControllerTest < ActionController::TestCase
     response = mock_saml_response(attributes: { 'displayName' => 'Fallback Name' })
 
     with_saml_mocks(saml_response: response) do
-      assert_no_difference 'User.count' do
-        post :create, params: { SAMLResponse: 'base64_encoded' }
+      assert_difference ['Identity.where(identity_type: "saml").count', 'User.count'], 1 do
+        assert_no_difference "Session.count" do
+          post :create, params: { SAMLResponse: 'base64_encoded' }
+        end
       end
     end
 
-    assert_nil Identity.where(identity_type: 'saml').last.name
+    user = User.find_by!(email: 'samltest@example.com')
+    assert_nil user.name
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal false, session.dig(:pending_account_completion, :name_managed)
+    assert_redirected_to dashboard_path
   end
 
   test "does not use email fallbacks when a SAML email attribute is configured" do
@@ -283,22 +290,22 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_not Identity.where(identity_type: 'saml', email: 'fallback@example.com').exists?
   end
 
-  test "starts account creation when SAML does not provide a name" do
-    session[:back_to] = '/dashboard'
+  test "stages account completion when SAML does not provide a name" do
     response = mock_saml_response(attributes: {})
 
     with_saml_mocks(saml_response: response) do
-      assert_difference 'Identity.where(identity_type: "saml").count', 1 do
-        assert_no_difference 'User.count' do
+      assert_difference ['Identity.where(identity_type: "saml").count', 'User.count'], 1 do
+        assert_no_difference "Session.count" do
           post :create, params: { SAMLResponse: 'base64_encoded' }
         end
       end
     end
 
-    identity = Identity.where(identity_type: 'saml').last
-    assert_nil identity.user
-    assert_equal identity.id, session[:pending_identity_id]
-    assert_redirected_to '/dashboard'
+    user = User.find_by!(email: 'samltest@example.com')
+    assert_nil user.name
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal false, session.dig(:pending_account_completion, :name_managed)
+    assert_redirected_to dashboard_path
   end
 
   # Create - verified user with same email exists
@@ -452,7 +459,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_redirected_to '/dashboard'
   end
 
-  test "signs in an existing linked user when SAML omits profile attributes" do
+  test "signs in an existing linked user when SAML omits their name" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(
       name: 'Existing Name',

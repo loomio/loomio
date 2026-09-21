@@ -113,6 +113,21 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil user.reload.name
   end
 
+  test "does not accept a client-supplied name for an SSO-managed account" do
+    user = User.create!(email: "managed-name@example.com", name: "Provider Name", email_verified: true)
+    session[:pending_account_completion] = {
+      user_id: user.id,
+      authenticated_at: Time.current.to_i,
+      name_managed: true
+    }
+
+    post :complete, params: { user: { name: "Changed Name", legal_accepted: true } }
+
+    assert_response :success
+    assert_equal "Provider Name", user.reload.name
+    assert_not_nil user.legal_accepted_at
+  end
+
   test "creates a new user with an invalid referrer" do
     request.env['HTTP_REFERER'] = 'http://%zz'
 

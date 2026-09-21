@@ -6,11 +6,12 @@ import CredentialPromptService from '@/shared/services/credential_prompt_service
 import Records from '@/shared/services/records';
 import AuthService from '@/shared/services/auth_service';
 
-const { user, close, completed, authenticationPending } = defineProps({
+const { user, close, completed, authenticationPending, nameManaged } = defineProps({
   user: Object,
   close: Function,
   completed: Function,
-  authenticationPending: Boolean
+  authenticationPending: Boolean,
+  nameManaged: Boolean
 });
 
 const { t } = useI18n();
@@ -52,6 +53,7 @@ v-card.account-completion(:title="t('account_completion.complete_your_account')"
         v-model="name"
         name="name"
         autocomplete="name"
+        :readonly="nameManaged"
         :label="t('auth_form.name_placeholder')"
         required)
       validation-errors(:subject="user" field="name")

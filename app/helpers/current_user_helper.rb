@@ -9,6 +9,7 @@ module CurrentUserHelper
   def sign_in(user)
     @current_user = nil
     user = UserService.verify(user: user)
+    require_user_name!(user)
     start_new_session_for(user)
     record_successful_sign_in(user)
     handle_pending_actions(user)
@@ -21,8 +22,12 @@ module CurrentUserHelper
     true
   end
 
-  def stage_account_completion(user)
-    session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }
+  def stage_account_completion(user, name_managed: false)
+    session[:pending_account_completion] = {
+      user_id: user.id,
+      authenticated_at: Time.current.to_i,
+      name_managed: name_managed
+    }
   end
 
   def pending_account_completion_user
@@ -61,6 +66,16 @@ module CurrentUserHelper
   end
 
   private
+
+  # A session must never expose an incomplete profile to the application.
+  # Authentication entry points complete or reject nameless accounts first;
+  # this shared boundary prevents a new entry point from bypassing that rule.
+  def require_user_name!(user)
+    return if user.name.present?
+
+    user.errors.add(:name, :blank)
+    raise ActiveRecord::RecordInvalid, user
+  end
 
   def authenticated_user
     resume_session&.user || bridge_devise_session&.user

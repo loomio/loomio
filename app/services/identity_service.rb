@@ -50,18 +50,12 @@ class IdentityService
       # without also changing the documented trust model.
       new_identity.user = User.find_by(email: email)
 
-      # An SSO provider may verify an email without supplying a display name.
-      # Keep the identity pending so the existing account-creation form can ask
-      # the person for their name instead of rejecting the callback.
-      next if new_identity.name.blank? && new_identity.user.nil?
-
       if new_identity.user.nil?
         new_identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
-        require_user_name!(new_identity.user, fallback: new_identity.name)
         Sentry.set_context('identity_params', identity_params.slice(:identity_type, :uid, :email, :name))
         new_identity.user.save!
       else
-        require_user_name!(new_identity.user, fallback: new_identity.name)
+        initialize_user_name(new_identity.user, fallback: new_identity.name)
         new_identity.user.email_verified = true
         new_identity.user.save! if new_identity.user.changed?
       end
@@ -74,7 +68,7 @@ class IdentityService
         # Invitations create nameless placeholder users. SSO must initialize
         # that profile before signing in the account, even when ongoing provider
         # profile synchronization is disabled.
-        require_user_name!(identity.user, fallback: identity.name)
+        initialize_user_name(identity.user, fallback: identity.name)
         identity.user.save! if identity.user.changed?
       end
       identity.save! if identity.changed?
@@ -108,14 +102,10 @@ class IdentityService
   end
   private_class_method :find_identity
 
-  def self.require_user_name!(user, fallback:)
+  def self.initialize_user_name(user, fallback:)
     return if user.name.present?
 
     user.name = fallback
-    return if user.name.present?
-
-    user.errors.add(:name, :blank)
-    raise ActiveRecord::RecordInvalid, user
   end
-  private_class_method :require_user_name!
+  private_class_method :initialize_user_name
 end

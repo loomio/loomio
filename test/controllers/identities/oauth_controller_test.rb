@@ -8,7 +8,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     %w[OAUTH_AUTH_URL OAUTH_TOKEN_URL OAUTH_PROFILE_URL OAUTH_SCOPE
        OAUTH_ATTR_UID OAUTH_ATTR_NAME OAUTH_ATTR_EMAIL OAUTH_APP_KEY OAUTH_APP_SECRET
        LOOMIO_DISABLE_EDIT_USER_PROFILE LOOMIO_SSO_FORCE_USER_ATTRS
-       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN].each do |key|
+       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN TERMS_URL].each do |key|
       @saved_env[key] = ENV[key]
     end
 
@@ -21,6 +21,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     ENV['OAUTH_ATTR_EMAIL'] = 'email'
     ENV['OAUTH_APP_KEY'] = 'mock_client_id'
     ENV['OAUTH_APP_SECRET'] = 'mock_client_secret'
+    ENV.delete('TERMS_URL')
 
     stub_request(:post, 'https://oauth.provider.com/token')
       .to_return(
@@ -90,6 +91,42 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_equal identity.user, @controller.current_user
     assert_redirected_to '/dashboard'
     assert_equal I18n.t('auth_form.signed_in'), flash[:notice]
+  end
+
+  test "stages SSO account completion before signing in when legal acceptance is required" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+
+    assert_no_difference "Session.count" do
+      get :create, params: oauth_callback_params(code: 'authorization_code_123')
+    end
+
+    user = User.find_by!(email: 'oauth@example.com')
+    assert_nil @controller.current_user.id
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal true, session.dig(:pending_account_completion, :name_managed)
+    assert_equal user.id, session[:pending_user_id]
+  end
+
+  test "asks for a name before signing in when the provider omits it" do
+    stub_request(:get, 'https://oauth.provider.com/userinfo')
+      .to_return(
+        status: 200,
+        body: { sub: 'oauth_user_123', email: 'oauth@example.com' }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    assert_difference ["Identity.count", "User.count"], 1 do
+      assert_no_difference "Session.count" do
+        get :create, params: oauth_callback_params(code: 'authorization_code_123')
+      end
+    end
+
+    user = User.find_by!(email: 'oauth@example.com')
+    assert_nil user.name
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal false, session.dig(:pending_account_completion, :name_managed)
+    assert_equal user.id, session[:pending_user_id]
+    assert_redirected_to dashboard_path
   end
 
   # Create tests - verified user with same email exists
