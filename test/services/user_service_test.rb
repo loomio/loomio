@@ -19,14 +19,11 @@ class UserServiceTest < ActiveSupport::TestCase
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @original_default_onboarding_group_id
   end
 
-  test "new users join the configured onboarding group" do
+  test "new users join the configured onboarding group when account completion supplies a name" do
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
 
-    user = UserService.create(params: {
-      name: 'Onboarding User',
-      email: 'onboarding-user@example.com',
-      legal_accepted: true
-    })
+    user = UserService.create(params: { email: 'onboarding-user@example.com' })
+    UserService.update(user: user, actor: user, params: { name: 'Onboarding User', legal_accepted: true })
 
     membership = Membership.find_by!(group: @group, user: user)
     assert membership.accepted_at
@@ -37,11 +34,8 @@ class UserServiceTest < ActiveSupport::TestCase
     invited_user = User.create!(email: 'invited-onboarding-user@example.com')
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
 
-    user = UserService.create(params: {
-      name: 'Invited Onboarding User',
-      email: invited_user.email,
-      legal_accepted: true
-    })
+    user = UserService.create(params: { email: invited_user.email })
+    UserService.update(user: user, actor: user, params: { name: 'Invited Onboarding User', legal_accepted: true })
 
     assert_equal invited_user, user
     assert Membership.exists?(group: @group, user: user, accepted_at: ...Time.current)

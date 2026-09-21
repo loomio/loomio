@@ -215,6 +215,10 @@ class User < ApplicationRecord
     self.require_valid_signup && ENV['TERMS_URL']
   end
 
+  def account_completion_required?
+    name.blank? || (ENV['TERMS_URL'].present? && legal_accepted_at.blank?)
+  end
+
   def self.email_status_for(email)
     find_by(email: email)&.email_status || :unused
   end

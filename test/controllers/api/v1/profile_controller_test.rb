@@ -8,6 +8,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @group = groups(:group)
     @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     @disable_local_login_previous = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @terms_url_previous = ENV['TERMS_URL']
   end
 
   teardown do
@@ -17,6 +18,32 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     end
     @disable_local_login_previous.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_previous
+    @terms_url_previous.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_previous
+  end
+
+  test "account completion requires name and legal acceptance together" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User' } }, format: :json
+
+    assert_response :unprocessable_entity
+    assert_nil @user.reload.name
+    assert_nil @user.legal_accepted_at
+  end
+
+  test "account completion saves name and legal acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User', legal_accepted: true, email_newsletter: true } }, format: :json
+
+    assert_response :success
+    assert_equal 'Completed User', @user.reload.name
+    assert @user.legal_accepted_at.present?
+    assert @user.email_newsletter?
   end
 
   test "show returns the user json" do

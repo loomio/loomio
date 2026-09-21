@@ -22,6 +22,8 @@ export default
     MemberEmailAliasModal: asyncComponent(() => import('@/components/group/member_email_alias_modal')),
     ChangePasswordForm: asyncComponent(() => import('@/components/profile/change_password_form')),
     CredentialPrompt: asyncComponent(() => import('@/components/profile/credential_prompt')),
+    AccountCompletion: asyncComponent(() => import('@/components/profile/account_completion')),
+    MergeAccountsModal: asyncComponent(() => import('@/components/user/merge_accounts_modal')),
     ChatbotList: asyncComponent(() => import('@/components/chatbot/list')),
     ChatbotMatrixForm: asyncComponent(() => import('@/components/chatbot/matrix_form')),
     ChatbotWebhookForm: asyncComponent(() => import('@/components/chatbot/webhook_form')),

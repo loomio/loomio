@@ -70,9 +70,9 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in']
 
     u = User.find_by(email: "jon@snow.com")
-    assert_equal "Jon Snow", u.name
+    assert_nil u.name
     assert_equal "jon@snow.com", u.email
-    assert u.legal_accepted_at.present?
+    assert_nil u.legal_accepted_at
   end
 
   test "creates a new user with an invalid referrer" do
@@ -109,8 +109,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in']
 
     u.reload
-    assert_equal "Jon Snow", u.name
-    assert u.legal_accepted_at.present?
+    assert_nil u.name
+    assert_nil u.legal_accepted_at
   end
 
   test "sign up via email for existing user (email_verified = true)" do
@@ -154,8 +154,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
 
     u = User.find_by(email: "jon@snow.com")
-    assert_equal "Jon Snow", u.name
-    assert u.legal_accepted_at.present?
+    assert_nil u.name
+    assert_nil u.legal_accepted_at
   end
 
   test "signup via membership with different email address" do
@@ -181,8 +181,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in']
 
     u = User.find_by(email: "changed@example.com")
-    assert_equal "Jon Snow", u.name
-    assert u.legal_accepted_at.present?
+    assert_nil u.name
+    assert_nil u.legal_accepted_at
   end
 
   test "signup via membership of another user" do
@@ -209,8 +209,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in']
 
     u = User.find_by(email: "newuser@example.com")
-    assert_equal "Jon Snow", u.name
-    assert u.legal_accepted_at.present?
+    assert_nil u.name
+    assert_nil u.legal_accepted_at
   end
 
   test "signup via login token" do
@@ -234,8 +234,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
 
     u = User.find_by(email: "jon@snow.com")
-    assert_equal "Jon Snow", u.name
-    assert u.legal_accepted_at.present?
+    assert_nil u.name
+    assert_nil u.legal_accepted_at
   end
 
   test "turnstile bypass: expired login token is not accepted" do
@@ -272,7 +272,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "requires acceptance of legal" do
+  test "defers name and legal acceptance until the verified user completes their account" do
     post :create, params: {
       user: {
         name: "Jon Snow",
@@ -280,6 +280,9 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
       }
     }
 
-    assert_response 422
+    assert_response :success
+    user = User.find_by!(email: "jon@snow.com")
+    assert_nil user.name
+    assert_nil user.legal_accepted_at
   end
 end

@@ -265,9 +265,11 @@ module.exports = function(test, browser) {
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
       page.click('.auth-form__create-account');
-      page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
-      return page.click('.auth-signup-form__submit');
+      page.click('.auth-signup-form__submit');
+      page.fillIn('.account-completion__name input', name);
+      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
+      page.click('.account-completion__submit');
+      return page.click('.credential-prompt__dismiss');
     },
 
     waitFor(selector, wait = 8000) {

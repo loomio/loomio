@@ -4,6 +4,7 @@ import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import CredentialPromptService from '@/shared/services/credential_prompt_service';
+import AccountCompletionService from '@/shared/services/account_completion_service';
 import { I18n } from '@/i18n';
 import {pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 import RestfulClient from '@/shared/record_store/restful_client';
@@ -43,7 +44,9 @@ export default new class AuthService {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
     Flash.fromServer(data.flash);
-    if (data.signed_in_via_login_code) { CredentialPromptService.maybeOpen(); }
+    AccountCompletionService.maybeOpen().then((wasRequired) => {
+      if (!wasRequired && data.signed_in_via_login_code) CredentialPromptService.maybeOpen();
+    });
     if (data.authentication_redirect) { window.location.assign(data.authentication_redirect); }
     return user;
   }
@@ -98,7 +101,7 @@ export default new class AuthService {
 
   signUp(user) {
     return Records.registrations.build(
-      pick(user, ['email', 'name', 'legalAccepted', 'emailNewsletter', 'turnstileToken'])
+      pick(user, ['email', 'turnstileToken'])
     ).save().then(data => {
       if (data.signed_in) {
         this.authSuccess(data);
@@ -137,19 +140,8 @@ export default new class AuthService {
       user.errors.email = [I18n.global.t('auth_form.invalid_email')];
     }
 
-    if (!vars.name) {
-      user.errors.name = [I18n.global.t('auth_form.name_required')];
-    }
-
-    if (AppConfig.theme.terms_url && !vars.legalAccepted) {
-      user.errors.legalAccepted = [I18n.global.t('auth_form.terms_required')];
-    }
-
     if (keys(user.errors)) {
       user.email          = vars.email;
-      user.name           = vars.name;
-      user.legalAccepted  = vars.legalAccepted;
-      user.emailNewsletter = vars.emailNewsletter;
     }
 
     return keys(user.errors).length === 0;

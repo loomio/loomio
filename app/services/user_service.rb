@@ -8,8 +8,7 @@ class UserService
     end
 
     user = User.where(email_verified: false, email: params[:email]).first_or_create
-    user.attributes = params.slice(:name, :email, :legal_accepted, :email_newsletter)
-    user.require_valid_signup = true
+    user.attributes = params.slice(:email)
     user.save
     if user.persisted?
       Sentry.metrics.count("user.sign_up")
@@ -94,7 +93,11 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    
+
+    # Provisional accounts are created with only a verified email address.
+    # Their first profile update must complete the identity and consent fields
+    # together; client-side modal controls are not the security boundary.
+    user.require_valid_signup = true if user.account_completion_required?
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
     
     user.assign_attributes_and_files(params)

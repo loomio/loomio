@@ -1866,6 +1866,9 @@ en:
     add_passkey: Add a passkey
     set_password: Set a password
     not_now: Not now
+  account_completion:
+    complete_your_account: Complete your account
+    continue: Continue
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'
