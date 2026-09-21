@@ -361,9 +361,14 @@ hr:
       flash: E-pošta za potvrdu je poslana!
       helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> možete spojiti s računom <strong>%{targetEmail}</strong> . Kliknite Potvrdi i e-poruka za potvrdu bit će poslana na %{targetEmail} kako biste započeli postupak. Bit ćete odjavljeni kako biste se mogli prijaviti kao ciljni račun za dovršetak spajanja.
       flash_and_signout: E-poruka za potvrdu poslana je na %{targetEmail}. Sada ste odjavljeni pa se možete prijaviti kao ciljni račun kako biste dovršili spajanje.
+      generic_helptext: Unesite adresu e-pošte za drugi račun. Ako taj račun postoji, Loomio će mu poslati e-poštu s uputama za potvrdu spajanja.
+      email_label: E-pošta drugog računa
+      send_verification: Pošalji e-poruku za potvrdu
+      generic_flash_and_signout: Ako račun koristi tu adresu e-pošte, poslana je e-pošta za potvrdu. Sada ste odjavljeni pa možete nastaviti s drugim računom.
     email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
     find_out_more: Saznaj više.
     placeholder_modal_text: <p>Ako želite spojiti dva računa, jednostavno unesite odgovarajuću adresu e-pošte (koja pripada drugom računu) u polje za e-poštu na stranici profila i slijedite upute koje se pojavljuju.</p><p> Trebate pomoć? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
+    email_may_belong_to_another_account: Ako ova adresa pripada drugom računu, možete spojiti račune
   emoji_picker:
     search: traži
     common: Često korišten
@@ -2556,6 +2561,7 @@ hr:
     email_me_a_sign_in_code: Pošalji mi kod za prijavu e-poštom
     sign_in_with_code: Prijavite se s kodom
     new_to_site: Novi ovdje?
+    passkey_recent_authentication_required: Prijavite se ponovno prije promjene lozinki
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu
@@ -3120,6 +3126,10 @@ hr:
     add: Dodajte pristupni ključ
     added: Dodana je lozinka
     created_at: Dodano %{date}
+    remove_named: Ukloni %{name}
+    remove_confirm: Ukloniti pristupni ključ pod nazivom %{name}?
+    removed: Lozinka uklonjena
+    remove_failed: Lozinka nije mogla biti uklonjena
   credential_prompt:
     title: Dodajte još jedan način prijave
     helptext: Dodajte pristupni ključ ili postavite lozinku kako biste se mogli prijaviti bez čekanja na kod poslan e-poštom

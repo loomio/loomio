@@ -361,9 +361,14 @@ he:
       flash: מייל אימות נשלח!
       helptext_and_signout: באפשרותך למזג את החשבון תחת <strong>%{sourceEmail}</strong> עם זה של <strong>%{targetEmail}</strong> . לחץ על אימות ויישלח דוא"ל אימות אל %{targetEmail} כדי להתחיל בתהליך. תתנתק כדי שתוכל להיכנס כחשבון היעד ולהשלים את המיזוג.
       flash_and_signout: אימייל אימות נשלח אל %{targetEmail}. כעת אינך מחובר/ת כך שתוכל/י להיכנס כחשבון היעד כדי להשלים את המיזוג.
+      generic_helptext: הזן את כתובת הדוא"ל של החשבון השני. אם חשבון זה קיים, Loomio ישלח לו דוא"ל עם הוראות לאישור המיזוג.
+      email_label: כתובת דוא"ל של חשבון אחר
+      send_verification: שלח אימייל אימות
+      generic_flash_and_signout: אם חשבון משתמש בכתובת דוא"ל זו, נשלחה הודעת אימות. כעת אינך מחובר כך שתוכל להמשיך עם החשבון האחר.
     email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
     find_out_more: גלה עוד.
     placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .
+    email_may_belong_to_another_account: אם כתובת זו שייכת לחשבון אחר, ניתן למזג את החשבונות
   emoji_picker:
     search: חיפוש
     common: לעיתים קרובות בשימוש
@@ -2575,6 +2580,7 @@ he:
     email_me_a_sign_in_code: שלח לי קוד כניסה בדוא"ל
     sign_in_with_code: התחברות באמצעות קוד
     new_to_site: חדש כאן?
+    passkey_recent_authentication_required: היכנס שוב לפני שינוי סיסמות
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
@@ -3139,6 +3145,10 @@ he:
     add: הוסף סיסמה
     added: סיסמה נוספת
     created_at: נוסף %{date}
+    remove_named: הסר את %{name}
+    remove_confirm: להסיר את הסיסמה בשם %{name}?
+    removed: סיסמת הגישה נוסרה
+    remove_failed: לא ניתן היה להסיר את המפתח
   credential_prompt:
     title: הוסף דרך נוספת להתחברות
     helptext: הוסף קוד גישה או קבע סיסמה כדי שתוכל להיכנס מבלי להמתין לקוד שנשלח בדוא"ל

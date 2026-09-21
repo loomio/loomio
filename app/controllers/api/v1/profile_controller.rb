@@ -132,10 +132,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def email_exists
-    render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
-  end
-
   def send_merge_verification_email
     unless ThrottleService.can?(key: 'MergeVerificationEmail', id: current_user.id, max: 5, per: 'hour')
       render json: { error: 'Rate limit exceeded' }, status: 429

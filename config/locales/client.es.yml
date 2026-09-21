@@ -361,11 +361,16 @@ es:
       helptext: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso.
       helptext_and_signout: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso. Se cerrará tu sesión para que puedas iniciar sesión con la cuenta de destino y completar la fusión.
       flash_and_signout: Se ha enviado un correo electrónico de verificación a %{targetEmail}. Ahora has cerrado sesión para que puedas iniciar sesión como la cuenta de destino y completar la fusión.
+      generic_helptext: Introduce la dirección de correo electrónico de la otra cuenta. Si esa cuenta existe, Loomio le enviará un correo electrónico con instrucciones para confirmar la fusión.
+      email_label: Correo electrónico de otra cuenta
+      send_verification: Enviar correo electrónico de verificación
+      generic_flash_and_signout: Si una cuenta utiliza esa dirección de correo electrónico, se ha enviado un correo electrónico de verificación. Ahora has cerrado sesión para que puedas continuar con la otra cuenta.
     email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
     find_out_more: Descubre más
     placeholder_modal_text: |
       <p>Si os gustaría fusionar dos cuentas juntas, simplemente tienes que poner al dirección de correo electrónico correspondiente (la que pertenece a la otra cuenta) en el campo del email de tu página de perfil y sigue las instrucciones que aparecen.</p>
       <p>Necesitas ayuda? <a href="/contact" target="_blank">Contacta con nosotros</a>.
+    email_may_belong_to_another_account: Si esta dirección pertenece a otra cuenta, puede fusionar las cuentas.
   emoji_picker:
     search: Buscar
     common: Usado con frecuencia
@@ -2590,6 +2595,7 @@ es:
     email_me_a_sign_in_code: Envíame un código de acceso por correo electrónico
     sign_in_with_code: Inicia sesión con un código
     new_to_site: "¿Eres nuevo aquí?"
+    passkey_recent_authentication_required: Inicia sesión de nuevo antes de cambiar tus claves de acceso
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
@@ -3156,6 +3162,10 @@ es:
     add: Agregar clave de acceso
     added: Clave de acceso añadida
     created_at: Agregado %{date}
+    remove_named: Eliminar %{name}
+    remove_confirm: "¿Eliminar la clave de acceso llamada %{name}?"
+    removed: Clave de acceso eliminada
+    remove_failed: No se pudo eliminar la clave de acceso.
   credential_prompt:
     title: Agregar otra forma de iniciar sesión
     helptext: Agrega una clave de acceso o establece una contraseña para que puedas iniciar sesión sin esperar un código por correo electrónico

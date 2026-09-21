@@ -26,8 +26,25 @@ const add = async () => {
     Flash.success('passkey_settings.added');
   } catch (error) {
     if (error?.name !== 'NotAllowedError') {
-      Flash.error('auth_form.passkey_registration_failed');
+      const message = error?.errors?.passkey?.[0];
+      message ? Flash.error(message) : Flash.error('auth_form.passkey_registration_failed');
     }
+  } finally {
+    loading.value = false;
+  }
+};
+
+const remove = async (credential) => {
+  if (!window.confirm(t('passkey_settings.remove_confirm', { name: credential.name }))) return;
+
+  loading.value = true;
+  try {
+    await AuthService.removePasskey(credential.id);
+    await load();
+    Flash.success('passkey_settings.removed');
+  } catch (error) {
+    const message = error?.errors?.passkey?.[0];
+    message ? Flash.error(message) : Flash.error('passkey_settings.remove_failed');
   } finally {
     loading.value = false;
   }
@@ -46,6 +63,13 @@ v-card.passkey-settings.mt-4(v-if="supported" :title="t('passkey_settings.title'
           common-icon(name="mdi-key-variant")
         v-list-item-title {{ credential.name }}
         v-list-item-subtitle {{ t('passkey_settings.created_at', { date: approximate(new Date(credential.created_at)) }) }}
+        template(v-slot:append)
+          v-btn.passkey-settings__remove(
+            icon="mdi-delete-outline"
+            variant="text"
+            :aria-label="t('passkey_settings.remove_named', { name: credential.name })"
+            :disabled="loading"
+            @click="remove(credential)")
     p(v-else) {{ t('passkey_settings.none') }}
     v-text-field.passkey-settings__name.mt-4(
       v-model="name"

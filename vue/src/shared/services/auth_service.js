@@ -53,6 +53,10 @@ export default new class AuthService {
     return passkeys.get('');
   }
 
+  removePasskey(id) {
+    return passkeys.destroy(id);
+  }
+
   signIn(user) {
     if (user == null) { user = {}; }
     return Records.sessions.build(

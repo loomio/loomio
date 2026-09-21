@@ -51,15 +51,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
     return this.remote.post('save_experience', {experience: name, value});
   }
 
-  checkEmailExistence(email) {
-    return this.fetch({
-      path: 'email_exists',
-      params: {
-        email
-      }
-    });
-  }
-
   sendMergeVerificationEmail(targetEmail) {
     return this.remote.post('send_merge_verification_email', {
       target_email: targetEmail

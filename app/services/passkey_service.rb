@@ -2,14 +2,28 @@ module PasskeyService
   CHALLENGE_REGISTRATION = :passkey_registration_challenge
   CHALLENGE_AUTHENTICATION = :passkey_authentication_challenge
   CHALLENGE_TTL = 5.minutes
+  RECENT_AUTHENTICATION_TTL = 10.minutes
 
-  def self.relying_party(origin:, rp_id:)
+  def self.relying_party(request_origin:, request_rp_id:)
+    canonical_host = ENV["CANONICAL_HOST"].presence
+    canonical_port = ENV["CANONICAL_PORT"].presence
+    canonical_scheme = ENV.key?("FORCE_SSL") ? "https" : "http"
+    origin = if canonical_host
+      "#{canonical_scheme}://#{canonical_host}#{canonical_port ? ":#{canonical_port}" : ""}"
+    else
+      request_origin
+    end
+
     WebAuthn::RelyingParty.new(
       allowed_origins: [origin],
-      id: rp_id,
+      id: canonical_host || request_rp_id,
       name: AppConfig.theme[:site_name],
       verify_attestation_statement: false
     )
+  end
+
+  def self.recently_authenticated?(session_record)
+    session_record&.created_at && session_record.created_at >= RECENT_AUTHENTICATION_TTL.ago
   end
 
   def self.ensure_webauthn_id!(user)

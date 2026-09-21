@@ -361,9 +361,14 @@ sl:
       flash: Potrditveno e-poštno sporočilo je poslano!
       helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in na %{targetEmail} bo poslano potrditveno e-poštno sporočilo za začetek postopka. Odjavljeni boste, da se boste lahko prijavili kot ciljni račun za dokončanje združitve.
       flash_and_signout: Potrditveno e-poštno sporočilo je bilo poslano na %{targetEmail}. Zdaj ste odjavljeni, zato se lahko prijavite kot ciljni račun in dokončate združitev.
+      generic_helptext: Vnesite e-poštni naslov drugega računa. Če ta račun obstaja, mu bo Loomio poslal e-pošto z navodili za potrditev združitve.
+      email_label: E-poštni naslov drugega računa
+      send_verification: Pošlji potrditveno e-pošto
+      generic_flash_and_signout: Če račun uporablja ta e-poštni naslov, je bilo poslano potrditveno e-poštno sporočilo. Zdaj ste odjavljeni, tako da lahko nadaljujete z drugim računom.
     email_taken: Žal je ta e-poštni naslov že povezan z drugim uporabnikom. Ali ta e-pošta pripada vam?
     find_out_more: Izvedi več.
     placeholder_modal_text: <p>Če želite združiti dva računa, preprosto vnesite ustrezni e-poštni naslov (ki pripada drugemu računu) v polje za e-pošto na strani profila in sledite navodilom, ki se prikažejo.</p><p> Rabim pomoč? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
+    email_may_belong_to_another_account: Če ta naslov pripada drugemu računu, lahko račune združite.
   emoji_picker:
     search: Išči
     common: Pogosto uporabljen
@@ -2556,6 +2561,7 @@ sl:
     email_me_a_sign_in_code: Pošlji mi prijavno kodo po e-pošti
     sign_in_with_code: Prijava s kodo
     new_to_site: Nov tukaj?
+    passkey_recent_authentication_required: Preden spremenite gesla, se znova prijavite
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava
@@ -3120,6 +3126,10 @@ sl:
     add: Dodaj geslo
     added: Geslo dodano
     created_at: Dodano %{date}
+    remove_named: Odstrani %{name}
+    remove_confirm: Odstranim geslo z imenom %{name}?
+    removed: Geslo odstranjeno
+    remove_failed: Gesla ni bilo mogoče odstraniti
   credential_prompt:
     title: Dodaj še en način prijave
     helptext: Dodajte geslo ali nastavite geslo, da se boste lahko prijavili, ne da bi čakali na kodo, poslano po e-pošti

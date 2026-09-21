@@ -361,11 +361,16 @@ ca:
       flash: S'ha enviat un correu electrònic de verificació!
       helptext_and_signout: Podeu fusionar el compte de <strong>%{sourceEmail}</strong> amb el de <strong>%{targetEmail}</strong> . Feu clic a Verifica i s'enviarà un correu electrònic de verificació a %{targetEmail} per iniciar el procés. Es tancarà la sessió perquè pugueu iniciar la sessió com a compte de destinació per completar la fusió.
       flash_and_signout: Correu electrònic de verificació enviat a %{targetEmail}. Ara has tancat la sessió i pots iniciar-la com a compte de destinació per completar la combinació.
+      generic_helptext: Introduïu l'adreça electrònica de l'altre compte. Si aquest compte existeix, Loomio li enviarà un correu electrònic amb instruccions per confirmar la fusió.
+      email_label: Correu electrònic d'un altre compte
+      send_verification: Enviar correu electrònic de verificació
+      generic_flash_and_signout: Si un compte utilitza aquesta adreça electrònica, s'ha enviat un correu electrònic de verificació. Ara has tancat la sessió i pots continuar amb l'altre compte.
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |
       <p> Si voleu combinar dos comptes, introduiu la direcció de correu electrònic (la que pertany a l'altre compte) al camp de correu electrònic del vostre perfil, i seguiu les intruccions que apareixeran a continuació.</p>
       <p>Necessiteu ajuda? <a href="/contact" target="_blank">Contacti amb nosaltres</a>.
+    email_may_belong_to_another_account: Si aquesta adreça pertany a un altre compte, podeu fusionar els comptes
   emoji_picker:
     search: Cerca
     common: Usats sovint
@@ -2581,6 +2586,7 @@ ca:
     email_me_a_sign_in_code: Envia'm un codi d'inici de sessió per correu electrònic
     sign_in_with_code: Inicia la sessió amb un codi
     new_to_site: Ets nou aquí?
+    passkey_recent_authentication_required: Torna a iniciar la sessió abans de canviar les claus d'accés
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió
@@ -3147,6 +3153,10 @@ ca:
     add: Afegeix una contrasenya
     added: Clau d'accés afegida
     created_at: Afegit %{date}
+    remove_named: Elimina %{name}
+    remove_confirm: Voleu eliminar la clau d'accés anomenada %{name}?
+    removed: Clau d'accés eliminada
+    remove_failed: No s'ha pogut eliminar la clau d'accés
   credential_prompt:
     title: Afegeix una altra manera d'iniciar la sessió
     helptext: Afegeix una clau d'accés o estableix una contrasenya per poder iniciar la sessió sense esperar un codi enviat per correu electrònic

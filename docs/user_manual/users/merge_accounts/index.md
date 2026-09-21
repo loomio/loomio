@@ -16,23 +16,18 @@ You need access to both accounts and to the email address of the account you wan
 
 1. Sign in to the **account you want to retire**.
 2. Open the sidebar, select your name, and select **Edit profile**.
-3. In the **Email** field, enter the email address of the **account you want to keep**. Loomio recognizes that the email address already belongs to another account and displays a **Merge accounts** link.
+3. In the **Email** field, enter the email address of the **account you want to keep**, then select **Merge accounts**. Loomio does not confirm whether an account exists at an address because that information is private.
 
-![The Edit Profile page with the target account email and Merge accounts link highlighted](merge_accounts_profile.png)
-
-4. Select **Merge accounts**. Check that the account shown first is the one you want to retire and the account shown second is the one you want to keep.
-5. Select **Verify**. Loomio sends a verification email to the account you want to keep and signs you out.
-
-![The merge accounts verification dialog with the Verify button highlighted](merge_accounts_verify.png)
+4. Enter the address of the account you want to keep and select **Send verification email**. Loomio always shows the same confirmation and signs you out. If an account uses that address, Loomio sends it the verification email.
 
 ## Verify the account you want to keep
 
-6. Open the verification email sent to the address of the account you want to keep and select **Verify email and proceed**.
+5. Open the verification email sent to the address of the account you want to keep and select **Verify email and proceed**.
 
 ![The merge verification email with the Verify email and proceed button highlighted](merge_accounts_email.png)
 
-7. Sign in as the account you want to keep if Loomio asks you to sign in.
-8. On the **Confirm merge** page, check both email addresses again. Select **Merge accounts** to complete the merge.
+6. Sign in as the account you want to keep if Loomio asks you to sign in.
+7. On the **Confirm merge** page, check both email addresses again. Select **Merge accounts** to complete the merge.
 
 ![The final confirmation page with the Merge accounts button highlighted](merge_accounts_confirm.png)
 

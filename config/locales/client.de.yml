@@ -367,11 +367,16 @@ de:
       flash: Bestättigungsmail geschickt!
       helptext_and_signout: Du kannst das Konto unter <strong>%{sourceEmail}</strong> mit dem Konto unter <strong>%{targetEmail}</strong> zusammenführen. Klicke auf „Bestätigen“. Daraufhin wird eine Bestätigungs-E-Mail an %{targetEmail} gesendet, um den Vorgang zu starten. Du wirst abgemeldet, damit du dich mit dem Zielkonto anmelden und die Zusammenführung abschließen kannst.
       flash_and_signout: Eine Bestätigungs-E-Mail wurde an %{targetEmail} gesendet. Du bist nun abgemeldet und kannst dich mit dem Zielkonto anmelden, um die Zusammenführung abzuschließen.
+      generic_helptext: Geben Sie die E-Mail-Adresse des anderen Kontos ein. Falls dieses Konto existiert, sendet Loomio eine E-Mail mit Anweisungen zur Bestätigung der Zusammenführung.
+      email_label: E-Mail-Adresse des anderen Kontos
+      send_verification: Bestätigungs-E-Mail senden
+      generic_flash_and_signout: Wenn dieses Konto diese E-Mail-Adresse verwendet, wurde eine Bestätigungs-E-Mail versendet. Sie sind nun abgemeldet und können mit dem anderen Konto fortfahren.
     email_taken: Entschuldige, diese Email ist bereits mit einem anderen Nutzerkonto verbunden. Gehört diese Email zu dir?
     find_out_more: Finde mehr heraus.
     placeholder_modal_text: |
       <p>Wenn du zwei Konten zusammenführen willst, gib einfach die Email-Adresse (des anderen Kontos) in dein Profil Email-Feld ein und folge den dann erscheinenden Anweisungen.</p>
       <p>Brauchst du mehr Hilfe? <a href="/contact" target="_blank">Kontaktiere uns</a>.
+    email_may_belong_to_another_account: Wenn diese Adresse zu einem anderen Konto gehört, können Sie die Konten zusammenführen.
   emoji_picker:
     search: Suchen
     common: 'Oft verwendet '
@@ -2589,6 +2594,7 @@ de:
     email_me_a_sign_in_code: Senden Sie mir bitte einen Anmeldecode per E-Mail.
     sign_in_with_code: Mit einem Code anmelden
     new_to_site: Neu hier?
+    passkey_recent_authentication_required: Melden Sie sich erneut an, bevor Sie Ihre Passwörter ändern.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -3155,6 +3161,10 @@ de:
     add: Passkey hinzufügen
     added: Passkey hinzugefügt
     created_at: Hinzugefügt %{date}
+    remove_named: Entferne %{name}
+    remove_confirm: Den Passkey mit dem Namen %{name} entfernen?
+    removed: Passkey entfernt
+    remove_failed: Der Passkey konnte nicht entfernt werden.
   credential_prompt:
     title: Fügen Sie eine weitere Anmeldemöglichkeit hinzu.
     helptext: Fügen Sie einen Passkey hinzu oder legen Sie ein Passwort fest, damit Sie sich anmelden können, ohne auf einen per E-Mail zugesendeten Code warten zu müssen.

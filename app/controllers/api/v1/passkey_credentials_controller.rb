@@ -1,6 +1,7 @@
 class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
   include RequiresLocalLogin
-  before_action :require_current_user, only: [:index, :registration_options, :create]
+  before_action :require_current_user, only: [:index, :registration_options, :create, :destroy]
+  before_action :require_recent_authentication, only: [:registration_options, :create, :destroy]
 
   def index
     render json: {
@@ -54,6 +55,11 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
     render json: { errors: { passkey: [I18n.t('auth_form.passkey_registration_failed')] } }, status: :unprocessable_entity
   end
 
+  def destroy
+    current_user.passkey_credentials.find(params[:id]).destroy!
+    render json: { success: true }
+  end
+
   # Discoverable credentials deliberately omit an allow list. The authenticator
   # chooses an account locally and returns an opaque credential ID only after
   # user verification, so this endpoint does not accept or disclose an email.
@@ -74,7 +80,7 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
         challenge,
         user_verification: true
       ) do |credential|
-        PasskeyCredential.lock.includes(:user).find_by(external_id: credential.id)
+        PasskeyCredential.lock.includes(:user).find_by!(external_id: credential.id)
       end
 
       user = stored_credential&.user
@@ -104,7 +110,13 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
   private
 
   def relying_party
-    PasskeyService.relying_party(origin: request.base_url, rp_id: request.host)
+    PasskeyService.relying_party(request_origin: request.base_url, request_rp_id: request.host)
+  end
+
+  def require_recent_authentication
+    return if PasskeyService.recently_authenticated?(Current.session)
+
+    render json: { errors: { passkey: [I18n.t('auth_form.passkey_recent_authentication_required')] } }, status: :forbidden
   end
 
   def credential_params

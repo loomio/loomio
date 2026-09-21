@@ -361,9 +361,14 @@ da:
       flash: Bekræftelsesmail sendt!
       helptext_and_signout: Du kan flette kontoen under <strong>%{sourceEmail}</strong> ind i kontoen <strong>%{targetEmail}</strong> . Klik på Bekræft, og en bekræftelsesmail sendes til %{targetEmail} for at starte processen. Du logges ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
       flash_and_signout: Bekræftelsesmail sendt til %{targetEmail}. Du er nu logget ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
+      generic_helptext: Indtast e-mailadressen for den anden konto. Hvis den konto findes, sender Loomio den en e-mail med instruktioner til at bekræfte sammenflettelsen.
+      email_label: Anden kontos e-mail
+      send_verification: Send bekræftelsesmail
+      generic_flash_and_signout: Hvis en konto bruger den e-mailadresse, er der sendt en bekræftelsesmail. Du er nu logget ud, så du kan fortsætte med den anden konto.
     email_taken: Beklager, den e-mail er allerede knyttet til en anden bruger. Tilhører den e-mail dig?
     find_out_more: Find ud af mere.
     placeholder_modal_text: <p>Hvis du gerne vil flette to konti sammen, skal du blot indtaste den respektive e-mailadresse (der hører til den anden konto) i e-mailfeltet på din profilside og følge instruktionerne, der vises.</p><p> Brug for hjælp? <a href="/contact" target="_blank">Kontakt os</a> .
+    email_may_belong_to_another_account: Hvis denne adresse tilhører en anden konto, kan du flette kontiene
   emoji_picker:
     search: Søg
     common: Hyppigt brugt
@@ -2556,6 +2561,7 @@ da:
     email_me_a_sign_in_code: Send mig en loginkode via e-mail
     sign_in_with_code: Log ind med en kode
     new_to_site: Ny her?
+    passkey_recent_authentication_required: Log ind igen, før du ændrer dine adgangskoder
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse
@@ -3120,6 +3126,10 @@ da:
     add: Tilføj adgangsnøgle
     added: Adgangsnøgle tilføjet
     created_at: Tilføjet %{date}
+    remove_named: Fjern %{name}
+    remove_confirm: Fjern adgangskoden %{name}?
+    removed: Adgangsnøgle fjernet
+    remove_failed: Adgangsnøglen kunne ikke fjernes
   credential_prompt:
     title: Tilføj en anden måde at logge ind på
     helptext: Tilføj en adgangskode eller angiv en adgangskode, så du kan logge ind uden at vente på en kode sendt via e-mail

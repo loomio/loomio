@@ -369,11 +369,16 @@ pt_BR:
       flash: O email de verificação foi enviado!
       helptext_and_signout: Você pode mesclar a conta em <strong>%{sourceEmail}</strong> com a conta em <strong>%{targetEmail}</strong> . Clique em Verificar e um e-mail de verificação será enviado para %{targetEmail} para iniciar o processo. Você será desconectado para que possa entrar com a conta de destino e concluir a mesclagem.
       flash_and_signout: E-mail de verificação enviado para %{targetEmail}. Você foi desconectado e agora pode entrar com a conta de destino para concluir a mesclagem.
+      generic_helptext: Insira o endereço de e-mail da outra conta. Se essa conta existir, o Loomio enviará um e-mail com instruções para confirmar a fusão.
+      email_label: Outro e-mail da conta
+      send_verification: Enviar e-mail de verificação
+      generic_flash_and_signout: Se uma conta utiliza esse endereço de e-mail, um e-mail de verificação foi enviado. Você foi desconectado e agora pode continuar usando a outra conta.
     email_taken: Desculpe, esse email já está associado a outro usuário. Esse email pertence a você?
     find_out_more: Descubra mais
     placeholder_modal_text: |
       <p>Se você quer mesclar duas contas, simplesmente digite o endereço de email (pertencente a outra conta) dentro do campo de email na página do seu Perfil, e siga as instruções que aparecerão.</p>
       <p>Precisa de Ajuda? <a href="/contact" target="_blank">Entre em contato conosco</a>.
+    email_may_belong_to_another_account: Se este endereço pertencer a outra conta, você poderá mesclar as contas.
   emoji_picker:
     search: Pesquisar
     common: Usado com frequência
@@ -2602,6 +2607,7 @@ pt_BR:
     email_me_a_sign_in_code: Envie-me um código de acesso por e-mail.
     sign_in_with_code: Faça login com um código
     new_to_site: É novo por aqui?
+    passkey_recent_authentication_required: Faça login novamente antes de alterar suas senhas.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste
@@ -3168,6 +3174,10 @@ pt_BR:
     add: Adicionar chave de acesso
     added: Senha adicionada
     created_at: Adicionado %{date}
+    remove_named: Remover %{name}
+    remove_confirm: Remover a chave de acesso chamada %{name}?
+    removed: Senha removida
+    remove_failed: A chave de acesso não pôde ser removida.
   credential_prompt:
     title: Adicionar outra forma de fazer login
     helptext: Adicione uma chave de acesso ou defina uma senha para que você possa entrar sem precisar esperar por um código enviado por e-mail.

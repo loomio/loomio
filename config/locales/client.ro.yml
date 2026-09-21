@@ -361,9 +361,14 @@ ro:
       flash: Email de verificare trimis!
       helptext_and_signout: Puteți îmbina contul de sub <strong>%{sourceEmail}</strong> cu cel al contului <strong>%{targetEmail}</strong> . Faceți clic pe Verificare și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul. Veți fi deconectat, astfel încât să vă puteți conecta ca și contul țintă pentru a finaliza îmbinarea.
       flash_and_signout: E-mail de verificare trimis la %{targetEmail}. Acum sunteți deconectat, așa că vă puteți conecta ca și cont țintă pentru a finaliza îmbinarea.
+      generic_helptext: Introduceți adresa de e-mail pentru celălalt cont. Dacă acel cont există, Loomio îi va trimite un e-mail cu instrucțiuni pentru a confirma îmbinarea.
+      email_label: Adresă de e-mail a altei conturi
+      send_verification: Trimiteți e-mailul de verificare
+      generic_flash_and_signout: Dacă un cont folosește acea adresă de e-mail, ți s-a trimis un e-mail de verificare. Acum ești deconectat, astfel încât să poți continua cu celălalt cont.
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .
+    email_may_belong_to_another_account: Dacă această adresă aparține unui alt cont, puteți îmbina conturile
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -2556,6 +2561,7 @@ ro:
     email_me_a_sign_in_code: Trimiteți-mi prin e-mail un cod de conectare
     sign_in_with_code: Conectați-vă cu un cod
     new_to_site: Nou pe aici?
+    passkey_recent_authentication_required: Conectați-vă din nou înainte de a schimba cheile de acces
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -3120,6 +3126,10 @@ ro:
     add: Adăugați o cheie de acces
     added: Cheie de acces adăugată
     created_at: Adăugat %{date}
+    remove_named: Eliminați %{name}
+    remove_confirm: Eliminați cheia de acces numită %{name}?
+    removed: Cheia de acces a fost eliminată
+    remove_failed: Cheia de acces nu a putut fi eliminată
   credential_prompt:
     title: Adăugați o altă modalitate de conectare
     helptext: Adăugați o cheie de acces sau setați o parolă pentru a vă putea conecta fără a aștepta un cod trimis prin e-mail

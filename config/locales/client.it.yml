@@ -369,11 +369,16 @@ it:
       flash: Email di verifica inviato!
       helptext_and_signout: Puoi unire l'account di <strong>%{sourceEmail}</strong> con quello di <strong>%{targetEmail}</strong> . Fai clic su Verifica e un'email di verifica verrà inviata a %{targetEmail} per avviare la procedura. Verrai disconnesso per poter accedere con l'account di destinazione e completare l'unione.
       flash_and_signout: Email di verifica inviata a %{targetEmail}. Hai effettuato il logout, quindi puoi accedere con l'account di destinazione per completare l'unione.
+      generic_helptext: Inserisci l'indirizzo email dell'altro account. Se tale account esiste, Loomio invierà un'email con le istruzioni per confermare l'unione.
+      email_label: Altro indirizzo email dell'account
+      send_verification: Invia l'email di verifica
+      generic_flash_and_signout: Se un account utilizza quell'indirizzo email, è stata inviata un'email di verifica. Ora sei disconnesso e puoi continuare con l'altro account.
     email_taken: Spiacenti, quell'e-mail è già associata a un altro utente. Quell'email ti appartiene?
     find_out_more: Sappi di più
     placeholder_modal_text: |
       <p>Se desidereresti unire due account insieme, è sufficiente inserire il rispettivo indirizzo e-mail (appartenente all'altro account) nel campo e-mail della pagina profilo e seguire le istruzioni visualizzate.</p>
       <p>Aiuterti necessario?<a href="/contact" target="_blank"> Contattaci</a>.
+    email_may_belong_to_another_account: Se questo indirizzo appartiene a un altro account, è possibile unire gli account
   emoji_picker:
     search: Ricerca
     common: Frequentemente usato
@@ -2584,6 +2589,7 @@ it:
     email_me_a_sign_in_code: Inviami via email il codice di accesso
     sign_in_with_code: Accedi con un codice
     new_to_site: Sei nuovo qui?
+    passkey_recent_authentication_required: Effettua nuovamente l'accesso prima di modificare le tue password.
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection
@@ -3148,6 +3154,10 @@ it:
     add: Aggiungi password
     added: Parkey ha aggiunto
     created_at: Aggiunto %{date}
+    remove_named: Rimuovi %{name}
+    remove_confirm: Rimuovere la chiave di accesso denominata %{name}?
+    removed: Password rimossa
+    remove_failed: Impossibile rimuovere la password
   credential_prompt:
     title: Aggiungi un altro metodo di accesso
     helptext: Aggiungi un codice di accesso o imposta una password per poter accedere senza dover attendere il codice inviato via email.

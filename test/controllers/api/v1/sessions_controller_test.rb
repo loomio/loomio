@@ -30,6 +30,19 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "SSO-only mode still allows an existing session to sign out" do
+    user = User.create!(email: "sso-logout@example.com", email_verified: true)
+    sign_in user
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+
+    assert_difference "Session.count", -1 do
+      delete :destroy
+    end
+
+    assert_response :success
+    assert_nil Current.session
+  end
+
   test "turnstile required: rejects password sign-in without token" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
     user = User.create!(email: "captcha1@example.com", email_verified: true, password: "s3curepassword123")

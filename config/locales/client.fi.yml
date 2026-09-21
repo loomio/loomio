@@ -361,9 +361,14 @@ fi:
       flash: Vahvistussähköposti lähetetty!
       helptext_and_signout: Voit yhdistää tilin <strong>%{sourceEmail}</strong> alta tilin <strong>%{targetEmail}</strong> tiliin. Napsauta Vahvista, niin vahvistussähköposti lähetetään osoitteeseen %{targetEmail} prosessin aloittamiseksi. Sinut kirjataan ulos, jotta voit kirjautua sisään kohdetilinä yhdistämisen loppuun saattamiseksi.
       flash_and_signout: Vahvistussähköposti lähetetty osoitteeseen %{targetEmail}. Olet nyt kirjautunut ulos, joten voit kirjautua sisään kohdetilinä ja viimeistellä yhdistämisen.
+      generic_helptext: Anna toisen tilin sähköpostiosoite. Jos tili on olemassa, Loomio lähettää sille sähköpostin, jossa on ohjeet yhdistämisen vahvistamiseksi.
+      email_label: Muun tilin sähköpostiosoite
+      send_verification: Lähetä vahvistussähköposti
+      generic_flash_and_signout: Jos tili käyttää kyseistä sähköpostiosoitetta, vahvistussähköposti on lähetetty. Olet nyt kirjautunut ulos, joten voit jatkaa toisen tilin käyttöä.
     email_taken: Valitettavasti tämä sähköposti on jo liitetty toiseen käyttäjään. Kuuluuko tuo sähköposti sinulle?
     find_out_more: Lue lisää.
     placeholder_modal_text: <p>Jos haluat yhdistää kaksi tiliä, kirjoita vain vastaava sähköpostiosoite (joka kuuluu toiselle tilille) Profiilisivusi sähköpostikenttään ja seuraa näkyviin tulevia ohjeita.</p><p> Tarvitsetko apua? <a href="/contact" target="_blank">Ota meihin yhteyttä</a> .
+    email_may_belong_to_another_account: Jos tämä osoite kuuluu toiselle tilille, voit yhdistää tilit
   emoji_picker:
     search: Hae
     common: Usein käytetty
@@ -2556,6 +2561,7 @@ fi:
     email_me_a_sign_in_code: Lähetä minulle kirjautumiskoodi sähköpostitse
     sign_in_with_code: Kirjaudu sisään koodilla
     new_to_site: Uusi täällä?
+    passkey_recent_authentication_required: Kirjaudu uudelleen sisään ennen salasanojen vaihtamista
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys
@@ -3120,6 +3126,10 @@ fi:
     add: Lisää salasana
     added: Salasana lisätty
     created_at: Lisätty %{date}
+    remove_named: Poista %{name}
+    remove_confirm: Poistetaanko salasana nimeltä %{name}?
+    removed: Salasana poistettu
+    remove_failed: Salasanaa ei voitu poistaa
   credential_prompt:
     title: Lisää toinen kirjautumistapa
     helptext: Lisää salasana tai aseta salasana, jotta voit kirjautua sisään odottamatta sähköpostitse lähetettyä koodia.

@@ -360,9 +360,14 @@ ja:
       flash: 確認メールを送信しました!
       helptext_and_signout: "<strong>%{sourceEmail}</strong>のアカウントを<strong>%{targetEmail}</strong>のアカウントに統合できます。[確認] をクリックすると、プロセスを開始するための確認メールが %{targetEmail} に送信されます。統合を完了するには、統合先のアカウントでログインできるよう、ログアウトされます。"
       flash_and_signout: 確認メールが%{targetEmail}に送信されました。ログアウトされましたので、対象アカウントでログインして統合を完了してください。
+      generic_helptext: もう一方のアカウントのメールアドレスを入力してください。そのアカウントが存在する場合、Loomioはそのアカウントに統合確認の手順を記載したメールを送信します。
+      email_label: その他のアカウントのメールアドレス
+      send_verification: 確認メールを送信する
+      generic_flash_and_signout: そのメールアドレスを使用しているアカウントの場合、確認メールが送信されています。ログアウトしましたので、別のアカウントで引き続き操作できます。
     email_taken: 申し訳ありませんが、そのメールはすでに別のユーザーに関連付けられています。そのメールはあなたのものですか?
     find_out_more: もっと詳しく調べてください。
     placeholder_modal_text: <p>2 つのアカウントを統合したい場合は、プロフィール ページの電子メール フィールドにそれぞれの電子メール アドレス (もう一方のアカウントに属する) を入力し、表示される指示に従ってください。</p><p>助けが必要？<a href="/contact" target="_blank">お問い合わせください</a>。
+    email_may_belong_to_another_account: このアドレスが別のアカウントに属している場合は、アカウントを統合できます。
   emoji_picker:
     search: 検索
     common: 頻繁に使用される
@@ -2555,6 +2560,7 @@ ja:
     email_me_a_sign_in_code: ログインコードをメールで送ってください
     sign_in_with_code: コードでサインイン
     new_to_site: ここは初めてですか？
+    passkey_recent_authentication_required: パスキーを変更する前に、再度ログインしてください。
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
@@ -3119,6 +3125,10 @@ ja:
     add: パスキーを追加
     added: Passkeyが追加されました
     created_at: "%{date}を追加しました"
+    remove_named: "%{name} を削除します"
+    remove_confirm: "%{name}という名前のパスキーを削除しますか？"
+    removed: パスキーが削除されました
+    remove_failed: パスキーを削除できませんでした
   credential_prompt:
     title: 別のログイン方法を追加する
     helptext: パスキーを追加するかパスワードを設定すれば、メールで送られてくるコードを待たずにサインインできます。

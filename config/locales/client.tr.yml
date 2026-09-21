@@ -361,9 +361,14 @@ tr:
       flash: Doğrulama e-postası gönderildi!
       helptext_and_signout: "<strong>%{sourceEmail}</strong> altındaki hesabı <strong>%{targetEmail}</strong> hesabına birleştirebilirsiniz. Doğrula'ya tıklayın ve işlemi başlatmak için %{targetEmail} adresine bir doğrulama e-postası gönderilecektir. Birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilmeniz için oturumunuz kapatılacaktır."
       flash_and_signout: Doğrulama e-postası %{targetEmail} adresine gönderildi. Artık oturumunuz kapatıldı, birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilirsiniz.
+      generic_helptext: Diğer hesabın e-posta adresini girin. Eğer bu hesap mevcutsa, Loomio birleştirmeyi onaylamak için talimatlar içeren bir e-posta gönderecektir.
+      email_label: Diğer hesap e-postası
+      send_verification: Doğrulama e-postası gönder
+      generic_flash_and_signout: Eğer bir hesap bu e-posta adresini kullanıyorsa, bir doğrulama e-postası gönderilmiştir. Artık oturumunuz kapatıldı, böylece diğer hesabınızla devam edebilirsiniz.
     email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
     find_out_more: Daha fazla bilgi.
     placeholder_modal_text: <p>İki hesabı birleştirmek istiyorsanız, ilgili e-posta adresini (diğer hesaba ait olan) Profil sayfanızın e-posta alanına girmeniz ve görüntülenen talimatları izlemeniz yeterlidir.</p><p> Yardıma mı ihtiyacınız var? <a href="/contact" target="_blank">Bizimle iletişime geçin</a> .
+    email_may_belong_to_another_account: Bu adres başka bir hesaba aitse, hesapları birleştirebilirsiniz.
   emoji_picker:
     search: Arama
     common: Sıklıkla kullanılan
@@ -2556,6 +2561,7 @@ tr:
     email_me_a_sign_in_code: Bana giriş kodunu e-posta ile gönder.
     sign_in_with_code: Kod ile giriş yapın
     new_to_site: Yeni misiniz?
+    passkey_recent_authentication_required: Parolalarınızı değiştirmeden önce tekrar giriş yapın.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
@@ -3120,6 +3126,10 @@ tr:
     add: Parola ekle
     added: Parola eklendi.
     created_at: "%{date} tarihinde eklendi."
+    remove_named: "%{name}'i kaldır"
+    remove_confirm: "%{name} adlı parolayı kaldırmak mı istiyorsunuz?"
+    removed: Parola kaldırıldı.
+    remove_failed: Parola kaldırılamadı.
   credential_prompt:
     title: Başka bir giriş yöntemi ekleyin
     helptext: E-posta ile gönderilen kodu beklemeden giriş yapabilmek için bir parola ekleyin veya şifre belirleyin.

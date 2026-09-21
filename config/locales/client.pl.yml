@@ -361,11 +361,16 @@ pl:
       flash: E-mail weryfikacyjny został wysłany!
       helptext_and_signout: Możesz połączyć konto z adresu <strong>%{sourceEmail}</strong> z kontem <strong>%{targetEmail}</strong> . Kliknij Zweryfikuj, a na adres %{targetEmail} zostanie wysłany e-mail weryfikacyjny, aby rozpocząć proces. Zostaniesz wylogowany, aby móc zalogować się jako konto docelowe i dokończyć scalanie.
       flash_and_signout: E-mail weryfikacyjny został wysłany na adres %{targetEmail}. Zostałeś wylogowany, więc możesz zalogować się jako konto docelowe, aby dokończyć scalanie.
+      generic_helptext: Wprowadź adres e-mail drugiego konta. Jeśli to konto istnieje, Loomio wyśle mu wiadomość e-mail z instrukcjami potwierdzenia scalenia.
+      email_label: Inny adres e-mail konta
+      send_verification: Wyślij e-mail weryfikacyjny
+      generic_flash_and_signout: Jeśli konto korzysta z tego adresu e-mail, wysłano wiadomość weryfikacyjną. Zostałeś wylogowany, więc możesz kontynuować z innego konta.
     email_taken: Przepraszamy, ale ten adres e-mail jest już połączony z innym użytkownikiem. Czy należy on do Ciebie?
     find_out_more: 'Dowiedz się wiecej. '
     placeholder_modal_text: |
       <p>Jeżeli chciałbyś połączyć dwa konta razem, po prostu wprowadź odpowiedni adres e-mail (należący do drugiego konta) w pole e-mail na swoim Profilu, i postępuj zgodnie z wyświetlanymi instrukcjami. </p>
       <p>Potrzebujesz pomocy? <a href="/contact" target="_blank">Skontaktuj się z nami.</a>
+    email_may_belong_to_another_account: Jeśli ten adres należy do innego konta, możesz połączyć konta
   emoji_picker:
     search: Szukaj
     common: Ostatnio używane
@@ -2581,6 +2586,7 @@ pl:
     email_me_a_sign_in_code: Wyślij mi kod logowania e-mailem
     sign_in_with_code: Zaloguj się za pomocą kodu
     new_to_site: Nowy tutaj?
+    passkey_recent_authentication_required: Przed zmianą kluczy dostępu zaloguj się ponownie
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe
@@ -3147,6 +3153,10 @@ pl:
     add: Dodaj klucz dostępu
     added: Dodano klucz dostępu
     created_at: Dodano %{date}
+    remove_named: Usuń %{name}
+    remove_confirm: Usunąć klucz dostępu o nazwie %{name}?
+    removed: Klucz dostępu usunięty
+    remove_failed: Nie można usunąć klucza dostępu
   credential_prompt:
     title: Dodaj inny sposób logowania
     helptext: Dodaj klucz dostępu lub ustaw hasło, aby móc się zalogować bez czekania na kod wysłany e-mailem

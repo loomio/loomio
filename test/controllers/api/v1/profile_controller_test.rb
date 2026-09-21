@@ -311,6 +311,23 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal original, @user.reload.email_api_key
   end
 
+  test "merge verification has the same response whether the email belongs to an account" do
+    sign_in @user
+    target = User.create!(email: "merge-target@example.com", email_verified: true)
+
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      post :send_merge_verification_email, params: { target_email: target.email }, format: :json
+    end
+    existing_response = response.body
+    assert_response :success
+
+    assert_no_difference "ActionMailer::Base.deliveries.count" do
+      post :send_merge_verification_email, params: { target_email: "missing-merge@example.com" }, format: :json
+    end
+    assert_response :success
+    assert_equal existing_response, response.body
+  end
+
   test "restricted user CAN still update notification preferences" do
     @user.update_columns(
       unsubscribe_token: UNSUB,

@@ -1,6 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
   include RequiresLocalLogin
+  skip_before_action :require_local_login, only: :destroy
 
   def create
     unless turnstile_ok?

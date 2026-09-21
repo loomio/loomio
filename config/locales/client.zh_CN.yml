@@ -383,9 +383,14 @@ zh_CN:
       flash: 验证邮件已发送！
       helptext_and_signout: 您可以将<strong>%{sourceEmail}</strong>下的帐户合并到<strong>%{targetEmail}</strong>下的帐户中。点击“验证”，系统将向 %{targetEmail} 发送一封验证邮件，以开始合并过程。您将被强制登出，以便使用目标帐户登录完成合并。
       flash_and_signout: 验证邮件已发送至 %{targetEmail}。您现在已退出登录，请登录目标帐户以完成合并。
+      generic_helptext: 请输入另一个帐户的电子邮件地址。如果该帐户存在，Loomio 将向其发送一封电子邮件，其中包含确认合并的说明。
+      email_label: 其他账户邮箱
+      send_verification: 发送验证邮件
+      generic_flash_and_signout: 如果该电子邮件地址用于某个帐户，则已发送验证电子邮件。您现在已退出登录，可以继续使用其他帐户。
     email_taken: 抱歉，该邮箱地址已被其他用户关联。请问该邮箱地址是您本人的吗？
     find_out_more: 了解更多。
     placeholder_modal_text: <p>如果您想将两个帐户合并在一起，只需将相应的电子邮件地址（属于另一个帐户）输入到您的个人资料页面电子邮件字段中，然后按照出现的说明进行操作即可。</p><p>需要帮助？<a href="/contact" target="_blank">请联系我们</a>。
+    email_may_belong_to_another_account: 如果此地址属于另一个帐户，您可以合并这些帐户。
   emoji_picker:
     search: 搜索
     common: 常用
@@ -2809,6 +2814,7 @@ zh_CN:
     email_me_a_sign_in_code: 请给我发送一封包含登录代码的电子邮件。
     sign_in_with_code: 使用验证码登录
     new_to_site: 新来的？
+    passkey_recent_authentication_required: 更改密码前请重新登录
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接
@@ -3039,6 +3045,10 @@ zh_CN:
     add: 添加密码
     added: 已添加通行密钥
     created_at: 添加于 %{date}
+    remove_named: 移除 %{name}
+    remove_confirm: 删除名为 %{name} 的密码？
+    removed: 密码已移除
+    remove_failed: 无法移除密码密钥
   credential_prompt:
     title: 添加另一种登录方式
     helptext: 添加通行密钥或设置密码，即可无需等待电子邮件验证码即可登录。
