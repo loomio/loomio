@@ -2581,6 +2581,14 @@ de:
     invalid_login: Anmeldung mit diesen Daten nicht möglich
     login_link_rate_limited: Es wurden zu viele Anmelde-E-Mails von diesem Netzwerk angefordert. Bitte warte eine Stunde und versuche es erneut.
     send_login_link_error: Beim Senden der Anmelde-E-Mail ist ein Fehler aufgetreten. Bitte versuche es erneut.
+    sign_in_with_passkey: Mit einem Passkey anmelden
+    passkey_authentication_failed: Wir konnten Sie mit diesem Passwort nicht anmelden.
+    passkey_registration_failed: Wir konnten den Passkey nicht speichern.
+    passkey_default_name: Passkey
+    local_login_disabled: Diese Website erfordert Single Sign-On.
+    email_me_a_sign_in_code: Senden Sie mir bitte einen Anmeldecode per E-Mail.
+    sign_in_with_code: Mit einem Code anmelden
+    new_to_site: Neu hier?
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -3138,3 +3146,18 @@ de:
     unfollow: Updates nicht mehr folgen
     followed: Du folgst jetzt den Aktualisierungen dieser Gruppe
     unfollowed: Du erhältst keine Aktualisierungen mehr von dieser Gruppe
+  passkey_settings:
+    title: Passkeys
+    helptext: Mit Passkeys können Sie sich mit Ihrem Gerät anmelden, ohne Ihre E-Mail-Adresse oder Ihr Passwort eingeben zu müssen.
+    none: Sie haben keinen Passkey hinzugefügt.
+    name: Passkey-Name
+    name_placeholder: Zum Beispiel ein Arbeitslaptop
+    add: Passkey hinzufügen
+    added: Passkey hinzugefügt
+    created_at: Hinzugefügt %{date}
+  credential_prompt:
+    title: Fügen Sie eine weitere Anmeldemöglichkeit hinzu.
+    helptext: Fügen Sie einen Passkey hinzu oder legen Sie ein Passwort fest, damit Sie sich anmelden können, ohne auf einen per E-Mail zugesendeten Code warten zu müssen.
+    add_passkey: Fügen Sie einen Passkey hinzu
+    set_password: Legen Sie ein Passwort fest
+    not_now: Nicht jetzt.

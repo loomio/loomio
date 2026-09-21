@@ -6,12 +6,18 @@ import AppConfig from '@/shared/services/app_config';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
   mixins: [AuthModalMixin],
   components: { TurnstileWidget },
   props: {
     user: Object
+  },
+
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
 
   data() {
@@ -128,7 +134,7 @@ v-card.auth-signin-form(
       :disabled='submitBlockedByCaptcha'
       :loading="!user.password && loading"
     )
-      span(v-t="user.hasPassword ? 'auth_form.forgot_password' : 'auth_form.login_link'")
+      span {{ t('auth_form.sign_in_with_code') }}
     v-spacer
     v-btn.auth-signin-form__submit(
       v-if='user.hasPassword'
@@ -147,5 +153,5 @@ v-card.auth-signin-form(
       :disabled='submitBlockedByCaptcha'
       :loading="loading"
     )
-      span(v-t="'auth_form.login_link'")
+      span {{ t('auth_form.sign_in_with_code') }}
 </template>

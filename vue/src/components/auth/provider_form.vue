@@ -39,7 +39,7 @@ export default {
   },
 
   computed: {
-    emailLogin() { return AppConfig.features.app.email_login; },
+    emailLogin() { return AppConfig.features.app.local_login; },
     providers() { return AppConfig.identityProviders.filter(provider => provider.name !== 'slack'); }
   }
 }

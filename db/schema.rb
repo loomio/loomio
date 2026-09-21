@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_21_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -551,6 +551,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.integer "counter", default: 0
     t.integer "id", null: false
     t.text "key", null: false
+  end
+
+  create_table "passkey_credentials", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "external_id", null: false
+    t.datetime "last_used_at"
+    t.string "name", null: false
+    t.binary "public_key", null: false
+    t.bigint "sign_count", default: 0, null: false
+    t.jsonb "transports", default: [], null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["external_id"], name: "index_passkey_credentials_on_external_id", unique: true
+    t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -1251,6 +1265,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.string "username", limit: 255
     t.integer "volume_email_default", default: 2, null: false
     t.integer "volume_push_default", default: 2, null: false
+    t.string "webauthn_id"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["deactivator_id"], name: "index_users_on_deactivator_id"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -1258,6 +1273,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["webauthn_id"], name: "index_users_on_webauthn_id", unique: true
     t.check_constraint "volume_email_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_email_default"
     t.check_constraint "volume_push_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_push_default"
   end
@@ -1300,6 +1316,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "outcomes", "polls"
+  add_foreign_key "passkey_credentials", "users"
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade

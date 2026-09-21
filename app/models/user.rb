@@ -106,6 +106,7 @@ class User < ApplicationRecord
   has_many :notifications, through: :notification_deliveries
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :passkey_credentials, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :mobile_devices, dependent: :destroy
   has_many :mobile_push_registrations, through: :mobile_devices

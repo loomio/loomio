@@ -2548,6 +2548,14 @@ da:
     invalid_login: Kan ikke logge dig ind med disse oplysninger
     login_link_rate_limited: Der er anmodet om for mange login-e-mails fra dette netværk. Vent en time, og prøv igen.
     send_login_link_error: Noget gik galt under afsendelsen af login-e-mailen. Prøv igen.
+    sign_in_with_passkey: Log ind med en adgangsnøgle
+    passkey_authentication_failed: Vi kunne ikke logge dig ind med den adgangsnøgle
+    passkey_registration_failed: Vi kunne ikke gemme adgangskoden
+    passkey_default_name: Adgangsnøgle
+    local_login_disabled: Dette websted kræver single login
+    email_me_a_sign_in_code: Send mig en loginkode via e-mail
+    sign_in_with_code: Log ind med en kode
+    new_to_site: Ny her?
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse
@@ -3103,3 +3111,18 @@ da:
     unfollow: Hold op med at følge opdateringer
     followed: Du følger nu opdateringer fra denne gruppe
     unfollowed: Du følger ikke længere opdateringer fra denne gruppe
+  passkey_settings:
+    title: Adgangsnøgler
+    helptext: Med adgangsnøgler kan du logge ind med din enhed uden at indtaste din e-mailadresse eller adgangskode
+    none: Du har ikke tilføjet en adgangsnøgle
+    name: Adgangsnøglenavn
+    name_placeholder: For eksempel, arbejdsbærbar computer
+    add: Tilføj adgangsnøgle
+    added: Adgangsnøgle tilføjet
+    created_at: Tilføjet %{date}
+  credential_prompt:
+    title: Tilføj en anden måde at logge ind på
+    helptext: Tilføj en adgangskode eller angiv en adgangskode, så du kan logge ind uden at vente på en kode sendt via e-mail
+    add_passkey: Tilføj en adgangsnøgle
+    set_password: Indstil en adgangskode
+    not_now: Ikke nu

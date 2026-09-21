@@ -2594,6 +2594,14 @@ pt_BR:
     invalid_login: Não foi possível efetuar o seu login com esses dados.
     login_link_rate_limited: Foram solicitadas muitas mensagens de e-mail para login desta rede. Aguarde uma hora e tente novamente.
     send_login_link_error: Ocorreu um erro ao enviar o e-mail de login. Tente novamente.
+    sign_in_with_passkey: Faça login com uma chave de acesso.
+    passkey_authentication_failed: Não foi possível efetuar o seu login com essa chave de acesso.
+    passkey_registration_failed: Não foi possível salvar essa chave de acesso.
+    passkey_default_name: Chave de acesso
+    local_login_disabled: Este site requer login único.
+    email_me_a_sign_in_code: Envie-me um código de acesso por e-mail.
+    sign_in_with_code: Faça login com um código
+    new_to_site: É novo por aqui?
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste
@@ -3151,3 +3159,18 @@ pt_BR:
     unfollow: Deixar de seguir as atualizações
     followed: Agora você está acompanhando as atualizações deste grupo
     unfollowed: Você não está mais acompanhando as atualizações deste grupo
+  passkey_settings:
+    title: Senhas
+    helptext: As chaves de acesso permitem que você faça login com seu dispositivo sem precisar inserir seu endereço de e-mail ou senha.
+    none: Você não adicionou uma chave de acesso.
+    name: Nome da chave de acesso
+    name_placeholder: Por exemplo, um laptop de trabalho.
+    add: Adicionar chave de acesso
+    added: Senha adicionada
+    created_at: Adicionado %{date}
+  credential_prompt:
+    title: Adicionar outra forma de fazer login
+    helptext: Adicione uma chave de acesso ou defina uma senha para que você possa entrar sem precisar esperar por um código enviado por e-mail.
+    add_passkey: Adicionar uma chave de acesso
+    set_password: Defina uma senha
+    not_now: Agora não

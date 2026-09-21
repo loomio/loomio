@@ -2548,6 +2548,14 @@ ro:
     invalid_login: Nu te pot conecta cu aceste detalii
     login_link_rate_limited: Prea multe adrese de e-mail de conectare solicitate din această rețea. Vă rugăm să așteptați o oră și să încercați din nou.
     send_login_link_error: Ceva nu a funcționat la trimiterea e-mailului de conectare. Vă rugăm să încercați din nou.
+    sign_in_with_passkey: Conectați-vă cu o cheie de acces
+    passkey_authentication_failed: Nu te-am putut conecta cu acea parolă.
+    passkey_registration_failed: Nu am putut salva acea cheie de acces
+    passkey_default_name: Cheie de acces
+    local_login_disabled: Acest site necesită autentificare unică
+    email_me_a_sign_in_code: Trimiteți-mi prin e-mail un cod de conectare
+    sign_in_with_code: Conectați-vă cu un cod
+    new_to_site: Nou pe aici?
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -3103,3 +3111,18 @@ ro:
     unfollow: Anulează urmărirea actualizărilor
     followed: Urmărești acum actualizările de la acest grup
     unfollowed: Nu mai urmăriți actualizările de la acest grup
+  passkey_settings:
+    title: Chei de acces
+    helptext: Cheile de acces vă permit să vă conectați cu dispozitivul fără a introduce adresa de e-mail sau parola
+    none: Nu ați adăugat o cheie de acces
+    name: Numele cheii de acces
+    name_placeholder: De exemplu, laptopul de serviciu
+    add: Adăugați o cheie de acces
+    added: Cheie de acces adăugată
+    created_at: Adăugat %{date}
+  credential_prompt:
+    title: Adăugați o altă modalitate de conectare
+    helptext: Adăugați o cheie de acces sau setați o parolă pentru a vă putea conecta fără a aștepta un cod trimis prin e-mail
+    add_passkey: Adăugați o cheie de acces
+    set_password: Setați o parolă
+    not_now: Nu acum

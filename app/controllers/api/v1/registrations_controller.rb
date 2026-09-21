@@ -1,5 +1,6 @@
 class Api::V1::RegistrationsController < ApplicationController
   include LocalesHelper
+  include RequiresLocalLogin
   before_action :permission_check, only: :create
   attr_accessor :resource
 
@@ -24,8 +25,10 @@ class Api::V1::RegistrationsController < ApplicationController
     else
       render json: { errors: resource.errors }, status: 422
     end
-  rescue UserService::EmailTakenError => e
-    render json: { errors: { email: [ I18n.t('auth_form.email_taken') ] } }, status: 422
+  rescue UserService::EmailTakenError
+    user = User.active.find_by(email: sign_up_params[:email])
+    LoginTokenService.create(actor: user, uri: referrer_uri) if user
+    render json: { success: :ok, signed_in: false }
   end
 
   private

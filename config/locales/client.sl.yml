@@ -2548,6 +2548,14 @@ sl:
     invalid_login: S temi podatki vas ni mogoče prijaviti
     login_link_rate_limited: Iz tega omrežja je bilo zahtevanih preveč prijavnih e-poštnih naslovov. Počakajte eno uro in poskusite znova.
     send_login_link_error: Pri pošiljanju prijavnega e-poštnega sporočila je prišlo do napake. Poskusite znova.
+    sign_in_with_passkey: Prijava z geslom
+    passkey_authentication_failed: S tem geslom vas nismo mogli prijaviti.
+    passkey_registration_failed: Tega gesla nismo mogli shraniti.
+    passkey_default_name: Geslo
+    local_login_disabled: To spletno mesto zahteva enotno prijavo
+    email_me_a_sign_in_code: Pošlji mi prijavno kodo po e-pošti
+    sign_in_with_code: Prijava s kodo
+    new_to_site: Nov tukaj?
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava
@@ -3103,3 +3111,18 @@ sl:
     unfollow: Ne spremljaj posodobitev
     followed: Zdaj spremljate posodobitve te skupine
     unfollowed: Ne spremljate več posodobitev te skupine
+  passkey_settings:
+    title: Gesla
+    helptext: Gesla vam omogočajo prijavo z napravo brez vnosa e-poštnega naslova ali gesla
+    none: Niste dodali gesla
+    name: Ime gesla
+    name_placeholder: Na primer, službeni prenosnik
+    add: Dodaj geslo
+    added: Geslo dodano
+    created_at: Dodano %{date}
+  credential_prompt:
+    title: Dodaj še en način prijave
+    helptext: Dodajte geslo ali nastavite geslo, da se boste lahko prijavili, ne da bi čakali na kodo, poslano po e-pošti
+    add_passkey: Dodaj geslo
+    set_password: Nastavite geslo
+    not_now: Ne zdaj

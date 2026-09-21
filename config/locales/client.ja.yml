@@ -2547,6 +2547,14 @@ ja:
     invalid_login: 入力された情報ではログインできません
     login_link_rate_limited: このネットワークからログイン用のメールアドレスが多数要求されました。1時間ほどお待ちいただいてから、再度お試しください。
     send_login_link_error: ログインメールの送信中に問題が発生しました。もう一度お試しください。
+    sign_in_with_passkey: パスキーでサインイン
+    passkey_authentication_failed: そのパスキーではログインできませんでした。
+    passkey_registration_failed: そのパスキーを保存できませんでした
+    passkey_default_name: パスキー
+    local_login_disabled: このサイトはシングルサインオンが必要です
+    email_me_a_sign_in_code: ログインコードをメールで送ってください
+    sign_in_with_code: コードでサインイン
+    new_to_site: ここは初めてですか？
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
@@ -3102,3 +3110,18 @@ ja:
     unfollow: 更新情報のフォローを解除する
     followed: あなたは現在、このグループからの最新情報をフォローしています
     unfollowed: このグループからの最新情報はもうフォローされていません
+  passkey_settings:
+    title: パスキー
+    helptext: パスキーを使用すると、メールアドレスやパスワードを入力せずにデバイスでサインインできます。
+    none: パスキーを追加していません
+    name: パスキー名
+    name_placeholder: 例えば、仕事用ノートパソコン
+    add: パスキーを追加
+    added: Passkeyが追加されました
+    created_at: "%{date}を追加しました"
+  credential_prompt:
+    title: 別のログイン方法を追加する
+    helptext: パスキーを追加するかパスワードを設定すれば、メールで送られてくるコードを待たずにサインインできます。
+    add_passkey: パスキーを追加
+    set_password: パスワードを設定してください
+    not_now: 今じゃない

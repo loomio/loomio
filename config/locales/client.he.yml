@@ -2567,6 +2567,14 @@ he:
     invalid_login: לא ניתן להתחבר אותך עם הפרטים האלה
     login_link_rate_limited: יותר מדי כתובות דוא"ל לכניסה נדרשות מרשת זו. אנא המתן שעה ונסה שוב.
     send_login_link_error: משהו השתבש בשליחת אימייל הכניסה. אנא נסה שוב.
+    sign_in_with_passkey: התחבר באמצעות סיסמה
+    passkey_authentication_failed: לא הצלחנו להיכנס אותך עם סיסמת הגישה הזו
+    passkey_registration_failed: לא הצלחנו לשמור את הסיסמה הזו
+    passkey_default_name: סיסמה
+    local_login_disabled: אתר זה דורש כניסה יחידה
+    email_me_a_sign_in_code: שלח לי קוד כניסה בדוא"ל
+    sign_in_with_code: התחברות באמצעות קוד
+    new_to_site: חדש כאן?
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
@@ -3122,3 +3130,18 @@ he:
     unfollow: בטל מעקב אחר עדכונים
     followed: אתה עוקב כעת אחר עדכונים מקבוצה זו
     unfollowed: אינך עוקב יותר אחר עדכונים מקבוצה זו
+  passkey_settings:
+    title: מפתחות סיסמה
+    helptext: סיסמות מאפשרות לך להיכנס עם המכשיר שלך מבלי להזין את כתובת הדוא"ל או הסיסמה שלך
+    none: לא הוספת סיסמה
+    name: שם המפתח
+    name_placeholder: לדוגמה, מחשב נייד לעבודה
+    add: הוסף סיסמה
+    added: סיסמה נוספת
+    created_at: נוסף %{date}
+  credential_prompt:
+    title: הוסף דרך נוספת להתחברות
+    helptext: הוסף קוד גישה או קבע סיסמה כדי שתוכל להיכנס מבלי להמתין לקוד שנשלח בדוא"ל
+    add_passkey: הוסף סיסמה
+    set_password: הגדר סיסמה
+    not_now: לא עכשיו

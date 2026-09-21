@@ -2573,6 +2573,14 @@ ca:
     invalid_login: No es pot iniciar la sessió amb aquestes dades
     login_link_rate_limited: S'han sol·licitat massa correus electrònics d'inici de sessió des d'aquesta xarxa. Espereu una hora i torneu-ho a provar.
     send_login_link_error: S'ha produït un error en enviar el correu electrònic d'inici de sessió. Torna-ho a provar.
+    sign_in_with_passkey: Inicia la sessió amb una clau d'accés
+    passkey_authentication_failed: No hem pogut iniciar la sessió amb aquesta clau d'accés
+    passkey_registration_failed: No hem pogut desar aquesta clau d'accés
+    passkey_default_name: Clau d'accés
+    local_login_disabled: Aquest lloc requereix un inici de sessió únic
+    email_me_a_sign_in_code: Envia'm un codi d'inici de sessió per correu electrònic
+    sign_in_with_code: Inicia la sessió amb un codi
+    new_to_site: Ets nou aquí?
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió
@@ -3130,3 +3138,18 @@ ca:
     unfollow: Deixa de seguir les actualitzacions
     followed: Ara segueixes les actualitzacions d'aquest grup
     unfollowed: Ja no segueixes les actualitzacions d'aquest grup
+  passkey_settings:
+    title: Claus d'accés
+    helptext: Les claus d'accés et permeten iniciar la sessió amb el dispositiu sense introduir la teva adreça electrònica ni la contrasenya
+    none: No has afegit cap contrasenya
+    name: Nom de la clau d'accés
+    name_placeholder: Per exemple, ordinador portàtil de la feina
+    add: Afegeix una contrasenya
+    added: Clau d'accés afegida
+    created_at: Afegit %{date}
+  credential_prompt:
+    title: Afegeix una altra manera d'iniciar la sessió
+    helptext: Afegeix una clau d'accés o estableix una contrasenya per poder iniciar la sessió sense esperar un codi enviat per correu electrònic
+    add_passkey: Afegeix una clau d'accés
+    set_password: Establir una contrasenya
+    not_now: Ara no

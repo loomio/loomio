@@ -2548,6 +2548,14 @@ sv:
     invalid_login: Det går inte att logga in dig med de uppgifterna
     login_link_rate_limited: För många inloggningsadresser har begärts från det här nätverket. Vänta en timme och försök igen.
     send_login_link_error: Något gick fel när inloggningsmejlet skulle skickas. Försök igen.
+    sign_in_with_passkey: Logga in med en lösenkod
+    passkey_authentication_failed: Vi kunde inte logga in dig med den lösenkoden
+    passkey_registration_failed: Vi kunde inte spara den lösenkoden
+    passkey_default_name: Lösenord
+    local_login_disabled: Den här webbplatsen kräver enkel inloggning
+    email_me_a_sign_in_code: Skicka mig en inloggningskod via e-post
+    sign_in_with_code: Logga in med en kod
+    new_to_site: Ny här?
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen
@@ -3103,3 +3111,18 @@ sv:
     unfollow: Sluta följa uppdateringar
     followed: Du följer nu uppdateringar från den här gruppen
     unfollowed: Du följer inte längre uppdateringar från den här gruppen
+  passkey_settings:
+    title: Lösenord
+    helptext: Med lösenord kan du logga in med din enhet utan att ange din e-postadress eller ditt lösenord
+    none: Du har inte lagt till en lösennyckel
+    name: Lösenordsnamn
+    name_placeholder: Till exempel, arbetsdator
+    add: Lägg till lösenord
+    added: Lösenord tillagt
+    created_at: Tillagd %{date}
+  credential_prompt:
+    title: Lägg till ett annat sätt att logga in
+    helptext: Lägg till en lösenkod eller ett lösenord så att du kan logga in utan att vänta på en kod via e-post
+    add_passkey: Lägg till en lösennyckel
+    set_password: Ange ett lösenord
+    not_now: Inte nu

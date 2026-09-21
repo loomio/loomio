@@ -41,6 +41,7 @@ export default {
 
   computed: {
     ssoDisableEditProfile() { return AppConfig.features.app.sso_disable_edit_profile; },
+    localLogin() { return AppConfig.features.app.local_login; },
     showHelpTranslate() { return AppConfig.features.app.help_link; },
     availableLocales() { return AppConfig.locales.map(h => { return {title: h.name, value: h.key} }) ; },
     dateTimeFormats() {
@@ -213,6 +214,8 @@ v-main
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
             v-list-item-subtitle(v-if="action.subtitle" v-t="action.subtitle")
+
+      passkey-settings(v-if="localLogin")
 
 </template>
 

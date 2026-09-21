@@ -1,0 +1,153 @@
+require 'test_helper'
+require 'webauthn/fake_client'
+
+class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
+  setup do
+    @user = User.create!(email: "passkey-user@example.com", email_verified: true, name: "Passkey User")
+    @client = WebAuthn::FakeClient.new("http://test.host")
+    @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @disable_email_login_before = ENV.delete('FEATURES_DISABLE_EMAIL_LOGIN')
+  end
+
+  teardown do
+    restore_env('FEATURES_DISABLE_LOCAL_LOGIN', @disable_local_login_before)
+    restore_env('FEATURES_DISABLE_EMAIL_LOGIN', @disable_email_login_before)
+  end
+
+  test "registration creates a discoverable passkey for the signed in user" do
+    sign_in @user
+    options = registration_options
+    assert_equal "required", options.dig("authenticatorSelection", "residentKey")
+    assert_equal "required", options.dig("authenticatorSelection", "userVerification")
+    credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: true)
+
+    assert_difference "PasskeyCredential.count", 1 do
+      post :create, params: { name: "Work laptop", public_key_credential: credential }, format: :json
+    end
+
+    assert_response :created
+    passkey = @user.passkey_credentials.last
+    assert_equal "Work laptop", passkey.name
+    assert_equal credential["id"], passkey.external_id
+    assert @user.reload.webauthn_id.present?
+  end
+
+  test "authentication options do not accept or reveal an email address" do
+    post :authentication_options, params: { email: @user.email }, format: :json
+
+    assert_response :success
+    options = JSON.parse(response.body)
+    assert_empty options["allowCredentials"]
+    assert_equal "required", options["userVerification"]
+    assert session[PasskeyService::CHALLENGE_AUTHENTICATION].present?
+  end
+
+  test "registration rejects a credential without user verification" do
+    sign_in @user
+    options = registration_options
+    credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: false)
+
+    assert_no_difference "PasskeyCredential.count" do
+      post :create, params: { name: "Unverified", public_key_credential: credential }, format: :json
+    end
+    assert_response :unprocessable_entity
+  end
+
+  test "authenticates from the discoverable credential returned by the authenticator" do
+    passkey = register_passkey
+    sign_out
+    post :authentication_options, format: :json
+    options = JSON.parse(response.body)
+    assertion = @client.get(
+      challenge: options["challenge"],
+      rp_id: "test.host",
+      user_verified: true,
+      user_handle: WebAuthn::Encoder.new(:base64url).decode(@user.webauthn_id),
+      allow_credentials: [passkey.external_id]
+    )
+
+    assert_difference "Session.count", 1 do
+      post :authenticate, params: { public_key_credential: assertion }, format: :json
+    end
+
+    assert_response :success
+    assert_equal @user.id, JSON.parse(response.body)["current_user_id"]
+    assert passkey.reload.last_used_at.present?
+  end
+
+  test "a challenge cannot be reused" do
+    passkey = register_passkey
+    sign_out
+    post :authentication_options, format: :json
+    options = JSON.parse(response.body)
+    assertion = @client.get(
+      challenge: options["challenge"],
+      rp_id: "test.host",
+      user_verified: true,
+      user_handle: WebAuthn::Encoder.new(:base64url).decode(@user.webauthn_id),
+      allow_credentials: [passkey.external_id]
+    )
+
+    post :authenticate, params: { public_key_credential: assertion }, format: :json
+    assert_response :success
+    sign_out
+
+    assert_no_difference "Session.count" do
+      post :authenticate, params: { public_key_credential: assertion }, format: :json
+    end
+    assert_response :unauthorized
+  end
+
+  test "an expired challenge cannot authenticate" do
+    passkey = register_passkey
+    sign_out
+    post :authentication_options, format: :json
+    options = JSON.parse(response.body)
+    assertion = @client.get(
+      challenge: options["challenge"],
+      rp_id: "test.host",
+      user_verified: true,
+      user_handle: WebAuthn::Encoder.new(:base64url).decode(@user.webauthn_id),
+      allow_credentials: [passkey.external_id]
+    )
+    session[PasskeyService::CHALLENGE_AUTHENTICATION][:issued_at] = 6.minutes.ago.to_i
+
+    assert_no_difference "Session.count" do
+      post :authenticate, params: { public_key_credential: assertion }, format: :json
+    end
+    assert_response :unauthorized
+  end
+
+  test "SSO-only mode rejects passkey registration and authentication" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    sign_in @user
+
+    post :registration_options, format: :json
+    assert_response :forbidden
+
+    sign_out
+    post :authentication_options, format: :json
+    assert_response :forbidden
+  end
+
+  private
+
+  def registration_options
+    post :registration_options, format: :json
+    assert_response :success
+    JSON.parse(response.body)
+  end
+
+  def register_passkey
+    sign_in @user
+    options = registration_options
+    credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: true)
+    post :create, params: { name: "Test passkey", public_key_credential: credential }, format: :json
+    assert_response :created
+    @user.passkey_credentials.last
+  end
+
+  def restore_env(name, value)
+    value.nil? ? ENV.delete(name) : ENV[name] = value
+  end
+end

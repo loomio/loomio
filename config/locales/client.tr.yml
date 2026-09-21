@@ -2548,6 +2548,14 @@ tr:
     invalid_login: Bu bilgilerle giriş yapamıyoruz.
     login_link_rate_limited: Bu ağdan çok fazla oturum açma e-postası talep edildi. Lütfen bir saat bekleyin ve tekrar deneyin.
     send_login_link_error: Giriş e-postası gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.
+    sign_in_with_passkey: Parola ile giriş yapın
+    passkey_authentication_failed: Bu şifreyle giriş yapamadık.
+    passkey_registration_failed: Şifreyi kaydedemedik.
+    passkey_default_name: Parola
+    local_login_disabled: Bu site tek oturum açma gerektirir.
+    email_me_a_sign_in_code: Bana giriş kodunu e-posta ile gönder.
+    sign_in_with_code: Kod ile giriş yapın
+    new_to_site: Yeni misiniz?
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
@@ -3103,3 +3111,18 @@ tr:
     unfollow: Güncellemeleri takibi bırak
     followed: Şu anda bu gruptan gelen güncellemeleri takip ediyorsunuz
     unfollowed: Artık bu gruptan gelen güncellemeleri takip etmiyorsunuz
+  passkey_settings:
+    title: Parolalar
+    helptext: Parolalar, e-posta adresinizi veya şifrenizi girmeden cihazınızla oturum açmanıza olanak tanır.
+    none: Parola eklemediniz.
+    name: Parola adı
+    name_placeholder: Örneğin, iş dizüstü bilgisayarı
+    add: Parola ekle
+    added: Parola eklendi.
+    created_at: "%{date} tarihinde eklendi."
+  credential_prompt:
+    title: Başka bir giriş yöntemi ekleyin
+    helptext: E-posta ile gönderilen kodu beklemeden giriş yapabilmek için bir parola ekleyin veya şifre belirleyin.
+    add_passkey: Parola ekle
+    set_password: Bir parola belirleyin
+    not_now: Şimdi değil

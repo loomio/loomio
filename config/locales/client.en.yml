@@ -1836,10 +1836,25 @@ en:
     set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
     password_changed: Your password has been updated
+  passkey_settings:
+    title: Passkeys
+    helptext: Passkeys let you sign in with your device without entering your email address or password
+    none: You have not added a passkey
+    name: Passkey name
+    name_placeholder: For example, Work laptop
+    add: Add passkey
+    added: Passkey added
+    created_at: Added %{date}
   set_password_prompt:
     title: Set a password?
     helptext: You can use a password to sign in next time, instead of waiting for an email link.
     no_thanks: No thanks
+  credential_prompt:
+    title: Add another way to sign in
+    helptext: Add a passkey or set a password so you can sign in without waiting for an emailed code
+    add_passkey: Add a passkey
+    set_password: Set a password
+    not_now: Not now
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'
@@ -2967,6 +2982,14 @@ en:
     name: Name
     email: Email
     password: Password
+    sign_in_with_passkey: Sign in with a passkey
+    passkey_authentication_failed: We could not sign you in with that passkey
+    passkey_registration_failed: We could not save that passkey
+    passkey_default_name: Passkey
+    local_login_disabled: This site requires single sign-on
+    email_me_a_sign_in_code: Email me a sign-in code
+    sign_in_with_code: Sign in with a code
+    new_to_site: New here?
     reactivate: Reactivate account
   chatbot:
     chat_integrations: Chat integrations

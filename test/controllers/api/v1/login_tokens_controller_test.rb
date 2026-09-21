@@ -3,10 +3,12 @@ require 'test_helper'
 class Api::V1::LoginTokensControllerTest < ActionController::TestCase
   setup do
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
+    @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
+    @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
   end
 
   test "create creates a new login token" do
@@ -15,6 +17,15 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
       post :create, params: { email: user.email }
     end
     assert_response :success
+  end
+
+  test "SSO-only mode rejects emailed sign-in links" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+
+    assert_no_difference "LoginToken.count" do
+      post :create, params: { email: users(:user).email }
+    end
+    assert_response :forbidden
   end
 
   test "create handles an invalid referrer" do

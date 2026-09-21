@@ -1,5 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
+  include RequiresLocalLogin
 
   def create
     unless turnstile_ok?
@@ -37,26 +38,18 @@ class Api::V1::SessionsController < ApplicationController
   private
 
   def failure_reason
-    if resource_params[:password] && login_user&.access_locked?
-      "account_locked"
-    elsif session[:pending_login_token].present?
+    if session[:pending_login_token].present?
       "invalid_token"
-    elsif resource_params[:password] && login_user.nil?
-      "email_not_found"
     else
-      "invalid_password"
+      "invalid_login"
     end
   end
 
   def failure_message
-    if resource_params[:password] && login_user&.access_locked?
-      { password: [I18n.t('auth_form.account_locked')] }
-    elsif session[:pending_login_token].present?
+    if session[:pending_login_token].present?
       { token: [I18n.t('auth_form.invalid_token')] }
-    elsif resource_params[:password] && login_user.nil?
-      { email: [I18n.t('auth_form.email_not_found')] }
     else
-      { password: [I18n.t('auth_form.invalid_password')] }
+      { password: [I18n.t('auth_form.invalid_login')] }
     end
   end
 
@@ -76,8 +69,11 @@ class Api::V1::SessionsController < ApplicationController
 
   def password_user
     return unless resource_params[:password].present?
-    return unless login_user
-    return if login_user.access_locked?
+
+    unless login_user&.has_password && !login_user.access_locked?
+      BCrypt::Password.create(resource_params[:password])
+      return
+    end
 
     if login_user.valid_password?(resource_params[:password])
       login_user

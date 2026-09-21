@@ -4,6 +4,7 @@ import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { hardReload } from '@/shared/helpers/window';
+import AppConfig from '@/shared/services/app_config';
 
 export default new class UserService {
   actions(user, vm) {
@@ -11,7 +12,7 @@ export default new class UserService {
       change_password: {
         icon: 'mdi-lock-reset',
         name: 'profile_page.change_password_link',
-        canPerform() { return true; },
+        canPerform() { return AppConfig.features.app.local_login; },
         perform() {
           return EventBus.$emit('openModal', {
             component: 'ChangePasswordForm',

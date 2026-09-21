@@ -2574,6 +2574,14 @@ zh_TW:
     invalid_login: 無法使用您提供的資訊登入。
     login_link_rate_limited: 此網路請求的登入郵件過多。請稍等一小時後重試。
     send_login_link_error: 登入郵件發送失敗，請重試。
+    sign_in_with_passkey: 使用密碼登入
+    passkey_authentication_failed: 我們無法使用該密碼登入。
+    passkey_registration_failed: 我們無法保存該通行密鑰
+    passkey_default_name: 通行金鑰
+    local_login_disabled: 本網站需要單一登入
+    email_me_a_sign_in_code: 請給我發送一封包含登入代碼的電子郵件。
+    sign_in_with_code: 使用驗證碼登入
+    new_to_site: 新來的？
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線
@@ -3131,3 +3139,18 @@ zh_TW:
     unfollow: 取消關注更新
     followed: 您現在正在關注此群組的更新
     unfollowed: 您已取消追蹤此群組的更新
+  passkey_settings:
+    title: 通行金鑰
+    helptext: 使用密碼金鑰，您無需輸入電子郵件地址或密碼即可透過裝置登入。
+    none: 您尚未新增密碼
+    name: 密碼名稱
+    name_placeholder: 例如，工作筆記型電腦
+    add: 新增密碼
+    added: 已新增通行金鑰
+    created_at: 添加於 %{date}
+  credential_prompt:
+    title: 新增另一種登入方式
+    helptext: 新增通行金鑰或設定密碼，即可無需等待電子郵件驗證碼即可登入。
+    add_passkey: 新增密碼
+    set_password: 設定密碼
+    not_now: 現在不要

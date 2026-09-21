@@ -1,4 +1,6 @@
 class Api::V1::LoginTokensController < Api::V1::RestfulController
+  include RequiresLocalLogin
+
   def create
     unless TurnstileService.verify(params[:turnstile_token], remote_ip: request.remote_ip)
       render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403

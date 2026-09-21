@@ -239,7 +239,6 @@ Rails.application.routes.draw do
           get  :all_time_zones
           get  :me
           get  :groups
-          get  :email_status
           get  :email_exists
           post :send_merge_verification_email
           get  :contactable
@@ -258,6 +257,13 @@ Rails.application.routes.draw do
       end
 
       resources :login_tokens, only: [:create]
+      resources :passkey_credentials, only: [:index, :create] do
+        collection do
+          post :registration_options
+          post :authentication_options
+          post :authenticate
+        end
+      end
 
       resources :topic_items, only: :index do
         get :count, on: :collection

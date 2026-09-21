@@ -2590,6 +2590,14 @@ fr:
     invalid_login: Impossible de te connecter avec ces informations.
     login_link_rate_limited: Trop d'e-mails de connexion ont été demandés depuis ce réseau. Attends une heure et réessaie.
     send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Réessaie.
+    sign_in_with_passkey: Connectez-vous avec un mot de passe
+    passkey_authentication_failed: Nous n'avons pas pu vous connecter avec ce mot de passe.
+    passkey_registration_failed: Nous n'avons pas pu sauvegarder ce code d'accès.
+    passkey_default_name: Clé d'accès
+    local_login_disabled: Ce site nécessite une authentification unique.
+    email_me_a_sign_in_code: Envoyez-moi un code de connexion par e-mail
+    sign_in_with_code: Connectez-vous avec un code
+    new_to_site: Nouveau ici ?
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion
@@ -3147,3 +3155,18 @@ fr:
     unfollow: Ne plus suivre les mises à jour
     followed: Tu suis maintenant les mises à jour de ce groupe
     unfollowed: Tu ne suis plus les mises à jour de ce groupe
+  passkey_settings:
+    title: Clés d'accès
+    helptext: Les clés d'accès vous permettent de vous connecter avec votre appareil sans saisir votre adresse e-mail ni votre mot de passe.
+    none: Vous n'avez pas ajouté de clé d'accès.
+    name: Nom du mot de passe
+    name_placeholder: Par exemple, un ordinateur portable professionnel
+    add: Ajouter une clé d'accès
+    added: Clé d'accès ajoutée
+    created_at: Ajouté %{date}
+  credential_prompt:
+    title: Ajouter une autre méthode de connexion
+    helptext: Ajoutez une clé d'accès ou définissez un mot de passe pour pouvoir vous connecter sans attendre un code envoyé par e-mail.
+    add_passkey: Ajouter un code d'accès
+    set_password: Définir un mot de passe
+    not_now: Pas maintenant

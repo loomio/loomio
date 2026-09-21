@@ -2573,6 +2573,14 @@ nl_NL:
     invalid_login: Het lukt niet om u met deze gegevens in te loggen.
     login_link_rate_limited: Er zijn te veel aanmeldings-e-mailadressen aangevraagd vanuit dit netwerk. Wacht een uur en probeer het opnieuw.
     send_login_link_error: Er is iets misgegaan bij het verzenden van de inlogmail. Probeer het opnieuw.
+    sign_in_with_passkey: Aanmelden met een passkey
+    passkey_authentication_failed: We konden je niet aanmelden met die passkey
+    passkey_registration_failed: We konden die passkey niet opslaan
+    passkey_default_name: Passkey
+    local_login_disabled: Deze site vereist eenmalige aanmelding
+    email_me_a_sign_in_code: Stuur me een inlogcode via e-mail
+    sign_in_with_code: Aanmelden met een code
+    new_to_site: Ben je hier nieuw?
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
@@ -3130,3 +3138,18 @@ nl_NL:
     unfollow: Updates ontvolgen
     followed: Je volgt nu updates van deze groep
     unfollowed: Je ontvangt geen updates meer van deze groep
+  passkey_settings:
+    title: Passkeys
+    helptext: Met passkeys kun je inloggen met je apparaat zonder je e-mailadres of wachtwoord in te voeren
+    none: Je hebt geen passkey toegevoegd
+    name: Naam van passkey
+    name_placeholder: Bijvoorbeeld werklaptop
+    add: Passkey toevoegen
+    added: Passkey toegevoegd
+    created_at: Toegevoegd %{date}
+  credential_prompt:
+    title: Voeg een extra manier toe om in te loggen
+    helptext: Voeg een passkey toe of stel een wachtwoord in, zodat je kunt inloggen zonder op een code per e-mail te wachten
+    add_passkey: Passkey toevoegen
+    set_password: Stel een wachtwoord in
+    not_now: Nu niet

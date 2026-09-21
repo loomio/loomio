@@ -38,8 +38,7 @@ export default {
   computed: {
     showBackButton() {
       return this.user.emailStatus &&
-            !this.user.sentLoginLink &&
-            !this.user.sentPasswordLink;
+            !this.user.sentLoginLink;
     }
   }
 }

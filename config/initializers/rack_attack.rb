@@ -85,6 +85,8 @@ class Rack::Attack
     '/api/v1/groups' => 20,
     '/api/v1/templates' => 10,
     '/api/v1/login_tokens' => 50,
+    '/api/v1/passkey_credentials/authentication_options' => 60,
+    '/api/v1/passkey_credentials/authenticate' => 60,
     '/api/v1/membership_requests' => 100,
     '/api/v1/memberships' => 100,
     '/api/v1/identities' => 10,
@@ -142,15 +144,8 @@ class Rack::Attack
     end
   end
 
-  # /api/v1/profile/email_status is unauthenticated and falls through to
-  # User.find_by(email:), so it's the enumeration surface. Throttle it
-  # tightly and separately from the rest of /api/v1/profile/*.
-  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: 1.hour) do |req|
-    req.remote_ip if req.get? && req.path == '/api/v1/profile/email_status'
-  end
-
   throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: 1.hour) do |req|
-    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
+    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
   end
 
   # Tight per-IP throttle for the merge verification endpoint (POST).

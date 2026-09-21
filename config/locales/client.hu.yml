@@ -2555,6 +2555,14 @@ hu:
     invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
     login_link_rate_limited: Túl sok bejelentkezési e-mailt kértek erről a hálózatról. Kérjük, várjon egy órát, és próbálja újra.
     send_login_link_error: Hiba történt a bejelentkezési e-mail elküldésekor. Kérjük, próbálja újra.
+    sign_in_with_passkey: Bejelentkezés jelszóval
+    passkey_authentication_failed: Nem tudtuk bejelentkezni ezzel a jelszóval
+    passkey_registration_failed: Nem tudtuk menteni a jelszót
+    passkey_default_name: Jelszó
+    local_login_disabled: Ez az oldal egyszeri bejelentkezést igényel
+    email_me_a_sign_in_code: Küldj nekem egy bejelentkezési kódot e-mailben
+    sign_in_with_code: Bejelentkezés kóddal
+    new_to_site: Új vagy itt?
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -3110,3 +3118,18 @@ hu:
     unfollow: Frissítések követésének megszüntetése
     followed: Mostantól követed a csoport frissítéseit
     unfollowed: Már nem követed a csoport frissítéseit
+  passkey_settings:
+    title: Jelszavak
+    helptext: A jelszók lehetővé teszik, hogy e-mail cím vagy jelszó megadása nélkül jelentkezzen be eszközével
+    none: Nem adott hozzá jelszót
+    name: Jelszó neve
+    name_placeholder: Például, munkahelyi laptop
+    add: Jelszó hozzáadása
+    added: Hozzáadott jelszó
+    created_at: Hozzáadva %{date}
+  credential_prompt:
+    title: További bejelentkezési mód hozzáadása
+    helptext: Hozzáadhat egy jelszót vagy beállíthat egy jelszót, hogy bejelentkezhessen anélkül, hogy e-mailben kapott kódra kellene várnia
+    add_passkey: Hozzáadás egy jelszót
+    set_password: Jelszó beállítása
+    not_now: Most nem

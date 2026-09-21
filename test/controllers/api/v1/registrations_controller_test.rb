@@ -4,16 +4,27 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   setup do
     @user = users(:user)
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
+    @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
+    @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
   end
 
   test "turnstile required: rejects registration without token" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
     assert_no_difference 'User.count' do
       post :create, params: { user: { name: "Cf Block", email: "cfblock@example.com", legal_accepted: true } }
+    end
+    assert_response :forbidden
+  end
+
+  test "SSO-only mode rejects native account creation" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+
+    assert_no_difference "User.count" do
+      post :create, params: { user: { name: "Local User", email: "local@example.com", legal_accepted: true } }
     end
     assert_response :forbidden
   end
@@ -113,9 +124,10 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
       }
     }
 
-    assert_response 422
+    assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 'Email address is already registered', json['errors']['email'][0]
+    assert_equal false, json['signed_in']
+    assert_equal 1, u.login_tokens.count
   end
 
   test "signup via membership" do

@@ -12,7 +12,7 @@ export default {
 
   data() {
     return {
-      emailLogin: AppConfig.features.app.email_login,
+      localLogin: AppConfig.features.app.local_login,
       siteName: AppConfig.theme.site_name,
       privacyUrl: AppConfig.theme.privacy_url,
       isDisabled: false,
@@ -39,10 +39,6 @@ export default {
       return AppConfig.pending_identity.email_verified === false;
     },
 
-    loginComplete() {
-      return this.user.sentLoginLink || this.user.sentPasswordLink;
-    },
-
     pendingDiscussion() {
       return this.pendingIdentity.identity_type === 'discussion_reader';
     },
@@ -67,8 +63,9 @@ v-card.auth-form(:title="$t('auth_form.sign_up_or_log_in', { site_name: siteName
     //- p.text-headline-small.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
     //- p.text-headline-small.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
     p.text-center.text-body-small(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
+    auth-passkey-button.mb-4(v-if='localLogin')
     auth-provider-form(:user='user')
-    auth-email-form.mt-4(:user='user' v-if='emailLogin')
+    auth-email-form.mt-4(:user='user' v-if='localLogin')
     .d-flex.text-body-small.mt-4.justify-space-between.pa-4.text-medium-emphasis
       a.text-medium-emphasis(href="/about-loomio" v-t="'powered_by.about_loomio'")
       a.text-medium-emphasis(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")

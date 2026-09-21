@@ -2548,6 +2548,14 @@ fi:
     invalid_login: Sinua ei voida kirjata sisään näillä tiedoilla
     login_link_rate_limited: Liian monta kirjautumissähköpostia pyydettiin tästä verkosta. Odota tunti ja yritä uudelleen.
     send_login_link_error: Kirjautumissähköpostin lähettämisessä tapahtui virhe. Yritä uudelleen.
+    sign_in_with_passkey: Kirjaudu sisään salasanalla
+    passkey_authentication_failed: Emme voineet kirjautua sisään tuolla salasanalla
+    passkey_registration_failed: Emme voineet tallentaa salasanaa
+    passkey_default_name: Salasana
+    local_login_disabled: Tämä sivusto vaatii kertakirjautumisen
+    email_me_a_sign_in_code: Lähetä minulle kirjautumiskoodi sähköpostitse
+    sign_in_with_code: Kirjaudu sisään koodilla
+    new_to_site: Uusi täällä?
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys
@@ -3103,3 +3111,18 @@ fi:
     unfollow: Lopeta päivitysten seuraaminen
     followed: Seuraat nyt tämän ryhmän päivityksiä
     unfollowed: Et enää seuraa tämän ryhmän päivityksiä
+  passkey_settings:
+    title: Salasanat
+    helptext: Salasanat mahdollistavat kirjautumisen laitteellasi ilman sähköpostiosoitteen tai salasanan syöttämistä
+    none: Et ole lisännyt salasanaa
+    name: Salasanan nimi
+    name_placeholder: Esimerkiksi työkannettava
+    add: Lisää salasana
+    added: Salasana lisätty
+    created_at: Lisätty %{date}
+  credential_prompt:
+    title: Lisää toinen kirjautumistapa
+    helptext: Lisää salasana tai aseta salasana, jotta voit kirjautua sisään odottamatta sähköpostitse lähetettyä koodia.
+    add_passkey: Lisää salasana
+    set_password: Aseta salasana
+    not_now: Ei nyt

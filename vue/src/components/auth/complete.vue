@@ -58,7 +58,6 @@ v-card.auth-complete(
       br
       span(v-t="'auth_form.instructions_code'", v-if='attempts < 3')
     .lmo-validation-error(v-t="'auth_form.too_many_attempts'", v-if='attempts >= 3')
-    p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
         v-text-field.text-headline-small(

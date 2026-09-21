@@ -2573,6 +2573,14 @@ pl:
     invalid_login: Nie można zalogować się przy użyciu tych danych
     login_link_rate_limited: Za dużo żądań adresów e-mail do logowania z tej sieci. Odczekaj godzinę i spróbuj ponownie.
     send_login_link_error: Wystąpił błąd podczas wysyłania wiadomości e-mail z potwierdzeniem logowania. Spróbuj ponownie.
+    sign_in_with_passkey: Zaloguj się za pomocą klucza dostępu
+    passkey_authentication_failed: Nie udało nam się zalogować Cię za pomocą tego klucza
+    passkey_registration_failed: Nie udało nam się zapisać tego klucza dostępu
+    passkey_default_name: Klucz uniwersalny
+    local_login_disabled: Ta strona wymaga jednokrotnego logowania
+    email_me_a_sign_in_code: Wyślij mi kod logowania e-mailem
+    sign_in_with_code: Zaloguj się za pomocą kodu
+    new_to_site: Nowy tutaj?
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe
@@ -3130,3 +3138,18 @@ pl:
     unfollow: Przestań obserwować aktualizacje
     followed: Teraz śledzisz aktualizacje z tej grupy
     unfollowed: Nie śledzisz już aktualizacji z tej grupy
+  passkey_settings:
+    title: Klucze dostępu
+    helptext: Klucze dostępu umożliwiają logowanie się do urządzenia bez konieczności podawania adresu e-mail lub hasła
+    none: Nie dodałeś klucza dostępu
+    name: Nazwa klucza dostępu
+    name_placeholder: Na przykład laptop służbowy
+    add: Dodaj klucz dostępu
+    added: Dodano klucz dostępu
+    created_at: Dodano %{date}
+  credential_prompt:
+    title: Dodaj inny sposób logowania
+    helptext: Dodaj klucz dostępu lub ustaw hasło, aby móc się zalogować bez czekania na kod wysłany e-mailem
+    add_passkey: Dodaj klucz dostępu
+    set_password: Ustaw hasło
+    not_now: Nie teraz

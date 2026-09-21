@@ -7,6 +7,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @alien = users(:alien)
     @group = groups(:group)
     @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
+    @disable_local_login_previous = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
   end
 
   teardown do
@@ -15,6 +16,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     else
       ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     end
+    @disable_local_login_previous.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_previous
   end
 
   test "show returns the user json" do
@@ -225,6 +227,22 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     refute_equal original_secret_token, @user.secret_token
     refute_equal original_unsubscribe_token, @user.unsubscribe_token
     refute LoginToken.exists?(unused_login_token.id)
+  end
+
+  test "SSO-only mode does not register a local password" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    sign_in @user
+    original_digest = @user.password_digest
+
+    post :update_profile, params: {
+      user: {
+        password: 'new_complex_password',
+        password_confirmation: 'new_complex_password'
+      }
+    }
+
+    assert_response :success
+    assert_equal original_digest, @user.reload.password_digest
   end
 
   # -- unsubscribe-token (restricted user) authorization --

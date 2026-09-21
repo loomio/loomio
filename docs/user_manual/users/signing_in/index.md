@@ -1,62 +1,39 @@
 # Signing in
 
-Loomio supports sign-in by email, an optional password, and organization
-single sign-on when it has been configured for the Loomio instance. Members do
-not need to remember a password to participate.
+The sign-in methods available on Loomio depend on how the site operator has configured authentication. Loomio.com and mixed-authentication sites can offer passkeys, email and password sign-in, emailed sign-in codes, and providers such as Google. A private site may require its organization single sign-on provider instead.
 
-## Start signing in
+## Sign in with a passkey
 
-Select **Sign in**, enter the email address used for your Loomio account, then
-select **Continue with email**.
+Select **Sign in with a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
 
-![](sign_in_email.png)
+You can add a passkey from your profile after signing in. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
 
-If your account has a password, you can enter it or select **Forgot password**
-to receive a sign-in email. If your account does not have a password, select
-**Send sign in email**.
+## Sign in with email and password
 
-For privacy, use the same email address that received your group invitation.
-If you have accounts under more than one address, you can [merge your
-accounts](/en/user_manual/users/merge_accounts).
+Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
 
-## Get a sign-in link or code
+If you do not have a password or cannot remember it, select **Email me a sign-in code** instead.
 
-After you request a sign-in email, Loomio sends a one-time link and a six-digit
-code to your email address.
+## Get a sign-in code
 
-![](sign_in_code.png)
+Enter your email address and select **Email me a sign-in code**. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
 
-Either:
+If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
 
-- select the link in the email, then confirm the account shown by Loomio; or
-- return to the sign-in form, enter the six-digit code, and select **Sign in**
+After signing in with a code, Loomio may offer to add a passkey or set a password. Both are optional; you can continue using emailed codes.
 
-![](sign_in_token.png)
+## Create an account
 
-Sign-in links and codes normally expire after 24 hours and cannot be reused.
-If one expires, request another sign-in email. Check your spam folder if the
-message does not arrive, and make sure you entered the address associated with
-your account.
+On sites that allow people to create accounts without an invitation, select **Create account** and follow the email-verification steps. Sites that require an invitation do not show this option unless you are following an invitation link.
 
-After signing in with a code, Loomio may offer to set a password. This is
-optional; you can continue using email links and codes.
+For privacy, use the same email address that received your group invitation. If you have accounts under more than one address, you can [merge your accounts](/en/user_manual/users/merge_accounts).
 
 ## Single sign-on
 
-Loomio supports SAML and OAuth single sign-on when configured by the instance
-operator. A configured provider appears as a button on the first sign-in
-screen, using a name chosen by the organization.
+Loomio supports Google, SAML, and OAuth identity providers when configured by the site operator. Select the provider button and authenticate with that provider. If an existing Loomio account has the same verified email address, Loomio can link the provider identity to that account. An organization may manage your name and email through its identity provider, in which case those fields cannot be edited in your Loomio profile.
 
-Select the organization sign-in button and authenticate with your identity
-provider. If an existing Loomio account has the same email address, Loomio
-links the sign-in identity to that account. An organization may also manage
-your name and email through its identity provider, in which case those fields
-cannot be edited in your Loomio profile.
-
-The available providers and whether single sign-on is required depend on the
-Loomio instance used by your organization.
+An SSO-only private site shows only its organization sign-in option. It does not offer Loomio-managed passwords, emailed sign-in codes, native account creation, or Loomio-managed passkeys. If the organization uses passkeys, its identity provider asks for them during SSO.
 
 ## Sign out
 
-Open the sidebar, select your name, then select **Sign out**. On a shared
-computer, sign out when you finish rather than closing only the browser tab.
+Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.

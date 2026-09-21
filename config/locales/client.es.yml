@@ -2582,6 +2582,14 @@ es:
     invalid_login: No se puede iniciar sesión con esos datos.
     login_link_rate_limited: Se han solicitado demasiados correos electrónicos de inicio de sesión desde esta red. Por favor, espera una hora e inténtalo de nuevo.
     send_login_link_error: Se produjo un error al enviar el correo electrónico de inicio de sesión. Inténtalo de nuevo.
+    sign_in_with_passkey: Iniciar sesión con una clave de acceso
+    passkey_authentication_failed: No pudimos iniciar sesión con esa clave de acceso
+    passkey_registration_failed: No pudimos guardar esa clave de acceso
+    passkey_default_name: Clave de acceso
+    local_login_disabled: Este sitio requiere inicio de sesión único
+    email_me_a_sign_in_code: Envíame un código de acceso por correo electrónico
+    sign_in_with_code: Inicia sesión con un código
+    new_to_site: "¿Eres nuevo aquí?"
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
@@ -3139,3 +3147,18 @@ es:
     unfollow: Deja de seguir las actualizaciones
     followed: Ahora estás siguiendo las actualizaciones de este grupo
     unfollowed: Ya no estás siguiendo las actualizaciones de este grupo
+  passkey_settings:
+    title: Claves de acceso
+    helptext: Las claves de acceso te permiten iniciar sesión con tu dispositivo sin introducir tu dirección de correo electrónico ni tu contraseña
+    none: No has añadido una clave de acceso
+    name: nombre de la clave de acceso
+    name_placeholder: Por ejemplo, un portátil del trabajo
+    add: Agregar clave de acceso
+    added: Clave de acceso añadida
+    created_at: Agregado %{date}
+  credential_prompt:
+    title: Agregar otra forma de iniciar sesión
+    helptext: Agrega una clave de acceso o establece una contraseña para que puedas iniciar sesión sin esperar un código por correo electrónico
+    add_passkey: Agregar una clave de acceso
+    set_password: Establecer una contraseña
+    not_now: Ahora no

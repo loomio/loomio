@@ -446,3 +446,11 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/client.fr.yml` | `members_panel.loaded_of_total` → `members_panel.topics_loaded_of_total` | `%{loaded}} de %{total}}` | `%{loaded} de %{total}` | Extra closing braces caused vue-i18n compilation errors on the direct-discussions page |
+
+## 2026-09-21 — Passkey authentication
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.nl_NL.yml` | New passkey authentication keys | Google translated passkey as `wachtwoord` or `toegangscode`, used formal `u/uw`, and changed `%{date}` to `%{datum}` | Use `passkey`, informal `je/jouw`, and preserve `%{date}` | A passkey is not a password or emailed code; the interpolation name and established informal register are part of the contract |
+| `config/locales/client.es.yml` | New passkey authentication keys | Google translated some passkey references as `contraseña`, `Llave maestra`, and titled the section `Contraseñas` | Use `clave de acceso` consistently | These strings describe WebAuthn passkeys, not passwords or master keys |
+| `config/locales/client.da.yml`, `client.ru.yml`, `client.sv.yml` | `passkey_settings.created_at` | Google translated the `%{date}` interpolation identifier | Preserve `%{date}` | Interpolation identifiers are API values and must not be translated |

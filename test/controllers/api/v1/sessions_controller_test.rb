@@ -4,11 +4,13 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
     @original_force_ssl = Rails.application.config.force_ssl
+    @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
     Rails.application.config.force_ssl = @original_force_ssl
+    @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
   end
 
   test "turnstile is not required when TURNSTILE_SECRET_KEY is unset" do
@@ -16,6 +18,16 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     user = User.create!(email: "nocaptcha@example.com", email_verified: true, password: "s3curepassword123")
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
     assert_response :success
+  end
+
+  test "SSO-only mode rejects password and email-code sessions" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = User.create!(email: "sso-only@example.com", email_verified: true, password: "s3curepassword123")
+
+    assert_no_difference "Session.count" do
+      post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+    end
+    assert_response :forbidden
   end
 
   test "turnstile required: rejects password sign-in without token" do
@@ -241,30 +253,30 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "returns account locked failure for locked accounts" do
+  test "does not distinguish locked accounts from other invalid credentials" do
     user = User.create!(email: "lockedlogin@example.com", email_verified: true, password: "s3curepassword123")
     user.update!(locked_at: Time.current)
 
     post :create, params: { user: { email: user.email, password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.account_locked')], JSON.parse(response.body).dig('errors', 'password')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
-  test "returns email not found when password login account does not exist" do
+  test "does not distinguish an unknown email from other invalid credentials" do
     post :create, params: { user: { email: "missinglogin@example.com", password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.email_not_found')], JSON.parse(response.body).dig('errors', 'email')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
-  test "returns invalid password when password does not match" do
+  test "returns the same invalid login response when the password does not match" do
     user = User.create!(email: "wrongpasswordlogin@example.com", email_verified: true, password: "s3curepassword123")
 
     post :create, params: { user: { email: user.email, password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.invalid_password')], JSON.parse(response.body).dig('errors', 'password')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
   test "returns invalid token failure for invalid pending tokens" do

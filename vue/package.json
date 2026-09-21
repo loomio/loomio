@@ -27,6 +27,7 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
+    "@github/webauthn-json": "^2.1.1",
     "@hocuspocus/provider": "^4.7.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.301",

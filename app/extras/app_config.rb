@@ -34,6 +34,10 @@ class AppConfig
     ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i
   end
 
+  def self.local_login_enabled?
+    !ENV.key?('FEATURES_DISABLE_LOCAL_LOGIN') && !ENV.key?('FEATURES_DISABLE_EMAIL_LOGIN')
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
@@ -157,7 +161,8 @@ class AppConfig
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
-      email_login: !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
+      local_login: local_login_enabled?,
+      email_login: local_login_enabled?,
       create_user: !ENV['FEATURES_DISABLE_CREATE_USER'],
       create_group: !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],

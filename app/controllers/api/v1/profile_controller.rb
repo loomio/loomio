@@ -15,7 +15,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     selected_locale autodetect_time_zone time_zone date_time_pref
   ].freeze
 
-  before_action :require_current_user, except: [:email_status]
+  before_action :require_current_user
   before_action :forbid_restricted_user_actions
 
   def index
@@ -132,10 +132,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {})
-  end
-
   def email_exists
     render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
   end
@@ -201,12 +197,14 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def profile_update_params
-    return permitted_params.user unless current_user.restricted
+    profile_params = permitted_params.user
+    profile_params = profile_params.except(:password, :password_confirmation, :current_password) unless AppConfig.local_login_enabled?
+    return profile_params unless current_user.restricted
 
     # Restricted (unsubscribe-token) users may only update notification prefs —
     # strip identity/credential fields so the token cannot be used to change
     # name, email, password, username, or avatar.
-    permitted_params.user.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
+    profile_params.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
   end
 
   def forbid_restricted_user_actions
