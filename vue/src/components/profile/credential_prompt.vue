@@ -6,25 +6,25 @@ import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 
-const { user, close } = defineProps({
+const { user, close, promptType } = defineProps({
   user: Object,
-  close: Function
+  close: Function,
+  promptType: {
+    type: String,
+    required: true
+  }
 });
 
 const { t } = useI18n();
 const passkeyLoading = ref(false);
-const passkeySupported = AuthService.passkeysSupported();
-
-const rememberChoice = async () => {
-  await Records.users.saveExperience('credentialPromptDismissed');
-  user.experiences.credentialPromptDismissed = true;
-};
+const titleKey = promptType === 'passkey' ? 'passkey_settings.title' : 'set_password_prompt.title';
+const helptextKey = promptType === 'passkey' ? 'passkey_settings.helptext' : 'set_password_prompt.helptext';
 
 const addPasskey = async () => {
   passkeyLoading.value = true;
   try {
     await AuthService.createPasskey(AuthService.suggestedPasskeyName());
-    await rememberChoice();
+    user.hasPasskey = true;
     Flash.success('passkey_settings.added');
     close();
   } catch (error) {
@@ -43,26 +43,28 @@ const setPassword = () => {
   });
 };
 
-const notNow = async () => {
-  await rememberChoice();
+const dismissOffer = async () => {
+  const experience = promptType === 'passkey' ? 'passkeyPromptDismissed' : 'passwordPromptDismissed';
+  await Records.users.saveExperience(experience);
+  user.experiences[experience] = true;
   close();
 };
 </script>
 
 <template lang="pug">
-v-card.credential-prompt(:title="t('credential_prompt.title')")
+v-card.credential-prompt(:title="t(titleKey)")
   template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
-    p.text-medium-emphasis {{ t('credential_prompt.helptext') }}
+    p.text-medium-emphasis {{ t(helptextKey) }}
   v-card-actions.flex-wrap
-    v-btn.credential-prompt__dismiss(variant="text" @click="notNow")
-      span {{ t('credential_prompt.not_now') }}
+    v-btn.credential-prompt__dismiss(variant="text" @click="dismissOffer")
+      span {{ t('set_password_prompt.no_thanks') }}
     v-spacer
-    v-btn.credential-prompt__password(variant="tonal" @click="setPassword")
+    v-btn.credential-prompt__password(v-if="promptType === 'password'" color="primary" variant="elevated" @click="setPassword")
       span {{ t('credential_prompt.set_password') }}
     v-btn.credential-prompt__passkey(
-      v-if="passkeySupported"
+      v-if="promptType === 'passkey'"
       variant="elevated"
       color="primary"
       :loading="passkeyLoading"

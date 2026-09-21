@@ -61,6 +61,10 @@ class LoggedOutUser
     0
   end
 
+  def has_passkey?
+    false
+  end
+
 
 
   def nil_methods

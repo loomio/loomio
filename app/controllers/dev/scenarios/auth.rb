@@ -101,6 +101,33 @@ module Dev::Scenarios::Auth
     redirect_to dashboard_path
   end
 
+  def setup_login_token_user_with_password
+    User.create!(
+      email: 'password-user@example.com',
+      name: 'Password User',
+      email_verified: true,
+      legal_accepted: true,
+      password: 'veryeasytoguess123'
+    )
+    redirect_to dashboard_path
+  end
+
+  def setup_login_token_user_with_passkey
+    user = User.create!(
+      email: 'passkey-user@example.com',
+      name: 'Passkey User',
+      email_verified: true,
+      legal_accepted: true
+    )
+    user.passkey_credentials.create!(
+      external_id: SecureRandom.urlsafe_base64,
+      public_key: 'test-public-key',
+      sign_count: 0,
+      name: 'Test passkey'
+    )
+    redirect_to dashboard_path
+  end
+
   def last_login_code
     render plain: LoginToken.last.code
   end

@@ -153,6 +153,9 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
+  def has_passkey?
+    passkey_credentials.exists?
+  end
 
   def default_format
     if experiences['html-editor.uses-markdown']

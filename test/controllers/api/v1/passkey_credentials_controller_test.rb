@@ -170,7 +170,9 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     end
 
     assert_response :success
-    assert_equal @user.id, JSON.parse(response.body)["current_user_id"]
+    json = JSON.parse(response.body)
+    assert_equal @user.id, json["current_user_id"]
+    assert_equal true, json.dig("users", 0, "has_passkey")
     assert passkey.reload.last_used_at.present?
   end
 

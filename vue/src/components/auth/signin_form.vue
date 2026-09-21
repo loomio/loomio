@@ -1,10 +1,8 @@
 <script lang="js">
 import AuthService  from '@/shared/services/auth_service';
-import Session from '@/shared/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
 import AppConfig from '@/shared/services/app_config';
 import Flash from '@/shared/services/flash';
-import EventBus from '@/shared/services/event_bus';
 import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
 import { useI18n } from 'vue-i18n';
 
@@ -55,20 +53,6 @@ export default {
       });
     },
 
-    signInAndSetPassword() {
-      if (this.submitBlockedByCaptcha) { return; }
-      this.loading = true;
-      this.signIn().then(() => {
-        this.loading = false;
-        EventBus.$emit('openModal', {
-          component: 'ChangePasswordForm',
-          props: {
-            user: Session.user()
-          }
-        });
-      });
-    },
-
     sendLoginLink() {
       if (this.submitBlockedByCaptcha) { return; }
       this.applyTurnstileToken();
@@ -105,9 +89,6 @@ v-card.auth-signin-form(
         span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
       v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
         span(v-t="'auth_form.login_link'")
-      p.mb-4.text-medium-emphasis
-        span(v-t="'auth_form.set_password_helptext'").mr-1
-        a.lmo-pointer(@click='signInAndSetPassword()' v-t="'auth_form.set_password'")
     .auth-signin-form__no-token(v-if='!user.hasToken')
       .auth-signin-form__password(v-if='user.hasPassword')
         p.text-center.my-2(v-t="'auth_form.enter_your_password'")

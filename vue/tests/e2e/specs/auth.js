@@ -69,19 +69,38 @@ module.exports = {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)
 
-    page.loadPath('setup_login_token_user_without_password')
-    page.fillIn('.auth-email-form__email input', 'no-password@example.com')
+    page.loadPath('setup_login_token_user_with_password')
+    page.fillIn('.auth-email-form__email input', 'password-user@example.com')
     page.click('.auth-email-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
-    page.expectText('.credential-prompt', 'Add another way to sign in')
+    page.expectText('.credential-prompt', 'Passkeys')
+    page.expectNoElement('.credential-prompt__password')
     page.pause(500)
     page.click('.credential-prompt__passkey')
     page.expectFlash('Passkey added')
     page.expectNoElement('.credential-prompt')
     page.goTo('profile')
     page.expectText('.passkey-settings', 'Passkey')
+
+    test.perform(async () => {
+      await test.driver.removeVirtualAuthenticator()
+    })
+  },
+
+  'does_not_prompt_after_code_sign_in_when_account_has_a_passkey': (test) => {
+    page = pageHelper(test)
+    addVirtualPasskeyAuthenticator(test)
+
+    page.loadPath('setup_login_token_user_with_passkey')
+    page.fillIn('.auth-email-form__email input', 'passkey-user@example.com')
+    page.click('.auth-email-form__login-link')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.pause(500)
+    page.expectNoElement('.credential-prompt')
 
     test.perform(async () => {
       await test.driver.removeVirtualAuthenticator()
@@ -161,6 +180,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_login_token')
+    page.expectNoElement('.auth-signin-form__token .lmo-pointer')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
   },
@@ -169,12 +189,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_login_token_user_without_password')
+    test.execute(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
     page.fillIn('.auth-email-form__email input', 'no-password@example.com')
     page.click('.auth-email-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
-    page.expectText('.credential-prompt', 'Add another way to sign in')
+    page.expectText('.credential-prompt', 'Set a password?')
+    page.expectNoElement('.credential-prompt__passkey')
     page.click('.credential-prompt__password')
     page.expectText('.change-password-form', 'Set your password')
   },
@@ -183,12 +205,13 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_login_token_user_without_password')
+    test.execute(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
     page.fillIn('.auth-email-form__email input', 'no-password@example.com')
     page.click('.auth-email-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
-    page.expectText('.credential-prompt', 'Add another way to sign in')
+    page.expectText('.credential-prompt', 'Set a password?')
     page.click('.credential-prompt__dismiss')
     page.expectNoElement('.credential-prompt')
     page.refresh()
