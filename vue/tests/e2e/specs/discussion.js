@@ -72,6 +72,7 @@ module.exports = {
     page.click('.volume-quiet label')
     page.click('.change-volume-form__submit')
     page.expectFlash('Notification settings updated')
+    page.expectNoElement('.change-volume-form', 8000)
     page.expectElement('.topic-sidebar__notification-email-icon')
     page.expectNoElement('.topic-sidebar__notification-device-icon')
     page.expectText('.topic-sidebar__notification-settings', 'Daily catch-up email')
