@@ -38,6 +38,34 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     assert @user.reload.webauthn_id.present?
   end
 
+  test "registration accepts a valid CSRF token when the browser sends a null origin" do
+    sign_in @user
+    options = registration_options
+    credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: true)
+    csrf_token = @controller.send(:form_authenticity_token)
+    cookies['csrftoken'] = csrf_token
+    @request.headers['X-CSRF-TOKEN'] = csrf_token
+    @request.headers['Origin'] = 'null'
+
+    with_forgery_protection do
+      assert_difference "PasskeyCredential.count", 1 do
+        post :create, params: { name: "Private browser", public_key_credential: credential }, format: :json
+      end
+    end
+
+    assert_response :created
+  end
+
+  test "registration rejects missing CSRF tokens" do
+    sign_in @user
+
+    with_forgery_protection do
+      assert_raises(ActionController::InvalidAuthenticityToken) do
+        post :create, params: { public_key_credential: {} }, format: :json
+      end
+    end
+  end
+
   test "options bind passkeys to the configured canonical host and origin" do
     ENV['CANONICAL_HOST'] = 'community.example.org'
     ENV['CANONICAL_PORT'] = '8443'
@@ -226,5 +254,13 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
 
   def restore_env(name, value)
     value.nil? ? ENV.delete(name) : ENV[name] = value
+  end
+
+  def with_forgery_protection
+    previous = ActionController::Base.allow_forgery_protection
+    ActionController::Base.allow_forgery_protection = true
+    yield
+  ensure
+    ActionController::Base.allow_forgery_protection = previous
   end
 end
