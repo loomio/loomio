@@ -1963,6 +1963,7 @@ module Dev::Scenarios::OatmilkCooperative
       password: 'password',
       detected_locale: 'en',
       email_verified: true,
+      legal_accepted: true,
       experiences: {changePicture: true, hideOnboarding: true, theme: 'light'}
     )
 

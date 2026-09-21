@@ -254,21 +254,26 @@ module.exports = function(test, browser) {
       const page = pageHelper(test);
       page.click('.auth-form__create-account');
       page.fillIn('.auth-signup-form__email input', email);
-      page.fillIn('.auth-signup-form__name input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
-      return page.click('.auth-signin-form__submit');
+      page.click('.auth-signin-form__submit');
+      page.completeAccount();
+      return page.click('.credential-prompt__dismiss');
+    },
+
+    completeAccount(name = "New Account") {
+      const page = pageHelper(test);
+      page.fillIn('.account-completion__name input', name);
+      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
+      return page.click('.account-completion__submit');
     },
 
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
       page.click('.auth-form__create-account');
       page.click('.auth-signup-form__submit');
-      page.fillIn('.account-completion__name input', name);
-      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
-      page.click('.account-completion__submit');
+      page.completeAccount(name);
       return page.click('.credential-prompt__dismiss');
     },
 

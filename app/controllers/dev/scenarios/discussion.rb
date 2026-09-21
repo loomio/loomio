@@ -20,6 +20,7 @@ module Dev::Scenarios::Discussion
         new_user.name = name
         new_user.username = username
         new_user.email_verified = true
+        new_user.legal_accepted = true
       end
       group.add_member!(user)
     end

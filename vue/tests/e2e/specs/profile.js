@@ -164,9 +164,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
-    page.click('.account-completion__submit')
-    page.pause(500)
     page.goTo('profile')
     page.click('.user-page__merge_accounts')
     page.waitFor('.merge-accounts-modal')

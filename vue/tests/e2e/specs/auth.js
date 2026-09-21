@@ -293,11 +293,7 @@ module.exports = {
     page.expectText('.email-body', 'Accept invitation')
     page.click('.email-button', 2000)
     // page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
-    page.click('.auth-form__create-account')
-    page.expectText('.auth-signup-form', 'New to')
-    page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
-    page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
-    page.click('.auth-signup-form__submit')
+    page.signUpViaInvitation('Billy Jeans')
     page.expectFlash('Signed in successfully')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   },
@@ -315,13 +311,13 @@ module.exports = {
     // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
     // https://github.com/nightwatchjs/nightwatch/issues/1939
     page.expectText('.auth-signup-form', 'New to')
-    page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
-    page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectFlash('Signed in successfully')
+    page.completeAccount('Billy Jeans')
+    page.click('.credential-prompt__dismiss')
   },
 
   'invite_existing_user_via_alternative_email_address': (test) => {

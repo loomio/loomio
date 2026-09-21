@@ -14,6 +14,7 @@ module Dev::Scenarios::Auth
     user = User.create(email: 'existing-user@example.com',
                        name: 'existing user',
                        email_verified: true,
+                       legal_accepted: true,
                        password: 'veryeasytoguess123')
 
     GroupService.invite(
@@ -35,6 +36,7 @@ module Dev::Scenarios::Auth
     user = User.create(email: 'existing-user@example.com',
                        name: 'existing user',
                        email_verified: true,
+                       legal_accepted: true,
                        password: 'veryeasytoguess123')
 
     params = {recipient_emails: ['existing-user@example.com'], recipient_message: "hi, please join our sweet group!"}
@@ -93,7 +95,8 @@ module Dev::Scenarios::Auth
     user = User.create!(
       email: 'no-password@example.com',
       name: 'No Password',
-      email_verified: true
+      email_verified: true,
+      legal_accepted: true
     )
     redirect_to dashboard_path
   end
