@@ -131,6 +131,12 @@ export default new class AuthService {
   validSignup(vars, user) {
     user.errors = {};
 
+    if (!vars.email) {
+      user.errors.email = [I18n.global.t('auth_form.email_not_present')];
+    } else if (!vars.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)) {
+      user.errors.email = [I18n.global.t('auth_form.invalid_email')];
+    }
+
     if (!vars.name) {
       user.errors.name = [I18n.global.t('auth_form.name_required')];
     }
@@ -140,6 +146,7 @@ export default new class AuthService {
     }
 
     if (keys(user.errors)) {
+      user.email          = vars.email;
       user.name           = vars.name;
       user.legalAccepted  = vars.legalAccepted;
       user.emailNewsletter = vars.emailNewsletter;

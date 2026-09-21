@@ -252,9 +252,9 @@ module.exports = function(test, browser) {
 
     signUpViaEmail(email = "new@account.com") {
       const page = pageHelper(test);
-      page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__create-account');
-      page.fillIn('.auth-signup-form input', 'New Account');
+      page.click('.auth-form__create-account');
+      page.fillIn('.auth-signup-form__email input', email);
+      page.fillIn('.auth-signup-form__name input', 'New Account');
       page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
@@ -264,7 +264,7 @@ module.exports = function(test, browser) {
 
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
-      page.click('.auth-email-form__create-account');
+      page.click('.auth-form__create-account');
       page.fillIn('.auth-signup-form__name input', name);
       page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
       return page.click('.auth-signup-form__submit');

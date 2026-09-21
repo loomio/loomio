@@ -40,6 +40,12 @@ export default {
         this.attempts += 1;
         this.loading = false;
       });
+    },
+    back() {
+      this.user.code = null;
+      this.user.errors = {};
+      this.user.sentLoginLink = false;
+      this.user.authForm = null;
     }
   }
 };
@@ -49,9 +55,8 @@ v-card.auth-complete(
   :title="$t('auth_form.check_your_email')"
   v-submit-on-mod-enter="submit"
   @keydown.enter.exact="submit()")
-  template(vslot:append)
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      common-icon(name="mdi-close")
+  template(v-slot:append)
+    auth-back-button(@click="back")
   v-sheet.mx-4.text-center
     p.my-6(v-if='user.sentLoginLink')
       span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")

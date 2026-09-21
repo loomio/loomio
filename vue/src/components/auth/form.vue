@@ -30,7 +30,21 @@ export default {
     });
   },
 
+  methods: {
+    createAccount() {
+      if (!this.user.email?.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/)) {
+        this.user.email = '';
+      }
+      this.user.errors = {};
+      this.user.authForm = 'signUp';
+    }
+  },
+
   computed: {
+    canCreateAccount() {
+      return AppConfig.features.app.create_user || this.pendingIdentity.identity_type;
+    },
+
     userLocale() {
       return Session.user().locale;
     },
@@ -63,9 +77,14 @@ v-card.auth-form(:title="$t('auth_form.sign_up_or_log_in', { site_name: siteName
     //- p.text-headline-small.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
     //- p.text-headline-small.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
     p.text-center.text-body-small(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
-    auth-passkey-button.mb-4(v-if='localLogin')
-    auth-provider-form(:user='user')
+    .max-width-400.mx-auto
+      auth-passkey-button.mb-4(v-if='localLogin')
+      auth-provider-form(:user='user')
     auth-email-form.mt-4(:user='user' v-if='localLogin')
+    .max-width-400.mx-auto.mt-6(v-if="canCreateAccount")
+      v-divider.mb-4
+      v-btn.auth-form__create-account(block variant="tonal" @click="createAccount")
+        span {{ $t('auth_form.create_account') }}
     .d-flex.text-body-small.mt-4.justify-space-between.pa-4.text-medium-emphasis
       a.text-medium-emphasis(href="/about-loomio" v-t="'powered_by.about_loomio'")
       a.text-medium-emphasis(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")

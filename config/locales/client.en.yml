@@ -2942,6 +2942,7 @@ en:
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required
+    email_code_help: Enter your email address and we’ll send you a six-digit sign-in code
     invalid_email: Sorry, that doesn't look like a valid email address
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.

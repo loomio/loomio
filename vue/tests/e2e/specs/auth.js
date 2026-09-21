@@ -22,8 +22,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
-    page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
-    page.click('.auth-email-form__create-account')
+    page.click('.auth-form__create-account')
+    page.fillIn('.auth-signup-form__email input', 'max_von_sydow@example.com')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
     page.click('.auth-signup-form__submit')
@@ -38,8 +38,8 @@ module.exports = {
 
     page.loadPath('view_open_discussion_as_visitor')
     page.click('.add-comment-panel__sign-in-btn')
-    page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
-    page.click('.auth-email-form__create-account')
+    page.click('.auth-form__create-account')
+    page.fillIn('.auth-signup-form__email input', 'max_von_sydow@example.com')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
     page.click('.auth-signup-form__submit')
@@ -96,9 +96,9 @@ module.exports = {
 
     page.loadPath('view_closed_group_with_shareable_link')
     // page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
-    page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.pause(500)
-    page.click('.auth-email-form__create-account')
+    page.click('.auth-form__create-account')
+    page.fillIn('.auth-signup-form__email input', 'max_von_sydow@example.com')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
     page.click('.auth-signup-form__submit')
@@ -118,6 +118,52 @@ module.exports = {
     page.fillIn('.auth-email-form__password input', 'w0rstmovie')
     page.click('.auth-email-form__submit')
     page.expectText('.lmo-validation-error__message', 'Unable to sign you in with those details')
+  },
+
+  'opens_an_email_form_when_requesting_a_login_code_without_an_address': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.click('.auth-email-form__login-link')
+    page.expectText('.auth-email-code-form', 'Enter your email address and we’ll send you a six-digit sign-in code')
+    page.fillIn('.auth-email-code-form__email input', 'patrick@example.com')
+    page.click('.auth-email-code-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+  },
+
+  'prefills_the_create_account_form_from_the_sign_in_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.fillIn('.auth-email-form__email input', 'new-person@example.com')
+    page.click('.auth-form__create-account')
+    page.expectValue('.auth-signup-form__email input', 'new-person@example.com')
+  },
+
+  'does_not_carry_an_invalid_email_into_another_authentication_path': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.fillIn('.auth-email-form__email input', 'not-an-email')
+    page.click('.auth-form__create-account')
+    test.expect.element('.auth-signup-form__email input').value.to.equal('')
+
+    page.click('.auth-back-button')
+    page.fillIn('.auth-email-form__email input', 'still-not-an-email')
+    page.click('.auth-email-form__login-link')
+    test.expect.element('.auth-email-code-form__email input').value.to.equal('')
+  },
+
+  'can_go_back_and_correct_the_email_for_a_login_code': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.fillIn('.auth-email-form__email input', 'wrong@example.com')
+    page.click('.auth-email-form__login-link')
+    page.expectText('.auth-complete', 'Check your email')
+    page.click('.auth-back-button')
+    page.expectElement('.auth-email-form__email input')
+    page.expectValue('.auth-email-form__email input', 'wrong@example.com')
   },
 
   'can_send_login_code_to_user_with_a_password': (test) => {
@@ -244,7 +290,7 @@ module.exports = {
     page.expectText('.email-body', 'Accept invitation')
     page.click('.email-button', 2000)
     // page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
-    page.click('.auth-email-form__create-account')
+    page.click('.auth-form__create-account')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
@@ -260,11 +306,11 @@ module.exports = {
     page.loadPathNoApp('setup_invitation_email_to_visitor')
     page.expectText('.email-body', 'Accept invitation')
     page.click('.email-button', 2000)
-    page.clearField('.auth-email-form__email input')
-    page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
+    page.click('.auth-form__create-account')
+    page.clearField('.auth-signup-form__email input')
+    page.fillIn('.auth-signup-form__email input', 'max_von_sydow@merciless.com')
     // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
     // https://github.com/nightwatchjs/nightwatch/issues/1939
-    page.click('.auth-email-form__create-account')
     page.expectText('.auth-signup-form', 'New to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')
