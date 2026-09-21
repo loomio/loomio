@@ -51,7 +51,8 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
     )
 
     render json: { passkey_credential: { id: passkey.id, name: passkey.name } }, status: :created
-  rescue WebAuthn::Error, ActiveRecord::RecordInvalid, ArgumentError
+  rescue WebAuthn::Error, ActiveRecord::RecordInvalid, ArgumentError => error
+    Rails.logger.warn("Passkey registration failed: #{error.class}: #{error.message}")
     render json: { errors: { passkey: [I18n.t('auth_form.passkey_registration_failed')] } }, status: :unprocessable_entity
   end
 
@@ -138,6 +139,8 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
         :attestationObject,
         :authenticatorData,
         :clientDataJSON,
+        :publicKey,
+        :publicKeyAlgorithm,
         :signature,
         :userHandle,
         { transports: [] }

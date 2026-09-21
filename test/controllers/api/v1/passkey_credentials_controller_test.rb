@@ -56,6 +56,20 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     assert_response :created
   end
 
+  test "registration accepts public key fields returned by browser credential serialization" do
+    sign_in @user
+    options = registration_options
+    credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: true)
+    credential["response"]["publicKey"] = "browser-provided-public-key"
+    credential["response"]["publicKeyAlgorithm"] = -7
+
+    assert_difference "PasskeyCredential.count", 1 do
+      post :create, params: { name: "Browser passkey", public_key_credential: credential }, format: :json
+    end
+
+    assert_response :created
+  end
+
   test "registration rejects missing CSRF tokens" do
     sign_in @user
 

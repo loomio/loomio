@@ -1,5 +1,6 @@
 pageHelper = require('../helpers/pageHelper')
 const http = require('http')
+const {Protocol, Transport, VirtualAuthenticatorOptions} = require('selenium-webdriver/lib/virtual_authenticator')
 
 const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080')
 const baseUrl = `http://localhost:${port}`
@@ -17,7 +18,106 @@ const enterLastLoginCode = (test, page) => {
   })
 }
 
+const addVirtualPasskeyAuthenticator = test => {
+  test.perform(async () => {
+    const options = new VirtualAuthenticatorOptions()
+    options.setProtocol(Protocol.CTAP2)
+    options.setTransport(Transport.INTERNAL)
+    options.setHasResidentKey(true)
+    options.setHasUserVerification(true)
+    options.setIsUserVerified(true)
+    await test.driver.addVirtualAuthenticator(options)
+  })
+}
+
 module.exports = {
+  'can_register_sign_in_and_remove_a_passkey': (test) => {
+    page = pageHelper(test)
+    addVirtualPasskeyAuthenticator(test)
+
+    page.loadPath('setup_discussion')
+    page.goTo('profile')
+    page.fillIn('.passkey-settings__name input', 'Test passkey')
+    page.scrollClick('.passkey-settings__add')
+    page.expectFlash('Passkey added')
+    page.expectText('.passkey-settings', 'Test passkey')
+
+    page.ensureSidebar()
+    page.click('.sidebar__user-dropdown')
+    page.click('.user-dropdown__list-item-button--sign-out')
+    page.expectElement('.auth-modal', 20000)
+    page.pause(500)
+    page.click('.auth-passkey-button__submit')
+    page.expectFlash('Signed in successfully')
+    page.expectElement('.dashboard-page', 20000)
+
+    page.goTo('profile')
+    page.expectText('.passkey-settings', 'Test passkey')
+    page.scrollClick('.passkey-settings__remove')
+    page.acceptConfirm()
+    page.expectFlash('Passkey removed')
+    page.expectText('.passkey-settings', 'You have not added a passkey')
+
+    test.perform(async () => {
+      await test.driver.removeVirtualAuthenticator()
+    })
+  },
+
+  'can_add_a_passkey_after_signing_in_with_a_code': (test) => {
+    page = pageHelper(test)
+    addVirtualPasskeyAuthenticator(test)
+
+    page.loadPath('setup_login_token_user_without_password')
+    page.fillIn('.auth-email-form__email input', 'no-password@example.com')
+    page.click('.auth-email-form__login-link')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.expectText('.credential-prompt', 'Add another way to sign in')
+    page.pause(500)
+    page.click('.credential-prompt__passkey')
+    page.expectFlash('Passkey added')
+    page.expectNoElement('.credential-prompt')
+    page.goTo('profile')
+    page.expectText('.passkey-settings', 'Passkey')
+
+    test.perform(async () => {
+      await test.driver.removeVirtualAuthenticator()
+    })
+  },
+
+  'can_sign_up_from_try_and_complete_the_account': (test) => {
+    page = pageHelper(test)
+    const email = `trial-person-${Date.now()}@example.com`
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.goTo('try')
+    page.expectElement('.start-trial-form')
+    page.fillIn('.start-trial-form__name input', 'Trial Person')
+    page.fillIn('.start-trial-form__email input', email)
+    page.fillIn('.start-trial-form__group-name input', 'Trial Group')
+    page.click('.start-trial-form__category .v-field')
+    page.waitFor('.v-overlay--active .v-list-item')
+    page.clickLastElement('.v-overlay--active .v-list-item')
+    page.click('.start-trial-form__submit')
+    page.expectText('.trial-started', `We have created a user account for ${email}`)
+    page.click('.trial-started__sign-in')
+    page.expectValue('.auth-email-form__email input', email)
+    page.click('.auth-email-form__login-link')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.expectElement('.account-completion')
+    page.expectValue('.account-completion__name input', 'Trial Person')
+    page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
+    page.click('.account-completion__submit')
+    page.expectFlash('Signed in successfully')
+    page.refreshAndWait()
+    page.goTo('profile')
+    page.expectValue('.profile-page__name-input input', 'Trial Person')
+    page.expectValue('.profile-page__email-input input', email)
+  },
+
   'can_sign_up_a_user': (test) => {
     page = pageHelper(test)
 
