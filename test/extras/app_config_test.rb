@@ -56,6 +56,8 @@ class AppConfigTest < ActiveSupport::TestCase
 
   test "local login restrictions are presence-based and retain the email-login alias" do
     assert AppConfig.local_login_enabled?
+    assert AppConfig.app_features.fetch(:local_login)
+    refute AppConfig.app_features.key?(:email_login)
 
     ENV["FEATURES_DISABLE_LOCAL_LOGIN"] = "0"
     refute AppConfig.local_login_enabled?
