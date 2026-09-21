@@ -23,7 +23,7 @@ const rememberChoice = async () => {
 const addPasskey = async () => {
   passkeyLoading.value = true;
   try {
-    await AuthService.createPasskey(t('auth_form.passkey_default_name'));
+    await AuthService.createPasskey(AuthService.suggestedPasskeyName());
     await rememberChoice();
     Flash.success('passkey_settings.added');
     close();

@@ -37,6 +37,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.goTo('profile')
+    test.expect.element('.passkey-settings__name input').value.to.match(/passkey/i)
     page.fillIn('.passkey-settings__name input', 'Test passkey')
     page.scrollClick('.passkey-settings__add')
     page.expectFlash('Passkey added')

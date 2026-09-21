@@ -7,7 +7,7 @@ import { approximate } from '@/shared/helpers/format_time';
 
 const { t } = useI18n();
 const credentials = ref([]);
-const name = ref('');
+const name = ref(AuthService.suggestedPasskeyName());
 const loading = ref(false);
 const supported = AuthService.passkeysSupported();
 
@@ -17,11 +17,10 @@ const load = async () => {
 };
 
 const add = async () => {
-  if (!name.value.trim()) return;
   loading.value = true;
   try {
     await AuthService.createPasskey(name.value.trim());
-    name.value = '';
+    name.value = AuthService.suggestedPasskeyName();
     await load();
     Flash.success('passkey_settings.added');
   } catch (error) {
@@ -80,7 +79,6 @@ v-card.passkey-settings.mt-4(v-if="supported" :title="t('passkey_settings.title'
     v-btn.passkey-settings__add(
       color="primary"
       variant="elevated"
-      :disabled="!name.trim()"
       :loading="loading"
       @click="add") {{ t('passkey_settings.add') }}
 </template>

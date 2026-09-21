@@ -8,6 +8,7 @@ import AccountCompletionService from '@/shared/services/account_completion_servi
 import { I18n } from '@/i18n';
 import {pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 import RestfulClient from '@/shared/record_store/restful_client';
+import { passkeyPlatformName } from '@/shared/helpers/passkey_name.mjs';
 
 const passkeys = new RestfulClient('passkey_credentials');
 
@@ -53,6 +54,12 @@ export default new class AuthService {
 
   passkeysSupported() {
     return passkeysSupported();
+  }
+
+  suggestedPasskeyName() {
+    const platform = passkeyPlatformName();
+    const name = I18n.global.t('auth_form.passkey_default_name');
+    return platform ? `${platform} ${name.toLocaleLowerCase()}` : name;
   }
 
   async signInWithPasskey() {
