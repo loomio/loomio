@@ -70,8 +70,6 @@ class Api::V1::RegistrationsController < ApplicationController
   end
 
   def sign_up_params
-    # Accept legacy clients' former signup fields during rollout, but
-    # UserService intentionally creates provisional accounts from email only.
-    params.require(:user).permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
+    params.require(:user).permit(:email, :turnstile_token)
   end
 end
