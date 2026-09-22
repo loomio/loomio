@@ -555,7 +555,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_not_nil u.legal_accepted_at
   end
 
-  test "signup via an SSO identity proves the identity email" do
+  test "legacy pending identity state cannot prove email ownership" do
     identity_user = User.create!(email: "identity-registration@example.com", email_verified: false)
     identity = Identity.create!(
       identity_type: "oauth",
@@ -568,9 +568,9 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     post :create, params: { user: { email: identity_user.email } }
 
     assert_response :success
-    assert_equal true, JSON.parse(response.body)['incomplete']
-    complete_pending_account
-    assert identity_user.reload.email_verified?
+    assert_nil JSON.parse(response.body)['incomplete']
+    assert_nil session[:pending_account_completion]
+    assert_not identity_user.reload.email_verified?
   end
 
   test "turnstile bypass: expired login token is not accepted" do

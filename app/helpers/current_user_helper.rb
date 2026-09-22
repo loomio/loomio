@@ -6,9 +6,15 @@ module CurrentUserHelper
   class SpamUserDeniedError < StandardError
   end
 
+  class InactiveUserError < StandardError
+  end
+
   def sign_in(user, handle_pending: true)
     @current_user = nil
+    require_active_user!(user)
     user = UserService.verify(user: user)
+    # Verification can resolve a provisional user to another verified account.
+    require_active_user!(user)
     require_user_name!(user)
     start_new_session_for(user)
     record_successful_sign_in(user)
@@ -28,6 +34,7 @@ module CurrentUserHelper
   end
 
   def stage_account_completion(user, name_managed: false)
+    require_active_user!(user)
     discard_account_completion
     AccountCompletionProof.where(expires_at: ..Time.current).delete_all
     proof = AccountCompletionProof.create!(user: user, name_managed: name_managed, expires_at: ACCOUNT_COMPLETION_TTL.from_now)
@@ -77,6 +84,10 @@ module CurrentUserHelper
 
   private
 
+  def require_active_user!(user)
+    raise InactiveUserError unless user.active_for_authentication?
+  end
+
   # A session must never expose an incomplete profile to the application.
   # Authentication entry points complete or reject nameless accounts first;
   # this shared boundary prevents a new entry point from bypassing that rule.
@@ -88,7 +99,7 @@ module CurrentUserHelper
   end
 
   def authenticated_user
-    resume_session&.user || bridge_devise_session&.user
+    resume_session&.user
   end
 
   def resume_session
@@ -100,24 +111,11 @@ module CurrentUserHelper
   def find_session_by_cookie
     return unless cookies.signed[:session_id]
 
-    Session.includes(:user).find_by(id: cookies.signed[:session_id]).tap do |session_record|
-      session_record&.destroy unless session_record&.user&.active_for_authentication?
-    end
-  end
+    session_record = Session.includes(:user).find_by(id: cookies.signed[:session_id])
+    return session_record if session_record&.user&.active_for_authentication?
 
-  def bridge_devise_session
-    user = bridged_devise_user
-    return unless user&.active_for_authentication?
-
-    start_new_session_for(user).tap do
-      session.delete('warden.user.user.key')
-    end
-  end
-
-  def bridged_devise_user
-    key = session['warden.user.user.key']
-    user_id = Array(key).dig(0, 0)
-    User.find_by(id: user_id) if user_id
+    session_record&.destroy!
+    nil
   end
 
   def start_new_session_for(user)
@@ -144,7 +142,6 @@ module CurrentUserHelper
     Current.session = nil
     cookies.delete(:session_id)
     cookies.delete(:signed_in)
-    session.delete('warden.user.user.key')
   end
 
   def record_successful_sign_in(user)

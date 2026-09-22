@@ -288,7 +288,7 @@ class User < ApplicationRecord
 
   def increment_failed_attempts!
     with_lock do
-      unlock_access! unless access_locked?
+      unlock_access! if locked_at.present? && !access_locked?
       increment!(:failed_attempts)
       lock_access! if failed_attempts >= MAXIMUM_LOGIN_ATTEMPTS
     end

@@ -8,7 +8,8 @@ class Api::V1::SessionsController < ApplicationController
       render json: { errors: { turnstile: [I18n.t('auth_form.turnstile_required')] } }, status: 403
       return
     end
-    if user = attempt_login
+    user = attempt_login
+    if user&.active_for_authentication?
       if user.incomplete?
         stage_account_completion(user)
         render json: {

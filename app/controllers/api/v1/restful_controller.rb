@@ -7,6 +7,8 @@ class Api::V1::RestfulController < Api::V1::SnorlaxBase
   include ::SentryHelper
   include ::PendingActionsHelper
 
+  rescue_from(CurrentUserHelper::InactiveUserError) { respond_with_error(401) }
+
   before_action :handle_pending_actions
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_paper_trail_whodunnit  # gem 'paper_trail'

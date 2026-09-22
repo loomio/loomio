@@ -237,7 +237,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal false, cookie_writes.dig(:signed_in, :secure)
   end
 
-  test "bridges a legacy devise session into a session record" do
+  test "legacy authentication state cannot create a session" do
     user = User.create!(
       email: "legacy-session@example.com",
       email_verified: true,
@@ -245,11 +245,41 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     )
     session['warden.user.user.key'] = [[user.id], nil]
 
-    assert_difference 'Session.count', 1 do
-      assert_equal user.id, @controller.current_user.id
+    assert_no_difference 'Session.count' do
+      assert_not @controller.current_user.is_logged_in?
     end
-    assert_equal user.id, Current.session.user_id
-    assert_nil session['warden.user.user.key']
+    assert_nil Current.session
+  end
+
+  test "password failures lock the account until the lock expires" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = users(:user)
+    user.update!(password: 'lockout-password-123')
+
+    User::MAXIMUM_LOGIN_ATTEMPTS.times do |attempt|
+      post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+      assert_response :unauthorized
+      assert_equal attempt + 1, user.reload.failed_attempts
+    end
+    assert user.access_locked?
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: 'lockout-password-123' } }
+    end
+    assert_response :unauthorized
+
+    travel User::UNLOCK_IN + 1.second do
+      post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+      assert_response :unauthorized
+      assert_equal 1, user.reload.failed_attempts
+      assert_nil user.locked_at
+
+      post :create, params: { user: { email: user.email, password: 'lockout-password-123' } }
+      assert_response :success
+      assert_equal user.id, JSON.parse(response.body)['current_user_id']
+      assert_equal 0, user.reload.failed_attempts
+      assert_nil user.locked_at
+    end
   end
 
   test "sign out destroys the current session" do
