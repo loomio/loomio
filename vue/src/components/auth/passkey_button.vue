@@ -31,5 +31,5 @@ v-btn.auth-passkey-button__submit(
   @click="signIn")
   common-icon(name="mdi-key-variant")
   space
-  span {{ t('auth_form.sign_in_with_passkey') }}
+  span {{ t('auth_form.use_a_passkey') }}
 </template>

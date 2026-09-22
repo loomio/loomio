@@ -243,6 +243,7 @@ module.exports = function(test, browser) {
     signInViaEmail(email) {
       page.fillIn('.auth-email-form__email input', email);
       page.click('.auth-email-form__login-link');
+      page.click('.auth-email-code-form__submit');
       page.expectText('.auth-complete', 'Check your email');
       page.loadPath('use_last_login_token');
       page.click('.auth-signin-form__submit');

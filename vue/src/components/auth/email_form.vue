@@ -11,7 +11,6 @@ const email = ref(user.email || '');
 const password = ref('');
 const turnstileToken = ref('');
 const loadingPassword = ref(false);
-const loadingEmail = ref(false);
 const turnstileSiteKey = AppConfig.turnstileSiteKey;
 const captchaMissing = computed(() => Boolean(turnstileSiteKey) && !turnstileToken.value);
 const emailPattern = /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/;
@@ -52,22 +51,6 @@ const signIn = async () => {
   }
 };
 
-const sendLoginLink = async () => {
-  if (!email.value.match(emailPattern)) {
-    user.email = '';
-    user.errors = {};
-    user.authForm = 'emailCode';
-    return;
-  }
-  if (!prepare()) return;
-  loadingEmail.value = true;
-  try {
-    await AuthService.sendLoginLink(user);
-  } finally {
-    loadingEmail.value = false;
-  }
-};
-
 </script>
 
 <template lang="pug">
@@ -102,12 +85,4 @@ form.auth-email-form.mx-auto.max-width-400(@submit.prevent="signIn" novalidate)
     :loading="loadingPassword"
   )
     span {{ t('auth_form.sign_in') }}
-  v-btn.auth-email-form__login-link.mt-2(
-    type="button"
-    block
-    variant="text"
-    :disabled="Boolean(email) && captchaMissing"
-    :loading="loadingEmail"
-    @click="sendLoginLink")
-    span {{ t('auth_form.email_me_a_sign_in_code') }}
 </template>

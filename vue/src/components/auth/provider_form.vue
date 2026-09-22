@@ -39,7 +39,6 @@ export default {
   },
 
   computed: {
-    emailLogin() { return AppConfig.features.app.local_login; },
     providers() { return AppConfig.identityProviders.filter(provider => provider.name !== 'slack'); }
   }
 }
@@ -58,7 +57,6 @@ export default {
       common-icon(:color="providerColor(provider.name)" :name="iconClass(provider.name)")
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: providerName(provider.name) } }")
-    p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
 </template>
 
 <style>

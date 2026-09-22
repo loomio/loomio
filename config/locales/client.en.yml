@@ -2941,6 +2941,7 @@ en:
     continue_with_provider: Continue with %{provider}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
+    or_sign_in_with_password: Or sign in with a password
     enter_your_name: Enter your name
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
@@ -2997,6 +2998,8 @@ en:
     name: Name
     email: Email
     password: Password
+    use_a_passkey: Use a passkey
+    send_me_a_code: Send me a code
     sign_in_with_passkey: Sign in with a passkey
     passkey_authentication_failed: We could not sign you in with that passkey
     passkey_registration_failed: We could not save that passkey
