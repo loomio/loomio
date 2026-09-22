@@ -30,6 +30,26 @@ class ApplicationPwaHeadsTest < ActiveSupport::TestCase
     assert_pwa_head(document, theme_color: "#0070E0", title: "Loomio")
   end
 
+  test "Vuetify layer order is established before generated component styles" do
+    components = [
+      Views::Application::Boot.new(export: true),
+      TestLayout.new(export: true)
+    ]
+
+    components.each do |component|
+      document = Nokogiri::HTML(ApplicationController.renderer.render(component, layout: false))
+      stylesheets = document.css("head link[rel='stylesheet']").to_a
+      layer_order_index = stylesheets.index { |link| link["href"] == "/vuetify-layers.css" }
+      component_style_indexes = stylesheets.each_index.select do |index|
+        stylesheets[index]["href"].start_with?("/client3/assets/")
+      end
+
+      assert layer_order_index
+      assert component_style_indexes.any?
+      assert component_style_indexes.all? { |index| layer_order_index < index }
+    end
+  end
+
   private
 
   def assert_pwa_head(document, theme_color:, title:)
