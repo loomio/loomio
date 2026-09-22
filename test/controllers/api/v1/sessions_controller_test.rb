@@ -351,6 +351,21 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
+  test "deactivated account cannot sign in with a valid password or code" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = User.create!(email: "deactivated-login@example.com", name: "Deactivated User", email_verified: true, password: "s3curepassword123")
+    token = LoginToken.create!(user: user)
+    user.update!(deactivated_at: Time.current)
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+      assert_response :unauthorized
+
+      post :create, params: { user: { email: user.email, code: token.code } }
+      assert_response :unauthorized
+    end
+  end
+
   test "does not distinguish an unknown email from other invalid credentials" do
     post :create, params: { user: { email: "missinglogin@example.com", password: "wrongpassword" } }
 

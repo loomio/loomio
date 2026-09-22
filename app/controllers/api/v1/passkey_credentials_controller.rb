@@ -87,7 +87,7 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
       end
 
       user = stored_credential&.user
-      raise WebAuthn::Error, "inactive credential owner" unless user&.active_for_authentication?
+      raise WebAuthn::Error, "inactive credential owner" unless user&.active?
       raise WebAuthn::Error, "credential owner mismatch" unless webauthn_credential.user_handle == stored_credential.user_handle
 
       stored_credential.update!(

@@ -8,6 +8,20 @@ class UserTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  test "active? matches the active scope and logged-out users are inactive" do
+    assert @user.active?
+    assert_not @user.deactivated?
+    assert_includes User.active, @user
+
+    @user.update!(deactivated_at: Time.current)
+
+    assert_not @user.active?
+    assert @user.deactivated?
+    assert_not_includes User.active, @user
+    assert_not LoggedOutUser.new.active?
+    assert_not LoggedOutUser.new.deactivated?
+  end
+
   # Password validations
   test "accepts a good password with confirmation" do
     user = User.new(

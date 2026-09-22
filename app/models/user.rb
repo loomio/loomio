@@ -236,7 +236,7 @@ class User < ApplicationRecord
 
   def self.authenticate_by(attributes)
     user = find_for_database_authentication(email: attributes[:email] || attributes[:email_address])
-    return unless user&.active_for_authentication?
+    return unless user&.active?
     return if user.access_locked?
 
     user if user.valid_password?(attributes[:password])
@@ -274,8 +274,12 @@ class User < ApplicationRecord
     password.present? || password_confirmation.present?
   end
 
-  def active_for_authentication?
-    !deactivated_at
+  def active?
+    !deactivated?
+  end
+
+  def deactivated?
+    deactivated_at.present?
   end
 
   def access_locked?

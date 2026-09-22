@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     session_record = Session.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
     user = session_record&.user
 
-    user&.active_for_authentication? && user.is_admin?
+    user&.active? && user.is_admin?
   end
 
   constraints admin_session_constraint do

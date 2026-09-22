@@ -55,7 +55,7 @@ class Api::V1::RegistrationsController < ApplicationController
     User.transaction do
       user.lock!
       proof = AccountCompletionProof.lock.find_by(id: proof.id)
-      return respond_with_error(401) unless proof && proof.expires_at.future? && user.active_for_authentication?
+      return respond_with_error(401) unless proof && proof.expires_at.future? && user.active?
 
       user.require_valid_signup = true
       user.assign_attributes(completion_params)

@@ -17,7 +17,7 @@ class Identity < ApplicationRecord
   # it. Recheck ownership under the row lock before assigning the first owner.
   def link_to_user!(user)
     with_lock do
-      return false if user_id.present? || !user.active_for_authentication?
+      return false if user_id.present? || !user.active?
 
       update!(user: user)
     end
