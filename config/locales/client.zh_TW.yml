@@ -2595,6 +2595,8 @@ zh_TW:
     login_link_sent_if_account_exists: 如果 %{email} 已存在帳戶，我們將發送登入代碼。
     use_a_passkey: 使用密碼
     send_me_a_code: 給我發送驗證碼
+    email_code_help_short: 我們會傳送一個六位數的驗證碼給您的電子郵件地址。
+    login_link_sent_if_account_exists_sentence: 如果 %{email} 存在帳戶，我們將發送登入代碼。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

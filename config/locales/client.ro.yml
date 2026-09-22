@@ -2569,6 +2569,8 @@ ro:
     login_link_sent_if_account_exists: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
     use_a_passkey: Folosește o cheie de acces
     send_me_a_code: Trimite-mi un cod
+    email_code_help_short: Vă vom trimite un cod de șase cifre la adresa dvs. de e-mail
+    login_link_sent_if_account_exists_sentence: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

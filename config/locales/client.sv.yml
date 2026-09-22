@@ -2569,6 +2569,8 @@ sv:
     login_link_sent_if_account_exists: Om det finns ett konto för %{email} skickar vi en inloggningskod
     use_a_passkey: Använd en lösennyckel
     send_me_a_code: Skicka mig en kod
+    email_code_help_short: Vi skickar en sexsiffrig kod till din e-postadress
+    login_link_sent_if_account_exists_sentence: Om det finns ett konto för %{email} skickar vi en inloggningskod.
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

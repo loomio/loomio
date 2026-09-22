@@ -258,7 +258,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard_as_visitor')
     page.click('.auth-email-form__login-link')
-    page.expectText('.auth-email-code-form', 'Enter your email address and we’ll send you a six-digit sign-in code')
+    page.expectText('.auth-email-code-form', 'We’ll send a six-digit code to your email address')
     page.fillIn('.auth-email-code-form__email input', 'patrick@example.com')
     page.click('.auth-email-code-form__submit')
     page.expectText('.auth-complete', 'Check your email')

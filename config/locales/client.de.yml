@@ -2602,6 +2602,8 @@ de:
     login_link_sent_if_account_exists: Falls für %{email} ein Konto existiert, senden wir dir einen Anmeldecode
     use_a_passkey: Passkey verwenden
     send_me_a_code: Schick mir einen Code
+    email_code_help_short: Wir senden einen sechsstelligen Code an deine E-Mail-Adresse
+    login_link_sent_if_account_exists_sentence: Falls für %{email} bereits ein Konto existiert, senden wir einen Anmeldecode.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

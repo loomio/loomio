@@ -2569,6 +2569,8 @@ el:
     login_link_sent_if_account_exists: Εάν υπάρχει λογαριασμός για το %{email}, θα στείλουμε έναν κωδικό σύνδεσης
     use_a_passkey: Χρησιμοποιήστε ένα κλειδί πρόσβασης
     send_me_a_code: Στείλτε μου έναν κωδικό
+    email_code_help_short: Θα στείλουμε έναν εξαψήφιο κωδικό στη διεύθυνση email σας
+    login_link_sent_if_account_exists_sentence: Εάν υπάρχει λογαριασμός για το %{email}, θα στείλουμε έναν κωδικό σύνδεσης.
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

@@ -2822,6 +2822,8 @@ zh_CN:
     login_link_sent_if_account_exists: 如果 %{email} 已存在帐户，我们将发送登录代码。
     use_a_passkey: 使用密码
     send_me_a_code: 给我发送验证码
+    email_code_help_short: 我们会向您的电子邮件地址发送一个六位数的验证码。
+    login_link_sent_if_account_exists_sentence: 如果 %{email} 存在帐户，我们将发送登录代码。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接

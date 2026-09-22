@@ -2597,6 +2597,8 @@ uk:
     login_link_sent_if_account_exists: Якщо обліковий запис для %{email} існує, ми надішлемо код входу
     use_a_passkey: Використовуйте ключ доступу
     send_me_a_code: Надіслати мені код
+    email_code_help_short: Ми надішлемо шестизначний код на вашу адресу електронної пошти
+    login_link_sent_if_account_exists_sentence: Якщо обліковий запис для %{email} існує, ми надішлемо код входу.
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

@@ -46,7 +46,7 @@ v-card.auth-email-code-form(:title="t('auth_form.sign_in_with_code')")
     auth-back-button(@click="back")
   v-card-text
     form.max-width-400.mx-auto(@submit.prevent="submit" novalidate)
-      p.text-body-medium.mb-4 {{ t('auth_form.email_code_help') }}
+      p.text-body-medium.mb-4 {{ t('auth_form.email_code_help_short') }}
       v-text-field.auth-email-code-form__email(
         id="sign-in-code-email"
         name="email"
@@ -65,5 +65,5 @@ v-card.auth-email-code-form(:title="t('auth_form.sign_in_with_code')")
           color="primary"
           variant="elevated"
           :disabled="!email || captchaMissing"
-          :loading="loading") {{ t('auth_form.email_me_a_sign_in_code') }}
+          :loading="loading") {{ t('auth_form.send_me_a_code') }}
 </template>

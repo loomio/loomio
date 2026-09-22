@@ -2569,6 +2569,8 @@ tr:
     login_link_sent_if_account_exists: Eğer %{email} için bir hesap mevcutsa, bir giriş kodu göndereceğiz.
     use_a_passkey: Parola kullanın.
     send_me_a_code: Bana bir kod gönder
+    email_code_help_short: E-posta adresinize altı haneli bir kod göndereceğiz.
+    login_link_sent_if_account_exists_sentence: Eğer %{email} için bir hesap mevcutsa, bir giriş kodu göndereceğiz.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

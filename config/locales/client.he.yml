@@ -2588,6 +2588,8 @@ he:
     login_link_sent_if_account_exists: אם קיים חשבון עבור %{email}, נשלח קוד כניסה
     use_a_passkey: השתמש בסיסמה
     send_me_a_code: שלח לי קוד
+    email_code_help_short: נשלח קוד בן שש ספרות לכתובת הדוא"ל שלך
+    login_link_sent_if_account_exists_sentence: אם קיים חשבון עבור %{email}, נשלח קוד כניסה.
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

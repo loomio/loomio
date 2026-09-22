@@ -2947,6 +2947,7 @@ en:
     more_providers: More
     email_not_present: An email address is required
     email_code_help: Enter your email address and we’ll send you a six-digit sign-in code
+    email_code_help_short: We’ll send a six-digit code to your email address
     invalid_email: Sorry, that doesn't look like a valid email address
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
@@ -2985,6 +2986,7 @@ en:
     check_your_email: Check your email!
     login_link_sent: We've sent an email to %{email}
     login_link_sent_if_account_exists: If an account exists for %{email}, we'll send a sign-in code
+    login_link_sent_if_account_exists_sentence: If an account exists for %{email}, we'll send a sign-in code.
     instructions: 'Click the link to sign in, or enter the code below:'
     instructions_code: 'Enter the code from that email:'
     too_many_attempts: Too many attempts; try clicking the link in the email to sign in.

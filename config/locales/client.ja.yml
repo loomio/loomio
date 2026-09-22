@@ -2568,6 +2568,8 @@ ja:
     login_link_sent_if_account_exists: "%{email} のアカウントが存在する場合、サインインコードをお送りします。"
     use_a_passkey: パスキーを使用してください
     send_me_a_code: 私にコードを送ってください
+    email_code_help_short: お客様のメールアドレスに6桁のコードをお送りします。
+    login_link_sent_if_account_exists_sentence: "%{email} のアカウントが存在する場合は、サインインコードをお送りします。"
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続

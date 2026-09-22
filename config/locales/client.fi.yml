@@ -2569,6 +2569,8 @@ fi:
     login_link_sent_if_account_exists: Jos sähköpostiosoitteella %{email} on jo tili, lähetämme kirjautumiskoodin.
     use_a_passkey: Käytä salasanaa
     send_me_a_code: Lähetä minulle koodi
+    email_code_help_short: Lähetämme kuusinumeroisen koodin sähköpostiosoitteeseesi
+    login_link_sent_if_account_exists_sentence: Jos sähköpostiosoitteella %{email} on jo tili, lähetämme sisäänkirjautumiskoodin.
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

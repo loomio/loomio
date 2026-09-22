@@ -2898,6 +2898,8 @@ be:
     login_link_sent_if_account_exists: Калі для %{email} існуе ўліковы запіс, мы дашлем код для ўваходу
     use_a_passkey: Выкарыстоўвайце ключ доступу
     send_me_a_code: Дашліце мне код
+    email_code_help_short: Мы дашлем шасцізначны код на ваш адрас электроннай пошты
+    login_link_sent_if_account_exists_sentence: Калі для %{email} існуе ўліковы запіс, мы дашлем код для ўваходу.
   chatbot:
     chat_integrations: Інтэграцыі з чатам
     no_chat_integrations_yet: Адпраўляць апавяшчэнні аб актыўнасці ў Loomio ў чат вашай групы

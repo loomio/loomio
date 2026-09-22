@@ -2569,6 +2569,8 @@ ru:
     login_link_sent_if_account_exists: Если для %{email} существует учетная запись, мы вышлем код для входа.
     use_a_passkey: Используйте пароль
     send_me_a_code: Пришлите мне код
+    email_code_help_short: Мы отправим шестизначный код на ваш адрес электронной почты.
+    login_link_sent_if_account_exists_sentence: Если для %{email} существует учетная запись, мы вышлем код для входа.
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

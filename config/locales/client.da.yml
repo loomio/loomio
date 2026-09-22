@@ -2569,6 +2569,8 @@ da:
     login_link_sent_if_account_exists: Hvis der findes en konto til %{email}, sender vi en loginkode
     use_a_passkey: Brug en adgangsnøgle
     send_me_a_code: Send mig en kode
+    email_code_help_short: Vi sender en sekscifret kode til din e-mailadresse
+    login_link_sent_if_account_exists_sentence: Hvis der findes en konto til %{email}, sender vi en loginkode.
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

@@ -2615,6 +2615,8 @@ pt_BR:
     login_link_sent_if_account_exists: Se existir uma conta para %{email}, enviaremos um código de acesso
     use_a_passkey: Use uma chave de acesso
     send_me_a_code: Envie-me um código
+    email_code_help_short: Enviaremos um código de seis dígitos para o seu endereço de e-mail
+    login_link_sent_if_account_exists_sentence: Se existir uma conta para %{email}, enviaremos um código de acesso.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

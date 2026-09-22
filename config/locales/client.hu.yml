@@ -2576,6 +2576,8 @@ hu:
     login_link_sent_if_account_exists: Ha létezik fiók a(z) %{email} címhez, bejelentkezési kódot küldünk.
     use_a_passkey: Használjon jelszót
     send_me_a_code: Küldj nekem egy kódot
+    email_code_help_short: Hatjegyű kódot küldünk az e-mail címedre
+    login_link_sent_if_account_exists_sentence: Ha létezik fiók a(z) %{email} címhez, küldünk egy bejelentkezési kódot.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

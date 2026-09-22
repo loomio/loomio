@@ -2594,6 +2594,8 @@ ca:
     login_link_sent_if_account_exists: Si existeix un compte per a %{email}, us enviarem un codi d'inici de sessió.
     use_a_passkey: Utilitza una clau d'accés
     send_me_a_code: Envia'm un codi
+    email_code_help_short: T'enviarem un codi de sis dígits a la teva adreça de correu electrònic
+    login_link_sent_if_account_exists_sentence: Si existeix un compte per a %{email}, t'enviarem un codi d'inici de sessió.
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

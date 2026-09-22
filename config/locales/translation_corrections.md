@@ -5,11 +5,13 @@
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/client.de.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `Sie` wording and a final full stop | Informal or neutral wording without a final full stop | German UI uses the informal `du` register and concise UI strings omit final full stops |
-| `config/locales/client.es.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `usted` conjugations and final full stops | Informal `tú` wording without final full stops | Spanish UI uses the informal `tú` register |
-| `config/locales/client.fr.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey`, `send_me_a_code` | Formal `vous` wording; passkey rendered as an access code | Informal `tu` wording; passkey rendered as `clé d’accès` | French UI uses informal direct address, and a passkey is not a one-time access code |
+| `config/locales/client.es.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey` | Formal `usted` conjugations and unnecessary final full stops | Informal `tú` wording and context-appropriate punctuation | Spanish UI uses the informal `tú` register |
+| `config/locales/client.fr.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey`, `send_me_a_code` | Formal `vous` wording; passkey rendered as an access code | Informal `tu` wording; passkey rendered as `clé d’accès` | French UI uses informal direct address, and a passkey is not a one-time access code |
 | `config/locales/client.it.yml` | `auth_form.use_a_passkey` | `Utilizzare una password` | `Usa una passkey` | Passkey was mistranslated as password |
 | `config/locales/client.nl_NL.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `u`; passkey rendered as password | Informal `je`; passkey retained as `passkey` | Dutch UI uses informal address, and a passkey is not a password |
 | `config/locales/client.pt_BR.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Mechanical wording and final full stops | Concise Brazilian Portuguese without final full stops | Authentication action labels should be concise and use the established Brazilian Portuguese register |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `auth_form.email_code_help_short` | Formal direct address | Informal `du`, `tú`, `tu`, and `je` wording | These locales consistently address users informally |
+| `config/locales/client.it.yml`, `client.pt_BR.yml` | `auth_form.email_code_help_short` | Sentence ended with a full stop | Removed the final full stop | Single-sentence UI strings omit final full stops |
 
 ## 2026-09-18 — Membership request response
 

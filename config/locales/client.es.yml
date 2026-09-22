@@ -2603,6 +2603,8 @@ es:
     login_link_sent_if_account_exists: Si existe una cuenta para %{email}, te enviaremos un código de inicio de sesión
     use_a_passkey: Usa una clave de acceso
     send_me_a_code: Envíame un código
+    email_code_help_short: Te enviaremos un código de seis dígitos a tu dirección de correo electrónico
+    login_link_sent_if_account_exists_sentence: Si existe una cuenta para %{email}, te enviaremos un código de inicio de sesión.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
