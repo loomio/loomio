@@ -2497,6 +2497,7 @@ ro:
     sign_up_as: Creează cont ca %{email}
     sign_in_as: Conectați-vă ca %{name}
     continue_with_provider: Continuați cu %{provider}
+    sign_in_with_provider: Conectați-vă cu %{provider}
     continue_with_email: Continuați cu e-mailul
     or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
     enter_your_name: Introdu numele tau

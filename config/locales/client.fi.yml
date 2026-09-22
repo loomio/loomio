@@ -2497,6 +2497,7 @@ fi:
     sign_up_as: Luo tili nimellä %{email}
     sign_in_as: Kirjaudu sisään käyttäjänä %{name}
     continue_with_provider: Jatka palvelulla %{provider}
+    sign_in_with_provider: Kirjaudu sisään palvelulla %{provider}
     continue_with_email: Jatka sähköpostilla
     or_enter_your_email: Tai kirjoita sähköpostiosoitteesi
     enter_your_name: Kirjoita nimesi

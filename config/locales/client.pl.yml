@@ -2522,6 +2522,7 @@ pl:
     sign_up_as: Utwórz konto jako %{email}
     sign_in_as: Zaloguj się jako %{name}
     continue_with_provider: Kontynuuj z %{provider}
+    sign_in_with_provider: Zaloguj się przez %{provider}
     continue_with_email: Kontynuuj za pomocą adresu e-mail
     or_enter_your_email: Lub wprowadź swój adres e-mail
     enter_your_name: 'Wprowadź imię '

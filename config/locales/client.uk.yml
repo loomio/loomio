@@ -2525,6 +2525,7 @@ uk:
     sign_up_as: Створити обліковий запис як %{email}
     sign_in_as: Увійти як %{name}
     continue_with_provider: Продовжити через %{provider}
+    sign_in_with_provider: Увійти через %{provider}
     continue_with_email: Продовжити з електронною поштою
     or_enter_your_email: Або введіть свою адресу електронної пошти
     enter_your_name: Введіть ваше ім'я

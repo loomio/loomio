@@ -2539,6 +2539,7 @@ fr:
     sign_up_as: Créer un compte en tant que %{email}
     sign_in_as: Se connecter comme  %{name}
     continue_with_provider: Continuer avec %{provider}
+    sign_in_with_provider: Se connecter avec %{provider}
     continue_with_email: Connecte-toi avec ton adresse mail
     or_enter_your_email: Ou saisir ton adresse e-mail
     enter_your_name: Entre ton nom

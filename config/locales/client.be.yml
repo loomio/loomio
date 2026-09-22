@@ -2826,6 +2826,7 @@ be:
     sign_up_as: Стварыць уліковы запіс як %{email}
     sign_in_as: Увайсці як %{name}
     continue_with_provider: Працягвайце з %{provider}
+    sign_in_with_provider: Увайсці праз %{provider}
     continue_with_email: Працягнуць з электроннай поштай
     or_enter_your_email: Або ўвядзіце свой адрас электроннай пошты
     enter_your_name: Увядзіце сваё імя

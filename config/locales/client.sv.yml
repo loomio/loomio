@@ -2497,6 +2497,7 @@ sv:
     sign_up_as: Skapa konto som %{email}
     sign_in_as: Logga in som %{name}
     continue_with_provider: Fortsätt med %{provider}
+    sign_in_with_provider: Logga in med %{provider}
     continue_with_email: Fortsätt med e-post
     or_enter_your_email: Eller ange din e-postadress
     enter_your_name: Ange ditt namn

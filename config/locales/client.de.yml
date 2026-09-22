@@ -2530,6 +2530,7 @@ de:
     sign_up_as: Erstelle Benutzerkonto als %{email}
     sign_in_as: als %{name} einloggen
     continue_with_provider: Weiter mit %{provider}
+    sign_in_with_provider: Mit %{provider} anmelden
     continue_with_email: Weiter mit E-Mail
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen

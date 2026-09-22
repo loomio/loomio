@@ -2750,6 +2750,7 @@ zh_CN:
     sign_up_as: 使用 %{email} 创建帐户
     sign_in_as: 以 %{name} 身份登录
     continue_with_provider: 继续使用 %{provider}
+    sign_in_with_provider: 使用 %{provider} 登入
     continue_with_email: 继续通过电子邮件
     or_enter_your_email: 或者，输入您的电子邮件地址
     enter_your_name: 请输入您的名字

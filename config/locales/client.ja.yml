@@ -2496,6 +2496,7 @@ ja:
     sign_up_as: "%{email} としてアカウントを作成"
     sign_in_as: "%{name}としてサインインします"
     continue_with_provider: "%{provider} を続行します"
+    sign_in_with_provider: "%{provider} でサインイン"
     continue_with_email: メールで続行
     or_enter_your_email: または、メールアドレスを入力してください
     enter_your_name: あなたの名前を入力してください

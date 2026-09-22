@@ -2525,6 +2525,7 @@ it:
     sign_up_as: Crea un account come %{email}
     sign_in_as: Autenticati come %{name}
     continue_with_provider: Accedi con %{provider}
+    sign_in_with_provider: Accedi con %{provider}
     continue_with_email: Accedi con la tua email
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
     enter_your_name: Inserisci il tuo nome

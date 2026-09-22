@@ -2497,6 +2497,7 @@ da:
     sign_up_as: Opret konto som %{email}
     sign_in_as: Log ind som %{name}
     continue_with_provider: Fortsæt med %{provider}
+    sign_in_with_provider: Log ind med %{provider}
     continue_with_email: Fortsæt med e-mail
     or_enter_your_email: Eller indtast din e-mailadresse
     enter_your_name: Indtast dit navn

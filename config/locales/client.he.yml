@@ -2516,6 +2516,7 @@ he:
     sign_up_as: צור חשבון בתור %{email}
     sign_in_as: הרשם כ%{name}
     continue_with_provider: המשך עם %{provider}
+    sign_in_with_provider: התחבר באמצעות %{provider}
     continue_with_email: המשך במייל
     or_enter_your_email: או, הכנס את המייל שלך
     enter_your_name: הזן את שמך

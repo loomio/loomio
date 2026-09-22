@@ -2497,6 +2497,7 @@ ru:
     sign_up_as: Создать учетную запись как %{email}
     sign_in_as: Войдите как %{name}
     continue_with_provider: Продолжить с %{provider}
+    sign_in_with_provider: Войти через %{provider}
     continue_with_email: Продолжить по электронной почте
     or_enter_your_email: Или введите свой адрес электронной почты
     enter_your_name: Введите свое имя

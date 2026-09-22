@@ -2522,6 +2522,7 @@ ca:
     sign_up_as: Crea un compte com a %{email}
     sign_in_as: Inicia la sessió com %{name}
     continue_with_provider: Continua amb %{provider}
+    sign_in_with_provider: Inicia la sessió amb %{provider}
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom

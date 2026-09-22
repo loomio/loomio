@@ -2504,6 +2504,7 @@ hu:
     sign_up_as: Fiók létrehozása mint %{email}
     sign_in_as: 'Bejelentkezés itt: %{name}'
     continue_with_provider: 'Folytatás a következővel: %{provider}'
+    sign_in_with_provider: 'Bejelentkezés ezzel: %{provider}'
     continue_with_email: Folytatás email fiókkal
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved

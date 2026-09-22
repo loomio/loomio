@@ -2497,6 +2497,7 @@ hr:
     sign_up_as: Izradi račun kao %{email}
     sign_in_as: Prijavite se kao %{name}
     continue_with_provider: Nastavite s %{provider}
+    sign_in_with_provider: Prijavite se putem %{provider}
     continue_with_email: Nastavite s e-poštom
     or_enter_your_email: Ili unesite svoju adresu e-pošte
     enter_your_name: Unesite svoje ime

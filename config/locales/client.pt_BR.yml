@@ -2543,6 +2543,7 @@ pt_BR:
     sign_up_as: Criar conta como %{email}
     sign_in_as: Entrar como %{name}
     continue_with_provider: Continuar com %{provider}
+    sign_in_with_provider: Entrar com %{provider}
     continue_with_email: Continuar com e-mail
     or_enter_your_email: Ou, digite o seu endereço de email
     enter_your_name: Entre seu nome

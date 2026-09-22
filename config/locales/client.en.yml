@@ -2939,6 +2939,7 @@ en:
     sign_up_as: Create account as %{email}
     sign_in_as: Sign in as %{name}
     continue_with_provider: Continue with %{provider}
+    sign_in_with_provider: Sign in with %{provider}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     or_sign_in_with_password: Or sign in with a password

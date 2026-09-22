@@ -2497,6 +2497,7 @@ sl:
     sign_up_as: Ustvari račun kot %{email}
     sign_in_as: Prijavite se kot %{name}
     continue_with_provider: Nadaljuj s %{provider}
+    sign_in_with_provider: Prijava z %{provider}
     continue_with_email: Nadaljujte z e-pošto
     or_enter_your_email: Ali pa vnesite svoj e-poštni naslov
     enter_your_name: Vnesite svoje ime

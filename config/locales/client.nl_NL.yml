@@ -2522,6 +2522,7 @@ nl_NL:
     sign_up_as: Maak account als %{email}
     sign_in_as: Log in als %{name}
     continue_with_provider: Doorgaan met %{provider}
+    sign_in_with_provider: Inloggen met %{provider}
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam

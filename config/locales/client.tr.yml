@@ -2497,6 +2497,7 @@ tr:
     sign_up_as: "%{email} olarak hesap oluştur"
     sign_in_as: "%{name} olarak oturum açın"
     continue_with_provider: "%{provider} ile devam et"
+    sign_in_with_provider: "%{provider} ile oturum aç"
     continue_with_email: E-postayla devam et
     or_enter_your_email: Veya e-posta adresinizi girin
     enter_your_name: Adınızı giriniz

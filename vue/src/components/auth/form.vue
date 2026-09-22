@@ -87,8 +87,8 @@ v-card.auth-form(:title="$t('auth_form.sign_in_to_loomio', { site_name: siteName
     p.text-center.text-body-small(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
     .max-width-400.mx-auto
       auth-provider-form(:user='user')
-      auth-passkey-button.my-2(v-if='localLogin')
-      v-btn.auth-email-form__login-link.mb-2(
+      auth-passkey-button.mb-2(v-if='localLogin')
+      v-btn.auth-email-form__login-link(
         v-if='localLogin'
         block
         variant="tonal"

@@ -2497,6 +2497,7 @@ el:
     sign_up_as: Δημιουργία λογαριασμού ως %{email}
     sign_in_as: Συνδεθείτε ως %{name}
     continue_with_provider: Συνέχεια με %{provider}
+    sign_in_with_provider: Σύνδεση με %{provider}
     continue_with_email: Συνεχίστε με email
     or_enter_your_email: Ή, πληκτρολογήστε τη διεύθυνση email σας
     enter_your_name: Εισάγετε το όνομά σας
