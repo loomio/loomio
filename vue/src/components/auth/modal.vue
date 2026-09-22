@@ -6,10 +6,12 @@ import AuthService   from '@/shared/services/auth_service';
 import Session from '@/shared/services/session';
 
 import AuthInactive from '@/components/auth/inactive';
+import AccountCompletion from '@/components/profile/account_completion';
 
 export default {
   components: {
-    AuthInactive
+    AuthInactive,
+    AccountCompletion
   },
 
   props: {
