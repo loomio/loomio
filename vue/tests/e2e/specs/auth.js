@@ -32,14 +32,53 @@ const addVirtualPasskeyAuthenticator = test => {
   })
 }
 
+// Keep the WebAuthn failure visible in CI: the UI intentionally hides a
+// cancelled ceremony, and the browser exception is otherwise lost.
+const tracePasskeyRegistration = test => {
+  test.execute(() => {
+    window.__passkeyDiagnostics = []
+
+    const originalFetch = window.fetch.bind(window)
+    window.fetch = async (...args) => {
+      const response = await originalFetch(...args)
+      const path = new URL(typeof args[0] === 'string' ? args[0] : args[0].url, window.location.href).pathname
+      if (path.startsWith('/api/v1/passkey_credentials')) {
+        window.__passkeyDiagnostics.push({stage: 'http', path, status: response.status})
+      }
+      return response
+    }
+
+    const originalCreate = navigator.credentials.create.bind(navigator.credentials)
+    navigator.credentials.create = async (...args) => {
+      window.__passkeyDiagnostics.push({stage: 'webauthn_started'})
+      try {
+        const credential = await originalCreate(...args)
+        window.__passkeyDiagnostics.push({stage: 'webauthn_succeeded'})
+        return credential
+      } catch (error) {
+        window.__passkeyDiagnostics.push({stage: 'webauthn_failed', name: error.name, message: error.message})
+        throw error
+      }
+    }
+  })
+}
+
 module.exports = {
   afterEach: async (test) => {
     if (!virtualAuthenticatorAdded) { return }
 
     try {
-      await test.driver.removeVirtualAuthenticator()
+      const diagnostics = await test.driver.executeScript('return window.__passkeyDiagnostics')
+      if (diagnostics) {
+        const credentials = await test.driver.getCredentials()
+        console.log(`Passkey diagnostics: ${JSON.stringify(diagnostics)}; virtual credentials: ${credentials.length}`)
+      }
     } finally {
-      virtualAuthenticatorAdded = false
+      try {
+        await test.driver.removeVirtualAuthenticator()
+      } finally {
+        virtualAuthenticatorAdded = false
+      }
     }
   },
 
@@ -49,6 +88,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.goTo('profile')
+    tracePasskeyRegistration(test)
     test.expect.element('.passkey-settings__name input').value.to.match(/passkey/i)
     page.fillIn('.passkey-settings__name input', 'Test passkey')
     page.scrollClick('.passkey-settings__add')
@@ -86,6 +126,7 @@ module.exports = {
     page.click('.auth-complete__submit')
     page.expectText('.credential-prompt', 'Passkeys')
     page.expectNoElement('.credential-prompt__password')
+    tracePasskeyRegistration(test)
     page.pause(500)
     page.click('.credential-prompt__passkey')
     page.expectFlash('Passkey added')

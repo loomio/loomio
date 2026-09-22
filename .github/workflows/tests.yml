@@ -6,6 +6,11 @@ on:
       - master
   pull_request:
   workflow_dispatch:
+    inputs:
+      e2e_testcase:
+        description: 'Run one testcase from auth.js (leave empty for the full suite)'
+        required: false
+        type: string
 
 jobs:
   e2e:
@@ -90,10 +95,15 @@ jobs:
     - name: run e2es
       env:
         DISPLAY: ':99'
+        E2E_TESTCASE: ${{ inputs.e2e_testcase }}
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
-        npm run test
+        if [ -n "$E2E_TESTCASE" ]; then
+          npx nightwatch --headless --test tests/e2e/specs/auth.js --testcase "$E2E_TESTCASE"
+        else
+          npm run test
+        fi
     - name: summarize e2es
       if: ${{ always() }}
       working-directory: vue
