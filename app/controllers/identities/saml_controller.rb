@@ -53,7 +53,7 @@ class Identities::SamlController < ApplicationController
       return redirect_to session.delete(:return_to_after_authenticating) || back_to || dashboard_path
     end
 
-    if identity.user.account_completion_required?
+    if identity.user.incomplete?
       stage_account_completion(identity.user, name_managed: identity.name.present?)
       session[:pending_user_id] = identity.user.id
       return redirect_to authentication_return_path(fallback: dashboard_path)

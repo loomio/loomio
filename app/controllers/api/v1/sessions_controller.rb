@@ -9,10 +9,10 @@ class Api::V1::SessionsController < ApplicationController
       return
     end
     if user = attempt_login
-      if user.account_completion_required?
+      if user.incomplete?
         stage_account_completion(user)
         render json: {
-          account_completion_required: true,
+          incomplete: true,
           email: user.email,
           name: user.name,
           email_newsletter: user.email_newsletter

@@ -97,7 +97,7 @@ class UserService
     # Provisional accounts are created with only a verified email address.
     # Their first profile update must complete the identity and consent fields
     # together; client-side modal controls are not the security boundary.
-    user.require_valid_signup = true if user.account_completion_required?
+    user.require_valid_signup = true if user.incomplete?
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
     
     user.assign_attributes_and_files(params)

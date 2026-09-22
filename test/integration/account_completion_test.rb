@@ -98,7 +98,7 @@ class AccountCompletionTest < ActionDispatch::IntegrationTest
       post '/api/v1/sessions', params: { user: { email: user.email, code: token.code } }, headers: csrf_headers, as: :json
     end
     assert_response :success
-    assert response.parsed_body['account_completion_required']
+    assert response.parsed_body['incomplete']
     assert AccountCompletionProof.exists?(user: user)
     [user, cookies['_loomio']]
   end

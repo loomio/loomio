@@ -109,7 +109,7 @@ class IdentityServiceTest < ActiveSupport::TestCase
     end
 
     assert_nil identity.user.name
-    assert_predicate identity.user, :account_completion_required?
+    assert_predicate identity.user, :incomplete?
   end
 
   test "retains an existing user's name when the provider supplies no name" do

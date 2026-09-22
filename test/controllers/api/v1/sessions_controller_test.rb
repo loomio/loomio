@@ -393,7 +393,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
     assert token.reload.used
     assert_nil Current.session
-    assert_equal true, JSON.parse(response.body)['account_completion_required']
+    assert_equal true, JSON.parse(response.body)['incomplete']
     assert_equal user.id, session.dig(:pending_account_completion, :user_id)
   end
 

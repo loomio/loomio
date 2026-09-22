@@ -411,7 +411,6 @@ Rails.application.routes.draw do
       namespace(:sessions)        { get :unauthorized }
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create do
-        post :oauth, on: :collection
         post :complete, on: :collection
       end
       # identities command route removed (dead code)

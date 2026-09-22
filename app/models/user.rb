@@ -218,7 +218,7 @@ class User < ApplicationRecord
     self.require_valid_signup && ENV['TERMS_URL']
   end
 
-  def account_completion_required?
+  def incomplete?
     name.blank? || (ENV['TERMS_URL'].present? && legal_accepted_at.blank?)
   end
 

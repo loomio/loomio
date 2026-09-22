@@ -32,7 +32,7 @@ export default {
 
   mounted() {
     AuthService.applyEmailStatus(this.user, AppConfig.pendingIdentity);
-    if (AppConfig.pendingIdentity?.account_completion_required) {
+    if (AppConfig.pendingIdentity?.incomplete) {
       this.user.authForm = 'accountCompletion';
     }
   },

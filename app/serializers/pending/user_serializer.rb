@@ -1,7 +1,7 @@
 class Pending::UserSerializer < Pending::BaseSerializer
-  attributes :legal_accepted_at, :account_completion_required, :name_managed
+  attributes :legal_accepted_at, :incomplete, :name_managed
 
-  def account_completion_required
+  def incomplete
     true
   end
 
