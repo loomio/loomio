@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "fileutils"
 
 # The test environment is used exclusively to run your application's
 # test suite. You never need to work with it otherwise. Remember that
@@ -6,7 +7,11 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
-  log_target = ENV["CI"].present? ? Rails.root.join("log/test.log") : IO::NULL
+  log_target = IO::NULL
+  if ENV["CI"].present?
+    FileUtils.mkdir_p(Rails.root.join("log"))
+    log_target = Rails.root.join("log/test.log")
+  end
   config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(log_target))
   config.log_level = :warn if ENV["CI"].present?
 
