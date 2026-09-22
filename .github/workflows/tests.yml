@@ -69,7 +69,7 @@ jobs:
         MIN_THREADS: 3
         MAX_THREADS: 3
       run: |
-        bundle exec rails server -b 0.0.0.0 -p $E2E_PORT &
+        CANONICAL_PORT="$E2E_PORT" bundle exec rails server -b 0.0.0.0 -p "$E2E_PORT" &
     - name: start hocuspocus server
       run: |
         cd hocuspocus
