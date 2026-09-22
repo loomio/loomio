@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_22_010000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -18,6 +18,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
+
+  create_table "account_completion_proofs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.boolean "name_managed", default: false, null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["expires_at"], name: "index_account_completion_proofs_on_expires_at"
+    t.index ["user_id"], name: "index_account_completion_proofs_on_user_id"
+  end
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -553,6 +563,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
     t.text "key", null: false
   end
 
+  create_table "passkey_challenges", force: :cascade do |t|
+    t.string "ceremony", null: false
+    t.string "challenge_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["challenge_digest"], name: "index_passkey_challenges_on_challenge_digest", unique: true
+    t.index ["expires_at"], name: "index_passkey_challenges_on_expires_at"
+    t.index ["user_id"], name: "index_passkey_challenges_on_user_id"
+  end
+
   create_table "passkey_credentials", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "external_id", null: false
@@ -562,6 +584,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
     t.bigint "sign_count", default: 0, null: false
     t.jsonb "transports", default: [], null: false
     t.datetime "updated_at", null: false
+    t.string "user_handle", null: false
     t.bigint "user_id", null: false
     t.index ["external_id"], name: "index_passkey_credentials_on_external_id", unique: true
     t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
@@ -1317,6 +1340,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "account_completion_proofs", "users", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "anonymous_ballot_choices", "anonymous_ballots"
@@ -1345,6 +1369,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_033646) do
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "outcomes", "polls"
+  add_foreign_key "passkey_challenges", "users", on_delete: :cascade
   add_foreign_key "passkey_credentials", "users"
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred

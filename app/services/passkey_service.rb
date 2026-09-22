@@ -33,17 +33,49 @@ module PasskeyService
     user.webauthn_id
   end
 
-  def self.issue_challenge!(session, key, challenge)
-    session[key] = { value: challenge, issued_at: Time.current.to_i }
+  # The cookie binds the ceremony to this browser, while the locked database
+  # row makes consumption one-time even if an older encrypted cookie is replayed.
+  def self.issue_challenge!(session, key, challenge, user: nil)
+    discard_challenge!(session, key)
+    PasskeyChallenge.where(expires_at: ...Time.current).delete_all
+    record = PasskeyChallenge.create!(
+      challenge_digest: challenge_digest(challenge),
+      ceremony: key.to_s,
+      user: user,
+      expires_at: CHALLENGE_TTL.from_now
+    )
+    session[key] = { value: challenge, challenge_id: record.id }
   end
 
-  def self.consume_challenge!(session, key)
+  def self.consume_challenge!(session, key, user: nil)
     challenge = session.delete(key)
     value = challenge && (challenge['value'] || challenge[:value])
-    issued_at = challenge && (challenge['issued_at'] || challenge[:issued_at])
-    raise WebAuthn::Error, "missing or expired challenge" if value.blank? || issued_at.blank?
-    raise WebAuthn::Error, "missing or expired challenge" if Time.at(issued_at.to_i) < CHALLENGE_TTL.ago
+    challenge_id = challenge && (challenge['challenge_id'] || challenge[:challenge_id])
+    raise WebAuthn::Error, "missing or expired challenge" if value.blank? || challenge_id.blank?
+
+    PasskeyChallenge.transaction do
+      record = PasskeyChallenge.lock.find_by(
+        id: challenge_id,
+        challenge_digest: challenge_digest(value),
+        ceremony: key.to_s,
+        user_id: user&.id
+      )
+      raise WebAuthn::Error, "missing or expired challenge" unless record&.expires_at&.future?
+
+      record.destroy!
+    end
 
     value
   end
+
+  def self.discard_challenge!(session, key)
+    challenge = session.delete(key)
+    challenge_id = challenge && (challenge['challenge_id'] || challenge[:challenge_id])
+    PasskeyChallenge.where(id: challenge_id).delete_all if challenge_id
+  end
+
+  def self.challenge_digest(challenge)
+    Digest::SHA256.hexdigest(challenge)
+  end
+  private_class_method :challenge_digest
 end

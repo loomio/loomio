@@ -1,6 +1,7 @@
 class Api::V1::RegistrationsController < ApplicationController
   include LocalesHelper
   include RequiresLocalLogin
+  skip_before_action :require_local_login, only: :complete
   before_action :permission_check, only: :create
   attr_accessor :resource
 
@@ -44,25 +45,39 @@ class Api::V1::RegistrationsController < ApplicationController
   end
 
   def complete
-    user = pending_account_completion_user
-    return respond_with_error(401) unless user
+    proof = pending_account_completion_proof
+    return respond_with_error(401) unless proof
 
-    user.require_valid_signup = true
+    user = proof.user
     completion_params = account_completion_params
-    pending_completion = session[:pending_account_completion] || {}
-    name_managed = pending_completion[:name_managed] || pending_completion['name_managed']
-    completion_params = completion_params.except(:name) if name_managed
-    user.assign_attributes(completion_params)
-    if user.save
-      session.delete(:pending_account_completion)
-      sign_in(user)
-      flash[:notice] = t('auth_form.signed_in')
-      Sentry.metrics.count("auth.sign_in", attributes: { method: "account_completion" })
-      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(signed_in_via_login_code: true)
-      EventBus.broadcast('session_create', user)
-    else
-      render json: { errors: user.errors }, status: :unprocessable_entity
+    completion_params = completion_params.except(:name) if proof.name_managed?
+
+    # Lock the user before the proof, matching sign-in's update/revocation order.
+    # Consuming the proof with the profile and session prevents concurrent or
+    # restored-cookie replay while preserving retries after validation failure.
+    User.transaction do
+      user.lock!
+      proof = AccountCompletionProof.lock.find_by(id: proof.id)
+      return respond_with_error(401) unless proof && proof.expires_at.future? && user.active_for_authentication?
+
+      user.require_valid_signup = true
+      user.assign_attributes(completion_params)
+      user.save!
+      proof.destroy!
+      sign_in(user, handle_pending: false)
     end
+
+    session.delete(:pending_account_completion)
+    handle_pending_actions(user)
+    flash[:notice] = t('auth_form.signed_in')
+    Sentry.metrics.count("auth.sign_in", attributes: { method: "account_completion" })
+    render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
+      signed_in_via_login_code: true,
+      authentication_redirect: authentication_return_path
+    ).compact
+    EventBus.broadcast('session_create', user)
+  rescue ActiveRecord::RecordInvalid
+    render json: { errors: user.errors }, status: :unprocessable_entity
   end
 
   private

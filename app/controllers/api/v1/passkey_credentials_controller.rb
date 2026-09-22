@@ -1,6 +1,7 @@
 class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
   include RequiresLocalLogin
   before_action :require_current_user, only: [:index, :registration_options, :create, :destroy]
+  before_action :forbid_restricted_user, only: [:index, :registration_options, :create, :destroy]
   before_action :require_recent_authentication, only: [:registration_options, :create, :destroy]
 
   def index
@@ -30,12 +31,12 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
       }
     )
 
-    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION, options.challenge)
+    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION, options.challenge, user: current_user)
     render json: options
   end
 
   def create
-    challenge = PasskeyService.consume_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION)
+    challenge = PasskeyService.consume_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION, user: current_user)
 
     credential = relying_party.verify_registration(
       credential_params,
@@ -46,6 +47,7 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
       external_id: credential.id,
       public_key: credential.public_key,
       sign_count: credential.sign_count,
+      user_handle: current_user.webauthn_id,
       name: params[:name].presence || I18n.t('auth_form.passkey_default_name'),
       transports: Array(public_key_credential_params.dig("response", "transports"))
     )
@@ -86,7 +88,7 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
 
       user = stored_credential&.user
       raise WebAuthn::Error, "inactive credential owner" unless user&.active_for_authentication?
-      raise WebAuthn::Error, "credential owner mismatch" unless webauthn_credential.user_handle == user.webauthn_id
+      raise WebAuthn::Error, "credential owner mismatch" unless webauthn_credential.user_handle == stored_credential.user_handle
 
       stored_credential.update!(
         sign_count: webauthn_credential.sign_count,
@@ -103,12 +105,16 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
       authentication_redirect: authentication_return_path
     ).compact
     EventBus.broadcast('session_create', user)
-  rescue WebAuthn::Error, ActiveRecord::RecordNotFound, ArgumentError
+  rescue WebAuthn::Error, ActiveRecord::RecordNotFound, OpenSSL::PKey::PKeyError, ArgumentError
     Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: "invalid_passkey" })
     render json: { errors: { passkey: [I18n.t('auth_form.passkey_authentication_failed')] } }, status: :unauthorized
   end
 
   private
+
+  def forbid_restricted_user
+    respond_with_error(403) if current_user.restricted
+  end
 
   def relying_party
     PasskeyService.relying_party(request_origin: request.base_url, request_rp_id: request.host)

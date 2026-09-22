@@ -119,9 +119,11 @@ module Dev::Scenarios::Auth
       email_verified: true,
       legal_accepted: true
     )
+    PasskeyService.ensure_webauthn_id!(user)
     user.passkey_credentials.create!(
       external_id: SecureRandom.urlsafe_base64,
       public_key: 'test-public-key',
+      user_handle: user.webauthn_id,
       sign_count: 0,
       name: 'Test passkey'
     )

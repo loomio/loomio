@@ -73,7 +73,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
 
   test "completes an authenticated pending account before creating its session" do
     user = User.create!(email: "complete-account@example.com", email_verified: false)
-    session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }
+    @controller.stage_account_completion(user)
 
     assert_difference "Session.count", 1 do
       post :complete, params: { user: { name: "Complete Person", legal_accepted: true, email_newsletter: true } }
@@ -100,10 +100,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
 
   test "does not complete an account after the pending authentication expires" do
     user = User.create!(email: "expired-completion@example.com", email_verified: false)
-    session[:pending_account_completion] = {
-      user_id: user.id,
-      authenticated_at: (CurrentUserHelper::ACCOUNT_COMPLETION_TTL + 1.minute).ago.to_i
-    }
+    @controller.stage_account_completion(user)
+    @controller.pending_account_completion_proof.update!(expires_at: Time.current)
 
     assert_no_difference "Session.count" do
       post :complete, params: { user: { name: "Expired Person", legal_accepted: true } }
@@ -113,19 +111,71 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil user.reload.name
   end
 
+  test "legacy cookie-only completion state cannot create a session" do
+    user = User.create!(email: "legacy-completion@example.com", email_verified: false)
+    session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }
+
+    assert_no_difference "Session.count" do
+      post :complete, params: { user: { name: "Legacy Person", legal_accepted: true } }
+    end
+    assert_response :unauthorized
+    assert_nil user.reload.name
+  end
+
   test "does not accept a client-supplied name for an SSO-managed account" do
     user = User.create!(email: "managed-name@example.com", name: "Provider Name", email_verified: true)
-    session[:pending_account_completion] = {
-      user_id: user.id,
-      authenticated_at: Time.current.to_i,
-      name_managed: true
-    }
+    @controller.stage_account_completion(user, name_managed: true)
 
     post :complete, params: { user: { name: "Changed Name", legal_accepted: true } }
 
     assert_response :success
     assert_equal "Provider Name", user.reload.name
     assert_not_nil user.legal_accepted_at
+  end
+
+  test "SSO-only mode permits completion of an SSO-authenticated account" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = User.create!(email: "sso-completion@example.com", name: "SSO Person", email_verified: true)
+    @controller.stage_account_completion(user, name_managed: true)
+
+    assert_difference "Session.count", 1 do
+      post :complete, params: { user: { name: "Injected Name", legal_accepted: true } }
+    end
+
+    assert_response :success
+    assert_equal "SSO Person", user.reload.name
+    assert_not_nil user.legal_accepted_at
+  end
+
+  test "completion returns the protected authentication destination" do
+    user = User.create!(email: "completion-return@example.com", email_verified: true)
+    @controller.stage_account_completion(user)
+    session[:return_to_after_authenticating] = "/d/return-here"
+
+    post :complete, params: { user: { name: "Returning Person", legal_accepted: true } }
+
+    assert_response :success
+    assert_equal "/d/return-here", JSON.parse(response.body)['authentication_redirect']
+  end
+
+  test "completion rolls back profile changes when session creation fails" do
+    user = User.create!(email: "completion-rollback@example.com", email_verified: true)
+    @controller.stage_account_completion(user)
+    proof = @controller.pending_account_completion_proof
+
+    @controller.stub(:start_new_session_for, ->(_) { raise ActiveRecord::StatementInvalid, "session failure" }) do
+      assert_raises ActiveRecord::StatementInvalid do
+        post :complete, params: { user: { name: "Should Roll Back", legal_accepted: true } }
+      end
+    end
+
+    assert_nil user.reload.name
+    assert_nil user.legal_accepted_at
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert AccountCompletionProof.exists?(proof.id)
+    post :complete, params: { user: { name: "Retry Person", legal_accepted: true } }
+    assert_response :success
+    assert_not AccountCompletionProof.exists?(proof.id)
   end
 
   test "creates a new user with an invalid referrer" do

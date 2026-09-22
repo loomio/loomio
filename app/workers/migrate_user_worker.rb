@@ -32,6 +32,7 @@ class MigrateUserWorker < ApplicationJob
     # destination. They are destroyed with the source user in RedactUserWorker.
     membership_requests: [:requestor_id, :responder_id],
     memberships: [:user_id, :inviter_id],
+    passkey_credentials: :user_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
     polls: :author_id,

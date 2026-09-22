@@ -6,37 +6,47 @@ module CurrentUserHelper
   class SpamUserDeniedError < StandardError
   end
 
-  def sign_in(user)
+  def sign_in(user, handle_pending: true)
     @current_user = nil
     user = UserService.verify(user: user)
     require_user_name!(user)
     start_new_session_for(user)
     record_successful_sign_in(user)
-    handle_pending_actions(user)
+    discard_account_completion
+    handle_pending_actions(user) if handle_pending
     user
   end
 
   def sign_out(_scope = nil)
     terminate_session
+    discard_account_completion
+    PasskeyService.discard_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION)
+    PasskeyService.discard_challenge!(session, PasskeyService::CHALLENGE_AUTHENTICATION)
+    reset_session
     @current_user = nil
     true
   end
 
   def stage_account_completion(user, name_managed: false)
+    discard_account_completion
+    AccountCompletionProof.where(expires_at: ..Time.current).delete_all
+    proof = AccountCompletionProof.create!(user: user, name_managed: name_managed, expires_at: ACCOUNT_COMPLETION_TTL.from_now)
     session[:pending_account_completion] = {
+      proof_id: proof.id,
       user_id: user.id,
-      authenticated_at: Time.current.to_i,
       name_managed: name_managed
     }
   end
 
-  def pending_account_completion_user
+  def pending_account_completion_proof
     pending = session[:pending_account_completion]
-    authenticated_at = pending && (pending['authenticated_at'] || pending[:authenticated_at])
-    user_id = pending && (pending['user_id'] || pending[:user_id])
-    return unless authenticated_at && Time.at(authenticated_at.to_i) >= ACCOUNT_COMPLETION_TTL.ago
+    proof_id = pending && (pending['proof_id'] || pending[:proof_id])
+    AccountCompletionProof.find_by(id: proof_id) if proof_id
+  end
 
-    User.active.find_by(id: user_id)
+  def discard_account_completion
+    pending_account_completion_proof&.destroy!
+    session.delete(:pending_account_completion)
   end
 
   def current_user

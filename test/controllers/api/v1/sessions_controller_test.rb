@@ -43,6 +43,46 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_nil Current.session
   end
 
+  test "sign out clears pending authentication and invitation state from the cookie session" do
+    user = User.create!(email: "clear-session@example.com", name: "Clear Session", email_verified: true)
+    sign_in user
+    @controller.stage_account_completion(user)
+    proof = @controller.pending_account_completion_proof
+    session[:passkey_registration_challenge] = { value: "registration" }
+    session[:passkey_authentication_challenge] = { value: "authentication" }
+    session[:pending_identity_id] = 123
+    session[:pending_membership_token] = "membership"
+    session[:pending_topic_reader_token] = "reader"
+    session[:pending_stance_token] = "stance"
+
+    delete :destroy
+
+    assert_response :success
+    assert_not AccountCompletionProof.exists?(proof.id)
+    %w[
+      pending_account_completion
+      passkey_registration_challenge
+      passkey_authentication_challenge
+      pending_identity_id
+      pending_membership_token
+      pending_topic_reader_token
+      pending_stance_token
+    ].each { |key| assert_nil session[key] }
+  end
+
+  test "sign out deletes outstanding server-side passkey challenges" do
+    user = User.create!(email: "challenge-cleanup@example.com", name: "Challenge Cleanup", email_verified: true)
+    sign_in user
+    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION, SecureRandom.urlsafe_base64(32), user: user)
+    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_AUTHENTICATION, SecureRandom.urlsafe_base64(32))
+
+    assert_difference "PasskeyChallenge.count", -2 do
+      delete :destroy
+    end
+
+    assert_response :success
+  end
+
   test "turnstile required: rejects password sign-in without token" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
     user = User.create!(email: "captcha1@example.com", email_verified: true, password: "s3curepassword123")

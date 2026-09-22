@@ -33,6 +33,7 @@ class RedactUserWorker < ApplicationJob
         detected_locale: nil,
         email_verified: false,
         legal_accepted_at: nil,
+        webauthn_id: nil,
         # set an email_sha256 so we can identify redacted accounts if someone provides an email
         email_sha256: Digest::SHA256.hexdigest(email),
         deactivated_at: deactivated_at,
@@ -47,6 +48,7 @@ class RedactUserWorker < ApplicationJob
       # Destroy any outstanding login credentials so a redacted/merged source
       # account's pending login codes/magic links can never be redeemed.
       LoginToken.where(user_id: user_id).delete_all
+      PasskeyCredential.where(user_id: user_id).delete_all
       MembershipRequest.pending.where(requestor_id: user_id).destroy_all
       SearchService.reindex_by_author_id(user.id)
 

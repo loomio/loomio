@@ -124,4 +124,32 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert_not LoginToken.where(user_id: @jennifer.id, code: source_code).exists?,
                "the source account's login code must not become valid for the destination"
   end
+
+  test "migrates source passkeys while preserving each credential user handle" do
+    PasskeyService.ensure_webauthn_id!(@patrick)
+    PasskeyService.ensure_webauthn_id!(@jennifer)
+    source_handle = @patrick.webauthn_id
+    destination_handle = @jennifer.webauthn_id
+    source_passkey = @patrick.passkey_credentials.create!(
+      external_id: "source-passkey-#{SecureRandom.hex(4)}",
+      public_key: "source-public-key",
+      user_handle: source_handle,
+      sign_count: 0,
+      name: "Source passkey"
+    )
+    destination_passkey = @jennifer.passkey_credentials.create!(
+      external_id: "destination-passkey-#{SecureRandom.hex(4)}",
+      public_key: "destination-public-key",
+      user_handle: destination_handle,
+      sign_count: 0,
+      name: "Destination passkey"
+    )
+
+    MigrateUserWorker.perform_later(@patrick.id, @jennifer.id)
+
+    assert_equal @jennifer, source_passkey.reload.user
+    assert_equal source_handle, source_passkey.user_handle
+    assert_equal @jennifer, destination_passkey.reload.user
+    assert_equal destination_handle, destination_passkey.user_handle
+  end
 end
