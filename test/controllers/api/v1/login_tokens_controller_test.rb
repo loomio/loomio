@@ -89,6 +89,17 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
     assert_equal 'inactive', response.parsed_body['account_status']
   end
 
+  test "create does not send a code to a deactivated account when status is hidden" do
+    user = users(:orphan_deactivated_user)
+
+    assert_no_difference -> { LoginToken.count } do
+      post :create, params: { email: user.email }
+    end
+
+    assert_response :success
+    assert_equal({ 'success' => 'ok' }, response.parsed_body)
+  end
+
   test "create sends a code and reveals an active account when configured" do
     ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'] = '1'
     user = users(:user)
