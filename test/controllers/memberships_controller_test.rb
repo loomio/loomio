@@ -141,6 +141,13 @@ class MembershipsControllerTest < ActionController::TestCase
     assert_redirected_to "/#{@group.handle}"
   end
 
+  test "join rejects external, protocol-relative, and backslash return paths" do
+    [ 'https://evil.example/phishing', '//evil.example/phishing', '/\\evil.example/phishing' ].each do |back_to|
+      get :join, params: { model: 'group', token: @group.token, back_to: back_to }
+      assert_redirected_to "/#{@group.handle}"
+    end
+  end
+
   test "show accepts and redirects to group" do
     membership = Membership.create!(group: @group, user: @invitee, accepted_at: nil)
     get :show, params: { token: membership.token }

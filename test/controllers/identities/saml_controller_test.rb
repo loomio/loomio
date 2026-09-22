@@ -86,6 +86,25 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_nil session[:back_to]
   end
 
+  test "rejects protocol-relative and backslash referrers as back_to" do
+    [ '//evil.example/phishing', '/\\evil.example/phishing' ].each do |referrer|
+      mock_auth_request = Minitest::Mock.new
+      mock_auth_request.expect(:uuid, '_saml_request')
+      mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...', [OpenStruct])
+      parser = Minitest::Mock.new
+      parser.expect(:parse_remote, @mock_settings, [String])
+
+      OneLogin::RubySaml::IdpMetadataParser.stub(:new, parser) do
+        OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
+          request.env['HTTP_REFERER'] = referrer
+          get :oauth
+        end
+      end
+
+      assert_nil session[:back_to]
+    end
+  end
+
   # Create tests helpers
   private
 
@@ -116,6 +135,22 @@ class Identities::SamlControllerTest < ActionController::TestCase
   public
 
   # Create tests - user does not exist
+  [true, false].each do |complete|
+    test "rejects an inactive SAML owner with complete profile #{complete}" do
+      user = users(:inactive_guest_loud)
+      user.update_columns(name: nil) unless complete
+      Identity.create!(identity_type: 'saml', uid: user.email, email: user.email, user: user)
+
+      with_saml_mocks(saml_response: mock_saml_response(nameid: user.email, attributes: {})) do
+        assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+          post :create, params: { SAMLResponse: 'signed-response' }, format: :json
+        end
+      end
+      assert_response :unauthorized
+      assert_not @controller.current_user.is_logged_in?
+    end
+  end
+
   test "creates user and signs in when user does not exist" do
     session[:back_to] = '/dashboard'
 

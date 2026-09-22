@@ -50,6 +50,20 @@ class Identities::OauthControllerTest < ActionController::TestCase
   end
 
   # OAuth redirect tests
+  [true, false].each do |complete|
+    test "rejects an inactive OAuth owner with complete profile #{complete}" do
+      user = users(:inactive_member_loud)
+      user.update_columns(name: nil) unless complete
+      Identity.create!(identity_type: 'oauth', uid: 'oauth_user_123', email: user.email, user: user)
+
+      assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+        get :create, params: oauth_callback_params(code: 'authorization_code_123'), format: :json
+      end
+      assert_response :unauthorized
+      assert_not @controller.current_user.is_logged_in?
+    end
+  end
+
   test "redirects to OAuth provider with correct parameters" do
     get :oauth, params: { back_to: '/some/path' }
     assert_equal '/some/path', session[:back_to]
@@ -70,6 +84,14 @@ class Identities::OauthControllerTest < ActionController::TestCase
     request.env['HTTP_REFERER'] = 'https://evil.com/phishing'
     get :oauth
     assert_nil session[:back_to]
+  end
+
+  test "rejects protocol-relative and backslash referrers as back_to" do
+    [ '//evil.example/phishing', '/\\evil.example/phishing' ].each do |referrer|
+      request.env['HTTP_REFERER'] = referrer
+      get :oauth
+      assert_nil session[:back_to]
+    end
   end
 
   # Create tests - user does not exist

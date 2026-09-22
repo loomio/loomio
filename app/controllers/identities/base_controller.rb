@@ -1,4 +1,7 @@
 class Identities::BaseController < ApplicationController
+  include IdentityAuthentication
+  include SafeInternalPath
+
   def oauth
     session[:back_to] = safe_back_to
     session[:oauth_state] = SecureRandom.hex(32)
@@ -20,38 +23,13 @@ class Identities::BaseController < ApplicationController
     return respond_with_error(401, "Could not fetch user profile from OAuth provider") unless identity_params[:uid].present? && identity_params[:email].present?
 
     identity = IdentityService.link_or_create(identity_params: identity_params, current_user: current_user)
-
-    # Handle pending identity flow (user is switching accounts)
-    if !identity.user
-      back_to = session[:back_to]
-      sign_out
-      session[:pending_identity_id] = identity.id
-      flash[:notice] = t('auth.switching_accounts')
-      return redirect_to session.delete(:return_to_after_authenticating) || back_to || dashboard_path
-    end
-
-    if identity.user.incomplete?
-      stage_account_completion(identity.user, name_managed: identity.name.present?)
-      session[:pending_user_id] = identity.user.id
-      return redirect_to authentication_return_path(fallback: dashboard_path)
-    end
-
-    # Handle successful login
-    sign_in(identity.user)
-    flash[:notice] = t('auth_form.signed_in')
-
-    redirect_to authentication_return_path(fallback: dashboard_path)
+    finish_identity_authentication(identity)
   rescue ActiveRecord::RecordInvalid => error
     respond_with_error(422, error.record.errors.full_messages.to_sentence)
   end
 
   def destroy
-    if i = current_user.identities.find_by(identity_type: controller_name)
-      i.destroy
-      redirect_to request.referrer || root_path
-    else
-      respond_with_error 500, "Not connected to #{controller_name}!"
-    end
+    disconnect_identity(controller_name)
   end
 
   private
@@ -91,17 +69,12 @@ class Identities::BaseController < ApplicationController
     Clients::Oauth.instance
   end
 
-  def oauth_client_id_field
-    :client_id
-  end
-
   def oauth_scope
     client.scope.join(',')
   end
 
   def safe_back_to
-    path = (params[:back_to] || request.referrer).to_s
-    path if path.start_with?('/') && !path.start_with?('//', '/\\')
+    safe_internal_path(params[:back_to], request.referrer)
   end
 
   def valid_oauth_state?

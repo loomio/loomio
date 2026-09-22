@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   include PrettyUrlHelper
+  include SafeInternalPath
 
   def join
     group = Group.enabled.find_by!(token: params.require(:token))
@@ -25,7 +26,6 @@ class MembershipsController < ApplicationController
   end
 
   def safe_back_to
-    path = params[:back_to].to_s
-    path if path.start_with?('/') && !path.start_with?('//', '/\\')
+    safe_internal_path(params[:back_to])
   end
 end
