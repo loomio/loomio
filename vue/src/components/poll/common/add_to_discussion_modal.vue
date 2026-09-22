@@ -72,9 +72,12 @@ const submit = () => {
 
   loading.value = true;
   selectedTopic.value.moveComments([topic_item.id]).then(() => {
+    // The move assigns a new sequence ID. Fetch it before opening the poll in the destination discussion.
+    return Records.topicItems.fetch({params: {poll_key: props.poll.key, unread_or_newest: 1, per: 1}});
+  }).then(({topic_items}) => {
     loading.value = false;
     Flash.success("add_poll_to_discussion_modal.success", {pollType: props.poll.translatedPollType()});
-    router.push(urlFor(selectedTopic.value)).then(() => {
+    router.push(`${urlFor(selectedTopic.value)}/${topic_items[0].sequence_id}`).then(() => {
       EventBus.$emit('closeModal');
     });
   });
