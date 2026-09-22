@@ -86,19 +86,32 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_equal false, JSON.parse(response.body)['signed_in']
   end
 
-  test "turnstile bypass: pending_membership skips the challenge" do
+  test "an invitation does not bypass the Turnstile challenge" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
-    # If Turnstile were consulted we'd need to stub siteverify. Asserting success without a
-    # stub proves the email-verified bypass takes the pending_membership path.
-    pending_membership = Membership.create!(
-      user: User.create(email: "bypass@example.com", email_verified: false),
-      group: groups(:group),
-      accepted_at: nil
-    )
-    session[:pending_membership_token] = pending_membership.token
+    membership = pending_membership_for("invitation-turnstile@example.com")
 
-    post :create, params: { user: { email: "bypass@example.com" } }
+    post :create, params: { membership_token: membership.token, user: { email: membership.user.email } }
+
+    assert_response :forbidden
+    assert_not AccountCompletionProof.exists?(user: membership.user)
+  end
+
+  test "an invitation proves email ownership after Turnstile succeeds" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    WebMock.stub_request(:post, TurnstileService::SITEVERIFY_URL).
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
+    membership = pending_membership_for("invitation-turnstile-success@example.com")
+
+    assert_no_difference 'LoginToken.count' do
+      post :create, params: {
+        membership_token: membership.token,
+        user: { email: membership.user.email, turnstile_token: "cf-ok" }
+      }
+    end
+
     assert_response :success
+    assert_equal true, response.parsed_body['incomplete']
+    assert AccountCompletionProof.exists?(user: membership.user)
   end
 
   test "creates a new user" do

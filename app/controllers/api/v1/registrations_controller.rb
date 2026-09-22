@@ -110,10 +110,9 @@ class Api::V1::RegistrationsController < ApplicationController
     end
   end
 
-  # A matching invitation, login token, or SSO identity has already proved
-  # control of this email address, so it replaces a fresh Turnstile challenge.
+  # Invitations prove control of the invited email address, but one user can
+  # send many invitations, so every registration still needs abuse protection.
   def turnstile_ok?
-    return true if @registration_proof
     TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
                             remote_ip: request.remote_ip)
   end
