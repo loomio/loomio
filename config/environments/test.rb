@@ -6,7 +6,9 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
-  config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(IO::NULL))
+  log_target = ENV["CI"].present? ? Rails.root.join("log/test.log") : IO::NULL
+  config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(log_target))
+  config.log_level = :warn if ENV["CI"].present?
 
   # Settings specified here will take precedence over those in config/application.rb.
 

@@ -22,6 +22,7 @@ jobs:
       PGUSER: postgres
       RAILS_ENV: test
       E2E_PORT: 3001
+      E2E_TESTCASE: ${{ inputs.e2e_testcase }}
     services:
       postgres:
         image: postgres:latest
@@ -95,12 +96,17 @@ jobs:
     - name: run e2es
       env:
         DISPLAY: ':99'
-        E2E_TESTCASE: ${{ inputs.e2e_testcase }}
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
         if [ -n "$E2E_TESTCASE" ]; then
+          set +e
           npx nightwatch --headless --test tests/e2e/specs/auth.js --testcase "$E2E_TESTCASE"
+          test_status=$?
+          if [ -f ../log/test.log ]; then
+            rg 'Passkey registration failed' ../log/test.log || true
+          fi
+          exit "$test_status"
         else
           npm run test
         fi
@@ -114,3 +120,9 @@ jobs:
       with:
         name: e2e-report-${{ matrix.runs-on }}
         path: vue/tests/screenshots
+    - name: upload rails test log
+      uses: actions/upload-artifact@v4
+      if: ${{ failure() }}
+      with:
+        name: e2e-rails-test-log
+        path: log/test.log
