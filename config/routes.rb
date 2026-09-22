@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     session_record = Session.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
     user = session_record&.user
 
-    user&.active_for_authentication? && user.is_admin?
+    user&.active? && user.is_admin?
   end
 
   constraints admin_session_constraint do
@@ -239,8 +239,6 @@ Rails.application.routes.draw do
           get  :all_time_zones
           get  :me
           get  :groups
-          get  :email_status
-          get  :email_exists
           post :send_merge_verification_email
           get  :contactable
           get  :avatar_uploaded
@@ -258,6 +256,13 @@ Rails.application.routes.draw do
       end
 
       resources :login_tokens, only: [:create]
+      resources :passkey_credentials, only: [:index, :create, :destroy] do
+        collection do
+          post :registration_options
+          post :authentication_options
+          post :authenticate
+        end
+      end
 
       resources :topic_items, only: :index do
         get :count, on: :collection
@@ -406,7 +411,7 @@ Rails.application.routes.draw do
       namespace(:sessions)        { get :unauthorized }
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create do
-        post :oauth, on: :collection
+        post :complete, on: :collection
       end
       # identities command route removed (dead code)
     end

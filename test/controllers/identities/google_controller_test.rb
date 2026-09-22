@@ -6,12 +6,13 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     @hex = SecureRandom.hex(4)
     @saved_env = {}
     %w[GOOGLE_APP_KEY GOOGLE_APP_SECRET LOOMIO_SSO_FORCE_USER_ATTRS
-       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN].each do |key|
+       LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN TERMS_URL].each do |key|
       @saved_env[key] = ENV[key]
     end
 
     ENV['GOOGLE_APP_KEY'] = 'google_client_id'
     ENV['GOOGLE_APP_SECRET'] = 'google_client_secret'
+    ENV.delete('TERMS_URL')
 
     stub_request(:post, 'https://www.googleapis.com/oauth2/v4/token')
       .to_return(

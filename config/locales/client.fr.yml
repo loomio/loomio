@@ -369,11 +369,18 @@ fr:
       flash: Mail de vérification envoyé !
       helptext_and_signout: Tu peux fusionner le compte associé à <strong>%{sourceEmail}</strong> avec celui associé à <strong>%{targetEmail}</strong> . Clique sur « Vérifier » ; un e-mail de vérification sera envoyé à %{targetEmail} pour lancer la procédure. Tu seras déconnecté(e) afin de te connecter au compte cible et finaliser la fusion.
       flash_and_signout: Un courriel de vérification a été envoyé à %{targetEmail}. Tu es maintenant déconnecté(e). Connecte-toi avec le compte cible pour finaliser la fusion.
+      generic_helptext: Saisissez l'adresse e-mail de l'autre compte. Si ce compte existe, Loomio lui enverra un e-mail contenant les instructions pour confirmer la fusion.
+      email_label: Adresse e-mail de l'autre compte
+      send_verification: Envoyer un e-mail de vérification
+      generic_flash_and_signout: Si un compte utilise cette adresse e-mail, un e-mail de vérification a été envoyé. Vous êtes maintenant déconnecté(e) ; vous pouvez donc continuer avec l'autre compte.
+      destination_helptext: Ce compte (%{sourceEmail}) sera fusionné avec le compte de destination. Veuillez saisir l'adresse e-mail du compte de destination. Si elle existe, Loomio lui enverra un e-mail de confirmation de fusion.
+      destination_email_label: Adresse e-mail du compte de destination
     email_taken: Désolé, l'adresse email que tu as fournie correspond à celle d'un utilisateur existant. Est-ce ton adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |
       <p>Si tu souhaites fusionner deux comptes ensemble, entre simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de ta page de profil et suis les instructions qui s'affichent.</p>
       <p>Besoin d'aide? <a href="/contact" target="_blank">Nous contacter</a>.
+    email_may_belong_to_another_account: Si cette adresse appartient à un autre compte, vous pouvez fusionner les comptes.
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
@@ -2532,6 +2539,7 @@ fr:
     sign_up_as: Créer un compte en tant que %{email}
     sign_in_as: Se connecter comme  %{name}
     continue_with_provider: Continuer avec %{provider}
+    sign_in_with_provider: Se connecter avec %{provider}
     continue_with_email: Connecte-toi avec ton adresse mail
     or_enter_your_email: Ou saisir ton adresse e-mail
     enter_your_name: Entre ton nom
@@ -2590,6 +2598,22 @@ fr:
     invalid_login: Impossible de te connecter avec ces informations.
     login_link_rate_limited: Trop d'e-mails de connexion ont été demandés depuis ce réseau. Attends une heure et réessaie.
     send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Réessaie.
+    sign_in_with_passkey: Connectez-vous avec un mot de passe
+    passkey_authentication_failed: Nous n'avons pas pu vous connecter avec ce mot de passe.
+    passkey_registration_failed: Nous n'avons pas pu sauvegarder ce code d'accès.
+    passkey_default_name: Clé d'accès
+    local_login_disabled: Ce site nécessite une authentification unique.
+    email_me_a_sign_in_code: Envoyez-moi un code de connexion par e-mail
+    sign_in_with_code: Connectez-vous avec un code
+    new_to_site: Nouveau ici ?
+    passkey_recent_authentication_required: Veuillez vous reconnecter avant de modifier vos mots de passe.
+    email_code_help: Saisis ton adresse e-mail et nous t’enverrons un code de connexion à six chiffres
+    or_sign_in_with_password: Ou connecte-toi avec un mot de passe
+    login_link_sent_if_account_exists: Si un compte existe pour %{email}, nous t’enverrons un code de connexion
+    use_a_passkey: Utilise une clé d’accès
+    send_me_a_code: Envoie-moi un code
+    email_code_help_short: Nous t’enverrons un code à six chiffres à ton adresse e-mail
+    login_link_sent_if_account_exists_sentence: Si un compte existe pour %{email}, nous t’enverrons un code de connexion.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion
@@ -3147,3 +3171,25 @@ fr:
     unfollow: Ne plus suivre les mises à jour
     followed: Tu suis maintenant les mises à jour de ce groupe
     unfollowed: Tu ne suis plus les mises à jour de ce groupe
+  passkey_settings:
+    title: Clés d'accès
+    helptext: Les clés d'accès vous permettent de vous connecter avec votre appareil sans saisir votre adresse e-mail ni votre mot de passe.
+    none: Vous n'avez pas ajouté de clé d'accès.
+    name: Nom du mot de passe
+    name_placeholder: Par exemple, un ordinateur portable professionnel
+    add: Ajouter une clé d'accès
+    added: Clé d'accès ajoutée
+    created_at: Ajouté %{date}
+    remove_named: Supprimer %{name}
+    remove_confirm: Supprimer la clé d'accès nommée %{name} ?
+    removed: Clé d'accès supprimée
+    remove_failed: Impossible de supprimer le code d'accès
+  credential_prompt:
+    title: Ajouter une autre méthode de connexion
+    helptext: Ajoutez une clé d'accès ou définissez un mot de passe pour pouvoir vous connecter sans attendre un code envoyé par e-mail.
+    add_passkey: Ajouter un code d'accès
+    set_password: Définir un mot de passe
+    not_now: Pas maintenant
+  account_completion:
+    complete_your_account: Complétez votre compte
+    continue: Continuer

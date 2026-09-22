@@ -363,9 +363,16 @@ hu:
       flash: Ellenőrző e-mail elküldve!
       helptext_and_signout: A <strong>%{sourceEmail}</strong> fiókot egyesítheti a <strong>%{targetEmail}</strong> fiókkal. Kattintson az Ellenőrzés gombra, és a folyamat megkezdéséhez egy ellenőrző e-mailt küldünk a %{targetEmail} címre. Kijelentkeztetjük, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
       flash_and_signout: Megerősítő e-mail elküldve a(z) %{targetEmail} címre. Most kijelentkezett, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
+      generic_helptext: Add meg a másik fiók e-mail címét. Ha a fiók létezik, a Loomio küld neki egy e-mailt az egyesítés megerősítéséhez szükséges utasításokkal.
+      email_label: Egyéb fiók e-mail címe
+      send_verification: Ellenőrző e-mail küldése
+      generic_flash_and_signout: Ha egy másik fiók ezt az e-mail címet használja, akkor egy ellenőrző e-mailt küldtünk. Most kijelentkezett, így folytathatja a másik fiókkal.
+      destination_helptext: Ez a fiók (%{sourceEmail}) egyesülni fog a célfiókkal. Add meg a célfiók e-mail címét. Ha létezik, a Loomio e-mailt küld erre a címre az egyesítés megerősítéséhez.
+      destination_email_label: Célfiók e-mail címe
     email_taken: Sajnáljuk, ez az e-mail már társítva van egy másik felhasználóhoz. Ez az e-mail a tiéd?
     find_out_more: Tudj meg többet.
     placeholder_modal_text: <p>Ha két fiókot szeretne egyesíteni, egyszerűen írja be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesse a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vegye fel velünk a kapcsolatot</a> .
+    email_may_belong_to_another_account: Ha ez a cím egy másik fiókhoz tartozik, akkor egyesítheti a fiókokat.
   emoji_picker:
     search: Keresés
     common: Gyakran használt
@@ -2497,6 +2504,7 @@ hu:
     sign_up_as: Fiók létrehozása mint %{email}
     sign_in_as: 'Bejelentkezés itt: %{name}'
     continue_with_provider: 'Folytatás a következővel: %{provider}'
+    sign_in_with_provider: 'Bejelentkezés ezzel: %{provider}'
     continue_with_email: Folytatás email fiókkal
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved
@@ -2555,6 +2563,22 @@ hu:
     invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
     login_link_rate_limited: Túl sok bejelentkezési e-mailt kértek erről a hálózatról. Kérjük, várjon egy órát, és próbálja újra.
     send_login_link_error: Hiba történt a bejelentkezési e-mail elküldésekor. Kérjük, próbálja újra.
+    sign_in_with_passkey: Bejelentkezés jelszóval
+    passkey_authentication_failed: Nem tudtuk bejelentkezni ezzel a jelszóval
+    passkey_registration_failed: Nem tudtuk menteni a jelszót
+    passkey_default_name: Jelszó
+    local_login_disabled: Ez az oldal egyszeri bejelentkezést igényel
+    email_me_a_sign_in_code: Küldj nekem egy bejelentkezési kódot e-mailben
+    sign_in_with_code: Bejelentkezés kóddal
+    new_to_site: Új vagy itt?
+    passkey_recent_authentication_required: Jelentkezzen be újra a jelszavak módosítása előtt
+    email_code_help: Add meg az e-mail címed, és küldünk neked egy hatjegyű bejelentkezési kódot
+    or_sign_in_with_password: Vagy jelentkezzen be jelszóval
+    login_link_sent_if_account_exists: Ha létezik fiók a(z) %{email} címhez, bejelentkezési kódot küldünk.
+    use_a_passkey: Használjon jelszót
+    send_me_a_code: Küldj nekem egy kódot
+    email_code_help_short: Hatjegyű kódot küldünk az e-mail címedre
+    login_link_sent_if_account_exists_sentence: Ha létezik fiók a(z) %{email} címhez, küldünk egy bejelentkezési kódot.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -3110,3 +3134,25 @@ hu:
     unfollow: Frissítések követésének megszüntetése
     followed: Mostantól követed a csoport frissítéseit
     unfollowed: Már nem követed a csoport frissítéseit
+  passkey_settings:
+    title: Jelszavak
+    helptext: A jelszók lehetővé teszik, hogy e-mail cím vagy jelszó megadása nélkül jelentkezzen be eszközével
+    none: Nem adott hozzá jelszót
+    name: Jelszó neve
+    name_placeholder: Például, munkahelyi laptop
+    add: Jelszó hozzáadása
+    added: Hozzáadott jelszó
+    created_at: Hozzáadva %{date}
+    remove_named: "%{name} eltávolítása"
+    remove_confirm: Eltávolítja a(z) %{name} nevű jelszót?
+    removed: Jelszó eltávolítva
+    remove_failed: A jelszót nem sikerült eltávolítani
+  credential_prompt:
+    title: További bejelentkezési mód hozzáadása
+    helptext: Hozzáadhat egy jelszót vagy beállíthat egy jelszót, hogy bejelentkezhessen anélkül, hogy e-mailben kapott kódra kellene várnia
+    add_passkey: Hozzáadás egy jelszót
+    set_password: Jelszó beállítása
+    not_now: Most nem
+  account_completion:
+    complete_your_account: Fiókod kitöltése
+    continue: Folytatás

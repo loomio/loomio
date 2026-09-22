@@ -361,9 +361,16 @@ sv:
       flash: Verifieringsmail har skickats!
       helptext_and_signout: Du kan sammanfoga kontot under <strong>%{sourceEmail}</strong> med det som tillhör <strong>%{targetEmail}</strong> . Klicka på Verifiera så skickas ett verifieringsmeddelande till %{targetEmail} för att starta processen. Du kommer att loggas ut så att du kan logga in som målkontot för att slutföra sammanfogningen.
       flash_and_signout: Verifieringsmejlet har skickats till %{targetEmail}. Du är nu utloggad så att du kan logga in som målkontot för att slutföra sammanslagningen.
+      generic_helptext: Ange e-postadressen för det andra kontot. Om det kontot finns skickar Loomio ett e-postmeddelande med instruktioner för att bekräfta sammanslagningen.
+      email_label: Annan konto-e-postadress
+      send_verification: Skicka verifieringsmejl
+      generic_flash_and_signout: Om ett konto använder den e-postadressen har ett verifieringsmejl skickats. Du är nu utloggad så att du kan fortsätta med det andra kontot.
+      destination_helptext: Detta konto (%{sourceEmail}) kommer att slås samman med destinationskontot. Ange destinationskontots e-postadress. Om den finns kommer Loomio att skicka ett e-postmeddelande till den adressen för att bekräfta sammanslagningen.
+      destination_email_label: E-postadress för målkontot
     email_taken: Tyvärr, den e-postadressen är redan kopplad till en annan användare. Tillhör det mejlet dig?
     find_out_more: Få reda på mer.
     placeholder_modal_text: <p>Om du vill slå samman två konton anger du helt enkelt respektive e-postadress (som tillhör det andra kontot) i e-postfältet på din profilsida och följer instruktionerna som visas.</p><p> Behövs hjälp? <a href="/contact" target="_blank">Kontakta oss</a> .
+    email_may_belong_to_another_account: Om den här adressen tillhör ett annat konto kan du slå samman kontona
   emoji_picker:
     search: Sök
     common: Ofta använd
@@ -2490,6 +2497,7 @@ sv:
     sign_up_as: Skapa konto som %{email}
     sign_in_as: Logga in som %{name}
     continue_with_provider: Fortsätt med %{provider}
+    sign_in_with_provider: Logga in med %{provider}
     continue_with_email: Fortsätt med e-post
     or_enter_your_email: Eller ange din e-postadress
     enter_your_name: Ange ditt namn
@@ -2548,6 +2556,22 @@ sv:
     invalid_login: Det går inte att logga in dig med de uppgifterna
     login_link_rate_limited: För många inloggningsadresser har begärts från det här nätverket. Vänta en timme och försök igen.
     send_login_link_error: Något gick fel när inloggningsmejlet skulle skickas. Försök igen.
+    sign_in_with_passkey: Logga in med en lösenkod
+    passkey_authentication_failed: Vi kunde inte logga in dig med den lösenkoden
+    passkey_registration_failed: Vi kunde inte spara den lösenkoden
+    passkey_default_name: Lösenord
+    local_login_disabled: Den här webbplatsen kräver enkel inloggning
+    email_me_a_sign_in_code: Skicka mig en inloggningskod via e-post
+    sign_in_with_code: Logga in med en kod
+    new_to_site: Ny här?
+    passkey_recent_authentication_required: Logga in igen innan du ändrar dina passkeys
+    email_code_help: Ange din e-postadress så skickar vi dig en sexsiffrig inloggningskod
+    or_sign_in_with_password: Eller logga in med ett lösenord
+    login_link_sent_if_account_exists: Om det finns ett konto för %{email} skickar vi en inloggningskod
+    use_a_passkey: Använd en lösennyckel
+    send_me_a_code: Skicka mig en kod
+    email_code_help_short: Vi skickar en sexsiffrig kod till din e-postadress
+    login_link_sent_if_account_exists_sentence: Om det finns ett konto för %{email} skickar vi en inloggningskod.
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen
@@ -3103,3 +3127,25 @@ sv:
     unfollow: Sluta följa uppdateringar
     followed: Du följer nu uppdateringar från den här gruppen
     unfollowed: Du följer inte längre uppdateringar från den här gruppen
+  passkey_settings:
+    title: Lösenord
+    helptext: Med lösenord kan du logga in med din enhet utan att ange din e-postadress eller ditt lösenord
+    none: Du har inte lagt till en lösennyckel
+    name: Lösenordsnamn
+    name_placeholder: Till exempel, arbetsdator
+    add: Lägg till lösenord
+    added: Lösenord tillagt
+    created_at: Tillagd %{date}
+    remove_named: Ta bort %{name}
+    remove_confirm: Ta bort passkeyn %{name}?
+    removed: Passkey borttagen
+    remove_failed: Passkeyn kunde inte tas bort
+  credential_prompt:
+    title: Lägg till ett annat sätt att logga in
+    helptext: Lägg till en lösenkod eller ett lösenord så att du kan logga in utan att vänta på en kod via e-post
+    add_passkey: Lägg till en lösennyckel
+    set_password: Ange ett lösenord
+    not_now: Inte nu
+  account_completion:
+    complete_your_account: Slutför ditt konto
+    continue: Fortsätta

@@ -51,7 +51,7 @@ module EmailHelper
 
     if recipient
       if model.is_a?(Poll) or model.is_a?(Outcome)
-        if stance = model.poll.stances.latest.find_by(participant: recipient)
+        if stance = model.poll.stances.redeemable.find_by(participant: recipient)
           args.merge!(stance_token: stance.token)
         end
       end

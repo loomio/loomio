@@ -361,11 +361,18 @@ ca:
       flash: S'ha enviat un correu electrònic de verificació!
       helptext_and_signout: Podeu fusionar el compte de <strong>%{sourceEmail}</strong> amb el de <strong>%{targetEmail}</strong> . Feu clic a Verifica i s'enviarà un correu electrònic de verificació a %{targetEmail} per iniciar el procés. Es tancarà la sessió perquè pugueu iniciar la sessió com a compte de destinació per completar la fusió.
       flash_and_signout: Correu electrònic de verificació enviat a %{targetEmail}. Ara has tancat la sessió i pots iniciar-la com a compte de destinació per completar la combinació.
+      generic_helptext: Introduïu l'adreça electrònica de l'altre compte. Si aquest compte existeix, Loomio li enviarà un correu electrònic amb instruccions per confirmar la fusió.
+      email_label: Correu electrònic d'un altre compte
+      send_verification: Enviar correu electrònic de verificació
+      generic_flash_and_signout: Si un compte utilitza aquesta adreça electrònica, s'ha enviat un correu electrònic de verificació. Ara has tancat la sessió i pots continuar amb l'altre compte.
+      destination_helptext: Aquest compte (%{sourceEmail}) es fusionarà amb el compte de destinació. Introduïu l'adreça electrònica del compte de destinació. Si existeix, Loomio enviarà un correu electrònic a aquesta adreça per confirmar la fusió.
+      destination_email_label: Correu electrònic del compte de destinació
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |
       <p> Si voleu combinar dos comptes, introduiu la direcció de correu electrònic (la que pertany a l'altre compte) al camp de correu electrònic del vostre perfil, i seguiu les intruccions que apareixeran a continuació.</p>
       <p>Necessiteu ajuda? <a href="/contact" target="_blank">Contacti amb nosaltres</a>.
+    email_may_belong_to_another_account: Si aquesta adreça pertany a un altre compte, podeu fusionar els comptes
   emoji_picker:
     search: Cerca
     common: Usats sovint
@@ -2515,6 +2522,7 @@ ca:
     sign_up_as: Crea un compte com a %{email}
     sign_in_as: Inicia la sessió com %{name}
     continue_with_provider: Continua amb %{provider}
+    sign_in_with_provider: Inicia la sessió amb %{provider}
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom
@@ -2573,6 +2581,22 @@ ca:
     invalid_login: No es pot iniciar la sessió amb aquestes dades
     login_link_rate_limited: S'han sol·licitat massa correus electrònics d'inici de sessió des d'aquesta xarxa. Espereu una hora i torneu-ho a provar.
     send_login_link_error: S'ha produït un error en enviar el correu electrònic d'inici de sessió. Torna-ho a provar.
+    sign_in_with_passkey: Inicia la sessió amb una clau d'accés
+    passkey_authentication_failed: No hem pogut iniciar la sessió amb aquesta clau d'accés
+    passkey_registration_failed: No hem pogut desar aquesta clau d'accés
+    passkey_default_name: Clau d'accés
+    local_login_disabled: Aquest lloc requereix un inici de sessió únic
+    email_me_a_sign_in_code: Envia'm un codi d'inici de sessió per correu electrònic
+    sign_in_with_code: Inicia la sessió amb un codi
+    new_to_site: Ets nou aquí?
+    passkey_recent_authentication_required: Torna a iniciar la sessió abans de canviar les claus d'accés
+    email_code_help: Introdueix la teva adreça electrònica i t'enviarem un codi d'inici de sessió de sis dígits
+    or_sign_in_with_password: O inicia la sessió amb una contrasenya
+    login_link_sent_if_account_exists: Si existeix un compte per a %{email}, us enviarem un codi d'inici de sessió.
+    use_a_passkey: Utilitza una clau d'accés
+    send_me_a_code: Envia'm un codi
+    email_code_help_short: T'enviarem un codi de sis dígits a la teva adreça de correu electrònic
+    login_link_sent_if_account_exists_sentence: Si existeix un compte per a %{email}, t'enviarem un codi d'inici de sessió.
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió
@@ -3130,3 +3154,25 @@ ca:
     unfollow: Deixa de seguir les actualitzacions
     followed: Ara segueixes les actualitzacions d'aquest grup
     unfollowed: Ja no segueixes les actualitzacions d'aquest grup
+  passkey_settings:
+    title: Claus d'accés
+    helptext: Les claus d'accés et permeten iniciar la sessió amb el dispositiu sense introduir la teva adreça electrònica ni la contrasenya
+    none: No has afegit cap contrasenya
+    name: Nom de la clau d'accés
+    name_placeholder: Per exemple, ordinador portàtil de la feina
+    add: Afegeix una contrasenya
+    added: Clau d'accés afegida
+    created_at: Afegit %{date}
+    remove_named: Elimina %{name}
+    remove_confirm: Voleu eliminar la clau d'accés anomenada %{name}?
+    removed: Clau d'accés eliminada
+    remove_failed: No s'ha pogut eliminar la clau d'accés
+  credential_prompt:
+    title: Afegeix una altra manera d'iniciar la sessió
+    helptext: Afegeix una clau d'accés o estableix una contrasenya per poder iniciar la sessió sense esperar un codi enviat per correu electrònic
+    add_passkey: Afegeix una clau d'accés
+    set_password: Establir una contrasenya
+    not_now: Ara no
+  account_completion:
+    complete_your_account: Completa el teu compte
+    continue: Continua

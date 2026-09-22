@@ -361,9 +361,16 @@ sl:
       flash: Potrditveno e-poštno sporočilo je poslano!
       helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> lahko združite z računom <strong>%{targetEmail}</strong> . Kliknite Preveri in na %{targetEmail} bo poslano potrditveno e-poštno sporočilo za začetek postopka. Odjavljeni boste, da se boste lahko prijavili kot ciljni račun za dokončanje združitve.
       flash_and_signout: Potrditveno e-poštno sporočilo je bilo poslano na %{targetEmail}. Zdaj ste odjavljeni, zato se lahko prijavite kot ciljni račun in dokončate združitev.
+      generic_helptext: Vnesite e-poštni naslov drugega računa. Če ta račun obstaja, mu bo Loomio poslal e-pošto z navodili za potrditev združitve.
+      email_label: E-poštni naslov drugega računa
+      send_verification: Pošlji potrditveno e-pošto
+      generic_flash_and_signout: Če račun uporablja ta e-poštni naslov, je bilo poslano potrditveno e-poštno sporočilo. Zdaj ste odjavljeni, tako da lahko nadaljujete z drugim računom.
+      destination_helptext: Ta račun (%{sourceEmail}) bo združen s ciljnim računom. Vnesite e-poštni naslov ciljnega računa. Če obstaja, bo Loomio na ta naslov poslal e-poštno sporočilo za potrditev združitve.
+      destination_email_label: E-poštni naslov ciljnega računa
     email_taken: Žal je ta e-poštni naslov že povezan z drugim uporabnikom. Ali ta e-pošta pripada vam?
     find_out_more: Izvedi več.
     placeholder_modal_text: <p>Če želite združiti dva računa, preprosto vnesite ustrezni e-poštni naslov (ki pripada drugemu računu) v polje za e-pošto na strani profila in sledite navodilom, ki se prikažejo.</p><p> Rabim pomoč? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
+    email_may_belong_to_another_account: Če ta naslov pripada drugemu računu, lahko račune združite.
   emoji_picker:
     search: Išči
     common: Pogosto uporabljen
@@ -2490,6 +2497,7 @@ sl:
     sign_up_as: Ustvari račun kot %{email}
     sign_in_as: Prijavite se kot %{name}
     continue_with_provider: Nadaljuj s %{provider}
+    sign_in_with_provider: Prijava z %{provider}
     continue_with_email: Nadaljujte z e-pošto
     or_enter_your_email: Ali pa vnesite svoj e-poštni naslov
     enter_your_name: Vnesite svoje ime
@@ -2548,6 +2556,22 @@ sl:
     invalid_login: S temi podatki vas ni mogoče prijaviti
     login_link_rate_limited: Iz tega omrežja je bilo zahtevanih preveč prijavnih e-poštnih naslovov. Počakajte eno uro in poskusite znova.
     send_login_link_error: Pri pošiljanju prijavnega e-poštnega sporočila je prišlo do napake. Poskusite znova.
+    sign_in_with_passkey: Prijava z geslom
+    passkey_authentication_failed: S tem geslom vas nismo mogli prijaviti.
+    passkey_registration_failed: Tega gesla nismo mogli shraniti.
+    passkey_default_name: Geslo
+    local_login_disabled: To spletno mesto zahteva enotno prijavo
+    email_me_a_sign_in_code: Pošlji mi prijavno kodo po e-pošti
+    sign_in_with_code: Prijava s kodo
+    new_to_site: Nov tukaj?
+    passkey_recent_authentication_required: Preden spremenite gesla, se znova prijavite
+    email_code_help: Vnesite svoj e-poštni naslov in poslali vam bomo šestmestno prijavno kodo
+    or_sign_in_with_password: Ali pa se prijavite z geslom
+    login_link_sent_if_account_exists: Če za %{email} obstaja račun, vam bomo poslali prijavno kodo.
+    use_a_passkey: Uporabite geslo
+    send_me_a_code: Pošlji mi kodo
+    email_code_help_short: Na vaš e-poštni naslov vam bomo poslali šestmestno kodo
+    login_link_sent_if_account_exists_sentence: Če za %{email} obstaja račun, vam bomo poslali prijavno kodo.
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava
@@ -3103,3 +3127,25 @@ sl:
     unfollow: Ne spremljaj posodobitev
     followed: Zdaj spremljate posodobitve te skupine
     unfollowed: Ne spremljate več posodobitev te skupine
+  passkey_settings:
+    title: Gesla
+    helptext: Gesla vam omogočajo prijavo z napravo brez vnosa e-poštnega naslova ali gesla
+    none: Niste dodali gesla
+    name: Ime gesla
+    name_placeholder: Na primer, službeni prenosnik
+    add: Dodaj geslo
+    added: Geslo dodano
+    created_at: Dodano %{date}
+    remove_named: Odstrani %{name}
+    remove_confirm: Odstranim geslo z imenom %{name}?
+    removed: Geslo odstranjeno
+    remove_failed: Gesla ni bilo mogoče odstraniti
+  credential_prompt:
+    title: Dodaj še en način prijave
+    helptext: Dodajte geslo ali nastavite geslo, da se boste lahko prijavili, ne da bi čakali na kodo, poslano po e-pošti
+    add_passkey: Dodaj geslo
+    set_password: Nastavite geslo
+    not_now: Ne zdaj
+  account_completion:
+    complete_your_account: Dokončajte svoj račun
+    continue: Nadaljuj

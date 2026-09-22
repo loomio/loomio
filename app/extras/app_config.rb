@@ -34,6 +34,60 @@ class AppConfig
     ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i
   end
 
+  def self.local_login_enabled?
+    !ENV.key?('FEATURES_DISABLE_LOCAL_LOGIN') && !ENV.key?('FEATURES_DISABLE_EMAIL_LOGIN')
+  end
+
+  def self.sso_update_user_profile_on_login?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'].present?
+  end
+
+  def self.sso_disable_edit_user_profile?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
+  end
+
+  def self.oauth_authorization_url
+    ENV.fetch('OAUTH_AUTH_URL')
+  end
+
+  def self.oauth_scope
+    ENV.fetch('OAUTH_SCOPE')
+  end
+
+  def self.saml_allow_idp_initiated?
+    ENV['SAML_ALLOW_IDP_INITIATED'].present?
+  end
+
+  def self.saml_attribute_email
+    ENV['SAML_ATTR_EMAIL'].presence
+  end
+
+  def self.saml_attribute_name
+    ENV['SAML_ATTR_NAME'].presence
+  end
+
+  def self.saml_attribute_given_name
+    ENV['SAML_ATTR_GIVEN_NAME'].presence
+  end
+
+  def self.saml_attribute_family_name
+    ENV['SAML_ATTR_FAMILY_NAME'].presence
+  end
+
+  def self.saml_idp_metadata
+    ENV['SAML_IDP_METADATA']
+  end
+
+  def self.saml_idp_metadata_url
+    ENV.fetch('SAML_IDP_METADATA_URL')
+  end
+
+  def self.saml_issuer
+    ENV.fetch('SAML_ISSUER', nil)
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
@@ -157,8 +211,9 @@ class AppConfig
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
-      email_login: !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
+      local_login: local_login_enabled?,
       create_user: !ENV['FEATURES_DISABLE_CREATE_USER'],
+      reveal_email_account_status: ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'].present?,
       create_group: !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
       help_link: !ENV['FEATURES_DISABLE_HELP_LINK'],
@@ -169,7 +224,7 @@ class AppConfig
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
-      sso_disable_edit_profile: ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? || ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?,
+      sso_disable_edit_profile: sso_disable_edit_user_profile?,
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,

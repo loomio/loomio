@@ -1,7 +1,12 @@
 class CurrentUserSerializer < UserSerializer
   attributes :email, :email_catch_up_day, :selected_locale, :locale,
              :volume_email_default, :volume_push_default, :experiences,
-             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate
+             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate,
+             :legal_accepted_at, :has_passkey
+
+  def has_passkey
+    object.has_passkey?
+  end
 
   def include_email?
     true

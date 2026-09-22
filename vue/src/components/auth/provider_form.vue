@@ -1,10 +1,16 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import { capitalize } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
 
 export default {
   props: {
     user: Object
+  },
+
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
 
   methods: {
@@ -39,7 +45,6 @@ export default {
   },
 
   computed: {
-    emailLogin() { return AppConfig.features.app.email_login; },
     providers() { return AppConfig.identityProviders.filter(provider => provider.name !== 'slack'); }
   }
 }
@@ -48,7 +53,7 @@ export default {
 <template lang="pug">
 .auth-provider-form(v-if='providers.length')
   .d-flex.flex-column.auth-provider-form__providers
-    v-btn.auth-provider-form__provider.my-2(
+    v-btn.auth-provider-form__provider.mb-2(
       v-for='provider in providers'
       :key="provider.id"
       variant="tonal"
@@ -57,8 +62,7 @@ export default {
     )
       common-icon(:color="providerColor(provider.name)" :name="iconClass(provider.name)")
       space
-      span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: providerName(provider.name) } }")
-    p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
+      span {{ t('auth_form.sign_in_with_provider', { provider: providerName(provider.name) }) }}
 </template>
 
 <style>

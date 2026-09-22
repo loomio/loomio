@@ -7,6 +7,8 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @alien = users(:alien)
     @group = groups(:group)
     @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
+    @disable_local_login_previous = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @terms_url_previous = ENV['TERMS_URL']
   end
 
   teardown do
@@ -15,6 +17,33 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     else
       ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     end
+    @disable_local_login_previous.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_previous
+    @terms_url_previous.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_previous
+  end
+
+  test "account completion requires name and legal acceptance together" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User' } }, format: :json
+
+    assert_response :unprocessable_entity
+    assert_nil @user.reload.name
+    assert_nil @user.legal_accepted_at
+  end
+
+  test "account completion saves name and legal acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User', legal_accepted: true, email_newsletter: true } }, format: :json
+
+    assert_response :success
+    assert_equal 'Completed User', @user.reload.name
+    assert @user.legal_accepted_at.present?
+    assert @user.email_newsletter?
   end
 
   test "show returns the user json" do
@@ -227,6 +256,22 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     refute LoginToken.exists?(unused_login_token.id)
   end
 
+  test "SSO-only mode does not register a local password" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    sign_in @user
+    original_digest = @user.password_digest
+
+    post :update_profile, params: {
+      user: {
+        password: 'new_complex_password',
+        password_confirmation: 'new_complex_password'
+      }
+    }
+
+    assert_response :success
+    assert_equal original_digest, @user.reload.password_digest
+  end
+
   # -- unsubscribe-token (restricted user) authorization --
   # An attacker who obtains a victim's permanent unsubscribe_token (present in
   # the footer of every notification email) must not be able to take over or
@@ -291,6 +336,23 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
     assert_response :forbidden
     assert_equal original, @user.reload.email_api_key
+  end
+
+  test "merge verification has the same response whether the email belongs to an account" do
+    sign_in @user
+    target = User.create!(email: "merge-target@example.com", email_verified: true)
+
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      post :send_merge_verification_email, params: { target_email: target.email }, format: :json
+    end
+    existing_response = response.body
+    assert_response :success
+
+    assert_no_difference "ActionMailer::Base.deliveries.count" do
+      post :send_merge_verification_email, params: { target_email: "missing-merge@example.com" }, format: :json
+    end
+    assert_response :success
+    assert_equal existing_response, response.body
   end
 
   test "restricted user CAN still update notification preferences" do

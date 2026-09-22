@@ -1,5 +1,13 @@
 class Pending::UserSerializer < Pending::BaseSerializer
-  attributes :legal_accepted_at
+  attributes :legal_accepted_at, :incomplete, :name_managed
+
+  def incomplete
+    true
+  end
+
+  def name_managed
+    Hash(scope)[:name_managed]
+  end
 
   private
 

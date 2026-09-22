@@ -1,7 +1,7 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import UserModel            from '@/shared/models/user_model';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
-import {merge, pickBy, identity} from 'lodash-es';
+import {merge} from 'lodash-es';
 
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
@@ -49,22 +49,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
   saveExperience(name, value) {
     if (value == null) { value = true; }
     return this.remote.post('save_experience', {experience: name, value});
-  }
-
-  emailStatus(email, token) {
-    return this.fetch({
-      path: 'email_status',
-      params: pickBy({email, token}, identity)
-    });
-  }
-
-  checkEmailExistence(email) {
-    return this.fetch({
-      path: 'email_exists',
-      params: {
-        email
-      }
-    });
   }
 
   sendMergeVerificationEmail(targetEmail) {

@@ -1,54 +1,88 @@
-<script lang="js">
+<script setup>
+import { computed, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import AppConfig from '@/shared/services/app_config';
 import AuthService from '@/shared/services/auth_service';
-import EventBus    from '@/shared/services/event_bus';
+import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
 
-export default {
-  props: {
-    user: Object
-  },
-  data() {
-    return {
-      email: this.user.email,
-      loading: false
-    };
-  },
-  watch: {
-    'user.email'() {
-      this.email = this.user.email;
-    }
-  },
-  methods: {
-    submit() {
-      if (!this.validateEmail()) { return; }
-      this.user.email = this.email;
-      this.loading = true;
-      AuthService.emailStatus(this.user).finally(() => { this.loading = false; });
-    },
-    validateEmail() {
-      this.user.errors = {};
-      if (!this.email) {
-        this.user.errors.email = [this.$t('auth_form.email_not_present')];
-      } else if (!this.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)) {
-        this.user.errors.email = [this.$t('auth_form.invalid_email')];
-      }
-      return (this.user.errors.email == null);
-    }
+const { user } = defineProps({ user: Object });
+const { t } = useI18n();
+const email = ref(user.email || '');
+const password = ref('');
+const turnstileToken = ref('');
+const loadingPassword = ref(false);
+const turnstileSiteKey = AppConfig.turnstileSiteKey;
+const captchaMissing = computed(() => Boolean(turnstileSiteKey) && !turnstileToken.value);
+const emailPattern = /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/;
+
+watch(() => user.email, value => {
+  if (value && !email.value) email.value = value;
+});
+
+watch(email, value => {
+  user.email = value;
+});
+
+const emailValid = () => {
+  user.errors = {};
+  if (!email.value) {
+    user.errors.email = [t('auth_form.email_not_present')];
+  } else if (!email.value.match(emailPattern)) {
+    user.errors.email = [t('auth_form.invalid_email')];
+  }
+  return !user.errors.email;
+};
+
+const prepare = () => {
+  if (!emailValid() || captchaMissing.value) return false;
+  user.email = email.value;
+  user.turnstileToken = turnstileToken.value;
+  return true;
+};
+
+const signIn = async () => {
+  if (!prepare() || !password.value) return;
+  user.password = password.value;
+  loadingPassword.value = true;
+  try {
+    await AuthService.signIn(user);
+  } finally {
+    loadingPassword.value = false;
   }
 };
+
 </script>
+
 <template lang="pug">
-.auth-email-form.mx-auto.max-width-400.text-center(
-  v-submit-on-mod-enter="submit"
-  @keydown.enter.exact="submit()")
-    v-text-field.auth-email-form__email#email(
-      variant="outlined"
-      name='email'
-      type='email'
-      :placeholder="$t('auth_form.email_placeholder')"
-      :label="$t('common.email_address')"
-      v-model='email'
-      autocomplete="username email")
-    validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit( :color="email ? 'primary' : undefined" @click='submit()' :disabled='!email' :loading="loading")
-      span( v-t="'auth_form.continue_with_email'")
+form.auth-email-form.mx-auto.max-width-400(@submit.prevent="signIn" novalidate)
+  v-text-field.auth-email-form__email(
+    id="email"
+    variant="outlined"
+    name="email"
+    type="email"
+    required
+    :label="t('common.email_address')"
+    v-model="email"
+    autocomplete="username")
+  validation-errors(:subject="user" field="email")
+  v-text-field.auth-email-form__password(
+    id="current-password"
+    variant="outlined"
+    name="password"
+    type="password"
+    :label="t('auth_form.password')"
+    v-model="password"
+    autocomplete="current-password")
+  validation-errors(:subject="user" field="password")
+  turnstile-widget(v-model="turnstileToken")
+  validation-errors(:subject="user" field="turnstile")
+  v-btn.auth-email-form__submit(
+    type="submit"
+    block
+    color="primary"
+    variant="elevated"
+    :disabled="!email || !password || captchaMissing"
+    :loading="loadingPassword"
+  )
+    span {{ t('auth_form.sign_in') }}
 </template>

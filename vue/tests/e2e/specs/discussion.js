@@ -72,6 +72,7 @@ module.exports = {
     page.click('.volume-quiet label')
     page.click('.change-volume-form__submit')
     page.expectFlash('Notification settings updated')
+    page.expectNoElement('.change-volume-form', 8000)
     page.expectElement('.topic-sidebar__notification-email-icon')
     page.expectNoElement('.topic-sidebar__notification-device-icon')
     page.expectText('.topic-sidebar__notification-settings', 'Daily catch-up email')
@@ -426,6 +427,20 @@ module.exports = {
     page.expectText('.topic-item__title', 'Jennifer Grey', 10000)
     page.expectText('.topic-item__body', 'Hello world!')
     page.expectText('.context-panel__breadcrumbs', 'Girdy Dancing Shoes')
+  },
+
+  'signed_out_member_signs_in_normally_from_discussion_invitation': (test) => {
+    page = pageHelper(test)
+
+    page.loadPathNoApp('setup_discussion_mailer_member_invitation_signed_out')
+    page.expectText('.email-notification-text', 'invited you to a discussion')
+    page.click('main h1 a', 2000)
+    page.expectElement('.auth-modal')
+    page.fillIn('.auth-email-form__email input', 'discussion-member@example.com')
+    page.fillIn('.auth-email-form__password input', 'password')
+    page.click('.auth-email-form__submit')
+    page.expectFlash('Signed in successfully')
+    page.expectText('.context-panel__heading', 'Member invitation discussion', 10000)
   },
 
   'sign_up_from_invitation_created_email': (test) => {

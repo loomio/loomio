@@ -361,11 +361,18 @@ nl_NL:
       flash: Bevestigingse-mail verstuurd!
       helptext_and_signout: Je kunt het account onder <strong>%{sourceEmail}</strong> samenvoegen met dat van <strong>%{targetEmail}</strong> . Klik op 'Verifiëren' en er wordt een verificatiemail naar %{targetEmail} verzonden om het proces te starten. Je wordt uitgelogd, zodat je kunt inloggen met het doelaccount om de samenvoeging te voltooien.
       flash_and_signout: Verificatie-e-mail verzonden naar %{targetEmail}. U bent nu afgemeld, zodat u kunt inloggen met het doelaccount om de samenvoeging te voltooien.
+      generic_helptext: Voer het e-mailadres van het andere account in. Als dat account bestaat, stuurt Loomio er een e-mail met instructies om de samenvoeging te bevestigen.
+      email_label: E-mailadres van een ander account
+      send_verification: Verificatie-e-mail verzenden
+      generic_flash_and_signout: Als een account dat e-mailadres gebruikt, is er een verificatiemail verzonden. Je bent nu uitgelogd, zodat je verder kunt gaan met het andere account.
+      destination_helptext: Dit account (%{sourceEmail}) wordt samengevoegd met het bestemmingsaccount. Voer het e-mailadres van het bestemmingsaccount in. Als het account bestaat, stuurt Loomio een e-mail naar dat adres ter bevestiging van de samenvoeging.
+      destination_email_label: E-mailadres van het bestemmingsaccount
     email_taken: Sorry, dat e-mailadres is al in gebruik door een andere gebruiker. Is dat jouw e-mailadres?
     find_out_more: Meer informatie
     placeholder_modal_text: |
       <p>Indien je twee accounts wil samenvoegen, voeg dan eenvoudigweg het respectievelijke emailadres (behorend tot de andere account) in je Profiel pagina emailveld, en vol de instructies die verschijnen.</p>
       <p>Hulp nodig? <a href="/contact" target="_blank">Contacteer ons</a>.
+    email_may_belong_to_another_account: Als dit adres bij een ander account hoort, kunt u de accounts samenvoegen.
   emoji_picker:
     search: Zoek
     common: Vaak gebruikt
@@ -2515,6 +2522,7 @@ nl_NL:
     sign_up_as: Maak account als %{email}
     sign_in_as: Log in als %{name}
     continue_with_provider: Doorgaan met %{provider}
+    sign_in_with_provider: Inloggen met %{provider}
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
@@ -2573,6 +2581,22 @@ nl_NL:
     invalid_login: Het lukt niet om u met deze gegevens in te loggen.
     login_link_rate_limited: Er zijn te veel aanmeldings-e-mailadressen aangevraagd vanuit dit netwerk. Wacht een uur en probeer het opnieuw.
     send_login_link_error: Er is iets misgegaan bij het verzenden van de inlogmail. Probeer het opnieuw.
+    sign_in_with_passkey: Aanmelden met een passkey
+    passkey_authentication_failed: We konden je niet aanmelden met die passkey
+    passkey_registration_failed: We konden die passkey niet opslaan
+    passkey_default_name: Passkey
+    local_login_disabled: Deze site vereist eenmalige aanmelding
+    email_me_a_sign_in_code: Stuur me een inlogcode via e-mail
+    sign_in_with_code: Aanmelden met een code
+    new_to_site: Ben je hier nieuw?
+    passkey_recent_authentication_required: Meld je opnieuw aan voordat je jouw passkeys wijzigt
+    email_code_help: Voer je e-mailadres in en we sturen je een zescijferige inlogcode
+    or_sign_in_with_password: Of meld je aan met een wachtwoord
+    login_link_sent_if_account_exists: Als er een account bestaat voor %{email}, sturen we een inlogcode
+    use_a_passkey: Gebruik een passkey
+    send_me_a_code: Stuur me een code
+    email_code_help_short: We sturen een zescijferige code naar je e-mailadres
+    login_link_sent_if_account_exists_sentence: Als er een account bestaat voor %{email}, sturen we een inlogcode.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
@@ -3130,3 +3154,25 @@ nl_NL:
     unfollow: Updates ontvolgen
     followed: Je volgt nu updates van deze groep
     unfollowed: Je ontvangt geen updates meer van deze groep
+  passkey_settings:
+    title: Passkeys
+    helptext: Met passkeys kun je inloggen met je apparaat zonder je e-mailadres of wachtwoord in te voeren
+    none: Je hebt geen passkey toegevoegd
+    name: Naam van passkey
+    name_placeholder: Bijvoorbeeld werklaptop
+    add: Passkey toevoegen
+    added: Passkey toegevoegd
+    created_at: Toegevoegd %{date}
+    remove_named: Verwijder %{name}
+    remove_confirm: Passkey met de naam %{name} verwijderen?
+    removed: Passkey verwijderd
+    remove_failed: Passkey kon niet worden verwijderd
+  credential_prompt:
+    title: Voeg een extra manier toe om in te loggen
+    helptext: Voeg een passkey toe of stel een wachtwoord in, zodat je kunt inloggen zonder op een code per e-mail te wachten
+    add_passkey: Passkey toevoegen
+    set_password: Stel een wachtwoord in
+    not_now: Nu niet
+  account_completion:
+    complete_your_account: Voltooi je account
+    continue: Doorgaan

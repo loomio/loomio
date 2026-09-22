@@ -1,5 +1,18 @@
 # Corrected translations
 
+## 2026-09-22 — Authentication method labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `Sie` wording and a final full stop | Informal or neutral wording without a final full stop | German UI uses the informal `du` register and concise UI strings omit final full stops |
+| `config/locales/client.es.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey` | Formal `usted` conjugations and unnecessary final full stops | Informal `tú` wording and context-appropriate punctuation | Spanish UI uses the informal `tú` register |
+| `config/locales/client.fr.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey`, `send_me_a_code` | Formal `vous` wording; passkey rendered as an access code | Informal `tu` wording; passkey rendered as `clé d’accès` | French UI uses informal direct address, and a passkey is not a one-time access code |
+| `config/locales/client.it.yml` | `auth_form.use_a_passkey` | `Utilizzare una password` | `Usa una passkey` | Passkey was mistranslated as password |
+| `config/locales/client.nl_NL.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `u`; passkey rendered as password | Informal `je`; passkey retained as `passkey` | Dutch UI uses informal address, and a passkey is not a password |
+| `config/locales/client.pt_BR.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Mechanical wording and final full stops | Concise Brazilian Portuguese without final full stops | Authentication action labels should be concise and use the established Brazilian Portuguese register |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `auth_form.email_code_help_short` | Formal direct address | Informal `du`, `tú`, `tu`, and `je` wording | These locales consistently address users informally |
+| `config/locales/client.it.yml`, `client.pt_BR.yml` | `auth_form.email_code_help_short` | Sentence ended with a full stop | Removed the final full stop | Single-sentence UI strings omit final full stops |
+
 ## 2026-09-18 — Membership request response
 
 | File | Key | Before | After | Why it was wrong |
@@ -446,3 +459,23 @@ languages in the Nov 2025 pass.
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/client.fr.yml` | `members_panel.loaded_of_total` → `members_panel.topics_loaded_of_total` | `%{loaded}} de %{total}}` | `%{loaded} de %{total}` | Extra closing braces caused vue-i18n compilation errors on the direct-discussions page |
+
+## 2026-09-21 — Passkey authentication
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.nl_NL.yml` | New passkey authentication keys | Google translated passkey as `wachtwoord` or `toegangscode`, used formal `u/uw`, and changed `%{date}` to `%{datum}` | Use `passkey`, informal `je/jouw`, and preserve `%{date}` | A passkey is not a password or emailed code; the interpolation name and established informal register are part of the contract |
+| `config/locales/client.es.yml` | New passkey authentication keys | Google translated some passkey references as `contraseña`, `Llave maestra`, and titled the section `Contraseñas` | Use `clave de acceso` consistently | These strings describe WebAuthn passkeys, not passwords or master keys |
+| `config/locales/client.da.yml`, `client.ru.yml`, `client.sv.yml` | `passkey_settings.created_at` | Google translated the `%{date}` interpolation identifier | Preserve `%{date}` | Interpolation identifiers are API values and must not be translated |
+| `config/locales/client.nl_NL.yml` | New passkey removal and recent-authentication keys | Translated passkey as `wachtwoord` or `toegangscode`, used formal `u/uw`, and changed `%{name}` to `%{naam}` | Use `passkey`, informal `je/jouw`, and preserve `%{name}` | A passkey is not a password or access code; the interpolation name and established informal register are part of the contract |
+| `config/locales/client.es.yml` | `auth_form.passkey_recent_authentication_required` | `contraseñas` | `claves de acceso` | The string refers to WebAuthn passkeys, not passwords |
+| `config/locales/client.sv.yml` | `passkey_settings.remove_named` | `%{namn}` | `%{name}` | Interpolation identifiers are API values and must not be translated |
+| `config/locales/client.sv.yml` | New passkey removal and recent-authentication keys | `lösenord` | `passkey` | These strings describe WebAuthn passkeys, not passwords |
+
+## 2026-09-21 — Sign-in code help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `auth_form.email_code_help` | Formal `Sie/Ihnen` forms | Informal `du/dir` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.fr.yml` | `auth_form.email_code_help` | Formal `vous/votre` forms | Informal `tu/ton` forms | French user-facing copy uses the informal `tu` register |
+| `config/locales/client.nl_NL.yml` | `auth_form.email_code_help` | Formal `u/uw` forms | Informal `je` forms | Dutch user-facing copy uses the informal `je` register |

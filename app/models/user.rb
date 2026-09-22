@@ -106,6 +106,7 @@ class User < ApplicationRecord
   has_many :notifications, through: :notification_deliveries
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :passkey_credentials, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :mobile_devices, dependent: :destroy
   has_many :mobile_push_registrations, through: :mobile_devices
@@ -152,6 +153,9 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
+  def has_passkey?
+    passkey_credentials.exists?
+  end
 
   def default_format
     if experiences['html-editor.uses-markdown']
@@ -214,6 +218,10 @@ class User < ApplicationRecord
     self.require_valid_signup && ENV['TERMS_URL']
   end
 
+  def incomplete?
+    name.blank? || (ENV['TERMS_URL'].present? && legal_accepted_at.blank?)
+  end
+
   def self.email_status_for(email)
     find_by(email: email)&.email_status || :unused
   end
@@ -228,7 +236,7 @@ class User < ApplicationRecord
 
   def self.authenticate_by(attributes)
     user = find_for_database_authentication(email: attributes[:email] || attributes[:email_address])
-    return unless user&.active_for_authentication?
+    return unless user&.active?
     return if user.access_locked?
 
     user if user.valid_password?(attributes[:password])
@@ -266,8 +274,12 @@ class User < ApplicationRecord
     password.present? || password_confirmation.present?
   end
 
-  def active_for_authentication?
-    !deactivated_at
+  def active?
+    !deactivated?
+  end
+
+  def deactivated?
+    deactivated_at.present?
   end
 
   def access_locked?
@@ -280,7 +292,7 @@ class User < ApplicationRecord
 
   def increment_failed_attempts!
     with_lock do
-      unlock_access! unless access_locked?
+      unlock_access! if locked_at.present? && !access_locked?
       increment!(:failed_attempts)
       lock_access! if failed_attempts >= MAXIMUM_LOGIN_ATTEMPTS
     end

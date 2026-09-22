@@ -383,9 +383,16 @@ zh_CN:
       flash: 验证邮件已发送！
       helptext_and_signout: 您可以将<strong>%{sourceEmail}</strong>下的帐户合并到<strong>%{targetEmail}</strong>下的帐户中。点击“验证”，系统将向 %{targetEmail} 发送一封验证邮件，以开始合并过程。您将被强制登出，以便使用目标帐户登录完成合并。
       flash_and_signout: 验证邮件已发送至 %{targetEmail}。您现在已退出登录，请登录目标帐户以完成合并。
+      generic_helptext: 请输入另一个帐户的电子邮件地址。如果该帐户存在，Loomio 将向其发送一封电子邮件，其中包含确认合并的说明。
+      email_label: 其他账户邮箱
+      send_verification: 发送验证邮件
+      generic_flash_and_signout: 如果该电子邮件地址用于某个帐户，则已发送验证电子邮件。您现在已退出登录，可以继续使用其他帐户。
+      destination_helptext: 此帐户 (%{sourceEmail}) 将合并到目标帐户。请输入目标帐户的电子邮件地址。如果该地址存在，Loomio 将向该地址发送电子邮件以确认合并。
+      destination_email_label: 目标帐户电子邮件
     email_taken: 抱歉，该邮箱地址已被其他用户关联。请问该邮箱地址是您本人的吗？
     find_out_more: 了解更多。
     placeholder_modal_text: <p>如果您想将两个帐户合并在一起，只需将相应的电子邮件地址（属于另一个帐户）输入到您的个人资料页面电子邮件字段中，然后按照出现的说明进行操作即可。</p><p>需要帮助？<a href="/contact" target="_blank">请联系我们</a>。
+    email_may_belong_to_another_account: 如果此地址属于另一个帐户，您可以合并这些帐户。
   emoji_picker:
     search: 搜索
     common: 常用
@@ -2743,6 +2750,7 @@ zh_CN:
     sign_up_as: 使用 %{email} 创建帐户
     sign_in_as: 以 %{name} 身份登录
     continue_with_provider: 继续使用 %{provider}
+    sign_in_with_provider: 使用 %{provider} 登入
     continue_with_email: 继续通过电子邮件
     or_enter_your_email: 或者，输入您的电子邮件地址
     enter_your_name: 请输入您的名字
@@ -2801,6 +2809,22 @@ zh_CN:
     invalid_login: 无法使用您提供的信息登录。
     login_link_rate_limited: 此网络请求的登录邮件过多。请稍等一小时后重试。
     send_login_link_error: 登录邮件发送失败，请重试。
+    sign_in_with_passkey: 使用密码登录
+    passkey_authentication_failed: 我们无法使用该密码登录。
+    passkey_registration_failed: 我们无法保存该通行密钥
+    passkey_default_name: 通行密钥
+    local_login_disabled: 本网站需要单点登录
+    email_me_a_sign_in_code: 请给我发送一封包含登录代码的电子邮件。
+    sign_in_with_code: 使用验证码登录
+    new_to_site: 新来的？
+    passkey_recent_authentication_required: 更改密码前请重新登录
+    email_code_help: 请输入您的电子邮件地址，我们将向您发送一个六位数的登录验证码。
+    or_sign_in_with_password: 或者使用密码登录
+    login_link_sent_if_account_exists: 如果 %{email} 已存在帐户，我们将发送登录代码。
+    use_a_passkey: 使用密码
+    send_me_a_code: 给我发送验证码
+    email_code_help_short: 我们会向您的电子邮件地址发送一个六位数的验证码。
+    login_link_sent_if_account_exists_sentence: 如果 %{email} 存在帐户，我们将发送登录代码。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接
@@ -3022,3 +3046,25 @@ zh_CN:
     unfollow: 取消关注更新
     followed: 您现在正在关注此群组的更新
     unfollowed: 您已取消关注此群组的更新
+  passkey_settings:
+    title: 通行密钥
+    helptext: 使用密码密钥，您无需输入电子邮件地址或密码即可通过设备登录。
+    none: 您尚未添加密码
+    name: 密码名称
+    name_placeholder: 例如，工作笔记本电脑
+    add: 添加密码
+    added: 已添加通行密钥
+    created_at: 添加于 %{date}
+    remove_named: 移除 %{name}
+    remove_confirm: 删除名为 %{name} 的密码？
+    removed: 密码已移除
+    remove_failed: 无法移除密码密钥
+  credential_prompt:
+    title: 添加另一种登录方式
+    helptext: 添加通行密钥或设置密码，即可无需等待电子邮件验证码即可登录。
+    add_passkey: 添加密码
+    set_password: 设置密码
+    not_now: 现在不要
+  account_completion:
+    complete_your_account: 完善您的账户
+    continue: 继续

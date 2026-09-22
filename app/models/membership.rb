@@ -72,10 +72,6 @@ class Membership < ApplicationRecord
     update_attribute(:admin, true)
   end
 
-  def remove_admin!
-    update_attribute(:admin, false)
-  end
-
   def topic_readers
     TopicReader
       .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")

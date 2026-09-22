@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_22_010000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -18,6 +18,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
+
+  create_table "account_completion_proofs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.boolean "name_managed", default: false, null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["expires_at"], name: "index_account_completion_proofs_on_expires_at"
+    t.index ["user_id"], name: "index_account_completion_proofs_on_user_id"
+  end
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -553,6 +563,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.text "key", null: false
   end
 
+  create_table "passkey_challenges", force: :cascade do |t|
+    t.string "ceremony", null: false
+    t.string "challenge_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["challenge_digest"], name: "index_passkey_challenges_on_challenge_digest", unique: true
+    t.index ["expires_at"], name: "index_passkey_challenges_on_expires_at"
+    t.index ["user_id"], name: "index_passkey_challenges_on_user_id"
+  end
+
+  create_table "passkey_credentials", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "external_id", null: false
+    t.datetime "last_used_at"
+    t.string "name", null: false
+    t.binary "public_key", null: false
+    t.bigint "sign_count", default: 0, null: false
+    t.jsonb "transports", default: [], null: false
+    t.datetime "updated_at", null: false
+    t.string "user_handle", null: false
+    t.bigint "user_id", null: false
+    t.index ["external_id"], name: "index_passkey_credentials_on_external_id", unique: true
+    t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.bigint "author_id"
     t.datetime "authored_at"
@@ -807,6 +844,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.index ["key_hash"], name: "index_solid_cache_entries_on_key_hash", unique: true
   end
 
+  create_table "solid_queue_batch_executions", force: :cascade do |t|
+    t.bigint "batch_id", null: false
+    t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.index ["batch_id"], name: "index_solid_queue_batch_executions_on_batch_id"
+    t.index ["job_id"], name: "index_solid_queue_batch_executions_on_job_id", unique: true
+  end
+
+  create_table "solid_queue_batches", force: :cascade do |t|
+    t.string "active_job_batch_id"
+    t.integer "completed_jobs", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.datetime "enqueued_at"
+    t.datetime "failed_at"
+    t.integer "failed_jobs", default: 0, null: false
+    t.datetime "finished_at"
+    t.text "metadata"
+    t.text "on_failure"
+    t.text "on_finish"
+    t.text "on_success"
+    t.integer "total_jobs", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["active_job_batch_id"], name: "index_solid_queue_batches_on_active_job_batch_id", unique: true
+    t.index ["finished_at"], name: "index_solid_queue_batches_on_finished_at"
+  end
+
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
     t.string "concurrency_key", null: false
     t.datetime "created_at", null: false
@@ -837,6 +901,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
   create_table "solid_queue_jobs", force: :cascade do |t|
     t.string "active_job_id"
     t.text "arguments"
+    t.bigint "batch_id"
     t.string "class_name", null: false
     t.string "concurrency_key"
     t.datetime "created_at", null: false
@@ -846,6 +911,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.datetime "scheduled_at"
     t.datetime "updated_at", null: false
     t.index ["active_job_id"], name: "index_solid_queue_jobs_on_active_job_id"
+    t.index ["batch_id"], name: "index_solid_queue_jobs_on_batch_id"
     t.index ["class_name"], name: "index_solid_queue_jobs_on_class_name"
     t.index ["finished_at"], name: "index_solid_queue_jobs_on_finished_at"
     t.index ["queue_name", "finished_at"], name: "index_solid_queue_jobs_for_filtering"
@@ -1251,6 +1317,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.string "username", limit: 255
     t.integer "volume_email_default", default: 2, null: false
     t.integer "volume_push_default", default: 2, null: false
+    t.string "webauthn_id"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["deactivator_id"], name: "index_users_on_deactivator_id"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -1258,6 +1325,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.index ["key"], name: "index_users_on_key", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["webauthn_id"], name: "index_users_on_webauthn_id", unique: true
     t.check_constraint "volume_email_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_email_default"
     t.check_constraint "volume_push_default = ANY (ARRAY[1, 2, 3])", name: "users_volume_push_default"
   end
@@ -1272,6 +1340,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "account_completion_proofs", "users", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "anonymous_ballot_choices", "anonymous_ballots"
@@ -1300,12 +1369,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_17_000002) do
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "outcomes", "polls"
+  add_foreign_key "passkey_challenges", "users", on_delete: :cascade
+  add_foreign_key "passkey_credentials", "users"
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
   add_foreign_key "received_emails", "groups", on_delete: :cascade
   add_foreign_key "sessions", "users"
+  add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade
+  add_foreign_key "solid_queue_batch_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

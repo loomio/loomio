@@ -16,7 +16,8 @@ module Dev::NintiesMoviesHelper
                               detected_locale: 'en',
                               date_time_pref: 'day_abbr',
                               avatar_kind: 'uploaded',
-                              email_verified: true)
+                              email_verified: true,
+                              legal_accepted: true)
     @patrick.uploaded_avatar.attach io: File.new(Rails.root.join("spec/fixtures/images/patrick.png")), filename: 'patrick.png'
     @patrick.update(avatar_kind: :uploaded)
     @patrick
@@ -38,7 +39,8 @@ module Dev::NintiesMoviesHelper
                                date_time_pref: 'day_abbr',
                                username: 'jennifergrey',
                                experiences: {changePicture: true},
-                               email_verified: true)
+                               email_verified: true,
+                               legal_accepted: true)
     @jennifer.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/jennifer.png"), filename: 'jen.jpg'
     @jennifer.update(avatar_kind: :uploaded)
 
@@ -52,7 +54,8 @@ module Dev::NintiesMoviesHelper
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           date_time_pref: 'day_abbr',
-                          email_verified: true)
+                          email_verified: true,
+                          legal_accepted: true)
     @max
   end
 
@@ -62,7 +65,8 @@ module Dev::NintiesMoviesHelper
                             email: 'emilio@example.com',
                             password: 'gh0stmovie',
                             date_time_pref: 'day_abbr',
-                            email_verified: true)
+                            email_verified: true,
+                            legal_accepted: true)
   end
 
   def judd
@@ -71,7 +75,8 @@ module Dev::NintiesMoviesHelper
                            email: 'judd@example.com',
                            password: 'gh0stmovie',
                            date_time_pref: 'day_abbr',
-                           email_verified: true)
+                           email_verified: true,
+                           legal_accepted: true)
   end
 
   def rudd
@@ -80,7 +85,8 @@ module Dev::NintiesMoviesHelper
                            email: 'rudd@example.com',
                            password: 'gh0stmovie',
                            date_time_pref: 'day_abbr',
-                           email_verified: true)
+                           email_verified: true,
+                           legal_accepted: true)
   end
 
   def create_group

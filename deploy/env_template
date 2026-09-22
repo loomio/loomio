@@ -126,7 +126,9 @@ FEATURES_DEMO_GROUPS=1
 # FEATURES_DISABLE_CREATE_USER=1     # users must be invited
 # FEATURES_DISABLE_CREATE_GROUP=1    # users cannot create groups
 # FEATURES_DISABLE_HELP_LINK=1       # disable the help link
-# FEATURES_DISABLE_EMAIL_LOGIN=1     # Disable login via email (usually when you have enabled SSO of some kind)
+# FEATURES_DISABLE_LOCAL_LOGIN=1     # Disable password, email-code, passkey, and native account creation for SSO-only sites
+# FEATURES_DISABLE_EMAIL_LOGIN=1     # Deprecated alias for FEATURES_DISABLE_LOCAL_LOGIN
+# FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS=1 # Tell people when an email has no account; enables account enumeration
 # FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
 
 # Replace any part of the user manual link in the sidebar
@@ -309,7 +311,6 @@ FEATURES_DEMO_GROUPS=1
 # tell clients to reload when the server is upgraded
 LOOMIO_SYSTEM_RELOAD=1
 
-DEVISE_SECRET=REPLACE_WITH_DEVISE_SECRET
 SECRET_COOKIE_TOKEN=REPLACE_WITH_SECRET_COOKIE_TOKEN
 RAILS_INBOUND_EMAIL_PASSWORD=REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD
 RAILS_ENV=production

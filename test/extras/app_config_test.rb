@@ -17,6 +17,9 @@ class AppConfigTest < ActiveSupport::TestCase
     @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
     @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
+    @disable_local_login_previous = ENV.delete("FEATURES_DISABLE_LOCAL_LOGIN")
+    @disable_email_login_previous = ENV.delete("FEATURES_DISABLE_EMAIL_LOGIN")
+    @reveal_email_account_status_previous = ENV.delete("FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS")
   end
 
   teardown do
@@ -26,6 +29,9 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)
     restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)
+    restore_env("FEATURES_DISABLE_LOCAL_LOGIN", @disable_local_login_previous)
+    restore_env("FEATURES_DISABLE_EMAIL_LOGIN", @disable_email_login_previous)
+    restore_env("FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS", @reveal_email_account_status_previous)
   end
 
   test "subscriptions are available when either billing integration is configured" do
@@ -48,6 +54,28 @@ class AppConfigTest < ActiveSupport::TestCase
     ENV["LOOMIO_DISABLE_EDIT_USER_PROFILE"] = "0"
 
     assert AppConfig.app_features.fetch(:sso_disable_edit_profile)
+  end
+
+  test "local login restrictions are presence-based and retain the email-login alias" do
+    assert AppConfig.local_login_enabled?
+    assert AppConfig.app_features.fetch(:local_login)
+    refute AppConfig.app_features.key?(:email_login)
+
+    ENV["FEATURES_DISABLE_LOCAL_LOGIN"] = "0"
+    refute AppConfig.local_login_enabled?
+    refute AppConfig.app_features.fetch(:local_login)
+
+    ENV.delete("FEATURES_DISABLE_LOCAL_LOGIN")
+    ENV["FEATURES_DISABLE_EMAIL_LOGIN"] = "0"
+    refute AppConfig.local_login_enabled?
+  end
+
+  test "revealing email account status is presence-based and disabled by default" do
+    refute AppConfig.app_features.fetch(:reveal_email_account_status)
+
+    ENV["FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS"] = "0"
+
+    assert AppConfig.app_features.fetch(:reveal_email_account_status)
   end
 
   test "default onboarding group id can be configured" do

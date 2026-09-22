@@ -61,6 +61,7 @@ gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
 gem 'web-push'
+gem 'webauthn'
 
 group :development, :test do
   gem 'byebug'

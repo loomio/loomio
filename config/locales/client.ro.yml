@@ -361,9 +361,16 @@ ro:
       flash: Email de verificare trimis!
       helptext_and_signout: Puteți îmbina contul de sub <strong>%{sourceEmail}</strong> cu cel al contului <strong>%{targetEmail}</strong> . Faceți clic pe Verificare și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul. Veți fi deconectat, astfel încât să vă puteți conecta ca și contul țintă pentru a finaliza îmbinarea.
       flash_and_signout: E-mail de verificare trimis la %{targetEmail}. Acum sunteți deconectat, așa că vă puteți conecta ca și cont țintă pentru a finaliza îmbinarea.
+      generic_helptext: Introduceți adresa de e-mail pentru celălalt cont. Dacă acel cont există, Loomio îi va trimite un e-mail cu instrucțiuni pentru a confirma îmbinarea.
+      email_label: Adresă de e-mail a altei conturi
+      send_verification: Trimiteți e-mailul de verificare
+      generic_flash_and_signout: Dacă un cont folosește acea adresă de e-mail, ți s-a trimis un e-mail de verificare. Acum ești deconectat, astfel încât să poți continua cu celălalt cont.
+      destination_helptext: Acest cont (%{sourceEmail}) va fi îmbinat cu contul de destinație. Introduceți adresa de e-mail a contului de destinație. Dacă există, Loomio va trimite acelei adrese un e-mail pentru a confirma îmbinarea.
+      destination_email_label: Adresa de e-mail a contului de destinație
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .
+    email_may_belong_to_another_account: Dacă această adresă aparține unui alt cont, puteți îmbina conturile
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -2490,6 +2497,7 @@ ro:
     sign_up_as: Creează cont ca %{email}
     sign_in_as: Conectați-vă ca %{name}
     continue_with_provider: Continuați cu %{provider}
+    sign_in_with_provider: Conectați-vă cu %{provider}
     continue_with_email: Continuați cu e-mailul
     or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
     enter_your_name: Introdu numele tau
@@ -2548,6 +2556,22 @@ ro:
     invalid_login: Nu te pot conecta cu aceste detalii
     login_link_rate_limited: Prea multe adrese de e-mail de conectare solicitate din această rețea. Vă rugăm să așteptați o oră și să încercați din nou.
     send_login_link_error: Ceva nu a funcționat la trimiterea e-mailului de conectare. Vă rugăm să încercați din nou.
+    sign_in_with_passkey: Conectați-vă cu o cheie de acces
+    passkey_authentication_failed: Nu te-am putut conecta cu acea parolă.
+    passkey_registration_failed: Nu am putut salva acea cheie de acces
+    passkey_default_name: Cheie de acces
+    local_login_disabled: Acest site necesită autentificare unică
+    email_me_a_sign_in_code: Trimiteți-mi prin e-mail un cod de conectare
+    sign_in_with_code: Conectați-vă cu un cod
+    new_to_site: Nou pe aici?
+    passkey_recent_authentication_required: Conectați-vă din nou înainte de a schimba cheile de acces
+    email_code_help: Introdu adresa ta de e-mail și îți vom trimite un cod de conectare din șase cifre
+    or_sign_in_with_password: Sau conectați-vă cu o parolă
+    login_link_sent_if_account_exists: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
+    use_a_passkey: Folosește o cheie de acces
+    send_me_a_code: Trimite-mi un cod
+    email_code_help_short: Vă vom trimite un cod de șase cifre la adresa dvs. de e-mail
+    login_link_sent_if_account_exists_sentence: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -3103,3 +3127,25 @@ ro:
     unfollow: Anulează urmărirea actualizărilor
     followed: Urmărești acum actualizările de la acest grup
     unfollowed: Nu mai urmăriți actualizările de la acest grup
+  passkey_settings:
+    title: Chei de acces
+    helptext: Cheile de acces vă permit să vă conectați cu dispozitivul fără a introduce adresa de e-mail sau parola
+    none: Nu ați adăugat o cheie de acces
+    name: Numele cheii de acces
+    name_placeholder: De exemplu, laptopul de serviciu
+    add: Adăugați o cheie de acces
+    added: Cheie de acces adăugată
+    created_at: Adăugat %{date}
+    remove_named: Eliminați %{name}
+    remove_confirm: Eliminați cheia de acces numită %{name}?
+    removed: Cheia de acces a fost eliminată
+    remove_failed: Cheia de acces nu a putut fi eliminată
+  credential_prompt:
+    title: Adăugați o altă modalitate de conectare
+    helptext: Adăugați o cheie de acces sau setați o parolă pentru a vă putea conecta fără a aștepta un cod trimis prin e-mail
+    add_passkey: Adăugați o cheie de acces
+    set_password: Setați o parolă
+    not_now: Nu acum
+  account_completion:
+    complete_your_account: Completează-ți contul
+    continue: Continua

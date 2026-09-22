@@ -2,6 +2,24 @@ require 'ipaddr'
 
 class Rack::Attack
   class Request < ::Rack::Request
+    # Use the same JSON/form parser as controllers. Rack's form-only params
+    # leave the SPA's JSON credentials out of per-account rate limits.
+    def auth_params
+      @auth_params ||= ActionDispatch::Request.new(env).params
+    rescue ActionDispatch::Http::Parameters::ParseError, ActionController::BadRequest
+      {}
+    end
+
+    def auth_user_params
+      value = auth_params['user']
+      value.is_a?(Hash) ? value : {}
+    end
+
+    def auth_email
+      value = path.start_with?('/api/v1/sessions') ? auth_user_params['email'] : auth_params['email']
+      value.strip.downcase.presence if value.is_a?(String)
+    end
+
     def remote_ip
       @remote_ip ||= begin
         addr = IPAddr.new(ip.to_s) rescue nil
@@ -85,6 +103,8 @@ class Rack::Attack
     '/api/v1/groups' => 20,
     '/api/v1/templates' => 10,
     '/api/v1/login_tokens' => 50,
+    '/api/v1/passkey_credentials/authentication_options' => 60,
+    '/api/v1/passkey_credentials/authenticate' => 60,
     '/api/v1/membership_requests' => 100,
     '/api/v1/memberships' => 100,
     '/api/v1/identities' => 10,
@@ -126,31 +146,24 @@ class Rack::Attack
   # Per-email rate limiting on auth endpoints
   throttle("login_tokens/email", limit: 5, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/login_tokens')
-      req.params['email'].to_s.downcase.presence
+      req.auth_email
     end
   end
 
   throttle("sessions/email", limit: 10, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/sessions')
-      req.params.dig('user', 'email').to_s.downcase.presence
+      req.auth_email
     end
   end
 
   throttle("sessions/code/email", limit: 5, period: 15.minutes) do |req|
-    if req.post? && req.path.starts_with?('/api/v1/sessions') && req.params.dig('user', 'code').present?
-      req.params.dig('user', 'email').to_s.downcase.presence
+    if req.post? && req.path.starts_with?('/api/v1/sessions') && req.auth_user_params['code'].present?
+      req.auth_email
     end
   end
 
-  # /api/v1/profile/email_status is unauthenticated and falls through to
-  # User.find_by(email:), so it's the enumeration surface. Throttle it
-  # tightly and separately from the rest of /api/v1/profile/*.
-  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: 1.hour) do |req|
-    req.remote_ip if req.get? && req.path == '/api/v1/profile/email_status'
-  end
-
   throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: 1.hour) do |req|
-    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
+    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
   end
 
   # Tight per-IP throttle for the merge verification endpoint (POST).
@@ -164,8 +177,8 @@ class Rack::Attack
     req = req_h[:request]
     matched = req.env['rack.attack.matched']
     discriminator = req.env['rack.attack.match_discriminator']
-    email = (req.params['email'] || req.params.dig('user', 'email')).to_s.downcase.presence rescue nil
-    turnstile_provided = !!(req.params['turnstile_token'] || req.params.dig('user', 'turnstile_token')) rescue false
+    email = req.auth_email
+    turnstile_provided = !!(req.auth_params['turnstile_token'] || req.auth_user_params['turnstile_token'])
     Sentry.logger.warn("rack_attack:throttle",
       attributes: {
         matched: matched,

@@ -236,15 +236,14 @@ module.exports = function(test, browser) {
     signInViaPassword(email, password) {
       const page = pageHelper(test);
       if (email) { page.fillIn('.auth-email-form__email input', email); }
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signin-form__password input', password);
-      return page.click('.auth-signin-form__submit');
+      page.fillIn('.auth-email-form__password input', password);
+      return page.click('.auth-email-form__submit');
     },
 
     signInViaEmail(email) {
       page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.click('.auth-signin-form__submit');
+      page.click('.auth-email-form__login-link');
+      page.click('.auth-email-code-form__submit');
       page.expectText('.auth-complete', 'Check your email');
       page.loadPath('use_last_login_token');
       page.click('.auth-signin-form__submit');
@@ -254,22 +253,29 @@ module.exports = function(test, browser) {
 
     signUpViaEmail(email = "new@account.com") {
       const page = pageHelper(test);
-      page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
+      page.click('.auth-form__create-account');
+      page.fillIn('.auth-signup-form__email input', email);
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
-      return page.click('.auth-signin-form__submit');
+      page.click('.auth-signin-form__submit');
+      page.completeAccount();
+      return page.click('.credential-prompt__dismiss');
+    },
+
+    completeAccount(name = "New Account") {
+      const page = pageHelper(test);
+      page.fillIn('.account-completion__name input', name);
+      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
+      return page.click('.account-completion__submit');
     },
 
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
-      return page.click('.auth-signup-form__submit');
+      page.click('.auth-form__create-account');
+      page.click('.auth-signup-form__submit');
+      page.completeAccount(name);
+      return page.click('.credential-prompt__dismiss');
     },
 
     waitFor(selector, wait = 8000) {

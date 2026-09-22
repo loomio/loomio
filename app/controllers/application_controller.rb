@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
+  rescue_from(CurrentUserHelper::InactiveUserError) { respond_with_error(401) }
+
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end

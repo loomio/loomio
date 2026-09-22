@@ -22,7 +22,7 @@ module PendingActionsHelper
   end
 
   def consume_pending_identity(user)
-    pending_identity.update(user: user) if pending_identity
+    pending_identity&.link_to_user!(user)
   end
 
   def consume_pending_group(user)
@@ -94,7 +94,7 @@ module PendingActionsHelper
   end
 
   def pending_identity
-    Identity.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
+    Identity.pending.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
   end
 
   def pending_user
@@ -102,12 +102,17 @@ module PendingActionsHelper
   end
 
   def serialized_pending_identity
+    pending_completion = session[:pending_account_completion] || {}
     Pending::TokenSerializer.new(pending_login_token, root: false).as_json ||
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
     Pending::MembershipSerializer.new(pending_membership, root: false).as_json ||
     Pending::StanceSerializer.new(pending_stance, root: false).as_json ||
     Pending::TopicReaderSerializer.new(pending_topic_reader, root: false).as_json ||
     Pending::GroupSerializer.new(pending_group, root: false).as_json ||
-    Pending::UserSerializer.new(pending_user, root: false).as_json || {}
+    Pending::UserSerializer.new(
+      pending_user,
+      root: false,
+      scope: { name_managed: pending_completion[:name_managed] || pending_completion['name_managed'] }
+    ).as_json || {}
   end
 end

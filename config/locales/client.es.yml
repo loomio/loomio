@@ -361,11 +361,18 @@ es:
       helptext: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso.
       helptext_and_signout: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso. Se cerrará tu sesión para que puedas iniciar sesión con la cuenta de destino y completar la fusión.
       flash_and_signout: Se ha enviado un correo electrónico de verificación a %{targetEmail}. Ahora has cerrado sesión para que puedas iniciar sesión como la cuenta de destino y completar la fusión.
+      generic_helptext: Introduce la dirección de correo electrónico de la otra cuenta. Si esa cuenta existe, Loomio le enviará un correo electrónico con instrucciones para confirmar la fusión.
+      email_label: Correo electrónico de otra cuenta
+      send_verification: Enviar correo electrónico de verificación
+      generic_flash_and_signout: Si una cuenta utiliza esa dirección de correo electrónico, se ha enviado un correo electrónico de verificación. Ahora has cerrado sesión para que puedas continuar con la otra cuenta.
+      destination_helptext: Esta cuenta (%{sourceEmail}) se fusionará con la cuenta de destino. Introduce la dirección de correo electrónico de la cuenta de destino. Si existe, Loomio enviará un correo electrónico a esa dirección para confirmar la fusión.
+      destination_email_label: Correo electrónico de la cuenta de destino
     email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
     find_out_more: Descubre más
     placeholder_modal_text: |
       <p>Si os gustaría fusionar dos cuentas juntas, simplemente tienes que poner al dirección de correo electrónico correspondiente (la que pertenece a la otra cuenta) en el campo del email de tu página de perfil y sigue las instrucciones que aparecen.</p>
       <p>Necesitas ayuda? <a href="/contact" target="_blank">Contacta con nosotros</a>.
+    email_may_belong_to_another_account: Si esta dirección pertenece a otra cuenta, puede fusionar las cuentas.
   emoji_picker:
     search: Buscar
     common: Usado con frecuencia
@@ -2524,6 +2531,7 @@ es:
     sign_up_as: Crear cuenta como %{email}
     sign_in_as: Ingresa como %{name}
     continue_with_provider: Continuar con %{provider}
+    sign_in_with_provider: Iniciar sesión con %{provider}
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduce tu dirección de correo electrónico
     enter_your_name: Ingresa tu nombre
@@ -2582,6 +2590,22 @@ es:
     invalid_login: No se puede iniciar sesión con esos datos.
     login_link_rate_limited: Se han solicitado demasiados correos electrónicos de inicio de sesión desde esta red. Por favor, espera una hora e inténtalo de nuevo.
     send_login_link_error: Se produjo un error al enviar el correo electrónico de inicio de sesión. Inténtalo de nuevo.
+    sign_in_with_passkey: Iniciar sesión con una clave de acceso
+    passkey_authentication_failed: No pudimos iniciar sesión con esa clave de acceso
+    passkey_registration_failed: No pudimos guardar esa clave de acceso
+    passkey_default_name: Clave de acceso
+    local_login_disabled: Este sitio requiere inicio de sesión único
+    email_me_a_sign_in_code: Envíame un código de acceso por correo electrónico
+    sign_in_with_code: Inicia sesión con un código
+    new_to_site: "¿Eres nuevo aquí?"
+    passkey_recent_authentication_required: Inicia sesión de nuevo antes de cambiar tus claves de acceso
+    email_code_help: Introduce tu dirección de correo electrónico y te enviaremos un código de acceso de seis dígitos.
+    or_sign_in_with_password: O inicia sesión con una contraseña
+    login_link_sent_if_account_exists: Si existe una cuenta para %{email}, te enviaremos un código de inicio de sesión
+    use_a_passkey: Usa una clave de acceso
+    send_me_a_code: Envíame un código
+    email_code_help_short: Te enviaremos un código de seis dígitos a tu dirección de correo electrónico
+    login_link_sent_if_account_exists_sentence: Si existe una cuenta para %{email}, te enviaremos un código de inicio de sesión.
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
@@ -3139,3 +3163,25 @@ es:
     unfollow: Deja de seguir las actualizaciones
     followed: Ahora estás siguiendo las actualizaciones de este grupo
     unfollowed: Ya no estás siguiendo las actualizaciones de este grupo
+  passkey_settings:
+    title: Claves de acceso
+    helptext: Las claves de acceso te permiten iniciar sesión con tu dispositivo sin introducir tu dirección de correo electrónico ni tu contraseña
+    none: No has añadido una clave de acceso
+    name: nombre de la clave de acceso
+    name_placeholder: Por ejemplo, un portátil del trabajo
+    add: Agregar clave de acceso
+    added: Clave de acceso añadida
+    created_at: Agregado %{date}
+    remove_named: Eliminar %{name}
+    remove_confirm: "¿Eliminar la clave de acceso llamada %{name}?"
+    removed: Clave de acceso eliminada
+    remove_failed: No se pudo eliminar la clave de acceso.
+  credential_prompt:
+    title: Agregar otra forma de iniciar sesión
+    helptext: Agrega una clave de acceso o establece una contraseña para que puedas iniciar sesión sin esperar un código por correo electrónico
+    add_passkey: Agregar una clave de acceso
+    set_password: Establecer una contraseña
+    not_now: Ahora no
+  account_completion:
+    complete_your_account: Completa tu cuenta
+    continue: Continuar

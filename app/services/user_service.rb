@@ -8,8 +8,7 @@ class UserService
     end
 
     user = User.where(email_verified: false, email: params[:email]).first_or_create
-    user.attributes = params.slice(:name, :email, :legal_accepted, :email_newsletter)
-    user.require_valid_signup = true
+    user.attributes = params.slice(:email)
     user.save
     if user.persisted?
       Sentry.metrics.count("user.sign_up")
@@ -94,9 +93,13 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    
+
+    # Provisional accounts are created with only a verified email address.
+    # Their first profile update must complete the identity and consent fields
+    # together; client-side modal controls are not the security boundary.
+    user.require_valid_signup = true if user.incomplete?
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
-    
+
     user.assign_attributes_and_files(params)
     unless user.valid?
       Sentry.metrics.count("user.update_failed", attributes: { columns: user.errors.attribute_names.join(',') })
@@ -114,8 +117,7 @@ class UserService
   end
 
   def self.disable_edit_user_profile?
-    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
-      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
+    AppConfig.sso_disable_edit_user_profile?
   end
 
   def self.remove_externally_managed_profile_fields(params)

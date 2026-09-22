@@ -367,11 +367,18 @@ de:
       flash: Bestättigungsmail geschickt!
       helptext_and_signout: Du kannst das Konto unter <strong>%{sourceEmail}</strong> mit dem Konto unter <strong>%{targetEmail}</strong> zusammenführen. Klicke auf „Bestätigen“. Daraufhin wird eine Bestätigungs-E-Mail an %{targetEmail} gesendet, um den Vorgang zu starten. Du wirst abgemeldet, damit du dich mit dem Zielkonto anmelden und die Zusammenführung abschließen kannst.
       flash_and_signout: Eine Bestätigungs-E-Mail wurde an %{targetEmail} gesendet. Du bist nun abgemeldet und kannst dich mit dem Zielkonto anmelden, um die Zusammenführung abzuschließen.
+      generic_helptext: Geben Sie die E-Mail-Adresse des anderen Kontos ein. Falls dieses Konto existiert, sendet Loomio eine E-Mail mit Anweisungen zur Bestätigung der Zusammenführung.
+      email_label: E-Mail-Adresse des anderen Kontos
+      send_verification: Bestätigungs-E-Mail senden
+      generic_flash_and_signout: Wenn dieses Konto diese E-Mail-Adresse verwendet, wurde eine Bestätigungs-E-Mail versendet. Sie sind nun abgemeldet und können mit dem anderen Konto fortfahren.
+      destination_helptext: Dieses Konto (%{sourceEmail}) wird mit dem Zielkonto zusammengeführt. Geben Sie die E-Mail-Adresse des Zielkontos ein. Falls dieses existiert, sendet Loomio eine Bestätigungs-E-Mail an diese Adresse.
+      destination_email_label: E-Mail-Adresse des Zielkontos
     email_taken: Entschuldige, diese Email ist bereits mit einem anderen Nutzerkonto verbunden. Gehört diese Email zu dir?
     find_out_more: Finde mehr heraus.
     placeholder_modal_text: |
       <p>Wenn du zwei Konten zusammenführen willst, gib einfach die Email-Adresse (des anderen Kontos) in dein Profil Email-Feld ein und folge den dann erscheinenden Anweisungen.</p>
       <p>Brauchst du mehr Hilfe? <a href="/contact" target="_blank">Kontaktiere uns</a>.
+    email_may_belong_to_another_account: Wenn diese Adresse zu einem anderen Konto gehört, können Sie die Konten zusammenführen.
   emoji_picker:
     search: Suchen
     common: 'Oft verwendet '
@@ -2523,6 +2530,7 @@ de:
     sign_up_as: Erstelle Benutzerkonto als %{email}
     sign_in_as: als %{name} einloggen
     continue_with_provider: Weiter mit %{provider}
+    sign_in_with_provider: Mit %{provider} anmelden
     continue_with_email: Weiter mit E-Mail
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen
@@ -2581,6 +2589,22 @@ de:
     invalid_login: Anmeldung mit diesen Daten nicht möglich
     login_link_rate_limited: Es wurden zu viele Anmelde-E-Mails von diesem Netzwerk angefordert. Bitte warte eine Stunde und versuche es erneut.
     send_login_link_error: Beim Senden der Anmelde-E-Mail ist ein Fehler aufgetreten. Bitte versuche es erneut.
+    sign_in_with_passkey: Mit einem Passkey anmelden
+    passkey_authentication_failed: Wir konnten Sie mit diesem Passwort nicht anmelden.
+    passkey_registration_failed: Wir konnten den Passkey nicht speichern.
+    passkey_default_name: Passkey
+    local_login_disabled: Diese Website erfordert Single Sign-On.
+    email_me_a_sign_in_code: Senden Sie mir bitte einen Anmeldecode per E-Mail.
+    sign_in_with_code: Mit einem Code anmelden
+    new_to_site: Neu hier?
+    passkey_recent_authentication_required: Melden Sie sich erneut an, bevor Sie Ihre Passwörter ändern.
+    email_code_help: Gib deine E-Mail-Adresse ein und wir senden dir einen sechsstelligen Anmeldecode
+    or_sign_in_with_password: Oder mit Passwort anmelden
+    login_link_sent_if_account_exists: Falls für %{email} ein Konto existiert, senden wir dir einen Anmeldecode
+    use_a_passkey: Passkey verwenden
+    send_me_a_code: Schick mir einen Code
+    email_code_help_short: Wir senden einen sechsstelligen Code an deine E-Mail-Adresse
+    login_link_sent_if_account_exists_sentence: Falls für %{email} bereits ein Konto existiert, senden wir einen Anmeldecode.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -3138,3 +3162,25 @@ de:
     unfollow: Updates nicht mehr folgen
     followed: Du folgst jetzt den Aktualisierungen dieser Gruppe
     unfollowed: Du erhältst keine Aktualisierungen mehr von dieser Gruppe
+  passkey_settings:
+    title: Passkeys
+    helptext: Mit Passkeys können Sie sich mit Ihrem Gerät anmelden, ohne Ihre E-Mail-Adresse oder Ihr Passwort eingeben zu müssen.
+    none: Sie haben keinen Passkey hinzugefügt.
+    name: Passkey-Name
+    name_placeholder: Zum Beispiel ein Arbeitslaptop
+    add: Passkey hinzufügen
+    added: Passkey hinzugefügt
+    created_at: Hinzugefügt %{date}
+    remove_named: Entferne %{name}
+    remove_confirm: Den Passkey mit dem Namen %{name} entfernen?
+    removed: Passkey entfernt
+    remove_failed: Der Passkey konnte nicht entfernt werden.
+  credential_prompt:
+    title: Fügen Sie eine weitere Anmeldemöglichkeit hinzu.
+    helptext: Fügen Sie einen Passkey hinzu oder legen Sie ein Passwort fest, damit Sie sich anmelden können, ohne auf einen per E-Mail zugesendeten Code warten zu müssen.
+    add_passkey: Fügen Sie einen Passkey hinzu
+    set_password: Legen Sie ein Passwort fest
+    not_now: Nicht jetzt.
+  account_completion:
+    complete_your_account: Vervollständigen Sie Ihr Konto
+    continue: Weitermachen

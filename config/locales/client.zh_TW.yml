@@ -362,11 +362,18 @@ zh_TW:
       flash: 驗證用的電子郵件已傳送！
       helptext_and_signout: 您可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。您將被強制登出，以便使用目標帳號登入完成合併。
       flash_and_signout: 驗證郵件已發送至 %{targetEmail}。您現在已登出登錄，請登入目標帳戶以完成合併。
+      generic_helptext: 請輸入另一個帳戶的電子郵件地址。如果該帳戶存在，Loomio 將向其發送電子郵件，其中包含確認合併的說明。
+      email_label: 其他帳戶信箱
+      send_verification: 發送驗證郵件
+      generic_flash_and_signout: 如果該電子郵件地址用於某個帳戶，則已傳送驗證電子郵件。您現在已登出登錄，可以繼續使用其他帳戶。
+      destination_helptext: 此帳戶 (%{sourceEmail}) 將合併到目標帳戶。請輸入目標帳戶的電子郵件地址。如果該位址存在，Loomio 將向該位址發送電子郵件以確認合併。
+      destination_email_label: 目標帳號電子郵件
     email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |
       <p>如果您想要合併兩個帳號，只要在您的個人檔案頁面的電子郵件欄位輸入對應的電子郵件地址（屬於其他帳號），然後遵照出現的指示操作。</p>
       <p>需要協助嗎？<a href="/contact" target="_blank">聯絡我們</a>。
+    email_may_belong_to_another_account: 如果此地址屬於另一個帳戶，您可以合併這些帳戶。
   emoji_picker:
     search: 搜尋
     common: 經常使用
@@ -2516,6 +2523,7 @@ zh_TW:
     sign_up_as: 使用 %{email} 建立帳號
     sign_in_as: 登入為 %{name}
     continue_with_provider: 以 %{provider} 繼續
+    sign_in_with_provider: 使用 %{provider} 登入
     continue_with_email: 以電子郵件繼續
     or_enter_your_email: 或是輸入您的電子郵件地址
     enter_your_name: 輸入您的名字
@@ -2574,6 +2582,22 @@ zh_TW:
     invalid_login: 無法使用您提供的資訊登入。
     login_link_rate_limited: 此網路請求的登入郵件過多。請稍等一小時後重試。
     send_login_link_error: 登入郵件發送失敗，請重試。
+    sign_in_with_passkey: 使用密碼登入
+    passkey_authentication_failed: 我們無法使用該密碼登入。
+    passkey_registration_failed: 我們無法保存該通行密鑰
+    passkey_default_name: 通行金鑰
+    local_login_disabled: 本網站需要單一登入
+    email_me_a_sign_in_code: 請給我發送一封包含登入代碼的電子郵件。
+    sign_in_with_code: 使用驗證碼登入
+    new_to_site: 新來的？
+    passkey_recent_authentication_required: 更改密碼前請重新登入
+    email_code_help: 請輸入您的電子郵件地址，我們將向您發送一個六位數的登入驗證碼。
+    or_sign_in_with_password: 或使用密碼登入
+    login_link_sent_if_account_exists: 如果 %{email} 已存在帳戶，我們將發送登入代碼。
+    use_a_passkey: 使用密碼
+    send_me_a_code: 給我發送驗證碼
+    email_code_help_short: 我們會傳送一個六位數的驗證碼給您的電子郵件地址。
+    login_link_sent_if_account_exists_sentence: 如果 %{email} 存在帳戶，我們將發送登入代碼。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線
@@ -3131,3 +3155,25 @@ zh_TW:
     unfollow: 取消關注更新
     followed: 您現在正在關注此群組的更新
     unfollowed: 您已取消追蹤此群組的更新
+  passkey_settings:
+    title: 通行金鑰
+    helptext: 使用密碼金鑰，您無需輸入電子郵件地址或密碼即可透過裝置登入。
+    none: 您尚未新增密碼
+    name: 密碼名稱
+    name_placeholder: 例如，工作筆記型電腦
+    add: 新增密碼
+    added: 已新增通行金鑰
+    created_at: 添加於 %{date}
+    remove_named: 移除 %{name}
+    remove_confirm: 刪除名為 %{name} 的密碼？
+    removed: 密碼已移除
+    remove_failed: 無法移除密碼密鑰
+  credential_prompt:
+    title: 新增另一種登入方式
+    helptext: 新增通行金鑰或設定密碼，即可無需等待電子郵件驗證碼即可登入。
+    add_passkey: 新增密碼
+    set_password: 設定密碼
+    not_now: 現在不要
+  account_completion:
+    complete_your_account: 完善您的帳戶
+    continue: 繼續

@@ -24,6 +24,40 @@ class TopicItemServiceTest < ActiveSupport::TestCase
     assert_equal [[@topic_item.id], @source.topic_id, @target.topic_id, @admin.id], enqueued_args
   end
 
+  test 'moving a standalone poll completes before returning and includes its comments' do
+    poll = PollService.create(params: {
+      title: 'Topical poll', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[agree disagree], closing_at: 3.days.from_now
+    }, actor: @admin)
+    source_topic = poll.topic
+    comment_event = nil
+    CommentService.create(comment: Comment.new(parent: poll, body: 'Poll comment'), actor: @member) do |topic_item|
+      comment_event = topic_item
+    end
+
+    TopicItemService.move_comments(topic: @target.topic, actor: @admin,
+                                    params: {selected_topic_item_ids: [poll.created_topic_item.id]})
+
+    assert_equal @target.topic_id, poll.reload.topic_id
+    assert_equal @target.topic_id, comment_event.reload.topic_id
+    assert_not_nil source_topic.reload.discarded_at
+  end
+
+  test 'non-admin cannot move a standalone poll' do
+    poll = PollService.create(params: {
+      title: 'Topical poll', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[agree disagree], closing_at: 3.days.from_now
+    }, actor: @admin)
+    source_topic_id = poll.topic_id
+
+    assert_raises CanCan::AccessDenied do
+      TopicItemService.move_comments(topic: @target.topic, actor: @member,
+                                      params: {selected_topic_item_ids: [poll.created_topic_item.id]})
+    end
+
+    assert_equal source_topic_id, poll.reload.topic_id
+  end
+
   test 'item author cannot move items without administering the source topic' do
     assert_raises CanCan::AccessDenied do
       TopicItemService.move_comments(topic: @target.topic, actor: @member, params: move_params)
