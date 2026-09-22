@@ -4,6 +4,7 @@ const {Protocol, Transport, VirtualAuthenticatorOptions} = require('selenium-web
 
 const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080')
 const baseUrl = `http://localhost:${port}`
+let virtualAuthenticatorAdded = false
 
 const enterLastLoginCode = (test, page) => {
   test.perform(done => {
@@ -22,15 +23,26 @@ const addVirtualPasskeyAuthenticator = test => {
   test.perform(async () => {
     const options = new VirtualAuthenticatorOptions()
     options.setProtocol(Protocol.CTAP2)
-    options.setTransport(Transport.INTERNAL)
+    options.setTransport(Transport.USB)
     options.setHasResidentKey(true)
     options.setHasUserVerification(true)
     options.setIsUserVerified(true)
     await test.driver.addVirtualAuthenticator(options)
+    virtualAuthenticatorAdded = true
   })
 }
 
 module.exports = {
+  afterEach: async (test) => {
+    if (!virtualAuthenticatorAdded) { return }
+
+    try {
+      await test.driver.removeVirtualAuthenticator()
+    } finally {
+      virtualAuthenticatorAdded = false
+    }
+  },
+
   'can_register_sign_in_and_remove_a_passkey': (test) => {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)
@@ -59,10 +71,6 @@ module.exports = {
     page.acceptConfirm()
     page.expectFlash('Passkey removed')
     page.expectText('.passkey-settings', 'You have not added a passkey')
-
-    test.perform(async () => {
-      await test.driver.removeVirtualAuthenticator()
-    })
   },
 
   'can_add_a_passkey_after_signing_in_with_a_code': (test) => {
@@ -84,10 +92,6 @@ module.exports = {
     page.expectNoElement('.credential-prompt')
     page.goTo('profile')
     page.expectText('.passkey-settings', 'Passkey')
-
-    test.perform(async () => {
-      await test.driver.removeVirtualAuthenticator()
-    })
   },
 
   'does_not_prompt_after_code_sign_in_when_account_has_a_passkey': (test) => {
@@ -103,10 +107,6 @@ module.exports = {
     page.click('.auth-complete__submit')
     page.pause(500)
     page.expectNoElement('.credential-prompt')
-
-    test.perform(async () => {
-      await test.driver.removeVirtualAuthenticator()
-    })
   },
 
   'can_sign_up_from_try_and_complete_the_account': (test) => {
