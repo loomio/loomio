@@ -16,23 +16,21 @@ class PollExporter
   end
 
   def to_blt
-    raise CanCan::AccessDenied if @poll.detached_anonymous?
+    raise CanCan::AccessDenied if @poll.detached_anonymous? && !@poll.closed?
 
     options = @poll.poll_options.order(:priority)
     option_id_to_index = options.each_with_index.map { |o, i| [o.id, i + 1] }.to_h
     seats = @poll.stv_seats || 1
 
-    ballots = @poll.stances.latest.decided.includes(:stance_choices).map do |stance|
-      stance.stance_choices
-            .sort_by { |sc| sc.score }
-            .map { |sc| option_id_to_index[sc.poll_option_id] }
+    ballots = StvCountService.extract_ballots(@poll).map do |ballot|
+      ballot.map { |poll_option_id| option_id_to_index.fetch(poll_option_id) }
     end
 
     grouped = ballots.tally
 
     lines = []
     lines << "#{options.size} #{seats}"
-    grouped.each do |ballot, count|
+    grouped.sort_by { |ballot, _count| ballot }.each do |ballot, count|
       lines << "#{count} #{ballot.join(' ')} 0"
     end
     lines << "0"

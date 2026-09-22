@@ -458,13 +458,26 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "aggregate-only policy blocks ballot-pattern exports" do
+  test "closed STV polls export ballot patterns without identifying metadata" do
+    @poll.update!(poll_type: "stv", stv_seats: 1)
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
     PollService.close(poll: @poll, actor: @admin)
 
-    assert_raises(CanCan::AccessDenied) { PollExporter.new(@poll).to_blt }
+    blt = PollExporter.new(@poll).to_blt
+
+    assert_includes blt, "1 1 0"
+    assert_not_includes blt, @poll.anonymous_ballots.first.id
+    assert_not_includes blt, @voter.id.to_s
+    assert_not_includes blt, @voter.name
     assert_includes PollExporter.new(@poll).to_csv, "poll_options"
     assert_not_includes PollExporter.new(@poll).to_csv, @poll.anonymous_ballots.first.id
+  end
+
+  test "open STV polls do not export detached anonymous ballots" do
+    @poll.update!(poll_type: "stv", stv_seats: 1)
+    AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
+
+    assert_raises(CanCan::AccessDenied) { PollExporter.new(@poll).to_blt }
   end
 
   test "specified electorate invitations create no stances and remain open after the first ballot" do

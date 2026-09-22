@@ -70,6 +70,8 @@ class PollExporterTest < ActiveSupport::TestCase
 
     assert_includes ballot_lines, "3 #{alice_idx} #{bob_idx} #{carol_idx} 0"
     assert_includes ballot_lines, "2 #{bob_idx} #{carol_idx} 0"
+    ballot_rankings = ballot_lines.map { |line| line.split.drop(1).map(&:to_i) }
+    assert_equal ballot_rankings.sort, ballot_rankings
 
     # End-of-ballots marker
     assert_equal "0", lines[i]

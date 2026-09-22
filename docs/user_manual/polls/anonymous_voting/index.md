@@ -51,7 +51,7 @@ Participants can still discuss the poll in its thread where discussion is availa
 
 After the poll closes, the results are calculated from the detached votes and displayed as totals and other aggregate results supported by the poll type.
 
-The application does not publish individual voting patterns, vote identifiers, submission order, or submission times. Poll exports contain aggregate results rather than a row for each anonymous vote.
+The application does not publish vote identifiers, submission order, or submission times. Poll exports contain aggregate results rather than a row for each anonymous vote, except that a closed STV election can be exported in BLT format. A BLT export contains the candidate rankings needed to recount the election, grouped when multiple ballots have the same ranking, without voter identities or ballot metadata.
 
 An anonymous poll cannot be reopened after it closes.
 
