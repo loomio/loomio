@@ -123,7 +123,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   },
 
   // e2e broken, function works fine
@@ -173,7 +173,7 @@ module.exports = {
     // Sending the verification email signs the source account out.
     page.pause(3000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   }
 
 }
