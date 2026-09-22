@@ -6,11 +6,22 @@ class Api::V1::LoginTokensController < Api::V1::RestfulController
       render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
       return
     end
-    if user = User.find_by(email: params.require(:email))
+    user = User.find_by(email: params.require(:email))
+    if ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'].present?
+      account_status = user&.email_status || :unused
+      if account_status == :active
+        save_detected_locale(user)
+        service.create(actor: user, uri: referrer_uri)
+      end
+      render json: { success: :ok, account_status: account_status }
+      return
+    end
+
+    if user
       save_detected_locale(user)
       service.create(actor: user, uri: referrer_uri)
     end
-    # Always return success to prevent account enumeration
+    # By default, always return the same success response to prevent account enumeration.
     render json: { success: :ok }
   end
 

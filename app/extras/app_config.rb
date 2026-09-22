@@ -163,6 +163,7 @@ class AppConfig
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
       local_login: local_login_enabled?,
       create_user: !ENV['FEATURES_DISABLE_CREATE_USER'],
+      reveal_email_account_status: ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'].present?,
       create_group: !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
       help_link: !ENV['FEATURES_DISABLE_HELP_LINK'],

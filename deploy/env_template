@@ -128,6 +128,7 @@ FEATURES_DEMO_GROUPS=1
 # FEATURES_DISABLE_HELP_LINK=1       # disable the help link
 # FEATURES_DISABLE_LOCAL_LOGIN=1     # Disable password, email-code, passkey, and native account creation for SSO-only sites
 # FEATURES_DISABLE_EMAIL_LOGIN=1     # Deprecated alias for FEATURES_DISABLE_LOCAL_LOGIN
+# FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS=1 # Tell people when an email has no account; enables account enumeration
 # FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
 
 # Replace any part of the user manual link in the sidebar

@@ -153,7 +153,15 @@ export default new class AuthService {
 
   sendLoginLink(user) {
     return Records.loginTokens.fetchToken(user.email, user.turnstileToken).then(
-      () => user.update({authForm: 'complete', sentLoginLink: true}),
+      (data) => {
+        if (data.account_status === 'unused') {
+          return user.update({errors: {email: [I18n.global.t('auth_form.email_not_found')]}});
+        }
+        if (data.account_status === 'inactive') {
+          return user.update({emailStatus: 'inactive', authForm: 'inactive'});
+        }
+        return user.update({authForm: 'complete', sentLoginLink: true});
+      },
       (data) => {
         const key = data.status === 429
           ? 'auth_form.login_link_rate_limited'

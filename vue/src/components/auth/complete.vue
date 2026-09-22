@@ -6,6 +6,7 @@ import AuthModalMixin from '@/mixins/auth_modal';
 import openModal      from '@/shared/helpers/open_modal';
 import AuthService from '@/shared/services/auth_service';
 import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
 
 export default {
   mixins: [AuthModalMixin],
@@ -15,7 +16,8 @@ export default {
   data() {
     return {
       attempts: 0,
-      loading: false
+      loading: false,
+      revealEmailAccountStatus: AppConfig.features.app.reveal_email_account_status
     };
   },
   methods: {
@@ -59,7 +61,8 @@ v-card.auth-complete(
     auth-back-button(@click="back")
   v-sheet.mx-4.text-center
     p.my-6(v-if='user.sentLoginLink')
-      span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
+      span(v-if='revealEmailAccountStatus' v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
+      span(v-else v-t="{ path: 'auth_form.login_link_sent_if_account_exists', args: { email: user.email }}")
       br
       span(v-t="'auth_form.instructions_code'", v-if='attempts < 3')
     .lmo-validation-error(v-t="'auth_form.too_many_attempts'", v-if='attempts >= 3')

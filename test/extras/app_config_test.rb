@@ -19,6 +19,7 @@ class AppConfigTest < ActiveSupport::TestCase
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
     @disable_local_login_previous = ENV.delete("FEATURES_DISABLE_LOCAL_LOGIN")
     @disable_email_login_previous = ENV.delete("FEATURES_DISABLE_EMAIL_LOGIN")
+    @reveal_email_account_status_previous = ENV.delete("FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS")
   end
 
   teardown do
@@ -30,6 +31,7 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)
     restore_env("FEATURES_DISABLE_LOCAL_LOGIN", @disable_local_login_previous)
     restore_env("FEATURES_DISABLE_EMAIL_LOGIN", @disable_email_login_previous)
+    restore_env("FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS", @reveal_email_account_status_previous)
   end
 
   test "subscriptions are available when either billing integration is configured" do
@@ -66,6 +68,14 @@ class AppConfigTest < ActiveSupport::TestCase
     ENV.delete("FEATURES_DISABLE_LOCAL_LOGIN")
     ENV["FEATURES_DISABLE_EMAIL_LOGIN"] = "0"
     refute AppConfig.local_login_enabled?
+  end
+
+  test "revealing email account status is presence-based and disabled by default" do
+    refute AppConfig.app_features.fetch(:reveal_email_account_status)
+
+    ENV["FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS"] = "0"
+
+    assert AppConfig.app_features.fetch(:reveal_email_account_status)
   end
 
   test "default onboarding group id can be configured" do

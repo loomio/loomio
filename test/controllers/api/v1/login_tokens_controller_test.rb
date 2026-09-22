@@ -4,11 +4,13 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
   setup do
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
     @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @reveal_email_account_status_before = ENV.delete('FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
     @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
+    @reveal_email_account_status_before.nil? ? ENV.delete('FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS') : ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'] = @reveal_email_account_status_before
   end
 
   test "create creates a new login token" do
@@ -61,6 +63,42 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
       post :create, params: { email: "notathing@example.com" }
     end
     assert_response :success
+    assert_nil response.parsed_body['account_status']
+  end
+
+  test "create reveals an unknown email only when configured" do
+    ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'] = '1'
+
+    assert_no_difference -> { LoginToken.count } do
+      post :create, params: { email: "notathing@example.com" }
+    end
+
+    assert_response :success
+    assert_equal 'unused', response.parsed_body['account_status']
+  end
+
+  test "create reveals a deactivated account without sending a code when configured" do
+    ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'] = '1'
+    user = users(:orphan_deactivated_user)
+
+    assert_no_difference -> { LoginToken.count } do
+      post :create, params: { email: user.email }
+    end
+
+    assert_response :success
+    assert_equal 'inactive', response.parsed_body['account_status']
+  end
+
+  test "create sends a code and reveals an active account when configured" do
+    ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'] = '1'
+    user = users(:user)
+
+    assert_difference -> { user.login_tokens.count }, 1 do
+      post :create, params: { email: user.email }
+    end
+
+    assert_response :success
+    assert_equal 'active', response.parsed_body['account_status']
   end
 
   test "turnstile required: rejects request without token" do
