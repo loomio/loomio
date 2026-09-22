@@ -24,6 +24,8 @@ Private hosts can set `FEATURES_DISABLE_LOCAL_LOGIN`. The public sign-in screen 
 
 An SSO-only deployment should use passkeys through its identity provider rather than storing a separate Loomio passkey. This preserves identity-provider suspension, multifactor authentication, and access policies. Operator recovery from a broken SSO configuration is an operational procedure and is not exposed as a routine public sign-in method.
 
+Account completion remains available after a successful SSO callback when the provider did not supply every required profile or legal-consent field. This completes an already authenticated SSO identity and does not enable native registration or local authentication.
+
 ## Account enumeration
 
 Unless `FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS` is explicitly enabled, responses must not expose whether an email belongs to an account, whether the account has a password or passkey, its profile details, or whether it is locked or inactive. The client must not use an email-status lookup to choose a sign-in form or begin an account merge. Sign-in-code and merge-verification requests return the same response whether or not an account exists. The opt-in setting changes only the sign-in-code response for unknown and deactivated accounts; password authentication and merge verification remain non-disclosing. Invitations and verified emailed links may display account-specific information because possession of the link demonstrates access to the destination mailbox.
@@ -39,6 +41,8 @@ An account must have a name and, when terms are configured, accept those terms b
 After email-code sign-in, a supported device offers a passkey when the account has none. A device without passkey support offers a password when the account has none. Dismissing either offer is remembered in that browser. The sign-in-code form does not advertise a password separately because the post-authentication prompt is the supported setup path.
 
 Logout revokes the current database session and resets the entire Rails browser session in both mixed-authentication and SSO-only modes. This clears staged account completion, pending identity and invitation proofs, and outstanding passkey challenges.
+
+Loomio retains Rails authenticity-token validation for state-changing browser requests. The SPA compatibility path accommodates browsers that report a privacy-preserving `null` Origin only when the request supplies a token that Rails validates against the encrypted session; matching arbitrary cookie and header values is not sufficient.
 
 Account-completion authentication is backed by a server record with a fifteen-minute expiry. Completion consumes that record in the same transaction as the profile update and new session. Logout, replacement authentication for completion, and successful sign-in revoke the browser's pending record, so restoring an older encrypted cookie cannot reuse it. Failed validation or session creation leaves the record available for retry within its expiry. Deployment of this change requires the account-completion-proof migration; previously staged cookie-only completions must authenticate again.
 

@@ -6,7 +6,7 @@ On Loomio.com, you can sign in with a passkey, your email and password, an email
 
 ## Sign in with a passkey
 
-Select **Sign in with a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
+Select **Use a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
 
 You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
 
@@ -14,13 +14,15 @@ You can add, name, and remove passkeys from your profile. For security, Loomio m
 
 Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
 
-If you do not have a password or cannot remember it, select **Email me a sign-in code** instead.
+If you do not have a password or cannot remember it, select **Send me a code** instead.
 
 ## Get a sign-in code
 
-Enter your email address and select **Email me a sign-in code**. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
+Select **Send me a code**, enter your email address, and submit the form. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
 
 If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
+
+![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)
 
 After signing in with a code, Loomio may offer to add a passkey or set a password. Both are optional, but adding a passkey is highly recommended. A passkey makes your account more secure and makes signing in fast and easy. You can continue using emailed codes.
 
