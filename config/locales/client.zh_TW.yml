@@ -2591,6 +2591,10 @@ zh_TW:
     new_to_site: 新來的？
     passkey_recent_authentication_required: 更改密碼前請重新登入
     email_code_help: 請輸入您的電子郵件地址，我們將向您發送一個六位數的登入驗證碼。
+    or_sign_in_with_password: 或使用密碼登入
+    login_link_sent_if_account_exists: 如果 %{email} 已存在帳戶，我們將發送登入代碼。
+    use_a_passkey: 使用密碼
+    send_me_a_code: 給我發送驗證碼
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

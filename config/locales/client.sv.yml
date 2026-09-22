@@ -2565,6 +2565,10 @@ sv:
     new_to_site: Ny här?
     passkey_recent_authentication_required: Logga in igen innan du ändrar dina passkeys
     email_code_help: Ange din e-postadress så skickar vi dig en sexsiffrig inloggningskod
+    or_sign_in_with_password: Eller logga in med ett lösenord
+    login_link_sent_if_account_exists: Om det finns ett konto för %{email} skickar vi en inloggningskod
+    use_a_passkey: Använd en lösennyckel
+    send_me_a_code: Skicka mig en kod
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

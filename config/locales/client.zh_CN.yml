@@ -2818,6 +2818,10 @@ zh_CN:
     new_to_site: 新来的？
     passkey_recent_authentication_required: 更改密码前请重新登录
     email_code_help: 请输入您的电子邮件地址，我们将向您发送一个六位数的登录验证码。
+    or_sign_in_with_password: 或者使用密码登录
+    login_link_sent_if_account_exists: 如果 %{email} 已存在帐户，我们将发送登录代码。
+    use_a_passkey: 使用密码
+    send_me_a_code: 给我发送验证码
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接

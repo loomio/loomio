@@ -2565,6 +2565,10 @@ tr:
     new_to_site: Yeni misiniz?
     passkey_recent_authentication_required: Parolalarınızı değiştirmeden önce tekrar giriş yapın.
     email_code_help: E-posta adresinizi girin, size altı haneli bir giriş kodu göndereceğiz.
+    or_sign_in_with_password: Veya şifrenizle giriş yapın.
+    login_link_sent_if_account_exists: Eğer %{email} için bir hesap mevcutsa, bir giriş kodu göndereceğiz.
+    use_a_passkey: Parola kullanın.
+    send_me_a_code: Bana bir kod gönder
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

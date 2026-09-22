@@ -2565,6 +2565,10 @@ da:
     new_to_site: Ny her?
     passkey_recent_authentication_required: Log ind igen, før du ændrer dine adgangskoder
     email_code_help: Indtast din e-mailadresse, så sender vi dig en sekscifret loginkode
+    or_sign_in_with_password: Eller log ind med en adgangskode
+    login_link_sent_if_account_exists: Hvis der findes en konto til %{email}, sender vi en loginkode
+    use_a_passkey: Brug en adgangsnøgle
+    send_me_a_code: Send mig en kode
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

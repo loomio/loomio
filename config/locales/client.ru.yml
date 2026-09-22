@@ -2565,6 +2565,10 @@ ru:
     new_to_site: Вы здесь впервые?
     passkey_recent_authentication_required: Перед изменением паролей войдите в систему еще раз.
     email_code_help: Введите свой адрес электронной почты, и мы вышлем вам шестизначный код для входа.
+    or_sign_in_with_password: Или войдите в систему с помощью пароля.
+    login_link_sent_if_account_exists: Если для %{email} существует учетная запись, мы вышлем код для входа.
+    use_a_passkey: Используйте пароль
+    send_me_a_code: Пришлите мне код
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

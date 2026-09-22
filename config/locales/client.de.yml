@@ -2598,6 +2598,10 @@ de:
     new_to_site: Neu hier?
     passkey_recent_authentication_required: Melden Sie sich erneut an, bevor Sie Ihre Passwörter ändern.
     email_code_help: Gib deine E-Mail-Adresse ein und wir senden dir einen sechsstelligen Anmeldecode
+    or_sign_in_with_password: Oder mit Passwort anmelden
+    login_link_sent_if_account_exists: Falls für %{email} ein Konto existiert, senden wir dir einen Anmeldecode
+    use_a_passkey: Passkey verwenden
+    send_me_a_code: Schick mir einen Code
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

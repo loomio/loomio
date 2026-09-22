@@ -2590,6 +2590,10 @@ ca:
     new_to_site: Ets nou aquí?
     passkey_recent_authentication_required: Torna a iniciar la sessió abans de canviar les claus d'accés
     email_code_help: Introdueix la teva adreça electrònica i t'enviarem un codi d'inici de sessió de sis dígits
+    or_sign_in_with_password: O inicia la sessió amb una contrasenya
+    login_link_sent_if_account_exists: Si existeix un compte per a %{email}, us enviarem un codi d'inici de sessió.
+    use_a_passkey: Utilitza una clau d'accés
+    send_me_a_code: Envia'm un codi
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

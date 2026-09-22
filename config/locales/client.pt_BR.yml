@@ -2611,6 +2611,10 @@ pt_BR:
     new_to_site: É novo por aqui?
     passkey_recent_authentication_required: Faça login novamente antes de alterar suas senhas.
     email_code_help: Insira seu endereço de e-mail e enviaremos um código de acesso de seis dígitos.
+    or_sign_in_with_password: Ou entre com uma senha
+    login_link_sent_if_account_exists: Se existir uma conta para %{email}, enviaremos um código de acesso
+    use_a_passkey: Use uma chave de acesso
+    send_me_a_code: Envie-me um código
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

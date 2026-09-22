@@ -2593,6 +2593,10 @@ uk:
     new_to_site: Новий тут?
     passkey_recent_authentication_required: Увійдіть ще раз, перш ніж змінювати свої паролі
     email_code_help: Введіть свою адресу електронної пошти, і ми надішлемо вам шестизначний код для входу
+    or_sign_in_with_password: Або увійдіть за допомогою пароля
+    login_link_sent_if_account_exists: Якщо обліковий запис для %{email} існує, ми надішлемо код входу
+    use_a_passkey: Використовуйте ключ доступу
+    send_me_a_code: Надіслати мені код
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

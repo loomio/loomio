@@ -2584,6 +2584,10 @@ he:
     new_to_site: חדש כאן?
     passkey_recent_authentication_required: היכנס שוב לפני שינוי סיסמות
     email_code_help: הזן את כתובת הדוא"ל שלך ונשלח לך קוד כניסה בן שש ספרות
+    or_sign_in_with_password: או התחבר עם סיסמה
+    login_link_sent_if_account_exists: אם קיים חשבון עבור %{email}, נשלח קוד כניסה
+    use_a_passkey: השתמש בסיסמה
+    send_me_a_code: שלח לי קוד
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

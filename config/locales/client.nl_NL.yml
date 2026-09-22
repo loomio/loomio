@@ -2590,6 +2590,10 @@ nl_NL:
     new_to_site: Ben je hier nieuw?
     passkey_recent_authentication_required: Meld je opnieuw aan voordat je jouw passkeys wijzigt
     email_code_help: Voer je e-mailadres in en we sturen je een zescijferige inlogcode
+    or_sign_in_with_password: Of meld je aan met een wachtwoord
+    login_link_sent_if_account_exists: Als er een account bestaat voor %{email}, sturen we een inlogcode
+    use_a_passkey: Gebruik een passkey
+    send_me_a_code: Stuur me een code
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
