@@ -1,4 +1,6 @@
 class ReceivedEmail < ApplicationRecord
+  include HasNotifications
+
   has_many_attached :attachments
   belongs_to :group
 
@@ -119,6 +121,10 @@ class ReceivedEmail < ApplicationRecord
 
   def title
     sender_name_and_email
+  end
+
+  def title_model
+    group
   end
 
   def is_addressed_to_loomio?

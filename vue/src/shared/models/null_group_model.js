@@ -23,6 +23,7 @@ export default class NullGroupModel {
       membersCanDeleteComments: true,
       membersCanRaiseMotions: true,
       membersCanStartDiscussions: true,
+      nonMembersCanStartDiscussions: false,
       membersCanCreateSubgroups: false,
       motionsCanBeEdited: false,
       files: null,
@@ -30,6 +31,7 @@ export default class NullGroupModel {
       attachments: [],
       linkPreviews: [],
       subscription: {active: true},
+      enabled: true,
       specifiedVotersOnly: false,
       isNullGroup: true,
       categorizePollTemplates: true
@@ -69,7 +71,8 @@ export default class NullGroupModel {
   privacyIsOpen() { return false; }
   privacyIsClosed() { return false; }
   privacyIsSecret() { return true; }
-  isArchived() { return false; }
+  isDiscarded() { return false; }
+  isEnabled() { return true; }
   isParent() { return true; }
   hasSubscription() { return false; }
   isSubgroupOfSecretParent() { return false; }

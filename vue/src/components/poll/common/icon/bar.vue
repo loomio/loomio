@@ -1,80 +1,47 @@
-<script lang="js">
-import svg from 'svg.js';
-import { take, map, max, each} from 'lodash-es';
+<script setup lang="js">
+import { computed } from 'vue';
 
-export default {
-    props: {
-      size: Number,
-      poll: Object
-    },
-    data() {
-      return {
-        svgEl: null,
-        shapes: []
-      };
-    },
-    computed: {
-      stanceCounts() { return this.poll.stanceCounts; },
-      scoreData() {
-        return take(map(this.stanceCounts, (score, index) => ({
-          index,
-          score
-        })), 5);
-      },
-      barColor() { return 'rgb(var(--v-theme-info))'; },
-      scoreMaxValue() {
-        return max(map(this.scoreData, data => data.score));
-      }
-    },
-    methods: {
-      draw() {
-        if ((this.scoreData.length > 0) && (this.scoreMaxValue > 0)) {
-          this.drawChart();
-        } else {
-          this.drawPlaceholder();
-        }
-      },
-      drawPlaceholder() {
-        each(this.shapes, shape => shape.remove());
-        const barHeight = this.size / 3;
-        const barWidths = {
-          0: this.size,
-          1: (2 * this.size) / 3,
-          2: this.size / 3
-        };
-        each(barWidths, (width, index) => {
-          this.svgEl.rect(width, barHeight - 2)
-              .style('fill', this.barColor)
-              .x(0)
-              .y(index * barHeight);
-        });
-      },
-      drawChart() {
-        each(this.shapes, shape => shape.remove());
-        const barHeight = this.size / this.scoreData.length;
-        map(this.scoreData, scoreDatum => {
-          const barWidth = max([(this.size * scoreDatum.score) / this.scoreMaxValue, 2]);
-          return this.svgEl.rect(barWidth, barHeight-2)
-              .style('fill', this.barColor)
-              .x(0)
-              .y(scoreDatum.index * barHeight);
-        });
-      }
-    },
-    watch: {
-      stanceCounts() {
-        this.draw();
-      }
-    },
-    mounted() {
-      this.svgEl = svg(this.$refs.svg).size('100%', '100%');
-      this.draw();
-    }
-};
+const { poll, size } = defineProps({
+  poll: {type: Object, required: true},
+  size: {type: Number, required: true}
+});
+
+const barColor = 'rgb(var(--v-theme-info))';
+const scoreData = computed(() => poll.stanceCounts.slice(0, 5));
+const scoreMax = computed(() => Math.max(...scoreData.value, 0));
+
+const bars = computed(() => {
+  if (scoreData.value.length && scoreMax.value > 0) {
+    const height = size / scoreData.value.length;
+    return scoreData.value.map((score, index) => ({
+      height: height - 2,
+      width: Math.max((size * score) / scoreMax.value, 2),
+      y: index * height
+    }));
+  }
+
+  const height = size / 3;
+  return [size, (2 * size) / 3, size / 3].map((width, index) => ({
+    height: height - 2,
+    width,
+    y: index * height
+  }));
+});
 </script>
 
 <template lang="pug">
-.bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
+svg.bar-chart(
+  :style="{height: `${size}px`, width: `${size}px`}"
+  :viewBox="`0 0 ${size} ${size}`"
+  aria-hidden="true")
+  rect(
+    v-for="(bar, index) in bars"
+    :key="index"
+    x="0"
+    :y="bar.y"
+    :width="bar.width"
+    :height="bar.height"
+    :fill="barColor")
 </template>
 
 <style>
@@ -82,9 +49,5 @@ export default {
   border: 0;
   margin: 0;
   padding: 0;
-}
-.bar-chart svg {
-  height: 100%;
-  width: 100%;
 }
 </style>

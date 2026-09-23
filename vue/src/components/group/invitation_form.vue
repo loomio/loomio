@@ -2,6 +2,7 @@
 import Records        from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AppConfig      from '@/shared/services/app_config';
+import SubscriptionService from '@/shared/services/subscription_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
@@ -33,7 +34,7 @@ export default
       message: null,
       subscription: this.group.parentOrSelf().subscription,
       cannotInvite: false,
-      upgradeUrl: AppConfig.baseUrl + 'upgrade',
+      upgradeUrl: SubscriptionService.upgradeUrl(this.group.parentOrSelf()),
       invitationsRemaining: ((this.subscription && this.subscription.max_members) || 0) - this.group.parentOrSelf().orgMembersCount
     };
   },
@@ -71,6 +72,7 @@ export default
       Records.remote.post('announcements', {
         group_id: this.group.id,
         invited_group_ids: this.groupIds,
+        recipient_audience: this.group.recipientAudience,
         recipient_emails: this.recipients.filter(r => r.type === 'email').map(r => r.id),
         recipient_user_ids: this.recipients.filter(r => r.type === 'user').map(r => r.id),
         recipient_message: this.message
@@ -156,6 +158,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :reset="reset"
       :model="group"
       :hide-count="tooManyInvitations"
+      exclude-members
       @new-query="newQuery"
       @new-recipients="newRecipients")
     div.text-medium-emphasis(v-if="subscription.max_members")
@@ -180,7 +183,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
   v-card-actions
-    help-btn(path="en/user_manual/groups/membership")
+    help-btn(path="en/user_manual/groups/inviting_people")
     v-spacer
     v-btn.announcement-form__submit(
       variant="elevated"

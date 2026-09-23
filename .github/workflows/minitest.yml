@@ -30,10 +30,10 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: install libvips
+    - name: install image processing tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y libvips
+        sudo apt-get install -y imagemagick libvips
     - name: git checkout
       uses: actions/checkout@v5
     - name: install ruby
@@ -42,9 +42,11 @@ jobs:
         ruby-version: '4.0.5'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: install node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version-file: .node-version
+    - name: install npm
+      run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
     - name: init db
       run: |
         createdb
@@ -53,8 +55,7 @@ jobs:
     - name: build client
       run: |
         cd vue
-        rm -rf node_modules
-        npm install
+        npm ci
         npm run build
     - name: run minitest
       run: |

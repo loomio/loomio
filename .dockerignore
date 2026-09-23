@@ -11,5 +11,6 @@ vue/tests/reports/*
 vue/tests/screenshots/*
 public/assets/*
 public/client3/*
+public/docs/*
 public/system/*
 config/deploy.yml

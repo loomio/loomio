@@ -9,6 +9,7 @@ class Views::Admin::Groups::Edit < Views::Admin::Layout
   def view_template
     page_header("Edit #{@group.name}")
     form_with(model: @group, url: admin_group_path(@group), method: :put, class: "admin-form") do |form|
+      form_errors(@group, title: "Group could not be updated")
       field(form, :admin_tags, placeholder: "Tags separated by spaces")
       field(form, :parent_id, type: :number_field)
       field(form, :handle)

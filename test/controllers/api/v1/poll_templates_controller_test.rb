@@ -88,7 +88,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     template = PollTemplate.last
     assert_equal "New Poll Process", template.process_name
     assert_equal @admin.id, template.author_id
-    refute template.discarded?, "admin-created template should not be auto-discarded"
+    refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
   test "create denies non-admin when setting disabled" do
@@ -172,14 +172,16 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   # === DESTROY ===
 
-  test "destroy deletes a poll template as admin" do
+  test "destroy discards a poll template as admin" do
     template = create_poll_template
 
     sign_in @admin
-    assert_difference 'PollTemplate.count', -1 do
+    assert_no_difference 'PollTemplate.count' do
       delete :destroy, params: { id: template.id }
     end
     assert_response :success
+    assert template.reload.discarded?
+    assert_equal @admin.id, template.discarded_by
   end
 
   test "destroy denies non-admin non-author" do
@@ -199,54 +201,56 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  # === DISCARD / UNDISCARD ===
+  # === HIDE / UNHIDE ===
 
-  test "discard discards a poll template as admin" do
+  test "hide hides a poll template as admin" do
     template = create_poll_template
 
     sign_in @admin
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    assert template.discarded?
+    assert template.hidden?
+    assert_equal @admin.id, template.hider_id
   end
 
-  test "undiscard restores a discarded poll template as admin" do
+  test "unhide restores a hidden poll template as admin" do
     template = create_poll_template
-    template.discard!
+    template.hide!
 
     sign_in @admin
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    refute template.discarded?
+    refute template.hidden?
+    assert_nil template.hider_id
   end
 
-  test "discard denies non-admin non-author" do
+  test "hide denies non-admin non-author" do
     template = create_poll_template
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
-  test "undiscard denies non-admin non-author" do
+  test "unhide denies non-admin non-author" do
     template = create_poll_template
-    template.discard!
+    template.hide!
 
     sign_in @user
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
-  test "discard denies non-member" do
+  test "hide denies non-member" do
     other_user = User.create!(name: "Outsider #{SecureRandom.hex(4)}", email: "outsider_#{SecureRandom.hex(4)}@example.com", email_verified: true)
     template = create_poll_template
 
     sign_in other_user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :not_found
   end
 
@@ -341,10 +345,10 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     template = PollTemplate.last
     assert_equal @user.id, template.author_id
-    assert_not template.discarded?, "member-created template should not be auto-discarded"
+    assert_not template.hidden?, "member-created template should not be auto-hidden"
   end
 
-  test "admin-created poll template is not auto-discarded" do
+  test "admin-created poll template is not auto-hidden" do
     @group.update!(members_can_create_templates: true)
 
     sign_in @admin
@@ -360,7 +364,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
     assert_response :success
     template = PollTemplate.last
-    refute template.discarded?, "admin-created template should not be auto-discarded"
+    refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
   test "member can edit own poll template when setting enabled" do
@@ -391,58 +395,60 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  test "member can discard own poll template when setting enabled" do
+  test "member can hide own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = create_poll_template(author: @user)
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    assert template.discarded?
+    assert template.hidden?
   end
 
-  test "member can undiscard own poll template when setting enabled" do
+  test "member can unhide own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = create_poll_template(author: @user)
-    template.discard!
+    template.hide!
 
     sign_in @user
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
     template.reload
-    refute template.discarded?
+    refute template.hidden?
   end
 
-  test "member can destroy own poll template when setting enabled" do
+  test "member can discard own poll template through delete when setting enabled" do
     @group.update!(members_can_create_templates: true)
     template = create_poll_template(author: @user)
 
     sign_in @user
-    assert_difference 'PollTemplate.count', -1 do
+    assert_no_difference 'PollTemplate.count' do
       delete :destroy, params: { id: template.id }
     end
     assert_response :success
+    assert template.reload.discarded?
+    assert_equal @user.id, template.discarded_by
   end
 
-  test "member cannot discard another member's poll template" do
+  test "member cannot hide another member's poll template" do
     @group.update!(members_can_create_templates: true)
     template = create_poll_template(author: @admin)
 
     sign_in @user
-    post :discard, params: { id: template.id, group_id: @group.id }
+    post :hide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
-  test "member cannot undiscard another member's poll template" do
+  test "member cannot unhide another member's poll template" do
     @group.update!(members_can_create_templates: true)
     template = create_poll_template(author: @admin)
-    template.discard!
+    template.hide!
 
     sign_in @user
-    post :undiscard, params: { id: template.id, group_id: @group.id }
+    post :unhide, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 

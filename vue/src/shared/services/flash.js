@@ -1,5 +1,5 @@
-import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
+import SubscriptionService from '@/shared/services/subscription_service';
 
 const createFlashLevel = (level, duration) => (function(translateKey, translateValues, actionKey, actionFn) {
   if (translateKey) { return EventBus.$emit("flashMessage", {
@@ -20,13 +20,15 @@ export default class Flash {
   static error =   createFlashLevel('error');
   static wait =    createFlashLevel('wait', 30000);
 
-  static custom(text, level, duration) {
+  static custom(text, level, duration, action, actionUrl) {
     if (level == null) { level = 'error'; }
     if (duration == null) { duration = 4000; }
     return EventBus.$emit("flashMessage", {
       text,
       level,
-      duration
+      duration,
+      action,
+      actionUrl
     });
   }
 
@@ -39,7 +41,9 @@ export default class Flash {
 
   static serverError(error, inlineFields = []) {
     if (error.error) {
-      Flash.custom(error.error);
+      const actionUrl = error.action === 'upgrade' ? SubscriptionService.upgradeUrl() : null;
+      const action = actionUrl ? 'current_plan_button.upgrade' : null;
+      Flash.custom(error.error, 'error', null, action, actionUrl);
     } else if (error.errors) {
       const inlineParts = [];
       const fullParts = [];

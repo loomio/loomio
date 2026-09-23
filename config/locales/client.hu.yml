@@ -1,5 +1,10 @@
 ---
 hu:
+  install_app:
+    install_title: "%{site_name} telepítése"
+    install_description: "%{site_name} hozzáadása a kezdőképernyőhöz a gyorsabb elérésért"
+    install_button: Telepítés
+    ios_install_description: A Safariban nyisd meg a Megosztás menüt, és válaszd a Hozzáadás a Főképernyőhöz lehetőséget
   start_trial:
     title: Kezdje el a Loomio ingyenes próbaverzióját
     intro: Köszönjük érdeklődését Loomio iránt. Örömmel kínálunk Önnek egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodjon arról, hogy a Loomio megfelelő-e az Ön szervezete számára.
@@ -190,6 +195,7 @@ hu:
     prefix_eg: pl. %{val}
     are_you_sure: biztos vagy ebben?
     loomio_help: Loomio segítség
+    user_manual: Felhasználói útmutató
     visit_loomio_help: Látogassa meg a Loomio súgóját
     help_and_guides: Súgó és útmutatók
     please_wait: Pillanat
@@ -357,9 +363,16 @@ hu:
       flash: Ellenőrző e-mail elküldve!
       helptext_and_signout: A <strong>%{sourceEmail}</strong> fiókot egyesítheti a <strong>%{targetEmail}</strong> fiókkal. Kattintson az Ellenőrzés gombra, és a folyamat megkezdéséhez egy ellenőrző e-mailt küldünk a %{targetEmail} címre. Kijelentkeztetjük, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
       flash_and_signout: Megerősítő e-mail elküldve a(z) %{targetEmail} címre. Most kijelentkezett, így bejelentkezhet a célfiókként az egyesítés befejezéséhez.
+      generic_helptext: Add meg a másik fiók e-mail címét. Ha a fiók létezik, a Loomio küld neki egy e-mailt az egyesítés megerősítéséhez szükséges utasításokkal.
+      email_label: Egyéb fiók e-mail címe
+      send_verification: Ellenőrző e-mail küldése
+      generic_flash_and_signout: Ha egy másik fiók ezt az e-mail címet használja, akkor egy ellenőrző e-mailt küldtünk. Most kijelentkezett, így folytathatja a másik fiókkal.
+      destination_helptext: Ez a fiók (%{sourceEmail}) egyesülni fog a célfiókkal. Add meg a célfiók e-mail címét. Ha létezik, a Loomio e-mailt küld erre a címre az egyesítés megerősítéséhez.
+      destination_email_label: Célfiók e-mail címe
     email_taken: Sajnáljuk, ez az e-mail már társítva van egy másik felhasználóhoz. Ez az e-mail a tiéd?
     find_out_more: Tudj meg többet.
     placeholder_modal_text: <p>Ha két fiókot szeretne egyesíteni, egyszerűen írja be a megfelelő e-mail címet (amely a másik fiókhoz tartozik) a Profiloldal e-mail mezőjébe, és kövesse a megjelenő utasításokat.</p><p> Kell segítség? <a href="/contact" target="_blank">Vegye fel velünk a kapcsolatot</a> .
+    email_may_belong_to_another_account: Ha ez a cím egy másik fiókhoz tartozik, akkor egyesítheti a fiókokat.
   emoji_picker:
     search: Keresés
     common: Gyakran használt
@@ -435,6 +448,14 @@ hu:
     title_label: Cím
     hint: 'Tipp a következő alkalomra: Próbáljon meg néhány szöveget kiemelni, mielőtt a „Rögzítés” gombra kattint.'
   change_volume_form:
+    context_title:
+      thread: Téma értesítési beállításai
+      group: Csoportértesítési beállítások
+      default: Alapértelmezett értesítési beállítások
+    context:
+      thread: ez a szál
+      group: ez a csoport
+      default: csoportok, amelyekhez csatlakozol
     explain_scope:
       thread: Ez akkor változik, amikor értesítést kap erről a szálról
       group: Ez akkor változik, ha értesítést kap a csoport összes száláról
@@ -517,6 +538,36 @@ hu:
     normal_option: Amikor valaki a figyelmemet akarja (Amikor értesítenek)
     quiet_option: Nincsenek e-mailek erről a témáról (Kikapcsolva)
     quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni.
+    volume_push_label: Push
+    all_activity_option: Minden tevékenység
+    when_notified_option: Értesítéskor
+    muted_option: Tompított
+    volume_channel_label: Hogyan tájékoztassunk?
+    push_channel: Push
+    email_and_push_channel: E-mail és push
+    off_option: Le
+    apply_to_all_threads_in_group: Alkalmazd ezeket a beállításokat a(z) %{group} összes szálára
+    volume_email_label: Email
+    delivery_method: Szállítási mód
+    how_do_you_want_to_stay_updated: Hogyan szeretnél naprakész maradni?
+    catch_up_daily_hint: A napi bepótló e-mailed egy látatlan értesítés és olvasatlan tevékenység.
+    catch_up_every_second_day_hint: A bepótolt e-mail egy minden második nap kiküldött e-mail, amelyen nem látott értesítések és olvasatlan tevékenységek szerepelnek.
+    catch_up_weekly_hint: A bepótló egy heti e-mail, amelyen nem látott értesítések és olvasatlan tevékenységek szerepelnek.
+    catch_up_only_option: Csak felzárkózás
+    no_email_updates_option: Nincsenek e-mail értesítések
+    no_push_updates_option: Nincsenek push frissítések
+    in_app_only_option: Csak alkalmazáson belüli
+    catch_up_only_description: "%{context} tevékenységének belefoglalása a bepótlódásomba"
+    catch_up_only_with_notifications_description: Értesítések és egyéb tevékenységek hozzáadása a(z) %{context} oldalról a frissítéseimhez
+    no_email_updates_description: Ne írjanak nekem e-mailt a(z) %{context} tevékenységeiről
+    no_push_updates_description: Ne küldjön push értesítéseket a(z) %{context} aktivitásáról
+    email_when_notified_description: E-mailben értesítenek, ha értesítést kapok
+    email_when_notified_with_catch_up_description: E-mailben értesítenek, ha értesítést kapok, és a többit is mellékelem a póthírlevelembe.
+    push_when_notified_description: Push értesítés küldése, amikor értesítést kapok
+    push_when_notified_with_catch_up_description: Küldjön push értesítést, amikor értesítést kapok, és a többit is vegye fel a felzárkóztató értesítésembe
+    email_all_activity_description: E-mailt küldök, valahányszor aktivitás történik a(z) %{context}-ben
+    push_all_activity_description: Push értesítés küldése, amikor aktivitás van a(z) %{context} mappában
+    email_channel: Email
   inbox:
     clear: Töröl
     latest: Legutóbbi
@@ -622,6 +673,16 @@ hu:
     email_notifications: E-mail értesítés esetén
     email_none: Nincsenek e-mailek
     new_to_you: Új számodra
+    email_and_push_when_notified: E-mail és push értesítés értesítéskor
+    email_when_notified: E-mail értesítéskor
+    push_when_notified: Push értesítés értesítéskor
+    daily_catch_up_email: Napi összefoglaló e-mail
+    in_app_only: Csak az alkalmazásban
+    email_and_device_when_notified: E-mail és eszközértesítés értesítéskor
+    device_notification_when_notified: Eszközértesítés értesítéskor
+    no_notifications: Nincsenek értesítések
+    catch_up_email_every_second_day: Feltöltő e-mail minden második nap
+    weekly_catch_up_email: Heti összefoglaló e-mail
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -681,6 +742,7 @@ hu:
     light_blue: Világoskék
     dark_blue: Sötétkék
     whats_new: Újdonságok
+    mobile_app_settings: Mobil beállítások
   membership_card:
     group_members: Csoporttagok
     poll_members: "%{pollType} tagjai"
@@ -757,6 +819,7 @@ hu:
       new_discussion: "%{actor} beszélgetést indított: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -795,6 +858,7 @@ hu:
       new_comment: "%{actor} hozzászólást tett egy beszélgetésben"
       outcome_updated: "%{actor} frissítette az eredményt"
       thread_locked: "%{actor} zárolta a témát"
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -839,6 +903,7 @@ hu:
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       thread_locked: "%{actor} zárolta a témát: %{title}"
+      membership_request_declined: A(z) %{title} közösséghez való csatlakozási kérelmét elutasították
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -936,7 +1001,7 @@ hu:
     audiences:
       group: A(z) %{name} tagjai
       everyone_in_the_group: Mindenki a csoportban
-      discussion_group: Mindenki ebben a témában
+      topic: Mindenki ebben a témában
       voters: Mindenki, aki szavazhat
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott
@@ -1171,6 +1236,8 @@ hu:
     membership_requested: Felvétel kérve
     messages:
       joined_group: Most a(z) %{group} tagja vagy
+    membership_request_declined: 'Csatlakozási kérelmét elutasították: %{reason}'
+    request_membership_again: Kérj újra csatlakozást
   membership_request_form:
     heading: Kérj belépőt a csoportba
     name_label: Név
@@ -1215,6 +1282,8 @@ hu:
     body: Biztosan törli ezt az alcsoportot? Az összes szál, szavazás, fájl és egyéb csoporttartalom véglegesen törlődik. Javasoljuk, hogy a folytatás előtt exportálja a csoportadatokat, és manuálisan töltse le a fontos fájlokat.
     confirm: A csoport törlésének megerősítéséhez írja be a „%{name}” parancsot.
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
+    scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
+    deletion_after_grace_period: Ez a csoport nem érhető el, és %{days} nap múlva véglegesen törlésre kerül
   group_page:
     stats: Csoport statisztika
     threads: Témák
@@ -1422,7 +1491,7 @@ hu:
     remove_background: háttér eltávolítása
     remove_logo: logó eltávolítása
     members_can_create_templates: A tagok sablonokat hozhatnak létre
-    members_can_create_templates_help: Engedélyezd a tagok számára a beszélgetési és szavazási sablonok létrehozását. A tagok által létrehozott sablonok rejtve maradnak, amíg egy adminisztrátor fel nem oldja azokat.
+    members_can_create_discussion_and_poll_templates_help: Engedélyezd a tagok számára a beszélgetési és szavazási sablonok létrehozását
     members_can_start_discussions_v2: A tagok új beszélgetéseket indíthatnak
     members_can_start_discussions_help_v2: Engedélyezd a tagok számára új beszélgetések indítását a csoporton belül
     members_can_edit_discussions_v2: A tagok kezelhetik a beszélgetéseket és a hozzászólásokat
@@ -1431,6 +1500,8 @@ hu:
     handle_changed_hint: Az előző URL-címed és e-mail címed átirányít az új címedre.
     members_can_create_tags: A tagok címkéket hozhatnak létre
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
+    non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
+    non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1451,6 +1522,11 @@ hu:
     messages:
       request_approved_success: A tagsági kérelem jóváhagyva
       request_ignored_success: A tagsági kérelmet figyelmen kívül hagyták
+      request_declined_success: Tagsági kérelem elutasítva
+    decline: Hanyatlás
+    decline_request: Tagsági kérelem elutasítása
+    decline_reason: Az elutasítás oka
+    decline_help: Az Elutasítás esetén az indoklás e-mailben elküldésre kerül a kérelmezőnek. A kérelmező új kérelmet nyújthat be. A Figyelmen kívül hagyás esetén a kérelem értesítés nélkül lezárásra kerül.
   invitation_form:
     group_url: Csoport URL-je
     reusable_invitation_link: Újrafelhasználható meghívó link
@@ -1539,6 +1615,8 @@ hu:
     online_field: 'Online: %{value}'
     invited: Meghívott %{value}
     message_user: 'Üzenet: %{name}'
+    recent_activity: Legutóbbi tevékenységek
+    no_recent_activity: Nincs friss tevékenység
   contact_request_form:
     modal_title: 'E-mail: %{name}'
     message_placeholder: Mutassa be magát és ossza meg miért szeretne kapcsolatba lépni.
@@ -1629,8 +1707,7 @@ hu:
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
-    on_participation_label: Feliratkozás a részvételre
-    on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
+    digest_email: Felzárkóztató összefoglaló e-mail
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat
@@ -1646,8 +1723,14 @@ hu:
     learn_more: További információ az e-mail beállításokról ...
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
     daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
+    digest_email_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
     never: Soha
     send_email: E-mail küldése
+    group_notifications: Csoportértesítések
+    group_notifications_description: Módosítsd a csoportok aktivitási szintjét és csatornáját
+    choose_email_and_push_updates: Válasszon külön beállításokat az e-mailhez és a push üzenethez
+    catch_up_email: Felzárkóztató e-mail
+    catch_up_email_description: Válassza ki, mikor szeretne értesítést kapni a látatlan értesítésekről és az olvasatlan tevékenységekről
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
@@ -1749,7 +1832,7 @@ hu:
     title: Látta
     no_one: Még senki sem látta
     disabled_anonymous_polls: A megtekintési előzmények le vannak tiltva, mert a szál névtelen szavazásokat tartalmaz
-    thread_engagement: Thread engagement
+    thread_engagement: Részvétel a beszélgetésben
   activity_card:
     count_responses: "%{count} válasz"
     beginning: Kezdet
@@ -2068,6 +2151,7 @@ hu:
     order_by_created_desc: Legújabb
     order_by_admin_desc: Adminok
     loaded_of_total: "%{loaded} ennyiből %{total}"
+    topics_loaded_of_total: "%{loaded} ennyiből %{total}"
     view_requests: Kérések megtekintése
     header_name: Név
     header_username: Felhasználónév
@@ -2130,7 +2214,6 @@ hu:
     voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
     unable_to_vote: Nem kaptál meghívást szavazásra erre a(z) %{poll_type} elemre
     anonymous_votes_are_stored_separately_from_voter_identities: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények a szavazás lezárása után jelennek meg.
-    legacy_anonymous_voting_format: Ez a szavazás a hagyományos anonim szavazási formátumot használja.
     anonymous_vote_cannot_be_changed: A szavazat beküldése után nem lehet azt felülvizsgálni vagy módosítani.
     anonymous_vote_recorded: A szavazatát rögzítettük
     legacy_vote_reasons: Korábbi szavazatok indokai
@@ -2389,7 +2472,6 @@ hu:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> áthelyezte a szálat innen <strong>: %{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lezárta a szálat"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> újra megnyitotta a szálat"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> létrehozta a szál elágazását: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> megosztott egy eredményt"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> újra megnyitotta a(z) %{polltype}"
@@ -2422,6 +2504,7 @@ hu:
     sign_up_as: Fiók létrehozása mint %{email}
     sign_in_as: 'Bejelentkezés itt: %{name}'
     continue_with_provider: 'Folytatás a következővel: %{provider}'
+    sign_in_with_provider: 'Bejelentkezés ezzel: %{provider}'
     continue_with_email: Folytatás email fiókkal
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved
@@ -2480,6 +2563,22 @@ hu:
     invalid_login: Nem sikerült bejelentkezni ezekkel az adatokkal.
     login_link_rate_limited: Túl sok bejelentkezési e-mailt kértek erről a hálózatról. Kérjük, várjon egy órát, és próbálja újra.
     send_login_link_error: Hiba történt a bejelentkezési e-mail elküldésekor. Kérjük, próbálja újra.
+    sign_in_with_passkey: Bejelentkezés jelszóval
+    passkey_authentication_failed: Nem tudtuk bejelentkezni ezzel a jelszóval
+    passkey_registration_failed: Nem tudtuk menteni a jelszót
+    passkey_default_name: Jelszó
+    local_login_disabled: Ez az oldal egyszeri bejelentkezést igényel
+    email_me_a_sign_in_code: Küldj nekem egy bejelentkezési kódot e-mailben
+    sign_in_with_code: Bejelentkezés kóddal
+    new_to_site: Új vagy itt?
+    passkey_recent_authentication_required: Jelentkezzen be újra a jelszavak módosítása előtt
+    email_code_help: Add meg az e-mail címed, és küldünk neked egy hatjegyű bejelentkezési kódot
+    or_sign_in_with_password: Vagy jelentkezzen be jelszóval
+    login_link_sent_if_account_exists: Ha létezik fiók a(z) %{email} címhez, bejelentkezési kódot küldünk.
+    use_a_passkey: Használjon jelszót
+    send_me_a_code: Küldj nekem egy kódot
+    email_code_help_short: Hatjegyű kódot küldünk az e-mail címedre
+    login_link_sent_if_account_exists_sentence: Ha létezik fiók a(z) %{email} címhez, küldünk egy bejelentkezési kódot.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -2621,6 +2720,14 @@ hu:
     tags_per_interval: Cimkék per %{interval}
     all_groups_and_direct_threads: Minden csoport és közvetlen szál
     custom_selection: Egyéni kijelölés
+    all_votes_cast: Minden leadott szavazat
+    votes_cast: Leadott szavazatok
+    votes_issued: Kiadott szavazatok
+    votes_missed: Elmaradt szavazatok
+    voting_record_per_user: Szavazási rekord felhasználónként
+    yes_label: Igen
+    no_label: Nem
+    delegates_only: Csak küldöttek
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája
@@ -2692,8 +2799,6 @@ hu:
     anonymous:
       title: Névtelen szavazók
       helptext_on: Ha be van jelölve, a résztvevők adatai nem jelennek meg minden egyes válasznál.
-    voter_can_add_options:
-      title: A szavazók alternatív lehetőségeket is hozzáadhatnak
     can_respond_maybe:
       title: A választók „szükség esetén” válaszolhatnak.
     allow_long_reason:
@@ -2820,7 +2925,10 @@ hu:
     anonymous_votes_are_stored_separately_from_voter_identities_description: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények a szavazás lezárása után jelennek meg. A szavazók nem adhatnak meg indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
     anonymous_voting_explanation: Lehetetlenné teszi annak megállapítását, hogy valaki hogyan szavazott. A névtelen szavazatokat a szavazók személyazonosságától elkülönítve rögzítik. Az eredmények csak a szavazás lezárása után jelennek meg. A szavazók nem fűzhetnek hozzá indoklást, nem tekinthetik át szavazatukat a beküldés után, és nem módosíthatják azt.
     anonymous_voting_risk_explanation: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények csak a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak indoklást, nem tekinthetik meg a szavazatukat a beküldés után, és nem módosíthatják azt. Ezek az intézkedések csökkentik annak kockázatát, hogy egy személyt egy szavazathoz kapcsoljanak, de az eredmények továbbra is felfedhetnek információt, ha kevesen jogosultak szavazni vagy kevesen szavaznak, az eredmény egyhangú, a szavazási minták jellegzetesek, vagy a szavazók nyilvánosságra hozzák választásaikat.
+    anonymous_votes_stored_separately: A névtelen szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények csak a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak indoklást, nem tekinthetik meg a szavazatukat a beküldés után, és nem módosíthatják azt.
     stance_reason_required_when_disagreeing: Kötelező, ha nem ért egyet
+    stance_reason_required_for_disagree_or_block: Kötelező a nemetmondáshoz vagy a blokkoláshoz
+    stance_reason_required_for_block: Kötelező a blokkoláshoz
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
@@ -2964,9 +3072,6 @@ hu:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: szavazatok
     candidate: Jelölt
     round_elected: Megválasztott forduló
@@ -2976,6 +3081,9 @@ hu:
     round_details: Körről körre részletek
     view_full_results: Teljes eredmények megtekintése
     results_available_when_closed: Az eredmények a szavazás lezárultával lesznek elérhetők
+    elected_in_round: Megválasztva a(z) %{round}. fordulóban
+    eliminated_in_round: Kiesett a(z) %{round}. körben
+    tied_in_round: Döntetlen a %{round} körben
   lock_thread_modal:
     body: Zárold a témákat, hogy eltávolítsd őket a megnyitott témák listájából, és megakadályozd, hogy mások hozzászóljanak.
     explanation: Zárold a témákat, hogy megakadályozd a felhasználók hozzászólását vagy további módosításokat
@@ -3005,3 +3113,48 @@ hu:
     nobody_will_be_notified: Senkit sem fognak értesíteni
     one_person_will_be_notified: 1 személy értesítést kap
     x_people_will_be_notified: "%{count} embert értesítenek"
+  push_notifications:
+    title: Push értesítések
+    subtitle: Értesítések fogadása ebben a böngészőben
+    not_supported: A push értesítések nem érhetők el ebben a böngészőben
+    permission_denied: A push értesítések le vannak tiltva a böngésző beállításaiban
+    manage_devices: Push értesítési eszközök kezelése
+    enabled: Push értesítések engedélyezve ebben a böngészőben
+    disabled: Push értesítések letiltva ebben a böngészőben
+    device_removed: Push értesítési eszköz eltávolítva
+    enable_device: Engedélyezés ebben a böngészőben
+    disable_device: Letiltás ebben a böngészőben
+    devices: Engedélyezett böngészők
+    browser_device: Böngésző
+    remove_device: Böngésző eltávolítása
+    enable_from_loomio: Engedélyezze a push értesítéseket az értesítési beállításokban, miközben bejelentkezett a Loomio-ba
+    ios_add_to_home_screen_before_enabling: iPhone-on vagy iPaden a Megosztás funkcióval adhatod hozzá a Loomiót a kezdőképernyőhöz. Nyisd meg a Loomiót az új ikonnal, majd engedélyezd a push értesítéseket itt.
+  group_follow:
+    follow: Frissítések követése
+    unfollow: Frissítések követésének megszüntetése
+    followed: Mostantól követed a csoport frissítéseit
+    unfollowed: Már nem követed a csoport frissítéseit
+  passkey_settings:
+    title: Jelszavak
+    helptext: A jelszók lehetővé teszik, hogy e-mail cím vagy jelszó megadása nélkül jelentkezzen be eszközével
+    none: Nem adott hozzá jelszót
+    name: Jelszó neve
+    name_placeholder: Például, munkahelyi laptop
+    add: Jelszó hozzáadása
+    added: Hozzáadott jelszó
+    created_at: Hozzáadva %{date}
+    remove_named: "%{name} eltávolítása"
+    remove_confirm: Eltávolítja a(z) %{name} nevű jelszót?
+    removed: Jelszó eltávolítva
+    remove_failed: A jelszót nem sikerült eltávolítani
+  credential_prompt:
+    title: További bejelentkezési mód hozzáadása
+    helptext: Hozzáadhat egy jelszót vagy beállíthat egy jelszót, hogy bejelentkezhessen anélkül, hogy e-mailben kapott kódra kellene várnia
+    add_passkey: Hozzáadás egy jelszót
+    set_password: Jelszó beállítása
+    not_now: Most nem
+    passkey_description: A passkey segítségével gyorsan bejelentkezhetsz az eszközöd ujjlenyomat-olvasójával, arcfelismerésével vagy képernyőzárával
+    set_new_password: Új jelszó beállítása
+  account_completion:
+    complete_your_account: Fiókod kitöltése
+    continue: Folytatás

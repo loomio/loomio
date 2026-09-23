@@ -1,3 +1,5 @@
+require_relative "support/legacy_standalone_poll_topic_service"
+
 class MarkClosedPollTopicsRead < ActiveRecord::Migration[8.0]
   def up
     if ENV['CANONICAL_HOST'] == 'www.loomio.com'
@@ -6,7 +8,7 @@ class MarkClosedPollTopicsRead < ActiveRecord::Migration[8.0]
     end
 
     say "Starting closed poll topic read backfill..."
-    stats = PollService.mark_closed_poll_topics_read
+    stats = LegacyStandalonePollTopicService.mark_closed_topics_read
     say "Marked #{stats[:topics]} closed poll topics as read"
     say "Created #{stats[:readers_created]} topic readers"
     say "Updated #{stats[:readers_updated]} topic readers"

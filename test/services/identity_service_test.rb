@@ -64,6 +64,73 @@ class IdentityServiceTest < ActiveSupport::TestCase
     assert_equal true, unverified_user.reload.email_verified
   end
 
+  test "initializes an invited user's name from the identity before verifying them" do
+    invited_user = User.create!(
+      email: "invited@example.com",
+      email_verified: false,
+      username: "inviteduser"
+    )
+
+    identity = IdentityService.link_or_create(
+      identity_params: @identity_params.merge(email: invited_user.email),
+      current_user: nil
+    )
+
+    assert_equal invited_user, identity.user
+    assert_equal "OAuth User", invited_user.reload.name
+    assert_predicate invited_user, :email_verified?
+  end
+
+  test "repairs a nameless user from their existing identity" do
+    user = User.create!(email: "existing@example.com", email_verified: true)
+    Identity.create!(
+      user: user,
+      uid: @identity_params[:uid],
+      identity_type: @identity_params[:identity_type],
+      email: user.email,
+      name: "Original identity name"
+    )
+
+    IdentityService.link_or_create(
+      identity_params: @identity_params.merge(email: user.email),
+      current_user: nil
+    )
+
+    assert_equal "OAuth User", user.reload.name
+  end
+
+  test "creates an incomplete account when the provider supplies no name" do
+    identity = nil
+    assert_difference ["Identity.count", "User.count"], 1 do
+      identity = IdentityService.link_or_create(
+        identity_params: @identity_params.except(:name),
+        current_user: nil
+      )
+    end
+
+    assert_nil identity.user.name
+    assert_predicate identity.user, :incomplete?
+  end
+
+  test "retains an existing user's name when the provider supplies no name" do
+    user = User.create!(
+      email: @identity_params[:email],
+      name: "Existing User",
+      email_verified: true
+    )
+
+    assert_difference "Identity.count", 1 do
+      assert_no_difference "User.count" do
+        IdentityService.link_or_create(
+          identity_params: @identity_params.except(:name),
+          current_user: nil
+        )
+      end
+    end
+
+    assert_equal "Existing User", user.reload.name
+  end
+
   test "creates pending identity when user already signed in" do
     current_user = users(:user)
 

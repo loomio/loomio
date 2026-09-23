@@ -1,6 +1,6 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import Flash   from '@/shared/services/flash';
+import Flash       from '@/shared/services/flash';
+import PollService from '@/shared/services/poll_service';
 import { addDays } from 'date-fns';
 
 export default {
@@ -19,7 +19,13 @@ export default {
       this.poll.reopen().then(() => {
         this.poll.processing = false;
         Flash.success("poll_common_reopen_form.success", {poll_type: this.poll.translatedPollType()});
-        this.close();
+
+        const remindAction = PollService.actions(this.poll).remind_poll;
+        if (remindAction.canPerform()) {
+          remindAction.perform();
+        } else {
+          this.close();
+        }
       });
     }
   }

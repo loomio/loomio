@@ -50,7 +50,7 @@ class User < ApplicationRecord
   validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
-  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
+  validates_format_of :username, with: MentionParser::USERNAME_PATTERN, message: I18n.t(:'user.error.username_must_use_valid_characters')
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
@@ -62,9 +62,11 @@ class User < ApplicationRecord
 
   has_many :memberships, -> { active }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
+  has_many :group_follows, dependent: :destroy
+  has_many :followed_groups, through: :group_follows, source: :group
 
   has_many :adminable_groups,
-           -> { where(archived_at: nil) },
+           -> { where(discarded_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
@@ -74,7 +76,7 @@ class User < ApplicationRecord
            dependent: :destroy
 
   has_many :groups,
-           -> { where archived_at: nil },
+           -> { where(discarded_at: nil) },
            through: :memberships
 
   has_many :discussions, through: :groups
@@ -100,22 +102,29 @@ class User < ApplicationRecord
 
   has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
-  has_many :notifications, dependent: :destroy
+  has_many :notification_deliveries, as: :recipient, dependent: :destroy
+  has_many :notifications, through: :notification_deliveries
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :passkey_credentials, dependent: :destroy
   has_many :sessions, dependent: :destroy
-  has_many :events, dependent: :destroy
+  has_many :mobile_devices, dependent: :destroy
+  has_many :mobile_push_registrations, through: :mobile_devices
+  has_many :topic_items, dependent: :destroy
+  has_many :push_subscriptions, dependent: :destroy
 
   has_many :tags, through: :groups
 
   before_save :set_avatar_initials
+  after_save :join_default_onboarding_group, if: :became_registered_user?
 
   initialized_with_token :unsubscribe_token
   initialized_with_token :email_api_key
   initialized_with_token :api_key
   initialized_with_token :secret_token
 
-  enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
+  enum :volume_email_default, {quiet: 1, normal: 2, loud: 3}, prefix: :email_default
+  enum :volume_push_default, {quiet: 1, normal: 2, loud: 3}, prefix: :push_default
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }
@@ -144,13 +153,9 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
-  scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
-
-  scope :email_proposal_closing_soon_for, -> (group) {
-     email_when_proposal_closing_soon
-    .joins(:memberships)
-    .where('memberships.group_id': group.id)
-  }
+  def has_passkey?
+    passkey_credentials.exists?
+  end
 
   def default_format
     if experiences['html-editor.uses-markdown']
@@ -170,7 +175,7 @@ class User < ApplicationRecord
 
   def is_paying?
     group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
-    Group.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
+    Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
   def is_paying
@@ -198,8 +203,33 @@ class User < ApplicationRecord
     self.legal_accepted_at = Time.now
   end
 
+  # Deployments can place every new account in a preconfigured welcome group.
+  def join_default_onboarding_group
+    return unless AppConfig.default_onboarding_group_id
+
+    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+  end
+
+  def became_registered_user?
+    name.present? && (previously_new_record? || (saved_change_to_name? && name_before_last_save.blank?))
+  end
+
   def require_legal_accepted
-    self.require_valid_signup && ENV['TERMS_URL']
+    self.require_valid_signup && legal_acceptance_required?
+  end
+
+  # Existing accounts without a recorded acceptance can continue using Loomio
+  # until an operator explicitly enables enforcement for them. New accounts
+  # still complete the terms step before their first session.
+  def legal_acceptance_required?
+    return false if ENV['TERMS_URL'].blank? || legal_accepted_at.present?
+    return true if ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'].present?
+
+    current_sign_in_at.blank? && last_seen_at.blank? && sign_in_count.to_i.zero?
+  end
+
+  def incomplete?
+    name.blank? || legal_acceptance_required?
   end
 
   def self.email_status_for(email)
@@ -216,7 +246,7 @@ class User < ApplicationRecord
 
   def self.authenticate_by(attributes)
     user = find_for_database_authentication(email: attributes[:email] || attributes[:email_address])
-    return unless user&.active_for_authentication?
+    return unless user&.active?
     return if user.access_locked?
 
     user if user.valid_password?(attributes[:password])
@@ -254,8 +284,12 @@ class User < ApplicationRecord
     password.present? || password_confirmation.present?
   end
 
-  def active_for_authentication?
-    !deactivated_at
+  def active?
+    !deactivated?
+  end
+
+  def deactivated?
+    deactivated_at.present?
   end
 
   def access_locked?
@@ -268,7 +302,7 @@ class User < ApplicationRecord
 
   def increment_failed_attempts!
     with_lock do
-      unlock_access! unless access_locked?
+      unlock_access! if locked_at.present? && !access_locked?
       increment!(:failed_attempts)
       lock_access! if failed_attempts >= MAXIMUM_LOGIN_ATTEMPTS
     end

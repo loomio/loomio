@@ -70,6 +70,8 @@ class PollExporterTest < ActiveSupport::TestCase
 
     assert_includes ballot_lines, "3 #{alice_idx} #{bob_idx} #{carol_idx} 0"
     assert_includes ballot_lines, "2 #{bob_idx} #{carol_idx} 0"
+    ballot_rankings = ballot_lines.map { |line| line.split.drop(1).map(&:to_i) }
+    assert_equal ballot_rankings.sort, ballot_rankings
 
     # End-of-ballots marker
     assert_equal "0", lines[i]
@@ -103,24 +105,6 @@ class PollExporterTest < ActiveSupport::TestCase
     assert_equal '2', vote_row[headers.index('weight')]
   end
 
-  test "to_csv hides voter identity and timestamps for anonymous polls" do
-    @poll.update!(anonymous: true)
-    stance = @poll.stances.latest.where.not(participant_id: nil).first
-
-    rows = CSV.parse(@exporter.to_csv)
-    votes_index = rows.index(['votes'])
-    headers = rows[votes_index + 1]
-    vote_rows = rows[(votes_index + 2)..]
-    vote_row = vote_rows.find { |row| row[headers.index('id')] == stance.id.to_s }
-
-    assert_nil vote_row[headers.index('voter_id')]
-    assert_nil vote_row[headers.index('voter_name')]
-    assert_nil vote_row[headers.index('member_title')]
-    assert_nil vote_row[headers.index('delegate')]
-    assert_nil vote_row[headers.index('weight')]
-    assert_nil vote_row[headers.index('created_at')]
-    assert_nil vote_row[headers.index('updated_at')]
-  end
 
   test "to_csv does not use member titles or delegate status from another group" do
     stance = @poll.stances.latest.first

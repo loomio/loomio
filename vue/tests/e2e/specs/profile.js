@@ -5,17 +5,22 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.ensureSidebar()
-    page.click('.sidebar__user-dropdown')
-    page.click('.user-dropdown__list-item-button--profile')
+    page.goTo('profile')
+    page.waitFor('.profile-page__name-input input')
 
+    page.clearField('.profile-page__name-input input')
     page.fillIn('.profile-page__name-input input', 'Ferris Bueller')
-    page.fillIn('.profile-page__username-input input', 'ferrisbueller')
+    page.clearField('.profile-page__username-input input')
+    page.fillIn('.profile-page__username-input input', 'ferris_bueller-jr')
+    page.click('.profile-page .e2e-wysiwyg-btn')
+    page.waitFor('.profile-page .lmo-textarea div[contenteditable=true]')
+    page.fillIn('.profile-page .lmo-textarea div[contenteditable=true]', 'Save Ferris')
     page.click('.profile-page__update-button')
+    page.expectFlash('Profile updated')
 
-    page.ensureSidebar()
-    page.click('.sidebar-close-settings');
-    page.expectText('.sidebar__user-dropdown .v-list-item-title', 'Ferris Bueller')
+    page.goTo('u/ferris_bueller-jr')
+    page.expectText('.user-page__content', 'Ferris Bueller')
+    page.expectText('.user-page__content', 'Save Ferris')
   },
 
   'displays_a_user_and_their_non-secret_groups': (test) => {
@@ -25,6 +30,8 @@ module.exports = {
     page.goTo('u/jennifergrey')
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
+    page.expectText('.user-page__activity', 'What star sign are you?')
+    page.expectNoText('.user-page__activity', 'Jennifer Grey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')
   },
 
@@ -116,7 +123,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   },
 
   // e2e broken, function works fine
@@ -134,7 +141,7 @@ module.exports = {
   //   page.click('.confirm-modal__submit')
   //   page.expectFlash('Verification email sent!')
   //   page.loadLastEmail()
-  //   page.click('.base-mailer__button')
+  //   page.click('.email-button')
   //   page.pause()
   //   page.click('.btn--accent--raised')
   //   page.expectText('.header', "Merge successful!")
@@ -145,7 +152,7 @@ module.exports = {
 
     page.loadPathNoApp('setup_merge_verification_email')
     page.loadLastEmail()
-    page.click('.base-mailer__button')
+    page.click('.email-button')
     page.pause(500)
     page.expectElement('.btn--accent--raised')
     page.click('.btn--accent--raised')
@@ -157,27 +164,16 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.pause(500)
     page.goTo('profile')
-    page.waitFor('.profile-page__email-input input')
+    page.click('.user-page__merge_accounts')
+    page.waitFor('.merge-accounts-modal')
+    page.fillIn('.merge-accounts-modal__destination-email input', 'jennifer@example.com')
+    page.click('.merge-accounts-modal__submit')
 
-    // Enter an email that belongs to another user and trigger the existence check
-    page.execute("var el = document.querySelector('.profile-page__email-input input'); el.value = 'jennifer@example.com'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('keyup', {bubbles: true}));")
-    page.pause(1000)
-
-    page.expectElement('.profile-page__email-taken')
-    page.click('.email-taken-find-out-more')
-    page.waitFor('.confirm-modal')
-
-    // Confirm dialog should explain the user will be signed out
-    page.expectText('.confirm-modal', 'You will be signed out')
-
-    page.click('.confirm-modal__submit')
-
-    // After sign out + hardReload to /, user should see the auth modal on any authenticated page
+    // Sending the verification email signs the source account out.
     page.pause(3000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   }
 
 }

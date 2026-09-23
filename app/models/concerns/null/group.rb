@@ -15,6 +15,10 @@ module Null::Group
     false
   end
 
+  def membership_for(_user)
+    nil
+  end
+
   def full_name
     I18n.t('discussion.direct')
   end
@@ -38,8 +42,6 @@ module Null::Group
       update_discussions_count
       update_discussion_templates_count
       update_org_members_count
-      presence
-      present?
       content_locale
       handle
       description
@@ -53,7 +55,8 @@ module Null::Group
       cover_url
       logo_url
       category
-      archived_at
+      discarded_at
+      discarded_by
       request_to_join_prompt
     )
   end
@@ -103,6 +106,7 @@ module Null::Group
       members_can_add_members
       members_can_create_subgroups
       members_can_start_discussions
+      non_members_can_start_discussions
       admins_can_edit_user_content
       members_can_create_templates
       listed_in_explore
@@ -140,8 +144,7 @@ module Null::Group
       poll_templates: :poll_template,
       discussion_templates: :discussion_template,
       memberships: :membership,
-      admins: :user,
-      webhooks: :webhook,
+      admins: :user
     }
   end
 
@@ -159,6 +162,22 @@ module Null::Group
 
   def parent_or_self
     self
+  end
+
+  def enabled?
+    true
+  end
+
+  def kept?
+    true
+  end
+
+  def discarded?
+    false
+  end
+
+  def subscription_active?
+    true
   end
 
   def self_or_parent_logo_url(size = 512)

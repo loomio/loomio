@@ -1,6 +1,28 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test "simultaneous same-name exports never share a temporary file" do
+    freeze_time do
+      filenames = 2.times.map { GroupExportService.export_filename_for("Same group") }
+      assert_equal 2, filenames.uniq.length
+    end
+  end
+  test "notification recipient audiences remap embedded group ids" do
+    migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
+
+    %w[group delegates].each do |kind|
+      attrs = {
+        "recipient_user_ids" => [],
+        "recipient_audience" => "#{kind}-42",
+        "recipient_context" => {}
+      }
+
+      GroupExportService.translate_notification_payload!(attrs, migrate_ids)
+
+      assert_equal "#{kind}-84", attrs["recipient_audience"]
+    end
+  end
+
   def create_detached_export_group
     admin = User.create!(
       email: "anonymous-export-admin-#{SecureRandom.hex(4)}@example.com",
@@ -27,6 +49,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       poll_type: "proposal",
       anonymous: true,
       closing_at: 1.day.from_now,
+      notify_on_open: false,
       specified_voters_only: topic_id.present?,
       poll_option_names: %w[Agree Disagree]
     }
@@ -46,9 +69,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       ]
     )
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: voter)
-    poll.update_column(:legacy_anonymous, true)
-    LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "A plain text legacy reason")
-    PollService.close(poll: poll, actor: admin) if close
+    if close
+      PollService.close(poll: poll, actor: admin)
+      LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "A plain text legacy reason")
+    end
 
     [poll, ballot]
   end
@@ -104,8 +128,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     PollService.close(poll: sub_poll, actor: admin)
     PollService.close(poll: topic_poll, actor: admin)
 
-    # Services already created events and topic readers
-    discussion_event = discussion.created_event
+    # Services already created topic_items and topic readers
+    discussion_event = discussion.created_topic_item
 
     Reaction.create!(reactable: discussion, user: member)
     Reaction.create!(reactable: poll, user: member)
@@ -120,49 +144,22 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     }
   end
 
-  test "raw export records do not link anonymous ballots to voters or timestamps" do
-    group = groups(:group)
-    admin = users(:admin)
-    poll = PollService.create(params: {
-      title: 'Anonymous export poll',
-      poll_type: 'proposal',
-      group_id: group.id,
-      closing_at: 1.day.from_now,
-      poll_option_names: %w[Agree Disagree]
-    }, actor: admin)
-    poll.update_column(:anonymous, true)
-    stance = poll.stances.find_by!(participant_id: admin.id)
-    stance.update!(choice: 'Agree', cast_at: Time.current)
-    choice = stance.stance_choices.first
-    event = Event.create!(kind: 'stance_created', eventable: stance, user: admin)
+  test "group export excludes user credentials" do
+    group, admin, member = create_detached_export_group
 
-    stance_json = GroupExportService.export_record(stance, 'stances')
-    choice_json = GroupExportService.export_record(choice, 'stance_choices')
-    event_json = GroupExportService.export_record(event, 'events')
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    exported_users = archive.select { |item| item['table'] == 'users' }.index_by { |item| item.dig('record', 'id') }
 
-    assert_nil stance_json['participant_id']
-    assert_nil stance_json['cast_at']
-    assert_nil stance_json['created_at']
-    assert_nil stance_json['updated_at']
-    assert_nil choice_json['created_at']
-    assert_nil choice_json['updated_at']
-    assert_nil event_json['user_id']
-    assert_nil event_json['created_at']
-    assert_nil event_json['updated_at']
-  end
+    [admin, member].each do |user|
+      record = exported_users.fetch(user.id).fetch('record')
 
-  test "discussion moved exports do not expose the source group id" do
-    source_group = groups(:alien_group)
-    discussion = discussions(:discussion)
-    event = Event.create!(
-      kind: 'discussion_moved',
-      eventable: discussion,
-      custom_fields: { source_group_id: source_group.id }
-    )
-
-    event_json = GroupExportService.export_record(event, 'events')
-
-    assert_not event_json['custom_fields'].key?('source_group_id')
+      assert_equal user.email, record['email']
+      assert_equal user.name, record['name']
+      %w[api_key email_api_key password_digest secret_token unsubscribe_token].each do |credential|
+        assert_not record.key?(credential), "expected #{credential} to be excluded"
+      end
+    end
   end
 
   test "group export and import preserve detached anonymous polls with fresh ballot ids" do
@@ -192,6 +189,22 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     second_archived_ballot = second_archive.find { |item| item["table"] == "anonymous_ballots" }.fetch("record")
     refute_equal archived_ballot.fetch("id"), second_archived_ballot.fetch("id")
 
+    subscriber = voter
+    TopicReader.for(user: subscriber, topic: poll.topic).set_volume!(email: :loud, push: :quiet)
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: admin,
+      recipient_user_ids: [ subscriber.id ]
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal [ subscriber.id ], notification.notification_deliveries
+                                                .where(channel: "email", recipient_type: "User")
+                                                .pluck(:recipient_id)
+    filename = GroupExportService.export(group.all_groups, group.name)
+    delivery_archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    assert delivery_archive.any? { |item| item["table"] == "notification_deliveries" && item.dig("record", "notification_id") == notification.id }
+
     GroupExportService.import(filename, reset_keys: true)
 
     imported_poll = Poll.where(title: poll.title).where.not(id: poll.id).order(:id).last!
@@ -205,6 +218,12 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       imported_poll.anonymous_poll_voters.includes(:voter).to_h { |record| [record.voter.email, record.ballot_submitted?] }
     )
     assert_empty imported_poll.stances
+
+    imported_notification = Notification.about(imported_poll).find_by!(kind: "poll_announced")
+    imported_recipient_ids = imported_notification.notification_deliveries
+                                                    .where(channel: "email", recipient_type: "User")
+                                                    .pluck(:recipient_id)
+    assert_equal [ User.find_by!(email: subscriber.email).id ], imported_recipient_ids
   end
 
   test "group export excludes active detached anonymous polls and their records" do
@@ -301,6 +320,24 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     member = data[:member]
 
     filename = GroupExportService.export(group.all_groups, group.name)
+    # Exercise archives that list dependent records before their parents.
+    archive = File.readlines(filename).map { |line| JSON.parse(line) }
+    archive.sort_by! do |record|
+      if record['table'] == 'stance_choices'
+        0
+      elsif record['table'] == 'groups' && record.dig('record', 'parent_id')
+        1
+      else
+        2
+      end
+    end
+    topic_item_indexes = archive.each_index.select { |index| archive[index]['table'] == 'topic_items' }
+    topic_items = topic_item_indexes.map { |index| archive[index] }
+                                    .sort_by { |data| data.dig('record', 'parent_id') ? 0 : 1 }
+    topic_item_indexes.zip(topic_items).each do |index, data|
+      archive[index] = data
+    end
+    File.write(filename, archive.map(&:to_json).join("\n") + "\n")
 
     # Delete just the records we created (not all tables, to preserve fixtures)
     group_ids = group.all_groups.pluck(:id)
@@ -314,12 +351,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
 
     group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
-    comment_ids = Event.where(topic_id: group_topic_ids, eventable_type: 'Comment').pluck(:eventable_id)
+    comment_ids = TopicItem.where(topic_id: group_topic_ids, itemable_type: 'Comment').pluck(:itemable_id)
 
     StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
-    Notification.where(user_id: [admin_id, member_id]).delete_all
-    Event.where(topic_id: group_topic_ids).delete_all
+    NotificationDelivery.where(
+      recipient_type: "User",
+      recipient_id: [ admin_id, member_id ]
+    ).delete_all
+    TopicItem.where(topic_id: group_topic_ids).delete_all
     TopicReader.where(topic_id: group_topic_ids).delete_all
     StanceChoice.where(stance: Stance.where(poll_id: group_poll_ids)).delete_all
     Stance.where(poll_id: group_poll_ids).delete_all

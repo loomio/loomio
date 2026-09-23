@@ -53,6 +53,24 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "safe_to_fetch? rejects IPv4-mapped private addresses" do
+    with_dns(
+      'loopback-mapped.attacker.test' => ['::ffff:127.0.0.1'],
+      'metadata-mapped.attacker.test' => ['::ffff:169.254.169.254'],
+      'private-mapped.attacker.test'  => ['::ffff:10.0.0.1']
+    ) do
+      refute SafeHttpService.safe_to_fetch?('http://loopback-mapped.attacker.test/')
+      refute SafeHttpService.safe_to_fetch?('http://metadata-mapped.attacker.test/')
+      refute SafeHttpService.safe_to_fetch?('http://private-mapped.attacker.test/')
+    end
+  end
+
+  test "safe_to_fetch? accepts an IPv4-mapped public address" do
+    with_dns('public-mapped.test' => ['::ffff:93.184.216.34']) do
+      assert SafeHttpService.safe_to_fetch?('https://public-mapped.test/')
+    end
+  end
+
   test "safe_to_fetch? accepts a public IPv6 address outside transition ranges" do
     with_dns('public-ipv6.test' => ['2001:4860:4860::8888']) do
       assert SafeHttpService.safe_to_fetch?('https://public-ipv6.test/')
@@ -78,7 +96,7 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
   end
 
   test "fetch short-circuits on unsafe URL without making a request" do
-    # If HTTParty.get were called, WebMock would raise (net connect disallowed).
+    # If an HTTP request were made, WebMock would raise (net connect disallowed).
     assert_nil SafeHttpService.fetch('http://169.254.169.254/latest/meta-data/')
   end
 
@@ -100,6 +118,27 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
       WebMock.stub_request(:get, 'http://b.test/').
         to_return(status: 302, headers: { 'Location' => 'http://a.test/' })
       assert_nil SafeHttpService.fetch('http://a.test/')
+    end
+  end
+
+  test "fetch returns link preview metadata as plain text" do
+    with_dns('preview.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'http://preview.test/').to_return(
+        status: 200,
+        body: <<~HTML
+          <html>
+            <head>
+              <meta property="og:title" content="&lt;img src=x onerror=alert(1)&gt;Quarterly update">
+              <meta property="og:description" content="Fish &amp; Chips — 2 &lt; 3; read &lt;strong&gt;the report&lt;/strong&gt;">
+            </head>
+          </html>
+        HTML
+      )
+
+      preview = SafeHttpService.fetch('http://preview.test/')
+
+      assert_equal 'Quarterly update', preview[:title]
+      assert_equal 'Fish & Chips — 2 < 3; read the report', preview[:description]
     end
   end
 end

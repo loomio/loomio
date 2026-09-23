@@ -244,7 +244,7 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     )
     [actor, muted_user, group_user].each { |user| group.add_member!(user) }
     group.add_admin!(actor)
-    group.membership_for(muted_user).update!(volume: :mute)
+    group.membership_for(muted_user).update!(volume_email: :quiet)
     discussion = DiscussionService.create(
       params: { title: "Mention count #{hex}", group_id: group.id },
       actor:
@@ -273,7 +273,7 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
     }
 
     assert_response :success
-    assert_equal 1, JSON.parse(response.body)["count"]
+    assert_equal 2, JSON.parse(response.body)["count"]
   end
 
   test "returns filtered results" do

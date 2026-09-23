@@ -11,11 +11,8 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
 
   def update
     load_resource
-    if DiscussionService.update(discussion: resource, params: resource_params, actor: current_user)
-      respond_with_resource
-    else
-      respond_with_errors
-    end
+    self.resource = DiscussionService.update(discussion: resource, params: resource_params, actor: current_user)
+    respond_with_resource
   end
 
   def destroy
@@ -30,21 +27,11 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   end
 
   def accessible_records
-    scope = Discussion.joins(:topic).where(topics: { group_id: group.id })
+    scope = records_visible_in_group(Discussion)
     case params[:status]
     when 'locked', 'closed' then scope.is_locked
     when 'unlocked', 'open' then scope.is_unlocked
     else                         scope.kept
-    end
-  end
-
-  private
-
-  def group
-    @group ||= Group.find(params[:group_id]).tap do |g|
-      unless current_user.is_admin? || current_user.is_member_of?(g)
-        raise CanCan::AccessDenied, "User is not a group member"
-      end
     end
   end
 end

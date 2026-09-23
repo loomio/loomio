@@ -95,7 +95,10 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     assert_response :success
 
     outcome = Outcome.find(JSON.parse(response.body)['outcomes'][0]['id'])
-    assert_equal 3, outcome.created_event.notifications.count
+    notification = Notification.about(outcome).find_by!(kind: "outcome_created")
+    expected_recipient_ids = @group.members.where.not(id: @user.id).pluck(:id).sort
+    assert_equal expected_recipient_ids, notification.recipient_user_ids.sort
+    assert_equal expected_recipient_ids, notification.notification_deliveries.where(recipient_type: "User").distinct.pluck(:recipient_id).sort
   end
 
   test "create does not allow creating an invalid outcome" do

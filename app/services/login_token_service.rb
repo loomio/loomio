@@ -6,5 +6,6 @@ class LoginTokenService
 
     UserMailer.login(actor.id, token.id).deliver_now
     EventBus.broadcast('login_token_create', token, actor)
+    token
   end
 end

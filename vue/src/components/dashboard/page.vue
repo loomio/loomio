@@ -18,6 +18,15 @@ function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
 }
 
+function openSearchModal() {
+  EventBus.$emit('openModal', {
+    component: 'SearchModal',
+    persistent: false,
+    maxWidth: 900,
+    props: {group: null, discussion: null}
+  });
+}
+
 function query() {
   const groupIds = Session.user().groupIds();
   let chain = Records.topics.collection.chain();
@@ -83,6 +92,17 @@ v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
 
+    v-text-field.dashboard-page__mobile-search.mb-3(
+      v-if="$vuetify.display.smAndDown"
+      readonly
+      hide-details
+      variant="solo-filled"
+      prepend-inner-icon="mdi-magnify"
+      :label="$t('common.action.search')"
+      @click="openSearchModal"
+      @keydown.enter="openSearchModal"
+    )
+
     dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded' variant="flat")
@@ -97,13 +117,13 @@ v-main
       section.dashboard-page__loaded
         .dashboard-page__empty(v-if='topics.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
-          .dashboard-page__no-threads(v-if='!noGroups')
+          .dashboard-page__no-topics(v-if='!noGroups')
             span(v-t="'dashboard_page.no_threads.show_all'")
         .dashboard-page__collections(v-if='topics.length')
-          v-card.mb-3.thread-preview-collection__container.thread-previews-container(variant="flat")
-            v-list.thread-previews(lines="two")
+          v-card.mb-3.topic-preview-collection__container.topic-previews-container(variant="flat")
+            v-list.topic-previews(lines="two")
               v-list-subheader(v-t="'dashboard_page.recent_threads'")
-              thread-preview(
+              topic-preview(
                 v-for="topic in topics"
                 :key="topic.id"
                 :topic="topic")

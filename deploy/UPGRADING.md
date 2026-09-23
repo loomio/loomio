@@ -1,12 +1,5 @@
 # Upgrading Loomio
 
-Patch releases within the configured release series do not require changes to `.env`:
-
-```sh
-docker compose pull
-docker compose up -d
-```
-
 Before upgrading to a new minor or major release series, read its notes below and change `LOOMIO_CONTAINER_TAG` in `.env`. Then run:
 
 ```sh
@@ -22,6 +15,22 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Group deletion worker configuration
+
+Restart `bin/jobs` processes when deploying the dedicated `group_destruction` queue. The bundled `config/queue.yml` gives that queue one process with one thread; `JOB_CONCURRENCY` scales only the general worker pool. Custom queue configurations must serve `group_destruction` separately and exclude it from general workers. Run only one destruction worker across the deployment if you run multiple job containers. Jobs queued before this change retain their original queue assignment.
+
+Permanent group deletion jobs now require `CLEANUP_ENABLED` to be present when they run and recheck the current `GROUP_DELETION_DELAY_DAYS` against the group's discard timestamp. Apply environment changes by restarting workers. Removing `CLEANUP_ENABLED` stops subsequent jobs from deleting groups; it does not interrupt a deletion already in progress. Skipped jobs finish without deleting and need to be queued again once eligible. Automatic scheduling of discarded-group destruction remains disabled.
+
+## 3.5.0 browser push notifications
+
+New installations receive VAPID keys from `create_env.sh`. For an existing installation, first confirm that `.env` has a valid `SUPPORT_EMAIL` and does not contain any `VAPID_` settings, then run this one line from the deployment directory:
+
+```sh
+docker run --rm --env-file .env loomio/loomio:3.5 bundle exec ruby -rweb-push -e 'email = ENV.fetch("SUPPORT_EMAIL"); abort "SUPPORT_EMAIL must be an email address" unless /\A[^\s@]+@[^\s@]+\.[^\s@]+\z/.match?(email); names = %w[VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT]; abort "VAPID settings already exist; no changes were made" if names.any? { |name| ENV.key?(name) }; key = WebPush.generate_key; STDOUT.write("\n# Browser push notifications\nVAPID_PUBLIC_KEY=#{key.public_key}\nVAPID_PRIVATE_KEY=#{key.private_key}\nVAPID_SUBJECT=mailto:#{email}\n")' >> .env
+```
+
+The command appends one key pair without printing it to the terminal. Keep that pair unchanged across deployments; replacing it invalidates existing browser subscriptions. Then continue with the normal 3.5 update.
+
 ## 3.1.0
 
 Loomio 3.1.0 replaces Sidekiq with Solid Queue. Migrating outstanding Sidekiq jobs is optional, and they are not transferred automatically. Skipping them does not prevent the upgrade or affect primary application data.
@@ -36,6 +45,35 @@ docker compose run --rm -v "./drain_sidekiq_before_job_cutover.rb:/tmp/drain_sid
 The script executes queued and scheduled jobs, removing each one after it succeeds. Scheduled jobs run immediately, even when their scheduled time has not arrived. Retry and dead jobs are reported but are not executed.
 
 After reviewing the output, change `LOOMIO_CONTAINER_TAG` to `3.1` and run the upgrade commands above. The new `worker` service starts Solid Queue through `bin/jobs start`.
+
+## 3.2.0 anonymous-voting transition
+
+Loomio 3.2.0 introduces detached anonymous voting. Existing legacy anonymous
+polls continue normally while open. Closed polls are converted by delayed
+background jobs; a poll that closes later queues its own conversion.
+
+Allow the anonymous-poll conversion jobs to finish before upgrading beyond
+3.2. The next release's notes will describe that upgrade.
+
+## 3.3.0 anonymous-voting transition completion
+
+Loomio 3.3 removes the legacy anonymous stance implementation. Existing
+installations must run 3.2 first and complete every anonymous-poll conversion.
+
+While still running the 3.2 image, check the remaining count:
+
+```sh
+docker compose run --rm app bundle exec rails runner \
+  'puts Poll.where(anonymous: true, voting_system: :stance).count'
+```
+
+Do not continue until the command prints `0`. Open and scheduled legacy polls
+must be closed through the ordinary Loomio interface when voting is complete;
+3.2 queues their conversion when they close.
+
+Make and verify a current backup, set `LOOMIO_CONTAINER_TAG=3.3`, and run
+`./update.sh`. The 3.3 migration checks the database again and stops with a
+count and sample poll IDs if any legacy anonymous poll remains.
 
 ## Upgrading an older install
 

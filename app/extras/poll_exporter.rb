@@ -16,23 +16,21 @@ class PollExporter
   end
 
   def to_blt
-    raise CanCan::AccessDenied if @poll.detached_anonymous?
+    raise CanCan::AccessDenied if @poll.detached_anonymous? && !@poll.closed?
 
     options = @poll.poll_options.order(:priority)
     option_id_to_index = options.each_with_index.map { |o, i| [o.id, i + 1] }.to_h
     seats = @poll.stv_seats || 1
 
-    ballots = @poll.stances.latest.decided.includes(:stance_choices).map do |stance|
-      stance.stance_choices
-            .sort_by { |sc| sc.score }
-            .map { |sc| option_id_to_index[sc.poll_option_id] }
+    ballots = StvCountService.extract_ballots(@poll).map do |ballot|
+      ballot.map { |poll_option_id| option_id_to_index.fetch(poll_option_id) }
     end
 
     grouped = ballots.tally
 
     lines = []
     lines << "#{options.size} #{seats}"
-    grouped.each do |ballot, count|
+    grouped.sort_by { |ballot, _count| ballot }.each do |ballot, count|
       lines << "#{count} #{ballot.join(' ')} 0"
     end
     lines << "0"
@@ -57,7 +55,7 @@ class PollExporter
       undecided_voters_count: @poll.undecided_voters_count,
       voters_count: @poll.voters_count,
       details: @poll.details,
-      group_name: @poll.group&.full_name,
+      group_name: @poll.group.full_name,
       discussion_title: @poll.topic.topicable.title,
       outcome_author_id: outcome&.author_id,
       outcome_author_name: outcome&.author&.name,
@@ -81,12 +79,12 @@ class PollExporter
       memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
       csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'weight', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
-        membership = memberships_by_user_id[stance.participant_id] unless @poll.anonymous?
+        membership = memberships_by_user_id[stance.participant_id]
         line = [
           stance.id,
           stance.poll_id,
-          @poll.anonymous? ? nil : stance.participant_id,
-          @poll.anonymous? ? nil : stance.author_name,
+          stance.participant_id,
+          stance.author_name,
           membership&.title,
           membership&.delegate,
           @poll.anonymous? ? nil : stance.weight,

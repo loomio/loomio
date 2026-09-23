@@ -6,6 +6,11 @@ on:
       - master
   pull_request:
   workflow_dispatch:
+    inputs:
+      e2e_testcase:
+        description: 'Run one testcase from auth.js (leave empty for the full suite)'
+        required: false
+        type: string
 
 jobs:
   e2e:
@@ -17,6 +22,7 @@ jobs:
       PGUSER: postgres
       RAILS_ENV: test
       E2E_PORT: 3001
+      E2E_TESTCASE: ${{ inputs.e2e_testcase }}
     services:
       postgres:
         image: postgres:latest
@@ -45,9 +51,13 @@ jobs:
         ruby-version: '4.0.5'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: install node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version-file: .node-version
+    - name: install npm
+      run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
+    - name: check Node.js toolchain configuration
+      run: test/scripts/node_toolchain_test
     - name: create db
       run: |
         createdb
@@ -59,11 +69,11 @@ jobs:
         MIN_THREADS: 3
         MAX_THREADS: 3
       run: |
-        bundle exec rails server -b 0.0.0.0 -p $E2E_PORT &
+        CANONICAL_PORT="$E2E_PORT" bundle exec rails server -b 0.0.0.0 -p "$E2E_PORT" &
     - name: start hocuspocus server
       run: |
         cd hocuspocus
-        npm install
+        npm ci
         node server.mjs &
         echo $! > /tmp/hocuspocus.pid
         for i in $(seq 1 30); do
@@ -79,9 +89,9 @@ jobs:
     - name: build client
       run: |
         cd vue
-        rm -rf node_modules
-        npm install
+        npm ci
         npm run test:unit
+        npm run test:component
         npm run build
     - name: run e2es
       env:
@@ -89,10 +99,30 @@ jobs:
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
-        npm run test
+        if [ -n "$E2E_TESTCASE" ]; then
+          set +e
+          npx nightwatch --headless --test tests/e2e/specs/auth.js --testcase "$E2E_TESTCASE"
+          test_status=$?
+          if [ -f ../log/test.log ]; then
+            rg 'Passkey registration failed' ../log/test.log || true
+          fi
+          exit "$test_status"
+        else
+          npm run test
+        fi
+    - name: summarize e2es
+      if: ${{ always() }}
+      working-directory: vue
+      run: node tests/nightwatch_summary.mjs
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
         name: e2e-report-${{ matrix.runs-on }}
         path: vue/tests/screenshots
+    - name: upload rails test log
+      uses: actions/upload-artifact@v4
+      if: ${{ failure() }}
+      with:
+        name: e2e-rails-test-log
+        path: log/test.log

@@ -16,6 +16,6 @@ class TopicSerializerTest < ActiveSupport::TestCase
       }
     )
 
-    assert_equal "normal", serializer.reader.volume
+    assert_equal "normal", serializer.reader.volume_email
   end
 end

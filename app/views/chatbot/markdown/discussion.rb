@@ -3,19 +3,19 @@
 class Views::Chatbot::Markdown::Discussion < Views::Chatbot::Markdown::Base
   include Views::Chatbot::Markdown::Concerns
 
-  def initialize(event:, poll: nil, recipient:)
-    @event = event
+  def initialize(topic_item:, poll: nil, recipient:)
+    @topic_item = topic_item
     @poll = poll
     @recipient = recipient
   end
 
   def view_template
-    render_notification_text(@event, @poll)
+    render_notification_text(@topic_item, @poll)
     md "\n"
-    render_title(@event.eventable)
+    render_title(@topic_item.itemable)
     md "\n"
-    render_body(@event.eventable)
+    render_body(@topic_item.itemable)
     md "\n"
-    render_discussion_undecided(@event.eventable)
+    render_discussion_undecided(@topic_item.itemable)
   end
 end

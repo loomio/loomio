@@ -54,8 +54,8 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     }.merge(poll_extra_config(poll_type)).merge(overrides)
   end
 
-  # Cast stance via service (triggers events/emails, requires open poll)
-  # Returns the event from StanceService.update
+  # Cast stance via service (triggers topic_items/emails, requires open poll)
+  # Returns the topic_item from StanceService.update
   def cast_stance(poll, user)
     if poll.detached_anonymous?
       ballot = poll.anonymous_ballots.build(
@@ -69,9 +69,10 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
-    event = StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll))
+    topic_item = nil
+    StanceService.update(stance: stance, actor: user, params: cast_stance_params(poll)) { |created_topic_item| topic_item = created_topic_item }
     stance.reload
-    event
+    topic_item
   end
 
   # Save stance directly (no authorization check, for closed polls / display purposes)
@@ -128,7 +129,11 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll.update_counts!
     outcome = Outcome.new(poll: @poll, author: @actor, statement: "The outcome statement", review_on: Date.today)
     outcome.save!
-    Events::OutcomeReviewDue.publish!(outcome)
+    NotificationService.create!(
+      kind: "outcome_review_due",
+      subject: outcome,
+      actor: outcome.author
+    )
     @scenario_observer = @actor
     @scenario_actor = @actor
     @email = find_email_for(@actor)
@@ -138,11 +143,21 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   def build_poll_stance_created(poll_type:, anonymous: false, hide_results: :off)
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     topic = @poll.topic
-    TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!('loud') if topic
-    event = cast_stance(@poll, @voter)
+    TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!(email: 'loud', push: 'quiet') if topic
+    topic_item = nil
+    if @poll.detached_anonymous?
+      topic_item = cast_stance(@poll, @voter)
+    else
+      stance = @poll.stances.find_by!(participant_id: @voter.id, latest: true)
+      StanceService.update(
+        stance: stance,
+        actor: @voter,
+        params: cast_stance_params(@poll).merge(reason: "I support this proposal")
+      ) { |created_topic_item| topic_item = created_topic_item }
+    end
     @scenario_observer = @actor
-    # Use the event's user for actor (AnonymousUser for anonymous polls)
-    @scenario_actor = event.is_a?(Event) ? event.user : @voter
+    # Anonymous ballots have no topic item, so use the voter as their actor.
+    @scenario_actor = topic_item&.user || @voter
     @email = find_email_for(@actor)
     @parsed_body = parse_email(@email)
   end
@@ -224,8 +239,9 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def assert_notification_headline(key)
-    html = @parsed_body.css('.base-mailer__event-headline').to_s
-    assert_includes html, I18n.t(key, **i18n_params), "Expected headline to include i18n key '#{key}'"
+    text = @parsed_body.css('strong.email-notification-text').text
+    expected = I18n.t(key, **i18n_params)
+    assert_includes text, expected, "Expected notification text to include i18n key '#{key}'"
   end
 
   def assert_no_email_sent
@@ -237,7 +253,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   test "ordinary poll options use the primary rounded outline" do
     build_poll_created(poll_type: 'poll')
 
-    option = @parsed_body.at_css('.poll-mailer__poll-option-container')
+    option = @parsed_body.at_css('.email-poll-option-standard')
     assert option
     assert_includes option['style'], "border: 1px solid #{AppConfig.theme[:primary_color]}"
     assert_includes option['style'], 'border-radius: 4px'
@@ -246,7 +262,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   test "semantic poll options use their option color for the rounded outline" do
     build_poll_created(poll_type: 'proposal')
 
-    options = @parsed_body.css('.poll-mailer__poll-option-container--semantic')
+    options = @parsed_body.css('.email-poll-option:not(.email-poll-option-standard)')
     assert_equal @poll.poll_options.size, options.size
     @poll.poll_options.zip(options).each do |poll_option, option|
       assert_includes option['style'], "border: 1px solid #{poll_option.color}"
@@ -258,48 +274,44 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     test "#{poll_type} created email" do
       build_poll_created(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.poll_announced")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', "Please vote")
     end
 
     test "anonymous #{poll_type} created email" do
       build_poll_created(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_announced")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', I18n.t("poll_common_action_panel.anonymous"))
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', I18n.t("poll_common_action_panel.anonymous"))
+      assert_text('main', "Please vote")
     end
 
     test "#{poll_type} outcome_created email" do
       build_poll_outcome_created(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.outcome_created")
-      assert_text('.poll-mailer-common-summary', "Outcome")
-      assert_text('.poll-mailer__results-chart', "Results")
-      assert_text('.poll-mailer-common-responses', "Responses")
+      assert_text('main', "Outcome")
+      assert_text('main', "Results")
+      assert_text('main', @voter.name)
     end
 
     test "#{poll_type} outcome_review_due email" do
       build_poll_outcome_review_due(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.outcome_review_due")
-      assert_text('.poll-mailer-common-summary', "Outcome")
-      assert_text('.poll-mailer__results-chart', "Results")
-      assert_text('.poll-mailer-common-responses', "Responses")
+      assert_text('main', "Outcome")
+      assert_text('main', "Results")
+      assert_text('main', @voter.name)
     end
 
     test "anonymous #{poll_type} outcome_created email" do
       build_poll_outcome_created(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.outcome_created")
-      assert_text('.poll-mailer-common-summary', "Outcome")
-      assert_text('.poll-mailer__results-chart', "Results")
-      assert_text('.poll-mailer-common-responses', I18n.t("poll_common_action_panel.anonymous"))
-      assert_text('.poll-mailer-common-responses', "Responses")
-      assert_text('.poll-mailer-common-responses', "Anonymous")
+      assert_text('main', "Outcome")
+      assert_text('main', "Results")
+      assert_text('main', "Anonymous")
     end
 
     test "#{poll_type} stance_created email" do
       build_poll_stance_created(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.stance_created")
-      assert_element('.poll-mailer__stance')
+      assert_text('main', "I support this proposal")
     end
 
     test "anonymous #{poll_type} vote does not send a stance_created email" do
@@ -318,29 +330,31 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     test "#{poll_type} poll_closing_soon email" do
       build_poll_closing_soon(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.poll_closing_soon")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', "Please vote")
     end
 
     test "anonymous #{poll_type} poll_closing_soon email" do
       build_poll_closing_soon(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_closing_soon")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', "Please vote")
     end
 
     test "hide_results #{poll_type} poll_closing_soon email" do
       build_poll_closing_soon(poll_type: poll_type, hide_results: 'until_closed')
       assert_notification_headline("notifications.without_title.poll_closing_soon")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', "Please vote")
+    end
+
+    test "until_vote #{poll_type} email hides results from a recipient who has not voted" do
+      build_poll_closing_soon(poll_type: poll_type, hide_results: 'until_vote')
+      assert_notification_headline("notifications.without_title.poll_closing_soon")
+      assert_text('main', I18n.t('thread_markdown.hidden_until_voted'))
     end
 
     test "#{poll_type} poll_closing_soon_author email" do
       build_poll_closing_soon(poll_type: poll_type, notify_on_closing_soon: 'author')
       assert_notification_headline("notifications.without_title.poll_closing_soon_author")
-      assert_element('.poll-mailer-common-summary')
-      assert_text('.poll-mailer__vote', "Please vote")
+      assert_text('main', "Please vote")
     end
 
     test "#{poll_type} poll_user_mentioned_email" do
@@ -361,34 +375,30 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     test "#{poll_type} poll_expired_author_email" do
       build_poll_expired_author(poll_type: poll_type)
       assert_notification_headline("notifications.without_title.poll_expired_author")
-      assert_element('.poll-mailer__create_outcome')
-      assert_element('.poll-mailer-common-summary')
-      assert_element('.poll-mailer-common-responses')
-      assert_text('.poll-mailer__results-chart', "Results")
+      assert_text('main', I18n.t('poll_mailer.common.create_outcome'))
+      assert_text('main', "Results")
     end
 
     test "anonymous #{poll_type} poll_expired_author_email" do
       build_poll_expired_author(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_expired_author")
-      assert_element('.poll-mailer__create_outcome')
-      assert_element('.poll-mailer-common-summary')
-      assert_element('.poll-mailer-common-responses')
-      assert_text('.poll-mailer__results-chart', "Results")
-      assert_text('.poll-mailer-common-responses', "Anonymous")
+      assert_text('main', I18n.t('poll_mailer.common.create_outcome'))
+      assert_text('main', "Results")
+      assert_text('main', "Anonymous")
     end
 
     test "#{poll_type} compare view" do
       skip "way tooo slow for regular test runs. but keep incase you want to test the chatbot views?"
       @poll = PollService.create(params: build_poll_params(poll_type: poll_type, notify_on_open: true), actor: @actor)
 
-      event = @poll.events.last
+      topic_item = @poll.topic_items.last
       recipient = @observer
 
-      event_key = EventMailer.event_key_for(event, recipient)
+      event_key = NotificationMailer.event_key_for(topic_item, recipient)
       subject_params = {
         title: @poll.title,
         poll_type: I18n.t("decision_tools_card.#{@poll.poll_type}_title"),
-        actor: event.user.name,
+        actor: topic_item.user.name,
         site_name: AppConfig.theme[:site_name]
       }
       email_subject = I18n.t("notifications.email_subject.#{event_key}", **subject_params)
@@ -396,10 +406,10 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
       component = Views::Dev::Polls::Compare.new(
         email_subject: email_subject,
         print: Views::Polls::Export.new(poll: @poll, exporter: PollExporter.new(@poll), recipient: recipient),
-        email: EventMailer.build_component(event: event, recipient: recipient),
-        matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: @poll, recipient: recipient),
-        markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: @poll, recipient: recipient),
-        slack: Views::Chatbot::Slack::Poll.new(event: event, poll: @poll, recipient: recipient)
+        email: NotificationMailer.build_component(topic_item: topic_item, recipient: recipient),
+        matrix: Views::Chatbot::Matrix::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient),
+        markdown: Views::Chatbot::Markdown::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient),
+        slack: Views::Chatbot::Slack::Poll.new(topic_item: topic_item, poll: @poll, recipient: recipient)
       )
 
       html = ApplicationController.renderer.render(component, layout: false)

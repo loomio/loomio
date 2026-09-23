@@ -1,25 +1,20 @@
 class DemoService
-  DEMO_GROUP_IDS_CACHE_KEY = 'demo_group_ids'
+  DEMO_GROUP_IDS_CACHE_KEY = "demo_group_ids"
   DEMO_QUEUE_LOCK_KEY = 1_573_705_781
+  TEMPLATE_KEY = "mobile"
 
+  # Keep provisioning out of the request path. Rails.cache is Redis-backed in
+  # production, while the advisory lock serializes read-modify-write operations
+  # across web and worker processes.
   def self.refill_queue
-    return unless ENV['FEATURES_DEMO_GROUPS']
-
-    demo = Demo.where('demo_handle is not null').last
-    return unless demo
-
-    # precache translations
-    AppConfig.locales['supported'].each do |locale|
-      TranslationService.translate_group_content!(demo.group, locale, true)
-    end
+    return unless ENV.key?("FEATURES_DEMO_GROUPS")
 
     with_demo_queue_lock do
-      ids = demo_group_ids
-      expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3).to_i
+      ids = demo_group_ids.select { |id| queued_group?(id) }
+      expected = ENV.fetch("FEATURES_DEMO_GROUPS_SIZE", 3).to_i
 
-      (expected - ids.size).times do
-        group = RecordCloner.new(recorded_at: demo.recorded_at).create_clone_group(demo.group)
-        ids.push(group.id)
+      [ expected - ids.size, 0 ].max.times do
+        ids << DemoGroupTemplateService.prepare!(template_key: TEMPLATE_KEY).group.id
       end
 
       write_demo_group_ids(ids)
@@ -27,34 +22,41 @@ class DemoService
   end
 
   def self.take_demo(actor)
-    group_id = with_demo_queue_lock do
+    claimed_result = with_demo_queue_lock do
       ids = demo_group_ids
-      ids.shift.tap { write_demo_group_ids(ids) }
+      group = nil
+      group = queued_group(ids.shift) until group || ids.empty?
+      write_demo_group_ids(ids)
+
+      ActiveRecord::Base.transaction do
+        DemoGroupTemplateService.claim!(group: group, user: actor) if group
+      end
+    end
+    result = claimed_result || DemoGroupTemplateService.create!(template_key: TEMPLATE_KEY, user: actor)
+    DemoGroupTemplateService.route_notifications!(result.notifications) if claimed_result
+
+    group = result.group
+    if actor.locale != "en"
+      begin
+        TranslationService.translate_group_content!(group, actor.locale)
+      rescue TranslationService::LimitReached => error
+        # Translation is an enhancement to the demo. The claimed group must
+        # still be returned when the shared Google Translate quota is spent.
+        Rails.logger.warn("Demo translation skipped: #{error.message}")
+      end
     end
 
-    group = Group.find(group_id)
-    group.creator = actor
-    group.membership_granted_upon = 'invitation'
-    group.subscription = Subscription.new(plan: 'demo', owner: actor)
-    group.save!
-    group.add_member! actor
-    group.save!
-
-    TranslationService.translate_group_content!(group, actor.locale) if actor.locale != 'en'
-
     Sentry.metrics.count("demo.start")
-    EventBus.broadcast('demo_started', actor)
+    EventBus.broadcast("demo_started", actor)
     group
   end
 
   def self.ensure_queue
-    return unless ENV['FEATURES_DEMO_GROUPS']
+    return unless ENV.key?("FEATURES_DEMO_GROUPS")
 
     with_demo_queue_lock do
-      existing_ids = demo_group_ids.select { |id| Group.where(id: id).exists? }
-      write_demo_group_ids(existing_ids)
+      write_demo_group_ids(demo_group_ids.select { |id| queued_group?(id) })
     end
-
     refill_queue
   end
 
@@ -69,7 +71,7 @@ class DemoService
   end
 
   def self.demo_group_ids
-    Rails.cache.fetch(DEMO_GROUP_IDS_CACHE_KEY) { [] }
+    Array(Rails.cache.read(DEMO_GROUP_IDS_CACHE_KEY)).map(&:to_i)
   end
 
   def self.write_demo_group_ids(ids)
@@ -82,4 +84,14 @@ class DemoService
   ensure
     ActiveRecord::Base.connection.execute("SELECT pg_advisory_unlock(#{DEMO_QUEUE_LOCK_KEY})")
   end
+
+  def self.queued_group?(id)
+    queued_group(id).present?
+  end
+  private_class_method :queued_group?
+
+  def self.queued_group(id)
+    Group.where(id: id).where("info @> ?", { demo_group_queued: true }.to_json).first
+  end
+  private_class_method :queued_group
 end

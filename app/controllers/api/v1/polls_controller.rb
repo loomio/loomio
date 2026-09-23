@@ -42,7 +42,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   def legacy_vote_reasons
     poll = load_and_authorize(:poll)
-    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.legacy_anonymous?
+    raise ActiveRecord::RecordNotFound unless poll.closed? && poll.detached_anonymous? && poll.legacy_anonymous_vote_reasons.exists?
 
     reasons = poll.legacy_anonymous_vote_reasons
                   .joins(:anonymous_ballot)
@@ -71,8 +71,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def remind
-    event = service.remind(poll: load_and_authorize(:poll), actor: current_user, params: resource_params)
-    render json: {count: event.recipient_user_ids.count}
+    notification = service.remind(poll: load_and_authorize(:poll), actor: current_user, params: resource_params)
+    render json: {count: notification.recipient_user_ids.count}
   end
 
   def index
@@ -83,18 +83,18 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def close
-    @event = service.close(poll: load_resource, actor: current_user)
+    service.close(poll: load_resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 
   def reopen
-    @event = service.reopen(poll: load_resource, params: resource_params, actor: current_user)
+    service.reopen(poll: load_resource, params: resource_params, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 
   def discard
     load_resource
-    @event = service.discard(poll: resource, actor: current_user)
+    service.discard(poll: resource, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource
   end
 
@@ -121,6 +121,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def poll_group_ids
+    return [] if params[:group_key].blank?
     return [] unless group = Group.find_by(key: params[:group_key])
 
     (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids

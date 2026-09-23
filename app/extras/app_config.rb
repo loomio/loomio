@@ -26,6 +26,68 @@ class AppConfig
     @release ||= `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
   end
 
+  def self.group_deletion_delay_days
+    ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
+  end
+
+  def self.default_onboarding_group_id
+    ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i
+  end
+
+  def self.local_login_enabled?
+    !ENV.key?('FEATURES_DISABLE_LOCAL_LOGIN') && !ENV.key?('FEATURES_DISABLE_EMAIL_LOGIN')
+  end
+
+  def self.sso_update_user_profile_on_login?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'].present?
+  end
+
+  def self.sso_disable_edit_user_profile?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
+  end
+
+  def self.oauth_authorization_url
+    ENV.fetch('OAUTH_AUTH_URL')
+  end
+
+  def self.oauth_scope
+    ENV.fetch('OAUTH_SCOPE')
+  end
+
+  def self.saml_allow_idp_initiated?
+    ENV['SAML_ALLOW_IDP_INITIATED'].present?
+  end
+
+  def self.saml_attribute_email
+    ENV['SAML_ATTR_EMAIL'].presence
+  end
+
+  def self.saml_attribute_name
+    ENV['SAML_ATTR_NAME'].presence
+  end
+
+  def self.saml_attribute_given_name
+    ENV['SAML_ATTR_GIVEN_NAME'].presence
+  end
+
+  def self.saml_attribute_family_name
+    ENV['SAML_ATTR_FAMILY_NAME'].presence
+  end
+
+  def self.saml_idp_metadata
+    ENV['SAML_IDP_METADATA']
+  end
+
+  def self.saml_idp_metadata_url
+    ENV.fetch('SAML_IDP_METADATA_URL')
+  end
+
+  def self.saml_issuer
+    ENV.fetch('SAML_ISSUER', nil)
+  end
+
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
@@ -95,6 +157,7 @@ class AppConfig
     {
       brand_colors: brand_colors,
       site_name: ENV.fetch('SITE_NAME', 'Loomio'),
+      site_short_name: ENV.fetch('SITE_SHORT_NAME', ENV.fetch('SITE_NAME', 'Loomio')),
       site_description: ENV.fetch('SITE_DESCRIPTION', I18n.t('email.loomio_app_description')),
       hocuspocus_url: ENV.fetch('HOCUSPOCUS_URL', default_hocuspocus_url),
       terms_url: ENV['TERMS_URL'],
@@ -108,6 +171,8 @@ class AppConfig
       touch_icon_src: ENV.fetch('THEME_TOUCH_ICON_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-256.png")),
       icon192_src: ENV.fetch('THEME_ICON_192_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-192.png")),
       icon512_src: ENV.fetch('THEME_ICON_512_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/icon-yellow-on-white-512.png")),
+      icon_maskable192_src: ENV['THEME_ICON_MASKABLE_192_SRC'].presence || ("/brand/icon-maskable-192.png" if ENV['THEME_ICON_192_SRC'].blank? && ENV['THEME_ICON_SRC'].blank?),
+      icon_maskable512_src: ENV['THEME_ICON_MASKABLE_512_SRC'].presence || ("/brand/icon-maskable-512.png" if ENV['THEME_ICON_512_SRC'].blank? && ENV['THEME_ICON_SRC'].blank?),
       app_logo_src: ENV.fetch('THEME_APP_LOGO_SRC', "/brand/logo-current-color.svg"),
       saml_login_provider_name: ENV.fetch('SAML_LOGIN_PROVIDER_NAME', 'SAML'),
       oauth_login_provider_name: ENV.fetch('OAUTH_LOGIN_PROVIDER_NAME', 'OAUTH'),
@@ -135,16 +200,20 @@ class AppConfig
   end
 
   def self.app_features
+    loomio_subscriptions = ENV['LOOMIO_SUBSCRIPTIONS'].present?
+
     {
       env: Rails.env,
-      subscriptions: !!ENV.fetch('CHARGIFY_API_KEY', false),
+      subscriptions: ENV['CHARGIFY_API_KEY'].present? || loomio_subscriptions,
+      loomio_subscriptions: loomio_subscriptions,
       demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
-      email_login: !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
+      local_login: local_login_enabled?,
       create_user: !ENV['FEATURES_DISABLE_CREATE_USER'],
+      reveal_email_account_status: ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'].present?,
       create_group: !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
       help_link: !ENV['FEATURES_DISABLE_HELP_LINK'],
@@ -155,12 +224,20 @@ class AppConfig
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
-      sso_disable_edit_profile: !!ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] || ActiveModel::Type::Boolean.new.cast(ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE']),
+      sso_disable_edit_profile: sso_disable_edit_user_profile?,
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,
       max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
       verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
+    }
+  end
+
+  def self.user_manual
+    {
+      title: ENV['LOOMIO_HELP_TITLE'].presence,
+      subtitle: ENV['LOOMIO_HELP_SUBTITLE'].presence,
+      url: ENV['LOOMIO_HELP_URL'].presence
     }
   end
 

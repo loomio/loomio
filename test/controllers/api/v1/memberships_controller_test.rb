@@ -10,6 +10,21 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "join group responds with the created membership" do
+    group = Group.create!(
+      name: "Open group #{SecureRandom.hex(4)}",
+      group_privacy: "open",
+      membership_granted_upon: "request"
+    )
+    sign_in @alien
+
+    post :join_group, params: { group_id: group.id }
+
+    assert_response :success
+    membership = Membership.find_by!(group: group, user: @alien)
+    assert_equal membership.id, JSON.parse(response.body).fetch("memberships").first.fetch("id")
+  end
+
   # ===== Membership Creation Tests =====
 
   test 'sets the membership volume to user default' do
@@ -18,11 +33,12 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
       handle: 'newgroup',
       is_visible_to_public: false
     )
-    @user.update(default_membership_volume: 'quiet')
+    @user.update(volume_email_default: 'quiet', volume_push_default: 'normal')
 
     membership = Membership.create!(user: @user, group: new_group)
 
-    assert_equal 'quiet', membership.volume
+    assert_equal 'quiet', membership.volume_email
+    assert_equal 'normal', membership.volume_push
   end
 
   # ===== Update Tests =====
@@ -104,34 +120,76 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   test 'updates volume for single membership' do
     membership = @test_group.membership_for(@user)
-    membership.set_volume!('quiet')
+    membership.set_volume!(email: 'quiet', push: 'quiet')
 
     second_membership = @subgroup.membership_for(@user)
-    second_membership.set_volume!('quiet')
+    second_membership.set_volume!(email: 'quiet', push: 'quiet')
 
-    put :set_volume, params: { id: membership.id, volume: 'loud' }
+    put :set_volume, params: { id: membership.id, volume_email: 'loud', volume_push: 'normal' }
 
     membership.reload
     second_membership.reload
 
-    assert_equal 'loud', membership.volume
-    assert_not_equal 'loud', second_membership.volume
+    assert_equal 'loud', membership.volume_email
+    assert_equal 'normal', membership.volume_push
+    assert_not_equal 'loud', second_membership.volume_email
+  end
+
+  test 'updates email volume without changing push volume when push is omitted' do
+    membership = @test_group.membership_for(@user)
+    membership.set_volume!(email: 'quiet', push: 'normal')
+    topic_reader = TopicReader.for(user: @user, topic: topics(:discussion_topic))
+    topic_reader.set_volume!(email: 'quiet', push: 'normal')
+
+    put :set_volume, params: { id: membership.id, volume_email: 'loud' }
+
+    assert_response :success
+    assert_equal 'loud', membership.reload.volume_email
+    assert_equal 'normal', membership.volume_push
+    assert_equal 'loud', topic_reader.reload.volume_email
+    assert_equal 'normal', topic_reader.volume_push
   end
 
   test 'updates volume for all memberships when apply_to_all is true' do
     membership = @test_group.membership_for(@user)
-    membership.set_volume!('quiet')
+    membership.set_volume!(email: 'quiet', push: 'quiet')
 
     second_membership = @subgroup.membership_for(@user)
-    second_membership.set_volume!('quiet')
+    second_membership.set_volume!(email: 'quiet', push: 'quiet')
 
-    put :set_volume, params: { id: membership.id, volume: 'loud', apply_to_all: true }
+    put :set_volume, params: { id: membership.id, volume_email: 'loud', volume_push: 'normal', apply_to_all: true }
 
     membership.reload
     second_membership.reload
 
-    assert_equal 'loud', membership.volume
-    assert_equal 'loud', second_membership.volume
+    assert_equal 'loud', membership.volume_email
+    assert_equal 'normal', membership.volume_push
+    assert_equal 'loud', second_membership.volume_email
+    assert_equal 'normal', second_membership.volume_push
+  end
+
+  test 'rejects a missing volume without changing topic readers' do
+    membership = @test_group.membership_for(@user)
+    membership.set_volume!(email: 'quiet', push: 'quiet')
+    topic_reader = TopicReader.for(user: @user, topic: topics(:discussion_topic))
+    topic_reader.set_volume!(email: 'quiet', push: 'quiet')
+
+    put :set_volume, params: { id: membership.id }
+
+    assert_response :unprocessable_entity
+    assert_equal ['is not a valid value'], response.parsed_body.dig('errors', 'volume_email')
+    assert_equal 'quiet', membership.reload.volume_email
+    assert_equal 'quiet', topic_reader.reload.volume_email
+  end
+
+  test 'group admins cannot change another members volumes' do
+    membership = @test_group.membership_for(@user)
+    sign_in @admin
+
+    put :set_volume, params: { id: membership.id, volume_email: 'loud', volume_push: 'loud' }
+
+    assert_response :forbidden
+    assert_not_equal 'loud', membership.reload.volume_push
   end
 
   # ===== Index Tests =====
@@ -166,6 +224,13 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_includes user_ids, user1.id
     assert_includes user_ids, user2.id
     assert_includes group_ids, @test_group.id
+
+    own_membership = json['memberships'].find { |membership| membership['user_id'] == @user.id }
+    other_membership = json['memberships'].find { |membership| membership['user_id'] == user1.id }
+    assert own_membership.key?('volume_email')
+    assert own_membership.key?('volume_push')
+    refute other_membership.key?('volume_email')
+    refute other_membership.key?('volume_push')
   end
 
   test 'search matches membership titles' do
@@ -396,6 +461,19 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal true, membership.delegate
   end
 
+  test 'make_delegate records the change and actor in PaperTrail' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    assert_difference -> { membership.versions.count }, 1 do
+      post :make_delegate, params: { id: membership.id }
+    end
+
+    version = membership.versions.last
+    assert_equal [false, true], version.changeset['delegate']
+    assert_equal @admin.id, version.whodunnit
+  end
+
   test 'make_delegate only works for group admins' do
     delegate_user = User.create!(
       name: 'Delegate User',
@@ -435,6 +513,20 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
     membership.reload
     assert_equal false, membership.delegate
+  end
+
+  test 'remove_delegate records the change and actor in PaperTrail' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+    membership.update!(delegate: true)
+
+    assert_difference -> { membership.versions.count }, 1 do
+      post :remove_delegate, params: { id: membership.id }
+    end
+
+    version = membership.versions.last
+    assert_equal [true, false], version.changeset['delegate']
+    assert_equal @admin.id, version.whodunnit
   end
 
   test 'remove_delegate only works for group admins' do

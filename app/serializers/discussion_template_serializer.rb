@@ -21,6 +21,8 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
              :content_locale,
              :created_at,
              :updated_at,
+             :hidden_at,
+             :hider_id,
              :discarded_at,
              :max_depth,
              :newest_first,

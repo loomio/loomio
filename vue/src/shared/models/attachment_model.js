@@ -8,7 +8,7 @@ export default class AttachmentModel extends BaseModel {
   static indices = ['recordType', 'recordId'];
 
   model() {
-    return Records[BaseModel.eventTypeMap[this.recordType]].find(this.recordId);
+    return Records[BaseModel.itemTypeMap[this.recordType]].find(this.recordId);
   }
 
   group() {

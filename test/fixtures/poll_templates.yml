@@ -1,0 +1,9 @@
+cleanup_poll_template:
+  group: used_poll_template_group
+  author: member_quiet
+  key: cleanup_poll_template
+  poll_type: proposal
+  process_name: Cleanup poll process
+  process_subtitle: Cleanup poll process subtitle
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>

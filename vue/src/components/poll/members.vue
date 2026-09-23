@@ -74,6 +74,10 @@ export default {
   },
 
   methods: {
+    isDelegate(user) {
+      const group = this.poll.group();
+      return Boolean(group && user.delegates && user.delegates[group.id]);
+    },
     performableActions(poll, user) {
       return this.actionNames.filter(name => this.canPerform(name, poll, user))
     },
@@ -243,6 +247,8 @@ v-card.poll-members-form
         user-avatar.mr-2(:user="user" :size="32")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
+        v-chip.mr-1(v-if="isDelegate(user)" variant="tonal" size="x-small" label :title="$t('members_panel.delegate_popover')")
+          | {{ $t('members_panel.delegate') }}
         v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
         v-chip.mr-1(v-if="isGroupAdmin[user.id] || isTopicAdmin[user.id]" variant="outlined" size="x-small" label)
@@ -277,7 +283,7 @@ v-card.poll-members-form
     v-btn(v-if="canManageWeights" color="primary" :disabled="!weightsDirty || !weightsValid" :loading="weightsSaving" @click="saveWeights")
       span(v-t="'poll_common_form.save_vote_weights'")
     help-btn(
-      path="en/user_manual/polls/starting_proposals/index.html#invite-members")
+      path="en/user_manual/polls/inviting_people#add-voters-to-the-poll")
     v-spacer
 </template>
 

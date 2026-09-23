@@ -7,18 +7,82 @@ class TopicReaderTest < ActiveSupport::TestCase
 
     @discussion = discussions(:discussion)
     @membership = @admin.memberships.find_by(group: @group)
-    @membership.update!(volume: :normal)
+    @membership.update!(volume_email: :normal)
     @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
   end
 
+  test "guest and admin readers use user delivery defaults" do
+    guest = User.create!(name: "Guest defaults", email: "guest-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :quiet, volume_push_default: :loud)
+    admin = User.create!(name: "Admin defaults", email: "admin-defaults-#{SecureRandom.hex(4)}@example.test", volume_email_default: :loud, volume_push_default: :quiet)
+
+    guest_reader = @discussion.topic.add_guest!(guest, @admin)
+    admin_reader = @discussion.topic.add_admin!(admin, @admin)
+
+    assert_predicate guest_reader, :email_quiet?
+    assert_predicate guest_reader, :push_loud?
+    assert_predicate admin_reader, :email_loud?
+    assert_predicate admin_reader, :push_quiet?
+  end
+
+  test "guest invitation is not redeemable after the user joins the topic group" do
+    guest = User.create!(name: "Guest becoming member", email: "guest-member-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @admin)
+
+    assert_includes TopicReader.redeemable, reader
+
+    @group.add_member!(guest)
+
+    refute_includes TopicReader.redeemable, reader
+  end
+
+  test "for leaves a missing reader unpersisted on read paths" do
+    user = User.create!(name: "Lazy reader", email: "lazy-reader-#{SecureRandom.hex(4)}@example.test")
+
+    assert_no_difference -> { TopicReader.count } do
+      assert_predicate TopicReader.for(user: user, topic: @discussion.topic), :new_record?
+    end
+  end
+
+  test "find_or_create_for reuses a reader without aborting its surrounding transaction" do
+    user = User.create!(
+      name: "Persistent reader",
+      email: "persistent-reader-#{SecureRandom.hex(4)}@example.test",
+      volume_email_default: :quiet,
+      volume_push_default: :loud
+    )
+    reader = TopicReader.find_or_create_for!(user: user, topic: @discussion.topic)
+
+    ApplicationRecord.transaction do
+      existing_reader = TopicReader.find_or_create_for!(user: user, topic: @discussion.topic)
+
+      assert_equal reader.id, existing_reader.id
+      assert_equal 1, TopicReader.where(user: user, topic: @discussion.topic).count
+      assert_predicate existing_reader, :email_quiet?
+      assert_predicate existing_reader, :push_loud?
+    end
+  end
+
   # Computed volume
+  test "unsaved direct-topic readers use independent account defaults without a group membership" do
+    user = users(:reader_quiet)
+    topic = topics(:direct_topic)
+    reader = TopicReader.for(user: user, topic: topic)
+
+    assert_not reader.persisted?
+    assert_equal "loud", reader.computed_volume_email
+    assert_equal "quiet", reader.computed_volume_push
+    assert_not user.can?(:show, topic.topicable), "computing preferences must not grant topic access"
+    assert_not TopicReader.exists?(user: user, topic: topic)
+  end
+
   test "can change its volume" do
-    @reader.set_volume!(:loud)
-    assert_equal :loud, @reader.reload.volume.to_sym
+    @reader.set_volume!(email: :loud, push: :normal)
+    assert_equal :loud, @reader.reload.volume_email.to_sym
   end
 
   test "defaults to the memberships volume when nil" do
-    assert_equal @membership.volume, @reader.computed_volume
+    assert_equal @membership.volume_email, @reader.computed_volume_email
+    assert_equal @membership.volume_push, @reader.computed_volume_push
   end
 
   # Viewed
@@ -26,10 +90,12 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    older_event = CommentService.create(comment: comment1, actor: @admin)
+    older_event = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| older_event = created_topic_item }
 
     comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
-    newer_event = CommentService.create(comment: comment2, actor: @admin)
+    newer_event = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| newer_event = created_topic_item }
 
     @reader.viewed!([newer_event, older_event].map(&:sequence_id))
     assert_equal 2, @reader.read_items_count
@@ -40,10 +106,12 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    older_event = CommentService.create(comment: comment1, actor: @admin)
+    older_event = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| older_event = created_topic_item }
 
     comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
-    newer_event = CommentService.create(comment: comment2, actor: @admin)
+    newer_event = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| newer_event = created_topic_item }
 
     @reader.viewed!(newer_event.sequence_id)
     assert_not @reader.has_read?(older_event.sequence_id)
@@ -55,11 +123,12 @@ class TopicReaderTest < ActiveSupport::TestCase
     @reader.update!(last_read_at: 6.days.ago)
 
     comment = Comment.new(parent: @discussion, body: "Older", author: @admin)
-    event = CommentService.create(comment: comment, actor: @admin)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) { |created_topic_item| topic_item = created_topic_item }
 
-    @reader.viewed!(event.sequence_id)
+    @reader.viewed!(topic_item.sequence_id)
     assert_equal 1, @reader.read_items_count
-    @reader.viewed!(event.sequence_id)
+    @reader.viewed!(topic_item.sequence_id)
     assert_equal 1, @reader.read_items_count
   end
 

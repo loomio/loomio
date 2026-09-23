@@ -47,10 +47,10 @@ class Api::V1::TopicReadersController < Api::V1::RestfulController
     @topic_reader = TopicReader.find(params[:id])
   end
 
-  def default_scope
+  def default_scope(records = records_to_serialize)
     topic = @topic || @topic_reader&.topic
     is_admin = topic ? topic.admins.exists?(current_user.id) : false
-    super.merge({include_email: is_admin})
+    super(records).merge(include_email: is_admin)
   end
 
   def accessible_records

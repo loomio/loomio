@@ -47,6 +47,14 @@ function LoomioVueResolver() {
 }
 
 export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    include: ['tests/component/**/*.test.js'],
+    server: {
+      deps: {inline: ['vuetify']},
+    },
+  },
+
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],
@@ -63,7 +71,15 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: false,
       },
-      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|files|img|join|invitations|system|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|contact_messages|css)': {
+      '/service-worker.js': {
+        target: 'http://localhost:3000',
+        changeOrigin: false,
+      },
+      '/mobile': {
+        target: 'http://localhost:3000',
+        changeOrigin: false,
+      },
+      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|files|img|join|invitations|system|rails|slack|oauth|facebook|google|docs|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|contact_messages|css|vuetify-layers.css)': {
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
@@ -100,6 +116,9 @@ export default defineConfig({
   },
 
   build: {
+    // Vite's default baseline starts at Safari 16.4. Loomio still supports
+    // iOS 16.3, so transpile syntax that its module parser cannot load.
+    target: 'safari16',
     sourcemap: true,
     emptyOutDir: true,
     outDir: '../public/client3',

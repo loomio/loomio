@@ -1,7 +1,9 @@
 class MergeUsersService
   def self.send_merge_verification_email(actor:, target_email:)
     actor.ability.authorize! :update, actor
-    target_user = User.active.find_by!(email: target_email)
+    target_user = User.active.find_by(email: target_email)
+    return unless target_user && target_user != actor
+
     hash = build_merge_hash(source_user: actor, target_user: target_user)
     UserMailer.merge_verification(source_user: actor, target_user: target_user, hash: hash).deliver_now
   end

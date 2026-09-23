@@ -150,6 +150,8 @@ ro:
       body: Elementul solicitat nu a fost găsit. Acest lucru se poate întâmpla dacă o discuție sau un sondaj a fost șters.
     new_account_trial_group_limit: Conturile noi sunt limitate la un singur grup. Vă rugăm să contactați serviciul de asistență dacă aveți nevoie de mai multe.
     direct_thread_anonymous_poll: Un fir de discuție care conține un sondaj anonim nu poate fi convertit într-un fir de discuție direct
+    invitation_rate_limit_reached_contact_support: Limita zilnică de invitații a fost atinsă. Contactați imediat serviciul de asistență.
+    subscription_thread_limit_reached: Această organizație a atins limita de fire de discuție. Treci la un plan superior pentru a continua să folosești Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
@@ -182,6 +184,7 @@ ro:
       recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
       bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
       username_must_be_alphanumeric: Numele de utilizator trebuie să fie doar cu litere mici și cifre
+      username_must_use_valid_characters: Numele de utilizator pot conține numai litere mici, cifre, caractere de subliniere și cratime interne
   poll:
     error:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta
@@ -301,6 +304,17 @@ ro:
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Ai 1 vot de exprimat
+          other: Aveți %{count} voturi de exprimat
+        people_mentioned:
+          one: O persoană te-a menționat
+          other: "%{count} persoane te-au menționat"
+        polls_closing_soon:
+          one: 1 sondaj se închide în curând
+          other: "%{count} sondaje se închid în curând"
+        separator: "·"
       daily_subject: Ieri pe %{site_name}
       weekly_subject: Săptămâna trecută pe %{site_name}
       other_subject: Recent pe %{site_name}
@@ -309,6 +323,31 @@ ro:
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
       click_here: Apasa aici
+      catch_up_heading: Recuperarea ta la zi cu %{site_name}
+      unread_topics: Subiecte necitite
+      unread_threads: Fire de discuție necitite
+      mark_catch_up_as_read: Marchează recuperarea ca citită
+    digest:
+      subject:
+        votes_to_cast:
+          one: Ai 1 vot de exprimat
+          other: Aveți %{count} voturi de exprimat
+        people_mentioned:
+          one: O persoană te-a menționat
+          other: "%{count} persoane te-au menționat"
+        polls_closing_soon:
+          one: 1 sondaj se închide în curând
+          other: "%{count} sondaje se închid în curând"
+        separator: "·"
+      daily_subject: Ieri pe %{site_name}
+      weekly_subject: Săptămâna trecută pe %{site_name}
+      other_subject: Recent pe %{site_name}
+      do_not_reply: Te rugam nu raspunde acestui email.
+      mark_as_read: Marcheaza ca citit
+      thanks_for_reading: Multumesc pentru lectura, o zi buna!
+      marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
+      click_here: Apasa aici
+      unread_topics: Subiecte necitite
     group_membership_approved:
       intro: Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată.
       intro_html: Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată.
@@ -323,6 +362,8 @@ ro:
     content_was_translated: Acest conținut a fost tradus din %{source_locale}
     content_was_translated_html: Acest conținut a fost tradus din %{source_locale}. <a href="%{profile_url}">Vizualizați setările<a></a>
     loomio_app_description: Un loc pentru organizațiile colaborative unde pot lua decizii împreună.
+    membership_request_declined:
+      button_text: Aplicați din nou
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
@@ -373,6 +414,21 @@ ro:
     trial_expired:
       subject: Grupul tău Loomio va fi șters din cauza inactivității.
       body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
+    destroy_warning_with_usage:
+      subject: Grupul tău Loomio este programat pentru ștergere
+      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}. Acesta va fi șters definitiv după %{days} de zile.
+      trial_expired_warning: Perioada de probă a grupului dvs. Loomio „%{group}” a expirat acum %{expired_days} zile. Dacă nu ne contactați, acesta va fi șters în %{grace_days} zile.
+      trial_expired_process: Grupul dvs. nu este disponibil cât timp este marcat pentru ștergere. Dacă doriți în continuare un loc în care grupul dvs. să discute și să ia decizii, nu este prea târziu să reporniți. Răspundeți la acest e-mail în termen de %{grace_days} zile dacă doriți să solicitați o prelungire a perioadei de probă, să faceți upgrade la un abonament plătit sau dacă aveți nevoie de mai mult timp pentru a exporta datele. După aceea, grupul și datele sale vor fi șterse definitiv.
+      trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv după %{days} de zile.
+      usage_heading: 'Rezumatul datelor de grup:'
+      subgroups: Subgrupuri
+      members: Membri actuali
+      discussions: Discuții
+      polls: Sondaje
+      comments: Comentarii
+      export: Pentru a păstra grupul sau a exporta o copie a datelor sale, răspundeți la acest e-mail în termen de %{days} de zile. Putem restabili accesul înainte de ștergere.
+      export_link: Aflați despre exportul datelor de grup
+      group_key: 'Cheie de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}
@@ -675,3 +731,36 @@ ro:
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
+  thread_markdown:
+    poll: Sondaj
+    no_activity: Niciun comentariu, sondaj, vot sau rezultat încă
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentariu · %{author} %{timestamp}
+    comment_reply: Răspuns către %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Stare:** %{value}"
+    anonymous_voting: "**Vot anonim:** %{value}"
+    options: "**Opțiuni:** %{value}"
+    'yes': Da
+    closed: Închis %{value}
+    scheduled_to_open: Programat să deschidă %{value}
+    open_until: Deschide; închide %{value}
+    open: Deschide
+    current_results: Rezultate actuale
+    hidden_until_closed: Ascuns până la închiderea sondajului
+    hidden_until_voted: Ascuns până când spectatorul votează
+    voters: Alegătorii
+    target: Ţintă
+    available: Disponibil
+    available_if_needed: Disponibil dacă este nevoie
+    unavailable: Indisponibil
+    anonymous: Anonim
+    no_voters: Niciun alegător
+    score: 'scor: %{value}'
+    vote: 'Vot: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nici una dintre cele de mai sus
+    no_option_selected: Nicio opțiune selectată
+    outcome: Rezultat · %{author} %{timestamp}
+    review_date: "**Data revizuirii:** %{value}"
+  error:
+    access_denied: Nu aveți permisiunea să faceți asta

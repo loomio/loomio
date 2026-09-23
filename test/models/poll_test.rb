@@ -22,12 +22,21 @@ class PollTest < ActiveSupport::TestCase
     PollService.create(params: poll_params(**overrides), actor: @admin)
   end
 
+  def create_voter(prefix)
+    hex = SecureRandom.hex(4)
+    User.create!(
+      name: "#{prefix} #{hex}",
+      email: "#{prefix}#{hex}@example.com",
+      username: "#{prefix}#{hex}",
+      email_verified: true
+    )
+  end
+
   def create_ranked_choice(**overrides)
     PollService.create(params: poll_params(
       poll_type: "ranked_choice",
       title: "Ranked choice",
       poll_option_names: %w[apple banana orange],
-      custom_fields: { minimum_stance_choices: 2 },
       **overrides
     ), actor: @admin)
   end
@@ -71,9 +80,135 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
+  test "database rejects anonymous stance voting" do
+    poll = create_poll
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch("stance"))
+    end
+  end
+
+  test "database rejects identified anonymous-ballot voting" do
+    poll = create_poll
+
+    assert_raises(ActiveRecord::StatementInvalid) do
+      poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
+    end
+  end
+
+  test "vote is needed from an eligible identified voter until their current stance is cast" do
+    voter = create_voter("identifiedpendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant: voter)
+
+    assert poll.vote_needed_from?(voter)
+
+    stance.update_column(:cast_at, Time.current)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is not needed when poll access has been revoked" do
+    voter = create_voter("revokedpendingvote")
+    membership = @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id, private: true)
+
+    assert poll.vote_needed_from?(voter)
+
+    membership.update!(revoked_at: Time.current)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is needed from an anonymous voter until their ballot is submitted" do
+    voter = create_voter("anonymouspendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(
+      group_id: @group.id,
+      anonymous: true,
+      specified_voters_only: true,
+      recipient_user_ids: [voter.id]
+    )
+    anonymous_voter = poll.anonymous_poll_voters.find_by!(voter: voter)
+
+    assert poll.vote_needed_from?(voter)
+
+    anonymous_voter.update!(ballot_submitted: true)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "vote is not needed after the voting period expires" do
+    voter = create_voter("expiredpendingvote")
+    @group.add_member!(voter)
+    poll = create_poll(group_id: @group.id)
+
+    assert poll.vote_needed_from?(voter)
+
+    poll.update_columns(closing_at: 1.minute.ago)
+
+    assert_not poll.vote_needed_from?(voter)
+  end
+
   test "validates correctly if no poll option changes have been made" do
     poll = create_poll(poll_option_names: ["agree"])
     assert poll.valid?
+  end
+
+  test "every poll type declares a complete ballot policy without validation switches" do
+    expected_rules = {
+      "count" => "bounded",
+      "check" => "bounded",
+      "question" => "reason_only",
+      "proposal" => "bounded",
+      "meeting" => "bounded",
+      "poll" => "bounded",
+      "dot_vote" => "dot_vote",
+      "score" => "bounded",
+      "ranked_choice" => "ranked_points",
+      "stv" => "ranked_preferences"
+    }
+
+    assert_equal expected_rules, AppConfig.poll_types.transform_values { |config| config["ballot_rule"] }
+    AppConfig.poll_types.each_value do |config|
+      assert_empty config.keys.grep(/^validate_/)
+    end
+  end
+
+  test "score bounds must be nonnegative and ordered" do
+    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+
+    assert_predicate invalid_poll, :invalid?
+    assert_not invalid_poll.persisted?
+
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+
+    poll.min_score = -1
+    refute poll.valid?
+    assert poll.errors.added?(:min_score, :invalid)
+
+    poll.min_score = 5
+    poll.max_score = 4
+    refute poll.valid?
+    assert poll.errors.added?(:max_score, :invalid)
+  end
+
+  test "a legacy negative-score poll can be discarded" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_column(:min_score, -1)
+
+    PollService.discard(poll: poll, actor: @admin)
+
+    assert poll.reload.discarded?
+  end
+
+  test "an existing negative scale does not validate again for unrelated edits" do
+    poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
+    poll.update_columns(min_score: -1, closed_at: Time.current)
+
+    assert poll.update(title: "Edited historical score poll")
+    assert_equal(-1, poll.reload.min_score)
   end
 
   test "does not allow changing poll options if the template does not allow" do
@@ -87,6 +222,80 @@ class PollTest < ActiveSupport::TestCase
     ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
     ranked_choice.valid?
     assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
+  end
+
+  test "ranked choice keeps its maximum choices synchronized with its ranking positions" do
+    ranked_choice = create_ranked_choice(
+      minimum_stance_choices: 2,
+      maximum_stance_choices: 1
+    )
+
+    assert_equal 2, ranked_choice.maximum_stance_choices
+
+    ranked_choice.update!(minimum_stance_choices: 3)
+
+    assert_equal 3, ranked_choice.reload.maximum_stance_choices
+  end
+
+  test "meeting derives required choice bounds when dates are added" do
+    meeting = create_meeting(
+      poll_option_names: %w[01-01-2015 01-02-2015],
+      minimum_stance_choices: 2,
+      maximum_stance_choices: 2
+    )
+
+    meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015])
+
+    assert_equal 3, meeting.reload.minimum_stance_choices
+    assert_equal 3, meeting.maximum_stance_choices
+
+    stance = meeting.stances.build(
+      participant: @admin,
+      cast_at: Time.current,
+      stance_choices_attributes: meeting.poll_options.map { |option| { poll_option_id: option.id, score: 2 } }
+    )
+    assert_predicate stance, :valid?
+  end
+
+  test "meeting derives required choice bounds when dates are removed" do
+    meeting = create_meeting(
+      poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015],
+      minimum_stance_choices: 3,
+      maximum_stance_choices: 3
+    )
+
+    meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015])
+
+    assert_equal 2, meeting.reload.minimum_stance_choices
+    assert_equal 2, meeting.maximum_stance_choices
+  end
+
+  test "ballot configuration ignores JSON custom fields" do
+    poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
+    poll.update_columns(
+      min_score: nil,
+      max_score: nil,
+      dots_per_person: nil,
+      minimum_stance_choices: nil,
+      maximum_stance_choices: nil,
+      custom_fields: poll.custom_fields.merge(
+        "min_score" => 3,
+        "max_score" => 3,
+        "dots_per_person" => 1,
+        "minimum_stance_choices" => 2,
+        "maximum_stance_choices" => 2
+      )
+    )
+
+    poll.reload
+    assert_equal 0, poll.min_score
+    assert_nil poll.max_score
+    assert_equal 8, poll.dots_per_person
+    assert_equal 0, poll.minimum_stance_choices
+    assert_equal 3, poll.maximum_stance_choices
+
+    poll.update!(min_score: 2)
+    assert_equal 3, poll.reload.custom_fields["min_score"]
   end
 
   test "allows closing dates in the future" do
@@ -129,13 +338,13 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "anonymous and STV polls cannot enable vote weights" do
-    assert_raises ActiveRecord::RecordInvalid do
-      create_poll(anonymous: true, vote_weights_enabled: true)
-    end
+    anonymous_poll = Poll.new(poll_params(anonymous: true, voting_system: :anonymous_ballot, vote_weights_enabled: true))
+    refute anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:vote_weights_enabled, :invalid)
 
-    assert_raises ActiveRecord::RecordInvalid do
-      create_poll(poll_type: 'stv', stv_seats: 1, vote_weights_enabled: true)
-    end
+    stv_poll = Poll.new(poll_params(poll_type: 'stv', stv_seats: 1, vote_weights_enabled: true))
+    refute stv_poll.valid?
+    assert stv_poll.errors.added?(:vote_weights_enabled, :invalid)
   end
 
   test "disallows closing dates in the past" do
@@ -161,20 +370,25 @@ class PollTest < ActiveSupport::TestCase
     assert poll.valid?
   end
 
-  test "until vote results are available to the backend before voting" do
+  test "until vote results are available to clients but hidden from server rendering before voting" do
     poll = create_poll(hide_results: "until_vote")
 
-    assert poll.show_results?(voted: false)
-    assert poll.show_results?(voted: true)
+    assert poll.results_available?
+    refute poll.results_visible?(voted: false)
+    assert poll.results_visible?(voted: true)
+    poll.update!(closed_at: Time.current)
+    assert poll.results_visible?(voted: false)
   end
 
   test "until closed results remain hidden from the backend until close" do
     poll = create_poll(hide_results: "until_closed")
 
-    refute poll.show_results?(voted: false)
-    refute poll.show_results?(voted: true)
+    refute poll.results_available?
+    refute poll.results_visible?(voted: false)
+    refute poll.results_visible?(voted: true)
     poll.update!(closed_at: Time.current)
-    assert poll.show_results?(voted: false)
+    assert poll.results_available?
+    assert poll.results_visible?(voted: false)
   end
 
   test "assigns poll options" do

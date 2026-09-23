@@ -40,7 +40,6 @@ class Views::Admin::Layout < Views::Admin::Base
       link_to "Groups", admin_groups_path
       link_to "Users", admin_users_path
       link_to "Subscriptions", admin_subscriptions_path if Object.const_defined?("LoomioSubs")
-      link_to "API", admin_api_path
       link_to "Jobs", "/admin/jobs"
     end
     button_to "Sign out", destroy_user_session_path, method: :delete, class: "admin-nav__sign-out"

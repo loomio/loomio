@@ -1,98 +1,69 @@
-<script lang="js">
-import svg from 'svg.js';
-import AppConfig from '@/shared/services/app_config';
-import { each } from 'lodash-es';
+<script setup lang="js">
+import { computed } from 'vue';
 
-export default
-{
-  props: {
-    slices: Array,
-    size: Number
-  },
+const { slices, size } = defineProps({
+  slices: {type: Array, required: true},
+  size: {type: Number, required: true}
+});
 
-  data() {
-    return {
-      svgEl: null,
-      shapes: []
-    };
-  },
+const radius = computed(() => size / 2);
+const circleColor = computed(() => slices[0]?.color || '#BBBBBB');
 
-  computed: {
-    radius() {
-      return this.size / 2.0;
-    }
-  },
+const arcPath = (startAngle, endAngle) => {
+  const rad = Math.PI / 180;
+  const x1 = radius.value + (radius.value * Math.cos(-startAngle * rad));
+  const x2 = radius.value + (radius.value * Math.cos(-endAngle * rad));
+  const y1 = radius.value + (radius.value * Math.sin(-startAngle * rad));
+  const y2 = radius.value + (radius.value * Math.sin(-endAngle * rad));
 
-  methods: {
-    arcPath(startAngle, endAngle) {
-      const rad = Math.PI / 180;
-      const x1 = this.radius + (this.radius * Math.cos(-startAngle * rad));
-      const x2 = this.radius + (this.radius * Math.cos(-endAngle * rad));
-      const y1 = this.radius + (this.radius * Math.sin(-startAngle * rad));
-      const y2 = this.radius + (this.radius * Math.sin(-endAngle * rad));
-      return ["M", this.radius, this.radius, "L", x1, y1, "A", this.radius, this.radius, 0, +((endAngle - startAngle) > 180), 0, x2, y2, "z"].join(' ');
-    },
-
-    draw() {
-      this.shapes.forEach(shape => shape.remove());
-      let start = 90;
-
-      switch (this.slices.length) {
-        case 0:
-          return this.shapes.push(this.svgEl.circle(this.size).attr({
-            'stroke-width': 0,
-            fill: '#BBBBBB'
-          })
-          );
-        case 1:
-          return each(this.slices, option => {
-            return this.shapes.push(this.svgEl.circle(this.size).attr({
-              'stroke-width': 0,
-              fill: option.color
-            })
-            );
-          });
-        default:
-          return each(this.slices, option => {
-            const angle = (360 * option.value) / 100;
-            this.shapes.push(this.svgEl.path(this.arcPath(start, start + angle)).attr({
-              'stroke-width': 0,
-              fill: option.color
-            })
-            );
-            return start += angle;
-          });
-      }
-    }
-  },
-
-  watch: {
-    'slices'() { this.draw(); }
-  },
-
-  mounted() {
-    this.svgEl = svg(this.$el).size('100%', '100%');
-    this.draw();
-  },
-
-  beforeDestroy() {
-    this.svgEl.clear();
-    delete this.shapes;
-  }
+  return [
+    'M', radius.value, radius.value,
+    'L', x1, y1,
+    'A', radius.value, radius.value, 0, Number(endAngle - startAngle > 180), 0, x2, y2,
+    'z'
+  ].join(' ');
 };
+
+const segments = computed(() => {
+  let startAngle = 90;
+
+  return slices.map((slice) => {
+    const endAngle = startAngle + ((360 * slice.value) / 100);
+    const segment = {
+      color: slice.color,
+      path: arcPath(startAngle, endAngle)
+    };
+    startAngle = endAngle;
+    return segment;
+  });
+});
 </script>
 
 <template lang="pug">
-.poll-proposal-chart(:style="{width: size+'px', height: size+'px'}")
+svg.poll-proposal-chart(
+  :style="{width: `${size}px`, height: `${size}px`}"
+  :viewBox="`0 0 ${size} ${size}`"
+  aria-hidden="true")
+  circle(
+    v-if="slices.length <= 1"
+    :cx="radius"
+    :cy="radius"
+    :r="radius"
+    :fill="circleColor"
+    stroke-width="0")
+  path(
+    v-else
+    v-for="(segment, index) in segments"
+    :key="index"
+    :d="segment.path"
+    :fill="segment.color"
+    stroke-width="0")
 </template>
+
 <style>
 .poll-proposal-chart {
   border: 0;
   margin: 0;
   padding: 0;
-}
-.poll-proposal-chart svg {
-  height: 100%;
-  width: 100%;
 }
 </style>

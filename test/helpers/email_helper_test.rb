@@ -81,6 +81,66 @@ class EmailHelperTest < ActiveSupport::TestCase
     assert_match "/p/#{poll.key}?sequence_id=12", send(:poll_url, poll, no_slug: true, sequence_id: 12)
   end
 
+  test "tracked_url includes a topic reader token for an invited guest" do
+    guest = User.create!(name: "Invited guest", email: "invited-guest-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @author)
+
+    url = tracked_url(@discussion, recipient: guest)
+
+    assert_includes url, "topic_reader_token=#{reader.token}"
+  end
+
+  test "tracked_url omits a topic reader token when the invited guest is a group member" do
+    guest = User.create!(name: "Guest member", email: "guest-member-#{SecureRandom.hex(4)}@example.test")
+    reader = @discussion.topic.add_guest!(guest, @author)
+    @group.add_member!(guest)
+
+    assert_includes TopicReader.where(id: reader.id), reader
+    refute_includes TopicReader.redeemable, reader
+    refute_includes tracked_url(@discussion, recipient: guest), "topic_reader_token="
+  end
+
+  test "tracked_url includes a stance token for an invited guest" do
+    guest = User.create!(name: "Invited voter", email: "invited-voter-#{SecureRandom.hex(4)}@example.test")
+    poll = PollService.create(params: {
+      poll_type: "poll", title: "Guest poll", poll_option_names: %w[yes no],
+      closing_at: 1.day.from_now, group_id: @group.id, notify_on_open: false
+    }, actor: @author)
+    stance = Stance.create!(poll: poll, participant: guest, inviter: @author)
+
+    assert_includes tracked_url(poll, recipient: guest), "stance_token=#{stance.token}"
+  end
+
+  test "tracked_url omits a stance token when the invited voter is a group member" do
+    member = User.create!(name: "Invited member", email: "invited-member-#{SecureRandom.hex(4)}@example.test")
+    poll = PollService.create(params: {
+      poll_type: "poll", title: "Member poll", poll_option_names: %w[yes no],
+      closing_at: 1.day.from_now, group_id: @group.id, notify_on_open: false
+    }, actor: @author)
+    stance = Stance.create!(poll: poll, participant: member, inviter: @author)
+    @group.add_member!(member)
+
+    assert_includes Stance.where(id: stance.id), stance
+    refute_includes Stance.redeemable, stance
+    refute_includes tracked_url(poll, recipient: member), "stance_token="
+  end
+
+  test "unsubscribe_url identifies a poll by its topic" do
+    poll = PollService.create(params: {
+      poll_type: "poll",
+      title: "Test poll",
+      poll_option_names: ["agree"],
+      closing_at: 5.days.from_now,
+      group_id: @group.id,
+      notify_on_open: false
+    }, actor: @author)
+
+    url = unsubscribe_url(poll, recipient: @user)
+
+    assert_includes url, "topic_id=#{poll.topic_id}"
+    refute_includes url, "poll_id="
+  end
+
   test "polymorphic_url can accept a utm hash" do
     comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)

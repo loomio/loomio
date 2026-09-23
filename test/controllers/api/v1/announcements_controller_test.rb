@@ -4,6 +4,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   inline_jobs "history for topic includes users in response",
               "poll create as admin can add group member",
               "poll create as admin can add group member with notification",
+              "anonymous poll create returns and notifies only newly added voters",
               "topic create as admin can add member",
               "topic create as admin can add multiple members",
               "outcome create member can add members when permission enabled",
@@ -223,9 +224,114 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     get :available_audiences, params: { discussion_id: discussion.id, include_actor: 1 }
 
     assert_response :success
-    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
-    assert_includes audience_ids, "discussion_group"
+    audiences = JSON.parse(response.body).fetch("audiences")
+    audience_ids = audiences.pluck("id")
+    topic_audience = audiences.find { |audience| audience["id"] == "topic" }
+
+    assert_includes audience_ids, "topic"
+    assert_equal "topic", topic_audience.fetch("kind")
     refute audience_ids.any? { |id| id.start_with?("group-") }
+  end
+
+  test "available audiences for a subgroup include parent members who are not already in the subgroup" do
+    subgroup = groups(:subgroup)
+
+    get :available_audiences, params: { group_id: subgroup.id, exclude_members: 1 }
+
+    assert_response :success
+    audiences = JSON.parse(response.body).fetch("audiences")
+    parent_audience = audiences.find { |audience| audience["id"] == "group-#{@group.id}" }
+    expected_parent_member_ids = @group.members.where.not(id: subgroup.members.select(:id)).pluck(:id).sort
+
+    assert_equal @group.name, parent_audience.fetch("name")
+    assert_equal expected_parent_member_ids.length, parent_audience.fetch("size")
+    refute audiences.any? { |audience| audience["id"] == "group-#{subgroup.id}" }
+
+    get :audience, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{@group.id}",
+      exclude_members: 1
+    }
+
+    assert_response :success
+    assert_equal expected_parent_member_ids, JSON.parse(response.body).fetch("users").pluck("id").sort
+  end
+
+  test "available audiences for a parent group include members of its subgroups" do
+    subgroup = groups(:subgroup)
+
+    get :available_audiences, params: { group_id: @group.id, exclude_members: 1 }
+
+    assert_response :success
+    audiences = JSON.parse(response.body).fetch("audiences")
+    subgroup_audience = audiences.find { |audience| audience["id"] == "group-#{subgroup.id}" }
+
+    assert_equal subgroup.name, subgroup_audience.fetch("name")
+    assert_equal 1, subgroup_audience.fetch("size")
+    refute audiences.any? { |audience| audience["id"] == "group-#{@group.id}" }
+  end
+
+  test "available audiences exclude empty groups" do
+    empty_group = Group.create!(
+      name: "Empty audience group",
+      parent: @group,
+      handle: "testgroup-empty-audience-#{SecureRandom.hex(4)}",
+      group_privacy: "secret"
+    )
+
+    get :available_audiences, params: { discussion_id: @discussion.id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    refute_includes audience_ids, "group-#{empty_group.id}"
+    refute_includes audience_ids, "delegates-#{empty_group.id}"
+  end
+
+  test "group audiences do not expose a related group whose members the actor cannot browse" do
+    hex = SecureRandom.hex(4)
+    sibling = Group.create!(
+      name: "Private sibling #{hex}",
+      parent: @group,
+      handle: "testgroup-private-sibling-#{hex}",
+      group_privacy: "secret"
+    )
+    sibling.add_member!(@alien)
+
+    get :available_audiences, params: { group_id: groups(:subgroup).id, exclude_members: 1 }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    refute_includes audience_ids, "group-#{sibling.id}"
+
+    get :audience, params: {
+      group_id: groups(:subgroup).id,
+      recipient_audience: "group-#{sibling.id}",
+      exclude_members: 1
+    }
+
+    assert_response :forbidden
+  end
+
+  test "group audiences cannot resolve a group from another organization" do
+    get :audience, params: {
+      group_id: groups(:subgroup).id,
+      recipient_audience: "group-#{groups(:alien_group).id}",
+      exclude_members: 1
+    }
+
+    assert_response :not_found
+  end
+
+  test "group audiences cannot resolve the destination group" do
+    subgroup = groups(:subgroup)
+
+    get :audience, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{subgroup.id}",
+      exclude_members: 1
+    }
+
+    assert_response :not_found
   end
 
   test "count ignores obsolete recipient usernames" do
@@ -239,7 +345,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   # History tests
-  test "history responds with event history" do
+  test "history responds with topic_item history" do
     get :history, params: { group_id: @group.id }
     assert_response :success
   end
@@ -247,8 +353,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "history for topic includes users in response" do
     member = users(:user)
     topic = @discussion.topic
-    Events::DiscussionAnnounced.publish!(discussion: @discussion, actor: @admin,
-      recipient_user_ids: [member.id], recipient_chatbot_ids: [])
+    TopicService.invite(
+      topic: topic,
+      actor: @admin,
+      params: { recipient_user_ids: [ member.id ] }
+    )
 
     get :history, params: { topic_id: topic.id }
 
@@ -294,20 +403,142 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "history for topic includes user_mentioned notifications" do
     member = users(:user)
     topic = @discussion.topic
-    parent_event = Event.find_by(kind: 'new_discussion', topic: @discussion.topic)
-    comment = Comment.create!(body: "hello", parent: parent_event, user: @admin)
-    comment.create_missing_created_event!
-    mention_event = Event.create!(kind: 'user_mentioned', eventable: comment, user: @admin,
-                                  custom_fields: { user_ids: [member.id] })
-    Notification.create!(event: mention_event, user: member)
+    parent_topic_item = TopicItem.find_by(kind: 'new_discussion', topic: @discussion.topic)
+    comment = Comment.create!(body: "hello", parent: parent_topic_item, user: @admin)
+    comment.create_missing_created_topic_item!
+    notification = Notification.create!(
+      kind: "user_mentioned",
+      subject: comment,
+      actor: @admin
+    )
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: member,
+      channel: "in_app",
+      delivered_at: Time.current
+    )
 
     get :history, params: { topic_id: topic.id }
 
     assert_response :success
     json = JSON.parse(response.body)
-    mention_event = json['data'].find { |e| e['kind'] == 'user_mentioned' }
-    assert mention_event, "expected user_mentioned event in history"
-    assert_includes mention_event['notifications'].map { |n| n['user_id'] }, member.id
+    mention_notification = json['data'].find { |e| e['kind'] == 'user_mentioned' }
+    assert mention_notification, "expected user_mentioned notification in history"
+    assert_includes mention_notification['notifications'].map { |n| n['user_id'] }, member.id
+  end
+
+  test "history includes eventless poll announcements" do
+    member = users(:user)
+    poll = create_test_poll
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: @admin,
+      recipient_user_ids: [ member.id ]
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    get :history, params: { poll_id: poll.id }
+
+    assert_response :success
+    entry = JSON.parse(response.body)["data"].find { |item| item["id"] == "notification_#{notification.id}" }
+    assert entry
+    assert_equal "poll_announced", entry["kind"]
+    assert_equal [ member.id ], entry["notifications"].map { |state| state["user_id"] }
+  end
+
+  test "anonymous poll history hides viewed state for eventless announcements" do
+    member = users(:user)
+    poll = create_test_poll(anonymous: true)
+    notification = NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll,
+      actor: @admin,
+      recipient_user_ids: [ member.id ]
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    notification.notification_deliveries.find_by!(channel: "in_app", recipient: member)
+                .update!(viewed_at: Time.current)
+
+    get :history, params: { poll_id: poll.id }
+
+    body = JSON.parse(response.body)
+    entry = body["data"].find { |item| item["id"] == "notification_#{notification.id}" }
+    assert_response :success
+    assert_equal false, body["allow_viewed"]
+    assert_equal false, entry["notifications"].first["viewed"]
+  end
+
+  test "users notified count is calculated as a distinct database aggregate" do
+    member = users(:user)
+    poll = create_test_poll
+    2.times do
+      notification = Notification.create!(
+        kind: "poll_announced",
+        subject: poll,
+        actor: @admin
+      )
+      NotificationDelivery.create!(
+        notification: notification,
+        recipient: member,
+        channel: "in_app"
+      )
+    end
+
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      queries << payload[:sql] unless payload[:name].in?([ "SCHEMA", "TRANSACTION" ]) || payload[:cached]
+    end
+
+    get :users_notified_count, params: { poll_id: poll.id }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)["count"]
+    count_query = queries.find { |sql| sql.match?(/COUNT\(DISTINCT .*recipient_id.*\)/) }
+    assert count_query, "expected the recipient count to use COUNT(DISTINCT ...)"
+    refute_match(/IN \(SELECT .*notifications/, count_query)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "topic notification history keeps polymorphic subject lookups in indexed branches" do
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      queries << payload[:sql] unless payload[:name].in?([ "SCHEMA", "TRANSACTION" ]) || payload[:cached]
+    end
+
+    get :users_notified_count, params: { topic_id: @discussion.topic_id }
+
+    assert_response :success
+    notification_query = queries.find { |sql| sql.include?("UNION ALL") && sql.include?("notifications") }
+    assert notification_query, "expected notification subjects to use UNION ALL branches"
+    refute_match(/subject_type[^)]* OR /, notification_query)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "anonymous poll history and counts do not expose closing-reminder recipients" do
+    member = users(:user)
+    poll = create_test_poll(anonymous: true)
+    notification = NotificationService.create!(
+      kind: "poll_closing_soon",
+      subject: poll,
+      actor: @admin
+    )
+    NotificationDelivery.create!(
+      notification: notification,
+      recipient: member,
+      channel: "in_app",
+      delivered_at: Time.current
+    )
+
+    get :history, params: { poll_id: poll.id }
+    assert_response :success
+    assert_empty JSON.parse(response.body)["data"]
+
+    get :users_notified_count, params: { poll_id: poll.id }
+    assert_response :success
+    assert_equal 0, JSON.parse(response.body)["count"]
   end
 
   test "search existing only filters target members" do
@@ -366,12 +597,12 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal member.id, json['stances'][0]['participant_id']
   end
 
-  test "count supports discussion audience for polls" do
+  test "count supports topic audience for polls" do
     poll = create_test_poll
 
     get :count, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 
@@ -379,26 +610,40 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['count']
   end
 
-  test "poll create with discussion audience requires announcement permission" do
+  test "poll create with topic audience requires group notification permission" do
     poll = create_test_poll
     @group.update!(members_can_announce: false)
     Membership.find_by!(user_id: @admin.id, group_id: @group.id).update!(admin: false)
 
     post :create, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 
     assert_response :forbidden
   end
 
-  test "poll create supports discussion audience" do
+  test "poll create with topic audience permits a group member who can notify the group" do
+    poll = create_test_poll
+    @group.update!(members_can_announce: true)
+    sign_in users(:user)
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_audience: 'topic',
+      include_actor: '1'
+    }
+
+    assert_response :success
+  end
+
+  test "poll create supports topic audience" do
     poll = create_test_poll
 
     post :create, params: {
       poll_id: poll.id,
-      recipient_audience: 'discussion_group',
+      recipient_audience: 'topic',
       include_actor: '1'
     }
 
@@ -427,6 +672,64 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
+  end
+
+  test "anonymous poll create returns and notifies only newly added voters" do
+    poll = create_test_poll(anonymous: true)
+    existing_voter = users(:user)
+    new_voter = @group.members.humans.where.not(id: [ @admin.id, existing_voter.id ]).first!
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [ existing_voter.id ] }
+    )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: existing_voter
+    )
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_user_ids: [ existing_voter.id, new_voter.id ],
+      notify_recipients: true
+    }
+
+    assert_response :success
+    assert_equal [ new_voter.id ], JSON.parse(response.body).fetch("users").pluck("id")
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: existing_voter.id).count
+    assert_equal 1, poll.anonymous_poll_voters.where(voter_id: new_voter.id).count
+
+    notification = Notification.about(poll).where(kind: "poll_announced").order(:id).last!
+    assert_equal [ new_voter.id ], notification.recipient_user_ids
+    assert_equal [ new_voter.id ], notification.notification_deliveries
+                                                  .where(channel: "in_app")
+                                                  .pluck(:recipient_id)
+    assert_not notification.notification_deliveries.exists?(recipient: existing_voter)
+  end
+
+  test "poll create can invite a voter after an anonymous ballot is submitted" do
+    poll = create_test_poll(anonymous: true)
+    voter = users(:user)
+    PollService.invite(
+      poll: poll,
+      actor: @admin,
+      params: { recipient_user_ids: [voter.id] }
+    )
+    AnonymousBallotService.create(
+      anonymous_ballot: poll.anonymous_ballots.build(
+        anonymous_ballot_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }]
+      ),
+      actor: voter
+    )
+
+    post :create, params: { poll_id: poll.id, recipient_emails: ['late-voter@example.com'] }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['users'].length
+    assert poll.anonymous_poll_voters.joins(:voter).exists?(users: { email: 'late-voter@example.com' })
+    assert_equal 1, poll.reload.undecided_voters_count
   end
 
   test "poll create reports the invitation rate limit" do
@@ -507,7 +810,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
     assert_equal member.id, json['stances'][0]['participant_id']
-    assert_equal 1, member.reload.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "poll_announced" }
+    ).count
     assert_includes poll.voters, member
   end
 
@@ -524,7 +831,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal 1, json['stances'].length
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "poll_announced" }
+    ).count
   end
 
   # -- Topic announcement tests --
@@ -583,7 +894,14 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal member.id, json['topic_readers'][0]['user_id']
-    assert_equal 1, member.notifications.count
+    notification = Notification.where(kind: "discussion_announced").order(:id).last
+    assert_equal "TopicItem", notification.subject_type
+    assert_equal @discussion.created_topic_item.id, notification.subject_id
+    assert_equal 1, NotificationDelivery.where(
+      recipient: member,
+      channel: "in_app",
+      notification: notification
+    ).count
     assert_includes @discussion.readers, member
   end
 
@@ -614,7 +932,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal member.id, json['topic_readers'][0]['user_id']
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.where(
+      recipient: member,
+      channel: "in_app",
+      notification: Notification.where(kind: "discussion_announced")
+    ).count
     assert_includes @discussion.readers, member
   end
 
@@ -762,7 +1084,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     post :create, params: { outcome_id: outcome.id, recipient_user_ids: [member.id] }
     assert_response :success
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "outcome_announced" }
+    ).count
   end
 
   test "outcome create member cannot add guests when permission disabled" do
@@ -855,7 +1181,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     post :create, params: { group_id: @group.id, recipient_user_ids: [member.id] }
     assert_response :success
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "membership_created" }
+    ).count
     assert_includes @group.members, member
   end
 
@@ -908,6 +1238,47 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     member.reload
 
-    assert_equal 1, member.notifications.count
+    assert_equal 1, NotificationDelivery.joins(:notification).where(
+      recipient: member,
+      channel: "in_app",
+      notifications: { kind: "membership_created" }
+    ).count
+  end
+
+  test "group create invites a parent group audience to a subgroup" do
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
+    parent = Group.create!(
+      name: "Test Parent #{hex}",
+      handle: "test-parent-#{hex}-group-handle",
+      subscription: Subscription.create!(max_members: nil)
+    )
+    subgroup = Group.create!(name: "Test Sub #{hex}", parent: parent, handle: "#{parent.handle}-subgroup")
+
+    parent.add_admin!(@admin)
+    parent.add_member!(member, inviter: @admin)
+    subgroup.add_admin!(@admin)
+
+    post :create, params: {
+      group_id: subgroup.id,
+      recipient_audience: "group-#{parent.id}"
+    }
+
+    assert_response :success
+    assert_includes subgroup.reload.members, member
+    assert_equal [member.id], JSON.parse(response.body).fetch("memberships").pluck("user_id")
+  end
+
+  test "group create cannot invite an audience from another organization" do
+    subgroup = groups(:subgroup)
+
+    assert_no_difference -> { subgroup.memberships.count } do
+      post :create, params: {
+        group_id: subgroup.id,
+        recipient_audience: "group-#{groups(:alien_group).id}"
+      }
+    end
+
+    assert_response :not_found
   end
 end

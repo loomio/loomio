@@ -40,7 +40,7 @@ export default new class PollService {
 
   openSetOutcomeModal(poll) { openSetOutcomeModal(poll) }
 
-  actions(poll, vm, event) {
+  actions(poll, vm, topic_item) {
     if (!poll || !poll.config()) { return {}; }
     return {
       ...BookmarkService.actions(poll),
@@ -95,7 +95,7 @@ export default new class PollService {
         menu: true,
         canPerform() {
           const topic = poll.topic();
-          return event &&
+          return topic_item &&
                  poll.isTopicable() &&
                  topic &&
                  !topic.lockedAt &&

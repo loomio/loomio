@@ -56,15 +56,16 @@ class DiscussionTest < ActiveSupport::TestCase
   test "returns a guest who has never been a member" do
     discussion = discussions(:discussion)
     discussion.add_guest!(@alien, @admin)
-    assert_includes discussion.guests, @alien
-    assert_equal 1, discussion.guests.length
+
+    assert_equal (fixture_guest_ids + [ @alien.id ]).sort, discussion.guests.pluck(:id).sort
   end
 
   test "does not return a member as guest" do
     discussion = discussions(:discussion)
     @group.add_member!(@alien)
     discussion.add_guest!(@alien, @admin)
-    assert_equal 0, discussion.guests.length
+
+    assert_equal fixture_guest_ids.sort, discussion.guests.pluck(:id).sort
   end
 
   test "returns a guest who was previously a member" do
@@ -72,8 +73,8 @@ class DiscussionTest < ActiveSupport::TestCase
     membership = @group.add_member!(@alien)
     MembershipService.revoke(membership: membership, actor: @admin)
     discussion.add_guest!(@alien, @admin)
-    assert_includes discussion.guests, @alien
-    assert_equal 1, discussion.guests.length
+
+    assert_equal (fixture_guest_ids + [ @alien.id ]).sort, discussion.guests.pluck(:id).sort
   end
 
   # Versioning
@@ -104,13 +105,14 @@ class DiscussionTest < ActiveSupport::TestCase
   test "creating a comment increments correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment = Comment.new(parent: discussion, body: "A comment")
-    event = CommentService.create(comment: comment, actor: @admin)
-    event.reload
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @admin) { |created_topic_item| topic_item = created_topic_item }
+    topic_item.reload
     topic = discussion.topic.reload
     assert_equal 2, topic.items_count
-    assert_equal event.created_at, topic.last_activity_at
+    assert_equal topic_item.created_at, topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
-    assert_equal event.sequence_id, topic.last_sequence_id
+    assert_equal topic_item.sequence_id, topic.last_sequence_id
   end
 
   test "deleting only comment decrements correctly" do
@@ -130,10 +132,12 @@ class DiscussionTest < ActiveSupport::TestCase
   test "deleting first comment of two decrements correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment1 = Comment.new(parent: discussion, body: "First")
-    event1 = CommentService.create(comment: comment1, actor: @admin)
+    event1 = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| event1 = created_topic_item }
 
     comment2 = Comment.new(parent: discussion, body: "Second")
-    event2 = CommentService.create(comment: comment2, actor: @admin)
+    event2 = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| event2 = created_topic_item }
 
     event1.reload
     event2.reload
@@ -151,10 +155,12 @@ class DiscussionTest < ActiveSupport::TestCase
   test "deleting last comment of two decrements correctly" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     comment1 = Comment.new(parent: discussion, body: "First")
-    event1 = CommentService.create(comment: comment1, actor: @admin)
+    event1 = nil
+    CommentService.create(comment: comment1, actor: @admin) { |created_topic_item| event1 = created_topic_item }
 
     comment2 = Comment.new(parent: discussion, body: "Second")
-    event2 = CommentService.create(comment: comment2, actor: @admin)
+    event2 = nil
+    CommentService.create(comment: comment2, actor: @admin) { |created_topic_item| event2 = created_topic_item }
 
     event1.reload
     comment2.reload
@@ -180,6 +186,12 @@ class DiscussionTest < ActiveSupport::TestCase
     assert_includes discussion.mentioned_usernames, @alien.username
   end
 
+  test "can extract usernames containing underscores and hyphens" do
+    discussion = Discussion.new(description: "Hello @first_name-last!", description_format: 'md', author: @admin)
+
+    assert_equal ['first_name-last'], discussion.mentioned_usernames
+  end
+
   test "does not duplicate usernames" do
     discussion = Discussion.new(description: "Hello @#{@alien.username}! Goodbye @#{@alien.username}!", description_format: 'md', author: @admin)
     assert_equal [@alien.username], discussion.mentioned_usernames
@@ -188,5 +200,17 @@ class DiscussionTest < ActiveSupport::TestCase
   test "does not extract the authors username" do
     discussion = Discussion.new(description: "Hello @#{@admin.username}!", description_format: 'md', author: @admin)
     assert_not_includes discussion.mentioned_usernames, @admin.username
+  end
+
+  private
+
+  def fixture_guest_ids
+    users(
+      :guest_quiet,
+      :guest_normal,
+      :guest_admin_normal,
+      :guest_loud,
+      :former_member_guest
+    ).map(&:id)
   end
 end

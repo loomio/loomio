@@ -6,6 +6,7 @@ class Api::B2::GroupsController < Api::B2::BaseController
 
   def index
     self.collection = current_user.groups
+    self.collection_count = collection.count
     respond_with_collection
   end
 end

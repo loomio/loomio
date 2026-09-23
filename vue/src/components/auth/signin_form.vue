@@ -1,17 +1,21 @@
 <script lang="js">
 import AuthService  from '@/shared/services/auth_service';
-import Session from '@/shared/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
 import AppConfig from '@/shared/services/app_config';
 import Flash from '@/shared/services/flash';
-import EventBus from '@/shared/services/event_bus';
 import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
+import { useI18n } from 'vue-i18n';
 
 export default {
   mixins: [AuthModalMixin],
   components: { TurnstileWidget },
   props: {
     user: Object
+  },
+
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
 
   data() {
@@ -49,20 +53,6 @@ export default {
       });
     },
 
-    signInAndSetPassword() {
-      if (this.submitBlockedByCaptcha) { return; }
-      this.loading = true;
-      this.signIn().then(() => {
-        this.loading = false;
-        EventBus.$emit('openModal', {
-          component: 'ChangePasswordForm',
-          props: {
-            user: Session.user()
-          }
-        });
-      });
-    },
-
     sendLoginLink() {
       if (this.submitBlockedByCaptcha) { return; }
       this.applyTurnstileToken();
@@ -85,12 +75,10 @@ export default {
 <template lang="pug">
 v-card.auth-signin-form(
   :title="$t('auth_form.welcome_back', { name: user.name })"
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()")
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()")
   template(v-slot:append)
-    v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
-      common-icon(name="mdi-close")
+    auth-back-button(@click='user.authForm = null')
 
   .max-width-400.mx-auto
     .d-flex.justify-center.mb-4
@@ -101,9 +89,6 @@ v-card.auth-signin-form(
         span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
       v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
         span(v-t="'auth_form.login_link'")
-      p.mb-4.text-medium-emphasis
-        span(v-t="'auth_form.set_password_helptext'").mr-1
-        a.lmo-pointer(@click='signInAndSetPassword()' v-t="'auth_form.set_password'")
     .auth-signin-form__no-token(v-if='!user.hasToken')
       .auth-signin-form__password(v-if='user.hasPassword')
         p.text-center.my-2(v-t="'auth_form.enter_your_password'")
@@ -129,7 +114,7 @@ v-card.auth-signin-form(
       :disabled='submitBlockedByCaptcha'
       :loading="!user.password && loading"
     )
-      span(v-t="user.hasPassword ? 'auth_form.forgot_password' : 'auth_form.login_link'")
+      span {{ t('auth_form.sign_in_with_code') }}
     v-spacer
     v-btn.auth-signin-form__submit(
       v-if='user.hasPassword'
@@ -148,5 +133,5 @@ v-card.auth-signin-form(
       :disabled='submitBlockedByCaptcha'
       :loading="loading"
     )
-      span(v-t="'auth_form.login_link'")
+      span {{ t('auth_form.sign_in_with_code') }}
 </template>

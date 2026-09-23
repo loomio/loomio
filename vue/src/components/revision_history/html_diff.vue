@@ -4,10 +4,11 @@ import htmlDiff from "@/shared/helpers/html_diff";
 export default {
   props: {
     before: String,
-    after: String
+    after: String,
+    isText: Boolean
   },
   methods: {
-    diff() { return htmlDiff(this.before || '', this.after); }
+    diff() { return htmlDiff(this.before || '', this.after, {isText: this.isText}); }
   }
 }
 

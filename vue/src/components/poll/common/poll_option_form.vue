@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       testEnabled: !!this.pollOption.testOperator,
-      nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
+      nameRules: [v => ((v || '').length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
         {title: I18n.global.t('poll_proposal_options.agree'), value: 'agree'},
         {title: I18n.global.t('poll_proposal_options.disagree'), value: 'disagree'},

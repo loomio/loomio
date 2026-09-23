@@ -15,11 +15,15 @@ module Boot
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
+        groupDeletionDelayDays: AppConfig.group_deletion_delay_days,
         theme:               AppConfig.theme,
+        userManual:          AppConfig.user_manual,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         plausible_src:       ENV['PLAUSIBLE_SRC'],
         plausible_site:      ENV['PLAUSIBLE_SITE'],
         turnstileSiteKey:    TurnstileService.site_key,
+        webPushEnabled:      WebPushService.configured?,
+        vapidPublicKey:      (ENV['VAPID_PUBLIC_KEY'] if WebPushService.configured?),
         features: {
           app:               AppConfig.app_features
         },

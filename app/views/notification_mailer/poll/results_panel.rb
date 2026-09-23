@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::Component
+
+  def initialize(poll:, current_user:)
+    @poll = poll
+    @current_user = current_user
+  end
+
+  def view_template
+    return if @poll.scheduled?
+
+    my_stance = @current_user && ::Stance.latest.find_by(poll_id: @poll.id, participant_id: @current_user.id)
+
+    if @poll.has_options && (@poll.decided_voters_count > 0 || @poll.closed_at)
+      div do
+        if @poll.results_visible?(voted: my_stance&.cast_at.present?)
+          h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
+          if @poll.poll_type == "meeting"
+            render Views::NotificationMailer::Poll::Results::Meeting.new(poll: @poll, recipient: @current_user)
+          elsif @poll.poll_type == "stv"
+            render Views::NotificationMailer::Poll::Results::Stv.new(poll: @poll, recipient: @current_user)
+          else
+            render Views::NotificationMailer::Poll::Results::Simple.new(poll: @poll, recipient: @current_user)
+          end
+        else
+          key = @poll.hide_results == 'until_vote' ? :'thread_markdown.hidden_until_voted' : :'poll_common_action_panel.results_hidden_until_closed'
+          h3 { plain t(key) }
+        end
+      end
+    end
+
+    render Views::NotificationMailer::Poll::Undecided.new(poll: @poll)
+  end
+end

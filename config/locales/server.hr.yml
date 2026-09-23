@@ -150,6 +150,8 @@ hr:
       body: Stavka koju ste tražili nije pronađena. To se može dogoditi ako je rasprava ili anketa izbrisana.
     new_account_trial_group_limit: Novi računi su ograničeni na jednu grupu. Obratite se podršci ako vam ih treba više.
     direct_thread_anonymous_poll: Nit koja sadrži anonimnu anketu ne može se pretvoriti u izravnu nit
+    invitation_rate_limit_reached_contact_support: Dosegnut je dnevni limit pozivnica. Odmah se obratite podršci.
+    subscription_thread_limit_reached: Ova je organizacija dosegla ograničenje broja niti. Molimo vas da nadogradite kako biste nastavili koristiti Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Mora započeti s %{parent_handle}-
@@ -182,6 +184,7 @@ hr:
       recaptcha: Nismo uspjeli potvrditi da niste robot. Molim te pokušaj ponovno!
       bad_login: Nažalost, ta lozinka ne odgovara onoj koju imamo u evidenciji
       username_must_be_alphanumeric: Korisnička imena moraju biti samo mala slova i brojke
+      username_must_use_valid_characters: Korisnička imena smiju sadržavati samo mala slova, brojeve, podvlake i unutarnje crtice
   poll:
     error:
       cannot_add_options: Ne mogu dodati opcije ovoj anketi
@@ -301,6 +304,17 @@ hr:
     unsubscribe: 'Otkažite pretplatu ili promijenite postavke e-pošte:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> da biste otkazali pretplatu ili promijenili svoje postavke e-pošte."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
+        people_mentioned:
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
+        polls_closing_soon:
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
       daily_subject: Jučer na %{site_name}
       weekly_subject: Prošli tjedan na %{site_name}
       other_subject: Nedavno na %{site_name}
@@ -309,6 +323,31 @@ hr:
       thanks_for_reading: Hvala na čitanju, ugodan dan!
       marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
       click_here: Kliknite ovdje
+      catch_up_heading: Vaše nadoknađivanje propuštenog %{site_name}
+      unread_topics: Nepročitane teme
+      unread_threads: Nepročitane teme
+      mark_catch_up_as_read: Označi nadoknađivanje kao pročitano
+    digest:
+      subject:
+        votes_to_cast:
+          one: Imate 1 glas za dati
+          other: Imate %{count} glasova za dati
+        people_mentioned:
+          one: 1 osoba vas je spomenula
+          other: "%{count} ljudi vas je spomenulo"
+        polls_closing_soon:
+          one: 1 anketa uskoro se zatvara
+          other: "%{count} birališta se uskoro zatvaraju"
+        separator: "·"
+      daily_subject: Jučer na %{site_name}
+      weekly_subject: Prošli tjedan na %{site_name}
+      other_subject: Nedavno na %{site_name}
+      do_not_reply: Molimo ne odgovarajte na ovaj email.
+      mark_as_read: Označi kao pročitano
+      thanks_for_reading: Hvala na čitanju, ugodan dan!
+      marked_as_read_success: Sve iz e-pošte označeno je kao pročitano
+      click_here: Kliknite ovdje
+      unread_topics: Nepročitane teme
     group_membership_approved:
       intro: Vaš zahtjev za pristup grupi %{group_name} je odobren.
       intro_html: Vaš zahtjev za pristup grupi <strong>%{group_name}</strong> je odobren.
@@ -323,6 +362,8 @@ hr:
     content_was_translated: Ovaj sadržaj je preveden s %{source_locale}
     content_was_translated_html: Ovaj sadržaj je preveden s %{source_locale}. <a href="%{profile_url}">Prikaži postavke<a></a>
     loomio_app_description: Mjesto gdje organizacije koje surađuju mogu zajedno donositi odluke.
+    membership_request_declined:
+      button_text: Prijavi se ponovno
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.
@@ -373,6 +414,21 @@ hr:
     trial_expired:
       subject: Vaša Loomio grupa bit će izbrisana zbog neaktivnosti.
       body: Vaša Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
+    destroy_warning_with_usage:
+      subject: Vaša Loomio grupa je planirana za brisanje
+      requested: Vaša Loomio grupa "%{group}" je zakazana za brisanje od strane %{requestor}. Bit će trajno izbrisana nakon %{days} dana.
+      trial_expired_warning: Vaša probna verzija Loomio grupe "%{group}" istekla je prije %{expired_days} dana. Osim ako nas ne kontaktirate, bit će izbrisana za %{grace_days} dana.
+      trial_expired_process: Vaša grupa nije dostupna dok je označena za brisanje. Ako i dalje želite mjesto gdje će vaša grupa raspravljati i donositi odluke, nije prekasno za ponovno pokretanje. Odgovorite na ovu e-poštu u roku od %{grace_days} dana ako želite zatražiti produljenje probnog razdoblja, nadograditi na plaćenu pretplatu ili vam je potrebno više vremena za izvoz podataka. Nakon toga, grupa i njezini podaci bit će trajno izbrisani.
+      trial_expired: Vaša Loomio grupa "%{group}" je na istekloj probnoj verziji najmanje 60 dana. Bit će trajno izbrisana nakon %{days} dana.
+      usage_heading: 'Sažetak podataka grupe:'
+      subgroups: Podgrupe
+      members: Trenutni članovi
+      discussions: Rasprave
+      polls: Ankete
+      comments: Komentari
+      export: Da biste zadržali grupu ili izvezli kopiju njezinih podataka, odgovorite na ovu e-poruku u roku od %{days} dana. Možemo vratiti pristup prije brisanja.
+      export_link: Saznajte više o izvozu podataka grupe
+      group_key: 'Grupni ključ: %{key}'
   poll_mailer:
     common:
       why_send_this: Primili ste ovu e-poruku jer %{reason}
@@ -675,3 +731,36 @@ hr:
     file_too_large: Datoteka je prevelika. Maksimalna veličina za prijenos je %{limit}.
   merge_users:
     not_target_user: Morate biti prijavljeni kao ciljni račun da biste potvrdili spajanje.
+  thread_markdown:
+    poll: Anketa
+    no_activity: Još nema komentara, anketa, glasova ili rezultata
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Komentar · %{author} %{timestamp}
+    comment_reply: Odgovor za %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonimno glasanje:** %{value}"
+    options: "**Opcije:** %{value}"
+    'yes': Da
+    closed: Zatvoreno %{value}
+    scheduled_to_open: Planirano otvaranje %{value}
+    open_until: Otvaranje; zatvaranje %{value}
+    open: Otvoriti
+    current_results: Trenutni rezultati
+    hidden_until_closed: Skriveno do zatvaranja ankete
+    hidden_until_voted: Skriveno dok gledatelj ne glasa
+    voters: Birači
+    target: Cilj
+    available: Dostupno
+    available_if_needed: Dostupno ako je potrebno
+    unavailable: Nije dostupno
+    anonymous: Anonimno
+    no_voters: Nema birača
+    score: 'rezultat: %{value}'
+    vote: 'Glas: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Ništa od navedenog
+    no_option_selected: Nije odabrana nijedna opcija
+    outcome: Ishod · %{author} %{timestamp}
+    review_date: "**Datum pregleda:** %{value}"
+  error:
+    access_denied: Nemate dopuštenje za to

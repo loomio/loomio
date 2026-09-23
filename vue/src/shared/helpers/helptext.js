@@ -1,34 +1,34 @@
 import {includes} from 'lodash-es';
 import { I18n } from '@/i18n';
 
-export var eventHeadline = function(event) {
-  const key = (() => { switch (event.kind) {
+export var eventHeadline = function(topic_item) {
+  const key = (() => { switch (topic_item.kind) {
     case 'new_comment':       return 'new_comment';
     case 'stance_created':    return 'new_comment';
     case 'stance_updated':    return 'new_comment';
-    case 'discussion_edited': return discussionEditedKey(event);
+    case 'discussion_edited': return 'discussion_edited';
     case 'discussion_moved':  return 'discussion_moved_without_source';
     case 'discussion_closed': return 'thread_locked';
     case 'discussion_reopened': return 'thread_unlocked';
     case 'poll_created': return 'poll_created';
-    default: return event.kind;
+    default: return topic_item.kind;
   } })();
   return `thread_item.${key}`;
 };
 
-export var eventTitle = function(event) {
-  switch (event.eventableType) {
-    case 'Comment':             return event.model().parentAuthorName;
-    case 'Poll': case 'Outcome':     return event.model().poll().title;
-    case 'Group': case 'Membership': return event.model().group().name;
-    case 'Stance':              return event.model().poll().title;
-    case 'Discussion':          return event.model().title;
+export var eventTitle = function(topic_item) {
+  switch (topic_item.itemableType) {
+    case 'Comment':             return topic_item.model().parentAuthorName;
+    case 'Poll': case 'Outcome':     return topic_item.model().poll().title;
+    case 'Group': case 'Membership': return topic_item.model().group().name;
+    case 'Stance':              return topic_item.model().poll().title;
+    case 'Discussion':          return topic_item.model().title;
   }
 };
 
-export var eventPollType = function(event) {
-  if (!includes(['Poll', 'Stance', 'Outcome'], event.eventableType)) { return ""; }
-  return `poll_types.${event.model().poll().pollType}`;
+export var eventPollType = function(topic_item) {
+  if (!includes(['Poll', 'Stance', 'Outcome'], topic_item.itemableType)) { return ""; }
+  return `poll_types.${topic_item.model().poll().pollType}`;
 };
 
 export var emojiTitle = shortname => `reactions.${shortname.replace(/:/g, '')}`;
@@ -89,18 +89,5 @@ export var groupPrivacyConfirm = function(group) {
     if (group.discussionPrivacyOptions === 'private_only') {
       return 'group_form.confirm_change_to_private_discussions_only';
     }
-  }
-};
-
-var discussionEditedKey = function(event) {
-  const changes = event.customFields.changed_keys;
-  if (includes(changes, 'title')) {
-    return 'discussion_title_edited';
-  } else if (includes(changes, 'private')) {
-    return 'discussion_privacy_edited';
-  } else if (includes(changes, 'description')) {
-    return 'discussion_context_edited';
-  } else {
-    return 'discussion_edited';
   }
 };

@@ -1,0 +1,22 @@
+en:
+  mobile_auth:
+    authorize:
+      title: Connect Loomio Mobile
+      heading: Connect Loomio Mobile?
+      introduction: "The Loomio app would like to connect to %{host} as:"
+      access: "This lets the app keep you signed in on this device and access:"
+      activity: Your Loomio activity and unread status
+      notifications: Your mobile notification settings
+      web_session: Loomio in the app's secure web view
+      approve: Connect this device
+      deny: Cancel
+    errors:
+      invalid_request: The mobile authorization request is invalid or has expired.
+      invalid_client: This version of the mobile app is not supported.
+      invalid_grant: The authorization could not be completed.
+      unsupported_grant_type: The requested authorization method is not supported.
+      invalid_token: The mobile session is invalid or has expired.
+      insufficient_scope: The mobile session does not allow this action.
+      device_revoked: This device has been disconnected.
+      relay_unavailable: Push notifications are not configured for this Loomio host.
+      temporarily_unavailable: Mobile sign-in is temporarily unavailable.

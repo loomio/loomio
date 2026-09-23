@@ -153,6 +153,8 @@ de:
       pwned_password: Dieses Passwort ist bereits bei einem Datenverstoß aufgetaucht und sollte niemals verwendet werden
     new_account_trial_group_limit: Neue Konten sind auf eine Gruppe beschränkt. Bitte kontaktiere den Support, falls du weitere Konten benötigst.
     direct_thread_anonymous_poll: Ein Thread, der eine anonyme Umfrage enthält, kann nicht in einen direkten Thread umgewandelt werden.
+    invitation_rate_limit_reached_contact_support: Das tägliche Einladungslimit ist erreicht. Bitte kontaktieren Sie umgehend den Support.
+    subscription_thread_limit_reached: Diese Organisation hat ihr Diskussionslimit erreicht. Bitte aktualisiere deinen Tarif, um Loomio weiterhin zu nutzen.
   group:
     error:
       handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-
@@ -187,6 +189,7 @@ de:
       recaptcha: Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut.
       bad_login: Sorry, das Passwort passt nicht zu dem in unserer Datei.
       username_must_be_alphanumeric: Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen
+      username_must_use_valid_characters: Benutzernamen dürfen nur Kleinbuchstaben, Zahlen, Unterstriche und interne Bindestriche enthalten
   poll:
     error:
       cannot_add_options: Es können keine Optionen zu dieser Umfrage hinzugefügt werden.
@@ -327,6 +330,17 @@ de:
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Sie haben 1 Stimme abzugeben.
+          other: Sie haben %{count} Stimmen zur Verfügung.
+        people_mentioned:
+          one: Eine Person hat dich erwähnt
+          other: "%{count} Personen haben dich erwähnt"
+        polls_closing_soon:
+          one: 1. Wahllokal schließt in Kürze
+          other: "%{count} Wahllokale schließen bald"
+        separator: "·"
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
       other_subject: Kürzlich auf %{site_name}
@@ -335,6 +349,31 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
       click_here: Hier klicken
+      catch_up_heading: Ihr %{site_name}-Update
+      unread_topics: Ungelesene Themen
+      unread_threads: Ungelesene Threads
+      mark_catch_up_as_read: Markiere die gelesenen Texte
+    digest:
+      subject:
+        votes_to_cast:
+          one: Sie haben 1 Stimme abzugeben.
+          other: Sie haben %{count} Stimmen zur Verfügung.
+        people_mentioned:
+          one: Eine Person hat dich erwähnt
+          other: "%{count} Personen haben dich erwähnt"
+        polls_closing_soon:
+          one: 1. Wahllokal schließt in Kürze
+          other: "%{count} Wahllokale schließen bald"
+        separator: "·"
+      daily_subject: Gestern auf %{site_name}
+      weekly_subject: Letzte Woche auf %{site_name}
+      other_subject: Kürzlich auf %{site_name}
+      do_not_reply: Bitte nicht direkt auf diese E-Mail antworten.
+      mark_as_read: Als gelesen markieren
+      thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
+      marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
+      click_here: Hier klicken
+      unread_topics: Ungelesene Themen
     group_membership_approved:
       intro: Deine Anfrage der Gruppe %{group_name} beizutreten wurde angenommen.
       intro_html: Deine Anfrage der Gruppe <strong>%{group_name}</strong> beizutreten wurde angenommen.
@@ -349,6 +388,8 @@ de:
     content_was_translated: Dieser Inhalt wurde aus %{source_locale} übersetzt.
     content_was_translated_html: Dieser Inhalt wurde aus %{source_locale} übersetzt. <a href="%{profile_url}">Einstellungen anzeigen<a></a>
     loomio_app_description: Ein Ort für kooperative Organisationen, um gemeinsam Entscheidungen zu treffen.
+    membership_request_declined:
+      button_text: Erneut beantragen
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
@@ -405,6 +446,21 @@ de:
     trial_expired:
       subject: Deine Loomio-Gruppe wird aufgrund von Inaktivität gelöscht.
       body: Deine Loomio-Gruppe „%{group}“ ist inaktiv und wird in zwei Wochen gelöscht. Falls du die Löschung deiner Gruppe verhindern möchtest, antworte bitte auf diese E-Mail.
+    destroy_warning_with_usage:
+      subject: Ihre Loomio-Gruppe ist zur Löschung vorgesehen.
+      requested: Ihre Loomio-Gruppe "%{group}" wurde von %{requestor} zur Löschung vorgesehen. Sie wird nach %{days} Tagen endgültig gelöscht.
+      trial_expired_warning: Deine Loomio-Gruppe „%{group}“ ist vor %{expired_days} Tagen als Testversion abgelaufen. Sofern du uns nicht kontaktierst, wird sie in %{grace_days} Tagen gelöscht.
+      trial_expired_process: Deine Gruppe ist vorübergehend nicht verfügbar, da sie zur Löschung markiert ist. Wenn du weiterhin einen Ort für Diskussionen und Entscheidungen deiner Gruppe benötigst, kannst du die Gruppe noch reaktivieren. Antworte innerhalb von %{grace_days} Tagen auf diese E-Mail, wenn du eine Verlängerung der Testphase beantragen, auf ein kostenpflichtiges Abonnement upgraden oder mehr Zeit für den Datenexport benötigst. Danach werden die Gruppe und ihre Daten endgültig gelöscht.
+      trial_expired: Ihre Loomio-Gruppe "%{group}" befindet sich seit mindestens 60 Tagen in der abgelaufenen Testphase. Sie wird nach %{days} Tagen endgültig gelöscht.
+      usage_heading: 'Zusammenfassung der Gruppendaten:'
+      subgroups: Untergruppen
+      members: Aktuelle Mitglieder
+      discussions: Diskussionen
+      polls: Umfragen
+      comments: Kommentare
+      export: Um die Gruppe zu behalten oder eine Kopie ihrer Daten zu exportieren, antworten Sie bitte innerhalb von %{days} Tagen auf diese E-Mail. Wir können den Zugriff vor der Löschung wiederherstellen.
+      export_link: Erfahren Sie mehr über den Export von Gruppendaten
+      group_key: 'Gruppenschlüssel: %{key}'
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}
@@ -707,3 +763,36 @@ de:
     file_too_large: Die Datei ist zu groß. Die maximale Uploadgröße beträgt %{limit}.
   merge_users:
     not_target_user: Du musst als das Zielkonto angemeldet sein, um eine Zusammenführung zu bestätigen.
+  thread_markdown:
+    poll: Umfrage
+    no_activity: Bisher keine Kommentare, Umfragen, Abstimmungen oder Ergebnisse.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Kommentar · %{author} %{timestamp}
+    comment_reply: Antwort an %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonyme Abstimmung:** %{value}"
+    options: "**Optionen:** %{value}"
+    'yes': Ja
+    closed: Geschlossen %{value}
+    scheduled_to_open: Geplante Öffnung %{value}
+    open_until: Öffnen; schließen %{value}
+    open: Offen
+    current_results: Aktuelle Ergebnisse
+    hidden_until_closed: Ausgeblendet bis zum Ende der Abstimmung
+    hidden_until_voted: Ausgeblendet bis zur Zuschauerabstimmung
+    voters: Wähler
+    target: Ziel
+    available: Verfügbar
+    available_if_needed: Bei Bedarf verfügbar
+    unavailable: Nicht verfügbar
+    anonymous: Anonym
+    no_voters: Keine Wähler
+    score: 'Punktzahl: %{value}'
+    vote: 'Abstimmung: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nichts des oben Genannten
+    no_option_selected: Keine Option ausgewählt
+    outcome: Ergebnis · %{author} %{timestamp}
+    review_date: "**Überprüfungsdatum:** %{value}"
+  error:
+    access_denied: Du hast keine Berechtigung dazu

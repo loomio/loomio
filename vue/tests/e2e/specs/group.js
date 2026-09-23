@@ -27,8 +27,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_open_group_as_visitor')
-    page.expectNoElement('.thread-preview__dismiss')
-    page.expectNoElement('.thread-preview__mute')
+    page.expectNoElement('.topic-preview__dismiss')
+    page.expectNoElement('.topic-preview__mute')
   },
 
   'join_an_open_group': (test) => {
@@ -56,6 +56,153 @@ module.exports = {
     page.expectElement('.error-page__forbidden.v-alert')
     page.expectText('.error-page__forbidden', 'You do not have permission to view this')
     page.expectText('.error-page__forbidden', 'You may be signed in to the wrong account')
+  },
+
+  'cached secret group becomes forbidden when access is revoked': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_secret_group_with_access')
+    page.expectText('.group-page__name', 'Secret Dirty Dancing Shoes')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Secret Dirty Dancing Shoes')
+
+    test.executeAsync((done) => {
+      fetch('/dev/revoke_secret_group_access')
+        .then((response) => done(response.status))
+        .catch(() => done(0))
+    }, [], ({ value }) => test.assert.strictEqual(value, 200))
+
+    page.click('.sidebar__list-item-button--recent')
+    page.waitFor('.dashboard-page')
+    page.ensureSidebar()
+    page.pause(300)
+    page.clickElement('.sidebar__groups a')
+    page.expectElement('.error-page__forbidden.v-alert')
+    page.expectText('.error-page__forbidden', 'You do not have permission to view this')
+    page.expectNoElement('.group-page__name')
+  },
+
+  'keeps the routed panel mounted while changing groups': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_route_transitions')
+    page.ensureSidebar()
+    page.expectText('.sidebar__groups', 'Dirty Dancing Shoes')
+    page.expectText('.sidebar__groups', 'Point Break')
+
+    test.execute(() => {
+      window.__groupRouteRendererErrors = []
+      const nativeFetch = window.fetch
+      window.fetch = (...args) => {
+        const url = String(args[0]?.url || args[0])
+        const response = nativeFetch(...args)
+        if (!url.includes('/api/v1/groups/')) return response
+
+        return new Promise((resolve, reject) => {
+          setTimeout(() => response.then(resolve, reject), 200)
+        })
+      }
+      const consoleError = console.error
+      console.error = (...args) => {
+        const message = args.map(String).join(' ')
+        if (/parentNode|emitsOptions|\bbum\b|\bexposed\b/.test(message)) {
+          window.__groupRouteRendererErrors.push(message)
+        }
+        consoleError(...args)
+      }
+      window.addEventListener('error', event => {
+        const message = String(event.error || event.message)
+        if (/parentNode|emitsOptions|\bbum\b|\bexposed\b/.test(message)) {
+          window.__groupRouteRendererErrors.push(message)
+        }
+      })
+    })
+
+    test.execute(() => {
+      const clickGroup = name => {
+        const links = Array.from(document.querySelectorAll('.sidebar__groups > .v-list-item'))
+        links.find(link => link.textContent.includes(name)).click()
+      }
+      clickGroup('Point Break')
+    })
+
+    page.expectText('.group-page__name', 'Point Break')
+    page.expectElement('.discussions-panel')
+    test.execute(() => {
+      document.querySelector('.discussions-panel').dataset.e2eInstance = 'original'
+    })
+    page.pause(500)
+    test.execute(() => document.querySelector('.discussions-panel').dataset.e2eInstance, [], ({value}) => {
+      test.assert.strictEqual(value, 'original', 'does not remount the routed panel after refreshing the group')
+    })
+    test.execute(() => window.__groupRouteRendererErrors, [], ({value}) => {
+      test.assert.deepEqual(value, [], 'does not raise Vue renderer errors while changing groups')
+    })
+  },
+
+  'filters_group_polls_by_status_type_and_tag': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_poll_filters')
+    page.click('.group-page-polls-tab')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote', 20000)
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-active')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-vote')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-closed')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+    page.expectNoText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+
+    page.click('.polls-panel__status-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__status-any')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__type-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__type-option[data-poll-type="proposal"]')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.polls-panel__type-filter')
+    page.pause(200)
+    page.click('.v-overlay--active .polls-panel__type-any')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.tags-filter-menu__button')
+    page.pause(200)
+    page.click('.v-overlay--active .tags-filter-menu__tag[data-tag-name="Important"]')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectNoText('.polls-panel', 'Open other poll already voted on')
+    page.expectNoText('.polls-panel', 'Closed untagged poll')
+
+    page.click('.tags-filter-menu__button')
+    page.pause(200)
+    page.click('.v-overlay--active .tags-filter-menu__all-tags')
+    page.expectText('.polls-panel', 'Open important proposal needing a vote')
+    page.expectText('.polls-panel', 'Open other poll already voted on')
+    page.expectText('.polls-panel', 'Closed untagged poll')
   },
 
   'displays_threads_from_subgroups_in_the_discussions_card': (test) => {
@@ -264,7 +411,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-panel__new-thread-button')
+    page.click('.discussions-panel__new-topic-button')
     page.click('.discussion-templates--template')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
@@ -355,7 +502,7 @@ module.exports = {
 
     page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')
-    page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
+    page.expectFlash("This group is unavailable and will be permanently deleted after 90 days")
   },
 
   'removes_group_logo_and_cover_photo': (test) => {

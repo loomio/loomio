@@ -5,13 +5,14 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
   setup do
     @hex = SecureRandom.hex(4)
     @saved_env = {}
-    %w[NEXTCLOUD_HOST NEXTCLOUD_APP_KEY NEXTCLOUD_APP_SECRET LOOMIO_SSO_FORCE_USER_ATTRS].each do |key|
+    %w[NEXTCLOUD_HOST NEXTCLOUD_APP_KEY NEXTCLOUD_APP_SECRET LOOMIO_SSO_FORCE_USER_ATTRS TERMS_URL].each do |key|
       @saved_env[key] = ENV[key]
     end
 
     ENV['NEXTCLOUD_HOST'] = 'https://cloud.example.com'
     ENV['NEXTCLOUD_APP_KEY'] = 'nc_client_id'
     ENV['NEXTCLOUD_APP_SECRET'] = 'nc_client_secret'
+    ENV.delete('TERMS_URL')
 
     stub_request(:post, 'https://cloud.example.com/index.php/apps/oauth2/api/v1/token')
       .to_return(
@@ -27,6 +28,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
           ocs: {
             data: {
               id: "nc_#{@hex}",
+              displayname: "Nextcloud User",
               email: "nc-#{@hex}@example.com"
             }
           }
@@ -61,6 +63,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
 
     user = User.find_by(email: "nc-#{@hex}@example.com")
     assert user
+    assert_equal "Nextcloud User", user.name
     assert user.email_verified?
 
     identity = Identity.find_by(identity_type: 'nextcloud', uid: "nc_#{@hex}")

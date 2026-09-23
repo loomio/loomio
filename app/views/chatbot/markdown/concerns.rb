@@ -3,15 +3,15 @@
 module Views::Chatbot::Markdown::Concerns
   private
 
-  def render_notification_text(event, poll)
-    url = polymorphic_url(event.eventable)
-    message = event.recipient_message
+  def render_notification_text(topic_item, poll)
+    url = polymorphic_url(topic_item.itemable)
+    message = topic_item.recipient_message if topic_item.is_a?(NotificationRenderingContext)
     poll_type = poll ? t("poll_types.#{poll.poll_type}") : nil
-    title = event.eventable.title_model.title
+    title = topic_item.itemable.title_model.title
 
-    md t("notifications.without_title.#{event.kind}",
-         actor: event.user.name,
-         title: "[#{title}](#{url})",
+    md t("notifications.without_title.#{topic_item.kind}",
+         actor: markdown_escape(topic_item.user.name),
+         title: "[#{markdown_escape(title)}](#{url})",
          poll_type: poll_type,
          site_name: AppConfig.theme[:site_name])
     md "\n"
@@ -21,14 +21,14 @@ module Views::Chatbot::Markdown::Concerns
     end
   end
 
-  def render_title(eventable)
-    md "**[#{eventable.title}](#{polymorphic_url(eventable)})**\n"
+  def render_title(itemable)
+    md "**[#{markdown_escape(itemable.title)}](#{polymorphic_url(itemable)})**\n"
   end
 
-  def render_body(eventable)
-    md MarkdownService.render_markdown(eventable.body, eventable.body_format)
+  def render_body(itemable)
+    md MarkdownService.render_markdown(itemable.body, itemable.body_format)
     md "\n"
-    render_attachments(eventable)
+    render_attachments(itemable)
   end
 
   def render_attachments(resource)
@@ -50,7 +50,7 @@ module Views::Chatbot::Markdown::Concerns
 
     if (option = poll.current_outcome.poll_option)
       if poll.poll_option_name_format == 'iso8601'
-        md "Event: #{poll.current_outcome.event_summary}\n"
+        md "TopicItem: #{poll.current_outcome.event_summary}\n"
         md "Date: #{format_iso8601_for_humans(option.name, @recipient.time_zone, @recipient.date_time_pref)}\n"
         md "Location: #{poll.current_outcome.event_location}\n"
       end
@@ -131,7 +131,7 @@ module Views::Chatbot::Markdown::Concerns
     return if poll.scheduled?
 
     if (poll.decided_voters_count > 0) || poll.closed_at
-      if poll.show_results?
+      if poll.results_visible?
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"
         md "\n"
 
@@ -326,8 +326,8 @@ module Views::Chatbot::Markdown::Concerns
     end
   end
 
-  def render_discussion_undecided(eventable)
-    usernames = eventable.polls.map(&:undecided_voters).flatten.uniq.map(&:username)
+  def render_discussion_undecided(itemable)
+    usernames = itemable.polls.map(&:undecided_voters).flatten.uniq.map(&:username)
     return unless usernames.any?
 
     md "**#{t('poll.waiting_for_votes_from')}**: #{usernames.join(', ')}\n"

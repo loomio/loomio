@@ -5,12 +5,12 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionService from '@/shared/services/discussion_service';
 import { compact } from 'lodash-es';
-import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import SubscriptionService from '@/shared/services/subscription_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionTemplateHelpPanel from '@/components/discussion_template/help_panel';
 import { useWatchRecords } from '@/composables/useWatchRecords';
@@ -37,7 +37,7 @@ const form = ref(null);
 
 // Data
 const tab = ref(0);
-const upgradeUrl = AppConfig.baseUrl + 'upgrade';
+const upgradeUrl = SubscriptionService.upgradeUrl();
 const submitIsDisabled = ref(false);
 const searchResults = ref([]);
 const subscription = ref(props.discussion.group().parentOrSelf().subscription);
@@ -58,11 +58,22 @@ const validate = (field) => {
 };
 
 const updateGroupItems = () => {
-  groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(Session.user().groups().map(g => ({
+  const groups = Session.user().groups().slice();
+  const selectedGroup = props.discussion.groupId && props.discussion.group();
+  if (selectedGroup && !groups.some(group => group.id === selectedGroup.id)) {
+    groups.push(selectedGroup);
+  }
+  groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(groups.map(g => ({
     title: g.fullName,
     value: g.id
   })));
 };
+
+const isNonMemberDiscussion = computed(() => {
+  return props.discussion.isNew() &&
+    props.discussion.groupId &&
+    !props.discussion.group().membersInclude(Session.user());
+});
 
 const submit = () => {
   const actionName = props.discussion.id ? 'updated' : 'started';
@@ -105,24 +116,15 @@ const titlePlaceholder = computed(() => {
   }
 });
 
-const maxThreads = computed(() => {
-  return subscription.value.max_threads;
-});
-
-const threadCount = computed(() => {
-  return props.discussion.group().parentOrSelf().orgDiscussionsCount;
-});
-
-const maxThreadsReached = computed(() => {
-  return maxThreads.value && (threadCount.value >= maxThreads.value);
-});
-
 const subscriptionActive = computed(() => {
+  if (isNonMemberDiscussion.value) {
+    return props.discussion.group().isEnabled();
+  }
   return subscription.value.active;
 });
 
 const canStartThread = computed(() => {
-  return subscriptionActive.value && !maxThreadsReached.value;
+  return subscriptionActive.value;
 });
 
 const showUpgradeMessage = computed(() => {
@@ -130,7 +132,7 @@ const showUpgradeMessage = computed(() => {
 });
 
 const isMovingItems = computed(() => {
-  return props.discussion.forkedEventIds.length;
+  return props.discussion.selectedTopicItemIds.length;
 });
 
 // Watcher
@@ -150,6 +152,15 @@ watch(() => props.discussion.groupId, (groupId) => {
 // Mounted
 onMounted(() => {
   loadGroups().then(() => {
+    if (isNonMemberDiscussion.value) {
+      props.discussion.update({
+        recipientAudience: null,
+        recipientUserIds: [],
+        recipientEmails: [],
+        recipientChatbotIds: []
+      });
+    }
+
     const templatePromise = props.discussion.discussionTemplateId
       ? Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId)
       : props.discussion.discussionTemplateKey
@@ -188,7 +199,7 @@ onMounted(() => {
 
 <template lang="pug">
 v-form(ref="form" @submit.prevent="submit")
-  v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+  v-card.discussion-form(v-submit-on-mod-enter="submit")
     template(v-slot:title)
       span(v-intersect="{handler: titleVisible}") {{ cardTitle }}
     template(v-slot:append)
@@ -210,7 +221,7 @@ v-form(ref="form" @submit.prevent="submit")
     v-card-item
       discussion-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
       v-select.pb-4(
-        :disabled="!!discussion.id"
+        :disabled="!!discussion.id || isNonMemberDiscussion"
         v-model="discussion.groupId"
         :items="groupItems"
         :label="$t('common.group')"
@@ -220,7 +231,6 @@ v-form(ref="form" @submit.prevent="submit")
       v-alert.mb-4(v-if="!discussion.groupId && !discussionTemplate && !discussion.id" type="info" variant="tonal" density="compact") {{ $t('discussion_form.direct_discussion_hint') }}
 
       div(v-if="showUpgradeMessage")
-        p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
         p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
       .discussion-form__group-selected(v-if='!showUpgradeMessage')
@@ -231,11 +241,12 @@ v-form(ref="form" @submit.prevent="submit")
           v-model='discussion.title' maxlength='255'
         )
 
-        tags-field(v-if="!discussion.id" :model="discussion")
+        tags-field(v-if="!discussion.id && !isNonMemberDiscussion" :model="discussion")
 
         lmo-textarea(
           :model='discussion'
           field="description"
+          :allow-mentions="!isNonMemberDiscussion"
           :label="$t('discussion_form.context_label')"
           :placeholder="$t('discussion_form.context_placeholder')"
         )
@@ -248,9 +259,9 @@ v-form(ref="form" @submit.prevent="submit")
               v-list-item-subtitle {{ pt.processSubtitle }}
             v-divider
 
-        common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
+        common-notify-fields(v-if="loaded && !isNonMemberDiscussion" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
-      help-btn(path='en/user_manual/threads/starting_threads')
+      help-btn(path='en/user_manual/discussions/starting_a_discussion')
       v-spacer
       v-btn.discussion-form__submit(
         variant="elevated"

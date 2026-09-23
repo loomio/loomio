@@ -1,42 +1,60 @@
 class CommentService
-  def self.create(comment:, actor:)
+  def self.create(comment:, actor:, &on_topic_item)
     comment.author = actor
     actor.ability.authorize! :create, comment
-    comment.save!
-    comment.update_pg_search_document
-    Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
-    Events::NewComment.publish!(comment)
+    return comment unless comment.valid?
+
+    topic_item = Comment.transaction do
+      comment.save!
+      comment.update_pg_search_document
+      Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
+      topic_item = TopicItems::NewComment.create!(
+        itemable: comment,
+        pinned: comment.should_pin
+      )
+      MentionNotificationService.create!(
+        subject: topic_item,
+        actor: actor
+      )
+      topic_item
+    end
+    on_topic_item&.call(topic_item)
+    comment
   end
 
-  def self.discard(comment:, actor:)
+  def self.discard(comment:, actor:, &on_topic_item)
     actor.ability.authorize!(:discard, comment)
     Sentry.metrics.count("comment.discard")
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
-      comment.created_event.update(pinned: false)
+      comment.created_topic_item.update(pinned: false)
     end
     comment.topic.update_sequence_info!
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_event
+    on_topic_item&.call(comment.created_topic_item)
+    comment
   end
 
-  def self.undiscard(comment:, actor:)
+  def self.undiscard(comment:, actor:, &on_topic_item)
     actor.ability.authorize!(:undiscard, comment)
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: nil, discarded_by: nil)
-      comment.created_event.update(user_id: comment.user_id)
+      comment.created_topic_item.update(user_id: comment.user_id)
     end
     ReindexCommentWorker.perform_later(comment.id)
-    comment.created_event
+    on_topic_item&.call(comment.created_topic_item)
+    comment
   end
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
     Sentry.metrics.count("comment.destroy")
     topic_id = comment.topic.id
-    Comment.where(parent_type: 'Comment', parent_id: comment.id)
-           .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
-    comment.destroy
+    Comment.transaction do
+      Comment.where(parent_type: 'Comment', parent_id: comment.id)
+             .update_all(parent_type: comment.parent_type, parent_id: comment.parent_id)
+      comment.destroy!
+    end
     RepairTopicWorker.perform_later(topic_id)
   end
 
@@ -47,12 +65,20 @@ class CommentService
     comment.assign_attributes_and_files(params)
     unless comment.valid?
       Sentry.metrics.count("comment.update_failed", attributes: { columns: comment.errors.attribute_names.join(',') })
-      return false
+      return comment
     end
-    comment.save!
-    comment.update_versions_count
-    Sentry.metrics.count("comment.update")
+    Comment.transaction do
+      comment.save!
+      comment.update_versions_count
+      Sentry.metrics.count("comment.update")
+      MentionNotificationService.create!(
+        subject: comment,
+        actor: actor,
+      )
+    end
+
     EventBus.broadcast('comment_update', comment, actor)
-    Events::CommentEdited.publish!(comment, actor)
+    MessageChannelService.publish_topic_model(comment)
+    comment
   end
 end

@@ -4,9 +4,10 @@ class Stance < ApplicationRecord
   include HasMentions
   include Reactable
   include Bookmarkable
-  include HasEvents
-  include HasCreatedEvent
+  include HasTopicItems
+  include HasNotifications
   include Searchable
+  include ValidatesBallot
 
   extend HasTokens
   initialized_with_token :token
@@ -35,8 +36,8 @@ class Stance < ApplicationRecord
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
         t.tags AS tags,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.participant_id END AS author_id,
-        CASE WHEN polls.anonymous = TRUE THEN NULL ELSE stances.cast_at END AS authored_at,
+        stances.participant_id AS author_id,
+        stances.cast_at AS authored_at,
         #{content_str} AS content,
         to_tsvector('simple', #{content_str}) as ts_content,
         now() AS created_at,
@@ -48,7 +49,6 @@ class Stance < ApplicationRecord
       WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
         AND stances.redacted_at IS NULL
-        AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
         #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
         #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
@@ -86,29 +86,35 @@ class Stance < ApplicationRecord
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
-  scope :in_organisation, ->(group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   scope :decided, -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided, -> { where("stances.cast_at IS NULL") }
   scope :revoked, -> { where("revoked_at IS NOT NULL") }
   scope :invited, -> { where("inviter_id is not null") }
   scope :none_of_the_above, -> { where(none_of_the_above: true) }
 
-  scope :redeemable, -> { latest.invited.undecided.where('stances.accepted_at IS NULL') }
+  scope :redeemable, -> {
+    latest.invited.undecided.where('stances.accepted_at IS NULL')
+      .where(poll_id: Poll.where(topic_id: Topic.left_joins(:group).group_enabled.select(:id)).select(:id))
+      .where(<<~SQL.squish)
+        NOT EXISTS (
+          SELECT 1
+          FROM memberships
+          INNER JOIN topics ON topics.group_id = memberships.group_id
+          INNER JOIN polls ON polls.topic_id = topics.id
+          WHERE polls.id = stances.poll_id
+            AND memberships.user_id = stances.participant_id
+            AND memberships.revoked_at IS NULL
+        )
+      SQL
+  }
   scope :redeemable_by,  -> (user_id) {
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
   }
 
-  validate :valid_minimum_stance_choices
-  validate :valid_maximum_stance_choices
-  validate :valid_max_score
-  validate :valid_min_score
-  validate :valid_dots_per_person
   validate :valid_reason_length
   validate :valid_reason_required
-  validate :valid_require_all_choices
-  validate :valid_none_of_the_above
   validate :poll_id_cannot_change, on: :update
-  validate :poll_options_must_match_stance_poll
+  validate :poll_is_not_anonymous
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -133,12 +139,14 @@ class Stance < ApplicationRecord
   end
 
 
-  def create_missing_created_event!
-    events.create(
-      kind: created_event_kind,
-      user_id: (poll.anonymous? ? nil: author_id),
+  def create_missing_created_topic_item!
+    return unless add_to_thread?
+
+    topic_items.create(
+      kind: created_topic_item_kind,
+      user_id: author_id,
       created_at: created_at,
-      topic: (add_to_thread? ? poll.topic : nil)
+      topic: poll.topic
     )
   end
 
@@ -177,13 +185,13 @@ class Stance < ApplicationRecord
   def add_to_thread?
     poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
-    !Event.where(eventable: self,
+    !TopicItem.where(itemable: self,
                  topic_id: poll.topic_id,
                  kind: ['stance_created', 'stance_updated']).exists?
   end
 
   def shared_update_visible?
-    poll.anonymous? || poll.show_results?(voted: false)
+    poll.results_available?
   end
 
   def body
@@ -194,8 +202,8 @@ class Stance < ApplicationRecord
     reason_format
   end
 
-  def parent_event
-    poll.created_event
+  def parent_topic_item
+    poll.created_topic_item
   end
 
   def discarded?
@@ -217,14 +225,6 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant
-    (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
-  end
-
-  def real_participant
-    User.find_by(id: participant_id)
-  end
-
   def score_for(option)
     option_scores[option.id] || 0
   end
@@ -232,88 +232,11 @@ class Stance < ApplicationRecord
   private
 
   def poll_id_cannot_change
-    errors.add(:poll_id, :invalid) if will_save_change_to_poll_id?
+    raise "Stance poll_id cannot change" if will_save_change_to_poll_id?
   end
 
-  def poll_options_must_match_stance_poll
-    invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
-    end
-
-    if invalid_choices.any?
-      errors.add(:base, I18n.t(:"poll.error.poll_options_dont_match"))
-      Sentry.capture_message(
-        "Invalid Stance: mismatched poll_options",
-        level: :error,
-        extra: {
-          stance_id: id,
-          poll_id: poll_id,
-          invalid_choice_ids: invalid_choices.map(&:id),
-          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
-        }
-      )
-    end
-  end
-
-  def valid_none_of_the_above
-    return if !cast_at
-    return unless none_of_the_above
-    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
-    errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
-  end
-
-  def valid_min_score
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_min_score
-    return if (stance_choices.map(&:score).compact.min || 0) >= poll.min_score
-
-    errors.add(:stance_choices, "min_score validation failure")
-  end
-
-  def valid_max_score
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_max_score
-    return if (stance_choices.map(&:score).compact.max || 0) <= poll.max_score
-    errors.add(:stance_choices, "max_score validation failure")
-  end
-
-  def valid_dots_per_person
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_dots_per_person
-    return if stance_choices.map(&:score).compact.sum <= poll.dots_per_person.to_i
-
-    errors.add(:dots_per_person, "Too many dots")
-  end
-
-  def valid_minimum_stance_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_minimum_stance_choices
-    return if stance_choices.length >= poll.minimum_stance_choices
-
-    errors.add(:stance_choices, "too few stance choices")
-  end
-
-  def valid_maximum_stance_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.validate_maximum_stance_choices
-    return if stance_choices.length <= poll.maximum_stance_choices
-
-    errors.add(:stance_choices, "too many stance choices")
-  end
-
-  def valid_require_all_choices
-    return if !cast_at
-    return if none_of_the_above
-    return unless poll.require_all_choices
-    return if poll.poll_options.length == 0
-    return if stance_choices.length == poll.poll_options.length
-
-    errors.add(:stance_choices, "require_all_stance_choices")
+  def poll_is_not_anonymous
+    errors.add(:poll, :invalid) if poll.anonymous?
   end
 
   def valid_reason_length
@@ -334,8 +257,27 @@ class Stance < ApplicationRecord
 
   def reason_required?
     return true if poll.stance_reason_required == "required"
-    return false unless poll.stance_reason_required == "required_when_disagreeing"
+    icons_reason_required = case poll.stance_reason_required
+                            when "required_for_disagree_or_block"
+                              %w[disagree block]
+                            when "required_for_block"
+                              %w[block]
+                            else
+                              return false
+                            end
 
-    stance_choices.any? { |choice| %w[disagree block].include?(choice.poll_option.icon) }
+    stance_choices.any? { |choice| icons_reason_required.include?(choice.poll_option.icon) }
+  end
+
+  def ballot_validation_required?
+    cast_at.present?
+  end
+
+  def ballot_choices_for_validation
+    stance_choices
+  end
+
+  def ballot_choices_error_attribute
+    :stance_choices
   end
 end

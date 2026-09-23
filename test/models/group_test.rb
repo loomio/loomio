@@ -40,6 +40,57 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.members, @user
   end
 
+  test "members excludes deactivated users but all_members retains them" do
+    @group.add_member!(@user)
+    @user.update!(deactivated_at: Time.current)
+
+    assert_not_includes @group.members, @user
+    assert_includes @group.all_members, @user
+  end
+
+  test "members and admins match the fixture membership matrix exactly" do
+    expected_member_ids = users(
+      :admin,
+      :user,
+      :member,
+      :member_quiet,
+      :member_normal,
+      :member_loud,
+      :reader_quiet,
+      :reader_normal,
+      :reader_loud,
+      :member_guest_loud
+    ).map(&:id).sort
+
+    assert_equal expected_member_ids, @group.members.pluck(:id).sort
+    assert_equal [ users(:admin).id ], @group.admins.pluck(:id)
+  end
+
+  test "alien group membership matrix is separate from the primary group" do
+    alien_group = groups(:alien_group)
+    expected_alien_ids = users(:alien, :alien_quiet, :alien_loud).map(&:id).sort
+
+    assert_equal expected_alien_ids, alien_group.members.pluck(:id).sort
+    assert_equal [ users(:alien).id ], alien_group.admins.pluck(:id)
+    assert_empty @group.members.where(id: expected_alien_ids)
+  end
+
+  test "delivery scopes match the fixture membership volume matrix exactly" do
+    normal = users(:admin, :user, :member, :member_normal)
+    loud = users(:member_loud, :reader_quiet)
+    expectations = {
+      email_enabled_members: normal + loud,
+      email_loud_members: loud,
+      push_enabled_members: normal + users(:member_loud, :reader_loud),
+      push_loud_members: users(:member_loud, :reader_loud)
+    }
+
+    expectations.each do |scope_name, expected|
+      actual_ids = @group.public_send(scope_name).pluck(:id)
+      assert_equal expected.map(&:id).sort, actual_ids.sort, scope_name
+    end
+  end
+
   test "updates the memberships_count" do
     group = Group.create!(name: "Count Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
     assert_difference -> { group.reload.memberships_count }, 1 do
@@ -93,18 +144,57 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal 1, group.discussions_count
   end
 
-  # Archival
-  test "archive sets archived_at on the group" do
+  test "discard records its time and actor in PaperTrail" do
     @group.add_member!(@user)
-    @group.archive!
-    assert @group.archived_at.present?
+    assert_difference "@group.versions.count", 1 do
+      @group.discard!(actor: @user)
+    end
+    assert @group.discarded_at.present?
+    assert_equal @user.id, @group.discarded_by
+    assert_equal @user.id, @group.versions.last.whodunnit
   end
 
-  test "unarchive restores archived_at to nil" do
+  test "discard records the time and actor for every group in the tree" do
+    subgroup = Group.create!(name: "Discarded child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
+
+    assert_difference -> { PaperTrail::Version.where(item_type: "Group", item_id: [@group.id, subgroup.id]).count }, 2 do
+      @group.discard!(actor: @user)
+    end
+
+    [@group.reload, subgroup.reload].each do |group|
+      assert_equal @group.discarded_at, group.discarded_at
+      assert_equal @user.id, group.discarded_by
+      assert_equal @user.id, group.versions.last.whodunnit
+    end
+  end
+
+  test "undiscard restores the group and records the actor" do
+    subgroup = Group.create!(name: "Restored child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
     @group.add_member!(@user)
-    @group.archive!
-    @group.unarchive!
-    assert_nil @group.reload.archived_at
+    @group.discard!(actor: @user)
+    assert_difference -> { PaperTrail::Version.where(item_type: "Group", item_id: [@group.id, subgroup.id]).count }, 2 do
+      @group.undiscard!(actor: users(:admin))
+    end
+    [@group.reload, subgroup.reload].each do |group|
+      assert_nil group.discarded_at
+      assert_nil group.discarded_by
+      assert_equal users(:admin).id, group.versions.last.whodunnit
+    end
+  end
+
+  test "undiscard preserves a subgroup discarded independently" do
+    subgroup = Group.create!(name: "Independently discarded child #{SecureRandom.hex(4)}", parent: @group, group_privacy: "secret")
+    subgroup.discard!(actor: users(:admin), at: 2.days.ago)
+    subgroup_discarded_at = subgroup.reload.discarded_at
+    subgroup_discarded_by = subgroup.discarded_by
+
+    @group.discard!(actor: @user)
+    @group.undiscard!(actor: users(:admin))
+
+    assert @group.reload.kept?
+    assert subgroup.reload.discarded?
+    assert_equal subgroup_discarded_at, subgroup.discarded_at
+    assert_equal subgroup_discarded_by, subgroup.discarded_by
   end
 
   # id_and_subgroup_ids

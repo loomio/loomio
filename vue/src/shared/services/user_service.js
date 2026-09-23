@@ -4,6 +4,7 @@ import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { hardReload } from '@/shared/helpers/window';
+import AppConfig from '@/shared/services/app_config';
 
 export default new class UserService {
   actions(user, vm) {
@@ -11,7 +12,7 @@ export default new class UserService {
       change_password: {
         icon: 'mdi-lock-reset',
         name: 'profile_page.change_password_link',
-        canPerform() { return true; },
+        canPerform() { return AppConfig.features.app.local_login; },
         perform() {
           return EventBus.$emit('openModal', {
             component: 'ChangePasswordForm',
@@ -29,15 +30,7 @@ export default new class UserService {
         canPerform() { return true; },
         perform() {
           return EventBus.$emit('openModal', {
-            component: 'ConfirmModal',
-            props: {
-              confirm: {
-                text: {
-                  title: 'merge_accounts.modal.title',
-                  raw_helptext: vm.$t('merge_accounts.placeholder_modal_text')
-                }
-              }
-            }
+            component: 'MergeAccountsModal'
           }
           );
         }
@@ -47,7 +40,7 @@ export default new class UserService {
         icon: 'mdi-pause-circle',
         name: 'profile_page.deactivate_account',
         subtitle: 'profile_page.deactivate_account_subtitle',
-        canPerform() { return !user.deactivatedAt; },
+        canPerform() { return !user.deactivatedAt && !user.restricted; },
         perform() {
           return EventBus.$emit('openModal', {
             component: 'ConfirmModal',

@@ -6,7 +6,7 @@ class TagService
     tag.name = clean_tag_name(tag.name)
     actor.ability.authorize! :create, tag
 
-    return false unless tag.valid?
+    return tag unless tag.valid?
     tag.save!
     EventBus.broadcast 'tag_create', tag, actor
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
@@ -170,12 +170,31 @@ class TagService
 
     Tag.where(id: legacy_tags.map(&:id)).destroy_all
 
-    Tag.where(group_id: group.id).find_each do |tag|
-      key = normalized_tag_name(tag.name)
-      tag.update_column(:used_group_ids, Array(used_group_ids_by_key[key]).map(&:to_i).sort)
-    end
+    update_used_group_ids(group.id, used_group_ids_by_key)
 
     apply_colors(group.id)
+  end
+
+  # Every tag has a different set of groups, so Active Record's ordinary bulk
+  # update API cannot express this without one UPDATE per tag. Send the complete
+  # mapping in one statement to keep tag reconciliation bounded for large orgs.
+  def self.update_used_group_ids(group_id, used_group_ids_by_key)
+    updates = Tag.where(group_id: group_id).pluck(:id, :name).map do |id, name|
+      key = normalized_tag_name(name)
+      { id: id, used_group_ids: Array(used_group_ids_by_key[key]).map(&:to_i).sort }
+    end
+    return if updates.empty?
+
+    bind = ActiveRecord::Relation::QueryAttribute.new('updates', updates.to_json, ActiveRecord::Type::String.new)
+    Tag.connection.exec_update(<<~SQL, 'Update tag usage', [bind])
+      UPDATE tags
+      SET used_group_ids = ARRAY(
+        SELECT value::integer
+        FROM jsonb_array_elements_text(updates.used_group_ids) AS values(value)
+      )
+      FROM jsonb_to_recordset($1::jsonb) AS updates(id integer, used_group_ids jsonb)
+      WHERE tags.id = updates.id
+    SQL
   end
 
   # Merge existing tags within the same group that only differ by whitespace

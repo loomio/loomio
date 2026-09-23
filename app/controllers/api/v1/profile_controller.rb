@@ -6,19 +6,16 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   # identity fields (name/email/password/username/avatar) via update_profile.
   RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
     email_api_key reset_email_api_key deactivate destroy
-    send_merge_verification_email remind upload_avatar
+    send_merge_verification_email remind upload_avatar use_provider_avatar
   ].freeze
 
   # The only user fields update_profile may change for a restricted user.
   RESTRICTED_USER_UPDATABLE_FIELDS = %i[
-    email_when_mentioned email_when_proposal_closing_soon
-    email_new_discussions_and_proposals email_on_participation
-    email_newsletter email_catch_up_day default_membership_volume
+    email_newsletter email_catch_up_day volume_email_default volume_push_default
     selected_locale autodetect_time_zone time_zone date_time_pref
-    email_new_discussions_and_proposals_group_ids
   ].freeze
 
-  before_action :require_current_user, except: [:email_status]
+  before_action :require_current_user
   before_action :forbid_restricted_user_actions
 
   def index
@@ -38,7 +35,11 @@ class Api::V1::ProfileController < Api::V1::RestfulController
 
     cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
 
-    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {cache: cache, exclude_types: exclude_types}
+    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {
+      cache: cache,
+      current_user_id: current_user.id,
+      exclude_types: exclude_types
+    }
   end
 
   def time_zones
@@ -84,7 +85,11 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def set_volume
-    service.set_volume(user: current_user, actor: current_user, params: params.slice(:volume, :apply_to_all))
+    service.set_volume(
+      user: current_user,
+      actor: current_user,
+      params: params.slice(:volume_email, :volume_push, :apply_to_all)
+    )
     respond_with_resource
   end
 
@@ -94,7 +99,21 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def avatar_uploaded
-    render json: {avatar_uploaded: current_user.uploaded_avatar_url}
+    identity = provider_picture_identity
+    render json: {
+      avatar_uploaded: current_user.uploaded_avatar_url,
+      provider_picture: identity && { provider: provider_name(identity) }
+    }
+  end
+
+  def use_provider_avatar
+    raise CanCan::AccessDenied if UserService.disable_edit_user_profile?
+
+    identity = provider_picture_identity
+    raise ActiveRecord::RecordNotFound unless identity
+
+    identity.assign_logo!
+    respond_with_resource
   end
 
   def deactivate
@@ -113,14 +132,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {})
-  end
-
-  def email_exists
-    render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
-  end
-
   def send_merge_verification_email
     unless ThrottleService.can?(key: 'MergeVerificationEmail', id: current_user.id, max: 5, per: 'hour')
       render json: { error: 'Rate limit exceeded' }, status: 429
@@ -131,11 +142,23 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def contactable
-    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
-    success_response
+    render json: {
+      contactable: current_user.can?(:contact, User.find(params[:user_id]))
+    }
   end
 
   private
+
+  def provider_picture_identity
+    current_user.identities.where.not(logo: [ nil, '' ]).first
+  end
+
+  def provider_name(identity)
+    return AppConfig.theme[:oauth_login_provider_name] if identity.identity_type == 'oauth'
+
+    identity.identity_type.titleize
+  end
+
   def current_user
     restricted_user || super
   end
@@ -170,12 +193,14 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def profile_update_params
-    return permitted_params.user unless current_user.restricted
+    profile_params = permitted_params.user
+    profile_params = profile_params.except(:password, :password_confirmation, :current_password) unless AppConfig.local_login_enabled?
+    return profile_params unless current_user.restricted
 
     # Restricted (unsubscribe-token) users may only update notification prefs —
     # strip identity/credential fields so the token cannot be used to change
     # name, email, password, username, or avatar.
-    permitted_params.user.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
+    profile_params.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
   end
 
   def forbid_restricted_user_actions

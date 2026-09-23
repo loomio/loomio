@@ -7,7 +7,7 @@ import Flash from '@/shared/services/flash';
 import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class CommentService {
-  actions(comment, vm, event) {
+  actions(comment, vm, topic_item) {
     const isOwnComment = comment.authorId === Session.userId;
     return {
       ...BookmarkService.actions(comment),
@@ -71,10 +71,10 @@ export default new class CommentService {
         canPerform() { return AbilityService.canRespondToComment(comment); },
         perform() {
           const topic = comment.topic();
-          if (event.depth === (topic ? topic.maxDepth : 2)) {
-            return EventBus.$emit('toggle-reply', comment, event.parentId);
+          if (topic_item.depth === (topic ? topic.maxDepth : 2)) {
+            return EventBus.$emit('toggle-reply', comment, topic_item.parentId);
           } else {
-            return EventBus.$emit('toggle-reply', comment, event.id);
+            return EventBus.$emit('toggle-reply', comment, topic_item.id);
           }
         }
       },

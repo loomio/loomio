@@ -61,7 +61,9 @@ export default class PollTemplateModel extends BaseModel {
       example: false,
       allowComments: true,
       allowReactions: true,
-      commentLengthMax: null
+      commentLengthMax: null,
+      hiddenAt: null,
+      discardedAt: null
     };
   }
 

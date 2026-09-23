@@ -1,15 +1,13 @@
 class RedactUserWorker < ApplicationJob
   # we deactivate and redact the user
   def perform(user_id, actor_id, send_email = true)
-    user = User.find_by!(id:user_id)
+    user = User.find_by!(id: user_id)
     return if user.email.nil?
     email = user.email
     locale = user.locale
     deactivated_at = user.deactivated_at || DateTime.now
     group_ids = Membership.active.where(user_id: user_id).pluck(:group_id)
-    user.uploaded_avatar.purge_later
-
-    User.transaction do
+    User.transaction(requires_new: true) do |transaction|
       MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
 
       User.where(id: user_id).update_all(
@@ -35,6 +33,7 @@ class RedactUserWorker < ApplicationJob
         detected_locale: nil,
         email_verified: false,
         legal_accepted_at: nil,
+        webauthn_id: nil,
         # set an email_sha256 so we can identify redacted accounts if someone provides an email
         email_sha256: Digest::SHA256.hexdigest(email),
         deactivated_at: deactivated_at,
@@ -44,14 +43,20 @@ class RedactUserWorker < ApplicationJob
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       Identity.where(user_id: user_id).delete_all
       Session.where(user_id: user_id).destroy_all
+      user.mobile_devices.active.find_each(&:revoke!)
+      MobileDevice.where(user_id: user_id).destroy_all
       # Destroy any outstanding login credentials so a redacted/merged source
       # account's pending login codes/magic links can never be redeemed.
       LoginToken.where(user_id: user_id).delete_all
-      MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
-    end
+      PasskeyCredential.where(user_id: user_id).delete_all
+      MembershipRequest.pending.where(requestor_id: user_id).destroy_all
+      SearchService.reindex_by_author_id(user.id)
 
-    NewsletterService.unsubscribe(email)
-    UserMailer.redacted(email, locale).deliver_later if send_email
-    SearchService.reindex_by_author_id(user.id)
+      transaction.after_commit do
+        user.uploaded_avatar.purge_later
+        NewsletterService.unsubscribe(email)
+        UserMailer.redacted(email, locale).deliver_later if send_email
+      end
+    end
   end
 end

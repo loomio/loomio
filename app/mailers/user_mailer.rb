@@ -30,89 +30,14 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def catch_up(user_id, time_since = nil, frequency = 'daily')
-    user = User.find(user_id)
-    return unless user.email_catch_up_day
 
-    if frequency == 'daily'
-      time_start = time_since || 24.hours.ago
-    elsif frequency == 'other'
-      time_start = time_since || 48.hours.ago
-    else
-      time_start = time_since || 1.week.ago
-    end
-
-    time_finish = Time.zone.now
-
-    topics = TopicQuery.relevant_to(
-      user: user,
-      only_unread: true,
-      or_subgroups: false
-    ).where("topics.last_activity_at > ?", time_start)
-
-    return if topics.empty?
-
-    topics_by_group_id = topics.group_by(&:group_id)
-    subject_key = "email.catch_up.#{frequency}_subject"
-    subject_params = { site_name: AppConfig.theme[:site_name] }
-
-    component = Views::UserMailer::CatchUp.new(
-      user: user,
-      recipient: user,
-      topics_by_group_id: topics_by_group_id,
-      subject_key: subject_key,
-      subject_params: subject_params,
-      time_start: time_start,
-      time_finish: time_finish,
-      utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: user.locale, component: component) {
-      I18n.t(subject_key, **subject_params)
-    }
-  end
-
-  def membership_request_approved(recipient_id, event_id)
-    user = User.find_by(id: recipient_id)
-    group = Event.find_by(id: event_id).eventable.group
-
-    component = Views::UserMailer::MembershipRequestApproved.new(
-      group: group, utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: user.locale, component: component,
-               reply_to: group.admin_email) {
-      I18n.t("email.group_membership_approved.subject", group_name: group.full_name)
-    }
-  end
-
-  def user_added_to_group(recipient_id, event_id)
-    user    = User.find_by!(id: recipient_id)
-    event   = Event.find_by!(id: event_id)
-    group   = event.eventable.group
-    inviter = event.eventable.inviter || group.admins.first
-
-    component = Views::UserMailer::UserAddedToGroup.new(
-      group: group, inviter: inviter, utm_hash: @utm_hash
-    )
-
-    send_email(to: user.email, locale: [user.locale, inviter.locale], component: component,
-               from: from_user_via_loomio(inviter),
-               reply_to: inviter.try(:name_and_email)) {
-      I18n.t("email.user_added_to_group.subject",
-        which_group: group.full_name,
-        who: inviter.name,
-        site_name: AppConfig.theme[:site_name])
-    }
-  end
-
-  def group_export_ready(recipient_id, group_name, blob_signed_id)
-    user = User.find(recipient_id)
+  def group_export_ready(requestor_id, group_name, blob_signed_id, recipient_email = nil)
+    requestor = User.find(requestor_id)
     blob = ActiveStorage::Blob.find_signed!(blob_signed_id)
 
     component = Views::UserMailer::GroupExportReady.new(blob: blob)
 
-    send_email(to: user.email, locale: user.locale, component: component) {
+    send_email(to: recipient_email.presence || requestor.email, locale: requestor.locale, component: component) {
       I18n.t("user_mailer.group_export_ready.subject", group_name: group_name)
     }
   end

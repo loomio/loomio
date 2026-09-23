@@ -1,0 +1,1 @@
+Server operators can now replace the title, subtitle, and URL of the user manual link in the sidebar. Set `LOOMIO_HELP_TITLE`, `LOOMIO_HELP_SUBTITLE`, or `LOOMIO_HELP_URL`; any values not set continue to use Loomio's translated defaults.

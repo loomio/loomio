@@ -7,6 +7,6 @@ class Task < ApplicationRecord
 
   scope :not_done, -> { where(done: false) }
 
-  has_many :tasks_users
+  has_many :tasks_users, dependent: :destroy
   has_many :users, through: :tasks_users
 end

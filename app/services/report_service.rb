@@ -75,8 +75,8 @@ class ReportService
     query = <<~SQL
       SELECT date_trunc('#{@interval}', comments.created_at)::date AS interval, count(comments.id) count
       FROM comments
-      LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id
+      LEFT JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+      JOIN topics ON topics.id = topic_items.topic_id
       WHERE #{topic_group_filter}
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
@@ -229,8 +229,8 @@ class ReportService
         UNION
         SELECT tt.tag, c.user_id, tt.topic_id
         FROM comments c
-        JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = c.id
-        JOIN tagged_topics tt ON tt.topic_id = events.topic_id
+        JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = c.id
+        JOIN tagged_topics tt ON tt.topic_id = topic_items.topic_id
         WHERE c.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
         UNION
         SELECT tt.tag, p.author_id, tt.topic_id
@@ -310,8 +310,8 @@ class ReportService
     query = <<~SQL
       SELECT count(comments.id) count, comments.user_id
       FROM comments
-      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id
+      JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+      JOIN topics ON topics.id = topic_items.topic_id
       WHERE #{topic_group_filter}
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by comments.user_id
@@ -360,6 +360,25 @@ class ReportService
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'participant_id', 'count'
   end
 
+  def stances_issued_per_user
+    scope = Stance
+      .joins(poll: :topic)
+      .where(polls: { anonymous: false })
+      .where(created_at: @start_at..@end_at, latest: true)
+      .where.not(participant_id: nil)
+
+    unless @all_groups
+      group_ids = Array(@group_ids) - [0]
+      scope = if @direct_threads
+        scope.where(topics: { group_id: group_ids }).or(scope.where(topics: { group_id: nil }))
+      else
+        scope.where(topics: { group_id: group_ids })
+      end
+    end
+
+    scope.group(:participant_id).count
+  end
+
   def reactions_per_user
     query = reaction_rows_query("SELECT count(reaction_id) count, user_id FROM reaction_rows GROUP BY user_id")
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'user_id', 'count'
@@ -372,6 +391,12 @@ class ReportService
       user_ids = Membership.where(group_id: @group_ids).pluck(:user_id).uniq
       User.where(id: user_ids)
     end
+  end
+
+  def delegate_user_ids
+    scope = Membership.active.delegates
+    scope = scope.where(group_id: @group_ids) unless @all_groups
+    scope.distinct.pluck(:user_id).to_set
   end
 
   def users_per_country
@@ -404,8 +429,8 @@ class ReportService
     query = <<~SQL
       SELECT count(comments.id) count, country
       FROM comments
-      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
+      JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+      JOIN topics ON topics.id = topic_items.topic_id AND topics.topicable_type = 'Discussion'
       JOIN discussions ON discussions.id = topics.topicable_id
       JOIN users ON comments.user_id = users.id
       WHERE #{topic_group_filter}
@@ -475,8 +500,8 @@ class ReportService
         SELECT reactions.id reaction_id, reactions.user_id
         FROM reactions
         JOIN comments ON reactions.reactable_id = comments.id AND reactions.reactable_type = 'Comment'
-        JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-        JOIN topics ON topics.id = events.topic_id
+        JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
+        JOIN topics ON topics.id = topic_items.topic_id
         WHERE #{topic_group_filter}
         AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
         UNION ALL

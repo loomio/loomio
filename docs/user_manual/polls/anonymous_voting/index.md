@@ -1,6 +1,6 @@
 # Anonymous voting
 
-Anonymous voting separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
+Anonymous voting, also known as blind voting, separates the record of who has voted from the votes themselves. Poll coordinators can see who was eligible and, once at least three people have voted, verify participation. Application users cannot connect a submitted vote with the person who submitted it.
 
 This page explains the protections provided by anonymous voting, the information that is retained, and the limits of the guarantee.
 
@@ -51,7 +51,7 @@ Participants can still discuss the poll in its thread where discussion is availa
 
 After the poll closes, the results are calculated from the detached votes and displayed as totals and other aggregate results supported by the poll type.
 
-The application does not publish individual voting patterns, vote identifiers, submission order, or submission times. Poll exports contain aggregate results rather than a row for each anonymous vote.
+The application does not publish vote identifiers, submission order, or submission times. Poll exports contain aggregate results rather than a row for each anonymous vote, except that a closed STV election can be exported in BLT format. A BLT export contains the candidate rankings needed to recount the election, grouped when multiple ballots have the same ranking, without voter identities or ballot metadata.
 
 An anonymous poll cannot be reopened after it closes.
 
@@ -61,7 +61,9 @@ Poll coordinators can view the named participation records. These always show wh
 
 Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
 
-For a poll limited to explicitly invited people, coordinators can add voters until the first vote is submitted. Restricting electorate changes after voting begins reduces the information that could be used to infer how someone voted.
+Coordinators can add eligible people while voting remains open, including after
+other people have voted. Existing voters cannot be removed from an anonymous
+poll.
 
 ## Reminders
 
@@ -93,25 +95,6 @@ These protections prevent application users from linking a submitted vote to its
 The result itself may also reveal information. A small electorate, a unanimous result, a distinctive combination of selections, or information shared outside the poll can make a person's choices easier to infer. Voters may also choose to identify themselves in discussion outside their submitted vote.
 
 Consider the size of the electorate and the sensitivity of the decision when deciding whether application-level anonymous voting is suitable.
-
-## Older anonymous polls
-
-Older anonymous polls used a legacy format in which votes were stored using the same records as identified votes. These polls display:
-
-> This poll uses the legacy anonymous voting format
-
-The stronger protections described above apply to anonymous polls created with the detached voting format, not to activity that occurred under the legacy format.
-
-When an older closed poll is migrated:
-
-- its choices are preserved and used to calculate the same aggregate results;
-- historical reasons are converted from formatted content to plain text;
-- those reasons appear together in a read-only **Legacy vote reasons** section below the results;
-- attachments from historical reasons are moved to the poll;
-- reactions, replies, revisions, translations, mentions, and other rich interactions attached to historical votes are not retained as vote features; and
-- names, timestamps, identifiers, and submission order are not displayed with the migrated votes or reasons.
-
-A historical reason may identify its author through what they chose to write. That is information the voter supplied, rather than a system-created link between their name and vote. New anonymous votes do not allow reasons.
 
 ## Questions
 

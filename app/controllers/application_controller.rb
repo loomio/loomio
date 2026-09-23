@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
+  rescue_from(CurrentUserHelper::InactiveUserError) { respond_with_error(401) }
+
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end
@@ -106,11 +108,30 @@ class ApplicationController < ActionController::Base
 
   def pagination_params
     default_limit = params[:export] ? 2000 : 10
-    { limit: params.fetch(:limit, default_limit).to_i, offset: params.fetch(:offset, 0).to_i }
+    limit = params.fetch(:limit, default_limit).to_i.clamp(1, default_limit)
+    offset = [params.fetch(:offset, 0).to_i, 0].max
+    { limit: limit, offset: offset }
   end
 
   def set_noindex_header
     response.headers['X-Robots-Tag'] = 'noindex'
+  end
+
+  def canonical_url_for(resource)
+    case resource
+    when Discussion
+      discussion_url(resource)
+    when Group
+      group_url(resource)
+    when Poll
+      poll_url(resource)
+    end
+  end
+
+  def robots_directive_for(resource)
+    return 'noindex,follow' if params[:export].present?
+    return 'noindex,follow' if resource.respond_to?(:private) && resource.private
+    return 'noindex,follow' if resource.is_a?(Group) && resource.group_privacy == 'secret'
   end
 
   def prevent_caching

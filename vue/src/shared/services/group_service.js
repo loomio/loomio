@@ -6,8 +6,8 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
+import SubscriptionService from '@/shared/services/subscription_service';
 import { I18n } from '@/i18n';
-import { hardReload } from '@/shared/helpers/window';
 
 export default new class GroupService {
   actions(group) {
@@ -124,7 +124,7 @@ export default new class GroupService {
         icon: 'mdi-shield-star',
         menu: true,
         canPerform() {
-          return membership && (membership.admin === false) &&
+          return group.isEnabled() && membership && (membership.admin === false) &&
             ((group.adminMembershipsCount === 0) || group.parentOrSelf().adminsInclude(Session.user()));
         },
         perform() {
@@ -137,7 +137,7 @@ export default new class GroupService {
         icon: 'mdi-connection',
         menu: true,
         canPerform() {
-          return group.adminsInclude(Session.user());
+          return group.isEnabled() && group.adminsInclude(Session.user());
         },
         perform() {
           return openModal({
@@ -154,9 +154,7 @@ export default new class GroupService {
         icon: 'mdi-webhook',
         menu: true,
         canPerform() { return group.adminsInclude(Session.user()); },
-        perform() {
-          return hardReload(`/help/api2/?group_id=${group.id}`);
-        }
+        href() { return '/profile/api_access'; }
       },
 
       export_data: {
@@ -181,7 +179,7 @@ export default new class GroupService {
         icon: 'mdi-credit-card-outline',
         menu: true,
         perform() {
-          return window.location = `/upgrade/${group.id}`;
+          return window.location = SubscriptionService.managementUrl(group);
         },
         canPerform() {
           return AppConfig.features.app.subscriptions &&
@@ -229,7 +227,7 @@ export default new class GroupService {
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
-          return AbilityService.canArchiveGroup(group);
+          return AbilityService.canDeleteGroup(group);
         },
         perform() {
           const confirmText = group.handle || group.name.trim();
@@ -247,9 +245,10 @@ export default new class GroupService {
                   helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',
                   raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
-                  flash:    'delete_group_modal.success',
+                  flash:    'delete_group_modal.deletion_after_grace_period',
                   submit:   'delete_group_modal.title'
                 },
+                textArgs: {days: AppConfig.groupDeletionDelayDays},
                 redirect:   returnUrl
               }
             }

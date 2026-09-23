@@ -5,6 +5,9 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash    from '@/shared/services/flash';
 import md5      from "md5";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const fileInput = ref(null);
 
@@ -12,6 +15,7 @@ const user                    = ref(Session.user().clone());
 const uploading               = ref(false);
 const progress                = ref(0);
 const previous_uploaded_avatar = ref(undefined);
+const pictureProvider          = ref(undefined);
 
 const gravatarUrl = computed(() => {
   const hash = md5(user.value.email.trim().toLowerCase());
@@ -22,7 +26,10 @@ function selectFile() {
   fileInput.value.click();
 }
 
-function uploadFile() {
+function uploadFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
   uploading.value = true;
   Records.users.remote.onUploadSuccess = response => {
     Records.importJSON(response);
@@ -30,7 +37,17 @@ function uploadFile() {
     EventBus.$emit('closeModal');
     uploading.value = false;
   };
-  Records.users.remote.upload('upload_avatar', fileInput.value.files[0], {}, args => { progress.value = (args.loaded / args.total) * 100; });
+  Records.users.remote.upload('upload_avatar', file, {}, args => { progress.value = (args.loaded / args.total) * 100; });
+}
+
+function useProviderPicture() {
+  uploading.value = true;
+  Records.users.remote.post('use_provider_avatar').then(response => {
+    Records.importJSON(response);
+    EventBus.$emit('updateProfile');
+    EventBus.$emit('closeModal');
+    Flash.success('profile_page.messages.picture_changed');
+  }).catch(() => true).finally(() => uploading.value = false);
 }
 
 function submit(kind) {
@@ -46,6 +63,7 @@ onMounted(() => {
   Records.users.saveExperience("changePicture");
   Records.users.fetch({path: 'avatar_uploaded'}).then(res => {
     previous_uploaded_avatar.value = res.avatar_uploaded;
+    pictureProvider.value = res.provider_picture;
   });
 });
 </script>
@@ -70,6 +88,11 @@ v-card.change-picture-form(:title="$t('change_picture_form.title')")
           v-avatar
             v-img(cover :src="previous_uploaded_avatar")
         v-list-item-title(v-t="'change_picture_form.existing_upload'")
+      v-list-item.change-picture-form__option(v-if="pictureProvider" @click="useProviderPicture")
+        template(v-slot:prepend)
+          v-avatar
+            common-icon(name="mdi-account-circle")
+        v-list-item-title {{ t('change_picture_form.use_provider', {provider: pictureProvider.provider}) }}
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         template(v-slot:prepend)
           v-avatar

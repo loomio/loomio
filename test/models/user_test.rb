@@ -8,6 +8,48 @@ class UserTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  test "active? matches the active scope and logged-out users are inactive" do
+    assert @user.active?
+    assert_not @user.deactivated?
+    assert_includes User.active, @user
+
+    @user.update!(deactivated_at: Time.current)
+
+    assert_not @user.active?
+    assert @user.deactivated?
+    assert_not_includes User.active, @user
+    assert_not LoggedOutUser.new.active?
+    assert_not LoggedOutUser.new.deactivated?
+  end
+
+  test "terms acceptance is deferred for previously active accounts until enabled" do
+    terms_url_before = ENV['TERMS_URL']
+    enforce_before = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+
+    newcomer = User.new(email: 'new-terms-user@example.com')
+    returning = User.new(email: 'returning-terms-user@example.com', current_sign_in_at: 1.week.ago)
+    previously_seen = User.new(email: 'seen-terms-user@example.com', last_seen_at: 1.week.ago)
+
+    assert_predicate newcomer, :legal_acceptance_required?
+    assert_not_predicate returning, :legal_acceptance_required?
+    assert_not_predicate previously_seen, :legal_acceptance_required?
+    assert_not_predicate LoggedOutUser.new, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    assert_predicate returning, :legal_acceptance_required?
+    assert_predicate previously_seen, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '0'
+    assert_predicate returning, :legal_acceptance_required?
+
+    returning.legal_accepted_at = Time.current
+    assert_not_predicate returning, :legal_acceptance_required?
+  ensure
+    restore_env('TERMS_URL', terms_url_before)
+    restore_env('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS', enforce_before)
+  end
+
   # Password validations
   test "accepts a good password with confirmation" do
     user = User.new(
@@ -37,6 +79,19 @@ class UserTest < ActiveSupport::TestCase
       password_confirmation: "PSWD"
     )
     assert_not user.valid?
+  end
+
+  test "new users default to a daily digest and normal delivery volumes" do
+    user = User.create!(
+      name: "Default Notifications User",
+      email: "default-notifications-#{SecureRandom.hex(4)}@test.com",
+      email_verified: true,
+      password: "a_good_password"
+    )
+
+    assert_equal 7, user.email_catch_up_day
+    assert_predicate user, :email_default_normal?
+    assert_predicate user, :push_default_normal?
   end
 
   test "new records are still assigned tokens on initialization" do
@@ -74,6 +129,15 @@ class UserTest < ActiveSupport::TestCase
   ensure
     restore_env('TRIAL_INVITATIONS_RATE_LIMIT', trial_limit)
     restore_env('PAID_INVITATIONS_RATE_LIMIT', paid_limit)
+  end
+
+  test "disabled paid groups do not make a user paying" do
+    @group.update!(subscription: Subscription.create!(plan: "standard", state: "active"))
+    assert_predicate @user, :is_paying?
+
+    @group.subscription.update!(state: "on_hold")
+
+    assert_not_predicate @user.reload, :is_paying?
   end
 
   # Regression for the Sentry error from Api::V1::SessionsController#create:
@@ -125,10 +189,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires username not have special characters" do
-    %w[username? username/ user_name user-name].each do |bad_username|
+    %w[username? username/ user.name].each do |bad_username|
       @user.username = bad_username
       @user.valid?
       assert @user.errors[:username].any?, "Expected errors for username '#{bad_username}'"
+    end
+  end
+
+  test "allows underscores and internal hyphens in usernames" do
+    %w[user_name user-name user_name-part].each do |username|
+      @user.username = username
+      assert @user.valid?, "Expected '#{username}' to be valid"
+    end
+  end
+
+  test "does not allow leading, trailing, or repeated hyphens in usernames" do
+    %w[-username username- user--name].each do |username|
+      @user.username = username
+      assert_not @user.valid?, "Expected '#{username}' to be invalid"
     end
   end
 

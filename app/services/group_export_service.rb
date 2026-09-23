@@ -1,8 +1,23 @@
+# Security boundary: group coordinators can export records for other users.
+# Never include bearer credentials or authentication secrets in those records.
+# When adding a User credential column, exclude it below and update the export
+# credential regression in GroupExportServiceTest.
 class GroupExportService
+  IMPORT_TABLE_PRIORITY = %w[
+    users
+    groups
+    topics
+    polls
+    poll_options
+    stances
+    stance_choices
+  ].freeze
+
   RELATIONS = %w[
     all_users
-    all_events
+    all_topic_items
     all_notifications
+    all_notification_deliveries
     all_reactions
     all_tags
     poll_templates
@@ -27,7 +42,8 @@ class GroupExportService
 
   JSON_PARAMS = {
     groups:      {except: [:token], methods: []},
-    users:       {except: [:password_digest,
+    users:       {except: [:api_key,
+                           :password_digest,
                            :email_api_key,
                            :secret_token,
                            :unsubscribe_token] }
@@ -35,35 +51,47 @@ class GroupExportService
 
   BACK_REFERENCES = {
     outcomes: {
-      events: %w[eventable]
+      topic_items: %w[itemable],
+      notifications: %w[subject]
     },
     comments: {
       comments: %w[parent],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     discussions: {
       topics: %w[topicable],
       comments: %w[parent],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     topics: {
       discussions: %w[topic_id],
       polls: %w[topic_id],
-      events: %w[topic_id],
+      topic_items: %w[topic_id],
       topic_readers: %w[topic_id]
     },
-    events: {
-      events: %w[parent_id],
-      notifications: %w[event_id]
+    topic_items: {
+      topic_items: %w[parent_id],
+      notifications: %w[subject]
+    },
+    notifications: {
+      notification_deliveries: %w[notification_id]
+    },
+    memberships: {
+      notifications: %w[subject]
+    },
+    reactions: {
+      notifications: %w[subject]
     },
     groups: {
       memberships: %w[group_id],
       topics: %w[group_id],
       tags: %w[group_id],
-      webhooks: %w[group_id],
-      events: %w[eventable],
+      topic_items: %w[itemable],
+      notifications: %w[subject],
       groups: %w[parent_id],
       poll_templates: %w[group_id],
       discussion_templates: %w[group_id]
@@ -71,7 +99,7 @@ class GroupExportService
     poll_options: {
       stance_choices: %w[poll_option_id],
       anonymous_ballot_choices: %w[poll_option_id],
-      events: %w[eventable]
+      topic_items: %w[itemable]
     },
     anonymous_ballots: {
       anonymous_ballot_choices: %w[anonymous_ballot_id],
@@ -80,12 +108,13 @@ class GroupExportService
     stances: {
       comments: %w[parent],
       stance_choices: %w[stance_id],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     tasks: {
       tasks_users: %w[task_id],
-      events: %w[eventable]
+      topic_items: %w[itemable]
     },
     polls: {
       anonymous_ballots: %w[poll_id],
@@ -96,23 +125,25 @@ class GroupExportService
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
-      events: %w[eventable],
-      reactions: %w[reactable]
+      topic_items: %w[itemable],
+      reactions: %w[reactable],
+      notifications: %w[subject]
     },
     users: {
       anonymous_poll_voters: %w[voter_id inviter_id],
       stance_receipts: %w[voter_id inviter_id],
-      events: %w[eventable user_id],
+      topic_items: %w[itemable user_id],
       discussions: %w[author_id discarded_by],
-      discussion_templates: %w[author_id],
-      poll_templates: %w[author_id],
+      discussion_templates: %w[author_id discarded_by hider_id],
+      poll_templates: %w[author_id discarded_by hider_id],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       topic_readers: %w[user_id inviter_id],
       groups: %w[creator_id],
       membership_requests: %w[requestor_id responder_id],
       memberships: %w[user_id inviter_id],
-      notifications: %w[user_id],
+      notifications: %w[actor_id],
+      notification_deliveries: %w[recipient],
       outcomes: %w[author_id],
       polls: %w[author_id discarded_by],
       reactions: %w[user_id],
@@ -120,8 +151,7 @@ class GroupExportService
       subscriptions: %w[owner_id],
       tasks: %w[doer_id author_id],
       tasks_users: %w[user_id],
-      versions: %w[whodunnit],
-      webhooks: %w[author_id]
+      versions: %w[whodunnit]
     }
   }.with_indifferent_access.freeze
 
@@ -135,7 +165,7 @@ class GroupExportService
 
   # Polymorphic association columns: their target table is resolved at runtime from
   # the record's stored "<column>_type", not from FORWARD_REFERENCES' target_table.
-  POLYMORPHIC_COLUMNS = %w[eventable reactable topicable parent].freeze
+  POLYMORPHIC_COLUMNS = %w[itemable reactable topicable parent recipient subject].freeze
 
   def self.export_direct_topics(group_id)
     group = Group.find(group_id)
@@ -262,7 +292,7 @@ class GroupExportService
   end
 
   def self.export_filename_for(group_name)
-    "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group_name.parameterize}.json"
+    "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group_name.parameterize}_#{SecureRandom.hex(16)}.json"
   end
 
   def self.puts_attachment(attachment, file)
@@ -314,21 +344,7 @@ class GroupExportService
   end
 
   def self.export_record(record, table)
-    json = record.as_json(JSON_PARAMS[table])
-
-    case record
-    when Stance
-      json.merge!('participant_id' => nil, 'cast_at' => nil, 'created_at' => nil, 'updated_at' => nil, 'revoked_at' => nil, 'redacted_at' => nil) if record.poll.anonymous?
-    when StanceChoice
-      json.merge!('created_at' => nil, 'updated_at' => nil) if record.poll.anonymous?
-    when Event
-      if record.eventable.is_a?(Stance) && record.eventable.poll.anonymous?
-        json.merge!('user_id' => nil, 'created_at' => nil, 'updated_at' => nil)
-      end
-      json['custom_fields'] = record.custom_fields.except('source_group_id') if record.kind == 'discussion_moved'
-    end
-
-    json
+    record.as_json(JSON_PARAMS[table])
   end
 
   def self.import(filename_or_url, reset_keys: false)
@@ -340,6 +356,14 @@ class GroupExportService
 
     datas_by_table = datas.group_by { |data| data['table'] }
     tables = datas_by_table.keys - ['attachments']
+    # Archive row order is not a dependency contract. Restore known parent tables
+    # first so required references are valid throughout the import transaction.
+    tables = (IMPORT_TABLE_PRIORITY & tables) + (tables - IMPORT_TABLE_PRIORITY)
+    # Group hierarchies have two levels, but archive row order is unspecified.
+    datas_by_table.fetch('groups', []).sort_by! { |data| data.dig('record', 'parent_id').nil? ? 0 : 1 }
+    # Topic item parents must exist before their children because the database
+    # enforces that both records belong to the same topic.
+    datas_by_table.fetch('topic_items', []).sort_by! { |data| data.dig('record', 'depth').to_i }
 
     ActiveRecord::Base.transaction do
       migrate_ids = build_migrate_ids(datas_by_table, tables)
@@ -360,6 +384,7 @@ class GroupExportService
           attrs = data['record'].deep_dup
           translate_foreign_keys!(attrs, table, migrate_ids)
           attrs[pk] = new_id if pk
+          translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'
           record = klass.new(attrs)
           prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
           klass.import([record], validate: false)
@@ -492,6 +517,42 @@ class GroupExportService
         attrs[column] = map[old_id] if map&.has_key?(old_id)
       end
     end
+  end
+
+  # Translate snapshotted recipient context so mention history and any recovery
+  # routing refer only to imported records.
+  def self.translate_notification_payload!(attrs, migrate_ids)
+    attrs['recipient_user_ids'] = translate_ids(attrs['recipient_user_ids'], migrate_ids['users'])
+    attrs['recipient_audience'] = translate_recipient_audience(attrs['recipient_audience'], migrate_ids['groups'])
+
+    recipient_context = attrs['recipient_context'] || {}
+    %w[
+      already_notified_user_ids
+      mentioned_group_user_ids
+      mentioned_user_ids
+      newly_mentioned_user_ids
+    ].each do |key|
+      recipient_context[key] = translate_ids(recipient_context[key], migrate_ids['users']) if recipient_context.key?(key)
+    end
+    if recipient_context.key?('group_ids')
+      recipient_context['group_ids'] = translate_ids(recipient_context['group_ids'], migrate_ids['groups'])
+    end
+    attrs['recipient_context'] = recipient_context
+  end
+
+  def self.translate_recipient_audience(audience, group_ids)
+    match = audience.to_s.match(/\A(group|delegates)-(\d+)\z/)
+    return audience unless match
+
+    group_id_old = match[2].to_i
+    group_id_new = group_ids&.fetch(group_id_old, group_id_old) || group_id_old
+    "#{match[1]}-#{group_id_new}"
+  end
+
+  def self.translate_ids(ids, id_map)
+    Array(ids).filter_map do |id|
+      id_map&.has_key?(id) ? id_map[id] : id
+    end.map(&:to_i).uniq
   end
 
   def self.prepare_record_for_import!(record, table, original_attrs, klass, reset_keys)

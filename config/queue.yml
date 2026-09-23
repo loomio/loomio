@@ -3,9 +3,14 @@ default: &default
     - polling_interval: 1
       batch_size: 500
   workers:
-    - queues: "*"
+    # Keep group destruction out of the general pool, including when it scales.
+    - queues: [default, mailers, low, "active_storage*", "action_mailbox*"]
       threads: 3
       processes: <%= ENV.fetch("JOB_CONCURRENCY", 1) %>
+      polling_interval: 1
+    - queues: group_destruction
+      threads: 1
+      processes: 1
       polling_interval: 1
 
 development:

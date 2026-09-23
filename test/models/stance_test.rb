@@ -16,6 +16,18 @@ class StanceTest < ActiveSupport::TestCase
     }.merge(overrides)
   end
 
+  test "guest invitation is not redeemable after the user joins the poll group" do
+    guest = User.create!(name: "Invited voter", email: "invited-voter-#{SecureRandom.hex(4)}@example.test")
+    poll = PollService.create(params: poll_params(group_id: @group.id), actor: @admin)
+    stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    assert_includes Stance.redeemable, stance
+
+    @group.add_member!(guest)
+
+    refute_includes Stance.redeemable, stance
+  end
+
   test "allows no stance choices for polls" do
     poll = PollService.create(params: poll_params, actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin)
@@ -31,6 +43,14 @@ class StanceTest < ActiveSupport::TestCase
     assert_not stance.valid?
     stance.weight = -1
     assert_not stance.valid?
+  end
+
+  test "does not allow a stance for an anonymous poll" do
+    poll = PollService.create(params: poll_params(anonymous: true), actor: @admin)
+    stance = Stance.new(poll: poll, participant: @admin)
+
+    assert_not stance.valid?
+    assert stance.errors.added?(:poll, :invalid)
   end
 
   test "requires a stance choice for proposals" do
@@ -53,6 +73,74 @@ class StanceTest < ActiveSupport::TestCase
     assert_not stance.valid?
   end
 
+  test "proposal ballots contain exactly one choice with a score of one" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree abstain disagree block]
+    ), actor: @admin)
+
+    [-1, 0, 2].each do |score|
+      stance = cast_stance(poll, [[poll.poll_options.first, score]])
+      assert_not stance.valid?, "expected proposal score #{score} to be invalid"
+    end
+
+    stance = cast_stance(poll, poll.poll_options.first(2).map { |option| [option, 1] })
+    assert_not stance.valid?, "expected multiple proposal choices to be invalid"
+    assert cast_stance(poll, [[poll.poll_options.first, 1]]).valid?
+  end
+
+  test "dot vote ballots reject negative scores and totals above the dot limit" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "dot_vote",
+      dots_per_person: 3,
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+
+    assert_not cast_stance(poll, [[poll.poll_options.first, -1]]).valid?
+    assert_not cast_stance(poll, poll.poll_options.map { |option| [option, 2] }).valid?
+    assert cast_stance(poll, [[poll.poll_options.first, 3]]).valid?
+  end
+
+  test "score polls reject negative scores even when legacy configuration allowed them" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "score",
+      poll_option_names: %w[apple orange]
+    ), actor: @admin)
+    poll.update_column(:min_score, -10)
+
+    stance = cast_stance(poll.reload, [[poll.poll_options.first, -1]])
+
+    assert_not stance.valid?
+    assert stance.errors.added?(:stance_choices, :invalid)
+  end
+
+  test "rank ballots require the configured number of contiguous unique scores" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "ranked_choice",
+      minimum_stance_choices: 3,
+      poll_option_names: %w[apple orange banana]
+    ), actor: @admin)
+    options = poll.poll_options
+
+    assert cast_stance(poll, options.zip([3, 2, 1])).valid?
+    assert_not cast_stance(poll, options.zip([9999, 2, 1])).valid?
+    assert_not cast_stance(poll, options.zip([3, 3, 1])).valid?
+    assert_not cast_stance(poll, options.first(2).zip([2, 1])).valid?
+  end
+
+  test "STV ballots allow partial rankings with contiguous unique scores" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "stv",
+      poll_option_names: %w[apple orange banana]
+    ), actor: @admin)
+    options = poll.poll_options
+
+    assert cast_stance(poll, options.first(2).zip([1, 2])).valid?
+    assert cast_stance(poll, []).valid?
+    assert_not cast_stance(poll, options.first(2).zip([1, 9999])).valid?
+    assert_not cast_stance(poll, options.first(2).zip([1, 1])).valid?
+  end
+
   test "reason has a length validation" do
     poll = PollService.create(params: poll_params, actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin, reason: "a" * 505, cast_at: Time.zone.now)
@@ -69,7 +157,7 @@ class StanceTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(
       poll_type: "proposal",
       poll_option_names: %w[agree abstain disagree block],
-      stance_reason_required: "required_when_disagreeing"
+      stance_reason_required: "required_for_disagree_or_block"
     ), actor: @admin)
 
     %w[agree abstain].each do |icon|
@@ -83,11 +171,27 @@ class StanceTest < ActiveSupport::TestCase
     end
   end
 
+  test "requires a reason only for block options when configured" do
+    poll = PollService.create(params: poll_params(
+      poll_type: "proposal",
+      poll_option_names: %w[agree abstain disagree block],
+      stance_reason_required: "required_for_block"
+    ), actor: @admin)
+
+    %w[agree abstain disagree].each do |icon|
+      assert stance_for(poll, icon: icon).valid?, "expected #{icon} without a reason to be valid"
+    end
+
+    stance = stance_for(poll, icon: "block")
+    assert_not stance.valid?
+    assert stance_for(poll, icon: "block", reason: "Because this concerns me").valid?
+  end
+
   test "uses the option icon when deciding whether a reason is required" do
     poll = PollService.create(params: poll_params(
       poll_type: "proposal",
       poll_option_names: %w[agree disagree],
-      stance_reason_required: "required_when_disagreeing"
+      stance_reason_required: "required_for_disagree_or_block"
     ), actor: @admin)
     objection = poll.poll_options.find_by!(icon: "disagree")
     objection.update!(name: "Objection")
@@ -134,6 +238,17 @@ class StanceTest < ActiveSupport::TestCase
   end
 
   private
+
+  def cast_stance(poll, option_scores)
+    Stance.new(
+      poll: poll,
+      participant: @admin,
+      cast_at: Time.zone.now,
+      stance_choices_attributes: option_scores.map do |option, score|
+        { poll_option_id: option.id, score: score }
+      end
+    )
+  end
 
   def stance_for(poll, icon:, reason: nil)
     Stance.new(

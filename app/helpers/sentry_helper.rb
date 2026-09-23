@@ -13,7 +13,7 @@ module SentryHelper
           "discussion_key",
           "poll_id",
           "poll_key",
-          "event_id",
+          "topic_item_id",
           "comment_id",
           "group_id",
           "user_id",

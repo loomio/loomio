@@ -2,6 +2,8 @@
 import AppConfig       from '@/shared/services/app_config';
 import Session         from '@/shared/services/session';
 import Records         from '@/shared/services/records';
+import Flash           from '@/shared/services/flash';
+import NativeBridge    from '@/shared/services/native_bridge.mjs';
 import { mdiClose } from '@mdi/js';
 
 import { computed } from 'vue'
@@ -18,6 +20,14 @@ const setTheme = function(name) {
 }
 
 const signOut = () => Session.signOut();
+const nativeAvailable = NativeBridge.available();
+const openMobileSettings = async () => {
+  try {
+    await NativeBridge.invoke('openSettings');
+  } catch (_error) {
+    Flash.error('common.something_went_wrong');
+  }
+};
 
 const version = computed(() => AppConfig.version );
 const release = computed(() => AppConfig.release );
@@ -35,7 +45,11 @@ v-list(nav density="comfortable")
     template(v-slot:prepend)
       common-icon(name="mdi-cog-outline")
     v-list-item-title(v-t="'user_dropdown.email_settings'")
-  v-list-item(@click="signOut()")
+  v-list-item.user-dropdown__list-item-button--mobile-settings(v-if="nativeAvailable" @click="openMobileSettings")
+    template(v-slot:prepend)
+      common-icon(name="mdi-cellphone-cog")
+    v-list-item-title(v-t="'user_dropdown.mobile_app_settings'")
+  v-list-item.user-dropdown__list-item-button--sign-out(@click="signOut()")
     template(v-slot:prepend)
       common-icon(name="mdi-exit-to-app")
     v-list-item-title(v-t="'user_dropdown.sign_out'")
@@ -53,7 +67,7 @@ v-list(nav density="comfortable")
 
   v-divider
   v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")
-  v-list-item(href="/whats_new" target="_blank" :title="$t('user_dropdown.whats_new')")
+  v-list-item(href="https://help.loomio.com/en/user_manual/changelog/" target="_blank" :title="$t('user_dropdown.whats_new')")
   v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two" title="Loomio version" :subtitle="version")
 
 </template>

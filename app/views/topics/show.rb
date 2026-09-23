@@ -9,10 +9,12 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def view_template
-    div(class: "thread-page mt-12") do
+    preload_context
+
+    div(class: "topic-page mt-12") do
       main(class: "v-main") do
-        div(class: "v-container thread-page max-width-800 px-0 px-sm-3 v-locale--is-ltr") do
-          div(class: "thread-card v-sheet theme--auto v-sheet--outlined elevation-1 rounded") do
+        div(class: "v-container topic-page max-width-800 px-0 px-sm-3 v-locale--is-ltr") do
+          div(class: "topic-card v-sheet theme--auto v-sheet--outlined elevation-1 rounded") do
             render_context_panel
             render_activity_panel
           end
@@ -47,7 +49,7 @@ class Views::Topics::Show < Views::Application::Layout
   def render_details
     div(class: "context-panel__details my-2 text-body-2 align-center d-flex text-medium-emphasis") do
       span(class: "mr-2") do
-        render Views::EventMailer::Common::Avatar.new(user: @topic.topicable.author)
+        render Views::NotificationMailer::Common::Avatar.new(user: @topic.topicable.author)
       end
       span(class: "text-medium-emphasis") do
         a(href: user_url(@topic.topicable.author)) { plain @topic.topicable.author.name }
@@ -83,21 +85,24 @@ class Views::Topics::Show < Views::Application::Layout
   def render_activity_panel
     div(class: "activity-panel") do
       scope = @topic.items
-        .includes(:eventable, :user)
+        .includes(:itemable, :user)
         .order("position_key #{@topic.newest_first ? 'desc' : 'asc'}")
         .where(kind: %w[new_comment poll_created stance_created stance_updated])
-        .where.not(eventable_type: 'Stance', eventable_id: stance_ids_hidden_from_activity)
+        .where.not(itemable_type: 'Stance', itemable_id: stance_ids_hidden_from_activity)
 
       total = scope.count
       items = scope.limit(@pagination[:limit]).offset(@pagination[:offset]).to_a
-      preload_item_avatars(items)
+      preload_activity(items)
 
       items.each do |item|
-        render Views::Topics::TopicItem.new(item: item, current_user: @recipient) if item.eventable.present?
+        render Views::Topics::TopicItem.new(item: item, current_user: @recipient) if item.itemable.present?
       end
 
       if (@pagination[:offset] + @pagination[:limit]) < total
-        a(href: "?offset=#{@pagination[:offset] + @pagination[:limit]}&limit=#{@pagination[:limit]}&export=1") do
+        a(
+          href: "?offset=#{@pagination[:offset] + @pagination[:limit]}&limit=#{@pagination[:limit]}&export=1",
+          rel: "nofollow"
+        ) do
           plain t("common.action.load_more")
         end
       end
@@ -105,22 +110,47 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def stance_ids_hidden_from_activity
-    polls = @topic.polls.reject(&:anonymous?)
+    polls = @topic.polls
     voted_poll_ids = Stance.latest.decided.where(
       poll_id: polls.map(&:id), participant_id: @recipient.id
     ).pluck(:poll_id)
 
     hidden_poll_ids = polls.reject do |poll|
-      poll.show_results?(voted: voted_poll_ids.include?(poll.id))
+      poll.results_visible?(voted: voted_poll_ids.include?(poll.id))
     end.map(&:id)
 
     Stance.where(poll_id: hidden_poll_ids).where.not(participant_id: @recipient.id).select(:id)
   end
 
-  def preload_item_avatars(items)
-    comments = items.filter_map { |i| i.eventable if i.kind == 'new_comment' }
-    stances  = items.filter_map { |i| i.eventable if i.kind.in?(%w[stance_created stance_updated]) }
+  # The export view renders several polymorphic activity types. Preload each
+  # type's complete rendering graph so the number of queries does not grow with
+  # the number of comments, polls, outcomes, or stances on the page.
+  def preload_activity(items)
+    comments = items.filter_map { |i| i.itemable if i.kind == 'new_comment' }
+    stances  = items.filter_map { |i| i.itemable if i.kind.in?(%w[stance_created stance_updated]) }
+    polls    = items.filter_map { |i| i.itemable if i.kind == 'poll_created' }
+
     ActiveRecord::Associations::Preloader.new(records: comments, associations: {user: {uploaded_avatar_attachment: :blob}}).call if comments.any?
-    ActiveRecord::Associations::Preloader.new(records: stances, associations: {participant: {uploaded_avatar_attachment: :blob}}).call if stances.any?
+    ActiveRecord::Associations::Preloader.new(
+      records: stances,
+      associations: [:poll, {participant: {uploaded_avatar_attachment: :blob}}]
+    ).call if stances.any?
+    ActiveRecord::Associations::Preloader.new(
+      records: polls,
+      associations: [
+        :poll_options,
+        {author: {uploaded_avatar_attachment: :blob}},
+        {current_outcome: :author}
+      ]
+    ).call if polls.any?
+  end
+
+  def preload_context
+    ActiveRecord::Associations::Preloader.new(records: [@topic], associations: [:group, :topicable]).call
+    topicable = @topic.topicable
+    ActiveRecord::Associations::Preloader.new(
+      records: [topicable],
+      associations: {author: {uploaded_avatar_attachment: :blob}}
+    ).call
   end
 end

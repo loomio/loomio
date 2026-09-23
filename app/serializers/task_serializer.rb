@@ -11,4 +11,13 @@ class TaskSerializer < ApplicationSerializer
 
   has_one :record, polymorphic: true, key: 'record_obj'
   has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :topic, serializer: TopicSerializer, root: :topics
+
+  def topic
+    object.record.topic
+  end
+
+  def include_topic?
+    object.record.is_a?(Comment)
+  end
 end

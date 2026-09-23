@@ -21,10 +21,6 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch(:groups_by_id, object.group_id) { object.group }
   end
 
-  def event
-    cache_fetch(:events_by_id, object.event_id) { object.event }
-  end
-
   def discussion
     cache_fetch(:discussions_by_id, object.discussion_id) { object.discussion }
   end
@@ -89,12 +85,8 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('poll')
   end
 
-  def include_created_event?
-    include_type?('event')
-  end
-
-  def include_forked_event?
-    include_type?('event')
+  def include_created_topic_item?
+    include_type?('topic_item')
   end
 
   def include_topic?
@@ -109,7 +101,7 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('poll')
   end
 
-  def include_eventable?
+  def include_itemable?
     true
   end
 
@@ -182,10 +174,10 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def include_translation?
-    translation.present?
+    include_type?('translation') && translation.present?
   end
 
   def include_translation_id?
-    translation.present?
+    include_type?('translation') && translation.present?
   end
 end

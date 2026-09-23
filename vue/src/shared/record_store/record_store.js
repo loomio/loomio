@@ -32,7 +32,7 @@ export default class RecordStore {
   }
 
   importJSON(json) {
-    const collections = pick(json, map(this.collectionNames, snakeCase).concat(['parent_groups', 'parent_events']));
+    const collections = pick(json, map(this.collectionNames, snakeCase).concat(['parent_groups', 'parent_topic_items']));
     return this.importREADY(utils.deserialize(collections));
   }
 
@@ -47,9 +47,9 @@ export default class RecordStore {
       });
     }
 
-    if (data['parentEvents'] != null) {
-      each(data['parentEvents'], recordData => {
-        this.events.importRecord(recordData);
+    if (data['parentTopicItems'] != null) {
+      each(data['parentTopicItems'], recordData => {
+        this.topicItems.importRecord(recordData);
         return true;
       });
     }

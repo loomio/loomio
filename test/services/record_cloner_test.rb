@@ -9,7 +9,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     Rails.cache.delete(ThrottleService.cache_key(per: 'day', key: 'UserInviterInvitations', id: @user.id))
     Rails.cache.delete(ThrottleService.cache_key(per: 'hour', key: 'UserInviterInvitations', id: @user.id))
 
-    # Use a fresh group to avoid fixture discussions without created_events
+    # Use a fresh group to avoid fixture discussions without created_topic_items
     @group = Group.new(
       name: "Cloner Test Group",
       handle: "cloner-test-#{SecureRandom.hex(4)}",
@@ -20,6 +20,7 @@ class RecordClonerTest < ActiveSupport::TestCase
       members_can_raise_motions: true,
       members_can_vote: true,
       members_can_start_discussions: true,
+      non_members_can_start_discussions: true,
       members_can_create_subgroups: true,
       subscription: Subscription.create!(plan: 'trial')
     )
@@ -61,7 +62,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     )
     OutcomeService.create(outcome: @outcome, actor: @user)
 
-    # Repair event chain for discussion
+    # Repair topic_item chain for discussion
     TopicService.repair(@discussion.topic.id)
   end
 
@@ -80,6 +81,7 @@ class RecordClonerTest < ActiveSupport::TestCase
       members_can_raise_motions
       members_can_vote
       members_can_start_discussions
+      non_members_can_start_discussions
       members_can_create_subgroups
     ].each do |field|
       assert_equal @group.send(field), clone.send(field), "#{field} should be copied"
@@ -138,7 +140,7 @@ class RecordClonerTest < ActiveSupport::TestCase
 
   # -- Clone Discussion --
 
-  test "clones a discussion with events and comments" do
+  test "clones a discussion with topic_items and comments" do
     clone = RecordCloner.new(recorded_at: 2.days.ago).new_clone_discussion_and_events(@discussion)
     clone.save!
     clone.reload
@@ -149,7 +151,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @discussion.comments.count, clone.comments.count
     assert_equal @discussion.polls.count, clone.polls.count
 
-    # Clone drops poll_closed_by_user/poll_expired/poll_reopened events
+    # Clone drops poll_closed_by_user/poll_expired/poll_reopened topic_items
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
     expected_items = @discussion.topic.items.reject { |i| drop_kinds.include?(i.kind) }.count
     assert_equal expected_items, clone.topic.items.count

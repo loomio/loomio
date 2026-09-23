@@ -30,7 +30,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
       %r{#{Regexp.escape(@server)}/_matrix/client/v3/rooms/.+/send/m.room.message/.+}
     end
     stub_request(:put, pattern)
-      .to_return(status: 200, body: {event_id: "$evt"}.to_json)
+      .to_return(status: 200, body: {topic_item_id: "$evt"}.to_json)
   end
 
   test "send_text joins room then sends m.notice" do
@@ -56,7 +56,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
         "formatted_body" => html,
         "body" => "Hello world"
       ))
-      .to_return(status: 200, body: {event_id: "$evt"}.to_json)
+      .to_return(status: 200, body: {topic_item_id: "$evt"}.to_json)
 
     response = with_dns { @client.send_html(room_id, html) }
     assert_equal 200, response.code.to_i
@@ -112,7 +112,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
     stub_request(:post, %r{https://matrix.example.com/_matrix/client/v3/join/.+})
       .to_return(status: 200, body: {room_id: room_id}.to_json, headers: {"Content-Type" => "application/json"})
     stub_request(:put, %r{https://matrix.example.com/_matrix/client/v3/rooms/.+/send/m.room.message/.+})
-      .to_return(status: 200, body: {event_id: "$evt"}.to_json)
+      .to_return(status: 200, body: {topic_item_id: "$evt"}.to_json)
 
     with_dns { client.send_text(room_id, "trailing slash test") }
 

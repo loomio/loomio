@@ -195,22 +195,41 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(response.body)['discussions'].size
   end
 
-  test "index rejects non-member" do
-    hex = SecureRandom.hex(4)
-    stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true)
-    stranger.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
+  test "index lets a non-member read public discussions without exposing private discussions" do
+    public_group = Group.create!(
+      name: "Public Group #{SecureRandom.hex(4)}",
+      group_privacy: "closed",
+      discussion_privacy_options: "public_or_private"
+    )
+    Membership.create!(user: @user, group: public_group, accepted_at: Time.current, admin: true)
+    public_discussion = DiscussionService.create(params: { title: "Public Discussion", group_id: public_group.id, private: false }, actor: @user)
+    private_discussion = DiscussionService.create(params: { title: "Private Discussion", group_id: public_group.id, private: true }, actor: @user)
+    stranger = create_user_with_api_key!
+
+    @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
+    get :index, params: { group_id: public_group.id, status: "all" }
+
+    assert_response :success
+    discussion_ids = json.fetch("discussions").pluck("id")
+    assert_equal [ public_discussion.id ], discussion_ids
+    refute_includes response.body, private_discussion.title
+  end
+
+  test "index rejects a non-member of a private group" do
+    stranger = create_user_with_api_key!
+
     @request.headers['Authorization'] = "Bearer #{stranger.api_key}"
     get :index, params: { group_id: @group.id }
+
     assert_response 403
   end
 
-  test "index allows global admin not in group" do
-    admin = users(:admin)
+  test "index does not grant an instance admin access to a private group" do
+    admin = create_user_with_api_key!
     admin.update!(is_admin: true)
-    admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
     @request.headers['Authorization'] = "Bearer #{admin.api_key}"
     get :index, params: { group_id: @group.id }
-    assert_response 200
+    assert_response :forbidden
   end
 
   test "index rejects bad api_key" do
@@ -230,7 +249,7 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     get :index, params: { group_id: @group.id }
     assert_response 200
     body = response.body
-    %w[discussions polls groups users events stances outcomes poll_options].each do |key|
+    %w[discussions polls groups users topic_items stances outcomes poll_options].each do |key|
       count = body.scan(/"#{key}":/).size
       assert count <= 1, "Expected '#{key}' key to appear at most once in response body, got #{count}"
     end

@@ -26,6 +26,51 @@ namespace :loomio do
     paths
   end
 
+  # Translation imports can contain thousands of strings. Batch requests and
+  # retry transient connection and service-capacity failures without changing
+  # result ordering.
+  def translate_strings(google, source_strings, google_locale)
+    retry_count = 0
+
+    begin
+      Array(google.translate(*source_strings, to: google_locale)).map do |translation|
+        CGI.unescapeHTML(translation.text)
+      end
+    rescue Faraday::ConnectionFailed,
+           Faraday::SSLError,
+           Faraday::TimeoutError,
+           Google::Cloud::ResourceExhaustedError
+      retry_count += 1
+      raise if retry_count > 5
+
+      sleep(2**(retry_count - 1))
+      retry
+    end
+  end
+
+  # Stay below Google's per-request limits of 128 strings and 30,000 codepoints,
+  # with margin for request encoding and future source-string growth.
+  def translation_batches(paths, source, batch_size_max: 100, batch_length_max: 20_000)
+    batches = []
+    batch = []
+    batch_length = 0
+
+    paths.each do |path|
+      source_string = (source.dig(*path.split('.')) || "").strip
+      if batch.any? && (batch.length >= batch_size_max || batch_length + source_string.length > batch_length_max)
+        batches << batch
+        batch = []
+        batch_length = 0
+      end
+
+      batch << [ path, source_string ]
+      batch_length += source_string.length
+    end
+
+    batches << batch if batch.any?
+    batches
+  end
+
   def delete_keys(hash, keys)
     # Dotted keys are exact paths; undotted keys match any key (leaf or subtree) whose last segment equals the key.
     exact_paths = keys.select { |k| k.include?('.') }
@@ -73,10 +118,6 @@ namespace :loomio do
     puts Version.current
   end
 
-  task update_blocked_domains: :environment do
-    UpdateBlockedDomainsWorker.perform_later
-  end
-
   desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
   task repair_inline_image_attachments: :environment do
     if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
@@ -90,88 +131,6 @@ namespace :loomio do
       puts "DRY RUN: #{stats.to_json}"
       puts "Set APPLY_INLINE_IMAGE_REPAIR to queue the repair job"
     end
-  end
-
-  desc "Mark closed standalone poll topics as read for their current readers"
-  task mark_closed_poll_topics_read: :environment do
-    $stdout.sync = true
-    dry_run = ENV["DRY_RUN"].present?
-    stats = PollService.mark_closed_poll_topics_read(dry_run: dry_run, progress: ->(message) { puts message })
-
-    prefix = dry_run ? "DRY RUN: would mark" : "Marked"
-    puts "#{prefix} #{stats[:topics]} closed poll topics as read"
-    puts "#{dry_run ? 'Would create' : 'Created'} #{stats[:readers_created]} topic readers"
-    puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:readers_updated]} topic readers"
-  end
-
-  desc "Migrate closed legacy anonymous stance votes to detached votes"
-  task migrate_legacy_anonymous_votes: :environment do
-    $stdout.sync = true
-    poll_id = ENV["POLL_ID"].presence&.to_i
-    limit = ENV["LIMIT"].presence&.to_i
-    scope = LegacyAnonymousVoteMigrationService.eligible_poll_scope.order(:id)
-    scope = scope.where(id: poll_id) if poll_id
-    scope = scope.limit(limit) if limit
-
-    if ENV.key?("DRY_RUN")
-      scope.find_each do |poll|
-        audit = LegacyAnonymousVoteMigrationService.audit(poll: poll)
-        puts "Would migrate anonymous poll #{poll.id}: #{audit[:votes]} votes, #{audit[:reasons]} reasons, " \
-             "#{audit[:attachments]} attachments, and #{audit[:receipts]} receipts"
-      end
-      next
-    end
-
-    backup_confirmed = ENV.key?("ANONYMOUS_VOTE_BACKUP_CONFIRMED")
-    unless backup_confirmed
-      abort "Set ANONYMOUS_VOTE_BACKUP_CONFIRMED after confirming a current database backup"
-    end
-
-    stats = LegacyAnonymousVoteMigrationService.migrate_all!(
-      backup_confirmed: true,
-      poll_id: poll_id,
-      limit: limit,
-      progress: ->(message) { puts message }
-    )
-
-    puts "Migrated #{stats[:polls]} polls, #{stats[:ballots]} votes, #{stats[:reasons]} reasons, " \
-         "#{stats[:attachments]} attachments, and #{stats[:electorate_records]} electorate records"
-  end
-
-  desc "Audit detached legacy anonymous vote conversion"
-  task audit_legacy_anonymous_votes: :environment do
-    $stdout.sync = true
-    if (path = ENV["CAPTURE_DANGLING_BASELINE_PATH"].presence)
-      File.write(path, JSON.pretty_generate(LegacyAnonymousVoteMigrationAuditService.reference_baseline))
-      puts "Wrote dangling stance reference baseline to #{path}"
-      next
-    end
-
-    path = ENV["DANGLING_BASELINE_PATH"].presence
-    abort "Set DANGLING_BASELINE_PATH to the baseline captured before conversion" unless path
-    baseline = JSON.parse(File.read(path))
-    result = LegacyAnonymousVoteMigrationAuditService.audit(dangling_baseline: baseline)
-    puts JSON.pretty_generate(result)
-    abort "Legacy anonymous vote audit failed" unless result[:ok]
-  end
-
-  desc "Attach legacy standalone poll stance events to poll topics"
-  task backfill_standalone_poll_stance_thread_items: :environment do
-    $stdout.sync = true
-    dry_run = ENV["DRY_RUN"].present?
-    puts "#{dry_run ? 'Starting dry run for' : 'Starting'} standalone poll stance backfill..."
-    stats = PollService.backfill_standalone_poll_stance_thread_items(
-      dry_run: dry_run,
-      mark_closed_read: true,
-      progress: ->(message) { puts message }
-    )
-
-    prefix = dry_run ? "DRY RUN: would attach" : "Attached"
-    puts "#{prefix} #{stats[:events]} stance events to #{stats[:topics]} standalone poll topics"
-    puts "#{dry_run ? 'Would repair' : 'Repaired'} #{stats[:repair_topics]} standalone poll topics"
-    puts "#{dry_run ? 'Would mark' : 'Marked'} #{stats[:closed_read][:topics]} closed poll topics as read"
-    puts "#{dry_run ? 'Would create' : 'Created'} #{stats[:closed_read][:readers_created]} topic readers"
-    puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:closed_read][:readers_updated]} topic readers"
   end
 
   task check_translations: :environment do
@@ -255,40 +214,56 @@ namespace :loomio do
           source_paths = source_data[:paths]
           filename = "config/locales/#{source_name}.#{file_locale}.yml"
 
+          file_was_new = !File.exist?(filename)
           foreign = {}
           foreign_paths = []
-          if File.exist?(filename)
+          unless file_was_new
             foreign = YAML.load_file(filename)[file_locale]
             foreign_paths = list_paths(foreign, [])
           end
 
-          write_file = false
-          (source_paths - foreign_paths).each do |path|
-            source_string = (source.dig(*path.split('.')) || "").strip
-            next if source_string.blank?
-
-            output_mutex.synchronize do
-              puts "#{file_locale}: #{path}, #{source_string}"
-            end
-
-            write_file = true
-            translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
-            foreign.bury(*path.split('.'), translated_string)
+          paths_missing = source_paths - foreign_paths
+          paths_blank, paths_translate = paths_missing.partition do |path|
+            (source.dig(*path.split('.')) || "").strip.blank?
           end
 
-          File.write(filename, {file_locale => foreign}.to_yaml(line_width: 2000)) if write_file
+          if file_was_new
+            paths_blank.each { |path| foreign.bury(*path.split('.'), "") }
+            File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000)) if paths_blank.any?
+          end
+
+          translation_batches(paths_translate, source).each do |batch|
+            paths, source_strings = batch.transpose
+
+            output_mutex.synchronize do
+              puts "#{file_locale}: translating #{source_name} strings #{paths.first} to #{paths.last}"
+            end
+
+            begin
+              translated_strings = translate_strings(google, source_strings, google_locale)
+              raise "translation count mismatch" unless translated_strings.length == paths.length
+
+              paths.zip(translated_strings).each do |path, translated_string|
+                foreign.bury(*path.split('.'), translated_string)
+              end
+
+              File.write(filename, { file_locale => foreign }.to_yaml(line_width: 2000))
+            rescue => error
+              errors << [file_locale, "#{source_name}.#{paths.first}..#{paths.last}", error]
+            end
+          end
         end
       rescue => e
-        errors << [file_locale, e]
+        errors << [file_locale, nil, e]
       end
     end.each(&:join)
 
     unless errors.empty?
       messages = []
-      messages << "Translation failed for #{errors.length} locale(s):"
+      messages << "Translation failed for #{errors.length} batch(es):"
       messages.concat(errors.size.times.map do
-        file_locale, error = errors.pop
-        "#{file_locale}: #{error.class}: #{error.message}"
+        file_locale, path, error = errors.pop
+        "#{file_locale}#{path ? ": #{path}" : nil}: #{error.class}: #{error.message}"
       end)
       raise messages.join("\n")
     end
@@ -372,8 +347,47 @@ namespace :loomio do
     puts "SearchService.reindex_everything queued as background job"
   end
 
+  desc "Report untouched legacy seeded discussions and polls eligible for deletion"
+  task audit_unused_seeded_content: :environment do
+    SeededContentCleanupService.audit
+  end
+
+  desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
+  task audit_empty_groups: :environment do
+    limit = ENV["LIMIT"].presence&.to_i
+    plan_counts = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+      {
+        empty_roots: CleanupService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
+        total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
+      }
+    end
+    puts JSON.pretty_generate(plan_counts)
+  end
+
+  desc "Silently discard topic-free free groups and expired trials older than 60 days; requires CLEANUP_ENABLED (optional LIMIT)"
+  task discard_empty_groups: :environment do
+    abort "CLEANUP_ENABLED must be set" unless ENV["CLEANUP_ENABLED"].present?
+
+    limit = ENV["LIMIT"].presence&.to_i
+    result = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+      CleanupService.discard_empty_groups!(plan: plan, limit: limit)
+    end
+    puts result.to_json
+  end
+
+  desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
+  task delete_unused_seeded_content: :environment do
+    limit = ENV["LIMIT"].presence&.to_i
+    SeededContentCleanupService.delete!(
+      limit: limit,
+      content_type: ENV["SEEDED_CONTENT_TYPE"].presence,
+      shard_count: ENV.fetch("SHARD_COUNT", 1).to_i,
+      shard_index: ENV.fetch("SHARD_INDEX", 0).to_i
+    )
+  end
+
   desc "Queue background jobs to resequence legacy topics where poll_created appears after later comments"
-  task resequence_legacy_poll_created_events: :environment do
+  task resequence_legacy_poll_created_topic_items: :environment do
     count = TopicService.enqueue_legacy_poll_created_resequence
     puts "Queued #{count} topics for legacy poll_created resequencing"
   end

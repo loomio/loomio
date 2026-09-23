@@ -1,13 +1,12 @@
 class Outcome < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
-  include HasEvents
+  include HasTopicItems
+  include HasNotifications
   include HasMentions
   include Reactable
   include Bookmarkable
   include Translatable
-  include HasCreatedEvent
-  include HasEvents
   include HasRichText
   include Searchable
 
@@ -56,7 +55,6 @@ class Outcome < ApplicationRecord
   set_custom_fields :event_summary, :event_description, :event_location
 
   scope :latest, -> { where(latest: true) }
-  scope :in_organisation, -> (group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
@@ -72,12 +70,16 @@ class Outcome < ApplicationRecord
   validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 
-  scope :review_due_not_published, -> (due_date) do
+  scope :review_due_not_published, ->(due_date) do
+    review_period = due_date.in_time_zone.all_day
     where(review_on: due_date).where("NOT EXISTS (
-              SELECT 1 FROM events
-              WHERE events.eventable_id   = outcomes.id AND
-                    events.eventable_type = 'Outcome' AND
-                    events.kind           = 'outcome_review_due')")
+              SELECT 1 FROM notifications
+              WHERE notifications.created_at BETWEEN :review_start AND :review_finish AND
+                    notifications.subject_id   = outcomes.id AND
+                    notifications.subject_type = 'Outcome' AND
+                    notifications.kind         = 'outcome_review_due')",
+              review_start: review_period.begin,
+              review_finish: review_period.end)
   end
 
   def title_model
@@ -104,8 +106,8 @@ class Outcome < ApplicationRecord
     statement_format
   end
 
-  def parent_event
-    poll.created_event
+  def parent_topic_item
+    poll.created_topic_item
   end
 
   def attendee_emails

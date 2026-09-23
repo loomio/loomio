@@ -150,6 +150,8 @@ ca:
       body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit una discussió o una enquesta.
     new_account_trial_group_limit: Els comptes nous estan limitats a un grup. Si us plau, contacteu amb l'assistència si en necessiteu més.
     direct_thread_anonymous_poll: Un fil que conté una enquesta anònima no es pot convertir en un fil directe.
+    invitation_rate_limit_reached_contact_support: S'ha arribat al límit diari d'invitacions. Contacta amb l'assistència immediatament.
+    subscription_thread_limit_reached: Aquesta organització ha arribat al límit de fils. Si us plau, actualitzeu per continuar utilitzant Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
@@ -182,6 +184,7 @@ ca:
       recaptcha: No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!
       bad_login: Les contrasenyes no concorden
       username_must_be_alphanumeric: Els noms d'usuari només han de ser minúscules i números
+      username_must_use_valid_characters: Els noms d'usuari només poden contenir lletres minúscules, números, guions baixos i guions interns
   poll:
     error:
       cannot_add_options: No es poden afegir opcions a aquesta enquesta
@@ -303,6 +306,17 @@ ca:
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Tens 1 vot per emetre
+          other: Tens %{count} vots per emetre
+        people_mentioned:
+          one: 1 persona t'ha mencionat
+          other: "%{count} persones t'han mencionat"
+        polls_closing_soon:
+          one: 1 enquesta es tanca aviat
+          other: "%{count} enquestes tanquen aviat"
+        separator: "·"
       daily_subject: Ahir a %{site_name}
       weekly_subject: La setmana passada a %{site_name}
       other_subject: Recentment a %{site_name}
@@ -311,6 +325,31 @@ ca:
       thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
+      catch_up_heading: El vostre punt de vista de %{site_name}
+      unread_topics: Temes no llegits
+      unread_threads: Fils no llegits
+      mark_catch_up_as_read: Marca la posada al dia com a llegida
+    digest:
+      subject:
+        votes_to_cast:
+          one: Tens 1 vot per emetre
+          other: Tens %{count} vots per emetre
+        people_mentioned:
+          one: 1 persona t'ha mencionat
+          other: "%{count} persones t'han mencionat"
+        polls_closing_soon:
+          one: 1 enquesta es tanca aviat
+          other: "%{count} enquestes tanquen aviat"
+        separator: "·"
+      daily_subject: Ahir a %{site_name}
+      weekly_subject: La setmana passada a %{site_name}
+      other_subject: Recentment a %{site_name}
+      do_not_reply: Si us plau, no respongueu a aquest correu electrònic.
+      mark_as_read: Marca com a llegit
+      thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
+      marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
+      click_here: Fes click aquí
+      unread_topics: Temes no llegits
     group_membership_approved:
       intro: La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat.
       intro_html: La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat.
@@ -325,6 +364,8 @@ ca:
     content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
     content_was_translated_html: Aquest contingut s'ha traduït de %{source_locale}. <a href="%{profile_url}">Veure la configuració<a></a>
     loomio_app_description: Un espai on les organitzacions col·laboradores puguin prendre decisions conjuntament.
+    membership_request_declined:
+      button_text: Sol·licita de nou
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
@@ -375,6 +416,21 @@ ca:
     trial_expired:
       subject: El vostre grup de Loomio s'eliminarà per inactivitat.
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
+    destroy_warning_with_usage:
+      subject: El vostre grup de Loomio està programat per a la supressió.
+      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
+      trial_expired_warning: La prova del vostre grup de Loomio "%{group}" va caducar fa %{expired_days} dies. Si no us poseu en contacte amb nosaltres, s'eliminarà en %{grace_days} dies.
+      trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon a aquest correu electrònic en un termini de %{grace_days} dies si voleu sol·licitar una extensió de prova, actualitzar a una subscripció de pagament o necessiteu més temps per exportar les seves dades. Després d'això, el grup i les seves dades s'eliminaran permanentment.
+      trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
+      usage_heading: 'Resum de dades del grup:'
+      subgroups: Subgrups
+      members: Membres actuals
+      discussions: Debats
+      polls: Enquestes
+      comments: Comentaris
+      export: Per conservar el grup o exportar una còpia de les seves dades, responeu a aquest correu electrònic en un termini de %{days} dies. Podem restaurar l'accés abans de suprimir-lo.
+      export_link: Més informació sobre l'exportació de dades de grup
+      group_key: 'Clau de grup: %{key}'
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
@@ -677,3 +733,36 @@ ca:
     file_too_large: El fitxer és massa gran. La mida màxima de càrrega és %{limit}.
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.
+  thread_markdown:
+    poll: Enquesta
+    no_activity: Encara no hi ha comentaris, enquestes, vots ni resultats
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentari · %{author} %{timestamp}
+    comment_reply: Respon a %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Estat:** %{value}"
+    anonymous_voting: "**Vot anònim:** %{value}"
+    options: "**Opcions:** %{value}"
+    'yes': Sí
+    closed: Tancat %{value}
+    scheduled_to_open: Programat per obrir %{value}
+    open_until: Obre; tanca %{value}
+    open: Obre
+    current_results: Resultats actuals
+    hidden_until_closed: Amagat fins que es tanqui l'enquesta
+    hidden_until_voted: Ocult fins que l'espectador voti
+    voters: Votants
+    target: Objectiu
+    available: Disponible
+    available_if_needed: Disponible si cal
+    unavailable: No disponible
+    anonymous: Anònim
+    no_voters: Cap votant
+    score: 'puntuació: %{value}'
+    vote: 'Vot: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Cap de les anteriors
+    no_option_selected: No s'ha seleccionat cap opció
+    outcome: Resultat · %{author} %{timestamp}
+    review_date: "**Data de revisió:** %{value}"
+  error:
+    access_denied: No tens permís per fer això

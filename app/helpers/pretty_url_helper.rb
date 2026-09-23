@@ -48,11 +48,8 @@ module PrettyUrlHelper
   def discussion_poll_url(model, options = {})
     if model.topic.discussion
       discussion = model.topic.discussion
-      if model.is_a?(Outcome)
-        discussion_url(discussion, options.merge(sequence_id: model.poll.created_event.sequence_id))
-      else
-        discussion_url(discussion, options.merge(sequence_id: model.created_event.sequence_id))
-      end
+      poll = model.is_a?(Poll) ? model : model.poll
+      discussion_url(discussion, options.merge(sequence_id: poll.created_topic_item.sequence_id))
     else
       poll_url(model.poll, options)
     end

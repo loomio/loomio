@@ -27,6 +27,15 @@ class LocalesHelperTest < ActiveSupport::TestCase
     assert_equal :fr, preferred_locale.to_sym
   end
 
+  test "preferred locale is scoped to the request block" do
+    locale_before = I18n.locale
+    @params = { locale: "fr" }
+
+    use_preferred_locale { assert_equal :fr, I18n.locale }
+
+    assert_equal locale_before, I18n.locale
+  end
+
   test "does not set a bad locale via query param" do
     @params = { lang: 'notagoodone' }
     assert_equal I18n.default_locale, preferred_locale.to_sym
@@ -40,6 +49,11 @@ class LocalesHelperTest < ActiveSupport::TestCase
   test "has robust fallbacks from browser http headers" do
     @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'fr-fr;q=0.8' }
     assert_equal :fr, preferred_locale.to_sym
+  end
+
+  test "uses Belarusian for a Belarus browser locale" do
+    @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'be-BY' }
+    assert_equal :be, preferred_locale.to_sym
   end
 
   test "does not set a bad locale via http header" do

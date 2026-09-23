@@ -11,46 +11,39 @@ class NewsletterService
   def self.subscribe(name, email)
     return unless enabled?
 
-    HTTParty.post(
-      "#{LISTMONK_URL}/api/subscribers",
-      {
-        basic_auth: auth,
-        headers: { 'Content-Type' => 'application/json' },
-        body: {
-          email: parse_email(email),
-          name: name,
-          status: 'enabled',
-          lists: [LISTMONK_LIST_ID.to_i],
-          preconfirm_subscriptions: true,
-        }.to_json,
-        # :debug_output => $stdout
-      }
-    )
+    connection.post('/api/subscribers') do |request|
+      request.headers['Content-Type'] = 'application/json'
+      request.body = {
+        email: parse_email(email),
+        name: name,
+        status: 'enabled',
+        lists: [ LISTMONK_LIST_ID.to_i ],
+        preconfirm_subscriptions: true
+      }.to_json
+    end
   end
 
   def self.unsubscribe(email)
     return unless enabled?
 
-    response = HTTParty.get(
-      "#{LISTMONK_URL}/api/subscribers",
-      basic_auth: auth,
-      query: {
-        query: "subscribers.email LIKE '#{parse_email(email)}'"
-      }
-    )
+    response = connection.get('/api/subscribers') do |request|
+      request.params['query'] = "subscribers.email LIKE '#{parse_email(email)}'"
+    end
 
-    subscriber_id = response.dig('data', 'results', 0, 'id')
+    subscriber_id = JSON.parse(response.body).dig('data', 'results', 0, 'id').to_i
 
-    return unless subscriber_id.present?
+    return unless subscriber_id.positive?
 
-    HTTParty.delete(
-      "#{LISTMONK_URL}/api/subscribers/#{subscriber_id}",
-      basic_auth: auth
-    )
+    connection.delete("/api/subscribers/#{subscriber_id}")
   end
 
-  def self.auth
-    {username: LISTMONK_USERNAME, password: LISTMONK_PASSWORD}
+  def self.connection
+    @connection ||= Faraday.new(url: LISTMONK_URL) do |faraday|
+      faraday.request :authorization, :basic, LISTMONK_USERNAME, LISTMONK_PASSWORD
+      faraday.request :url_encoded
+      faraday.response :follow_redirects, limit: 3, clear_authorization_header: true
+      faraday.adapter Faraday.default_adapter
+    end
   end
 
   def self.parse_email(email)

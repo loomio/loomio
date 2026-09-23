@@ -4,7 +4,7 @@
 
 POSTGRES_CONTAINER_TAG=17
 LOOMIO_CONTAINER_IMAGE=loomio/loomio
-LOOMIO_CONTAINER_TAG=3.1
+LOOMIO_CONTAINER_TAG=3.5
 HARAKA_CONTAINER_IMAGE=loomio/haraka-rails-docker
 HARAKA_CONTAINER_TAG=stable
 NGINX_PROXY_CONTAINER_TAG=1.11-alpine
@@ -12,6 +12,9 @@ ACME_COMPANION_CONTAINER_TAG=2.8
 
 # human name of the app. eg: Loomio
 SITE_NAME=REPLACE_WITH_HOSTNAME
+
+# optional shorter name displayed beneath the installed app icon
+# SITE_SHORT_NAME=Loomio
 
 # hostname of your app eg: loomio.example.com
 CANONICAL_HOST=REPLACE_WITH_HOSTNAME
@@ -24,6 +27,13 @@ PRIVATE_APP_URL=http://app:3000
 
 # email address of admin of the server for LetsEncrypt. eg: you@gmail.com
 SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
+
+# Web push notifications are enabled when all three VAPID settings are present.
+# create_env.sh generates one key pair for this installation.
+
+# Mobile push notifications use the shared Loomio push relay. Leave this unset
+# until the relay is deployed and reachable over HTTPS.
+# PUSH_RELAY_URL=https://push.example.com
 
 # hostname with MX record of haraka service. eg: loomio.example.com
 REPLY_HOSTNAME=REPLACE_WITH_HOSTNAME
@@ -81,6 +91,17 @@ REDIS_MAXMEMORY=256mb
 # cloud storage options: amazon, digitalocean or s3_compatible
 ACTIVE_STORAGE_SERVICE=local
 
+# Let signed-in users create a ready-to-use demonstration group
+FEATURES_DEMO_GROUPS=1
+# Number of prepared demo groups to keep in Redis (default: 3)
+# FEATURES_DEMO_GROUPS_SIZE=3
+
+# Days a discarded group remains marked for deletion before deletion (default: 90)
+# GROUP_DELETION_DELAY_DAYS=90
+
+# Automatically add new users to this group.
+# DEFAULT_ONBOARDING_GROUP_ID=123
+
 # configure amazon S3
 # AWS_ACCESS_KEY_ID=
 # AWS_SECRET_ACCESS_KEY=
@@ -105,8 +126,18 @@ ACTIVE_STORAGE_SERVICE=local
 # FEATURES_DISABLE_CREATE_USER=1     # users must be invited
 # FEATURES_DISABLE_CREATE_GROUP=1    # users cannot create groups
 # FEATURES_DISABLE_HELP_LINK=1       # disable the help link
-# FEATURES_DISABLE_EMAIL_LOGIN=1     # Disable login via email (usually when you have enabled SSO of some kind)
+# FEATURES_DISABLE_LOCAL_LOGIN=1     # Disable password, email-code, passkey, and native account creation for SSO-only sites
+# FEATURES_DISABLE_EMAIL_LOGIN=1     # Deprecated alias for FEATURES_DISABLE_LOCAL_LOGIN
+# FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS=1 # Tell people when an email has no account; enables account enumeration
 # FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
+
+# Require previously active accounts with no recorded acceptance to confirm the configured terms
+# LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS=1
+
+# Replace any part of the user manual link in the sidebar
+# LOOMIO_HELP_TITLE=Documentation
+# LOOMIO_HELP_SUBTITLE=A detailed guide to this service
+# LOOMIO_HELP_URL=https://docs.example.com/
 
 # Restrict explore page to signed-in users only
 # LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS=1
@@ -172,10 +203,9 @@ ACTIVE_STORAGE_SERVICE=local
 # what OIDC refers to as the Client Secret
 # OAUTH_APP_SECRET=abc123
 
-# The following OAUTH_ATTR settings map fields from your OAuth provider's user profile response
-# to Loomio user attributes. The defaults match the standard OIDC claim names, so most
-# providers (Keycloak, Authentik, Azure AD, etc.) will work without setting these.
-# Only override if your provider uses non-standard field names.
+# Map fields from the OAuth user profile response to Loomio user attributes.
+# These defaults match the standard OIDC claim names. Only set them when your
+# provider uses different field names.
 # OAUTH_ATTR_UID=sub
 # OAUTH_ATTR_NAME=name
 # OAUTH_ATTR_EMAIL=email
@@ -184,13 +214,30 @@ ACTIVE_STORAGE_SERVICE=local
 # the label used for the SSO login button. The user will see this value when they're prompted to log in using SSO.
 # OAUTH_LOGIN_PROVIDER_NAME=Company auth
 
-# prevent users from editing their name, email address, or username on the profile page.
+### SSO-managed profiles (optional)
+
+# Update the user's name and email from SSO each time they log in. When the SSO
+# response includes a non-blank profile picture, update the Loomio avatar too.
+# When the response has no picture, preserve the existing Loomio avatar.
+# LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN=1
+
+# Prevent users from editing SSO-managed fields in Loomio: name, username,
+# email address, and profile picture. Users can still edit their introduction,
+# location, language, time zone, and other Loomio-specific preferences.
+# LOOMIO_DISABLE_EDIT_USER_PROFILE=1
+
+# Legacy combined setting. When present, this enables both profile updates on
+# login and the edit restrictions above. Leave it unset and use the two explicit
+# settings above for new configurations.
 # LOOMIO_SSO_FORCE_USER_ATTRS=1
 
 # Theme variables
 
-# Logos. Prefer SVG for the app logo. PNG for the others
+# Logos. Prefer SVG for the app logo. PNG for the others.
+# Maskable icons should be 192x192 and 512x512 with the logo inside the central 80% safe zone.
 # THEME_ICON_SRC=/files/icon.png
+# THEME_ICON_MASKABLE_192_SRC=/files/icon-maskable-192.png
+# THEME_ICON_MASKABLE_512_SRC=/files/icon-maskable-512.png
 # THEME_APP_LOGO_SRC=/files/logo.svg
 # THEME_EMAIL_HEADER_LOGO_SRC=/files/logo_128h.png
 # THEME_EMAIL_FOOTER_LOGO_SRC=/files/logo_64h.png
@@ -267,7 +314,6 @@ ACTIVE_STORAGE_SERVICE=local
 # tell clients to reload when the server is upgraded
 LOOMIO_SYSTEM_RELOAD=1
 
-DEVISE_SECRET=REPLACE_WITH_DEVISE_SECRET
 SECRET_COOKIE_TOKEN=REPLACE_WITH_SECRET_COOKIE_TOKEN
 RAILS_INBOUND_EMAIL_PASSWORD=REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD
 RAILS_ENV=production

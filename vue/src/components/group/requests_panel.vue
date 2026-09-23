@@ -31,18 +31,20 @@ export default
           query: store => {this.requests = this.group.membershipRequests(); }
         });
       }
+    }).catch(() => {
+      // GroupPage owns route-level group fetch error handling.
     });
   },
 
   computed: {
     unapprovedRequestsByOldestFirst() {
-      const unapproved = this.requests.filter(request => !request.respondedAt);
+      const unapproved = this.requests.filter(request => request.isPending());
       return orderBy(unapproved, ['createdAt'], ['asc']);
     },
 
     approvedRequestsByNewestFirst() {
-      const approved = this.requests.filter(request => request.respondedAt);
-      return orderBy(approved, ['respondedAt'], ['desc']);
+      const approved = this.requests.filter(request => !request.isPending());
+      return orderBy(approved, [request => request.responseAt()], ['desc']);
     }
   }
 };

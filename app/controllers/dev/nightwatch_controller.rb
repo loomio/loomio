@@ -15,6 +15,7 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::MembershipRequest
   include Dev::Scenarios::Membership
   include Dev::Scenarios::Notification
+  include Dev::Scenarios::OatmilkCooperative
   include Dev::Scenarios::Profile
   include Dev::Scenarios::Tags
 
@@ -24,6 +25,7 @@ class Dev::NightwatchController < Dev::BaseController
     :use_last_login_token,
     :index,
     :accept_last_invitation,
+    :revoke_secret_group_access,
   ]
   before_action :reset_database, except: [
     :last_email,
@@ -31,11 +33,13 @@ class Dev::NightwatchController < Dev::BaseController
     :use_last_login_token,
     :index,
     :accept_last_invitation,
+    :revoke_secret_group_access,
   ]
 
 
   def reset_transient_state
     Rails.cache.clear
     ActionMailer::Base.deliveries.clear
+    flash.clear
   end
 end

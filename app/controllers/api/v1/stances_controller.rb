@@ -9,17 +9,26 @@ class Api::V1::StancesController < Api::V1::RestfulController
     update_response
   end
 
-  def latest_stance_events
+  def latest_stance_topic_items
     stances = Stance.where(
       participant_id: current_user.id,
-      poll_id: @event.eventable.poll_id
+      poll_id: resource.poll_id
     ).order(id: :desc).limit(5)
-    Event.where(eventable: stances).order(id: :desc).limit(5)
+    TopicItem.where(itemable: stances).order(id: :desc).limit(5)
   end
 
   def update_response
     if resource.errors.empty?
-      render json: latest_stance_events, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
+      topic_items = latest_stance_topic_items
+      if topic_items.any?
+        render json: topic_items,
+               scope: default_scope,
+               each_serializer: TopicItemSerializer,
+               root: :topic_items,
+               meta: meta.merge(root: :topic_items)
+      else
+        respond_with_resource
+      end
     else
       respond_with_errors
     end
@@ -59,7 +68,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def index
     instantiate_collection do |collection|
-      if !@poll.anonymous && name = params[:name].presence
+      if name = params[:name].presence
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
           where(latest: true, revoked_at: nil).
@@ -77,20 +86,15 @@ class Api::V1::StancesController < Api::V1::RestfulController
         collection = collection.undecided
       end
 
-      voted = @poll.anonymous? || @poll.stances.latest.decided.exists?(participant_id: current_user.id)
-      if @poll.show_results?(voted: voted)
+      if @poll.results_available?
         if poll_option_id = params[:poll_option_id].presence
           collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
         end
-      elsif !@poll.anonymous?
+      else
         collection = collection.where(participant_id: current_user.id)
       end
 
-      if @poll.anonymous?
-        collection.order(:id)
-      else
-        collection.order('cast_at DESC NULLS LAST, created_at DESC')
-      end
+      collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
     respond_with_collection
   end
@@ -163,9 +167,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
   private
 
   def add_voter_role_meta(user_ids)
-    self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
-    self.add_meta :group_admin_ids, @poll.group&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
-    self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+    self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids
+    self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
+    self.add_meta :topic_admin_ids, @poll.topic.topic_readers.admins.pluck(:user_id) & user_ids
     if @poll.vote_weights_active? && @poll.closed_at.nil?
       stances = @poll.stances.latest.where(participant_id: user_ids)
       self.add_meta :stance_ids_by_user_id, stances.pluck(:participant_id, :id).to_h
@@ -178,18 +182,17 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
     # want to find stances with comments
     stance_ids = poll.topic.items.where(
-      eventable_type: 'Stance',
-      eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
-    ).where("child_count > 0").pluck('eventable_id')
+      itemable_type: 'Stance',
+      itemable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
+    ).where("child_count > 0").pluck('itemable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
     MessageChannelService.publish_models(stances, user_id: current_user.id)
-    if poll.anonymous? || poll.show_results?(voted: false)
+    if poll.results_available?
       MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id)
     end
   end
 
   def respond_with_recent_stances
-    @event = nil
     @stances = @stance.poll.stances.where(revoked_at: nil, participant_id: current_user.id).order('id desc').limit(10)
     respond_with_collection
   end
@@ -205,8 +208,8 @@ class Api::V1::StancesController < Api::V1::RestfulController
     %w[group discussion]
   end
 
-  def default_scope
-    super.merge({include_email: current_user_is_admin?})
+  def default_scope(records = records_to_serialize)
+    super(records).merge(include_email: current_user_is_admin?)
   end
 
   def accessible_records

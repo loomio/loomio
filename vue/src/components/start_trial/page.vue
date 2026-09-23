@@ -85,16 +85,16 @@ v-main
           p.text-body-large(v-t="'start_trial.please_sign_in_to_continue'")
         v-card-actions
           v-spacer
-          v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" variant="elevated")
+          v-btn.trial-started__sign-in(color="primary" :href="'/dashboard?user_email='+userEmail" variant="elevated")
             span(v-t="'auth_form.sign_in'")
           v-spacer
       v-card.start-trial-form(v-else :title="$t('start_trial.title')")
         v-card-text
           p.text-body-large.pb-6.text-medium-emphasis(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
-          v-text-field(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="validate('user_name')")
-          v-text-field(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="validate('user_email')")
-          v-text-field(v-model='groupName' :label="$t('group_form.organization_name')" :rules="validate('group_name')")
-          v-select(v-model="groupCategory" :items="categoryItems" :label="$t('group_survey.describe_other')" :rules="validate('group_category')")
+          v-text-field.start-trial-form__name(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="validate('user_name')")
+          v-text-field.start-trial-form__email(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="validate('user_email')")
+          v-text-field.start-trial-form__group-name(v-model='groupName' :label="$t('group_form.organization_name')" :rules="validate('group_name')")
+          v-select.start-trial-form__category(v-model="groupCategory" :items="categoryItems" :label="$t('group_survey.describe_other')" :rules="validate('group_category')")
           lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
           template(v-if="!isSignedIn")
             v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')")
@@ -111,6 +111,6 @@ v-main
           turnstile-widget(v-if="!isSignedIn" v-model='turnstileToken')
         v-card-actions
           v-spacer
-          v-btn(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="!isSignedIn && submitBlockedByCaptcha")
+          v-btn.start-trial-form__submit(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="!isSignedIn && submitBlockedByCaptcha")
             span(v-t="'templates.start_free_trial'")
 </template>

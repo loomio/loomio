@@ -31,7 +31,7 @@ export default {
 
   methods: {
     toggleSidebar() { EventBus.$emit('toggleSidebar'); },
-    toggleThreadNav() { EventBus.$emit('toggleThreadNav'); },
+    toggleTopicNav() { EventBus.$emit('toggleTopicNav'); },
     signIn() { this.openAuthModal(); },
     last,
     openSearchModal() {
@@ -108,17 +108,23 @@ export default {
 </script>
 
 <template lang="pug">
-v-app-bar.lmo-no-print(app clipped-right color="appbar" :class="{'navbar--scrolled': appBarScrolled}")
+v-app-bar.lmo-no-print(
+  app
+  clipped-right
+  color="appbar"
+  :class="{'navbar--scrolled': appBarScrolled}"
+  :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
+)
   v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
   v-app-bar-title(@click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
     sidebar-tips(v-if="!user.experiences.hideOnboarding")
-    v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
+    v-btn(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
-    notifications
-    v-btn(v-if="page === 'discussionPage' && !$vuetify.display.mdAndUp" icon @click="toggleThreadNav()" :title="$t('navbar.thread_nav')")
+    notifications(v-if="$vuetify.display.mdAndUp")
+    v-btn(v-if="page === 'topicPage' && !$vuetify.display.mdAndUp" icon @click="toggleTopicNav()" :title="$t('navbar.thread_nav')")
       common-icon(name="mdi-menu-open")
   template(v-else)
     v-btn.navbar__sign-in(variant="text" @click='signIn()')

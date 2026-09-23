@@ -177,7 +177,8 @@ export default {
     stanceReasonRequiredItems() {
       return compact([
         {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
-        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_when_disagreeing'), value: 'required_when_disagreeing'},
+        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_for_disagree_or_block'), value: 'required_for_disagree_or_block'},
+        this.pollTemplate.pollType === 'proposal' && {title: this.$t('poll_common_form.stance_reason_required_for_block'), value: 'required_for_block'},
         {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
         {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ]);
@@ -219,7 +220,7 @@ export default {
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card
+  v-card.poll-template-form-card
     template(v-slot:title)
       span(v-intersect="{handler: titleVisible}") {{ $t(titlePath) }}
     template(v-slot:append)
@@ -257,14 +258,14 @@ export default {
           :label="$t('poll_common_form.process_introduction')"
         )
 
-        v-text-field.thread-template-form-fields__title(
+        v-text-field.poll-template-form-fields__title(
           :label="$t('discussion_template.default_title_label')"
           :hint="$t('discussion_template.default_title_hint')"
           v-model='pollTemplate.title'
           maxlength='250')
         validation-errors(:subject='pollTemplate' field='title')
 
-        v-text-field.poll-common-form-fields__title-placeholder(
+        v-text-field.poll-template-form-fields__title-placeholder(
           :hint="$t('discussion_template.title_placeholder_hint')"
           :label="$t('discussion_template.title_placeholder_label')"
           :placeholder="$t('discussion_template.title_placeholder_placeholder')"
@@ -425,7 +426,7 @@ export default {
         template(v-if="allowAnonymous")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
-          .text-body-medium.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_risk_explanation'")
+          .text-body-medium.text-medium-emphasis(v-t="'poll_common_form.anonymous_votes_stored_separately'")
           v-checkbox.poll-settings-anonymous(
             hide-details
             v-model="pollTemplate.anonymous"
@@ -547,10 +548,10 @@ export default {
         control-variant="hidden"
       )
 
-    v-card-actions.poll-common-form-actions
+    v-card-actions.poll-template-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')
       v-spacer
-      v-btn.poll-common-form__submit(
+      v-btn.poll-template-form__submit(
         variant="elevated"
         color="primary"
         type="submit"

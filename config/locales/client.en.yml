@@ -1,5 +1,10 @@
 ---
 en:
+  install_app:
+    install_title: Install %{site_name}
+    install_description: Add %{site_name} to your home screen for quicker access
+    install_button: Install
+    ios_install_description: In Safari, open Share and select Add to Home Screen
   start_trial:
     title: Start a free trial of Loomio
     intro: Thank you for your interest in Loomio. We're delighted to offer you a %{day}-day free trial so you can see if Loomio is a good fit for you organization.
@@ -244,6 +249,7 @@ en:
     prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
     loomio_help: Loomio help
+    user_manual: User manual
     visit_loomio_help: Visit Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait
@@ -400,6 +406,7 @@ en:
       label: Formatting
       title: Learn how to use Markdown to format your text
   merge_accounts:
+    email_may_belong_to_another_account: If this address belongs to another account, you can merge the accounts
     modal:
       title: Merge accounts
       helptext: You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process.
@@ -407,6 +414,12 @@ en:
       submit: Verify
       flash: Verification email sent!
       flash_and_signout: Verification email sent to %{targetEmail}. You are now signed out so you can sign in as the target account to complete the merge.
+      generic_helptext: Enter the email address for the other account. If that account exists, Loomio will send it an email with instructions to confirm the merge.
+      email_label: Other account email
+      send_verification: Send verification email
+      generic_flash_and_signout: If an account uses that email address, a verification email has been sent. You are now signed out so you can continue with the other account
+      destination_helptext: This account (%{sourceEmail}) will be merged into the destination account. Enter the destination account's email address. If it exists, Loomio will send that address an email to confirm the merge.
+      destination_email_label: Destination account email
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
     find_out_more: Find out more.
     placeholder_modal_text: |
@@ -482,6 +495,43 @@ en:
     title_label: Title
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
+    volume_email_label: Email
+    volume_push_label: Push
+    delivery_method: Delivery method
+    how_do_you_want_to_stay_updated: How do you want to stay updated?
+    catch_up_daily_hint: Your catch-up is a daily email with unseen notifications and unread activity
+    catch_up_every_second_day_hint: Your catch-up is an email sent every second day with unseen notifications and unread activity
+    catch_up_weekly_hint: Your catch-up is a weekly email with unseen notifications and unread activity
+    context_title:
+      thread: Thread notification settings
+      group: Group notification settings
+      default: Default notification settings
+    context:
+      thread: this thread
+      group: this group
+      default: groups you join
+    catch_up_only_option: Catch-up only
+    no_email_updates_option: No email updates
+    no_push_updates_option: No push updates
+    in_app_only_option: In-app only
+    catch_up_only_description: Include activity from %{context} in my catch-up
+    catch_up_only_with_notifications_description: Include notifications and other activity from %{context} in my catch-up
+    no_email_updates_description: Don't email me about activity in %{context}
+    no_push_updates_description: Don't send push notifications about activity in %{context}
+    email_when_notified_description: Email me when I'm notified
+    email_when_notified_with_catch_up_description: Email me when I'm notified, and include the rest in my catch-up
+    push_when_notified_description: Send a push notification when I'm notified
+    push_when_notified_with_catch_up_description: Send a push notification when I'm notified, and include the rest in my catch-up
+    email_all_activity_description: Email me whenever there is activity in %{context}
+    push_all_activity_description: Send a push notification whenever there is activity in %{context}
+    all_activity_option: All activity
+    when_notified_option: When notified
+    muted_option: Muted
+    off_option: 'Off'
+    volume_channel_label: How should we update you?
+    email_channel: Email
+    push_channel: Push
+    email_and_push_channel: Email and push
     when_do_you_want_to_be_emailed: When do you want to be emailed?
     when_do_you_want_to_be_emailed_thread: When do you want to be emailed about this thread?
     change_your_email_settings: Change your email settings
@@ -489,6 +539,7 @@ en:
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
     when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
     changes_all_discussions_and_polls_in_group: This changes the setting for all discussions and polls in the group.
+    apply_to_all_threads_in_group: Apply these settings to all threads in %{group}
     what_do_the_options_mean: What do the options mean?
     what_the_options_mean: What the options mean
     loud_desc: Every time someone participates
@@ -561,6 +612,22 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
+  push_notifications:
+    title: Push notifications
+    subtitle: Receive notifications in this browser
+    not_supported: Push notifications are not available in this browser
+    ios_add_to_home_screen_before_enabling: On iPhone or iPad, use Share to add Loomio to your Home Screen. Open Loomio from the new icon, then enable push notifications here.
+    permission_denied: Push notifications are blocked in your browser settings
+    manage_devices: Manage push notification devices
+    enabled: Push notifications enabled for this browser
+    disabled: Push notifications disabled for this browser
+    device_removed: Push notification device removed
+    enable_device: Enable on this browser
+    disable_device: Disable on this browser
+    devices: Enabled browsers
+    browser_device: Browser
+    remove_device: Remove browser
+    enable_from_loomio: Enable push notifications from Notification settings while signed in to Loomio
   lock_thread_modal:
     body: Lock threads to remove them from the list of open threads and prevent people from commenting.
     explanation: Lock threads to prevent people from commenting or making further changes
@@ -655,6 +722,16 @@ en:
     email_all_activity: Email all activity
     email_notifications: Email when notified
     email_none: No emails
+    email_and_push_when_notified: Email & Push when notified
+    email_when_notified: Email when notified
+    push_when_notified: Push when notified
+    daily_catch_up_email: Daily catch-up email
+    catch_up_email_every_second_day: Catch-up email every second day
+    weekly_catch_up_email: Weekly catch-up email
+    in_app_only: In-app only
+    email_and_device_when_notified: Email & device - when notified
+    device_notification_when_notified: Device notification when notified
+    no_notifications: No notifications
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
@@ -704,6 +781,7 @@ en:
     button_label: User menu
     edit_profile: Edit profile
     email_settings: Notification settings
+    mobile_app_settings: Mobile settings
     help: Help
     whats_new: What's new
     contact_site_name: Contact %{site_name}
@@ -764,6 +842,7 @@ en:
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
+      membership_request_declined: "Your request to join %{title} was declined"
       new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
@@ -804,6 +883,7 @@ en:
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
+      membership_request_declined: "Your request to join %{title} was declined"
       new_comment: "%{actor} commented in: %{title}"
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
@@ -846,6 +926,7 @@ en:
       membership_resent: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join your group"
       membership_request_approved: "%{actor} approved your request to join %{title}"
+      membership_request_declined: "Your request to join %{title} was declined"
       outcome_announced: "%{actor} shared a %{poll_type} outcome"
       outcome_created: "%{actor} shared a %{poll_type} outcome"
       outcome_updated: "%{actor} updated the outcome"
@@ -1020,7 +1101,7 @@ en:
       group: "%{name}"
       delegates_of_group: Delegates of %{name}
       everyone_in_the_group: Everyone in the group
-      discussion_group: Everyone in the thread
+      topic: Everyone in the thread
       voters: Everyone invited to vote
       decided_voters: Everyone who voted
       undecided_voters: Undecided voters
@@ -1255,10 +1336,17 @@ en:
     upload_success: Logo successfully updated
   join_group_button:
     not_a_member: You're not currently a member of this group.
+    membership_request_declined: "Your request to join was declined: %{reason}"
+    request_membership_again: Ask to join again
     join_group: Join group
     membership_requested: Membership requested
     messages:
       joined_group: You are now a member of %{group}
+  group_follow:
+    follow: Follow updates
+    unfollow: Unfollow updates
+    followed: You are now following updates from this group
+    unfollowed: You are no longer following updates from this group
   membership_request_form:
     aria_label: Membership request form
     heading: Ask to join group
@@ -1318,7 +1406,17 @@ en:
       It is recommended that you export the group data and manually download any important files before you continue.
     confirm: Type '%{name}' to confirm you want to delete this group.
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
+    scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
+    deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
   report:
+    all_votes_cast: All votes cast
+    votes_cast: Votes cast
+    votes_issued: Votes issued
+    votes_missed: Votes missed
+    voting_record_per_user: Voting record per user
+    yes_label: "Yes"
+    no_label: "No"
+    delegates_only: Delegates only
     start_on: Start on
     end_on: End on
     interval: Interval
@@ -1543,9 +1641,11 @@ en:
     members_can_raise_motions: Members can start polls
     members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
     members_can_create_templates: Members can create templates
-    members_can_create_templates_help: Allow members to create discussion and poll templates. Templates created by members will be hidden until an admin unhides them.
+    members_can_create_discussion_and_poll_templates_help: Allow members to create discussion and poll templates
     members_can_start_discussions_v2: Members can start new discussions
     members_can_start_discussions_help_v2: Allow members to start new discussions within the group
+    non_members_can_start_discussions: Non-members can start discussions
+    non_members_can_start_discussions_help: Allow non-members to start a discussion from one of this group's templates
     members_can_edit_discussions_v2: Members can manage discussions and comments
     members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
     members_can_create_tags: Members can create tags
@@ -1580,6 +1680,10 @@ en:
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
+    decline: Decline
+    decline_request: Decline membership request
+    decline_reason: Reason for declining
+    decline_help: Decline sends your reason to the applicant by email. They can submit a new request. Ignore closes the request without notifying them.
     ignore: Ignore
     no_pending_requests: There are currently no pending membership requests for this group.
     no_previous_requests: There are currently no previous membership requests for this group.
@@ -1587,6 +1691,7 @@ en:
     previous_request_response: "%{response} by %{responder} "
     messages:
       request_approved_success: Membership request approved
+      request_declined_success: Membership request declined
       request_ignored_success: Membership request ignored
   invitation_form:
     group_url: Group URL
@@ -1675,6 +1780,8 @@ en:
     set_user_name: Set user name
   user_page:
     contact_user: Contact %{name}
+    recent_activity: Recent activity
+    no_recent_activity: No recent activity
     location_field: 'Location: %{value}'
     locale_field: 'Language: %{value}'
     online_field: 'Online: %{value}'
@@ -1742,10 +1849,34 @@ en:
     set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
     password_changed: Your password has been updated
+  passkey_settings:
+    title: Passkeys
+    helptext: Passkeys let you sign in with your device without entering your email address or password
+    none: You have not added a passkey
+    name: Passkey name
+    name_placeholder: For example, Work laptop
+    add: Add passkey
+    added: Passkey added
+    created_at: Added %{date}
+    remove_named: Remove %{name}
+    remove_confirm: Remove the passkey named %{name}?
+    removed: Passkey removed
+    remove_failed: Passkey could not be removed
   set_password_prompt:
     title: Set a password?
     helptext: You can use a password to sign in next time, instead of waiting for an email link.
     no_thanks: No thanks
+  credential_prompt:
+    title: Add another way to sign in
+    helptext: Add a passkey or set a password so you can sign in without waiting for an emailed code
+    passkey_description: A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock
+    add_passkey: Add a passkey
+    set_password: Set a password
+    set_new_password: Set a new password
+    not_now: Not now
+  account_completion:
+    complete_your_account: Complete your account
+    continue: Continue
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'
@@ -1769,6 +1900,9 @@ en:
     every_second_day: Every second day
     never: Never
     header: Notification settings
+    group_notifications: Group notifications
+    group_notifications_description: Change the activity level and channel for your groups
+    choose_email_and_push_updates: Choose separate settings for email and push
     send_email: Send email
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
@@ -1776,8 +1910,10 @@ en:
     email_newsletter: Loomio Newsletter
     email_catch_up_day: Catch-up summary email
     daily_summary_description: 'Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you''re not a regular user.'
-    on_participation_label: Subscribe on participation
-    on_participation_description: When you participate in a thread, all further activity will be emailed to you as it happens.
+    digest_email: Digest email
+    digest_email_description: Choose when to receive a digest of unseen notifications and unread activity
+    catch_up_email: Catch-up email
+    catch_up_email_description: Choose when to receive a catch-up with unseen notifications and unread activity
     announcement_label: Announcements
     announcement_description: You will receive an email about all content that has been announced by people in your groups
     mentioned_label: Mentions & Replies
@@ -2247,6 +2383,7 @@ en:
     order_by_admin_desc: Admins
     delegates: Delegates
     loaded_of_total: "%{loaded} of %{total}"
+    topics_loaded_of_total: "%{loaded} of %{total}"
     view_requests: View requests
     header_name: Name
     header_username: Username
@@ -2302,7 +2439,6 @@ en:
     anonymous: Votes are anonymous
     anonymous_votes_are_stored_separately_from_voter_identities: Anonymous votes are stored separately from voter identities. Results appear after voting closes
     anonymous_voting_participant_notice: Voting is anonymous. You cannot review or change your vote after submitting it. Results are not available until voting has closed.
-    legacy_anonymous_voting_format: This poll uses the legacy anonymous voting format
     legacy_vote_reasons: Legacy vote reasons
     legacy_vote_reasons_description: Reasons from votes cast using the legacy anonymous voting format are shown as plain text
     anonymous_vote_cannot_be_changed: You cannot review or change your vote after submitting it
@@ -2361,8 +2497,6 @@ en:
     anonymous:
       title: Anonymous voters
       helptext_on: When selected, participant info will not be shown with each response.
-    voter_can_add_options:
-      title: Voters can add alternative options
     can_respond_maybe:
       title: Voters can respond "if need be"
     allow_long_reason:
@@ -2566,6 +2700,8 @@ en:
     stance_reason_required_label: Providing a reason when voting is ...
     stance_reason_required: Required
     stance_reason_required_when_disagreeing: Required when disagreeing
+    stance_reason_required_for_disagree_or_block: Required for disagree or block
+    stance_reason_required_for_block: Required for block
     stance_reason_optional: Optional
     stance_reason_disabled: Disabled
     stance_reason_is_required: Please provide a reason with your vote
@@ -2591,6 +2727,7 @@ en:
     anonymous_voting_description: Show votes and reasons but not who cast them. This cannot be changed after the %{poll_type} has started.
     anonymous_voting_explanation: Make it impossible to know how someone voted. Anonymous votes are recorded separately from voter identities. Results only appear after voting closes. Voters cannot add reason statements, review their vote after submitting it, or change their vote.
     anonymous_voting_risk_explanation: Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it. These measures reduce the risk of linking a person to a vote, but results may still reveal information when few people are eligible or vote, the result is unanimous, voting patterns are distinctive, or voters disclose their choices.
+    anonymous_votes_stored_separately: Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it.
     votes_are_anonymous: Votes are anonymous
     vote_reason: Vote reason
     vote_reason_description: Ask people to share their rationale when they vote, or to supply further information.
@@ -2789,7 +2926,6 @@ en:
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> locked the thread"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
     thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> unlocked the thread"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a fork of this thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
@@ -2820,12 +2956,16 @@ en:
     sign_up_as: Create account as %{email}
     sign_in_as: Sign in as %{name}
     continue_with_provider: Continue with %{provider}
+    sign_in_with_provider: Sign in with %{provider}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
+    or_sign_in_with_password: Or sign in with a password
     enter_your_name: Enter your name
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required
+    email_code_help: Enter your email address and we’ll send you a six-digit sign-in code
+    email_code_help_short: We’ll send a six-digit code to your email address
     invalid_email: Sorry, that doesn't look like a valid email address
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
@@ -2863,6 +3003,8 @@ en:
     link_accounts: Link accounts
     check_your_email: Check your email!
     login_link_sent: We've sent an email to %{email}
+    login_link_sent_if_account_exists: If an account exists for %{email}, we'll send a sign-in code
+    login_link_sent_if_account_exists_sentence: If an account exists for %{email}, we'll send a sign-in code.
     instructions: 'Click the link to sign in, or enter the code below:'
     instructions_code: 'Enter the code from that email:'
     too_many_attempts: Too many attempts; try clicking the link in the email to sign in.
@@ -2877,6 +3019,17 @@ en:
     name: Name
     email: Email
     password: Password
+    use_a_passkey: Use a passkey
+    send_me_a_code: Send me a code
+    sign_in_with_passkey: Sign in with a passkey
+    passkey_authentication_failed: We could not sign you in with that passkey
+    passkey_registration_failed: We could not save that passkey
+    passkey_recent_authentication_required: Sign in again before changing your passkeys
+    passkey_default_name: Passkey
+    local_login_disabled: This site requires single sign-on
+    email_me_a_sign_in_code: Email me a sign-in code
+    sign_in_with_code: Sign in with a code
+    new_to_site: New here?
     reactivate: Reactivate account
   chatbot:
     chat_integrations: Chat integrations

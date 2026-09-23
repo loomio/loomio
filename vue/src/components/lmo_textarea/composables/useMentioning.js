@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, unref } from 'vue';
 import { sortBy, filter, uniqBy, debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
@@ -27,7 +27,33 @@ export function mentionNamedIdFor(model) {
   return {};
 }
 
-export function useCommonMentioning(model) {
+export function mentionItemsMatching(items, query) {
+  const queryNormalized = (query || '').toLowerCase();
+  if (!queryNormalized) { return items; }
+
+  const matchingItems = filter(items, item => {
+    const name = (item.name || '').toLowerCase();
+    const handle = (item.handle || '').toLowerCase();
+    return name.startsWith(queryNormalized) ||
+           handle.startsWith(queryNormalized) ||
+           name.includes(` ${queryNormalized}`);
+  });
+
+  return sortBy(matchingItems, item => {
+    const name = (item.name || '').toLowerCase();
+    const handle = (item.handle || '').toLowerCase();
+    return name.startsWith(queryNormalized) || handle.startsWith(queryNormalized) ? 0 : 1;
+  });
+}
+
+export function fetchMentionItems(model, query) {
+  return Records.remote.get('mentions', {
+    ...mentionNamedIdFor(model),
+    q: query
+  });
+}
+
+export function useCommonMentioning(model, allowMentions = true) {
   const mentionsCache = ref([]);
   const mentions = ref([]);
   const query = ref(null);
@@ -36,10 +62,10 @@ export function useCommonMentioning(model) {
   const fetchingMentions = ref(false);
 
   const fetchMentionableNow = () => {
+    if (!unref(allowMentions)) { return; }
     if (!query.value && mentionsCache.value.length > 0) { return; }
     fetchingMentions.value = true;
-    const namedId = mentionNamedIdFor(model.value);
-    Records.remote.get('mentions', Object.assign(namedId, { q: query.value })).then(rows => {
+    fetchMentionItems(model.value, query.value).then(rows => {
       mentionsCache.value = uniqBy(mentionsCache.value.concat(rows), 'handle');
       updateMentions();
     }).finally(() => {
@@ -50,24 +76,11 @@ export function useCommonMentioning(model) {
   const fetchMentionable = debounce(fetchMentionableNow, 500);
 
   onMounted(() => {
-    fetchMentionableNow();
+    if (unref(allowMentions)) { fetchMentionableNow(); }
   });
 
   const updateMentions = () => {
-    if (!query.value) {
-      mentions.value = mentionsCache.value;
-    } else {
-      const unsorted = filter(mentionsCache.value, u => {
-        return (u.name || '').toLowerCase().startsWith(query.value) ||
-                (u.handle || '').toLowerCase().startsWith(query.value) ||
-                (u.name || '').toLowerCase().includes(` ${query.value}`);
-      });
-      mentions.value = sortBy(unsorted, row => {
-        const name = (row.name || '').toLowerCase();
-        const handle = (row.handle || '').toLowerCase();
-        return name.startsWith(query.value) || handle.startsWith(query.value) ? 0 : 1;
-      });
-    }
+    mentions.value = mentionItemsMatching(mentionsCache.value, query.value);
   };
 
   return {
@@ -85,7 +98,7 @@ export function useCommonMentioning(model) {
 export function useMdMentioning(model, field, textarea, query, mentions, navigatedUserIndex, suggestionListStyles, fetchMentionable, updateMentions) {
   const onKeyUp = (event) => {
     if ([38, 40, 13, 9].includes(event.keyCode)) { return; }
-    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@(\w*)$/);
+    const res = textarea.value.value.slice(0, textarea.value.selectionStart).match(/@([a-z0-9_-]*)$/i);
     if (res) {
       query.value = res[1].toLowerCase();
       fetchMentionable();
@@ -150,109 +163,5 @@ export function useMdMentioning(model, field, textarea, query, mentions, navigat
     respondToKey,
     selectRow,
     updatePopup
-  };
-}
-
-export function useHtmlMentioning(editor, query, mentions, navigatedUserIndex, suggestionListStyles, fetchMentionable, updateMentions) {
-  const suggestionRange = ref(null);
-  const insertMention = ref(() => ({}));
-
-  const upHandler = () => {
-    navigatedUserIndex.value = ((navigatedUserIndex.value + mentions.value.length) - 1) % mentions.value.length;
-  };
-
-  const downHandler = () => {
-    navigatedUserIndex.value = (navigatedUserIndex.value + 1) % mentions.value.length;
-  };
-
-  const enterHandler = () => {
-    const row = mentions.value[navigatedUserIndex.value];
-    if (row) { selectRow(row); }
-  };
-
-  const selectRow = (row) => {
-    insertMention.value({
-      id: row.handle,
-      label: row.name
-    });
-    editor.value.chain().focus().run();
-  };
-
-  const updatePopup = (coords) => {
-    suggestionListStyles.value = {
-      position: 'fixed',
-      top: coords.y + 24 + 'px',
-      left: coords.x + 'px'
-    };
-  };
-
-  return {
-    suggestionRange,
-    insertMention,
-    upHandler,
-    downHandler,
-    enterHandler,
-    selectRow,
-    updatePopup
-  };
-}
-
-export function getMentionPluginConfig(context) {
-  return {
-    HTMLAttributes: {
-      class: 'mention'
-    },
-    suggestion: {
-      render: () => {
-        return {
-          onStart: props => {
-            context.query.value = props.query.toLowerCase();
-            context.suggestionRange.value = props.range;
-            context.insertMention.value = props.command;
-            context.updatePopup(props.clientRect());
-            context.fetchMentionable();
-            context.updateMentions();
-          },
-
-          onUpdate: props => {
-            context.query.value = props.query.toLowerCase();
-            context.suggestionRange.value = props.range;
-            context.insertMention.value = props.command;
-            context.navigatedUserIndex.value = 0;
-            context.updatePopup(props.clientRect());
-            context.fetchMentionable();
-            context.updateMentions();
-          },
-
-          onExit: props => {
-            context.query.value = null;
-            context.suggestionRange.value = null;
-            context.navigatedUserIndex.value = 0;
-          },
-
-          onKeyDown: props => {
-            // pressing up arrow
-            if (props.event.keyCode === 38) {
-              context.upHandler();
-              return true;
-            }
-
-            // pressing down arrow
-            if (props.event.keyCode === 40) {
-              context.downHandler();
-              return true;
-            }
-
-            // pressing enter or tab
-            if ([13, 9].includes(props.event.keyCode)) {
-              context.enterHandler();
-              return true;
-            }
-
-            return false;
-          }
-        };
-      }
-    }
   };
 }

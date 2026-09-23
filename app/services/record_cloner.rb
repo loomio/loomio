@@ -90,6 +90,7 @@ class RecordCloner
       members_can_raise_motions
       members_can_vote
       members_can_start_discussions
+      non_members_can_start_discussions
       members_can_create_subgroups
       members_can_announce
       admins_can_edit_user_content
@@ -115,7 +116,7 @@ class RecordCloner
     clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
-    clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
+    clone_group.subgroups = group.subgroups.enabled.map { |g| new_clone_group(g, clone_group) }
 
     # Store cloned discussions and polls for deferred save via save_cloned_content!.
     # These connect to the group through topics, so they must be saved after the group.
@@ -171,16 +172,16 @@ class RecordCloner
     clone_topic = new_clone_topic(discussion.topic, clone_discussion)
     clone_discussion.topic = clone_topic
 
-    created_event = new_clone_event(discussion.created_event)
-    created_event.eventable = clone_discussion
+    created_topic_item = new_clone_event(discussion.created_topic_item)
+    created_topic_item.itemable = clone_discussion
 
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
-    created_event_id = discussion.created_event&.id
+    created_topic_item_id = discussion.created_topic_item&.id
     thread_events = discussion.topic.items.order(:sequence_id)
-      .reject { |i| drop_kinds.include?(i.kind) || i.id == created_event_id }
-      .map { |event| new_clone_event_and_eventable(event) }
+      .reject { |i| drop_kinds.include?(i.kind) || i.id == created_topic_item_id }
+      .map { |topic_item| new_clone_event_and_itemable(topic_item) }
 
-    clone_topic.items = [ created_event ] + thread_events
+    clone_topic.items = [ created_topic_item ] + thread_events
     clone_discussion
   end
 
@@ -199,7 +200,6 @@ class RecordCloner
       poll_type
       process_name
       process_subtitle
-      voter_can_add_options
       anonymous
       details_format
       hide_results
@@ -317,7 +317,7 @@ class RecordCloner
     clone_outcome = new_clone(outcome, copy_fields, {}, attachments)
   end
 
-  def new_clone_event(event)
+  def new_clone_event(topic_item)
     copy_fields = %w[
       user_id
       kind
@@ -327,30 +327,30 @@ class RecordCloner
       position_key
       child_count
       pinned
-      custom_fields
+      pinned_title
       created_at
     ]
-    new_clone(event, copy_fields)
+    new_clone(topic_item, copy_fields)
   end
 
-  def new_clone_event_and_eventable(event)
-    clone_event = new_clone_event(event)
+  def new_clone_event_and_itemable(topic_item)
+    clone_event = new_clone_event(topic_item)
 
-    case event.eventable_type
+    case topic_item.itemable_type
     when 'Poll'
-      clone_event.eventable = new_clone_poll(event.eventable)
+      clone_event.itemable = new_clone_poll(topic_item.itemable)
     when 'Comment'
-      clone_event.eventable = new_clone_comment(event.eventable)
+      clone_event.itemable = new_clone_comment(topic_item.itemable)
     when 'Stance'
-      clone_event.eventable = new_clone_stance(event.eventable)
+      clone_event.itemable = new_clone_stance(topic_item.itemable)
     when 'Outcome'
-      clone_event.eventable = new_clone_outcome(event.eventable)
+      clone_event.itemable = new_clone_outcome(topic_item.itemable)
     when 'Discussion'
-      clone_event.eventable = new_clone_discussion(event.eventable)
+      clone_event.itemable = new_clone_discussion(topic_item.itemable)
     when nil
       # nothing
     else
-      raise "unrecognised eventable_type #{event.eventable_type}"
+      raise "unrecognised itemable_type #{topic_item.itemable_type}"
     end
 
     clone_event
@@ -363,7 +363,8 @@ class RecordCloner
       revoked_at
       revoker_id
       admin
-      volume
+      volume_email
+      volume_push
       experiences
       accepted_at
       title

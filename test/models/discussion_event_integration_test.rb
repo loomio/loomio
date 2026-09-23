@@ -21,7 +21,7 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.reload
-    # items_count includes root event (sequence_id 0) + 1 remaining comment
+    # items_count includes root topic_item (sequence_id 0) + 1 remaining comment
     assert_equal 2, @discussion.topic.items_count - dr.read_items_count
   end
 

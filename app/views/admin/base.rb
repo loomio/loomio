@@ -21,7 +21,7 @@ class Views::Admin::Base < Phlex::HTML
   end
 
   def panel(title, class_name: nil, &)
-    section(class: ["admin-panel", class_name].compact.join(" ")) do
+    section(class: [ "admin-panel", class_name ].compact.join(" ")) do
       h2 { title }
       div(class: "admin-panel__body", &)
     end
@@ -53,6 +53,18 @@ class Views::Admin::Base < Phlex::HTML
           dd { value(record.public_send(key)) }
         end
       end
+    end
+  end
+
+  def form_errors(record, title:)
+    return if record.errors.empty?
+
+    div(class: "admin-form-errors", role: "alert") do
+      strong { title }
+      ul do
+        record.errors.full_messages.each { |message| li { message } }
+      end
+      yield if block_given?
     end
   end
 

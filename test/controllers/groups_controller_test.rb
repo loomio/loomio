@@ -67,6 +67,21 @@ class GroupsControllerTest < ActionController::TestCase
     get :show, params: { key: @group.key }
     assert_response 200
     assert_equal @group, assigns(:group)
+    assert_select "link[rel='canonical'][href=?]", group_url(@group)
+    assert_select "meta[property='og:url'][content=?]", group_url(@group)
+  end
+
+  test "secret group is noindex and canonicalized for a member" do
+    @group.update!(group_privacy: 'secret')
+    @group.add_member!(@user)
+    sign_in @user
+
+    get :show, params: { key: @group.key, sign_in: 1 }
+
+    assert_response 200
+    assert_select "link[rel='canonical'][href=?]", group_url(@group)
+    assert_select "meta[name='robots'][content='noindex,follow']"
+    assert_select "a.navbar__sign-in[href='/dashboard']"
   end
 
   test "show closed group 200 for non-member" do
@@ -74,6 +89,36 @@ class GroupsControllerTest < ActionController::TestCase
     get :show, params: { key: @group.key }
     assert_response 200
     assert_equal @group, assigns(:group)
+  end
+
+  test "show lists public discussions and excludes private discussions" do
+    @group.update!(discussion_privacy_options: "public_or_private")
+    @group.add_admin!(@user)
+    public_discussions = 2.times.map do |index|
+      DiscussionService.create(
+        params: {
+          title: "Public group page discussion #{index}",
+          group_id: @group.id,
+          private: false
+        },
+        actor: @user
+      )
+    end
+    private_discussion = DiscussionService.create(
+      params: {
+        title: "Private group page discussion",
+        group_id: @group.id,
+        private: true
+      },
+      actor: @user
+    )
+    sign_in @user
+
+    get :show, params: { id: @group.handle }
+
+    assert_response :success
+    public_discussions.each { |discussion| assert_includes response.body, discussion.title }
+    refute_includes response.body, private_discussion.title
   end
 
   test "show closed group 404 for non-existent" do
@@ -116,6 +161,16 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response 302
 
     get :export, params: { key: @group.key }, format: :csv
+    assert_response 302
+  end
+
+  test "does not allow admins to export a discarded group" do
+    sign_in @user
+    @group.add_admin!(@user)
+    @group.discard!
+
+    get :export, params: { key: @group.key }, format: :html
+
     assert_response 302
   end
 

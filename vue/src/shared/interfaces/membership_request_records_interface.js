@@ -8,10 +8,10 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
     this.baseConstructor(recordStore);
   }
 
-  fetchMyPendingByGroup(groupKey, options) {
+  fetchMineByGroup(groupKey, options) {
     if (options == null) { options = {}; }
     options['group_key'] = groupKey;
-    return this.remote.get('my_pending', options);
+    return this.remote.get('mine', options);
   }
 
   fetchPendingByGroup(groupKey, options) {
@@ -27,10 +27,21 @@ export default class MembershipRequestRecordsInterface extends BaseRecordsInterf
   }
 
   approve(membershipRequest) {
-    return this.remote.postMember(membershipRequest.id, 'approve', {group_key: membershipRequest.group().key});
+    return this.remote.postMember(membershipRequest.id, 'approve', {
+      group_key: membershipRequest.group().key
+    });
+  }
+
+  decline(membershipRequest, declineReason) {
+    return this.remote.postMember(membershipRequest.id, 'decline', {
+      group_key: membershipRequest.group().key,
+      membership_request: {decline_reason: declineReason}
+    });
   }
 
   ignore(membershipRequest) {
-    return this.remote.postMember(membershipRequest.id, 'ignore', {group_key: membershipRequest.group().key});
+    return this.remote.postMember(membershipRequest.id, 'ignore', {
+      group_key: membershipRequest.group().key
+    });
   }
 };

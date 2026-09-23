@@ -77,7 +77,11 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
   def set_volume
     load_resource
-    TopicService.update_reader(topic: resource, params: {volume: params[:volume]}, actor: current_user)
+    TopicService.update_reader(
+      topic: resource,
+      params: params.slice(:volume_email, :volume_push),
+      actor: current_user
+    )
     respond_with_resource
   end
 
@@ -119,7 +123,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
   def move_comments
     load_resource
-    EventService.move_comments(topic: resource, params: params, actor: current_user)
+    TopicItemService.move_comments(topic: resource, params: params, actor: current_user)
     respond_with_resource
   end
 
@@ -135,7 +139,10 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
-      readers = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil)
+      readers = TopicReader.joins(:user)
+                           .preload(user: { uploaded_avatar_attachment: :blob })
+                           .where(topic_id: topic.id)
+                           .where.not(last_read_at: nil)
       data = readers.map do |reader|
         {last_read_at: reader.last_read_at,
          user_id: reader.user_id }

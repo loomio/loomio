@@ -9,7 +9,7 @@ class Api::V1::MentionsController < ApplicationController
 
     if group_id
       Group
-        .published
+        .enabled
         .where(id: group_id)
         .where.not(handle: nil)
         .mention_search(params_query)
@@ -37,7 +37,7 @@ class Api::V1::MentionsController < ApplicationController
       .pluck(:id)
 
     group_ids = Group
-      .published
+      .enabled
       .where(id: group_id, handle: params_handles)
       .select { |group| current_user.can?(:notify, group) }
       .map(&:id)
@@ -45,7 +45,6 @@ class Api::V1::MentionsController < ApplicationController
     group_user_ids = Membership
       .active
       .accepted
-      .app_notifications
       .where(group_id: group_ids)
       .where.not(user_id: current_user.id)
       .pluck(:user_id)
@@ -71,7 +70,7 @@ class Api::V1::MentionsController < ApplicationController
 
   def mentionable_users
     return @topic.members if @topic
-    return @group.members.active if @group
+    return @group.members if @group
 
     User.none
   end

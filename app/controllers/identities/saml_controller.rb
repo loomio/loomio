@@ -1,7 +1,9 @@
 class Identities::SamlController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
+  include IdentityAuthentication
   include Routing
-  
+  include SafeInternalPath
+
   def oauth
     session[:back_to] = safe_back_to
     auth_request = OneLogin::RubySaml::Authrequest.new
@@ -12,7 +14,7 @@ class Identities::SamlController < ApplicationController
   def create
     request_id = session.delete(:saml_request_id)
 
-    unless ENV['SAML_ALLOW_IDP_INITIATED'].present?
+    unless AppConfig.saml_allow_idp_initiated?
       return respond_with_error(401, "SAML request state missing") if request_id.blank?
     end
 
@@ -24,75 +26,46 @@ class Identities::SamlController < ApplicationController
 
     return respond_with_error(500, "SAML response is not valid") unless saml_response.is_valid?
 
-    nameid = saml_response.nameid.to_s.strip
-
-    identity_params = {
-      identity_type: 'saml',
-      uid: nameid,
-      email: nameid,
-      name: saml_response.attributes['displayName'],
-      access_token: nil
-    }
-
     identity = begin
       IdentityService.link_or_create(
-        identity_params: identity_params,
+        identity_params: SamlIdentityParams.from_response(saml_response),
         current_user: current_user
       )
     rescue ActiveRecord::RecordInvalid => e
       return respond_with_error(422, e.message)
     end
 
-    # Handle pending identity flow (user is switching accounts)
-    if !identity.user
-      back_to = session[:back_to]
-      sign_out
-      session[:pending_identity_id] = identity.id
-      flash[:notice] = t('auth.switching_accounts')
-      return redirect_to back_to || dashboard_path
-    end
-
-    # Handle successful login
-    sign_in(identity.user)
-    flash[:notice] = t('auth_form.signed_in')
-
-    redirect_to session.delete(:back_to) || dashboard_path
+    finish_identity_authentication(identity)
   end
-  
+
   def metadata
     meta = OneLogin::RubySaml::Metadata.new
     render xml: meta.generate(saml_settings), content_type: "application/samlmetadata+xml"
   end
 
   def destroy
-    if i = current_user.identities.find_by(identity_type: 'saml')
-      i.destroy
-      redirect_to request.referrer || root_path
-    else
-      respond_with_error 500, "Not connected to SAML!"
-    end
+    disconnect_identity('saml', label: 'SAML')
   end
 
   private
 
   def safe_back_to
-    path = (params[:back_to] || request.referrer).to_s
-    path if path.start_with?('/') && !path.start_with?('//', '/\\')
+    safe_internal_path(params[:back_to], request.referrer)
   end
 
   def saml_settings
     @saml_settings ||= begin
-      if ENV['SAML_IDP_METADATA']
-        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse(ENV['SAML_IDP_METADATA'])
+      if AppConfig.saml_idp_metadata
+        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse(AppConfig.saml_idp_metadata)
       else
-        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV.fetch('SAML_IDP_METADATA_URL'))
+        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(AppConfig.saml_idp_metadata_url)
       end
-      
+
       settings.assertion_consumer_service_url = saml_oauth_callback_url
-      settings.issuer                         = ENV.fetch('SAML_ISSUER', saml_metadata_url)
+      settings.issuer                         = AppConfig.saml_issuer || saml_metadata_url
       settings.assertion_consumer_logout_service_url = saml_unauthorize_url
       settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
-      
+
       settings.security[:digest_method] = XMLSecurity::Document::SHA256
       settings.security[:signature_method] = XMLSecurity::Document::RSA_SHA256
       settings.security[:want_assertions_signed] = true

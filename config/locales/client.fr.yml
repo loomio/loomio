@@ -1,5 +1,10 @@
 ---
 fr:
+  install_app:
+    install_title: Installer %{site_name}
+    install_description: Ajoute %{site_name} à ton écran d’accueil pour y accéder plus rapidement
+    install_button: Installer
+    ios_install_description: Dans Safari, ouvre Partager et sélectionne Ajouter à l’écran d’accueil
   start_trial:
     title: Commence un essai gratuit de Loomio
     intro: Merci de ton intérêt pour Loomio. Nous sommes ravis de t'offrir un essai gratuit de %{day} jours afin que tu puisses voir si Loomio convient bien à ton organisation.
@@ -196,6 +201,7 @@ fr:
     prefix_eg: par exemple %{val}
     are_you_sure: Es-tu sûr?
     loomio_help: Loomio t'aide
+    user_manual: Guide de l'utilisateur
     visit_loomio_help: Visite l'aide de Loomio
     help_and_guides: Aide & guides
     please_wait: Patiente
@@ -363,11 +369,18 @@ fr:
       flash: Mail de vérification envoyé !
       helptext_and_signout: Tu peux fusionner le compte associé à <strong>%{sourceEmail}</strong> avec celui associé à <strong>%{targetEmail}</strong> . Clique sur « Vérifier » ; un e-mail de vérification sera envoyé à %{targetEmail} pour lancer la procédure. Tu seras déconnecté(e) afin de te connecter au compte cible et finaliser la fusion.
       flash_and_signout: Un courriel de vérification a été envoyé à %{targetEmail}. Tu es maintenant déconnecté(e). Connecte-toi avec le compte cible pour finaliser la fusion.
+      generic_helptext: Saisissez l'adresse e-mail de l'autre compte. Si ce compte existe, Loomio lui enverra un e-mail contenant les instructions pour confirmer la fusion.
+      email_label: Adresse e-mail de l'autre compte
+      send_verification: Envoyer un e-mail de vérification
+      generic_flash_and_signout: Si un compte utilise cette adresse e-mail, un e-mail de vérification a été envoyé. Vous êtes maintenant déconnecté(e) ; vous pouvez donc continuer avec l'autre compte.
+      destination_helptext: Ce compte (%{sourceEmail}) sera fusionné avec le compte de destination. Veuillez saisir l'adresse e-mail du compte de destination. Si elle existe, Loomio lui enverra un e-mail de confirmation de fusion.
+      destination_email_label: Adresse e-mail du compte de destination
     email_taken: Désolé, l'adresse email que tu as fournie correspond à celle d'un utilisateur existant. Est-ce ton adresse email ?
     find_out_more: En savoir plus
     placeholder_modal_text: |
       <p>Si tu souhaites fusionner deux comptes ensemble, entre simplement l'adresse e-mail respective (appartenant à l'autre compte) dans le champ de courriel de ta page de profil et suis les instructions qui s'affichent.</p>
       <p>Besoin d'aide? <a href="/contact" target="_blank">Nous contacter</a>.
+    email_may_belong_to_another_account: Si cette adresse appartient à un autre compte, vous pouvez fusionner les comptes.
   emoji_picker:
     search: Rechercher
     common: Fréquemment utilisé
@@ -443,18 +456,26 @@ fr:
     title_label: Titre
     hint: 'Astuce pour la prochaine fois : surligner du texte avant de cliquer sur "Epingler".'
   change_volume_form:
+    context_title:
+      thread: Paramètres de notification des fils de discussion
+      group: Paramètres de notification de groupe
+      default: Paramètres de notification par défaut
+    context:
+      thread: ce fil de discussion
+      group: ce groupe
+      default: groupes auxquels vous adhérez
     explain_scope:
       thread: Cela changera lorsque tu recevras les notifications de ce groupe de discussion.
       group: Cela changera lorsque tu recevras des notifications de tous les groupes de discussions dont tu fais partie.
     simple:
-      label: Notifications
       loud: Abonné
-      normal: Normal
       quiet: Ignorer
       question: Quand souhaites-tu recevoir des notifications ?
       loud_explain: Dès qu'il y a de l'activité
       normal_explain: Lorsque quelqu'un réclame ton attention
       quiet_explain: Pas de notification
+      label: Notifications
+      normal: Normale
     loud_label: Toute l’activité
     normal_label: Nouvelles discussions et décisions
     quiet_label: Aucun courriel
@@ -525,6 +546,36 @@ fr:
     normal_option: Quand quelqu'un souhaite attirer mon attention (lorsqu'il est notifié)
     quiet_option: Aucun e-mail concernant cette discussion (Désactivé)
     quiet_explained: Tu ne recevras pas d'e-mail, même si quelqu'un tente de te contacter.
+    volume_email_label: E-mail
+    all_activity_option: Toute activité
+    when_notified_option: Lors d'une notification
+    muted_option: En sourdine
+    volume_channel_label: Comment souhaites-tu être informé ?
+    email_channel: E-mail
+    email_and_push_channel: E-mail et push
+    off_option: Désactivé
+    apply_to_all_threads_in_group: Applique ces paramètres à tous les fils de discussion de %{group}
+    volume_push_label: Push
+    delivery_method: Méthode de livraison
+    how_do_you_want_to_stay_updated: Comment souhaites-tu rester informé·e ?
+    catch_up_daily_hint: Ton récapitulatif est un e-mail quotidien contenant des notifications non vues et des activités non lues
+    catch_up_every_second_day_hint: Ton récapitulatif est un e-mail envoyé tous les deux jours contenant des notifications non vues et des activités non lues
+    catch_up_weekly_hint: Ton récapitulatif est un e-mail hebdomadaire contenant des notifications non vues et des activités non lues
+    catch_up_only_option: Rattrapage uniquement
+    no_email_updates_option: Aucune mise à jour par e-mail
+    no_push_updates_option: Aucune mise à jour push
+    in_app_only_option: Uniquement dans l'application
+    catch_up_only_description: Inclure l'activité de %{context} dans mon rattrapage
+    catch_up_only_with_notifications_description: Inclure les notifications et autres activités de %{context} dans mon récapitulatif
+    no_email_updates_description: Ne m'envoie pas d'e-mails concernant l'activité dans %{context}
+    no_push_updates_description: Ne m'envoie pas de notifications push concernant l'activité dans %{context}
+    email_when_notified_description: Envoie-moi un e-mail lorsque je reçois une notification
+    email_when_notified_with_catch_up_description: Envoie-moi un e-mail lorsque je reçois une notification et ajoute le reste à mon récapitulatif
+    push_when_notified_description: M'envoyer une notification push lorsque je suis notifié
+    push_when_notified_with_catch_up_description: Envoie-moi une notification push lorsque je reçois une notification et ajoute le reste à mon récapitulatif
+    email_all_activity_description: Envoie-moi un e-mail à chaque fois qu'il y a de l'activité dans %{context}
+    push_all_activity_description: Envoyer une notification push à chaque fois qu'il y a activité dans %{context}
+    push_channel: Push
   inbox:
     clear: Vider
     latest: Dernier
@@ -630,6 +681,16 @@ fr:
     email_notifications: E-mail lorsqu’une notification est envoyée
     email_none: Pas d'e-mails
     new_to_you: Nouveau pour toi
+    email_and_push_when_notified: E-mail et notification push lorsque tu es notifié
+    email_when_notified: E-mail lorsque tu es notifié
+    push_when_notified: Notification push lorsque tu es notifié
+    daily_catch_up_email: E-mail récapitulatif quotidien
+    in_app_only: Uniquement dans l'application
+    email_and_device_when_notified: E-mail et notification sur l'appareil en cas de notification
+    device_notification_when_notified: Notification sur l'appareil en cas de notification
+    no_notifications: Aucune notification
+    catch_up_email_every_second_day: Courriel de rattrapage tous les deux jours
+    weekly_catch_up_email: Courriel de récapitulation hebdomadaire
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance
@@ -689,6 +750,7 @@ fr:
     light_blue: Bleu clair
     dark_blue: Bleu foncé
     whats_new: Quoi de neuf
+    mobile_app_settings: Paramètres mobiles
   membership_card:
     group_members: Membres du groupe
     poll_members: Membres du %{pollType}
@@ -765,6 +827,7 @@ fr:
       new_discussion: "%{actor} a lancé une discussion : %{title}"
       user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
+      membership_request_declined: Ta demande d'adhésion à %{title} a été refusée
     without_title:
       unknown_sender: Examine les e-mails provenant d'un expéditeur non reconnu
       group_announced: "%{actor} t'a invité dans le group"
@@ -803,6 +866,7 @@ fr:
       new_comment: "%{actor} a commenté dans une discussion"
       outcome_updated: "%{actor} a mis à jour le conclusion"
       thread_locked: "%{actor} a verrouillé la discussion"
+      membership_request_declined: Ta demande d'adhésion à %{title} a été refusée
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Tu voudras peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -847,6 +911,7 @@ fr:
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       user_reminded: "%{actor} te rappelle de voter pour : %{title}"
       thread_locked: "%{actor} a verrouillé la discussion : %{title}"
+      membership_request_declined: Ta demande d'adhésion à %{title} a été refusée
   discussion_fork_actions:
     move: Déplacer
     moved: Déplacer des commentaires, cette action peut prendre un moment
@@ -944,7 +1009,7 @@ fr:
     audiences:
       group: Membres de %{name}
       everyone_in_the_group: Tout le monde dans le groupe
-      discussion_group: Participants à la discussion
+      topic: Participants à la discussion
       voters: Participants invités à voter
       decided_voters: Tous ceux qui ont voté
       undecided_voters: Votants indécis
@@ -1181,6 +1246,8 @@ fr:
     membership_requested: Adhésion demandée
     messages:
       joined_group: Tu es désormais membre de %{group}
+    membership_request_declined: 'Ta demande d''adhésion a été refusée : %{reason}'
+    request_membership_again: Demander à rejoindre à nouveau
   membership_request_form:
     heading: Demander à rejoindre le groupe
     name_label: Nom
@@ -1236,6 +1303,8 @@ fr:
       Il est recommandé d’exporter les données du groupe et de télécharger manuellement tous les fichiers importants avant de continuer.
     confirm: Saisis '%{name}' pour confirmer que tu veux supprimer ce groupe.
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
+    scheduled_for_deletion: Ce groupe sera supprimé définitivement dans deux semaines.
+    deletion_after_grace_period: Ce groupe est inaccessible et sera définitivement supprimé après %{days} jours
   group_page:
     stats: Statistiques du groupe
     threads: Discussions
@@ -1445,7 +1514,7 @@ fr:
     remove_background: supprimer l'arrière-plan
     remove_logo: supprimer le logo
     members_can_create_templates: Les membres peuvent créer des modèles
-    members_can_create_templates_help: Autoriser les membres à créer des modèles de discussion et de sondage. Les modèles créés par les membres seront masqués jusqu'à ce qu'un administrateur les affiche.
+    members_can_create_discussion_and_poll_templates_help: Autoriser les membres à créer des modèles de discussion et de sondage
     members_can_start_discussions_v2: Les membres peuvent entamer de nouvelles discussions.
     members_can_start_discussions_help_v2: Autoriser les membres à entamer de nouvelles discussions au sein du groupe
     members_can_edit_discussions_v2: Les membres peuvent gérer les discussions et les commentaires.
@@ -1454,6 +1523,8 @@ fr:
     handle_changed_hint: Ton ancienne URL et ton adresse e-mail seront redirigées vers ton nouvelle adresse.
     members_can_create_tags: Les membres peuvent créer des tags
     members_can_create_tags_help: Autoriser les membres à créer de nouvelles étiquettes lors de l'étiquetage des sujets et des sondages.
+    non_members_can_start_discussions: Les non-membres peuvent démarrer des discussions
+    non_members_can_start_discussions_help: Autorise les non-membres à démarrer une discussion à partir de l'un des modèles de ce groupe
   group_export_modal:
     title: Exporter les données de ton groupe
     body: |
@@ -1482,6 +1553,11 @@ fr:
     messages:
       request_approved_success: Demande d’ajout acceptée
       request_ignored_success: Demande d’ajout ignorée
+      request_declined_success: Demande d'adhésion refusée
+    decline: Refuser
+    decline_request: Refuser la demande d'adhésion
+    decline_reason: Motif du refus
+    decline_help: Le refus envoie la raison de votre demande au demandeur par courriel. Il peut soumettre une nouvelle demande. L'ignorance de la demande la clôture sans notification.
   invitation_form:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable
@@ -1570,6 +1646,8 @@ fr:
     online_field: 'En ligne: %{value}'
     invited: "%{value} invité"
     message_user: Message %{name}
+    recent_activity: Activité récente
+    no_recent_activity: Aucune activité récente
   contact_request_form:
     modal_title: Envoyer un courriel à %{name}
     message_placeholder: Présente-toi et dis-nous pourquoi tu veux entrer en relation.
@@ -1660,8 +1738,7 @@ fr:
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans ta ville et du futur de Loomio. 2 à 3 e-mails par an.
     email_catch_up_day: e-mail de synthèse de rattrapage
-    on_participation_label: Notification sur les discussions auxquelles je participe
-    on_participation_description: Lorsque tu participes à une discussion, toute activité ultérieure te sera immédiatement envoyée par courriel.
+    digest_email: e-mail de synthèse de rattrapage
     announcement_label: Nouvelles discussions et décisions
     announcement_description: Tu recevras un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de tes groupes.
     mentioned_label: Mentions et réponses
@@ -1677,8 +1754,14 @@ fr:
     learn_more: En savoir plus sur les paramètres d’e-mail…
     mentioned_description: Lorsque quelqu'un {'@'}te mentionne dans un commentaire, tu recevras un e-mail de notification
     daily_summary_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
+    digest_email_description: Choisis quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que tu n'as pas encore vues. C'est un excellent moyen de rester informé si tu n'es pas un utilisateur régulier.
     never: Jamais
     send_email: Envoyer un courriel
+    group_notifications: Notifications de groupe
+    group_notifications_description: Modifie le niveau d'activité et le canal de tes groupes
+    choose_email_and_push_updates: Choisissez des paramètres distincts pour les e-mails et les notifications push.
+    catch_up_email: Courriel de rattrapage
+    catch_up_email_description: Choisissez quand recevoir un récapitulatif des notifications non vues et des activités non lues
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
@@ -2103,6 +2186,7 @@ fr:
     order_by_created_desc: Les plus récents
     order_by_admin_desc: Administrateurs
     loaded_of_total: "%{loaded}} de %{total}}"
+    topics_loaded_of_total: "%{loaded} de %{total}"
     view_requests: Consulter les requêtes
     header_name: Nom
     header_username: Identifiant utilisateur
@@ -2165,7 +2249,6 @@ fr:
     voting_opens_at: Ce %{poll_type} ouvre au vote %{time}
     unable_to_vote: Tu n'as pas été invité à voter sur ce %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Les votes anonymes sont stockés séparément des identités des électeurs. Les résultats sont publiés après la clôture du scrutin.
-    legacy_anonymous_voting_format: Ce sondage utilise l'ancien format de vote anonyme
     anonymous_vote_cannot_be_changed: Tu ne peux ni revoir ni modifier ton vote après l’avoir soumis
     anonymous_vote_recorded: Ton vote a été enregistré
     legacy_vote_reasons: Motifs des votes antérieurs
@@ -2424,7 +2507,6 @@ fr:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a déplacé la discussion depuis <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a fermé la discussion"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a ré-ouvert la discussion"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a créé une ramification de cette discussion <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a partagé des conclusions"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a ré-ouvert le %{polltype} "
@@ -2457,6 +2539,7 @@ fr:
     sign_up_as: Créer un compte en tant que %{email}
     sign_in_as: Se connecter comme  %{name}
     continue_with_provider: Continuer avec %{provider}
+    sign_in_with_provider: Se connecter avec %{provider}
     continue_with_email: Connecte-toi avec ton adresse mail
     or_enter_your_email: Ou saisir ton adresse e-mail
     enter_your_name: Entre ton nom
@@ -2515,6 +2598,22 @@ fr:
     invalid_login: Impossible de te connecter avec ces informations.
     login_link_rate_limited: Trop d'e-mails de connexion ont été demandés depuis ce réseau. Attends une heure et réessaie.
     send_login_link_error: Une erreur s'est produite lors de l'envoi de l'e-mail de connexion. Réessaie.
+    sign_in_with_passkey: Connectez-vous avec un mot de passe
+    passkey_authentication_failed: Nous n'avons pas pu vous connecter avec ce mot de passe.
+    passkey_registration_failed: Nous n'avons pas pu sauvegarder ce code d'accès.
+    passkey_default_name: Clé d'accès
+    local_login_disabled: Ce site nécessite une authentification unique.
+    email_me_a_sign_in_code: Envoyez-moi un code de connexion par e-mail
+    sign_in_with_code: Connectez-vous avec un code
+    new_to_site: Nouveau ici ?
+    passkey_recent_authentication_required: Veuillez vous reconnecter avant de modifier vos mots de passe.
+    email_code_help: Saisis ton adresse e-mail et nous t’enverrons un code de connexion à six chiffres
+    or_sign_in_with_password: Ou connecte-toi avec un mot de passe
+    login_link_sent_if_account_exists: Si un compte existe pour %{email}, nous t’enverrons un code de connexion
+    use_a_passkey: Utilise une clé d’accès
+    send_me_a_code: Envoie-moi un code
+    email_code_help_short: Nous t’enverrons un code à six chiffres à ton adresse e-mail
+    login_link_sent_if_account_exists_sentence: Si un compte existe pour %{email}, nous t’enverrons un code de connexion.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion
@@ -2658,6 +2757,14 @@ fr:
     tags_per_interval: Étiquettes par %{interval}
     all_groups_and_direct_threads: Tous les groupes et les discussions directes
     custom_selection: Sélection personnalisée
+    all_votes_cast: Tous les votes exprimés
+    votes_cast: Votes exprimés
+    votes_issued: Bulletins attribués
+    votes_missed: Des votes ont été manqués
+    voting_record_per_user: Résultats des votes par utilisateur
+    yes_label: Oui
+    no_label: Non
+    delegates_only: Délégués seulement
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tu as terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage
@@ -2729,8 +2836,6 @@ fr:
     anonymous:
       title: Électeurs anonymes
       helptext_on: Lorsque cette option est sélectionnée, les informations sur les participants ne seront pas affichées avec chaque réponse.
-    voter_can_add_options:
-      title: Les électeurs peuvent ajouter des options alternatives
     can_respond_maybe:
       title: Les électeurs peuvent répondre « si besoin est »
     allow_long_reason:
@@ -2857,7 +2962,10 @@ fr:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Les votes anonymes sont enregistrés séparément des identités des électeurs. Les résultats sont publiés après la clôture du vote. Les électeurs ne peuvent ni ajouter de raisons, ni modifier leur vote après l'avoir soumis, ni le changer.
     anonymous_voting_explanation: Il est impossible de savoir comment un électeur a voté. Les votes anonymes sont enregistrés séparément de l'identité des électeurs. Les résultats ne sont publiés qu'après la clôture du scrutin. Les électeurs ne peuvent ni justifier leur vote, ni le modifier après l'avoir validé.
     anonymous_voting_risk_explanation: Les votes anonymes sont stockés séparément de l'identité des électeurs. Les résultats ne sont affichés qu'après la clôture du scrutin, et les électeurs ne peuvent pas ajouter de justification, revoir leur vote après l'avoir soumis ni le modifier. Ces mesures réduisent le risque de relier une personne à un vote, mais les résultats peuvent encore révéler des informations lorsque peu de personnes ont le droit de voter ou votent, que le résultat est unanime, que les schémas de vote sont distinctifs ou que les électeurs révèlent leurs choix.
+    anonymous_votes_stored_separately: Les votes anonymes sont stockés séparément de l'identité des électeurs. Les résultats ne sont affichés qu'après la clôture du scrutin, et les électeurs ne peuvent pas ajouter de justification, revoir leur vote après l'avoir soumis ni le modifier.
     stance_reason_required_when_disagreeing: Requis en cas de désaccord
+    stance_reason_required_for_disagree_or_block: Nécessaire pour être en désaccord ou bloquer
+    stance_reason_required_for_block: Requis en cas de veto
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants
@@ -3001,9 +3109,6 @@ fr:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: votes
     candidate: Candidat
     round_elected: Tour élu
@@ -3013,6 +3118,9 @@ fr:
     round_details: Détails tour par tour
     view_full_results: Afficher les résultats complets
     results_available_when_closed: Les résultats seront disponibles à la clôture du vote.
+    elected_in_round: Élu au tour %{round}
+    eliminated_in_round: Éliminé au tour %{round}
+    tied_in_round: Égalité au tour %{round}
   lock_thread_modal:
     body: Verrouille les sujets pour les retirer de la liste des sujets ouverts et empêcher les commentaires.
     explanation: Verrouille les discussions pour empêcher les commentaires et les modifications.
@@ -3042,3 +3150,48 @@ fr:
     nobody_will_be_notified: Personne ne sera averti
     one_person_will_be_notified: Une personne sera avertie
     x_people_will_be_notified: "%{count} personnes seront notifiées"
+  push_notifications:
+    title: Notifications push
+    subtitle: Recevez des notifications dans ce navigateur
+    not_supported: Les notifications push ne sont pas disponibles dans ce navigateur
+    permission_denied: Les notifications push sont bloquées dans les paramètres de ton navigateur
+    manage_devices: Gérer les appareils de notification push
+    enabled: Notifications push activées pour ce navigateur
+    disabled: Les notifications push sont désactivées pour ce navigateur
+    device_removed: Dispositif de notification push supprimé
+    enable_device: Activer sur ce navigateur
+    disable_device: Désactiver sur ce navigateur
+    devices: Navigateurs activés
+    browser_device: Navigateur
+    remove_device: Supprimer le navigateur
+    enable_from_loomio: Active les notifications push depuis les paramètres de notification lorsque tu es connecté à Loomio
+    ios_add_to_home_screen_before_enabling: Sur iPhone ou iPad, utilise Partager pour ajouter Loomio à ton écran d'accueil. Ouvre Loomio depuis la nouvelle icône, puis active les notifications push ici.
+  group_follow:
+    follow: Suis les mises à jour
+    unfollow: Ne plus suivre les mises à jour
+    followed: Tu suis maintenant les mises à jour de ce groupe
+    unfollowed: Tu ne suis plus les mises à jour de ce groupe
+  passkey_settings:
+    title: Clés d'accès
+    helptext: Les clés d'accès vous permettent de vous connecter avec votre appareil sans saisir votre adresse e-mail ni votre mot de passe.
+    none: Vous n'avez pas ajouté de clé d'accès.
+    name: Nom du mot de passe
+    name_placeholder: Par exemple, un ordinateur portable professionnel
+    add: Ajouter une clé d'accès
+    added: Clé d'accès ajoutée
+    created_at: Ajouté %{date}
+    remove_named: Supprimer %{name}
+    remove_confirm: Supprimer la clé d'accès nommée %{name} ?
+    removed: Clé d'accès supprimée
+    remove_failed: Impossible de supprimer le code d'accès
+  credential_prompt:
+    title: Ajouter une autre méthode de connexion
+    helptext: Ajoutez une clé d'accès ou définissez un mot de passe pour pouvoir vous connecter sans attendre un code envoyé par e-mail.
+    add_passkey: Ajouter un code d'accès
+    set_password: Définir un mot de passe
+    not_now: Pas maintenant
+    passkey_description: Une clé d'accès te permet de te connecter rapidement avec ton empreinte digitale, la reconnaissance faciale ou le verrouillage de l'écran de ton appareil
+    set_new_password: Définir un nouveau mot de passe
+  account_completion:
+    complete_your_account: Complétez votre compte
+    continue: Continuer

@@ -8,6 +8,7 @@ import AbilityService     from '@/shared/services/ability_service';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
+import { taskRecordTitle } from '@/shared/helpers/task_record_title.mjs';
 
 import {groupBy} from 'lodash-es';
 
@@ -46,6 +47,8 @@ export default {
       }
     },
 
+    taskRecordTitle,
+
     toggleDone(task) {
       return task.toggleDone().then(function() {
         if (task.done) {
@@ -68,7 +71,7 @@ v-main
     template(v-for="(tasks, recordKey) in tasksByRecordKey")
       v-card.mb-3
         v-card-title
-          router-link(:to="taskUrlFor(records[recordKey])") {{records[recordKey].discussion().title}}
+          router-link(:to="taskUrlFor(records[recordKey])") {{taskRecordTitle(records[recordKey])}}
         v-list(subheader)
           v-list-item(v-for="task in tasks" :key="task.id" :title="task.name")
             template(v-slot:prepend)

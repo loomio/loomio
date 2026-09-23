@@ -24,6 +24,7 @@ export const DEFAULT_CONFIRM_MESSAGE =
 // Prevent multiple simultaneous reload attempts within the same page lifecycle
 let isReloading = false
 let reloadPrompted = false
+const reloadPending = new Promise(() => {})
 
 /**
  * Best-effort detection of failures that are fixed by a hard reload:
@@ -150,6 +151,13 @@ export function wrapAsyncLoader(loader, { confirmMessage = DEFAULT_CONFIRM_MESSA
   return () =>
     Promise.resolve()
       .then(loader)
+      .then((component) => {
+        // Vite resolves a prevented vite:preloadError as undefined. Keep the
+        // navigation pending while the accepted page reload replaces this app,
+        // otherwise Vue Router reports a second "Couldn't resolve component" error.
+        if (isReloading && component == null) return reloadPending
+        return component
+      })
       .catch((err) => {
         handleChunkError(err, { confirmMessage })
         // Re-throw so upstream (router/Vue) can surface the failure if user declined reload

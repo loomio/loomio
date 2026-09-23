@@ -1,6 +1,6 @@
 # Conceal threads from email notifications
 
-Group members who receive email notifications can now choose to conceal individual threads from their email digest.
+Group members who receive email notifications can now choose to conceal individual threads from their catch-up email.
 
 ## How it works
 

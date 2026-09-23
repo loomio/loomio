@@ -1,7 +1,13 @@
+const chromeArgs = ['window-size=1280,6400'];
+
+if (process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR) {
+  chromeArgs.push(`--force-device-scale-factor=${process.env.NIGHTWATCH_DEVICE_SCALE_FACTOR}`);
+}
+
 module.exports = {
   detailed_output: false,
   skip_testcases_on_fail: false,
-  src_folders: ['tests/e2e/specs'],
+  src_folders: [process.env.NIGHTWATCH_SRC_FOLDERS || 'tests/e2e/specs'],
   output_folder: 'tests/reports',
   plugins: [],
   globals_path: '',
@@ -23,7 +29,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions: {
-          args: ['window-size=1280,6400']
+          args: chromeArgs
         }
       },
       

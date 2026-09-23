@@ -1,4 +1,16 @@
-var Match, calculate_operations, consecutive_where, create_index, diff, find_match, find_matching_blocks, html_to_tokens, is_end_of_tag, is_start_of_tag, is_tag, is_whitespace, isnt_tag, op_map, recursively_find_matching_blocks, render_operations, wrap;
+var Match, calculate_operations, consecutive_where, create_index, diff, escape_html, find_match, find_matching_blocks, html_to_tokens, is_end_of_tag, is_start_of_tag, is_tag, is_whitespace, isnt_tag, op_map, recursively_find_matching_blocks, render_operations, wrap;
+
+escape_html = function(text) {
+  return text.replace(/[&<>"']/g, function(char) {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char];
+  });
+};
 
 is_end_of_tag = function(char) {
   return char === '>';
@@ -332,8 +344,12 @@ render_operations = function(before_tokens, after_tokens, operations) {
   return rendering;
 };
 
-diff = function(before, after) {
+diff = function(before, after, options = {}) {
   var ops;
+  if (options.isText) {
+    before = escape_html(before);
+    after = escape_html(after);
+  }
   if (before === after) {
     return before;
   }

@@ -6,12 +6,12 @@ class Views::ApplicationMailer::BaseLayout < Views::ApplicationMailer::Component
     doctype
     html do
       head { render_email_head }
-      body(class: "max-width-600") do
-        div(class: "mailer__header") do
-          div(class: "mailer__header-logo") do
+      body(class: "email-body") do
+        div(class: "email-header") do
+          div(class: "email-header-logo") do
             image_tag AppConfig.theme[:email_header_logo_src],
               alt: AppConfig.theme[:site_name],
-              class: "mailer__header-logo-image",
+              class: "email-header-logo-image",
               width: 256
           end
         end

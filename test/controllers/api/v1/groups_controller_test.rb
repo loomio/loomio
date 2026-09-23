@@ -103,6 +103,19 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert group_data['subscription'].present?
   end
 
+  test "show returns a disabled group and its subscription warning state to a member" do
+    @public_group.add_member!(@user)
+    @public_group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+    sign_in @user
+
+    get :show, params: { id: @public_group.id }, format: :json
+
+    assert_response :success
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
+    assert_equal false, group_data['enabled']
+    assert_equal false, group_data.dig('subscription', 'active')
+  end
+
   test "show returns parent subscription details to a subgroup member" do
     subscription = Subscription.create!(owner: @user, plan: 'trial', max_members: 321)
     @group.update!(subscription: subscription)
@@ -148,6 +161,23 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     group_data = json['groups'][0]
     assert_equal "New Group", group_data['name']
     assert_equal "newgroup", group_data['handle']
+  end
+
+  test "create does not accept a client-supplied subscription" do
+    sign_in @user
+    paid_subscription = subscriptions(:cleanup_active_paid)
+
+    assert_no_difference "Group.count" do
+      post :create, params: {
+        group: {
+          name: "New Group",
+          handle: "newgroup-#{SecureRandom.hex(4)}",
+          subscription_id: paid_subscription.id
+        }
+      }
+    end
+
+    assert_response :bad_request
   end
 
   test "create creates a group and adds creator as admin" do
@@ -216,6 +246,63 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_response :success
     @group.reload
     assert_equal "open", @group.group_privacy
+  end
+
+  test "admin can enable nonmember discussion creation" do
+    sign_in @user
+    @group.add_admin!(@user)
+
+    put :update, params: {
+      id: @group.id,
+      group: { non_members_can_start_discussions: true }
+    }
+
+    assert_response :success
+    assert @group.reload.non_members_can_start_discussions?
+    assert_equal true, JSON.parse(response.body).dig('groups', 0, 'non_members_can_start_discussions')
+  end
+
+  test "discarded groups cannot be exported" do
+    @group.add_admin!(@user)
+    @group.discard!
+    sign_in @user
+
+    assert_no_enqueued_jobs(only: GroupExportWorker) do
+      post :export, params: { id: @group.id }
+    end
+    assert_response :forbidden
+
+    assert_no_enqueued_jobs(only: GroupExportCsvWorker) do
+      post :export_csv, params: { id: @group.id }
+    end
+    assert_response :forbidden
+  end
+
+  test "destroy warns and discards without scheduling permanent deletion" do
+    @group.add_admin!(@user)
+    sign_in @user
+
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_enqueued_with(job: ActionMailer::MailDeliveryJob) do
+        delete :destroy, params: { id: @group.id }
+      end
+    end
+
+    assert_response :success
+    assert @group.reload.discarded?
+    assert_equal @user.id, @group.discarded_by
+  end
+
+  test "outsiders cannot trigger deletion warnings" do
+    group = topics(:discussion_topic).group
+    sign_in @alien
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      delete :destroy, params: { id: group.id }
+    end
+
+    assert_response :forbidden
+    assert group.reload.kept?
   end
 
 end

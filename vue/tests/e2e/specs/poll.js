@@ -2,6 +2,16 @@ format = require('date-fns/format')
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
+  'identified_vote_form_disappears_after_voting_without_a_reason': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_created&poll_type=proposal')
+    page.click('.poll-common-vote-form__button-text')
+    page.click('.poll-common-vote-form__submit')
+    page.expectNoElement('.poll-common-vote-form', 5000)
+    page.expectElement('.poll-common-current-vote')
+  },
+
   'can_start_a_proposal_in_a_group': (test) => {
     page = pageHelper(test)
 
@@ -20,6 +30,7 @@ module.exports = {
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectText('.poll-common-stance-created__reason', 'A reason')
+    page.expectElement('.poll-created .poll-common-chart-panel ~ .poll-common-action-panel .poll-common-current-vote')
   },
 
   'can_start_a_poll_in_a_group': (test) => {
@@ -55,6 +66,13 @@ module.exports = {
     page.pause(1000)
     page.expectText('.poll-common-stance-choice', 'An option')
     page.expectText('.poll-common-stance-created__reason', 'A reason')
+  },
+
+  'shows_none_of_the_above_as_the_current_vote': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_none_of_the_above')
+    page.expectText('.poll-common-current-vote', 'None of the above')
   },
 
   'can_start_a_dot_vote_in_a_group': (test) => {
@@ -127,12 +145,16 @@ module.exports = {
   'can_start_a_time_poll_in_a_group': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_discussion')
+    page.loadPath('polls/test_discussion?time_zone=America%2FLos_Angeles')
     page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
     page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting')
     page.clickAndWait('.decision-tools-card__poll-type--meeting', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.expectText('.date-time-picker', 'America/Los_Angeles')
+    test.clearValue('.date-time-picker__time-field input[role="combobox"]')
+    page.fillIn('.date-time-picker__time-field input[role="combobox"]', '07:30')
+    page.expectText('.date-time-picker', '7:30 AM')
     page.click('.poll-meeting-form__option-button')
     page.click('.poll-common-form__submit')
     page.expectNoElement('.poll-common-form__submit', 8000)
@@ -144,6 +166,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
+    page.expectText('.poll-meeting-time', '7:30AM')
 
     page.click('.poll-meeting-vote-form--box', 500)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
@@ -203,6 +226,17 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
   },
 
+  'opens_reminder_form_after_reopening_a_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.execute("Array.from(document.querySelectorAll('.poll-created .action-menu--btn')).find(el => el.offsetParent).click()")
+    page.waitFor('.action-dock__button--reopen_poll')
+    page.execute("Array.from(document.querySelectorAll('.action-dock__button--reopen_poll')).find(el => el.offsetParent).click()")
+    page.clickAndWait('.poll-common-reopen-form__submit', '.poll-remind')
+    page.expectText('.poll-remind', 'Remind to vote')
+  },
+
   // 'can_close_and_reopen_a_poll': (test) => {
   //   page = pageHelper(test)
   //
@@ -246,7 +280,7 @@ module.exports = {
     page.click('.poll-common-form__more-settings')
     page.expectText(
       '.poll-common-form__anonymous-voting-explanation',
-      'Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it. These measures reduce the risk of linking a person to a vote, but results may still reveal information when few people are eligible or vote, the result is unanimous, voting patterns are distinctive, or voters disclose their choices.'
+      'Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it.'
     )
     page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__anonymous-voting-title')
     page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__reminder-title')
@@ -292,7 +326,7 @@ module.exports = {
     page.pause(500)
 
     page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').click()")
-    page.click('.recipients-autocomplete input')
+    page.click('.recipients-autocomplete input[type="text"]')
     page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
     page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
     page.expectNoText('.v-autocomplete__content', 'Undecided voters')
@@ -302,7 +336,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
-    page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
     test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
     page.click('.poll-common-chart-panel__view-legacy-vote-reasons')
     page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
@@ -310,15 +343,6 @@ module.exports = {
     page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
     test.expect.element('.poll-common-votes-panel__stance-name-and-option').to.not.be.present
     test.expect.element('.poll-common-votes-panel__avatar').to.not.be.present
-  },
-
-  'shows_legacy_anonymous_format_before_migration': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous_stance&poll_type=proposal')
-    page.expectText('.poll-common-chart-panel', 'This poll uses the legacy anonymous voting format')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.be.present
-    test.expect.element('.poll-common-chart-panel__view-legacy-vote-reasons').to.not.be.present
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {
@@ -385,7 +409,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('polls/test_poll_scenario.email?poll_type=proposal&scenario=poll_created&anonymous=1&guest=1')
-    page.click('.event-mailer__title a')
+    page.click('main h1 a')
     page.pause(1000)
     page.click('.poll-common-vote-form__button-text')
     page.fillIn('.html-editor__textarea .ProseMirror', "reason")
@@ -406,7 +430,7 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()

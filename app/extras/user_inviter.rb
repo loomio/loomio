@@ -1,23 +1,28 @@
 class UserInviter
-  def self.count(emails: , user_ids:, chatbot_ids:, audience:, model:, actor:, exclude_members: false, include_actor: false)
+  def self.count(emails:, user_ids:, chatbot_ids:, audience:, model:, actor:, exclude_members: false, include_actor: false)
     emails = Array(emails).map(&:presence).compact.uniq
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     chatbot_ids = Array(chatbot_ids).uniq.compact.map(&:to_i)
 
-    audience_ids = AnnouncementService.audience_users(
-      model, audience, actor, exclude_members, include_actor).pluck(:id)
+    audience_user_ids = NotificationAudienceService.resolve(
+      model: model,
+      kind: audience,
+      actor: actor,
+      exclude_members: exclude_members,
+      include_actor: include_actor
+    ).pluck(:id)
     user_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids)
     email_count = emails.count - User.where(email: emails).count
     users = User.active.where(
       'email in (:emails) or id in (:user_ids)',
       emails: emails,
-      user_ids: user_ids.concat(audience_ids)
+      user_ids: user_ids.concat(audience_user_ids)
     )
     users = users.where.not(id: model.voter_ids) if exclude_members && model.respond_to?(:voter_ids)
     email_count + users.count + chatbot_ids.length
   end
 
-  def self.authorize_add_members!(parent_group:, group_ids:, emails:, user_ids:, actor: )
+  def self.authorize_add_members!(parent_group:, group_ids:, emails:, user_ids:, actor:)
     subscription = Subscription.for(parent_group)
 
     raise Subscription::NotActive unless subscription.is_active?
@@ -68,9 +73,8 @@ class UserInviter
     authorize_recipient_discovery!(model: model, actor: actor)
     auth_target = model.respond_to?(:topic) ? model.topic : model
 
-    if %w[group discussion_group].include?(audience)
-      action = model.is_a?(Group) ? :notify : :announce
-      actor.ability.authorize!(action, model)
+    if %w[group topic].include?(audience)
+      NotificationAudienceService.authorize_notify!(model: model, actor: actor)
     end
 
     emails = Array(emails).map(&:presence).compact
@@ -90,12 +94,14 @@ class UserInviter
     end
   end
 
-  def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
+  def self.authorize!(emails:, user_ids:, audience:, model:, actor:)
     # check inviter can notify group if that's happening
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
-    AnnouncementService.audience_users(model, audience, actor) if audience.present?
+    if audience.present?
+      NotificationAudienceService.resolve(model: model, kind: audience, actor: actor)
+    end
 
     # members belong to group
     member_ids = model.members.where(id: user_ids).pluck(:id)
@@ -106,7 +112,9 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    actor.ability.authorize!(:announce, model) if %w[group discussion_group].include?(audience)
+    if %w[group topic].include?(audience)
+      NotificationAudienceService.authorize_notify!(model: model, actor: actor)
+    end
     auth_target = model.respond_to?(:topic) ? model.topic : model
     actor.ability.authorize!(:add_members, auth_target) if member_ids.any?
     actor.ability.authorize!(:add_guests, auth_target)  if emails.any? or guest_ids.any?
@@ -114,16 +122,25 @@ class UserInviter
 
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id)
-    model.members.where('users.id': user_ids + audience_ids)
+    audience_user_ids = NotificationAudienceService.resolve(
+      model: model,
+      kind: audience,
+      actor: actor
+    ).pluck(:id)
+    model.members.where('users.id': user_ids + audience_user_ids)
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:, include_actor: false)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).uniq.compact
 
-    audience_ids = if audience
-      AnnouncementService.audience_users(model, audience, actor, false, include_actor).pluck(:id)
+    audience_user_ids = if audience
+      NotificationAudienceService.resolve(
+        model: model,
+        kind: audience,
+        actor: actor,
+        include_actor: include_actor
+      ).pluck(:id)
     else
       []
     end
@@ -135,7 +152,7 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    ids = member_ids.concat(guest_ids).concat(audience_ids).uniq
+    ids = member_ids.concat(guest_ids).concat(audience_user_ids).uniq
 
     invitations_limit_max = actor.invitations_rate_limit
     if invitations_limit_max
@@ -165,14 +182,12 @@ class UserInviter
   def self.users_insert_all(emails:, actor:)
     return if emails.empty?
 
-    wday = Date.today.wday
     rows = emails.map do |email|
       user = User.new(
         email: email,
         time_zone: actor.time_zone,
         date_time_pref: actor.date_time_pref,
-        detected_locale: actor.locale,
-        email_catch_up_day: wday
+        detected_locale: actor.locale
       )
       user.username = username_for_insert(email)
       user.key = key_for_insert

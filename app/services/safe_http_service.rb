@@ -50,6 +50,7 @@ module SafeHttpService
     title = [doc.css('meta[property="og:title"]').attr('content')&.text,
              doc.css('title').first&.text,
              doc.css('h1').first&.text].reject(&:blank?).first
+    title = sanitize_preview_text(title)
 
     bad_titles = [/Google \w+: Sign-in/]
 
@@ -58,6 +59,7 @@ module SafeHttpService
 
     description = [doc.css('meta[property="og:description"]').attr('content')&.text,
                    doc.css('meta[name="description"]').attr('content')&.text].reject(&:blank?).first
+    description = sanitize_preview_text(description)
 
     image = [doc.css('meta[property="og:image"]').attr('content')&.text,
              doc.css('meta[name="og:image"]').attr('content')&.text,
@@ -76,7 +78,7 @@ module SafeHttpService
   def self.fetch_urls(urls)
     previews = []
     threads = []
-    Array(urls).compact.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
+    Array(urls).compact.each do |u|
       # spawn a new thread for each url
       threads << Thread.new do
         previews.push fetch(u)
@@ -84,7 +86,7 @@ module SafeHttpService
     end
     threads.each { |t| t.join }
     previews.compact
-  rescue SocketError, URI::InvalidURIError, HTTParty::UnsupportedURIScheme, HTTParty::RedirectionTooDeep
+  rescue SocketError, URI::InvalidURIError
     []
   end
 
@@ -173,8 +175,14 @@ module SafeHttpService
 
   def self.blocked_ip?(ip_str)
     ip = IPAddr.new(ip_str)
+    ip = ip.native if ip.ipv4_mapped?
     BLOCKED_IP_RANGES.any? { |range| range.include?(ip) }
   rescue IPAddr::InvalidAddressError
     true
+  end
+
+  def self.sanitize_preview_text(value)
+    sanitized = Rails::Html::FullSanitizer.new.sanitize(String(value))
+    Nokogiri::HTML5::DocumentFragment.parse(sanitized).text.truncate(240)
   end
 end

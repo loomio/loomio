@@ -40,14 +40,12 @@ export default {
 </script>
 <template lang="pug">
 v-card.auth-identity-form(
-  @keyup.ctrl.enter="submit()"
-  @keydown.meta.enter.stop.capture="submit()"
-  @keydown.enter="submit()"
+  v-submit-on-mod-enter="submit"
+  @keydown.enter.exact="submit()"
   :title="$t('auth_form.hello', { name: user.name || user.email })"
 )
   template(v-slot:append)
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      common-icon(name="mdi-close")
+    auth-back-button(@click='user.authForm = null')
   v-sheet.mx-4.pb-4
     .mb-4.text-center
       v-layout(justify-center)

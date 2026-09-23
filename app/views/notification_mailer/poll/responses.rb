@@ -1,0 +1,52 @@
+# frozen_string_literal: true
+
+class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Component
+
+  def initialize(topic_item:, recipient:)
+    @topic_item = topic_item
+    @recipient = recipient
+  end
+
+  def view_template
+    poll = @topic_item.itemable.poll
+    my_stance = @recipient && ::Stance.latest.find_by(poll_id: poll.id, participant_id: @recipient.id)
+
+    if poll.results_visible?(voted: my_stance&.cast_at.present?)
+      div do
+        if poll.anonymous?
+          p { plain t(:"poll_common_action_panel.anonymous") }
+        end
+      end
+
+      table(class: "email-layout-table", cellspacing: 0) do
+        poll.stances.latest.with_reason.each do |stance|
+          tr do
+            td(valign: "top", style: "width: 36px; height: 36px") do
+              render Views::NotificationMailer::Common::Avatar.new(user: stance.participant)
+            end
+            td(class: "email-response-content") do
+              table do
+                tr do
+                  td(valign: "top") do
+                    strong { plain "#{stance.participant.name}:" }
+                  end
+                  td(valign: "top") do
+                    render Views::NotificationMailer::Poll::StanceChoices.new(
+                      poll: poll,
+                      stance: stance,
+                      recipient: @recipient
+                    )
+                  end
+                end
+              end
+              div(class: "email-user-content") { raw TranslationService.formatted_text(stance, :reason, @recipient) }
+            end
+          end
+        end
+      end
+    else
+      key = poll.hide_results == 'until_vote' ? :"thread_markdown.hidden_until_voted" : :"poll_common_action_panel.results_hidden_until_closed"
+      p { plain t(key) }
+    end
+  end
+end

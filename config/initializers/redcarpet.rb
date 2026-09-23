@@ -1,10 +1,31 @@
 # copied from https://edruder.com/blog/2017/12/19/add-markdown-to-rails-5
 require 'redcarpet'
+require 'loofah'
 
 # give headings an id
 class LoomioMarkdown < Redcarpet::Render::HTML
   def header(text, header_level)
     "<h#{header_level} id='#{text[0,60].strip.parameterize}'>#{text}</h#{header_level}>"
+  end
+
+  # Redcarpet's HTML filtering only applies to literal input tags. Validate the
+  # URLs it generates from Markdown so encoded or obfuscated schemes cannot
+  # become executable attributes in server-rendered pages and emails.
+  def postprocess(document)
+    fragment = Nokogiri::HTML5::DocumentFragment.parse(document)
+    was_changed = false
+
+    fragment.css('[href], [src]').each do |node|
+      %w[href src].each do |attribute|
+        next unless node[attribute]
+        next if Loofah::HTML5::Scrub.allowed_uri?(node[attribute])
+
+        node[attribute] = '#'
+        was_changed = true
+      end
+    end
+
+    was_changed ? fragment.to_html : document
   end
 end
 

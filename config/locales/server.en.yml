@@ -1,5 +1,38 @@
 ---
 en:
+  error:
+    access_denied: You do not have permission to do that
+  thread_markdown:
+    poll: Poll
+    no_activity: No comments, polls, votes, or outcomes yet
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: "Comment · %{author} %{timestamp}"
+    comment_reply: "Reply to %{reply_author} · %{author} %{timestamp}"
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anonymous voting:** %{value}"
+    options: "**Options:** %{value}"
+    "yes": "Yes"
+    closed: "Closed %{value}"
+    scheduled_to_open: "Scheduled to open %{value}"
+    open_until: "Open; closes %{value}"
+    open: Open
+    current_results: Current results
+    hidden_until_closed: Hidden until the poll closes
+    hidden_until_voted: Hidden until the viewer votes
+    voters: Voters
+    target: Target
+    available: Available
+    available_if_needed: Available if needed
+    unavailable: Unavailable
+    anonymous: Anonymous
+    no_voters: No voters
+    score: "score: %{value}"
+    vote: "Vote: %{response} · %{author} %{timestamp}"
+    none_of_the_above: None of the above
+    no_option_selected: No option selected
+    outcome: "Outcome · %{author} %{timestamp}"
+    review_date: "**Review date:** %{value}"
   locale_names:
     en: English
     "be-BY": Belarusian
@@ -382,6 +415,7 @@ en:
       all: You must upgrade your Loomio subscription to add guests. Alternatively, you can invite them to be members of your group.
   errors:
     invitation_rate_limit_reached_contact_support: Daily invitation limit reached. Contact support immediately.
+    subscription_thread_limit_reached: This organization has reached its thread limit. Please upgrade to continue using Loomio.
     new_account_trial_group_limit: New accounts are limited to one group. Please contact support if you need more.
     clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
     direct_thread_anonymous_poll: A thread containing an anonymous poll cannot be converted to a direct thread
@@ -452,6 +486,7 @@ en:
         Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
       bad_login: Sorry, that password doesn't match the one we have on file
       username_must_be_alphanumeric: Usernames must be lower case letters and numbers only
+      username_must_use_valid_characters: Usernames must contain lower case letters, numbers, underscores, and internal hyphens only
   poll:
     error:
       cannot_add_options: Cannot add options to this poll
@@ -602,11 +637,47 @@ en:
       daily_subject: Yesterday on %{site_name}
       weekly_subject: Last week on %{site_name}
       other_subject: Recently on %{site_name}
+      catch_up_heading: Your %{site_name} catch-up
       do_not_reply: Please do not reply to this email.
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
       marked_as_read_success: Everything from the email has been marked as read
       click_here: Click here
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      unread_threads: Unread threads
+      mark_catch_up_as_read: Mark catch-up as read
+    digest:
+      daily_subject: Yesterday on %{site_name}
+      weekly_subject: Last week on %{site_name}
+      other_subject: Recently on %{site_name}
+      do_not_reply: Please do not reply to this email.
+      thanks_for_reading: Thanks for reading, have a great day!
+      marked_as_read_success: Everything from the email has been marked as read
+      click_here: Click here
+      subject:
+        votes_to_cast:
+          one: You have 1 vote to cast
+          other: "You have %{count} votes to cast"
+        people_mentioned:
+          one: 1 person mentioned you
+          other: "%{count} people mentioned you"
+        polls_closing_soon:
+          one: 1 poll closes soon
+          other: "%{count} polls close soon"
+        separator: " · "
+      unread_topics: Unread topics
+      mark_as_read: Mark digest as read
     group_membership_approved:
       intro: Your request for access to the group %{group_name} has been approved.
       intro_html: Your request for access to the group <strong>%{group_name}</strong> has been approved.
@@ -618,6 +689,8 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
       button_text: View request
+    membership_request_declined:
+      button_text: Apply again
   announcement_count_emails: "%{count} emails"
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.
@@ -670,6 +743,20 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
+    destroy_warning_with_usage:
+      subject: Your Loomio group is scheduled for deletion
+      requested: Your Loomio group "%{group}" was scheduled for deletion by %{requestor}. It will be permanently deleted after %{days} days.
+      trial_expired_warning: Your Loomio group "%{group}" trial expired %{expired_days} days ago. Unless you contact us, it will be deleted in %{grace_days} days.
+      trial_expired_process: Your group is unavailable while it is marked for deletion. If you still want a place for your group to discuss and make decisions, it is not too late to restart. Reply to this email within %{grace_days} days if you want to request a trial extension, upgrade to a paid subscription, or need more time to export its data. After that, the group and its data will be permanently deleted.
+      usage_heading: "Group data summary:"
+      subgroups: Subgroups
+      members: Current members
+      discussions: Discussions
+      polls: Polls
+      comments: Comments
+      export: To keep the group or export a copy of its data, reply to this email within %{days} days. We can restore access before deletion.
+      export_link: Learn about exporting group data
+      group_key: "Group key: %{key}"
     trial_expired:
       subject: Your Loomio group will be deleted due to inactivity.
       body: |

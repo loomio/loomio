@@ -2,17 +2,43 @@ require 'test_helper'
 
 class UserServiceTest < ActiveSupport::TestCase
   inline_jobs "deactivates the user",
-              "redacts user and removes personally identifying information"
+              "deactivation revokes mobile devices",
+              "redacts user and removes personally identifying information",
+              "redaction removes mobile credentials"
   setup do
     @user = users(:user)
     @group = groups(:group)
     @original_disable_edit_user_profile = ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE']
     @original_sso_force_user_attrs = ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
+    @original_default_onboarding_group_id = ENV.delete('DEFAULT_ONBOARDING_GROUP_ID')
   end
 
   teardown do
     ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = @original_disable_edit_user_profile
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = @original_sso_force_user_attrs
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @original_default_onboarding_group_id
+  end
+
+  test "new users join the configured onboarding group when account completion supplies a name" do
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
+
+    user = UserService.create(params: { email: 'onboarding-user@example.com' })
+    UserService.update(user: user, actor: user, params: { name: 'Onboarding User', legal_accepted: true })
+
+    membership = Membership.find_by!(group: @group, user: user)
+    assert membership.accepted_at
+    refute membership.admin?
+  end
+
+  test "invited placeholder users join the configured onboarding group when registration completes" do
+    invited_user = User.create!(email: 'invited-onboarding-user@example.com')
+    ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
+
+    user = UserService.create(params: { email: invited_user.email })
+    UserService.update(user: user, actor: user, params: { name: 'Invited Onboarding User', legal_accepted: true })
+
+    assert_equal invited_user, user
+    assert Membership.exists?(group: @group, user: user, accepted_at: ...Time.current)
   end
 
   test "deactivates the user" do
@@ -26,6 +52,14 @@ class UserServiceTest < ActiveSupport::TestCase
     UserService.deactivate(user: new_user, actor: new_user)
 
     assert_not_nil new_user.reload.deactivated_at
+  end
+
+  test "deactivation revokes mobile devices" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+
+    UserService.deactivate(user: @user, actor: @user)
+
+    assert device.reload.revoked_at
   end
 
   test "deactivation does not change email address" do
@@ -94,6 +128,37 @@ class UserServiceTest < ActiveSupport::TestCase
     assert_equal 0, PaperTrail::Version.where(item_type: 'User', item_id: user_id).count
   end
 
+  test "redaction removes mobile credentials" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+    registration = device.create_mobile_push_registration!(
+      registration_id: SecureRandom.uuid,
+      delivery_key_ciphertext: Mobile::RelayCredentialCipher.encrypt(SecureRandom.urlsafe_base64(32, false))
+    )
+    deleted_registration_id = nil
+
+    Mobile::RelayService.stub(:delete!, ->(registration:) do
+      deleted_registration_id = registration.registration_id
+      true
+    end) do
+      UserService.redact(user: @user, actor: @user)
+    end
+
+    refute MobileDevice.exists?(device.id)
+    assert_equal registration.registration_id, deleted_registration_id
+  end
+
+  test "changing a password revokes mobile devices" do
+    device = @user.mobile_devices.create!(name: "Test iPhone", last_seen_at: Time.current)
+
+    UserService.update(
+      user: @user,
+      actor: @user,
+      params: { password: "a-new-secure-password", password_confirmation: "a-new-secure-password" }
+    )
+
+    assert device.reload.revoked_at
+  end
+
   test "verifies email if unique" do
     new_user = User.create!(
       name: 'Unverified User',
@@ -113,8 +178,8 @@ class UserServiceTest < ActiveSupport::TestCase
     assert_equal true, verified_user.email_verified
   end
 
-  test "disable edit user profile blocks externally managed fields but allows local fields" do
-    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '1'
+  test "disable edit user profile setting is presence-based and allows local fields" do
+    ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'] = '0'
     original_name = @user.name
     original_email = @user.email
     original_username = @user.username

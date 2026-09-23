@@ -37,8 +37,8 @@ export default class CommentModel extends BaseModel {
     this.belongsTo('translation');
   }
 
-  createdEvent() {
-    return Records.events.find({kind: "new_comment", eventableId: this.id})[0];
+  createdTopicItem() {
+    return Records.topicItems.find({kind: "new_comment", itemableId: this.id})[0];
   }
 
   reactions() {
@@ -81,6 +81,6 @@ export default class CommentModel extends BaseModel {
   }
 
   beforeDestroy() {
-    return invokeMap(Records.events.find({kind: 'new_comment', eventableId: this.id}), 'remove');
+    return invokeMap(Records.topicItems.find({kind: 'new_comment', itemableId: this.id}), 'remove');
   }
 };

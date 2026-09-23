@@ -16,7 +16,10 @@ module Ability::Poll
     end
 
     can [:export], ::Poll do |poll|
-      user.can?(:show, poll) && poll.show_results?
+      next false unless user.can?(:show, poll)
+
+      voted = poll.stances.latest.decided.exists?(participant_id: user.id)
+      poll.results_visible?(voted: voted)
     end
 
     can :receipts, ::Poll do |poll|
@@ -41,7 +44,7 @@ module Ability::Poll
       topic = poll.topic
       group = topic.group
       (topic.topicable_type != 'Poll' || topic.topicable_id.nil?) &&
-      !group.archived_at &&
+      group.enabled? &&
       !topic.locked_at &&
       (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
@@ -75,13 +78,13 @@ module Ability::Poll
     end
 
     can [:update], ::Poll do |poll|
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       !poll.discarded? &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       !poll.discarded? &&
       poll.admins.exists?(user.id)
     end
@@ -94,7 +97,7 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous? &&
-      !poll.topic&.locked_at &&
+      !poll.topic.locked_at &&
       poll.admins.exists?(user.id)
     end
   end

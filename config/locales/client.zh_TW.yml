@@ -1,5 +1,10 @@
 ---
 zh_TW:
+  install_app:
+    install_title: 安裝 %{site_name}
+    install_description: 將 %{site_name} 加入主畫面，以便更快存取
+    install_button: 安裝
+    ios_install_description: 在 Safari 中，打開「分享」並選擇「加入主畫面」
   hello: 您好
   start_trial:
     title: 開始免費試用 Loomio
@@ -189,6 +194,7 @@ zh_TW:
     prefix_eg: 例如%{val}
     are_you_sure: 你確定嗎？
     loomio_help: 盧米奧幫助
+    user_manual: 使用者指南
     visit_loomio_help: 造訪 Loomio 協助
     help_and_guides: 幫助和指南
     please_wait: 請稍候
@@ -356,11 +362,18 @@ zh_TW:
       flash: 驗證用的電子郵件已傳送！
       helptext_and_signout: 您可以將<strong>%{sourceEmail}</strong>下的帳戶合併到<strong>%{targetEmail}</strong>下的帳戶。點擊“驗證”，系統將向 %{targetEmail} 發送一封驗證郵件，以開始合併過程。您將被強制登出，以便使用目標帳號登入完成合併。
       flash_and_signout: 驗證郵件已發送至 %{targetEmail}。您現在已登出登錄，請登入目標帳戶以完成合併。
+      generic_helptext: 請輸入另一個帳戶的電子郵件地址。如果該帳戶存在，Loomio 將向其發送電子郵件，其中包含確認合併的說明。
+      email_label: 其他帳戶信箱
+      send_verification: 發送驗證郵件
+      generic_flash_and_signout: 如果該電子郵件地址用於某個帳戶，則已傳送驗證電子郵件。您現在已登出登錄，可以繼續使用其他帳戶。
+      destination_helptext: 此帳戶 (%{sourceEmail}) 將合併到目標帳戶。請輸入目標帳戶的電子郵件地址。如果該位址存在，Loomio 將向該位址發送電子郵件以確認合併。
+      destination_email_label: 目標帳號電子郵件
     email_taken: 抱歉，該電子郵件已與其他使用者相關聯。該電子郵件屬於您嗎？
     find_out_more: 了解更多資訊。
     placeholder_modal_text: |
       <p>如果您想要合併兩個帳號，只要在您的個人檔案頁面的電子郵件欄位輸入對應的電子郵件地址（屬於其他帳號），然後遵照出現的指示操作。</p>
       <p>需要協助嗎？<a href="/contact" target="_blank">聯絡我們</a>。
+    email_may_belong_to_another_account: 如果此地址屬於另一個帳戶，您可以合併這些帳戶。
   emoji_picker:
     search: 搜尋
     common: 經常使用
@@ -436,6 +449,14 @@ zh_TW:
     title_label: 標題
     hint: 下次的提示：試著在您點擊「釘選」前先反白某些文字。
   change_volume_form:
+    context_title:
+      thread: 執行緒通知設定
+      group: 群組通知設定
+      default: 預設通知設定
+    context:
+      thread: 本帖
+      group: 這個群體
+      default: 你加入的群組
     explain_scope:
       thread: 這會在您收到此討論串通知時發生變化
       group: 這會在您收到關於此群組中的所有討論串的通知時發生變化
@@ -518,6 +539,36 @@ zh_TW:
     normal_option: 當有人想引起我的注意（收到通知時）
     quiet_option: 關於此主題的郵件已關閉
     quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
+    volume_email_label: 電子郵件
+    volume_push_label: Push
+    all_activity_option: 所有活動
+    when_notified_option: 收到通知時
+    muted_option: 靜音
+    volume_channel_label: 我們該如何向您報告最新情況？
+    email_channel: 電子郵件
+    push_channel: Push
+    email_and_push_channel: 電子郵件和推播
+    off_option: 離開
+    apply_to_all_threads_in_group: 將這些設定套用至 %{group} 中的所有討論串
+    delivery_method: 配送方式
+    how_do_you_want_to_stay_updated: 您希望如何取得最新資訊？
+    catch_up_daily_hint: 您的每日郵件摘要包含未讀通知和未讀活動。
+    catch_up_every_second_day_hint: 您的「未讀通知」郵件每隔一天發送一次，其中包含未讀通知和未讀活動資訊。
+    catch_up_weekly_hint: 您的進度匯總是一封每週電子郵件，其中包含未讀通知和未讀活動。
+    catch_up_only_option: 僅限補課
+    no_email_updates_option: 沒有電子郵件更新
+    no_push_updates_option: 沒有推送更新
+    in_app_only_option: 限應用程式內使用
+    catch_up_only_description: 將 %{context} 中的活動納入我的進度統計中
+    catch_up_only_with_notifications_description: 將來自 %{context} 的通知和其他活動添加到我的進度追蹤中
+    no_email_updates_description: 請勿就 %{context} 中的活動給我發郵件
+    no_push_updates_description: 不要發送關於 %{context} 中活動的推播通知
+    email_when_notified_description: 收到通知後請寄電子郵件給我。
+    email_when_notified_with_catch_up_description: 收到通知後請給我發郵件，其餘內容將在我的後續工作中跟進。
+    push_when_notified_description: 當我收到通知時，發送推播通知
+    push_when_notified_with_catch_up_description: 當我收到通知時，發送推播通知，並將其餘內容新增到我的待辦事項清單中。
+    email_all_activity_description: 當 %{context} 中有活動時，請給我發送電子郵件。
+    push_all_activity_description: 當 %{context} 中有活動時，發送推播通知
   inbox:
     clear: 清除
     latest: 最新
@@ -623,6 +674,16 @@ zh_TW:
     email_notifications: 收到通知時發送電子郵件
     email_none: 不發送電子郵件
     new_to_you: 對你來說是新的
+    email_and_push_when_notified: 收到通知時發送電子郵件和推播通知
+    email_when_notified: 收到通知時發送電子郵件
+    push_when_notified: 收到通知時發送推播通知
+    daily_catch_up_email: 每日簡報郵件
+    in_app_only: 限應用程式內使用
+    email_and_device_when_notified: 收到通知時發送電子郵件和裝置通知
+    device_notification_when_notified: 收到通知時發送裝置通知
+    no_notifications: 無通知
+    catch_up_email_every_second_day: 每隔一天發送一次進度郵件
+    weekly_catch_up_email: 每週簡報郵件
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -682,6 +743,7 @@ zh_TW:
     light_blue: 淺藍色
     dark_blue: 深藍色
     whats_new: 什麼是新的
+    mobile_app_settings: 移動設定
   membership_card:
     group_members: 群組成員
     poll_members: "%{pollType} 成員"
@@ -758,6 +820,7 @@ zh_TW:
       new_discussion: "%{actor} 發起了一場討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -796,6 +859,7 @@ zh_TW:
       new_comment: "%{actor} 在討論中發表了評論"
       outcome_updated: "%{actor} 更新了結果"
       thread_locked: "%{actor} 鎖定了該線程"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
@@ -840,6 +904,7 @@ zh_TW:
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
       thread_locked: "%{actor} 鎖定了主題：%{title}"
+      membership_request_declined: 您加入 %{title} 的請求已被拒絕
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -937,7 +1002,7 @@ zh_TW:
     audiences:
       group: "%{name} 的成員"
       everyone_in_the_group: 小組中的每個人
-      discussion_group: 在討論串中的每個人
+      topic: 在討論串中的每個人
       voters: 被邀請投票的每個人
       decided_voters: 已經投票的每個人
       undecided_voters: 未決定的選民
@@ -1174,6 +1239,8 @@ zh_TW:
     membership_requested: 已申請成員資格
     messages:
       joined_group: 您現在是 %{group} 的成員了
+    membership_request_declined: 您的加入請求已被拒絕：%{reason}
+    request_membership_again: 再次申請加入
   membership_request_form:
     heading: 要求加入群組
     name_label: 名字
@@ -1218,6 +1285,8 @@ zh_TW:
     body: 您確定要刪除該子群組嗎？所有話題、投票、文件和其他群組內容都將永久刪除。建議您匯出群組資料並手動下載所有重要文件，然後再繼續。
     confirm: 輸入「%{name}」以確認您想要刪除此群組。
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
+    scheduled_for_deletion: 該群組計劃在兩週後永久刪除。
+    deletion_after_grace_period: 該群組目前無法存取，並將在 %{days} 天後被永久刪除
   group_page:
     stats: 群組統計
     threads: 討論串
@@ -1427,7 +1496,7 @@ zh_TW:
     remove_background: 移除背景
     remove_logo: 移除標誌
     members_can_create_templates: 成員可以建立模板
-    members_can_create_templates_help: 允許成員建立討論和投票範本。成員建立的範本將預設為隱藏，直到管理員將其取消隱藏。
+    members_can_create_discussion_and_poll_templates_help: 允許成員建立討論和投票範本
     members_can_start_discussions_v2: 成員可以發起新的討論
     members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
     members_can_edit_discussions_v2: 會員可以管理討論和評論
@@ -1436,6 +1505,8 @@ zh_TW:
     handle_changed_hint: 您先前的網址和電子郵件地址將會重新導向到您的新地址。
     members_can_create_tags: 成員可以建立標籤
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
+    non_members_can_start_discussions: 非會員也可以發起討論
+    non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1464,6 +1535,11 @@ zh_TW:
     messages:
       request_approved_success: 成員資格申請已批准
       request_ignored_success: 成員資格申請已忽略
+      request_declined_success: 會員申請被拒絕
+    decline: 衰退
+    decline_request: 拒絕會員資格申請
+    decline_reason: 拒絕理由
+    decline_help: 拒絕會將拒絕理由透過電子郵件發送給申請人。他們可以提交新的申請。忽略則會在不通知申請人的情況下關閉申請。
   invitation_form:
     group_url: 群組 URL
     reusable_invitation_link: 可重複使用的邀請連結
@@ -1552,6 +1628,8 @@ zh_TW:
     online_field: 線上：%{value}
     invited: 已邀請 %{value}
     message_user: 訊息 %{name}
+    recent_activity: 近期活動
+    no_recent_activity: 近期無活動
   contact_request_form:
     modal_title: 電子郵件 %{name}
     message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。
@@ -1642,8 +1720,7 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
-    on_participation_label: 參與時訂閱
-    on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
+    digest_email: 追蹤摘要電子郵件
     announcement_label: 公告
     announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆
@@ -1659,8 +1736,14 @@ zh_TW:
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
+    digest_email_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
     send_email: 傳送電子郵件
+    group_notifications: 群組通知
+    group_notifications_description: 更改群組的活動等級和頻道
+    choose_email_and_push_updates: 為電子郵件和推送分別設定。
+    catch_up_email: 補發郵件
+    catch_up_email_description: 選擇何時接收未讀通知和未讀活動清單的更新訊息
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -1766,7 +1849,7 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
     disabled_anonymous_polls: 由於線程包含匿名民意調查，查看者歷史記錄被禁用
-    thread_engagement: Thread engagement
+    thread_engagement: 話題互動
   activity_card:
     count_responses: "%{count} 個回應"
     beginning: 開始
@@ -2087,6 +2170,7 @@ zh_TW:
     order_by_created_desc: 最新
     order_by_admin_desc: 管理員
     loaded_of_total: "%{total} 中的 %{loaded}"
+    topics_loaded_of_total: "%{total} 中的 %{loaded}"
     view_requests: 檢視請求
     header_name: 名稱
     header_username: 使用者名稱
@@ -2149,7 +2233,6 @@ zh_TW:
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
     unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
     anonymous_votes_are_stored_separately_from_voter_identities: 匿名投票與選民身分資訊分開儲存。投票結束後，結果才會公佈。
-    legacy_anonymous_voting_format: 本次投票採用傳統的匿名投票形式。
     anonymous_vote_cannot_be_changed: 提交投票後，您將無法查看或更改您的投票。
     anonymous_vote_recorded: 您的投票已記錄
     legacy_vote_reasons: 歷史投票原因
@@ -2408,7 +2491,6 @@ zh_TW:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已從 <strong>%{title}</strong> 移動討論串"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已關閉討論串"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已重新開啟討論串"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>建立了此執行緒的分支： <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已分享結果"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已重新開啟 %{polltype}"
@@ -2441,6 +2523,7 @@ zh_TW:
     sign_up_as: 使用 %{email} 建立帳號
     sign_in_as: 登入為 %{name}
     continue_with_provider: 以 %{provider} 繼續
+    sign_in_with_provider: 使用 %{provider} 登入
     continue_with_email: 以電子郵件繼續
     or_enter_your_email: 或是輸入您的電子郵件地址
     enter_your_name: 輸入您的名字
@@ -2499,6 +2582,22 @@ zh_TW:
     invalid_login: 無法使用您提供的資訊登入。
     login_link_rate_limited: 此網路請求的登入郵件過多。請稍等一小時後重試。
     send_login_link_error: 登入郵件發送失敗，請重試。
+    sign_in_with_passkey: 使用密碼登入
+    passkey_authentication_failed: 我們無法使用該密碼登入。
+    passkey_registration_failed: 我們無法保存該通行密鑰
+    passkey_default_name: 通行金鑰
+    local_login_disabled: 本網站需要單一登入
+    email_me_a_sign_in_code: 請給我發送一封包含登入代碼的電子郵件。
+    sign_in_with_code: 使用驗證碼登入
+    new_to_site: 新來的？
+    passkey_recent_authentication_required: 更改密碼前請重新登入
+    email_code_help: 請輸入您的電子郵件地址，我們將向您發送一個六位數的登入驗證碼。
+    or_sign_in_with_password: 或使用密碼登入
+    login_link_sent_if_account_exists: 如果 %{email} 已存在帳戶，我們將發送登入代碼。
+    use_a_passkey: 使用密碼
+    send_me_a_code: 給我發送驗證碼
+    email_code_help_short: 我們會傳送一個六位數的驗證碼給您的電子郵件地址。
+    login_link_sent_if_account_exists_sentence: 如果 %{email} 存在帳戶，我們將發送登入代碼。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線
@@ -2642,6 +2741,14 @@ zh_TW:
     tags_per_interval: 每%{interval}的標籤數量
     all_groups_and_direct_threads: 所有群組和直接討論串
     custom_selection: 自訂選擇
+    all_votes_cast: 所有投票
+    votes_cast: 投票
+    votes_issued: 已投票
+    votes_missed: 未投票
+    voting_record_per_user: 用戶投票記錄
+    yes_label: 是的
+    no_label: 不
+    delegates_only: 僅限代表
   tips:
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
     getting_started_checklist: 入門清單
@@ -2713,8 +2820,6 @@ zh_TW:
     anonymous:
       title: 匿名投票者
       helptext_on: 選擇後，參與者資訊將不會隨每個回應顯示。
-    voter_can_add_options:
-      title: 選民可以添加其他選項
     can_respond_maybe:
       title: 選民可以「在必要時」做出回應
     allow_long_reason:
@@ -2841,7 +2946,10 @@ zh_TW:
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票與選民身分資訊分開儲存。投票結束後，結果才會公佈。選民無法添加理由、提交投票後無法查看或更改投票。
     anonymous_voting_explanation: 確保任何人的投票情況都無法被知道。匿名投票與選民身分資訊分開記錄。投票結果僅在投票結束後公佈。選民無法添加理由說明，提交投票後也無法查看或更改投票。
     anonymous_voting_risk_explanation: 匿名投票與選民身分資訊分開儲存。投票結果僅在投票結束後顯示，選民無法新增理由、在提交後查看自己的投票或更改投票。這些措施降低了將個人與投票連結起來的風險，但當有資格投票或實際投票的人很少、結果一致、投票模式具有明顯特徵，或選民公開自己的選擇時，結果仍可能透露資訊。
+    anonymous_votes_stored_separately: 匿名投票與選民身分資訊分開儲存。投票結果僅在投票結束後顯示，選民無法新增理由、在提交後查看自己的投票或更改投票。
     stance_reason_required_when_disagreeing: 意見不一致時需要填寫
+    stance_reason_required_for_disagree_or_block: 不同意或阻擋時必填
+    stance_reason_required_for_block: 阻擋時必填
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者
@@ -2985,9 +3093,6 @@ zh_TW:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候選人
     round_elected: 輪次選舉
@@ -2997,6 +3102,9 @@ zh_TW:
     round_details: 逐輪詳情
     view_full_results: 看完整結果
     results_available_when_closed: 投票結束後將公佈結果。
+    elected_in_round: 在第 %{round} 輪當選
+    eliminated_in_round: 在第 %{round} 輪被淘汰
+    tied_in_round: 並列回合 %{round}
   lock_thread_modal:
     body: 鎖定帖子，將其從開放帖子列表中移除，並阻止他人評論。
     explanation: 鎖定貼文以防止他人評論或進行進一步修改
@@ -3026,3 +3134,48 @@ zh_TW:
     nobody_will_be_notified: 不會通知任何人
     one_person_will_be_notified: 將會通知1人
     x_people_will_be_notified: "%{count} 人將會收到通知"
+  push_notifications:
+    title: 推播通知
+    subtitle: 在此瀏覽器中接收通知
+    not_supported: 此瀏覽器不支援推播通知
+    permission_denied: 您的瀏覽器設定中已封鎖推播通知
+    manage_devices: 管理推播通知設備
+    enabled: 此瀏覽器已啟用推播通知
+    disabled: 此瀏覽器已停用推播通知
+    device_removed: 已移除推播通知設備
+    enable_device: 在此瀏覽器上啟用
+    disable_device: 在此瀏覽器上停用
+    devices: 已啟用瀏覽器
+    browser_device: 瀏覽器
+    remove_device: 移除瀏覽器
+    enable_from_loomio: 登入 Loomio 後，請在通知設定中啟用推播通知
+    ios_add_to_home_screen_before_enabling: 在 iPhone 或 iPad 上，使用「分享」功能將 Loomio 新增至主畫面。從新出現的圖示開啟 Loomio，然後在此處啟用推播通知。
+  group_follow:
+    follow: 關注最新消息
+    unfollow: 取消關注更新
+    followed: 您現在正在關注此群組的更新
+    unfollowed: 您已取消追蹤此群組的更新
+  passkey_settings:
+    title: 通行金鑰
+    helptext: 使用密碼金鑰，您無需輸入電子郵件地址或密碼即可透過裝置登入。
+    none: 您尚未新增密碼
+    name: 密碼名稱
+    name_placeholder: 例如，工作筆記型電腦
+    add: 新增密碼
+    added: 已新增通行金鑰
+    created_at: 添加於 %{date}
+    remove_named: 移除 %{name}
+    remove_confirm: 刪除名為 %{name} 的密碼？
+    removed: 密碼已移除
+    remove_failed: 無法移除密碼密鑰
+  credential_prompt:
+    title: 新增另一種登入方式
+    helptext: 新增通行金鑰或設定密碼，即可無需等待電子郵件驗證碼即可登入。
+    add_passkey: 新增密碼
+    set_password: 設定密碼
+    not_now: 現在不要
+    passkey_description: 通行密鑰可讓你透過裝置的指紋、臉部辨識或螢幕鎖定快速登入
+    set_new_password: 設定新密碼
+  account_completion:
+    complete_your_account: 完善您的帳戶
+    continue: 繼續

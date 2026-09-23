@@ -11,7 +11,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   end
 
   # Test create action
-  test "create discussion in group with no notifications" do
+  test "create discussion in group with no recipient notification" do
     sign_in @user
 
     post :create, params: { discussion: { title: 'test', group_id: @group.id } }
@@ -22,7 +22,23 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     assert_equal 1, discussion.topic_readers.count
     assert_equal @user.id, discussion.topic_readers.first.user_id
-    assert_equal 0, discussion.created_event.notifications.count
+    assert_not Notification.about(discussion).exists?(kind: "new_discussion")
+  end
+
+  test "create returns the subscription thread limit message" do
+    @discussion.topic.update!(discarded_at: Time.current)
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @user, max_threads: thread_count))
+    sign_in @user
+
+    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
+      post :create, params: { discussion: { title: 'over the limit', group_id: @group.id } }
+    end
+
+    assert_response :forbidden
+    response_json = JSON.parse(response.body)
+    assert_equal I18n.t('errors.subscription_thread_limit_reached'), response_json['error']
+    assert_equal 'upgrade', response_json['action']
   end
 
   test "create discussion without group" do
@@ -87,9 +103,12 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
       private: true
     }
 
-    assert_difference 'ActionMailer::Base.deliveries.count', 1 do
-      post :create, params: { discussion: discussion_params }, format: :json
-    end
+    deliveries_before = ActionMailer::Base.deliveries.count
+    post :create, params: { discussion: discussion_params }, format: :json
+
+    expected_emails = [ @admin.email, users(:member_loud).email, users(:reader_quiet).email ]
+    delivered_emails = ActionMailer::Base.deliveries.drop(deliveries_before).flat_map(&:to)
+    assert_equal expected_emails.sort, delivered_emails.sort
   end
 
   test "responds with error when there are unpermitted params" do
@@ -115,6 +134,124 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     }
 
     post :create, params: { discussion: discussion_params }
+    assert_response :forbidden
+  end
+
+  test "verified nonmember can start a closed group discussion from its template" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Ask the group for help')
+    sign_in @alien
+
+    assert_no_difference '@group.memberships.count' do
+      post :create, params: { discussion: { title: 'A question for the group', group_id: @group.id, discussion_template_id: template.id } }
+    end
+
+    assert_response :success
+    discussion = Discussion.find(JSON.parse(response.body).dig('discussions', 0, 'id'))
+    reader = discussion.topic_readers.find_by!(user: @alien)
+    assert_equal @group, discussion.group
+    assert reader.guest?
+    assert reader.admin?
+    assert @alien.can?(:show, discussion)
+    assert_not @alien.can?(:show, @discussion)
+  end
+
+  test "unverified nonmember cannot start a closed group discussion from a template" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    @alien.update!(email_verified: false)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    sign_in @alien
+
+    post :create, params: { discussion: { title: 'Not permitted', group_id: @group.id, discussion_template_id: template.id } }
+
+    assert_response :forbidden
+  end
+
+  test "nonmember can use tags prescribed by a closed group template but cannot add new tags" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available', tags: [ 'Intake' ])
+    sign_in @alien
+
+    post :create, params: { discussion: { title: 'Tagged question', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake' ] } }
+    assert_response :success
+
+    post :create, params: { discussion: { title: 'Injected tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake', 'Not approved' ] } }
+    assert_response :forbidden
+
+    template.hide!
+    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
+      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake' ] } }
+    end
+    assert_response :forbidden
+  end
+
+  test "nonmember cannot invite people while creating a group discussion" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    sign_in @alien
+
+    recipient_params = [
+      { recipient_emails: [ 'invitee@example.com' ] },
+      { recipient_user_ids: [ @user.id ] },
+      { recipient_audience: 'group' }
+    ]
+
+    recipient_params.each do |recipients|
+      assert_no_difference [ 'Discussion.count', 'Topic.count', 'TopicReader.count' ] do
+        post :create, params: {
+          discussion: {
+            title: 'Invitation attempt',
+            group_id: @group.id,
+            discussion_template_id: template.id,
+            **recipients
+          }
+        }
+      end
+      assert_response :forbidden
+    end
+  end
+
+  test "nonmember can start a closed group discussion without a template" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: true)
+    sign_in @alien
+
+    assert_difference [ 'Discussion.count', 'Topic.count' ], 1 do
+      post :create, params: { discussion: { title: 'A question without a template', group_id: @group.id } }
+    end
+
+    assert_response :success
+  end
+
+  test "nonmember can start a public discussion from an open group template" do
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Group template', process_subtitle: 'Restricted by group privacy')
+    sign_in @alien
+
+    @group.update!(group_privacy: 'open', non_members_can_start_discussions: true)
+    post :create, params: { discussion: { title: 'Public question', group_id: @group.id, discussion_template_id: template.id } }
+
+    assert_response :success
+    discussion = Discussion.find(JSON.parse(response.body).dig('discussions', 0, 'id'))
+    assert_not discussion.private
+    assert discussion.topic_readers.find_by!(user: @alien).guest?
+  end
+
+  test "nonmember cannot use the setting in a secret group" do
+    @group.update!(group_privacy: 'secret', non_members_can_start_discussions: true)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    sign_in @alien
+
+    post :create, params: { discussion: { title: 'Not permitted', group_id: @group.id, discussion_template_id: template.id } }
+
+    assert_response :forbidden
+  end
+
+  test "nonmember cannot use the feature until it is enabled" do
+    @group.update!(group_privacy: 'closed', non_members_can_start_discussions: false)
+    template = DiscussionTemplate.create!(group: @group, author: @admin, process_name: 'Guest intake', process_subtitle: 'Available')
+    sign_in @alien
+
+    post :create, params: { discussion: { title: 'Not permitted', group_id: @group.id, discussion_template_id: template.id } }
+
     assert_response :forbidden
   end
 

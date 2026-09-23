@@ -11,6 +11,12 @@ class TopicQueryTest < ActiveSupport::TestCase
 
   # -- Logged out --
 
+  test "deactivated users cannot see topics" do
+    user = users(:inactive_member_loud)
+
+    assert_empty TopicQuery.visible_to(user: user)
+  end
+
   test "logged out can see public topics" do
     pub_group = Group.new(name: "PubGroup #{SecureRandom.hex(4)}", is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
     pub_group.save(validate: false)
@@ -24,11 +30,11 @@ class TopicQueryTest < ActiveSupport::TestCase
 
     pub_disc = DiscussionService.build(params: { title: "Pub", group_id: pub_group.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc.save(validate: false)
-    pub_disc.create_missing_created_event!
+    pub_disc.create_missing_created_topic_item!
 
     priv_disc = DiscussionService.build(params: { title: "Priv", group_id: priv_group.id, private: true, description_format: "html" }, actor: pub_author)
     priv_disc.save(validate: false)
-    priv_disc.create_missing_created_event!
+    priv_disc.create_missing_created_topic_item!
 
     query = TopicQuery.visible_to
     assert_includes query, pub_disc.topic
@@ -43,10 +49,19 @@ class TopicQueryTest < ActiveSupport::TestCase
     pub_group.add_admin!(pub_author)
     pub_disc = DiscussionService.build(params: { title: "PubDisc", group_id: pub_group.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc.save(validate: false)
-    pub_disc.create_missing_created_event!
+    pub_disc.create_missing_created_topic_item!
 
     refute_includes TopicQuery.relevant_to, pub_disc.topic
     assert_includes TopicQuery.relevant_to(group_ids: [pub_group.id]), pub_disc.topic
+  end
+
+  test "public_group_ids adds public topics without filtering membership topics" do
+    public_discussion = discussions(:public_discussion)
+
+    results = TopicQuery.relevant_to(user: @user, public_group_ids: [ public_discussion.group_id ])
+
+    assert_includes results, @discussion.topic
+    assert_includes results, public_discussion.topic
   end
 
   # -- Unread --
@@ -209,12 +224,20 @@ class TopicQueryTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
-  # -- Archived --
+  # -- Inactive --
 
-  test "does not return topics in archived groups" do
-    @group.archive!
+  test "does not return topics in discarded groups" do
+    @group.discard!
     results = TopicQuery.visible_to(user: @user, group_ids: [@group.id])
     refute_includes results, @discussion.topic
+  end
+
+  test "returns topics when the group is disabled" do
+    @group.update!(subscription: Subscription.create!(plan: "free", state: "on_hold"))
+
+    results = TopicQuery.visible_to(user: @user, group_ids: [@group.id])
+
+    assert_includes results, @discussion.topic
   end
 
   # -- Guest access --
@@ -224,7 +247,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
     disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
-    disc.create_missing_created_event!
+    disc.create_missing_created_topic_item!
     disc.add_guest!(@user, guest_author)
     assert_includes TopicQuery.visible_to(user: @user), disc.topic
   end
@@ -234,7 +257,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
     disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
-    disc.create_missing_created_event!
+    disc.create_missing_created_topic_item!
     refute_includes TopicQuery.visible_to(user: @user), disc.topic
   end
 

@@ -26,6 +26,8 @@ class Api::V1::TranslationsController < Api::V1::RestfulController
 
     self.resource = service.create(model: model, to: params[:to])
     respond_with_resource
+  rescue TranslationService::LimitReached
+    render json: { error: 'Translation limit reached' }, status: :too_many_requests
   end
 
   private

@@ -54,11 +54,11 @@ export default {
   computed: {
     url() {
       switch (this.chatbot.webhookKind) {
-      case "slack": return "https://help.loomio.com/en/user_manual/groups/integrations/slack";
-      case "discord": return "https://help.loomio.com/en/user_manual/groups/integrations/discord";
-      case "microsoft": return "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams";
-      case "mattermost": return "https://help.loomio.com/en/user_manual/groups/integrations/mattermost";
-      case "webex": return "https://help.loomio.com/en/user_manual/groups/integrations/webex";
+      case "slack": return "https://help.loomio.com/en/user_manual/integrations/slack";
+      case "discord": return "https://help.loomio.com/en/user_manual/integrations/discord";
+      case "microsoft": return "https://help.loomio.com/en/user_manual/integrations/microsoft_teams";
+      case "mattermost": return "https://help.loomio.com/en/user_manual/integrations/mattermost";
+      case "webex": return "https://help.loomio.com/en/user_manual/integrations/webex";
       }
     }
   }

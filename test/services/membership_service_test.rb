@@ -14,6 +14,21 @@ class MembershipServiceTest < ActiveSupport::TestCase
     @group.add_admin!(@admin)
   end
 
+  test "inactive invitations cannot be redeemed or included in organization acceptance" do
+    subgroup = Group.create!(name: "Inactive subgroup", parent: @group)
+    parent_invite = Membership.create!(group: @group, user: @user, inviter: @admin)
+    child_invite = Membership.create!(group: subgroup, user: @user, inviter: @admin)
+    subgroup.discard!
+
+    assert_no_difference "Notification.count" do
+      MembershipService.redeem(membership: child_invite, actor: @user)
+    end
+    assert_nil child_invite.reload.accepted_at
+    MembershipService.redeem(membership: parent_invite, actor: @user)
+    assert_not_nil parent_invite.reload.accepted_at
+    assert_nil child_invite.reload.accepted_at
+  end
+
   test "revoke cascade deletes subgroup memberships" do
     subgroup = Group.create!(
       name: 'Subgroup',
@@ -81,6 +96,119 @@ class MembershipServiceTest < ActiveSupport::TestCase
     MembershipService.redeem(membership: membership, actor: @user)
 
     assert_not_nil membership.reload.accepted_at
+  end
+
+  test "adding a user creates in-app and email notification deliveries" do
+    MembershipService.add_users_to_group(
+      users: [ @user ],
+      group: @group,
+      inviter: @admin
+    )
+
+    membership = Membership.find_by!(group: @group, user: @user)
+    notification = Notification.find_by!(
+      kind: "user_added_to_group",
+      subject: membership
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+    assert_equal [ @user.id ], notification.notification_deliveries.distinct.pluck(:recipient_id)
+
+    delivery = notification.notification_deliveries.find_by!(channel: "email")
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      DeliverNotificationEmailWorker.perform_now(delivery.id)
+    end
+    assert_includes ActionMailer::Base.deliveries.last.to, @user.email
+  end
+
+  test "adding a user respects membership volume for external channels" do
+    MembershipService.add_users_to_group(
+      users: [ @user ],
+      group: @group,
+      inviter: @admin
+    )
+
+    membership = Membership.find_by!(group: @group, user: @user)
+    membership.update!(volume_email: :quiet, volume_push: :quiet)
+    subscription = create_push_subscription(
+      user: @user,
+      endpoint: "https://fcm.googleapis.com/fcm/send/quiet-membership-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+    notification = Notification.find_by!(kind: "user_added_to_group", subject: membership)
+
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_empty notification.notification_deliveries.where(recipient: subscription)
+  end
+
+  test "adding a user rolls back when notification creation fails" do
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        MembershipService.add_users_to_group(
+          users: [ @user ],
+          group: @group,
+          inviter: @admin
+        )
+      end
+    end
+
+    assert_not Membership.exists?(group: @group, user: @user)
+  end
+
+  test "resending an invitation creates an eventless email delivery" do
+    recipient = create_unverified_user("resend")
+    membership = pending_membership_for(recipient, @group)
+    membership.update!(volume_email: :quiet)
+
+    assert_no_difference -> { TopicItem.where(kind: "membership_resent").count } do
+      MembershipService.resend(membership: membership, actor: @admin)
+    end
+
+    notification = Notification.find_by!(
+      kind: "membership_resent",
+      subject: membership
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ "email" ], notification.notification_deliveries.pluck(:channel)
+    delivery = notification.notification_deliveries.first
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      DeliverNotificationEmailWorker.perform_now(delivery.id)
+    end
+    assert_includes ActionMailer::Base.deliveries.last.to, recipient.email
+  end
+
+  test "resending an invitation still honors email complaints" do
+    recipient = create_unverified_user("complained-resend")
+    recipient.update!(complaints_count: 1)
+    membership = pending_membership_for(recipient, @group)
+
+    MembershipService.resend(membership: membership, actor: @admin)
+    notification = Notification.find_by!(kind: "membership_resent", subject: membership)
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_empty notification.notification_deliveries
+  end
+
+  test "redeem rolls back acceptance when notification creation fails" do
+    membership = Membership.create!(
+      user: @user,
+      group: @group,
+      inviter: @admin,
+      accepted_at: nil
+    )
+
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        MembershipService.redeem(membership: membership, actor: @user)
+      end
+    end
+
+    assert_nil membership.reload.accepted_at
   end
 
   test "redeem handles simple case with inviter" do
@@ -173,7 +301,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_nil existing_membership.reload.revoked_at
   end
 
-  test "redeem notifies inviter of acceptance" do
+  test "redeem notifies the inviter of acceptance" do
     unverified_user = User.create!(
       name: 'Unverified',
       email: 'unverified4@example.com',
@@ -190,7 +318,16 @@ class MembershipServiceTest < ActiveSupport::TestCase
 
     MembershipService.redeem(membership: membership, actor: @user)
 
-    assert_equal 'invitation_accepted', Event.last.kind
+    accepted_membership = Membership.find_by!(group: @group, user: @user)
+    notification = Notification.find_by!(
+      kind: "invitation_accepted",
+      subject: accepted_membership
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+
+    assert_equal [ @admin.id ], notification.notification_deliveries.pluck(:recipient_id)
+    assert_equal [ "in_app" ], notification.notification_deliveries.pluck(:channel)
+    assert_equal notification.polymorphic_path(@group), notification.notification_url
   end
 
   test "redeem clears guest topic reader access in invited groups" do

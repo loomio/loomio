@@ -88,7 +88,7 @@ export default class PollModel extends BaseModel {
       tags: [],
       hideResults: 'off',
       votingSystem: 'stance',
-      legacyAnonymous: false,
+      legacyAnonymousVoteReasonsCount: 0,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
       voteWeightsEnabled: false,
@@ -229,7 +229,8 @@ export default class PollModel extends BaseModel {
   }
 
   bestNamedId() {
-    return ((this.id && this) || (this.discusionId && this.discussion()) || (this.groupId && this.group()) || {namedId() {}}).namedId();
+    const target = (this.id && this) || (this.discussionId && this.discussion()) || (this.groupId && this.group());
+    return target ? target.namedId() : {};
   }
 
   voters() {
@@ -282,10 +283,6 @@ export default class PollModel extends BaseModel {
     return this.anonymous && this.votingSystem === 'anonymous_ballot';
   }
 
-  usesLegacyAnonymousVotingFormat() {
-    return this.anonymous && (this.votingSystem === 'stance' || this.legacyAnonymous);
-  }
-
   showResults() {
     return !!this.closingAt &&
     (() => { switch (this.hideResults) {
@@ -334,8 +331,8 @@ export default class PollModel extends BaseModel {
     return Records.outcomes.find({pollId: this.id, latest: true})[0];
   }
 
-  createdEvent() {
-    return Records.events.find({eventableId: this.id, kind: 'poll_created'})[0];
+  createdTopicItem() {
+    return Records.topicItems.find({itemableId: this.id, kind: 'poll_created'})[0];
   }
 
   latestStances(order, limit) {

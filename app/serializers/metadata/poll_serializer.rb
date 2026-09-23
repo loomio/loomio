@@ -10,6 +10,6 @@ class Metadata::PollSerializer < MetadataSerializer
   end
 
   def image_urls
-    object.group ? [object.group.cover_url, object.group.logo_url] : []
+    [object.group.cover_url, object.group.logo_url]
   end
 end

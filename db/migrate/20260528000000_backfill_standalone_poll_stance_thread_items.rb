@@ -1,3 +1,5 @@
+require_relative "support/legacy_standalone_poll_topic_service"
+
 class BackfillStandalonePollStanceThreadItems < ActiveRecord::Migration[8.0]
   disable_ddl_transaction!
 
@@ -7,7 +9,7 @@ class BackfillStandalonePollStanceThreadItems < ActiveRecord::Migration[8.0]
       return
     end
 
-    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: true)
+    stats = LegacyStandalonePollTopicService.backfill_stance_events(mark_closed_read: true)
 
     say "Attached #{stats[:events]} stance events to #{stats[:topics]} standalone poll topics"
     say "Repaired #{stats[:repair_topics]} standalone poll topics"

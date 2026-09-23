@@ -14,7 +14,7 @@ class EventBusTest < ActiveSupport::TestCase
     end
   end
 
-  test "activates a listener with an event name" do
+  test "activates a listener with an topic_item name" do
     called = false
     EventBus.listen('my_event') { called = true }
     EventBus.broadcast('my_event')
@@ -28,14 +28,14 @@ class EventBusTest < ActiveSupport::TestCase
     assert_equal :test_value, received_param
   end
 
-  test "does not activate events with a different event name" do
+  test "does not activate topic_items with a different topic_item name" do
     called = false
     EventBus.listen('my_event') { called = true }
     EventBus.broadcast('my_other_event')
     refute called
   end
 
-  test "can accept multiple event names for listen" do
+  test "can accept multiple topic_item names for listen" do
     call_count = 0
     EventBus.listen('my_event', 'my_other_event') { call_count += 1 }
     EventBus.broadcast('my_event')
@@ -43,7 +43,7 @@ class EventBusTest < ActiveSupport::TestCase
     assert_equal 2, call_count
   end
 
-  test "deafen silences listeners with an event name" do
+  test "deafen silences listeners with an topic_item name" do
     called = false
     handler = proc { called = true }
     EventBus.listen('my_event', &handler)
@@ -52,7 +52,7 @@ class EventBusTest < ActiveSupport::TestCase
     refute called
   end
 
-  test "deafen does not silence other events" do
+  test "deafen does not silence other topic_items" do
     called = false
     handler = proc { called = true }
     EventBus.listen('my_event', &handler)
@@ -61,7 +61,7 @@ class EventBusTest < ActiveSupport::TestCase
     assert called
   end
 
-  test "deafen can accept multiple event names" do
+  test "deafen can accept multiple topic_item names" do
     called = false
     handler = proc { called = true }
     EventBus.listen('my_event', &handler)

@@ -1,6 +1,7 @@
 class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_access_denied e }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
+  rescue_from(Subscription::MaxThreadsExceeded)        { respond_with_thread_limit_reached }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
@@ -41,12 +42,18 @@ class Api::V1::SnorlaxBase < ActionController::Base
     self.resource = resource_class.find(params[:id])
   end
 
+  # Mutation services return their domain model, including an invalid model on
+  # validation failure. Authorization and persistence failures still raise.
+  # Operations that add a timeline entry may also yield the persisted topic item
+  # after their transaction commits.
   def create_action
-    @event = service.create(**{resource_symbol => resource, actor: current_user})
+    model = service.create(**{resource_symbol => resource, actor: current_user}) { |topic_item| @topic_item = topic_item }
+    self.resource = model
   end
 
   def update_action
-    @event = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user})
+    model = service.update(**{resource_symbol => resource, params: resource_params, actor: current_user}) { |topic_item| @topic_item = topic_item }
+    self.resource = model
   end
 
   def destroy_action
@@ -77,8 +84,12 @@ class Api::V1::SnorlaxBase < ActionController::Base
     render json: {}, status: 200
   end
 
-  def respond_with_collection(scope: default_scope, serializer: serializer_class, root: serializer_root)
-    render json: records_to_serialize, scope: scope, each_serializer: serializer, root: root, meta: meta.merge({root: root, total: collection_count})
+  def respond_with_collection(records: records_to_serialize, scope: nil, serializer: serializer_class, root: serializer_root)
+    render json: records, scope: scope || default_scope(records), each_serializer: serializer, root: root, meta: response_meta(root)
+  end
+
+  def response_meta(root)
+    meta.merge({ root: root, total: collection_count })
   end
 
   def meta
@@ -92,8 +103,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   # prefer this
   def records_to_serialize
-    if @event.is_a?(Event)
-      Array(@event)
+    if @topic_item
+      Array(@topic_item)
     else
       collection || Array(resource)
     end
@@ -102,9 +113,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def serializer_class
     record = records_to_serialize.first
     if record.nil?
-      EventSerializer
-    elsif record.is_a? Event
-      EventSerializer
+      TopicItemSerializer
+    elsif record.is_a? TopicItem
+      TopicItemSerializer
     else
       "#{record.class}Serializer".constantize
     end
@@ -114,16 +125,16 @@ class Api::V1::SnorlaxBase < ActionController::Base
     record = records_to_serialize.first
     if record.nil?
       controller_name.to_sym
-    elsif record.is_a? Event
-      :events
+    elsif record.is_a? TopicItem
+      :topic_items
     else
       record.class.to_s.underscore.pluralize.to_sym
     end
   end
 
-  def default_scope
+  def default_scope(records = records_to_serialize)
     {
-      cache: RecordCache.for_collection(records_to_serialize, current_user.id, exclude_types),
+      cache: RecordCache.for_collection(records, current_user.id, exclude_types),
       current_user_id: current_user.id,
       exclude_types: exclude_types
     }
@@ -131,12 +142,6 @@ class Api::V1::SnorlaxBase < ActionController::Base
 
   def exclude_types
     params[:exclude_types].to_s.split(' ')
-  end
-
-  # phase this out
-  def events_to_serialize
-    return [] unless @event.is_a?(Event)
-    Array(@event)
   end
 
   # phase this out
@@ -279,6 +284,13 @@ class Api::V1::SnorlaxBase < ActionController::Base
     render json: {
       flash: { error: I18n.t('errors.invitation_rate_limit_reached_contact_support') }
     }, root: false, status: :too_many_requests
+  end
+
+  def respond_with_thread_limit_reached
+    render json: {
+      error: I18n.t('errors.subscription_thread_limit_reached'),
+      action: 'upgrade'
+    }, root: false, status: :forbidden
   end
 
   def respond_with_access_denied(error)

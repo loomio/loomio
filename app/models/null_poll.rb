@@ -43,6 +43,8 @@ class NullPoll
       admins: :user,
       members: :user,
       memberships: :membership,
+      decided_voters: :user,
+      undecided_voters: :user,
       unmasked_decided_voters: :user,
       unmasked_undecided_voters: :user,
       unmasked_voters: :user,

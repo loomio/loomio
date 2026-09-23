@@ -27,7 +27,7 @@ class PollOption < ApplicationRecord
     end
 
     score_total = if poll.vote_weights_active?
-      stance_choices.latest.sum('stance_choices.score * stances.weight')
+      stance_choices.latest.sum('stance_choices.score::bigint * stances.weight')
     else
       stance_choices.latest.sum(:score)
     end

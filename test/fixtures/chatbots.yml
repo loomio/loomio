@@ -1,0 +1,8 @@
+cleanup_chatbot:
+  group: used_chatbot_group
+  author: member_quiet
+  name: Cleanup chatbot
+  kind: webhook
+  server: https://example.test/hooks
+  created_at: <%= 2.years.ago %>
+  updated_at: <%= 2.years.ago %>

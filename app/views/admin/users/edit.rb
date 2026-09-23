@@ -9,6 +9,9 @@ class Views::Admin::Users::Edit < Views::Admin::Layout
   def view_template
     page_header("Edit #{@user.name}")
     form_with(model: @user, url: admin_user_path(@user), method: :put, class: "admin-form") do |form|
+      form_errors(@user, title: "User could not be updated") do
+        render_email_collision_guidance if @user.errors.of_kind?(:email, :taken)
+      end
       field(form, :name)
       field(form, :email, type: :email_field)
       field(form, :username)
@@ -17,6 +20,16 @@ class Views::Admin::Users::Edit < Views::Admin::Layout
       checkbox_field(form, :is_admin, label: "System admin")
       checkbox_field(form, :bot, label: "Bot account")
       form.submit("Save user", class: "admin-button")
+    end
+  end
+
+  private
+
+  def render_email_collision_guidance
+    p do
+      plain "That email belongs to another account. To combine the accounts, use "
+      link_to "Merge into another account", admin_user_path(@user, anchor: "merge-user")
+      plain " on this user's page."
     end
   end
 end

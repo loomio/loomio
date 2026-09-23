@@ -1,0 +1,50 @@
+discussion_created_topic_item:
+  kind: new_discussion
+  itemable: discussion (Discussion)
+  topic: discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+discussion_in_subgroup_created_topic_item:
+  kind: new_discussion
+  itemable: discussion_in_subgroup (Discussion)
+  topic: subgroup_discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+public_discussion_created_topic_item:
+  kind: new_discussion
+  itemable: public_discussion (Discussion)
+  topic: public_discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+alien_discussion_created_topic_item:
+  kind: new_discussion
+  itemable: alien_discussion (Discussion)
+  topic: alien_discussion_topic
+  user: alien
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+public_discussion_comment_topic_item:
+  kind: new_comment
+  itemable: public_discussion_comment (Comment)
+  topic: public_discussion_topic
+  parent: public_discussion_created_topic_item
+  user: admin
+  sequence_id: 1
+  position: 1
+  position_key: "00000-00001"
+  depth: 1

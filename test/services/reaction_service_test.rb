@@ -22,8 +22,56 @@ class ReactionServiceTest < ActiveSupport::TestCase
 
   test "creates a reaction for the current user on a comment" do
     assert_difference 'Reaction.count', 1 do
-      ReactionService.update(reaction: @reaction, params: { reaction: 'smiley' }, actor: @user)
+      ReactionService.update(reaction: @reaction, params: { reaction: '😃' }, actor: @user)
     end
+  end
+
+  test "does not save a reaction longer than the supported emoji sequence" do
+    assert_no_difference [ -> { Reaction.count }, -> { Notification.count } ] do
+      ReactionService.update(
+        reaction: @reaction,
+        params: { reaction: "x" * (Reaction::REACTION_LENGTH_MAX + 1) },
+        actor: @user
+      )
+    end
+
+    assert_predicate @reaction, :invalid?
+    assert_includes @reaction.errors[:reaction], "is too long (maximum is #{Reaction::REACTION_LENGTH_MAX} characters)"
+  end
+
+  test "accepts a multi-codepoint emoji from the reaction picker" do
+    emoji = "🧑🏻‍❤️‍💋‍🧑🏼"
+
+    assert_operator emoji.length, :>, 8
+    assert_difference 'Reaction.count', 1 do
+      ReactionService.update(reaction: @reaction, params: { reaction: emoji }, actor: @user)
+    end
+  end
+
+  test "publishes the reaction directly without creating an topic_item" do
+    publications = []
+
+    MessageChannelService.stub(:publish_models, ->(models, **options) { publications << [ models, options ] }) do
+      assert_no_difference -> { TopicItem.where(kind: "reaction_created").count } do
+        assert_equal @reaction, ReactionService.update(
+          reaction: @reaction,
+          params: { reaction: "😃" },
+          actor: @user
+        )
+      end
+    end
+
+    assert publications.any? { |models, options| models == [ @reaction ] && options[:group_id] == @group.id }
+  end
+
+  test "rolls back reaction creation when notification creation fails" do
+    assert_raises RuntimeError do
+      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
+        ReactionService.update(reaction: @reaction, params: { reaction: '😃' }, actor: @user)
+      end
+    end
+
+    assert_not Reaction.exists?(reactable: @comment, user: @user)
   end
 
   test "does not notify if the user is no longer in the group" do
@@ -31,15 +79,28 @@ class ReactionServiceTest < ActiveSupport::TestCase
 
     reactor_reaction = Reaction.new(reaction: "❤️", reactable: @comment, user: @admin)
     ReactionService.update(reaction: reactor_reaction, params: { reaction: '😃' }, actor: @admin)
+    notification = Notification.find_by!(
+      kind: "reaction_created",
+      subject: reactor_reaction
+    )
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
 
-    assert_equal 0, @user.notifications.count
+    assert_empty notification.notification_deliveries
   end
 
   test "comment reaction notification url uses contextual topic route" do
     reactor_reaction = Reaction.new(reaction: "❤️", reactable: @comment, user: @admin)
-    ReactionService.update(reaction: reactor_reaction, params: { reaction: '😃' }, actor: @admin)
+    assert_no_difference -> { TopicItem.where(kind: "reaction_created").count } do
+      ReactionService.update(reaction: reactor_reaction, params: { reaction: '😃' }, actor: @admin)
+    end
+    notification = Notification.find_by!(
+      kind: "reaction_created",
+      subject: reactor_reaction
+    )
 
-    assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", @user.notifications.last.event.notification_url
+    assert_equal [ @user.id ], notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id)
+    assert_equal 1, Notification.where(subject: reactor_reaction).count
+    assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", notification.notification_url
   end
 
   test "removes a reaction for the current user on a comment" do

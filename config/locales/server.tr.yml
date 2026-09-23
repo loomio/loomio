@@ -150,6 +150,8 @@ tr:
       body: İstediğiniz öğe bulunamadı. Bu durum, bir tartışma veya anket silindiğinde ortaya çıkabilir.
     new_account_trial_group_limit: Yeni hesaplar yalnızca bir grupla sınırlıdır. Daha fazla gruba ihtiyacınız varsa lütfen destek ekibiyle iletişime geçin.
     direct_thread_anonymous_poll: Anonim anket içeren bir konu, doğrudan bir konuya dönüştürülemez.
+    invitation_rate_limit_reached_contact_support: Günlük davet limiti doldu. Lütfen hemen destek ekibiyle iletişime geçin.
+    subscription_thread_limit_reached: Bu kuruluş konu sınırına ulaştı. Loomio'yu kullanmaya devam etmek için lütfen planınızı yükseltin.
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
@@ -182,6 +184,7 @@ tr:
       recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!
       bad_login: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
       username_must_be_alphanumeric: Kullanıcı adları yalnızca küçük harf ve rakamlardan oluşmalıdır
+      username_must_use_valid_characters: Kullanıcı adları yalnızca küçük harfler, rakamlar, alt çizgiler ve iç kısa çizgiler içerebilir
   poll:
     error:
       cannot_add_options: Bu ankete seçenekler eklenemiyor
@@ -301,6 +304,17 @@ tr:
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Kullanabileceğiniz 1 oy hakkınız var.
+          other: Kullanabileceğiniz %{count} oy var.
+        people_mentioned:
+          one: 1 kişi senden bahsetti
+          other: "%{count} kişi sizden bahsetti"
+        polls_closing_soon:
+          one: 1 anket yakında kapanıyor
+          other: "%{count} anket yakında kapanıyor"
+        separator: "·"
       daily_subject: Dün %{site_name}'de
       weekly_subject: Geçen hafta %{site_name}'de
       other_subject: Son zamanlarda %{site_name}'de
@@ -309,6 +323,31 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
+      catch_up_heading: "%{site_name} güncellemeniz"
+      unread_topics: Okunmamış konular
+      unread_threads: Okunmamış konular
+      mark_catch_up_as_read: Mark, okuduğu bilgileri güncelle
+    digest:
+      subject:
+        votes_to_cast:
+          one: Kullanabileceğiniz 1 oy hakkınız var.
+          other: Kullanabileceğiniz %{count} oy var.
+        people_mentioned:
+          one: 1 kişi senden bahsetti
+          other: "%{count} kişi sizden bahsetti"
+        polls_closing_soon:
+          one: 1 anket yakında kapanıyor
+          other: "%{count} anket yakında kapanıyor"
+        separator: "·"
+      daily_subject: Dün %{site_name}'de
+      weekly_subject: Geçen hafta %{site_name}'de
+      other_subject: Son zamanlarda %{site_name}'de
+      do_not_reply: lütfen bu emaile cevap vermeyiniz.
+      mark_as_read: Okundu olarak işaretle
+      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
+      click_here: Buraya tıkla
+      unread_topics: Okunmamış konular
     group_membership_approved:
       intro: "%{group_name} grubuna erişim talebiniz onaylandı."
       intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."
@@ -323,6 +362,8 @@ tr:
     content_was_translated: Bu içerik %{source_locale} adresinden çevrildi
     content_was_translated_html: Bu içerik %{source_locale} adresinden çevrilmiştir. <a href="%{profile_url}">Ayarları görüntüle<a></a>
     loomio_app_description: İşbirliği yapan kuruluşların birlikte karar alabileceği bir yer.
+    membership_request_declined:
+      button_text: Tekrar başvurun
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
@@ -373,6 +414,21 @@ tr:
     trial_expired:
       subject: Loomio grubunuz, uzun süredir aktif olmamanız nedeniyle silinecektir.
       body: Loomio grubunuz "%{group}" pasif durumda ve 2 hafta içinde silinecektir. Grubunuzun silinmesini istemiyorsanız, lütfen bu e-postaya yanıt verin.
+    destroy_warning_with_usage:
+      subject: Loomio grubunuz silinmek üzere planlandı.
+      requested: Loomio grubunuz "%{group}", %{requestor} tarafından silinmek üzere planlandı. %{days} gün sonra kalıcı olarak silinecektir.
+      trial_expired_warning: Loomio grubunuzun "%{group}" deneme sürümü %{expired_days} gün önce sona erdi. Bizimle iletişime geçmediğiniz takdirde, %{grace_days} gün içinde silinecektir.
+      trial_expired_process: Grubunuz silinmek üzere işaretlendiği sürece kullanılamaz. Grubunuzun tartışmak ve karar almak için bir yere sahip olmasını hala istiyorsanız, yeniden başlatmak için henüz geç değil. Deneme süresini uzatmak, ücretli aboneliğe yükseltmek veya verilerini dışa aktarmak için daha fazla zamana ihtiyacınız varsa, bu e-postaya %{grace_days} gün içinde yanıt verin. Bundan sonra, grup ve verileri kalıcı olarak silinecektir.
+      trial_expired: Loomio grubunuz "%{group}" en az 60 gündür deneme sürümünde bulunuyor ve bu süre dolmuştur. Grup en az %{days} gün boyunca kalıcı olarak silinmeyecektir.
+      usage_heading: 'Grup verilerinin özeti:'
+      subgroups: Alt gruplar
+      members: Mevcut üyeler
+      discussions: Tartışmalar
+      polls: Anketler
+      comments: Yorumlar
+      export: Grubu korumak veya verilerinin bir kopyasını dışa aktarmak için, bu e-postaya %{days} gün içinde yanıt verin. Silinmeden önce erişimi geri yükleyebiliriz.
+      export_link: Grup verilerini dışa aktarma hakkında bilgi edinin.
+      group_key: 'Grup anahtarı: %{key}'
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz
@@ -675,3 +731,36 @@ tr:
     file_too_large: Dosya çok büyük. Maksimum yükleme boyutu %{limit}.
   merge_users:
     not_target_user: Birleştirme işlemini onaylamak için hedef hesapla oturum açmış olmanız gerekir.
+  thread_markdown:
+    poll: Anket
+    no_activity: Henüz hiçbir yorum, anket, oy veya sonuç yok.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Yorum · %{author} %{timestamp}
+    comment_reply: "%{reply_author} adlı kullanıcıya yanıt ver · %{author} %{timestamp}"
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Durum:** %{value}"
+    anonymous_voting: "**Anonim oylama:** %{value}"
+    options: "**Seçenekler:** %{value}"
+    'yes': Evet
+    closed: Kapalı %{value}
+    scheduled_to_open: Açılış tarihi %{value} olarak planlandı.
+    open_until: Açık; %{value} ile kapanır
+    open: Açık
+    current_results: Mevcut sonuçlar
+    hidden_until_closed: Anket kapanana kadar gizli kalacak.
+    hidden_until_voted: İzleyici oy verene kadar gizli kalır.
+    voters: Seçmenler
+    target: Hedef
+    available: Mevcut
+    available_if_needed: İhtiyaç halinde temin edilebilir.
+    unavailable: Mevcut değil
+    anonymous: Anonim
+    no_voters: Oy vermeyenler
+    score: 'puan: %{value}'
+    vote: 'Oy: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Yukarıdakilerin hiçbiri
+    no_option_selected: Hiçbir seçenek seçilmedi.
+    outcome: Sonuç · %{author} %{timestamp}
+    review_date: "**İnceleme tarihi:** %{value}"
+  error:
+    access_denied: Bunu yapma izniniz yok.

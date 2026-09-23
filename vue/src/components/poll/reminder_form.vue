@@ -78,7 +78,7 @@ v-card.poll-remind(:title="$t('announcement.form.'+wipOrEmpty+'poll_reminder.tit
       :model="poll"
       :reset="reset"
       :excludedUserIds="userIds"
-      :excludedAudiences="['group', 'discussion_group']"
+      :excludedAudiences="['group', 'topic']"
       :initialRecipients="initialRecipients")
 
     v-textarea(

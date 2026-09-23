@@ -150,6 +150,8 @@ he:
       body: הפריט שביקשת לא נמצא. זה יכול לקרות אם דיון או סקר נמחקו.
     new_account_trial_group_limit: חשבונות חדשים מוגבלים לקבוצה אחת. אנא צרו קשר עם התמיכה אם אתם זקוקים ליותר.
     direct_thread_anonymous_poll: לא ניתן להמיר שרשור המכיל סקר אנונימי לשרשור ישיר
+    invitation_rate_limit_reached_contact_support: הגעת למגבלת ההזמנות היומית. צור קשר עם התמיכה באופן מיידי.
+    subscription_thread_limit_reached: ארגון זה הגיע למגבלת השרשורים שלו. אנא שדרג כדי להמשיך להשתמש ב-Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-
@@ -182,6 +184,7 @@ he:
       recaptcha: לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!
       bad_login: סליחה, סיסמה זו לא תואמת לזו שבמערכת
       username_must_be_alphanumeric: שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד
+      username_must_use_valid_characters: שמות משתמש יכולים להכיל רק אותיות קטנות, מספרים, קווים תחתונים ומקפים פנימיים
   poll:
     error:
       cannot_add_options: לא יכול להוסיף אפשרויות לסקר זה
@@ -311,6 +314,17 @@ he:
     unsubscribe: 'בטל את המנוי או שנה את העדפות הדוא"ל שלך:'
     unsubscribe_html: <a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא"ל שלך.
     catch_up:
+      subject:
+        votes_to_cast:
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
+        people_mentioned:
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
+        polls_closing_soon:
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
       other_subject: לאחרונה ב-%{site_name}
@@ -319,6 +333,31 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+      catch_up_heading: השלמת הפער שלך ב-%{site_name}
+      unread_topics: נושאים שלא נקראו
+      unread_threads: שרשורים שלא נקראו
+      mark_catch_up_as_read: סמן את ההשלמה כנקרא
+    digest:
+      subject:
+        votes_to_cast:
+          one: יש לך הצבעה אחת להטיל
+          other: יש לך %{count} קולות להטיל
+        people_mentioned:
+          one: אדם אחד הזכיר אותך
+          other: "%{count} אנשים הזכירו אותך"
+        polls_closing_soon:
+          one: סקר אחד נסגר בקרוב
+          other: "%{count} הקלפיות נסגרות בקרוב"
+        separator: "·"
+      daily_subject: אתמול ב%{site_name}
+      weekly_subject: בשבוע שעבר ב%{site_name}
+      other_subject: לאחרונה ב-%{site_name}
+      do_not_reply: נא לא להגיב למייל זה.
+      mark_as_read: סמן כנקרא
+      thanks_for_reading: תודה שקראת. יום טוב!
+      marked_as_read_success: כל הדברים במייל סומנו כנקראו
+      click_here: הקליקו כאן
+      unread_topics: נושאים שלא נקראו
     group_membership_approved:
       intro: בקשתך להכנס לקבוצה %{group_name} אושרה.
       intro_html: בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה.
@@ -333,6 +372,8 @@ he:
     content_was_translated: תוכן זה תורגם מ-%{source_locale}
     content_was_translated_html: תוכן זה תורגם מ-%{source_locale}. <a href="%{profile_url}">הצג הגדרות<a></a>
     loomio_app_description: מקום בו ארגונים משתפי פעולה יכולים לקבל החלטות יחד.
+    membership_request_declined:
+      button_text: הגש מועמדות שוב
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
@@ -385,6 +426,21 @@ he:
     trial_expired:
       subject: קבוצת Loomio שלך תימחק עקב חוסר פעילות.
       body: קבוצת Loomio שלך "%{group}" אינה פעילה ותימחק בעוד שבועיים. אם אינך מעוניין שהקבוצה שלך תימחק, אנא השב למייל זה.
+    destroy_warning_with_usage:
+      subject: קבוצת Loomio שלך מתוכננת למחיקה
+      requested: קבוצת Loomio שלך "%{group}" תוכננה למחיקה על ידי %{requestor}. היא תימחק לצמיתות לאחר %{days} יום.
+      trial_expired_warning: תקופת הניסיון שלך בקבוצת Loomio "%{group}" פגה לפני %{expired_days} ימים. אלא אם כן תיצור איתנו קשר, היא תימחק בעוד %{grace_days} ימים.
+      trial_expired_process: הקבוצה שלך אינה זמינה כל עוד היא מסומנת למחיקה. אם אתה עדיין רוצה מקום שבו הקבוצה תוכל לדון ולקבל החלטות, עדיין לא מאוחר מדי להפעיל אותה מחדש. השב לאימייל זה תוך %{grace_days} ימים אם ברצונך לבקש הארכת תקופת ניסיון, לשדרג למנוי בתשלום או אם תזדקק לזמן נוסף לייצוא הנתונים שלה. לאחר מכן, הקבוצה והנתונים שלה יימחקו לצמיתות.
+      trial_expired: קבוצת ה-Loomio שלך "%{group}" נמצאת בתקופת ניסיון שפג תוקפה במשך 60 יום לפחות. היא תימחק לצמיתות לאחר %{days} יום.
+      usage_heading: 'סיכום נתוני הקבוצה:'
+      subgroups: תת-קבוצות
+      members: חברים נוכחיים
+      discussions: דיונים
+      polls: סקרים
+      comments: הערות
+      export: כדי לשמור את הקבוצה או לייצא עותק של הנתונים שלה, יש להשיב לאימייל זה תוך %{days} יום. נוכל לשחזר את הגישה לפני המחיקה.
+      export_link: למד על ייצוא נתוני קבוצה
+      group_key: 'מפתח קבוצה: %{key}'
   poll_mailer:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}
@@ -687,3 +743,36 @@ he:
     file_too_large: הקובץ גדול מדי. גודל ההעלאה המרבי הוא %{limit}.
   merge_users:
     not_target_user: עליך להיות מחובר כחשבון היעד כדי לאשר מיזוג.
+  thread_markdown:
+    poll: מִשׁאָל
+    no_activity: אין עדיין תגובות, סקרים, הצבעות או תוצאות
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: תגובה · %{author} %{timestamp}
+    comment_reply: תשובה ל-%{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**סטטוס:** %{value}"
+    anonymous_voting: "**הצבעה אנונימית:** %{value}"
+    options: "**אפשרויות:** %{value}"
+    'yes': כֵּן
+    closed: סגור %{value}
+    scheduled_to_open: מתוכנן לפתוח %{value}
+    open_until: פתיחה; סגירה %{value}
+    open: לִפְתוֹחַ
+    current_results: תוצאות נוכחיות
+    hidden_until_closed: מוסתר עד לסגירת הסקר
+    hidden_until_voted: מוסתר עד שהצופה מצביע
+    voters: מצביעים
+    target: יַעַד
+    available: זָמִין
+    available_if_needed: זמין במידת הצורך
+    unavailable: לא זמין
+    anonymous: אֲנוֹנִימִי
+    no_voters: אין מצביעים
+    score: 'ציון: %{value}'
+    vote: 'הצבעה: %{response} · %{author} %{timestamp}'
+    none_of_the_above: אף אחד מהנ"ל
+    no_option_selected: לא נבחרה אפשרות
+    outcome: תוצאה · %{author} %{timestamp}
+    review_date: "**תאריך סקירה:** %{value}"
+  error:
+    access_denied: אין לך אישור לעשות זאת

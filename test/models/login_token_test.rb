@@ -42,4 +42,12 @@ class LoginTokenTest < ActiveSupport::TestCase
     token.update!(created_at: 25.hours.ago)
     assert_not token.useable?
   end
+
+  test "is useable for 24 hours by default" do
+    token = LoginToken.create!(user: users(:user))
+    token.update!(created_at: 23.hours.ago)
+
+    assert_equal token.created_at + 24.hours, token.expires_at
+    assert token.useable?
+  end
 end

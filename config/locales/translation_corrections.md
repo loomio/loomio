@@ -1,5 +1,47 @@
 # Corrected translations
 
+## 2026-09-22 — Authentication method labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `Sie` wording and a final full stop | Informal or neutral wording without a final full stop | German UI uses the informal `du` register and concise UI strings omit final full stops |
+| `config/locales/client.es.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey` | Formal `usted` conjugations and unnecessary final full stops | Informal `tú` wording and context-appropriate punctuation | Spanish UI uses the informal `tú` register |
+| `config/locales/client.fr.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists*`, `use_a_passkey`, `send_me_a_code` | Formal `vous` wording; passkey rendered as an access code | Informal `tu` wording; passkey rendered as `clé d’accès` | French UI uses informal direct address, and a passkey is not a one-time access code |
+| `config/locales/client.it.yml` | `auth_form.use_a_passkey` | `Utilizzare una password` | `Usa una passkey` | Passkey was mistranslated as password |
+| `config/locales/client.nl_NL.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Formal `u`; passkey rendered as password | Informal `je`; passkey retained as `passkey` | Dutch UI uses informal address, and a passkey is not a password |
+| `config/locales/client.pt_BR.yml` | `auth_form.or_sign_in_with_password`, `login_link_sent_if_account_exists`, `use_a_passkey` | Mechanical wording and final full stops | Concise Brazilian Portuguese without final full stops | Authentication action labels should be concise and use the established Brazilian Portuguese register |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `auth_form.email_code_help_short` | Formal direct address | Informal `du`, `tú`, `tu`, and `je` wording | These locales consistently address users informally |
+| `config/locales/client.it.yml`, `client.pt_BR.yml` | `auth_form.email_code_help_short` | Sentence ended with a full stop | Removed the final full stop | Single-sentence UI strings omit final full stops |
+
+## 2026-09-18 — Membership request response
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `join_group_button.membership_request_declined`, `request_membership_again` | Formal `Ihre` / `Sie` wording and a final full stop | Informal `deine` wording and a concise action label without a final full stop | German UI uses the informal `du/dein` register, and button labels omit final full stops |
+| `config/locales/client.fr.yml` | `join_group_button.membership_request_declined` | Formal `Votre` wording | Informal `Ta` wording | French UI uses the informal `tu/ton/ta` register |
+| `config/locales/client.ru.yml` | `join_group_button.request_membership_again` | Button label with a final full stop | Removed the final full stop | Single-sentence UI labels omit final full stops |
+
+## 2026-09-16 — Non-member discussion setting
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `server.de.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `Sie` wording and final full stops | Informal `du` wording without final full stops | German UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.es.yml`, `server.es.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Infinitive help text and final full stops | Informal `tú` imperative wording without final full stops | Spanish UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.fr.yml`, `server.fr.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `vous` wording and final full stops | Informal `tu` wording without final full stops | French UI uses the informal register and single-sentence UI strings omit final full stops |
+| `config/locales/client.nl_NL.yml`, `server.nl_NL.yml` | `group_form.non_members_can_start_discussions*`, `error.access_denied` | Formal `u` wording and final full stops | Informal `je` wording without final full stops | Dutch UI uses the informal register and single-sentence UI strings omit final full stops |
+
+## 2026-09-10 — iOS push guidance
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml` | `push_notifications.ios_add_to_home_screen_before_enabling` | `utilisez`, `votre`, `Ouvrez`, `activez` | `utilise`, `ton`, `Ouvre`, `active` | French UI uses the informal `tu` register throughout |
+
+## 2026-09-05 — Profile recent activity
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.tr.yml` | `user_page.no_recent_activity` | `Son zamanlarda herhangi bir aktivite yok.` | `Son zamanlarda herhangi bir aktivite yok` | Single-sentence UI labels omit the final full stop |
+
 A log of hand-corrections to non-English locale files where
 `bin/rake loomio:translate_strings` (Google Translate) produced a wrong
 sense, not just a typo — Google has very little UI context, so short
@@ -93,6 +135,12 @@ languages in the Nov 2025 pass.
 | `config/locales/client.pt_BR.yml`, `server.pt_BR.yml` | Multiple direct-address UI and template strings | Overly formal/Google-ish `Por favor ...` phrasing and a few awkward Brazilian Portuguese direct-address strings | Concise Brazilian Portuguese using `você` register and direct imperatives like `preencha`, `entre`, `atualize`, `responda` | Keep Brazilian Portuguese consistent and concise; avoid mechanical polite filler in UI actions |
 | `config/locales/client.ru.yml` | `thread_item.discussion_moved_without_source` | `%{автор}` | `%{author}` | Interpolation placeholder names must remain unchanged |
 | `config/locales/client.tr.yml` | `thread_item.discussion_moved_without_source` | `%{yazar}` | `%{author}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.be.yml` | Multiple interpolation keys | Translated placeholder names such as `%{назва}`, `%{аўтар}`, and `%{спасылка}` | Restored source placeholders such as `%{title}`, `%{author}`, and `%{link}` | Interpolation placeholder names must remain unchanged |
+| `config/locales/client.be.yml`, `server.be.yml` | STV method, quota, tie, and validation labels | Translated proper names and ambiguous literal senses such as `Мік`, `заяц`, and `Галстук`; `(a-z)` collapsed to `(az)` | Preserved `Meek`, `Droop`, and `Hare`; used equal-result wording; restored `(a-z)` | STV names are proper nouns, tie means equal results, and ASCII character ranges are literal guidance |
+| `config/locales/client.be.yml`, `server.be.yml` | Loomio `outcome` noun and actions | `вынік` and a literal message-noun translation for “Post outcome” | `выснова` with publish/share action wording | Distinguish the author's closing conclusion from the poll's vote result |
+| `config/locales/client.es.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Formal `Reciba` and inconsistent `seguimiento` / `repaso` wording | Informal-neutral `Correo electrónico de resumen ...` wording | Spanish UI uses informal `tú`; these sibling labels should use the same term as the daily summary email |
+| `config/locales/client.nl_NL.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Formal `U ontvangt` and inconsistent `update-e-mail` wording | `Samenvattingsmail om de dag`, `Wekelijkse samenvattingsmail` | Dutch UI uses informal `je/jouw`; these sibling labels should match the daily summary email |
+| `config/locales/client.ru.yml` | `strand_nav.catch_up_email_every_second_day`, `strand_nav.weekly_catch_up_email` | Sentence-style news/notification mailing labels with final full stops | Concise `письмо со сводкой` labels without final full stops | These are summary-email UI labels, and single-sentence UI strings omit final full stops |
 
 ## 2026-07-26 — Anonymous voting notices
 
@@ -275,9 +323,181 @@ languages in the Nov 2025 pass.
 | `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `action_dock.more` | `更多的` | `更多` | The menu label is the standalone action “More”; the generated translation was an attributive adjective requiring a noun. |
 | `config/locales/client.de.yml`, `client.es.yml`, `client.it.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | `chatbot.no_chat_integrations_yet`, `chatbot.delete_chat_integration_helptext` | Single-sentence UI strings with final full stops | Removed final full stops | Single-sentence UI strings do not use final full stops. |
 
+## 2026-08-18 — Subscription thread limit
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml`, `server.es.yml`, `server.fr.yml`, `server.nl_NL.yml`, `server.pt_BR.yml`, `server.ro.yml` | `errors.subscription_thread_limit_reached` | Formal address, polite filler, or wording about updating software, an account, or a profile | Informal direct address and wording about upgrading the subscription plan | The action changes the Loomio subscription plan; these locales use concise informal UI copy |
+| `config/locales/server.ru.yml`, `server.uk.yml` | `errors.subscription_thread_limit_reached` | Update an account or system | Move to another subscription plan | “Upgrade” refers to the Loomio subscription, not software or account details |
+| `config/locales/server.tr.yml`, `server.zh_CN.yml`, `server.zh_TW.yml` | `errors.subscription_thread_limit_reached` | Software-execution-thread terminology | Established discussion-thread terminology | Thread means a Loomio discussion, not a software thread |
+
 ## 2026-08-07 — Vote reasons when disagreeing
 
 | File | Key | Before | After | Why it was wrong |
 |------|-----|--------|-------|------------------|
 | `config/locales/client.pt_BR.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Necessário em caso de discordância.` | `Necessário em caso de discordância` | Single-sentence UI labels do not use final full stops |
 | `config/locales/client.tr.yml` | `poll_common_form.stance_reason_required_when_disagreeing` | `Anlaşmazlık durumunda gereklidir.` | `Anlaşmazlık durumunda gereklidir` | Single-sentence UI labels do not use final full stops |
+
+## 2026-08-14 — Vote reasons for disagreement or blocking
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `poll_common_form.stance_reason_required_for_block` | Building-block, module, or political-bloc nouns | Wording for the voting action of blocking | Block is a proposal response, not a physical block, software module, or political bloc |
+| `config/locales/client.nl_NL.yml`, `client.ru.yml`, `client.tr.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels ending with a full stop | Removed the final full stop | Single-sentence UI labels do not use final full stops |
+| `config/locales/client.zh_CN.yml`, `client.zh_TW.yml` | `poll_common_form.stance_reason_required_for_disagree_or_block` | Labels omitted that the reason is required | Restored the required meaning | The labels must state both the triggering responses and that a reason is required |
+
+## 2026-08-27 — Web Push settings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs meaning physically push (`Drücken`, `Empujar`, `Pousser`, `Duw`) | `Push` | Push is the established notification channel name, not an imperative action |
+| `config/locales/client.de.yml`, `client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | New Web Push direct-address strings | Formal `Sie/usted/vous/u` forms | Informal `du/tú/tu/je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | New Web Push status and help strings | Single-sentence UI strings with final full stops | Removed final full stops where reviewed | Single-sentence UI strings do not use final full stops |
+
+## 2026-09-01 — Thread notification summaries
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `strand_nav.email_and_push_when_notified`, `strand_nav.push_when_notified`; Belarusian `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Imperatives meaning physically press or push, such as `Націсніце`, `Empènyer`, `Tryk`, `Πιέστε`, `Paina`, `Pritisni`, `Naciśnij`, `Apăsați`, and `Натиснути` | Notification-channel noun phrases using Push, push notification, or the locale's established technical term | Push is the notification delivery channel, not an instruction to press a control |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.nl_NL.yml` | `strand_nav.email_and_push_when_notified`, `strand_nav.email_when_notified`, `strand_nav.push_when_notified` | Formal `se le`, `vous`, and `u` forms | Informal `recibas`, `tu`, and `je` forms | These locales address users informally throughout |
+| Multiple `config/locales/client.*.yml` files | `strand_nav.daily_catch_up_email` | Literal missed-activity wording such as neglected, make up for lost time, or catch up socially | Daily summary email wording | Catch-up names an email digest here, not neglect, social news, or recovering lost time |
+| `config/locales/client.el.yml`, `client.nl_NL.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.ru.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New `strand_nav.*` notification summary labels | Single-sentence UI labels with final full stops | Removed final full stops | Single-sentence UI labels do not use final full stops |
+| `config/locales/client.es.yml`, `client.nl_NL.yml` | `strand_nav.email_and_device_when_notified`, `strand_nav.device_notification_when_notified` | Formal `se reciba` / `u` forms and final full stops | Informal `recibas` / `je` forms without final full stops | Spanish and Dutch address users informally, and single-sentence UI labels do not use final full stops |
+| Multiple `config/locales/client.*.yml` files | `strand_nav.device_notification_when_notified` | Genitive or malformed wording meaning a notification about or owned by a device | Wording for a notification delivered on or to the device | Device describes the delivery channel, not the subject or sender of the notification |
+| `config/locales/client.el.yml`, `client.it.yml`, `client.pt_BR.yml`, `client.ro.yml`, `client.tr.yml`, `client.zh_CN.yml`, `client.zh_TW.yml` | New device-notification summary labels | Passive, formal, or full-sentence wording | Concise informal notification labels | These strings are compact status labels, not instructions or prose sentences |
+
+## 2026-09-10 — Re-translated copied English strings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `change_volume_form.volume_push_label`, `change_volume_form.push_channel` | Verbs for physically pushing, pressing, or shoving | `Push` | Push is the notification delivery channel name |
+| Multiple `config/locales/client.*.yml` files | `discussion_last_seen_by.thread_engagement` | Mechanical screw, fibre, or software-thread wording | Discussion-engagement wording | Thread refers to a Loomio discussion |
+| `config/locales/client.es.yml`, `client.fr.yml`, `client.nl_NL.yml`, `server.nl_NL.yml` | Notification settings and summary-email strings | Formal address or literal catch-up wording | Informal address and summary-email wording | Spanish, French, and Dutch use informal address; catch-up means a summary email |
+| `config/locales/client.pl.yml`, `client.it.yml` | `poll_stv_results.tied_in_round` | Literal physical tying wording | Equal-result wording | A tie is an equal election result |
+| `config/locales/client.nl_NL.yml`, `client.pl.yml`, `client.ru.yml`, `client.uk.yml` | Notification and STV interpolation strings | Translated interpolation variable names | Source variable names such as `%{context}` and `%{round}` | Interpolation variable names are program syntax and must not be translated |
+
+## 2026-09-02 — Apply notification settings to group threads
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Wenden Sie diese Einstellungen auf alle Threads in %{group} an.` | `Wende diese Einstellungen auf alle Threads in %{group} an` | Formal `Sie` imperative and final full stop; German uses informal `du`, and short UI labels omit final punctuation |
+| `config/locales/client.es.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplique esta configuración a todos los subprocesos en %{group}.` | `Aplica esta configuración a todos los hilos de %{group}` | Formal imperative, software-subprocess sense, and final full stop; Spanish uses informal `tú` and discussion-thread wording |
+| `config/locales/client.fr.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Appliquez ces paramètres à tous les threads du groupe %{group}` | `Applique ces paramètres à tous les fils de discussion de %{group}` | Formal plural imperative and borrowed technical thread term; French uses informal `tu` and discussion-thread wording |
+| `config/locales/client.ja.yml` | `change_volume_form.apply_to_all_threads_in_group` | `これらの設定を%{group}内のすべてのスレッドに適用します。` | `これらの設定を%{group}内のすべてのスレッドに適用します` | Short UI labels omit final punctuation |
+| `config/locales/client.nl_NL.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Pas deze instellingen toe op alle threads in %{group}.` | `Pas deze instellingen toe op alle threads in %{group}` | Short UI labels omit final punctuation |
+| `config/locales/client.pt_BR.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplique essas configurações a todas as threads em %{group}` | `Aplique essas configurações a todas as discussões em %{group}` | English technical thread term did not convey Loomio discussions |
+| `config/locales/client.ro.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Aplică aceste setări tuturor firelor de execuție din %{group}` | `Aplică aceste setări tuturor discuțiilor din %{group}` | Used software-execution-thread terminology instead of discussions |
+| `config/locales/client.ru.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Примените эти настройки ко всем потокам в %{группе}.` | `Применить эти настройки ко всем обсуждениям в %{group}` | Formal imperative, software-stream sense, translated interpolation placeholder, and final full stop |
+| `config/locales/client.tr.yml` | `change_volume_form.apply_to_all_threads_in_group` | `Bu ayarları %{group} içindeki tüm iş parçacıklarına uygulayın.` | `Bu ayarları %{group} içindeki tüm konulara uygula` | Formal imperative, software-thread terminology, and final full stop |
+| `config/locales/client.zh_CN.yml` | `change_volume_form.apply_to_all_threads_in_group` | `将这些设置应用于 %{group} 中的所有线程` | `将这些设置应用于 %{group} 中的所有讨论主题` | Used software-execution-thread terminology instead of discussion topics |
+| `config/locales/client.zh_TW.yml` | `change_volume_form.apply_to_all_threads_in_group` | `將這些設定應用於 %{group} 中的所有線程` | `將這些設定套用至 %{group} 中的所有討論串` | Used software-execution-thread terminology instead of discussion threads |
+
+## 2026-09-09 — Group deletion warnings
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.it.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{chiave}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |
+| `config/locales/server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{sleutel}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |
+| `config/locales/server.ru.yml` | `group_mailer.destroy_warning_with_usage.group_key` | `%{ключ}` | `%{key}` | Translation renamed the interpolation variable, which would raise when rendering the email |
+| `config/locales/server.fi.yml` | `group_mailer.destroy_warning_with_usage.requested` | `%{requester` | `%{requestor}` | Translation dropped the interpolation variable's closing brace, and Loomio spells this role “requestor” |
+| `config/locales/server.es.yml` | `group_mailer.destroy_warning_with_usage.export` | `responda` | `responde` | Spanish user-facing copy uses the informal `tú` register |
+| `config/locales/server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.export` | `kunt u` | `kun je` | Dutch user-facing copy uses the informal `je` register |
+
+## 2026-09-10 — Group deletion warning
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/server.de.yml`, `server.fr.yml`, `server.nl_NL.yml` | `group_mailer.destroy_warning_with_usage.trial_expired_warning`, `group_mailer.destroy_warning_with_usage.trial_expired_process` | Formal `Sie/vous/u` forms | Informal `du/tu/je` forms | These locales address users informally throughout Loomio |
+
+## 2026-09-11 — Copy Markdown document labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/server.*.yml` files | `thread_markdown.*` interpolation variables | Translated or dropped placeholders such as `%{autor}`, `%{valor}`, and `%{marca de tiempo}` | Canonical placeholders such as `%{author}`, `%{value}`, and `%{timestamp}` | Interpolation variable names are application contracts and must not be translated or omitted |
+
+## 2026-09-15 — Member-created template visibility
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| Multiple `config/locales/client.*.yml` files | `group_form.members_can_create_templates_help` | Said member-created templates remain hidden until an administrator reveals them | `group_form.members_can_create_discussion_and_poll_templates_help`, stating only that members may create discussion and poll templates | Member-created templates are visible as soon as they are saved |
+## 2026-09-16 — Membership request responses
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `notifications.*.membership_request_declined` | `Ihre Anfrage ...` | `Deine Anfrage ...` | German user-facing copy uses the informal `du/dein` register |
+| `config/locales/client.de.yml` | `membership_requests_page.decline` | `Abfall` | `Ablehnen` | Translated “decline” as waste rather than rejecting a request |
+| `config/locales/client.fr.yml` | `notifications.*.membership_request_declined` | `Votre demande ...` | `Ta demande ...` | French user-facing copy uses the informal `tu/ton/ta` register |
+| `config/locales/client.fr.yml` | `membership_requests_page.decline` | `Déclin` | `Refuser` | Used the noun for deterioration rather than the action to reject a request |
+| `config/locales/client.es.yml` | `membership_requests_page.decline_help` | `el motivo de la solicitud` | `el motivo` | Said Loomio sends the reason for applying rather than the administrator's reason for declining |
+| `config/locales/server.de.yml` | `email.membership_request_declined.button_text` | `Erneut bewerben` | `Erneut beantragen` | “Bewerben” suggests applying for a job rather than requesting group membership |
+| `config/locales/server.es.yml` | `email.membership_request_declined.button_text` | `Vuelva a solicitarlo` | `Solicitar de nuevo` | Used the formal `usted` imperative instead of Loomio's informal register |
+| `config/locales/server.fr.yml` | `email.membership_request_declined.button_text` | `Postuler à nouveau` | `Faire une nouvelle demande` | “Postuler” suggests applying for a job rather than requesting group membership |
+| `config/locales/server.nl_NL.yml` | `email.membership_request_declined.button_text` | `Opnieuw solliciteren` | `Opnieuw aanvragen` | “Solliciteren” means applying for a job rather than requesting group membership |
+
+## 2026-09-16 — Voting record labels
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `report.votes_issued` | `abgegebene Stimmen` | `Zugewiesene Stimmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.es.yml` | `report.votes_issued` | `Votos emitidos` | `Votos asignados` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.fr.yml` | `report.votes_issued` | `Votes émis` | `Bulletins attribués` | Could mean votes cast rather than ballots assigned to the person |
+| `config/locales/client.it.yml` | `report.votes_issued` | `Voti espressi` | `Voti assegnati` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.nl_NL.yml` | `report.votes_issued` | `Uitgebrachte stemmen` | `Toegewezen stemmen` | Duplicated “votes cast” instead of ballots assigned to the person |
+| `config/locales/client.pt_BR.yml` | `report.votes_issued` | `Votos emitidos` | `Votos atribuídos` | Could mean votes cast rather than ballots assigned to the person |
+
+## 2026-09-17 — Follow Group updates
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `Sie` forms | Informal `du` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.es.yml` | `group_follow.unfollow` | Infinitive `Dejar` | Informal imperative `Deja` | Spanish actions address the user in the informal `tú` register |
+| `config/locales/client.fr.yml` | `group_follow.follow`, `group_follow.followed`, `group_follow.unfollowed` | Formal `vous` forms | Informal `tu` forms | French user-facing copy uses the informal `tu` register |
+| Multiple `config/locales/client.*.yml` files | `group_follow.followed`, `group_follow.unfollowed` | Single-sentence status messages with final punctuation | Removed final punctuation | Single-sentence UI strings do not use final punctuation |
+
+## 2026-09-18 — Direct discussion count
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.fr.yml` | `members_panel.loaded_of_total` → `members_panel.topics_loaded_of_total` | `%{loaded}} de %{total}}` | `%{loaded} de %{total}` | Extra closing braces caused vue-i18n compilation errors on the direct-discussions page |
+
+## 2026-09-21 — Passkey authentication
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.nl_NL.yml` | New passkey authentication keys | Google translated passkey as `wachtwoord` or `toegangscode`, used formal `u/uw`, and changed `%{date}` to `%{datum}` | Use `passkey`, informal `je/jouw`, and preserve `%{date}` | A passkey is not a password or emailed code; the interpolation name and established informal register are part of the contract |
+| `config/locales/client.es.yml` | New passkey authentication keys | Google translated some passkey references as `contraseña`, `Llave maestra`, and titled the section `Contraseñas` | Use `clave de acceso` consistently | These strings describe WebAuthn passkeys, not passwords or master keys |
+| `config/locales/client.da.yml`, `client.ru.yml`, `client.sv.yml` | `passkey_settings.created_at` | Google translated the `%{date}` interpolation identifier | Preserve `%{date}` | Interpolation identifiers are API values and must not be translated |
+| `config/locales/client.nl_NL.yml` | New passkey removal and recent-authentication keys | Translated passkey as `wachtwoord` or `toegangscode`, used formal `u/uw`, and changed `%{name}` to `%{naam}` | Use `passkey`, informal `je/jouw`, and preserve `%{name}` | A passkey is not a password or access code; the interpolation name and established informal register are part of the contract |
+| `config/locales/client.es.yml` | `auth_form.passkey_recent_authentication_required` | `contraseñas` | `claves de acceso` | The string refers to WebAuthn passkeys, not passwords |
+| `config/locales/client.sv.yml` | `passkey_settings.remove_named` | `%{namn}` | `%{name}` | Interpolation identifiers are API values and must not be translated |
+| `config/locales/client.sv.yml` | New passkey removal and recent-authentication keys | `lösenord` | `passkey` | These strings describe WebAuthn passkeys, not passwords |
+
+## 2026-09-21 — Sign-in code help
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `auth_form.email_code_help` | Formal `Sie/Ihnen` forms | Informal `du/dir` forms | German user-facing copy uses the informal `du` register |
+| `config/locales/client.fr.yml` | `auth_form.email_code_help` | Formal `vous/votre` forms | Informal `tu/ton` forms | French user-facing copy uses the informal `tu` register |
+| `config/locales/client.nl_NL.yml` | `auth_form.email_code_help` | Formal `u/uw` forms | Informal `je` forms | Dutch user-facing copy uses the informal `je` register |
+
+## 2026-09-23 — Passkey prompt description
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `credential_prompt.passkey_description` | Formal `Sie/Ihres` | Informal `du/deines` | German user-facing copy uses the informal `du` register |
+| `config/locales/client.fr.yml` | `credential_prompt.passkey_description` | `code d'accès`, formal `vous/votre` | `clé d'accès`, informal `te/ton` | A passkey is not an access code; French copy uses the informal `tu` register |
+| `config/locales/client.nl_NL.yml` | `credential_prompt.passkey_description` | `toegangscode`, formal `u/uw` | `passkey`, informal `je` | A passkey is not an access code; Dutch copy uses the informal `je` register |
+| `config/locales/client.hu.yml` | `credential_prompt.passkey_description` | `jelszó` | `passkey` | A passkey is not a password |
+| `config/locales/client.fi.yml` | `credential_prompt.passkey_description` | `Salasanan` | `Passkeyllä` | A passkey is not a password |
+| `config/locales/client.tr.yml` | `credential_prompt.passkey_description` | `Parola` | `Geçiş anahtarı` | A passkey is not a password |
+| `config/locales/client.ru.yml` | `credential_prompt.passkey_description` | `Пароль` | `Ключ доступа` | A passkey is not a password |
+| `config/locales/client.he.yml` | `credential_prompt.passkey_description` | `סיסמה` | `מפתח גישה` | A passkey is not a password |
+| `config/locales/client.sl.yml` | `credential_prompt.passkey_description` | `Geslo` | `Prijavni ključ` | A passkey is not a password |
+| `config/locales/client.it.yml` | `credential_prompt.passkey_description` | `password` | `passkey` | A passkey is not a password |
+| `config/locales/client.hr.yml` | `credential_prompt.passkey_description` | `Lozinka` | `Pristupni ključ` | A passkey is not a password |
+| `config/locales/client.pt_BR.yml` | `credential_prompt.passkey_description` | `senha` | `chave de acesso` | A passkey is not a password |
+| `config/locales/client.sv.yml` | `credential_prompt.passkey_description` | `lösenkod` | `passnyckel` | A passkey is not a sign-in code |
+| `config/locales/client.zh_CN.yml` | `credential_prompt.passkey_description` | `密码密钥` | `通行密钥` | The original term could be read as a password-based key rather than a passkey |
+| `config/locales/client.zh_TW.yml` | `credential_prompt.passkey_description` | `密碼密鑰` | `通行密鑰` | The original term could be read as a password-based key rather than a passkey |
+| `config/locales/client.es.yml` | `credential_prompt.set_new_password` | `Establecer una nueva contraseña` | `Establece una nueva contraseña` | Spanish action labels use the informal `tú` imperative |
+| `config/locales/client.ca.yml`, `client.es.yml`, `client.ro.yml`, `client.ja.yml` | `credential_prompt.passkey_description` | Single-sentence UI text with final punctuation | Removed the final full stop | Single-sentence UI strings omit final full stops |

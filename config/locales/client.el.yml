@@ -1,5 +1,10 @@
 ---
 el:
+  install_app:
+    install_title: Εγκατάσταση του %{site_name}
+    install_description: Προσθέστε το %{site_name} στην αρχική οθόνη σας για ταχύτερη πρόσβαση
+    install_button: Εγκατάσταση
+    ios_install_description: Στο Safari, ανοίξτε την Κοινοποίηση και επιλέξτε Προσθήκη στην οθόνη Αφετηρίας
   start_trial:
     title: Ξεκινήστε μια δωρεάν δοκιμή του Loomio
     intro: Σας ευχαριστούμε για το ενδιαφέρον σας για το Loomio. Είμαστε στην ευχάριστη θέση να σας προσφέρουμε μια δωρεάν δοκιμή %{day}-ημέρας, ώστε να μπορείτε να δείτε εάν το Loomio είναι κατάλληλο για τον οργανισμό σας.
@@ -188,6 +193,7 @@ el:
     prefix_eg: π.χ. %{val}
     are_you_sure: Είσαι σίγουρος?
     loomio_help: Βοήθεια Loomio
+    user_manual: Οδηγός χρήστη
     visit_loomio_help: Επισκεφτείτε τη βοήθεια του Loomio
     help_and_guides: Βοήθεια και οδηγοί
     please_wait: Παρακαλούμε περιμένετε
@@ -355,9 +361,16 @@ el:
       flash: Το email επαλήθευσης στάλθηκε!
       helptext_and_signout: Μπορείτε να συγχωνεύσετε τον λογαριασμό του <strong>%{sourceEmail}</strong> με αυτόν του <strong>%{targetEmail}</strong> . Κάντε κλικ στην επιλογή Επαλήθευση και θα σταλεί ένα email επαλήθευσης στο %{targetEmail} για να ξεκινήσει η διαδικασία. Θα αποσυνδεθείτε, ώστε να μπορείτε να συνδεθείτε ως ο λογαριασμός-στόχος για να ολοκληρώσετε τη συγχώνευση.
       flash_and_signout: Το email επαλήθευσης στάλθηκε στο %{targetEmail}. Έχετε πλέον αποσυνδεθεί, ώστε να μπορείτε να συνδεθείτε ως ο λογαριασμός-στόχος για να ολοκληρώσετε τη συγχώνευση.
+      generic_helptext: Εισαγάγετε τη διεύθυνση email για τον άλλο λογαριασμό. Εάν αυτός ο λογαριασμός υπάρχει, το Loomio θα του στείλει ένα email με οδηγίες για την επιβεβαίωση της συγχώνευσης.
+      email_label: Άλλο email λογαριασμού
+      send_verification: Αποστολή email επαλήθευσης
+      generic_flash_and_signout: Εάν ένας λογαριασμός χρησιμοποιεί αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου, έχει σταλεί ένα μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης. Έχετε πλέον αποσυνδεθεί, ώστε να μπορείτε να συνεχίσετε με τον άλλο λογαριασμό.
+      destination_helptext: Αυτός ο λογαριασμός (%{sourceEmail}) θα συγχωνευθεί με τον λογαριασμό προορισμού. Εισαγάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου του λογαριασμού προορισμού. Εάν υπάρχει, το Loomio θα στείλει σε αυτήν τη διεύθυνση ένα μήνυμα ηλεκτρονικού ταχυδρομείου για να επιβεβαιώσει τη συγχώνευση.
+      destination_email_label: Ηλεκτρονικό ταχυδρομείο λογαριασμού προορισμού
     email_taken: Λυπούμαστε, αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου έχει ήδη συσχετιστεί με άλλον χρήστη. Αυτό το email σας ανήκει;
     find_out_more: Μάθετε περισσότερα.
     placeholder_modal_text: <p>Εάν θέλετε να συγχωνεύσετε δύο λογαριασμούς, απλώς εισαγάγετε την αντίστοιχη διεύθυνση email (που ανήκει στον άλλο λογαριασμό) στο πεδίο email της σελίδας προφίλ σας και ακολουθήστε τις οδηγίες που εμφανίζονται.</p><p> Χρειάζεστε βοήθεια? <a href="/contact" target="_blank">Επικοινωνήστε μαζί μας</a> .
+    email_may_belong_to_another_account: Εάν αυτή η διεύθυνση ανήκει σε άλλον λογαριασμό, μπορείτε να συγχωνεύσετε τους λογαριασμούς
   emoji_picker:
     search: Εύρεση
     common: Συχνά χρησιμοποιούμενο
@@ -433,6 +446,14 @@ el:
     title_label: Τίτλος
     hint: 'Συμβουλή για την επόμενη φορά: Δοκιμάστε να επισημάνετε κάποιο κείμενο προτού κάνετε κλικ στο "Καρφίτσωμα".'
   change_volume_form:
+    context_title:
+      thread: Ρυθμίσεις ειδοποιήσεων νήματος
+      group: Ρυθμίσεις ειδοποιήσεων ομάδας
+      default: Προεπιλεγμένες ρυθμίσεις ειδοποιήσεων
+    context:
+      thread: αυτό το νήμα
+      group: αυτή η ομάδα
+      default: ομάδες στις οποίες συμμετέχετε
     explain_scope:
       thread: Αυτό αλλάζει όταν θα ειδοποιηθείτε για αυτό το νήμα
       group: Αυτό αλλάζει όταν θα ειδοποιηθείτε για όλα τα νήματα στην ομάδα
@@ -515,6 +536,36 @@ el:
     normal_option: Όταν κάποιος θέλει την προσοχή μου (Όταν ειδοποιηθεί)
     quiet_option: Δεν υπάρχουν μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το νήμα (Απενεργοποιημένο)
     quiet_explained: Δεν θα λάβετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει.
+    volume_email_label: E-mail
+    volume_push_label: Push
+    all_activity_option: Όλη η δραστηριότητα
+    when_notified_option: Όταν ειδοποιηθεί
+    muted_option: Σε σίγαση
+    volume_channel_label: Πώς πρέπει να σας ενημερώσουμε;
+    email_channel: E-mail
+    push_channel: Push
+    email_and_push_channel: Αποστολή email και προώθηση
+    off_option: Μακριά από
+    apply_to_all_threads_in_group: Εφαρμογή αυτών των ρυθμίσεων σε όλα τα νήματα στην %{group}
+    delivery_method: Μέθοδος παράδοσης
+    how_do_you_want_to_stay_updated: Πώς θέλετε να παραμένετε ενημερωμένοι;
+    catch_up_daily_hint: Η αναζήτησή σας για το χαμένο σας μήνυμα είναι ένα καθημερινό μήνυμα ηλεκτρονικού ταχυδρομείου με ειδοποιήσεις που δεν έχετε δει και μη αναγνωσμένη δραστηριότητα
+    catch_up_every_second_day_hint: Η αναζήτησή σας για το χαμένο σας μήνυμα είναι ένα email που αποστέλλεται κάθε δεύτερη μέρα με ειδοποιήσεις που δεν έχετε δει και μη αναγνωσμένη δραστηριότητα
+    catch_up_weekly_hint: Η αναζήτησή σας για το χαμένο σας μήνυμα είναι ένα εβδομαδιαίο μήνυμα ηλεκτρονικού ταχυδρομείου με ειδοποιήσεις που δεν έχετε δει και μη αναγνωσμένη δραστηριότητα
+    catch_up_only_option: Μόνο για κάλυψη
+    no_email_updates_option: Δεν υπάρχουν ενημερώσεις μέσω email
+    no_push_updates_option: Δεν υπάρχουν ενημερώσεις push
+    in_app_only_option: Μόνο εντός εφαρμογής
+    catch_up_only_description: Συμπερίληψη δραστηριότητας από %{context} στην ανασκόπησή μου
+    catch_up_only_with_notifications_description: Συμπερίληψη ειδοποιήσεων και άλλης δραστηριότητας από %{context} στην ανασκόπησή μου
+    no_email_updates_description: Μην μου στέλνετε email σχετικά με τη δραστηριότητα στο %{context}
+    no_push_updates_description: Μην στέλνετε ειδοποιήσεις push σχετικά με δραστηριότητα στο %{context}
+    email_when_notified_description: Στείλτε μου email όταν ειδοποιηθώ
+    email_when_notified_with_catch_up_description: Στείλτε μου email όταν ειδοποιηθώ και συμπεριλάβετε τα υπόλοιπα στην ενημέρωσή μου
+    push_when_notified_description: Αποστολή ειδοποίησης push όταν ειδοποιηθώ
+    push_when_notified_with_catch_up_description: Αποστολή ειδοποίησης push όταν ειδοποιηθώ και συμπερίληψη των υπολοίπων στην ενημέρωσή μου
+    email_all_activity_description: Στείλτε μου email κάθε φορά που υπάρχει δραστηριότητα στο %{context}
+    push_all_activity_description: Αποστολή ειδοποίησης push κάθε φορά που υπάρχει δραστηριότητα στο %{context}
   inbox:
     clear: Καθάρισμα
     latest: Τελευταία
@@ -620,6 +671,16 @@ el:
     email_notifications: Email όταν ειδοποιηθείτε
     email_none: Χωρίς email
     new_to_you: Νέο για εσάς
+    email_and_push_when_notified: Email και ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    email_when_notified: Email όταν λαμβάνεις ειδοποίηση
+    push_when_notified: Ειδοποίηση push όταν λαμβάνεις ειδοποίηση
+    daily_catch_up_email: Ημερήσιο email σύνοψης
+    in_app_only: Μόνο εντός εφαρμογής
+    email_and_device_when_notified: Email και ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    device_notification_when_notified: Ειδοποίηση συσκευής όταν λαμβάνεις ειδοποίηση
+    no_notifications: Δεν υπάρχουν ειδοποιήσεις
+    catch_up_email_every_second_day: Ενημερωτικό email κάθε δεύτερη μέρα
+    weekly_catch_up_email: Εβδομαδιαίο ενημερωτικό email
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα
@@ -679,6 +740,7 @@ el:
     light_blue: Ανοιχτό μπλε
     dark_blue: Σκούρο μπλε
     whats_new: Τι νέο υπάρχει
+    mobile_app_settings: Ρυθμίσεις κινητού
   membership_card:
     group_members: Μέλη ομάδας
     poll_members: "%{pollType} μέλη"
@@ -755,6 +817,7 @@ el:
       new_discussion: 'Ο/Η %{actor} ξεκίνησε μια συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
       thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
@@ -793,6 +856,7 @@ el:
       new_comment: Ο %{actor} σχολίασε σε μια συζήτηση
       outcome_updated: Ο %{actor} ενημέρωσε το αποτέλεσμα
       thread_locked: Ο %{actor} κλείδωσε το νήμα
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -837,6 +901,7 @@ el:
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
       thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
+      membership_request_declined: Το αίτημά σας για συμμετοχή στο %{title} απορρίφθηκε
   discussion_fork_actions:
     move: Κίνηση
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
@@ -934,7 +999,7 @@ el:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Όλοι στην ομάδα
-      discussion_group: Όλοι στο νήμα
+      topic: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
       decided_voters: Όλοι όσοι ψήφισαν
       undecided_voters: Αναποφάσιστοι ψηφοφόροι
@@ -1167,6 +1232,8 @@ el:
     membership_requested: Αίτηση μέλους έχει ζητηθεί.
     messages:
       joined_group: Τώρα είστε μέλος της ομάδας %{group}
+    membership_request_declined: 'Το αίτημά σας για συμμετοχή απορρίφθηκε: %{reason}'
+    request_membership_again: Αίτημα για συμμετοχή ξανά
   membership_request_form:
     heading: Δηλώστε συμμετοχή στην ομάδα
     name_label: Όνομα
@@ -1211,6 +1278,8 @@ el:
     body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την υποομάδα; Όλα τα νήματα, οι δημοσκοπήσεις, τα αρχεία και άλλο περιεχόμενο ομάδας θα διαγραφούν οριστικά. Συνιστάται η εξαγωγή των δεδομένων της ομάδας και η μη αυτόματη λήψη τυχόν σημαντικών αρχείων προτού συνεχίσετε.
     confirm: Πληκτρολογήστε '%{name}' για να επιβεβαιώσετε ότι θέλετε να διαγράψετε αυτήν την ομάδα.
     success: Αυτή η ομάδα έχει αρχειοθετηθεί και έχει προγραμματιστεί για οριστική διαγραφή σε 2 εβδομάδες.
+    scheduled_for_deletion: Αυτή η ομάδα έχει προγραμματιστεί για οριστική διαγραφή σε 2 εβδομάδες
+    deletion_after_grace_period: Αυτή η ομάδα δεν είναι διαθέσιμη και θα διαγραφεί οριστικά μετά από %{days} ημέρες
   group_page:
     stats: Στατιστικά ομάδας
     threads: Θέματα
@@ -1418,7 +1487,7 @@ el:
     remove_background: αφαίρεση φόντου
     remove_logo: αφαίρεση λογότυπου
     members_can_create_templates: Τα μέλη μπορούν να δημιουργήσουν πρότυπα
-    members_can_create_templates_help: Επιτρέψτε στα μέλη να δημιουργούν πρότυπα συζήτησης και δημοσκοπήσεων. Τα πρότυπα που δημιουργούνται από τα μέλη θα είναι κρυφά μέχρι να τα εμφανίσει ένας διαχειριστής.
+    members_can_create_discussion_and_poll_templates_help: Επιτρέψτε στα μέλη να δημιουργούν πρότυπα συζήτησης και δημοσκοπήσεων
     members_can_start_discussions_v2: Τα μέλη μπορούν να ξεκινήσουν νέες συζητήσεις
     members_can_start_discussions_help_v2: Επιτρέψτε στα μέλη να ξεκινούν νέες συζητήσεις εντός της ομάδας
     members_can_edit_discussions_v2: Τα μέλη μπορούν να διαχειρίζονται συζητήσεις και σχόλια
@@ -1427,6 +1496,8 @@ el:
     handle_changed_hint: Η προηγούμενη διεύθυνση URL και η διεύθυνση email σας θα ανακατευθύνουν στη νέα σας διεύθυνση.
     members_can_create_tags: Τα μέλη μπορούν να δημιουργήσουν ετικέτες
     members_can_create_tags_help: Επιτρέψτε στα μέλη να δημιουργούν νέες ετικέτες κατά την προσθήκη ετικετών σε νήματα και δημοσκοπήσεις
+    non_members_can_start_discussions: Τα μη μέλη μπορούν να ξεκινήσουν συζητήσεις
+    non_members_can_start_discussions_help: Να επιτρέπεται σε μη μέλη να ξεκινούν μια συζήτηση από ένα από τα πρότυπα αυτής της ομάδας
   group_export_modal:
     title: Εξαγωγή δεδομένων ομάδας
     body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>
@@ -1447,6 +1518,11 @@ el:
     messages:
       request_approved_success: Εγκρίθηκε το αίτημα ένταξης
       request_ignored_success: Το αίτημα συμμετοχής αγνοήθηκε
+      request_declined_success: Το αίτημα εγγραφής απορρίφθηκε
+    decline: Πτώση
+    decline_request: Απόρριψη αιτήματος εγγραφής
+    decline_reason: Λόγος απόρριψης
+    decline_help: Η επιλογή "Απόρριψη" στέλνει τον λόγο στον αιτούντα μέσω email. Μπορεί να υποβάλει νέο αίτημα. Η επιλογή "Αγνόηση" κλείνει το αίτημα χωρίς να τον ειδοποιήσει.
   invitation_form:
     group_url: Διεύθυνση URL ομάδας
     reusable_invitation_link: Επαναχρησιμοποιήσιμος σύνδεσμος πρόσκλησης
@@ -1535,6 +1611,8 @@ el:
     online_field: 'Διαδικτυακό: %{value}'
     invited: Προσκλήθηκε %{value}
     message_user: Μήνυμα %{name}
+    recent_activity: Πρόσφατη δραστηριότητα
+    no_recent_activity: Δεν υπάρχει πρόσφατη δραστηριότητα
   contact_request_form:
     modal_title: email %{name}
     message_placeholder: Συστηθείτε και μοιραστείτε γιατί θέλετε να επικοινωνήσετε.
@@ -1625,8 +1703,7 @@ el:
     email_newsletter: Ενημερωτικό δελτίο Loomio
     email_newsletter_description: Λάβετε ενημερώσεις σχετικά με νέες δυνατότητες, εκπαίδευση, εκδηλώσεις στην πόλη σας και το μέλλον του Loomio. Συνήθως 2 ή 3 email το χρόνο.
     email_catch_up_day: Ενημερωτικό email σύνοψης
-    on_participation_label: Εγγραφείτε για συμμετοχή
-    on_participation_description: Όταν συμμετέχετε σε ένα νήμα, όλη η περαιτέρω δραστηριότητα θα σας αποσταλεί αμέσως μέσω email.
+    digest_email: Ενημερωτικό email σύνοψης
     announcement_label: Ανακοινώσεις
     announcement_description: Θα λάβετε ένα email για όλο το περιεχόμενο που έχει ανακοινωθεί από άτομα στις ομάδες σας
     mentioned_label: Αναφορές & Απαντήσεις
@@ -1642,8 +1719,14 @@ el:
     learn_more: Μάθετε περισσότερα σχετικά με τις ρυθμίσεις email...
     mentioned_description: Όταν κάποιος {'@'}σας αναφέρει σε ένα σχόλιο, θα λάβετε ένα email ειδοποίησης
     daily_summary_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
+    digest_email_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
     never: Ποτέ
     send_email: Αποστολή email
+    group_notifications: Ειδοποιήσεις ομάδας
+    group_notifications_description: Αλλάξτε το επίπεδο δραστηριότητας και το κανάλι για τις ομάδες σας
+    choose_email_and_push_updates: Επιλέξτε ξεχωριστές ρυθμίσεις για email και push
+    catch_up_email: Ενημερωτικό email
+    catch_up_email_description: Επιλέξτε πότε θα λαμβάνετε ενημερώσεις για τις αδημοσίευτες ειδοποιήσεις και τη μη αναγνωσμένη δραστηριότητα
   thread_preview:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"
@@ -1745,7 +1828,7 @@ el:
     title: Θεάθηκε από
     no_one: Κανείς δεν το έχει δει ακόμα αυτό
     disabled_anonymous_polls: Το ιστορικό προβολής είναι απενεργοποιημένο επειδή το νήμα περιέχει ανώνυμες δημοσκοπήσεις
-    thread_engagement: Thread engagement
+    thread_engagement: Συμμετοχή στη συζήτηση
   activity_card:
     count_responses: "%{count} απαντήσεις"
     beginning: Αρχή
@@ -2061,6 +2144,7 @@ el:
     order_by_created_desc: Νεότερο
     order_by_admin_desc: Διαχειριστές
     loaded_of_total: "%{loaded} από %{total}"
+    topics_loaded_of_total: "%{loaded} από %{total}"
     view_requests: Προβολή αιτημάτων
     header_name: Όνομα
     header_username: Όνομα χρήστη
@@ -2123,7 +2207,6 @@ el:
     voting_opens_at: Αυτό το %{poll_type} ανοίγει για ψηφοφορία %{time}
     unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Οι ανώνυμες ψήφοι αποθηκεύονται ξεχωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μετά το κλείσιμο της ψηφοφορίας.
-    legacy_anonymous_voting_format: Αυτή η δημοσκόπηση χρησιμοποιεί την παλαιότερη μορφή ανώνυμης ψηφοφορίας
     anonymous_vote_cannot_be_changed: Δεν μπορείτε να ελέγξετε ή να αλλάξετε την ψήφο σας μετά την υποβολή της
     anonymous_vote_recorded: Η ψήφος σας καταγράφηκε
     legacy_vote_reasons: Λόγοι προηγούμενων ψήφων
@@ -2382,7 +2465,6 @@ el:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> μετακίνησε το νήμα από <strong>το %{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> έκλεισε το νήμα"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το νήμα"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> δημιούργησε ένα fork αυτού του νήματος: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> μοιράστηκε ένα αποτέλεσμα"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το %{polltype}"
@@ -2415,6 +2497,7 @@ el:
     sign_up_as: Δημιουργία λογαριασμού ως %{email}
     sign_in_as: Συνδεθείτε ως %{name}
     continue_with_provider: Συνέχεια με %{provider}
+    sign_in_with_provider: Σύνδεση με %{provider}
     continue_with_email: Συνεχίστε με email
     or_enter_your_email: Ή, πληκτρολογήστε τη διεύθυνση email σας
     enter_your_name: Εισάγετε το όνομά σας
@@ -2473,6 +2556,22 @@ el:
     invalid_login: Δεν είναι δυνατή η σύνδεσή σας με αυτά τα στοιχεία
     login_link_rate_limited: Ζητήθηκαν πάρα πολλά μηνύματα ηλεκτρονικού ταχυδρομείου σύνδεσης από αυτό το δίκτυο. Περιμένετε μία ώρα και δοκιμάστε ξανά.
     send_login_link_error: Παρουσιάστηκε κάποιο πρόβλημα κατά την αποστολή του email σύνδεσης. Δοκιμάστε ξανά.
+    sign_in_with_passkey: Συνδεθείτε με ένα κλειδί πρόσβασης
+    passkey_authentication_failed: Δεν μπορέσαμε να σας συνδέσουμε με αυτόν τον κωδικό πρόσβασης
+    passkey_registration_failed: Δεν μπορέσαμε να αποθηκεύσουμε αυτόν τον κωδικό πρόσβασης
+    passkey_default_name: Αντικλείδι
+    local_login_disabled: Αυτός ο ιστότοπος απαιτεί ενιαία σύνδεση
+    email_me_a_sign_in_code: Στείλτε μου έναν κωδικό σύνδεσης μέσω email
+    sign_in_with_code: Συνδεθείτε με έναν κωδικό
+    new_to_site: Νέος εδώ;
+    passkey_recent_authentication_required: Συνδεθείτε ξανά πριν αλλάξετε τα κλειδιά πρόσβασής σας
+    email_code_help: Εισαγάγετε τη διεύθυνση email σας και θα σας στείλουμε έναν εξαψήφιο κωδικό σύνδεσης
+    or_sign_in_with_password: Ή συνδεθείτε με κωδικό πρόσβασης
+    login_link_sent_if_account_exists: Εάν υπάρχει λογαριασμός για το %{email}, θα στείλουμε έναν κωδικό σύνδεσης
+    use_a_passkey: Χρησιμοποιήστε ένα κλειδί πρόσβασης
+    send_me_a_code: Στείλτε μου έναν κωδικό
+    email_code_help_short: Θα στείλουμε έναν εξαψήφιο κωδικό στη διεύθυνση email σας
+    login_link_sent_if_account_exists_sentence: Εάν υπάρχει λογαριασμός για το %{email}, θα στείλουμε έναν κωδικό σύνδεσης.
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ
@@ -2614,6 +2713,14 @@ el:
     tags_per_interval: Ετικέτες ανά %{interval}
     all_groups_and_direct_threads: Όλες οι ομάδες και τα άμεσα νήματα
     custom_selection: Προσαρμοσμένη επιλογή
+    all_votes_cast: Όλες οι ψήφοι που δόθηκαν
+    votes_cast: Ψήφοι που έδωσαν
+    votes_issued: Ψήφοι που εκδόθηκαν
+    votes_missed: Χαμένες ψήφοι
+    voting_record_per_user: Αρχείο ψηφοφορίας ανά χρήστη
+    yes_label: Ναί
+    no_label: Οχι
+    delegates_only: Μόνο για αντιπροσώπους
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ολοκληρώσατε όλα τα βήματα!"
     getting_started_checklist: Λίστα ελέγχου για το ξεκίνημα - Λίστα ελέγχου για το ξεκίνημα
@@ -2685,8 +2792,6 @@ el:
     anonymous:
       title: Ανώνυμοι ψηφοφόροι
       helptext_on: Όταν επιλεγεί, οι πληροφορίες των συμμετεχόντων δεν θα εμφανίζονται με κάθε απάντηση.
-    voter_can_add_options:
-      title: Οι ψηφοφόροι μπορούν να προσθέσουν εναλλακτικές επιλογές
     can_respond_maybe:
       title: Οι ψηφοφόροι μπορούν να απαντήσουν «αν χρειαστεί»
     allow_long_reason:
@@ -2813,7 +2918,10 @@ el:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Οι ανώνυμες ψήφοι αποθηκεύονται ξεχωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μετά το κλείσιμο της ψηφοφορίας. Οι ψηφοφόροι δεν μπορούν να προσθέσουν λόγους, να ελέγξουν την ψήφο τους μετά την υποβολή της ή να αλλάξουν την ψήφο τους.
     anonymous_voting_explanation: Καθιστούν αδύνατη τη γνώση του πώς ψήφισε κάποιος. Οι ανώνυμες ψήφοι καταγράφονται ξεχωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μόνο μετά το κλείσιμο της ψηφοφορίας. Οι ψηφοφόροι δεν μπορούν να προσθέσουν αιτιολογικές δηλώσεις, να ελέγξουν την ψήφο τους μετά την υποβολή της ή να αλλάξουν την ψήφο τους.
     anonymous_voting_risk_explanation: Οι ανώνυμες ψήφοι αποθηκεύονται χωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μόνο μετά το κλείσιμο της ψηφοφορίας και οι ψηφοφόροι δεν μπορούν να προσθέσουν αιτιολογήσεις, να ελέγξουν την ψήφο τους μετά την υποβολή ή να την αλλάξουν. Αυτά τα μέτρα μειώνουν τον κίνδυνο σύνδεσης ενός ατόμου με μια ψήφο, αλλά τα αποτελέσματα μπορεί να αποκαλύπτουν πληροφορίες όταν λίγα άτομα έχουν δικαίωμα ψήφου ή ψηφίζουν, το αποτέλεσμα είναι ομόφωνο, τα μοτίβα ψήφου είναι ιδιαίτερα ή οι ψηφοφόροι αποκαλύπτουν τις επιλογές τους.
+    anonymous_votes_stored_separately: Οι ανώνυμες ψήφοι αποθηκεύονται χωριστά από τις ταυτότητες των ψηφοφόρων. Τα αποτελέσματα εμφανίζονται μόνο μετά το κλείσιμο της ψηφοφορίας και οι ψηφοφόροι δεν μπορούν να προσθέσουν αιτιολογήσεις, να ελέγξουν την ψήφο τους μετά την υποβολή ή να την αλλάξουν.
     stance_reason_required_when_disagreeing: Υποχρεωτικό σε περίπτωση διαφωνίας
+    stance_reason_required_for_disagree_or_block: Απαιτείται για διαφωνία ή αποκλεισμό
+    stance_reason_required_for_block: Απαιτείται για μπλοκάρισμα
   poll_receipts_page:
     participation_status_requires_min_votes: Αυτό δείχνει ποιος είχε δικαίωμα ψήφου. Το αν ψήφισε κάθε άτομο εμφανίζεται μόνο όταν έχουν ψηφίσει τουλάχιστον %{count} άτομα.
     verify_participants: Επαλήθευση συμμετεχόντων
@@ -2957,9 +3065,6 @@ el:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: ψήφοι
     candidate: Υποψήφιος
     round_elected: Γύρος εκλογής
@@ -2969,6 +3074,9 @@ el:
     round_details: Λεπτομέρειες γύρο προς γύρο
     view_full_results: Δείτε τα πλήρη αποτελέσματα
     results_available_when_closed: Τα αποτελέσματα θα είναι διαθέσιμα όταν ολοκληρωθεί η ψηφοφορία
+    elected_in_round: Εξελέγη στον γύρο %{round}
+    eliminated_in_round: Αποκλείστηκε στον γύρο %{round}
+    tied_in_round: Ισόπαλος στον γύρο %{round}
   lock_thread_modal:
     body: Κλειδώστε τα νήματα για να τα αφαιρέσετε από τη λίστα των ανοιχτών νημάτων και να αποτρέψετε τα άτομα από το να σχολιάζουν.
     explanation: Κλείδωμα νημάτων για να αποτρέψετε τους χρήστες από το να σχολιάζουν ή να κάνουν περαιτέρω αλλαγές
@@ -2998,3 +3106,48 @@ el:
     nobody_will_be_notified: Κανείς δεν θα ειδοποιηθεί
     one_person_will_be_notified: 1 άτομο θα ειδοποιηθεί
     x_people_will_be_notified: "%{count} άτομα θα ειδοποιηθούν"
+  push_notifications:
+    title: Ειδοποιήσεις push
+    subtitle: Λήψη ειδοποιήσεων σε αυτό το πρόγραμμα περιήγησης
+    not_supported: Οι ειδοποιήσεις push δεν είναι διαθέσιμες σε αυτό το πρόγραμμα περιήγησης
+    permission_denied: Οι ειδοποιήσεις push αποκλείονται στις ρυθμίσεις του προγράμματος περιήγησής σας
+    manage_devices: Διαχείριση συσκευών push notification
+    enabled: Οι ειδοποιήσεις push ενεργοποιήθηκαν για αυτό το πρόγραμμα περιήγησης
+    disabled: Οι ειδοποιήσεις push είναι απενεργοποιημένες για αυτό το πρόγραμμα περιήγησης
+    device_removed: Η συσκευή push notification αφαιρέθηκε
+    enable_device: Ενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    disable_device: Απενεργοποίηση σε αυτό το πρόγραμμα περιήγησης
+    devices: Ενεργοποιημένα προγράμματα περιήγησης
+    browser_device: Πρόγραμμα περιήγησης
+    remove_device: Κατάργηση προγράμματος περιήγησης
+    enable_from_loomio: Ενεργοποίηση ειδοποιήσεων push από τις ρυθμίσεις ειδοποιήσεων ενώ είστε συνδεδεμένοι στο Loomio
+    ios_add_to_home_screen_before_enabling: Σε iPhone ή iPad, χρησιμοποιήστε την Κοινή χρήση για να προσθέσετε το Loomio στην Αρχική οθόνη σας. Ανοίξτε το Loomio από το νέο εικονίδιο και, στη συνέχεια, ενεργοποιήστε τις ειδοποιήσεις push εδώ.
+  group_follow:
+    follow: Ακολουθήστε τις ενημερώσεις
+    unfollow: Κατάργηση παρακολούθησης ενημερώσεων
+    followed: Παρακολουθείτε τώρα ενημερώσεις από αυτήν την ομάδα
+    unfollowed: Δεν παρακολουθείτε πλέον ενημερώσεις από αυτήν την ομάδα
+  passkey_settings:
+    title: Κλειδιά πρόσβασης
+    helptext: Τα κλειδιά πρόσβασης σάς επιτρέπουν να συνδέεστε με τη συσκευή σας χωρίς να εισάγετε τη διεύθυνση email ή τον κωδικό πρόσβασής σας
+    none: Δεν έχετε προσθέσει κλειδί πρόσβασης
+    name: Όνομα κλειδιού πρόσβασης
+    name_placeholder: Για παράδειγμα, φορητός υπολογιστής εργασίας
+    add: Προσθήκη κλειδιού πρόσβασης
+    added: Προστέθηκε κλειδί πρόσβασης
+    created_at: Προστέθηκε %{date}
+    remove_named: Αφαίρεση %{name}
+    remove_confirm: Να καταργηθεί ο κωδικός πρόσβασης με όνομα %{name};
+    removed: Το κλειδί πρόσβασης αφαιρέθηκε
+    remove_failed: Δεν ήταν δυνατή η κατάργηση του κλειδιού πρόσβασης
+  credential_prompt:
+    title: Προσθήκη άλλου τρόπου σύνδεσης
+    helptext: Προσθέστε ένα κλειδί πρόσβασης ή ορίστε έναν κωδικό πρόσβασης, ώστε να μπορείτε να συνδεθείτε χωρίς να περιμένετε έναν κωδικό που θα σας σταλεί μέσω email
+    add_passkey: Προσθήκη κλειδιού πρόσβασης
+    set_password: Ορισμός κωδικού πρόσβασης
+    not_now: Όχι τώρα
+    passkey_description: Ένα κλειδί πρόσβασης σάς επιτρέπει να συνδέεστε γρήγορα με το δακτυλικό αποτύπωμα, το πρόσωπο ή το κλείδωμα οθόνης της συσκευής σας
+    set_new_password: Ορισμός νέου κωδικού πρόσβασης
+  account_completion:
+    complete_your_account: Ολοκληρώστε τον λογαριασμό σας
+    continue: Συνεχίζω

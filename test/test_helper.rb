@@ -12,6 +12,8 @@ Minitest.parallel_executor = Minitest::Parallel::Executor.new(1)
 # Configure WebMock
 WebMock.disable_net_connect!(allow_localhost: true)
 
+# Migration tests invoke migrations directly; keep their progress output out of test results.
+ActiveRecord::Migration.verbose = false
 
 
 module ActiveSupport
@@ -41,6 +43,11 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
+
+    def create_push_subscription(user:, session: nil, **attributes)
+      session ||= user.sessions.create!(user_agent: "test browser", ip_address: "127.0.0.1")
+      PushSubscription.create!(session: session, **attributes)
+    end
 
     # Email helper methods
     def emails_sent_to(address)

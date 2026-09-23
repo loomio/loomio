@@ -1,5 +1,10 @@
 ---
 sv:
+  install_app:
+    install_title: Installera %{site_name}
+    install_description: Lägg till %{site_name} på hemskärmen för snabbare åtkomst
+    install_button: Installera
+    ios_install_description: Öppna Dela i Safari och välj Lägg till på hemskärmen
   start_trial:
     title: Starta en gratis provperiod av Loomio
     intro: Tack för ditt intresse för Loomio. Vi är glada över att kunna erbjuda dig en %{day}-dagars kostnadsfri provperiod så att du kan se om Loomio passar din organisation.
@@ -188,6 +193,7 @@ sv:
     prefix_eg: t.ex. %{val}
     are_you_sure: Är du säker?
     loomio_help: Loomio hjälp
+    user_manual: Användarhandbok
     visit_loomio_help: Besök Loomio hjälp
     help_and_guides: Hjälp & guider
     please_wait: Vänlig vänta
@@ -355,9 +361,16 @@ sv:
       flash: Verifieringsmail har skickats!
       helptext_and_signout: Du kan sammanfoga kontot under <strong>%{sourceEmail}</strong> med det som tillhör <strong>%{targetEmail}</strong> . Klicka på Verifiera så skickas ett verifieringsmeddelande till %{targetEmail} för att starta processen. Du kommer att loggas ut så att du kan logga in som målkontot för att slutföra sammanfogningen.
       flash_and_signout: Verifieringsmejlet har skickats till %{targetEmail}. Du är nu utloggad så att du kan logga in som målkontot för att slutföra sammanslagningen.
+      generic_helptext: Ange e-postadressen för det andra kontot. Om det kontot finns skickar Loomio ett e-postmeddelande med instruktioner för att bekräfta sammanslagningen.
+      email_label: Annan konto-e-postadress
+      send_verification: Skicka verifieringsmejl
+      generic_flash_and_signout: Om ett konto använder den e-postadressen har ett verifieringsmejl skickats. Du är nu utloggad så att du kan fortsätta med det andra kontot.
+      destination_helptext: Detta konto (%{sourceEmail}) kommer att slås samman med destinationskontot. Ange destinationskontots e-postadress. Om den finns kommer Loomio att skicka ett e-postmeddelande till den adressen för att bekräfta sammanslagningen.
+      destination_email_label: E-postadress för målkontot
     email_taken: Tyvärr, den e-postadressen är redan kopplad till en annan användare. Tillhör det mejlet dig?
     find_out_more: Få reda på mer.
     placeholder_modal_text: <p>Om du vill slå samman två konton anger du helt enkelt respektive e-postadress (som tillhör det andra kontot) i e-postfältet på din profilsida och följer instruktionerna som visas.</p><p> Behövs hjälp? <a href="/contact" target="_blank">Kontakta oss</a> .
+    email_may_belong_to_another_account: Om den här adressen tillhör ett annat konto kan du slå samman kontona
   emoji_picker:
     search: Sök
     common: Ofta använd
@@ -433,18 +446,26 @@ sv:
     title_label: Titel
     hint: 'Tips till nästa gång: Försök att markera lite text innan du klickar på "Fäst".'
   change_volume_form:
+    context_title:
+      thread: Inställningar för trådaviseringar
+      group: Inställningar för gruppmeddelanden
+      default: Standardinställningar för aviseringar
+    context:
+      thread: den här tråden
+      group: den här gruppen
+      default: grupper du går med i
     explain_scope:
       thread: Detta ändras när du får ett meddelande om den här tråden
       group: Detta ändras när du får ett meddelande om alla trådar i gruppen
     simple:
       label: Notifieringar
       loud: Prenumererade
-      normal: Normal
       quiet: Ignorera
       question: När vill du bli meddelad?
       loud_explain: närhelst det är aktivitet
       normal_explain: när någon ber om din uppmärksamhet
       quiet_explain: inga notifikationer
+      normal: Normal
     loud_label: All aktivitet
     normal_label: Meddelanden
     quiet_label: Inga e-post
@@ -515,6 +536,36 @@ sv:
     normal_option: När någon vill ha min uppmärksamhet (när jag får besked)
     quiet_option: Inga e-postmeddelanden om den här tråden (Av)
     quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig.
+    volume_email_label: E-post
+    volume_push_label: Push
+    all_activity_option: All aktivitet
+    when_notified_option: När du meddelas
+    muted_option: Ljudlös
+    volume_channel_label: Hur ska vi uppdatera er?
+    email_channel: E-post
+    push_channel: Push
+    email_and_push_channel: E-post och push
+    off_option: Av
+    apply_to_all_threads_in_group: Tillämpa dessa inställningar på alla trådar i %{group}
+    delivery_method: Leveransmetod
+    how_do_you_want_to_stay_updated: Hur vill du hålla dig uppdaterad?
+    catch_up_daily_hint: Din uppdatering är ett dagligt e-postmeddelande med osedda aviseringar och oläst aktivitet
+    catch_up_every_second_day_hint: Din catch-up är ett e-postmeddelande som skickas varannan dag med osedda aviseringar och oläst aktivitet
+    catch_up_weekly_hint: Din catch-up är ett veckovis e-postmeddelande med osedda aviseringar och oläst aktivitet
+    catch_up_only_option: Endast ikapp
+    no_email_updates_option: Inga e-postuppdateringar
+    no_push_updates_option: Inga push-uppdateringar
+    in_app_only_option: Endast i appen
+    catch_up_only_description: Inkludera aktivitet från %{context} i min uppdatering
+    catch_up_only_with_notifications_description: Inkludera aviseringar och annan aktivitet från %{context} i mina uppdateringar
+    no_email_updates_description: Skicka inte e-post till mig om aktivitet i %{context}
+    no_push_updates_description: Skicka inte push-meddelanden om aktivitet i %{context}
+    email_when_notified_description: Maila mig när jag får ett meddelande
+    email_when_notified_with_catch_up_description: Maila mig när jag får ett meddelande och inkludera resten i mina uppdateringar
+    push_when_notified_description: Skicka en push-notis när jag får en avisering
+    push_when_notified_with_catch_up_description: Skicka en push-notis när jag får en avisering och inkludera resten i mina uppdateringar.
+    email_all_activity_description: Maila mig när det finns aktivitet i %{context}
+    push_all_activity_description: Skicka en push-notis när det finns aktivitet i %{context}
   inbox:
     clear: Klar
     latest: Senaste
@@ -620,6 +671,16 @@ sv:
     email_notifications: E-posta när du får meddelande
     email_none: Inga e-postmeddelanden
     new_to_you: Nytt för dig
+    email_and_push_when_notified: E-post och pushnotis när du får ett meddelande
+    email_when_notified: E-post när du får ett meddelande
+    push_when_notified: Pushnotis när du får ett meddelande
+    daily_catch_up_email: Dagligt sammanfattningsmejl
+    in_app_only: Endast i appen
+    email_and_device_when_notified: E-post- och enhetsaviseringar vid avisering
+    device_notification_when_notified: Enhetsmeddelande vid meddelande
+    no_notifications: Inga aviseringar
+    catch_up_email_every_second_day: Mejl om uppföljning varannan dag
+    weekly_catch_up_email: Veckovis e-postmeddelande med uppföljning
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen
@@ -679,6 +740,7 @@ sv:
     light_blue: Ljusblå
     dark_blue: Mörkblå
     whats_new: Nyheter
+    mobile_app_settings: Mobilinställningar
   membership_card:
     group_members: Gruppmedlemmar
     poll_members: "%{pollType} medlemmar"
@@ -755,6 +817,7 @@ sv:
       new_discussion: "%{actor} startade en diskussion: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: Din begäran om att gå med i %{title} avslogs
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -793,6 +856,7 @@ sv:
       new_comment: "%{actor} kommenterade i en diskussion"
       outcome_updated: "%{actor} uppdaterade resultatet"
       thread_locked: "%{actor} låste tråden"
+      membership_request_declined: Din begäran om att gå med i %{title} avslogs
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -837,6 +901,7 @@ sv:
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: Din begäran om att gå med i %{title} avslogs
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -934,7 +999,7 @@ sv:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Alla i gruppen
-      discussion_group: Alla i tråden
+      topic: Alla i tråden
       voters: Alla inbjudna att rösta
       decided_voters: Alla som röstade
       undecided_voters: Obestämda väljare
@@ -1167,6 +1232,8 @@ sv:
     membership_requested: Förfrågan om medlemskap
     messages:
       joined_group: Du är nu medlem i %{group}
+    membership_request_declined: 'Din begäran om att gå med avslogs: %{reason}'
+    request_membership_again: Be om att få gå med igen
   membership_request_form:
     heading: Be att få gå med
     name_label: Namn
@@ -1211,6 +1278,8 @@ sv:
     body: Är du säker på att du vill ta bort den här undergruppen? Alla trådar, omröstningar, filer och annat gruppinnehåll kommer att raderas permanent. Det rekommenderas att du exporterar gruppdata och manuellt laddar ner alla viktiga filer innan du fortsätter.
     confirm: Skriv '%{name}' för att bekräfta att du vill ta bort den här gruppen.
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
+    scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
+    deletion_after_grace_period: Den här gruppen är inte tillgänglig och kommer att raderas permanent efter %{days} dagar
   group_page:
     stats: Gruppstatistik
     threads: Trådar
@@ -1418,7 +1487,7 @@ sv:
     remove_background: ta bort bakgrunden
     remove_logo: ta bort logotypen
     members_can_create_templates: Medlemmar kan skapa mallar
-    members_can_create_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar. Mallar som skapats av medlemmar kommer att döljas tills en administratör visar dem.
+    members_can_create_discussion_and_poll_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar
     members_can_start_discussions_v2: Medlemmar kan starta nya diskussioner
     members_can_start_discussions_help_v2: Tillåt medlemmar att starta nya diskussioner inom gruppen
     members_can_edit_discussions_v2: Medlemmar kan hantera diskussioner och kommentarer
@@ -1427,6 +1496,8 @@ sv:
     handle_changed_hint: Din tidigare URL och e-postadress kommer att omdirigera till din nya adress.
     members_can_create_tags: Medlemmar kan skapa taggar
     members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
+    non_members_can_start_discussions: Icke-medlemmar kan starta diskussioner
+    non_members_can_start_discussions_help: Tillåt icke-medlemmar att starta en diskussion från en av den här gruppens mallar
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1447,6 +1518,11 @@ sv:
     messages:
       request_approved_success: Medlemsansökan godkänd
       request_ignored_success: Medlemskapsbegäran ignoreras
+      request_declined_success: Medlemskapsbegäran avvisad
+    decline: Nedgång
+    decline_request: Avböj medlemskapsbegäran
+    decline_reason: Anledning till avböjning
+    decline_help: Avslag skickar din anledning till sökanden via e-post. De kan skicka in en ny begäran. Ignorera stänger begäran utan att meddela dem.
   invitation_form:
     group_url: Grupp-URL
     reusable_invitation_link: Återanvändbar inbjudningslänk
@@ -1535,6 +1611,8 @@ sv:
     online_field: 'Online: %{value}'
     invited: Bjöd in %{value}
     message_user: Meddelande %{name}
+    recent_activity: Senaste aktivitet
+    no_recent_activity: Ingen aktivitet nyligen
   contact_request_form:
     modal_title: E-posta %{name}
     message_placeholder: Presentera dig själv och berätta varför du vill ta kontakt.
@@ -1625,8 +1703,7 @@ sv:
     email_newsletter: Loomio nyhetsbrev
     email_newsletter_description: Få uppdateringar om nya funktioner, utbildning, evenemang i din stad och framtiden för Loomio. Vanligtvis 2 eller 3 e-postmeddelanden per år.
     email_catch_up_day: E-post med sammanfattning
-    on_participation_label: Prenumerera på deltagande
-    on_participation_description: När du deltar i en tråd kommer all ytterligare aktivitet att mailas till dig omedelbart.
+    digest_email: E-post med sammanfattning
     announcement_label: Meddelanden
     announcement_description: Du kommer att få ett e-postmeddelande om allt innehåll som har annonserats av personer i dina grupper
     mentioned_label: Omnämnanden och svar
@@ -1642,8 +1719,14 @@ sv:
     learn_more: Läs mer om e-postinställningar...
     mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
     daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
+    digest_email_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
     never: Aldrig
     send_email: Skicka e-post
+    group_notifications: Gruppmeddelanden
+    group_notifications_description: Ändra aktivitetsnivå och kanal för dina grupper
+    choose_email_and_push_updates: Välj separata inställningar för e-post och push
+    catch_up_email: Mejla om uppdateringar
+    catch_up_email_description: Välj när du vill få en uppdaterad uppdatering om osedda aviseringar och oläst aktivitet
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
@@ -2061,6 +2144,7 @@ sv:
     order_by_created_desc: Nyaste
     order_by_admin_desc: Administratörer
     loaded_of_total: "%{loaded} av %{total}"
+    topics_loaded_of_total: "%{loaded} av %{total}"
     view_requests: Visa förfrågningar
     header_name: Namn
     header_username: Användarnamn
@@ -2123,7 +2207,6 @@ sv:
     voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
     unable_to_vote: Du har inte blivit inbjuden att rösta på denna %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Anonyma röster lagras separat från väljaridentiteter. Resultaten visas efter att röstningen avslutats.
-    legacy_anonymous_voting_format: Den här omröstningen använder det äldre formatet för anonym röstning
     anonymous_vote_cannot_be_changed: Du kan inte granska eller ändra din röst efter att du har skickat in den
     anonymous_vote_recorded: Din röst registrerades
     legacy_vote_reasons: Skäl från tidigare röster
@@ -2382,7 +2465,6 @@ sv:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> flyttade tråden från <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> stängde tråden"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade tråden igen"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> skapade en fork av denna tråd: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delade ett resultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade %{polltype} igen"
@@ -2415,6 +2497,7 @@ sv:
     sign_up_as: Skapa konto som %{email}
     sign_in_as: Logga in som %{name}
     continue_with_provider: Fortsätt med %{provider}
+    sign_in_with_provider: Logga in med %{provider}
     continue_with_email: Fortsätt med e-post
     or_enter_your_email: Eller ange din e-postadress
     enter_your_name: Ange ditt namn
@@ -2473,6 +2556,22 @@ sv:
     invalid_login: Det går inte att logga in dig med de uppgifterna
     login_link_rate_limited: För många inloggningsadresser har begärts från det här nätverket. Vänta en timme och försök igen.
     send_login_link_error: Något gick fel när inloggningsmejlet skulle skickas. Försök igen.
+    sign_in_with_passkey: Logga in med en lösenkod
+    passkey_authentication_failed: Vi kunde inte logga in dig med den lösenkoden
+    passkey_registration_failed: Vi kunde inte spara den lösenkoden
+    passkey_default_name: Lösenord
+    local_login_disabled: Den här webbplatsen kräver enkel inloggning
+    email_me_a_sign_in_code: Skicka mig en inloggningskod via e-post
+    sign_in_with_code: Logga in med en kod
+    new_to_site: Ny här?
+    passkey_recent_authentication_required: Logga in igen innan du ändrar dina passkeys
+    email_code_help: Ange din e-postadress så skickar vi dig en sexsiffrig inloggningskod
+    or_sign_in_with_password: Eller logga in med ett lösenord
+    login_link_sent_if_account_exists: Om det finns ett konto för %{email} skickar vi en inloggningskod
+    use_a_passkey: Använd en lösennyckel
+    send_me_a_code: Skicka mig en kod
+    email_code_help_short: Vi skickar en sexsiffrig kod till din e-postadress
+    login_link_sent_if_account_exists_sentence: Om det finns ett konto för %{email} skickar vi en inloggningskod.
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen
@@ -2614,6 +2713,14 @@ sv:
     tags_per_interval: Taggar per %{interval}
     all_groups_and_direct_threads: Alla grupper och direkta trådar
     custom_selection: Anpassat val
+    all_votes_cast: Alla avgivna röster
+    votes_cast: Avgivna röster
+    votes_issued: Utfärdade röster
+    votes_missed: Missade röster
+    voting_record_per_user: Röstningsstatistik per användare
+    yes_label: Ja
+    no_label: Inga
+    delegates_only: Endast ombud
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har slutfört alla steg!"
     getting_started_checklist: Checklista för att komma igång
@@ -2685,8 +2792,6 @@ sv:
     anonymous:
       title: Anonyma väljare
       helptext_on: När detta är valt visas inte deltagarinformation med varje svar.
-    voter_can_add_options:
-      title: Väljare kan lägga till alternativ
     can_respond_maybe:
       title: Väljarna kan svara "vid behov"
     allow_long_reason:
@@ -2813,7 +2918,10 @@ sv:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyma röster lagras separat från väljaridentiteter. Resultaten visas efter att omröstningen avslutats. Väljare kan inte lägga till skäl, granska sin röst efter att ha skickat in den eller ändra sin röst.
     anonymous_voting_explanation: Gör det omöjligt att veta hur någon röstade. Anonyma röster registreras separat från väljaridentiteter. Resultaten visas bara efter att omröstningen avslutats. Väljare kan inte lägga till skäl, granska sin röst efter att ha skickat in den eller ändra sin röst.
     anonymous_voting_risk_explanation: Anonyma röster lagras separat från väljarnas identiteter. Resultaten visas först när omröstningen har avslutats, och väljare kan inte lägga till skäl, granska sin röst efter att den skickats in eller ändra den. Dessa åtgärder minskar risken för att koppla en person till en röst, men resultaten kan fortfarande avslöja information när få personer är röstberättigade eller röstar, resultatet är enhälligt, röstmönster är särskiljande eller väljare avslöjar sina val.
+    anonymous_votes_stored_separately: Anonyma röster lagras separat från väljarnas identiteter. Resultaten visas först när omröstningen har avslutats, och väljare kan inte lägga till skäl, granska sin röst efter att den skickats in eller ändra den.
     stance_reason_required_when_disagreeing: Krävs vid oenighet
+    stance_reason_required_for_disagree_or_block: Krävs för att inte godkänna eller blockera
+    stance_reason_required_for_block: Krävs vid blockering
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare
@@ -2957,9 +3065,6 @@ sv:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: röster
     candidate: Kandidat
     round_elected: valde i omgången
@@ -2969,6 +3074,9 @@ sv:
     round_details: Detaljer runda för runda
     view_full_results: Visa fullständiga resultat
     results_available_when_closed: Resultaten kommer att finnas tillgängliga när omröstningen avslutas
+    elected_in_round: Vald i omgång %{round}
+    eliminated_in_round: Eliminerad i runda %{round}
+    tied_in_round: Oavgjort i rundan %{round}
   lock_thread_modal:
     body: Lås trådar för att ta bort dem från listan över öppna trådar och förhindra att folk kommenterar.
     explanation: Lås trådar för att förhindra att folk kommenterar eller gör ytterligare ändringar
@@ -2998,3 +3106,48 @@ sv:
     nobody_will_be_notified: Ingen kommer att bli underrättad
     one_person_will_be_notified: 1 person kommer att meddelas
     x_people_will_be_notified: "%{count} personer kommer att meddelas"
+  push_notifications:
+    title: Push-meddelanden
+    subtitle: Få aviseringar i den här webbläsaren
+    not_supported: Push-meddelanden är inte tillgängliga i den här webbläsaren
+    permission_denied: Push-notiser är blockerade i dina webbläsarinställningar
+    manage_devices: Hantera enheter med push-meddelanden
+    enabled: Push-notiser aktiverade för den här webbläsaren
+    disabled: Push-notiser inaktiverade för den här webbläsaren
+    device_removed: Push-notifieringsenhet borttagen
+    enable_device: Aktivera i den här webbläsaren
+    disable_device: Inaktivera i den här webbläsaren
+    devices: Aktiverade webbläsare
+    browser_device: Webbläsare
+    remove_device: Ta bort webbläsaren
+    enable_from_loomio: Aktivera push-notiser från aviseringsinställningarna när du är inloggad på Loomio
+    ios_add_to_home_screen_before_enabling: På iPhone eller iPad, använd Dela för att lägga till Loomio på din startskärm. Öppna Loomio från den nya ikonen och aktivera sedan push-notiser här.
+  group_follow:
+    follow: Följ uppdateringar
+    unfollow: Sluta följa uppdateringar
+    followed: Du följer nu uppdateringar från den här gruppen
+    unfollowed: Du följer inte längre uppdateringar från den här gruppen
+  passkey_settings:
+    title: Lösenord
+    helptext: Med lösenord kan du logga in med din enhet utan att ange din e-postadress eller ditt lösenord
+    none: Du har inte lagt till en lösennyckel
+    name: Lösenordsnamn
+    name_placeholder: Till exempel, arbetsdator
+    add: Lägg till lösenord
+    added: Lösenord tillagt
+    created_at: Tillagd %{date}
+    remove_named: Ta bort %{name}
+    remove_confirm: Ta bort passkeyn %{name}?
+    removed: Passkey borttagen
+    remove_failed: Passkeyn kunde inte tas bort
+  credential_prompt:
+    title: Lägg till ett annat sätt att logga in
+    helptext: Lägg till en lösenkod eller ett lösenord så att du kan logga in utan att vänta på en kod via e-post
+    add_passkey: Lägg till en lösennyckel
+    set_password: Ange ett lösenord
+    not_now: Inte nu
+    passkey_description: En passnyckel låter dig logga in snabbt med enhetens fingeravtryck, ansiktsigenkänning eller skärmlås
+    set_new_password: Ange ett nytt lösenord
+  account_completion:
+    complete_your_account: Slutför ditt konto
+    continue: Fortsätta

@@ -15,7 +15,7 @@ import defaultLocale from 'date-fns/locale/en-US';
 const en = enData.en
 const loadedLocales = ['en'];
 export var dateLocale = defaultLocale
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 const fixCase = function(locale) {
   const splits = locale.replace('-', '_').split('_');
@@ -70,10 +70,40 @@ export async function loadLocaleMessages(i18n, locale) {
       return false
     }
 
-    const dateMessages = await dateLocales[dateLocaleKey]()
-    const appMessages = await clientLocales[clientLocaleKey]();
-    dateLocale = dateMessages.default;
-    i18n.global.setLocaleMessage(locale, appMessages.default[locale])
+    const [dateMessages, appMessages] = await Promise.all([
+      dateLocales[dateLocaleKey](),
+      clientLocales[clientLocaleKey](),
+    ])
+    const localeData = appMessages.default
+
+    if (!localeData) {
+      Sentry.captureMessage(`missing default export: ${clientLocaleKey}`, {
+        level: 'warning',
+        extra: {
+          locale,
+          moduleKeys: Object.keys(appMessages),
+          documentVisibility: document.visibilityState,
+        },
+      })
+      return false
+    }
+
+    const localeMessages = localeData[locale]
+
+    if (!localeMessages) {
+      Sentry.captureMessage(`empty clientLocale: ${clientLocaleKey}`, {
+        level: 'warning',
+        extra: {
+          locale,
+          moduleDefaultKeys: Object.keys(localeData),
+          documentVisibility: document.visibilityState,
+        },
+      })
+      return false
+    }
+
+    dateLocale = dateMessages?.default || defaultLocale;
+    i18n.global.setLocaleMessage(locale, localeMessages)
   }
 
   setI18nLanguage(i18n, locale);

@@ -5,7 +5,6 @@ class NotificationSerializer < ApplicationSerializer
              :url,
              :kind,
              :actor_id,
-             :event_id,
              :name,
              :title,
              :poll_type,
@@ -13,7 +12,11 @@ class NotificationSerializer < ApplicationSerializer
              :model
 
   def url
-    event.notification_url
+    object.notification_url
+  end
+
+  def viewed
+    object.viewed_for?(scope[:current_user_id])
   end
 
   has_one :actor, serializer: AuthorSerializer, root: :users
@@ -39,19 +42,10 @@ class NotificationSerializer < ApplicationSerializer
   end
 
   def tv(key)
-    object.translation_values[key.to_s]
+    object.translation_values_for(scope[:current_user_id])[key.to_s]
   end
 
   def kind
-    if event.kind == "announcement_created"
-      event.custom_fields['kind'] || "group_announced"
-    elsif event.kind == 'user_mentioned' &&
-       event.eventable.respond_to?(:parent) &&
-       event.eventable.parent.present? &&
-       event.eventable.parent.author == object.user
-      "comment_replied_to" 
-    else
-      event.kind
-    end
+    object.kind
   end
 end

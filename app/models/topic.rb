@@ -6,10 +6,10 @@ class Topic < ApplicationRecord
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true
   belongs_to :locker, foreign_key: 'locker_id', class_name: 'User', optional: true
-  has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
+  has_many :items, -> { includes(:user) }, class_name: 'TopicItem', dependent: :destroy
   has_many :topic_readers, dependent: :destroy
   has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
-  has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
+  has_many :comments, through: :items, source: :itemable, source_type: 'Comment'
   has_many :polls, dependent: :destroy
   has_many :discussions, dependent: :destroy
 
@@ -30,9 +30,23 @@ class Topic < ApplicationRecord
     where(discarded_at: nil)
   }
 
-  scope :not_archived, -> {
-    where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+  scope :group_kept, -> {
+    where(group_kept_condition)
   }
+
+  scope :group_enabled, -> {
+    where(group_enabled_condition)
+  }
+
+  def self.group_kept_condition
+    arel_table[:group_id].eq(nil).or(Group.arel_table[:discarded_at].eq(nil))
+  end
+
+  def self.group_enabled_condition
+    arel_table[:group_id].eq(nil).or(
+      Group.arel_table[:discarded_at].eq(nil).and(Arel.sql(Group.subscription_active_sql))
+    )
+  end
 
   scope :locked, -> { where.not(locked_at: nil) }
   scope :not_locked, -> { where(locked_at: nil) }
@@ -47,7 +61,7 @@ class Topic < ApplicationRecord
     joins_groups
       .joins_reader(user.id)
       .not_discarded
-      .not_archived
+      .group_kept
       .where("(topics.group_id IN (:user_group_ids)) OR
               (topics.private = FALSE) OR
               (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
@@ -65,11 +79,25 @@ class Topic < ApplicationRecord
 
   validate :privacy_is_permitted_by_group
 
+  before_create :enforce_subscription_thread_limit!
   after_destroy :drop_sequence_id_sequence
 
   normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
 
-  delegate :members_can_raise_motions, to: :group, allow_nil: true
+  delegate :members_can_raise_motions, to: :group
+
+  def enforce_subscription_thread_limit!
+    return if group_id.blank?
+
+    parent_group = group.parent_or_self
+    subscription = parent_group.subscription
+    return if subscription&.max_threads.nil?
+
+    subscription.with_lock do
+      thread_count = Topic.where(group_id: parent_group.id_and_subgroup_ids).count
+      raise Subscription::MaxThreadsExceeded if thread_count >= subscription.max_threads
+    end
+  end
 
   def replies_count
     items_count - 1
@@ -156,7 +184,13 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(guest: true, inviter: inviter)
     else
-      topic_readers.create!(user: user, inviter: inviter, guest: true, volume: TopicReader.volumes[:normal])
+      topic_readers.create!(
+        user: user,
+        inviter: inviter,
+        guest: true,
+        volume_email: user.volume_email_default,
+        volume_push: user.volume_push_default
+      )
     end
   end
 
@@ -164,7 +198,13 @@ class Topic < ApplicationRecord
     if (tr = topic_readers.find_by(user: user))
       tr.update(inviter: inviter, admin: true)
     else
-      topic_readers.create!(user: user, inviter: inviter, admin: true, volume: TopicReader.volumes[:normal])
+      topic_readers.create!(
+        user: user,
+        inviter: inviter,
+        admin: true,
+        volume_email: user.volume_email_default,
+        volume_push: user.volume_push_default
+      )
     end
   end
 
@@ -191,27 +231,49 @@ class Topic < ApplicationRecord
     Array(ranges.last).last.to_i
   end
 
-  def members_by_volume(operator, volume)
-    return User.none unless persisted?
-    User.active.distinct
+  # Start from the same active member/guest union used for topic authorization,
+  # then join the records that hold topic and group delivery preferences.
+  private def members_with_volumes
+    members
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL) OR
-                (m.id IS NULL and tr.id IS NULL)')
-        .where("coalesce(tr.volume, m.volume, 2) #{operator} :volume", volume: volume)
   end
 
-  def volume_gte_quiet_members
-    members_by_volume('>=', TopicReader.volumes[:quiet])
+  # Persisted membership and topic-reader volumes are non-null snapshots.
+  # Account defaults seed them at creation; account changes are not live fallbacks.
+  def email_enabled_members
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) != :level',
+      level: TopicReader.volume_emails[:quiet]
+    )
   end
 
-  def volume_gte_normal_members
-    members_by_volume('>=', TopicReader.volumes[:normal])
+  def email_normal_members
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) = :level',
+      level: TopicReader.volume_emails[:normal]
+    )
   end
 
-  def volume_loud_members
-    members_by_volume('=', TopicReader.volumes[:loud])
+  def email_loud_members
+    members_with_volumes.where(
+      'coalesce(tr.volume_email, m.volume_email) = :level',
+      level: TopicReader.volume_emails[:loud]
+    )
+  end
+
+  def push_enabled_members
+    members_with_volumes.where(
+      'coalesce(tr.volume_push, m.volume_push) != :level',
+      level: TopicReader.volume_pushes[:quiet]
+    )
+  end
+
+  def push_loud_members
+    members_with_volumes.where(
+      'coalesce(tr.volume_push, m.volume_push) = :level',
+      level: TopicReader.volume_pushes[:loud]
+    )
   end
 
   def public?

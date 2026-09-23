@@ -417,6 +417,8 @@ zh_CN:
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
     new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
     direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为直接帖子。
+    invitation_rate_limit_reached_contact_support: 每日邀请名额已满，请立即联系客服。
+    subscription_thread_limit_reached: 此组织已达到帖子上限。请升级以继续使用 Loomio。
   group:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头
@@ -448,6 +450,7 @@ zh_CN:
       sign_in_required_html: 您必须登录才能继续。请<a href="/dashboard" target="_blank">登录</a>后重新加载此页面以继续。
       bad_login: 抱歉，您提供的密码与我们存档的密码不符。
       username_must_be_alphanumeric: 用户名必须仅包含小写字母和数字。
+      username_must_use_valid_characters: 用户名只能包含小写字母、数字、下划线和内部连字符
   poll:
     error:
       cannot_add_options: 无法向此投票添加选项
@@ -569,6 +572,17 @@ zh_CN:
     unsubscribe: 取消订阅或更改您的电子邮件偏好设置：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消订阅或更改您的电子邮件偏好设置。"
     catch_up:
+      subject:
+        votes_to_cast:
+          one: 您有 1 票可投。
+          other: 您有 %{count} 票可以投出。
+        people_mentioned:
+          one: 1 人提到了你
+          other: "%{count} 人提到了你"
+        polls_closing_soon:
+          one: 1 投票即将结束
+          other: "%{count} 项投票即将结束"
+        separator: "·"
       daily_subject: 昨天在 %{site_name}
       weekly_subject: 上周在 %{site_name}
       other_subject: 最近在 %{site_name}
@@ -577,6 +591,31 @@ zh_CN:
       thanks_for_reading: 感谢阅读，祝您度过美好的一天！
       marked_as_read_success: 邮件中的所有内容均已标记为已读
       click_here: 点击这里
+      catch_up_heading: 您的 %{site_name} 追赶
+      unread_topics: 未读主题
+      unread_threads: 未读帖子
+      mark_catch_up_as_read: 标记为已读
+    digest:
+      subject:
+        votes_to_cast:
+          one: 您有 1 票可投。
+          other: 您有 %{count} 票可以投出。
+        people_mentioned:
+          one: 1 人提到了你
+          other: "%{count} 人提到了你"
+        polls_closing_soon:
+          one: 1 投票即将结束
+          other: "%{count} 项投票即将结束"
+        separator: "·"
+      daily_subject: 昨天在 %{site_name}
+      weekly_subject: 上周在 %{site_name}
+      other_subject: 最近在 %{site_name}
+      do_not_reply: 请勿回复此邮件。
+      mark_as_read: 标记为已读
+      thanks_for_reading: 感谢阅读，祝您度过美好的一天！
+      marked_as_read_success: 邮件中的所有内容均已标记为已读
+      click_here: 点击这里
+      unread_topics: 未读主题
     group_membership_approved:
       intro: 您申请加入群组 %{group_name} 的请求已获批准。
       intro_html: 您申请加入群组<strong>%{group_name} 的</strong>请求已获批准。
@@ -588,6 +627,8 @@ zh_CN:
       subject: "%{who} 已申请加入 %{which_group}"
       view_group: 您可以在这里批准或拒绝请求。
       button_text: 查看请求
+    membership_request_declined:
+      button_text: 再次申请
   announcement_count_emails: "%{count}封邮件"
   email_actions:
     unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。
@@ -637,6 +678,21 @@ zh_CN:
     trial_expired:
       subject: 由于长时间未活动，您的 Loomio 群组将被删除。
       body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
+    destroy_warning_with_usage:
+      subject: 您的 Loomio 群组已被安排删除
+      requested: 您的 Loomio 群组“%{group}”已被 %{requestor} 安排删除。该群组将在 %{days} 天后被永久删除。
+      trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。除非您联系我们，否则它将在 %{grace_days} 天内被删除。
+      trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请在 %{grace_days} 天内回复此邮件。逾期后，群组及其数据将被永久删除。
+      trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
+      usage_heading: 组数据汇总：
+      subgroups: 亚组
+      members: 现任成员
+      discussions: 讨论
+      polls: 民意调查
+      comments: 评论
+      export: 如需保留该群组或导出其数据副本，请在 %{days} 天内回复此邮件。我们可以在删除前恢复访问权限。
+      export_link: 了解如何导出群组数据
+      group_key: 组键：%{key}
   forward_mailer:
     bounce:
       subject: 您发送给 Loomio 的消息未送达
@@ -670,3 +726,36 @@ zh_CN:
     file_too_large: 文件过大。最大上传大小为 %{limit}。
   merge_users:
     not_target_user: 您必须以目标帐户身份登录才能确认合并。
+  thread_markdown:
+    poll: 轮询
+    no_activity: 目前尚无评论、投票或结果
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: 评论 · %{author} %{timestamp}
+    comment_reply: 回复 %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**状态：** %{value}"
+    anonymous_voting: "**匿名投票：** %{value}"
+    options: "**选项：** %{value}"
+    'yes': 是的
+    closed: 已关闭 %{value}
+    scheduled_to_open: 计划于 %{value} 开放
+    open_until: 打开；关闭 %{value}
+    open: 打开
+    current_results: 当前结果
+    hidden_until_closed: 投票结束前隐藏
+    hidden_until_voted: 隐藏，直到观众投票。
+    voters: 选民
+    target: 目标
+    available: 可用的
+    available_if_needed: 如有需要可提供
+    unavailable: 不可用
+    anonymous: 匿名的
+    no_voters: 没有投票者
+    score: 得分：%{value}
+    vote: 投票：%{response} · %{author} %{timestamp}
+    none_of_the_above: 以上皆非
+    no_option_selected: 未选择任何选项
+    outcome: 结果 · %{author} %{timestamp}
+    review_date: "**审核日期：** %{value}"
+  error:
+    access_denied: 你没有权限这样做。

@@ -9,7 +9,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectNoElement('.group-page-actions button')
-    page.expectNoElement('.discussions-panel__new-thread-button')
+    page.expectNoElement('.discussions-panel__new-topic-button')
     page.click('.group-page-members-tab')
     page.expectText('.members-panel', 'You do not have permission to do this.')
   },
@@ -19,7 +19,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.group-page__description', 'An FBI agent goes undercover')
-    page.expectText('.thread-previews', "The name's Johnny Utah!")
+    page.expectText('.topic-previews', "The name's Johnny Utah!")
     // page.ensureSidebar()
     // page.expectText('.sidebar__groups', 'Johnny Utah')
   },
@@ -43,6 +43,29 @@ module.exports = {
     page.fillIn('.membership-request-form__introduction textarea', 'Hello I am a bot and id like to advertise junk to your fine membership')
     page.click('.membership-request-form__submit-btn')
     page.expectFlash('You have requested to join')
+    page.expectText('.join-group-button', 'Membership requested')
+    test.expect.element('.join-group-button').to.have.attribute('disabled')
+  },
+
+  'shows_decline_reason_and_allows_another_request': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_manual_oatmilk_declined_membership_request')
+    page.expectText('.group-page', 'Your request to join was declined: Please tell us which cafe you work with and how you would like to contribute.')
+    page.expectText('.join-group-button', 'Ask to join again')
+    page.click('.join-group-button')
+    page.fillIn('.membership-request-form__introduction textarea', 'I work with Harbour Cafe and can help coordinate Tuesday bottle collections.')
+    page.click('.membership-request-form__submit-btn')
+    page.expectFlash('You have requested to join')
+    page.expectText('.join-group-button', 'Membership requested')
+  },
+
+  'does_not_allow_another_request_after_ignore': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_manual_oatmilk_ignored_membership_request')
+    page.expectNoElement('.join-group-button')
+    page.expectNoText('.group-page', 'Your request to join was declined')
   },
 
   'can_join_closed_subgroup_when_admin_of_parent_group': (test) => {

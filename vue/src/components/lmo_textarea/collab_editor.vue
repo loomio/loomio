@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { ref, computed, watch, onMounted, onBeforeUnmount, toRef } from 'vue';
+import { useDisplay } from 'vuetify';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
@@ -15,7 +16,6 @@ import HardBreak from '@tiptap/extension-hard-break';
 import Heading from '@tiptap/extension-heading';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import Italic from '@tiptap/extension-italic';
-import Link from '@tiptap/extension-link';
 import Paragraph from '@tiptap/extension-paragraph';
 import Strike from '@tiptap/extension-strike';
 import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
@@ -27,6 +27,7 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import Text from '@tiptap/extension-text';
 import Underline from '@tiptap/extension-underline';
 import {CustomMention} from './extension_mention';
+import {CustomLink} from './extension_link';
 import {CustomImage} from './extension_image';
 import {Video} from './extension_image';
 import {Audio} from './extension_image';
@@ -35,8 +36,9 @@ import {Iframe} from './extension_iframe';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import { getEmbedLink } from '@/shared/helpers/embed_link';
+import { linkPreviewTopicId } from '@/shared/helpers/link_preview_topic_id';
+import { registerBeforeSaveCallback } from '@/shared/helpers/before_save_callback.mjs';
 
-import SuggestionList from './suggestion_list';
 import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
@@ -49,7 +51,7 @@ import CollaborationCaret from '@tiptap/extension-collaboration-caret'
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { IndexeddbPersistence } from 'y-indexeddb';
 
-import { useCommonMentioning, useHtmlMentioning, getMentionPluginConfig } from './composables/useMentioning';
+import { useMentionSuggestion } from './mention_suggestion';
 import { useAttaching } from './composables/useAttaching';
 import * as Y from 'yjs'
 
@@ -70,6 +72,10 @@ const props = defineProps({
   label: String,
   placeholder: String,
   maxLength: Number,
+  allowMentions: {
+    type: Boolean,
+    default: true
+  },
   autofocus: Boolean
 });
 
@@ -96,6 +102,7 @@ let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
 let syncFallbackTimeout = null;
+let unregisterBeforeSave = () => {};
 
 const btnProps = ref({
   size: 'small',
@@ -108,28 +115,10 @@ const iconProps = ref({
 });
 
 // Composables
+const { smAndDown } = useDisplay();
 const modelRef = toRef(props, 'model');
 
-const {
-  mentionsCache,
-  mentions,
-  query,
-  navigatedUserIndex,
-  suggestionListStyles,
-  fetchingMentions,
-  fetchMentionable,
-  updateMentions
-} = useCommonMentioning(modelRef);
-
-const htmlMentioning = useHtmlMentioning(
-  editor,
-  query,
-  mentions,
-  navigatedUserIndex,
-  suggestionListStyles,
-  fetchMentionable,
-  updateMentions
-);
+const mentionOptions = useMentionSuggestion(modelRef, toRef(props, 'allowMentions'));
 
 const {
   files,
@@ -200,10 +189,8 @@ watch(() => props.model, (newModel, oldModel) => {
       deleteDraft();
     }
 
-    // Register callback on new model instance
-    if (newModel && newModel.beforeSaves && !newModel.beforeSaves.includes(updateModel)) {
-      newModel.beforeSaves.push(updateModel);
-    }
+    unregisterBeforeSave();
+    unregisterBeforeSave = registerBeforeSaveCallback(newModel, updateModel);
   }
 });
 
@@ -265,13 +252,13 @@ const convertToMdHandler = () => {
 
 const toggleExpanded = () => {
   expanded.value = !expanded.value;
-  Records.users.saveExperience('html-editor.expanded', expanded.value);
+  if (!smAndDown.value) Records.users.saveExperience('html-editor.expanded', expanded.value);
 };
 
 const setLinkUrl = () => {
   if (linkUrl.value) {
     if (!linkUrl.value.includes("://")) {
-      linkUrl.value = "http://".concat(linkUrl.value);
+      linkUrl.value = "https://".concat(linkUrl.value);
     }
     editor.value.chain().setLink({href: linkUrl.value}).focus().run();
     fetchLinkPreviews([linkUrl.value]);
@@ -295,7 +282,7 @@ const emojiPicked = (shortcode, unicode) => {
 };
 
 const updateModel = () => {
-  if (!editor.value || format.value !== 'html') return;
+  if (!editor.value || editor.value.isDestroyed || format.value !== 'html') return;
   props.model[props.field] = editor.value.getHTML();
   updateFiles();
 };
@@ -322,7 +309,7 @@ const fetchLinkPreviews = (urls) => {
     fetchedUrls.value = uniq(fetchedUrls.value.concat(urls));
     Records.remote.post('link_previews', {
       urls,
-      topic_id: props.model.topicId || props.model.topic()?.id
+      topic_id: linkPreviewTopicId(props.model)
     }).then(data => {
       props.model.linkPreviews = uniqBy(
         props.model.linkPreviews.concat(data.previews),
@@ -374,29 +361,14 @@ onMounted(() => {
   // Fallback: If server doesn't connect within timeout, load content from local model
   syncFallbackTimeout = setTimeout(() => {
     if (!ydoc.getMap('config').get('initialContentLoaded')) {
-      console.log('Hocuspocus server unavailable, loading from local model');
+      console.log('Hocuspocus has not synced within 2 seconds, loading from local model');
       onSync();
     }
   }, 2000);
 
-  expanded.value = Session.user().experiences['html-editor.expanded'];
+  if (!smAndDown.value) expanded.value = Boolean(Session.user().experiences['html-editor.expanded']);
 
-  // Register beforeSave callback - it persists across model instances since it's on the array
-  props.model.beforeSaves.push(updateModel);
-
-  const mentionContext = {
-    query,
-    suggestionRange: htmlMentioning.suggestionRange,
-    insertMention: htmlMentioning.insertMention,
-    navigatedUserIndex,
-    suggestionListStyles,
-    fetchMentionable,
-    updateMentions,
-    upHandler: htmlMentioning.upHandler,
-    downHandler: htmlMentioning.downHandler,
-    enterHandler: htmlMentioning.enterHandler,
-    updatePopup: htmlMentioning.updatePopup
-  };
+  unregisterBeforeSave = registerBeforeSaveCallback(props.model, updateModel);
 
   editor.value = new Editor({
     editorProps: {
@@ -458,7 +430,7 @@ onMounted(() => {
       HorizontalRule,
       Italic,
       Iframe,
-      Link,
+      CustomLink,
       Paragraph,
       Placeholder.configure({placeholder: () => props.placeholder}),
       Strike,
@@ -469,7 +441,7 @@ onMounted(() => {
       TableCell,
       CustomTaskList,
       CustomTaskItem,
-      CustomMention.configure(getMentionPluginConfig(mentionContext)),
+      CustomMention.configure(mentionOptions),
       TextStyle,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Underline
@@ -516,6 +488,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
+  unregisterBeforeSave();
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
@@ -687,13 +660,6 @@ div.mb-2
       slot(name="actions")
 
   link-previews(:model="model" :remove="removeLinkPreview")
-  suggestion-list(
-    :query="query"
-    :loading="fetchingMentions"
-    :mentions="mentions"
-    :positionStyles="suggestionListStyles"
-    :navigatedUserIndex="navigatedUserIndex"
-    @select-row="htmlMentioning.selectRow")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")

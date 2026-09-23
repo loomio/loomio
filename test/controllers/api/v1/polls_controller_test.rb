@@ -59,12 +59,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       closing_at: 3.days.from_now,
       anonymous: true
     }, actor: @admin)
-    poll.update_columns(closed_at: Time.current)
+    poll.update_columns(closed_at: Time.current, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
     sign_in @user
     get :legacy_vote_reasons, params: {id: poll.key}
     assert_response :not_found
 
-    poll.update_columns(legacy_anonymous: true)
     ballot = poll.anonymous_ballots.create!(
       anonymous_ballot_choices_attributes: [
         {poll_option_id: poll.poll_options.first.id, score: 1}
@@ -98,7 +97,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     get :show, params: {id: poll.key}
     serialized_poll = JSON.parse(response.body).fetch("polls").first
-    assert_equal true, serialized_poll["legacy_anonymous"]
+    assert_equal 1, serialized_poll["legacy_anonymous_vote_reasons_count"]
 
     sign_in @alien
     get :legacy_vote_reasons, params: {id: poll.key}
@@ -188,6 +187,8 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Create tests
   test "create creates a poll in discussion" do
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))
     sign_in @admin
 
     assert_difference 'Poll.count', 1 do
@@ -212,6 +213,29 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal @admin, poll.author
     assert poll.vote_weights_enabled?
     assert_includes poll.admins, @admin
+  end
+
+  test "create standalone poll returns the subscription thread limit message" do
+    thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
+    @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))
+    sign_in @admin
+
+    assert_no_difference [ 'Poll.count', 'Topic.count' ] do
+      post :create, params: {
+        poll: {
+          title: 'over the limit',
+          poll_type: 'proposal',
+          group_id: @group.id,
+          options: %w[agree disagree],
+          closing_at: 3.days.from_now.at_beginning_of_hour
+        }
+      }
+    end
+
+    assert_response :forbidden
+    response_json = JSON.parse(response.body)
+    assert_equal I18n.t('errors.subscription_thread_limit_reached'), response_json['error']
+    assert_equal 'upgrade', response_json['action']
   end
 
   # Discard tests
@@ -389,12 +413,11 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
     }, actor: @admin)
-    Stance.create!(
+    AnonymousPollVoter.create!(
       poll: poll,
-      participant: @alien,
+      voter: @alien,
       inviter: @admin,
-      latest: true,
-      reason_format: @alien.default_format
+      group_member: false
     )
 
     sign_in @alien

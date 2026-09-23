@@ -1,0 +1,1 @@
+Group administrators can now decline a membership request with a required reason sent to the applicant by email. The in-app notification records that the request was declined without displaying the reason. Applicants can submit a corrected request after a reasoned decline. Administrators can instead ignore a request without notifying the applicant or allowing another request.

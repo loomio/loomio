@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     session_record = Session.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
     user = session_record&.user
 
-    user&.active_for_authentication? && user.is_admin?
+    user&.active? && user.is_admin?
   end
 
   constraints admin_session_constraint do
@@ -42,7 +42,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#show"
-    get :api, to: "api#show"
 
     resources :groups, only: %i[index show edit update] do
       collection do
@@ -57,14 +56,15 @@ Rails.application.routes.draw do
       member do
         post :move
         post :handle
-        post :archive
-        post :unarchive
-        post :delete_group
+        post :discard
+        post :undiscard
+        post :warn_and_discard
         post :export_group
       end
     end
 
     resources :users, only: %i[index show edit update] do
+      post :bulk_action, on: :collection
       member do
         post :login_as
         post :merge
@@ -86,6 +86,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     post 'hocuspocus', to: 'hocuspocus#create'
 
+    namespace :s1 do
+      post 'webhook', to: 'webhook#create'
+      post 'subscriptions/verify', to: 'subscriptions#verify'
+    end
+
     namespace :b2 do
       resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
@@ -96,6 +101,11 @@ Rails.application.routes.draw do
       end
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create, :update, :destroy]
+      resources :reports, only: [:index]
+      resources :search, only: [:index]
+      resources :chatbots, only: [:index, :create, :update, :destroy] do
+        post :check, on: :collection
+      end
     end
 
     namespace :b3, only: [] do
@@ -121,10 +131,27 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      namespace :mobile do
+        get :config, to: 'config#show'
+        post :token, to: 'tokens#create'
+        post 'web-session-tickets', to: 'web_session_tickets#create'
+        post 'relay-authorizations', to: 'relay_authorizations#create'
+        post 'relay-authorizations/verify', to: 'relay_authorizations#verify'
+        get 'push-registration', to: 'push_registrations#show'
+        post 'push-registration/test', to: 'push_registrations#test'
+        resources :activity, only: [:index, :update]
+        get :device, to: 'devices#show'
+        delete :device, to: 'devices#destroy'
+      end
+
       resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
-      resources :webhooks, only: [:create, :destroy, :index, :update]
+      resources :push_subscriptions, only: [:index, :create, :destroy] do
+        delete :destroy, on: :collection
+        post :reconcile, on: :collection
+        post :send_test, on: :collection
+      end
       resources :chatbots, only: [:create, :destroy, :index, :update] do
         post :check, on: :collection
       end
@@ -190,13 +217,16 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :group_follows, only: [:create, :destroy]
+
       resources :membership_requests, only: [:create] do
         collection do
-          get :my_pending
+          get :mine
           get :pending
           get :previous
         end
         post :approve, on: :member
+        post :decline, on: :member
         post :ignore, on: :member
       end
 
@@ -210,8 +240,6 @@ Rails.application.routes.draw do
           get  :all_time_zones
           get  :me
           get  :groups
-          get  :email_status
-          get  :email_exists
           post :send_merge_verification_email
           get  :contactable
           get  :avatar_uploaded
@@ -220,6 +248,7 @@ Rails.application.routes.draw do
           post :update_profile
           post :set_volume
           post :upload_avatar
+          post :use_provider_avatar
           post :save_experience
           delete :destroy
           post :deactivate
@@ -228,8 +257,15 @@ Rails.application.routes.draw do
       end
 
       resources :login_tokens, only: [:create]
+      resources :passkey_credentials, only: [:index, :create, :destroy] do
+        collection do
+          post :registration_options
+          post :authentication_options
+          post :authenticate
+        end
+      end
 
-      resources :events, only: :index do
+      resources :topic_items, only: :index do
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
@@ -245,8 +281,8 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :discard
-          post :undiscard
+          post :hide
+          post :unhide
           post :positions
         end
         get :export, on: :member
@@ -313,8 +349,6 @@ Rails.application.routes.draw do
           get :browse
           post :hide
           post :unhide
-          post :discard
-          post :undiscard
           post :positions
           post :settings
         end
@@ -380,7 +414,7 @@ Rails.application.routes.draw do
       namespace(:sessions)        { get :unauthorized }
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create do
-        post :oauth, on: :collection
+        post :complete, on: :collection
       end
       # identities command route removed (dead code)
     end
@@ -398,9 +432,9 @@ Rails.application.routes.draw do
   get '/users/sign_up', to: redirect('/dashboard')
   delete '/users/sign_out', to: 'api/v1/sessions#destroy', as: :destroy_user_session
 
-  resources :contact_messages, only: [:new, :create] do
-    get :show, on: :collection
-  end
+  get '/mobile/authorize', to: 'mobile/authorizations#show', as: :mobile_authorize
+  post '/mobile/authorize', to: 'mobile/authorizations#create'
+  post '/mobile/web-session', to: 'mobile/web_sessions#create', as: :mobile_web_session
 
   resources :poll_templates, only: [] do
     collection do
@@ -420,16 +454,14 @@ Rails.application.routes.draw do
     get :unsubscribe
     put :set_group_volume
     put :set_discussion_volume
-    get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
-    get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+    get 'mark_digest_as_read', action: 'mark_digest_as_read', as: :mark_digest_as_read
+    get 'mark_summary_email_as_read', action: 'mark_digest_as_read', as: :mark_summary_email_as_read
+    get 'mark_discussion_as_read/:discussion_id/:topic_item_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
   end
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
-  get '/help/api2'   => 'help#api2'
-  get '/whats_new'   => 'help#whats_new'
-
   get '/start_group', to: redirect('/try')
 
   get 'try'                                => 'application#index', as: :start_trial
@@ -440,6 +472,7 @@ Rails.application.routes.draw do
   get 'polls'                              => 'application#index', as: :polls
   get 'report'                             => 'application#index', as: :report
   get 'explore'                            => 'groups#index',      as: :explore, constraints: lambda { |_| ENV['FEATURES_EXPLORE_PUBLIC_GROUPS'] }
+  get 'profile/api_access'                 => 'api_access#show',   as: :profile_api_access
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
   get 'email_preferences'                  => 'application#index', as: :email_preferences
@@ -506,17 +539,25 @@ Rails.application.routes.draw do
 
 
   Identity::PROVIDERS.each do |provider|
-    scope provider do
-      get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
-      get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
-      delete '/',                           to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+    constraints ->(_request) { ENV["#{provider.upcase}_APP_KEY"].present? } do
+      scope provider do
+        get :oauth,                         to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
+        get :authorize,                     to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
+        delete '/',                         to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+      end
     end
   end
 
-  scope :saml do
-    post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
-    get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
+  constraints ->(_request) { ENV['SAML_APP_KEY'].present? } do
+    scope :saml do
+      post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
+      get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
+    end
   end
+
+  get '/subscriptions', to: 'subscription_portal#index', as: :subscription_portal
+  get '/subscriptions/manage/:group_id', to: 'subscription_portal#manage', as: :manage_subscription
+  get '/subscriptions/:group_id', to: 'subscription_portal#show', as: :subscription_portal_group
 
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 

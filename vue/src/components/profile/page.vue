@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
-import { includes, uniq, debounce, pickBy } from 'lodash-es';
+import { pickBy } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 import { I18n, loadLocaleMessages } from '@/i18n';
 import WatchRecords from '@/mixins/watch_records';
@@ -20,7 +20,6 @@ export default {
     return {
       user: null,
       originalUser: null,
-      existingEmails: [],
       currentTime: new Date(),
       timeZones: []
     };
@@ -41,6 +40,7 @@ export default {
 
   computed: {
     ssoDisableEditProfile() { return AppConfig.features.app.sso_disable_edit_profile; },
+    localLogin() { return AppConfig.features.app.local_login; },
     showHelpTranslate() { return AppConfig.features.app.help_link; },
     availableLocales() { return AppConfig.locales.map(h => { return {title: h.name, value: h.key} }) ; },
     dateTimeFormats() {
@@ -49,8 +49,7 @@ export default {
         return {value: pref, title: exact(this.currentTime, this.user.timeZone, pref)};
       });
     },
-    actions() { return pickBy(UserService.actions(Session.user(), this), action => action.canPerform()) },
-    emailExists() { return includes(this.existingEmails, this.user.email); }
+    actions() { return pickBy(UserService.actions(Session.user(), this), action => action.canPerform()) }
   },
 
   watch: {
@@ -96,34 +95,6 @@ export default {
       this.isDeleteUserModalOpen = false;
     },
 
-    openSendVerificationModal() {
-      openModal({
-        component: 'ConfirmModal',
-        props: {
-          confirm: {
-            submit: () => Records.users.sendMergeVerificationEmail(this.user.email),
-            signOut: true,
-            text: {
-              title:    'merge_accounts.modal.title',
-              raw_helptext: this.$t('merge_accounts.modal.helptext_and_signout', {sourceEmail: this.originalUser.email, targetEmail: this.user.email}),
-              submit:   'merge_accounts.modal.submit',
-              flash:    'merge_accounts.modal.flash_and_signout',
-              textArgs: {targetEmail: this.user.email}
-            }
-          }
-        }
-      });
-    },
-
-    checkEmailExistence: debounce(function() {
-      if (this.originalUser.email === this.user.email) { return; }
-      Records.users.checkEmailExistence(this.user.email).then(res => {
-        if (res.exists) {
-          this.existingEmails = uniq(this.existingEmails.concat([res.email]));
-        }
-      });
-    } , 250),
-
     submit() {
       Records.users.updateProfile(this.user).then(() => {
         Flash.success('profile_page.messages.updated');
@@ -150,13 +121,8 @@ v-main
                 v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username" :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='username')
 
-                //- span existingEmails: {{ existingEmails }}
-                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence" :disabled="ssoDisableEditProfile")
+                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='email')
-                .profile-page__email-taken(v-if="emailExists")
-                  span.email-taken-message(v-t="'merge_accounts.email_taken'")
-                  space
-                  a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.modal.title'")
 
               .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12.mb-4(@click="changePicture()")
                 user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")
@@ -201,7 +167,6 @@ v-main
             color="primary"
             variant="elevated"
             @click='submit()'
-            :disabled='emailExists'
             :loading="user.processing"
           )
             span(v-t="'profile_page.update_profile'")
@@ -213,6 +178,8 @@ v-main
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
             v-list-item-subtitle(v-if="action.subtitle" v-t="action.subtitle")
+
+      passkey-settings(v-if="localLogin")
 
 </template>
 

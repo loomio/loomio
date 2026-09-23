@@ -1,10 +1,11 @@
 class Group < ApplicationRecord
+  include Discard::Model
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
   include GroupPrivacy
-  include HasEvents
+  include HasNotifications
   include Translatable
 
   extend HasTokens
@@ -20,7 +21,6 @@ class Group < ApplicationRecord
 
   belongs_to :parent, class_name: 'Group'
   scope :empty_no_subscription, -> { joins('left join subscriptions on subscription_id = groups.subscription_id').where('subscriptions.id is null and groups.parent_id is null').where('memberships_count < 2 AND discussions_count < 3 and polls_count < 2 and subgroups_count = 0').where('groups.created_at < ?', 1.year.ago) }
-  scope :expired_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial').where('subscriptions.expires_at < ?', 12.months.ago) }
   scope :any_trial, -> { joins(:subscription).where('subscriptions.plan = ?', 'trial') }
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
@@ -35,7 +35,9 @@ class Group < ApplicationRecord
   has_many :all_members, through: :all_memberships, source: :user
 
   has_many :memberships, -> { active }
-  has_many :members, through: :memberships, source: :user
+  has_many :members, -> { active }, through: :memberships, source: :user
+  has_many :group_follows, dependent: :destroy
+  has_many :followers, through: :group_follows, source: :user
 
   has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
   has_many :delegates, through: :delegate_memberships, source: :user
@@ -44,10 +46,10 @@ class Group < ApplicationRecord
   has_many :accepted_members, through: :accepted_memberships, source: :user
 
   has_many :admin_memberships, -> { active.where(admin: true) }, class_name: 'Membership'
-  has_many :admins, through: :admin_memberships, source: :user
+  has_many :admins, -> { active }, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
-  has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
+  has_many :pending_membership_requests, -> { pending }, class_name: 'MembershipRequest'
 
   has_many :polls, through: :topics, source: :polls
   has_many :poll_templates, dependent: :destroy
@@ -67,24 +69,21 @@ class Group < ApplicationRecord
   belongs_to :subscription
 
   has_many :subgroups,
-           -> { where(archived_at: nil) },
+           -> { merge(Group.kept) },
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, dependent: :destroy, class_name: 'Group', foreign_key: :parent_id
   include GroupExportRelations
 
   scope :with_serializer_includes, -> { includes(:subscription) }
-  scope :archived, -> { where('archived_at IS NOT NULL') }
-  scope :published, -> { where(archived_at: nil) }
   scope :parents_only, -> { where(parent_id: nil) }
-  scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
-  scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
+  scope :enabled, -> { kept.where(subscription_active_sql) }
+  scope :visible_to_public, -> { kept.where(is_visible_to_public: true) }
+  scope :hidden_from_public, -> { kept.where(is_visible_to_public: false) }
   scope :mention_search, lambda { |q|
     where("groups.name ilike :first OR groups.name ilike :other OR groups.handle ilike :first",
           first: "#{q}%", other: "% #{q}%")
   }
-  scope :in_organisation, ->(group) { where(id: group.id_and_subgroup_ids) }
-
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   scope :by_slack_team, ->(team_id) {
@@ -118,7 +117,7 @@ class Group < ApplicationRecord
   define_counter_cache(:org_members_count)          { |g| Membership.active.where(group_id: g.id_and_subgroup_ids).count('distinct user_id') }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
-  define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
+  define_counter_cache(:subgroups_count)            { |g| g.subgroups.count }
   update_counter_cache(:parent, :subgroups_count)
 
   delegate :include?, to: :users, prefix: true
@@ -132,7 +131,8 @@ class Group < ApplicationRecord
                          :description,
                          :description_format,
                          :handle,
-                         :archived_at,
+                         :discarded_at,
+                         :discarded_by,
                          :parent_members_can_see_discussions,
                          :key,
                          :is_visible_to_public,
@@ -145,6 +145,7 @@ class Group < ApplicationRecord
                          :members_can_delete_comments,
                          :members_can_raise_motions,
                          :members_can_start_discussions,
+                         :non_members_can_start_discussions,
                          :members_can_create_subgroups,
                          :members_can_create_tags,
                          :creator_id,
@@ -206,23 +207,20 @@ class Group < ApplicationRecord
     members.exists?(user.id)
   end
 
-  def members_by_volume(operator, volume)
-    User.active.distinct
-        .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
-        .where('m.revoked_at IS NULL')
-        .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
+  def email_enabled_members
+    members.where.not('memberships.volume_email': Membership.volume_emails[:quiet])
   end
 
-  def volume_gte_quiet_members
-    members_by_volume('>=', Membership.volumes[:quiet])
+  def email_loud_members
+    members.where('memberships.volume_email': Membership.volume_emails[:loud])
   end
 
-  def volume_gte_normal_members
-    members_by_volume('>=', Membership.volumes[:normal])
+  def push_enabled_members
+    members.where.not('memberships.volume_push': Membership.volume_pushes[:quiet])
   end
 
-  def volume_loud_members
-    members_by_volume('=', Membership.volumes[:loud])
+  def push_loud_members
+    members.where('memberships.volume_push': Membership.volume_pushes[:loud])
   end
 
   def author_id
@@ -261,6 +259,21 @@ class Group < ApplicationRecord
 
   def parent_or_self
     parent || self
+  end
+
+  # A missing subscription is the permanent free tier. Subgroups inherit the
+  # organisation subscription rather than requiring a subscription of their own.
+  def subscription_active?
+    return Group.where(id: id).where(self.class.subscription_active_sql).exists? if persisted?
+
+    subscription_record = parent_or_self.subscription
+    subscription_record.nil? || subscription_record.is_active?
+  end
+
+  def enabled?
+    return kept? && subscription_active? unless persisted?
+
+    Group.enabled.exists?(id: id)
   end
 
   def self_and_subgroups
@@ -304,14 +317,47 @@ class Group < ApplicationRecord
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def archive!
-    Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
+  def discard!(actor: nil, at: Time.current)
+    Group.transaction do
+      PaperTrail.request(whodunnit: actor&.id) do
+        Group.kept.where(id: id_and_subgroup_ids).find_each do |group|
+          group.assign_attributes(discarded_at: at, discarded_by: actor&.id)
+          group.save!(validate: false)
+        end
+      end
+    end
     reload
   end
 
-  def unarchive!
-    Group.where(id: id_and_subgroup_ids).update_all(archived_at: nil)
+  def undiscard!(actor: nil)
+    discarded_at = self.discarded_at
+    return reload unless discarded_at
+
+    Group.transaction do
+      PaperTrail.request(whodunnit: actor&.id) do
+        # Preserve subgroups that were already discarded before this tree was.
+        Group.where(id: id_and_subgroup_ids, discarded_at: discarded_at).find_each do |group|
+          group.assign_attributes(discarded_at: nil, discarded_by: nil)
+          group.save!(validate: false)
+        end
+      end
+    end
     reload
+  end
+
+  # Shared SQL form of subscription_active? for scopes that require an enabled group.
+  # Loomio subscriptions live on root groups; a subgroup inherits its parent.
+  def self.subscription_active_sql
+    subscription_id = "COALESCE(groups.subscription_id, " \
+                      "(SELECT parent.subscription_id FROM groups parent WHERE parent.id = groups.parent_id))"
+    sanitize_sql_array([ <<~SQL.squish, { states: Subscription::ACTIVE_STATES, now: Time.current } ])
+      (#{subscription_id} IS NULL OR EXISTS (
+        SELECT 1 FROM subscriptions enabled_subscriptions
+        WHERE enabled_subscriptions.id = #{subscription_id}
+          AND enabled_subscriptions.state IN (:states)
+          AND (enabled_subscriptions.expires_at IS NULL OR enabled_subscriptions.expires_at > :now)
+      ))
+    SQL
   end
 
   def org_accepted_members_count
@@ -357,7 +403,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    subgroup_ids.concat([id]).compact.uniq
+    all_subgroup_ids.concat([id]).compact.uniq
   end
 
   def self.update_org_members_count_for_group_ids(group_ids)

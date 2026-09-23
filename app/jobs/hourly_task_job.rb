@@ -1,8 +1,8 @@
 class HourlyTaskJob < ApplicationJob
   def perform
-    hour = Time.now.hour
+    now = Time.current.utc
+    hour = now.hour
 
-    puts "#{DateTime.now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
     EventBus.broadcast('loomio_hourly_tick', hour)
     ExpireLapsedPollsWorker.perform_later
@@ -10,27 +10,24 @@ class HourlyTaskJob < ApplicationJob
     OpenScheduledPollsWorker.perform_later
     SendTaskRemindersWorker.perform_later
     RouteReceivedEmailsWorker.perform_later
-    LoginToken.where("created_at < ?", 1.hours.ago).delete_all
+    LoginToken.where("created_at <= ?", LoginToken::EXPIRATION.minutes.ago).delete_all
     Identity.stale(days: 7).delete_all
     Bookmark.discarded.where("discarded_at < ?", 24.hours.ago).delete_all
     GeoLocationWorker.perform_later
 
-    SendDailyCatchUpEmailWorker.perform_later
+    SendDigestEmailWorker.perform_later
+    EnsureDemoQueueWorker.perform_later
 
     if hour == 0
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
-      # GenericWorker.perform_later('CleanupService', 'delete_orphan_records')
-      # GenericWorker.perform_later('CleanupService', 'destroy_orphan_users')
+      if ENV["CLEANUP_ENABLED"].present?
+        CleanupOrphanRecordsWorker.perform_later
+        CleanupService.warn_and_discard_expired_trial_groups
+      end
       EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
       DeleteOldReceivedEmailsWorker.perform_later
-    end
-
-    EnsureDemoQueueWorker.perform_later
-
-    if hour == 0 && Time.now.mday == 1
-      UpdateBlockedDomainsWorker.perform_later
     end
   end
 end

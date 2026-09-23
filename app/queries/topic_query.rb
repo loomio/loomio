@@ -2,7 +2,7 @@ class TopicQuery
   def self.start
     Topic
       .joins('LEFT JOIN groups ON topics.group_id = groups.id')
-      .where('groups.archived_at IS NULL OR topics.group_id IS NULL')
+      .where(Topic.group_kept_condition)
       .where('topics.discarded_at': nil)
       .includes(:topicable)
   end
@@ -31,11 +31,12 @@ class TopicQuery
   def self.relevant_to(chain: start,
                        user: LoggedOutUser.new,
                        group_ids: [],
+                       public_group_ids: [],
                        tags: [],
                        or_subgroups: true,
                        only_direct: false,
                        only_unread: false)
-    visible_scope(chain: chain, user: user, group_ids: group_ids, tags: tags, or_subgroups: or_subgroups, only_direct: only_direct, only_unread: only_unread, public_group_ids: group_ids)
+    visible_scope(chain: chain, user: user, group_ids: group_ids, tags: tags, or_subgroups: or_subgroups, only_direct: only_direct, only_unread: only_unread, public_group_ids: public_group_ids.presence || group_ids)
   end
 
   def self.visible_scope(chain:,
@@ -47,6 +48,8 @@ class TopicQuery
                          only_unread:,
                          public_group_ids:,
                          topic_id: nil)
+    return chain.none if user.deactivated_at.present?
+
     group_ids = Array(group_ids).compact.map(&:to_i)
     public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 
@@ -77,7 +80,7 @@ class TopicQuery
     arm1 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
       .joins(topic_reader_join)
-      .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+      .where(Topic.group_kept_condition)
       .where(discarded_at: nil)
       .where(member_visibility.join(" OR "), member_params)
 
@@ -86,7 +89,7 @@ class TopicQuery
     arm2 = Topic.select("topics.*")
       .joins("LEFT JOIN groups ON topics.group_id = groups.id")
       .joins(guest_topic_reader_join)
-      .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+      .where(Topic.group_kept_condition)
       .where(discarded_at: nil)
 
     arms = [arm1, arm2].map do |arm|

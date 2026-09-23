@@ -4,21 +4,27 @@ class MigrateUserWorker < ApplicationJob
   def perform(source_id, destination_id)
     @source = User.find_by!(id: source_id)
     @destination = User.find_by!(id: destination_id)
-    delete_duplicates
-    operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
-    migrate_stances
-    update_counters
-    RedactUserWorker.perform_now(source_id, destination_id, false)
-    UserMailer.accounts_merged(destination.id).deliver_later
+    raise ArgumentError, "Cannot merge an account into itself" if source.id == destination.id
+
+    # Duplicate removal is part of the merge, not independent cleanup. Any
+    # failure must restore source access as well as all migrated references.
+    User.transaction(requires_new: true) do |transaction|
+      User.where(id: [ source_id, destination_id ]).order(:id).lock.load
+      delete_duplicates
+      operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
+      migrate_stances
+      update_counters
+      RedactUserWorker.perform_now(source_id, destination_id, false)
+      transaction.after_commit { UserMailer.accounts_merged(destination.id).deliver_later }
+    end
   end
 
   SCHEMA = {
-    attachments: :user_id,
     comments: :user_id,
     reactions: :user_id,
     topic_readers: :user_id,
     discussions: :author_id,
-    events: :user_id,
+    topic_items: :user_id,
     groups: :creator_id,
     # NB: login_tokens are deliberately NOT migrated. They are one-time login
     # credentials delivered to the source account's inbox; reassigning them to
@@ -26,8 +32,7 @@ class MigrateUserWorker < ApplicationJob
     # destination. They are destroyed with the source user in RedactUserWorker.
     membership_requests: [:requestor_id, :responder_id],
     memberships: [:user_id, :inviter_id],
-    notifications: :user_id,
-    oauth_applications: :owner_id,
+    passkey_credentials: :user_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
     polls: :author_id,
@@ -48,14 +53,37 @@ class MigrateUserWorker < ApplicationJob
                               AND source.user_id = #{source.id}").pluck(:"source.id")
 
     TopicReader.where(id: topic_reader_ids).find_each(&:destroy!)
+
+    # A notification may already have the same channel delivered to both
+    # accounts. Remove the source identity before reassigning the remaining
+    # deliveries so the delivery uniqueness constraint is preserved.
+    NotificationDelivery
+      .where(recipient_type: "User", recipient_id: source.id)
+      .where(<<~SQL.squish, destination_id: destination.id)
+        EXISTS (
+          SELECT 1
+          FROM notification_deliveries destination_deliveries
+          WHERE destination_deliveries.notification_id = notification_deliveries.notification_id
+            AND destination_deliveries.channel = notification_deliveries.channel
+            AND destination_deliveries.recipient_type = 'User'
+            AND destination_deliveries.recipient_id = :destination_id
+        )
+      SQL
+      .delete_all
   end
 
   def operations
-    SCHEMA.map do |table, columns|
+    operations = SCHEMA.map do |table, columns|
       Array(columns).map do |column_name|
         "UPDATE #{table} SET #{column_name} = #{destination.id} WHERE #{column_name} = #{source.id}"
       end
     end.flatten
+    operations << <<~SQL.squish
+      UPDATE notification_deliveries
+      SET recipient_id = #{destination.id}
+      WHERE recipient_type = 'User' AND recipient_id = #{source.id}
+    SQL
+    operations
   end
 
   def migrate_stances

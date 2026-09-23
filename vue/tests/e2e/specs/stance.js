@@ -5,24 +5,29 @@ module.exports = {
   'invite_guest_to_vote': (test) => {
     page = pageHelper(test)
     page.loadPathNoApp('polls/test_invite_to_poll?guest=1')
-    page.click('.event-mailer__title a')
+    page.click('main h1 a')
     page.pause(1000)
     page.signUpViaInvitation()
     page.click('.poll-common-vote-form__button')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectElement('.action-dock__button--edit_stance')
+    page.expectNoElement('.poll-common-vote-form__submit')
+    page.expectElement('.poll-common-current-vote')
   },
 
   'invite_member_to_vote': (test) => {
     page = pageHelper(test)
     page.loadPathNoApp('polls/test_invite_to_poll')
-    page.click('.event-mailer__title a')
+    page.click('main h1 a')
     page.pause(1000)
-    page.signInViaPassword(null, 'password')
+    page.signInViaPassword('poll-member@example.com', 'password')
+    page.click('.credential-prompt__dismiss')
     page.click('.poll-common-vote-form__button')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.expectFlash('Vote created')
+    page.expectNoElement('.poll-common-vote-form__submit')
+    page.expectElement('.poll-common-current-vote')
   }
 }

@@ -7,7 +7,6 @@ export default class NotificationModel extends BaseModel {
   static singular = 'notification';
   static plural = 'notifications';
   static uniqueIndices = ['id'];
-  static indices = ['eventId', 'userId'];
 
   constructor(...args) {
     super(...args)
@@ -25,8 +24,6 @@ export default class NotificationModel extends BaseModel {
   }
 
   relationships() {
-    this.belongsTo('event');
-    this.belongsTo('user');
     this.belongsTo('actor', {from: 'users'});
   }
 

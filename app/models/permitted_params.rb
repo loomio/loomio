@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance anonymous_ballot discussion discussion_template topic_reader topic comment
-    contact_message webhook chatbot contact_request reaction bookmark tag
+    contact_message chatbot contact_request reaction bookmark tag
   )
 
   MODELS.each do |kind|
@@ -18,11 +18,11 @@ class PermittedParams < Struct.new(:params)
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
-     :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
-     :email_catch_up_day,
-     :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
+     :autodetect_time_zone, :time_zone, :selected_locale,
+     :volume_email_default, :volume_push_default,
+     :email_catch_up_day, :email_newsletter,
      :date_time_pref, :bot, :auto_translate,
-     :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
+     :legal_accepted,
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -47,7 +47,6 @@ class PermittedParams < Struct.new(:params)
       :show_none_of_the_above,
       :notify_on_closing_soon,
       :notify_on_open,
-      :voter_can_add_options,
       :specified_voters_only,
       :vote_weights_enabled,
       :allow_comments,
@@ -180,15 +179,15 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_request_attributes
-    [:name, :email, :introduction, :group_id]
+    [:name, :email, :introduction, :group_id, :decline_reason]
   end
 
   def membership_attributes
-    [:title, :volume, :apply_to_all, :set_default]
+    [:title, :volume_email, :volume_push, :apply_to_all, :set_default]
   end
 
   def topic_reader_attributes
-    [:volume]
+    [:volume_email, :volume_push]
   end
 
   def topic_attributes
@@ -201,14 +200,10 @@ class PermittedParams < Struct.new(:params)
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
-     :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_tags, :members_can_create_templates, :admins_can_edit_user_content,
+     :members_can_start_discussions, :non_members_can_start_discussions, :members_can_create_subgroups, :members_can_create_tags, :members_can_create_templates, :admins_can_edit_user_content,
      :request_to_join_prompt, :listed_in_explore,
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
-  end
-
-  def webhook_attributes
-   [:group_id, :url, :name, :format, :include_body, :include_subgroups, :permissions, :event_kinds, {event_kinds: [], permissions: []}]
   end
 
   def chatbot_attributes
@@ -236,7 +231,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
-     :forked_event_ids, {forked_event_ids: []},
+     :selected_topic_item_ids, {selected_topic_item_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

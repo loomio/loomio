@@ -3,7 +3,8 @@ class MembershipSerializer < ApplicationSerializer
              :group_id,
              :user_id,
              :inviter_id,
-             :volume,
+             :volume_email,
+             :volume_push,
              :admin,
              :delegate,
              :weight,
@@ -34,6 +35,12 @@ class MembershipSerializer < ApplicationSerializer
   end
 
   def weight
-    object.weight.to_f
+    object.weight
   end
+
+  def include_volume_email?
+    scope && object.user_id == scope[:current_user_id]
+  end
+
+  alias_method :include_volume_push?, :include_volume_email?
 end

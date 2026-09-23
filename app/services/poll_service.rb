@@ -34,13 +34,13 @@ class PollService
     poll
   end
 
-  def self.create(params:, actor:)
+  def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
+    actor.ability.authorize!(:create, poll)
+    TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
+    return poll unless TopicService.validate_topicable(poll)
 
-    Poll.transaction do
-      actor.ability.authorize!(:create, poll)
-      TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
-
+    topic_item = Poll.transaction do
       poll.save!
       if poll.detached_anonymous?
         create_anonymous_poll_voters(poll: poll, actor: actor, params: params)
@@ -53,21 +53,25 @@ class PollService
                   .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
-      EventBus.broadcast('poll_create', poll, actor)
-      event = Events::PollCreated.publish!(poll, actor)
+      topic_item = TopicItems::PollCreated.create!(
+        itemable: poll,
+        pinned: true
+      )
+      MentionNotificationService.create!(
+        subject: topic_item,
+        actor: actor
+      )
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
-      publish_topic_if_active(poll) if poll.opened_at
-      poll
+      topic_item
     end
+    EventBus.broadcast('poll_create', poll, actor)
+    publish_topic_if_active(poll) if poll.opened_at
+    on_topic_item&.call(topic_item)
+    poll
   end
 
-  def self.update(poll:, params:, actor:)
+  def self.update(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :update, poll
-    if poll.stance? && !poll.anonymous? && ActiveModel::Type::Boolean.new.cast(params[:anonymous])
-      poll.errors.add(:anonymous, :cannot_enable_legacy_anonymous_voting)
-      return false
-    end
-
     UserInviter.authorize!(
       user_ids: params[:recipient_user_ids],
       emails: params[:recipient_emails],
@@ -76,9 +80,7 @@ class PollService
       actor: actor
     )
     params = params.to_h.with_indifferent_access
-    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).except(:group_id, :topic_id)
-    TagService.authorize_create_tag_names!(poll.group, topic_params[:tags], actor) if topic_params.key?(:tags)
-    poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
+    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).slice(*DiscussionService::TOPIC_ATTRS_UPDATE)
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
@@ -88,14 +90,16 @@ class PollService
 
     unless poll.valid?
       Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return false
+      return poll
     end
 
-    Poll.transaction do
+    was_opened = false
+    topic_item = Poll.transaction do
+      poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
       poll.save!
       poll.update_counts!
 
-      open_poll_if_ready(poll)
+      was_opened = open_poll_if_ready(poll)
 
       ReindexPollWorker.perform_later(poll.id)
 
@@ -109,18 +113,44 @@ class PollService
         model: poll
       )
 
-      Sentry.metrics.count("poll.update", attributes: { poll_type: poll.poll_type })
-      EventBus.broadcast('poll_update', poll, actor)
+      recipient_context = {
+        newly_mentioned_user_ids: poll.newly_mentioned_users.pluck(:id),
+        mentioned_user_ids: poll.mentioned_users.pluck(:id),
+        mentioned_group_user_ids: poll.mentioned_group_users.pluck(:id)
+      }
 
-      Events::PollEdited.publish!(
-        poll: poll,
+      Sentry.metrics.count("poll.update", attributes: { poll_type: poll.poll_type })
+
+      if params[:recipient_message].present?
+        topic_item = TopicItems::PollEdited.create!(
+          itemable: poll,
+          user: actor
+        )
+      end
+      if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+        NotificationService.create!(
+          kind: "poll_edited",
+          subject: topic_item || poll,
+          actor: actor,
+          recipient_user_ids: users.pluck(:id),
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
+          recipient_message: params[:recipient_message],
+          recipient_context: recipient_context
+        )
+      end
+      MentionNotificationService.create!(
+        subject: topic_item || poll,
         actor: actor,
-        recipient_user_ids: users.pluck(:id),
-        recipient_chatbot_ids: params[:recipient_chatbot_ids],
-        recipient_audience: params[:recipient_audience],
-        recipient_message: params[:recipient_message]
+        already_notified_user_ids: users.pluck(:id)
       )
+      topic_item
     end
+    EventBus.broadcast('poll_update', poll, actor)
+    MessageChannelService.publish_topic_model(poll) unless topic_item
+    publish_topic_if_active(poll) if was_opened
+    on_topic_item&.call(topic_item) if topic_item
+    poll
   end
 
   def self.invite(poll:, actor:, params:)
@@ -137,9 +167,7 @@ class PollService
 
     Poll.transaction do
       poll.lock!
-      if poll.detached_anonymous? && poll.anonymous_ballots.exists?
-        raise CanCan::AccessDenied
-      end
+      raise CanCan::AccessDenied if poll.detached_anonymous? && !poll.active?
 
       TopicService.add_users(
         topic:  poll.topic,
@@ -163,7 +191,7 @@ class PollService
       end
 
       if params[:notify_recipients] && !poll.detached_anonymous?
-        Events::PollAnnounced.publish!(
+        create_poll_announced_notification!(
           poll: poll,
           actor: actor,
           stances: stances,
@@ -172,8 +200,8 @@ class PollService
           recipient_audience: params[:recipient_audience],
           recipient_message:  params[:recipient_message],
         )
-      elsif params[:notify_recipients] && poll.detached_anonymous?
-        Events::PollAnnounced.publish!(
+      elsif params[:notify_recipients] && poll.detached_anonymous? && voters.any?
+        create_poll_announced_notification!(
           poll: poll,
           actor: actor,
           stances: [],
@@ -208,7 +236,9 @@ class PollService
       poll.members.humans
     end
 
-    group_member_ids = poll.group ? poll.group.members.where(id: users.select(:id)).pluck(:id).to_set : Set.new
+    existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
+    users = users.where.not(id: existing_voter_ids)
+    group_member_ids = poll.group.members.where(id: users.select(:id)).pluck(:id).to_set
     rows = users.map do |user|
       {
         poll_id: poll.id,
@@ -233,8 +263,9 @@ class PollService
         actor: actor
       )
 
-      Events::PollReminder.publish!(
-        poll: poll,
+      NotificationService.create!(
+        kind: "poll_reminder",
+        subject: poll,
         actor: actor,
         recipient_user_ids: users.pluck(:id),
         recipient_chatbot_ids: params[:recipient_chatbot_ids],
@@ -289,49 +320,65 @@ class PollService
     Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
   end
 
-  def self.discard(poll:, actor:)
+  def self.discard(poll:, actor:, &on_topic_item)
     actor.ability.authorize!(:destroy, poll)
 
     Sentry.metrics.count("poll.discard", attributes: { poll_type: poll.poll_type })
     Poll.transaction do
       poll.update(discarded_at: Time.now, discarded_by: actor.id)
-      Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(topic_id: nil)
-      poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
+      TopicItem.where(
+        kind: [ "stance_created", "stance_updated" ],
+        itemable_type: "Stance",
+        itemable_id: poll.stances.select(:id)
+      ).find_each(&:destroy!)
+      poll.created_topic_item.update!(user_id: nil, child_count: 0, pinned: false)
       poll.topic.update_sequence_info!
     end
 
     ReindexPollWorker.perform_later(poll.id)
-    MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
-    poll.created_event
+    MessageChannelService.publish_models([poll.created_topic_item], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
+    on_topic_item&.call(poll.created_topic_item)
+    poll
   end
 
-  def self.close(poll:, actor:)
+  def self.close(poll:, actor:, &on_topic_item)
     actor.ability.authorize! :close, poll
-    Poll.transaction do
+    topic_item = Poll.transaction do
       do_closing_work(poll: poll)
-      Events::PollClosedByUser.publish!(poll, actor)
+      TopicItems::PollClosedByUser.create!(
+        itemable: poll,
+        user: actor,
+        created_at: poll.closed_at
+      )
     end
     publish_topic_if_active(poll)
+    on_topic_item&.call(topic_item)
+    poll
   end
 
-  def self.reopen(poll:, params:, actor:)
+  def self.reopen(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :reopen, poll
 
     poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
     poll.stv_results = nil if poll.poll_type == 'stv'
     unless poll.valid?
       Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return false
+      return poll
     end
 
-    Poll.transaction do
+    topic_item = Poll.transaction do
       poll.save!
 
-      EventBus.broadcast('poll_reopen', poll, actor)
-      Events::PollReopened.publish!(poll, actor)
-      announce_poll_opened(poll) if poll.notify_on_open
+      # Reopening remains visible in the timeline but never repeats poll opening notifications.
+      TopicItems::PollReopened.create!(
+        itemable: poll,
+        user: actor
+      )
     end
+    EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
+    on_topic_item&.call(topic_item)
+    poll
   end
 
   def self.publish_closing_soon(now: Time.current)
@@ -339,24 +386,25 @@ class PollService
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
     Poll.closing_soon_not_published(this_hour_tomorrow).where.not(voting_system: Poll.voting_systems[:anonymous_ballot]).each do |poll|
-      Events::PollClosingSoon.publish!(poll)
+      NotificationService.create!(
+        kind: "poll_closing_soon",
+        subject: poll,
+        actor: poll.author
+      )
     end
 
-    reminded_poll_ids = Event.where(
-      kind: "poll_closing_soon",
-      eventable_type: "Poll"
-    ).select(:eventable_id)
-
-    Poll.active
+    Poll.closing_soon_not_published(now..(now + 24.hours))
         .where(voting_system: Poll.voting_systems[:anonymous_ballot])
-        .where(closing_at: now..(now + 24.hours))
-        .where.not(id: reminded_poll_ids)
         .find_each do |poll|
       opening_at = poll.opening_at || poll.opened_at
       next unless opening_at && poll.closing_at - opening_at >= 24.hours
       next unless poll.anonymous_poll_voters.where(ballot_submitted: false).exists?
 
-      Events::PollClosingSoon.publish!(poll)
+      NotificationService.create!(
+        kind: "poll_closing_soon",
+        subject: poll,
+        actor: poll.author
+      )
     end
   end
 
@@ -364,14 +412,24 @@ class PollService
     Poll.kept
         .where(opened_at: nil)
         .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
-        .each { |poll| open_poll_if_ready(poll) }
+        .each do |poll|
+          publish_topic_if_active(poll) if open_poll_if_ready(poll)
+        end
   end
 
   def self.group_members_added(group_id)
     return if group_id.nil?
 
     Poll.active.joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
-      create_anyone_can_vote_stances(poll)
+      if poll.detached_anonymous?
+        Poll.transaction do
+          poll.lock!
+          create_anonymous_poll_voters(poll: poll, actor: poll.author, params: {})
+          poll.update_counts!
+        end
+      else
+        create_anyone_can_vote_stances(poll)
+      end
     end
   end
 
@@ -400,209 +458,6 @@ class PollService
     end
   end
 
-  def self.mark_closed_poll_topics_read(dry_run: false, progress: nil)
-    stats = { topics: 0, readers_created: 0, readers_updated: 0 }
-    processed = 0
-
-    Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).find_each do |poll|
-      processed += 1
-      progress&.call("Processing poll #{processed} (id=#{poll.id})...") if (processed % 100).zero?
-
-      topic = poll.topic
-      ranges = RangeSet.ranges_from_list(topic.items.where.not(sequence_id: nil).order(:sequence_id).pluck(:sequence_id))
-      next if ranges.empty?
-
-      stats[:topics] += 1
-      read_ranges_string = RangeSet.serialize(ranges)
-      now = Time.zone.now
-      reader_attrs = closed_poll_topic_reader_attrs(poll, topic, now)
-      audience_user_ids = reader_attrs.map { |attrs| attrs[:user_id] }
-      existing_user_ids = TopicReader.where(topic_id: topic.id, user_id: audience_user_ids).pluck(:user_id).to_set
-      missing_reader_attrs = reader_attrs.reject { |attrs| existing_user_ids.include?(attrs[:user_id]) }
-      active_reader_scope = TopicReader.active.where(topic_id: topic.id)
-
-      if dry_run
-        stats[:readers_created] += missing_reader_attrs.length
-        stats[:readers_updated] += active_reader_scope.count + missing_reader_attrs.length
-        next
-      end
-
-      TopicReader.insert_all(missing_reader_attrs, unique_by: :index_topic_readers_on_topic_id_and_user_id) if missing_reader_attrs.any?
-      stats[:readers_created] += missing_reader_attrs.length
-      stats[:readers_updated] += TopicReader.active.where(topic_id: topic.id).update_all(
-        read_ranges_string: read_ranges_string,
-        last_read_at: now,
-        updated_at: now
-      )
-    end
-
-    # Update counter caches in bulk after all readers are written
-    unless dry_run
-      topic_ids = Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).pluck('topics.id')
-      progress&.call("Updating counters for #{topic_ids.length} closed poll topics...")
-
-      topic_ids.each_slice(1_000).with_index(1) do |ids, batch|
-        progress&.call("Updating closed poll topic counter batch #{batch}/#{(topic_ids.length / 1_000.0).ceil}...")
-        update_topic_reader_counters_for_topic_ids(ids)
-      end
-    end
-
-    stats
-  end
-
-  def self.update_topic_reader_counters_for_topic_ids(topic_ids)
-    ids = Array(topic_ids).map(&:to_i).uniq
-    return if ids.empty?
-
-    ActiveRecord::Base.connection.execute(<<~SQL.squish)
-      UPDATE topics
-      SET seen_by_count = counts.seen_by_count,
-          members_count = counts.members_count
-      FROM (
-        SELECT topic_id,
-               COUNT(*) FILTER (WHERE last_read_at IS NOT NULL) AS seen_by_count,
-               COUNT(*) FILTER (WHERE revoked_at IS NULL) AS members_count
-        FROM topic_readers
-        WHERE topic_id IN (#{ids.join(',')})
-        GROUP BY topic_id
-      ) counts
-      WHERE topics.id = counts.topic_id
-    SQL
-  end
-
-  def self.backfill_standalone_poll_stance_thread_items(dry_run: false, repair: true, mark_closed_read: true, progress: nil, progress_every: 100)
-    progress&.call("Finding standalone poll stance events to attach...")
-    rows = if dry_run
-      ActiveRecord::Base.connection.select_all(<<~SQL.squish)
-        SELECT topic_id FROM (#{standalone_poll_stance_thread_item_candidates_sql}) candidate_events
-      SQL
-    else
-      ActiveRecord::Base.connection.exec_query(<<~SQL.squish)
-        WITH candidate_events AS (#{standalone_poll_stance_thread_item_candidates_sql})
-        UPDATE events
-        SET topic_id = candidate_events.topic_id,
-            sequence_id = NULL,
-            parent_id = NULL,
-            position = 0,
-            position_key = NULL,
-            depth = 0,
-            updated_at = CURRENT_TIMESTAMP
-        FROM candidate_events
-        WHERE events.id = candidate_events.event_id
-        RETURNING events.topic_id
-      SQL
-    end
-
-    attached_topic_ids = rows.map { |row| row["topic_id"] }.uniq
-    progress&.call("Found #{rows.length} stance events to attach across #{attached_topic_ids.length} standalone poll topics.")
-    progress&.call("Finding standalone poll topics with unsequenced stance events...")
-    repair_topic_ids = standalone_poll_topic_ids_newest_first(
-      attached_topic_ids + standalone_poll_stance_thread_item_repair_topic_ids
-    )
-    progress&.call("Found #{repair_topic_ids.length} standalone poll topics to repair.")
-
-    if repair && !dry_run
-      progress&.call("Repairing #{repair_topic_ids.length} standalone poll topics...") if repair_topic_ids.any?
-      repair_topic_ids.each.with_index(1) do |topic_id, index|
-        progress&.call("Repairing standalone poll topic #{index}/#{repair_topic_ids.length} (topic_id=#{topic_id})...") if (index % progress_every).zero?
-        TopicService.repair(topic_id)
-      end
-    end
-
-    stats = { events: rows.length, topics: attached_topic_ids.length, repair_topics: repair_topic_ids.length }
-    stats[:closed_read] = mark_closed_poll_topics_read(dry_run: dry_run, progress: progress) if mark_closed_read
-    stats
-  end
-
-  def self.standalone_poll_stance_thread_item_repair_topic_ids
-    ActiveRecord::Base.connection.select_values(<<~SQL.squish)
-      SELECT DISTINCT events.topic_id
-      FROM events
-      INNER JOIN stances
-        ON stances.id = events.eventable_id
-       AND events.eventable_type = 'Stance'
-      INNER JOIN polls
-        ON polls.id = stances.poll_id
-      INNER JOIN topics
-        ON topics.id = polls.topic_id
-       AND topics.topicable_type = 'Poll'
-       AND topics.topicable_id = polls.id
-      WHERE events.kind IN ('stance_created', 'stance_updated')
-        AND events.topic_id = polls.topic_id
-        AND events.sequence_id IS NULL
-    SQL
-  end
-
-  def self.standalone_poll_topic_ids_newest_first(topic_ids)
-    topic_ids = Array(topic_ids).uniq
-    return [] if topic_ids.empty?
-
-    Topic
-      .joins("INNER JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'")
-      .where(id: topic_ids)
-      .order("polls.created_at DESC, topics.id DESC")
-      .pluck(:id)
-  end
-
-  def self.standalone_poll_stance_thread_item_candidates_sql
-    <<~SQL.squish
-      SELECT DISTINCT ON (events.eventable_id)
-             events.id AS event_id,
-             polls.topic_id AS topic_id
-      FROM events
-      INNER JOIN stances
-        ON stances.id = events.eventable_id
-       AND events.eventable_type = 'Stance'
-      INNER JOIN polls
-        ON polls.id = stances.poll_id
-      INNER JOIN topics
-        ON topics.id = polls.topic_id
-       AND topics.topicable_type = 'Poll'
-       AND topics.topicable_id = polls.id
-      WHERE events.kind IN ('stance_created', 'stance_updated')
-        AND events.topic_id IS NULL
-        AND stances.latest = TRUE
-        AND stances.revoked_at IS NULL
-        AND stances.cast_at IS NOT NULL
-        AND stances.reason IS NOT NULL
-        AND stances.reason NOT IN ('', '<p></p>')
-        AND (polls.closed_at IS NOT NULL OR polls.hide_results != 2)
-        AND NOT EXISTS (
-          SELECT 1 FROM events existing_events
-          WHERE existing_events.eventable_type = 'Stance'
-            AND existing_events.eventable_id = events.eventable_id
-            AND existing_events.kind IN ('stance_created', 'stance_updated')
-            AND existing_events.topic_id = polls.topic_id
-        )
-      ORDER BY events.eventable_id, events.created_at, events.id
-    SQL
-  end
-
-  def self.closed_poll_topic_reader_attrs(poll, topic, timestamp)
-    if topic.group_id.present?
-      Membership.active.accepted.where(group_id: topic.group_id).pluck(:user_id, :volume).map do |user_id, volume|
-        closed_poll_topic_reader_attr(topic, user_id, volume || TopicReader.volumes[:normal], false, false, timestamp)
-      end
-    else
-      user_ids = ([poll.author_id] + poll.stances.where.not(participant_id: nil).pluck(:participant_id)).compact.uniq
-      user_ids.map do |user_id|
-        closed_poll_topic_reader_attr(topic, user_id, TopicReader.volumes[:normal], true, user_id == poll.author_id, timestamp)
-      end
-    end
-  end
-
-  def self.closed_poll_topic_reader_attr(topic, user_id, volume, guest, admin, timestamp)
-    {
-      topic_id: topic.id,
-      user_id: user_id,
-      volume: volume,
-      guest: guest,
-      admin: admin,
-      created_at: timestamp,
-      updated_at: timestamp
-    }
-  end
-
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
       CloseExpiredPollWorker.perform_later(poll.id)
@@ -626,15 +481,19 @@ class PollService
       StanceReceipt.where(poll_id: poll.id).delete_all
       StanceReceipt.insert_all build_receipts(poll)
 
-      if poll.anonymous
-        stance_ids = poll.stances.select(:id)
-        Event.where(eventable_type: 'Stance', eventable_id: stance_ids).update_all(user_id: nil)
-        poll.stances.update_all(participant_id: nil)
-      end
-
       if poll.topic && poll.hide_results == 'until_closed'
         stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-        Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
+        stance_ids_with_items = TopicItem.where(
+          kind: %w[stance_created stance_updated],
+          itemable_type: "Stance",
+          itemable_id: stance_ids
+        ).pluck(:itemable_id)
+        Stance.where(id: stance_ids - stance_ids_with_items).find_each do |stance|
+          TopicItems::StanceCreated.new(
+            itemable: stance,
+            created_at: stance.cast_at || stance.created_at
+          ).save!
+        end
         TopicService.repair(poll.topic_id)
       end
 
@@ -666,15 +525,13 @@ class PollService
       end
     end
 
-    return [] if poll.anonymous && poll.closed_at
-
     poll.stances.latest.map do |stance|
       {
         poll_id: poll.id,
         voter_id: stance.participant_id,
         inviter_id: stance.inviter_id,
         invited_at: stance.created_at,
-        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+        vote_cast: !!stance.cast_at
       }
     end
   end
@@ -686,7 +543,7 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.calculate_results(poll, poll_options)
+  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil)
     return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
 
     weights_by_voter_id = if poll.weighted_voting?
@@ -776,7 +633,7 @@ class PollService
     end
 
     if poll.results_include_undecided
-      voter_ids = poll.undecided_voters.map(&:id).take(50)
+      voter_ids = (undecided_voter_ids || poll.undecided_voters.ids).take(50)
       l.push(
         {
           id: -1,
@@ -847,13 +704,15 @@ class PollService
   end
 
   def self.open_poll_if_ready(poll)
-    return if poll.opened_at
-    return unless poll.closing_at
-    return if poll.opening_at.present? && poll.opening_at > Time.now
+    return false if poll.opened_at
+    return false unless poll.closing_at
+    return false if poll.opening_at.present? && poll.opening_at > Time.now
 
-    poll.update(opened_at: Time.now)
-    announce_poll_opened(poll) if poll.notify_on_open
-    publish_topic_if_active(poll)
+    Poll.transaction do
+      poll.update!(opened_at: Time.now)
+      announce_poll_opened(poll) if poll.notify_on_open
+    end
+    true
   end
 
   def self.publish_topic_if_active(poll)
@@ -871,11 +730,11 @@ class PollService
       recipient_user_ids = poll.anonymous_poll_voters.where.not(voter_id: poll.author_id).pluck(:voter_id)
       return if recipient_user_ids.empty?
 
-      Events::PollAnnounced.publish!(
+      create_poll_announced_notification!(
         poll: poll,
         actor: poll.author,
         stances: [],
-        recipient_user_ids: recipient_user_ids
+        recipient_user_ids: recipient_user_ids,
       )
       return
     end
@@ -883,10 +742,26 @@ class PollService
     stances = poll.stances.latest.where.not(participant_id: poll.author_id)
     return if stances.empty?
 
-    Events::PollAnnounced.publish!(
+    create_poll_announced_notification!(
       poll: poll,
       actor: poll.author,
-      stances: stances
+      stances: stances,
+    )
+  end
+
+  def self.create_poll_announced_notification!(poll:, actor:, stances: [],
+                                               recipient_user_ids: [], recipient_chatbot_ids: [],
+                                               recipient_audience: nil, recipient_message: nil,
+                                               **)
+    stance_recipient_ids = Array(stances).filter_map(&:participant_id)
+    NotificationService.create!(
+      kind: "poll_announced",
+      subject: poll.created_topic_item || poll,
+      actor: actor,
+      recipient_user_ids: (stance_recipient_ids + Array(recipient_user_ids)).uniq,
+      recipient_chatbot_ids: recipient_chatbot_ids,
+      recipient_audience: recipient_audience,
+      recipient_message: recipient_message
     )
   end
 end

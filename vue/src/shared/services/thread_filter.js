@@ -22,8 +22,8 @@ export default function(options) {
       case 'show_unlocked':    return chain.find({lockedAt: null});
       case 'show_pinned':    return chain.find({pinnedAt: {$ne: null}});
       case 'hide_pinned':    return chain.find({pinnedAt: null});
-      case 'show_muted':     return chain.where(topic => topic.volume() === 'mute');
-      case 'hide_muted':     return chain.where(topic => topic.volume() !== 'mute');
+      case 'show_muted':     return chain.where(topic => topic.volume() === 'quiet');
+      case 'hide_muted':     return chain.where(topic => topic.volume() !== 'quiet');
       case 'show_proposals': return chain.where(topic => topic.activePollsCount > 0);
       case 'hide_proposals': return chain.where(topic => topic.activePollsCount === 0);
       case 'only_threads_in_my_groups':

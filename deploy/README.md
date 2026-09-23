@@ -1,15 +1,11 @@
 # Deploy your own Loomio
 
-These files run Loomio on a single server with Docker Compose and automatically provision TLS certificates with Let's Encrypt.
-
-If you just want a local install of Loomio for development, see [Setting up a Loomio development environment](https://github.com/loomio/loomio/blob/master/DEVSETUP.md).
+Run Loomio on a single server with Docker Compose and automatically provision TLS certificates with Let's Encrypt.
 
 ## What you'll need
-* Root access to a server, on a public IP address, running Ubuntu (latest LTS release) with at least 1GB RAM.
-
-* A domain name
-
-* An SMTP server
+- Root access to a server, on a public IP address, running Ubuntu (latest LTS release) with at least 1GB RAM.
+- A domain name
+- An SMTP server
 
 ## Network configuration
 For this example, the hostname will be loomio.example.com and the IP address is 192.0.2.1
@@ -32,6 +28,9 @@ Additionally, create a CNAME record for the collaborative editing server.
 ```
 CNAME hocuspocus.loomio.example.com, loomio.example.com
 ```
+
+### Firewall
+It's up to you to configure a firewall, but Loomio needs inbound traffic on ports 25, 80 and 443
 
 ## Configure the server
 
@@ -72,47 +71,35 @@ mkdir loomio-deploy
 cd loomio-deploy
 ```
 
-Download [docker-compose.yml](docker-compose.yml) and [env_template](env_template) into the new deployment directory:
+Download the deployment files into the new directory:
 
 ```sh
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/docker-compose.yml
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/env_template
+curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/create_env.sh
+curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/update.sh
+chmod +x create_env.sh update.sh
 ```
 
 The commands below assume this is your working directory.
 
 ### Create your environment file
 
-Copy the environment template:
+Create `.env` with your Loomio hostname and contact email:
 
 ```sh
-cp env_template .env
-chmod 600 .env
+./create_env.sh loomio.example.com admin@loomio.example.com
 ```
 
-Generate the required secrets using the Loomio image:
+The script replaces every `REPLACE_WITH_...` placeholder, generates the PostgreSQL, Rails, inbound-email, and VAPID secrets, and writes `.env` with mode `0600`. It refuses to overwrite an existing `.env`.
 
-```sh
-docker compose run --rm --no-deps app ruby -rsecurerandom -e '%w[POSTGRES_PASSWORD DEVISE_SECRET SECRET_COOKIE_TOKEN RAILS_INBOUND_EMAIL_PASSWORD].each { |name| puts "#{name}=#{SecureRandom.hex(32)}" }'
-```
-
-Edit `.env` and replace every `REPLACE_WITH_...` placeholder. Replace the corresponding secret values with the generated output, using the same PostgreSQL password in `POSTGRES_PASSWORD` and `DATABASE_URL`. Configure your hostname, contact email, SMTP server, and any optional settings you need.
-
-The template documents SSO, themes, file storage, and other optional features.
+Edit `.env` to configure your SMTP server and any optional settings you need. The template documents SSO, themes, file storage, and other optional features.
 
 ### Set up SMTP
 
 You need to bring your own SMTP server for Loomio to send emails.
 
-If you already have an SMTP server, put its settings into `.env`.
-
-For everyone else here are some options to consider:
-
-- Look at the (sometimes free) services offered by [SendGrid](https://sendgrid.com/), [SparkPost](https://www.sparkpost.com/), [Mailgun](http://www.mailgun.com/), [Mailjet](https://www.mailjet.com/pricing).
-
-- Setup your own SMTP server with something like Haraka
-
-Edit the `.env` file and enter the right SMTP settings for your setup.
+Edit the `.env` and look for the vars starting with SMTP_
 
 You might also need to add an SPF DNS record to indicate that the SMTP can send mail for your domain.
 
@@ -160,22 +147,6 @@ You can now access the admin interface at https://loomio.example.com/admin.
 To see system error messages as they happen run `docker compose logs -f` and make a request against the server.
 
 If you want to be notified of system errors you could setup [Sentry](https://sentry.io/) and add it to the env.
-
-Confirm the settings in `.env` are correct.
-
-After you change your `env` files you need to restart the system:
-
-```sh
-docker compose down
-docker compose up -d
-```
-
-The configured Loomio image tag follows the latest patch release in its release series. To update within that series:
-
-```sh
-docker compose pull
-docker compose up -d
-```
 
 Read the [upgrade guide](UPGRADING.md) before changing to a newer minor or major release series.
 

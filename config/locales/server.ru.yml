@@ -150,6 +150,8 @@ ru:
       body: Запрошенный вами элемент не найден. Это может произойти, если обсуждение или опрос были удалены.
     new_account_trial_group_limit: Новые учетные записи могут быть ограничены одной группой. Если вам требуется больше, обратитесь в службу поддержки.
     direct_thread_anonymous_poll: Ветку обсуждения, содержащую анонимный опрос, нельзя преобразовать в прямую ветку.
+    invitation_rate_limit_reached_contact_support: Достигнут лимит приглашений в день. Немедленно обратитесь в службу поддержки.
+    subscription_thread_limit_reached: В этой организации достигнут лимит обсуждений. Перейдите на другой тариф, чтобы продолжить пользоваться Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Должен начинаться с %{parent_handle}-
@@ -184,6 +186,7 @@ ru:
       recaptcha: Мы не убедились, что вы не робот! Еще раз!
       bad_login: Извините, этот пароль не совпадает с тем, который у нас есть в файле
       username_must_be_alphanumeric: В имени пользователя должны быть только маленькие английские буквы и цифры.
+      username_must_use_valid_characters: Имена пользователей могут содержать только строчные буквы, цифры, символы подчеркивания и внутренние дефисы
   poll:
     error:
       cannot_add_options: Не получается добавить вариантов к этому опросу
@@ -310,6 +313,17 @@ ru:
     unsubscribe: 'Отписаться или изменить почтовые предпочтения:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, чтобы отписаться или изменить почтовые предпочтения."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: У вас есть 1 голос.
+          other: Вам осталось отдать %{count} голосов.
+        people_mentioned:
+          one: 1 человек упомянул вас
+          other: "%{count} человек упомянули вас"
+        polls_closing_soon:
+          one: 1 голосование скоро завершится
+          other: Опросы %{count} скоро завершатся
+        separator: "·"
       daily_subject: Вчера на сайте %{site_name}
       weekly_subject: Прошлая неделя на сайте %{site_name}
       other_subject: Недавно на %{site_name}
@@ -318,6 +332,31 @@ ru:
       thanks_for_reading: Спасибо, что прочли и удачного дня!
       marked_as_read_success: Все в этом письме отмечено прочитанным
       click_here: Кликните здесь
+      catch_up_heading: Ваш %{site_name} наверстываете упущенное
+      unread_topics: Непрочитанные темы
+      unread_threads: Непрочитанные темы
+      mark_catch_up_as_read: Отметьте прочитанное как наверставшее упущенное.
+    digest:
+      subject:
+        votes_to_cast:
+          one: У вас есть 1 голос.
+          other: Вам осталось отдать %{count} голосов.
+        people_mentioned:
+          one: 1 человек упомянул вас
+          other: "%{count} человек упомянули вас"
+        polls_closing_soon:
+          one: 1 голосование скоро завершится
+          other: Опросы %{count} скоро завершатся
+        separator: "·"
+      daily_subject: Вчера на сайте %{site_name}
+      weekly_subject: Прошлая неделя на сайте %{site_name}
+      other_subject: Недавно на %{site_name}
+      do_not_reply: Не отвечайте, пожалуйста, на это письмо.
+      mark_as_read: Отметить прочитанным
+      thanks_for_reading: Спасибо, что прочли и удачного дня!
+      marked_as_read_success: Все в этом письме отмечено прочитанным
+      click_here: Кликните здесь
+      unread_topics: Непрочитанные темы
     group_membership_approved:
       intro: Ваш запрос на доступ к группе %{group_name} одобрен.
       intro_html: Ваш запрос на доступ к группе <strong>%{group_name}</strong> одобрен.
@@ -332,6 +371,8 @@ ru:
     content_was_translated: Этот контент был переведен с %{source_locale}
     content_was_translated_html: Этот контент был переведён с языка %{source_locale}. <a href="%{profile_url}">Просмотр настроек.<a></a>
     loomio_app_description: Место, где организации, работающие в сотрудничестве, могут совместно принимать решения.
+    membership_request_declined:
+      button_text: Подайте заявку снова.
   announcement_count_emails: "%{count} писем"
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.
@@ -384,6 +425,21 @@ ru:
     trial_expired:
       subject: Ваша группа в Loomio будет удалена из-за неактивности.
       body: Ваша группа Loomio "%{group}" неактивна и будет удалена через 2 недели. Если вы не хотите, чтобы ваша группа была удалена, пожалуйста, ответьте на это письмо.
+    destroy_warning_with_usage:
+      subject: Ваша группа в Loomio запланирована к удалению.
+      requested: Ваша группа Loomio "%{group}" была запланирована к удалению пользователем %{requestor}. Она будет безвозвратно удалена через %{days} дней.
+      trial_expired_warning: Срок действия вашей пробной версии группы Loomio "%{group}" истек %{expired_days} дней назад. Если вы не свяжетесь с нами, она будет удалена через %{grace_days} дней.
+      trial_expired_process: Ваша группа недоступна, пока она помечена для удаления. Если вы все еще хотите, чтобы ваша группа могла обсуждать вопросы и принимать решения, еще не поздно ее перезапустить. Ответьте на это письмо в течение %{grace_days} дней, если вы хотите запросить продление пробного периода, перейти на платную подписку или вам нужно больше времени для экспорта данных. После этого группа и ее данные будут безвозвратно удалены.
+      trial_expired: Ваша группа Loomio "%{group}" находится в режиме истекшего пробного периода как минимум 60 дней. Она будет безвозвратно удалена через %{days} дней.
+      usage_heading: 'Сводные данные по группе:'
+      subgroups: Подгруппы
+      members: Действующие члены
+      discussions: Обсуждения
+      polls: Опросы
+      comments: Комментарии
+      export: Чтобы сохранить группу или экспортировать копию ее данных, ответьте на это письмо в течение %{days} дней. Мы сможем восстановить доступ до удаления.
+      export_link: Узнайте об экспорте групповых данных.
+      group_key: 'Ключ группы: %{key}'
   poll_mailer:
     common:
       why_send_this: Вы получили это письмо, потому что %{reason}
@@ -686,3 +742,36 @@ ru:
     file_too_large: Размер файла слишком велик. Максимальный размер загружаемого файла составляет %{limit}.
   merge_users:
     not_target_user: Для подтверждения слияния необходимо войти в систему под целевой учетной записью.
+  thread_markdown:
+    poll: Голосование
+    no_activity: Пока нет комментариев, опросов, голосов или результатов.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Комментарий · %{author} %{timestamp}
+    comment_reply: Ответить %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Статус:** %{value}"
+    anonymous_voting: "**Анонимное голосование:** %{value}"
+    options: "**Параметры:** %{value}"
+    'yes': Да
+    closed: Закрыто %{value}
+    scheduled_to_open: Планируется открытие %{value}
+    open_until: Открыто; закрывает %{value}
+    open: Открыть
+    current_results: Текущие результаты
+    hidden_until_closed: Скрыто до закрытия голосования
+    hidden_until_voted: Скрыто до тех пор, пока зритель не проголосует.
+    voters: Избиратели
+    target: Цель
+    available: Доступный
+    available_if_needed: При необходимости доступен.
+    unavailable: Недоступно
+    anonymous: Аноним
+    no_voters: Нет избирателей
+    score: 'оценка: %{value}'
+    vote: 'Голосование: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Ни один из вышеперечисленных
+    no_option_selected: Вариант не выбран
+    outcome: Результат · %{author} %{timestamp}
+    review_date: "**Дата проверки:** %{value}"
+  error:
+    access_denied: У вас нет разрешения на это.

@@ -1,15 +1,15 @@
 class Api::V1::MembershipRequestsController < Api::V1::RestfulController
-
-  before_action :authorize, only: [:pending, :previous]
+  before_action :require_current_user, only: :mine
+  before_action :authorize, only: [ :pending, :previous ]
 
   def pending
     @membership_requests = page_collection(@group.membership_requests.pending)
     respond_with_collection
   end
 
-  def my_pending
+  def mine
     load_and_authorize :group
-    @membership_requests = @group.membership_requests.pending.where(requestor_id: current_user.id)
+    @membership_requests = @group.membership_requests.where(requestor_id: current_user.id).order(created_at: :desc, id: :desc).limit(1)
     respond_with_collection
   end
 
@@ -23,12 +23,21 @@ class Api::V1::MembershipRequestsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def decline
+    service.decline(membership_request: load_resource, actor: current_user, decline_reason: decline_reason)
+    respond_with_resource
+  end
+
   def ignore
     service.ignore(membership_request: load_resource, actor: current_user)
     respond_with_resource
   end
 
   private
+
+  def decline_reason
+    permitted_params.membership_request[:decline_reason].presence if params[:membership_request]
+  end
 
   def authorize
     load_and_authorize :group

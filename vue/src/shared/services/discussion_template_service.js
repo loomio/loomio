@@ -63,27 +63,27 @@ export default new class DiscussionTemplateService {
         name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',
         menu: true,
-        canPerform() { return !discussionTemplate.discardedAt && group.adminsInclude(Session.user()); },
+        canPerform() { return !discussionTemplate.hiddenAt && group.adminsInclude(Session.user()); },
         perform() { return EventBus.$emit('sortDiscussionTemplates'); }
       },
 
-      discard: {
+      hide: {
         icon: 'mdi-eye-off',
         name: 'common.action.hide',
         menu: true,
-        canPerform() { return discussionTemplate.id && !discussionTemplate.discardedAt && service.canEditTemplate(discussionTemplate, group); },
+        canPerform() { return discussionTemplate.id && !discussionTemplate.hiddenAt && service.canEditTemplate(discussionTemplate, group); },
         perform() {
-          return Records.remote.post('discussion_templates/discard', {group_id: group.id, id: discussionTemplate.id});
+          return Records.remote.post('discussion_templates/hide', {group_id: group.id, id: discussionTemplate.id});
         }
       },
 
-      undiscard: {
+      unhide: {
         icon: 'mdi-eye',
         name: 'common.action.unhide',
         menu: true,
-        canPerform() { return discussionTemplate.id && discussionTemplate.discardedAt && service.canEditTemplate(discussionTemplate, group); },
+        canPerform() { return discussionTemplate.id && discussionTemplate.hiddenAt && service.canEditTemplate(discussionTemplate, group); },
         perform() {
-          return Records.remote.post('discussion_templates/undiscard', {group_id: group.id, id: discussionTemplate.id});
+          return Records.remote.post('discussion_templates/unhide', {group_id: group.id, id: discussionTemplate.id});
         }
       },
 

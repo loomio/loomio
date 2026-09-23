@@ -1,0 +1,8 @@
+.DS_Store
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Loomio's root `*.sw*` rule targets editor swap files but also matches Swift.
+!*.swift

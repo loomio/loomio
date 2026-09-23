@@ -8,12 +8,14 @@ class Views::UserMailer::Login < Views::ApplicationMailer::BaseLayout
   end
 
   def view_template
-    p(class: "user-mailer__context text-center") do
-      plain t(:"email.login.intro_code", name: @user.email, site_name: AppConfig.theme[:site_name])
-    end
-    p(class: "user-mailer__code text-center") { plain @token.code }
-    p(class: "user-mailer__resend text-center") do
-      span { plain t(:"email.common.resend") }
+    div(class: "email-login") do
+      p do
+        plain t(:"email.login.intro_code", name: @user.email, site_name: AppConfig.theme[:site_name])
+      end
+      p(class: "email-login-code") { plain @token.code }
+      p do
+        span { plain t(:"email.common.resend") }
+      end
     end
   end
 end

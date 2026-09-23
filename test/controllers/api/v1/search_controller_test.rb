@@ -17,7 +17,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
       topic_id: @discussion.topic.id,
       specified_voters_only: true,
       closing_at: 5.days.from_now,
-      poll_option_names: ["findme"]
+      poll_option_names: [ "findme" ]
     }, actor: @user)
     @poll.update!(closed_at: 1.day.ago)
 
@@ -28,9 +28,22 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     )
     OutcomeService.create(outcome: @outcome, actor: @user)
 
-    # Rebuild search documents after events are created
+    # Rebuild search documents after topic_items are created
     PgSearch::Document.delete_all
-    [Discussion, Comment, Poll, Outcome].each(&:rebuild_pg_search_documents)
+    [ Discussion, Comment, Poll, Outcome ].each(&:rebuild_pg_search_documents)
+    PgSearch::Document.connection.execute <<~SQL
+      INSERT INTO pg_search_words (word, document_count)
+      VALUES
+        ('democracia', 100),
+        ('participativa', 100),
+        ('whakawhanaungatanga', 100),
+        ('демократия', 100),
+        ('findme', 100),
+        ('findguestdiscussion', 100),
+        ('findprivatesubgroup', 100),
+        ('confidential', 100)
+      ON CONFLICT (word) DO UPDATE SET document_count = EXCLUDED.document_count
+    SQL
   end
 
   test "returns visible records for group member" do
@@ -45,29 +58,35 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
-  test "does not return author or timestamp metadata for anonymous stances" do
-    @poll.update!(anonymous: true)
-    stance = @poll.stances.build(participant: @user, latest: true)
-    stance.reason = 'findanonymousstance'
-    stance.cast_at = 2.days.ago
-    stance.stance_choices.build(poll_option: @poll.poll_options.first)
-    stance.save!
-    Stance.rebuild_pg_search_documents
+  test "standalone poll results do not advertise a discussion sequence" do
+    poll = PollService.create(params: {
+      title: "standalonefindme poll",
+      poll_type: "proposal",
+      group_id: @group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: [ "agree", "disagree" ]
+    }, actor: @user)
+    poll.update_pg_search_document
 
     sign_in @user
-    get :index, params: { query: 'findanonymousstance' }
+    get :index, params: { query: "standalonefindme" }
 
-    result = JSON.parse(response.body)['search_results'].find { |record| record['searchable_id'] == stance.id }
-    result ||= JSON.parse(response.body)['search_results'].find { |record| record['poll_id'] == @poll.id }
+    result = JSON.parse(response.body).fetch('search_results').find do |record|
+      record['searchable_type'] == 'Poll' && record['searchable_id'] == poll.id
+    end
     assert_not_nil result
-    assert_equal stance.id, result['searchable_id']
-    assert_not result.key?('author_id')
-    assert_not result.key?('author_name')
-    assert_not result.key?('authored_at')
+    assert_nil result['discussion_key']
+    assert_nil result['discussion_title']
+    assert_nil result['sequence_id']
+    assert_equal poll.key, result['poll_key']
+    assert_equal poll.title, result['poll_title']
 
-    get :index, params: {query: @user.name}
-    name_results = JSON.parse(response.body)['search_results']
-    assert name_results.any? { |record| record['searchable_type'] == 'Stance' && record['poll_id'] == @poll.id }
+    sign_in users(:alien)
+    get :index, params: { query: "standalonefindme" }
+
+    inaccessible_results = JSON.parse(response.body).fetch('search_results')
+    refute inaccessible_results.any? { |record| record['searchable_id'] == poll.id }
   end
 
   test "does not return stale documents for a legacy discarded discussion" do
@@ -75,7 +94,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert PgSearch::Document.where(discussion_id: @discussion.id).exists?
 
     sign_in @user
-    get :index, params: { query: 'findme' }
+    get :index, params: { query: 'findmee' }
 
     results = JSON.parse(response.body)['search_results']
     refute results.any? { |result| result['discussion_key'] == @discussion.key }
@@ -86,7 +105,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert PgSearch::Document.where(topic_id: @discussion.topic.id).exists?
 
     sign_in @user
-    get :index, params: { query: 'findme' }
+    get :index, params: { query: 'findmee' }
 
     results = JSON.parse(response.body)['search_results']
     refute results.any? { |result| result['discussion_key'] == @discussion.key }
@@ -109,13 +128,13 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     discussion.update_pg_search_document
 
     sign_in users(:member)
-    get :index, params: { query: "findprivatesubgroup" }
+    get :index, params: { query: "findprivatesubgrop" }
 
     results = JSON.parse(response.body)['search_results']
     refute results.any? { |result| result['searchable_id'] == discussion.id }
 
     subgroup.update_columns(parent_members_can_see_discussions: true)
-    get :index, params: { query: "findprivatesubgroup" }
+    get :index, params: { query: "findprivatesubgrop" }
 
     results = JSON.parse(response.body)['search_results']
     assert results.any? { |result| result['searchable_id'] == discussion.id }
@@ -131,7 +150,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
       actor: users(:admin)
     )
     discussion.save!(validate: false)
-    discussion.create_missing_created_event!
+    discussion.create_missing_created_topic_item!
     discussion.add_guest!(@user, discussion.author)
     discussion.update_pg_search_document
 
@@ -146,12 +165,24 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
 
     results = JSON.parse(response.body)['search_results']
     refute results.any? { |result| result['searchable_id'] == discussion.id }
+
+    sign_in @user
+    get :index, params: { query: "findguestdiscusison" }
+
+    results = JSON.parse(response.body)['search_results']
+    assert results.any? { |result| result['searchable_id'] == discussion.id }
+
+    sign_in users(:alien)
+    get :index, params: { query: "findguestdiscusison" }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |result| result['searchable_id'] == discussion.id }
   end
 
   test "returns group filtered records" do
     sign_in @user
 
-    get :index, params: { query: "findme", group_id: @group.id }
+    get :index, params: { query: "findmee", group_id: @group.id }
     results = JSON.parse(response.body)['search_results']
 
     assert results.any? { |r| r['searchable_type'] == 'Discussion' && r['searchable_id'] == @discussion.id }
@@ -178,6 +209,90 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_equal 0, results.length
   end
 
+  test "handles an order without a search query" do
+    sign_in @user
+
+    get :index, params: { order: "f" }
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('search_results')
+  end
+
+  test "returns recent visible activity by author without a search query" do
+    @poll.update!(details: 'Poll activity details')
+    @poll.update_pg_search_document
+    sign_in @user
+
+    get :index, params: {
+      author_id: @user.id,
+      types: "Discussion,Comment,Poll",
+      order: "authored_at_desc"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Comment' && result['searchable_id'] == @comment.id }
+    assert results.any? { |result| result['searchable_type'] == 'Poll' && result['searchable_id'] == @poll.id }
+    assert results.all? { |result| result['author_id'] == @user.id }
+    assert results.all? { |result| %w[Discussion Comment Poll].include?(result['searchable_type']) }
+    assert_equal results.map { |result| result['authored_at'] }.sort.reverse,
+                 results.map { |result| result['authored_at'] }
+    assert_equal 'findme in comment', results.find { |result| result['searchable_type'] == 'Comment' }['highlight']
+    assert_equal 'Poll activity details', results.find { |result| result['searchable_type'] == 'Poll' }['highlight']
+  end
+
+  test "filters author activity through the current user's visible topics" do
+    author = users(:alien)
+    @group.add_member!(author)
+    visible_discussion = DiscussionService.create(
+      params: { group_id: @group.id, title: 'Visible author activity', private: true },
+      actor: author
+    )
+    visible_discussion.update_pg_search_document
+
+    inaccessible_discussion = discussions(:alien_discussion)
+    inaccessible_discussion.update_pg_search_document
+    inaccessible_comment = Comment.new(parent: inaccessible_discussion, body: 'Inaccessible author comment')
+    CommentService.create(comment: inaccessible_comment, actor: author)
+    inaccessible_poll = PollService.create(params: {
+      title: 'Inaccessible author poll',
+      poll_type: 'proposal',
+      group_id: groups(:alien_group).id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: author)
+    inaccessible_poll.update_pg_search_document
+
+    sign_in @user
+    get :index, params: {
+      author_id: author.id,
+      types: "Discussion,Comment,Poll"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == visible_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == inaccessible_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Comment' && result['searchable_id'] == inaccessible_comment.id }
+    refute results.any? { |result| result['searchable_type'] == 'Poll' && result['searchable_id'] == inaccessible_poll.id }
+  end
+
+  test "only returns public author activity to signed-out users" do
+    author = users(:admin)
+    public_discussion = discussions(:public_discussion)
+    public_discussion.update_pg_search_document
+    @discussion.update_pg_search_document
+
+    sign_out
+    get :index, params: {
+      author_id: author.id,
+      types: "Discussion,Comment,Poll"
+    }
+    results = JSON.parse(response.body)['search_results']
+
+    assert results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == public_discussion.id }
+    refute results.any? { |result| result['searchable_type'] == 'Discussion' && result['searchable_id'] == @discussion.id }
+  end
+
   test "returns search results in json format" do
     sign_in @user
 
@@ -186,5 +301,113 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_includes json.keys, 'search_results'
+  end
+
+  test "returns a result when multiple search terms are misspelled" do
+    @discussion.update!(title: 'Democracia participativa')
+    @discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: 'democracai partciipativa' }
+
+    result = JSON.parse(response.body)['search_results'].find do |record|
+      record['searchable_type'] == 'Discussion' && record['searchable_id'] == @discussion.id
+    end
+    assert_not_nil result
+    assert_includes result['highlight'], '<b>Democracia</b>'
+    assert_includes result['highlight'], '<b>participativa</b>'
+  end
+
+  test "supports fuzzy matching across writing systems" do
+    @discussion.update!(title: 'Whakawhanaungatanga демократия')
+    @discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: 'whakawhanaungatnga демократя' }
+
+    results = JSON.parse(response.body)['search_results']
+    assert results.any? { |record| record['searchable_type'] == 'Discussion' && record['searchable_id'] == @discussion.id }
+  end
+
+  test "ranks exact matches before fuzzy matches" do
+    exact_discussion = DiscussionService.create(
+      params: { group_id: @group.id, title: 'findmee discussion', private: true },
+      actor: users(:admin)
+    )
+    exact_discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: 'findmee' }
+
+    results = JSON.parse(response.body)['search_results']
+    exact_index = results.index { |record| record['searchable_type'] == 'Discussion' && record['searchable_id'] == exact_discussion.id }
+    fuzzy_index = results.index { |record| record['searchable_type'] == 'Discussion' && record['searchable_id'] == @discussion.id }
+    assert_operator exact_index, :<, fuzzy_index
+  end
+
+  test "applies authored ordering across exact and fuzzy matches" do
+    exact_discussion = DiscussionService.create(
+      params: { group_id: @group.id, title: 'findmee discussion', private: true },
+      actor: users(:admin)
+    )
+    exact_discussion.update_columns(created_at: 1.day.ago)
+    exact_discussion.update_pg_search_document
+
+    fuzzy_discussion = DiscussionService.create(
+      params: { group_id: @group.id, title: 'findme discussion', private: true },
+      actor: users(:admin)
+    )
+    fuzzy_discussion.update_columns(created_at: 1.day.from_now)
+    fuzzy_discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: 'findmee', order: 'authored_at_desc' }
+
+    result = JSON.parse(response.body)['search_results'].first
+    assert_equal 'Discussion', result['searchable_type']
+    assert_equal fuzzy_discussion.id, result['searchable_id']
+  end
+
+  test "applies type filters to fuzzy matches" do
+    sign_in @user
+    get :index, params: { query: 'findmee', type: 'Discussion' }
+
+    results = JSON.parse(response.body)['search_results']
+    assert results.any?
+    assert results.all? { |record| record['searchable_type'] == 'Discussion' }
+  end
+
+  test "applies tag filters to fuzzy matches" do
+    @discussion.topic.update!(tags: [ 'planning' ])
+    [ Discussion, Comment, Poll, Outcome ].each(&:rebuild_pg_search_documents)
+
+    sign_in @user
+    get :index, params: { query: 'findmee', tag: 'planning' }
+    matching_results = JSON.parse(response.body)['search_results']
+
+    get :index, params: { query: 'findmee', tag: 'governance' }
+    excluded_results = JSON.parse(response.body)['search_results']
+
+    assert matching_results.any? { |record| record['searchable_id'] == @discussion.id }
+    refute excluded_results.any? { |record| record['searchable_id'] == @discussion.id }
+  end
+
+  test "does not fuzzy match documents outside the user's groups" do
+    alien_discussion = discussions(:alien_discussion)
+    alien_discussion.update!(title: 'Confidential strategy')
+    alien_discussion.update_pg_search_document
+
+    sign_in @user
+    get :index, params: { query: 'confidnetial' }
+
+    results = JSON.parse(response.body)['search_results']
+    refute results.any? { |record| record['searchable_id'] == alien_discussion.id }
+  end
+
+  test "does not use fuzzy matching for negated queries" do
+    sign_in @user
+    get :index, params: { query: 'findmee !poll' }
+
+    assert_empty JSON.parse(response.body)['search_results']
   end
 end

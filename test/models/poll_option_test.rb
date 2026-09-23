@@ -75,6 +75,33 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_equal({users(:admin).id => 2, users(:user).id => 0}, poll.results.find { |result| result[:id] == option.id }[:voter_weights])
   end
 
+  test "weighted scores can exceed the integer column range" do
+    poll = PollService.create(params: {
+      poll_type: 'score',
+      title: 'Large weighted score',
+      poll_option_names: %w[Alpha Beta],
+      min_score: 0,
+      max_score: 3_000,
+      closing_at: 1.day.from_now,
+      group_id: groups(:group).id,
+      vote_weights_enabled: true,
+      specified_voters_only: true,
+      notify_on_open: false
+    }, actor: users(:admin))
+    option = poll.poll_options.first
+    Stance.create!(
+      participant: users(:admin),
+      poll: poll,
+      weight: 1_000_000,
+      cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: option.id, score: 3_000}]
+    )
+
+    poll.update_counts!
+
+    assert_equal 3_000_000_000, option.reload.total_score
+  end
+
   test "weighted polls expose both voter count and score result columns" do
     poll = PollService.create(params: {
       poll_type: 'poll',

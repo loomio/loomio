@@ -17,7 +17,13 @@ module Ability::Discussion
       (
         (group.blank? && (!AppConfig.app_features[:create_user] || user.group_ids.any?)) ||
         group.admins.exists?(user.id) ||
-        (group.members_can_start_discussions && group.members.exists?(user.id))
+        (group.members_can_start_discussions && group.members.exists?(user.id)) ||
+        (
+          group.group_privacy != 'secret' &&
+          group.non_members_can_start_discussions &&
+          user.can?(:show, group) &&
+          !group.members.exists?(user.id)
+        )
       )
     end
 

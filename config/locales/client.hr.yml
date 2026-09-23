@@ -1,5 +1,10 @@
 ---
 hr:
+  install_app:
+    install_title: Instaliraj %{site_name}
+    install_description: Dodaj %{site_name} na početni zaslon za brži pristup
+    install_button: Instaliraj
+    ios_install_description: U pregledniku Safari otvori Dijeli i odaberi Dodaj na početni zaslon
   start_trial:
     title: Započnite besplatnu probnu verziju Loomija
     intro: Hvala vam na interesu za Loomio. Drago nam je što vam možemo ponuditi %{day}-dnevno besplatno probno razdoblje kako biste mogli vidjeti odgovara li Loomio vašoj organizaciji.
@@ -188,6 +193,7 @@ hr:
     prefix_eg: npr. %{val}
     are_you_sure: Jesi li siguran?
     loomio_help: Loomio pomoć
+    user_manual: Vodič za korisnike
     visit_loomio_help: Posjetite pomoć za Loomio
     help_and_guides: Pomoć i vodiči
     please_wait: Molimo pričekajte
@@ -355,9 +361,16 @@ hr:
       flash: E-pošta za potvrdu je poslana!
       helptext_and_signout: Račun pod <strong>%{sourceEmail}</strong> možete spojiti s računom <strong>%{targetEmail}</strong> . Kliknite Potvrdi i e-poruka za potvrdu bit će poslana na %{targetEmail} kako biste započeli postupak. Bit ćete odjavljeni kako biste se mogli prijaviti kao ciljni račun za dovršetak spajanja.
       flash_and_signout: E-poruka za potvrdu poslana je na %{targetEmail}. Sada ste odjavljeni pa se možete prijaviti kao ciljni račun kako biste dovršili spajanje.
+      generic_helptext: Unesite adresu e-pošte za drugi račun. Ako taj račun postoji, Loomio će mu poslati e-poštu s uputama za potvrdu spajanja.
+      email_label: E-pošta drugog računa
+      send_verification: Pošalji e-poruku za potvrdu
+      generic_flash_and_signout: Ako račun koristi tu adresu e-pošte, poslana je e-pošta za potvrdu. Sada ste odjavljeni pa možete nastaviti s drugim računom.
+      destination_helptext: Ovaj račun (%{sourceEmail}) bit će spojen s odredišnim računom. Unesite adresu e-pošte odredišnog računa. Ako postoji, Loomio će poslati e-poštu na tu adresu kako bi potvrdio spajanje.
+      destination_email_label: E-pošta odredišnog računa
     email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
     find_out_more: Saznaj više.
     placeholder_modal_text: <p>Ako želite spojiti dva računa, jednostavno unesite odgovarajuću adresu e-pošte (koja pripada drugom računu) u polje za e-poštu na stranici profila i slijedite upute koje se pojavljuju.</p><p> Trebate pomoć? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
+    email_may_belong_to_another_account: Ako ova adresa pripada drugom računu, možete spojiti račune
   emoji_picker:
     search: traži
     common: Često korišten
@@ -433,6 +446,14 @@ hr:
     title_label: Titula
     hint: 'Savjet za sljedeći put: pokušajte označiti tekst prije nego što kliknete "Prikvači".'
   change_volume_form:
+    context_title:
+      thread: Postavke obavijesti o temama
+      group: Postavke grupnih obavijesti
+      default: Zadane postavke obavijesti
+    context:
+      thread: ova nit
+      group: ova grupa
+      default: grupe kojima se pridružujete
     explain_scope:
       thread: Ovo se mijenja kada ćete biti obaviješteni o ovoj niti
       group: Ovo se mijenja kada ćete biti obaviješteni o svim nitima u grupi
@@ -515,6 +536,36 @@ hr:
     normal_option: Kad netko želi moju pažnju (Kad je obaviješten)
     quiet_option: Nema e-poruka o ovoj temi (Isključeno)
     quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti.
+    volume_email_label: E-pošta
+    volume_push_label: Push
+    all_activity_option: Sve aktivnosti
+    when_notified_option: Kada je obaviješten
+    muted_option: Prigušen
+    volume_channel_label: Kako bismo vas trebali ažurirati?
+    email_channel: E-pošta
+    push_channel: Push
+    email_and_push_channel: E-pošta i slanje poruka
+    off_option: Isključeno
+    apply_to_all_threads_in_group: Primijeni ove postavke na sve niti u %{group}
+    delivery_method: Način dostave
+    how_do_you_want_to_stay_updated: Kako želite ostati u toku?
+    catch_up_daily_hint: Vaš izvještaj o propuštenom je dnevna e-pošta s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_every_second_day_hint: Vaš izvještaj je e-poruka koja se šalje svaki drugi dan s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_weekly_hint: Vaš tjedni izvještaj je e-poruka s nepročitanim obavijestima i nepročitanim aktivnostima
+    catch_up_only_option: Samo nadoknađivanje propuštenog
+    no_email_updates_option: Nema ažuriranja putem e-pošte
+    no_push_updates_option: Nema push ažuriranja
+    in_app_only_option: Samo u aplikaciji
+    catch_up_only_description: Uključi aktivnost iz %{context} u moj pregled
+    catch_up_only_with_notifications_description: Uključi obavijesti i ostale aktivnosti iz %{context} u moj pregled
+    no_email_updates_description: Ne šalji mi e-poštu o aktivnostima u %{context}
+    no_push_updates_description: Ne šalji push obavijesti o aktivnosti u %{context}
+    email_when_notified_description: Pošalji mi e-poštu kada dobijem obavijest
+    email_when_notified_with_catch_up_description: Pošalji mi e-poštu kada dobijem obavijest, a ostatak uključi u moju nadolazeću stranicu
+    push_when_notified_description: Pošalji push obavijest kada primim obavijest
+    push_when_notified_with_catch_up_description: Pošalji push obavijest kada primim obavijest, a ostatak uključi u moj pregled
+    email_all_activity_description: Pošalji mi e-poštu kad god bude aktivnosti u %{context}
+    push_all_activity_description: Pošalji push obavijest kad god postoji aktivnost u %{context}
   inbox:
     clear: Obriši
     latest: Najnoviji
@@ -620,6 +671,16 @@ hr:
     email_notifications: E-pošta prilikom obavijesti
     email_none: Nema e-poruka
     new_to_you: Novo za tebe
+    email_and_push_when_notified: E-pošta i push obavijest kada dobiješ obavijest
+    email_when_notified: E-pošta kada dobiješ obavijest
+    push_when_notified: Push obavijest kada dobiješ obavijest
+    daily_catch_up_email: Dnevni e-mail sa sažetkom
+    in_app_only: Samo u aplikaciji
+    email_and_device_when_notified: Obavijesti e-poštom i uređajem kada se obavijest primi
+    device_notification_when_notified: Obavijest na uređaju kada primiš obavijest
+    no_notifications: Nema obavijesti
+    catch_up_email_every_second_day: E-poruka za nadoknađivanje propuštenih informacija svaki drugi dan
+    weekly_catch_up_email: Tjedni e-mail za nadoknađivanje propuštenog
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj
@@ -679,6 +740,7 @@ hr:
     light_blue: Svijetloplava
     dark_blue: Tamnoplava
     whats_new: Što je novo
+    mobile_app_settings: Postavke za mobilne uređaje
   membership_card:
     group_members: Članovi grupe
     poll_members: "%{pollType} članova"
@@ -755,6 +817,7 @@ hr:
       new_discussion: "%{actor} je započeo raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
       thread_locked: "%{actor} je zaključao temu: %{title}"
+      membership_request_declined: Vaš zahtjev za pridruživanje %{title} je odbijen
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -793,6 +856,7 @@ hr:
       new_comment: "%{actor} je komentirao/la u raspravi"
       outcome_updated: "%{actor} je ažurirao/la ishod"
       thread_locked: "%{actor} je zaključao/la nit"
+      membership_request_declined: Vaš zahtjev za pridruživanje %{title} je odbijen
     hints:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
@@ -837,6 +901,7 @@ hr:
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
       thread_locked: "%{actor} je zaključao temu: %{title}"
+      membership_request_declined: Vaš zahtjev za pridruživanje %{title} je odbijen
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -934,7 +999,7 @@ hr:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Svi u grupi
-      discussion_group: Svi u temi
+      topic: Svi u temi
       voters: Svi pozvani da glasaju
       decided_voters: Svi koji su glasali
       undecided_voters: Neodlučni glasači
@@ -1167,6 +1232,8 @@ hr:
     membership_requested: Članstvo zatraženo
     messages:
       joined_group: Sada ste član %{group}
+    membership_request_declined: 'Vaš zahtjev za pridruživanje je odbijen: %{reason}'
+    request_membership_again: Zatraži ponovno pridruživanje
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
     name_label: Ime
@@ -1211,6 +1278,8 @@ hr:
     body: Jeste li sigurni da želite izbrisati ovu podgrupu? Sve teme, ankete, datoteke i drugi sadržaj grupe bit će trajno izbrisani. Preporuča se da izvezete podatke grupe i ručno preuzmete sve važne datoteke prije nastavka.
     confirm: Upišite '%{name}' da potvrdite da želite izbrisati ovu grupu.
     success: Ova je grupa arhivirana i zakazano je za trajno brisanje za 2 tjedna.
+    scheduled_for_deletion: Trajno brisanje ove grupe planirano je za 2 tjedna
+    deletion_after_grace_period: Ova grupa nije dostupna i bit će trajno izbrisana nakon %{days} dana
   group_page:
     stats: Grupna statistika
     threads: niti
@@ -1418,7 +1487,7 @@ hr:
     remove_background: ukloni pozadinu
     remove_logo: ukloni logotip
     members_can_create_templates: Članovi mogu kreirati predloške
-    members_can_create_templates_help: Omogući članovima izradu predložaka za rasprave i ankete. Predlošci koje su izradili članovi bit će skriveni dok ih administrator ne otkrije.
+    members_can_create_discussion_and_poll_templates_help: Omogući članovima izradu predložaka za rasprave i ankete
     members_can_start_discussions_v2: Članovi mogu započeti nove rasprave
     members_can_start_discussions_help_v2: Omogućite članovima da započnu nove rasprave unutar grupe
     members_can_edit_discussions_v2: Članovi mogu upravljati raspravama i komentarima
@@ -1427,6 +1496,8 @@ hr:
     handle_changed_hint: Vaš prethodni URL i adresa e-pošte preusmjeravat će vas na vašu novu adresu.
     members_can_create_tags: Članovi mogu kreirati oznake
     members_can_create_tags_help: Omogući članovima stvaranje novih oznaka prilikom označavanja tema i anketa
+    non_members_can_start_discussions: Nečlanovi mogu započeti rasprave
+    non_members_can_start_discussions_help: Dopusti osobama koje nisu članovi da započnu raspravu iz jednog od predložaka ove grupe
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1447,6 +1518,11 @@ hr:
     messages:
       request_approved_success: Zahtjev za članstvo odobren
       request_ignored_success: Zahtjev za članstvo zanemaren
+      request_declined_success: Zahtjev za članstvo odbijen
+    decline: Pad
+    decline_request: Odbij zahtjev za članstvo
+    decline_reason: Razlog odbijanja
+    decline_help: Odbijanje šalje vaš razlog podnositelju zahtjeva putem e-pošte. Može poslati novi zahtjev. Ignoriranje zatvara zahtjev bez obavještavanja.
   invitation_form:
     group_url: URL grupe
     reusable_invitation_link: Pozivnica za višekratnu upotrebu
@@ -1535,6 +1611,8 @@ hr:
     online_field: 'Online: %{value}'
     invited: Pozvan %{value}
     message_user: Pošalji poruku %{name}
+    recent_activity: Nedavna aktivnost
+    no_recent_activity: Nema nedavnih aktivnosti
   contact_request_form:
     modal_title: Email %{name}
     message_placeholder: Predstavite se i recite zašto želite uspostaviti kontakt.
@@ -1625,8 +1703,7 @@ hr:
     email_newsletter: Loomio bilten
     email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
     email_catch_up_day: Sažetak e-pošte za nadoknadu
-    on_participation_label: Pretplatite se na sudjelovanje
-    on_participation_description: Kada sudjelujete u niti, sve daljnje aktivnosti bit će vam odmah poslane e-poštom.
+    digest_email: Sažetak e-pošte za nadoknadu
     announcement_label: Obavijesti
     announcement_description: Primit ćete e-poruku o svim sadržajima koje su najavili ljudi u vašim grupama
     mentioned_label: Spominjanja i odgovori
@@ -1642,8 +1719,14 @@ hr:
     learn_more: Saznajte više o postavkama e-pošte...
     mentioned_description: Kada vas netko {'@'}spomene u komentaru, dobit ćete obavijest e-poštom
     daily_summary_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
+    digest_email_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
     never: Nikada
     send_email: Pošalji e-poštu
+    group_notifications: Grupne obavijesti
+    group_notifications_description: Promijenite razinu aktivnosti i kanal za svoje grupe
+    choose_email_and_push_updates: Odaberite zasebne postavke za e-poštu i push poruke
+    catch_up_email: E-pošta za nadoknađivanje propuštenog
+    catch_up_email_description: Odaberite kada želite primati obavijesti o nepročitanim obavijestima i nepročitanim aktivnostima
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
@@ -1745,7 +1828,7 @@ hr:
     title: vidio od
     no_one: Ovo još nitko nije vidio
     disabled_anonymous_polls: Povijest gledatelja je onemogućena jer nit sadrži anonimne ankete
-    thread_engagement: Thread engagement
+    thread_engagement: Sudjelovanje u raspravi
   activity_card:
     count_responses: "%{count} odgovora"
     beginning: Početak
@@ -2061,6 +2144,7 @@ hr:
     order_by_created_desc: Najnoviji
     order_by_admin_desc: Administratori
     loaded_of_total: "%{loaded} od %{total}"
+    topics_loaded_of_total: "%{loaded} od %{total}"
     view_requests: Pogledaj zahtjeve
     header_name: Ime
     header_username: Korisničko ime
@@ -2123,7 +2207,6 @@ hr:
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
     unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se pojavljuju nakon završetka glasanja
-    legacy_anonymous_voting_format: Ova anketa koristi stari format anonimnog glasanja
     anonymous_vote_cannot_be_changed: Ne možete pregledati ili promijeniti svoj glas nakon što ga pošaljete
     anonymous_vote_recorded: Vaš glas je zabilježen
     legacy_vote_reasons: Razlozi ranijih glasova
@@ -2382,7 +2465,6 @@ hr:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je premjestio nit iz <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zatvorio temu"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio temu"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je stvorio račvanje ove niti: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> podijelio je ishod"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio %{polltype}"
@@ -2415,6 +2497,7 @@ hr:
     sign_up_as: Izradi račun kao %{email}
     sign_in_as: Prijavite se kao %{name}
     continue_with_provider: Nastavite s %{provider}
+    sign_in_with_provider: Prijavite se putem %{provider}
     continue_with_email: Nastavite s e-poštom
     or_enter_your_email: Ili unesite svoju adresu e-pošte
     enter_your_name: Unesite svoje ime
@@ -2473,6 +2556,22 @@ hr:
     invalid_login: Ne mogu vas prijaviti s tim podacima
     login_link_rate_limited: Previše je e-poruka za prijavu zatraženo s ove mreže. Pričekajte sat vremena i pokušajte ponovno.
     send_login_link_error: Došlo je do pogreške prilikom slanja e-pošte za prijavu. Pokušajte ponovno.
+    sign_in_with_passkey: Prijavite se s lozinkom
+    passkey_authentication_failed: Nismo vas mogli prijaviti s tom lozinkom
+    passkey_registration_failed: Nismo mogli spremiti tu lozinku
+    passkey_default_name: Lozinka
+    local_login_disabled: Ova stranica zahtijeva jednokratnu prijavu
+    email_me_a_sign_in_code: Pošalji mi kod za prijavu e-poštom
+    sign_in_with_code: Prijavite se s kodom
+    new_to_site: Novi ovdje?
+    passkey_recent_authentication_required: Prijavite se ponovno prije promjene lozinki
+    email_code_help: Unesite svoju adresu e-pošte i poslat ćemo vam šesteroznamenkasti kod za prijavu
+    or_sign_in_with_password: Ili se prijavite s lozinkom
+    login_link_sent_if_account_exists: Ako postoji račun za %{email}, poslat ćemo vam kod za prijavu
+    use_a_passkey: Koristite pristupni ključ
+    send_me_a_code: Pošalji mi kod
+    email_code_help_short: Poslat ćemo vam šesteroznamenkasti kod na vašu adresu e-pošte
+    login_link_sent_if_account_exists_sentence: Ako postoji račun za %{email}, poslat ćemo vam kod za prijavu.
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu
@@ -2614,6 +2713,14 @@ hr:
     tags_per_interval: Oznake po %{interval}
     all_groups_and_direct_threads: Sve grupe i izravne teme
     custom_selection: Prilagođeni odabir
+    all_votes_cast: Svi dati glasovi
+    votes_cast: Broj glasova
+    votes_issued: Izdani glasovi
+    votes_missed: Propušteni glasovi
+    voting_record_per_user: Broj glasova po korisniku
+    yes_label: Da
+    no_label: Ne
+    delegates_only: Samo za delegate
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak
@@ -2685,8 +2792,6 @@ hr:
     anonymous:
       title: Anonimni birači
       helptext_on: Kada je odabrano, informacije o sudioniku neće se prikazivati uz svaki odgovor.
-    voter_can_add_options:
-      title: Birači mogu dodati alternativne opcije
     can_respond_maybe:
       title: Birači mogu odgovoriti "ako bude potrebno"
     allow_long_reason:
@@ -2813,7 +2918,10 @@ hr:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se pojavljuju nakon završetka glasanja. Birači ne mogu dodavati razloge, pregledavati svoj glas nakon što ga predaju ili mijenjati svoj glas.
     anonymous_voting_explanation: Onemogućite saznanje kako je netko glasao. Anonimni glasovi bilježe se odvojeno od identiteta birača. Rezultati se pojavljuju tek nakon završetka glasanja. Birači ne mogu dodavati obrazloženja, pregledavati svoj glas nakon što ga predaju ili mijenjati svoj glas.
     anonymous_voting_risk_explanation: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se prikazuju tek nakon završetka glasanja, a birači ne mogu dodavati obrazloženja, pregledati svoj glas nakon predaje ili ga promijeniti. Ove mjere smanjuju rizik povezivanja osobe s glasom, ali rezultati i dalje mogu otkriti informacije kada malo ljudi ima pravo glasa ili glasa, rezultat je jednoglasan, obrasci glasanja su prepoznatljivi ili birači otkriju svoje odabire.
+    anonymous_votes_stored_separately: Anonimni glasovi pohranjuju se odvojeno od identiteta birača. Rezultati se prikazuju tek nakon završetka glasanja, a birači ne mogu dodavati obrazloženja, pregledati svoj glas nakon predaje ili ga promijeniti.
     stance_reason_required_when_disagreeing: Obavezno u slučaju neslaganja
+    stance_reason_required_for_disagree_or_block: Obavezno za neslaganje ili blokiranje
+    stance_reason_required_for_block: Potrebno za blokiranje
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     verify_participants: Potvrdite sudionike
@@ -2957,9 +3065,6 @@ hr:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: glasova
     candidate: Kandidat
     round_elected: Izabrani krug
@@ -2969,6 +3074,9 @@ hr:
     round_details: Detalji rundu po rundu
     view_full_results: Pogledajte sve rezultate
     results_available_when_closed: Rezultati će biti dostupni nakon završetka glasanja
+    elected_in_round: Izabran u %{round} krugu
+    eliminated_in_round: Eliminiran u %{round} rundi
+    tied_in_round: Neriješeno u rundi %{round}
   lock_thread_modal:
     body: Zaključajte teme kako biste ih uklonili s popisa otvorenih tema i spriječili ljude da komentiraju.
     explanation: Zaključajte teme kako biste spriječili ljude da komentiraju ili unose daljnje promjene
@@ -2998,3 +3106,48 @@ hr:
     nobody_will_be_notified: Nitko neće biti obaviješten
     one_person_will_be_notified: 1 osoba će biti obaviještena
     x_people_will_be_notified: "%{count} osoba će biti obaviješteno"
+  push_notifications:
+    title: Push obavijesti
+    subtitle: Primajte obavijesti u ovom pregledniku
+    not_supported: Push obavijesti nisu dostupne u ovom pregledniku
+    permission_denied: Push obavijesti su blokirane u postavkama vašeg preglednika
+    manage_devices: Upravljanje uređajima za push obavijesti
+    enabled: Push obavijesti omogućene za ovaj preglednik
+    disabled: Push obavijesti onemogućene za ovaj preglednik
+    device_removed: Uređaj za push obavijesti uklonjen
+    enable_device: Omogući u ovom pregledniku
+    disable_device: Onemogući u ovom pregledniku
+    devices: Omogućeni preglednici
+    browser_device: Preglednik
+    remove_device: Ukloni preglednik
+    enable_from_loomio: Omogućite push obavijesti iz postavki obavijesti dok ste prijavljeni na Loomio
+    ios_add_to_home_screen_before_enabling: Na iPhoneu ili iPadu upotrijebite Dijeli da biste dodali Loomio na početni zaslon. Otvorite Loomio iz nove ikone, a zatim ovdje omogućite push obavijesti.
+  group_follow:
+    follow: Pratite ažuriranja
+    unfollow: Prestani pratiti ažuriranja
+    followed: Sada pratite novosti iz ove grupe
+    unfollowed: Više ne pratite novosti iz ove grupe
+  passkey_settings:
+    title: Lozinke
+    helptext: Lozinke vam omogućuju prijavu pomoću uređaja bez unosa adrese e-pošte ili lozinke
+    none: Niste dodali pristupni ključ
+    name: Naziv lozinke
+    name_placeholder: Na primjer, prijenosno računalo za posao
+    add: Dodajte pristupni ključ
+    added: Dodana je lozinka
+    created_at: Dodano %{date}
+    remove_named: Ukloni %{name}
+    remove_confirm: Ukloniti pristupni ključ pod nazivom %{name}?
+    removed: Lozinka uklonjena
+    remove_failed: Lozinka nije mogla biti uklonjena
+  credential_prompt:
+    title: Dodajte još jedan način prijave
+    helptext: Dodajte pristupni ključ ili postavite lozinku kako biste se mogli prijaviti bez čekanja na kod poslan e-poštom
+    add_passkey: Dodajte pristupni ključ
+    set_password: Postavite lozinku
+    not_now: Ne sada
+    passkey_description: Pristupni ključ omogućuje brzu prijavu otiskom prsta, prepoznavanjem lica ili zaključavanjem zaslona uređaja
+    set_new_password: Postavite novu lozinku
+  account_completion:
+    complete_your_account: Dovršite svoj račun
+    continue: Nastaviti

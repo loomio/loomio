@@ -10,7 +10,8 @@ class DiscussionsController < ApplicationController
         format.html do
           render Views::Topics::Show.new(
             topic: @topic, recipient: @recipient, pagination: @pagination,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?
+            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+            canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion)
           )
         end
         format.xml { render 'topics/show' }

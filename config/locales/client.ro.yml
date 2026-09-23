@@ -1,5 +1,10 @@
 ---
 ro:
+  install_app:
+    install_title: Instalează %{site_name}
+    install_description: Adaugă %{site_name} pe ecranul principal pentru acces mai rapid
+    install_button: Instalează
+    ios_install_description: În Safari, deschide meniul de partajare și selectează Adăugați la ecranul principal
   start_trial:
     title: Începeți o încercare gratuită a Loomio
     intro: Vă mulțumim pentru interesul manifestat față de Loomio. Suntem încântați să vă oferim o perioadă de încercare gratuită de %{day} zile, astfel încât să puteți vedea dacă Loomio este potrivit pentru organizația dvs.
@@ -188,6 +193,7 @@ ro:
     prefix_eg: de ex. %{val}
     are_you_sure: Esti sigur?
     loomio_help: Loomio ajutor
+    user_manual: Ghid de utilizare
     visit_loomio_help: Vizitați ajutorul Loomio
     help_and_guides: Ajutor și ghiduri
     please_wait: Te rugam asteapta
@@ -355,9 +361,16 @@ ro:
       flash: Email de verificare trimis!
       helptext_and_signout: Puteți îmbina contul de sub <strong>%{sourceEmail}</strong> cu cel al contului <strong>%{targetEmail}</strong> . Faceți clic pe Verificare și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul. Veți fi deconectat, astfel încât să vă puteți conecta ca și contul țintă pentru a finaliza îmbinarea.
       flash_and_signout: E-mail de verificare trimis la %{targetEmail}. Acum sunteți deconectat, așa că vă puteți conecta ca și cont țintă pentru a finaliza îmbinarea.
+      generic_helptext: Introduceți adresa de e-mail pentru celălalt cont. Dacă acel cont există, Loomio îi va trimite un e-mail cu instrucțiuni pentru a confirma îmbinarea.
+      email_label: Adresă de e-mail a altei conturi
+      send_verification: Trimiteți e-mailul de verificare
+      generic_flash_and_signout: Dacă un cont folosește acea adresă de e-mail, ți s-a trimis un e-mail de verificare. Acum ești deconectat, astfel încât să poți continua cu celălalt cont.
+      destination_helptext: Acest cont (%{sourceEmail}) va fi îmbinat cu contul de destinație. Introduceți adresa de e-mail a contului de destinație. Dacă există, Loomio va trimite acelei adrese un e-mail pentru a confirma îmbinarea.
+      destination_email_label: Adresa de e-mail a contului de destinație
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .
+    email_may_belong_to_another_account: Dacă această adresă aparține unui alt cont, puteți îmbina conturile
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -433,18 +446,26 @@ ro:
     title_label: Titlu
     hint: 'Sfat pentru data viitoare: încercați să evidențiați un text înainte de a da clic pe „Fixați”.'
   change_volume_form:
+    context_title:
+      thread: Setări de notificare pentru firele de discuție
+      group: Setări de notificare de grup
+      default: Setări implicite de notificare
+    context:
+      thread: acest fir de discuție
+      group: acest grup
+      default: grupuri la care vă alăturați
     explain_scope:
       thread: Acest lucru se schimbă atunci când veți fi notificat despre acest fir
       group: Acest lucru se schimbă atunci când veți fi notificat despre toate firele din grup
     simple:
       label: Notificari
       loud: Abonat
-      normal: Normal
       quiet: 'Ignora '
       question: Când vrei să fii notificat?
       loud_explain: ori de câte ori există activitate
       normal_explain: când cineva îți cere atenția
       quiet_explain: nicio notificare
+      normal: Normal
     loud_label: Toate activitatile
     normal_label: Anunturi
     quiet_label: Nici un email
@@ -515,6 +536,36 @@ ro:
     normal_option: Când cineva dorește atenția mea (Când sunt notificat)
     quiet_option: Niciun e-mail despre acest subiect (Dezactivat)
     quiet_explained: Nu veți primi e-mailuri, chiar dacă cineva încearcă să vă anunțe.
+    volume_email_label: E-mail
+    volume_push_label: Push
+    all_activity_option: Toată activitatea
+    when_notified_option: Când este notificat
+    muted_option: Dezactivat
+    volume_channel_label: Cum ar trebui să vă ținem la curent?
+    email_channel: E-mail
+    push_channel: Push
+    email_and_push_channel: E-mail și push
+    off_option: Dezactivat
+    apply_to_all_threads_in_group: Aplică aceste setări tuturor discuțiilor din %{group}
+    delivery_method: Metoda de livrare
+    how_do_you_want_to_stay_updated: Cum vrei să fii la curent?
+    catch_up_daily_hint: Notificările tale de recuperare sunt un e-mail zilnic cu notificări nevăzute și activitate necitită.
+    catch_up_every_second_day_hint: Notificările tale de recuperare sunt un e-mail trimis o dată la două zile, cu notificări nevăzute și activitate necitită.
+    catch_up_weekly_hint: Notificările tale de recuperare sunt un e-mail săptămânal cu notificări nevăzute și activitate necitită.
+    catch_up_only_option: Doar recuperare
+    no_email_updates_option: Fără actualizări prin e-mail
+    no_push_updates_option: Fără actualizări push
+    in_app_only_option: Numai în aplicație
+    catch_up_only_description: Include activitatea din %{context} în actualizarea mea
+    catch_up_only_with_notifications_description: Include notificări și alte activități de la %{context} în știrile mele de recuperare
+    no_email_updates_description: Nu-mi trimiteți e-mailuri despre activitatea din %{context}
+    no_push_updates_description: Nu trimite notificări push despre activitatea din %{context}
+    email_when_notified_description: Trimite-mi un e-mail când sunt notificat/ă
+    email_when_notified_with_catch_up_description: Trimite-mi un e-mail când primesc notificare și include restul în sesiunea mea de recuperare.
+    push_when_notified_description: Trimite o notificare push când sunt notificat/ă
+    push_when_notified_with_catch_up_description: Trimite o notificare push când primesc notificare și include restul în actualizarea mea.
+    email_all_activity_description: Trimite-mi un e-mail ori de câte ori există activitate în %{context}
+    push_all_activity_description: Trimite o notificare push ori de câte ori există activitate în %{context}
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -620,6 +671,16 @@ ro:
     email_notifications: Trimiteți un e-mail când primiți notificare
     email_none: Niciun e-mail
     new_to_you: Nou pentru tine
+    email_and_push_when_notified: E-mail și notificare push când primești o notificare
+    email_when_notified: E-mail când primești o notificare
+    push_when_notified: Notificare push când primești o notificare
+    daily_catch_up_email: E-mail zilnic cu rezumat
+    in_app_only: Numai în aplicație
+    email_and_device_when_notified: E-mail și notificare pe dispozitiv când primești o notificare
+    device_notification_when_notified: Notificare pe dispozitiv când primești o notificare
+    no_notifications: Nicio notificare
+    catch_up_email_every_second_day: Recuperarea e-mailurilor o dată la două zile
+    weekly_catch_up_email: E-mail săptămânal de recuperare
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire
@@ -679,6 +740,7 @@ ro:
     light_blue: Albastru deschis
     dark_blue: Albastru închis
     whats_new: Ce este nou
+    mobile_app_settings: Setări mobile
   membership_card:
     group_members: Membrii grupului
     poll_members: "%{pollType} membri"
@@ -755,6 +817,7 @@ ro:
       new_discussion: "%{actor} a început o discuție: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
       thread_locked: "%{actor} a blocat firul de discuție: %{title}"
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       group_announced: "%{actor} te-a invitat într-un grup"
@@ -793,6 +856,7 @@ ro:
       new_comment: "%{actor} a comentat într-o discuție"
       outcome_updated: "%{actor} a actualizat rezultatul"
       thread_locked: "%{actor} a blocat firul de discuție"
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
@@ -837,6 +901,7 @@ ro:
       discussion_closed: "%{actor} a închis discuția: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
       thread_locked: "%{actor} a blocat firul de discuție: %{title}"
+      membership_request_declined: Cererea ta de a te alătura la %{title} a fost respinsă
   discussion_fork_actions:
     move: Mișcare
     moved: Comentarii în mișcare, acest lucru ar putea dura un moment
@@ -934,7 +999,7 @@ ro:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Toți cei din grup
-      discussion_group: Toată lumea din fir
+      topic: Toată lumea din fir
       voters: Toți sunt invitați la vot
       decided_voters: Toți cei care au votat
       undecided_voters: Alegători nehotărâți
@@ -1167,6 +1232,8 @@ ro:
     membership_requested: Cerere de intrare in grup primita.
     messages:
       joined_group: Acum sunteți membru al %{group}
+    membership_request_declined: 'Cererea ta de înscriere a fost respinsă: %{reason}'
+    request_membership_again: Cere să te alături din nou
   membership_request_form:
     heading: Cere sa fi inclus in grup
     name_label: Nume
@@ -1211,6 +1278,8 @@ ro:
     body: Sigur doriți să ștergeți acest subgrup? Toate firele, sondajele, fișierele și alt conținut de grup vor fi șterse definitiv. Se recomandă să exportați datele grupului și să descărcați manual orice fișiere importante înainte de a continua.
     confirm: Tastați „%{name}” pentru a confirma că doriți să ștergeți acest grup.
     success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
+    scheduled_for_deletion: Acest grup este programat pentru ștergere permanentă în 2 săptămâni.
+    deletion_after_grace_period: Acest grup este indisponibil și va fi șters definitiv după %{days} de zile
   group_page:
     stats: Statistici de grup
     threads: Discutii
@@ -1418,7 +1487,7 @@ ro:
     remove_background: eliminați fundalul
     remove_logo: eliminați sigla
     members_can_create_templates: Membrii pot crea șabloane
-    members_can_create_templates_help: Permiteți membrilor să creeze șabloane de discuții și sondaje. Șabloanele create de membri vor fi ascunse până când un administrator le va reafișa.
+    members_can_create_discussion_and_poll_templates_help: Permiteți membrilor să creeze șabloane de discuții și sondaje
     members_can_start_discussions_v2: Membrii pot începe discuții noi
     members_can_start_discussions_help_v2: Permiteți membrilor să înceapă discuții noi în cadrul grupului
     members_can_edit_discussions_v2: Membrii pot gestiona discuțiile și comentariile
@@ -1427,6 +1496,8 @@ ro:
     handle_changed_hint: Adresa URL și adresa de e-mail anterioare vor redirecționa către noua adresă.
     members_can_create_tags: Membrii pot crea etichete
     members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
+    non_members_can_start_discussions: Persoanele care nu sunt membri pot începe discuții
+    non_members_can_start_discussions_help: Permiteți membrilor care nu sunt membri să înceapă o discuție dintr-unul dintre șabloanele acestui grup
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1447,6 +1518,11 @@ ro:
     messages:
       request_approved_success: Solicitarea de membru a fost aprobată
       request_ignored_success: Solicitarea de membru a fost ignorată
+      request_declined_success: Cererea de abonament a fost respinsă
+    decline: Declin
+    decline_request: Refuză cererea de aderare
+    decline_reason: Motivul refuzului
+    decline_help: "„Refuz” trimite solicitantului motivul solicitării prin e-mail. Acesta poate trimite o nouă solicitare. „Ignor” închide solicitarea fără a-l notifica."
   invitation_form:
     group_url: Adresa URL a grupului
     reusable_invitation_link: Link de invitație reutilizabil
@@ -1535,6 +1611,8 @@ ro:
     online_field: 'Online: %{value}'
     invited: "%{value} invitat"
     message_user: Mesaj %{name}
+    recent_activity: Activitate recentă
+    no_recent_activity: Nicio activitate recentă
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Prezentați-vă și spuneți de ce doriți să luați legătura.
@@ -1625,8 +1703,7 @@ ro:
     email_newsletter: Buletinul informativ Loomio
     email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
     email_catch_up_day: E-mail cu rezumat de recuperare
-    on_participation_label: Abonați-vă la participare
-    on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
+    digest_email: E-mail cu rezumat de recuperare
     announcement_label: Anunturi
     announcement_description: Veți primi un e-mail despre tot conținutul care a fost anunțat de persoanele din grupurile dvs
     mentioned_label: Mențiuni și răspunsuri
@@ -1642,8 +1719,14 @@ ro:
     learn_more: Aflați mai multe despre setările de e-mail...
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
     daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
+    digest_email_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
     never: Nu
     send_email: Trimiteți e-mail
+    group_notifications: Notificări de grup
+    group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
+    choose_email_and_push_updates: Alegeți setări separate pentru e-mail și push
+    catch_up_email: E-mail de recuperare
+    catch_up_email_description: Alege când vrei să primești o actualizare cu notificări nevăzute și activitate necitită
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -1745,7 +1828,7 @@ ro:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă
     disabled_anonymous_polls: Istoricul spectatorilor este dezactivat deoarece firul conține sondaje anonime
-    thread_engagement: Thread engagement
+    thread_engagement: Implicare în discuție
   activity_card:
     count_responses: "%{count} răspunsuri"
     beginning: Început
@@ -2061,6 +2144,7 @@ ro:
     order_by_created_desc: Cel mai nou
     order_by_admin_desc: Administratori
     loaded_of_total: "%{loaded} din %{total}"
+    topics_loaded_of_total: "%{loaded} din %{total}"
     view_requests: Vizualizați solicitările
     header_name: Nume
     header_username: Nume utilizator
@@ -2123,7 +2207,6 @@ ro:
     voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
     unable_to_vote: Nu ați fost invitat să votați pentru acest %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării.
-    legacy_anonymous_voting_format: Acest sondaj folosește formatul vechi de vot anonim
     anonymous_vote_cannot_be_changed: Nu puteți revizui sau modifica votul după ce l-ați trimis.
     anonymous_vote_recorded: Votul dumneavoastră a fost înregistrat
     legacy_vote_reasons: Motivele voturilor anterioare
@@ -2382,7 +2465,6 @@ ro:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a mutat firul din <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis firul"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis firul"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a creat un furk al acestui thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit un rezultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis %{polltype}"
@@ -2415,6 +2497,7 @@ ro:
     sign_up_as: Creează cont ca %{email}
     sign_in_as: Conectați-vă ca %{name}
     continue_with_provider: Continuați cu %{provider}
+    sign_in_with_provider: Conectați-vă cu %{provider}
     continue_with_email: Continuați cu e-mailul
     or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
     enter_your_name: Introdu numele tau
@@ -2473,6 +2556,22 @@ ro:
     invalid_login: Nu te pot conecta cu aceste detalii
     login_link_rate_limited: Prea multe adrese de e-mail de conectare solicitate din această rețea. Vă rugăm să așteptați o oră și să încercați din nou.
     send_login_link_error: Ceva nu a funcționat la trimiterea e-mailului de conectare. Vă rugăm să încercați din nou.
+    sign_in_with_passkey: Conectați-vă cu o cheie de acces
+    passkey_authentication_failed: Nu te-am putut conecta cu acea parolă.
+    passkey_registration_failed: Nu am putut salva acea cheie de acces
+    passkey_default_name: Cheie de acces
+    local_login_disabled: Acest site necesită autentificare unică
+    email_me_a_sign_in_code: Trimiteți-mi prin e-mail un cod de conectare
+    sign_in_with_code: Conectați-vă cu un cod
+    new_to_site: Nou pe aici?
+    passkey_recent_authentication_required: Conectați-vă din nou înainte de a schimba cheile de acces
+    email_code_help: Introdu adresa ta de e-mail și îți vom trimite un cod de conectare din șase cifre
+    or_sign_in_with_password: Sau conectați-vă cu o parolă
+    login_link_sent_if_account_exists: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
+    use_a_passkey: Folosește o cheie de acces
+    send_me_a_code: Trimite-mi un cod
+    email_code_help_short: Vă vom trimite un cod de șase cifre la adresa dvs. de e-mail
+    login_link_sent_if_account_exists_sentence: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -2614,6 +2713,14 @@ ro:
     tags_per_interval: Etichete per %{interval}
     all_groups_and_direct_threads: Toate grupurile și firele de discuție directe
     custom_selection: Selecție personalizată
+    all_votes_cast: Toate voturile exprimate
+    votes_cast: Voturi exprimate
+    votes_issued: Voturi emise
+    votes_missed: Voturi ratate
+    voting_record_per_user: Înregistrarea voturilor per utilizator
+    yes_label: Da
+    no_label: Nu
+    delegates_only: Numai pentru delegați
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ai finalizat toți pașii!"
     getting_started_checklist: Listă de verificare pentru început
@@ -2685,8 +2792,6 @@ ro:
     anonymous:
       title: Alegători anonimi
       helptext_on: Când este selectată, informațiile participanților nu vor fi afișate odată cu fiecare răspuns.
-    voter_can_add_options:
-      title: Alegătorii pot adăuga opțiuni alternative
     can_respond_maybe:
       title: Alegătorii pot răspunde „dacă este nevoie”
     allow_long_reason:
@@ -2813,7 +2918,10 @@ ro:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Voturile anonime sunt stocate separat de identitățile alegătorilor. Rezultatele apar după încheierea votării. Alegătorii nu pot adăuga motive, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
     anonymous_voting_explanation: Faceți imposibilă știrea modului în care a votat cineva. Voturile anonime sunt înregistrate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării. Alegătorii nu pot adăuga declarații de motivare, nu își pot revizui votul după ce l-au trimis sau nu își pot modifica votul.
     anonymous_voting_risk_explanation: Voturile anonime sunt stocate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării, iar alegătorii nu pot adăuga justificări, nu își pot consulta votul după trimitere și nu îl pot modifica. Aceste măsuri reduc riscul de a asocia o persoană cu un vot, dar rezultatele pot dezvălui în continuare informații atunci când puține persoane sunt eligibile sau votează, rezultatul este unanim, tiparele de vot sunt distinctive ori alegătorii își dezvăluie opțiunile.
+    anonymous_votes_stored_separately: Voturile anonime sunt stocate separat de identitatea alegătorilor. Rezultatele apar numai după încheierea votării, iar alegătorii nu pot adăuga justificări, nu își pot consulta votul după trimitere și nu îl pot modifica.
     stance_reason_required_when_disagreeing: Necesar în caz de dezacord
+    stance_reason_required_for_disagree_or_block: Obligatoriu pentru dezacord sau blocare
+    stance_reason_required_for_block: Necesar pentru blocare
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     verify_participants: Verificați participanții
@@ -2957,9 +3065,6 @@ ro:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: voturi
     candidate: Candidat
     round_elected: Runda aleasă
@@ -2969,6 +3074,9 @@ ro:
     round_details: Detalii rundă cu rundă
     view_full_results: Vedeți rezultatele complete
     results_available_when_closed: Rezultatele vor fi disponibile la închiderea votului
+    elected_in_round: Ales în runda %{round}
+    eliminated_in_round: Eliminat în runda %{round}
+    tied_in_round: Egal în runda %{round}
   lock_thread_modal:
     body: Blochează firele de discuție pentru a le elimina din lista de fire de discuție deschise și pentru a împiedica alte persoane să comenteze.
     explanation: Blocați firele de discuție pentru a împiedica alte persoane să comenteze sau să facă modificări suplimentare
@@ -2998,3 +3106,48 @@ ro:
     nobody_will_be_notified: Nimeni nu va fi notificat
     one_person_will_be_notified: O persoană va fi notificată
     x_people_will_be_notified: "%{count} persoane vor fi notificate"
+  push_notifications:
+    title: Notificări push
+    subtitle: Primește notificări în acest browser
+    not_supported: Notificările push nu sunt disponibile în acest browser
+    permission_denied: Notificările push sunt blocate în setările browserului tău
+    manage_devices: Gestionați dispozitivele de notificare push
+    enabled: Notificări push activate pentru acest browser
+    disabled: Notificările push sunt dezactivate pentru acest browser
+    device_removed: Dispozitivul de notificare push a fost eliminat
+    enable_device: Activează pe acest browser
+    disable_device: Dezactivați pe acest browser
+    devices: Browsere activate
+    browser_device: Browser
+    remove_device: Eliminați browserul
+    enable_from_loomio: Activează notificările push din setările de notificare când ești conectat la Loomio
+    ios_add_to_home_screen_before_enabling: Pe iPhone sau iPad, folosește opțiunea Partajare pentru a adăuga Loomio pe ecranul principal. Deschide Loomio din noua pictogramă, apoi activează notificările push aici.
+  group_follow:
+    follow: Urmărește actualizările
+    unfollow: Anulează urmărirea actualizărilor
+    followed: Urmărești acum actualizările de la acest grup
+    unfollowed: Nu mai urmăriți actualizările de la acest grup
+  passkey_settings:
+    title: Chei de acces
+    helptext: Cheile de acces vă permit să vă conectați cu dispozitivul fără a introduce adresa de e-mail sau parola
+    none: Nu ați adăugat o cheie de acces
+    name: Numele cheii de acces
+    name_placeholder: De exemplu, laptopul de serviciu
+    add: Adăugați o cheie de acces
+    added: Cheie de acces adăugată
+    created_at: Adăugat %{date}
+    remove_named: Eliminați %{name}
+    remove_confirm: Eliminați cheia de acces numită %{name}?
+    removed: Cheia de acces a fost eliminată
+    remove_failed: Cheia de acces nu a putut fi eliminată
+  credential_prompt:
+    title: Adăugați o altă modalitate de conectare
+    helptext: Adăugați o cheie de acces sau setați o parolă pentru a vă putea conecta fără a aștepta un cod trimis prin e-mail
+    add_passkey: Adăugați o cheie de acces
+    set_password: Setați o parolă
+    not_now: Nu acum
+    passkey_description: O cheie de acces vă permite să vă conectați rapid cu amprenta, fața sau blocarea ecranului dispozitivului
+    set_new_password: Setați o parolă nouă
+  account_completion:
+    complete_your_account: Completează-ți contul
+    continue: Continua

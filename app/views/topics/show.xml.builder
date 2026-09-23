@@ -3,14 +3,14 @@ atom_feed do |feed|
   feed.subtitle @topic.topicable.description
   feed.updated(@topic.items.min_by(&:created_at).created_at) if @topic.items.any?
 
-  @topic.items.each do |event|
-    next if event.eventable.nil?
-    next unless event.eventable.valid?
+  @topic.items.each do |topic_item|
+    next if topic_item.itemable.nil?
+    next unless topic_item.itemable.valid?
 
-    item = event.eventable if event.kind.to_sym == :new_comment
+    item = topic_item.itemable if topic_item.kind.to_sym == :new_comment
     next if item.nil?
     next if item.author.blank?
-    feed.entry(event, url: discussion_url(@topic.topicable)) do |entry|
+    feed.entry(topic_item, url: discussion_url(@topic.topicable)) do |entry|
       entry.title t(:'notifications.without_title.new_comment', actor: item.author_name)
       entry.content item.body, type: :text
       entry.published item.created_at

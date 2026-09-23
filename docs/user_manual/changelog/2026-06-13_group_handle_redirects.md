@@ -4,17 +4,17 @@ Group links are now more resilient when a group changes its handle.
 
 ## What changed
 
-When a group handle changes, Loomio remembers the old handle and redirects people to the current group address.
+When a group handle changes, links that use the old handle redirect people to the current group address.
 
 For example, if a group changes from:
 
-`/g/old-handle`
+`/old-handle`
 
 to:
 
-`/g/new-handle`
+`/new-handle`
 
-people who use the old link are sent to the new one.
+people who use the old link are permanently redirected to the new one. The redirect preserves any query parameters and applies the group's usual visibility permissions.
 
 ## Why this matters
 
@@ -24,6 +24,6 @@ It also reduces disruption when an organization renames a group or updates handl
 
 ## Limits
 
-Old handles are protected so they cannot be reused in ways that would send people to the wrong group.
+Loomio keeps up to three old handles. These handles are protected so they cannot be reused for another group. If the handle changes more than three times, the oldest handle expires and its links no longer redirect.
 
-Email replies and inbound messages also understand redirected group handles, so older notification emails keep working after a handle change.
+Email sent to an address that uses one of the three retained handles continues to reach the group, so replies to older notifications still work. When an old handle expires, its email address no longer reaches the group.

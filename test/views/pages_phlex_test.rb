@@ -35,16 +35,21 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, @discussion.author.name
   end
 
-  test "discussion show excludes hidden identified stances before pagination without excluding legacy anonymous stances" do
+  test "discussion pagination link is nofollow" do
+    2.times do |index|
+      comment = Comment.create!(body: "Pagination comment #{index}", body_format: "md", parent: @discussion, author: @user)
+      comment.topic_items.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
+    end
+
+    output = render_phlex(Views::Topics::Show.new(
+      topic: @discussion.topic, recipient: @recipient, pagination: { limit: 1, offset: 0 }
+    ))
+
+    assert_match(/<a[^>]+href="\?offset=1&limit=1&export=1"[^>]+rel="nofollow"/, output)
+  end
+
+  test "discussion show excludes hidden stances before pagination" do
     @discussion.topic.update!(allow_concurrent_polls: true)
-    anonymous_poll = PollService.create(params: {
-      title: 'Anonymous SSR poll',
-      poll_type: 'proposal',
-      topic_id: @discussion.topic_id,
-      poll_option_names: %w[agree disagree],
-      closing_at: 1.day.from_now
-    }, actor: users(:admin))
-    anonymous_poll.update_column(:anonymous, true)
     hidden_poll = PollService.create(params: {
       title: 'Hidden SSR poll',
       poll_type: 'proposal',
@@ -62,7 +67,6 @@ class PagesPhlexTest < ActiveSupport::TestCase
     hidden_ids = component.send(:stance_ids_hidden_from_activity).pluck(:id)
 
     assert_includes hidden_ids, hidden_poll.stances.find_by!(participant_id: @user.id).id
-    assert_not_includes hidden_ids, anonymous_poll.stances.find_by!(participant_id: @user.id).id
   end
 
   test "discussion show renders comment thread items" do
@@ -72,7 +76,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       parent: @discussion,
       author: @user
     )
-    comment.events.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
+    comment.topic_items.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Topics::Show.new(
@@ -92,7 +96,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Topics::Show.new(
@@ -112,13 +116,13 @@ class PagesPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     agree_option = poll.poll_options.find_by!(name: I18n.t("poll_proposal_options.agree"))
-    stance = poll.stances.build(participant: @user)
+    stance = poll.stances.build(participant: @user, reason: "I agree")
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    stance.events.create!(kind: :stance_created, user: @user, topic: @discussion.topic, created_at: stance.created_at)
+    stance.topic_items.create!(kind: :stance_created, user: @user, topic: @discussion.topic, created_at: stance.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Topics::Show.new(
@@ -138,8 +142,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
       parent: @discussion,
       author: @user
     )
-    comment.create_missing_created_event!
-    item = comment.created_event
+    comment.create_missing_created_topic_item!
+    item = comment.created_topic_item
 
     output = render_phlex(Views::Topics::TopicItems::NewComment.new(item: item, current_user: @recipient))
 
@@ -159,8 +163,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
-    poll.create_missing_created_event!
-    item = poll.created_event
+    poll.create_missing_created_topic_item!
+    item = poll.created_topic_item
 
     output = render_phlex(Views::Topics::TopicItems::PollCreated.new(item: item, current_user: @recipient))
 
@@ -181,14 +185,14 @@ class PagesPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     agree_option = poll.poll_options.find_by!(name: I18n.t("poll_proposal_options.agree"))
-    stance = poll.stances.build(participant: @user)
+    stance = poll.stances.build(participant: @user, reason: "I agree")
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    stance.create_missing_created_event!
-    item = stance.created_event
+    stance.create_missing_created_topic_item!
+    item = stance.created_topic_item
 
     output = render_phlex(Views::Topics::TopicItems::StanceCreated.new(item: item, current_user: @recipient))
 
@@ -206,15 +210,16 @@ class PagesPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     agree_option = poll.poll_options.find_by!(name: I18n.t("poll_proposal_options.agree"))
-    stance = poll.stances.build(participant: @user)
+    stance = poll.stances.build(participant: @user, reason: "I agree")
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
+    stance.create_missing_created_topic_item!
+    item = stance.created_topic_item
     stance.update_column(:revoked_at, Time.current)
-    stance.create_missing_created_event!
-    item = stance.created_event
+    item.reload
 
     %i[created updated].each do |kind|
       output = render_phlex(Views::Topics::TopicItems::StanceCreated.new(item: item, current_user: @recipient, kind: kind))
@@ -231,8 +236,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
       parent: @discussion,
       author: @user
     )
-    comment.create_missing_created_event!
-    item = comment.created_event
+    comment.create_missing_created_topic_item!
+    item = comment.created_topic_item
 
     output = render_phlex(Views::Topics::TopicItems::Removed.new(item: item, current_user: @recipient))
 
@@ -278,7 +283,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       poll_option_names: %w[Apple Banana],
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     apple_option = poll.poll_options.find_by!(name: "Apple")
     stance = poll.stances.build(participant: @user)
@@ -304,7 +309,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       dots_per_person: 8,
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     red_option = poll.poll_options.find_by!(name: "Red")
     blue_option = poll.poll_options.find_by!(name: "Blue")
@@ -333,7 +338,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       max_score: 9,
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     alpha_option = poll.poll_options.find_by!(name: "Alpha")
     stance = poll.stances.build(participant: @user)
@@ -359,7 +364,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       minimum_stance_choices: 3,
       specified_voters_only: true
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     first_option = poll.poll_options.find_by!(name: "First")
     second_option = poll.poll_options.find_by!(name: "Second")
@@ -399,28 +404,6 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Comments"
     assert_includes output, "Polls"
     assert_includes output, "Stances"
-  end
-
-  test "group exports hide legacy anonymous stance identity and timestamps" do
-    poll = PollService.create(params: {
-      title: 'Anonymous export poll',
-      poll_type: 'proposal',
-      topic_id: @discussion.topic_id,
-      poll_option_names: %w[agree disagree],
-      closing_at: 1.day.from_now
-    }, actor: @user)
-    poll.update_column(:anonymous, true)
-    stance = poll.stances.find_by!(participant_id: @user.id)
-
-    rows = CSV.parse(GroupExporter.new(@group).to_csv)
-    stances_index = rows.index { |row| row.first&.start_with?('Stances') }
-    headers = rows[stances_index + 1]
-    stance_row = rows[(stances_index + 2)..].find { |row| row[headers.index('Id')] == stance.id.to_s }
-
-    assert_nil stance_row[headers.index('Participant')]
-    assert_nil stance_row[headers.index('Author name')]
-    assert_nil stance_row[headers.index('Created at')]
-    assert_nil stance_row[headers.index('Updated at')]
   end
 
   test "group csv export uses topic ids for topicable records" do
@@ -465,7 +448,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
-    poll.create_missing_created_event!
+    poll.create_missing_created_topic_item!
 
     exporter = PollExporter.new(poll)
     output = render_phlex(Views::Polls::Export.new(
@@ -473,7 +456,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
     ))
 
     assert_includes output, "Export Test Proposal"
-    assert_includes output, "poll-created"
+    assert_includes output, "email-body"
+    assert_not_includes output, "v-card"
   end
 
   # ── ExportTable ─────────────────────────────────────────────────

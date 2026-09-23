@@ -5,7 +5,7 @@ class PollSerializer < ApplicationSerializer
              :agree_target,
              :author_id,
              :anonymous,
-             :legacy_anonymous,
+             :legacy_anonymous_vote_reasons_count,
              :voting_system,
              :anonymous_voter_eligible,
              :anonymous_ballot_submitted,
@@ -43,7 +43,6 @@ class PollSerializer < ApplicationSerializer
              :total_score,
              :title,
              :undecided_voters_count,
-             :voter_can_add_options,
              :voters_count,
              :stance_reason_required,
              :versions_count,
@@ -103,7 +102,6 @@ class PollSerializer < ApplicationSerializer
     :specified_voters_only,
     :title,
     :undecided_voters_count,
-    :voter_can_add_options,
     :voters_count,
     :stance_reason_required,
     :versions_count,
@@ -144,7 +142,8 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results
-    PollService.calculate_results(object, poll_options)
+    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids }
+    PollService.calculate_results(object, poll_options, undecided_voter_ids: undecided_voter_ids)
   end
 
   def include_results?
@@ -164,7 +163,7 @@ class PollSerializer < ApplicationSerializer
   end
 
   def results_visible?
-    poll.show_results?(voted: poll.anonymous? || my_stance&.cast_at.present?)
+    poll.results_available?
   end
 
   def anonymous_voter
@@ -179,6 +178,12 @@ class PollSerializer < ApplicationSerializer
 
   def anonymous_ballot_submitted
     anonymous_voter&.ballot_submitted? || false
+  end
+
+  def legacy_anonymous_vote_reasons_count
+    return 0 unless object.closed? && object.detached_anonymous?
+
+    object.legacy_anonymous_vote_reasons.count
   end
 
   def include_anonymous_voter_eligible?

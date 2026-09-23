@@ -80,10 +80,11 @@ v-menu.tags-filter-menu(v-model="open" offset-y :close-on-content-click="false")
         v-list-item-title(v-t="'loomio_tags.all_tags'")
         template(v-slot:append)
           common-icon(v-if="!selectedTag" name="mdi-check")
-      v-list-item(
+      v-list-item.tags-filter-menu__tag(
         v-for="tag in filteredGroupTags"
         :key="tag.id"
         :active="selectedTag == tag.name"
+        :data-tag-name="tag.name"
         @click="selectTag(tag.name)"
       )
         template(v-slot:prepend)

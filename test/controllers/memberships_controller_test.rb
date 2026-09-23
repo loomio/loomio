@@ -24,8 +24,10 @@ class MembershipsControllerTest < ActionController::TestCase
     sign_in @user
 
     assert_nil membership.accepted_at
-    assert_difference 'Event.count', 1 do
-      get :consume
+    assert_difference -> { Notification.where(kind: "invitation_accepted").count }, 1 do
+      assert_no_difference "TopicItem.count" do
+        get :consume
+      end
     end
     assert_response 200
     membership.reload
@@ -47,8 +49,10 @@ class MembershipsControllerTest < ActionController::TestCase
     session[:pending_membership_token] = membership.token
     sign_in @user
 
-    assert_difference 'Event.count', 1 do
-      get :consume
+    assert_difference -> { Notification.where(kind: "invitation_accepted").count }, 1 do
+      assert_no_difference "TopicItem.count" do
+        get :consume
+      end
     end
     assert_response 200
     membership.reload
@@ -64,7 +68,7 @@ class MembershipsControllerTest < ActionController::TestCase
     session[:pending_membership_token] = membership.token
     sign_in @user  # @user is already admin of @group
 
-    assert_no_difference 'Event.count' do
+    assert_no_difference 'TopicItem.count' do
       get :consume
     end
     assert_response 200
@@ -80,7 +84,7 @@ class MembershipsControllerTest < ActionController::TestCase
     session[:pending_membership_token] = membership.token
     sign_in @user
 
-    assert_no_difference 'Event.count' do
+    assert_no_difference 'TopicItem.count' do
       get :consume
     end
     assert_response 200
@@ -135,6 +139,13 @@ class MembershipsControllerTest < ActionController::TestCase
     get :join, params: { token: @group.token, model: :group }
     assert_response 302
     assert_redirected_to "/#{@group.handle}"
+  end
+
+  test "join rejects external, protocol-relative, and backslash return paths" do
+    [ 'https://evil.example/phishing', '//evil.example/phishing', '/\\evil.example/phishing' ].each do |back_to|
+      get :join, params: { model: 'group', token: @group.token, back_to: back_to }
+      assert_redirected_to "/#{@group.handle}"
+    end
   end
 
   test "show accepts and redirects to group" do

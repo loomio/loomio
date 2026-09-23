@@ -11,9 +11,3 @@ Translations are generated on demand and cached, so re-opening a thread doesn't 
 ## Email translation
 
 The same translation feature is available in notification emails. When an email contains content in a language different from your account language setting, it's automatically translated.
-
-## Group-level control
-
-Group admins can enable or disable automatic translation for their group's content. When enabled, translations are offered to all group members, regardless of their individual settings.
-
-Instance admins can turn automatic translation on or off for the entire instance.

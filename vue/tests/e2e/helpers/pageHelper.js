@@ -4,6 +4,10 @@ const base_url = `http://localhost:${port}`;
 module.exports = function(test, browser) {
   test.resizeWindow(1000, 2000);
   return {
+    resizeWindow(width, height) {
+      return test.resizeWindow(width, height);
+    },
+
     refresh() {
       return test.refresh();
     },
@@ -52,6 +56,29 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       test.click(selector);
+    },
+
+    fillRichText(selector, html, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector, html) {
+        const editor = document.querySelector(selector);
+        editor.focus();
+        editor.innerHTML = html;
+        editor.dispatchEvent(new InputEvent('input', {
+          bubbles: true,
+          inputType: 'insertText'
+        }));
+      }, [selector, html]);
+    },
+
+    fillTextarea(selector, value, wait = 8000) {
+      test.waitForElementPresent(selector, wait);
+      return test.execute(function(selector, value) {
+        const textarea = document.querySelector(selector);
+        const setValue = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
+        setValue.call(textarea, value);
+        textarea.dispatchEvent(new Event('input', {bubbles: true}));
+      }, [selector, value]);
     },
 
     clickElement(selector, wait = 8000) {
@@ -103,10 +130,10 @@ module.exports = function(test, browser) {
       //   else
       //     console.log 'not there'
 
-    ensureThreadNav() {
-      return test.isVisible('.thread-nav__add-people' , function(result) {
+    ensureTopicNav() {
+      return test.isVisible('.topic-nav__add-people' , function(result) {
         if (!result.value) {
-          return test.click('.thread-page__open-thread-nav');
+          return test.click('.topic-page__open-topic-nav');
         }
       });
     },
@@ -209,15 +236,14 @@ module.exports = function(test, browser) {
     signInViaPassword(email, password) {
       const page = pageHelper(test);
       if (email) { page.fillIn('.auth-email-form__email input', email); }
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signin-form__password input', password);
-      return page.click('.auth-signin-form__submit');
+      page.fillIn('.auth-email-form__password input', password);
+      return page.click('.auth-email-form__submit');
     },
 
     signInViaEmail(email) {
       page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.click('.auth-signin-form__submit');
+      page.click('.auth-email-form__login-link');
+      page.click('.auth-email-code-form__submit');
       page.expectText('.auth-complete', 'Check your email');
       page.loadPath('use_last_login_token');
       page.click('.auth-signin-form__submit');
@@ -227,26 +253,35 @@ module.exports = function(test, browser) {
 
     signUpViaEmail(email = "new@account.com") {
       const page = pageHelper(test);
-      page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
+      page.click('.auth-form__create-account');
+      page.fillIn('.auth-signup-form__email input', email);
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
-      return page.click('.auth-signin-form__submit');
+      page.click('.auth-signin-form__submit');
+      return page.completeAccount();
+    },
+
+    completeAccount(name = "New Account") {
+      const page = pageHelper(test);
+      page.fillIn('.account-completion__name input', name);
+      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
+      return page.click('.account-completion__submit');
     },
 
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
-      return page.click('.auth-signup-form__submit');
+      page.click('.auth-form__create-account');
+      page.click('.auth-signup-form__submit');
+      return page.completeAccount(name);
     },
 
     waitFor(selector, wait = 8000) {
       if (selector != null) { return test.waitForElementVisible(selector, wait); }
+    },
+
+    waitForPresent(selector, wait = 8000) {
+      if (selector != null) { return test.waitForElementPresent(selector, wait); }
     },
 
     waitForElementNotVisible(selector, wait = 8000) {

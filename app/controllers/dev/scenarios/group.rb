@@ -1,4 +1,19 @@
 module Dev::Scenarios::Group
+  def setup_secret_group_with_access
+    sign_in patrick
+    group = Group.create!(name: 'Secret Dirty Dancing Shoes', group_privacy: 'secret')
+    group.add_member! patrick
+    redirect_to group_path(group)
+  end
+
+  # Leave the browser's group record untouched while access changes on the
+  # server, reproducing a stale client cache after membership revocation.
+  def revoke_secret_group_access
+    group = Group.find_by!(name: 'Secret Dirty Dancing Shoes')
+    group.membership_for(current_user).update!(revoked_at: Time.current)
+    head :ok
+  end
+
   def setup_group_super_admin
     patrick.update(is_admin: true)
     sign_in patrick
@@ -10,6 +25,92 @@ module Dev::Scenarios::Group
     sign_in patrick
     create_group.add_member! emilio
     redirect_to group_path(create_group)
+  end
+
+  def setup_nonmember_nomination
+    group = create_group
+    group.update!(
+      discussion_privacy_options: 'private_only',
+      membership_granted_upon: 'invitation',
+      non_members_can_start_discussions: true
+    )
+    DiscussionTemplate.create!(
+      group: group,
+      author: patrick,
+      position: -1,
+      process_name: 'Nominate a candidate',
+      process_subtitle: 'Nominate yourself or someone else for a position',
+      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
+      process_introduction_format: 'html',
+      title_placeholder: 'Candidate name and position',
+      description: <<~HTML,
+        <p><strong>Who are you nominating, and for which position?</strong></p>
+        <p>State whether you are nominating yourself or someone else.</p>
+        <p><strong>Why is this person suitable?</strong></p>
+        <p>Describe their relevant experience and the reasons for the nomination.</p>
+      HTML
+      description_format: 'html'
+    )
+
+    sign_in max
+    redirect_to group_path(group)
+  end
+
+  def setup_group_route_transitions
+    create_group.add_member! jennifer
+    create_another_group.add_member! jennifer
+    sign_in jennifer
+    redirect_to group_path(create_group)
+  end
+
+  def setup_group_poll_filters
+    group = create_group
+    group.tags.create!(name: 'Important', color: '#1565c0')
+    group.tags.create!(name: 'Other', color: '#2e7d32')
+
+    PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'proposal',
+        poll_option_names: %w[agree abstain disagree block],
+        title: 'Open important proposal needing a vote',
+        tags: ['Important'],
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+
+    voted_poll = PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'poll',
+        poll_option_names: %w[Red Blue],
+        title: 'Open other poll already voted on',
+        tags: ['Other'],
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+    StanceService.update(
+      stance: voted_poll.stances.latest.find_by!(participant: patrick),
+      actor: patrick,
+      params: {choice: {'Red' => 1}}
+    )
+
+    closed_poll = PollService.create(
+      params: {
+        group_id: group.id,
+        poll_type: 'poll',
+        poll_option_names: %w[Yes No],
+        title: 'Closed untagged poll',
+        closing_at: 3.days.from_now
+      },
+      actor: patrick
+    )
+    PollService.close(poll: closed_poll, actor: patrick)
+
+    sign_in patrick
+    redirect_to group_path(group)
   end
 
   def setup_group_with_photos
@@ -63,6 +164,21 @@ module Dev::Scenarios::Group
     redirect_to group_emails_path(create_group)
   end
 
+  def setup_group_mailer_expired_trial_deletion_warning
+    group = create_group
+    create_discussion
+    group.subscription.update!(plan: "trial", expires_at: 60.days.ago)
+    GroupMailer.expired_trial_deletion_warning(group.id, patrick.id).deliver_now
+    last_email(to: patrick)
+  end
+
+  def setup_group_mailer_deletion_warning
+    group = create_group
+    create_discussion
+    GroupMailer.admin_deletion_warning(group.id, patrick.id, jennifer.id).deliver_now
+    last_email(to: patrick)
+  end
+
   def setup_user_no_group
     sign_in patrick
     redirect_to dashboard_path
@@ -112,6 +228,14 @@ module Dev::Scenarios::Group
     create_another_group.add_admin! jennifer
     create_subgroup.add_member! jennifer
     create_subgroup.add_member! fake_user name: 'only in subgroup'
+    another_create_subgroup
+    redirect_to group_path(create_subgroup)
+  end
+
+  def setup_subgroup_invitation_audiences
+    sign_in jennifer
+    create_another_group.add_admin! jennifer
+    create_subgroup.add_admin! jennifer
     another_create_subgroup
     redirect_to group_path(create_subgroup)
   end

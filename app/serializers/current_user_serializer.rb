@@ -1,8 +1,16 @@
 class CurrentUserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_catch_up_day,
-             :email_when_mentioned, :email_on_participation, :selected_locale,
-             :locale, :default_membership_volume, :experiences,
-             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate
+  attributes :email, :email_catch_up_day, :selected_locale, :locale,
+             :volume_email_default, :volume_push_default, :experiences,
+             :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate,
+             :legal_accepted_at, :legal_acceptance_required, :has_passkey
+
+  def legal_acceptance_required
+    object.legal_acceptance_required?
+  end
+
+  def has_passkey
+    object.has_passkey?
+  end
 
   def include_email?
     true

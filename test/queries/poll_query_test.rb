@@ -16,7 +16,7 @@ class PollQueryTest < ActiveSupport::TestCase
       }
       p = PollService.build(params: defaults.merge(attrs), actor: attrs[:author] || @user)
       p.save!
-      p.create_missing_created_event!
+      p.create_missing_created_topic_item!
       p
     end
 
@@ -46,6 +46,31 @@ class PollQueryTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "archival excludes public private and anonymous polls from every visibility entry point" do
+    group_poll = @in_a_group
+    public_poll = make_poll(topic: topics(:public_discussion_topic), private: false)
+    anonymous_poll = make_poll(topic: topics(:discussion_topic), anonymous: true)
+    groups(:group).discard!
+    groups(:public_group).discard!
+    actors = %i[admin user member_normal guest_normal guest_admin_normal alien_loud
+                non_guest_loud former_guest_loud inactive_guest_loud].map { |role| users(role) }
+    actors << LoggedOutUser.new
+    actors << LoggedOutUser.new(params: {topic_reader_token: topic_readers(:guest_normal_reader).token})
+
+    [group_poll, public_poll, anonymous_poll].each do |poll|
+      [nil, Time.current].each do |closed_at|
+        poll.update_column(:closed_at, closed_at)
+        actors.each do |actor|
+          assert_not PollQuery.visible_to(user: actor).exists?(poll.id)
+          assert_not PollQuery.visible_to(user: actor, chain: Poll.all).exists?(poll.id)
+          assert_not PollQuery.relevant_to(user: actor, group_ids: [poll.group_id]).exists?(poll.id)
+          assert_not actor.can?(:show, poll.reload)
+        end
+      end
+    end
+    assert PollQuery.visible_to(user: @user).exists?(@authored.id)
+  end
+
   test "finds polls the user knows about" do
     results = PollQuery.visible_to(user: @user)
     assert_includes results, @participated
@@ -53,6 +78,12 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_includes results, @in_a_group
     refute_includes results, @rando_in_group
     refute_includes results, @rando
+  end
+
+  test "deactivated users cannot see polls" do
+    @user.update!(deactivated_at: Time.current)
+
+    assert_empty PollQuery.visible_to(user: @user)
   end
 
   test "dashboard visibility includes polls for topic reader guests" do
@@ -106,5 +137,111 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_includes PollQuery.visible_to(user: @user), public_poll
     refute_includes PollQuery.relevant_to(user: @user), public_poll
     assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
+  end
+
+  test "subgroup poll visibility matches the fixture access matrix for parent members" do
+    child, poll = create_subgroup_poll(parent_members_can_see_discussions: true)
+
+    subgroup_poll_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      assert user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    parent_only_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      refute user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    denied_poll_viewers.each do |user|
+      label = user.is_logged_in? ? user.email : "signed-out user"
+      refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
+      refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
+      refute user.can?(:show, poll), "show permission for #{label}"
+      refute user.can?(:vote_in, poll), "vote permission for #{label}"
+    end
+
+  end
+
+  test "parent members cannot see subgroup polls when parent member access is false" do
+    child, poll = create_subgroup_poll(parent_members_can_see_discussions: false)
+
+    subgroup_poll_members.each do |user|
+      assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
+      assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
+      assert user.can?(:show, poll), "show permission for #{user.email}"
+      assert user.can?(:vote_in, poll), "vote permission for #{user.email}"
+    end
+
+    (parent_only_members + denied_poll_viewers).each do |user|
+      label = user.is_logged_in? ? user.email : "signed-out user"
+      refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
+      refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
+      refute user.can?(:show, poll), "show permission for #{label}"
+      refute user.can?(:vote_in, poll), "vote permission for #{label}"
+    end
+  end
+
+  private
+
+  def create_subgroup_poll(parent_members_can_see_discussions:)
+    child = groups(:subgroup)
+    child.update_columns(
+      is_visible_to_public: false,
+      is_visible_to_parent_members: true,
+      parent_members_can_see_discussions: parent_members_can_see_discussions
+    )
+    poll = PollService.create(params: {
+      title: "Subgroup poll #{SecureRandom.hex(4)}",
+      poll_type: "poll",
+      private: true,
+      group_id: child.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: [ "engage" ]
+    }, actor: users(:admin))
+    [ child, poll ]
+  end
+
+  def subgroup_poll_members
+    users(:admin, :user, :subgroup_user)
+  end
+
+  def parent_only_members
+    users(
+      :member,
+      :member_quiet,
+      :member_normal,
+      :member_loud,
+      :reader_quiet,
+      :reader_normal,
+      :reader_loud,
+      :member_guest_loud
+    )
+  end
+
+  def denied_poll_viewers
+    users(
+      :guest_quiet,
+      :guest_normal,
+      :guest_admin_normal,
+      :guest_loud,
+      :alien,
+      :alien_quiet,
+      :alien_loud,
+      :non_guest_loud,
+      :former_member_loud,
+      :former_guest_loud,
+      :inactive_member_loud,
+      :inactive_guest_loud,
+      :former_member_guest
+    ) + [ LoggedOutUser.new ]
   end
 end

@@ -16,7 +16,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_proposal
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         @stance.stance_choices.each do |stance_choice|
           div(class: "poll-common-stance-choice mr-1 mb-1", row: "") do
@@ -43,7 +43,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_check
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         @stance.stance_choices.each do |stance_choice|
           div(class: "poll-common-stance-choice mr-1 mb-1", row: "") do
@@ -70,7 +70,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_poll
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -90,7 +90,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_meeting
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -112,7 +112,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_dot_vote
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -143,7 +143,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_score
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2", id: "event-1473") do
+      h3(class: "topic-item__title text-body-2", id: "topic_item-1473") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -174,7 +174,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_ranked_choice
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -187,7 +187,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score desc").each do |stance_choice|
         tr do
-          td { render Views::EventMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::NotificationMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end
@@ -197,7 +197,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_stv
     div(class: "layout align-center wrap") do
-      h3(class: "thread-item__title text-body-2 d-flex") do
+      h3(class: "topic-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }
@@ -210,7 +210,7 @@ class Views::Topics::StanceBody < Views::Application::Component
     table(style: "width: 100%", cellspacing: 0) do
       @stance.stance_choices.order("score asc").each do |stance_choice|
         tr do
-          td { render Views::EventMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { render Views::NotificationMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
           td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
         end
       end

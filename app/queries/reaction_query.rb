@@ -12,11 +12,11 @@ class ReactionQuery
       stance_ids:     Array(params[:stance_ids])
     }
 
-    comment_topic_ids = Comment.joins(:events)
+    comment_topic_ids = Comment.joins(:topic_items)
                                .where(comments: { id: ids_requested[:comment_ids] })
-                               .where.not(events: { topic_id: nil })
+                               .where.not(topic_items: { topic_id: nil })
                                .distinct
-                               .pluck('events.topic_id')
+                               .pluck('topic_items.topic_id')
     topic_ids_visible = TopicQuery.visible_to(user: user)
                                   .where(id: comment_topic_ids)
                                   .except(:includes)
@@ -40,17 +40,17 @@ class ReactionQuery
     stance_ids_visible = Stance.joins(:poll)
                                .where(id: ids_requested[:stance_ids], poll_id: poll_ids_visible)
                                .where(
-                                 "polls.anonymous = TRUE OR polls.hide_results != :until_closed OR " \
-                                 "polls.closed_at IS NOT NULL OR stances.participant_id = :user_id",
+                                 "polls.hide_results != :until_closed OR polls.closed_at IS NOT NULL OR " \
+                                 "stances.participant_id = :user_id",
                                  until_closed: Poll.hide_results[:until_closed],
                                  user_id: user.id || 0
                                )
                                .ids
 
     unsafe_where(
-      comment_ids: Comment.joins(:events)
+      comment_ids: Comment.joins(:topic_items)
                           .where(comments: { id: ids_requested[:comment_ids] })
-                          .where(events: { topic_id: topic_ids_visible })
+                          .where(topic_items: { topic_id: topic_ids_visible })
                           .distinct
                           .ids,
       discussion_ids: discussion_ids_visible,

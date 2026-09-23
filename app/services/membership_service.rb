@@ -4,6 +4,7 @@ class MembershipService
   end
 
   def self.redeem(membership:, actor:, notify: true)
+    return unless membership.group.enabled?
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
     # so we want to accept all the pending invitations this person has been sent within this org
@@ -11,6 +12,7 @@ class MembershipService
     # they may be accepting memberships send to a different email (unverified_user)
     invited_group_ids = []
     accepted_membership = nil
+    accepted_notification = nil
 
     Membership.transaction do
       accepted_at = DateTime.now
@@ -18,7 +20,7 @@ class MembershipService
       invited_group_id = membership.group_id
       existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
       existing_accepted_group_ids = Membership.active.accepted.where(user_id: actor.id).pluck(:group_id)
-      invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
+      invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: Group.enabled.where(id: membership.group.parent_or_self.id_and_subgroup_ids).select(:id)).pluck(:group_id)
 
       # unrevoke any memberships the actor was just invited to
       Membership.revoked
@@ -54,15 +56,26 @@ class MembershipService
       .update_all(revoked_at: nil, revoker_id: nil)
 
       accepted_membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id) unless existing_accepted_group_ids.include?(invited_group_id)
+      if notify && accepted_membership&.accepted_at
+        accepted_notification = NotificationService.create!(
+          kind: "invitation_accepted",
+          subject: accepted_membership,
+          actor: actor
+        )
+      end
     end
 
+    MessageChannelService.publish_models(
+      [ accepted_membership ],
+      group_id: accepted_membership.group_id
+    ) if accepted_membership
     invited_group_ids.each do |group_id|
       PollGroupMembersAddedWorker.perform_later(group_id)
     end
     Group.update_org_members_count_for_group_ids(invited_group_ids)
 
     Sentry.metrics.count("membership.accept") if accepted_membership&.accepted_at
-    Events::InvitationAccepted.publish!(accepted_membership) if notify && accepted_membership&.accepted_at
+    accepted_notification
   end
 
   def self.revoke(membership:, actor:, revoked_at: DateTime.now)
@@ -106,12 +119,13 @@ class MembershipService
     actor.ability.authorize! :update, membership
 
     membership.assign_attributes(params.slice(:title))
-    return false unless membership.valid?
+    return membership unless membership.valid?
     membership.save!
 
     update_user_titles_and_broadcast(membership.id)
 
     EventBus.broadcast 'membership_update', membership, params, actor
+    membership
   end
 
   def self.update_user_titles_and_broadcast(membership_id)
@@ -137,23 +151,34 @@ class MembershipService
     user.experiences['delegates'] = delegates
 
     user.save!
-    MessageChannelService.publish_models([user], serializer: AuthorSerializer, group_id: group.id)
+    MessageChannelService.publish_models([ user ], serializer: AuthorSerializer, group_id: group.id)
   end
 
   def self.set_volume(membership:, params:, actor:)
-    actor.ability.authorize! :update, membership
-    val = Membership.volumes[params[:volume]]
+    raise CanCan::AccessDenied unless membership.user_id == actor.id
+
+    unless membership.set_volume!(
+      email: params[:volume_email],
+      push: params[:volume_push],
+      persist: false
+    )
+      raise ActiveRecord::RecordInvalid, membership
+    end
+
+    attributes = {}
+    attributes[:volume_email] = membership[:volume_email] if params[:volume_email].present?
+    attributes[:volume_push] = membership[:volume_push] if params[:volume_push].present?
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-      actor.memberships.where(group_id: group_ids).update_all(volume: val)
+      actor.memberships.where(group_id: group_ids).update_all(attributes)
       TopicReader
         .joins(:topic)
         .where(user_id: actor.id)
         .where("topics.group_id IN (?)", group_ids)
-        .update_all(volume: val)
+        .update_all(attributes)
     else
-      membership.set_volume! params[:volume]
-      membership.topic_readers.update_all(volume: val)
+      membership.save!
+      membership.topic_readers.update_all(attributes)
     end
   end
 
@@ -167,13 +192,24 @@ class MembershipService
   def self.resend(membership:, actor:)
     actor.ability.authorize! :resend, membership
     EventBus.broadcast 'membership_resend', membership, actor
-    Events::MembershipResent.publish!(membership, actor)
+    NotificationService.create!(
+      kind: "membership_resent",
+      subject: membership,
+      actor: actor
+    )
   end
 
   def self.make_admin(membership:, actor:)
     actor.ability.authorize! :make_admin, membership
-    membership.update admin: true
-    Events::NewCoordinator.publish!(membership, actor)
+    Membership.transaction do
+      membership.update!(admin: true)
+      NotificationService.create!(
+        kind: "new_coordinator",
+        subject: membership,
+        actor: actor
+      )
+    end
+    membership
   end
 
   def self.remove_admin(membership:, actor:)
@@ -183,9 +219,17 @@ class MembershipService
 
   def self.make_delegate(membership:, actor:)
     actor.ability.authorize! :make_delegate, membership
-    membership.update delegate: true
+    Membership.transaction do
+      membership.update!(delegate: true)
+      NotificationService.create!(
+        kind: "new_delegate",
+        subject: membership,
+        actor: actor
+      )
+    end
+
     update_user_titles_and_broadcast(membership.id)
-    Events::NewDelegate.publish!(membership, actor)
+    membership
   end
 
   def self.remove_delegate(membership:, actor:)
@@ -196,18 +240,29 @@ class MembershipService
 
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
-    membership = group.add_member!(actor)
+    membership = Membership.transaction { group.add_member!(actor) }
+
     Sentry.metrics.count("membership.join")
     EventBus.broadcast('membership_join_group', group, actor)
-    Events::UserJoinedGroup.publish!(membership)
+    membership
   end
 
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
-    group.add_members!(users, inviter: inviter).tap do |memberships|
-      Sentry.metrics.count("membership.add", attributes: { user_count: memberships.size })
-      Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
+    memberships = Membership.transaction do
+      group.add_members!(users, inviter: inviter).tap do |created_memberships|
+        created_memberships.each do |membership|
+          NotificationService.create!(
+            kind: "user_added_to_group",
+            subject: membership,
+            actor: inviter
+          )
+        end
+      end
     end
+
+    Sentry.metrics.count("membership.add", attributes: { user_count: memberships.size })
+    memberships
   end
 
   def self.save_experience(membership:, actor:, params:)

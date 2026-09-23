@@ -4,12 +4,12 @@ class Poll < ApplicationRecord
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include HasEvents
+  include HasTopicItems
+  include HasNotifications
   include HasMentions
   include SelfReferencing
   include Reactable
   include Bookmarkable
-  include HasCreatedEvent
   include HasRichText
   include Discard::Model
   include Searchable
@@ -64,12 +64,15 @@ class Poll < ApplicationRecord
 
   TEMPLATE_DEFAULT_FIELDS = %w[
     poll_option_name_format
+    chart_type
+    default_duration_in_days
+  ].freeze
+
+  BALLOT_DEFAULT_FIELDS = %w[
     max_score
     min_score
     dots_per_person
-    chart_type
-    default_duration_in_days
-  ]
+  ].freeze
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
     define_method field, -> {
@@ -87,18 +90,29 @@ class Poll < ApplicationRecord
     }
   end
 
+  BALLOT_DEFAULT_FIELDS.each do |field|
+    define_method field, -> {
+      self[field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+    }
+
+    define_method :"#{field}=", ->(value) {
+      if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
+        self[field] = nil
+      else
+        self[field] = value
+      end
+      value
+    }
+  end
+
   TEMPLATE_VALUES = %w(has_option_icon
+                       ballot_rule
                        order_results_by
                        prevent_anonymous
                        vote_method
                        material_icon
                        require_all_choices
-                       validate_minimum_stance_choices
-                       validate_maximum_stance_choices
-                       validate_min_score
-                       validate_max_score
-                       has_options
-                       validate_dots_per_person).freeze
+                       has_options).freeze
 
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
@@ -118,9 +132,9 @@ class Poll < ApplicationRecord
     return nil
   end
 
-  def create_missing_created_event!
-    self.events.create(
-      kind: created_event_kind,
+  def create_missing_created_topic_item!
+    self.topic_items.create(
+      kind: created_topic_item_kind,
       user_id: author_id,
       created_at: created_at,
       topic: topic)
@@ -128,20 +142,22 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     if require_all_choices
-      poll_options.length
+      poll_option_count
     else
       self[:minimum_stance_choices] ||
-      self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
   end
 
   def maximum_stance_choices
-    self[:maximum_stance_choices] ||
-    self[:custom_fields][:maximum_stance_choices] ||
-    AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
-    poll_options.length
+    if require_all_choices
+      poll_option_count
+    else
+      self[:maximum_stance_choices] ||
+      AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
+      poll_option_count
+    end
   end
 
   include Translatable
@@ -156,14 +172,20 @@ class Poll < ApplicationRecord
 
   enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
-  enum :stance_reason_required, {disabled: 0, optional: 1, required: 2, required_when_disagreeing: 3}
+  enum :stance_reason_required, {
+    disabled: 0,
+    optional: 1,
+    required: 2,
+    required_for_disagree_or_block: 3,
+    required_for_block: 4
+  }
   enum :voting_system, {stance: 0, anonymous_ballot: 1}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
-  has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :stance_voters, -> { merge(Stance.latest) }, through: :stances, source: :participant
+  has_many :stance_undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
+  has_many :stance_decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :anonymous_poll_voters, dependent: :destroy
@@ -183,36 +205,36 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
-  scope :in_organisation, ->(group) {
-    kept.joins(:topic).where("topics.group_id IN (?)", group.id_and_subgroup_ids)
-  }
-
-  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
+  scope :closing_soon_not_published, ->(timeframe) do
      active
+    .where(topic_id: Topic.left_joins(:group).group_enabled.select(:id))
     .distinct
     .where(closing_at: timeframe)
-    .where("NOT EXISTS (SELECT 1 FROM events
-                WHERE events.created_at     > ? AND
-                      events.eventable_id   = polls.id AND
-                      events.eventable_type = 'Poll' AND
-                      events.kind           = 'poll_closing_soon')", recency_threshold)
+    .where("NOT EXISTS (SELECT 1 FROM notifications
+                WHERE notifications.created_at   >= polls.closing_at - INTERVAL '25 hours' AND
+                      notifications.subject_id   = polls.id AND
+                      notifications.subject_type = 'Poll' AND
+                      notifications.kind         = 'poll_closing_soon')")
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_validation :clamp_minimum_stance_choices
+  before_validation :synchronize_ranked_choice_bounds
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
+  validate :anonymous_matches_voting_system
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
   validate :vote_weights_enabled_is_supported
   validate :vote_weights_enabled_cannot_change_after_opening
+  validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
   alias_method :user, :author
@@ -227,7 +249,6 @@ class Poll < ApplicationRecord
     :anonymous,
     :discarded_at,
     :discarded_by,
-    :voter_can_add_options,
     :specified_voters_only,
     :stance_reason_required,
     :tags,
@@ -240,10 +261,11 @@ class Poll < ApplicationRecord
 
   after_commit :update_group_counter_caches
   def update_group_counter_caches
-    return unless (g = topic.group) && g.id
-    return if g.destroyed? # group teardown cascaded to this poll — nothing to recount
-    g.update_polls_count
-    g.update_closed_polls_count
+    group = topic.group
+    return unless group.id
+    return if group.destroyed? # group teardown cascaded to this poll — nothing to recount
+    group.update_polls_count
+    group.update_closed_polls_count
   end
 
   delegate :locale, to: :author
@@ -357,30 +379,41 @@ class Poll < ApplicationRecord
     ((decided_voters_count.to_f / voters_count) * 100).to_i
   end
 
+  # General-purpose voter relations must not reveal participation identities for
+  # detached anonymous ballots. Callers that intentionally need the named
+  # electorate, such as authorization and reminder delivery, use unmasked_*.
+  def voters
+    detached_anonymous? ? User.none : stance_voters
+  end
+
+  def voter_ids
+    voters.ids
+  end
+
   def undecided_voters
-    anonymous? ? User.none : super
+    detached_anonymous? ? User.none : stance_undecided_voters
   end
 
   def decided_voters
-    anonymous? ? User.none : super
+    detached_anonymous? ? User.none : stance_decided_voters
   end
 
   def unmasked_voters
     return User.where(id: anonymous_poll_voters.select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.pluck(:participant_id))
+    voters
   end
 
   def unmasked_undecided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.undecided.pluck(:participant_id))
+    undecided_voters
   end
 
   def unmasked_decided_voters
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if detached_anonymous?
 
-    User.where(id: stances.latest.decided.pluck(:participant_id))
+    decided_voters
   end
 
   def detached_anonymous?
@@ -390,13 +423,7 @@ class Poll < ApplicationRecord
   def participation_status_visible?
     return true unless anonymous?
 
-    votes = if detached_anonymous?
-      anonymous_ballots
-    else
-      stances.latest.decided
-    end
-
-    votes.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
+    anonymous_ballots.offset(PARTICIPATION_STATUS_VOTES_MIN - 1).exists?
   end
 
   def body
@@ -428,13 +455,15 @@ class Poll < ApplicationRecord
     (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
   end
 
-  def show_results?(voted: false)
-    !!case hide_results
-      when 'until_closed'
-        closed_at
-      else
-        true
-      end
+  # Result data for until-vote polls may be sent to the client, which owns that
+  # presentation rule. Until-closed polls remain protected at the backend.
+  def results_available?
+    hide_results != 'until_closed' || closed_at.present?
+  end
+
+  # Server-rendered output must apply the recipient-specific until-vote rule.
+  def results_visible?(voted: false)
+    results_available? && (hide_results != 'until_vote' || closed_at.present? || voted)
   end
 
   # this should not be run on anonymous polls
@@ -480,6 +509,21 @@ class Poll < ApplicationRecord
 
   def active?
     kept? && (closing_at && closing_at > Time.now) && !closed_at && opened?
+  end
+
+  # A pending vote is current user state, not merely the absence of any stance.
+  # Recheck access and electorate rules so stale notifications cannot disclose or
+  # request action on polls the user can no longer see or participate in.
+  def vote_needed_from?(user)
+    return false unless active?
+    return false unless user.can?(:show, self)
+    return false unless user.can?(:vote_in, self)
+
+    if detached_anonymous?
+      anonymous_poll_voters.exists?(voter_id: user.id, ballot_submitted: false)
+    else
+      !stances.latest.decided.exists?(participant_id: user.id)
+    end
   end
 
   def scheduled?
@@ -534,6 +578,19 @@ class Poll < ApplicationRecord
 
   private
 
+  def score_bounds_validation_required?
+    new_record? || will_save_change_to_min_score? || will_save_change_to_max_score?
+  end
+
+  def score_bounds_are_valid
+    score_min = Integer(min_score, exception: false)
+    score_max = Integer(max_score, exception: false)
+
+    errors.add(:min_score, :invalid) if min_score.present? && (score_min.nil? || score_min.negative?)
+    errors.add(:max_score, :invalid) if max_score.present? && (score_max.nil? || score_max.negative?)
+    errors.add(:max_score, :invalid) if score_min && score_max && score_max < score_min
+  end
+
   def title_if_not_discarded
     if !discarded_at && title.to_s.empty?
       errors.add(:title, I18n.t(:"activerecord.errors.messages.blank"))
@@ -559,7 +616,12 @@ class Poll < ApplicationRecord
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
     errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
-    errors.add(:legacy_anonymous, :invalid) if legacy_anonymous? && !closed?
+  end
+
+  def anonymous_matches_voting_system
+    return if anonymous? == anonymous_ballot?
+
+    errors.add(:voting_system, :invalid)
   end
 
   def voting_system_cannot_change_after_opening
@@ -573,7 +635,7 @@ class Poll < ApplicationRecord
     return unless detached_anonymous? && persisted? && anonymous_ballots.exists?
 
     protected_attributes = %w[
-      anonymous voting_system legacy_anonymous hide_results stance_reason_required poll_type
+      anonymous voting_system hide_results stance_reason_required poll_type
       min_score max_score minimum_stance_choices maximum_stance_choices
       dots_per_person show_none_of_the_above stv_seats stv_method stv_quota
     ]
@@ -615,8 +677,18 @@ class Poll < ApplicationRecord
 
   def clamp_minimum_stance_choices
     return if self[:minimum_stance_choices].nil?
-    if self[:minimum_stance_choices] > poll_options.length
-      self.minimum_stance_choices = poll_options.length
+    if self[:minimum_stance_choices] > poll_option_count
+      self.minimum_stance_choices = poll_option_count
     end
+  end
+
+  def synchronize_ranked_choice_bounds
+    return unless poll_type == "ranked_choice"
+
+    self.maximum_stance_choices = minimum_stance_choices
+  end
+
+  def poll_option_count
+    poll_options.count { |option| !option.marked_for_destruction? }
   end
 end

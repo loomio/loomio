@@ -8,11 +8,36 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
     page.click('.membership-card__invite', 1000)
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
+  },
+
+  'expand_parent_group_members_when_inviting_to_a_subgroup': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_subgroup_invitation_audiences')
+    page.click('.group-page-members-tab')
+    page.click('.membership-card__invite', 1000)
+    page.click('.recipients-autocomplete input[type="text"]')
+    page.expectText('.v-autocomplete__content', 'Point Break')
+    page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Point Break')).click()")
+    page.click('.recipients-autocomplete .chip--select-multi')
+    page.expectText('.recipients-autocomplete', 'Max Von Sydow')
+    page.expectNoText('.recipients-autocomplete', 'Jennifer Grey')
+  },
+
+  'invite_parent_group_members_to_a_subgroup_without_expanding_the_audience': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_subgroup_invitation_audiences')
+    page.click('.group-page-members-tab')
+    page.click('.membership-card__invite', 1000)
+    page.click('.recipients-autocomplete input[type="text"]')
+    page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Point Break')).click()")
+    page.click('.announcement-form__submit')
+    page.expectFlash('1 notifications sent')
+    page.expectText('.members-panel', 'Max Von Sydow')
   },
 
   // discussion form
@@ -20,9 +45,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.discussions-panel__new-thread-button')
+    page.click('.discussions-panel__new-topic-button')
     page.click('.discussion-templates--template')
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', 'Immannounce dis')
@@ -34,22 +59,35 @@ module.exports = {
     // page.expectFlash('2 notifications sent')
   },
 
-  // strand members list
+  'new_direct_discussion_autocompletes_recipients_without_a_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.ensureSidebar()
+    page.click('.sidebar__list-item-button--private')
+    page.click('.topics-page__new-topic-button')
+    page.click('.discussion-templates--direct-discussion')
+    page.waitFor('.discussion-form')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'Emilio')
+    page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
+  },
+
+  // topic members list
   'announcement_created': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.pause(500)
     page.click('.action-dock__button--announce_thread')
-    page.expectElement('.strand-members-list')
+    page.expectElement('.topic-members-list')
     page.pause(500)
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()
     // page.expectElement('.text-h5')
-    page.click('.strand-members-list__submit')
-    page.expectText('.strand-members-list', 'test@example.com')
+    page.click('.topic-members-list__submit')
+    page.expectText('.topic-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
   },
 
@@ -58,8 +96,8 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.click('.action-dock__button--announce_thread')
-    page.expectElement('.strand-members-list')
-    page.fillIn('.recipients-autocomplete input', 'Emilio')
+    page.expectElement('.topic-members-list')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'Emilio')
     page.expectText('.recipients-autocomplete-suggestion', 'Emilio Estevez')
   },
 
@@ -78,7 +116,9 @@ module.exports = {
     page.pause(500)
 
     page.expectElement('.poll-members-form')
-    page.fillIn('.recipients-autocomplete input', 'test@example.com')
+    page.click('.recipients-autocomplete input[type="text"]')
+    page.expectText('.v-autocomplete__content', 'Everyone in the thread')
+    page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()

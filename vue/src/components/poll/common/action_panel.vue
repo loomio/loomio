@@ -47,6 +47,7 @@ export default
         return this.stance = null;
       }
     });
+    EventBus.$on('stanceSaved', this.handleStanceSaved);
 
     this.watchRecords({
       collections: ["stances", "polls"],
@@ -87,6 +88,10 @@ export default
     });
   },
 
+  beforeUnmount() {
+    EventBus.$off('stanceSaved', this.handleStanceSaved);
+  },
+
   computed: {
     isScheduled() {
       return this.poll.openingAt && !this.poll.openedAt;
@@ -115,6 +120,11 @@ export default
 
   methods: {
     exact,
+    handleStanceSaved(pollId) {
+      if (pollId === this.poll.id && this.poll.myStance()?.castAt) {
+        this.makeCloneStance();
+      }
+    },
     makeCloneStance() {
       this.stance = this.poll.myStance().clone();
       if (this.$route.params.poll_option_id) {
@@ -151,20 +161,12 @@ export default
     )
       span(v-t="'poll_common_action_panel.anonymous_voting_participant_notice'")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.detachedAnonymousVoting() && !poll.legacyAnonymous && !isScheduled'
+      v-else-if='poll.detachedAnonymousVoting() && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
     )
       span(v-t="'poll_common_action_panel.anonymous_votes_are_stored_separately_from_voter_identities'")
-    v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-else-if='poll.usesLegacyAnonymousVotingFormat() && !isScheduled'
-      density="compact"
-      variant="tonal"
-      type="info"
-    )
-      span(v-t="'poll_common_action_panel.legacy_anonymous_voting_format'")
-
     .poll-common-vote-form(
       v-if="stance && !stance.castAt && !poll.anonymousBallotSubmitted"
       :class="{'poll-common-vote-form--preview': isScheduled}"
@@ -190,10 +192,10 @@ export default
     span(v-t="'poll_common_action_panel.anonymous_vote_recorded'")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    v-alert.poll-common-current-vote.mb-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
+    v-alert.poll-common-current-vote.my-4(variant="tonal" color="info" border :title="$t('poll_common.you_voted')")
       .mt-2
         poll-common-stance-choice(
-          v-if="poll.singleChoice()"
+          v-if="poll.singleChoice() && stance.stanceChoice()"
           :size="28"
           :poll="poll"
           :stance-choice="stance.stanceChoice()"

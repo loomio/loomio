@@ -10,7 +10,8 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
+import { addMinutes, intervalToDuration, format, formatDuration, addHours, isAfter } from 'date-fns';
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { mdiCogOutline, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
@@ -51,7 +52,9 @@ const hideResultsItems = ref([
   { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
   { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
 ]);
-const newDateOption = ref(startOfHour(setHours(new Date(), 12)));
+const currentTimeZone = computed(() => Session.user().timeZone);
+const currentDate = format(utcToZonedTime(new Date(), currentTimeZone.value), 'yyyy-MM-dd');
+const newDateOption = ref(zonedTimeToUtc(`${currentDate} 12:00`, currentTimeZone.value));
 const minDate = ref(new Date());
 const closingAtWas = ref(null);
 const votingOpensImmediately = ref(!props.poll.openingAt);
@@ -189,8 +192,6 @@ const submit = () => {
 };
 
 // Computed
-const currentTimeZone = computed(() => Session.user().timeZone);
-
 const titlePlaceholder = computed(() => {
   if (pollTemplate.value && pollTemplate.value.titlePlaceholder) {
     return I18n.global.t('common.prefix_eg', {val: pollTemplate.value.titlePlaceholder});
@@ -219,7 +220,8 @@ const voteWeightsSupported = computed(() => !props.poll.anonymous && props.poll.
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_when_disagreeing'), value: 'required_when_disagreeing'},
+  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_for_disagree_or_block'), value: 'required_for_disagree_or_block'},
+  props.poll.pollType === 'proposal' && {title: I18n.global.t('poll_common_form.stance_reason_required_for_block'), value: 'required_for_block'},
   {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
   {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
 ].filter(Boolean));
@@ -345,7 +347,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
             span(v-if="optionFormat == 'plain'") {{option.name}}
             span(v-if="optionFormat == 'iso8601'")
-              poll-meeting-time(:name="option.name")
+              poll-meeting-time(:name="option.name" :zone="currentTimeZone")
           v-list-item-subtitle.poll-common-vote-form__allow-wrap
             p.font-italic.mb-1(v-t="{path: `poll_option_form.${option.testOperator}_${option.testAgainst}`, args: {percent: option.testPercent} }" v-if="option.testOperator")
             p {{option.meaning}}
@@ -378,7 +380,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     template(v-if="optionFormat == 'iso8601'")
       .text-body-large.py-2(v-t="'poll_poll_form.new_option'")
       .d-flex.align-center
-        date-time-picker(:min="minDate" v-model="newDateOption")
+        date-time-picker(:min="minDate" v-model="newDateOption" :time-zone="currentTimeZone")
         v-btn.poll-meeting-form__option-button.ml-4(
           color="primary" variant="tonal"
           @click='addDateOption()'
@@ -565,7 +567,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           v-divider.mb-4(v-if="poll.config().allow_quorum")
           .poll-common-form__anonymous-voting-title.text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
           .poll-common-form__anonymous-voting-explanation.text-body-medium.pb-2.text-medium-emphasis(
-            v-t="'poll_common_form.anonymous_voting_risk_explanation'")
+            v-t="'poll_common_form.anonymous_votes_stored_separately'")
           v-checkbox.poll-settings-anonymous(
             hide-label
             :disabled="!poll.isNew()"

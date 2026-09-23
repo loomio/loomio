@@ -154,6 +154,8 @@ nl_NL:
       title: Ongeautoriseerd
     new_account_trial_group_limit: Nieuwe accounts zijn beperkt tot één groep. Neem contact op met de supportafdeling als u meer groepen nodig heeft.
     direct_thread_anonymous_poll: Een discussie met een anonieme peiling kan niet worden omgezet in een directe discussie
+    invitation_rate_limit_reached_contact_support: Het dagelijkse limiet voor uitnodigingen is bereikt. Neem direct contact op met de supportafdeling.
+    subscription_thread_limit_reached: Deze organisatie heeft de limiet voor discussies bereikt. Upgrade je abonnement om Loomio te blijven gebruiken.
   group:
     error:
       handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-
@@ -188,6 +190,7 @@ nl_NL:
       recaptcha: We waren niet in staat om te verifiëren dat je geen robot bent. Probeer het nog eens!
       bad_login: Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben
       username_must_be_alphanumeric: Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan
+      username_must_use_valid_characters: Gebruikersnamen mogen alleen kleine letters, cijfers, underscores en interne koppeltekens bevatten
   poll:
     error:
       cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden
@@ -326,6 +329,17 @@ nl_NL:
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Je hebt 1 stem om uit te brengen
+          other: Je hebt %{count} stemmen om uit te brengen
+        people_mentioned:
+          one: 1 persoon heeft je genoemd.
+          other: "%{count} mensen hebben je genoemd"
+        polls_closing_soon:
+          one: De poll sluit binnenkort.
+          other: "%{count} stembussen sluiten binnenkort"
+        separator: "·"
       daily_subject: Gisteren op %{site_name}
       weekly_subject: Afgelopen week op %{site_name}
       other_subject: Onlangs op %{site_name}
@@ -334,6 +348,31 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
+      catch_up_heading: Je samenvatting van %{site_name}
+      unread_topics: Ongelezen onderwerpen
+      unread_threads: Ongelezen berichten
+      mark_catch_up_as_read: Markeer de samenvatting als gelezen
+    digest:
+      subject:
+        votes_to_cast:
+          one: Je hebt 1 stem om uit te brengen
+          other: Je hebt %{count} stemmen om uit te brengen
+        people_mentioned:
+          one: 1 persoon heeft je genoemd.
+          other: "%{count} mensen hebben je genoemd"
+        polls_closing_soon:
+          one: De poll sluit binnenkort.
+          other: "%{count} stembussen sluiten binnenkort"
+        separator: "·"
+      daily_subject: Gisteren op %{site_name}
+      weekly_subject: Afgelopen week op %{site_name}
+      other_subject: Onlangs op %{site_name}
+      do_not_reply: Gelieve niet te antwoorden op deze e-mail.
+      mark_as_read: Markeer als gelezen
+      thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
+      marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
+      click_here: Klik hier
+      unread_topics: Ongelezen onderwerpen
     group_membership_approved:
       intro: Je verzoek om toegang tot de groep %{group_name} is goedgekeurd.
       intro_html: Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd.
@@ -348,6 +387,8 @@ nl_NL:
     content_was_translated: Deze inhoud is vertaald vanuit %{source_locale}
     content_was_translated_html: Deze content is vertaald vanuit %{source_locale}. <a href="%{profile_url}">Bekijk instellingen<a></a>
     loomio_app_description: Een plek waar samenwerkende organisaties samen beslissingen nemen.
+    membership_request_declined:
+      button_text: Opnieuw aanvragen
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
@@ -400,6 +441,21 @@ nl_NL:
     trial_expired:
       subject: Je Loomio-groep wordt verwijderd vanwege inactiviteit.
       body: Je Loomio-groep "%{group}" is inactief en wordt over 2 weken verwijderd. Als je niet wilt dat je groep wordt verwijderd, beantwoord dan deze e-mail.
+    destroy_warning_with_usage:
+      subject: Je Loomio-groep staat gepland om verwijderd te worden.
+      requested: Je Loomio-groep "%{group}" stond op de planning om verwijderd te worden door %{requestor}. Deze wordt na %{days} dagen definitief verwijderd.
+      trial_expired_warning: De proefperiode voor je Loomio-groep "%{group}" is %{expired_days} dagen geleden verlopen. Als je geen contact met ons opneemt, wordt deze over %{grace_days} dagen verwijderd.
+      trial_expired_process: Je groep is niet beschikbaar zolang deze is gemarkeerd voor verwijdering. Als je je groep toch een plek wilt bieden om te discussiëren en beslissingen te nemen, is het nog niet te laat om de groep opnieuw te starten. Beantwoord deze e-mail binnen %{grace_days} dagen als je een verlenging van de proefperiode wilt aanvragen, wilt upgraden naar een betaald abonnement of meer tijd nodig hebt om de gegevens te exporteren. Daarna worden de groep en de bijbehorende gegevens definitief verwijderd.
+      trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt na %{days} dagen definitief verwijderd.
+      usage_heading: 'Samenvatting van de groepsgegevens:'
+      subgroups: Subgroepen
+      members: Huidige leden
+      discussions: Discussies
+      polls: Peilingen
+      comments: Opmerkingen
+      export: Om de groep te behouden of een kopie van de gegevens te exporteren, kun je binnen %{days} dagen op deze e-mail reageren. We kunnen de toegang herstellen voordat de groep wordt verwijderd.
+      export_link: Leer meer over het exporteren van groepsgegevens.
+      group_key: 'Groepssleutel: %{key}'
   poll_mailer:
     common:
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
@@ -702,3 +758,36 @@ nl_NL:
     file_too_large: Het bestand is te groot. De maximale uploadgrootte is %{limit}.
   merge_users:
     not_target_user: Je moet ingelogd zijn met het doelaccount om een samenvoeging te bevestigen.
+  thread_markdown:
+    poll: Peiling
+    no_activity: Nog geen reacties, peilingen, stemmen of uitslagen.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Reactie · %{author} %{timestamp}
+    comment_reply: Antwoord op %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Anoniem stemmen:** %{value}"
+    options: "**Opties:** %{value}"
+    'yes': Ja
+    closed: Gesloten %{value}
+    scheduled_to_open: Gepland om te openen %{value}
+    open_until: Open; sluit %{value}
+    open: Open
+    current_results: Huidige resultaten
+    hidden_until_closed: Verborgen tot de stemming sluit.
+    hidden_until_voted: Verborgen totdat de kijker stemt
+    voters: Kiezers
+    target: Doel
+    available: Beschikbaar
+    available_if_needed: Beschikbaar indien nodig
+    unavailable: Niet beschikbaar
+    anonymous: Anoniem
+    no_voters: Geen kiezers
+    score: 'score: %{value}'
+    vote: 'Stem: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Geen van bovenstaande
+    no_option_selected: Geen optie geselecteerd
+    outcome: Resultaat · %{author} %{timestamp}
+    review_date: "**Reviewdatum:** %{value}"
+  error:
+    access_denied: Je hebt geen toestemming om dat te doen

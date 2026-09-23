@@ -8,16 +8,16 @@ class Views::Topics::TopicItems::StanceCreated < Views::Application::Component
   end
 
   def view_template
-    stance = @item.eventable
+    stance = @item.itemable
     poll = stance.poll
     voter = stance.participant
     div(class: "stance-created#{' mt-2' if @kind == :created}") do
-      div(class: "thread-item #{@kind == :created ? 'pl-2' : 'px-3'} pb-1") do
+      div(class: "topic-item #{@kind == :created ? 'pl-2' : 'px-3'} pb-1") do
         div(class: "#{@kind == :created ? 'v-layout' : 'layout'} lmo-action-dock-wrapper ml-5") do
-          div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::EventMailer::Common::Avatar.new(user: voter, size: 24)
+          div(class: "topic-item__avatar mr-3 mt-0") do
+            render Views::NotificationMailer::Common::Avatar.new(user: voter, size: 24)
           end
-          div(class: "#{@kind == :updated ? 'layout ' : ''}thread-item__body#{' column' if @kind == :updated}") do
+          div(class: "#{@kind == :updated ? 'layout ' : ''}topic-item__body#{' column' if @kind == :updated}") do
             if stance.revoked_at
               plain t("poll_common_votes_panel.vote_removed")
             else

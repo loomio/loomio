@@ -14,6 +14,41 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_equal @discussion, assigns(:discussion)
   end
 
+  test "public discussion has a clean canonical URL" do
+    discussion = discussions(:public_discussion)
+    get :show, params: { key: discussion.key, offset: 0, limit: 1, export: 1, sign_in: 1 }
+
+    assert_response 200
+    assert_select "link[rel='canonical'][href=?]", discussion_url(discussion)
+    assert_select "meta[property='og:url'][content=?]", discussion_url(discussion)
+    assert_select "meta[name='robots'][content='noindex,follow']"
+    assert_select "a.navbar__sign-in[href='/dashboard']"
+  end
+
+  test "public discussion SSR does not render unsafe Markdown URLs" do
+    discussion = discussions(:public_discussion)
+    discussion.update!(
+      description: "[unsafe](javascript&#58;alert(1))",
+      description_format: "md"
+    )
+
+    get :show, params: { key: discussion.key, export: 1 }
+
+    assert_response :success
+    assert_select ".context-panel__description a[href='#']", text: "unsafe"
+    assert_select "[href^='javascript:'], [src^='javascript:']", count: 0
+    assert_select "[href^='data:'], [src^='data:']", count: 0
+  end
+
+  test "public discussion clamps invalid pagination values" do
+    discussion = discussions(:public_discussion)
+
+    get :show, params: { key: discussion.key, offset: -1, limit: -1, export: 1 }
+
+    assert_response :success
+    assert_equal({ limit: 1, offset: 0 }, assigns(:pagination))
+  end
+
   test "show 404 for non-existent discussion" do
     get :show, params: { key: 'doesnotexist' }
     assert_response 404

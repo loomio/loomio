@@ -1,31 +1,46 @@
 class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
+  include RequiresLocalLogin
+  skip_before_action :require_local_login, only: :destroy
 
   def create
     unless turnstile_ok?
       render json: { errors: { turnstile: [I18n.t('auth_form.turnstile_required')] } }, status: 403
       return
     end
-    if user = attempt_login
-      sign_in(user)
-      flash[:notice] = t('auth_form.signed_in')
-      user.update(name: resource_params[:name]) if resource_params[:name]
-      user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
-      method = resource_params[:code].present? ? "login_code" : (session[:pending_login_token].present? ? "magic_link" : "password")
-      Sentry.metrics.count("auth.sign_in", attributes: { method: method })
-      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
-        signed_in_via_login_code: resource_params[:code].present?
-      )
-      EventBus.broadcast('session_create', user)
-    else
+    user = attempt_login
+    if user.nil? || user.deactivated?
       Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: failure_reason })
       render json: { errors: failure_message }, status: 401
+    elsif user.incomplete?
+      stage_account_completion(user, authentication_method: sign_in_method)
+      render json: {
+        incomplete: true,
+        email: user.email,
+        name: user.name,
+        legal_acceptance_required: user.legal_acceptance_required?,
+        email_newsletter: user.email_newsletter
+      }
+    else
+      # sign_in consumes the pending token, so identify the method first.
+      method = sign_in_method
+      sign_in(user)
+      flash[:notice] = t('auth_form.signed_in')
+      user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
+      Sentry.metrics.count("auth.sign_in", attributes: { method: method })
+      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
+        signed_in_via_login_code: method == "login_code",
+        signed_in_via_password: method == "password",
+        authentication_redirect: authentication_return_path
+      ).compact
+      EventBus.broadcast('session_create', user)
     end
     session.delete(:pending_login_token)
   end
 
   def destroy
     current_user.update_columns(secret_token: UUIDTools::UUID.random_create.to_s) if current_user.is_logged_in?
+
     sign_out
 
     flash[:notice] = t('auth_form.signed_out')
@@ -34,27 +49,29 @@ class Api::V1::SessionsController < ApplicationController
 
   private
 
-  def failure_reason
-    if resource_params[:password] && login_user&.access_locked?
-      "account_locked"
-    elsif session[:pending_login_token].present?
-      "invalid_token"
-    elsif resource_params[:password] && login_user.nil?
-      "email_not_found"
+  def sign_in_method
+    if pending_login_token&.useable?
+      "login_token"
+    elsif resource_params[:code].present?
+      "login_code"
     else
-      "invalid_password"
+      "password"
+    end
+  end
+
+  def failure_reason
+    if session[:pending_login_token].present?
+      "invalid_token"
+    else
+      "invalid_login"
     end
   end
 
   def failure_message
-    if resource_params[:password] && login_user&.access_locked?
-      { password: [I18n.t('auth_form.account_locked')] }
-    elsif session[:pending_login_token].present?
+    if session[:pending_login_token].present?
       { token: [I18n.t('auth_form.invalid_token')] }
-    elsif resource_params[:password] && login_user.nil?
-      { email: [I18n.t('auth_form.email_not_found')] }
     else
-      { password: [I18n.t('auth_form.invalid_password')] }
+      { password: [I18n.t('auth_form.invalid_login')] }
     end
   end
 
@@ -74,8 +91,11 @@ class Api::V1::SessionsController < ApplicationController
 
   def password_user
     return unless resource_params[:password].present?
-    return unless login_user
-    return if login_user.access_locked?
+
+    unless login_user&.has_password && !login_user.access_locked?
+      BCrypt::Password.create(resource_params[:password])
+      return
+    end
 
     if login_user.valid_password?(resource_params[:password])
       login_user

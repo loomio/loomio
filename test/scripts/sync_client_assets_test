@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repository_path="$(cd "$(dirname "$0")/../.." && pwd)"
+test_path="$(mktemp -d)"
+trap 'rm -rf "$test_path"' EXIT
+
+assets_source_path="$test_path/source"
+assets_destination_path="$test_path/destination"
+
+mkdir -p "$assets_source_path/assets" "$assets_destination_path/assets"
+
+printf '%s\n' "new index" > "$assets_source_path/index.html"
+printf '%s\n' "new chunk" > "$assets_source_path/assets/new-hash.js"
+printf '%s\n' "old index" > "$assets_destination_path/index.html"
+printf '%s\n' "old chunk" > "$assets_destination_path/assets/old-hash.js"
+printf '%s\n' "expired chunk" > "$assets_destination_path/assets/expired-hash.js"
+touch -t 200001010000 "$assets_destination_path/assets/expired-hash.js"
+
+# A rollback may deploy an image built before the retention cutoff. Its assets
+# are still the current release and must not be pruned during startup.
+touch -t 200001010000 \
+  "$assets_source_path/index.html" \
+  "$assets_source_path/assets/new-hash.js"
+
+"$repository_path/script/sync_client_assets" \
+  "$assets_source_path" \
+  "$assets_destination_path" \
+  90
+
+grep -Fxq "new index" "$assets_destination_path/index.html"
+grep -Fxq "new chunk" "$assets_destination_path/assets/new-hash.js"
+grep -Fxq "old chunk" "$assets_destination_path/assets/old-hash.js"
+test ! -e "$assets_destination_path/assets/expired-hash.js"
+
+echo "Client asset sync test passed"

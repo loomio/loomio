@@ -1,10 +1,10 @@
 class PollTemplateService
   def self.group_templates(group:)
-    group.poll_templates.to_a.concat(
+    group.poll_templates.kept.to_a.concat(
       default_templates.map do |template|
         template.position = group.poll_template_positions.fetch(template.key, 999)
         template.group_id = group.id
-        template.discarded_at = DateTime.now if group.hidden_poll_templates.include?(template.key)
+        template.hidden_at = Time.current if group.hidden_poll_templates.include?(template.key)
         template
       end
     ).concat(
@@ -68,7 +68,7 @@ class PollTemplateService
 
     poll_template.assign_attributes(author: actor)
 
-    return false unless poll_template.valid?
+    return poll_template unless poll_template.valid?
 
     if poll_template.key
       poll_template.group.hidden_poll_templates += Array(poll_template.key)
@@ -76,7 +76,6 @@ class PollTemplateService
     end
 
     poll_template.save!
-    # poll_template.discard! unless poll_template.group.admins.exists?(actor.id)
     poll_template
   end
 
@@ -84,7 +83,7 @@ class PollTemplateService
     actor.ability.authorize! :update, poll_template
 
     poll_template.assign_attributes_and_files(params.except(:group_id))
-    return false unless poll_template.valid?
+    return poll_template unless poll_template.valid?
     poll_template.save!
 
     poll_template

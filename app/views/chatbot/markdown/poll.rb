@@ -3,14 +3,14 @@
 class Views::Chatbot::Markdown::Poll < Views::Chatbot::Markdown::Base
   include Views::Chatbot::Markdown::Concerns
 
-  def initialize(event:, poll:, recipient:)
-    @event = event
+  def initialize(topic_item:, poll:, recipient:)
+    @topic_item = topic_item
     @poll = poll
     @recipient = recipient
   end
 
   def view_template
-    render_notification_text(@event, @poll)
+    render_notification_text(@topic_item, @poll)
     md "\n"
     render_title(@poll)
     md "\n"

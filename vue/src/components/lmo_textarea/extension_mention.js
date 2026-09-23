@@ -1,8 +1,6 @@
 import Mention from '@tiptap/extension-mention'
-import { Node, mergeAttributes } from '@tiptap/core'
-// getLabel(dom) {
-//   return dom.innerText.split(this.options.matcher.char).join('')
-// }
+import { mergeAttributes } from '@tiptap/core'
+
 export const CustomMention = Mention.extend({
   addAttributes() {
     return {

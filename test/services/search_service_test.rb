@@ -111,4 +111,33 @@ class SearchServiceTest < ActiveSupport::TestCase
 
     assert PgSearch::Document.where(searchable_type: 'Poll', searchable_id: poll.id).exists?
   end
+
+  test "rebuild_words retains established multilingual words" do
+    PgSearch::Document.create!(
+      searchable_type: 'Discussion',
+      searchable_id: 1,
+      content: 'democracia',
+      ts_content: "'democracia':1"
+    )
+    PgSearch::Document.create!(
+      searchable_type: 'Discussion',
+      searchable_id: 2,
+      content: 'democracia',
+      ts_content: "'democracia':1"
+    )
+    PgSearch::Document.create!(
+      searchable_type: 'Discussion',
+      searchable_id: 3,
+      content: 'democracia',
+      ts_content: "'democracia':1"
+    )
+
+    SearchService.rebuild_words
+
+    assert_equal 3, ActiveRecord::Base.connection.select_value(<<~SQL.squish)
+      SELECT document_count
+      FROM pg_search_words
+      WHERE word = 'democracia'
+    SQL
+  end
 end

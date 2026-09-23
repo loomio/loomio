@@ -63,27 +63,27 @@ export default new class PollTemplateService {
         name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',
         menu: true,
-        canPerform() { return !pollTemplate.discardedAt && group.adminsInclude(Session.user()); },
+        canPerform() { return !pollTemplate.hiddenAt && group.adminsInclude(Session.user()); },
         perform() { return EventBus.$emit('sortPollTemplates'); }
       },
 
-      discard: {
+      hide_template: {
         icon: 'mdi-eye-off',
         name: 'common.action.hide',
         menu: true,
-        canPerform() { return pollTemplate.id && !pollTemplate.discardedAt && service.canEditTemplate(pollTemplate, group); },
+        canPerform() { return pollTemplate.id && !pollTemplate.hiddenAt && service.canEditTemplate(pollTemplate, group); },
         perform() {
-          return Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id});
+          return Records.remote.post('poll_templates/hide', {group_id: group.id, id: pollTemplate.id});
         }
       },
 
-      undiscard: {
+      unhide_template: {
         icon: 'mdi-eye',
         name: 'common.action.unhide',
         menu: true,
-        canPerform() { return pollTemplate.id && pollTemplate.discardedAt && service.canEditTemplate(pollTemplate, group); },
+        canPerform() { return pollTemplate.id && pollTemplate.hiddenAt && service.canEditTemplate(pollTemplate, group); },
         perform() {
-          return Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id});
+          return Records.remote.post('poll_templates/unhide', {group_id: group.id, id: pollTemplate.id});
         }
       },
 
@@ -116,7 +116,7 @@ export default new class PollTemplateService {
         name: 'common.action.hide',
         menu: true,
         canPerform() {
-          return !pollTemplate.id && pollTemplate.key && !pollTemplate.discardedAt && group.adminsInclude(Session.user());
+          return !pollTemplate.id && pollTemplate.key && !pollTemplate.hiddenAt && group.adminsInclude(Session.user());
         },
         perform() {
           return Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key});
@@ -128,7 +128,7 @@ export default new class PollTemplateService {
         name: 'common.action.unhide',
         menu: true,
         canPerform() {
-          return !pollTemplate.id && pollTemplate.key && pollTemplate.discardedAt && group.adminsInclude(Session.user());
+          return !pollTemplate.id && pollTemplate.key && pollTemplate.hiddenAt && group.adminsInclude(Session.user());
         },
         perform() {
           return Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key});

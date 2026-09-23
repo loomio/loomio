@@ -12,8 +12,7 @@ class Membership < ApplicationRecord
   include HasVolume
   include HasTimeframe
   include HasExperiences
-  scope :in_organisation, -> (group) { includes(:user).where(group_id: group.id_and_subgroup_ids).active }
-
+  include HasNotifications
   extend FriendlyId
   extend HasTokens
   friendly_id :token
@@ -26,8 +25,6 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :inviter, class_name: 'User'
   belongs_to :revoker, class_name: 'User'
-  has_many :events, as: :eventable, dependent: :destroy
-
   scope :active,        -> { where(revoked_at: nil) }
   scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
@@ -41,7 +38,7 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
-  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :weight, :revoked_at, :revoker_id, :volume, :accepted_at]
+  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :delegate, :title, :weight, :revoked_at, :revoker_id, :volume_email, :volume_push, :accepted_at]
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group
@@ -56,6 +53,7 @@ class Membership < ApplicationRecord
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
+  after_save :remove_group_follow, if: :active_membership_saved?
   after_commit :update_org_members_count
 
   def title_model
@@ -76,10 +74,6 @@ class Membership < ApplicationRecord
     update_attribute(:admin, true)
   end
 
-  def remove_admin!
-    update_attribute(:admin, false)
-  end
-
   def topic_readers
     TopicReader
       .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
@@ -96,8 +90,19 @@ class Membership < ApplicationRecord
 
   private
 
+  def active_membership_saved?
+    revoked_at.nil? && (previous_changes.key?('id') || previous_changes.key?('revoked_at'))
+  end
+
+  def remove_group_follow
+    GroupFollow.where(group_id: group_id, user_id: user_id).delete_all
+  end
+
   def set_volume
-    self.volume = user.default_membership_volume if id.nil?
+    return unless id.nil?
+
+    self.volume_email = user.volume_email_default
+    self.volume_push = user.volume_push_default
   end
 
   def update_org_members_count

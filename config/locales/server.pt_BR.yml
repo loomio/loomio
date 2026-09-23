@@ -153,6 +153,8 @@ pt_BR:
       pwned_password: Esta senha já apareceu em uma violação de dados e nunca deve ser usada
     new_account_trial_group_limit: As novas contas estão limitadas a um grupo. Entre em contato com o suporte se precisar de mais.
     direct_thread_anonymous_poll: Uma thread contendo uma enquete anônima não pode ser convertida em uma thread direta.
+    invitation_rate_limit_reached_contact_support: Limite diário de convites atingido. Entre em contato com o suporte imediatamente.
+    subscription_thread_limit_reached: Esta organização atingiu o limite de tópicos. Atualize seu plano para continuar usando o Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Deve começar com %{parent_handle}-
@@ -187,6 +189,7 @@ pt_BR:
       recaptcha: Não pudemos verificar que você não é um robô, por favor tente novamente.
       bad_login: Desculpe, essa senha não confere com a que temos em arquivo
       username_must_be_alphanumeric: Nomes de usuário devem conter apenas letras minúsculas e números
+      username_must_use_valid_characters: Os nomes de usuário podem conter apenas letras minúsculas, números, sublinhados e hífens internos
   poll:
     error:
       cannot_add_options: Não é permitido adicionar opções a essa enquete
@@ -325,6 +328,17 @@ pt_BR:
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Você tem 1 voto para dar.
+          other: Você tem %{count} votos para votar.
+        people_mentioned:
+          one: Uma pessoa mencionou você.
+          other: "%{count} pessoas mencionaram você"
+        polls_closing_soon:
+          one: A votação termina em breve.
+          other: "%{count} enquetes se encerram em breve"
+        separator: "·"
       daily_subject: Ontem no %{site_name}
       weekly_subject: Semana passada no %{site_name}
       other_subject: Recentemente em %{site_name}
@@ -333,6 +347,31 @@ pt_BR:
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       marked_as_read_success: Tudo no e-mail foi marcado como lido
       click_here: Clique aqui
+      catch_up_heading: Seu resumo do %{site_name}
+      unread_topics: Tópicos não lidos
+      unread_threads: Tópicos não lidos
+      mark_catch_up_as_read: Marque a opção de leitura como lida.
+    digest:
+      subject:
+        votes_to_cast:
+          one: Você tem 1 voto para dar.
+          other: Você tem %{count} votos para votar.
+        people_mentioned:
+          one: Uma pessoa mencionou você.
+          other: "%{count} pessoas mencionaram você"
+        polls_closing_soon:
+          one: A votação termina em breve.
+          other: "%{count} enquetes se encerram em breve"
+        separator: "·"
+      daily_subject: Ontem no %{site_name}
+      weekly_subject: Semana passada no %{site_name}
+      other_subject: Recentemente em %{site_name}
+      do_not_reply: Por favor não responda a esse email.
+      mark_as_read: Marcar como lida
+      thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
+      marked_as_read_success: Tudo no e-mail foi marcado como lido
+      click_here: Clique aqui
+      unread_topics: Tópicos não lidos
     group_membership_approved:
       intro: Sua solicitação para ter acesso ao grupo %{group_name} foi aprovada.
       intro_html: Sua solicitação para ter acesso ao grupo <strong>%{group_name}</strong> foi aprovada.
@@ -347,6 +386,8 @@ pt_BR:
     content_was_translated: Este conteúdo foi traduzido de %{source_locale}
     content_was_translated_html: Este conteúdo foi traduzido de %{source_locale}. <a href="%{profile_url}">Ver configurações<a></a>
     loomio_app_description: Um espaço para organizações colaborativas tomarem decisões em conjunto.
+    membership_request_declined:
+      button_text: Candidate-se novamente
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
@@ -403,6 +444,21 @@ pt_BR:
     trial_expired:
       subject: Seu grupo no Loomio será excluído devido à inatividade.
       body: Seu grupo no Loomio "%{group}" está inativo e será excluído em 2 semanas. Se você não deseja que seu grupo seja excluído, responda a este e-mail.
+    destroy_warning_with_usage:
+      subject: Seu grupo no Loomio está programado para ser excluído.
+      requested: Seu grupo no Loomio "%{group}" foi programado para exclusão por %{requestor}. Ele será excluído permanentemente após %{days} dias.
+      trial_expired_warning: O período de teste do seu grupo Loomio "%{group}" expirou há %{expired_days} dias. A menos que você entre em contato conosco, ele será excluído em %{grace_days} dias.
+      trial_expired_process: Seu grupo está indisponível enquanto estiver marcado para exclusão. Se você ainda deseja um espaço para que seu grupo discuta e tome decisões, ainda é possível reativá-lo. Responda a este e-mail em até %{grace_days} dias se desejar solicitar uma extensão do período de teste, atualizar para uma assinatura paga ou precisar de mais tempo para exportar os dados. Após esse prazo, o grupo e seus dados serão excluídos permanentemente.
+      trial_expired: Seu grupo no Loomio "%{group}" está em período de teste expirado há pelo menos 60 dias. Ele será excluído permanentemente após %{days} dias.
+      usage_heading: 'Resumo dos dados do grupo:'
+      subgroups: Subgrupos
+      members: Membros atuais
+      discussions: Discussões
+      polls: Pesquisas
+      comments: Comentários
+      export: Para manter o grupo ou exportar uma cópia dos seus dados, responda a este e-mail dentro de %{days} dias. Podemos restaurar o acesso antes da exclusão.
+      export_link: Saiba mais sobre como exportar dados de grupo.
+      group_key: 'Chave do grupo: %{key}'
   poll_mailer:
     common:
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'
@@ -705,3 +761,36 @@ pt_BR:
     file_too_large: O arquivo é muito grande. O tamanho máximo de upload é %{limit}.
   merge_users:
     not_target_user: Você precisa estar conectado com a conta de destino para confirmar a fusão.
+  thread_markdown:
+    poll: Enquete
+    no_activity: Ainda não há comentários, enquetes, votos ou resultados.
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Comentário · %{author} %{timestamp}
+    comment_reply: Responder a %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Status:** %{value}"
+    anonymous_voting: "**Votação anônima:** %{value}"
+    options: "**Opções:** %{value}"
+    'yes': Sim
+    closed: Fechado %{value}
+    scheduled_to_open: Programado para abrir %{value}
+    open_until: Abre; fecha %{value}
+    open: Abrir
+    current_results: Resultados atuais
+    hidden_until_closed: Oculto até o encerramento da votação.
+    hidden_until_voted: Oculto até que o espectador vote.
+    voters: Eleitores
+    target: Alvo
+    available: Disponível
+    available_if_needed: Disponível se necessário.
+    unavailable: Indisponível
+    anonymous: Anônimo
+    no_voters: Sem eleitores
+    score: 'pontuação: %{value}'
+    vote: 'Voto: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Nenhuma das acima
+    no_option_selected: Nenhuma opção selecionada
+    outcome: Resultado · %{author} %{timestamp}
+    review_date: "**Data da revisão:** %{value}"
+  error:
+    access_denied: Você não tem permissão para fazer isso.

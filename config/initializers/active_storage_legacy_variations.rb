@@ -52,6 +52,12 @@ module ActiveStorageRepresentationLegacyRescue
 
   def set_representation
     super
+  rescue ActiveStorage::PreviewError => error
+    # A corrupt or empty document cannot produce a preview, but the attachment
+    # itself may still be downloadable. Return a stable client error instead of
+    # turning one bad file into a repeated application exception.
+    Rails.logger.warn("Active Storage preview unavailable for blob #{params[:signed_blob_id]}: #{error.message}")
+    head :unprocessable_entity
   rescue *LEGACY_ERRORS => error
     raise error if params[:variation_key].blank?
 

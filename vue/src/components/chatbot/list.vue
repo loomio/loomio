@@ -75,5 +75,5 @@ v-card.chatbot-list(:title="$t('chatbot.chat_integrations')")
         v-list-item-subtitle {{bot.kind}} {{bot.server}} {{bot.channel}}
       action-menu(:actions='addActions' :name="$t('chatbot.new_chat_integration')" menu-icon="mdi-plus" list-item)
   v-card-actions
-    help-btn(path='en/user_manual/groups/integrations/chatbots')
+    help-btn(path='en/user_manual/integrations/chatbots')
 </template>

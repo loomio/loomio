@@ -1,5 +1,10 @@
 ---
 ja:
+  install_app:
+    install_title: "%{site_name}をインストール"
+    install_description: "%{site_name}をホーム画面に追加して、すばやくアクセスできます"
+    install_button: インストール
+    ios_install_description: Safariで共有を開き、「ホーム画面に追加」を選択してください
   start_trial:
     your_name: あなたの名前
     title: Loomioの無料トライアルを始める
@@ -187,6 +192,7 @@ ja:
     prefix_eg: '例: %{val}'
     are_you_sure: 本気ですか？
     loomio_help: Loomioヘルプ
+    user_manual: ユーザーガイド
     visit_loomio_help: Loomio ヘルプにアクセス
     help_and_guides: ヘルプとガイド
     please_wait: お待ちください
@@ -354,9 +360,16 @@ ja:
       flash: 確認メールを送信しました!
       helptext_and_signout: "<strong>%{sourceEmail}</strong>のアカウントを<strong>%{targetEmail}</strong>のアカウントに統合できます。[確認] をクリックすると、プロセスを開始するための確認メールが %{targetEmail} に送信されます。統合を完了するには、統合先のアカウントでログインできるよう、ログアウトされます。"
       flash_and_signout: 確認メールが%{targetEmail}に送信されました。ログアウトされましたので、対象アカウントでログインして統合を完了してください。
+      generic_helptext: もう一方のアカウントのメールアドレスを入力してください。そのアカウントが存在する場合、Loomioはそのアカウントに統合確認の手順を記載したメールを送信します。
+      email_label: その他のアカウントのメールアドレス
+      send_verification: 確認メールを送信する
+      generic_flash_and_signout: そのメールアドレスを使用しているアカウントの場合、確認メールが送信されています。ログアウトしましたので、別のアカウントで引き続き操作できます。
+      destination_helptext: このアカウント（%{sourceEmail}）は、宛先アカウントに統合されます。宛先アカウントのメールアドレスを入力してください。宛先アカウントが存在する場合、Loomioはそのアドレスに統合確認メールを送信します。
+      destination_email_label: 宛先アカウントのメール
     email_taken: 申し訳ありませんが、そのメールはすでに別のユーザーに関連付けられています。そのメールはあなたのものですか?
     find_out_more: もっと詳しく調べてください。
     placeholder_modal_text: <p>2 つのアカウントを統合したい場合は、プロフィール ページの電子メール フィールドにそれぞれの電子メール アドレス (もう一方のアカウントに属する) を入力し、表示される指示に従ってください。</p><p>助けが必要？<a href="/contact" target="_blank">お問い合わせください</a>。
+    email_may_belong_to_another_account: このアドレスが別のアカウントに属している場合は、アカウントを統合できます。
   emoji_picker:
     search: 検索
     common: 頻繁に使用される
@@ -432,6 +445,14 @@ ja:
     title_label: タイトル
     hint: '次回のヒント: [ピン留め] をクリックする前に、テキストを強調表示してみてください。'
   change_volume_form:
+    context_title:
+      thread: スレッド通知設定
+      group: グループ通知設定
+      default: デフォルトの通知設定
+    context:
+      thread: このスレッド
+      group: このグループ
+      default: 参加するグループ
     explain_scope:
       thread: このスレッドに関する通知が届くと状況が変わります
       group: グループ内のすべてのスレッドについて通知されると、この状況が変わります。
@@ -514,6 +535,36 @@ ja:
     normal_option: 誰かが私の注意を引こうとしているとき（通知を受けたとき）
     quiet_option: このスレッドに関するメールは受信しません（オフ）
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。
+    volume_email_label: メール
+    volume_push_label: Push
+    all_activity_option: すべてのアクティビティ
+    when_notified_option: 通知を受けた場合
+    muted_option: ミュート
+    volume_channel_label: どのように最新情報をお伝えすればよろしいでしょうか？
+    email_channel: メール
+    push_channel: Push
+    email_and_push_channel: メールとプッシュ通知
+    off_option: オフ
+    apply_to_all_threads_in_group: これらの設定を%{group}内のすべてのスレッドに適用します
+    delivery_method: 配送方法
+    how_do_you_want_to_stay_updated: 最新情報をどのように入手したいですか？
+    catch_up_daily_hint: あなたの最新情報は、未読の通知や未読のアクティビティをまとめた毎日のメールです。
+    catch_up_every_second_day_hint: 未読の通知や未読のアクティビティをまとめたメールが2日おきに送信されます。
+    catch_up_weekly_hint: 見逃した通知や未読のアクティビティをまとめた週刊メール「キャッチアップ」をお届けします。
+    catch_up_only_option: 見逃し配信のみ
+    no_email_updates_option: メールによる更新はありません
+    no_push_updates_option: プッシュアップデートなし
+    in_app_only_option: アプリ内限定
+    catch_up_only_description: "%{context} のアクティビティを私のキャッチアップに含める"
+    catch_up_only_with_notifications_description: "%{context}からの通知やその他のアクティビティを私のキャッチアップに含める"
+    no_email_updates_description: "%{context}での活動について私にメールしないでください"
+    no_push_updates_description: "%{context} でのアクティビティに関するプッシュ通知を送信しない"
+    email_when_notified_description: 通知があったらメールで知らせてください
+    email_when_notified_with_catch_up_description: 通知があったらメールで知らせてください。残りの情報は私の近況報告に含めてください。
+    push_when_notified_description: 通知を受け取ったらプッシュ通知を送信する
+    push_when_notified_with_catch_up_description: 通知を受け取ったらプッシュ通知を送信し、残りは私のキャッチアップに含めてください。
+    email_all_activity_description: "%{context}で活動があった場合は、私にメールを送ってください。"
+    push_all_activity_description: "%{context} でアクティビティが発生したときにプッシュ通知を送信する"
   inbox:
     clear: クリア
     latest: 最新
@@ -619,6 +670,16 @@ ja:
     email_notifications: 通知があった際にメールでお知らせします
     email_none: メールなし
     new_to_you: あなたにとって新しい
+    email_and_push_when_notified: 通知時にメールとプッシュ通知
+    email_when_notified: 通知時にメール
+    push_when_notified: 通知時にプッシュ通知
+    daily_catch_up_email: 毎日のまとめメール
+    in_app_only: アプリ内限定
+    email_and_device_when_notified: 通知があった際にメールとデバイスに通知が届く
+    device_notification_when_notified: 通知があった際のデバイス通知
+    no_notifications: 通知なし
+    catch_up_email_every_second_day: 2日おきに最新情報をメールでお知らせします
+    weekly_catch_up_email: 毎週の近況報告メール
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ
@@ -678,6 +739,7 @@ ja:
     light_blue: 水色
     dark_blue: ダークブルー
     whats_new: 新着情報
+    mobile_app_settings: モバイル設定
   membership_card:
     group_members: グループの人（仲間）たち
     poll_members: "%{pollType} メンバー"
@@ -754,6 +816,7 @@ ja:
       new_discussion: "%{actor} がディスカッションを開始しました: %{title}"
       user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
       thread_locked: "%{actor} がスレッドをロックしました: %{title}"
+      membership_request_declined: "%{title}への参加申請は却下されました"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       group_announced: "%{actor} があなたをグループに招待しました"
@@ -792,6 +855,7 @@ ja:
       new_comment: "%{actor} がディスカッションにコメントしました"
       outcome_updated: "%{actor} が結果を更新しました"
       thread_locked: "%{actor} がスレッドをロックしました"
+      membership_request_declined: "%{title}への参加申請は却下されました"
     hints:
       poll_closing_soon: 今こそ、投票したり、考えを変えたり、他の人に参加を奨励したりするのに良い時期です。
       poll_closing_soon_author: 投票するよう人々に思い出させたり、期限を延長したりすることもできます。
@@ -836,6 +900,7 @@ ja:
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
       user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
       thread_locked: "%{actor} がスレッドをロックしました: %{title}"
+      membership_request_declined: "%{title}への参加申請は却下されました"
   discussion_fork_actions:
     move: 動く
     moved: コメントを移動しています。少し時間がかかる場合があります
@@ -933,7 +998,7 @@ ja:
     audiences:
       group: "%{name}"
       everyone_in_the_group: グループの全員が
-      discussion_group: スレッド内の全員
+      topic: スレッド内の全員
       voters: 投票に招待された全員
       decided_voters: 投票してくださった皆様
       undecided_voters: 未決定の有権者
@@ -1166,6 +1231,8 @@ ja:
     membership_requested: メンバーリクエストが送られました
     messages:
       joined_group: あなたは現在、%{group}のメンバーです
+    membership_request_declined: 参加申請は却下されました：%{reason}
+    request_membership_again: 再度参加をリクエストする
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名
@@ -1210,6 +1277,8 @@ ja:
     body: このサブグループを削除してもよろしいですか?すべてのスレッド、投票、ファイル、およびその他のグループ コンテンツは完全に削除されます。続行する前に、グループ データをエクスポートし、重要なファイルを手動でダウンロードすることをお勧めします。
     confirm: "「%{name}」と入力して、このグループの削除を確認します。"
     success: このグループはアーカイブされており、2 週間以内に完全に削除される予定です。
+    scheduled_for_deletion: このグループは2週間後に完全に削除される予定です
+    deletion_after_grace_period: このグループは利用できず、%{days}日後に完全に削除されます
   group_page:
     stats: グループ統計
     threads: ディスカッション
@@ -1417,7 +1486,7 @@ ja:
     remove_background: 背景を削除
     remove_logo: ロゴを削除
     members_can_create_templates: メンバーはテンプレートを作成できます
-    members_can_create_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします。メンバーが作成したテンプレートは、管理者が非表示を解除するまで非表示になります。
+    members_can_create_discussion_and_poll_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします
     members_can_start_discussions_v2: メンバーは新しいディスカッションを開始できます
     members_can_start_discussions_help_v2: メンバーがグループ内で新しいディスカッションを開始できるようにする
     members_can_edit_discussions_v2: メンバーはディスカッションやコメントを管理できる
@@ -1426,6 +1495,8 @@ ja:
     handle_changed_hint: 以前ご利用いただいていたURLとメールアドレスは、新しいアドレスにリダイレクトされます。
     members_can_create_tags: メンバーはタグを作成できます
     members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
+    non_members_can_start_discussions: 非会員でも議論を開始できます
+    non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1446,6 +1517,11 @@ ja:
     messages:
       request_approved_success: メンバーシップリクエストが承認されました
       request_ignored_success: メンバーシップリクエストは無視されました
+      request_declined_success: 会員登録申請は却下されました
+    decline: 衰退
+    decline_request: 会員登録申請を却下する
+    decline_reason: 辞退の理由
+    decline_help: 却下を選択した場合、却下理由が申請者にメールで送られます。申請者は新しい申請を提出できます。無視を選択した場合、申請者は通知を受け取らずに申請が閉じられます。
   invitation_form:
     group_url: グループURL
     reusable_invitation_link: 再利用可能な招待リンク
@@ -1534,6 +1610,8 @@ ja:
     invited: "%{value} を招待しました"
     message_user: メッセージ %{name}
     contact_user: "%{name} に連絡する"
+    recent_activity: 最近の活動
+    no_recent_activity: 最近アクティビティはありません
   contact_request_form:
     modal_title: メールアドレス %{name}
     message_placeholder: 自己紹介をして、連絡を取りたい理由を共有してください。
@@ -1624,8 +1702,7 @@ ja:
     email_newsletter: Loomio ニュースレター
     email_newsletter_description: 新機能、トレーニング、あなたの街のイベント、Loomio の将来に関する最新情報を入手します。メールは年に2～3通程度です。
     email_catch_up_day: 近況概要メール
-    on_participation_label: 参加時に購読する
-    on_participation_description: スレッドに参加すると、その後のすべてのアクティビティがすぐに電子メールで送信されます。
+    digest_email: 近況概要メール
     announcement_label: お知らせ
     announcement_description: グループ内のメンバーによって発表されたすべてのコンテンツに関する電子メールが届きます
     mentioned_label: メンションと返信
@@ -1641,8 +1718,14 @@ ja:
     learn_more: メール設定の詳細...
     mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
     daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
+    digest_email_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
     never: 一度もない
     send_email: メールを送信
+    group_notifications: グループ通知
+    group_notifications_description: グループの活動レベルとチャンネルを変更する
+    choose_email_and_push_updates: メールとプッシュ通知で個別の設定を選択してください
+    catch_up_email: 追いつきメール
+    catch_up_email_description: 未読の通知や未読のアクティビティをまとめて通知するタイミングを選択してください。
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
@@ -1744,7 +1827,7 @@ ja:
     title: で見られる
     no_one: まだ誰もこれを見ていません
     disabled_anonymous_polls: スレッドに匿名の投票が含まれているため、閲覧履歴は無効になっています
-    thread_engagement: Thread engagement
+    thread_engagement: ディスカッションへの参加
   activity_card:
     count_responses: "%{count} 件の回答"
     beginning: 始まり
@@ -2060,6 +2143,7 @@ ja:
     order_by_created_desc: 最新
     order_by_admin_desc: 管理者
     loaded_of_total: "%{total}中%{loaded}"
+    topics_loaded_of_total: "%{total}中%{loaded}"
     view_requests: リクエストの表示
     header_name: 氏名
     header_username: ユーザー名
@@ -2122,7 +2206,6 @@ ja:
     voting_opens_at: この %{poll_type} は %{time} に投票開始となります
     unable_to_vote: あなたは、この%{poll_type}への投票に招待されていません。
     anonymous_votes_are_stored_separately_from_voter_identities: 匿名投票は投票者の身元情報とは別に保存されます。投票結果は投票終了後に表示されます。
-    legacy_anonymous_voting_format: この投票では、従来の匿名投票形式を使用します。
     anonymous_vote_cannot_be_changed: 投票を送信した後は、投票内容を確認したり変更したりすることはできません。
     anonymous_vote_recorded: あなたの投票は記録されました
     legacy_vote_reasons: 過去の投票理由
@@ -2381,7 +2464,6 @@ ja:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを<strong>%{title}</strong>から移動しました"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを閉じました"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを再開しました"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>このスレッドのフォークを作成しました: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>結果を共有しました"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を再開しました"
@@ -2414,6 +2496,7 @@ ja:
     sign_up_as: "%{email} としてアカウントを作成"
     sign_in_as: "%{name}としてサインインします"
     continue_with_provider: "%{provider} を続行します"
+    sign_in_with_provider: "%{provider} でサインイン"
     continue_with_email: メールで続行
     or_enter_your_email: または、メールアドレスを入力してください
     enter_your_name: あなたの名前を入力してください
@@ -2472,6 +2555,22 @@ ja:
     invalid_login: 入力された情報ではログインできません
     login_link_rate_limited: このネットワークからログイン用のメールアドレスが多数要求されました。1時間ほどお待ちいただいてから、再度お試しください。
     send_login_link_error: ログインメールの送信中に問題が発生しました。もう一度お試しください。
+    sign_in_with_passkey: パスキーでサインイン
+    passkey_authentication_failed: そのパスキーではログインできませんでした。
+    passkey_registration_failed: そのパスキーを保存できませんでした
+    passkey_default_name: パスキー
+    local_login_disabled: このサイトはシングルサインオンが必要です
+    email_me_a_sign_in_code: ログインコードをメールで送ってください
+    sign_in_with_code: コードでサインイン
+    new_to_site: ここは初めてですか？
+    passkey_recent_authentication_required: パスキーを変更する前に、再度ログインしてください。
+    email_code_help: メールアドレスを入力してください。6桁のログインコードをお送りします。
+    or_sign_in_with_password: またはパスワードでログインしてください
+    login_link_sent_if_account_exists: "%{email} のアカウントが存在する場合、サインインコードをお送りします。"
+    use_a_passkey: パスキーを使用してください
+    send_me_a_code: 私にコードを送ってください
+    email_code_help_short: お客様のメールアドレスに6桁のコードをお送りします。
+    login_link_sent_if_account_exists_sentence: "%{email} のアカウントが存在する場合は、サインインコードをお送りします。"
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続
@@ -2613,6 +2712,14 @@ ja:
     tags_per_interval: "%{interval}別タグ数"
     all_groups_and_direct_threads: すべてのグループと直接のスレッド
     custom_selection: カスタム選択
+    all_votes_cast: 投票されたすべての票
+    votes_cast: 投票数
+    votes_issued: 投票が発行されました
+    votes_missed: 投票が欠落
+    voting_record_per_user: ユーザーごとの投票記録
+    yes_label: はい
+    no_label: いいえ
+    delegates_only: 代表者限定
   tips:
     youve_completed_all_the_steps: "\U0001F389 すべての手順が完了しました。"
     getting_started_checklist: 開始チェックリスト
@@ -2684,8 +2791,6 @@ ja:
     anonymous:
       title: 匿名の有権者
       helptext_on: 選択すると、各回答に参加者情報が表示されなくなります。
-    voter_can_add_options:
-      title: 有権者は代替案を追加できる
     can_respond_maybe:
       title: 有権者は「必要であれば」回答できる
     allow_long_reason:
@@ -2812,7 +2917,10 @@ ja:
     anonymous_votes_are_stored_separately_from_voter_identities_description: 匿名投票は投票者の身元情報とは別に保存されます。投票結果は投票締め切り後に表示されます。投票者は理由を追加したり、投票後に投票内容を確認したり、投票を変更したりすることはできません。
     anonymous_voting_explanation: 誰がどのように投票したかを知ることは不可能にする。匿名投票は投票者の身元とは別に記録される。結果は投票締め切り後にのみ公開される。投票者は理由を記入したり、投票後に投票内容を確認したり、投票を変更したりすることはできない。
     anonymous_voting_risk_explanation: 匿名の投票は投票者の身元とは別に保存されます。結果は投票終了後にのみ表示され、投票者は理由を追加したり、送信後に投票内容を確認したり、変更したりすることはできません。これらの対策により個人と投票が結び付けられるリスクは軽減されますが、投票資格者や投票者が少ない場合、結果が全会一致の場合、投票パターンに特徴がある場合、または投票者が自分の選択を明かした場合には、結果から情報が推測されることがあります。
+    anonymous_votes_stored_separately: 匿名の投票は投票者の身元とは別に保存されます。結果は投票終了後にのみ表示され、投票者は理由を追加したり、送信後に投票内容を確認したり、変更したりすることはできません。
     stance_reason_required_when_disagreeing: 意見が合わない場合に必要
+    stance_reason_required_for_disagree_or_block: 反対またはブロックするには必須
+    stance_reason_required_for_block: ブロックに必要
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     verify_participants: 参加者を確認する
@@ -2956,9 +3064,6 @@ ja:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候補者
     round_elected: ラウンド選出
@@ -2968,6 +3073,9 @@ ja:
     round_details: ラウンドごとの詳細
     view_full_results: 全結果を表示
     results_available_when_closed: 投票締め切り後、結果が発表されます。
+    elected_in_round: "%{round}ラウンドで当選"
+    eliminated_in_round: "%{round}ラウンドで脱落"
+    tied_in_round: 同点ラウンド%{round}
   lock_thread_modal:
     body: スレッドをロックすると、未解決のスレッド一覧から削除され、他のユーザーによるコメントができなくなります。
     explanation: スレッドをロックして、コメントや変更を禁止します。
@@ -2997,3 +3105,48 @@ ja:
     nobody_will_be_notified: 誰にも通知されません
     one_person_will_be_notified: 1名に通知されます
     x_people_will_be_notified: "%{count}人に通知されます"
+  push_notifications:
+    title: プッシュ通知
+    subtitle: このブラウザで通知を受け取る
+    not_supported: このブラウザではプッシュ通知は利用できません
+    permission_denied: ブラウザの設定でプッシュ通知がブロックされています
+    manage_devices: プッシュ通知デバイスを管理する
+    enabled: このブラウザではプッシュ通知が有効になっています
+    disabled: このブラウザではプッシュ通知が無効になっています
+    device_removed: プッシュ通知デバイスが削除されました
+    enable_device: このブラウザで有効にする
+    disable_device: このブラウザで無効にする
+    devices: 有効なブラウザ
+    browser_device: ブラウザ
+    remove_device: ブラウザを削除
+    enable_from_loomio: Loomioにサインインした状態で、通知設定からプッシュ通知を有効にしてください
+    ios_add_to_home_screen_before_enabling: iPhoneまたはiPadでは、共有機能を使ってLoomioをホーム画面に追加します。新しいアイコンからLoomioを開き、プッシュ通知を有効にしてください。
+  group_follow:
+    follow: 最新情報をフォロー
+    unfollow: 更新情報のフォローを解除する
+    followed: あなたは現在、このグループからの最新情報をフォローしています
+    unfollowed: このグループからの最新情報はもうフォローされていません
+  passkey_settings:
+    title: パスキー
+    helptext: パスキーを使用すると、メールアドレスやパスワードを入力せずにデバイスでサインインできます。
+    none: パスキーを追加していません
+    name: パスキー名
+    name_placeholder: 例えば、仕事用ノートパソコン
+    add: パスキーを追加
+    added: Passkeyが追加されました
+    created_at: "%{date}を追加しました"
+    remove_named: "%{name} を削除します"
+    remove_confirm: "%{name}という名前のパスキーを削除しますか？"
+    removed: パスキーが削除されました
+    remove_failed: パスキーを削除できませんでした
+  credential_prompt:
+    title: 別のログイン方法を追加する
+    helptext: パスキーを追加するかパスワードを設定すれば、メールで送られてくるコードを待たずにサインインできます。
+    add_passkey: パスキーを追加
+    set_password: パスワードを設定してください
+    not_now: 今じゃない
+    passkey_description: パスキーを使用すると、デバイスの指紋、顔認証、または画面ロックですばやくサインインできます
+    set_new_password: 新しいパスワードを設定してください
+  account_completion:
+    complete_your_account: アカウントを完成させる
+    continue: 続く

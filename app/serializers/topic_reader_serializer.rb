@@ -5,7 +5,8 @@ class TopicReaderSerializer < ApplicationSerializer
              :read_ranges,
              :last_read_at,
              :dismissed_at,
-             :volume,
+             :volume_email,
+             :volume_push,
              :inviter_id,
              :guest,
              :admin,
@@ -29,7 +30,4 @@ class TopicReaderSerializer < ApplicationSerializer
     end
   end
 
-  def volume
-    object[:volume]
-  end
 end

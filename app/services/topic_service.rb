@@ -1,7 +1,18 @@
 class TopicService
+  class IntegrityError < StandardError; end
+
   def self.private_default(group_id:)
     group = Group.find_by(id: group_id)
     group ? !group.public_discussions_only? : true
+  end
+
+  def self.validate_topicable(topicable)
+    topicable_valid = topicable.valid?
+    topic_valid = topicable.topic.valid?
+    topicable.topic.errors.each do |error|
+      topicable.errors.add(error.attribute, error.message)
+    end
+    topicable_valid && topic_valid
   end
 
   def self.invite(topic:, actor:, params:)
@@ -24,20 +35,25 @@ class TopicService
       end
 
       if topic.topicable_type == "Discussion"
-        Events::DiscussionAnnounced.publish!(discussion: topic.topicable,
-                                             actor: actor,
-                                             recipient_user_ids: recipient_user_ids,
-                                             recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                             recipient_audience: params[:recipient_audience],
-                                             recipient_message: params[:recipient_message])
+        NotificationService.create!(
+          kind: "discussion_announced",
+          subject: topic.topicable.created_topic_item,
+          actor: actor,
+          recipient_user_ids: recipient_user_ids,
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
+          recipient_message: params[:recipient_message]
+        )
       elsif topic.topicable_type == "Poll"
-        Events::PollAnnounced.publish!(poll: topic.topicable,
-                                       actor: actor,
-                                       stances: stances_by_poll_id[topic.topicable_id] || [],
-                                       recipient_user_ids: recipient_user_ids,
-                                       recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                       recipient_audience: params[:recipient_audience],
-                                       recipient_message: params[:recipient_message])
+        PollService.create_poll_announced_notification!(
+          poll: topic.topicable,
+          actor: actor,
+          stances: stances_by_poll_id[topic.topicable_id] || [],
+          recipient_user_ids: recipient_user_ids,
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
+          recipient_message: params[:recipient_message]
+        )
       else
         raise "Cannot announce topicable type #{topic.topicable_type}"
       end
@@ -48,8 +64,11 @@ class TopicService
     actor.ability.authorize! :update, topic
     topic.assign_attributes(params)
     rearrange = topic.max_depth_changed?
+    return topic unless topic.valid?
+
     topic.save!
     RepairTopicWorker.perform_later(topic.id) if rearrange
+    topic
   end
 
   def self.update_tags(topic:, tags:, actor:)
@@ -70,25 +89,31 @@ class TopicService
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
-  def self.move(topic:, params:, actor:)
+  def self.move(topic:, params:, actor:, &on_topic_item)
     direct = ActiveModel::Type::Boolean.new.cast(params[:make_direct])
     destination = direct ? NullGroup.new : ModelLocator.new(:group, params).locate!
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    Topic.transaction do
+    topic_item = Topic.transaction do
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
                     private: moved_discussion_privacy_for(topic, destination))
 
       # TODO we gotta stop adding group_id to activestorage attachment
-      ActiveStorage::Attachment.where(record: topic.items.map(&:eventable).concat([topic])).update_all(group_id: destination.id)
+      ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
       ReindexDiscussionWorker.perform_later(topic.id)
-      Events::DiscussionMoved.publish!(topic.topicable, actor)
+      TopicItems::DiscussionMoved.create!(
+        itemable: topic.topicable,
+        user: actor,
+        created_at: Time.current
+      )
     end
+    on_topic_item&.call(topic_item)
+    topic
   end
 
   def self.direct_participant_ids(topic:, actor:)
@@ -102,15 +127,15 @@ class TopicService
     )
 
     topic.items
-      .where.not(eventable_type: nil, eventable_id: nil)
+      .where.not(itemable_type: nil, itemable_id: nil)
       .distinct
-      .pluck(:eventable_type, :eventable_id)
+      .pluck(:itemable_type, :itemable_id)
       .group_by(&:first)
-      .each_value do |eventables|
+      .each_value do |itemables|
         direct_participant_ids.concat(
           Reaction.where(
-            reactable_type: eventables.first.first,
-            reactable_id: eventables.map(&:last)
+            reactable_type: itemables.first.first,
+            reactable_id: itemables.map(&:last)
           ).pluck(:user_id)
         )
       end
@@ -140,7 +165,7 @@ class TopicService
       )
 
     direct_participant_ids.each do |user_id|
-      reader = TopicReader.for(user: User.find(user_id), topic:)
+      reader = TopicReader.find_or_create_for!(user: User.find(user_id), topic:)
       reader.assign_attributes(
         admin: direct_admin_ids.include?(user_id),
         guest: true,
@@ -166,18 +191,16 @@ class TopicService
 
   def self.update_reader(topic:, params:, actor:)
     actor.ability.authorize! :show, topic
-    reader = TopicReader.for(topic: topic, user: actor)
-    reader.update(params.slice(:volume))
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
+    reader.set_volume!(email: params[:volume_email], push: params[:volume_push])
   end
 
   def self.mark_as_seen(topic:, actor:)
     actor.ability.authorize! :mark_as_seen, topic
-    RetryOnError.with_limit(2) do
-      reader = TopicReader.for(topic: topic, user: actor)
-      reader.viewed!([[0, 0]])
-      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
-    end
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
+    reader.viewed!([[0, 0]])
+    MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
@@ -190,26 +213,24 @@ class TopicService
 
   def self.mark_as_read(topic:, params:, actor:)
     actor.ability.authorize! :mark_as_read, topic
-    RetryOnError.with_limit(2) do
-      sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
-      NotificationService.viewed_events(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
-      reader = TopicReader.for(topic: topic, user: actor)
-      reader.viewed!(params[:ranges])
-      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
-    end
+    sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
+    NotificationService.viewed_topic_items(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
+    reader = TopicReader.find_or_create_for!(topic: topic, user: actor)
+    reader.viewed!(params[:ranges])
+    MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
 
   def self.dismiss(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
-    reader = TopicReader.for(user: actor, topic: topic)
+    reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
   def self.recall(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
-    reader = TopicReader.for(user: actor, topic: topic)
+    reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.recall!
     EventBus.broadcast('discussion_recall', reader, actor)
   end
@@ -227,8 +248,8 @@ class TopicService
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
-      EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     end
+    EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     topicable
   end
 
@@ -240,29 +261,32 @@ class TopicService
     end
   end
 
-  def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
+  def self.mark_digest_as_read(user_id, time_start_i, time_finish_i)
     user = User.find_by!(id: user_id)
     time_start  = Time.at(time_start_i).utc
     time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish
 
-    TopicQuery.relevant_to(user: user, only_unread: true, or_subgroups: false)
+    TopicQuery.relevant_to(
+      user: user,
+      public_group_ids: user.group_follows.pluck(:group_id),
+      only_unread: true,
+      or_subgroups: false
+    )
       .where("topics.last_activity_at > ?", time_start).each do |topic|
-      RetryOnError.with_limit(2) do
-        sequence_ids = topic.items.where("events.created_at": time_range).pluck(:sequence_id)
-        TopicReader.for(user: user, topic: topic).viewed!(sequence_ids)
-      end
+      sequence_ids = topic.items.where("topic_items.created_at": time_range).pluck(:sequence_id)
+      TopicReader.find_or_create_for!(user: user, topic: topic).viewed!(sequence_ids)
     end
   end
 
   def self.legacy_misordered_poll_created_topic_ids
-    Event
-      .joins("INNER JOIN events later_comments ON later_comments.topic_id = events.topic_id")
-      .where("events.kind = ?", 'poll_created')
+    TopicItem
+      .joins("INNER JOIN topic_items later_comments ON later_comments.topic_id = topic_items.topic_id")
+      .where("topic_items.kind = ?", 'poll_created')
       .where("later_comments.kind = ?", 'new_comment')
-      .where("events.topic_id IS NOT NULL")
-      .where("events.sequence_id > later_comments.sequence_id")
-      .where("events.created_at < later_comments.created_at")
+      .where("topic_items.topic_id IS NOT NULL")
+      .where("topic_items.sequence_id > later_comments.sequence_id")
+      .where("topic_items.created_at < later_comments.created_at")
       .distinct
       .pluck(:topic_id)
   end
@@ -279,73 +303,88 @@ class TopicService
     topic = Topic.find_by(id: topic_id)
     return unless topic
 
-    repair(topic.id)
-    topic.reload
+    Topic.transaction do
+      repair(topic.id)
+      topic.reload
 
-    root_event = topic.topicable.created_event
-    return unless root_event
+      root_topic_item = topic.topicable.created_topic_item
+      next unless root_topic_item
 
-    event_ids = Event.where(topic_id: topic.id)
-                     .where.not(id: root_event.id)
-                     .order(:created_at, :id)
-                     .pluck(:id)
+      topic_item_ids = TopicItem.where(topic_id: topic.id)
+                       .where.not(id: root_topic_item.id)
+                       .order(:created_at, :id)
+                       .pluck(:id)
 
-    Event.where(topic_id: topic.id).update_all(sequence_id: nil, position: 0, position_key: nil)
-    Event.where(id: root_event.id).update_all(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
+      TopicItem.where(topic_id: topic.id).update_all(sequence_id: nil, position: 0, position_key: nil)
+      TopicItem.where(id: root_topic_item.id).update_all(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
-    event_ids.each.with_index(1) do |event_id, sequence_id|
-      Event.where(id: event_id).update_all(sequence_id: sequence_id)
+      topic_item_ids.each.with_index(1) do |topic_item_id, sequence_id|
+        TopicItem.where(id: topic_item_id).update_all(sequence_id: sequence_id)
+      end
+
+      repair(topic.id)
     end
-
-    repair(topic.id)
   end
 
   def self.repair(topic_id)
     topic = Topic.find_by(id: topic_id)
-    return if !topic || topic.discarded_at
+    return unless topic
     topicable = topic.topicable
+    return unless topicable
 
-    # ensure topicable.created_event exists
-    unless topicable.created_event
-      Event.import [Event.new(kind: topicable.created_event_kind.to_s,
+    Topic.transaction { repair_topic(topic, topicable) }
+  end
+
+  def self.repair_topic(topic, topicable)
+    # ensure topicable.created_topic_item exists
+    unless topicable.created_topic_item
+      TopicItem.import [TopicItem.new(kind: topicable.created_topic_item_kind.to_s,
                               user_id: topicable.author_id,
-                              eventable_id: topicable.id,
-                              eventable_type: topicable.class.name,
+                              topic_id: topic.id,
+                              itemable_id: topicable.id,
+                              itemable_type: topicable.class.name,
                               created_at: topicable.created_at)]
       topicable.reload
     end
 
-    created_event = topicable.created_event
-    Event.where(eventable: topicable, kind: topicable.created_event_kind.to_s)
-         .where.not(id: created_event.id)
-         .destroy_all
-    Event.where(topic_id: topic.id, sequence_id: 0).where.not(id: created_event.id).update_all(sequence_id: nil, position: 0, position_key: nil)
-    created_event.update_columns(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
+    created_topic_item = topicable.created_topic_item
+    duplicate_created_topic_items = TopicItem.where(
+      itemable: topicable,
+      kind: topicable.created_topic_item_kind.to_s,
+      topic_id: topic.id
+    )
+                                    .where.not(id: created_topic_item.id)
+    TopicItem.where(parent_id: duplicate_created_topic_items.select(:id)).update_all(parent_id: created_topic_item.id)
+    duplicate_created_topic_items.destroy_all
+    TopicItem.where(topic_id: topic.id, sequence_id: 0).where.not(id: created_topic_item.id).update_all(sequence_id: nil, position: 0, position_key: nil)
+    created_topic_item.update_columns(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
-    Event.where(topic_id: topic.id, sequence_id: nil).where.not(id: created_event.id).order(:id).each(&:set_sequence_id!)
+    TopicItem.where(topic_id: topic.id, sequence_id: nil).where.not(id: created_topic_item.id).order(:id).each(&:set_sequence_id!)
 
-    # rebuild ancestry of events based on eventable relationships
-    items = Event.where(topic_id: topic.id).where.not(id: created_event.id).order(:sequence_id)
-    items.update_all(parent_id: created_event.id, position: 0, position_key: nil, depth: 1)
+    # rebuild ancestry of topic_items based on itemable relationships
+    items = TopicItem.where(topic_id: topic.id).where.not(id: created_topic_item.id).order(:sequence_id)
+    items.update_all(parent_id: created_topic_item.id, position: 0, position_key: nil, depth: 1)
     items.reload.compact.each(&:set_parent_and_depth!)
 
     parent_ids = items.pluck(:parent_id).compact.uniq
 
-    reset_child_positions(created_event.id, "00000")
-    Event.where(id: parent_ids).order(:depth).each do |parent_event|
-      parent_event.reload
-      reset_child_positions(parent_event.id, parent_event.position_key)
+    reset_child_positions(created_topic_item.id, "00000")
+    TopicItem.where(id: parent_ids).order(:depth).each do |parent_topic_item|
+      parent_topic_item.reload
+      reset_child_positions(parent_topic_item.id, parent_topic_item.position_key)
     end
 
     ActiveRecord::Base.connection.execute(
-      "UPDATE events
+      "UPDATE topic_items
        SET child_count = (
-        SELECT count(children.id) FROM events children
-        WHERE children.parent_id = events.id AND children.topic_id IS NOT NULL
+        SELECT count(children.id) FROM topic_items children
+        WHERE children.parent_id = topic_items.id
       )
       WHERE topic_id = #{topic.id.to_i}")
 
-    created_event.reload.update_columns(child_count: created_event.children.count)
+    created_topic_item.reload.update_columns(
+      child_count: created_topic_item.children.count
+    )
     topic.update_sequence_info!
 
     # ensure all the topic_readers have valid read_ranges values
@@ -358,6 +397,34 @@ class TopicService
     end
   end
 
+  private_class_method :repair_topic
+
+  def self.verify_integrity!(topic_id)
+    topic_items = TopicItem.where(topic_id: topic_id).to_a
+    topic_items_by_id = topic_items.index_by(&:id)
+    child_counts = topic_items.group_by(&:parent_id).transform_values(&:length)
+    failures = []
+
+    topic_items.each do |topic_item|
+      expected_child_count = child_counts.fetch(topic_item.id, 0)
+      failures << "topic_item #{topic_item.id} child_count" unless topic_item.child_count == expected_child_count
+      failures << "topic_item #{topic_item.id} sequence_id" if topic_item.sequence_id.nil?
+      failures << "topic_item #{topic_item.id} position" if topic_item.position.nil?
+      failures << "topic_item #{topic_item.id} position_key" if topic_item.position_key.blank?
+
+      if topic_item.parent_id
+        parent = topic_items_by_id[topic_item.parent_id]
+        failures << "topic_item #{topic_item.id} parent" unless parent
+        failures << "topic_item #{topic_item.id} depth" if parent && topic_item.depth != parent.depth + 1
+        failures << "topic_item #{topic_item.id} position ancestry" if parent && !topic_item.position_key.to_s.start_with?("#{parent.position_key}-")
+      end
+    end
+
+    return if failures.empty?
+
+    raise IntegrityError, "Topic #{topic_id} repair failed: #{failures.join(', ')}"
+  end
+
   def self.reset_child_positions(parent_id, parent_position_key)
     parent_id = parent_id.to_i
     position_key_sql = if parent_position_key.nil?
@@ -367,15 +434,14 @@ class TopicService
       "CONCAT(#{quoted_prefix}, CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
     end
     ActiveRecord::Base.connection.execute(
-      "UPDATE events SET position = t.seq, position_key = #{position_key_sql}
+      "UPDATE topic_items SET position = t.seq, position_key = #{position_key_sql}
         FROM (
           SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
-          FROM events
+          FROM topic_items
           WHERE parent_id = #{parent_id}
-          AND   topic_id IS NOT NULL
         ) AS t
-      WHERE events.id = t.id and
-            events.position is distinct from t.seq")
+      WHERE topic_items.id = t.id and
+            topic_items.position is distinct from t.seq")
     SequenceService.drop_seq!('events_position', parent_id)
   end
 
@@ -387,9 +453,9 @@ class TopicService
 
   def self.extract_link_preview_urls(topic)
     urls = topic.topicable.respond_to?(:link_previews) ? topic.topicable.link_previews.map { |lp| lp['url'] } : []
-    topic.items.each do |event|
-      if event.eventable.present? && event.eventable.respond_to?(:link_previews)
-        urls.concat(event.eventable.link_previews.map {|lp| lp['url']})
+    topic.items.each do |topic_item|
+      if topic_item.itemable.present? && topic_item.itemable.respond_to?(:link_previews)
+        urls.concat(topic_item.itemable.link_previews.map {|lp| lp['url']})
       end
     end
     urls.compact.uniq
@@ -402,12 +468,15 @@ class TopicService
                                          model: topic,
                                          audience: audience)
 
-    volumes = {}
+    volume_by_user_id = {}
 
     if topic.group_id
-      Membership.where(group_id: topic.group_id,
-                      user_id: users.pluck(:id)).find_each do |m|
-        volumes[m.user_id] = m.volume
+      Membership.active.where(group_id: topic.group_id,
+                              user_id: users.pluck(:id)).find_each do |membership|
+        volume_by_user_id[membership.user_id] = [
+          membership.volume_email || membership.user.volume_email_default,
+          membership.volume_push || membership.user.volume_push_default
+        ]
       end
     end
 
@@ -416,12 +485,17 @@ class TopicService
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
 
     new_topic_readers = users.map do |user|
+      email, push = volume_by_user_id.fetch(
+        user.id,
+        [ user.volume_email_default, user.volume_push_default ]
+      )
       TopicReader.new(user: user,
                       topic: topic,
                       inviter: actor,
-                      guest: !volumes.has_key?(user.id),
+                      guest: !volume_by_user_id.key?(user.id),
                       admin: false,
-                      volume: volumes[user.id] || user.default_membership_volume)
+                      volume_email: email,
+                      volume_push: push)
     end
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)

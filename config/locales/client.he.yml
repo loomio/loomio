@@ -1,5 +1,10 @@
 ---
 he:
+  install_app:
+    install_title: התקנת %{site_name}
+    install_description: הוספת %{site_name} למסך הבית לגישה מהירה יותר
+    install_button: התקנה
+    ios_install_description: ב-Safari, יש לפתוח את השיתוף ולבחור באפשרות הוספה למסך הבית
   start_trial:
     title: התחל ניסיון חינם של Loomio
     intro: תודה על התעניינותך ב-Loomio. אנו שמחים להציע לך ניסיון חינם של %{day} ימים כדי שתוכל לראות אם Loomio מתאים לארגון שלך.
@@ -188,6 +193,7 @@ he:
     prefix_eg: למשל %{val}
     are_you_sure: האם אתה בטוח?
     loomio_help: לומיו עזרה
+    user_manual: מדריך למשתמש
     visit_loomio_help: בקר בעזרה של Loomio
     help_and_guides: עזרה ומדריכים
     please_wait: נא להמתין
@@ -355,9 +361,16 @@ he:
       flash: מייל אימות נשלח!
       helptext_and_signout: באפשרותך למזג את החשבון תחת <strong>%{sourceEmail}</strong> עם זה של <strong>%{targetEmail}</strong> . לחץ על אימות ויישלח דוא"ל אימות אל %{targetEmail} כדי להתחיל בתהליך. תתנתק כדי שתוכל להיכנס כחשבון היעד ולהשלים את המיזוג.
       flash_and_signout: אימייל אימות נשלח אל %{targetEmail}. כעת אינך מחובר/ת כך שתוכל/י להיכנס כחשבון היעד כדי להשלים את המיזוג.
+      generic_helptext: הזן את כתובת הדוא"ל של החשבון השני. אם חשבון זה קיים, Loomio ישלח לו דוא"ל עם הוראות לאישור המיזוג.
+      email_label: כתובת דוא"ל של חשבון אחר
+      send_verification: שלח אימייל אימות
+      generic_flash_and_signout: אם חשבון משתמש בכתובת דוא"ל זו, נשלחה הודעת אימות. כעת אינך מחובר כך שתוכל להמשיך עם החשבון האחר.
+      destination_helptext: חשבון זה (%{sourceEmail}) ימוזג לחשבון היעד. הזן את כתובת הדוא"ל של חשבון היעד. אם היא קיימת, Loomio ישלח לכתובת זו דוא"ל לאישור המיזוג.
+      destination_email_label: כתובת דוא"ל של חשבון היעד
     email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
     find_out_more: גלה עוד.
     placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .
+    email_may_belong_to_another_account: אם כתובת זו שייכת לחשבון אחר, ניתן למזג את החשבונות
   emoji_picker:
     search: חיפוש
     common: לעיתים קרובות בשימוש
@@ -433,6 +446,14 @@ he:
     title_label: כותרת
     hint: 'רמז לפעם הבאה: נסה להדגיש טקסט לפני שתלחץ על "הצמד".'
   change_volume_form:
+    context_title:
+      thread: הגדרות התראות שרשור
+      group: הגדרות התראות קבוצתיות
+      default: הגדרות ברירת מחדל של התראות
+    context:
+      thread: השרשור הזה
+      group: הקבוצה הזו
+      default: קבוצות שאתה מצטרף אליהן
     explain_scope:
       thread: זה משתנה כאשר תקבל הודעה על השרשור הזה
       group: זה משתנה כאשר תקבל הודעה על כל השרשורים בקבוצה
@@ -515,6 +536,36 @@ he:
     normal_option: כשמישהו רוצה את תשומת ליבי (כאשר מקבל הודעה)
     quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
     quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
+    volume_email_label: אֶלֶקטרוֹנִי
+    volume_push_label: Push
+    all_activity_option: כל הפעילות
+    when_notified_option: כאשר יקבלו הודעה
+    muted_option: מושתק
+    volume_channel_label: איך עלינו לעדכן אותך?
+    email_channel: אֶלֶקטרוֹנִי
+    push_channel: Push
+    email_and_push_channel: דוא"ל ודחיפה
+    off_option: כבוי
+    apply_to_all_threads_in_group: החל הגדרות אלו על כל השרשורים ב-%{group}
+    delivery_method: שיטת משלוח
+    how_do_you_want_to_stay_updated: איך אתם רוצים להישאר מעודכנים?
+    catch_up_daily_hint: העדכון שלך הוא אימייל יומי עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_every_second_day_hint: העדכון שלך הוא אימייל שנשלח כל יומיים עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_weekly_hint: העדכון שלך הוא אימייל שבועי עם התראות שלא נראו ופעילות שלא נקראה
+    catch_up_only_option: רק השלמה
+    no_email_updates_option: אין עדכוני דוא"ל
+    no_push_updates_option: אין עדכוני דחיפה
+    in_app_only_option: בתוך האפליקציה בלבד
+    catch_up_only_description: כלול פעילות מ-%{context} בעדכון שלי
+    catch_up_only_with_notifications_description: כלול התראות ופעילות אחרת מ-%{context} בעדכון שלי
+    no_email_updates_description: אל תשלחו לי אימייל על פעילות ב-%{context}
+    no_push_updates_description: אל תשלח התראות דחיפה על פעילות ב-%{context}
+    email_when_notified_description: שלח לי אימייל כשאני מקבל הודעה
+    email_when_notified_with_catch_up_description: שלחו לי אימייל כשאני מקבל הודעה, ואת השאר כללו בעדכון שלי
+    push_when_notified_description: שלח הודעת דחיפה כשאני מקבל הודעה
+    push_when_notified_with_catch_up_description: שלח הודעת דחיפה כשאני מקבל הודעה, וכלול את השאר בעדכון שלי
+    email_all_activity_description: שלח לי אימייל בכל פעם שיש פעילות ב-%{context}
+    push_all_activity_description: שלח הודעת דחיפה בכל פעם שיש פעילות ב-%{context}
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -620,6 +671,16 @@ he:
     email_notifications: דוא"ל לאחר הודעה
     email_none: אין אימיילים
     new_to_you: חדש לך
+    email_and_push_when_notified: דוא"ל והתראת Push בעת קבלת התראה
+    email_when_notified: דוא"ל בעת קבלת התראה
+    push_when_notified: התראת Push בעת קבלת התראה
+    daily_catch_up_email: אימייל סיכום יומי
+    in_app_only: בתוך האפליקציה בלבד
+    email_and_device_when_notified: התראות בדוא"ל ובמכשיר לאחר קבלת הודעה
+    device_notification_when_notified: התראה במכשיר בעת קבלת התראה
+    no_notifications: אין התראות
+    catch_up_email_every_second_day: אימייל השלמה כל יומיים
+    weekly_catch_up_email: אימייל שבועי לעדכון
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -679,6 +740,7 @@ he:
     light_blue: תכלת
     dark_blue: כחול כהה
     whats_new: מה חדש
+    mobile_app_settings: הגדרות ניידות
   membership_card:
     group_members: חברי הקבוצה
     poll_members: חברי %{pollType}
@@ -755,6 +817,7 @@ he:
       new_discussion: "%{actor} פתח דיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -793,6 +856,7 @@ he:
       new_comment: "%{actor} הגיב בדיון"
       outcome_updated: "%{actor} עדכן את התוצאה"
       thread_locked: "%{actor} נעל את השרשור"
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -837,6 +901,7 @@ he:
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
       thread_locked: "%{actor} נעל את השרשור: %{title}"
+      membership_request_declined: בקשתך להצטרף ל- %{title} נדחתה
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -934,7 +999,7 @@ he:
     audiences:
       group: משתתפי ה%{name}
       everyone_in_the_group: כולם בקבוצה
-      discussion_group: כולם בשרשור
+      topic: כולם בשרשור
       voters: כולם מוזמנים להצביע
       decided_voters: כל מי שהצביע
       undecided_voters: מצביעים מתלבטים
@@ -1171,6 +1236,8 @@ he:
     membership_requested: התבקשה חברות
     messages:
       joined_group: את/ה עכשיו חבר/ה ב%{group}
+    membership_request_declined: 'בקשתך להצטרף נדחתה: %{reason}'
+    request_membership_again: בקשת הצטרפות נוספת
   membership_request_form:
     heading: בקשת הצטרפות לקבוצה
     name_label: שם
@@ -1215,6 +1282,8 @@ he:
     body: האם אתה בטוח שברצונך למחוק תת-קבוצה זו? כל השרשורים, הסקרים, הקבצים ותוכן קבוצתי אחר יימחקו לצמיתות. מומלץ לייצא את נתוני הקבוצה ולהוריד ידנית קבצים חשובים לפני שתמשיך.
     confirm: הקלד '%{name}' כדי לאשר שברצונך למחוק את הקבוצה הזו.
     success: קבוצה זו הועברה לארכיון ומתוכננת למחיקה קבועה בעוד שבועיים.
+    scheduled_for_deletion: קבוצה זו מתוכננת למחיקה לצמיתות בעוד שבועיים
+    deletion_after_grace_period: הקבוצה הזו אינה זמינה ותימחק לצמיתות לאחר %{days} יום
   group_page:
     stats: נתונים סטטיסטיים של הקבוצה
     threads: שיחות
@@ -1422,7 +1491,7 @@ he:
     remove_background: הסרת רקע
     remove_logo: להסיר את הלוגו
     members_can_create_templates: חברים יכולים ליצור תבניות
-    members_can_create_templates_help: אפשר לחברים ליצור תבניות דיון וסקר. תבניות שנוצרו על ידי חברים יוסתרו עד שמנהל יבטל את הסתרתן.
+    members_can_create_discussion_and_poll_templates_help: אפשר לחברים ליצור תבניות דיון וסקר
     members_can_start_discussions_v2: חברים יכולים להתחיל דיונים חדשים
     members_can_start_discussions_help_v2: לאפשר לחברים להתחיל דיונים חדשים בתוך הקבוצה
     members_can_edit_discussions_v2: חברים יכולים לנהל דיונים ותגובות
@@ -1431,6 +1500,8 @@ he:
     handle_changed_hint: כתובת ה-URL וכתובת הדוא"ל הקודמים שלך יפנו לכתובת החדשה שלך.
     members_can_create_tags: חברים יכולים ליצור תגיות
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
+    non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
+    non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1459,6 +1530,11 @@ he:
     messages:
       request_approved_success: בקשת מנוי אושרה
       request_ignored_success: בקשת מנוי ללא התייחסות
+      request_declined_success: בקשת החברות נדחתה
+    decline: יְרִידָה
+    decline_request: דחה את בקשת החברות
+    decline_reason: סיבה לדחייה
+    decline_help: '"דחייה" שולחת את הסיבה שלך למבקש בדוא"ל. הוא יכול להגיש בקשה חדשה. "התעלמות" סוגרת את הבקשה מבלי להודיע לו.'
   invitation_form:
     group_url: כתובת האתר של הקבוצה
     reusable_invitation_link: קישור להזמנה לשימוש חוזר
@@ -1547,6 +1623,8 @@ he:
     online_field: 'אונליין: %{value}'
     invited: הוזמן %{value}
     message_user: הודעה %{name}
+    recent_activity: פעילות אחרונה
+    no_recent_activity: אין פעילות אחרונה
   contact_request_form:
     modal_title: דואר אלקטרוני %{name}
     message_placeholder: הצג את עצמך ושתף למה היית רוצה ליצור קשר
@@ -1637,8 +1715,7 @@ he:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד"כ 2-3 מיילים בשנה.
     email_catch_up_day: דוא"ל סיכום
-    on_participation_label: הרשם בהשתתפות
-    on_participation_description: כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי.
+    digest_email: דוא"ל סיכום
     announcement_label: הודעות
     announcement_description: אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע"י אנשים בקבוצות שלך
     mentioned_label: איזכורים ותגובות
@@ -1654,8 +1731,14 @@ he:
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
     daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
+    digest_email_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
     never: לְעוֹלָם לֹא
     send_email: שלח אימייל
+    group_notifications: התראות קבוצתיות
+    group_notifications_description: שנה את רמת הפעילות והערוץ עבור הקבוצות שלך
+    choose_email_and_push_updates: בחר הגדרות נפרדות עבור דוא"ל ודחיפה
+    catch_up_email: אימייל השלמה
+    catch_up_email_description: בחרו מתי לקבל עדכונים על התראות שלא נראו ופעילות שלא נקראה
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -1759,7 +1842,7 @@ he:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין
     disabled_anonymous_polls: היסטוריית הצופים מושבתת מכיוון שהשרשור מכיל סקרים אנונימיים
-    thread_engagement: Thread engagement
+    thread_engagement: מעורבות בדיון
   activity_card:
     count_responses: "%{count} תגובות"
     beginning: התחלה
@@ -2080,6 +2163,7 @@ he:
     order_by_created_desc: החדש ביותר
     order_by_admin_desc: מנהלי מערכת
     loaded_of_total: "%{loaded} מתוך %{total}"
+    topics_loaded_of_total: "%{loaded} מתוך %{total}"
     view_requests: הצג בקשות
     header_name: שם
     header_username: שם משתמש
@@ -2142,7 +2226,6 @@ he:
     voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
     unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
     anonymous_votes_are_stored_separately_from_voter_identities: הצבעות אנונימיות נשמרות בנפרד מזהויות הבוחרים. התוצאות מופיעות לאחר סגירת ההצבעה.
-    legacy_anonymous_voting_format: סקר זה משתמש בפורמט ההצבעה האנונימי הישן
     anonymous_vote_cannot_be_changed: לא ניתן לבדוק או לשנות את הצבעתך לאחר הגשתה
     anonymous_vote_recorded: הצבעתך נרשמה
     legacy_vote_reasons: נימוקים מהצבעות קודמות
@@ -2401,7 +2484,6 @@ he:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> העביר את השרשור מ <strong>-%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את השרשור"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את השרשור"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> יצר מזלג של השרשור הזה: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף תוצאה"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את ה-%{polltype}"
@@ -2434,6 +2516,7 @@ he:
     sign_up_as: צור חשבון בתור %{email}
     sign_in_as: הרשם כ%{name}
     continue_with_provider: המשך עם %{provider}
+    sign_in_with_provider: התחבר באמצעות %{provider}
     continue_with_email: המשך במייל
     or_enter_your_email: או, הכנס את המייל שלך
     enter_your_name: הזן את שמך
@@ -2492,6 +2575,22 @@ he:
     invalid_login: לא ניתן להתחבר אותך עם הפרטים האלה
     login_link_rate_limited: יותר מדי כתובות דוא"ל לכניסה נדרשות מרשת זו. אנא המתן שעה ונסה שוב.
     send_login_link_error: משהו השתבש בשליחת אימייל הכניסה. אנא נסה שוב.
+    sign_in_with_passkey: התחבר באמצעות סיסמה
+    passkey_authentication_failed: לא הצלחנו להיכנס אותך עם סיסמת הגישה הזו
+    passkey_registration_failed: לא הצלחנו לשמור את הסיסמה הזו
+    passkey_default_name: סיסמה
+    local_login_disabled: אתר זה דורש כניסה יחידה
+    email_me_a_sign_in_code: שלח לי קוד כניסה בדוא"ל
+    sign_in_with_code: התחברות באמצעות קוד
+    new_to_site: חדש כאן?
+    passkey_recent_authentication_required: היכנס שוב לפני שינוי סיסמות
+    email_code_help: הזן את כתובת הדוא"ל שלך ונשלח לך קוד כניסה בן שש ספרות
+    or_sign_in_with_password: או התחבר עם סיסמה
+    login_link_sent_if_account_exists: אם קיים חשבון עבור %{email}, נשלח קוד כניסה
+    use_a_passkey: השתמש בסיסמה
+    send_me_a_code: שלח לי קוד
+    email_code_help_short: נשלח קוד בן שש ספרות לכתובת הדוא"ל שלך
+    login_link_sent_if_account_exists_sentence: אם קיים חשבון עבור %{email}, נשלח קוד כניסה.
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
@@ -2633,6 +2732,14 @@ he:
     tags_per_interval: תגיות לכל %{interval}
     all_groups_and_direct_threads: כל הקבוצות והשרשורים הישירים
     custom_selection: בחירה מותאמת אישית
+    all_votes_cast: כל הקולות שניתנו
+    votes_cast: קולות שהושלכו
+    votes_issued: קולות שהונפקו
+    votes_missed: קולות שהוחמצו
+    voting_record_per_user: שיא הצבעות לכל משתמש
+    yes_label: כֵּן
+    no_label: לֹא
+    delegates_only: נציגים בלבד
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה
@@ -2704,8 +2811,6 @@ he:
     anonymous:
       title: מצביעים אנונימיים
       helptext_on: כאשר אפשרות זו נבחרת, פרטי המשתתף לא יוצגו עם כל תגובה.
-    voter_can_add_options:
-      title: הבוחרים יכולים להוסיף אפשרויות חלופיות
     can_respond_maybe:
       title: הבוחרים יכולים להגיב "במידת הצורך"
     allow_long_reason:
@@ -2832,7 +2937,10 @@ he:
     anonymous_votes_are_stored_separately_from_voter_identities_description: קולות אנונימיים נשמרים בנפרד מזהויות הבוחרים. התוצאות מופיעות לאחר סגירת ההצבעה. הבוחרים אינם יכולים להוסיף נימוקים, לבדוק את הצבעתם לאחר הגשתה או לשנות את הצבעתם.
     anonymous_voting_explanation: להפוך את זה לבלתי אפשרי לדעת כיצד מישהו הצביע. הצבעות אנונימיות נרשמות בנפרד מזהות הבוחרים. התוצאות מופיעות רק לאחר סגירת ההצבעה. בוחרים אינם יכולים להוסיף נימוקים, לבדוק את הצבעתם לאחר הגשתה או לשנות את הצבעתם.
     anonymous_voting_risk_explanation: הצבעות אנונימיות נשמרות בנפרד מזהות הבוחרים. התוצאות מופיעות רק לאחר סגירת ההצבעה, והבוחרים אינם יכולים להוסיף נימוקים, לבדוק את הצבעתם לאחר ההגשה או לשנות אותה. אמצעים אלה מפחיתים את הסיכון לקשר אדם להצבעה, אך התוצאות עדיין עשויות לחשוף מידע כאשר מעט אנשים זכאים להצביע או מצביעים, התוצאה פה אחד, דפוסי ההצבעה ייחודיים או שהבוחרים חושפים את בחירותיהם.
+    anonymous_votes_stored_separately: הצבעות אנונימיות נשמרות בנפרד מזהות הבוחרים. התוצאות מופיעות רק לאחר סגירת ההצבעה, והבוחרים אינם יכולים להוסיף נימוקים, לבדוק את הצבעתם לאחר ההגשה או לשנות אותה.
     stance_reason_required_when_disagreeing: נדרש כאשר אין הסכמה
+    stance_reason_required_for_disagree_or_block: נדרש עבור אי הסכמה או חסימה
+    stance_reason_required_for_block: נדרש עבור חסימה
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים
@@ -2976,9 +3084,6 @@ he:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: קולות
     candidate: מוּעֲמָד
     round_elected: נבחר בסיבוב
@@ -2988,6 +3093,9 @@ he:
     round_details: פרטים סיבוב אחר סיבוב
     view_full_results: הצג את התוצאות המלאות
     results_available_when_closed: התוצאות יהיו זמינות עם סגירת ההצבעה
+    elected_in_round: נבחר בסיבוב %{round}
+    eliminated_in_round: הודח בסיבוב %{round}
+    tied_in_round: תיקו בסיבוב %{round}
   lock_thread_modal:
     body: נעל שרשורים כדי להסיר אותם מרשימת השרשורים הפתוחים ולמנוע מאנשים להגיב.
     explanation: נעילת שרשורים כדי למנוע מאנשים להגיב או לבצע שינויים נוספים
@@ -3017,3 +3125,48 @@ he:
     nobody_will_be_notified: אף אחד לא יקבל הודעה
     one_person_will_be_notified: אדם אחד יקבל הודעה
     x_people_will_be_notified: "%{count} אנשים יקבלו הודעה"
+  push_notifications:
+    title: התראות דחיפה
+    subtitle: קבל התראות בדפדפן זה
+    not_supported: התראות דחיפה אינן זמינות בדפדפן זה
+    permission_denied: התראות דחיפה חסומות בהגדרות הדפדפן שלך
+    manage_devices: ניהול מכשירי הודעות דחיפה
+    enabled: התראות דחיפה מופעלות עבור דפדפן זה
+    disabled: התראות דחיפה מושבתות עבור דפדפן זה
+    device_removed: מכשיר התראות דחיפה הוסר
+    enable_device: הפעל בדפדפן זה
+    disable_device: השבת בדפדפן זה
+    devices: דפדפנים מופעלים
+    browser_device: דפדפן
+    remove_device: הסר את הדפדפן
+    enable_from_loomio: הפעלת הודעות דחיפה מהגדרות ההתראות כשאתה מחובר ל-Loomio
+    ios_add_to_home_screen_before_enabling: באייפון או אייפד, השתמשו בשיתוף כדי להוסיף את Loomio למסך הבית. פתחו את Loomio מהסמל החדש, לאחר מכן הפעילו כאן התראות דחיפה.
+  group_follow:
+    follow: עקוב אחר עדכונים
+    unfollow: בטל מעקב אחר עדכונים
+    followed: אתה עוקב כעת אחר עדכונים מקבוצה זו
+    unfollowed: אינך עוקב יותר אחר עדכונים מקבוצה זו
+  passkey_settings:
+    title: מפתחות סיסמה
+    helptext: סיסמות מאפשרות לך להיכנס עם המכשיר שלך מבלי להזין את כתובת הדוא"ל או הסיסמה שלך
+    none: לא הוספת סיסמה
+    name: שם המפתח
+    name_placeholder: לדוגמה, מחשב נייד לעבודה
+    add: הוסף סיסמה
+    added: סיסמה נוספת
+    created_at: נוסף %{date}
+    remove_named: הסר את %{name}
+    remove_confirm: להסיר את הסיסמה בשם %{name}?
+    removed: סיסמת הגישה נוסרה
+    remove_failed: לא ניתן היה להסיר את המפתח
+  credential_prompt:
+    title: הוסף דרך נוספת להתחברות
+    helptext: הוסף קוד גישה או קבע סיסמה כדי שתוכל להיכנס מבלי להמתין לקוד שנשלח בדוא"ל
+    add_passkey: הוסף סיסמה
+    set_password: הגדר סיסמה
+    not_now: לא עכשיו
+    passkey_description: מפתח גישה מאפשר לך להתחבר במהירות באמצעות טביעת אצבע, זיהוי פנים או נעילת המסך של המכשיר שלך
+    set_new_password: הגדר סיסמה חדשה
+  account_completion:
+    complete_your_account: השלם את חשבונך
+    continue: לְהַמשִׁיך

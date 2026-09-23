@@ -60,6 +60,7 @@ export default
 
   methods: {
     init() {
+      this.group = null;
       Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
         if (this.group.newHost) { window.location.host = this.group.newHost; }
@@ -122,6 +123,7 @@ v-main
       menu-show-icon
       :menu-actions='menuActions')
     join-group-button(:group='group')
+    group-follow-button(:group='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(

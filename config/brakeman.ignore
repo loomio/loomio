@@ -53,10 +53,6 @@
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/migrate_events_service.rb:29)"
     },
     {
-      "fingerprint": "13647b57bcab05f8b8e9a676489941e3766a5360794c779c69c75ba4fcba99c0",
-      "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/extras/queries/users_by_volume_query.rb:30#self.users_by_volume)"
-    },
-    {
       "fingerprint": "1e978456fc895ece8b2ddec22510126a8ed01de3a999da099138a3d19e8fce46",
       "note": "Baselined 2026-05-21 — refreshed Brakeman fingerprint (SQL Injection @ app/models/group.rb:208#members_by_volume)"
     },
@@ -77,8 +73,8 @@
       "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:370)"
     },
     {
-      "fingerprint": "84f8776861c11b22f82bb4b287c74ba805c4c6360ad50246325e2bc21cd9d499",
-      "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:374)"
+      "fingerprint": "0f26078b37f774f110116889a3db2ee93bf3057821e9d9b8be1700f59e5e9958",
+      "note": "False positive 2026-08-21 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:479)"
     },
     {
       "fingerprint": "021d7026f913f6997626231b957fa3735439209627726fafc3dc88fcbfdc63c8",
@@ -117,7 +113,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 428; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "7fb420e221280b9f840682183b0ce7dcc22f443943c49114e2415011da8568ef",
+      "fingerprint": "745b461ed7cfee9913d6aeef5fcfa6a02d29e1bc29d76cdb219e78340f346bbf",
       "note": "Baselined 2026-06-25 — report_service.rb line 84; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -125,7 +121,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 400; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "975d752ae19a69fea15cbfd053ec80fdf64895fbe7b91eac18cc6cc00884e614",
+      "fingerprint": "41069eafcaaab4e06aa4a334296881617c3147c59975d6b16cce591a3714d385",
       "note": "Baselined 2026-06-25 — report_service.rb line 319; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -169,7 +165,7 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 145; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "e3ebbb4c1924d354c5071af8818f87eac77adf5e3154319dfc3eb9c3e6f6f9dd",
+      "fingerprint": "c02fe153dd4b72789f3f21f55c140386b8c5787ba77f31518bd578171d1fa8a4",
       "note": "Baselined 2026-06-25 — report_service.rb line 415; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
@@ -181,10 +177,18 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 387; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "ffd18dd7beb515ce80aa18e3b80105d6d6f5779098b8bf0de578c8b39e711111",
+      "fingerprint": "511fad2eda6634e8f5a66c1fb00483d8a62a588523678d880ce8c8ae3319438b",
       "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
+    },
+    {
+      "fingerprint": "f4a4793152c8bde7fb33bad9151d6b67f6f8e0911c388cc8363b7e52c5d641c6",
+      "note": "Reviewed 2026-09-07 — refreshed after moving inactive orphan-user cleanup into CleanupService. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/cleanup_service.rb#inactive_orphan_users) Re-reviewed 2026-09-10 after removing retired table references: SQL and trusted identifier sources are unchanged."
+    },
+    {
+      "fingerprint": "8f74c254b8c5a6399b0de5c1b1cb9eedac1affce891bc0eeb11b4d621540f1f4",
+      "note": "Reviewed 2026-09-06 — every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/cleanup_service.rb#with_write_lock) Re-reviewed 2026-09-10 after removing retired table references: SQL and trusted identifier sources are unchanged."
     }
   ],
-  "updated": "2026-06-25",
-  "brakeman_version": "8.0.5"
+  "updated": "2026-09-06",
+  "brakeman_version": "8.0.6"
 }

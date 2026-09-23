@@ -4,11 +4,26 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "24.18.0",
+    "node": "24",
     "npm": "11.16.0"
   },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": "11.16.0",
+      "onFail": "error"
+    }
+  },
+  "scripts": {
+    "test": "node --test *.test.mjs"
+  },
   "dependencies": {
-    "@hocuspocus/server": "^4.4.0",
-    "@sentry/node": "^10.69.0"
+    "@hocuspocus/server": "^4.7.0",
+    "@sentry/node": "^10.75.0"
   }
 }

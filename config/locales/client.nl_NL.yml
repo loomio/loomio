@@ -1,5 +1,10 @@
 ---
 nl_NL:
+  install_app:
+    install_title: "%{site_name} installeren"
+    install_description: Voeg %{site_name} toe aan je beginscherm voor snellere toegang
+    install_button: Installeren
+    ios_install_description: Open in Safari Delen en selecteer Zet op beginscherm
   start_trial:
     title: Start een gratis proefperiode van Loomio
     intro: Bedankt voor uw interesse in Loomio. We bieden u graag een gratis proefperiode van %{day} dagen aan, zodat u kunt zien of Loomio goed bij uw organisatie past.
@@ -188,6 +193,7 @@ nl_NL:
     prefix_eg: bijv. %{val}
     are_you_sure: Weet je het zeker?
     loomio_help: Loomio helpt
+    user_manual: Gebruikershandleiding
     visit_loomio_help: Bezoek Loomio-hulp
     help_and_guides: Hulp & gidsen
     please_wait: Even geduld
@@ -355,11 +361,18 @@ nl_NL:
       flash: Bevestigingse-mail verstuurd!
       helptext_and_signout: Je kunt het account onder <strong>%{sourceEmail}</strong> samenvoegen met dat van <strong>%{targetEmail}</strong> . Klik op 'Verifiëren' en er wordt een verificatiemail naar %{targetEmail} verzonden om het proces te starten. Je wordt uitgelogd, zodat je kunt inloggen met het doelaccount om de samenvoeging te voltooien.
       flash_and_signout: Verificatie-e-mail verzonden naar %{targetEmail}. U bent nu afgemeld, zodat u kunt inloggen met het doelaccount om de samenvoeging te voltooien.
+      generic_helptext: Voer het e-mailadres van het andere account in. Als dat account bestaat, stuurt Loomio er een e-mail met instructies om de samenvoeging te bevestigen.
+      email_label: E-mailadres van een ander account
+      send_verification: Verificatie-e-mail verzenden
+      generic_flash_and_signout: Als een account dat e-mailadres gebruikt, is er een verificatiemail verzonden. Je bent nu uitgelogd, zodat je verder kunt gaan met het andere account.
+      destination_helptext: Dit account (%{sourceEmail}) wordt samengevoegd met het bestemmingsaccount. Voer het e-mailadres van het bestemmingsaccount in. Als het account bestaat, stuurt Loomio een e-mail naar dat adres ter bevestiging van de samenvoeging.
+      destination_email_label: E-mailadres van het bestemmingsaccount
     email_taken: Sorry, dat e-mailadres is al in gebruik door een andere gebruiker. Is dat jouw e-mailadres?
     find_out_more: Meer informatie
     placeholder_modal_text: |
       <p>Indien je twee accounts wil samenvoegen, voeg dan eenvoudigweg het respectievelijke emailadres (behorend tot de andere account) in je Profiel pagina emailveld, en vol de instructies die verschijnen.</p>
       <p>Hulp nodig? <a href="/contact" target="_blank">Contacteer ons</a>.
+    email_may_belong_to_another_account: Als dit adres bij een ander account hoort, kunt u de accounts samenvoegen.
   emoji_picker:
     search: Zoek
     common: Vaak gebruikt
@@ -435,6 +448,14 @@ nl_NL:
     title_label: Titel
     hint: 'Tip voor de volgende keer: Probeer wat tekst te selecteren voor je op "Pin" klikt.'
   change_volume_form:
+    context_title:
+      thread: Instellingen voor threadmeldingen
+      group: Groepsmeldingsinstellingen
+      default: Standaard meldingsinstellingen
+    context:
+      thread: deze thread
+      group: deze groep
+      default: groepen waar je lid van wordt
     explain_scope:
       thread: Dit veranderd zodra je een melding krijgt over dit bord
       group: Dit veranderd zodra je een melding krijgt over alle borden in de groep
@@ -517,6 +538,36 @@ nl_NL:
     normal_option: Wanneer iemand mijn aandacht nodig heeft (wanneer ik een melding ontvang)
     quiet_option: Geen e-mails over dit onderwerp (Uitgeschakeld)
     quiet_explained: Je ontvangt geen e-mail, zelfs niet wanneer iemand probeert je op de hoogte te stellen.
+    volume_email_label: E-mail
+    all_activity_option: Alle activiteiten
+    when_notified_option: Wanneer je een melding krijgt
+    muted_option: Gedempt
+    volume_channel_label: Hoe wil je op de hoogte blijven?
+    email_channel: E-mail
+    email_and_push_channel: E-mail en push
+    off_option: Uit
+    apply_to_all_threads_in_group: Pas deze instellingen toe op alle threads in %{group}
+    volume_push_label: Push
+    delivery_method: Leveringsmethode
+    how_do_you_want_to_stay_updated: Hoe wil je op de hoogte blijven?
+    catch_up_daily_hint: Je 'catch-up' is een dagelijkse e-mail met ongelezen meldingen en ongelezen activiteiten.
+    catch_up_every_second_day_hint: Je 'catch-up' is een e-mail die je om de twee dagen ontvangt met ongelezen meldingen en informatie over ongelezen activiteiten.
+    catch_up_weekly_hint: Je ontvangt wekelijks een e-mail met een overzicht van ongelezen meldingen en activiteiten die je nog niet hebt gezien.
+    catch_up_only_option: Alleen inhalen
+    no_email_updates_option: Geen e-mailupdates
+    no_push_updates_option: Geen push-updates
+    in_app_only_option: Alleen beschikbaar via de app
+    catch_up_only_description: Neem de activiteit van %{context} op in mijn inhaaloverzicht.
+    catch_up_only_with_notifications_description: Neem meldingen en andere activiteiten van %{context} op in mijn overzicht.
+    no_email_updates_description: Stuur me geen e-mails over activiteiten in %{context}
+    no_push_updates_description: Verzend geen pushmeldingen over activiteit in %{context}
+    email_when_notified_description: Stuur me een e-mail zodra ik een melding heb ontvangen.
+    email_when_notified_with_catch_up_description: Stuur me een e-mail zodra ik bericht krijg, en voeg de rest toe aan mijn inhaalbericht.
+    push_when_notified_description: Stuur een pushmelding wanneer ik een melding ontvang.
+    push_when_notified_with_catch_up_description: Stuur me een pushmelding wanneer ik een bericht ontvang en voeg de rest toe aan mijn update.
+    email_all_activity_description: Stuur me een e-mail zodra er activiteit is in %{context}.
+    push_all_activity_description: Verzend een pushmelding wanneer er activiteit is in %{context}.
+    push_channel: Push
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -622,6 +673,16 @@ nl_NL:
     email_notifications: E-mail wanneer ik een melding ontvang
     email_none: Geen e-mails
     new_to_you: Nieuw voor jou
+    email_and_push_when_notified: E-mail en pushmelding wanneer je een melding ontvangt
+    email_when_notified: E-mail wanneer je een melding ontvangt
+    push_when_notified: Pushmelding wanneer je een melding ontvangt
+    daily_catch_up_email: Dagelijkse samenvattingsmail
+    in_app_only: Alleen in de app
+    email_and_device_when_notified: E-mail- en apparaatmeldingen wanneer je een melding ontvangt
+    device_notification_when_notified: Apparaatmelding wanneer je een melding ontvangt
+    no_notifications: Geen meldingen
+    catch_up_email_every_second_day: Samenvattingsmail om de dag
+    weekly_catch_up_email: Wekelijkse samenvattingsmail
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst
@@ -681,6 +742,7 @@ nl_NL:
     light_blue: Lichtblauw
     dark_blue: Donkerblauw
     whats_new: Wat is er nieuw?
+    mobile_app_settings: Mobiele instellingen
   membership_card:
     group_members: Groepsleden
     poll_members: "%{pollType} gebruikers"
@@ -757,6 +819,7 @@ nl_NL:
       new_discussion: "%{actor} startte een discussie: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -795,6 +858,7 @@ nl_NL:
       new_comment: "%{actor} heeft gereageerd in een discussie"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       thread_locked: "%{actor} heeft de thread vergrendeld"
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -839,6 +903,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
+      membership_request_declined: Je verzoek om lid te worden van %{title} is afgewezen
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -936,7 +1001,7 @@ nl_NL:
     audiences:
       group: Leden van %{name}
       everyone_in_the_group: Iedereen in de groep
-      discussion_group: Iedereen in het bord
+      topic: Iedereen in het bord
       voters: Iedereen die uitgenodigd is om te stemmen
       decided_voters: Iedereen die gestemd heeft
       undecided_voters: Twijfelende stemmers
@@ -1173,6 +1238,8 @@ nl_NL:
     membership_requested: Lidmaatschap aangevraagd
     messages:
       joined_group: Je bent nu lid van %{group}
+    membership_request_declined: 'Je verzoek om lid te worden is afgewezen: %{reason}'
+    request_membership_again: Vraag om opnieuw lid te worden
   membership_request_form:
     heading: Vraag om lid te worden van de groep
     name_label: Naam
@@ -1217,6 +1284,8 @@ nl_NL:
     body: Weet u zeker dat u deze subgroep wilt verwijderen? Alle threads, polls, bestanden en andere groepsinhoud worden permanent verwijderd. Het wordt aanbevolen dat u de groepsgegevens exporteert en handmatig belangrijke bestanden downloadt voordat u doorgaat.
     confirm: Type '%{name}' om te bevestigen dat je groep wilt verwijderen.
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
+    scheduled_for_deletion: Deze groep zal over 2 weken definitief worden verwijderd.
+    deletion_after_grace_period: Deze groep is niet beschikbaar en wordt na %{days} dagen definitief verwijderd
   group_page:
     stats: Groep statistieken
     threads: Borden
@@ -1424,7 +1493,7 @@ nl_NL:
     remove_background: achtergrond verwijderen
     remove_logo: logo verwijderen
     members_can_create_templates: Leden kunnen sjablonen maken.
-    members_can_create_templates_help: Sta leden toe om sjablonen voor discussies en enquêtes te maken. Door leden gemaakte sjablonen blijven verborgen totdat een beheerder ze weer zichtbaar maakt.
+    members_can_create_discussion_and_poll_templates_help: Sta leden toe om sjablonen voor discussies en enquêtes te maken
     members_can_start_discussions_v2: Leden kunnen nieuwe discussies starten.
     members_can_start_discussions_help_v2: Sta leden toe om nieuwe discussies binnen de groep te starten.
     members_can_edit_discussions_v2: Leden kunnen discussies en reacties beheren.
@@ -1433,6 +1502,8 @@ nl_NL:
     handle_changed_hint: Je vorige URL en e-mailadres worden doorverwezen naar je nieuwe adres.
     members_can_create_tags: Leden kunnen tags aanmaken.
     members_can_create_tags_help: Sta leden toe om nieuwe tags aan te maken bij het taggen van discussies en enquêtes.
+    non_members_can_start_discussions: Niet-leden kunnen discussies starten
+    non_members_can_start_discussions_help: Sta niet-leden toe om een discussie te starten via een van de sjablonen van deze groep
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1461,6 +1532,11 @@ nl_NL:
     messages:
       request_approved_success: Lidmaatschapsverzoek goedgekeurd
       request_ignored_success: Lidmaatschapsverzoek genegeerd
+      request_declined_success: Lidmaatschapsverzoek afgewezen
+    decline: Afwijzen
+    decline_request: Verzoek om lidmaatschap afwijzen
+    decline_reason: Reden voor afwijzing
+    decline_help: Bij 'Afwijzen' wordt de reden voor de afwijzing per e-mail naar de aanvrager gestuurd. De aanvrager kan vervolgens een nieuwe aanvraag indienen. Bij 'Negeren' wordt de aanvraag gesloten zonder de aanvrager hiervan op de hoogte te stellen.
   invitation_form:
     group_url: Groep URL
     reusable_invitation_link: Herbruikbare uitnodigingslink
@@ -1549,6 +1625,8 @@ nl_NL:
     online_field: 'Online: %{value}'
     invited: Uitgenodigd %{value}
     message_user: Bericht %{name}
+    recent_activity: Recente activiteit
+    no_recent_activity: Geen recente activiteit
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Stel jezelf voor en vertel waarom je graag contact zou maken.
@@ -1639,8 +1717,7 @@ nl_NL:
     email_newsletter: Loomio Nieuwsbrief
     email_newsletter_description: Ontvang updates over nieuwe features, training, evenementen in jouw stad en de toekomst van Loomio. Meestal 2 of 3 e-mails per jaar.
     email_catch_up_day: Inhaaloverzicht e-mail
-    on_participation_label: Abonneer op deelname
-    on_participation_description: Als je deelneemt aan een bord, wordt alle verdere activiteit direct naar je gemaild.
+    digest_email: Inhaaloverzicht e-mail
     announcement_label: Aankondigingen
     announcement_description: Je zult een e-mail ontvangen over alle inhoud die door personen werden aangekondigd in jouw groepen.
     mentioned_label: Vermeldingen & Antwoorden
@@ -1656,8 +1733,14 @@ nl_NL:
     learn_more: Leer meer over e-mailinstellingen...
     mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
     daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
+    digest_email_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
     never: Nooit
     send_email: E-mail verzenden
+    group_notifications: Groepsmeldingen
+    group_notifications_description: Wijzig het activiteitsniveau en het kanaal voor je groepen
+    choose_email_and_push_updates: Kies aparte instellingen voor e-mail en pushmeldingen.
+    catch_up_email: Samenvattingsmail
+    catch_up_email_description: Kies wanneer je een overzicht wilt ontvangen van ongelezen meldingen en activiteiten.
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
@@ -1763,7 +1846,7 @@ nl_NL:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
     disabled_anonymous_polls: Kijkgeschiedenis is uitgeschakeld omdat thread anonieme opiniepeilingen bevat
-    thread_engagement: Threadbetrokkenheid
+    thread_engagement: Betrokkenheid bij de discussie
   activity_card:
     count_responses: "%{count} reacties"
     beginning: Eerste
@@ -2084,6 +2167,7 @@ nl_NL:
     order_by_created_desc: Nieuwste
     order_by_admin_desc: Admins
     loaded_of_total: "%{loaded} van %{total}"
+    topics_loaded_of_total: "%{loaded} van %{total}"
     view_requests: Bekijk aanvragen
     header_name: Naam
     header_username: Gebruikersnaam
@@ -2148,7 +2232,6 @@ nl_NL:
     voting_opens_at: Deze %{poll_type} opent voor stemming %{time}
     unable_to_vote: U bent niet uitgenodigd om te stemmen over deze %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Anonieme stemmen worden apart van de identiteit van de kiezers opgeslagen. De resultaten worden bekendgemaakt nadat de stemming is gesloten.
-    legacy_anonymous_voting_format: Deze peiling maakt gebruik van het traditionele anonieme stemformaat.
     anonymous_vote_cannot_be_changed: Je kunt je stem niet meer herzien of wijzigen nadat je deze hebt uitgebracht.
     anonymous_vote_recorded: Je stem is geregistreerd
     legacy_vote_reasons: Redenen bij eerdere stemmen
@@ -2407,7 +2490,6 @@ nl_NL:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread verplaatst van <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad gesloten"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad opnieuw geopend"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een fork van deze thread gemaakt: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een uitkomst gedeeld"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} heropend"
@@ -2440,6 +2522,7 @@ nl_NL:
     sign_up_as: Maak account als %{email}
     sign_in_as: Log in als %{name}
     continue_with_provider: Doorgaan met %{provider}
+    sign_in_with_provider: Inloggen met %{provider}
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
@@ -2498,6 +2581,22 @@ nl_NL:
     invalid_login: Het lukt niet om u met deze gegevens in te loggen.
     login_link_rate_limited: Er zijn te veel aanmeldings-e-mailadressen aangevraagd vanuit dit netwerk. Wacht een uur en probeer het opnieuw.
     send_login_link_error: Er is iets misgegaan bij het verzenden van de inlogmail. Probeer het opnieuw.
+    sign_in_with_passkey: Aanmelden met een passkey
+    passkey_authentication_failed: We konden je niet aanmelden met die passkey
+    passkey_registration_failed: We konden die passkey niet opslaan
+    passkey_default_name: Passkey
+    local_login_disabled: Deze site vereist eenmalige aanmelding
+    email_me_a_sign_in_code: Stuur me een inlogcode via e-mail
+    sign_in_with_code: Aanmelden met een code
+    new_to_site: Ben je hier nieuw?
+    passkey_recent_authentication_required: Meld je opnieuw aan voordat je jouw passkeys wijzigt
+    email_code_help: Voer je e-mailadres in en we sturen je een zescijferige inlogcode
+    or_sign_in_with_password: Of meld je aan met een wachtwoord
+    login_link_sent_if_account_exists: Als er een account bestaat voor %{email}, sturen we een inlogcode
+    use_a_passkey: Gebruik een passkey
+    send_me_a_code: Stuur me een code
+    email_code_help_short: We sturen een zescijferige code naar je e-mailadres
+    login_link_sent_if_account_exists_sentence: Als er een account bestaat voor %{email}, sturen we een inlogcode.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
@@ -2641,6 +2740,14 @@ nl_NL:
     tags_per_interval: Tags per %{interval}
     all_groups_and_direct_threads: Alle groepen en directe discussies
     custom_selection: Aangepaste selectie
+    all_votes_cast: Alle uitgebrachte stemmen
+    votes_cast: Uitgebrachte stemmen
+    votes_issued: Toegewezen stemmen
+    votes_missed: Stemmen gemist
+    voting_record_per_user: Stemgeschiedenis per gebruiker
+    yes_label: Ja
+    no_label: Nee
+    delegates_only: Alleen voor afgevaardigden
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag
@@ -2712,8 +2819,6 @@ nl_NL:
     anonymous:
       title: Anonieme kiezers
       helptext_on: Als u deze optie selecteert, worden de deelnemersgegevens niet bij elk antwoord weergegeven.
-    voter_can_add_options:
-      title: Kiezers kunnen alternatieve opties toevoegen
     can_respond_maybe:
       title: Kiezers kunnen reageren "indien nodig"
     allow_long_reason:
@@ -2840,7 +2945,10 @@ nl_NL:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonieme stemmen worden apart van de identiteit van de kiezers opgeslagen. De resultaten worden bekendgemaakt nadat de stemming is gesloten. Kiezers kunnen geen redenen toevoegen, hun stem na het indienen ervan herzien of hun stem wijzigen.
     anonymous_voting_explanation: Maak het onmogelijk om te weten hoe iemand heeft gestemd. Anonieme stemmen worden apart van de identiteit van de kiezer geregistreerd. De uitslag wordt pas na sluiting van de stembus bekendgemaakt. Kiezers kunnen geen reden toevoegen, hun stem na het uitbrengen niet herzien en hun stem niet wijzigen.
     anonymous_voting_risk_explanation: Anonieme stemmen worden apart van de identiteit van de stemmers opgeslagen. Resultaten worden pas na het sluiten van de stemming getoond en stemmers kunnen geen redenen toevoegen, hun stem na het indienen bekijken of deze wijzigen. Deze maatregelen verkleinen het risico dat een persoon aan een stem wordt gekoppeld, maar resultaten kunnen nog steeds informatie prijsgeven wanneer weinig mensen stemgerechtigd zijn of stemmen, de uitslag unaniem is, stempatronen opvallend zijn of stemmers hun keuzes bekendmaken.
+    anonymous_votes_stored_separately: Anonieme stemmen worden apart van de identiteit van de stemmers opgeslagen. Resultaten worden pas na het sluiten van de stemming getoond en stemmers kunnen geen redenen toevoegen, hun stem na het indienen bekijken of deze wijzigen.
     stance_reason_required_when_disagreeing: Vereist bij meningsverschillen
+    stance_reason_required_for_disagree_or_block: Vereist om niet akkoord te gaan of te blokkeren
+    stance_reason_required_for_block: Vereist bij blokkeren
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     verify_participants: Deelnemers verifiëren
@@ -2984,9 +3092,6 @@ nl_NL:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: stemmen
     candidate: Kandidaat
     round_elected: Ronde gekozen
@@ -2996,6 +3101,9 @@ nl_NL:
     round_details: Details per ronde
     view_full_results: Bekijk de volledige resultaten
     results_available_when_closed: De uitslagen worden bekendgemaakt zodra de stemming is gesloten.
+    elected_in_round: Gekozen in ronde %{round}
+    eliminated_in_round: Uitgeschakeld in ronde %{round}
+    tied_in_round: Gelijkspel in ronde %{round}
   lock_thread_modal:
     body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.
     explanation: Vergrendel discussies om te voorkomen dat mensen reageren of verdere wijzigingen aanbrengen.
@@ -3025,3 +3133,48 @@ nl_NL:
     nobody_will_be_notified: Niemand zal op de hoogte worden gesteld
     one_person_will_be_notified: 1 persoon wordt op de hoogte gesteld
     x_people_will_be_notified: "%{count} personen zullen op de hoogte worden gesteld"
+  push_notifications:
+    title: Pushmeldingen
+    subtitle: Ontvang meldingen in deze browser
+    not_supported: Pushmeldingen zijn niet beschikbaar in deze browser
+    permission_denied: Pushmeldingen zijn geblokkeerd in je browserinstellingen
+    manage_devices: Pushnotificatieapparaten beheren
+    enabled: Pushmeldingen zijn ingeschakeld voor deze browser
+    disabled: Pushmeldingen zijn voor deze browser uitgeschakeld
+    device_removed: Pushnotificatieapparaat verwijderd
+    enable_device: Inschakelen in deze browser
+    disable_device: Uitschakelen in deze browser
+    devices: Ingeschakelde browsers
+    browser_device: Browser
+    remove_device: Browser verwijderen
+    enable_from_loomio: Schakel pushmeldingen in via de meldingsinstellingen terwijl je bent ingelogd bij Loomio
+    ios_add_to_home_screen_before_enabling: Gebruik op je iPhone of iPad de deelfunctie om Loomio aan je startscherm toe te voegen. Open Loomio via het nieuwe pictogram en schakel hier pushmeldingen in.
+  group_follow:
+    follow: Volg de updates
+    unfollow: Updates ontvolgen
+    followed: Je volgt nu updates van deze groep
+    unfollowed: Je ontvangt geen updates meer van deze groep
+  passkey_settings:
+    title: Passkeys
+    helptext: Met passkeys kun je inloggen met je apparaat zonder je e-mailadres of wachtwoord in te voeren
+    none: Je hebt geen passkey toegevoegd
+    name: Naam van passkey
+    name_placeholder: Bijvoorbeeld werklaptop
+    add: Passkey toevoegen
+    added: Passkey toegevoegd
+    created_at: Toegevoegd %{date}
+    remove_named: Verwijder %{name}
+    remove_confirm: Passkey met de naam %{name} verwijderen?
+    removed: Passkey verwijderd
+    remove_failed: Passkey kon niet worden verwijderd
+  credential_prompt:
+    title: Voeg een extra manier toe om in te loggen
+    helptext: Voeg een passkey toe of stel een wachtwoord in, zodat je kunt inloggen zonder op een code per e-mail te wachten
+    add_passkey: Passkey toevoegen
+    set_password: Stel een wachtwoord in
+    not_now: Nu niet
+    passkey_description: Met een passkey log je snel in met je vingerafdruk, gezichtsherkenning of de schermvergrendeling van je apparaat
+    set_new_password: Stel een nieuw wachtwoord in
+  account_completion:
+    complete_your_account: Voltooi je account
+    continue: Doorgaan

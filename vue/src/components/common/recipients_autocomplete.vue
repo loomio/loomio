@@ -79,6 +79,10 @@ export default {
   },
 
   methods: {
+    isDelegate(user) {
+      const group = this.model.isA('group') ? this.model : this.model.group();
+      return Boolean(user && group && user.delegates && user.delegates[group.id]);
+    },
     updateQuery(q) {
       this.query = q
       this.fetchAndUpdateSuggestions();
@@ -123,11 +127,19 @@ export default {
     },
 
     fetchAvailableAudiences() {
+      const targetParams = this.model.bestNamedId();
+      if (!Object.keys(targetParams).length) {
+        this.availableAudiences = [];
+        this.updateSuggestions();
+        return;
+      }
+
       Records.fetch({
         path: 'announcements/available_audiences',
         params: {
           include_actor: (this.includeActor && 1) || null,
-          ...this.model.bestNamedId()
+          exclude_members: (this.excludeMembers && 1) || null,
+          ...targetParams
         }
       }).then(data => {
         this.availableAudiences = data.audiences || [];
@@ -202,8 +214,8 @@ export default {
           return this.$t('announcement.audiences.group', {name: audience.name});
         case 'delegates':
           return this.$t('announcement.audiences.delegates_of_group', {name: audience.name});
-        case 'discussion_group':
-          return this.$t('announcement.audiences.discussion_group');
+        case 'topic':
+          return this.$t('announcement.audiences.topic');
         case 'voters':
           return this.$t('announcement.audiences.voters');
         case 'decided_voters':
@@ -347,6 +359,13 @@ div.recipients-autocomplete
             :size="24" no-link)
           common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
         span {{ internalItem.title }}
+        v-chip.ml-2(
+          v-if="internalItem.raw.type == 'user' && isDelegate(internalItem.raw.user)"
+          variant="tonal"
+          size="x-small"
+          label
+          :title="$t('members_panel.delegate_popover')")
+          | {{ $t('members_panel.delegate') }}
         span(v-if="internalItem.raw.type == 'user' && currentUserId == internalItem.value")
           space
           span ({{ $t('common.you') }})
@@ -355,6 +374,14 @@ div.recipients-autocomplete
         template(v-slot:prepend)
           user-avatar.mr-2(v-if="internalItem.raw.type == 'user'" :user="internalItem.raw.user" no-link)
           common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
+        template(v-slot:append)
+          v-chip(
+            v-if="internalItem.raw.type == 'user' && isDelegate(internalItem.raw.user)"
+            variant="tonal"
+            size="x-small"
+            label
+            :title="$t('members_panel.delegate_popover')")
+            | {{ $t('members_panel.delegate') }}
         //- v-list-item-title
         //-   span {{props}}
         //-   span {{internalItem.raw.name}}

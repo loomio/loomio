@@ -14,6 +14,7 @@ module Dev::Scenarios::Auth
     user = User.create(email: 'existing-user@example.com',
                        name: 'existing user',
                        email_verified: true,
+                       legal_accepted: true,
                        password: 'veryeasytoguess123')
 
     GroupService.invite(
@@ -35,6 +36,7 @@ module Dev::Scenarios::Auth
     user = User.create(email: 'existing-user@example.com',
                        name: 'existing user',
                        email_verified: true,
+                       legal_accepted: true,
                        password: 'veryeasytoguess123')
 
     params = {recipient_emails: ['existing-user@example.com'], recipient_message: "hi, please join our sweet group!"}
@@ -93,7 +95,53 @@ module Dev::Scenarios::Auth
     user = User.create!(
       email: 'no-password@example.com',
       name: 'No Password',
-      email_verified: true
+      email_verified: true,
+      legal_accepted: true,
+      experiences: {
+        'credentialPromptDismissed' => true,
+        'passwordPromptDismissed' => true,
+        'passkeyPromptDismissed' => true
+      }
+    )
+    redirect_to dashboard_path
+  end
+
+  def setup_login_token_user_with_password
+    User.create!(
+      email: 'password-user@example.com',
+      name: 'Password User',
+      email_verified: true,
+      legal_accepted: true,
+      password: 'veryeasytoguess123'
+    )
+    redirect_to dashboard_path
+  end
+
+  def setup_returning_user_without_legal_acceptance
+    User.create!(
+      email: 'returning-no-terms@example.com',
+      name: 'Returning Person',
+      email_verified: true,
+      current_sign_in_at: 1.week.ago,
+      password: 'veryeasytoguess123'
+    )
+    redirect_to dashboard_path
+  end
+
+  def setup_login_token_user_with_passkey
+    user = User.create!(
+      email: 'passkey-user@example.com',
+      name: 'Passkey User',
+      email_verified: true,
+      legal_accepted: true
+    )
+    PasskeyService.ensure_webauthn_id!(user)
+    user.passkey_credentials.create!(
+      external_id: SecureRandom.urlsafe_base64,
+      public_key: 'test-public-key',
+      user_handle: user.webauthn_id,
+      sign_count: 0,
+      name: 'Test passkey'
     )
     redirect_to dashboard_path
   end

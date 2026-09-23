@@ -1,5 +1,10 @@
 ---
 tr:
+  install_app:
+    install_title: "%{site_name} uygulamasını yükle"
+    install_description: Daha hızlı erişmek için %{site_name} uygulamasını ana ekranınıza ekleyin
+    install_button: Yükle
+    ios_install_description: Safari'de Paylaş'ı açın ve Ana Ekrana Ekle'yi seçin
   start_trial:
     title: Loomio'nun ücretsiz deneme sürümünü başlatın
     intro: Loomio'ya gösterdiğiniz ilgi için teşekkür ederiz. Loomio'nun kuruluşunuza uygun olup olmadığını görebilmeniz için size %{day} günlük ücretsiz deneme olanağı sunmaktan mutluluk duyuyoruz.
@@ -188,6 +193,7 @@ tr:
     prefix_eg: örneğin %{val}
     are_you_sure: Emin misin?
     loomio_help: Loomio yardımı
+    user_manual: Kullanıcı kılavuzu
     visit_loomio_help: Loomio yardımını ziyaret edin
     help_and_guides: Yardım ve kılavuzlar
     please_wait: Lütfen bekleyin
@@ -355,9 +361,16 @@ tr:
       flash: Doğrulama e-postası gönderildi!
       helptext_and_signout: "<strong>%{sourceEmail}</strong> altındaki hesabı <strong>%{targetEmail}</strong> hesabına birleştirebilirsiniz. Doğrula'ya tıklayın ve işlemi başlatmak için %{targetEmail} adresine bir doğrulama e-postası gönderilecektir. Birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilmeniz için oturumunuz kapatılacaktır."
       flash_and_signout: Doğrulama e-postası %{targetEmail} adresine gönderildi. Artık oturumunuz kapatıldı, birleştirmeyi tamamlamak için hedef hesap olarak oturum açabilirsiniz.
+      generic_helptext: Diğer hesabın e-posta adresini girin. Eğer bu hesap mevcutsa, Loomio birleştirmeyi onaylamak için talimatlar içeren bir e-posta gönderecektir.
+      email_label: Diğer hesap e-postası
+      send_verification: Doğrulama e-postası gönder
+      generic_flash_and_signout: Eğer bir hesap bu e-posta adresini kullanıyorsa, bir doğrulama e-postası gönderilmiştir. Artık oturumunuz kapatıldı, böylece diğer hesabınızla devam edebilirsiniz.
+      destination_helptext: Bu hesap (%{sourceEmail}) hedef hesaba birleştirilecektir. Hedef hesabın e-posta adresini girin. Eğer mevcutsa, Loomio birleştirmeyi onaylamak için bu adrese bir e-posta gönderecektir.
+      destination_email_label: Hedef hesap e-postası
     email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
     find_out_more: Daha fazla bilgi.
     placeholder_modal_text: <p>İki hesabı birleştirmek istiyorsanız, ilgili e-posta adresini (diğer hesaba ait olan) Profil sayfanızın e-posta alanına girmeniz ve görüntülenen talimatları izlemeniz yeterlidir.</p><p> Yardıma mı ihtiyacınız var? <a href="/contact" target="_blank">Bizimle iletişime geçin</a> .
+    email_may_belong_to_another_account: Bu adres başka bir hesaba aitse, hesapları birleştirebilirsiniz.
   emoji_picker:
     search: Arama
     common: Sıklıkla kullanılan
@@ -433,18 +446,26 @@ tr:
     title_label: Başlık
     hint: 'Bir sonraki sefer için ipucu: "Sabitle"ye tıklamadan önce bir metni vurgulamayı deneyin.'
   change_volume_form:
+    context_title:
+      thread: Konu bildirim ayarları
+      group: Grup bildirim ayarları
+      default: Varsayılan bildirim ayarları
+    context:
+      thread: bu konu
+      group: bu grup
+      default: katıldığınız gruplar
     explain_scope:
       thread: Bu konu hakkında bilgilendirileceğiniz zaman bu durum değişir
       group: Bu durum, gruptaki tüm ileti dizileri hakkında bilgilendirildiğinizde değişir
     simple:
       label: Bildirimler
       loud: Abone olundu
-      normal: Normal
       quiet: Yok say
       question: Ne zaman bilgilendirilmek istiyorsunuz?
       loud_explain: ne zaman aktivite olsa
       normal_explain: birisi ilginizi istediğinde
       quiet_explain: bildirim yok
+      normal: Normal
     loud_label: Tüm aktiviteler
     normal_label: Duyurular
     quiet_label: E-posta yok
@@ -515,6 +536,36 @@ tr:
     normal_option: Birisi dikkatimi istediğinde (bildirim aldığında)
     quiet_option: Bu konuyla ilgili e-posta yok (Kapalı)
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir.
+    volume_email_label: E-posta
+    volume_push_label: Push
+    all_activity_option: Tüm faaliyetler
+    when_notified_option: Bildirildiğinde
+    muted_option: Sessiz
+    volume_channel_label: Sizi nasıl bilgilendirmeliyiz?
+    email_channel: E-posta
+    push_channel: Push
+    email_and_push_channel: E-posta ve bildirimler
+    off_option: Kapalı
+    apply_to_all_threads_in_group: Bu ayarları %{group} içindeki tüm konulara uygula
+    delivery_method: Teslimat yöntemi
+    how_do_you_want_to_stay_updated: Güncel kalmak için ne yapmak istersiniz?
+    catch_up_daily_hint: Günlük özetiniz, okunmamış bildirimler ve etkinlikler hakkında bilgi içeren bir e-postadır.
+    catch_up_every_second_day_hint: Size gönderilen özet e-postada, görüntülenmemiş bildirimler ve okunmamış etkinlikler yer almaktadır.
+    catch_up_weekly_hint: Özetiniz, okunmamış bildirimler ve değerlendirilmemiş etkinlikler içeren haftalık bir e-postadır.
+    catch_up_only_option: Sadece geçmişe dönük izleme
+    no_email_updates_option: E-posta güncellemeleri yok.
+    no_push_updates_option: Bildirim yok
+    in_app_only_option: Sadece uygulama içinde
+    catch_up_only_description: "%{context}'ten gelen etkinlikleri takip listeme dahil et."
+    catch_up_only_with_notifications_description: "%{context} adresinden gelen bildirimleri ve diğer etkinlikleri özet bilgilerime dahil et."
+    no_email_updates_description: "%{context} içindeki etkinliklerle ilgili bana e-posta göndermeyin."
+    no_push_updates_description: "%{context} içindeki etkinlikler hakkında anlık bildirim göndermeyin."
+    email_when_notified_description: Bildirim aldığımda bana e-posta gönder.
+    email_when_notified_with_catch_up_description: Bildirim aldığımda bana e-posta gönderin ve geri kalanını da özetime ekleyin.
+    push_when_notified_description: Bana bildirim geldiğinde anlık bildirim gönder
+    push_when_notified_with_catch_up_description: Bildirim aldığımda anlık bildirim gönder, geri kalanını ise özet bildirimime dahil et.
+    email_all_activity_description: "%{context} içinde herhangi bir etkinlik olduğunda bana e-posta gönder."
+    push_all_activity_description: "%{context} içinde herhangi bir etkinlik olduğunda anlık bildirim gönder"
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -620,6 +671,16 @@ tr:
     email_notifications: Bildirim aldığımda e-posta gönder
     email_none: E-posta yok
     new_to_you: Sizin için yeni
+    email_and_push_when_notified: Bildirim aldığında e-posta ve anlık bildirim
+    email_when_notified: Bildirim aldığında e-posta
+    push_when_notified: Bildirim aldığında anlık bildirim
+    daily_catch_up_email: Günlük özet e-postası
+    in_app_only: Sadece uygulama içinde
+    email_and_device_when_notified: Bildirim aldığında e-posta ve cihaz bildirimi
+    device_notification_when_notified: Bildirim aldığında cihaz bildirimi
+    no_notifications: Bildirim yok
+    catch_up_email_every_second_day: İki günde bir özet e-postası
+    weekly_catch_up_email: Haftalık özet e-postası
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme
@@ -679,6 +740,7 @@ tr:
     light_blue: Açık mavi
     dark_blue: Koyu mavi
     whats_new: Ne var ne yok
+    mobile_app_settings: Mobil ayarlar
   membership_card:
     group_members: Grup üyeleri
     poll_members: "%{pollType} üye"
@@ -755,6 +817,7 @@ tr:
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
       thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -793,6 +856,7 @@ tr:
       new_comment: "%{actor} bir tartışmada yorum yaptı"
       outcome_updated: "%{actor} sonucu güncelledi"
       thread_locked: "%{actor} konuyu kilitledi"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -837,6 +901,7 @@ tr:
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
       thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
+      membership_request_declined: "%{title}'a katılma isteğiniz reddedildi"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -934,7 +999,7 @@ tr:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Gruptaki herkes
-      discussion_group: Konudaki herkes
+      topic: Konudaki herkes
       voters: Herkes oy kullanmaya davet edildi
       decided_voters: Oy veren herkes
       undecided_voters: Kararsız seçmen
@@ -1167,6 +1232,8 @@ tr:
     membership_requested: Üyelik talep edildi
     messages:
       joined_group: Şu an %{group} grubunun bir üyesisin.
+    membership_request_declined: 'Katılma isteğiniz reddedildi: %{reason}'
+    request_membership_again: Tekrar katılmak için talepte bulunun
   membership_request_form:
     heading: Gruba katılmak için talep gönder
     name_label: İsim
@@ -1211,6 +1278,8 @@ tr:
     body: Bu alt grubu silmek istediğinizden emin misiniz? Tüm konular, anketler, dosyalar ve diğer grup içerikleri kalıcı olarak silinecektir. Devam etmeden önce grup verilerini dışa aktarmanız ve önemli dosyaları manuel olarak indirmeniz önerilir.
     confirm: Bu grubu silmek istediğinizi onaylamak için '%{name}' yazın.
     success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
+    scheduled_for_deletion: Bu grubun 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
+    deletion_after_grace_period: Bu grup kullanılamıyor ve %{days} gün sonra kalıcı olarak silinecek
   group_page:
     stats: Grup istatistikleri
     threads: Müzakereler
@@ -1418,7 +1487,7 @@ tr:
     remove_background: arka planı kaldır
     remove_logo: logoyu kaldır
     members_can_create_templates: Üyeler şablon oluşturabilirler.
-    members_can_create_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin. Üyeler tarafından oluşturulan şablonlar, bir yönetici tarafından görünür hale getirilene kadar gizli kalacaktır.
+    members_can_create_discussion_and_poll_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin
     members_can_start_discussions_v2: Üyeler yeni tartışmalar başlatabilirler.
     members_can_start_discussions_help_v2: Üyelerin grup içinde yeni tartışmalar başlatmasına izin verin.
     members_can_edit_discussions_v2: Üyeler tartışmaları ve yorumları yönetebilirler.
@@ -1427,6 +1496,8 @@ tr:
     handle_changed_hint: Önceki URL'niz ve e-posta adresiniz yeni adresinize yönlendirilecektir.
     members_can_create_tags: Üyeler etiket oluşturabilir.
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
+    non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
+    non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1447,6 +1518,11 @@ tr:
     messages:
       request_approved_success: Üyelik talebi onaylandı
       request_ignored_success: Üyelik talebi yok sayıldı.
+      request_declined_success: Üyelik talebi reddedildi.
+    decline: Reddetmek
+    decline_request: Üyelik talebini reddet
+    decline_reason: Reddedilme nedeni
+    decline_help: Reddet seçeneği, gerekçenizi başvuru sahibine e-posta yoluyla iletir. Başvuru sahibi yeni bir talep gönderebilir. Yoksay seçeneği ise başvuru sahibine bildirimde bulunmadan talebi kapatır.
   invitation_form:
     group_url: Grup URL'si
     reusable_invitation_link: Yeniden kullanılabilir davetiye bağlantısı
@@ -1535,6 +1611,8 @@ tr:
     online_field: 'Çevrimiçi: %{value}'
     invited: Davet edildi %{value}
     message_user: Mesaj %{name}
+    recent_activity: Son etkinlikler
+    no_recent_activity: Son zamanlarda herhangi bir aktivite yok
   contact_request_form:
     modal_title: "%{name}'a e-posta gönderin"
     message_placeholder: Kendinizi tanıtın ve neden iletişim kurmak istediğinizi paylaşın.
@@ -1625,8 +1703,7 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
-    on_participation_label: Katılıma abone olun
-    on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
+    digest_email: Yakalama özeti e-postası
     announcement_label: Duyurular
     announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
     mentioned_label: Bahsetmeler ve Yanıtlar
@@ -1642,8 +1719,14 @@ tr:
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
     daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
+    digest_email_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
     never: Asla
     send_email: E-posta gönder
+    group_notifications: Grup bildirimleri
+    group_notifications_description: Gruplarınız için etkinlik seviyesini ve kanalı değiştirin
+    choose_email_and_push_updates: E-posta ve anlık bildirimler için ayrı ayarlar seçin.
+    catch_up_email: Güncel bilgi e-postası
+    catch_up_email_description: Görülmemiş bildirimler ve okunmamış etkinliklerle ilgili özet bilgileri ne zaman almak istediğinizi seçin.
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
@@ -1745,7 +1828,7 @@ tr:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
     disabled_anonymous_polls: Konu başlığı anonim anketler içerdiğinden görüntüleme geçmişi devre dışı bırakıldı
-    thread_engagement: Thread engagement
+    thread_engagement: Tartışmaya katılım
   activity_card:
     count_responses: "%{count} yanıt"
     beginning: Başlangıç
@@ -2061,6 +2144,7 @@ tr:
     order_by_created_desc: En yeni
     order_by_admin_desc: Yöneticiler
     loaded_of_total: "%{loaded} / %{total}"
+    topics_loaded_of_total: "%{loaded} / %{total}"
     view_requests: İstekleri görüntüle
     header_name: İsim
     header_username: Kullanıcı adı
@@ -2123,7 +2207,6 @@ tr:
     voting_opens_at: Bu %{poll_type} anketi %{time} tarihinde oylamaya açılıyor.
     unable_to_vote: Bu ankete (%{poll_type}) oy vermeye davet edilmediniz.
     anonymous_votes_are_stored_separately_from_voter_identities: Anonim oylar, seçmen kimliklerinden ayrı olarak saklanır. Sonuçlar, oylama sona erdikten sonra açıklanır.
-    legacy_anonymous_voting_format: Bu anket, eski anonim oylama formatını kullanmaktadır.
     anonymous_vote_cannot_be_changed: Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz.
     anonymous_vote_recorded: Oylarınız kaydedildi.
     legacy_vote_reasons: Önceki oyların gerekçeleri
@@ -2382,7 +2465,6 @@ tr:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author},</a> konuyu <strong>%{title}</strong> başlığından taşıdı"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kapattı"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu yeniden açtı"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bu konunun bir çatalını oluşturdu: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bir sonuç paylaştı"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author},</a> %{polltype} anketini yeniden açtı"
@@ -2415,6 +2497,7 @@ tr:
     sign_up_as: "%{email} olarak hesap oluştur"
     sign_in_as: "%{name} olarak oturum açın"
     continue_with_provider: "%{provider} ile devam et"
+    sign_in_with_provider: "%{provider} ile oturum aç"
     continue_with_email: E-postayla devam et
     or_enter_your_email: Veya e-posta adresinizi girin
     enter_your_name: Adınızı giriniz
@@ -2473,6 +2556,22 @@ tr:
     invalid_login: Bu bilgilerle giriş yapamıyoruz.
     login_link_rate_limited: Bu ağdan çok fazla oturum açma e-postası talep edildi. Lütfen bir saat bekleyin ve tekrar deneyin.
     send_login_link_error: Giriş e-postası gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.
+    sign_in_with_passkey: Parola ile giriş yapın
+    passkey_authentication_failed: Bu şifreyle giriş yapamadık.
+    passkey_registration_failed: Şifreyi kaydedemedik.
+    passkey_default_name: Parola
+    local_login_disabled: Bu site tek oturum açma gerektirir.
+    email_me_a_sign_in_code: Bana giriş kodunu e-posta ile gönder.
+    sign_in_with_code: Kod ile giriş yapın
+    new_to_site: Yeni misiniz?
+    passkey_recent_authentication_required: Parolalarınızı değiştirmeden önce tekrar giriş yapın.
+    email_code_help: E-posta adresinizi girin, size altı haneli bir giriş kodu göndereceğiz.
+    or_sign_in_with_password: Veya şifrenizle giriş yapın.
+    login_link_sent_if_account_exists: Eğer %{email} için bir hesap mevcutsa, bir giriş kodu göndereceğiz.
+    use_a_passkey: Parola kullanın.
+    send_me_a_code: Bana bir kod gönder
+    email_code_help_short: E-posta adresinize altı haneli bir kod göndereceğiz.
+    login_link_sent_if_account_exists_sentence: Eğer %{email} için bir hesap mevcutsa, bir giriş kodu göndereceğiz.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
@@ -2614,6 +2713,14 @@ tr:
     tags_per_interval: Etiketler %{interval} başına
     all_groups_and_direct_threads: Tüm gruplar ve doğrudan ileti dizileri
     custom_selection: Özel seçim
+    all_votes_cast: Tüm oylar kullanıldı.
+    votes_cast: Kullanılan oylar
+    votes_issued: Verilen oylar
+    votes_missed: Oylar kaçırıldı
+    voting_record_per_user: Kullanıcı başına oy kaydı
+    yes_label: Evet
+    no_label: HAYIR
+    delegates_only: Sadece delegeler
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi
@@ -2685,8 +2792,6 @@ tr:
     anonymous:
       title: Anonim seçmenler
       helptext_on: Seçildiğinde, her yanıtta katılımcı bilgisi gösterilmeyecektir.
-    voter_can_add_options:
-      title: Seçmenler alternatif seçenekler ekleyebilir
     can_respond_maybe:
       title: Seçmenler "gerekirse" yanıt verebilir
     allow_long_reason:
@@ -2813,7 +2918,10 @@ tr:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonim oylar, seçmen kimliklerinden ayrı olarak saklanır. Sonuçlar, oylama sona erdikten sonra açıklanır. Seçmenler gerekçe ekleyemez, oyunu gönderdikten sonra gözden geçiremez veya oyunu değiştiremez.
     anonymous_voting_explanation: Birinin nasıl oy kullandığını bilmeyi imkansız hale getirin. Anonim oylar, seçmen kimliklerinden ayrı olarak kaydedilir. Sonuçlar yalnızca oylama sona erdikten sonra açıklanır. Seçmenler gerekçe açıklaması ekleyemez, oyunu gönderdikten sonra gözden geçiremez veya oyunu değiştiremez.
     anonymous_voting_risk_explanation: Anonim oylar, seçmenlerin kimliklerinden ayrı olarak saklanır. Sonuçlar yalnızca oylama kapandıktan sonra gösterilir ve seçmenler gerekçe ekleyemez, oylarını gönderdikten sonra inceleyemez veya değiştiremez. Bu önlemler bir kişiyi bir oyla ilişkilendirme riskini azaltır; ancak az sayıda kişi oy kullanma hakkına sahipse veya oy verirse, sonuç oybirliğiyle çıkarsa, oy verme örüntüleri ayırt ediciyse ya da seçmenler tercihlerini açıklarsa sonuçlar yine de bilgi açığa çıkarabilir.
+    anonymous_votes_stored_separately: Anonim oylar, seçmenlerin kimliklerinden ayrı olarak saklanır. Sonuçlar yalnızca oylama kapandıktan sonra gösterilir ve seçmenler gerekçe ekleyemez, oylarını gönderdikten sonra inceleyemez veya değiştiremez.
     stance_reason_required_when_disagreeing: Anlaşmazlık durumunda gereklidir
+    stance_reason_required_for_disagree_or_block: Katılmıyorsanız veya engelliyorsanız gereklidir
+    stance_reason_required_for_block: Engelleme için gerekli
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın
@@ -2957,9 +3065,6 @@ tr:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: oylar
     candidate: Aday
     round_elected: Turda seçilenler
@@ -2969,6 +3074,9 @@ tr:
     round_details: Tur tur detayları
     view_full_results: Tüm sonuçları görüntüle
     results_available_when_closed: Oy verme işlemi sona erdiğinde sonuçlar açıklanacaktır.
+    elected_in_round: "%{round} turunda seçildi"
+    eliminated_in_round: "%{round} turunda elendi."
+    tied_in_round: Beraberlik %{round} turunda
   lock_thread_modal:
     body: Konuları kilitleyerek açık konular listesinden kaldırın ve insanların yorum yapmasını engelleyin.
     explanation: Konuları kilitleyerek kişilerin yorum yapmasını veya daha fazla değişiklik yapmasını engelleyin.
@@ -2998,3 +3106,48 @@ tr:
     nobody_will_be_notified: Kimseye bildirim yapılmayacak
     one_person_will_be_notified: 1 kişiye bildirim gönderilecektir
     x_people_will_be_notified: "%{count} kişiye bildirim gönderilecektir"
+  push_notifications:
+    title: Anlık bildirimler
+    subtitle: Bu tarayıcıda bildirimleri al
+    not_supported: Bu tarayıcıda anlık bildirimler kullanılamıyor
+    permission_denied: Tarayıcı ayarlarınızda anlık bildirimler engellenmiş durumda
+    manage_devices: Anlık bildirim cihazlarını yönetin
+    enabled: Bu tarayıcı için anlık bildirimler etkinleştirildi
+    disabled: Bu tarayıcı için anlık bildirimler devre dışı bırakıldı
+    device_removed: Anlık bildirim cihazı kaldırıldı
+    enable_device: Bu tarayıcıda etkinleştirin
+    disable_device: Bu tarayıcıda devre dışı bırak
+    devices: Etkinleştirilmiş tarayıcılar
+    browser_device: Tarayıcı
+    remove_device: Tarayıcıyı kaldır
+    enable_from_loomio: Loomio'ya giriş yaptıktan sonra Bildirim ayarlarından anlık bildirimleri etkinleştirin
+    ios_add_to_home_screen_before_enabling: iPhone veya iPad'inizde, Loomio'yu Ana Ekranınıza eklemek için Paylaş özelliğini kullanın. Yeni simgeden Loomio'yu açın, ardından burada anlık bildirimleri etkinleştirin.
+  group_follow:
+    follow: Güncellemeleri takip edin
+    unfollow: Güncellemeleri takibi bırak
+    followed: Şu anda bu gruptan gelen güncellemeleri takip ediyorsunuz
+    unfollowed: Artık bu gruptan gelen güncellemeleri takip etmiyorsunuz
+  passkey_settings:
+    title: Parolalar
+    helptext: Parolalar, e-posta adresinizi veya şifrenizi girmeden cihazınızla oturum açmanıza olanak tanır.
+    none: Parola eklemediniz.
+    name: Parola adı
+    name_placeholder: Örneğin, iş dizüstü bilgisayarı
+    add: Parola ekle
+    added: Parola eklendi.
+    created_at: "%{date} tarihinde eklendi."
+    remove_named: "%{name}'i kaldır"
+    remove_confirm: "%{name} adlı parolayı kaldırmak mı istiyorsunuz?"
+    removed: Parola kaldırıldı.
+    remove_failed: Parola kaldırılamadı.
+  credential_prompt:
+    title: Başka bir giriş yöntemi ekleyin
+    helptext: E-posta ile gönderilen kodu beklemeden giriş yapabilmek için bir parola ekleyin veya şifre belirleyin.
+    add_passkey: Parola ekle
+    set_password: Bir parola belirleyin
+    not_now: Şimdi değil
+    passkey_description: Geçiş anahtarı, cihazınızın parmak izi, yüz tanıma veya ekran kilidiyle hızlıca oturum açmanızı sağlar
+    set_new_password: Yeni bir parola belirleyin
+  account_completion:
+    complete_your_account: Hesabınızı tamamlayın
+    continue: Devam etmek

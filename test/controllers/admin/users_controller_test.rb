@@ -29,36 +29,14 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, '<option value="en">'
     refute_includes response.body, 'name="time_zone"'
     document = Nokogiri::HTML(response.body)
-    assert_equal ["Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"], document.css(".admin-table thead th").map { |header| header.text.strip }
-    assert_equal 9, document.css(".admin-table tbody tr").first.css("td").size
+    assert_equal ["", "Name", "Email", "Created", "Last sign-in", "Groups", "Deactivated", "Verified", "Locale", "Timezone"], document.css(".admin-table thead th").map { |header| header.text.strip }
+    assert_equal 10, document.css(".admin-table tbody tr").first.css("td").size
+    assert_includes response.body, "Select all users on this page"
+    assert_includes response.body, "Apply to selected users"
+    assert_includes response.body, "Blocks sign-in and revokes group memberships"
+    assert_includes response.body, "permanently removes personal and sign-in data"
+    assert_includes response.body, "Destroy / delete as spam"
     refute_includes response.body, ">Edit</a>"
-  end
-
-  test "show renders memberships with a missing group" do
-    membership = memberships(:user_membership)
-    missing_group_id = Group.maximum(:id) + 100
-    membership.update_columns(group_id: missing_group_id)
-
-    get :show, params: { id: @user.id }
-
-    assert_response :success
-    assert_includes response.body, "Missing group ##{missing_group_id}"
-  end
-
-  test "show places revoked memberships behind a disclosure toggle" do
-    revoked_membership = memberships(:user_subgroup_membership)
-    revoked_membership.update_columns(revoked_at: 1.day.ago)
-
-    get :show, params: { id: @user.id }
-
-    assert_response :success
-    assert_includes response.body, '<details class="admin-disclosure">'
-    assert_includes response.body, "Revoked memberships (1)"
-    details_start = response.body.index('<details class="admin-disclosure">')
-    details_end = response.body.index("</details>", details_start)
-    details_html = response.body[details_start..details_end]
-    assert_includes details_html, revoked_membership.id.to_s
-    assert_includes details_html, revoked_membership.revoked_at.to_date.to_s
   end
 
   test "show uses Sign in as wording and native confirmation" do
@@ -69,6 +47,10 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, 'data-confirm="Create a one-time sign-in link'
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
+    assert_includes response.body, "Email address of account to keep"
+    assert_includes response.body, "Merge into account"
+    assert_includes response.body, "The destination account&#39;s email and sign-in details will be kept"
+    assert_includes response.body, "This cannot be undone"
   end
 
   test "show never renders authentication secrets" do
@@ -114,6 +96,18 @@ class Admin::UsersControllerTest < ActionController::TestCase
     end
 
     refute_equal "UTC", @user.reload.time_zone
+  end
+
+  test "user update shows validation errors and recommends account merge for a duplicate email" do
+    original_email = @user.email
+
+    put :update, params: { id: @user.id, user: { email: users(:member).email } }
+
+    assert_response :unprocessable_entity
+    assert_equal original_email, @user.reload.email
+    assert_includes response.body, "Email has already been taken"
+    assert_includes response.body, "That email belongs to another account"
+    assert_includes response.body, %(href="#{admin_user_path(@user)}#merge-user")
   end
 
   test "admin can create a one-time sign-in link" do
@@ -163,6 +157,52 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_enqueued_with(job: DestroyUserWorker, args: [@user.id]) do
       delete :delete_spam, params: { id: @user.id }
     end
+  end
+
+  test "admin can choose the operation for selected users" do
+    selected_users = [@user, users(:alien)]
+
+    assert_enqueued_jobs 2, only: DeactivateUserWorker do
+      post :bulk_action, params: { user_ids: selected_users.map(&:id), operation: "deactivate" }
+    end
+    deactivation_jobs = enqueued_jobs.select { |job| job[:job] == DeactivateUserWorker }
+    assert_equal selected_users.map(&:id).sort, deactivation_jobs.map { |job| job[:args].first }.sort
+
+    assert_redirected_to admin_users_path
+    assert_equal "2 users scheduled for deactivation", flash[:notice]
+
+    assert_enqueued_with(job: RedactUserWorker, args: [@user.id, @admin.id]) do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "redact" }
+    end
+
+    assert_enqueued_with(job: DestroyUserWorker, args: [@user.id]) do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "delete_spam" }
+    end
+  end
+
+  test "bulk operation requires a selected user and valid action" do
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { operation: "deactivate" }
+    end
+
+    assert_redirected_to admin_users_path
+    assert_equal "Select at least one user", flash[:alert]
+
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "unknown" }
+    end
+    assert_equal "Select a valid bulk action", flash[:alert]
+  end
+
+  test "non-admin cannot perform bulk user operations" do
+    sign_out
+    sign_in users(:member)
+
+    assert_no_enqueued_jobs do
+      post :bulk_action, params: { user_ids: [@user.id], operation: "deactivate" }
+    end
+
+    assert_redirected_to dashboard_path
   end
 
   test "admin can only delete an identity belonging to the selected user" do

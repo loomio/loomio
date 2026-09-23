@@ -5,7 +5,7 @@ class LoginToken < ApplicationRecord
   initialized_with_token :token
   initialized_with_token :code, -> { generate_code }
 
-  EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 60).to_i
+  EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 24.hours.in_minutes).to_i
   MAX_FAILED_CODE_ATTEMPTS = 5
 
   scope :unused, -> { where(used: false) }

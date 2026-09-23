@@ -109,7 +109,7 @@ class Clients::Base
     :token
   end
 
-  def post_content!(event)
+  def post_content!(topic_item)
     raise NotImplementedError.new
   end
 

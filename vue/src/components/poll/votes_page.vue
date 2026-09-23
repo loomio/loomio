@@ -27,7 +27,7 @@ v-main
   v-container.max-width-800(v-if="poll")
     v-sheet.votes-page.mb-8.pb-4.rounded-lg.pa-4(elevation=1)
       loading(:until="poll")
-        strand-header(:topicable="poll")
+        topic-header(:topicable="poll")
         .d-flex.align-start
           user-avatar.mr-2.mt-1(:user="poll.author()" :size="32")
           poll-common-details-meta(:poll="poll")

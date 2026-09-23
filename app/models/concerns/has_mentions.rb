@@ -1,7 +1,5 @@
 module HasMentions
   extend ActiveSupport::Concern
-  include Twitter::Extractor
-  include HasEvents
 
   module ClassMethods
     def is_mentionable(on: [])
@@ -11,7 +9,7 @@ module HasMentions
 
   def mentioned_usernames
     if text_format == "md"
-      extract_mentioned_screen_names(mentionable_text).uniq - [self.author&.username]
+      MentionParser.usernames(mentionable_text) - [self.author&.username]
     else
       Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
         el['data-mention-id']
@@ -39,7 +37,7 @@ module HasMentions
 
   def mentioned_groups
     # for now, we only allow mentioning the current group, if the actor is permitted
-    group_ids = Group.published.where(id: topic.group_id).where(handle: mentioned_usernames).filter { |group| author.can? :notify, group }.map(&:id)
+    group_ids = Group.enabled.where(id: topic.group_id).where(handle: mentioned_usernames).filter { |group| author.can? :notify, group }.map(&:id)
     Group.where(id: group_ids)
   end
 
@@ -53,11 +51,22 @@ module HasMentions
 
   # users mentioned on a previous edit of this model
   def already_mentioned_user_ids
-    notifications.user_mentions.pluck(:user_id)
+    mention_notifications = Notification.about(self).user_mentions
+    snapshotted_user_ids = mention_notifications.pluck(:recipient_user_ids).flatten
+    delivery_user_ids = NotificationDelivery
+                        .where(
+                          notification_id: mention_notifications.select(:id),
+                          recipient_type: "User",
+                          channel: "in_app"
+                        )
+                        .pluck(:recipient_id)
+    (snapshotted_user_ids + delivery_user_ids).compact.map(&:to_i).uniq
   end
 
   def already_mentioned_group_ids
-    events.where(kind: 'group_mentioned').map { |event| event.custom_fields['group_ids'] }.flatten.uniq
+    notifications = Notification.about(self).where(kind: "group_mentioned")
+    notifications.flat_map { |notification| notification.recipient_context["group_ids"] }
+                 .compact.map(&:to_i).uniq
   end
 
   private

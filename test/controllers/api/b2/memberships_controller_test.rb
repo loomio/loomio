@@ -12,6 +12,59 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "index serializes the filtered collection" do
+    @request.headers['Authorization'] = "Bearer #{@admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    membership_ids = JSON.parse(response.body).fetch('memberships').pluck('id')
+    assert_includes membership_ids, @group.membership_for(@admin).id
+  end
+
+  test "group member can list names and roles without other members' email addresses" do
+    member = create_user_with_api_key!("member")
+    other_member = create_user_with_api_key!("other")
+    @group.add_member!(member)
+    @group.add_member!(other_member).update!(delegate: true, title: "Facilitator")
+
+    @request.headers['Authorization'] = "Bearer #{member.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    serialized_user = json.fetch("users").find { |user| user.fetch("id") == other_member.id }
+    serialized_membership = json.fetch("memberships").find { |membership| membership.fetch("user_id") == other_member.id }
+    assert_equal other_member.name, serialized_user.fetch("name")
+    refute serialized_user.key?("email")
+    assert_equal true, serialized_membership.fetch("delegate")
+    assert_equal "Facilitator", serialized_membership.fetch("title")
+    refute serialized_membership.key?("user_email")
+  end
+
+  test "group admin can list member email addresses" do
+    member = create_user_with_api_key!("member")
+    @group.add_member!(member)
+
+    @request.headers['Authorization'] = "Bearer #{@admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    serialized_user = json.fetch("users").find { |user| user.fetch("id") == member.id }
+    serialized_membership = json.fetch("memberships").find { |membership| membership.fetch("user_id") == member.id }
+    refute serialized_user.key?("email")
+    assert_equal member.email, serialized_membership.fetch("user_email")
+  end
+
+  test "non-member cannot list a private group's memberships" do
+    outsider = create_user_with_api_key!("outsider")
+
+    @request.headers['Authorization'] = "Bearer #{outsider.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_empty json.fetch("memberships")
+    assert_empty json.fetch("users", [])
+  end
+
   test "adds members to group" do
     post :create, params: {
       group_id: @group.id,
@@ -85,33 +138,43 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
     assert_response 403
   end
 
-  test "global admin not in group can add members" do
-    new_admin = users(:admin)
-    new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
+  test "instance admin not in group cannot add members" do
+    new_admin = create_user_with_api_key!("instanceadmin")
+    new_admin.update!(is_admin: true)
     post :create, params: {
       group_id: @group.id,
       emails: ['hi@there.com'],
       api_key: new_admin.api_key
     }
-    assert_response 200
-    json = JSON.parse(response.body)
-    assert_equal ['hi@there.com'], json['added_emails']
-    assert_equal [], json['removed_emails']
+    assert_response :forbidden
+    refute @group.members.exists?(email: 'hi@there.com')
   end
 
-  test "global admin not in group can remove members" do
-    new_admin = users(:admin)
-    new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
+  test "instance admin not in group cannot remove members" do
+    new_admin = create_user_with_api_key!("instanceadmin")
+    new_admin.update!(is_admin: true)
     post :create, params: {
       group_id: @group.id,
       remove_absent: 1,
       emails: ['hey@there.com'],
       api_key: new_admin.api_key
     }
-    assert_response 200
-    json = JSON.parse(response.body)
-    assert_equal ['hey@there.com'], json['added_emails']
-    assert_equal [@admin.email], json['removed_emails']
+    assert_response :forbidden
+    assert @group.members.exists?(@admin.id)
+    refute @group.members.exists?(email: 'hey@there.com')
+  end
+
+  test "instance admin not in group cannot list memberships or email addresses" do
+    instance_admin = create_user_with_api_key!("instanceadmin")
+    instance_admin.update!(is_admin: true)
+
+    @request.headers['Authorization'] = "Bearer #{instance_admin.api_key}"
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_empty json.fetch("memberships")
+    assert_empty json.fetch("users", [])
+    refute_includes response.body, @admin.email
   end
 
   test "non-global-admin not in group cannot add members" do
@@ -124,5 +187,23 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
       api_key: new_user.api_key
     }
     assert_response 403
+  end
+
+  private
+
+  def create_user_with_api_key!(prefix)
+    hex = SecureRandom.hex(4)
+    User.create!(
+      name: "#{prefix}#{hex}",
+      email: "#{prefix}#{hex}@example.com",
+      username: "#{prefix}#{hex}",
+      email_verified: true
+    ).tap do |user|
+      user.update_columns(api_key: "#{prefix}key#{SecureRandom.hex(8)}")
+    end
+  end
+
+  def json
+    JSON.parse(response.body)
   end
 end

@@ -1,5 +1,4 @@
 class Identities::OauthController < Identities::BaseController
-
   private
 
   def oauth_url
@@ -7,7 +6,7 @@ class Identities::OauthController < Identities::BaseController
   end
 
   def oauth_auth_url
-    ENV.fetch('OAUTH_AUTH_URL')
+    AppConfig.oauth_authorization_url
   end
 
   def oauth_params
@@ -15,7 +14,7 @@ class Identities::OauthController < Identities::BaseController
     {
       client.client_key_name => client.key,
       redirect_uri: redirect_uri,
-      scope: ENV.fetch('OAUTH_SCOPE'),
+      scope: AppConfig.oauth_scope,
       response_type: :code,
       state: session[:oauth_state]
     }

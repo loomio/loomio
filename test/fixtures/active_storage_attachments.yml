@@ -1,0 +1,7 @@
+cleanup_group_attachment:
+  name: logo
+  record_type: Group
+  record_id: <%= ActiveRecord::FixtureSet.identify(:used_attachment_group) %>
+  blob_id: <%= ActiveRecord::FixtureSet.identify(:cleanup_group_blob) %>
+  group_id: <%= ActiveRecord::FixtureSet.identify(:used_attachment_group) %>
+  created_at: <%= 2.years.ago %>

@@ -5,10 +5,10 @@ class Discussion < ApplicationRecord
   include Reactable
   include Bookmarkable
   include HasTimeframe
-  include HasEvents
+  include HasTopicItems
+  include HasNotifications
   include HasMentions
   include SelfReferencing
-  include HasCreatedEvent
   include HasRichText
   include Discard::Model
 
@@ -51,7 +51,6 @@ class Discussion < ApplicationRecord
     SQL
   end
 
-  scope :in_organisation, ->(group) { includes(:author).joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }) }
   scope :last_activity_after, ->(time) { joins(:topic).where('topics.last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { joins(:topic).order('topics.last_activity_at DESC') }
   scope :order_by_pinned_then_latest_activity, -> { joins(:topic).order('topics.pinned_at, topics.last_activity_at DESC') }
@@ -75,6 +74,7 @@ class Discussion < ApplicationRecord
   belongs_to :topic
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
+  belongs_to :discussion_template, optional: true
 
   has_many :polls, primary_key: :topic_id, foreign_key: :topic_id, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
@@ -109,11 +109,12 @@ class Discussion < ApplicationRecord
   after_commit :update_group_counter_caches
 
   def update_group_counter_caches
-    #TODO can this be a background job or materialized view
-    return unless (g = topic.group) && g.id
-    return if g.destroyed? # group teardown cascaded to this discussion — nothing to recount
-    g.update_discussions_count
-    g.update_closed_polls_count
+    # TODO: can this be a background job or materialized view?
+    group = topic.group
+    return unless group.id
+    return if group.destroyed? # group teardown cascaded to this discussion — nothing to recount
+    group.update_discussions_count
+    group.update_closed_polls_count
   end
 
   def author
@@ -128,8 +129,16 @@ class Discussion < ApplicationRecord
     author_id
   end
 
-  def created_event_kind
+  def created_topic_item_kind
     :new_discussion
+  end
+
+  def created_from_group_template?
+    discussion_template&.kept? && !discussion_template.hidden? && discussion_template.group_id == group_id
+  end
+
+  def tag_names_not_from_template
+    TagService.clean_tag_names(topic.tags) - TagService.clean_tag_names(discussion_template&.tags)
   end
 
   def body=(val)

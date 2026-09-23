@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '4.0.5'
-gem 'rails', '~> 8.0.0'
+gem 'rails', '~> 8.1.0'
+# Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
+gem 'json', '< 3'
 gem 'uri', '1.1.1'
 gem 'rake'
 gem 'pg'
@@ -14,22 +16,22 @@ gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
 gem 'nokogiri'
-gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
 gem 'solid_queue'
 gem 'mission_control-jobs'
 gem 'friendly_id', '~> 5.7.0'
-gem 'httparty', '~> 0.24.2'
+gem 'faraday', '~> 2.14'
+gem 'faraday-follow_redirects', '~> 0.5'
+gem 'csv'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
-gem 'image_processing', '~> 2.0'
-gem 'mini_magick', '~> 5.3'
+gem 'image_processing', '~> 2.1'
+gem 'mini_magick', '~> 5.4'
 gem "ruby-vips"
 gem "stackprof"
-gem "sentry-ruby"
 gem "sentry-rails"
 gem 'http_accept_language'
 gem 'propshaft', '~> 1.3'
@@ -38,7 +40,7 @@ gem 'maxminddb'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '2.2.0'
+gem 'activerecord-import', '2.3.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
@@ -58,6 +60,8 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
+gem 'web-push'
+gem 'webauthn'
 
 group :development, :test do
   gem 'byebug'
@@ -71,6 +75,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'solargraph', require: false
   gem 'web-console'
 end
 

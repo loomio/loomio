@@ -150,6 +150,8 @@ el:
       body: Το στοιχείο που ζητήσατε δεν βρέθηκε. Αυτό μπορεί να συμβεί εάν έχει διαγραφεί μια συζήτηση ή μια δημοσκόπηση.
     new_account_trial_group_limit: Οι νέοι λογαριασμοί περιορίζονται σε μία ομάδα. Επικοινωνήστε με την υποστήριξη εάν χρειάζεστε περισσότερα.
     direct_thread_anonymous_poll: Ένα νήμα που περιέχει μια ανώνυμη δημοσκόπηση δεν μπορεί να μετατραπεί σε άμεσο νήμα
+    invitation_rate_limit_reached_contact_support: Συμπληρώθηκε το ημερήσιο όριο προσκλήσεων. Επικοινωνήστε αμέσως με την υποστήριξη.
+    subscription_thread_limit_reached: Αυτός ο οργανισμός έχει φτάσει στο όριο των νημάτων του. Παρακαλούμε αναβαθμίστε για να συνεχίσετε να χρησιμοποιείτε το Loomio.
   group:
     error:
       handle_must_begin_with_parent_handle: Πρέπει να ξεκινά με %{parent_handle}-
@@ -182,6 +184,7 @@ el:
       recaptcha: Δεν μπορέσαμε να επαληθεύσουμε ότι δεν είστε ρομπότ. ΠΑΡΑΚΑΛΩ προσπαθησε ξανα!
       bad_login: Λυπούμαστε, αυτός ο κωδικός πρόσβασης δεν ταιριάζει με αυτόν που έχουμε στο αρχείο
       username_must_be_alphanumeric: Τα ονόματα χρήστη πρέπει να είναι μόνο πεζά γράμματα και αριθμοί
+      username_must_use_valid_characters: Τα ονόματα χρήστη πρέπει να περιέχουν μόνο πεζά γράμματα, αριθμούς, κάτω παύλες και εσωτερικές παύλες
   poll:
     error:
       cannot_add_options: Δεν είναι δυνατή η προσθήκη επιλογών σε αυτήν τη δημοσκόπηση
@@ -301,6 +304,17 @@ el:
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
     catch_up:
+      subject:
+        votes_to_cast:
+          one: Έχετε 1 ψήφο να ρίξετε
+          other: Έχετε %{count} ψήφους να ρίξετε
+        people_mentioned:
+          one: 1 άτομο σας ανέφερε
+          other: "%{count} άτομα σας ανέφεραν"
+        polls_closing_soon:
+          one: 1 δημοσκόπηση κλείνει σύντομα
+          other: "%{count} κάλπες κλείνουν σύντομα"
+        separator: "·"
       daily_subject: Χθες στο %{site_name}
       weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
       other_subject: Πρόσφατα στο %{site_name}
@@ -309,6 +323,31 @@ el:
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
       click_here: Πατήστε εδώ
+      catch_up_heading: Η κάλυψη του %{site_name} σας
+      unread_topics: Μη αναγνωσμένα θέματα
+      unread_threads: Μη αναγνωσμένα νήματα
+      mark_catch_up_as_read: Σημειώστε την αναγνωσμένη ενημέρωση
+    digest:
+      subject:
+        votes_to_cast:
+          one: Έχετε 1 ψήφο να ρίξετε
+          other: Έχετε %{count} ψήφους να ρίξετε
+        people_mentioned:
+          one: 1 άτομο σας ανέφερε
+          other: "%{count} άτομα σας ανέφεραν"
+        polls_closing_soon:
+          one: 1 δημοσκόπηση κλείνει σύντομα
+          other: "%{count} κάλπες κλείνουν σύντομα"
+        separator: "·"
+      daily_subject: Χθες στο %{site_name}
+      weekly_subject: Την περασμένη εβδομάδα στο %{site_name}
+      other_subject: Πρόσφατα στο %{site_name}
+      do_not_reply: Παρακαλώ μην απαντήσετε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου.
+      mark_as_read: Σημείωσε ως διαβασμένα
+      thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
+      marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
+      click_here: Πατήστε εδώ
+      unread_topics: Μη αναγνωσμένα θέματα
     group_membership_approved:
       intro: Το αίτημά σας για πρόσβαση στην ομάδα %{group_name} έχει εγκριθεί.
       intro_html: Το αίτημά σας για πρόσβαση στην ομάδα <strong>%{group_name}</strong> έχει εγκριθεί.
@@ -323,6 +362,8 @@ el:
     content_was_translated: Αυτό το περιεχόμενο μεταφράστηκε από %{source_locale}
     content_was_translated_html: Αυτό το περιεχόμενο μεταφράστηκε από %{source_locale}. <a href="%{profile_url}">Δείτε τις ρυθμίσεις<a></a>
     loomio_app_description: Ένα μέρος για συνεργατικούς οργανισμούς ώστε να λαμβάνουν από κοινού αποφάσεις.
+    membership_request_declined:
+      button_text: Εφαρμόστε ξανά
   announcement_count_emails: "%{count} μηνύματα ηλεκτρονικού ταχυδρομείου"
   email_actions:
     unfollowed_discussion: Έχετε απενεργοποιήσει τα μηνύματα ηλεκτρονικού ταχυδρομείου για το νήμα.
@@ -373,6 +414,21 @@ el:
     trial_expired:
       subject: Η ομάδα σας Loomio θα διαγραφεί λόγω αδράνειας.
       body: Η ομάδα σας Loomio "%{group}" είναι ανενεργή και θα διαγραφεί σε 2 εβδομάδες. Εάν δεν θέλετε να διαγραφεί η ομάδα σας, απαντήστε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου.
+    destroy_warning_with_usage:
+      subject: Η ομάδα σας Loomio έχει προγραμματιστεί για διαγραφή
+      requested: Η ομάδα σας Loomio "%{group}" είχε προγραμματιστεί για διαγραφή από τον %{requestor}. Θα διαγραφεί οριστικά μετά από %{days} ημέρες.
+      trial_expired_warning: Η δοκιμαστική περίοδος της ομάδας Loomio "%{group}" έληξε πριν από %{expired_days} ημέρες. Εκτός αν επικοινωνήσετε μαζί μας, θα διαγραφεί σε %{grace_days} ημέρες.
+      trial_expired_process: Η ομάδα σας δεν είναι διαθέσιμη όσο έχει επισημανθεί για διαγραφή. Εάν εξακολουθείτε να θέλετε ένα μέρος για να συζητά και να λαμβάνει αποφάσεις η ομάδα σας, δεν είναι πολύ αργά για να την επανεκκινήσετε. Απαντήστε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου εντός %{grace_days} ημερών εάν θέλετε να ζητήσετε παράταση δοκιμαστικής περιόδου, αναβάθμιση σε συνδρομή επί πληρωμή ή χρειάζεστε περισσότερο χρόνο για την εξαγωγή των δεδομένων της. Μετά από αυτό, η ομάδα και τα δεδομένα της θα διαγραφούν οριστικά.
+      trial_expired: Η ομάδα Loomio σας "%{group}" βρίσκεται σε δοκιμαστική περίοδο που έχει λήξει για τουλάχιστον 60 ημέρες. Θα διαγραφεί οριστικά μετά από %{days} ημέρες.
+      usage_heading: 'Σύνοψη δεδομένων ομάδας:'
+      subgroups: Υποομάδες
+      members: Τρέχοντα μέλη
+      discussions: Συζητήσεις
+      polls: Δημοσκοπήσεις
+      comments: Σχόλια
+      export: Για να διατηρήσετε την ομάδα ή να εξαγάγετε ένα αντίγραφο των δεδομένων της, απαντήστε σε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου εντός %{days} ημερών. Μπορούμε να επαναφέρουμε την πρόσβαση πριν από τη διαγραφή.
+      export_link: Μάθετε σχετικά με την εξαγωγή δεδομένων ομάδας
+      group_key: 'Κλειδί ομάδας: %{key}'
   poll_mailer:
     common:
       why_send_this: Λαμβάνετε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου επειδή %{reason}
@@ -675,3 +731,36 @@ el:
     file_too_large: Το αρχείο είναι πολύ μεγάλο. Το μέγιστο μέγεθος μεταφόρτωσης είναι %{limit}.
   merge_users:
     not_target_user: Πρέπει να είστε συνδεδεμένοι ως ο λογαριασμός-στόχος για να επιβεβαιώσετε μια συγχώνευση.
+  thread_markdown:
+    poll: Ψηφοφορία
+    no_activity: Δεν υπάρχουν σχόλια, δημοσκοπήσεις, ψήφοι ή αποτελέσματα ακόμα
+    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
+    comment: Σχόλιο · %{author} %{timestamp}
+    comment_reply: Απάντηση στον %{reply_author} · %{author} %{timestamp}
+    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    status: "**Κατάσταση:** %{value}"
+    anonymous_voting: "**Ανώνυμη ψήφος:** %{value}"
+    options: "**Επιλογές:** %{value}"
+    'yes': Ναί
+    closed: Κλειστό %{value}
+    scheduled_to_open: Προγραμματισμένο για άνοιγμα %{value}
+    open_until: Άνοιγμα· κλείνει %{value}
+    open: Ανοιχτό
+    current_results: Τρέχοντα αποτελέσματα
+    hidden_until_closed: Κρυφό μέχρι το κλείσιμο της δημοσκόπησης
+    hidden_until_voted: Κρυφό μέχρι να ψηφίσει ο θεατής
+    voters: Ψηφοφόροι
+    target: Στόχος
+    available: Διαθέσιμος
+    available_if_needed: Διαθέσιμο εάν χρειαστεί
+    unavailable: Δυσεύρετος
+    anonymous: Ανώνυμος
+    no_voters: Δεν υπάρχουν ψηφοφόροι
+    score: 'βαθμολογία: %{value}'
+    vote: 'Ψηφοφορία: %{response} · %{author} %{timestamp}'
+    none_of_the_above: Κανένα από τα παραπάνω
+    no_option_selected: Δεν έχει επιλεγεί καμία επιλογή
+    outcome: Αποτέλεσμα · %{author} %{timestamp}
+    review_date: "**Ημερομηνία αξιολόγησης:** %{value}"
+  error:
+    access_denied: Δεν έχετε άδεια να το κάνετε αυτό

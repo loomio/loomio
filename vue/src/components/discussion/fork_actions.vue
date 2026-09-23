@@ -35,12 +35,12 @@ export default {
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(lines="one" sticky :elevation="4" v-if='topic.forkedEventIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
+v-banner.discussion-fork-actions(lines="one" sticky :elevation="4" v-if='topic.selectedTopicItemIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
   v-banner-text
     span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
     .d-flex.align-center
       v-btn.discussion-fork-actions__move(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
-      v-btn(icon @click='topic.forkedEventIds = []')
+      v-btn(icon @click='topic.selectedTopicItemIds = []')
         common-icon(name="mdi-close")
 </template>

@@ -20,6 +20,16 @@ module GroupService
   end
 
   def self.invite(group:, params:, actor:)
+    # Snapshot a selected related-group audience while applying the same target-member
+    # exclusion shown in the invitation preview.
+    audience_user_ids = NotificationAudienceService.resolve(
+      model: group,
+      kind: params[:recipient_audience],
+      actor: actor,
+      exclude_members: true
+    ).pluck(:id)
+    recipient_user_ids = Array(params[:recipient_user_ids]).map(&:to_i) | audience_user_ids
+
     group_ids = if params[:invited_group_ids]
       Array(params[:invited_group_ids]).map(&:to_i)
     else
@@ -34,50 +44,61 @@ module GroupService
       parent_group: parent_group,
       group_ids: group_ids,
       emails: Array(params[:recipient_emails]),
-      user_ids: Array(params[:recipient_user_ids]),
+      user_ids: recipient_user_ids,
       actor: actor
     )
 
-    users = UserInviter.where_or_create!(
-      actor: actor,
-      model: group,
-      emails: params[:recipient_emails],
-      user_ids: params[:recipient_user_ids]
-    )
-
-    Group.where(id: group_ids).each do |g|
-      revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
-      revoked_memberships.update_all(
-        inviter_id: actor.id,
-        accepted_at: nil,
-        revoked_at: nil,
-        revoker_id: nil,
-        admin: false,
+    users = nil
+    Group.transaction do
+      users = UserInviter.where_or_create!(
+        actor: actor,
+        model: group,
+        emails: params[:recipient_emails],
+        user_ids: recipient_user_ids
       )
 
-      new_memberships = users.map do |user|
-        Membership.new(inviter: actor, user: user, group: g, volume: user.default_membership_volume)
+      Group.where(id: group_ids).each do |g|
+        revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
+        revoked_memberships.update_all(
+          inviter_id: actor.id,
+          accepted_at: nil,
+          revoked_at: nil,
+          revoker_id: nil,
+          admin: false,
+        )
+
+        new_memberships = users.map do |user|
+          Membership.new(
+            inviter: actor,
+            user: user,
+            group: g,
+            volume_email: user.volume_email_default,
+            volume_push: user.volume_push_default
+          )
+        end
+
+        Membership.import(new_memberships, on_duplicate_key_ignore: true)
+
+        # mark as accepted all invitiations to people who are already part of the org.
+        other_group_ids = Group.enabled.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+        existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
+        Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
+
+        g.update_pending_memberships_count
+        g.update_memberships_count
+        PollGroupMembersAddedWorker.perform_later(g.id)
       end
+      Group.update_org_members_count_for_group_ids(group_ids)
 
-      Membership.import(new_memberships, on_duplicate_key_ignore: true)
-
-      # mark as accepted all invitiations to people who are already part of the org.
-      other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
-      existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
-      Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
-
-      g.update_pending_memberships_count
-      g.update_memberships_count
-      PollGroupMembersAddedWorker.perform_later(g.id)
+      NotificationService.create!(
+        kind: "membership_created",
+        subject: group,
+        actor: actor,
+        recipient_user_ids: users.pluck(:id),
+        recipient_audience: params[:recipient_audience],
+        recipient_message: params[:recipient_message]
+      )
     end
-    Group.update_org_members_count_for_group_ids(group_ids)
-
-    Events::MembershipCreated.publish!(
-      group: group,
-      actor: actor,
-      recipient_user_ids: users.pluck(:id),
-      recipient_message: params[:recipient_message]
-    )
 
     Sentry.metrics.count("membership.invite", attributes: { recipient_count: users.size })
     Membership.active.where(group_id: group.id, user_id: users.pluck(:id))
@@ -88,14 +109,14 @@ module GroupService
 
     unless group.valid?
       Sentry.metrics.count("group.create_failed", attributes: { columns: group.errors.attribute_names.join(',') })
-      return false
+      return group
     end
 
     if group.is_parent?
       url = remote_cover_photo
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))
       group.creator = actor if actor.is_logged_in?
-      group.subscription = Subscription.new
+      group.subscription ||= Subscription.new
     end
 
     group.save!
@@ -107,6 +128,7 @@ module GroupService
 
     Sentry.metrics.count("group.create", attributes: { is_subgroup: !group.is_parent? })
     EventBus.broadcast('group_create', group, actor)
+    group
   end
 
   def self.update(group:, params:, actor:)
@@ -119,7 +141,7 @@ module GroupService
 
     unless group.valid?
       Sentry.metrics.count("group.update_failed", attributes: { columns: group.errors.attribute_names.join(',') })
-      return false
+      return group
     end
 
     Group.transaction do
@@ -136,26 +158,52 @@ module GroupService
 
     Sentry.metrics.count("group.update")
     EventBus.broadcast('group_update', group, params, actor)
+    group
   end
 
-  def self.destroy(group:, actor:)
+  def self.discard(group:, actor:)
     actor.ability.authorize! :destroy, group
+    discard_and_notify(group: group, actor: actor)
+  end
 
-    group.admins.each do |admin|
-      GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
+  def self.warn_and_discard(group:, actor:)
+    actor.ability.authorize! :destroy, group
+    discard_and_notify(group: group, actor: actor) do
+      group.admins.each do |admin|
+        GroupMailer.admin_deletion_warning(group.id, admin.id, actor.id).deliver_later
+      end
     end
-
-    group.archive!
-
-    Sentry.metrics.count("group.destroy")
-    DestroyGroupWorker.set(wait: 2.weeks).perform_later(group.id)
-    EventBus.broadcast('group_destroy', group, actor)
   end
 
-  def self.destroy_without_warning!(group_id)
-    Group.find(group_id).archive!
-    DestroyGroupWorker.perform_later(group_id)
+  def self.warn_and_discard_expired_trial(group_id:)
+    group = CleanupService.expired_trial_groups.find_by(id: group_id)
+    return unless group
+
+    discard_and_notify(group: group, actor: nil, reason: "trial_expired") do
+      group.admins.each do |admin|
+        GroupMailer.expired_trial_deletion_warning(group.id, admin.id).deliver_later
+      end
+    end
   end
+
+  # All ordinary discard paths share one locked transition. Authorization or
+  # automatic eligibility belongs to the entry point; warnings and broadcasts
+  # happen only after commit, and repeated requests do not repeat notifications.
+  def self.discard_and_notify(group:, actor:, reason: "requested")
+    Group.transaction(requires_new: true) do |transaction|
+      group.lock!
+      next unless group.kept?
+
+      group.discard!(actor: actor)
+      transaction.after_commit do
+        yield if block_given?
+        Sentry.metrics.count("group.discard", attributes: { reason: reason })
+        EventBus.broadcast("group_destroy", group, actor)
+      end
+    end
+    group
+  end
+  private_class_method :discard_and_notify
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

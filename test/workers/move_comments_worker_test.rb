@@ -13,28 +13,31 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "moves a top-level comment to target thread" do
     comment = Comment.new(parent: @source, body: "move me", author: @user)
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
-    MoveCommentsWorker.new.perform([event.id], @source.topic_id, @target.topic_id)
+    MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
-    event.reload
+    topic_item.reload
     comment.reload
-    assert_equal @target.topic_id, event.topic_id
+    assert_equal @target.topic_id, topic_item.topic_id
     assert_equal @target.id, comment.parent_id
     assert_equal 'Discussion', comment.parent_type
   end
 
   test "moves a comment and its reply together" do
     c1 = Comment.new(parent: @source, body: "parent comment", author: @user)
-    e1 = CommentService.create(comment: c1, actor: @user)
+    e1 = nil
+    CommentService.create(comment: c1, actor: @user) { |created_topic_item| e1 = created_topic_item }
 
     c2 = Comment.new(parent: c1, body: "reply", author: @user)
-    e2 = CommentService.create(comment: c2, actor: @user)
+    e2 = nil
+    CommentService.create(comment: c2, actor: @user) { |created_topic_item| e2 = created_topic_item }
 
     MoveCommentsWorker.new.perform([e1.id], @source.topic_id, @target.topic_id)
 
     e1.reload; e2.reload; c1.reload; c2.reload
-    # Both events moved
+    # Both topic_items moved
     assert_equal @target.topic_id, e1.topic_id
     assert_equal @target.topic_id, e2.topic_id
     # Parent comment reparented to target discussion
@@ -47,10 +50,12 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
 
   test "reparents reply whose parent comment was not moved" do
     c1 = Comment.new(parent: @source, body: "stays behind", author: @user)
-    e1 = CommentService.create(comment: c1, actor: @user)
+    e1 = nil
+    CommentService.create(comment: c1, actor: @user) { |created_topic_item| e1 = created_topic_item }
 
     c2 = Comment.new(parent: c1, body: "gets moved", author: @user)
-    e2 = CommentService.create(comment: c2, actor: @user)
+    e2 = nil
+    CommentService.create(comment: c2, actor: @user) { |created_topic_item| e2 = created_topic_item }
 
     # Only move the reply, not the parent
     MoveCommentsWorker.new.perform([e2.id], @source.topic_id, @target.topic_id)
@@ -78,17 +83,18 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     StanceService.create(stance: stance, actor: @user)
 
     comment = Comment.new(parent: stance, body: "comment on stance", author: @user)
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
-    MoveCommentsWorker.new.perform([event.id], @source.topic_id, @target.topic_id)
+    MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
-    event.reload; comment.reload
-    assert_equal @target.topic_id, event.topic_id
+    topic_item.reload; comment.reload
+    assert_equal @target.topic_id, topic_item.topic_id
     assert_equal @target.id, comment.parent_id
     assert_equal 'Discussion', comment.parent_type
   end
 
-  test "moves poll events to target topic" do
+  test "moves poll topic_items to target topic" do
     poll = PollService.create(params: {
       title: "Moveable poll #{SecureRandom.hex(4)}",
       poll_type: 'proposal',
@@ -97,7 +103,7 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
       topic_id: @source.topic_id
     }, actor: @admin)
 
-    poll_event = poll.created_event
+    poll_event = poll.created_topic_item
 
     MoveCommentsWorker.new.perform([poll_event.id], @source.topic_id, @target.topic_id)
 
@@ -115,9 +121,10 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
       group_id: @group.id
     }, actor: @admin)
     source_topic_id = poll.topic_id
-    poll_event = poll.created_event
+    poll_event = poll.created_topic_item
     comment = Comment.new(parent: poll, body: "poll comment", author: @user)
-    comment_event = CommentService.create(comment: comment, actor: @user)
+    comment_event = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| comment_event = created_topic_item }
 
     MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
 
@@ -132,26 +139,28 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     assert_equal 'Poll', comment.parent_type
   end
 
-  test "does not move events from another topic" do
+  test "does not move topic_items from another topic" do
     other = DiscussionService.create(params: { title: "Other #{SecureRandom.hex(4)}", group_id: @group.id }, actor: @admin)
     comment = Comment.new(parent: other, body: "wrong thread", author: @user)
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
-    MoveCommentsWorker.new.perform([event.id], @source.topic_id, @target.topic_id)
+    MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
-    event.reload
-    # Event stays where it was — not in source topic so it's filtered out
-    assert_equal other.topic_id, event.topic_id
+    topic_item.reload
+    # TopicItem stays where it was — not in source topic so it's filtered out
+    assert_equal other.topic_id, topic_item.topic_id
   end
 
   test "repairs both source and target threads" do
     comment = Comment.new(parent: @source, body: "move me", author: @user)
-    event = CommentService.create(comment: comment, actor: @user)
+    topic_item = nil
+    CommentService.create(comment: comment, actor: @user) { |created_topic_item| topic_item = created_topic_item }
 
     source_items_before = @source.topic.reload.items_count
     target_items_before = @target.topic.reload.items_count
 
-    MoveCommentsWorker.new.perform([event.id], @source.topic_id, @target.topic_id)
+    MoveCommentsWorker.new.perform([topic_item.id], @source.topic_id, @target.topic_id)
 
     assert_operator @source.topic.reload.items_count, :<, source_items_before
     assert_operator @target.topic.reload.items_count, :>, target_items_before

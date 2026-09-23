@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Views::Application::Layout < Views::Application::Component
-  def initialize(metadata: nil, export: false, bot: false)
+  def initialize(metadata: nil, export: false, bot: false, canonical_url: nil, robots: nil)
     @metadata = metadata
     @export = export
     @bot = bot
+    @canonical_url = canonical_url
+    @robots = robots
   end
 
   def around_template(&)
@@ -38,9 +40,16 @@ class Views::Application::Layout < Views::Application::Component
   def render_head
     title { plain meta_hash[:title] }
     meta charset: "utf-8"
-    meta name: "viewport", content: "width=device-width, initial-scale=1.0"
+    meta name: "viewport", content: "width=device-width, initial-scale=1.0, viewport-fit=cover"
+    meta name: "theme-color", content: AppConfig.theme[:primary_color]
+    meta name: "apple-mobile-web-app-capable", content: "yes"
+    meta name: "apple-mobile-web-app-status-bar-style", content: "default"
+    meta name: "apple-mobile-web-app-title", content: AppConfig.theme[:site_short_name]
     meta content: meta_hash[:title], property: "og:title"
     meta content: meta_hash[:description], name: "description", property: "og:description"
+    meta name: "robots", content: @robots if @robots
+    link rel: "canonical", href: @canonical_url if @canonical_url
+    meta content: @canonical_url, property: "og:url" if @canonical_url
     Array(meta_hash[:image_urls]).each do |image_url|
       meta content: image_url, property: "og:image"
     end
@@ -50,6 +59,7 @@ class Views::Application::Layout < Views::Application::Component
     link rel: "icon", type: "image/png", sizes: "32x32", href: AppConfig.theme[:favicon32_src]
     link rel: "icon", href: AppConfig.theme[:icon_src]
     link rel: "apple-touch-icon", href: AppConfig.theme[:touch_icon_src]
+    link rel: "manifest", href: "/manifest"
     stylesheet_link_tag "vtfy/themeauto"
     raw vue_css_includes.html_safe
     unless @export || @bot
@@ -63,7 +73,7 @@ class Views::Application::Layout < Views::Application::Component
         div(class: "v-toolbar__title") { plain AppConfig.theme[:site_name] }
         div(class: "spacer")
         div(class: "v-toolbar__items")
-        a(class: "navbar__sign-in v-btn v-btn--flat v-btn--text theme--auto v-size--default", href: "?sign_in=1") do
+        a(class: "navbar__sign-in v-btn v-btn--flat v-btn--text theme--auto v-size--default", href: "/dashboard") do
           plain t(:"navbar.sign_in")
         end
       end

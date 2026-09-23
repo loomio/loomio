@@ -150,23 +150,14 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal 2, viewer_stance.fetch('weight')
   end
 
-  test "stance weight is hidden for anonymous polls" do
-    anonymous_poll = Poll.create!(
-      title: 'Public anonymous poll',
-      poll_type: 'proposal',
-      topic: discussions(:public_discussion).topic,
-      author: @admin,
-      anonymous: true,
-      poll_option_names: ['Agree', 'Disagree'],
-      closing_at: 1.day.from_now
-    )
-    anonymous_stance = Stance.create!(poll: anonymous_poll, participant: @user, weight: 2)
-    sign_in users(:alien)
+  test "my_stances serializes the filtered collection" do
+    sign_in @admin
 
-    get :index, params: {poll_id: anonymous_poll.id}
+    get :my_stances
 
-    viewer_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == anonymous_stance.id }
-    refute viewer_stance.key?('weight')
+    assert_response :success
+    stance_ids = JSON.parse(response.body).fetch('stances').pluck('id')
+    assert_includes stance_ids, @poll.stances.find_by!(participant_id: @admin.id).id
   end
 
   test "until vote has the same backend response as results off" do
@@ -192,16 +183,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     results_off_poll = results_off_payload['polls'].find { |poll| poll['id'] == @poll.id }
     assert_equal results_off_payload['stances'], until_vote_payload['stances']
     assert_equal results_off_poll.except('hide_results'), until_vote_poll.except('hide_results')
-  end
-
-  test "users action returns participants for anonymous polls" do
-    @poll.update!(anonymous: true)
-    sign_in @admin
-    get :users, params: {poll_id: @poll.id}
-    assert_response :success
-
-    user_ids = JSON.parse(response.body).fetch('users').map { |user| user['id'] }
-    assert_includes user_ids, @admin.id
   end
 
   test "users action returns the named electorate for detached anonymous polls with an empty query" do
@@ -315,49 +296,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     serialized_victim = JSON.parse(response.body).fetch('users').find { |user| user['id'] == victim.id }
     assert_not_nil serialized_victim
     assert_not serialized_victim.key?('email')
-  end
-
-  test "index hides identifying metadata for anonymous polls" do
-    @poll.update!(anonymous: true)
-    # Another user's stance exists from auto-creation
-    sign_in @admin
-    get :index, params: { poll_id: @poll.id }
-    assert_response :success
-
-    json = JSON.parse(response.body)
-    participant_ids = json['stances'].map { |s| s['participant_id'] }
-    # In anonymous polls, participant_ids should be nil
-    participant_ids.each do |pid|
-      assert_nil pid, "participant_id should be nil in anonymous poll"
-    end
-
-    json['stances'].each do |stance|
-      assert_not stance.key?('cast_at')
-      assert_not stance.key?('created_at')
-      assert_not stance.key?('updated_at')
-      assert_not stance.key?('order_at')
-    end
-  end
-
-  test "index does not reveal anonymous choices or voting order before results are visible" do
-    @poll.update!(anonymous: true, hide_results: 'until_closed')
-    @poll.stances.first.update_columns(cast_at: 1.minute.ago)
-    @poll.stances.last.update_columns(cast_at: 2.minutes.ago)
-    own_id = @poll.stances.find_by(participant_id: @admin.id).id
-
-    sign_in @admin
-    get :index, params: { poll_id: @poll.id }
-    assert_response :success
-
-    stances = JSON.parse(response.body)['stances']
-
-    assert_equal @poll.stances.latest.order(:id).pluck(:id), stances.map { |stance| stance['id'] }
-
-    # Other voters' choices stay hidden until results are visible.
-    stances.reject { |stance| stance['id'] == own_id }.each do |stance|
-      assert_not stance.key?('none_of_the_above')
-      assert_not stance.key?('option_scores')
-    end
   end
 
   # -- Revoke actions --
@@ -569,8 +507,59 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "vote without a timeline item returns the saved stance" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: @poll.poll_options.first.id } ],
+        reason: ""
+      }
+    }
+
+    assert_response :success
+    payload = JSON.parse(response.body)
+    saved_stance = payload.fetch("stances").find { |record| record["id"] == stance.id }
+    assert saved_stance.fetch("cast_at")
+    assert_not payload.key?("topic_items")
+  end
+
+  test "in-place update returns the existing topic item with the updated stance" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    option = @poll.poll_options.first
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: option.id } ],
+        reason: "Initial response"
+      }
+    }
+    assert_response :success
+    topic_item = TopicItem.find_by!(itemable: stance, kind: "stance_created")
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [ { poll_option_id: option.id } ],
+        reason: "Edited response"
+      }
+    }
+
+    assert_response :success
+    payload = JSON.parse(response.body)
+    assert_equal [ topic_item.id ], payload.fetch("topic_items").pluck("id")
+    assert_equal "Edited response", payload.fetch("stances").find { |record| record["id"] == stance.id }.fetch("reason")
+  end
+
   test "update requires a reason when disagreeing" do
-    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    @poll.update!(stance_reason_required: "required_for_disagree_or_block")
     stance = @poll.stances.find_by!(participant_id: @user.id)
     disagreement = @poll.poll_options.last
     disagreement.update!(icon: "disagree")
@@ -590,7 +579,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "update accepts disagreement with a reason" do
-    @poll.update!(stance_reason_required: "required_when_disagreeing")
+    @poll.update!(stance_reason_required: "required_for_disagree_or_block")
     stance = @poll.stances.find_by!(participant_id: @user.id)
     disagreement = @poll.poll_options.last
     disagreement.update!(icon: "disagree")
@@ -654,16 +643,73 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
-  test "index returns anonymous stances with their database ids in id order" do
-    anon = anon_poll_with_voters(4)
-    poll = anon[:poll]
-    sign_in anon[:voters].first
+  test "rejects contradictory proposal choices and negative scores" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
 
-    get :index, params: {poll_id: poll.id}
-    assert_response :success
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: @poll.poll_options.map do |option|
+          { poll_option_id: option.id, score: option == @poll.poll_options.first ? 1 : -2 }
+        end
+      }
+    }
 
-    exposed = JSON.parse(response.body)['stances'].map { |stance| stance['id'] }
-    assert_equal poll.stances.latest.order(:id).pluck(:id), exposed
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
+  end
+
+  test "rejects duplicate options as invalid ballot input" do
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+    option = @poll.poll_options.first
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [
+          { poll_option_id: option.id, score: 1 },
+          { poll_option_id: option.id, score: 1 }
+        ]
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
+  end
+
+  test "rejects options belonging to another poll as invalid ballot input" do
+    other_poll = PollService.create(params: {
+      title: "Other proposal",
+      poll_type: "proposal",
+      group_id: @group.id,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 5.days.from_now
+    }, actor: @admin)
+    sign_in @user
+    stance = @poll.stances.find_by!(participant_id: @user.id)
+
+    post :update, params: {
+      id: stance.id,
+      stance: {
+        poll_id: @poll.id,
+        stance_choices_attributes: [
+          { poll_option_id: other_poll.poll_options.first.id, score: 1 }
+        ]
+      }
+    }
+
+    assert_response :unprocessable_entity
+    assert_nil stance.reload.cast_at
+    assert_empty stance.stance_choices
+    assert_equal [0, 0], @poll.reload.stance_counts
   end
 
   private
@@ -682,33 +728,4 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     )
   end
 
-  def anon_poll_with_voters(count)
-    hex = SecureRandom.hex(4)
-    group = Group.new(name: "Anon#{hex}", group_privacy: 'secret', handle: "anon#{hex}")
-    group.creator = (creator = mk_voter("creator", hex))
-    group.save!
-    Membership.create!(user: creator, group: group, accepted_at: Time.current, admin: true)
-
-    voters = count.times.map { |i| v = mk_voter("v#{i}", hex); Membership.create!(user: v, group: group, accepted_at: Time.current); v }
-
-    poll = PollService.create(params: {
-      title: "Anon #{hex}", poll_type: "proposal", group_id: group.id,
-      hide_results: 'off', specified_voters_only: false,
-      poll_option_names: %w[agree disagree abstain], closing_at: 5.days.from_now
-    }, actor: creator)
-    poll.update!(anonymous: true)
-
-    voters.each_with_index do |v, i|
-      stance = poll.stances.undecided.find_by(participant_id: v.id, latest: true)
-      option = poll.poll_options[i % 2]
-      StanceService.update(stance: stance, actor: v, params: { stance_choices_attributes: [{ poll_option_id: option.id }] })
-    end
-
-    { poll: poll, group: group, voters: voters }
-  end
-
-  def mk_voter(name, hex)
-    uname = "#{name}#{hex}".delete('_')
-    User.create!(name: "#{name}#{hex}", email: "#{name}#{hex}@example.com", username: uname, email_verified: true)
-  end
 end

@@ -1,5 +1,10 @@
 ---
 da:
+  install_app:
+    install_title: Installer %{site_name}
+    install_description: Føj %{site_name} til din hjemmeskærm for hurtigere adgang
+    install_button: Installer
+    ios_install_description: Åbn Del i Safari, og vælg Føj til hjemmeskærm
   start_trial:
     title: Start en gratis prøveversion af Loomio
     intro: Tak for din interesse i Loomio. Vi er glade for at kunne tilbyde dig en %{day}-dages gratis prøveperiode, så du kan se, om Loomio passer godt til din organisation.
@@ -188,6 +193,7 @@ da:
     prefix_eg: f.eks. %{val}
     are_you_sure: Er du sikker?
     loomio_help: Loomio hjælp
+    user_manual: Brugervejledning
     visit_loomio_help: Besøg Loomio hjælp
     help_and_guides: Hjælp og vejledninger
     please_wait: Vent venligst
@@ -355,9 +361,16 @@ da:
       flash: Bekræftelsesmail sendt!
       helptext_and_signout: Du kan flette kontoen under <strong>%{sourceEmail}</strong> ind i kontoen <strong>%{targetEmail}</strong> . Klik på Bekræft, og en bekræftelsesmail sendes til %{targetEmail} for at starte processen. Du logges ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
       flash_and_signout: Bekræftelsesmail sendt til %{targetEmail}. Du er nu logget ud, så du kan logge ind som målkontoen for at fuldføre fletningen.
+      generic_helptext: Indtast e-mailadressen for den anden konto. Hvis den konto findes, sender Loomio den en e-mail med instruktioner til at bekræfte sammenflettelsen.
+      email_label: Anden kontos e-mail
+      send_verification: Send bekræftelsesmail
+      generic_flash_and_signout: Hvis en konto bruger den e-mailadresse, er der sendt en bekræftelsesmail. Du er nu logget ud, så du kan fortsætte med den anden konto.
+      destination_helptext: Denne konto (%{sourceEmail}) vil blive flettet ind i destinationskontoen. Indtast destinationskontoens e-mailadresse. Hvis den findes, sender Loomio en e-mail til adressen for at bekræfte fletningen.
+      destination_email_label: Destinationskontoens e-mailadresse
     email_taken: Beklager, den e-mail er allerede knyttet til en anden bruger. Tilhører den e-mail dig?
     find_out_more: Find ud af mere.
     placeholder_modal_text: <p>Hvis du gerne vil flette to konti sammen, skal du blot indtaste den respektive e-mailadresse (der hører til den anden konto) i e-mailfeltet på din profilside og følge instruktionerne, der vises.</p><p> Brug for hjælp? <a href="/contact" target="_blank">Kontakt os</a> .
+    email_may_belong_to_another_account: Hvis denne adresse tilhører en anden konto, kan du flette kontiene
   emoji_picker:
     search: Søg
     common: Hyppigt brugt
@@ -433,18 +446,26 @@ da:
     title_label: Titel
     hint: 'Tip til næste gang: Prøv at fremhæve noget tekst, før du klikker på "Fastgør".'
   change_volume_form:
+    context_title:
+      thread: Indstillinger for trådnotifikationer
+      group: Indstillinger for gruppenotifikationer
+      default: Standardindstillinger for notifikationer
+    context:
+      thread: denne tråd
+      group: denne gruppe
+      default: grupper du deltager i
     explain_scope:
       thread: Dette ændres, når du får besked om denne tråd
       group: Dette ændres, når du får besked om alle tråde i gruppen
     simple:
       label: Notifikationer
       loud: Abonneret
-      normal: Normal
       quiet: Ignorér
       question: Hvornår vil du have besked?
       loud_explain: når der er aktivitet
       normal_explain: når nogen beder om din opmærksomhed
       quiet_explain: ingen meddelelser
+      normal: Normal
     loud_label: Al aktivitet
     normal_label: Normal
     quiet_label: Ingen emails
@@ -515,6 +536,36 @@ da:
     normal_option: Når nogen vil have min opmærksomhed (når jeg får besked)
     quiet_option: Ingen e-mails om denne tråd (Fra)
     quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
+    volume_email_label: E-mail
+    volume_push_label: Push
+    all_activity_option: Al aktivitet
+    when_notified_option: Når du får besked
+    muted_option: Slået fra
+    volume_channel_label: Hvordan skal vi opdatere jer?
+    email_channel: E-mail
+    push_channel: Push
+    email_and_push_channel: E-mail og push
+    off_option: Slukket
+    apply_to_all_threads_in_group: Anvend disse indstillinger på alle tråde i %{group}
+    delivery_method: Leveringsmetode
+    how_do_you_want_to_stay_updated: Hvordan vil du holde dig opdateret?
+    catch_up_daily_hint: Din "catch-tap" er en daglig e-mail med usete notifikationer og ulæst aktivitet
+    catch_up_every_second_day_hint: Din "catch-tap" er en e-mail, der sendes hver anden dag med usete notifikationer og ulæst aktivitet
+    catch_up_weekly_hint: Din "catch-up" er en ugentlig e-mail med usete notifikationer og ulæst aktivitet
+    catch_up_only_option: Kun catch-up
+    no_email_updates_option: Ingen e-mailopdateringer
+    no_push_updates_option: Ingen push-opdateringer
+    in_app_only_option: Kun i appen
+    catch_up_only_description: Inkluder aktivitet fra %{context} i min opdatering
+    catch_up_only_with_notifications_description: Inkluder notifikationer og anden aktivitet fra %{context} i min opdatering
+    no_email_updates_description: Send mig ikke e-mails om aktivitet i %{context}
+    no_push_updates_description: Send ikke push-notifikationer om aktivitet i %{context}
+    email_when_notified_description: Send mig en e-mail, når jeg får besked
+    email_when_notified_with_catch_up_description: Send mig en e-mail, når jeg får besked, og inkluder resten i min opdatering
+    push_when_notified_description: Send en push-besked, når jeg får besked
+    push_when_notified_with_catch_up_description: Send en push-notifikation, når jeg får besked, og inkluder resten i min "catch-up"-funktion.
+    email_all_activity_description: Send mig en e-mail, når der er aktivitet i %{context}
+    push_all_activity_description: Send en push-besked, når der er aktivitet i %{context}
   inbox:
     clear: Ryd
     latest: Seneste
@@ -620,6 +671,16 @@ da:
     email_notifications: E-mail når du får besked
     email_none: Ingen e-mails
     new_to_you: Ny for dig
+    email_and_push_when_notified: E-mail og pushbesked, når du får besked
+    email_when_notified: E-mail, når du får besked
+    push_when_notified: Pushbesked, når du får besked
+    daily_catch_up_email: Daglig opsummeringsmail
+    in_app_only: Kun i appen
+    email_and_device_when_notified: E-mail- og enhedsnotifikationer ved meddelelse
+    device_notification_when_notified: Enhedsnotifikation ved meddelelse
+    no_notifications: Ingen notifikationer
+    catch_up_email_every_second_day: Opfølgningsmail hver anden dag
+    weekly_catch_up_email: Ugentlig e-mail med opfølgning
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match
@@ -679,6 +740,7 @@ da:
     light_blue: Lyseblå
     dark_blue: Mørkeblå
     whats_new: Hvad er nyt?
+    mobile_app_settings: Mobilindstillinger
   membership_card:
     group_members: Gruppemedlemmer
     poll_members: "%{pollType} medlemmer"
@@ -755,6 +817,7 @@ da:
       new_discussion: "%{actor} startede en diskussion: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: Din anmodning om at blive medlem af %{title} blev afvist
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -793,6 +856,7 @@ da:
       new_comment: "%{actor} kommenterede i en diskussion"
       outcome_updated: "%{actor} opdaterede resultatet"
       thread_locked: "%{actor} låste tråden"
+      membership_request_declined: Din anmodning om at blive medlem af %{title} blev afvist
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -837,6 +901,7 @@ da:
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
       thread_locked: "%{actor} låste tråden: %{title}"
+      membership_request_declined: Din anmodning om at blive medlem af %{title} blev afvist
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -934,7 +999,7 @@ da:
     audiences:
       group: "%{name}"
       everyone_in_the_group: Alle i gruppen
-      discussion_group: Alle i tråden
+      topic: Alle i tråden
       voters: Alle inviterede til at stemme
       decided_voters: Alle der har stemt
       undecided_voters: Ubeslutsomme vælgere
@@ -1167,6 +1232,8 @@ da:
     membership_requested: Anmodet om medlemsskab
     messages:
       joined_group: Du er nu medlem af %{group}
+    membership_request_declined: 'Din anmodning om at deltage blev afvist: %{reason}'
+    request_membership_again: Anmod om at deltage igen
   membership_request_form:
     heading: Anmod om at blive medlem
     name_label: Nan
@@ -1211,6 +1278,8 @@ da:
     body: Er du sikker på, at du vil slette denne undergruppe? Alle tråde, afstemninger, filer og andet gruppeindhold slettes permanent. Det anbefales, at du eksporterer gruppedataene og manuelt downloader vigtige filer, før du fortsætter.
     confirm: Skriv '%{name}' for at bekræfte, at du vil slette denne gruppe.
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
+    scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
+    deletion_after_grace_period: Denne gruppe er ikke tilgængelig og vil blive slettet permanent efter %{days} dage
   group_page:
     stats: Gruppestatistik
     threads: Debatter
@@ -1418,7 +1487,7 @@ da:
     remove_background: fjern baggrund
     remove_logo: fjern logoet
     members_can_create_templates: Medlemmer kan oprette skabeloner
-    members_can_create_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger. Skabeloner oprettet af medlemmer vil være skjult, indtil en administrator viser dem igen.
+    members_can_create_discussion_and_poll_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger
     members_can_start_discussions_v2: Medlemmer kan starte nye diskussioner
     members_can_start_discussions_help_v2: Tillad medlemmer at starte nye diskussioner i gruppen
     members_can_edit_discussions_v2: Medlemmer kan administrere diskussioner og kommentarer
@@ -1427,6 +1496,8 @@ da:
     handle_changed_hint: Din tidligere URL og e-mailadresse vil omdirigere til din nye adresse.
     members_can_create_tags: Medlemmer kan oprette tags
     members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
+    non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
+    non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1447,6 +1518,11 @@ da:
     messages:
       request_approved_success: Andmodning om medlemskab godkendt
       request_ignored_success: Andmodning om medlemskab ignoréret
+      request_declined_success: Medlemskabsanmodning afvist
+    decline: Nedgang
+    decline_request: Afvis medlemsanmodning
+    decline_reason: Årsag til afslag
+    decline_help: Afslag sender din begrundelse til ansøgeren via e-mail. De kan indsende en ny anmodning. Ignorer lukker anmodningen uden at give dem besked.
   invitation_form:
     group_url: Gruppe-URL
     reusable_invitation_link: Genanvendeligt invitationslink
@@ -1535,6 +1611,8 @@ da:
     online_field: 'Online: %{value}'
     invited: Inviteret %{value}
     message_user: Besked %{name}
+    recent_activity: Seneste aktivitet
+    no_recent_activity: Ingen nylig aktivitet
   contact_request_form:
     modal_title: E-mail %{name}
     message_placeholder: Præsentér dig selv og del, hvorfor du gerne vil i kontakt.
@@ -1625,8 +1703,7 @@ da:
     email_newsletter: Loomio nyhedsbrev
     email_newsletter_description: Få opdateringer om nye funktioner, træning, begivenheder i din by og fremtiden for Loomio. Normalt 2 eller 3 e-mails om året.
     email_catch_up_day: Opsummerende e-mail
-    on_participation_label: Abonnér ved deltagelse
-    on_participation_description: Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme.
+    digest_email: Opsummerende e-mail
     announcement_label: Normal
     announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
     mentioned_label: Omtaler og svar
@@ -1642,8 +1719,14 @@ da:
     learn_more: Få mere at vide om e-mail-indstillinger...
     mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
     daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
+    digest_email_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
     never: Aldrig
     send_email: Send e-mail
+    group_notifications: Gruppemeddelelser
+    group_notifications_description: Skift aktivitetsniveau og kanal for dine grupper
+    choose_email_and_push_updates: Vælg separate indstillinger for e-mail og push
+    catch_up_email: Indhentningsmail
+    catch_up_email_description: Vælg, hvornår du vil modtage en opdatering med usete notifikationer og ulæst aktivitet
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -2061,6 +2144,7 @@ da:
     order_by_created_desc: Nyeste
     order_by_admin_desc: administratorer
     loaded_of_total: "%{loaded} af %{total}"
+    topics_loaded_of_total: "%{loaded} af %{total}"
     view_requests: Se anmodninger
     header_name: Navn
     header_username: Brugernavn
@@ -2123,7 +2207,6 @@ da:
     voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
     unable_to_vote: Du er ikke blevet inviteret til at stemme på denne %{poll_type}
     anonymous_votes_are_stored_separately_from_voter_identities: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises efter afstemningen er afsluttet.
-    legacy_anonymous_voting_format: Denne afstemning bruger det traditionelle anonyme afstemningsformat
     anonymous_vote_cannot_be_changed: Du kan ikke gennemgå eller ændre din stemme, efter du har indsendt den
     anonymous_vote_recorded: Din stemme blev registreret
     legacy_vote_reasons: Begrundelser fra tidligere stemmer
@@ -2382,7 +2465,6 @@ da:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> flyttede tråden fra <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lukkede tråden"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> genåbnede tråden"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> oprettede en forgrening af denne tråd: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delte et resultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> genåbnede %{polltype}"
@@ -2415,6 +2497,7 @@ da:
     sign_up_as: Opret konto som %{email}
     sign_in_as: Log ind som %{name}
     continue_with_provider: Fortsæt med %{provider}
+    sign_in_with_provider: Log ind med %{provider}
     continue_with_email: Fortsæt med e-mail
     or_enter_your_email: Eller indtast din e-mailadresse
     enter_your_name: Indtast dit navn
@@ -2473,6 +2556,22 @@ da:
     invalid_login: Kan ikke logge dig ind med disse oplysninger
     login_link_rate_limited: Der er anmodet om for mange login-e-mails fra dette netværk. Vent en time, og prøv igen.
     send_login_link_error: Noget gik galt under afsendelsen af login-e-mailen. Prøv igen.
+    sign_in_with_passkey: Log ind med en adgangsnøgle
+    passkey_authentication_failed: Vi kunne ikke logge dig ind med den adgangsnøgle
+    passkey_registration_failed: Vi kunne ikke gemme adgangskoden
+    passkey_default_name: Adgangsnøgle
+    local_login_disabled: Dette websted kræver single login
+    email_me_a_sign_in_code: Send mig en loginkode via e-mail
+    sign_in_with_code: Log ind med en kode
+    new_to_site: Ny her?
+    passkey_recent_authentication_required: Log ind igen, før du ændrer dine adgangskoder
+    email_code_help: Indtast din e-mailadresse, så sender vi dig en sekscifret loginkode
+    or_sign_in_with_password: Eller log ind med en adgangskode
+    login_link_sent_if_account_exists: Hvis der findes en konto til %{email}, sender vi en loginkode
+    use_a_passkey: Brug en adgangsnøgle
+    send_me_a_code: Send mig en kode
+    email_code_help_short: Vi sender en sekscifret kode til din e-mailadresse
+    login_link_sent_if_account_exists_sentence: Hvis der findes en konto til %{email}, sender vi en loginkode.
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse
@@ -2614,6 +2713,14 @@ da:
     tags_per_interval: Tags pr. %{interval}
     all_groups_and_direct_threads: Alle grupper og direkte tråde
     custom_selection: Brugerdefineret valg
+    all_votes_cast: Alle afgivne stemmer
+    votes_cast: Afgivne stemmer
+    votes_issued: Afgivne stemmer
+    votes_missed: Stemmer mistet
+    voting_record_per_user: Stemmehistorik pr. bruger
+    yes_label: Ja
+    no_label: Ingen
+    delegates_only: Kun delegerede
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion
@@ -2685,8 +2792,6 @@ da:
     anonymous:
       title: Anonyme vælgere
       helptext_on: Når dette er valgt, vises deltageroplysninger ikke sammen med hvert svar.
-    voter_can_add_options:
-      title: Vælgerne kan tilføje alternative muligheder
     can_respond_maybe:
       title: Vælgerne kan svare "hvis det er nødvendigt"
     allow_long_reason:
@@ -2813,7 +2918,10 @@ da:
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme stemmer gemmes separat fra vælgeridentiteter. Resultaterne vises, når afstemningen er afsluttet. Vælgere kan ikke tilføje årsager, gennemgå deres stemme efter at have indsendt den eller ændre deres stemme.
     anonymous_voting_explanation: Gør det umuligt at vide, hvordan nogen har stemt. Anonyme stemmer registreres separat fra vælgeridentiteter. Resultaterne vises først, når afstemningen er afsluttet. Vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter at have afgivet den eller ændre deres stemme.
     anonymous_voting_risk_explanation: Anonyme stemmer gemmes separat fra vælgernes identitet. Resultaterne vises først, når afstemningen er afsluttet, og vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter afgivelse eller ændre den. Disse tiltag reducerer risikoen for at knytte en person til en stemme, men resultaterne kan stadig afsløre oplysninger, når få personer er stemmeberettigede eller stemmer, resultatet er enstemmigt, stemmemønstre er særlige, eller vælgere fortæller om deres valg.
+    anonymous_votes_stored_separately: Anonyme stemmer gemmes separat fra vælgernes identitet. Resultaterne vises først, når afstemningen er afsluttet, og vælgere kan ikke tilføje begrundelser, gennemgå deres stemme efter afgivelse eller ændre den.
     stance_reason_required_when_disagreeing: Påkrævet ved uenighed
+    stance_reason_required_for_disagree_or_block: Kræves for uenighed eller blokering
+    stance_reason_required_for_block: Påkrævet ved blokering
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere
@@ -2957,9 +3065,6 @@ da:
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: Elected in round %{round}
-    eliminated_in_round: Eliminated in round %{round}
-    tied_in_round: Tied in round %{round}
     votes: stemmer
     candidate: Kandidat
     round_elected: Valgt runde
@@ -2969,6 +3074,9 @@ da:
     round_details: Detaljer runde for runde
     view_full_results: Se alle resultater
     results_available_when_closed: Resultaterne vil være tilgængelige, når afstemningen slutter
+    elected_in_round: Valgt i runde %{round}
+    eliminated_in_round: Elimineret i runde %{round}
+    tied_in_round: Uafgjort i runde %{round}
   lock_thread_modal:
     body: Lås tråde for at fjerne dem fra listen over åbne tråde og forhindre folk i at kommentere.
     explanation: Lås tråde for at forhindre folk i at kommentere eller foretage yderligere ændringer
@@ -2998,3 +3106,48 @@ da:
     nobody_will_be_notified: Ingen vil blive underrettet
     one_person_will_be_notified: 1 person vil blive underrettet
     x_people_will_be_notified: "%{count} personer vil blive underrettet"
+  push_notifications:
+    title: Push-notifikationer
+    subtitle: Modtag notifikationer i denne browser
+    not_supported: Push-notifikationer er ikke tilgængelige i denne browser
+    permission_denied: Push-notifikationer er blokeret i dine browserindstillinger
+    manage_devices: Administrer push-notifikationsenheder
+    enabled: Push-notifikationer aktiveret for denne browser
+    disabled: Push-notifikationer er deaktiveret for denne browser
+    device_removed: Enhed til push-notifikationer fjernet
+    enable_device: Aktivér i denne browser
+    disable_device: Deaktiver i denne browser
+    devices: Aktiverede browsere
+    browser_device: Browser
+    remove_device: Fjern browser
+    enable_from_loomio: Aktivér push-notifikationer fra notifikationsindstillingerne, mens du er logget ind på Loomio
+    ios_add_to_home_screen_before_enabling: På iPhone eller iPad skal du bruge Del til at tilføje Loomio til din startskærm. Åbn Loomio fra det nye ikon, og aktiver derefter push-notifikationer her.
+  group_follow:
+    follow: Følg opdateringer
+    unfollow: Hold op med at følge opdateringer
+    followed: Du følger nu opdateringer fra denne gruppe
+    unfollowed: Du følger ikke længere opdateringer fra denne gruppe
+  passkey_settings:
+    title: Adgangsnøgler
+    helptext: Med adgangsnøgler kan du logge ind med din enhed uden at indtaste din e-mailadresse eller adgangskode
+    none: Du har ikke tilføjet en adgangsnøgle
+    name: Adgangsnøglenavn
+    name_placeholder: For eksempel, arbejdsbærbar computer
+    add: Tilføj adgangsnøgle
+    added: Adgangsnøgle tilføjet
+    created_at: Tilføjet %{date}
+    remove_named: Fjern %{name}
+    remove_confirm: Fjern adgangskoden %{name}?
+    removed: Adgangsnøgle fjernet
+    remove_failed: Adgangsnøglen kunne ikke fjernes
+  credential_prompt:
+    title: Tilføj en anden måde at logge ind på
+    helptext: Tilføj en adgangskode eller angiv en adgangskode, så du kan logge ind uden at vente på en kode sendt via e-mail
+    add_passkey: Tilføj en adgangsnøgle
+    set_password: Indstil en adgangskode
+    not_now: Ikke nu
+    passkey_description: En adgangsnøgle giver dig mulighed for hurtigt at logge ind med din enheds fingeraftryk, ansigtslås eller skærmlås
+    set_new_password: Indstil en ny adgangskode
+  account_completion:
+    complete_your_account: Færdiggør din konto
+    continue: Fortsætte

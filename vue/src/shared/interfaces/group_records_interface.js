@@ -21,14 +21,8 @@ export default class GroupRecordsInterface extends BaseRecordsInterface {
 
   findOrFetch(id, options) {
     if (options == null) { options = {}; }
-    const record = this.fuzzyFind(id);
-    if (record) {
-      this.remote.fetchById(id, options);
-      return Promise.resolve(record);
-    } else {
-      return this.remote.fetchById(id, options)
+    return this.remote.fetchById(id, options)
       .then(() => this.fuzzyFind(id));
-    }
   }
 
   fetchByParent(parentGroup) {
@@ -56,5 +50,13 @@ export default class GroupRecordsInterface extends BaseRecordsInterface {
     return this.fetch({
       path: 'suggest_handle',
       params: {name, parent_handle: parentHandle}});
+  }
+
+  follow(group) {
+    return this.recordStore.remote.post('group_follows', {group_id: group.id});
+  }
+
+  unfollow(group) {
+    return this.recordStore.remote.delete(`group_follows/${group.id}`);
   }
 };
