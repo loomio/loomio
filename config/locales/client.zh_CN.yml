@@ -768,6 +768,7 @@ zh_CN:
       group: 从组中移除
       poll: 从 %{pollType} 中移除
     cancel_invitation: 取消邀请
+    edit_membership: 编辑会员资格
   notification_models:
     discussion: 讨论：
     comment: 评论
@@ -1576,6 +1577,8 @@ zh_CN:
     members_can_create_tags_help: 允许成员在标记帖子和投票时创建新标签。
     non_members_can_start_discussions: 非会员也可以发起讨论
     non_members_can_start_discussions_help: 允许非成员使用本群组提供的模板发起讨论。
+    vote_weights_allowed: 允许投票权重
+    vote_weights_allowed_help: 允许某些选票比其他选票具有更高的权重。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -1673,11 +1676,17 @@ zh_CN:
   membership_form:
     modal_title:
       group: 设置标题
+      membership: 编辑会员资格
     title_helptext:
       group: 此标题将显示在 %{name} 的名字旁边。使用它可以让成员了解他们的角色。
     title_label: 标题
     title_placeholder: 例如“协调员”或“促进者”
     updated: 会员头衔已更新
+    membership_updated: 会员资格已更新
+    weight_label: 投票权重
+    weight_helptext: 当成员被添加到新的投票中时，此值将复制到该成员的投票记录中。更改此值不会影响现有投票。将其设置为 0 可允许成员投票而不增加分数。
+    weight_invalid: 请输入一个介于 0 到 1,000,000 之间的整数。
+    weight_invalid_decimal: 请输入一个介于 0 到 1,000,000 之间的数字，最多保留三位小数。
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名
@@ -2038,6 +2047,7 @@ zh_CN:
     participation_records_explanation: 这显示了哪些人有资格投票以及他们是否投票。但它并不显示任何人的投票情况。
     voted: 投票
     not_voted: 未投票
+    email_addresses_for_group_admins: 电子邮件地址仅对群组管理员显示，以便区分同名人员。
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进
@@ -2199,6 +2209,10 @@ zh_CN:
     status: 地位
     your_vote_is_requested: 请您投票
     browse_example_make_a_copy_hint: "<b>点击复制图标</b>，以示例为起点，创建一个新的投票模板。"
+    weighted_score: 分数
+    equal_weight_score: 等权重得分
+    assigned_weight_score: 分配权重分数
+    view_votes: 查看投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2266,6 +2280,8 @@ zh_CN:
     last_seen: 最后上线日期：%{date}
     invited_by_name: 受邀人：%{name}
     accepted: 成员
+    edit_vote_weights: 修改投票权重
+    vote_weight_value: 重量 %{weight}
   polls_panel:
     new_poll: 最新民调
     any_type: 所有类型
@@ -2310,6 +2326,7 @@ zh_CN:
     legacy_vote_reasons: 历史投票原因
     legacy_vote_reasons_description: 使用传统匿名投票方式投出的选票的理由以纯文本形式显示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票后，您将无法查看或更改您的投票。投票结束后才会公布结果。
+    variable_vote_weights_explanation: 本次民意调查采用可变权重，根据设定的权重，不同投票者的投票对结果的影响程度可能有所不同。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2417,6 +2434,13 @@ zh_CN:
     unredact_reason_helptext: 文本和附件将再次可见的原因
     unredact_reason_confirm: 恢复原因
     unredact_reason_success: 投票理由已恢复
+    all_voters: 所有选民
+    weight: 重量
+    vote_weight_column: 投票权重
+    stance: 投票
+    vote_date: 投票结果
+    participation_records_restricted: 投票协调员可以查阅投票记录。
+    vote_weight: 重量 %{weight}
   poll_common_undecided_panel:
     show_undecided: 显示 %{count} 个未决定
     show_invitations: 待处理的邀请
@@ -2571,6 +2595,27 @@ zh_CN:
     stance_reason_required_when_disagreeing: 意见不一致时需要填写
     stance_reason_required_for_disagree_or_block: 不同意或阻止时必填
     stance_reason_required_for_block: 阻止时必填
+    voters: 选民
+    manage_voters: 管理选民
+    search_voters: 搜索选民
+    remove_voter: 移除选民
+    voter_page_count: "%{first}–%{last} 共 %{total}"
+    vote_weights: 投票权重
+    vote_weights_description: 为每位投票者分配一个整数权重。结果将显示投票者人数和加权得分。所有能够查看投票结果的人都可以看到投票者的权重。
+    vote_weights_description_decimal: 为每位投票者分配一个权重，权重最多可精确到小数点后三位。结果将显示投票者人数和加权得分。所有能够查看投票结果的人都可以看到投票者的权重。
+    use_vote_weights: 使用投票权重
+    vote_weights_off_warning: 关闭投票权重会将所有选民的权重设为 1，并移除特定投票的权重。
+    vote_weights_on_group: 启用投票权重后，将复制当前组成员的权重。其他投票者的权重为 1。
+    vote_weights_on_direct: 启用投票权重后，所有选民的权重均为 1。
+    vote_weight_for: "%{name} 的投票权重"
+    save_vote_weights: 保存投票权重
+    vote_weights_updated: 投票权重已更新
+    weight_for_all: 所有重量
+    set_all_vote_weights: 设置所有重量
+    set_all: 设置全部
+    use_member_vote_weights: 使用当前成员投票权重
+    set_one_vote_weight: 将所有选民的权重设为1。
+    member_vote_weights_hint: 没有当前团体成员身份的选民权重为 1
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

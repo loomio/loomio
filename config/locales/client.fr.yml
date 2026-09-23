@@ -778,6 +778,7 @@ fr:
     revoke_admin: Révoquer l'administrateur
     make_delegate: Faire déléguer
     revoke_delegate: Révoquer le délégué
+    edit_membership: Modifier l'adhésion
   notification_models:
     comment: commentaire dans
     poll: 'sondage:'
@@ -1525,6 +1526,8 @@ fr:
     members_can_create_tags_help: Autoriser les membres à créer de nouvelles étiquettes lors de l'étiquetage des sujets et des sondages.
     non_members_can_start_discussions: Les non-membres peuvent démarrer des discussions
     non_members_can_start_discussions_help: Autorise les non-membres à démarrer une discussion à partir de l'un des modèles de ce groupe
+    vote_weights_allowed: Autoriser les pondérations de vote
+    vote_weights_allowed_help: Accorder plus de poids à certains votes qu'à d'autres.
   group_export_modal:
     title: Exporter les données de ton groupe
     body: |
@@ -1631,11 +1634,17 @@ fr:
   membership_form:
     modal_title:
       group: Définir un rôle dans ce groupe
+      membership: Modifier l'adhésion
     title_helptext:
       group: Ce rôle apparaîtra après le nom de %{name} dans ce groupe. Utilise-le pour informer les personnes de leur rôle.
     title_label: rôle
     title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
     updated: Rôle mis à jour
+    membership_updated: Mise à jour de l'adhésion
+    weight_label: Poids du vote
+    weight_helptext: Cette valeur est automatiquement ajoutée au vote du membre lors de son ajout à un nouveau sondage. La modifier n'affecte pas les sondages existants. Définis-la sur 0 pour permettre au membre de voter sans que son vote ne soit pris en compte dans le score.
+    weight_invalid: Saisis un nombre entier compris entre 0 et 1 000 000
+    weight_invalid_decimal: Saisis un nombre compris entre 0 et 1 000 000 avec jusqu'à trois décimales
   user_name_modal:
     user_name_updated: Nom d'utilisateur mis à jour
     set_user_name: Définir le nom d'utilisateur
@@ -2140,6 +2149,10 @@ fr:
     status: Statut
     your_vote_is_requested: Ton vote est demandé
     browse_example_make_a_copy_hint: "<b>Clique sur l'icône de copie</b> pour créer un nouveau modèle de sondage en utilisant l'exemple comme point de départ"
+    weighted_score: Score
+    equal_weight_score: Score à pondération égale
+    assigned_weight_score: Score de pondération attribué
+    view_votes: Voir les votes
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2208,6 +2221,8 @@ fr:
     delegate: Déléguer
     delegate_popover: Un délégué est un membre du groupe avec droit de vote
     delegates: Délégués
+    edit_vote_weights: Modifier les pondérations des votes
+    vote_weight_value: Poids %{weight}
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -2254,6 +2269,7 @@ fr:
     legacy_vote_reasons: Motifs des votes antérieurs
     legacy_vote_reasons_description: Les motifs des votes exprimés selon l'ancien format de vote anonyme sont affichés en texte brut
     anonymous_voting_participant_notice: Le vote est anonyme. Tu ne peux ni consulter ni modifier ton vote après l'avoir soumis. Les résultats ne sont disponibles qu'après la clôture du vote.
+    variable_vote_weights_explanation: Ce sondage utilise des pondérations de vote variables, permettant ainsi au vote d'une personne d'influencer davantage le résultat que celui d'une autre, selon la pondération qui lui est attribuée.
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2322,6 +2338,13 @@ fr:
     unredact_reason_helptext: La raison pour laquelle le texte et les pièces jointes seront à nouveau visibles
     unredact_reason_confirm: Rétablir la raison
     unredact_reason_success: Motif du vote rétabli
+    all_voters: Tous les électeurs
+    weight: Poids
+    vote_weight_column: Poids du vote
+    stance: Vote
+    vote_date: Vote du
+    participation_records_restricted: Les listes de participation sont accessibles aux coordinateurs de sondage.
+    vote_weight: Poids %{weight}
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -2966,6 +2989,27 @@ fr:
     stance_reason_required_when_disagreeing: Requis en cas de désaccord
     stance_reason_required_for_disagree_or_block: Nécessaire pour être en désaccord ou bloquer
     stance_reason_required_for_block: Requis en cas de veto
+    voters: Les électeurs
+    manage_voters: Gérer les électeurs
+    search_voters: Recherche d'électeurs
+    remove_voter: Supprimer l'électeur
+    voter_page_count: "%{first}–%{last} de %{total}"
+    vote_weights: Poids des votes
+    vote_weights_description: Attribuez à chaque électeur un coefficient de pondération entier. Les résultats affichent le nombre de votants et leur score pondéré. La pondération des votants est visible par tous ceux qui peuvent consulter le sondage.
+    vote_weights_description_decimal: Attribuez à chaque électeur un coefficient de pondération, arrondi à trois décimales. Les résultats affichent le nombre de votants et leur score pondéré. Les coefficients de pondération sont visibles par tous les participants au sondage.
+    use_vote_weights: Utiliser les pondérations de vote
+    vote_weights_off_warning: La désactivation de la pondération des votes attribue à chaque électeur un poids de 1 et supprime les pondérations spécifiques à chaque sondage.
+    vote_weights_on_group: L'activation de la pondération des votes copie les poids actuels des membres du groupe. Les autres votants reçoivent un poids de 1.
+    vote_weights_on_direct: L'activation de la pondération des votes attribue à chaque électeur un poids de 1.
+    vote_weight_for: Poids du vote pour %{name}
+    save_vote_weights: Sauvegarder les poids des votes
+    vote_weights_updated: Pondération des votes mise à jour
+    weight_for_all: Poids pour tous
+    set_all_vote_weights: Réglez tous les poids
+    set_all: Tout définir
+    use_member_vote_weights: Utilise les poids de vote actuels des membres
+    set_one_vote_weight: Attribue un poids à chaque électeur
+    member_vote_weights_hint: Les électeurs sans adhésion actuelle à un groupe reçoivent un poids de 1
   poll_receipts_page:
     participation_status_requires_min_votes: Cette liste indique qui avait le droit de voter. Le statut de participation de chaque personne n'est affiché que lorsqu'au moins %{count} personnes ont voté.
     verify_participants: Vérifier les participants
@@ -2980,6 +3024,7 @@ fr:
     participation_records_explanation: Cette liste indique qui pouvait voter et si cette personne a voté. Elle n’indique pas comment chaque personne a voté.
     voted: A voté
     not_voted: N’a pas voté
+    email_addresses_for_group_admins: Les adresses e-mail ne sont visibles qu'aux administrateurs du groupe afin de distinguer les personnes portant le même nom.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:

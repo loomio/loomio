@@ -768,6 +768,7 @@ he:
     revoke_admin: בטל את הניהול
     make_delegate: לעשות נציג
     revoke_delegate: בטל נציג
+    edit_membership: עריכת חברות
   notification_models:
     comment: הערה ב
     poll: 'מִשׁאָל:'
@@ -1502,6 +1503,8 @@ he:
     members_can_create_tags_help: אפשר לחברים ליצור תגיות חדשות בעת תיוג שרשורים וסקרים
     non_members_can_start_discussions: מי שאינם חברים יכולים לפתוח דיונים
     non_members_can_start_discussions_help: אפשר לאנשים שאינם חברים להתחיל דיון מאחת התבניות של קבוצה זו
+    vote_weights_allowed: אפשר משקלי קולות
+    vote_weights_allowed_help: לאפשר לחלק מהקולות להיות בעלות משקל רב יותר מאחרות
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1608,11 +1611,17 @@ he:
   membership_form:
     modal_title:
       group: תן שם לקבוצה
+      membership: עריכת חברות
     title_helptext:
       group: שם זה יופיע לצד השם של %{name} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
     title_label: כותרת
     title_placeholder: 'לדוגמא: מתאם או מאפשר'
     updated: כותרת החברות עודכנה
+    membership_updated: החברות עודכנה
+    weight_label: משקל הצבעה
+    weight_helptext: ערך זה מועתק להצבעת החבר כאשר הוא נוסף לסקר חדש. שינויו אינו משפיע על סקרים קיימים. הגדר אותו ל-0 כדי לאפשר לחבר להצביע מבלי להוסיף לניקוד.
+    weight_invalid: הזן מספר שלם מ-0 עד 1,000,000
+    weight_invalid_decimal: הזן מספר מ-0 עד 1,000,000 עם עד שלוש ספרות אחרי הנקודה
   user_name_modal:
     user_name_updated: שם המשתמש עודכן
     set_user_name: הגדר שם משתמש
@@ -2117,6 +2126,10 @@ he:
     status: סטָטוּס
     your_vote_is_requested: הצבעתך מתבקשת
     browse_example_make_a_copy_hint: "<b>לחץ על סמל ההעתקה</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
+    weighted_score: צִיוּן
+    equal_weight_score: ציון משקל שווה
+    assigned_weight_score: ציון משקל שהוקצה
+    view_votes: הצג הצבעות
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2185,6 +2198,8 @@ he:
     delegate: נָצִיג
     delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
     delegates: נציגים
+    edit_vote_weights: עריכת משקלי קולות
+    vote_weight_value: משקל %{weight}
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2231,6 +2246,7 @@ he:
     legacy_vote_reasons: נימוקים מהצבעות קודמות
     legacy_vote_reasons_description: נימוקים מהצבעות שניתנו באמצעות פורמט ההצבעה האנונימי הישן מוצגים כטקסט רגיל
     anonymous_voting_participant_notice: ההצבעה אנונימית. לא ניתן לעיין או לשנות את הצבעתך לאחר הגשתה. התוצאות אינן זמינות עד לסיום ההצבעה.
+    variable_vote_weights_explanation: סקר זה משתמש במשקלי קולות משתנים, מה שמאפשר לקולו של אדם אחד להשפיע על התוצאה יותר מאשר קולו של אדם אחר, בהתאם למשקל הקולות שהוקצה.
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2299,6 +2315,13 @@ he:
     unredact_reason_helptext: הסיבה לכך שטקסט וקבצים מצורפים יהיו גלויים שוב
     unredact_reason_confirm: סיבה לשחזור
     unredact_reason_success: סיבת ההצבעה שוחזרה
+    all_voters: כל הבוחרים
+    weight: מִשׁקָל
+    vote_weight_column: משקל הצבעה
+    stance: הַצבָּעָה
+    vote_date: הצבעתי על
+    participation_records_restricted: רישומי ההשתתפות זמינים למתאמי הקלפי
+    vote_weight: משקל %{weight}
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות
@@ -2941,6 +2964,27 @@ he:
     stance_reason_required_when_disagreeing: נדרש כאשר אין הסכמה
     stance_reason_required_for_disagree_or_block: נדרש עבור אי הסכמה או חסימה
     stance_reason_required_for_block: נדרש עבור חסימה
+    voters: מצביעים
+    manage_voters: ניהול מצביעים
+    search_voters: חיפוש מצביעים
+    remove_voter: הסר את הבוחר
+    voter_page_count: "%{first}–%{last} מתוך %{total}"
+    vote_weights: משקלי הצבעה
+    vote_weights_description: הקצה לכל מצביע משקל של מספר שלם. התוצאות מציגות גם את מספר המצביעים וגם את הציון המשוקלל. משקלי המצביעים גלויים לכל מי שיכול לצפות בסקר.
+    vote_weights_description_decimal: הקצה לכל מצביע משקל עם עד שלוש ספרות אחרי הנקודה. התוצאות מציגות גם את מספר המצביעים וגם את הניקוד המשוקלל. משקלי המצביעים גלויים לכל מי שיכול לצפות בסקר.
+    use_vote_weights: השתמש במשקלי קולות
+    vote_weights_off_warning: ביטול משקלי הקולות מגדיר לכל מצביע משקל 1 ומסיר משקלים ספציפיים לסקר
+    vote_weights_on_group: הפעלת משקלי הקולות מעתיקה את משקלי חברי הקבוצה הנוכחיים. מצביעים אחרים מקבלים משקל 1.
+    vote_weights_on_direct: הפעלת משקלי קולות מגדירה לכל מצביע משקל 1
+    vote_weight_for: משקל הצבעה עבור %{name}
+    save_vote_weights: שמירת משקלי הצבעה
+    vote_weights_updated: משקלי הקולות עודכנו
+    weight_for_all: משקל לכולם
+    set_all_vote_weights: הגדר את כל המשקלים
+    set_all: הגדר הכל
+    use_member_vote_weights: השתמש במשקלי הצבעות של החברים הנוכחיים
+    set_one_vote_weight: קבע משקל אחד לכל מצביע
+    member_vote_weights_hint: מצביעים ללא חברות קבוצתית נוכחית מקבלים משקל 1
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     verify_participants: אימות משתתפים
@@ -2955,6 +2999,7 @@ he:
     participation_records_explanation: זה מראה מי היה זכאי והאם הוא הצביע. זה לא מראה איך מישהו הצביע.
     voted: הצביעו
     not_voted: לא הצביעו
+    email_addresses_for_group_admins: כתובות דוא"ל מוצגות רק למנהלי קבוצות כדי להבחין בין אנשים בעלי אותו שם
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:

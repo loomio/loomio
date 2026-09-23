@@ -776,6 +776,7 @@ de:
     revoke_admin: Administrator widerrufen
     make_delegate: Delegieren
     revoke_delegate: Delegierten widerrufen
+    edit_membership: Mitgliedschaft bearbeiten
   notification_models:
     comment: kommentieren in
     poll: Umfrage
@@ -1512,6 +1513,8 @@ de:
     members_can_create_tags_help: Erlauben Sie Mitgliedern, beim Taggen von Threads und Umfragen neue Tags zu erstellen.
     non_members_can_start_discussions: Nichtmitglieder können Diskussionen starten
     non_members_can_start_discussions_help: Erlaube Nichtmitgliedern, eine Diskussion anhand einer Vorlage dieser Gruppe zu starten
+    vote_weights_allowed: Stimmgewichtung zulassen
+    vote_weights_allowed_help: Manche Stimmen sollen mehr Gewicht haben als andere.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1618,11 +1621,17 @@ de:
   membership_form:
     modal_title:
       group: Titel innerhalb der Gruppe festlegen
+      membership: Mitgliedschaft bearbeiten
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
     title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
     updated: Mitgliedstchaftstitel überarbeitet
+    membership_updated: Mitgliedschaft aktualisiert
+    weight_label: Stimmgewicht
+    weight_helptext: Dieser Wert wird in die Stimme des Mitglieds übernommen, sobald es zu einer neuen Umfrage hinzugefügt wird. Eine Änderung hat keine Auswirkungen auf bestehende Umfragen. Setze den Wert auf 0, damit das Mitglied abstimmen kann, ohne dass die Stimme in die Gesamtwertung einfließt.
+    weight_invalid: Gib eine ganze Zahl von 0 bis 1.000.000 ein
+    weight_invalid_decimal: Gib eine Zahl von 0 bis 1.000.000 mit bis zu drei Dezimalstellen ein
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen
@@ -2129,6 +2138,10 @@ de:
     status: Status
     your_vote_is_requested: Deine Stimme wird erbeten.
     browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Umfragevorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
+    weighted_score: Punktzahl
+    equal_weight_score: Wertung mit gleichem Gewicht
+    assigned_weight_score: Zugewiesene Gewichtung
+    view_votes: Stimmen ansehen
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2197,6 +2210,8 @@ de:
     delegate: Delegieren
     delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
     delegates: Delegierte
+    edit_vote_weights: Stimmengewichtung bearbeiten
+    vote_weight_value: Gewicht %{weight}
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2245,6 +2260,7 @@ de:
     legacy_vote_reasons: Begründungen früherer Stimmen
     legacy_vote_reasons_description: Die Begründungen der im alten anonymen Abstimmungsformat abgegebenen Stimmen werden als reiner Text angezeigt
     anonymous_voting_participant_notice: Die Abstimmung ist anonym. Du kannst deine Stimme nach dem Absenden weder einsehen noch ändern. Die Ergebnisse sind erst nach Ende der Abstimmung verfügbar.
+    variable_vote_weights_explanation: Diese Umfrage verwendet variable Stimmgewichte, sodass die Stimme einer Person das Ergebnis je nach zugewiesenem Stimmgewicht stärker beeinflussen kann als die einer anderen Person.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2313,6 +2329,13 @@ de:
     unredact_reason_helptext: Der Grundtext und die Anhänge werden wieder sichtbar gemacht.
     unredact_reason_confirm: Wiederherstellungsgrund
     unredact_reason_success: Abstimmungsgrund wiederhergestellt
+    all_voters: Alle Wähler
+    weight: Gewicht
+    vote_weight_column: Stimmgewicht
+    stance: Abstimmung
+    vote_date: Abgestimmt am
+    participation_records_restricted: Die Teilnehmerzahlen stehen den Wahlleitern zur Verfügung.
+    vote_weight: Gewicht %{weight}
   poll_common_undecided_panel:
     show_undecided: Zeige %{count} unentschlossen
     show_invitations: Ausstehende Einladungen anzeigen
@@ -2957,6 +2980,27 @@ de:
     stance_reason_required_when_disagreeing: Erforderlich bei Meinungsverschiedenheiten
     stance_reason_required_for_disagree_or_block: Erforderlich, um abzulehnen oder zu blockieren
     stance_reason_required_for_block: Erforderlich bei einem Veto
+    voters: Wähler
+    manage_voters: Wähler verwalten
+    search_voters: Wähler suchen
+    remove_voter: Wähler entfernen
+    voter_page_count: "%{first}–%{last} von %{total}"
+    vote_weights: Stimmgewichte
+    vote_weights_description: Jedem Wähler wird ein ganzzahliges Gewicht zugewiesen. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch die gewichtete Punktzahl. Die Wählergewichte sind für alle sichtbar, die die Umfrage einsehen können.
+    vote_weights_description_decimal: Jedem Wähler wird ein Gewicht mit bis zu drei Dezimalstellen zugewiesen. Die Ergebnisse zeigen sowohl die Anzahl der Wähler als auch das gewichtete Ergebnis. Die Wählergewichte sind für alle sichtbar, die die Umfrage einsehen können.
+    use_vote_weights: Stimmgewichte verwenden
+    vote_weights_off_warning: Durch das Deaktivieren der Stimmgewichtung wird jeder Wähler auf das Gewicht 1 gesetzt und die umfragespezifischen Gewichtungen werden entfernt.
+    vote_weights_on_group: Durch Aktivieren der Stimmgewichtung werden die aktuellen Stimmgewichte der Gruppenmitglieder übernommen. Andere Wähler erhalten das Gewicht 1.
+    vote_weights_on_direct: Durch Aktivieren der Stimmgewichtung erhält jeder Wähler das Gewicht 1.
+    vote_weight_for: Stimmgewichtung für %{name}
+    save_vote_weights: Stimmengewichte speichern
+    vote_weights_updated: Stimmgewichte aktualisiert
+    weight_for_all: Gewicht für alle
+    set_all_vote_weights: Alle Gewichte einstellen
+    set_all: Alle festlegen
+    use_member_vote_weights: Verwende die aktuellen Stimmgewichte der Mitglieder
+    set_one_vote_weight: Weise jedem Wähler das gleiche Gewicht zu
+    member_vote_weights_hint: Wähler ohne aktuelle Gruppenmitgliedschaft erhalten Gewichtung 1
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     verify_participants: Teilnehmer überprüfen
@@ -2971,6 +3015,7 @@ de:
     participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
+    email_addresses_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt, um Personen mit demselben Namen zu unterscheiden.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:

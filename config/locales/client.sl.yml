@@ -768,6 +768,7 @@ sl:
     revoke_admin: Preklic skrbnika
     make_delegate: Naredi pooblaščenca
     revoke_delegate: Prekliči pooblaščenca
+    edit_membership: Uredi članstvo
   notification_models:
     comment: komentar v
     poll: 'anketa:'
@@ -1498,6 +1499,8 @@ sl:
     members_can_create_tags_help: Dovoli članom ustvarjanje novih oznak pri označevanju niti in anket
     non_members_can_start_discussions: Nečlani lahko začnejo razprave
     non_members_can_start_discussions_help: Dovoli nečlanom, da začnejo razpravo iz ene od predlog te skupine
+    vote_weights_allowed: Dovoli uteži glasov
+    vote_weights_allowed_help: Dovolite, da imajo nekateri glasovi večjo težo kot drugi
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1596,11 +1599,17 @@ sl:
   membership_form:
     modal_title:
       group: Nastavite naslov
+      membership: Uredi članstvo
     title_helptext:
       group: Ta naslov bo prikazan poleg imena %{name} znotraj te skupine. Uporabite ga, da seznanite ljudi s svojo vlogo.
     title_label: naslov
     title_placeholder: Npr. 'Koordinator' ali 'Pospeševalec'
     updated: Naslov članstva posodobljen
+    membership_updated: Članstvo posodobljeno
+    weight_label: Teža glasov
+    weight_helptext: Ta vrednost se kopira v glas člana, ko je ta dodan v novo anketo. Sprememba ne vpliva na obstoječe ankete. Nastavite jo na 0, da član glasuje brez dodajanja rezultata.
+    weight_invalid: Vnesite celo število od 0 do 1.000.000
+    weight_invalid_decimal: Vnesite število od 0 do 1.000.000 z največ tremi decimalnimi mesti.
   user_name_modal:
     user_name_updated: Uporabniško ime posodobljeno
     set_user_name: Nastavite uporabniško ime
@@ -2098,6 +2107,10 @@ sl:
     status: Stanje
     your_vote_is_requested: Zahteva se vaš glas
     browse_example_make_a_copy_hint: "<b>Kliknite ikono za kopiranje</b> , da ustvarite novo predlogo ankete, pri čemer uporabite primer kot izhodišče."
+    weighted_score: Rezultat
+    equal_weight_score: Enaka teža
+    assigned_weight_score: Dodeljena teža
+    view_votes: Ogled glasov
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2166,6 +2179,8 @@ sl:
     delegate: Delegat
     delegate_popover: Delegat je član skupine z glasovalno pravico
     delegates: Delegati
+    edit_vote_weights: Urejanje uteži glasov
+    vote_weight_value: Teža %{weight}
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste
@@ -2212,6 +2227,7 @@ sl:
     legacy_vote_reasons: Razlogi prejšnjih glasov
     legacy_vote_reasons_description: Razlogi za glasove, oddane z uporabo starejše anonimne oblike glasovanja, so prikazani kot navadno besedilo
     anonymous_voting_participant_notice: Glasovanje je anonimno. Po oddaji glasu ga ne morete pregledati ali spremeniti. Rezultati niso na voljo, dokler glasovanje ni zaključeno.
+    variable_vote_weights_explanation: Ta anketa uporablja spremenljive uteži glasov, kar omogoča, da glas ene osebe bolj vpliva na izid kot glas druge osebe, odvisno od dodeljene teže glasov.
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2280,6 +2296,13 @@ sl:
     unredact_reason_helptext: Razlog, zakaj bodo besedilo in priloge ponovno vidne
     unredact_reason_confirm: Razlog za obnovitev
     unredact_reason_success: Razlog za glasovanje je bil obnovljen
+    all_voters: Vsi volivci
+    weight: Teža
+    vote_weight_column: Teža glasov
+    stance: Glasujte
+    vote_date: Glasovano o
+    participation_records_restricted: Zapisi o udeležbi so na voljo koordinatorjem volitev
+    vote_weight: Teža %{weight}
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodločenih
     show_invitations: Prikaži čakajoča povabila
@@ -2922,6 +2945,27 @@ sl:
     stance_reason_required_when_disagreeing: Obvezno v primeru nestrinjanja
     stance_reason_required_for_disagree_or_block: Zahtevano za nestrinjanje ali blokiranje
     stance_reason_required_for_block: Zahtevano za blokiranje
+    voters: Volivci
+    manage_voters: Upravljanje volivcev
+    search_voters: Iskanje volivcev
+    remove_voter: Odstrani volivca
+    voter_page_count: "%{first}–%{last} od %{total}"
+    vote_weights: Uteži glasov
+    vote_weights_description: Vsakemu volivcu dodelite celoštevilčno utež. Rezultati prikazujejo tako število volivcev kot uteženi rezultat. Uteži volivcev so vidne vsem, ki si lahko ogledajo anketo.
+    vote_weights_description_decimal: Vsakemu volivcu dodelite utež z največ tremi decimalnimi mesti. Rezultati prikazujejo tako število volivcev kot uteženo oceno. Uteži volivcev so vidne vsem, ki si lahko ogledajo anketo.
+    use_vote_weights: Uporabite uteži glasov
+    vote_weights_off_warning: Če izklopite uteži glasov, vsak volivec dobi utež 1 in odstrani uteži, specifične za anketo.
+    vote_weights_on_group: Vklop uteži glasov kopira uteži trenutnih članov skupine. Drugi volivci dobijo utež 1.
+    vote_weights_on_direct: Z vklopom uteži glasov se vsak volivec utežuje z 1.
+    vote_weight_for: Teža glasov za %{name}
+    save_vote_weights: Shrani uteži glasov
+    vote_weights_updated: Ponderiranje glasov
+    weight_for_all: Teža za vse
+    set_all_vote_weights: Nastavite vse uteži
+    set_all: Nastavi vse
+    use_member_vote_weights: Uporabi ponder glasov trenutnih članov
+    set_one_vote_weight: Vsakemu volivcu dodelite eno utež
+    member_vote_weights_hint: Volivci brez trenutnega članstva v skupini dobijo utež 1
   poll_receipts_page:
     participation_status_requires_min_votes: To prikazuje, kdo je bil upravičen do glasovanja. Ali je posamezna oseba glasovala, se prikaže šele, ko glasujejo vsaj %{count} osebe.
     verify_participants: Preverjanje udeležencev
@@ -2936,6 +2980,7 @@ sl:
     participation_records_explanation: To prikazuje, kdo je bil upravičen in ali je glasoval. Ne prikazuje, kako je kdo glasoval.
     voted: Glasoval/a
     not_voted: Ni glasoval/a
+    email_addresses_for_group_admins: E-poštni naslovi so prikazani samo skrbnikom skupine, da se lahko razlikujejo osebe z istim imenom.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:

@@ -770,6 +770,7 @@ pl:
     revoke_admin: Odwołaj uprawnienia administratora
     make_delegate: Utwórz delegata
     revoke_delegate: Odwołaj delegata
+    edit_membership: Edytuj członkostwo
   notification_models:
     comment: skomentuj w
     poll: 'głosowanie:'
@@ -1504,6 +1505,8 @@ pl:
     members_can_create_tags_help: Zezwalaj członkom na tworzenie nowych tagów podczas tagowania wątków i ankiet
     non_members_can_start_discussions: Osoby niebędące członkami mogą rozpoczynać dyskusje
     non_members_can_start_discussions_help: Zezwól osobom niebędącym członkami na rozpoczęcie dyskusji z jednego z szablonów tej grupy
+    vote_weights_allowed: Zezwól na wagi głosów
+    vote_weights_allowed_help: Pozwól, aby niektóre głosy miały większą wagę niż inne
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1610,11 +1613,17 @@ pl:
   membership_form:
     modal_title:
       group: Ustaw tytuł grupy
+      membership: Edytuj członkostwo
     title_helptext:
       group: Ten tytuł pojawi się obok nazwy %{name} w tej grupie. Użyj go, aby poinformować ludzi o ich roli.
     title_label: tytuł
     title_placeholder: Np. „Koordynator” lub „Moderator”
     updated: Zaktualizowano rodzaj członkostwa
+    membership_updated: Zaktualizowano członkostwo
+    weight_label: Waga głosu
+    weight_helptext: Ta wartość jest kopiowana do głosu członka, gdy jest on dodawany do nowej ankiety. Jej zmiana nie ma wpływu na istniejące ankiety. Ustaw ją na 0, aby umożliwić członkowi głosowanie bez dodawania go do wyniku.
+    weight_invalid: Wprowadź liczbę całkowitą od 0 do 1 000 000
+    weight_invalid_decimal: Wprowadź liczbę od 0 do 1 000 000, do trzech miejsc po przecinku.
   user_name_modal:
     user_name_updated: Nazwa użytkownika zaktualizowana
     set_user_name: Ustaw nazwę użytkownika
@@ -2121,6 +2130,10 @@ pl:
     status: Status
     your_vote_is_requested: Proszę o Twój głos
     browse_example_make_a_copy_hint: "<b>Kliknij ikonę kopiowania</b> , aby utworzyć nowy szablon ankiety, używając przykładu jako punktu wyjścia."
+    weighted_score: Wynik
+    equal_weight_score: Wynik równej wagi
+    assigned_weight_score: Przypisany wynik wagi
+    view_votes: Zobacz głosy
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2189,6 +2202,8 @@ pl:
     delegate: Delegat
     delegate_popover: Delegat jest członkiem grupy posiadającym prawo głosu
     delegates: Delegaci
+    edit_vote_weights: Edytuj wagi głosów
+    vote_weight_value: Waga %{weight}
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -2237,6 +2252,7 @@ pl:
     legacy_vote_reasons: Uzasadnienia wcześniejszych głosów
     legacy_vote_reasons_description: Powody głosowania w tradycyjnym, anonimowym formacie są wyświetlane w postaci zwykłego tekstu
     anonymous_voting_participant_notice: Głosowanie jest anonimowe. Po oddaniu głosu nie można go przejrzeć ani zmienić. Wyniki będą dostępne dopiero po zakończeniu głosowania.
+    variable_vote_weights_explanation: W tym sondażu zastosowano zmienną wagę głosu, co pozwala, aby głos jednej osoby miał większy wpływ na wynik niż głos innej osoby, zgodnie z przypisaną wagą głosu
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2305,6 +2321,13 @@ pl:
     unredact_reason_helptext: Powód, dla którego tekst i załączniki będą ponownie widoczne
     unredact_reason_confirm: Przywróć powód
     unredact_reason_success: Przywrócono powód głosowania
+    all_voters: Wszyscy wyborcy
+    weight: Waga
+    vote_weight_column: Waga głosu
+    stance: Głosować
+    vote_date: Głosowano nad
+    participation_records_restricted: Rejestry uczestnictwa są dostępne dla koordynatorów głosowania
+    vote_weight: Waga %{weight}
   poll_common_undecided_panel:
     show_undecided: Pokaż %{count} niezdecydowanych
     show_invitations: Pokaż Oczekujące Zaproszenia
@@ -2949,6 +2972,27 @@ pl:
     stance_reason_required_when_disagreeing: Wymagane w przypadku braku zgody
     stance_reason_required_for_disagree_or_block: Wymagane w przypadku wyrażenia sprzeciwu lub zablokowania
     stance_reason_required_for_block: Wymagane przy blokowaniu
+    voters: Wyborcy
+    manage_voters: Zarządzaj wyborcami
+    search_voters: Wyszukaj wyborców
+    remove_voter: Usuń wyborcę
+    voter_page_count: "%{first}–%{last} z %{total}"
+    vote_weights: Wagi głosów
+    vote_weights_description: Przypisz każdemu wyborcy wagę wyrażoną liczbą całkowitą. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik. Wagi wyborców są widoczne dla wszystkich, którzy mogą oglądać ankietę.
+    vote_weights_description_decimal: Przypisz każdemu wyborcy wagę z dokładnością do trzech miejsc po przecinku. Wyniki pokazują zarówno liczbę wyborców, jak i ważony wynik. Wagi wyborców są widoczne dla wszystkich, którzy mogą oglądać ankietę.
+    use_vote_weights: Użyj wag głosów
+    vote_weights_off_warning: Wyłączenie wag głosów powoduje ustawienie wagi każdego wyborcy na 1 i usunięcie wag specyficznych dla danej ankiety
+    vote_weights_on_group: Włączenie wag głosów kopiuje aktualne wagi członków grupy. Pozostali głosujący otrzymują wagę 1.
+    vote_weights_on_direct: Włączenie wag głosów powoduje ustawienie wagi każdego wyborcy na 1
+    vote_weight_for: Waga głosu dla %{name}
+    save_vote_weights: Zapisz wagi głosów
+    vote_weights_updated: Zaktualizowano wagę głosów
+    weight_for_all: Waga dla wszystkich
+    set_all_vote_weights: Ustaw wszystkie ciężary
+    set_all: Ustaw wszystko
+    use_member_vote_weights: Użyj aktualnych wag głosów członków
+    set_one_vote_weight: Ustaw każdemu wyborcy jedną wagę
+    member_vote_weights_hint: Wyborcy bez aktualnego członkostwa w grupie otrzymują wagę 1
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     verify_participants: Zweryfikuj uczestników
@@ -2963,6 +3007,7 @@ pl:
     participation_records_explanation: Pokazuje, kto był uprawniony do głosowania i czy głosował. Nie pokazuje, jak ktoś głosował.
     voted: Zagłosował(a)
     not_voted: Nie zagłosował(a)
+    email_addresses_for_group_admins: Adresy e-mail są widoczne tylko dla administratorów grup, aby odróżnić osoby o tym samym imieniu i nazwisku
   comment_reply_form:
     aria_label: Dodaj odpowiedź
   discussion_template:

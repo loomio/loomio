@@ -770,6 +770,7 @@ ca:
     revoke_admin: Revoca l'administrador
     make_delegate: Fer delegat
     revoke_delegate: Revocar delegat
+    edit_membership: Edita la subscripció
   notification_models:
     comment: Comenta a
     poll: 'enquesta:'
@@ -1504,6 +1505,8 @@ ca:
     members_can_create_tags_help: Permet que els membres creïn etiquetes noves en etiquetar fils i enquestes
     non_members_can_start_discussions: Els no membres poden iniciar debats
     non_members_can_start_discussions_help: Permet que els no membres iniciïn una discussió des d'una de les plantilles d'aquest grup
+    vote_weights_allowed: Permetre pesos de vot
+    vote_weights_allowed_help: Permetre que alguns vots tinguin més pes que d'altres
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1610,11 +1613,17 @@ ca:
   membership_form:
     modal_title:
       group: Estableix un títol dins del grup
+      membership: Edita la subscripció
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
     title_placeholder: 'Per exemple: "coordinador" o "moderador"'
     updated: S'ha actualitzat el títol de membre
+    membership_updated: Membresia actualitzada
+    weight_label: Pes del vot
+    weight_helptext: Aquest valor es copia al vot del membre quan s'afegeix a una nova enquesta. Canviar-lo no afecta les enquestes existents. Establiu-lo a 0 per permetre que el membre voti sense afegir valor a la puntuació.
+    weight_invalid: Introduïu un nombre enter del 0 al 1.000.000
+    weight_invalid_decimal: Introduïu un número del 0 al 1.000.000 amb un màxim de tres decimals
   user_name_modal:
     user_name_updated: Nom d'usuari actualitzat
     set_user_name: Estableix el nom d'usuari
@@ -2121,6 +2130,10 @@ ca:
     status: Estat
     your_vote_is_requested: Es demana el vostre vot
     browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
+    weighted_score: Puntuació
+    equal_weight_score: Puntuació de pes igual
+    assigned_weight_score: Puntuació de pes assignada
+    view_votes: Veure vots
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2189,6 +2202,8 @@ ca:
     delegate_popover: Un delegat és un membre del grup amb dret de vot
     delegates: Delegats
     no_results: No s'han trobat membres
+    edit_vote_weights: Edita el pes dels vots
+    vote_weight_value: Pes %{weight}
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus
@@ -2237,6 +2252,7 @@ ca:
     legacy_vote_reasons: Motius dels vots anteriors
     legacy_vote_reasons_description: Els motius dels vots emesos mitjançant el format de votació anònima antic es mostren com a text sense format
     anonymous_voting_participant_notice: La votació és anònima. No podeu revisar ni canviar el vostre vot després d'enviar-lo. Els resultats no estaran disponibles fins que s'hagi tancat la votació.
+    variable_vote_weights_explanation: Aquesta enquesta utilitza pesos de vot variables, permetent que el vot d'una persona influeixi més en el resultat que el d'una altra persona segons el pes de vot assignat.
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2305,6 +2321,13 @@ ca:
     unredact_reason_helptext: El motiu pel qual el text i els fitxers adjunts tornaran a ser visibles
     unredact_reason_confirm: Restaurar la raó
     unredact_reason_success: Motiu del vot restaurat
+    all_voters: Tots els votants
+    weight: Pes
+    vote_weight_column: Pes del vot
+    stance: Vota
+    vote_date: Votat per
+    participation_records_restricted: Els registres de participació estan disponibles per als coordinadors de les enquestes
+    vote_weight: Pes %{weight}
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} indecisos
     show_invitations: Mostra les invitacions pendents
@@ -2949,6 +2972,27 @@ ca:
     stance_reason_required_when_disagreeing: Obligatori quan no hi ha acord
     stance_reason_required_for_disagree_or_block: Obligatori per a desacord o bloqueig
     stance_reason_required_for_block: Obligatori per bloqueig
+    voters: Votants
+    manage_voters: Gestiona els votants
+    search_voters: Cerca votants
+    remove_voter: Eliminar votant
+    voter_page_count: "%{first}–%{last} de %{total}"
+    vote_weights: pesos de vot
+    vote_weights_description: Assigneu a cada votant un pes enter. Els resultats mostren tant el nombre de votants com la puntuació ponderada. Els pesos dels votants són visibles per a tothom que pugui veure l'enquesta.
+    vote_weights_description_decimal: Assigneu a cada votant un pes amb fins a tres decimals. Els resultats mostren tant el nombre de votants com la puntuació ponderada. Els pesos dels votants són visibles per a tothom que pugui veure l'enquesta.
+    use_vote_weights: Utilitza el pes dels vots
+    vote_weights_off_warning: Desactivar els pesos dels vots estableix cada votant al pes 1 i elimina els pesos específics de l'enquesta
+    vote_weights_on_group: En activar els pesos dels vots, es copien els pesos dels membres actuals del grup. Els altres votants reben el pes 1.
+    vote_weights_on_direct: Si activeu els pesos dels vots, cada votant tindrà un pes d'1.
+    vote_weight_for: Pes del vot per a %{name}
+    save_vote_weights: Desa el pes dels vots
+    vote_weights_updated: Ponderació dels vots actualitzada
+    weight_for_all: Pes per a tothom
+    set_all_vote_weights: Estableix tots els pesos
+    set_all: Defineix-ho tot
+    use_member_vote_weights: Utilitza el pes dels vots dels membres actuals
+    set_one_vote_weight: Estableix cada votant a un pes
+    member_vote_weights_hint: Els votants que no són membres d'un grup actual reben pes 1
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     verify_participants: Verifica els participants
@@ -2963,6 +3007,7 @@ ca:
     participation_records_explanation: Això mostra qui era elegible i si va votar. No mostra com va votar cadascú.
     voted: Votat
     not_voted: No votat
+    email_addresses_for_group_admins: Les adreces de correu electrònic només es mostren als administradors del grup per distingir les persones amb el mateix nom
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:

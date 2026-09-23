@@ -768,6 +768,7 @@ da:
     revoke_admin: Tilbagekald admin
     make_delegate: Gør delegeret
     revoke_delegate: Tilbagekald delegeret
+    edit_membership: Rediger medlemskab
   notification_models:
     comment: kommentere ind
     poll: 'afstemning:'
@@ -1498,6 +1499,8 @@ da:
     members_can_create_tags_help: Tillad medlemmer at oprette nye tags, når de tagger tråde og afstemninger
     non_members_can_start_discussions: Ikke-medlemmer kan starte diskussioner
     non_members_can_start_discussions_help: Tillad ikke-medlemmer at starte en diskussion fra en af denne gruppes skabeloner
+    vote_weights_allowed: Tillad stemmevægte
+    vote_weights_allowed_help: Tillad nogle stemmer at have mere vægt end andre
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1596,11 +1599,17 @@ da:
   membership_form:
     modal_title:
       group: Indstil titel
+      membership: Rediger medlemskab
     title_helptext:
       group: Denne titel vises ved siden af %{name}s navn i denne gruppe. Brug det til at lade folk kende deres rolle.
     title_label: titel
     title_placeholder: F.eks. 'Koordinator' eller 'Facilitator'
     updated: Medlemskabs titel er opdateret
+    membership_updated: Medlemskab opdateret
+    weight_label: Stemmevægt
+    weight_helptext: Denne værdi kopieres til medlemmets stemme, når de tilføjes til en ny afstemning. Ændring af den påvirker ikke eksisterende afstemninger. Indstil den til 0 for at lade medlemmet stemme uden at tilføje til scoren.
+    weight_invalid: Indtast et helt tal fra 0 til 1.000.000
+    weight_invalid_decimal: Indtast et tal fra 0 til 1.000.000 med op til tre decimaler
   user_name_modal:
     user_name_updated: Brugernavn opdateret
     set_user_name: Indstil brugernavn
@@ -2098,6 +2107,10 @@ da:
     status: Status
     your_vote_is_requested: Din stemme er anmodet
     browse_example_make_a_copy_hint: "<b>Klik på kopieringsikonet</b> for at oprette en ny skabelon til afstemning med eksemplet som udgangspunkt."
+    weighted_score: Score
+    equal_weight_score: Lige vægtscore
+    assigned_weight_score: Tildelt vægtscore
+    view_votes: Se stemmer
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2166,6 +2179,8 @@ da:
     delegate: Delegeret
     delegate_popover: En delegeret er et gruppemedlem med stemmeret
     delegates: Delegerede
+    edit_vote_weights: Rediger stemmevægte
+    vote_weight_value: Vægt %{weight}
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -2212,6 +2227,7 @@ da:
     legacy_vote_reasons: Begrundelser fra tidligere stemmer
     legacy_vote_reasons_description: Begrundelser fra stemmer afgivet ved hjælp af det ældre anonyme afstemningsformat vises som almindelig tekst
     anonymous_voting_participant_notice: Afstemningen er anonym. Du kan ikke gennemgå eller ændre din stemme efter afgivelse. Resultaterne er ikke tilgængelige, før afstemningen er afsluttet.
+    variable_vote_weights_explanation: Denne afstemning bruger variable stemmevægte, hvilket giver én persons stemme mulighed for at påvirke resultatet mere end en anden persons i henhold til den tildelte stemmevægt.
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2280,6 +2296,13 @@ da:
     unredact_reason_helptext: Årsagen til at tekst og vedhæftede filer bliver synlige igen
     unredact_reason_confirm: Gendannelsesårsag
     unredact_reason_success: Stemmeårsag gendannet
+    all_voters: Alle vælgere
+    weight: Vægt
+    vote_weight_column: Stemmevægt
+    stance: Stemme
+    vote_date: Stemte på
+    participation_records_restricted: Deltagerregistre er tilgængelige for valgkoordinatorer
+    vote_weight: Vægt %{weight}
   poll_common_undecided_panel:
     show_undecided: Vis %{count} ubesluttede
     show_invitations: Vis afventende invitationer
@@ -2922,6 +2945,27 @@ da:
     stance_reason_required_when_disagreeing: Påkrævet ved uenighed
     stance_reason_required_for_disagree_or_block: Kræves for uenighed eller blokering
     stance_reason_required_for_block: Påkrævet ved blokering
+    voters: Vælgere
+    manage_voters: Administrer vælgere
+    search_voters: Søg vælgere
+    remove_voter: Fjern vælger
+    voter_page_count: "%{first}–%{last} af %{total}"
+    vote_weights: Stemmevægte
+    vote_weights_description: Tildel hver vælger en vægtning bestående af et helt tal. Resultaterne viser både antallet af vælgere og den vægtede score. Vælgervægtningen er synlig for alle, der kan se afstemningen.
+    vote_weights_description_decimal: Tildel hver vælger en vægt med op til tre decimaler. Resultaterne viser både antallet af vælgere og den vægtede score. Vælgernes vægtning er synlig for alle, der kan se afstemningen.
+    use_vote_weights: Brug stemmevægte
+    vote_weights_off_warning: Hvis du slår stemmevægte fra, sættes alle vælgere til vægt 1 og fjerner afstemningsspecifikke vægte
+    vote_weights_on_group: Aktivering af stemmevægte kopierer vægtningen af nuværende gruppemedlemmer. Andre vælgere får vægt 1.
+    vote_weights_on_direct: Aktivering af stemmevægte giver alle vælgere vægt 1
+    vote_weight_for: Stemmevægt for %{name}
+    save_vote_weights: Gem stemmevægte
+    vote_weights_updated: Stemmevægte opdateret
+    weight_for_all: Vægt for alle
+    set_all_vote_weights: Indstil alle vægte
+    set_all: Sæt alle
+    use_member_vote_weights: Brug nuværende stemmevægte fra medlemmerne
+    set_one_vote_weight: Sæt hver vælger til én vægt
+    member_vote_weights_hint: Vælgere uden nuværende gruppemedlemskab får vægt 1
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     verify_participants: Bekræft deltagere
@@ -2936,6 +2980,7 @@ da:
     participation_records_explanation: Dette viser, hvem der var berettigede, og om de stemte. Det viser ikke, hvordan nogen stemte.
     voted: Stemte
     not_voted: Ikke stemt
+    email_addresses_for_group_admins: E-mailadresser vises kun til gruppeadministratorer for at skelne personer med samme navn
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:
