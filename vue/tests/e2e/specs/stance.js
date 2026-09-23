@@ -22,6 +22,7 @@ module.exports = {
     page.click('main h1 a')
     page.pause(1000)
     page.signInViaPassword('poll-member@example.com', 'password')
+    page.click('.credential-prompt__dismiss')
     page.click('.poll-common-vote-form__button')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')

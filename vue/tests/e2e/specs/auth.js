@@ -346,6 +346,7 @@ module.exports = {
     page.fillIn('.auth-email-form__email input', 'password-user@example.com')
     page.click('.auth-email-form__login-link')
     page.click('.auth-email-code-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
     page.expectText('.credential-prompt', 'Would you like to set a new password?')
@@ -602,7 +603,6 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.completeAccount('Billy Jeans')
     page.expectFlash('Signed in successfully')
-    page.click('.credential-prompt__dismiss')
   },
 
   'invite_existing_user_via_alternative_email_address': (test) => {

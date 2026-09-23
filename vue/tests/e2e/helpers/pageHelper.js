@@ -259,8 +259,7 @@ module.exports = function(test, browser) {
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
       page.click('.auth-signin-form__submit');
-      page.completeAccount();
-      return page.click('.credential-prompt__dismiss');
+      return page.completeAccount();
     },
 
     completeAccount(name = "New Account") {
@@ -274,8 +273,7 @@ module.exports = function(test, browser) {
       const page = pageHelper(test);
       page.click('.auth-form__create-account');
       page.click('.auth-signup-form__submit');
-      page.completeAccount(name);
-      return page.click('.credential-prompt__dismiss');
+      return page.completeAccount(name);
     },
 
     waitFor(selector, wait = 8000) {
