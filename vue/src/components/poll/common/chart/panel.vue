@@ -14,7 +14,6 @@ export default {
 
   props: {
     poll: Object,
-    hideViewAllVotes: Boolean,
     hideVoters: Boolean
   },
 
@@ -67,23 +66,18 @@ export default {
           span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
-      poll-common-chart-table(v-else-if="poll.chartType != 'grid'" :poll="poll" :hide-voters="hideVoters")
+      template(v-else-if="poll.chartType != 'grid'")
+        v-alert.poll-common-chart-panel__variable-vote-weights.mb-4(
+          v-if="poll.weightedVoting"
+          density="compact"
+          variant="tonal"
+          type="info"
+        )
+          span {{ $t('poll_common_action_panel.variable_vote_weights_explanation') }}
+          a.ml-1(:href="'https://www.loomio.com/docs/en/user_manual/polls/weighted_voting'" target="_blank" rel="noopener noreferrer") {{ $t('common.learn_more') }}
+        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
-    template(v-if="poll.legacyAnonymousVoteReasonsCount > 0 && !hideViewAllVotes")
-      mid-dot
-      router-link.poll-common-chart-panel__view-legacy-vote-reasons.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
-        span(v-t="'poll_common_action_panel.legacy_vote_reasons'")
-    template(v-else-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && !poll.detachedAnonymousVoting()")
-      mid-dot
-      router-link.poll-common-chart-panel__view-all-votes.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
-        span(v-t="'poll_common.view_all_votes'")
-    //template(v-if="poll.quorumPct")
-    //  br
-    //  span(v-if="poll.quorumVotesRequired <= 0" v-t="{ path: 'poll_common_percent_voted.quorum_reached', args: { pct: poll.quorumPct }  }" )
-    //  span(v-if="poll.quorumVotesRequired == 1" v-t="{ path: 'poll_common_percent_voted.vote_short_of_quorum', args: { pct: poll.quorumPct } }" )
-    //  span(v-if="poll.quorumVotesRequired > 1" v-t="{ path: 'poll_common_percent_voted.votes_short_of_quorum', args: { num: poll.quorumVotesRequired, pct: poll.quorumPct } }" )
-
 </template>

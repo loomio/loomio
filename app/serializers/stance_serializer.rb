@@ -36,11 +36,11 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_weight?
-    poll.vote_weights_active?
+    !poll.anonymous?
   end
 
   def weight
-    object.weight
+    HasVoteWeight.format(object.weight)
   end
 
   def include_created_at?

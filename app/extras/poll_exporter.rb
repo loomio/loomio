@@ -73,11 +73,12 @@ class PollExporter
       csv << ['poll_options']
       results = PollService.calculate_results(@poll, @poll.poll_options)
       keys = %w[id poll_id name name_format rank score score_percent max_score_percent voter_percent average voter_count color]
+      keys.insert(keys.index('score'), 'unweighted_score')
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']
       memberships_by_user_id = Membership.active.where(group_id: @poll.group_id, user_id: @poll.stances.latest.select(:participant_id)).index_by(&:user_id)
-      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'weight', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
+      csv << ['id', 'poll_id', 'voter_id', 'voter_name', 'member_title', 'delegate', 'vote_weight', 'created_at', 'updated_at', 'reason', 'reason_format'] + @poll.poll_option_names
       @poll.stances.latest.each do |stance|
         membership = memberships_by_user_id[stance.participant_id]
         line = [
@@ -87,7 +88,7 @@ class PollExporter
           stance.author_name,
           membership&.title,
           membership&.delegate,
-          @poll.anonymous? ? nil : stance.weight,
+          @poll.anonymous? ? nil : HasVoteWeight.format(stance.weight),
           @poll.anonymous? ? nil : stance.created_at&.iso8601,
           @poll.anonymous? ? nil : stance.updated_at&.iso8601,
           stance.reason,

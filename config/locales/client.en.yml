@@ -1542,6 +1542,8 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
+    vote_weights_allowed: Allow vote weights
+    vote_weights_allowed_help: Allow some votes to have more weight than others
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
@@ -1775,6 +1777,7 @@ en:
     weight_label: Vote weight
     weight_helptext: This value is copied to the member's vote when they are added to a new poll. Changing it does not affect existing polls. Set it to 0 to let the member vote without adding to the score.
     weight_invalid: Enter a whole number from 0 to 1,000,000
+    weight_invalid_decimal: Enter a number from 0 to 1,000,000 with up to three decimal places
   user_name_modal:
     user_name_updated: User name updated
     set_user_name: Set user name
@@ -2165,6 +2168,7 @@ en:
     see_votes_if_quorum_reached: If the poll has closed and quorum was reached, you will see who voted
     voter_name: Name
     voter_email: Email
+    email_addresses_for_group_admins: Email addresses are shown only to group admins to distinguish people with the same name
     vote_cast: Vote cast
     voted: Voted
     not_voted: Not voted
@@ -2226,6 +2230,8 @@ en:
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
     weighted_score: Score
+    equal_weight_score: Equal weight score
+    assigned_weight_score: Assigned weight score
     your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
@@ -2298,6 +2304,7 @@ en:
     message: Message
     results: Results
     view_all_votes: View all votes
+    view_votes: View votes
     current_results: Current results
     responses: Responses
     close_poll_type: Close %{pollType}
@@ -2368,6 +2375,8 @@ en:
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion
   members_panel:
+    edit_vote_weights: Edit vote weights
+    vote_weight_value: Weight %{weight}
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
@@ -2428,6 +2437,7 @@ en:
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
     upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
+    variable_vote_weights_explanation: This poll uses variable vote weights, allowing one person's vote to influence the outcome more than another person's according to the assigned vote weight
     from_the_group: From the group
     default_templates: Default templates
     default_template: Default template
@@ -2542,6 +2552,12 @@ en:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
   poll_common_votes_panel:
+    all_voters: All voters
+    weight: Weight
+    vote_weight_column: Vote weight
+    stance: Vote
+    vote_date: Voted on
+    participation_records_restricted: Participation records are available to poll coordinators
     cast: Cast
     uncast: Uncast
     vote_removed: Vote removed
@@ -2608,13 +2624,27 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    voters: Voters
+    manage_voters: Manage voters
+    search_voters: Search voters
+    remove_voter: Remove voter
+    voter_page_count: "%{first}–%{last} of %{total}"
     vote_weights: Vote weights
     vote_weights_description: Assign each voter a whole-number weight. Results show both the number of voters and the weighted score. Voter weights are visible to everyone who can view the poll.
+    vote_weights_description_decimal: Assign each voter a weight with up to three decimal places. Results show both the number of voters and the weighted score. Voter weights are visible to everyone who can view the poll.
     use_vote_weights: Use vote weights
-    vote_weight_helptext: Vote weight changes the score but not the voter count. A weight of 0 records the person's vote without adding it to the score. Weights can be changed until the poll closes.
+    vote_weights_off_warning: Turning off vote weights sets every voter to weight 1 and removes poll-specific weights
+    vote_weights_on_group: Turning on vote weights copies current group member weights. Other voters get weight 1.
+    vote_weights_on_direct: Turning on vote weights sets every voter to weight 1
     vote_weight_for: Vote weight for %{name}
     save_vote_weights: Save vote weights
     vote_weights_updated: Vote weights updated
+    weight_for_all: Weight for all
+    set_all_vote_weights: Set all weights
+    set_all: Set all
+    use_member_vote_weights: Use current member vote weights
+    set_one_vote_weight: Set every voter to one weight
+    member_vote_weights_hint: Voters without a current group membership get weight 1
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
     participation_quorum: Participation quorum

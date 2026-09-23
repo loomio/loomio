@@ -197,6 +197,8 @@ Rails.application.routes.draw do
 
       resources :memberships, only: [:index, :create, :update, :destroy] do
         collection do
+          patch :set_weights
+          patch :reset_weights
           post :user_name
           post :join_group
           get :for_user
@@ -371,6 +373,7 @@ Rails.application.routes.draw do
           get :my_stances
           post :revoke
           patch :set_weights
+          patch :reset_weights
         end
       end
 

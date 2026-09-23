@@ -20,6 +20,8 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
       poll = OpenStruct.new(
         poll_type: poll_type,
         result_columns: columns,
+        result_score_heading_key: 'poll_ranked_choice_form.points',
+        result_votes_heading_key: 'poll_common.votes',
         anonymous?: false,
         has_variable_score: %w[score dot_vote ranked_choice].include?(poll_type),
         results: [{

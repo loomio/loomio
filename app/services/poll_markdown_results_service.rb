@@ -113,11 +113,12 @@ class PollMarkdownResultsService
       "voter_percent" => t("poll_ranked_choice_form.pct_of_voters"),
       "target_percent" => t("thread_markdown.target"),
       "rank" => t("poll_ranked_choice_form.rank"),
-      "score" => t("poll_ranked_choice_form.points"),
+      "score" => t(poll.result_score_heading_key),
+      "unweighted_score" => t("poll_common.equal_weight_score"),
       "average" => t("poll_ranked_choice_form.mean"),
       "stv_status" => t("poll_common.status"),
       "voter_count" => t("membership_card.voters"),
-      "votes" => t("poll_common.votes"),
+      "votes" => t(poll.result_votes_heading_key),
       "voters" => t("thread_markdown.voters")
     }.fetch(column)
   end
@@ -126,7 +127,7 @@ class PollMarkdownResultsService
     case column
     when "name" then option_name(result[:name], result[:name_format])
     when "stv_status" then result[:stv_status] ? t("poll_stv_results.#{result[:stv_status]}") : ""
-    when "rank", "score" then result[column.to_sym]
+    when "rank", "score", "unweighted_score" then result[column.to_sym]
     when "voter_count", "votes" then result[:voter_count]
     when "average" then result[:average].round(1)
     when "voter_percent" then percent(result[:voter_percent])

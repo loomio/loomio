@@ -260,6 +260,25 @@ class Poll < ApplicationRecord
     :attachments]
 
   after_commit :update_group_counter_caches
+  after_update :synchronize_stance_weights_after_vote_weights_change
+
+  # A draft poll's stored weights reflect its current voting mode. Switching on
+  # copies current membership defaults; switching off discards poll overrides.
+  def synchronize_stance_weights_after_vote_weights_change
+    return unless saved_change_to_vote_weights_enabled?
+
+    unless vote_weights_enabled?
+      stances.where.not(weight: 1).update_all(weight: 1)
+      return
+    end
+
+    weights_by_user_id = member_vote_weights_by_user_id(stances.latest.select(:participant_id))
+    stances.latest.find_each do |stance|
+      weight = weights_by_user_id.fetch(stance.participant_id, 1)
+      stance.update!(weight: weight) if stance.weight != weight
+    end
+  end
+
   def update_group_counter_caches
     group = topic.group
     return unless group.id
@@ -336,14 +355,21 @@ class Poll < ApplicationRecord
     return columns unless weighted_voting?
 
     columns = columns.dup
+    if one_point_choices?
+      voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
+      columns.insert(columns.index(voter_column) + 1, 'score')
+      return columns
+    end
+
+    columns.delete('score')
+    columns.insert(columns.index('name') + 1, 'unweighted_score', 'score')
     voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
-    columns.insert(columns.index('name') + 1, voter_column) unless columns.include?(voter_column)
-    columns.insert(columns.index(voter_column) + 1, 'score') unless columns.include?('score')
+    columns.insert(columns.index('score') + 1, voter_column) unless columns.include?(voter_column)
     columns
   end
 
   def vote_weights_supported?
-    !anonymous? && poll_type != 'stv'
+    !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled? || group.blank? || group.vote_weights_allowed?)
   end
 
   def vote_weights_active?
@@ -351,7 +377,27 @@ class Poll < ApplicationRecord
   end
 
   def weighted_voting?
-    vote_weights_active? && stances.latest.where.not(weight: 1).exists?
+    vote_weights_active?
+  end
+
+  def member_vote_weights_by_user_id(user_ids)
+    return {} unless group_id
+
+    Membership.active.where(group_id: group_id, user_id: user_ids).pluck(:user_id, :weight).to_h
+  end
+
+  def one_point_choices?
+    min_score == 1 && max_score == 1
+  end
+
+  def result_score_heading_key
+    return 'poll_ranked_choice_form.points' unless weighted_voting?
+
+    'poll_common.weighted_score'
+  end
+
+  def result_votes_heading_key
+    weighted_voting? ? 'membership_card.voters' : 'poll_common.votes'
   end
 
   def results
@@ -479,7 +525,7 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    stance_counts.sum(&:to_f)
+    poll_options.sum(:total_score)
   end
 
   def update_counts!
@@ -646,7 +692,7 @@ class Poll < ApplicationRecord
 
   def vote_weights_enabled_is_supported
     return unless vote_weights_enabled?
-    return if vote_weights_supported?
+    return if !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled_in_database || group.blank? || group.vote_weights_allowed?)
 
     errors.add(:vote_weights_enabled, :invalid)
   end

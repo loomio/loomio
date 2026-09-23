@@ -10,7 +10,7 @@ import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class StanceService {
   revoke = {
-    name: 'membership_dropdown.remove_from.poll',
+    name: 'poll_common_form.remove_voter',
     canPerform(poll, user) {
       return poll.adminsInclude(Session.user());
     },

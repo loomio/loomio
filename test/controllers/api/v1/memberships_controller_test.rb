@@ -6,6 +6,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     @admin = users(:admin)
     @alien = users(:alien)
     @test_group = groups(:group)
+    @test_group.update!(vote_weights_allowed: true)
     @subgroup = groups(:subgroup)
     sign_in @user
   end
@@ -99,14 +100,14 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 2, membership.reload.weight
   end
 
-  test 'group admin cannot set a fractional membership vote weight' do
+  test 'group admin sets a fractional membership vote weight' do
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
-    patch :set_weight, params: {id: membership.id, weight: 0.5}
+    patch :set_weight, params: {id: membership.id, weight: '0.5'}
 
-    assert_response :unprocessable_entity
-    assert_equal 1, membership.reload.weight
+    assert_response :success
+    assert_equal BigDecimal('0.5'), membership.reload.weight
   end
 
   test 'member cannot update their own membership vote weight' do
@@ -116,6 +117,62 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
     assert_response :forbidden
     assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin updates member weights together' do
+    sign_in @admin
+    first = @test_group.membership_for(@user)
+    second = @test_group.membership_for(@admin)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {first.id => 0, second.id => 3}}
+
+    assert_response :success
+    assert_equal [0, 3], [first.reload.weight, second.reload.weight]
+  end
+
+  test 'member cannot update member weights together' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin resets every active member weight' do
+    sign_in @admin
+    @test_group.membership_for(@user).update!(weight: 2)
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.375'}
+
+    assert_response :success
+    assert @test_group.memberships.active.all? { |membership| membership.reload.weight == BigDecimal('0.375') }
+  end
+
+  test 'member cannot reset group member weights' do
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert_equal 1, @test_group.membership_for(@user).reload.weight
+  end
+
+  test 'group admin cannot reset weights when the group setting is off' do
+    sign_in @admin
+    @test_group.update!(vote_weights_allowed: false)
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert_equal 1, @test_group.membership_for(@user).reload.weight
+  end
+
+  test 'reset rejects weights with more than three decimal places' do
+    sign_in @admin
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.0001'}
+
+    assert_response :unprocessable_entity
+    assert_equal 1, @test_group.membership_for(@user).reload.weight
   end
 
   test 'updates volume for single membership' do

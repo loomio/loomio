@@ -35,7 +35,7 @@ class MembershipSerializer < ApplicationSerializer
   end
 
   def weight
-    object.weight
+    HasVoteWeight.format(object.weight)
   end
 
   def include_volume_email?

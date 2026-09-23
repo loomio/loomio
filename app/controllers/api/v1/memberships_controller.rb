@@ -1,4 +1,5 @@
 class Api::V1::MembershipsController < Api::V1::RestfulController
+  include VoteWeightParams
   load_resource only: [:set_volume]
 
   def index
@@ -77,6 +78,20 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   def set_weight
     service.set_weight membership: load_resource, weight: params.require(:weight), actor: current_user
     respond_with_resource
+  end
+
+  def set_weights
+    self.collection = service.set_weights(
+      group: Group.find(params.require(:group_id)),
+      weights_by_membership_id: vote_weights_by_record_id,
+      actor: current_user
+    )
+    respond_with_collection serializer: MembershipSerializer, scope: index_scope
+  end
+
+  def reset_weights
+    service.reset_weights(group: Group.find(params.require(:group_id)), weight: params.require(:weight), actor: current_user)
+    render json: {updated: true}
   end
 
   def save_experience

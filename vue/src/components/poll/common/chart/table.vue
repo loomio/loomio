@@ -58,15 +58,16 @@ export default {
       tr
         template(v-for="col in poll.resultColumns")
           th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
-          th.text-left(v-if="col == 'name'" v-t='"common.option"')
+          th.text-left(v-if="col == 'name'") {{ $t('common.option') }}
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
           th.text-right(v-if="col == 'votes_cast_percent'" v-t='"poll_ranked_choice_form.pct_of_votes_cast"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
-          th.text-right(v-if="col == 'score'" v-t="poll.weightedVoting ? 'poll_common.weighted_score' : 'poll_ranked_choice_form.points'")
+          th.text-right(v-if="col == 'score'") {{ $t(poll.weightedVoting ? 'poll_common.weighted_score' : 'poll_ranked_choice_form.points') }}
+          th.text-right(v-if="col == 'unweighted_score'") {{ $t('poll_common.equal_weight_score') }}
           th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
           th.text-right(v-if="col == 'average'" v-t='"poll_ranked_choice_form.mean"')
-          th.text-right(v-if="col == 'votes'" v-t="poll.weightedVoting ? 'membership_card.voters' : 'poll_common.votes'")
+          th.text-right(v-if="col == 'votes'") {{ $t(poll.weightedVoting ? 'membership_card.voters' : 'poll_common.votes') }}
           th.text-right(v-if="col == 'voter_count'" v-t='"membership_card.voters"')
           th.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
     tbody
@@ -99,8 +100,9 @@ export default {
           td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
+          td.text-right(v-if="col == 'unweighted_score'") {{option.unweighted_score}}
           td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
-          td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
+          td.text-right(v-if="col == 'average'") {{option.average}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}
           td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")

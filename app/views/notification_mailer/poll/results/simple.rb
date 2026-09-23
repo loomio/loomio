@@ -54,11 +54,13 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
     when 'rank'
       th(class: "email-table-right") { plain t('poll_ranked_choice_form.rank') }
     when 'score'
-      th(class: "email-table-right") { plain t('poll_ranked_choice_form.points') }
+      th(class: "email-table-right") { plain t(@poll.result_score_heading_key) }
+    when 'unweighted_score'
+      th(class: "email-table-right") { plain t('poll_common.equal_weight_score') }
     when 'average'
       th(class: "email-table-right") { plain t('poll_ranked_choice_form.mean') }
     when 'votes'
-      th(class: "email-table-right") { plain t('poll_common.votes') }
+      th(class: "email-table-right") { plain t(@poll.result_votes_heading_key) }
     when 'stv_status'
       th(class: "email-table-right") { plain t('poll_common.status') }
     when 'voter_count'
@@ -96,6 +98,8 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
       td(class: "email-table-right") { plain option[:rank].to_s }
     when 'score'
       td(class: "email-table-right") { plain option[:score].to_s }
+    when 'unweighted_score'
+      td(class: "email-table-right") { plain option[:unweighted_score].to_s }
     when 'voter_count', 'votes'
       td(class: "email-table-right") { plain option[:voter_count].to_s }
     when 'average'

@@ -4,6 +4,7 @@ class PollTest < ActiveSupport::TestCase
   setup do
     @admin = users(:admin)
     @group = groups(:group)
+    @group.update!(vote_weights_allowed: true)
   end
 
   def poll_params(**overrides)
@@ -316,7 +317,7 @@ class PollTest < ActiveSupport::TestCase
     refute poll.vote_weights_active?
   end
 
-  test "identified non-STV polls can enable vote weights" do
+  test "identified supported polls can enable vote weights" do
     poll = create_poll(vote_weights_enabled: true)
 
     assert poll.vote_weights_enabled?
@@ -332,12 +333,59 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "vote weights can be enabled before voting opens" do
-    poll = create_poll(closing_at: nil)
+    poll = create_poll(closing_at: nil, group_id: @group.id)
 
     assert poll.update(vote_weights_enabled: true)
   end
 
-  test "anonymous and STV polls cannot enable vote weights" do
+  test "disabling vote weights before opening clamps existing stances" do
+    poll = create_poll(closing_at: nil, group_id: @group.id, vote_weights_enabled: true)
+    stance = poll.stances.latest.first
+    stance.update!(weight: '2.33')
+
+    assert poll.update!(vote_weights_enabled: false)
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "enabling vote weights copies current membership defaults and replaces old overrides" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.33')
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+    member_stance = poll.stances.latest.find_by!(participant: member)
+    guest = create_voter('guest')
+    guest_stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    poll.update!(vote_weights_enabled: true)
+    assert_equal BigDecimal('2.33'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+
+    member_stance.update!(weight: '5')
+    poll.update!(vote_weights_enabled: false)
+    assert_equal 1, member_stance.reload.weight
+
+    membership.update!(weight: '0.5')
+    poll.update!(vote_weights_enabled: true)
+    assert_equal BigDecimal('0.5'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+  end
+
+  test "group permission is required to enable weights but does not change existing weighted polls" do
+    @group.update!(vote_weights_allowed: false)
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+
+    refute poll.update(vote_weights_enabled: true)
+    assert poll.errors.added?(:vote_weights_enabled, :invalid)
+
+    @group.update!(vote_weights_allowed: true)
+    poll.reload
+    assert poll.update(vote_weights_enabled: true)
+
+    @group.update!(vote_weights_allowed: false)
+    assert poll.reload.vote_weights_active?
+  end
+
+  test "anonymous, STV, and time polls cannot enable vote weights" do
     anonymous_poll = Poll.new(poll_params(anonymous: true, voting_system: :anonymous_ballot, vote_weights_enabled: true))
     refute anonymous_poll.valid?
     assert anonymous_poll.errors.added?(:vote_weights_enabled, :invalid)
@@ -345,6 +393,27 @@ class PollTest < ActiveSupport::TestCase
     stv_poll = Poll.new(poll_params(poll_type: 'stv', stv_seats: 1, vote_weights_enabled: true))
     refute stv_poll.valid?
     assert stv_poll.errors.added?(:vote_weights_enabled, :invalid)
+
+    time_poll = Poll.new(poll_params(poll_type: 'meeting', vote_weights_enabled: true))
+    refute time_poll.valid?
+    assert time_poll.errors.added?(:vote_weights_enabled, :invalid)
+  end
+
+  test "direct polls can enable vote weights without a group setting" do
+    poll = Poll.new(poll_params(topic: topics(:direct_topic), author: @admin, vote_weights_enabled: true))
+
+    assert poll.vote_weights_supported?
+    assert poll.valid?
+    assert_equal false, poll.group.vote_weights_allowed?
+  end
+
+  test "enabling weights in a draft direct poll sets every voter to one" do
+    poll = Poll.create!(poll_params(topic: topics(:direct_topic), author: @admin, closing_at: nil))
+    stance = Stance.create!(poll: poll, participant: @admin, inviter: @admin)
+
+    poll.update!(vote_weights_enabled: true)
+
+    assert_equal 1, stance.reload.weight
   end
 
   test "disallows closing dates in the past" do

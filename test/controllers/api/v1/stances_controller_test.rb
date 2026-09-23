@@ -5,6 +5,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     @admin = users(:admin)
     @user = users(:user)
     @group = groups(:group)
+    @group.update!(vote_weights_allowed: true)
 
     @discussion = discussions(:discussion)
     @poll = PollService.create(params: {
@@ -18,6 +19,73 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
   # -- Index tests --
 
+  test "identified votes include the former verification details for the current page" do
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id, per: 1, from: 0}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    first_stance = json.fetch('stances').first
+    details = json.fetch('meta').fetch('voter_details_by_user_id')
+    assert_equal [first_stance.fetch('participant_id').to_s], details.keys
+    assert_equal true, json.fetch('meta').fetch('show_voter_email')
+    assert_equal true, json.fetch('meta').fetch('show_voter_details')
+    assert details.values.first.key?('member_since')
+    assert details.values.first.key?('inviter_name')
+    assert details.values.first.key?('invited_on')
+    assert details.values.first.key?('voter_email')
+  end
+
+  test "identified vote details do not expose email to an ordinary voter" do
+    sign_in @user
+
+    get :index, params: {poll_id: @poll.id, per: 1}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal false, json.fetch('meta').fetch('show_voter_email')
+    assert_equal true, json.fetch('meta').fetch('show_voter_details')
+    assert json.fetch('meta').fetch('voter_details_by_user_id').values.all? { |details| !details.key?('voter_email') }
+  end
+
+  test "unweighted identified votes serialize the effective weight of one" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.update!(weight: '2.33')
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id}
+
+    assert_response :success
+    serialized_stance = JSON.parse(response.body).fetch('stances').find { |item| item['id'] == stance.id }
+    assert_equal '1', serialized_stance.fetch('weight')
+    assert_equal '1', HasVoteWeight.format(stance.reload.weight)
+  end
+
+  test "voter management pages users and only includes weights for that page" do
+    @poll.update_column(:vote_weights_enabled, true)
+    sign_in @admin
+
+    get :users, params: {poll_id: @poll.id, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    get :users, params: {poll_id: @poll.id, per: 1, from: 1}
+    second = JSON.parse(response.body)
+
+    assert_response :success
+    assert_operator first.fetch('meta').fetch('total'), :>, 1
+    refute_equal first.fetch('users').first.fetch('id'), second.fetch('users').first.fetch('id')
+    assert_equal first.fetch('users').map { |user| user.fetch('id').to_s }.sort, first.fetch('meta').fetch('weights_by_user_id').keys.sort
+    assert_equal second.fetch('users').map { |user| user.fetch('id').to_s }.sort, second.fetch('meta').fetch('weights_by_user_id').keys.sort
+  end
+
+  test "non coordinator cannot page through voter management" do
+    sign_in users(:alien)
+
+    get :users, params: {poll_id: @poll.id, per: 1}
+
+    assert_response :forbidden
+  end
+
   test "poll admin updates stance weight before voting opens" do
     @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
     stance = @poll.stances.latest.find_by!(participant: @user)
@@ -29,15 +97,15 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal 0, stance.reload.weight
   end
 
-  test "poll admin cannot set a fractional stance weight" do
+  test "poll admin sets a fractional stance weight" do
     @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
     stance = @poll.stances.latest.find_by!(participant: @user)
     sign_in @admin
 
-    patch :set_weight, params: {id: stance.id, weight: 0.5}
+    patch :set_weight, params: {id: stance.id, weight: '0.5'}
 
-    assert_response :unprocessable_entity
-    assert_equal 1, stance.reload.weight
+    assert_response :success
+    assert_equal BigDecimal('0.5'), stance.reload.weight
   end
 
   test "poll admin cannot set stance weights when vote weights are disabled" do
@@ -86,9 +154,21 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal [0, 2], stances.map { |stance| stance.reload.weight.to_i }
   end
 
+  test "bulk stance weight update rejects nested values" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
+    stance = @poll.stances.latest.first
+    sign_in @admin
+
+    assert_raises(ActionController::BadRequest) do
+      patch :set_weights, params: {poll_id: @poll.id, weights: {stance.id => {weight: 2}}}
+    end
+    assert_equal 1, stance.reload.weight
+  end
+
   test "bulk stance weight update rolls back when one stance belongs to another poll" do
     @poll.update_columns(opened_at: nil, closing_at: nil, vote_weights_enabled: true)
     stance = @poll.stances.latest.first
+    discussions(:public_discussion).topic.group.update!(vote_weights_allowed: true)
     other_poll = Poll.create!(
       title: 'Other poll',
       poll_type: 'proposal',
@@ -110,6 +190,64 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_equal 1, stance.reload.weight
   end
 
+  test "poll admin resets every voter weight" do
+    @poll.update_column(:vote_weights_enabled, true)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '2.33'}
+
+    assert_response :success
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == BigDecimal('2.33') }
+  end
+
+  test "poll admin restores current member weights and defaults other voters to one" do
+    @poll.update_column(:vote_weights_enabled, true)
+    @group.membership_for(@user).update!(weight: '2.33')
+    option = @poll.poll_options.first
+    member_stance = @poll.stances.latest.find_by!(participant: @user)
+    member_stance.update!(weight: '0.5', cast_at: Time.current,
+                          stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+    guest = User.create!(name: 'Guest voter', email: "guest-voter-#{SecureRandom.hex(4)}@example.test")
+    guest_stance = Stance.create!(poll: @poll, participant: guest, inviter: @admin, weight: 3)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, mode: 'membership'}
+
+    assert_response :success
+    assert_equal BigDecimal('2.33'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+    assert_equal BigDecimal('2.33'), option.reload.total_score
+  end
+
+  test "voter cannot reset poll weights" do
+    @poll.update_column(:vote_weights_enabled, true)
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
+
+  test "poll admin cannot reset weights after closing" do
+    @poll.update_columns(vote_weights_enabled: true, closed_at: Time.current)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
+
+  test "poll admin cannot reset weights on an anonymous poll" do
+    @poll.update_columns(vote_weights_enabled: true, anonymous: true, voting_system: Poll.voting_systems.fetch('anonymous_ballot'))
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
+
   test "index returns stances for a poll" do
     sign_in @admin
     get :index, params: { poll_id: @poll.id }
@@ -124,6 +262,22 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
+  test "index returns voter rows with a total for paginated votes" do
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    get :index, params: {poll_id: @poll.id, per: 1, from: 1}
+    second = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal @poll.stances.latest.count, first.fetch('meta').fetch('total')
+    assert_equal first.fetch('meta').fetch('total'), second.fetch('meta').fetch('total')
+    assert_equal 1, first.fetch('stances').length
+    assert_equal 1, second.fetch('stances').length
+    refute_equal first.fetch('stances').first.fetch('id'), second.fetch('stances').first.fetch('id')
+  end
+
   test "stance weight is visible to viewers of identified polls" do
     @poll.update_column(:vote_weights_enabled, true)
     weighted_stance = @poll.stances.latest.find_by!(participant: @user)
@@ -132,9 +286,10 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     sign_in @admin
     get :index, params: {poll_id: @poll.id}
     admin_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == weighted_stance.id }
-    assert_equal 2, admin_stance.fetch('weight')
+    assert_equal '2', admin_stance.fetch('weight')
 
     sign_in users(:alien)
+    discussions(:public_discussion).topic.group.update!(vote_weights_allowed: true)
     public_poll = Poll.create!(
       title: 'Public weighted poll',
       poll_type: 'proposal',
@@ -146,8 +301,11 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     )
     public_stance = Stance.create!(poll: public_poll, participant: @user, weight: 2)
     get :index, params: {poll_id: public_poll.id}
-    viewer_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == public_stance.id }
-    assert_equal 2, viewer_stance.fetch('weight')
+    response_json = JSON.parse(response.body)
+    viewer_stance = response_json.fetch('stances').find { |stance| stance['id'] == public_stance.id }
+    assert_equal '2', viewer_stance.fetch('weight')
+    assert_equal false, response_json.fetch('meta').fetch('show_voter_details')
+    assert_not response_json.fetch('meta').key?('voter_details_by_user_id')
   end
 
   test "my_stances serializes the filtered collection" do

@@ -189,6 +189,40 @@ class MembershipService
     membership
   end
 
+  # Update a reviewed batch as one unit so an invalid weight or inaccessible
+  # membership cannot leave only some members changed.
+  def self.set_weights(group:, weights_by_membership_id:, actor:)
+    raise ActionController::ParameterMissing, :weights if weights_by_membership_id.empty?
+
+    memberships = nil
+    Membership.transaction do
+      memberships = group.memberships.active.where(id: weights_by_membership_id.keys).index_by { |membership| membership.id.to_s }
+      raise ActiveRecord::RecordNotFound unless memberships.length == weights_by_membership_id.length
+
+      memberships.each_value { |membership| actor.ability.authorize! :set_weight, membership }
+      memberships.each do |id, membership|
+        membership.update!(weight: weights_by_membership_id.fetch(id))
+      end
+    end
+    memberships.each_value { |membership| EventBus.broadcast 'membership_update', membership, {weight: membership.weight}, actor }
+    memberships.values
+  end
+
+  # Apply one reviewed weight to every current member, including members not
+  # loaded in the UI. Keep changes atomic and publish only after commit.
+  def self.reset_weights(group:, weight:, actor:)
+    actor.ability.authorize! :set_weight, Membership.new(group: group)
+    candidate = Membership.new(weight: weight)
+    candidate.valid?
+    raise ActiveRecord::RecordInvalid, candidate if candidate.errors.include?(:weight)
+    memberships = group.memberships.active.to_a
+    Membership.transaction do
+      memberships.each { |membership| membership.update!(weight: weight) }
+    end
+    memberships.each { |membership| EventBus.broadcast 'membership_update', membership, {weight: membership.weight}, actor }
+    memberships
+  end
+
   def self.resend(membership:, actor:)
     actor.ability.authorize! :resend, membership
     EventBus.broadcast 'membership_resend', membership, actor

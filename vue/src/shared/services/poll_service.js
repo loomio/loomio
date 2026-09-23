@@ -5,7 +5,6 @@ import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { I18n }          from '@/i18n';
-import AppConfig      from '@/shared/services/app_config';
 import { hardReload } from '@/shared/helpers/window';
 import BookmarkService from '@/shared/services/bookmark_service';
 import { startOfHour, addDays, format } from 'date-fns';
@@ -117,9 +116,21 @@ export default new class PollService {
         to() { return `/p/new?template_id=${poll.id}`; }
       },
 
+      view_votes: {
+        icon: 'mdi-eye-outline',
+        name: 'poll_common.view_votes',
+        dock: 2,
+        canPerform() {
+          return !poll.discardedAt && (poll.anonymous
+            ? AbilityService.canVerifyParticipants(poll)
+            : poll.decidedVotersCount > 0);
+        },
+        to() { return `/p/${poll.key}/votes`; }
+      },
+
       announce_poll: {
         icon: 'mdi-account-multiple-plus',
-        name: 'poll_common_form.add_voters',
+        name: 'poll_common_form.manage_voters',
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt || (!poll.openedAt && !poll.openingAt)) { return false; }
@@ -128,9 +139,7 @@ export default new class PollService {
         perform() {
           return openModal({
             component: 'PollMembers',
-            props: {
-              poll
-            }
+            props: { poll }
           });
         }
       },
@@ -286,25 +295,6 @@ export default new class PollService {
       //             confirm: 'poll_common_delete_modal.question'
       //             flash: 'poll_common_delete_modal.success'
       //
-
-      verify_participants: {
-        icon: 'mdi-account-check',
-        name: 'poll_receipts_page.verify_participants',
-        menu: true,
-        to() { return `/p/${poll.key}/receipts`; },
-        canPerform() {
-          if (!poll.anonymous) { return false };
-          if (!poll.groupId) { return false };
-          if (poll.detachedAnonymousVoting()) {
-            return poll.adminsInclude(Session.user());
-          }
-          if (!poll.membersInclude(Session.user())) { return false };
-          if (AppConfig.features.app.verify_participants_admin_only) {
-            return poll.adminsInclude(Session.user());
-          }
-          return true;
-        }
-      },
 
       discard_poll: {
         name: 'poll_common.delete_poll',

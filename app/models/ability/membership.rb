@@ -11,7 +11,7 @@ module Ability::Membership
     end
 
     can :set_weight, ::Membership do |membership|
-      membership.group.admins.exists?(user.id)
+      membership.group.vote_weights_allowed? && membership.group.admins.exists?(user.id)
     end
 
     can [:make_admin], ::Membership do |membership|

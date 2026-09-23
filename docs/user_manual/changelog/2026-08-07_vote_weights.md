@@ -1,7 +1,9 @@
 # Vote weights
 
-Poll coordinators can enable vote weights in a poll's advanced settings before voting opens. Group administrators can set a default vote weight for each group member. The default is copied to the member's vote when they are added to a poll with vote weights enabled. Changing a membership weight does not change existing polls.
+Group administrators can allow vote weights in group settings and set default weights for members on the Members page. Poll coordinators can then enable vote weights in a poll's advanced settings before voting opens. The default is copied to the member's vote when they are added to a poll with vote weights enabled. Turning weights off sets every poll voter to weight `1`; turning them on again copies current membership weights. Changing a membership weight does not change an existing poll unless its coordinator chooses to restore membership weights.
 
-Poll coordinators can adjust the copied weights until the poll closes. Weights are whole numbers. A weight of `0` lets someone participate and records their vote in the voter count without adding their choices to the score.
+Poll coordinators can adjust the copied weights until the poll closes. Weights can have up to three decimal places, allowing ownership shares such as `2.33` to be entered directly. A weight of `0` lets someone participate and records their vote in the voter count without adding their choices to the score. Group administrators can set every current member to one chosen weight. In the poll's Voters window, coordinators can set one weight for every voter or restore current group membership weights.
 
-Weighted results show both the number of voters and the weighted score. Voter avatars show their weights in the results table, and the votes page shows each person's vote and weight. Anonymous polls and STV elections do not support vote weights.
+When each choice gives one point, weighted results show **Voters** and **Score**. For voting methods that allow multiple points per choice, results also show **Equal weight score**. Voter avatars show their weights in the results table, and the Votes page shows each person's vote and vote weight. The Voters window lets poll coordinators review and edit weights across the paginated voter list. Direct polls can use vote weights without a group setting. Anonymous polls, time polls, and STV elections do not support vote weights.
+
+See [Weighted voting](/en/user_manual/polls/weighted_voting) for the full workflow.

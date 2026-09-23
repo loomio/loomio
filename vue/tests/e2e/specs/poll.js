@@ -321,7 +321,7 @@ module.exports = {
     page.click('.action-dock__button--close_poll')
     page.click('.confirm-modal__submit')
     page.expectText('.poll-common-action-panel__anonymous-closed-message', 'Votes are anonymous')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
+    page.expectElement('.action-dock__button--view_votes')
     page.expectNoElement('.confirm-modal', 5000)
     page.pause(500)
 
@@ -332,17 +332,23 @@ module.exports = {
     page.expectNoText('.v-autocomplete__content', 'Undecided voters')
   },
 
-  'shows_migrated_legacy_anonymous_vote_reasons_without_voter_names': (test) => {
+  'shows_migrated_legacy_anonymous_participation_without_vote_reasons': (test) => {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
-    page.click('.poll-common-chart-panel__view-legacy-vote-reasons')
-    page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
-    page.expectText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
-    page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
-    test.expect.element('.poll-common-votes-panel__stance-name-and-option').to.not.be.present
-    test.expect.element('.poll-common-votes-panel__avatar').to.not.be.present
+    page.clickAndWait('.action-dock__button--view_votes', '.poll-common-votes-panel')
+    page.expectElement('.poll-common-votes-panel table')
+    page.expectNoText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
+  },
+
+  'shows_identified_votes_in_a_table': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.clickAndWait('.action-dock__button--view_votes', '.poll-common-votes-panel table tbody tr')
+    page.expectText('.poll-common-votes-panel table thead', 'Name')
+    page.expectText('.poll-common-votes-panel table thead', 'Vote')
+    page.expectText('.poll-common-votes-panel table thead', 'Voted on')
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {
@@ -551,15 +557,28 @@ module.exports = {
     page.expectElement('.poll-common-vote-form--preview')
     page.expectElement('.poll-common-vote-form__button')
 
-    // Open the add voters modal
+    // Open the voter management window
     page.click('.action-dock__button--announce_poll')
     page.pause(500)
 
-    // Verify the add voters modal is shown
+    // Verify the voter management window is shown
     page.expectElement('.poll-members-form')
 
     // Verify the add voters button label
     page.expectText('.poll-members-form__submit', 'Add voters')
+  },
+
+  'can_page_and_search_poll_voters': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_scheduled_poll?voter_count=25&weighted=1')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__pagination')
+    page.expectText('.poll-members-form__page-count', '1–20 of 25')
+    page.expectElement('.poll-members-form__weight')
+    page.click('.poll-members-form__pagination .v-pagination__next button')
+    page.expectText('.poll-members-form__page-count', '21–25 of 25')
+    page.fillIn('.poll-members-form__search input', 'No matching voter')
+    page.expectText('.poll-members-form__page-count', '0–0 of 0')
   },
 
   'can_start_a_standalone_poll': (test) => {

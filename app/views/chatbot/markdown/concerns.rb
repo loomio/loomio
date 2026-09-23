@@ -366,11 +366,12 @@ module Views::Chatbot::Markdown::Concerns
     when 'votes_cast_percent' then t('poll_ranked_choice_form.pct_of_votes_cast')
     when 'voter_percent' then t('poll_ranked_choice_form.pct_of_voters')
     when 'rank' then t('poll_ranked_choice_form.rank')
-    when 'score' then t('poll_ranked_choice_form.points')
+    when 'score' then t(@poll.result_score_heading_key)
+    when 'unweighted_score' then t('poll_common.equal_weight_score')
     when 'average' then t('poll_ranked_choice_form.mean')
     when 'stv_status' then t('poll_common.status')
     when 'voter_count' then t('membership_card.voters')
-    when 'votes' then t('poll_common.votes')
+    when 'votes' then t(@poll.result_votes_heading_key)
     when 'voters' then nil
     end
   end
@@ -388,6 +389,7 @@ module Views::Chatbot::Markdown::Concerns
       { value: status ? t("poll_stv_results.#{status}") : '', alignment: :right }
     when 'rank' then { value: option[:rank], alignment: :right }
     when 'score' then { value: option[:score], alignment: :right }
+    when 'unweighted_score' then { value: option[:unweighted_score], alignment: :right }
     when 'voter_count', 'votes' then { value: option[:voter_count], alignment: :right }
     when 'average' then { value: option[:average].round(1), alignment: :right }
     when 'voter_percent' then { value: option[:voter_percent].round, alignement: :right }

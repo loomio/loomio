@@ -217,6 +217,27 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_equal "Updated Group Name", @group.name
   end
 
+  test "group admin can allow vote weights" do
+    sign_in @user
+    @group.add_admin!(@user)
+
+    put :update, params: {id: @group.id, group: {vote_weights_allowed: true}}
+
+    assert_response :success
+    assert @group.reload.vote_weights_allowed?
+    assert_equal true, JSON.parse(response.body).fetch('groups').first.fetch('vote_weights_allowed')
+  end
+
+  test "group member cannot allow vote weights" do
+    sign_in @alien
+    @group.add_member!(@alien)
+
+    put :update, params: {id: @group.id, group: {vote_weights_allowed: true}}
+
+    assert_response :forbidden
+    refute @group.reload.vote_weights_allowed?
+  end
+
   test "update without admin privilege returns 403" do
     sign_in @alien
     @group.add_member!(@alien)

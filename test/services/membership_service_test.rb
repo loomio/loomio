@@ -6,6 +6,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     @user = users(:alien)
     @group = Group.create!(
       name: 'Test Group',
+      vote_weights_allowed: true,
       discussion_privacy_options: 'private_only',
       is_visible_to_public: false,
       membership_granted_upon: 'request',
@@ -62,6 +63,40 @@ class MembershipServiceTest < ActiveSupport::TestCase
       MembershipService.set_weight(membership: membership, weight: 0, actor: @user)
     end
 
+    assert_equal 1, membership.reload.weight
+  end
+
+  test "group permission controls member weight changes" do
+    membership = @group.add_member!(@user)
+    @group.update!(vote_weights_allowed: false)
+    membership.reload
+
+    assert_raises CanCan::AccessDenied do
+      MembershipService.set_weight(membership: membership, weight: 2, actor: @admin)
+    end
+    assert_equal 1, membership.reload.weight
+  end
+
+  test "bulk member weight changes roll back when one weight is invalid" do
+    first = @group.membership_for(@admin)
+    second = @group.add_member!(@user)
+
+    assert_raises ActiveRecord::RecordInvalid do
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {first.id.to_s => 2, second.id.to_s => -1}, actor: @admin)
+    end
+
+    assert_equal 1, first.reload.weight
+    assert_equal 1, second.reload.weight
+  end
+
+  test "bulk member weight changes reject memberships from another group" do
+    membership = @group.add_member!(@user)
+    other_group = Group.create!(name: 'Other group', handle: "other-#{SecureRandom.hex(4)}", vote_weights_allowed: true)
+    other = other_group.add_member!(@admin)
+
+    assert_raises ActiveRecord::RecordNotFound do
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2, other.id.to_s => 3}, actor: @admin)
+    end
     assert_equal 1, membership.reload.weight
   end
 

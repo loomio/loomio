@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_24_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -301,6 +301,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.integer "theme_id"
     t.string "token"
     t.datetime "updated_at", precision: nil
+    t.boolean "vote_weights_allowed", default: false, null: false
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["creator_id"], name: "index_groups_on_creator_id"
     t.index ["discarded_at"], name: "index_groups_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -375,7 +376,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.integer "user_id", null: false
     t.integer "volume_email", default: 2, null: false
     t.integer "volume_push", default: 2, null: false
-    t.integer "weight", default: 1, null: false
+    t.decimal "weight", precision: 12, scale: 3, default: "1.0", null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -388,7 +389,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.index ["volume_push"], name: "index_memberships_on_volume_push"
     t.check_constraint "volume_email = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_email"
     t.check_constraint "volume_push = ANY (ARRAY[1, 2, 3])", name: "memberships_volume_push"
-    t.check_constraint "weight >= 0 AND weight <= 1000000", name: "memberships_weight_in_range"
+    t.check_constraint "weight >= 0::numeric AND weight <= 1000000::numeric", name: "memberships_weight_in_range"
   end
 
   create_table "mobile_access_tokens", force: :cascade do |t|
@@ -635,7 +636,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.string "test_against"
     t.string "test_operator"
     t.integer "test_percent"
-    t.bigint "total_score", default: 0, null: false
+    t.decimal "total_score", precision: 30, scale: 3, default: "0.0", null: false
     t.datetime "updated_at", precision: nil
     t.integer "voter_count", default: 0, null: false
     t.jsonb "voter_scores", default: {}, null: false
@@ -755,10 +756,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
+    t.boolean "vote_weights_enabled", default: false, null: false
     t.integer "voters_count", default: 0, null: false
     t.integer "voting_system", default: 0, null: false
     t.boolean "legacy_anonymous", default: false, null: false
-    t.boolean "vote_weights_enabled", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
@@ -1045,7 +1046,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.string "token"
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.integer "weight", default: 1, null: false
+    t.decimal "weight", precision: 12, scale: 3, default: "1.0", null: false
     t.index ["cast_at", "id"], name: "index_stances_on_cast_at_and_id_for_relay", where: "((cast_at IS NOT NULL) AND (redacted_at IS NULL))"
     t.index ["created_at"], name: "index_stances_on_created_at"
     t.index ["inviter_id"], name: "index_stances_on_inviter_id"
@@ -1056,7 +1057,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_23_000000) do
     t.index ["redactor_id"], name: "index_stances_on_redactor_id"
     t.index ["revoker_id"], name: "index_stances_on_revoker_id"
     t.index ["token"], name: "index_stances_on_token", unique: true
-    t.check_constraint "weight >= 0 AND weight <= 1000000", name: "stances_weight_in_range"
+    t.check_constraint "weight >= 0::numeric AND weight <= 1000000::numeric", name: "stances_weight_in_range"
   end
 
   create_table "subscription_update_receipts", force: :cascade do |t|

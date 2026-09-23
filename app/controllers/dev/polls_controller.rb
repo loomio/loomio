@@ -131,7 +131,16 @@ class Dev::PollsController < Dev::NightwatchController
 
 
   def test_scheduled_poll
-    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal')
+    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal', weighted: params[:weighted].present?)
+    if params[:voter_count].present?
+      voters = Array.new(params[:voter_count].to_i.clamp(0, 25)) { saved(fake_user) }
+      voters.each { |voter| scenario[:group].add_member!(voter) }
+      PollService.invite(
+        poll: scenario[:poll],
+        params: {recipient_user_ids: voters.map(&:id), notify_recipients: false},
+        actor: scenario[:actor]
+      )
+    end
     sign_in scenario[:observer]
     redirect_to poll_url(scenario[:poll])
   end

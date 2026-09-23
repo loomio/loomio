@@ -112,6 +112,33 @@ class StanceService
     poll
   end
 
+  # Reset every current voter, including voters outside the visible page, and
+  # recalculate the tally once within the same poll lock.
+  def self.reset_weights(poll:, actor:, mode: 'value', weight: nil)
+    poll.with_lock do
+      actor.ability.authorize! :set_weight, Stance.new(poll: poll)
+      weights_by_user_id = case mode
+      when 'membership'
+        raise ActionController::BadRequest, 'group membership weights require a group poll' unless poll.group_id
+
+        poll.member_vote_weights_by_user_id(poll.stances.latest.select(:participant_id))
+      when 'value'
+        candidate = Stance.new(poll: poll, weight: weight)
+        candidate.valid?
+        raise ActiveRecord::RecordInvalid, candidate if candidate.errors.include?(:weight)
+        nil
+      else
+        raise ActionController::BadRequest, 'invalid weight mode'
+      end
+
+      poll.stances.latest.find_each do |stance|
+        stance.update!(weight: weights_by_user_id ? weights_by_user_id.fetch(stance.participant_id, 1) : weight)
+      end
+      poll.update_counts!
+    end
+    poll
+  end
+
   def self.redeem(stance:, actor:)
     return if Stance.latest.where(participant_id: actor.id, poll_id: stance.poll_id).exists?
     return unless Stance.redeemable_by(actor).where(id: stance.id).exists?

@@ -1,4 +1,5 @@
 class Api::V1::StancesController < Api::V1::RestfulController
+  include VoteWeightParams
   def create
     super
   rescue ActiveRecord::RecordNotUnique
@@ -48,10 +49,17 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def set_weights
     poll = Poll.find(params.require(:poll_id))
-    weights_by_stance_id = params.require(:weights).permit!.to_h
+    weights_by_stance_id = vote_weights_by_record_id
     StanceService.set_weights poll: poll, weights_by_stance_id: weights_by_stance_id, actor: current_user
     self.collection = poll.stances.latest.where(id: weights_by_stance_id.keys)
     respond_with_collection
+  end
+
+  def reset_weights
+    mode = params[:mode] || 'value'
+    weight = params.require(:weight) if mode == 'value'
+    StanceService.reset_weights(poll: Poll.find(params.require(:poll_id)), mode: mode, weight: weight, actor: current_user)
+    render json: {updated: true}
   end
 
   def redact
@@ -96,43 +104,29 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
       collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
+    add_voter_details_meta if !@poll.anonymous?
     respond_with_collection
   end
 
   def users
-    if load_and_authorize(:poll).detached_anonymous?
-      current_user.ability.authorize!(:add_voters, @poll)
-      collection = User.where(id: @poll.anonymous_poll_voters.select(:voter_id))
-      if query = params[:query].presence
-        collection = collection.where(
-          "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
-          first: "#{query}%",
-          last: "% #{query}%"
-        )
-      end
-      self.collection = collection
-      add_voter_role_meta(collection.pluck(:id))
-      return respond_with_collection serializer: AuthorSerializer, root: :users
+    poll = load_and_authorize(:poll)
+    current_user.ability.authorize!(:add_voters, poll)
+    voters = if poll.detached_anonymous?
+      User.where(id: poll.anonymous_poll_voters.select(:voter_id))
+    else
+      User.where(id: poll.stances.latest.select(:participant_id))
+    end
+    if query = params[:query].presence
+      voters = voters.where(
+        "users.name ILIKE :first OR users.name ILIKE :last OR users.email ILIKE :first OR users.username ILIKE :first",
+        first: "#{query}%", last: "% #{query}%"
+      )
     end
 
-    instantiate_collection do |collection|
-      current_user.ability.authorize!(:add_voters, @poll)
-
-      if query = params[:query]
-        collection = collection.
-          joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
-          where("users.name ilike :first OR
-                 users.name ilike :last OR
-                 users.email ilike :first OR
-                 users.username ilike :first",
-                 first: "#{query}%", last: "% #{query}%")
-      end
-
-      user_ids = collection.pluck(:participant_id)
-      add_voter_role_meta(user_ids)
-      User.where(id: collection.pluck(:participant_id))
-    end
-    respond_with_collection serializer: AuthorSerializer
+    self.collection_count = voters.count
+    self.collection = page_collection(voters.order(:id))
+    add_voter_role_meta(collection.ids)
+    respond_with_collection serializer: AuthorSerializer, root: :users
   end
 
   def my_stances
@@ -165,6 +159,37 @@ class Api::V1::StancesController < Api::V1::RestfulController
   end
 
   private
+
+  def add_voter_details_meta
+    # These fields were previously available through receipts, which excludes
+    # public readers and can be restricted to poll administrators.
+    can_view_details = @poll.group_id && if AppConfig.app_features[:verify_participants_admin_only]
+      @poll.admins.exists?(current_user.id)
+    else
+      @poll.members.exists?(current_user.id) || @poll.stances.latest.exists?(participant_id: current_user.id)
+    end
+    add_meta :show_voter_details, !!can_view_details
+    return unless can_view_details
+
+    stances = collection.to_a
+    voter_ids = stances.map(&:participant_id)
+    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: voter_ids).index_by(&:user_id) : {}
+    inviters = User.where(id: stances.map(&:inviter_id).compact).index_by(&:id)
+    show_voter_email = @poll.group.admins.include?(current_user)
+    voters = show_voter_email ? User.where(id: voter_ids).index_by(&:id) : {}
+
+    add_meta :show_voter_email, show_voter_email
+    details_by_user_id = stances.map do |stance|
+      details = {
+        member_since: memberships[stance.participant_id]&.accepted_at&.to_date&.iso8601,
+        inviter_name: inviters[stance.inviter_id]&.name,
+        invited_on: stance.created_at&.to_date&.iso8601
+      }
+      details[:voter_email] = voters[stance.participant_id]&.email if show_voter_email
+      [stance.participant_id, details]
+    end.to_h
+    add_meta :voter_details_by_user_id, details_by_user_id
+  end
 
   def add_voter_role_meta(user_ids)
     self.add_meta :guest_ids, @poll.topic.topic_readers.guests.pluck(:user_id) & user_ids

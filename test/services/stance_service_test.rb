@@ -8,6 +8,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @alien = users(:alien)
     @group = groups(:group)
+    @group.update!(vote_weights_allowed: true)
 
     @poll = PollService.create(params: {
       title: 'Test Poll',

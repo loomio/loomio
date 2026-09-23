@@ -41,19 +41,19 @@ At the bottom of the poll are several features to help you engage with people on
 
 You can add new people to the poll at any time, including before voting opens on a scheduled poll.
 
-Select **Add voters**, then enter the names or email addresses of the people you want to add.
+Select **Manage voters** to open the voter management window, then enter the names or email addresses of the people you want to add. Use the page controls to see additional voters.
 
 If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
 
 ### Remove people from the poll
 
-Select **Add voters**, find the person's name, open the three-dot menu beside it, and select **Remove from proposal**.
+Select **Manage voters**, find the person's name in the voter management window, open the three-dot menu beside it, and select **Remove voter**.
 
 People cannot be removed from an anonymous poll.
 
 For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
 
-![](proposal_invite_remove.png)
+For polls that use vote weights, the same window lets poll coordinators [review and edit voter weights](/en/user_manual/polls/weighted_voting).
 
 ### Remind people to vote
 

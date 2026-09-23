@@ -59,6 +59,8 @@ An anonymous poll cannot be reopened after it closes.
 
 Poll coordinators can view the named participation records. These always show who was eligible. Once at least three people have voted, they also show whether each person voted, but never show how anyone voted. If a poll closes with fewer than three votes, the participation status remains hidden.
 
+Select **View votes** to see these records on the poll's Votes page, including membership and invitation details. Group admins also see email addresses to help distinguish people with the same name. The page does not show the date of an anonymous person's vote.
+
 Other participants cannot view this named participation information. Access to poll results does not grant access to the participation records.
 
 Coordinators can add eligible people while voting remains open, including after

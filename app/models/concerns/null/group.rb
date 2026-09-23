@@ -99,6 +99,7 @@ module Null::Group
 
   def false_methods
     %w(
+      vote_weights_allowed?
       parent_members_can_see_discussions
       public_discussions_only?
       is_visible_to_public

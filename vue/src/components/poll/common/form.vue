@@ -47,6 +47,7 @@ const pollOptions = ref(props.poll.pollOptionsAttributes || props.poll.clonePoll
 const groupItems = ref([]);
 const pollTemplate = ref(null);
 const currentHideResults = ref(props.poll.hideResults);
+const initialVoteWeightsEnabled = ref(props.poll.voteWeightsEnabled);
 const hideResultsItems = ref([
   { title: I18n.global.t('poll_common_card.do_not_hide_results'), value: 'off' },
   { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
@@ -170,6 +171,7 @@ const submit = () => {
     EventBus.$emit('deleteDraft', 'poll', props.poll.id, 'details');
 
     const poll = Records.polls.find(data.polls[0].id);
+    initialVoteWeightsEnabled.value = poll.voteWeightsEnabled;
     if (props.redirectOnSave) { router.replace(urlFor(poll)); }
     emit('saveSuccess', poll);
 
@@ -216,7 +218,9 @@ const visiblePollOptions = computed(() => pollOptions.value.filter(o => !o._dest
 const hasOptions = computed(() => props.poll.config().has_options);
 const minOptions = computed(() => props.poll.config().min_options);
 const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
-const voteWeightsSupported = computed(() => !props.poll.anonymous && props.poll.pollType !== 'stv');
+const voteWeightsSupported = computed(() => !props.poll.anonymous && !['stv', 'meeting'].includes(props.poll.pollType) && (props.poll.voteWeightsEnabled || initialVoteWeightsEnabled.value || !props.poll.groupId || props.poll.group().voteWeightsAllowed));
+const willDisableVoteWeights = computed(() => !props.poll.isNew() && initialVoteWeightsEnabled.value && !props.poll.voteWeightsEnabled);
+const willEnableVoteWeights = computed(() => !props.poll.isNew() && !initialVoteWeightsEnabled.value && props.poll.voteWeightsEnabled);
 
 const stanceReasonRequiredItems = computed(() => [
   {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
@@ -578,12 +582,14 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="voteWeightsSupported")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_form.vote_weights'")
-          .text-body-medium.pb-2.text-medium-emphasis(v-t="'poll_common_form.vote_weights_description'")
+          .text-body-medium.pb-2.text-medium-emphasis {{ t('poll_common_form.vote_weights_description_decimal') }}
           v-checkbox.poll-settings-vote-weights(
             hide-details
             :disabled="!!poll.openedAt"
             v-model="poll.voteWeightsEnabled"
             :label="$t('poll_common_form.use_vote_weights')")
+          v-alert.mt-2(v-if="willDisableVoteWeights" type="warning" variant="tonal" density="compact") {{ t('poll_common_form.vote_weights_off_warning') }}
+          v-alert.mt-2(v-if="willEnableVoteWeights" type="info" variant="tonal" density="compact") {{ t(poll.groupId ? 'poll_common_form.vote_weights_on_group' : 'poll_common_form.vote_weights_on_direct') }}
 
         v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")

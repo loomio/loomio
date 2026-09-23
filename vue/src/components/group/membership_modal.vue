@@ -4,12 +4,13 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import { computed, ref } from 'vue';
+import { voteWeightValid } from '@/shared/helpers/vote_weight';
 
 const { membership: membershipProp } = defineProps({membership: Object});
 const membership = membershipProp;
 const saving = ref(false);
-const canManageWeight = computed(() => AbilityService.canAdminister(membership.group()));
-const weightValid = computed(() => Number.isInteger(Number(membership.weight)) && membership.weight >= 0 && membership.weight <= 1000000);
+const canManageWeight = computed(() => membership.group().voteWeightsAllowed && AbilityService.canAdminister(membership.group()));
+const weightValid = computed(() => !canManageWeight.value || voteWeightValid(membership.weight));
 
 function submit() {
   saving.value = true;
@@ -39,13 +40,11 @@ v-card.membership-modal(:title="$t(canManageWeight ? 'membership_form.modal_titl
     template(v-if="canManageWeight")
       p.text-medium-emphasis.mt-4(v-t="'membership_form.weight_helptext'")
       v-text-field#membership-weight.membership-form__weight-input(
-        v-model.number="membership.weight"
-        type="number"
-        min="0"
-        max="1000000"
-        step="1"
+        v-model="membership.weight"
+        type="text"
+        inputmode="decimal"
         :label="$t('membership_form.weight_label')"
-        :error-messages="weightValid ? [] : [$t('membership_form.weight_invalid')]"
+        :error-messages="weightValid ? [] : [$t('membership_form.weight_invalid_decimal')]"
         @keyup.enter="submit")
   v-card-actions.membership-form-actions
     v-spacer

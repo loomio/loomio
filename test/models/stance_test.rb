@@ -34,15 +34,28 @@ class StanceTest < ActiveSupport::TestCase
     assert stance.valid?
   end
 
-  test "vote weight must be a non-negative whole number" do
-    poll = PollService.create(params: poll_params, actor: @admin)
+  test "vote weight accepts three decimal places but rejects a fourth" do
+    poll = PollService.create(params: poll_params(vote_weights_enabled: true), actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin, weight: 0)
 
     assert stance.valid?
     stance.weight = 0.5
+    assert stance.valid?
+    stance.weight = '0.0001'
     assert_not stance.valid?
     stance.weight = -1
     assert_not stance.valid?
+  end
+
+  test "unweighted stances clamp any supplied weight to one" do
+    poll = PollService.create(params: poll_params, actor: @admin)
+    stance = Stance.new(poll: poll, participant: @admin, weight: '2.33')
+
+    assert stance.valid?
+    assert_equal 1, stance.weight
+    stance.weight = -1
+    assert stance.valid?
+    assert_equal 1, stance.weight
   end
 
   test "does not allow a stance for an anonymous poll" do
