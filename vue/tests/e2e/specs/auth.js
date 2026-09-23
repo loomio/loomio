@@ -154,6 +154,20 @@ module.exports = {
     page.expectText('.passkey-settings', 'Passkey')
   },
 
+  'returning_user_without_recorded_legal_acceptance_can_sign_in': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_returning_user_without_legal_acceptance')
+    page.fillIn('.auth-email-form__email input', 'returning-no-terms@example.com')
+    page.fillIn('.auth-email-form__password input', 'veryeasytoguess123')
+    page.click('.auth-email-form__submit')
+    page.expectElement('.dashboard-page')
+    page.expectNoElement('.account-completion')
+    page.refresh()
+    page.expectElement('.dashboard-page')
+    page.expectNoElement('.account-completion')
+  },
+
   'does_not_prompt_after_code_sign_in_when_account_has_a_passkey': (test) => {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)

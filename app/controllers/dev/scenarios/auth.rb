@@ -112,6 +112,17 @@ module Dev::Scenarios::Auth
     redirect_to dashboard_path
   end
 
+  def setup_returning_user_without_legal_acceptance
+    User.create!(
+      email: 'returning-no-terms@example.com',
+      name: 'Returning Person',
+      email_verified: true,
+      current_sign_in_at: 1.week.ago,
+      password: 'veryeasytoguess123'
+    )
+    redirect_to dashboard_path
+  end
+
   def setup_login_token_user_with_passkey
     user = User.create!(
       email: 'passkey-user@example.com',

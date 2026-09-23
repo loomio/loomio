@@ -18,6 +18,7 @@ class Api::V1::SessionsController < ApplicationController
         incomplete: true,
         email: user.email,
         name: user.name,
+        legal_acceptance_required: user.legal_acceptance_required?,
         email_newsletter: user.email_newsletter
       }
     else

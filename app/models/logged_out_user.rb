@@ -65,6 +65,10 @@ class LoggedOutUser
     false
   end
 
+  def legal_acceptance_required?
+    false
+  end
+
 
 
   def nil_methods

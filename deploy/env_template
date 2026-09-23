@@ -131,6 +131,9 @@ FEATURES_DEMO_GROUPS=1
 # FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS=1 # Tell people when an email has no account; enables account enumeration
 # FEATURES_DEFAULT_PATH = /group-name # rather than redirecting to dashboard, redirect to this path
 
+# Require previously active accounts with no recorded acceptance to confirm the configured terms
+# LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS=1
+
 # Replace any part of the user manual link in the sidebar
 # LOOMIO_HELP_TITLE=Documentation
 # LOOMIO_HELP_SUBTITLE=A detailed guide to this service

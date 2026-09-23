@@ -21,7 +21,7 @@ const emailNewsletter = ref(Boolean(user.emailNewsletter));
 const loading = ref(false);
 const termsUrl = AppConfig.theme.terms_url;
 const privacyUrl = AppConfig.theme.privacy_url;
-const disabled = computed(() => !name.value.trim() || (termsUrl && !legalAccepted.value));
+const disabled = computed(() => !name.value.trim() || (user.legalAcceptanceRequired && !legalAccepted.value));
 
 const submit = async () => {
   if (disabled.value || loading.value) return;
@@ -35,7 +35,10 @@ const submit = async () => {
       return;
     }
     await Records.users.updateProfile(user);
-    user.legalAcceptedAt ||= new Date().toISOString();
+    if (user.legalAcceptanceRequired && legalAccepted.value) {
+      user.legalAcceptedAt = new Date().toISOString();
+      user.legalAcceptanceRequired = false;
+    }
     completed();
     close();
     CredentialPromptService.maybeOpen();
@@ -57,7 +60,7 @@ v-card.account-completion(:title="t('account_completion.complete_your_account')"
         :label="t('auth_form.name_placeholder')"
         required)
       validation-errors(:subject="user" field="name")
-      v-checkbox.account-completion__legal-accepted(v-if="termsUrl" v-model="legalAccepted" hide-details)
+      v-checkbox.account-completion__legal-accepted(v-if="user.legalAcceptanceRequired" v-model="legalAccepted" hide-details)
         template(v-slot:label)
           i18n-t(keypath="auth_form.i_accept_all" tag="span")
             template(v-slot:termsLink)

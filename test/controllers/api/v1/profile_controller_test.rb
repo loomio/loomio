@@ -9,6 +9,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     @disable_local_login_previous = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
     @terms_url_previous = ENV['TERMS_URL']
+    @enforce_existing_terms_previous = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
   end
 
   teardown do
@@ -19,10 +20,12 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     end
     @disable_local_login_previous.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_previous
     @terms_url_previous.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_previous
+    @enforce_existing_terms_previous.nil? ? ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS') : ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = @enforce_existing_terms_previous
   end
 
   test "account completion requires name and legal acceptance together" do
     ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
     @user.update_columns(name: nil, legal_accepted_at: nil)
     sign_in @user
 
@@ -35,6 +38,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
   test "account completion saves name and legal acceptance" do
     ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
     @user.update_columns(name: nil, legal_accepted_at: nil)
     sign_in @user
 
@@ -44,6 +48,18 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal 'Completed User', @user.reload.name
     assert @user.legal_accepted_at.present?
     assert @user.email_newsletter?
+  end
+
+  test "previously active account can complete its name without asserting legal acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil, current_sign_in_at: 1.week.ago)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User' } }, format: :json
+
+    assert_response :success
+    assert_equal 'Completed User', @user.reload.name
+    assert_nil @user.legal_accepted_at
   end
 
   test "show returns the user json" do
@@ -69,6 +85,18 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_equal @user.id, json.dig('users', 0, 'id')
+  end
+
+  test "boot reports required legal acceptance when existing-user enforcement is enabled" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    @user.update_columns(legal_accepted_at: nil, current_sign_in_at: 1.week.ago)
+    sign_in @user
+
+    payload = Boot::User.new(@user.reload, root_url: 'http://test.host').payload.deep_stringify_keys
+
+    assert_equal true, payload.dig('users', 0, 'legal_acceptance_required')
+    assert_nil @user.reload.legal_accepted_at
   end
 
   test "me returns unauthorized for visitors" do

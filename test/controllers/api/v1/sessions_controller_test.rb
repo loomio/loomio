@@ -5,12 +5,16 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
     @original_force_ssl = Rails.application.config.force_ssl
     @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @terms_url_before = ENV['TERMS_URL']
+    @enforce_existing_terms_before = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
     Rails.application.config.force_ssl = @original_force_ssl
     @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
+    @terms_url_before.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_before
+    @enforce_existing_terms_before.nil? ? ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS') : ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = @enforce_existing_terms_before
   end
 
   test "turnstile is not required when TURNSTILE_SECRET_KEY is unset" do
@@ -443,6 +447,34 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_nil Current.session
     assert_equal true, JSON.parse(response.body)['incomplete']
     assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+  end
+
+  test "returning accounts without recorded terms acceptance can sign in by default" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    user = User.create!(email: 'returning-no-terms@example.com', name: 'Returning Person', email_verified: true, password: 's3curepassword123', current_sign_in_at: 1.week.ago)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: user.email, password: 's3curepassword123' } }
+    end
+
+    assert_response :success
+    assert_equal false, response.parsed_body.dig('users', 0, 'legal_acceptance_required')
+    assert_nil user.reload.legal_accepted_at
+  end
+
+  test "enforcement setting stages returning accounts missing terms acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    user = User.create!(email: 'enforced-terms@example.com', name: 'Returning Person', email_verified: true, password: 's3curepassword123', current_sign_in_at: 1.week.ago)
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: 's3curepassword123' } }
+    end
+
+    assert_response :success
+    assert_equal true, response.parsed_body['incomplete']
+    assert_equal true, response.parsed_body['legal_acceptance_required']
+    assert_nil user.reload.legal_accepted_at
   end
 
   test "does not sign in with an expired code" do

@@ -3,7 +3,7 @@ require 'test_helper'
 class SsoAccountCompletionTest < ActionDispatch::IntegrationTest
   setup do
     @saved_env = %w[
-      FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TERMS_URL
+      FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TERMS_URL LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS
       OAUTH_APP_KEY OAUTH_APP_SECRET OAUTH_AUTH_URL OAUTH_TOKEN_URL OAUTH_PROFILE_URL OAUTH_SCOPE
       OAUTH_ATTR_UID OAUTH_ATTR_NAME OAUTH_ATTR_EMAIL
       SAML_APP_KEY SAML_IDP_METADATA SAML_IDP_METADATA_URL SAML_ATTR_EMAIL SAML_ATTR_NAME
@@ -75,6 +75,29 @@ class SsoAccountCompletionTest < ActionDispatch::IntegrationTest
       saml_response.verify
       complete_and_check_policy(provider_supplies_name)
     end
+  end
+
+  test 'previously active SSO account without recorded terms acceptance signs in' do
+    ENV.update(
+      'OAUTH_APP_KEY' => 'client', 'OAUTH_APP_SECRET' => 'secret',
+      'OAUTH_AUTH_URL' => 'https://provider.example/authorize',
+      'OAUTH_TOKEN_URL' => 'https://provider.example/token',
+      'OAUTH_PROFILE_URL' => 'https://provider.example/profile', 'OAUTH_SCOPE' => 'openid email profile'
+    )
+    user = User.create!(email: 'returning-sso@example.com', name: 'Returning SSO Person', email_verified: true, current_sign_in_at: 1.week.ago)
+    user.identities.create!(identity_type: 'oauth', uid: 'returning-sso', email: user.email, name: user.name)
+    stub_request(:post, ENV['OAUTH_TOKEN_URL']).to_return(status: 200, body: { access_token: 'token' }.to_json, headers: { 'Content-Type' => 'application/json' })
+    stub_request(:get, ENV['OAUTH_PROFILE_URL']).to_return(status: 200, body: { sub: 'returning-sso', email: user.email, name: user.name }.to_json, headers: { 'Content-Type' => 'application/json' })
+
+    get '/oauth/oauth'
+    state = Rack::Utils.parse_query(URI(response.location).query).fetch('state')
+    assert_difference 'Session.count', 1 do
+      get '/oauth/authorize', params: { code: 'code', state: state }
+    end
+
+    assert_response :redirect
+    assert_nil user.reload.legal_accepted_at
+    assert_not AccountCompletionProof.exists?(user: user)
   end
 
   private

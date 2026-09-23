@@ -35,7 +35,7 @@ export default new class AuthService {
     if (data == null) { data = {}; }
     const vals = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash',
             'avatar_url', 'has_password', 'email_status', 'email_verified',
-            'legal_accepted_at', 'auth_form', 'incomplete', 'name_managed'];
+            'legal_accepted_at', 'legal_acceptance_required', 'auth_form', 'incomplete', 'name_managed'];
     user.update(pickBy(mapKeys(pick(data, vals), (v, k) => camelCase(k)), val => !!val));
     user.update({hasToken: data.has_token});
     return user;
@@ -93,6 +93,7 @@ export default new class AuthService {
         user.update({
           errors: {},
           name: data.name,
+          legalAcceptanceRequired: data.legal_acceptance_required,
           emailNewsletter: data.email_newsletter
         });
         AccountCompletionService.openPending(user);
@@ -133,7 +134,7 @@ export default new class AuthService {
       pick(user, ['email', 'turnstileToken'])
     ).save().then(data => {
       if (data.incomplete) {
-        user.update({ errors: {}, name: data.name, emailNewsletter: data.email_newsletter });
+        user.update({ errors: {}, name: data.name, legalAcceptanceRequired: data.legal_acceptance_required, emailNewsletter: data.email_newsletter });
         AccountCompletionService.openPending(user);
       } else if (data.signed_in) {
         this.authSuccess(data);

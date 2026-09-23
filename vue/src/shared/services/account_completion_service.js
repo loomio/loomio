@@ -1,10 +1,9 @@
-import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 
 export default new class AccountCompletionService {
   required(user = Session.user()) {
-    return !user.name || Boolean(AppConfig.theme.terms_url && !user.legalAcceptedAt);
+    return !user.name || user.legalAcceptanceRequired;
   }
 
   maybeOpen() {

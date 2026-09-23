@@ -215,11 +215,21 @@ class User < ApplicationRecord
   end
 
   def require_legal_accepted
-    self.require_valid_signup && ENV['TERMS_URL']
+    self.require_valid_signup && legal_acceptance_required?
+  end
+
+  # Existing accounts without a recorded acceptance can continue using Loomio
+  # until an operator explicitly enables enforcement for them. New accounts
+  # still complete the terms step before their first session.
+  def legal_acceptance_required?
+    return false if ENV['TERMS_URL'].blank? || legal_accepted_at.present?
+    return true if ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'].present?
+
+    current_sign_in_at.blank? && last_seen_at.blank? && sign_in_count.to_i.zero?
   end
 
   def incomplete?
-    name.blank? || (ENV['TERMS_URL'].present? && legal_accepted_at.blank?)
+    name.blank? || legal_acceptance_required?
   end
 
   def self.email_status_for(email)

@@ -2,7 +2,11 @@ class CurrentUserSerializer < UserSerializer
   attributes :email, :email_catch_up_day, :selected_locale, :locale,
              :volume_email_default, :volume_push_default, :experiences,
              :email_newsletter, :is_admin, :memberships_count, :secret_token, :auto_translate,
-             :legal_accepted_at, :has_passkey
+             :legal_accepted_at, :legal_acceptance_required, :has_passkey
+
+  def legal_acceptance_required
+    object.legal_acceptance_required?
+  end
 
   def has_passkey
     object.has_passkey?

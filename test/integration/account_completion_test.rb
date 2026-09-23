@@ -4,7 +4,7 @@ class AccountCompletionTest < ActionDispatch::IntegrationTest
   setup do
     @forgery_before = ActionController::Base.allow_forgery_protection
     ActionController::Base.allow_forgery_protection = true
-    @saved_env = %w[FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TURNSTILE_SECRET_KEY TERMS_URL].to_h { |key| [key, ENV.delete(key)] }
+    @saved_env = %w[FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TURNSTILE_SECRET_KEY TERMS_URL LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS].to_h { |key| [key, ENV.delete(key)] }
     ENV['TERMS_URL'] = 'https://example.com/terms'
   end
 
@@ -71,6 +71,25 @@ class AccountCompletionTest < ActionDispatch::IntegrationTest
     complete_account
     assert_response :success
     assert_empty AccountCompletionProof.where(user: user)
+  end
+
+  test 'previously active account can complete a missing name without asserting terms acceptance' do
+    user = User.create!(email: 'returning-name@example.com', email_verified: true, current_sign_in_at: 1.week.ago)
+    token = LoginToken.create!(user: user)
+    get '/dashboard'
+
+    assert_no_difference 'Session.count' do
+      post '/api/v1/sessions', params: { user: { email: user.email, code: token.code } }, headers: csrf_headers, as: :json
+    end
+    assert_response :success
+    assert_equal false, response.parsed_body['legal_acceptance_required']
+
+    assert_difference 'Session.count', 1 do
+      complete_account(name: 'Returning Person', legal_accepted: false)
+    end
+    assert_response :success
+    assert_equal 'Returning Person', user.reload.name
+    assert_nil user.legal_accepted_at
   end
 
   test 'inactive accounts cannot consume a completion proof' do

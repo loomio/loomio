@@ -26,4 +26,4 @@ Completing missing profile or legal-consent fields after a successful SSO callba
 
 ## Terms
 
-When terms are configured, a person must accept them before their first application session is created. Changing the configured terms URL does not force existing users or passkey holders to accept the terms again. Loomio's terms policy relies on notifying users of later changes rather than versioning acceptance in the authentication system.
+When terms are configured, a person must accept them before their first application session is created. Previously active accounts with no recorded acceptance can continue signing in without being asked to confirm the terms. Set `LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS` to require those accounts to confirm them on their next sign-in or page load. The setting uses presence as true; omit it to leave enforcement off. Changing the configured terms URL does not force people who already accepted to accept again. Loomio's terms policy relies on notifying users of later changes rather than versioning acceptance in the authentication system.

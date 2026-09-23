@@ -26,6 +26,7 @@ class Api::V1::RegistrationsController < ApplicationController
         signed_in: false,
         incomplete: true,
         name: user.name,
+        legal_acceptance_required: user.legal_acceptance_required?,
         email_newsletter: user.email_newsletter
       }
     when :sign_in

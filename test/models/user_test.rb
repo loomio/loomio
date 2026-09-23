@@ -22,6 +22,34 @@ class UserTest < ActiveSupport::TestCase
     assert_not LoggedOutUser.new.deactivated?
   end
 
+  test "terms acceptance is deferred for previously active accounts until enabled" do
+    terms_url_before = ENV['TERMS_URL']
+    enforce_before = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+
+    newcomer = User.new(email: 'new-terms-user@example.com')
+    returning = User.new(email: 'returning-terms-user@example.com', current_sign_in_at: 1.week.ago)
+    previously_seen = User.new(email: 'seen-terms-user@example.com', last_seen_at: 1.week.ago)
+
+    assert_predicate newcomer, :legal_acceptance_required?
+    assert_not_predicate returning, :legal_acceptance_required?
+    assert_not_predicate previously_seen, :legal_acceptance_required?
+    assert_not_predicate LoggedOutUser.new, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    assert_predicate returning, :legal_acceptance_required?
+    assert_predicate previously_seen, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '0'
+    assert_predicate returning, :legal_acceptance_required?
+
+    returning.legal_accepted_at = Time.current
+    assert_not_predicate returning, :legal_acceptance_required?
+  ensure
+    restore_env('TERMS_URL', terms_url_before)
+    restore_env('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS', enforce_before)
+  end
+
   # Password validations
   test "accepts a good password with confirmation" do
     user = User.new(
