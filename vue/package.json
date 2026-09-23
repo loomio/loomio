@@ -86,7 +86,7 @@
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
     "@vitejs/plugin-vue": "^6.0.9",
-    "@vue/test-utils": "^2.4.6",
+    "@vue/test-utils": "^2.5.1",
     "jsdom": "^30.0.1",
     "nightwatch": "^3.15.0",
     "pagefind": "1.5.2",
