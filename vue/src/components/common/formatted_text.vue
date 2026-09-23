@@ -411,6 +411,8 @@ div.lmo-markdown-wrapper(@click="onClick" @copy="onCopy")
   border-collapse: collapse;
 }
 .lmo-markdown-wrapper table td {
+  /* Include both 4px pads and the collapsed border in an empty row's height. */
+  height: calc(1lh + 9px);
   padding: 4px 4px;
   border: 1px solid #ddd;
 }
