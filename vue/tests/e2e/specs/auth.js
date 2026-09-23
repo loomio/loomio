@@ -122,6 +122,7 @@ module.exports = {
     page.click('.auth-email-form__login-link')
     page.click('.auth-email-code-form__submit')
     page.expectText('.auth-complete', 'Check your email')
+    page.expectText('.auth-complete', "If an account exists for password-user@example.com, we'll send a sign-in code")
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
     page.expectText('.credential-prompt', 'Passkeys')
@@ -224,12 +225,25 @@ module.exports = {
     page.fillIn('.auth-signup-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email', 3000)
+    page.expectText('.auth-complete', "We've sent an email to max_von_sydow@example.com")
+    page.expectText('.auth-complete__submit', 'Continue')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.fillIn('.account-completion__name input', 'Max Von Sydow')
     page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
     page.click('.account-completion__submit')
     page.expectFlash('Signed in successfully')
+  },
+
+  'shows_signup_code_copy_for_an_existing_email': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_login_token_user_with_password')
+    page.click('.auth-form__create-account')
+    page.fillIn('.auth-signup-form__email input', 'password-user@example.com')
+    page.click('.auth-signup-form__submit')
+    page.expectText('.auth-complete', "We've sent an email to password-user@example.com")
+    page.expectText('.auth-complete__submit', 'Continue')
   },
 
   'can_sign_up_a_new_user_through_the_discussion_page': (test) => {

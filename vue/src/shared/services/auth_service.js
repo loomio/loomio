@@ -139,7 +139,7 @@ export default new class AuthService {
       } else if (data.signed_in) {
         this.authSuccess(data);
       } else {
-        user.update({authForm: 'complete', sentLoginLink: true});
+        user.update({authForm: 'complete', sentLoginLink: true, createAccount: true});
       }
       return data;
     }
@@ -161,7 +161,7 @@ export default new class AuthService {
         if (data.account_status === 'inactive') {
           return user.update({emailStatus: 'inactive', authForm: 'inactive'});
         }
-        return user.update({authForm: 'complete', sentLoginLink: true});
+        return user.update({authForm: 'complete', sentLoginLink: true, createAccount: false});
       },
       (data) => {
         const key = data.status === 429

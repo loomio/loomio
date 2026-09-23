@@ -3,11 +3,16 @@ import Records       from '@/shared/services/records';
 import AuthModalMixin from '@/mixins/auth_modal';
 import AuthService from '@/shared/services/auth_service';
 import AppConfig from '@/shared/services/app_config';
+import { useI18n } from 'vue-i18n';
 
 export default {
   mixins: [AuthModalMixin],
   props: {
     user: Object
+  },
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
   data() {
     return {
@@ -28,6 +33,7 @@ export default {
       this.user.code = null;
       this.user.errors = {};
       this.user.sentLoginLink = false;
+      this.user.createAccount = false;
       this.user.authForm = null;
     }
   }
@@ -42,7 +48,8 @@ v-card.auth-complete(
     auth-back-button(@click="back")
   v-sheet.mx-4.text-center
     p.my-6(v-if='user.sentLoginLink')
-      span(v-if='revealEmailAccountStatus' v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
+      span(v-if='user.createAccount') {{ t('auth_form.login_link_sent', { email: user.email }) }}
+      span(v-else-if='revealEmailAccountStatus' v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
       span(v-else v-t="{ path: 'auth_form.login_link_sent_if_account_exists_sentence', args: { email: user.email }}")
       br
       span(v-t="'auth_form.instructions_code'", v-if='attempts < 3')
@@ -66,7 +73,7 @@ v-card.auth-complete(
       :loading="loading"
       @click='submit()'
       :disabled='!user.code || loading')
-      span(v-t="'auth_form.sign_in'")
+      span {{ t(user.createAccount ? 'auth_form.continue' : 'auth_form.sign_in') }}
 </template>
 <style>
 .auth-complete__code input {
