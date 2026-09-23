@@ -3146,6 +3146,8 @@ tr:
     add_passkey: Parola ekle
     set_password: Bir parola belirleyin
     not_now: Şimdi değil
+    passkey_description: Geçiş anahtarı, cihazınızın parmak izi, yüz tanıma veya ekran kilidiyle hızlıca oturum açmanızı sağlar
+    set_new_password: Yeni bir parola belirleyin
   account_completion:
     complete_your_account: Hesabınızı tamamlayın
     continue: Devam etmek

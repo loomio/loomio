@@ -3146,6 +3146,8 @@ da:
     add_passkey: Tilføj en adgangsnøgle
     set_password: Indstil en adgangskode
     not_now: Ikke nu
+    passkey_description: En adgangsnøgle giver dig mulighed for hurtigt at logge ind med din enheds fingeraftryk, ansigtslås eller skærmlås
+    set_new_password: Indstil en ny adgangskode
   account_completion:
     complete_your_account: Færdiggør din konto
     continue: Fortsætte

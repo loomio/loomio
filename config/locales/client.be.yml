@@ -3051,6 +3051,8 @@ be:
     add_passkey: Дадаць ключ доступу
     set_password: Устанавіць пароль
     not_now: Не зараз
+    passkey_description: Ключ доступу дазваляе хутка ўваходзіць у сістэму з дапамогай адбітка пальца, твару або блакіроўкі экрана вашай прылады
+    set_new_password: Устанавіць новы пароль
   account_completion:
     complete_your_account: Запоўніце свой уліковы запіс
     continue: Працягнуць

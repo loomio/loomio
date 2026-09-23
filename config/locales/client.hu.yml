@@ -3153,6 +3153,8 @@ hu:
     add_passkey: Hozzáadás egy jelszót
     set_password: Jelszó beállítása
     not_now: Most nem
+    passkey_description: A passkey segítségével gyorsan bejelentkezhetsz az eszközöd ujjlenyomat-olvasójával, arcfelismerésével vagy képernyőzárával
+    set_new_password: Új jelszó beállítása
   account_completion:
     complete_your_account: Fiókod kitöltése
     continue: Folytatás

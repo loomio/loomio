@@ -479,3 +479,25 @@ languages in the Nov 2025 pass.
 | `config/locales/client.de.yml` | `auth_form.email_code_help` | Formal `Sie/Ihnen` forms | Informal `du/dir` forms | German user-facing copy uses the informal `du` register |
 | `config/locales/client.fr.yml` | `auth_form.email_code_help` | Formal `vous/votre` forms | Informal `tu/ton` forms | French user-facing copy uses the informal `tu` register |
 | `config/locales/client.nl_NL.yml` | `auth_form.email_code_help` | Formal `u/uw` forms | Informal `je` forms | Dutch user-facing copy uses the informal `je` register |
+
+## 2026-09-23 — Passkey prompt description
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `credential_prompt.passkey_description` | Formal `Sie/Ihres` | Informal `du/deines` | German user-facing copy uses the informal `du` register |
+| `config/locales/client.fr.yml` | `credential_prompt.passkey_description` | `code d'accès`, formal `vous/votre` | `clé d'accès`, informal `te/ton` | A passkey is not an access code; French copy uses the informal `tu` register |
+| `config/locales/client.nl_NL.yml` | `credential_prompt.passkey_description` | `toegangscode`, formal `u/uw` | `passkey`, informal `je` | A passkey is not an access code; Dutch copy uses the informal `je` register |
+| `config/locales/client.hu.yml` | `credential_prompt.passkey_description` | `jelszó` | `passkey` | A passkey is not a password |
+| `config/locales/client.fi.yml` | `credential_prompt.passkey_description` | `Salasanan` | `Passkeyllä` | A passkey is not a password |
+| `config/locales/client.tr.yml` | `credential_prompt.passkey_description` | `Parola` | `Geçiş anahtarı` | A passkey is not a password |
+| `config/locales/client.ru.yml` | `credential_prompt.passkey_description` | `Пароль` | `Ключ доступа` | A passkey is not a password |
+| `config/locales/client.he.yml` | `credential_prompt.passkey_description` | `סיסמה` | `מפתח גישה` | A passkey is not a password |
+| `config/locales/client.sl.yml` | `credential_prompt.passkey_description` | `Geslo` | `Prijavni ključ` | A passkey is not a password |
+| `config/locales/client.it.yml` | `credential_prompt.passkey_description` | `password` | `passkey` | A passkey is not a password |
+| `config/locales/client.hr.yml` | `credential_prompt.passkey_description` | `Lozinka` | `Pristupni ključ` | A passkey is not a password |
+| `config/locales/client.pt_BR.yml` | `credential_prompt.passkey_description` | `senha` | `chave de acesso` | A passkey is not a password |
+| `config/locales/client.sv.yml` | `credential_prompt.passkey_description` | `lösenkod` | `passnyckel` | A passkey is not a sign-in code |
+| `config/locales/client.zh_CN.yml` | `credential_prompt.passkey_description` | `密码密钥` | `通行密钥` | The original term could be read as a password-based key rather than a passkey |
+| `config/locales/client.zh_TW.yml` | `credential_prompt.passkey_description` | `密碼密鑰` | `通行密鑰` | The original term could be read as a password-based key rather than a passkey |
+| `config/locales/client.es.yml` | `credential_prompt.set_new_password` | `Establecer una nueva contraseña` | `Establece una nueva contraseña` | Spanish action labels use the informal `tú` imperative |
+| `config/locales/client.ca.yml`, `client.es.yml`, `client.ro.yml`, `client.ja.yml` | `credential_prompt.passkey_description` | Single-sentence UI text with final punctuation | Removed the final full stop | Single-sentence UI strings omit final full stops |

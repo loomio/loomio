@@ -3065,6 +3065,8 @@ zh_CN:
     add_passkey: 添加密码
     set_password: 设置密码
     not_now: 现在不要
+    passkey_description: 通行密钥可让你通过设备的指纹、面容识别或屏幕锁定快速登录
+    set_new_password: 设置新密码
   account_completion:
     complete_your_account: 完善您的账户
     continue: 继续

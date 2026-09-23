@@ -3190,6 +3190,8 @@ fr:
     add_passkey: Ajouter un code d'accès
     set_password: Définir un mot de passe
     not_now: Pas maintenant
+    passkey_description: Une clé d'accès te permet de te connecter rapidement avec ton empreinte digitale, la reconnaissance faciale ou le verrouillage de l'écran de ton appareil
+    set_new_password: Définir un nouveau mot de passe
   account_completion:
     complete_your_account: Complétez votre compte
     continue: Continuer

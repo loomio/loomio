@@ -3146,6 +3146,8 @@ sl:
     add_passkey: Dodaj geslo
     set_password: Nastavite geslo
     not_now: Ne zdaj
+    passkey_description: Prijavni ključ ti omogoča hitro prijavo s prstnim odtisom, prepoznavo obraza ali zaklepanjem zaslona naprave
+    set_new_password: Nastavite novo geslo
   account_completion:
     complete_your_account: Dokončajte svoj račun
     continue: Nadaljuj

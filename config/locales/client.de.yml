@@ -3181,6 +3181,8 @@ de:
     add_passkey: Fügen Sie einen Passkey hinzu
     set_password: Legen Sie ein Passwort fest
     not_now: Nicht jetzt.
+    passkey_description: Mit einem Passkey meldest du dich schnell per Fingerabdruck, Gesichtserkennung oder Bildschirmsperre deines Geräts an
+    set_new_password: Neues Passwort festlegen
   account_completion:
     complete_your_account: Vervollständigen Sie Ihr Konto
     continue: Weitermachen

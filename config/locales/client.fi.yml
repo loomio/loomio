@@ -3146,6 +3146,8 @@ fi:
     add_passkey: Lisää salasana
     set_password: Aseta salasana
     not_now: Ei nyt
+    passkey_description: Passkeyllä voit kirjautua nopeasti sisään laitteesi sormenjäljellä, kasvojentunnistuksella tai näytön lukituksella
+    set_new_password: Aseta uusi salasana
   account_completion:
     complete_your_account: Viimeistele tilisi
     continue: Jatkaa

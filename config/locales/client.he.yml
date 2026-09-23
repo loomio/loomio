@@ -3165,6 +3165,8 @@ he:
     add_passkey: הוסף סיסמה
     set_password: הגדר סיסמה
     not_now: לא עכשיו
+    passkey_description: מפתח גישה מאפשר לך להתחבר במהירות באמצעות טביעת אצבע, זיהוי פנים או נעילת המסך של המכשיר שלך
+    set_new_password: הגדר סיסמה חדשה
   account_completion:
     complete_your_account: השלם את חשבונך
     continue: לְהַמשִׁיך

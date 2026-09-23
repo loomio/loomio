@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import AppConfig from '@/shared/services/app_config';
-import CredentialPromptService from '@/shared/services/credential_prompt_service';
 import Records from '@/shared/services/records';
 import AuthService from '@/shared/services/auth_service';
 
@@ -41,7 +40,6 @@ const submit = async () => {
     }
     completed();
     close();
-    CredentialPromptService.maybeOpen();
   } finally {
     loading.value = false;
   }

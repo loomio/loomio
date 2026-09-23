@@ -3173,6 +3173,8 @@ nl_NL:
     add_passkey: Passkey toevoegen
     set_password: Stel een wachtwoord in
     not_now: Nu niet
+    passkey_description: Met een passkey log je snel in met je vingerafdruk, gezichtsherkenning of de schermvergrendeling van je apparaat
+    set_new_password: Stel een nieuw wachtwoord in
   account_completion:
     complete_your_account: Voltooi je account
     continue: Doorgaan

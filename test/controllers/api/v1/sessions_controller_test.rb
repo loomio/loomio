@@ -447,6 +447,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_nil Current.session
     assert_equal true, JSON.parse(response.body)['incomplete']
     assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal 'login_code', session.dig(:pending_account_completion, :authentication_method)
   end
 
   test "returning accounts without recorded terms acceptance can sign in by default" do
@@ -474,6 +475,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal true, response.parsed_body['incomplete']
     assert_equal true, response.parsed_body['legal_acceptance_required']
+    assert_equal 'password', session.dig(:pending_account_completion, :authentication_method)
     assert_nil user.reload.legal_accepted_at
   end
 

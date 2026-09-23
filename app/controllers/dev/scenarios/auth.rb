@@ -96,7 +96,12 @@ module Dev::Scenarios::Auth
       email: 'no-password@example.com',
       name: 'No Password',
       email_verified: true,
-      legal_accepted: true
+      legal_accepted: true,
+      experiences: {
+        'credentialPromptDismissed' => true,
+        'passwordPromptDismissed' => true,
+        'passkeyPromptDismissed' => true
+      }
     )
     redirect_to dashboard_path
   end

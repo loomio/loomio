@@ -3182,6 +3182,8 @@ es:
     add_passkey: Agregar una clave de acceso
     set_password: Establecer una contraseña
     not_now: Ahora no
+    passkey_description: Una clave de acceso te permite iniciar sesión rápidamente con la huella digital, el reconocimiento facial o el bloqueo de pantalla de tu dispositivo
+    set_new_password: Establece una nueva contraseña
   account_completion:
     complete_your_account: Completa tu cuenta
     continue: Continuar

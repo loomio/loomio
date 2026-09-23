@@ -14,6 +14,8 @@ You can add, name, and remove passkeys from your profile. For security, Loomio m
 
 Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
 
+If you have not added a passkey, Loomio offers to add one after you sign in with a password. You can dismiss the offer, and Loomio will remember your choice.
+
 If you do not have a password or cannot remember it, select **Send me a code** instead.
 
 ## Get a sign-in code
@@ -24,7 +26,7 @@ If the address belongs to your account, Loomio sends a six-digit code. Return to
 
 ![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)
 
-After signing in with a code, Loomio may offer to add a passkey or set a password. Both are optional, but adding a passkey is highly recommended. A passkey makes your account more secure and makes signing in fast and easy. You can continue using emailed codes.
+After each sign-in with a code, Loomio offers to set or replace your password. If your browser supports passkeys, you can also add one, even if you have already added a passkey on another device. A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock. You can skip the offer and continue using emailed codes.
 
 ## Create an account
 

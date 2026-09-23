@@ -125,8 +125,8 @@ module.exports = {
     page.expectText('.auth-complete', "If an account exists for password-user@example.com, we'll send a sign-in code")
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
-    page.expectText('.credential-prompt', 'Passkeys')
-    page.expectNoElement('.credential-prompt__password')
+    page.expectText('.credential-prompt', 'A passkey lets you sign in quickly')
+    page.expectElement('.credential-prompt__password')
     tracePasskeyRegistration(test)
     page.pause(500)
     page.click('.credential-prompt__passkey')
@@ -155,6 +155,32 @@ module.exports = {
     page.expectText('.passkey-settings', 'Passkey')
   },
 
+  'remembers_when_a_password_user_dismisses_the_passkey_offer': (test) => {
+    page = pageHelper(test)
+    addVirtualPasskeyAuthenticator(test)
+
+    page.loadPath('setup_login_token_user_with_password')
+    page.fillIn('.auth-email-form__email input', 'password-user@example.com')
+    page.fillIn('.auth-email-form__password input', 'veryeasytoguess123')
+    page.click('.auth-email-form__submit')
+    page.expectElement('.credential-prompt__passkey')
+    page.click('.credential-prompt .dismiss-modal-button')
+    page.expectNoElement('.credential-prompt')
+
+    page.goTo('profile')
+    page.expectElement('.passkey-settings')
+    page.ensureSidebar()
+    page.clickLastElement('.sidebar__user-dropdown')
+    page.clickLastElement('.user-dropdown__list-item-button--sign-out')
+    page.expectElement('.auth-modal', 20000)
+    page.fillIn('.auth-email-form__email input', 'password-user@example.com')
+    page.fillIn('.auth-email-form__password input', 'veryeasytoguess123')
+    page.click('.auth-email-form__submit')
+    page.expectFlash('Signed in successfully')
+    page.pause(500)
+    page.expectNoElement('.credential-prompt')
+  },
+
   'returning_user_without_recorded_legal_acceptance_can_sign_in': (test) => {
     page = pageHelper(test)
 
@@ -169,7 +195,7 @@ module.exports = {
     page.expectNoElement('.account-completion')
   },
 
-  'does_not_prompt_after_code_sign_in_when_account_has_a_passkey': (test) => {
+  'offers_password_and_passkey_after_code_sign_in_when_account_has_a_passkey': (test) => {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)
 
@@ -180,8 +206,9 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
     enterLastLoginCode(test, page)
     page.click('.auth-complete__submit')
-    page.pause(500)
-    page.expectNoElement('.credential-prompt')
+    page.expectText('.credential-prompt', 'A passkey lets you sign in quickly')
+    page.expectElement('.credential-prompt__password')
+    page.expectElement('.credential-prompt__passkey')
   },
 
   'can_sign_up_from_try_and_complete_the_account': (test) => {
@@ -233,6 +260,24 @@ module.exports = {
     page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
     page.click('.account-completion__submit')
     page.expectFlash('Signed in successfully')
+    page.pause(500)
+    page.expectNoElement('.credential-prompt')
+  },
+
+  'offers_sign_in_choices_after_completing_an_account_with_a_code': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_dashboard_as_visitor')
+    page.click('.auth-form__create-account')
+    page.fillIn('.auth-signup-form__email input', 'new-code-user@example.com')
+    page.click('.auth-signup-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.fillIn('.account-completion__name input', 'New Code User')
+    page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
+    page.click('.account-completion__submit')
+    page.expectElement('.credential-prompt__password')
   },
 
   'shows_signup_code_copy_for_an_existing_email': (test) => {
@@ -293,6 +338,22 @@ module.exports = {
     page.expectText('.change-password-form', 'Set your password')
   },
 
+  'offers_to_reset_an_existing_password_after_code_sign_in': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_login_token_user_with_password')
+    test.execute(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
+    page.fillIn('.auth-email-form__email input', 'password-user@example.com')
+    page.click('.auth-email-form__login-link')
+    page.click('.auth-email-code-form__submit')
+    enterLastLoginCode(test, page)
+    page.click('.auth-complete__submit')
+    page.expectText('.credential-prompt', 'Would you like to set a new password?')
+    page.expectNoElement('.credential-prompt__passkey')
+    page.click('.credential-prompt__password')
+    page.expectText('.change-password-form', 'Set your password')
+  },
+
   'can_dismiss_password_prompt_after_login_code_sign_in': (test) => {
     page = pageHelper(test)
 
@@ -327,6 +388,8 @@ module.exports = {
     page.click('.account-completion__legal-accepted .v-selection-control__wrapper')
     page.click('.account-completion__submit')
     page.expectFlash('Signed in successfully')
+    page.pause(500)
+    page.expectNoElement('.credential-prompt')
     // page.expectText('.group-page__name', 'Dirty Dancing Shoes')
   },
 

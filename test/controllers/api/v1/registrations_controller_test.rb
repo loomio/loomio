@@ -157,10 +157,34 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal user.id, JSON.parse(response.body)['current_user_id']
+    assert_equal false, response.parsed_body['signed_in_via_login_code']
+    assert_equal false, response.parsed_body['signed_in_via_password']
     assert user.reload.email_verified?
     assert_equal "Complete Person", user.name
     assert user.email_newsletter?
     assert_nil session[:pending_account_completion]
+  end
+
+  test "completion preserves the code sign-in method" do
+    user = User.create!(email: "code-completion@example.com", email_verified: false)
+    @controller.stage_account_completion(user, authentication_method: "login_code")
+
+    post :complete, params: { user: { name: "Code Person", legal_accepted: true } }
+
+    assert_response :success
+    assert_equal true, response.parsed_body['signed_in_via_login_code']
+    assert_equal false, response.parsed_body['signed_in_via_password']
+  end
+
+  test "completion preserves the password sign-in method" do
+    user = User.create!(email: "password-completion@example.com", email_verified: true)
+    @controller.stage_account_completion(user, authentication_method: "password")
+
+    post :complete, params: { user: { name: "Password Person", legal_accepted: true } }
+
+    assert_response :success
+    assert_equal false, response.parsed_body['signed_in_via_login_code']
+    assert_equal true, response.parsed_body['signed_in_via_password']
   end
 
   test "does not complete an account without a pending authentication" do
@@ -221,6 +245,8 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "SSO Person", user.reload.name
     assert_not_nil user.legal_accepted_at
+    assert_equal false, response.parsed_body['signed_in_via_login_code']
+    assert_equal false, response.parsed_body['signed_in_via_password']
   end
 
   test "completion returns the protected authentication destination" do

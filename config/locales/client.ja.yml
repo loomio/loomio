@@ -3145,6 +3145,8 @@ ja:
     add_passkey: パスキーを追加
     set_password: パスワードを設定してください
     not_now: 今じゃない
+    passkey_description: パスキーを使用すると、デバイスの指紋、顔認証、または画面ロックですばやくサインインできます
+    set_new_password: 新しいパスワードを設定してください
   account_completion:
     complete_your_account: アカウントを完成させる
     continue: 続く

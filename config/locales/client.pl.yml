@@ -3173,6 +3173,8 @@ pl:
     add_passkey: Dodaj klucz dostępu
     set_password: Ustaw hasło
     not_now: Nie teraz
+    passkey_description: Klucz dostępu umożliwia szybkie logowanie za pomocą odcisku palca, twarzy lub blokady ekranu urządzenia
+    set_new_password: Ustaw nowe hasło
   account_completion:
     complete_your_account: Uzupełnij swoje konto
     continue: Kontynuować

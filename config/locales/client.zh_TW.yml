@@ -3174,6 +3174,8 @@ zh_TW:
     add_passkey: 新增密碼
     set_password: 設定密碼
     not_now: 現在不要
+    passkey_description: 通行密鑰可讓你透過裝置的指紋、臉部辨識或螢幕鎖定快速登入
+    set_new_password: 設定新密碼
   account_completion:
     complete_your_account: 完善您的帳戶
     continue: 繼續

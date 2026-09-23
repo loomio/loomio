@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
       Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: failure_reason })
       render json: { errors: failure_message }, status: 401
     elsif user.incomplete?
-      stage_account_completion(user)
+      stage_account_completion(user, authentication_method: sign_in_method)
       render json: {
         incomplete: true,
         email: user.email,
@@ -23,13 +23,7 @@ class Api::V1::SessionsController < ApplicationController
       }
     else
       # sign_in consumes the pending token, so identify the method first.
-      method = if pending_login_token&.useable?
-                 "magic_link"
-               elsif resource_params[:code].present?
-                 "login_code"
-               else
-                 "password"
-               end
+      method = sign_in_method
       sign_in(user)
       flash[:notice] = t('auth_form.signed_in')
       user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
@@ -54,6 +48,16 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   private
+
+  def sign_in_method
+    if pending_login_token&.useable?
+      "login_token"
+    elsif resource_params[:code].present?
+      "login_code"
+    else
+      "password"
+    end
+  end
 
   def failure_reason
     if session[:pending_login_token].present?

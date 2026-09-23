@@ -3194,6 +3194,8 @@ pt_BR:
     add_passkey: Adicionar uma chave de acesso
     set_password: Defina uma senha
     not_now: Agora não
+    passkey_description: Uma chave de acesso permite entrar rapidamente com a impressão digital, o reconhecimento facial ou o bloqueio de tela do seu dispositivo
+    set_new_password: Defina uma nova senha
   account_completion:
     complete_your_account: Complete o cadastro da sua conta.
     continue: Continuar

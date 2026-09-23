@@ -2,7 +2,9 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 
 export default new class CredentialPromptService {
-  maybeOpen() {
+  // Code sign-ins always offer credential choices. Password sign-ins offer a
+  // passkey until the user adds one or dismisses the offer.
+  maybeOpen({ signedInViaCode = false, signedInViaPassword = false } = {}) {
     const user = Session.user();
     if (!Session.isSignedIn()) return;
 
@@ -11,12 +13,11 @@ export default new class CredentialPromptService {
       globalThis.PublicKeyCredential?.prototype?.toJSON;
     let promptType;
 
-    if (passkeySupported && !user.hasPasskey) {
+    if (signedInViaCode) {
+      promptType = 'code';
+    } else if (signedInViaPassword && passkeySupported && !user.hasPasskey) {
       if (user.experiences.passkeyPromptDismissed || user.experiences.credentialPromptDismissed) return;
       promptType = 'passkey';
-    } else if (!passkeySupported && user.hasPassword === false) {
-      if (user.experiences.passwordPromptDismissed || user.experiences.credentialPromptDismissed) return;
-      promptType = 'password';
     } else {
       return;
     }
@@ -24,7 +25,7 @@ export default new class CredentialPromptService {
     setTimeout(() => {
       EventBus.$emit('openModal', {
         component: 'CredentialPrompt',
-        props: { user, promptType },
+        props: { user, promptType, passkeySupported: Boolean(passkeySupported) },
         maxWidth: 560
       });
     });

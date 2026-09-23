@@ -47,6 +47,7 @@ class Api::V1::RegistrationsController < ApplicationController
     return respond_with_error(401) unless proof
 
     user = proof.user
+    authentication_method = pending_account_completion_authentication_method
     completion_params = account_completion_params
     completion_params = completion_params.except(:name) if proof.name_managed?
 
@@ -70,7 +71,8 @@ class Api::V1::RegistrationsController < ApplicationController
     flash[:notice] = t('auth_form.signed_in')
     Sentry.metrics.count("auth.sign_in", attributes: { method: "account_completion" })
     render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
-      signed_in_via_login_code: true,
+      signed_in_via_login_code: authentication_method == "login_code",
+      signed_in_via_password: authentication_method == "password",
       authentication_redirect: authentication_return_path
     ).compact
     EventBus.broadcast('session_create', user)

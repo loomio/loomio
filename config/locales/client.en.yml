@@ -1863,8 +1863,10 @@ en:
   credential_prompt:
     title: Add another way to sign in
     helptext: Add a passkey or set a password so you can sign in without waiting for an emailed code
+    passkey_description: A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock
     add_passkey: Add a passkey
     set_password: Set a password
+    set_new_password: Set a new password
     not_now: Not now
   account_completion:
     complete_your_account: Complete your account

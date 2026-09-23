@@ -3146,6 +3146,8 @@ hr:
     add_passkey: Dodajte pristupni ključ
     set_password: Postavite lozinku
     not_now: Ne sada
+    passkey_description: Pristupni ključ omogućuje brzu prijavu otiskom prsta, prepoznavanjem lica ili zaključavanjem zaslona uređaja
+    set_new_password: Postavite novu lozinku
   account_completion:
     complete_your_account: Dovršite svoj račun
     continue: Nastaviti

@@ -3146,6 +3146,8 @@ ro:
     add_passkey: Adăugați o cheie de acces
     set_password: Setați o parolă
     not_now: Nu acum
+    passkey_description: O cheie de acces vă permite să vă conectați rapid cu amprenta, fața sau blocarea ecranului dispozitivului
+    set_new_password: Setați o parolă nouă
   account_completion:
     complete_your_account: Completează-ți contul
     continue: Continua

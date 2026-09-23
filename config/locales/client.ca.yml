@@ -3173,6 +3173,8 @@ ca:
     add_passkey: Afegeix una clau d'accés
     set_password: Establir una contrasenya
     not_now: Ara no
+    passkey_description: Una clau d'accés et permet iniciar la sessió ràpidament amb l'empremta digital, la cara o el bloqueig de pantalla del dispositiu
+    set_new_password: Estableix una contrasenya nova
   account_completion:
     complete_your_account: Completa el teu compte
     continue: Continua

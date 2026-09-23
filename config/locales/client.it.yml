@@ -3174,6 +3174,8 @@ it:
     add_passkey: Aggiungi una password
     set_password: Imposta una password
     not_now: Non adesso
+    passkey_description: Una passkey ti permette di accedere rapidamente con l'impronta digitale, il riconoscimento facciale o il blocco schermo del tuo dispositivo
+    set_new_password: Imposta una nuova password
   account_completion:
     complete_your_account: Completa il tuo account
     continue: Continuare

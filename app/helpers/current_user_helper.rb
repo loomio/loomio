@@ -33,7 +33,7 @@ module CurrentUserHelper
     true
   end
 
-  def stage_account_completion(user, name_managed: false)
+  def stage_account_completion(user, name_managed: false, authentication_method: nil)
     require_active_user!(user)
     discard_account_completion
     AccountCompletionProof.where(expires_at: ..Time.current).delete_all
@@ -41,8 +41,14 @@ module CurrentUserHelper
     session[:pending_account_completion] = {
       proof_id: proof.id,
       user_id: user.id,
-      name_managed: name_managed
+      name_managed: name_managed,
+      authentication_method: authentication_method
     }
+  end
+
+  def pending_account_completion_authentication_method
+    pending = session[:pending_account_completion]
+    pending && (pending['authentication_method'] || pending[:authentication_method])
   end
 
   def pending_account_completion_proof

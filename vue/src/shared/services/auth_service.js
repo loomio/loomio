@@ -45,8 +45,14 @@ export default new class AuthService {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
     Flash.fromServer(data.flash);
-    AccountCompletionService.maybeOpen().then((wasRequired) => {
-      if (!wasRequired && (data.signed_in_via_login_code || data.signed_in_via_password)) CredentialPromptService.maybeOpen();
+    const signInMethod = {
+      signedInViaCode: Boolean(data.signed_in_via_login_code),
+      signedInViaPassword: Boolean(data.signed_in_via_password)
+    };
+    AccountCompletionService.maybeOpen().then(() => {
+      if (signInMethod.signedInViaCode || signInMethod.signedInViaPassword) {
+        CredentialPromptService.maybeOpen(signInMethod);
+      }
     });
     if (data.authentication_redirect) { window.location.assign(data.authentication_redirect); }
     return user;
