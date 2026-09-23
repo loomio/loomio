@@ -21,13 +21,21 @@ class Api::V1::SessionsController < ApplicationController
         email_newsletter: user.email_newsletter
       }
     else
+      # sign_in consumes the pending token, so identify the method first.
+      method = if pending_login_token&.useable?
+                 "magic_link"
+               elsif resource_params[:code].present?
+                 "login_code"
+               else
+                 "password"
+               end
       sign_in(user)
       flash[:notice] = t('auth_form.signed_in')
       user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
-      method = resource_params[:code].present? ? "login_code" : (session[:pending_login_token].present? ? "magic_link" : "password")
       Sentry.metrics.count("auth.sign_in", attributes: { method: method })
       render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
-        signed_in_via_login_code: resource_params[:code].present?,
+        signed_in_via_login_code: method == "login_code",
+        signed_in_via_password: method == "password",
         authentication_redirect: authentication_return_path
       ).compact
       EventBus.broadcast('session_create', user)

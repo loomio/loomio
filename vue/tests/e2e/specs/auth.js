@@ -135,6 +135,25 @@ module.exports = {
     page.expectText('.passkey-settings', 'Passkey')
   },
 
+  'can_add_a_passkey_after_signing_in_with_a_password': (test) => {
+    page = pageHelper(test)
+    addVirtualPasskeyAuthenticator(test)
+
+    page.loadPath('setup_login_token_user_with_password')
+    page.fillIn('.auth-email-form__email input', 'password-user@example.com')
+    page.fillIn('.auth-email-form__password input', 'veryeasytoguess123')
+    page.click('.auth-email-form__submit')
+    page.expectText('.credential-prompt', 'Passkeys')
+    page.expectNoElement('.credential-prompt__password')
+    tracePasskeyRegistration(test)
+    page.pause(500)
+    page.click('.credential-prompt__passkey')
+    page.expectFlash('Passkey added')
+    page.expectNoElement('.credential-prompt')
+    page.goTo('profile')
+    page.expectText('.passkey-settings', 'Passkey')
+  },
+
   'does_not_prompt_after_code_sign_in_when_account_has_a_passkey': (test) => {
     page = pageHelper(test)
     addVirtualPasskeyAuthenticator(test)

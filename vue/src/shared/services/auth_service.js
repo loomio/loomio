@@ -46,7 +46,7 @@ export default new class AuthService {
     EventBus.$emit('closeModal');
     Flash.fromServer(data.flash);
     AccountCompletionService.maybeOpen().then((wasRequired) => {
-      if (!wasRequired && data.signed_in_via_login_code) CredentialPromptService.maybeOpen();
+      if (!wasRequired && (data.signed_in_via_login_code || data.signed_in_via_password)) CredentialPromptService.maybeOpen();
     });
     if (data.authentication_redirect) { window.location.assign(data.authentication_redirect); }
     return user;
