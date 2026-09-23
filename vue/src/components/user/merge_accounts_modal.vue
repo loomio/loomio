@@ -26,10 +26,8 @@ const sendVerification = async () => {
 </script>
 
 <template lang="pug">
-v-card.merge-accounts-modal
-  v-card-title.d-flex.align-center
-    h1.text-headline-small {{ t('merge_accounts.modal.title') }}
-    v-spacer
+v-card.merge-accounts-modal(:title="t('merge_accounts.modal.title')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     p {{ t('merge_accounts.modal.destination_helptext', { sourceEmail: Session.user().email }) }}
