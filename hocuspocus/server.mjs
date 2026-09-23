@@ -8,13 +8,10 @@ if (dsn) {
 }
 
 import { Server } from "@hocuspocus/server";
+import { authUrlFromEnv } from "./config.mjs";
 
-// trying make things backwards compatible for people doing ./update.sh
-// hocuspocus calling back to rails server to auth the connecting browser
-const authUrl = (process.env.PRIVATE_APP_URL ||
-                 process.env.APP_URL ||
-                 process.env.PUBLIC_APP_URL ||
-                `https://${process.env.CANONICAL_HOST}`) + '/api/hocuspocus'
+// Hocuspocus calls Rails to authorize each browser connection.
+const authUrl = authUrlFromEnv();
 
 const port = (process.env.RAILS_ENV == 'production') ? 80 : parseInt(process.env.HOCUSPOCUS_PORT || '4444')
 

@@ -361,7 +361,7 @@ onMounted(() => {
   // Fallback: If server doesn't connect within timeout, load content from local model
   syncFallbackTimeout = setTimeout(() => {
     if (!ydoc.getMap('config').get('initialContentLoaded')) {
-      console.log('Hocuspocus server unavailable, loading from local model');
+      console.log('Hocuspocus has not synced within 2 seconds, loading from local model');
       onSync();
     }
   }, 2000);
