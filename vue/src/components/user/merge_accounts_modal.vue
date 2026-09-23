@@ -27,7 +27,7 @@ const sendVerification = async () => {
 
 <template lang="pug">
 v-card.merge-accounts-modal
-  v-card-title
+  v-card-title.d-flex.align-center
     h1.text-headline-small {{ t('merge_accounts.modal.title') }}
     v-spacer
     dismiss-modal-button
