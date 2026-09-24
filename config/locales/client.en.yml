@@ -2376,6 +2376,7 @@ en:
     new_discussion: New discussion
   members_panel:
     edit_vote_weights: Edit vote weights
+    vote_weights_are_defaults: These default weights apply to new votes. Changes here do not affect votes already issued.
     vote_weight_value: Weight %{weight}
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.

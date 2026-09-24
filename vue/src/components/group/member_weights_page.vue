@@ -13,6 +13,7 @@ const route = useRoute();
 const router = useRouter();
 const group = ref(null);
 const memberships = ref([]);
+const hasCurrentPolls = ref(false);
 const weightsDraft = ref({});
 const resetWeight = ref('1');
 const resetDialog = ref(false);
@@ -33,6 +34,7 @@ function openResetDialog() {
 async function loadWeights() {
   const response = await Records.memberships.remote.get('weights', {group_id: group.value.id});
   memberships.value = response.memberships;
+  hasCurrentPolls.value = response.has_current_polls;
   weightsDraft.value = Object.fromEntries(memberships.value.map(membership => [membership.id, membership.weight]));
 }
 
@@ -89,6 +91,7 @@ onMounted(async () => {
     .d-flex.align-center.justify-space-between.pt-4.pb-2
       h2.text-title-medium.mb-0 {{ t('members_panel.edit_vote_weights') }}
       v-btn.member-weights-page__set-all(variant="tonal" @click="openResetDialog") {{ t('poll_common_form.set_all_vote_weights') }}
+    p.text-body-medium.text-medium-emphasis.mb-4(v-if="hasCurrentPolls") {{ t('members_panel.vote_weights_are_defaults') }}
     v-table
       thead
         tr

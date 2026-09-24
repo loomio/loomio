@@ -147,6 +147,24 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal @test_group.memberships.active.joins(:user).pluck(:id).sort, rows.map { |row| row.fetch('id') }.sort
   end
 
+  test 'weight editor reports whether the group has a current poll' do
+    sign_in @admin
+    get :weights, params: {group_id: @test_group.id}
+    assert_equal false, JSON.parse(response.body).fetch('has_current_polls')
+
+    poll = PollService.create(params: {
+      title: 'Current vote', poll_type: 'proposal', group_id: @test_group.id,
+      poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now
+    }, actor: @admin)
+
+    get :weights, params: {group_id: @test_group.id}
+    assert_equal true, JSON.parse(response.body).fetch('has_current_polls')
+
+    poll.update!(closed_at: Time.current)
+    get :weights, params: {group_id: @test_group.id}
+    assert_equal false, JSON.parse(response.body).fetch('has_current_polls')
+  end
+
   test 'member cannot load the weight editor' do
     get :weights, params: {group_id: @test_group.id}
 
