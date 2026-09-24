@@ -389,6 +389,7 @@ module Dev::ScenariosHelper
 
   def poll_scheduled_scenario(params)
     group = create_group_with_members
+    group.update!(vote_weights_allowed: true) if params[:weighted]
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York"))
     group.add_member! user
@@ -401,6 +402,7 @@ module Dev::ScenariosHelper
         poll_type: params[:poll_type] || 'proposal',
         anonymous: !!params[:anonymous],
         hide_results: (params[:hide_results] || :off),
+        vote_weights_enabled: !!params[:weighted],
         opening_at: 3.days.from_now.beginning_of_hour,
         closing_at: 10.days.from_now.beginning_of_hour,
         specified_voters_only: true,

@@ -768,6 +768,7 @@ ro:
     revoke_admin: Revocați admin
     make_delegate: Faceți delegat
     revoke_delegate: Revocați delegatul
+    edit_membership: Editează calitatea de membru
   notification_models:
     comment: comenta in
     poll: 'sondaj:'
@@ -1498,6 +1499,8 @@ ro:
     members_can_create_tags_help: Permite membrilor să creeze etichete noi atunci când etichetează firele de discuție și sondajele
     non_members_can_start_discussions: Persoanele care nu sunt membri pot începe discuții
     non_members_can_start_discussions_help: Permiteți membrilor care nu sunt membri să înceapă o discuție dintr-unul dintre șabloanele acestui grup
+    vote_weights_allowed: Permiteți ponderile voturilor
+    vote_weights_allowed_help: Permiteți ca unele voturi să aibă o greutate mai mare decât altele
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1596,11 +1599,17 @@ ro:
   membership_form:
     modal_title:
       group: Setează titlul
+      membership: Editează calitatea de membru
     title_helptext:
       group: Acest titlu va apărea lângă numele lui %{name} în cadrul acestui grup. Folosiți-l pentru a le informa oamenilor rolul lor.
     title_label: titlu
     title_placeholder: De exemplu, „coordonator” sau „facilitator”
     updated: Titlul de membru a fost actualizat
+    membership_updated: Calitatea de membru a fost actualizată
+    weight_label: Ponderea voturilor
+    weight_helptext: Această valoare este copiată în votul membrului atunci când este adăugat la un nou sondaj. Modificarea acesteia nu afectează sondajele existente. Setați-o la 0 pentru a permite membrului să voteze fără a adăuga la scor.
+    weight_invalid: Introduceți un număr întreg de la 0 la 1.000.000
+    weight_invalid_decimal: Introduceți un număr de la 0 la 1.000.000 cu până la trei zecimale
   user_name_modal:
     user_name_updated: Numele de utilizator a fost actualizat
     set_user_name: Setați numele de utilizator
@@ -2098,6 +2107,10 @@ ro:
     status: Stare
     your_vote_is_requested: Votul dumneavoastră este solicitat
     browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
+    weighted_score: Scor
+    equal_weight_score: Scor de ponderare egală
+    assigned_weight_score: Scorul de pondere atribuit
+    view_votes: Vedeți voturile
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2166,6 +2179,9 @@ ro:
     delegate: Delega
     delegate_popover: Un delegat este un membru al grupului cu drept de vot
     delegates: Delegații
+    edit_vote_weights: Editați ponderile voturilor
+    vote_weight_value: Greutate %{weight}
+    vote_weights_are_defaults: Aceste ponderi implicite se aplică voturilor noi. Modificările de aici nu afectează voturile deja emise.
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile
@@ -2212,6 +2228,7 @@ ro:
     legacy_vote_reasons: Motivele voturilor anterioare
     legacy_vote_reasons_description: Motivele voturilor exprimate folosind formatul de vot anonim tradițional sunt afișate ca text simplu
     anonymous_voting_participant_notice: Votarea este anonimă. Nu puteți revizui sau modifica votul după ce l-ați trimis. Rezultatele nu sunt disponibile până la închiderea votării.
+    variable_vote_weights_explanation: Acest sondaj folosește ponderi variabile ale voturilor, permițând votului unei persoane să influențeze rezultatul mai mult decât al altei persoane, în funcție de ponderea votului atribuită.
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2280,6 +2297,12 @@ ro:
     unredact_reason_helptext: Motivul pentru care textul și atașamentele vor fi din nou vizibile
     unredact_reason_confirm: Restaurați motivul
     unredact_reason_success: Motivul votului a fost restabilit
+    all_voters: Toți alegătorii
+    weight: Greutate
+    vote_weight_column: Ponderea voturilor
+    stance: Vot
+    participation_records_restricted: Înregistrările de participare sunt disponibile coordonatorilor de scrutin.
+    vote_weight: Greutate %{weight}
   poll_common_undecided_panel:
     show_undecided: Afișați %{count} nehotărâți
     show_invitations: Afișați invitațiile în așteptare
@@ -2922,6 +2945,27 @@ ro:
     stance_reason_required_when_disagreeing: Necesar în caz de dezacord
     stance_reason_required_for_disagree_or_block: Obligatoriu pentru dezacord sau blocare
     stance_reason_required_for_block: Necesar pentru blocare
+    voters: Alegătorii
+    manage_voters: Gestionați alegătorii
+    search_voters: Căutați alegători
+    remove_voter: Eliminați votantul
+    voter_page_count: "%{first}–%{last} din %{total}"
+    vote_weights: Ponderi ale voturilor
+    use_vote_weights: Folosește ponderile voturilor
+    vote_weights_off_warning: Dezactivarea ponderilor voturilor setează fiecare alegător la ponderea 1 și elimină ponderile specifice sondajului
+    vote_weights_on_group: Activarea ponderilor voturilor copiază ponderile membrilor actuali ai grupului. Ceilalți votanți primesc ponderea 1.
+    vote_weights_on_direct: Activarea ponderilor voturilor setează fiecare votant la ponderea 1
+    vote_weight_for: Ponderea voturilor pentru %{name}
+    save_vote_weights: Salvați ponderile voturilor
+    vote_weights_updated: Ponderile voturilor au fost actualizate
+    weight_for_all: Greutate pentru toți
+    set_all_vote_weights: Setați toate ponderile
+    set_all: Setează tot
+    use_member_vote_weights: Folosește ponderile actuale ale voturilor membrilor
+    set_one_vote_weight: Setați fiecare alegător la o singură pondere
+    member_vote_weights_hint: Alegătorii fără apartenență la un grup primesc ponderea 1
+    vote_weights_description: Atribuiți fiecărui alegător o pondere a votului, astfel încât unele voturi să conteze mai mult decât altele. Rezultatele arată atât numărul de alegători, cât și scorul ponderat.
+    issued_vote_weights_will_change: Ponderile voturilor deja emise se vor schimba.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     verify_participants: Verificați participanții
@@ -2936,6 +2980,7 @@ ro:
     participation_records_explanation: Asta arată cine a fost eligibil și dacă a votat. Nu arată cum a votat fiecare.
     voted: A votat
     not_voted: Nu a votat
+    email_addresses_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului pentru a distinge persoanele.
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:

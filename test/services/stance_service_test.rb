@@ -8,12 +8,14 @@ class StanceServiceTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @alien = users(:alien)
     @group = groups(:group)
+    @group.update!(vote_weights_allowed: true)
 
     @poll = PollService.create(params: {
       title: 'Test Poll',
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
       group_id: @group.id,
+      vote_weights_enabled: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
   end
@@ -211,6 +213,103 @@ class StanceServiceTest < ActiveSupport::TestCase
     StanceService.create(stance: stance, actor: @user)
 
     assert @poll.reload.total_score >= 1
+  end
+
+  test "copies membership weight to a new poll stance" do
+    membership = @group.membership_for(@user)
+    membership.update!(weight: 2)
+
+    poll = PollService.create(params: {
+      title: 'Weighted Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      vote_weights_enabled: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+
+    assert_equal 2, poll.stances.latest.find_by!(participant: @user).weight
+  end
+
+  test "membership weight changes do not alter existing poll stances" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+
+    @group.membership_for(@user).update!(weight: 0)
+
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin sets stance weight before voting opens" do
+    poll = PollService.create(params: {
+      title: 'Draft Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      vote_weights_enabled: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+
+    StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "stance weight can be changed after voting opens" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+    option = @poll.poll_options.find_by!(name: 'Agree')
+    assert_equal 1, option.reload.total_score
+
+    StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+
+    assert_equal 0, stance.reload.weight
+    assert_equal 0, option.reload.total_score
+  end
+
+  test "stance weight cannot be changed after voting closes" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    @poll.update_columns(closed_at: Time.current)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+    end
+
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "voter cannot set their own stance weight" do
+    poll = PollService.create(params: {
+      title: 'Draft Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      vote_weights_enabled: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.set_weight(stance: stance, weight: 0, actor: @user)
+    end
+  end
+
+  test "replacement stance preserves vote weight" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.update!(weight: 2, updated_at: 1.hour.ago)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+
+    StanceService.update(
+      stance: stance,
+      actor: @user,
+      params: {
+        stance_choices_attributes: [{poll_option_id: @poll.poll_options.find_by!(name: 'Disagree').id}]
+      }
+    )
+
+    assert_equal 2, @poll.stances.latest.find_by!(participant: @user).weight
   end
 
   test "redacts a stance reason" do

@@ -25,7 +25,9 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             when 'rank'
               th { t('poll_ranked_choice_form.rank') }
             when 'score'
-              th { t('poll_ranked_choice_form.points') }
+              th { t(@poll.result_score_heading_key) }
+            when 'unweighted_score'
+              th { t('poll_common.equal_weight_score') }
             when 'average'
               th { t('poll_ranked_choice_form.mean') }
             when 'stv_status'
@@ -33,7 +35,7 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             when 'voter_count'
               th { t('membership_card.voters') }
             when 'votes'
-              th { t('poll_common.votes') }
+              th { t(@poll.result_votes_heading_key) }
             when 'voters'
               th
             end
@@ -60,6 +62,8 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
                 td { option[:rank].to_s }
               when 'score'
                 td { option[:score].to_s }
+              when 'unweighted_score'
+                td { option[:unweighted_score].to_s }
               when 'voter_count', 'votes'
                 td { option[:voter_count].to_s }
               when 'average'

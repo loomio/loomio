@@ -26,9 +26,11 @@ class PollOption < ApplicationRecord
       )
     end
 
+    score_total = stance_choices.latest.sum('stance_choices.score * stances.weight')
+
     update_columns(
-      voter_scores: stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,
-      total_score: stance_choices.latest.sum(:score),
+      voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,
+      total_score: score_total,
       voter_count: stances.latest.count
     )
   end
@@ -70,8 +72,14 @@ class PollOption < ApplicationRecord
   end
 
   def average_score
-    return 0 if voter_count == 0
-    (total_score.to_f / voter_count.to_f)
+    weight_total = stance_choices.latest.sum('stances.weight')
+    return 0 if weight_total == 0
+
+    (total_score / weight_total).round(2).to_f
+  end
+
+  def unweighted_score
+    stance_choices.latest.sum(:score)
   end
 
   private

@@ -30,6 +30,33 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal poll.key, json['polls'][0]['key']
   end
 
+  test "show displays voters and score for weighted one point polls while retaining raw scores" do
+    @group.update!(vote_weights_allowed: true)
+    poll = PollService.create(params: {
+      title: 'Weighted choices', poll_type: 'poll', group_id: @group.id,
+      poll_option_names: %w[Yes No], vote_weights_enabled: true,
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    option = poll.poll_options.find_by!(name: 'Yes')
+    poll.stances.latest.find_by!(participant: @user).update!(
+      weight: '2.33', cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: option.id, score: 1}]
+    )
+    poll.update_counts!
+
+    sign_in @user
+    get :show, params: {id: poll.key}
+
+    assert_response :success
+    data = JSON.parse(response.body).fetch('polls').first
+    assert_includes data.fetch('result_columns'), 'voter_count'
+    assert_includes data.fetch('result_columns'), 'score'
+    assert_not_includes data.fetch('result_columns'), 'unweighted_score'
+    result = data.fetch('results').find { |row| row['id'] == option.id }
+    assert_equal 1, result.fetch('unweighted_score')
+    assert_equal '2.33', result.fetch('score')
+  end
+
   test "show serializes without record cache fallbacks" do
     poll = PollService.create(params: {
       title: "cache test poll",
@@ -189,6 +216,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   test "create creates a poll in discussion" do
     thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
     @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))
+    @group.update!(vote_weights_allowed: true)
     sign_in @admin
 
     assert_difference 'Poll.count', 1 do
@@ -200,6 +228,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
           topic_id: @discussion.topic_id,
           group_id: @group.id,
           options: %w[agree abstain disagree],
+          vote_weights_enabled: true,
           closing_at: 3.days.from_now.at_beginning_of_hour
         }
       }
@@ -210,6 +239,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal "hello", poll.title
     assert_equal @discussion.topic, poll.topic
     assert_equal @admin, poll.author
+    assert poll.vote_weights_enabled?
     assert_includes poll.admins, @admin
   end
 
@@ -258,6 +288,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Receipts tests
   test "receipts returns receipts for a poll" do
+    @admin.update!(name: 'Test Admin')
     poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
@@ -274,6 +305,9 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal poll.title, json['poll_title']
     assert json.key?('receipts')
+    receipt = json.fetch('receipts').find { |record| record['voter_id'] == @admin.id }
+    assert_equal @admin.avatar_initials, receipt.fetch('voter_avatar_initials')
+    assert receipt.key?('voter_thumb_url')
   end
 
   test "anonymous participation status is hidden until three people vote" do

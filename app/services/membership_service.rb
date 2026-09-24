@@ -115,20 +115,37 @@ class MembershipService
   end
 
 
+  # Save title and weight in one request while enforcing the separate weight
+  # permission. Keep the member's derived title data in the same transaction.
   def self.update(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
+    actor.ability.authorize! :set_weight, membership if params.key?(:weight)
 
     membership.assign_attributes(params.slice(:title))
-    return membership unless membership.valid?
-    membership.save!
+    return membership if params.key?(:title) && !membership.valid?
+    updated_membership = nil
+    Membership.transaction do
+      membership.save! if params.key?(:title)
+      if params.key?(:weight)
+        Membership.where(id: membership.id).update_all(weight: params[:weight], updated_at: Time.current)
+        membership.reload
+      end
+      updated_membership = update_user_titles(membership.id) if params.key?(:title)
+    end
 
-    update_user_titles_and_broadcast(membership.id)
-
+    if updated_membership
+      MessageChannelService.publish_models([updated_membership.user], serializer: AuthorSerializer, group_id: membership.group_id)
+    end
     EventBus.broadcast 'membership_update', membership, params, actor
     membership
   end
 
   def self.update_user_titles_and_broadcast(membership_id)
+    membership = update_user_titles(membership_id)
+    MessageChannelService.publish_models([membership.user], serializer: AuthorSerializer, group_id: membership.group_id) if membership
+  end
+
+  def self.update_user_titles(membership_id)
     membership = Membership.find(membership_id)
 
     user = membership.user
@@ -151,7 +168,7 @@ class MembershipService
     user.experiences['delegates'] = delegates
 
     user.save!
-    MessageChannelService.publish_models([ user ], serializer: AuthorSerializer, group_id: group.id)
+    membership
   end
 
   def self.set_volume(membership:, params:, actor:)
@@ -180,6 +197,25 @@ class MembershipService
       membership.save!
       membership.topic_readers.update_all(attributes)
     end
+  end
+
+  # Authorize the group once. CASE assigns each member's weight in one UPDATE
+  # while the group scope excludes IDs outside its active memberships.
+  def self.set_weights(group:, weights_by_membership_id:, actor:)
+    actor.ability.authorize! :set_weight, Membership.new(group: group)
+    raise ActionController::ParameterMissing, :weights if weights_by_membership_id.empty?
+
+    membership_ids = group.memberships.where(id: weights_by_membership_id.keys).pluck(:id)
+    weights = weights_by_membership_id.slice(*membership_ids.map(&:to_s))
+    weight_by_id = Arel::Nodes::Case.new(Membership.arel_table[:id])
+    weights.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
+    group.memberships.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
+  end
+
+  # Apply one weight to every active member in a single update.
+  def self.reset_weights(group:, weight:, actor:)
+    actor.ability.authorize! :set_weight, Membership.new(group: group)
+    group.memberships.update_all(weight: weight, updated_at: Time.current)
   end
 
   def self.resend(membership:, actor:)

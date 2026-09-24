@@ -1,4 +1,5 @@
 class Stance < ApplicationRecord
+  include HasVoteWeight
   include CustomCounterCache::Model
   include HasMentions
   include Reactable
@@ -69,7 +70,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :redacted_at, :redactor_id, :inviter_id, :attachments]
+  has_paper_trail only: [:reason, :option_scores, :weight, :revoked_at, :revoker_id, :redacted_at, :redactor_id, :inviter_id, :attachments]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -114,6 +115,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :poll_id_cannot_change, on: :update
   validate :poll_is_not_anonymous
+  before_validation :clamp_weight_without_vote_weights
 
   %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
@@ -131,6 +133,7 @@ class Stance < ApplicationRecord
       poll_id: poll_id,
       participant_id: participant_id,
       inviter_id: inviter_id,
+      weight: weight,
       reason_format: reason_format,
       latest: true
     )
@@ -150,6 +153,10 @@ class Stance < ApplicationRecord
 
   def author_name
     participant&.name
+  end
+
+  def clamp_weight_without_vote_weights
+    self.weight = 1 if poll && !poll.vote_weights_active?
   end
 
   def assign_option_scores

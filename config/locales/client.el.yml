@@ -768,6 +768,7 @@ el:
     revoke_admin: Ανάκληση διαχειριστή
     make_delegate: Κάντε ανάθεση
     revoke_delegate: Ανάκληση εκπροσώπου
+    edit_membership: Επεξεργασία μέλους
   notification_models:
     comment: σχόλιο μέσα
     poll: 'ψηφοφορία:'
@@ -1498,6 +1499,8 @@ el:
     members_can_create_tags_help: Επιτρέψτε στα μέλη να δημιουργούν νέες ετικέτες κατά την προσθήκη ετικετών σε νήματα και δημοσκοπήσεις
     non_members_can_start_discussions: Τα μη μέλη μπορούν να ξεκινήσουν συζητήσεις
     non_members_can_start_discussions_help: Να επιτρέπεται σε μη μέλη να ξεκινούν μια συζήτηση από ένα από τα πρότυπα αυτής της ομάδας
+    vote_weights_allowed: Επιτρέψτε τη βαρύτητα των ψήφων
+    vote_weights_allowed_help: Επιτρέψτε σε ορισμένες ψήφους να έχουν μεγαλύτερο βάρος από άλλες
   group_export_modal:
     title: Εξαγωγή δεδομένων ομάδας
     body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>
@@ -1596,11 +1599,17 @@ el:
   membership_form:
     modal_title:
       group: Ορισμός τίτλου
+      membership: Επεξεργασία μέλους
     title_helptext:
       group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη %{name} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
     title_label: τίτλος
     title_placeholder: Π.χ. «Συντονιστής» ή «Διευκολυντής»
     updated: Ο τίτλος μέλους ενημερώθηκε
+    membership_updated: Η συνδρομή ενημερώθηκε
+    weight_label: Βάρος ψήφου
+    weight_helptext: Αυτή η τιμή αντιγράφεται στην ψήφο του μέλους όταν προστίθεται σε μια νέα δημοσκόπηση. Η αλλαγή της δεν επηρεάζει τις υπάρχουσες δημοσκοπήσεις. Ορίστε την σε 0 για να επιτρέψετε στο μέλος να ψηφίσει χωρίς να προσθέσει στη βαθμολογία.
+    weight_invalid: Εισαγάγετε έναν ακέραιο αριθμό από το 0 έως το 1.000.000
+    weight_invalid_decimal: Εισαγάγετε έναν αριθμό από 0 έως 1.000.000 με έως τρία δεκαδικά ψηφία
   user_name_modal:
     user_name_updated: Το όνομα χρήστη ενημερώθηκε
     set_user_name: Ορισμός ονόματος χρήστη
@@ -2098,6 +2107,10 @@ el:
     status: Κατάσταση
     your_vote_is_requested: Η ψήφος σας ζητείται
     browse_example_make_a_copy_hint: "<b>Κάντε κλικ στο εικονίδιο αντιγραφής</b> για να δημιουργήσετε ένα νέο πρότυπο δημοσκόπησης, χρησιμοποιώντας το παράδειγμα ως σημείο εκκίνησης."
+    weighted_score: Σκορ
+    equal_weight_score: Ίση βαθμολογία βάρους
+    assigned_weight_score: Βαθμολογία βάρους που έχει ανατεθεί
+    view_votes: Δείτε τις ψήφους
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2166,6 +2179,9 @@ el:
     delegate: Αντιπρόσωπος
     delegate_popover: Ένας εκπρόσωπος είναι ένα μέλος της ομάδας με δικαίωμα ψήφου
     delegates: Αντιπρόσωποι
+    edit_vote_weights: Επεξεργασία βαρύτητας ψήφων
+    vote_weight_value: Βάρος %{weight}
+    vote_weights_are_defaults: Αυτά τα προεπιλεγμένα βάρη ισχύουν για νέες ψήφους. Οι αλλαγές εδώ δεν επηρεάζουν τις ψήφους που έχουν ήδη εκδοθεί.
   polls_panel:
     new_poll: Νέα δημοσκόπηση
     any_type: Ολοι οι τύποι
@@ -2212,6 +2228,7 @@ el:
     legacy_vote_reasons: Λόγοι προηγούμενων ψήφων
     legacy_vote_reasons_description: Οι λόγοι για τις ψήφους που δόθηκαν χρησιμοποιώντας την παλαιότερη μορφή ανώνυμης ψηφοφορίας εμφανίζονται ως απλό κείμενο
     anonymous_voting_participant_notice: Η ψηφοφορία είναι ανώνυμη. Δεν μπορείτε να ελέγξετε ή να αλλάξετε την ψήφο σας μετά την υποβολή της. Τα αποτελέσματα δεν είναι διαθέσιμα μέχρι να ολοκληρωθεί η ψηφοφορία.
+    variable_vote_weights_explanation: Αυτή η δημοσκόπηση χρησιμοποιεί μεταβλητά βάρη ψήφων, επιτρέποντας στην ψήφο ενός ατόμου να επηρεάσει το αποτέλεσμα περισσότερο από ό,τι σε ένα άλλο άτομο, ανάλογα με το εκχωρημένο βάρος ψήφου.
   poll_common_collapsed:
     by_who: από %{name}
   poll_common_calendar_invite:
@@ -2280,6 +2297,12 @@ el:
     unredact_reason_helptext: Ο λόγος για τον οποίο το κείμενο και τα συνημμένα θα γίνουν ξανά ορατά
     unredact_reason_confirm: Επαναφορά αιτίας
     unredact_reason_success: Η αιτιολογία ψήφου αποκαταστάθηκε
+    all_voters: Όλοι οι ψηφοφόροι
+    weight: Βάρος
+    vote_weight_column: Βάρος ψήφου
+    stance: Ψήφος
+    participation_records_restricted: Τα αρχεία συμμετοχής είναι διαθέσιμα στους συντονιστές της ψηφοφορίας
+    vote_weight: Βάρος %{weight}
   poll_common_undecided_panel:
     show_undecided: Εμφάνιση %{count} αναποφάσιστων
     show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
@@ -2922,6 +2945,27 @@ el:
     stance_reason_required_when_disagreeing: Υποχρεωτικό σε περίπτωση διαφωνίας
     stance_reason_required_for_disagree_or_block: Απαιτείται για διαφωνία ή αποκλεισμό
     stance_reason_required_for_block: Απαιτείται για μπλοκάρισμα
+    voters: Ψηφοφόροι
+    manage_voters: Διαχείριση ψηφοφόρων
+    search_voters: Αναζήτηση ψηφοφόρων
+    remove_voter: Αφαίρεση ψηφοφόρου
+    voter_page_count: "%{first}–%{last} από %{total}"
+    vote_weights: Βαρύτητα ψήφων
+    use_vote_weights: Χρήση συντελεστών βαρύτητας ψήφων
+    vote_weights_off_warning: Η απενεργοποίηση της βαρύτητας των ψήφων ορίζει τη βαρύτητα 1 για κάθε ψηφοφόρο και καταργεί τα βάρη που αφορούν συγκεκριμένες δημοσκοπήσεις.
+    vote_weights_on_group: Η ενεργοποίηση των βαρών ψήφων αντιγράφει τα βαρίδια των τρεχόντων μελών της ομάδας. Οι άλλοι ψηφοφόροι λαμβάνουν βάρος 1.
+    vote_weights_on_direct: Η ενεργοποίηση των βαρών ψήφων ορίζει κάθε ψηφοφόρο σε βάρος 1
+    vote_weight_for: Βάρος ψήφου για %{name}
+    save_vote_weights: Αποθήκευση βαρύτητας ψήφων
+    vote_weights_updated: Ενημερώθηκε η βαρύτητα των ψήφων
+    weight_for_all: Βάρος για όλους
+    set_all_vote_weights: Ορίστε όλα τα βάρη
+    set_all: Ορισμός όλων
+    use_member_vote_weights: Χρήση των τρεχουσών βαρών ψήφων των μελών
+    set_one_vote_weight: Ορίστε κάθε ψηφοφόρο σε μία βαρύτητα
+    member_vote_weights_hint: Οι ψηφοφόροι χωρίς τρέχουσα ιδιότητα μέλους ομάδας λαμβάνουν βάρος 1
+    vote_weights_description: Αντιστοιχίστε σε κάθε ψηφοφόρο μια βαρύτητα ψήφου, ώστε ορισμένες ψήφοι να μετρούν περισσότερο από άλλες. Τα αποτελέσματα δείχνουν τόσο τον αριθμό των ψηφοφόρων όσο και τη σταθμισμένη βαθμολογία.
+    issued_vote_weights_will_change: Τα βάρη για τις ψήφους που έχουν ήδη εκδοθεί θα αλλάξουν.
   poll_receipts_page:
     participation_status_requires_min_votes: Αυτό δείχνει ποιος είχε δικαίωμα ψήφου. Το αν ψήφισε κάθε άτομο εμφανίζεται μόνο όταν έχουν ψηφίσει τουλάχιστον %{count} άτομα.
     verify_participants: Επαλήθευση συμμετεχόντων
@@ -2936,6 +2980,7 @@ el:
     participation_records_explanation: Αυτό δείχνει ποιοι ήταν επιλέξιμοι και αν ψήφισαν. Δεν δείχνει πώς ψήφισε ο καθένας.
     voted: Ψήφισε
     not_voted: Δεν ψήφισε
+    email_addresses_for_group_admins: Οι διευθύνσεις ηλεκτρονικού ταχυδρομείου εμφανίζονται μόνο στους διαχειριστές ομάδων για να διακρίνονται τα άτομα.
   comment_reply_form:
     aria_label: Προσθήκη απάντησης
   discussion_template:

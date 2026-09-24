@@ -10,7 +10,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
     can_view_email = @poll.group.admins.include?(current_user)
     memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
-    voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
+    voters = User.with_attached_uploaded_avatar.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
     participation_status_visible = @poll.participation_status_visible?
 
@@ -28,6 +28,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
           poll_id: @poll.id,
           voter_id: receipt.voter_id,
           voter_name: voter.name,
+          voter_thumb_url: voter.thumb_url,
+          voter_avatar_initials: voter.avatar_initials,
           voter_email: (voter.email if can_view_email),
           member_since: membership&.accepted_at&.to_date&.iso8601,
           inviter_id: receipt.inviter_id,

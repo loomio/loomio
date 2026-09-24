@@ -768,6 +768,7 @@ sv:
     revoke_admin: Återkalla admin
     make_delegate: Gör ombud
     revoke_delegate: Återkalla delegat
+    edit_membership: Redigera medlemskap
   notification_models:
     comment: kommentera in
     poll: 'opinionsundersökning:'
@@ -1498,6 +1499,8 @@ sv:
     members_can_create_tags_help: Tillåt medlemmar att skapa nya taggar när de taggar trådar och omröstningar
     non_members_can_start_discussions: Icke-medlemmar kan starta diskussioner
     non_members_can_start_discussions_help: Tillåt icke-medlemmar att starta en diskussion från en av den här gruppens mallar
+    vote_weights_allowed: Tillåt röstvikter
+    vote_weights_allowed_help: Låt vissa röster väga tyngre än andra
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1596,11 +1599,17 @@ sv:
   membership_form:
     modal_title:
       group: Ställ in titel
+      membership: Redigera medlemskap
     title_helptext:
       group: Den här titeln kommer att visas bredvid %{name}s namn inom den här gruppen. Använd den för att låta folk veta sin roll.
     title_label: titel
     title_placeholder: T.ex. "koordinator" eller "förmedlare"
     updated: Medlemstitel uppdaterad
+    membership_updated: Medlemskapet uppdaterades
+    weight_label: Röstvikt
+    weight_helptext: Detta värde kopieras till medlemmens röst när de läggs till i en ny omröstning. Att ändra det påverkar inte befintliga omröstningar. Ställ in det på 0 för att låta medlemmen rösta utan att lägga till poängen.
+    weight_invalid: Ange ett heltal från 0 till 1 000 000
+    weight_invalid_decimal: Ange ett tal från 0 till 1 000 000 med upp till tre decimaler
   user_name_modal:
     user_name_updated: Användarnamnet har uppdaterats
     set_user_name: Ange användarnamn
@@ -2098,6 +2107,10 @@ sv:
     status: Status
     your_vote_is_requested: Din röst begärs
     browse_example_make_a_copy_hint: "<b>Klicka på kopieringsikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
+    weighted_score: Göra
+    equal_weight_score: Lika viktpoäng
+    assigned_weight_score: Tilldelad viktpoäng
+    view_votes: Visa röster
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2166,6 +2179,9 @@ sv:
     delegate: Delegera
     delegate_popover: En delegat är en gruppmedlem med rösträtt
     delegates: Delegater
+    edit_vote_weights: Redigera röstvikter
+    vote_weight_value: Vikt %{weight}
+    vote_weights_are_defaults: Dessa standardvikter gäller för nya röster. Ändringar här påverkar inte röster som redan utfärdats.
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
@@ -2212,6 +2228,7 @@ sv:
     legacy_vote_reasons: Skäl från tidigare röster
     legacy_vote_reasons_description: Skäl från röster som avgivits med det äldre anonyma röstningsformatet visas som vanlig text
     anonymous_voting_participant_notice: Röstningen är anonym. Du kan inte granska eller ändra din röst efter att du skickat in den. Resultaten är inte tillgängliga förrän omröstningen har avslutats.
+    variable_vote_weights_explanation: Denna omröstning använder varierande röstvikter, vilket gör att en persons röst påverkar resultatet mer än en annan persons enligt den tilldelade röstvikten.
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2280,6 +2297,12 @@ sv:
     unredact_reason_helptext: Anledningen till att text och bilagor blir synliga igen
     unredact_reason_confirm: Återställningsorsak
     unredact_reason_success: Röstorsaken återställd
+    all_voters: Alla väljare
+    weight: Vikt
+    vote_weight_column: Röstvikt
+    stance: Rösta
+    participation_records_restricted: Deltagarregister är tillgängliga för valkoordinatorer
+    vote_weight: Vikt %{weight}
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar
@@ -2922,6 +2945,27 @@ sv:
     stance_reason_required_when_disagreeing: Krävs vid oenighet
     stance_reason_required_for_disagree_or_block: Krävs för att inte godkänna eller blockera
     stance_reason_required_for_block: Krävs vid blockering
+    voters: Väljare
+    manage_voters: Hantera väljare
+    search_voters: Sök väljare
+    remove_voter: Ta bort väljare
+    voter_page_count: "%{first}–%{last} av %{total}"
+    vote_weights: Röstvikter
+    use_vote_weights: Använd röstvikter
+    vote_weights_off_warning: Om man stänger av röstvikter får varje väljare vikt 1 och omröstningsspecifika vikter tas bort.
+    vote_weights_on_group: Om röstvikter aktiveras kopieras vikterna för nuvarande gruppmedlemmar. Andra väljare får vikt 1.
+    vote_weights_on_direct: Om man aktiverar röstvikter får varje väljare vikt 1
+    vote_weight_for: Röstvikt för %{name}
+    save_vote_weights: Spara röstvikter
+    vote_weights_updated: Röstvikter uppdaterade
+    weight_for_all: Vikt för alla
+    set_all_vote_weights: Ställ in alla vikter
+    set_all: Ställ in alla
+    use_member_vote_weights: Använd nuvarande medlemmars röstvikter
+    set_one_vote_weight: Sätt en vikt för varje väljare
+    member_vote_weights_hint: Väljare utan nuvarande grupptillhörighet får vikt 1
+    vote_weights_description: Tilldela varje väljare en röstvikt, så att vissa röster räknas mer än andra. Resultaten visar både antalet väljare och den viktade poängen.
+    issued_vote_weights_will_change: Vikterna för redan utfärdade röster kommer att ändras.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     verify_participants: Verifiera deltagare
@@ -2936,6 +2980,7 @@ sv:
     participation_records_explanation: Detta visar vilka som var röstberättigade och om de röstade. Det visar inte hur någon röstade.
     voted: Röstade
     not_voted: Röstade inte
+    email_addresses_for_group_admins: E-postadresser visas endast för gruppadministratörer för att skilja personer åt.
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:

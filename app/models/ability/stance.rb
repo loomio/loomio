@@ -12,6 +12,12 @@ module Ability::Stance
       stance.latest?
     end
 
+    can :set_weight, ::Stance do |stance|
+      stance.poll.vote_weights_active? &&
+      stance.poll.closed_at.nil? &&
+      stance.poll.admins.exists?(user.id)
+    end
+
     can [:uncast], ::Stance do |stance|
       can?(:update, stance) && stance.cast_at.present?
     end

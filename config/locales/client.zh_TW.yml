@@ -771,6 +771,7 @@ zh_TW:
     revoke_admin: 撤銷管理員
     make_delegate: 任命代表
     revoke_delegate: 撤銷委託
+    edit_membership: 編輯會員資格
   notification_models:
     comment: 評論於
     poll: 投票：
@@ -1507,6 +1508,8 @@ zh_TW:
     members_can_create_tags_help: 允許成員在標記貼文和投票時建立新標籤。
     non_members_can_start_discussions: 非會員也可以發起討論
     non_members_can_start_discussions_help: 允許非成員使用本群組提供的範本發起討論。
+    vote_weights_allowed: 允許投票權重
+    vote_weights_allowed_help: 允許某些選票比其他選票有更高的權重。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1613,11 +1616,17 @@ zh_TW:
   membership_form:
     modal_title:
       group: 設定群組標題
+      membership: 編輯會員資格
     title_helptext:
       group: 這個標題會出現在這個群組中的 %{name} 名稱旁。使用它來讓夥伴們知道他們的角色。
     title_label: 標題
     title_placeholder: 例子：「協調者」或「主持人」
     updated: 成員標題已更新
+    membership_updated: 會員資格已更新
+    weight_label: 投票權重
+    weight_helptext: 當成員被加入新的投票中時，此值將複製到該成員的投票記錄中。更改此值不會影響現有投票。將其設為 0 可允許成員投票而不增加分數。
+    weight_invalid: 請輸入介於 0 到 1,000,000 之間的整數。
+    weight_invalid_decimal: 請輸入一個介於 0 到 1,000,000 之間的數字，最多保留三位小數。
   user_name_modal:
     user_name_updated: 使用者名稱已更新
     set_user_name: 設定使用者名稱
@@ -2124,6 +2133,10 @@ zh_TW:
     status: 地位
     your_vote_is_requested: 請您投票
     browse_example_make_a_copy_hint: "<b>點擊複製圖標</b>，以範例為起點，建立一個新的投票模板。"
+    weighted_score: 分數
+    equal_weight_score: 等權重得分
+    assigned_weight_score: 分配權重分數
+    view_votes: 查看投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2192,6 +2205,9 @@ zh_TW:
     delegate_popover: 代表是具有投票權的團體成員
     delegates: 代表
     accepted: 成員
+    edit_vote_weights: 修改投票權重
+    vote_weight_value: 重量 %{weight}
+    vote_weights_are_defaults: 這些預設權重適用於新投票。此處所做的更改不會影響已發出的投票。
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型
@@ -2238,6 +2254,7 @@ zh_TW:
     legacy_vote_reasons: 歷史投票原因
     legacy_vote_reasons_description: 使用傳統匿名投票方式投出的選票的理由以純文字形式顯示
     anonymous_voting_participant_notice: 投票是匿名的。提交投票後，您將無法查看或更改您的投票。投票結束後才會公佈結果。
+    variable_vote_weights_explanation: 本次民調採用可變權重，根據設定的權重，不同投票者的投票對結果的影響程度可能有所不同。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2306,6 +2323,12 @@ zh_TW:
     unredact_reason_helptext: 文字和附件將再次可見的原因
     unredact_reason_confirm: 恢復原因
     unredact_reason_success: 恢復投票理由
+    all_voters: 所有選民
+    weight: 重量
+    vote_weight_column: 投票權重
+    stance: 投票
+    participation_records_restricted: 投票協調員可以查閱投票記錄。
+    vote_weight: 重量 %{weight}
   poll_common_undecided_panel:
     show_undecided: 顯示 %{count} 個未決定
     show_invitations: 顯示擱置中的邀請函
@@ -2950,6 +2973,27 @@ zh_TW:
     stance_reason_required_when_disagreeing: 意見不一致時需要填寫
     stance_reason_required_for_disagree_or_block: 不同意或阻擋時必填
     stance_reason_required_for_block: 阻擋時必填
+    voters: 選民
+    manage_voters: 管理選民
+    search_voters: 搜尋選民
+    remove_voter: 移除選民
+    voter_page_count: "%{first}–%{last} 共 %{total}"
+    vote_weights: 投票權重
+    use_vote_weights: 使用投票權重
+    vote_weights_off_warning: 關閉投票權重會將所有選民的權重設為 1，並移除特定投票的權重。
+    vote_weights_on_group: 啟用投票權重後，將複製目前群組成員的權重。其他投票者的權重為 1。
+    vote_weights_on_direct: 啟用投票權重後，所有選民的權重均為 1。
+    vote_weight_for: "%{name} 的投票權重"
+    save_vote_weights: 保存投票權重
+    vote_weights_updated: 投票權重已更新
+    weight_for_all: 所有重量
+    set_all_vote_weights: 設定所有重量
+    set_all: 設定全部
+    use_member_vote_weights: 使用目前成員投票權重
+    set_one_vote_weight: 將所有選民的權重設為1。
+    member_vote_weights_hint: 沒有目前團體成員資格的選民權重為 1。
+    vote_weights_description: 為每位選民設定投票權重，使某些選票比其他選票更重要。結果將顯示選民人數和加權得分。
+    issued_vote_weights_will_change: 已發出的選票權重將會改變。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     verify_participants: 驗證參與者
@@ -2964,6 +3008,7 @@ zh_TW:
     participation_records_explanation: 這顯示了哪些人有資格投票以及他們是否投票。但它並不顯示任何人的投票情況。
     voted: 投票
     not_voted: 未投票
+    email_addresses_for_group_admins: 電子郵件地址僅對群組管理員顯示，用於區分成員。
   comment_reply_form:
     aria_label: 新增回覆
   discussion_template:

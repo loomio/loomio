@@ -91,10 +91,9 @@ module.exports = {
     page.click('.group-page-members-tab');
     page.waitFor('.members-panel');
     page.expectText('.membership-card__invite', 'Invite');
-    page.expectText('.members-panel__shareable-link-btn', 'Shareable Link');
     screenshot.capture('groups/settings/group_join_group_invite', {
       spotlight: {
-        selectors: ['.membership-card__invite', '.members-panel__shareable-link-btn'],
+        selector: '.membership-card__invite',
         padding: 14,
         radius: 14,
         opacity: 0.4,

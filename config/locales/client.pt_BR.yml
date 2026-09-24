@@ -778,6 +778,7 @@ pt_BR:
     revoke_admin: Revogar administrador
     make_delegate: Fazer delegado
     revoke_delegate: Revogar delegado
+    edit_membership: Editar adesão
   notification_models:
     comment: comentar em
     poll: 'enquete:'
@@ -1525,6 +1526,8 @@ pt_BR:
     members_can_create_tags_help: Permitir que os membros criem novas etiquetas ao etiquetar tópicos e enquetes.
     non_members_can_start_discussions: Quem não é membro pode iniciar discussões.
     non_members_can_start_discussions_help: Permitir que não membros iniciem uma discussão a partir de um dos modelos deste grupo.
+    vote_weights_allowed: Permitir ponderação de votos
+    vote_weights_allowed_help: Permitir que alguns votos tenham mais peso do que outros.
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1631,11 +1634,17 @@ pt_BR:
   membership_form:
     modal_title:
       group: Configurar o título do grupo
+      membership: Editar adesão
     title_helptext:
       group: Esse título aparecerá ao lado do nome de %{name} nesse grupo. Use para que os demais participantes saibam qual o seu papel.
     title_label: cargo
     title_placeholder: E.x. 'Coordenador', ou 'Facilitador'
     updated: Título do membro atualizado
+    membership_updated: Atualização de membros
+    weight_label: Peso do voto
+    weight_helptext: Esse valor é copiado para o voto do membro quando ele é adicionado a uma nova enquete. Alterá-lo não afeta as enquetes existentes. Defina-o como 0 para permitir que o membro vote sem adicionar pontos à pontuação.
+    weight_invalid: Digite um número inteiro de 0 a 1.000.000
+    weight_invalid_decimal: Digite um número de 0 a 1.000.000 com até três casas decimais.
   user_name_modal:
     user_name_updated: Nome de usuário atualizado
     set_user_name: Definir nome de usuário
@@ -2142,6 +2151,10 @@ pt_BR:
     status: Status
     your_vote_is_requested: Seu voto é solicitado.
     browse_example_make_a_copy_hint: "<b>Clique no ícone de copiar</b> para criar um novo modelo de pesquisa, usando o exemplo como ponto de partida."
+    weighted_score: Pontuação
+    equal_weight_score: Pontuação de peso igual
+    assigned_weight_score: Pontuação de peso atribuída
+    view_votes: Ver votos
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2210,6 +2223,9 @@ pt_BR:
     delegate: Delegar
     delegate_popover: Um delegado é um membro do grupo com direito a voto
     delegates: Delegados
+    edit_vote_weights: Editar pesos de voto
+    vote_weight_value: Peso %{weight}
+    vote_weights_are_defaults: Esses pesos padrão se aplicam a novos votos. Alterações aqui não afetam votos já emitidos.
   polls_panel:
     new_poll: Nova enquete
     any_type: Todos tipos
@@ -2258,6 +2274,7 @@ pt_BR:
     legacy_vote_reasons: Justificativas de votos anteriores
     legacy_vote_reasons_description: As justificativas dos votos feitos no formato anterior de votação anônima são exibidas como texto simples
     anonymous_voting_participant_notice: A votação é anônima. Você não poderá revisar ou alterar seu voto após enviá-lo. Os resultados só serão divulgados após o encerramento da votação.
+    variable_vote_weights_explanation: Esta pesquisa utiliza pesos de voto variáveis, permitindo que o voto de uma pessoa influencie o resultado mais do que o de outra, de acordo com o peso de voto atribuído.
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2326,6 +2343,12 @@ pt_BR:
     unredact_reason_helptext: O texto explicativo e os anexos voltarão a ficar visíveis.
     unredact_reason_confirm: Restaure a razão
     unredact_reason_success: Motivo da votação restaurado
+    all_voters: Todos os eleitores
+    weight: Peso
+    vote_weight_column: Peso do voto
+    stance: Voto
+    participation_records_restricted: Os registros de participação estão disponíveis para os coordenadores da votação.
+    vote_weight: Peso %{weight}
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indeciso
     show_invitations: Mostrar Convites Pendentes
@@ -2970,6 +2993,27 @@ pt_BR:
     stance_reason_required_when_disagreeing: Necessário em caso de discordância
     stance_reason_required_for_disagree_or_block: Necessário para discordar ou bloquear
     stance_reason_required_for_block: Necessário para bloqueio
+    voters: Eleitores
+    manage_voters: Gerenciar eleitores
+    search_voters: Pesquisar eleitores
+    remove_voter: Remover eleitor
+    voter_page_count: "%{first}–%{last} de %{total}"
+    vote_weights: Pesos de voto
+    use_vote_weights: Utilizar ponderações de voto
+    vote_weights_off_warning: Desativar a ponderação dos votos atribui o peso 1 a todos os eleitores e remove as ponderações específicas de cada pesquisa.
+    vote_weights_on_group: Ao ativar a ponderação de votos, os pesos atuais dos membros do grupo são copiados. Os demais votantes recebem peso 1.
+    vote_weights_on_direct: Ao ativar a ponderação de votos, todos os eleitores recebem o peso 1.
+    vote_weight_for: Peso do voto para %{name}
+    save_vote_weights: Salvar pesos de voto
+    vote_weights_updated: Pesos de voto atualizados
+    weight_for_all: Peso para todos
+    set_all_vote_weights: Ajuste todos os pesos
+    set_all: Configurar tudo
+    use_member_vote_weights: Use os pesos de voto atuais dos membros
+    set_one_vote_weight: Atribua um peso a cada eleitor
+    member_vote_weights_hint: Eleitores sem filiação atual a um grupo recebem peso 1
+    vote_weights_description: Atribua um peso a cada eleitor, de forma que alguns votos contem mais do que outros. Os resultados mostram tanto o número de eleitores quanto a pontuação ponderada.
+    issued_vote_weights_will_change: A ponderação dos votos já emitidos será alterada.
   poll_receipts_page:
     participation_status_requires_min_votes: Isso mostra quem tinha direito a voto. A informação sobre se cada pessoa votou só é exibida quando pelo menos %{count} pessoas tiverem votado.
     verify_participants: Verificar participantes
@@ -2984,6 +3028,7 @@ pt_BR:
     participation_records_explanation: Isso mostra quem era elegível e se votou. Não mostra como cada pessoa votou.
     voted: Votou
     not_voted: Não votou
+    email_addresses_for_group_admins: Os endereços de e-mail são exibidos apenas para os administradores do grupo, a fim de distinguir as pessoas.
   comment_reply_form:
     aria_label: Adicionar uma resposta
   discussion_template:

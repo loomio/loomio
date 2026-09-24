@@ -278,6 +278,7 @@ class RecordCloner
       inviter_id
       latest
       link_previews
+      weight
       participant_id
       reason
       reason_format
@@ -367,6 +368,7 @@ class RecordCloner
       experiences
       accepted_at
       title
+      weight
     ]
     clone_membership = new_clone(membership, copy_fields)
     clone_membership.group = existing_clone(membership.group)

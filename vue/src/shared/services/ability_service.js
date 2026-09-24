@@ -365,6 +365,13 @@ export default new class AbilityService {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
   }
 
+  canVerifyParticipants(poll) {
+    if (!poll.anonymous || !poll.groupId) { return false; }
+    if (poll.detachedAnonymousVoting()) { return poll.adminsInclude(Session.user()); }
+    if (!poll.membersInclude(Session.user())) { return false; }
+    return !AppConfig.features.app.verify_participants_admin_only || poll.adminsInclude(Session.user());
+  }
+
   canSetPollOutcome(poll) {
     return poll.group().isEnabled() && !poll.topic().closedAt &&
     !poll.discardedAt &&

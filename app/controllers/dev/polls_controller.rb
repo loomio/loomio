@@ -125,13 +125,36 @@ class Dev::PollsController < Dev::NightwatchController
 
   def start_poll
     group = create_group_with_members
+    group.update!(vote_weights_allowed: true) if params[:weighted].present?
     sign_in group.admins.first
     redirect_to new_poll_url(group_id: group.id)
   end
 
+  def edit_open_poll_vote_weights
+    group = create_group_with_members
+    group.update!(vote_weights_allowed: true)
+    admin = group.admins.first
+    poll = PollService.create(params: {
+      title: 'Open weighted vote settings', poll_type: 'proposal', group_id: group.id,
+      poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now,
+      vote_weights_enabled: params[:weighted].present?
+    }, actor: admin)
+    sign_in admin
+    redirect_to "/p/#{poll.key}/edit"
+  end
+
 
   def test_scheduled_poll
-    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal')
+    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal', weighted: params[:weighted].present?)
+    if params[:voter_count].present?
+      voters = Array.new(params[:voter_count].to_i.clamp(0, 25)) { saved(fake_user) }
+      voters.each { |voter| scenario[:group].add_member!(voter) }
+      PollService.invite(
+        poll: scenario[:poll],
+        params: {recipient_user_ids: voters.map(&:id), notify_recipients: false},
+        actor: scenario[:actor]
+      )
+    end
     sign_in scenario[:observer]
     redirect_to poll_url(scenario[:poll])
   end

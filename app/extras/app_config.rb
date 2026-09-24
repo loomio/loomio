@@ -164,7 +164,7 @@ class AppConfig
       privacy_url: ENV['PRIVACY_URL'],
       canonical_host: ENV['CANONICAL_HOST'],
       reply_hostname: ENV['REPLY_HOSTNAME'],
-      help_url: ENV.fetch('HELP_URL', 'https://help.loomio.com/'),
+      help_url: ENV.fetch('HELP_URL', '/docs/en'),
       icon_src: ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent.svg"),
       favicon16_src: ENV.fetch('THEME_FAVICON_16_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-16.png")),
       favicon32_src: ENV.fetch('THEME_FAVICON_32_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-32.png")),

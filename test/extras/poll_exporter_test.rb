@@ -85,10 +85,11 @@ class PollExporterTest < ActiveSupport::TestCase
     assert_equal '"Board Election"', lines[i + 4]
   end
 
-  test "to_csv includes member title and delegate status for vote rows" do
+  test "to_csv includes member title, delegate status, and vote weight for vote rows" do
     stance = @poll.stances.latest.first
     membership = @group.membership_for(stance.participant)
     membership.update!(title: 'Board chair', delegate: true)
+    stance.update!(weight: 2)
 
     rows = CSV.parse(@exporter.to_csv)
     votes_index = rows.index(['votes'])
@@ -98,9 +99,12 @@ class PollExporterTest < ActiveSupport::TestCase
 
     assert_equal 'member_title', headers[4]
     assert_equal 'delegate', headers[5]
+    assert_equal 'weight', headers[6]
     assert_equal 'Board chair', vote_row[headers.index('member_title')]
     assert_equal 'true', vote_row[headers.index('delegate')]
+    assert_equal '2', vote_row[headers.index('weight')]
   end
+
 
   test "to_csv does not use member titles or delegate status from another group" do
     stance = @poll.stances.latest.first

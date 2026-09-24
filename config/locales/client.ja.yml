@@ -767,6 +767,7 @@ ja:
     revoke_admin: 管理者の取り消し
     make_delegate: 委任する
     revoke_delegate: 委任を取り消す
+    edit_membership: メンバーシップを編集
   notification_models:
     comment: コメントイン
     poll: '投票:'
@@ -1497,6 +1498,8 @@ ja:
     members_can_create_tags_help: メンバーがスレッドやアンケートにタグを付ける際に、新しいタグを作成できるようにする
     non_members_can_start_discussions: 非会員でも議論を開始できます
     non_members_can_start_discussions_help: 非メンバーがこのグループのテンプレートのいずれかからディスカッションを開始できるようにする
+    vote_weights_allowed: 投票の重み付けを許可する
+    vote_weights_allowed_help: 一部の投票に他の投票よりも大きな重みを持たせる
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1595,11 +1598,17 @@ ja:
   membership_form:
     modal_title:
       group: タイトルを設定する
+      membership: メンバーシップを編集
     title_helptext:
       group: このタイトルは、このグループ内の %{name} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
     title_label: タイトル
     title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
     updated: 会員タイトルを更新しました
+    membership_updated: 会員情報が更新されました
+    weight_label: 投票権
+    weight_helptext: この値は、メンバーが新しい投票に追加された際に、そのメンバーの投票にコピーされます。この値を変更しても、既存の投票には影響しません。スコアに加算されずにメンバーが投票できるようにするには、この値を0に設定してください。
+    weight_invalid: 0から1,000,000までの整数を入力してください
+    weight_invalid_decimal: 0から1,000,000までの数値を小数点以下3桁まで入力してください。
   user_name_modal:
     user_name_updated: ユーザー名が更新されました
     set_user_name: ユーザー名を設定する
@@ -2097,6 +2106,10 @@ ja:
     status: 状態
     your_vote_is_requested: あなたの投票をお願いします
     browse_example_make_a_copy_hint: "<b>コピーアイコンをクリックすると</b>、サンプルを参考に新しいアンケートテンプレートを作成できます。"
+    weighted_score: スコア
+    equal_weight_score: 同等の重み付けスコア
+    assigned_weight_score: 割り当てられた重みスコア
+    view_votes: 投票を見る
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2165,6 +2178,9 @@ ja:
     delegate: 委任する
     delegate_popover: 代表者は投票権を持つグループメンバーである
     delegates: 代表者
+    edit_vote_weights: 投票の重みを編集する
+    vote_weight_value: 重量 %{weight}
+    vote_weights_are_defaults: これらのデフォルトの重みは新規投票に適用されます。ここでの変更は、既に発行された投票には影響しません。
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -2211,6 +2227,7 @@ ja:
     legacy_vote_reasons: 過去の投票理由
     legacy_vote_reasons_description: 従来の匿名投票形式で行われた投票の理由は、プレーンテキストで表示されます
     anonymous_voting_participant_notice: 投票は匿名で行われます。投票送信後は、投票内容を確認したり変更したりすることはできません。投票結果は、投票締め切り後に公開されます。
+    variable_vote_weights_explanation: この投票では投票の重みが変動するため、割り当てられた重みに応じて、ある人の投票が他の人の投票よりも結果に大きな影響を与える可能性があります。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2279,6 +2296,12 @@ ja:
     unredact_reason_helptext: テキストと添付ファイルが再び表示される理由
     unredact_reason_confirm: 理性を回復する
     unredact_reason_success: 投票理由が復元されました
+    all_voters: すべての有権者
+    weight: 重さ
+    vote_weight_column: 投票権
+    stance: 投票する
+    participation_records_restricted: 投票記録は投票コーディネーターが閲覧可能です。
+    vote_weight: 重量 %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} を表示するかどうかは未定"
     show_invitations: 保留中の招待状を表示
@@ -2921,6 +2944,27 @@ ja:
     stance_reason_required_when_disagreeing: 意見が合わない場合に必要
     stance_reason_required_for_disagree_or_block: 反対またはブロックするには必須
     stance_reason_required_for_block: ブロックに必要
+    voters: 有権者
+    manage_voters: 有権者の管理
+    search_voters: 有権者を検索
+    remove_voter: 有権者を削除する
+    voter_page_count: "%{first}～%{last} / %{total}"
+    vote_weights: 投票の重み
+    use_vote_weights: 投票の重み付けを使用する
+    vote_weights_off_warning: 投票の重み付けをオフにすると、すべての投票者の重みが1に設定され、投票ごとの重み付けが削除されます。
+    vote_weights_on_group: 投票重みを有効にすると、現在のグループメンバーの重みがコピーされます。他の投票者には重み1が割り当てられます。
+    vote_weights_on_direct: 投票重み付けを有効にすると、すべての投票者の重みが1に設定されます。
+    vote_weight_for: "%{name}への投票重み"
+    save_vote_weights: 投票の重みを保存する
+    vote_weights_updated: 投票の重みが更新されました
+    weight_for_all: すべての重量
+    set_all_vote_weights: すべての重みを設定します
+    set_all: すべて設定
+    use_member_vote_weights: 現在の会員投票の重みを使用する
+    set_one_vote_weight: すべての投票者に1つの重みを設定する
+    member_vote_weights_hint: 現在グループに所属していない有権者は1の重みを持つ
+    vote_weights_description: 各投票者に投票重みを割り当てることで、一部の投票は他の投票よりも重みが高くなります。結果には、投票者数と重み付けされたスコアの両方が表示されます。
+    issued_vote_weights_will_change: 既に投票済みの票の重み付けが変更されます。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     verify_participants: 参加者を確認する
@@ -2935,6 +2979,7 @@ ja:
     participation_records_explanation: これは、誰が投票資格を有していたか、そして投票したかどうかを示しています。誰がどのように投票したかは示していません。
     voted: 投票済み
     not_voted: 未投票
+    email_addresses_for_group_admins: メールアドレスは、個人を識別するためにグループ管理者のみに表示されます。
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:

@@ -768,6 +768,7 @@ tr:
     revoke_admin: Yöneticiyi iptal et
     make_delegate: Delege et
     revoke_delegate: Temsilciyi iptal et
+    edit_membership: Üyeliği düzenle
   notification_models:
     comment: yorum yapın
     poll: 'anket:'
@@ -1498,6 +1499,8 @@ tr:
     members_can_create_tags_help: Üyelerin konuları ve anketleri etiketlerken yeni etiketler oluşturmasına izin verin.
     non_members_can_start_discussions: Üye olmayanlar da tartışma başlatabilir.
     non_members_can_start_discussions_help: Üye olmayanların bu grubun şablonlarından birini kullanarak tartışma başlatmasına izin verin.
+    vote_weights_allowed: Oy ağırlıklarına izin ver
+    vote_weights_allowed_help: Bazı oyların diğerlerinden daha fazla ağırlığa sahip olmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1596,11 +1599,17 @@ tr:
   membership_form:
     modal_title:
       group: Başlığı ayarla
+      membership: Üyeliği düzenle
     title_helptext:
       group: Bu başlık, bu grup içinde %{name}'nin adının yanında görünecek. İnsanların rollerini bilmelerini sağlamak için bunu kullanın.
     title_label: başlık
     title_placeholder: Örneğin 'Koordinatör' veya 'Kolaylaştırıcı'
     updated: Üyelik başlığı güncellendi
+    membership_updated: Üyelik güncellendi
+    weight_label: Oy ağırlığı
+    weight_helptext: Bu değer, üye yeni bir ankete eklendiğinde üyenin oyuna kopyalanır. Değiştirmek mevcut anketleri etkilemez. Üyenin puana eklenmeden oy kullanmasına izin vermek için değeri 0 olarak ayarlayın.
+    weight_invalid: 0 ile 1.000.000 arasında bir tam sayı girin.
+    weight_invalid_decimal: 0 ile 1.000.000 arasında, en fazla üç ondalık basamaklı bir sayı girin.
   user_name_modal:
     user_name_updated: Kullanıcı adı güncellendi
     set_user_name: Kullanıcı adını ayarla
@@ -2098,6 +2107,10 @@ tr:
     status: Durum
     your_vote_is_requested: Oylarınız rica olunur.
     browse_example_make_a_copy_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>kopyala simgesine tıklayın</b> .
+    weighted_score: Gol
+    equal_weight_score: Eşit ağırlıklı puan
+    assigned_weight_score: Atanan ağırlık puanı
+    view_votes: Oyları görüntüle
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2166,6 +2179,9 @@ tr:
     delegate: Temsilci
     delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
     delegates: Delegeler
+    edit_vote_weights: Oy ağırlıklarını düzenle
+    vote_weight_value: Ağırlık %{weight}
+    vote_weights_are_defaults: Bu varsayılan ağırlıklar yeni oylara uygulanır. Burada yapılan değişiklikler daha önce verilmiş oyları etkilemez.
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü
@@ -2212,6 +2228,7 @@ tr:
     legacy_vote_reasons: Önceki oyların gerekçeleri
     legacy_vote_reasons_description: Eski anonim oylama formatı kullanılarak verilen oyların gerekçeleri düz metin olarak gösterilir
     anonymous_voting_participant_notice: Oylama anonimdir. Oy verdikten sonra oyunuzu gözden geçiremez veya değiştiremezsiniz. Sonuçlar, oylama sona erene kadar açıklanmaz.
+    variable_vote_weights_explanation: Bu anket, değişken oy ağırlıkları kullanmaktadır; bu sayede bir kişinin oyu, atanan oy ağırlığına bağlı olarak diğer bir kişinin oyundan daha fazla sonuç üzerinde etkili olabilir.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2280,6 +2297,12 @@ tr:
     unredact_reason_helptext: Metin ve eklerin tekrar görünür hale getirilmesinin nedeni
     unredact_reason_confirm: Mantığı geri getir
     unredact_reason_success: Oy verme gerekçesi geri yüklendi.
+    all_voters: Tüm seçmenler
+    weight: Ağırlık
+    vote_weight_column: Oy ağırlığı
+    stance: Oy
+    participation_records_restricted: Katılım kayıtları, anket koordinatörlerinin erişimine açıktır.
+    vote_weight: Ağırlık %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster
@@ -2922,6 +2945,27 @@ tr:
     stance_reason_required_when_disagreeing: Anlaşmazlık durumunda gereklidir
     stance_reason_required_for_disagree_or_block: Katılmıyorsanız veya engelliyorsanız gereklidir
     stance_reason_required_for_block: Engelleme için gerekli
+    voters: Seçmenler
+    manage_voters: Seçmenleri yönetin
+    search_voters: Seçmenleri ara
+    remove_voter: Seçmeni kaldır
+    voter_page_count: "%{first}–%{last} / %{total}"
+    vote_weights: Oy ağırlıkları
+    use_vote_weights: Oy ağırlıklarını kullanın
+    vote_weights_off_warning: Oy ağırlıklarını kapatmak, her seçmenin ağırlığını 1 olarak ayarlar ve ankete özgü ağırlıkları kaldırır.
+    vote_weights_on_group: Oy ağırlıklarını etkinleştirmek, mevcut grup üyesi ağırlıklarını kopyalar. Diğer seçmenler 1 ağırlık alır.
+    vote_weights_on_direct: Oy ağırlıklarını etkinleştirmek, her seçmenin ağırlığını 1 olarak ayarlar.
+    vote_weight_for: "%{name} için oy ağırlığı"
+    save_vote_weights: Oy ağırlıklarını kaydedin
+    vote_weights_updated: Oy ağırlıkları güncellendi
+    weight_for_all: Herkes için ağırlık
+    set_all_vote_weights: Tüm ağırlıkları ayarlayın.
+    set_all: Tümünü ayarla
+    use_member_vote_weights: Mevcut üye oy ağırlıklarını kullanın.
+    set_one_vote_weight: Her seçmene tek bir ağırlık atayın.
+    member_vote_weights_hint: Mevcut bir gruba üye olmayan seçmenler 1 ağırlık puanı alır.
+    vote_weights_description: Her seçmene bir oy ağırlığı atayın, böylece bazı oylar diğerlerinden daha fazla önem kazanır. Sonuçlar hem seçmen sayısını hem de ağırlıklı puanı gösterir.
+    issued_vote_weights_will_change: Daha önce verilmiş oyların ağırlıkları değişecektir.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     verify_participants: Katılımcıları doğrulayın
@@ -2936,6 +2980,7 @@ tr:
     participation_records_explanation: Bu, kimlerin oy kullanma hakkına sahip olduğunu ve oy kullanıp kullanmadıklarını gösterir. Ancak kimin nasıl oy kullandığını göstermez.
     voted: Oy kullandı
     not_voted: Oy kullanmadı
+    email_addresses_for_group_admins: E-posta adresleri, kişileri ayırt etmek amacıyla yalnızca grup yöneticilerine gösterilir.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:

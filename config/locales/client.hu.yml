@@ -770,6 +770,7 @@ hu:
     revoke_admin: Rendszergazda visszavonása
     make_delegate: Legyen küldött
     revoke_delegate: Meghatalmazott visszavonása
+    edit_membership: Tagság szerkesztése
   notification_models:
     comment: hozzászólás itt
     poll: 'közvélemény kutatás:'
@@ -1502,6 +1503,8 @@ hu:
     members_can_create_tags_help: A tagok új címkéket hozhatnak létre a témák és szavazások címkézésekor
     non_members_can_start_discussions: Nem tagok is indíthatnak beszélgetéseket
     non_members_can_start_discussions_help: Engedélyezze a nem tagok számára, hogy beszélgetést indítsanak a csoport egyik sablonjából
+    vote_weights_allowed: Szavazati súlyok engedélyezése
+    vote_weights_allowed_help: Bizonyos szavazatok súlyának növelése másoknál
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1600,11 +1603,17 @@ hu:
   membership_form:
     modal_title:
       group: Állítsa be a csoport címét
+      membership: Tagság szerkesztése
     title_helptext:
       group: Ez a cím a csoporton belül a %{name} neve mellett jelenik meg. Használja azt, hogy megtudja az emberek szerepét.
     title_label: cím
     title_placeholder: Például. „Koordinátor” vagy „Levezető”
     updated: A tagság címe frissítve
+    membership_updated: Tagság frissítve
+    weight_label: Szavazati súly
+    weight_helptext: Ez az érték átmásolódik a tag szavazatába, amikor új szavazásba adják őket. A módosítása nem befolyásolja a meglévő szavazásokat. Állítsa 0-ra, ha azt szeretné, hogy a tag a pontszám növelése nélkül szavazzon.
+    weight_invalid: Adjon meg egy egész számot 0 és 1 000 000 között
+    weight_invalid_decimal: Adjon meg egy 0 és 1 000 000 közötti számot, legfeljebb három tizedesjegyig
   user_name_modal:
     user_name_updated: Felhasználónév frissítve
     set_user_name: Felhasználónév beállítása
@@ -2105,6 +2114,10 @@ hu:
     status: Állapot
     your_vote_is_requested: Szavazatot kérünk
     browse_example_make_a_copy_hint: "<b>Kattintson a másolás ikonra</b> egy új szavazássablon létrehozásához, a példa kiindulópontként való használatával."
+    weighted_score: Pontszám
+    equal_weight_score: Egyenlő súlypontszám
+    assigned_weight_score: Hozzárendelt súlypontszám
+    view_votes: Szavazatok megtekintése
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2173,6 +2186,9 @@ hu:
     delegate: Delegált
     delegate_popover: A delegált szavazati joggal rendelkező csoporttag
     delegates: Küldöttek
+    edit_vote_weights: Szavazati súlyok szerkesztése
+    vote_weight_value: Súly %{weight}
+    vote_weights_are_defaults: Ezek az alapértelmezett súlyok az új szavazatokra vonatkoznak. Az itt végrehajtott változtatások nem befolyásolják a már kiadott szavazatokat.
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2219,6 +2235,7 @@ hu:
     legacy_vote_reasons: Korábbi szavazatok indokai
     legacy_vote_reasons_description: A hagyományos anonim szavazási formátummal leadott szavazatok indokai egyszerű szövegként jelennek meg
     anonymous_voting_participant_notice: A szavazás névtelen. A szavazat beküldése után nem ellenőrizheti vagy módosíthatja azt. Az eredmények csak a szavazás lezárultával érhetők el.
+    variable_vote_weights_explanation: Ez a szavazás változó szavazati súlyokat használ, lehetővé téve, hogy az egyik személy szavazata a hozzárendelt szavazati súlytól függően jobban befolyásolja az eredményt, mint a másiké.
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2287,6 +2304,12 @@ hu:
     unredact_reason_helptext: Az ok, amiért a szöveg és a mellékletek ismét láthatóvá válnak
     unredact_reason_confirm: Visszaállítás oka
     unredact_reason_success: Szavazási indok visszaállítva
+    all_voters: Minden szavazó
+    weight: Súly
+    vote_weight_column: Szavazati súly
+    stance: Szavazás
+    participation_records_restricted: A részvételi adatok a szavazás koordinátorai számára elérhetők.
+    vote_weight: Súly %{weight}
   poll_common_undecided_panel:
     show_undecided: "%{count} bizonytalan megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
@@ -2929,6 +2952,27 @@ hu:
     stance_reason_required_when_disagreeing: Kötelező, ha nem ért egyet
     stance_reason_required_for_disagree_or_block: Kötelező a nemetmondáshoz vagy a blokkoláshoz
     stance_reason_required_for_block: Kötelező a blokkoláshoz
+    voters: Választók
+    manage_voters: Szavazók kezelése
+    search_voters: Szavazók keresése
+    remove_voter: Szavazó eltávolítása
+    voter_page_count: "%{first}–%{last} a %{total}-ból"
+    vote_weights: Szavazati súlyok
+    use_vote_weights: Szavazati súlyok használata
+    vote_weights_off_warning: A szavazati súlyok kikapcsolása minden szavazót 1-es súlyozással jelöl ki, és eltávolítja a szavazás-specifikus súlyokat.
+    vote_weights_on_group: A szavazati súlyok bekapcsolása átmásolja az aktuális csoporttagok súlyait. A többi szavazó az 1-es súlyt kapja.
+    vote_weights_on_direct: A szavazati súlyok bekapcsolása minden szavazót 1-es súlyozással jelöl ki.
+    vote_weight_for: Szavazati súly %{name} felhasználóra
+    save_vote_weights: Szavazati súlyok mentése
+    vote_weights_updated: Szavazati súlyok frissítve
+    weight_for_all: Súly mindenkinek
+    set_all_vote_weights: Minden súly beállítása
+    set_all: Összes beállítása
+    use_member_vote_weights: Használja a jelenlegi tagok szavazati súlyait
+    set_one_vote_weight: Minden szavazót egy súlyozással jelöljön ki
+    member_vote_weights_hint: Az aktuális csoporttagsággal nem rendelkező szavazók 1-es súlyt kapnak.
+    vote_weights_description: Rendeljen minden szavazóhoz egy szavazati súlyt, így egyes szavazatok jobban számítanak, mint mások. Az eredmények mind a szavazók számát, mind a súlyozott pontszámot mutatják.
+    issued_vote_weights_will_change: A már kiadott szavazatok súlyozása megváltozik.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     verify_participants: Résztvevők ellenőrzése
@@ -2943,6 +2987,7 @@ hu:
     participation_records_explanation: Ez azt mutatja, hogy kik voltak jogosultak és hogy szavaztak-e. Nem mutatja, hogy ki hogyan szavazott.
     voted: Szavazott
     not_voted: Nem szavazott
+    email_addresses_for_group_admins: Az e-mail címek csak a csoport adminisztrátorai számára jelennek meg, hogy megkülönböztessék az embereket.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:

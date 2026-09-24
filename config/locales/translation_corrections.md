@@ -1,5 +1,20 @@
 # Corrected translations
 
+## 2026-09-24 — Vote weights and voter management
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.{be,ca,da,de,el,es,fi,fr,he,hr,hu,it,ja,nl_NL,pl,pt_BR,ro,ru,sl,sv,tr,uk,zh_CN,zh_TW}.yml` | `members_panel.vote_weight_value`, `poll_common_votes_panel.vote_weight`, and affected `poll_common_form.voter_page_count` values | Translated interpolation names such as `%{peso}`, `%{Gewicht}`, `%{premier}` | Original `%{weight}`, `%{first}`, `%{last}`, `%{total}` names | Interpolation names are code identifiers and must not be translated |
+| `config/locales/client.de.yml` | `membership_form.weight_helptext`, `weight_invalid`, `weight_invalid_decimal`; `poll_common_form.use_member_vote_weights`, `set_one_vote_weight` | Formal `Sie` imperatives and final full stops on single-sentence labels | Informal `du` imperatives without final full stops on labels | German UI uses the informal register and concise labels |
+| `config/locales/client.de.yml` | `poll_common_form.set_all` | `Alle Einstellungen` | `Alle festlegen` | The control sets all weights; the generated text meant “all settings” |
+| `config/locales/client.es.yml` | `membership_form.weight_helptext`, `weight_invalid`, `weight_invalid_decimal`; `poll_common_form.use_member_vote_weights`, `set_one_vote_weight` | Formal `usted` imperatives and final full stops on labels | Informal `tú` imperatives without final full stops on labels | Spanish UI uses the informal register |
+| `config/locales/client.fr.yml` | `membership_dropdown.edit_membership`, `membership_form.modal_title.membership` | `Modifier l'abonnement` | `Modifier l'adhésion` | Group membership is not a subscription |
+| `config/locales/client.fr.yml` | `membership_form.weight_helptext`, `weight_invalid`, `weight_invalid_decimal`; `poll_common_form.set_one_vote_weight` | Formal `vous` imperatives | Informal `tu` imperatives | French UI uses the informal register |
+| `config/locales/client.fr.yml` | `poll_common_votes_panel.stance`, `poll_common_form.set_all`, `use_member_vote_weights` | `Voter`, `Tout mettre en œuvre`, `Utiliser les coefficients de vote actuels des membres` | `Vote`, `Tout définir`, `Utilise les poids de vote actuels des membres` | The table needs a noun, and the controls set weights rather than implementing a plan |
+| `config/locales/client.nl_NL.yml` | `poll_common_form.vote_weight_for`, `set_all_vote_weights`, `use_member_vote_weights`, `set_one_vote_weight` | `%{naam}` and final full stops on single-sentence labels | `%{name}` and labels without final full stops | Preserve interpolation names and concise UI punctuation |
+| `config/locales/client.it.yml` | `poll_common_form.manage_voters`, `use_member_vote_weights`, `set_one_vote_weight` | Infinitives | Imperatives | These are actions in the interface |
+| `config/locales/client.pt_BR.yml` | `poll_common_form.use_member_vote_weights`, `set_one_vote_weight` | Infinitive and a final full stop | Imperative without final full stop | These are action labels |
+
 ## 2026-09-22 — Authentication method labels
 
 | File | Key | Before | After | Why it was wrong |

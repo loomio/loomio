@@ -22,14 +22,14 @@ zh_TW:
       title_placeholder: 制定我們的健康與安全政策
       process_name: 同意程序
       process_subtitle: 做出「可以安全嘗試」且沒有異議的決定。
-      process_introduction: <p>在您的提案沒有任何有意義的反對意見的情況下，就您需要做出的決定尋求同意，這樣您就可以立即做出“可以安全嘗試”的快速決定。</p><p>典型角色：</p><ul><li><p>提議者：提出需要做出決定的主題的人。</p></li><li><p>協調員：能夠幫助提案者有效完成工作的人。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 透過 Loomio 話題提出提案。</p><p>步驟 2： 透過 Sense 檢查促進一輪問題、反應和任何評論，以改善提案。</p><p>步驟 3. 修改提案並提出建議和意見。</p><p>步驟 4：詢問是否有人對修訂後的提案有明確的反對意見並提出同意提案。</p><p>步驟 5：整合有效的反對意見，創建每個人都同意「可以安全嘗試」的提案修訂版本，並在完成後說明決策結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">了解更多：同意流程。</a></p>
+      process_introduction: <p>在您的提案沒有任何有意義的反對意見的情況下，就您需要做出的決定尋求同意，這樣您就可以立即做出“可以安全嘗試”的快速決定。</p><p>典型角色：</p><ul><li><p>提議者：提出需要做出決定的主題的人。</p></li><li><p>協調員：能夠幫助提案者有效完成工作的人。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 透過 Loomio 話題提出提案。</p><p>步驟 2： 透過 Sense 檢查促進一輪問題、反應和任何評論，以改善提案。</p><p>步驟 3. 修改提案並提出建議和意見。</p><p>步驟 4：詢問是否有人對修訂後的提案有明確的反對意見並提出同意提案。</p><p>步驟 5：整合有效的反對意見，創建每個人都同意「可以安全嘗試」的提案修訂版本，並在完成後說明決策結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">了解更多：同意流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
       consent: 同意
     advice_process:
       title_placeholder: 尋求購買新電腦的建議
       process_name: 諮詢流程
       process_subtitle: 就您需要做出的決定尋求建議。
-      process_introduction: <p>根據受影響人員或具有專業知識的人員的建議做出決策，以便您可以為您的組織做出更好的決策。</p><p>典型角色：</p><ul><li><p>協助者：做出決定的人，或請某人協助的人。</p></li><li><p>顧問：受到您邀請的受影響人員或具有專業知識的人員。</p></li></ul><p>常見流程步驟：</p><p>第 1 步：在提出行動建議之前尋求意見以試探觀點。</p><p>步驟 2. 提出建議並尋求建議 - 執行建議提案。</p><p>步驟 3：考慮收到的建議，做出決定並通知提供建議的人 - 陳述結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">了解更多：建議流程。</a></p>
+      process_introduction: <p>根據受影響人員或具有專業知識的人員的建議做出決策，以便您可以為您的組織做出更好的決策。</p><p>典型角色：</p><ul><li><p>協助者：做出決定的人，或請某人協助的人。</p></li><li><p>顧問：受到您邀請的受影響人員或具有專業知識的人員。</p></li></ul><p>常見流程步驟：</p><p>第 1 步：在提出行動建議之前尋求意見以試探觀點。</p><p>步驟 2. 提出建議並尋求建議 - 執行建議提案。</p><p>步驟 3：考慮收到的建議，做出決定並通知提供建議的人 - 陳述結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">了解更多：建議流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">您需要什麼建議來幫助您做出正確的決定？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
       advice: 建議
     pass_a_resolution:
@@ -43,7 +43,7 @@ zh_TW:
       title_placeholder: 修改我們的組織章程
       process_name: 協商一致決定
       process_subtitle: 與所有相關人員達成集體協議。
-      process_introduction: <p>就需要共同做出的決定達成共識，達成滿足所有參與者的需求和關切的協議。</p><p>典型角色：</p><ul><li><p>指定一名協調員。 （在董事會會議上，這通常是主席。）</p></li><li><p>根據組織章程的規定，參與的法定人數或絕對多數成員。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 創造一個開放的空間來討論問題或提議的決策。</p><p>步驟 2. 測試共識並透過 Sense 檢查提案揭露異議。</p><p>步驟 3. 澄清任何要點，邀請建設性修改並修改提案。</p><p>步驟 4. 測試共識提案的一致性和任何剩餘的反對意見。</p><p>步驟 5. 將決定及其結果記錄在組織的正式會議記錄中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">了解更多：共識過程。</a></p>
+      process_introduction: <p>就需要共同做出的決定達成共識，達成滿足所有參與者的需求和關切的協議。</p><p>典型角色：</p><ul><li><p>指定一名協調員。 （在董事會會議上，這通常是主席。）</p></li><li><p>根據組織章程的規定，參與的法定人數或絕對多數成員。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 創造一個開放的空間來討論問題或提議的決策。</p><p>步驟 2. 測試共識並透過 Sense 檢查提案揭露異議。</p><p>步驟 3. 澄清任何要點，邀請建設性修改並修改提案。</p><p>步驟 4. 測試共識提案的一致性和任何剩餘的反對意見。</p><p>步驟 5. 將決定及其結果記錄在組織的正式會議記錄中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">了解更多：共識過程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator">誰是協調者？</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">需要滿足什麼條件才能做決定？</h3><h3 id=""></h3>
       consensus: 共識
     share_links_and_info:
@@ -58,7 +58,7 @@ zh_TW:
       process_name: 準備會議
       process_subtitle: 制定議程、發布董事會文件並組織行政事務，以便每個人都了解最新情況、了解情況並做好準備。
       description: <p><strong>會議焦點</strong></p><p></p><p data-text-align="start"><strong>議程大綱</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>上次會議的行動</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>與會者該如何準備會議？</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>會議文件清單</strong></p><p data-text-align="start"></p>
-      process_introduction: <p>從一開始就讓人們參與進來，圍繞最重要的主題規劃一次有效的會議，並更好地利用你們在一起的寶貴時間。</p><p>使用主題作為會議的容器，確定會議焦點、設定議程、找到合適的日期、發布關鍵文件和報告、開始討論議程項目、跟進行動和會議記錄。</p><p>這可以幫助每個人透過閱讀材料並思考討論的主題和要做出的決定來為會議做好準備。這樣，成員們更有可能到達現場並為會議做好準備。</p><p>請閱讀《Loomio 良好治理指南》中有關<a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>準備會議的</u></a>更多資訊。</p>
+      process_introduction: <p>從一開始就讓人們參與進來，圍繞最重要的主題規劃一次有效的會議，並更好地利用你們在一起的寶貴時間。</p><p>使用主題作為會議的容器，確定會議焦點、設定議程、找到合適的日期、發布關鍵文件和報告、開始討論議程項目、跟進行動和會議記錄。</p><p>這可以幫助每個人透過閱讀材料並思考討論的主題和要做出的決定來為會議做好準備。這樣，成員們更有可能到達現場並為會議做好準備。</p><p>請閱讀《Loomio 良好治理指南》中有關<a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/board_processes/meeting"><u>準備會議的</u></a>更多資訊。</p>
       meeting: 會議
     build_a_policy:
       title_placeholder: 修改我們的招募政策
@@ -499,7 +499,7 @@ zh_TW:
       disagree_prompt: 為什麼不同意？
     proposal:
       process_subtitle: 提出建議並做出決定
-      process_introduction: <p>經典的 Loomio 提案可協助您做出決策，將討論轉化為明確的結果。</p><p>建議一個行動方案並邀請人們透過投票同意、棄權或不同意來回應。</p><p>人們投票時，可以給出投票理由。你可以看到其他人對此問題的立場和原因。</p><p>透過這種方式，您可以使用提案來促使人們做出回應，發現新的資訊並建立共識 - 以幫助您的團隊做出更好、更明智的決策。</p><p>提案和相關討論會形成關於決策如何產生的記錄。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>閱讀更多有關在簡單決策過程中使用經典 Loomio 提案的資訊</u></a>。</p>
+      process_introduction: <p>經典的 Loomio 提案可協助您做出決策，將討論轉化為明確的結果。</p><p>建議一個行動方案並邀請人們透過投票同意、棄權或不同意來回應。</p><p>人們投票時，可以給出投票理由。你可以看到其他人對此問題的立場和原因。</p><p>透過這種方式，您可以使用提案來促使人們做出回應，發現新的資訊並建立共識 - 以幫助您的團隊做出更好、更明智的決策。</p><p>提案和相關討論會形成關於決策如何產生的記錄。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>閱讀更多有關在簡單決策過程中使用經典 Loomio 提案的資訊</u></a>。</p>
       title: 認可新的品牌理念
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>為了使該提案獲得通過，我們需要大多數成員投票同意。</p><p>如果您不同意，請說明原因以及需要進行哪些更改才能同意。</p>
       agree: 同意
@@ -513,7 +513,7 @@ zh_TW:
       abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     advice:
       process_subtitle: 就你需要做的決定尋求建議
-      process_introduction: <p>在您需要做出決定時尋求建議，聽取受影響的人或具有專業知識的人的建議，這樣您就可以為您的組織做出更好的決定。</p><ul><li><p>建議可以幫助您為您的組織做出更好的決策。</p></li><li><p>培養關係、學習機會和多元投入。</p></li><li><p>激發主動性和創造性，工作更愉快。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>閱讀有關建議流程的更多資訊</u></a>。</p>
+      process_introduction: <p>在您需要做出決定時尋求建議，聽取受影響的人或具有專業知識的人的建議，這樣您就可以為您的組織做出更好的決定。</p><ul><li><p>建議可以幫助您為您的組織做出更好的決策。</p></li><li><p>培養關係、學習機會和多元投入。</p></li><li><p>激發主動性和創造性，工作更愉快。</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>閱讀有關建議流程的更多資訊</u></a>。</p>
       title: 幫助 Takashi 購買新電腦
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>您會向人們尋求什麼建議來幫助您做出正確的決定？</strong></h3><p></p><p>我正在尋求您的意見，以幫助我為我們的組織做出正確的決定。</p>
       agree: 同意
@@ -525,7 +525,7 @@ zh_TW:
       outcome_statement: "<p>感謝您參與我的建議！</p>"
     consent:
       process_subtitle: 做出「可以安全嘗試」的決定，且沒有異議
-      process_introduction: <p>在您需要做出的決定上尋求同意，如果對您的提議沒有任何有意義的反對意見，那麼您就可以為您的組織快速做出「可以安全嘗試」的決定。</p><ul><li><p>力求做出「夠好」的決定</p></li><li><p>聽取多方意見，制定可行的提案</p></li><li><p>詢問是否有人提出合理的反對意見</p></li><li><p>修改提案以解決異議</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>
+      process_introduction: <p>在您需要做出的決定上尋求同意，如果對您的提議沒有任何有意義的反對意見，那麼您就可以為您的組織快速做出「可以安全嘗試」的決定。</p><ul><li><p>力求做出「夠好」的決定</p></li><li><p>聽取多方意見，制定可行的提案</p></li><li><p>詢問是否有人提出合理的反對意見</p></li><li><p>修改提案以解決異議</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">閱讀有關同意流程的更多資訊</a>。</p>
       title: 聘請 Chloe 擔任設計職位
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>您在這項提案中對人們有什麼要求？</strong></h3><p></p><p>如果您有異議，請說明原因並提出修改建議以確保其安全。</p><p>請記住，我們正在尋求對「足夠好」且「可以安全嘗試」的決定的同意，以便我們可以為我們的組織做出正確的決定。</p>
       consent: 同意
@@ -540,7 +540,7 @@ zh_TW:
       details_v2: "<h3><strong>你需要做什麼決定？</strong></h3><p></p><h3><strong>為什麼這很重要？</strong></h3><p></p><h3><strong>這份提案中，你對人們提出了什麼要求？</strong></h3><p></p><p>我們並不追求完美－如果方案夠好且安全可行，請同意。如果您有異議，請說明需要修改哪些地方才能使其可行。</p>"
     consensus:
       process_subtitle: 與所有相關人員達成集體協議
-      process_introduction: <p>為您需要做出的決定建立共識，以達成滿足所有參與者的需求和關切的協議。</p><ul><li><p>共同討論並制定提案</p></li><li><p>包容並尊重所有相關人員</p></li><li><p>尋求大多數人的同意</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">閱讀有關共識過程的更多資訊</a>。</p>
+      process_introduction: <p>為您需要做出的決定建立共識，以達成滿足所有參與者的需求和關切的協議。</p><ul><li><p>共同討論並制定提案</p></li><li><p>包容並尊重所有相關人員</p></li><li><p>尋求大多數人的同意</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">閱讀有關共識過程的更多資訊</a>。</p>
       title: 認可新的品牌理念
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>為了使該提案獲得通過，我們需要大多數成員投票同意。</p><p>如果您不同意，請說明原因以及需要進行哪些更改才能同意。</p>
       outcome_statement: "<p>感謝您參與共識過程。</p>"
@@ -560,14 +560,14 @@ zh_TW:
       abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     question_round:
       process_subtitle: 邀請澄清問題以幫助人們理解提案
-      process_introduction: <p>提問環節是人們就提案提出澄清問題的機會，以便每個人在表達自己的想法之前了解提案。</p><p> Loomio 問答環節是一項特殊提案，沒有投票選項。它允許參與者在您設定的時間內提問。</p><p>質詢環節通常作為同意流程的步驟。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>
+      process_introduction: <p>提問環節是人們就提案提出澄清問題的機會，以便每個人在表達自己的想法之前了解提案。</p><p> Loomio 問答環節是一項特殊提案，沒有投票選項。它允許參與者在您設定的時間內提問。</p><p>質詢環節通常作為同意流程的步驟。</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">閱讀有關同意流程的更多資訊</a>。</p>
       title: 您對健康和安全政策有什麼疑問？
       details: <h3 id="what-are-you-proposing"><strong>你有什麼建議？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>這是一個提問環節，歡迎您提出澄清問題。</p><p>您需要了解什麼才能理解該提案？</p><p>請在提問環節結束前作出答覆。</p>
       reason_prompt: 您需要了解什麼才能理解該提案？
       outcome_statement: "<p>感謝您在本輪提交問題</p>"
     sense_check:
       process_subtitle: 尋求回饋、問題和疑慮
-      process_introduction: <p>Sense 檢查提案是獲得回饋、提出問題和發現疑慮的好方法。它有助於在做出決策之前澄清和改進提案。</p><p>感知檢查可以讓人們了解提案正在形成，並鼓勵他們參與。這是一個傾聽人們意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，從而做出更好的決策。</p><p>在同意流程中使用 Sense 檢查提案來徵求反應和評論以改進提案，並在共識流程中使用 Sense 檢查提案來測試共識。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>閱讀有關在簡單決策過程中使用感知檢查的更多資訊</u></a><span>。</span></p>
+      process_introduction: <p>Sense 檢查提案是獲得回饋、提出問題和發現疑慮的好方法。它有助於在做出決策之前澄清和改進提案。</p><p>感知檢查可以讓人們了解提案正在形成，並鼓勵他們參與。這是一個傾聽人們意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，從而做出更好的決策。</p><p>在同意流程中使用 Sense 檢查提案來徵求反應和評論以改進提案，並在共識流程中使用 Sense 檢查提案來測試共識。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>閱讀有關在簡單決策過程中使用感知檢查的更多資訊</u></a><span>。</span></p>
       title: 您對新的品牌理念有何感想？
       details: <h3 id="what-are-you-proposing"><strong>你有什麼建議？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>你對這個提案有什麼看法？請留下評論或提出改進建議。</p><p>這次 Sense 檢查為您提供了一個提供意見和貢獻的機會，以幫助我們做出更好的決定。</p>
       outcome_statement: "<p>感謝您參與感覺檢查。</p>"
@@ -624,42 +624,42 @@ zh_TW:
       veto_prompt: 為什麼阻止這項提案？你需要做出哪些改變才能支持它？
     simple_poll:
       process_subtitle: 找到最受歡迎的選項
-      process_introduction: <p>在做出決定之前，先找出人們最關心的選項。</p><p>簡單的民意調查可以幫助您找到最受歡迎的選項或單選或多選選項。</p><p>在詳細資訊欄位中寫下有關選項的任何詳細信息，然後輸入選項的名稱並點擊 + 進行新增。</p><p>設定投票者可選擇的<strong>最小選項數</strong>和<strong>最大選項數</strong>。對於單選投票，最大選項數保留為 1。</p><p>您可以使用每個選項旁邊的鉛筆圖示來添加選項的<strong>含義</strong>，進一步闡述該選項以幫助人們投票。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">閱讀更多有關簡單民意調查的資訊</a>。</p>
+      process_introduction: <p>在做出決定之前，先找出人們最關心的選項。</p><p>簡單的民意調查可以幫助您找到最受歡迎的選項或單選或多選選項。</p><p>在詳細資訊欄位中寫下有關選項的任何詳細信息，然後輸入選項的名稱並點擊 + 進行新增。</p><p>設定投票者可選擇的<strong>最小選項數</strong>和<strong>最大選項數</strong>。對於單選投票，最大選項數保留為 1。</p><p>您可以使用每個選項旁邊的鉛筆圖示來添加選項的<strong>含義</strong>，進一步闡述該選項以幫助人們投票。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">閱讀更多有關簡單民意調查的資訊</a>。</p>
       title: 我們的策略方向重點應該放在哪裡？
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
-      process_introduction_v2: <p><strong>「選擇」功能</strong>可協助您找到最受歡迎的選項。參與者從清單中選擇—您可以設定他們可以選擇一個或多個選項。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">閱讀更多關於「選擇」的資訊</a>。</p>
+      process_introduction_v2: <p><strong>「選擇」功能</strong>可協助您找到最受歡迎的選項。參與者從清單中選擇—您可以設定他們可以選擇一個或多個選項。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">閱讀更多關於「選擇」的資訊</a>。</p>
     score_poll:
       process_subtitle: 衡量每個選項的支持程度
-      process_introduction: <p>當您想調查人們對每個選項的願望、偏好或興趣時，請使用評分調查。</p><p><span>要求參與者評估每個選項並沿著刻度移動滑桿來分配分數。</span></p><p><span>結果以圖形方式顯示，並附有表格，顯示每個選項的總分、平均分數和投票人數。</span></p><p>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於分數投票以減少任何投票偏見。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">閱讀有關分數調查的更多資訊</a>。</p>
+      process_introduction: <p>當您想調查人們對每個選項的願望、偏好或興趣時，請使用評分調查。</p><p><span>要求參與者評估每個選項並沿著刻度移動滑桿來分配分數。</span></p><p><span>結果以圖形方式顯示，並附有表格，顯示每個選項的總分、平均分數和投票人數。</span></p><p>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於分數投票以減少任何投票偏見。</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">閱讀有關分數調查的更多資訊</a>。</p>
       title: 評估我們組織中的決策方式
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
       process_subtitle_v2: 衡量每項選擇的支持程度
-      process_introduction_v2: <p><strong>評分功能</strong>可以衡量群體對每個選項的支持程度。參與者透過滑動標尺為每個選項評分來評估，因此您不僅可以了解人們的偏好，還可以了解他們的偏好程度。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">閱讀更多關於評分投票的資訊</a>。</p>
+      process_introduction_v2: <p><strong>評分功能</strong>可以衡量群體對每個選項的支持程度。參與者透過滑動標尺為每個選項評分來評估，因此您不僅可以了解人們的偏好，還可以了解他們的偏好程度。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">閱讀更多關於評分投票的資訊</a>。</p>
     dot_vote:
       process_subtitle: 分配預算點數以揭示優先事項
-      process_introduction: <p>對於需要將有限資源分配給多個選項的團體來說，點投票非常有用。它超越了簡單的投票，幫助參與者認識到選擇選項時的限制。</p><p>每位參與者都會獲得一定數量的點數。具體數量由你決定。</p><p>他們將圓點放在自己喜歡的選項旁邊。參與者可以將所有圓點放在一個選項上，也可以分散放在多個選項上。</p><p>當參與者分配點數時，他們可能會超出點數預算限制，因此鼓勵他們仔細考慮如何花費點數。</p><p>點數最多的選項「獲勝」。結果表提供額外數據，助您分析結果。</p><ul><li><p> % 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li><li><p>選民</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">閱讀有關 Dot vote 的更多資訊</a>。</p>
+      process_introduction: <p>對於需要將有限資源分配給多個選項的團體來說，點投票非常有用。它超越了簡單的投票，幫助參與者認識到選擇選項時的限制。</p><p>每位參與者都會獲得一定數量的點數。具體數量由你決定。</p><p>他們將圓點放在自己喜歡的選項旁邊。參與者可以將所有圓點放在一個選項上，也可以分散放在多個選項上。</p><p>當參與者分配點數時，他們可能會超出點數預算限制，因此鼓勵他們仔細考慮如何花費點數。</p><p>點數最多的選項「獲勝」。結果表提供額外數據，助您分析結果。</p><ul><li><p> % 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li><li><p>選民</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">閱讀有關 Dot vote 的更多資訊</a>。</p>
       title: 選擇會議主題
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>在本次投票中，您有 8 個點的預算，可以分配給您喜歡的選項。您可以將所有點放在一個選項上，也可以分散放置。</p>
       process_subtitle_v2: 當需要權衡取捨時，要明確優先事項。
-      process_introduction_v2: <p><strong>「分配」功能</strong>可以幫助您了解團隊在權衡取捨時的優先事項。每位參與者都會獲得一定數量的點數，用於分配到各個選項上——他們可以全力投入一個選項，也可以將點數分散到多個選項中。由於點數有限，因此每一分的花費都真實地反映了優先順序。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">閱讀更多關於分配的資訊</a>。</p>
+      process_introduction_v2: <p><strong>「分配」功能</strong>可以幫助您了解團隊在權衡取捨時的優先事項。每位參與者都會獲得一定數量的點數，用於分配到各個選項上——他們可以全力投入一個選項，也可以將點數分散到多個選項中。由於點數有限，因此每一分的花費都真實地反映了優先順序。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">閱讀更多關於分配的資訊</a>。</p>
     ranked_choice:
       process_subtitle: 理解選項的有序偏好
-      process_introduction: <p>當您有大量選擇或正在舉行選舉時，排序選擇很有用。</p><p>此投票範本提供了一系列選項，供人們按照自己喜歡的順序進行投票。</p><p>您可以設定投票者獲得的選擇數量。</p><p><span>投票者按偏好順序拖放選項（#1 是您最喜歡的選項）。</span></p><p><span>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於排名</span>選擇以減少投票偏見。</p><p>結果按排序順序顯示。結果表提供了額外的數據，以幫助您分析結果。</p><ul><li><p>秩</p></li><li><p>% 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">閱讀有關排序選擇的更多資訊</a>。</p>
+      process_introduction: <p>當您有大量選擇或正在舉行選舉時，排序選擇很有用。</p><p>此投票範本提供了一系列選項，供人們按照自己喜歡的順序進行投票。</p><p>您可以設定投票者獲得的選擇數量。</p><p><span>投票者按偏好順序拖放選項（#1 是您最喜歡的選項）。</span></p><p><span>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於排名</span>選擇以減少投票偏見。</p><p>結果按排序順序顯示。結果表提供了額外的數據，以幫助您分析結果。</p><ul><li><p>秩</p></li><li><p>% 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li></ul><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">閱讀有關排序選擇的更多資訊</a>。</p>
       title: 選舉董事進入治理委員會
       details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>按您的偏好順序對選項進行投票。結果中排名第一的選項獲勝。</p>
       process_subtitle_v2: 找出該群體的偏好順序
-      process_introduction_v2: <p><strong>排名</strong>顯示了小組的偏好順序。參與者透過拖放選項來按偏好程度從高到低排序，結果顯示了總體排名。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">了解更多關於排名的資訊</a>。</p>
+      process_introduction_v2: <p><strong>排名</strong>顯示了小組的偏好順序。參與者透過拖放選項來按偏好程度從高到低排序，結果顯示了總體排名。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">了解更多關於排名的資訊</a>。</p>
     time_poll:
       process_subtitle: 尋找人們何時有空見面
-      process_introduction: <p><span>節省安排會議或活動日期的時間。</span></p><p>時間調查可以輕鬆查看每個人的空閒時間並找到最佳時間。</p><p>為您的“時間”投票添加標題和詳細資訊。輸入您所在時區的日期和時間選項清單。</p><p>設定時段時，請考慮不同時區的人員。參與者將看到以他們所在時區為準的時間。</p><p>設定會議時長。</p><p>當時間投票結束時，設定最佳時間結果以及會議的任何指示。</p><p> <span>Loomio 將在結果通知電子郵件中附上日曆邀請，以便參與者可以將其添加到他們的日曆中。</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">閱讀更多有關“時間民意調查”的資訊</a>。</p>
+      process_introduction: <p><span>節省安排會議或活動日期的時間。</span></p><p>時間調查可以輕鬆查看每個人的空閒時間並找到最佳時間。</p><p>為您的“時間”投票添加標題和詳細資訊。輸入您所在時區的日期和時間選項清單。</p><p>設定時段時，請考慮不同時區的人員。參與者將看到以他們所在時區為準的時間。</p><p>設定會議時長。</p><p>當時間投票結束時，設定最佳時間結果以及會議的任何指示。</p><p> <span>Loomio 將在結果通知電子郵件中附上日曆邀請，以便參與者可以將其添加到他們的日曆中。</span></p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">閱讀更多有關“時間民意調查”的資訊</a>。</p>
       title: 我們來定個下次見面的日期吧
       details: "<p><strong>會議或活動是什麼？</strong></p><p></p><p><strong>為什麼這很重要？</strong></p><p></p><p><strong>你要求人們做什麼？</strong></p><p></p><p><span>使用綠色「豎起大拇指」圖示標記您可用的時間段，或在不可用時保留紅色「豎起大拇指」圖示。</span></p><p><span>使用“拇指向側面”圖示表示“如果需要”您可以隨時聯繫。</span></p>"
       reason_prompt: 您能說些什麼來幫助組織者找到合適的時間嗎？
       process_subtitle_v2: 尋找人們的空閒時間
-      process_introduction_v2: <p><strong>時間投票</strong>可以幫助您了解人們的空閒時間。添加您建議的時間，參與者將在其所在時區看到這些時間。投票結束後，設定結果，Loomio 會向所有人發送日曆邀請。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">閱讀更多關於《時代》雜誌民調的內容</a>。</p>
+      process_introduction_v2: <p><strong>時間投票</strong>可以幫助您了解人們的空閒時間。添加您建議的時間，參與者將在其所在時區看到這些時間。投票結束後，設定結果，Loomio 會向所有人發送日曆邀請。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">閱讀更多關於《時代》雜誌民調的內容</a>。</p>
     opt_in:
       process_subtitle: 尋找志工或尋求參與者
-      process_introduction: <p>使用選擇加入邀請人們加入團隊、委員會或工作小組，或參加活動。</p><p> 「選擇加入」有兩個投票選項：接受或拒絕。</p><p>您可以定義您正在尋找的目標人數，例如 3 個人加入您的工作小組。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">閱讀更多有關選擇加入的資訊</a>。</p>
+      process_introduction: <p>使用選擇加入邀請人們加入團隊、委員會或工作小組，或參加活動。</p><p> 「選擇加入」有兩個投票選項：接受或拒絕。</p><p>您可以定義您正在尋找的目標人數，例如 3 個人加入您的工作小組。</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">閱讀更多有關選擇加入的資訊</a>。</p>
       title: 工作小組起草我們的新永續發展政策
       details: "<p><strong>您邀請人們參加哪個團隊、工作小組或活動？</strong></p><p></p><p><strong>為什麼這很重要？</strong></p><p></p><p><strong>你要求人們做什麼？</strong></p><p></p><p>選擇「接受」即可參與！</p>"
       accept_meaning: 我願意參加
@@ -689,7 +689,7 @@ zh_TW:
       outcome_statement: "<p>感謝您參與此多數投票。</p>"
     stv:
       process_subtitle: 按比例選出多位得獎者。
-      process_introduction: <p>單記可轉移投票制（STV）是一種適用於多席次選舉的比例代表制投票方式。選民依偏好順序對候選人進行排序。達到規定得票數的候選人當選，剩餘或被淘汰的選票將轉入下一輪投票。</p><p>配置席位數、計票方式（蘇格蘭式或米克式）和配額類型（德魯普式或黑爾式）。結果會逐輪顯示選票轉移。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">閱讀更多關於單記可轉移投票制（STV）選舉的資訊</a>。</p>
+      process_introduction: <p>單記可轉移投票制（STV）是一種適用於多席次選舉的比例代表制投票方式。選民依偏好順序對候選人進行排序。達到規定得票數的候選人當選，剩餘或被淘汰的選票將轉入下一輪投票。</p><p>配置席位數、計票方式（蘇格蘭式或米克式）和配額類型（德魯普式或黑爾式）。結果會逐輪顯示選票轉移。</p><p><a target="_blank" href="/docs/en/user_manual/polls/stv">閱讀更多關於單記可轉移投票制（STV）選舉的資訊</a>。</p>
       title: 選舉委員會成員
       details: <h3 id="what-is-this-election-about"><strong>這次選舉的意義何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填滿了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候選人有哪些？</strong></h3><p></p><p>請透過拖曳候選人來投票，按您喜歡的順序排列。排名第一的候選人是您最喜歡的。您可以對任意數量的候選人進行排名。</p>
   forward_mailer:

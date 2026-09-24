@@ -7,6 +7,7 @@ import Records from '@/shared/services/records';
 export default class MembershipModel extends BaseModel {
   static singular = 'membership';
   static plural = 'memberships';
+  static serializableAttributes = ['title'];
   static indices = ['userId', 'groupId'];
   static uniqueIndices = ['id'];
   static searchableFields = ['userName', 'userUsername'];

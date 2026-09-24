@@ -55,11 +55,13 @@ Use the pencil icon alongside the voting option to open the edit modal:
 
 ![](proposal_edit_option.png)
 
-### Opening time
+### Duration
 
 By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
 
 This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
+
+For example, if your group has several decisions to vote on at an upcoming assembly, you can prepare the polls and add voters in advance, then schedule them all to open when the voting period begins. People can see the polls before they open, but cannot vote early.
 
 When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
 

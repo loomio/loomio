@@ -48,6 +48,7 @@ class PermittedParams < Struct.new(:params)
       :notify_on_closing_soon,
       :notify_on_open,
       :specified_voters_only,
+      :vote_weights_enabled,
       :allow_comments,
       :allow_reactions,
       :recipient_audience,
@@ -182,7 +183,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_attributes
-    [:title, :volume_email, :volume_push, :apply_to_all, :set_default]
+    [:title, :weight, :volume_email, :volume_push, :apply_to_all, :set_default]
   end
 
   def topic_reader_attributes
@@ -195,7 +196,7 @@ class PermittedParams < Struct.new(:params)
 
   def group_attributes
     [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
-     :members_can_add_members, :members_can_add_guests, :members_can_announce,
+     :members_can_add_members, :members_can_add_guests, :members_can_announce, :vote_weights_allowed,
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,

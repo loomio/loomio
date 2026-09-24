@@ -768,6 +768,7 @@ fi:
     revoke_admin: Peruuta järjestelmänvalvoja
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
+    edit_membership: Muokkaa jäsenyyttä
   notification_models:
     comment: kommentoida sisään
     poll: 'kysely:'
@@ -1498,6 +1499,8 @@ fi:
     members_can_create_tags_help: Salli jäsenten luoda uusia tunnisteita tunnisteita lisätessään tunnisteita keskusteluketjuihin ja kyselyihin
     non_members_can_start_discussions: Muutkin kuin jäsenet voivat aloittaa keskusteluja
     non_members_can_start_discussions_help: Salli muiden kuin jäsenten aloittaa keskustelun jostakin tämän ryhmän mallista
+    vote_weights_allowed: Salli äänipainotukset
+    vote_weights_allowed_help: Anna joidenkin äänten olla painavampia kuin toisten
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1596,11 +1599,17 @@ fi:
   membership_form:
     modal_title:
       group: Aseta otsikko
+      membership: Muokkaa jäsenyyttä
     title_helptext:
       group: Tämä otsikko näkyy käyttäjän %{name} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
     title_label: otsikko
     title_placeholder: Esim 'koordinaattori' tai 'fasilitaattori'
     updated: Jäsennimike päivitetty
+    membership_updated: Jäsenyys päivitetty
+    weight_label: Äänestyspaino
+    weight_helptext: Tämä arvo kopioidaan jäsenen ääneen, kun hänet lisätään uuteen kyselyyn. Sen muuttaminen ei vaikuta olemassa oleviin kyselyihin. Aseta arvoksi 0, jos haluat jäsenen äänestävän lisäämättä pisteitä.
+    weight_invalid: Syötä kokonaisluku väliltä 0–1 000 000
+    weight_invalid_decimal: Syötä luku väliltä 0–1 000 000, enintään kolmen desimaalin tarkkuudella.
   user_name_modal:
     user_name_updated: Käyttäjätunnus päivitetty
     set_user_name: Aseta käyttäjänimi
@@ -2098,6 +2107,10 @@ fi:
     status: Status
     your_vote_is_requested: Ääntäsi pyydetään
     browse_example_make_a_copy_hint: "<b>Luo uusi kyselymalli napsauttamalla kopiointikuvaketta</b> ja käytä esimerkkiä lähtökohtana."
+    weighted_score: Pisteet
+    equal_weight_score: Tasapainopisteet
+    assigned_weight_score: Annettu painopistemäärä
+    view_votes: Näytä äänet
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2166,6 +2179,9 @@ fi:
     delegate: Delegoida
     delegate_popover: Edustaja on ryhmän äänioikeutettu jäsen
     delegates: Edustajat
+    edit_vote_weights: Muokkaa äänimääriä
+    vote_weight_value: Paino %{weight}
+    vote_weights_are_defaults: Nämä oletusarvoiset painotukset koskevat uusia ääniä. Muutokset tässä eivät vaikuta jo annettuihin ääniin.
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit
@@ -2212,6 +2228,7 @@ fi:
     legacy_vote_reasons: Aiemmin annettujen äänten perustelut
     legacy_vote_reasons_description: Vanhaa anonyymiä äänestysmuotoa käyttäen annettujen äänten perustelut näytetään pelkkänä tekstinä
     anonymous_voting_participant_notice: Äänestäminen on anonyymiä. Et voi tarkastella tai muuttaa ääntäsi sen lähettämisen jälkeen. Tulokset eivät ole saatavilla ennen äänestyksen päättymistä.
+    variable_vote_weights_explanation: Tässä kyselyssä käytetään vaihtelevia äänipainotuksia, jolloin yhden henkilön ääni voi vaikuttaa tulokseen enemmän kuin toisen henkilön äänipainotuksen mukaisesti.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2280,6 +2297,12 @@ fi:
     unredact_reason_helptext: Syy, miksi teksti ja liitteet tulevat taas näkyviin
     unredact_reason_confirm: Palautuksen syy
     unredact_reason_success: Äänestyssyy palautettu
+    all_voters: Kaikki äänestäjät
+    weight: Paino
+    vote_weight_column: Äänestyspaino
+    stance: Äänestää
+    participation_records_restricted: Osallistumistiedot ovat vaalikoordinaattoreiden saatavilla
+    vote_weight: Paino %{weight}
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut
@@ -2922,6 +2945,27 @@ fi:
     stance_reason_required_when_disagreeing: Pakollinen, kun on eri mieltä
     stance_reason_required_for_disagree_or_block: Pakollinen eri mieltä olemisen tai estämisen yhteydessä
     stance_reason_required_for_block: Pakollinen estettäessä
+    voters: Äänestäjät
+    manage_voters: Hallitse äänestäjiä
+    search_voters: Hae äänestäjiä
+    remove_voter: Poista äänestäjä
+    voter_page_count: "%{first}–%{last} / %{total}"
+    vote_weights: Äänipainot
+    use_vote_weights: Käytä äänipainotuksia
+    vote_weights_off_warning: Äänipainotusten poistaminen käytöstä asettaa jokaisen äänestäjän painoarvoon 1 ja poistaa kyselykohtaiset painotukset.
+    vote_weights_on_group: Äänipainotusten päälle kytkeminen kopioi nykyisen ryhmän jäsenten painotukset. Muut äänestäjät saavat painotuksen 1.
+    vote_weights_on_direct: Äänipainotusten päälle kytkeminen asettaa jokaisen äänestäjän painoarvoon 1
+    vote_weight_for: Äänipaino käyttäjälle %{name}
+    save_vote_weights: Tallenna äänipainotukset
+    vote_weights_updated: Äänipainotukset päivitetty
+    weight_for_all: Paino kaikille
+    set_all_vote_weights: Aseta kaikki painot
+    set_all: Aseta kaikki
+    use_member_vote_weights: Käytä nykyisiä jäsenten äänipainotuksia
+    set_one_vote_weight: Aseta jokaiselle äänestäjälle yksi painoarvo
+    member_vote_weights_hint: Äänestäjät, joilla ei ole nykyistä ryhmän jäsenyyttä, saavat painoarvon 1
+    vote_weights_description: Anna jokaiselle äänestäjälle painoarvo, jotta jotkut äänet lasketaan enemmän kuin toiset. Tulokset näyttävät sekä äänestäjien lukumäärän että painotetun pistemäärän.
+    issued_vote_weights_will_change: Jo annettujen äänten painotukset muuttuvat.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     verify_participants: Vahvista osallistujat
@@ -2936,6 +2980,7 @@ fi:
     participation_records_explanation: Tämä näyttää, ketkä olivat äänioikeutettuja ja äänestivätkö he. Se ei näytä, miten kukaan äänesti.
     voted: Äänesti
     not_voted: Ei äänestänyt
+    email_addresses_for_group_admins: Sähköpostiosoitteet näkyvät vain ryhmän ylläpitäjille ihmisten erottamiseksi toisistaan.
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:

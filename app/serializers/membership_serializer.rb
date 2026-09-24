@@ -7,6 +7,7 @@ class MembershipSerializer < ApplicationSerializer
              :volume_push,
              :admin,
              :delegate,
+             :weight,
              :experiences,
              :title,
              :created_at,
@@ -26,6 +27,15 @@ class MembershipSerializer < ApplicationSerializer
       object.inviter_id == scope[:current_user_id] ||
       Array(scope[:membership_email_group_ids]).include?(object.group_id)
     )
+  end
+
+  def include_weight?
+    scope[:current_user_id] == object.user_id ||
+      Array(scope[:membership_email_group_ids]).include?(object.group_id)
+  end
+
+  def weight
+    HasVoteWeight.format(object.weight)
   end
 
   def include_volume_email?

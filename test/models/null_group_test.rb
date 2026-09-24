@@ -11,6 +11,7 @@ class NullGroupTest < ActiveSupport::TestCase
     assert_empty group.memberships
     assert_equal false, group.present?
     assert_nil group.presence
+    assert_equal false, group.vote_weights_allowed?
   end
 
   test "self or parent image urls can be called without explicit size" do

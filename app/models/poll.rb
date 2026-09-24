@@ -232,6 +232,7 @@ class Poll < ApplicationRecord
   validate :detached_anonymous_invariants
   validate :voting_system_cannot_change_after_opening
   validate :detached_configuration_cannot_change_after_ballot
+  validate :vote_weights_enabled_is_supported
   validate :score_bounds_are_valid, if: :score_bounds_validation_required?
   validate :title_if_not_discarded
 
@@ -252,11 +253,39 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :notify_on_open,
+    :vote_weights_enabled,
     :poll_option_names,
     :hide_results,
     :attachments]
 
   after_commit :update_group_counter_caches
+  after_update :synchronize_stance_weights_after_vote_weights_change
+
+  # Switching vote weights resets issued stances, including cast votes, so
+  # stored weights and poll results reflect the current voting mode.
+  def synchronize_stance_weights_after_vote_weights_change
+    return unless saved_change_to_vote_weights_enabled?
+
+    unless vote_weights_enabled?
+      stances.where.not(weight: 1).update_all(weight: 1)
+      return
+    end
+
+    reset_stance_weights_from_memberships!
+  end
+
+  # Copy current group defaults into issued votes in one statement. Voters
+  # without an active membership, including direct-poll voters, receive 1.
+  def reset_stance_weights_from_memberships!
+    return stances.latest.update_all(weight: 1) unless group_id
+
+    member_weight = Membership.active.where(group_id: group_id)
+      .where('memberships.user_id = stances.participant_id')
+      .select(:weight)
+      .limit(1)
+    stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
+  end
+
   def update_group_counter_caches
     group = topic.group
     return unless group.id
@@ -303,7 +332,7 @@ class Poll < ApplicationRecord
   end
 
   def result_columns
-    case poll_type
+    columns = case poll_type
     when 'proposal'
       %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
@@ -329,6 +358,53 @@ class Poll < ApplicationRecord
     else
       []
     end
+
+    return columns unless weighted_voting?
+
+    columns = columns.dup
+    if one_point_choices?
+      voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
+      columns.insert(columns.index(voter_column) + 1, 'score')
+      return columns
+    end
+
+    columns.delete('score')
+    columns.insert(columns.index('name') + 1, 'unweighted_score', 'score')
+    voter_column = columns.include?('votes') ? 'votes' : 'voter_count'
+    columns.insert(columns.index('score') + 1, voter_column) unless columns.include?(voter_column)
+    columns
+  end
+
+  def vote_weights_supported?
+    !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled? || group.blank? || group.vote_weights_allowed?)
+  end
+
+  def vote_weights_active?
+    vote_weights_enabled? && vote_weights_supported?
+  end
+
+  def weighted_voting?
+    vote_weights_active?
+  end
+
+  def member_vote_weights_by_user_id(user_ids)
+    return {} unless group_id
+
+    Membership.active.where(group_id: group_id, user_id: user_ids).pluck(:user_id, :weight).to_h
+  end
+
+  def one_point_choices?
+    min_score == 1 && max_score == 1
+  end
+
+  def result_score_heading_key
+    return 'poll_ranked_choice_form.points' unless weighted_voting?
+
+    'poll_common.weighted_score'
+  end
+
+  def result_votes_heading_key
+    weighted_voting? ? 'membership_card.voters' : 'poll_common.votes'
   end
 
   def results
@@ -456,14 +532,14 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    stance_counts.sum
+    poll_options.sum(:total_score)
   end
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
     if detached_anonymous?
       return update_columns(
-        stance_counts: poll_options.map(&:total_score),
+        stance_counts: poll_options.map { |option| option.total_score.to_f },
         voters_count: anonymous_poll_voters.count,
         undecided_voters_count: anonymous_poll_voters.where(ballot_submitted: false).count,
         none_of_the_above_count: anonymous_ballots.where(none_of_the_above: true).count,
@@ -472,7 +548,7 @@ class Poll < ApplicationRecord
     end
 
     update_columns(
-      stance_counts: poll_options.map(&:total_score), # should rename to option scores
+      stance_counts: poll_options.map { |option| option.total_score.to_f }, # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
       none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
@@ -620,6 +696,14 @@ class Poll < ApplicationRecord
       errors.add(:base, :anonymous_ballot_configuration_frozen)
     end
   end
+
+  def vote_weights_enabled_is_supported
+    return unless vote_weights_enabled?
+    return if !anonymous? && !%w[stv meeting].include?(poll_type) && (vote_weights_enabled_in_database || group.blank? || group.vote_weights_allowed?)
+
+    errors.add(:vote_weights_enabled, :invalid)
+  end
+
 
   def closes_in_future
     return if closed_at

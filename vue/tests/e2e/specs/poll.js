@@ -321,7 +321,7 @@ module.exports = {
     page.click('.action-dock__button--close_poll')
     page.click('.confirm-modal__submit')
     page.expectText('.poll-common-action-panel__anonymous-closed-message', 'Votes are anonymous')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
+    page.expectElement('.action-dock__button--view_votes')
     page.expectNoElement('.confirm-modal', 5000)
     page.pause(500)
 
@@ -332,17 +332,26 @@ module.exports = {
     page.expectNoText('.v-autocomplete__content', 'Undecided voters')
   },
 
-  'shows_migrated_legacy_anonymous_vote_reasons_without_voter_names': (test) => {
+  'shows_migrated_legacy_anonymous_participation_without_vote_reasons': (test) => {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_legacy_anonymous&poll_type=proposal')
-    test.expect.element('.poll-common-chart-panel__view-all-votes').to.not.be.present
-    page.click('.poll-common-chart-panel__view-legacy-vote-reasons')
-    page.expectText('.poll-common-votes-panel', 'Legacy vote reasons')
-    page.expectText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
-    page.expectText('.poll-common-votes-panel__legacy-reason', 'Agree')
-    test.expect.element('.poll-common-votes-panel__stance-name-and-option').to.not.be.present
-    test.expect.element('.poll-common-votes-panel__avatar').to.not.be.present
+    page.clickAndWait('.action-dock__button--view_votes', '.poll-common-votes-panel')
+    page.expectElement('.poll-common-votes-panel table')
+    page.expectNoText('.poll-common-votes-panel', 'A plain text reason retained from the legacy vote')
+  },
+
+  'shows_identified_votes_in_a_table': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.clickAndWait('.action-dock__button--view_votes', '.poll-common-votes-panel table tbody tr')
+    page.expectElement('.v-container--fluid .votes-page')
+    page.expectText('.topic-header h1', 'Votes')
+    page.expectNoText('.topic-header .v-breadcrumbs', 'Votes')
+    page.expectText('.poll-common-votes-panel table thead', 'Name')
+    page.expectText('.poll-common-votes-panel table thead', 'Vote')
+    page.expectNoText('.poll-common-votes-panel table thead', 'Voted on')
   },
 
   'can_start_a_results_hidden_until_closed_poll': (test) => {
@@ -551,15 +560,28 @@ module.exports = {
     page.expectElement('.poll-common-vote-form--preview')
     page.expectElement('.poll-common-vote-form__button')
 
-    // Open the add voters modal
+    // Open the voter management window
     page.click('.action-dock__button--announce_poll')
     page.pause(500)
 
-    // Verify the add voters modal is shown
+    // Verify the voter management window is shown
     page.expectElement('.poll-members-form')
 
     // Verify the add voters button label
     page.expectText('.poll-members-form__submit', 'Add voters')
+  },
+
+  'can_page_and_search_poll_voters': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_scheduled_poll?voter_count=25&weighted=1')
+    page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__pagination')
+    page.expectText('.poll-members-form__page-count', '1–20 of 25')
+    page.expectElement('.poll-members-form__weight')
+    page.click('.poll-members-form__pagination .v-pagination__next button')
+    page.expectText('.poll-members-form__page-count', '21–25 of 25')
+    page.fillIn('.poll-members-form__search input', 'No matching voter')
+    page.expectText('.poll-members-form__page-count', '0–0 of 0')
   },
 
   'can_start_a_standalone_poll': (test) => {
@@ -573,5 +595,49 @@ module.exports = {
     page.click('.poll-common-form__submit')
     page.expectText('.context-panel__heading', 'A standalone proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
+  },
+
+  'can_open_vote_weight_settings_in_poll_form': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/start_poll?weighted=1')
+    page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
+    page.click('.poll-common-form__more-settings')
+    page.expectElement('.poll-settings-vote-weights')
+    page.expectElement('a[href="/docs/en/user_manual/polls/quorum"]')
+    page.expectText('.poll-common-form', 'Assign each voter a vote weight, so some votes count more than others. Results show both the number of voters and the weighted score.')
+    page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/settings#reminder"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/settings#vote-reason"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/settings#hide-results"]')
+    page.expectElement('a[href="/docs/en/user_manual/polls/settings#duration"]')
+    page.expectText('a[href="/docs/en/user_manual/polls/weighted_voting"]', 'Read more')
+    page.expectElement('a[href="/docs/en/user_manual/polls/weighted_voting"] .v-icon')
+    page.expectElement('a[href="/docs/en/user_manual/polls/anonymous_voting"] .v-icon')
+    page.click('.poll-settings-vote-weights input')
+    test.assert.elementPresent('.poll-settings-vote-weights input:checked')
+  },
+
+  'warns_when_vote_weights_change_on_an_open_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/edit_open_poll_vote_weights')
+    page.click('.poll-common-form__more-settings')
+    page.waitFor('.poll-settings-vote-weights')
+    page.click('.poll-settings-vote-weights input')
+    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
+    page.expectText('.poll-common-form', 'Turning on vote weights copies current group member weights.')
+  },
+
+  'warns_when_vote_weights_are_disabled_on_an_open_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/edit_open_poll_vote_weights?weighted=1')
+    page.click('.poll-common-form__more-settings')
+    page.waitFor('.poll-settings-vote-weights')
+    page.click('.poll-settings-vote-weights input')
+    page.expectText('.poll-common-form', 'Weights for votes already issued will change.')
+    page.expectText('.poll-common-form', 'Turning off vote weights sets every voter to weight 1')
   },
 }
