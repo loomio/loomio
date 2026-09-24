@@ -1,5 +1,4 @@
 class Api::V1::MembershipsController < Api::V1::RestfulController
-  include VoteWeightParams
   load_resource only: [:set_volume]
 
   def index
@@ -78,7 +77,7 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   def set_weights
     service.set_weights(
       group: Group.find(params.require(:group_id)),
-      weights_by_membership_id: vote_weights_by_record_id,
+      weights_by_membership_id: params.require(:weights).to_unsafe_h,
       actor: current_user
     )
     render json: {updated: true}

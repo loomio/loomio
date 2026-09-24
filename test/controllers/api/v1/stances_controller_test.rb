@@ -185,7 +185,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     stance = @poll.stances.latest.first
     sign_in @admin
 
-    assert_raises(ActionController::BadRequest) do
+    assert_raises(ArgumentError) do
       patch :set_weights, params: {poll_id: @poll.id, weights: {stance.id => {weight: 2}}}
     end
     assert_equal 1, stance.reload.weight

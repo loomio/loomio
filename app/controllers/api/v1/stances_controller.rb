@@ -1,5 +1,4 @@
 class Api::V1::StancesController < Api::V1::RestfulController
-  include VoteWeightParams
   def create
     super
   rescue ActiveRecord::RecordNotUnique
@@ -49,7 +48,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def set_weights
     poll = Poll.find(params.require(:poll_id))
-    weights_by_stance_id = vote_weights_by_record_id
+    weights_by_stance_id = params.require(:weights).to_unsafe_h
     StanceService.set_weights poll: poll, weights_by_stance_id: weights_by_stance_id, actor: current_user
     self.collection = poll.stances.latest.where(id: weights_by_stance_id.keys)
     respond_with_collection
