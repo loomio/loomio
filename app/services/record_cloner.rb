@@ -152,12 +152,11 @@ class RecordCloner
       updated_at
       discarded_at
       template
+      tags
     ]
 
     attachments = [:files, :image_files]
-    new_clone(discussion, copy_fields, {}, attachments).tap do |clone|
-      clone.tags = discussion.tags.map { |tag| existing_clone(tag) }
-    end
+    new_clone(discussion, copy_fields, {}, attachments)
   end
 
   def new_clone_topic(topic, topicable)
@@ -170,6 +169,7 @@ class RecordCloner
       locker_id
       pinned_at
       last_activity_at
+      tags
       created_at
       updated_at
     ]
@@ -237,13 +237,13 @@ class RecordCloner
       stance_reason_required
       poll_option_name_format
       reason_prompt
+      tags
       poll_template_id
       poll_template_key
     ]
     attachments = [:files, :image_files]
 
     clone_poll = new_clone(poll, copy_fields, {}, attachments)
-    clone_poll.tags = poll.tags.map { |tag| existing_clone(tag) }
     # In-thread polls share the discussion's cloned topic;
     # standalone polls get their own topic
     clone_poll.topic = existing_clone(poll.topic) || new_clone_topic(poll.topic, clone_poll)

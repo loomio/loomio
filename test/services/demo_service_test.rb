@@ -32,6 +32,15 @@ class DemoServiceTest < ActiveSupport::TestCase
     assert_equal source.comments.count, first.comments.count
     assert_equal source.tags.order(:name).pluck(:name), first.tags.order(:name).pluck(:name)
     assert first.discussions.all? { |discussion| discussion.topic.max_depth == 3 }
+    source.discussions.each do |discussion|
+      copied = first.discussions.find_by!(title: discussion.title)
+      assert_equal discussion.tags, copied.tags
+      assert_equal discussion.topic.tags, copied.topic.tags
+    end
+    source.polls.each do |poll|
+      copied = first.polls.find_by!(title: poll.title)
+      assert_equal poll.tags, copied.tags
+    end
     office = first.discussions.find_by!(title: "Is it time to move offices?")
     assert_equal [
       "Shall I come back with some options for a new office?",
@@ -151,6 +160,9 @@ class DemoServiceTest < ActiveSupport::TestCase
           group = DemoService.take_demo(actor)
           assert_equal "Translated name #{source.id}", group.reload.name
           assert_operator calls, :>, 1
+          start_tag = group.tags.find_by!(name: "Translated name #{source.tags.find_by!(name: 'Start here').id}")
+          thread = group.discussions.find_by!(title: "Translated title #{source.discussions.find_by!(title: 'Should we try returnable bottles?').id}")
+          assert_equal [start_tag.name], thread.topic.reload.tags
         end
       end
     end

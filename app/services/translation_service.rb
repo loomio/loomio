@@ -233,8 +233,24 @@ class TranslationService
       translate_group_record(group, comment, locale, cache_only, cached_only: cached_only)
     end
 
+    tag_names = {}
     group.tags.each do |tag|
+      name = tag.name
       translate_group_record(group, tag, locale, cache_only, cached_only: cached_only)
+      tag_names[name] = tag.reload.name unless cache_only
+    end
+
+    translate_group_tag_names!(group, tag_names) unless cache_only
+  end
+
+  # Tags are stored both as group records and as name arrays on discussions,
+  # polls, and topics. Keep those arrays aligned after translating the records.
+  def self.translate_group_tag_names!(group, tag_names)
+    [group.topics, group.discussions, group.polls].each do |relation|
+      relation.find_each do |record|
+        translated = record.tags.map { |name| tag_names.fetch(name, name) }
+        record.update_columns(tags: translated) if translated != record.tags
+      end
     end
   end
 
