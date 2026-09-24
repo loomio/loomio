@@ -729,6 +729,7 @@ fi:
     zh: Kiina (perinteinen, Taiwan)
     zh-HK: Kiina (perinteinen, Taiwan)
   upload:
+    filename_required: Tiedostonimi vaaditaan
     file_too_large: Tiedosto on liian suuri. Suurin mahdollinen lähetyskoko on %{limit}.
   merge_users:
     not_target_user: Sinun on kirjauduttava sisään kohdetilillä vahvistaaksesi yhdistämisen.

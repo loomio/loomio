@@ -741,6 +741,7 @@ hu:
     zh: Kínai (hagyományos, tajvani)
     zh-HK: Kínai (hagyományos, tajvani)
   upload:
+    filename_required: Fájlnév megadása kötelező
     file_too_large: A fájl túl nagy. A maximális feltöltési méret %{limit}.
   merge_users:
     not_target_user: Az egyesítés megerősítéséhez célfiókként kell bejelentkeznie.

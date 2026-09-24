@@ -759,6 +759,7 @@ fr:
     zh: Chinois (traditionnel, Taïwan)
     zh-HK: Chinois (traditionnel, Taïwan)
   upload:
+    filename_required: Un nom de fichier est requis
     file_too_large: Le fichier est trop volumineux. La taille maximale autorisée pour le téléchargement est %{limit}.
   merge_users:
     not_target_user: Tu dois être connecté avec le compte cible pour confirmer une fusion.

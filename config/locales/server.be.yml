@@ -726,6 +726,7 @@ be:
       voting_opened_and_closed: Галасаванне пачалося %{opens} і скончылася %{closes}. (%{days} дзён)
       people_have_voted: "%{nom} з %{dnom} чалавек прынялі ўдзел (%{pct}%)"
   upload:
+    filename_required: Патрабуецца назва файла
     file_too_large: Файл занадта вялікі. Максімальны памер для загрузкі — %{limit}.
   thread_markdown:
     poll: Апытанне

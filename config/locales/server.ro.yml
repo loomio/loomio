@@ -729,6 +729,7 @@ ro:
     zh: Chineză (tradițională, taiwaneză)
     zh-HK: Chineză (tradițională, taiwaneză)
   upload:
+    filename_required: Este necesar un nume de fișier
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.

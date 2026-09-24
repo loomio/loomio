@@ -731,6 +731,7 @@ ca:
     zh: Xinès (tradicional, taiwanès)
     zh-HK: Xinès (tradicional, taiwanès)
   upload:
+    filename_required: Cal un nom de fitxer
     file_too_large: El fitxer és massa gran. La mida màxima de càrrega és %{limit}.
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.

@@ -741,6 +741,7 @@ he:
     zh: סינית (מסורתית, טייוואן)
     zh-HK: סינית (מסורתית, טייוואן)
   upload:
+    filename_required: נדרש שם קובץ
     file_too_large: הקובץ גדול מדי. גודל ההעלאה המרבי הוא %{limit}.
   merge_users:
     not_target_user: עליך להיות מחובר כחשבון היעד כדי לאשר מיזוג.

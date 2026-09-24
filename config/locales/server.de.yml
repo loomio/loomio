@@ -761,6 +761,7 @@ de:
     zh: Chinesisch (Traditionell, Taiwan)
     zh-HK: Chinesisch (Traditionell, Taiwan)
   upload:
+    filename_required: Ein Dateiname ist erforderlich
     file_too_large: Die Datei ist zu groß. Die maximale Uploadgröße beträgt %{limit}.
   merge_users:
     not_target_user: Du musst als das Zielkonto angemeldet sein, um eine Zusammenführung zu bestätigen.

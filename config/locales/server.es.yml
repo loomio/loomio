@@ -753,6 +753,7 @@ es:
     zh: Chino (Tradicional, Taiwán)
     zh-HK: Chino (Tradicional, Taiwán)
   upload:
+    filename_required: Se requiere un nombre de archivo
     file_too_large: El archivo es demasiado grande. El tamaño máximo de carga es %{limit}.
   merge_users:
     not_target_user: Debes iniciar sesión con la cuenta de destino para confirmar la fusión.
