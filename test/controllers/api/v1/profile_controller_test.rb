@@ -62,6 +62,57 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_nil @user.legal_accepted_at
   end
 
+  test "detected time zone saves without revalidating unrelated profile fields" do
+    sign_in @user
+    @user.update_columns(username: 'invalid username')
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_equal 'invalid username', @user.username
+  end
+
+  test "time zone update does not complete a legacy account with a missing name" do
+    sign_in @user
+    @user.update_columns(name: nil)
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_predicate @user, :incomplete?
+  end
+
+  test "time zone update rejects invalid zones and ignores identity fields" do
+    sign_in @user
+    email = @user.email
+    previous_time_zone = @user.time_zone
+
+    post :set_time_zone, params: { time_zone: 'Invalid/Zone', user: { email: 'other@example.com' } }, format: :json
+
+    assert_response :unprocessable_entity
+    assert_equal previous_time_zone, @user.reload.time_zone
+    assert_equal email, @user.email
+  end
+
+  test "time zone update only changes the current user" do
+    sign_in @user
+    previous_time_zone = @alien.time_zone
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest', id: @alien.id }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_equal previous_time_zone, @alien.reload.time_zone
+  end
+
+  test "time zone update requires an authenticated user" do
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :unauthorized
+  end
+
   test "show returns the user json" do
     sign_in @user
     get :show, params: { id: @alien.username }, format: :json
@@ -398,5 +449,20 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :success
     assert_predicate @user.reload, :email_default_normal?
     assert_predicate @user, :push_default_normal?
+  end
+
+  test "restricted user can only change the time zone through its dedicated endpoint" do
+    @user.update_columns(unsubscribe_token: UNSUB)
+    email = @user.email
+
+    post :set_time_zone, params: {
+      unsubscribe_token: UNSUB,
+      time_zone: 'Europe/Budapest',
+      user: { email: 'other@example.com' }
+    }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_equal email, @user.email
   end
 end

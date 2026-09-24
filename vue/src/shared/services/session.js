@@ -33,8 +33,11 @@ export default new class Session {
 
     if (this.isSignedIn()) {
       if (user.autodetectTimeZone && user.timeZone !== AppConfig.timeZone) {
-        user.timeZone = AppConfig.timeZone;
-        Records.users.updateProfile(user);
+        Records.users.setTimeZone(AppConfig.timeZone).then(() => {
+          user.timeZone = AppConfig.timeZone;
+        }).catch(error => {
+          console.warn('Could not save the detected time zone', error);
+        });
       }
       EventBus.$emit('signedIn', user);
     }

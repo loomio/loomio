@@ -116,6 +116,21 @@ class UserService
     user
   end
 
+  # A detected time zone is a preference, so saving it must not revalidate
+  # unrelated legacy profile fields or bypass the normal signup completion flow.
+  def self.set_time_zone(user:, actor:, time_zone:)
+    actor.ability.authorize! :update, user
+
+    unless time_zone.is_a?(String) && ActiveSupport::TimeZone[time_zone]
+      user.errors.add(:time_zone, :invalid)
+      return user
+    end
+
+    user.update_columns(time_zone: time_zone, updated_at: Time.current)
+    EventBus.broadcast('user_update', user, actor, { time_zone: time_zone })
+    user
+  end
+
   def self.disable_edit_user_profile?
     AppConfig.sso_disable_edit_user_profile?
   end

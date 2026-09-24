@@ -40,6 +40,10 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
     }).finally(() => user.processing = false);
   }
 
+  setTimeZone(timeZone) {
+    return this.remote.post('set_time_zone', { time_zone: timeZone });
+  }
+
   uploadAvatar(file) {
     return this.remote.upload('upload_avatar', file);
   }

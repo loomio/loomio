@@ -84,6 +84,15 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def set_time_zone
+    user = service.set_time_zone(user: current_user, actor: current_user, time_zone: params[:time_zone])
+    if user.errors.any?
+      render json: { errors: user.errors.to_hash }, status: :unprocessable_entity
+    else
+      render json: { time_zone: user.time_zone }
+    end
+  end
+
   def set_volume
     service.set_volume(
       user: current_user,
