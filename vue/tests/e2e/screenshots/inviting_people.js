@@ -26,10 +26,9 @@ module.exports = {
 
     openMembers(page);
     page.expectText('.membership-card__invite', 'Invite');
-    page.expectText('.members-panel__shareable-link-btn', 'Shareable Link');
     screenshot.capture('groups/inviting_people/group_join_group_invite', {
       spotlight: {
-        selectors: ['.membership-card__invite', '.members-panel__shareable-link-btn'],
+        selector: '.membership-card__invite',
         padding: 14,
         radius: 14,
         opacity: 0.4,
@@ -73,7 +72,9 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openMembers(page);
-    page.click('.members-panel__shareable-link-btn');
+    page.click('.membership-card__invite');
+    page.waitFor('.group-invitation-form');
+    page.click('.group-invitation-form a');
     page.waitFor('.shareable-link-modal');
     test.expect.element('.shareable-link-modal__shareable-link input').value.to.contain('/join/');
     page.execute("const input = document.querySelector('.shareable-link-modal__shareable-link input'); input.value = 'https://www.loomio.com/join/group/oatmilk-example/'; input.setAttribute('value', input.value)");

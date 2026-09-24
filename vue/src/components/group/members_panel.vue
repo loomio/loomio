@@ -4,14 +4,12 @@ import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
-import Flash          from '@/shared/services/flash';
 import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
-import { mdiMagnify } from '@mdi/js';
+import { mdiClose, mdiMagnify } from '@mdi/js';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
-import { voteWeightValid } from '@/shared/helpers/vote_weight';
 
 export default
 {
@@ -19,6 +17,7 @@ export default
   data() {
     return {
       mdiMagnify,
+      mdiClose,
       loader: null,
       group: null,
       per: 25,
@@ -30,10 +29,8 @@ export default
         {title: this.$t('members_panel.order_by_admin_desc'), value:'admin desc' }
       ],
       memberships: [],
-      weightsDraft: {},
-      weightsSaving: false,
-      editingWeights: false,
-      resetWeight: '1'
+      searchOpen: Boolean(this.$route.query.q),
+      searchQuery: this.$route.query.q || ''
     };
   },
 
@@ -80,7 +77,17 @@ export default
   methods: {
     exact,
     approximate,
-    voteWeightValid,
+
+    openSearch() {
+      this.searchOpen = true;
+      this.$nextTick(() => this.$refs.memberSearch.focus());
+    },
+    closeSearch() {
+      this.onQueryInput.cancel();
+      this.searchQuery = '';
+      this.searchOpen = false;
+      this.$router.replace(this.mergeQuery({q: null}));
+    },
 
     query() {
       let chain = Records.memberships.collection.chain();
@@ -151,9 +158,6 @@ export default
       chain = chain.simplesort('id', true);
 
       this.memberships = chain.data();
-      this.memberships.forEach(membership => {
-        if (!(membership.id in this.weightsDraft)) this.weightsDraft[membership.id] = membership.weight;
-      });
     },
 
     refresh() {
@@ -166,14 +170,6 @@ export default
       });
       this.query();
     },
-    openShareableLinkForm() {
-      EventBus.$emit('openModal', {
-        component: 'GroupShareableLinkForm',
-        props: {
-          group: this.group
-        }
-      });
-    },
     invite() {
       EventBus.$emit('openModal', {
         component: 'GroupInvitationForm',
@@ -181,32 +177,6 @@ export default
           group: this.group
         }
       });
-    },
-    saveWeights() {
-      const weights = Object.fromEntries(this.editableMemberships
-        .filter(membership => Number(this.weightsDraft[membership.id]) !== Number(membership.weight))
-        .map(membership => [membership.id, this.weightsDraft[membership.id]]));
-      this.weightsSaving = true;
-      Records.remote.patch('memberships/set_weights', {group_id: this.group.id, weights}).then(() => {
-        Object.assign(this.weightsDraft, weights);
-        this.editingWeights = false;
-        Flash.success('poll_common_form.vote_weights_updated');
-      }).catch(error => Flash.fromServer(error)).finally(() => { this.weightsSaving = false; });
-    },
-    cancelWeights() {
-      this.editableMemberships.forEach(membership => { this.weightsDraft[membership.id] = membership.weight; });
-      this.editingWeights = false;
-    },
-    resetWeights() {
-      this.weightsSaving = true;
-      Records.remote.patch('memberships/reset_weights', {group_id: this.group.id, weight: this.resetWeight}).then(() => {
-        this.editableMemberships.forEach(membership => {
-          membership.weight = this.resetWeight;
-          this.weightsDraft[membership.id] = this.resetWeight;
-        });
-        this.editingWeights = false;
-        Flash.success('poll_common_form.vote_weights_updated');
-      }).catch(error => Flash.fromServer(error)).finally(() => { this.weightsSaving = false; });
     }
   },
 
@@ -227,15 +197,6 @@ export default
     canManageWeights() {
       return this.group.voteWeightsAllowed && AbilityService.canAdminister(this.group);
     },
-    editableMemberships() {
-      return this.memberships.filter(membership => membership.groupId === this.group.id);
-    },
-    weightsDirty() {
-      return this.editableMemberships.some(membership => Number(this.weightsDraft[membership.id]) !== Number(membership.weight));
-    },
-    weightsValid() {
-      return this.editableMemberships.every(membership => voteWeightValid(this.weightsDraft[membership.id]));
-    },
 
     showAdminWarning() {
       return this.group.adminsInclude(Session.user()) &&
@@ -245,7 +206,10 @@ export default
   },
 
   watch: {
-    '$route.query': 'refresh'
+    '$route.query'() {
+      this.searchQuery = this.$route.query.q || '';
+      this.refresh();
+    }
   }
 };
 
@@ -280,14 +244,26 @@ export default
             v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
+      v-btn.members-panel__search-button.mr-2(
+        v-if="!searchOpen"
+        variant="text"
+        @click="openSearch")
+        v-icon.mr-1(:icon="mdiMagnify")
+        span {{ $t('navbar.search_members_short') }}
       v-text-field.mr-2(
-        clearable
+        v-if="searchOpen"
+        ref="memberSearch"
+        v-model="searchQuery"
         hide-details
         variant="solo"
         density="compact"
         @update:model-value="onQueryInput"
         :placeholder="$t('navbar.search_members_short')"
-        :prepend-inner-icon="mdiMagnify")
+        :prepend-inner-icon="mdiMagnify"
+        :append-inner-icon="mdiClose"
+        @click:append-inner="closeSearch"
+        @keyup.esc="closeSearch")
+      v-spacer
       v-btn.membership-card__invite.mr-2(
         color="primary"
         variant="elevated"
@@ -295,20 +271,7 @@ export default
         @click="invite()"
       )
         span(v-t="'common.action.invite'")
-      v-btn.members-panel__shareable-link-btn(v-if='canAddMembers' color="primary" variant="tonal" @click="openShareableLinkForm()")
-        span(v-t="'members_panel.sharable_link'")
-      v-btn.members-panel__edit-weights(v-if="canManageWeights && !editingWeights" variant="tonal" @click="editingWeights = true") {{ $t('members_panel.edit_vote_weights') }}
-      template(v-if="editingWeights")
-        v-text-field.members-panel__reset-weight(
-          v-model="resetWeight"
-          type="text"
-          inputmode="decimal"
-          density="compact"
-          hide-details
-          :label="$t('poll_common_form.weight_for_all')")
-        v-btn.members-panel__reset-weights(variant="tonal" :disabled="!voteWeightValid(resetWeight)" :loading="weightsSaving" @click="resetWeights") {{ $t('poll_common_form.set_all_vote_weights') }}
-        v-btn.members-panel__save-weights(color="primary" :disabled="!weightsDirty || !weightsValid" :loading="weightsSaving" @click="saveWeights") {{ $t('poll_common_form.save_vote_weights') }}
-        v-btn.members-panel__cancel-weights(variant="text" @click="cancelWeights") {{ $t('common.action.cancel') }}
+      v-btn.members-panel__edit-weights(v-if="canManageWeights" variant="tonal" :to="urlFor(group, 'members/weights')") {{ $t('members_panel.edit_vote_weights') }}
       v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
         v-if='group.isVisibleToPublic && canAddMembers'
         :to="urlFor(group, 'membership_requests')"
@@ -378,16 +341,6 @@ export default
                   time-ago(:date="membership.createdAt")
 
             template(v-slot:append)
-              template(v-if="canManageWeights && membership.groupId == group.id")
-                v-text-field.members-panel__weight-input.mr-2(
-                  v-if="editingWeights"
-                  v-model="weightsDraft[membership.id]"
-                  type="text"
-                  inputmode="decimal"
-                  density="compact"
-                  hide-details
-                  :aria-label="$t('poll_common_form.vote_weight_for', {name: membership.user().name})")
-                span.mr-4(v-else) {{ $t('members_panel.vote_weight_value', {weight: membership.weight}) }}
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 
         .d-flex.justify-center
@@ -401,8 +354,3 @@ export default
             a.text-medium-emphasis.text-decoration-none(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'")
 
 </template>
-
-<style>
-.members-panel__weight-input { max-width: 112px; }
-.members-panel__reset-weight { max-width: 160px; }
-</style>

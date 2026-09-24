@@ -17,6 +17,7 @@ const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/d
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
 const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
 const MembersPanel = wrapAsyncLoader(() => import('./components/group/members_panel'));
+const MemberWeightsPage = wrapAsyncLoader(() => import('./components/group/member_weights_page.vue'));
 const GroupTagsPanel = wrapAsyncLoader(() => import('./components/group/tags_panel'));
 const GroupFilesPanel = wrapAsyncLoader(() => import('./components/group/files_panel'));
 const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group/requests_panel'));
@@ -41,6 +42,7 @@ const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
   {path: 'emails', component: GroupEmailsPanel, meta: {noScroll: true}},
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
+  {path: 'members/weights', component: MemberWeightsPage},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},

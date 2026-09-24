@@ -183,7 +183,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_attributes
-    [:title, :volume_email, :volume_push, :apply_to_all, :set_default]
+    [:title, :weight, :volume_email, :volume_push, :apply_to_all, :set_default]
   end
 
   def topic_reader_attributes

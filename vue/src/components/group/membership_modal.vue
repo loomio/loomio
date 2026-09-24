@@ -14,11 +14,9 @@ const weightValid = computed(() => !canManageWeight.value || voteWeightValid(mem
 
 function submit() {
   saving.value = true;
-  membership.save()
-    .then(() => {
-      if (!canManageWeight.value) { return; }
-      return Records.memberships.remote.patchMember(membership.id, 'set_weight', {weight: membership.weight});
-    })
+  const attributes = {title: membership.title};
+  if (canManageWeight.value) attributes.weight = membership.weight;
+  Records.memberships.remote.update(membership.id, {membership: attributes})
     .then(() => {
       Flash.success("membership_form.membership_updated");
       EventBus.$emit('closeModal');

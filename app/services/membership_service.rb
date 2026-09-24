@@ -115,20 +115,33 @@ class MembershipService
   end
 
 
+  # Save title and weight in one request while enforcing the separate weight
+  # permission. Keep the member's derived title data in the same transaction.
   def self.update(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
+    actor.ability.authorize! :set_weight, membership if params.key?(:weight)
 
-    membership.assign_attributes(params.slice(:title))
+    membership.assign_attributes(params.slice(:title, :weight))
     return membership unless membership.valid?
-    membership.save!
+    updated_membership = nil
+    Membership.transaction do
+      membership.save!
+      updated_membership = update_user_titles(membership.id)
+    end
 
-    update_user_titles_and_broadcast(membership.id)
-
+    if updated_membership
+      MessageChannelService.publish_models([updated_membership.user], serializer: AuthorSerializer, group_id: membership.group_id)
+    end
     EventBus.broadcast 'membership_update', membership, params, actor
     membership
   end
 
   def self.update_user_titles_and_broadcast(membership_id)
+    membership = update_user_titles(membership_id)
+    MessageChannelService.publish_models([membership.user], serializer: AuthorSerializer, group_id: membership.group_id) if membership
+  end
+
+  def self.update_user_titles(membership_id)
     membership = Membership.find(membership_id)
 
     user = membership.user
@@ -151,7 +164,7 @@ class MembershipService
     user.experiences['delegates'] = delegates
 
     user.save!
-    MessageChannelService.publish_models([ user ], serializer: AuthorSerializer, group_id: group.id)
+    membership
   end
 
   def self.set_volume(membership:, params:, actor:)
@@ -180,13 +193,6 @@ class MembershipService
       membership.save!
       membership.topic_readers.update_all(attributes)
     end
-  end
-
-  def self.set_weight(membership:, weight:, actor:)
-    actor.ability.authorize! :set_weight, membership
-    membership.update!(weight: weight)
-    EventBus.broadcast 'membership_update', membership, {weight: weight}, actor
-    membership
   end
 
   # Update a reviewed batch as one unit so an invalid weight or inaccessible

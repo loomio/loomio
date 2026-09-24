@@ -66,7 +66,51 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
     patch :update, params: {id: membership.id, membership: {title: 'Member', weight: 0}}
 
-    assert_response :bad_request
+    assert_response :forbidden
+    assert_nil membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  test 'member updates their own title without changing vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Member'}}
+
+    assert_response :success
+    assert_equal 'Member', membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  test 'group admin updates membership title and weight together' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '0.5'}}
+
+    assert_response :success
+    assert_equal 'Chair', membership.reload.title
+    assert_equal BigDecimal('0.5'), membership.weight
+  end
+
+  test 'invalid weight leaves membership title unchanged' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '-1'}}
+
+    assert_response :unprocessable_entity
+    assert_nil membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  test 'group admin cannot update weight when vote weights are disabled' do
+    sign_in @admin
+    @test_group.update!(vote_weights_allowed: false)
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: 2}}
+
+    assert_response :forbidden
     assert_nil membership.reload.title
     assert_equal 1, membership.weight
   end
@@ -90,11 +134,39 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
 
   # ===== Set Volume Tests =====
 
+  test 'weight editor lists every active group membership without pagination' do
+    sign_in @admin
+    memberships = @test_group.memberships.active.joins(:user).count
+
+    get :weights, params: {group_id: @test_group.id, per: 1}
+
+    assert_response :success
+    rows = JSON.parse(response.body).fetch('memberships')
+    assert_equal memberships, rows.length
+    assert_equal %w[avatar_initials avatar_url delegate email id name title weight], rows.first.keys.sort
+    assert_equal @test_group.memberships.active.joins(:user).pluck(:id).sort, rows.map { |row| row.fetch('id') }.sort
+  end
+
+  test 'member cannot load the weight editor' do
+    get :weights, params: {group_id: @test_group.id}
+
+    assert_response :forbidden
+  end
+
+  test 'weight editor is unavailable when group vote weights are disabled' do
+    sign_in @admin
+    @test_group.update!(vote_weights_allowed: false)
+
+    get :weights, params: {group_id: @test_group.id}
+
+    assert_response :forbidden
+  end
+
   test 'group admin updates membership vote weight' do
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
-    patch :set_weight, params: {id: membership.id, weight: 2}
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
 
     assert_response :success
     assert_equal 2, membership.reload.weight
@@ -104,7 +176,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @admin
     membership = @test_group.membership_for(@user)
 
-    patch :set_weight, params: {id: membership.id, weight: '0.5'}
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => '0.5'}}
 
     assert_response :success
     assert_equal BigDecimal('0.5'), membership.reload.weight
@@ -113,7 +185,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   test 'member cannot update their own membership vote weight' do
     membership = @test_group.membership_for(@user)
 
-    patch :set_weight, params: {id: membership.id, weight: 0}
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 0}}
 
     assert_response :forbidden
     assert_equal 1, membership.reload.weight

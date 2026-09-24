@@ -51,7 +51,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
   test "group admin sets a membership vote weight" do
     membership = @group.add_member!(@user)
 
-    MembershipService.set_weight(membership: membership, weight: 2, actor: @admin)
+    MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2}, actor: @admin)
 
     assert_equal 2, membership.reload.weight
   end
@@ -60,7 +60,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     membership = @group.add_member!(@user)
 
     assert_raises CanCan::AccessDenied do
-      MembershipService.set_weight(membership: membership, weight: 0, actor: @user)
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 0}, actor: @user)
     end
 
     assert_equal 1, membership.reload.weight
@@ -72,7 +72,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     membership.reload
 
     assert_raises CanCan::AccessDenied do
-      MembershipService.set_weight(membership: membership, weight: 2, actor: @admin)
+      MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2}, actor: @admin)
     end
     assert_equal 1, membership.reload.weight
   end

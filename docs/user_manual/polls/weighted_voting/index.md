@@ -16,7 +16,7 @@ Vote weights are available for identified polls other than time polls and STV el
 
 ## Set member weights
 
-Open the group's **Members** page. Group admins can see each member's weight and select **Edit vote weights** to edit the weights shown in the list. Select **Load more** to bring more members into the form, then select **Save vote weights**. To give every current member the same weight, enter a value under **Weight for all** and select **Set all weights**. This also changes members who are not loaded in the list. Admins can also edit one member's weight from that member's menu.
+Open the group's **Members** page and select **Edit vote weights**. The editor shows every current member on one page, with their avatar, email, membership title, and delegate status. Enter weights in the table and select **Save vote weights**. To give every current member the same weight, select **Set all weights**, enter a value in the dialog, and save it. Admins can also edit one member's weight from that member's menu.
 
 A member's weight is a default for future weighted polls. Changing it does not alter weights already copied into a poll.
 

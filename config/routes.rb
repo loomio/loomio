@@ -197,6 +197,7 @@ Rails.application.routes.draw do
 
       resources :memberships, only: [:index, :create, :update, :destroy] do
         collection do
+          get :weights
           patch :set_weights
           patch :reset_weights
           post :user_name
@@ -215,7 +216,6 @@ Rails.application.routes.draw do
           post :save_experience
           post :resend
           patch :set_volume
-          patch :set_weight
         end
       end
 
@@ -486,6 +486,7 @@ Rails.application.routes.draw do
   get 'g/:key/emails'                      => 'application#index', as: :group_emails
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
+  get 'g/:key/members/weights'             => 'application#index', as: :group_member_weights
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
   get 'g/:key/settings'                    => 'application#index', as: :group_settings
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls

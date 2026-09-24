@@ -75,11 +75,6 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def set_weight
-    service.set_weight membership: load_resource, weight: params.require(:weight), actor: current_user
-    respond_with_resource
-  end
-
   def set_weights
     self.collection = service.set_weights(
       group: Group.find(params.require(:group_id)),
@@ -87,6 +82,26 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
       actor: current_user
     )
     respond_with_collection serializer: MembershipSerializer, scope: index_scope
+  end
+
+  def weights
+    group = Group.find(params.require(:group_id))
+    current_user.ability.authorize! :set_weight, Membership.new(group: group)
+    memberships = group.memberships.active.joins(:user).includes(user: {uploaded_avatar_attachment: :blob})
+      .order('users.name, memberships.id').map do |membership|
+        user = membership.user
+        {
+          id: membership.id,
+          name: user.name.presence || user.email,
+          email: user.email,
+          avatar_url: user.thumb_url,
+          avatar_initials: user.avatar_initials,
+          title: membership.title,
+          delegate: membership.delegate,
+          weight: HasVoteWeight.format(membership.weight)
+        }
+      end
+    render json: {memberships: memberships}
   end
 
   def reset_weights
