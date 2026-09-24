@@ -367,6 +367,23 @@ sl:
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
+    catch_up_link: Nastavitve e-pošte za nadoknaditev zamujenega
+    catch_up_title: Nastavitve e-pošte za nadoknaditev zamujenega
+    catch_up_description: Izberite, kako pogosto želite prejemati povzetek dejavnosti v svojih skupinah
+    catch_up_schedule: Pošljite e-poštno sporočilo za nadoknaditev
+    catch_up_saved: Nastavitve e-pošte za nadoknaditev zamujenega so posodobljene
+    catch_up_days:
+      never: Nikoli
+      every_day: Vsak dan
+      every_second_day: Vsak drugi dan
+      monday: ponedeljek
+      tuesday: Torek
+      wednesday: sreda
+      thursday: četrtek
+      friday: Petek
+      saturday: sobota
+      sunday: Nedelja
+    catch_up_all_groups: E-poštna sporočila za nadoknaditev zamujenega (vse skupine)
   discussion_mailer:
     reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."

@@ -377,6 +377,23 @@ hu:
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
+    catch_up_link: Felzárkóztató e-mail beállítások
+    catch_up_title: Felzárkóztató e-mail beállítások
+    catch_up_description: Válassza ki, hogy milyen gyakran szeretne összefoglalót kapni a csoportjaiban végzett tevékenységekről
+    catch_up_schedule: Küldjön egy emlékeztető e-mailt
+    catch_up_saved: Frissítettük a pótlólagos e-mail beállításait
+    catch_up_days:
+      never: Soha
+      every_day: Minden nap
+      every_second_day: Minden második nap
+      monday: hétfő
+      tuesday: kedd
+      wednesday: szerda
+      thursday: csütörtök
+      friday: péntek
+      saturday: szombat
+      sunday: vasárnap
+    catch_up_all_groups: Felzárkóztató e-mailek (minden csoport)
   discussion_mailer:
     reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."

@@ -369,6 +369,23 @@ ca:
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
+    catch_up_link: Configuració del correu electrònic de posada al dia
+    catch_up_title: Configuració del correu electrònic de posada al dia
+    catch_up_description: Trieu amb quina freqüència voleu rebre un resum de l'activitat dels vostres grups
+    catch_up_schedule: Enviar un correu electrònic de posada al dia
+    catch_up_saved: S'ha actualitzat la configuració del correu electrònic de posada al dia
+    catch_up_days:
+      never: Mai
+      every_day: Cada dia
+      every_second_day: Cada dos dies
+      monday: Dilluns
+      tuesday: Dimarts
+      wednesday: Dimecres
+      thursday: dijous
+      friday: Divendres
+      saturday: dissabte
+      sunday: diumenge
+    catch_up_all_groups: Correus electrònics de posada al dia (tots els grups)
   discussion_mailer:
     reply_or_view_online_html: Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Desactiva els correus electrònics</a> per a aquesta discussió."

@@ -23,7 +23,6 @@ class User < ApplicationRecord
   UNLOCK_IN = 6.hours
 
   has_secure_password validations: false
-  attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
   attr_accessor :group_token

@@ -391,6 +391,23 @@ pt_BR:
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
+    catch_up_link: Configurações de e-mail de recuperação
+    catch_up_title: Configurações de e-mail de recuperação
+    catch_up_description: Escolha a frequência com que deseja receber um resumo das atividades dos seus grupos.
+    catch_up_schedule: Enviar um e-mail de atualização
+    catch_up_saved: Configurações de e-mail de recuperação atualizadas
+    catch_up_days:
+      never: Nunca
+      every_day: Diariamente
+      every_second_day: A cada dois dias
+      monday: Segunda-feira
+      tuesday: Terça-feira
+      wednesday: Quarta-feira
+      thursday: Quinta-feira
+      friday: Sexta-feira
+      saturday: Sábado
+      sunday: Domingo
+    catch_up_all_groups: E-mails de atualização (todos os grupos)
   discussion_mailer:
     reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."

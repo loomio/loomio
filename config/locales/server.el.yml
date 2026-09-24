@@ -367,6 +367,23 @@ el:
   announcement_count_emails: "%{count} μηνύματα ηλεκτρονικού ταχυδρομείου"
   email_actions:
     unfollowed_discussion: Έχετε απενεργοποιήσει τα μηνύματα ηλεκτρονικού ταχυδρομείου για το νήμα.
+    catch_up_link: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου ενημέρωσης
+    catch_up_title: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου ενημέρωσης
+    catch_up_description: Επιλέξτε πόσο συχνά θα λαμβάνετε μια σύνοψη της δραστηριότητας στις ομάδες σας
+    catch_up_schedule: Αποστολή ενημερωτικού email
+    catch_up_saved: Οι ρυθμίσεις ηλεκτρονικού ταχυδρομείου ενημέρωσαν
+    catch_up_days:
+      never: Ποτέ
+      every_day: Κάθε μέρα
+      every_second_day: Κάθε δεύτερη μέρα
+      monday: Δευτέρα
+      tuesday: Τρίτη
+      wednesday: Τετάρτη
+      thursday: Πέμπτη
+      friday: Παρασκευή
+      saturday: Σάββατο
+      sunday: Κυριακή
+    catch_up_all_groups: Ενημερωτικά email (όλες οι ομάδες)
   discussion_mailer:
     reply_or_view_online_html: Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'> Απενεργοποίηση ηλεκτρονικών μηνυμάτων </a> για αυτή τη συζήτηση."

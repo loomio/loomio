@@ -96,6 +96,17 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_not_equal 'loud', second_membership.volume_email
   end
 
+  test 'an unsubscribe token cannot change membership volume through the API' do
+    membership = @test_group.membership_for(@user)
+    original_volume = membership.volume_email
+    sign_out
+
+    put :set_volume, params: {id: membership.id, unsubscribe_token: @user.unsubscribe_token, volume_email: 'quiet'}, format: :json
+
+    assert_response :forbidden
+    assert_equal original_volume, membership.reload.volume_email
+  end
+
   test 'updates email volume without changing push volume when push is omitted' do
     membership = @test_group.membership_for(@user)
     membership.set_volume!(email: 'quiet', push: 'normal')

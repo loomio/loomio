@@ -63,7 +63,7 @@ class DigestMailerTest < ActionMailer::TestCase
     assert_includes document.at_css("main > h1").text, "Your #{AppConfig.theme[:site_name]} catch-up"
     assert_nil document.at_css(".email-header-logo")
     assert document.at_css(".email-footer-logo")
-    assert document.at_css('a[href*="email_preferences"]')
+    assert document.at_css('a[href*="email_actions/catch_up"]')
     assert_operator body.index("Notifications"), :<, body.index("Unread threads")
     assert_nil document.at_css(".email-notification-content")
     assert_equal 1, document.text.scan(discussion_body).count

@@ -694,6 +694,23 @@ en:
   announcement_count_emails: "%{count} emails"
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.
+    catch_up_all_groups: Catch-up emails (all groups)
+    catch_up_link: Catch-up email settings
+    catch_up_title: Catch-up email settings
+    catch_up_description: Choose how often to receive a summary of activity in your groups
+    catch_up_schedule: Send a catch-up email
+    catch_up_saved: Catch-up email settings updated
+    catch_up_days:
+      never: Never
+      every_day: Every day
+      every_second_day: Every second day
+      monday: Monday
+      tuesday: Tuesday
+      wednesday: Wednesday
+      thursday: Thursday
+      friday: Friday
+      saturday: Saturday
+      sunday: Sunday
   discussion_mailer:
     reply_or_view_online_html: Reply to this email or <a href='%{url}'>view it on %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."

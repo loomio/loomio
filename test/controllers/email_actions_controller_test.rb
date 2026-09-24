@@ -22,6 +22,77 @@ class EmailActionsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "a token holder can view catch-up settings without signing in" do
+    @user.update!(email_catch_up_day: 1)
+
+    get :catch_up, params: {unsubscribe_token: @user.unsubscribe_token}
+
+    assert_response :success
+    assert_select "select[name=email_catch_up_day] option[value='1'][selected]"
+    assert_select "input#email_catch_up_save[type=submit]"
+    assert_includes response.body, "save.disabled = schedule.value === savedValue"
+    assert_select "input[name=unsubscribe_token][value='#{@user.unsubscribe_token}']"
+    assert_equal 'no-referrer', response.headers['Referrer-Policy']
+    assert_equal 'no-store', response.headers['Cache-Control']
+  end
+
+  test "a token holder can change or stop catch-up emails without signing in" do
+    put :set_catch_up, params: {unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: '8'}
+
+    assert_redirected_to email_actions_catch_up_path(unsubscribe_token: @user.unsubscribe_token)
+    assert_equal 8, @user.reload.email_catch_up_day
+
+    get :catch_up, params: {unsubscribe_token: @user.unsubscribe_token}
+    assert_select ".flash-notice", text: I18n.t('email_actions.catch_up_saved')
+
+    put :set_catch_up, params: {unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: 'never'}
+
+    assert_response :redirect
+    assert_nil @user.reload.email_catch_up_day
+  end
+
+  test "catch-up settings reject an invalid day" do
+    @user.update!(email_catch_up_day: 7)
+
+    put :set_catch_up, params: {unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: '9'}
+
+    assert_response :unprocessable_entity
+    assert_select "main.sistema h1", text: I18n.t('errors.422.title')
+    assert_equal 7, @user.reload.email_catch_up_day
+  end
+
+  test "a missing thread or group renders a Rails 404 page" do
+    get :unsubscribe, params: {unsubscribe_token: @user.unsubscribe_token}
+
+    assert_response :not_found
+    assert_select "main.sistema h1", text: I18n.t('errors.404.title')
+    assert_select "#app", count: 0
+  end
+
+  test "a missing thread or group still returns a JSON error to API clients" do
+    get :unsubscribe, params: {unsubscribe_token: @user.unsubscribe_token}, format: :json
+
+    assert_response :not_found
+    assert_equal I18n.t('errors.404.title'), JSON.parse(response.body)['error']
+  end
+
+  test "an invalid email token cannot use a signed-in account as a fallback" do
+    sign_in @author
+
+    put :set_catch_up, params: {unsubscribe_token: 'invalid', email_catch_up_day: 'never'}
+
+    assert_response :forbidden
+    assert_equal 7, @user.reload.email_catch_up_day
+  end
+
+  test "the thread notification form links to catch-up email settings" do
+    @user.update!(email_catch_up_day: 7)
+    get :unsubscribe, params: {topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token}
+
+    assert_select "a[href='#{email_actions_catch_up_path(unsubscribe_token: @user.unsubscribe_token)}']", text: I18n.t('email_actions.catch_up_link')
+    assert_select ".email-action-secondary-link", text: /#{Regexp.escape(I18n.t('email_actions.catch_up_all_groups'))}: #{Regexp.escape(I18n.t('email_actions.catch_up_days.every_day'))}/
+  end
+
   # unsubscribe page rendering
   test "unsubscribe renders with topic reader" do
     @topic_reader.set_volume!(email: :loud, push: :quiet)
@@ -139,6 +210,8 @@ class EmailActionsControllerTest < ActionController::TestCase
       volume_push: :normal
     }
     assert_response 302
+    assert_equal 'no-referrer', response.headers['Referrer-Policy']
+    assert_equal 'no-store', response.headers['Cache-Control']
 
     @membership.reload
     @topic_reader.reload

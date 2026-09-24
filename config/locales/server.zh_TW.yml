@@ -391,6 +391,23 @@ zh_TW:
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
+    catch_up_link: 補發郵件設定
+    catch_up_title: 補發郵件設定
+    catch_up_description: 選擇接收群組活動摘要的頻率
+    catch_up_schedule: 發送一封補發郵件
+    catch_up_saved: 補發郵件設定已更新
+    catch_up_days:
+      never: 絕不
+      every_day: 每天
+      every_second_day: 每隔一天
+      monday: 週一
+      tuesday: 週二
+      wednesday: 週三
+      thursday: 週四
+      friday: 星期五
+      saturday: 週六
+      sunday: 星期日
+    catch_up_all_groups: 動態摘要郵件（所有群組）
   discussion_mailer:
     reply_or_view_online_html: 直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。
     turn_off_notifications_html: 在這個討論<a href='%{url}'>關閉電子郵件</a>。

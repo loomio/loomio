@@ -632,6 +632,23 @@ zh_CN:
   announcement_count_emails: "%{count}封邮件"
   email_actions:
     unfollowed_discussion: 您已关闭此邮件主题的电子邮件通知。
+    catch_up_link: 补发邮件设置
+    catch_up_title: 补发邮件设置
+    catch_up_description: 选择接收群组活动摘要的频率
+    catch_up_schedule: 发送一封补发邮件
+    catch_up_saved: 补发邮件设置已更新
+    catch_up_days:
+      never: 绝不
+      every_day: 每天
+      every_second_day: 每隔一天
+      monday: 周一
+      tuesday: 周二
+      wednesday: 周三
+      thursday: 周四
+      friday: 星期五
+      saturday: 周六
+      sunday: 星期日
+    catch_up_all_groups: 动态摘要邮件（所有群组）
   discussion_mailer:
     reply_or_view_online_html: 回复此电子邮件或<a href='%{url}'>在 %{hostname} 上查看</a>。
     turn_off_notifications_html: "<a href='%{url}'>关闭此讨论的电子邮件通知</a>。"

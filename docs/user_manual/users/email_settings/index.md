@@ -51,6 +51,8 @@ Loomio does not send a catch-up when there are no unseen notifications or unread
 
 Open **Notification settings** from your user menu to choose how often you receive a catch-up.
 
+The **Unsubscribe** link in a catch-up email opens a catch-up schedule form. The email link authorizes that form, so you can change or stop catch-up emails without signing in. The full **Notification settings** page in Loomio remains available when you sign in.
+
 ![Notification settings in the user menu](sidebar_notification_settings.png)
 
 New accounts start with a daily catch-up. The available schedules are:
@@ -107,6 +109,8 @@ Thread notification settings use the same **Catch-up only**, **When notified**, 
 ## Email delivery
 
 By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
+
+The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
 
 When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
 

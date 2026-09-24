@@ -634,6 +634,23 @@ be:
   announcement_count_emails: "%{count} электронных лістоў"
   email_actions:
     unfollowed_discussion: Вы адключылі электронную пошту для гэтай тэмы.
+    catch_up_link: Налады электроннай пошты для нагнання
+    catch_up_title: Налады электроннай пошты для нагнання
+    catch_up_description: Выберыце, як часта атрымліваць зводку аб дзейнасці ў вашых групах
+    catch_up_schedule: Адправіць электронны ліст з інфармацыйным паведамленнем
+    catch_up_saved: Налады электроннай пошты для нагоды навін абноўлены
+    catch_up_days:
+      never: Ніколі
+      every_day: Кожны дзень
+      every_second_day: Кожны другі дзень
+      monday: Панядзелак
+      tuesday: Аўторак
+      wednesday: Серада
+      thursday: Чацвер
+      friday: Пятніца
+      saturday: Субота
+      sunday: Нядзеля
+    catch_up_all_groups: Электронныя лісты для нагоды прапушчаных падзей (усе групы)
   discussion_mailer:
     reply_or_view_online_html: Адкажыце на гэты ліст або <a href='%{url}'>праглядзіце яго на %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Адключыце электронную пошту</a> для гэтай дыскусіі."

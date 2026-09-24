@@ -449,6 +449,8 @@ Rails.application.routes.draw do
 
   namespace :email_actions do
     get :unsubscribe
+    get :catch_up
+    put :set_catch_up
     put :set_group_volume
     put :set_discussion_volume
     get 'mark_digest_as_read', action: 'mark_digest_as_read', as: :mark_digest_as_read

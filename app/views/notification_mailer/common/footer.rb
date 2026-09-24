@@ -69,7 +69,7 @@ class Views::NotificationMailer::Common::Footer < Views::ApplicationMailer::Comp
     if @event_key == 'group_mentioned'
       [ "event_mailer.notification_reason.group_mentioned", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
     elsif @event_key == 'user_mentioned' || @event_key == 'comment_replied_to'
-      [ "event_mailer.notification_reason.user_mentioned", preferences_url(recipient: @recipient) ]
+      [ "event_mailer.notification_reason.user_mentioned", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
     elsif @notification&.recipient_user_ids&.include?(@recipient.id)
       [ "event_mailer.notification_reason.notified", unsubscribe_url(@topic_item.itemable, recipient: @recipient) ]
     elsif @membership&.volume_email == 'loud'

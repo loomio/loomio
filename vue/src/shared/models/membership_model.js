@@ -44,8 +44,7 @@ export default class MembershipModel extends BaseModel {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     const params = {
-      apply_to_all: applyToAll,
-      unsubscribe_token: this.user().unsubscribeToken
+      apply_to_all: applyToAll
     };
     if (volumeEmail != null) params.volume_email = volumeEmail;
     if (volumePush != null) params.volume_push = volumePush;

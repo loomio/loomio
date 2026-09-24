@@ -1,4 +1,8 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
+  CATCH_UP_DAYS = (0..8).map(&:to_s).freeze
+
+  before_action :protect_token_url, only: [:unsubscribe, :catch_up, :set_catch_up, :set_group_volume, :set_discussion_volume]
+
   def unsubscribe
     load_models_or_404
     topic_reader = TopicReader.for(user: current_user, topic: @topic) if @topic
@@ -8,8 +12,25 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
       membership: membership,
       unsubscribe_token: params[:unsubscribe_token],
       push_enabled: current_user.push_subscriptions.active.exists?,
-      email_catch_up_day: current_user.email_catch_up_day
+      email_catch_up_day: current_user.email_catch_up_day,
+      flash: flash
     )
+  end
+
+  def catch_up
+    render Views::EmailActions::CatchUp.new(
+      email_catch_up_day: current_user.email_catch_up_day,
+      unsubscribe_token: params[:unsubscribe_token],
+      flash: flash
+    )
+  end
+
+  def set_catch_up
+    choice = params.require(:email_catch_up_day)
+    return respond_with_error 422 unless choice == 'never' || CATCH_UP_DAYS.include?(choice)
+
+    current_user.update!(email_catch_up_day: choice == 'never' ? nil : choice.to_i)
+    redirect_to email_actions_catch_up_path(unsubscribe_token: params[:unsubscribe_token]), notice: t(:'email_actions.catch_up_saved')
   end
 
   def set_group_volume
@@ -69,6 +90,11 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   private
+
+  def protect_token_url
+    response.headers['Cache-Control'] = 'no-store'
+    response.headers['Referrer-Policy'] = 'no-referrer'
+  end
 
   def volume_attributes(record)
     email = params[:volume_email] || params[:value] || record.volume_email

@@ -376,6 +376,23 @@ ru:
   announcement_count_emails: "%{count} писем"
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.
+    catch_up_link: Настройки электронной почты для наверстывания упущенного
+    catch_up_title: Настройки электронной почты для наверстывания упущенного
+    catch_up_description: Выберите, как часто вы будете получать сводку активности в ваших группах.
+    catch_up_schedule: Отправьте электронное письмо с напоминанием о текущих событиях.
+    catch_up_saved: Обновлены настройки электронной почты для получения наверстывания упущенного.
+    catch_up_days:
+      never: Никогда
+      every_day: Каждый день
+      every_second_day: Через день
+      monday: Понедельник
+      tuesday: Вторник
+      wednesday: Среда
+      thursday: Четверг
+      friday: Пятница
+      saturday: Суббота
+      sunday: Воскресенье
+    catch_up_all_groups: Письма со сводкой (для всех групп)
   discussion_mailer:
     reply_or_view_online_html: Ответьте на это письмо напрямую или <a href='%{url}'>посмотрите его на %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Отключить почтовые уведомления</a> для этой дискуссии."
