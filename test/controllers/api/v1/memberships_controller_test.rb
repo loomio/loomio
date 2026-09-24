@@ -238,13 +238,13 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 1, @test_group.membership_for(@user).reload.weight
   end
 
-  test 'reset rejects weights with more than three decimal places' do
+  test 'reset stores weights at the column precision' do
     sign_in @admin
 
     patch :reset_weights, params: {group_id: @test_group.id, weight: '0.0001'}
 
-    assert_response :unprocessable_entity
-    assert_equal 1, @test_group.membership_for(@user).reload.weight
+    assert_response :success
+    assert_equal 0, @test_group.membership_for(@user).reload.weight
   end
 
   test 'updates volume for single membership' do

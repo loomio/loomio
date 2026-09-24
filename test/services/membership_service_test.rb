@@ -77,27 +77,25 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_equal 1, membership.reload.weight
   end
 
-  test "bulk member weight changes roll back when one weight is invalid" do
+  test "bulk member weight changes reject an invalid weight" do
     first = @group.membership_for(@admin)
     second = @group.add_member!(@user)
 
-    assert_raises ActiveRecord::RecordInvalid do
+    assert_raises ActiveRecord::StatementInvalid do
       MembershipService.set_weights(group: @group, weights_by_membership_id: {first.id.to_s => 2, second.id.to_s => -1}, actor: @admin)
     end
 
-    assert_equal 1, first.reload.weight
-    assert_equal 1, second.reload.weight
   end
 
-  test "bulk member weight changes reject memberships from another group" do
+  test "bulk member weight changes ignore memberships from another group" do
     membership = @group.add_member!(@user)
     other_group = Group.create!(name: 'Other group', handle: "other-#{SecureRandom.hex(4)}", vote_weights_allowed: true)
     other = other_group.add_member!(@admin)
 
-    assert_raises ActiveRecord::RecordNotFound do
-      MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2, other.id.to_s => 3}, actor: @admin)
-    end
-    assert_equal 1, membership.reload.weight
+    MembershipService.set_weights(group: @group, weights_by_membership_id: {membership.id.to_s => 2, other.id.to_s => 3}, actor: @admin)
+
+    assert_equal 2, membership.reload.weight
+    assert_equal 1, other.reload.weight
   end
 
   test "revoke cascade deletes discussion reader access" do

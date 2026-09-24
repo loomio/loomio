@@ -76,12 +76,12 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   end
 
   def set_weights
-    self.collection = service.set_weights(
+    service.set_weights(
       group: Group.find(params.require(:group_id)),
       weights_by_membership_id: vote_weights_by_record_id,
       actor: current_user
     )
-    respond_with_collection serializer: MembershipSerializer, scope: index_scope
+    render json: {updated: true}
   end
 
   def weights

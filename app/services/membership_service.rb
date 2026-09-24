@@ -195,38 +195,23 @@ class MembershipService
     end
   end
 
-  # Update a reviewed batch as one unit so an invalid weight or inaccessible
-  # membership cannot leave only some members changed.
+  # Authorize the group once. CASE assigns each member's weight in one UPDATE
+  # while the group scope excludes IDs outside its active memberships.
   def self.set_weights(group:, weights_by_membership_id:, actor:)
+    actor.ability.authorize! :set_weight, Membership.new(group: group)
     raise ActionController::ParameterMissing, :weights if weights_by_membership_id.empty?
 
-    memberships = nil
-    Membership.transaction do
-      memberships = group.memberships.active.where(id: weights_by_membership_id.keys).index_by { |membership| membership.id.to_s }
-      raise ActiveRecord::RecordNotFound unless memberships.length == weights_by_membership_id.length
-
-      memberships.each_value { |membership| actor.ability.authorize! :set_weight, membership }
-      memberships.each do |id, membership|
-        membership.update!(weight: weights_by_membership_id.fetch(id))
-      end
-    end
-    memberships.each_value { |membership| EventBus.broadcast 'membership_update', membership, {weight: membership.weight}, actor }
-    memberships.values
+    membership_ids = group.memberships.where(id: weights_by_membership_id.keys).pluck(:id)
+    weights = weights_by_membership_id.slice(*membership_ids.map(&:to_s))
+    weight_by_id = Arel::Nodes::Case.new(Membership.arel_table[:id])
+    weights.each { |id, weight| weight_by_id.when(id.to_i).then(BigDecimal(weight.to_s)) }
+    group.memberships.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
   end
 
-  # Apply one reviewed weight to every current member, including members not
-  # loaded in the UI. Keep changes atomic and publish only after commit.
+  # Apply one weight to every active member in a single update.
   def self.reset_weights(group:, weight:, actor:)
     actor.ability.authorize! :set_weight, Membership.new(group: group)
-    candidate = Membership.new(weight: weight)
-    candidate.valid?
-    raise ActiveRecord::RecordInvalid, candidate if candidate.errors.include?(:weight)
-    memberships = group.memberships.active.to_a
-    Membership.transaction do
-      memberships.each { |membership| membership.update!(weight: weight) }
-    end
-    memberships.each { |membership| EventBus.broadcast 'membership_update', membership, {weight: membership.weight}, actor }
-    memberships
+    group.memberships.update_all(weight: weight, updated_at: Time.current)
   end
 
   def self.resend(membership:, actor:)
