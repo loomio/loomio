@@ -502,7 +502,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   v-divider.my-4
   .text-body-large.pb-2(v-t="'poll_common_form.voting_duration'")
-  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.voting_duration_hint'")
+  .text-body-medium.pb-4.text-medium-emphasis
+    span {{ t('poll_common_form.voting_duration_hint') }}
+    help-link.ml-1(path="user_manual/polls/settings#duration")
 
   template(v-if="poll.openedAt")
     poll-common-opening-at-field.pb-4(:poll="poll" disabled)
@@ -603,7 +605,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
         v-divider.mb-4(v-if="allowAnonymous || voteWeightsSupported || poll.config().allow_quorum")
         .poll-common-form__reminder-title.text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")
-        .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
+        .text-body-medium.pb-4.text-medium-emphasis
+          span {{ t('poll_common_form.reminder_helptext') }}
+          help-link.ml-1(path="user_manual/polls/settings#reminder")
         p(v-if="poll.closingAt && closesSoon"
           v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
         v-select.poll-common-settings__notify-on-closing-soon(
@@ -615,7 +619,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="allowAnonymous")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'poll_common_card.hide_results'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+          .text-body-medium.pb-4.text-medium-emphasis
+            span {{ t('poll_common_form.hide_results_description') }}
+            help-link.ml-1(path="user_manual/polls/settings#hide-results")
           v-select.poll-common-settings__hide-results(
             :label="$t('poll_common_card.hide_results')"
             :items="hideResultsItems"
@@ -635,7 +641,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="!poll.config().hide_reason_required")
           v-divider.pb-4
           .text-body-large.pb-2(v-t="'poll_common_form.vote_reason'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
+          .text-body-medium.pb-4.text-medium-emphasis
+            span {{ t('poll_common_form.vote_reason_description') }}
+            help-link.ml-1(path="user_manual/polls/settings#vote-reason")
           v-select.poll-common-form__stance-reason-required(
             :disabled="poll.anonymous"
             :label="$t('poll_common_form.stance_reason_required_label')"
