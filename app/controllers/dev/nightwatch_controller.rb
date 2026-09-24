@@ -19,6 +19,8 @@ class Dev::NightwatchController < Dev::BaseController
   include Dev::Scenarios::Profile
   include Dev::Scenarios::Tags
 
+  around_action :deliver_preview_emails_inline, if: -> { action_name.include?('_mailer_') }
+
   before_action :reset_transient_state, except: [
     :last_email,
     :last_login_code,
@@ -26,6 +28,8 @@ class Dev::NightwatchController < Dev::BaseController
     :index,
     :accept_last_invitation,
     :revoke_secret_group_access,
+    :view_email_catch_up_settings,
+    :view_thread_email_settings,
   ]
   before_action :reset_database, except: [
     :last_email,
@@ -34,6 +38,8 @@ class Dev::NightwatchController < Dev::BaseController
     :index,
     :accept_last_invitation,
     :revoke_secret_group_access,
+    :view_email_catch_up_settings,
+    :view_thread_email_settings,
   ]
 
 
@@ -41,5 +47,16 @@ class Dev::NightwatchController < Dev::BaseController
     Rails.cache.clear
     ActionMailer::Base.deliveries.clear
     flash.clear
+  end
+
+  private
+
+  # Mail previews read in-process deliveries, so their jobs must finish in the request.
+  def deliver_preview_emails_inline
+    previous_adapter = ActiveJob::Base.queue_adapter
+    ActiveJob::Base.queue_adapter = :inline
+    yield
+  ensure
+    ActiveJob::Base.queue_adapter = previous_adapter
   end
 end
